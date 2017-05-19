@@ -19,13 +19,25 @@ class InvitationsController < ApplicationController
     else
       session[:pending_invitation_id] = params[:id]
     end
-    redirect_to group_url(invitation.invitable)
+    redirect_to invitation_callback
   end
 
   private
 
   def invitation
     @invitation ||= Invitation.find_by_token!(params[:id])
+  end
+
+  def invitation_callback
+    if !invitation_user && Identities::Base::PROVIDERS.include?(params[:auth_as].to_s)
+      send(:"#{params[:auth_as]}_oauth_url", team: params[:team], back_to: group_callback)
+    else
+      group_callback
+    end
+  end
+
+  def group_callback
+    group_url(invitation.invitable)
   end
 
   def invitation_user

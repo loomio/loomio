@@ -1,8 +1,0 @@
-.row
-  .col-md-6
-    %h2= t :'networks.join_header'
-    = simple_form_for @request do |f|
-      = f.input :group_id, collection: current_user.adminable_groups.parents_only.alphabetically.map{|g| [g.full_name, g.id]}
-      = f.input :network_id, collection: Network.all
-      = f.input :message
-      = f.submit t(:'networks.request_to_join'), class: 'btn btn-primary'

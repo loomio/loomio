@@ -18,9 +18,13 @@ class API::GroupsController < API::RestfulController
     respond_with_resource(scope: {current_user: current_user})
   end
 
+  def publish
+    service.publish(group: load_resource, params: {identifier: params.require(:identifier)}, actor: current_user)
+    respond_with_resource
+  end
+
   def archive
-    load_resource
-    GroupService.archive(group: @group, actor: current_user)
+    service.archive(group: load_resource, actor: current_user)
     respond_with_resource
   end
 

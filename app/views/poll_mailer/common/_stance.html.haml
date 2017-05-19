@@ -1,0 +1,8 @@
+- stance = local_assigns.fetch(:stance, @info.recipient_stance)
+%table
+  %tr
+    - stance.poll_options.each do |option|
+      = render 'poll_mailer/common/poll_option', poll_option: option
+    - if @info.recipient_stance
+      %td= link_to t(:"poll_mailer.common.change_your_stance"), poll_url(@info.poll, @info.utm_hash(change_vote: true))
+%p= render_rich_text stance.reason

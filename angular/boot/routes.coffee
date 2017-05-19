@@ -33,5 +33,6 @@ window.Loomio.routes = [
   {path: '/apps/authorized', component: 'authorizedAppsPage'},
   {path: '/apps/registered', component: 'registeredAppsPage'},
   {path: '/apps/registered/:id', component: 'registeredAppPage'},
-  {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'}
+  {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
+  {path: '/slack/install', component: 'installSlackPage'}
 ]

@@ -314,6 +314,7 @@ en:
     poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
+    stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
 
   position_buttons_panel:
     heading: Have your say
@@ -1350,10 +1351,16 @@ en:
     notify_group: Announcement
     members_helptext: Your group will not be notified
     members_count: "{{count}} people will be notified"
+    participants_count: "The {{count}} people who have voted will be notified"
+
+  poll_common_notify_on_participate:
+    notify_on_participate: Notify me when people participate
+    helptext_on: You will be notified whenever someone participates
+    helptext_off: You will receive results when this poll closes
 
   poll_common_close_form:
     title: Close a poll early
-    helptext: Are you sure you're ready to close this early?
+    helptext: Are you sure you're ready to close early?
     close_proposal: Close proposal
     close_poll: Close poll
     close_count: Close check
@@ -1573,28 +1580,21 @@ en:
       poll_created: '<strong>{{author}}</strong> started a check: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> responded:'
       poll_edited: '<strong>{{author}}</strong> edited the check: <span>{{title}}</span>'
-      poll_expired: 'Check finished: <span>{{title}}</span>'
+      poll_expired: 'Check closed: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the check: <span>{{title}}</span>'
 
     dot_vote:
       poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> voted:'
       poll_edited: '<strong>{{author}}</strong> edited the dot vote: <span>{{title}}</span>'
-      poll_expired: 'Dot vote finished: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
-
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> voted:'
-      poll_edited: '<strong>{{author}}</strong> edited the dot vote: <span>{{title}}</span>'
-      poll_expired: 'Dot vote finished: <span>{{title}}</span>'
+      poll_expired: 'Dot vote closed: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
 
     meeting:
       poll_created: '<strong>{{author}}</strong> started a time poll: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> responded:'
       poll_edited: '<strong>{{author}}</strong> edited the time poll: <span>{{title}}</span>'
-      poll_expired: 'Time poll finished: <span>{{title}}</span>'
+      poll_expired: 'Time poll closed: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the time poll: <span>{{title}}</span>'
 
     # outcome
@@ -1625,6 +1625,7 @@ en:
     no_loomio_group: This poll is not currently associated with any Loomio group
     has_loomio_group: Members of this group will be able to view and participate in this poll.
     poll_is_shareable: Copy the link above and share it. Anyone with the link can pariticpate.
+    poll_is_private: Only members of the group or people you've invited will be able to participate.
     enter_emails: Enter an email address to send a single use participation link.
     view_poll: View poll
     email_invited: 'Invitation email sent to {{email}}'
@@ -1725,3 +1726,48 @@ en:
     name: Name
     email: Email
     password: Password
+
+  install_slack:
+    modal_title: Install Slack
+
+    progress:
+      install: Install
+      invite: Invite
+      decide: Decide
+
+    install:
+      heading: 'Step 1: Install slack onto a Loomio group'
+      tooltip_heading: Loomio and Slack work great together
+      it_does_this: Engage users where they are
+      and_also_this: Start polls instantly and get feedback in real time
+      and_also_also_this: Let people know outcome and iterate your thinking quickly
+      add_to_group_helptext: Select a group to link with Slack
+      create_new_group_helptext: Don't have a Loomio group? Simply enter a name and we'll make one for you
+      group_name: Group name
+      group_name_placeholder: Name your new Loomio group...
+      install_slack: Install slack now
+      start_new_group: Start a new group
+      use_existing_group: Use an existing group
+
+    invite:
+      heading: 'Step 2: Invite people to join'
+      helptext: |
+        Success! Now it's time to invite people in. Select a slack channel, and we'll post a link to join this group.
+      select_a_channel: Select a channel
+      invite_to_group: Post invitation link
+
+    decide:
+      heading: 'Step 3: Make a decision together'
+      helptext: |
+        Okay, we've let your slack team know. Now that you're all set up, it's time to start making decisions. Select from one of the options below:
+
+    common:
+      do_it_later: I'll do this later
+
+  slack_added_modal:
+    title: Success!
+    helptext: |
+      You've successfully added Slack to your Loomio group <strong>{{name}}</strong>.
+      Now, whenever anyone starts a poll in this group, they'll have the option to
+      post updates about that poll into a channel in your slack team.
+    start_poll_now: Make a decision now

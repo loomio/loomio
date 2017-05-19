@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, ProposalOutcomeForm, PollService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, ProposalOutcomeForm, PollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
@@ -10,7 +10,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $location.hash('')
 
   @performScroll = ->
-    ScrollService.scrollTo @elementToFocus(), 150
+    ScrollService.scrollTo @elementToFocus(), offset: 150
     $rootScope.$broadcast 'triggerVoteForm', $location.search().position if @openVoteModal()
     (ModalService.open ProposalOutcomeForm, proposal: => @proposal) if @openOutcomeModal()
     $location.url($location.path())

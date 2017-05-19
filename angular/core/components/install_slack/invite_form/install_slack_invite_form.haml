@@ -1,0 +1,10 @@
+.install-slack-invite-form
+  %h2.lmo-h2{translate: "install_slack.invite.heading"}
+  %p.poll-common-helptext{translate: "install_slack.invite.helptext"}
+  %md-select{ng-model: "identifier", placeholder: "{{'install_slack.invite.select_a_channel' | translate}}", md-on-open: "fetchChannels()"}
+    %md-option{ng-value: "channel.id", ng-repeat: "channel in channels"}
+      %span &#35;{{ channel.name }}
+
+  .lmo-flex.install-slack-form__actions{layout: "column"}
+    %md-button.md-primary.md-raised{ng-disabled: "!identifier", translate: "install_slack.invite.invite_to_group", ng-click: "submit()"}
+    %md-button{ng-click: "$emit('inviteComplete')", type: "button", translate: "install_slack.common.do_it_later"}

@@ -53,7 +53,7 @@ class PermittedParams < Struct.new(:params)
 
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
-     :make_announcement, :multiple_choice, :key, :anyone_can_participate,
+     :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate,
      :custom_fields, {custom_fields: [:dots_per_person, :time_zone]},
      :attachment_ids, {attachment_ids: []},
      :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
@@ -103,7 +103,7 @@ class PermittedParams < Struct.new(:params)
     [:parent_id, :name, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
      :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
-     :membership_granted_upon, :cover_photo, :logo, :category_id,
+     :membership_granted_upon, :cover_photo, :logo, :category_id, :identity_id,
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
   end
 
