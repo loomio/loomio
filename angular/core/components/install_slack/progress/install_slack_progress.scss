@@ -1,0 +1,15 @@
+.install-slack-progress {
+
+}
+
+.install-slack-progress__bar {
+  width: 100%;
+  height: 4px;
+  background: $loomio-orange;
+}
+
+.install-slack-progress__dot {
+  width: 20px;
+  height: 20px;
+  background: $loomio-orange;
+}

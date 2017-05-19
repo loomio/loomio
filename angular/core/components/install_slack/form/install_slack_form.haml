@@ -1,7 +1,6 @@
 .install-slack-form
   .lmo-disabled-form{ng-show: "isDisabled"}
   %install_slack_progress{progress: "progress()"}
-  %install_slack_tableau
   .install-slack-form__form.lmo-slide-animation{ng-switch: "currentStep"}
     %install_slack_install_form.animated{ng-switch-when: "install"}
     %install_slack_invite_form.animated{ng-switch-when:  "invite"}
