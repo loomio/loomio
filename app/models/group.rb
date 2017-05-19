@@ -198,7 +198,7 @@ class Group < ActiveRecord::Base
     super
   end
 
-  attr_reader :identity_id
+  attr_writer :identity_id
   def identity_id
     @identity_id || community.identity_id
   end
