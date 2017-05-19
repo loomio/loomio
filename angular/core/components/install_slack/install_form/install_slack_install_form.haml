@@ -23,7 +23,7 @@
   .install-slack-install-form__create-new-group{ng-if: "!group.id"}
     %p.poll-common-helptext{translate: "install_slack.install.create_new_group_helptext"}
 
-    %md-input-container.md-block
+    %md-input-container.md-block.install-slack-install-form__group
       %label{translate: "install_slack.install.group_name"}
       %input.lmo-primary-form-input{type: "text", placeholder: "{{ 'install_slack.install.group_name_placeholder' | translate }}", ng-model: "group.name"}
 

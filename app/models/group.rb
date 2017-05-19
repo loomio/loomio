@@ -137,7 +137,7 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
   belongs_to :cohort
-  belongs_to :community, class_name: 'Communities::LoomioGroup'
+  belongs_to :community, class_name: 'Communities::LoomioGroup', touch: true
   belongs_to :default_group_cover
 
   has_many :subgroups,
@@ -197,10 +197,11 @@ class Group < ActiveRecord::Base
     super
   end
 
-  delegate :identity_id, to: :community
-  delegate :identity,    to: :community
+  delegate :identity_id,  to: :community
+  delegate :identity_id=, to: :community
+  delegate :identity,     to: :community
   def identity_id=(id)
-    community.update(identity_id: id)
+    community.identity_id = id
   end
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
