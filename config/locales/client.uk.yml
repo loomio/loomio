@@ -630,7 +630,7 @@ uk:
   group_previous_proposals_card:
     heading: Попередні пропозиції
     see_more: Переглянути більше
-  group_previous_polls_card:
+  group_decisions_card:
     heading: Попередні Оновлення
     see_more: "Переглянути усі: ({{count}}) оновлень"
   invitation_form:

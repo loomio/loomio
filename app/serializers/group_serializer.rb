@@ -18,6 +18,7 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_vote,
              :motions_count,
              :closed_motions_count,
+             :polls_count,
              :closed_polls_count,
              :proposal_outcomes_count,
              :discussions_count,

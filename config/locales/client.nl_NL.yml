@@ -637,7 +637,7 @@ nl_NL:
   group_previous_proposals_card:
     heading: Vorige voorstellen
     see_more: Zie meer
-  group_previous_polls_card:
+  group_decisions_card:
     heading: Vorige activiteiten
     see_more: "Zie alle: ({{count}}) activiteiten"
   invitation_form:
