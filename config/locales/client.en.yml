@@ -1689,38 +1689,27 @@ en:
     start_new_poll: New decision
 
   auth_form:
-    sign_in_to_loomio: Log in or Sign up
+    sign_in_to_loomio: Sign into Loomio
     sign_in: Sign in
-    choose_an_account: "Select an account to authenticate with:"
+    choose_an_account: "Sign in via a third party, or enter your email address to continue."
     more_providers: More
     email_not_present: An email address is required
     invalid_email: "Sorry, that doesn't look like a valid email address"
     invalid_password: "Sorry, that password doesn't match the one we have on file"
     email_not_found: "Sorry, we couldn't find an account with that email address"
 
-    email_helptext: |
-      Have an account already, or don't want to use a third party?
-      Enter your email address instead:
     email_placeholder: you@example.com
     login_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.
       Or, you can set a password to login with, if you don't want to receive an email.
-    login_link_helptext_with_password: |
-      Enter your password below to sign in.
-      Or, we can email you a link to sign in instantly.
-    sign_up_helptext: |
-      Just enter the name you'd like to be known by, and we'll send you a link to log in.
-    oauth_confirm_helptext: |
-      Just confirm your details below, and we'll send you a link to log in.
+    login_link_helptext_with_password: "Enter your password, or sign in via email."
+    sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
+    oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
 
-    sign_in_with_email: Sign in with email
     welcome: Nice to meet you, {{email}}!
     welcome_back: Welcome back, {{name}}!
-    login_link: Send me a login link
+    login_link: Sign in via email
     set_password: Set password
-    set_password_button: Set a password
-    thats_not_me: Is this not you?
-    sign_in_as_someone_else: Sign in as someone else
 
     hello: "Hello, {{name}}!"
     new_to_loomio: New to Loomio? Create a new account
