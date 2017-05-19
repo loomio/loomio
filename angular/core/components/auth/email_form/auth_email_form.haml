@@ -6,4 +6,4 @@
 
   .lmo-actions
     %div
-    %md-button.md-primary.md-raised.auth-email-form__submit{ng-click: "submit()", translate: "auth_form.sign_in", aria-label: "{{ 'auth_form.sign_in' | translate }}"}
+    %md-button.md-primary.md-raised.auth-email-form__submit{ng-click: "submit()", ng-disabled: "!email", translate: "auth_form.sign_in", aria-label: "{{ 'auth_form.sign_in' | translate }}"}
