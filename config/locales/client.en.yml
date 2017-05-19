@@ -1748,6 +1748,7 @@ en:
 
     install:
       heading: 'Step 1: Install slack onto a Loomio group'
+      tooltip_heading: Loomio and Slack work great together
       it_does_this: Engage users where they are
       and_also_this: Start polls instantly and get feedback in real time
       and_also_also_this: Let people know outcome and iterate your thinking quickly

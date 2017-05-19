@@ -1,6 +1,7 @@
 .install-slack-install-form
+  %h2.lmo-h2{translate: "install_slack.install.heading", ng-if: "!showTooltip"}
   .install-slack-install-form__instructions{ng-if: "showTooltip"}
-    %h1.lmo-h1{translate: "install_slack.install.heading"}
+    %h2.lmo-h2{translate: "install_slack.install.tooltip_heading"}
     %ul
       %li{translate: "install_slack.install.it_does_this"}
       %li{translate: "install_slack.install.and_also_this"}
@@ -9,7 +10,6 @@
     .lmo-flex.lmo-flex__space-around
       %md-button.md-accent{translate: "common.ok_got_it", ng-click: "hideTooltip()"}
 
-  %h2.lmo-h2{translate: "install_slack.install.heading"}
   .install-slack-install-form__add-to-group{ng-if: "group.id"}
     %p.poll-common-helptext{translate: "install_slack.install.add_to_group_helptext"}
     %md-select{ng-model: "group", aria-label: "{{ 'install_slack.install.group_id' | translate }}"}

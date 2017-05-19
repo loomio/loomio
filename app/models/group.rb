@@ -122,6 +122,7 @@ class Group < ActiveRecord::Base
   after_initialize :set_defaults
 
   after_create :guess_cohort
+  after_save   :associate_identity
 
   alias :users :members
 
@@ -197,11 +198,13 @@ class Group < ActiveRecord::Base
     super
   end
 
-  delegate :identity_id,  to: :community
-  delegate :identity_id=, to: :community
-  delegate :identity,     to: :community
-  def identity_id=(id)
-    community.identity_id = id
+  attr_reader :identity_id
+  def identity_id
+    @identity_id || community.identity_id
+  end
+
+  def associate_identity
+    community.update(identity_id: self.identity_id) if self.identity_id
   end
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
