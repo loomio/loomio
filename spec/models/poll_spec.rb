@@ -92,5 +92,22 @@ describe Poll do
     it 'does nothing if group community doesnt exist' do
       expect { poll.update(group_id: nil) }.to_not change { poll.communities.count }
     end
+
+    describe 'is_new_version?' do
+      it 'is a new version if title is changed' do
+        poll.title = "new title"
+        expect(poll.is_new_version?).to eq true
+      end
+
+      it 'is a new version if new poll option is added' do
+        poll.poll_option_names = "new_option"
+        expect(poll.is_new_version?).to eq true
+      end
+
+      it 'is not a new version if anyone_can_participate is changed' do
+        poll.anyone_can_participate = false
+        expect(poll.is_new_version?).to eq false
+      end
+    end
   end
 end

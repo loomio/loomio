@@ -338,7 +338,7 @@ class Ability
       @user.can? :share, poll_community.poll
     end
 
-    can [:make_draft, :show], Poll do |poll|
+    can [:make_draft, :show, :subscribe_to], Poll do |poll|
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
       poll.communities.any? { |community| community.includes?(@user) }
@@ -364,6 +364,10 @@ class Ability
 
     can [:show, :destroy], Identities::Base do |identity|
       @user.identities.include? identity
+    end
+
+    can :show, Stance do |stance|
+      @user.can?(:show, stance.poll)
     end
 
     can [:make_draft, :create], Stance do |stance|

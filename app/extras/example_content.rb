@@ -4,7 +4,7 @@ ExampleContent = Struct.new(:group) do
   def add_to_group!
     group.add_member!(helper_bot).tap do
       Events::NewDiscussion.publish!(introduction_thread)
-      Events::NewMotion.publish!(example_motion)
+      Events::PollCreated.publish!(example_proposal)
     end.destroy # remove helper bot after s/he has made example content
   end
 
@@ -28,13 +28,15 @@ ExampleContent = Struct.new(:group) do
     )
   end
 
-  def example_motion
-    @example_motion ||= how_it_works_thread.motions.create(
-      author:       helper_bot,
-      name:         I18n.t('first_proposal.name'),
-      description:  I18n.t('first_proposal.description'),
-      closing_at:  (Time.zone.now + 7.days).at_beginning_of_hour
-    )
+  def example_proposal
+    @example_motion ||= how_it_works_thread.polls.create(
+      poll_type:         :proposal,
+      poll_option_names: %w[agree abstain disagree block],
+      author:            helper_bot,
+      title:             I18n.t('first_proposal.name'),
+      details:           I18n.t('first_proposal.description'),
+      closing_at:        (Time.zone.now + 7.days).at_beginning_of_hour
+    ). tap { |p| p.community_of_type(:email, build: true).save }
   end
 
   def helper_bot

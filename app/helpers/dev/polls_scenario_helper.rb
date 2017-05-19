@@ -67,6 +67,18 @@ module Dev::PollsScenarioHelper
      actor:    actor}
   end
 
+  def poll_stance_created_scenario(poll_type:)
+    scenario = poll_created_scenario(poll_type: poll_type)
+    voter    = saved(fake_user)
+    scenario[:poll].update(notify_on_participate: true)
+    scenario[:poll].group.add_member!(voter)
+    choices  =  [{poll_option_id: scenario[:poll].poll_option_ids[0]}]
+    StanceService.create(stance: fake_stance(poll: scenario[:poll], stance_choices_attributes: choices), actor: voter)
+
+    scenario.merge(observer: scenario[:poll].author, voter: voter)
+  end
+
+
   def poll_closing_soon_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     non_voter  = saved(fake_user)
@@ -111,11 +123,18 @@ module Dev::PollsScenarioHelper
   end
 
   def poll_expired_scenario(poll_type:)
+    scenario = poll_expired_author_scenario(poll_type: poll_type)
+    scenario.merge(observer: scenario[:actor])
+  end
+
+  def poll_expired_author_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     actor      = discussion.group.admins.first
     poll       = create_fake_poll_with_stances(discussion: discussion, poll_type: poll_type)
     poll.update_attribute(:closing_at, 1.day.ago)
+    poll.make_announcement = true
     poll.discussion.group.add_member! poll.author
+    Events::PollCreated.publish!(poll)
     PollService.expire_lapsed_polls
     { discussion: discussion,
       actor: actor,
