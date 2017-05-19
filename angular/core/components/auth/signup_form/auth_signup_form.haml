@@ -5,9 +5,6 @@
     %p.poll-common-helptext{ng-if: "!pendingIdentity"}
       %span{translate: "auth_form.sign_up_helptext", ng-if: "!pendingIdentity"}>
       %span{translate: "auth_form.thats_not_me"}>
-      %a{href: "#", ng-click: "back()", translate: "auth_form.sign_in_as_someone_else"}
-
-    %p.poll-common-helptext{translate: "auth_form.oauth_confirm_helptext", ng-if: "pendingIdentity"}
 
   %md-input-container.md-block.auth-signup-form__name
     %label{translate: "auth_form.name"}

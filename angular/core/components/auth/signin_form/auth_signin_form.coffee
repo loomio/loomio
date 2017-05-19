@@ -3,9 +3,6 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate, $window, Se
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ($scope) ->
 
-    $scope.back = ->
-      $scope.user.emailStatus = null
-
     $scope.signIn = ->
       $scope.$emit 'processing'
       AuthService.signIn($scope.user).then (->), ->
