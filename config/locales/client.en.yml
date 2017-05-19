@@ -1741,6 +1741,11 @@ en:
   install_slack:
     modal_title: Install Slack
 
+    progress:
+      install: Install
+      invite: Invite
+      decide: Decide
+
     install:
       heading: 'Step 1: Install slack onto a Loomio group'
       it_does_this: Engage users where they are

@@ -8,3 +8,9 @@ angular.module('loomioApp').directive 'installSlackForm', (FormService, Session,
 
     $scope.$on 'processing',      -> $scope.isDisabled = true
     $scope.$on 'doneProcessing',  -> $scope.isDisabled = false
+
+    $scope.progress = ->
+      switch $scope.currentStep
+        when 'install' then 0
+        when 'invite'  then 50
+        when 'decide'  then 100
