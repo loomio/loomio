@@ -1,7 +1,7 @@
 class Slack::GroupPublishedSerializer < Slack::BaseSerializer
   def text
     I18n.t(:"slack.join_loomio_group", {
-      author: model.creator.name,
+      author: object.user.name,
       name: model.name,
       url: invitation_url(invitation_token, invitation_link_options)
     })

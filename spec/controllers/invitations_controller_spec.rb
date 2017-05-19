@@ -35,6 +35,24 @@ describe InvitationsController do
       end
     end
 
+    context "with specified auth method" do
+      it "redirects to the appropriate path when oauth method is specified" do
+        get :show, id: invitation.token, auth_as: :slack
+        expect(response).to redirect_to slack_oauth_url(back_to: group_url(group))
+      end
+
+      it "redirects to the group if invalid oauth method is specified" do
+        get :show, id: invitation.token, auth_as: :wark
+        expect(response).to redirect_to group
+      end
+
+      it "redirects to the group if someone is logged in" do
+        sign_in user
+        get :show, id: invitation.token, auth_as: :slack
+        expect(response).to redirect_to group
+      end
+    end
+
     context "user not signed in" do
       before do
         get :show, id: invitation.token

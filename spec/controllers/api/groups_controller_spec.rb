@@ -109,4 +109,30 @@ describe API::GroupsController do
     end
   end
 
+  describe 'publish' do
+
+    it 'creates a group_published event' do
+      group.update(identity_id: create(:slack_identity).id)
+      expect { post :publish, id: group.id, identifier: "abc" }.to change { Events::GroupPublished.count }.by(1)
+      expect(response.status).to eq 200
+      e = Events::GroupPublished.last
+      expect(e.custom_fields['identifier']).to eq "abc"
+
+      i = Invitation.last
+      expect(i.group).to eq group
+      expect(e.custom_fields['invitation_token']).to eq i.token
+    end
+
+    it 'does creates a group_published event even with no group identity' do
+      expect { post :publish, id: group.id, identifier: "abc" }.to change { Events::GroupPublished.count }.by(1)
+      expect(response.status).to eq 200
+    end
+
+    it 'does not create a group_published event without an identifier' do
+      group.update(identity_id: create(:slack_identity).id)
+      expect { post :publish, id: group.id }.to_not change { Events::GroupPublished.count }
+      expect(response.status).to eq 400
+    end
+  end
+
 end
