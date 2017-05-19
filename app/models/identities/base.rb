@@ -23,6 +23,8 @@ class Identities::Base < ActiveRecord::Base
     return unless user && logo
     user.uploaded_avatar = URI.parse(logo)
     user.update(avatar_kind: :uploaded)
+  rescue OpenURI::HTTPError
+    # Can't load logo uri as attachment; do nothing
   end
 
   def fetch_user_info
