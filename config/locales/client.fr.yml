@@ -670,7 +670,7 @@ fr:
   group_previous_proposals_card:
     heading: Propositions précédentes
     see_more: Voir plus
-  group_previous_polls_card:
+  group_decisions_card:
     heading: Activités passées
     see_more: "Voir tout : ({{count}}) activités"
   invitation_form:

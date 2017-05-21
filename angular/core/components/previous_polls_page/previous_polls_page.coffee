@@ -11,7 +11,7 @@ angular.module('loomioApp').controller 'PreviousPollsPageController', ($scope, $
   per = 10
 
   @loadMore = =>
-    Records.polls.fetchClosedByGroup(@group.key, from: from, per: per).then =>
+    Records.polls.fetchByGroup(@group.key, from: from, per: per).then =>
       from += per
       Records.stances.fetchMyStances(@group.key) if AbilityService.isLoggedIn()
   LoadingService.applyLoadingFunction @, 'loadMore'
@@ -24,13 +24,13 @@ angular.module('loomioApp').controller 'PreviousPollsPageController', ($scope, $
     polls: =>
       return [] unless @group?
       _.sortBy(
-        _.filter(@group.closedPolls(), (poll) =>
+        _.filter(@group.polls(), (poll) =>
           _.isEmpty(@fragment) or poll.title.match(///#{@fragment}///i)), '-closedAt')
 
   TranslationService.eagerTranslate @,
     searchPlaceholder: 'previous_polls_page.search_activities'
 
   @canLoadMore = ->
-    @group and !@fragment and from < @group.closedPollsCount
+    @group and !@fragment and from < @group.pollsCount
 
   return

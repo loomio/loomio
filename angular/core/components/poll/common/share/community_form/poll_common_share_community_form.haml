@@ -1,10 +1,7 @@
 %section
-  .lmo-flex
-    %i.material-icons.poll-common-share-form__icon public
-    %h3.lmo-h3{translate: "poll_common_share_form.communities"}
-
+  %h3.lmo-h3{translate: "poll_common_share_form.communities"}
+  
   %md-list.md-block
-    .poll-common-helptext{ng-if: "noCommunities()", translate: "poll_common_share_form.no_communities"}
     %md-list-item.poll-common-share-form__community.lmo-flex{ng-if: "!community.revoked", ng-repeat: "community in poll.communities()"}
       .lmo-flex__grow.lmo-flex{layout: "row"}
         %img.poll-common-share-form__community-icon{class: "poll-common-share-form__community-icon--{{community.communityType}}", ng-src: "/img/{{community.communityType}}-icon.svg"}
