@@ -601,7 +601,7 @@ ActiveRecord::Schema.define(version: 20170521053302) do
     t.jsonb    "translation_values", default: {},    null: false
     t.string   "url"
     t.integer  "actor_id"
-    t.string   "actor_type",         default: "User", null: false
+    t.string   "actor_type"
   end
 
   add_index "notifications", ["actor_id"], name: "index_notifications_on_actor_id", using: :btree
