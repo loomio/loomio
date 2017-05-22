@@ -1635,7 +1635,7 @@ en:
     share_with_group: Loomio group
     share_with_group_placeholder: (no group selected)
     share_with_group_helptext: Share this poll with one of your Loomio groups. All members will be able to participate.
-    update_group: Set group
+    update_group: Change group
     invite_visitor: Invite guest
     invite_visitor_helptext: Invite individuals to this poll by email address. Guests will be able to participate in this poll only.
     send_email: Send email

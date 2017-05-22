@@ -15,7 +15,10 @@
       %md-button.lmo-inline-action{ng-click: "revoke(community)"}
         %i.material-icons clear
 
-  %md-button.md-primary.md-raised{ng-click: "addCommunity('facebook')"}
-    %span{translate: "poll_common_share_form.add_facebook_community"}
-  %md-button.md-primary.md-raised{ng-click: "addCommunity('slack')"}
-    %span{translate: "poll_common_share_form.add_slack_community"}
+  .lmo-flex{layout: "row"}
+    %md-button.md-raised.lmo-flex__grow{ng-click: "addCommunity('facebook')"}
+      %i.fa.fa-facebook-official>
+      %span{translate: "poll_common_share_form.add_facebook_community"}
+    %md-button.md-raised.lmo-flex__grow{ng-click: "addCommunity('slack')"}
+      %i.fa.fa-slack>
+      %span{translate: "poll_common_share_form.add_slack_community"}

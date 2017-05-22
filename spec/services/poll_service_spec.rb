@@ -115,6 +115,30 @@ describe PollService do
       expect(poll_created.reload.title).to eq old_title
     end
 
+    describe 'group_id=' do
+      it 'associates a poll community if changing the group id' do
+        PollService.update(poll: poll_created, params: {group_id: group.id}, actor: user)
+        expect(poll_created.reload.group).to eq group
+        expect(poll_created.communities).to include group.community
+      end
+
+      it 'removes an associated poll community if changing the group id' do
+        poll_created.update(group: group)
+        PollService.update(poll: poll_created, params: {group_id: nil}, actor: user)
+        expect(poll_created.reload.group).to be_nil
+        expect(poll_created.communities).to_not include group.community
+      end
+
+      it 'changes the poll community when changing groups' do
+        poll_created.update(group: another_group)
+        PollService.update(poll: poll_created, params: {group_id: group.id}, actor: user)
+        expect(poll_created.reload.group).to eq group
+        expect(poll_created.group_id).to eq group.id
+        expect(poll_created.communities).to include group.community
+        expect(poll_created.communities).to_not include another_group.community
+      end
+    end
+
     it 'makes an announcement to participants if make_announcement is true' do
       stance
       expect {
