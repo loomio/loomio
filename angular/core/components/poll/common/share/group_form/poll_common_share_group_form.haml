@@ -1,0 +1,12 @@
+%section
+  .lmo-flex
+    %h3.lmo-h3{translate: "poll_common_share_form.share_with_group"}
+    %help_bubble{helptext: "poll_common_share_form.share_with_group_helptext"}
+
+  %md-list.md-block
+    .lmo-flex
+      %md-select.lmo-flex__grow{ng-model: "poll.groupId", ng-disabled: "!groups().length", placeholder: "{{ 'poll_common_share_form.share_with_group_placeholder' | translate }}", aria-label: "{{ 'poll_common_share_group_form.loomio_group' | translate }}"}
+        %md-option{ng-repeat: "group in groups()", ng-value: "group.id"}
+          {{ group.fullName }}
+      %md-button.md-primary.md-raised.poll-common-share-form__button{ng-click: "submit()", ng-disabled: "!groups().length"}
+        %span{translate: "poll_common_share_form.update_group"}

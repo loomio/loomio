@@ -1627,17 +1627,24 @@ en:
     no_group_selected: No group selected
     no_communities: "You haven't connected any communities yet. Click 'add community' below to add one"
     share_a_link: Share link
+    share_a_link_helptext: Create a shareable link to distribute. Anyone who has access to the link will be able to participate.
     anyone_can_participate: Anyone with link can participate
     anyone_can_participate_true: Shareable link created
     anyone_can_participate_false: Shareable link revoked
     get_link: Copy link
+    share_with_group: Loomio group
+    share_with_group_placeholder: (no group selected)
+    share_with_group_helptext: Share this poll with one of your Loomio groups. All members will be able to participate.
+    update_group: Set group
+    invite_visitor: Invite visitor
+    invite_visitor_helptext: Invite individuals to this poll by email address. Visitors will be able to participate in this poll only.
+    send_email: Send email
     set_group: Loomio group updated
     shareable_link_created: Anyone can now participate in this poll
     shareable_link_revoked: This poll is now invite-only
     shareable_link: Shareable link
     guests_invited: Invited {{count}} guests
     guest_revoked: Revoked access for {{email}}
-    invite_guests: Send email
     existing_guests: Existing guests
     new_guests: New emails to invite
     enter_email: "E.g. guest@example.com"
@@ -1654,6 +1661,7 @@ en:
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
     communities: Communities
+    communities_helptext: Invite other communities to this poll. Members of those communities will be able to participate.
     add_facebook_community: Add facebook group
     add_slack_community: Add slack channel
     community_revoked: This community will no longer be able to participate

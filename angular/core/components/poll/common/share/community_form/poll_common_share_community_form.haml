@@ -1,6 +1,8 @@
 %section
-  %h3.lmo-h3{translate: "poll_common_share_form.communities"}
-  
+  .lmo-flex
+    %h3.lmo-h3{translate: "poll_common_share_form.communities"}
+    %help_bubble{helptext: "poll_common_share_form.communities_helptext"}
+
   %md-list.md-block
     %md-list-item.poll-common-share-form__community.lmo-flex{ng-if: "!community.revoked", ng-repeat: "community in poll.communities()"}
       .lmo-flex__grow.lmo-flex{layout: "row"}
