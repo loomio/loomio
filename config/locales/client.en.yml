@@ -1639,7 +1639,7 @@ en:
     invite_visitor: Invite guest
     invite_visitor_helptext: Invite individuals to this poll by email address. Guests will be able to participate in this poll only.
     send_email: Send email
-    set_group: Loomio group updated
+    group_updated: Loomio group updated
     shareable_link_created: Anyone can now participate in this poll
     shareable_link_revoked: This poll is now invite-only
     shareable_link: Shareable link
