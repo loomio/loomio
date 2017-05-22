@@ -170,16 +170,20 @@ class Poll < ActiveRecord::Base
     end
   end
 
-  def discussion=(discussion)
-    super.tap { self.group_id = self.discussion&.group_id }
-  end
-
   def discussion_id=(discussion_id)
     super.tap { self.group_id = self.discussion&.group_id }
   end
 
+  def discussion=(discussion)
+    super.tap { self.group_id = self.discussion&.group_id }
+  end
+
   def group_id=(group_id)
-    sync_poll_communities(Group.find_by(id: group_id)) if self[:group_id] != group_id
+    self.group = Group.find_by(id: group_id)
+  end
+
+  def group=(group)
+    sync_poll_communities(group) if self[:group_id] != group&.id
     super
   end
 

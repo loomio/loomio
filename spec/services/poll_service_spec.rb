@@ -125,8 +125,8 @@ describe PollService do
       it 'removes an associated poll community if changing the group id' do
         poll_created.update(group: group)
         PollService.update(poll: poll_created, params: {group_id: nil}, actor: user)
-        expect(poll_created.reload.group).to be_nil
-        expect(poll_created.communities).to_not include group.community
+        expect(poll_created.reload.communities).to_not include group.community
+        expect(poll_created.group).to be_nil
       end
 
       it 'changes the poll community when changing groups' do
