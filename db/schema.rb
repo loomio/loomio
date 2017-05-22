@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518015225) do
+ActiveRecord::Schema.define(version: 20170521053302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -601,6 +601,7 @@ ActiveRecord::Schema.define(version: 20170518015225) do
     t.jsonb    "translation_values", default: {},    null: false
     t.string   "url"
     t.integer  "actor_id"
+    t.string   "actor_type"
   end
 
   add_index "notifications", ["actor_id"], name: "index_notifications_on_actor_id", using: :btree
