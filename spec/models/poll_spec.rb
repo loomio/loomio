@@ -30,7 +30,7 @@ describe Poll do
   end
 
   it 'assigns poll options' do
-    option_poll = create :poll, poll_options_name: ['A', 'C', 'B']
+    option_poll = create :poll, poll_option_names: ['A', 'C', 'B']
     expect(option_poll.poll_options.map(&:name)).to eq ['A', 'C', 'B']
   end
 
