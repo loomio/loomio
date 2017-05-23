@@ -80,7 +80,7 @@ describe 'Group Page', ->
 
       xit 'open group displays previous proposals', ->
         page.loadPath('view_open_group_as_visitor')
-        page.expectText('.group-previous-polls-card', 'Let\'s go to the moon!')
+        page.expectText('.group-decisions-card', 'Let\'s go to the moon!')
 
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->

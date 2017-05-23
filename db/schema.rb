@@ -424,6 +424,7 @@ ActiveRecord::Schema.define(version: 20170523015010) do
     t.integer  "community_id"
     t.integer  "closed_polls_count",                 default: 0,     null: false
     t.integer  "announcement_recipients_count",      default: 0,     null: false
+    t.integer  "polls_count",                        default: 0,     null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -609,6 +610,7 @@ ActiveRecord::Schema.define(version: 20170523015010) do
     t.jsonb    "translation_values", default: {},    null: false
     t.string   "url"
     t.integer  "actor_id"
+    t.string   "actor_type"
   end
 
   add_index "notifications", ["actor_id"], name: "index_notifications_on_actor_id", using: :btree
@@ -732,30 +734,31 @@ ActiveRecord::Schema.define(version: 20170523015010) do
   end
 
   create_table "polls", force: :cascade do |t|
-    t.integer  "author_id",                           null: false
-    t.string   "title",                               null: false
+    t.integer  "author_id",                             null: false
+    t.string   "title",                                 null: false
     t.text     "details"
     t.datetime "closing_at"
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.string   "key",                                 null: false
-    t.string   "poll_type",                           null: false
+    t.string   "key",                                   null: false
+    t.string   "poll_type",                             null: false
     t.integer  "motion_id"
-    t.jsonb    "stance_data",         default: {}
-    t.integer  "stances_count",       default: 0,     null: false
-    t.boolean  "multiple_choice",     default: false, null: false
-    t.jsonb    "custom_fields",       default: {},    null: false
-    t.jsonb    "stance_counts",       default: [],    null: false
-    t.integer  "did_not_votes_count", default: 0,     null: false
+    t.jsonb    "stance_data",           default: {}
+    t.integer  "stances_count",         default: 0,     null: false
+    t.boolean  "multiple_choice",       default: false, null: false
+    t.jsonb    "custom_fields",         default: {},    null: false
+    t.jsonb    "stance_counts",         default: [],    null: false
+    t.integer  "did_not_votes_count",   default: 0,     null: false
     t.integer  "group_id"
-    t.jsonb    "matrix_counts",       default: [],    null: false
+    t.jsonb    "matrix_counts",         default: [],    null: false
     t.boolean  "notify_on_participate", default: false, null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
   add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
+  add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
 
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"

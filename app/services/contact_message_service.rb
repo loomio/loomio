@@ -1,8 +1,10 @@
 class ContactMessageService
+  def self.deliver(email:, message:)
+    data = { from: { type: "user", email: email }, body: message }
+    headers = {'Authorization' => "Bearer #{ENV['INTERCOM_ACCESS_TOKEN']}",
+               content_type: :json,
+               accept: :json}
 
-  def self.create(contact_message:, actor:)
-    contact_message.user = actor
-    ContactMessageMailer.delay(priority: 2).contact_message_email contact_message if contact_message.save
+    RestClient.post("https://api.intercom.io/messages", data.to_json, headers)
   end
-
 end
