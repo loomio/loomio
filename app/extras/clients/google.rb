@@ -7,7 +7,8 @@ class Clients::Google < Clients::Base
   end
 
   def fetch_user_info
-    get "people/me"
+    get "people/me",
+      params: { "requestMask.includeField" => "person.metadata,person.names,person.photos,person.emailAddresses" }
   end
 
   def scope
