@@ -2,7 +2,7 @@
   %thead
     %tr
       %td
-      - @info.poll.poll_options.each do |option|
+      - @info.poll_options.each do |option|
         %td.poll-mailer-meeting__cell= option.display_name(zone: @info.time_zone)
   %tbody
     %tr
@@ -12,7 +12,7 @@
     - @info.poll.stances.latest.each do |stance|
       %tr
         %td.poll-mailer-meeting__participant-name= stance.participant.name
-        - @info.poll.poll_options.each do |option|
+        - @info.poll_options.each do |option|
           - if stance.poll_options.include?(option)
             %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--active
               = image_tag "poll_mailer/vote-button-yes.png", alt: "yes icon", class: "poll-mailer-#{@info.poll.poll_type}__option-icon"

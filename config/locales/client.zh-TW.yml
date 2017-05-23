@@ -663,7 +663,7 @@ zh-TW:
   group_previous_proposals_card:
     heading: 上一個提案
     see_more: 查看詳細資訊
-  group_previous_polls_card:
+  group_decisions_card:
     heading: 之前的動態
     see_more: '檢視全部：({{count}}) 個動態'
   invitation_form:
