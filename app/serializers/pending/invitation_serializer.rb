@@ -20,6 +20,10 @@ class Pending::InvitationSerializer < Pending::BaseSerializer
   def has_email?
     email.present?
   end
-  alias :include_avatar_initials? :has_email?
   alias :include_email_status? :has_email?
+
+  def has_name?
+    name.present?
+  end
+  alias :include_avatar_initials? :has_name?
 end
