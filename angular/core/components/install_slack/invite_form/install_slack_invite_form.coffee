@@ -3,6 +3,7 @@ angular.module('loomioApp').directive 'installSlackInviteForm', (Session, Record
   templateUrl: 'generated/components/install_slack/invite_form/install_slack_invite_form.html'
   controller: ($scope) ->
     $scope.fetchChannels = ->
+      return if $scope.channels
       Records.identities.performCommand(Session.user().slackIdentity().id, 'channels').then (response) ->
         $scope.channels = response
       , (response) ->
