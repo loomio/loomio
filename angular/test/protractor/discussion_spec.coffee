@@ -148,21 +148,6 @@ describe 'Discussion Page', ->
       page.click '.membership-request-form__submit-btn'
       page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
 
-  describe 'signing in', ->
-    it 'allows logged out users to log in and comment', ->
-      page.loadPath 'view_open_group_as_visitor'
-      page.click '.thread-preview__link'
-      page.click '.comment-form__sign-in-btn'
-      page.fillIn '#user-email', 'jennifer_grey@example.com'
-      page.fillIn '#user-password', 'gh0stmovie'
-      page.click '.sign-in-form__submit-button'
-      page.waitForReload()
-      page.expectFlash 'Signed in successfully'
-
-      page.fillIn '.comment-form__comment-field', 'I am new!'
-      page.click '.comment-form__submit-button'
-      page.expectFlash 'Comment added'
-
   describe 'commenting', ->
     beforeEach ->
       page.loadPath('setup_discussion')

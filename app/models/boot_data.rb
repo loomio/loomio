@@ -1,6 +1,10 @@
 BootData = Struct.new(:user, :visitor) do
   def data
-    ActiveModel::ArraySerializer.new(Array(user), scope: serializer_scope, each_serializer: serializer, root: :users).as_json
+    ActiveModel::ArraySerializer.new(Array(user),
+      scope: serializer_scope,
+      each_serializer: serializer,
+      root: :users
+    ).as_json.merge(current_user_id: user&.id)
   end
 
   private

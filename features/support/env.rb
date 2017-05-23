@@ -27,5 +27,6 @@ Capybara.javascript_driver = :poltergeist
 
 Before do |scenario|
   stub_request(:head, /gravatar.com/).with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).to_return(:status => 200, :body => "", :headers => {})
+  stub_request(:post, /api.cognitive.microsoft.com/).to_return(status: 200, body: "", headers: {})
+  stub_request(:get,  /api.microsofttranslator.com/).to_return(status: 200, body: "", headers: {})
 end
-

@@ -4,7 +4,7 @@ class API::IdentitiesController < API::RestfulController
   def command
     current_participant.ability.authorize! :show, identity
     if valid_command?
-      render json: api_response.json, root: false, status: if api_response.success? then :ok else :bad_request end
+      render json: api_response.json, root: false
     else
       render json: { error: "#{params[:command]} is invalid for this identity" }, status: :bad_request
     end

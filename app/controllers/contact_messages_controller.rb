@@ -1,5 +1,4 @@
-class ContactMessagesController < BaseController
-  skip_before_filter :authenticate_user!
+class ContactMessagesController < ApplicationController
 
 	def new
     @contact_message = ContactMessage.new(destination: params[:destination])

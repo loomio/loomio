@@ -21,5 +21,7 @@ angular.module('loomioApp', [
   'offClick',
   'ngMaterial',
   'angulartics',
-  'angulartics.google.tagmanager'
+  'angulartics.google.tagmanager',
+  'vcRecaptcha',
+  'ngAnimate'
 ])

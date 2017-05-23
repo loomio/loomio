@@ -16,3 +16,8 @@ angular.module('loomioApp').factory 'UserRecordsInterface', (BaseRecordsInterfac
 
     saveExperience: (experience) =>
       @remote.post 'save_experience', experience: experience
+
+    emailStatus: (email) ->
+      @fetch
+        path: 'email_status'
+        params: {email: email}

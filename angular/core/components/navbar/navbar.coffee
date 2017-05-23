@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'navbar', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar.html'
   replace: true
-  controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, AppConfig, AbilityService) ->
+  controller: ($scope, $rootScope, $window, Records, ModalService, AuthModal, AppConfig, AbilityService) ->
     parser = document.createElement('a')
     parser.href = AppConfig.baseUrl
     $scope.showNavbar = true
@@ -20,4 +20,4 @@ angular.module('loomioApp').directive 'navbar', ->
 
 
     $scope.signIn = ->
-      ModalService.open SignInForm
+      ModalService.open AuthModal

@@ -3,14 +3,16 @@ require 'rails_helper'
 describe InvitationsController do
   let(:group) { FactoryGirl.create(:group) }
   let(:user) { FactoryGirl.create(:user) }
+  let(:another_group) { FactoryGirl.create(:group) }
+  let(:another_user) { FactoryGirl.create(:user) }
 
   before do
     group.add_admin!(user)
   end
 
   describe "GET 'show'" do
-    let(:group) { create(:group) }
     let(:invitation) { create(:invitation, token: 'abc', invitable: group, recipient_email: user.email) }
+    let(:start_group_invitation) { create :invitation, token: 'bcd', invitable: another_group, recipient_email: "something@something.com", intent: :start_group, to_be_admin: true }
 
     context 'invitation not found' do
       render_views
@@ -39,17 +41,33 @@ describe InvitationsController do
       end
 
       it "sets session attribute of the invitation token" do
-        expect(session[:invitation_token]).to eq invitation.token
+        expect(session[:pending_invitation_id]).to eq invitation.token
       end
 
-      it "redirects to sign in" do
-        response.should redirect_to(new_user_session_path)
+      it "redirects to the group" do
+        response.should redirect_to(group_url(invitation.group))
       end
 
       it 'does not accept the invitation' do
         InvitationService.should_not_receive(:redeem)
       end
 
+    end
+
+    context "to start group" do
+      it 'creates a user' do
+        start_group_invitation
+        expect { get :show, id: start_group_invitation.token }.to change { User.count }.by(1)
+        u = User.last
+        expect(start_group_invitation.group.reload.admins).to include u
+        expect(u.email).to eq start_group_invitation.recipient_email
+      end
+
+      it 'uses an existing user if one exists' do
+        start_group_invitation.update(recipient_email: another_user.email)
+        expect { get :show, id: start_group_invitation.token }.to_not change { User.count }
+        expect(start_group_invitation.group.reload.admins).to include another_user
+      end
     end
 
     context "user is signed in" do
@@ -71,7 +89,7 @@ describe InvitationsController do
 
       context 'and has invitation_token in session' do
         before do
-          session[:invitation_token] = invitation.token
+          session[:pending_invitation_id] = invitation.token
         end
 
         it 'accepts the invitation, redirects to group, and clears token from session' do
@@ -80,7 +98,7 @@ describe InvitationsController do
           invitation.reload
           expect(invitation.accepted?).to be true
           expect(Membership.find_by(group: group, user: user)).to be_present
-          session[:invitation_token].should be_nil
+          session[:pending_invitation_id].should be_nil
         end
       end
     end

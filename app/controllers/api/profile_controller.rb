@@ -26,11 +26,6 @@ class API::ProfileController < API::RestfulController
     respond_with_resource
   end
 
-  def change_password
-    service.change_password(current_user_params) { bypass_sign_in resource }
-    respond_with_resource
-  end
-
   def deactivate
     service.deactivate(current_user_params)
     respond_with_resource
@@ -42,10 +37,27 @@ class API::ProfileController < API::RestfulController
     respond_with_resource
   end
 
+  def email_status
+    respond_with_resource(serializer: Pending::UserSerializer)
+  end
+
+  def set_password
+    if resource.presence
+      resource.send_reset_password_instructions
+      head :ok
+    else
+      head :not_found
+    end
+  end
+
   private
 
   def resource
-    @user || current_user
+    @user || current_user.presence || user_by_email
+  end
+
+  def user_by_email
+    resource_class.active.find_by_email(params[:email]) || LoggedOutUser.new(email: params[:email])
   end
 
   def current_user_params

@@ -1,0 +1,26 @@
+.auth-signin-form
+  %auth_avatar{user: "user"}
+  %md-input-container.md-block.auth-signin-form__magic-link
+    %h2.lmo-h2{translate: "auth_form.welcome_back", translate-value-name: "{{user.firstName() || user.email}}"}
+    %p.poll-common-helptext
+      %span{translate: "auth_form.login_link_helptext", ng-if: "!user.hasPassword"}>
+      %span{translate: "auth_form.login_link_helptext_with_password", ng-if: "user.hasPassword"}>
+
+  .auth-signin-form__password{ng-if: "user.hasPassword"}
+    %md-input-container.md-block
+      %label{translate: "auth_form.password"}
+      %input.lmo-primary-form-input{type: "password", md-autofocus: "true", ng-required: true, ng-model: "user.password"}
+      %validation_errors{subject: "user", field: "password"}
+
+    .lmo-actions
+      %md-button.auth-signin-form__login-link{ng-click: "sendLoginLink()", ng-class: "{'md-primary': !user.password}"}
+        %span{translate: "auth_form.login_link"}
+      %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "submit()", ng-disabled: "!user.password", ng-if: "user.hasPassword"}
+        %span{translate: "auth_form.sign_in"}
+
+  .auth-signin-form__no-password{ng-if: "!user.hasPassword"}
+    .lmo-actions
+      %md-button.auth-signin-form__set-password{ng-click: "setPassword()"}
+        %span{translate: "auth_form.set_password"}
+      %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "sendLoginLink()"}
+        %span{translate: "auth_form.login_link"}
