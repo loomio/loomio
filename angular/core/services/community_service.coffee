@@ -17,7 +17,7 @@ angular.module('loomioApp').factory 'CommunityService', ($location, $window, Rec
     fetchAccessToken: (type) ->
       delete $location.search().share
       $location.search('add_community', type)
-      $window.location = "#{type}/oauth"
+      $window.location = "#{type}/oauth?oauth_type=community"
       false
 
     alreadyOnPoll: (poll, obj, communityType) ->

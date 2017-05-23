@@ -1,56 +1,57 @@
 class Clients::Facebook < Clients::Base
 
-  def fetch_oauth(code, uri)
-    post "oauth/access_token", { code: code, redirect_uri: uri }
+  def fetch_access_token(code, uri)
+    post "oauth/access_token", params: { code: code, redirect_uri: uri }
   end
 
-
   def fetch_user_info
-    get "me"
+    get "me?fields=id,name,email"
   end
 
   def fetch_permissions(uid)
-    get "#{uid}/permissions", {}, default_success, permissions_missing, has_all_permissions?
+    get "#{uid}/permissions", options: {
+      failure:    ->(response) { { error: "User has not granted all needed permissions" } },
+      is_success: ->(response) {
+        response.success? &&
+        (scope - JSON.parse(response.body)['data'].map { |p| p['permission'] if p['status'] == 'granted' }).empty? } }
   end
 
   def fetch_user_avatar(uid)
-    get "#{uid}/picture?redirect=false", {}, ->(response) { response['data']['url'] }
+    get "#{uid}/picture?redirect=false&type=normal", options: {
+      success: ->(response) { response['data']['url'] } }
   end
 
   def fetch_admin_groups(uid)
-    get "#{uid}/groups", {}, ->(response) { response['data'] }
+    get "#{uid}/groups", options: {
+      success: ->(response) { response['data'] } }
   end
 
   def is_member_of?(group_id, uid)
-    get "#{group_id}/members", {}, ->(response) { response['data'].any? { |member| member['id'] == uid } }
+    get "#{group_id}/members", options: {
+      success: ->(response) { response['data'].any? { |member| member['id'] == uid } } }
   end
 
   def post_content!(event)
-    post "#{event.community.identifier}/feed", serialized_event(event), ->(response) { response['id'] }
+    post "#{event.community.identifier}/feed", params: serialized_event(event), options: {
+      success: ->(response) { response['id'] } }
   end
 
+  # NB: this switch sucks, but it's too early to extract to something else
   def scope
-    %w(user_managed_groups publish_actions).freeze
+    %w(email user_managed_groups publish_actions)
+  end
+
+  def client_key_name
+    :app_id
   end
 
   private
-
-  def permissions_missing
-    ->(response) { { error: "User has not granted all needed permissions" } }
-  end
-
-  def has_all_permissions?
-    ->(response) {
-      response.success? &&
-      (scope - JSON.parse(response.body)['data'].map { |p| p['permission'] if p['status'] == 'granted' }).empty?
-    }
-  end
 
   def token_name
     :access_token
   end
 
-  def host
+  def default_host
     "https://graph.facebook.com/v2.8".freeze
   end
 end

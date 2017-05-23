@@ -41,7 +41,7 @@ class Poll < ActiveRecord::Base
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
-  has_many :poll_options, ->(object) { order(object&.poll_option_order) }, dependent: :destroy
+  has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes, dependent: :destroy
@@ -136,10 +136,6 @@ class Poll < ActiveRecord::Base
 
   def active?
     closed_at.nil?
-  end
-
-  def poll_option_order
-    if dates_as_options then { name: :asc } else :id end
   end
 
   def poll_option_names

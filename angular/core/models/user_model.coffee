@@ -67,7 +67,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       _.contains(group.memberIds(), @id)
 
     firstName: ->
-      @name.split(' ')[0]
+      _.first @name.split(' ') if @name
 
     lastName: ->
       @name.split(' ').slice(1).join(' ')

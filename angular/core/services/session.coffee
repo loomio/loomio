@@ -8,7 +8,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
       Records.stances.remote.defaultParams = defaultParams
       Records.polls.remote.defaultParams   = defaultParams
 
-    return unless AppConfig.currentUserId?
+    return unless AppConfig.currentUserId = data.current_user_id
     user = @user()
 
     $translate.use user.locale

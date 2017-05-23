@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'pollCommonShareCommunityForm', (Records, 
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/community_form/poll_common_share_community_form.html'
   controller: ($scope) ->
-    Records.communities.fetch(params: {poll_id: $scope.poll.id, types: AppConfig.thirdPartyCommunities})
+    Records.communities.fetch(params: {poll_id: $scope.poll.id, types: AppConfig.communityProviders})
 
     $scope.addCommunity = (type) ->
       return unless community = CommunityService.buildCommunity($scope.poll, type)

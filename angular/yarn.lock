@@ -105,6 +105,10 @@ angular-off-click@0.0.9:
   dependencies:
     angular "*"
 
+angular-recaptcha@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/angular-recaptcha/-/angular-recaptcha-4.1.0.tgz#ca5de30a8f020e73d517b9097059ad8851a29847"
+
 angular-route@^1.5.5:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.2.tgz#95a349de2e73674f3dd783bb21e8d7b3fc526312"

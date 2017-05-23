@@ -11,11 +11,6 @@ class Identities::GoogleController < Identities::BaseController
   end
 
   def oauth_params
-    {
-      redirect_uri: redirect_uri,
-      client_id: client.key,
-      scope: client.scope.join('+'),
-      response_type: :code
-    }
+    super.merge(response_type: :code, scope: client.scope.join('+'))
   end
 end
