@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515063729) do
+ActiveRecord::Schema.define(version: 20170523015010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -880,6 +880,7 @@ ActiveRecord::Schema.define(version: 20170515063729) do
     t.string   "city"
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
+    t.string   "remember_token"
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree
