@@ -29,16 +29,9 @@ describe Poll do
     expect(poll).to be_valid
   end
 
-  describe 'poll_option_names=' do
-    let(:option_poll) { create :poll, poll_option_names: ['A', 'C', 'B'] }
-    it 'assigns poll options' do
-      expect(option_poll.poll_options.map(&:name)).to eq ['A', 'C', 'B']
-    end
-
-    it 'sorts poll options for date polls' do
-      option_poll.update(poll_type: :meeting)
-      expect(option_poll.poll_options.map(&:name)).to eq ['A', 'B', 'C']
-    end
+  it 'assigns poll options' do
+    option_poll = create :poll, poll_options_name: ['A', 'C', 'B']
+    expect(option_poll.poll_options.map(&:name)).to eq ['A', 'C', 'B']
   end
 
   describe 'anyone_can_participate=' do
