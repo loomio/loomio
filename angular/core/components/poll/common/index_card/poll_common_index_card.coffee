@@ -1,5 +1,5 @@
-angular.module('loomioApp').directive 'pollCommonIndexCard', (Records, LoadingService, LmoUrlService) ->
-  scope: {model: '=', limit: '@?', viewMoreLink: '@?'}
+angular.module('loomioApp').directive 'pollCommonIndexCard', ($location, Records, LoadingService, LmoUrlService) ->
+  scope: {model: '=', limit: '@?', viewMoreLink: '=?'}
   templateUrl: 'generated/components/poll/common/index_card/poll_common_index_card.html'
   controller: ($scope) ->
     $scope.fetchRecords = ->
@@ -7,8 +7,15 @@ angular.module('loomioApp').directive 'pollCommonIndexCard', (Records, LoadingSe
     LoadingService.applyLoadingFunction $scope, 'fetchRecords'
     $scope.fetchRecords()
 
-    $scope.viewMoreUrl = ->
-      "/polls?#{$scope.model.constructor.singular}_key=#{$scope.model.key}&status=inactive"
+    $scope.displayViewMore = ->
+      $scope.viewMoreLink and
+      $scope.model.closedPollsCount > $scope.polls().length
+
+    $scope.viewMore = ->
+      opts = {}
+      opts["#{$scope.model.constructor.singular}_key"] = $scope.model.key
+      opts["status"] = "inactive"
+      $location.path('polls').search(opts)
 
     $scope.polls = ->
       _.take $scope.model.closedPolls(), ($scope.limit or 50)

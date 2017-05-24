@@ -4,5 +4,5 @@
     %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-click: "startPoll()", translate: "current_polls_card.start_poll"}
   %loading{ng-if: "fetchRecordsExecuting"}
   .current-polls-card__polls{ng-if: "!fetchRecordsExecuting"}
-    .current-polls-card__no-polls{ng-if: "!polls().length", translate: "current_polls_card.no_polls"}
+    .current-polls-card__no-polls.poll-common-helptext{ng-if: "!polls().length", translate: "current_polls_card.no_polls"}
     %poll_common_preview{poll: "poll", ng-repeat: "poll in polls() track by poll.id"}

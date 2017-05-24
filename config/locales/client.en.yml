@@ -1345,6 +1345,7 @@ en:
 
   poll_common_index_card:
     title: Previous decisions
+    no_polls: No previous decisions found.
     count: "See all: ({{count}}) decisions"
 
   current_polls_card:
