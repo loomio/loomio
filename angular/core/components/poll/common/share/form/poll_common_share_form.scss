@@ -64,9 +64,11 @@ poll_common_manage_card {
   padding: 5px;
 }
 
-.poll-common-share-form__copy {
+.poll-common-share-form__button {
   line-height: 24px;
   min-height: 24px;
+  height: 40px;
+  min-width: 125px;
   order: 10;
   i { color: rgba(255,255,255,0.87); }
 }

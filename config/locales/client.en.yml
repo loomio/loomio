@@ -1356,6 +1356,10 @@ en:
   poll_common_collapsed:
     by_who: "by {{name}}"
 
+  poll_common_select_group:
+    loomio_group: Loomio group
+    loomio_group_placeholder: (no group selected)
+
   poll_common_notify_group:
     notify_group: Announcement
     members_helptext: Your group will not be notified
@@ -1365,7 +1369,7 @@ en:
   poll_common_notify_on_participate:
     notify_on_participate: Notify me when people participate
     helptext_on: You will be notified whenever someone participates
-    helptext_off: You will receive results when this poll closes
+    helptext_off: You will receive results when this activity closes
 
   poll_common_close_form:
     title: Close a poll early
@@ -1613,17 +1617,19 @@ en:
     no_group_selected: No group selected
     no_communities: "You haven't connected any communities yet. Click 'add community' below to add one"
     share_a_link: Share link
+    share_a_link_helptext: Create a shareable link to distribute. Anyone who has access to the link will be able to participate.
     anyone_can_participate: Anyone with link can participate
     anyone_can_participate_true: Shareable link created
     anyone_can_participate_false: Shareable link revoked
     get_link: Copy link
-    set_group: Loomio group updated
+    invite_visitor: Invite guest
+    invite_visitor_helptext: Invite individuals to this poll by email address. Guests will be able to participate in this poll only.
+    send_email: Send email
     shareable_link_created: Anyone can now participate in this poll
     shareable_link_revoked: This poll is now invite-only
     shareable_link: Shareable link
     guests_invited: Invited {{count}} guests
     guest_revoked: Revoked access for {{email}}
-    invite_guests: Send email
     existing_guests: Existing guests
     new_guests: New emails to invite
     enter_email: "E.g. guest@example.com"
@@ -1640,6 +1646,7 @@ en:
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
     communities: Communities
+    communities_helptext: Invite other communities to this poll. Members of those communities will be able to participate.
     add_facebook_community: Add facebook group
     add_slack_community: Add slack channel
     community_revoked: This community will no longer be able to participate

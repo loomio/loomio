@@ -12,6 +12,7 @@ angular.module('loomioApp').directive 'decisionToolsCard', ->
       ModalService.open PollCommonFormModal, poll: ->
         Records.polls.build
           pollType:              pollType
+          groupId:               $scope.discussion.groupId
           discussionId:          $scope.discussion.id
           pollOptionNames:       _.pluck $scope.fieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
 
