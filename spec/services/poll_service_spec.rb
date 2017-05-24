@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe PollService do
   let(:poll_created) { build :poll, discussion: discussion }
-  let(:public_poll) { build :poll, anyone_can_participate: true }
+  let(:public_poll) { build :poll }
   let(:private_poll) { build :poll }
   let(:poll) { create :poll, discussion: discussion }
   let(:user) { create :user }
@@ -30,12 +30,23 @@ describe PollService do
       expect(poll.communities.map(&:class)).to include Communities::Email
     end
 
-    it 'populates a public poll if anyone_can_participate is true' do
-      PollService.create(poll: public_poll, actor: user)
+    it 'populates a public community if the poll is not part of a group' do
+      poll.discussion = nil
+      PollService.create(poll: poll, actor: user)
 
       poll = Poll.last
       expect(poll.communities.map(&:class)).to include Communities::Public
       expect(poll.communities.map(&:class)).to include Communities::Email
+      expect(poll.anyone_can_participate).to eq true
+    end
+
+    it 'does not populate a public community if the poll is part of a group' do
+      PollService.create(poll: poll, actor: user)
+
+      poll = Poll.last
+      expect(poll.communities.map(&:class)).to_not include Communities::Public
+      expect(poll.communities.map(&:class)).to include Communities::Email
+      expect(poll.anyone_can_participate).to eq false
     end
 
     it 'populates removing custom poll actions' do
