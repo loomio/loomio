@@ -23,4 +23,14 @@ class Identities::Slack < Identities::Base
   def channels
     client.fetch_channels
   end
+
+  private
+
+  def publish_events
+    %w(
+      group_published
+      poll_published
+      outcome_published
+    ).freeze
+  end
 end

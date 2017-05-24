@@ -22,6 +22,10 @@ class Identities::Facebook < Identities::Base
 
   private
 
+  def publish_events
+    %w(outcome_published poll_published).freeze
+  end
+
   def permissions_response
     @permission_response ||= client.fetch_permissions(self.uid)
   end
