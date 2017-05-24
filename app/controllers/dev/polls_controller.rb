@@ -7,7 +7,7 @@ class Dev::PollsController < Dev::BaseController
     group = create_group_with_members
     discussion = saved fake_discussion(group: group)
     sign_in group.admins.first
-    redirect_to discussion_url(discussion)
+    redirect_to discussion_path(discussion)
   end
 
   def test_poll_in_discussion
