@@ -25,6 +25,15 @@
   margin-bottom: 4px;
 }
 
+.polls-page__count {
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.polls-page__load-more {
+  margin-bottom: 16px;
+}
+
 @media (max-width: $small-max-px) {
   .polls-page__filters { flex-direction: column; }
   .polls-page__search { margin-bottom: 16px !important; }

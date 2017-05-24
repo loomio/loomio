@@ -53,6 +53,10 @@ module AngularHelper
       emojis: {
         defaults: EMOJIS.fetch('default', []).map { |e| ":#{e}:" }
       },
+      searchFilters: {
+        status: PollSearch::STATUS_FILTERS,
+        user:   PollSearch::USER_FILTERS
+      },
       pendingIdentity: serialized_pending_identity,
       pollTemplates: Poll::TEMPLATES,
       pollColors:    Poll::COLORS,
