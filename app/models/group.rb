@@ -193,6 +193,14 @@ class Group < ActiveRecord::Base
     self
   end
 
+  def logo_or_parent_logo
+    if is_parent?
+      logo
+    else
+      logo.presence || parent.logo
+    end
+  end
+
   def community
     update(community: Communities::LoomioGroup.create(group: self)) unless self[:community_id]
     super
