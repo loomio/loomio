@@ -1,8 +1,11 @@
-angular.module('loomioApp').directive 'pollCommonIndexCard', (Records, LmoUrlService) ->
+angular.module('loomioApp').directive 'pollCommonIndexCard', (Records, LoadingService, LmoUrlService) ->
   scope: {model: '=', limit: '@?', viewMoreLink: '@?'}
   templateUrl: 'generated/components/poll/common/index_card/poll_common_index_card.html'
   controller: ($scope) ->
-    Records.polls.fetchFor($scope.model, limit: $scope.limit, status: 'inactive')
+    $scope.fetchRecords = ->
+      Records.polls.fetchFor($scope.model, limit: $scope.limit, status: 'inactive')
+    LoadingService.applyLoadingFunction $scope, 'fetchRecords'
+    $scope.fetchRecords()
 
     $scope.viewMoreUrl = ->
       "/polls?#{$scope.model.constructor.singular}_key=#{$scope.model.key}&status=inactive"

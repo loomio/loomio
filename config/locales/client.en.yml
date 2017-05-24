@@ -1347,6 +1347,11 @@ en:
     title: Previous decisions
     count: "See all: ({{count}}) decisions"
 
+  current_polls_card:
+    title: Current decisions
+    start_poll: New decision
+    no_polls: There are no active polls right now.
+
   poll_common_collapsed:
     by_who: "by {{name}}"
 
