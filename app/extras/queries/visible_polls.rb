@@ -3,7 +3,7 @@ class Queries::VisiblePolls < Delegator
     @user = user || LoggedOutUser.new
     @group_ids = group_ids.presence || Array(groups).map(&:id)
 
-    @relation = Poll.joins(discussion: :group).includes(:discussion).where('groups.archived_at IS NULL')
+    @relation = Poll.joins(discussion: :group).includes(:discussion, :author, :current_outcome).where('groups.archived_at IS NULL')
     @relation = Queries::VisibleDiscussions.apply_privacy_sql(user: @user, group_ids: @group_ids, relation: @relation)
 
     super(@relation)
