@@ -85,6 +85,7 @@ class Poll < ActiveRecord::Base
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
+  validates :details, length: {maximum: Rails.application.max_message_length }
 
   validate :poll_options_are_valid
   validate :closes_in_future
