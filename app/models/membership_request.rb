@@ -17,6 +17,8 @@ class MembershipRequest < ActiveRecord::Base
   has_many :events, as: :eventable, dependent: :destroy
   has_many :admins, through: :group
 
+  validates :introduction, length: { maximum: Rails.application.secrets.max_message_length }
+  
   scope :pending, -> { where(response: nil).order('created_at DESC') }
   scope :responded_to, -> { where('response IS NOT ?', nil).order('responded_at DESC') }
   scope :requested_by, ->(user) { where requestor_id: user.id }

@@ -24,7 +24,7 @@ angular.module('loomioApp').directive 'progressChart', (AppConfig) ->
           .x($scope.size / 4)
           .y($scope.size / 4)
 
-      draw.text($scope.stanceCounts[0].toString())
+      draw.text(($scope.stanceCounts[0] || 0).toString())
           .font(size: 16, anchor: 'middle')
           .x($scope.size / 2)
           .y(($scope.size / 4) + 3)

@@ -339,7 +339,11 @@ class Ability
       @user.can? :share, poll_community.poll
     end
 
-    can [:make_draft, :show, :subscribe_to], Poll do |poll|
+    can :make_draft, Poll do |poll|
+      @user.is_logged_in? && can?(:show, poll)
+    end
+
+    can [:show, :subscribe_to], Poll do |poll|
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
       poll.communities.any? { |community| community.includes?(@user) }

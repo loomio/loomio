@@ -3,6 +3,7 @@ class Identities::Base < ActiveRecord::Base
   self.table_name = :omniauth_identities
   validates :identity_type, presence: true
   validates :access_token, presence: true
+  validates :uid, presence: true
 
   belongs_to :user, required: false
   has_many :communities, class_name: "Communities::Base", foreign_key: :identity_id

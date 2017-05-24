@@ -326,6 +326,10 @@
   height: 40px;
 }
 
+.lmo-truncate-text {
+  @include truncateText;
+}
+
 img.emojione {
   position: relative;
   top: 5px;

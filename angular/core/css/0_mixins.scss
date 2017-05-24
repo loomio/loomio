@@ -34,6 +34,22 @@ $cardPaddingSize: 16px;
   @include roundedCorners;
 }
 
+@mixin listTransition {
+  transition: 0.25s background-color ease-in-out;
+  color: $primary-text-color;
+  &:hover {
+    background: $list-hover-color;
+    text-decoration: none;
+  }
+}
+
+@mixin cardButton {
+  position: relative;
+  top: -7px;
+  right: -9px;
+  float: right;
+}
+
 @mixin box_shadow ($level) {
 
   @if $level == 1 {
