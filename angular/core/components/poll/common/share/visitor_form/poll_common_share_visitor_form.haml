@@ -19,7 +19,7 @@
         %input.poll-common-share-form__add-option-input{type: "text", ng-disabled: "newVisitor.processing", placeholder: "{{ 'poll_common_share_form.enter_email' | translate }}", ng-model: "newVisitor.email"}
       %div
         %loading.lmo-inline-action{ng-if: "newVisitor.processing"}
-        %md-button.md-primary.md-raised.poll-common-share-form__button.poll-common-share-form__option-icon{ng-if: "!newVisitor.processing", ng-disabled: "!newVisitor.email", ng-click: "invite()", aria-label: "{{ 'poll_common_share_form.add_email_placeholder' | translate }}"}
+        %md-button.md-primary.md-raised.poll-common-share-form__button.poll-common-share-form__option-button{ng-if: "!newVisitor.processing", ng-disabled: "!newVisitor.email", ng-click: "invite()", aria-label: "{{ 'poll_common_share_form.add_email_placeholder' | translate }}"}
           %span{translate: "poll_common_share_form.send_email"}
     .clearfix
     .lmo-validation-error {{ emailValidationError }}
