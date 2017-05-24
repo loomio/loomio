@@ -1696,6 +1696,8 @@ en:
     search_placeholder: Search for polls...
     polls_count: Displaying {{count}} of {{total}} polls
     start_new_poll: New decision
+    filter_placeholder: (All polls)
+    groups_placeholder: (All groups)
 
   auth_form:
     sign_in_to_loomio: Sign into Loomio

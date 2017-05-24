@@ -6,7 +6,30 @@
   color: $primary-text-color;
 }
 
+.polls-page__filters {
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.polls-page__status-filter {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.polls-page__group-filter {
+  min-width: 200px;
+}
+
 .polls-page__icon {
   vertical-align: middle;
   margin-bottom: 4px;
+}
+
+@media (max-width: $small-max-px) {
+  .polls-page__filters { flex-direction: column; }
+  .polls-page__search { margin-bottom: 16px !important; }
+  .polls-page__status-filter,
+  .polls-page__group-filter {
+    width: 100%;
+  }
 }

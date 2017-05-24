@@ -8,6 +8,12 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $location
     params: $location.search()
     per: 25
 
+  @statusFilters = [
+    {name: "inactive", value: "Closed"}
+    {name: "active", value: "Active"}
+  ]
+  @groups = Session.user().groups()
+
   now = moment()
   @pollImportance = (poll) => poll.importance(now)
 
