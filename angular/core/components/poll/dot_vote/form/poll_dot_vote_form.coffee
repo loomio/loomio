@@ -11,6 +11,7 @@ angular.module('loomioApp').directive 'pollDotVoteForm', ->
 
     $scope.submit = PollService.submitPoll $scope, $scope.poll,
       prepareFn: ->
+        $scope.$emit 'processing'
         $scope.$broadcast('addPollOption')
 
     KeyEventService.submitOnEnter($scope)

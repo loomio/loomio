@@ -54,7 +54,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
           success(scope, model, options),
           failure(scope, model, options),
         ).finally(
-          cleanup(scope)
+          cleanup(scope, model, options)
         )
 
     upload: (scope, model, options = {}) ->
