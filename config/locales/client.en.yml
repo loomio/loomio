@@ -1402,9 +1402,6 @@ en:
     undecided: Undecided ({{count}})
     show_undecided: Show undecided
 
-  poll_common_accordion:
-    title: Recent activity
-
   poll_common_set_outcome_panel:
     share_outcome: Share outcome
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'

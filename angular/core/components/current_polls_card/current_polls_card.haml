@@ -1,6 +1,6 @@
 .current-polls-card.lmo-card
   .lmo-flex.lmo-flex__space-between
-    %h2.lmo-card-heading{translate: "current_polls_card.title"}
+    %h2.lmo-card-heading.lmo-truncate-text{translate: "current_polls_card.title"}
     %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-click: "startPoll()", translate: "current_polls_card.start_poll"}
   %loading{ng-if: "fetchRecordsExecuting"}
   .current-polls-card__polls{ng-if: "!fetchRecordsExecuting"}
