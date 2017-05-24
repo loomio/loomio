@@ -9,10 +9,8 @@ Given(/^I follow the invitation link$/) do
 end
 
 When(/^I sign in$/) do
-  visit new_user_session_path
-  fill_in 'Email', with: @user.email
-  fill_in 'Password', with: 'complex_password'
-  click_on 'sign-in-btn'
+  @user ||= FactoryGirl.create(:user)
+  login_as @user
 end
 
 Then(/^I should have a time_zone defined$/) do

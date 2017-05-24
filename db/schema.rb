@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518015225) do
+ActiveRecord::Schema.define(version: 20170523015010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -463,6 +463,15 @@ ActiveRecord::Schema.define(version: 20170518015225) do
   add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
 
+  create_table "login_tokens", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.boolean  "used",       default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "redirect"
+  end
+
   create_table "membership_requests", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -601,6 +610,7 @@ ActiveRecord::Schema.define(version: 20170518015225) do
     t.jsonb    "translation_values", default: {},    null: false
     t.string   "url"
     t.integer  "actor_id"
+    t.string   "actor_type"
   end
 
   add_index "notifications", ["actor_id"], name: "index_notifications_on_actor_id", using: :btree
@@ -665,8 +675,8 @@ ActiveRecord::Schema.define(version: 20170518015225) do
     t.string   "uid"
     t.string   "name"
     t.string   "access_token",  default: ""
-    t.string   "logo"
     t.jsonb    "custom_fields", default: {}, null: false
+    t.string   "logo"
   end
 
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree
@@ -873,6 +883,7 @@ ActiveRecord::Schema.define(version: 20170518015225) do
     t.string   "city"
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
+    t.string   "remember_token"
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

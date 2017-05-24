@@ -2,18 +2,22 @@ module NullUser
   include AvatarInitials
   alias :read_attribute_for_serialization :send
 
-  NIL_METHODS   = [:key, :username, :selected_locale, :deactivated_at, :time_zone, :time_zone_city, :default_membership_volume, :unsubscribe_token, :slack_identity, :facebook_identity]
-  FALSE_METHODS = [:is_logged_in?, :uses_markdown?, :is_organisation_coordinator?,
-                   :email_when_proposal_closing_soon, :email_missed_yesterday, :email_when_mentioned, :email_on_participation, :is_group_admin?]
+  NIL_METHODS   = [:key, :username, :selected_locale, :deactivated_at, :time_zone, :time_zone_city, :default_membership_volume, :unsubscribe_token, :slack_identity, :facebook_identity, :encrypted_password]
+  FALSE_METHODS = [:is_logged_in?, :uses_markdown?, :email_when_proposal_closing_soon,
+                   :email_missed_yesterday, :email_when_mentioned, :email_on_participation, :is_group_admin?]
   EMPTY_METHODS = [:groups, :group_ids, :adminable_group_ids]
   TRUE_METHODS  = [:angular_ui_enabled, :angular_ui_enabled?]
-  NONE_METHODS  = [:votes, :memberships, :notifications, :polls, :stances]
+  NONE_METHODS  = [:votes, :memberships, :notifications, :polls, :stances, :login_tokens]
 
   NIL_METHODS.each   { |method| define_method(method, -> { nil }) }
   FALSE_METHODS.each { |method| define_method(method, -> { false }) }
   EMPTY_METHODS.each { |method| define_method(method, -> { [] }) }
   TRUE_METHODS.each  { |method| define_method(method, -> { true }) }
   NONE_METHODS.each  { |method| define_method(method, -> { method.to_s.singularize.classify.constantize.none }) }
+
+  def errors
+    ActiveModel::Errors.new self
+  end
 
   def participated_polls
     Poll.none
@@ -45,6 +49,10 @@ module NullUser
 
   def is_admin_of?(group)
     false
+  end
+
+  def associate_with_identity(identity)
+    nil
   end
 
   def can?(*args)

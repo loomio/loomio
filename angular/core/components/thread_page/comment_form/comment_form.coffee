@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService, ModalService, SignInForm) ->
+  controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService, ModalService, AuthModal) ->
 
     $scope.$on 'remindUndecided', (event) ->
       return unless $scope.discussion.activeProposal()
@@ -17,7 +17,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.isLoggedIn = AbilityService.isLoggedIn
 
     $scope.signIn = ->
-      ModalService.open SignInForm
+      ModalService.open AuthModal
 
     $scope.threadIsPublic = ->
       $scope.discussion.private == false

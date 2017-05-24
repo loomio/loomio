@@ -27,13 +27,6 @@ When(/^I click the invitation link$/) do
   # click_email_link_matching(invitation_url(@group_request.token))
 end
 
-When(/^I sign in to Loomio$/) do
-  find('.existing-user').click()
-  fill_in :user_email, with:  @user.email
-  fill_in :user_password, with: @user.password
-  find('#sign-in-btn').click()
-end
-
 When(/^I click start group without filling in any fields$/) do
  click_on "sign-up-submit"
 end

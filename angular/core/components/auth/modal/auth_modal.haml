@@ -1,0 +1,12 @@
+%md-dialog.auth-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %i.material-icons{ng-if: "!showBackButton()"} lock_open
+      %a.auth-modal__back{ng-click: "back()", ng-if: "showBackButton()"}
+        %i.material-icons arrow_back
+      %h1.lmo-h1{translate: "auth_form.sign_in_to_loomio"}
+      %material_modal_header_cancel_button{ng-if: "!preventClose"}
+      %div{ng-if: "preventClose"}
+  .md-dialog-content
+    %auth_form{user: "user"}

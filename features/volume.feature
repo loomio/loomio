@@ -1,7 +1,7 @@
 Feature: Volume
 
 Background:
-  Given I am logged in
+  Given I sign in
   And I am an admin of a group
   And Loud Larry is following everything in the group by email
   And Normal Norman gets important events emailed as they happen

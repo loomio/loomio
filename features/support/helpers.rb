@@ -1,5 +1,8 @@
 include Warden::Test::Helpers
 
+Warden.test_mode!
+After { Warden.test_reset! }
+
 #this is a copy of a 'spec/support/service_helpers.rb' method
 def create_discussion( options={} )
   options[:private] = true unless options.has_key?(:private)

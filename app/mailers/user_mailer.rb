@@ -1,7 +1,7 @@
 class UserMailer < BaseMailer
   helper :email
   helper :application
-  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group]
+  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login]
 
   def missed_yesterday(user, time_since = nil)
     @recipient = @user = user
@@ -56,6 +56,14 @@ class UserMailer < BaseMailer
     send_single_mail to: @user.email,
                      subject_key: "email.analytics.subject",
                      subject_params: { which_group: @group.name },
+                     locale: locale_for(@user)
+  end
+
+  def login(user:, token:)
+    @user = user
+    @token = token
+    send_single_mail to: @user.email,
+                     subject_key: "email.login.subject",
                      locale: locale_for(@user)
   end
 end

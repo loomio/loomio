@@ -19,14 +19,12 @@ class API::MembershipRequestsController < API::RestfulController
   end
 
   def approve
-    @membership_request = MembershipRequest.find(params[:id])
-    MembershipRequestService.approve(membership_request: @membership_request, actor: current_user)
+    service.approve(membership_request: load_resource, actor: current_user)
     respond_with_resource
   end
 
   def ignore
-    @membership_request = MembershipRequest.find(params[:id])
-    MembershipRequestService.ignore(membership_request: @membership_request, actor: current_user)
+    service.ignore(membership_request: load_resource, actor: current_user)
     respond_with_resource
   end
 

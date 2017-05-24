@@ -35,6 +35,13 @@ class Invitation < ActiveRecord::Base
     invitable&.full_name
   end
 
+  def user_from_recipient!
+    return unless to_start_group?
+    User.find_or_initialize_by(email: self.recipient_email)
+        .tap { |user| user.assign_attributes(name: self.recipient_name) }
+        .tap(&:save)
+  end
+
   def cancel!(args = {})
     update!(args.slice(:canceller).merge(cancelled_at: DateTime.now))
   end

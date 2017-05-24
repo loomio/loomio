@@ -1,0 +1,7 @@
+= t("email.login.intro", name: @user.first_name || @user.email)
+\
+= t('email.login.login', name: @user.name || @user.email)
+\
+= login_token_url(@token.token, @utm_hash)
+\
+= t('email.login.resend', expires_at: @token.expires_at.strftime('%l:%m %P'))

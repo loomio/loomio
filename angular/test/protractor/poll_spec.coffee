@@ -112,6 +112,6 @@ describe 'Polls', ->
   it 'can invite users via email', ->
     page.loadPath 'polls/test_proposal_poll_share'
     page.fillIn '.poll-common-share-form__add-option-input', 'loo@m.io'
-    page.click '.poll-common-share-form__option-icon'
+    page.click '.poll-common-share-form__option-button'
 
     page.expectFlash 'Invitation email sent to loo@m.io'

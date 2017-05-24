@@ -1,0 +1,21 @@
+.auth-signup-form
+  .auth-signup-form__welcome
+    %auth_avatar{user: "user"}
+    %h2.lmo-h2{translate: "auth_form.welcome", translate-value-email: "{{user.name || user.email}}"}
+    %p.poll-common-helptext{ng-if: "!pendingIdentity"}
+      %span{translate: "auth_form.sign_up_helptext", ng-if: "!pendingIdentity"}>
+      %span{translate: "auth_form.thats_not_me"}>
+
+  %md-input-container.md-block.auth-signup-form__name
+    %label{translate: "auth_form.name"}
+    %input.lmo-primary-form-input{type: "text", md-autofocus: "true", placeholder: "{{auth_form.name_placeholder | translate}}", ng-model: "name"}
+
+  %md-input-container.md-block.auth-signup-form__email{ng-if: "pendingIdentity"}
+    %label{translate: "auth_form.email"}
+    %input.lmo-primary-form-input{type: "text", placeholder: "{{auth_form.email_placeholder | translate}}", ng-model: "email"}
+
+  %div{vc-recaptcha: "true", key: "recaptchaKey", ng-if: "recaptchaKey", ng-model: "user.recaptcha"}
+
+  .lmo-actions
+    %div
+    %md-button.md-primary.md-raised.auth-signup-form__submit{ng-click: "submit()", translate: "auth_form.login_link", aria-label: "{{ 'auth_form.login_link' | translate }}"}

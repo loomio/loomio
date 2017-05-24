@@ -20,6 +20,14 @@ class PollEmailInfo
     @recipient_stance ||= @poll.stances.latest.find_by(participant: @recipient)
   end
 
+  def poll_options
+    if @poll.dates_as_options
+      @poll.poll_options.order(name: :asc)
+    else
+      @poll.poll_options
+    end
+  end
+
   def poll_type
     @poll.poll_type
   end

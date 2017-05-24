@@ -52,7 +52,7 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 }
 
 .invite-people-mailer__avatar-initials {
-  margin: 0 10px 10px 0;
+  margin: 10px auto;
   border: 1px solid #dcdcdc;
   font-size: 18px;
   line-height: 50px;
@@ -187,6 +187,10 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   clear: both;
   color: #666;
   font-size: small;
+}
+
+.user-mailer__message-container {
+  margin: 40px 0;
 }
 
 .align-left {

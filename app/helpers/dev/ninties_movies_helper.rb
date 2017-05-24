@@ -27,7 +27,6 @@ module Dev::NintiesMoviesHelper
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
-                               password: 'gh0stmovie',
                                angular_ui_enabled: true)
     @jennifer.experienced!("introductionCarousel")
     @jennifer
@@ -317,5 +316,12 @@ module Dev::NintiesMoviesHelper
     #notify patrick that his invitation to emilio has been accepted
     invitation = InvitationService.invite_to_group(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
     InvitationService.redeem(invitation.first, emilio)
+
+    #'stance_created'
+    # notify patrick that someone has voted on his proposal
+    poll = FactoryGirl.build(:poll, notify_on_participate: true)
+    PollService.create(poll: poll, actor: patrick)
+    stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
+    StanceService.create(stance: stance, actor: jennifer)
   end
 end

@@ -1,0 +1,7 @@
+.auth-provider-form
+  .poll-common-helptext{translate: "auth_form.choose_an_account"}
+  .auth-provider-form__providers.lmo-flex{layout: "row"}
+    .auth-provider-form__provider{ng-repeat: "provider in providers"}
+      %button.md-button.md-raised{type: "button", class: "{{provider.name}}", ng-click: "select(provider)"}
+        %i.fa.fa-lg{class: "fa-{{provider.icon || provider.name}}"}>
+        %span> {{provider.name}}

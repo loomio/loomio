@@ -562,5 +562,13 @@ describe Event do
       expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
       expect(Events::StanceCreated.last.send(:notification_recipients)).to be_empty
     end
+
+    it 'notifies the author for visitor participation' do
+      visitor = create(:visitor)
+      poll.update(notify_on_participate: true)
+      stance.update(participant: visitor)
+      expect { Events::StanceCreated.publish!(stance) }.to change { poll.author.notifications.count }.by(1)
+      expect(Notification.last.actor).to eq visitor
+    end
   end
 end
