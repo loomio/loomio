@@ -40,8 +40,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def sign_in(user_or_resource, user = nil)
-    user_or_resource.remember_me = true
-    super && handle_pending_actions(user_or_resource)
+    (user || user_or_resource).remember_me = true
+    super && handle_pending_actions(user || user_or_resource)
   end
 
   def respond_with_error(message, status: :bad_request)

@@ -176,6 +176,8 @@ class Group < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
+  validates :description, length: { maximum: Rails.application.secrets.max_message_length }
+
   define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
   define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
   define_counter_cache(:polls_count)               { |group| group.polls.count }
@@ -191,6 +193,14 @@ class Group < ActiveRecord::Base
 
   def group
     self
+  end
+
+  def logo_or_parent_logo
+    if is_parent?
+      logo
+    else
+      logo.presence || parent.logo
+    end
   end
 
   def community

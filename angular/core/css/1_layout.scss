@@ -42,6 +42,7 @@ md-dialog {
 .lmo-main-content{
   overflow-y: scroll;
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 .lmo-main-background {
   position: absolute;

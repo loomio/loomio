@@ -4,7 +4,7 @@ class PollService
 
     poll.assign_attributes(author: actor)
     poll.community_of_type(:email, build: true)
-    poll.community_of_type(:public, build: true)
+    poll.community_of_type(:public, build: true) unless poll.group.present?
 
     return false unless poll.valid?
     poll.save!

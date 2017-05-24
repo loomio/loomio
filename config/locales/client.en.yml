@@ -1343,6 +1343,16 @@ en:
   poll_common_card:
     show_results: Show results
 
+  poll_common_index_card:
+    title: Previous decisions
+    no_polls: No previous decisions found.
+    count: "See all: ({{count}}) decisions"
+
+  current_polls_card:
+    title: Current decisions
+    start_poll: New decision
+    no_polls: There are no active polls right now.
+
   poll_common_collapsed:
     by_who: "by {{name}}"
 
@@ -1391,9 +1401,6 @@ en:
   poll_common_did_not_votes_panel:
     undecided: Undecided ({{count}})
     show_undecided: Show undecided
-
-  poll_common_accordion:
-    title: Recent activity
 
   poll_common_set_outcome_panel:
     share_outcome: Share outcome
@@ -1693,9 +1700,12 @@ en:
 
   polls_page:
     heading: Decisions
+    heading_with_group: Decisions in {{name}}
     search_placeholder: Search for polls...
     polls_count: Displaying {{count}} of {{total}} polls
     start_new_poll: New decision
+    filter_placeholder: (All polls)
+    groups_placeholder: (All groups)
 
   auth_form:
     sign_in_to_loomio: Sign into Loomio

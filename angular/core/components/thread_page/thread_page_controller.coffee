@@ -45,9 +45,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       @discussion = discussion
 
       # use new poll functionality
-      if @usePolls = PollService.usePollsFor(@discussion)
-        Records.polls.fetchByDiscussion(@discussion.key)
-        Records.stances.fetchMyStancesByDiscussion(@discussion.key)
+      @usePolls = PollService.usePollsFor(@discussion)
 
       @sequenceIdToFocus = parseInt($location.search().from or @discussion.lastReadSequenceId)
 
