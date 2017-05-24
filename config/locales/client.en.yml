@@ -1356,6 +1356,10 @@ en:
   poll_common_collapsed:
     by_who: "by {{name}}"
 
+  poll_common_select_group:
+    loomio_group: Loomio group
+    loomio_group_placeholder: (no group selected)
+
   poll_common_notify_group:
     notify_group: Announcement
     members_helptext: Your group will not be notified
@@ -1365,7 +1369,7 @@ en:
   poll_common_notify_on_participate:
     notify_on_participate: Notify me when people participate
     helptext_on: You will be notified whenever someone participates
-    helptext_off: You will receive results when this poll closes
+    helptext_off: You will receive results when this activity closes
 
   poll_common_close_form:
     title: Close a poll early
@@ -1618,14 +1622,9 @@ en:
     anyone_can_participate_true: Shareable link created
     anyone_can_participate_false: Shareable link revoked
     get_link: Copy link
-    share_with_group: Loomio group
-    share_with_group_placeholder: (no group selected)
-    share_with_group_helptext: Share this poll with one of your Loomio groups. All members will be able to participate.
-    update_group: Change group
     invite_visitor: Invite guest
     invite_visitor_helptext: Invite individuals to this poll by email address. Guests will be able to participate in this poll only.
     send_email: Send email
-    group_updated: Loomio group updated
     shareable_link_created: Anyone can now participate in this poll
     shareable_link_revoked: This poll is now invite-only
     shareable_link: Shareable link

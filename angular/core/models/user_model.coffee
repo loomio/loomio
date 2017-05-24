@@ -36,6 +36,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     adminGroups: ->
       _.invoke @adminMemberships(), 'group'
 
+    adminGroupIds: ->
+      _.invoke @adminMemberships(), 'groupId'
+
     parentGroups: ->
       _.filter @groups(), (group) -> group.isParent()
 
