@@ -12,10 +12,6 @@ PollSearch = Struct.new(:user) do
     results.order(closed_at: :desc, closing_at: :asc)
   end
 
-  def results_count
-    searchable_records.count
-  end
-
   private
 
   def searchable_records

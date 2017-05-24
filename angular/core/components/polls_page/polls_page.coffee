@@ -1,25 +1,28 @@
-angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $rootScope, Records, Session, AbilityService, TranslationService, LoadingService, ModalService, PollCommonStartModal, RecordLoader) ->
+angular.module('loomioApp').controller 'PollsPageController', ($scope, $location, $q, $rootScope, Records, Session, AbilityService, TranslationService, LoadingService, ModalService, PollCommonStartModal, RecordLoader) ->
   $rootScope.$broadcast('currentComponent', { page: 'pollsPage'})
 
   @pollIds = []
   @loader = new RecordLoader
     collection: 'polls'
     path: 'search'
+    params: $location.search()
     per: 25
 
   now = moment()
   @pollImportance = (poll) => poll.importance(now)
 
-  Records.polls.searchResultsCount().then (response) =>
+  Records.polls.searchResultsCount($location.search()).then (response) =>
     @pollsCount = response
 
   @loadMore = =>
     @loader.loadMore().then (response) =>
       @pollIds = @pollIds.concat _.pluck(response.polls, 'id')
   LoadingService.applyLoadingFunction @, 'loadMore'
-  @loader.fetchRecords().then(
-    (response) => @pollIds = _.pluck(response.polls, 'id'),
-    (error)    -> $rootScope.$broadcast('pageError', error)
+  @loader.fetchRecords().then((response) =>
+    @group   = Records.groups.find($location.search().group_key)
+    @pollIds = _.pluck(response.polls, 'id')
+  , (error) ->
+    $rootScope.$broadcast('pageError', error)
   ).finally => @loaded = true
 
   @loadedCount = ->
@@ -33,7 +36,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
 
   @searchPolls = =>
     if @fragment
-      Records.polls.search(@fragment, per: 10)
+      Records.polls.search(query: @fragment, per: 10)
     else
       $q.when()
   LoadingService.applyLoadingFunction @, 'searchPolls'

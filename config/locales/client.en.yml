@@ -1343,6 +1343,10 @@ en:
   poll_common_card:
     show_results: Show results
 
+  poll_common_index_card:
+    title: Previous decisions
+    count: "See all: ({{count}}) decisions"
+
   poll_common_collapsed:
     by_who: "by {{name}}"
 
@@ -1685,6 +1689,7 @@ en:
 
   polls_page:
     heading: Decisions
+    heading_with_group: Decisions in {{name}}
     search_placeholder: Search for polls...
     polls_count: Displaying {{count}} of {{total}} polls
     start_new_poll: New decision

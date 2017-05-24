@@ -1,0 +1,5 @@
+.poll-common-index-card.lmo-card
+  %h2.lmo-card-heading{translate: "poll_common_index_card.title"}
+  %poll_common_preview{poll: "poll", ng-repeat: "poll in polls() track by poll.id"}
+  %a.poll-common-index-card__view-more{lmo-href: "{{viewMoreUrl()}}", ng-if: "viewMoreLink"}
+    %span{translate: "poll_common_index_card.count", translate-value-count: "{{model.closedPollsCount}}"}

@@ -12,4 +12,11 @@ a.poll-common-preview {
 
 .poll-common-preview__body {
   margin-left: 16px;
+  overflow: auto;
+}
+
+.poll-common-preview__subtitle {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
