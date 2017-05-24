@@ -24,6 +24,7 @@ class Comment < ActiveRecord::Base
   validate :has_body_or_attachment
   validate :parent_comment_belongs_to_same_discussion
   validate :attachments_owned_by_author
+  validates :body, {length: {maximum: 16000}}
 
   default_scope { includes(:user).includes(:attachments).includes(:discussion) }
 
