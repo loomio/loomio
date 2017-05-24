@@ -23,6 +23,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     membershipFor: (group) ->
       _.first @recordStore.memberships.find(groupId: group.id, userId: @id)
 
+    adminMemberships: ->
+      _.filter @memberships(), (m) -> m.admin
+
     groupIds: ->
       _.map(@memberships(), 'groupId')
 
@@ -31,7 +34,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       _.sortBy groups, 'fullName'
 
     adminGroups: ->
-      _.invoke _.filter(@memberships(), (m) -> m.admin), 'group'
+      _.invoke @adminMemberships(), 'group'
+
+    adminGroupIds: ->
+      _.invoke @adminMemberships(), 'groupId'
 
     parentGroups: ->
       _.filter @groups(), (group) -> group.isParent()

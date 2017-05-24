@@ -167,21 +167,21 @@ class Poll < ActiveRecord::Base
     end
   end
 
-  def discussion=(discussion)
-    super.tap { self.group_id = self.discussion&.group_id }
-  end
-
   def discussion_id=(discussion_id)
     super.tap { self.group_id = self.discussion&.group_id }
   end
 
+  def discussion=(discussion)
+    super.tap { self.group_id = self.discussion&.group_id }
+  end
+
   def group_id=(group_id)
-    return if self[:group_id] == group_id
+    self.group = Group.find_by(id: group_id)
+  end
+
+  def group=(group)
+    sync_poll_communities(group) if self[:group_id] != group&.id
     super
-    poll_communities.where(community: community_of_type(:loomio_group)).destroy_all
-    if g = Group.find_by(id: group_id)
-      poll_communities.build(community: g.community)
-    end
   end
 
   def community_of_type(community_type, build: false)
@@ -189,6 +189,11 @@ class Poll < ActiveRecord::Base
   end
 
   private
+
+  def sync_poll_communities(group)
+    poll_communities.where(community: community_of_type(:loomio_group)).destroy_all
+    poll_communities.build(community: group.community) if group
+  end
 
   def build_community(community_type)
     poll_communities.build(community: "Communities::#{community_type.to_s.camelize}".constantize.new).community
