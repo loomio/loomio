@@ -7,4 +7,6 @@ angular.module('loomioApp').factory 'PollCommonFormModal', (PollService) ->
     $scope.icon = ->
       PollService.iconFor($scope.poll)
 
+    $scope.$on 'processing',     -> $scope.isDisabled = true
+    $scope.$on 'doneProcessing', -> $scope.isDisabled = false
     $scope.$on 'pollSaved', $scope.$close

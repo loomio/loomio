@@ -15,7 +15,9 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
       $scope.poll.makeAnnouncement = true if $scope.poll.group()
 
     $scope.submit = PollService.submitPoll $scope, $scope.poll,
-      prepareFn: -> $scope.$broadcast 'addOption'
+      prepareFn: ->
+        $scope.$emit 'processing'
+        $scope.$broadcast 'addOption'
 
     $scope.$on 'timeZoneSelected', (e, zone) ->
       $scope.poll.customFields.time_zone = zone
