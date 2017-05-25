@@ -1770,7 +1770,7 @@ en:
     invite:
       heading: 'Step 2: Setup a Slack channel'
       helptext: |
-        Success! Now it's time to invite people in. Select a slack channel, and we'll post a link to join this group.
+        Success! Now, select a channel you'd like us to post updates into.
       select_a_channel: Select a channel
       publish_group: Post a welcome message
       publish_group_helptext_on: We'll post the following message into the given channel to welcome people into your group.

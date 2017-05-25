@@ -15,7 +15,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def channel
-    community.identifier
+    community.channel
   end
 
   def attachments
@@ -89,7 +89,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def link_options
-    default_url_options.merge(identifier: community.identifier)
+    default_url_options.merge(identifier: community.channel)
   end
 
 end

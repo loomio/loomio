@@ -13,7 +13,7 @@ class Identities::Facebook < Identities::Base
   end
 
   def admin_groups
-    if permissions_response.success?
+    if permissions_response.json['error'].blank?
       client.fetch_admin_groups(self.uid)
     else
       permissions_response

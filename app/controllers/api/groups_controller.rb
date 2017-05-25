@@ -19,7 +19,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def publish
-    service.publish(group: load_resource, params: {identifier: params.require(:identifier)}, actor: current_user)
+    service.publish(group: load_resource, params: {make_announcement: params[:make_announcement], identifier: params.require(:identifier)}, actor: current_user)
     respond_with_resource
   end
 

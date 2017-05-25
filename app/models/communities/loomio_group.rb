@@ -6,6 +6,8 @@ class Communities::LoomioGroup < Communities::Base
 
   validates :group, presence: true
 
+  alias :channel :slack_channel_id
+
   def to_user_community
     Communities::LoomioUsers.new(loomio_user_ids: group.member_ids, identifier: identifier)
   end
