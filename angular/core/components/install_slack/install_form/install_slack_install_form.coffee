@@ -6,11 +6,6 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ($location, For
 
     newGroup = Records.groups.build(name: Session.user().slackIdentity().customFields.slack_team_name)
     $scope.group = _.first($scope.groups()) or newGroup
-    $scope.showTooltip = !Session.user().hasExperienced('install_slack')
-
-    $scope.hideTooltip = ->
-      $scope.showTooltip = false
-      Records.users.saveExperience('install_slack')
 
     $scope.toggleExistingGroup = ->
       if $scope.group.id

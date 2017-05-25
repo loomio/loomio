@@ -1753,7 +1753,7 @@ en:
       decide: Decide
 
     install:
-      heading: 'Step 1: Install slack onto a Loomio group'
+      heading: 'Step 1: Select a Loomio group to integrate'
       tooltip_heading: Loomio and Slack work great together
       it_does_this: Engage users where they are
       and_also_this: Start polls instantly and get feedback in real time
@@ -1774,14 +1774,14 @@ en:
       select_a_channel: Select a channel
       publish_group: Post a welcome message
       publish_group_helptext_on: We'll post the following message into the given channel to welcome people into your group.
+      group_published_preview: "<strong>{{author}}</strong> has added this Slack team to <strong>{{name}}</strong>. Please <a href='#'>click here</a> to start making decisions. Want to learn more about how Loomio works? Type <em>/loomio help</em> into this channel. See you soon!"
       publish_group_helptext_off: We won't post anything until you create a poll.
       custom_message: Custom message
       set_channel: Set channel
 
     decide:
       heading: 'Step 3: Make a decision together'
-      helptext: |
-        Okay, we've let your slack team know. Now that you're all set up, it's time to start making decisions. Select from one of the options below:
+      helptext: "Now that you're all set up, it's time to start making decisions. Select from one of the options below:"
 
     common:
       do_it_later: I'll do this later
