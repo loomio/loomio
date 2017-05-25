@@ -3,4 +3,5 @@ angular.module('loomioApp').directive 'pollCommonSelectGroup', (Session, Ability
   templateUrl: 'generated/components/poll/common/select_group/poll_common_select_group.html'
   controller: ($scope) ->
     $scope.groups = ->
-      Session.user().adminGroups()
+      _.filter Session.user().groups(), (group) ->
+        AbilityService.canStartPoll(group)
