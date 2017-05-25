@@ -8,4 +8,4 @@ angular.module('loomioApp').factory 'PollCommonPublishModal', (PollService) ->
     $scope.icon = ->
       PollService.iconFor($scope.poll)
 
-    $scope.$on 'pollSaved', $scope.$close
+    $scope.$on 'createComplete', $scope.$close

@@ -24,7 +24,7 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ($location, For
         prepareFn: ->
           $scope.$emit 'processing'
           $scope.group.identityId = Session.user().slackIdentity().id
-        flashSuccess: 'install_slack.slack_added_to_group'
+        flashSuccess: 'install_slack.install.slack_installed'
         skipClose: true
         successCallback: (response) ->
           group = Records.groups.find(response.groups[0].key)

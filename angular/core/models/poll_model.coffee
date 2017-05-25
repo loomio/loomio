@@ -127,5 +127,5 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
         @published = true
 
     enableCommunities: ->
-      @group() and @group().features.enable_communities or
-      @author().experiences.enable_communities
+      (@group() and @group().features.enable_communities) or
+      (@author() and @author().experiences.enable_communities)

@@ -1762,6 +1762,7 @@ en:
       create_new_group_helptext: Don't have a Loomio group? Simply enter a name and we'll make one for you
       group_name: Group name
       group_name_placeholder: Name your new Loomio group...
+      slack_installed: Slack installed
       install_slack: Install slack now
       start_new_group: Start a new group
       use_existing_group: Use an existing group
