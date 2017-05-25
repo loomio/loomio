@@ -1768,11 +1768,15 @@ en:
       use_existing_group: Use an existing group
 
     invite:
-      heading: 'Step 2: Invite people to join'
+      heading: 'Step 2: Setup a Slack channel'
       helptext: |
         Success! Now it's time to invite people in. Select a slack channel, and we'll post a link to join this group.
       select_a_channel: Select a channel
-      invite_to_group: Post invitation link
+      publish_group: Post a welcome message
+      publish_group_helptext_on: We'll post the following message into the given channel to welcome people into your group.
+      publish_group_helptext_off: We won't post anything until you create a poll.
+      custom_message: Custom message
+      set_channel: Set channel
 
     decide:
       heading: 'Step 3: Make a decision together'

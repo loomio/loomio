@@ -1,0 +1,21 @@
+.install-slack-invite-preview.lmo-flex{layout: "row"}
+  .install-slack-invite-preview__avatar
+    %img{ng-src: "https://s3-us-west-2.amazonaws.com/slack-files2/bot_icons/2017-03-29/161925077303_48.png"}
+  .install-slack-invite-preview__content
+    .install-slack-invite-preview__title
+      %strong.install-slack-invite-preview__loomio-bot> Loomio Bot
+      %span.install-slack-invite-preview__app> APP
+      %span.install-slack-invite-preview__title-timestamp> {{ timestamp() }}
+    .install-slack-invite-preview__published
+    .install-slack-invite-preview__message {{ message }}
+    .install-slack-invite-preview__attachment.lmo-flex{layout: "row"}
+      .install-slack-invite-preview__bar
+      .install-slack-invite-preview__poll
+        .install-slack-invite-preview__author {{ userName }}
+        .install-slack-invite-preview__poll-title {{ poll.title }}
+        .install-slack-invite-preview__poll-details{ng-if: "poll.details"} {{ poll.details | truncate }}
+        .install-slack-invite-preview__view-it{translate: "poll_common_publish_slack_preview.view_it_on_loomio"}
+        .install-slack-invite-preview__timestamp{translate: "poll_common_publish_slack_preview.timestamp", translate-value-timestamp: "{{timestamp()}}"}
+        .install-slack-invite-preview__options.lmo-flex{layout: "row"}
+          .install-slack-invite-preview__option{ng-repeat: "option in poll.pollOptions()"}
+            {{ option.displayName }}

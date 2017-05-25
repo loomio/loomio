@@ -5,6 +5,14 @@
     %md-option{ng-value: "channel.id", ng-repeat: "channel in channels"}
       %span &#35;{{ channel.name }}
 
+  .md-list-item-text.lmo-flex.lmo-flex__space-between
+    .poll-common-checkbox-option__text
+      %h3.lmo-h3{translate: "install_slack.invite.publish_group"}
+      %p.md-caption{translate: "install_slack.invite.publish_group_helptext_on", ng-if: "publishGroup"}
+      %p.md-caption{translate: "install_slack.invite.publish_group_helptext_off", ng-if: "!publishGroup"}
+    %md-checkbox{ng-model: "publishGroup"}
+
+  %install_slack_invite_preview{ng-if: "publishGroup", poll: "poll", message: "message"}
+
   .lmo-flex.install-slack-form__actions{layout: "column"}
-    %md-button.md-primary.md-raised{ng-disabled: "!identifier", translate: "install_slack.invite.invite_to_group", ng-click: "submit()"}
-    %md-button{ng-click: "$emit('inviteComplete')", type: "button", translate: "install_slack.common.do_it_later"}
+    %md-button.md-primary.md-raised{ng-disabled: "!identifier", translate: "install_slack.invite.set_channel", ng-click: "submit()"}
