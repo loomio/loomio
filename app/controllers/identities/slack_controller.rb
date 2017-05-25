@@ -11,11 +11,9 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def participate
-    if event = ::Slack::Participator.new(participate_params).participate!
-      render json: ::Slack::StanceCreatedSerializer.new(event, root: false).as_json
-    else
-      respond_with_unauthorized(payload)
-    end
+    render json: respond_with_stance ||
+                 respond_with_invitation ||
+                 respond_with_unauthorized
   end
 
   def initiate
@@ -42,8 +40,18 @@ class Identities::SlackController < Identities::BaseController
     render text: I18n.t(:"slack.initiate", type: initiate_params[:type], url: url)
   end
 
-  def respond_with_unauthorized(payload)
-    render json: ::Slack::RequestAuthorizationSerializer.new(payload, root: false).as_json
+  def respond_with_stance
+    event = ::Slack::Participator.new(participate_params).participate!
+    ::Slack::StanceCreatedSerializer.new(event, root: false).as_json
+  end
+
+  def respond_with_invitation
+    group = Poll.find(participate_params[:poll_id])&.group
+    ::Slack::GroupInvitationSerializer.new(group, root: false).as_json
+  end
+
+  def respond_with_unauthorized
+    ::Slack::RequestAuthorizationSerializer.new(payload, root: false).as_json
   end
 
   def respond_with_help
@@ -64,7 +72,6 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def participate_params
-    payload = JSON.parse(params.require(:payload))
     @participate_params ||= {
       uid:     payload.dig('user', 'id'),
       poll_id: payload.dig('callback_id'),

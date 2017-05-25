@@ -7,11 +7,6 @@ class Slack::GroupPublishedSerializer < Slack::BaseSerializer
     })
   end
 
-
-  def channel
-    object.custom_fields['identifier']
-  end
-
   private
 
   def invitation_token
