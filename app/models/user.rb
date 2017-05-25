@@ -160,6 +160,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def remember_me
+    true
+  end
+
   def user_id
     id
   end
