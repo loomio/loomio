@@ -1743,3 +1743,6 @@ en:
     name: Name
     email: Email
     password: Password
+
+  helptext:
+    search: Click here to search for threads

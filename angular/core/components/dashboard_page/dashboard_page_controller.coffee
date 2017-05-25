@@ -36,6 +36,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     _.contains ['show_muted'], @filter
 
   @updateQueries = =>
+    $rootScope.$broadcast 'showTutorial', '.dashboard-page__heading', 'helptext.search'
     AppConfig.dashboardLoaded = true if @loaded[@filter] > 0
     @currentBaseQuery = ThreadQueryService.filterQuery(['only_threads_in_my_groups', @filter])
     if @displayByGroup()
