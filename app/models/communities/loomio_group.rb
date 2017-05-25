@@ -2,6 +2,7 @@ class Communities::LoomioGroup < Communities::Base
   include Communities::NotifyLoomioGroup
   include Communities::NotifyThirdParty
   set_community_type :loomio_group
+  set_custom_fields :slack_channel_id, :slack_channel_name
 
   validates :group, presence: true
 

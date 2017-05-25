@@ -20,7 +20,9 @@ module GroupService
   def self.publish(group:, params:, actor:)
     actor.ability.authorize! :publish, group
 
-    Events::GroupPublished.publish!(group, params[:identifier])
+    group.community.update(slack_channel_id: params[:identifier])
+
+    Events::GroupPublished.publish!(group)
     EventBus.broadcast('group_publish', group, actor)
   end
 

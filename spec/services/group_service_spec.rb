@@ -56,4 +56,24 @@ describe 'GroupService' do
       end
     end
   end
+
+  describe 'publish' do
+    before { group.add_admin! user }
+
+    it 'sets the group community channel id' do
+      GroupService.publish(group: group, actor: user, params: {identifier: "123"})
+      expect(group.reload.community.slack_channel_id).to eq '123'
+    end
+
+    it 'creates a group published event with an announcement' do
+      group.make_announcement = true
+      expect { GroupService.publish(group: group, actor: user, params: {identifier: "123"}) }.to change { Events::GroupPublished.where(kind: :group_published).count }.by(1)
+      expect(Events::GroupPublished.last.announcement).to eq true
+    end
+
+    it 'creates a group published event without an announcement' do
+      expect { GroupService.publish(group: group, actor: user, params: {identifier: "123"}) }.to change { Events::GroupPublished.where(kind: :group_published).count }.by(1)
+      expect(Events::GroupPublished.last.announcement).to eq false
+    end
+  end
 end

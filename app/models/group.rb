@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasTimeframe
   include HasPolls
+  include MakesAnnouncements
   include MessageChannel
 
   class MaximumMembershipsExceeded < Exception

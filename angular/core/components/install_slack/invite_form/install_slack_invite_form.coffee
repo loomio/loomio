@@ -1,8 +1,9 @@
-angular.module('loomioApp').directive 'installSlackInviteForm', (Session, Records, CommunityService) ->
-  scope: {group: '='}
+angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, Session, Records, CommunityService) ->
   templateUrl: 'generated/components/install_slack/invite_form/install_slack_invite_form.html'
   controller: ($scope) ->
-    $scope.publishGroup = true
+    $timeout ->
+      $scope.group = Session.currentGroup
+      $scope.group.makeAnnouncement = true
 
     $scope.fetchChannels = ->
       return if $scope.channels
@@ -13,7 +14,7 @@ angular.module('loomioApp').directive 'installSlackInviteForm', (Session, Record
 
     $scope.submit = ->
       $scope.$emit 'processing'
-      Session.currentGroup.publish($scope.identifier).then ->
+      $scope.group.publish($scope.identifier).then ->
         $scope.$emit 'inviteComplete'
       .finally ->
         $scope.$emit 'doneProcessing'
