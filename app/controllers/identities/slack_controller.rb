@@ -47,6 +47,7 @@ class Identities::SlackController < Identities::BaseController
 
   def respond_with_invitation
     group = Poll.find(participate_params[:poll_id])&.group
+    return unless group.community.identity&.identity_type == :slack
     ::Slack::GroupInvitationSerializer.new(group, root: false).as_json
   end
 
