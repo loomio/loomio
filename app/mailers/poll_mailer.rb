@@ -21,7 +21,7 @@ class PollMailer < BaseMailer
       "Auto-Submitted":           :"auto-generated"
     }
 
-    actor = if action_name == 'stance_created' then event.eventable.participant else event.user end # sorry mom :(
+    actor = if event.eventable.is_a?(Stance) then event.eventable.participant else event.user end # sorry mom :(
     @info = PollEmailInfo.new(
       recipient:   recipient,
       poll:        event.poll,
