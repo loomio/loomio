@@ -1,5 +1,6 @@
-.help-overlay {
+.help-overlay__background {
   position: absolute;
+  cursor: pointer;
   top: 0;
   right: 0;
   bottom: 0;
@@ -7,7 +8,6 @@
   background-color: rgba(0,0,0,0.5);
   z-index: 9999;
   mix-blend-mode: multiply;
-  pointer-events: none;
 }
 
 .help-overlay__highlight {
@@ -19,14 +19,12 @@
 .help-overlay__tooltip {
   height: auto;
   position: absolute;
-  pointer-events: auto;
   background-color: $background-color;
   color: $primary-text-color;
   overflow: visible;
   padding: 16px;
-  right: 16px;
+  z-index: 10000;
   border-radius: 4px;
-  top: calc(100% + 24px);
 
   &:before {
     content: "";
@@ -53,9 +51,4 @@
 
 .help-overlay__close {
   float: right;
-}
-
-.md-panel-outer-wrapper {
-  pointer-events: auto !important;
-  z-index: 10000 !important;
 }

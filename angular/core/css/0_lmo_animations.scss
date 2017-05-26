@@ -1,10 +1,12 @@
 .lmo-fade-animation {
-  position: relative;
-  transition: opacity 0.25s ease-in;
 
-  &.ng-leave { opacity: 1; }
-  &.ng-enter { opacity: 0; }
+  .animated {
+    transition: opacity 1s ease-in;
+  }
 
-  &.ng-leave.ng-leave-active { opacity: 0; }
-  &.ng-enter.ng-enter-active { opacity: 1; }
+  .ng-leave { opacity: 1; }
+  .ng-enter { opacity: 0; }
+
+  .ng-leave.ng-leave-active { opacity: 0; }
+  .ng-enter.ng-enter-active { opacity: 1; }
 }
