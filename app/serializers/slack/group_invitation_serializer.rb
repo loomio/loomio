@@ -3,19 +3,23 @@ class Slack::GroupInvitationSerializer < Slack::BaseSerializer
 
   def text
     I18n.t(:"slack.invite_to_loomio_group", {
-      name: object.full_name,
+      name: group.full_name,
       url: invitation_url(invitation_token, invitation_link_options)
     })
   end
 
   private
 
+  def group
+    @group ||= object.group
+  end
+
   def community
-    @community ||= object.community
+    @community ||= group.community
   end
 
   def invitation_token
-    object.invitations.shareable.first.token
+    group.invitations.shareable.first.token
   end
 
   def link_options
@@ -25,6 +29,7 @@ class Slack::GroupInvitationSerializer < Slack::BaseSerializer
   def invitation_link_options
     default_url_options.merge(
       auth_as: :slack,
+      back_to: poll_url(object, default_url_options),
       team: community.identity.custom_fields['slack_team_id']
     )
   end

@@ -32,7 +32,7 @@ class InvitationsController < ApplicationController
     if !invitation_user && Identities::Base::PROVIDERS.include?(params[:auth_as].to_s)
       send(:"#{params[:auth_as]}_oauth_url", team: params[:team], back_to: group_callback)
     else
-      group_callback
+      params[:back_to] || group_callback
     end
   end
 

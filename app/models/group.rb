@@ -158,6 +158,7 @@ class Group < ActiveRecord::Base
   delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
   delegate :name, to: :parent, prefix: true
+  delegate :identity_type, to: :community, allow_nil: true
 
   paginates_per 20
 
