@@ -112,6 +112,17 @@ describe API::PollsController do
         expect(poll_ids).to_not include another_poll.id
       end
 
+      it 'filters by discussion' do
+        get :search, discussion_key: discussion.key
+        json = JSON.parse(response.body)
+        poll_ids = json['polls'].map { |p| p['id'] }
+
+        expect(poll_ids).to include group_poll.id
+        expect(poll_ids).to_not include participated_poll.id
+        expect(poll_ids).to_not include authored_poll.id
+        expect(poll_ids).to_not include another_poll.id
+      end
+
       it 'filters by participated' do
         get :search, user: :participation_by
         json = JSON.parse(response.body)
