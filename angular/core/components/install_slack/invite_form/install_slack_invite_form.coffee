@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, Session, Records, CommunityService) ->
+angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, Session, KeyEventService, Records, CommunityService) ->
   templateUrl: 'generated/components/install_slack/invite_form/install_slack_invite_form.html'
   controller: ($scope) ->
     $timeout ->
@@ -18,3 +18,6 @@ angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, Sessi
         $scope.$emit 'inviteComplete'
       .finally ->
         $scope.$emit 'doneProcessing'
+
+    KeyEventService.submitOnEnter $scope, anyEnter: true
+    $scope.$emit 'focus'

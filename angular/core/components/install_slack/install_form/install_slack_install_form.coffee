@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'installSlackInstallForm', ($location, FormService, Session, Records, LmoUrlService) ->
+angular.module('loomioApp').directive 'installSlackInstallForm', ($location, KeyEventService, FormService, Session, Records, LmoUrlService) ->
   templateUrl: 'generated/components/install_slack/install_form/install_slack_install_form.html'
   controller: ($scope) ->
     $scope.groups = ->
@@ -26,5 +26,8 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ($location, For
           $location.path LmoUrlService.group(group)
           $scope.$emit 'installComplete'
     $scope.setSubmit()
+
+    KeyEventService.submitOnEnter $scope, anyEnter: true
+    $scope.$on 'focus',  $scope.focus
 
     return
