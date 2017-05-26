@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'helpOverlay', ->
     target = document.querySelector($scope.tutorial.target)
     rect   = if target then target.getBoundingClientRect() else {}
 
-    $scope.highlightStyle = ->
+    $scope.style = ->
       position: 'relative'
       top:    rect.top-10     + 'px'
       left:   rect.left-10    + 'px'
@@ -15,11 +15,6 @@ angular.module('loomioApp').directive 'helpOverlay', ->
       right:  rect.right-10   + 'px'
       width:  rect.width+20   + 'px'
       height: rect.height+20  + 'px'
-
-    $scope.tooltipStyle = ->
-      left:     'auto !important'
-      right:    rect.right-10 + 'px !important'
-      top:      rect.top + rect.height + 20 + 'px'
 
     $scope.close = ->
       $scope.tutorial = null

@@ -1,5 +1,5 @@
 .help-overlay.lmo-fade-animation.animated{ng-if: "tutorial.text"}
-  .help-overlay__highlight{ng-style: "highlightStyle()"}
-    %md-tooltip.help-overlay__tooltip{md-visible: "true", ng-style: "tooltipStyle()"}
+  .help-overlay__highlight{ng-style: "style()"}
+    .help-overlay__tooltip{md-visible: "true"}
       %p {{ tutorial.text | translate }}
       %md-button.help-overlay__close.md-primary.md-raised{ng-click: "close()", translate: "common.action.ok"}

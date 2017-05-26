@@ -18,7 +18,16 @@
 
 .help-overlay__tooltip {
   height: auto;
+  position: absolute;
   pointer-events: auto;
+  background-color: $background-color;
+  color: $primary-text-color;
+  overflow: visible;
+  padding: 16px;
+  right: 16px;
+  border-radius: 4px;
+  top: calc(100% + 24px);
+
   &:before {
     content: "";
     height: 12px;
@@ -30,13 +39,6 @@
     top: -6px;
     right: 16px;
     background: $background-color;
-  }
-
-  &.md-panel.md-tooltip {
-    background-color: $background-color;
-    color: $primary-text-color;
-    overflow: visible;
-    padding: 16px;
   }
 }
 
