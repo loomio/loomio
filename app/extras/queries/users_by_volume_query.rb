@@ -31,6 +31,6 @@ class Queries::UsersByVolumeQuery
   end
 
   def self.membership_join(model)
-    "LEFT OUTER JOIN memberships ON (memberships.archived_at IS NULL AND memberships.user_id = users.id AND memberships.group_id = #{model.group.id.to_i})"
+    "LEFT OUTER JOIN memberships ON (memberships.user_id = users.id AND memberships.group_id = #{model.group.id.to_i})"
   end
 end
