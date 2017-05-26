@@ -12,3 +12,6 @@
       %li.lmo-dropdown-menu-item{ng-if: "canClosePoll()"}
         %a.lmo-dropdown-menu-item-label.poll-actions-dropdown__close{href: "#", ng-click: "closePoll()"}
           %span{translate: "common.action.close"}
+      %li.lmo-dropdown-menu-item{ng-if: "canDeletePoll()"}
+        %a.lmo-dropdown-menu-item-label.poll-actions-dropdown__close{href: "#", ng-click: "deletePoll()"}
+          %span{translate: "common.action.delete"}
