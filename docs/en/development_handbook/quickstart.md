@@ -32,5 +32,5 @@ rails s
 
 ##### Having trouble?
 
-- Make sure ruby (2.3.0), node (4.2.6; not 5+!), postgres (9.4+), and [ImageMagick](http://stackoverflow.com/questions/3704919/installing-rmagick-on-ubuntu) are installed
+- Make sure ruby (2.3.0), node (7.4.0), postgres (9.4+), and [ImageMagick](http://stackoverflow.com/questions/3704919/installing-rmagick-on-ubuntu) are installed
 - Let us know in the [product team](https://www.loomio.org/g/VmBUX7WM/loomio-community-product-team) group on Loomio.
