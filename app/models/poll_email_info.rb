@@ -32,6 +32,18 @@ class PollEmailInfo
     @poll.poll_type
   end
 
+  def undecided_memberships
+    @undecided_members ||= Membership.includes(:user).undecided_for(@poll)
+  end
+
+  def undecided_visitors
+    @undecided_visitors ||= Visitor.undecided_for(@poll)
+  end
+
+  def undecided_max
+    20
+  end
+
   def time_zone
     @recipient.time_zone || @poll.custom_fields['time_zone']
   end
