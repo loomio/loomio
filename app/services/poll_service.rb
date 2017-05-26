@@ -70,6 +70,13 @@ class PollService
     Events::PollEdited.publish!(poll.versions.last, actor, poll.make_announcement) if is_new_version
   end
 
+  def self.destroy(poll:, actor:)
+    actor.ability.authorize! :destroy, poll
+    poll.destroy
+
+    EventBus.broadcast('poll_destroy', poll, actor)
+  end
+
   def self.convert(motions:)
     # create a new poll from the motion
     Array(motions).map do |motion|

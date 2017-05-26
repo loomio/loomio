@@ -326,4 +326,25 @@ describe API::PollsController do
       expect(poll.communities.map(&:class)).to include Communities::LoomioUsers
     end
   end
+
+  describe 'destroy' do
+    it 'destroys a poll' do
+      sign_in poll.author
+      expect { delete :destroy, id: poll.key }.to change { Poll.count }.by(-1)
+      expect(response.status).to eq 200
+    end
+
+    it 'allows group admins to destroy polls' do
+      sign_in poll.group.admins.first
+      expect { delete :destroy, id: poll.key }.to change { Poll.count }.by(-1)
+      expect(response.status).to eq 200
+    end
+
+    it 'does not allow an unauthed user to destroy a poll' do
+      sign_in create(:user)
+      expect { delete :destroy, id: poll.key }.to_not change { Poll.count }
+      expect(response.status).to eq 403
+    end
+
+  end
 end
