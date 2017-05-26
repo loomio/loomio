@@ -21,6 +21,7 @@ class Queries::UsersByVolumeQuery
 
   private
   def self.base_query(discussion)
+    return User.none unless discussion.present?
     User.
       active.
       distinct.
