@@ -1,6 +1,8 @@
 .poll-common-stance-choice {
   display: inline-block;
   color: $primary-text-color;
+  line-height: 32px;
+  margin-right: 8px;
 }
 
 .poll-common-stance-choice--count .poll-common-stance-choice__option-name {
