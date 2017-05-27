@@ -16,13 +16,13 @@ class Queries::UsersByVolumeQuery
         .distinct
         .joins(membership_join(model))
         .joins(reader_join(model))
-        .where.not('memberships.id': nil)
-        .where('memberships.archived_at': nil)
+        .where.not('m.id': nil)
+        .where('m.archived_at': nil)
   end
 
   def self.volume_where(mode: :equal_to)
     operator = mode == :equal_to ? '=' : '>='
-    "dr.volume #{operator} :volume OR (dr.volume IS NULL AND memberships.volume #{operator} :volume)"
+    "dr.volume #{operator} :volume OR (dr.volume IS NULL AND m.volume #{operator} :volume)"
   end
 
   def self.reader_join(model)
@@ -31,6 +31,6 @@ class Queries::UsersByVolumeQuery
   end
 
   def self.membership_join(model)
-    "LEFT OUTER JOIN memberships ON (memberships.user_id = users.id AND memberships.group_id = #{model.group.id.to_i})"
+    "LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{model.group.id.to_i})"
   end
 end
