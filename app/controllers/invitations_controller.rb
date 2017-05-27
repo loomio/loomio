@@ -30,14 +30,14 @@ class InvitationsController < ApplicationController
 
   def invitation_callback
     if !invitation_user && Identities::Base::PROVIDERS.include?(params[:auth_as].to_s)
-      send(:"#{params[:auth_as]}_oauth_url", team: params[:team], back_to: group_callback)
+      send(:"#{params[:auth_as]}_oauth_url", team: params[:team], back_to: back_to)
     else
-      params[:back_to] || group_callback
+      back_to
     end
   end
 
-  def group_callback
-    group_url(invitation.invitable)
+  def back_to
+    params[:back_to] || group_url(invitation.invitable)
   end
 
   def invitation_user
