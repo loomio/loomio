@@ -382,6 +382,9 @@ en:
       your_response: Your response
       please_respond: Please respond
       time_zone: (Times displayed in %{zone})
+      undecided_members: Undecided Members (%{count})
+      undecided_visitors: Undecided Visitors (%{count})
+      more_undecided: "%{count} more..."
 
     proposal:
       subject:

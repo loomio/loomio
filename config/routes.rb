@@ -142,7 +142,7 @@ Loomio::Application.routes.draw do
       get  :closed, on: :collection
     end
 
-    resources :polls,       only: [:show, :index, :create, :update] do
+    resources :polls,       only: [:show, :index, :create, :update, :destroy] do
       post :close, on: :member
       post :publish, on: :member
       get  :closed, on: :collection

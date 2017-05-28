@@ -207,6 +207,10 @@ class Group < ActiveRecord::Base
     self
   end
 
+  def group_id
+    self.id
+  end
+
   def logo_or_parent_logo
     if is_parent?
       logo

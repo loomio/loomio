@@ -74,12 +74,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def undecided
-    load_and_authorize(:poll)
-    instantiate_collection do |collection|
-      collection = collection.where(group: @poll.group)
-      collection = collection.where("memberships.user_id NOT IN (?)", @poll.participant_ids) if @poll.participant_ids.present?
-      collection
-    end
+    instantiate_collection { |collection| collection.undecided_for(load_and_authorize(:poll)) }
     respond_with_collection
   end
 

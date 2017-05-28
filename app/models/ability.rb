@@ -354,7 +354,7 @@ class Ability
       (!poll.group || poll.group.community.includes?(@user))
     end
 
-    can [:update, :share], Poll do |poll|
+    can [:update, :share, :destroy], Poll do |poll|
       user_is_author_of?(poll) ||
       Array(poll.group&.admins).include?(@user)
     end

@@ -1,7 +1,7 @@
 -# NB: We're rendering directives polymorphically here with 'poll_common_directive'
 -# This takes a poll and a name, and renders the appropriate directive based on the
 -# poll type
-%section.poll-common-card.lmo-card-padding
+%section.poll-common-card.lmo-card-padding{ng-if: "!initExecuting"}
   %poll_common_card_header{poll: "poll"}
   %poll_common_set_outcome_panel{poll: "poll"}
   %poll_common_summary_panel{poll: "poll"}

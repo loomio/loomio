@@ -112,6 +112,17 @@ describe API::PollsController do
         expect(poll_ids).to_not include another_poll.id
       end
 
+      it 'filters by discussion' do
+        get :search, discussion_key: discussion.key
+        json = JSON.parse(response.body)
+        poll_ids = json['polls'].map { |p| p['id'] }
+
+        expect(poll_ids).to include group_poll.id
+        expect(poll_ids).to_not include participated_poll.id
+        expect(poll_ids).to_not include authored_poll.id
+        expect(poll_ids).to_not include another_poll.id
+      end
+
       it 'filters by participated' do
         get :search, user: :participation_by
         json = JSON.parse(response.body)
@@ -314,5 +325,26 @@ describe API::PollsController do
       expect(poll.communities.map(&:class)).to_not include Communities::LoomioGroup
       expect(poll.communities.map(&:class)).to include Communities::LoomioUsers
     end
+  end
+
+  describe 'destroy' do
+    it 'destroys a poll' do
+      sign_in poll.author
+      expect { delete :destroy, id: poll.key }.to change { Poll.count }.by(-1)
+      expect(response.status).to eq 200
+    end
+
+    it 'allows group admins to destroy polls' do
+      sign_in poll.group.admins.first
+      expect { delete :destroy, id: poll.key }.to change { Poll.count }.by(-1)
+      expect(response.status).to eq 200
+    end
+
+    it 'does not allow an unauthed user to destroy a poll' do
+      sign_in create(:user)
+      expect { delete :destroy, id: poll.key }.to_not change { Poll.count }
+      expect(response.status).to eq 403
+    end
+
   end
 end

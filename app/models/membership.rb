@@ -27,6 +27,13 @@ class Membership < ActiveRecord::Base
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
 
+  scope :undecided_for, ->(poll) {
+     joins("INNER JOIN users ON users.id = memberships.user_id")
+    .joins("LEFT OUTER JOIN stances ON stances.participant_type = 'User' and stances.participant_id = users.id")
+    .where(group: poll.group)
+    .where('stances.id': nil)
+  }
+
   delegate :name, :email, to: :user, prefix: :user
   delegate :parent, to: :group, prefix: :group, allow_nil: true
   delegate :name, :full_name, to: :group, prefix: :group
