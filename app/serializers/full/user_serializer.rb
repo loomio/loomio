@@ -30,7 +30,7 @@ class Full::UserSerializer < UserSerializer
   end
 
   def is_coordinator
-    object.admin_memberships.any?
+    object.adminable_group_ids.any?
   end
 
   def include_gravatar_md5?
