@@ -2,9 +2,9 @@ module NullUser
   include AvatarInitials
   alias :read_attribute_for_serialization :send
 
-  NIL_METHODS   = [:key, :username, :selected_locale, :deactivated_at, :time_zone, :time_zone_city, :default_membership_volume, :unsubscribe_token, :slack_identity, :facebook_identity, :encrypted_password]
+  NIL_METHODS   = [:key, :username, :selected_locale, :deactivated_at, :time_zone, :default_membership_volume, :unsubscribe_token, :slack_identity, :facebook_identity, :encrypted_password]
   FALSE_METHODS = [:is_logged_in?, :uses_markdown?, :email_when_proposal_closing_soon,
-                   :email_missed_yesterday, :email_when_mentioned, :email_on_participation, :is_group_admin?]
+                   :email_missed_yesterday, :email_when_mentioned, :email_on_participation]
   EMPTY_METHODS = [:groups, :group_ids, :adminable_group_ids]
   TRUE_METHODS  = [:angular_ui_enabled, :angular_ui_enabled?]
   NONE_METHODS  = [:votes, :memberships, :notifications, :polls, :stances, :login_tokens]

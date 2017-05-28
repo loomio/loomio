@@ -6,7 +6,7 @@ class Identities::Base < ActiveRecord::Base
   validates :uid, presence: true
 
   belongs_to :user, required: false
-  has_many :communities, class_name: "Communities::Base", foreign_key: :identity_id
+  has_many :communities, class_name: "Communities::Base", foreign_key: :identity_id, dependent: :nullify
 
   PROVIDERS = YAML.load_file(Rails.root.join("config", "providers.yml"))['identity']
   discriminate Identities, on: :identity_type
