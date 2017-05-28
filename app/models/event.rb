@@ -39,8 +39,7 @@ class Event < ActiveRecord::Base
 
   private
 
-  # soon, events will need to know that they are part of a Loomio::Group
-  # community, but for now we can just default to no communities
+  # which communities should know about this event?
   # Polls override this to look at the communities associated with the poll.
   def communities
     Array(eventable&.group&.community)
