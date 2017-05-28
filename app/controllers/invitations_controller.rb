@@ -45,7 +45,6 @@ class InvitationsController < ApplicationController
   end
 
   def identity
-    return unless invitation.identity_token == params[:identity_token]
     @identity ||= Identities::Base.find_by(params.slice(:uid))
   end
 end

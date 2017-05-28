@@ -13,7 +13,7 @@ module Identities::Slack::Participate
   end
 
   def respond_with_invitation
-    return unless participate_invitation&.group&.identity_type == 'slack'
+    return unless participate_invitation.slack_team_id.present?
     ::Slack::GroupInvitationSerializer.new(participate_invitation, scope: {
       back_to: poll_url(participate_poll),
       uid: participate_params[:uid]
@@ -21,9 +21,7 @@ module Identities::Slack::Participate
   end
 
   def participate_invitation
-    @participate_invitation ||= participate_poll&.group&.shareable_invitation(
-      identity_token: participate_payload.dig('team', 'id')
-    )
+    @participate_invitation ||= participate_poll&.group&.shareable_invitation
   end
 
   def participate_params

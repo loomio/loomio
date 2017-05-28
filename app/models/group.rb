@@ -159,6 +159,7 @@ class Group < ActiveRecord::Base
   delegate :members, to: :parent, prefix: true
   delegate :name, to: :parent, prefix: true
   delegate :identity_type, to: :community, allow_nil: true
+  delegate :slack_team_id, to: :community, allow_nil: true
 
   paginates_per 20
 
@@ -194,12 +195,11 @@ class Group < ActiveRecord::Base
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
   define_counter_cache(:announcement_recipients_count) { |group| group.memberships.volume_at_least(:normal).count }
 
-  def shareable_invitation(identity_token: nil)
+  def shareable_invitation
     invitations.find_or_create_by(
       single_use:     false,
       intent:         :join_group,
-      invitable:      group,
-      identity_token: identity_token
+      invitable:      self
     )
   end
 

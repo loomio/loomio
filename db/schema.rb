@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528043349) do
+ActiveRecord::Schema.define(version: 20170523015010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -456,7 +456,6 @@ ActiveRecord::Schema.define(version: 20170528043349) do
     t.boolean  "single_use",      default: true,  null: false
     t.text     "message"
     t.integer  "send_count",      default: 0,     null: false
-    t.string   "identity_token"
   end
 
   add_index "invitations", ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)", using: :btree
@@ -467,9 +466,11 @@ ActiveRecord::Schema.define(version: 20170528043349) do
   create_table "login_tokens", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "token"
-    t.boolean  "used",       default: false, null: false
+    t.boolean  "used",          default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "redirect_id"
+    t.string   "redirect_type"
     t.string   "redirect"
   end
 
@@ -678,6 +679,7 @@ ActiveRecord::Schema.define(version: 20170528043349) do
     t.string   "access_token",  default: ""
     t.jsonb    "custom_fields", default: {}, null: false
     t.string   "logo"
+    t.string   "scope",         default: "", null: false
   end
 
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree
@@ -700,11 +702,12 @@ ActiveRecord::Schema.define(version: 20170528043349) do
 
   create_table "outcomes", force: :cascade do |t|
     t.integer  "poll_id"
-    t.text     "statement",                 null: false
-    t.integer  "author_id",                 null: false
+    t.text     "statement",                     null: false
+    t.integer  "author_id",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "latest",     default: true, null: false
+    t.boolean  "latest",         default: true, null: false
+    t.integer  "poll_option_id"
   end
 
   create_table "poll_communities", force: :cascade do |t|
