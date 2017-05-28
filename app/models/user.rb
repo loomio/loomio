@@ -188,6 +188,10 @@ class User < ActiveRecord::Base
     !!memberships.find_by(group_id: group&.id, admin: true)
   end
 
+  def first_name
+    self.name.to_s.split(' ').first
+  end
+
   def time_zone
     self[:time_zone] || 'UTC'
   end
