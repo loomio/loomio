@@ -41,14 +41,16 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def respond_with_stance
-    event = ::Slack::Participator.new(participate_params).participate!
+    return unless event = ::Slack::Participator.new(participate_params).participate!
     ::Slack::StanceCreatedSerializer.new(event, root: false).as_json
   end
 
   def respond_with_invitation
-    poll = Poll.find(participate_params[:poll_id])
-    return unless poll.group&.identity_type == 'slack'
-    ::Slack::GroupInvitationSerializer.new(poll, root: false).as_json
+    return unless slack_invitation&.group&.identity_type == 'slack'
+    ::Slack::GroupInvitationSerializer.new(slack_invitation, scope: {
+      back_to: poll_url(poll),
+      uid: participate_params[:uid]
+    }, root: false).as_json
   end
 
   def respond_with_unauthorized
@@ -62,6 +64,14 @@ class Identities::SlackController < Identities::BaseController
   def complete_identity(identity)
     super
     identity.fetch_team_info
+  end
+
+  def poll
+    @poll ||= Poll.find_by(id: participate_params[:poll_id])
+  end
+
+  def slack_invitation
+    @slack_invitation ||= InvitationService.shareable_invitation_for(poll.group) if poll&.group
   end
 
   def identity_params
