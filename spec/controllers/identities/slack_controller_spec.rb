@@ -49,9 +49,9 @@ describe Identities::SlackController do
     let(:user) { create :user }
     let(:another_user) { create :user }
     let(:identity) { create :slack_identity, user: user, uid: "abcd" }
-    before { group.add_member! user }
 
     it 'creates a stance' do
+      group.add_member! user
       sign_in user
       expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
       stance = Stance.last
@@ -60,9 +60,28 @@ describe Identities::SlackController do
     end
 
     it 'does not create an invalid stance' do
+      group.add_member! user
       sign_in user
       expect { post :participate, payload: bad_payload }.to_not change { poll.stances.count }
       expect(response.status).to eq 200 # we still render out a message to slack, so this response must be 'OK'
+    end
+
+    it 'responds with an invitation if poll is part of a group' do
+      sign_in user
+      expect { post :participate, payload: payload }.to_not change { poll.stances.count }
+      expect(response.status).to eq 200
+    end
+
+    it 'responds with an auth link if incorrect invitation_token is given' do
+      sign_in user
+
+    end
+
+    it 'responds with an auth link if poll is not part of a group' do
+      poll.update(discussion: nil, group: nil)
+      sign_in user
+      expect { post :participate, payload: payload }.to_not change { poll.stances.count }
+      expect(response.status).to eq 200
     end
   end
 

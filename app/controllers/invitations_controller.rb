@@ -13,8 +13,8 @@ class InvitationsController < ApplicationController
 
   def show
     if invitation_user
+      InvitationService.redeem(invitation, invitation_user, identity)
       sign_in invitation_user
-      InvitationService.redeem(invitation, invitation_user)
       session.delete(:pending_invitation_id)
     else
       session[:pending_invitation_id] = params[:id]
@@ -29,18 +29,23 @@ class InvitationsController < ApplicationController
   end
 
   def invitation_callback
-    if !invitation_user && Identities::Base::PROVIDERS.include?(params[:auth_as].to_s)
-      send(:"#{params[:auth_as]}_oauth_url", team: params[:team], back_to: back_to)
+    if !invitation_user && Identities::Base::PROVIDERS.include?(identity&.identity_type)
+      send(:"#{identity&.identity_type}_oauth_url", team: invitation.identity_token, back_to: back_to)
     else
       back_to
     end
   end
 
   def back_to
-    params[:back_to] || group_url(invitation.invitable)
+    params.fetch(:back_to, group_url(invitation.group))
   end
 
   def invitation_user
-    @invitation_user ||= current_user.presence || invitation.user_from_recipient!
+    @invitation_user ||= identity&.user || current_user.presence || invitation.user_from_recipient!
+  end
+
+  def identity
+    return unless invitation.identity_token == params[:identity_token]
+    @identity ||= Identities::Base.find_by(params.slice(:uid))
   end
 end
