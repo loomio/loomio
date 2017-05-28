@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523015010) do
+ActiveRecord::Schema.define(version: 20170528043349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -456,6 +456,7 @@ ActiveRecord::Schema.define(version: 20170523015010) do
     t.boolean  "single_use",      default: true,  null: false
     t.text     "message"
     t.integer  "send_count",      default: 0,     null: false
+    t.string   "identity_token"
   end
 
   add_index "invitations", ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)", using: :btree

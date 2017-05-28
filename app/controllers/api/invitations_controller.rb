@@ -1,9 +1,8 @@
 class API::InvitationsController < API::RestfulController
   def create
-    load_and_authorize :group, :invite_people
-    @invitations = InvitationService.invite_to_group(recipient_emails: email_addresses,
-                                                     group: @group,
-                                                     inviter: current_user)
+    @invitations = service.invite_to_group(recipient_emails: email_addresses,
+                                           group: load_and_authorize(:group, :invite_people),
+                                           inviter: current_user)
     if @invitations.any?
       respond_with_collection
     else
@@ -19,13 +18,13 @@ class API::InvitationsController < API::RestfulController
 
   def shareable
     load_and_authorize :group, :view_shareable_invitation
-    @invitations = [InvitationService.shareable_invitation_for(@group)]
+    @invitations = [resource_class.shareable_invitation_for(@group)]
     respond_with_collection
   end
 
   def destroy
-    @invitation = Invitation.find(params[:id])
-    InvitationService.cancel(invitation: @invitation, actor: current_user)
+    @invitation = resource_class.find(params[:id])
+    service.cancel(invitation: @invitation, actor: current_user)
     respond_with_resource
   end
 
