@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523015010) do
+ActiveRecord::Schema.define(version: 20170529121322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -732,6 +732,15 @@ ActiveRecord::Schema.define(version: 20170523015010) do
     t.string  "reference_type", null: false
     t.integer "poll_id",        null: false
   end
+
+  create_table "poll_unsubscriptions", force: :cascade do |t|
+    t.integer  "poll_id",    null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "poll_unsubscriptions", ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true, using: :btree
 
   create_table "polls", force: :cascade do |t|
     t.integer  "author_id",                             null: false

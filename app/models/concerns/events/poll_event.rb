@@ -39,7 +39,7 @@ module Events::PollEvent
       announcement_email_recipients
     else
       specified_email_recipients
-    end
+    end.without(poll.unsubscribers)
   end
 
   def announcement_email_recipients

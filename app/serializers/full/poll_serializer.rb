@@ -1,10 +1,14 @@
 class Full::PollSerializer < ::PollSerializer
   attributes :poll_option_names, :anyone_can_participate, :email_community_id,
-             :mentioned_usernames, :complete
+             :mentioned_usernames, :complete, :subscribed
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
   has_many :attachments, serializer: AttachmentSerializer, root: :attachments
+
+  def subscribed
+    object.poll_unsubscriptions.find_by(user: scope[:current_user]).blank?
+  end
 
   def complete
     true
@@ -16,6 +20,12 @@ class Full::PollSerializer < ::PollSerializer
 
   def email_community_id
     object.community_of_type(:email, build: true).tap(&:save).id
+  end
+
+  private
+
+  def include_subscribed?
+    (scope || {})[:current_user].present?
   end
 
 end

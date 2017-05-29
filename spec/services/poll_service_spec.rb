@@ -287,4 +287,21 @@ describe PollService do
       expect { PollService.expire_lapsed_polls }.to_not change { poll_created.reload.closed_at }
     end
   end
+
+  describe '#toggle_subscription' do
+    it 'toggles a subscription on' do
+      PollService.toggle_subscription(poll: poll, actor: user)
+      expect(poll.reload.unsubscribers).to include user
+    end
+
+    it 'toggles a subscription off' do
+      poll.unsubscribers << user
+      PollService.toggle_subscription(poll: poll, actor: user)
+      expect(poll.reload.unsubscribers).to_not include user
+    end
+
+    it 'does nothing if the user doesnt have access' do
+      expect { PollService.toggle_subscription(poll: poll, actor: another_user) }.to raise_error { CanCan::AccessDenied }
+    end
+  end
 end
