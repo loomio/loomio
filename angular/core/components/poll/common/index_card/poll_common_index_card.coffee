@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'pollCommonIndexCard', ($location, Records
   templateUrl: 'generated/components/poll/common/index_card/poll_common_index_card.html'
   controller: ($scope) ->
     $scope.fetchRecords = ->
-      Records.polls.fetchFor($scope.model, limit: $scope.limit, status: 'inactive')
+      Records.polls.fetchFor($scope.model, limit: $scope.limit, status: 'closed')
     LoadingService.applyLoadingFunction $scope, 'fetchRecords'
     $scope.fetchRecords()
 
@@ -14,7 +14,7 @@ angular.module('loomioApp').directive 'pollCommonIndexCard', ($location, Records
     $scope.viewMore = ->
       opts = {}
       opts["#{$scope.model.constructor.singular}_key"] = $scope.model.key
-      opts["status"] = "inactive"
+      opts["status"] = "closed"
       $location.path('polls').search(opts)
 
     $scope.polls = ->

@@ -52,6 +52,7 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member
       get :count_explore_results, on: :collection
+      post :publish, on: :member
       patch :archive, on: :member
       put :archive, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
@@ -141,7 +142,7 @@ Loomio::Application.routes.draw do
       get  :closed, on: :collection
     end
 
-    resources :polls,       only: [:show, :index, :create, :update] do
+    resources :polls,       only: [:show, :index, :create, :update, :destroy] do
       post :close, on: :member
       post :publish, on: :member
       get  :closed, on: :collection
@@ -301,6 +302,7 @@ Loomio::Application.routes.draw do
   end
 
   scope :slack do
+    get  :install,                        to: 'identities/slack#install',     as: :slack_install
     get  :authorized,                     to: 'identities/slack#authorized',  as: :slack_authorized
     post :participate,                    to: 'identities/slack#participate', as: :slack_participate
     post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate

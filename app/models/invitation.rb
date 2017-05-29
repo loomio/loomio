@@ -22,6 +22,8 @@ class Invitation < ActiveRecord::Base
   before_save :ensure_token_is_present
 
   delegate :name, to: :inviter, prefix: true, allow_nil: true
+  delegate :slack_team_id, to: :group, allow_nil: true
+  delegate :identity_type, to: :group, allow_nil: true
 
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
   scope :pending, -> { not_cancelled.single_use.where(accepted_at: nil) }

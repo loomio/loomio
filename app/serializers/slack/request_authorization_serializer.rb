@@ -7,15 +7,11 @@ class Slack::RequestAuthorizationSerializer < Slack::BaseSerializer
 
   private
 
-  def team
-    object.fetch('team', {})
-  end
-
   def request_authorization_url
-    slack_oauth_url(default_url_options.merge(back_to: success_url, team: team['id']))
+    slack_oauth_url(default_url_options.merge(back_to: success_url, team: object['id']))
   end
 
   def success_url
-    slack_authorized_url(default_url_options.merge(team: team['domain']))
+    slack_authorized_url(default_url_options.merge(team: object['domain']))
   end
 end

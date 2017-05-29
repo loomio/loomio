@@ -21,10 +21,11 @@ class PollMailer < BaseMailer
       "Auto-Submitted":           :"auto-generated"
     }
 
+    actor = if event.eventable.is_a?(Stance) then event.eventable.participant else event.user end # sorry mom :(
     @info = PollEmailInfo.new(
       recipient:   recipient,
       poll:        event.poll,
-      actor:       event.user,
+      actor:       actor,
       eventable:   event.eventable,
       action_name: action_name
     )

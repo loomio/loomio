@@ -9,6 +9,7 @@ describe Queries::UsersByVolumeQuery do
   let(:user_with_membership_volume_quiet) { FactoryGirl.create :user }
   let(:user_with_reader_volume_mute) { FactoryGirl.create :user }
   let(:user_with_membership_volume_mute) { FactoryGirl.create :user }
+  let(:user_with_archived_membership) { FactoryGirl.create :user }
 
   let(:discussion) { FactoryGirl.create :discussion }
 
@@ -17,11 +18,13 @@ describe Queries::UsersByVolumeQuery do
     discussion.group.add_member!(user_with_membership_volume_normal).set_volume! :normal
     discussion.group.add_member!(user_with_membership_volume_quiet).set_volume! :quiet
     discussion.group.add_member!(user_with_membership_volume_mute).set_volume! :mute
+    discussion.group.add_member!(user_with_archived_membership).set_volume! :normal
+    discussion.group.membership_for(user_with_archived_membership).update(archived_at: 1.day.ago)
 
-    discussion.group.add_member!(user_with_reader_volume_loud)
-    discussion.group.add_member!(user_with_reader_volume_normal)
-    discussion.group.add_member!(user_with_reader_volume_quiet)
-    discussion.group.add_member!(user_with_reader_volume_mute)
+    discussion.group.add_member!(user_with_reader_volume_loud).set_volume! :mute
+    discussion.group.add_member!(user_with_reader_volume_normal).set_volume! :mute
+    discussion.group.add_member!(user_with_reader_volume_quiet).set_volume! :mute
+    discussion.group.add_member!(user_with_reader_volume_mute).set_volume! :mute
 
     DiscussionReader.for(discussion: discussion, user: user_with_reader_volume_loud).set_volume! :loud
     DiscussionReader.for(discussion: discussion, user: user_with_reader_volume_normal).set_volume! :normal
@@ -39,6 +42,7 @@ describe Queries::UsersByVolumeQuery do
     users.should_not include user_with_reader_volume_normal
     users.should_not include user_with_reader_volume_quiet
     users.should_not include user_with_reader_volume_mute
+    users.should_not include user_with_archived_membership
   end
 
   it "normal or loud" do
@@ -52,6 +56,7 @@ describe Queries::UsersByVolumeQuery do
     users.should_not include user_with_membership_volume_mute
     users.should_not include user_with_reader_volume_quiet
     users.should_not include user_with_reader_volume_mute
+    users.should_not include user_with_archived_membership
   end
 
   it "mute" do
@@ -65,5 +70,20 @@ describe Queries::UsersByVolumeQuery do
     users.should_not include user_with_membership_volume_quiet
     users.should_not include user_with_reader_volume_normal
     users.should_not include user_with_reader_volume_quiet
+    users.should_not include user_with_archived_membership
+  end
+
+  it 'accepts a group' do
+    users = Queries::UsersByVolumeQuery.normal_or_loud(discussion.group)
+    users.should     include user_with_membership_volume_loud
+    users.should     include user_with_membership_volume_normal
+
+    users.should_not include user_with_reader_volume_loud
+    users.should_not include user_with_reader_volume_normal
+    users.should_not include user_with_reader_volume_quiet
+    users.should_not include user_with_reader_volume_mute
+    users.should_not include user_with_membership_volume_quiet
+    users.should_not include user_with_membership_volume_mute
+    users.should_not include user_with_archived_membership
   end
 end

@@ -23,9 +23,10 @@
             {{ 'polls_page.groups_placeholder' | translate }}
           %md-option{ng-repeat: "filter in pollsPage.groupFilters track by filter.value", ng-value: "filter.value"}
             {{filter.name}}
+      %loading{ng-if: "pollsPage.fetchRecordsExecuting"}
       .polls-page__polls{ng-if: "!pollsPage.fetchRecordsExecuting"}
         %poll_common_preview{ng-repeat: "poll in pollsPage.pollCollection.polls() | orderBy:pollsPage.pollImportance track by poll.id", poll: "poll", display-group-name: "!pollsPage.group"}
-        %loading{ng-if: "pollsPage.fetching()"}
+        %loading{ng-if: "pollsPage.loadMoreExecuting"}
         .polls-page__count{translate: "polls_page.polls_count", translate-value-count: "{{pollsPage.loadedCount()}}", translate-value-total: "{{pollsPage.pollsCount}}"}
         .polls-page__load-more{ng-if: "pollsPage.canLoadMore()"}
           %md-button.md-primary{translate: "poll_common.load_more", ng-click: "pollsPage.loadMore()"}

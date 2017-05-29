@@ -8,7 +8,7 @@ class Identities::Slack < Identities::Base
   end
 
   def apply_user_info(payload)
-    self.name  ||= [payload['first_name'], payload['last_name']].compact.join(' ')
+    self.name  ||= payload['real_name_normalized']
     self.email ||= payload['email']
     self.logo  ||= payload['image_72']
   end
@@ -22,5 +22,15 @@ class Identities::Slack < Identities::Base
 
   def channels
     client.fetch_channels
+  end
+
+  private
+
+  def publish_events
+    %w(
+      group_published
+      poll_published
+      outcome_published
+    ).freeze
   end
 end

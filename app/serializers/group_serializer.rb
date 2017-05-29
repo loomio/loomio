@@ -42,7 +42,8 @@ class GroupSerializer < ActiveModel::Serializer
              :enable_experiments,
              :experiences,
              :features,
-             :recent_activity_count
+             :recent_activity_count,
+             :identity_id
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 

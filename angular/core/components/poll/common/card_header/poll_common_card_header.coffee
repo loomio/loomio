@@ -4,8 +4,9 @@ angular.module('loomioApp').directive 'pollCommonCardHeader', ->
   controller: ($scope, AbilityService, PollService) ->
     $scope.pollHasActions = ->
       AbilityService.canSharePoll($scope.poll) ||
-      AbilityService.canEditPoll($scope.poll) ||
-      AbilityService.canClosePoll($scope.poll)
+      AbilityService.canEditPoll($scope.poll)  ||
+      AbilityService.canClosePoll($scope.poll) ||
+      AbilityService.canDeletePoll($scope.poll)
 
     $scope.icon = ->
       PollService.iconFor($scope.poll)
