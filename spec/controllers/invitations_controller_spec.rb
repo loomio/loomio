@@ -3,6 +3,7 @@ require 'rails_helper'
 describe InvitationsController do
   let(:group) { FactoryGirl.create(:group) }
   let(:user) { FactoryGirl.create(:user) }
+  let(:another_user) { create :user }
   let(:another_group) { FactoryGirl.create(:group) }
   let(:another_user) { FactoryGirl.create(:user) }
 
@@ -35,21 +36,19 @@ describe InvitationsController do
       end
     end
 
-    context "with specified auth method" do
-      it "redirects to the appropriate path when oauth method is specified" do
-        get :show, id: invitation.token, auth_as: :slack
-        expect(response).to redirect_to slack_oauth_url(back_to: group_url(group))
+    context 'with an associated identity' do
+      before { group.community.update(identity: create(:slack_identity)) }
+
+      it 'redirects to the group if a member' do
+        group.add_member! another_user
+        sign_in another_user
+        get :show, id: invitation.token
+        expect(response).to redirect_to group_url(group)
       end
 
-      it "redirects to the group if invalid oauth method is specified" do
-        get :show, id: invitation.token, auth_as: :wark
-        expect(response).to redirect_to group
-      end
-
-      it "redirects to the group if someone is logged in" do
-        sign_in user
-        get :show, id: invitation.token, auth_as: :slack
-        expect(response).to redirect_to group
+      it 'redirects to the oauth path if not a member' do
+        get :show, id: invitation.token
+        expect(response).to redirect_to slack_oauth_url(back_to: group_url(group), team: invitation.slack_team_id)
       end
     end
 
