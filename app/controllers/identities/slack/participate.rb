@@ -13,7 +13,7 @@ module Identities::Slack::Participate
   end
 
   def respond_with_invitation
-    return unless participate_invitation.slack_team_id.present?
+    return unless participate_invitation&.slack_team_id.present?
     ::Slack::GroupInvitationSerializer.new(participate_invitation, scope: {
       back_to: poll_url(participate_poll),
       uid: participate_params[:uid]
