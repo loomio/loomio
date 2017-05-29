@@ -2,7 +2,7 @@ require 'rails_helper'
 describe API::GroupsController do
 
   let(:user) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :group, creator: user }
   let(:subgroup) { create :group, parent: group }
   let(:discussion) { create :discussion, group: group }
 
@@ -111,26 +111,22 @@ describe API::GroupsController do
 
   describe 'publish' do
 
-    it 'creates a group_published event' do
+    it 'can save a channel and make an announcement' do
       group.update(identity_id: create(:slack_identity).id)
-      expect { post :publish, id: group.id, identifier: "abc" }.to change { Events::GroupPublished.count }.by(1)
+      expect { post :publish, id: group.id, identifier: "abc", make_announcement: true }.to change { Events::GroupPublished.count }.by(1)
       expect(response.status).to eq 200
-      e = Events::GroupPublished.last
-      expect(e.custom_fields['identifier']).to eq "abc"
-
-      i = Invitation.last
-      expect(i.group).to eq group
-      expect(e.custom_fields['invitation_token']).to eq i.token
+      expect(group.community.reload.channel).to eq "abc"
     end
 
-    it 'does creates a group_published event even with no group identity' do
-      expect { post :publish, id: group.id, identifier: "abc" }.to change { Events::GroupPublished.count }.by(1)
-      expect(response.status).to eq 200
+    it 'can save a channel and not make an announcement' do
+      group.update(identity_id: create(:slack_identity).id)
+      expect { post :publish, id: group.id, identifier: "abc" }.to_not change { Events::GroupPublished.count }
+      expect(group.community.reload.channel).to eq "abc"
     end
 
-    it 'does not create a group_published event without an identifier' do
+    it 'responds with bad request if no channel id is given' do
       group.update(identity_id: create(:slack_identity).id)
-      expect { post :publish, id: group.id }.to_not change { Events::GroupPublished.count }
+      expect { post :publish, id: group.id, make_announcement: true }.to_not change { Events::GroupPublished.count }
       expect(response.status).to eq 400
     end
   end
