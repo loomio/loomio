@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
   include HasTimeframe
   include HasPolls
   include MessageChannel
+  include SelfReferencing
 
   class MaximumMembershipsExceeded < Exception
   end
@@ -190,14 +191,6 @@ class Group < ActiveRecord::Base
   define_counter_cache(:proposal_outcomes_count)   { |group| group.motions.with_outcomes.count }
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
   define_counter_cache(:announcement_recipients_count) { |group| group.memberships.volume_at_least(:normal).count }
-
-  def group
-    self
-  end
-
-  def group_id
-    self.id
-  end
 
   def logo_or_parent_logo
     if is_parent?

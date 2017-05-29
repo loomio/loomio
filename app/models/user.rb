@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   include HasExperiences
   include HasAvatar
   include UsesWithoutScope
+  include SelfReferencing
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
@@ -162,10 +163,6 @@ class User < ActiveRecord::Base
 
   def remember_me
     true
-  end
-
-  def user_id
-    id
   end
 
   def participation_token
