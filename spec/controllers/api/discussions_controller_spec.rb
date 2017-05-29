@@ -244,7 +244,7 @@ describe API::DiscussionsController do
         proposal
         get :show, id: discussion.key
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users groups proposals discussions])
+        expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id active_proposal_id])
       end
 
@@ -597,7 +597,7 @@ describe API::DiscussionsController do
       it 'responds with json' do
         post :create, discussion: discussion_params, format: :json
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users groups proposals discussions])
+        expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[
           id
           key
