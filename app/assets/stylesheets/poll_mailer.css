@@ -84,9 +84,6 @@
   /*color: white;*/
 }
 
-.poll-mailer__vote-buttons-list {
-}
-
 .poll-mailer__text-align-center {
   text-align: center;
 }
@@ -100,6 +97,19 @@
 .poll-mailer-proposal__chart-legend td {
   border-bottom: 2px solid;
   padding-top: 10px;
+}
+
+.poll-mailer-count__poll-options .poll-mailer__poll-option {
+  float: left;
+  margin-right: 10px;
+}
+
+.poll-mailer-count__option-name {
+  display: none;
+}
+
+.poll-mailer-count__option-icon {
+  width: 50px;
 }
 
 .poll-mailer-meeting__table {
