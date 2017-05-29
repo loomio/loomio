@@ -103,7 +103,7 @@ class PermittedParams < Struct.new(:params)
     [:parent_id, :name, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
      :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
-     :membership_granted_upon, :cover_photo, :logo, :category_id,
+     :membership_granted_upon, :cover_photo, :logo, :category_id, :identity_id, :make_announcement,
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
   end
 

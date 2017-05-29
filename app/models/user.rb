@@ -127,20 +127,9 @@ class User < ActiveRecord::Base
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
   scope :email_proposal_closing_soon_for, -> (group) {
-    active.
-    joins(:memberships).
-    where('memberships.group_id = ?', group.id).
-    where('users.email_when_proposal_closing_soon = ?', true)
-  }
-
-  scope :without, -> (users) {
-    users = Array(users).compact
-
-    if users.size > 0
-      where('users.id NOT IN (?)', users)
-    else
-      all
-    end
+     email_when_proposal_closing_soon
+    .joins(:memberships)
+    .where('memberships.group_id': group.id)
   }
 
   def slack_identity
@@ -152,7 +141,7 @@ class User < ActiveRecord::Base
   end
 
   def associate_with_identity(identity)
-    if existing = identities.find_by(uid: identity.uid, identity_type: identity.identity_type)
+    if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
       existing.update(access_token: identity.access_token)
     else
       identities.push(identity)
@@ -180,10 +169,6 @@ class User < ActiveRecord::Base
     if deactivated_at.present? then :inactive else :active end
   end
 
-  def first_name
-    name.to_s.split(' ').first
-  end
-
   def name_and_email
     "#{name} <#{email}>"
   end
@@ -195,14 +180,6 @@ class User < ActiveRecord::Base
 
   delegate :can?, :cannot?, :to => :ability
 
-  def is_group_admin?(group=nil)
-    if group.present?
-      admin_memberships.where(group_id: group.id).any?
-    else
-      admin_memberships.any?
-    end
-  end
-
   def is_member_of?(group)
     !!memberships.find_by(group_id: group&.id)
   end
@@ -211,8 +188,8 @@ class User < ActiveRecord::Base
     !!memberships.find_by(group_id: group&.id, admin: true)
   end
 
-  def time_zone_city
-    TimeZoneToCity.convert time_zone
+  def first_name
+    self.name.to_s.split(' ').first
   end
 
   def time_zone
@@ -234,14 +211,6 @@ class User < ActiveRecord::Base
 
   def self.helper_bot_email
     ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
-  end
-
-  def subgroups
-    groups.where("parent_id IS NOT NULL")
-  end
-
-  def parent_groups
-    groups.where("parent_id IS NULL").order("LOWER(name)")
   end
 
   def name

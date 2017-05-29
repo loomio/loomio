@@ -15,6 +15,7 @@ describe PollService do
   let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name }
+  let(:identity) { create :slack_identity }
 
   before { group.add_member!(user); group.community }
 
@@ -83,6 +84,13 @@ describe PollService do
       expect(poll.group).to eq discussion.group
       expect(group.polls).to include poll
       expect(discussion.polls).to include poll
+    end
+
+    it 'posts to slack if a slack identity is present' do
+      group.community.update(identity: identity)
+      expect { PollService.create(poll: poll_created, actor: user) }.to change { Events::PollPublished.where(kind: :poll_published).count }.by(1)
+      event = Events::PollPublished.where(kind: :poll_published).last
+      expect(event.custom_fields['community_id']).to eq group.community.id
     end
 
     it 'does not allow users to create polls for communities they are not a part of' do

@@ -60,7 +60,7 @@ describe 'Polls', ->
 
   it 'can start a standalone poll', ->
     page.loadPath 'polls/start_poll'
-    page.click '.poll-common-start-poll__poll-type--proposal'
+    page.click '.poll-common-choose-type__poll-type--proposal'
     page.click ".poll-common-tool-tip__collapse"
     page.fillIn '.poll-proposal-form__title', 'A new proposal'
     page.fillIn '.poll-proposal-form__details', 'Some details'

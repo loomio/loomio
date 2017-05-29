@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasTimeframe
   include HasPolls
+  include MakesAnnouncements
   include MessageChannel
 
   class MaximumMembershipsExceeded < Exception
@@ -122,6 +123,7 @@ class Group < ActiveRecord::Base
   after_initialize :set_defaults
 
   after_create :guess_cohort
+  after_save   :associate_identity
 
   alias :users :members
 
@@ -137,7 +139,7 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
   belongs_to :cohort
-  belongs_to :community, class_name: 'Communities::LoomioGroup'
+  belongs_to :community, class_name: 'Communities::LoomioGroup', touch: true
   belongs_to :default_group_cover
 
   has_many :subgroups,
@@ -156,6 +158,9 @@ class Group < ActiveRecord::Base
   delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
   delegate :name, to: :parent, prefix: true
+  delegate :identity_type, to: :community, allow_nil: true
+  delegate :slack_team_id, to: :community, allow_nil: true
+  delegate :identity_type, to: :community, allow_nil: true
 
   paginates_per 20
 
@@ -191,6 +196,14 @@ class Group < ActiveRecord::Base
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
   define_counter_cache(:announcement_recipients_count) { |group| group.memberships.volume_at_least(:normal).count }
 
+  def shareable_invitation
+    invitations.find_or_create_by(
+      single_use:     false,
+      intent:         :join_group,
+      invitable:      self
+    )
+  end
+
   def group
     self
   end
@@ -210,6 +223,15 @@ class Group < ActiveRecord::Base
   def community
     update(community: Communities::LoomioGroup.create(group: self)) unless self[:community_id]
     super
+  end
+
+  attr_writer :identity_id
+  def identity_id
+    @identity_id || community.identity_id
+  end
+
+  def associate_identity
+    community.update(identity_id: self.identity_id) if self.identity_id
   end
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
