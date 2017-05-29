@@ -160,6 +160,7 @@ class Group < ActiveRecord::Base
   delegate :name, to: :parent, prefix: true
   delegate :identity_type, to: :community, allow_nil: true
   delegate :slack_team_id, to: :community, allow_nil: true
+  delegate :identity_type, to: :community, allow_nil: true
 
   paginates_per 20
 

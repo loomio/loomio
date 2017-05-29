@@ -30,7 +30,7 @@ class InvitationsController < ApplicationController
 
   def invitation_callback
     if !invitation_user && Identities::Base::PROVIDERS.include?(identity&.identity_type)
-      send(:"#{identity&.identity_type}_oauth_url", team: invitation.identity_token, back_to: back_to)
+      send(:"#{identity&.identity_type}_oauth_url", team: invitation.slack_team_id, back_to: back_to)
     else
       back_to
     end
@@ -45,6 +45,9 @@ class InvitationsController < ApplicationController
   end
 
   def identity
-    @identity ||= Identities::Base.find_by(params.slice(:uid))
+    @identity ||= Identities::Base.find_by(
+      identity_type: invitation.identity_type,
+      uid: params[:uid]
+    )
   end
 end
