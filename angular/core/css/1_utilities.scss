@@ -330,6 +330,14 @@
   @include truncateText;
 }
 
+.lmo-inline-block {
+  display: inline-block;
+}
+
+.lmo-vertical-align-top {
+  vertical-align: top;
+}
+
 img.emojione {
   position: relative;
   top: 5px;

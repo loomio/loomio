@@ -80,6 +80,8 @@ en:
       done: Done
       start: Start
       delete: Delete
+      unsubscribe: Unsubscribe
+      subscribe: Subscribe
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -1428,6 +1430,15 @@ en:
     question: Are you sure you want to delete this?
     title: Delete decision
     success: Successfully deleted
+
+  poll_common_unsubscribe_form:
+    title: Receive updates
+    label: Receive email updates about this decision
+    tooltip: Loomio can send email updates to keep you informed about this decision, such as when it is edited, when it expires, or when an outcome has been set. Unchecking this box ensures that you won't receive further email notifications for decision.
+    helptext_on: You will receive emails about activity in this decision
+    helptext_off: You will not receive any emails about this decision
+    subscribed: Successfully subscribed
+    unsubscribed: Successfully unsubscribed
 
   poll_common_form:
     title: Title
