@@ -3,6 +3,7 @@ class Poll < ActiveRecord::Base
   include HasMentions
   include MakesAnnouncements
   include MessageChannel
+  include SelfReferencing
 
   TEMPLATES = YAML.load_file(Rails.root.join("config", "poll_templates.yml"))
   COLORS    = YAML.load_file(Rails.root.join("config", "colors.yml"))
@@ -94,10 +95,6 @@ class Poll < ActiveRecord::Base
   attr_accessor :community_id
 
   alias_method :user, :author
-
-  def poll
-    self
-  end
 
   # creates a hash which has a PollOption as a key, and a list of stance
   # choices associated with that PollOption as a value
