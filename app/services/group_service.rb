@@ -23,7 +23,7 @@ module GroupService
     group.community.update(slack_channel_id: params[:identifier])
     group.make_announcement = params[:make_announcement]
 
-    Events::GroupPublished.publish!(group)
+    Events::GroupPublished.publish!(group, actor)
     EventBus.broadcast('group_publish', group, actor)
   end
 
