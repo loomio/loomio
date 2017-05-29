@@ -3,9 +3,9 @@
 
   .install-slack-install-form__add-to-group{ng-if: "group.id"}
     %p.poll-common-helptext{translate: "install_slack.install.add_to_group_helptext"}
-    %md-select{md-autofocus: "true", ng-model: "group", aria-label: "{{ 'install_slack.install.group_id' | translate }}"}
-      %md-option{ng-repeat: "group in groups()", ng-value: "group"}
-        {{ group.name }}
+    %md-select{md-autofocus: "true", ng-model: "group", ng-change: "setSubmit(group)", aria-label: "{{ 'install_slack.install.group_id' | translate }}"}
+      %md-option{ng-repeat: "g in groups() | orderBy:'fullName'", ng-value: "g"}
+        {{ g.fullName }}
 
     .lmo-flex.install-slack-form__actions{layout: "column"}
       %md-button.md-primary.md-raised{translate: "install_slack.install.install_slack", ng-click: "submit()"}
