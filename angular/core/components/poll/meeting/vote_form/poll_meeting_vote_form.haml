@@ -3,7 +3,7 @@
   .lmo-flex.lmo-flex__flex-end
     %time_zone_select
   %md-list.poll-common-vote-form__options
-    %md-list-item.poll-common-vote-form__option{ng-repeat: "option in stance.poll().pollOptions()"}
+    %md-list-item.poll-common-vote-form__option{ng-repeat: "option in stance.poll().pollOptions() | orderBy:'name' track by option.id"}
       %p.poll-poll-vote-form__option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': option.color}"}
         %poll_meeting_time{name: "option.name", zone: "zone"}
       %md-checkbox.md-block.poll-poll-vote-form__checkbox{ng-model: "pollOptionIdsChecked[option.id]"}

@@ -1,0 +1,6 @@
+.install-slack-decide-form
+  %h2.lmo-h2{translate: "install_slack.decide.heading"}
+  %p.poll-common-helptext{translate: "install_slack.decide.helptext", ng-if: "!poll.pollType"}
+  %poll_common_start_poll{poll: "poll"}
+  .lmo-flex.install-slack-form__actions
+    %md-button{ng-if: "!poll.pollType", ng-click: "$emit('decideComplete')", translate: "install_slack.common.do_it_later"}

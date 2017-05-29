@@ -3,8 +3,8 @@ angular.module('loomioApp').factory 'PollCommonStartModal', ($location, PollServ
   controller: ($scope, poll) ->
     $scope.poll = poll.clone()
 
-    $scope.$on 'pollSaved', (event, pollKey) ->
-      $location.path(LmoUrlService.poll(Records.polls.find(pollKey))).search(share: true)
-
     $scope.icon = ->
       PollService.iconFor($scope.poll)
+
+    $scope.$on 'processing',      -> $scope.isDisabled = true
+    $scope.$on 'doneProcessing',  -> $scope.isDisabled = false

@@ -12,11 +12,13 @@ You'll want to use this directive when linking to stuff within the app. it suppo
 
 ## Naming stuff (BEM)
 
-The front end of Loomio is divided into "components" and we have a really simple naming system which helps to keep the codebase easy to use as the application grows. You might have already heard about it, it's called BEM. Here's how we've applied BEM to Loomio:
+The front end of Loomio is divided into "components" and we have a really simple naming system which helps to keep the codebase easy to use as the application grows. You might have already heard about it, it's called [BEM][]. Here's how we've applied BEM to Loomio:
 
 Components each have a unique name and that name is given to a folder with (typically) 3 files in it: code (Coffeescript) + template (HAML) + stylesheet (SCSS).
 
 You can find the components under `lineman/app/components`.
+
+[BEM]: https://stackoverflow.com/tags/bem/info
 
 ### Example: thread_preview component
 

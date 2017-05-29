@@ -1,10 +1,4 @@
-.poll-common-start-poll
-  .poll-common-start-poll__select-poll-type{ng-if: "!poll.pollType"}
-    %div{class: "poll-common-start-poll__poll-type--{{pollType}}", ng-repeat: "pollType in pollTypes() track by $index"}
-      %md-list-item.poll-common-start-poll__poll-type{ng-click: "poll.pollType = pollType"}
-        %i.material-icons.poll-common-start-poll__icon {{iconFor(pollType)}}
-        .poll-common-start-poll__content{class: "poll-common-start-poll__start-poll--{{pollType}}"}
-          .poll-common-start-poll__poll-type-title.md-subhead{translate: "decision_tools_card.{{pollType}}_title"}
-          .poll-common-start-poll__poll-type-subtitle.md-caption{translate: "poll_{{pollType}}_form.tool_tip_collapsed"}
-  .poll-common-start-poll__form{ng-if: "poll.pollType"}
-    %poll_common_directive{poll: "poll", name: "form", back: "editPollType"}
+.poll-common-start-poll{ng-switch: "currentStep"}
+  %poll_common_choose_type.animated{ng-switch-when: "choose", poll: "poll"}
+  %poll_common_directive.animated{ng-switch-when: "save", poll: "poll", name: "form"}
+  %poll_common_share_form.animated{ng-switch-when: "share", poll: "poll"}

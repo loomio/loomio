@@ -307,7 +307,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_team_invitation_link
-    redirect_to InvitationService.shareable_invitation_for(create_group)
+    redirect_to create_group.shareable_invitation
   end
 
   def setup_group_for_invitations
@@ -323,7 +323,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_closed_group_with_shareable_link
-    redirect_to invitation_url(InvitationService.shareable_invitation_for(create_group))
+    redirect_to invitation_url(create_group.shareable_invitation)
   end
 
   def view_open_group_as_non_member

@@ -1747,3 +1747,53 @@ en:
     name: Name
     email: Email
     password: Password
+
+  install_slack:
+    modal_title: Install Slack
+
+    progress:
+      install: Install
+      invite: Invite
+      decide: Decide
+
+    install:
+      heading: 'Step 1: Select a Loomio group to integrate'
+      tooltip_heading: Loomio and Slack work great together
+      it_does_this: Engage users where they are
+      and_also_this: Start polls instantly and get feedback in real time
+      and_also_also_this: Let people know outcome and iterate your thinking quickly
+      add_to_group_helptext: Select a group to link with Slack
+      create_new_group_helptext: Don't have a Loomio group? Simply enter a name and we'll make one for you
+      group_name: Group name
+      group_name_placeholder: Name your new Loomio group...
+      slack_installed: Slack installed
+      install_slack: Install slack now
+      start_new_group: Start a new group
+      use_existing_group: Use an existing group
+
+    invite:
+      heading: 'Step 2: Setup a Slack channel'
+      helptext: |
+        Success! Now, select a channel you'd like us to post updates into.
+      select_a_channel: Select a channel
+      publish_group: Post a welcome message
+      publish_group_helptext_on: We'll post the following message into the given channel to welcome people into your group.
+      group_published_preview: "<strong>{{author}}</strong> has added this Slack team to <strong>{{name}}</strong>. Please <a tabindex='-1' href='#'>click here</a> to start making decisions. Want to learn more about how Loomio works? Type <em>/loomio help</em> into this channel. See you soon!"
+      publish_group_helptext_off: We won't post anything until you create a poll.
+      custom_message: Custom message
+      set_channel: Set channel
+
+    decide:
+      heading: 'Step 3: Make a decision together'
+      helptext: "Now that you're all set up, it's time to start making decisions. Select from one of the options below:"
+
+    common:
+      do_it_later: I'll do this later
+
+  slack_added_modal:
+    title: Success!
+    helptext: |
+      You've successfully added Slack to your Loomio group <strong>{{name}}</strong>.
+      Now, whenever anyone starts a poll in this group, they'll have the option to
+      post updates about that poll into a channel in your slack team.
+    start_poll_now: Make a decision now

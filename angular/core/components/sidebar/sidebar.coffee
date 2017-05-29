@@ -38,7 +38,7 @@ angular.module('loomioApp').directive 'sidebar', ->
       LmoUrlService.group(group)
 
     $scope.signOut = ->
-      Records.sessions.remote.destroy('').then -> $window.location.href = '/'
+      Session.logout()
 
     $scope.helpLink = ->
       UserHelpService.helpLink()

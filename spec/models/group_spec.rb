@@ -283,7 +283,6 @@ describe Group do
 
   describe 'community' do
     it 'creates a new community if one does not exist' do
-      expect(group.community_id).to be_nil
       expect(group.community).to be_a Communities::LoomioGroup
       expect(group.community.group).to eq group
     end
