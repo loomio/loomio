@@ -133,15 +133,6 @@ class User < ActiveRecord::Base
   }
 
   def associate_with_identity(identity)
-    if existing = identities.find_by(uid: identity.uid, identity_type: identity.identity_type)
-      existing.update(access_token: identity.access_token)
-    else
-      identities.push(identity)
-      identity.assign_logo! if avatar_kind == 'initials'
-    end
-  end
-
-  def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
       existing.update(access_token: identity.access_token)
     else

@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonShareCommunityForm', (Records, AppConfig, CommunityService, FlashService, PollService, ModalService, AddCommunityModal, PollCommonShareModal, PollCommonPublishModal) ->
+angular.module('loomioApp').directive 'pollCommonShareCommunityForm', (Records, AppConfig, CommunityService, FlashService, ModalService, AddCommunityModal, PollCommonShareModal, PollCommonPublishModal) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/community_form/poll_common_share_community_form.html'
@@ -21,6 +21,3 @@ angular.module('loomioApp').directive 'pollCommonShareCommunityForm', (Records, 
         poll:      -> $scope.poll
         community: -> community
         back:      -> (-> ModalService.open PollCommonShareModal, poll: -> $scope.poll)
-
-    $scope.datesAsOptions = ->
-      PollService.fieldFromTemplate($scope.poll.pollType, 'dates_as_options')
