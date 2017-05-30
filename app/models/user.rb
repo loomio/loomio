@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username
   validates_length_of :username, maximum: 30
+  validates_length_of :short_bio, maximum: 250
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'error.username_must_be_alphanumeric')
 
   validates_length_of :password, minimum: 8, allow_nil: true

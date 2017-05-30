@@ -821,6 +821,9 @@ en:
     messages:
       success: Invitation cancelled
 
+  user_page:
+    introduction: Introduction
+
   profile_page:
     messages:
       updated: 'Profile updated'
@@ -836,7 +839,10 @@ en:
     name_label: 'Name'
     username_label: 'Username'
     email_label: 'Email'
+    short_bio_label: 'Introduction'
     locale_label: 'Language'
+    short_bio_placeholder: 'Enter a short introduction (max 250 characters)'
+    locale_placeholder: Select your preferred language
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
 
