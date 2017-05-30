@@ -132,7 +132,7 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, dependent: :destroy
   has_many :motions, through: :discussions
-  has_many :polls, through: :discussions
+  has_many :polls
   has_many :votes, through: :motions
 
   belongs_to :parent, class_name: 'Group'

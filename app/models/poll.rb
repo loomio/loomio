@@ -30,6 +30,8 @@ class Poll < ActiveRecord::Base
   belongs_to :discussion
   belongs_to :group
 
+  update_counter_cache :group, :polls_count
+  update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
 
   after_update :remove_poll_options

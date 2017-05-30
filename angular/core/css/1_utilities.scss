@@ -326,6 +326,10 @@
   height: 40px;
 }
 
+.lmo-pointer {
+  cursor: pointer;
+}
+
 .lmo-truncate-text {
   @include truncateText;
 }
