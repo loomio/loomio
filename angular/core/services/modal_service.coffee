@@ -8,7 +8,7 @@ angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $tim
       $scope.focus = -> $timeout(->
         elementToFocus = document.querySelector('md-dialog [md-autofocus]') || document.querySelector('md-dialog h1')
         elementToFocus.focus()
-      , 800)
+      , 400)
 
       $scope.$on 'focus',  $scope.focus
       $scope.$on '$close', $scope.close
