@@ -3,7 +3,7 @@ class Outcome < ActiveRecord::Base
   include MakesAnnouncements
   include HasMentions
   include PrettyUrlHelper
-  set_custom_fields :calendar_invite
+  set_custom_fields :calendar_invite, :event_location
 
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false
@@ -22,10 +22,11 @@ class Outcome < ActiveRecord::Base
   validate :has_valid_poll_option
 
   def store_calendar_invite
-    self.calendar_invite = Icalendar::Event.new do |event|
-      event.dtstart = Icalendar::Values::DateOrDateTime.new(self.poll_option.name),
-      event.summary = self.statement,
-      event.url     = poll_url(self.poll)
+    self.calendar_invite = Icalendar::Event.new.tap do |event|
+      event.dtstart  = Time.zone.parse(self.poll_option.name).strftime(Icalendar::Values::DateTime::FORMAT)
+      event.summary  = self.statement
+      event.location = self.event_location
+      event.url      = poll_url(self.poll)
     end.to_ical if self.poll_option.present? && self.poll.dates_as_options
   end
 

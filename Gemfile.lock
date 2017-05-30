@@ -50,6 +50,12 @@ GIT
       rails (>= 3.2.0)
 
 GIT
+  remote: git://github.com/loomio/icalendar.git
+  revision: 97ed9d301448350de15da4ba3b2323bd685d358c
+  specs:
+    icalendar (2.4.1)
+
+GIT
   remote: git://github.com/loomio/private_pub.git
   revision: 38155edf5387a27b0fed1cf6318fcaea59820e35
   specs:
@@ -446,7 +452,6 @@ GEM
       rack
       socksify
     i18n (0.8.1)
-    icalendar (2.4.1)
     inflecto (0.0.2)
     inherited_resources (1.7.0)
       actionpack (>= 3.2, < 5.1)
@@ -781,7 +786,7 @@ DEPENDENCIES
   heroku-deflater
   http_accept_language
   httparty
-  icalendar (~> 2.4.1)
+  icalendar!
   launchy
   mail!
   minitest

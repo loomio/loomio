@@ -1,0 +1,22 @@
+.poll-common-calendar-invite
+  .md-block.poll-common-calendar-invite__checkbox.poll-common-checkbox-option
+    .poll-common-checkbox-option__text.md-list-item-text
+      %h3.lmo-h3{translate: "poll_common_calendar_invite.calendar_invite"}
+      %p.md-caption{translate: "poll_common_calendar_invite.helptext"}
+    %md-checkbox{ng-model: "outcome.calendarInvite"}
+
+  .poll-common-calendar-invite__form{ng-if: "outcome.calendarInvite"}
+    %md-input-container.md-block.poll-common-calendar-invite--pad-top
+      %label{translate: "poll_common_calendar_invite.poll_option_id"}
+      %md-select.lmo-flex__grow{ng-model: "outcome.pollOptionId", aria-label: "{{ 'poll_common_calendar_invite.poll_option_id' | translate }}"}
+        %md-option{ng-repeat: "option in options", ng-value: "option.id"}
+          {{option.value}}
+
+    %md-input-container.md-block.poll-common-calendar-invite--pad-top
+      %label{translate: "poll_common_calendar_invite.location"}
+      %input{type: "text", placeholder: "{{'poll_common_calendar_invite.location_placeholder' | translate}}", ng-model: "outcome.customFields.event_location"}
+
+    %md-input-container.md-block
+      %label{translate: "poll_common_calendar_invite.event_description"}
+      %textarea.md-input.lmo-primary-form-input.poll-common-outcome-form__statement{type: "text", placeholder: "{{'poll_common_calendar_invite.event_description_placeholder' | translate}}", ng-model: "outcome.statement"}
+      %validation_errors{subject: "outcome", field: "statement"}

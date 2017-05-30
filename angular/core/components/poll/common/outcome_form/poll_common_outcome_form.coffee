@@ -6,6 +6,9 @@ angular.module('loomioApp').directive 'pollCommonOutcomeForm', ->
 
     $scope.submit = PollService.submitOutcome $scope, $scope.outcome
 
+    $scope.datesAsOptions = ->
+      PollService.fieldFromTemplate $scope.outcome.poll().pollType, 'dates_as_options'
+
     TranslationService.eagerTranslate $scope,
       statementPlaceholder: 'poll_common_outcome_form.statement_placeholder'
 
