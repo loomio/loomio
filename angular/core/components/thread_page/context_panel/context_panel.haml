@@ -7,7 +7,7 @@
         %translation{translation: "translation", field: "title"}
 
     .context-panel__thread-actions.pull-right.lmo-no-print
-      %outlet{name: "before-thread-actions", model: "discussion"}
+      %outlet.context-panel__before-thread-actions{name: "before-thread-actions", model: "discussion"}
       %span{uib-dropdown: "true",  ng-if: "showContextMenu()"}
         %button.context-panel__dropdown-button.lmo-btn--nude{uib-dropdown-toggle: "true"}
           .sr-only{translate: "thread_context.thread_options"}
