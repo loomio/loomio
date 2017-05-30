@@ -10,6 +10,7 @@ class Communities::Base < ActiveRecord::Base
 
   delegate :user_id, to: :identity, allow_nil: true
   delegate :user, to: :identity, allow_nil: true
+  delegate :identity_type, to: :identity, allow_nil: true
 
   PROVIDERS = YAML.load_file(Rails.root.join("config", "providers.yml"))['community']
   discriminate Communities, on: :community_type

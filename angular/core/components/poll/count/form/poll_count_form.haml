@@ -1,7 +1,7 @@
 .poll-count-form
   %poll_common_tool_tip{poll: "poll"}
 
-  %input{type: "hidden", ng-model: "poll.pollType"}
+  %poll_common_select_group{poll: "poll"}
 
   %md-input-container.md-block
     %label{translate: "poll_common_form.title"}
@@ -19,4 +19,5 @@
   %poll_common_closing_at_field{poll: "poll"}
   .md-input-compensate
     %poll_common_notify_group{model: "poll"}
+    %poll_common_notify_on_participate{poll: "poll"}
   %poll_common_form_actions{poll: "poll", submit: "submit", back: "back"}

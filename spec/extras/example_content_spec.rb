@@ -10,7 +10,7 @@ describe ExampleContent do
     end
 
     it 'creates an example proposal' do
-      expect { subject.add_to_group! }.to change { group.motions.count }.by(1)
+      expect { subject.add_to_group! }.to change { group.polls.count }.by(1)
     end
 
     it 'does not send emails' do

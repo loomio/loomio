@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonShareVisitorForm', (Records, KeyEventService, FlashService) ->
+angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ($translate, Records, KeyEventService, FlashService) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/visitor_form/poll_common_share_visitor_form.html'

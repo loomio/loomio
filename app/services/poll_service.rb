@@ -4,7 +4,7 @@ class PollService
 
     poll.assign_attributes(author: actor)
     poll.community_of_type(:email, build: true)
-    poll.community_of_type(:public, build: true)
+    poll.community_of_type(:public, build: true) unless poll.group.present?
 
     return false unless poll.valid?
     poll.save!
@@ -62,12 +62,19 @@ class PollService
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
     poll.assign_attributes(params.except(:poll_type, :discussion_id, :communities_attributes))
-
+    is_new_version = poll.is_new_version?
     return false unless poll.valid?
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
-    Events::PollEdited.publish!(poll.versions.last, actor, poll.make_announcement)
+    Events::PollEdited.publish!(poll.versions.last, actor, poll.make_announcement) if is_new_version
+  end
+
+  def self.destroy(poll:, actor:)
+    actor.ability.authorize! :destroy, poll
+    poll.destroy
+
+    EventBus.broadcast('poll_destroy', poll, actor)
   end
 
   def self.convert(motions:)

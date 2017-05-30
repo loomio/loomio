@@ -3,14 +3,14 @@ module AngularHelper
   EMOJIS = YAML.load_file(Rails.root.join("config", "emojis.yml")).as_json
 
   def boot_angular_ui
-    redirect_to :browser_not_supported and return if browser.ie? && browser.version.to_i < 10
-    metadata                                      if browser.bot? && respond_to?(:metadata, true)
+    metadata if browser.bot? && respond_to?(:metadata, true)
     app_config
     current_user.update(angular_ui_enabled: true) unless current_user.angular_ui_enabled?
     render 'layouts/angular', layout: false
   end
 
   def client_asset_path(filename)
+    filename = filename.to_s.gsub(".min", '') if Rails.env.development?
     ['', :client, angular_asset_folder, filename].join('/')
   end
 
@@ -53,6 +53,7 @@ module AngularHelper
       emojis: {
         defaults: EMOJIS.fetch('default', []).map { |e| ":#{e}:" }
       },
+      searchFilters: { status: %w(active closed).freeze },
       pendingIdentity: serialized_pending_identity,
       pollTemplates: Poll::TEMPLATES,
       pollColors:    Poll::COLORS,

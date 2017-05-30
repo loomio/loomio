@@ -19,7 +19,6 @@ window.Loomio.routes = [
   {path: '/p/new', component: 'startPollPage'},
   {path: '/p/new/:poll_type', component: 'startPollPage'},
   {path: '/p/:key/', component: 'pollPage'},
-  {path: '/p/:key/share', component: 'sharePollPage'},
   {path: '/p/:key/:stub', component: 'pollPage'},
   {path: '/g/:key/memberships', component: 'membershipsPage'},
   {path: '/g/:key/memberships/:username', component: 'membershipsPage'},
@@ -33,5 +32,6 @@ window.Loomio.routes = [
   {path: '/apps/authorized', component: 'authorizedAppsPage'},
   {path: '/apps/registered', component: 'registeredAppsPage'},
   {path: '/apps/registered/:id', component: 'registeredAppPage'},
-  {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'}
+  {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
+  {path: '/slack/install', component: 'installSlackPage'}
 ]

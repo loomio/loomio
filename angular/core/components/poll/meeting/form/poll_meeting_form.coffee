@@ -9,8 +9,15 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
     $scope.removeOption = (name) ->
       _.pull $scope.poll.pollOptionNames, name
 
+    if $scope.poll.isNew()
+      $scope.poll.closingAt = moment().add(1, 'day')
+      $scope.poll.notifyOnParticipate = true
+      $scope.poll.makeAnnouncement = true if $scope.poll.group()
+
     $scope.submit = PollService.submitPoll $scope, $scope.poll,
-      prepareFn: -> $scope.$broadcast 'addOption'
+      prepareFn: ->
+        $scope.$emit 'processing'
+        $scope.$broadcast 'addOption'
 
     $scope.$on 'timeZoneSelected', (e, zone) ->
       $scope.poll.customFields.time_zone = zone

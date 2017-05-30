@@ -65,33 +65,15 @@ class InvitationService
     invitation.cancel!(canceller: actor)
   end
 
-  def self.shareable_invitation_for(group)
-    if group.invitations.shareable.count == 0
-      Invitation.create!(single_use: false,
-                         intent: 'join_group',
-                         invitable: group)
-    end
-    group.invitations.shareable.first
-  end
+  def self.redeem(invitation, user, identity = nil)
+    raise Invitation::InvitationCancelled   if invitation.cancelled?
+    raise Invitation::InvitationAlreadyUsed if invitation.accepted?
+    invitation.accepted_at = DateTime.now   if invitation.single_use?
 
-  def self.redeem(invitation, user)
-    if invitation.cancelled?
-      raise Invitation::InvitationCancelled
-    end
+    user.associate_with_identity(identity)  if identity.present?
 
-    if invitation.accepted?
-      raise Invitation::InvitationAlreadyUsed
-    end
-
-    if invitation.single_use?
-      invitation.accepted_at = DateTime.now
-    end
-
-    if invitation.to_be_admin?
-      membership = invitation.group.add_admin!(user, invitation.inviter)
-    else
-      membership = invitation.group.add_member!(user, invitation.inviter)
-    end
+    method     = invitation.to_be_admin? ? :add_admin! : :add_member!
+    membership = invitation.group.send(method, user, invitation.inviter)
     invitation.save!
     Events::InvitationAccepted.publish!(membership)
   end

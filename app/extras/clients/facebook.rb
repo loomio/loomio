@@ -36,22 +36,16 @@ class Clients::Facebook < Clients::Base
       success: ->(response) { response['id'] } }
   end
 
+  # NB: this switch sucks, but it's too early to extract to something else
   def scope
     %w(email user_managed_groups publish_actions).freeze
   end
 
+  def client_key_name
+    :app_id
+  end
+
   private
-
-  def permissions_missing
-    ->(response) { { error: "User has not granted all needed permissions" } }
-  end
-
-  def has_all_permissions?
-    ->(response) {
-      response.success? &&
-      (scope - JSON.parse(response.body)['data'].map { |p| p['permission'] if p['status'] == 'granted' }).empty?
-    }
-  end
 
   def token_name
     :access_token

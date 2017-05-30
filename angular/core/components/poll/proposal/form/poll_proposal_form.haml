@@ -1,6 +1,8 @@
 .poll-proposal-form
   %poll_common_tool_tip{poll: "poll"}
 
+  %poll_common_select_group{poll: "poll"}
+
   %md-input-container.md-block
     %label{translate: "poll_common_form.title"}
     %input.lmo-primary-form-input.poll-proposal-form__title{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
@@ -16,4 +18,5 @@
   %poll_common_closing_at_field.md-block{poll: "poll"}
   .md-input-compensate
     %poll_common_notify_group{model: "poll"}
+    %poll_common_notify_on_participate{poll: "poll"}
   %poll_common_form_actions{poll: "poll", submit: "submit", back: "back"}

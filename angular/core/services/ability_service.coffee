@@ -163,6 +163,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     canEditPoll: (poll) ->
       poll.isActive() and @canAdministerPoll(poll)
 
+    canDeletePoll: (poll) ->
+      @canAdministerPoll(poll)
+
     canSetPollOutcome: (poll) ->
       poll.isClosed() and @canAdministerPoll(poll)
 

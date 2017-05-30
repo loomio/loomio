@@ -27,6 +27,25 @@ describe Group do
     end
   end
 
+  context 'logo_or_parent_logo' do
+    it 'returns the group logo if it is a parent' do
+      group = create :group
+      expect(group.logo_or_parent_logo).to eq group.logo
+    end
+
+    it 'returns the parents logo if one does not exist' do
+      parent = create :group, logo: fixture_for('images', 'strongbad.png')
+      group = create :group, parent: parent
+      expect(group.logo_or_parent_logo).to eq parent.logo
+    end
+
+    it 'returns the group logo if one exists' do
+      parent = create :group
+      group = create :group, parent: parent, logo: fixture_for('images', 'strongbad.png')
+      expect(group.logo_or_parent_logo).to eq group.logo
+    end
+  end
+
   context "counter caches" do
     describe 'invitations_count' do
       before do
@@ -264,7 +283,6 @@ describe Group do
 
   describe 'community' do
     it 'creates a new community if one does not exist' do
-      expect(group.community_id).to be_nil
       expect(group.community).to be_a Communities::LoomioGroup
       expect(group.community.group).to eq group
     end

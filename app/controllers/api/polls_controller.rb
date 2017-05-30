@@ -36,7 +36,7 @@ class API::PollsController < API::RestfulController
   end
 
   def search_results_count
-    render json: poll_search.results_count
+    render json: poll_search.perform(search_filters).count
   end
 
   private
@@ -50,7 +50,7 @@ class API::PollsController < API::RestfulController
   end
 
   def search_filters
-    params.slice(:group_key, :status, :user, :query)
+    params.slice(:group_key, :discussion_key, :status, :user, :query)
   end
 
   def default_scope

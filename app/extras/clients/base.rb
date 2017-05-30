@@ -32,11 +32,15 @@ class Clients::Base
     scope.join(',')
   end
 
-  private
+  def client_key_name
+    :client_id
+  end
 
   def scope
     []
   end
+
+  private
 
   def perform(method, path, params, headers, options)
     options.reverse_merge!(
@@ -65,7 +69,10 @@ class Clients::Base
 
   def default_failure
     ->(response) {
-      Airbrake.notify Exception.new(message: "Failed #{self.class.name.demodulize} api request", data: response)
+      Airbrake.notify Exception.new(message: "Failed #{self.class.name.demodulize} api request", data: {
+        response: response,
+        token: @token
+      })
       response
     }
   end

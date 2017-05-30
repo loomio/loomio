@@ -14,4 +14,16 @@ class Pending::InvitationSerializer < Pending::BaseSerializer
   def email
     object.recipient_email
   end
+
+  private
+
+  def has_email?
+    email.present?
+  end
+  alias :include_email_status? :has_email?
+
+  def has_name?
+    name.present?
+  end
+  alias :include_avatar_initials? :has_name?
 end

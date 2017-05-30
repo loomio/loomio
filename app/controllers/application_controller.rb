@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def sign_in(user_or_resource, user = nil)
-    super && handle_pending_actions(user_or_resource)
+    super && handle_pending_actions(user || user_or_resource)
   end
 
   def respond_with_error(message, status: :bad_request)
@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_time_zone(&block)
-    Time.use_zone(current_user.time_zone_city, &block)
+    Time.use_zone(TimeZoneToCity.convert(current_user.time_zone), &block)
   end
 
 end

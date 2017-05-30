@@ -4,19 +4,16 @@ class Clients::Slack < Clients::Base
     get "oauth.access", params: { code: code, redirect_uri: uri }
   end
 
-  def fetch_user_info(id)
-    get "users.info", params: { user: id }, options: {
-      success: ->(response) { response['user'] } }
+  def fetch_user_info
+    get "users.profile.get", options: { success: ->(response) { response['profile'] } }
   end
 
   def fetch_team_info
-    get "team.info", options: {
-      success: ->(response) { response['team'] } }
+    get "team.info", options: { success: ->(response) { response['team'] } }
   end
 
   def fetch_channels
-    get "channels.list", options: {
-      success: ->(response) { response['channels'] } }
+    get "channels.list", options: { success: ->(response) { response['channels'] } }
   end
 
   def post_content!(event)
@@ -29,7 +26,7 @@ class Clients::Slack < Clients::Base
   end
 
   def scope
-    %w(users:read channels:read team:read chat:write:bot commands).freeze
+    %w(users.profile:read channels:read team:read chat:write:bot commands)
   end
 
   private

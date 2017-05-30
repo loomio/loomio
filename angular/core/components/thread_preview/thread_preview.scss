@@ -1,12 +1,12 @@
 .thread-preview {
   @include md-body-1;
+  @include listTransition;
   min-height: $boxMediumSize + ($thinPaddingSize * 2);
   border-bottom: 1px solid $border-color;
   position: relative;
   &.loading-content { padding: 10px; }
   &:hover {
     .thread-preview__actions { display: block; }
-    background-color: $list-hover-color;
   }
 }
 

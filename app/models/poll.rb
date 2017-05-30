@@ -2,6 +2,8 @@ class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasMentions
   include MakesAnnouncements
+  include MessageChannel
+
   TEMPLATES = YAML.load_file(Rails.root.join("config", "poll_templates.yml"))
   COLORS    = YAML.load_file(Rails.root.join("config", "colors.yml"))
   TIMEZONES = YAML.load_file(Rails.root.join("config", "timezones.yml"))
@@ -39,7 +41,7 @@ class Poll < ActiveRecord::Base
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
-  has_many :poll_options, ->(object) { order(object&.poll_option_order) }, dependent: :destroy
+  has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes, dependent: :destroy
@@ -83,6 +85,7 @@ class Poll < ActiveRecord::Base
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
+  validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
   validate :poll_options_are_valid
   validate :closes_in_future
@@ -136,10 +139,6 @@ class Poll < ActiveRecord::Base
     closed_at.nil?
   end
 
-  def poll_option_order
-    if dates_as_options then { name: :asc } else :id end
-  end
-
   def poll_option_names
     poll_options.pluck(:name)
   end
@@ -149,6 +148,11 @@ class Poll < ActiveRecord::Base
     existing = Array(poll_options.pluck(:name))
     (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: priority) }
     @poll_option_removed_names = (existing - names)
+  end
+
+  def is_new_version?
+    !self.poll_options.map(&:persisted?).all? ||
+    (['title', 'details', 'closing_at'] & self.changes.keys).any?
   end
 
   def anyone_can_participate
@@ -163,21 +167,21 @@ class Poll < ActiveRecord::Base
     end
   end
 
-  def discussion=(discussion)
-    super.tap { self.group_id = self.discussion&.group_id }
-  end
-
   def discussion_id=(discussion_id)
     super.tap { self.group_id = self.discussion&.group_id }
   end
 
+  def discussion=(discussion)
+    super.tap { self.group_id = self.discussion&.group_id }
+  end
+
   def group_id=(group_id)
-    return if self[:group_id] == group_id
+    self.group = Group.find_by(id: group_id)
+  end
+
+  def group=(group)
+    sync_poll_communities(group) if self[:group_id] != group&.id
     super
-    poll_communities.where(community: community_of_type(:loomio_group)).destroy_all
-    if g = Group.find_by(id: group_id)
-      poll_communities.build(community: g.community)
-    end
   end
 
   def community_of_type(community_type, build: false)
@@ -185,6 +189,11 @@ class Poll < ActiveRecord::Base
   end
 
   private
+
+  def sync_poll_communities(group)
+    poll_communities.where(community: community_of_type(:loomio_group)).destroy_all
+    poll_communities.build(community: group.community) if group
+  end
 
   def build_community(community_type)
     poll_communities.build(community: "Communities::#{community_type.to_s.camelize}".constantize.new).community

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe PollService do
   let(:poll_created) { build :poll, discussion: discussion }
-  let(:public_poll) { build :poll, anyone_can_participate: true }
+  let(:public_poll) { build :poll }
   let(:private_poll) { build :poll }
   let(:poll) { create :poll, discussion: discussion }
   let(:user) { create :user }
@@ -15,6 +15,7 @@ describe PollService do
   let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name }
+  let(:identity) { create :slack_identity }
 
   before { group.add_member!(user); group.community }
 
@@ -30,12 +31,23 @@ describe PollService do
       expect(poll.communities.map(&:class)).to include Communities::Email
     end
 
-    it 'populates a public poll if anyone_can_participate is true' do
-      PollService.create(poll: public_poll, actor: user)
+    it 'populates a public community if the poll is not part of a group' do
+      poll.discussion = nil
+      PollService.create(poll: poll, actor: user)
 
       poll = Poll.last
       expect(poll.communities.map(&:class)).to include Communities::Public
       expect(poll.communities.map(&:class)).to include Communities::Email
+      expect(poll.anyone_can_participate).to eq true
+    end
+
+    it 'does not populate a public community if the poll is part of a group' do
+      PollService.create(poll: poll, actor: user)
+
+      poll = Poll.last
+      expect(poll.communities.map(&:class)).to_not include Communities::Public
+      expect(poll.communities.map(&:class)).to include Communities::Email
+      expect(poll.anyone_can_participate).to eq false
     end
 
     it 'populates removing custom poll actions' do
@@ -72,6 +84,13 @@ describe PollService do
       expect(poll.group).to eq discussion.group
       expect(group.polls).to include poll
       expect(discussion.polls).to include poll
+    end
+
+    it 'posts to slack if a slack identity is present' do
+      group.community.update(identity: identity)
+      expect { PollService.create(poll: poll_created, actor: user) }.to change { Events::PollPublished.where(kind: :poll_published).count }.by(1)
+      event = Events::PollPublished.where(kind: :poll_published).last
+      expect(event.custom_fields['community_id']).to eq group.community.id
     end
 
     it 'does not allow users to create polls for communities they are not a part of' do
@@ -115,11 +134,53 @@ describe PollService do
       expect(poll_created.reload.title).to eq old_title
     end
 
+    describe 'group_id=' do
+      it 'associates a poll community if changing the group id' do
+        PollService.update(poll: poll_created, params: {group_id: group.id}, actor: user)
+        expect(poll_created.reload.group).to eq group
+        expect(poll_created.communities).to include group.community
+      end
+
+      it 'removes an associated poll community if changing the group id' do
+        poll_created.update(group: group)
+        PollService.update(poll: poll_created, params: {group_id: nil}, actor: user)
+        expect(poll_created.reload.communities).to_not include group.community
+        expect(poll_created.group).to be_nil
+      end
+
+      it 'changes the poll community when changing groups' do
+        poll_created.update(group: another_group)
+        PollService.update(poll: poll_created, params: {group_id: group.id}, actor: user)
+        expect(poll_created.reload.group).to eq group
+        expect(poll_created.group_id).to eq group.id
+        expect(poll_created.communities).to include group.community
+        expect(poll_created.communities).to_not include another_group.community
+      end
+    end
+
     it 'makes an announcement to participants if make_announcement is true' do
       stance
       expect {
         PollService.update(poll: poll_created, params: { details: "A new description", make_announcement: true }, actor: user)
       }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
+    it 'creates a new poll edited event for poll option changes' do
+      expect {
+        PollService.update(poll: poll_created, params: { poll_option_names: ["new_option"] }, actor: user)
+      }.to change { Events::PollEdited.count }.by(1)
+    end
+
+    it 'creates a new poll edited event for major changes' do
+      expect {
+        PollService.update(poll: poll_created, params: { title: "BIG CHANGES!" }, actor: user)
+      }.to change { Events::PollEdited.count }.by(1)
+    end
+
+    it 'does not create a new poll edited event for minor changes' do
+      expect {
+        PollService.update(poll: poll_created, params: { anyone_can_participate: false }, actor: user)
+      }.to_not change { Events::PollEdited.count }
     end
   end
 

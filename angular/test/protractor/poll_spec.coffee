@@ -60,13 +60,13 @@ describe 'Polls', ->
 
   it 'can start a standalone poll', ->
     page.loadPath 'polls/start_poll'
-    page.click '.poll-common-start-poll__poll-type--proposal'
+    page.click '.poll-common-choose-type__poll-type--proposal'
     page.click ".poll-common-tool-tip__collapse"
     page.fillIn '.poll-proposal-form__title', 'A new proposal'
     page.fillIn '.poll-proposal-form__details', 'Some details'
     page.click '.poll-common-form__submit'
 
-    page.click '.poll-common-share-form__ok'
+    page.click '.modal-cancel'
     page.expectText '.poll-common-summary-panel__title', 'A new proposal'
     page.expectText '.poll-common-summary-panel__details', 'Some details'
 
@@ -112,6 +112,6 @@ describe 'Polls', ->
   it 'can invite users via email', ->
     page.loadPath 'polls/test_proposal_poll_share'
     page.fillIn '.poll-common-share-form__add-option-input', 'loo@m.io'
-    page.click '.poll-common-share-form__option-icon'
+    page.click '.poll-common-share-form__option-button'
 
     page.expectFlash 'Invitation email sent to loo@m.io'

@@ -35,6 +35,22 @@ describe InvitationsController do
       end
     end
 
+    context 'with an associated identity' do
+      before { group.community.update(identity: create(:slack_identity)) }
+
+      it 'redirects to the group if a member' do
+        group.add_member! another_user
+        sign_in another_user
+        get :show, id: invitation.token
+        expect(response).to redirect_to group_url(group)
+      end
+
+      it 'redirects to the oauth path if not a member' do
+        get :show, id: invitation.token
+        expect(response).to redirect_to slack_oauth_url(back_to: group_url(group), team: invitation.slack_team_id)
+      end
+    end
+
     context "user not signed in" do
       before do
         get :show, id: invitation.token

@@ -1,11 +1,15 @@
-angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, AppConfig, Records, ModalService, SignedOutModal, FlashService) ->
+angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, AppConfig, Records, AbilityService, ModalService, SignedOutModal, FlashService) ->
   new class MessageChannelService
 
     subscribe: (options = {}) ->
+      return unless AbilityService.isLoggedIn()
       $http.post('/api/v1/message_channel/subscribe', options).then handleSubscriptions
 
     subscribeToGroup: (group) ->
       @subscribe { group_key: group.key }
+
+    subscribeToPoll: (poll) ->
+      @subscribe { poll_key: poll.key }
 
     handleSubscriptions = (subscriptions) ->
       _.each subscriptions.data, (subscription) ->

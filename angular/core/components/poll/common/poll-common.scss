@@ -25,9 +25,7 @@
 .poll-common-vote-form__border-chip {
   border-left: 8px solid;
   padding-left: 8px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  @include truncateText;
   min-height: 48px;
   @include displayFlex;
   align-items: center;
@@ -52,6 +50,10 @@
 .poll-common-vote-form__option {
   min-height: 48px;
   margin-bottom: 16px;
+}
+
+.poll-common-vote-form__option .md-no-style {
+  width: 100%;
 }
 
 .poll-common-vote-form__checkbox {

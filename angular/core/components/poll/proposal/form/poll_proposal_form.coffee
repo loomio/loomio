@@ -4,6 +4,7 @@ angular.module('loomioApp').directive 'pollProposalForm', ->
   controller: ($scope, PollService, AttachmentService, KeyEventService, MentionService, TranslationService) ->
     $scope.submit = PollService.submitPoll $scope, $scope.poll,
       prepareFn: ->
+        $scope.$emit 'processing'
         $scope.poll.pollOptionNames = _.pluck PollService.fieldFromTemplate('proposal', 'poll_options_attributes'), 'name'
 
     TranslationService.eagerTranslate $scope,

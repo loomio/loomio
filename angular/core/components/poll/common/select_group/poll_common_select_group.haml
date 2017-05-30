@@ -1,0 +1,7 @@
+%md-input-container.md-block.poll-common-select-group{ng-if: "!groupIsSet"}
+  %label{translate: "poll_common_select_group.loomio_group"}
+  %md-select.lmo-flex__grow{ng-model: "poll.groupId", aria-label: "{{ 'poll_common_share_group_form.loomio_group' | translate }}"}
+    %md-option{ng-value: "null"}
+      {{ 'poll_common_select_group.loomio_group_placeholder' | translate }}
+    %md-option{ng-repeat: "group in groups() | orderBy:'fullName'", ng-value: "group.id"}
+      {{ group.fullName }}

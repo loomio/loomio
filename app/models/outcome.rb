@@ -14,7 +14,7 @@ class Outcome < ActiveRecord::Base
 
   is_mentionable on: :statement
 
-  validates :statement, presence: true
+  validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option
 
   def has_valid_poll_option

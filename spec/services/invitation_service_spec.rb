@@ -78,4 +78,14 @@ describe InvitationService do
       expect(Invitation.last.send_count).to eq 2
     end
   end
+
+  describe 'redeem_with_identity' do
+    let(:identity) { create :slack_identity }
+    it 'associates the identity with the user' do
+      InvitationService.redeem(invitation, user, identity)
+      expect(identity.reload.user).to eq user
+      expect(user.identities).to include identity
+      expect(user.groups).to include group
+    end
+  end
 end

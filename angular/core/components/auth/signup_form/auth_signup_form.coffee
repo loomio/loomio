@@ -5,9 +5,6 @@ angular.module('loomioApp').directive 'authSignupForm', (AppConfig, AuthService,
     $scope.recaptchaKey = AppConfig.recaptchaKey
     $scope.name         = $scope.user.name
 
-    $scope.back = ->
-      $scope.user.emailStatus = null
-
     $scope.submit = ->
       $scope.$emit 'processing'
       $scope.user.name  = $scope.name

@@ -79,6 +79,7 @@ en:
       retry: Retry
       done: Done
       start: Start
+      delete: Delete
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -121,8 +122,8 @@ en:
 
   previous_polls_page:
     heading: Activities in {{name}}
-    polls_count: Showing {{loaded}} of {{total}} activities
-    search_activities: Search activities
+    polls_count: Showing {{loaded}} of {{total}} decisions
+    search_activities: Search decisions
 
   proposal_collapsed:
     expand: Expand
@@ -314,6 +315,7 @@ en:
     poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
+    stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
 
   position_buttons_panel:
     heading: Have your say
@@ -746,9 +748,8 @@ en:
     heading: Previous proposals
     see_more: See more
 
-  group_previous_polls_card:
-    heading: Previous Activities
-    see_more: "See all: ({{count}}) activities"
+  group_decisions_card:
+    see_more: "See all: ({{count}}) decisions"
 
   invitation_form:
     aria_label: 'Invitation form'
@@ -1324,8 +1325,6 @@ en:
     update_outcome: Update outcome
     outcome: Outcome
     statement: Statement
-    change_your_stance_title: Changed your mind?
-    change_your_stance_text: The best group decisions happen when people work to understand each others position. If what other people have said has changed your mind, change your vote.
     change_your_stance: Change your vote
     load_more: Load more
     details: Details
@@ -1343,17 +1342,37 @@ en:
   poll_common_card:
     show_results: Show results
 
+  poll_common_index_card:
+    title: Previous decisions
+    no_polls: No previous decisions found.
+    count: "See all: ({{count}}) decisions"
+
+  current_polls_card:
+    title: Current decisions
+    start_poll: New decision
+    no_polls: There are no active polls right now.
+
   poll_common_collapsed:
     by_who: "by {{name}}"
+
+  poll_common_select_group:
+    loomio_group: Loomio group
+    loomio_group_placeholder: (no group selected)
 
   poll_common_notify_group:
     notify_group: Announcement
     members_helptext: Your group will not be notified
     members_count: "{{count}} people will be notified"
+    participants_count: "The {{count}} people who have voted will be notified"
+
+  poll_common_notify_on_participate:
+    notify_on_participate: Notify me when people participate
+    helptext_on: You will be notified whenever someone participates
+    helptext_off: You will receive results when this activity closes
 
   poll_common_close_form:
     title: Close a poll early
-    helptext: Are you sure you're ready to close this early?
+    helptext: Are you sure you're ready to close early?
     close_proposal: Close proposal
     close_poll: Close poll
     close_count: Close check
@@ -1386,9 +1405,6 @@ en:
     undecided: Undecided ({{count}})
     show_undecided: Show undecided
 
-  poll_common_accordion:
-    title: Recent activity
-
   poll_common_set_outcome_panel:
     share_outcome: Share outcome
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
@@ -1407,6 +1423,11 @@ en:
 
   poll_common_outcome_panel:
     authored_by: 'By {{name}}'
+
+  poll_common_delete_modal:
+    question: Are you sure you want to delete this?
+    title: Delete decision
+    success: Successfully deleted
 
   poll_common_form:
     title: Title
@@ -1573,28 +1594,21 @@ en:
       poll_created: '<strong>{{author}}</strong> started a check: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> responded:'
       poll_edited: '<strong>{{author}}</strong> edited the check: <span>{{title}}</span>'
-      poll_expired: 'Check finished: <span>{{title}}</span>'
+      poll_expired: 'Check closed: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the check: <span>{{title}}</span>'
 
     dot_vote:
       poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> voted:'
       poll_edited: '<strong>{{author}}</strong> edited the dot vote: <span>{{title}}</span>'
-      poll_expired: 'Dot vote finished: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
-
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> voted:'
-      poll_edited: '<strong>{{author}}</strong> edited the dot vote: <span>{{title}}</span>'
-      poll_expired: 'Dot vote finished: <span>{{title}}</span>'
+      poll_expired: 'Dot vote closed: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
 
     meeting:
       poll_created: '<strong>{{author}}</strong> started a time poll: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> responded:'
       poll_edited: '<strong>{{author}}</strong> edited the time poll: <span>{{title}}</span>'
-      poll_expired: 'Time poll finished: <span>{{title}}</span>'
+      poll_expired: 'Time poll closed: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the time poll: <span>{{title}}</span>'
 
     # outcome
@@ -1606,17 +1620,20 @@ en:
   poll_common_share_form:
     no_group_selected: No group selected
     no_communities: "You haven't connected any communities yet. Click 'add community' below to add one"
-    share_a_link: Shareable link
-    anyone_can_participate: Anyone can participate
+    share_a_link: Share link
+    share_a_link_helptext: Create a shareable link to distribute. Anyone who has access to the link will be able to participate.
+    anyone_can_participate: Anyone with link can participate
     anyone_can_participate_true: Shareable link created
     anyone_can_participate_false: Shareable link revoked
-    set_group: Loomio group updated
+    get_link: Copy link
+    invite_visitor: Invite guest
+    invite_visitor_helptext: Invite individuals to this poll by email address. Guests will be able to participate in this poll only.
+    send_email: Send email
     shareable_link_created: Anyone can now participate in this poll
     shareable_link_revoked: This poll is now invite-only
     shareable_link: Shareable link
     guests_invited: Invited {{count}} guests
     guest_revoked: Revoked access for {{email}}
-    invite_guests: Invite guests
     existing_guests: Existing guests
     new_guests: New emails to invite
     enter_email: "E.g. guest@example.com"
@@ -1625,14 +1642,15 @@ en:
     no_loomio_group: This poll is not currently associated with any Loomio group
     has_loomio_group: Members of this group will be able to view and participate in this poll.
     poll_is_shareable: Copy the link above and share it. Anyone with the link can pariticpate.
-    poll_is_private: Only you invite (or members of a group) will be able to participate.
+    poll_is_private: Only members of the group or people you've invited will be able to participate.
     enter_emails: Enter an email address to send a single use participation link.
     view_poll: View poll
     email_invited: 'Invitation email sent to {{email}}'
     email_exists: '{{email}} has already been invited'
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
-    communities: Connect Community
+    communities: Communities
+    communities_helptext: Invite other communities to this poll. Members of those communities will be able to participate.
     add_facebook_community: Add facebook group
     add_slack_community: Add slack channel
     add_google_community: Link to google calendar
@@ -1689,43 +1707,34 @@ en:
 
   polls_page:
     heading: Decisions
+    heading_with_group: Decisions in {{name}}
     search_placeholder: Search for polls...
     polls_count: Displaying {{count}} of {{total}} polls
     start_new_poll: New decision
+    filter_placeholder: (All polls)
+    groups_placeholder: (All groups)
 
   auth_form:
-    sign_in_to_loomio: Log in or Sign up
+    sign_in_to_loomio: Sign into Loomio
     sign_in: Sign in
-    choose_an_account: "Select an account to authenticate with:"
+    choose_an_account: "Sign in via a third party, or enter your email address to continue."
     more_providers: More
     email_not_present: An email address is required
     invalid_email: "Sorry, that doesn't look like a valid email address"
     invalid_password: "Sorry, that password doesn't match the one we have on file"
     email_not_found: "Sorry, we couldn't find an account with that email address"
-
-    email_helptext: |
-      Have an account already, or don't want to use a third party?
-      Enter your email address instead:
     email_placeholder: you@example.com
     login_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.
       Or, you can set a password to login with, if you don't want to receive an email.
-    login_link_helptext_with_password: |
-      Enter your password below to sign in.
-      Or, we can email you a link to sign in instantly.
-    sign_up_helptext: |
-      Just enter the name you'd like to be known by, and we'll send you a link to log in.
-    oauth_confirm_helptext: |
-      Just confirm your details below, and we'll send you a link to log in.
+    login_link_helptext_with_password: "Enter your password, or sign in via email."
+    sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
+    oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
 
-    sign_in_with_email: Sign in with email
     welcome: Nice to meet you, {{email}}!
     welcome_back: Welcome back, {{name}}!
-    login_link: Send me a login link
+    login_link: Sign in via email
     set_password: Set password
-    set_password_button: Set a password
-    thats_not_me: Is this not you?
-    sign_in_as_someone_else: Sign in as someone else
 
     hello: "Hello, {{name}}!"
     new_to_loomio: New to Loomio? Create a new account
@@ -1741,3 +1750,53 @@ en:
     name: Name
     email: Email
     password: Password
+
+  install_slack:
+    modal_title: Install Slack
+
+    progress:
+      install: Install
+      invite: Invite
+      decide: Decide
+
+    install:
+      heading: 'Step 1: Select a Loomio group to integrate'
+      tooltip_heading: Loomio and Slack work great together
+      it_does_this: Engage users where they are
+      and_also_this: Start polls instantly and get feedback in real time
+      and_also_also_this: Let people know outcome and iterate your thinking quickly
+      add_to_group_helptext: Select a group to link with Slack
+      create_new_group_helptext: Don't have a Loomio group? Simply enter a name and we'll make one for you
+      group_name: Group name
+      group_name_placeholder: Name your new Loomio group...
+      slack_installed: Slack installed
+      install_slack: Install slack now
+      start_new_group: Start a new group
+      use_existing_group: Use an existing group
+
+    invite:
+      heading: 'Step 2: Setup a Slack channel'
+      helptext: |
+        Success! Now, select a channel you'd like us to post updates into.
+      select_a_channel: Select a channel
+      publish_group: Post a welcome message
+      publish_group_helptext_on: We'll post the following message into the given channel to welcome people into your group.
+      group_published_preview: "<strong>{{author}}</strong> has added this Slack team to <strong>{{name}}</strong>. Please <a tabindex='-1' href='#'>click here</a> to start making decisions. Want to learn more about how Loomio works? Type <em>/loomio help</em> into this channel. See you soon!"
+      publish_group_helptext_off: We won't post anything until you create a poll.
+      custom_message: Custom message
+      set_channel: Set channel
+
+    decide:
+      heading: 'Step 3: Make a decision together'
+      helptext: "Now that you're all set up, it's time to start making decisions. Select from one of the options below:"
+
+    common:
+      do_it_later: I'll do this later
+
+  slack_added_modal:
+    title: Success!
+    helptext: |
+      You've successfully added Slack to your Loomio group <strong>{{name}}</strong>.
+      Now, whenever anyone starts a poll in this group, they'll have the option to
+      post updates about that poll into a channel in your slack team.
+    start_poll_now: Make a decision now

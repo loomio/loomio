@@ -7,14 +7,13 @@ class Clients::Google < Clients::Base
   end
 
   def fetch_user_info
-    get "people/me", options: { host: "https://people.googleapis.com/v1" }
+    get "people/me", params: { "requestMask.includeField" => "person.metadata,person.names,person.photos,person.emailAddresses" }
   end
 
   def fetch_calendars
     get "users/me/calendarList", options: {
-      success: ->(response) {
-        response['items'].map { |item| { id: item['etag'], name: item['summary'] } }
-      }
+      success: ->(response) { response['items'].map { |item| { id: item['etag'], name: item['summary'] } } },
+      host: "https://www.googleapis.com/calendar/v3"
     }
   end
 
@@ -33,6 +32,6 @@ class Clients::Google < Clients::Base
   end
 
   def default_host
-    "https://www.googleapis.com/calendar/v3".freeze
+    "https://people.googleapis.com/v1".freeze
   end
 end

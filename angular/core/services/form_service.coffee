@@ -33,6 +33,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
     failure = (scope, model, options) ->
       (response) ->
         FlashService.dismiss()
+        options.failureCallback(response)                       if typeof options.failureCallback is 'function'
         model.setErrors response.data.errors                    if _.contains([401,422], response.status)
         $rootScope.$broadcast errorTypes[response.status] or 'unknownError',
           model: model
@@ -53,7 +54,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
           success(scope, model, options),
           failure(scope, model, options),
         ).finally(
-          cleanup(scope)
+          cleanup(scope, model, options)
         )
 
     upload: (scope, model, options = {}) ->
