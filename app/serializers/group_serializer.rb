@@ -69,7 +69,7 @@ class GroupSerializer < ActiveModel::Serializer
 
   def cover_urls
     {
-      small:  cover_photo.url(:card),
+      small:  cover_photo.url(:desktop),
       medium: cover_photo.url(:desktop),
       large:  cover_photo.url(:largedesktop)
     }
