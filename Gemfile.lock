@@ -446,6 +446,7 @@ GEM
       rack
       socksify
     i18n (0.8.1)
+    icalendar (2.4.1)
     inflecto (0.0.2)
     inherited_resources (1.7.0)
       actionpack (>= 3.2, < 5.1)
@@ -780,6 +781,7 @@ DEPENDENCIES
   heroku-deflater
   http_accept_language
   httparty
+  icalendar (~> 2.4.1)
   launchy
   mail!
   minitest

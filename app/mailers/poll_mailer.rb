@@ -21,11 +21,12 @@ class PollMailer < BaseMailer
       "Auto-Submitted":           :"auto-generated"
     }
 
-    actor = if event.eventable.is_a?(Stance) then event.eventable.participant else event.user end # sorry mom :(
+    attachments = Array(event.attachments)
+
     @info = PollEmailInfo.new(
       recipient:   recipient,
       poll:        event.poll,
-      actor:       actor,
+      actor:       if event.eventable.is_a?(Stance) then event.eventable.participant else event.user end, # sorry mom :(
       eventable:   event.eventable,
       action_name: action_name
     )
