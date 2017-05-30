@@ -145,6 +145,7 @@ Loomio::Application.routes.draw do
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do
       post :close, on: :member
       post :publish, on: :member
+      post :toggle_subscription, on: :member
       get  :closed, on: :collection
       get  :search, on: :collection
       get  :search_results_count, on: :collection
@@ -283,7 +284,7 @@ Loomio::Application.routes.draw do
   get 'd/:key(/:slug)'                     => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'm/:key(/:slug)'                     => 'motions#show',                as: :motion
-  get 'p/:key/share'                       => 'polls#share',                 as: :share_poll
+  get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
   get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/:username/'                       => 'users#show',                  as: :user

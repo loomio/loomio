@@ -1122,6 +1122,11 @@ en:
     media: Media
     health: Health
   start_your_group: Start your group
+  poll_unsubscribe:
+    title: You have been unsubscribed from %{title}
+    helptext: You will no longer receive emails about this decision.
+    visit_poll: View poll
+    go_to_dashboad: Go to dashboard
   webhooks:
     slack:
       poll_created: "*%{author}* started a new poll in *%{name}*"

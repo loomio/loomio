@@ -77,6 +77,19 @@ class PollService
     EventBus.broadcast('poll_destroy', poll, actor)
   end
 
+  def self.toggle_subscription(poll:, actor:)
+    actor.ability.authorize! :toggle_subscription, poll
+
+    unsubscription = poll.poll_unsubscriptions.find_or_initialize_by(user: actor)
+    if unsubscription.persisted?
+      unsubscription.destroy
+    else
+      unsubscription.save!
+    end
+
+    EventBus.broadcast('poll_toggle_subscription', poll, actor)
+  end
+
   def self.convert(motions:)
     # create a new poll from the motion
     Array(motions).map do |motion|

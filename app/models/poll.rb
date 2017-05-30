@@ -40,6 +40,9 @@ class Poll < ActiveRecord::Base
   has_many :visitors, through: :communities
   has_many :attachments, as: :attachable, dependent: :destroy
 
+  has_many :poll_unsubscriptions, dependent: :destroy
+  has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
+
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
   has_many :poll_options, dependent: :destroy
