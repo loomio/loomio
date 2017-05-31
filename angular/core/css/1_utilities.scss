@@ -352,8 +352,10 @@ img.emojione {
 
 @media (max-width: $tiny-max-px) {
   .md-open-menu-container {
-    left: 0 !important;
-    top: 48px !important;
+    left: 0     !important;
+    top: 48px   !important;
+    width: 100%;
+    .md-button { text-align: center; }
   }
 }
 
