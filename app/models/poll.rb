@@ -141,6 +141,10 @@ class Poll < ActiveRecord::Base
     closed_at.nil?
   end
 
+  def is_single_vote?
+    TEMPLATES.dig(self.poll_type, 'single_choice') && !self.multiple_choice
+  end
+
   def poll_option_names
     poll_options.pluck(:name)
   end
