@@ -2,7 +2,8 @@
   .md-block.poll-common-calendar-invite__checkbox.poll-common-checkbox-option
     .poll-common-checkbox-option__text.md-list-item-text
       %h3.lmo-h3{translate: "poll_common_calendar_invite.calendar_invite"}
-      %p.md-caption{translate: "poll_common_calendar_invite.helptext"}
+      %p.md-caption{ng-if: "outcome.calendarInvite", translate: "poll_common_calendar_invite.helptext_on"}
+      %p.md-caption{ng-if: "!outcome.calendarInvite", translate: "poll_common_calendar_invite.helptext_off"}
     %md-checkbox{ng-model: "outcome.calendarInvite"}
 
   .poll-common-calendar-invite__form{ng-if: "outcome.calendarInvite"}
@@ -11,6 +12,12 @@
       %md-select.lmo-flex__grow{ng-model: "outcome.pollOptionId", aria-label: "{{ 'poll_common_calendar_invite.poll_option_id' | translate }}"}
         %md-option{ng-repeat: "option in options", ng-value: "option.id"}
           {{option.value}}
+
+    %md-input-container.md-block.poll-common-calendar-invite--pad-top{ng-if: "!isDateOnly()"}
+      %label{translate: "poll_common_calendar_invite.event_duration"}
+      %md-select.lmo-flex__grow{ng-model: "outcome.customFields.event_duration", aria-label: "{{ 'poll_common_calendar_invite.event_duration' | translate }}"}
+        %md-option{ng-repeat: "duration in durations", ng-value: "duration.minutes"}
+          {{duration.label}}
 
     %md-input-container.md-block.poll-common-calendar-invite--pad-top
       %label{translate: "poll_common_calendar_invite.location"}

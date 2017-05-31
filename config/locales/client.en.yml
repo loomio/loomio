@@ -1368,7 +1368,9 @@ en:
   poll_common_calendar_invite:
     calendar_invite: Include a calendar invitation with this outcome
     poll_option_id: Meeting time
-    helptext: Users will be able to add this meeting to their calendar
+    helptext_on: Users will be able to add this meeting to their calendar
+    helptext_off: No meeting invite will be sent
+    event_duration: Duration
     event_description: Meeting description
     event_description_placeholder: What is the agenda for this meeting?
     location: Location
