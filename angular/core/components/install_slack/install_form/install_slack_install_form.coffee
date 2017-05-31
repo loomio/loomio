@@ -21,7 +21,7 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ($location, Key
           g = Records.groups.find(response.groups[0].key)
           $location.path LmoUrlService.group(g)
           $scope.$emit 'installComplete', g
-    $scope.setSubmit(_.first($scope.groups() or newGroup))
+    $scope.setSubmit(_.first($scope.groups()) or newGroup)
 
     KeyEventService.submitOnEnter $scope, anyEnter: true
     $scope.$on 'focus',  $scope.focus

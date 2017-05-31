@@ -1794,8 +1794,7 @@ en:
         Success! Now, select a channel you'd like us to post updates into.
       select_a_channel: Select a channel
       publish_group: Post a welcome message
-      publish_group_helptext_on: We'll post the following message into the given channel to welcome people into your group.
-      group_published_preview: "<strong>{{author}}</strong> has added this Slack team to <strong>{{name}}</strong>. Please <a tabindex='-1' href='#'>click here</a> to start making decisions. Want to learn more about how Loomio works? Type <em>/loomio help</em> into this channel. See you soon!"
+      publish_group_helptext_on: We'll post the a message into this channel to instruct people how to use LoomioBot.
       publish_group_helptext_off: We won't post anything until you create a poll.
       custom_message: Custom message
       set_channel: Set channel
