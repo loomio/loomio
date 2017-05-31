@@ -2,8 +2,7 @@ class Outcome < ActiveRecord::Base
   extend  HasCustomFields
   include MakesAnnouncements
   include HasMentions
-  include PrettyUrlHelper
-  set_custom_fields :calendar_invite, :event_location
+  set_custom_fields :calendar_invite, :event_location, :event_duration
 
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false
@@ -15,6 +14,7 @@ class Outcome < ActiveRecord::Base
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
   delegate :title, to: :poll
+  delegate :dates_as_options, to: :poll
 
   is_mentionable on: :statement
 
@@ -22,12 +22,7 @@ class Outcome < ActiveRecord::Base
   validate :has_valid_poll_option
 
   def store_calendar_invite
-    self.calendar_invite = Icalendar::Event.new.tap do |event|
-      event.dtstart  = Time.zone.parse(self.poll_option.name).strftime(Icalendar::Values::DateTime::FORMAT)
-      event.summary  = self.statement
-      event.location = self.event_location
-      event.url      = poll_url(self.poll)
-    end.to_ical if self.poll_option.present? && self.poll.dates_as_options
+    self.calendar_invite = CalendarInvite.new(self).to_ical
   end
 
   def has_valid_poll_option
