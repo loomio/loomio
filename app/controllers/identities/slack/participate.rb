@@ -15,7 +15,7 @@ module Identities::Slack::Participate
 
   def respond_with_poll_closed
     return unless !participate_poll.active?
-    ::Slack::PollClosedSerializer.new(participate_poll).as_json
+    ::Slack::PollClosedSerializer.new(participate_poll, root: false).as_json
   end
 
   def respond_with_invitation
