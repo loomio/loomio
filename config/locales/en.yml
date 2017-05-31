@@ -1169,11 +1169,12 @@ en:
       - I'll keep a record of decisions in your Loomio group.
 
       To find out more, type _/loomio help_
+    request_authorization_message: "Just one more step: <%{url}|Click here> to authorize your slack account to use Loomio. (You'll only have to do this once)"
+    poll_closed: "*%{title}* has closed already! <%{url}|Click here> to view the results."
     go_to_slack: Go to Slack
     stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you''d like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
     time_zone_message: all times are in the %{zone} time zone
     authorized_message: Success! You're all set up to vote on slack now.
-    request_authorization_message: "Looks like you haven't authorized your slack account with Loomio yet! Please <%{url}|click here> to do so."
     community_poll_published: "@%{username} started a new %{type}:"
     initiate: |
       Okay, let's do this! <%{url}|Click here to start your %{type}>.
