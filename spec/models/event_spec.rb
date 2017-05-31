@@ -490,6 +490,8 @@ describe Event do
   end
 
   describe 'outcome_created' do
+    let(:poll_meeting) { create :poll_meeting, discussion: discussion }
+
     it 'makes an announcement' do
       outcome.make_announcement = true
       expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
@@ -531,6 +533,17 @@ describe Event do
       notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
       expect(notification_users.length).to eq 1
       expect(notification_users).to include user_mentioned
+    end
+
+    it 'can send an ical attachment' do
+      outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
+      outcome.make_announcement = true
+      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
+      mail = ActionMailer::Base.deliveries.last
+      expect(mail.attachments).to have(1).attachment
+      expect(mail.attachments.first).to be_a Mail::Part
+      expect(mail.attachments.first.content_type).to match /application\/ics/
+      expect(mail.attachments.first.filename).to eq 'event.ics'
     end
   end
 

@@ -10,10 +10,6 @@ module Events::PollEvent
     PollMailer
   end
 
-  def attachments
-    []
-  end
-
   private
 
   def communities

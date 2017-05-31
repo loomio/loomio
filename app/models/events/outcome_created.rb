@@ -9,9 +9,4 @@ class Events::OutcomeCreated < Event
            discussion: outcome.poll.discussion,
            created_at: outcome.created_at).tap { |e| EventBus.broadcast('outcome_created_event', e) }
   end
-
-  def attachments
-    return unless ics = eventable.calendar_invite
-    {"event.ics": { mime_type: 'text/calendar', content: ics } }
-  end
 end
