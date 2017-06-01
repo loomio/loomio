@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonShareEmailForm', ($translate, FlashService, KeyEventService) ->
+angular.module('loomioApp').directive 'pollCommonShareEmailForm', ($translate, Records, FlashService, KeyEventService) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/email_form/poll_common_share_email_form.html'
@@ -26,7 +26,7 @@ angular.module('loomioApp').directive 'pollCommonShareEmailForm', ($translate, F
         $scope.add()
         $scope.poll.createVisitors().then ->
           FlashService.success 'poll_common_share_form.guests_invited', count: $scope.poll.customFields.pending_emails.length
-          $scope.$emit '$close'
+          $scope.$emit 'refreshPoll'
 
     $scope.checkEmailNotEmpty = ->
       if $scope.newEmail.length <= 0

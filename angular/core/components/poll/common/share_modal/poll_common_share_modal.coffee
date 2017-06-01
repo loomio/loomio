@@ -3,7 +3,5 @@ angular.module('loomioApp').factory 'PollCommonShareModal', (PollService) ->
   controller: ($scope, poll) ->
     $scope.poll = poll.clone()
 
-    $scope.$on '$close', $scope.$close
-
     $scope.icon = ->
       PollService.iconFor($scope.poll)
