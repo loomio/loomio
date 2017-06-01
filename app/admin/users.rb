@@ -43,7 +43,7 @@ ActiveAdmin.register User do
   member_action :delete_spam, method: :post do
     user = User.friendly.find(params[:id])
     UserService.delete_spam(user)
-    redirect_to admin_users_url, notice: 'User and the groups they created deleted'
+    redirect_to admin_users_path, notice: 'User and the groups they created deleted'
   end
 
   member_action :update, :method => :put do
@@ -54,7 +54,7 @@ ActiveAdmin.register User do
     user.is_admin = params[:user][:is_admin]
     user.angular_ui_enabled = params[:user][:angular_ui_enabled]
     user.save
-    redirect_to admin_users_url, :notice => "User updated"
+    redirect_to admin_users_path, :notice => "User updated"
   end
 
   show do |user|
@@ -113,19 +113,19 @@ ActiveAdmin.register User do
   member_action :deactivate, method: :put do
     user = User.friendly.find(params[:id])
     user.deactivate!
-    redirect_to admin_users_url, :notice => "User account deactivated"
+    redirect_to admin_users_path, :notice => "User account deactivated"
   end
 
   member_action :reactivate, method: :put do
     user = User.friendly.find(params[:id])
     user.reactivate!
-    redirect_to admin_users_url, :notice => "User account activated"
+    redirect_to admin_users_path, :notice => "User account activated"
   end
 
   member_action :reset_password, method: :post do
     user = User.friendly.find(params[:id])
     raw = user.send(:set_reset_password_token)
 
-    render text: edit_user_password_url(reset_password_token: raw)
+    render text: edit_user_password_path(reset_password_token: raw)
   end
 end
