@@ -45,7 +45,7 @@ class API::PollsController < API::RestfulController
   end
 
   def create_visitors
-    service.create_visitors(poll: load_resource, emails: params.require(:emails).split(','), actor: current_user)
+    service.create_visitors(poll: load_resource, emails: params.require(:emails), actor: current_user)
     respond_with_resource
   end
 
