@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonShareEmailForm', (KeyEventService) ->
+angular.module('loomioApp').directive 'pollCommonShareEmailForm', ($translate, KeyEventService) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/email_form/poll_common_share_email_form.html'

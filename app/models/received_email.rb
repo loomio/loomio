@@ -9,9 +9,17 @@ class ReceivedEmail
   attr_accessor :locale
 
   def save
-    UserMailer.start_decision(received_email: self).deliver_now
+    if valid?
+      UserMailer.start_decision(received_email: self).deliver_now
+    else
+      # send failure email
+    end
   end
   alias :save! :save
+
+  def valid?
+    email_addresses.length <= Rails.application.secrets.max_pending_emails
+  end
 
   def email_addresses
     body.scan(EMAIL_REGEX).uniq.reject { |email| email == self.sender_email.scan(EMAIL_REGEX) }

@@ -2,7 +2,8 @@ module Events::EmailUser
 
   # send event emails
   def email_users!
-    email_recipients.without(user).each { |recipient| email_user!(recipient) }
+    email_recipients.without(user).each   { |recipient| email_user!(recipient) }
+    email_visitors.can_receive_email.each { |recipient| email_user!(recipient) }
   end
   handle_asynchronously :email_users!
 
@@ -21,6 +22,10 @@ module Events::EmailUser
   # (NB: This must return an ActiveRecord::Relation)
   def email_recipients
     User.none
+  end
+
+  def email_visitors
+    Visitor.none
   end
 
 end

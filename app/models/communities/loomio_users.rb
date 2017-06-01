@@ -1,5 +1,6 @@
 class Communities::LoomioUsers < Communities::Base
-  include Communities::NotifyLoomioGroup
+  include Communities::NotifyInApp
+  include Communities::NotifyViaEmail
   set_community_type :loomio_users
   set_custom_fields  :loomio_user_ids
 
