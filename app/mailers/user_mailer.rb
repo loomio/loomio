@@ -66,4 +66,11 @@ class UserMailer < BaseMailer
                      subject_key: "email.login.subject",
                      locale: locale_for(@user)
   end
+
+  def start_decision(received_email:)
+    @email = received_email
+    send_single_mail to: @email.sender_email,
+                     subject_key: "email.start_decision.subject",
+                     locale: locale_for(@email)
+  end
 end

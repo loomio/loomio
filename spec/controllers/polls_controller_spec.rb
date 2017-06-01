@@ -12,6 +12,17 @@ describe PollsController do
   let(:another_community) { create :facebook_community, identifier: "fb_two" }
   let(:another_poll) { create :poll }
   let(:closed_poll) { create :poll, author: user, closed_at: 1.day.ago }
+  let(:received_email) { create :received_email }
+
+  describe 'new' do
+    it 'can find a received email' do
+      get :new, received_email_token: received_email.token
+      expect(response.status).to eq 200
+      expect(assigns(:appConfig)[:received_email]).to be_present
+      expect(assigns(:appConfig)[:received_email][:email_addresses]).to include "tim@example.com"
+      expect(assigns(:appConfig)[:received_email][:email_addresses]).to include "beth@example.com"
+    end
+  end
 
   describe 'show' do
     it 'sets metadata for public polls' do
