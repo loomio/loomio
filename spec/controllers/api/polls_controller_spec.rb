@@ -385,7 +385,7 @@ describe API::PollsController do
 
     it 'does not send emails to the author' do
       sign_in poll.author
-      expect { post :create_visitors, id: poll.key, emails: [poll.author.email] }.to_not change { ActionMailer::Base.deliveries.count }
+      expect { post :create_visitors, id: poll.key, emails: poll.author.email }.to_not change { ActionMailer::Base.deliveries.count }
       expect(response.status).to eq 200
     end
 

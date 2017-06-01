@@ -1643,13 +1643,13 @@ en:
     anyone_can_participate_true: Shareable link created
     anyone_can_participate_false: Shareable link revoked
     get_link: Copy link
-    invite_visitor: Invite guest
+    invite_visitor: Email guests
     invite_visitor_helptext: Invite individuals to this poll by email address. Guests will be able to participate in this poll only.
     send_email: Send email
     shareable_link_created: Anyone can now participate in this poll
     shareable_link_revoked: This poll is now invite-only
     shareable_link: Shareable link
-    guests_invited: Invited {{count}} guests
+    guests_invited: Sent to {{count}} people
     guest_revoked: Revoked access for {{email}}
     existing_guests: Existing guests
     new_guests: New emails to invite
