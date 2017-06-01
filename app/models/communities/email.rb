@@ -1,5 +1,5 @@
 class Communities::Email < Communities::Base
-  include Communities::NotifyViaEmail
+  include Communities::Notify::Visitors
   set_community_type :email
 
   def add_members!(emails)

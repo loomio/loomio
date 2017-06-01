@@ -1,6 +1,6 @@
 module Events::PollEvent
-  include Events::NotifyUser
-  include Events::EmailUser
+  include Events::Notify::InApp
+  include Events::Notify::Users
 
   def poll
     @poll ||= eventable.poll

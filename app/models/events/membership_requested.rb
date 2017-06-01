@@ -1,6 +1,6 @@
 class Events::MembershipRequested < Event
-  include Events::NotifyUser
-  include Events::EmailUser
+  include Events::Notify::InApp
+  include Events::Notify::Users
 
   def self.publish!(membership_request)
     create(kind: "membership_requested",

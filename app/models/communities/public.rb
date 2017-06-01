@@ -1,5 +1,5 @@
 class Communities::Public < Communities::Base
-  include Communities::NotifyViaEmail
+  include Communities::Notify::Visitors
   set_community_type :public
 
   def includes?(participant)

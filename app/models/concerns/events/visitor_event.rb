@@ -1,5 +1,5 @@
 module Events::VisitorEvent
-  include Events::EmailUser
+  include Events::Notify::Users
 
   def mailer
     PollMailer
