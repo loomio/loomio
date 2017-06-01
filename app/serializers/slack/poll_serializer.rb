@@ -27,7 +27,7 @@ class Slack::PollSerializer < Slack::BaseSerializer
   end
 
   def last_attachment
-    return super unless poll.active?
+    return super unless poll.active? && poll.dates_as_options
     [{ text: I18n.t(:"slack.time_zone_message", zone: poll.custom_fields['time_zone']) }]
   end
 
