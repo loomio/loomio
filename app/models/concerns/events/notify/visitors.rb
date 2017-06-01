@@ -1,11 +1,17 @@
 module Events::Notify::Visitors
-  include Events::Notify::Email
 
   # send event emails to visitors
   def email_visitors!
-    email_visitors.can_receive_email.each { |recipient| email_visitor!(recipient) }
+    email_visitors.can_receive_email.each do |recipient|
+      mailer.delay.send(event.kind, recipient, self)
+    end
   end
   handle_asynchronously :email_visitors!
+
+  # which mailer should be used to send emails about this event?
+  def mailer
+    ThreadMailer
+  end
 
   private
 
