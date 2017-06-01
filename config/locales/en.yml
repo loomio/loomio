@@ -1177,7 +1177,8 @@ en:
     poll_closed: "*%{title}* has closed already! <%{url}|Click here> to view the results."
     go_to_slack: Go to Slack
     stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you''d like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
-    time_zone_message: all times are in the %{zone} time zone
+    click_to_vote: "Select an option below to vote:"
+    time_zone_message: (all times are in the %{zone} time zone)
     authorized_message: Success! You're all set up to vote on slack now.
     community_poll_published: "@%{username} started a new %{type}:"
     initiate: |

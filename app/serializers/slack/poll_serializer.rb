@@ -1,12 +1,17 @@
 class Slack::PollSerializer < Slack::BaseSerializer
   private
 
-  def last_attachment
-    super.tap do |att|
-      if poll.dates_as_options
-        att[:footer] = I18n.t(:"slack.time_zone_message", zone: poll.custom_fields['time_zone'])
-        att[:ts]     = nil
-      end
+  def first_attachment
+    return super unless poll.active?
+    super.merge(footer: I18n.t(:"slack.click_to_vote"))
+  end
+
+  def footer
+    return unless poll.active?
+    if poll.dates_as_options
+      :click_to_vote_with_time_zone
+    else
+      :click_to_vote
     end
   end
 
@@ -14,10 +19,16 @@ class Slack::PollSerializer < Slack::BaseSerializer
     return unless poll.active? && !poll.is_single_vote?
     poll.poll_options.map do |option|
       {
-        author_name: option.display_name,
-        author_link: poll_url(poll, default_url_options.merge(poll_option_id: option.id))
+        color:      option.color,
+        title:      option.display_name,
+        title_link: poll_url(poll, default_url_options.merge(poll_option_id: option.id))
       }
     end
+  end
+
+  def last_attachment
+    return super unless poll.active?
+    [{ text: I18n.t(:"slack.time_zone_message", zone: poll.custom_fields['time_zone']) }]
   end
 
   def actions

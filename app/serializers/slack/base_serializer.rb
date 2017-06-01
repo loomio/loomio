@@ -33,21 +33,15 @@ class Slack::BaseSerializer < ActiveModel::Serializer
       title_link:  model_url,
       text:        slack_text,
       callback_id: object.eventable_id,
-      actions:     actions,
+      actions:     actions
     }.compact
-  end
-
-  def last_attachment
-    {
-      ts: object.created_at.to_i,
-      fields: [{
-        value: "<#{model_url}|#{I18n.t(:"webhooks.slack.view_it_on_loomio")}>"
-      }]
-    }
   end
 
   def additional_attachments
     # override to add additional attachments to the slack post
+  end
+
+  def last_attachment
   end
 
   def actions
