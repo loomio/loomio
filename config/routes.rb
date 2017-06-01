@@ -232,6 +232,7 @@ Loomio::Application.routes.draw do
     post :webhook
   end
 
+  resources :received_emails, only: :create
   resources :invitations, only: [:show]
   resources :login_tokens, only: [:show]
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
@@ -277,7 +278,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
   get 'g/:key/previous_polls'              => 'application#boot_angular_ui', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui', as: :group_memberships_username
-  get 'p/new(/:type)'                      => 'polls#new',                   as: :new_poll
+  get 'p/new(/:type)'                      => 'application#boot_angular_ui', as: :new_poll
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
