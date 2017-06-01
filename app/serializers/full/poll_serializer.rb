@@ -9,6 +9,10 @@ class Full::PollSerializer < ::PollSerializer
     true
   end
 
+  def my_stance
+    object.stances.latest.find_by(participant: scope[:current_user]) if scope[:current_user]
+  end
+
   def removed_poll_option_ids
     object.poll_option_attributes.select { |attr| attr[:_destroy] }.map { |attr| attr[:id] }
   end
