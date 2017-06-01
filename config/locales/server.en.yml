@@ -30,6 +30,10 @@ en:
         However, your password will not be changed until you follow the link above and complete the form.
         If you continue to have problems logging in, reply to this email to contact a support person.
 
+    start_decision:
+      subject: Start a decision on Loomio
+      intro: Select a type of decision to make below
+
     custom: "%{text}"
     group_email:
       intro: "%{who} made an announcement to %{group}:"

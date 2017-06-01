@@ -1,8 +1,6 @@
 class ReceivedEmailsController < ApplicationController
   def create
-    @email = ReceivedEmail.new(received_email_params)
-    if @email.valid?
-      UserMailer.start_decision(received_email: @email).deliver_now
+    if ReceivedEmail.new(received_email_params).save
       head :ok
     else
       # airbrake here?
