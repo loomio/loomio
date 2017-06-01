@@ -1157,7 +1157,11 @@ en:
         abstain: abstained on
         block: blocked
   slack:
-    join_loomio_group: |
+    poll_published: "New decision in *%{group}*: *%{poll}*"
+    outcome_published: "New outcome in *%{group}*: *%{poll}*"
+    poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
+    poll_expired: "*%{poll}* has closed"
+    group_published: |
       Hello, I'm Loomio Bot. *%{author}* added me.
 
       I'm here to support your team to make decisions together by:

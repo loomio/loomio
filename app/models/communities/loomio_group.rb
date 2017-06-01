@@ -10,7 +10,12 @@ class Communities::LoomioGroup < Communities::Base
   alias :channel :slack_channel_id
 
   def to_user_community
-    Communities::LoomioUsers.new(loomio_user_ids: group.member_ids, identifier: identifier)
+    Communities::LoomioUsers.new(
+      loomio_user_ids: group.member_ids,
+      identity: identity,
+      identifier: identifier,
+      custom_fields: custom_fields
+    )
   end
 
   def group

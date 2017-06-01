@@ -1,4 +1,4 @@
-module Slack::EphemeralMessage
+module Slack::Ephemeral::Message
   extend ActiveSupport::Concern
   included { attributes :response_type, :replace_original }
 

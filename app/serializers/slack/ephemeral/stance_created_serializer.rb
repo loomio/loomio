@@ -1,5 +1,5 @@
-class Slack::StanceCreatedSerializer < Slack::BaseSerializer
-  include Slack::EphemeralMessage
+class Slack::Ephemeral::StanceCreatedSerializer < Slack::BaseSerializer
+  include Slack::Ephemeral::Message
 
   def text
     I18n.t(:"slack.stance_created", {

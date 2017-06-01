@@ -3,7 +3,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   attributes :text, :username, :icon_url, :channel, :attachments
 
   def text
-    object.custom_fields['message']
+    I18n.t(:"slack.#{object.kind}", text_options)
   end
 
   def username
@@ -15,30 +15,35 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def channel
-    community.channel
+    object.eventable.group.community.channel
   end
 
   def attachments
-    [first_attachment, additional_attachments].flatten.to_json
+    [first_attachment, additional_attachments, last_attachment].flatten.compact.to_json
   end
 
   private
 
   def first_attachment
     {
-      author_name: object.user.name,
-      author_link: user_url(object.user, default_url_options),
-      author_icon: object.user.avatar_url(:small),
+      author_name: author.name,
+      author_link: polymorphic_url(author, link_options),
+      author_icon: author.avatar_url(:small),
       title:       slack_title,
       title_link:  model_url,
       text:        slack_text,
-      ts:          object.created_at.to_i,
       callback_id: object.eventable_id,
-      fields: [{
-        value: "<#{model_url}|#{I18n.t(:"webhooks.slack.view_it_on_loomio")}>"
-      }],
       actions:     actions,
     }.compact
+  end
+
+  def last_attachment
+    {
+      ts: object.created_at.to_i,
+      fields: [{
+        value: "<#{model_url}|#{I18n.t(:"webhooks.slack.view_it_on_loomio")}>"
+      }]
+    }
   end
 
   def additional_attachments
@@ -51,10 +56,6 @@ class Slack::BaseSerializer < ActiveModel::Serializer
 
   def include_text?
     text.present?
-  end
-
-  def community
-    @community ||= Communities::Base.find(object.custom_fields['community_id'])
   end
 
   def slack_title(text = nil, params = {})
@@ -70,26 +71,23 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def model
-    @model || object.eventable
-  end
-
-  def author_url
-    polymorphic_url(object.user, link_options)
+    @model ||= object.eventable
   end
 
   def model_url
     polymorphic_url(model, link_options)
   end
 
+  def author
+    @author ||= object.user || model.author
+  end
+
   def text_options
-    {
-      author:     object.user.name,
-      discussion: object.eventable.discussion&.title
-    }
+    { author: object.user.name }
   end
 
   def link_options
-    default_url_options.merge(identifier: community.channel)
+    default_url_options.merge(identifier: channel)
   end
 
 end
