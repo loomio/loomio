@@ -4,7 +4,8 @@ angular.module('loomioApp').controller 'StartPollPageController', ($scope, $loca
     title:         $location.search().title
     pollType:      $routeParams.poll_type
     communityId:   $location.search().community_id
-    visitorEmails: ($location.search().visitor_emails || "").split(',')
+    customFields:
+      pending_emails: ($location.search().pending_emails || "").split(',')
 
   @icon = ->
     PollService.iconFor(@poll)

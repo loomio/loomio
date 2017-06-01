@@ -30,7 +30,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       closingAt: moment().add(3, 'days').startOf('hour')
       pollOptionNames: []
       pollOptionIds: []
-      visitorEmails: []
       customFields: {}
 
     serialize: ->
@@ -126,6 +125,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     publish: (community, message) =>
       @remote.postMember(@key, 'publish', community_id: community.id, message: message).then =>
         @published = true
+
+    createVisitors: ->
+      @remote.postMember(@key, 'create_visitors', emails: @customFields.pending_emails.join(','))
 
     toggleSubscription: =>
       @remote.postMember(@key, 'toggle_subscription')

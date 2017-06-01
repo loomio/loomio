@@ -1,0 +1,22 @@
+%section
+  .lmo-flex
+    %h3.lmo-h3{translate: "poll_common_share_email_form.label"}
+    %help_bubble{helptext: "poll_common_share_email_form.helptext"}
+
+  %md-list.md-block
+    %md-list-item.poll-common-share-form__emails{ng-if: "poll.customFields.pending_emails.length", layout: "column"}
+      .poll-common-share-form__visitor.lmo-flex{ng-repeat: "email in poll.customFields.pending_emails track by $index"}
+        .poll-common-share-form__email.lmo-flex__grow {{email}}
+        %md-button.lmo-inline-action{ng-click: "remove(email)"}
+          %i.material-icons clear
+
+    %md-list-item.poll-common-share-form__add-option{flex: "true", layout: "row"}
+      %md-input-container.lmo-flex__grow{md-no-float: "true"}
+        %input.poll-common-share-form__add-option-input{type: "text", ng-disabled: "processing", placeholder: "{{ 'poll_common_share_form.enter_email' | translate }}", ng-model: "newEmail"}
+      %div
+        %md-button.md-primary.md-raised.poll-common-share-form__button.poll-common-share-form__option-button{ng-click: "add()", ng-disabled: "poll.customFields.pending_emails.length == 0", aria-label: "{{ 'poll_common_share_form.enter_email' | translate }}"}
+          %i.material-icons add
+    .clearfix
+    .lmo-validation-error {{ emailValidationError }}
+  %md-button.md-primary.md-raised.poll-common-share-form__button.poll-common-share-form__option-button{ng-disabled: "poll.customFields.pending_emails.length == 0", ng-click: "submit()", aria-label: "{{ 'poll_common_share_form.send_email' | translate }}"}
+    %span{translate: "poll_common_share_form.send_email"}
