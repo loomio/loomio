@@ -783,15 +783,6 @@ ActiveRecord::Schema.define(version: 20170531224036) do
   add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
   add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
 
-  create_table "received_emails", force: :cascade do |t|
-    t.string   "token"
-    t.text     "headers"
-    t.text     "body"
-    t.string   "sender_email", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"
     t.integer  "poll_option_id"

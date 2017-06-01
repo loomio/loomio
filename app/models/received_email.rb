@@ -1,10 +1,10 @@
-class ReceivedEmail < ActiveRecord::Base
-  has_secure_token
-
+class ReceivedEmail
+  include ActiveModel::Model
   EMAIL_REGEX = /[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/
 
-  validates :sender_email, presence: true
-
+  attr_accessor :sender_email
+  attr_accessor :headers
+  attr_accessor :body
   attr_accessor :subject
 
   def locale
