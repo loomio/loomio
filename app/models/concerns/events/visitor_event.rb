@@ -1,5 +1,5 @@
 module Events::VisitorEvent
-  include Events::Notify::Users
+  include Events::Notify::Visitors
 
   def mailer
     PollMailer
@@ -11,7 +11,7 @@ module Events::VisitorEvent
 
   private
 
-  def email_recipients
+  def email_visitors
     Visitor.where(id: self.eventable_id)
   end
 

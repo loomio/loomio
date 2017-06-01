@@ -3,7 +3,7 @@ module Events::Notify::Visitors
   # send event emails to visitors
   def email_visitors!
     email_visitors.can_receive_email.each do |recipient|
-      mailer.delay.send(event.kind, recipient, self)
+      mailer.delay.send(kind, recipient, self)
     end
   end
   handle_asynchronously :email_visitors!
