@@ -1,4 +1,4 @@
-module Events::NotifyUser
+module Events::Notify::InApp
   include PrettyUrlHelper
 
   # send event notifications

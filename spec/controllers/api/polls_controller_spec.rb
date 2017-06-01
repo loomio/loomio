@@ -372,4 +372,32 @@ describe API::PollsController do
       expect { post :toggle_subscription, id: poll.key }.to_not change { poll.unsubscribers.count }
     end
   end
+
+  describe 'create_visitors' do
+    let(:pending_emails) { 'one@one.com,two@two.com' }
+    let(:poll) { create :poll, custom_fields: { pending_emails: pending_emails } }
+
+    it 'can create some visitors' do
+      sign_in poll.author
+      expect { post :create_visitors, id: poll.key, emails: pending_emails }.to change { Visitor.count }.by(2)
+      expect(response.status).to eq 200
+    end
+
+    it 'does not send emails to the author' do
+      sign_in poll.author
+      expect { post :create_visitors, id: poll.key, emails: poll.author.email }.to_not change { ActionMailer::Base.deliveries.count }
+      expect(response.status).to eq 200
+    end
+
+    it 'sends emails to each visitor' do
+      sign_in poll.author
+      expect { post :create_visitors, id: poll.key, emails: pending_emails }.to change { ActionMailer::Base.deliveries.count }.by(2)
+    end
+
+    it 'does not allow someone other than the poll author to create visitors' do
+      sign_in create(:user)
+      expect { post :create_visitors, id: poll.key, emails: pending_emails }.to_not change { Visitor.count }
+      expect(response.status).to eq 403
+    end
+  end
 end

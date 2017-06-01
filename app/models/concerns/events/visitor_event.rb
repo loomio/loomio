@@ -1,4 +1,5 @@
 module Events::VisitorEvent
+  include Events::Notify::Visitors
 
   def mailer
     PollMailer
@@ -9,6 +10,10 @@ module Events::VisitorEvent
   end
 
   private
+
+  def email_visitors
+    Visitor.where(id: self.eventable_id)
+  end
 
   def communities
     Array(eventable&.community)

@@ -1,7 +1,7 @@
 class Events::CommentRepliedTo < Event
+  include Events::Notify::InApp
+  include Events::Notify::Users
   include Events::LiveUpdate
-  include Events::NotifyUser
-  include Events::EmailUser
 
   def self.publish!(comment)
     return unless comment.parent && comment.parent.author != comment.author

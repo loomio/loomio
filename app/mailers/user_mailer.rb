@@ -1,7 +1,7 @@
 class UserMailer < BaseMailer
   helper :email
   helper :application
-  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login]
+  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login, :start_decision]
 
   def missed_yesterday(user, time_since = nil)
     @recipient = @user = user
@@ -65,5 +65,12 @@ class UserMailer < BaseMailer
     send_single_mail to: @user.email,
                      subject_key: "email.login.subject",
                      locale: locale_for(@user)
+  end
+
+  def start_decision(received_email:)
+    @email = received_email
+    send_single_mail to: @email.sender_email,
+                     subject_key: "email.start_decision.subject",
+                     locale: locale_for(@email)
   end
 end

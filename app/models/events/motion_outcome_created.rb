@@ -1,7 +1,7 @@
 class Events::MotionOutcomeCreated < Event
+  include Events::Notify::InApp
+  include Events::Notify::Users
   include Events::LiveUpdate
-  include Events::NotifyUser
-  include Events::EmailUser
   include Events::JoinDiscussion
 
   def self.publish!(motion)

@@ -1,8 +1,10 @@
-module Events::EmailUser
+module Events::Notify::Users
 
   # send event emails
   def email_users!
-    email_recipients.without(user).each { |recipient| email_user!(recipient) }
+    email_recipients.without(user).each do |recipient|
+      mailer.delay.send(kind, recipient, self)
+    end
   end
   handle_asynchronously :email_users!
 
@@ -13,14 +15,9 @@ module Events::EmailUser
 
   private
 
-  def email_user!(recipient)
-    mailer.delay.send(kind, recipient, self)
-  end
-
   # which users should receive an email about this event?
   # (NB: This must return an ActiveRecord::Relation)
   def email_recipients
     User.none
   end
-
 end
