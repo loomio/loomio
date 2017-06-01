@@ -11,11 +11,10 @@ class Communities::LoomioGroup < Communities::Base
 
   def to_user_community
     Communities::LoomioUsers.new(
-      loomio_user_ids: group.member_ids,
+      custom_fields: custom_fields,
       identity: identity,
-      identifier: identifier,
-      custom_fields: custom_fields
-    )
+      identifier: identifier
+    ).tap { |c| c.loomio_user_ids = group.member_ids }
   end
 
   def group
