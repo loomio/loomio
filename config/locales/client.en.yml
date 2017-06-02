@@ -1772,7 +1772,7 @@ en:
 
     card:
       title: Connected to Slack
-      helptext: This group has been connected to the slack team <strong>{{team}}</strong>. Events from this group will appear in the <strong>{{channel}}</strong> channel.
+      helptext: This group has been connected to the slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Events from this group will appear in the <strong>{{channel}}</strong> channel.
 
     progress:
       install: Install
