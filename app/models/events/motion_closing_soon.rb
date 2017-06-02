@@ -1,6 +1,6 @@
 class Events::MotionClosingSoon < Event
-  include Events::NotifyUser
-  include Events::EmailUser
+  include Events::Notify::InApp
+  include Events::Notify::Users
 
   def self.publish!(motion)
     create(kind: "motion_closing_soon",

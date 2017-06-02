@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ($translate,
       Records.visitors.find(communityId: $scope.poll.emailCommunityId)
 
     $scope.init = ->
-      Records.visitors.fetch(params: {community_id: $scope.poll.emailCommunityId})
+      Records.visitors.fetch(params: {poll_id: $scope.poll.id})
       $scope.newVisitor = Records.visitors.build(email: '', communityId: $scope.poll.emailCommunityId)
     $scope.init()
 

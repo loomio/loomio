@@ -26,6 +26,8 @@ describe Event do
   let(:poll) { FactoryGirl.create :poll, discussion: discussion, details: user_mentioned_text }
   let(:outcome) { FactoryGirl.create :outcome, poll: poll, statement: user_mentioned_text }
 
+  let(:visitor) { FactoryGirl.create :visitor, community: poll.community_of_type(:email, build: true) }
+
   def emails_sent
     ActionMailer::Base.deliveries.count
   end
@@ -500,6 +502,7 @@ describe Event do
 
   describe 'outcome_created' do
     it 'makes an announcement' do
+      visitor
       outcome.make_announcement = true
       expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
       email_users = Events::OutcomeCreated.last.send(:email_recipients)
@@ -516,6 +519,9 @@ describe Event do
       email_users.should_not include user_thread_mute
       email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
+
+      email_visitors = Events::OutcomeCreated.last.send(:email_visitors)
+      email_visitors.should  include visitor
 
       notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud

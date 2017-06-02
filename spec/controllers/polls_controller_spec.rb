@@ -12,6 +12,7 @@ describe PollsController do
   let(:another_community) { create :facebook_community, identifier: "fb_two" }
   let(:another_poll) { create :poll }
   let(:closed_poll) { create :poll, author: user, closed_at: 1.day.ago }
+  let(:received_email) { create :received_email }
 
   describe 'show' do
     it 'sets metadata for public polls' do

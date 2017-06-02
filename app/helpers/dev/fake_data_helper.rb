@@ -90,6 +90,15 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
+  def fake_received_email(args = {})
+    ReceivedEmail.new({
+      sender_email: Faker::Internet.email,
+      subject: Faker::ChuckNorris.fact,
+      body: "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah",
+      
+    })
+  end
+
   private
 
   def with_markdown(text)

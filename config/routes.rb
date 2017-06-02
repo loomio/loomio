@@ -145,6 +145,7 @@ Loomio::Application.routes.draw do
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do
       post :close, on: :member
       post :publish, on: :member
+      post :create_visitors, on: :member
       post :toggle_subscription, on: :member
       get  :closed, on: :collection
       get  :search, on: :collection
@@ -232,6 +233,7 @@ Loomio::Application.routes.draw do
     post :webhook
   end
 
+  resources :received_emails, only: :create
   resources :invitations, only: [:show]
   resources :login_tokens, only: [:show]
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}

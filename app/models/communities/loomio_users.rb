@@ -1,6 +1,6 @@
 class Communities::LoomioUsers < Communities::Base
-  include Communities::NotifyLoomioGroup
-  include Communities::NotifyThirdParty
+  include Communities::Notify::InApp
+  include Communities::Notify::Users
   set_community_type :loomio_users
   set_custom_fields  :loomio_user_ids, :slack_channel_id, :slack_channel_name
 

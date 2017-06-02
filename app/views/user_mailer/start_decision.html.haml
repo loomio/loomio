@@ -1,0 +1,4 @@
+%p.user-mailer__context= t(:"email.start_decision.intro", name: @email.sender_email)
+- Poll::TEMPLATES.keys.each do |poll_type|
+  %p.user-mailer__message-container
+    = link_to poll_type, new_poll_url(type: poll_type, title: @email.subject, pending_emails: @email.email_addresses.join(',')), class: "invite-people-mailer__button"
