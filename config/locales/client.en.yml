@@ -1450,6 +1450,7 @@ en:
     title: Title
     details: Details
     options: Options
+    options_placeholder: Enter a new option...
     closing: Closing
     start: Start
     update: Update
