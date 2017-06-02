@@ -9,7 +9,7 @@
     .context-panel__thread-actions.pull-right.lmo-no-print
       %outlet.context-panel__before-thread-actions{name: "before-thread-actions", model: "discussion"}
       %md-menu.lmo-dropdown-menu{ng-if: "showContextMenu()", md-position-mode: "target-right target"}
-        %md-button{ng-click: "$mdMenu.open()"}
+        %md-button.context-panel__dropdown-button{ng-click: "$mdMenu.open()"}
           .sr-only{translate: "thread_context.thread_options"}
           %i.material-icons expand_more
         %md-menu-content
