@@ -1,5 +1,7 @@
 class Slack::GroupPublishedSerializer < Slack::BaseSerializer
-  def text
-    I18n.t(:"slack.join_loomio_group", author: object.user.name)
+  private
+
+  def include_attachments?
+    false
   end
 end

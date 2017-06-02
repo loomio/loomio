@@ -30,6 +30,8 @@ class Identities::Slack < Identities::Base
     %w(
       group_published
       poll_published
+      poll_closing_soon
+      poll_expired
       outcome_published
     ).freeze
   end

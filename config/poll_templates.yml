@@ -12,6 +12,7 @@ proposal:
   must_have_options:       true
   voters_review_responses: true
   require_stance_choice:   true
+  single_choice:           true
   sort_options:
     - newest_first
     - oldest_first
@@ -28,6 +29,7 @@ count:
   must_have_options:     true
   must_have_options:     true
   require_stance_choice: true
+  single_choice:         true
   sort_options:
     - newest_first
     - oldest_first
@@ -41,6 +43,7 @@ poll:
   can_add_options:    true
   can_remove_options: true
   must_have_options:  true
+  single_choice:      true
   sort_options:
     - newest_first
     - oldest_first
