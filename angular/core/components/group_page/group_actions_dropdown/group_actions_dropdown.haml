@@ -6,28 +6,22 @@
     %md-menu-content.group-actions-dropdown__menu-content
       %md-menu-item{ng-if: "groupActions.canEditGroup()"}
         %md-button{ng-click: "groupActions.editGroup()"}
-          .material-icons settings
           %span{translate: "group_page.options.edit_group"}
       %md-menu-item{ng-if: "groupActions.canAdministerGroup()"}
         %a.md-button{lmo-href-for: "group", lmo-href-action: "memberships"}
-          .material-icons group
           %span{translate: "group_page.options.manage_members"}
       %outlet{name: "after-group-actions-manage-memberships", model: "group"}
       %md-menu-item{ng-if: "groupActions.canAddSubgroup()"}
         %md-button{ng-click: "groupActions.addSubgroup()"}
-          .material-icons add
           %span{translate: "group_page.options.add_subgroup"}
       %md-menu-item{ng-if: "groupActions.canChangeVolume()"}
         %md-button{ng-click: "groupActions.openChangeVolumeForm()"}
-          .material-icons volume_down
           %span{translate: "group_page.options.email_settings"}
       %md-menu-item{ng-if: "groupActions.canLeaveGroup()"}
         %md-button{ng-click: "groupActions.leaveGroup()"}
-          .material-icons exit_to_app
           %span{translate: "group_page.options.leave_group"}
       %md-menu-item{ng-if: "groupActions.canArchiveGroup()"}
         %md-button{ng-click: "groupActions.archiveGroup()"}
-          .material-icons not_interested
           %span{translate: "group_page.options.deactivate_group"}
 
   -# .uib-dropdown-menu.lmo-dropdown-menu.lmo-dropdown-menu--with-icons{role: "menu"}
