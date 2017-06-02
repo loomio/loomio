@@ -1770,6 +1770,10 @@ en:
   install_slack:
     modal_title: Install Slack
 
+    card:
+      title: Connected to Slack
+      helptext: This group has been connected to the slack team <strong>{{team}}</strong>. Events from this group will appear in the <strong>{{channel}}</strong> channel.
+
     progress:
       install: Install
       invite: Invite
