@@ -15,7 +15,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def channel
-    object.eventable.group.community.channel
+    model.group.community.channel
   end
 
   def attachments
@@ -32,7 +32,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
       title:       slack_title,
       title_link:  slack_link_for(model, invitation: true),
       text:        slack_text,
-      callback_id: object.eventable_id,
+      callback_id: model.id,
       actions:     actions
     }.compact
   end
