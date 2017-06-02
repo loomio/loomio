@@ -27,10 +27,10 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   def first_attachment
     {
       author_name: author.name,
-      author_link: polymorphic_url(author, link_options),
+      author_link: slack_link_for(author),
       author_icon: author.avatar_url(:small),
       title:       slack_title,
-      title_link:  model_url,
+      title_link:  slack_link_for(model, invitation: true),
       text:        slack_text,
       callback_id: object.eventable_id,
       actions:     actions
@@ -64,12 +64,21 @@ class Slack::BaseSerializer < ActiveModel::Serializer
     (model.respond_to?(:statement) && model.statement)
   end
 
-  def model
-    @model ||= object.eventable
+  def slack_link_for(obj, opts = {})
+    if opts[:invitation] && obj.group
+      back_to = scope.fetch(:back_to, slack_link_for(obj, opts.except(:invitation)))
+      invitation_url(invitation_token, link_options.merge(back_to: back_to))
+    else
+      polymorphic_url(obj, link_options.merge(opts))
+    end
   end
 
-  def model_url
-    polymorphic_url(model, link_options)
+  def invitation_token
+    @invitation_token ||= model.group&.shareable_invitation&.token
+  end
+
+  def model
+    @model ||= object.eventable
   end
 
   def author
@@ -81,7 +90,11 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def link_options
-    default_url_options.merge(identifier: channel)
+    default_url_options.merge(identifier: channel, uid: scope[:uid]).compact
+  end
+
+  def scope
+    Hash(super)
   end
 
 end

@@ -5,8 +5,8 @@ class Slack::Ephemeral::StanceCreatedSerializer < Slack::BaseSerializer
     I18n.t(:"slack.stance_created", {
       title:      object.eventable.poll.title,
       position:   object.eventable.poll_options.first.display_name,
-      poll_url:   polymorphic_url(object.eventable.poll, default_url_options),
-      stance_url: polymorphic_url(object.eventable, default_url_options)
+      stance_url: slack_link_for(object.eventable, invitation: true),
+      poll_url:   slack_link_for(object.eventable.poll, invitation: true)
     })
   end
 end
