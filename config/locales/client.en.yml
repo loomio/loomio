@@ -1661,6 +1661,7 @@ en:
     share_group: Loomio group
     share_group_helptext: Select a Loomio group to share this decision with. Members of the group will be able to participate.
     cannot_move_poll_helptext: This poll is part of the discussion <strong>{{discussion}}</strong> in <strong>{{group}}</strong>, and so cannot be moved.
+    move_group_helptext: Be careful! Moving a decision out of a group may cause some people to lose access to it. Existing votes will still be recorded.
     set_group: Set group
     group_set: Group updated
     view_poll: View poll

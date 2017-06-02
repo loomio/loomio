@@ -7,6 +7,7 @@ angular.module('loomioApp').directive 'pollCommonShareGroupForm', (Session, Abil
 
     $scope.submit = PollService.submitPoll $scope, $scope.poll,
       flashSuccess: 'poll_common_share_form.group_set'
+      successCallback: -> $scope.groupId = $scope.poll.groupId
 
     $scope.groups = ->
       _.filter Session.user().groups(), (group) ->
