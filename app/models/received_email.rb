@@ -1,6 +1,6 @@
 class ReceivedEmail
   include ActiveModel::Model
-  EMAIL_REGEX = /[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/
+  EMAIL_REGEX = /[^\s:,;‘"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;‘“`<>]+/
 
   attr_accessor :sender_email
   attr_accessor :headers
