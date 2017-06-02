@@ -94,7 +94,7 @@ Padding and spacing is set via:
 Have a look in `lineman/app/components/mixins.scss` and `lineman/app/components/utilities.scss` for commonly used stuff.
 
 ### Abbreviations
-Please don't use abbreviations. Eg: Write `button` not `btn`. This makes the code easier to read and write - as if abbreviations are in use you can't be sure of spelling.
+Please don't use abbreviations. Eg: Write `button` not `btn`. This makes the code easier to read and write - and if abbreviations are in use you can't be sure of spelling.
 
 ## Translations
 Translations for the AngularJS frontend are currently kept in /config/locales/client.yml. We really want to move each translation into it's component (coming soon). Please follow the same naming scheme as the CSS and don't nest more than once. eg:
