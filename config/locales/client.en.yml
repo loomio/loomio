@@ -1538,6 +1538,7 @@ en:
     details_placeholder: Provide any clarifying details people might need to participate
     meeting_created: Time poll created
     meeting_updated: Time poll updated
+    add_option_placeholder: Enter a time
 
   poll_proposal_vote_form:
     default_reason_placeholder: Please explain your reasoning
