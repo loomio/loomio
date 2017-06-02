@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollPollVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/poll/vote_form/poll_poll_vote_form.html'
-  controller: ($scope, PollService, TranslationService, MentionService, KeyEventService) ->
+  controller: ($scope, PollService, MentionService, KeyEventService) ->
     $scope.vars = {}
 
     multipleChoice = $scope.stance.poll().multipleChoice
@@ -23,10 +23,6 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
         if _.any selectedOptionIds
           $scope.stance.stanceChoicesAttributes =
             _.map selectedOptionIds, (id) -> {poll_option_id: id}
-
-
-    TranslationService.eagerTranslate
-      detailsPlaceholder: 'poll_common.statement_placeholder'
 
     MentionService.applyMentions($scope, $scope.stance)
     KeyEventService.submitOnEnter($scope)
