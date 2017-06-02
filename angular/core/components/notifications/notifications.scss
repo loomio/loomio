@@ -8,7 +8,8 @@
   max-height: calc(100vh - 48px);
   padding: 0;
   @include fontMedium;
-  a { color: $grey-on-white; }
+  a { color: $primary-text-color; outline: 0 }
+  a:active, a:link, a:visited { text-decoration: none !important}
   li { list-style-type: none; }
 }
 
