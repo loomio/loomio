@@ -93,9 +93,9 @@ class PollService
   def self.create_visitors(poll:, emails:, actor:)
     actor.ability.authorize! :create_visitors, poll
 
-    VisitorsBatchCreateJob.perform_later(poll, emails, actor)
+    VisitorsBatchCreateJob.perform_later(emails, poll.id, actor.id)
     poll.custom_fields['pending_emails'] = []
-    poll.save!
+    poll.save(validate: false)
 
     EventBus.broadcast('poll_create_visitors', poll, emails, actor)
   end
