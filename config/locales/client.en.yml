@@ -80,6 +80,8 @@ en:
       done: Done
       start: Start
       delete: Delete
+      unsubscribe: Unsubscribe
+      subscribe: Subscribe
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -819,6 +821,9 @@ en:
     messages:
       success: Invitation cancelled
 
+  user_page:
+    introduction: Introduction
+
   profile_page:
     messages:
       updated: 'Profile updated'
@@ -834,7 +839,10 @@ en:
     name_label: 'Name'
     username_label: 'Username'
     email_label: 'Email'
+    short_bio_label: 'Introduction'
     locale_label: 'Language'
+    short_bio_placeholder: 'Enter a short introduction (max 250 characters)'
+    locale_placeholder: Select your preferred language
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
 
@@ -1440,10 +1448,20 @@ en:
     title: Delete decision
     success: Successfully deleted
 
+  poll_common_unsubscribe_form:
+    title: Receive updates
+    label: Receive email updates about this decision
+    tooltip: Loomio can send email updates to keep you informed about this decision, such as when it is edited, when it expires, or when an outcome has been set. Unchecking this box ensures that you won't receive further email notifications for decision.
+    helptext_on: You will receive emails about activity in this decision
+    helptext_off: You will not receive any emails about this decision
+    subscribed: Successfully subscribed
+    unsubscribed: Successfully unsubscribed
+
   poll_common_form:
     title: Title
     details: Details
     options: Options
+    options_placeholder: Enter a new option...
     closing: Closing
     start: Start
     update: Update
@@ -1531,6 +1549,7 @@ en:
     details_placeholder: Provide any clarifying details people might need to participate
     meeting_created: Time poll created
     meeting_updated: Time poll updated
+    add_option_placeholder: Enter a time
 
   poll_proposal_vote_form:
     default_reason_placeholder: Please explain your reasoning
@@ -1637,13 +1656,13 @@ en:
     anyone_can_participate_true: Shareable link created
     anyone_can_participate_false: Shareable link revoked
     get_link: Copy link
-    invite_visitor: Invite guest
+    invite_visitor: Email guests
     invite_visitor_helptext: Invite individuals to this poll by email address. Guests will be able to participate in this poll only.
     send_email: Send email
     shareable_link_created: Anyone can now participate in this poll
     shareable_link_revoked: This poll is now invite-only
     shareable_link: Shareable link
-    guests_invited: Invited {{count}} guests
+    guests_invited: Sent to {{count}} people
     guest_revoked: Revoked access for {{email}}
     existing_guests: Existing guests
     new_guests: New emails to invite
@@ -1791,8 +1810,7 @@ en:
         Success! Now, select a channel you'd like us to post updates into.
       select_a_channel: Select a channel
       publish_group: Post a welcome message
-      publish_group_helptext_on: We'll post the following message into the given channel to welcome people into your group.
-      group_published_preview: "<strong>{{author}}</strong> has added this Slack team to <strong>{{name}}</strong>. Please <a tabindex='-1' href='#'>click here</a> to start making decisions. Want to learn more about how Loomio works? Type <em>/loomio help</em> into this channel. See you soon!"
+      publish_group_helptext_on: We'll post the a message into this channel to instruct people how to use LoomioBot.
       publish_group_helptext_off: We won't post anything until you create a poll.
       custom_message: Custom message
       set_channel: Set channel

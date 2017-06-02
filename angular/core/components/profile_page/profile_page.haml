@@ -26,6 +26,10 @@
         %input.profile-page__email-input.form-control#user-email-field{ng-required: true, ng-model: "profilePage.user.email"}
         %validation_errors{subject: "profilePage.user", field: "email"}
 
+        %label{for: "user-email-field", translate: "profile_page.short_bio_label"}
+        %textarea.profile-page__short-bio-input.form-control#user-short-bio-field{ng-model: "profilePage.user.shortBio", rows: "3", placeholder: "{{'profile_page.short_bio_placeholder' | translate}}"}
+        %validation_errors{subject: "profilePage.user", field: "short_bio"}
+
         %label{for: "user-locale-field", translate: "profile_page.locale_label"}
         %select.profile-page__language-input.form-control#user-locale-field{ng-model: "profilePage.user.selectedLocale", ng-required: "true", ng-options: "locale.key as locale.name for locale in profilePage.availableLocales()"}
         %validation_errors{subject: "profilePage.user", field: "selectedLocale"}

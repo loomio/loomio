@@ -1,7 +1,7 @@
 class Events::CommentLiked < Event
-  include PrettyUrlHelper
+  include Events::Notify::InApp
   include Events::LiveUpdate
-  include Events::NotifyUser
+  include PrettyUrlHelper
 
   def self.publish!(comment_vote)
     create(kind: "comment_liked",

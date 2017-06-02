@@ -12,6 +12,7 @@ describe PollsController do
   let(:another_community) { create :facebook_community, identifier: "fb_two" }
   let(:another_poll) { create :poll }
   let(:closed_poll) { create :poll, author: user, closed_at: 1.day.ago }
+  let(:received_email) { create :received_email }
 
   describe 'show' do
     it 'sets metadata for public polls' do
@@ -36,29 +37,20 @@ describe PollsController do
     end
   end
 
-  describe 'share' do
-    it 'allows the author to share a poll' do
+  describe 'unsubscribe' do
+    it 'unsubscribes from a poll' do
       sign_in user
-      get :share, key: poll.key
-      expect(response.status).to eq 200
+      expect { get :unsubscribe, key: poll.key }.to change { poll.unsubscribers.count }.by(1)
     end
 
-    it 'allows a group admin to share a poll' do
-      poll.update(discussion: discussion)
-      sign_in poll.group.admins.first
-      get :share, key: poll.key
-      expect(response.status).to eq 200
+    it 'does not remove unsubscriptions' do
+      sign_in user
+      PollUnsubscription.create(user: user, poll: poll)
+      expect { get :unsubscribe, key: poll.key }.to_not change { poll.unsubscribers.count }
     end
 
-    it 'does not allow other users to share the poll' do
-      sign_in create(:user)
-      get :share, key: poll.key
-      expect(response.status).to eq 302
-    end
-
-    it 'does not allow visitors to share the poll' do
-      get :share, key: poll.key
-      expect(response.status).to eq 302
+    it 'can unsubscribe via unsubscribe token' do
+      expect { get :unsubscribe, key: poll.key, unsubscribe_token: user.unsubscribe_token }.to change { poll.unsubscribers.count }.by(1)
     end
   end
 end

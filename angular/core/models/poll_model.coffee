@@ -126,6 +126,14 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @remote.postMember(@key, 'publish', community_id: community.id, message: message).then =>
         @published = true
 
+    createVisitors: ->
+      @processing = true
+      @remote.postMember(@key, 'create_visitors', emails: @customFields.pending_emails.join(',')).finally =>
+        @processing = false
+
+    toggleSubscription: =>
+      @remote.postMember(@key, 'toggle_subscription')
+
     enableCommunities: ->
       (@group() and @group().features.enable_communities) or
       (@author() and @author().experiences.enable_communities)

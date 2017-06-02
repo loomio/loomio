@@ -1,7 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :key, :name, :username, :avatar_initials, :avatar_kind, :avatar_url, :profile_url, :gravatar_md5, :time_zone, :search_fragment, :label, :locale, :created_at
+  attributes :id, :key, :name, :username, :short_bio, :avatar_initials, :avatar_kind, :avatar_url, :profile_url, :gravatar_md5, :time_zone, :search_fragment, :label, :locale, :created_at
 
   def label
     username

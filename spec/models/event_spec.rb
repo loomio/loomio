@@ -15,6 +15,7 @@ describe Event do
   let(:user_motion_closing_soon) { FactoryGirl.create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
   let(:user_mentioned) { FactoryGirl.create :user }
   let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
+  let(:user_unsubscribed) { FactoryGirl.create :user }
 
   let(:discussion) { FactoryGirl.create :discussion, description: user_mentioned_text }
   let(:mentioned_user) {FactoryGirl.create :user, username: 'sam', email_when_mentioned: true }
@@ -24,6 +25,8 @@ describe Event do
   let(:vote) { FactoryGirl.create :vote, motion: motion }
   let(:poll) { FactoryGirl.create :poll, discussion: discussion, details: user_mentioned_text }
   let(:outcome) { FactoryGirl.create :outcome, poll: poll, statement: user_mentioned_text }
+
+  let(:visitor) { FactoryGirl.create :visitor, community: poll.community_of_type(:email, build: true) }
 
   def emails_sent
     ActionMailer::Base.deliveries.count
@@ -44,6 +47,7 @@ describe Event do
     discussion.group.add_member!(user_thread_quiet).set_volume! :mute
     discussion.group.add_member!(user_thread_mute).set_volume! :mute
     discussion.group.add_member!(user_mentioned)
+    discussion.group.add_member!(user_unsubscribed)
 
     DiscussionReader.for(discussion: discussion, user: user_thread_loud).set_volume! :loud
     DiscussionReader.for(discussion: discussion, user: user_thread_normal).set_volume! :normal
@@ -58,6 +62,9 @@ describe Event do
 
     # set email motion closing soon
     discussion.group.add_member!(user_motion_closing_soon).set_volume! :mute
+
+    # create an unsubscription for a poll user
+    poll.poll_unsubscriptions.create(user: user_unsubscribed)
   end
 
   it 'new_comment' do
@@ -267,6 +274,7 @@ describe Event do
 
       email_users.should_not include user_membership_mute
       email_users.should_not include user_thread_mute
+      email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
       notification_users = Events::PollCreated.last.send(:notification_recipients)
@@ -312,6 +320,7 @@ describe Event do
 
       email_users.should_not include user_membership_mute
       email_users.should_not include user_thread_mute
+      email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
       notification_users = Events::PollEdited.last.send(:notification_recipients)
@@ -401,6 +410,7 @@ describe Event do
 
       email_users.should_not include user_membership_mute
       email_users.should_not include user_thread_mute
+      email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
       notification_users = Events::PollClosingSoon.last.send(:notification_recipients)
@@ -471,6 +481,7 @@ describe Event do
 
       email_users.should_not include user_membership_mute
       email_users.should_not include user_thread_mute
+      email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
       notification_users = event.send(:notification_recipients)
@@ -493,6 +504,7 @@ describe Event do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
 
     it 'makes an announcement' do
+      visitor
       outcome.make_announcement = true
       expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
       email_users = Events::OutcomeCreated.last.send(:email_recipients)
@@ -507,7 +519,11 @@ describe Event do
 
       email_users.should_not include user_membership_mute
       email_users.should_not include user_thread_mute
+      email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
+
+      email_visitors = Events::OutcomeCreated.last.send(:email_visitors)
+      email_visitors.should  include visitor
 
       notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud

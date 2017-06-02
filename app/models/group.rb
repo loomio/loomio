@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   include HasPolls
   include MakesAnnouncements
   include MessageChannel
+  include SelfReferencing
 
   class MaximumMembershipsExceeded < Exception
   end
@@ -131,7 +132,7 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, dependent: :destroy
   has_many :motions, through: :discussions
-  has_many :polls, through: :discussions
+  has_many :polls
   has_many :votes, through: :motions
 
   belongs_to :parent, class_name: 'Group'
@@ -202,14 +203,6 @@ class Group < ActiveRecord::Base
       intent:         :join_group,
       invitable:      self
     )
-  end
-
-  def group
-    self
-  end
-
-  def group_id
-    self.id
   end
 
   def logo_or_parent_logo

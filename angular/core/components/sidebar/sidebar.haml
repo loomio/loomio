@@ -9,6 +9,7 @@
         {{currentUser().name}}
       .sidebar__user-username
         @{{currentUser().username}}
+  %outlet{name: "after-user-username", model: "currentUser()"}
   %md_content.sidebar__content.lmo-no-print{flex: "", layout: "column", ng-click: "sidebarItemSelected()", role: "navigation"}
     %md_list.sidebar__list.sidebar__threads{layout: "column", aria-label: "{{ 'sidebar.aria_labels.threads_list' | translate }}"}
       %md_list_item

@@ -12,10 +12,10 @@ module FormattedDateHelper
   end
 
   def date_time_format(value)
-    Date.today.year == value.to_date.year ? "%e %b %l:%M %P" : "%e %b %Y %l:%M %P"
+    Date.today.year == value.to_date.year ? "%a%e %b %l:%M %P" : "%a%e %b %Y %l:%M %P"
   end
 
   def date_format(value)
-    Date.today.year == value.to_date.year ? "%e %b" : "%e %b %Y"
+    Date.today.year == value.to_date.year ? "%a%e %b" : "%a%e %b %Y"
   end
 end

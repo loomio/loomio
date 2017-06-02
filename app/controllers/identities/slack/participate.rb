@@ -1,6 +1,7 @@
 module Identities::Slack::Participate
   def participate
     render json: respond_with_stance ||
+                 respond_with_poll_closed ||
                  respond_with_invitation ||
                  respond_with_unauthorized(participate_payload['team'])
   end
@@ -9,12 +10,17 @@ module Identities::Slack::Participate
 
   def respond_with_stance
     return unless event = ::Slack::Participator.new(participate_params).participate!
-    ::Slack::StanceCreatedSerializer.new(event, root: false).as_json
+    ::Slack::Ephemeral::StanceCreatedSerializer.new(event, root: false).as_json
+  end
+
+  def respond_with_poll_closed
+    return unless !participate_poll.active?
+    ::Slack::Ephemeral::PollClosedSerializer.new(participate_poll, root: false).as_json
   end
 
   def respond_with_invitation
     return unless participate_invitation&.slack_team_id.present?
-    ::Slack::GroupInvitationSerializer.new(participate_invitation, scope: {
+    ::Slack::Ephemeral::GroupInvitationSerializer.new(participate_invitation, scope: {
       back_to: poll_url(participate_poll),
       uid: participate_params[:uid]
     }, root: false).as_json

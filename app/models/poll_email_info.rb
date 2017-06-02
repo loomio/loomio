@@ -80,7 +80,7 @@ class PollEmailInfo
   private
 
   def unsubscribe_url
-    email_preferences_url utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
+    poll_unsubscribe_url poll, utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
   end
 
   def target_url

@@ -12,6 +12,7 @@ class Queries::UsersByVolumeQuery
   private
 
   def self.base_query(model)
+    return User.none unless model
     User.active
         .distinct
         .joins(membership_join(model))

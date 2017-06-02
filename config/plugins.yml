@@ -16,3 +16,6 @@ loomio_content_preview:
 
 loomio_buyer_experience:
   repo:         loomio/loomio_buyer_experience
+
+loomio_onboarding:
+  repo:         loomio/loomio_onboarding

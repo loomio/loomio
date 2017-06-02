@@ -1,0 +1,2 @@
+%script{type: "application/ld+json"}
+  = Meeting::OutcomeSerializer.new(@info.outcome, root: false).as_json

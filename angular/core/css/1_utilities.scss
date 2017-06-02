@@ -138,6 +138,7 @@
 }
 
 .lmo-markdown-wrapper {
+  word-wrap: break-word;
   p {
     @include md-body-1;
   }
@@ -326,8 +327,20 @@
   height: 40px;
 }
 
+.lmo-pointer {
+  cursor: pointer;
+}
+
 .lmo-truncate-text {
   @include truncateText;
+}
+
+.lmo-inline-block {
+  display: inline-block;
+}
+
+.lmo-vertical-align-top {
+  vertical-align: top;
 }
 
 img.emojione {
@@ -335,6 +348,21 @@ img.emojione {
   top: 5px;
   width: 20px;
   height: 20px;
+}
+
+@media (max-width: $tiny-max-px) {
+  .md-open-menu-container {
+    left: 0     !important;
+    top: 48px   !important;
+    width: 100%;
+    .md-button { text-align: center; }
+  }
+}
+
+@media (min-width: $tiny-max-px) {
+  .md-open-menu-container {
+    z-index: 1001;
+  }
 }
 
 @keyframes fadeIn {

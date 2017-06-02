@@ -3,7 +3,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   attributes :text, :username, :icon_url, :channel, :attachments
 
   def text
-    object.custom_fields['message']
+    I18n.t(:"slack.#{object.kind}", text_options)
   end
 
   def username
@@ -15,34 +15,33 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def channel
-    community.channel
+    model.group.community.channel
   end
 
   def attachments
-    [first_attachment, additional_attachments].flatten.to_json
+    [first_attachment, additional_attachments, last_attachment].flatten.compact.to_json
   end
 
   private
 
   def first_attachment
     {
-      author_name: object.user.name,
-      author_link: user_url(object.user, default_url_options),
-      author_icon: object.user.avatar_url(:small),
+      author_name: author.name,
+      author_link: slack_link_for(author),
+      author_icon: author.avatar_url(:small),
       title:       slack_title,
-      title_link:  model_url,
+      title_link:  slack_link_for(model, invitation: true),
       text:        slack_text,
-      ts:          object.created_at.to_i,
-      callback_id: object.eventable_id,
-      fields: [{
-        value: "<#{model_url}|#{I18n.t(:"webhooks.slack.view_it_on_loomio")}>"
-      }],
-      actions:     actions,
+      callback_id: model.id,
+      actions:     actions
     }.compact
   end
 
   def additional_attachments
     # override to add additional attachments to the slack post
+  end
+
+  def last_attachment
   end
 
   def actions
@@ -51,10 +50,6 @@ class Slack::BaseSerializer < ActiveModel::Serializer
 
   def include_text?
     text.present?
-  end
-
-  def community
-    @community ||= Communities::Base.find(object.custom_fields['community_id'])
   end
 
   def slack_title(text = nil, params = {})
@@ -69,27 +64,37 @@ class Slack::BaseSerializer < ActiveModel::Serializer
     (model.respond_to?(:statement) && model.statement)
   end
 
+  def slack_link_for(obj, opts = {})
+    if opts[:invitation] && obj.group
+      back_to = scope.fetch(:back_to, slack_link_for(obj, opts.except(:invitation)))
+      invitation_url(invitation_token, link_options.merge(back_to: back_to))
+    else
+      polymorphic_url(obj, link_options.merge(opts))
+    end
+  end
+
+  def invitation_token
+    @invitation_token ||= model.group&.shareable_invitation&.token
+  end
+
   def model
-    @model || object.eventable
+    @model ||= object.eventable
   end
 
-  def author_url
-    polymorphic_url(object.user, link_options)
-  end
-
-  def model_url
-    polymorphic_url(model, link_options)
+  def author
+    @author ||= object.user || model.author
   end
 
   def text_options
-    {
-      author:     object.user.name,
-      discussion: object.eventable.discussion&.title
-    }
+    { author: object.user.name }
   end
 
   def link_options
-    default_url_options.merge(identifier: community.channel)
+    default_url_options.merge(identifier: channel, uid: scope[:uid]).compact
+  end
+
+  def scope
+    Hash(super)
   end
 
 end

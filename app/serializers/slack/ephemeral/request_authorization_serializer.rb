@@ -1,5 +1,5 @@
-class Slack::RequestAuthorizationSerializer < Slack::BaseSerializer
-  include Slack::EphemeralMessage
+class Slack::Ephemeral::RequestAuthorizationSerializer < Slack::BaseSerializer
+  include Slack::Ephemeral::Message
 
   def text
     I18n.t(:"slack.request_authorization_message", url: request_authorization_url)

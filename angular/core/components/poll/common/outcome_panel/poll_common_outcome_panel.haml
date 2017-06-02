@@ -3,5 +3,5 @@
   .poll-common-outcome-panel__authored-by
     %span{translate: "poll_common_outcome_panel.authored_by", translate-value-name: "{{poll.outcome().author().name}}"}
     %timeago{timestamp: "::poll.outcome().createdAt" }>
-  %p {{poll.outcome().statement}}
+  %p.lmo-markdown-wrapper{marked: "poll.outcome().statement"}
   %md-button{ng-if: "showUpdateButton()", ng-click: "openOutcomeForm()", translate: "poll_common.update_outcome", aria-label: "{{poll_common.update_outcome | translate}}"}

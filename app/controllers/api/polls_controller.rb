@@ -3,7 +3,7 @@ class API::PollsController < API::RestfulController
 
   def show
     self.resource = load_and_authorize(:poll)
-    respond_with_resource
+    respond_with_resource(scope: {current_user: current_user})
   end
 
   def index
@@ -37,6 +37,16 @@ class API::PollsController < API::RestfulController
 
   def search_results_count
     render json: poll_search.perform(search_filters).count
+  end
+
+  def toggle_subscription
+    service.toggle_subscription(poll: load_resource, actor: current_user)
+    respond_with_resource(scope: {current_user: current_user})
+  end
+
+  def create_visitors
+    service.create_visitors(poll: load_resource, emails: params.require(:emails).split(','), actor: current_user)
+    respond_with_resource
   end
 
   private

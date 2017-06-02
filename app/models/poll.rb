@@ -3,6 +3,7 @@ class Poll < ActiveRecord::Base
   include HasMentions
   include MakesAnnouncements
   include MessageChannel
+  include SelfReferencing
 
   TEMPLATES = YAML.load_file(Rails.root.join("config", "poll_templates.yml"))
   COLORS    = YAML.load_file(Rails.root.join("config", "colors.yml"))
@@ -29,6 +30,8 @@ class Poll < ActiveRecord::Base
   belongs_to :discussion
   belongs_to :group
 
+  update_counter_cache :group, :polls_count
+  update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
 
   after_update :remove_poll_options
@@ -38,6 +41,9 @@ class Poll < ActiveRecord::Base
   has_many :participants, through: :stances, source: :participant, source_type: "User"
   has_many :visitors, through: :communities
   has_many :attachments, as: :attachable, dependent: :destroy
+
+  has_many :poll_unsubscriptions, dependent: :destroy
+  has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
@@ -95,10 +101,6 @@ class Poll < ActiveRecord::Base
 
   alias_method :user, :author
 
-  def poll
-    self
-  end
-
   # creates a hash which has a PollOption as a key, and a list of stance
   # choices associated with that PollOption as a value
   def grouped_stance_choices(since: nil)
@@ -137,6 +139,10 @@ class Poll < ActiveRecord::Base
 
   def active?
     closed_at.nil?
+  end
+
+  def is_single_vote?
+    TEMPLATES.dig(self.poll_type, 'single_choice') && !self.multiple_choice
   end
 
   def poll_option_names

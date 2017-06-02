@@ -3,11 +3,14 @@ class Full::PollSerializer < ::PollSerializer
              :mentioned_usernames, :complete
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
-  has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
   has_many :attachments, serializer: AttachmentSerializer, root: :attachments
 
   def complete
     true
+  end
+
+  def my_stance
+    object.stances.latest.find_by(participant: scope[:current_user]) if scope[:current_user]
   end
 
   def removed_poll_option_ids

@@ -31,6 +31,7 @@ class Discussion < ActiveRecord::Base
   include HasPolls
   include MessageChannel
   include MakesAnnouncements
+  include SelfReferencing
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
@@ -110,14 +111,6 @@ class Discussion < ActiveRecord::Base
   update_counter_cache :group, :closed_motions_count
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :group, :proposal_outcomes_count
-
-  def discussion
-    self
-  end
-
-  def discussion_id
-    self.id
-  end
 
   def organisation_id
     group.parent_id || group_id
