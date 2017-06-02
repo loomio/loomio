@@ -1,7 +1,9 @@
-.lmo-dropdown-menu{
-  padding: 15px;
-  right: 0;
-  left: auto;
+.lmo-dropdown-menu > button {
+  min-width: 48px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .lmo-dropdown-menu label {
@@ -99,10 +101,6 @@ li .lmo-dropdown-menu-item-label{
     width: 18px;
     color: $primary-text-color;
   }
-}
-
-.disabled .lmo-dropdown-menu-item{
-  color: $grey-on-grey;
 }
 
 .lmo-dropdown-heading{
