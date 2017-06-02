@@ -1,6 +1,7 @@
 class ReceivedEmail
   include ActiveModel::Model
-  EMAIL_REGEX = /[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/
+  BANNED_CHARS = %(\\s:,;'"`<>)
+  EMAIL_REGEX = /[^#{BANNED_CHARS}]+?@[^#{BANNED_CHARS}]+\.[^#{BANNED_CHARS}]+/
 
   attr_accessor :sender_email
   attr_accessor :headers

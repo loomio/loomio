@@ -93,14 +93,7 @@ class PollService
   def self.create_visitors(poll:, emails:, actor:)
     actor.ability.authorize! :create_visitors, poll
 
-    emails.reject { |e| e == actor.email }.take(Rails.application.secrets.max_pending_emails).each do |email|
-      VisitorService.delay.create(
-        visitor: Visitor.new(community: poll.community_of_type(:email), email: email),
-        actor: actor,
-        poll: poll
-      )
-    end
-
+    VisitorsBatchCreateJob.perform_later(poll, emails, actor)
     poll.custom_fields['pending_emails'] = []
     poll.save!
 

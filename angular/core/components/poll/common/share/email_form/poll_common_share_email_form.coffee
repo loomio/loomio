@@ -26,7 +26,7 @@ angular.module('loomioApp').directive 'pollCommonShareEmailForm', ($translate, R
         $scope.add()
         $scope.poll.createVisitors().then ->
           FlashService.success 'poll_common_share_form.guests_invited', count: $scope.poll.customFields.pending_emails.length
-          $scope.$emit 'refreshPoll'
+          $scope.$emit '$close'
 
     $scope.checkEmailNotEmpty = ->
       if $scope.newEmail.length <= 0

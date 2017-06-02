@@ -16,22 +16,22 @@ describe PollOption do
 
       it 'returns the correct datetime' do
         poll_option.name = "#{Date.today.year}-01-01T10:00:00.000Z"
-        expect(poll_option.display_name).to eq "1 Jan 10:00 am"
+        expect(poll_option.display_name).to eq "Sun 1 Jan 10:00 am"
       end
 
       it 'returns the correct datetime with year when year is different' do
         poll_option.name = "#{Date.today.year-1}-01-01T10:00:00.000Z"
-        expect(poll_option.display_name).to eq "1 Jan #{Date.today.year-1} 10:00 am"
+        expect(poll_option.display_name).to eq "Fri 1 Jan #{Date.today.year-1} 10:00 am"
       end
 
       it 'returns the correct date' do
         poll_option.name = "#{Date.today.year}-01-01"
-        expect(poll_option.display_name).to eq "1 Jan"
+        expect(poll_option.display_name).to eq "Sun 1 Jan"
       end
 
       it 'returns the correct date with year when year is different' do
         poll_option.name = "#{Date.today.year-1}-01-01"
-        expect(poll_option.display_name).to eq "1 Jan #{Date.today.year-1}"
+        expect(poll_option.display_name).to eq "Fri 1 Jan #{Date.today.year-1}"
       end
     end
   end

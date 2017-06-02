@@ -84,6 +84,15 @@ poll_common_manage_card {
   i { color: rgba(255,255,255,0.87); }
 }
 
+.poll-common-share-form__add-button {
+  min-width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0 0 0;
+  padding: 8px;
+}
+
 .poll-common-share-form__community {
   align-items: center;
   width: 100%;
