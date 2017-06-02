@@ -21,7 +21,7 @@ describe 'Login', ->
       page.waitForReload(2000)
       page.expectFlash 'Signed in successfully'
 
-    it 'can login from a closed group page', ->
+    xit 'can login from a closed group page', ->
       page.loadPath 'view_closed_group_as_visitor'
       page.click '.navbar__sign-in'
       page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
