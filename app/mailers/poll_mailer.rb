@@ -3,16 +3,11 @@ class PollMailer < BaseMailer
   helper :application
   REPLY_DELIMITER = "--"
 
-  %w(poll_created poll_edited stance_created
+  %w(poll_created poll_edited stance_created outcome_created
      poll_closing_soon poll_closing_soon_author
      poll_expired  poll_expired_author
      visitor_reminded visitor_created).each do |action|
     define_method action, ->(recipient, event) { send_poll_email(recipient, event, action) }
-  end
-
-  def outcome_created(recipient, event)
-    attachments['event.ics'] = { mime_type: 'application/ics', content: event.eventable.calendar_invite }
-    send_poll_email(recipient, event, 'outcome_created')
   end
 
   private
