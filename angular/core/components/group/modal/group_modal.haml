@@ -1,0 +1,10 @@
+%md-dialog.group-form
+  %form{ng-submit: "submit()",  ng-disabled: "group.processing", name: "groupForm" }
+    %md-toolbar
+      .md-toolbar-tools.lmo-flex__space-between
+        %i.material-icons group
+        %h1.lmo-h1{ng-if: "group.isNew()", translate: "group_form.start_group_heading"}
+        %h1.lmo-h1{ng-if: "!group.isNew()", translate: "group_form.edit_group_heading"}
+        %material_modal_header_cancel_button
+    .md-dialog-content.md-body-1
+      %group_form{group: "group"}
