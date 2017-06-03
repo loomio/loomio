@@ -1,13 +1,13 @@
 .group-form
   .lmo-disabled-form{ng-show: "isDisabled"}
-  .group-form__name
-    %label{for: "group-name", translate: "{{i18n.group_name}}"}
-    %input.form-control.lmo-primary-form-input#group-name{placeholder: "{{ 'group_form.group_name_placeholder' | translate }}", ng-required: true, ng-model: "group.name", maxlength: "255"}
+  %md-input-container.md-block
+    %label{translate: "{{i18n.group_name}}"}
+    %input.lmo-primary-form-input#group-name{type: "text", placeholder: "{{'group_form.group_name_placeholder' | translate}}", ng-required: true, ng-model: "group.name", md-maxlength: "255"}
     %validation_errors{subject: "group", field: "name"}
 
-  .group-form__description
-    %label{for: "group-description", translate: "group_form.description"}
-    %textarea.lmo-textarea.form-control.lmo-primary-form-input#group-description{placeholder: "{{ 'group_form.description_placeholder' | translate }}", msd-elastic: "true", ng-model: "group.description"}
+  %md-input-container.md-block
+    %label{translate: "group_form.description"}
+    %textarea.lmo-primary-form-input#group-description{ng-model: "group.description", placeholder: "{{'group_form.description_placeholder' | translate}}", mention-field: "true"}
 
   .group-form__privacy-statement.md-caption
     {{privacyStatement()}}
@@ -91,4 +91,5 @@
   .lmo-flex.lmo-flex__space-between
     %div{ng-if: "expanded"}
     %md-button.md-accent.group-form__advanced-link{type: "button", ng-if: "!expanded", ng-click: "expandForm()", translate: "group_form.advanced_settings"}
-    %md-button.md-primary.md-raised.group-form__submit-button{type: "submit", translate: "{{i18n.submit}}"}
+    %md-button.md-primary.md-raised.group-form__submit-button{ng-click: "submit()"}
+      %span{translate: "{{i18n.submit}}"}

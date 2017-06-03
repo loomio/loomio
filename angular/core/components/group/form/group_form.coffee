@@ -22,14 +22,15 @@ angular.module('loomioApp').directive 'groupForm', ->
 
     submitForm = FormService.submit $scope, $scope.group,
       drafts: true
+      skipClose: true
       flashSuccess: ->
         if $scope.group.isNew()
           'group_form.messages.group_created'
         else
           'group_form.messages.group_updated'
       successCallback: (response) ->
-        if $scope.group.isNew()
-          $location.path "/g/#{response.groups[0].key}"
+        $scope.$emit 'createComplete'
+        $location.path "/g/#{response.groups[0].key}" if $scope.group.isNew()
 
     $scope.submit = ->
       if message = PrivacyString.confirmGroupPrivacyChange($scope.group)
