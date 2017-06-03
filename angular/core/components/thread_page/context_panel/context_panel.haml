@@ -19,7 +19,7 @@
             %md-button{ng-click: "editThread()", translate: "thread_context.edit"}
           %md-menu-item.context-panel__dropdown-options--mute{ng-show: "!discussion.isMuted()"}
             %md-button{ng-click: "muteThread()", translate: "volume_levels.mute"}
-          %md-menu-item{ng-show: "discussion.isMuted()"}
+          %md-menu-item.context-panel__dropdown-options--unmute{ng-show: "discussion.isMuted()"}
             %md-button{ng-click: "unmuteThread()", translate: "volume_levels.unmute"}
           %md-menu-item.context-panel__dropdown-options--move{ng-if: "canMoveThread()"}
             %md-button{ng-click: "moveThread()", translate: "thread_context.move_thread"}

@@ -5,7 +5,7 @@
       %i.material-icons{ng-if: "hasUnread()"} notifications
       %i.material-icons{ng-if: "!hasUnread()"} notifications_none
       %span.badge.notifications__activity{ng-if: "hasUnread()"} {{unreadCount()}}
-    %md-menu-content.notifications__menu-content
+    %md-menu-content.notifications__menu-content.notifications__dropdown
       %notification{notification: "notification", ng-repeat: "notification in notifications() | orderBy: '-createdAt' track by notification.id"}
       %li.selector-list-item{ng-if: "notifications().length == 0"}
         %span.notification{translate: "notifications.no_notifications"}
