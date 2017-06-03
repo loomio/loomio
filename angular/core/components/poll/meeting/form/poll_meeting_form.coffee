@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
       _.pull $scope.poll.pollOptionNames, name
 
     if $scope.poll.isNew()
-      $scope.poll.closingAt = moment().add(1, 'day')
+      $scope.poll.closingAt = moment().add(2, 'day')
       $scope.poll.notifyOnParticipate = true
       $scope.poll.makeAnnouncement = true if $scope.poll.group()
 
