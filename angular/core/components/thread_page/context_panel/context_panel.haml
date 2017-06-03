@@ -13,19 +13,19 @@
           .sr-only{translate: "thread_context.thread_options"}
           %i.material-icons expand_more
         %md-menu-content
-          %md-menu-item{ng-if: "canChangeVolume()"}
+          %md-menu-item.context-panel__dropdown-options--email-settings{ng-if: "canChangeVolume()"}
             %md-button{ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}
-          %md-menu-item{ng-if: "canEditThread()"}
+          %md-menu-item.context-panel__dropdown-options--edit{ng-if: "canEditThread()"}
             %md-button{ng-click: "editThread()", translate: "thread_context.edit"}
-          %md-menu-item{ng-show: "!discussion.isMuted()"}
+          %md-menu-item.context-panel__dropdown-options--mute{ng-show: "!discussion.isMuted()"}
             %md-button{ng-click: "muteThread()", translate: "volume_levels.mute"}
           %md-menu-item{ng-show: "discussion.isMuted()"}
             %md-button{ng-click: "unmuteThread()", translate: "volume_levels.unmute"}
-          %md-menu-item{ng-if: "canMoveThread()"}
+          %md-menu-item.context-panel__dropdown-options--move{ng-if: "canMoveThread()"}
             %md-button{ng-click: "moveThread()", translate: "thread_context.move_thread"}
           %md-menu-item
             %md-button{ng-click: "requestPagePrinted()", translate: "thread_context.print_thread"}
-          %md-menu-item{ng-if: "canDeleteThread()"}
+          %md-menu-item.context-panel__dropdown-options--delete{ng-if: "canDeleteThread()"}
             %md-button{ng-click: "deleteThread()", translate: "thread_context.delete_thread"}
 
   .context-panel__details.md-body-1

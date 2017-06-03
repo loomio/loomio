@@ -5,9 +5,9 @@
       .sr-only{translate: "new_comment_item.context_menu.aria_label"}
       %i.material-icons expand_more
     %md-menu-content
-      %md-menu-item{ng-if: "canEditComment()"}
+      %md-menu-item.thread-item__edit-link{ng-if: "canEditComment()"}
         %md-button{ng-click: "editComment()", translate: "common.action.edit"}
-      %md-menu-item{ng-if: "canDeleteComment()"}
+      %md-menu-item.thread-item__delete-link{ng-if: "canDeleteComment()"}
         %md-button{ng-click: "deleteComment()", translate: "common.action.delete"}
   %outlet.lmo-relative.pull-right{name: "before-comment-dropdown", model: "comment"}
 

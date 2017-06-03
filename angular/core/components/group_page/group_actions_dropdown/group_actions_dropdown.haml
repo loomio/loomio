@@ -4,52 +4,22 @@
       %span{translate: "group_page.options.label"}>
       %i.material-icons expand_more
     %md-menu-content.group-actions-dropdown__menu-content
-      %md-menu-item{ng-if: "groupActions.canEditGroup()"}
+      %md-menu-item.group-form__edit-group-link{ng-if: "groupActions.canEditGroup()"}
         %md-button{ng-click: "groupActions.editGroup()"}
           %span{translate: "group_page.options.edit_group"}
       %md-menu-item{ng-if: "groupActions.canAdministerGroup()"}
         %a.md-button{lmo-href-for: "group", lmo-href-action: "memberships"}
           %span{translate: "group_page.options.manage_members"}
       %outlet{name: "after-group-actions-manage-memberships", model: "group"}
-      %md-menu-item{ng-if: "groupActions.canAddSubgroup()"}
+      %md-menu-item.group-page-actions__add-subgroup-link{ng-if: "groupActions.canAddSubgroup()"}
         %md-button{ng-click: "groupActions.addSubgroup()"}
           %span{translate: "group_page.options.add_subgroup"}
-      %md-menu-item{ng-if: "groupActions.canChangeVolume()"}
+      %md-menu-item.group-form__change-volume-link{ng-if: "groupActions.canChangeVolume()"}
         %md-button{ng-click: "groupActions.openChangeVolumeForm()"}
           %span{translate: "group_page.options.email_settings"}
-      %md-menu-item{ng-if: "groupActions.canLeaveGroup()"}
+      %md-menu-item.group-form__leave-group{ng-if: "groupActions.canLeaveGroup()"}
         %md-button{ng-click: "groupActions.leaveGroup()"}
           %span{translate: "group_page.options.leave_group"}
       %md-menu-item{ng-if: "groupActions.canArchiveGroup()"}
         %md-button{ng-click: "groupActions.archiveGroup()"}
           %span{translate: "group_page.options.deactivate_group"}
-
-  -# .uib-dropdown-menu.lmo-dropdown-menu.lmo-dropdown-menu--with-icons{role: "menu"}
-  -#   %ul.lmo-dropdown-menu-items
-  -#     %li.lmo-dropdown-menu-item{ng-if: "groupActions.canEditGroup()"}
-  -#       %a.group-page-actions__edit-group-link{href: "", ng-click: "groupActions.editGroup()"}
-  -#         %i.fa.fa-lg.fa-cog>
-  -#         %span{translate: "group_page.options.edit_group"}
-  -#     %li.lmo-dropdown-menu-item{ng-if: "groupActions.canAdministerGroup()"}
-  -#       %a.group-page-actions__manage-memberships-link{lmo-href-for: "group", lmo-href-action: "memberships"}
-  -#         %i.fa.fa-lg.fa-users>
-  -#         %span{translate: "group_page.options.manage_members"}
-  -#     %outlet{name: "after-group-actions-manage-memberships", model: "group"}
-  -#     %li.lmo-dropdown-menu-item{ng-if: "groupActions.canAddSubgroup()"}
-  -#       %a.group-page-actions__add-subgroup-link{href: "", ng-click: "groupActions.addSubgroup()"}
-  -#         %i.fa.fa-lg.fa-plus>
-  -#         %span{translate: "group_page.options.add_subgroup"}
-  -#
-  -#     %li.lmo-dropdown-menu-item{ng-if: "groupActions.canChangeVolume()"}
-  -#       %a.group-page-actions__change-volume-link{href: "", ng-click: "groupActions.openChangeVolumeForm()"}
-  -#         %i.fa.fa-lg.fa-bell>
-  -#         %span{translate: "group_page.options.email_settings"}
-  -#
-  -#     %li.lmo-dropdown-menu-item
-  -#       %a.group-page-actions__leave-group{href: "", ng-click: "groupActions.leaveGroup()"}
-  -#         %i.fa.fa-lg.fa-sign-out>
-  -#         %span{translate: "group_page.options.leave_group"}
-  -#     %li.lmo-dropdown-menu-item{ng-if: "groupActions.canArchiveGroup()"}
-  -#       %a.group-page-actions__archive-group{href: "", ng-click: "groupActions.archiveGroup()"}
-  -#         %i.fa.fa-lg.fa-ban>
-  -#         %span{translate: "group_page.options.deactivate_group"}
