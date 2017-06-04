@@ -1,5 +1,5 @@
 class Full::PollSerializer < ::PollSerializer
-  attributes :poll_option_names, :anyone_can_participate, :email_community_id,
+  attributes :poll_option_names, :email_community_id,
              :mentioned_usernames, :complete
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions

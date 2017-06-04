@@ -1,4 +1,4 @@
-%md-menu.lmo-dropdown-menu.pull-right.lmo-no-print{md-position-mode: "target-right target"}
+%md-menu.lmo-dropdown-menu.poll-actions-dropdown.pull-right.lmo-no-print{md-position-mode: "target-right target"}
   %md-button{ng-click: "$mdMenu.open()"}
     %i.material-icons expand_more
   %md-menu-content
@@ -10,7 +10,7 @@
       %md-button{ng-click: "sharePoll()", translate: "common.action.share"}
     %md-menu-item{ng-if: "canEditPoll()"}
       %md-button{ng-click: "editPoll()", translate: "common.action.edit"}
-    %md-menu-item{ng-if: "canClosePoll()"}
+    %md-menu-item.poll-actions-dropdown__close{ng-if: "canClosePoll()"}
       %md-button{ng-click: "closePoll()", translate: "common.action.close"}
     %md-menu-item{ng-if: "canDeletePoll()"}
       %md-button{ng-click: "deletePoll()", translate: "common.action.delete"}
