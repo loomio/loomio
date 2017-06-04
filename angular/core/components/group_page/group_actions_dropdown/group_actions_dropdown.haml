@@ -17,7 +17,7 @@
       %md-menu-item.group-page-actions__change-volume-link{ng-if: "groupActions.canChangeVolume()"}
         %md-button{ng-click: "groupActions.openChangeVolumeForm()"}
           %span{translate: "group_page.options.email_settings"}
-      %md-menu-item.group-page-actions__leave-group{ng-if: "groupActions.canLeaveGroup()"}
+      %md-menu-item.group-page-actions__leave-group
         %md-button{ng-click: "groupActions.leaveGroup()"}
           %span{translate: "group_page.options.leave_group"}
       %md-menu-item.group-page-actions__archive-group{ng-if: "groupActions.canArchiveGroup()"}
