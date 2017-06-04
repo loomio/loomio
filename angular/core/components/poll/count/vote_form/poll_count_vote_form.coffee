@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCountVoteForm', (AppConfig, Records, PollService, TranslationService, MentionService, KeyEventService) ->
+angular.module('loomioApp').directive 'pollCountVoteForm', (AppConfig, Records, PollService, MentionService, KeyEventService) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/count/vote_form/poll_count_vote_form.html'
   controller: ($scope) ->
@@ -9,9 +9,6 @@ angular.module('loomioApp').directive 'pollCountVoteForm', (AppConfig, Records, 
 
     $scope.yes = PollService.optionByName($scope.stance.poll(), 'yes')
     $scope.no  = PollService.optionByName($scope.stance.poll(), 'no')
-
-    TranslationService.eagerTranslate $scope,
-      reasonPlaceholder: 'poll_count_vote_form.reason_placeholder'
 
     MentionService.applyMentions($scope, $scope.stance)
     KeyEventService.submitOnEnter($scope)

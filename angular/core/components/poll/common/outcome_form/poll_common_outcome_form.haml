@@ -11,7 +11,7 @@
     .md-dialog-content
       %md-input-container.md-block
         %label{translate: "poll_common.statement"}
-        %textarea.lmo-primary-form-input.poll-common-outcome-form__statement{placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement", mention-field: "true"}
+        %textarea.lmo-primary-form-input.poll-common-outcome-form__statement{placeholder: "{{'poll_common_outcome_form.statement_placeholder' | translate}}", ng-model: "outcome.statement", mention-field: "true"}
         %validation_errors{subject: "outcome", field: "statement"}
 
       %poll_common_notify_group{model: "outcome"}

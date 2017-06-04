@@ -7,6 +7,7 @@ class Communities::LoomioGroup < Communities::Base
 
   validates :group, presence: true
   delegate :slack_team_id, to: :identity, allow_nil: true
+  delegate :slack_team_name, to: :identity, allow_nil: true
 
   alias :channel :slack_channel_id
 

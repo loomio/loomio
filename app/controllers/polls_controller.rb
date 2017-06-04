@@ -1,11 +1,6 @@
 class PollsController < ApplicationController
   include UsesMetadata
 
-  def share
-    current_user.ability.authorize! :share, resource
-    show
-  end
-
   def unsubscribe
     PollService.toggle_subscription(poll: resource, actor: current_user) if is_subscribed?
   end
