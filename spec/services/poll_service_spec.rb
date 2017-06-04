@@ -134,6 +134,11 @@ describe PollService do
       expect(poll_created.reload.title).to eq old_title
     end
 
+    it 'creates a poll_created event if the poll has moved groups' do
+      expect { PollService.update(poll: poll_created, params: { group_id: another_group.id }, actor: user) }.to change { Event.where(kind: :poll_created).count }.by(1)
+      expect(poll_created.reload.group).to eq another_group
+    end
+
     describe 'group_id=' do
       it 'associates a poll community if changing the group id' do
         PollService.update(poll: poll_created, params: {group_id: group.id}, actor: user)
