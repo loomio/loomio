@@ -119,7 +119,7 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Open please'
       page.click '.group-form__submit-button'
-      page.expectText '.group-privacy-button', 'Open'
+      page.expectText '.group-privacy-button', 'OPEN'
 
     it 'starts a closed group', ->
       page.loadPath('setup_new_group')
@@ -132,7 +132,7 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Closed please'
       page.click '.group-form__submit-button'
-      page.expectText '.group-privacy-button', 'Closed'
+      page.expectText '.group-privacy-button', 'CLOSED'
 
     it 'starts a secret group', ->
       page.loadPath('setup_new_group')
@@ -145,7 +145,7 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Secret please'
       page.click '.group-form__submit-button'
-      page.expectText '.group-privacy-button', 'Secret'
+      page.expectText '.group-privacy-button', 'SECRET'
 
   describe 'starting a subgroup', ->
     describe 'with a public parent', ->

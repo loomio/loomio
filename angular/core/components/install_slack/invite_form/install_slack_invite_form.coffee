@@ -13,7 +13,8 @@ angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, Sessi
 
     $scope.submit = ->
       $scope.$emit 'processing'
-      $scope.group.publish($scope.identifier).then ->
+      channel = '#' + _.find($scope.channels, (c) -> c.id == $scope.identifier).name
+      $scope.group.publish($scope.identifier, channel).then ->
         $scope.$emit 'inviteComplete'
       .finally ->
         $scope.$emit 'doneProcessing'
