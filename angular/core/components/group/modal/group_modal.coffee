@@ -5,10 +5,11 @@ angular.module('loomioApp').factory 'GroupModal', ->
 
     $scope.currentStep = 'create'
 
-    $scope.$on 'createComplete', ->
-      if $scope.group.parentId
+    $scope.$on 'createComplete', (event, group) ->
+      if group.parentId
         $scope.$close()
       else
+        $scope.group = group
         $scope.currentStep = 'invite'
 
     $scope.$on 'inviteComplete', $scope.$close

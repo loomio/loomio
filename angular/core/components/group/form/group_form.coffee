@@ -1,6 +1,7 @@
 angular.module('loomioApp').directive 'groupForm', ->
+  scope: {group: '='}
   templateUrl: 'generated/components/group/form/group_form.html'
-  controller: ($scope, $location, KeyEventService, FormService, Records, PrivacyString) ->
+  controller: ($scope, $location, KeyEventService, LmoUrlService, FormService, Records, PrivacyString) ->
 
     $scope.i18n = do ->
       groupMessaging = {}
@@ -29,8 +30,9 @@ angular.module('loomioApp').directive 'groupForm', ->
         else
           'group_form.messages.group_updated'
       successCallback: (response) ->
-        $scope.$emit 'createComplete'
-        $location.path "/g/#{response.groups[0].key}" if $scope.group.isNew()
+        group = Records.groups.find(response.groups[0].key)
+        $scope.$emit 'createComplete', group
+        $location.path LmoUrlService.group(group)
 
     $scope.submit = ->
       if message = PrivacyString.confirmGroupPrivacyChange($scope.group)

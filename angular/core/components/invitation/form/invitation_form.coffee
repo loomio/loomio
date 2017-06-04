@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'invitationForm', ->
-  scope: {group: '='}
+  scope: {group: '=', selectGroup: '='}
   templateUrl: 'generated/components/invitation/form/invitation_form.html'
   controller: ($scope, Records, Session, AbilityService, FormService, FlashService, RestfulClient, ModalService, AddMembersModal) ->
 
