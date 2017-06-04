@@ -4,7 +4,7 @@ ExampleContent = Struct.new(:group) do
   def add_to_group!
     group.add_member!(helper_bot).tap do
       Events::NewDiscussion.publish!(introduction_thread)
-      Events::PollCreated.publish!(example_proposal)
+      Events::PollCreated.publish!(example_proposal, example_proposal.author)
     end.destroy # remove helper bot after s/he has made example content
   end
 

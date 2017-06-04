@@ -10,7 +10,7 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_create', poll, actor)
-    Events::PollCreated.publish!(poll)
+    Events::PollCreated.publish!(poll, actor)
   end
 
   def self.close(poll:, actor:)
@@ -61,7 +61,7 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    poll.assign_attributes(params.except(:poll_type, :discussion_id, :communities_attributes))
+    poll.assign_attributes(params.compact.except(:poll_type, :discussion_id, :communities_attributes))
     is_new_version = poll.is_new_version?
     return false unless poll.valid?
     poll.save!

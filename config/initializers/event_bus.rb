@@ -28,20 +28,27 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # TODO: find the common thread between these two poll_published logics
+  # TODO: find the common thread between these poll_published / poll_created logics
   # publish to designated community after creation
-  config.listen('poll_create') do |poll|
+  config.listen('poll_create') do |poll, actor|
     community = Communities::Base.find_by(id: poll.community_id)
     if poll.author.can?(:show, community)
       poll.communities << community
-      Events::PollPublished.publish!(poll, poll.author, community)
+      Events::PollPublished.publish!(poll, actor, community)
     end
   end
 
   # publish to linked slack team after creation
-  config.listen('poll_create') do |poll|
+  config.listen('poll_create') do |poll, actor|
     if poll.group&.community&.identity.present?
-      Events::PollPublished.publish!(poll, poll.author, poll.group.community)
+      Events::PollPublished.publish!(poll, actor, poll.group.community)
+    end
+  end
+
+  # publish to new group if group has changed
+  config.listen('poll_update') do |poll, actor|
+    if poll.versions.last.object_changes.dig('group_id', 1).present? # if we've moved the poll to a new group
+      Events::PollCreated.publish!(poll, actor)
     end
   end
 

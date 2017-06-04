@@ -261,7 +261,7 @@ describe Event do
   describe 'poll_created' do
     it 'makes an announcement' do
       poll.make_announcement = true
-      expect { Events::PollCreated.publish!(poll) }.to change { emails_sent }
+      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }
       email_users = Events::PollCreated.last.send(:email_recipients)
       email_users.should     include user_thread_loud
       email_users.should     include user_membership_loud
