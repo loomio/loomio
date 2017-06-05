@@ -4,7 +4,7 @@
     %help_bubble{helptext: "poll_common_share_form.share_group_helptext"}
 
   .lmo-flex
-    %md-input-container.md-block.lmo-flex__grow
+    %md-input-container.md-block.lmo-flex__grow.poll-common-share-form__group-select
       %md-select{ng-model: "poll.groupId", ng-disabled: "poll.discussionId", aria-label: "{{ 'poll_common_share_group_form.loomio_group' | translate }}"}
         %md-option{ng-value: "null"}
           {{ 'poll_common_select_group.loomio_group_placeholder' | translate }}
