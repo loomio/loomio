@@ -59,6 +59,8 @@ describe Poll do
   end
 
   describe 'is_new_version?' do
+    before { poll.save }
+
     it 'is a new version if title is changed' do
       poll.title = "new title"
       expect(poll.is_new_version?).to eq true
