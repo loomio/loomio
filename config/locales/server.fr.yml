@@ -346,7 +346,6 @@ fr:
     proposal:
       subject:
         poll_created: '%{actor} a lancé une proposition : %{title}'
-        poll_updated: '%{actor} a modifié une proposition : %{title}'
         poll_closing_soon: 'Proposition clôturée dans 24 heures : %{title}'
         poll_closing_soon_author: 'Votre proposition se clôture dans 24 heures : %{title}'
         visitor_reminded: '%{actor} attend votre vote sur : %{title}'

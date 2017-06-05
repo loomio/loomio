@@ -1,5 +1,21 @@
 da:
+  poll_types:
+    proposal: Forslag
+    count: Check
+    poll: Afstemning
+    dot_vote: Prikafstemning
+    meeting: Find tidspunkt
+  timezones:
+    local: Lokal tid ({{value}})
   common:
+    expand: Udvid
+    all_day: Hele dagen
+    ok_got_it: Ok, det er forstået
+    learn_more: Se mere
+    not_found: Ingen resultater fundet
+    time_zone: Tidszone
+    local_time: Lokal tid
+    confirm_discard_changes: Fortryd dine ændringer
     time:
       am: am
       pm: pm
@@ -9,38 +25,77 @@ da:
     notification_volume: 'Mængde af beskeder'
     group: 'Gruppe'
     groups: 'Grupper'
+    threads: 'Diskussioner'
+    decisions: 'Beslutninger'
+    settings: 'Indstillinger'
+    help: 'Hjælp'
     privacy:
+      privacy: 'Fortrolighed'
       public: 'Offentlig'
+      open: 'Offentlig'
+      closed: 'Lukket'
       private: 'Privat'
+      secret: 'Hemlig'
     selected: 'Valgt(e)'
     date_range:
-      today: 'Idag'
+      today: 'I dag'
       yesterday: 'I går'
       thisweek: 'I denne uge'
       thismonth: 'I denne måned'
       older: 'Ældre'
+    more_help: 'Mere hjælp'
     models:
       proposal: 'Forslag'
+    copy: 'Kopier'
+    copy_text: 'Kopier tekst'
+    copied: 'Kopieret til clipboard'
     action:
+      next: 'Næste'
+      close: 'Luk'
       save: 'Gem'
       save_changes: 'Gem ændringer'
+      update_settings: 'Opdater indstillinger'
       reply: 'Svar'
       edit: 'Rediger'
+      remove: 'Slet'
       like: 'Synes om'
+      back: 'Tilbage'
       unlike: 'Synes ikke om'
+      update: 'Opdater'
       cancel: 'Annuller'
       show_more: "Vis mere"
       view_all: "Se alle"
       new_thread: "Ny tråd"
       add_subgroup: 'Tilføj undergruppe'
+      loading: 'Indlæser'
+      translate: 'Oversæt'
+      translated: 'Oversættelse via Bing Translator'
+      upload: 'Upload'
+      uploading: 'Uploader'
+      load_more: 'Hent mere'
+      share: Del
+      ok: Ok!
+      retry: Forsøg igen
+      done: Færdig
+      start: Start
+    formatting_help:
+      label: 'Formatterer'
+      title: 'Lær hvordan man bruger Markdown for at formattere din tekst på Loomio'
+  devise:
+    failure:
+      inactive: 'Der findes en deaktiveret konto associeret med denne emailadresse. Hvis du ønsker at aktivere din konto igen, så kontakt os.'
   error_page:
     forbidden: 'Du har ikke adgang til at gøre dette.'
     page_not_found: 'Vi kunne ikke finde det du bad om. Måske er det blevet slettet eller flyttet,'
-    internal_server_error: 'Noget gik desværre gaæt. Prøv igen.'
+    internal_server_error: 'Noget gik desværre galt. Prøv igen.'
   start_proposal_card:
     title: 'Start et forslag'
+    helptext: Er du klar til at træffe en beslutning?
   proposal_outcome_panel:
     heading: Resultat
+    set_outcome_hint: Brug denne plads til at informere alle om forslagets resultat
+    set_outcome_btn: Sæt resultat
+    edit_outcome_link: Rediger resultat
   proposal_outcome_form:
     set_outcome: Sæt forslagets resultat
     update_outcome: Opdater forslagets resultat
@@ -51,13 +106,28 @@ da:
       created: Udfald publiceret
   previous_proposals_card:
     heading: Tidligere Forslag
+  previous_proposals_page:
+    heading: Tidligere forslag
+  previous_polls_page:
+    search_activities: Søg beslutninger
   proposal_collapsed:
     expand: Fold ud
+    outcome: 'Beslutning: {{outcome}}'
   volume_levels:
     loud: 'Høj'
     normal: 'Normal'
     quiet: 'Lav'
     mute: 'Slået fra'
+  change_volume_form:
+    aria_label: "Rediger email indstillinger"
+    loud_label: "All aktivitet"
+    normal_label: "Bekendtgørelser"
+    quiet_label: "Ingen emails"
+    mute_label: "Lydløs"
+    discussion:
+      title: "Email indstillinger for {{title}}"
+    membership:
+      title: "Email indstillinger for {{title}}"
   inbox:
     clear: 'ryd'
     latest: 'Sidste'
@@ -132,6 +202,7 @@ da:
   proposal_expanded:
     edit_proposal: 'Rediger forslag'
     close_proposal: 'Luk forslag'
+    closed_badge: Lukket
   join_group_button:
     join_group: Bliv medlem af gruppe
   membership_request_form:
@@ -147,18 +218,38 @@ da:
     options_label: 'Indstillinger'
     options:
       label: 'Indstillinger'
+  choose_plan_modal:
+    free: Gratis
+    standard: Standard
+    pro: Prod
+    free_group_description: Donations baserede ordninger for community groupper.
+    pro_group_description: For organisationer med <nobr>flere grupper.</nobr>
+  group_form:
+    description_placeholder: 'Beskriv formålet med denne gruppe så at medlemmerne ved hvorfor de er her.'
+    privacy: 'Fortrolighed'
+    submit_update: 'Opdater indstillinger'
+  group_help_card:
+    title: Hjælp
   membership_requests_page:
     approve: Godkend
     ignore: Ignorer
+  group_previous_proposals_card:
+    heading: Tidligere forslag
+  invitation_form:
+    copy_link: 'Kopier'
+    done: 'Færdig'
   memberships_page:
     members: 'Medlemmer'
     name_label: 'Navn'
     coordinator_label: 'Koordinator'
     remove_member_label: 'Fjern'
+  remove_membership_form:
+    submit: 'Fjern'
   profile_page:
     profile: 'Profil'
     picture_label: 'Billede'
     name_label: 'Navn'
+    username_label: 'Brugernavn'
     email_label: 'E-mail'
     locale_label: 'Sprog'
   email_settings_page:
@@ -166,21 +257,26 @@ da:
   dashboard_page:
     aria_label: 'Instrumentbræt'
     no_groups:
+      start: Start
       or: eller
     mark_as_read: Marker som læst
     filtering:
       proposals: Forslag
     threads_from:
+      proposals: 'Forslag'
       today: 'Idag'
       yesterday: 'I går'
   inbox_page:
     no_groups:
+      start: Start
       or: eller
   discussion:
     proposals: 'Forslag'
     previous_proposals: 'Tidligere Forslag'
   thread_group:
     aria_label: 'Gruppenavn'
+  thread_context:
+    mute_thread: 'Lydløs'
   delete_comment_dialog:
     title: 'Slet kommentar'
     question: 'Er du sikker på, at du vil slette denne kommentar?'
@@ -274,3 +370,23 @@ da:
     invitation: 'Tips til at skrive en god invitation'
     proposal: 'Tips til at skrive et klart forslag'
     vote: 'Du kan ændre dit standpunkt når som helst'
+  decision_tools_card:
+    proposal_title: Forslag
+    count_title: Check
+    poll_title: Afstemning
+    meeting_title: Find tidspunkt
+  poll_common:
+    your_response: Dit svar
+    results: Resultater
+    votes: Stemmer
+  poll_common_set_outcome_panel:
+    share_outcome: Del resultat
+  poll_common_outcome_form:
+    submit: Del resultat
+  poll_common_form:
+    start: Start
+    update: Opdater
+  poll_common_publish_slack_preview:
+    view_it_on_loomio: Vis det på Loomio
+  polls_page:
+    heading: Beslutninger

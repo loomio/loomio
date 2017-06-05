@@ -11,6 +11,11 @@ zh_TW:
       <h1>成功。</h1>
       <p>您為您的群組 <a href="/g/%{group_key}">%{group}</a> 選擇了免費方案</p>
   email:
+    login:
+      subject: 登入 Loomio
+      intro: '%{name}，您好，這是用來登入您的 Loomio 帳號的連結。'
+      login: 以 %{name} 的身份登入 Loomio
+      resend: 這個連結將於 %{expires_at} 過期。如果過了這個時間，您可以從上面的連結取得另外的連結。
     reset_password:
       greeting: |
         嗨，%{name}
@@ -20,6 +25,9 @@ zh_TW:
         因為您的電子郵件在 %{hostname} 上被輸入到「忘記密碼」表單中，所以收到這份訊息。
         然而，您的密碼在您完成上面這個連結的表單前都不會被變更。
         若您還有登入上的問題，回覆這封電子郵件以連絡客服人員。
+    start_decision:
+      subject: 在 Loomio 上啟動決策
+      intro: 在下面選取要做出的決策類型
     custom: "%{text}"
     group_email:
       intro: "%{who} 在 %{group}裡發布了一則公告："
@@ -357,95 +365,129 @@ zh_TW:
       your_response: 您的回應
       please_respond: 請回應
       time_zone: （在 %{zone} 顯示的時間）
+      undecided_members: 未決定的成員（%{count}）
+      undecided_visitors: 未決定的訪客（%{count}）
+      more_undecided: "%{count} 更多……"
     proposal:
       subject:
         poll_created: '%{actor} 啟動了一個提案：%{title}'
-        poll_updated: '%{actor} 編輯了提案：%{title}'
+        poll_edited: '%{actor} 編輯了提案：%{title}'
         poll_closing_soon: '24小時內定案的提議：%{title}'
         poll_closing_soon_author: '您的提案將於24小時內定案：%{title}'
-        poll_expired: '您的提議已定案。請分享提議的成果：%{title}'
+        poll_expired: "定案的提議：%{title}"
+        poll_expired_author: '您的提議已定案。請分享提議的成果：%{title}'
         outcome_created: '%{actor} 分享了一個提案成果：%{title}'
-        visitor_created: '%{actor} 想要聽到您的意見：%{title}'
+        visitor_created: '%{actor} 想要您的意見：%{title}'
         visitor_reminded: '%{actor} 正在等待您的投票：%{title}'
+        stance_created: "%{actor} 已經投票：%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個提案'
-        poll_updated: '<strong>%{actor}</strong> 編輯了提案'
+        poll_edited: '<strong>%{actor}</strong> 編輯了提案'
         poll_closing_soon: '<strong>%{actor}</strong> 的提案將於24小時內定案。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
         poll_closing_soon_author: '您的提案將於24小時內定案，現在正是您提醒其他人關於這個提案或是展延期限的絕佳時機。'
-        poll_expired: '您的提案已<strong>定案</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        poll_expired: "<strong>%{actor}</strong> 的提案已定案：%{title}"
+        poll_expired_author: '您的提案已<strong>定案</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
         outcome_created: '<strong>%{actor}</strong> 已分享了提案的成果。'
         visitor_created: '<strong>%{actor}</strong> 想要聽到您的意見：%{title}'
         visitor_reminded: '<strong>%{actor}</strong> 正在等待您的投票：%{title}'
+        stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
       subject:
         poll_created: '%{actor} 啟動了一個投票：%{title}'
-        poll_updated: '%{actor} 編輯了投票：%{title}'
+        poll_edited: '%{actor} 編輯了投票：%{title}'
         poll_closing_soon: '24小時內關閉的投票：%{title}'
         poll_closing_soon_author: '您的投票將於24小時內關閉：%{title}'
-        poll_expired: '您的投票已關閉。請分享投票的成果：%{title}'
+        poll_expired: "投票結果：%{title}"
+        poll_expired_author: '您的投票已關閉。請分享成果：%{title}'
         outcome_created: '%{actor} 分享了一個投票成果：%{title}'
-        visitor_created: '%{actor} 邀請您加入投票：%{title}'
+        visitor_created: '%{actor} 想要您投票：%{title}'
         visitor_reminded: '%{actor} 正在等待您的投票：%{title}'
+        stance_created: "%{actor} 投了票：%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個投票'
-        poll_updated: '<strong>%{actor}</strong> 編輯了投票'
+        poll_edited: '<strong>%{actor}</strong> 編輯了投票'
         poll_closing_soon: '<strong>%{actor}</strong> 的投票將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
         poll_closing_soon_author: '您的投票將於24小時內關閉，現在正是您提醒其他人關於這個投票或是展延期限的絕佳時機。'
-        poll_expired: '您的投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        poll_expired: "<strong>%{actor}</strong> 的投票已關閉：%{title}"
+        poll_expired_author: '您的投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
         outcome_created: '<strong>%{actor}</strong> 已分享了投票的成果。'
         visitor_created: '<strong>%{actor}</strong> 邀請您加入投票：%{title}'
         visitor_reminded: '<strong>%{actor}</strong> 正在等待您的投票：%{title}'
+        stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
-        poll_created: '%{actor} 啟動了一個勾選：%{title}'
-        poll_updated: '%{actor} 編輯了一個勾選：%{title}'
-        poll_closing_soon: '24小時內關閉的勾選：%{title}'
+        poll_created: '%{actor} 正在勾選：%{title}'
+        poll_closing_soon: '剩餘24小時的勾選：%{title}'
         poll_closing_soon_author: '您的勾選將於24小時內關閉：%{title}'
-        poll_expired: '您的勾選已關閉。請分享投票的成果：%{title}'
+        poll_expired: "勾選已關閉：%{title}"
+        poll_expired_author: '您的勾選已關閉。請分享投票的成果：%{title}'
         outcome_created: '%{actor} 分享了一個成果：%{title}'
-        visitor_created: '%{actor} 正在問問題：%{title}'
+        visitor_created: '%{actor} 正在勾選：%{title}'
         visitor_reminded: '%{actor} 正在等待您的回應：%{title}'
+        stance_created: "%{actor} 已經參與：%{title}"
       header:
-        poll_created: '<strong>%{actor}</strong> 已啟動了一個勾選'
-        poll_updated: '<strong>%{actor}</strong> 編輯了勾選'
+        poll_created: '<strong>%{actor}</strong> 正在勾選'
         poll_closing_soon: '<strong>%{actor}</strong> 的勾選將於24小時內關閉。'
         poll_closing_soon_author: '您的勾選將於24小時內關閉，現在正是您提醒其他人關於這個勾選或是展延期限的絕佳時機。'
-        poll_expired: '這是您的勾選的成果。若需要的話，<strong>分享成果</strong>來讓人們知道下一步會發生什麼事。'
+        poll_expired: "<strong>%{actor}</strong> 的勾選已關閉：%{title}"
+        poll_expired_author: '這是您的勾選的成果。若需要的話，<strong>分享成果</strong>來讓人們知道下一步會發生什麼事。'
         outcome_created: '<strong>%{actor}</strong> 已分享了成果。'
-        visitor_created: '<strong>%{actor}</strong> 正在問問題：%{title}'
+        visitor_created: '<strong>%{actor}</strong> 正在勾選：%{title}'
         visitor_reminded: '<strong>%{actor}</strong> 正在等待您的回應：%{title}'
+        stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     dot_vote:
       subject:
         poll_created: '%{actor} 啟動了一個點投票：%{title}'
-        poll_updated: '%{actor} 編輯了一個點投票：%{title}'
+        poll_edited: '%{actor} 編輯了一個點投票：%{title}'
         poll_closing_soon: '24小時內關閉的點投票：%{title}'
         poll_closing_soon_author: '您的點投票將於24小時內關閉：%{title}'
-        poll_expired: '您的點投票已關閉。請分享成果：%{title}'
+        poll_expired: "點投票結果：%{title}"
+        poll_expired_author: '您的點投票已關閉。請分享成果：%{title}'
         outcome_created: '%{actor} 分享了一個成果：%{title}'
         visitor_created: '%{actor} 邀請您加入點投票：%{title}'
         visitor_reminded: '%{actor} 正在等待您的投票：%{title}'
+        stance_created: "%{actor} 投了票：%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> 啟動了一個點投票'
-        poll_updated: '<strong>%{actor}</strong> 編輯了點投票'
+        poll_edited: '<strong>%{actor}</strong> 編輯了點投票'
         poll_closing_soon: '<strong>%{actor}</strong> 的點投票將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
         poll_closing_soon_author: '您的點投票將於24小時內關閉，現在正是您提醒其他人關於這個點投票或是展延期限的絕佳時機。'
-        poll_expired: '您的點投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        poll_expired: "<strong>%{actor}</strong> 的點投票結果：%{title}"
+        poll_expired_author: '您的點投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
         outcome_created: '<strong>%{actor}</strong> 已分享了點投票的成果。'
         visitor_created: '<strong>%{actor}</strong> 邀請您加入點投票：%{title}'
         visitor_reminded: '<strong>%{actor}</strong> 正在等待您的投票：%{title}'
+        stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
+        poll_created: '%{actor} 啟動了一個時間投票：%{title}'
+        poll_edited: '%{actor} 編輯了時間投票：%{title}'
+        poll_closing_soon: '24小時內關閉的時間投票：%{title}'
+        poll_closing_soon_author: '您的時間投票將於24小時內關閉：%{title}'
+        poll_expired: "時間投票結果：%{title}"
+        poll_expired_author: '您的時間投票已關閉。請分享成果：%{title}'
         outcome_created: '%{actor} 分享了一個成果：%{title}'
+        visitor_created: '%{actor} 想安排時間：%{title}'
         visitor_reminded: '%{actor} 正在等待您的回應：%{title}'
+        stance_created: '%{actor} 已經參與：%{title}'
       header:
+        poll_created: '<strong>%{actor}</strong> 已啟動了一個時間投票'
+        poll_edited: '<strong>%{actor}</strong> 編輯了時間投票'
+        poll_closing_soon: '<strong>%{actor}</strong> 的時間投票將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
+        poll_closing_soon_author: '您的時間投票將於24小時內關閉，現在正是您提醒其他人關於這時間投票或是展延期限的絕佳時機。'
+        poll_expired: "<strong>%{actor}</strong> 的時間投票已關閉"
+        poll_expired_author: '您的時間投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        outcome_created: '<strong>%{actor}</strong> 已分享了時間投票的成果。'
+        visitor_created: '<strong>%{actor}</strong> 想安排時間：%{title}'
         visitor_reminded: '<strong>%{actor}</strong> 正在等待您的回應：%{title}'
+        stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'

@@ -252,7 +252,6 @@ pl:
       password_changed: 'Hasło zmienione'
       deactivated: 'Konto wyłączone'
     change_picture_link: 'Zmiana zdjęcia'
-    change_password_link: 'Zmiana hasła'
     deactivate_user_link: 'Wyłączenie hasła...'
     profile: 'Profil'
     edit_profile: 'Edycja Profilu'

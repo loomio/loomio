@@ -1,5 +1,32 @@
 da:
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
+  validate:
+    motion:
+      must_close_in_future: Forlag skal lukkes frem i tiden.
+      one_at_a_time: Der er en andet aktivt forslag.
+  subscriptions:
+    gift_plan_selected_for_group_html: |
+      <h1>Succes.</h1>
+      <p>Du har valgt den gratis abonnements ordning for din gruppe <a href="/g/%{group_key}">%{group}</a></p>
   email:
+    login:
+      subject: Log ind på Loomio
+      intro: Hej %{name}, her er et link så du kan logge ind på din Loomio konto.
+      login: Log ind på Loomio som %{name}
+      resend: Dette link vil udløbe %{expires_at}. Hvis linket er udløbet så kan du stadig trykke på lnket for at få et nyt link.
+    reset_password:
+      greeting: |+
+        Hej %{name}
+        Her er et link som du kan bruge til at nulstill din adgangskode for din Loomio konto:
+
+      link_text: Nulstil din adgangskode
+      signoff: |
+        Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
+        Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
+        Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
+    custom: "%{text}"
     group_email:
       intro: "%{who} oprettede en bekendtgørelse til %{group}:"
     by_who: af %{person}
@@ -9,15 +36,38 @@ da:
       content: 'Du er blevet inviteret til at deltage i diskussionen: %{discussion}'
       message_intro: "%{who} siger:"
       link: Deltag i diskussionen
+    value_proposition: "Loomio er et sted hvor man kan tage beslutninger sammen"
+    view_group: Vis gruppe
     to_join_group:
       subject: "%{member} har inviteret dig til at blive medlem af %{group_name} på Loomio"
+      invitation_text: "%{member} har inviteret dig til at deltage i deres gruppe %{group_name}."
+      invitation_text_html: "har inviteret dig til at deltage i deres gruppe"
+      link_help: "Klik på linket herunder for at acceptere invitationen:"
+      accept_invitation: "Acceptér invitation"
+    resend_to_join_group:
+      subject: "%{member} venter stadig på at du bliver medlem i %{group_name} på Loomio"
     to_start_group:
       subject: "Indstil din nye Loomio-gruppe: %{group_name}"
+      hi: "Hej %{name},"
+      intro: "Klik på linket herunder for at navngive din gruppe %{group_name}:"
+      intro_html: "Klik herunder for at konfigurere din gruppe:"
+      start_group: "Start min gruppe"
+      closing_message: "Hvis du har brug for hjælp eller har et spørgsmål, bare besvar denne email."
+      thanks: "Tak,"
+      loomio_team: "Loomio holdet"
+    user_added_to_group:
+      subject: "%{who} har tilføjet dig til %{which_group} på Loomio"
+      content: "%{who} har tilføjet dig til %{which_group}."
+      content_html: "<strong>%{who}</strong> har tilføjet dig til <strong>%{which_group}</strong>."
+      link_help: "Klik på linket herunder for at gå til gruppen:"
     unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
     view_comment: Klik her for at se kommentaren på Loomio
     view_discussion: Klik her for at se denne diskussion
     view_proposal: Se dette forslag på Loomio
+    create_discussion:
+      intro_html: "startede en diskussion:"
+      intro: "%{who} startede en diskussion:"
     create_proposal:
       intro: Et nyt forslag blev oprettet i en Loomio-gruppe som du tilhører.
       closes_in: 'Lukker om '
@@ -28,20 +78,44 @@ da:
       subject: Loomio - Opsummering af de seneste 24 timer
     missed_yesterday:
       subject: I går på Loomio
+      headlines: Overskrifter
       mark_as_read: Marker som læst
       thanks_for_reading: Tak fordi du læste, hav en god dag!
+      heres_what_happened: "Her er en oversigt over hvad der skete på Loomio i går."
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
+    comment_replied_to:
+      context_html: 'svarede på din kommentar i'
+      context: '%{author_name} svarede på din kommentar i %{discussion_title}'
+      subject: "%{who} svarede på din kommentar i %{which} gruppen på Loomio"
+    new_comment:
+      context: 'kommenterede i'
+    group_membership_approved:
+      intro: "Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt."
+      intro_html: "Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt."
+      link_help: "Klik på linket herunder for at blive medlem af %{group_name}:"
+      subject: "Din anmodning om at blive medlem i %{group_name} på Loomio er blevet godkendt"
+      join_group: "Bliv medlem"
+      view_group_text: "Klik herunder for at se gruppen på Loomio:"
     membership_request:
       intro: "%{name} (%{email}) har anmodet om adgang til en af dine Loomio-grupper."
+      intro_html: har anmodet om adgang til en af dine Loomio-grupper.
       subject: "%{who} har anmodet om medlemskab af %{which_group}"
       view_group: Du kan godkende eller afvise anmodningen her
+      button_text: Vis anmodning
+    mentioned:
+      context_html: "omtalte dig i en diskussion"
+      context: "%{author_name} omtalte dig i en diskussion %{discussion_title}"
+      subject: '%{who}  omtalte dig i en diskussion "%{which}"'
     new_motion_created:
       subject: 'Forslag: %{proposal_title}'
+      context: "oprettede et forslag i %{group_full_name}:"
     proposal_closed:
       proposal_has_closed: Forslaget er lukket.
       specify_outcome_and_notify_group: Opret et resultat og send det til din gruppe!
       specify_outcome_and_notify_group_html: Opret et resultat og send det til din gruppe!
       subject: Forslag lukket - %{which}
+    proposal_outcome:
+      subject: 'Resultat af forslag: %{motion}'
     proposal_closing_soon:
       closes_on: 'Lukker d. '
       closes_at: Lukker
@@ -50,12 +124,39 @@ da:
       headline: "%{author}'s forslag i %{group} lukker snart:"
       summary: Opsummering
     thread_mailer:
+      footer_text: 'Svar på denne email eller se det på %{hostname}:'
+      reply_or_view_online_html: Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>.
+      turn_off_notifications_html: "<a href='%{url}'>Slå email notifikationer fra</a> for denne diskussion."
+      turn_off_notifications_text: 'Slå email notifikationer fra for denne diskussion: %{url}'
+      turn_on_notifications_html: "<a href='%{url}'>Slå email notifikationer til for denne diskussion</a> for at modtage notifikationer ved yderligere aktivitet."
+      turn_on_notifications_text: 'Slå email notifikationer til for at modtage notifikationer ved yderligere aktivitet i denne diskussion: %{url}'
+      change_email_preferences_html: Rediger dine <a href='%{email_preferences_url}'>e-mail-indstillinger</a> for at afmelde disse emails.
       change_preferences: 'Rediger dine e-mail-indstillinger:'
+      new_motion_html: 'oprettede et forslag:'
+      new_motion: '%{who} oprettede et forslag:'
       motion_closing_soon: 'Forslag lukket om 24 timer:'
       proposal_closed: 'Forslag lukket:'
       specify_outcome_html: Dit forslag er lukket. <a href='%{link}'>Angiv et resultat</a> for at lade alle vide hvad resultatet blev.
       specify_outcome: 'Dit forslag er lukket. Angiv et resultat for at lade alle vide hvad resultatet er:'
+      outcome_created_html: "delte et results for forslaget:"
+      outcome_created: "%{who} delte et results for forslaget:"
       you_agreed: Dit standpunkt var %{past_tense_position}
+    analytics:
+      subject: "Ugen står i %{which_group}s tegn på Loomio"
+      title: "Oversigt for ugen der starter %{since}"
+      table_header: "Navn | Forslag oprette | Diskussioner oprettet | Kommentarer oprettet | Stemmer aflagt"
+      stats: "<strong>%{active_members}</strong> ud af <strong>%{group_members}</strong> i dun gruppe var aktive sidste uge. Din gruppe oprettede <strong>%{motions}</strong> og oprettede <strong>%{comments}</strong> i <strong>%{discussions}</strong>."
+      contact_us: "Er du interesseret i mere statistik? <a href='%{contact_link}'>Tryk her</a>."
+      no_activity: "Ønsker du at tale med en af vores samarbejds coaches om hvordan man får det meste ud af Loomio? <a href='%{contact_link}'>Tryk her</a>"
+      trial_subscription: "%{which_group} er baseret på <strong>gratis prøveperiode</strong> der slutter <strong>%{expires_at}</strong>. Du kan vælge en abonnements metode <a href='%{subscription_link}'>her</a>."
+      trial_expired: "%{which_group} har nået enden for den gratis Loomio prøveperiode. "
+      heart: "❤ fra team Loomio"
+      unsubscribe: "Denne email bliver udsendt til koordinatorer af aktive Loomio grupper.<br />Hvis du foretrækker at ikke modtage disse emails, <a href='%{contact_link}'>klik her</a>."
+      user_table:
+        motions_created: "Forslag"
+        discussions_created: "Diskussioner"
+        comments_created: "Kommentarer"
+        votes_created: "Stemmer"
   footer:
     about: Om
     blog: Blog
@@ -65,15 +166,117 @@ da:
     pricing: Priser
     public_groups: Offentlige grupper
     terms: Betingelser
+    independent_install_html: '%{hostname} kører en selvstændig kopi af Loomio: <a href="http://github.com/loomio/loomio">se mere her</a>.'
   start_group_form:
+    enable_angular:
+      header: Nye grupper starter i Loomio 1.0
+      subtitle: 'For at oprette en ny gruppe, så skal du skifte til den helt nye udgave af Loomio:'
+      switch_to_angular: Opret en ny grupper i det nyt Loomio
+      helptext: Vi har bygget Loomio helt op fra bunden. Du kan læse om hvad der er nyt <a href="/angular">her</a>.<br/> Du kan skifte tilbage til den gamle version når som helst.
     header: Start en ny gruppe
+    form_error: Der er noget information der mangler eller er inkorrekt.
     name: Dit navn
+    name_error: Navn er påkrævet
+    email: Din email
+    email_error: Ikke en valid emailadresse
     group_name: Gruppenavn
     group_description: Gruppebeskrivelse
+    group_description_placeholder: Beskriv formålet med denne gruppe så at medlemmerne ved hvorfor de er her.
+    group_name_error: Gruppe navn er påkrævet
+    pricing_html: Om 30 days, ber vi dig om at vælge en <a href='%{link}' target='_blank'>abonnements ordning</a>.
+    terms_html: Ved at oprette en gruppe, så godkender du Loomios <a href='%{link}' target='_blank'>terms of service</a>.
     success:
       header: Du er næsten færdig! Tjek din email.
+      email_delivered: Vi har sendt en email til %{email}. Klik venligst på linket for at skifte indstillinger for din nye gruppe.
+      email_not_arrived: Har du ikke modtaget email?
+      please_hold: Vent venligst i op til 5 minutter på at emailen kommer og kontroller din spam folder.
+    start_making_decisions: 'For at træffe beslutninger sammen på Loomio, opret en gruppe gratis:'
+  invitation_form:
+    error:
+      all_email_addresses_belong_to_members: "Der blev ikke afsendt invitationer til emailadresserne der blev angivet da de tilhører personer som allerede er medlemmer af gruppen."
+  pricing_page:
+    header: Gruppe abonnements ordninger
+    gift: Gratis
+    standard: Standard
+    plus: Pro
+    free_trial_html: Efter <span>30-dages gratis prøveperiode</span> beder vi dig om at vælge abonnements ordning.
+    get_started_for_free: Kom igang gratis
+    gift_body: Donations baserede ordninger for community groupper.
+    standard_body_html: Alt du skal bruge for <nobr>en gruppe.</nobr>
+    pro_body_html: For organisationer med <nobr>flere grupper.</nobr>
+    one_group: en gruppe
+    unlimited_members: uendeligt antal medlemmer
+    unlimited_decisions: uendelige antal beslutninger
+    email_support: email support
+    slack_integration_html: |
+      <strong>Slack</strong> integration
+    standard_price_html: '<strong>$19</strong>/måned'
+    gift_price_html: '<strong>$0</strong>'
+    plus_includes_standard: 'Alt i Standard, plus:'
+    standard_includes_free: 'Alt i Gratis, plus:'
+    multiple_groups: "op til 10 grupper"
+    premium_support: premium support
+    help_with_setup: hjælp til initiel opsætning
+    custom_subdomain: eget subdomæne
+    analytics_reports: statistik rapporter
+    data_export: data eksport
+    contact_us_html: |+
+      Priser er i UD dollars, plus moms hvor dette er påkrævet. Skal du bruger noget andet? <a href="/contact">Kontakt os!</a>
+
+    custom_subdomain_html: |
+      eget dubdomæne,<br />
+      <strong>dinegruppe</strong>.loomio.org
+    usage_statistics: brugs statistik
+    plus_price_html: '<strong>$99</strong>/måned'
+  password_reset:
+    email_guidelines_html: |
+      <p>Indtast emailadressen for din Loomio konto i feltet herunder, så vil du få tilsendt en nulstill adgangskode url.</p>
+      <p>Hvis du normalt benytter Facebook, Google, Twitter eller Persona, så indtast emailadressen for din konto.</p>
+    reset_email_timeframe: Vent venligst i op til 5 minutter på at emailen kommer. Hvis den ikke kommer, så kontroller din spam folder.
+    length_restriction: Adgangskode skal være mindst 8 tegn.
+    forbidden_passwords: Almindelige adgangskoder så som "password" er forbudt for at sikre dun konto.
+  introduction_thread:
+    title: Velkommen, introducér dig selv
+    description: |
+      Brug et øjeblik på at beskrive dig selv, så at gruppen ved hvem du er. Opret en kommentar herunder
+
+      Hvad er din rolle eller tilgang til at deltaget i denne gruppe? Hvad er vigtigt for andre deltagere at vide om dig for at bedre forstå dit perspektiv?
+  how_it_works_thread:
+    title: Sådan bruger du Loomio
+    description: |
+      Velkommen til Loomio, et online sted hvor man kan træffe beslutninger sammen.
+
+      Dette er et eksempel på en diskussion. Du kan tilføje kommentarer herunder. En diskussion har et specifikt emne. Denne diskussion omhandler hvordan man bruger Loomio, så opret kommentarer om dette her.
+
+      Du er pt. igang med at læse konteksten for diskussionen, typisk indeholder dette baggrundsinformation for diskussionen. Dette kan opdateres mens man bliver klogere igennem diskussionen.
+
+      Kom igang med Loomio
+      1. Upload et [profilbillede](/profile)
+      2. Introducér dig selv i [Velkommen diskussionen](%{thread_url})
+      3. Kommenter på eksisterende diskussioner, eller start en nye diskussion.
+
+      Tips når man kommunikerer i Loomio
+      * For at notificere en bestemt person , task @ og så deres navn.
+      * Klik på papirklips ikonet for at uploade vedhæftninger.
+
+      Hvis du har spørgsmål, så kig i [vejledningen](http://help.loomio.org).
+  first_proposal:
+    name: Demonstrations forslag
+    description: |
+      Dette er et **forslag**, som understøtter at tage en beslutning sammen. Du kan oprette et forslag så snart en diskusion er igang.
+
+      Alle bliver spurgt om at  **give deres mening til kende** inden  **deadline**. Du kan udskyde eller forlænge en deadline, eller vælge at lukke et forslag før tid, hvis man gennem diskusionen finder ud af at forslaget ramte ved siden af.
+
+      Du kan **skifte mening** så længe forslaget er åbent. Det kan være at diskusionen bringer nye informationer på bordet som gør at du skifter mening.
+
+      Nogen gange gennemarbejder grupper en **serie af forslag** for at gradvis komme tættere og tættere på den "rigtige" løsning for alle. Du kan oprette efterfølgende forslag i denne  diskusion.
+
+      **Deltag! Tryk en af de 4 knapper**.
   contact_page:
     contact_us: Kontakt os
+    faq_prompt_html: HAr du et forslag for Loomio teamet? Inden du kontakter os så kan det være at du kan finde svaret under vores FAQ (ofte stillede spørgsmål).
+    contact_information: Hvis du ikke finder hvad du leder efter, så kan du finde vores kontakt information her i bunden af siden.
+    contact_form: Kontakt formular
     labels:
       name: Dit navn
       email: Din email-adresse
@@ -81,3 +284,180 @@ da:
       submit: Send besked
     messages:
       email_html: "Udfyld denne formular eller send en e-mail til <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Du kan også deltage i vores gruppe på <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, og <a href='%{twitter}' target='_blank'>twitter</a>!"
+  markdown:
+    intro:
+      title: |
+        # Hvad er markdown?
+      body: |
+        Markdown er en måde at formattere rå tekst (venstre),
+        så det kan vises som formateret tekst (højre).
+
+        Denne side er skrevet i markdown for at vise hvordan det virker.
+    headers:
+      body: |
+        ## Overskrift
+
+        Skriv en eller flere "havelåger" og afslut med et mellemrum for at lave teksten til en overskrift.
+
+        # Dette er en h1
+        ## Dette er en h2
+        #### Dette er en h4
+    paragraphs:
+      title: |
+        ## Paragraffer
+      body: |
+        Du skal
+        oprette en
+        blank linje
+        mellem linjer.
+
+        Ellers bliver det til en stor paragraf!
+    emphasis:
+      title: |
+        ## Fed skrift
+      body: |
+        Du kan lave skrå skrift ved at omringe den relevante tekst med  _underscore_ eller *star*.
+
+        __Fed skrift__ opnås ved at omringe den tekst med 2 stjerner foran og bagved **emphasis**.
+    lists:
+      title: |
+        ## Lister
+      body: |
+        Man kan lave en liste ved at:
+
+        * hav en blank linie før din liste
+        * start linien med en stjerne (*)
+        * efterfulgt af et mellemrum og så din tekst
+    links:
+      title: |
+        ## Link og billeder
+      body: |
+        Gentga højt:
+
+        Skarpe paranteser for navnet og almindelige paranteser for URLen. Der er ikke noget mellemrum mellem skarpe og normale paranteser.
+
+        [Loomio Hjemmeside](https://www.loomio.org/)
+
+        Links til billeder er det sammen bare med et udråbstegns foranstillet.
+
+        ![loomio logo](https://i.imgur.com/Fvtworb.png)
+  beta_banner:
+    new_loomio_html: |
+      <strong>Den nye Loomio er hurtigere, pænere og bedre!</strong> Vi flytter alle over på den nye version.
+    upgrade_browser_html: |
+      Vi supporterer kun moderne versioner af Internet Explore (10+). Du bliver nødt til at <a href='http://outdatedbrowser.com/en' target='_blank'>opgradere din browser</a> for at fortsætte med at bruge Loomio.
+      <strong>Den nye Loomio er nu her!</strong> Den er hurtigere, pænere og mobil venlig.
+    more_info: Mere info...
+    button_text: Skift til den nye Loomio
+  poll_mailer:
+    common:
+      or: eller
+      why_send_this: Du modtager denne email fordi %{reason}
+      view_on_loomio: Vis det på Loomio
+      unsubscribe: Afmeld
+      results: Resultater
+      responses: Svar
+      change_your_stance: Redigér
+      create_outcome: Del resultat
+      your_response: Dit svar
+      please_respond: Svar venligst
+      time_zone: (Tider er vist i %{zone})
+    proposal:
+      subject:
+        poll_created: '%{actor} oprettede et forslag: %{title}'
+        poll_edited: '%{actor} redigerede forslaget: %{title}'
+        poll_closing_soon: 'Forslag der lukker om 24 timers: %{title}'
+        poll_closing_soon_author: 'Dit forslag lukker om 24 timer: %{title}'
+        poll_expired: "Forslag lukket: %{title}"
+        poll_expired_author: 'Dit forslag er lukket. Del restulatet for: %{title}'
+        outcome_created: '%{actor} delte et forslags results: %{title}'
+        visitor_created: '%{actor} ønsker din mening: %{title}'
+        visitor_reminded: '%{actor} venter på at du stemmer på: %{title}'
+        stance_created: "%{actor} stemte på: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> oprettede et forslag'
+        poll_edited: '<strong>%{actor}</strong> redigerede forslaget'
+        poll_closing_soon: '<strong>%{actor}</strong>''s forslag lukker om 24 timer. Nu er et godt tidspunkt at stemme, skifte mening eller opmuntre andre til at deltage.'
+        poll_closing_soon_author: 'Dit forslag lukker om 24 timer - det er nu et godt tidspunkt at mindre folk om det eller udvidde deadline,  hvis nødvendigt.'
+        poll_expired: "<strong>%{actor}'s</strong> forslag er lukket: %{title}"
+        poll_expired_author: 'Dir forslag er <strong>lukket</strong>. Overvej hvad der er blevet sagt <strong>del et resultat</strong> med gruppen, so folk ved hvad der sker som det næste skridt.'
+        outcome_created: '<strong>%{actor}</strong> delte resultatet af et forslag.'
+        visitor_created: '<strong>%{actor}</strong> ønsker din mening: %{title}'
+        visitor_reminded: '<strong>%{actor}</strong> venter på at du stemmer på: %{title}'
+        stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    poll:
+      subject:
+        poll_created: '%{actor} startede en afstemning: %{title}'
+        poll_edited: '%{actor} redigerede afstemningen: %{title}'
+        poll_closing_soon: 'Afstemning lukker om 24 timer: %{title}'
+        poll_closing_soon_author: 'Din afstemning lukker om 24 timer: %{title}'
+        poll_expired: "Afstemning resultat: %{title}"
+        poll_expired_author: 'Din afstemning er lukket. Del resultatet af afstemningen for: %{title}'
+        outcome_created: '%{actor} delte resultatet af afstemningen: %{title}'
+        visitor_created: '%{actor} ønsker din mening: %{title}'
+        visitor_reminded: '%{actor} venter på at du stemmer på: %{title}'
+        stance_created: "%{actor} stemte på: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> oprettede en afstemning'
+        poll_edited: '<strong>%{actor}</strong> redigerede en afstemning'
+        poll_closing_soon: '<strong>%{actor}</strong>s afstemning lukker om 24 timer. Nu er et godt tidspunkt at stemme, skifte mening eller opmuntre andre til at deltage.'
+        poll_closing_soon_author: 'Dit afstemning lukker om 24 timer - det er nu et godt tidspunkt at mindre folk om det eller udvidde deadline, hvis nødvendigt.'
+        poll_expired: "<strong>%{actor}'s</strong> afstemning er lukket: %{title}"
+        poll_expired_author: 'Din afstemning er <strong>lukket</strong>. Overvej hvad der er blevet sagt <strong>del et resultat</strong> med gruppen, så folk ved hvad der sker som det næste skridt.'
+        outcome_created: '<strong>%{actor}</strong> delte resultatet af en afstemning.'
+        visitor_created: '<strong>%{actor}</strong> inviterede dig til at deltage i afstemningen: %{title}'
+        visitor_reminded: '<strong>%{actor}</strong> venter på at du stemmer på: %{title}'
+        stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    count:
+      subject:
+        poll_created: '%{actor} kontrollerer: %{title}'
+        outcome_created: '%{actor} delte resultatet for: %{title}'
+        visitor_created: '%{actor} kontrollerer: %{title}'
+        visitor_reminded: '%{actor} venter på dit svar: %{title}'
+        stance_created: "%{actor} deltog i: %{title}"
+      header:
+        outcome_created: '<strong>%{actor}</strong> delte et resultat.'
+        visitor_reminded: '%{actor} venter på dit svar: %{title}'
+        stance_created: "%{actor} deltog i: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    dot_vote:
+      subject:
+        poll_created: '%{actor} oprettede en prik afstemning: %{title}'
+        poll_edited: '%{actor} redigerede prik afstemningen: %{title}'
+        poll_closing_soon: 'Prik afstemning lukker om 24 timer: %{title}'
+        poll_closing_soon_author: 'Din prik afstemning lukker om 24 timer: %{title}'
+        poll_expired: "Prik afstemning resultat: %{title}"
+        poll_expired_author: 'Din prik afstemning er lukket. Del resultatet af afstemningen for: %{title}'
+        outcome_created: '%{actor} delte resultatet for: %{title}'
+        visitor_created: '<strong>%{actor}</strong> inviterede dig til at deltage i prik afstemningen: %{title}'
+        visitor_reminded: '%{actor} venter på at du stemmer på: %{title}'
+        stance_created: "%{actor} stemte på: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> oprettede en prikafstemning'
+        poll_edited: '<strong>%{actor}</strong> redigerede en prikafstemning'
+        poll_closing_soon: '<strong>%{actor}</strong>s prikafstemning lukker om 24 timer. Nu er et godt tidspunkt at stemme, skifte mening eller opmuntre andre til at deltage.'
+        poll_closing_soon_author: 'Dit prikafstemning lukker om 24 timer - det er nu et godt tidspunkt at mindre folk om det eller udvidde deadline, hvis nødvendigt.'
+        poll_expired: "Resultat for <strong>%{actor}s</strong> prikafstemning: %{title}"
+        poll_expired_author: 'Din prikafstemning er <strong>lukket</strong>. Overvej hvad der er blevet sagt <strong>del et resultat</strong> med gruppen, så folk ved hvad der sker som det næste skridt.'
+        outcome_created: '<strong>%{actor}</strong> delte resultatet af en prikafstemning.'
+        visitor_created: '<strong>%{actor}</strong> inviterede dig til at deltage i prikafstemningen: %{title}'
+        visitor_reminded: '<strong>%{actor}</strong> venter på at du stemmer på: %{title}'
+        stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    meeting:
+      subject:
+        poll_created: '%{actor} startede en prikafstemning: %{title}'
+        poll_edited: '%{actor} redigerede prikafstemningen: %{title}'
+        outcome_created: '%{actor} delte resultatet for: %{title}'
+        stance_created: '%{actor} deltog i: %{title}'
+      header:
+        stance_created: "%{actor} deltog i: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'

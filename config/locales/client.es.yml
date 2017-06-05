@@ -50,6 +50,7 @@ es:
     copy_text: 'Copiar texto'
     copied: 'Copiado al portapapeles'
     action:
+      next: 'Siguiente'
       close: 'Cerrar'
       save: 'Guardar'
       save_changes: 'Guardar cambios'
@@ -111,8 +112,6 @@ es:
     heading: 'Propuestas previas '
   previous_polls_page:
     heading: Actividades en {{name}}
-    polls_count: Mostrando {{loaded}} de {{total}} actividades
-    search_activities: Buscar actividades
   proposal_collapsed:
     expand: Expandir
     outcome: 'Resultado: {{outcome}}'
@@ -182,22 +181,6 @@ es:
     latest: 'Últimos'
     unread: 'No leído'
     closing_in: 'Cerrando'
-  sign_in_form:
-    aria_label: 'Formulario de entrada'
-    title: 'Ingresa a Loomio'
-    email_label: 'Email:'
-    email_placeholder: 'tu@ejemplo.com'
-    password_label: 'Contraseña:'
-    remember_me: 'Recuérdame'
-    forgot_password: '¿Olvidaste tu contraseña?'
-    sign_in: 'Entrar'
-    signed_in: 'Cuenta creada satisfactoriamente '
-    oauth:
-      title: 'O inicia sesión con tu cuenta de otra plataforma:'
-      facebook: 'Iniciar sesión con Facebook'
-      twitter: 'Iniciar sesión con Twitter'
-      google: 'Iniciar sesión con Google'
-      github: 'Iniciar sesión con Github'
   sign_up_form:
     aria_label: 'Formulario de entrada'
     title: "¡Bienvenido/a a Loomio! Te haremos comenzar enseguida"
@@ -308,6 +291,7 @@ es:
     poll_closing_soon: "{{poll_type}} está a punto de cerrarse: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} se cerró: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> compartió un resultado: <strong>{{title}}</strong>"
+    stance_created: "<strong>{{name}}</strong> participó en: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: 'Danos tu opinión '
   vote_form:
@@ -672,9 +656,6 @@ es:
   group_previous_proposals_card:
     heading: Propuestas previas
     see_more: Ver más
-  group_decisions_card:
-    heading: Actividades anteriores
-    see_more: "v"
   invitation_form:
     aria_label: 'Formulario de invitación'
     invite_people: 'Invita gente'
@@ -744,7 +725,6 @@ es:
       password_changed: 'Contraseña actualizada'
       deactivated: 'Cuanta desactivada'
     change_picture_link: 'Cambiar imagen'
-    change_password_link: 'Cambiar la contraseña'
     deactivate_user_link: 'Desactivar cuenta...'
     profile: 'Perfil'
     edit_profile: 'Editar perfil'
@@ -762,14 +742,6 @@ es:
     use_initials: 'Usar iniciales'
     use_gravatar: 'Usar Gravatar'
     use_uploaded: 'Subir una imagen nueva'
-  change_password_form:
-    aria_label: 'Formulario de cambio de contraseña'
-    title: 'Cambiar la contraseña'
-    helptext: 'Las contraseñas deben tener 8 caracteres. La contraseñas común como "contraseña" está prohibida para mantener tu cuenta segura.'
-    current_password_label: 'Contraseña actual'
-    new_password_label: 'Nueva contraseña'
-    password_confirmation_label: 'Confirmar nueva contraseña'
-    submit: 'Actualizar contraseña'
   deactivation_modal:
     aria_label: 'Desactiva cuenta '
     introduction: 'Cuando desactivas tu cuenta:'
@@ -1002,6 +974,11 @@ es:
       estará aprendiendo nuevos procesos para colaborar mas efectivamente y tomando buenas decisiones⏎
       juntos. Aquí puedes encontrar algunos consejos para que tu grupo tenga mucho éxito:⏎
     different_ways: 'Maneras diferentes de usar Loomio'
+    engaging_html: |
+      <h2>Consejos para implicar a tu grupo</h2>
+      <p>La gente estará motivada a entrar y comenzar a participar cuando haya una propuesta interesante sobre la mesa. Una buena propuesta contiene un plan de acción para el grupo, así que se hace obvio lo que significa estar de acuerdo o en desacuerdo. Piensa en cómo puedes identificar las discusiones/decisiones en las que el grupo está involucrado actualmente en persona o por correo, que pudieran hacerse más fáciles si estuvieran en Loomio.</p>
+      <p>Si tu grupo está apenas comenzando, puedes iniciar una decisión ligera, para darle a todos la oportunidad de jugar con la herramienta y ver en acción el proceso de toma de decisiones.</p>
+      <p>Otra manera sencilla de animar a las personas a implicarse en una discusión es usando la característica de @mention para aludir a determinadas personas; esto les enviará un correo avisándoles que han sido mencionados en un comentario.</p>
     example1_html: |-
       <h3>El grupo debe discutir sobre un tema amplio y desarrollar una solucion conjunta</h3>⏎
       <p>Estrategia: Discutir el tema durante un tiempo antes de iniciar una propuesta.</p>⏎
@@ -1009,6 +986,12 @@ es:
       compartido sobre el problema antes de decantarse por una solucion concreta. Cuando la gente⏎
       empieza a participar en el proceso, es mucho mas probable que esten satisfechos con⏎
       el resultado o decision final.⏎</p>\n
+    example2_html: |
+      <h3>Tienes ya en mente una propuesta y quieres alcanzar un refrendo del grupo para seguir adelante.</h3>
+      <p>Estrategia: comienza una discusión sobre una decisión específica y crea inmediatamente una propuesta.</p>
+      <p>Si tienes en mente un resultado claro pero quieres asegurarte de que no hay ningún problema crítico,
+      puedes usar la propuesta para obtener una rápida contribución en la decisión.</p>
+      <p>Puedes hacer cosas como finalizar un documento, aprobar una solicitud o refrendar una obra realizada.</p>
     get_in_touch: "Ponte en contacto"
     get_in_touch_description_html: "Si tienes preguntas o sugerencias, <a href='%{link}'> escríbenos a</a>."
     getting_started: "Primeros pasos"
@@ -1054,6 +1037,10 @@ es:
     positions_disagree_description: "<span>No estás de acuerdo</span>, significa que piensas que hay una mejor alternativa, pero estás dispuesto a seguir con la decisión del grupo."
     positions_block_description: "<span>Bloquear</span>, significa que tienes serias objeciones y estarías extremadamente en desacuerdo si la propuesta siguiera adelante."
     start_discussion: "Empezar una discusión participativa"
+    start_discussion_html: |
+      <p>Cuando comienzas una discusión, asegúrate de que el título transmite sucíntamente el asunto.
+      Usa el panel de contexto para aportar todo el trasfondo necesario para que el grupo tenga una discusión productiva y bien fundamentada.</p>
+      <p>Durante la discusión, el panel de contexto puede actualizarse según salga a la luz nueva información. Además de clarificar el tema, puedes usar este espacio para compartir recursos, recapitular la discusión según progresa o resumir los protocolos de toma de decisiones que está usando tu grupo.</p>
     start_proposal: "Crear una propuesta clara"
     start_proposal_html: |
       <p> Si creas un título claro y sucinto, la personas sabrán de forma inmediata qué significa exactamente estar de acuerdo o disentir.</p>
@@ -1170,8 +1157,6 @@ es:
     update_outcome: Actualizar el resultado
     outcome: Resultado
     statement: Declaración
-    change_your_stance_title: ¿Cambiaste de idea?
-    change_your_stance_text: Las mejores decisiones de grupo ocurren cuando las personas trabajan para entender la posición del otro. Si lo que otras personas han dicho ha cambiado tu opinión, cambie su voto.
     change_your_stance: Cambie su voto
     load_more: Carga más
     details: Detalles
@@ -1192,6 +1177,10 @@ es:
     notify_group: Anuncio
     members_helptext: 'Tu grupo no será notificado '
     members_count: "{{count}} personas serán notificadas"
+    participants_count: "Las {{count}} personas que hayan votado serán notificadas"
+  poll_common_notify_on_participate:
+    notify_on_participate: Notificarme cuando participe gente
+    helptext_on: Se te notificará cuando alguien participe
   poll_common_close_form:
     title: Cerrar una encuesta temprano
     helptext: ¿Estás seguro de que estás listo para cerrar tan pronto?
@@ -1222,8 +1211,6 @@ es:
   poll_common_did_not_votes_panel:
     undecided: '({{count}}) Indecisos '
     show_undecided: Mostrar indecisos
-  poll_common_accordion:
-    title: Actividad reciente
   poll_common_set_outcome_panel:
     share_outcome: Compartr resultado
     poll: 'Esta encuesta ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'
@@ -1248,6 +1235,13 @@ es:
     start: Iniciar
     update: Actualizar
   poll_proposal_form:
+    tool_tip_expanded: |
+      <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción.</p>
+      <p>Los participantes pueden consentir, abstenerse, disentir o bloquear y fundamentar su posición.</p>
+      <p>Las distintas posiciones en el grupo son visibles en un gráfico circular, mientras que la fundamentación permite a cada uno hacer valer su voz. </p>
+      <p>No te desanimes si al comienzo no ves que haya acuerdo, las propuestas están diseñadas para hacer visibles los problemas que necesitan resolución.</p>
+      <p>Si hay alta participación, una propuesta puede entregar un mandato potente para pasar a la acción.</p>
+      <p>Puedes aprender más en la <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Escuela de Loomio</a>.</p>
     tool_tip_collapsed: 'Busca el acuerdo colectivo  '
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta
@@ -1257,6 +1251,10 @@ es:
     proposal_created: Propuesta iniciada
     proposal_updated: Propuesta actualizada
   poll_poll_form:
+    tool_tip_expanded: |
+      <p>Usa una encuesta para medir popularidad u ofrecer alternativas.</p>
+      <p>Proporciona algunas opciones de dónde elegir. Decide si los participantes eligen opciones individuales o múltiples en su respuesta.</p>
+      <p>Todos votan y pueden incluir una fundamentación si lo desean. Los resultados se visualizan en un gráfico de barras.</p>
     tool_tip_collapsed: 'Mida la popularidad u ofrezca una opción '
     start_header: Iniciar encuesta
     edit_header: Editar encuesta
@@ -1270,6 +1268,12 @@ es:
     poll_created: Encuesta creada
     poll_updated: Encuesta actualizada
   poll_count_form:
+    tool_tip_expanded: |
+      <p>Una <em>comprobación</em> es una herramienta que tiene muchos usos posibles pero solo 2 respuestas: visto o raya.</p>
+      <p>Úsalo para comprometer a la gente, como al pedir confirmación: "asistiré al evento" o "me apuntaré al grupo de trabajo".</p>
+      <p>O úsalo para hacer seguimiento a una tarea: "confirmé que mis datos de contacto están correctos", o "leí el documento y dejé mis comentarios".</p>
+      <p>Una comprobación tiene una <em>meta</em>, que es el número de participantes que quisieras. La meta indica al grupo que algo requiere más atención o cuenta con amplio acuerdo.</p>
+      <p>Un día antes de que se cierre la comprobación, se le recordará a quienes no han participado todavía, para ordenar el gallinero.</p>
     tool_tip_collapsed: Comprobar la participación y encontrar voluntarios
     start_header: 'Iniciar Comprobación '
     edit_header: 'Editar Comprobación '
@@ -1279,6 +1283,10 @@ es:
     count_created: 'Comprobación iniciada '
     count_updated: 'Comprobación actualizada '
   poll_dot_vote_form:
+    tool_tip_expanded: |
+      <p>El voto de puntos es una manera de priorizar un listado de alternativas.</p>
+      <p>Los participantes tienen un número limitado de ‘puntos’ que pueden distribuir del modo que quieran entre las opciones que representen sus preferencias.</p>
+      <p>El proceso da como resultado un gráfico de barras acumulativas además de las asignaciones individuales, con lo que se pueden considerar los distintos puntos de vista.</p>
     tool_tip_collapsed: Priorizar opciones
     start_header: Iniciar voto de puntos
     edit_header: Editar voto de puntos
@@ -1290,6 +1298,13 @@ es:
     dot_vote_created: Voto de punto creado
     dot_vote_updated: Voto de punto actualizado
   poll_meeting_form:
+    tool_tip_expanded: |
+      <p>Usa una coordinación de horario para saber cuándo hay disponibilidad de la gente para reunirse.</p>
+      <p>Ingresa un listado de fechas u horas en que podrías hacer la reunión.</p>
+      <p>Los participantes marcan aquellas en que pueden asistir o pueden indicar sus circunstancias en el cuadro para que puedas actualizar las alternativas de ser necesario.</p>
+      <p>Si agregas nuevos horarios durante la coordinación de horario, se le pedirá a la gente que ya ha votado que actualice su respuesta.</p>
+      <p>Así puedes saber cuándo está disponible cada uno y decidir el momento de la reunión.</p>
+      <p>Las horas se convierten automáticamente a la zona horaria del participante.</p>
     tool_tip_collapsed: Encuentra un tiempo para reunirse
     start_header: Iniciar coordinación horaria
     edit_header: Editar coordinación horaria
@@ -1379,36 +1394,20 @@ es:
   poll_common_share_form:
     no_group_selected: Ningún grupo seleccionado
     no_communities: "No haz conectado ninguna comunidad aún. Clic 'añadir comunidad' debajo para conectar una. "
-    share_a_link: Enlace para compartir
-    anyone_can_participate: Cualquiera puede participar
     anyone_can_participate_true: Enlace para compartir creado
     anyone_can_participate_false: 'Enlace compartible revocado '
-    set_group: 'Grupo de Loomio actualizado '
-    shareable_link_created: Cualquiera puede participar en esta encuesta
-    shareable_link_revoked: Esta encuesta ahora es solo para los invitados
     shareable_link: Enlace para compartir
-    guests_invited: '{{count}} invitaciones'
     guest_revoked: Acceso revocado para {{email}}
-    invite_guests: Gente invitada
     existing_guests: Invitados
     new_guests: 'Nuevos emails para invitar '
     enter_email: "ej. invitado@ejemplo.com "
     reminded: 'Recordatorio enviado '
     send_emails: Invitaciones enviadas ({{count}})
-    no_loomio_group: Esta encuesta no está asociada actualmente a ningún grupo de Loomio
-    has_loomio_group: 'Miembros de este grupo podrán ver y participar en la encuesta. '
-    poll_is_shareable: 'Copia el enlace y compártelo. Cualquier persona con el enlace podrá participar.  '
-    enter_emails: 'Ingresa la dirección de email para enviar un enlace de participación único. '
     view_poll: Ver la encuesta
     email_invited: 'Invitación enviada a {{email}}'
     email_exists: '{{email}} ya ha sido invitado'
     email_empty: 'Por favor ingresa una dirección de email '
     email_invalid: "No parece ser una dirección de email valida"
-    communities: Conectar Comunidad
-    add_facebook_community: Añade grupo de Facebook
-    add_slack_community: Añade canal de Slack
-    community_revoked: Esta comunidad ya no podrá participar
-    community_added: Comunidad añadida a la encuesta
   poll_common_publish_form:
     community: Informar al siguiente grupo de tu encuesta
     message: Ingresa un mensaje
@@ -1420,6 +1419,23 @@ es:
     just_now: Ahora
   poll_common_publish_slack_preview:
     poll_published: "publicar encuesta"
+    poll_published_with_discussion: "publicó una encuesta en <strong>{{discussion}}</strong>:"
+    view_it_on_loomio: Verlo en Loomio
+    timestamp: Hoy en {{timestamp}}
+  add_community_form:
+    title: Añadir comunidad
+    existing_communities: Comunidades previamente conectadas
+    no_communities: Todavía no has conectado ninguna comunidad. Seleccione una de abajo para comenzar.
+    connect_new_community: Conectar una nueva comunidad
+    currently_signed_in_as: "Actualmente iniciado como:"
+    community_created: Esta encuesta está ahora conectada a laa comunidad {{type}}
+    error_explanation: ¡Vaya! Tuvimos problemas para conectarnos a {{type}}. Haga clic a continuación para volver a intentarlo.
+    slack:
+      another_account: (Cambiar equipos)
+      fragment_placeholder: Buscar canales ...
+    facebook:
+      another_account: (Ingresa con otra cuenta)
+      fragment_placeholder: Buscar grupos ...
   poll_common_participant_form:
     participant_name_placeholder: ¿Cuál es tu nombre?
   poll_common_subscribe_form:

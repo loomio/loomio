@@ -58,49 +58,22 @@ describe Poll do
     end
   end
 
-  describe 'group_id=' do
-    before { group.community; another_group.community; poll.save }
-    let(:group) { create :group }
-    let(:another_group) { create :group }
+  describe 'is_new_version?' do
+    before { poll.save }
 
-    it 'creates a group community if true' do
-      expect { poll.update(group_id: group.id) }.to change { poll.communities.count }.by(1)
-      expect(poll.communities).to include group.community
-      expect(poll.reload.group_id).to eq group.id
+    it 'is a new version if title is changed' do
+      poll.title = "new title"
+      expect(poll.is_new_version?).to eq true
     end
 
-    it 'removes the group community if it exists' do
-      poll.update(group_id: group.id)
-      expect { poll.update(group_id: nil) }.to change { poll.communities.count }.by(-1)
-      expect(poll.reload.group_id).to be_nil
+    it 'is a new version if new poll option is added' do
+      poll.poll_option_names = "new_option"
+      expect(poll.is_new_version?).to eq true
     end
 
-    it 'updates the existing group community if it exists' do
-      poll.update(group_id: group.id)
-      expect { poll.update(group_id: another_group.id) }.to_not change { poll.communities.count }
-      expect(poll.reload.communities).to include another_group.community
-      expect(poll.reload.group_id).to eq another_group.id
-    end
-
-    it 'does nothing if group community doesnt exist' do
-      expect { poll.update(group_id: nil) }.to_not change { poll.communities.count }
-    end
-
-    describe 'is_new_version?' do
-      it 'is a new version if title is changed' do
-        poll.title = "new title"
-        expect(poll.is_new_version?).to eq true
-      end
-
-      it 'is a new version if new poll option is added' do
-        poll.poll_option_names = "new_option"
-        expect(poll.is_new_version?).to eq true
-      end
-
-      it 'is not a new version if anyone_can_participate is changed' do
-        poll.anyone_can_participate = false
-        expect(poll.is_new_version?).to eq false
-      end
+    it 'is not a new version if anyone_can_participate is changed' do
+      poll.anyone_can_participate = false
+      expect(poll.is_new_version?).to eq false
     end
   end
 end

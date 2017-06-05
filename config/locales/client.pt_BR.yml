@@ -3,6 +3,8 @@ pt_BR:
     proposal: Proposta
     poll: Votação
   common:
+    ok_got_it: OK, entendi
+    learn_more: Saiba mais
     confirm_discard_changes: Descartar suas alterações?
     time:
       am: am
@@ -13,6 +15,9 @@ pt_BR:
     notification_volume: 'Volume de Notificações'
     group: 'Grupo'
     groups: 'Grupos'
+    threads: 'Tópicos'
+    decisions: 'Decisões'
+    settings: 'Configurações'
     help: 'Ajuda'
     privacy:
       privacy: 'Privacidade'
@@ -31,6 +36,7 @@ pt_BR:
     more_help: 'Mais ajuda'
     models:
       proposal: 'Proposta'
+    copy_text: 'Copiar texto'
     copied: 'Copiado para o clipboard'
     action:
       close: 'Encerrar'
@@ -54,7 +60,10 @@ pt_BR:
       translated: 'Tradução do Bing Tradutor'
       upload: 'Carregar'
       uploading: 'Carregando'
+      ok: OK!
+      done: Pronto
     formatting_help:
+      label: 'Formatação'
       title: 'Aprenda como utilizar Remarcação -- Markdown -- para formatar seu texto no Loomio'
   devise:
     failure:
@@ -69,6 +78,7 @@ pt_BR:
   proposal_outcome_panel:
     heading: Resultado
     set_outcome_hint: Utilize este espaço para que todos saibam o resultado da proposta.
+    edit_outcome_link: Editar resultado
   proposal_outcome_form:
     aria_label: Formulário de resultado da proposta
     set_outcome: Definir resultado da proposta
@@ -83,6 +93,8 @@ pt_BR:
     heading: Propostas anteriores
   previous_proposals_page:
     heading: Propostas anteriores
+  previous_polls_page:
+    search_activities: Buscar decisões
   proposal_collapsed:
     expand: Expandir
     outcome: 'Resultado: {{outcome}}'
@@ -144,21 +156,6 @@ pt_BR:
     latest: 'Último'
     unread: 'Não lida'
     closing_in: 'Encerrando'
-  sign_in_form:
-    aria_label: 'Formulário de entrada'
-    title: 'Entre no Loomio'
-    email_label: 'E-mail:'
-    email_placeholder: 'you@example.com'
-    password_label: 'Senha:'
-    remember_me: 'Lembre-me'
-    forgot_password: 'Esqueceu a senha?'
-    sign_in: 'Login'
-    signed_in: 'Entrou com sucesso'
-    oauth:
-      facebook: 'Entre com o Facebook'
-      twitter: 'Entre com o Twitter'
-      google: 'Entre com o Google'
-      github: 'Entre com o Github'
   sign_up_form:
     aria_label: 'Formulário de cadastro'
     title: "Bem-vindo ao Loomio! Vamos deixar tudo certo para você"
@@ -179,6 +176,7 @@ pt_BR:
   comment_form:
     aria_label: 'Adicionar um comentário'
     attachments:
+      add_attachment: 'Anexar um arquivo'
       remove_attachment: 'Remover anexo'
     messages:
       created: 'Comentário adicionado'
@@ -189,6 +187,7 @@ pt_BR:
     delete_comment: 'Apagar comentário'
     cancel_reply: 'Cancelar Resposta'
     confirm_delete_message: 'Você tem certeza que deseja apagar este comentário?'
+    confirm_delete: 'Apagar comentário'
     in_reply_to: "Em resposta a <strong>{{name}}</strong>:"
     submit_button:
       label: 'Postagem'
@@ -196,12 +195,17 @@ pt_BR:
     public_privacy_notice: 'Seu comentário será visível para qualquer pessoa na web'
     sign_in: "Entre para se juntar à conversa"
   sidebar:
+    recent_threads: 'Tópicos recentes'
+    muted_threads: 'Tópicos silenciados'
+    start_group: 'Novo grupo'
     explore: 'Grupos públicos'
     edit_profile: 'Editar perfil'
     email_settings: 'Configurações de e-mail'
     help: 'Ajuda'
     contact: 'Contate Loomio'
     sign_out: 'Sair'
+    start_thread: Novo tópico
+    start_decision: Nova decisão
     aria_labels:
       heading: 'Barra lateral'
       threads_list: 'Ações dos tópicos'
@@ -210,6 +214,7 @@ pt_BR:
   navbar:
     recent_title: 'Ir para o painel'
     unread_title: 'Ver atividades não lidas'
+    start_thread: 'Novo tópico'
     notifications: 'Painel de notificações'
     search:
       label: 'Campo de pesquisa; pesquisa por grupos e tópicos'
@@ -273,6 +278,7 @@ pt_BR:
     aria_label: 'Encerrar proposta'
     close_proposal: 'Encerrar proposta'
     helptext: 'Você tem certeza que deseja encerrar esta proposta agora?'
+    close_proposal_submit: 'Encerrar proposta'
     messages:
       success: Proposta encerrada
   extend_proposal_form:
@@ -657,7 +663,6 @@ pt_BR:
       password_changed: 'Senha atualizada'
       deactivated: 'Conta desativada'
     change_picture_link: 'Mudar imagem'
-    change_password_link: 'Mudar senha'
     deactivate_user_link: 'Desativar conta...'
     profile: 'Perfil'
     edit_profile: 'Editar Perfil'
@@ -674,14 +679,6 @@ pt_BR:
     use_initials: 'Usar iniciais'
     use_gravatar: 'Usar gravatar'
     use_uploaded: 'Enviar uma nova foto'
-  change_password_form:
-    aria_label: 'Formulário para mudança de senha'
-    title: 'Mudar Senha'
-    helptext: 'Senhas devem ter 8 caracteres. Senhas comuns, tais como "senha", são proibidas para manter sua conta segura.'
-    current_password_label: 'Senha atual'
-    new_password_label: 'Nova senha'
-    password_confirmation_label: 'Confirmar a nova senha'
-    submit: 'Atualizar senha'
   deactivation_modal:
     aria_label: 'Desativar conta'
     introduction: 'Quando você desativa sua conta:'
@@ -708,6 +705,7 @@ pt_BR:
     on_participation_description: "Quando você participar de uma discussão, todas as atividades serão enviadas por e-mail para você imediatamente."
     mentioned_label: Menções
     mentioned_description: "Quando alguém quer chamar sua atenção, vai @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer."
+    update_settings: Salvar mudanças
     specific_groups: Configurações para grupos específicos
     default_settings:
       loud_description: "Quando você entrar em um novo grupo, você receberá e-mail <strong>sempre que houver atividade</strong>."
@@ -814,6 +812,7 @@ pt_BR:
     thread_options: 'Opções do tópico'
     email_settings: 'Configurações de e-mail'
     edit: 'Editar'
+    edit_thread: 'Editar'
     mute_thread: 'Silenciar'
     move_thread: 'Mover'
     print_thread: 'Imprimir'
@@ -822,6 +821,7 @@ pt_BR:
     aria_label: 'Apagar tópico'
     title: Apagar tópico
     body: Você tem certeza de que deseja apagar este tópico?
+    confirm: 'Apagar tópico'
     messages:
       success: Tópico apagado
   move_thread_form:
@@ -1067,5 +1067,119 @@ pt_BR:
     messages:
       success: "'{{name}}' não poderá mais usar a sua conta."
   decision_tools_card:
+    title: Ferramentas de decisão
     proposal_title: Proposta
     poll_title: Votação
+  poll_common:
+    your_response: Sua resposta
+    change_your_response: Modifique sua resposta
+    results: Resultados
+    votes: Votos
+    update_outcome: Atualizar resultado
+    outcome: Resultado
+    change_your_stance: Modifique seu voto
+    details: Detalhes
+    participant_name: Seu nome
+    participant_email: Endereço de e-mail
+    share_proposal: Compartilhar proposta
+  poll_common_attachment_form:
+    label: Anexos
+  poll_common_card:
+    show_results: Mostrar resultados
+  poll_common_notify_group:
+    members_helptext: Seu grupo não será notificado
+    members_count: "{{count}} pessoas serão notificadas"
+  poll_common_close_form:
+    close_proposal: Encerrar proposta
+    proposal_closed: Proposta encerrada
+  poll_common_closing_at_field:
+    closing: Encerrando
+  poll_common_votes_panel:
+    change_results_order: Mudar ordem dos resultados
+    show_undecided: Mostrar pessoas indecisas
+  poll_common_did_not_votes_panel:
+    show_undecided: Mostrar pessoas indecisas
+  poll_common_set_outcome_panel:
+    share_outcome: Compartilhar resultado
+  poll_common_outcome_form:
+    new_title: Compartilhar um resultado
+    update_title: Atualizar resultado
+    outcome_created: Resultado criado
+    outcome_updated: Resultado atualizado
+    submit: Compartilhar resultado
+  poll_common_form:
+    title: Título
+    details: Detalhes
+    options: Opções
+    closing: Encerrando
+    update: Atualizar
+  poll_proposal_form:
+    tool_tip_collapsed: Busque um acordo coletivo
+    start_header: Iniciar proposta
+    edit_header: Editar proposta
+    title_placeholder: 'Exemplo: Vamos para a Lua!'
+    details_placeholder: Forneça informações suficientes para que todos saibam exatamente o que significa concordar ou discordar
+    proposal_created: Proposta iniciada
+    proposal_updated: Proposta atualizada
+  poll_poll_form:
+    tip: Medir a popularidade de diferentes opções
+    title_placeholder: 'Exemplo: Onde você quer passar o feriado?'
+    add_option_placeholder: Adicionar opção
+    remove_option: Remover opção
+    multiple_choice: Múltipla escolha
+  poll_dot_vote_form:
+    add_option_placeholder: Adicionar opção
+  poll_proposal_vote_form:
+    default_reason_placeholder: Explique seu raciocínio por favor
+    agree_reason_placeholder: O que você gosta na proposta e como ela pode beneficiar o grupo?
+    block_reason_placeholder: Explique sua objeção a esta proposta e por que ela não deveria ir adiante
+    stance_updated: Voto atualizado
+  poll_proposal_options:
+    agree_verb: "concordou"
+    agree_meaning: Esta proposta é suficientemente boa para ser adotada pelo grupo
+    abstain_verb: "absteve"
+    disagree_verb: "discordou"
+    disagree_meaning: Eu não apoio a proposta. Ela não deveria ir adiante.
+  poll_count_vote_form:
+    reason_placeholder: Deixe uma mensagem caso queira
+    stance_updated: Voto atualizado
+  poll_meeting_chart_panel:
+    total: Total
+  poll_poll_vote_form:
+    stance_updated: Voto atualizado
+  poll_meeting_vote_form:
+    your_response: Quando você pode participar?
+  poll_dot_vote_vote_form:
+    stance_updated: Voto atualizado
+  poll_thread_item:
+    proposal:
+      poll_expired: 'Proposta encerrada: <span>{{title}}</span>'
+    count:
+      stance_created: '<strong>{{author}}</strong> respondeu:'
+    meeting:
+      stance_created: '<strong>{{author}}</strong> respondeu:'
+  poll_common_share_form:
+    no_group_selected: Nenhum grupo selecionado
+    share_a_link: Compartilhar link
+    anyone_can_participate: Qualquer pessoa com o link pode participar
+    anyone_can_participate_true: Link compartilhável criado
+    get_link: Copiar link
+    shareable_link: Link compartilhável
+    reminded: Lembrete enviado!
+  poll_common_publish_form:
+    published: Mensagem enviada com sucesso
+  poll_common_publish_facebook_preview:
+    link: link
+  poll_common_publish_slack_preview:
+    view_it_on_loomio: Ver no Loomio
+  add_community_form:
+    title: Adicionar comunidade
+    facebook:
+      fragment_placeholder: Procurar por grupos...
+  poll_common_participant_form:
+    participant_name_placeholder: Qual o seu nome?
+  poll_common_subscribe_form:
+    no_thanks: Não, obrigado
+  polls_page:
+    heading: Decisões
+    start_new_poll: Nova decisão

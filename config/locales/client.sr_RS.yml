@@ -89,12 +89,6 @@ sr_RS:
   inbox:
     clear: 'Очисти'
     unread: 'Непрочитано'
-  sign_in_form:
-    oauth:
-      facebook: 'Употреби Facebook'
-      twitter: 'Употреби Twitter'
-      google: 'Употреби Google'
-      github: 'Употреби Github'
   comment_form:
     edit_comment: 'Измени коментар'
     delete_comment: 'Обриши коментар'

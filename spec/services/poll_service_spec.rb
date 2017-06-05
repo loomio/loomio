@@ -135,6 +135,8 @@ describe PollService do
     end
 
     describe 'group_id=' do
+      before { poll_created.update(discussion: nil) }
+
       it 'associates a poll community if changing the group id' do
         PollService.update(poll: poll_created, params: {group_id: group.id}, actor: user)
         expect(poll_created.reload.group).to eq group
@@ -156,6 +158,19 @@ describe PollService do
         expect(poll_created.communities).to include group.community
         expect(poll_created.communities).to_not include another_group.community
       end
+
+      it 'creates a poll_created event if the poll has moved groups' do
+        expect {
+          PollService.update(poll: poll_created, params: {group_id: another_group.id}, actor: user)
+        }.to change { Event.where(kind: :poll_created).count }.by(1)
+        expect(poll_created.reload.group).to eq another_group
+      end
+
+      it 'does not create a poll_created event if the poll has not moved groups' do
+      expect {
+        PollService.update(poll: poll_created, params: {title: "new title"}, actor: user)
+      }.to_not change { Event.where(kind: :poll_created).count }
+      end
     end
 
     it 'makes an announcement to participants if make_announcement is true' do
@@ -168,19 +183,19 @@ describe PollService do
     it 'creates a new poll edited event for poll option changes' do
       expect {
         PollService.update(poll: poll_created, params: { poll_option_names: ["new_option"] }, actor: user)
-      }.to change { Events::PollEdited.count }.by(1)
+      }.to change { Events::PollEdited.where(kind: :poll_edited).count }.by(1)
     end
 
     it 'creates a new poll edited event for major changes' do
       expect {
         PollService.update(poll: poll_created, params: { title: "BIG CHANGES!" }, actor: user)
-      }.to change { Events::PollEdited.count }.by(1)
+      }.to change { Events::PollEdited.where(kind: :poll_edited).count }.by(1)
     end
 
     it 'does not create a new poll edited event for minor changes' do
       expect {
         PollService.update(poll: poll_created, params: { anyone_can_participate: false }, actor: user)
-      }.to_not change { Events::PollEdited.count }
+      }.to_not change { Events::PollEdited.where(kind: :poll_edited).count }
     end
   end
 
@@ -233,9 +248,9 @@ describe PollService do
       group.add_member! another_user
 
       poll = Poll.last
-      expect(poll.communities.first).to be_a Communities::LoomioUsers
-      expect(poll.communities.first.includes?(vote.user)).to eq true
-      expect(poll.communities.first.includes?(another_user)).to eq false
+      expect(poll.community_of_type(:loomio_users)).to be_present
+      expect(poll.community_of_type(:loomio_users).includes?(vote.user)).to eq true
+      expect(poll.community_of_type(:loomio_users).includes?(another_user)).to eq false
     end
 
     it 'does not create duplicate polls for the same motion' do

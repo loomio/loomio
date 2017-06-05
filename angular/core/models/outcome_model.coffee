@@ -22,3 +22,6 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
 
     announcementSize: ->
       @communitySize()
+
+    notifyAction: ->
+      'publish'

@@ -38,6 +38,10 @@ poll_common_manage_card {
   justify-content: center;
 }
 
+.poll-common-share-form__group-select {
+  min-width: 0;
+}
+
 .poll-common-share-form__option-icon {
   margin: auto;
 }
