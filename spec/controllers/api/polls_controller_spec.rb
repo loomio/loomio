@@ -321,8 +321,9 @@ describe API::PollsController do
 
     it 'converts a poll in a loomio group to a loomio user community' do
       sign_in user
+      PollService.create(poll: poll, actor: user)
       post :close, id: poll.key
-      expect(poll.communities.map(&:class)).to_not include Communities::LoomioGroup
+      expect(poll.reload.communities.map(&:class)).to_not include Communities::LoomioGroup
       expect(poll.communities.map(&:class)).to include Communities::LoomioUsers
     end
   end

@@ -1646,10 +1646,10 @@ en:
     anyone_can_participate_false: Shareable link revoked
     get_link: Copy link
     invite_visitor: Email guests
-    invite_visitor_helptext: Invite individuals to this poll by email address. Guests will be able to participate in this poll only.
+    invite_visitor_helptext: Invite individuals to this decision by email address. Guests will be able to participate in this decision only.
     send_email: Send email
-    shareable_link_created: Anyone can now participate in this poll
-    shareable_link_revoked: This poll is now invite-only
+    shareable_link_created: Anyone can now participate in this decision
+    shareable_link_revoked: This decision is now invite-only
     shareable_link: Shareable link
     guests_invited: Sent to {{count}} people
     guest_revoked: Revoked access for {{email}}
@@ -1658,22 +1658,17 @@ en:
     enter_email: "E.g. guest@example.com"
     reminded: Reminder sent!
     send_emails: Send invitations ({{count}})
-    no_loomio_group: This poll is not currently associated with any Loomio group
-    has_loomio_group: Members of this group will be able to view and participate in this poll.
-    poll_is_shareable: Copy the link above and share it. Anyone with the link can pariticpate.
-    poll_is_private: Only members of the group or people you've invited will be able to participate.
-    enter_emails: Enter an email address to send a single use participation link.
+    share_group: Loomio group
+    share_group_helptext: Select a Loomio group to share this decision with. Members of the group will be able to participate.
+    cannot_move_poll_helptext: This poll is part of the discussion <strong>{{discussion}}</strong> in <strong>{{group}}</strong>, and so cannot be moved.
+    move_group_helptext: Be careful! Moving a decision out of a group may cause some people to lose access to it. Existing votes will still be recorded.
+    set_group: Set group
+    group_set: Group updated
     view_poll: View poll
     email_invited: 'Invitation email sent to {{email}}'
     email_exists: '{{email}} has already been invited'
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
-    communities: Communities
-    communities_helptext: Invite other communities to this poll. Members of those communities will be able to participate.
-    add_facebook_community: Add facebook group
-    add_slack_community: Add slack channel
-    community_revoked: This community will no longer be able to participate
-    community_added: Community added to poll
 
   poll_common_publish_form:
     community: Inform the following group of your poll

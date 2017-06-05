@@ -4,13 +4,17 @@ class PollService
 
     poll.assign_attributes(author: actor)
     poll.community_of_type(:email, build: true)
-    poll.community_of_type(:public, build: true) unless poll.group.present?
+    if poll.group.present?
+      poll.build_loomio_group_community
+    else
+      poll.community_of_type(:public, build: true)
+    end
 
     return false unless poll.valid?
     poll.save!
 
     EventBus.broadcast('poll_create', poll, actor)
-    Events::PollCreated.publish!(poll)
+    Events::PollCreated.publish!(poll, actor)
   end
 
   def self.close(poll:, actor:)
@@ -63,7 +67,9 @@ class PollService
     actor.ability.authorize! :update, poll
     poll.assign_attributes(params.except(:poll_type, :discussion_id, :communities_attributes))
     is_new_version = poll.is_new_version?
+
     return false unless poll.valid?
+    poll.build_loomio_group_community if poll.changes.keys.include?('group_id')
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
@@ -122,6 +128,8 @@ class PollService
         closed_at:               motion.closed_at,
         outcomes:                Array(outcome)
       )
+      poll.community_of_type(:email, build: true)
+      poll.build_loomio_group_community
       poll.save(validate: false)
 
       # convert votes to stances
@@ -143,9 +151,6 @@ class PollService
 
       # set poll to closed if motion was closed
       do_closing_work(poll: poll) if motion.closed?
-
-      # add communities
-      poll.communities << Communities::Email.new
     end
   end
 
