@@ -10,7 +10,7 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_create', poll, actor)
-    Events::PollCreated.publish!(poll)
+    Events::PollCreated.publish!(poll, actor)
   end
 
   def self.close(poll:, actor:)
