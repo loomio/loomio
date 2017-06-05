@@ -3,8 +3,8 @@ class PollService
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(author: actor)
-    poll.community_of_type(:email, build: true)
     poll.community_of_type(:public, build: true) unless poll.group.present?
+    poll.sync_poll_communities
 
     return false unless poll.valid?
     poll.save!
@@ -62,7 +62,9 @@ class PollService
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
     poll.assign_attributes(params.compact.except(:poll_type, :discussion_id, :communities_attributes))
+    poll.sync_poll_communities
     is_new_version = poll.is_new_version?
+
     return false unless poll.valid?
     poll.save!
 
@@ -122,6 +124,7 @@ class PollService
         closed_at:               motion.closed_at,
         outcomes:                Array(outcome)
       )
+      poll.sync_poll_communities
       poll.save(validate: false)
 
       # convert votes to stances

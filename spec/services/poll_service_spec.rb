@@ -248,9 +248,9 @@ describe PollService do
       group.add_member! another_user
 
       poll = Poll.last
-      expect(poll.communities.first).to be_a Communities::LoomioUsers
-      expect(poll.communities.first.includes?(vote.user)).to eq true
-      expect(poll.communities.first.includes?(another_user)).to eq false
+      expect(poll.community_of_type(:loomio_users)).to be_present
+      expect(poll.community_of_type(:loomio_users).includes?(vote.user)).to eq true
+      expect(poll.community_of_type(:loomio_users).includes?(another_user)).to eq false
     end
 
     it 'does not create duplicate polls for the same motion' do
