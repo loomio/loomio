@@ -449,7 +449,7 @@ en:
     count:
       subject:
         poll_created: '%{actor} is checking: %{title}'
-        poll_updated: '%{actor} edited the check: %{title}'
+        poll_edited: '%{actor} edited the check: %{title}'
         poll_closing_soon: '24 hours left to check: %{title}'
         poll_closing_soon_author: 'Your check closes in 24 hours: %{title}'
         poll_expired: "Check closed: %{title}"
@@ -461,7 +461,7 @@ en:
 
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
-        poll_updated: '<strong>%{actor}</strong> edited the check'
+        poll_edited: '<strong>%{actor}</strong> edited the check'
         poll_closing_soon: '<strong>%{actor}</strong>''s check is closing in 24 hours.'
         poll_closing_soon_author: 'Your check is closing in 24 hours - now is a great time to remind people about it or extend the closing time if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> check closed: %{title}"
