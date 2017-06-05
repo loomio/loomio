@@ -1,4 +1,5 @@
 class API::GroupsController < API::RestfulController
+  include UsesFullSerializer
   load_and_authorize_resource only: :show, find_by: :key
   load_resource only: [:upload_photo], find_by: :key
   skip_before_action :authenticate_user!, only: [:index]
@@ -51,7 +52,11 @@ class API::GroupsController < API::RestfulController
   end
 
   def publish_params
-    { make_announcement: !!params[:make_announcement], identifier: params.require(:identifier) }
+    {
+      make_announcement: !!params[:make_announcement],
+      identifier:        params.require(:identifier),
+      channel:           params[:channel]
+    }
   end
 
   # serialize out the parent with the group

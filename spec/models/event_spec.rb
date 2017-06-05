@@ -261,7 +261,7 @@ describe Event do
   describe 'poll_created' do
     it 'makes an announcement' do
       poll.make_announcement = true
-      expect { Events::PollCreated.publish!(poll) }.to change { emails_sent }
+      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }
       email_users = Events::PollCreated.last.send(:email_recipients)
       email_users.should     include user_thread_loud
       email_users.should     include user_membership_loud
@@ -293,7 +293,7 @@ describe Event do
     end
 
     it 'notifies mentioned users' do
-      expect { Events::PollCreated.publish!(poll) }.to change { emails_sent }
+      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }
       email_users = Events::PollCreated.last.send(:email_recipients)
       expect(email_users.length).to eq 1
       expect(email_users).to include user_mentioned
@@ -464,7 +464,7 @@ describe Event do
 
     it 'notifies everyone if announcement' do
       poll.make_announcement = true
-      Events::PollCreated.publish!(poll)
+      Events::PollCreated.publish!(poll, poll.author)
       Events::PollExpired.publish!(poll)
       event = Events::PollExpired.last
 

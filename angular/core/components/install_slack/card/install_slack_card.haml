@@ -1,0 +1,5 @@
+.install-slack-card.lmo-card{ng-if: "group.slackChannelName && group.slackTeamName"}
+  %h2.lmo-card-heading{translate: "install_slack.card.title"}
+  .lmo-flex
+    %img.install-slack-card__logo{src: "/img/slack-icon.svg"}
+    %p.install-slack-card__helptext.poll-common-helptext{translate: "install_slack.card.helptext", translate-value-channel: "{{group.slackChannelName}}", translate-value-team: "{{group.slackTeamName}}"}

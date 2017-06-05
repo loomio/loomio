@@ -7,8 +7,8 @@
           %h1.lmo-h1{ng-if: "group.isNew()", translate: "group_form.start_group_heading"}
           %h1.lmo-h1{ng-if: "!group.isNew()", translate: "group_form.edit_group_heading"}
         .group-form__invitation-title{ng-switch-when: "invite"}
-          %h1.lmo-h1{translate: "group_form.start_group_heading"}
+          %h1.lmo-h1{translate: "invitation_form.invite_people"}
       %material_modal_header_cancel_button
-  .md-dialog-content.md-body-1{ng-switch: "currentStep"}
-    %group_form{ng-switch-when: "create", group: "group"}
-    %invitation_form{ng-switch-when: "invite", group: "group"}
+  .md-dialog-content.md-body-1.lmo-slide-animation{ng-switch: "currentStep"}
+    %group_form.animated{ng-switch-when: "create", group: "group"}
+    %invitation_form.animated{ng-switch-when: "invite", group: "group"}

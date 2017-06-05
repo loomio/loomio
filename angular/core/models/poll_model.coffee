@@ -64,10 +64,13 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       _.some @attachments()
 
     communitySize: ->
+      @membersCount() + @visitorsCount
+
+    membersCount: ->
       if @group()
         @group().membershipsCount
       else
-        0
+        1 # <-- this is the author
 
     announcementSize: ->
       if @isNew()
