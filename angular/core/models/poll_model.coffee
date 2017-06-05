@@ -64,7 +64,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       _.some @attachments()
 
     communitySize: ->
-      @membersCount() + @visitorsCount
+      @membersCount() + (@visitorsCount || 0)
 
     membersCount: ->
       if @group()
@@ -142,4 +142,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       (@author() and @author().experiences.enable_communities)
 
     notifyAction: ->
-      @isNew() ? 'publish' : 'edit'
+      if @isNew()
+        'publish'
+      else
+        'edit'
