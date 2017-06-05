@@ -129,19 +129,6 @@ ca:
     latest: 'Últim'
     unread: 'No llegit'
     closing_in: 'Tancant'
-  sign_in_form:
-    title: 'Entra a Loomio'
-    email_label: 'Correu electrònic:'
-    email_placeholder: 'nom@exemple.com'
-    password_label: 'Contrasenya:'
-    remember_me: 'Recorda''m'
-    forgot_password: 'Heu oblidat la contrasenya?'
-    sign_in: 'Inicia sessió'
-    oauth:
-      facebook: 'Inicia la sessió amb Facebook'
-      twitter: 'Inicia la sessió amb Twitter'
-      google: 'Inicia la sessió amb Google'
-      github: 'Inicia la sessió amb Github'
   sign_up_form:
     name_label: 'El vostre nom:'
     email_label: 'Correu electrònic:'
@@ -497,7 +484,6 @@ ca:
       password_changed: 'Contrasenya actualitzada'
       deactivated: 'Compte desactivat'
     change_picture_link: 'Canvia la fotografia'
-    change_password_link: 'Canvia la contrasenya'
     deactivate_user_link: 'Desactiva el compte...'
     profile: 'Perfil'
     edit_profile: 'Edita el perfil'

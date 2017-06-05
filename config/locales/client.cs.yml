@@ -79,18 +79,6 @@ cs:
     latest: 'Nejnovější'
     unread: 'Nepřečteno'
     closing_in: 'Zavřené'
-  sign_in_form:
-    title: 'Přihlásit se na Loomio'
-    email_label: 'Email:'
-    email_placeholder: 'vy@priklad.cz'
-    password_label: 'Heslo:'
-    forgot_password: 'Zapomněli jste své heslo?'
-    signed_in: 'Úspěšně jste se přihlásil/a.'
-    oauth:
-      facebook: 'Přihlásit se pomocí účtu Facebook'
-      twitter: 'Přihlásit se pomocí účtu Twitter'
-      google: 'Přihlásit se pomocí Google'
-      github: 'Přihlásit se pomocí Github'
   sign_up_form:
     name_label: 'Vaše jméno:'
     email_label: 'Email:'
@@ -349,7 +337,6 @@ cs:
       password_changed: 'Heslo aktualizováno'
       deactivated: 'Účet deaktivován'
     change_picture_link: 'Změnit obrázek'
-    change_password_link: 'Změnit heslo'
     deactivate_user_link: 'Deaktivovat účet...'
     profile: 'Profil'
     edit_profile: 'Upravit profil'

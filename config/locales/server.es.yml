@@ -360,18 +360,21 @@ es:
     proposal:
       subject:
         poll_created: '*%{actor} comenzó una propuesta: %{title}'
-        poll_updated: '*%{actor} edito la propuesta: %{title}'
+        poll_edited: '%{actor} editó la propuesta: %{title}'
         poll_closing_soon: 'Propuesta cerrando en 24hr: %{title}'
         poll_closing_soon_author: 'Tu propuesta cierra en 24hr: %{title}'
-        poll_expired: ' Tu propuesta ha cerrado. Especifica un resultado para: %{title}'
+        poll_expired: "Propuesta cerrada: %{title}"
+        poll_expired_author: ' Tu propuesta ha cerrado. Comparte un resultado para: %{title}'
         outcome_created: '%{actor} publicó el resultado de la propuesta: %{title}'
+        visitor_created: '%{actor} quiere escuchar tu opinión: %{title}'
         visitor_reminded: '%{actor} está esperando que votes en: %{title}'
+        stance_created: "%{actor} votó en: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> inicio una propuesta'
-        poll_updated: '<strong>%{actor}</strong> edito la propuesta'
+        poll_edited: '<strong>%{actor}</strong> edito la propuesta'
         poll_closing_soon: 'La propuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
         poll_closing_soon_author: 'Tu propuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
-        poll_expired: 'Tu propuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
+        poll_expired: "<strong>%{actor}</strong> propuesta cerrada: %{title}"
         outcome_created: '<strong>%{actor}</strong> publicó el resultado de la propuesta.'
         visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
       body:
@@ -379,37 +382,28 @@ es:
     poll:
       subject:
         poll_created: '*%{actor} comenzó una encuesta: %{title}'
-        poll_updated: '*%{actor} edito la encuesta: %{title}'
+        poll_edited: '%{actor} editó la encuesta: %{title}'
         poll_closing_soon: 'Encuesta cerrando en 24hr: %{title}'
         poll_closing_soon_author: 'Tu encuesta cierra en 24hr: %{title}'
-        poll_expired: ' Tu encuesta ha cerrado. Comparte un resultado para: %{title}'
         outcome_created: '%{actor} publicó el resultado de la encuesta: %{title}'
         visitor_reminded: '%{actor} está esperando que votes en: %{title}'
+        stance_created: "%{actor} votó en: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> inicio una encuesta'
-        poll_updated: '<strong>%{actor}</strong> edito la encuesta'
         poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
         poll_closing_soon_author: 'Tu encuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
-        poll_expired: 'Tu encuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
         outcome_created: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
         visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
-        poll_created: '%{actor} inició una comprobación: %{title}'
-        poll_updated: '%{actor} editó la comprobación: %{title}'
-        poll_closing_soon: 'Comprobación cerrando en 24hr: %{title}'
         poll_closing_soon_author: 'Tu comprobación cierra en 24hr: %{title}'
-        poll_expired: ' Tu comprobación ha cerrado. Comparte un resultado para: %{title}'
         outcome_created: '%{actor} publicó el resultado: %{title}'
         visitor_reminded: '%{actor} está esperando tu respuesta en: %{title}'
       header:
-        poll_created: '<strong>%{actor}</strong> inició una comprobación'
-        poll_updated: '<strong>%{actor}</strong> editó la comprobación'
         poll_closing_soon: 'La comprobació de <strong>%{actor}</strong> cierra en 24hrs'
         poll_closing_soon_author: 'Tu comprobación cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
-        poll_expired: 'Este es el resultado de tu comprobación. De ser necesario <strong> comparte el resultado</strong> para que la gente sepa lo que sucederá a continuación.'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado.'
         visitor_reminded: '<strong>%{actor}</strong está esperando tu respuesta en: %{title}'
       body:
@@ -417,18 +411,15 @@ es:
     dot_vote:
       subject:
         poll_created: '%{actor} inició un voto de puntos: %{title}'
-        poll_updated: '%{actor} editó un voto de puntos: %{title}'
         poll_closing_soon: 'Voto de puntos cerrando en 24hr: %{title}'
         poll_closing_soon_author: 'Tu voto de puntos cierra en 24hr: %{title}'
-        poll_expired: ' Tu voto de puntos ha cerrado. Comparte un resultado para: %{title}'
         outcome_created: '%{actor} publicó el resultado: %{title}'
         visitor_reminded: '%{actor} está esperando que votes en: %{title}'
+        stance_created: "%{actor} votó en: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> inició un voto de puntos'
-        poll_updated: '<strong>%{actor}</strong> editó el voto de puntos'
         poll_closing_soon: 'El voto de puntos de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
         poll_closing_soon_author: 'Tu voto de puntos cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra si es necesario.'
-        poll_expired: 'Tu voto de puntos ha <strong>cerrado</strong>. Considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
         outcome_created: '<strong>%{actor}</strong> publicó el resultado del voto de puntos.'
         visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
       body:

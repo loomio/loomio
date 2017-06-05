@@ -82,15 +82,6 @@ sv:
     latest: 'Senaste'
     unread: 'Olästa'
     closing_in: 'Stänger'
-  sign_in_form:
-    aria_label: 'Inloggningsformulär'
-    title: 'Logga in på Loomio'
-    email_label: 'E-post:'
-    email_placeholder: 'you@example.com'
-    password_label: 'Lösenord:'
-    remember_me: 'Kom ihåg mig'
-    forgot_password: 'Glömt lösenord?'
-    sign_in: 'Logga in'
   sign_up_form:
     email_label: 'E-post:'
     email_placeholder: 'du@exempel.se'

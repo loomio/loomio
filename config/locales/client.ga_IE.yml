@@ -114,19 +114,6 @@ ga_IE:
     latest: 'Is déanaí'
     unread: 'Neamhléite'
     closing_in: 'Ag dúnadh'
-  sign_in_form:
-    email_label: 'Seoladh ríomhphoist:'
-    email_placeholder: 'tusa@suiomh.com'
-    password_label: 'Focal Faire:'
-    remember_me: 'Cuimhnigh orm'
-    forgot_password: 'Ar dhearmad tú d''fhocal faire?'
-    sign_in: 'Síniú isteach'
-    signed_in: 'Nasctha go rathúil'
-    oauth:
-      facebook: 'Nasc le Facebook'
-      twitter: 'Nasc le Twitter'
-      google: 'Nasc le Google'
-      github: 'Nasc le Github'
   sign_up_form:
     aria_label: 'Foirm le clárú'
     title: "Fáilte go Loomio! Cuirimis tús le rudaí"
@@ -462,7 +449,6 @@ ga_IE:
       password_changed: 'Nuashonraíodh an focal faire'
       deactivated: 'Cuireadh deireadh leis an gcuntas'
     change_picture_link: 'Athraigh an grianghraf'
-    change_password_link: 'Athraigh an focal faire'
     deactivate_user_link: 'Díghníomhachtaigh an cuntas'
     profile: 'Beathaisnéisín'
     edit_profile: 'Cuir do bheathaisnéisín in eagar'
@@ -476,12 +462,6 @@ ga_IE:
   change_picture_form:
     title: 'Athraigh an pictiúr'
     use_uploaded: 'Uasluchtaigh pictiúr nua'
-  change_password_form:
-    title: 'Athraigh an focal faire'
-    current_password_label: 'An focal faire reatha'
-    new_password_label: 'An focal faire nua'
-    password_confirmation_label: 'Deimhnigh an focal faire nua'
-    submit: 'Nuashonraigh an focal faire'
   deactivation_modal:
     aria_label: 'Díghníomhachtaigh an cuntas'
     introduction: 'Nuair a dhíghníomhachtaíonn tú do chuntas:'
