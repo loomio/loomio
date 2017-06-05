@@ -357,8 +357,8 @@ describe Event do
     let(:visitor) { poll.community_of_type(:email, build: true).tap(&:save!).visitors.create(name: 'jimbo', email: 'helllloo@example.com')}
     describe 'voters_review_responses', focus: true do
       it 'true' do
-        poll = FactoryGirl.create(:poll_proposal, discussion: discussion)
-        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
+        poll = FactoryGirl.build(:poll_proposal, discussion: discussion, make_announcement: true)
+        PollService.create(poll: poll, actor: discussion.group.admins.first)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
