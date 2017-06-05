@@ -12,7 +12,8 @@ describe PollSearch do
   let(:authored) { create :poll, author: user }
   let(:stance) { create :stance, participant: user }
   let(:participated) { create :poll, stances: [stance] }
-  let(:in_a_group) { create :poll, discussion: discussion }
+  let(:in_a_discussion) { create :poll, discussion: discussion }
+  let(:in_a_group) { create :poll, group: group }
   let(:rando) { create :poll }
 
   it 'sorts by closing at first' do
@@ -29,15 +30,18 @@ describe PollSearch do
       group.add_member! user
       authored
       participated
+      in_a_discussion
       in_a_group
       rando
     end
 
     it 'finds polls the user knows about' do
-      expect(search.perform).to include authored
-      expect(search.perform).to include participated
-      expect(search.perform).to include in_a_group
-      expect(search.perform).to_not include rando
+      results = search.perform
+      expect(results).to include authored
+      expect(results).to include participated
+      expect(results).to include in_a_discussion
+      expect(results).to include in_a_group
+      expect(results).to_not include rando
     end
   end
 end
