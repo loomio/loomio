@@ -8,12 +8,12 @@ module Identities::Slack::Initiate
   private
 
   def respond_with_url
-    return unless attempt[:error] == :bad_identity
-    I18n.t(:"slack.initiate", type: initiate_params[:type], url: attempt[:url])
+    return unless initiate_attempt[:error] == :bad_identity
+    I18n.t(:"slack.initiate", type: initiate_params[:type], url: initiate_attempt[:url])
   end
 
   def respond_with_help
-    return unless attempt[:error] == :bad_type
+    return unless initiate_attempt[:error] == :bad_type
     I18n.t(:"slack.slash_command_help", type: initiate_params[:type])
   end
 

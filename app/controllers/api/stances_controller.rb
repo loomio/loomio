@@ -15,10 +15,17 @@ class API::StancesController < API::RestfulController
   end
 
   def update_visitor
-    (current_visitor.presence || Visitor.new).tap do |visitor|
+    (current_visitor.presence || existing_visitor_participant || Visitor.new).tap do |visitor|
       visitor.assign_attributes(Hash(resource_params[:visitor_attributes]).slice(:name, :email))
       visitor.community ||= resource.poll.community_of_type(:public)
     end
+  end
+
+  def existing_visitor_participant
+    resource.poll.stances.latest
+            .joins("INNER JOIN visitors ON stances.participant_type = 'Visitor' AND stances.participant_id = visitors.id")
+            .find_by("visitors.email": resource_params.dig(:visitor_attributes, :email))
+            &.participant
   end
 
   def accessible_records

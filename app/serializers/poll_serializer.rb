@@ -2,7 +2,7 @@ class PollSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id, :discussion_id, :group_id, :key, :poll_type, :title, :details,
              :stance_data, :stance_counts, :matrix_counts, :anyone_can_participate,
-             :closed_at, :closing_at, :stances_count, :did_not_votes_count,
+             :closed_at, :closing_at, :stances_count, :did_not_votes_count, :visitors_count,
              :created_at, :multiple_choice, :custom_fields,
              :notify_on_participate, :subscribed
 
