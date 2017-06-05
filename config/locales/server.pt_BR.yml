@@ -332,3 +332,12 @@ pt_BR:
       <strong>O Novo Loomio está aqui!</strong> É mais rápido, mais bonito e pronto para dispositíveis móveis.
     more_info: Mais informações...
     button_text: Mudar para o novo Loomio
+  poll_mailer:
+    common:
+      view_on_loomio: Ver no Loomio
+      results: Resultados
+      create_outcome: Compartilhar resultado
+      your_response: Sua resposta
+    meeting:
+      header:
+        visitor_reminded: '<strong>%{actor}</strong> está esperando sua resposta: %{title}'

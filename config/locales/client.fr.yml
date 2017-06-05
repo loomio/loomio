@@ -4,7 +4,7 @@ fr:
     count: Vérification
     poll: Sondage
     dot_vote: Vote à points
-    meeting: Sondage Réunion
+    meeting: Sondage horaire de réunion
   timezones:
     local: Heure locale ({{value}})
   common:
@@ -50,6 +50,7 @@ fr:
     copy_text: 'Copier le texte'
     copied: 'Copié dans le presse papier'
     action:
+      next: 'Suivant'
       close: 'Fermer'
       save: 'Enregistrer'
       save_changes: 'Sauvegarder les modifications'
@@ -77,6 +78,9 @@ fr:
       retry: Réessayer
       done: Terminé
       start: Démarrer
+      delete: Supprimer
+      unsubscribe: Se désinscrire
+      subscribe: S'inscrire
     formatting_help:
       label: 'Mise en forme'
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte sur Loomio'
@@ -111,8 +115,7 @@ fr:
     heading: Propositions précédentes
   previous_polls_page:
     heading: Activité pour {{name}}
-    polls_count: Affichage de {{loaded}} sur {{total}} activités
-    search_activities: Rechercher des activités
+    polls_count: Montrer {{loaded}} de {{total}} décisions
   proposal_collapsed:
     expand: Étendre
     outcome: 'Résultat : {{outcome}}'
@@ -181,22 +184,6 @@ fr:
     latest: 'Dernier'
     unread: 'Non lu'
     closing_in: 'Fermeture'
-  sign_in_form:
-    aria_label: 'Formulaire de connexion'
-    title: 'Enregistrez-vous sur Loomio'
-    email_label: 'Courriel :'
-    email_placeholder: 'vous@exemple.com'
-    password_label: 'Mot de passe :'
-    remember_me: 'Se souvenir de moi'
-    forgot_password: 'Mot de passe oublié ?'
-    sign_in: 'Connexion'
-    signed_in: 'Connecté avec succès'
-    oauth:
-      title: 'Ou connectez-vous avec un compte tiers :'
-      facebook: 'Se connecter avec facebook'
-      twitter: 'Se connecter avec Twitter'
-      google: 'Se connecter avec Google'
-      github: 'Se connecter avec Github'
   sign_up_form:
     aria_label: 'Formulaire de connexion'
     title: "Bienvenue sur Loomio ! Préparons votre compte"
@@ -670,9 +657,6 @@ fr:
   group_previous_proposals_card:
     heading: Propositions précédentes
     see_more: Voir plus
-  group_decisions_card:
-    heading: Activités passées
-    see_more: "Voir tout : ({{count}}) activités"
   invitation_form:
     aria_label: 'Formulaire d''invitation'
     invite_people: 'Inviter des personnes'
@@ -735,6 +719,8 @@ fr:
     cancel: 'Non'
     messages:
       success: Invitation annulée
+  user_page:
+    introduction: Introduction
   profile_page:
     messages:
       updated: 'Profil mis à jour'
@@ -742,7 +728,7 @@ fr:
       password_changed: 'Mot de passe mis à jour'
       deactivated: 'Compte désactivé'
     change_picture_link: 'Changer de photo'
-    change_password_link: 'Modifier le mot de passe'
+    change_password_link: 'réinitialiser le mot de passe'
     deactivate_user_link: 'Désactiver le compte...'
     profile: 'Profil'
     edit_profile: 'Modifier le profil'
@@ -750,7 +736,10 @@ fr:
     name_label: 'Nom'
     username_label: 'Identifiant utilisateur'
     email_label: 'E-mail'
+    short_bio_label: 'Introduction'
     locale_label: 'Langue'
+    short_bio_placeholder: 'Ecrivez une introduction rapide (max 250 lettres)'
+    locale_placeholder: Sélectionnez votre langage préféré
     update_profile: 'Mettre à jour le profil'
     deactivate_account: 'Désactiver le compte'
   change_picture_form:
@@ -761,13 +750,9 @@ fr:
     use_gravatar: 'Utiliser gravatar'
     use_uploaded: 'Télécharger une nouvelle image'
   change_password_form:
-    aria_label: 'Formulaire de changement de mot de psse'
-    title: 'Changer le Mot de Passe'
-    helptext: 'Le mot de passe doit contenir 8 caractères. Les mots de passe communs tels que "motdepas" sont interdits pour la sécurité de votre compte.'
-    current_password_label: 'Mot de passe actuel'
-    new_password_label: 'Nouveau mot de passe'
-    password_confirmation_label: 'Nouveau mot de passe confirmé'
-    submit: 'Mettre à jour le mot de passe'
+    title: réinitialiser le mot de passe
+    helptext: Vous avez oublié votre mot de passe ? Pas de problème ! Cliquez sur le lien ci dessous et nous allons vous envoyer les instructions pour en définir un nouveau.
+    reset_my_password: Réinitialiser mon mot de passe
   deactivation_modal:
     aria_label: 'Désactiver le compte'
     introduction: 'Quand vous désactivez votre compte:'
@@ -791,7 +776,7 @@ fr:
     all_groups: Paramètres pour tous les groupes
     daily_summary_label: Résumé quotidien
     daily_summary_description: "Chaque matin, vous allez recevoir un e-mail avec toutes les activités que vous avez raté la veille. Cet e-mail est une bonne façon de rester informé des activités de Loomio."
-    on_participation_label: Inscrivez-vous pour participer
+    on_participation_label: Notification sur les discussions auxquelles je participe
     on_participation_description: "Lorsque vous participez à une discussion, toute activité ultérieure vous sera immédiatement envoyée par e-mail."
     mentioned_label: Mentions
     mentioned_description: "Lorsque quelqu'un veut attirer votre attention, il va vous @mentionner. Nous vous recommandons de laisser ce paramètre activé, afin que vous receviez un courriel dans ce cas."
@@ -1187,7 +1172,7 @@ fr:
     count_title: Vérification
     poll_title: Sondage
     dot_vote_title: Vote à points
-    meeting_title: Sondage Réunion
+    meeting_title: Sondage horaire de réunion
   poll_common:
     your_response: Votre réponse
     change_your_response: Changer votre réponse
@@ -1199,8 +1184,6 @@ fr:
     update_outcome: Mettre à jour le résultat
     outcome: Résultat
     statement: Déclaration
-    change_your_stance_title: Changé d'avis?
-    change_your_stance_text: Les meilleures décisions collectives sont prises quand les personnes essaient de comprendre les positions des autres. Si ce qu'ont dit d'autres personnes vous a fait changer d'avis, changez votre vote.
     change_your_stance: Changer votre vote
     load_more: Plus
     details: Détails
@@ -1215,15 +1198,30 @@ fr:
     label: Pièces jointes
   poll_common_card:
     show_results: Afficher les résultats
+  poll_common_index_card:
+    title: décisions précédentes
+    no_polls: Aucune décision précédente trouvée
+  current_polls_card:
+    title: Décision actuelle
+    start_poll: Nouvelle décision
+    no_polls: Il n'y a pas de sondages actifs tout de suite.
   poll_common_collapsed:
     by_who: "par {{name}}"
+  poll_common_select_group:
+    loomio_group: Groupe Loomio
+    loomio_group_placeholder: (aucun groupe sélectionné)
   poll_common_notify_group:
     notify_group: Annonce
     members_helptext: Votre groupe sera notifié
     members_count: "{{count}} personnes sera notifiées"
+    participants_count: "Les {{count}} personnes ayant voté seront notifié"
+  poll_common_notify_on_participate:
+    notify_on_participate: M'avertir lorsque des gens participent
+    helptext_on: Vous serez avertit lorsque quelqu'un participe
+    helptext_off: Vous recevrez les résultats lorsque cette activité se fermera
   poll_common_close_form:
     title: Fermer un sondage en avance
-    helptext: Êtes-vous sûr de vouloir fermer en avance ?
+    helptext: Êtes vous sûr d'être prêt à fermer aussi tôt ?
     close_proposal: Clôturer la proposition
     close_poll: Fermer le sondage
     close_count: Clôturer la vérification
@@ -1251,8 +1249,6 @@ fr:
   poll_common_did_not_votes_panel:
     undecided: Indécis ({{count}})
     show_undecided: Montrer les indécis
-  poll_common_accordion:
-    title: Activité récente
   poll_common_set_outcome_panel:
     share_outcome: Partager le résultat
     poll: 'Ce sondage est fermé. <strong>Partager le résultat</strong> avec les groupes.'
@@ -1269,6 +1265,13 @@ fr:
     submit: Partager le résultat
   poll_common_outcome_panel:
     authored_by: 'Par {{name}}'
+  poll_common_delete_modal:
+    question: Êtes vous sûr de vouloir supprimer cela ?
+    title: Supprimer le choix
+    success: Supprimer avec succès
+  poll_common_unsubscribe_form:
+    title: Recevoir les mises à jour
+    label: Recevoir des e-mails de mise à jour à propos de ce choix
   poll_common_form:
     title: Titre
     details: Détails
@@ -1418,19 +1421,16 @@ fr:
       poll_created: '<strong>{{author}}</strong> a démarré une vérification: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> a répondu :'
       poll_edited: '<strong>{{author}}</strong> a modifié une vérification: <span>{{title}}</span>'
-      poll_expired: 'Vérification terminée: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> a clôturé la vérification : <span>{{title}}</span>'
     dot_vote:
       poll_created: '<strong>{{author}}</strong> a démarré un vote à points : <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> a voté :'
       poll_edited: '<strong>{{author}}</strong> a édité un vote à points : <span>{{title}}</span>'
-      poll_expired: 'Vote à points terminé : <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> a fermé le vote à points : <span>{{title}}</span>'
     meeting:
       poll_created: '<strong>{{author}}</strong> a démarré un sondage réunion : <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> a répondu :'
       poll_edited: '<strong>{{author}}</strong> a édité le sondage réunion : <span>{{title}}</span>'
-      poll_expired: 'Sondage réunion terminé : <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> a fermé le sondage réunion : <span>{{title}}</span>'
     outcome_created: '<strong>{{author}}</strong> a partagé un résultat :'
   poll_admin_page:
@@ -1438,36 +1438,25 @@ fr:
   poll_common_share_form:
     no_group_selected: Aucun groupe sélectionné
     no_communities: "Vous n'êtes connecté à aucune communauté. Cliquez \"ajouter une communauté\" ci-dessous pour en ajouter une."
-    share_a_link: Lien partageable
-    anyone_can_participate: Tout le monde peut participer
+    share_a_link: Partager un lien
+    share_a_link_helptext: Créez un lien partageable à diffuser. N'importe qui ayant accès à ce lien pourra participer.
+    anyone_can_participate: N'importe qui ayant un lien peut participer.
     anyone_can_participate_true: Lien partageable créé
     anyone_can_participate_false: Lien partageable révoqué
-    set_group: Groupe Loomio mis à jour
-    shareable_link_created: Tout le monde peut maintenant participer à ce sondage
-    shareable_link_revoked: Ce sondage est maintenant accessible sur invitation uniquement
+    get_link: Copier le lien
+    send_email: Envoyez un email
     shareable_link: Lien partageable
-    guests_invited: '{{count}} personnes ont été invitées'
     guest_revoked: Accès révoqué pour {{email}}
-    invite_guests: Inviter des personnes
     existing_guests: Invités
     new_guests: Nouvelles adresses mail à inviter
     enter_email: "Par exemple guest@example.com"
     reminded: Rappel envoyé !
     send_emails: Envoyer les invitations ({{count}})
-    no_loomio_group: Ce sondage n'est pour l'instant associé à aucun groupe Loomio
-    has_loomio_group: Les membres de ce groupe seront capable de voir et de participer à ce sondage.
-    poll_is_shareable: Copiez le lien ci-dessus et partagez le. N'importe qui peut participer grâce au lien.
-    enter_emails: Entrez une adresse mail pour envoyer un lien de participation à usage unique.
     view_poll: Voir le sondage
     email_invited: 'Invitation envoyée à {{email}}'
     email_exists: '{{email}} a déjà été invité'
     email_empty: 'Merci de renseigner une adresse mail'
     email_invalid: "Cette adresse mail n'a pas l'air valide"
-    communities: Se connecter à la communauté
-    add_facebook_community: Ajouter un groupe facebook
-    add_slack_community: Ajouter un canal slack
-    community_revoked: Cette communauté ne sera plus capable de participer
-    community_added: Communauté ajoutée au sondage
   poll_common_publish_form:
     community: Informer le groupe suivant de votre sondage
     message: Ajouter un message
@@ -1511,3 +1500,22 @@ fr:
     search_placeholder: Chercher des sondages...
     polls_count: '{{count}} sondages sur {{total}} affichés'
     start_new_poll: Nouvelle décision
+    filter_placeholder: (Tous les sondages)
+    groups_placeholder: (Tous les groupes)
+  auth_form:
+    sign_in_to_loomio: Se connecter à Loomio
+    sign_in: Se connecter
+    more_providers: Plus
+    email_not_present: Une adresse e-mail est nécessaire
+    invalid_email: "Désolé, ça ne semble pas être une adresse e-mail valide."
+    invalid_password: "Désolé, le mot de passe n'est pas le même que celui enregistré."
+    email_not_found: "Désolé, nous n'avons pas trouvé le compte correspondant à cette adresse e-mail."
+    email_placeholder: vous@exemple.com
+    login_link: Se connecter via son e-mail
+    set_password: Définir un mot de passe
+    create_account: Créez un compte
+    check_your_email: Vérifier votre e-mail !
+    signed_in: Connexion réussit
+    name: Nom
+    email: E-mail
+    password: Mot de passe

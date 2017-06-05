@@ -90,8 +90,6 @@ de:
     heading: Vorherige Vorschläge
   previous_proposals_page:
     heading: Frühere Vorschläge
-  previous_polls_page:
-    polls_count: ' Anzeige: {{loaded}} von {{total}} Aktivitäten'
   proposal_collapsed:
     expand: Erweitern
     outcome: 'Ergebnis: {{outcome}}'
@@ -142,20 +140,6 @@ de:
     latest: 'Letzte'
     unread: 'Ungelesen'
     closing_in: 'Wird geschlossen'
-  sign_in_form:
-    title: 'Auf Loomio anmelden'
-    email_label: 'eMail:'
-    email_placeholder: 'du@Beispiel.de'
-    password_label: 'Passwort:'
-    remember_me: 'Angemeldet bleiben'
-    forgot_password: 'Passwort vergessen?'
-    sign_in: 'Login'
-    signed_in: 'Erfolgreich angemeldet'
-    oauth:
-      facebook: 'Anmelden mit Facebook'
-      twitter: 'Anmelden mit Twitter'
-      google: 'Anmelden mit Google'
-      github: 'Anmelden mit Github'
   comment_form:
     aria_label: 'Kommentar hinzufügen'
     attachments:
@@ -535,7 +519,6 @@ de:
       password_changed: 'Passwort aktualisiert'
       deactivated: 'Konto deaktiviert'
     change_picture_link: 'Bild tauschen'
-    change_password_link: 'Passwort ändern'
     deactivate_user_link: 'Konto deaktivieren...'
     profile: 'Profil'
     edit_profile: 'Profil bearbeiten'
@@ -891,7 +874,6 @@ de:
     members_count: "{{count}} Personen werden benachrichtigt"
   poll_common_close_form:
     title: Umfrage früher beenden
-    helptext: Willst Du wirklich die Umfrage früher beenden?
   poll_common_set_outcome_panel:
     share_outcome: Ergebnis teilen
   poll_common_outcome_form:

@@ -360,18 +360,14 @@ de:
     proposal:
       subject:
         poll_created: '%{actor} startete einen Vorschlag: %{title}'
-        poll_updated: '%{actor} bearbeitete einen Vorschlag: %{title}'
         poll_closing_soon: 'Der Vorschlag läuft ab in 24 Stunden: %{title}'
         poll_closing_soon_author: 'Dein Vorschlag läuft ab in 24 Stunden: %{title}'
-        poll_expired: 'Dein Vorschlag ist abgelaufen. Teile das Ergebnis für: %{title}'
         outcome_created: '%{actor} teilte das Ergebnis des Vorschlags: %{title}'
         visitor_reminded: '%{actor} wartet auf deine Stimme zu: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> startete einen Vorschlag'
-        poll_updated: '<strong>%{actor}</strong> hat den Vorschlag bearbeitet'
         poll_closing_soon: '<strong>%{actor}</strong>''s Vorschlag läuft in 24 Stunden ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder andere zum Mitmachen zu bewegen.'
         poll_closing_soon_author: 'Dein Vorschlag läuft in 24 Stunden ab - jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
-        poll_expired: 'Dein Vorschlag ist <strong>abgelaufen</strong>. Bitte nimm dir die Zeit, das Gesagte abzuwägen und <strong>ein Ergebnis mit der Gruppe zu teilen</strong>, damit alle darüber informiert sind.'
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis geteilt.'
         visitor_reminded: '<strong>%{actor}</strong> wartet darauf, dass du deine Stimme abgibst zu: %{title}'
       body:
@@ -379,37 +375,26 @@ de:
     poll:
       subject:
         poll_created: '%{actor} hat eine Abstimmung eröffnet: %{title}'
-        poll_updated: '%{actor} hat die Abstimmung zu %{title} bearbeitet.'
         poll_closing_soon: 'In 24 Stunden endet die Abstimmungsfrist für: %{title}'
         poll_closing_soon_author: 'Deine Abstimmung zu %{title} endet in 24 Stunden'
-        poll_expired: 'Deine Abstimmung ist abgelaufen. Teile das Ergebnis für: %{title}'
         outcome_created: '%{actor} teilte das Abstimmungsergebnis für: %{title}'
         visitor_reminded: '%{actor} wartet auf deine Stimme zu: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> hat eine Abstimmung eröffnet'
-        poll_updated: '<strong>%{actor}</strong> hat die Abstimmung bearbeitet'
         poll_closing_soon: '<strong>%{actor}</strong>''s Abstimmung läuft in 24 Std. ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder andere zum Mitmachen zu aufzufordern.'
         poll_closing_soon_author: 'Deine Abstimmung läuft in 24 Stunden ab - jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
-        poll_expired: 'Deine Abstimmung ist <strong>abgelaufen</strong>. Bitte nimm dir die Zeit, das Gesagte zu überdenken und <strong>ein Ergebnis mit der Gruppe zu teilen</strong>, damit alle darüber informiert sind.'
         outcome_created: '<strong>%{actor}</strong> teilte ein Abstimmungsergebnis.'
         visitor_reminded: '<strong>%{actor}</strong> wartet darauf, dass du deine Stimme abgibst zu: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
-        poll_created: '%{actor} startete einen Check: %{title}'
-        poll_updated: '%{actor} bearbeitete den Check: %{title}'
-        poll_closing_soon: 'Check läuft in 24 Stunden ab: %{title}'
         poll_closing_soon_author: 'Dein Check läuft in 24 Stunden ab: %{title}'
-        poll_expired: 'Dein Check ist abgelaufen. Teile das Ergebnis für: %{title}'
         outcome_created: '%{actor} teilte das Ergebnis für: %{title}'
         visitor_reminded: '%{actor} wartet auf deine Antwort in: %{title}'
       header:
-        poll_created: '<strong>%{actor}</strong> startete einen Check'
-        poll_updated: '<strong>%{actor}</strong> hat den Check bearbeitet'
         poll_closing_soon: '<strong>%{actor}</strong>''s Check läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Dein Check läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
-        poll_expired: 'Hier ist das Ergebnis deines Checks. Falls erforderlich, <strong>teile das Ergebnis</strong> um die Menschen darüber zu informieren.'
         outcome_created: '<strong>%{actor}</strong> teilte ein Ergebnis.'
         visitor_reminded: '<strong>%{actor}</strong> wartet auf deine Antwort in: %{title}'
       body:
@@ -417,18 +402,14 @@ de:
     dot_vote:
       subject:
         poll_created: '%{actor} startete eine Priorisierung: %{title}'
-        poll_updated: '%{actor} bearbeitete die Priorisierung: %{title}'
         poll_closing_soon: 'Die Priorisierung %{title} läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Deine Priorisierung %{title} läuft in 24 Stunden ab'
-        poll_expired: 'Deine Priorisierung ist abgelaufen. Teile das Ergebnis für: %{title}'
         outcome_created: '%{actor} teilte das Ergebnis für: %{title}'
         visitor_reminded: '%{actor} wartet auf deine Stimme zu: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> startete eine Priorisierung'
-        poll_updated: '<strong>%{actor}</strong> bearbeitete die Priorisierung'
         poll_closing_soon: '<strong>%{actor}</strong>''s Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, abzustimmen, deine Stimmverteilung zu ändern oder andere zum Mitmachen einzuladen.'
         poll_closing_soon_author: 'Deine Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
-        poll_expired: 'Deine Priorisierung ist <strong>abgelaufen</strong>. Bitte überdenke das Gesagte und <strong>teile ein Ergebnis mit der Gruppe</strong>, damit alle darüber informiert sind.'
         outcome_created: '<strong>%{actor}</strong> hat ein Priorisierungergebnis geteilt.'
         visitor_reminded: '<strong>%{actor}</strong> wartet darauf, dass du deine Stimme abgibst zu: %{title}'
       body:

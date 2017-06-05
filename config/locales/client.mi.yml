@@ -96,19 +96,6 @@ mi:
     latest: 'Hou ake'
     unread: 'Kāhore anō kia kitea'
     closing_in: 'Kei te tata te mutu'
-  sign_in_form:
-    email_label: 'Wāhi īmēra:'
-    email_placeholder: 'koe@whakatauira.govt.nz'
-    password_label: 'Kupu huna:'
-    remember_me: 'Maumahara au'
-    forgot_password: 'Kua ngaro tōu kupu huna?'
-    sign_in: 'Takiuru mai'
-    oauth:
-      title: 'Takiuru mai mā tētahi atu'
-      facebook: 'Takiuru mai mā Pukamata'
-      twitter: 'Takiuru mai mā Pae Tīhau'
-      google: 'Takiuru mai mā Kūkara'
-      github: 'Takiuru mai mā Github'
   sign_up_form:
     title: "Nau mai, haere mai ki a Loomio!  Ko tēnei te wā whakatau i a koe."
     name_label: 'Tōu ingoa:'

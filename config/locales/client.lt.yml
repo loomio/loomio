@@ -54,10 +54,6 @@ lt:
     normal: 'Normalus'
     quiet: 'Tylus'
     mute: 'Nutildyti'
-  sign_in_form:
-    password_label: 'Slaptažodis:'
-    sign_in: 'Prisijungti'
-    signed_in: 'Sėkmingai prisijungta'
   sign_up_form:
     password_label: 'Slaptažodis:'
   signed_out_modal:
@@ -214,7 +210,6 @@ lt:
       picture_changed: 'Profilio paveikslas atnaujintas'
       password_changed: 'Slaptažodis atnaujintas'
     change_picture_link: 'Keisti paveikslą'
-    change_password_link: 'Keisti slaptažodį'
     deactivate_user_link: 'Pasyvinti paskyrą...'
     profile: 'Profilis'
     edit_profile: 'Redaguoti profilį'

@@ -1,23 +1,71 @@
 uk:
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
+  validate:
+    motion:
+      must_close_in_future: Пропозицію потрібно закрити в майбутньому.
+      one_at_a_time: Є інші активні пропозиції.
+  subscriptions:
+    gift_plan_selected_for_group_html: |
+      <h1>Успішно.</h1>
+      <p>Ви вибрали безкоштовний план для вашої групи <a href="/g/%{group_key}">%{group}</a></p>
   email:
+    login:
+      subject: Увійти до Loomio
+      intro: Вітаємо %{name}, посилання щоб увійти в свій обліковий запис Loomio.
+      login: Увійти до Loomio як %{name}
+      resend: Це посилання діє до %{expires_at}. Якщо цей час минув, ви можете перейти за посиланням вище, аби отримати інше посилання.
+    reset_password:
+      greeting: |
+        Вітаємо %{name}
+        Ось посилання щоб змінити пароль для свого облікового запису Loomio.
+      link_text: Скинути ваш пароль
+    start_decision:
+      subject: Розпочати обговорення в Loomio
+      intro: Виберіть нижче тип рішення яке потрібно прийняти
+    custom: "%{text}"
     group_email:
       intro: "%{who} опублікував оголошення в %{group}:"
     by_who: користувачем %{person}
     reply_to_this_discussion: Відповісти в цьому обговоренні
     to_join_discussion:
-      subject: "%{who} запрошує вас приєднатись до дискусії у Loomio"
-      content: 'Вас було запрошено до дискусії: %{discussion}'
+      subject: "%{who} запрошує вас приєднатись до обговорення у Loomio"
+      content: 'Вас було запрошено до обговорення: %{discussion}'
       message_intro: "%{who} говорить:"
-      link: Долучитись до дискусію
+      link: Долучитись до обговорення
+    value_proposition: "Loomio це місце для спільного прийняття рішень в групах"
+    view_group: Переглянути групу
     to_join_group:
       subject: "%{member} запросив вас приєднатися до групи  %{group_name} в Loomio"
+      invitation_text: "%{member} запросив(ла) вас приєднатися до своєї групи  %{group_name}."
+      invitation_text_html: "запросив(ла) вас приєднатися до своєї групи"
+      link_help: "Натисніть на посилання нижче щоб прийняти запрошення:"
+      accept_invitation: "Прийняти запрошення"
+    resend_to_join_group:
+      subject: "%{member} чекає на ваше приєднання до %{group_name} в Loomio"
     to_start_group:
       subject: "Створіть вашу нову Loomio групу: %{group_name}"
+      hi: "Вітаємо %{name},"
+      intro: "Натисніть на посилання нижче щоб створити групу %{group_name}:"
+      intro_html: "Натисніть на посилання нижче щоб створити групу:"
+      start_group: "Створити мою групу"
+      closing_message: "Якщо вам потрібна допомога або маєте запитання, просто надайте відповідь на цей лист."
+      thanks: "Дякуємо,"
+      loomio_team: "Команда Loomio"
+    user_added_to_group:
+      subject: "%{who} додав вас до %{which_group} в Loomio"
+      content: "%{who} додав вас до %{which_group}."
+      content_html: "<strong>%{who}</strong> додав вас до <strong>%{which_group}</strong>."
+      link_help: "Натисніть на посилання нижче щоб перейти до групи:"
     unsubscribe: 'Відпісатися, або змінити Ваші налаштування електронної пошти:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> аби відписатися або змінити налаштування електронної пошти"
     view_comment: Натисніть тут щоб переглянути коментар на Loomio
-    view_discussion: Натисніть тут для перегляду дискусії
+    view_discussion: Натисніть тут для перегляду обговорення
     view_proposal: Переглянути цю пропозицію на Loomio
+    create_discussion:
+      intro_html: "почати тему:"
+      intro: "%{who} почав тему:"
     create_proposal:
       intro: В групі на Loomio, де ви є учасником, створено нову пропозицію.
       closes_in: Буде закрито через
@@ -28,28 +76,83 @@ uk:
       subject: Loomio - Підсумки останніх 24 годин
     missed_yesterday:
       subject: Вчора на Loomio
+      headlines: Останні новини
       mark_as_read: Відмітити як прочитане
       thanks_for_reading: Дякуємо за читання, гарного дня!
+      heres_what_happened: "Ось що відбулося у Loomio вчора."
+      marked_as_read_success: Все в листі було позначено як прочитане
+    comment_replied_to:
+      context_html: 'відповів(ла) на ваш коментар в'
+      context: '%{author_name} відповів(ла) на ваш коментар в %{discussion_title}'
+      subject: "%{who} відповів(ла) на ваш коментар в групі %{which} Loomio"
+    new_comment:
+      context: 'прокоментував в'
+    group_membership_approved:
+      intro: "Ваш запит на участь у групі %{group_name} було схвалено."
+      intro_html: "Ваш запит на участь у групі <strong>%{group_name}</strong> було схвалено."
+      link_help: "Натисніть на посилання нижче щоб долучитись до %{group_name} та розпочати:"
+      subject: "Ваш запит на участь у %{group_name} у Loomio було с.хвалено"
+      join_group: "Приєднатись до групи"
+      view_group_text: "Натисніть ныжче щоб переглянути групу у Loomio"
     membership_request:
       intro: "%{name} (%{email}) запросив доступ до однієї з Ваших груп на Loomio."
+      intro_html: запросила доступ до однієї з ваших груп.
       subject: "%{who} зробив запит на приєднання до %{which_group}"
       view_group: Тут ви можете підтвердити або відхилити запит
+      button_text: Переглянути запит
+    mentioned:
+      context_html: "згадав(ла) вас в обговоренні"
+      context: "%{author_name} згадав(ла) вас в обговоренні %{discussion_title}"
+      subject: '%{who} згадав(ла) вас в обговоренні "%{which}"'
+    new_motion_created:
+      subject: 'Пропозиція: %{proposal_title}'
+      context: "створив пропозицію у %{group_full_name}:"
     proposal_closed:
+      proposal_has_closed: Пропозицію закрито.
       specify_outcome_and_notify_group: Визначте результат та надішліть його своїй группі.
       specify_outcome_and_notify_group_html: Визначте результат та надішліть його своїй группі.
       subject: Пропозиція закрита - %{which}
+    proposal_outcome:
+      subject: 'Результат щодо пропозиції: %{motion}'
     proposal_closing_soon:
       closes_on: 'Закривається '
       closes_at: Закривається о
       closes_in: Буде закрито через
+      subject: 'Закриваються протягом 24 годин: %{proposal_title}'
       headline: "Пропозицію %{author} у групі %{group} скоро буде закрито:"
       summary: Підсумок
     thread_mailer:
+      footer_text: 'Безпосередньо відповісти на цей лист або переглянути його на %{hostname}:'
+      reply_or_view_online_html: Безпосередньо відповісти на цей лист або <a href='%{url}'>переглянути його на %{hostname}</a>.
+      turn_off_notifications_html: "<a href='%{url}'>Вимкнути листи</a> з цього обговорення."
+      turn_off_notifications_text: 'Вимкнути листи з обговорення.: %{url}'
+      turn_on_notifications_html: "<a href='%{url}'>Ввімкнути листи з цього обговорення</a> щоб отримувати сповіщення про майбутню активність."
+      turn_on_notifications_text: 'Ввімкнути листи щодо майбутньої активності в обговоренні.: %{url}'
+      change_email_preferences_html: Змінити ваші <a href='%{email_preferences_url}'>налаштування пошти</a> щоб відписатись від цих листів.
       change_preferences: 'Змінити Ваші налаштування електронної пошти:'
+      new_motion_html: 'вніс(ла) пропозицію:'
+      new_motion: '%{who} вніс(ла) пропозицію:'
       motion_closing_soon: 'Пропозиція закривається через 24 години'
       proposal_closed: 'Пропозиція закрита:'
+      specify_outcome_html: Вашу пропозицію закрито. <strong>Опишіть результат</strong> аби всі знали, яким є підсумок.
+      specify_outcome: 'Вашу пропозицію закрито. Опишіть результат аби всі знали, яким є підсумок:'
+      outcome_created_html: "поширив(ла) результат пропозиції:"
+      outcome_created: "%{who} поширив(ла) результат пропозиції:"
+      you_agreed: Ви %{past_tense_position}
     analytics:
+      subject: "%{which_group} тижнів у Loomio"
+      title: "Ваш підсумок за тиждень, починаючи з %{since}"
+      table_header: "Ім'я | Пропозицій створено | Обговорень створено | Коментарів створено | Голосувань створено"
+      contact_us: "Потрібно більше статистики? <a href='%{contact_link}'>Зв'яжіться з нами</a>."
+      no_activity: "Хочете поговорити з одним з наших фахівців з фасілітації про те, як отримати більше від Loomio? <a href='%{contact_link}'>Зв'яжіться з нами</a>."
+      trial_subscription: "%{which_group} використовує <strong>безкоштовний тріал</strong> що завершується <strong>%{expires_at}</strong>. Ви можете вибрати тарифний план <a href='%{subscription_link}'>за посиланням</a>."
+      trial_expired: "%{which_group} досягла завершення свого безкоштовного тріального періоду з Loomio."
+      heart: "З ❤ від команди Loomio"
+      unsubscribe: "Цей лист відправляється координаторам активних груп у Loomio. <br />Якщо ви не хочете отримувати ці листи, <a href='%{contact_link}'>повідомте нам</a>."
       user_table:
+        motions_created: "Пропозиції"
+        discussions_created: "Обговорення"
+        comments_created: "Коментарі"
         votes_created: "Голоси"
   footer:
     about: Про Loomio
@@ -60,30 +163,82 @@ uk:
     pricing: Ціни
     public_groups: Публічні групи
     terms: Умови
+    independent_install_html: '%{hostname} використовує незалежну копію Loomio: <a href="http://github.com/loomio/loomio">дізнатись більше</a>.'
   start_group_form:
+    enable_angular:
+      header: Нові групи створені в Loomio 1.0
+      subtitle: 'Щоб почати нову групу, вам необхідно перейти до нової версії Loomio:'
+      switch_to_angular: Створити нову групу в новій Loomio
+      helptext: Ми перебудували Loomio з нуля. Ви можете прочитати про те, що нового <a href="/angular">тут</a>. <br/>Ви можете в будь-який час повернутися до старої версії.
     header: Створити нову групу
+    form_error: Деяка інформація відсутня або не вірна.
     name: Ваше ім'я
+    name_error: Потрібне ім'я
+    email: Ваша електронна адреса
+    email_error: Адреса електронної пошти не вірна
     group_name: Назва групи
     group_description: Опис групи
     group_description_placeholder: Опишіть призначення вашої групи, щоб учасники групи розуміли, чому вони тут.
+    group_name_error: Потрібне ім'я групи
+    pricing_html: За 30 днів ми просимо вас вибрати <a href='%{link}' target='_blank'>тарифний план</a>.
+    terms_html: Починаючи групу, ви погоджуєтеся з <a href='%{link}' target='_blank'>умовами використання</a> Loomio.
     success:
       header: Ви майже закінчили! Перевірте Вашу електронну пошту.
+      email_delivered: 'Ми відправили лист на %{email}. Будь ласка, перейдіть за посиланням в ньому для налаштування нової групи. '
+      email_not_arrived: Лист не прийшов?
+      please_hold: Будь ласка, зачекайте надходження листа п'ять хвилин і обов'язково перевірте папку зі спамом.
     start_making_decisions: 'Щоб почати приймати рішення разом на Loomio, створіть групу безкоштовно:'
+  invitation_form:
+    error:
+      all_email_addresses_belong_to_members: "Ми не відправили запрошення на ці адреси електронної пошти, тому що вони належать людям що вже в групі."
   pricing_page:
+    header: Плани груп
     gift: Безкоштовний
     standard: Стандарт
     plus: Про
     free_trial_html: Ми попросимо вас вибрати тарифний план після <span>30-денного безкоштовного пробного використання</span>. Кредитна карта не потрібна.
     get_started_for_free: Почніть безкоштовно
     gift_body: План для громадських груп що підтримується через пожертви.
+    standard_body_html: Все що вам потрібно для <nobr>однієї групи</nobr>.
     pro_body_html: Для організацій з <nobr>декількома групами.</nobr>
+    one_group: одна група
     unlimited_members: необмежена кількість членів
     unlimited_decisions: необмежена кількість рішень
     email_support: підтримка по електронній пошті
+    slack_integration_html: |
+      Інтеграція зі <strong>Slack</strong>
+    standard_price_html: '<strong>$19</strong>/на місяць'
+    gift_price_html: '<strong>$0</strong>'
+    plus_includes_standard: 'Все що в плані Стандарт, плюс:'
+    standard_includes_free: 'Все що в плані Безкоштовний, плюс:'
+    multiple_groups: "до 10 груп"
     premium_support: преміум підтримка
+    help_with_setup: допомога з початковим налаштуванням
+    custom_subdomain: піддомен користувача
+    analytics_reports: аналітичні звіти
+    data_export: експорт даних
+    contact_us_html: |
+      Ціни вказані в доларах США; додатково нараховується податок з продажів у випадках, де він має бути застосованим. Потрібно щось ще? <a href="/contact">Давай поговоримо!</a>
+    custom_subdomain_html: |
+      піддомен користувача, <br />
+      наприкалад <strong>yourgroup</strong>.loomio.org
     usage_statistics: статистика використання
+    plus_price_html: '<strong>$99</strong>/на місяць'
+  password_reset:
+    reset_email_timeframe: Надходження листа може зайняти до 5 хвилин. Якщо він не відображається, обов'язково перевірте папку зі спамом.
+    length_restriction: Паролі повинні бути довжиною не менше 8 символів.
+    forbidden_passwords: Прості паролі, такі як "password", заборонені аби тримати ваш обліковий запис у безпеці.
+  introduction_thread:
+    title: Вітаємо! Розкажіть про себе
+  how_it_works_thread:
+    title: Як використовувати Loomio
+  first_proposal:
+    name: Приклад пропозиції
   contact_page:
     contact_us: Контакти
+    faq_prompt_html: Є питання до команди Loomio? Перш ніж зв'язатися з нами, ви можливо знайдите відповідь серед поширених запитань.
+    contact_information: Якщо не можете знайти те, що шукаєте, - наша контактна інформація в нижній частині сторінки.
+    contact_form: Форма для зв'язку
     labels:
       name: Ваше ім'я
       email: Ваша електронна адреса
@@ -91,8 +246,129 @@ uk:
       submit: Відправити повідомлення
     messages:
       email_html: "Заповніть цю форму, або надішліть email до <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Ви також можете приєднатися до нас у<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, та <a href='%{twitter}' target='_blank'>twitter</a>!"
+  markdown:
+    intro:
+      title: |
+        # Що таке Markdown?
+    paragraphs:
+      title: |
+        ## Абзац
+    emphasis:
+      title: |
+        ## Виділення
+    lists:
+      title: |
+        ## Списки
+    links:
+      title: |
+        ## Посилання та зображення
+  beta_banner:
+    new_loomio_html: |
+      <strong>Нова Loomio швидша, красивіша та зручніша!</strong> З часом ми переведено на неї всіх.
+    more_info: Більше інформації....
+    button_text: Перейти на нову Loomio
   poll_mailer:
     common:
+      or: або
+      why_send_this: Ви отримали цей лист, тому що %{reason}
+      view_on_loomio: Переглянути це на Loomio
+      unsubscribe: Відписатись
       results: Результати
+      responses: Відповіді
+      change_your_stance: Змінити
       create_outcome: Поширити рішення
       your_response: Ваша відповідь
+      please_respond: Будь ласка дайте відповідь
+      time_zone: (Час відображається в %{zone})
+      undecided_members: Учасників що не визначились (%{count})
+      undecided_visitors: Відвідувачів що не визначились (%{count})
+      more_undecided: "%{count} більше..."
+    proposal:
+      subject:
+        poll_created: '%{actor} вніс(ла) пропозицію: %{title}'
+        poll_edited: '%{actor} відредагував(ла) пропозицію: %{title}'
+        poll_closing_soon: 'Пропозиція закривається за 24 години: %{title}'
+        poll_closing_soon_author: 'Ваша пропозиція закривається за 24 години: %{title}'
+        poll_expired: "Пропозицію закрито: %{title}"
+        poll_expired_author: 'Вашу пропозицію закрито. Поширте результат для:: %{title}'
+        outcome_created: '%{actor} поширив результат: %{title}'
+        visitor_created: '%{actor} хоче почути вашу думку: %{title}'
+        visitor_reminded: '%{actor} очікує вашого голосу щодо: %{title}'
+        stance_created: "%{actor} проголосував щодо: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> вніс(ла) пропозицію'
+        poll_edited: '<strong>%{actor}</strong> відредагував(ла) пропозицію'
+        poll_closing_soon: 'Пропозиція внесена <strong>%{actor}</strong> закривається за 24 годин. Зараз зручний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.'
+        poll_closing_soon_author: 'Ваша пропозиція закривається за 24 години - тепер це чудовий час щоб нагадати людям про неї або продовжити термін, якщо це необхідно.'
+        poll_expired: "Пропозицію внесену <strong>%{actor}</strong> закрито: %{title}"
+        outcome_created: '<strong>%{actor}</strong> поширив(ла) результат щодо пропозиції.'
+        visitor_created: '<strong>%{actor}</strong> хоче почути вашу думку: %{title}'
+        visitor_reminded: '<strong>%{actor}</strong> очікує вашого голосу щодо: %{title}'
+        stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    poll:
+      subject:
+        poll_created: '%{actor} розпочав(ла) опитування: %{title}'
+        poll_edited: '%{actor} відредагував(ла) опитування: %{title}'
+        poll_closing_soon: 'Опитування закривається за 24 години: %{title}'
+        poll_closing_soon_author: 'Ваше опитування закривається за 24 години: %{title}'
+        poll_expired: "Результати опитування: %{title}"
+        poll_expired_author: 'Ваше опитування закрито. Поширте результат для: %{title}'
+        outcome_created: '%{actor} поширив(ла) результат опитування: %{title}'
+        visitor_created: '%{actor} пропонує вам проголосувати: %{title}'
+        visitor_reminded: '%{actor} очікує вашого голосу щодо: %{title}'
+        stance_created: "%{actor} проголосував щодо: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> розпочав(ла) опитування'
+        poll_edited: '<strong>%{actor}</strong> відредагував(ла) опитування'
+        poll_expired: "Опитування <strong>%{actor}</strong> закрито: %{title}"
+        outcome_created: '<strong>%{actor}</strong> поширив(ла) результат опитування.'
+        visitor_created: '<strong>%{actor}</strong> запропонував(ла) вам долучитись до опитуванняl: %{title}'
+        visitor_reminded: '<strong>%{actor}</strong> очікує вашого голосу щодо: %{title}'
+        stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    count:
+      subject:
+        poll_created: '%{actor} відмітився(лась) в: %{title}'
+        poll_closing_soon: '24 години залишилось аби відмітитись: %{title}'
+        poll_closing_soon_author: 'Ваш контрольний список закривається за 24 години: %{title}'
+        poll_expired: "Контрольний список закрито: %{title}"
+        poll_expired_author: 'Ваш контрольний список закрито. Поширте результат для: %{title}'
+        outcome_created: '%{actor} поширив(ла) результат: %{title}'
+        visitor_created: '%{actor} відмітився в: %{title}'
+        stance_created: "%{actor} долучився до: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> відмітився(лась)'
+        poll_closing_soon: 'Контрольний список від <strong>%{actor}</strong> закривається за 24 години.'
+        outcome_created: '<strong>%{actor}</strong> поширив(ла) результат.'
+        visitor_created: '<strong>%{actor}</strong> відмітився(лась): %{title}'
+        visitor_reminded: '<strong>%{actor}</strong> очікує вашоЇ відповіді щодо: %{title}'
+        stance_created: "<strong>%{actor}</strong> прийняв участь у: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    dot_vote:
+      subject:
+        poll_created: '%{actor} розпочав(ла) відбіркове голосування: %{title}'
+        poll_edited: '%{actor} відредагував(ла) відбіркове голосування: %{title}'
+        poll_closing_soon: 'Відбіркове голосування закривається за 24 години: %{title}'
+        poll_closing_soon_author: 'Ваше відбіркове голосування закривається за 24 години: %{title}'
+        poll_expired: "Результати відбіркового голосування: %{title}"
+        outcome_created: '%{actor} поширив(ла) результат: %{title}'
+        visitor_reminded: '%{actor} очікує вашого голосу щодо: %{title}'
+        stance_created: "%{actor} проголосував щодо: %{title}"
+      header:
+        visitor_reminded: '<strong>%{actor}</strong> очікує вашого голосу щодо: %{title}'
+        stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    meeting:
+      subject:
+        outcome_created: '%{actor} поширив(ла) результат: %{title}'
+        stance_created: '%{actor} долучився до: %{title}'
+      header:
+        stance_created: "<strong>%{actor}</strong> прийняв участь у: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
