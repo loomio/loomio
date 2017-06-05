@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'StartGroupPageController', ($scope, $location, $rootScope, $routeParams, Records, PollService, ModalService, PollCommonShareModal) ->
+angular.module('loomioApp').controller 'StartGroupPageController', ($scope, $location, $rootScope, Records, ModalService, InvitationModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'startGroupPage', skipScroll: true })
 
   @init = ->
@@ -8,7 +8,7 @@ angular.module('loomioApp').controller 'StartGroupPageController', ($scope, $loc
         pending_emails: _.compact(($location.search().pending_emails || "").split(','))
   @init()
 
-  $scope.$on 'saveComplete', (event, group) ->
-    ModalService.open InvitationModal, poll: -> group
+  $scope.$on 'createComplete', (event, group) ->
+    ModalService.open InvitationModal, group: -> group
 
   return

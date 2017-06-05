@@ -1,9 +1,9 @@
-angular.module('loomioApp').factory 'HotkeyService', (ModalService, KeyEventService, Records, Session, InvitationForm, GroupModal, DiscussionForm, PollCommonStartModal) ->
+angular.module('loomioApp').factory 'HotkeyService', (ModalService, KeyEventService, Records, Session, InvitationModal, GroupModal, DiscussionForm, PollCommonStartModal) ->
   new class HotkeyService
 
     keyboardShortcuts:
       pressedI:
-        execute: -> ModalService.open InvitationForm, group: -> Session.currentGroup or Records.groups.build()
+        execute: -> ModalService.open InvitationModal, group: -> Session.currentGroup or Records.groups.build()
       pressedG:
         execute: -> ModalService.open GroupModal, group: -> Records.groups.build()
       pressedT:
