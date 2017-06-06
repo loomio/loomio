@@ -1,4 +1,5 @@
 class API::VisitorsController < API::RestfulController
+  skip_before_action :set_participation_token, only: :update
 
   def create
     service.create(visitor: instantiate_resource, actor: current_user, poll: load_and_authorize(:poll))
