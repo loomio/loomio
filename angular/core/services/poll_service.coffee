@@ -24,8 +24,10 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       criteria =
         latest:    true
         pollId:    poll.id
-        visitorId: AppConfig.currentVisitorId or null
-        userId:    AppConfig.currentUserId or null
+      if AppConfig.currentUserId
+        criteria.userId = AppConfig.currentUserId
+      else if AppConfig.currentVisitorId
+        criteria.visitorId = AppConfig.currentVisitorId
       _.first _.sortBy(Records.stances.find(criteria), 'createdAt')
 
     hasVoted: (participant, poll) ->

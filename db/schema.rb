@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603005306) do
+ActiveRecord::Schema.define(version: 20170606001932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -778,6 +778,7 @@ ActiveRecord::Schema.define(version: 20170603005306) do
     t.jsonb    "matrix_counts",         default: [],    null: false
     t.boolean  "notify_on_participate", default: false, null: false
     t.integer  "visitors_count",        default: 0,     null: false
+    t.boolean  "example",               default: false, null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
