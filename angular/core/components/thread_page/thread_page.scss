@@ -17,10 +17,6 @@
   @include smallIcon;
 }
 
-.thread-container .lmo-dropdown-menu-right{
-  right: -16px;
-}
-
 .attachments {
   margin: 0 10px;
 }
@@ -86,12 +82,18 @@
     -webkit-flex-direction: column;
   }
   .context-panel           { order: 10; }
+
   .start-proposal-card     { order: 20; }
   .current-proposal-card   { order: 30; }
-  .previous-proposals-card { order: 40; }
-  .activity-card           { order: 50; }
-  .comment-form            { order: 60; }
-  .before-column-right     { order: 70; }
-  .members-card            { order: 80; }
+  .previous-proposals-card { order: 35; }
+
+  .poll-common-card        { order: 20; }
+  .activity-card           { order: 30; }
+
+  .comment-form            { order: 40; }
+  .decision-tools-card     { order: 50; }
+  .poll-common-index-card  { order: 60; }
+  .members-card            { order: 70; }
+  .before-column-right     { order: 80; }
   .after-column-right      { order: 90; }
 }

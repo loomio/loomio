@@ -15,4 +15,10 @@
 
 .poll-common-votes-panel__did-not-voter {
   @include displayFlex;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.poll-common-votes-panel__stance-name-and-option .poll-common-stance-choice {
+  display: inline-block;
 }

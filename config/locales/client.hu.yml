@@ -125,20 +125,6 @@ hu:
     latest: 'Legutóbbi'
     unread: 'Olvasatlan'
     closing_in: 'Zárás'
-  sign_in_form:
-    title: 'Bejelentkezés a Loomio-ba'
-    email_label: 'E-mail:'
-    email_placeholder: 'te@valahol.hu'
-    password_label: 'Jelszó:'
-    remember_me: 'Emlékezz rám'
-    forgot_password: 'Elfelejtetted a jelszót?'
-    sign_in: 'Belépés'
-    signed_in: 'Sikeresen bejelentkeztél'
-    oauth:
-      facebook: 'Lépj be a Facebook-kal'
-      twitter: 'Lépj be a Twitter-rel'
-      google: 'Lépj be a Google-lel'
-      github: 'Lépj be a Github-al'
   sign_up_form:
     title: "Üdvözlünk a Loomio oldalán! Kezdjük a beállításokkal"
     name_label: 'Neved:'

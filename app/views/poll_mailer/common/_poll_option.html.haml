@@ -1,15 +1,23 @@
-- poll = poll_option.poll
-- time_zone = (@info || @recipient).time_zone
-- class_name = local_assigns.fetch(:small, false) ? "poll-mailer-#{poll.poll_type}__option-icon--small" : "poll-mailer-#{poll.poll_type}__option-icon"
+- poll       = poll_option.poll
+- time_zone  = (@info || @recipient).time_zone
+- class_name = local_assigns[:small] ? "poll-mailer-#{poll.poll_type}__option-icon--small" : "poll-mailer-#{poll.poll_type}__option-icon"
+- show_link  = local_assigns[:link]
+- stance_choice = local_assigns.fetch(:stance_choice, nil)
+- show_score = poll.has_variable_score && stance_choice
+
 - if poll.has_option_icons
-  %td= image_tag "poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: class_name
-  - if local_assigns.fetch :link, false
-    %td= link_to t("poll_#{poll.poll_type}_options.#{poll_option.name}"), poll_url(poll, @info.utm_hash(poll_option_id: poll_option.id))
+  - if show_link
+    %td= link_to image_tag("poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: class_name), poll_url(poll, @info.utm_hash(poll_option_id: poll_option.id))
+    %td{class: "poll-mailer-#{poll.poll_type}__option-name"}= link_to t("poll_#{poll.poll_type}_options.#{poll_option.name}"), poll_url(poll, @info.utm_hash(poll_option_id: poll_option.id))
   - else
+    %td= image_tag("poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: class_name)
     %td= t("poll_#{poll.poll_type}_options.#{poll_option.name}")
 - else
-  %td= render 'poll_mailer/common/chip', color: poll_option.color
-  - if local_assigns.fetch :link, false
-    %td= link_to poll_option.display_name(zone: time_zone), poll_url(poll, poll_option_id: poll_option.id)
+  - if show_link
+    %td= stance_choice.score if show_score
+    %td= render 'poll_mailer/common/chip', color: poll_option.color
+    %td= link_to poll_option.display_name(zone: time_zone), poll_url(poll, @info.utm_hash(poll_option_id: poll_option.id))
   - else
+    %td= stance_choice.score if show_score
+    %td= render 'poll_mailer/common/chip', color: poll_option.color
     %td= poll_option.display_name(zone: time_zone)

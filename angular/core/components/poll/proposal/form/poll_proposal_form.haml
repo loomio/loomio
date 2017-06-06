@@ -1,16 +1,14 @@
 .poll-proposal-form
   %poll_common_tool_tip{poll: "poll"}
 
-  %poll_common_select_group{poll: "poll"}
-
   %md-input-container.md-block
     %label{translate: "poll_common_form.title"}
-    %input.lmo-primary-form-input.poll-proposal-form__title{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
+    %input.lmo-primary-form-input.poll-proposal-form__title{type: "text", placeholder: "{{'poll_proposal_form.title_placeholder' | translate}}", ng-model: "poll.title", md-maxlength="250"}
     %validation_errors{subject: "poll", field: "title"}
 
   %md-input-container.md-block
     %label{translate: "poll_common_form.details"}
-    %textarea.lmo-primary-form-input.poll-proposal-form__details{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
+    %textarea.lmo-primary-form-input.poll-proposal-form__details{ng-model: "poll.details", placeholder: "{{'poll_proposal_form.details_placeholder' | translate}}", mention-field: "true"}
     %outlet{name: "after-poll-proposal-form-textarea", model: "poll"}
 
   %poll_common_attachment_form.md-input-compensate{poll: "poll"}

@@ -3,6 +3,10 @@
   margin-right: 16px;
 }
 
+.poll-meeting-time-field .md-datepicker-input-container {
+  width: 100%;
+}
+
 .poll-meeting-form__poll-option-name {
   padding: 0 2px !important;
 }
@@ -11,7 +15,6 @@
   padding: 0 2px !important;
 }
 .poll-meeting-time-field__add {
-  margin-left: 8px;
   text-align: right;
 }
 

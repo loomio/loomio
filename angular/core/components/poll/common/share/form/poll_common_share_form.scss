@@ -29,6 +29,19 @@ poll_common_manage_card {
   margin-bottom: -50px;
 }
 
+.poll-common-share-form__add-button {
+  margin: 8px 0 0 0;
+  padding: 8px;
+  min-width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poll-common-share-form__group-select {
+  min-width: 0;
+}
+
 .poll-common-share-form__option-icon {
   margin: auto;
 }
@@ -36,6 +49,7 @@ poll_common_manage_card {
 .poll-common-share-form__visitor {
   justify-content: space-between;
   width: 100%;
+  pointer-events: auto;
 }
 
 .poll-common-share-form__loomio-group {
@@ -46,6 +60,7 @@ poll_common_manage_card {
 
 .poll-common-share-form__emails {
   margin-top: -50px;
+  pointer-events: none;
 }
 
 .poll-common-share-form__email {
@@ -71,6 +86,15 @@ poll_common_manage_card {
   min-width: 125px;
   order: 10;
   i { color: rgba(255,255,255,0.87); }
+}
+
+.poll-common-share-form__add-button {
+  min-width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0 0 0;
+  padding: 8px;
 }
 
 .poll-common-share-form__community {

@@ -1,12 +1,11 @@
-.blank{uib-dropdown: "true", on-toggle: "toggled(open)"}
-  %button.lmo-btn--nude.lmo-navbar__btn.lmo-navbar__btn--notifications.lmo-navbar__btn-icon.notifications__button.has-badge{uib-dropdown-toggle: "true", tabindex: 4}
-    .sr-only{translate: "navbar.notifications"}
-    %i.fa.fa-lg.fa-fw{aria-hidden: "true", ng-class: "{'fa-bell': hasUnread(), 'fa-bell-o': !hasUnread()}"}
-    %span.badge.notifications__activity{ng-if: "hasUnread()"}
-      {{unreadCount()}}
-  .uib-dropdown-menu.lmo-dropdown-menu.lmo-dropdown-menu--with-selector-list.notifications__dropdown{role: "menu"}
-    .navbar-notifications
-      %ul.selector-list
-        %li.selector-list-header{translate: "notifications.header", role: "heading"}
-        .navbar-notifications__blank-message{ng-if: "notifications().length < 1", translate: "notifications.no_notifications"}
-        %notification{notification: "notification", ng-repeat: "notification in notifications() | orderBy: '-createdAt' track by notification.id"}
+.blank
+  %md-menu{id: "notifications", md-position-mode: "target target", md-offset: "0 48"}
+    %md-button.notifications__button{ng-click: "toggle($mdMenu)", tabindex: 4}
+      .sr-only{translate: "navbar.notifications"}
+      %i.material-icons{ng-if: "hasUnread()"} notifications
+      %i.material-icons{ng-if: "!hasUnread()"} notifications_none
+      %span.badge.notifications__activity{ng-if: "hasUnread()"} {{unreadCount()}}
+    %md-menu-content.notifications__menu-content.notifications__dropdown
+      %notification{notification: "notification", ng-repeat: "notification in notifications() | orderBy: '-createdAt' track by notification.id"}
+      %li.selector-list-item{ng-if: "notifications().length == 0"}
+        %span.notification{translate: "notifications.no_notifications"}

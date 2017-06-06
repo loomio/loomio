@@ -9,4 +9,14 @@ class Events::OutcomeCreated < Event
            discussion: outcome.poll.discussion,
            created_at: outcome.created_at).tap { |e| EventBus.broadcast('outcome_created_event', e) }
   end
+
+  private
+
+  def email_visitors
+    if announcement
+      poll.community_of_type(:email).visitors
+    else
+      Visitor.none
+    end
+  end
 end

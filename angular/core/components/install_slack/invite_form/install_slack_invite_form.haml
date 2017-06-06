@@ -12,7 +12,5 @@
       %p.md-caption{translate: "install_slack.invite.publish_group_helptext_off", ng-if: "!group.makeAnnouncement"}
     %md-checkbox{ng-model: "group.makeAnnouncement"}
 
-  %install_slack_invite_preview{ng-if: "group.makeAnnouncement"}
-
   .lmo-flex.install-slack-form__actions{layout: "column"}
     %md-button.md-primary.md-raised{ng-disabled: "!identifier", translate: "install_slack.invite.set_channel", ng-click: "submit()"}

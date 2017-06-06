@@ -1,14 +1,25 @@
 module Identities::Slack::Initiate
   def initiate
-    attempt = ::Slack::Initiator.new(initiate_params).initiate!
-    case attempt[:error]
-    when nil           then respond_with_url(attempt[:url])
-    when :bad_identity then respond_with_unauthorized(id: params[:team_id], domain: params[:team_domain])
-    when :bad_type     then respond_with_help
-    end
+    render text: respond_with_url ||
+                 respond_with_help ||
+                 respond_with_unauthorized(id: params[:team_id], domain: params[:team_domain])
   end
 
   private
+
+  def respond_with_url
+    return unless initiate_attempt[:error] == :bad_identity
+    I18n.t(:"slack.initiate", type: initiate_params[:type], url: initiate_attempt[:url])
+  end
+
+  def respond_with_help
+    return unless initiate_attempt[:error] == :bad_type
+    I18n.t(:"slack.slash_command_help", type: initiate_params[:type])
+  end
+
+  def initiate_attempt
+    @initiate_attempt ||= ::Slack::Initiator.new(initiate_params).initiate!
+  end
 
   def initiate_params
     {
@@ -19,13 +30,5 @@ module Identities::Slack::Initiate
       type:         /^\S*/.match(params[:text]).to_s.strip, # use first word as poll type
       title:        /\s.*$/.match(params[:text]).to_s.strip # use remaining words as poll title
     }
-  end
-
-  def respond_with_url(url)
-    render text: I18n.t(:"slack.initiate", type: initiate_params[:type], url: url)
-  end
-
-  def respond_with_help
-    render text: I18n.t(:"slack.slash_command_help", type: initiate_params[:type])
   end
 end

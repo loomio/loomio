@@ -89,8 +89,6 @@ nl_NL:
     heading: Vorige voorstellen
   previous_polls_page:
     heading: Activiteiten in {{name}}
-    polls_count: Toon {{loaded}} van {{total}} activiteiten
-    search_activities: Zoek activiteiten
   proposal_collapsed:
     expand: Uitbreiden
     outcome: 'Uitkomst: {{outcome}}'
@@ -159,22 +157,6 @@ nl_NL:
     latest: 'Laatste'
     unread: 'Ongelezen'
     closing_in: 'Afsluiten'
-  sign_in_form:
-    aria_label: 'Inlogformulier'
-    title: 'Inloggen in Loomio'
-    email_label: 'E-mailadres:'
-    email_placeholder: 'jij@voorbeeld.org'
-    password_label: 'Wachtwoord:'
-    remember_me: 'Onthoud mij'
-    forgot_password: 'Wachtwoord vergeten?'
-    sign_in: 'Inloggen'
-    signed_in: 'Succesvol ingelogd'
-    oauth:
-      title: 'Of log in met een derde partij account:'
-      facebook: 'Inloggen met Facebook'
-      twitter: 'Inloggen met Twitter'
-      google: 'Inloggen met Google'
-      github: 'Inloggen met Github'
   sign_up_form:
     aria_label: 'Aanmeldformulier'
     title: "Welkom bij Loomio! Laten we je op weg helpen"
@@ -637,9 +619,6 @@ nl_NL:
   group_previous_proposals_card:
     heading: Vorige voorstellen
     see_more: Zie meer
-  group_decisions_card:
-    heading: Vorige activiteiten
-    see_more: "Zie alle: ({{count}}) activiteiten"
   invitation_form:
     aria_label: 'Uitnodiging van'
     invite_people: 'Nodig mensen uit'
@@ -707,7 +686,6 @@ nl_NL:
       password_changed: 'Wachtwoord bijgewerkt'
       deactivated: 'Account gedeactiveerd'
     change_picture_link: 'Wijzigen afbeelding:'
-    change_password_link: 'Wijzigen wachtwoord'
     deactivate_user_link: 'Deactiveren account...'
     profile: 'Profiel'
     edit_profile: 'Bewerk profiel'
@@ -725,14 +703,6 @@ nl_NL:
     use_initials: 'Gebruik initialen'
     use_gravatar: 'Gebruik gravatar'
     use_uploaded: 'Upload nieuwe foto'
-  change_password_form:
-    aria_label: 'Verander wachtwoordenformulier'
-    title: 'Verander wachtwoord'
-    helptext: 'Wachtwoord moet 8 tekens lang zijn. Veelvoorkomende wachtwoorden als "wachtwoord" zijn verboden om je account veilig te houden.'
-    current_password_label: 'Huidig wachtwoord'
-    new_password_label: 'Nieuw wachtwoord'
-    password_confirmation_label: 'Bevestig nieuw wachtwoord'
-    submit: 'Bijwerken wachtwoord'
   deactivation_modal:
     aria_label: 'Deactiveer account'
     introduction: 'Als je je account deactiveert:'
@@ -1144,8 +1114,6 @@ nl_NL:
     update_outcome: Actualiseer uitkomst
     outcome: Uitkomst
     statement: Verklaring
-    change_your_stance_title: Van gedachten veranderd?
-    change_your_stance_text: De beste groepsbeslissingen vinden plaats als mensen hun best doen om elkaars standpunt te begrijpen. Als je door wat andere mensen hebben gezegd van gedachten bent veranderd, verander je je stem.
     change_your_stance: Verander je stem
     load_more: Laad meer
     details: Details
@@ -1162,7 +1130,6 @@ nl_NL:
     members_count: "{{count}} mensen worden gewaarschuwd"
   poll_common_close_form:
     title: Sluit een peiling voortijdig
-    helptext: Weet je zeker dat je dit voortijdig wil sluiten?
     close_proposal: Sluit voorstel
     close_poll: Sluit peiling
     close_dot_vote: Sluit stippen stemming
@@ -1185,8 +1152,6 @@ nl_NL:
   poll_common_did_not_votes_panel:
     undecided: Onbeslist ({{count}})
     show_undecided: Toon onbeslist
-  poll_common_accordion:
-    title: Recente activiteit
   poll_common_set_outcome_panel:
     share_outcome: Deel uitkomst
     poll: 'Deze peiling is gesloten. <strong>Deel de uitkomst</strong> met de groep.'
@@ -1281,7 +1246,6 @@ nl_NL:
       poll_created: '<strong>{{author}}</strong> is een stippen stemming begonnen: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> stemde:'
       poll_edited: '<strong>{{author}}</strong> heeft de stippen stemming aangepast: <span>{{title}}</span>'
-      poll_expired: 'Stippen stemming afgelopen: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> heeft de stippen stemming gesloten: <span>{{title}}</span>'
     meeting:
       stance_created: '<strong>{{author}}</strong> antwoordde:'
@@ -1290,23 +1254,14 @@ nl_NL:
     title: Admin - {{title}}
   poll_common_share_form:
     no_group_selected: Geen groep geselecteerd
-    share_a_link: Deelbare koppeling
-    anyone_can_participate: Iedereen kan meedoen
     anyone_can_participate_true: Deelbare koppeling gemaakt
     anyone_can_participate_false: Deelbare koppeling ingetrokken
-    set_group: Loomio groep aangepast
-    shareable_link_created: Iedereen kan nu meedoen in deze peiling
-    shareable_link_revoked: Deze peiling is nu enkel op uitnodiging
     shareable_link: Deelbare koppeling
-    guests_invited: Uitgenodigde {{count}} gasten
     guest_revoked: Toegang ingetrokken voor {{email}}
-    invite_guests: Nodig gasten uit
     existing_guests: Bestaande gasten
     new_guests: Nieuwe e-mails om uit te nodigen
     enter_email: "M.a.w. guest@example.com"
     send_emails: Stuur uitnodigingen ({{count}})
-    no_loomio_group: Deze peiling is op dit moment niet gekoppeld aan een Loomio groep
-    has_loomio_group: Leden van deze groep zijn in staat om deze peiling te bekijken en er aan mee te doen
     view_poll: Bekijk peiling
     email_invited: 'Uitnodiging per e-mail verstuurd naar {{email}}'
     email_exists: '{{email}} is al uitgenodigd'

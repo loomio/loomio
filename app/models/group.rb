@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   include HasPolls
   include MakesAnnouncements
   include MessageChannel
+  include SelfReferencing
 
   class MaximumMembershipsExceeded < Exception
   end
@@ -131,7 +132,7 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, dependent: :destroy
   has_many :motions, through: :discussions
-  has_many :polls, through: :discussions
+  has_many :polls
   has_many :votes, through: :motions
 
   belongs_to :parent, class_name: 'Group'
@@ -160,6 +161,8 @@ class Group < ActiveRecord::Base
   delegate :name, to: :parent, prefix: true
   delegate :identity_type, to: :community, allow_nil: true
   delegate :slack_team_id, to: :community, allow_nil: true
+  delegate :slack_channel_name, to: :community, allow_nil: true
+  delegate :slack_team_name, to: :community, allow_nil: true
   delegate :identity_type, to: :community, allow_nil: true
 
   paginates_per 20
@@ -202,14 +205,6 @@ class Group < ActiveRecord::Base
       intent:         :join_group,
       invitable:      self
     )
-  end
-
-  def group
-    self
-  end
-
-  def group_id
-    self.id
   end
 
   def logo_or_parent_logo

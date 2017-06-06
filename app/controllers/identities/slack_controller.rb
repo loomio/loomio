@@ -16,7 +16,7 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def respond_with_unauthorized(team)
-    ::Slack::RequestAuthorizationSerializer.new(team, root: false).as_json
+    ::Slack::Ephemeral::RequestAuthorizationSerializer.new(team, root: false).as_json
   end
 
   def complete_identity(identity)

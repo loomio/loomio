@@ -343,7 +343,11 @@ class Ability
       @user.is_logged_in? && can?(:show, poll)
     end
 
-    can [:show, :subscribe_to], Poll do |poll|
+    can :create_visitors, Poll do |poll|
+      user_is_author_of?(poll)
+    end
+
+    can [:show, :toggle_subscription, :subscribe_to], Poll do |poll|
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
       poll.communities.any? { |community| community.includes?(@user) }

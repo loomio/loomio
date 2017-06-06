@@ -145,6 +145,8 @@ Loomio::Application.routes.draw do
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do
       post :close, on: :member
       post :publish, on: :member
+      post :create_visitors, on: :member
+      post :toggle_subscription, on: :member
       get  :closed, on: :collection
       get  :search, on: :collection
       get  :search_results_count, on: :collection
@@ -231,6 +233,7 @@ Loomio::Application.routes.draw do
     post :webhook
   end
 
+  resources :received_emails, only: :create
   resources :invitations, only: [:show]
   resources :login_tokens, only: [:show]
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
@@ -277,13 +280,14 @@ Loomio::Application.routes.draw do
   get 'g/:key/previous_polls'              => 'application#boot_angular_ui', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui', as: :group_memberships_username
   get 'p/new(/:type)'                      => 'application#boot_angular_ui', as: :new_poll
+  get 'p/example(/:type)'                  => 'polls#example',               as: :example_poll
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
   get 'd/:key(/:slug)'                     => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'm/:key(/:slug)'                     => 'motions#show',                as: :motion
-  get 'p/:key/share'                       => 'polls#share',                 as: :share_poll
+  get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
   get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/:username/'                       => 'users#show',                  as: :user

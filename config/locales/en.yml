@@ -1122,6 +1122,11 @@ en:
     media: Media
     health: Health
   start_your_group: Start your group
+  poll_unsubscribe:
+    title: You have been unsubscribed from %{title}
+    helptext: You will no longer receive emails about this decision.
+    visit_poll: View poll
+    go_to_dashboad: Go to dashboard
   webhooks:
     slack:
       poll_created: "*%{author}* started a new poll in *%{name}*"
@@ -1152,20 +1157,34 @@ en:
         abstain: abstained on
         block: blocked
   slack:
-    join_loomio_group: "*%{author}* has added this Slack team to *%{name}*. Please <%{url}|click here> to start making decisions. Want to learn more about how Loomio works? Type _/loomio help_ into this channel. See you soon!"
-    invite_to_loomio_group: "Looks like you're not a part of the group *%{name}* yet! Please <%{url}| click here> to join."
+    poll_published: "New decision in *%{group}*: *%{poll}*"
+    outcome_published: "New outcome in *%{group}*: *%{poll}*"
+    poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
+    poll_expired: "*%{poll}* has closed"
+    group_published: |
+      Hello, I'm Loomio Bot. *%{author}* added me.
+
+      I'm here to support your team to make decisions together by:
+
+      - highlighting when decisions are happening
+      - supporting people to participate in decisions
+      - showing where people agree and disagree
+      - communicating the outcome of decisions
+      - I'll keep a record of decisions in your Loomio group.
+
+      To find out more, type _/loomio help_
+    request_authorization_message: "Just one more step: <%{url}|Click here> to authorize your slack account to use Loomio. (You'll only have to do this once)"
+    poll_closed: "*%{title}* has closed already! <%{url}|Click here> to view the results."
     go_to_slack: Go to Slack
     stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you''d like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
-    time_zone_message: all times are in the %{zone} time zone
+    click_to_vote: "Select an option below to vote:"
+    time_zone_message: (all times are in the %{zone} time zone)
     authorized_message: Success! You're all set up to vote on slack now.
-    request_authorization_message: "Looks like you haven't authorized your slack account with Loomio yet! Please <%{url}|click here> to do so."
     community_poll_published: "@%{username} started a new %{type}:"
     initiate: |
       Okay, let's do this! <%{url}|Click here to start your %{type}>.
       (note: we'll post into this channel once it's created, so that everyone can participate)
     slash_command_help: |
-      Hm.. '%{type}' isn't a decision type we know about yet!
-
       Looking to make it really easy to make decisions with your group?
       Simply enter a decision type and a question you'd like to pose, and we'll take it from there.
 

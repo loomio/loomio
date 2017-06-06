@@ -1,6 +1,6 @@
 %md-list-item.poll-meeting-time-field{flex: "true", layout: "row"}
-  %md-input-container.poll-meeting-time-field__datepicker-container
-    %md-datepicker.poll-meeting-form__datepicker{ng-model: "option.date", ng-min-date: "dateToday", md-hide-icons: "calendar"}>
+  %md-input-container.poll-meeting-time-field__datepicker-container.lmo-flex__grow
+    %md-datepicker.poll-meeting-form__datepicker{ng-model: "option.date", placeholder: "{{ 'poll_meeting_form.add_option_placeholder' | translate }}", ng-min-date: "dateToday", md-hide-icons: "calendar"}>
   %md-input-container
     %md-select{ng-model: "option.time", placeholder: "All day", aria-label: "{{ 'poll_meeting_time_field.closing_hour' | translate }}"}
       %md-option{ng-value: "undefined", md-option-empty: "", translate: "common.all_day"} All day

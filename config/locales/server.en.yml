@@ -30,6 +30,10 @@ en:
         However, your password will not be changed until you follow the link above and complete the form.
         If you continue to have problems logging in, reply to this email to contact a support person.
 
+    start_decision:
+      subject: Start a decision on Loomio
+      intro: Select a type of decision to make below
+
     custom: "%{text}"
     group_email:
       intro: "%{who} made an announcement to %{group}:"
@@ -445,7 +449,7 @@ en:
     count:
       subject:
         poll_created: '%{actor} is checking: %{title}'
-        poll_updated: '%{actor} edited the check: %{title}'
+        poll_edited: '%{actor} edited the check: %{title}'
         poll_closing_soon: '24 hours left to check: %{title}'
         poll_closing_soon_author: 'Your check closes in 24 hours: %{title}'
         poll_expired: "Check closed: %{title}"
@@ -457,7 +461,7 @@ en:
 
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
-        poll_updated: '<strong>%{actor}</strong> edited the check'
+        poll_edited: '<strong>%{actor}</strong> edited the check'
         poll_closing_soon: '<strong>%{actor}</strong>''s check is closing in 24 hours.'
         poll_closing_soon_author: 'Your check is closing in 24 hours - now is a great time to remind people about it or extend the closing time if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> check closed: %{title}"
@@ -525,3 +529,24 @@ en:
 
       body:
         voted: '<strong>%{participant}</strong>:'
+
+  poll_generator:
+    proposal:
+      title: "[EXAMPLE] Extend offer letters to Shelley and Jack"
+      details: Shelley and Jack have been working with us as interns for the past 3 months, and both have displayed admirable dedication and are clearly assets to our team. Shall we extend them former offers of employment?
+
+    poll:
+      title: "[EXAMPLE] Any food allergies we should be aware of for the dinner party Thursday?"
+      details: Looking forward to seeing you all at our place! Please indicate if there are any dietary restrictions we should be aware of.
+
+    count:
+      title: "[EXAMPLE] Who's up for helping to organize the company picnic?"
+      details: Marsha felt totally overloaded last time, so this time we'd like to get her a couple helpers to ensure it's a bit easier on everyone. Please indicate if you'd like to help!
+
+    dot_vote:
+      title: "[EXAMPLE] What's our company strategy for next quarter?"
+      details: This is a big year for our company and we need to be strategic about what we put our limited resourcing into. Please indicate which areas you think are most important to focus on over the next quarter.
+
+    meeting:
+      title: "[EXAMPLE] When should we have our next staff meeting?"
+      details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?

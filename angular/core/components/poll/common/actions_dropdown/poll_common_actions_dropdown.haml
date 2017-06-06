@@ -1,17 +1,16 @@
-.poll-actions-dropdown.pull-right.lmo-no-print{uib-dropdown: "true"}
-  %button.lmo-btn--nude.proposal-actions-dropdown__btn{uib-dropdown-toggle: "true"}
-    %i.fa.fa-chevron-down
-  .uib-dropdown-menu.lmo-dropdown-menu{role: "menu"}
-    %ul.lmo-dropdown-menu-items
-      %li.lmo-dropdown-menu-item{ng-if: "canSharePoll()"}
-        %a.lmo-dropdown-menu-item-label.poll-actions-dropdown__share{href: "#", ng-click: "sharePoll()"}
-          %span{translate: "common.action.share"}
-      %li.lmo-dropdown-menu-item{ng-if: "canEditPoll()"}
-        %a.lmo-dropdown-menu-item-label.poll-actions-dropdown__edit{href: "#", ng-click: "editPoll()"}
-          %span{translate: "common.action.edit"}
-      %li.lmo-dropdown-menu-item{ng-if: "canClosePoll()"}
-        %a.lmo-dropdown-menu-item-label.poll-actions-dropdown__close{href: "#", ng-click: "closePoll()"}
-          %span{translate: "common.action.close"}
-      %li.lmo-dropdown-menu-item{ng-if: "canDeletePoll()"}
-        %a.lmo-dropdown-menu-item-label.poll-actions-dropdown__close{href: "#", ng-click: "deletePoll()"}
-          %span{translate: "common.action.delete"}
+%md-menu.lmo-dropdown-menu.poll-actions-dropdown.pull-right.lmo-no-print{md-position-mode: "target-right target"}
+  %md-button{ng-click: "$mdMenu.open()"}
+    %i.material-icons expand_more
+  %md-menu-content
+    %md-menu-item
+      %md-button{ng-click: "toggleSubscription()"}
+        %span{translate: "common.action.unsubscribe", ng-if: "poll.subscribed"}
+        %span{translate: "common.action.subscribe", ng-if: "!poll.subscribed"}
+    %md-menu-item{ng-if: "canSharePoll()"}
+      %md-button{ng-click: "sharePoll()", translate: "common.action.share"}
+    %md-menu-item{ng-if: "canEditPoll()"}
+      %md-button{ng-click: "editPoll()", translate: "common.action.edit"}
+    %md-menu-item.poll-actions-dropdown__close{ng-if: "canClosePoll()"}
+      %md-button{ng-click: "closePoll()", translate: "common.action.close"}
+    %md-menu-item{ng-if: "canDeletePoll()"}
+      %md-button{ng-click: "deletePoll()", translate: "common.action.delete"}

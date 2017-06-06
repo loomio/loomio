@@ -1,6 +1,6 @@
 class Events::UserMentioned < Event
-  include Events::NotifyUser
-  include Events::EmailUser
+  include Events::Notify::InApp
+  include Events::Notify::Users
 
   def self.publish!(model, actor, mentioned_user)
     create(kind: 'user_mentioned',

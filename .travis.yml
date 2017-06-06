@@ -33,7 +33,6 @@ env:
   matrix:
     - TASK=protractor
     - TASK=rspec
-    - TASK=cucumber
 
 before_install:
   - sh -e /etc/init.d/xvfb start
@@ -52,13 +51,12 @@ install:
 before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup
-  # - bundle exec rake plugins:fetch plugins:install
+  - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
   - bundle exec rails server > /dev/null &
 
 script:
-  - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
-  - if [ "$TASK" = "cucumber" ]; then bundle exec rake travis:cucumber; fi
+  - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec travis:cucumber; fi
   - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor_core; fi
 
 after_script:

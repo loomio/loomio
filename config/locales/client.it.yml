@@ -104,8 +104,6 @@ it:
     heading: Proposte precedenti
   previous_polls_page:
     heading: Attività in {{nome}}
-    polls_count: Mostra {{loaded}} di attività {{totali}}
-    search_activities: Ricerca attività
   proposal_collapsed:
     expand: Espandi
     outcome: 'Risultato: {{outcome}}'
@@ -175,22 +173,6 @@ it:
     latest: 'Più recente'
     unread: 'Non letto'
     closing_in: 'In chiusura'
-  sign_in_form:
-    aria_label: 'Form di autenticazione'
-    title: 'Entra in Loomio'
-    email_label: 'Email:'
-    email_placeholder: 'you@example.com'
-    password_label: 'Password:'
-    remember_me: 'Ricordami'
-    forgot_password: 'Password dimenticata?'
-    sign_in: 'Entra'
-    signed_in: 'Entrato/a con successo'
-    oauth:
-      title: 'O entra con un account di un altro provider:'
-      facebook: 'Entra con Facebook'
-      twitter: 'Entra con Twitter'
-      google: 'Entra con Google'
-      github: 'Entra con Github'
   sign_up_form:
     aria_label: 'Modulo di iscrizione'
     title: "Benvenuta/o su Loomio! Iniziamo la configurazione"
@@ -670,7 +652,6 @@ it:
       password_changed: 'Password aggiornata'
       deactivated: 'Account disattivato'
     change_picture_link: 'Cambia immagine'
-    change_password_link: 'Cambia password'
     deactivate_user_link: 'Disattiva account...'
     profile: 'Profilo'
     edit_profile: 'Modifica profilo'
@@ -681,10 +662,6 @@ it:
     locale_label: 'Lingua'
     update_profile: 'Aggiorna profilo'
     deactivate_account: 'Disattiva l''account'
-  change_password_form:
-    new_password_label: 'Nuova password'
-    password_confirmation_label: 'Conferma nuova password'
-    submit: 'Aggiorna password'
   deactivation_modal:
     aria_label: 'Disattiva l''account'
     no_longer_group_member: 'Non sarai più listato/a come membro di alcun gruppo.'
@@ -931,8 +908,6 @@ it:
     update_outcome: Aggiorna risultato
     outcome: Risultato
     statement: Dichiarazione
-    change_your_stance_title: Cambiato opinione?
-    change_your_stance_text: Le migliori decisioni di gruppo si prendono quando le persone si impegnano a capire l'una le posizioni dell'altra. Se quanto è stato detto da altre persone ti ha fatto cambiare idea, cambia il tuo voto.
     change_your_stance: Cambia il tuo voto
     load_more: Caricane altri
   poll_common_notify_group:

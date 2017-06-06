@@ -1,5 +1,5 @@
 class Events::NewCoordinator < Event
-  include Events::NotifyUser
+  include Events::Notify::InApp
 
   def self.publish!(membership, actor)
     create(kind: "new_coordinator",

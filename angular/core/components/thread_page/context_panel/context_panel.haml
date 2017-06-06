@@ -7,28 +7,26 @@
         %translation{translation: "translation", field: "title"}
 
     .context-panel__thread-actions.pull-right.lmo-no-print
-      %outlet{name: "before-thread-actions", model: "discussion"}
-      %span{uib-dropdown: "true",  ng-if: "showContextMenu()"}
-        %button.context-panel__dropdown-button.lmo-btn--nude{uib-dropdown-toggle: "true"}
+      %outlet.context-panel__before-thread-actions{name: "before-thread-actions", model: "discussion"}
+      %md-menu.lmo-dropdown-menu{ng-if: "showContextMenu()", md-position-mode: "target-right target"}
+        %md-button.context-panel__dropdown-button{ng-click: "$mdMenu.open()"}
           .sr-only{translate: "thread_context.thread_options"}
-          %i.fa.fa-fw.fa-chevron-down
-        .context-panel__dropdown.uib-dropdown-menu.lmo-dropdown-menu
-          %ul.lmo-dropdown-menu-items
-            %li.lmo-dropdown-menu-item{ng-if: "canChangeVolume()"}
-              %a.context-panel__dropdown-options--email-settings.lmo-dropdown-menu-item-label{href: "", ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}
-            %li.lmo-dropdown-menu-item{ng-if: "canEditThread()"}
-              %a.context-panel__dropdown-options--edit.lmo-dropdown-menu-item-label{href: "", ng-click: "editThread()", translate: "thread_context.edit"}
-            %li.lmo-dropdown-menu-item{ng-show: "!discussion.isMuted()"}
-              %a.context-panel__dropdown-options--mute.lmo-dropdown-menu-item-label{href: "", ng-click: "muteThread()", translate: "volume_levels.mute"}
-            %li.lmo-dropdown-menu-item{ng-show: "discussion.isMuted()"}
-              %a.context-panel__dropdown-options--unmute.lmo-dropdown-menu-item-label{href: "", ng-click: "unmuteThread()", translate: "volume_levels.unmute"}
-            %li.lmo-dropdown-menu-item{ng-if: "canMoveThread()"}
-              %a.context-panel__dropdown-options--move.lmo-dropdown-menu-item-label{href: "", ng-click: "moveThread()", translate: "thread_context.move_thread"}
-            %li.lmo-dropdown-menu-item
-              %a.context-panel__dropdown-options--print{ng-click: "requestPagePrinted()"}
-                %span{translate: "thread_context.print_thread"}
-            %li.lmo-dropdown-menu-item{ng-if: "canDeleteThread()"}
-              %a.context-panel__dropdown-options--delete.lmo-dropdown-menu-item-label{href: "", ng-click: "deleteThread()", translate: "thread_context.delete_thread"}
+          %i.material-icons expand_more
+        %md-menu-content
+          %md-menu-item.context-panel__dropdown-options--email-settings{ng-if: "canChangeVolume()"}
+            %md-button{ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}
+          %md-menu-item.context-panel__dropdown-options--edit{ng-if: "canEditThread()"}
+            %md-button{ng-click: "editThread()", translate: "thread_context.edit"}
+          %md-menu-item.context-panel__dropdown-options--mute{ng-show: "!discussion.isMuted()"}
+            %md-button{ng-click: "muteThread()", translate: "volume_levels.mute"}
+          %md-menu-item.context-panel__dropdown-options--unmute{ng-show: "discussion.isMuted()"}
+            %md-button{ng-click: "unmuteThread()", translate: "volume_levels.unmute"}
+          %md-menu-item.context-panel__dropdown-options--move{ng-if: "canMoveThread()"}
+            %md-button{ng-click: "moveThread()", translate: "thread_context.move_thread"}
+          %md-menu-item
+            %md-button{ng-click: "requestPagePrinted()", translate: "thread_context.print_thread"}
+          %md-menu-item.context-panel__dropdown-options--delete{ng-if: "canDeleteThread()"}
+            %md-button{ng-click: "deleteThread()", translate: "thread_context.delete_thread"}
 
   .context-panel__details.md-body-1
     %span{translate: "discussion.started_by", translate-value-name: "{{::discussion.authorName()}}"}

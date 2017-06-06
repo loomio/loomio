@@ -22,6 +22,10 @@
   max-width: 400px;
 }
 
+.poll-common-modal__narrow {
+  width: 480px;
+}
+
 .poll-common-vote-form__border-chip {
   border-left: 8px solid;
   padding-left: 8px;
@@ -83,6 +87,7 @@
 }
 
 .poll-common-checkbox-option__text{
+  margin-right: 16px;
   flex-grow: 1
 }
 

@@ -22,7 +22,7 @@ class PermittedParams < Struct.new(:params)
 
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
-     :remember_me, :uploaded_avatar, :username, :uses_markdown,
+     :remember_me, :uploaded_avatar, :username, :uses_markdown, :short_bio,
      :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
      :email_missed_yesterday, :deactivation_response, :has_password, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation,
@@ -54,7 +54,7 @@ class PermittedParams < Struct.new(:params)
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
      :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate,
-     :custom_fields, {custom_fields: [:dots_per_person, :time_zone]},
+     :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
      :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
      :poll_option_names, {poll_option_names: []},

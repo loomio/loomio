@@ -1,6 +1,6 @@
 class Events::MotionClosed < Event
-  include Events::NotifyUser
-  include Events::EmailUser
+  include Events::Notify::InApp
+  include Events::Notify::Users
   include Events::JoinDiscussion
 
   def self.publish!(motion)

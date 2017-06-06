@@ -109,17 +109,6 @@ ru:
     latest: 'Последний'
     unread: 'Непрочитанные'
     closing_in: 'Закрывается'
-  sign_in_form:
-    email_label: 'Email:'
-    password_label: 'Пароль:'
-    remember_me: 'Запомнить меня'
-    forgot_password: 'Забыли пароль?'
-    sign_in: 'Логин'
-    oauth:
-      facebook: 'Войти с помощью Facebook'
-      twitter: 'Войти с помощью Twitter'
-      google: 'Войти с помощью Google'
-      github: 'Войти с помощью Github'
   sign_up_form:
     name_label: 'Ваше имя:'
     name_placeholder: 'Имя Фамилия'

@@ -14,13 +14,15 @@ describe API::StancesController do
     stance_choices_attributes: [{poll_option_id: poll_option.id}],
     reason: "here is my stance"
   }}
+  let(:visitor) { create :visitor, community: public_poll.community_of_type(:public) }
+  let(:visitor_stance) { create :stance, participant: visitor, poll: public_poll }
 
   let(:public_poll) { create :poll, discussion: nil, anyone_can_participate: true }
   let(:public_poll_option) { create :poll_option, poll: public_poll }
   let(:visitor_stance_params) {{
     poll_id: public_poll.id,
     stance_choices_attributes: [{poll_option_id: public_poll_option.id}],
-    visitor_attributes: { name: "John Doe", email: "john@doe.ninja" }
+    visitor_attributes: { name: "Johnny Doe", email: "john@doe.ninja" }
   }}
 
   before { group.add_member! user }
@@ -130,6 +132,15 @@ describe API::StancesController do
       visitor_stance_params[:poll_id] = poll.id
       expect { post :create, stance: visitor_stance_params }.to_not change { Stance.count }
       expect(response.status).to eq 403
+    end
+
+    it 'syncs to existing visitors if email matches' do
+      expect(visitor_stance.latest).to eq true
+      visitor_stance_params[:visitor_attributes][:email] = visitor_stance.participant.email
+      expect { post :create, stance: visitor_stance_params }.to_not change { Stance.latest.count }
+      expect(visitor_stance.reload.latest).to eq false
+      expect(Stance.last.participant).to eq visitor_stance.participant
+      expect(Stance.last.participant.name).to eq visitor_stance_params[:visitor_attributes][:name]
     end
 
     it 'overwrites existing stances' do

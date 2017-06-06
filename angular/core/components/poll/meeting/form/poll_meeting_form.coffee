@@ -1,16 +1,13 @@
 angular.module('loomioApp').directive 'pollMeetingForm', ->
   scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/meeting/form/poll_meeting_form.html'
-  controller: ($scope, PollService, AttachmentService, KeyEventService, TranslationService, TimeService) ->
-    TranslationService.eagerTranslate $scope,
-      titlePlaceholder:     'poll_meeting_form.title_placeholder'
-      detailsPlaceholder:   'poll_meeting_form.details_placeholder'
+  controller: ($scope, PollService, AttachmentService, KeyEventService, TimeService) ->
 
     $scope.removeOption = (name) ->
       _.pull $scope.poll.pollOptionNames, name
 
     if $scope.poll.isNew()
-      $scope.poll.closingAt = moment().add(1, 'day')
+      $scope.poll.closingAt = moment().add(2, 'day')
       $scope.poll.notifyOnParticipate = true
       $scope.poll.makeAnnouncement = true if $scope.poll.group()
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523015010) do
+ActiveRecord::Schema.define(version: 20170606001932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,15 @@ ActiveRecord::Schema.define(version: 20170523015010) do
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "decision_emails", force: :cascade do |t|
+    t.string   "subject",    null: false
+    t.string   "body"
+    t.string   "to",         null: false
+    t.string   "cc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"
@@ -466,9 +475,11 @@ ActiveRecord::Schema.define(version: 20170523015010) do
   create_table "login_tokens", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "token"
-    t.boolean  "used",       default: false, null: false
+    t.boolean  "used",          default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "redirect_id"
+    t.string   "redirect_type"
     t.string   "redirect"
   end
 
@@ -677,6 +688,7 @@ ActiveRecord::Schema.define(version: 20170523015010) do
     t.string   "access_token",  default: ""
     t.jsonb    "custom_fields", default: {}, null: false
     t.string   "logo"
+    t.string   "scope",         default: "", null: false
   end
 
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree
@@ -699,11 +711,13 @@ ActiveRecord::Schema.define(version: 20170523015010) do
 
   create_table "outcomes", force: :cascade do |t|
     t.integer  "poll_id"
-    t.text     "statement",                 null: false
-    t.integer  "author_id",                 null: false
+    t.text     "statement",                     null: false
+    t.integer  "author_id",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "latest",     default: true, null: false
+    t.boolean  "latest",         default: true, null: false
+    t.integer  "poll_option_id"
+    t.jsonb    "custom_fields",  default: {},   null: false
   end
 
   create_table "poll_communities", force: :cascade do |t|
@@ -733,6 +747,15 @@ ActiveRecord::Schema.define(version: 20170523015010) do
     t.integer "poll_id",        null: false
   end
 
+  create_table "poll_unsubscriptions", force: :cascade do |t|
+    t.integer  "poll_id",    null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "poll_unsubscriptions", ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true, using: :btree
+
   create_table "polls", force: :cascade do |t|
     t.integer  "author_id",                             null: false
     t.string   "title",                                 null: false
@@ -754,6 +777,8 @@ ActiveRecord::Schema.define(version: 20170523015010) do
     t.integer  "group_id"
     t.jsonb    "matrix_counts",         default: [],    null: false
     t.boolean  "notify_on_participate", default: false, null: false
+    t.integer  "visitors_count",        default: 0,     null: false
+    t.boolean  "example",               default: false, null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
@@ -884,6 +909,7 @@ ActiveRecord::Schema.define(version: 20170523015010) do
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"
+    t.string   "short_bio",                        default: "",         null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree
