@@ -13,7 +13,7 @@ js:
   - angular-ui-bootstrap/ui-bootstrap.js
   - angular-ui-bootstrap/ui-bootstrap-tpls.js
   - marked/lib/marked.js
-  - angular-marked/dist/angular-marked.js
+  - loomio-angular-marked/dist/angular-marked.js
   - ng-file-upload/dist/angular-file-upload.js
   - ment.io/dist/mentio.js
   - angular-moment/angular-moment.js
