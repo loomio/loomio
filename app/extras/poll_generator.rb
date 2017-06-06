@@ -33,14 +33,14 @@ PollGenerator = Struct.new(:poll_type) do
 
   def poll
     {
-      poll_option_names: ["apple", "banana", "orange"],
+      poll_option_names: ["No gluten for me", "I can't eat meat", "I'm allergic to shellfish", "I'll eat anything!"],
       multiple_choice: true
     }
   end
 
   def dot_vote
     {
-      poll_option_names: ["apple", "banana", "orange"],
+      poll_option_names: ["Product development", "Customer acquisition", "Customer support", "Enterprise Sales", "Team growth"],
       custom_fields: { dots_per_person: 8 }
     }
   end
