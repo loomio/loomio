@@ -2,6 +2,11 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
+  $scope.$on 'showTutorial', (event, target, text) ->
+    $scope.tutorial = {target: target, text: text}
+  $scope.$on 'hideTutorial', ->
+    $scope.tutorial = null
+
   # NB: $scope.refresh triggers the ng-if for the ng-outlet in the layout.
   # This means that we re-initialize the controller for the page, which is what we want
   # for actions like logging in or out, without refreshing the whole app.

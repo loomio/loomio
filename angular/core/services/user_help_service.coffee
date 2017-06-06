@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'UserHelpService', ($sce, Session) ->
+angular.module('loomioApp').factory 'UserHelpService', ($sce, $rootScope, Session) ->
   new class UserHelpService
 
     helpLocale: ->
@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'UserHelpService', ($sce, Session) ->
         when 'zh-TW'                then 'zh'
         when 'ar'                   then 'ar'
         else 'en'
-
+    
     helpLink: ->
       "https://loomio.gitbooks.io/manual/content/#{@helpLocale()}/index.html"
 
