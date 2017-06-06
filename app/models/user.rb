@@ -97,6 +97,7 @@ class User < ActiveRecord::Base
   has_many :comment_votes, dependent: :destroy
   has_many :stances, as: :participant, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll
+  has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
 
