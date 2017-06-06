@@ -23,6 +23,10 @@ module NullUser
     Poll.none
   end
 
+  def group_polls
+    Poll.none
+  end
+
   def email_communities
     Communities::Base.none
   end
