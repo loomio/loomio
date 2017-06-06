@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'GroupModal', ->
     $scope.currentStep = 'create'
 
     $scope.$on 'createComplete', (event, group) ->
-      if group.parentId
+      if !$scope.group.isNew() or $scope.group.parentId
         $scope.$close()
       else
         $scope.group = group
