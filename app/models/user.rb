@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
   attr_accessor :recaptcha
   attr_accessor :restricted
+  attr_accessor :participation_token
 
   validates :email, presence: true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, in: [true,false]
@@ -153,10 +154,6 @@ class User < ActiveRecord::Base
 
   def remember_me
     true
-  end
-
-  def participation_token
-    nil
   end
 
   def is_logged_in?
