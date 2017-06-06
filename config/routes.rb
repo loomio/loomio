@@ -279,6 +279,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
   get 'g/:key/previous_polls'              => 'application#boot_angular_ui', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui', as: :group_memberships_username
+  get 'g/:new'                             => 'application#boot_angular_ui', as: :new_group
   get 'p/new(/:type)'                      => 'application#boot_angular_ui', as: :new_poll
   get 'p/example(/:type)'                  => 'polls#example',               as: :example_poll
 

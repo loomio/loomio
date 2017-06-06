@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'AdminMembershipsPanelController', ($scope, Session, AbilityService, ModalService, Records, FlashService, RemoveMembershipForm, InvitationForm, $filter) ->
+angular.module('loomioApp').controller 'AdminMembershipsPanelController', ($scope, Session, AbilityService, ModalService, Records, FlashService, RemoveMembershipForm, InvitationModal, $filter) ->
 
   $scope.canRemoveMembership = (membership) ->
     AbilityService.canRemoveMembership(membership)
@@ -22,4 +22,4 @@ angular.module('loomioApp').controller 'AdminMembershipsPanelController', ($scop
     AbilityService.canAddMembers($scope.group)
 
   $scope.invitePeople = ->
-    ModalService.open InvitationForm, group: => $scope.group
+    ModalService.open InvitationModal, group: => $scope.group

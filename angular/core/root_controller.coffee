@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupForm, AbilityService, AhoyService, ViewportService, HotkeyService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
@@ -17,7 +17,11 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
 
   $scope.$on 'loggedIn', (event, user) ->
     $scope.refresh()
-    ModalService.open(GroupForm, group: -> Records.groups.build()) if $location.search().start_group?
+    if $location.search().start_group?
+      ModalService.open GroupModal, group: ->
+        Records.groups.build
+          customFields:
+            pending_emails: $location.search().pending_emails
     IntercomService.boot()
     MessageChannelService.subscribe()
 

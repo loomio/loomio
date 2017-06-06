@@ -19,3 +19,4 @@ loomio_buyer_experience:
 
 loomio_onboarding:
   repo:         loomio/loomio_onboarding
+  branch:       group-form-update

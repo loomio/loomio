@@ -1,12 +1,13 @@
-angular.module('loomioApp').factory 'InvitationForm', ->
-  templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, group, Records, Session, AbilityService, FormService, FlashService, RestfulClient, ModalService, AddMembersModal) ->
+angular.module('loomioApp').directive 'invitationForm', ->
+  scope: {group: '=', selectGroup: '='}
+  templateUrl: 'generated/components/invitation/form/invitation_form.html'
+  controller: ($scope, Records, Session, AbilityService, FormService, FlashService, RestfulClient, ModalService, AddMembersModal) ->
 
     $scope.availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
-        AbilityService.canAddMembers(group)
+      _.filter Session.user().groups(), (g) ->
+        AbilityService.canAddMembers(g)
 
-    $scope.form = Records.invitationForms.build(groupId: group.id)
+    $scope.form = Records.invitationForms.build(groupId: $scope.group.id)
     $scope.fetchShareableInvitation = ->
       Records.invitations.fetchShareableInvitationByGroupId($scope.form.group().id) if $scope.form.group()
     $scope.fetchShareableInvitation()
@@ -51,7 +52,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.submit = ->
       if $scope.invitees().length == 0
-        $scope.$close()
+        $scope.$emit 'inviteComplete'
       else
         submitForm()
 
@@ -59,6 +60,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       drafts: true
       submitFn: Records.invitations.sendByEmail
       successCallback: (response) =>
+        $scope.$emit 'inviteComplete'
         invitationCount = response.invitations.length
         switch invitationCount
           when 0 then $scope.noInvitations = true
