@@ -89,7 +89,10 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     undecidedMembers: ->
       if @isActive()
-        _.difference(@group().members(), @voters())
+        if @group()
+          _.difference(@group().members(), @voters())
+        else
+          _.difference([@author()], @voters())
       else
         @recordStore.users.find(_.pluck(@pollDidNotVotes(), 'userId'))
 
