@@ -208,6 +208,15 @@ class User < ActiveRecord::Base
     ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
   end
 
+  def self.demo_bot
+    find_by(email: demo_bot_email) ||
+    create!(email: demo_bot_email, name: 'Loomio Demo bot', avatar_kind: :gravatar)
+  end
+
+  def self.demo_bot_email
+    ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
+  end
+
   def name
     if deactivated_at.present?
       "[deactivated account]"

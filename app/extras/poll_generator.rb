@@ -5,7 +5,7 @@ PollGenerator = Struct.new(:poll_type) do
     poll = Poll.create(poll_params)
     poll.community_of_type(:email, build: true)
     poll.save!
-    poll.community_of_type(:email).visitors.create(email: User.helper_bot.email)
+    poll.community_of_type(:email).visitors.create(email: User.demo_bot.email)
     poll
   end
 
