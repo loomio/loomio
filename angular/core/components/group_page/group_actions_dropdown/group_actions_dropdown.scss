@@ -2,6 +2,10 @@
   display: flex !important;
 }
 
+.group-actions-dropdown__menu-content {
+  max-height: 400px;
+}
+
 .group-actions-dropdown__menu-content .material-icons {
   font-size: 20px;
   margin-right: 8px;
