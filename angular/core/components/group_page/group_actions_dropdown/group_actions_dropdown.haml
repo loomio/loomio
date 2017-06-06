@@ -10,14 +10,14 @@
       %md-menu-item{ng-if: "groupActions.canAdministerGroup()"}
         %a.md-button{lmo-href-for: "group", lmo-href-action: "memberships"}
           %span{translate: "group_page.options.manage_members"}
-      %outlet{name: "after-group-actions-manage-memberships", model: "group"}
       %md-menu-item.group-page-actions__add-subgroup-link{ng-if: "groupActions.canAddSubgroup()"}
         %md-button{ng-click: "groupActions.addSubgroup()"}
           %span{translate: "group_page.options.add_subgroup"}
       %md-menu-item.group-page-actions__change-volume-link{ng-if: "groupActions.canChangeVolume()"}
         %md-button{ng-click: "groupActions.openChangeVolumeForm()"}
           %span{translate: "group_page.options.email_settings"}
-      %md-menu-item.group-page-actions__leave-group{ng-if: "groupActions.canLeaveGroup()"}
+      %outlet{name: "after-group-actions-manage-memberships", model: "group"}
+      %md-menu-item.group-page-actions__leave-group
         %md-button{ng-click: "groupActions.leaveGroup()"}
           %span{translate: "group_page.options.leave_group"}
       %md-menu-item.group-page-actions__archive-group{ng-if: "groupActions.canArchiveGroup()"}
