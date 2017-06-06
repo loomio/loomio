@@ -155,7 +155,7 @@ class PollService
   end
 
   def self.cleanup_examples
-    Poll.where(example: true, 'created_at < ?', 1.hour.ago).destroy_all
+    Poll.where(example: true).where('created_at < ?', 1.hour.ago).destroy_all
   end
 
 end
