@@ -34,6 +34,6 @@ class Slack::Initiator
   end
 
   def bad_type?
-    !Poll::TEMPLATES.include?(@params[:type])
+    !Poll::TEMPLATES.keys.include?(@params[:type])
   end
 end

@@ -2,7 +2,7 @@ module Identities::Slack::Initiate
   def initiate
     render text: respond_with_url ||
                  respond_with_help ||
-                 respond_with_unauthorized(id: params[:team_id], domain: params[:team_domain])
+                 respond_with_unauthorized
   end
 
   private
@@ -17,18 +17,21 @@ module Identities::Slack::Initiate
     I18n.t(:"slack.slash_command_help", type: initiate_params[:type])
   end
 
+  def respond_with_unauthorized
+    I18n.t(:"slack.request_authorization_message", url: request_authorization_url(
+      id:   initiate_params[:team_id],
+      name: initiate_params[:team_domain]
+    ))
+  end
+
   def initiate_attempt
     @initiate_attempt ||= ::Slack::Initiator.new(initiate_params).initiate!
   end
 
   def initiate_params
-    {
-      user_id:      params[:user_id],
-      team_id:      params[:team_id],
-      channel_id:   params[:channel_id],
-      channel_name: params[:channel_name],
-      type:         /^\S*/.match(params[:text]).to_s.strip, # use first word as poll type
-      title:        /\s.*$/.match(params[:text]).to_s.strip # use remaining words as poll title
-    }
+    params.slice(:user_id, :team_id, :team_domain, :channel_id, :channel_name).merge(
+      type:  /^\S*/.match(params[:text]).to_s.strip,  # use first word as poll type
+      title: /\s.*$/.match(params[:text]).to_s.strip  # use remaining words as poll title
+    )
   end
 end

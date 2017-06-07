@@ -15,10 +15,6 @@ class Identities::SlackController < Identities::BaseController
     head :ok if params[:ssl_check].present?
   end
 
-  def respond_with_unauthorized(team)
-    ::Slack::Ephemeral::RequestAuthorizationSerializer.new(team, root: false).as_json
-  end
-
   def complete_identity(identity)
     super
     identity.fetch_team_info
@@ -38,5 +34,12 @@ class Identities::SlackController < Identities::BaseController
 
   def oauth_host
     "https://slack.com/oauth/authorize"
+  end
+
+  def request_authorization_url(team = {})
+    slack_oauth_url(
+      back_to: slack_authorized_url(team: team['name']),
+      team:    team['id']
+    )
   end
 end
