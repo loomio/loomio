@@ -193,6 +193,38 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   margin: 40px 0;
 }
 
+.user-mailer__start-decision-option {
+  list-style-type: none;
+  margin: 25px 0;
+}
+
+.user-mailer__start-decision-helptext {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.user-mailer__start-decision-button {
+  background-color: #5cb85c;
+  border: #4cae4c;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 12px 30px;
+  min-width: 150px;
+  text-align: left;
+}
+
+.user-mailer__start-decision-logo {
+  width: 20px;
+  margin-right: 8px;
+  vertical-align: bottom;
+}
+
 .align-left {
   text-align: left;
 }

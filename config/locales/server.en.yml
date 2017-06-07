@@ -32,7 +32,13 @@ en:
 
     start_decision:
       subject: Start a decision on Loomio
-      intro: Select a type of decision to make below
+      intro: Hello, <strong>%{name}</strong>! We've just received an email you forwarded, entitled <strong>%{title}</strong>
+      action: "Need help driving this conversation to a decision? We're here to help! Select what kind of decision you'd like to make:"
+      proposal: Raise a proposal
+      count: Get a count
+      poll: Start a poll
+      dot_vote: Start a dot vote
+      meeting: Schedule a time
 
     custom: "%{text}"
     group_email:
