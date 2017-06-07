@@ -538,21 +538,21 @@ en:
 
   poll_generator:
     proposal:
-      title: "[EXAMPLE] Extend offer letters to Shelley and Jack"
-      details: Shelley and Jack have been working with us as interns for the past 3 months, and both have displayed admirable dedication and are clearly assets to our team. Shall we extend them former offers of employment?
+      title: "Extend offer letters to Shelley and Jack"
+      details: Shelley and Jack have been working with us as interns for the past 3 months, and both have displayed admirable dedication and are clearly assets to our team. Shall we extend them formal offers of employment?
 
     poll:
-      title: "[EXAMPLE] Any food allergies we should be aware of for the dinner party Thursday?"
+      title: "Any food allergies we should be aware of for the dinner party Thursday?"
       details: Looking forward to seeing you all at our place! Please indicate if there are any dietary restrictions we should be aware of.
 
     count:
-      title: "[EXAMPLE] Who's up for helping to organize the company picnic?"
+      title: "Who's up for helping to organize the company picnic?"
       details: Marsha felt totally overloaded last time, so this time we'd like to get her a couple helpers to ensure it's a bit easier on everyone. Please indicate if you'd like to help!
 
     dot_vote:
-      title: "[EXAMPLE] What's our company strategy for next quarter?"
+      title: "What's our company strategy for next quarter?"
       details: This is a big year for our company and we need to be strategic about what we put our limited resourcing into. Please indicate which areas you think are most important to focus on over the next quarter.
 
     meeting:
-      title: "[EXAMPLE] When should we have our next staff meeting?"
+      title: "When should we have our next staff meeting?"
       details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
