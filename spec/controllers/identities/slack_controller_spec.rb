@@ -39,12 +39,14 @@ describe Identities::SlackController do
     let(:payload) { {
       user: { id: identity.uid },
       callback_id: poll.id,
-      actions: [{ name: poll.poll_options.first.name }]
+      actions: [{ name: poll.poll_options.first.name }],
+      team: { id: 'T123', name: 'billsbarbies' }
     }.to_json }
     let(:bad_payload) { {
       user: { id: identity.uid },
       callback_id: poll.id,
-      actions: []
+      actions: [],
+      team: {}
     }.to_json }
     let(:user) { create :user }
     let(:another_user) { create :user }
