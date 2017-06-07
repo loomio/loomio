@@ -1,48 +1,48 @@
 module Identities::Slack::Participate
   def participate
-    render json: respond_with_stance ||
-                 respond_with_poll_closed ||
-                 respond_with_invitation ||
-                 respond_with_unauthorized(participate_payload['team'])
+    render json: respond_with_poll_closed ||
+                 respond_with_stance      ||
+                 respond_with_participate_unauthorized
   end
 
   private
-
-  def respond_with_stance
-    return unless event = ::Slack::Participator.new(participate_params).participate!
-    ::Slack::Ephemeral::StanceCreatedSerializer.new(event, root: false).as_json
-  end
 
   def respond_with_poll_closed
     return unless !participate_poll.active?
     ::Slack::Ephemeral::PollClosedSerializer.new(participate_poll, root: false).as_json
   end
 
-  def respond_with_invitation
-    return unless participate_invitation&.slack_team_id.present?
-    ::Slack::Ephemeral::GroupInvitationSerializer.new(participate_invitation, scope: {
-      back_to: poll_url(participate_poll),
-      uid: participate_params[:uid]
-    }, root: false).as_json
+  def respond_with_stance
+    participate_poll&.group&.add_member!(participate_identity&.user)
+    return unless participate_stance.present?
+    ::Slack::Ephemeral::StanceCreatedSerializer.new(participate_stance, root: false).as_json
   end
 
-  def participate_invitation
-    @participate_invitation ||= participate_poll&.group&.shareable_invitation
+  def respond_with_participate_unauthorized
+    ::Slack::Ephemeral::RequestAuthorizationSerializer.new(request_authorization_url(participate_payload['team']), root: false).as_json
   end
 
-  def participate_params
-    @participate_params ||= {
-      uid:              participate_payload.dig('user', 'id'),
-      poll_id:          participate_payload.dig('callback_id'),
-      choice:           participate_payload.dig('actions', 0, 'name')
-    }
+  def participate_stance
+    @participant_stance ||= StanceService.create(
+      stance: Stance.new(poll: participate_poll, choice: participate_payload.dig('actions', 0, 'name')),
+      actor:  participate_identity.user
+    )
+  rescue CanCan::AccessDenied
+    nil
+  end
+
+  def participate_poll
+    @participate_poll ||= Poll.find_by(id: participate_payload['callback_id'])
+  end
+
+  def participate_identity
+    @participate_participant ||= Identities::Base.find_by(
+      identity_type: :slack,
+      uid:           participate_payload.dig('user', 'id')
+    )
   end
 
   def participate_payload
     @participate_payload ||= JSON.parse(params.require(:payload))
-  end
-
-  def participate_poll
-    @participate_poll ||= Poll.find_by(id: participate_params[:poll_id])
   end
 end
