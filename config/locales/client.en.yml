@@ -1747,6 +1747,7 @@ en:
     login_link_helptext_with_password: "Enter your password, or sign in via email."
     sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
     oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
+    name_required: Please enter a name
 
     welcome: Nice to meet you, {{email}}!
     welcome_back: Welcome back, {{name}}!
