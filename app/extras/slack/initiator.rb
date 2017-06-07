@@ -1,7 +1,7 @@
 class Slack::Initiator
   include PrettyUrlHelper
 
-  def initialize(user_id:, team_id:, type:, title:, channel_id:, channel_name:)
+  def initialize(user_id:, team_id:, team_domain:, type:, title:, channel_id:, channel_name:)
     @identity     = Identities::Slack.find_by(identity_type: :slack, uid: user_id)
     @team_id      = team_id
     @params       = default_url_options.merge({

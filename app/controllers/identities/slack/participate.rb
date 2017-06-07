@@ -3,7 +3,7 @@ module Identities::Slack::Participate
     render json: respond_with_stance      ||
                  respond_with_poll_closed ||
                  respond_with_invitation  ||
-                 respond_with_unauthorized
+                 respond_with_participate_unauthorized
   end
 
   private
@@ -26,7 +26,7 @@ module Identities::Slack::Participate
     }, root: false).as_json
   end
 
-  def respond_with_unauthorized
+  def respond_with_participate_unauthorized
       ::Slack::Ephemeral::RequestAuthorizationSerializer.new({
         url: request_authorization_url(participate_payload['team'])
       }, root: false).as_json
