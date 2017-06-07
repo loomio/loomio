@@ -38,8 +38,8 @@ class Identities::SlackController < Identities::BaseController
 
   def request_authorization_url(team = {})
     slack_oauth_url(
-      back_to: slack_authorized_url(team: team['name']),
-      team:    team['id']
+      back_to: slack_authorized_url(team: team[:name]),
+      team:    team[:id]
     )
   end
 end
