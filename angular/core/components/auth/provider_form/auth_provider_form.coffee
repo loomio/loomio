@@ -6,4 +6,4 @@ angular.module('loomioApp').directive 'authProviderForm', ->
 
     $scope.select = (provider) ->
       $scope.$emit 'processing'
-      $window.location = provider.href
+      $window.location = provider.href = + "?back_to=#{$window.location.href}"
