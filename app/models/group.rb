@@ -375,8 +375,7 @@ class Group < ActiveRecord::Base
 
   def add_member!(user, inviter=nil)
     return unless user.present?
-    tap(&:save!).memberships
-                .find_or_create_by(user: user) { |m| m.inviter = inviter }
+    tap(&:save!).memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
   end
 
   def add_members!(users, inviter=nil)
