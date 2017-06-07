@@ -1463,7 +1463,7 @@ en:
       <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
       <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
       <p>With good participation a proposal is a powerful mandate to take action.</p>
-      <p>Find out more in <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Loomio School</a>.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Seek collective agreement
     start_header: Start proposal
     edit_header: Edit proposal
@@ -1478,6 +1478,7 @@ en:
       <p>Use a poll to measure popularity or offer a choice.</p>
       <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
       <p>Everyone votes, and can enter a statement too if they like. Results are represented in a bar graph.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Measure popularity or offer a choice
     start_header: Start poll
     edit_header: Edit poll
@@ -1498,6 +1499,7 @@ en:
       <p>Or use it to track completion of a task: "I've checked my contact details are correct", or "I've read the document and left my feedback".</p>
       <p>A check has a <em>goal</em>, which is the number of participants you'd like. The goal indicates to the group if something needs more attention or is well subscribed.</p>
       <p>A day before the check closes, it will remind those who have not participated to do so - like a digital cat herder.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Track participation and find volunteers
     start_header: Start check
     edit_header: Edit check
@@ -1511,7 +1513,8 @@ en:
     tool_tip_expanded: |
       <p>Dot voting is a way to prioritise a list of options.</p>
       <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
-      <p>The process results in a cumulative bar chart as well as and the individual allocations so you can consider various points of view.</p>
+      <p>The totals of the results are shown, as well as and the individual votes, so you can consider various points of view.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Prioritise options
     start_header: Start dot vote
     edit_header: Edit dot vote
@@ -1530,7 +1533,8 @@ en:
       <p>Participants tick those which they’re able to attend, or they can use the statement field to explain their circumstances, so you can update the options if necessary.</p>
       <p>If you add new times during a time poll, people who have already voted are prompted to update their response.</p>
       <p>You can then see who’s available when, and decide when to meet.</p>
-      <p>Times are automatically converted to the participant's time zone.</p>
+      <p>Times are automatically converted to the participant's local time zone.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Find a time to meet
     start_header: Start time poll
     edit_header: Edit time poll
