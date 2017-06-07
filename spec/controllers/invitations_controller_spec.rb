@@ -48,7 +48,7 @@ describe InvitationsController do
 
       it 'redirects to the oauth path if not a member' do
         get :show, id: invitation.token
-        expect(response).to redirect_to slack_oauth_url(back_to: group_url(group), team: invitation.slack_team_id)
+        expect(response).to redirect_to slack_oauth_url(back_to: "", team: invitation.slack_team_id)
       end
     end
 

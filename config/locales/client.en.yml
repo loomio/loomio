@@ -1592,6 +1592,7 @@ en:
     your_response: When can you attend?
     stance_created: Availability saved
     stance_updated: Availability updated
+    reason_placeholder: Explain when you're busy or free, incase the author needs to add new options
 
   poll_dot_vote_vote_form:
     dots_remaining: You have {{count}} dots remaining.
