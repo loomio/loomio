@@ -164,6 +164,11 @@
   ul li{
     list-style: disc;
   }
+  pre {
+    overflow: auto;
+    padding: 10px;
+    background: $modal-background-color;
+  }
   blockquote{
     font-size: inherit;
   }
