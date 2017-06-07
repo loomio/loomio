@@ -2,5 +2,6 @@
   %loading{ng-if: "!pollPage.poll"}
   %main.poll-page.lmo-row{ng-if: "pollPage.poll"}
     %group_theme{ng-if: "pollPage.poll.group()", group: "pollPage.poll.group()", discussion: "pollPage.poll.discussion()", compact: "true"}
-    .poll-page__main-content.lmo-flex
+    .poll-page__main-content.lmo-flex{layout: "column"}
+      %poll_common_example_card{ng-if: "pollPage.poll.example", poll: "pollPage.poll"}
       %poll_common_card.lmo-card--no-padding{poll: "pollPage.poll"}
