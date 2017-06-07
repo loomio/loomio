@@ -54,8 +54,9 @@ module EmailHelper
   end
 
   def google_pie_chart_url(poll)
-    sparkline = proposal_sparkline(poll)
-    colors = poll_color_values(poll.poll_type).map { |color| color.sub('#', '') }.join('|')
+    sparkline    = proposal_sparkline(poll)
+    color_values = poll_color_values(poll.poll_type).presence || ['#aaa']
+    colors       = color_values.map { |color| color.sub('#', '') }.join('|')
     URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{sparkline}&chco=#{colors}")
   end
 
