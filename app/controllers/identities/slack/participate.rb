@@ -9,8 +9,11 @@ module Identities::Slack::Participate
   private
 
   def respond_with_stance
-    return unless event = ::Slack::Participator.new(participate_params).participate!
-    ::Slack::Ephemeral::StanceCreatedSerializer.new(event, root: false).as_json
+    return unless can_participate?
+    ::Slack::Ephemeral::StanceCreatedSerializer.new(StanceService.create(
+      stance: participate_stance,
+      actor: participate_participant
+    ), root: false).as_json
   end
 
   def respond_with_poll_closed
@@ -22,7 +25,7 @@ module Identities::Slack::Participate
     return unless participate_invitation&.slack_team_id.present?
     ::Slack::Ephemeral::GroupInvitationSerializer.new(participate_invitation, scope: {
       back_to: poll_url(participate_poll),
-      uid: participate_params[:uid]
+      uid:     participate_payload.dig('user', 'id')
     }, root: false).as_json
   end
 
@@ -36,19 +39,29 @@ module Identities::Slack::Participate
     @participate_invitation ||= participate_poll&.group&.shareable_invitation
   end
 
-  def participate_params
-    @participate_params ||= {
-      uid:              participate_payload.dig('user', 'id'),
-      poll_id:          participate_payload.dig('callback_id'),
-      choice:           participate_payload.dig('actions', 0, 'name')
-    }
+  def participate_poll
+    @participate_poll ||= Poll.find_by(id: participate_payload['callback_id'])
+  end
+
+  def can_participate?
+    participate_participant&.can? :create, participate_stance
+  end
+
+  def participate_stance
+    @participate_stance ||= Stance.new(
+      poll:   participate_poll,
+      choice: participate_payload.dig('actions', 0, 'name')
+    )
+  end
+
+  def participate_participant
+    byebug
+    @participate_participant ||= Identities::Base
+      .where(identity_type: :slack, uid: participate_payload.dig('user', 'id'))
+      .first&.user
   end
 
   def participate_payload
     @participate_payload ||= JSON.parse(params.require(:payload))
-  end
-
-  def participate_poll
-    @participate_poll ||= Poll.find_by(id: participate_params[:poll_id])
   end
 end
