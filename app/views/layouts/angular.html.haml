@@ -40,7 +40,4 @@
       window.Loomio.emojis.render = emojione.shortnameToImage
     %script{src: client_asset_path(:"app.js")}
 
-    - if Rails.application.secrets.faye_url.present?
-      %script{src: "#{Rails.application.secrets.faye_url}/client.js", type: 'text/javascript'}
-
     = javascript_include_tag 'angular_ahoy' if hosted_by_loomio?
