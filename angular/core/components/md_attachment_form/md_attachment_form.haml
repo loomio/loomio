@@ -7,5 +7,5 @@
   .md-attachment-form-in-progress{ng-repeat: "file in files"}
     .progress.active.md-attachment-form-progress-field
       %strong.md-attachment-form-progress-text {{ file.name }}: {{ percentComplete }} %
-      %uib-progressbar.md-attachment-form-progress-bar{ng-attr-value: "percentComplete"}
+      %md-progress-linear{md-mode: "determinate", value: "{{percentComplete}}"}
     %button.close.md-attachment-form-cancel.cancel-upload.md-attachment-form__cancel{type: "button", ng-click: "abort()"} &times;
