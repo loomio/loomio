@@ -8,4 +8,4 @@ angular.module('loomioApp').directive 'authForm', (AppConfig, LoadingService) ->
     if _.contains(_.pluck(AppConfig.identityProviders, 'name'), (AppConfig.pendingIdentity or {}).identity_type)
       $scope.pendingProviderIdentity = AppConfig.pendingIdentity
 
-    LoadService.listenForLoading $scope
+    LoadingService.listenForLoading $scope
