@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'authForm', (AppConfig) ->
+angular.module('loomioApp').directive 'authForm', (AppConfig, LoadingService) ->
   scope: {preventClose: '=', user: '='}
   templateUrl: 'generated/components/auth/form/auth_form.html'
   controller: ($scope) ->
@@ -8,5 +8,4 @@ angular.module('loomioApp').directive 'authForm', (AppConfig) ->
     if _.contains(_.pluck(AppConfig.identityProviders, 'name'), (AppConfig.pendingIdentity or {}).identity_type)
       $scope.pendingProviderIdentity = AppConfig.pendingIdentity
 
-    $scope.$on 'processing',     -> $scope.isDisabled = true
-    $scope.$on 'doneProcessing', -> $scope.isDisabled = false
+    LoadService.listenForLoading $scope
