@@ -68,8 +68,12 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_#{pollType}_vote_form.stance_#{actionName}"
         drafts: true
+        prepareFn: ->
+          scope.$emit 'processing'
         successCallback: (data) ->
           model.poll().clearStaleStances()
           AppConfig.currentVisitorId = data.stances[0].visitor_id
           scope.$emit 'stanceSaved', data.stances[0].key
+        cleanupFn: ->
+          scope.$emit 'doneProcessing'
       , options))

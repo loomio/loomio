@@ -27,6 +27,7 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
 
     $scope.submit = PollService.submitStance $scope, $scope.stance,
       prepareFn: ->
+        $scope.$emit 'processing'
         return unless _.sum(_.pluck($scope.stanceChoices, 'score')) > 0
         $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
 

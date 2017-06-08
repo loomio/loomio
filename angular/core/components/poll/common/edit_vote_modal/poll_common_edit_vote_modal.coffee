@@ -8,5 +8,8 @@ angular.module('loomioApp').factory 'PollCommonEditVoteModal', ($rootScope, Poll
       $scope.$close()
       $rootScope.$broadcast 'refreshStance'
 
+    $scope.$on 'processing',     -> $scope.isDisabled = true
+    $scope.$on 'doneProcessing', -> $scope.isDisabled = false
+
     $scope.icon = ->
       PollService.iconFor($scope.stance.poll())

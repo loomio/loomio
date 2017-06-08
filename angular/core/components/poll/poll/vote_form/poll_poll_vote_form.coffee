@@ -15,6 +15,7 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
 
     $scope.submit = PollService.submitStance $scope, $scope.stance,
       prepareFn: ->
+        $scope.$emit 'processing'
         selectedOptionIds = if multipleChoice
           _.compact(_.map($scope.pollOptionIdsChecked, (v,k) -> parseInt(k) if v))
         else
