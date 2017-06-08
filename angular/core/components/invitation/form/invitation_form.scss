@@ -1,0 +1,4 @@
+.invitation-form__shareable-link {
+  order: 0 !important;
+  @include truncateText;
+}

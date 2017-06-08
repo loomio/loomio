@@ -5,10 +5,11 @@ angular.module('loomioApp').directive 'pollCommonToolTip', (Session) ->
     experienceKey = $scope.poll.pollType+"_tool_tip"
     $scope.collapsed = Session.user().hasExperienced(experienceKey)
 
+    if !Session.user().hasExperienced(experienceKey)
+      Records.users.saveExperience(experienceKey)
+
     $scope.hide = ->
       $scope.collapsed = true
-      if !Session.user().hasExperienced(experienceKey)
-        Records.users.saveExperience(experienceKey)
 
     $scope.show = ->
       $scope.collapsed = false

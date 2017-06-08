@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonDidNotVotesPanel', (Records, RecordLoader, PollService) ->
+angular.module('loomioApp').directive 'pollCommonDidNotVotesPanel', ($location, Records, RecordLoader, PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/did_not_votes_panel/poll_common_did_not_votes_panel.html'
   controller: ($scope) ->
@@ -8,21 +8,31 @@ angular.module('loomioApp').directive 'pollCommonDidNotVotesPanel', (Records, Re
 
     collection = $scope.poll.isActive() ? 'memberships' : 'poll_did_not_votes'
 
+    params =
+      poll_id: $scope.poll.key
+      participation_token: $location.search().participation_token
+
     didNotVotesLoader = new RecordLoader
       collection: 'poll_did_not_votes'
-      params:
-        poll_id: $scope.poll.key
+      params:     params
 
     membershipsLoader = new RecordLoader
       collection: 'memberships'
-      path: 'undecided'
-      params:
-        poll_id: $scope.poll.key
+      path:       'undecided'
+      params:     params
+
+    # todo: must count this properly
+    visitorsLoader = new RecordLoader
+      collection: 'visitors'
+      params:     params
+      numLoaded:  1 # <- (the author)
 
     $scope.loader = if $scope.poll.group() and $scope.poll.isActive()
       membershipsLoader
-    else
+    else if $scope.poll.group()
       didNotVotesLoader
+    else
+      visitorsLoader
 
     $scope.moreToLoad = ->
       $scope.loader.numLoaded < $scope.poll.undecidedCount()

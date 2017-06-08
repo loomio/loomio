@@ -107,7 +107,6 @@ tr:
     heading: Geçmiş öneriler
   previous_polls_page:
     heading: '{{name}} içindeki etkinlikler'
-    search_activities: Aktiviteleri ara
   proposal_collapsed:
     expand: Genişlet
     outcome: 'Sonuç: {{outcome}}'
@@ -133,8 +132,6 @@ tr:
     latest: 'En yeniler'
     unread: 'Okunmamış'
     closing_in: 'Kapanış'
-  sign_in_form:
-    email_label: 'E-posta:'
   sign_up_form:
     email_label: 'E-posta:'
   signed_out_modal:
@@ -534,7 +531,6 @@ tr:
       password_changed: 'Şifre güncellendi'
       deactivated: 'Hesap devre dışı bırakıldı'
     change_picture_link: 'Resmi değiştir'
-    change_password_link: 'Şifreyi değiştir'
     deactivate_user_link: 'Hesabınızı devre dışı bırakın'
     profile: 'Profil'
     edit_profile: 'Profili düzenle'

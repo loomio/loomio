@@ -52,12 +52,13 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_did_not_votes, dependent: :destroy
 
-  has_paper_trail only: [:title, :details, :closing_at]
+  has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
   define_counter_cache(:stances_count)       { |poll| poll.stances.latest.count }
+  define_counter_cache(:visitors_count)      { |poll| poll.visitors.count }
   define_counter_cache(:did_not_votes_count) { |poll| poll.poll_did_not_votes.count }
 
-  has_many :poll_communities, dependent: :destroy
+  has_many :poll_communities, dependent: :destroy, autosave: true
   has_many :communities, through: :poll_communities
 
   delegate :locale, to: :author
@@ -181,28 +182,19 @@ class Poll < ActiveRecord::Base
     super.tap { self.group_id = self.discussion&.group_id }
   end
 
-  def group_id=(group_id)
-    self.group = Group.find_by(id: group_id)
+  def build_loomio_group_community
+    poll_communities.find_by(community: community_of_type(:loomio_group))&.destroy
+    poll_communities.build(community: self.group.community) if self.group
   end
 
-  def group=(group)
-    sync_poll_communities(group) if self[:group_id] != group&.id
-    super
-  end
-
-  def community_of_type(community_type, build: false)
-    communities.find_by(community_type: community_type) || (build && build_community(community_type)).presence
+  def community_of_type(community_type, build: false, params: {})
+    communities.find_by(community_type: community_type) || (build && build_community(community_type, params)).presence
   end
 
   private
 
-  def sync_poll_communities(group)
-    poll_communities.where(community: community_of_type(:loomio_group)).destroy_all
-    poll_communities.build(community: group.community) if group
-  end
-
-  def build_community(community_type)
-    poll_communities.build(community: "Communities::#{community_type.to_s.camelize}".constantize.new).community
+  def build_community(community_type, params = {})
+    poll_communities.build(community: "Communities::#{community_type.to_s.camelize}".constantize.new(params)).community
   end
 
   # provides a base hash of 0's to merge with stance data

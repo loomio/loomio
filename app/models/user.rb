@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
   attr_accessor :recaptcha
   attr_accessor :restricted
+  attr_accessor :participation_token
 
   validates :email, presence: true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, in: [true,false]
@@ -97,6 +98,7 @@ class User < ActiveRecord::Base
   has_many :comment_votes, dependent: :destroy
   has_many :stances, as: :participant, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll
+  has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
 
@@ -145,10 +147,6 @@ class User < ActiveRecord::Base
 
   def remember_me
     true
-  end
-
-  def participation_token
-    nil
   end
 
   def is_logged_in?
@@ -201,6 +199,15 @@ class User < ActiveRecord::Base
 
   def self.helper_bot_email
     ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
+  end
+
+  def self.demo_bot
+    find_by(email: demo_bot_email) ||
+    create!(email: demo_bot_email, name: 'Loomio Demo bot', avatar_kind: :gravatar)
+  end
+
+  def self.demo_bot_email
+    ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
   end
 
   def name

@@ -75,6 +75,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
 
     canManageGroupSubscription: (group) ->
       @canAdministerGroup(group) and
+      group.subscriptionKind? and
       group.subscriptionKind != 'trial' and
       group.subscriptionPaymentMethod != 'manual'
 
@@ -196,5 +197,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
              'registeredAppsPage', \
              'registeredAppPage',  \
              'pollsPage',          \
-             'startPollPage' then true
+             'startPollPage',      \
+             'startGroupPage' then true
         else false

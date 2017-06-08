@@ -64,16 +64,19 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       _.some @attachments()
 
     communitySize: ->
+      @membersCount() + (@visitorsCount || 0)
+
+    membersCount: ->
       if @group()
         @group().membershipsCount
       else
-        0
+        1 # <-- this is the author
 
-    announcementSize: ->
-      if @isNew()
-        @communitySize()
-      else
-        @stancesCount
+    announcementSize: (action) ->
+      switch action or @notifyAction()
+        when 'publish' then @communitySize()
+        when 'edit'    then @stancesCount
+        else                0
 
     percentVoted: ->
       (100 * @stancesCount / @communitySize()).toFixed(0) if @communitySize() > 0
@@ -86,7 +89,10 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     undecidedMembers: ->
       if @isActive()
-        _.difference(@group().members(), @voters())
+        if @group()
+          _.difference(@group().members(), @voters())
+        else
+          _.difference([@author()], @voters())
       else
         @recordStore.users.find(_.pluck(@pollDidNotVotes(), 'userId'))
 
@@ -137,3 +143,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     enableCommunities: ->
       (@group() and @group().features.enable_communities) or
       (@author() and @author().experiences.enable_communities)
+
+    notifyAction: ->
+      if @isNew()
+        'publish'
+      else
+        'edit'

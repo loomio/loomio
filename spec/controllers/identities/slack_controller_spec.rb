@@ -39,12 +39,14 @@ describe Identities::SlackController do
     let(:payload) { {
       user: { id: identity.uid },
       callback_id: poll.id,
-      actions: [{ name: poll.poll_options.first.name }]
+      actions: [{ name: poll.poll_options.first.name }],
+      team: { id: 'T123', name: 'billsbarbies' }
     }.to_json }
     let(:bad_payload) { {
       user: { id: identity.uid },
       callback_id: poll.id,
-      actions: []
+      actions: [],
+      team: {}
     }.to_json }
     let(:user) { create :user }
     let(:another_user) { create :user }
@@ -66,15 +68,11 @@ describe Identities::SlackController do
       expect(response.status).to eq 200 # we still render out a message to slack, so this response must be 'OK'
     end
 
-    it 'responds with an invitation if poll is part of a group' do
+    it 'responds with a stance if poll is part of a group' do
       sign_in user
-      expect { post :participate, payload: payload }.to_not change { poll.stances.count }
+      expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
+      expect(user.reload.groups).to include poll.group
       expect(response.status).to eq 200
-    end
-
-    it 'responds with an auth link if incorrect invitation_token is given' do
-      sign_in user
-
     end
 
     it 'responds with an auth link if poll is not part of a group' do

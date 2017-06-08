@@ -134,7 +134,7 @@ module Dev::PollsScenarioHelper
     poll.update_attribute(:closing_at, 1.day.ago)
     poll.make_announcement = true
     poll.discussion.group.add_member! poll.author
-    Events::PollCreated.publish!(poll)
+    Events::PollCreated.publish!(poll, poll.author)
     PollService.expire_lapsed_polls
     { discussion: discussion,
       actor: actor,

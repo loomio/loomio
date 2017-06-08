@@ -7,7 +7,8 @@ angular.module('loomioApp').directive 'timeZoneSelect', ($translate, AppConfig, 
     $scope.q = ""
     $scope.isOpen = false
     $scope.zone = $scope.zone || AppConfig.timeZone
-    $scope.name = TimeService.nameForZone($scope.zone)
+    $scope.currentZone = ->
+      TimeService.nameForZone($scope.zone)
 
     $scope.zoneFromName = (name) ->
       AppConfig.timeZones[name]

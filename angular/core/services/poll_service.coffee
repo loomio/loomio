@@ -24,8 +24,10 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       criteria =
         latest:    true
         pollId:    poll.id
-        visitorId: AppConfig.currentVisitorId or null
-        userId:    AppConfig.currentUserId or null
+      if AppConfig.currentUserId
+        criteria.userId = AppConfig.currentUserId
+      else if AppConfig.currentVisitorId
+        criteria.visitorId = AppConfig.currentVisitorId
       _.first _.sortBy(Records.stances.find(criteria), 'createdAt')
 
     hasVoted: (participant, poll) ->
@@ -75,8 +77,12 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_#{pollType}_vote_form.stance_#{actionName}"
         drafts: true
+        prepareFn: ->
+          scope.$emit 'processing'
         successCallback: (data) ->
           model.poll().clearStaleStances()
           AppConfig.currentVisitorId = data.stances[0].visitor_id
           scope.$emit 'stanceSaved', data.stances[0].key
+        cleanupFn: ->
+          scope.$emit 'doneProcessing'
       , options))

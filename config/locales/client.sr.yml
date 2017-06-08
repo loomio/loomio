@@ -126,20 +126,6 @@ sr:
     latest: 'Poslednje'
     unread: 'Nepročitano'
     closing_in: 'Zatvaranje'
-  sign_in_form:
-    title: 'Prijavite se na Lumio'
-    email_label: 'ePoruka:'
-    email_placeholder: 'tvojeime@primer.com'
-    password_label: 'Lozinka:'
-    remember_me: 'Zapamti me'
-    forgot_password: 'Zaboravljena lozinka?'
-    sign_in: 'Prijava'
-    signed_in: 'Uspešno ste se prijavili'
-    oauth:
-      facebook: 'Upotrebi Facebook'
-      twitter: 'Upotrebi Twitter'
-      google: 'Upotrebi Google'
-      github: 'Upotrebi Github'
   sign_up_form:
     title: "Dobrodošli na Lumio! Hajde da Vas pripremimo"
     name_label: 'Tvoje ime:'
@@ -524,7 +510,6 @@ sr:
       password_changed: 'Lozinka izmenjena'
       deactivated: 'Nalog deaktiviran'
     change_picture_link: 'Promeni sliku'
-    change_password_link: 'Promeni lozinku'
     deactivate_user_link: 'Deaktiviranje naloga...'
     profile: 'Profil'
     edit_profile: 'Izmena Profila'

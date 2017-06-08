@@ -349,18 +349,14 @@ nl_NL:
     proposal:
       subject:
         poll_created: '%{actor} startte een voorstel: %{title}'
-        poll_updated: '%{actor} paste het voorstel aan: %{title} '
         poll_closing_soon: 'Voorstel sluit over 24 uur: %{title}'
         poll_closing_soon_author: 'Je voorstel sluit over 24 uur: %{title}'
-        poll_expired: 'Je voorstel is gesloten. Deel een uitkomst voor: %{title}'
         outcome_created: '%{actor} deelde de uitkomst van een voorstel: %{title}'
         visitor_reminded: '%{actor} wacht op je stemming voor: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> heeft een voorstel gestart'
-        poll_updated: '<strong>%{actor}</strong> heeft het voorstel aangepast'
         poll_closing_soon: '<strong>%{actor}</strong>''s voorstel sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen.'
         poll_closing_soon_author: 'Je voorstel sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.'
-        poll_expired: 'Je voorstel is <strong>gesloten</strong>. Neem alstublieft de tijd om na te gaan wat er gezegd is en <strong>deel een uitkomst</strong> met de groep, zodat mensen weten wat er hierna gebeurt.'
         outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een voorstel gedeeld.'
         visitor_reminded: '<strong>%{actor}</strong> wacht op je stem op: %{title}'
       body:
@@ -368,18 +364,14 @@ nl_NL:
     poll:
       subject:
         poll_created: ' %{actor} heeft een peiling gestart: %{title}'
-        poll_updated: '%{actor} heeft de peiling aangepast: %{title}'
         poll_closing_soon: 'Peiling sluit over 24 uur: %{title}'
         poll_closing_soon_author: 'Je peiling sluit over 24 uur: %{title}'
-        poll_expired: 'Je peiling is gesloten. Deel een uitkomst voor: %{title}'
         outcome_created: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
         visitor_reminded: '%{actor} wacht op je stemming voor: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> heeft een peiling gestart'
-        poll_updated: '<strong>%{actor}</strong> heeft een peiling aangepast'
         poll_closing_soon: '<strong>%{actor}</strong> ''s peiling sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen.'
         poll_closing_soon_author: 'Je peiling sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.'
-        poll_expired: 'Je peiling is <strong>gesloten</strong>. Neem alstublieft de tijd om na te gaan wat er gezegd is en <strong>deel een uitkomst</strong> met de groep, zodat mensen weten wat er hierna gebeurt.'
         outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
         visitor_reminded: '<strong>%{actor}</strong> wacht op je stem op: %{title}'
       body:
@@ -396,18 +388,14 @@ nl_NL:
     dot_vote:
       subject:
         poll_created: '%{actor} heeft een stippen stemming gestart: %{title}'
-        poll_updated: '%{actor} heeft de stippen stemming aangepast: %{title}'
         poll_closing_soon: 'Stippen stemming sluit over 24 uur: %{title}'
         poll_closing_soon_author: 'Je stippen stemming sluit over 24 uur: %{title}'
-        poll_expired: 'Je stippen stemming is gesloten. Deel een uitkomst voor: %{title}'
         outcome_created: '%{actor} deelde een uitkomst: %{title}'
         visitor_reminded: '%{actor} wacht op je stem op: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> startte een stippen stemming'
-        poll_updated: '<strong>%{actor}</strong> heeft de stippen stemming aangepast'
         poll_closing_soon: '<strong>%{actor}</strong>''s stippen stemming sluit over 24 uur. Dit is een goed moment om te stemmen, van gedachten te veranderen, of anderen aan te moedigen om mee te doen.'
         poll_closing_soon_author: 'Je stippen stemming sluit over 24 uur - misschien wil je mensen er aan herinneren of de deadline opschuiven indien nodig.'
-        poll_expired: 'Je stippen stemming is <strong>gesloten</strong>. Kijk naar wat er gezegd is en <strong>deel een uitkomst</strong> met de groep, zodat mensen weten wat er hierna gebeurt.'
         outcome_created: '<strong>%{actor}</strong> deelde de uitkomst van een stippen stemming.'
         visitor_reminded: '<strong>%{actor}</strong> wacht op je stem op: %{title}'
       body:

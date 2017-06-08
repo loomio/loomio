@@ -136,21 +136,6 @@ ko:
     latest: '최신'
     unread: '읽지않음'
     closing_in: '닫는중'
-  sign_in_form:
-    aria_label: '서명양식'
-    title: '루미오에 가입합니다.'
-    email_label: '이메일:'
-    email_placeholder: 'you@example.com '
-    password_label: '비밀번호'
-    remember_me: '기억하기'
-    forgot_password: '비밀번호가 생각나지 않으세요?'
-    sign_in: '로그인'
-    signed_in: '성공적으로 가입됐습니다.'
-    oauth:
-      facebook: '페이스북으로 로그인'
-      twitter: '트위터로 로그인'
-      google: '구글로 로그인'
-      github: '지트허브로 로그인'
   sign_up_form:
     aria_label: '가입양식'
     title: "로미오에 오신 것을 환영합니다.  환경설정을 하세요."
@@ -589,7 +574,6 @@ ko:
       password_changed: '비밀번호를 변경했습니다.'
       deactivated: '계정을 비활성화했습니다.'
     change_picture_link: '사진 교체'
-    change_password_link: '비밀번호 변경'
     deactivate_user_link: '계정을 비활성화합니다...'
     profile: '프로필'
     edit_profile: '프로필 수정'
@@ -606,14 +590,6 @@ ko:
     use_initials: '이니셜 사용'
     use_gravatar: '그라바타 사용'
     use_uploaded: '새 사진 올리기'
-  change_password_form:
-    aria_label: '비밀번호 폼 변경'
-    title: '비밀번호 변경'
-    helptext: '비밀번호는 8글자가 되어야 합니다. 계정 보호를 위해 "password"와 같이 흔한 비밀번호는 사용이 금지되어 있습니다.'
-    current_password_label: '현재 비밀번호'
-    new_password_label: '새로운 비밀번호'
-    password_confirmation_label: '새로운 비밀번호 확인'
-    submit: '비밀번호 수정'
   deactivation_modal:
     aria_label: '계정 비활성화'
     introduction: '계정 비활성화된 때 '

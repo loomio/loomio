@@ -1326,6 +1326,7 @@ en:
     your_response: Your response
     change_your_response: Change your response
     reason: Reason
+    reason_placeholder: Any additional comments?
     message: Message
     results: Results
     vote: Vote
@@ -1473,7 +1474,7 @@ en:
       <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
       <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
       <p>With good participation a proposal is a powerful mandate to take action.</p>
-      <p>Find out more in <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Loomio School</a>.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Seek collective agreement
     start_header: Start proposal
     edit_header: Edit proposal
@@ -1488,6 +1489,7 @@ en:
       <p>Use a poll to measure popularity or offer a choice.</p>
       <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
       <p>Everyone votes, and can enter a statement too if they like. Results are represented in a bar graph.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Measure popularity or offer a choice
     start_header: Start poll
     edit_header: Edit poll
@@ -1508,6 +1510,7 @@ en:
       <p>Or use it to track completion of a task: "I've checked my contact details are correct", or "I've read the document and left my feedback".</p>
       <p>A check has a <em>goal</em>, which is the number of participants you'd like. The goal indicates to the group if something needs more attention or is well subscribed.</p>
       <p>A day before the check closes, it will remind those who have not participated to do so - like a digital cat herder.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Track participation and find volunteers
     start_header: Start check
     edit_header: Edit check
@@ -1521,7 +1524,8 @@ en:
     tool_tip_expanded: |
       <p>Dot voting is a way to prioritise a list of options.</p>
       <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
-      <p>The process results in a cumulative bar chart as well as and the individual allocations so you can consider various points of view.</p>
+      <p>The totals of the results are shown, as well as and the individual votes, so you can consider various points of view.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Prioritise options
     start_header: Start dot vote
     edit_header: Edit dot vote
@@ -1540,7 +1544,8 @@ en:
       <p>Participants tick those which they’re able to attend, or they can use the statement field to explain their circumstances, so you can update the options if necessary.</p>
       <p>If you add new times during a time poll, people who have already voted are prompted to update their response.</p>
       <p>You can then see who’s available when, and decide when to meet.</p>
-      <p>Times are automatically converted to the participant's time zone.</p>
+      <p>Times are automatically converted to the participant's local time zone.</p>
+      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Find a time to meet
     start_header: Start time poll
     edit_header: Edit time poll
@@ -1598,6 +1603,7 @@ en:
     your_response: When can you attend?
     stance_created: Availability saved
     stance_updated: Availability updated
+    reason_placeholder: Explain when you're busy or free, incase the author needs to add new options
 
   poll_dot_vote_vote_form:
     dots_remaining: You have {{count}} dots remaining.
@@ -1657,10 +1663,10 @@ en:
     anyone_can_participate_false: Shareable link revoked
     get_link: Copy link
     invite_visitor: Email guests
-    invite_visitor_helptext: Invite individuals to this poll by email address. Guests will be able to participate in this poll only.
+    invite_visitor_helptext: Invite individuals to this decision by email address. Guests will be able to participate in this decision only.
     send_email: Send email
-    shareable_link_created: Anyone can now participate in this poll
-    shareable_link_revoked: This poll is now invite-only
+    shareable_link_created: Anyone can now participate in this decision
+    shareable_link_revoked: This decision is now invite-only
     shareable_link: Shareable link
     guests_invited: Sent to {{count}} people
     guest_revoked: Revoked access for {{email}}
@@ -1669,11 +1675,12 @@ en:
     enter_email: "E.g. guest@example.com"
     reminded: Reminder sent!
     send_emails: Send invitations ({{count}})
-    no_loomio_group: This poll is not currently associated with any Loomio group
-    has_loomio_group: Members of this group will be able to view and participate in this poll.
-    poll_is_shareable: Copy the link above and share it. Anyone with the link can pariticpate.
-    poll_is_private: Only members of the group or people you've invited will be able to participate.
-    enter_emails: Enter an email address to send a single use participation link.
+    share_group: Loomio group
+    share_group_helptext: Select a Loomio group to share this decision with. Members of the group will be able to participate.
+    cannot_move_poll_helptext: This poll is part of the discussion <strong>{{discussion}}</strong> in <strong>{{group}}</strong>, and so cannot be moved.
+    move_group_helptext: Be careful! Moving a decision out of a group may cause some people to lose access to it. Existing votes will still be recorded.
+    set_group: Set group
+    group_set: Group updated
     view_poll: View poll
     email_invited: 'Invitation email sent to {{email}}'
     email_exists: '{{email}} has already been invited'
@@ -1732,6 +1739,12 @@ en:
     subscribe: Subscribe
     no_thanks: No thanks
 
+  poll_common_example_card:
+    what_is_this: "This is a live example of a {{type}}. You're a participant - give it a try!"
+    helptext_before: "When you're ready,"
+    helptext_link: "start a {{type}}"
+    helptext_after: "of your own, and invite some people to try it."
+
   share_poll_page:
     title: Share poll - {{title}}
 
@@ -1760,6 +1773,7 @@ en:
     login_link_helptext_with_password: "Enter your password, or sign in via email."
     sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
     oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
+    name_required: Please enter a name
 
     welcome: Nice to meet you, {{email}}!
     welcome_back: Welcome back, {{name}}!

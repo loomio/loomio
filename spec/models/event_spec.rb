@@ -63,6 +63,9 @@ describe Event do
     # set email motion closing soon
     discussion.group.add_member!(user_motion_closing_soon).set_volume! :mute
 
+    # add the loomio group community to poll
+    poll.build_loomio_group_community; poll.save
+
     # create an unsubscription for a poll user
     poll.poll_unsubscriptions.create(user: user_unsubscribed)
   end
@@ -261,7 +264,7 @@ describe Event do
   describe 'poll_created' do
     it 'makes an announcement' do
       poll.make_announcement = true
-      expect { Events::PollCreated.publish!(poll) }.to change { emails_sent }
+      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }
       email_users = Events::PollCreated.last.send(:email_recipients)
       email_users.should     include user_thread_loud
       email_users.should     include user_membership_loud
@@ -293,7 +296,7 @@ describe Event do
     end
 
     it 'notifies mentioned users' do
-      expect { Events::PollCreated.publish!(poll) }.to change { emails_sent }
+      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }
       email_users = Events::PollCreated.last.send(:email_recipients)
       expect(email_users.length).to eq 1
       expect(email_users).to include user_mentioned
@@ -354,8 +357,8 @@ describe Event do
     let(:visitor) { poll.community_of_type(:email, build: true).tap(&:save!).visitors.create(name: 'jimbo', email: 'helllloo@example.com')}
     describe 'voters_review_responses', focus: true do
       it 'true' do
-        poll = FactoryGirl.create(:poll_proposal, discussion: discussion)
-        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
+        poll = FactoryGirl.build(:poll_proposal, discussion: discussion, make_announcement: true)
+        PollService.create(poll: poll, actor: discussion.group.admins.first)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -464,7 +467,7 @@ describe Event do
 
     it 'notifies everyone if announcement' do
       poll.make_announcement = true
-      Events::PollCreated.publish!(poll)
+      Events::PollCreated.publish!(poll, poll.author)
       Events::PollExpired.publish!(poll)
       event = Events::PollExpired.last
 

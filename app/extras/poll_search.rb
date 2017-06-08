@@ -16,13 +16,14 @@ PollSearch = Struct.new(:user) do
   private
 
   def searchable_records
+    return Poll.none unless searchable_records_sql.present?
     @searchable_records ||= Poll.from("(#{searchable_records_sql}) as polls")
   end
 
   def searchable_records_sql
-    [
-      Queries::VisiblePolls.new(user: user, group_ids: user.group_ids),
+    @searchable_records_sql ||= [
       user.participated_polls,
+      user.group_polls,
       user.polls
     ].map(&:to_sql).map(&:presence).compact.join(" UNION ")
   end

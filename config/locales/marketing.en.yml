@@ -23,7 +23,10 @@ en:
     newsletter: Newsletter
     twitter: Twitter
     facebook: Facebook
-    trademark_statement: © 2016 Loomio Cooperative Limited. All rights reserved. “Loomio” is a registered trademark of Loomio Cooperative Limited.
+    trademark_statement: © 2017 Loomio Cooperative Limited. All rights reserved. “Loomio” is a registered trademark of Loomio Cooperative Limited.
+    not_slack: Loomio is not created by, affiliated with, or supported by Slack Technologies, Inc.
+    loomio_school: Loomio school
+    company_handbook: Company handbook
 
   marketing:
     hero:
