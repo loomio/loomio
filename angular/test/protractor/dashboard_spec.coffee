@@ -51,12 +51,3 @@ describe 'muted threads', ->
     browser.actions().mouseMove(threadPreview).perform()
     page.clickFirst '.thread-preview__mute'
     page.expectFlash 'Thread muted.'
-
-describe 'Logged out', ->
-  it 'forces visitors to log in', ->
-    page.loadPath 'setup_dashboard_as_visitor'
-    page.fillIn '#user-email', 'patrick_swayze@example.com'
-    page.fillIn '#user-password', 'gh0stmovie'
-    page.click '.sign-in-form__submit-button'
-    page.waitForReload()
-    page.expectText '.thread-previews-container', 'Recent discussion'

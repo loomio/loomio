@@ -73,26 +73,6 @@ describe 'Group Page', ->
         page.click '.membership-request-form__submit-btn'
         page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
 
-      it 'should reload a closed group after logging in', ->
-        page.loadPath 'view_closed_group_as_visitor'
-        page.click '.navbar__sign-in'
-        page.fillIn '#user-email', 'jennifer_grey@example.com'
-        page.fillIn '#user-password', 'gh0stmovie'
-        page.click '.sign-in-form__submit-button'
-        page.waitForReload()
-        page.expectText '.group-theme__name', 'Closed Dirty Dancing Shoes'
-        page.expectText '.thread-previews-container', 'This thread is private'
-        page.expectElement '.sidebar__content'
-
-      it 'should prompt for login for secret group', ->
-        page.loadPath 'view_secret_group_as_visitor'
-        page.fillIn '#user-email', 'patrick_swayze@example.com'
-        page.fillIn '#user-password', 'gh0stmovie'
-        page.click '.sign-in-form__submit-button'
-        page.waitForReload()
-        page.expectText '.group-theme__name', 'Secret Dirty Dancing Shoes'
-        page.expectElement '.sidebar__content'
-
       it 'does not allow mark as read or mute', ->
         page.loadPath('view_open_group_as_visitor')
         page.expectNoElement('.thread-preview__dismiss')
@@ -100,7 +80,7 @@ describe 'Group Page', ->
 
       xit 'open group displays previous proposals', ->
         page.loadPath('view_open_group_as_visitor')
-        page.expectText('.group-previous-polls-card', 'Let\'s go to the moon!')
+        page.expectText('.group-decisions-card', 'Let\'s go to the moon!')
 
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->
@@ -139,7 +119,7 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Open please'
       page.click '.group-form__submit-button'
-      page.expectText '.group-privacy-button', 'Open'
+      page.expectText '.group-privacy-button', 'OPEN'
 
     it 'starts a closed group', ->
       page.loadPath('setup_new_group')
@@ -152,7 +132,7 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Closed please'
       page.click '.group-form__submit-button'
-      page.expectText '.group-privacy-button', 'Closed'
+      page.expectText '.group-privacy-button', 'CLOSED'
 
     it 'starts a secret group', ->
       page.loadPath('setup_new_group')
@@ -165,7 +145,7 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Secret please'
       page.click '.group-form__submit-button'
-      page.expectText '.group-privacy-button', 'Secret'
+      page.expectText '.group-privacy-button', 'SECRET'
 
   describe 'starting a subgroup', ->
     describe 'with a public parent', ->

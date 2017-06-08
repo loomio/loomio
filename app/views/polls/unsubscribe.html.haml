@@ -1,0 +1,14 @@
+.container
+  %section
+    .wrapper-large
+      .inner-container
+        .row
+          .subhead
+            %h2= t(:"poll_unsubscribe.title", title: @poll.title)
+
+        .row
+          %p= t(:"poll_unsubscribe.helptext")
+
+          %p
+            = link_to t(:"poll_unsubscribe.visit_poll"), @poll
+            = link_to t(:"poll_unsubscribe.go_to_dashboard"), dashboard_url

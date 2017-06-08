@@ -7,6 +7,7 @@ class Full::UserSerializer < UserSerializer
   has_many :unread_threads, serializer: DiscussionSerializer, root: :discussions
   has_many :notifications,  serializer: NotificationSerializer, root: :notifications
   has_many :visitors,       serializer: VisitorSerializer, root: :visitors
+  has_many :identities,     serializer: IdentitySerializer, root: :identities
 
   def memberships
     from_scope :memberships
@@ -24,8 +25,12 @@ class Full::UserSerializer < UserSerializer
     from_scope :visitors
   end
 
+  def identities
+    from_scope :identities
+  end
+
   def is_coordinator
-    object.is_group_admin?
+    object.adminable_group_ids.any?
   end
 
   def include_gravatar_md5?

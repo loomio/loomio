@@ -7,7 +7,7 @@ class Dev::PollsController < Dev::BaseController
     group = create_group_with_members
     discussion = saved fake_discussion(group: group)
     sign_in group.admins.first
-    redirect_to discussion_url(discussion)
+    redirect_to discussion_path(discussion)
   end
 
   def test_poll_in_discussion
@@ -21,6 +21,13 @@ class Dev::PollsController < Dev::BaseController
   def start_poll
     sign_in saved fake_user
     redirect_to new_poll_url
+  end
+
+  def start_poll_with_received_email
+    sign_in saved fake_user
+    email = saved(fake_received_email(sender_email: fake_user.user))
+    UserMailer.start_decision(received_email: email).deliver_now
+    last_email
   end
 
   def test_activity_items
@@ -55,8 +62,10 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_closing_soon_with_vote, email: true
   observe_scenario :poll_closing_soon_author,    email: true
   observe_scenario :poll_expired,                email: true
+  observe_scenario :poll_expired_author,         email: true
   observe_scenario :poll_outcome_created,        email: true
   observe_scenario :poll_missed_yesterday,       email: true
+  observe_scenario :poll_stance_created,         email: true
   observe_scenario :poll_notifications
   observe_scenario :poll_created_as_visitor
   observe_scenario :poll_created_as_logged_out

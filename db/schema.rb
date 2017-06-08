@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314040259) do
+ActiveRecord::Schema.define(version: 20170606001932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,8 @@ ActiveRecord::Schema.define(version: 20170314040259) do
     t.jsonb    "custom_fields",  default: {}, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "identity_id"
+    t.string   "identifier"
   end
 
   create_table "contact_messages", force: :cascade do |t|
@@ -175,6 +177,15 @@ ActiveRecord::Schema.define(version: 20170314040259) do
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "decision_emails", force: :cascade do |t|
+    t.string   "subject",    null: false
+    t.string   "body"
+    t.string   "to",         null: false
+    t.string   "cc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"
@@ -422,6 +433,7 @@ ActiveRecord::Schema.define(version: 20170314040259) do
     t.integer  "community_id"
     t.integer  "closed_polls_count",                 default: 0,     null: false
     t.integer  "announcement_recipients_count",      default: 0,     null: false
+    t.integer  "polls_count",                        default: 0,     null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -459,6 +471,17 @@ ActiveRecord::Schema.define(version: 20170314040259) do
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
   add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
+
+  create_table "login_tokens", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.boolean  "used",          default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "redirect_id"
+    t.string   "redirect_type"
+    t.string   "redirect"
+  end
 
   create_table "membership_requests", force: :cascade do |t|
     t.string   "name"
@@ -598,6 +621,7 @@ ActiveRecord::Schema.define(version: 20170314040259) do
     t.jsonb    "translation_values", default: {},    null: false
     t.string   "url"
     t.integer  "actor_id"
+    t.string   "actor_type"
   end
 
   add_index "notifications", ["actor_id"], name: "index_notifications_on_actor_id", using: :btree
@@ -658,13 +682,17 @@ ActiveRecord::Schema.define(version: 20170314040259) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
+    t.string   "identity_type"
     t.string   "uid"
     t.string   "name"
+    t.string   "access_token",  default: ""
+    t.jsonb    "custom_fields", default: {}, null: false
+    t.string   "logo"
+    t.string   "scope",         default: "", null: false
   end
 
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree
-  add_index "omniauth_identities", ["provider", "uid"], name: "index_omniauth_identities_on_provider_and_uid", using: :btree
+  add_index "omniauth_identities", ["identity_type", "uid"], name: "index_omniauth_identities_on_identity_type_and_uid", using: :btree
   add_index "omniauth_identities", ["user_id"], name: "index_omniauth_identities_on_user_id", using: :btree
 
   create_table "organisation_visits", force: :cascade do |t|
@@ -683,17 +711,22 @@ ActiveRecord::Schema.define(version: 20170314040259) do
 
   create_table "outcomes", force: :cascade do |t|
     t.integer  "poll_id"
-    t.text     "statement",                 null: false
-    t.integer  "author_id",                 null: false
+    t.text     "statement",                     null: false
+    t.integer  "author_id",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "latest",     default: true, null: false
+    t.boolean  "latest",         default: true, null: false
+    t.integer  "poll_option_id"
+    t.jsonb    "custom_fields",  default: {},   null: false
   end
 
   create_table "poll_communities", force: :cascade do |t|
     t.integer "poll_id",      null: false
     t.integer "community_id", null: false
   end
+
+  add_index "poll_communities", ["community_id"], name: "index_poll_communities_on_community_id", using: :btree
+  add_index "poll_communities", ["poll_id"], name: "index_poll_communities_on_poll_id", using: :btree
 
   create_table "poll_did_not_votes", force: :cascade do |t|
     t.integer "poll_id"
@@ -714,27 +747,43 @@ ActiveRecord::Schema.define(version: 20170314040259) do
     t.integer "poll_id",        null: false
   end
 
+  create_table "poll_unsubscriptions", force: :cascade do |t|
+    t.integer  "poll_id",    null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "poll_unsubscriptions", ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true, using: :btree
+
   create_table "polls", force: :cascade do |t|
-    t.integer  "author_id",                           null: false
-    t.string   "title",                               null: false
+    t.integer  "author_id",                             null: false
+    t.string   "title",                                 null: false
     t.text     "details"
     t.datetime "closing_at"
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.string   "key",                                 null: false
-    t.string   "poll_type",                           null: false
+    t.string   "key",                                   null: false
+    t.string   "poll_type",                             null: false
     t.integer  "motion_id"
-    t.jsonb    "stance_data",         default: {}
-    t.integer  "stances_count",       default: 0,     null: false
-    t.boolean  "multiple_choice",     default: false, null: false
-    t.jsonb    "custom_fields",       default: {},    null: false
-    t.jsonb    "stance_counts",       default: [],    null: false
-    t.integer  "did_not_votes_count", default: 0,     null: false
+    t.jsonb    "stance_data",           default: {}
+    t.integer  "stances_count",         default: 0,     null: false
+    t.boolean  "multiple_choice",       default: false, null: false
+    t.jsonb    "custom_fields",         default: {},    null: false
+    t.jsonb    "stance_counts",         default: [],    null: false
+    t.integer  "did_not_votes_count",   default: 0,     null: false
     t.integer  "group_id"
-    t.jsonb    "matrix_counts",       default: [],    null: false
+    t.jsonb    "matrix_counts",         default: [],    null: false
+    t.boolean  "notify_on_participate", default: false, null: false
+    t.integer  "visitors_count",        default: 0,     null: false
+    t.boolean  "example",               default: false, null: false
   end
+
+  add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
+  add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
+  add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
 
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"
@@ -756,6 +805,9 @@ ActiveRecord::Schema.define(version: 20170314040259) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "stances", ["participant_id", "participant_type"], name: "index_stances_on_participant_id_and_participant_type", using: :btree
+  add_index "stances", ["poll_id"], name: "index_stances_on_poll_id", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.string  "kind"
@@ -854,6 +906,10 @@ ActiveRecord::Schema.define(version: 20170314040259) do
     t.string   "country"
     t.string   "region"
     t.string   "city"
+    t.integer  "facebook_community_id"
+    t.integer  "slack_community_id"
+    t.string   "remember_token"
+    t.string   "short_bio",                        default: "",         null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

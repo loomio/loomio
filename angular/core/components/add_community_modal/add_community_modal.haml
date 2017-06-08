@@ -1,0 +1,11 @@
+%md-dialog.poll-common-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %i.material-icons public
+      %h1.lmo-h1{translate: "add_community_form.title"}
+      %modal_header_cancel_button
+
+  %md-dialog-content
+    .md-dialog-content
+      %add_community_form{community: "community"}

@@ -1,4 +1,9 @@
-- if @info.poll.has_option_icons
-  = render 'poll_mailer/common/vote_icons'
+- if @info.recipient_stance
+  %h3= t(:"poll_mailer.common.your_response")
+  = render 'poll_mailer/common/stance', stance: @info.recipient_stance
 - else
-  = render 'poll_mailer/common/vote_chips'
+  %h3= t(:"poll_mailer.common.please_respond")
+  = t(:"poll_mailer.common.time_zone", zone: @info.formatted_time_zone) if @info.poll_type == 'meeting'
+  %table{class: "poll-mailer-#{@info.poll_type}__poll-options"}
+    - @info.poll_options.each do |option|
+      %tr.poll-mailer__poll-option= render 'poll_mailer/common/poll_option', poll_option: option, link: true

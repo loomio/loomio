@@ -1,6 +1,7 @@
 .group-privacy-button {
   @include lmoBtnNude;
   cursor: default;
+  margin: 0 8px;
   box-shadow: none;
   &:hover { box-shadow: none; }
 }

@@ -8,7 +8,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
       Records.stances.remote.defaultParams = defaultParams
       Records.polls.remote.defaultParams   = defaultParams
 
-    return unless AppConfig.currentUserId?
+    return unless AppConfig.currentUserId = data.current_user_id
     user = @user()
 
     $translate.use user.locale
@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
 
   logout: ->
     AppConfig.loggingOut = true
-    Records.sessions.remote.destroy('').then -> $window.location.href = '/'
+    Records.sessions.remote.destroy('').then -> $window.location.href = '/dashboard'
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()

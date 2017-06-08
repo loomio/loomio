@@ -4,13 +4,17 @@ class PollService
 
     poll.assign_attributes(author: actor)
     poll.community_of_type(:email, build: true)
-    poll.community_of_type(:public, build: true)
+    if poll.group.present?
+      poll.build_loomio_group_community
+    else
+      poll.community_of_type(:public, build: true)
+    end
 
     return false unless poll.valid?
     poll.save!
 
     EventBus.broadcast('poll_create', poll, actor)
-    Events::PollCreated.publish!(poll)
+    Events::PollCreated.publish!(poll, actor)
   end
 
   def self.close(poll:, actor:)
@@ -18,6 +22,15 @@ class PollService
     do_closing_work(poll: poll)
     EventBus.broadcast('poll_close', poll, actor)
     Events::PollClosedByUser.publish!(poll, actor)
+  end
+
+  def self.publish(poll:, params:, actor:)
+    community = Communities::Base.find(params[:community_id])
+    actor.ability.authorize! :show, community
+    actor.ability.authorize! :share, poll
+
+    EventBus.broadcast('poll_publish', poll, actor, community, params[:message])
+    Events::PollPublished.publish!(poll, actor, community, params[:message])
   end
 
   def self.publish_closing_soon
@@ -53,12 +66,44 @@ class PollService
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
     poll.assign_attributes(params.except(:poll_type, :discussion_id, :communities_attributes))
+    is_new_version = poll.is_new_version?
 
     return false unless poll.valid?
+    poll.build_loomio_group_community if poll.changes.keys.include?('group_id')
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
-    Events::PollEdited.publish!(poll.versions.last, actor, poll.make_announcement)
+    Events::PollEdited.publish!(poll.versions.last, actor, poll.make_announcement) if is_new_version
+  end
+
+  def self.destroy(poll:, actor:)
+    actor.ability.authorize! :destroy, poll
+    poll.destroy
+
+    EventBus.broadcast('poll_destroy', poll, actor)
+  end
+
+  def self.toggle_subscription(poll:, actor:)
+    actor.ability.authorize! :toggle_subscription, poll
+
+    unsubscription = poll.poll_unsubscriptions.find_or_initialize_by(user: actor)
+    if unsubscription.persisted?
+      unsubscription.destroy
+    else
+      unsubscription.save!
+    end
+
+    EventBus.broadcast('poll_toggle_subscription', poll, actor)
+  end
+
+  def self.create_visitors(poll:, emails:, actor:)
+    actor.ability.authorize! :create_visitors, poll
+
+    VisitorsBatchCreateJob.perform_later(emails, poll.id, actor.id)
+    poll.custom_fields['pending_emails'] = []
+    poll.save(validate: false)
+
+    EventBus.broadcast('poll_create_visitors', poll, emails, actor)
   end
 
   def self.convert(motions:)
@@ -83,6 +128,8 @@ class PollService
         closed_at:               motion.closed_at,
         outcomes:                Array(outcome)
       )
+      poll.community_of_type(:email, build: true)
+      poll.build_loomio_group_community
       poll.save(validate: false)
 
       # convert votes to stances
@@ -104,10 +151,11 @@ class PollService
 
       # set poll to closed if motion was closed
       do_closing_work(poll: poll) if motion.closed?
-
-      # add communities
-      poll.communities << Communities::Email.new
     end
+  end
+
+  def self.cleanup_examples
+    Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all
   end
 
 end

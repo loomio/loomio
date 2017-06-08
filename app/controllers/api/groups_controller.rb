@@ -1,4 +1,5 @@
 class API::GroupsController < API::RestfulController
+  include UsesFullSerializer
   load_and_authorize_resource only: :show, find_by: :key
   load_resource only: [:upload_photo], find_by: :key
   skip_before_action :authenticate_user!, only: [:index]
@@ -18,9 +19,13 @@ class API::GroupsController < API::RestfulController
     respond_with_resource(scope: {current_user: current_user})
   end
 
+  def publish
+    service.publish(group: load_resource, params: publish_params, actor: current_user)
+    respond_with_resource
+  end
+
   def archive
-    load_resource
-    GroupService.archive(group: @group, actor: current_user)
+    service.archive(group: load_resource, actor: current_user)
     respond_with_resource
   end
 
@@ -44,6 +49,14 @@ class API::GroupsController < API::RestfulController
 
   def accessible_records
     Queries::ExploreGroups.new
+  end
+
+  def publish_params
+    {
+      make_announcement: !!params[:make_announcement],
+      identifier:        params.require(:identifier),
+      channel:           params[:channel]
+    }
   end
 
   # serialize out the parent with the group

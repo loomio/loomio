@@ -19,13 +19,13 @@ window.Loomio.routes = [
   {path: '/p/new', component: 'startPollPage'},
   {path: '/p/new/:poll_type', component: 'startPollPage'},
   {path: '/p/:key/', component: 'pollPage'},
-  {path: '/p/:key/share', component: 'sharePollPage'},
   {path: '/p/:key/:stub', component: 'pollPage'},
   {path: '/g/:key/memberships', component: 'membershipsPage'},
   {path: '/g/:key/memberships/:username', component: 'membershipsPage'},
   {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
   {path: '/g/:key/previous_proposals', component: 'previousProposalsPage'},
   {path: '/g/:key/previous_polls', component: 'previousPollsPage'},
+  {path: '/g/new', component: 'startGroupPage'},
   {path: '/g/:key', component: 'groupPage' },
   {path: '/g/:key/:stub', component: 'groupPage' },
   {path: '/u/:key', component: 'userPage' },
@@ -33,5 +33,6 @@ window.Loomio.routes = [
   {path: '/apps/authorized', component: 'authorizedAppsPage'},
   {path: '/apps/registered', component: 'registeredAppsPage'},
   {path: '/apps/registered/:id', component: 'registeredAppPage'},
-  {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'}
+  {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
+  {path: '/slack/install', component: 'installSlackPage'}
 ]

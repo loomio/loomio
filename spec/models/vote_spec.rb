@@ -88,22 +88,6 @@ describe Vote do
   #   expect(motion.last_vote_at.to_s).to eq vote.created_at.to_s
   # end
 
-  describe 'other_group_members' do
-    before do
-      @user1 = create :user
-      group.add_member!(@user1)
-      @vote = create :vote, user: user, motion: motion
-    end
-
-    it 'returns members in the group' do
-      expect(@vote.other_group_members).to include @user1
-    end
-
-    it 'does not return the voter' do
-      expect(@vote.other_group_members).to_not include user
-    end
-  end
-
   describe "previous_vote" do
     it "gets position from previous vote on same motion by same user
         (if any)" do

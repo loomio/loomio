@@ -9,6 +9,7 @@
 
 .comment-form__sign-in-btn {
   @include lmoBtnFeatured;
+  width: 100%;
 }
 
 .comment-form-button {
@@ -27,12 +28,22 @@
   color: #767676;
 }
 
+.comment-form__join-actions button {
+  width: 100%;
+}
+
 .thread-comment-form-actions {
   clear: both;
   padding: 10px 0;
 }
 .comment-form__submit-button {
-  float: right;
+  order: 2;
   position: relative;
   right: -6px;
+}
+
+@media(max-width: $tiny-max-px) {
+  .comment-form__formatting {
+    display: none;
+  }
 }

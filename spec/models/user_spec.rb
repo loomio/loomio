@@ -253,4 +253,18 @@ describe User do
       expect(user.username.length).to eq 18
     end
   end
+
+  describe 'email_communities' do
+    let!(:email_community) { poll.community_of_type(:email, build: true).tap(&:save) }
+    let!(:another_email_community) { another_poll.community_of_type(:email, build: true).tap(&:save) }
+    let!(:facebook_community) { create :facebook_community, polls: [poll] }
+    let(:poll) { create :poll, author: user }
+    let(:another_poll) { create :poll }
+
+    it 'returns my email communities' do
+      expect(user.email_communities).to include email_community
+      expect(user.email_communities).to_not include facebook_community
+      expect(user.email_communities).to_not include another_email_community
+    end
+  end
 end

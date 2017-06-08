@@ -51,7 +51,7 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :group, serializer: GroupSerializer, root: :groups
   has_one :active_proposal, serializer: MotionSerializer, root: :proposals
   has_one :active_proposal_vote, serializer: VoteSerializer, root: :votes
-  has_many :active_polls, serializer: PollSerializer, root: :polls
+  has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
 
   def include_active_proposal_vote?
     reader.present? && active_proposal.present?

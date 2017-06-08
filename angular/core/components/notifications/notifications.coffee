@@ -22,8 +22,24 @@ angular.module('loomioApp').directive 'notifications', ->
       'poll_closing_soon',
       'poll_edited',
       'poll_expired',
-      'outcome_created'
+      'outcome_created',
+      'stance_created'
     ]
+
+    $scope.toggle = (menu) ->
+      if document.querySelector '.md-open-menu-container.md-active .notifications__menu-content'
+        $scope.close(menu)
+      else
+        $scope.open(menu)
+
+    $scope.open = (menu) ->
+      menu.open()
+      Records.notifications.viewed()
+      $rootScope.$broadcast 'notificationsOpen'
+
+    $scope.close = (menu) ->
+      menu.close()
+      $rootScope.$broadcast 'notificationsClosed'
 
     notificationsView = Records.notifications.collection.addDynamicView("notifications")
                                .applyFind(kind: { $in: kinds })
@@ -33,12 +49,6 @@ angular.module('loomioApp').directive 'notifications', ->
                                .applyFind(viewed: { $ne: true })
 
     $scope.notifications = -> notificationsView.data()
-
-    $scope.broadcastThreadEvent = (notification) ->
-      # $rootScope.$broadcast 'threadPageEventsLoaded', notification.event()
-
-    $scope.toggled = (open) ->
-      Records.notifications.viewed() if open
 
     $scope.unreadCount = =>
       unreadView.data().length

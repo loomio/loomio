@@ -1,0 +1,10 @@
+%p.user-mailer__context= raw t(:"email.start_decision.intro", name: @email.sender_email, title: @email.subject)
+%p.user-mailer__context= t(:"email.start_decision.action")
+%ul
+- Poll::TEMPLATES.keys.each do |poll_type|
+  %li.user-mailer__start-decision-option
+    %a{href: new_poll_url(type: poll_type, title: @email.subject, pending_emails: @email.email_addresses.join(',')), class: "user-mailer__start-decision-button"}
+      = image_tag "poll_mailer/poll_types/#{poll_type}.png", class: "user-mailer__start-decision-logo"
+      %strong= t(:"email.start_decision.#{poll_type}")
+    %p.user-mailer__start-decision-helptext
+      %em= t(:"poll_#{poll_type}_form.tool_tip_collapsed")

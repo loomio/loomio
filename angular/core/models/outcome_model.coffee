@@ -19,3 +19,9 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
 
     communitySize: ->
       @poll().communitySize()
+
+    announcementSize: ->
+      @communitySize()
+
+    notifyAction: ->
+      'publish'

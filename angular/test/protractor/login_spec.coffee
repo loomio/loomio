@@ -1,76 +1,184 @@
 describe 'Login', ->
-  page       = require './helpers/page_helper.coffee'
-  staticPage = require './helpers/static_page_helper.coffee'
+  page = require './helpers/page_helper.coffee'
 
-  describe 'logging in as an existing user', ->
-    it 'logs in in-app', ->
-      page.loadPath 'view_open_group_as_visitor'
-      page.click '.navbar__sign-in'
-      page.fillIn '#user-email', 'jennifer_grey@example.com'
-      page.fillIn '#user-password', 'gh0stmovie'
-      page.click '.sign-in-form__submit-button'
-      page.waitForReload()
-      page.expectElement '.sidebar__content'
-      page.expectFlash 'Signed in successfully'
-
-    it 'updates the locale on login', ->
-      page.loadPath 'setup_spanish_user'
-      page.click '.navbar__sign-in'
-      page.fillIn '#user-email', 'patrick_swayze@example.com'
-      page.fillIn '#user-password', 'gh0stmovie'
-      page.click '.sign-in-form__submit-button'
-      page.waitForReload()
-      page.expectText '.explore-page', 'Explorar grupos en Loomio'
-
-    it 'does not log in in-app when password is incorrect', ->
-      page.loadPath 'view_open_group_as_visitor'
-      page.click '.navbar__sign-in'
-      page.fillIn '#user-email', 'jennifer_grey@example.com'
-      page.fillIn '#user-password', 'notapassword'
-      page.click '.sign-in-form__submit-button'
-      page.waitForReload()
-      page.expectElement '.lmo-validation-error', 'Invalid email or password'
-
-    it 'takes you to the explore page when not a member of any groups', ->
-      staticPage.loadPath 'setup_login'
-      staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.click '#sign-in-btn'
-      page.expectElement '.explore-page', 'Explore Loomio groups'
-
-    it 'takes you to your group page when a member of one group', ->
-      staticPage.loadPath 'setup_logged_out_group_member'
-      staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.click '#sign-in-btn'
-      page.expectElement '.group-page', 'Dirty Dancing Shoes'
-
-    it 'takes you to the dashboard when a member of multiple groups', ->
-      staticPage.loadPath 'setup_logged_out_member_of_multiple_groups'
-      staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.click '#sign-in-btn'
-      page.expectElement '.dashboard-page', 'Recent threads'
-
+  describe 'via password', ->
     it 'does not log in when password is incorrect', ->
-      staticPage.loadPath 'setup_login'
-      staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
-      staticPage.fillIn '#user_password', 'w0rstmovie'
-      staticPage.click '#sign-in-btn'
-      staticPage.expectText '.alert-message', 'Invalid email or password'
+      page.loadPath 'setup_explore_as_visitor'
+      page.click '.navbar__sign-in'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'w0rstmovie'
+      page.click '.auth-signin-form__submit'
+      page.expectText '.auth-form', 'that password doesn\'t match'
 
-  describe 'forgot password', ->
-    it 'can reset a password', ->
-      staticPage.loadPath 'setup_login'
-      staticPage.click '#forgot-pwd'
-      staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
-      staticPage.click 'input[type=submit]'
-      staticPage.expectText '.alert-info', 'You will receive an email with instructions on how to reset your password'
+    it 'can login from the dashboard', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      # page.waitForReload(2000)
+      # page.expectFlash 'Signed in successfully'
 
-      staticPage.loadPath 'last_email'
-      staticPage.click 'a[href]'
-      staticPage.fillIn '#user_password', 'drivinmeswayze'
-      staticPage.fillIn '#user_password_confirmation', 'drivinmeswayze'
-      staticPage.click 'input[type=submit]'
+    it 'can login from a closed group page', ->
+      page.loadPath 'view_closed_group_as_visitor'
+      page.click '.navbar__sign-in'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      # page.waitForReload(2000)
+      # page.expectFlash 'Signed in successfully'
+      # page.expectText '.group-theme__name', 'Closed Dirty Dancing Shoes'
+      # page.expectText '.thread-previews-container', 'This thread is private'
+      # page.expectElement '.sidebar__content'
 
-      page.expectFlash 'Your password has been changed successfully'
+    it 'can login from a secret group page', ->
+      page.loadPath 'view_secret_group_as_visitor'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      # page.waitForReload(2000)
+      # page.expectFlash 'Signed in successfully'
+      # page.expectText '.group-theme__name', 'Secret Dirty Dancing Shoes'
+      # page.expectElement '.sidebar__content'
+
+    it 'can login from the explore page', ->
+      page.loadPath 'setup_explore_as_visitor'
+      page.click '.navbar__sign-in'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      # page.waitForReload(2000)
+      # page.expectFlash 'Signed in successfully'
+
+    it 'can login from a discussion page', ->
+      page.loadPath 'view_open_discussion_as_visitor'
+      page.click '.comment-form__sign-in-btn'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      # page.waitForReload(2000)
+      # page.expectFlash 'Signed in successfully'
+      # page.fillIn '.comment-form__comment-field', 'I am new!'
+      # page.click '.comment-form__submit-button'
+      # page.expectFlash 'Comment added'
+
+    it 'can accept an invitation', ->
+      page.loadPath 'setup_invitation_to_user_with_password'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      # page.waitForReload(2000)
+      # page.expectFlash 'Signed in successfully'
+      # page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+
+  describe 'via link', ->
+    it 'can send login link to user with a password', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__login-link'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.dashboard-page', 'Recent Threads'
+
+    it 'can login from the dashboard', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
+      page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__submit'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.dashboard-page', 'Recent Threads'
+
+    it 'can login from the explore page via link', ->
+      page.loadPath 'setup_explore_as_visitor'
+      page.click '.navbar__sign-in'
+      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
+      page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__submit'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.explore-page', 'Explore Loomio groups'
+
+    it 'can login from a discussion page', ->
+      page.loadPath 'view_open_discussion_as_visitor'
+      page.click '.comment-form__sign-in-btn'
+      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
+      page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__submit'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectElement '.comment-form__submit-button'
+
+    it 'can set a password', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.click '.navbar__sign-in'
+      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
+      page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__set-password'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'set your password'
+
+    it 'can accept an invitation', ->
+      page.loadPath 'setup_invitation_to_user'
+      page.click '.auth-signin-form__submit'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+
+  describe 'new account', ->
+    it 'can sign up a user', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
+      page.click '.auth-signup-form__submit'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.dashboard-page', 'Recent Threads'
+
+    it 'can sign up a new user through the discussion page', ->
+      page.loadPath 'view_open_discussion_as_visitor'
+      page.click '.comment-form__sign-in-btn'
+      page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
+      page.click '.auth-signup-form__submit'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.context-panel__heading', 'I carried a watermelon'
+      page.click '.comment-form__join-actions button'
+      page.expectFlash 'You are now a member of Open Dirty Dancing Shoes'
+      page.expectElement '.comment-form__submit-button'
+
+    it 'can use a shareable link', ->
+      page.loadPath 'view_closed_group_with_shareable_link'
+      page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
+      page.click '.auth-signup-form__submit'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+
+    it 'can log someone in from an invitation', ->
+      page.loadPath 'setup_invitation_to_visitor'
+      page.expectText '.auth-form', 'Nice to meet you, Max Von Sydow'
+      page.click '.auth-signup-form__submit'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'

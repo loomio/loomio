@@ -1,7 +1,7 @@
 class Notification < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :actor, class_name: 'User'
+  belongs_to :actor, polymorphic: true
   belongs_to :event
 
   validates_presence_of :user, :event

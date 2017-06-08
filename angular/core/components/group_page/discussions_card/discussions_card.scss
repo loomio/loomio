@@ -14,11 +14,7 @@
 }
 
 .discussions-card__new-thread-button{
-  position: relative;
-  top: -7px;
-  right: -9px;
-  float: right;
-  // margin-bottom: $cardPaddingSize;
+  @include cardButton;
 }
 
 .discussions-card__list--empty {

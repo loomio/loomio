@@ -6,64 +6,62 @@ fi:
       pm: iltapäivällä
     closing_in: 'Sulkeutuu {{time}}'
     closed_ago: 'Suljettu {{time}}'
-    volume: Äänenvoimakkuus
-    notification_volume: Ilmoitusten äänenvoimakkuus
-    group: Ryhmä
-    groups: Ryhmät
+    volume: 'Äänenvoimakkuus'
+    notification_volume: 'Ilmoitusten äänenvoimakkuus'
+    group: 'Ryhmä'
+    groups: 'Ryhmät'
     privacy:
-      privacy: Yksityisyys
-      public: Julkinen
-      open: Avoin
-      closed: Suljettu
-      private: Yksityinen
-      secret: Salainen
-    selected: Valittu
+      privacy: 'Yksityisyys'
+      public: 'Julkinen'
+      open: 'Avoin'
+      closed: 'Suljettu'
+      private: 'Yksityinen'
+      secret: 'Salainen'
+    selected: 'Valittu'
     date_range:
-      today: Tänään
-      yesterday: Eilen
-      thisweek: Tällä viikolla
-      thismonth: Tässä kuussa
-      older: Vanhempi
-    more_help: Lisää apua
+      today: 'Tänään'
+      yesterday: 'Eilen'
+      thisweek: 'Tällä viikolla'
+      thismonth: 'Tässä kuussa'
+      older: 'Vanhempi'
+    more_help: 'Lisää apua'
     models:
-      proposal: Ehdotus
-    copied: Kopioitu leikepöydälle
+      proposal: 'Ehdotus'
+    copied: 'Kopioitu leikepöydälle'
     action:
-      close: Sulje
-      save: Tallenna
-      save_changes: Tallenna muutokset
-      update_settings: Päivitä asetukset
-      reply: Vastaa
-      edit: Muokkaa
-      remove: Poista
-      like: Tykkää
-      back: Back
-      unlike: En tykkääkkään
-      update: Päivitä
-      cancel: Peruuta
-      show_more: Näytä lisää
-      view_all: Näytä kaikki
-      new_thread: Uusi aihe
-      add_subgroup: Lisää alaryhmä
-      loading: Ladataan
-      translate: Käännä
-      translated: Tekstin käänsi Bing-kääntäjä
-      upload: Lataa
-      uploading: Lataaminen
+      close: 'Sulje'
+      save: 'Tallenna'
+      save_changes: 'Tallenna muutokset'
+      update_settings: 'Päivitä asetukset'
+      reply: 'Vastaa'
+      edit: 'Muokkaa'
+      remove: 'Poista'
+      like: 'Tykkää'
+      back: 'Back'
+      unlike: 'En tykkääkkään'
+      update: 'Päivitä'
+      cancel: 'Peruuta'
+      show_more: "Näytä lisää"
+      view_all: "Näytä kaikki"
+      new_thread: "Uusi aihe"
+      add_subgroup: 'Lisää alaryhmä'
+      loading: 'Ladataan'
+      translate: 'Käännä'
+      translated: 'Tekstin käänsi Bing-kääntäjä'
+      upload: 'Lataa'
+      uploading: 'Lataaminen'
     formatting_help:
-      label: Muotoiluapua
       title: 'Opi, kuinka muotoilla tekstiäsi Loomiossa'
   error_page:
-    forbidden: Sinulla ei ole oikeutta tehdä tätä.
-    page_not_found: Emme voineet löytää tätä. Se voi olla poistettu tai siirretty.
+    forbidden: 'Sinulla ei ole oikeutta tehdä tätä.'
+    page_not_found: 'Emme voineet löytää tätä. Se voi olla poistettu tai siirretty.'
     internal_server_error: 'Olemme pahoillamme, mutta jotain meni pieleen. Ole hyvä ja koeta uudestaan.'
   start_proposal_card:
-    title: Aloita ehdotus
+    title: 'Aloita ehdotus'
     helptext: Oletko valmis päätöksen luontiin?
   proposal_outcome_panel:
     heading: Tulos
-    set_outcome_hint: 'Käytä tätä tilaa, jotta kaikki tietää ehdotuksen tuloksen.'
-    edit_outcome_link: Muokkaa ehdotustulosta
+    set_outcome_hint: Käytä tätä tilaa, jotta kaikki tietää ehdotuksen tuloksen.
   proposal_outcome_form:
     update_outcome: Päivitä ehdotustulosta
     outcome_label: Ehdotustulos
@@ -74,49 +72,47 @@ fi:
   proposal_collapsed:
     outcome: 'Tulos: {{outcome}}'
   volume_levels:
-    loud: Äänekäs
+    loud: 'Äänekäs'
   inbox:
-    unread: Lukematon
+    unread: 'Lukematon'
   comment_form:
     messages:
-      updated: Kommentti päivitettiin
-      destroyed: Kommentti poistettiin
-    edit_comment: Muokkaa kommenttia
-    delete_comment: Poista kommentti
-    in_reply_to: 'Vastaus henkilölle <strong>{{name}}</strong>:'
+      updated: 'Kommentti päivitettiin'
+      destroyed: 'Kommentti poistettiin'
+    edit_comment: 'Muokkaa kommenttia'
+    delete_comment: 'Poista kommentti'
+    in_reply_to: "Vastaus henkilölle <strong>{{name}}</strong>:"
     private_privacy_notice: 'Sinun kommenttisi tulee olemaan vain näkyvillä {{groupName}}-ryhmän jäsenille.'
-    public_privacy_notice: Sinun kommenttisi tulee olemaan näkyvillä kaikille webissä.
+    public_privacy_notice: 'Sinun kommenttisi tulee olemaan näkyvillä kaikille webissä.'
   sidebar:
-    recent: Viimeisin
-    unread: Lukematon
-    sign_out: Kirjaudu ulos
+    sign_out: 'Kirjaudu ulos'
   navbar:
-    recent_title: Mene kojelaudalle
-    unread_title: Katso lukemattomat toiminnat
+    recent_title: 'Mene kojelaudalle'
+    unread_title: 'Katso lukemattomat toiminnat'
   notifications:
-    header: Ilmoitukset
+    header: "Ilmoitukset"
   proposal_form:
-    start_a_proposal: Aloita ehdotus
+    start_a_proposal: 'Aloita ehdotus'
   discussion_form:
-    group_label: Ryhmä
-    privacy_label: Yksityisyys
+    group_label: 'Ryhmä'
+    privacy_label: 'Yksityisyys'
   proposal_expanded:
     closed_badge: Suljettu
   group_form:
-    privacy: Yksityisyys
-    submit_update: Päivitä asetukset
+    privacy: 'Yksityisyys'
+    submit_update: 'Päivitä asetukset'
   invitation_form:
-    group: Ryhmä
+    group: 'Ryhmä'
   memberships_page:
-    remove_member_label: Poista
+    remove_member_label: 'Poista'
   dashboard_page:
     threads_from:
-      today: Tänään
-      yesterday: Eilen
+      today: 'Tänään'
+      yesterday: 'Eilen'
   delete_comment_dialog:
-    title: Poista kommentti
-    confirm: Poista kommentti
+    title: 'Poista kommentti'
+    confirm: 'Poista kommentti'
   new_comment_item:
     context_menu:
-      edit_comment: Muokkaa kommenttia
-      delete_comment: Poista kommentti
+      edit_comment: 'Muokkaa kommenttia'
+      delete_comment: 'Poista kommentti'

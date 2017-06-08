@@ -9,6 +9,8 @@
           %h1.user-page__name {{userPage.user.name}}
           %h4.user-page__username @{{userPage.user.username}}
 
+          %p {{userPage.user.shortBio}}
+
           %h2.lmo-h2.user-page__groups-title{translate: "common.groups"}
           .user-page__groups{ng-repeat: "group in userPage.user.groups() | orderBy: 'fullName' track by group.id"}
             %a{lmo-href-for: "group"} {{group.fullName}}

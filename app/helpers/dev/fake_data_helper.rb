@@ -11,13 +11,14 @@ module Dev::FakeDataHelper
       email: Faker::Internet.email,
       password: Faker::Internet.password,
       detected_locale: 'en',
-      is_admin: true
+      is_admin: true,
+      experiences: {enable_communities: true}
     }.merge(args))
   end
 
   def fake_group(args = {})
     Group.new({name: Faker::Company.name,
-      features: {use_polls: true}}.merge(args))
+      features: {use_polls: true, enable_communities: true}}.merge(args))
   end
 
   def fake_discussion(args = {})
@@ -87,6 +88,15 @@ module Dev::FakeDataHelper
       email: Faker::Internet.email,
       community: Communities::Public.new
     }.merge(args))
+  end
+
+  def fake_received_email(args = {})
+    ReceivedEmail.new({
+      sender_email: Faker::Internet.email,
+      subject: Faker::ChuckNorris.fact,
+      body: "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah",
+      
+    })
   end
 
   private

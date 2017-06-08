@@ -1,22 +1,6 @@
 module EmailHelper
   include PrettyUrlHelper
 
-  def formatted_datetime_for(date_string, zone)
-    date_time = DateTime.strptime(date_string.sub('.000Z', 'Z')).in_time_zone(zone)
-    date_time.strftime(date_time.year == Date.today.year ? "%e %b %l:%M %P" : "%e %b %Y %l:%M %P")
-  rescue ArgumentError
-    formatted_date_for(date_string)
-  end
-
-  def formatted_date_for(date_string)
-    date = date_string.to_date
-    date.strftime(date.year == Date.today.year ? "%e %b" : "%e %b %Y")
-  end
-
-  def format_poll_option_name(poll_option, zone)
-    poll_option.poll.dates_as_options ? formatted_datetime_for(poll_option.name, zone) : poll_option.name
-  end
-
   def reply_to_address(discussion: , user: )
     pairs = []
     {d: discussion.id, u: user.id, k: user.email_api_key}.each do |key, value|
@@ -70,8 +54,9 @@ module EmailHelper
   end
 
   def google_pie_chart_url(poll)
-    sparkline = proposal_sparkline(poll)
-    colors = poll_color_values(poll.poll_type).map { |color| color.sub('#', '') }.join('|')
+    sparkline    = proposal_sparkline(poll)
+    color_values = poll_color_values(poll.poll_type).presence || ['#aaa']
+    colors       = color_values.map { |color| color.sub('#', '') }.join('|')
     URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{sparkline}&chco=#{colors}")
   end
 

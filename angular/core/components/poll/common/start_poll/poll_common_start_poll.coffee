@@ -1,12 +1,14 @@
-angular.module('loomioApp').directive 'pollCommonStartPoll', ($window, PollService, LmoUrlService) ->
+angular.module('loomioApp').directive 'pollCommonStartPoll', ($window, Records, PollService, LmoUrlService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/start_poll/poll_common_start_poll.html'
   controller: ($scope) ->
-    $scope.pollTypes = ->
-      _.keys PollService.activePollTemplates()
+    $scope.currentStep = if $scope.poll.pollType then 'save' else 'choose'
+    $scope.$on 'chooseComplete',  -> $scope.currentStep = 'save';   $scope.isDisabled = false
+    $scope.$on 'saveBack',        -> $scope.currentStep = 'choose'; $scope.isDisabled = false
 
-    $scope.iconFor = (pollType) ->
-      PollService.fieldFromTemplate(pollType, 'material_icon')
+    $scope.$on 'saveComplete', (event, poll) ->
+      $scope.poll = poll
+      $scope.currentStep = 'share'
+      $scope.isDisabled = false
 
-    $scope.editPollType = ->
-      $scope.poll.pollType = null
+    $scope.$on 'shareComplete',      $scope.$close

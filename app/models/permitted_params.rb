@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user visitor vote motion membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response network_membership_request
-    draft oauth_application
+    draft oauth_application community poll_community
   )
 
   MODELS.each do |kind|
@@ -22,9 +22,9 @@ class PermittedParams < Struct.new(:params)
 
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
-     :remember_me, :uploaded_avatar, :username, :uses_markdown,
+     :remember_me, :uploaded_avatar, :username, :uses_markdown, :short_bio,
      :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
-     :email_missed_yesterday, :deactivation_response,
+     :email_missed_yesterday, :deactivation_response, :has_password, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation,
      {email_new_discussions_and_proposals_group_ids: []}]
   end
@@ -42,13 +42,23 @@ class PermittedParams < Struct.new(:params)
   end
   alias_method :proposal_attributes, :motion_attributes
 
+  def community_attributes
+    [:community_type, :poll_id, :identity_id, :identifier,
+     :custom_fields, {custom_fields: [:facebook_group_name, :slack_channel_name]}]
+  end
+
+  def poll_community_attributes
+    [:poll_id, :community_id]
+  end
+
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
-     :make_announcement, :multiple_choice, :key, :anyone_can_participate,
-     :custom_fields, {custom_fields: [:dots_per_person, :time_zone]},
+     :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate,
+     :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
      :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
-     :poll_option_names, {poll_option_names: []}]
+     :poll_option_names, {poll_option_names: []},
+     :community_id, {community_id: []}]
   end
 
   def stance_attributes
@@ -93,7 +103,7 @@ class PermittedParams < Struct.new(:params)
     [:parent_id, :name, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
      :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
-     :membership_granted_upon, :cover_photo, :logo, :category_id,
+     :membership_granted_upon, :cover_photo, :logo, :category_id, :identity_id, :make_announcement,
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
   end
 

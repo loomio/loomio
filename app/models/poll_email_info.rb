@@ -1,6 +1,6 @@
 class PollEmailInfo
   include Routing
-  attr_reader :recipient, :poll, :actor, :action_name
+  attr_reader :recipient, :poll, :actor, :action_name, :eventable
 
   def send_reason
     # TODO: determine why this recipient is receiving this email
@@ -8,10 +8,11 @@ class PollEmailInfo
     "some reason"
   end
 
-  def initialize(recipient:, poll:, actor: nil, action_name:)
+  def initialize(recipient:, poll:, actor: nil, action_name:, eventable: nil)
     @recipient   = recipient
     @poll        = poll
     @actor       = actor || LoggedOutUser.new
+    @eventable   = eventable
     @action_name = action_name
   end
 
@@ -19,8 +20,28 @@ class PollEmailInfo
     @recipient_stance ||= @poll.stances.latest.find_by(participant: @recipient)
   end
 
+  def poll_options
+    if @poll.dates_as_options
+      @poll.poll_options.order(name: :asc)
+    else
+      @poll.poll_options
+    end
+  end
+
   def poll_type
     @poll.poll_type
+  end
+
+  def undecided_memberships
+    @undecided_members ||= Membership.includes(:user).undecided_for(@poll)
+  end
+
+  def undecided_visitors
+    @undecided_visitors ||= Visitor.undecided_for(@poll)
+  end
+
+  def undecided_max
+    20
   end
 
   def time_zone
@@ -59,7 +80,7 @@ class PollEmailInfo
   private
 
   def unsubscribe_url
-    email_preferences_url utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
+    poll_unsubscribe_url poll, utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
   end
 
   def target_url

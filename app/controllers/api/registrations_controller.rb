@@ -1,22 +1,37 @@
 class API::RegistrationsController < Devise::RegistrationsController
-  include DeviseControllerHelper
+  before_filter :configure_permitted_parameters
 
   def create
-    if params[resource_name][:honeypot]
-      head :bad_request
+    build_resource(sign_up_params)
+    if resource.save
+      LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
+      head :ok
     else
-      super
+      render json: { errors: resource.errors }, status: 422
+    end
+  end
+
+  def oauth
+    resource = user_from_pending_identity.tap(&:save)
+    if resource.persisted?
+      sign_in resource
+      flash[:notice] = t(:'devise.sessions.signed_up')
+      head :ok
+    else
+      render json: { errors: resource.errors }, status: 422
     end
   end
 
   private
 
-  def respond_with(resource, args = {})
-    if resource.persisted?
-      flash[:notice] = t(:'devise.registrations.signed_up')
-      render json: BootData.new(resource).data
-    else
-      render json: { errors: resource.errors }, status: 422
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
+      u.require(:recaptcha) if ENV['RECAPTCHA_APP_KEY'].present?
+      u.permit(:name, :email, :recaptcha)
     end
+  end
+
+  def user_from_pending_identity
+    User.new(name: pending_identity&.name, email: pending_identity&.email)
   end
 end

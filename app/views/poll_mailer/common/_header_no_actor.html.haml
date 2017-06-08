@@ -1,4 +1,4 @@
 %table
   %tr
     %td
-      %span=raw t(:"poll_mailer.#{@info.poll_type}.header.#{@info.action_name}", actor: @info.actor.name)
+      %span=raw t(:"poll_mailer.#{@info.poll_type}.header.#{@info.action_name}", actor: (@info.actor.presence || @info.poll.author).name, title: @info.poll.title)

@@ -53,6 +53,10 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       _.filter @polls(), (poll) ->
         !poll.isActive()
 
+    activePolls: ->
+      _.filter @polls(), (poll) ->
+        poll.isActive()
+
     hasPreviousProposals: ->
       _.some @closedProposals()
 
@@ -158,6 +162,9 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
         @parent().coverUrl(size)
       else
         @coverUrls[size] || @coverUrls.small
+
+    publish: (identifier, channel) =>
+      @remote.postMember(@key, 'publish', { make_announcement: @makeAnnouncement, identifier: identifier, channel: channel })
 
     archive: =>
       @remote.patchMember(@key, 'archive').then =>

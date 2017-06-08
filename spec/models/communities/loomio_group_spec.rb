@@ -15,14 +15,14 @@ require 'rails_helper'
 
    describe 'group' do
      it 'allows setting group by key' do
-       community.update(group_key: another_group.key)
-       expect(community.reload.group_key).to eq another_group.key
+       community.update(identifier: another_group.key)
+       expect(community.reload.identifier).to eq another_group.key
        expect(community.group).to eq another_group
      end
 
      it 'allows setting group by reference' do
        community.update(group: another_group)
-       expect(community.reload.group_key).to eq another_group.key
+       expect(community.reload.identifier).to eq another_group.key
        expect(community.group).to eq another_group
      end
    end
@@ -45,15 +45,6 @@ require 'rails_helper'
        expect(community.includes?(user)).to eq false
        Membership.find_by(user: user, group: group).update(admin: true)
        expect(community.reload.includes?(user)).to eq true
-     end
-   end
-
-   describe 'members' do
-     it 'returns the members of the group' do
-       members = community.members
-       expect(members).to include user
-       expect(members).to_not include non_member
-       expect(members).to_not include visitor
      end
    end
 

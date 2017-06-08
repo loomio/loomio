@@ -2,4 +2,4 @@
   %tr
     %td= render "poll_mailer/common/avatar", participant: @info.actor
     %td
-      %span=raw t(:"poll_mailer.#{@info.poll_type}.header.#{@info.action_name}", actor: @info.actor.name)
+      %span=raw t(:"poll_mailer.#{@info.poll_type}.header.#{@info.action_name}", actor: @info.actor.name, title: @info.poll.title)

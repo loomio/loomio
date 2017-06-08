@@ -25,11 +25,12 @@
   text-align: left;
   border-radius: 4px;
   text-transform: none;
-  // font-size: 13px;
   @include md-body-1;
   @include truncateText;
 }
-
+.sidebar__list-item-button--group{
+  font-weight: 500;
+}
 .sidebar__list-item-button--subgroup {
   width: 100%;
   margin: 0;
@@ -38,7 +39,7 @@
   border-radius: 4px;
   text-align: left;
   padding-left: 53px;
-  font-size: 13px;
+  @include md-body-1;
 }
 
 .sidebar__list-item-icon {

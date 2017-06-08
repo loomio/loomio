@@ -4,7 +4,10 @@ class Discussion < ActiveRecord::Base
                           new_vote
                           motion_closed
                           motion_closed_by_user
-                          motion_outcome_created]
+                          motion_outcome_created
+                          stance_created
+                          outcome_created
+                        ]
 
   THREAD_ITEM_KINDS = %w[new_comment
                          new_motion
@@ -31,6 +34,7 @@ class Discussion < ActiveRecord::Base
   include HasPolls
   include MessageChannel
   include MakesAnnouncements
+  include SelfReferencing
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
@@ -50,6 +54,7 @@ class Discussion < ActiveRecord::Base
   validates_presence_of :title, :group, :author
   validate :private_is_not_nil
   validates :title, length: { maximum: 150 }
+  validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   validates_inclusion_of :uses_markdown, in: [true,false]
   validate :privacy_is_permitted_by_group
 
@@ -109,14 +114,6 @@ class Discussion < ActiveRecord::Base
   update_counter_cache :group, :closed_motions_count
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :group, :proposal_outcomes_count
-
-  def discussion
-    self
-  end
-
-  def discussion_id
-    self.id
-  end
 
   def organisation_id
     group.parent_id || group_id

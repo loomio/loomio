@@ -1,0 +1,21 @@
+.poll-common-publish-form
+  .lmo-disabled-form{ng-if: "submitExecuting"}
+
+  %h3.lmo-h3{translate: "poll_common_publish_form.community"}
+  .lmo-flex__grow.lmo-flex{layout: "row"}
+    %img.poll-common-share-form__community-icon{class: "poll-common-share-form__community-icon--{{community.communityType}}", ng-src: "/img/{{community.communityType}}-icon.svg"}
+    .poll-common-share-form__h3.lmo-inline-action {{community.displayName()}}
+
+  %md-input-container.md-block
+    %label{translate: "poll_common_publish_form.message"}
+    %textarea.lmo-primary-form-input{ng-model: "message", placeholder: "{{'poll_common_publish_form.message_placeholder' | translate}}"}
+
+  .poll-common-publish-form__preview
+    %poll_common_publish_facebook_preview{ng-if: "community.communityType == 'facebook'", poll: "poll", community: "community", message: "message"}
+    %poll_common_publish_slack_preview{ng-if: "community.communityType == 'slack'", poll: "poll", community: "community", message: "message"}
+
+  .lmo-flex.lmo-flex__space-between
+    %md-button{ng-click: "back()"}
+      %span{translate: "common.action.back"}
+    %md-button.md-raised.md-primary{ng-click: "submit()"}
+      %span{translate: "common.action.ok"}

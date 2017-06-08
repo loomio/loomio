@@ -2,7 +2,8 @@ class Stance < ActiveRecord::Base
   include HasMentions
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
-
+  include Translatable
+  is_translatable on: :reason
   is_mentionable  on: :reason
 
   belongs_to :poll, required: true
@@ -15,6 +16,7 @@ class Stance < ActiveRecord::Base
   belongs_to :participant, polymorphic: true, required: true
 
   update_counter_cache :poll, :stances_count
+  update_counter_cache :poll, :visitors_count
 
   scope :latest, -> { where(latest: true) }
 
@@ -23,6 +25,7 @@ class Stance < ActiveRecord::Base
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
+  scope :chronologically, -> { order('created_at asc') }
 
   validate :enough_stance_choices
   validate :total_score_is_valid
@@ -30,6 +33,7 @@ class Stance < ActiveRecord::Base
 
   has_many :events, as: :eventable, dependent: :destroy
 
+  delegate :locale, to: :author
   delegate :group, to: :poll, allow_nil: true
   alias :author :participant
 

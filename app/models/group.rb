@@ -2,7 +2,9 @@ class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasTimeframe
   include HasPolls
+  include MakesAnnouncements
   include MessageChannel
+  include SelfReferencing
 
   class MaximumMembershipsExceeded < Exception
   end
@@ -122,6 +124,7 @@ class Group < ActiveRecord::Base
   after_initialize :set_defaults
 
   after_create :guess_cohort
+  after_save   :associate_identity
 
   alias :users :members
 
@@ -129,7 +132,7 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, dependent: :destroy
   has_many :motions, through: :discussions
-  has_many :polls, through: :discussions
+  has_many :polls
   has_many :votes, through: :motions
 
   belongs_to :parent, class_name: 'Group'
@@ -137,7 +140,7 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
   belongs_to :cohort
-  belongs_to :community, class_name: 'Communities::LoomioGroup'
+  belongs_to :community, class_name: 'Communities::LoomioGroup', touch: true
   belongs_to :default_group_cover
 
   has_many :subgroups,
@@ -156,6 +159,11 @@ class Group < ActiveRecord::Base
   delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
   delegate :name, to: :parent, prefix: true
+  delegate :identity_type, to: :community, allow_nil: true
+  delegate :slack_team_id, to: :community, allow_nil: true
+  delegate :slack_channel_name, to: :community, allow_nil: true
+  delegate :slack_team_name, to: :community, allow_nil: true
+  delegate :identity_type, to: :community, allow_nil: true
 
   paginates_per 20
 
@@ -176,8 +184,11 @@ class Group < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
+  validates :description, length: { maximum: Rails.application.secrets.max_message_length }
+
   define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
   define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
+  define_counter_cache(:polls_count)               { |group| group.polls.count }
   define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
   define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
@@ -188,13 +199,34 @@ class Group < ActiveRecord::Base
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
   define_counter_cache(:announcement_recipients_count) { |group| group.memberships.volume_at_least(:normal).count }
 
-  def group
-    self
+  def shareable_invitation
+    invitations.find_or_create_by(
+      single_use:     false,
+      intent:         :join_group,
+      invitable:      self
+    )
+  end
+
+  def logo_or_parent_logo
+    if is_parent?
+      logo
+    else
+      logo.presence || parent.logo
+    end
   end
 
   def community
     update(community: Communities::LoomioGroup.create(group: self)) unless self[:community_id]
     super
+  end
+
+  attr_writer :identity_id
+  def identity_id
+    @identity_id || community.identity_id
+  end
+
+  def associate_identity
+    community.update(identity_id: self.identity_id) if self.identity_id
   end
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
@@ -342,11 +374,8 @@ class Group < ActiveRecord::Base
   end
 
   def add_member!(user, inviter=nil)
-    begin
-      tap(&:save!).memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
-    rescue ActiveRecord::RecordNotUnique
-      retry
-    end
+    return unless user.present?
+    tap(&:save!).memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
   end
 
   def add_members!(users, inviter=nil)

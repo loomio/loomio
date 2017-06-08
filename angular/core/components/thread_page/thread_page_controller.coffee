@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, ProposalOutcomeForm, PollService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, ProposalOutcomeForm, PollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
@@ -10,7 +10,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $location.hash('')
 
   @performScroll = ->
-    ScrollService.scrollTo @elementToFocus(), 150
+    ScrollService.scrollTo @elementToFocus(), offset: 150
     $rootScope.$broadcast 'triggerVoteForm', $location.search().position if @openVoteModal()
     (ModalService.open ProposalOutcomeForm, proposal: => @proposal) if @openOutcomeModal()
     $location.url($location.path())
@@ -45,9 +45,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       @discussion = discussion
 
       # use new poll functionality
-      if @usePolls = PollService.usePollsFor(@discussion)
-        Records.polls.fetchByDiscussion(@discussion.key)
-        Records.stances.fetchMyStancesByDiscussion(@discussion.key)
+      @usePolls = PollService.usePollsFor(@discussion)
 
       @sequenceIdToFocus = parseInt($location.search().from or @discussion.lastReadSequenceId)
 
@@ -102,6 +100,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   checkInView = ->
     angular.element(window).triggerHandler('checkInView')
+
+  @canStartPoll = ->
+    @usePolls && AbilityService.canStartPoll(@discussion.group())
 
   KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', checkInView
   KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', checkInView

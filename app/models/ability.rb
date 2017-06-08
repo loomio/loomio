@@ -61,6 +61,7 @@ class Ability
          :email_members,
          :hide_next_steps,
          :archive,
+         :publish,
          :view_pending_invitations], Group do |group|
       user_is_admin_of?(group.id)
     end
@@ -318,11 +319,35 @@ class Ability
       @user.is_logged_in?
     end
 
-    can :show, Communities::Base do |community|
-      community.polls.any? { |poll| @user.can? :share, poll }
+    can [:show, :remind], Communities::Base do |community|
+      @user.communities.include?(community)
     end
 
-    can [:make_draft, :show], Poll do |poll|
+    can :manage_visitors, Communities::Base do |community|
+      @user.email_communities.include?(community)
+    end
+
+    can :create, Communities::Base do |community|
+      @user.is_logged_in? # TODO: ensure user owns one of the community's polls?
+    end
+
+    can [:destroy, :update], Communities::Base do |community|
+      @user.communities.include? community
+    end
+
+    can :destroy, PollCommunity do |poll_community|
+      @user.can? :share, poll_community.poll
+    end
+
+    can :make_draft, Poll do |poll|
+      @user.is_logged_in? && can?(:show, poll)
+    end
+
+    can :create_visitors, Poll do |poll|
+      user_is_author_of?(poll)
+    end
+
+    can [:show, :toggle_subscription, :subscribe_to], Poll do |poll|
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
       poll.communities.any? { |community| community.includes?(@user) }
@@ -333,7 +358,7 @@ class Ability
       (!poll.group || poll.group.community.includes?(@user))
     end
 
-    can [:update, :share], Poll do |poll|
+    can [:update, :share, :destroy], Poll do |poll|
       user_is_author_of?(poll) ||
       Array(poll.group&.admins).include?(@user)
     end
@@ -342,19 +367,19 @@ class Ability
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
     end
 
-    can [:destroy], Visitor do |visitor|
-      @user.visitors.include?(visitor)
-    end
-
-    can [:create, :remind], Visitor do |visitor|
-      @user.communities.include?(visitor.community)
-    end
-
     can :update, Visitor do |visitor|
       @user.can?(:create, visitor) || @user.participation_token == visitor.participation_token
     end
 
-    can :create, Stance do |stance|
+    can [:show, :destroy], Identities::Base do |identity|
+      @user.identities.include? identity
+    end
+
+    can :show, Stance do |stance|
+      @user.can?(:show, stance.poll)
+    end
+
+    can [:make_draft, :create], Stance do |stance|
       poll = stance.poll
       if !poll.active?
         false

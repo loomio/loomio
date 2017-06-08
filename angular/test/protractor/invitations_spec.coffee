@@ -25,7 +25,7 @@ describe 'Invitations', ->
   it 'has invitation link to share with the team', ->
     page.loadPath 'setup_new_group'
     page.click '.members-card__invite-members-btn'
-    page.expectInputValue '.invitation-form__shareable-link-field', '/invitations/'
+    page.expectInputValue '.invitation-form__shareable-link', '/invitations/'
 
   it 'displays an error if all invitees are existing group members', ->
     page.loadPath 'setup_new_group'

@@ -11,9 +11,20 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'notifications'
       @hasMany 'contacts'
       @hasMany 'versions'
+      @hasMany 'identities'
+      @hasMany 'communities'
+
+    facebookIdentity: ->
+      _.detect @identities(), (i) -> i.identityType == 'facebook'
+
+    slackIdentity: ->
+      _.detect @identities(), (i) -> i.identityType == 'slack'
 
     membershipFor: (group) ->
       _.first @recordStore.memberships.find(groupId: group.id, userId: @id)
+
+    adminMemberships: ->
+      _.filter @memberships(), (m) -> m.admin
 
     groupIds: ->
       _.map(@memberships(), 'groupId')
@@ -21,6 +32,12 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     groups: ->
       groups = _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
       _.sortBy groups, 'fullName'
+
+    adminGroups: ->
+      _.invoke @adminMemberships(), 'group'
+
+    adminGroupIds: ->
+      _.invoke @adminMemberships(), 'groupId'
 
     parentGroups: ->
       _.filter @groups(), (group) -> group.isParent()
@@ -53,7 +70,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       _.contains(group.memberIds(), @id)
 
     firstName: ->
-      @name.split(' ')[0]
+      _.first @name.split(' ') if @name
 
     lastName: ->
       @name.split(' ').slice(1).join(' ')

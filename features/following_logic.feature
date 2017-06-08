@@ -1,7 +1,7 @@
 Feature: Following Logic
 
 Background:
-  Given I am logged in
+  Given I sign in
   And I am an admin of a group
 
   Scenario: New discussion in followed group

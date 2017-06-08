@@ -75,6 +75,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
 
     canManageGroupSubscription: (group) ->
       @canAdministerGroup(group) and
+      group.subscriptionKind? and
       group.subscriptionKind != 'trial' and
       group.subscriptionPaymentMethod != 'manual'
 
@@ -157,11 +158,20 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
       Session.user().locale != model.author().locale
 
+    canSubscribeToPoll: (poll) ->
+      if poll.group()
+        @canViewGroup(poll.group())
+      else
+        @canAdministerPoll() || _.contains(@poll().voters(), Session.user())
+
     canSharePoll: (poll) ->
       @canEditPoll(poll)
 
     canEditPoll: (poll) ->
       poll.isActive() and @canAdministerPoll(poll)
+
+    canDeletePoll: (poll) ->
+      @canAdministerPoll(poll)
 
     canSetPollOutcome: (poll) ->
       poll.isClosed() and @canAdministerPoll(poll)
@@ -187,5 +197,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
              'registeredAppsPage', \
              'registeredAppPage',  \
              'pollsPage',          \
-             'startPollPage' then true
+             'startPollPage',      \
+             'startGroupPage' then true
         else false

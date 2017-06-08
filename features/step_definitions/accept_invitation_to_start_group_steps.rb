@@ -57,7 +57,7 @@ end
 
 Then /^I should become the admin of the group$/ do
   @user ||= User.find_by_email(@admin_email)
-  expect(@user.is_group_admin?(@group)).to be true
+  expect(@user.is_admin_of?(@group)).to be true
 end
 
 Then /^the group request should be marked as accepted$/ do

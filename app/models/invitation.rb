@@ -22,6 +22,8 @@ class Invitation < ActiveRecord::Base
   before_save :ensure_token_is_present
 
   delegate :name, to: :inviter, prefix: true, allow_nil: true
+  delegate :slack_team_id, to: :group, allow_nil: true
+  delegate :identity_type, to: :group, allow_nil: true
 
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
   scope :pending, -> { not_cancelled.single_use.where(accepted_at: nil) }
@@ -33,6 +35,13 @@ class Invitation < ActiveRecord::Base
 
   def invitable_name
     invitable&.full_name
+  end
+
+  def user_from_recipient!
+    return unless to_start_group?
+    User.find_or_initialize_by(email: self.recipient_email)
+        .tap { |user| user.assign_attributes(name: self.recipient_name) }
+        .tap(&:save)
   end
 
   def cancel!(args = {})

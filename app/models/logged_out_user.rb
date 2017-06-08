@@ -9,11 +9,18 @@ class LoggedOutUser
     set_avatar_initials if (@name || @email)
   end
 
-  NIL_METHODS = [:id, :created_at, :presence, :restricted]
-  NIL_METHODS.each { |method| define_method(method, -> { nil }) }
+  NIL_METHODS = [:id, :created_at, :presence, :restricted, :persisted?]
+  FALSE_METHODS = [:save, :persisted?]
 
-  def avatar_url(size)
+  NIL_METHODS.each   { |method| define_method(method, -> { nil }) }
+  FALSE_METHODS.each { |method| define_method(method, -> { false }) }
+
+  def avatar_url(size = nil)
     nil
+  end
+
+  def email_status
+    :unused
   end
 
   def avatar_kind

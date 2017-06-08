@@ -2,7 +2,7 @@ require 'rails_helper'
 describe API::GroupsController do
 
   let(:user) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :group, creator: user }
   let(:subgroup) { create :group, parent: group }
   let(:discussion) { create :discussion, group: group }
 
@@ -106,6 +106,28 @@ describe API::GroupsController do
       second_explore_group = create(:group, name: 'inspection group')
       get :count_explore_results, { q: 'team' }
       expect(JSON.parse(response.body)['count']).to eq 2
+    end
+  end
+
+  describe 'publish' do
+
+    it 'can save a channel and make an announcement' do
+      group.update(identity_id: create(:slack_identity).id)
+      expect { post :publish, id: group.id, identifier: "abc", make_announcement: true }.to change { Events::GroupPublished.count }.by(1)
+      expect(response.status).to eq 200
+      expect(group.community.reload.channel).to eq "abc"
+    end
+
+    it 'can save a channel and not make an announcement' do
+      group.update(identity_id: create(:slack_identity).id)
+      expect { post :publish, id: group.id, identifier: "abc" }.to_not change { Events::GroupPublished.count }
+      expect(group.community.reload.channel).to eq "abc"
+    end
+
+    it 'responds with bad request if no channel id is given' do
+      group.update(identity_id: create(:slack_identity).id)
+      expect { post :publish, id: group.id, make_announcement: true }.to_not change { Events::GroupPublished.count }
+      expect(response.status).to eq 400
     end
   end
 

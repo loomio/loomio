@@ -1,5 +1,5 @@
 class Events::InvitationAccepted < Event
-  include Events::NotifyUser
+  include Events::Notify::InApp
 
   def self.publish!(membership)
     create(kind: "invitation_accepted",

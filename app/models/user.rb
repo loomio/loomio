@@ -5,15 +5,16 @@ class User < ActiveRecord::Base
   include HasExperiences
   include HasAvatar
   include UsesWithoutScope
+  include SelfReferencing
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
-  attr_accessor :honeypot
+  attr_accessor :recaptcha
   attr_accessor :restricted
+  attr_accessor :participation_token
 
   validates :email, presence: true, uniqueness: true, email: true
-  #validates :name, presence: true
   validates_inclusion_of :uses_markdown, in: [true,false]
 
   has_many :stances, as: :participant
@@ -32,10 +33,12 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username
   validates_length_of :username, maximum: 30
+  validates_length_of :short_bio, maximum: 250
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'error.username_must_be_alphanumeric')
 
   validates_length_of :password, minimum: 8, allow_nil: true
   validates :password, nontrivial_password: true, allow_nil: true
+  validate  :ensure_recaptcha, if: :recaptcha
 
   has_many :contacts, dependent: :destroy
   has_many :admin_memberships,
@@ -82,21 +85,28 @@ class User < ActiveRecord::Base
            dependent: :destroy
 
   has_many :polls, foreign_key: :author_id
-  has_many :communities, through: :polls, class_name: "Communities::Base"
-  has_many :visitors, through: :communities
+
+  has_many :identities, class_name: "Identities::Base", dependent: :destroy
+  has_many :communities, through: :identities, class_name: "Communities::Base"
+  has_many :email_communities,
+           -> { where(community_type: [:email, :public]) },
+           through: :polls,
+           source: :communities,
+           class_name: "Communities::Base"
 
   has_many :votes, dependent: :destroy
   has_many :comment_votes, dependent: :destroy
   has_many :stances, as: :participant, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll
+  has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :omniauth_identities, dependent: :destroy
 
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :attachments, dependent: :destroy
   has_many :drafts, dependent: :destroy
+  has_many :login_tokens, dependent: :destroy
 
   has_one :deactivation_response,
           class_name: 'UserDeactivationResponse',
@@ -121,26 +131,38 @@ class User < ActiveRecord::Base
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
   scope :email_proposal_closing_soon_for, -> (group) {
-    active.
-    joins(:memberships).
-    where('memberships.group_id = ?', group.id).
-    where('users.email_when_proposal_closing_soon = ?', true)
+     email_when_proposal_closing_soon
+    .joins(:memberships)
+    .where('memberships.group_id': group.id)
   }
 
-  def user_id
-    id
+  def slack_identity
+    identities.find_by(identity_type: :slack)
   end
 
-  def participation_token
-    nil
+  def facebook_identity
+    identities.find_by(identity_type: :facebook)
+  end
+
+  def associate_with_identity(identity)
+    if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
+      existing.update(access_token: identity.access_token)
+    else
+      identities.push(identity)
+      identity.assign_logo! if avatar_kind == 'initials'
+    end
+  end
+
+  def remember_me
+    true
   end
 
   def is_logged_in?
     true
   end
 
-  def first_name
-    name.split(' ').first
+  def email_status
+    if deactivated_at.present? then :inactive else :active end
   end
 
   def name_and_email
@@ -154,14 +176,6 @@ class User < ActiveRecord::Base
 
   delegate :can?, :cannot?, :to => :ability
 
-  def is_group_admin?(group=nil)
-    if group.present?
-      admin_memberships.where(group_id: group.id).any?
-    else
-      admin_memberships.any?
-    end
-  end
-
   def is_member_of?(group)
     !!memberships.find_by(group_id: group&.id)
   end
@@ -170,16 +184,12 @@ class User < ActiveRecord::Base
     !!memberships.find_by(group_id: group&.id, admin: true)
   end
 
-  def time_zone_city
-    TimeZoneToCity.convert time_zone
+  def first_name
+    self.name.to_s.split(' ').first
   end
 
   def time_zone
     self[:time_zone] || 'UTC'
-  end
-
-  def group_membership(group)
-    memberships.for_group(group).first
   end
 
   def self.find_by_email(email)
@@ -199,12 +209,13 @@ class User < ActiveRecord::Base
     ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
   end
 
-  def subgroups
-    groups.where("parent_id IS NOT NULL")
+  def self.demo_bot
+    find_by(email: demo_bot_email) ||
+    create!(email: demo_bot_email, name: 'Loomio Demo bot', avatar_kind: :gravatar)
   end
 
-  def parent_groups
-    groups.where("parent_id IS NULL").order("LOWER(name)")
+  def self.demo_bot_email
+    ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
   end
 
   def name
@@ -254,6 +265,11 @@ class User < ActiveRecord::Base
 
   def ensure_email_api_key
     self.email_api_key ||= SecureRandom.hex(16)
+  end
+
+  def ensure_recaptcha
+    return if Clients::Recaptcha.instance.validate(self.recaptcha)
+    self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
 
   def ensure_unsubscribe_token

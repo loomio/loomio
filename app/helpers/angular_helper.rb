@@ -1,14 +1,16 @@
 module AngularHelper
+  include PendingActionsHelper
+  EMOJIS = YAML.load_file(Rails.root.join("config", "emojis.yml")).as_json
 
   def boot_angular_ui
-    redirect_to :browser_not_supported and return if browser.ie? && browser.version.to_i < 10
-    metadata                                      if browser.bot? && respond_to?(:metadata, true)
+    metadata if browser.bot? && respond_to?(:metadata, true)
     app_config
     current_user.update(angular_ui_enabled: true) unless current_user.angular_ui_enabled?
     render 'layouts/angular', layout: false
   end
 
   def client_asset_path(filename)
+    filename = filename.to_s.gsub(".min", '') if Rails.env.development?
     ['', :client, angular_asset_folder, filename].join('/')
   end
 
@@ -21,44 +23,45 @@ module AngularHelper
       environment:         Rails.env,
       loadVideos:          (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),
       flash:               flash.to_h,
-      currentUserId:       current_user.id,
       currentVisitorId:    current_visitor.id,
       currentUserLocale:   current_user.locale,
       currentUrl:          request.original_url,
-      canTranslate:        TranslationService.available?,
       permittedParams:     PermittedParamsSerializer.new({}),
       locales:             angular_locales,
-      siteName:            ENV['SITE_NAME'] || 'Loomio',
-      twitterHandle:       ENV['TWITTER_HANDLE'] || '@loomio',
+      siteName:            ENV.fetch('SITE_NAME', 'Loomio'),
+      recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
       baseUrl:             root_url,
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       inlineTranslation: {
-        isAvailable:       TranslationService.available?,
-        supportedLangs:    Translation::SUPPORTED_LANGUAGES
+        isAvailable:       TranslationService.app_key.present?,
+        supportedLangs:    TranslationService.supported_languages
       },
       pageSize: {
-        default:           ENV['DEFAULT_PAGE_SIZE'] || 30,
-        groupThreads:      ENV['GROUP_PAGE_SIZE'],
-        threadItems:       ENV['THREAD_PAGE_SIZE'],
-        exploreGroups:     ENV['EXPLORE_PAGE_SIZE'] || 10
+        default:           ENV.fetch('DEFAULT_PAGE_SIZE', 30),
+        groupThreads:      ENV.fetch('GROUP_PAGE_SIZE',   30),
+        threadItems:       ENV.fetch('THREAD_PAGE_SIZE',  30),
+        exploreGroups:     ENV.fetch('EXPLORE_PAGE_SIZE', 10)
       },
       flashTimeout: {
-        short: (ENV['FLASH_TIMEOUT_SHORT'] || 3500).to_i,
-        long:  (ENV['FLASH_TIMEOUT_LONG']  || 2147483645).to_i
+        short: ENV.fetch('FLASH_TIMEOUT_SHORT', 3500).to_i,
+        long:  ENV.fetch('FLASH_TIMEOUT_LONG', 2147483645).to_i
       },
       drafts: {
-        debounce: (ENV['LOOMIO_DRAFT_DEBOUNCE'] || 750).to_i
+        debounce: ENV.fetch('LOOMIO_DRAFT_DEBOUNCE', 750).to_i
       },
-      oauthProviders: [
-        ({ name: :facebook, href: user_facebook_omniauth_authorize_path } if ENV['FACEBOOK_KEY']),
-        ({ name: :twitter,  href: user_twitter_omniauth_authorize_path  } if ENV['TWITTER_KEY']),
-        ({ name: :google,   href: user_google_omniauth_authorize_path   } if ENV['OMNI_CONTACTS_GOOGLE_KEY']),
-        ({ name: :github,   href: user_github_omniauth_authorize_path   } if ENV['GITHUB_APP_ID'])
-      ].compact,
+      emojis: {
+        defaults: EMOJIS.fetch('default', []).map { |e| ":#{e}:" }
+      },
+      searchFilters: { status: %w(active closed).freeze },
+      pendingIdentity: serialized_pending_identity,
       pollTemplates: Poll::TEMPLATES,
       pollColors:    Poll::COLORS,
-      timeZones:     Poll::TIMEZONES
+      timeZones:     Poll::TIMEZONES,
+      communityProviders: Communities::Base::PROVIDERS,
+      identityProviders: Identities::Base::PROVIDERS.map do |provider|
+        ({ name: provider, href: send("#{provider}_oauth_path") } if ENV["#{provider.upcase}_APP_KEY"])
+      end.compact
     }
   end
 
@@ -68,5 +71,11 @@ module AngularHelper
 
   def angular_asset_folder
     Rails.env.production? ? Loomio::Version.current : :development
+  end
+
+  def serialized_pending_identity
+    Pending::IdentitySerializer.new(pending_identity, root: false).as_json ||
+    Pending::InvitationSerializer.new(pending_invitation, root: false).as_json ||
+    Pending::UserSerializer.new(pending_user, root: false).as_json
   end
 end

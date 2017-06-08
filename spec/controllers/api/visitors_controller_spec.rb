@@ -23,7 +23,7 @@ describe API::VisitorsController do
       visitors_count = Visitor.count
       sign_in admin
 
-      expect { post :create, visitor: new_visitor_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { post :create, visitor: new_visitor_params, poll_id: poll.id }.to change { ActionMailer::Base.deliveries.count }.by(1)
       expect(Visitor.count).to eq visitors_count + 1
       expect(response.status).to eq 200
       expect(Visitor.last.email).to eq new_visitor_params[:email]
@@ -34,7 +34,7 @@ describe API::VisitorsController do
       visitors_count = Visitor.count
       sign_in admin
 
-      expect { post :create, visitor: existing_visitor_params }.to_not change { Visitor.count }
+      expect { post :create, visitor: existing_visitor_params, poll_id: poll.id }.to_not change { Visitor.count }
       expect(response.status).to eq 200
       expect(visitor.reload.revoked).to eq false
     end
@@ -43,14 +43,14 @@ describe API::VisitorsController do
       visitor.update(revoked: true)
       sign_in admin
 
-      expect { post :create, visitor: existing_visitor_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { post :create, visitor: existing_visitor_params, poll_id: poll.id }.to change { ActionMailer::Base.deliveries.count }.by(1)
       expect(response.status).to eq 200
     end
 
     it 'does not allow non-admins to invite a visitor' do
       sign_in user
 
-      expect { post :create, visitor: existing_visitor_params }.to_not change { ActionMailer::Base.deliveries.count }
+      expect { post :create, visitor: existing_visitor_params, poll_id: poll.id }.to_not change { ActionMailer::Base.deliveries.count }
       expect(response.status).to eq 403
     end
   end

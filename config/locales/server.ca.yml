@@ -4,45 +4,43 @@ ca:
       one_at_a_time: Hi ha una altra proposta activa.
   email:
     reset_password:
-      greeting: >
+      greeting: |
         Hola %{name}
-
-        Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de
-        Loomio:
+        Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
       link_text: Reinicieu la contrasenya
-    custom: '%{text}'
+    custom: "%{text}"
     group_email:
-      intro: '%{who} ha fet un anunci a %{group}:'
-    by_who: 'per %{person}'
+      intro: "%{who} ha fet un anunci a %{group}:"
+    by_who: per %{person}
     reply_to_this_discussion: Responeu a aquesta discussió
     to_join_discussion:
-      subject: '%{who} vol que us uniu a la discussió a Loomio'
+      subject: "%{who} vol que us uniu a la discussió a Loomio"
       content: 'Heu estat convidats a participar en la discussió: %{discussion}'
-      message_intro: '%{who} diu:'
+      message_intro: "%{who} diu:"
       link: Uniu-vos a la discussió
-    value_proposition: Loomio és un lloc per a grups per a prendre decisions conjuntament
+    value_proposition: "Loomio és un lloc per a grups per a prendre decisions conjuntament"
     view_group: Mostra el grup
     to_join_group:
-      subject: '%{member} us ha convidat a unir-vos a %{group_name} a Loomio'
-      invitation_text: '%{member} us ha convidat a unir-vos al seu grup %{group_name}'
-      invitation_text_html: us ha convidat a unir-vos al seu grup
+      subject: "%{member} us ha convidat a unir-vos a %{group_name} a Loomio"
+      invitation_text: "%{member} us ha convidat a unir-vos al seu grup %{group_name}"
+      invitation_text_html: "us ha convidat a unir-vos al seu grup"
       link_help: "Cliqueu a l'enllaç de sota per acceptar la invitació:"
-      accept_invitation: Accepta la invitació
+      accept_invitation: "Accepta la invitació"
     resend_to_join_group:
-      subject: '%{member} encara està esperant que us uniu a %{group_name} a Loomio'
+      subject: "%{member} encara està esperant que us uniu a %{group_name} a Loomio"
     to_start_group:
-      subject: 'Configureu el nou grup de Loomio: %{group_name}'
-      hi: 'Hola %{name},'
+      subject: "Configureu el nou grup de Loomio: %{group_name}"
+      hi: "Hola %{name},"
       intro: "Cliqueu a l'enllaç de sota per configurar el grup %{group_name}"
-      intro_html: 'Cliqueu a sota per configurar el grup:'
-      start_group: Crea un grup
-      closing_message: 'Si necessiteu ajuda o teniu algun dubte, responeu a aquest correu.'
-      thanks: 'Gràcies,'
+      intro_html: "Cliqueu a sota per configurar el grup:"
+      start_group: "Crea un grup"
+      closing_message: "Si necessiteu ajuda o teniu algun dubte, responeu a aquest correu."
+      thanks: "Gràcies,"
       loomio_team: "L'equip de Loomio"
     user_added_to_group:
-      subject: '%{who} us ha afegit a %{which_group} a Loomio'
-      content: '%{who} us ha afegit a %{which_group}'
-      content_html: '<strong>%{who}</strong> us ha afegit a <strong>%{which_group}</strong>.'
+      subject: "%{who} us ha afegit a %{which_group} a Loomio"
+      content: "%{who} us ha afegit a %{which_group}"
+      content_html: "<strong>%{who}</strong> us ha afegit a <strong>%{which_group}</strong>."
       link_help: "Cliqueu a l'enllaç de sota per a anar al grup:"
     unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
@@ -50,9 +48,9 @@ ca:
     view_discussion: Fes click aquí per veure aquesta discussió
     view_proposal: Veure aquesta proposta a Loomio
     create_discussion:
-      intro: '%{who} ha creat una discussió:'
+      intro: "%{who} ha creat una discussió:"
     create_proposal:
-      intro: "S'ha creat una nova proposta a un grup de Loomio al què pertanys."
+      intro: S'ha creat una nova proposta a un grup de Loomio al què pertanys.
       closes_in: Tanca en
       subject: 'Nova proposta: %{which}'
     daily_activity:
@@ -63,23 +61,23 @@ ca:
       subject: Ahir a Loomio
       headlines: Capçaleres
       mark_as_read: Marca com a llegit
-      heres_what_happened: Això és el que ahir va passar a Loomio.
+      heres_what_happened: "Això és el que ahir va passar a Loomio."
     group_membership_approved:
-      view_group_text: 'Cliqueu a sota per veure el grup a Loomio:'
+      view_group_text: "Cliqueu a sota per veure el grup a Loomio:"
     membership_request:
-      intro: '%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio.'
-      subject: '%{who} ha demanat unir-se a %{which_group}'
+      intro: "%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio."
+      subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: Pots aprovar o denegar la sol·licitud aquí
     mentioned:
-      context: '%{author_name} us ha mencionat en la discussió %{discussion_title}'
+      context: "%{author_name} us ha mencionat en la discussió %{discussion_title}"
     new_motion_created:
       subject: 'Proposta: %{proposal_title}'
       context: "s'ha creat una proposta a %{group_full_name}:"
     proposal_closed:
-      proposal_has_closed: "La proposta s'ha tancat."
-      specify_outcome_and_notify_group: "Detalla un resultat i envia'l al grup!"
-      specify_outcome_and_notify_group_html: "Detalla un resultat i envia'l al grup!"
-      subject: 'Proposta tancada - %{which}'
+      proposal_has_closed: La proposta s'ha tancat.
+      specify_outcome_and_notify_group: Detalla un resultat i envia'l al grup!
+      specify_outcome_and_notify_group_html: Detalla un resultat i envia'l al grup!
+      subject: Proposta tancada - %{which}
     proposal_outcome:
       subject: 'Resultat de la proposta: %{motion}'
     proposal_closing_soon:
@@ -87,21 +85,21 @@ ca:
       closes_at: Tanca a
       closes_in: Tanca en
       subject: 'Es tancarà en 24 hores: %{proposal_title}'
-      headline: 'La proposta de %{author} a %{group} es tancarà aviat:'
+      headline: "La proposta de %{author} a %{group} es tancarà aviat:"
       summary: Sumari
     thread_mailer:
-      change_preferences: Canvia les preferències de correu electrònic
+      change_preferences: 'Canvia les preferències de correu electrònic'
       motion_closing_soon: 'La proposta es tancarà en 24 hores:'
       proposal_closed: 'Proposta tancada:'
-      outcome_created: '%{who} ha compartit el resultat de la proposta:'
+      outcome_created: "%{who} ha compartit el resultat de la proposta:"
       you_agreed: '%{past_tense_position}'
     analytics:
       heart: "❤ de l'equip de Loomio"
       user_table:
-        motions_created: Propostes
-        discussions_created: Discussions
-        comments_created: Comentaris
-        votes_created: Vots
+        motions_created: "Propostes"
+        discussions_created: "Discussions"
+        comments_created: "Comentaris"
+        votes_created: "Vots"
   footer:
     about: Quant a
     blog: Bloc
@@ -120,12 +118,12 @@ ca:
     group_description: Descripció del grup
     group_description_placeholder: Descriviu el propòsit del grup per tal de que els membres coneguin perquè estan aquí.
     success:
-      header: 'Ja quasi ho tens! Comprova el teu correu electrònic.'
+      header: Ja quasi ho tens! Comprova el teu correu electrònic.
       email_not_arrived: No us ha arribat el correu electrònic?
     start_making_decisions: 'Per començar a prendre decisions junts a Loomio, configureu un grup gratuïtament:'
   pricing_page:
     standard: Estàndard
-    free_trial_html: 'Us demanarem que escolliu un pla de pagament després dels <span>30 dies de prova</span>. No és necessari cap targeta de crèdit.'
+    free_trial_html: Us demanarem que escolliu un pla de pagament després dels <span>30 dies de prova</span>. No és necessari cap targeta de crèdit.
     unlimited_members: membres il·limitats
     unlimited_decisions: decisions il·limitades
     email_support: assistència per correu electrònic
@@ -137,7 +135,7 @@ ca:
       per exemple: <strong>elteugrup</strong>.loomio.org
     usage_statistics: ús de les estadístiques
   password_reset:
-    forbidden_passwords: 'Les contrasenyes com "password" estan prohibides per raons de seguretat.'
+    forbidden_passwords: Les contrasenyes com "password" estan prohibides per raons de seguretat.
   contact_page:
     contact_us: Contacteu
     contact_form: Formulari de contacte

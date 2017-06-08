@@ -24,8 +24,8 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
         FlashService.dismiss()
         model.resetDraft() if options.drafts and AbilityService.isLoggedIn()
         if options.flashSuccess?
-          options.flashSuccess = options.flashSuccess() if typeof options.flashSuccess is 'function'
-          FlashService.success options.flashSuccess, calculateFlashOptions(options.flashOptions)
+          flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
+          FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
         scope.$close()                                          if !options.skipClose? and typeof scope.$close is 'function'
         options.successCallback(response)                       if typeof options.successCallback is 'function'
         $rootScope.$broadcast options.successEvent              if options.successEvent
@@ -33,6 +33,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
     failure = (scope, model, options) ->
       (response) ->
         FlashService.dismiss()
+        options.failureCallback(response)                       if typeof options.failureCallback is 'function'
         model.setErrors response.data.errors                    if _.contains([401,422], response.status)
         $rootScope.$broadcast errorTypes[response.status] or 'unknownError',
           model: model
@@ -53,7 +54,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
           success(scope, model, options),
           failure(scope, model, options),
         ).finally(
-          cleanup(scope)
+          cleanup(scope, model, options)
         )
 
     upload: (scope, model, options = {}) ->

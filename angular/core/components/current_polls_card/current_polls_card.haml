@@ -1,0 +1,8 @@
+.current-polls-card.lmo-card
+  .lmo-flex.lmo-flex__space-between
+    %h2.lmo-card-heading.lmo-truncate-text{translate: "current_polls_card.title"}
+    %md-button.md-primary.md-raised.current-polls-card__new-poll-button{ng-click: "startPoll()", translate: "current_polls_card.start_poll"}
+  %loading{ng-if: "fetchRecordsExecuting"}
+  .current-polls-card__polls{ng-if: "!fetchRecordsExecuting"}
+    .current-polls-card__no-polls.poll-common-helptext{ng-if: "!polls().length", translate: "current_polls_card.no_polls"}
+    %poll_common_preview{poll: "poll", ng-repeat: "poll in polls() track by poll.id"}

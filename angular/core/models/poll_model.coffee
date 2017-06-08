@@ -12,7 +12,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []
-      @customFields.dots_per_person = 8 if @pollType == 'dot_vote'
 
     # the polls which haven't closed have the highest importance
     # (and so have the lowest value here)
@@ -44,9 +43,13 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @hasMany   'pollOptions'
       @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
       @hasMany   'pollDidNotVotes'
+      @hasMany   'communities'
 
     group: ->
-      @discussion().group() if @discussion()
+      if @discussion()
+        @discussion().group()
+      else
+        @recordStore.groups.find(@groupId)
 
     voters: ->
       @recordStore.users.find(_.pluck(@stances(), 'userId'))
@@ -61,10 +64,19 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       _.some @attachments()
 
     communitySize: ->
+      @membersCount() + (@visitorsCount || 0)
+
+    membersCount: ->
       if @group()
         @group().membershipsCount
       else
-        0
+        1 # <-- this is the author
+
+    announcementSize: (action) ->
+      switch action or @notifyAction()
+        when 'publish' then @communitySize()
+        when 'edit'    then @stancesCount
+        else                0
 
     percentVoted: ->
       (100 * @stancesCount / @communitySize()).toFixed(0) if @communitySize() > 0
@@ -77,7 +89,10 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     undecidedMembers: ->
       if @isActive()
-        _.difference(@group().members(), @voters())
+        if @group()
+          _.difference(@group().members(), @voters())
+        else
+          _.difference([@author()], @voters())
       else
         @recordStore.users.find(_.pluck(@pollDidNotVotes(), 'userId'))
 
@@ -98,9 +113,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     uniqueStances: (order, limit) ->
       _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
-    group: ->
-      @discussion().group() if @discussion()
-
     cookedDetails: ->
       MentionLinkService.cook(@mentionedUsernames, @details)
 
@@ -114,4 +126,26 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @customFields.goal or @communitySize()
 
     close: =>
-      @remote.postMember(@id, 'close')
+      @remote.postMember(@key, 'close')
+
+    publish: (community, message) =>
+      @remote.postMember(@key, 'publish', community_id: community.id, message: message).then =>
+        @published = true
+
+    createVisitors: ->
+      @processing = true
+      @remote.postMember(@key, 'create_visitors', emails: @customFields.pending_emails.join(',')).finally =>
+        @processing = false
+
+    toggleSubscription: =>
+      @remote.postMember(@key, 'toggle_subscription')
+
+    enableCommunities: ->
+      (@group() and @group().features.enable_communities) or
+      (@author() and @author().experiences.enable_communities)
+
+    notifyAction: ->
+      if @isNew()
+        'publish'
+      else
+        'edit'

@@ -2,18 +2,19 @@ angular.module('loomioApp').factory 'PollRecordsInterface', (BaseRecordsInterfac
   class PollRecordsInterface extends BaseRecordsInterface
     model: PollModel
 
-    fetchByDiscussion: (discussionKey, options = {}) ->
-      options['discussion_id'] = discussionKey
-      @fetch
-        params: options
-
-    fetchClosedByGroup: (groupKey, options = {}) ->
-      @search _.merge(options, {group_key: groupKey, status: 'inactive'})
+    fetchFor: (model, options = {}) ->
+      options["#{model.constructor.singular}_key"] = model.key
+      @search options
 
     search: (options = {}) ->
       @fetch
         path: 'search'
         params: options
 
-    searchResultsCount: ->
-      @fetch path: 'search_results_count'
+    searchResultsCount: (options = {}) ->
+      @fetch
+        path: 'search_results_count'
+        params: options
+
+    fetchByGroup: (groupKey, options = {}) ->
+      @search _.merge(options, {group_key: groupKey})

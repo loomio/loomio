@@ -114,6 +114,7 @@ class ThreadMailer < BaseMailer
   private
 
   def send_thread_email(subject_key: nil, subject_params: nil)
+    return if @recipient == User.helper_bot
     @following = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
     @utm_hash = utm_hash
 

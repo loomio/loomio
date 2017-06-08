@@ -18,6 +18,7 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_vote,
              :motions_count,
              :closed_motions_count,
+             :polls_count,
              :closed_polls_count,
              :proposal_outcomes_count,
              :discussions_count,
@@ -41,7 +42,8 @@ class GroupSerializer < ActiveModel::Serializer
              :enable_experiments,
              :experiences,
              :features,
-             :recent_activity_count
+             :recent_activity_count,
+             :identity_id
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
@@ -67,7 +69,7 @@ class GroupSerializer < ActiveModel::Serializer
 
   def cover_urls
     {
-      small:  cover_photo.url(:card),
+      small:  cover_photo.url(:desktop),
       medium: cover_photo.url(:desktop),
       large:  cover_photo.url(:largedesktop)
     }

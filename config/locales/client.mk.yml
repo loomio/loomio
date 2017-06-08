@@ -1,131 +1,128 @@
 mk:
   common:
-    group: Група
-    groups: Групи
+    group: 'Група'
+    groups: 'Групи'
     privacy:
-      public: Јавно
+      public: 'Јавно'
     date_range:
-      today: Денес
+      today: 'Денес'
     models:
-      proposal: Предлог
+      proposal: 'Предлог'
     action:
-      save: Зачувај
-      edit: Измени
-      like: Ми се допаѓа
-      unlike: Не ми се допаѓа
-      cancel: Откажи
+      save: 'Зачувај'
+      edit: 'Измени'
+      like: 'Ми се допаѓа'
+      unlike: 'Не ми се допаѓа'
+      cancel: 'Откажи'
   error_page:
-    forbidden: Немате дозвола за да го направите ова.
+    forbidden: 'Немате дозвола за да го направите ова.'
   proposal_outcome_panel:
     heading: Исход
   proposal_outcome_form:
     outcome_label: Исход на предлогот
   comment_form:
-    edit_comment: Измени го коментарот
-    delete_comment: Избриши го коментарот
-    confirm_delete_message: Дали си сигурен/а дека сакаш да го избришиш коментарот?
+    edit_comment: 'Измени го коментарот'
+    delete_comment: 'Избриши го коментарот'
+    confirm_delete_message: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
   sidebar:
-    edit_profile: Измени го профилот
-    help: Помош
-    sign_out: Одјави се
+    edit_profile: 'Измени го профилот'
+    help: 'Помош'
+    sign_out: 'Одјави се'
   navbar:
     search:
-      placeholder: Пребарувај
-      discussions: Дискусии
+      placeholder: 'Пребарувај'
+      discussions: 'Дискусии'
   notifications:
-    header: Известувања
+    header: "Известувања"
   position_buttons_panel:
     heading: Кажете што имате
   vote_form:
     heading: Кажете што имате
-    i_agree: Се согласувам
-    i_abstain: Апстинирам
-    i_disagree: Не се согласувам
+    i_agree: 'Се согласувам'
+    i_abstain: 'Апстинирам'
+    i_disagree: 'Не се согласувам'
   proposal_positions_panel:
     heading: Позиции
   close_proposal_form:
-    close_proposal: Затвори го предлогот
+    close_proposal: 'Затвори го предлогот'
   proposal_form:
-    edit_proposal: Измени го предлогот
-    title_label: Наслов
-    closes_at_label: Се затвора во
-    details_label: Детали
+    edit_proposal: 'Измени го предлогот'
+    title_label: 'Наслов'
+    closes_at_label: 'Се затвора во'
+    details_label: 'Детали'
   discussion_form:
-    group_label: Група
-    title_label: Наслов
-    context_label: Контекст
-    privacy_label: Приватност
+    group_label: 'Група'
+    title_label: 'Наслов'
+    context_label: 'Контекст'
+    privacy_label: 'Приватност'
   proposal_expanded:
-    edit_proposal: Измени го предлогот
-    close_proposal: Затвори го предлогот
+    edit_proposal: 'Измени го предлогот'
+    close_proposal: 'Затвори го предлогот'
   join_group_button:
     join_group: Приклучи се во групата
-    ask_to_join_group: Побарај да се придружиш на групата
   membership_request_form:
     heading: Побарај да се придружиш на групата
     name_label: Име
     email_label: Email
-    submit_button: Побарај да се придружиш на групата
   group_page:
     thread_list:
       empty:
-        membership_is_invitation_only: За да и се приклучите на групата треба да бидете поканети од страна на неко член.
-        membership_is_invitation_by_admin_only: За да и се приклучите на групата треба да бидете поканети од координатор.
-    discussions: Дискусии
-    invite_people: Покани луѓе
-    options_label: Опции
+        membership_is_invitation_only: "За да и се приклучите на групата треба да бидете поканети од страна на неко член."
+        membership_is_invitation_by_admin_only: "За да и се приклучите на групата треба да бидете поканети од координатор."
+    discussions: 'Дискусии'
+    options_label: 'Опции'
     options:
-      label: Опции
+      label: 'Опции'
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај
   memberships_page:
-    members: Членови
-    name_label: Име
-    coordinator_label: Координатор
-    remove_member_label: Избриши
+    members: 'Членови'
+    name_label: 'Име'
+    coordinator_label: 'Координатор'
+    remove_member_label: 'Избриши'
   profile_page:
-    profile: Профил
-    picture_label: Фотографија
-    name_label: Име
-    email_label: Email
-    locale_label: Јазик
+    profile: 'Профил'
+    picture_label: 'Фотографија'
+    name_label: 'Име'
+    email_label: 'Email'
+    locale_label: 'Јазик'
   dashboard_page:
     no_groups:
       or: или
     mark_as_read: Означи го како прочитано
     threads_from:
-      today: Денес
+      today: 'Денес'
   inbox_page:
     no_groups:
       or: или
   thread_group:
-    aria_label: Име на групата
+    aria_label: 'Име на групата'
   delete_comment_dialog:
-    title: Избриши го коментарот
-    question: Дали си сигурен/а дека сакаш да го избришиш коментарот?
-    confirm: Избриши го коментарот
+    title: 'Избриши го коментарот'
+    question: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
+    confirm: 'Избриши го коментарот'
   new_comment_item:
     context_menu:
-      edit_comment: Измени го коментарот
-      delete_comment: Избриши го коментарот
+      edit_comment: 'Измени го коментарот'
+      delete_comment: 'Избриши го коментарот'
   contact_message_form:
-    name_label: Твоето име
-    email_label: Твојата електронска пошта
-    message_label: Твојата порака
+    name_label: 'Твоето име'
+    email_label: 'Твојата електронска пошта'
+    message_label: 'Твојата порака'
   help_page:
-    different_ways: Различни начини да го користиш Loomio
-    get_in_touch: Останете во контакт
-    getting_started: Започни
-    have_your_say: Кажете што имате
-    have_a_discussion: Дискутирајте
-    help: Помош
-    how_it_works: Како работи
-    join_the_community: Придружи се на заедницата
-    keep_up_to_date: Бидете во тек
-    make_a_decision: Направи одлука
-    positions_agree_description: '<span>Се сложувам</span> значи дека сте задоволни со предлогот.'
-    positions_abstain_description: '<span>Воздржан</span> значи дека сте несигурни или дека е во ред групата да одлучи без вас.'
-    video_id: '52025402'
-    video_tutorial: Видео туторијал
-    video_tutorial_description: Провери го видеото за брза демонстрација како се користи Loomio.
+    different_ways: 'Различни начини да го користиш Loomio'
+    get_in_touch: "Останете во контакт"
+    getting_started: "Започни"
+    have_your_say: "Кажете што имате"
+    have_a_discussion: "Дискутирајте"
+    help: "Помош"
+    how_it_works: "Како работи"
+    join_the_community: "Придружи се на заедницата"
+    keep_up_to_date: "Бидете во тек"
+    make_a_decision: "Направи одлука"
+    positions_agree_description: "<span>Се сложувам</span> значи дека сте задоволни со предлогот."
+    positions_abstain_description: "<span>Воздржан</span> значи дека сте несигурни или дека е во ред групата да одлучи без вас."
+    video_id: "52025402"
+    video_tutorial: "Видео туторијал"
+    video_tutorial_description: "Провери го видеото за брза демонстрација како се користи Loomio."
