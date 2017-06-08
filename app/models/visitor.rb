@@ -2,7 +2,7 @@ class Visitor < ActiveRecord::Base
   include NullUser
   include HasAvatar
   include UsesWithoutScope
-  include EmailAddressBlacklist
+  include NoForbiddenEmails
 
   has_secure_token :participation_token
 

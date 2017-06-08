@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   include HasAvatar
   include UsesWithoutScope
   include SelfReferencing
-  include EmailAddressBlacklist
+  include NoForbiddenEmails
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
