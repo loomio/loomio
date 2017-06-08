@@ -9,6 +9,11 @@ class PollsController < ApplicationController
     end
   end
 
+  def embed
+    @info = PollEmailInfo.new(poll: load_and_authorize(:poll), action_name: :embed)
+    render layout: false
+  end
+
   def unsubscribe
     PollService.toggle_subscription(poll: resource, actor: current_user) if is_subscribed?
   end
@@ -26,15 +31,5 @@ class PollsController < ApplicationController
   def community_bot_user
     return unless params[:identifier]
     Communities::Base.with_identity.find_by(identifier: params[:identifier])&.user
-  end
-
-  def embed
-    @info = PollEmailInfo.new(
-      recipient:   LoggedOutUser.new,
-      poll:        load_and_authorize(:poll),
-      actor:       LoggedOutUser.new,
-      action_name: :embed
-    )
-    render layout: false
   end
 end

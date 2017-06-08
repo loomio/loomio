@@ -8,10 +8,10 @@ class PollEmailInfo
     "some reason"
   end
 
-  def initialize(recipient:, poll:, actor: nil, action_name:, eventable: nil)
+  def initialize(recipient: LoggedOutUser.new, poll:, actor: LoggedOutUser.new, action_name:, eventable: nil)
     @recipient   = recipient
     @poll        = poll
-    @actor       = actor || LoggedOutUser.new
+    @actor       = actor
     @eventable   = eventable
     @action_name = action_name
   end

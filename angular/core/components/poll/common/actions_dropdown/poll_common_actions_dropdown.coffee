@@ -9,6 +9,7 @@ angular.module('loomioApp').directive 'pollCommonActionsDropdown', ->
       AbilityService.canEditPoll($scope.poll)
 
     $scope.canEmbedPoll = ->
+      $scope.poll.anyoneCanParticipate and
       AbilityService.canSharePoll($scope.poll)
 
     $scope.canClosePoll = ->
