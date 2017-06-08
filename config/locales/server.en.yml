@@ -215,15 +215,20 @@ en:
     plus: Pro
     free_trial_html: We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required.
     get_started_for_free: Get started for free
-    gift_body: Donation supported plan for community groups.
-    standard_body_html: Everything you need for <nobr>one group.</nobr>
-    pro_body_html: For organisations with <nobr>multiple groups.</nobr>
+    gift_body: Everything you need to make effective decisions with your group.
+    standard_body_html: Make decisions in Slack
+    pro_body_html: Make decisions across your organisation
     one_group: one group
     unlimited_members: unlimited members
     unlimited_decisions: unlimited decisions
+    coming_facebook: Facebook integration coming soon.
     email_support: email support
+    coming_soon: Coming soon
+    analytics_report: Analytics report
+    data_export: Data export (CSV or XLS)
     slack_integration_html: |
       <strong>Slack</strong> integration
+    customer_support_html: Customer support
     standard_price_html: '<strong>$19</strong>/month'
     gift_price_html: '<strong>$0</strong>'
     plus_includes_standard: 'Everything in Standard, plus:'
@@ -231,9 +236,9 @@ en:
     multiple_groups: "up to 10 groups"
     premium_support: premium support
     help_with_setup: help with initial setup
+    ldap_coming_soon: ActiveDirectory/LDAP coming soon
     custom_subdomain: custom subdomain
     analytics_reports: analytics reports
-    data_export: data export
     contact_us_html: |
       Prices are in US dollars, plus sales tax where applicable. Need something else? <a href="/contact">Let's talk!</a>
 
