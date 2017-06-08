@@ -43,7 +43,6 @@
     "angular-scroll": "~0.6.5",
     "angular-translate": "~2.15.1",
     "angular-translate-loader-url": "~2.7.2",
-    "angular-ui-bootstrap": "~> 0.14.3",
     "angular_record_store": "2.7.8",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",

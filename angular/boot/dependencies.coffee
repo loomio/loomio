@@ -4,7 +4,6 @@ if (bowser.safari and bowser.version < 9) or
 
 angular.module('loomioApp', [
   'ngNewRouter',
-  'ui.bootstrap',
   'pascalprecht.translate',
   'ngSanitize',
   'hc.marked',
