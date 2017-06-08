@@ -11,6 +11,8 @@ angular.module('loomioApp').directive 'pollCommonCard', (Session, Records, Loadi
     $scope.$on 'showResults', ->
       $scope.buttonPressed = true
 
+    LoadingService.listenForLoading $scope
+
     $scope.showResults = ->
       $scope.buttonPressed || PollService.hasVoted(Session.participant(), $scope.poll) || $scope.poll.isClosed()
 

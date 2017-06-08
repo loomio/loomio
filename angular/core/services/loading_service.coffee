@@ -7,3 +7,7 @@ angular.module('loomioApp').factory 'LoadingService', (Records) ->
         return if controller[executing]
         controller[executing] = true
         loadingFunction(args...).finally -> controller[executing] = false
+
+    listenForLoading: (scope) ->
+      scope.$on 'processing',     -> scope.isDisabled = true
+      scope.$on 'doneProcessing', -> scope.isDisabled = false
