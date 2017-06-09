@@ -4,6 +4,7 @@
       %td
       %td.align-center
         %strong Name
+      %outlet{name: "membership-panel-title-fields"}
       %td.align-center{ng-if: "canAdministerGroup()"}
         %strong Coordinator
       %td.align-center{ng-if: "canAdministerGroup()"}
@@ -15,6 +16,7 @@
       %td.lmo-full-width
         %a{lmo-href-for: "membership.user()"} {{::membership.user().name}}
         %div @{{::membership.user().username}}
+      %outlet{name: "membership-panel-custom-fields", model: "membership"}
       %td.align-center{ng-if: "canAdministerGroup()"}
         %md-checkbox{ng-model: "membership.admin", ng-change: "toggleAdmin(membership)", ng-disabled: "!canToggleAdmin(membership)"}
       %td.align-center{ng-if: "canAdministerGroup()"}
