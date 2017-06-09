@@ -15,9 +15,9 @@ class LoggedOutUser
   NIL_METHODS.each   { |method| define_method(method, -> { nil }) }
   FALSE_METHODS.each { |method| define_method(method, -> { false }) }
 
-  # def errors
-  #   ActiveModel::Errors.new self
-  # end
+  def errors
+    ActiveModel::Errors.new self
+  end
 
   def avatar_url(size = nil)
     nil
