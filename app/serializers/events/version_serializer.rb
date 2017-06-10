@@ -3,6 +3,6 @@ class Events::VersionSerializer < Events::BaseSerializer
   has_many :attachments, serializer: AttachmentSerializer, root: :attachments
 
   def attachments
-    object.eventable.item.attachments
+    object.eventable.item&.attachments
   end
 end
