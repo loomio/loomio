@@ -359,6 +359,18 @@ img.emojione {
   height: 20px;
 }
 
+@media (max-width: $small-max-px) {
+  .lmo-desktop-only {
+    display: none;
+  }
+}
+
+@media (min-width: $small-max-px) {
+  .lmo-mobile-only {
+    display: none;
+  }
+}
+
 @media (max-width: $tiny-max-px) {
   .md-open-menu-container {
     left: 0     !important;

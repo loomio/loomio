@@ -5,3 +5,12 @@
 .memberships-panel__avatar {
   margin-right: 8px;
 }
+
+.memberships-panel__small-text {
+  @include fontSmall;
+  color: $grey-on-grey;
+}
+
+.memberships-panel__name {
+  line-height: 24px;
+}

@@ -17,6 +17,11 @@ loomio_content_preview:
 loomio_buyer_experience:
   repo:         loomio/loomio_buyer_experience
 
+loomio_email_members:
+  plans:
+    - standard
+    - plus
+
 loomio_onboarding:
   repo:         loomio/loomio_onboarding
   branch:       group-form-update

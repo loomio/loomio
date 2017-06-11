@@ -1,27 +1,31 @@
-%table.memberships-panel
-  %thead
-    %tr
-      %td
-      %td.align-center
-        %strong Name
-      %outlet{name: "membership-panel-title-fields"}
-      %td.align-center{ng-if: "canAdministerGroup()"}
-        %strong Coordinator
-      %td.align-center{ng-if: "canAdministerGroup()"}
-        %strong Remove
-  %tbody
-    %tr{ng-repeat: "membership in memberships() | orderBy: '-admin' track by membership.id", data-username: "{{membership.user().username}}"}
-      %td
-        %user_avatar.memberships-panel__avatar{user: "membership.user()", size: "medium", coordinator: "membership.admin"}
-      %td.lmo-full-width
-        %a{lmo-href-for: "membership.user()"} {{::membership.user().name}}
-        %div @{{::membership.user().username}}
-      %outlet{name: "membership-panel-custom-fields", model: "membership"}
-      %td.align-center{ng-if: "canAdministerGroup()"}
-        %md-checkbox{ng-model: "membership.admin", ng-change: "toggleAdmin(membership)", ng-disabled: "!canToggleAdmin(membership)"}
-      %td.align-center{ng-if: "canAdministerGroup()"}
-        %md-button.memberships-page__remove-link{ng-if: "canRemoveMembership(membership)", ng-click: "openRemoveForm(membership)"}
-          %i.material-icons remove_circle
-    -# %tr{ng-if: "canAddMembers()"}
-    -#   .md-button.md-raised.md-primary{ng-click: "invitePeople()"}
-    -#     %span{translate: "group_page.invite_people" }
+.lmo-blank
+  %table.memberships-panel
+    %thead
+      %tr
+        %td
+        %td.align-center
+          %strong Name
+        %td.align-center.lmo-desktop-only
+          %strong Locale
+        %td.align-center{ng-if: "canAdministerGroup()"}
+          %strong Coordinator
+        %td.align-center{ng-if: "canAdministerGroup()"}
+          %strong Remove
+    %tbody
+      %tr{ng-repeat: "membership in memberships() | orderBy: '-admin' track by membership.id", data-username: "{{membership.user().username}}"}
+        %td
+          %user_avatar{user: "membership.user()", size: "medium", coordinator: "membership.admin"}
+        %td.lmo-full-width.memberships-panel__name
+          %div
+            %strong>
+              %a{lmo-href-for: "membership.user()"} {{::membership.user().name}}
+            %span> ·
+            %span.memberships-panel__small-text> @{{::membership.user().username}}
+          %outlet{name: "after-membership-name", model: "membership"}
+        %td.align-center.lmo-desktop-only
+          %span> {{membership.user().locale}}
+        %td.align-center{ng-if: "canAdministerGroup()"}
+          %md-checkbox{ng-model: "membership.admin", ng-change: "toggleAdmin(membership)", ng-disabled: "!canToggleAdmin(membership)"}
+        %td.align-center{ng-if: "canAdministerGroup()"}
+          %md-button.memberships-page__remove-link{ng-if: "canRemoveMembership(membership)", ng-click: "openRemoveForm(membership)"}
+            %i.material-icons clear
