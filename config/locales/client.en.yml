@@ -812,6 +812,7 @@ en:
     email: Email
     invitation_link: Invitation link
     sent: Sent
+    revoke: Revoke
 
   cancel_invitation_form:
     heading: Cancel invitation

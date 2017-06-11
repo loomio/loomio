@@ -10,7 +10,6 @@
         %td.align-center{ng-if: "canAdministerGroup()"}
           %strong Coordinator
         %td.align-center{ng-if: "canAdministerGroup()"}
-          %strong Remove
     %tbody
       %tr{ng-repeat: "membership in memberships() | orderBy: '-admin' track by membership.id", data-username: "{{membership.user().username}}"}
         %td
