@@ -4,8 +4,8 @@ loomio_webhooks:
 loomio_org_plugin:
   repo:         loomio/loomio_org_plugin
 
-# loomio_tags:
-#   repo:         loomio/loomio_tags
+loomio_tags:
+  repo:         loomio/loomio_tags
 
 loomio_truncate_comment:
   repo:         loomio/loomio_truncate_comment
