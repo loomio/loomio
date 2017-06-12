@@ -3,18 +3,13 @@ require 'rails_helper'
 describe API::VisitorsController do
   let(:admin) { create :user }
   let(:user) { create :user }
-  let!(:poll) { create :poll, author: admin, communities: [community] }
-  let(:community) { Communities::Email.create }
-  let(:visitor) { create :visitor, community: community }
+  let!(:poll) { create :poll, author: admin }
+  let(:visitor) { create :visitor, community: poll.community_of_type(:email) }
   let(:new_visitor_params) {{
-    community_id: community.id,
     name: "Michael Scott",
     email: "michael@dundermifflin.org"
   }}
-  let(:existing_visitor_params) {{
-    community_id: visitor.community_id,
-    email: visitor.email
-  }}
+  let(:existing_visitor_params) {{ email: visitor.email }}
 
   before { ActionMailer::Base.deliveries = [] }
 
@@ -27,6 +22,11 @@ describe API::VisitorsController do
       expect(Visitor.count).to eq visitors_count + 1
       expect(response.status).to eq 200
       expect(Visitor.last.email).to eq new_visitor_params[:email]
+    end
+
+    it 'creates a visitor with a poll id' do
+      sign_in admin
+      expect { post :create, visitor: { email: "michael@scott.com" }, poll_id: poll.id }.to change { poll.visitors.count }.by(1)
     end
 
     it 'reinvites a revoked visitor' do

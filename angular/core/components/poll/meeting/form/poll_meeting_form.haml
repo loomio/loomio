@@ -26,6 +26,6 @@
           %i.material-icons.poll-meeting-form__option-icon clear
       %poll_meeting_time_field{poll: "poll"}
 
-  %poll_common_notify_group{model: "poll"}
+  %poll_common_notify_group{model: "poll", notify-action: "{{poll.notifyAction()}}"}
   %poll_common_notify_on_participate{poll: "poll"}
   %poll_common_form_actions{poll: "poll", submit: "submit", back: "back"}

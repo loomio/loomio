@@ -54,34 +54,39 @@ module EmailHelper
   end
 
   def google_pie_chart_url(poll)
-    sparkline    = proposal_sparkline(poll)
-    color_values = poll_color_values(poll.poll_type).presence || ['#aaa']
-    colors       = color_values.map { |color| color.sub('#', '') }.join('|')
-    URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{sparkline}&chco=#{colors}")
-  end
-
-  def poll_color_values(poll_type)
-    Poll::COLORS.fetch(poll_type, [])
+    URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}")
   end
 
   def proposal_sparkline(poll)
-    poll.stance_counts.join(',')
+    if poll.stance_counts.max.to_i > 0
+      poll.stance_counts.join(',')
+    else
+      '1'
+    end
+  end
+
+  def proposal_colors(poll)
+    if poll.stance_counts.max.to_i > 0
+      Poll::COLORS.fetch(poll.poll_type, []).map { |color| color.sub('#', '') }.join('|')
+    else
+      'aaaaaa'
+    end
   end
 
   def percentage_for(poll, index)
-    if poll.stance_counts.max.to_i <= 0
-      0
-    else
+    if poll.stance_counts.max.to_i > 0
       (100 * poll.stance_counts[index].to_f / poll.stance_counts.max).to_i
+    else
+      0
     end
   end
 
   def dot_vote_stance_choice_percentage_for(stance, stance_choice)
     max = stance.poll.custom_fields['dots_per_person'].to_i
-    if max <= 0
-      0
-    else
+    if max > 0
       (100 * stance_choice.score.to_f / max).to_i
+    else
+      0
     end
   end
 end

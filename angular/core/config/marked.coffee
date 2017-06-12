@@ -9,7 +9,7 @@ angular.module('loomioApp').config (markedProvider) ->
 
     renderer.paragraph = (text) -> _super.paragraph cook(text)
     renderer.listitem  = (text) -> _super.listitem  cook(text)
-    renderer.tablecell = (text) -> _super.tablecell cook(text)
+    renderer.tablecell = (text, flags) -> _super.tablecell cook(text), flags
 
     renderer.heading   = (text, level) ->
       _super.heading(emojione.shortnameToImage(text), level, text)
