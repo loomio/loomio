@@ -1,11 +1,12 @@
 class VisitorService
   def self.create(visitor:, actor:, poll:)
-    actor.ability.authorize! :manage_visitors, visitor.community
+    community = poll.community_of_type(:email, build: true)
+    actor.ability.authorize! :manage_visitors, community
 
     return false unless visitor.valid?
 
-    visitor = visitor.community.visitors.find_by(email: visitor.email) || visitor
-    visitor.update!(revoked: false)
+    visitor = community.visitors.find_by(email: visitor.email) || visitor
+    visitor.update!(community: community, revoked: false)
 
     EventBus.broadcast('visitor_create', visitor, actor, poll)
     Events::VisitorCreated.publish!(visitor, actor, poll)
