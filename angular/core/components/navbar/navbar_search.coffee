@@ -24,7 +24,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
       $scope.closeSearchDropdown()
 
     $scope.showDropdown = ->
-      $scope.focused && (_.any($scope.groups()) || $scope.query)
+      $scope.focused && $scope.query
 
     highlightables = ->
       document.querySelectorAll('.navbar-search-list-option')
@@ -86,14 +86,6 @@ angular.module('loomioApp').directive 'navbarSearch', ->
 
     $scope.noResultsFound = ->
       !$scope.searching && $scope.searchResults.length == 0
-
-    $scope.groups = ->
-      return [] if Session.user().restricted?
-      return Session.user().groups() unless $scope.queryPresent()
-      # match groups where all words are present in group name
-      _.filter Session.user().groups(), (group) ->
-        _.all _.words($scope.query), (word) ->
-          _.contains(group.fullName.toLowerCase(), word.toLowerCase())
 
     $scope.getSearchResults = (query) ->
       if query?

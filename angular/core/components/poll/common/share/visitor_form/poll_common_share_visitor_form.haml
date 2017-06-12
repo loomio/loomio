@@ -11,7 +11,7 @@
           %i.material-icons redo
         %loading{ng-if: "visitor.processing"}
         %span.poll-common-share-form__reminded{ng-if: "visitor.reminded", translate: "poll_common_share_form.reminded"}
-        %md-button.lmo-inline-action{ng-click: "revoke(visitor)"}
+        %md-button.lmo-inline-action{ng-if: "!poll.anyoneCanParticipate", ng-click: "revoke(visitor)"}
           %i.material-icons clear
 
     %md-list-item.poll-common-share-form__add-option{flex: "true", layout: "row"}
