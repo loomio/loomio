@@ -53,6 +53,14 @@ describe API::InvitationsController do
         post :create, invitation_form: {}, group_id: group.id
         expect(response.status).to eq 400
       end
+
+      it 'responds with validation error if max pending invites have been reached' do
+        ENV['MAX_PENDING_INVITATIONS'] = "5"
+        5.times { group.invitations.create!(intent: :join_group, recipient_email: Faker::Internet.email) }
+        post :create, invitation_form: invitation_params, group_id: group.id
+        expect(response.status).to eq 422
+        ENV['MAX_PENDING_INVITATIONS'] = nil
+      end
     end
   end
 
