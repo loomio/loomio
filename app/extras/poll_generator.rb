@@ -30,12 +30,12 @@ PollGenerator = Struct.new(:poll_type) do
   end
 
   def proposal_stances_for(poll)
-    generate_stance_for(poll, reason: "I love them, and think they'll both be great!", choice: "agree")
-    generate_stance_for(poll, reason: "Solid additions", choice: "agree")
-    generate_stance_for(poll, reason: "100% agree, they're awesome.", choice: "agree")
-    generate_stance_for(poll, reason: "I love them, and think they'll both be great!", choice: "agree")
-    generate_stance_for(poll, reason: "I haven't really interacted with either, but I trust the team", choice: "abstain")
-    generate_stance_for(poll, reason: "I'd feel more comfortable if we kept them as interns for another month or so", choice: "disagree")
+    generate_stance_for(poll, index: 0, reason: "I love them, and think they'll both be great!", choice: "agree")
+    generate_stance_for(poll, index: 1, reason: "Solid additions", choice: "agree")
+    generate_stance_for(poll, index: 2, reason: "100% agree, they're awesome.", choice: "agree")
+    generate_stance_for(poll, index: 3, reason: "I love them, and think they'll both be great!", choice: "agree")
+    generate_stance_for(poll, index: 4, reason: "I haven't really interacted with either, but I trust the team", choice: "abstain")
+    generate_stance_for(poll, index: 5, reason: "I'd feel more comfortable if we kept them as interns for another month or so", choice: "disagree")
   end
 
   def count_params
@@ -43,12 +43,12 @@ PollGenerator = Struct.new(:poll_type) do
   end
 
   def count_stances_for(poll)
-    generate_stance_for(poll, reason: "", choice: "yes")
-    generate_stance_for(poll, reason: "I would love to help, but I'll be on vacation for the week before", choice: "no")
-    generate_stance_for(poll, reason: "I'd love to help!", choice: "yes")
-    generate_stance_for(poll, reason: "Sorry, not me.. too busy at the moment", choice: "no")
-    generate_stance_for(poll, reason: "Yes!", choice: "yes")
-    generate_stance_for(poll, reason: "Happy to help :)", choice: "yes")
+    generate_stance_for(poll, index: 0, reason: "", choice: "yes")
+    generate_stance_for(poll, index: 1, reason: "I would love to help, but I'll be on vacation for the week before", choice: "no")
+    generate_stance_for(poll, index: 2, reason: "I'd love to help!", choice: "yes")
+    generate_stance_for(poll, index: 3, reason: "Sorry, not me.. too busy at the moment", choice: "no")
+    generate_stance_for(poll, index: 4, reason: "Yes!", choice: "yes")
+    generate_stance_for(poll, index: 5, reason: "Happy to help :)", choice: "yes")
   end
 
   def poll_params
@@ -59,12 +59,12 @@ PollGenerator = Struct.new(:poll_type) do
   end
 
   def poll_stances_for(poll)
-    generate_stance_for(poll, reason: "", choice: "No gluten for me")
-    generate_stance_for(poll, reason: "Looking forward to it!", choice: "No gluten for me")
-    generate_stance_for(poll, reason: "", choice: "No gluten for me")
-    generate_stance_for(poll, reason: "See you then!", choice: "I'm allergic to shellfish")
-    generate_stance_for(poll, reason: "", choice: "I'll eat anything!")
-    generate_stance_for(poll, reason: "", choice: "")
+    generate_stance_for(poll, index: 0, reason: "", choice: "No gluten for me")
+    generate_stance_for(poll, index: 1, reason: "Looking forward to it!", choice: "No gluten for me")
+    generate_stance_for(poll, index: 2, reason: "", choice: "No gluten for me")
+    generate_stance_for(poll, index: 3, reason: "See you then!", choice: "I'm allergic to shellfish")
+    generate_stance_for(poll, index: 4, reason: "", choice: "I'll eat anything!")
+    generate_stance_for(poll, index: 5, reason: "", choice: "")
   end
 
   def dot_vote_params
@@ -75,16 +75,16 @@ PollGenerator = Struct.new(:poll_type) do
   end
 
   def dot_vote_stances_for(poll)
-    generate_stance_for(poll, reason: "", stance_choices_attributes: [
+    generate_stance_for(poll, index: 0, reason: "", stance_choices_attributes: [
       { poll_option_id: poll.poll_option_ids[1], score: 2 },
       { poll_option_id: poll.poll_option_ids[2], score: 3 },
       { poll_option_id: poll.poll_option_ids[3], score: 3 }
     ])
-    generate_stance_for(poll, reason: "", stance_choices_attributes: [
+    generate_stance_for(poll, index: 1, reason: "", stance_choices_attributes: [
       { poll_option_id: poll.poll_option_ids[0], score: 7 },
       { poll_option_id: poll.poll_option_ids[4], score: 1 }
     ])
-    generate_stance_for(poll, reason: "", stance_choices_attributes: [
+    generate_stance_for(poll, index: 2, reason: "", stance_choices_attributes: [
       { poll_option_id: poll.poll_option_ids[0], score: 1 },
       { poll_option_id: poll.poll_option_ids[1], score: 3 },
       { poll_option_id: poll.poll_option_ids[2], score: 1 },
@@ -104,43 +104,54 @@ PollGenerator = Struct.new(:poll_type) do
   end
 
   def meeting_stances_for(poll)
-    generate_stance_for(poll, reason: "", stance_choices_attributes: [
+    generate_stance_for(poll, index: 0, reason: "", stance_choices_attributes: [
       { poll_option_id: poll.poll_option_ids[0] },
       { poll_option_id: poll.poll_option_ids[2] }
     ])
-    generate_stance_for(poll, reason: "Sorry, this week is crazy for me!", stance_choices_attributes: [
+    generate_stance_for(poll, index: 1, reason: "Sorry, this week is crazy for me!", stance_choices_attributes: [
       { poll_option_id: poll.poll_option_ids[0] }
     ])
-    generate_stance_for(poll, reason: "I'm free whenever", stance_choices_attributes: [
+    generate_stance_for(poll, index: 2, reason: "I'm free whenever", stance_choices_attributes: [
       { poll_option_id: poll.poll_option_ids[0] },
       { poll_option_id: poll.poll_option_ids[1] },
       { poll_option_id: poll.poll_option_ids[2] }
     ])
-    generate_stance_for(poll, reason: "", stance_choices_attributes: [
+    generate_stance_for(poll, index: 3, reason: "", stance_choices_attributes: [
       { poll_option_id: poll.poll_option_ids[0] },
       { poll_option_id: poll.poll_option_ids[1] },
       { poll_option_id: poll.poll_option_ids[2] }
     ])
-    generate_stance_for(poll, reason: "", stance_choices_attributes: [
+    generate_stance_for(poll, index: 4, reason: "", stance_choices_attributes: [
       { poll_option_id: poll.poll_option_ids[0] },
       { poll_option_id: poll.poll_option_ids[1] }
     ])
   end
 
-  def generate_stance_for(poll, reason:, choice: nil, stance_choices_attributes: [])
+  def generate_stance_for(poll, index: 0, reason:, choice: nil, stance_choices_attributes: [])
     Stance.create!(
       poll:        poll,
-      participant: generate_participant_for(poll),
+      participant: generate_participant_for(poll, index),
       stance_choices_attributes: stance_choices_attributes,
       reason:      reason,
       choice:      choice
     )
   end
 
-  def generate_participant_for(poll)
+  def generate_participant_for(poll, index)
     poll.community_of_type(:email).visitors.create(
-      name:  Faker::Name.name,
-      email: Faker::Internet.email
+      name:  participant_names[index],
+      email: "#{participant_names[index].split(' ').first.downcase}@example.com"
     )
+  end
+
+  def participant_names
+    [
+      "Lorna Ritchie Jr.",
+      "Rashawn Walsh",
+      "Mable Marvin",
+      "Lelah Lindgren",
+      "Rick Kuhn",
+      "Jamie Wright"
+    ]
   end
 end
