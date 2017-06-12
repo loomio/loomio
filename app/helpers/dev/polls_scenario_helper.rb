@@ -89,7 +89,14 @@ module Dev::PollsScenarioHelper
                                                      poll_type: poll_type,
                                                      discussion: discussion,
                                                      closing_at: 1.day.from_now))
+
     PollService.create(poll: poll, actor: actor)
+
+    visitor = fake_visitor
+    saved(fake_visitor)
+    visitor.community = poll.community_of_type(:email, build: true)
+    visitor.save!
+
     PollService.publish_closing_soon
 
     { discussion: discussion,
