@@ -2,6 +2,8 @@ class Visitor < ActiveRecord::Base
   include NullUser
   include HasAvatar
   include UsesWithoutScope
+  include NoForbiddenEmails
+
   has_secure_token :participation_token
 
   before_create :set_avatar_initials

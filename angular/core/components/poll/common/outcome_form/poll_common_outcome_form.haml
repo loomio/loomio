@@ -6,7 +6,7 @@
     %textarea.md-input.lmo-primary-form-input.poll-common-outcome-form__statement{placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement", mention-field: "true"}
     %validation_errors{subject: "outcome", field: "statement"}
 
-  %poll_common_notify_group{model: "outcome"}
+  %poll_common_notify_group{model: "outcome", notify-action: "publish"}
 
   %md-dialog-actions
     %md-button.md-primary.poll-common-outcome-form__submit{ng-click: "submit()", translate: "poll_common_outcome_form.submit", aria-label: "{{poll_common_outcome_form.submit | translate}}"}

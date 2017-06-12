@@ -22,6 +22,8 @@
 
 .md-attachment-form-progress-text {
   position: absolute;
+  overflow: auto;
+  @include truncateText;
   left: 0;
   line-height: 35px;
   width: 100%;

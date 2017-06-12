@@ -322,7 +322,7 @@ describe PollService do
 
   describe '#cleanup_examples' do
     it 'removes example polls' do
-      create(:poll, example: true, created_at: 2.hours.ago)
+      create(:poll, example: true, created_at: 2.days.ago)
       expect { PollService.cleanup_examples }.to change { Poll.count }.by(-1)
     end
 
@@ -332,7 +332,7 @@ describe PollService do
     end
 
     it 'does not remove non-example polls' do
-      create(:poll, created_at: 2.hours.ago)
+      create(:poll, created_at: 2.days.ago)
       expect { PollService.cleanup_examples }.to_not change { Poll.count }
     end
   end
