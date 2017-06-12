@@ -37,7 +37,7 @@ class InvitationService
 
     recent_pending_invitations_count = group.pending_invitations.where("created_at > ?", 2.weeks.ago).count
     num_used = recent_pending_invitations_count + emails.length
-    max_allowed = Rails.application.secrets.max_pending_invitations.to_i + group.memberships_count
+    max_allowed = ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i + group.memberships_count
 
     raise Invitation::TooManyPending.new if num_used > max_allowed
 

@@ -1,7 +1,7 @@
 class API::InvitationsController < API::RestfulController
   rescue_from(Invitation::AllInvitesAreMembers) { respond_with_errors('invitation_form.error.all_email_addresses_belong_to_members') }
   rescue_from(Invitation::TooManyPending) do
-    respond_with_errors('invitation_form.error.too_many_pending', count: Rails.application.secrets.max_pending_invitations.to_i)
+    respond_with_errors('invitation_form.error.too_many_pending', count: ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i)
   end
 
   def create
