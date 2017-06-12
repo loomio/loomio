@@ -207,6 +207,7 @@ en:
     start_making_decisions: 'To start making decisions together on Loomio, set up a group for free:'
   invitation_form:
     error:
+      too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
       all_email_addresses_belong_to_members: "We didn't send invitations to the email addresses provided because they belong to people already in the group."
   pricing_page:
     header: Group plans

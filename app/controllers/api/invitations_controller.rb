@@ -1,13 +1,14 @@
 class API::InvitationsController < API::RestfulController
+  rescue_from(Invitation::AllInvitesAreMembers) { respond_with_errors('invitation_form.error.all_email_addresses_belong_to_members') }
+  rescue_from(Invitation::TooManyPending) do
+    respond_with_errors('invitation_form.error.too_many_pending', count: Rails.application.secrets.max_pending_invitations.to_i)
+  end
+
   def create
-    @invitations = service.invite_to_group(recipient_emails: email_addresses,
-                                           group: load_and_authorize(:group, :invite_people),
-                                           inviter: current_user)
-    if @invitations.any?
-      respond_with_collection
-    else
-      respond_with_errors
-    end
+    self.resource = service.invite_to_group(recipient_emails: email_addresses,
+                                            group: load_and_authorize(:group, :invite_people),
+                                            inviter: current_user)
+    respond_with_collection
   end
 
   def pending
@@ -31,8 +32,8 @@ class API::InvitationsController < API::RestfulController
     params.require(:invitation_form)[:emails].scan(ReceivedEmail::EMAIL_REGEX)
   end
 
-  def respond_with_errors
-    render json: {errors: { emails: [  I18n.t('invitation_form.error.all_email_addresses_belong_to_members') ]}}, root: false, status: 422
+  def respond_with_errors(message, translation_values = {})
+    render json: {errors: { emails: [I18n.t(message, translation_values)]}}, root: false, status: 422
   end
 
 end
