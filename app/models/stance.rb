@@ -27,6 +27,11 @@ class Stance < ActiveRecord::Base
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
   scope :chronologically, -> { order('created_at asc') }
 
+  scope :join_participants, -> {
+     joins("LEFT OUTER JOIN users ON participant_type = 'User' AND participant_id = users.id")
+    .joins("LEFT OUTER JOIN visitors ON participant_type = 'Visitor' AND participant_id = visitors.id")
+  }
+
   validate :enough_stance_choices
   validate :total_score_is_valid
   validate :participant_is_complete

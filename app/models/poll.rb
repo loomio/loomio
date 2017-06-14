@@ -1,7 +1,7 @@
 class Poll < ActiveRecord::Base
+  extend  HasCustomFields
   include ReadableUnguessableUrls
   include HasMentions
-  include HasCustomFields
   include MakesAnnouncements
   include MessageChannel
   include SelfReferencing

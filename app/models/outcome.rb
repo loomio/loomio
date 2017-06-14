@@ -10,6 +10,7 @@ class Outcome < ActiveRecord::Base
   has_one :discussion, through: :poll
   has_one :group, through: :discussion
   has_many :communities, through: :poll, class_name: "Communities::Base"
+  has_many :stances, through: :poll
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
@@ -21,8 +22,14 @@ class Outcome < ActiveRecord::Base
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option
 
+  def attendee_emails
+     self.stances.join_participants.joins(:stance_choices)
+    .where("stance_choices.poll_option_id": self.poll_option_id)
+    .pluck(:"visitors.email", :"users.email").flatten.compact.uniq
+  end
+
   def store_calendar_invite
-    self.calendar_invite = CalendarInvite.new(self).to_ical
+    self.calendar_invite = CalendarInvite.new(self).encode
   end
 
   def has_valid_poll_option
