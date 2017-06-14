@@ -1,5 +1,4 @@
-angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $timeout, $translate) ->
-  currentModal = null
+angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $timeout, $translate, AppConfig) ->
   new class ModalService
     open: (modal, resolve = {}, opts = {}) ->
       $rootScope.$broadcast 'modalOpened', modal
@@ -16,7 +15,7 @@ angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $tim
       resolve.preventClose = resolve.preventClose or (-> false)
       modalType = opts.type || 'alert'
       snakeCaseName =   modal.templateUrl.split('/').pop().replace('.html', '')
-      currentModal =    $mdDialog[modalType](
+      AppConfig.currentModal = $mdDialog[modalType](
         scope:          $scope
         onComplete:     $scope.focus
         templateUrl:    modal.templateUrl
@@ -28,4 +27,4 @@ angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $tim
         backdrop:       'static'
         escapeToClose:  !resolve.preventClose()
       )
-      $mdDialog.show(currentModal).finally -> currentModal = undefined
+      $mdDialog.show(AppConfig.currentModal).finally -> AppConfig.currentModal = undefined
