@@ -82,7 +82,7 @@ module EmailHelper
   end
 
   def dot_vote_stance_choice_percentage_for(stance, stance_choice)
-    max = stance.poll.custom_fields['dots_per_person'].to_i
+    max = stance.poll.dots_per_person.to_i
     if max > 0
       (100 * stance_choice.score.to_f / max).to_i
     else

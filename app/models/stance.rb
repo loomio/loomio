@@ -62,7 +62,7 @@ class Stance < ActiveRecord::Base
 
   def total_score_is_valid
     return unless poll.poll_type == 'dot_vote'
-    if stance_choices.map(&:score).sum > poll.custom_fields['dots_per_person'].to_i
+    if stance_choices.map(&:score).sum > poll.dots_per_person.to_i
       errors.add(:dots_per_person, "Too many dots")
     end
   end

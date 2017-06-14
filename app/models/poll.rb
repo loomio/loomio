@@ -1,9 +1,12 @@
 class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasMentions
+  include HasCustomFields
   include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
+
+  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails
 
   TEMPLATES = YAML.load_file(Rails.root.join("config", "poll_templates.yml"))
   COLORS    = YAML.load_file(Rails.root.join("config", "colors.yml"))

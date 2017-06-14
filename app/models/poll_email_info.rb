@@ -45,7 +45,7 @@ class PollEmailInfo
   end
 
   def time_zone
-    @recipient.time_zone || @poll.custom_fields['time_zone']
+    @recipient.time_zone || @poll.time_zone
   end
 
   def formatted_time_zone
