@@ -8,7 +8,7 @@ module Identities::Slack::Initiate
   private
 
   def respond_with_url
-    return unless Poll::TEMPLATES.keys.include?(initiate_type) && initiate_group.present?
+    return unless AppConfig.poll_templates.keys.include?(initiate_type) && initiate_group.present?
     I18n.t(:"slack.initiate", type: initiate_type, url: new_poll_url(
       type: initiate_type,
       title: initiate_title,

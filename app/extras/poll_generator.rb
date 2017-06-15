@@ -1,7 +1,7 @@
 PollGenerator = Struct.new(:poll_type) do
 
   def generate!
-    return unless Poll::TEMPLATES.keys.include?(poll_type.to_s)
+    return unless AppConfig.poll_templates.keys.include?(poll_type.to_s)
     poll = Poll.create(default_params)
     poll.community_of_type(:email, build: true)
     poll.save!
@@ -19,7 +19,7 @@ PollGenerator = Struct.new(:poll_type) do
       author:                  User.helper_bot,
       title:                   I18n.t(:"poll_generator.#{poll_type}.title"),
       details:                 I18n.t(:"poll_generator.#{poll_type}.details"),
-      poll_options_attributes: Poll::TEMPLATES.dig(poll_type, 'poll_options_attributes'),
+      poll_options_attributes: AppConfig.poll_templates.dig(poll_type, 'poll_options_attributes'),
       closing_at:              1.day.from_now,
       example:                 true
     }.merge(send(:"#{poll_type}_params"))
