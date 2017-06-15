@@ -8,7 +8,7 @@ class PollOption < ActiveRecord::Base
   has_many :stances, through: :stance_choices
 
   def color
-    Poll::COLORS.dig(poll.poll_type, self.priority)
+    AppConfig.colors.dig(poll.poll_type, self.priority)
   end
 
   def display_name(zone: nil)

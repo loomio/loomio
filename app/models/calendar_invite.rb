@@ -2,14 +2,12 @@ class CalendarInvite
   include PrettyUrlHelper
   extend Forwardable
 
-  def_delegators :@calendar, :to_ical
-
   def initialize(outcome = Outcome.new)
     @calendar = build_calendar(outcome)
   end
 
-  def encode
-    Base64.encode64(@calendar.to_ical) if @calendar
+  def to_ical
+    @calendar&.to_ical
   end
 
   private

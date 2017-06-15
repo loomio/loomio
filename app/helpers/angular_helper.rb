@@ -1,6 +1,5 @@
 module AngularHelper
   include PendingActionsHelper
-  EMOJIS = YAML.load_file(Rails.root.join("config", "emojis.yml")).as_json
 
   def boot_angular_ui
     metadata if browser.bot? && respond_to?(:metadata, true)
@@ -50,16 +49,17 @@ module AngularHelper
       drafts: {
         debounce: ENV.fetch('LOOMIO_DRAFT_DEBOUNCE', 750).to_i
       },
-      emojis: {
-        defaults: EMOJIS.fetch('default', []).map { |e| ":#{e}:" }
-      },
       searchFilters: { status: %w(active closed).freeze },
       pendingIdentity: serialized_pending_identity,
-      pollTemplates: Poll::TEMPLATES,
-      pollColors:    Poll::COLORS,
-      timeZones:     Poll::TIMEZONES,
-      communityProviders: Communities::Base::PROVIDERS,
-      identityProviders: Identities::Base::PROVIDERS.map do |provider|
+      emojis: {
+        defaults: AppConfig.emojis.fetch('default', []).map { |e| ":#{e}:" }
+      },
+      durations:          AppConfig.durations.fetch('durations', []),
+      pollTemplates:      AppConfig.poll_templates,
+      pollColors:         AppConfig.colors,
+      timeZones:          AppConfig.timezones,
+      communityProviders: AppConfig.providers.fetch('identity', []),
+      identityProviders:  AppConfig.providers.fetch('community', []).map do |provider|
         ({ name: provider, href: send("#{provider}_oauth_path") } if ENV["#{provider.upcase}_APP_KEY"])
       end.compact
     }

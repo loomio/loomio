@@ -28,6 +28,14 @@ class PollMailer < BaseMailer
       action_name: action_name
     )
 
+    if event.eventable.is_a?(Outcome) && invite = event.eventable.calendar_invite
+      attachments['meeting.ics'] = {
+        content_type:              'text/calendar',
+        content_transfer_encoding: 'base64',
+        content:                   Base64.encode64(invite)
+      }
+    end
+
     send_single_mail(
       locale:        locale_for(recipient),
       to:            recipient.email,

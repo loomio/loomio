@@ -29,7 +29,7 @@ class Outcome < ActiveRecord::Base
   end
 
   def store_calendar_invite
-    self.calendar_invite = CalendarInvite.new(self).encode
+    self.calendar_invite = CalendarInvite.new(self).to_ical
   end
 
   def has_valid_poll_option
