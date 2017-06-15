@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'pollCommonStartForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/start_form/poll_common_start_form.html'
   replace: true
-  controller: ($scope, AppConfig, Records, ModalService, PollCommonFormModal, PollService) ->
+  controller: ($scope, AppConfig, Records, ModalService, PollCommonStartModal, PollService) ->
     $scope.discussion = $scope.discussion or {}
     $scope.group      = $scope.group or {}
 
@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'pollCommonStartForm', ->
       _.keys PollService.activePollTemplates()
 
     $scope.startPoll = (pollType) ->
-      ModalService.open PollCommonFormModal, poll: ->
+      ModalService.open PollCommonStartModal, poll: ->
         Records.polls.build
           pollType:              pollType
           discussionId:          $scope.discussion.id
