@@ -561,8 +561,8 @@ describe Event do
       mail = ActionMailer::Base.deliveries.last
       expect(mail.attachments).to have(1).attachment
       expect(mail.attachments.first).to be_a Mail::Part
-      expect(mail.attachments.first.content_type).to match /application\/ics/
-      expect(mail.attachments.first.filename).to eq 'event.ics'
+      expect(mail.attachments.first.content_type).to match /text\/calendar/
+      expect(mail.attachments.first.filename).to eq 'meeting.ics'
     end
   end
 
