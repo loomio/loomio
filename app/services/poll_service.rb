@@ -115,7 +115,7 @@ class PollService
       # convert motion to poll
       poll = Poll.new(
         poll_type:               "proposal",
-        poll_options_attributes: Poll::TEMPLATES.dig('proposal', 'poll_options_attributes'),
+        poll_options_attributes: AppConfig.poll_templates.dig('proposal', 'poll_options_attributes'),
         key:                     motion.key,
         discussion:              motion.discussion,
         motion:                  motion,

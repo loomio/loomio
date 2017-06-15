@@ -12,9 +12,6 @@ angular.module('loomioApp').factory 'TimeService', (AppConfig, $translate) ->
       else
         @inTimeZone(m, zone).format("D MMMM#{@sameYear(m)} - h:mma")
 
-    isDateOnly: (dateString) ->
-      dateString.match /^\d{4}-\d{2}-\d{2}$/
-
     isoDate: (m, zone) =>
       @inTimeZone(m, zone).toISOString()
 

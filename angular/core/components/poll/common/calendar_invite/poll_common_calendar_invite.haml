@@ -13,12 +13,6 @@
         %md-option{ng-repeat: "option in options", ng-value: "option.id"}
           {{option.value}}
 
-    %md-input-container.md-block.poll-common-calendar-invite--pad-top{ng-if: "!isDateOnly()"}
-      %label{translate: "poll_common_calendar_invite.event_duration"}
-      %md-select.lmo-flex__grow{ng-model: "outcome.customFields.event_duration", aria-label: "{{ 'poll_common_calendar_invite.event_duration' | translate }}"}
-        %md-option{ng-repeat: "duration in durations", ng-value: "duration.minutes"}
-          {{duration.label}}
-
     %md-input-container.md-block.poll-common-calendar-invite--pad-top
       %label{translate: "poll_common_calendar_invite.event_description"}
       %textarea.md-input.lmo-primary-form-input.poll-common-outcome-form__statement{type: "text", placeholder: "{{'poll_common_calendar_invite.event_description_placeholder' | translate}}", ng-model: "outcome.statement"}

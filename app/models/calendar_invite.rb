@@ -21,7 +21,7 @@ class CalendarInvite
           event.duration = "+P0W1D0H0M" # an all day event
         else
           event.dtstart  = Time.zone.parse(outcome.poll_option.name)
-          event.duration = "+P0W0D0H#{outcome.event_duration || 60}M"
+          event.duration = "+P0W0D0H60M" # TODO: make this accept poll meeting duration
         end
         event.organizer = Icalendar::Values::CalAddress.new(outcome.author.email, cn: outcome.author.name)
         event.summary   = outcome.statement
