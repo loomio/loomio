@@ -1,2 +1,4 @@
-defaults
+> 1%
+last 2 versions
+Firefox ESR
 Safari >= 9
