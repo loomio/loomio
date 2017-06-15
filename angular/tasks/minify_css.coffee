@@ -8,11 +8,13 @@ append   = require 'add-stream'
 concat   = require 'gulp-concat'
 uglify   = require 'gulp-uglify'
 rename   = require 'gulp-rename'
-cssmin = require 'gulp-cssmin'
+cssmin   = require 'gulp-cssmin'
+prefix   = require 'gulp-autoprefixer'
 
 module.exports = ->
   pipe gulp.src(paths.dist.assets+'/app.css'), [
     plumber(errorHandler: onError),                # handle errors gracefully
+    prefix(browsers: ['defaults', 'Safari >= 9'], cascade: false),
     cssmin(),                                      # minify app.css file
     rename(suffix: '.min'),                        # rename stream to app.min.css
     gulp.dest(paths.dist.assets)                   # write assets/app.min.css
