@@ -15,8 +15,8 @@ class Identities::BaseController < ApplicationController
   end
 
   def destroy
-    if identity.present?
-      identity.destroy
+    if i = current_user.identities.find_by(identity_type: controller_name)
+      i.destroy
       redirect_to request.referrer || root_path
     else
       render json: { error: "Not connected to #{controller_name}!" }, status: :bad_request

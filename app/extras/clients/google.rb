@@ -7,18 +7,12 @@ class Clients::Google < Clients::Base
   end
 
   def fetch_user_info
-    get "people/me", params: { "requestMask.includeField" => "person.metadata,person.names,person.photos,person.emailAddresses" }
-  end
-
-  def fetch_calendars
-    get "users/me/calendarList", options: {
-      success: ->(response) { response['items'].map { |item| { id: item['etag'], name: item['summary'] } } },
-      host: "https://www.googleapis.com/calendar/v3"
-    }
+    get "people/me",
+      params: { "requestMask.includeField" => "person.metadata,person.names,person.photos,person.emailAddresses" }
   end
 
   def scope
-    %w(email profile https://www.googleapis.com/auth/calendar).freeze
+    %w(email profile).freeze
   end
 
   private

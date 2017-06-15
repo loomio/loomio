@@ -1687,13 +1687,6 @@ en:
     email_exists: '{{email}} has already been invited'
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
-    communities: Communities
-    communities_helptext: Invite other communities to this poll. Members of those communities will be able to participate.
-    add_facebook_community: Add facebook group
-    add_slack_community: Add slack channel
-    add_google_community: Link to google calendar
-    community_revoked: This community will no longer be able to participate
-    community_added: Community added to poll
 
   poll_common_publish_form:
     community: Inform the following group of your poll
@@ -1726,9 +1719,6 @@ en:
     facebook:
       another_account: (Sign in to another account)
       fragment_placeholder: Search for groups...
-    google:
-      another_account: (Sign in to another account)
-      fragment_placeholder: Search for calendars...
 
   poll_common_participant_form:
     participant_name_placeholder: What is your name?

@@ -6,6 +6,5 @@ identity:
 
 # for providers which provide additional API access
 community:
-  - google
   - facebook
   - slack

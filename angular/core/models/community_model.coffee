@@ -16,4 +16,3 @@ angular.module('loomioApp').factory 'CommunityModel', (BaseModel, AppConfig) ->
       switch @communityType
         when 'facebook' then @customFields.facebook_group_name
         when 'slack'    then "#{@identity().customFields.slack_team_name} - ##{@customFields.slack_channel_name}"
-        when 'google'   then @customFields.google_calendar_name

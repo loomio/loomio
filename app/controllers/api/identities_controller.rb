@@ -1,5 +1,5 @@
 class API::IdentitiesController < API::RestfulController
-  ACTION_NAMES = %w(channels admin_groups calendars)
+  ACTION_NAMES = %w(channels admin_groups)
 
   def command
     current_participant.ability.authorize! :show, identity
