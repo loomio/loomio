@@ -10,7 +10,7 @@
       %md-select{ng-model: "closingHour", aria-label: "{{ 'poll_common_closing_at_field.closing_hour' | translate }}"}
         %md-option{ng-repeat: "hour in hours", ng-value: "hour", ng-selected: "hour == closingHour"}
           {{ times[hour] }}
-    %md-input-container
+    %md-input-container.lmo-hide-on-xs
       %span.poll-common-closing-at-field__zone.md-body-1
         {{ timeZone }}
 
