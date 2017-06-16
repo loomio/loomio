@@ -7,8 +7,9 @@ angular.module('loomioApp').directive 'pollCommonStartPoll', ($window, Records, 
     $scope.$on 'saveBack',        -> $scope.currentStep = 'choose'; $scope.isDisabled = false
 
     $scope.$on 'saveComplete', (event, poll) ->
-      $scope.poll = poll
-      $scope.currentStep = 'share'
+      if poll.group()
+        $scope.$emit '$close'
+      else
+        $scope.poll = poll
+        $scope.currentStep = 'share'
       $scope.isDisabled = false
-
-    $scope.$on 'shareComplete',      $scope.$close

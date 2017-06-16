@@ -10,7 +10,6 @@ haml     = require 'gulp-haml'
 htmlmin  = require 'gulp-htmlmin'
 template = require 'gulp-angular-templatecache'
 concat   = require 'gulp-concat'
-uglify   = require 'gulp-uglify'
 rename   = require 'gulp-rename'
 
 module.exports = ->
