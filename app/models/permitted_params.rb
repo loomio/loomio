@@ -73,7 +73,7 @@ class PermittedParams < Struct.new(:params)
 
   def outcome_attributes
     [:statement, :poll_id, :poll_option_id, :make_announcement,
-     :custom_fields, custom_fields: [:event_location]]
+     :custom_fields, custom_fields: [:event_location, :event_description]]
   end
 
   def visitor_attributes

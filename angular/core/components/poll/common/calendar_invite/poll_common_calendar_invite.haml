@@ -14,10 +14,14 @@
           {{option.value}}
 
     %md-input-container.md-block.poll-common-calendar-invite--pad-top
-      %label{translate: "poll_common_calendar_invite.event_description"}
-      %textarea.md-input.lmo-primary-form-input.poll-common-outcome-form__statement{type: "text", placeholder: "{{'poll_common_calendar_invite.event_description_placeholder' | translate}}", ng-model: "outcome.statement"}
+      %label{translate: "poll_common_calendar_invite.event_summary"}
+      %input{type: "text", placeholder: "{{'poll_common_calendar_invite.event_summary_placeholder' | translate}}", ng-model: "outcome.statement"}
       %validation_errors{subject: "outcome", field: "statement"}
 
     %md-input-container.md-block
       %label{translate: "poll_common_calendar_invite.location"}
       %input{type: "text", placeholder: "{{'poll_common_calendar_invite.location_placeholder' | translate}}", ng-model: "outcome.customFields.event_location"}
+
+    %md-input-container.md-block
+      %label{translate: "poll_common_calendar_invite.event_description"}
+      %textarea.md-input.lmo-primary-form-input.poll-common-outcome-form__statement{type: "text", placeholder: "{{'poll_common_calendar_invite.event_description_placeholder' | translate}}", ng-model: "outcome.customFields.event_description"}

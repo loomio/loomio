@@ -65,6 +65,7 @@ describe Event do
 
     # add the loomio group community to poll
     poll.build_loomio_group_community; poll.save
+    poll_meeting.build_loomio_group_community; poll_meeting.save
 
     # create an unsubscription for a poll user
     poll.poll_unsubscriptions.create(user: user_unsubscribed)

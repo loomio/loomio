@@ -2,7 +2,7 @@ class Outcome < ActiveRecord::Base
   extend  HasCustomFields
   include MakesAnnouncements
   include HasMentions
-  set_custom_fields :calendar_invite, :event_location, :event_duration
+  set_custom_fields :calendar_invite, :event_description, :event_location
 
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false

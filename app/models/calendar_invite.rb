@@ -17,18 +17,18 @@ class CalendarInvite
     Icalendar::Calendar.new.tap do |calendar|
       calendar.event do |event|
         if outcome.poll_option.name.match /^\d{4}-\d{2}-\d{2}$/
-          event.dtstart  = outcome.poll_option.name.to_date.beginning_of_day
-          event.duration = "+P0W1D0H0M" # an all day event
+          event.dtstart  = outcome.poll_option.name.to_date
         else
           event.dtstart  = Time.zone.parse(outcome.poll_option.name)
-          event.duration = "+P0W0D0H60M" # TODO: make this accept poll meeting duration
+          event.duration = "+P0W0D0H#{outcome.poll.meeting_duration}M"
         end
-        event.organizer = Icalendar::Values::CalAddress.new(outcome.author.email, cn: outcome.author.name)
-        event.summary   = outcome.statement
-        event.location  = outcome.event_location
-        event.attendee  = outcome.attendee_emails
-        event.ip_class  = outcome.poll.anyone_can_participate ? "PUBLIC" : "PRIVATE"
-        event.url       = poll_url(outcome.poll)
+        event.organizer   = Icalendar::Values::CalAddress.new(outcome.author.email, cn: outcome.author.name)
+        event.summary     = outcome.statement
+        event.description = outcome.event_description
+        event.location    = outcome.event_location
+        event.attendee    = outcome.attendee_emails
+        event.ip_class    = outcome.poll.anyone_can_participate ? "PUBLIC" : "PRIVATE"
+        event.url         = poll_url(outcome.poll)
       end
     end
   end
