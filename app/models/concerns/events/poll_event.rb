@@ -34,7 +34,7 @@ module Events::PollEvent
   end
 
   def email_recipients
-    return User.none unless poll.group
+    return User.none if !poll.group or poll.example
     if announcement
       announcement_email_recipients
     else
