@@ -1,5 +1,6 @@
 .poll-common-closing-at-field {
   margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .poll-common-closing-at-field__label {
@@ -13,9 +14,8 @@
 }
 
 .poll-common-closing-at-field__zone {
-  position: relative;
-  top: 5px;
   color: rgba(0,0,0,0.38);
+  margin: -40px 0 0 0;
 }
 
 .poll-common-closing-at-field__inputs {
