@@ -22,3 +22,5 @@ durations:
     label: '3 hours'
   - minutes: 240
     label: '4 hours'
+  - minutes: null
+    label: 'All Day'
