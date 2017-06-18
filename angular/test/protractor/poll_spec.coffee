@@ -58,6 +58,18 @@ describe 'Polls', ->
 
     page.expectText '.poll-common-outcome-panel', 'This is an outcome'
 
+  it 'can send a calendar invite', ->
+    page.loadPath 'polls/test_meeting_poll_closed'
+    page.click '.poll-common-set-outcome-panel__submit'
+
+    page.fillIn '.poll-common-calendar-invite__summary', 'This is a meeting title'
+    page.fillIn '.poll-common-calendar-invite__location', '123 Any St, USA'
+    page.fillIn '.poll-common-calendar-invite__description', 'Here is a meeting agenda'
+
+    page.click '.poll-common-outcome-form__submit'
+    page.expectFlash 'Outcome created'
+    page.expectText '.poll-common-outcome-panel', 'This is a meeting title'
+
   it 'can start a standalone poll', ->
     page.loadPath 'polls/start_poll'
     page.click '.poll-common-choose-type__poll-type--proposal'
