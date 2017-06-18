@@ -41,9 +41,3 @@
   position: relative;
   right: -6px;
 }
-
-@media(max-width: $tiny-max-px) {
-  .comment-form__formatting {
-    display: none;
-  }
-}
