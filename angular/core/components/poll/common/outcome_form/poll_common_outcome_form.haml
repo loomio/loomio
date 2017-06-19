@@ -8,5 +8,6 @@
   %poll_common_notify_group{model: "outcome", notify-action: "publish"}
   %poll_common_calendar_invite{outcome: "outcome", ng-if: "datesAsOptions()"}
 
-  %md-dialog-actions
+  .lmo-flex.lmo-flex__space-between
+    %div
     %md-button.md-raised.md-primary.poll-common-outcome-form__submit{ng-click: "submit()", translate: "poll_common_outcome_form.submit", aria-label: "{{poll_common_outcome_form.submit | translate}}"}

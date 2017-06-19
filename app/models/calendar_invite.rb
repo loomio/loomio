@@ -23,7 +23,7 @@ class CalendarInvite
           event.duration = "+P0W0D0H#{outcome.poll.meeting_duration}M"
         end
         event.organizer   = Icalendar::Values::CalAddress.new(outcome.author.email, cn: outcome.author.name)
-        event.summary     = outcome.statement
+        event.summary     = outcome.event_summary
         event.description = outcome.event_description
         event.location    = outcome.event_location
         event.attendee    = outcome.attendee_emails
