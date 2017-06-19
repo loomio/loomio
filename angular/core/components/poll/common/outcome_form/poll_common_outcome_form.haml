@@ -1,12 +1,12 @@
 .poll-common-outcome-form
-  %poll_common_calendar_invite{outcome: "outcome", ng-if: "datesAsOptions()"}
 
-  %md-input-container.md-block{ng-if: "!outcome.calendarInvite"}
+  %md-input-container.md-block
     %label{translate: "poll_common.statement"}
     %textarea.md-input.lmo-primary-form-input.poll-common-outcome-form__statement{placeholder: "{{'poll_common_outcome_form.statement_placeholder' | translate}}", ng-model: "outcome.statement"}
     %validation_errors{subject: "outcome", field: "statement"}
 
   %poll_common_notify_group{model: "outcome", notify-action: "publish"}
+  %poll_common_calendar_invite{outcome: "outcome", ng-if: "datesAsOptions()"}
 
   %md-dialog-actions
     %md-button.md-raised.md-primary.poll-common-outcome-form__submit{ng-click: "submit()", translate: "poll_common_outcome_form.submit", aria-label: "{{poll_common_outcome_form.submit | translate}}"}
