@@ -73,6 +73,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
         successCallback: (data) ->
           model.poll().clearStaleStances()
           AppConfig.currentVisitorId = data.stances[0].visitor_id
+          ScrollService.scrollTo '.poll-common-card__results-shown'
           scope.$emit 'stanceSaved', data.stances[0].key
         cleanupFn: ->
           scope.$emit 'doneProcessing'
