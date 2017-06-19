@@ -25,7 +25,7 @@ module Identities::Slack::Participate
   def participate_stance
     @participant_stance ||= StanceService.create(
       stance: Stance.new(poll: participate_poll, choice: participate_payload.dig('actions', 0, 'name')),
-      actor:  participate_identity.user
+      actor:  participate_identity&.user || LoggedOutUser.new
     )
   rescue CanCan::AccessDenied
     nil
