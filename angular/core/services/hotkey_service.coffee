@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'HotkeyService', (ModalService, KeyEventService, Records, Session, InvitationModal, GroupModal, DiscussionForm, PollCommonStartModal) ->
+angular.module('loomioApp').factory 'HotkeyService', (AppConfig, ModalService, KeyEventService, Records, Session, InvitationModal, GroupModal, DiscussionForm, PollCommonStartModal) ->
   new class HotkeyService
 
     keyboardShortcuts:
@@ -12,5 +12,6 @@ angular.module('loomioApp').factory 'HotkeyService', (ModalService, KeyEventServ
         execute: -> ModalService.open PollCommonStartModal, poll: -> Records.polls.build(authorId: Session.user().id)
 
     init: (scope) ->
-      _.each @keyboardShortcuts, (args, key) ->
-        KeyEventService.registerKeyEvent scope, key, args.execute, args.shouldExecute
+      _.each @keyboardShortcuts, (args, key) =>
+        KeyEventService.registerKeyEvent scope, key, args.execute, (event) ->
+          KeyEventService.defaultShouldExecute(event) and !AppConfig.currentModal

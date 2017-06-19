@@ -5,6 +5,7 @@
 }
 
 .poll-common-bar-chart__bar {
+  transition: background-size 0.1s ease-in-out;
   height: 48px;
   min-width: 4px;
   margin-top: 10px;

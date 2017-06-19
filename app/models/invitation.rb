@@ -1,10 +1,9 @@
 class Invitation < ActiveRecord::Base
 
-  class InvitationCancelled < StandardError
-  end
-
-  class InvitationAlreadyUsed < StandardError
-  end
+  class InvitationCancelled < StandardError; end
+  class InvitationAlreadyUsed < StandardError; end
+  class TooManyPending < StandardError; end
+  class AllInvitesAreMembers < StandardError; end
 
   extend FriendlyId
   friendly_id :token

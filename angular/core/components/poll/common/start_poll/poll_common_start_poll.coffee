@@ -5,10 +5,12 @@ angular.module('loomioApp').directive 'pollCommonStartPoll', ($window, Records, 
     $scope.currentStep = if $scope.poll.pollType then 'save' else 'choose'
     $scope.$on 'chooseComplete',  -> $scope.currentStep = 'save';   $scope.isDisabled = false
     $scope.$on 'saveBack',        -> $scope.currentStep = 'choose'; $scope.isDisabled = false
+    $scope.poll.makeAnnouncement = $scope.poll.isNew()
 
     $scope.$on 'saveComplete', (event, poll) ->
-      $scope.poll = poll
-      $scope.currentStep = 'share'
+      if poll.group()
+        $scope.$emit '$close'
+      else
+        $scope.poll = poll
+        $scope.currentStep = 'share'
       $scope.isDisabled = false
-
-    $scope.$on 'shareComplete',      $scope.$close

@@ -15,6 +15,9 @@
     -webkit-appearance: none;
     margin: 0;
   }
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
 }
 
 .poll-dot-vote-vote-form__dot-button {

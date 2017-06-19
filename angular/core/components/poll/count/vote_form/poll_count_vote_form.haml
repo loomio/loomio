@@ -1,15 +1,13 @@
-.poll-count-vote-form
-  -# %h3.lmo-card-subheading{translate: "poll_common.your_response"}
-  %form.poll-count-vote-form
-    .poll-common-vote-form__reason
-      %md-input-container.md-block
-        %input.lmo-primary-form-input{type: "text", placeholder: "{{'poll_count_vote_form.reason_placeholder' | translate}}", ng-model: "stance.reason", md-maxlength: "250"}
-        %validation_errors{subject: "stance", field: "reason"}
+%form.poll-count-vote-form
+  .poll-common-vote-form__reason
+    %md-input-container.md-block
+      %input.lmo-primary-form-input{type: "text", placeholder: "{{'poll_count_vote_form.reason_placeholder' | translate}}", ng-model: "stance.reason", md-maxlength: "250"}
+      %validation_errors{subject: "stance", field: "reason"}
 
-      %poll_common_participant_form{stance: "stance"}
+    %poll_common_participant_form{stance: "stance"}
 
-      .poll-count-vote-form__options
-        %md-button.poll-count-vote-form__option.poll-count-vote-form__option--yes{ng-click: "submit(yes)", ng-style: "{background: yes.color}"}
-          %i.material-icons done
-        %md-button.poll-count-vote-form__option.poll-count-vote-form__option--no{ng-click: "submit(no)", ng-style: "{'border-color': no.color}"}
-          %i.material-icons{ng-style: "{color: no.color}"} remove
+    .poll-count-vote-form__options
+      %md-button.poll-count-vote-form__option.poll-count-vote-form__option--yes{ng-click: "submit(yes)", ng-style: "{background: yes.color}"}
+        %i.material-icons done
+      %md-button.poll-count-vote-form__option.poll-count-vote-form__option--no{ng-click: "submit(no)", ng-style: "{'border-color': no.color}"}
+        %i.material-icons{ng-style: "{color: no.color}"} clear
