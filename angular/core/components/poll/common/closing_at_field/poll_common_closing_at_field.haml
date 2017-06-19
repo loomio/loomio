@@ -3,15 +3,10 @@
     %md-input-container
       %label.poll-common-closing-at-field__label
         %poll_common_closing_at{poll: "poll"}
-        -# %span{translate: "poll_common_closing_at_field.closing"}
-        -# in 5 days
       %md-datepicker{ng-model: "closingDate", ng-min-date: "dateToday", md-hide-icons: "calendar"}>
     %md-input-container
       %md-select{ng-model: "closingHour", aria-label: "{{ 'poll_common_closing_at_field.closing_hour' | translate }}"}
         %md-option{ng-repeat: "hour in hours", ng-value: "hour", ng-selected: "hour == closingHour"}
           {{ times[hour] }}
-    %md-input-container.lmo-hide-on-xs
-      %span.poll-common-closing-at-field__zone.md-body-1
-        {{ timeZone }}
-
+  .poll-common-closing-at-field__zone {{ timeZone }}
   %validation_errors{subject: "poll", field: "closingAt"}
