@@ -1,4 +1,9 @@
-.memberships-page {
+.memberships-page md-checkbox {
+  margin-bottom: 0;
+}
+
+.memberships-page .user-avatar {
+  margin-right: 16px;
 }
 
 .memberships-page__search-filter {
@@ -20,51 +25,13 @@
   margin-bottom: 16px;
 }
 
-.memberships-page__memberships {
-}
-
 .memberships-page__remove-link {
-  @include lmoBtnNude;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.memberships-page__make-coordinator {
-  @include lmoBtnNude;
-  -webkit-transform: scale(1.5);
-  -moz-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
-.memberships-page__member-info {
-  padding-left: 10px;
-}
-
-.memberships-page__table-row {
-  padding: 5px 0;
-}
-
-.memberships-panel {
-  display: block;
-  tbody {
-    width: 100%
-  }
-}
-
-.memberships-panel__avatar-cell {
-  width: 50px;
-}
-
-.memberships-panel__member-info-cell {
-  width: 100%
-}
-
-.memberships-panel__row {
-}
-
-// .memberships-panel__spacer-cell
 .memberships-panel__header-cell {
   @include md-subhead;
 }
-// .memberships-panel__avatar-cell
-// .memberships-panel__member-info-cell
-// .memberships-panel__admin-checkbox-cell
-// .memberships-panel__remove-member-cell

@@ -225,6 +225,18 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   vertical-align: bottom;
 }
 
+.group-mailer__message-container {
+  padding: 16px;
+  font-style: italic;
+  border: 1px solid #dcdcdc;
+  margin: 16px 0;
+  border-radius: 3px;
+}
+
+.group-mailer__byline {
+  line-height: 30px;
+}
+
 .align-left {
   text-align: left;
 }

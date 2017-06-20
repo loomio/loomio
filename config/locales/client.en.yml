@@ -812,6 +812,7 @@ en:
     email: Email
     invitation_link: Invitation link
     sent: Sent
+    revoke: Revoke
 
   cancel_invitation_form:
     heading: Cancel invitation
@@ -845,6 +846,7 @@ en:
     locale_placeholder: Select your preferred language
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
+    username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
 
   change_picture_form:
     aria_label: 'Change picture form'

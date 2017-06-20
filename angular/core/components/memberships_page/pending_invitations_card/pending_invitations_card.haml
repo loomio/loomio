@@ -4,18 +4,22 @@
     %table.pending-invitations-card__pending-invitations
       %thead
         %tr
-          %th.pending_invitations_card__email-heading.md-subhead{translate: "pending_invitations_card.email"}
-          %th.pending-invitations-card__invitation-url-heading.md-subhead{translate: "pending_invitations_card.invitation_link"}
-          %th.pending-invitations-card__sent-heading.md-subhead{translate: "pending_invitations_card.sent"}
-          %th
+          %td
+            %strong{translate: "pending_invitations_card.email"}
+          %td.lmo-desktop-only
+            %strong{translate: "pending_invitations_card.invitation_link"}
+          %td.lmo-desktop-only
+            %strong{translate: "pending_invitations_card.sent"}
+          %td.align-center
+            %strong{translate: "pending_invitations_card.revoke"}
       %tbody
         %tr{ng-repeat: "invitation in group.pendingInvitations() track by invitation.id"}
           %td.pending-invitations-card__email
-            {{invitation.recipientEmail}}
-          %td.pending-invitations-card__invitation-url
-            {{baseUrl}}invitations/{{invitation.token}}
-          %td.pending-invitations-card__sent
-            {{invitationCreatedAt(invitation)}}
+            %span {{invitation.recipientEmail}}
+          %td.lmo-desktop-only
+            %span {{baseUrl}}invitations/{{invitation.token}}
+          %td.lmo-desktop-only
+            %span {{invitationCreatedAt(invitation)}}
           %td.align-center
-            %button.pending-invitations-card__cancel-link{href: "", ng-click: "openCancelForm(invitation)"}
-              %i.material-icons remove_circle
+            %md-button.pending-invitations-card__cancel-link{ng-click: "openCancelForm(invitation)"}
+              %i.material-icons clear

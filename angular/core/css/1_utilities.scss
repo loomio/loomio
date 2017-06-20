@@ -348,11 +348,27 @@
   vertical-align: top;
 }
 
+.lmo-full-width {
+  width: 100%;
+}
+
 img.emojione {
   position: relative;
   top: 5px;
   width: 20px;
   height: 20px;
+}
+
+@media (max-width: $small-max-px) {
+  .lmo-desktop-only {
+    display: none;
+  }
+}
+
+@media (min-width: $small-max-px) {
+  .lmo-mobile-only {
+    display: none;
+  }
 }
 
 @media (max-width: $tiny-max-px) {
