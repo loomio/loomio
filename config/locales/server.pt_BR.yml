@@ -192,9 +192,6 @@ pt_BR:
     plus: Profissional
     free_trial_html: Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.
     get_started_for_free: Comece de graça
-    gift_body: Plano de suporte a grupos comunitários por doação.
-    standard_body_html: Tudo o que você precisa para <nobr>um grupo.</nobr>
-    pro_body_html: Para organizações com <nobr>multiplos grupos.</nobr>
     one_group: um grupo
     unlimited_members: membros ilimitados
     unlimited_decisions: decisões ilimitadas
@@ -211,7 +208,6 @@ pt_BR:
     help_with_setup: ajuda com configurações iniciais
     custom_subdomain: subdomínio personalizado
     analytics_reports: relatórios analíticos
-    data_export: exportação de dados
     contact_us_html: |
       Os preços estão em dólares americanos, mais taxas onde aplicável. Precisa de algo mais? <a href="/contact">Vamos conversar!</a>
     custom_subdomain_html: |+

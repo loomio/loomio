@@ -1,5 +1,7 @@
 .everything
-  %p= t(:'email.missed_yesterday.heres_what_happened')
+  %p
+    = t(:'email.missed_yesterday.heres_what_happened')
+    = t(:'email.missed_yesterday.do_not_reply')
   %h1= t(:'email.missed_yesterday.headlines')
   .toc
     =render 'user_mailer/missed_yesterday/headlines'

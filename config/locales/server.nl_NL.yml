@@ -196,9 +196,6 @@ nl_NL:
     plus: Pro
     free_trial_html: We vragen je om een prijsplan te kiezen na een gratis proefperiode van <span>30 dagen</span>. Je hebt geen credit card nodig.
     get_started_for_free: Ga gratis aan de slag
-    gift_body: Donatie-ondersteund prijsplan voor gemeenschapsgroepen
-    standard_body_html: Alles wat je nodig hebt voor <nobr>een groep.</nobr>
-    pro_body_html: Voor organisaties met <nobr>meerdere groepen</nobr>
     one_group: een groep
     unlimited_members: onbeperkt aantal leden
     unlimited_decisions: onbeperkt aantal beslissingen
@@ -214,7 +211,6 @@ nl_NL:
     help_with_setup: hulp bij eerste setup
     custom_subdomain: aangepast subdomein
     analytics_reports: analytische verslagen
-    data_export: data exporteren
     contact_us_html: |
       Prijzen zijn in Amerikaanse dollars, plus BTW indien van toepassing. Iets anders nodig? <a href="/contact">Neem contact op!</a>
     custom_subdomain_html: |

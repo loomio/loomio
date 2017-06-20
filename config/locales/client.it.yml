@@ -943,7 +943,6 @@ it:
   poll_meeting_vote_form:
     your_response: Quando puoi esserci?
   poll_dot_vote_vote_form:
-    dots_remaining: Hai {{count}} punti rimanenti.
     too_many_dots: Hai usato troppi punti
     stance_created: Voto creato
     stance_updated: Voto aggiornato

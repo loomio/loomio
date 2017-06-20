@@ -92,6 +92,7 @@ en:
       subject: Loomio - Summary of the last 24 hours
     missed_yesterday:
       subject: Yesterday on Loomio
+      do_not_reply: Please do not reply to this email.
       headlines: Headlines
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
