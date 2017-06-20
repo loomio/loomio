@@ -47,6 +47,8 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_common_outcome_form.outcome_#{actionName}"
         drafts: true
+        failureCallback: ->
+          ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
           scope.$emit 'outcomeSaved', data.outcomes[0].id
       , options))

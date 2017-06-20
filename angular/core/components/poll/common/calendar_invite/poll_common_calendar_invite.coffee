@@ -9,4 +9,4 @@ angular.module('loomioApp').directive 'pollCommonCalendarInvite', (Records, Poll
 
     $scope.outcome.calendarInvite = true
     $scope.outcome.pollOptionId = $scope.outcome.pollOptionId or _.first($scope.options).id
-    $scope.outcome.statement = $scope.outcome.statement or $scope.outcome.poll().title
+    $scope.outcome.customFields.event_summary = $scope.outcome.customFields.event_summary or $scope.outcome.poll().title
