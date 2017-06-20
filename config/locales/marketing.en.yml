@@ -28,6 +28,96 @@ en:
     loomio_school: Loomio school
     company_handbook: Company handbook
 
+  marketing2:
+    make_a_decision: Make a decision
+    start_a_group: Start a group
+    too_many_group_emails: Too many group emails?
+    tedious_meetings: Tedious meetings?
+    off_track_discussions: Off-track discussions?
+    loomio_is_the_answer:  Loomio saves time, gives clear outcomes, and keeps everything in one place.
+    loomio_helps: Loomio helps
+    boards_and_committees: Boards & Committees
+    make_decisions_between_meetings:  Make decisions between meetings
+    approve_resolutions: Approve resolutions & minutes
+    everything_in_one_place: Keep everything in one place
+    working_teams: Working teams
+    increase_transparency: Increase transparency
+    more_effecient_meetings: More efficient meetings
+    clear_decisions:  Clear decisions
+    government_and_community: Government & Community
+    give_people_a_voice: Give people a voice
+    increase_accessibility: Increase accessibility & diversity
+    build_empathy:  Build empathy & understanding
+    ben_quote: "“Our communications are more effective and efficient, and everything is in one place.”"
+    ben_attribution: Ben Gleisner, Conscious Consumers
+    teddy_quote: "“People learn to engage more usefully with one another, and that carries over into face-to-face working.”"
+    teddy_attribution: Theodore Taptiklis, Human Methods Lab
+    tom_quote: "“We reached people that otherwise wouldn’t have contributed to the conversation, including marginalised populations and youth.”"
+    tom_attribution: Tom MacDiarmid, Statistics New Zealand
+    a_suite_of_decision_tools:  A suite of decision tools
+    choose_the_tool: Choose the tool that suits your situation.
+    reach_clear_outcomes: Reach clear outcomes
+    proposals_bring_conclusion_html: <strong>Proposals</strong> are an effective way to bring a discussion to conclusion.
+    hear_from_everyone: Hear from everyone - even the quieter voices, and see the big picture at a glance.
+    proposals_highlight_agreement: Proposals highlight agreement, and can surface misunderstandings or issues that need to be resolved.
+    start_a_proposal: Start a proposal
+    try_demo: Try demo
+    simple_scheduling: Simple scheduling
+    time_poll_finds_when_html: <strong>Time poll</strong> finds when everyone can meet. It works across organisations and automatically converts time zones.
+    start_a_time_poll: Start a time poll
+    polling_and_prioritising: Poll and Prioritise
+    discuss_stratergy_and_prioritise_html: Discuss strategy and prioritise with <strong>Dot voting</strong> and <strong>Polling</strong>
+    start_a_dot_vote: Start a dot vote
+    ask_yes_no_questions:  Ask yes/no questions
+    when_there_are_tasks_to_be_done_html: When there are tasks to be done, or you just want to get an 'ok' from people, <strong>Check</strong> makes participation clear and saves you chasing people up.
+    start_a_check: Start a check
+    a_place_for_your: A place for your discussions & decisions
+    a_loomio_group_is_a_safe_place_html: A <strong>Loomio group</strong> is a safe place to have considered discussions and make decisions away from social media.
+    its_secure_and_searchable: It's a secure and searchable archive of your discussions, decisions, and files.
+    make_a_decision_in_email: Make a decision in email, with anyone.
+    no_prior_setup_required: No prior setup required. Use it any time.
+    start_a_decision_in_3_steps: "Start a decision in 3 steps:"
+    forward_a_group_email_html: Forward a group email to <code>decide@loomio.org</code>
+    check_your_inbox: Check your inbox for an email from Loomio
+    your_group_will_be_included_automatically: Start a decision, your group will be included automatically.
+    watch_the_video_to_see_it: Watch the video to see it in action!
+    make_decisions_in_slack: Make decisions in Slack!
+    slack_integration_in_standard_plan:  Slack integration is included in our standard group plan.
+    works_on_all_devices: Works on all devices and platforms.
+    loomio_is_a_web_app: Loomio is a web app with great desktop and mobile support.
+    no_passwords_required: No passwords required
+    no_thinking_up_or_remembering: No thinking up, remembering, or typing! Just log in with a link sent to your email, or sign in via google or facebook.
+    easy_to_adopt: Easy to adopt
+    we_know_it_can_be_hard: We know it can be hard to start using a new tool. With Loomio you can participate and stay updated by email.
+    reminders_keep_things_moving:  Reminders keep things moving
+    loomio_has_great_notifications_and_reminders:  Loomio has great notifications and reminders, so decisions are inclusive and effective.
+    overcome_language_barriers: Overcome language barriers
+    loomio_can_translate: Loomio can translate content from one language to another, enabling people to speak across languages.
+    accessible_by_design: Accessible by design
+    loomio_is_accessible: Loomio is accessible to people with visual impairments.
+    secure: Secure
+    approved_by_nz_government: We're approved for use by the NZ government.
+    open_source: Open source
+    our_code_is_on_github: Our code is on github
+    we_respect_your_privacy: We respect your privacy
+    we_will_never_sell_your_data: We will never sell you data to third parties, or put advertising into Loomio.
+    in_the_media: In the media
+    a_different_kind_of_company:  A different kind of company
+    loomio_is_a_social_enterprise: Loomio is a social enterprise collectively owned by the people building it.
+    loomio_exists_to: Loomio exists to make it easy for anyone, anywhere, to participate in decisions that affect their lives.
+    our_company_handbook: Our company handbook
+    about_us: About us
+    people_not_enjoying_their_meeting: People not enjoying their meeting
+    people_doing_thumbs_up_or_down: People doing thumbs up or down to show their position
+    people_finding_a_time_to_meet: People finding a time to meet around a calendar
+    people_prioritising_options: People prioritising options by voting with numbers
+    people_reaching_goal: People raising hand if they've completed their job
+    loomio_on_laptop_and_phone: Loomio on a laptop and also on a phone
+    loomio_bot_with_plug: Loomio bot (our mascot) plugged into the next picture
+    loomio_in_slack: Loomio being used from within Slack, the team chat app.
+    loomio_team_photo: A photo of us, the team who built Loomio, at our last retreat in NZ
+    feature_image_alt_text: A big lightbulb, with a Loomio logo shaped fillament, in the middle of 4 scenes where people are using Loomio in their happy lives.
+
   marketing:
     hero:
       dilemma_html: Making good decisions with your group shouldn’t be so hard.
