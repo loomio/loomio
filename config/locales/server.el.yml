@@ -98,7 +98,9 @@ el:
       please_hold: Παρακαλώ περιμέντε το πολύ 5 λεπτά μέχρι να έρθει το email και ελέγξτε την ανεπιθύμητη αλληλογραφία.
     start_making_decisions: 'Για να αρχίσετε να λαμβάνετε συλλογικά αποφάσεις στο Loomio, φτιάξτε μια ομάδα δωρεάν:'
   pricing_page:
+    gift: Δωρεάν
     standard: Τυπικό
+    plus: Επαγγελματικό
     get_started_for_free: Ξεκινήστε δωρεάν
     unlimited_members: απεριόριστα μέλη
     unlimited_decisions: απεριόριστες αποφάσεις
@@ -117,3 +119,6 @@ el:
       submit: Αποστολή μηνύματος
     messages:
       email_html: "Συμπληρώστε αυτή την φόρμα, ή στείλτε ηλεκτρονικό μήνυμα στο <a href='mailto:%{email}'>%{email}</a>"
+  poll_mailer:
+    common:
+      unsubscribe: Κατάργηση εγγραφής

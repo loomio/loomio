@@ -1148,6 +1148,7 @@ zh_TW:
       success: "「{{name}}」已無法使用您的帳號"
   decision_tools_card:
     title: 決策工具
+    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">說明</a>
     proposal_title: 提案
     count_title: 勾選
     poll_title: 投票
@@ -1157,6 +1158,7 @@ zh_TW:
     your_response: 您的回應
     change_your_response: 變更您的回應
     reason: 理由
+    reason_placeholder: 任何額外的意見？
     message: 訊息
     results: 結果
     vote: 投票
@@ -1273,7 +1275,7 @@ zh_TW:
       <p>一份圓餅圖會顯示在群組中對於該議題的立場，讓每個人的聲音都能被聽到。</p>
       <p>若您一開始沒看到同意的人，別氣餒，提案就是設計用來突顯需要解決的問題。</p>
       <p>在有良好參與者的狀況下，一個提案就是採與行動的有利動作。</p>
-      <p>在 <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Loomio 學院</a> 找找更多資訊。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 尋求共識
     start_header: 啟動提案
     edit_header: 編輯提案
@@ -1287,6 +1289,7 @@ zh_TW:
       <p>使用投票來衡量人氣或是提供選項。</p>
       <p>提供一些選項來供群組成員選取。決定參與者可以選取一個或多個選項來當做他們的回應。</p>
       <p>每個人投票，且如果他們想要的話也可以同時輸入一段陳述。結果會以長條圖呈現。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 測量人氣或是提供選項
     start_header: 啟動投票
     edit_header: 編輯投票
@@ -1306,12 +1309,13 @@ zh_TW:
       <p>或是使用其來追蹤工作的完成度：「我已經檢查過我的連絡人詳細資訊，一切都沒錯」，或是「我已經讀過文件且留下了我的意見了」。</p>
       <p>勾選是有<em>目標</em>的，其應該是您想要有多少參與者的數量。如果某些事情需要更多的關注或是需要更多參與者訂閱，那麼目標就是向團隊表明這些事情。</p>
       <p>在勾選關閉的前一天，它將會提醒那些還沒參與的人（也許是數位游牧者？）。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 追蹤參與者與找到志願者
     start_header: 啟動勾選
     edit_header: 編輯勾選
     tip: 吸引人們提出邀約或要求
     title_placeholder: 例如：誰想要加入工作小組？
-    details_placeholder: 解釋為什麼要參與，或是詳細說明要如何參與。
+    details_placeholder: '參與解釋為什麼要參與，或是詳細說明要如何參與。 '
     count_created: 勾選已啟動
     count_updated: 勾選已更新
   poll_dot_vote_form:
@@ -1319,6 +1323,7 @@ zh_TW:
       <p>點投票是列出選項清單順序的方法。</p>
       <p>參與者會被給予有限的「點」，其可以被分配在他們喜歡的的選項來表示自己的偏好。</p>
       <p>這個過程會產生一個累計的長條圖以及個別分配，讓您可以考慮各種觀點。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 選項排序
     start_header: 啟動點投票
     edit_header: 編輯點投票
@@ -1337,6 +1342,7 @@ zh_TW:
       <p>若您在時間投票中新增了新的時間，已經投票的夥伴將會被提醒要更新他們的回應。</p>
       <p>您可以看到哪些人什麼時候有空，並決定何時要會面。</p>
       <p>時間將會被自動轉換為參與者的時區。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 找到會面的時間
     start_header: 啟動時間投票
     edit_header: 編輯時間投票
@@ -1385,8 +1391,9 @@ zh_TW:
     your_response: 您何時能參加？
     stance_created: 可用度已儲存
     stance_updated: 可用度已更新
+    reason_placeholder: 解釋您何時有空（或是忙碌），讓作者新增新的選項。
   poll_dot_vote_vote_form:
-    dots_remaining: 您還剩 {{count}} 點。
+    dots_remaining: "剩餘 {{count}} 點。"
     too_many_dots: 您使用了太多點數。
     stance_created: 已建立投票
     stance_updated: 已更新投票
@@ -1434,7 +1441,10 @@ zh_TW:
     anyone_can_participate_false: 可分享的連結已撤銷
     get_link: 複製連結
     invite_visitor: 電子郵件訪客
+    invite_visitor_helptext: 透過電子郵件邀請個人來參與這次的決策。來賓將僅能參與此次的決策。
     send_email: 傳送電子郵件
+    shareable_link_created: 任何人都可以參與此次的決策
+    shareable_link_revoked: 此次的決策現在僅限邀請
     shareable_link: 可分享的連結
     guests_invited: 寄送給 {{count}} 個夥伴
     guest_revoked: 已撤銷 {{email}} 的存取權
@@ -1443,6 +1453,12 @@ zh_TW:
     enter_email: "例如：guest@example.com"
     reminded: 提醒已傳送！
     send_emails: 傳送邀請函 ({{count}})
+    share_group: Loomio 群組
+    share_group_helptext: 選擇一個 Loomio 群組來分享這次的決策。該群組的成員也可以參與。
+    cannot_move_poll_helptext: 這個投票是 <strong>{{group}}</strong> 中的 <strong>{{discussion}}</strong> 討論的一部份，所以無法被移動。
+    move_group_helptext: 小心！移動決策到群組外可能會讓一些人無法存取它。已有的投票仍將會被記錄。
+    set_group: 設定群組
+    group_set: 群組已更新
     view_poll: 檢視投票
     email_invited: '邀請函已寄送給 {{email}}'
     email_exists: '{{email}} 已被邀請'
@@ -1484,6 +1500,11 @@ zh_TW:
     email_saved: 您將會收到一封關於此投票結果的電子郵件
     subscribe: 訂閱
     no_thanks: 不用了，謝謝
+  poll_common_example_card:
+    what_is_this: "這裡有五個 {{type}} 的範例。您是參與者，來試試看吧！"
+    helptext_before: "當您準備好時，"
+    helptext_link: "啟動一個 {{type}}"
+    helptext_after: "您自己，或是邀請一些夥伴來試試。"
   share_poll_page:
     title: 分享投票 - {{title}}
   polls_page:
@@ -1510,6 +1531,7 @@ zh_TW:
     login_link_helptext_with_password: "輸入您的密碼，或是透過電子郵件登入。"
     sign_up_helptext: "只要輸入您使用的名稱，我們就會寄送一個連結供您登入。"
     oauth_confirm_helptext: "只要在下面確認您的詳細資料，我們就會傳送連結給您來登入。"
+    name_required: 請輸入名稱
     welcome: 您好，{{email}}！
     welcome_back: 歡迎回來，{{name}}！
     login_link: 透過電子郵件登入
