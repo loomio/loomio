@@ -1223,7 +1223,6 @@ nl_NL:
     stance_created: Stemming gemaakt
     stance_updated: Stemming geactualiseerd
   poll_dot_vote_vote_form:
-    dots_remaining: Je hebt {{count}} stippen over.
     too_many_dots: Je hebt teveel stippen gebruikt.
     stance_created: Stemming gemaakt
     stance_updated: Stemming aangepast

@@ -27,7 +27,13 @@ zh_TW:
         若您還有登入上的問題，回覆這封電子郵件以連絡客服人員。
     start_decision:
       subject: 在 Loomio 上啟動決策
-      intro: 在下面選取要做出的決策類型
+      intro: 您好，<strong>%{name}</strong>！
+      action: 您想要做什麼？
+      proposal: 發起提案
+      count: 啟動勾選
+      poll: 啟動投票
+      dot_vote: 啟動點投票
+      meeting: 排定時間
     custom: "%{text}"
     group_email:
       intro: "%{who} 在 %{group}裡發布了一則公告："
@@ -195,6 +201,7 @@ zh_TW:
     start_making_decisions: '要開始在 Loomio 上共同作出決策，先免費設定一個群組：'
   invitation_form:
     error:
+      too_many_pending: "您在此群組有多於最大 %{count} 個的待處理邀請"
       all_email_addresses_belong_to_members: "我們不會將邀請函寄送給提供的電子郵件地址，因為它們是屬於已經在群組中的人們的。"
   pricing_page:
     header: 群組計畫
@@ -203,16 +210,21 @@ zh_TW:
     plus: 專業
     free_trial_html: 我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。
     get_started_for_free: 免費開始
-    gift_body: 社群群組捐款支援計畫。
-    standard_body_html: 在 <nobr>一個群組</nobr> 中您可能需要的每樣東西
-    pro_body_html: 有 <nobr>多個群組</nobr> 的組織。
+    gift_body: 您需要與您的群組共同做出有效率的決策的每樣東西
+    standard_body_html: 在 Slack 中做出決策
+    pro_body_html: 在您的組織中做出決策
     one_group: 一個群組
     unlimited_members: 不限成員數量
     unlimited_decisions: 不限決策數量
+    coming_facebook: Facebook 整合即將到來
     email_support: 電子郵件支援
+    coming_soon: 即將到來
+    analytics_report: 分析回報
+    data_export: 資料匯出（CSV 或 XLS）
     slack_integration_html: |+
       <strong>Slack</strong> 整合
 
+    customer_support_html: 客戶支援
     standard_price_html: '<strong>$19</strong>／月'
     gift_price_html: '<strong>$0</strong>'
     plus_includes_standard: '在標準價格中的每樣東西，再加上：'
@@ -220,9 +232,9 @@ zh_TW:
     multiple_groups: "多達 10 個群組"
     premium_support: 進階支援
     help_with_setup: 初始設定協助
+    ldap_coming_soon: ActiveDirectory/LDAP 即將到來
     custom_subdomain: 自訂子網域
     analytics_reports: 分析報告
-    data_export: 匯出資料
     contact_us_html: |
       價格是以美元計費，再加上營業稅。需要其他東西？<a href="/contact">讓我們談談！</a>
     custom_subdomain_html: |
@@ -366,7 +378,7 @@ zh_TW:
       please_respond: 請回應
       time_zone: （在 %{zone} 顯示的時間）
       undecided_members: 未決定的成員（%{count}）
-      undecided_visitors: 未決定的訪客（%{count}）
+      undecided_visitors: 未決定的來賓 (%{count})
       more_undecided: "%{count} 更多……"
     proposal:
       subject:
@@ -421,6 +433,7 @@ zh_TW:
     count:
       subject:
         poll_created: '%{actor} 正在勾選：%{title}'
+        poll_edited: '%{actor} 編輯了一個勾選：%{title}'
         poll_closing_soon: '剩餘24小時的勾選：%{title}'
         poll_closing_soon_author: '您的勾選將於24小時內關閉：%{title}'
         poll_expired: "勾選已關閉：%{title}"
@@ -431,6 +444,7 @@ zh_TW:
         stance_created: "%{actor} 已經參與：%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> 正在勾選'
+        poll_edited: '<strong>%{actor}</strong> 編輯了勾選'
         poll_closing_soon: '<strong>%{actor}</strong> 的勾選將於24小時內關閉。'
         poll_closing_soon_author: '您的勾選將於24小時內關閉，現在正是您提醒其他人關於這個勾選或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的勾選已關閉：%{title}"
@@ -491,3 +505,19 @@ zh_TW:
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+  poll_generator:
+    proposal:
+      title: "給 Shelley 和 Jack 錄取通知書"
+      details: Shelley 和 Jack 已經在我們的團隊中當了三個月的實習生，而且不斷表現出令人欽佩的奉獻精神，顯然是我們團隊中的資產。我們是不是應該要讓他們成為正式員工呢？
+    poll:
+      title: "我們可能需要注意週四的晚宴上有什麼食物可能會讓人過敏？"
+      details: 希望我們能在晚宴上看到您！請註明您是否有我們應該注意的任何飲食限制。
+    count:
+      title: "誰可以幫忙組織公司的野餐？"
+      details: Marsa 上次似乎有點太累了，所以這次我們想給她幾個幫手來讓每個人都可以輕鬆點。請說明您是否想幫忙！
+    dot_vote:
+      title: "我們公司下一季的戰略是什麼？"
+      details: 對我們的公司而言，這是非常忙碌的一年，我們需要對我們有限的資源做戰略調配。請說明您認為下一季裡最重要的領域。
+    meeting:
+      title: "我們下次的工作會議什麼時候舉辦？"
+      details: 時間又到了我們開雙月的工作會議的時候了；理想狀態下，我們應該要在下週末前會面。大家什麼時候有空呢？

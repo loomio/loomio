@@ -201,9 +201,6 @@ da:
     plus: Pro
     free_trial_html: Efter <span>30-dages gratis prøveperiode</span> beder vi dig om at vælge abonnements ordning.
     get_started_for_free: Kom igang gratis
-    gift_body: Donations baserede ordninger for community groupper.
-    standard_body_html: Alt du skal bruge for <nobr>en gruppe.</nobr>
-    pro_body_html: For organisationer med <nobr>flere grupper.</nobr>
     one_group: en gruppe
     unlimited_members: uendeligt antal medlemmer
     unlimited_decisions: uendelige antal beslutninger
@@ -219,7 +216,6 @@ da:
     help_with_setup: hjælp til initiel opsætning
     custom_subdomain: eget subdomæne
     analytics_reports: statistik rapporter
-    data_export: data eksport
     contact_us_html: |+
       Priser er i UD dollars, plus moms hvor dette er påkrævet. Skal du bruger noget andet? <a href="/contact">Kontakt os!</a>
 

@@ -195,9 +195,6 @@ de:
     plus: Pro
     free_trial_html: Nach einem <span>30-tägigen kostenlosen Probezeitraum</span> werden wir Dich nach Deinem Vertragsmodell fragen. Es ist keine Kreditkarte notwendig.
     get_started_for_free: Starte nun kostenlos
-    gift_body: Spenden-unterstütztes Modell für Community-Gruppen
-    standard_body_html: Alles was du für <nobr>eine Gruppe</nobr> brauchst.
-    pro_body_html: Für Organisationen mit <nobr>mehreren Gruppen.</nobr>
     one_group: eine Gruppe
     unlimited_members: unbegrenzte Mitglieder
     unlimited_decisions: unbegrenzte Abstimmungen
@@ -213,7 +210,6 @@ de:
     help_with_setup: Hilfe beim Einrichten
     custom_subdomain: eigene Subdomain
     analytics_reports: Analysen
-    data_export: Datenexport
     contact_us_html: |
       Preise in US-Dollar, plus wenn erforderlich Mehrwertsteuer. Brauchst du noch etwas? <a href="/contact">Nimm mit uns Kontakt auf!</a>
     custom_subdomain_html: |
