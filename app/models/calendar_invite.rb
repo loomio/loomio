@@ -1,6 +1,6 @@
 class CalendarInvite
   include PrettyUrlHelper
-  extend Forwardable
+  include FormattedDateHelper
 
   def initialize(outcome = Outcome.new)
     @calendar = build_calendar(outcome)
@@ -18,8 +18,9 @@ class CalendarInvite
       calendar.event do |event|
         if outcome.poll_option.name.match /^\d{4}-\d{2}-\d{2}$/
           event.dtstart  = outcome.poll_option.name.to_date
+          event.duration = "+P0W1D0H0M"
         else
-          event.dtstart  = Time.zone.parse(outcome.poll_option.name)
+          event.dtstart  = date_time(outcome.poll_option.name)
           event.duration = "+P0W0D0H#{outcome.poll.meeting_duration}M"
         end
         event.organizer   = Icalendar::Values::CalAddress.new(outcome.author.email, cn: outcome.author.name)
