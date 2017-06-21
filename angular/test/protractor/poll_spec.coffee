@@ -118,7 +118,7 @@ describe 'Polls', ->
 
   it 'can show undecided users', ->
     page.loadPath 'polls/test_poll_in_discussion_with_guest'
-    page.expectText '.poll-common-undecided-panel__button', 'Show 4 undecided'
+    page.expectText '.poll-common-undecided-panel__button', 'SHOW 4 UNDECIDED'
     page.click '.poll-common-undecided-panel__button'
     page.expectText '.poll-common-undecided-panel__users', 'Undecided Group Members (2)'
     page.expectText '.poll-common-undecided-panel__visitors', 'Undecided Guests (2)'
