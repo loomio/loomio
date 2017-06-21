@@ -28,6 +28,10 @@ class Communities::LoomioGroup < Communities::Base
     self.identifier = group.key
   end
 
+  def members
+    group.members
+  end
+
   def includes?(member)
     member.is_admin_of?(self.group) ||
     (member.is_member_of?(self.group) && group.members_can_vote?)

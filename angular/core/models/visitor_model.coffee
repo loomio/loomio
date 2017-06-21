@@ -4,6 +4,9 @@ angular.module('loomioApp').factory 'VisitorModel', (AppConfig, BaseModel) ->
     @plural: 'visitors'
     @serializableAttributes: AppConfig.permittedParams.visitor
 
+    relationships: ->
+      @belongsTo 'poll'
+
     invite: (poll) ->
       @processing = true
       @remote.post('', _.merge(@serialize(), {poll_id: poll.id})).finally =>

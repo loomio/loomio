@@ -42,8 +42,8 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @belongsTo 'discussion'
       @hasMany   'pollOptions'
       @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
-      @hasMany   'pollDidNotVotes'
       @hasMany   'communities'
+      @hasMany   'visitors'
 
     group: ->
       if @discussion()
@@ -51,8 +51,11 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       else
         @recordStore.groups.find(@groupId)
 
-    voters: ->
+    userVoters: ->
       @recordStore.users.find(_.pluck(@stances(), 'userId'))
+
+    visitorVoters: ->
+      @recordStore.visitors.find(_.pluck(@stances(), 'visitorId'))
 
     newAttachments: ->
       @recordStore.attachments.find(@newAttachmentIds)
@@ -82,19 +85,19 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       (100 * @stancesCount / @communitySize()).toFixed(0) if @communitySize() > 0
 
     undecidedCount: ->
-      if @isActive()
-        _.max [@communitySize() - @stancesCount, 0]
-      else
-        @didNotVotesCount
+      @undecidedUserCount + @undecidedVisitorCount
 
-    undecidedMembers: ->
+    undecidedUsers: ->
       if @isActive()
         if @group()
-          _.difference(@group().members(), @voters())
+          _.difference(@group().members(), @userVoters())
         else
-          _.difference([@author()], @voters())
+          _.difference([@author()], @userVoters())
       else
         @recordStore.users.find(_.pluck(@pollDidNotVotes(), 'userId'))
+
+    undecidedVisitors: ->
+      _.difference(@visitors(), @visitorVoters())
 
     firstOption: ->
       _.first @pollOptions()

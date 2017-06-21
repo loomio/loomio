@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606001932) do
+ActiveRecord::Schema.define(version: 20170621011621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -757,28 +757,29 @@ ActiveRecord::Schema.define(version: 20170606001932) do
   add_index "poll_unsubscriptions", ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true, using: :btree
 
   create_table "polls", force: :cascade do |t|
-    t.integer  "author_id",                             null: false
-    t.string   "title",                                 null: false
+    t.integer  "author_id",                               null: false
+    t.string   "title",                                   null: false
     t.text     "details"
     t.datetime "closing_at"
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.string   "key",                                   null: false
-    t.string   "poll_type",                             null: false
+    t.string   "key",                                     null: false
+    t.string   "poll_type",                               null: false
     t.integer  "motion_id"
-    t.jsonb    "stance_data",           default: {}
-    t.integer  "stances_count",         default: 0,     null: false
-    t.boolean  "multiple_choice",       default: false, null: false
-    t.jsonb    "custom_fields",         default: {},    null: false
-    t.jsonb    "stance_counts",         default: [],    null: false
-    t.integer  "did_not_votes_count",   default: 0,     null: false
+    t.jsonb    "stance_data",             default: {}
+    t.integer  "stances_count",           default: 0,     null: false
+    t.boolean  "multiple_choice",         default: false, null: false
+    t.jsonb    "custom_fields",           default: {},    null: false
+    t.jsonb    "stance_counts",           default: [],    null: false
     t.integer  "group_id"
-    t.jsonb    "matrix_counts",         default: [],    null: false
-    t.boolean  "notify_on_participate", default: false, null: false
-    t.integer  "visitors_count",        default: 0,     null: false
-    t.boolean  "example",               default: false, null: false
+    t.jsonb    "matrix_counts",           default: [],    null: false
+    t.boolean  "notify_on_participate",   default: false, null: false
+    t.integer  "visitors_count",          default: 0,     null: false
+    t.boolean  "example",                 default: false, null: false
+    t.integer  "undecided_user_count",    default: 0,     null: false
+    t.integer  "undecided_visitor_count", default: 0,     null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
