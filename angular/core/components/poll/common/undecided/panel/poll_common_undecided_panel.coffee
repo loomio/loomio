@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Records, RecordLoader, PollService) ->
+angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Records, RecordLoader, AbilityService, PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/undecided/panel/poll_common_undecided_panel.html'
   controller: ($scope) ->
@@ -23,6 +23,9 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
     $scope.visitorsLoader = new RecordLoader
       collection: 'visitors'
       params:     params
+
+    $scope.canViewVisitors = ->
+      AbilityService.canAdministerPoll($scope.poll)
 
     $scope.moreUsersToLoad = ->
       $scope.usersLoader.numLoaded < $scope.poll.undecidedUserCount

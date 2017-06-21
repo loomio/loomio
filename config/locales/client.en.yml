@@ -1428,6 +1428,7 @@ en:
     show_undecided: Show {{count}} undecided
     undecided_users: Undecided Group Members ({{count}})
     undecided_visitors: Undecided Guests ({{count}})
+    hidden_visitors: Only group coordinators or the poll author may view undecided guests
 
   poll_common_set_outcome_panel:
     share_outcome: Share outcome
