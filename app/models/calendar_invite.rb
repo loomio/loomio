@@ -17,12 +17,11 @@ class CalendarInvite
     Icalendar::Calendar.new.tap do |calendar|
       calendar.event do |event|
         if outcome.poll_option.name.match /^\d+-\d+-\d+$/
-          event.dtstart  = outcome.poll_option.name.to_date
           event.duration = "+P0W1D0H0M"
         else
-          event.dtstart  = date_time(outcome.poll_option.name)
           event.duration = "+P0W0D0H#{outcome.poll.meeting_duration}M"
         end
+        event.dtstart     = outcome.poll_option.name
         event.organizer   = Icalendar::Values::CalAddress.new(outcome.author.email, cn: outcome.author.name)
         event.summary     = outcome.event_summary
         event.description = outcome.event_description
