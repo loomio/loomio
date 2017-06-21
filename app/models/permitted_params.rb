@@ -54,7 +54,7 @@ class PermittedParams < Struct.new(:params)
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
      :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate,
-     :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :pending_emails, {pending_emails: []}]},
+     :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
      :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
      :poll_option_names, {poll_option_names: []},
@@ -72,7 +72,8 @@ class PermittedParams < Struct.new(:params)
   end
 
   def outcome_attributes
-    [:statement, :poll_id, :make_announcement]
+    [:statement, :poll_id, :poll_option_id, :make_announcement,
+     :custom_fields, custom_fields: [:event_location, :event_summary, :event_description]]
   end
 
   def visitor_attributes

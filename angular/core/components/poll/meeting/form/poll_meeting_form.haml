@@ -11,15 +11,22 @@
     %textarea.lmo-primary-form-input.poll-meeting-form__details{ng-model: "poll.details", placeholder: "{{'poll_meeting_form.details_placeholder' | translate}}", mention-field: "true"}
     %outlet{name: "after-poll-form-textarea", model: "poll"}
 
-  .md-input-compensate
-    %poll_common_attachment_form{poll: "poll"}
+  %md-input-container.md-block
+    %label{translate: "poll_meeting_form.meeting_duration"}
+    %md-select{ng-model: "poll.customFields.meeting_duration"}
+      %md-option{ng-repeat: "duration in durations", ng-value: "duration.minutes"}
+        {{duration.label}}
+
+  %poll_common_attachment_form{poll: "poll"}
 
   %md-list.md-block
     .poll-meeting-form__label-and-timezone
-      %label.poll-common-form__options-label.md-caption.lmo-flex__grow{translate: "poll_common_form.options"}
+      %label.nowrap.poll-common-form__options-label.md-caption.lmo-flex__grow{translate: "poll_meeting_form.timeslots"}
       %time_zone_select.lmo-flex__shrink{zone: "poll.customFields.time_zone"}
     %validation_errors{subject: "poll", field: "pollOptions"}
     .poll-meeting-form__options
+      %md-list-item{ng-if: "!poll.pollOptionNames.length"}
+        %p.poll-common-helptext{translate: "poll_meeting_form.no_options"}
       %md-list-item.poll-meeting-form__poll-option-names{layout: "row", ng-repeat: "name in poll.pollOptionNames track by $index"}
         %poll_meeting_time.poll-meeting-form__option-text.lmo-flex__grow{name: "name", zone: "zone"}
         %md-button.poll-meeting-form__option-button.lmo-inline-action{ng-click: "removeOption(name)", aria-label: "{{ 'poll_meeting_form.remove_option' | translate }}"}

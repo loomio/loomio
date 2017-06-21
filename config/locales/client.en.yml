@@ -1376,6 +1376,19 @@ en:
     members_count: "{{count}} people will be notified"
     participants_count: "The {{count}} people who have voted will be notified"
 
+  poll_common_calendar_invite:
+    calendar_invite: Include a calendar invitation with this outcome
+    poll_option_id: Meeting time
+    helptext_on: Users will be able to add this meeting to their calendar
+    helptext_off: No meeting invite will be sent
+    event_duration: Duration
+    event_summary: Summary
+    event_summary_placeholder: What would you like to call this meeting?
+    event_description: Meeting description
+    event_description_placeholder: What is the agenda for this meeting?
+    location: Location
+    location_placeholder: Where will this meeting take place?
+
   poll_common_notify_on_participate:
     notify_on_participate: Notify me when people participate
     helptext_on: You will be notified whenever someone participates
@@ -1545,7 +1558,10 @@ en:
     details_placeholder: Provide any clarifying details people might need to participate
     meeting_created: Time poll created
     meeting_updated: Time poll updated
-    add_option_placeholder: Enter a time
+    timeslots: Time slots
+    no_options: "You haven't added any time slots yet! Add some below."
+    meeting_duration: Meeting duration
+    add_option_placeholder: Enter a new time
 
   poll_proposal_vote_form:
     default_reason_placeholder: Please explain your reasoning
@@ -1747,7 +1763,6 @@ en:
     invalid_email: "Sorry, that doesn't look like a valid email address"
     invalid_password: "Sorry, that password doesn't match the one we have on file"
     email_not_found: "Sorry, we couldn't find an account with that email address"
-
     email_placeholder: you@example.com
     login_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.

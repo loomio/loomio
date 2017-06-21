@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
 
     defaultValues: ->
       statement: ''
+      customFields: {}
 
     relationships: ->
       @belongsTo 'author', from: 'users'

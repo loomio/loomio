@@ -3,7 +3,6 @@ require 'rails_helper'
 describe InvitationsController do
   let(:group) { FactoryGirl.create(:group) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:another_user) { create :user }
   let(:another_group) { FactoryGirl.create(:group) }
   let(:another_user) { FactoryGirl.create(:user) }
 

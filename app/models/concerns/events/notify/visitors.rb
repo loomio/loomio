@@ -8,11 +8,6 @@ module Events::Notify::Visitors
   end
   handle_asynchronously :email_visitors!
 
-  # which mailer should be used to send emails about this event?
-  def mailer
-    ThreadMailer
-  end
-
   private
 
   # which visitors should receive an email about this event?

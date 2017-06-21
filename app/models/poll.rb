@@ -1,13 +1,13 @@
 class Poll < ActiveRecord::Base
+  extend  HasCustomFields
   include ReadableUnguessableUrls
   include HasMentions
   include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
 
-  TEMPLATES = YAML.load_file(Rails.root.join("config", "poll_templates.yml"))
-  COLORS    = YAML.load_file(Rails.root.join("config", "colors.yml"))
-  TIMEZONES = YAML.load_file(Rails.root.join("config", "timezones.yml"))
+  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails
+
   TEMPLATE_FIELDS = %w(material_icon translate_option_name
                        can_add_options can_remove_options
                        must_have_options chart_type has_option_icons
@@ -15,7 +15,7 @@ class Poll < ActiveRecord::Base
                        dates_as_options required_custom_fields
                        require_stance_choice poll_options_attributes).freeze
   TEMPLATE_FIELDS.each do |field|
-    define_method field, -> { TEMPLATES.dig(self.poll_type, field) }
+    define_method field, -> { AppConfig.poll_templates.dig(self.poll_type, field) }
   end
 
   include Translatable
@@ -98,7 +98,7 @@ class Poll < ActiveRecord::Base
   end
 
   validates :title, presence: true
-  validates :poll_type, inclusion: { in: TEMPLATES.keys }
+  validates :poll_type, inclusion: { in: AppConfig.poll_templates.keys }
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
   validate :poll_options_are_valid
@@ -150,7 +150,7 @@ class Poll < ActiveRecord::Base
   end
 
   def is_single_vote?
-    TEMPLATES.dig(self.poll_type, 'single_choice') && !self.multiple_choice
+    AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
   end
 
   def poll_option_names

@@ -29,6 +29,11 @@ class Stance < ActiveRecord::Base
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
   scope :chronologically, -> { order('created_at asc') }
 
+  scope :join_participants, -> {
+     joins("LEFT OUTER JOIN users ON participant_type = 'User' AND participant_id = users.id")
+    .joins("LEFT OUTER JOIN visitors ON participant_type = 'Visitor' AND participant_id = visitors.id")
+  }
+
   validate :enough_stance_choices
   validate :total_score_is_valid
   validate :participant_is_complete
@@ -64,7 +69,7 @@ class Stance < ActiveRecord::Base
 
   def total_score_is_valid
     return unless poll.poll_type == 'dot_vote'
-    if stance_choices.map(&:score).sum > poll.custom_fields['dots_per_person'].to_i
+    if stance_choices.map(&:score).sum > poll.dots_per_person.to_i
       errors.add(:dots_per_person, "Too many dots")
     end
   end

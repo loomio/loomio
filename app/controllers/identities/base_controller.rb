@@ -15,7 +15,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def destroy
-    if i = current_user.send(:"#{controller_name}_identity")
+    if i = current_user.identities.find_by(identity_type: controller_name)
       i.destroy
       redirect_to request.referrer || root_path
     else

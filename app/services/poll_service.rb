@@ -100,7 +100,7 @@ class PollService
     actor.ability.authorize! :create_visitors, poll
 
     VisitorsBatchCreateJob.perform_later(emails, poll.id, actor.id)
-    poll.custom_fields['pending_emails'] = []
+    poll.pending_emails = []
     poll.save(validate: false)
 
     EventBus.broadcast('poll_create_visitors', poll, emails, actor)
@@ -115,7 +115,7 @@ class PollService
       # convert motion to poll
       poll = Poll.new(
         poll_type:               "proposal",
-        poll_options_attributes: Poll::TEMPLATES.dig('proposal', 'poll_options_attributes'),
+        poll_options_attributes: AppConfig.poll_templates.dig('proposal', 'poll_options_attributes'),
         key:                     motion.key,
         discussion:              motion.discussion,
         motion:                  motion,
