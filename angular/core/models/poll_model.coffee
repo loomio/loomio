@@ -42,6 +42,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @belongsTo 'discussion'
       @hasMany   'pollOptions'
       @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
+      @hasMany   'pollDidNotVotes'
       @hasMany   'communities'
       @hasMany   'visitors'
 
