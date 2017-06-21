@@ -5,6 +5,8 @@ rvm:
 dist: trusty
 sudo: required
 
+group: edge
+
 cache:
   bundler: true
   yarn: true
