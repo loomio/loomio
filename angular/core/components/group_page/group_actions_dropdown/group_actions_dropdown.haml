@@ -4,22 +4,22 @@
       %span{translate: "group_page.options.label"}>
       %i.material-icons expand_more
     %md-menu-content.group-actions-dropdown__menu-content
-      %md-menu-item.group-page-actions__edit-group-link{ng-if: "groupActions.canEditGroup()"}
-        %md-button{ng-click: "groupActions.editGroup()"}
+      %md-menu-item.group-page-actions__edit-group-link{ng-if: "canEditGroup()"}
+        %md-button{ng-click: "editGroup()"}
           %span{translate: "group_page.options.edit_group"}
-      %md-menu-item{ng-if: "groupActions.canAdministerGroup()"}
+      %md-menu-item{ng-if: "canAdministerGroup()"}
         %a.md-button{lmo-href-for: "group", lmo-href-action: "memberships"}
           %span{translate: "group_page.options.manage_members"}
-      %md-menu-item.group-page-actions__add-subgroup-link{ng-if: "groupActions.canAddSubgroup()"}
-        %md-button{ng-click: "groupActions.addSubgroup()"}
+      %md-menu-item.group-page-actions__add-subgroup-link{ng-if: "canAddSubgroup()"}
+        %md-button{ng-click: "addSubgroup()"}
           %span{translate: "group_page.options.add_subgroup"}
-      %md-menu-item.group-page-actions__change-volume-link{ng-if: "groupActions.canChangeVolume()"}
-        %md-button{ng-click: "groupActions.openChangeVolumeForm()"}
+      %md-menu-item.group-page-actions__change-volume-link{ng-if: "canChangeVolume()"}
+        %md-button{ng-click: "openChangeVolumeForm()"}
           %span{translate: "group_page.options.email_settings"}
       %outlet{name: "after-group-actions-manage-memberships", model: "group"}
       %md-menu-item.group-page-actions__leave-group
-        %md-button{ng-click: "groupActions.leaveGroup()"}
+        %md-button{ng-click: "leaveGroup()"}
           %span{translate: "group_page.options.leave_group"}
-      %md-menu-item.group-page-actions__archive-group{ng-if: "groupActions.canArchiveGroup()"}
-        %md-button{ng-click: "groupActions.archiveGroup()"}
+      %md-menu-item.group-page-actions__archive-group{ng-if: "canArchiveGroup()"}
+        %md-button{ng-click: "archiveGroup()"}
           %span{translate: "group_page.options.deactivate_group"}

@@ -3,37 +3,36 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_actions_dropdown/group_actions_dropdown.html'
   replace: true
-  controllerAs: 'groupActions'
   controller: ($scope, $window, AppConfig, AbilityService, Session, ChangeVolumeForm, ModalService, GroupModal, LeaveGroupForm, ArchiveGroupForm, Records) ->
 
-    @canAdministerGroup = ->
+    $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup($scope.group)
 
-    @canEditGroup = =>
+    $scope.canEditGroup = =>
       AbilityService.canEditGroup($scope.group)
 
-    @canAddSubgroup = ->
+    $scope.canAddSubgroup = ->
       AbilityService.canCreateSubgroups($scope.group)
 
-    @canArchiveGroup = =>
+    $scope.canArchiveGroup = =>
       AbilityService.canArchiveGroup($scope.group)
 
-    @canChangeVolume = ->
+    $scope.canChangeVolume = ->
       AbilityService.canChangeGroupVolume($scope.group)
 
-    @openChangeVolumeForm = ->
+    $scope.openChangeVolumeForm = ->
       ModalService.open ChangeVolumeForm, model: -> $scope.group.membershipFor(Session.user())
 
-    @editGroup = ->
+    $scope.editGroup = ->
       ModalService.open GroupModal, group: -> $scope.group
 
-    @addSubgroup = ->
+    $scope.addSubgroup = ->
       ModalService.open GroupModal, group: -> Records.groups.build(parentId: $scope.group.id)
 
-    @leaveGroup = ->
+    $scope.leaveGroup = ->
       ModalService.open LeaveGroupForm, group: -> $scope.group
 
-    @archiveGroup = ->
+    $scope.archiveGroup = ->
       ModalService.open ArchiveGroupForm, group: -> $scope.group
 
     return
