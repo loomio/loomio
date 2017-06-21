@@ -67,7 +67,7 @@ module EmailHelper
 
   def proposal_colors(poll)
     if poll.stance_counts.max.to_i > 0
-      Poll::COLORS.fetch(poll.poll_type, []).map { |color| color.sub('#', '') }.join('|')
+      AppConfig.colors.fetch(poll.poll_type, []).map { |color| color.sub('#', '') }.join('|')
     else
       'aaaaaa'
     end
