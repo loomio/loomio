@@ -16,7 +16,7 @@ class CalendarInvite
     return unless outcome.poll_option && outcome.dates_as_options
     Icalendar::Calendar.new.tap do |calendar|
       calendar.event do |event|
-        if outcome.poll_option.name.match /^\d{4}-\d{2}-\d{2}$/
+        if outcome.poll_option.name.match /^\d+-\d+-\d+$/
           event.dtstart  = outcome.poll_option.name.to_date
           event.duration = "+P0W1D0H0M"
         else
