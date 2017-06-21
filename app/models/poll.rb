@@ -54,9 +54,16 @@ class Poll < ActiveRecord::Base
 
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
-  define_counter_cache(:stances_count)       { |poll| poll.stances.latest.count }
-  define_counter_cache(:visitors_count)      { |poll| poll.visitors.count }
-  define_counter_cache(:did_not_votes_count) { |poll| poll.poll_did_not_votes.count }
+  define_counter_cache(:stances_count)           { |poll| poll.stances.latest.count }
+  define_counter_cache(:visitors_count)          { |poll| poll.visitors.count }
+  define_counter_cache(:undecided_visitor_count) { |poll| Visitor.undecided_for(poll).count }
+  define_counter_cache(:undecided_user_count)   do |poll|
+    if community = poll.community_of_type(:loomio_users) || poll.group&.community
+      community.members
+    else
+      User.where(id: poll.author_id)
+    end.without(poll.participants).count
+  end
 
   has_many :poll_communities, dependent: :destroy, autosave: true
   has_many :communities, through: :poll_communities

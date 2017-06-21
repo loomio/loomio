@@ -845,6 +845,7 @@ en:
     locale_placeholder: Select your preferred language
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
+    username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
 
   change_picture_form:
     aria_label: 'Change picture form'
@@ -1408,12 +1409,12 @@ en:
     priority_last: Block first
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
-    show_undecided: Show undecided
     none_of_the_above: (None of the above)
 
-  poll_common_did_not_votes_panel:
-    undecided: Undecided ({{count}})
-    show_undecided: Show undecided
+  poll_common_undecided_panel:
+    show_undecided: Show {{count}} undecided
+    undecided_users: Undecided Group Members ({{count}})
+    undecided_visitors: Undecided Guests ({{count}})
 
   poll_common_set_outcome_panel:
     share_outcome: Share outcome

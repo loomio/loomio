@@ -7,6 +7,7 @@ class VisitorService
 
     visitor = community.visitors.find_by(email: visitor.email) || visitor
     visitor.update!(community: community, revoked: false)
+    poll.update_undecided_visitor_count
 
     EventBus.broadcast('visitor_create', visitor, actor, poll)
     Events::VisitorCreated.publish!(visitor, actor, poll)
