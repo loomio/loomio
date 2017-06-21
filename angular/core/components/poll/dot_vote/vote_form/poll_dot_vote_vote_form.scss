@@ -28,7 +28,6 @@
   width: 30px;
   height: 30px;
   padding: 2px 0px;
-  margin: 0 10px;
   &[disabled] {
     border: 1px solid lighten($light-grey-on-white, 20%);
     color: lighten($light-grey-on-white, 20%);
@@ -45,7 +44,8 @@
 }
 
 .poll-dot-vote-vote-form__dot-input {
-  width: 50px !important;
+  margin-left: 4px;
+  margin-right: 4px;
   order: 0 !important;
   text-align: center;
   position: relative;
