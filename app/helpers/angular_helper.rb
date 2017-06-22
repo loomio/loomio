@@ -58,8 +58,8 @@ module AngularHelper
       pollTemplates:      AppConfig.poll_templates,
       pollColors:         AppConfig.colors,
       timeZones:          AppConfig.timezones,
-      communityProviders: AppConfig.providers.fetch('identity', []),
-      identityProviders:  AppConfig.providers.fetch('community', []).map do |provider|
+      communityProviders: AppConfig.providers.fetch('community', []),
+      identityProviders:  AppConfig.providers.fetch('identity', []).map do |provider|
         ({ name: provider, href: send("#{provider}_oauth_path") } if ENV["#{provider.upcase}_APP_KEY"])
       end.compact
     }
