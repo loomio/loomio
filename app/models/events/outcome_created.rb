@@ -13,6 +13,10 @@ class Events::OutcomeCreated < Event
 
   private
 
+  def notify_author?
+    poll.author_receives_outcome
+  end
+
   def email_visitors
     if announcement
       poll.visitors

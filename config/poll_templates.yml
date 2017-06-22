@@ -70,6 +70,7 @@ meeting:
   can_remove_options:      true
   must_have_options:       true
   dates_as_options:        true
+  author_receives_outcome: true
   sort_options:
     - newest_first
     - oldest_first
