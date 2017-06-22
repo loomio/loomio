@@ -1,5 +1,6 @@
 class Events::OutcomeCreated < Event
   include Events::PollEvent
+  include Events::Notify::Author
   include Events::Notify::Visitors
 
   def self.publish!(outcome)

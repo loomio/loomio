@@ -1,7 +1,6 @@
 module Events::Notify::Author
   def email_users!
     super
-    byebug
     mailer.send(:"#{kind}_author", eventable.author, self).deliver_now if notify_author?
   end
 
