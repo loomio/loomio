@@ -18,10 +18,11 @@ class CalendarInvite
       calendar.event do |event|
         if outcome.poll_option.name.match /^\d+-\d+-\d+$/
           event.duration = "+P0W1D0H0M"
+          event.dtstart  = outcome.poll_option.name.to_date
         else
           event.duration = "+P0W0D0H#{outcome.poll.meeting_duration}M"
+          event.dtstart  = Icalendar::Values::DateTime.new(date_time(outcome.poll_option.name), tzid: 'UTC')
         end
-        event.dtstart     = Icalendar::Values::DateTime.new(date_time(outcome.poll_option.name), tzid: 'UTC')
         event.organizer   = Icalendar::Values::CalAddress.new(outcome.author.email, cn: outcome.author.name)
         event.summary     = outcome.event_summary
         event.description = outcome.event_description

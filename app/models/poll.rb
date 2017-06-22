@@ -9,7 +9,7 @@ class Poll < ActiveRecord::Base
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name
-                       can_add_options can_remove_options
+                       can_add_options can_remove_options author_receives_outcome
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
                        dates_as_options required_custom_fields
