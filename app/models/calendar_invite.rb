@@ -21,7 +21,7 @@ class CalendarInvite
         else
           event.duration = "+P0W0D0H#{outcome.poll.meeting_duration}M"
         end
-        event.dtstart     = outcome.poll_option.name
+        event.dtstart     = Icalendar::Values::DateTime.new(date_time(outcome.poll_option.name), tzid: 'UTC')
         event.organizer   = Icalendar::Values::CalAddress.new(outcome.author.email, cn: outcome.author.name)
         event.summary     = outcome.event_summary
         event.description = outcome.event_description
