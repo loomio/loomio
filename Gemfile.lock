@@ -35,6 +35,13 @@ GIT
       uuidtools
 
 GIT
+  remote: git://github.com/icalendar/icalendar.git
+  revision: 97ed9d301448350de15da4ba3b2323bd685d358c
+  ref: 97ed9d3
+  specs:
+    icalendar (2.4.1)
+
+GIT
   remote: git://github.com/loomio/griddler-mailin.git
   revision: 82df9ea881c70b94a346fecac11c523a166394f4
   specs:
@@ -48,12 +55,6 @@ GIT
     griddler (1.3.1)
       htmlentities
       rails (>= 3.2.0)
-
-GIT
-  remote: git://github.com/loomio/icalendar.git
-  revision: 97ed9d301448350de15da4ba3b2323bd685d358c
-  specs:
-    icalendar (2.4.1)
 
 GIT
   remote: git://github.com/loomio/private_pub.git

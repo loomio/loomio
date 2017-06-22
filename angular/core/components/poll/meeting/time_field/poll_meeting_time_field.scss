@@ -3,7 +3,7 @@
   margin-right: 16px;
   input {
     max-width: 100%;
-    font-size: 14px !important;
+    // font-size: 14px !important;
   }
 }
 
@@ -20,7 +20,7 @@
 }
 
 .poll-meeting-time-field {
-  padding: 0 2px !important;
+  padding: 16px 0 2px 2px !important
 }
 .poll-meeting-time-field__add {
   text-align: right;
@@ -36,6 +36,6 @@
 
 @media (max-width: $tiny-max-px) {
   .poll-meeting-time-field__datepicker button {
-    display: none;
+    // display: none;
   }
 }
