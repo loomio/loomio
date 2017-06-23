@@ -780,7 +780,7 @@ ActiveRecord::Schema.define(version: 20170623004653) do
     t.boolean  "example",                 default: false, null: false
     t.integer  "undecided_user_count",    default: 0,     null: false
     t.integer  "undecided_visitor_count", default: 0,     null: false
-    t.boolean  "can_add_options",         default: false, null: false
+    t.boolean  "voter_can_add_options",   default: false, null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree

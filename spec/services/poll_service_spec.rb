@@ -199,6 +199,39 @@ describe PollService do
     end
   end
 
+  describe 'add_options' do
+    before { poll.update(voter_can_add_options: true) }
+
+    it 'adds new poll options' do
+      expect {
+        PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: user)
+      }.to change { poll.poll_options.count }.by(1)
+      expect(poll.reload.poll_option_names).to include 'new_option'
+      expect(Event.last.kind).to eq 'poll_option_added'
+    end
+
+    it 'does not update when poll does not accept new options' do
+      poll.update(voter_can_add_options: false)
+      expect {
+        PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: user)
+      }.to raise_error { CanCan::AccessDenied }
+      expect(poll.reload.poll_option_names).to_not include 'new_option'
+      expect(Event.last).to be_nil
+    end
+
+    it 'does not update when no new options are passed' do
+      expect {
+        PollService.add_options(poll: poll, params: { poll_option_names: [] }, actor: user)
+      }.to_not change { Event.count }
+    end
+
+    it 'does not update for unauthorized user' do
+      expect {
+        PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: another_user)
+      }.to raise_error { CanCan::AccessDenied }
+    end
+  end
+
   describe 'convert' do
     before { vote; motion.save }
 
