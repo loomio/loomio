@@ -39,6 +39,7 @@ class Poll < ActiveRecord::Base
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
+  has_many :visitor_participants, through: :stances, source: :participant, source_type: "Visitor"
   has_many :visitors, through: :communities
   has_many :attachments, as: :attachable, dependent: :destroy
 
