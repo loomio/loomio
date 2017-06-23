@@ -7,6 +7,7 @@ describe API::PollsController do
   let(:another_discussion) { create :discussion, group: group }
   let(:non_group_discussion) { create :discussion }
   let(:user) { create :user }
+  let(:visitor) { create :visitor, community: poll.community_of_type(:email, build: true) }
   let(:another_user) { create :user }
   let!(:poll) { create :poll, title: "POLL!", discussion: discussion, author: user }
   let(:another_poll) { create :poll, title: "ANOTHER", discussion: another_discussion }
@@ -297,6 +298,45 @@ describe API::PollsController do
       sign_in another_user
       post :update, id: poll.key, poll: poll_params
       expect(response.status).to eq 403
+    end
+  end
+
+  describe 'add_options' do
+    before { poll.update(voter_can_add_options: true) }
+
+    it 'adds options to a poll' do
+      sign_in user
+      post :add_options, id: poll.key, poll_option_names: 'new_option'
+      expect(response.status).to eq 200
+      expect(poll.reload.poll_option_names).to include 'new_option'
+
+      json = JSON.parse(response.body)
+      poll_option_names = json['poll_options'].map { |o| o['name'] }
+      expect(poll_option_names).to include 'new_option'
+    end
+
+    it 'does not allow unauthorized users to add options' do
+      sign_in another_user
+      post :add_options, id: poll.key, poll_option_names: 'new_option'
+      expect(response.status).to eq 403
+    end
+
+    it 'allows visitors to add options' do
+      post :add_options, id: poll.key, poll_option_names: 'new_option', participation_token: visitor.participation_token
+      expect(response.status).to eq 200
+      expect(poll.reload.poll_option_names).to include 'new_option'
+    end
+
+    it 'does nothing if no options passed' do
+      sign_in user
+      expect { post :add_options, id: poll.key, poll_option_names: [] }.to_not change { poll.poll_options.count }
+      expect(response.status).to eq 200
+    end
+
+    it 'cannot add actions to a closed poll' do
+      poll.update(closed_at: 1.day.ago)
+      sign_in user
+      expect { post :add_option, id: poll.key, poll_option_names: 'new_option' }.to raise_error { CanCan::AccessDenied }
     end
   end
 
