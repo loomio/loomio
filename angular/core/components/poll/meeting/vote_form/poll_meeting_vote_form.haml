@@ -10,6 +10,8 @@
       %md-checkbox.md-block.poll-poll-vote-form__checkbox{ng-model: "pollOptionIdsChecked[option.id]"}
   %validation_errors{subject: "stance", field: "stanceChoices"}
 
+  %poll_common_add_option_button{ng-if: "stance.isNew() && stance.poll().voterCanAddOptions", poll: "stance.poll()"}
+
   .poll-common-vote-form__reason
     %md-input-container.md-block
       %label{translate: "poll_common.message"}

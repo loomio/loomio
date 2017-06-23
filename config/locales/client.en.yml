@@ -1350,6 +1350,15 @@ en:
   poll_common_attachment_form:
     label: Attachments
 
+  poll_common_add_option:
+    button:
+      add_option: Add another option
+    modal:
+      title: Add an option
+    form:
+      add_options: Add options
+      options_added: New options added
+
   poll_common_card:
     show_results: Show results
 

@@ -136,6 +136,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @remote.postMember(@key, 'publish', community_id: community.id, message: message).then =>
         @published = true
 
+    addOptions: =>
+      @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
+
     createVisitors: ->
       @processing = true
       @remote.postMember(@key, 'create_visitors', emails: @customFields.pending_emails.join(',')).finally =>
