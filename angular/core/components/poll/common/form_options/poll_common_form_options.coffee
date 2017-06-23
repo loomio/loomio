@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonFormOptions', () ->
+angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/form_options/poll_common_form_options.html'
   controller: ($scope, KeyEventService) ->
@@ -9,6 +9,8 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', () ->
       $scope.poll.pollOptionNames.push $scope.newOptionName
       $scope.poll.makeAnnouncement = true unless $scope.poll.isNew()
       $scope.newOptionName = ''
+
+    $scope.datesAsOptions = PollService.fieldFromTemplate($scope.poll.pollType, 'dates_as_options')
 
     $scope.$on 'addPollOption', () ->
       $scope.addOption()
