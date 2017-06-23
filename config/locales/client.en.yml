@@ -1370,6 +1370,11 @@ en:
     loomio_group: Loomio group
     loomio_group_placeholder: (no group selected)
 
+  poll_common_voter_add_options:
+    add_options: Voters may add options
+    helptext_on: Participants may add their own options when voting
+    helptext_off: Only you may select options for this poll
+
   poll_common_notify_group:
     notify_group: Announcement
     members_helptext: Your group will not be notified
