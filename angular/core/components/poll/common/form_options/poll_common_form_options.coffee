@@ -5,10 +5,10 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
     $scope.existingOptions = _.clone $scope.poll.pollOptionNames
 
     $scope.addOption = ->
-      return unless $scope.newOptionName and !_.contains($scope.poll.pollOptionNames, $scope.newOptionName)
-      $scope.poll.pollOptionNames.push $scope.newOptionName
+      return unless $scope.poll.newOptionName and !_.contains($scope.poll.pollOptionNames, $scope.poll.newOptionName)
+      $scope.poll.pollOptionNames.push $scope.poll.newOptionName
       $scope.poll.makeAnnouncement = true unless $scope.poll.isNew()
-      $scope.newOptionName = ''
+      $scope.poll.newOptionName = ''
 
     $scope.datesAsOptions = PollService.fieldFromTemplate($scope.poll.pollType, 'dates_as_options')
 

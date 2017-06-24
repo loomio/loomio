@@ -1382,7 +1382,7 @@ en:
   poll_common_voter_add_options:
     add_options: Voters may add options
     helptext_on: Participants may add their own options when voting
-    helptext_off: Only you may select options for this poll
+    helptext_off: Participants will select from the options you provide
 
   poll_common_notify_group:
     notify_group: Announcement
@@ -1482,6 +1482,7 @@ en:
     details: Details
     options: Options
     options_placeholder: Enter a new option...
+    no_options: You haven't added any options yet.
     closing: Closing
     start: Start
     update: Update

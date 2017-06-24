@@ -161,7 +161,7 @@ class Poll < ActiveRecord::Base
   def poll_option_names=(names)
     names    = Array(names)
     existing = Array(poll_options.pluck(:name))
-    (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: priority) }
+    (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: existing.count + priority) }
     @poll_option_removed_names = (existing - names)
   end
 
