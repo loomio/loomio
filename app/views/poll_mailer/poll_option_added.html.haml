@@ -1,0 +1,6 @@
+= render "poll_mailer/common/header"
+= render "poll_mailer/common/summary"
+= render "poll_mailer/common/vote"
+= render "poll_mailer/#{@info.poll_type}/chart"
+= render "poll_mailer/#{@info.poll_type}/responses"
+= render "poll_mailer/common/footer"
