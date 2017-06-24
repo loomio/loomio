@@ -504,7 +504,7 @@ describe Event do
   end
 
   describe 'poll_option_added' do
-    before { poll.update(can_add_options: true) }
+    before { poll.update(visitor_can_add_options: true) }
     let(:visitor) { create :visitor, community: poll.community_of_type(:email, build: true) }
     let(:visitor_stance) { create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: visitor) }
 
