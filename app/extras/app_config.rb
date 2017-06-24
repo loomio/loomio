@@ -7,6 +7,7 @@ class AppConfig
     poll_templates
     providers
     timezones
+    notifications
   )
 
   CONFIG_FILES.each do |config|
