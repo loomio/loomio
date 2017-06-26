@@ -529,6 +529,7 @@ en:
         poll_expired_author: 'Your time poll has closed. Share an outcome for: %{title}'
         poll_option_added: '%{actor} has suggested some new timeslots: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
+        outcome_created_author: 'You shared an outcome: %{title}'
         visitor_created: '%{actor} wants to arrange a time: %{title}'
         visitor_reminded: '%{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
@@ -542,6 +543,7 @@ en:
         poll_expired_author: 'Your time poll has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         poll_option_added: '<strong>%{actor}</strong> has added some timeslots: %{title}'
         outcome_created: '<strong>%{actor}</strong> shared a time poll outcome.'
+        outcome_created_author: 'You shared a time poll outcome.'
         visitor_created: '<strong>%{actor}</strong> wants to arrange a time: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"

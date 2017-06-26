@@ -11,6 +11,7 @@ class Events::StanceCreated < Event
   end
 
   def trigger!
+    super
     notify_users!
     email_users!
   end

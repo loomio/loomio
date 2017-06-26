@@ -2,6 +2,7 @@ class Events::OutcomeCreated < Event
   include Events::PollEvent
   include Events::Notify::Author
   include Events::Notify::Visitors
+  include Events::LiveUpdate
 
   def self.publish!(outcome)
     create(kind: "outcome_created",
