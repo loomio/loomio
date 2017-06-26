@@ -503,6 +503,57 @@ describe Event do
     end
   end
 
+  describe 'poll_option_added' do
+    before { poll.update(voter_can_add_options: true) }
+    let(:visitor) { create :visitor, community: poll.community_of_type(:email, build: true) }
+    let(:visitor_stance) { create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: visitor) }
+
+    it 'makes an announcement to participants' do
+      FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+      poll.make_announcement = true
+      visitor_stance
+      expect { Events::PollOptionAdded.publish!(poll, poll.author, ["new_option"]) }.to change { emails_sent }
+      email_users = Events::PollOptionAdded.last.send(:email_recipients)
+      email_users.should      include user_thread_loud
+      email_users.should_not  include user_membership_loud
+
+      email_users.should_not  include user_membership_normal
+      email_users.should_not  include user_thread_normal
+
+      email_users.should_not include user_membership_quiet
+      email_users.should_not include user_thread_quiet
+
+      email_users.should_not include user_membership_mute
+      email_users.should_not include user_thread_mute
+      email_users.should_not include user_unsubscribed
+      email_users.should_not include poll.author
+
+      email_visitors = Events::PollOptionAdded.last.send(:email_visitors)
+      expect(email_visitors).to include visitor
+
+      notification_users = Events::PollOptionAdded.last.send(:notification_recipients)
+      notification_users.should     include user_thread_loud
+      notification_users.should_not include user_membership_loud
+
+      notification_users.should_not include user_membership_normal
+      notification_users.should_not include user_thread_normal
+
+      notification_users.should_not include user_membership_quiet
+      notification_users.should_not include user_thread_quiet
+
+      notification_users.should_not include user_membership_mute
+      notification_users.should_not include user_thread_mute
+      notification_users.should_not include poll.author
+    end
+
+    it 'does not make an announcement' do
+      event = Events::PollOptionAdded.publish!(poll, poll.author, ["new_option"])
+      expect(event.send(:email_recipients)).to be_empty
+      expect(event.send(:email_visitors)).to be_empty
+      expect(event.send(:notification_recipients)).to be_empty
+    end
+  end
+
   describe 'outcome_created' do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
     before do

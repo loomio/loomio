@@ -35,9 +35,12 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
     $scope.tooManyDots = ->
       $scope.dotsRemaining() < 0
 
-    $scope.stanceChoices = _.map $scope.stance.poll().pollOptions(), (option) ->
-      poll_option_id: option.id
-      score: $scope.stanceChoiceFor(option).score
+    $scope.setStanceChoices = ->
+      $scope.stanceChoices = _.map $scope.stance.poll().pollOptions(), (option) ->
+        poll_option_id: option.id
+        score: $scope.stanceChoiceFor(option).score
+    $scope.setStanceChoices()
+    $scope.$on 'pollOptionsAdded', $scope.setStanceChoices
 
     $scope.submit = PollService.submitStance $scope, $scope.stance,
       prepareFn: ->

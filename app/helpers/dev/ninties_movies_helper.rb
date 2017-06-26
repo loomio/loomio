@@ -319,9 +319,16 @@ module Dev::NintiesMoviesHelper
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
-    poll = FactoryGirl.build(:poll, notify_on_participate: true)
+    poll = FactoryGirl.build(:poll, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
     PollService.create(poll: poll, actor: patrick)
-    stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
-    StanceService.create(stance: stance, actor: jennifer)
+    jennifer_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
+    StanceService.create(stance: jennifer_stance, actor: jennifer)
+
+    #'poll_option_added'
+    poll.tap(&:build_loomio_group_community).tap(&:save).reload
+    poll.make_announcement = true
+    patrick_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
+    StanceService.create(stance: patrick_stance, actor: patrick)
+    PollService.add_options(poll: poll, actor: jennifer, params: {poll_option_names: ['new_option']})
   end
 end

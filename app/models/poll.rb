@@ -39,6 +39,7 @@ class Poll < ActiveRecord::Base
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
+  has_many :visitor_participants, through: :stances, source: :participant, source_type: "Visitor"
   has_many :visitors, through: :communities
   has_many :attachments, as: :attachable, dependent: :destroy
 
@@ -160,7 +161,7 @@ class Poll < ActiveRecord::Base
   def poll_option_names=(names)
     names    = Array(names)
     existing = Array(poll_options.pluck(:name))
-    (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: priority) }
+    (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: existing.count + priority) }
     @poll_option_removed_names = (existing - names)
   end
 

@@ -55,8 +55,8 @@ class Dev::PollsController < Dev::BaseController
     redirect_to discussion_url(discussion)
   end
 
-  def self.observe_scenario(scenario_name, email: false)
-    AppConfig.poll_templates.keys.each do |poll_type|
+  def self.observe_scenario(scenario_name, email: false, except: [])
+    (AppConfig.poll_templates.keys - except).each do |poll_type|
       define_method :"test_#{poll_type}_#{scenario_name}#{'_email' if email}" do
         sign_out :user
         scenario = send(:"#{scenario_name}_scenario", poll_type: poll_type)
@@ -80,6 +80,8 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_outcome_created,        email: true
   observe_scenario :poll_missed_yesterday,       email: true
   observe_scenario :poll_stance_created,         email: true
+  observe_scenario :poll_options_added,          email: true, except: [:check, :proposal]
+  observe_scenario :poll_options_added_author,   email: true, except: [:check, :proposal]
   observe_scenario :poll_notifications
   observe_scenario :poll_created_as_visitor
   observe_scenario :poll_created_as_logged_out

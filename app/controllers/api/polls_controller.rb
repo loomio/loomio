@@ -25,6 +25,11 @@ class API::PollsController < API::RestfulController
     respond_with_resource
   end
 
+  def add_options
+    @event = service.add_options(poll: load_resource, params: params.slice(:poll_option_names), actor: current_participant)
+    respond_with_resource
+  end
+
   def publish
     @event = service.publish(poll: load_resource, params: publish_params, actor: current_user)
     respond_with_resource

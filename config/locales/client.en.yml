@@ -316,6 +316,7 @@ en:
     poll_edited: "<strong>{{name}}</strong> edited a {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> added options to a {{poll_type}}: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
 
@@ -1350,6 +1351,15 @@ en:
   poll_common_attachment_form:
     label: Attachments
 
+  poll_common_add_option:
+    button:
+      add_option: Add another option
+    modal:
+      title: Add an option
+    form:
+      add_options: Add options
+      options_added: New options added
+
   poll_common_card:
     show_results: Show results
 
@@ -1369,6 +1379,11 @@ en:
   poll_common_select_group:
     loomio_group: Loomio group
     loomio_group_placeholder: (no group selected)
+
+  poll_common_voter_add_options:
+    add_options: Voters may add options
+    helptext_on: Participants may add their own options when voting
+    helptext_off: Participants will select from the options you provide
 
   poll_common_notify_group:
     notify_group: Announcement
@@ -1468,6 +1483,7 @@ en:
     details: Details
     options: Options
     options_placeholder: Enter a new option...
+    no_options: You haven't added any options yet.
     closing: Closing
     start: Start
     update: Update

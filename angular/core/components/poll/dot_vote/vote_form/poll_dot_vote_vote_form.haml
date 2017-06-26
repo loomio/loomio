@@ -17,6 +17,8 @@
             .material-icons add
   %validation_errors{subject: "stance", field: "stanceChoices"}
 
+  %poll_common_add_option_button{ng-if: "stance.isNew() && stance.poll().voterCanAddOptions", poll: "stance.poll()"}
+
   .poll-common-vote-form__reason
     %md-input-container.md-block
       %label{translate: "poll_common.reason"}

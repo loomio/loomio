@@ -4,7 +4,7 @@ describe 'Notifications', ->
   it 'has all the notifications', ->
     page.loadPath 'setup_all_notifications', 60000
 
-    page.expectText '.notifications__activity', '12'
+    page.expectText '.notifications__activity', '13'
     page.click '.notifications__button'
 
     page.expectText '.notifications__dropdown', 'accepted your invitation to join'
@@ -19,6 +19,7 @@ describe 'Notifications', ->
     page.expectText '.notifications__dropdown', 'liked your comment'
     page.expectText '.notifications__dropdown', 'made you a coordinator'
     page.expectText '.notifications__dropdown', 'participated in'
+    page.expectText '.notifications__dropdown', 'added options to'
 
   describe 'invitation accepted', ->
 

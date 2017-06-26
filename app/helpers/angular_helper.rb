@@ -54,6 +54,9 @@ module AngularHelper
       emojis: {
         defaults: AppConfig.emojis.fetch('default', []).map { |e| ":#{e}:" }
       },
+      notifications: {
+        kinds: AppConfig.notifications.fetch('kinds', [])
+      },
       durations:          AppConfig.durations.fetch('durations', []),
       pollTemplates:      AppConfig.poll_templates,
       pollColors:         AppConfig.colors,

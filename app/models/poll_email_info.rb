@@ -1,6 +1,6 @@
 class PollEmailInfo
   include Routing
-  attr_reader :recipient, :poll, :actor, :action_name, :eventable
+  attr_reader :recipient, :poll, :actor, :action_name, :eventable, :event
 
   def send_reason
     # TODO: determine why this recipient is receiving this email
@@ -8,12 +8,20 @@ class PollEmailInfo
     "some reason"
   end
 
-  def initialize(recipient:, poll:, actor: nil, action_name:, eventable: nil)
+  def initialize(recipient:, event:, action_name:)
     @recipient   = recipient
-    @poll        = poll
-    @actor       = actor || LoggedOutUser.new
-    @eventable   = eventable
+    @event       = event
+    @poll        = event.poll
+    @eventable   = event.eventable
     @action_name = action_name
+  end
+
+  def actor
+    @actor ||= if @event.eventable.is_a?(Stance)
+      @event.eventable.participant
+    else
+      @event.user || LoggedOutUser.new
+    end
   end
 
   def recipient_stance

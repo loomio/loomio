@@ -347,6 +347,23 @@ class Ability
       user_is_author_of?(poll)
     end
 
+    can :add_options, Poll do |poll|
+      user_is_author_of?(poll) ||
+      (@user.can?(:vote_in, poll) && poll.voter_can_add_options)
+    end
+
+    can :vote_in, Poll do |poll|
+      if !poll.active?
+        false
+      elsif poll.discussion
+        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id)) ||
+        user_is_admin_of?(poll.group_id) ||
+        poll.communities.any? { |community| community.includes?(@user) }
+      else
+        user_is_author_of?(poll) || poll.communities.any? { |community| community.includes?(@user) }
+      end
+    end
+
     can [:show, :toggle_subscription, :subscribe_to], Poll do |poll|
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
@@ -380,16 +397,7 @@ class Ability
     end
 
     can [:make_draft, :create], Stance do |stance|
-      poll = stance.poll
-      if !poll.active?
-        false
-      elsif poll.discussion
-        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id)) ||
-        user_is_admin_of?(poll.group_id) ||
-        poll.communities.any? { |community| community.includes?(@user) }
-      else
-        user_is_author_of?(poll) || poll.communities.any? { |community| community.includes?(@user) }
-      end
+      @user.can? :vote_in, stance.poll
     end
 
     can [:create, :update], Outcome do |outcome|
