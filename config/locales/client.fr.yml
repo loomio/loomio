@@ -746,6 +746,7 @@ fr:
     locale_placeholder: Sélectionnez votre langage préféré
     update_profile: 'Mettre à jour le profil'
     deactivate_account: 'Désactiver le compte'
+    username_must_be_alphanumeric: Le nom d'utilisateur ne doit contenir que des lettres minuscules et des chiffres
   change_picture_form:
     aria_label: 'Changer la forme de l''image'
     title: 'Changer l''image'
@@ -1222,6 +1223,18 @@ fr:
     members_helptext: Votre groupe sera notifié
     members_count: "{{count}} personnes sera notifiées"
     participants_count: "Les {{count}} personnes ayant voté seront notifié"
+  poll_common_calendar_invite:
+    calendar_invite: Inclure une invitation au calendrier avec ce résultat
+    poll_option_id: Heure de réunion
+    helptext_on: Les utilisateurs pourront ajouter cette réunion à leur calendrier
+    helptext_off: Aucune invitation à la réunion ne sera envoyée
+    event_duration: Durée
+    event_summary: Résumé
+    event_summary_placeholder: ' Vers où voudriez-vous déplacer cette discussion ? '
+    event_description: Description de la réunion
+    event_description_placeholder: Quel agenda pour cette réunion
+    location: Lieu
+    location_placeholder: Où se déroulera cette réunion ?
   poll_common_notify_on_participate:
     notify_on_participate: M'avertir lorsque des gens participent
     helptext_on: Vous serez avertit lorsque quelqu'un participe
@@ -1238,7 +1251,7 @@ fr:
     poll_closed: Sondage fermé
     count_closed: Vérification clôturée
     dot_vote_closed: Vote à points fermé
-    meeting_closed: Sondage réunion fermé
+    meeting_closed: Sondage horaire de réunion fermé
   poll_common_closing_at_field:
     closing: Fermeture
     closing_hour: Heure de fermeture
@@ -1251,11 +1264,12 @@ fr:
     priority_last: Bloquer en premier
     no_votes_yet: Aucun vote n'a été enregistré.
     change_results_order: Changer l'ordre des résultats
-    show_undecided: Montrer les indécis
     none_of_the_above: (Aucun des choix ci-dessus)
-  poll_common_did_not_votes_panel:
-    undecided: Indécis ({{count}})
-    show_undecided: Montrer les indécis
+  poll_common_undecided_panel:
+    show_undecided: Afficher les {{count}} indécis
+    undecided_users: Les indécis du groupe ({{count}})
+    undecided_visitors: Les indécis invités ({{count}})
+    hidden_visitors: Seuls les coordinateurs du groupe ou l'auteur du sondage peut voir les invités indécis
   poll_common_set_outcome_panel:
     share_outcome: Partager le résultat
     poll: 'Ce sondage est fermé. <strong>Partager le résultat</strong> avec les groupes.'
@@ -1327,6 +1341,13 @@ fr:
     poll_created: Sondage créé
     poll_updated: Sondage mis à jour
   poll_count_form:
+    tool_tip_expanded: |
+      <p>Une <em>vérification</em>est un outil avec de nombreuses utilisations possibles, mais avec seulement 2 réponses: coche ou tiret.</p>
+      <p>Utilisez-le pour engager fermement les personnes, comme par exemple : "Je viens à l'événement" ou "Je vais rejoindre le groupe de travail". </p>
+      <p>Ou utilisez-le pour suivre l'achèvement d'une tâche: "J'ai vérifié que mes coordonnées sont correctes" ou "J'ai lu le document et laissé mes commentaires".</p>
+      <p>La vérification a un <em>objectif</em>, atteindre le nombre de participants souhaité. Le but indique au groupe si quelque chose nécessite plus d'attention ou qu'ils s'implique.</p>
+      <p>Un jour avant la fermeture de la vérification, cela envera un rappel à ceux qui n'ont pas participé.</p>
+      <p>En apprendre plus sur <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Suivez la participation et trouvez des volontaires
     start_header: Démarrer la vérification
     edit_header: Modifier la vérification
@@ -1336,6 +1357,11 @@ fr:
     count_created: Vérification démarrée
     count_updated: Vérification mise à jour
   poll_dot_vote_form:
+    tool_tip_expanded: |
+      <p>Utilisez un sondage pour mesurer la popularité d'une idée ou offrir un choix.</p>
+      <p>Fournissez quelques options parmi lesquelles choisir. Décidez si les participants peuvent choisir une ou plusieurs options dans leur réponse.</p>
+      <p>Chacun vote, et peut aussi ajouter une déclaration s'il le souhaite. Les résultats sont représentés dans un histogramme.</p>
+      <p>En apprendre plus sur <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Prioriser des options
     start_header: Démarrer un vote à points
     edit_header: Editer le vote à points
@@ -1347,6 +1373,14 @@ fr:
     dot_vote_created: Vote à points créé
     dot_vote_updated: Vote à points mis à jour
   poll_meeting_form:
+    tool_tip_expanded: |
+      <p>Utilisez un sondage horaire pour trouver quand les gens sont disponibles.</p>
+      <p>Entrez une liste de dates ou d'heures où vous pourriez avoir votre réunion.</p>
+      <p>Les participants coches ceux auxquels ils peuvent participer, ou ils peuvent expliquer leur situation, afin que vous puissiez, éventuellement, mettre les options à jour.</p>
+      <p>Si vous ajoutez des nouveaux horaires pendant un sondage horaire, les personnes qui ont déjà voté sont invitées à mettre à jour leur réponse.</p>
+      <p>Vous pouvez alors voir qui est disponible et quand, et décider quand vous rencontrer..</p>
+      <p>Les horaires sont automatiquement convertis au fuseau horaire local du participant.</p>
+      <p>En apprendre plus sur <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Trouver un moment pour se réunir
     start_header: Commencer un sondage réunion
     edit_header: Editer le sondage réunion
@@ -1355,7 +1389,13 @@ fr:
     details_placeholder: Donnez toutes les clarifications qui permettent aux personnes de participer
     meeting_created: Sondage réunion créé
     meeting_updated: Sondage réunion mis à jour
-    add_option_placeholder: Entrez une durée
+    timeslots: Créneaux horaires
+    no_options: "Vous n'avez encore pas ajouté de créneaux horaires."
+    meeting_duration: Durée de la réunion
+    add_option_placeholder: Entrer un nouvel horaire
+  poll_meeting_time_field:
+    new_time_slot: Nouveau créneau horaire
+    closing_hour: Heure de fin
   poll_proposal_vote_form:
     default_reason_placeholder: Veuillez expliquer votre raisonnement
     abstain_reason_placeholder: Expliquez aux gens pourquoi vous vous abstenez
@@ -1395,6 +1435,7 @@ fr:
     your_response: Quand êtes-vous disponible ?
     stance_created: Disponibilité enregistrée
     stance_updated: Disponibilité mise à jour
+    reason_placeholder: Expliquez quand vous êtes libre (ou occupé), dans le cas où l'auteur veut ajouter des options.
   poll_dot_vote_vote_form:
     dots_remaining: "Il vous reste {{count}} points à utiliser."
     too_many_dots: Vous avez utilisé trop de points
@@ -1423,11 +1464,13 @@ fr:
       poll_created: '<strong>{{author}}</strong> a démarré un vote à points : <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> a voté :'
       poll_edited: '<strong>{{author}}</strong> a édité un vote à points : <span>{{title}}</span>'
+      poll_expired: 'Vote à points fermé : <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> a fermé le vote à points : <span>{{title}}</span>'
     meeting:
       poll_created: '<strong>{{author}}</strong> a démarré un sondage réunion : <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> a répondu :'
       poll_edited: '<strong>{{author}}</strong> a édité le sondage réunion : <span>{{title}}</span>'
+      poll_expired: 'Sondage de type horaire fermé : <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> a fermé le sondage réunion : <span>{{title}}</span>'
     outcome_created: '<strong>{{author}}</strong> a partagé un résultat :'
   poll_admin_page:
@@ -1441,6 +1484,8 @@ fr:
     anyone_can_participate_true: Lien partageable créé
     anyone_can_participate_false: Lien partageable révoqué
     get_link: Copier le lien
+    invite_visitor: Inviter des personnes
+    invite_visitor_helptext: Inviter des individus à cette décision par adresse électronique. Les invités ne pourront participer qu'à cette décision.
     send_email: Envoyez un email
     shareable_link_created: Tout le monde peut maintenant participer à cette décision
     shareable_link_revoked: Cette décision est maintenant sur invitation seulement
@@ -1587,4 +1632,8 @@ fr:
       do_it_later: Je le ferai plus tard
   slack_added_modal:
     title: Réussite!
+    helptext: |
+      Vous avez ajouté Slack à votre groupe Loomio <strong>{{name}}</strong>.
+      Maintenant, chaque fois que quelqu'un commence un sondage dans ce groupe, il aura la possibilité de
+      le publier dans Slack.
     start_poll_now: Prendre une décision maintenant

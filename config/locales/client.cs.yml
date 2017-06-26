@@ -8,6 +8,7 @@ cs:
     notification_volume: 'Hlasitost upozornění'
     group: 'Skupina'
     groups: 'Skupiny'
+    decisions: 'Rozhodnutí'
     help: 'Nápověda'
     privacy:
       privacy: 'Soukromí'
@@ -23,8 +24,11 @@ cs:
     more_help: 'Další pomoc'
     models:
       proposal: 'Návrh'
+    copy: 'Kopírovat'
+    copy_text: 'Kopírovat text'
     copied: 'Zkopírováno'
     action:
+      next: 'Další'
       close: 'Zavřít'
       save: 'Uložit'
       save_changes: 'Uložit změny'
@@ -46,6 +50,12 @@ cs:
       translated: 'Překlad Bing Translator'
       upload: 'Nahrát'
       uploading: 'Nahrává se'
+      load_more: 'Načíst další'
+      share: Sdílet
+      ok: Ok!
+      retry: Opakovat
+    formatting_help:
+      label: 'Formátování'
   error_page:
     forbidden: 'K této akci nemáte oprávnění.'
   start_proposal_card:
@@ -88,9 +98,12 @@ cs:
     sign_in_message: 'Už máte účet?'
     sign_in: 'Přihlásit se'
     sign_up: 'Vytvořit účet'
+  signed_out_modal:
+    ok: "Ok"
   comment_form:
     aria_label: 'Přidat komentář'
     attachments:
+      add_attachment: 'Přiložit soubor'
       remove_attachment: 'Odebrat přílohu'
     messages:
       created: 'Komentář přidán'
@@ -101,21 +114,34 @@ cs:
     delete_comment: 'Odstranit komentář'
     cancel_reply: 'Zrušit odpověď'
     confirm_delete_message: 'Opravdu chcete odstranit tento komentář?'
+    confirm_delete: 'Odstranit komentář'
     in_reply_to: "V reakci na <strong>{{name}}</strong>:"
     submit_button:
       label: 'Odeslat'
+    sign_in: "undefined"
   sidebar:
+    recent_threads: 'Aktuální vlákna'
+    start_group: 'Nová skupina'
     explore: 'Veřejné skupiny'
     edit_profile: 'Upravit profil'
     email_settings: 'Nastavení emailu'
     help: 'Nápověda'
+    contact: 'Kontaktovat Loomio'
     sign_out: 'Odhlásit se'
+    start_thread: Nové vlákno
+    start_decision: Nové rozhodnutí
     aria_labels:
+      heading: 'Boční panel'
       groups_list: 'Skupiny'
+      user_list: 'undefined'
   navbar:
     recent_title: 'Přejít na ovládací panel'
     unread_title: 'Zobrazit nepřečtené aktivity'
+    start_thread: 'Nové vlákno'
+    notifications: 'Panel oznámení'
     search:
+      label: 'Vyhledávací pole; Hledání skupin a vláken'
+      results_aria_label: 'Výsledky vyhledávání'
       no_results: 'Nebyly nalezeny žádné vlákna'
       close: 'Zavřít vyhledávací panel'
       placeholder: 'Vyhledávat'
@@ -124,11 +150,15 @@ cs:
       proposals: 'Návrhy'
       comments: 'Komentáře'
     sign_in: 'Přihlásit se'
+    toggle_sidebar: 'Přepnout postranní panel'
     logo_title: 'Domovská stránka'
   start_menu:
+    label: 'Akce uživatele'
+    title: 'Akce'
     start_group: 'Vytvořit skupinu'
     start_subgroup: 'Vytvořit podskupinu'
     start_thread: 'Vytvořit vlákno'
+    start_poll: 'Začít hlasování'
     invite_people: 'Pozvat lidi'
   notifications:
     header: "Upozornění"
@@ -160,15 +190,21 @@ cs:
     change_your_vote: Změnit svůj postoj.
   undecided_panel:
     aria_label: 'Nerozhodnutí členové'
+    show: Zobrazit
+    remind: Připomenout
+    undecided: nerozhodný
     hide_undecided: Skrýt nerozhodnuté členy
   proposal_pie_chart:
     participation_statement: '{{percentage}}% členů vyjádřilo svůj postoj ({{number}}/{{total}})'
   close_proposal_form:
+    aria_label: 'Uzavřít návrh'
     close_proposal: 'Uzavřít návrh'
     helptext: 'Opravdu chcete uzavřít tento návrh teď?'
+    close_proposal_submit: 'Uzavřít návrh'
     messages:
       success: Návrh uzavřen
   extend_proposal_form:
+    aria_label: Změnit čas uzavření
     title: 'Změnit čas uzavření'
     success: 'Čas uzavření aktualizován'
     submit: 'Aktualizovat čas uzavření'
@@ -179,6 +215,7 @@ cs:
     start_proposal: 'Vytvořit návrh'
     start_a_proposal: 'Vytvořit návrh'
     edit_proposal: 'Upravit návrh'
+    title_placeholder: 'Například: Pojďme na Měsíc'
     title_label: 'Název'
     closes_at_label: 'Uzavírá se'
     details_label: 'Podrobnosti'
@@ -210,8 +247,21 @@ cs:
   proposal_position_abstain: 'Zdržet se'
   proposal_position_no: 'Nesouhlasit'
   proposal_position_block: 'Zamítnout'
+  legacy_trial_expired_modal:
+    heading: "Děkujeme, že jste tento rok použili Loomio!"
   group_welcome_modal:
+    aria_label: "Vítejte"
+    creator_heading: "Vítejte ve své nové skupině"
+    member_heading: "Vítejte na Loomio"
     ok_got_it: "OK, chápu!"
+  cover_photo_form:
+    image_size_helptext: 'Ideální velikost obrázku je 1400 x 320px'
+    upload_success: 'Titulní fotka byla úspěšně aktualizována'
+  logo_photo_form:
+    heading: 'Nové logo skupiny'
+    upload_link: 'Nahrát nové logo skupiny'
+    image_size_helptext: 'Ideální velikost obrázku je 100 x 100px'
+    upload_success: 'Logo úspěšně aktualizováno'
   join_group_button:
     join_group: Připojit ke skupině
     messages:
@@ -220,9 +270,13 @@ cs:
     heading: Zažádat o členství
     name_label: Jméno
     email_label: E-mail
+    introduction_label: Proč se chcete přidat?
+    submit_button: Požádat o připojení
+    introduction_over_limit: Odpověď je příliš dlouhá
     messages:
       membership_requested: 'Zažádali jste o členství v {{group}}'
   revision_history_modal:
+    aria_label: Historie revizí
     edited_by: 'Upravil/a <strong>{{name}}</strong>'
   group_page:
     thread_list:
@@ -236,11 +290,13 @@ cs:
       archive_group_success: 'Tato skupina byla deaktivována'
     group_logo: 'Logo skupiny'
     new_photo: 'nová fotografie'
+    new_group_logo: 'Nahrát nové logo skupiny'
     discussions: 'Diskuze'
     members: 'Členové'
     members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
     subgroups: 'Podskupiny'
     subgroups_placeholder: 'Podskupiny Vám umožní rozdělit skupinu do několika různých týmů.'
+    invite_people: 'Pozvat'
     visibility_label: 'Viditelnost'
     options_label: 'Nastavení'
     options:
@@ -302,6 +358,7 @@ cs:
   invitation_form:
     group: 'Skupina'
     shareable_link: 'Odkaz ke sdílení'
+    copy_link: 'Kopírovat'
     email_addresses: 'E-mailová adresa'
     email_addresses_placeholder: 'např. helperbot@loomio.org, friendlybot@loomio.org'
     send: 'Odeslat'
@@ -504,6 +561,52 @@ cs:
     messages:
       app_update: 'Je k dispozici nová verze Loomio'
       reload: 'Znovu načíst'
+  registered_apps_page:
+    name: Jméno
   registered_app_form:
+    name_label: Jméno
     messages:
       logo_changed: Logo aktualizováno.
+  current_polls_card:
+    start_poll: Nové rozhodnutí
+  poll_common_close_form:
+    close_proposal: Uzavřít návrh
+  add_community_form:
+    currently_signed_in_as: "Momentálně jste přihlášeni jako:"
+    facebook:
+      another_account: (Přihlásit se do jiného účtu)
+  poll_common_subscribe_form:
+    no_thanks: Ne, díky
+  poll_common_example_card:
+    helptext_before: "Až budete připraveni,"
+  polls_page:
+    heading: Rozhodnutí
+    start_new_poll: Nové rozhodnutí
+    groups_placeholder: (Všechny skupiny)
+  auth_form:
+    sign_in_to_loomio: Přihlásit se na Loomio
+    sign_in: Přihlásit se
+    choose_an_account: "Přihlaste se prostřednictvím třetí strany nebo zadejte svou e-mailovou adresu a pokračujte."
+    more_providers: Více
+    email_not_present: Je vyžadována e-mailová adresa
+    invalid_email: "undefined"
+    email_not_found: "undefined"
+    email_placeholder: you@example.com
+    login_link_helptext_with_password: "Zadejte své heslo nebo se přihlaste e-mailem."
+    welcome_back: Vítejte zpět, {{name}}!
+    login_link: Přihlaste se prostřednictvím e-mailu
+    set_password: Nastavit heslo
+    new_to_loomio: nový
+    create_account: Vytvořit účet
+    check_your_email: Zkontrolujte svůj e-mail!
+    signed_in: Úspěšně jste se přihlásili
+    name: Jméno
+    email: Email
+    password: Heslo
+  install_slack:
+    progress:
+      install: Instalovat
+      invite: Pozvat
+      decide: Rozhodněte se
+  slack_added_modal:
+    title: Úspěch!

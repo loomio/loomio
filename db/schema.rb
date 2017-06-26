@@ -178,15 +178,6 @@ ActiveRecord::Schema.define(version: 20170621011621) do
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
-  create_table "decision_emails", force: :cascade do |t|
-    t.string   "subject",    null: false
-    t.string   "body"
-    t.string   "to",         null: false
-    t.string   "cc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
@@ -475,11 +466,9 @@ ActiveRecord::Schema.define(version: 20170621011621) do
   create_table "login_tokens", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "token"
-    t.boolean  "used",          default: false, null: false
+    t.boolean  "used",       default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "redirect_id"
-    t.string   "redirect_type"
     t.string   "redirect"
   end
 
@@ -686,9 +675,8 @@ ActiveRecord::Schema.define(version: 20170621011621) do
     t.string   "uid"
     t.string   "name"
     t.string   "access_token",  default: ""
-    t.jsonb    "custom_fields", default: {}, null: false
     t.string   "logo"
-    t.string   "scope",         default: "", null: false
+    t.jsonb    "custom_fields", default: {}, null: false
   end
 
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree

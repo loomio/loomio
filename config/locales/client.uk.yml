@@ -1245,11 +1245,7 @@ uk:
     priority_last: Спочатку заблоковані
     no_votes_yet: Поки що ніхто не проголосував.
     change_results_order: Змінити послідовність результатів
-    show_undecided: Показати тих, хто не визначився
     none_of_the_above: (Жоден з вищевказаних)
-  poll_common_did_not_votes_panel:
-    undecided: Не визначились ({{count}})
-    show_undecided: Показати тих, хто не визначився
   poll_common_set_outcome_panel:
     share_outcome: Поширити результат
     poll: 'Це опитування закрито. <strong>Поширте результат</strong> у групі.'
@@ -1369,7 +1365,6 @@ uk:
     details_placeholder: Надайте будь-які уточнюючі деталі що можливо будуть потрібні людям аби долучитись
     meeting_created: Опитування щодо часу створено
     meeting_updated: Опитування щодо часу оновлено
-    add_option_placeholder: Введіть час
   poll_proposal_vote_form:
     default_reason_placeholder: Будь ласка, поясніть ваші аргументи
     abstain_reason_placeholder: Поясніть людям чому ви вибрали саме це рішення

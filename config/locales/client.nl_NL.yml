@@ -1148,10 +1148,6 @@ nl_NL:
     priority_last: Geblokkeerd eerst
     no_votes_yet: Er zijn nog geen stemmen uitgebracht.
     change_results_order: Verander volgorde resultaten
-    show_undecided: Toon onbeslist
-  poll_common_did_not_votes_panel:
-    undecided: Onbeslist ({{count}})
-    show_undecided: Toon onbeslist
   poll_common_set_outcome_panel:
     share_outcome: Deel uitkomst
     poll: 'Deze peiling is gesloten. <strong>Deel de uitkomst</strong> met de groep.'

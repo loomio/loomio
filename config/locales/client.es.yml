@@ -1206,11 +1206,7 @@ es:
     priority_last: Bloqueados primero
     no_votes_yet: Todavía no se han realizado votos.
     change_results_order: Cambiar orden de resultados
-    show_undecided: Mostrar indecisos
     none_of_the_above: '(Ninguno de los mencionados) '
-  poll_common_did_not_votes_panel:
-    undecided: '({{count}}) Indecisos '
-    show_undecided: Mostrar indecisos
   poll_common_set_outcome_panel:
     share_outcome: Compartr resultado
     poll: 'Esta encuesta ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'

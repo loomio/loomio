@@ -1180,11 +1180,7 @@ da:
     priority_last: Blokkerer først
     no_votes_yet: Ingen stemmer er afgivet endnu
     change_results_order: Skift sorteringsrækkefølge for resultat
-    show_undecided: Vis stemmer ikke afgivet
     none_of_the_above: (Ingen af de tidligere)
-  poll_common_did_not_votes_panel:
-    undecided: ({{count}}) stemmer ikke afgivet
-    show_undecided: Vis stemmer ikke afgivet
   poll_common_set_outcome_panel:
     share_outcome: Del resultat
     poll: 'Denne meningsmåling er afsluttet. <strong>Del resultatet</strong> med gruppen.'

@@ -747,6 +747,7 @@ zh_TW:
     locale_placeholder: 選取您偏好的語言
     update_profile: '更新簡歷'
     deactivate_account: '凍結帳號'
+    username_must_be_alphanumeric: 使用者名稱只能包含小寫字母及數字。
   change_picture_form:
     aria_label: '變更照片表單'
     title: '變更照片'
@@ -1198,6 +1199,18 @@ zh_TW:
     members_helptext: 您的群組將不會被通知
     members_count: "{{count}} 個人將會被通知"
     participants_count: "{{count}} 個已投票的人將會被通知"
+  poll_common_calendar_invite:
+    calendar_invite: 包含此結果的行事曆邀請
+    poll_option_id: 會面時間
+    helptext_on: 使用者將可以加入這個會面到他們的行事曆中
+    helptext_off: 沒有會面邀請將會被寄送
+    event_duration: 持續時間
+    event_summary: 摘要
+    event_summary_placeholder: 您想要叫這個會面什麼名字？
+    event_description: 會面描述
+    event_description_placeholder: 這次會面的議程是什麼？
+    location: 位置
+    location_placeholder: 這個會面會在哪裡舉辦？
   poll_common_notify_on_participate:
     notify_on_participate: 當夥伴參與時通知我
     helptext_on: 您將會在其他人參與時被通知
@@ -1227,11 +1240,12 @@ zh_TW:
     priority_last: 阻擋的放在最前面
     no_votes_yet: 尚未有人投票。
     change_results_order: 變更您的結果順序
-    show_undecided: 顯示未決定的
     none_of_the_above: （以上皆非）
-  poll_common_did_not_votes_panel:
-    undecided: 未決定的 ({{count}})
-    show_undecided: 顯示未決定的
+  poll_common_undecided_panel:
+    show_undecided: 顯示 {{count}} 個未決定
+    undecided_users: 尚未決定的群組成員 ({{count}})
+    undecided_visitors: 尚未決定的來賓 ({{count}})
+    hidden_visitors: 僅群組協調者或投票作者可以檢視尚未決定的來賓
   poll_common_set_outcome_panel:
     share_outcome: 分享成果
     poll: '此提案已關閉。與群組<strong>分享成果</strong>。'
@@ -1351,7 +1365,13 @@ zh_TW:
     details_placeholder: 提供更詳細的資訊給需要參與的夥伴們
     meeting_created: 時間投票已建立
     meeting_updated: 時間投票已更新
-    add_option_placeholder: 輸入時間
+    timeslots: 時間欄位
+    no_options: "您尚未新增任何時間欄位。"
+    meeting_duration: 會面持續時間
+    add_option_placeholder: 輸入新時間
+  poll_meeting_time_field:
+    new_time_slot: 新時間欄位
+    closing_hour: 關閉時間
   poll_proposal_vote_form:
     default_reason_placeholder: 請解釋您的理由
     abstain_reason_placeholder: 讓人們知道您為什麼作出了這個決定
