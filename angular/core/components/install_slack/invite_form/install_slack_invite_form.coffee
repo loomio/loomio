@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, Sessi
 
     $scope.fetchChannels = ->
       return if $scope.channels
-      Records.identities.performCommand(Session.user().slackIdentity().id, 'channels').then (response) ->
+      Records.identities.performCommand(Session.user().identityFor('slack')().id, 'channels').then (response) ->
         $scope.channels = response
       , (response) ->
         $scope.error = response.data.error
