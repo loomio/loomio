@@ -241,6 +241,11 @@ en:
     ldap_coming_soon: ActiveDirectory/LDAP coming soon
     custom_subdomain: custom subdomain
     analytics_reports: analytics reports
+    free_is_for_community_and_evaluation_html: |
+      Our free plan is for casual users, communities and anyone who wants to evaluate Loomio for use within their organisation. We rely on paid plans to maintain and enhance Loomio.<br/>
+      We respect your privacy and will never sell your data to third parties, nor put advertising into Loomio.<br/>
+      If you are a non-profit organisation, contact us for discount.
+
     contact_us_html: |
       Prices are in US dollars, plus sales tax where applicable. Need something else? <a href="/contact">Let's talk!</a>
 
