@@ -81,6 +81,7 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_missed_yesterday,       email: true
   observe_scenario :poll_stance_created,         email: true
   observe_scenario :poll_options_added,          email: true, except: [:check, :proposal]
+  observe_scenario :poll_options_added_author,   email: true, except: [:check, :proposal]
   observe_scenario :poll_notifications
   observe_scenario :poll_created_as_visitor
   observe_scenario :poll_created_as_logged_out

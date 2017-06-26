@@ -3,7 +3,7 @@ class PollMailer < BaseMailer
   helper :application
   REPLY_DELIMITER = "--"
 
-  %w(poll_created poll_edited stance_created poll_option_added
+  %w(poll_created poll_edited stance_created poll_option_added poll_option_added_author
      outcome_created outcome_created_author
      poll_closing_soon poll_closing_soon_author
      poll_expired  poll_expired_author

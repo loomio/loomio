@@ -42,6 +42,11 @@ module Dev::PollsScenarioHelper
     scenario.merge(observer: scenario[:voter])
   end
 
+  def poll_options_added_author_scenario(poll_type:)
+    scenario = poll_options_added_scenario(poll_type: poll_type)
+    scenario.merge(observer: scenario[:poll].author)
+  end
+
   def poll_created_as_logged_out_scenario(poll_type:)
     scenario = poll_created_as_visitor_scenario(poll_type: poll_type)
     scenario[:poll].update(anyone_can_participate: true)

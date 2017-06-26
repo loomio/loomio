@@ -1,6 +1,7 @@
 class Events::PollOptionAdded < Event
   include Events::PollEvent
   include Events::Notify::Visitors
+  include Events::Notify::Author
 
   def self.publish!(poll, actor, poll_option_names = [])
     return unless Array(poll_option_names).any?
