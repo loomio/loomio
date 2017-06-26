@@ -1,6 +1,4 @@
 = render "poll_mailer/common/header"
-= render "poll_mailer/common/summary"
-= render "poll_mailer/common/vote"
-= render "poll_mailer/#{@info.poll_type}/chart"
-= render "poll_mailer/#{@info.poll_type}/responses"
+= render "poll_mailer/common/option_added"
+= render "poll_mailer/common/vote", title_key: 'poll_mailer.common.option_added_you_voted'
 = render "poll_mailer/common/footer"

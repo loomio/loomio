@@ -35,7 +35,9 @@ module Dev::PollsScenarioHelper
   def poll_options_added_scenario(poll_type:)
     scenario = poll_stance_created_scenario(poll_type: poll_type)
     scenario[:poll].make_announcement = true
-    PollService.add_options(poll: scenario[:poll], actor: scenario[:actor], params: {poll_option_names: ['new_option']})
+    PollService.add_options(poll: scenario[:poll],
+                            actor: scenario[:actor],
+                            params: {poll_option_names: option_names[poll_type]})
 
     scenario.merge(observer: scenario[:voter])
   end

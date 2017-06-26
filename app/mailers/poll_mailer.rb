@@ -23,9 +23,7 @@ class PollMailer < BaseMailer
 
     @info = PollEmailInfo.new(
       recipient:   recipient,
-      poll:        event.poll,
-      actor:       if event.eventable.is_a?(Stance) then event.eventable.participant else event.user end, # sorry mom :(
-      eventable:   event.eventable,
+      event:       event,
       action_name: action_name
     )
 

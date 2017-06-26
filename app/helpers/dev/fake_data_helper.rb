@@ -28,15 +28,18 @@ module Dev::FakeDataHelper
                     author: fake_user}.merge(args))
   end
 
-  def fake_poll(args = {})
-    option_names = {
+  def option_names
+    seed = (0..20).to_a.sample
+    {
       poll: 3.times.map{ Faker::Food.ingredient },
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: 3.times.map{ Faker::Artist.name },
-      meeting: 3.times.map { |i| i.days.from_now.to_date } + 3.times.map { |i| i.days.from_now.beginning_of_hour.utc.iso8601 }
+      meeting: 3.times.map { |i| (seed+i).days.from_now.to_date } + 3.times.map { |i| (seed+i).days.from_now.beginning_of_hour.utc.iso8601 }
     }.with_indifferent_access
+  end
 
+  def fake_poll(args = {})
     options = {
       author: fake_user,
       discussion: fake_discussion,
@@ -95,7 +98,7 @@ module Dev::FakeDataHelper
       sender_email: Faker::Internet.email,
       subject: Faker::ChuckNorris.fact,
       body: "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah",
-      
+
     })
   end
 
