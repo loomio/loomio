@@ -84,6 +84,7 @@ class PollService
     return false unless poll.valid?
     poll.save!
 
+    poll.make_announcement = true # TODO: handle announcements (or not?) for add options
     EventBus.broadcast('poll_add_options', poll, actor, params)
     Events::PollOptionAdded.publish!(poll, actor, option_names)
   end
