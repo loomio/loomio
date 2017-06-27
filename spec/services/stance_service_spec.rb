@@ -49,6 +49,10 @@ describe StanceService do
       expect(public_stance.reload.participant).to eq visitor
     end
 
+    it 'does not create a stance for a logged out user' do
+      expect { StanceService.create(stance: public_stance, actor: LoggedOutUser.new) }.to raise_error { CanCan::AccessDenied }
+    end
+
     it 'does not allow visitors to create unauthorized stances' do
       expect { StanceService.create(stance: stance_created, actor: visitor) }.to raise_error { CanCan::AccessDenied }
     end
