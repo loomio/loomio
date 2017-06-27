@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
 
     $scope.datesAsOptions = PollService.fieldFromTemplate($scope.poll.pollType, 'dates_as_options')
 
-    $scope.$on 'addPollOption', () ->
+    $scope.$on 'addPollOption', ->
       $scope.addOption()
 
     $scope.removeOption = (name) ->
