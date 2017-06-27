@@ -2,7 +2,7 @@ module Events::Notify::Visitors
 
   # send event emails to visitors
   def email_visitors!
-    email_visitors.can_receive_email.each do |recipient|
+    email_visitors.can_receive_email.uniq.each do |recipient|
       mailer.delay.send(kind, recipient, self)
     end
   end

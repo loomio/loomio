@@ -2,7 +2,7 @@ module Events::Notify::Users
 
   # send event emails
   def email_users!
-    email_recipients.without(user).each do |recipient|
+    email_recipients.without(user).uniq.each do |recipient|
       mailer.delay.send(kind, recipient, self)
     end
   end
