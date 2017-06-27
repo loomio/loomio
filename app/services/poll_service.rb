@@ -78,7 +78,7 @@ class PollService
 
   def self.add_options(poll:, params:, actor:)
     actor.ability.authorize! :add_options, poll
-    option_names = Array(params[:poll_option_names])
+    option_names = Array(params[:poll_option_names]) - poll.poll_option_names
     poll.poll_option_names += option_names
 
     return false unless poll.valid?
