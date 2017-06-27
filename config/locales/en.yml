@@ -1160,6 +1160,7 @@ en:
         abstain: abstained on
         block: blocked
   slack:
+    new_discussion: "New thread in *%{group}*: *%{discussion}*"
     poll_published: "New decision in *%{group}*: *%{poll}*"
     outcome_published: "New outcome in *%{group}*: *%{poll}*"
     poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"

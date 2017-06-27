@@ -29,6 +29,7 @@ class Identities::Slack < Identities::Base
   def publish_events
     %w(
       group_published
+      new_discussion
       poll_published
       poll_closing_soon
       poll_expired
