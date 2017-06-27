@@ -5,4 +5,5 @@
       %h1.lmo-h1{translate: "poll_common_add_option.modal.title"}
       %material_modal_header_cancel_button
   .md-dialog-content
+    .lmo-disabled-form{ng-show: "isDisabled"}
     %poll_common_add_option_form{poll: "poll"}
