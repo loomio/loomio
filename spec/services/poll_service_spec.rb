@@ -19,12 +19,12 @@ describe PollService do
 
   before { group.add_member!(user); group.community }
 
-  describe '#convert_visitors', focus: true do
+  describe '#convert_visitors' do
     it 'converts recognised visitors to users' do
       user = create(:user, email: 'joe@example.com')
       visitor = Visitor.new(name: "joe", email: 'joe@example.com')
       community = poll.community_of_type(:email, build: true)
-      communit.visitors << visitor
+      community.visitors << visitor
       PollService.convert_visitors(poll: poll)
       expect(poll.guest_group.members).to include user
     end

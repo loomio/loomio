@@ -194,12 +194,6 @@ FactoryGirl.define do
     end
   end
 
-  factory :group_request do
-    name { Faker::Name.name }
-    admin_name { Faker::Name.name }
-    admin_email { Faker::Internet.email }
-  end
-
   factory :invitation do
     recipient_email { Faker::Internet.email }
     intent {'join_group'}

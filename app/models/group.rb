@@ -1,13 +1,10 @@
-class Group < ActiveRecord::Base
+class Group < BaseGroup
   include ReadableUnguessableUrls
   include HasTimeframe
   include HasPolls
   include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
-
-  class MaximumMembershipsExceeded < Exception
-  end
 
   DISCUSSION_PRIVACY_OPTIONS = ['public_only', 'private_only', 'public_or_private']
   MEMBERSHIP_GRANTED_UPON_OPTIONS = ['request', 'approval', 'invitation']
@@ -28,102 +25,18 @@ class Group < ActiveRecord::Base
   default_scope { includes(:default_group_cover) }
 
   scope :categorised_any, -> { where('groups.category_id IS NOT NULL') }
-  scope :in_category, -> (category) { where(category_id: category.id) }
 
-  scope :archived, lambda { where('archived_at IS NOT NULL') }
-  scope :published, lambda { where(archived_at: nil) }
+  scope :archived, -> { where('archived_at IS NOT NULL') }
+  scope :published, -> { where(archived_at: nil) }
 
   scope :parents_only, -> { where(parent_id: nil) }
-
-  scope :sort_by_popularity, -> { order('memberships_count DESC') }
 
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
 
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
-  # Engagement (Email Template) Related Scopes
-  scope :more_than_n_members,     ->(count) { where('memberships_count > ?', count) }
-  scope :less_than_n_members,     ->(count) { where('memberships_count < ?', count) }
-  scope :more_than_n_discussions, ->(count) { where('discussions_count > ?', count) }
-  scope :less_than_n_discussions, ->(count) { where('discussions_count < ?', count) }
-
-  scope :no_active_discussions_since, ->(time) {
-    includes(:discussions).where('(last_comment_at IS NULL and discussions.created_at < :time) OR
-                                   last_comment_at < :time OR
-                                   groups.discussions_count = 0', time: time).references(:discussions)
-  }
-
-  scope :active_discussions_since, ->(time) {
-    includes(:discussions).where('discussions.last_activity_at > ?', time).references(:discussions)
-  }
-
-  scope :created_earlier_than, lambda {|time| where('groups.created_at < ?', time) }
-
-  scope :engaged, ->(since = 2.months.ago) {
-    more_than_n_members(1).
-    more_than_n_discussions(2).
-    active_discussions_since(since)
-  }
-
-  scope :with_analytics, ->(since = 1.month.ago) {
-    where(analytics_enabled: true).engaged(since).joins(:admin_memberships)
-  }
-
-  scope :engaged_but_stopped, -> { more_than_n_members(1).
-                                   more_than_n_discussions(2).
-                                   no_active_discussions_since(2.month.ago).
-                                   created_earlier_than(2.months.ago).
-                                   parents_only }
-
-  scope :has_members_but_never_engaged, -> { more_than_n_members(1).
-                                             less_than_n_discussions(2).
-                                             created_earlier_than(1.month.ago).
-                                             parents_only }
-
-  has_one :group_request
-
-  has_many :memberships,
-           -> { where is_suspended: false, archived_at: nil },
-           extend: GroupMemberships
-
-  has_many :all_memberships,
-           dependent: :destroy,
-           class_name: 'Membership',
-           extend: GroupMemberships
-
-  has_many :membership_requests,
-           dependent: :destroy
-
-  has_many :pending_membership_requests,
-           -> { where response: nil },
-           class_name: 'MembershipRequest',
-           dependent: :destroy
-
-  has_many :admin_memberships,
-           -> { where admin: true, archived_at: nil },
-           class_name: 'Membership',
-           dependent: :destroy
-
-  has_many :members,
-           through: :memberships,
-           source: :user
-
-  has_many :pending_invitations,
-           -> { where accepted_at: nil, cancelled_at: nil },
-           as: :invitable,
-           class_name: 'Invitation'
-
-  has_many :invitations,
-           as: :invitable,
-           class_name: 'Invitation',
-           dependent: :destroy
-
-  has_many :comments, through: :discussions
-
   after_initialize :set_defaults
-
-  after_create :guess_cohort
   after_save   :associate_identity
 
   alias :users :members
@@ -131,6 +44,8 @@ class Group < ActiveRecord::Base
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, dependent: :destroy
+  has_many :comments, through: :discussions
+  has_many :comment_votes, through: :comments
   has_many :motions, through: :discussions
   has_many :polls
   has_many :votes, through: :motions
@@ -138,7 +53,6 @@ class Group < ActiveRecord::Base
   belongs_to :parent, class_name: 'Group'
   belongs_to :creator, class_name: 'User'
   belongs_to :category
-  belongs_to :theme
   belongs_to :cohort
   belongs_to :community, class_name: 'Communities::LoomioGroup', touch: true
   belongs_to :default_group_cover
@@ -147,13 +61,7 @@ class Group < ActiveRecord::Base
            -> { where(archived_at: nil).order(:name) },
            class_name: 'Group',
            foreign_key: 'parent_id'
-
-  has_many :comment_votes, through: :comments
-
-  # maybe change this to just archived_subgroups
-  has_many :all_subgroups,
-           class_name: 'Group',
-           foreign_key: :parent_id
+  has_many :all_subgroups, class_name: 'Group', foreign_key: :parent_id
 
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true
@@ -164,8 +72,6 @@ class Group < ActiveRecord::Base
   delegate :slack_channel_name, to: :community, allow_nil: true
   delegate :slack_team_name, to: :community, allow_nil: true
   delegate :identity_type, to: :community, allow_nil: true
-
-  paginates_per 20
 
   has_attached_file    :cover_photo,
                        styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
@@ -215,10 +121,10 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def community
-    update(community: Communities::LoomioGroup.create(group: self)) unless self[:community_id]
-    super
-  end
+  # def community
+  #   update(community: Communities::LoomioGroup.create(group: self)) unless self[:community_id]
+  #   super
+  # end
 
   attr_writer :identity_id
   def identity_id
@@ -239,14 +145,6 @@ class Group < ActiveRecord::Base
     else
       'img/default-cover-photo.png'
     end
-  end
-
-  def requestor_name
-    group_request.try(:admin_name)
-  end
-
-  def requestor_email
-    group_request.try(:admin_email)
   end
 
   def archive!
@@ -436,14 +334,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def theme
-    if is_subgroup?
-      parent.theme
-    else
-      super
-    end
-  end
-
   private
 
   def set_discussions_private_only
@@ -499,13 +389,6 @@ class Group < ActiveRecord::Base
     self.discussion_privacy_options ||= 'private_only'
     self.membership_granted_upon ||= 'approval'
     self.features['use_polls'] = true
-  end
-
-  def guess_cohort
-    if self.cohort_id.blank?
-      cohort_id = Group.where('cohort_id is not null').order('cohort_id desc').first.try(:cohort_id)
-      self.update_attribute(:cohort_id, cohort_id) if cohort_id
-    end
   end
 
   def calculate_full_name

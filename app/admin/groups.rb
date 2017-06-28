@@ -8,10 +8,6 @@ ActiveAdmin.register Group do
     def find_resource
       Group.friendly.find(params[:id])
     end
-
-    def collection
-      super.includes(:group_request)
-    end
   end
 
   actions :index, :show, :edit, :update
@@ -25,9 +21,6 @@ ActiveAdmin.register Group do
   filter :analytics_enabled
 
   scope :parents_only
-  scope :engaged
-  scope :engaged_but_stopped
-  scope :has_members_but_never_engaged
 
   batch_action :delete_spam do |group_ids|
     group_ids.each do |group_id|
@@ -52,11 +45,6 @@ ActiveAdmin.register Group do
     column :id
     column :name do |g|
       simple_format(g.full_name.sub(' - ', "\n \n> "))
-    end
-    column :contact do |g|
-      admin_name = ERB::Util.h(g.requestor_name)
-      admin_email = ERB::Util.h(g.requestor_email)
-      simple_format "#{admin_name} \n &lt;#{admin_email}&gt;"
     end
 
     column "Size", :memberships_count

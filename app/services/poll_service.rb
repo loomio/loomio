@@ -168,7 +168,7 @@ class PollService
   end
 
   def self.convert_visitors(poll: poll)
-    poll.guest_group.create
+    poll.create_guest_group
     poll.visitors.each do |visitor|
       user = User.find_or_initialize_by(email: visitor.email)
       if user.persisted?
