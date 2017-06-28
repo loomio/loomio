@@ -167,6 +167,21 @@ class PollService
     end
   end
 
+  def self.convert_visitors(poll: poll)
+    poll.guest_group.create
+    poll.visitors.each do |visitor|
+      user = User.find_or_initialize_by(email: visitor.email)
+      if user.persisted?
+        poll.guest_group.add_member!(user)
+      else
+        poll.guest_group.invitations.create!(recipient_email: visitor.email,
+        recipient_name: visitor.name,
+        token: visitor.participation_token,
+        intent: "join_group")
+      end
+    end
+  end
+
   def self.cleanup_examples
     Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all
   end

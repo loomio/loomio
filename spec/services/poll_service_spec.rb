@@ -10,7 +10,7 @@ describe PollService do
   let(:motion) { create(:motion, discussion: discussion) }
   let(:closed_motion) { create(:motion, discussion: discussion, closed_at: 1.day.ago, outcome: "an outcome", outcome_author: user) }
   let(:vote) { create :vote, motion: motion, statement: "I am a statement" }
-  let(:visitor) { LoggedOutUser.new }
+  let(:logged_out_user) { LoggedOutUser.new }
   let(:group) { create :group }
   let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
@@ -18,6 +18,22 @@ describe PollService do
   let(:identity) { create :slack_identity }
 
   before { group.add_member!(user); group.community }
+
+  describe '#convert_visitors', focus: true do
+    it 'converts recognised visitors to users' do
+      user = create(:user, email: 'joe@example.com')
+      visitor = Visitor.new(name: "joe", email: 'joe@example.com')
+      community = poll.community_of_type(:email, build: true)
+      communit.visitors << visitor
+      PollService.convert_visitors(poll: poll)
+      expect(poll.guest_group.members).to include user
+    end
+
+    it 'converts unrecognised visitors to invitations' do
+    end
+
+    it 'visitor email matches user in poll group'
+  end
 
   describe '#create' do
     it 'creates a new poll' do
@@ -71,8 +87,8 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: user) }.to_not change { Poll.count }
     end
 
-    it 'does not allow visitors to create polls' do
-      expect { PollService.create(poll: poll_created, actor: visitor) }.to raise_error { CanCan::AccessDenied }
+    it 'does not allow logged out users to create polls' do
+      expect { PollService.create(poll: poll_created, actor: logged_out_user) }.to raise_error { CanCan::AccessDenied }
     end
 
     it 'creates a poll which references the group community from a discussion' do
