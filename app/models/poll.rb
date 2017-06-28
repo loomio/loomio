@@ -122,27 +122,20 @@ class Poll < ActiveRecord::Base
                                               .group_by(&:poll_option)
   end
 
-
-  def groups
-    Group.where(group_id: group_ids)
-  end
-
   def group_ids
     [group_id, guest_group_id].compact
   end
 
   def members
-    User.joins(:memberships).where('memberships.group_id' => group_ids)
+    User.joins(:memberships)
+        .joins(:groups)
+        .where("memberships.group_id": group_ids)
+        .where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
+        .uniq
   end
 
   def invitations
     Invitation.where(group_id: group_ids)
-  end
-
-  def user_can_vote?(user)
-    groups.any? do |group|
-      group.admins.include?(user) || (group.members.include?(user) && group.members_can_vote?)
-    end
   end
 
   def update_stance_data
@@ -200,15 +193,12 @@ class Poll < ActiveRecord::Base
   end
 
   def anyone_can_participate
-    @anyone_can_participate ||= community_of_type(:public).present?
+    # TODO not sure what invitation -> voter flow is.
+    guest_group.membership_granted_upon_request?
   end
 
-  def anyone_can_participate=(boolean)
-    if boolean
-      community_of_type(:public, build: true)
-    else
-      community_of_type(:public)&.destroy
-    end
+  def anyone_can_participate=(bool)
+    guest_group.update(membership_granted_upon: if bool then :request else :invitation end)
   end
 
   def discussion_id=(discussion_id)

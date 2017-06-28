@@ -353,8 +353,7 @@ class Ability
     end
 
     can :vote_in, Poll do |poll|
-      # TODO not sure what invitation -> voter flow is.
-      poll.active? && (poll.user_can_vote?(user)) || poll.guest_group.membership_granted_upon_request?)
+      poll.active? && (poll.anyone_can_participate || poll.members.include?(user))
     end
 
     can [:show, :toggle_subscription, :subscribe_to], Poll do |poll|
