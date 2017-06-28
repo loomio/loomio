@@ -3,15 +3,10 @@ class PollService
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(author: actor)
-    poll.community_of_type(:email, build: true)
-    if poll.group.present?
-      poll.build_loomio_group_community
-    else
-      poll.community_of_type(:public, build: true)
-    end
 
     return false unless poll.valid?
     poll.save!
+
 
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor)
@@ -52,13 +47,8 @@ class PollService
 
   def self.do_closing_work(poll:)
     poll.update(closed_at: Time.now) unless poll.closed_at.present?
-    poll.poll_communities.for(:loomio_group).each do |poll_community|
-      poll_community.update(community: poll_community.community.to_user_community)
-    end
-
-    return unless poll.group
     poll.poll_did_not_votes.delete_all
-    non_voters = poll.group.members - poll.participants
+    non_voters = poll.members - poll.participants
     poll.poll_did_not_votes.import non_voters.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
     poll.update_undecided_user_count
   end
@@ -181,6 +171,8 @@ class PollService
         intent: "join_group")
       end
     end
+
+    do_closing_work(poll: poll) if poll.closed?
   end
 
   def self.cleanup_examples

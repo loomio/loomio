@@ -353,15 +353,8 @@ class Ability
     end
 
     can :vote_in, Poll do |poll|
-      if !poll.active?
-        false
-      elsif poll.discussion
-        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id)) ||
-        user_is_admin_of?(poll.group_id) ||
-        poll.communities.any? { |community| community.includes?(@user) }
-      else
-        user_is_author_of?(poll) || poll.communities.any? { |community| community.includes?(@user) }
-      end
+      # TODO not sure what invitation -> voter flow is.
+      poll.active? && (poll.user_can_vote?(user)) || poll.guest_group.membership_granted_upon_request?)
     end
 
     can [:show, :toggle_subscription, :subscribe_to], Poll do |poll|

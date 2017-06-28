@@ -70,6 +70,7 @@ class Poll < ActiveRecord::Base
   has_many :poll_communities, dependent: :destroy, autosave: true
   has_many :communities, through: :poll_communities
 
+
   delegate :locale, to: :author
 
   scope :active, -> { where(closed_at: nil) }
@@ -121,6 +122,29 @@ class Poll < ActiveRecord::Base
                                               .group_by(&:poll_option)
   end
 
+
+  def groups
+    Group.where(group_id: group_ids)
+  end
+
+  def group_ids
+    [group_id, guest_group_id].compact
+  end
+
+  def members
+    User.joins(:memberships).where('memberships.group_id' => group_ids)
+  end
+
+  def invitations
+    Invitation.where(group_id: group_ids)
+  end
+
+  def user_can_vote?(user)
+    groups.any? do |group|
+      group.admins.include?(user) || (group.members.include?(user) && group.members_can_vote?)
+    end
+  end
+
   def update_stance_data
     update_attribute(:stance_data, zeroed_poll_options.merge(
       self.class.connection.select_all(%{
@@ -149,6 +173,10 @@ class Poll < ActiveRecord::Base
 
   def active?
     closed_at.nil?
+  end
+
+  def closed?
+    !active?
   end
 
   def is_single_vote?

@@ -31,18 +31,7 @@ EventBus.configure do |config|
   # TODO: find the common thread between these poll_published / poll_created logics
   # publish to designated community after creation
   config.listen('poll_create') do |poll, actor|
-    community = Communities::Base.find_by(id: poll.community_id)
-    if poll.author.can?(:show, community)
-      poll.communities << community
-      Events::PollPublished.publish!(poll, actor, community)
-    end
-  end
-
-  # publish to linked slack team after creation
-  config.listen('poll_create') do |poll, actor|
-    if poll.group&.community&.identity.present?
-      Events::PollPublished.publish!(poll, actor, poll.group.community)
-    end
+    poll.create_guest_group.add_admin!(actor)
   end
 
   # publish to new group if group has changed
