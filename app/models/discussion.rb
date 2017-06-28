@@ -62,7 +62,7 @@ class Discussion < ActiveRecord::Base
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail only: [:title, :description, :private]
 
-  belongs_to :group
+  belongs_to :group, class_name: 'FormalGroup'
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :motions, dependent: :destroy

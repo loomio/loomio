@@ -1,5 +1,5 @@
 class Events::PollPublished < Event
-  include Events::SingleCommunityEvent
+  include Events::Notify::ThirdParty
 
   def self.publish!(poll, actor, community, message = "")
     create(kind: "poll_published",

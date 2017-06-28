@@ -1,5 +1,10 @@
 module Events::Notify::Users
 
+  def trigger!
+    super
+    email_users!
+  end
+
   # send event emails
   def email_users!
     email_recipients.without(user).uniq.each do |recipient|

@@ -1,5 +1,5 @@
 class Events::GroupPublished < Event
-  include Events::SingleCommunityEvent
+  include Events::Notify::ThirdParty
 
   def self.publish!(group, actor)
     return unless group.make_announcement

@@ -34,7 +34,6 @@ class Event < ActiveRecord::Base
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
-    communities.each { |community| community.notify!(self) }
   end
 
   private

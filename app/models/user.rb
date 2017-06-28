@@ -146,6 +146,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def identity_for(type)
+    identities.find_by(identity_type: type)
+  end
+
   def remember_me
     true
   end

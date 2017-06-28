@@ -1,5 +1,5 @@
 class Events::OutcomePublished < Event
-  include Events::SingleCommunityEvent
+  include Events::Notify::ThirdParty
 
   def self.publish!(outcome, community)
     create(kind: "outcome_published",

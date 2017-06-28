@@ -49,6 +49,8 @@ class FormalGroup < Group
   has_many :motions, through: :discussions
   has_many :polls, foreign_key: :group_id
   has_many :votes, through: :motions
+  has_many :group_identities, dependent: :destroy
+  has_many :identities, through: :group_identities
 
   belongs_to :parent, class_name: 'Group'
   belongs_to :creator, class_name: 'User'
@@ -61,6 +63,14 @@ class FormalGroup < Group
            class_name: 'Group',
            foreign_key: 'parent_id'
   has_many :all_subgroups, class_name: 'Group', foreign_key: :parent_id
+
+  define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
+  define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
+  define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
+  define_counter_cache(:proposal_outcomes_count)   { |group| group.motions.with_outcomes.count }
+  define_counter_cache(:polls_count)               { |group| group.polls.count }
+  define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
 
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true

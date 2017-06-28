@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628010323) do
+ActiveRecord::Schema.define(version: 20170628042758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,15 +178,6 @@ ActiveRecord::Schema.define(version: 20170628010323) do
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
-  create_table "decision_emails", force: :cascade do |t|
-    t.string   "subject",    null: false
-    t.string   "body"
-    t.string   "to",         null: false
-    t.string   "cc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
@@ -331,6 +322,16 @@ ActiveRecord::Schema.define(version: 20170628010323) do
   add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true, using: :btree
   add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx", using: :btree
 
+  create_table "group_identities", force: :cascade do |t|
+    t.integer "group_id",     null: false
+    t.integer "identity_id",  null: false
+    t.string  "channel_name"
+    t.string  "channel_id"
+  end
+
+  add_index "group_identities", ["group_id"], name: "index_group_identities_on_group_id", using: :btree
+  add_index "group_identities", ["identity_id"], name: "index_group_identities_on_identity_id", using: :btree
+
   create_table "group_requests", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -434,6 +435,7 @@ ActiveRecord::Schema.define(version: 20170628010323) do
     t.integer  "closed_polls_count",                 default: 0,              null: false
     t.integer  "announcement_recipients_count",      default: 0,              null: false
     t.integer  "polls_count",                        default: 0,              null: false
+    t.boolean  "guest",                              default: false,          null: false
     t.string   "type",                               default: "FormalGroup",  null: false
   end
 
@@ -785,14 +787,6 @@ ActiveRecord::Schema.define(version: 20170628010323) do
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
   add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
   add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
-
-  create_table "received_emails", force: :cascade do |t|
-    t.text     "headers"
-    t.text     "body"
-    t.string   "sender_email", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"

@@ -30,9 +30,26 @@ describe PollService do
     end
 
     it 'converts unrecognised visitors to invitations' do
+      visitor = Visitor.new(name: "joe", email: 'joe@example.com')
+      community = poll.community_of_type(:email, build: true)
+      community.visitors << visitor
+      PollService.convert_visitors(poll: poll)
+      expect(poll.guest_group.members).to_not include user
+      expect(poll.guest_group.invitations.first.recipient_email).to eq 'joe@example.com'
     end
 
-    it 'visitor email matches user in poll group'
+    it 'visitor email matches user in poll group' do
+      visitor = Visitor.new(name: "joe", email: 'joe@example.com')
+      user = create(:user, email: 'joe@example.com')
+      poll.group.add_member! user
+      community = poll.community_of_type(:email, build: true)
+      community.visitors << visitor
+
+      stance = create :stance, participant: visitor, poll: poll
+
+      PollService.convert_visitors(poll: poll)
+      expect(user.stances).to include stance
+    end
   end
 
   describe '#create' do

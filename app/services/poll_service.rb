@@ -173,6 +173,7 @@ class PollService
       user = User.find_or_initialize_by(email: visitor.email)
       if user.persisted?
         poll.guest_group.add_member!(user)
+        poll.stances.where(participant: visitor).update_all(participant_id: user.id, participant_type: "User")
       else
         poll.guest_group.invitations.create!(recipient_email: visitor.email,
         recipient_name: visitor.name,
