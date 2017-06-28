@@ -2,8 +2,8 @@ require 'rails_helper'
 describe API::GroupsController do
 
   let(:user) { create :user }
-  let(:group) { create :group, creator: user }
-  let(:subgroup) { create :group, parent: group }
+  let(:group) { create :formal_group, creator: user }
+  let(:subgroup) { create :formal_group, parent: group }
   let(:discussion) { create :discussion, group: group }
 
   before do
@@ -39,7 +39,7 @@ describe API::GroupsController do
 
     context 'logged out' do
       before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
-      let(:private_group) { create(:group, is_visible_to_public: false) }
+      let(:private_group) { create(:formal_group, is_visible_to_public: false) }
 
       it 'returns public groups if the user is logged out' do
         get :show, id: group.key, format: :json
@@ -102,8 +102,8 @@ describe API::GroupsController do
   describe 'count_explore_results' do
     it 'returns the number of explore group results matching the search term' do
       group.update_attribute(:name, 'exploration team')
-      explore_group = create(:group, name: 'investigation team')
-      second_explore_group = create(:group, name: 'inspection group')
+      explore_group = create(:formal_group, name: 'investigation team')
+      second_explore_group = create(:formal_group, name: 'inspection group')
       get :count_explore_results, { q: 'team' }
       expect(JSON.parse(response.body)['count']).to eq 2
     end

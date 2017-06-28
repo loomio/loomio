@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Vote do
   let(:user) { create(:user) }
-  let(:group) { create(:group) }
+  let(:group) { create(:formal_group) }
   let(:discussion) { create :discussion, group: group, author: user }
   let(:motion) { create(:motion, discussion: discussion) }
 

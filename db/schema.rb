@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628004334) do
+ActiveRecord::Schema.define(version: 20170628010323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,15 @@ ActiveRecord::Schema.define(version: 20170628004334) do
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "decision_emails", force: :cascade do |t|
+    t.string   "subject",    null: false
+    t.string   "body"
+    t.string   "to",         null: false
+    t.string   "cc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"
@@ -373,17 +382,17 @@ ActiveRecord::Schema.define(version: 20170628004334) do
     t.integer  "parent_id"
     t.text     "description"
     t.datetime "archived_at"
-    t.integer  "memberships_count",                  default: 0,     null: false
-    t.integer  "discussions_count",                  default: 0,     null: false
+    t.integer  "memberships_count",                  default: 0,              null: false
+    t.integer  "discussions_count",                  default: 0,              null: false
     t.string   "full_name"
-    t.boolean  "parent_members_can_see_discussions", default: false, null: false
+    t.boolean  "parent_members_can_see_discussions", default: false,          null: false
     t.string   "key"
     t.integer  "category_id"
-    t.boolean  "is_visible_to_public",               default: true,  null: false
-    t.boolean  "is_visible_to_parent_members",       default: false, null: false
-    t.string   "discussion_privacy_options",                         null: false
-    t.boolean  "members_can_add_members",            default: true,  null: false
-    t.string   "membership_granted_upon",                            null: false
+    t.boolean  "is_visible_to_public",               default: true,           null: false
+    t.boolean  "is_visible_to_parent_members",       default: false,          null: false
+    t.string   "discussion_privacy_options",         default: "private_only", null: false
+    t.boolean  "members_can_add_members",            default: true,           null: false
+    t.string   "membership_granted_upon",            default: "approval",     null: false
     t.string   "subdomain"
     t.integer  "theme_id"
     t.string   "cover_photo_file_name"
@@ -394,37 +403,38 @@ ActiveRecord::Schema.define(version: 20170628004334) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.boolean  "members_can_edit_discussions",       default: true,  null: false
-    t.boolean  "motions_can_be_edited",              default: false, null: false
+    t.boolean  "members_can_edit_discussions",       default: true,           null: false
+    t.boolean  "motions_can_be_edited",              default: false,          null: false
     t.boolean  "members_can_edit_comments",          default: true
-    t.boolean  "members_can_raise_motions",          default: true,  null: false
-    t.boolean  "members_can_vote",                   default: true,  null: false
-    t.boolean  "members_can_start_discussions",      default: true,  null: false
-    t.boolean  "members_can_create_subgroups",       default: false, null: false
+    t.boolean  "members_can_raise_motions",          default: true,           null: false
+    t.boolean  "members_can_vote",                   default: true,           null: false
+    t.boolean  "members_can_start_discussions",      default: true,           null: false
+    t.boolean  "members_can_create_subgroups",       default: false,          null: false
     t.integer  "creator_id"
-    t.boolean  "is_referral",                        default: false, null: false
+    t.boolean  "is_referral",                        default: false,          null: false
     t.integer  "cohort_id"
     t.integer  "default_group_cover_id"
     t.integer  "subscription_id"
-    t.integer  "motions_count",                      default: 0,     null: false
-    t.integer  "admin_memberships_count",            default: 0,     null: false
-    t.integer  "invitations_count",                  default: 0,     null: false
-    t.integer  "public_discussions_count",           default: 0,     null: false
+    t.integer  "motions_count",                      default: 0,              null: false
+    t.integer  "admin_memberships_count",            default: 0,              null: false
+    t.integer  "invitations_count",                  default: 0,              null: false
+    t.integer  "public_discussions_count",           default: 0,              null: false
     t.string   "country"
     t.string   "region"
     t.string   "city"
-    t.integer  "closed_motions_count",               default: 0,     null: false
+    t.integer  "closed_motions_count",               default: 0,              null: false
     t.boolean  "enable_experiments",                 default: false
-    t.boolean  "analytics_enabled",                  default: false, null: false
-    t.integer  "proposal_outcomes_count",            default: 0,     null: false
-    t.jsonb    "experiences",                        default: {},    null: false
-    t.integer  "pending_invitations_count",          default: 0,     null: false
-    t.jsonb    "features",                           default: {},    null: false
-    t.integer  "recent_activity_count",              default: 0,     null: false
+    t.boolean  "analytics_enabled",                  default: false,          null: false
+    t.integer  "proposal_outcomes_count",            default: 0,              null: false
+    t.jsonb    "experiences",                        default: {},             null: false
+    t.integer  "pending_invitations_count",          default: 0,              null: false
+    t.jsonb    "features",                           default: {},             null: false
+    t.integer  "recent_activity_count",              default: 0,              null: false
     t.integer  "community_id"
-    t.integer  "closed_polls_count",                 default: 0,     null: false
-    t.integer  "announcement_recipients_count",      default: 0,     null: false
-    t.integer  "polls_count",                        default: 0,     null: false
+    t.integer  "closed_polls_count",                 default: 0,              null: false
+    t.integer  "announcement_recipients_count",      default: 0,              null: false
+    t.integer  "polls_count",                        default: 0,              null: false
+    t.string   "type",                               default: "FormalGroup",  null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -769,11 +779,20 @@ ActiveRecord::Schema.define(version: 20170628004334) do
     t.integer  "undecided_user_count",    default: 0,     null: false
     t.integer  "undecided_visitor_count", default: 0,     null: false
     t.boolean  "voter_can_add_options",   default: false, null: false
+    t.integer  "guest_group_id"
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
   add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
   add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
+
+  create_table "received_emails", force: :cascade do |t|
+    t.text     "headers"
+    t.text     "body"
+    t.string   "sender_email", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"

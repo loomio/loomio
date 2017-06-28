@@ -1,7 +1,7 @@
 Given(/^there is a group member causing a ruckus$/) do
   @bad_user = FactoryGirl.create(:user)
   @group.add_member!(@bad_user)
-  @subgroup = FactoryGirl.create(:group, parent: @group)
+  @subgroup = FactoryGirl.create(:formal_group, parent: @group)
   @subgroup.add_member!(@bad_user)
 end
 

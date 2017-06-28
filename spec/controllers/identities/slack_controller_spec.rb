@@ -32,7 +32,7 @@ describe Identities::SlackController do
   end
 
   describe 'participate' do
-    let(:group) { create :group }
+    let(:group) { create :formal_group }
     let(:discussion) { create :discussion, group: group }
     let(:poll) { create :poll_proposal, discussion: discussion }
     let(:identity) { create :slack_identity }

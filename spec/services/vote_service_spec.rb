@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'VoteService' do
 
-  let(:group) { create :group }
+  let(:group) { create :formal_group }
   let(:discussion) { create :discussion, group: group }
   let(:motion) { create(:motion, discussion: discussion) }
   let(:vote) { build(:vote, motion: motion, author: user) }

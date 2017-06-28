@@ -1,11 +1,11 @@
 require 'rails_helper'
 describe API::DiscussionsController do
 
-  let(:subgroup) { create :group, parent: group }
-  let(:another_group) { create :group }
+  let(:subgroup) { create :formal_group, parent: group }
+  let(:another_group) { create :formal_group }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :formal_group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
@@ -355,7 +355,7 @@ describe API::DiscussionsController do
 
     context 'success' do
       it 'moves a discussion' do
-        destination_group = create :group
+        destination_group = create :formal_group
         destination_group.users << user
         source_group = discussion.group
         patch :move, id: discussion.id, group_id: destination_group.id, format: :json
@@ -412,7 +412,7 @@ describe API::DiscussionsController do
         end
 
         it 'can display content from a specified public group' do
-          public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
+          public_group = create :formal_group, discussion_privacy_options: :public_only, is_visible_to_public: true
           can_see_me = create :discussion, group: public_group, private: false
           get :index, group_id: public_group.id, format: :json
           json = JSON.parse(response.body)

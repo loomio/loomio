@@ -2,7 +2,7 @@ require 'rails_helper'
 describe API::SearchController do
 
   let(:user)    { create :user }
-  let(:group)   { create :group }
+  let(:group)   { create :formal_group }
   let(:discussion) { create :discussion, group: group }
   let(:motion) { create :current_motion, discussion: discussion }
   let(:comment) { create :comment, discussion: discussion }
@@ -78,7 +78,7 @@ describe API::SearchController do
     end
 
     it "does not display content the user does not have access to" do
-      DiscussionService.update discussion: discussion, params: { group: create(:group) }, actor: user
+      DiscussionService.update discussion: discussion, params: { group: create(:formal_group) }, actor: user
       search_for('find')
 
       expect(@result_keys).to_not include discussion.key

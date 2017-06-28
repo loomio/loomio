@@ -1,2 +1,2 @@
-class GuestGroup < BaseGroup
+class GuestGroup < Group
 end

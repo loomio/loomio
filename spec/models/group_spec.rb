@@ -3,45 +3,45 @@ require 'rails_helper'
 describe Group do
   let(:motion) { create(:motion, discussion: discussion) }
   let(:user) { create(:user) }
-  let(:group) { create(:group) }
+  let(:group) { create(:formal_group) }
   let(:discussion) { create :discussion, group: group }
 
   context 'default cover photo' do
 
     it 'returns an uploaded cover url if one exists' do
       cover_photo_stub = OpenStruct.new(url: 'test.jpg')
-      group = create :group, default_group_cover: create(:default_group_cover)
+      group = create :formal_group, default_group_cover: create(:default_group_cover)
       group.stub(:cover_photo).and_return(cover_photo_stub)
       expect(cover_photo_stub.url).to match group.cover_photo.url
     end
 
     it 'returns the default cover photo for the group if it is a parent group' do
-      group = create :group, default_group_cover: create(:default_group_cover)
+      group = create :formal_group, default_group_cover: create(:default_group_cover)
       expect(group.default_group_cover.cover_photo.url).to match group.cover_photo.url
     end
 
     it 'returns the parents default cover photo if it is a subgroup' do
-      parent = create :group, default_group_cover: create(:default_group_cover)
-      group = create :group, parent: parent
+      parent = create :formal_group, default_group_cover: create(:default_group_cover)
+      group = create :formal_group, parent: parent
       expect(parent.default_group_cover.cover_photo.url).to match group.cover_photo.url
     end
   end
 
   context 'logo_or_parent_logo' do
     it 'returns the group logo if it is a parent' do
-      group = create :group
+      group = create :formal_group
       expect(group.logo_or_parent_logo).to eq group.logo
     end
 
     it 'returns the parents logo if one does not exist' do
-      parent = create :group, logo: fixture_for('images', 'strongbad.png')
-      group = create :group, parent: parent
+      parent = create :formal_group, logo: fixture_for('images', 'strongbad.png')
+      group = create :formal_group, parent: parent
       expect(group.logo_or_parent_logo).to eq parent.logo
     end
 
     it 'returns the group logo if one exists' do
-      parent = create :group
-      group = create :group, parent: parent, logo: fixture_for('images', 'strongbad.png')
+      parent = create :formal_group
+      group = create :formal_group, parent: parent, logo: fixture_for('images', 'strongbad.png')
       expect(group.logo_or_parent_logo).to eq group.logo
     end
   end
@@ -49,7 +49,7 @@ describe Group do
   context "counter caches" do
     describe 'invitations_count' do
       before do
-        @group = create(:group, creator: create(:user))
+        @group = create(:formal_group, creator: create(:user))
         @user  = create(:user)
       end
 
@@ -63,7 +63,7 @@ describe Group do
 
     describe "#motions_count" do
       before do
-        @group = create(:group)
+        @group = create(:formal_group)
         @user = create(:user)
         @discussion = create(:discussion, group: @group)
         @motion = create(:motion, discussion: @discussion)
@@ -120,7 +120,7 @@ describe Group do
 
     describe "#discussions_count" do
       before do
-        @group = create(:group)
+        @group = create(:formal_group)
         @user = create(:user)
       end
 
@@ -142,8 +142,8 @@ describe Group do
 
   context "subgroup" do
     before :each do
-      @group = create(:group)
-      @subgroup = create(:group, :parent => @group)
+      @group = create(:formal_group)
+      @subgroup = create(:formal_group, :parent => @group)
       @group.reload
     end
 
@@ -163,7 +163,7 @@ describe Group do
 
   context "an existing hidden group" do
     before :each do
-      @group = create(:group, is_visible_to_public: false)
+      @group = create(:formal_group, is_visible_to_public: false)
       @user = create(:user)
     end
 
@@ -189,18 +189,18 @@ describe Group do
     context "parent_members_can_see_discussions = true" do
 
       it "errors for a hidden_from_everyone subgroup" do
-        expect { create(:group,
+        expect { create(:formal_group,
                         is_visible_to_public: false,
                         is_visible_to_parent_members: false,
-                        parent: create(:group),
+                        parent: create(:formal_group),
                         parent_members_can_see_discussions: true) }.to raise_error
       end
 
       it "does not error for a visible to parent subgroup" do
-        expect { create(:group,
+        expect { create(:formal_group,
                         is_visible_to_public: false,
                         is_visible_to_parent_members: true,
-                        parent: create(:group),
+                        parent: create(:formal_group),
                         parent_members_can_see_discussions: true) }.to_not raise_error
       end
     end
@@ -209,21 +209,21 @@ describe Group do
   describe "parent_members_can_see_group_is_valid?" do
     context "parent_members_can_see_group = true" do
       it "for a parent group" do
-        expect { create(:group,
+        expect { create(:formal_group,
                         parent_members_can_see_group: true) }.to raise_error
       end
 
       it "for a hidden subgroup" do
-        expect { create(:group,
+        expect { create(:formal_group,
                         is_visible_to_public: false,
                         is_visible_to_parent_members: true,
-                        parent: create(:group)) }.to_not raise_error
+                        parent: create(:formal_group)) }.to_not raise_error
       end
 
       it "for a visible subgroup" do
-        expect { create(:group,
+        expect { create(:formal_group,
                         is_visible_to_public: true,
-                        parent: create(:group,
+                        parent: create(:formal_group,
                                        is_visible_to_public: true),
                         parent_members_can_see_group: true) }.to raise_error
       end
@@ -263,8 +263,8 @@ describe Group do
   end
 
   describe 'id_and_subgroup_ids' do
-    let(:group) { create(:group) }
-    let(:subgroup) { create(:group, parent: group) }
+    let(:group) { create(:formal_group) }
+    let(:subgroup) { create(:formal_group, parent: group) }
 
     it 'returns empty for new group' do
       expect(build(:group).id_and_subgroup_ids).to be_empty

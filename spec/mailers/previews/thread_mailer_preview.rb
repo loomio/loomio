@@ -1,6 +1,6 @@
 class ThreadMailerPreview < ActionMailer::Preview
   def new_discussion
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     event = Events::NewDiscussion.create(kind: 'new_discussion', eventable: discussion, discussion_id: discussion.id)
@@ -9,7 +9,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def new_comment_followed
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
@@ -21,7 +21,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def new_comment_with_attachments_followed
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
@@ -37,7 +37,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def user_mentioned_follows_by_loud
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
@@ -49,7 +49,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def user_mentioned_does_not_follow_by_loud
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     group.add_member! user
@@ -60,7 +60,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def comment_replied_to
-  	group = FactoryGirl.create :group
+  	group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     group.add_member! user
@@ -71,7 +71,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def new_vote_followed
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
@@ -83,7 +83,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def new_motion_not_followed
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
     group.add_member! user
@@ -93,7 +93,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def new_motion_followed
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
@@ -104,7 +104,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def motion_closing_soon_followed
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
@@ -119,7 +119,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def motion_closing_soon_not_followed
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
     group.add_member! user
@@ -131,7 +131,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def motion_closed_following
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
@@ -145,7 +145,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   end
 
   def specify_motion_outcome
-    group = FactoryGirl.create :group
+    group = FactoryGirl.create :formal_group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud

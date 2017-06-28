@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Queries::GroupAnalytics do
-  let(:group) { create(:group) }
+  let(:group) { create(:formal_group) }
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:discussion) { create(:discussion, group: group) }

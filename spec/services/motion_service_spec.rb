@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'MotionService' do
-  let(:group) { create(:group) }
+  let(:group) { create(:formal_group) }
   let(:discussion) { create :discussion, group: group }
   let(:motion) { build(:motion, discussion: discussion, author: user)}
   let(:user) { create(:user, email_on_participation: true) }

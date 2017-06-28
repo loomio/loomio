@@ -2,7 +2,7 @@ Given /^I have a user account but not I'm logged in$/ do
   @user = FactoryGirl.create :user, name: 'User Guy',
                                     email: "user@example.org",
                                     password: 'complex_password'
-  @group = FactoryGirl.create :group
+  @group = FactoryGirl.create :formal_group
   @group.add_member!(@user)
 
 end

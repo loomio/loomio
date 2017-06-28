@@ -1,11 +1,11 @@
 Given /^a group "(.*?)" with "(.*?)" as admin$/ do |arg1, arg2|
   user = FactoryGirl.create(:user, :email => arg2)
-  group = FactoryGirl.create(:group, :name => arg1)
+  group = FactoryGirl.create(:formal_group, :name => arg1)
   group.add_admin!(user)
 end
 
 Given /^a group(?: named)? "(.*?)"(?: exists)?$/ do |group_name|
-  FactoryGirl.create(:group, :name => group_name)
+  FactoryGirl.create(:formal_group, :name => group_name)
 end
 
 Given /^I visit create subgroup page$/ do
@@ -20,7 +20,7 @@ Given /^"(.*?)" is a(?: non-admin)?(?: member)? of(?: group)? "(.*?)"$/ do |emai
     @user = FactoryGirl.create(:user, :name => email.split("@").first, :email => email)
   end
   group = Group.find_by_name(group_name)
-  group ||= FactoryGirl.create(:group, :name => group_name)
+  group ||= FactoryGirl.create(:formal_group, :name => group_name)
   group.add_member!(@user)
 end
 
@@ -30,22 +30,22 @@ Given /^"(.*?)" is an admin of(?: group)? "(.*?)"$/ do |email, group_name|
     user = FactoryGirl.create(:user, :email => email)
   end
   group = Group.find_by_name(group_name)
-  group ||= FactoryGirl.create(:group, :name => group_name)
+  group ||= FactoryGirl.create(:formal_group, :name => group_name)
   group.add_admin!(user)
 end
 
 Given /^I am an admin of a group$/ do
-  @group = FactoryGirl.create :group
+  @group = FactoryGirl.create :formal_group
   @group.add_admin! @user
 end
 
 Given /^I am a member of a group$/ do
-  @group = FactoryGirl.create :group
+  @group = FactoryGirl.create :formal_group
   @group.add_member! @user
 end
 
 Given /^I am an admin of the subgroup$/ do
-  @subgroup = FactoryGirl.create :group, parent: @group
+  @subgroup = FactoryGirl.create :formal_group, parent: @group
   @subgroup.add_admin! @user
 end
 
@@ -91,18 +91,18 @@ Given /^there is a discussion in the group$/ do
 end
 
 Given /^there is a discussion in a public group$/ do
-  @group = FactoryGirl.create :group, :is_visible_to_public => true
+  @group = FactoryGirl.create :formal_group, :is_visible_to_public => true
   @discussion = create_discussion :group => @group
 end
 
 Given /^there is a public discussion in a public group$/ do
-  @group = FactoryGirl.create :group, visible_to: 'public'
+  @group = FactoryGirl.create :formal_group, visible_to: 'public'
   @discussion = create_discussion :group => @group, private: false
 end
 
 Given /^there is a public group with a discussion with a comment$/ do
   @user ||= FactoryGirl.create :user
-  @group ||= FactoryGirl.create :group, :is_visible_to_public => true
+  @group ||= FactoryGirl.create :formal_group, :is_visible_to_public => true
   @discussion ||= FactoryGirl.create :discussion, group: @group, private: false
   @group.add_member! @user
   @comment = FactoryGirl.create :comment, author: @user, discussion: @discussion
@@ -110,12 +110,12 @@ Given /^there is a public group with a discussion with a comment$/ do
 end
 
 Given /^there is a discussion in a private group$/ do
-  @group = FactoryGirl.create :group, :is_visible_to_public => false
+  @group = FactoryGirl.create :formal_group, :is_visible_to_public => false
   @discussion = create_discussion :group => @group, :private => true
 end
 
 Given /^there is a discussion in a group I belong to$/ do
-  @group = FactoryGirl.create :group
+  @group = FactoryGirl.create :formal_group
   @discussion = create_discussion group: @group, author: @user
   @group.add_member! @user
 end
@@ -201,20 +201,20 @@ Then /^memberships should get an email with subject "(.*?)"$/ do |subject|
 end
 
 Given /^the group has a subgroup$/ do
-  @subgroup = FactoryGirl.create(:group, parent: @group)
+  @subgroup = FactoryGirl.create(:formal_group, parent: @group)
 end
 
 Given /^the group has a hidden subgroup$/ do
-  @subgroup = FactoryGirl.create(:group, parent: @group, visible_to: :members,  discussion_privacy_options: 'private_only')
+  @subgroup = FactoryGirl.create(:formal_group, parent: @group, visible_to: :members,  discussion_privacy_options: 'private_only')
 end
 
 Given /^the group has a subgroup I am an admin of$/ do
-  @subgroup = FactoryGirl.create(:group, parent: @group)
+  @subgroup = FactoryGirl.create(:formal_group, parent: @group)
   @subgroup.add_admin!(@user)
 end
 
 Then /^the group has another subgroup with a discussion I am an admin of$/ do
-  @subgroup1 = FactoryGirl.create(:group, parent: @group)
+  @subgroup1 = FactoryGirl.create(:formal_group, parent: @group)
   @subgroup1.add_admin!(@user)
   @discussion = create_discussion :group => @subgroup1
 end

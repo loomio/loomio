@@ -2,8 +2,8 @@ require 'rails_helper'
 
  describe Communities::LoomioGroup do
 
-   let(:group) { create :group }
-   let(:another_group) { create :group }
+   let(:group) { create :formal_group }
+   let(:another_group) { create :formal_group }
    let(:community) { create :loomio_group_community, group: group }
    let(:user) { create :user }
    let(:non_member) { create :user }

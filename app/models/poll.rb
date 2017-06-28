@@ -29,7 +29,7 @@ class Poll < ActiveRecord::Base
   belongs_to :motion
   belongs_to :discussion
   belongs_to :group
-  belongs_to :guest_group, class_name: "Group"
+  belongs_to :guest_group, class_name: "GuestGroup"
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count

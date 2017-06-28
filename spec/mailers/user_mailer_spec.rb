@@ -14,7 +14,7 @@ describe UserMailer do
   context 'sending email on membership approval' do
     before :each do
       @user = create(:user)
-      @group = create(:group)
+      @group = create(:formal_group)
       @membership = create(:membership, user: @user, group: @group)
       @event = Events::MembershipRequestApproved.create(kind: 'membership_request_approved', user: @user, eventable: @membership)
       @mail = UserMailer.membership_request_approved(@user, @event)
@@ -40,7 +40,7 @@ describe UserMailer do
     before :each do
       @user = create(:user)
       @inviter = create(:user)
-      @group = create(:group, full_name: "Group full name")
+      @group = create(:formal_group, full_name: "Group full name")
       @membership = create(:membership, user: @user, group: @group, inviter: @inviter)
       @event = Events::UserAddedToGroup.create(kind: 'user_added_to_group', user: @inviter, eventable: @membership)
       @mail = UserMailer.user_added_to_group(@user, @event)

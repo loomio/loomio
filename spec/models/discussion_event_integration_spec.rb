@@ -16,7 +16,7 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
       let(:user) { FactoryGirl.create(:user) }
       let(:commentor){ FactoryGirl.create(:user) }
       let(:discussion) { FactoryGirl.build(:discussion) }
-      let(:group) { FactoryGirl.create(:group) }
+      let(:group) { FactoryGirl.create(:formal_group) }
       let(:first_comment) { FactoryGirl.build(:comment, discussion: discussion) }
       let(:second_comment) { FactoryGirl.build(:comment, discussion: discussion) }
 

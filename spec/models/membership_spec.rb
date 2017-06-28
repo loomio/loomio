@@ -4,7 +4,7 @@ describe Membership do
   let(:membership) { Membership.new }
   let(:user) { create(:user) }
   let(:user2) { create(:user) }
-  let(:group) { create(:group, is_visible_to_public: true) }
+  let(:group) { create(:formal_group, is_visible_to_public: true) }
 
   it { should have_many(:events).dependent(:destroy) }
 
@@ -33,7 +33,7 @@ describe Membership do
     it "removes subgroup memberships if parent is hidden" do
       group.is_visible_to_public = false
       group.save
-      subgroup = create(:group, parent: group, is_visible_to_public: false)
+      subgroup = create(:formal_group, parent: group, is_visible_to_public: false)
       subgroup.add_member! user
       group.reload
       @membership.reload
@@ -42,7 +42,7 @@ describe Membership do
     end
 
     it "doesn't remove subgroup memberships if parent is not hidden" do
-      subgroup = create(:group, parent: group)
+      subgroup = create(:formal_group, parent: group)
       subgroup.add_member! user
       group.reload
       @membership.reload
@@ -67,7 +67,7 @@ describe Membership do
       end
 
       it "does not remove user's open votes for other groups" do
-        group2 = create(:group)
+        group2 = create(:formal_group)
         discussion2 = create :discussion, group: group2
         motion2 = create(:motion, author: user, discussion: discussion2 )
         vote = Vote.new

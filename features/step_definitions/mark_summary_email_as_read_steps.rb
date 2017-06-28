@@ -1,7 +1,7 @@
 Given(/^I am a logged out user with an unread discussion$/) do
   @user = FactoryGirl.create(:user)
   @voter = FactoryGirl.create(:user)
-  @group = FactoryGirl.create(:group)
+  @group = FactoryGirl.create(:formal_group)
   @group.add_member!(@user)
   @group.add_member!(@voter)
   @time_start = 1.hour.ago

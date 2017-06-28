@@ -2,7 +2,7 @@ require 'rails_helper'
 describe API::ProfileController do
 
   let(:user) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :formal_group }
   let(:another_user) { create :user }
   let(:user_params) { { name: "new name", email: "new@email.com" } }
 

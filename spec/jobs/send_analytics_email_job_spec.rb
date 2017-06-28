@@ -5,12 +5,12 @@ describe SendAnalyticsEmailJob do
   let(:subject) { SendAnalyticsEmailJob.new.perform }
 
   let(:engaged_group) do
-    create(:group, analytics_enabled: true).tap do |g|
+    create(:formal_group, analytics_enabled: true).tap do |g|
       3.times { create(:discussion, group: g) }
     end
   end
   let(:engaged_subgroup) do
-    create(:group, analytics_enabled: true, parent: engaged_group).tap do |g|
+    create(:formal_group, analytics_enabled: true, parent: engaged_group).tap do |g|
       3.times { create(:discussion, group: g) }
     end
   end
@@ -18,7 +18,7 @@ describe SendAnalyticsEmailJob do
   let(:engaged_admin) { engaged_group.add_admin!(create(:user)).user }
   let(:another_engaged_admin) { engaged_group.add_admin!(create(:user)).user }
 
-  let(:disengaged_group) { create(:group, analytics_enabled: true) }
+  let(:disengaged_group) { create(:formal_group, analytics_enabled: true) }
   let(:disengaged_admin) { disengaged_group.add_admin!(create(:user)).user }
 
   describe 'perform' do

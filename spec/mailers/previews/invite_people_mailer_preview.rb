@@ -1,6 +1,6 @@
 class InvitePeopleMailerPreview < ActionMailer::Preview
   def to_start_group
-    group = FactoryGirl.create(:group)
+    group = FactoryGirl.create(:formal_group)
     inviter = FactoryGirl.create(:user)
     sender = FactoryGirl.create(:user)
 
@@ -16,7 +16,7 @@ class InvitePeopleMailerPreview < ActionMailer::Preview
   def to_join_group
     recipient_email = "heythere@comejoinus.com"
     responder = FactoryGirl.create(:user)
-    group = FactoryGirl.create(:group)
+    group = FactoryGirl.create(:formal_group)
 
     invitation = InvitationService.create_invite_to_join_group(
                     recipient_email: recipient_email,

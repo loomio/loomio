@@ -1,6 +1,6 @@
 require 'rails_helper'
 describe InvitationService do
-  let(:group) { FactoryGirl.create(:group) }
+  let(:group) { FactoryGirl.create(:formal_group) }
   let(:invitation) { FactoryGirl.create(:invitation, invitable: group) }
   let(:user) { FactoryGirl.create(:user) }
 

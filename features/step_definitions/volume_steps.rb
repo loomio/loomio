@@ -347,7 +347,7 @@ When(/^my proposal closes$/) do
 end
 
 Given(/^a group with an existing thread$/) do
-  @group = FactoryGirl.create :group
+  @group = FactoryGirl.create :formal_group
   @discussion = FactoryGirl.create :discussion, group: @group
 end
 

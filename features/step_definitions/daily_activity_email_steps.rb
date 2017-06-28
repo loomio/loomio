@@ -10,7 +10,7 @@ Given /^"(.*?)" is subscribed to daily activity emails$/ do |arg1|
 end
 
 Given /^there is a group "(.*?)"$/ do |arg1|
-  FactoryGirl.create :group, name: arg1
+  FactoryGirl.create :formal_group, name: arg1
 end
 
 Given /^"(.*?)" belongs to "(.*?)"$/ do |arg1, arg2|

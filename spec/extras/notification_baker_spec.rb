@@ -3,7 +3,7 @@ require 'rails_helper'
 describe NotificationBaker do
   let(:user) { create :user }
   let(:admin) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :formal_group }
   let(:discussion) { create :discussion, group: group }
   let(:motion) { create :motion, discussion: discussion }
   let(:event) { Events::MotionClosingSoon.publish!(motion) }

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Invitation do
   let(:admin_user){FactoryGirl.create(:admin_user)}
-  let(:group){FactoryGirl.create(:group)}
+  let(:group){FactoryGirl.create(:formal_group)}
 
   before do
     @invitation = Invitation.create(recipient_email: 'test@example.org',

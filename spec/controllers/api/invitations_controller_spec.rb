@@ -7,9 +7,9 @@ describe API::InvitationsController do
   let(:another_user) { create :user }
   let(:deactivated) { create :user, deactivated_at: 2.days.ago }
   let(:contact) { create :contact, user: user }
-  let(:another_group) { create :group }
+  let(:another_group) { create :formal_group }
   let(:another_group_member) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :formal_group }
   let(:user_invitable)    { { id: another_user.id, type: :user } }
   let(:deactivated_invitable) { { id: deactivated.id, type: :user } }
   let(:group_invitable)   { { id: another_group.id, type: :group } }

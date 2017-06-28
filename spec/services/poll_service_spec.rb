@@ -11,8 +11,8 @@ describe PollService do
   let(:closed_motion) { create(:motion, discussion: discussion, closed_at: 1.day.ago, outcome: "an outcome", outcome_author: user) }
   let(:vote) { create :vote, motion: motion, statement: "I am a statement" }
   let(:logged_out_user) { LoggedOutUser.new }
-  let(:group) { create :group }
-  let(:another_group) { create :group }
+  let(:group) { create :formal_group }
+  let(:another_group) { create :formal_group }
   let(:discussion) { create :discussion, group: group }
   let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name }
   let(:identity) { create :slack_identity }
@@ -26,7 +26,7 @@ describe PollService do
       community = poll.community_of_type(:email, build: true)
       community.visitors << visitor
       PollService.convert_visitors(poll: poll)
-      expect(poll.guest_group.members).to include user
+      expect(poll.guest_group.reload.members).to include user
     end
 
     it 'converts unrecognised visitors to invitations' do

@@ -3,8 +3,8 @@ describe API::MotionsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create :group, is_visible_to_public: true  }
-  let(:another_group) { create :group }
+  let(:group) { create :formal_group, is_visible_to_public: true  }
+  let(:another_group) { create :formal_group }
   let(:discussion) { create :discussion, group: group, private: false }
   let(:private_discussion) { create :discussion, group: group, private: true }
   let(:private_motion) { create :motion, discussion: private_discussion }
@@ -93,7 +93,7 @@ describe API::MotionsController do
 
   describe 'closed' do
 
-    let(:public_group)       { create :group, is_visible_to_public: true }
+    let(:public_group)       { create :formal_group, is_visible_to_public: true }
     let(:public_discussion)  { create :discussion, group: public_group, private: false }
     let(:public_motion)      { create :motion, discussion: public_discussion }
 

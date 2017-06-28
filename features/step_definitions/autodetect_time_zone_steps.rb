@@ -1,6 +1,6 @@
 Given(/^I have a user account with no time_zone$/) do
   @user = FactoryGirl.create(:user, time_zone: nil)
-  @group = FactoryGirl.create(:group)
+  @group = FactoryGirl.create(:formal_group)
   @group.add_admin!(@user)
 end
 
@@ -21,7 +21,7 @@ end
 
 Given(/^I am invited to join a Loomio Group$/) do
   @user = FactoryGirl.create(:user)
-  @group = FactoryGirl.create(:group)
+  @group = FactoryGirl.create(:formal_group)
   @group.add_admin!(@user)
   @invitation = InvitationService.create_invite_to_join_group(group: @group,
                                                               inviter: @user,

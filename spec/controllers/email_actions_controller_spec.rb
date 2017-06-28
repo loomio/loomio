@@ -4,7 +4,7 @@ describe EmailActionsController do
   describe "unfollow_discussion" do
     before do
       @user = FactoryGirl.create(:user)
-      @group = FactoryGirl.create(:group)
+      @group = FactoryGirl.create(:formal_group)
       @group.add_member!(@user)
 
       @discussion = FactoryGirl.build(:discussion, group: @group)
@@ -22,7 +22,7 @@ describe EmailActionsController do
   describe "follow_discussion" do
     before do
       @user = FactoryGirl.create(:user)
-      @group = FactoryGirl.create(:group)
+      @group = FactoryGirl.create(:formal_group)
       @group.add_member!(@user)
 
       @discussion = FactoryGirl.build(:discussion, group: @group)
@@ -39,7 +39,7 @@ describe EmailActionsController do
   describe "mark_discussion_as_read" do
     before do
       @user = FactoryGirl.create(:user)
-      @group = FactoryGirl.create(:group)
+      @group = FactoryGirl.create(:formal_group)
       @group.add_member!(@user)
 
       @discussion = FactoryGirl.build(:discussion, group: @group)

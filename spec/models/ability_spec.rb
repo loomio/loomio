@@ -5,7 +5,7 @@ describe "User abilities" do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
   let(:non_member) { create(:user) }
-  let(:group) { create(:group) }
+  let(:group) { create(:formal_group) }
 
   let(:ability) { Ability.new(user) }
   subject { ability }
@@ -76,7 +76,7 @@ describe "User abilities" do
 
       describe "not a parent group" do
         let(:network) { Network.create(name: "Podemos", coordinators: [user]) }
-        let(:subgroup) { create :group, parent: group }
+        let(:subgroup) { create :formal_group, parent: group }
         let(:request) { NetworkMembershipRequest.new(requestor: user, group: subgroup, network: network) }
 
         before do
@@ -129,7 +129,7 @@ describe "User abilities" do
     end
 
     describe "is_visible_to_parent_members?" do
-      let(:subgroup) { create(:group, parent: group, is_visible_to_public: false) }
+      let(:subgroup) { create(:formal_group, parent: group, is_visible_to_public: false) }
 
       context "true" do
         before { subgroup.update_attribute(:is_visible_to_parent_members, true) }
@@ -295,14 +295,14 @@ describe "User abilities" do
   end
 
   context "suspended member" do
-    let(:group) { create(:group) }
-    let(:admin_group) { create(:group) }
-    let(:subgroup) { create(:group, parent: group) }
+    let(:group) { create(:formal_group) }
+    let(:admin_group) { create(:formal_group) }
+    let(:subgroup) { create(:formal_group, parent: group) }
     let(:private_discussion) { create :discussion, group: group, private: true }
 
 
     context "group is visible to public" do
-      let(:group) { create(:group, is_visible_to_public: true) }
+      let(:group) { create(:formal_group, is_visible_to_public: true) }
 
       before do
         membership = group.add_member!(user)
@@ -318,7 +318,7 @@ describe "User abilities" do
     end
 
     context "group is hidden from public" do
-      let(:group) { create(:group, is_visible_to_public: false) }
+      let(:group) { create(:formal_group, is_visible_to_public: false) }
 
       before do
         membership = group.add_member!(user)
@@ -330,9 +330,9 @@ describe "User abilities" do
   end
 
   context "member of a group" do
-    let(:group) { create(:group) }
+    let(:group) { create(:formal_group) }
     let(:subgroup) { build(:group, parent: group) }
-    let(:subgroup_for_another_group) { build(:group, parent: create(:group)) }
+    let(:subgroup_for_another_group) { build(:group, parent: create(:formal_group)) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
     let(:discussion) { create :discussion, group: group }
     let(:comment) { build :comment, discussion: discussion, author: user }
@@ -508,7 +508,7 @@ describe "User abilities" do
   end
 
   context "admin of a group" do
-    let(:group) { create(:group) }
+    let(:group) { create(:formal_group) }
     let(:discussion) { create :discussion, group: group }
     let(:another_user_comment) { create :comment, discussion: discussion, user: other_user }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
@@ -552,7 +552,7 @@ describe "User abilities" do
   end
 
   context 'non member of hidden group' do
-    let(:group) { create(:group, is_visible_to_public: false) }
+    let(:group) { create(:formal_group, is_visible_to_public: false) }
     let(:discussion) { create :discussion, group: group, private: true }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
     let(:motion) { create(:motion, discussion: discussion) }
@@ -591,7 +591,7 @@ describe "User abilities" do
   end
 
   context "non member of public group" do
-    let(:group) { create(:group, is_visible_to_public: true, discussion_privacy_options: 'public_or_private') }
+    let(:group) { create(:formal_group, is_visible_to_public: true, discussion_privacy_options: 'public_or_private') }
     let(:private_discussion) { create :discussion, group: group, private: true }
     let(:comment_in_private_discussion) { Comment.new discussion: private_discussion, author: user, body: 'hi' }
     let(:public_discussion) { create :discussion, group: group, private: false }
@@ -648,7 +648,7 @@ describe "User abilities" do
     before do
       user.is_admin = true
     end
-    let(:group) { create(:group) }
+    let(:group) { create(:formal_group) }
 
     context "other_user is a member of a group with many members" do
       before do

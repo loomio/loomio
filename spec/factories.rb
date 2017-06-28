@@ -72,7 +72,7 @@ FactoryGirl.define do
     source 'gmail'
   end
 
-  factory :group do
+  factory :formal_group do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'
     group_privacy 'open'
@@ -80,13 +80,16 @@ FactoryGirl.define do
     members_can_add_members true
     after(:create) do |group, evaluator|
       user = FactoryGirl.create(:user)
-      #group.pending_invitations << FactoryGirl.create(:invitation, invitable: group)
       if group.parent.present?
         group.parent.admins << user
       end
       group.admins << user
       group.save!
     end
+  end
+
+  factory :group do
+    group_privacy 'open'
   end
 
   factory :discussion do
