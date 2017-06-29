@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628042758) do
+ActiveRecord::Schema.define(version: 20170629024101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -362,20 +362,6 @@ ActiveRecord::Schema.define(version: 20170628042758) do
 
   add_index "group_requests", ["group_id"], name: "index_group_requests_on_group_id", using: :btree
 
-  create_table "group_visits", force: :cascade do |t|
-    t.uuid     "visit_id"
-    t.integer  "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.boolean  "member",     default: false, null: false
-  end
-
-  add_index "group_visits", ["created_at"], name: "index_group_visits_on_created_at", using: :btree
-  add_index "group_visits", ["group_id"], name: "index_group_visits_on_group_id", using: :btree
-  add_index "group_visits", ["member"], name: "index_group_visits_on_member", using: :btree
-  add_index "group_visits", ["visit_id", "group_id"], name: "index_group_visits_on_visit_id_and_group_id", unique: true, using: :btree
-
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -461,8 +447,7 @@ ActiveRecord::Schema.define(version: 20170628042758) do
     t.integer  "canceller_id"
     t.datetime "cancelled_at"
     t.string   "recipient_name"
-    t.integer  "invitable_id"
-    t.string   "invitable_type"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "single_use",      default: true,  null: false
@@ -472,7 +457,6 @@ ActiveRecord::Schema.define(version: 20170628042758) do
 
   add_index "invitations", ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)", using: :btree
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
-  add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
 
   create_table "login_tokens", force: :cascade do |t|
@@ -694,20 +678,6 @@ ActiveRecord::Schema.define(version: 20170628042758) do
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree
   add_index "omniauth_identities", ["identity_type", "uid"], name: "index_omniauth_identities_on_identity_type_and_uid", using: :btree
   add_index "omniauth_identities", ["user_id"], name: "index_omniauth_identities_on_user_id", using: :btree
-
-  create_table "organisation_visits", force: :cascade do |t|
-    t.uuid     "visit_id"
-    t.integer  "organisation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.boolean  "member",          default: false, null: false
-  end
-
-  add_index "organisation_visits", ["created_at"], name: "index_organisation_visits_on_created_at", using: :btree
-  add_index "organisation_visits", ["member"], name: "index_organisation_visits_on_member", using: :btree
-  add_index "organisation_visits", ["organisation_id"], name: "index_organisation_visits_on_organisation_id", using: :btree
-  add_index "organisation_visits", ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true, using: :btree
 
   create_table "outcomes", force: :cascade do |t|
     t.integer  "poll_id"

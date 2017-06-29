@@ -4,25 +4,25 @@ angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ($translate,
   templateUrl: 'generated/components/poll/common/share/visitor_form/poll_common_share_visitor_form.html'
   controller: ($scope) ->
 
-    $scope.visitors = ->
-      Records.visitors.find(pollId: $scope.poll.id)
+    $scope.invitations = ->
+      Records.invitations.find(groupId: $scope.poll.guestGroupId)
 
     $scope.init = ->
-      Records.visitors.fetch(params: {poll_id: $scope.poll.id})
-      $scope.newVisitor = Records.visitors.build(email: '', pollId: $scope.poll.id)
+      Records.invitations.fetch(params: {group_id: $scope.poll.guestGroupId})
+      $scope.newInvitation = Records.invitations.build(recipientEmail: '', groupId: $scope.poll.guestGroupId, intent: 'join_poll')
     $scope.init()
 
-    $scope.invite = ->
-      if $scope.newVisitor.email.length <= 0
+    $scope.submit = ->
+      if $scope.newInvitation.recipientEmail.length <= 0
         $scope.emailValidationError = $translate.instant('poll_common_share_form.email_empty')
-      else if _.contains(_.pluck($scope.visitors(), 'email'), $scope.newVisitor.email)
-        $scope.emailValidationError = $translate.instant('poll_common_share_form.email_exists', email: $scope.newVisitor.email)
-      else if !$scope.newVisitor.email.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)
+      else if _.contains(_.pluck($scope.invitations(), 'recipientEmail'), $scope.newInvitation.recipientEmail)
+        $scope.emailValidationError = $translate.instant('poll_common_share_form.email_exists', email: $scope.newInvitation.recipientEmail)
+      else if !$scope.newInvitation.recipientEmail.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)
         $scope.emailValidationError = $translate.instant('poll_common_share_form.email_invalid')
       else
         $scope.emailValidationError = null
-        $scope.newVisitor.invite($scope.poll).then ->
-          FlashService.success 'poll_common_share_form.email_invited', email: $scope.newVisitor.email
+        $scope.newInvitation.save().then ->
+          FlashService.success 'poll_common_share_form.email_invited', email: $scope.newInvitation.recipientEmail
           $scope.init()
           document.querySelector('.poll-common-share-form__add-option-input').focus()
 
@@ -37,5 +37,5 @@ angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ($translate,
         visitor.reminded = true
         FlashService.success 'poll_common_share_form.email_invited', email: visitor.email
 
-    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.invite, (active) ->
+    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.submit, (active) ->
       active.classList.contains('poll-common-share-form__add-option-input')

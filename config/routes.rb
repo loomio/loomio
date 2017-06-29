@@ -88,7 +88,8 @@ Loomio::Application.routes.draw do
       post :ignore, on: :member
     end
 
-    resources :invitations, only: [:create, :destroy] do
+    resources :invitations, only: [:index, :create, :destroy] do
+      post :bulk_create, on: :collection
       get :pending, on: :collection
       get :shareable, on: :collection
     end

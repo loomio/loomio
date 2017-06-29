@@ -16,8 +16,9 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
+  # todo fake_formal_group ?
   def fake_group(args = {})
-    Group.new({name: Faker::Company.name,
+    FormalGroup.new({name: Faker::Company.name,
       features: {use_polls: true, enable_communities: true}}.merge(args))
   end
 

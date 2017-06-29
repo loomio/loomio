@@ -1,4 +1,5 @@
 class Invitation < ActiveRecord::Base
+  include NullUser
 
   class InvitationCancelled < StandardError; end
   class InvitationAlreadyUsed < StandardError; end
@@ -8,15 +9,14 @@ class Invitation < ActiveRecord::Base
   extend FriendlyId
   friendly_id :token
   belongs_to :inviter, class_name: User
-  belongs_to :invitable, polymorphic: true
+  belongs_to :group
   belongs_to :canceller, class_name: User
 
-  update_counter_cache :invitable, :invitations_count
-  update_counter_cache :invitable, :pending_invitations_count
+  update_counter_cache :group, :invitations_count
+  update_counter_cache :group, :pending_invitations_count
 
-  validates_presence_of :invitable, :intent
-  validates_inclusion_of :invitable_type, :in => ['Group', 'Discussion']
-  validates_inclusion_of :intent, :in => ['start_group', 'join_group', 'join_discussion']
+  validates_presence_of :group, :intent
+  validates_inclusion_of :intent, :in => ['start_group', 'join_group', 'join_poll']
   scope :chronologically, -> { order('id asc') }
   before_save :ensure_token_is_present
 
@@ -30,10 +30,24 @@ class Invitation < ActiveRecord::Base
   scope :single_use, -> { not_cancelled.where(single_use: true) }
   scope :ignored, -> (send_count, since) { pending.where(send_count: send_count).where('created_at < ?', since) }
 
-  alias :group :invitable
+  def locale
+    inviter.locale
+  end
 
-  def invitable_name
-    invitable&.full_name
+  def unsubscribe_token
+    nil
+  end
+
+  def time_zone
+    inviter.time_zone
+  end
+
+  def email
+    recipient_email
+  end
+
+  def name
+    recipient_name
   end
 
   def user_from_recipient!
@@ -48,7 +62,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def cancelled?
-    invitable.blank? || cancelled_at
+    cancelled_at
   end
 
   def accepted?

@@ -30,7 +30,7 @@ class Dev::MainController < Dev::BaseController
     invitation = Invitation.create!(
       intent: :join_group,
       inviter: patrick,
-      invitable: create_group,
+      group: create_group,
       recipient_email: "max@example.com",
       recipient_name: "Max Von Sydow"
     )
@@ -41,7 +41,7 @@ class Dev::MainController < Dev::BaseController
     invitation = Invitation.create!(
       intent: :join_group,
       inviter: patrick,
-      invitable: create_group,
+      group: create_group,
       recipient_email: jennifer.email,
       recipient_name: jennifer.name
     )

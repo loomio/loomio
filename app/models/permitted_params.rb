@@ -93,7 +93,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def invitation_attributes
-    [:recipient_email, :recipient_name, :intent]
+    [:recipient_email, :recipient_name, :intent, :group_id]
   end
 
   def group_request_attributes

@@ -29,7 +29,7 @@ BootData = Struct.new(:user, :visitor) do
   end
 
   def memberships
-    @memberships ||= user.memberships.includes(:user, :inviter, group: [{parent: :default_group_cover}, :default_group_cover]).order(created_at: :desc)
+    @memberships ||= user.memberships.includes(:user, :inviter, group: [:parent]).order(created_at: :desc)
   end
 
   def notifications

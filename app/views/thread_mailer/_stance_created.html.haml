@@ -5,7 +5,7 @@
     %td.icon
       = link_to user_url(stance.participant) do
         %div{class: "medium-user-avatar #{stance.participant.avatar_kind}-user-avatar avatar-canvas"}
-          = render "poll_mailer/common/avatar", participant: stance.participant
+          = render "avatar", participant: stance.participant
     %td= raw t(:"poll_mailer.#{stance.poll.poll_type}.body.voted", participant: stance.participant.name)
     %td
       %table

@@ -28,12 +28,6 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # TODO: find the common thread between these poll_published / poll_created logics
-  # publish to designated community after creation
-  config.listen('poll_create') do |poll, actor|
-    poll.create_guest_group.add_admin!(actor)
-  end
-
   # publish to new group if group has changed
   config.listen('poll_update') do |poll, actor|
     if poll.versions.last.object_changes.dig('group_id', 1).present? # if we've moved the poll to a new group

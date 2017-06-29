@@ -4,7 +4,7 @@ class API::InvitationsController < API::RestfulController
     respond_with_errors('invitation_form.error.too_many_pending', count: ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i)
   end
 
-  def create
+  def bulk_create
     self.resource = service.invite_to_group(recipient_emails: email_addresses,
                                             group: load_and_authorize(:group, :invite_people),
                                             inviter: current_user)
@@ -27,6 +27,10 @@ class API::InvitationsController < API::RestfulController
   end
 
   private
+
+  def accessible_records
+    resource_class.where(group: load_and_authorize(:group, :invite_people))
+  end
 
   def email_addresses
     params.require(:invitation_form)[:emails].scan(ReceivedEmail::EMAIL_REGEX)

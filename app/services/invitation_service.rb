@@ -1,18 +1,26 @@
 class InvitationService
 
+  def self.create(invitation: , actor: )
+    actor.ability.authorize!(:create, invitation)
+    invitation.inviter = actor
+
+    return false unless invitation.valid?
+
+    invitation.save!
+
+    EventBus.broadcast('invitation_create', invitation, actor)
+    Events::InvitationCreated.publish!(invitation, actor)
+  end
+
   def self.create_invite_to_start_group(args)
     args[:to_be_admin] = true
     args[:intent] = 'start_group'
-    args[:invitable] = args[:group]
-    args.delete(:group)
     Invitation.create!(args)
   end
 
   def self.create_invite_to_join_group(args)
     args[:to_be_admin] = false
     args[:intent] = 'join_group'
-    args[:invitable] = args[:group]
-    args.delete(:group)
     Invitation.create!(args)
   end
 
@@ -46,9 +54,7 @@ class InvitationService
                                                group: group,
                                                message: message,
                                                inviter: inviter)
-
-      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
-                                                          locale: I18n.locale)
+      Events::InvitationCreated.publish!(invitation, inviter)
       invitation
     end
   end

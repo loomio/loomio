@@ -43,17 +43,13 @@ class FormalGroup < Group
 
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
-  has_many :discussions, foreign_key: :group_id, dependent: :destroy
   has_many :comments, through: :discussions
   has_many :comment_votes, through: :comments
   has_many :motions, through: :discussions
-  has_many :polls, foreign_key: :group_id
   has_many :votes, through: :motions
   has_many :group_identities, dependent: :destroy
   has_many :identities, through: :group_identities
 
-  belongs_to :parent, class_name: 'Group'
-  belongs_to :creator, class_name: 'User'
   belongs_to :cohort
   belongs_to :community, class_name: 'Communities::LoomioGroup', touch: true
   belongs_to :default_group_cover
@@ -66,11 +62,7 @@ class FormalGroup < Group
 
   define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
   define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
-  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
-  define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
   define_counter_cache(:proposal_outcomes_count)   { |group| group.motions.with_outcomes.count }
-  define_counter_cache(:polls_count)               { |group| group.polls.count }
-  define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
 
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true
@@ -101,11 +93,15 @@ class FormalGroup < Group
 
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
 
+  def is_formal_group?
+    true
+  end
+
   def shareable_invitation
     invitations.find_or_create_by(
       single_use:     false,
       intent:         :join_group,
-      invitable:      self
+      group:      self
     )
   end
 
@@ -191,17 +187,6 @@ class FormalGroup < Group
     end
   end
 
-  def private_discussions_only?
-    discussion_privacy_options == 'private_only'
-  end
-
-  def public_discussions_only?
-    discussion_privacy_options == 'public_only'
-  end
-
-  def public_or_private_discussions_allowed?
-    discussion_privacy_options == 'public_or_private'
-  end
 
   def discussion_private_default
     case discussion_privacy_options
@@ -227,13 +212,6 @@ class FormalGroup < Group
     self.full_name = calculate_full_name
   end
 
-  def parent_or_self
-    parent || self
-  end
-
-  def organisation_id
-    parent_id or id
-  end
 
   def organisation_discussions_count
     Group.where("parent_id = ? OR (parent_id IS NULL AND groups.id = ?)", parent_or_self.id, parent_or_self.id).sum(:discussions_count)

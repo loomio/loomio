@@ -5,8 +5,8 @@ class PollService
     poll.assign_attributes(author: actor)
 
     return false unless poll.valid?
+    poll.create_guest_group.add_admin!(actor)
     poll.save!
-
 
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor)

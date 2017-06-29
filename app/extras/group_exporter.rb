@@ -19,8 +19,8 @@ class GroupExporter
     @memberships = Membership.where(group_id: group.id_and_subgroup_ids).chronologically
     @membership_fields = %w[group_id user_id user_name admin created_at]
 
-    @invitations = Invitation.where(invitable_id: group.id_and_subgroup_ids, invitable_type: 'Group').chronologically
-    @invitation_fields = %w[id invitable_id recipient_email inviter_name accepted_at]
+    @invitations = Invitation.where(group_id: group.id_and_subgroup_ids).chronologically
+    @invitation_fields = %w[id group_id recipient_email inviter_name accepted_at]
 
     @discussions = Discussion.where(group_id: group.id_and_subgroup_ids).chronologically
     @discussion_fields = %w[id group_id author_id author_name title description created_at]
@@ -40,7 +40,7 @@ class GroupExporter
     @stances = Stance.joins(:poll => {:discussion => :group}).where('discussions.group_id' => group.id_and_subgroup_ids).chronologically
     @stance_fields = %w[id poll_id participant_id participant_type reason latest created_at updated_at]
 
-    @field_names = {motion_name: :proposal_title, invitable_id: :group_id, motion_id: :proposal_id}
+    @field_names = {motion_name: :proposal_title, group_id: :group_id, motion_id: :proposal_id}
   end
 
   def to_csv(opts = {})

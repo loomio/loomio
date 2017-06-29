@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
   rescue_from(Invitation::InvitationCancelled) { respond_with_error :"invitation.invitation_cancelled" }
   rescue_from(Invitation::InvitationAlreadyUsed) do
     if current_user.email == invitation.recipient_email
-      redirect_to invitation.invitable
+      redirect_to invitation.group
     else
       respond_with_error :"invitation.invitation_already_used"
     end

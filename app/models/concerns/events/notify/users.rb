@@ -1,5 +1,4 @@
 module Events::Notify::Users
-
   def trigger!
     super
     email_users!

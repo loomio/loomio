@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
+  belongs_to :creator, class_name: 'User'
+  belongs_to :parent, class_name: 'Group'
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
   has_many :memberships, -> { where is_suspended: false, archived_at: nil }
   has_many :admin_memberships, -> { where admin: true, archived_at: nil }, class_name: 'Membership'
@@ -9,19 +11,30 @@ class Group < ActiveRecord::Base
 
   has_many :pending_invitations,
            -> { where accepted_at: nil, cancelled_at: nil },
-           as: :invitable,
            class_name: 'Invitation'
 
-  has_many :invitations,
-           as: :invitable,
-           class_name: 'Invitation',
-           dependent: :destroy
+  has_many :invitations, dependent: :destroy
 
+  has_many :discussions, foreign_key: :group_id, dependent: :destroy
+  has_many :polls, foreign_key: :group_id
+
+  define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
+  define_counter_cache(:polls_count)               { |group| group.polls.count }
+  define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
   define_counter_cache(:memberships_count)         { |group| group.memberships.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
   define_counter_cache(:invitations_count)         { |group| group.invitations.count }
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
   define_counter_cache(:announcement_recipients_count) { |group| group.memberships.volume_at_least(:normal).count }
+
+  def invitation_target
+    self
+  end
+  
+  def parent_or_self
+    parent || self
+  end
 
   def add_member!(user, inviter=nil)
     return unless user.present?
@@ -81,6 +94,23 @@ class Group < ActiveRecord::Base
       'secret'
     end
   end
+
+  def is_guest_group?
+    !is_formal_group?
+  end
+
+  def private_discussions_only?
+    discussion_privacy_options == 'private_only'
+  end
+
+  def public_discussions_only?
+    discussion_privacy_options == 'public_only'
+  end
+
+  def public_or_private_discussions_allowed?
+    discussion_privacy_options == 'public_or_private'
+  end
+
 
   def membership_granted_upon_approval?
     membership_granted_upon == 'approval'

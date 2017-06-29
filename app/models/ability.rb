@@ -160,6 +160,10 @@ class Ability
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
+    can :create, Invitation do |invitation|
+      can? :invite_people, invitation.group
+    end
+
     can :cancel, Invitation do |invitation|
       (invitation.inviter == user) or user_is_admin_of?(invitation.group.id)
     end
