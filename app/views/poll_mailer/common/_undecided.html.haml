@@ -3,7 +3,7 @@
   %table
     - @info.undecided_memberships.limit(@info.undecided_max).each do |membership|
       %tr
-        %td= render 'base_mailer/avatar', participant: membership.user
+        %td= render 'avatar', user: membership.user
         %td= membership.user.name
     - if @info.undecided_memberships.count > @info.undecided_max
       %tr
@@ -15,7 +15,7 @@
   %table
     - @info.undecided_visitors.limit(@info.undecided_max).each do |visitor|
       %tr
-        %td= render 'base_mailer/avatar', participant: visitor
+        %td= render 'avatar', user: visitor
         %td= visitor.name
     - if @info.undecided_visitors.count > @info.undecided_max
       %tr

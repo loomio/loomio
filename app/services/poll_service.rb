@@ -157,7 +157,7 @@ class PollService
     end
   end
 
-  def self.convert_visitors(poll: poll)
+  def self.convert_visitors(poll: )
     poll.create_guest_group
     poll.visitors.each do |visitor|
       user = User.find_or_initialize_by(email: visitor.email)

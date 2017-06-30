@@ -4,7 +4,6 @@ class FormalGroup < Group
   include HasPolls
   include MakesAnnouncements
   include MessageChannel
-  include SelfReferencing
 
   DISCUSSION_PRIVACY_OPTIONS = ['public_only', 'private_only', 'public_or_private']
   MEMBERSHIP_GRANTED_UPON_OPTIONS = ['request', 'approval', 'invitation']
@@ -47,7 +46,7 @@ class FormalGroup < Group
   has_many :comment_votes, through: :comments
   has_many :motions, through: :discussions
   has_many :votes, through: :motions
-  has_many :group_identities, dependent: :destroy
+  has_many :group_identities, dependent: :destroy, foreign_key: :group_id
   has_many :identities, through: :group_identities
 
   belongs_to :cohort

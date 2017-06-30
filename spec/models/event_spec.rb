@@ -26,7 +26,7 @@ describe Event do
   let(:poll) { FactoryGirl.create :poll, discussion: discussion, details: user_mentioned_text }
   let(:outcome) { FactoryGirl.create :outcome, poll: poll, statement: user_mentioned_text }
 
-  let(:visitor) { FactoryGirl.create :visitor, community: poll.community_of_type(:email, build: true) }
+  let(:guest_user) { FactoryGirl.create :user }
 
   def emails_sent
     ActionMailer::Base.deliveries.count
@@ -504,7 +504,10 @@ describe Event do
   end
 
   describe 'poll_option_added' do
-    before { poll.update(voter_can_add_options: true) }
+    before do
+      poll.update(voter_can_add_options: true)
+      poll.guest_group.add_member! guest_user
+    end
     let(:visitor) { create :visitor, community: poll.community_of_type(:email, build: true) }
     let(:visitor_stance) { create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: visitor) }
 
@@ -528,8 +531,7 @@ describe Event do
       email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
-      email_visitors = Events::PollOptionAdded.last.send(:email_visitors)
-      expect(email_visitors).to include visitor
+      expect(email_users).to include guest_user
 
       notification_users = Events::PollOptionAdded.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud
@@ -549,19 +551,19 @@ describe Event do
     it 'does not make an announcement' do
       event = Events::PollOptionAdded.publish!(poll, poll.author, ["new_option"])
       expect(event.send(:email_recipients)).to be_empty
-      expect(event.send(:email_visitors)).to be_empty
       expect(event.send(:notification_recipients)).to be_empty
     end
   end
 
   describe 'outcome_created' do
-    let(:poll_meeting) { create :poll_meeting, discussion: discussion }
+    let(:poll_meeting) do
+      create :poll_meeting, discussion: discussion
+    end
     before do
-      poll_meeting.build_loomio_group_community; poll_meeting.save
+      poll_meeting.guest_group.add_member! guest_user
     end
 
     it 'makes an announcement' do
-      visitor
       outcome.make_announcement = true
       expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
       email_users = Events::OutcomeCreated.last.send(:email_recipients)
@@ -579,8 +581,7 @@ describe Event do
       email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
-      email_visitors = Events::OutcomeCreated.last.send(:email_visitors)
-      email_visitors.should  include visitor
+      email_users.should  include guest_user
 
       notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud

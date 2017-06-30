@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  include SelfReferencing
   belongs_to :creator, class_name: 'User'
   belongs_to :parent, class_name: 'Group'
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
@@ -31,7 +32,7 @@ class Group < ActiveRecord::Base
   def invitation_target
     self
   end
-  
+
   def parent_or_self
     parent || self
   end

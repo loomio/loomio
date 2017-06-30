@@ -1,5 +1,6 @@
 class MembershipSerializer < ActiveModel::Serializer
-  include Concerns::BelongsToGroup
+
+  has_one :group, serializer: GroupSerializer, root: :groups
 
   embed :ids, include: true
   attributes :id, :volume, :admin, :experiences, :created_at
@@ -10,4 +11,5 @@ class MembershipSerializer < ActiveModel::Serializer
   def include_inviter?
     [nil, true].include? (scope || {})[:include_inviter]
   end
+
 end

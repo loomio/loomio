@@ -13,7 +13,7 @@ FactoryGirl.define do
 
   factory :membership do |m|
     m.user { |u| u.association(:user)}
-    m.group { |g| g.association(:group)}
+    m.group { |g| g.association(:formal_group)}
   end
 
   factory :user do
@@ -88,7 +88,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :group do
+  factory :guest_group do
     group_privacy 'open'
   end
 
@@ -272,9 +272,8 @@ FactoryGirl.define do
     title "This is a poll"
     details "with a description"
     association :author, factory: :user
+    association :guest_group, factory: :guest_group
     poll_option_names ["engage"]
-
-    after(:build) { |poll| poll.community_of_type(:email, build: true).save }
   end
 
   factory :poll_proposal, class: Poll do
@@ -283,8 +282,7 @@ FactoryGirl.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names %w[agree abstain disagree block]
-
-    after(:build) { |poll| poll.community_of_type(:email, build: true) }
+    association :guest_group, factory: :guest_group
   end
 
   factory :poll_meeting, class: Poll do
@@ -293,8 +291,7 @@ FactoryGirl.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names ['01-01-2015']
-
-    after(:build) { |poll| poll.community_of_type(:email, build: true) }
+    association :guest_group, factory: :guest_group
   end
 
   factory :outcome do
