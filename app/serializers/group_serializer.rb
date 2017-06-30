@@ -3,6 +3,13 @@ class GroupSerializer < ActiveModel::Serializer
   attributes :id,
              :cohort_id,
              :key,
+             :type,
+             :name,
+             :full_name,
+             :description,
+             :logo_url_medium,
+             :cover_urls,
+             :has_custom_cover,
              :created_at,
              :creator_id,
              :members_can_add_members,
@@ -32,23 +39,13 @@ class GroupSerializer < ActiveModel::Serializer
              :enable_experiments,
              :experiences,
              :features,
-             :recent_activity_count
+             :recent_activity_count,
+             :is_subgroup_of_hidden_parent,
+             :is_visible_to_parent_members,
+             :parent_members_can_see_discussions
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
   has_one :parent, serializer: GroupSerializer, root: :groups
-
-  attributes   :name,
-               :full_name,
-               :description,
-               :logo_url_medium,
-               :cover_urls,
-               :has_custom_cover,
-               :is_subgroup_of_hidden_parent,
-               :is_visible_to_parent_members,
-               :parent_members_can_see_discussions,
-               :identity_id
-
-
 
   def cover_photo
     @cover_photo ||= object.cover_photo

@@ -7,7 +7,6 @@ class Events::GroupPublished < Event
            user: actor,
            eventable: group,
            announcement: group.make_announcement,
-           custom_fields: { community_id: group.community.id },
            created_at: group.created_at).tap { |e| EventBus.broadcast('group_published_event', e) }
   end
 end

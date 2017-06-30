@@ -1,7 +1,5 @@
 class FormalGroup < Group
-  include ReadableUnguessableUrls
   include HasTimeframe
-  include HasPolls
   include MakesAnnouncements
   include MessageChannel
 
@@ -50,7 +48,6 @@ class FormalGroup < Group
   has_many :identities, through: :group_identities
 
   belongs_to :cohort
-  belongs_to :community, class_name: 'Communities::LoomioGroup', touch: true
   belongs_to :default_group_cover
 
   has_many :subgroups,
@@ -67,11 +64,11 @@ class FormalGroup < Group
   delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
   delegate :name, to: :parent, prefix: true
-  delegate :identity_type, to: :community, allow_nil: true
-  delegate :slack_team_id, to: :community, allow_nil: true
-  delegate :slack_channel_name, to: :community, allow_nil: true
-  delegate :slack_team_name, to: :community, allow_nil: true
-  delegate :identity_type, to: :community, allow_nil: true
+
+  delegate :slack_team_id, to: :slack_identity, allow_nil: true
+  delegate :slack_channel_id, to: :slack_identity, allow_nil: true
+  delegate :slack_team_name, to: :slack_identity, allow_nil: true
+  delegate :slack_channel_name, to: :slack_identity, allow_nil: true
 
   has_attached_file    :cover_photo,
                        styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
@@ -149,18 +146,17 @@ class FormalGroup < Group
     end
   end
 
-  def community
-    update(community: Communities::LoomioGroup.create(group: self)) unless self[:community_id]
-    super
-  end
+  # attr_writer :identity_id
+  # def identity_id
+  #   @identity_id || community.identity_id
+  # end
 
-  attr_writer :identity_id
-  def identity_id
-    @identity_id || community.identity_id
+  def identity_id=(id)
+    self.group_identities.build(identity_id: id)
   end
 
   def associate_identity
-    community.update(identity_id: self.identity_id) if self.identity_id
+    # community.update(identity_id: self.identity_id) if self.identity_id
   end
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
@@ -274,6 +270,14 @@ class FormalGroup < Group
   end
 
   private
+
+  def slack_identity
+    identity_for(:slack)
+  end
+
+  def identity_for(type)
+    group_identities.joins(:identity).find_by("omniauth_identities.identity_type": type)
+  end
 
   def set_discussions_private_only
     self.discussion_privacy_options = 'private_only'

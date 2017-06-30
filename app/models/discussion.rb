@@ -31,7 +31,6 @@ class Discussion < ActiveRecord::Base
   include Translatable
   include HasTimeframe
   include HasMentions
-  include HasPolls
   include MessageChannel
   include MakesAnnouncements
   include SelfReferencing

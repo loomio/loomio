@@ -2,6 +2,7 @@ class Simple::GroupSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id,
              :key,
+             :type,
              :created_at,
              :creator_id,
              :is_visible_to_public,
