@@ -61,7 +61,8 @@ class API::GroupsController < API::RestfulController
     {
       make_announcement: !!params[:make_announcement],
       identifier:        params.require(:identifier),
-      channel:           params[:channel]
+      channel:           params[:channel],
+      identity_type:     :slack
     }
   end
 
