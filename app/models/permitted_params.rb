@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user visitor vote motion membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response network_membership_request
-    draft oauth_application community poll_community
+    draft oauth_application community poll_community group_identity
   )
 
   MODELS.each do |kind|
@@ -109,7 +109,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def group_identity_attributes
-    [:group_id, :identity_type, :slack_channel_name, :slack_channel_id]
+    [:group_id, :identity_type, :make_announcement, :custom_fields, custom_fields: [:slack_channel_name, :slack_channel_id]]
   end
 
   def discussion_attributes

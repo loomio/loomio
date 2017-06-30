@@ -269,8 +269,6 @@ class FormalGroup < Group
     end
   end
 
-  private
-
   def slack_identity
     identity_for(:slack)
   end
@@ -278,6 +276,8 @@ class FormalGroup < Group
   def identity_for(type)
     group_identities.joins(:identity).find_by("omniauth_identities.identity_type": type)
   end
+
+  private
 
   def set_discussions_private_only
     self.discussion_privacy_options = 'private_only'

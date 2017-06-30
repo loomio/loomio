@@ -4,8 +4,6 @@ class API::GroupsController < API::RestfulController
   load_resource only: [:upload_photo], find_by: :key
   skip_before_action :authenticate_user!, only: [:index]
 
-  rescue_from(Group::NoIdentityFoundError) { |e| respond_with_standard_error e, 400 }
-
   def index
     instantiate_collection { |collection| collection.search_for(params[:q]).order(recent_activity_count: :desc) }
     respond_with_collection
