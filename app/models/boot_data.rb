@@ -1,4 +1,4 @@
-BootData = Struct.new(:user, :visitor) do
+BootData = Struct.new(:user) do
   def data
     ActiveModel::ArraySerializer.new(Array(user),
       scope: serializer_scope,
@@ -18,18 +18,28 @@ BootData = Struct.new(:user, :visitor) do
   end
 
   def serializer_scope
-    { memberships: memberships, visitors: visitors }.tap do |hash|
-      hash.merge!(
-        notifications:      notifications,
-        unread:             unread,
-        reader_cache:       readers,
-        identities:         identities
-      ) if user.is_logged_in? && !user.restricted
-    end
+    {
+      formal_memberships: formal_memberships,
+      guest_memberships:  guest_memberships
+    }.merge(authed_serializer_scope)
   end
 
-  def memberships
-    @memberships ||= user.memberships.includes(:user, :inviter, group: [:parent]).order(created_at: :desc)
+  def authed_serializer_scope
+    return {} unless user.is_logged_in? && !user.restricted
+    {
+      notifications:      notifications,
+      unread:             unread,
+      reader_cache:       readers,
+      identities:         identities
+    }
+  end
+
+  def guest_memberships
+    @guest_memberships ||= user.memberships.guest.includes(:user, :inviter, {group: :parent})
+  end
+
+  def formal_memberships
+    @formal_memberships ||= user.memberships.formal.includes(:user, :group)
   end
 
   def notifications
@@ -42,10 +52,6 @@ BootData = Struct.new(:user, :visitor) do
 
   def readers
     @readers ||= Caches::DiscussionReader.new(user: user, parents: unread)
-  end
-
-  def visitors
-    @visitors ||= Array(visitor.presence)
   end
 
   def identities

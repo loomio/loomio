@@ -22,6 +22,9 @@ class Membership < ActiveRecord::Base
   scope :sorted_by_group_name, -> { joins(:group).order('groups.full_name') }
   scope :chronologically, -> { order('created_at asc') }
 
+  scope :guest,  -> { joins(:group).where("groups.type": "GuestGroup") }
+  scope :formal, -> { joins(:group).where("groups.type": "FormalGroup") }
+
   scope :search_for, ->(query) { joins(:user).where("users.name ilike :query or users.username ilike :query or users.email ilike :query", query: "%#{query}%") }
 
   scope :for_group, lambda {|group| where(group_id: group)}

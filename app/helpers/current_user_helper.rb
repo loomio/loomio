@@ -3,12 +3,9 @@ module CurrentUserHelper
     @current_user ||= token_user || super || restricted_user || LoggedOutUser.new
   end
 
-  def current_visitor
-    @current_visitor ||= Visitor.find_by(participation_token: params[:participation_token]) || LoggedOutUser.new
-  end
-
   def current_participant
-    current_visitor.presence || current_user
+    # TODO: rip this out
+    current_user
   end
 
   private
