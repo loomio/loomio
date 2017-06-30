@@ -92,6 +92,11 @@ FactoryGirl.define do
     group_privacy 'open'
   end
 
+  factory :group_identity do
+    association :group, factory: :formal_group
+    association :identity, factory: :slack_identity
+  end
+
   factory :discussion do
     association :author, :factory => :user
     association :group, :factory => :formal_group

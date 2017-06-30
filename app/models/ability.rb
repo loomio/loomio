@@ -114,6 +114,11 @@ class Ability
        group.invitations.find_by(recipient_email: @user.email))
     end
 
+    can [:create], GroupIdentity do |group_identity|
+      user_is_admin_of?(group_identity.group_id) &&
+      user.identities.include?(group_identity.identity)
+    end
+
     can [:make_admin], Membership do |membership|
       user_is_admin_of?(membership.group_id)
     end

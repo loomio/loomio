@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170630034243) do
+ActiveRecord::Schema.define(version: 20170630073252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -323,9 +323,11 @@ ActiveRecord::Schema.define(version: 20170630034243) do
   add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx", using: :btree
 
   create_table "group_identities", force: :cascade do |t|
-    t.integer "group_id",                   null: false
-    t.integer "identity_id",                null: false
-    t.jsonb   "custom_fields", default: {}, null: false
+    t.integer  "group_id",                   null: false
+    t.integer  "identity_id",                null: false
+    t.jsonb    "custom_fields", default: {}, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "group_identities", ["group_id"], name: "index_group_identities_on_group_id", using: :btree

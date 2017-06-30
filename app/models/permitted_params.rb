@@ -108,6 +108,10 @@ class PermittedParams < Struct.new(:params)
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
   end
 
+  def group_identity_attributes
+    [:group_id, :identity_type, :slack_channel_name, :slack_channel_id]
+  end
+
   def discussion_attributes
     [:title, :attachment_ids, :description, :uses_markdown, :group_id, :private, :iframe_src, :starred, :make_announcement, {attachment_ids: []}]
   end

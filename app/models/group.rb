@@ -2,8 +2,6 @@ class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include SelfReferencing
 
-  class NoIdentityFoundError < StandardError; end
-
   belongs_to :creator, class_name: 'User'
   belongs_to :parent, class_name: 'Group'
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'

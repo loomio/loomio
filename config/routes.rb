@@ -52,11 +52,12 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member
       get :count_explore_results, on: :collection
-      post :publish, on: :member
       patch :archive, on: :member
       put :archive, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
+
+    resources :group_identities, only: [:create, :destroy]
 
     resources :users, only: :show
 
