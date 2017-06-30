@@ -60,6 +60,6 @@ class API::RestfulController < ActionController::Base
   end
 
   def set_participation_token
-    current_user.participation_token = params[:participation_token] if current_user.is_logged_in?
+    current_user.token = params[:participation_token] if current_user.is_logged_in?
   end
 end

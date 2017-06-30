@@ -54,50 +54,12 @@ class Group < ActiveRecord::Base
     end
   end
 
-  # this method's a bit chunky. New class?
-  def group_privacy=(term)
-    case term
-    when 'open'
-      self.is_visible_to_public = true
-      self.discussion_privacy_options = 'public_only'
-
-      unless %w[approval request].include?(self.membership_granted_upon)
-        self.membership_granted_upon = 'approval'
-      end
-    when 'closed'
-      self.is_visible_to_public = true
-      self.membership_granted_upon = 'approval'
-      unless %w[private_only public_or_private].include?(self.discussion_privacy_options)
-        self.discussion_privacy_options = 'private_only'
-      end
-
-      # closed subgroup of hidden parent means parent members can seeee it!
-      if is_subgroup_of_hidden_parent?
-        self.is_visible_to_parent_members = true
-        self.is_visible_to_public = false
-      end
-    when 'secret'
-      self.is_visible_to_public = false
-      self.discussion_privacy_options = 'private_only'
-      self.membership_granted_upon = 'invitation'
-      self.is_visible_to_parent_members = false
-    else
-      raise "group_privacy term not recognised: #{term}"
-    end
-  end
-
-  def group_privacy
-    if is_visible_to_public?
-      self.public_discussions_only? ? 'open' : 'closed'
-    elsif is_subgroup_of_hidden_parent? and is_visible_to_parent_members?
-      'closed'
-    else
-      'secret'
-    end
-  end
-
   def is_guest_group?
-    !is_formal_group?
+    type == "GuestGroup"
+  end
+
+  def is_formal_group?
+    type == "FormalGroup"
   end
 
   def private_discussions_only?
@@ -111,7 +73,6 @@ class Group < ActiveRecord::Base
   def public_or_private_discussions_allowed?
     discussion_privacy_options == 'public_or_private'
   end
-
 
   def membership_granted_upon_approval?
     membership_granted_upon == 'approval'

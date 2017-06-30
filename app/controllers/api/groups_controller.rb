@@ -51,6 +51,10 @@ class API::GroupsController < API::RestfulController
     Queries::ExploreGroups.new
   end
 
+  def resource_class
+    FormalGroup
+  end
+
   def publish_params
     {
       make_announcement: !!params[:make_announcement],
