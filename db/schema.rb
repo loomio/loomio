@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623004653) do
+ActiveRecord::Schema.define(version: 20170701210609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,8 +51,6 @@ ActiveRecord::Schema.define(version: 20170623004653) do
     t.integer  "user_id"
     t.string   "user_type"
     t.string   "mailer"
-    t.text     "subject"
-    t.text     "content"
     t.datetime "sent_at"
     t.datetime "opened_at"
     t.datetime "clicked_at"
