@@ -78,6 +78,9 @@ es:
       retry: 'Reintentar '
       done: Listo
       start: 'Empezar '
+      delete: Eliminar
+      unsubscribe: Cancelar la suscripción a la lista de email
+      subscribe: Suscribirme a la lista de email
     formatting_help:
       label: 'Formato '
       title: 'Aprende a usar Markdown para dar formato a tu texto en Loomio'
@@ -112,6 +115,8 @@ es:
     heading: 'Propuestas previas '
   previous_polls_page:
     heading: Actividades en {{name}}
+    polls_count: Mostrando {{loaded}} de {{total}} decisiones
+    search_activities: 'Buscar decisiones '
   proposal_collapsed:
     expand: Expandir
     outcome: 'Resultado: {{outcome}}'
@@ -290,6 +295,7 @@ es:
     poll_edited: "<strong>{{name}}</strong> editó una {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} está a punto de cerrarse: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} se cerró: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> agregó opciones a la {{poll_type}}: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> compartió un resultado: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participó en: <strong>{{title}}</strong>"
   position_buttons_panel:
@@ -656,6 +662,8 @@ es:
   group_previous_proposals_card:
     heading: Propuestas previas
     see_more: Ver más
+  group_decisions_card:
+    see_more: "Ve todas: las ({{count}}) decisiones "
   invitation_form:
     aria_label: 'Formulario de invitación'
     invite_people: 'Invita gente'
@@ -718,6 +726,8 @@ es:
     cancel: 'No '
     messages:
       success: 'invitación cancelada '
+  user_page:
+    introduction: 'Introducción '
   profile_page:
     messages:
       updated: 'Perfil actualizado'
@@ -725,6 +735,7 @@ es:
       password_changed: 'Contraseña actualizada'
       deactivated: 'Cuanta desactivada'
     change_picture_link: 'Cambiar imagen'
+    change_password_link: 'Restablece contraseña'
     deactivate_user_link: 'Desactivar cuenta...'
     profile: 'Perfil'
     edit_profile: 'Editar perfil'
@@ -732,9 +743,13 @@ es:
     name_label: 'Nombre'
     username_label: 'Nombre de usuario'
     email_label: 'Correo electrónico'
+    short_bio_label: 'Introducción'
     locale_label: 'Idioma'
+    short_bio_placeholder: 'Ingresa una breve introducción (max 250 caracteres) '
+    locale_placeholder: 'Selecciona tu lenguaje preferido '
     update_profile: 'Actualizar perfil'
     deactivate_account: 'Desactiva cuenta'
+    username_must_be_alphanumeric: 'El nombre de usuario debe contener solamente letras en minúscula y números '
   change_picture_form:
     aria_label: 'Formulario de cambio de imagen'
     title: 'Cambiar imagen'
@@ -742,6 +757,10 @@ es:
     use_initials: 'Usar iniciales'
     use_gravatar: 'Usar Gravatar'
     use_uploaded: 'Subir una imagen nueva'
+  change_password_form:
+    title: 'Restablece contraseña '
+    helptext: '¿Olvidaste tu contraseña? no hay problema, haz clic en el siguiente enlace y te enviaremos instrucciones sobre como re-establecerla   '
+    reset_my_password: Restablece mi contraseña
   deactivation_modal:
     aria_label: 'Desactiva cuenta '
     introduction: 'Cuando desactivas tu cuenta:'
@@ -1141,6 +1160,7 @@ es:
       success: "'{{name}}' ya no puede usar tu cuenta."
   decision_tools_card:
     title: Herramientas para decisiones
+    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Ayuda</a>
     proposal_title: Propuesta
     count_title: Comprobación
     poll_title: 'Encuesta '
@@ -1150,6 +1170,7 @@ es:
     your_response: Tu respuesta
     change_your_response: Cambie su respuesta
     reason: Razón
+    reason_placeholder: ¿Algún otro comentario?
     message: Mensaje
     results: Resultados
     vote: Votar
@@ -1169,18 +1190,54 @@ es:
     publish_poll: Compartir encuesta
   poll_common_attachment_form:
     label: Adjuntos
+  poll_common_add_option:
+    button:
+      add_option: Añadir otra opción
+    modal:
+      title: Añadir opción
+    form:
+      add_options: 'Añadir opciones '
+      options_added: Nuevas opciones añadidas
   poll_common_card:
     show_results: Mostrar resultados
+  poll_common_index_card:
+    title: Decisiones anteriores
+    no_polls: No se han encontrado decisiones anteriores
+    count: "Ve todas: las ({{count}}) decisiones"
+  current_polls_card:
+    title: 'Decisiones actuales '
+    start_poll: 'Nueva decisión  '
+    no_polls: No hay ninguna Encuesta activa
   poll_common_collapsed:
     by_who: "por {{name}}"
+  poll_common_select_group:
+    loomio_group: Grupo de Loomio
+    loomio_group_placeholder: (ningún grupo seleccionado)
+  poll_common_voter_add_options:
+    add_options: Los votantes pueden añadir opciones
+    helptext_on: 'Los participantes podrán añadir sus propias opciones al votar '
+    helptext_off: 'Los participantes seleccionarán las opciones que tu provees '
   poll_common_notify_group:
     notify_group: Anuncio
     members_helptext: 'Tu grupo no será notificado '
     members_count: "{{count}} personas serán notificadas"
     participants_count: "Las {{count}} personas que hayan votado serán notificadas"
+  poll_common_calendar_invite:
+    calendar_invite: 'Incluye una invitación al calendario con este resultado '
+    poll_option_id: 'Horario de reunión '
+    helptext_on: Los usuarios podrán añadir esta reunión a sus calendarios
+    helptext_off: No se enviaran invitaciones para la reunión
+    event_duration: Duración
+    event_summary: Resumen
+    event_summary_placeholder: ¿Cómo te gustaría llamar esta reunión?
+    event_description: Descripción de la reunión
+    event_description_placeholder: ¿Cuál es la agenda para esta reunión?
+    location: 'Locación '
+    location_placeholder: ¿Dónde tomara lugar esta reunión?
   poll_common_notify_on_participate:
     notify_on_participate: Notificarme cuando participe gente
     helptext_on: Se te notificará cuando alguien participe
+    helptext_off: 'Recibirás los resultados cuando esta actividad cierre '
   poll_common_close_form:
     title: Cerrar una encuesta temprano
     helptext: ¿Estás seguro de que estás listo para cerrar tan pronto?
@@ -1207,6 +1264,11 @@ es:
     no_votes_yet: Todavía no se han realizado votos.
     change_results_order: Cambiar orden de resultados
     none_of_the_above: '(Ninguno de los mencionados) '
+  poll_common_undecided_panel:
+    show_undecided: Mostrar {{count}} indecisos
+    undecided_users: Miembros del grupo indecisos ({{count}})
+    undecided_visitors: Invitados indecisos ({{count}})
+    hidden_visitors: 'Solo el coordinador del grupo o el autor de la encuesta podrá ver los invitados indecisos '
   poll_common_set_outcome_panel:
     share_outcome: Compartr resultado
     poll: 'Esta encuesta ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'
@@ -1223,10 +1285,24 @@ es:
     submit: Compartr resultado
   poll_common_outcome_panel:
     authored_by: 'Por {{name}}'
+  poll_common_delete_modal:
+    question: ¿Estás seguro que quieres eliminar esto?
+    title: 'Eliminar decisión '
+    success: Eliminada con éxito.
+  poll_common_unsubscribe_form:
+    title: 'Recibir actualizaciones '
+    label: 'Recibir actualizaciones por email sobre esta decisión '
+    tooltip: 'Loomio puede enviar actualizaciones por email para mantenerte informado sobre esta decisión, como cuando es editada, cuando cierra, o cuando el resultado ha sido publicado. Desmarcando esta casilla te aseguras de que no recibirás ninguna notificación por email al respecto '
+    helptext_on: 'Recibirás emails sobre actividad en esta decisión. '
+    helptext_off: 'No recibirás emails sobre actividad en esta decisión. '
+    subscribed: Suscripción exitosa
+    unsubscribed: Cancelación de la suscripción exitosa
   poll_common_form:
     title: Título
     details: Detalles
     options: Opciones
+    options_placeholder: Ingresa una nueva opción...
+    no_options: No haz añadido ninguna opción aún
     closing: Cerrando
     start: Iniciar
     update: Actualizar
@@ -1369,6 +1445,7 @@ es:
     enter_email: "ej. invitado@ejemplo.com "
     reminded: 'Recordatorio enviado '
     send_emails: Invitaciones enviadas ({{count}})
+    share_group: Grupo de Loomio
     view_poll: Ver la encuesta
     email_invited: 'Invitación enviada a {{email}}'
     email_exists: '{{email}} ya ha sido invitado'

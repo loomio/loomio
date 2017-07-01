@@ -136,4 +136,3 @@ it:
   poll_mailer:
     common:
       results: Risultati
-      your_response: La tua risposta

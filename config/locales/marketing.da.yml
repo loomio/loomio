@@ -1,1 +1,8 @@
-da: {}
+da:
+  navigation:
+    help: Hjælp
+    start_group: Opret gruppe
+    privacy: Fortrolighed
+  titles:
+    contact: Kontakt formular
+    home: Hjem

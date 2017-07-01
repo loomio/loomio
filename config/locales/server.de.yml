@@ -350,7 +350,6 @@ de:
       responses: Antworten
       change_your_stance: Ändern
       create_outcome: Ergebnis teilen
-      your_response: Deine Antwort
       please_respond: Bitte antworten
       time_zone: (Zeitangaben in %{zone})
     proposal:

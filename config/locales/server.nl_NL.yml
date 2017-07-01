@@ -340,7 +340,6 @@ nl_NL:
       responses: Antwoorden
       change_your_stance: Veranderen
       create_outcome: Deel uitkomst
-      your_response: Je antwoord
       please_respond: Graag antwoorden
     proposal:
       subject:
