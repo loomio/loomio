@@ -1,1 +1,7 @@
-it: {}
+it:
+  navigation:
+    help: Aiuto
+    login: Entra
+  titles:
+    sign_in: Form di autenticazione
+    home: Home page

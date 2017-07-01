@@ -11,6 +11,11 @@ es:
       <h1>Listo!</h1>
       <p>Seleccionaste el plan Gratis para tu grupo <a href="/g/%{group_key}">%{group}</a></p>
   email:
+    login:
+      subject: Ingresa a Loomio
+      intro: Hola %{name}, aquí esta el enlace que puedes usar para ingresar en tu cuenta de Loomio.
+      login: Ingresa a Loomio como %{name}
+      resend: Este enlace perderá validez en %{expires_at}. Si ese tiempo ha pasado, puedes seguir el enlace anterior para conseguir uno nuevo.
     reset_password:
       greeting: |
         Hola %{name}
@@ -20,6 +25,15 @@ es:
         Recibes este email porque tu dirección de correo electrónico fue ingresada en el formulario "Olvidaste tu contraseña" en %{hostname}.
         Tu contraseña no será cambiada hasta que sigas el enlace y completes el formulario.
         Si continúas teniendo problemas para acceder a tu cuenta, responde a este email para contactar nuestro equipo de soporte técnico.
+    start_decision:
+      subject: Iniciar una decisión en Loomio
+      intro: Hola <strong>%{name}</strong>
+      action: ¿Qué te gustaría hacer?
+      proposal: Iniciar una propuesta
+      count: 'Iniciar Comprobación '
+      poll: Iniciar una encuesta
+      dot_vote: Iniciar voto de puntos
+      meeting: Encontrar un horario en común
     custom: "%{text}"
     group_email:
       intro: "%{who} hizo un anuncio en %{group}:"
@@ -72,6 +86,7 @@ es:
       subject: Loomio - Resumen de las últimas 24 horas
     missed_yesterday:
       subject: Ayer en Loomio
+      do_not_reply: Por favor no respondas a este email
       headlines: 'Titulo '
       mark_as_read: Marcar como leído
       thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
@@ -187,6 +202,7 @@ es:
     start_making_decisions: 'Para empezar a tomar decisiones juntos con Loomio, crea un grupo. Es gratis.'
   invitation_form:
     error:
+      too_many_pending: "Tienes más del máximo de %{count} de invitaciones pendientes para este grupo"
       all_email_addresses_belong_to_members: "No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo."
   pricing_page:
     header: 'Planes grupales '
@@ -195,12 +211,20 @@ es:
     plus: Pro
     free_trial_html: 'Te pediremos que elijas tu plan de pago luego de <span>30 días de prueba gratis</span>. No se requiere tarjeta de crédito. '
     get_started_for_free: 'Comienza gratis '
+    gift_body: Todo lo que necesitas para tomar decisiones eficientes con tu grupo.
+    standard_body_html: Toma decisiones en Slack
+    pro_body_html: Toma decisiones a través de toda tu organización
     one_group: un grupo
     unlimited_members: Cantidad ilimitada de miembros
     unlimited_decisions: 'Cantidad ilimitada de decisiones '
+    coming_facebook: Próximamente integración con Facebook
     email_support: 'soporte por correo electrónico '
+    coming_soon: 'Próximamente '
+    analytics_report: 'Reporte analítico '
+    data_export: Exportación de datos (CSV o XLS)
     slack_integration_html: |
       Integración con <strong>Slack</strong>
+    customer_support_html: Soporte al usuario
     standard_price_html: '<strong>$19</strong>/al mes'
     gift_price_html: '<strong>$0</strong>'
     plus_includes_standard: 'Todo en Estándar, más: '
@@ -208,6 +232,7 @@ es:
     multiple_groups: "Hasta 10 grupos"
     premium_support: 'soporte especial '
     help_with_setup: Ayuda con la configuración inicial
+    ldap_coming_soon: 'Próximamente ActiveDirectory/LDAP '
     custom_subdomain: 'Dominio personalizado '
     analytics_reports: 'Reporte analítico '
     contact_us_html: |
@@ -350,9 +375,12 @@ es:
       responses: Respuestas
       change_your_stance: Cambiar
       create_outcome: Compartr resultado
-      your_response: Tu respuesta
+      your_response: "Tú votaste:"
       please_respond: 'Por favor responde '
       time_zone: (horario en %{zone})
+      undecided_members: Miembros indecisos (%{count})
+      undecided_visitors: Invitados indecisos (%{count})
+      more_undecided: "%{count} más..."
     proposal:
       subject:
         poll_created: '*%{actor} comenzó una propuesta: %{title}'
@@ -371,8 +399,11 @@ es:
         poll_closing_soon: 'La propuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
         poll_closing_soon_author: 'Tu propuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
         poll_expired: "<strong>%{actor}</strong> propuesta cerrada: %{title}"
+        poll_expired_author: 'Tu propuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
         outcome_created: '<strong>%{actor}</strong> publicó el resultado de la propuesta.'
+        visitor_created: '<strong>%{actor}</strong> quiere escuchar tu opinión: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
+        stance_created: "<strong>%{actor} </strong> votó en: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
@@ -381,50 +412,111 @@ es:
         poll_edited: '%{actor} editó la encuesta: %{title}'
         poll_closing_soon: 'Encuesta cerrando en 24hr: %{title}'
         poll_closing_soon_author: 'Tu encuesta cierra en 24hr: %{title}'
+        poll_expired: "Resultado de la encuesta: %{title}"
+        poll_expired_author: ' Tu encuesta ha cerrado. Comparte el resultado para: %{title}'
+        poll_option_added: '%{actor} ha añadido opciones en: %{title} '
+        poll_option_added_author: '%{actor} ha añadido opciones en: %{title}'
         outcome_created: '%{actor} publicó el resultado de la encuesta: %{title}'
+        visitor_created: '%{actor} quiere que votes en: %{title}'
         visitor_reminded: '%{actor} está esperando que votes en: %{title}'
         stance_created: "%{actor} votó en: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> inicio una encuesta'
+        poll_edited: '<strong>%{actor}</strong> edito la encuesta'
         poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
         poll_closing_soon_author: 'Tu encuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
+        poll_expired: "La propuesta de<strong>%{actor}</strong> ha cerrado: %{title}"
+        poll_expired_author: 'Tu encuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
+        poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
+        poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
+        visitor_created: '<strong>%{actor}</strong> te invitó a participar en la encuesta: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
+        stance_created: "<strong>%{actor} </strong> votó en: %{title} "
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
+        poll_created: '%{actor} está mirando: %{title}'
+        poll_edited: '%{actor} editó la comprobación: %{title}'
+        poll_closing_soon: 'Quedan 24 horas para participar en: %{title}'
         poll_closing_soon_author: 'Tu comprobación cierra en 24hr: %{title}'
+        poll_expired: "Comprobación cerrada: %{title}"
+        poll_expired_author: ' Tu comprobación ha cerrado. Comparte el resultado para: %{title}'
         outcome_created: '%{actor} publicó el resultado: %{title}'
+        visitor_created: '%{actor} está mirando: %{title} '
         visitor_reminded: '%{actor} está esperando tu respuesta en: %{title}'
+        stance_created: "%{actor} participó en: %{title}"
       header:
+        poll_created: '<strong>%{actor}</strong> esta mirando'
+        poll_edited: '<strong>%{actor}</strong> editó la comprobación'
         poll_closing_soon: 'La comprobació de <strong>%{actor}</strong> cierra en 24hrs'
         poll_closing_soon_author: 'Tu comprobación cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
+        poll_expired: "La comprobación de<strong>%{actor}</strong> ha cerrado: %{title}"
+        poll_expired_author: 'Este es el resultado de tu comprobación. De ser necesario <strong> comparte el resultado</strong> para que la gente sepa lo que sucederá a continuación.'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado.'
+        visitor_created: '<strong>%{actor}</strong> esta mirando: %{title}'
         visitor_reminded: '<strong>%{actor}</strong está esperando tu respuesta en: %{title}'
+        stance_created: "<strong>%{actor}</strong> participó en: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     dot_vote:
       subject:
         poll_created: '%{actor} inició un voto de puntos: %{title}'
+        poll_edited: '%{actor} editó un voto de puntos: %{title}'
         poll_closing_soon: 'Voto de puntos cerrando en 24hr: %{title}'
         poll_closing_soon_author: 'Tu voto de puntos cierra en 24hr: %{title}'
+        poll_expired: "Resultado del voto de puntos: %{title}"
+        poll_expired_author: ' Tu voto de puntos ha cerrado. Comparte un resultado para: %{title}'
+        poll_option_added: '%{actor} ha añadido opciones en: %{title}'
+        poll_option_added_author: '%{actor} ha añadido opciones en: %{title}'
         outcome_created: '%{actor} publicó el resultado: %{title}'
+        visitor_created: '%{actor} te invitó a participar en el voto de puntos: %{title}'
         visitor_reminded: '%{actor} está esperando que votes en: %{title}'
         stance_created: "%{actor} votó en: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> inició un voto de puntos'
+        poll_edited: '<strong>%{actor}</strong> editó el voto de puntos'
         poll_closing_soon: 'El voto de puntos de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
         poll_closing_soon_author: 'Tu voto de puntos cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra si es necesario.'
+        poll_expired: "Resultados para el voto de puntos: %{title} de <strong>%{actor}</strong>"
+        poll_expired_author: 'Tu voto de puntos ha <strong>cerrado</strong>. Considera lo que se ha dicho y <strong>comparte el resultado</strong> con el grupo para que todos sepan que sucederá a continuación.  '
+        poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado del voto de puntos.'
+        visitor_created: '<strong>%{actor}</strong> te invitó a participar en el voto de puntos: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
+        stance_created: "<strong>%{actor} </strong> votó en: %{title} "
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
+        poll_created: '%{actor}inició la coordinación de horario: %{title}'
+        poll_edited: '%{actor} editó la coordinación de horario: %{title}'
+        poll_closing_soon: 'Coordinación de horario cerrando en 24hr: %{title}'
+        poll_closing_soon_author: 'Tu coordinación de horario cierra en 24hr: %{title}'
+        poll_expired: "Resultado de la coordinación de horario: %{title}"
+        poll_expired_author: ' Tu coordinación de horario ha cerrado. Comparte el resultado para: %{title}'
+        poll_option_added: '%{actor} añadió opciones en: %{title} '
+        poll_option_added_author: '%{actor} añadió opciones en: %{title} '
         outcome_created: '%{actor} publicó el resultado: %{title}'
+        outcome_created_author: 'Compartiste el resultado para: %{title}'
+        visitor_created: '%{actor} quiere encontrar un horario: %{title}'
         visitor_reminded: '%{actor} está esperando tu respuesta en: %{title}'
+        stance_created: '%{actor} participó en: %{title}'
       header:
+        poll_created: '<strong>%{actor}</strong> inició una coordinación de horario'
+        poll_edited: '<strong>%{actor}</strong> editó la coordinación de horario'
+        poll_closing_soon: 'La coordinación de horario de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
+        poll_closing_soon_author: 'Tu coordinación de horario cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra si es necesario.'
+        poll_expired: "La coordinación de horario de<strong>%{actor}</strong> ha cerrado"
+        poll_expired_author: 'Tu coordinación de horario ha <strong>cerrado</strong>. Considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos sepan que pasará a continuación.  '
+        poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
+        poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
+        outcome_created: '<strong>%{actor}</strong> publicó el resultado de la coordinación de horario'
+        outcome_created_author: 'Compartiste el resultado de la coordinación de horario'
+        visitor_created: '%{actor} quiere encontrar un horario: %{title}'
         visitor_reminded: '<strong>%{actor}</strong está esperando tu respuesta en: %{title}'
+        stance_created: "<strong>%{actor}</strong> participó en: %{title} "
       body:
         voted: '<strong>%{participant}</strong>:'

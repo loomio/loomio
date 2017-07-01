@@ -294,6 +294,7 @@ fr:
     poll_edited: "<strong>{{name}}</strong> a édité un {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} ferme bientôt : <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} fermé : <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> a ajouté des options au sondage {{poll_type}}: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> a participé à : <strong>{{title}}</strong>"
   position_buttons_panel:
@@ -1203,6 +1204,14 @@ fr:
     publish_poll: Partager le sondage
   poll_common_attachment_form:
     label: Pièces jointes
+  poll_common_add_option:
+    button:
+      add_option: Ajouter une autre option
+    modal:
+      title: Ajouter une option
+    form:
+      add_options: Ajouter des options
+      options_added: Nouvelles options ajoutées
   poll_common_card:
     show_results: Afficher les résultats
   poll_common_index_card:
@@ -1218,6 +1227,10 @@ fr:
   poll_common_select_group:
     loomio_group: Groupe Loomio
     loomio_group_placeholder: (aucun groupe sélectionné)
+  poll_common_voter_add_options:
+    add_options: Les votants peuvent ajouter des options
+    helptext_on: Les participants peuvent ajouter leurs propres options en votant
+    helptext_off: Les participants choisiront parmi les options proposées
   poll_common_notify_group:
     notify_group: Annonce
     members_helptext: Votre groupe sera notifié
@@ -1303,6 +1316,7 @@ fr:
     details: Détails
     options: Options
     options_placeholder: Saisissez une nouvelle option...
+    no_options: Vous n'avez pas encore ajouté d'options
     closing: Fermeture
     start: Démarrer
     update: Mettre à jour

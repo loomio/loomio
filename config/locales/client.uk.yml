@@ -294,6 +294,7 @@ uk:
     poll_edited: "<strong>{{name}}</strong> відредагував(ла) {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} невдовзі буде закрито: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} закрито: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> додав(ла) варіант до {{poll_type}}: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> опублікував(ла) результат: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> долучився(лась) до: <strong>{{title}}</strong>"
   position_buttons_panel:
@@ -747,6 +748,7 @@ uk:
     locale_placeholder: Виберіть потрібну мову
     update_profile: 'Оновити профіль'
     deactivate_account: 'Закрити обліковий запис'
+    username_must_be_alphanumeric: Ім'я користувача повинно містити лише прописні літери та цифри.
   change_picture_form:
     aria_label: 'Змінити обкладинку форми'
     title: 'Змінити обкладинку'
@@ -1196,6 +1198,14 @@ uk:
     publish_poll: Поширити опитування
   poll_common_attachment_form:
     label: Вкладення
+  poll_common_add_option:
+    button:
+      add_option: Додати інший варіант
+    modal:
+      title: Додати варіант
+    form:
+      add_options: Додати варіанти
+      options_added: Новий варіант було додано
   poll_common_card:
     show_results: Показати результати
   poll_common_index_card:
@@ -1211,11 +1221,27 @@ uk:
   poll_common_select_group:
     loomio_group: Група Loomio
     loomio_group_placeholder: (не вибрана жодна група)
+  poll_common_voter_add_options:
+    add_options: Учасники голосування можуть додавати варіанти
+    helptext_on: Учасники можуть додавати власні варіанти під час голосування
+    helptext_off: Учасники будуть вибирати з запропонованих вами варіантів
   poll_common_notify_group:
     notify_group: Оголошення
     members_helptext: Ваша група не отримає сповіщення
     members_count: "{{count}} людей будуть сповіщені"
     participants_count: "{{count}} людей які проголосували будуть повідомлені"
+  poll_common_calendar_invite:
+    calendar_invite: Включити запрошення з календаря з цим результатом
+    poll_option_id: Час зустрічі
+    helptext_on: Користувачі зможуть додати цю зустріч до свого календаря
+    helptext_off: Запрошення на зустріч не буде надіслано 
+    event_duration: Тривалість
+    event_summary: Підсумок
+    event_summary_placeholder: Як б ви хотіли назвати цю зустріч?
+    event_description: Опис зустрічі
+    event_description_placeholder: Який порядок денний цієї зустрічі?
+    location: Місце
+    location_placeholder: Де відбудеться ця зустріч?
   poll_common_notify_on_participate:
     notify_on_participate: Повідомити мене коли люди долучаються
     helptext_on: Ви отримаєте сповіщення коли хтось долучиться
@@ -1246,6 +1272,11 @@ uk:
     no_votes_yet: Поки що ніхто не проголосував.
     change_results_order: Змінити послідовність результатів
     none_of_the_above: (Жоден з вищевказаних)
+  poll_common_undecided_panel:
+    show_undecided: Показати {{count}} що не визначились
+    undecided_users: Учасники групи що не визначились ({{count}})
+    undecided_visitors: Гості що не визгначились ({{count}})
+    hidden_visitors: Лише група координаторів або автор опитування можуть переглядати список гостей що не визначились
   poll_common_set_outcome_panel:
     share_outcome: Поширити результат
     poll: 'Це опитування закрито. <strong>Поширте результат</strong> у групі.'
@@ -1279,6 +1310,7 @@ uk:
     details: Деталі
     options: Варіанти
     options_placeholder: Введіть новий варіант...
+    no_options: Ви ще не додали жодних варіантів.
     closing: Закривається
     start: Почати
     update: Оновити
@@ -1365,6 +1397,13 @@ uk:
     details_placeholder: Надайте будь-які уточнюючі деталі що можливо будуть потрібні людям аби долучитись
     meeting_created: Опитування щодо часу створено
     meeting_updated: Опитування щодо часу оновлено
+    timeslots: Проміжки часу
+    no_options: "Ви ще не додали жодних проміжків часу."
+    meeting_duration: Тривалість зустрічі
+    add_option_placeholder: Введіть новий час
+  poll_meeting_time_field:
+    new_time_slot: Новий проміжок часу
+    closing_hour: Час закриття
   poll_proposal_vote_form:
     default_reason_placeholder: Будь ласка, поясніть ваші аргументи
     abstain_reason_placeholder: Поясніть людям чому ви вибрали саме це рішення
