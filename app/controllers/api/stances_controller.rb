@@ -1,5 +1,6 @@
 class API::StancesController < API::RestfulController
   alias :update :create
+  before_action :set_guest_params, only: :create
 
   def my_stances
     self.collection = current_user.stances.latest.includes({poll: :discussion})
@@ -10,8 +11,14 @@ class API::StancesController < API::RestfulController
 
   private
 
-  def create_action
-    @event = service.create(stance: resource, actor: current_user)
+  def set_guest_params
+    return if current_user.is_logged_in?
+    current_user.name  = guest_params[:name]
+    current_user.email = guest_params[:email]
+  end
+
+  def guest_params
+    @guest_params ||= Hash(resource_params.delete(:visitor_attributes))
   end
 
   def accessible_records

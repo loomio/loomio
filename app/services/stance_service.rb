@@ -1,6 +1,5 @@
 class StanceService
   def self.create(stance:, actor:)
-    actor.community ||= stance.poll.community_of_type(:public) if actor.is_a?(Visitor)
     actor.ability.authorize! :create, stance
 
     stance.assign_attributes(participant: actor)

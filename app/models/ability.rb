@@ -362,7 +362,11 @@ class Ability
     end
 
     can :vote_in, Poll do |poll|
-      poll.active? && (poll.anyone_can_participate || poll.members.include?(user))
+      poll.active? && (
+        poll.members.include?(@user) ||
+        poll.anyone_can_participate ||
+        poll.invitations.pluck(:token).include?(@user.token)
+      )
     end
 
     can [:show, :toggle_subscription, :subscribe_to], Poll do |poll|

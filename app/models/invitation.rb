@@ -51,7 +51,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def user_from_recipient!
-    return unless to_start_group?
+    self.group.members.find_by(email: self.recipient_email) ||
     User.find_or_initialize_by(email: self.recipient_email)
         .tap { |user| user.assign_attributes(name: self.recipient_name) }
         .tap(&:save)

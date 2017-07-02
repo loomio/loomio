@@ -4,9 +4,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     isLoggedIn: =>
       @isUser() and !Session.user().restricted?
 
-    isVisitor: ->
-      AppConfig.currentVisitorId?
-
     isUser: ->
       AppConfig.currentUserId?
 

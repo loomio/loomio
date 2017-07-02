@@ -7,8 +7,8 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, AppCo
       $scope.stance = PollService.lastStanceBy(Session.participant(), $scope.poll) or
                       Records.stances.build(
                         pollId:    $scope.poll.id,
-                        visitorId: AppConfig.currentVisitorId,
-                        userId:    AppConfig.currentUserId
+                        userId:    AppConfig.currentUserId,
+                        token:     $location.search().participation_token
                       ).choose($location.search().poll_option_id)
 
     $scope.$on 'refreshStance', $scope.init

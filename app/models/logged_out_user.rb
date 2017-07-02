@@ -2,6 +2,8 @@ class LoggedOutUser
   include Null::User
   attr_accessor :name, :email, :token, :avatar_initials
 
+  alias :read_attribute_for_serialization :send
+
   def initialize(name: nil, email: nil, token: nil)
     @name = name
     @email = email
@@ -16,6 +18,10 @@ class LoggedOutUser
 
   def false_methods
     super + [:save, :persisted?]
+  end
+
+  def locale
+    I18n.locale
   end
 
   def errors
