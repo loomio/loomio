@@ -325,7 +325,7 @@ module Dev::NintiesMoviesHelper
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
     #'poll_option_added'
-    poll.tap(&:build_loomio_group_community).tap(&:save).reload
+    poll.tap(&:save).reload
     poll.make_announcement = true
     patrick_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: patrick_stance, actor: patrick)

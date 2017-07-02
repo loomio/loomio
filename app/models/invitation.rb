@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  include NullUser
+  extend Null::User
 
   class InvitationCancelled < StandardError; end
   class InvitationAlreadyUsed < StandardError; end

@@ -64,7 +64,7 @@ describe Event do
     discussion.group.add_member!(user_motion_closing_soon).set_volume! :mute
 
     # add the loomio group community to poll
-    poll.build_loomio_group_community; poll.save
+    poll.save
 
     # create an unsubscription for a poll user
     poll.poll_unsubscriptions.create(user: user_unsubscribed)

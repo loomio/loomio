@@ -1,5 +1,5 @@
 class Visitor < ActiveRecord::Base
-  include NullUser
+  # include NullUser
   include HasAvatar
   include UsesWithoutScope
   include NoForbiddenEmails

@@ -59,7 +59,6 @@ class PollService
     is_new_version = poll.is_new_version?
 
     return false unless poll.valid?
-    poll.build_loomio_group_community if poll.changes.keys.include?('group_id')
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
@@ -132,7 +131,6 @@ class PollService
         outcomes:                Array(outcome)
       )
       poll.community_of_type(:email, build: true)
-      poll.build_loomio_group_community
       poll.save(validate: false)
 
       # convert votes to stances

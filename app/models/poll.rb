@@ -40,8 +40,6 @@ class Poll < ActiveRecord::Base
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
-  has_many :visitor_participants, through: :stances, source: :participant, source_type: "Visitor"
-  has_many :visitors, through: :communities
   has_many :attachments, as: :attachable, dependent: :destroy
 
   has_many :poll_unsubscriptions, dependent: :destroy
@@ -57,19 +55,12 @@ class Poll < ActiveRecord::Base
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
   define_counter_cache(:stances_count)           { |poll| poll.stances.latest.count }
-  define_counter_cache(:visitors_count)          { |poll| poll.visitors.count }
-  define_counter_cache(:undecided_visitor_count) { |poll| Visitor.undecided_for(poll).count }
-  define_counter_cache(:undecided_user_count)   do |poll|
-    if community = poll.community_of_type(:loomio_users) || poll.group&.community
-      community.members
-    else
-      User.where(id: poll.author_id)
-    end.without(poll.participants).count
-  end
+  define_counter_cache(:visitors_count)          { |poll| poll.guest_group.members.count }
+  define_counter_cache(:undecided_visitor_count) { |poll| poll.guest_group.members.without(poll.participants).count }
+  define_counter_cache(:undecided_user_count)    { |poll| poll.group.members.without(poll.participants).count }
 
   has_many :poll_communities, dependent: :destroy, autosave: true
   has_many :communities, through: :poll_communities
-
 
   delegate :locale, to: :author
 
@@ -120,6 +111,10 @@ class Poll < ActiveRecord::Base
                                               .includes(:poll_option, stance: :participant)
                                               .to_a
                                               .group_by(&:poll_option)
+  end
+
+  def group
+    super || NullFormalGroup.new
   end
 
   def group_ids
@@ -207,11 +202,6 @@ class Poll < ActiveRecord::Base
 
   def discussion=(discussion)
     super.tap { self.group_id = self.discussion&.group_id }
-  end
-
-  def build_loomio_group_community
-    poll_communities.find_by(community: community_of_type(:loomio_group))&.destroy
-    poll_communities.build(community: self.group.community) if self.group
   end
 
   def community_of_type(community_type, build: false, params: {})

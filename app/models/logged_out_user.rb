@@ -1,5 +1,5 @@
 class LoggedOutUser
-  include NullUser
+  include Null::User
   attr_accessor :name, :email, :participation_token, :avatar_initials
 
   def initialize(name: nil, email: nil, participation_token: nil)
@@ -7,20 +7,19 @@ class LoggedOutUser
     @email = email
     @participation_token = participation_token
     set_avatar_initials if (@name || @email)
+    apply_null_methods!
   end
 
-  NIL_METHODS = [:id, :created_at, :presence, :restricted, :persisted?]
-  FALSE_METHODS = [:save, :persisted?]
+  def nil_methods
+    super + [:id, :created_at, :avatar_url, :presence, :restricted, :persisted?]
+  end
 
-  NIL_METHODS.each   { |method| define_method(method, -> { nil }) }
-  FALSE_METHODS.each { |method| define_method(method, -> { false }) }
+  def false_methods
+    super + [:save, :persisted?]
+  end
 
   def errors
     ActiveModel::Errors.new self
-  end
-
-  def avatar_url(size = nil)
-    nil
   end
 
   def email_status
