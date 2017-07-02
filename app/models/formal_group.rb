@@ -34,7 +34,6 @@ class FormalGroup < Group
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
   after_initialize :set_defaults
-  after_save   :associate_identity
 
   alias :users :members
 
@@ -144,19 +143,6 @@ class FormalGroup < Group
     else
       logo.presence || parent.logo
     end
-  end
-
-  # attr_writer :identity_id
-  # def identity_id
-  #   @identity_id || community.identity_id
-  # end
-
-  def identity_id=(id)
-    self.group_identities.build(identity_id: id)
-  end
-
-  def associate_identity
-    # community.update(identity_id: self.identity_id) if self.identity_id
   end
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
