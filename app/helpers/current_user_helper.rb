@@ -3,11 +3,6 @@ module CurrentUserHelper
     @current_user ||= token_user || super || restricted_user || LoggedOutUser.new
   end
 
-  def current_participant
-    # TODO: rip this out
-    current_user
-  end
-
   private
 
   def token_user
@@ -18,5 +13,9 @@ module CurrentUserHelper
 
   def restricted_user
     User.find_by!(params.slice(:unsubscribe_token)).tap { |user| user.restricted = true } if params[:unsubscribe_token]
+  end
+
+  def set_participation_token
+    current_user.token = params[:participation_token] if params[:participation_token]
   end
 end

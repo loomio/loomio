@@ -26,7 +26,7 @@ class API::PollsController < API::RestfulController
   end
 
   def add_options
-    @event = service.add_options(poll: load_resource, params: params.slice(:poll_option_names), actor: current_participant)
+    @event = service.add_options(poll: load_resource, params: params.slice(:poll_option_names), actor: current_user)
     respond_with_resource
   end
 
@@ -69,7 +69,7 @@ class API::PollsController < API::RestfulController
   end
 
   def default_scope
-    super.merge(my_stances_cache: Caches::Stance.new(user: current_participant, parents: resources_to_serialize))
+    super.merge(my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
   end
 
   def accessible_records

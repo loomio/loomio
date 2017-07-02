@@ -59,7 +59,4 @@ class API::RestfulController < ActionController::Base
     Array(resource || collection)
   end
 
-  def set_participation_token
-    current_user.token = params[:participation_token] if current_user.is_logged_in?
-  end
 end

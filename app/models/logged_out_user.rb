@@ -1,11 +1,11 @@
 class LoggedOutUser
   include Null::User
-  attr_accessor :name, :email, :participation_token, :avatar_initials
+  attr_accessor :name, :email, :token, :avatar_initials
 
-  def initialize(name: nil, email: nil, participation_token: nil)
+  def initialize(name: nil, email: nil, token: nil)
     @name = name
     @email = email
-    @participation_token = participation_token
+    @token = token
     set_avatar_initials if (@name || @email)
     apply_null_methods!
   end

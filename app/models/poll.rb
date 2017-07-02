@@ -2,6 +2,7 @@ class Poll < ActiveRecord::Base
   extend  HasCustomFields
   include ReadableUnguessableUrls
   include HasMentions
+  include HasGuestGroup
   include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
@@ -29,7 +30,6 @@ class Poll < ActiveRecord::Base
   belongs_to :motion
   belongs_to :discussion
   belongs_to :group, class_name: "FormalGroup"
-  belongs_to :guest_group, class_name: "GuestGroup"
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count
@@ -45,6 +45,8 @@ class Poll < ActiveRecord::Base
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
+  has_many :guest_invitations, through: :guest_group, source: :invitations
+
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
   has_many :poll_options, dependent: :destroy
@@ -55,7 +57,6 @@ class Poll < ActiveRecord::Base
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
   define_counter_cache(:stances_count)           { |poll| poll.stances.latest.count }
-  define_counter_cache(:visitors_count)          { |poll| poll.guest_group.members.count }
   define_counter_cache(:undecided_visitor_count) { |poll| poll.guest_group.members.without(poll.participants).count }
   define_counter_cache(:undecided_user_count)    { |poll| poll.group.members.without(poll.participants).count }
 
@@ -117,20 +118,19 @@ class Poll < ActiveRecord::Base
     super || NullFormalGroup.new
   end
 
-  def group_ids
-    [group_id, guest_group_id].compact
+  def group_members
+    User.joins(:memberships)
+        .joins(:groups)
+        .where("memberships.group_id": group_id)
+        .where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
   end
 
   def members
-    User.joins(:memberships)
-        .joins(:groups)
-        .where("memberships.group_id": group_ids)
-        .where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
-        .uniq
+    User.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users").uniq
   end
 
   def invitations
-    Invitation.where(group_id: group_ids)
+    Invitation.where(group_id: [group_id, guest_group_id].compact)
   end
 
   def update_stance_data
@@ -185,15 +185,6 @@ class Poll < ActiveRecord::Base
   def is_new_version?
     !self.poll_options.map(&:persisted?).all? ||
     (['title', 'details', 'closing_at'] & self.changes.keys).any?
-  end
-
-  def anyone_can_participate
-    # TODO not sure what invitation -> voter flow is.
-    guest_group.membership_granted_upon_request?
-  end
-
-  def anyone_can_participate=(bool)
-    guest_group.update(membership_granted_upon: if bool then :request else :invitation end)
   end
 
   def discussion_id=(discussion_id)
