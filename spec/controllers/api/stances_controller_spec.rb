@@ -25,9 +25,9 @@ describe API::StancesController do
     visitor_attributes: { name: "Johnny Doe", email: "john@doe.ninja" }
   }}
 
-  before { group.add_member! user }
-
   describe 'index' do
+    before { group.add_member! user }
+
     let(:recent_stance) { create :stance, poll: poll, created_at: 1.day.ago, choice: [low_priority_option.name] }
     let(:old_stance) { create :stance, poll: poll, created_at: 5.days.ago, choice: [low_priority_option.name] }
     let(:high_priority_stance) { create :stance, poll: poll, choice: [high_priority_option.name] }
@@ -135,7 +135,8 @@ describe API::StancesController do
         expect(participant.name).to eq visitor_stance_params[:visitor_attributes][:name]
         expect(participant.email_verified).to be false
         expect(invitation.reload.accepted?).to be true
-        expect(ActionMailer::Base.deliveries.last.to).to eq ['user@example.com']
+        expect(last_email.to).to eq ['user@example.com']
+        expect(last_email_html_body).to include "claim the vote"
       end
     end
 
@@ -146,7 +147,6 @@ describe API::StancesController do
         user.update(email_verified: false)
       end
 
-      # it 'logged in as same email' impossible
       it 'logged in as different email' do
         # crate stance as logged in user, add user to group
         sign_in another_user
@@ -165,7 +165,8 @@ describe API::StancesController do
         expect(poll.stances.first.participant.email).to eq 'user@example.com'
         expect(poll.stances.first.participant).to_not eq user
         expect(poll.guest_group.members).to include(poll.stances.first.participant)
-        # TODO test email goes out
+        expect(last_email.to).to eq ['user@example.com']
+        expect(last_email_html_body).to include "verify"
       end
     end
 
@@ -194,34 +195,72 @@ describe API::StancesController do
         expect(poll.stances.first.participant.email_verified).to eq false
         expect(poll.stances.first.participant.email).to eq 'user@example.com'
         expect(poll.guest_group.members).to include(poll.stances.first.participant)
-        # TODO test email goes out
+        expect(last_email.to).to eq ['user@example.com']
+        expect(last_email_html_body).to include "verify"
       end
     end
 
     describe 'mass invitation' do
+      let(:invitation) { create :shareable_invitation, group: poll.guest_group, inviter: poll.author }
+
+      before do
+        invitation
+        user
+      end
+
       it 'logged in' do
         # add to group and create stance
+        user.update(email_verified: true)
+        sign_in user
+        expect { post :create, stance: stance_params, participation_token: invitation.token }.to change { Stance.count }.by(1)
+        expect(Stance.last.participant).to eq user
+        expect(poll.members).to include user
       end
 
       describe 'not logged in' do
-        # create unverified user, add to group, create stance
-        # if verified user exists -> send claim_or_destroy
         it 'user enters verified users email' do
+          user.update(email_verified: true)
           # create stance and unverified user, send claim_or_destroy (only single vote claim)
+          expect { post :create, stance: visitor_stance_params, participation_token: invitation.token }.to change { Stance.count }.by(1)
+          stance = Stance.last
+          expect(stance.participant.email_verified).to eq false
+          expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
+          expect(poll.members).to include stance.participant
+          expect(poll.members).to_not include User.verified.find_by(email: stance.participant.email)
+          expect(last_email.to).to eq [stance.participant.email]
+          expect(last_email_html_body).to include "claim the vote"
         end
 
         it 'user enters unverified users email' do
           # create stance and unverified user -> send verify/login email
+          user.update(email_verified: false)
+          expect { post :create, stance: visitor_stance_params, participation_token: invitation.token }.to change { Stance.count }.by(1)
+          stance = Stance.last
+          expect(stance.participant.email_verified).to eq false
+          expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
+          expect(poll.members).to include stance.participant
+          expect(poll.members).to_not include User.verified.find_by(email: stance.participant.email)
+          expect(last_email.to).to eq [stance.participant.email]
+          expect(last_email_html_body).to include "verify your email"
         end
 
         it 'user enters unrecognised email' do
           # create stance and unverified user -> send verify/login email
+          expect { post :create, stance: visitor_stance_params, participation_token: invitation.token }.to change { Stance.count }.by(1)
+          stance = Stance.last
+          expect(stance.participant.email_verified).to eq false
+          expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
+          expect(poll.members).to include stance.participant
+          expect(poll.members).to_not include User.verified.find_by(email: stance.participant.email)
+          expect(last_email.to).to eq [stance.participant.email]
+          expect(last_email_html_body).to include "verify your email"
         end
       end
     end
   end
 
   describe "create as logged in without token" do
+    before { group.add_member! user }
 
     it 'creates a new stance' do
       sign_in user

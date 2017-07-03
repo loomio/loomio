@@ -204,7 +204,14 @@ FactoryGirl.define do
 
   factory :invitation do
     recipient_email { Faker::Internet.email }
+    single_use true
     intent {'join_group'}
+    association :inviter, factory: :user
+  end
+
+  factory :shareable_invitation, class: Invitation do
+    single_use false
+    intent 'join_group'
     association :inviter, factory: :user
   end
 

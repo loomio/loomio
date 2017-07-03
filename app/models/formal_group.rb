@@ -81,8 +81,8 @@ class FormalGroup < Group
 
   def shareable_invitation
     invitations.find_or_create_by(
-      single_use:     false,
-      intent:         :join_group,
+      single_use: false,
+      intent:     :join_group,
       group:      self
     )
   end

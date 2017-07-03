@@ -2,8 +2,8 @@ class StanceService
   def self.create(stance:, actor:)
     actor.ability.authorize! :create, stance
 
-    if invitation = stance.poll.invitations.pending.find_by(token: actor.token)
-      actor = invitation.unverified_user_from_recipient!(name: actor.name) unless actor.is_logged_in?
+    if invitation = stance.poll.invitations.not_cancelled.find_by(token: actor.token)
+      actor = invitation.unverified_user_from_recipient!(name: actor.name, email: actor.email) unless actor.is_logged_in?
       InvitationService.redeem(invitation, actor)
     end
 

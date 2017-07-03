@@ -370,7 +370,9 @@ class Ability
         # if yes, logged in user must be that user
         # if no, logged in user can use the token.
         (user.is_logged_in? && poll.invitations.to_verified_user.find_by(token: @user.token, recipient_email: @user.email)) ||
+        (user.is_logged_in? && poll.invitations.shareable.find_by(token: @user.token)) ||
         (user.is_logged_in? && poll.invitations.to_unverified_user.find_by(token: @user.token)) ||
+        (user.is_logged_in? && poll.invitations.to_unrecognized_user.find_by(token: @user.token)) ||
         (!user.is_logged_in? && poll.invitations.find_by(token: @user.token))
       )
     end

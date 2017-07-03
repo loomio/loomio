@@ -126,6 +126,8 @@ class User < ActiveRecord::Base
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
   scope :mentioned_in, ->(model) { where(id: model.notifications.user_mentions.pluck(:user_id)) }
+  scope :verified, -> { where(email_verified: true) }
+  scope :unverified, -> { where(email_verified: false) }
 
   # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
