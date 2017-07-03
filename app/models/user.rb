@@ -10,13 +10,12 @@ class User < ActiveRecord::Base
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
 
-  validates :email, presence: true, uniqueness: true, email: true
-  validates_inclusion_of :uses_markdown, in: [true,false]
+  validates :email, presence: true, email: true
 
   has_many :stances, as: :participant
 

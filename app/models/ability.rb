@@ -362,10 +362,16 @@ class Ability
     end
 
     can :vote_in, Poll do |poll|
+      # cant have a token of a verified user, and be logged in as another user
       poll.active? && (
         poll.members.include?(@user) ||
         poll.anyone_can_participate ||
-        poll.invitations.pluck(:token).include?(@user.token)
+        # is the invitation to a verified user?
+        # if yes, logged in user must be that user
+        # if no, logged in user can use the token.
+        (user.is_logged_in? && poll.invitations.to_verified_user.find_by(token: @user.token, recipient_email: @user.email)) ||
+        (user.is_logged_in? && poll.invitations.to_unverified_user.find_by(token: @user.token)) ||
+        (!user.is_logged_in? && poll.invitations.find_by(token: @user.token))
       )
     end
 

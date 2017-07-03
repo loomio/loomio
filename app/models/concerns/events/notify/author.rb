@@ -1,6 +1,10 @@
 module Events::Notify::Author
-  def email_users!
+  def trigger!
     super
+    email_author!
+  end
+
+  def email_author!
     mailer.send(:"#{kind}_author", eventable.author, self).deliver_now if notify_author?
   end
 

@@ -2,22 +2,14 @@ class FormalGroup < Group
   include HasTimeframe
   include MakesAnnouncements
   include MessageChannel
-
-  DISCUSSION_PRIVACY_OPTIONS = ['public_only', 'private_only', 'public_or_private']
-  MEMBERSHIP_GRANTED_UPON_OPTIONS = ['request', 'approval', 'invitation']
+  include GroupPrivacy
 
   validates_presence_of :name
-  validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
-  validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
   validates :name, length: { maximum: 250 }
 
   validate :limit_inheritance
-  validate :validate_parent_members_can_see_discussions
-  validate :validate_is_visible_to_parent_members
-  validate :validate_discussion_privacy_options
 
   before_save :update_full_name_if_name_changed
-  before_validation :set_discussions_private_only, if: :is_hidden_from_public?
 
   default_scope { includes(:default_group_cover) }
 
@@ -32,8 +24,6 @@ class FormalGroup < Group
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
 
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
-
-  after_initialize :set_defaults
 
   alias :users :members
 
@@ -88,46 +78,6 @@ class FormalGroup < Group
 
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
 
-  # this method's a bit chunky. New class?
-  def group_privacy=(term)
-    case term
-    when 'open'
-      self.is_visible_to_public = true
-      self.discussion_privacy_options = 'public_only'
-      unless %w[approval request].include?(self.membership_granted_upon)
-        self.membership_granted_upon = 'approval'
-      end
-    when 'closed'
-      self.is_visible_to_public = true
-      self.membership_granted_upon = 'approval'
-      unless %w[private_only public_or_private].include?(self.discussion_privacy_options)
-        self.discussion_privacy_options = 'private_only'
-      end
-
-      # closed subgroup of hidden parent means parent members can seeee it!
-      if is_formal_group? && is_subgroup_of_hidden_parent?
-        self.is_visible_to_parent_members = true
-        self.is_visible_to_public = false
-      end
-    when 'secret'
-      self.is_visible_to_public = false
-      self.discussion_privacy_options = 'private_only'
-      self.membership_granted_upon = 'invitation'
-      self.is_visible_to_parent_members = false
-    else
-      raise "group_privacy term not recognised: #{term}"
-    end
-  end
-
-  def group_privacy
-    if is_visible_to_public?
-      self.public_discussions_only? ? 'open' : 'closed'
-    elsif is_formal_group? && is_subgroup_of_hidden_parent? && is_visible_to_parent_members?
-      'closed'
-    else
-      'secret'
-    end
-  end
 
   def shareable_invitation
     invitations.find_or_create_by(
@@ -169,9 +119,6 @@ class FormalGroup < Group
     all_subgroups.update_all(archived_at: nil)
   end
 
-  def is_hidden_from_public?
-    !is_visible_to_public?
-  end
 
   def is_subgroup_of_hidden_parent?
     is_subgroup? and parent.is_hidden_from_public?
@@ -205,17 +152,6 @@ class FormalGroup < Group
     end
   end
 
-
-  def discussion_private_default
-    case discussion_privacy_options
-    when 'public_or_private' then nil
-    when 'public_only' then false
-    when 'private_only' then true
-    else
-      raise "invalid discussion_privacy value"
-    end
-  end
-
   def update_full_name_if_name_changed
     if changes.include?('name')
       update_full_name
@@ -229,7 +165,6 @@ class FormalGroup < Group
   def update_full_name
     self.full_name = calculate_full_name
   end
-
 
   def organisation_discussions_count
     Group.where("parent_id = ? OR (parent_id IS NULL AND groups.id = ?)", parent_or_self.id, parent_or_self.id).sum(:discussions_count)
@@ -264,61 +199,6 @@ class FormalGroup < Group
   end
 
   private
-
-  def set_discussions_private_only
-    self.discussion_privacy_options = 'private_only'
-  end
-
-  def validate_discussion_privacy_options
-    unless is_visible_to_parent_members?
-      if membership_granted_upon_request? and not public_discussions_only?
-        self.errors.add(:discussion_privacy_options, "Discussions must be public if group is open")
-      end
-    end
-
-    if is_hidden_from_public? and not private_discussions_only?
-      self.errors.add(:discussion_privacy_options, "Discussions must be private if group is hidden")
-    end
-  end
-
-  def validate_parent_members_can_see_discussions
-    self.errors.add(:parent_members_can_see_discussions) unless parent_members_can_see_discussions_is_valid?
-  end
-
-  def validate_is_visible_to_parent_members
-    self.errors.add(:is_visible_to_parent_members) unless visible_to_parent_members_is_valid?
-  end
-
-  def parent_members_can_see_discussions_is_valid?
-    if is_visible_to_public?
-      true
-    else
-      if parent_members_can_see_discussions?
-        is_visible_to_parent_members?
-      else
-        true
-      end
-    end
-  end
-
-  def visible_to_parent_members_is_valid?
-    if is_visible_to_public?
-      true
-    else
-      if is_visible_to_parent_members?
-        is_hidden_from_public? and is_subgroup?
-      else
-        true
-      end
-    end
-  end
-
-  def set_defaults
-    self.is_visible_to_public ||= false
-    self.discussion_privacy_options ||= 'private_only'
-    self.membership_granted_upon ||= 'approval'
-    self.features['use_polls'] = true
-  end
 
   def calculate_full_name
     if is_parent?

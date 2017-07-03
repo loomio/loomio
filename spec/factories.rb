@@ -89,7 +89,7 @@ FactoryGirl.define do
   end
 
   factory :guest_group do
-    group_privacy 'open'
+    group_privacy 'closed'
   end
 
   factory :group_identity do

@@ -2,7 +2,7 @@ module Null::Group
   include Null::Object
 
   def nil_methods
-    [:update_polls_count]
+    [:update_polls_count, :presence]
   end
 
   def none_methods
@@ -10,6 +10,4 @@ module Null::Group
       members: :user
     }
   end
-
-  
 end

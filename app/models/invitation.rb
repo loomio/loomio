@@ -29,6 +29,8 @@ class Invitation < ActiveRecord::Base
   scope :shareable, -> { not_cancelled.where(single_use: false) }
   scope :single_use, -> { not_cancelled.where(single_use: true) }
   scope :ignored, -> (send_count, since) { pending.where(send_count: send_count).where('created_at < ?', since) }
+  scope :to_verified_user, -> {pending.joins("INNER JOIN users ON users.email_verified IS TRUE AND users.email = invitations.recipient_email") }
+  scope :to_unverified_user, -> {pending.joins("INNER JOIN users ON users.email_verified IS FALSE AND users.email = invitations.recipient_email") }
 
   def locale
     inviter.locale
@@ -51,11 +53,16 @@ class Invitation < ActiveRecord::Base
   end
 
   def user_from_recipient!
-    self.group.members.find_by(email: self.recipient_email) ||
+    return unless to_start_group?
     User.find_or_initialize_by(email: self.recipient_email)
         .tap { |user| user.assign_attributes(name: self.recipient_name) }
         .tap(&:save)
   end
+
+  def unverified_user_from_recipient!(name:)
+    User.create!(email_verified: false, email: self.recipient_email, name: name)
+  end
+
 
   def cancel!(args = {})
     update!(args.slice(:canceller).merge(cancelled_at: DateTime.now))
