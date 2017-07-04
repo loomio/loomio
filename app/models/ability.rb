@@ -20,20 +20,6 @@ class Ability
 
     cannot :sign_up, User
 
-    can [:approve, :decline], NetworkMembershipRequest do |request|
-      !request.approved? and request.network.coordinators.include? user
-    end
-
-    can :create, NetworkMembershipRequest do |request|
-      request.group.admins.include?(request.requestor) and
-      request.group.is_parent? and
-      !request.network.groups.include?(request.group)
-    end
-
-    can :manage_membership_requests, Network do |network|
-      network.coordinators.include? user
-    end
-
     can :show, Group do |group|
       if group.archived_at
         false
@@ -397,10 +383,6 @@ class Ability
 
     can :close, Poll do |poll|
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
-    end
-
-    can :update, Visitor do |visitor|
-      @user.can?(:create, visitor) || @user.participation_token == visitor.participation_token
     end
 
     can [:show, :destroy], Identities::Base do |identity|

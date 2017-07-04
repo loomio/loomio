@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704051902) do
+ActiveRecord::Schema.define(version: 20170704081947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -555,50 +555,6 @@ ActiveRecord::Schema.define(version: 20170704051902) do
   add_index "motions", ["discussion_id", "closed_at"], name: "index_motions_on_discussion_id_and_closed_at", order: {"closed_at"=>:desc}, using: :btree
   add_index "motions", ["discussion_id"], name: "index_motions_on_discussion_id", using: :btree
   add_index "motions", ["key"], name: "index_motions_on_key", unique: true, using: :btree
-
-  create_table "network_coordinators", force: :cascade do |t|
-    t.integer  "coordinator_id", null: false
-    t.integer  "network_id",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "network_coordinators", ["coordinator_id", "network_id"], name: "index_network_coordinators_on_coordinator_id_and_network_id", unique: true, using: :btree
-
-  create_table "network_membership_requests", force: :cascade do |t|
-    t.integer  "requestor_id", null: false
-    t.integer  "responder_id"
-    t.integer  "group_id",     null: false
-    t.integer  "network_id",   null: false
-    t.boolean  "approved"
-    t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "network_membership_requests", ["group_id"], name: "index_network_membership_requests_on_group_id", using: :btree
-  add_index "network_membership_requests", ["network_id"], name: "index_network_membership_requests_on_network_id", using: :btree
-
-  create_table "network_memberships", force: :cascade do |t|
-    t.integer  "group_id",   null: false
-    t.integer  "network_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "network_memberships", ["group_id", "network_id"], name: "index_network_memberships_on_group_id_and_network_id", unique: true, using: :btree
-
-  create_table "networks", force: :cascade do |t|
-    t.string   "name",             null: false
-    t.string   "slug",             null: false
-    t.text     "description"
-    t.text     "joining_criteria"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "networks", ["name"], name: "index_networks_on_name", unique: true, using: :btree
-  add_index "networks", ["slug"], name: "index_networks_on_slug", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"

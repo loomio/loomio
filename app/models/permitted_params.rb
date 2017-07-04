@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user visitor vote motion membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
-    attachment contact_message user_deactivation_response network_membership_request
+    attachment contact_message user_deactivation_response
     draft oauth_application community poll_community group_identity
   )
 
@@ -31,10 +31,6 @@ class PermittedParams < Struct.new(:params)
 
   def vote_attributes
     [:position, :statement, :proposal_id, :motion_id]
-  end
-
-  def network_membership_request_attributes
-    [:group_id, :network_id, :message]
   end
 
   def motion_attributes
