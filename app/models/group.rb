@@ -39,21 +39,21 @@ class Group < ActiveRecord::Base
     parent || self
   end
 
-  def add_member!(user, inviter=nil)
-    return unless user.present?
-    tap(&:save!).memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
+  def add_member!(user, invitation: nil, inviter: nil)
+    tap(&:save!).memberships.find_or_create_by(user: user).tap do |m|
+      m.update(invitation: invitation, inviter: inviter || invitation&.inviter)
+    end
   end
 
-  def add_members!(users, inviter=nil)
-    users.map { |user| add_member!(user, inviter) }
+  def add_members!(users)
+    users.map { |user| add_member!(user) }
   end
 
-  def add_admin!(user, inviter = nil)
-    add_member!(user, inviter).tap do |m|
+  def add_admin!(user)
+    add_member!(user).tap do |m|
       m.make_admin!
       update(creator: user) if creator.blank?
-      reload
-    end
+    end.reload
   end
 
   def is_guest_group?
@@ -63,7 +63,7 @@ class Group < ActiveRecord::Base
   def is_formal_group?
     type == "FormalGroup"
   end
-  
+
   # this method's a bit chunky. New class?
   def group_privacy=(term)
     case term

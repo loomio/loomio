@@ -80,7 +80,7 @@ class InvitationService
     user.associate_with_identity(identity)  if identity.present?
 
     method     = invitation.to_be_admin? ? :add_admin! : :add_member!
-    membership = invitation.group.send(method, user, invitation.inviter)
+    membership = invitation.group.send(method, user, invitation: invitation)
     invitation.save!
     Events::InvitationAccepted.publish!(membership)
   end

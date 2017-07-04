@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, AppCo
   controller: ($scope, Records, Session) ->
 
     $scope.init = ->
-      $scope.stance = PollService.lastStanceBy(Session.participant(), $scope.poll) or
+      $scope.stance = PollService.lastStanceBy(Session.user(), $scope.poll) or
                       Records.stances.build(
                         pollId:    $scope.poll.id,
                         userId:    AppConfig.currentUserId,
@@ -15,7 +15,7 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, AppCo
     $scope.init()
 
     $scope.userHasVoted = ->
-      PollService.hasVoted(Session.participant(), $scope.poll)
+      PollService.hasVoted(Session.user(), $scope.poll)
 
     $scope.openStanceForm = ->
       ModalService.open PollCommonEditVoteModal, stance: -> $scope.init()

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703053108) do
+ActiveRecord::Schema.define(version: 20170704051902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -363,20 +363,6 @@ ActiveRecord::Schema.define(version: 20170703053108) do
 
   add_index "group_requests", ["group_id"], name: "index_group_requests_on_group_id", using: :btree
 
-  create_table "group_visits", force: :cascade do |t|
-    t.uuid     "visit_id"
-    t.integer  "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.boolean  "member",     default: false, null: false
-  end
-
-  add_index "group_visits", ["created_at"], name: "index_group_visits_on_created_at", using: :btree
-  add_index "group_visits", ["group_id"], name: "index_group_visits_on_group_id", using: :btree
-  add_index "group_visits", ["member"], name: "index_group_visits_on_member", using: :btree
-  add_index "group_visits", ["visit_id", "group_id"], name: "index_group_visits_on_visit_id_and_group_id", unique: true, using: :btree
-
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -517,6 +503,7 @@ ActiveRecord::Schema.define(version: 20170703053108) do
     t.boolean  "is_suspended",   default: false, null: false
     t.integer  "volume",         default: 2,     null: false
     t.jsonb    "experiences",    default: {},    null: false
+    t.integer  "invitation_id"
   end
 
   add_index "memberships", ["created_at"], name: "index_memberships_on_created_at", using: :btree
@@ -694,20 +681,6 @@ ActiveRecord::Schema.define(version: 20170703053108) do
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree
   add_index "omniauth_identities", ["identity_type", "uid"], name: "index_omniauth_identities_on_identity_type_and_uid", using: :btree
   add_index "omniauth_identities", ["user_id"], name: "index_omniauth_identities_on_user_id", using: :btree
-
-  create_table "organisation_visits", force: :cascade do |t|
-    t.uuid     "visit_id"
-    t.integer  "organisation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.boolean  "member",          default: false, null: false
-  end
-
-  add_index "organisation_visits", ["created_at"], name: "index_organisation_visits_on_created_at", using: :btree
-  add_index "organisation_visits", ["member"], name: "index_organisation_visits_on_member", using: :btree
-  add_index "organisation_visits", ["organisation_id"], name: "index_organisation_visits_on_organisation_id", using: :btree
-  add_index "organisation_visits", ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true, using: :btree
 
   create_table "outcomes", force: :cascade do |t|
     t.integer  "poll_id"

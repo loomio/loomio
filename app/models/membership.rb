@@ -13,6 +13,7 @@ class Membership < ActiveRecord::Base
 
   belongs_to :user, counter_cache: true
   belongs_to :inviter, class_name: 'User'
+  belongs_to :invitation
   has_many :events, as: :eventable, dependent: :destroy
 
   scope :active, -> { published.where(is_suspended: false) }
@@ -42,6 +43,7 @@ class Membership < ActiveRecord::Base
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
+  delegate :token, to: :invitation, allow_nil: true
 
   before_create :set_volume
 

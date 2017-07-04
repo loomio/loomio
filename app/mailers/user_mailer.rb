@@ -36,11 +36,10 @@ class UserMailer < BaseMailer
                      locale: locale_for(@user)
   end
 
-  def user_added_to_group(recipient, event, message = nil)
+  def user_added_to_group(recipient, event)
     @user    = recipient
     @group   = event.eventable.group
     @inviter = event.eventable.inviter || @group.admins.first
-    @message = message
 
     send_single_mail to: @user.email,
                      from: from_user_via_loomio(@inviter),

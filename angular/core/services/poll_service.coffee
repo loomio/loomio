@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfig, Records, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfig, Records, Session, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -27,8 +27,8 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
         userId: AppConfig.currentUserId
       _.first _.sortBy(Records.stances.find(criteria), 'createdAt')
 
-    hasVoted: (participant, poll) ->
-      @lastStanceBy(participant, poll)?
+    hasVoted: (user, poll) ->
+      @lastStanceBy(user, poll)?
 
     iconFor: (poll) ->
       @fieldFromTemplate(poll.pollType, 'material_icon')
@@ -82,6 +82,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
           model.poll().clearStaleStances()
           ScrollService.scrollTo '.poll-common-card__results-shown'
           scope.$emit 'stanceSaved', data.stances[0].key
+          Session.login(current_user_id: data.stances[0].user_id) unless Session.user().emailVerified
         cleanupFn: ->
           scope.$emit 'doneProcessing'
       , options))

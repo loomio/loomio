@@ -25,13 +25,15 @@ class Invitation < ActiveRecord::Base
   delegate :identity_type, to: :group, allow_nil: true
 
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
-  scope :pending, -> { not_cancelled.single_use.where(accepted_at: nil) }
+  scope :useable, -> { not_cancelled.where(accepted_at: nil) }
+  scope :pending, -> { useable.single_use }
   scope :shareable, -> { not_cancelled.where(single_use: false) }
   scope :single_use, -> { not_cancelled.where(single_use: true) }
   scope :ignored, -> (send_count, since) { pending.where(send_count: send_count).where('created_at < ?', since) }
-  scope :to_verified_user, -> {pending.joins("INNER JOIN users ON users.email_verified IS TRUE AND users.email = invitations.recipient_email") }
+  scope :to_verified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS TRUE AND users.email = invitations.recipient_email") }
   scope :to_unverified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS FALSE AND users.email = invitations.recipient_email") }
   scope :to_unrecognized_user, -> { pending.joins("LEFT OUTER JOIN users ON users.email = invitations.recipient_email").where("users.id IS NULL") }
+
 
   def locale
     inviter.locale

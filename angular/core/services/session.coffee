@@ -26,11 +26,5 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translat
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()
 
-  visitor: ->
-    Records.visitors.find(AppConfig.currentVisitorId)
-
-  participant: ->
-    @visitor() or @user()
-
   currentGroupId: ->
     @currentGroup? && @currentGroup.id
