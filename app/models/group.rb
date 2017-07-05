@@ -21,8 +21,6 @@ class Group < ActiveRecord::Base
   has_many :discussions, foreign_key: :group_id, dependent: :destroy
   has_many :polls, foreign_key: :group_id
 
-  define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
-  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
   define_counter_cache(:polls_count)               { |group| group.polls.count }
   define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
   define_counter_cache(:memberships_count)         { |group| group.memberships.count }

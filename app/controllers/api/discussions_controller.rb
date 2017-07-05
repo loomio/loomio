@@ -1,6 +1,7 @@
 class API::DiscussionsController < API::RestfulController
   load_and_authorize_resource only: [:show, :mark_as_read, :dismiss, :move]
   load_resource only: [:create, :update, :star, :unstar, :set_volume]
+  after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
   include UsesFullSerializer
@@ -54,6 +55,10 @@ class API::DiscussionsController < API::RestfulController
   end
 
   private
+
+  def track_visit
+    VisitService.record(group: resource.group, visit: current_visit, user: current_user)
+  end
 
   def accessible_records
     Queries::VisibleDiscussions.new(user: current_user, group_ids: @group && @group.id_and_subgroup_ids)

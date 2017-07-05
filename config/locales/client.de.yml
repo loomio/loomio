@@ -3,6 +3,10 @@ de:
     proposal: Vorschlag
     poll: Umfrage
   common:
+    ok_got_it: Ok, verstanden
+    learn_more: Mehr erfahren
+    not_found: Nicht gefunden
+    time_zone: Zeitzone
     confirm_discard_changes: Deine Änderungen verwerfen?
     time:
       am: am
@@ -14,6 +18,8 @@ de:
     group: 'Gruppe'
     groups: 'Gruppen'
     threads: 'Diskussionsbeiträge'
+    decisions: 'Entscheidungen'
+    settings: 'Einstellungen'
     help: 'Hilfe'
     privacy:
       privacy: 'Privatsphäre'
@@ -36,6 +42,7 @@ de:
     copy_text: 'Text kopieren'
     copied: 'In die Zwischenablage kopiert'
     action:
+      next: 'Nächstes'
       close: 'Schließen'
       save: 'Speichern'
       save_changes: 'Änderungen speichern'
@@ -62,6 +69,8 @@ de:
       ok: OK!
       retry: Nochmal versuchen
       done: Erledigt
+      start: Start
+      delete: Löschen
     formatting_help:
       title: 'Lerne die Verwendung von Markdown, um Deinen Text auf Loomio zu formatieren.'
   devise:
@@ -101,6 +110,7 @@ de:
     unmute: 'Laut'
   change_volume_form:
     loud_label: "Alle Meldungen"
+    normal_label: "Ankündigungen"
     quiet_label: "Keine Emails"
     mute_label: "Stumm"
     discussion:
@@ -140,6 +150,20 @@ de:
     latest: 'Letzte'
     unread: 'Ungelesen'
     closing_in: 'Wird geschlossen'
+  sign_up_form:
+    name_label: 'Dein Name:'
+    name_placeholder: 'Jane Doe'
+    email_label: 'Email:'
+    email_placeholder: 'du@beispiel.de'
+    password_label: 'Passwort:'
+    password_confirmation_label: 'Nochmal:'
+    sign_in_message: 'Hast Du schon einen Account?'
+    sign_in: 'Einloggen'
+    sign_up: 'Account erstellen'
+  signed_out_modal:
+    aria_label: 'Sitzung beendet'
+    title: "Deine Sitzung wurde beendet"
+    ok: "Ok"
   comment_form:
     aria_label: 'Kommentar hinzufügen'
     attachments:
@@ -153,6 +177,7 @@ de:
     delete_comment: 'Kommentar löschen'
     cancel_reply: 'Antwort abbrechen'
     confirm_delete_message: 'Bist Du sicher, dass Du diesen Kommentar löschen willst?'
+    confirm_delete: 'Kommentar löschen'
     in_reply_to: "In Antwort zu <strong>{{name}}</strong>:"
     submit_button:
       label: 'Veröffentlichen'
@@ -160,11 +185,15 @@ de:
     public_privacy_notice: 'Dein Kommentar wird für alle im Web sichtbar sein.'
     sign_in: "Melde Dich an, um an der Diskussion teilzunehmen"
   sidebar:
+    start_group: 'Neue Gruppe'
+    explore: 'Öffentliche Gruppen'
     edit_profile: 'Profil bearbeiten'
     email_settings: 'eMail-Einstellungen'
     help: 'Hilfe'
+    contact: 'Loomio kontaktieren'
     sign_out: 'Abmelden'
     start_thread: Neues Thema
+    start_decision: Neue Entscheidung
     aria_labels:
       heading: 'Sidebar'
       groups_list: 'Gruppen'
@@ -175,6 +204,7 @@ de:
     start_thread: 'Neues Thema'
     notifications: 'Benachrichtigungspanel'
     search:
+      results_aria_label: 'Suchergebnisse'
       no_results: 'Keine Diskussionen gefunden'
       close: 'Suchabfrage schließen'
       placeholder: 'Suche'
@@ -188,9 +218,11 @@ de:
     start_group: 'Gruppe gründen'
     start_subgroup: 'Untergruppe gründen'
     start_thread: 'Diskussion eröffnen'
+    start_poll: 'Umfrage starten'
     invite_people: 'Leute einladen'
   notifications:
     header: "Benachrichtigungen"
+    no_notifications: "Du hast keine Benachrichtigungen"
     publish_outcome: "Ergebnis bekanntgeben"
   position_buttons_panel:
     heading: Komme zu Wort
@@ -218,6 +250,7 @@ de:
     change_your_vote: Deine Meinung ändern.
   undecided_panel:
     aria_label: 'Unentschlossene Mitglieder'
+    remind: Erinnern
     hide_undecided: Unentschlossene Mitglieder verbergen
   proposal_pie_chart:
     participation_statement: '{{percentage}}% der Mitglieder haben bereits abgestimmt ({{number}}/{{total}})'
@@ -288,12 +321,18 @@ de:
       <p>Hilft Loomio in Deiner Gruppe? Wir haben gerade erst unsere Vertragsmodelle veröffentlicht und wir fragen Gruppen, welche Loomio bereits testen konnten, ein Vertragsmodell zu wählen, das zu ihnen passt.</p>
     submit: "Zeig' mir die Modelle"
   group_welcome_modal:
+    aria_label: "Willkommen"
     creator_heading: "Willkommen in Deiner neuen Gruppe"
     member_heading: "Willkommen bei Loomio"
     creator_info: "Du bist der/die <strong>Gruppenkoordinator.in</strong>, das ist so was wie ein Gastgeber. Schau Dir das Video an und dann die Beispiel-Diskussionen."
     member_info: "Schau Dir das Video an, um einen Überblick über die Funktion von Loomio zu erhalten. Danach versuche zu eine Diskussion zu kommentieren oder beginne eine eigene Diskussion!"
     creator_footer: "Wenn Du fertig bist, <strong>lade Menschen</strong> ein."
     ok_got_it: "Okay, ich hab´s!"
+  logo_photo_form:
+    heading: 'Neues Gruppenlogo'
+    upload_link: 'Neues Gruppenlogo hochladen'
+    image_size_helptext: 'Die ideale Bildgröße ist 100x100px'
+    upload_success: 'Das Logo wurde erfolgreich hochgeladen'
   join_group_button:
     join_group: Der Gruppe beitreten
     membership_requested: Mitgliedschaftsanfrage läuft noch
@@ -303,6 +342,7 @@ de:
     heading: Gruppenbeitritt anfragen
     name_label: Name
     email_label: eMail
+    introduction_label: Warum willst Du beitreten?
     messages:
       membership_requested: 'Du hast die Mitgliedschaft für {{group}} angefragt'
   revision_history_modal:
@@ -331,6 +371,7 @@ de:
       archive_group_success: 'Diese Gruppe wurde deaktiviert'
     group_logo: 'Gruppen-Logo'
     new_photo: 'Neues Foto'
+    new_group_logo: 'Neues Gruppenlogo hochladen'
     discussions: 'Themen'
     discussions_placeholder: 'In einer Diskussion kann jeder diskutieren und es können gemeinsam Entscheidungen getroffen werden.'
     members: 'Mitglieder ({{count}})'
@@ -338,6 +379,7 @@ de:
     member_options: Mitgliedseinstellungen
     subgroups: 'Untergruppen'
     subgroups_placeholder: 'Untergruppen ermöglichen Dir die Gruppe in verschiedene Teams aufzuteilen'
+    invite_people: 'Einladen'
     visibility_label: 'Sichtbarkeit'
     options_label: 'Optionen'
     options:
@@ -367,15 +409,28 @@ de:
       parent_members: 'Privatsphäre: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar.'
       public: 'Privatsphäre: Diese Gruppe ist im Web sichtbar'
       aria_label: 'Gruppen-Privatsphäre: {{privacy}}'
+  description_card:
+    title: 'Gruppenbeschreibung'
+  leave_group_form:
+    aria_label: 'Gruppe verlassen'
+    title: 'Gruppe verlassen'
+    question: 'Bist Du sicher, dass Du diese Gruppe verlassen willst?'
+    submit: 'Ja, diese Gruppe verlassen'
   confirm_gift_plan_modal:
     go_back: Upgrade
   donation_modal:
     body: "Loomio ist ein gemeinnütziges Unternehmen. Unsere Mission ist eine Welt zu erschaffen, in der es für jeden einfach ist an Entscheidungen teilzuhaben, die ihn betreffen."
     contribute: Mache eine Spende
+    got_to_group: Nicht jetzt, danke.
   gift_card:
     heading: Geschenk-Plan
     make_a_contribution: Mache eine Spende
+  upgrade_plan_card:
+    more: '... und noch viel mehr.'
+    upgrade: Jetzt upgraden
+    donate: Spenden
   trial_card:
+    title: '30 Tage Probe'
     choose_plan: 'Wähle dein Vertragsmodell'
     in_progress_body: 'Danke für das testen von Loomio in <strong>{{name}}</strong>. Du kannst jederzeit das Vertragsmodell wählen, dass am Besten zu Deiner Gruppe passt.'
     expired_body_html: "<strong>{{name}}</strong> hat das Ende des Loomio Probezeitraums erreicht. Um es weiterhin zu nutzen musst Du ein Vertragsmodell wählen, dass am Besten zu Deiner Gruppe passt."
@@ -384,8 +439,10 @@ de:
     free: Kostenloss
     standard: Standard
     pro: Pro
+    per_month: /Monat
     free_group_description: Spenden-unterstütztes Modell für Community-Gruppen
     pro_group_description: Für Organisationen mit <nobr>mehreren Gruppen.</nobr>
+    need_help_please: Brauchst Du etwas anderes?
     select: Wähle
   subscription_success_modal:
     contact_link: bitt kontaktiere uns.
@@ -499,6 +556,8 @@ de:
     remove_admin_from_self:
       question: 'Bist Du sicher, dass Du nicht mehr Koordinator bleiben willst?'
   remove_membership_form:
+    aria_label: 'Mitglied entfernen'
+    title: 'Mitglied entfernen'
     submit: 'Entfernen'
   pending_invitations_card:
     heading: Ausstehende Einladungen
@@ -519,6 +578,7 @@ de:
       password_changed: 'Passwort aktualisiert'
       deactivated: 'Konto deaktiviert'
     change_picture_link: 'Bild tauschen'
+    change_password_link: 'Passwort zurücksetzen'
     deactivate_user_link: 'Konto deaktivieren...'
     profile: 'Profil'
     edit_profile: 'Profil bearbeiten'
@@ -528,6 +588,8 @@ de:
     email_label: 'eMail'
     locale_label: 'Sprache'
     update_profile: 'Profil aktualisieren'
+  change_password_form:
+    title: Passwort zurücksetzen
   email_settings_page:
     header: eMail-Einstellungen
     all_groups: Einstellungen für alle Gruppen
@@ -867,6 +929,8 @@ de:
     your_response: Deine Antworte
     results: Ergebnisse
     votes: Stimmen
+  current_polls_card:
+    start_poll: Neue Entscheidung
   poll_common_collapsed:
     by_who: "von {{name}}"
   poll_common_notify_group:
@@ -878,3 +942,13 @@ de:
     share_outcome: Ergebnis teilen
   poll_common_outcome_form:
     submit: Ergebnis teilen
+  poll_common_form:
+    start: Start
+  polls_page:
+    heading: Entscheidungen
+    start_new_poll: Neue Entscheidung
+  auth_form:
+    email_placeholder: du@beispiel.de
+  install_slack:
+    progress:
+      invite: Einladen

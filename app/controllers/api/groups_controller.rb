@@ -2,6 +2,7 @@ class API::GroupsController < API::RestfulController
   include UsesFullSerializer
   load_and_authorize_resource only: :show, find_by: :key
   load_resource only: [:upload_photo], find_by: :key
+  after_action :track_visit, only: :show
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
@@ -41,6 +42,9 @@ class API::GroupsController < API::RestfulController
   end
 
   private
+  def track_visit
+    VisitService.record(group: resource, visit: current_visit, user: current_user)
+  end
 
   def ensure_photo_params
     params.require(:file)

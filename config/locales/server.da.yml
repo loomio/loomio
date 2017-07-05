@@ -356,7 +356,6 @@ da:
       responses: Svar
       change_your_stance: Redigér
       create_outcome: Del resultat
-      your_response: Dit svar
       please_respond: Svar venligst
       time_zone: (Tider er vist i %{zone})
     proposal:

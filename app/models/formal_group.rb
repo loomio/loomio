@@ -45,9 +45,9 @@ class FormalGroup < Group
            foreign_key: 'parent_id'
   has_many :all_subgroups, class_name: 'Group', foreign_key: :parent_id
 
-  define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
-  define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
-  define_counter_cache(:proposal_outcomes_count)   { |group| group.motions.with_outcomes.count }
+  define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
+  define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
 
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704081947) do
+ActiveRecord::Schema.define(version: 20170705033454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,8 +51,6 @@ ActiveRecord::Schema.define(version: 20170704081947) do
     t.integer  "user_id"
     t.string   "user_type"
     t.string   "mailer"
-    t.text     "subject"
-    t.text     "content"
     t.datetime "sent_at"
     t.datetime "opened_at"
     t.datetime "clicked_at"
@@ -424,6 +422,7 @@ ActiveRecord::Schema.define(version: 20170704081947) do
     t.integer  "polls_count",                        default: 0,              null: false
     t.boolean  "guest",                              default: false,          null: false
     t.string   "type",                               default: "FormalGroup",  null: false
+    t.integer  "subgroups_count",                    default: 0,     null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree

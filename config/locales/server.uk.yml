@@ -86,6 +86,7 @@ uk:
       subject: Loomio - Підсумки останніх 24 годин
     missed_yesterday:
       subject: Вчора на Loomio
+      do_not_reply: Будь ласка не відповідайте на цей лист
       headlines: Останні новини
       mark_as_read: Відмітити як прочитане
       thanks_for_reading: Дякуємо за читання, гарного дня!
@@ -234,6 +235,10 @@ uk:
     ldap_coming_soon: ActiveDirectory / LDAP найближчим часом
     custom_subdomain: піддомен користувача
     analytics_reports: аналітичні звіти
+    free_is_for_community_and_evaluation_html: |
+      Безкоштовний план призначений для тимчасових користувачів, спільнот та тих, хто хоче оцінити використання Loomio в своїй організації. Ми покладаємось на платні плани для забезпечення підтримки та вдосконалення Loomio.<br/>
+      Ми поважаємо вашу конфіденційність і ніколи не продамо ваші дані стороннім особам, та не розміщуємо рекламу в Loomio.<br/>
+      Якщо ви неприбуткова організація, зв'яжіться з нами щодо знижки.
     contact_us_html: |
       Ціни вказані в доларах США; додатково нараховується податок з продажів у випадках, де він має бути застосованим. Потрібно щось ще? <a href="/contact">Давай поговоримо!</a>
     custom_subdomain_html: |
@@ -373,7 +378,7 @@ uk:
       responses: Відповіді
       change_your_stance: Змінити
       create_outcome: Поширити рішення
-      your_response: Ваша відповідь
+      your_response: "Ви проголосували:"
       please_respond: Будь ласка дайте відповідь
       time_zone: (Час відображається в %{zone})
       undecided_members: Учасників що не визначились (%{count})
@@ -412,6 +417,8 @@ uk:
         poll_closing_soon_author: 'Ваше опитування закривається за 24 години: %{title}'
         poll_expired: "Результати опитування: %{title}"
         poll_expired_author: 'Ваше опитування закрито. Поширте результат для: %{title}'
+        poll_option_added: '%{actor} додав(ла) варіанти до: %{title}'
+        poll_option_added_author: '%{actor} додав варіанти до: %{title}'
         outcome_created: '%{actor} поширив(ла) результат опитування: %{title}'
         visitor_created: '%{actor} пропонує вам проголосувати: %{title}'
         visitor_reminded: '%{actor} очікує вашого голосу щодо: %{title}'
@@ -423,6 +430,8 @@ uk:
         poll_closing_soon_author: 'Ваше опитування закривається за 24 години - тепер чудовий час щоб нагадати людям про нього або продовжити термін якщо це необхідно.'
         poll_expired: "Опитування <strong>%{actor}</strong> закрито: %{title}"
         poll_expired_author: 'Ваше опитування <strong>закрито</strong>. Будь ласка знайдіть час аби врахувати що і як було сказано та <strong>поширте результат</strong> у групі, аби люди знали що буде відбуватися далі.'
+        poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат опитування.'
         visitor_created: '<strong>%{actor}</strong> запропонував(ла) вам долучитись до опитуванняl: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> очікує вашого голосу щодо: %{title}'
@@ -462,6 +471,8 @@ uk:
         poll_closing_soon_author: 'Ваше відбіркове голосування закривається за 24 години: %{title}'
         poll_expired: "Результати відбіркового голосування: %{title}"
         poll_expired_author: 'Ваше відбіркове голосування закрито. Поширте результат для: %{title}'
+        poll_option_added: '%{actor} додав(ла) варіанти до: %{title}'
+        poll_option_added_author: '%{actor} додав варіанти до: %{title}'
         outcome_created: '%{actor} поширив(ла) результат: %{title}'
         visitor_created: '%{actor} запросив вас долучитись до відбіркового голосування: %{title}'
         visitor_reminded: '%{actor} очікує вашого голосу щодо: %{title}'
@@ -473,6 +484,8 @@ uk:
         poll_closing_soon_author: 'Ваше відбіркове голосування закривається за 24 години - можливо ви бажаєте нагадати людям про нього або продовжити термін якщо це необхідно.'
         poll_expired: "Результат відбіркового голосування від <strong>%{actor}</strong> щодо: %{title}"
         poll_expired_author: 'Це відбіркове голосування <strong>закрито</strong>. Врахуйте що і як було сказано та <strong>поширте результат</strong> у групі, аби люди знали що буде відбуватися далі., '
+        poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат відбіркового голосування .'
         visitor_created: '<strong>%{actor}</strong> запропонував(ла) вам долучитись до відбіркового голосування: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> очікує вашого голосу щодо: %{title}'
@@ -487,7 +500,10 @@ uk:
         poll_closing_soon_author: 'Ваше опитування щодо часу закривається за 24 години: %{title}'
         poll_expired: "Результати опитування щодо часу: %{title}"
         poll_expired_author: 'Ваше опитування щодо часу закрито. Поширте результат для: %{title}'
+        poll_option_added: '%{actor} додав варіанти до: %{title}'
+        poll_option_added_author: '%{actor} додав варіанти до: %{title}'
         outcome_created: '%{actor} поширив(ла) результат: %{title}'
+        outcome_created_author: 'Ви поширили результат: %{title}'
         visitor_created: '%{actor} хоче узгодити час щодо: %{title}'
         visitor_reminded: '%{actor} очікує вашої відповіді щодо: %{title}'
         stance_created: '%{actor} долучився до: %{title}'
@@ -498,7 +514,10 @@ uk:
         poll_closing_soon_author: 'Ваше опитування щодо часу закривається за 24 години - можливо ви бажаєте нагадати людям про нього або продовжити термін якщо це необхідно.'
         poll_expired: "Опитування щодо часу від <strong>%{actor}</strong> закрито"
         poll_expired_author: 'Це опитування щодо часу <strong>закрито</strong>. Врахуйте що і як було сказано та <strong>поширте результат</strong> у групі аби люди знали що буде відбуватися далі., '
+        poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат опитування щодо часу.'
+        outcome_created_author: 'Ви поширили результат опитування щодо часу.'
         visitor_created: '<strong>%{actor}</strong> хоче узгодити час щодо: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> очікує вашоЇ відповіді щодо: %{title}'
         stance_created: "<strong>%{actor}</strong> прийняв участь у: %{title}"
