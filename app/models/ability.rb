@@ -40,7 +40,7 @@ class Ability
     end
 
     can [:choose_subscription_plan], Group do |group|
-      group.is_parent? and user_is_admin_of?(group.id)
+      user.is_verified? and group.is_parent? and user_is_admin_of?(group.id)
     end
 
     can [:update,
@@ -63,20 +63,22 @@ class Ability
          :make_draft,
          :move_discussions_to,
          :view_previous_proposals], Group do |group|
-      user_is_member_of?(group.id)
+      user.is_verified? && user_is_member_of?(group.id)
     end
 
     can [:add_members,
          :invite_people,
          :manage_membership_requests,
          :view_shareable_invitation], Group do |group|
-      (group.members_can_add_members? && user_is_member_of?(group.id)) ||
-      user_is_admin_of?(group.id)
+      user.is_verified? &&
+      ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
+      user_is_admin_of?(group.id))
     end
 
     # please note that I don't like this duplication either.
     # add_subgroup checks against a parent group
     can [:add_subgroup], Group do |group|
+      user.is_verified? &&
       group.is_parent? &&
       user_is_member_of?(group.id) &&
       (group.members_can_create_subgroups? || user_is_admin_of?(group.id))
@@ -87,14 +89,14 @@ class Ability
       # anyone can create a top level group of their own
       # otherwise, the group must be a subgroup
       # inwhich case we need to confirm membership and permission
-
+      user.is_verified? &&
       group.is_parent? ||
-      user.is_logged_in? &&
       ( user_is_admin_of?(group.parent_id) ||
         (user_is_member_of?(group.parent_id) && group.parent.members_can_create_subgroups?) )
     end
 
     can :join, Group do |group|
+      user.is_verified? &&
       can?(:show, group) &&
       (group.membership_granted_upon_request? ||
        group.invitations.find_by(recipient_email: @user.email))
@@ -191,6 +193,7 @@ class Ability
     end
 
     can :update, Discussion do |discussion|
+      return false unless user.is_verified?
       if discussion.group.members_can_edit_discussions?
         user_is_member_of?(discussion.group_id)
       else
@@ -203,6 +206,7 @@ class Ability
     end
 
     can :create, Discussion do |discussion|
+      return false unless user.is_verified?
       (discussion.group.present? &&
        discussion.group.members_can_start_discussions? &&
        user_is_member_of?(discussion.group_id)) ||
@@ -210,7 +214,6 @@ class Ability
     end
 
     can [:set_volume,
-         :new_proposal,
          :show_description_history,
          :preview_version], Discussion do |discussion|
       user_is_member_of?(discussion.group_id)
@@ -237,7 +240,7 @@ class Ability
     end
 
     can [:create], Attachment do
-      user.is_logged_in?
+      user.is_verified?
     end
 
     can [:destroy], Attachment do |attachment|
@@ -311,7 +314,7 @@ class Ability
     end
 
     can :create, OauthApplication do |application|
-      @user.is_logged_in?
+      @user.is_verified?
     end
 
     can [:show, :remind], Communities::Base do |community|
