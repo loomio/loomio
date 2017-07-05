@@ -322,7 +322,7 @@ describe API::PollsController do
     end
 
     it 'allows visitors to add options' do
-      post :add_options, id: poll.key, poll_option_names: 'new_option', participation_token: visitor.participation_token
+      post :add_options, id: poll.key, poll_option_names: 'new_option', invitation_token: visitor.invitation_token
       expect(response.status).to eq 200
       expect(poll.reload.poll_option_names).to include 'new_option'
     end

@@ -15,7 +15,7 @@ module CurrentUserHelper
     User.find_by!(params.slice(:unsubscribe_token)).tap { |user| user.restricted = true } if params[:unsubscribe_token]
   end
 
-  def set_participation_token
-    current_user.token = params[:participation_token] if params[:participation_token]
+  def set_invitation_token
+    current_user.token = params[:invitation_token] if params[:invitation_token]
   end
 end

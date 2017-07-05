@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
 
     params =
       poll_id: $scope.poll.key
-      participation_token: $location.search().participation_token
+      invitation_token: $location.search().invitation_token
 
     $scope.usersLoader = if $scope.poll.isActive()
       new RecordLoader

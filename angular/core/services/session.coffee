@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translat
   login: (data) ->
     Records.import(data)
 
-    defaultParams = _.pick {participation_token: $location.search().participation_token}, _.identity
+    defaultParams = _.pick {invitation_token: $location.search().invitation_token}, _.identity
     Records.stances.remote.defaultParams = defaultParams
     Records.polls.remote.defaultParams   = defaultParams
 

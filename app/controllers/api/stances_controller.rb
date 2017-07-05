@@ -1,6 +1,7 @@
 class API::StancesController < API::RestfulController
   alias :update :create
   before_action :set_guest_params, only: :create
+  after_action :sign_in_unverified_user, only: :create
 
   def my_stances
     self.collection = current_user.stances.latest.includes({poll: :discussion})
@@ -10,6 +11,9 @@ class API::StancesController < API::RestfulController
   end
 
   private
+  def sign_in_unverified_user
+    sign_in(resource.participant) if resource.persisted? && !resource.participant.email_verified
+  end
 
   def set_guest_params
     return if current_user.is_logged_in?
@@ -32,5 +36,4 @@ class API::StancesController < API::RestfulController
       collection
     end
   end
-
 end

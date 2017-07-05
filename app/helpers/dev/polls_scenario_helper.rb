@@ -63,7 +63,7 @@ module Dev::PollsScenarioHelper
 
     {poll: poll,
      actor: actor,
-     params: {participation_token: visitor.participation_token}}
+     params: {invitation_token: visitor.invitation_token}}
   end
 
   def poll_edited_scenario(poll_type:)

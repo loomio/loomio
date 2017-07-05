@@ -81,7 +81,7 @@ class PollEmailInfo
       utm_medium: 'email',
       utm_campaign: 'poll_mailer',
       utm_source: action_name,
-      participation_token: @recipient.token
+      invitation_token: @recipient.token
     }.merge(args)
   end
 

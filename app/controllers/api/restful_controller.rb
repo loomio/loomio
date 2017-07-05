@@ -5,7 +5,7 @@ class API::RestfulController < ActionController::Base
   include ::CurrentUserHelper
   before_filter :set_application_locale
   before_filter :set_paper_trail_whodunnit
-  before_action :set_participation_token
+  before_action :set_invitation_token
   snorlax_used_rest!
 
   private

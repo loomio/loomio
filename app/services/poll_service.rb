@@ -165,7 +165,7 @@ class PollService
       else
         poll.guest_group.invitations.create!(recipient_email: visitor.email,
         recipient_name: visitor.name,
-        token: visitor.participation_token,
+        token: visitor.invitation_token,
         intent: "join_group")
       end
     end
