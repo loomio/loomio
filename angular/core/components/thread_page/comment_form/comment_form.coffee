@@ -5,12 +5,6 @@ angular.module('loomioApp').directive 'commentForm', ->
   replace: true
   controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService, ModalService, AuthModal) ->
 
-    $scope.$on 'remindUndecided', (event) ->
-      return unless $scope.discussion.activeProposal()
-      ScrollService.scrollTo('.comment-form__comment-field')
-      undecided = _.map $scope.discussion.activeProposal().undecidedMembers(), (member) -> "@#{member.username}"
-      $scope.comment.body = undecided.join(', ')
-
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
 
@@ -36,8 +30,6 @@ angular.module('loomioApp').directive 'commentForm', ->
 
     $scope.listenForSubmitOnEnter = ->
       KeyEventService.submitOnEnter $scope
-    $scope.$on 'voteCreated',     $scope.listenForSubmitOnEnter
-    $scope.$on 'proposalCreated', $scope.listenForSubmitOnEnter
 
     $scope.init = ->
       $scope.comment = Records.comments.build(discussionId: $scope.discussion.id, authorId: Session.user().id)

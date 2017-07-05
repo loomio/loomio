@@ -50,15 +50,6 @@ class UserMailer < BaseMailer
                      locale: locale_for(@user, @inviter)
   end
 
-  def analytics(user:, group:)
-    @user, @group = user, group
-    @stats = Queries::GroupAnalytics.new(group: group).stats
-    send_single_mail to: @user.email,
-                     subject_key: "email.analytics.subject",
-                     subject_params: { which_group: @group.name },
-                     locale: locale_for(@user)
-  end
-
   def login(user:, token:)
     @user = user
     @token = token

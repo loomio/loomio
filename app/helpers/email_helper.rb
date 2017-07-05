@@ -29,19 +29,6 @@ module EmailHelper
     time.in_time_zone(TimeZoneToCity.convert zone).strftime('%l:%M%P - %A %-d %b %Y')
   end
 
-  def motion_closing_time_for(user)
-    @motion.closing_at.in_time_zone(TimeZoneToCity.convert user.time_zone).strftime('%A %-d %b - %l:%M%P')
-  end
-
-  def motion_sparkline(motion)
-    values = motion.vote_counts.values
-    if values.sum == 0
-      '0,0,0,0,1'
-    else
-      values.join(',')
-    end
-  end
-
   def time_formatted_relative_to_age(time)
     current_time = Time.zone.now
     if time.to_date == Time.zone.now.to_date

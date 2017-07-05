@@ -36,9 +36,6 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
     iconFor: (poll) ->
       @fieldFromTemplate(poll.pollType, 'material_icon')
 
-    usePollsFor: (model) ->
-      model.group().features.use_polls && !$location.search().proposalView
-
     optionByName: (poll, name) ->
       _.find poll.pollOptions(), (option) -> option.name == name
 

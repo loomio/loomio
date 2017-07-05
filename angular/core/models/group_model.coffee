@@ -29,7 +29,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
 
     relationships: ->
       @hasMany 'discussions'
-      @hasMany 'proposals'
       @hasMany 'polls'
       @hasMany 'membershipRequests'
       @hasMany 'memberships'
@@ -45,10 +44,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     shareableInvitation: ->
       @recordStore.invitations.find(singleUse:false, groupId: @id)[0]
 
-    closedProposals: ->
-      _.filter @proposals(), (proposal) ->
-        proposal.isClosed()
-
     closedPolls: ->
       _.filter @polls(), (poll) ->
         !poll.isActive()
@@ -56,9 +51,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     activePolls: ->
       _.filter @polls(), (poll) ->
         poll.isActive()
-
-    hasPreviousProposals: ->
-      _.some @closedProposals()
 
     pendingMembershipRequests: ->
       _.filter @membershipRequests(), (membershipRequest) ->

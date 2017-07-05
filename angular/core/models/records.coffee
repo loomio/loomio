@@ -8,10 +8,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 MembershipRecordsInterface,
                                                 MembershipRequestRecordsInterface,
                                                 NotificationRecordsInterface,
-                                                ProposalRecordsInterface,
                                                 UserRecordsInterface,
-                                                VoteRecordsInterface,
-                                                DidNotVoteRecordsInterface,
                                                 SearchResultRecordsInterface,
                                                 ContactRecordsInterface,
                                                 InvitationRecordsInterface,
@@ -42,10 +39,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
   recordStore.addRecordsInterface(MembershipRecordsInterface)
   recordStore.addRecordsInterface(MembershipRequestRecordsInterface)
   recordStore.addRecordsInterface(NotificationRecordsInterface)
-  recordStore.addRecordsInterface(ProposalRecordsInterface)
   recordStore.addRecordsInterface(UserRecordsInterface)
-  recordStore.addRecordsInterface(VoteRecordsInterface)
-  recordStore.addRecordsInterface(DidNotVoteRecordsInterface)
   recordStore.addRecordsInterface(SearchResultRecordsInterface)
   recordStore.addRecordsInterface(ContactRecordsInterface)
   recordStore.addRecordsInterface(InvitationRecordsInterface)

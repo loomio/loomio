@@ -6,6 +6,3 @@
       - hl = DiscussionHeadline.new(discussion, @time_frame)
       %li
         = link_to discussion.title, discussion_url(discussion)
-        - if hl.has_motion?
-          \-
-          = hl.motion.title

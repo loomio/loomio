@@ -9,8 +9,4 @@
       - hl = DiscussionHeadline.new(discussion, @time_frame)
       = discussion.title + ":"
       = discussion_url(discussion).html_safe
-      - if hl.has_motion?
-      \-
-      = hl.motion.title
-
 \-------------------------------------------------

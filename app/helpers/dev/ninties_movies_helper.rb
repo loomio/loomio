@@ -174,52 +174,6 @@ module Dev::NintiesMoviesHelper
     @another_subgroup
   end
 
-  def create_proposal
-    unless @proposal
-      @proposal = Motion.new(name: 'lets go hiking to the moon and never ever ever come back!',
-                             closing_at: 3.days.from_now.beginning_of_hour,
-                             discussion: create_discussion)
-      MotionService.create(motion: @proposal, actor: jennifer)
-    end
-    @proposal
-  end
-
-  def create_public_proposal
-    unless @public_proposal
-      @public_proposal = Motion.new(name: 'Lets holiday on Earth instead',
-                                         closing_at: 3.days.from_now.beginning_of_hour,
-                                         discussion: create_public_discussion)
-      MotionService.create(motion: @public_proposal, actor: patrick)
-    end
-    @public_proposal
-  end
-
-  def create_another_public_proposal
-    unless @another_public_proposal
-      @another_public_proposal = Motion.new(name: 'Lets holiday on Venus instead',
-                                         closing_at: 3.days.from_now.beginning_of_hour,
-                                         discussion: create_public_discussion)
-      MotionService.create(motion: @another_public_proposal, actor: jennifer)
-    end
-    @another_public_proposal
-  end
-
-  def create_vote
-    unless @public_vote
-      @public_vote = Vote.new(statement: "Indeed!", position: "yes", motion: create_public_proposal)
-      VoteService.create(vote: @public_vote, actor: patrick)
-    end
-    @public_vote
-  end
-
-  def create_another_vote
-    unless @another_public_vote
-      @another_public_vote = Vote.new(statement: "Nayy!", position: "no", motion: create_public_proposal)
-      VoteService.create(vote: @another_public_vote, actor: max)
-    end
-    @another_public_vote
-  end
-
   def membership_request_from_logged_out
     membership_request = MembershipRequest.new(group: create_group,
                                                name: Faker::Name.name,
@@ -263,23 +217,6 @@ module Dev::NintiesMoviesHelper
     new_comment_event = CommentService.create(comment: comment, actor: patrick)
     comment_liked_event = CommentService.like(comment: comment, actor: jennifer)
     create_another_group.add_member! jennifer
-
-    #'motion_closing_soon'
-    motion_created_event = MotionService.create(motion: create_another_public_proposal,
-                                                actor: jennifer)
-    closing_soon_event = Events::MotionClosingSoon.publish!(create_another_public_proposal)
-
-    #'motion_closed'
-    second_motion_created_event = MotionService.create(motion: create_public_proposal,
-                                                       actor: patrick)
-
-
-    motion_closed_event = MotionService.close(create_public_proposal)
-
-    #'motion_outcome_created'
-    outcome_event = MotionService.create_outcome(motion: create_another_public_proposal,
-                                                 params: {outcome: 'Were going hiking tomorrow'},
-                                                 actor: jennifer)
 
     #'comment_replied_to'
     reply_comment = Comment.new(discussion: create_discussion,

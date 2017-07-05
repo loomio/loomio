@@ -14,15 +14,7 @@ namespace :loomio do
     # PollService.delay.cleanup_examples
     SendMissedYesterdayEmailJob.perform_later
     ResendIgnoredInvitationsJob.perform_later
-    ProposalsClosingSoonJob.perform_later
     LocateUsersAndGroupsJob.perform_later
-  end
-
-  # http://stackoverflow.com/a/9835162
-  task weekly_tasks: :environment do
-    if Time.now.monday?
-      SendAnalyticsEmailJob.perform_later
-    end
   end
 
   task resend_ignored_invitations: :environment do

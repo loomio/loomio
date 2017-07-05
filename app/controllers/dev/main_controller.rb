@@ -84,11 +84,9 @@ class Dev::MainController < Dev::BaseController
 
   def setup_dashboard
     sign_in patrick
-    starred_proposal_discussion
     starred_poll_discussion
     starred_discussion
     poll_discussion
-    proposal_discussion
     recent_discussion
     old_discussion
     participating_discussion
@@ -217,7 +215,6 @@ class Dev::MainController < Dev::BaseController
 
   def setup_public_group_with_public_content
     create_another_group
-    create_public_proposal
     sign_in jennifer
     redirect_to discussion_url(create_public_discussion)
   end
@@ -360,8 +357,6 @@ class Dev::MainController < Dev::BaseController
                                 group_privacy: 'open')
     @group.add_admin! jennifer
     @discussion = @group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
-    @proposal = @discussion.motions.create!(name: 'Let\'s go to the moon!', closed_at: 3.days.ago, closing_at: 3.days.ago, author: jennifer)
-    @proposal.close!
     redirect_to group_url(@group)
   end
 
@@ -392,15 +387,6 @@ class Dev::MainController < Dev::BaseController
                                 group_privacy: 'secret')
     @group.add_admin! patrick
     redirect_to group_url(@group)
-  end
-
-  def view_proposal_as_visitor
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
-                                group_privacy: 'secret')
-    @group.add_admin! patrick
-    @discussion = @group.discussions.create!(title: 'This thread is private', private: true, author: patrick)
-    @proposal   = @discussion.motions.create(name: 'lets go hiking', author: patrick)
-    redirect_to motion_url(@proposal)
   end
 
   def setup_open_group
@@ -483,51 +469,6 @@ class Dev::MainController < Dev::BaseController
     create_discussion
     sign_in patrick
     create_all_notifications
-    redirect_to discussion_url(create_discussion)
-  end
-
-  def setup_proposal
-    sign_in patrick
-    create_proposal
-    redirect_to discussion_url(create_discussion)
-  end
-
-  def setup_proposal_with_votes
-    sign_in patrick
-    create_vote
-    create_another_vote
-    create_public_discussion.group.add_member! jennifer
-
-    redirect_to discussion_url(create_public_discussion)
-  end
-
-  def setup_closed_proposal
-    sign_in patrick
-    create_proposal
-    MotionService.close(create_proposal)
-    redirect_to discussion_url(create_discussion)
-  end
-
-  def setup_previous_proposal
-    sign_in patrick
-    create_proposal
-    MotionService.close(create_proposal)
-    redirect_to group_previous_proposals_url(create_group)
-  end
-
-  def setup_proposal_closing_soon
-    sign_in patrick
-    create_proposal.update_attribute(:closing_at, 6.hours.from_now)
-    redirect_to discussion_url(create_discussion)
-  end
-
-
-  def setup_closed_proposal_with_outcome
-    sign_in patrick
-    MotionService.close(create_proposal)
-    MotionService.create_outcome(motion: create_proposal,
-                                 params: {outcome: 'Were going hiking tomorrow'},
-                                 actor: patrick)
     redirect_to discussion_url(create_discussion)
   end
 
