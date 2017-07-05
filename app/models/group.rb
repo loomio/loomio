@@ -186,6 +186,7 @@ class Group < ActiveRecord::Base
 
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
 
+  define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
   define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
   define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
   define_counter_cache(:polls_count)               { |group| group.polls.count }
