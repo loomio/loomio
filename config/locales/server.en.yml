@@ -1,8 +1,19 @@
 ---
 en:
+  invitation:
+    invitation_not_found: We could not find an invitation with the token you've given us. Please request another invitation from your group.
+    invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
+    invitation_already_used: This invitation has already been used. Please sign in to loomio directly to continue to your group.
+    
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
+
   validate:
     motion:
       must_close_in_future: Proposal must close in the future.
