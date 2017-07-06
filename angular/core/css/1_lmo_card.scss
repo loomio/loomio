@@ -47,8 +47,6 @@
 }
 
 .lmo-card-heading{
-  // @include fontWeightMedium;
-  // @include fontSmall;
   @include md-subhead;
   color: $grey-on-white;
   margin-bottom: 10px;
@@ -58,9 +56,10 @@
 
 .lmo-card-subheading{
   @include md-subhead;
-  // @include fontSmall;
-  // @include fontWeightMedium;
   color: $grey-on-white;
   margin-top: 1.5em;
   margin-bottom: .8em;
+}
+
+.lmo-card-actions {
 }
