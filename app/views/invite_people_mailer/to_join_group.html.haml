@@ -4,9 +4,11 @@
 %br
 %strong= @invitation.invitable_name
 .invite-people-mailer__message-container
-  - if @message_body
-    .invite-people-mailer__message_body
+  .invite-people-mailer__message_body
+    - if @message_body
       = simple_format @message_body
+    - else
+      = simple_format @invitation.group.description.to_s.truncate(250, separator: ' ')
   = link_to t(:"email.to_join_group.accept_invitation"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__button"
 .invite-people-mailer__value-proposition
   = t(:"email.value_proposition")
