@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705033454) do
+ActiveRecord::Schema.define(version: 20170707231741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -224,6 +224,8 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.boolean  "participating",            default: false, null: false
     t.boolean  "starred",                  default: false, null: false
     t.datetime "dismissed_at"
+    t.boolean  "reader_unpinned",          default: false, null: false
+    t.integer  "importance",               default: 0,     null: false
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_discussion_readers_on_discussion_id", using: :btree
@@ -272,6 +274,8 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.integer  "versions_count",       default: 0
     t.integer  "closed_motions_count", default: 0,     null: false
     t.integer  "closed_polls_count",   default: 0,     null: false
+    t.boolean  "pinned",               default: false, null: false
+    t.integer  "importance",           default: 0,     null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree

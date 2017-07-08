@@ -1,16 +1,13 @@
 class DiscussionReader < ActiveRecord::Base
   include HasVolume
+  include HasImportance
 
   belongs_to :user
   belongs_to :discussion
 
-  def self.for(user: , discussion: )
-    if (!user.nil?) and user.is_logged_in?
-      begin
-        find_or_create_by(user_id: user.id, discussion_id: discussion.id)
-      rescue ActiveRecord::RecordNotUnique
-        retry
-      end
+  def self.for(user:, discussion:)
+    if user&.is_logged_in?
+      find_or_create_by(user: user, discussion: discussion)
     else
       new(discussion: discussion)
     end
@@ -52,6 +49,10 @@ class DiscussionReader < ActiveRecord::Base
     else
       membership.volume
     end
+  end
+
+  def pinned
+    !reader_unpinned && discussion.pinned
   end
 
   def discussion_reader_volume

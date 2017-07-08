@@ -32,6 +32,7 @@ class Discussion < ActiveRecord::Base
   include HasTimeframe
   include HasMentions
   include HasPolls
+  include HasImportance
   include MessageChannel
   include MakesAnnouncements
   include SelfReferencing
@@ -66,9 +67,10 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :motions, dependent: :destroy
-  has_many :polls, dependent: :destroy
   has_one :current_motion, -> { where('motions.closed_at IS NULL') }, class_name: 'Motion'
   has_one :most_recent_motion, -> { order('motions.created_at DESC') }, class_name: 'Motion'
+  has_many :polls, dependent: :destroy
+  has_many :active_polls, -> { where(closed_at: nil) }, class_name: "Poll"
   has_one :search_vector
   has_many :votes, through: :motions
   has_many :comments, dependent: :destroy

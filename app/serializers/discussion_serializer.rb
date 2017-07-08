@@ -35,7 +35,8 @@ class DiscussionSerializer < ActiveModel::Serializer
              :updated_at,
              :archived_at,
              :private,
-             :versions_count
+             :versions_count,
+             :importance
 
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
@@ -59,6 +60,10 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   def active_proposal_vote
     active_proposal.votes.find_by(user_id: reader.user_id)
+  end
+
+  def importance
+    (reader || object).importance
   end
 
   def active_proposal

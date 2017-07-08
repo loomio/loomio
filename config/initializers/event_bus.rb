@@ -112,6 +112,19 @@ EventBus.configure do |config|
     outcome.communities.with_identity.each { |community| Events::OutcomePublished.publish!(outcome, community) }
   end
 
+  # update discussion importance
+  config.listen('discussion_create',
+                'discussion_update',
+                'poll_create',
+                'poll_close',
+                'poll_destroy',
+                'poll_expire') { |model| model.discussion&.update_importance }
+
+  # update reader importance
+  config.listen('discussion_update_reader') do |reader, params, actor|
+    DiscussionReader.for(discussion: discussion, actor: user).update_importance
+  end
+
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 
