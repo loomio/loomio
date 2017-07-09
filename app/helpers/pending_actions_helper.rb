@@ -5,7 +5,7 @@ module PendingActionsHelper
     return unless user.presence
 
     if pending_invitation
-      InvitationService.redeem(pending_invitation, user)
+      InvitationService.redeem(pending_invitation, user) if !pending_invitation.single_use? && !pending_invitation.accepted?
       session.delete(:pending_invitation_id)
     end
 
