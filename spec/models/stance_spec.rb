@@ -14,6 +14,12 @@ describe Stance do
     end
   end
 
+  describe 'statement' do
+    it 'has a length validation' do
+      expect(build(:stance, reason: "a"*400)).to_not be_valid
+    end
+  end
+
   describe 'choice shorthand' do
     let(:poll) { Poll.create!(poll_type: 'poll', title: 'which pet?', poll_option_names: %w[dog cat], closing_at: 1.day.from_now, author: author)}
     let(:author) { FactoryGirl.create(:user) }
