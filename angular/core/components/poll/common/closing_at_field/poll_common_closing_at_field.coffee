@@ -7,6 +7,7 @@ angular.module('loomioApp').directive 'pollCommonClosingAtField', (AppConfig) ->
     $scope.hours = [1..24]
     $scope.closingHour= $scope.poll.closingAt.format('H')
     $scope.closingDate = $scope.poll.closingAt.toDate()
+    $scope.minDate = new Date()
 
     updateClosingAt = ->
       $scope.poll.closingAt = moment($scope.closingDate).startOf('day').add($scope.closingHour, 'hours')
