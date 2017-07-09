@@ -20,7 +20,7 @@ module PendingActionsHelper
   end
 
   def pending_invitation
-    @pending_invitation ||= Invitation.pending.find_by(token: session[:pending_invitation_id]) if session[:pending_invitation_id]
+    @pending_invitation ||= Invitation.find_by(token: session[:pending_invitation_id]) if session[:pending_invitation_id]
   end
 
   def pending_identity
