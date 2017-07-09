@@ -14,6 +14,14 @@
   position: absolute;
   right: 0;
   top: 0;
+  margin-right: 36px;
+  margin-top: $thinPaddingSize;
+}
+
+.thread-preview__pin {
+  position: absolute;
+  top: 0;
+  right: 0;
   margin-right: $cardPaddingSize;
   margin-top: $thinPaddingSize;
 }

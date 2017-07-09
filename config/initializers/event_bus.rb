@@ -113,8 +113,7 @@ EventBus.configure do |config|
   end
 
   # update discussion importance
-  config.listen('discussion_create',
-                'discussion_update',
+  config.listen('discussion_pin',
                 'poll_create',
                 'poll_close',
                 'poll_destroy',

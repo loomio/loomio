@@ -39,19 +39,29 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
-  def star
-    service.update_reader discussion: resource, params: { starred: true }, actor: current_user
+  def pin
+    service.pin discussion: resource, actor: current_user
     respond_with_resource
+  end
+
+  def star
+    update_reader starred: true
   end
 
   def unstar
-    service.update_reader discussion: resource, params: { starred: false }, actor: current_user
-    respond_with_resource
+    update_reader starred: false
+  end
+
+  def pin_reader
+    update_reader reader_unpinned: false
+  end
+
+  def unpin_reader
+    update_reader reader_unpinned: true
   end
 
   def set_volume
-    service.update_reader discussion: resource, params: { volume: params[:volume] }, actor: current_user
-    respond_with_resource
+    update_reader volume: params[:volume]
   end
 
   private
@@ -62,6 +72,11 @@ class API::DiscussionsController < API::RestfulController
 
   def accessible_records
     Queries::VisibleDiscussions.new(user: current_user, group_ids: @group && @group.id_and_subgroup_ids)
+  end
+
+  def update_reader(params = {})
+    service.update_reader discussion: load_resource, params: params, actor: current_user
+    respond_with_resource
   end
 
   def collection_for_dashboard(collection, filter: params[:filter])

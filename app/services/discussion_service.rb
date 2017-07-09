@@ -65,6 +65,14 @@ class DiscussionService
     Events::DiscussionMoved.publish!(discussion, actor, source)
   end
 
+  def self.pin(discussion:, actor:)
+    actor.ability.authorize! :pin, discussion
+
+    discussion.update(pinned: !discussion.pinned)
+
+    EventBus.broadcast('discussion_pin', discussion, actor)
+  end
+
   def self.update_reader(discussion:, params:, actor:)
     actor.ability.authorize! :show, discussion
     reader = DiscussionReader.for(discussion: discussion, user: actor)
