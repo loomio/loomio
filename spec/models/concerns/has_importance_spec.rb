@@ -19,13 +19,6 @@ describe HasImportance do
     expect(reader.importance).to eq levels[:pinned]
   end
 
-  it 'can detect a manually unpinned reader' do
-    discussion.update(pinned: true)
-    reader.update(reader_unpinned: true)
-    subject
-    expect(reader.importance).to eq levels[:normal_importance]
-  end
-
   it 'can detect a thread with a star and an active decision' do
     reader.update(starred: true)
     poll

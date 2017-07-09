@@ -51,10 +51,6 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
-  def pinned
-    !reader_unpinned && discussion.pinned
-  end
-
   def discussion_reader_volume
     # Crazy James says: necessary in order to get a string back from the volume enum, rather than an integer
     self.class.volumes.invert[self[:volume]]

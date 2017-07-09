@@ -52,14 +52,6 @@ class API::DiscussionsController < API::RestfulController
     update_reader starred: false
   end
 
-  def pin_reader
-    update_reader reader_unpinned: false
-  end
-
-  def unpin_reader
-    update_reader reader_unpinned: true
-  end
-
   def set_volume
     update_reader volume: params[:volume]
   end

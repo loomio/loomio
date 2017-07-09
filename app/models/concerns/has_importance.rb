@@ -17,7 +17,7 @@ module HasImportance
   end
 
   def pinned
-    super if defined?(super)
+    discussion.pinned
   end
 
   def starred_and_decision

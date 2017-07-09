@@ -84,6 +84,7 @@ class Dev::MainController < Dev::BaseController
 
   def setup_dashboard
     sign_in patrick
+    pinned_discussion
     starred_proposal_discussion
     starred_poll_discussion
     starred_discussion
