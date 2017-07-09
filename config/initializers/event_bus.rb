@@ -120,9 +120,7 @@ EventBus.configure do |config|
                 'poll_expire') { |model| model.discussion&.update_importance }
 
   # update reader importance
-  config.listen('discussion_update_reader') do |reader, params, actor|
-    DiscussionReader.for(discussion: discussion, actor: user).update_importance
-  end
+  config.listen('discussion_update_reader') { |reader| reader.update_importance }
 
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }

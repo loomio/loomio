@@ -651,4 +651,67 @@ describe API::DiscussionsController do
     end
   end
 
+  describe 'pin' do
+    it 'allows admins to pin a thread' do
+      sign_in user
+      discussion.group.add_admin! user
+      post :pin, id: discussion.id
+      expect(discussion.reload.pinned).to eq true
+    end
+
+    it 'allows admins to unpin a thread' do
+      sign_in user
+      discussion.group.add_admin! user
+      discussion.update(pinned: true)
+      post :pin, id: discussion.id
+      expect(discussion.reload.pinned).to eq false
+    end
+
+    it 'does not allow non-admins to pin a thread' do
+      sign_in user
+      post :pin, id: discussion.id
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow logged out users to pin a thread' do
+      post :pin, id: discussion.id
+      expect(response.status).to eq 403
+    end
+  end
+
+  describe 'pinning readers' do
+    before { discussion.update(pinned: true) }
+    let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
+
+    describe 'unpin_reader' do
+      it 'allows users to unpin a pinned thread' do
+        sign_in user
+        post :unpin_reader, id: discussion.id
+        expect(response.status).to eq 200
+        expect(reader.reader_unpinned).to eq true
+      end
+
+      it 'does not allow visitors to unpin a pinned thread' do
+        post :unpin_reader, id: discussion.id
+        expect(response.status).to eq 403
+      end
+    end
+
+    describe 'pin_reader' do
+      it 'allows users to repin a pinned thread' do
+        sign_in user
+        reader.update(reader_unpinned: true)
+        post :pin_reader, id: discussion.id
+        expect(response.status).to eq 200
+        expect(reader.reload.reader_unpinned).to eq false
+      end
+
+      it 'does not do anything if the thread is already pinned' do
+        sign_in user
+        post :pin_reader, id: discussion.id
+        expect(response.status).to eq 200
+        expect(reader.reload.reader_unpinned).to eq false
+      end
+    end
+  end
 end
