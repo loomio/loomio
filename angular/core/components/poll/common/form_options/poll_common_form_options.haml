@@ -8,7 +8,7 @@
     %md-list-item{ng-if: "!poll.pollOptionNames.length"}
       %p.poll-common-helptext{ng-if: "datesAsOptions", translate: "poll_meeting_form.no_options"}
       %p.poll-common-helptext{ng-if: "!datesAsOptions", translate: "poll_common_form.no_options"}
-    %md-list-item.poll-common-form__list-item{ng-repeat: "name in poll.pollOptionNames track by $index"}
+    %md-list-item.poll-common-form__list-item{ng-repeat: "name in poll.pollOptionNames"}
       %span.poll-poll-form__option-text{ng-if: "!datesAsOptions"} {{name}}
       %poll_meeting_time.poll-meeting-form__option-text.lmo-flex__grow{ng-if: "datesAsOptions", name: "name", zone: "zone"}
       %md-button.poll-poll-form__option-button{ng-if: "!isExisting(name)", ng-click: "removeOption(name)", aria-label: "{{ 'poll_poll_form.remove_option' | translate }}"}
