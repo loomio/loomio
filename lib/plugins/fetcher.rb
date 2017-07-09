@@ -20,7 +20,10 @@ module Plugins
     private
 
     def clean
-      `rm -rf #{folder}`
+      return true unless Dir.exists?(folder)
+      `rm -rf ../plugins_backup/#{folder}       &&
+       mv #{folder} ../plugins_backup/#{folder} &&
+       rm -rf #{folder}`
     end
 
     def fetch
