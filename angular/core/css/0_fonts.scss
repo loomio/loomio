@@ -142,21 +142,6 @@
   // line-height: 32px;
 }
 
-@mixin fontWeightBold {
-  // font-weight:600;
-  // font-stretch:normal;
-}
-
-@mixin fontWeightMedium{
-  // font-weight:500;
-  // font-stretch:normal;
-}
-
-@mixin fontWeightLight{
-  // font-weight:200;
-  // font-stretch:normal;
-}
-
 
 @mixin truncateText {
   white-space: nowrap;
@@ -165,7 +150,6 @@
 }
 
 @mixin lmoH1{
-  @include fontWeightBold;
   @include fontGrande;
   display: inline-block;
   padding: 0;

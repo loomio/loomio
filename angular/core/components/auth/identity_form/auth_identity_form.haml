@@ -4,11 +4,11 @@
 
   .auth-identity-form__options
     .auth-identity-form__new-account
-      %p.poll-common-helptext{translate: "auth_form.new_to_loomio"}
+      %p.lmo-hint-text{translate: "auth_form.new_to_loomio"}
       %md-button.md-primary.md-raised{ng-click: "createAccount()", translate: "auth_form.create_account"}
 
     .auth-identity-form__existing-account
-      %p.poll-common-helptext{translate: "auth_form.already_a_user"}
+      %p.lmo-hint-text{translate: "auth_form.already_a_user"}
       %md-input-container.md-block.auth-email-form__email
         %label{translate: "auth_form.email"}
         %input.lmo-primary-form-input#email{name: "email", type: "text", md-autofocus: "true", placeholder: "{{ 'auth_form.email_placeholder' | translate}}", ng-model: "email"}

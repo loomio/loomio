@@ -10,13 +10,11 @@
       %md-menu-item{ng-if: "canAdministerGroup()"}
         %a.md-button{lmo-href-for: "group", lmo-href-action: "memberships"}
           %span{translate: "group_page.options.manage_members"}
-      %md-menu-item.group-page-actions__add-subgroup-link{ng-if: "canAddSubgroup()"}
-        %md-button{ng-click: "addSubgroup()"}
-          %span{translate: "group_page.options.add_subgroup"}
       %md-menu-item.group-page-actions__change-volume-link{ng-if: "canChangeVolume()"}
         %md-button{ng-click: "openChangeVolumeForm()"}
           %span{translate: "group_page.options.email_settings"}
       %outlet{name: "after-group-actions-manage-memberships", model: "group"}
+      %outlet{name: "after-group-actions-manage-memberships-2", model: "group"}
       %md-menu-item.group-page-actions__leave-group
         %md-button{ng-click: "leaveGroup()"}
           %span{translate: "group_page.options.leave_group"}

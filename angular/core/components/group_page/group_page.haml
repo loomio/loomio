@@ -10,11 +10,10 @@
       .lmo-group-column-right
         %outlet{name: "before-group-page-column-right", model: "groupPage.group"}
         %current_polls_card{model: "groupPage.group"}
-        %poll_common_index_card{model: "groupPage.group", limit: "5", view-more-link: "true"}
-        %group_previous_proposals_card{group: "groupPage.group", ng-if: "!groupPage.usePolls"}
         %membership_requests_card{group: "groupPage.group"}
         %members_card{group: "groupPage.group", ng-if: "groupPage.canViewMemberships()"}
-        %install_slack_card{group: "groupPage.group"}
-        %outlet{name: "after-slack-card", model: "groupPage.group"}
         %subgroups_card{group: "groupPage.group"}
-        %group_help_card{group: "groupPage.group"}
+        %poll_common_index_card{model: "groupPage.group", limit: "5", view-more-link: "true"}
+        %group_previous_proposals_card{group: "groupPage.group", ng-if: "!groupPage.usePolls"}
+        %outlet{name: "after-slack-card", model: "groupPage.group"}
+        %install_slack_card{group: "groupPage.group"}

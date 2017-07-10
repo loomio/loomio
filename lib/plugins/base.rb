@@ -70,6 +70,7 @@ module Plugins
 
     def use_translations(path, filename = :client)
       raise NoCodeSpecifiedError.new unless path
+      Rails.application.config.i18n.load_path += Dir[Rails.root.join('plugins', @name.to_s, "#{path}/#{filename}.*.yml")]
       Dir.chdir(@name.to_s) { Dir.glob("#{path}/#{filename}.*.yml").each { |path| use_translation(path) } }
     end
 

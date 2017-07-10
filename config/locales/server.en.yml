@@ -1,8 +1,19 @@
 ---
 en:
+  invitation:
+    invitation_not_found: We could not find an invitation with the token you've given us. Please request another invitation from your group.
+    invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
+    invitation_already_used: This invitation has already been used. Please sign in to loomio directly to continue to your group.
+
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
+
   validate:
     motion:
       must_close_in_future: Proposal must close in the future.
@@ -210,50 +221,6 @@ en:
     error:
       too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
       all_email_addresses_belong_to_members: "We didn't send invitations to the email addresses provided because they belong to people already in the group."
-  pricing_page:
-    header: Group plans
-    gift: Free
-    standard: Standard
-    plus: Pro
-    free_trial_html: We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required.
-    get_started_for_free: Get started for free
-    gift_body: Everything you need to make effective decisions with your group.
-    standard_body_html: Make decisions in Slack
-    pro_body_html: Make decisions across your organisation
-    one_group: one group
-    unlimited_members: unlimited members
-    unlimited_decisions: unlimited decisions
-    coming_facebook: Facebook integration coming soon.
-    email_support: email support
-    coming_soon: Coming soon
-    analytics_report: Analytics report
-    data_export: Data export (CSV or XLS)
-    slack_integration_html: |
-      <strong>Slack</strong> integration
-    customer_support_html: Customer support
-    standard_price_html: '<strong>$19</strong>/month'
-    gift_price_html: '<strong>$0</strong>'
-    plus_includes_standard: 'Everything in Standard, plus:'
-    standard_includes_free: 'Everything in Free, plus:'
-    multiple_groups: "up to 10 groups"
-    premium_support: premium support
-    help_with_setup: help with initial setup
-    ldap_coming_soon: ActiveDirectory/LDAP coming soon
-    custom_subdomain: custom subdomain
-    analytics_reports: analytics reports
-    free_is_for_community_and_evaluation_html: |
-      Our free plan is for casual users, communities and anyone who wants to evaluate Loomio for use within their organisation. We rely on paid plans to maintain and enhance Loomio.<br/>
-      We respect your privacy and will never sell your data to third parties, nor put advertising into Loomio.<br/>
-      If you are a non-profit organisation, contact us for discount.
-
-    contact_us_html: |
-      Prices are in US dollars, plus sales tax where applicable. Need something else? <a href="/contact">Let's talk!</a>
-
-    custom_subdomain_html: |
-      custom subdomain,<br />
-      e.g. <strong>yourgroup</strong>.loomio.org
-    usage_statistics: usage statistics
-    plus_price_html: '<strong>$99</strong>/month'
   password_reset:
     email_guidelines_html: |
       <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>
