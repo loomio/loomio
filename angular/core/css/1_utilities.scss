@@ -22,9 +22,9 @@
 }
 
 .lmo-actions {
-  @include displayFlex;
+  display: flex;
   justify-content: space-between;
-  -webkit-justify-content: space-between;
+  align-items: center;
 }
 
 .lmo-textarea {
