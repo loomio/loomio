@@ -1,5 +1,80 @@
 ---
 en:
+  poll_unsubscribe:
+    title: You have been unsubscribed from %{title}
+    helptext: You will no longer receive emails about this decision.
+    visit_poll: View poll
+    go_to_dashboad: Go to dashboard
+  webhooks:
+    slack:
+      poll_created: "*%{author}* started a new poll in *%{name}*"
+      poll_closing_soon: "*%{name}* has a poll closing in 24 hours"
+      poll_expired: "*%{name}* has closed"
+      outcome_created: "*%{author}* published an outcome in *%{name}*"
+      motion_closed: "*%{name}* has closed"
+      motion_closed_by_user: "*%{name}* has been closed by *%{author}*"
+      motion_closing_soon: "*%{name}* has a proposal closing in 24 hours"
+      motion_outcome_created: "*%{author}* published an outcome in *%{name}*"
+      motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
+      new_motion: "*%{author}* started a new proposal in *%{name}*"
+      new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
+      new_comment: "*%{author}* posted a new comment in *%{name}*"
+      new_discussion: "*%{author}* started a new discussion in *%{group}*"
+      outcome_created: "*%{author}* created an outcome for *%{name}*"
+      poll_created: "*%{author}* started a poll: *%{name}*"
+      poll_closing_soon: "*%{name}* is closing soon"
+      view_it_on_loomio: View it on Loomio
+      have_your_say: Have your say
+      poll_published: "*%{author}* published a poll:"
+      poll_published_with_discussion: "*%{author}* published a poll in %{discussion}:"
+      outcome_published: "*%{author}* published an outcome:"
+      outcome_published_with_discussion: "*%{author}* published an outcome in %{discussion}:"
+      position_verbs:
+        'yes': agreed on
+        'no': disagreed on
+        abstain: abstained on
+        block: blocked
+  slack:
+    new_discussion: "New thread in *%{group}*: *%{discussion}*"
+    poll_published: "New decision in *%{group}*: *%{poll}*"
+    outcome_published: "New outcome in *%{group}*: *%{poll}*"
+    poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
+    poll_expired: "*%{poll}* has closed"
+    group_published: |
+      Hello, I'm Loomio Bot. *%{author}* added me.
+      I'm here to support your team to make decisions together by:
+
+      - highlighting when decisions are happening
+      - supporting people to participate in decisions
+      - showing where people agree and disagree
+      - communicating the outcome of decisions
+      - recording decisions in your Loomio group.
+
+      To find out more, type _/loomio help_
+    request_authorization_message: "Just one more step: <\%{url}|Click here> to authorize your slack account to use Loomio. (You'll only have to do this once)"
+    poll_closed: "*%{title}* has closed already! <\%{url}|Click here> to view the results."
+    go_to_slack: Go to Slack
+    stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you''d like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
+    click_to_vote: "Select an option below to vote:"
+    time_zone_message: (all times are in the %{zone} time zone)
+    authorized_message: Success! You're all set up to vote on slack now.
+    community_poll_published: "@%{username} started a new %{type}:"
+    initiate: |
+      Okay, let's do this! <\%{url}|Click here to start your %{type}>.
+      (note; we'll post into this channel once it's created, so that everyone can participate)
+    slash_command_help: |
+      Looking to make it really easy to make decisions with your group?
+      Simply enter a decision type and a question you'd like to pose, and we'll take it from there.
+      You can choose from the following decision types\:
+      'proposal'\: Seek collective agreement
+      'count'\:      Track participation and find volunteers
+      'poll'\:         Measure popularity of options
+      'dot vote'\: Prioritise a list of options
+      'meeting'\: Find a time to meet
+      So, for example, you could write
+      /loomio count Who's coming to the party on Sunday?
+      In order to start a new count.
+
   invitation:
     invitation_not_found: We could not find an invitation with the token you've given us. Please request another invitation from your group.
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
