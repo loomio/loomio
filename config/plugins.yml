@@ -3,9 +3,11 @@ loomio_webhooks:
 
 loomio_org_plugin:
   repo:         loomio/loomio_org_plugin
+  branch:       charge-for-subgroups
 
 loomio_tags:
   repo:         loomio/loomio_tags
+  branch:       prep-for-paid-feature
 
 loomio_truncate_comment:
   repo:         loomio/loomio_truncate_comment
