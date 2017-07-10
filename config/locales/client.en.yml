@@ -1817,8 +1817,11 @@ en:
     modal_title: Install Slack
 
     card:
-      title: Connected to Slack
-      helptext: This group has been connected to the slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Events from this group will appear in the <strong>{{channel}}</strong> channel.
+      install_title: Connect to Slack
+      install_helptext: Loomio bot notifies your Slack team of discussions and decisions on Loomio. You can also start decisions and vote from within Slack.
+      installed_title: Connected to Slack
+      installed_helptext: This group has been connected to the slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Events from this group will appear in the <strong>{{channel}}</strong> channel.
+      install_slack: Connect Slack
 
     progress:
       install: Install
