@@ -2,7 +2,7 @@
   %auth_avatar{user: "user"}
   %md-input-container.md-block.auth-signin-form__magic-link
     %h2.lmo-h2{translate: "auth_form.welcome_back", translate-value-name: "{{user.firstName() || user.email}}"}
-    %p.poll-common-helptext
+    %p.lmo-hint-text
       %span{translate: "auth_form.login_link_helptext", ng-if: "!user.hasPassword"}>
       %span{translate: "auth_form.login_link_helptext_with_password", ng-if: "user.hasPassword"}>
 
