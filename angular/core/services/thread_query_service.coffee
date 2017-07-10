@@ -43,7 +43,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityServi
       parts = options.split ' '
       moment().startOf('day').subtract(parseInt(parts[0]), parts[1])
 
-    applyFilters = (view, filters, queryType) ->
+    applyFilters = (view, filters, queryType, options = {}) ->
       filters = [].concat filters
 
       view.applyFind(discussionReaderId: { $gt: 0 }) if AbilityService.isLoggedIn()
@@ -64,8 +64,9 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityServi
           when 'show_not_muted'
             view.applyWhere (thread) -> thread.volume() != 'mute'
           when 'only_threads_in_my_groups' then view.applyFind(groupId: {$in: Session.user().groupIds()})
-          when 'show_starred'              then view.applyFind(starred: true)
           when 'show_pinned'               then view.applyFind(pinned: true)
+          when 'hide_pinned'               then view.applyFind(pinned: false)
+          when 'show_starred'              then view.applyFind(starred: true)
           when 'show_proposals'            then view.applyWhere (thread) -> thread.hasDecision()
           when 'hide_proposals'            then view.applyWhere (thread) -> !thread.hasDecision()
 

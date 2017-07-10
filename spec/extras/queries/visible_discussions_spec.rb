@@ -15,7 +15,6 @@ describe Queries::VisibleDiscussions do
     let!(:no_importance) { create :discussion, private: false, group: group }
     let!(:has_decision)  { create :discussion, private: false, group: group, polls: [create(:poll)] }
     let!(:pinned)        { create :discussion, private: false, group: group, pinned: true }
-    let(:unpinned)       { create :discussion, private: true, group: group, pinned: true }
     let(:starred)        { create :discussion, private: true, group: group }
 
     it 'orders discussions by importance when logged out' do
@@ -29,15 +28,13 @@ describe Queries::VisibleDiscussions do
     it 'orders discussions by reader importance when logged in' do
       group.add_admin! user
       DiscussionService.update_reader(discussion: starred, params: {starred: true}, actor: user)
-      DiscussionService.update_reader(discussion: unpinned, params: {reader_unpinned: true}, actor: user)
 
-      [pinned, has_decision, unpinned, starred, no_importance].map(&:update_importance)
+      [pinned, has_decision, starred, no_importance].map(&:update_importance)
       query = Queries::VisibleDiscussions.new(user: user).sorted_by_importance.to_a
       expect(query[0]).to eq pinned
       expect(query[1]).to eq starred
       expect(query[2]).to eq has_decision
-      expect(query[3]).to eq unpinned
-      expect(query[4]).to eq no_importance
+      expect(query[3]).to eq no_importance
     end
   end
 

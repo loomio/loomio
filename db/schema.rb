@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707231741) do
+ActiveRecord::Schema.define(version: 20170709235914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,6 +176,15 @@ ActiveRecord::Schema.define(version: 20170707231741) do
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
+  create_table "decision_emails", force: :cascade do |t|
+    t.string   "subject",    null: false
+    t.string   "body"
+    t.string   "to",         null: false
+    t.string   "cc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
@@ -224,7 +233,6 @@ ActiveRecord::Schema.define(version: 20170707231741) do
     t.boolean  "participating",            default: false, null: false
     t.boolean  "starred",                  default: false, null: false
     t.datetime "dismissed_at"
-    t.boolean  "reader_unpinned",          default: false, null: false
     t.integer  "importance",               default: 0,     null: false
   end
 
@@ -323,6 +331,17 @@ ActiveRecord::Schema.define(version: 20170707231741) do
 
   add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true, using: :btree
   add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx", using: :btree
+
+  create_table "group_identities", force: :cascade do |t|
+    t.integer  "group_id",                   null: false
+    t.integer  "identity_id",                null: false
+    t.jsonb    "custom_fields", default: {}, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "group_identities", ["group_id"], name: "index_group_identities_on_group_id", using: :btree
+  add_index "group_identities", ["identity_id"], name: "index_group_identities_on_identity_id", using: :btree
 
   create_table "group_requests", force: :cascade do |t|
     t.string   "name"
@@ -777,6 +796,14 @@ ActiveRecord::Schema.define(version: 20170707231741) do
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
   add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
   add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
+
+  create_table "received_emails", force: :cascade do |t|
+    t.text     "headers"
+    t.text     "body"
+    t.string   "sender_email", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"

@@ -17,7 +17,7 @@ module HasImportance
   end
 
   def pinned
-    discussion.pinned
+    discussion[:pinned]
   end
 
   def starred_and_decision

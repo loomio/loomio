@@ -76,10 +76,9 @@ class DiscussionService
   def self.update_reader(discussion:, params:, actor:)
     actor.ability.authorize! :show, discussion
     reader = DiscussionReader.for(discussion: discussion, user: actor)
-    reader.update(params.slice(:starred, :volume, :reader_unpinned))
-    reader.update_importance
+    reader.update(params.slice(:starred, :volume))
 
-    EventBus.broadcast('discussion_update_reader', discussion, params, actor)
+    EventBus.broadcast('discussion_update_reader', reader, params, actor)
   end
 
   def self.mark_as_read(discussion:, params:, actor:)

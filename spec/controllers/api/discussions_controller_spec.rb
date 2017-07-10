@@ -120,7 +120,6 @@ describe API::DiscussionsController do
     end
 
     describe 'filtering' do
-      let(:participating_discussion) { create :discussion, group: group }
       let(:subgroup_discussion) { create :discussion, group: subgroup }
       let(:muted_discussion) { create :discussion, group: group }
       let(:starred_discussion) { create :discussion, group: group }
@@ -142,15 +141,6 @@ describe API::DiscussionsController do
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
         expect(ids).to_not include muted_discussion.id
-      end
-
-      it 'can filter by participating' do
-        CommentService.create actor: user, comment: build(:comment, discussion: participating_discussion)
-        get :dashboard, filter: :show_participating
-        json = JSON.parse(response.body)
-        ids = json['discussions'].map { |v| v['id'] }
-        expect(ids).to include participating_discussion.id
-        expect(ids).to_not include discussion.id
       end
 
       it 'can filter by muted' do
@@ -345,7 +335,6 @@ describe API::DiscussionsController do
         expect(json['discussions'][0]['discussion_reader_volume']).to eq reader.discussion_reader_volume
         expect(json['discussions'][0]['starred']).to eq reader.starred
         expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
-        expect(json['discussions'][0]['participating']).to eq reader.participating
       end
     end
   end

@@ -951,9 +951,11 @@ en:
     thread_preview:
       you_voted: 'You voted {{position}}'
       undecided: 'You are undecided'
+      pinned: 'This thread has been pinned by the coordinator of the group'
     threads_from:
       group: 'Threads from'
-      proposals: 'Proposals'
+      pinned: 'Pinned threads'
+      proposals: 'Threads with active decisions'
       starred: 'Starred threads'
       today: 'Today'
       yesterday: 'Yesterday'

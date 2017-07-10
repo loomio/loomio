@@ -117,7 +117,10 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_close',
                 'poll_destroy',
-                'poll_expire') { |model| model.discussion&.update_importance }
+                'poll_expire') do |model|
+    model.discussion&.update_importance
+    model.discussion&.discussion_readers&.map(&:update_importance)
+  end
 
   # update reader importance
   config.listen('discussion_update_reader') { |reader| reader.update_importance }
