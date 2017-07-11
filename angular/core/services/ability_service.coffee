@@ -74,6 +74,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       Session.user().isAdminOf(group)
 
     canManageGroupSubscription: (group) ->
+      group.isParent() and
       @canAdministerGroup(group) and
       group.subscriptionKind? and
       group.subscriptionKind != 'trial' and

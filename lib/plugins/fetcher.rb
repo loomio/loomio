@@ -27,7 +27,7 @@ module Plugins
     end
 
     def fetch
-      `git clone -b #{branch} git://github.com/#{repo} #{folder}`
+      `git clone -b #{branch} #{repo} #{folder}`
     end
 
     def set_config
