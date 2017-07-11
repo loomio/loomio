@@ -242,7 +242,7 @@ class User < ActiveRecord::Base
   end
 
   def update_detected_locale(locale)
-    self.update_attribute(:detected_locale, locale) if detected_locale.to_sym != locale.to_sym
+    self.update_attribute(:detected_locale, locale) if self.detected_locale&.to_sym != locale.to_sym
   end
 
   def generate_username
