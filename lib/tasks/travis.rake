@@ -8,12 +8,7 @@ namespace :travis do
   task :rspec do
     puts "Starting to run rspec..."
     system("bundle exec rspec")
-    core_passed = $?.exitstatus == 0
-
-    puts "Starting to run plugin rspec..."
-    system("bundle exec rspec plugins")
-    plugin_passed = $?.exitstatus == 0
-    raise "rspec failed!" unless core_passed && plugin_passed
+    raise "rspec failed!" unless $?.exitstatus == 0
   end
 
   task :cucumber do
@@ -22,21 +17,21 @@ namespace :travis do
     raise "cucumber failed!" unless $?.exitstatus == 0
   end
 
-  task :protractor_core => :environment do
-    puts "Starting to run protractor..."
-    system("cd angular && gulp protractor:core")
-    core_passed = $?.exitstatus == 0
-    raise "protractor:plugins failed!" unless core_passed
-  end
-
   task :protractor => :environment do
     puts "Starting to run protractor..."
     system("cd angular && gulp protractor:core")
-    core_passed = $?.exitstatus == 0
+    raise "protractor:core failed!" unless $?.exitstatus == 0
+  end
+
+  task :plugins => :environment do
+    puts "Starting to run plugin rspec..."
+    system("bundle exec rspec plugins")
+    rspec_passed = $?.exitstatus == 0
 
     puts "Starting to run plugin protractor..."
     system("cd angular && gulp protractor:plugins")
-    plugin_passed = $?.exitstatus == 0
-    raise "protractor:plugins failed!" unless core_passed && plugin_passed
+    protractor_passed = $?.exitstatus == 0
+    raise "rspec:plugins failed!" unless rspec_passed
+    raise "protractor:plugins failed!" unless protractor_passed
   end
 end
