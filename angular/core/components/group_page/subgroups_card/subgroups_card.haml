@@ -13,5 +13,5 @@
     .lmo-flex.lmo-flex__space-between
     .lmo-actions
       %outlet{name: "subgroup-card-footer"}
-      %md-button.md-primary.md-raised{ng-click: "startSubgroup()", ng-if: "canCreateSubgroups()"}
+      %md-button.md-primary.md-raised.subgroups-card__start{ng-click: "startSubgroup()", ng-if: "canCreateSubgroups()"}
         %span{ translate: "common.action.add_subgroup" }

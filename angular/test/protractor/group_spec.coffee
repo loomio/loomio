@@ -10,6 +10,7 @@ describe 'Group Page', ->
       page.expectElement '.join-group-button__ask-to-join-group'
       page.click '.navbar__sidenav-toggle'
       page.expectElement '.sidebar__list-item--selected'
+    , 60000
 
   xdescribe 'start group from home page', ->
     it 'allows starting a group via the start_group route', ->
@@ -151,8 +152,7 @@ describe 'Group Page', ->
     describe 'with a public parent', ->
       beforeEach ->
         page.loadPath('setup_open_group')
-        page.click('.group-page-actions__button',
-                   '.group-page-actions__add-subgroup-link')
+        page.click '.subgroups-card__start'
         page.click '.group-form__advanced-link'
 
       it 'open subgroup', ->
@@ -176,8 +176,7 @@ describe 'Group Page', ->
     describe 'with a closed parent', ->
       beforeEach ->
         page.loadPath('setup_closed_group')
-        page.click('.group-page-actions__button',
-                   '.group-page-actions__add-subgroup-link')
+        page.click '.subgroups-card__start'
         page.click '.group-form__advanced-link'
 
       it 'open subgroup', ->
@@ -201,8 +200,7 @@ describe 'Group Page', ->
     describe 'with a secret parent', ->
       beforeEach ->
         page.loadPath('setup_secret_group')
-        page.click('.group-page-actions__button',
-                   '.group-page-actions__add-subgroup-link')
+        page.click '.subgroups-card__start'
         page.click '.group-form__advanced-link'
 
       it 'open subgroup', ->
@@ -220,14 +218,6 @@ describe 'Group Page', ->
         page.expectNoElement '.group-form__joining'
         page.expectNoElement '.group-form__parent-members-can-see-discussions'
         page.expectNoElement '.group-form__allow-public-threads'
-
-    # it 'successfully starts a subgroup', ->
-    #   page.click('.group-page-actions__button',
-    #              '.group-page-actions__add-subgroup-link')
-    #   page.fillIn('#group-name', 'The Breakfast Club')
-    #   page.click('.group-form__submit-button')
-    #   page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
-    #   page.expectText('.group-theme__name', 'The Breakfast Club')
 
   describe 'editing group description from description card', ->
     it 'allows coordinators to edit description inline', ->

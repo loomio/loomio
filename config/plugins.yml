@@ -1,21 +1,20 @@
 loomio_webhooks:
-  repo:         git@github.com:loomio/loomio_webhooks.git
+  repo:         https://github.com/loomio/loomio_webhooks.git
 
 loomio_org_plugin:
-  repo:         git@github.com:loomio/loomio_org_plugin.git
-  branch:       charge-for-subgroups
+  repo:         https://github.com/loomio/loomio_org_plugin.git
 
 loomio_tags:
-  repo:         git@github.com:loomio/loomio_tags.git
+  repo:         https://github.com/loomio/loomio_tags.git
   branch:       prep-for-paid-feature
 
 loomio_truncate_comment:
-  repo:         git@github.com:loomio/loomio_truncate_comment.git
+  repo:         https://github.com/loomio/loomio_truncate_comment.git
   experimental: true
 
 loomio_content_preview:
-  repo:         git@github.com:loomio/loomio_content_preview.git
+  repo:         https://github.com/loomio/loomio_content_preview.git
 
 loomio_onboarding:
-  repo:         git@github.com:loomio/loomio_onboarding.git
+  repo:         https://github.com/loomio/loomio_onboarding.git
   branch:       group-form-update
