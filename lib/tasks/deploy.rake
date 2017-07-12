@@ -69,7 +69,8 @@ namespace :deploy do
   task :commit do
     puts "Committing assets to deployment branch..."
     run_commands [
-      "find plugins -name '*.*' | xargs git add -f",                                  # add plugins folder to commit
+      "find fetched_plugins -name '*.*' | xargs git add -f",                                  # add plugins folder to commit
+      "git add -f plugins", # add plugins symlink
       "git add public/client/#{Loomio::Version.current} public/client/fonts -f",      # add assets to commit
       "git commit -m 'Add compiled assets / plugin code'"                             # commit assets
     ]
