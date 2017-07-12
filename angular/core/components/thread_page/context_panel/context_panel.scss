@@ -6,6 +6,12 @@
   @include displayFlex;
 }
 
+.context-panel__pin {
+  font-size: 1.2em;
+  line-height: 34px;
+  margin-right: 8px;
+}
+
 .context-panel__before-thread-actions {
   order: 1;
 }

@@ -23,6 +23,15 @@ angular.module('loomioApp').directive 'contextPanel', ->
     $scope.scrollToCommentForm = ->
       ScrollService.scrollTo('.comment-form__comment-field')
 
+    $scope.canPinThread = ->
+      AbilityService.canPinThread($scope.discussion)
+
+    $scope.pinThread = ->
+      ThreadService.pin($scope.discussion)
+
+    $scope.unpinThread = ->
+      ThreadService.unpin($scope.discussion)
+
     $scope.muteThread = ->
       ThreadService.mute($scope.discussion)
 

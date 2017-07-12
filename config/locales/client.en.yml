@@ -951,7 +951,7 @@ en:
     thread_preview:
       you_voted: 'You voted {{position}}'
       undecided: 'You are undecided'
-      pinned: 'This thread has been pinned by the coordinator of the group'
+      pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
     threads_from:
       group: 'Threads from'
       pinned: 'Pinned threads'
@@ -995,6 +995,9 @@ en:
     liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
     started_by: 'Started by <strong>{{name}}</strong>'
     edited: 'Edited'
+    pin:
+      pinned: 'Thread pinned'
+      unpinned: 'Thread unpinned'
     volume:
       mute_message: 'Thread muted.'
       unmute_message: 'Thread unmuted'
@@ -1006,11 +1009,19 @@ en:
     email_settings: 'Email settings'
     edit: 'Edit'
     edit_thread: 'Edit'
+    pin_thread: 'Pin'
+    unpin_thread: 'Unpin'
     mute_thread: 'Mute'
     move_thread: 'Move'
     print_thread: 'Print'
     delete_thread: 'Delete'
     add_comment: 'Comment'
+
+  pin_thread_modal:
+    title: Pin thread
+    helptext: "Pinned threads always appear at the top of their group's list of threads. They can be used to inform members of important announcements, or to promote common material like a code of conduct or community guidelines."
+    helptext_two: "You may remove pins at any time by selecting 'Unpin' from the thread dropdown"
+    pin_thread: Pin thread
 
   delete_thread_form:
     aria_label: 'Delete thread'

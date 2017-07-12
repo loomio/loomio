@@ -142,7 +142,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @volume() == 'mute'
 
     saveStar: ->
-      @remote.patchMember @keyOrId(), if @starred then 'star' else 'unstar'
+      @remote.patchMember @keyOrId(), if @starred then 'unstar' else 'star'
 
     update: (attrs) ->
       delete attrs.lastReadSequenceId    if attrs.lastReadSequenceId < @lastReadSequenceId
@@ -163,7 +163,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     move: =>
       @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }
 
-    savePin: ->
+    savePin: =>
       @remote.patchMember @keyOrId(), 'pin'
 
     edited: ->

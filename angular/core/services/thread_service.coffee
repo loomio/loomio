@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'ThreadService', (Session, Records, ModalService, MuteExplanationModal, FlashService) ->
+angular.module('loomioApp').factory 'ThreadService', (Session, Records, ModalService, PinThreadModal, MuteExplanationModal, FlashService) ->
   new class ThreadService
 
     mute: (thread) ->
@@ -18,3 +18,15 @@ angular.module('loomioApp').factory 'ThreadService', (Session, Records, ModalSer
         FlashService.success "discussion.volume.unmute_message",
           name: thread.title
         , 'undo', => @mute(thread)
+
+    pin: (thread) ->
+      if !Session.user().hasExperienced("pinningThread")
+        Records.users.saveExperience("pinningThread").then ->
+          ModalService.open PinThreadModal, thread: -> thread
+      else
+        thread.savePin().then =>
+          FlashService.success "discussion.pin.pinned", 'undo', => @unpin(thread)
+
+    unpin: (thread) ->
+      thread.savePin().then =>
+        FlashService.success "discussion.pin.unpinned", 'undo', => @pin(thread)

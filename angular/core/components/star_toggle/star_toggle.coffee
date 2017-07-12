@@ -6,4 +6,9 @@ angular.module('loomioApp').directive 'starToggle', ->
   controller: ($scope, AbilityService) ->
     $scope.isLoggedIn = AbilityService.isLoggedIn
 
+    $scope.toggleStar = (e) ->
+      $scope.thread.saveStar()
+      e.stopImmediatePropagation()
+      e.preventDefault()
+
     return
