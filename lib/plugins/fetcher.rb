@@ -10,20 +10,24 @@ module Plugins
     end
 
     def execute!
-      Dir.chdir(Rails.root.join('plugins')) do
+      Dir.chdir(Rails.root.join('fetched_plugins')) do
         clean && fetch && set_config
+      end
+      Dir.chdir(Rails.root) do
+        link
       end
     rescue => e
       puts("WARNING: Unable to clone #{repo} at #{branch} into #{folder}: #{e.message}")
     end
 
     private
+    def link
+      `rm plugins; ln -s fetched_plugins plugins`
+    end
 
     def clean
       return true unless Dir.exists?(folder)
-      `rm -rf ../plugins_backup/#{folder}       &&
-       mv #{folder} ../plugins_backup/#{folder} &&
-       rm -rf #{folder}`
+      `rm -rf #{folder}`
     end
 
     def fetch
