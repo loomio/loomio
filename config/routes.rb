@@ -257,8 +257,7 @@ Loomio::Application.routes.draw do
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
 
-  get  'start_group' => 'start_group#new'
-  post 'start_group' => 'start_group#create'
+  get '/start_group', to: redirect('/g/new')
 
   get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
   get 'dashboard/:filter'                  => 'application#boot_angular_ui'
