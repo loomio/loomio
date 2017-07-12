@@ -1,30 +1,10 @@
 class InvitationService
-
-  def self.create_invite_to_start_group(args)
-    args[:to_be_admin] = true
-    args[:intent] = 'start_group'
-    args[:invitable] = args[:group]
-    args.delete(:group)
-    Invitation.create!(args)
-  end
-
   def self.create_invite_to_join_group(args)
     args[:to_be_admin] = false
     args[:intent] = 'join_group'
     args[:invitable] = args[:group]
     args.delete(:group)
     Invitation.create!(args)
-  end
-
-  def self.invite_creator_to_group(group:, creator:)
-    InvitePeopleMailer.delay(priority: 1).to_start_group(
-      invitation: InvitationService.create_invite_to_start_group(
-        group:           group,
-        inviter:         User.helper_bot,
-        recipient_email: creator.email,
-        recipient_name:  creator.name
-      )
-    )
   end
 
   def self.invite_to_group(recipient_emails: nil,
@@ -47,8 +27,7 @@ class InvitationService
                                                message: message,
                                                inviter: inviter)
 
-      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
-                                                          locale: I18n.locale)
+      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation)
       invitation
     end
   end
@@ -56,8 +35,7 @@ class InvitationService
   def self.resend(invitation)
     return unless invitation.is_pending?
     InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
-                                           locale: I18n.locale,
-                                           subject_key: "email.resend_to_join_group.subject")
+                                                        subject_key: "email.resend_to_join_group.subject")
     invitation
   end
 

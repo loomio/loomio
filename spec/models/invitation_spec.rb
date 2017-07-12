@@ -56,32 +56,6 @@ describe Invitation do
     end
   end
 
-  context 'to_start_a_group' do
-
-    before do
-      @invitation = InvitationService.create_invite_to_start_group(
-        inviter: admin_user,
-        recipient_email: 'jon@lemmon.com',
-        group: group)
-    end
-
-    it 'has a unique token' do
-      @invitation.token.length.should > 10
-    end
-
-    it 'specifies the recpient email' do
-      expect(@invitation.recipient_email).to eq 'jon@lemmon.com'
-    end
-
-    it 'specifies the group' do
-      expect(@invitation.invitable).to eq group
-    end
-
-    it 'is to join as an admin' do
-      @invitation.to_be_admin?.should be true
-    end
-  end
-
   context 'to_join_group' do
 
     before do

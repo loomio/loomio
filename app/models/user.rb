@@ -238,7 +238,11 @@ class User < ActiveRecord::Base
   end
 
   def locale
-    selected_locale || detected_locale || I18n.default_locale
+    selected_locale || detected_locale || I18n.locale
+  end
+
+  def update_detected_locale(locale)
+    self.update_attribute(:detected_locale, locale) if self.detected_locale&.to_sym != locale.to_sym
   end
 
   def generate_username

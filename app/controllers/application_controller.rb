@@ -13,10 +13,9 @@ class ApplicationController < ActionController::Base
   helper_method :dashboard_or_root_path
 
   before_filter :set_application_locale
+  
   around_filter :user_time_zone, if: :user_signed_in?
-
-  # intercom
-  skip_after_filter :intercom_rails_auto_include
+  after_filter :save_detected_locale, if: :user_signed_in?
 
   rescue_from(ActionView::MissingTemplate)  { |exception| raise exception unless %w[txt text gif png].include?(params[:format]) }
   rescue_from(ActiveRecord::RecordNotFound) { respond_with_error :"error.not_found", status: :not_found }
@@ -62,5 +61,4 @@ class ApplicationController < ActionController::Base
   def user_time_zone(&block)
     Time.use_zone(TimeZoneToCity.convert(current_user.time_zone), &block)
   end
-
 end
