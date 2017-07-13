@@ -34,7 +34,6 @@
 }
 
 .dashboard-page__group-name a{
-  @include fontWeightMedium;
   @include fontMedium;
   line-height: 30px;
   color: $grey-on-grey;

@@ -18,7 +18,7 @@ describe InvitationsController do
       render_views
       it 'renders error page with not found message' do
         get :show, id: 'asdjhadjkhaskjdsahda'
-        expect(response.body).to match(/could not find invitation/i)
+        expect(response.body).to match(/could not find an invitation/i)
       end
     end
 

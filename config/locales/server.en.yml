@@ -1,8 +1,19 @@
 ---
 en:
+  invitation:
+    invitation_not_found: We could not find an invitation with the token you've given us. Please request another invitation from your group.
+    invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
+    invitation_already_used: This invitation has already been used. Please sign in to loomio directly to continue to your group.
+
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
+
   validate:
     motion:
       must_close_in_future: Proposal must close in the future.
@@ -210,50 +221,6 @@ en:
     error:
       too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
       all_email_addresses_belong_to_members: "We didn't send invitations to the email addresses provided because they belong to people already in the group."
-  pricing_page:
-    header: Group plans
-    gift: Free
-    standard: Standard
-    plus: Pro
-    free_trial_html: We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required.
-    get_started_for_free: Get started for free
-    gift_body: Everything you need to make effective decisions with your group.
-    standard_body_html: Make decisions in Slack
-    pro_body_html: Make decisions across your organisation
-    one_group: one group
-    unlimited_members: unlimited members
-    unlimited_decisions: unlimited decisions
-    coming_facebook: Facebook integration coming soon.
-    email_support: email support
-    coming_soon: Coming soon
-    analytics_report: Analytics report
-    data_export: Data export (CSV or XLS)
-    slack_integration_html: |
-      <strong>Slack</strong> integration
-    customer_support_html: Customer support
-    standard_price_html: '<strong>$19</strong>/month'
-    gift_price_html: '<strong>$0</strong>'
-    plus_includes_standard: 'Everything in Standard, plus:'
-    standard_includes_free: 'Everything in Free, plus:'
-    multiple_groups: "up to 10 groups"
-    premium_support: premium support
-    help_with_setup: help with initial setup
-    ldap_coming_soon: ActiveDirectory/LDAP coming soon
-    custom_subdomain: custom subdomain
-    analytics_reports: analytics reports
-    free_is_for_community_and_evaluation_html: |
-      Our free plan is for casual users, communities and anyone who wants to evaluate Loomio for use within their organisation. We rely on paid plans to maintain and enhance Loomio.<br/>
-      We respect your privacy and will never sell your data to third parties, nor put advertising into Loomio.<br/>
-      If you are a non-profit organisation, contact us for discount.
-
-    contact_us_html: |
-      Prices are in US dollars, plus sales tax where applicable. Need something else? <a href="/contact">Let's talk!</a>
-
-    custom_subdomain_html: |
-      custom subdomain,<br />
-      e.g. <strong>yourgroup</strong>.loomio.org
-    usage_statistics: usage statistics
-    plus_price_html: '<strong>$99</strong>/month'
   password_reset:
     email_guidelines_html: |
       <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>
@@ -582,3 +549,81 @@ en:
     meeting:
       title: "When should we have our next staff meeting?"
       details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
+
+  poll_unsubscribe:
+    title: You have been unsubscribed from %{title}
+    helptext: You will no longer receive emails about this decision.
+    visit_poll: View poll
+    go_to_dashboad: Go to dashboard
+
+  webhooks:
+    slack:
+      poll_created: "*%{author}* started a new poll in *%{name}*"
+      poll_closing_soon: "*%{name}* has a poll closing in 24 hours"
+      poll_expired: "*%{name}* has closed"
+      outcome_created: "*%{author}* published an outcome in *%{name}*"
+      motion_closed: "*%{name}* has closed"
+      motion_closed_by_user: "*%{name}* has been closed by *%{author}*"
+      motion_closing_soon: "*%{name}* has a proposal closing in 24 hours"
+      motion_outcome_created: "*%{author}* published an outcome in *%{name}*"
+      motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
+      new_motion: "*%{author}* started a new proposal in *%{name}*"
+      new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
+      new_comment: "*%{author}* posted a new comment in *%{name}*"
+      new_discussion: "*%{author}* started a new discussion in *%{group}*"
+      outcome_created: "*%{author}* created an outcome for *%{name}*"
+      poll_created: "*%{author}* started a poll: *%{name}*"
+      poll_closing_soon: "*%{name}* is closing soon"
+      view_it_on_loomio: View it on Loomio
+      have_your_say: Have your say
+      poll_published: "*%{author}* published a poll:"
+      poll_published_with_discussion: "*%{author}* published a poll in %{discussion}:"
+      outcome_published: "*%{author}* published an outcome:"
+      outcome_published_with_discussion: "*%{author}* published an outcome in %{discussion}:"
+      position_verbs:
+        'yes': agreed on
+        'no': disagreed on
+        abstain: abstained on
+        block: blocked
+  slack:
+    new_discussion: "New thread in *%{group}*: *%{discussion}*"
+    poll_published: "New decision in *%{group}*: *%{poll}*"
+    outcome_published: "New outcome in *%{group}*: *%{poll}*"
+    poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
+    poll_expired: "*%{poll}* has closed"
+    group_published: |
+      Hello, I'm Loomio Bot. *%{author}* added me.
+      I can help your team make decisions together.
+
+      My functions include:
+
+      - highlighting when decisions are happening
+      - letting people vote on decisions from Slack
+      - showing where people agree and disagree
+      - communicating the outcome of decisions
+      - keeping a record of decisions in your Loomio group.
+
+      To find out more, type _/loomio help_
+    request_authorization_message: "Just one more step: <%{url}|Click here> to authorize your slack account to use Loomio. (You'll only have to do this once)"
+    poll_closed: "*%{title}* has closed already! <%{url}|Click here> to view the results."
+    go_to_slack: Go to Slack
+    stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you''d like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
+    click_to_vote: "Select an option below to vote:"
+    time_zone_message: (all times are in the %{zone} time zone)
+    authorized_message: Success! You're all set up to vote on slack now.
+    community_poll_published: "@%{username} started a new %{type}:"
+    initiate: |
+      Okay, let's do this! <%{url}|Click here to start your %{type}>.
+      (note: we'll post into this channel once it's created, so that everyone can participate)
+    slash_command_help: |
+      Just enter a decision type and a question, and we'll take it from there.
+      You can choose from the following decision types:
+      'proposal': Seek collective agreement
+      'count':      Track participation and find volunteers
+      'poll':         Measure popularity of options
+      'dot vote': Prioritise a list of options
+      'meeting': Find a time to meet
+
+      For example:
+      /loomio count Who's coming to the party on Sunday?
+      In order to start a new count.

@@ -1,22 +1,18 @@
 loomio_webhooks:
-  repo:         loomio/loomio_webhooks
+  repo:         https://github.com/loomio/loomio_webhooks.git
 
 loomio_org_plugin:
-  repo:         loomio/loomio_org_plugin
+  repo:         https://github.com/loomio/loomio_org_plugin.git
 
 loomio_tags:
-  repo:         loomio/loomio_tags
+  repo:         https://github.com/loomio/loomio_tags.git
 
 loomio_truncate_comment:
-  repo:         loomio/loomio_truncate_comment
-  experimental: true
+  repo:         https://github.com/loomio/loomio_truncate_comment.git
 
 loomio_content_preview:
-  repo:         loomio/loomio_content_preview
-
-loomio_buyer_experience:
-  repo:         loomio/loomio_buyer_experience
+  repo:         https://github.com/loomio/loomio_content_preview.git
 
 loomio_onboarding:
-  repo:         loomio/loomio_onboarding
+  repo:         https://github.com/loomio/loomio_onboarding.git
   branch:       group-form-update

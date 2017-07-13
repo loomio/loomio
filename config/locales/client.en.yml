@@ -518,7 +518,7 @@ en:
     see_all_members: 'See all: ({{count}}) members'
     pending_invitations: '+ ({{count}}) pending'
     subgroups: 'Subgroups'
-    subgroups_placeholder: 'Subgroups let you break the group up into different teams.'
+    subgroups_placeholder: 'Subgroups give teams their own space and keep notifications focused to the right people.'
     invite_people: 'Invite'
     visibility_label: 'Visibility'
     options_label: 'Options'
@@ -604,62 +604,6 @@ en:
     in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that suits your group at any time.'
     expired_body_html: "<strong>{{name}}</strong> has reached the end of its Loomio trial. To keep using it, you’ll need to pick a pricing plan that suits your group."
 
-  choose_plan_modal:
-    aria_label: Choose plan
-    heading: Please choose a plan for your group
-    free: Free
-    standard: Standard
-    pro: Pro
-    per_month: /month
-    standard_group_description: Everything you need for one group.
-    free_group_description: Donation supported plan for community groups.
-    pro_group_description: For organisations with <nobr>multiple groups.</nobr>
-    benefit_1_group: 1 group
-    benefit_10_groups: 10 groups
-    benefit_unlimited_members: Unlimited members
-    benefit_unlimited_decisions: Unlimited decisions
-    benefit_priority_support: Premium support
-    benefit_help_with_setup: Help with initial setup
-    benefit_community_support: Community support
-    benefit_slack_integration: Slack integration
-    benefit_custom_domain: Custom domain
-    benefit_analytics_reports: Analytics reports
-    benefit_data_export: Data export
-    # free_trial_html: "We'll ask you to choose your pricing plan after a <span>30day free trial</span>. No credit card required."
-    # start_group: "Start group"
-    # gift_body: For groups without a budget
-    # support_before: I'm happy to
-    support_link: Let's talk!
-    prices_in_us_dollars: Prices are in US dollars, plus sales tax where applicable.
-    need_help_please: Need something else?
-    # support_after: about extending your trial, or with any other questions you may have.
-    # remind_me_later: Remind me later
-    # gift_donation_ask: We’ll ask your group members to donate
-    # unlimited_members: unlimited members
-    # unlimited_decisions: unlimited decisions
-    # email_support: email support
-    # slack_integration_html: |
-    #   <strong>Slack</strong> integration
-    # standard_price_html: |
-    #   US<strong>$19</strong>/month<br><span>or</span> $190/year
-    # plus_body: 'Everything in Standard, plus:'
-    # multiple_groups: multiple groups
-    # premium_support: premium support
-    # custom_subdomain_html: |
-    #   custom subdomain,<br />
-    #   e.g. <strong>yourgroup</strong>.loomio.org
-    # plus_price_html: |
-    #   US<strong>$179</strong>/month<br><span>or</span> $1790/year
-    select: Select
-
-  subscription_success_modal:
-    aria_label: Supscription success
-    heading: You're all set!
-    receipt: You'll receive an email with your receipt, including a link to the customer portal, where you can change, upgrade, or cancel your subscription, and access billing history.
-    change_subscription: "If you'd like to set up Slack integration or your custom domain name, "
-    contact_link: please contact us.
-    sign_off: ❤ from the Loomio team
-    ok_got_it: Ok, got it!
 
   group_form:
     aria_label: 'Group form'
@@ -1371,7 +1315,7 @@ en:
   current_polls_card:
     title: Current decisions
     start_poll: New decision
-    no_polls: There are no active polls right now.
+    no_polls: There are no active decisions right now.
 
   poll_common_collapsed:
     by_who: "by {{name}}"
@@ -1817,8 +1761,11 @@ en:
     modal_title: Install Slack
 
     card:
-      title: Connected to Slack
-      helptext: This group has been connected to the slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Events from this group will appear in the <strong>{{channel}}</strong> channel.
+      install_title: Connect to Slack
+      install_helptext: Loomio bot notifies your Slack team of discussions and decisions on Loomio. You can also start decisions and vote from within Slack.
+      installed_title: Connected to Slack
+      installed_helptext: This group has been connected to the slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Events from this group will appear in the <strong>{{channel}}</strong> channel.
+      install_slack: Connect Slack
 
     progress:
       install: Install

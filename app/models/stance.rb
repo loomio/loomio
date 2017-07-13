@@ -37,6 +37,7 @@ class Stance < ActiveRecord::Base
   validate :enough_stance_choices
   validate :total_score_is_valid
   validate :participant_is_complete
+  validates :reason, length: { maximum: 250 }
 
   has_many :events, as: :eventable, dependent: :destroy
 

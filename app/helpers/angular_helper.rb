@@ -1,5 +1,4 @@
 module AngularHelper
-  include PendingActionsHelper
 
   def boot_angular_ui
     metadata if browser.bot? && respond_to?(:metadata, true)

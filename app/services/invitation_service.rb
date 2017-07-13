@@ -1,5 +1,4 @@
 class InvitationService
-
   def self.create(invitation: , actor: )
     actor.ability.authorize!(:create, invitation)
     invitation.inviter = actor
@@ -11,28 +10,10 @@ class InvitationService
     EventBus.broadcast('invitation_create', invitation, actor)
     Events::InvitationCreated.publish!(invitation, actor)
   end
-
-  def self.create_invite_to_start_group(args)
-    args[:to_be_admin] = true
-    args[:intent] = 'start_group'
-    Invitation.create!(args)
-  end
-
   def self.create_invite_to_join_group(args)
     args[:to_be_admin] = false
     args[:intent] = 'join_group'
     Invitation.create!(args)
-  end
-
-  def self.invite_creator_to_group(group:, creator:)
-    InvitePeopleMailer.delay(priority: 1).to_start_group(
-      invitation: InvitationService.create_invite_to_start_group(
-        group:           group,
-        inviter:         User.helper_bot,
-        recipient_email: creator.email,
-        recipient_name:  creator.name
-      )
-    )
   end
 
   def self.invite_to_group(recipient_emails: nil,
@@ -54,7 +35,16 @@ class InvitationService
                                                group: group,
                                                message: message,
                                                inviter: inviter)
+<<<<<<< HEAD
       Events::InvitationCreated.publish!(invitation, inviter)
+||||||| merged common ancestors
+
+      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
+                                                          locale: I18n.locale)
+=======
+
+      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation)
+>>>>>>> master
       invitation
     end
   end
@@ -62,8 +52,7 @@ class InvitationService
   def self.resend(invitation)
     return unless invitation.is_pending?
     InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
-                                           locale: I18n.locale,
-                                           subject_key: "email.resend_to_join_group.subject")
+                                                        subject_key: "email.resend_to_join_group.subject")
     invitation
   end
 

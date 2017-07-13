@@ -22,7 +22,7 @@ class API::GroupsController < API::RestfulController
 
   def publish
     service.publish(group: load_resource, params: publish_params, actor: current_user)
-    respond_with_resource
+    respond_with_resource(serializer: Full::GroupSerializer)
   end
 
   def archive

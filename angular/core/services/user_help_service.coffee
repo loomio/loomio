@@ -6,6 +6,7 @@ angular.module('loomioApp').factory 'UserHelpService', ($sce, Session) ->
         when 'es', 'an', 'ca', 'gl' then 'es'
         when 'zh-TW'                then 'zh'
         when 'ar'                   then 'ar'
+        when 'fr'                   then 'fr'
         else 'en'
 
     helpLink: ->

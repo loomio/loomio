@@ -1,6 +1,7 @@
 .blank
-  %section.subgroups-card{ng-if: "showSubgroupsCard()", aria-labelledby: "subgroups-card__title"}
+  %section.subgroups-card{aria-labelledby: "subgroups-card__title", ng-if: "show()"}
     %h2#subgroups-card__title.lmo-card-heading{ translate: "group_page.subgroups"}
+    %p.lmo-hint-text{translate: "group_page.subgroups_placeholder", ng-if: "group.subgroups().length == 0"}
     %ul.subgroups-card__list
       %li.subgroups-card__list-item{ng-repeat: "subgroup in group.subgroups() | orderBy: 'name' track by subgroup.id"}
         .subgroups-card__list-item-logo
@@ -9,5 +10,8 @@
           %a{lmo-href-for: "subgroup"} {{ subgroup.name }}
         .subgroups-card__list-item-description {{ subgroup.description | truncate }}
 
-    %button.subgroups-card__add-subgroup-link{ng-click: "startSubgroup()", ng-if: "canCreateSubgroups()"}
-      %span{ translate: "common.action.add_subgroup" }
+    .lmo-flex.lmo-flex__space-between
+    .lmo-actions
+      %outlet{name: "subgroup-card-footer"}
+      %md-button.md-primary.md-raised.subgroups-card__start{ng-click: "startSubgroup()", ng-if: "canCreateSubgroups()"}
+        %span{ translate: "common.action.add_subgroup" }
