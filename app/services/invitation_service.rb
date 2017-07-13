@@ -35,16 +35,7 @@ class InvitationService
                                                group: group,
                                                message: message,
                                                inviter: inviter)
-<<<<<<< HEAD
       Events::InvitationCreated.publish!(invitation, inviter)
-||||||| merged common ancestors
-
-      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
-                                                          locale: I18n.locale)
-=======
-
-      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation)
->>>>>>> master
       invitation
     end
   end
@@ -62,6 +53,7 @@ class InvitationService
   end
 
   def self.redeem(invitation, user, identity = nil)
+    return true if invitation.group.members.include?(user) # feedback appreciated
     raise Invitation::InvitationCancelled   if invitation.cancelled?
     raise Invitation::InvitationAlreadyUsed if invitation.accepted?
     invitation.accepted_at = DateTime.now   if invitation.single_use?

@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include AngularHelper
   include ProtectedFromForgery
   include LoadAndAuthorize
-  include PendingActionsHelper
   include CurrentUserHelper
 
   helper :analytics_data
@@ -14,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_invitation_token
   before_filter :set_application_locale
-  
+
   around_filter :user_time_zone, if: :user_signed_in?
   after_filter :save_detected_locale, if: :user_signed_in?
 
@@ -38,10 +37,6 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
-  def sign_in(user_or_resource, user = nil)
-    super && handle_pending_actions(user || user_or_resource)
-  end
 
   def respond_with_error(message, status: :bad_request)
     render 'application/display_error', locals: { message: t(message) }, status: status

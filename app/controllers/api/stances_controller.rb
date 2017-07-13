@@ -12,7 +12,7 @@ class API::StancesController < API::RestfulController
 
   private
   def sign_in_unverified_user
-    sign_in(resource.participant) if resource.persisted? && !resource.participant.email_verified
+    sign_in(resource.participant, verified_sign_in_method: false) if resource.persisted? && !resource.participant.email_verified
   end
 
   def set_guest_params

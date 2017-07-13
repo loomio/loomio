@@ -1,7 +1,6 @@
 class FormalGroup < Group
   include HasTimeframe
   include MakesAnnouncements
-  include MessageChannel
   include GroupPrivacy
 
   validates_presence_of :name

@@ -40,7 +40,7 @@ class Ability
     end
 
     can [:choose_subscription_plan], Group do |group|
-      user.is_verified? and group.is_parent? and user_is_admin_of?(group.id)
+      user.email_verified? and group.is_parent? and user_is_admin_of?(group.id)
     end
 
     can [:update,
@@ -63,14 +63,14 @@ class Ability
          :make_draft,
          :move_discussions_to,
          :view_previous_proposals], Group do |group|
-      user.is_verified? && user_is_member_of?(group.id)
+      user.email_verified? && user_is_member_of?(group.id)
     end
 
     can [:add_members,
          :invite_people,
          :manage_membership_requests,
          :view_shareable_invitation], Group do |group|
-      user.is_verified? &&
+      user.email_verified? &&
       ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
       user_is_admin_of?(group.id))
     end
@@ -78,7 +78,7 @@ class Ability
     # please note that I don't like this duplication either.
     # add_subgroup checks against a parent group
     can [:add_subgroup], Group do |group|
-      user.is_verified? &&
+      user.email_verified? &&
       group.is_parent? &&
       user_is_member_of?(group.id) &&
       (group.members_can_create_subgroups? || user_is_admin_of?(group.id))
@@ -89,14 +89,14 @@ class Ability
       # anyone can create a top level group of their own
       # otherwise, the group must be a subgroup
       # inwhich case we need to confirm membership and permission
-      user.is_verified? &&
+      user.email_verified? &&
       group.is_parent? ||
       ( user_is_admin_of?(group.parent_id) ||
         (user_is_member_of?(group.parent_id) && group.parent.members_can_create_subgroups?) )
     end
 
     can :join, Group do |group|
-      user.is_verified? &&
+      user.email_verified? &&
       can?(:show, group) &&
       (group.membership_granted_upon_request? ||
        group.invitations.find_by(recipient_email: @user.email))
@@ -193,7 +193,7 @@ class Ability
     end
 
     can :update, Discussion do |discussion|
-      return false unless user.is_verified?
+      return false unless user.email_verified?
       if discussion.group.members_can_edit_discussions?
         user_is_member_of?(discussion.group_id)
       else
@@ -206,7 +206,7 @@ class Ability
     end
 
     can :create, Discussion do |discussion|
-      return false unless user.is_verified?
+      return false unless user.email_verified?
       (discussion.group.present? &&
        discussion.group.members_can_start_discussions? &&
        user_is_member_of?(discussion.group_id)) ||
@@ -240,7 +240,7 @@ class Ability
     end
 
     can [:create], Attachment do
-      user.is_verified?
+      user.email_verified?
     end
 
     can [:destroy], Attachment do |attachment|
@@ -314,36 +314,36 @@ class Ability
     end
 
     can :create, OauthApplication do |application|
-      @user.is_verified?
+      @user.email_verified?
     end
 
-    can [:show, :remind], Communities::Base do |community|
-      @user.communities.include?(community)
-    end
-
-    can :manage_visitors, Communities::Base do |community|
-      @user.email_communities.include?(community)
-    end
-
-    can :create, Communities::Base do |community|
-      @user.is_logged_in? # TODO: ensure user owns one of the community's polls?
-    end
-
-    can [:destroy, :update], Communities::Base do |community|
-      @user.communities.include? community
-    end
-
-    can :destroy, PollCommunity do |poll_community|
-      @user.can? :share, poll_community.poll
-    end
+    # can [:show, :remind], Communities::Base do |community|
+    #   @user.communities.include?(community)
+    # end
+    #
+    # can :manage_visitors, Communities::Base do |community|
+    #   @user.email_communities.include?(community)
+    # end
+    #
+    # can :create, Communities::Base do |community|
+    #   @user.is_logged_in? # TODO: ensure user owns one of the community's polls?
+    # end
+    #
+    # can [:destroy, :update], Communities::Base do |community|
+    #   @user.communities.include? community
+    # end
+    #
+    # can :destroy, PollCommunity do |poll_community|
+    #   @user.can? :share, poll_community.poll
+    # end
 
     can :make_draft, Poll do |poll|
       @user.is_logged_in? && can?(:show, poll)
     end
 
-    can :create_visitors, Poll do |poll|
-      user_is_author_of?(poll)
-    end
+    # can :create_visitors, Poll do |poll|
+    #   user_is_author_of?(poll)
+    # end
 
     can :add_options, Poll do |poll|
       user_is_author_of?(poll) ||
@@ -375,8 +375,8 @@ class Ability
     end
 
     can :create, Poll do |poll|
-      @user.is_logged_in? &&
-      (!poll.group || poll.group.community.includes?(@user))
+      @user.email_verified? &&
+      (!poll.group || poll.group.members.includes?(@user))
     end
 
     can [:update, :share, :destroy], Poll do |poll|

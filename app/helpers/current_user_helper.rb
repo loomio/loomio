@@ -1,4 +1,11 @@
 module CurrentUserHelper
+  include PendingActionsHelper
+  
+  def sign_in(user, verified_sign_in_method: true)
+    user = UserService.verify(user: user) if verified_sign_in_method
+    super(user) && handle_pending_actions(user)
+  end
+
   def current_user
     @current_user ||= token_user || super || restricted_user || LoggedOutUser.new
   end

@@ -383,20 +383,20 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.text     "description"
-    t.integer  "memberships_count",                              default: 0,     null: false
+    t.integer  "memberships_count",                              default: 0,              null: false
     t.datetime "archived_at"
-    t.integer  "discussions_count",                  default: 0,              null: false
+    t.integer  "discussions_count",                              default: 0,              null: false
     t.string   "full_name"
-    t.boolean  "parent_members_can_see_discussions", default: false,          null: false
+    t.boolean  "parent_members_can_see_discussions",             default: false,          null: false
     t.string   "key"
     t.integer  "category_id"
-    t.string   "discussion_privacy_options",         default: "private_only", null: false
-    t.string   "membership_granted_upon",            default: "approval",     null: false
+    t.string   "discussion_privacy_options",                     default: "private_only", null: false
+    t.string   "membership_granted_upon",                        default: "approval",     null: false
     t.string   "subdomain"
     t.integer  "theme_id"
-    t.boolean  "is_visible_to_public",                           default: true,  null: false
-    t.boolean  "is_visible_to_parent_members",                   default: false, null: false
-    t.boolean  "members_can_add_members",                        default: true,  null: false
+    t.boolean  "is_visible_to_public",                           default: true,           null: false
+    t.boolean  "is_visible_to_parent_members",                   default: false,          null: false
+    t.boolean  "members_can_add_members",                        default: true,           null: false
     t.string   "cover_photo_file_name",              limit: 255
     t.string   "cover_photo_content_type",           limit: 255
     t.integer  "cover_photo_file_size"
@@ -405,40 +405,40 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.string   "logo_content_type",                  limit: 255
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.boolean  "members_can_edit_discussions",       default: true,           null: false
-    t.boolean  "motions_can_be_edited",              default: false,          null: false
-    t.boolean  "members_can_edit_comments",          default: true
-    t.boolean  "members_can_raise_motions",          default: true,           null: false
-    t.boolean  "members_can_vote",                   default: true,           null: false
-    t.boolean  "members_can_start_discussions",      default: true,           null: false
-    t.boolean  "members_can_create_subgroups",       default: false,          null: false
+    t.boolean  "members_can_edit_discussions",                   default: true,           null: false
+    t.boolean  "motions_can_be_edited",                          default: false,          null: false
+    t.boolean  "members_can_edit_comments",                      default: true
+    t.boolean  "members_can_raise_motions",                      default: true,           null: false
+    t.boolean  "members_can_vote",                               default: true,           null: false
+    t.boolean  "members_can_start_discussions",                  default: true,           null: false
+    t.boolean  "members_can_create_subgroups",                   default: false,          null: false
     t.integer  "creator_id"
-    t.boolean  "is_referral",                        default: false,          null: false
+    t.boolean  "is_referral",                                    default: false,          null: false
     t.integer  "cohort_id"
     t.integer  "default_group_cover_id"
     t.integer  "subscription_id"
-    t.integer  "motions_count",                      default: 0,              null: false
-    t.integer  "admin_memberships_count",            default: 0,              null: false
-    t.integer  "invitations_count",                  default: 0,              null: false
-    t.integer  "public_discussions_count",           default: 0,              null: false
+    t.integer  "motions_count",                                  default: 0,              null: false
+    t.integer  "admin_memberships_count",                        default: 0,              null: false
+    t.integer  "invitations_count",                              default: 0,              null: false
+    t.integer  "public_discussions_count",                       default: 0,              null: false
     t.string   "country"
     t.string   "region"
     t.string   "city"
-    t.integer  "closed_motions_count",               default: 0,              null: false
-    t.boolean  "enable_experiments",                 default: false
-    t.boolean  "analytics_enabled",                  default: false,          null: false
-    t.integer  "proposal_outcomes_count",            default: 0,              null: false
-    t.jsonb    "experiences",                        default: {},             null: false
-    t.integer  "pending_invitations_count",          default: 0,              null: false
-    t.jsonb    "features",                           default: {},             null: false
-    t.integer  "recent_activity_count",              default: 0,              null: false
+    t.integer  "closed_motions_count",                           default: 0,              null: false
+    t.boolean  "enable_experiments",                             default: false
+    t.boolean  "analytics_enabled",                              default: false,          null: false
+    t.integer  "proposal_outcomes_count",                        default: 0,              null: false
+    t.jsonb    "experiences",                                    default: {},             null: false
+    t.integer  "pending_invitations_count",                      default: 0,              null: false
+    t.jsonb    "features",                                       default: {},             null: false
+    t.integer  "recent_activity_count",                          default: 0,              null: false
     t.integer  "community_id"
-    t.integer  "closed_polls_count",                 default: 0,              null: false
-    t.integer  "announcement_recipients_count",      default: 0,              null: false
-    t.integer  "polls_count",                        default: 0,              null: false
-    t.boolean  "guest",                              default: false,          null: false
-    t.string   "type",                               default: "FormalGroup",  null: false
-    t.integer  "subgroups_count",                    default: 0,              null: false
+    t.integer  "closed_polls_count",                             default: 0,              null: false
+    t.integer  "announcement_recipients_count",                  default: 0,              null: false
+    t.integer  "polls_count",                                    default: 0,              null: false
+    t.boolean  "guest",                                          default: false,          null: false
+    t.string   "type",                                           default: "FormalGroup",  null: false
+    t.integer  "subgroups_count",                                default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -871,8 +871,8 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"
-    t.string   "short_bio",                        default: "",         null: false
-    t.boolean  "email_verified",                   default: false,      null: false
+    t.string   "short_bio",                                    default: "",         null: false
+    t.boolean  "email_verified",                               default: false,      null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

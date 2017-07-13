@@ -102,19 +102,12 @@ class Discussion < ActiveRecord::Base
 
   after_create :set_last_activity_at_to_created_at
 
-  define_counter_cache(:motions_count)        { |discussion| discussion.motions.count }
-  define_counter_cache(:closed_motions_count) { |discussion| discussion.motions.closed.count }
   define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
   define_counter_cache(:versions_count)       { |discussion| discussion.versions.where(event: :update).count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
-  update_counter_cache :group, :motions_count
-  update_counter_cache :group, :closed_motions_count
   update_counter_cache :group, :closed_polls_count
-  update_counter_cache :group, :proposal_outcomes_count
-
-  alias_method :current_proposal, :current_motion
 
   def thread_item_created!(item)
     if THREAD_ITEM_KINDS.include? item.kind

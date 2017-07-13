@@ -8,6 +8,10 @@ class PollEmailInfo
     "some reason"
   end
 
+  def login_token
+    @token ||= @recipient.login_tokens.create!(redirect: poll_path(@poll))
+  end
+
   def initialize(recipient:, event:, action_name:)
     @recipient   = recipient
     @event       = event

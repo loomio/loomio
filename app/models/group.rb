@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include SelfReferencing
+  include MessageChannel
 
   belongs_to :creator, class_name: 'User'
   belongs_to :parent, class_name: 'Group'
