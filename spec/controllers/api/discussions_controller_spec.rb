@@ -657,7 +657,7 @@ describe API::DiscussionsController do
     end
 
     it 'does not allow non-admins to pin a thread' do
-      sign_in user
+      sign_in another_user
       post :pin, id: discussion.id
       expect(response.status).to eq 403
     end
