@@ -26,9 +26,9 @@ public/client
 public/system
 public/uploads
 
-/plugins/
-/dev_plugins/
-/fetched_plugins/
+/plugins/**/*
+/dev_plugins/**/*
+/fetched_plugins/**/*
 
 !/plugins/.gitkeep
 !/dev_plugins/.gitkeep
