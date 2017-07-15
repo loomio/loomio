@@ -4,7 +4,6 @@ describe API::SearchController do
   let(:user)    { create :user }
   let(:group)   { create :group }
   let(:discussion) { create :discussion, group: group }
-  let(:motion) { create :current_motion, discussion: discussion }
   let(:comment) { create :comment, discussion: discussion }
 
   describe 'index' do
@@ -45,24 +44,6 @@ describe API::SearchController do
 
     it "can find a discussion by description" do
       DiscussionService.update discussion: discussion, params: { description: 'find me' }, actor: user
-      search_for('find')
-
-      expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[1]
-    end
-
-    it "can find a discussion by proposal name" do
-      motion.update name: 'find me'
-      SearchVector.index! motion.discussion_id
-      search_for('find')
-
-      expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[2]
-    end
-
-    it "can find a discussion by proposal description" do
-      motion.update description: 'find me'
-      SearchVector.index! motion.discussion_id
       search_for('find')
 
       expect(@result_keys).to include discussion.key

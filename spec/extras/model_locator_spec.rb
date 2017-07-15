@@ -4,9 +4,8 @@ describe ModelLocator do
   describe "locate" do
 
     let (:discussion) { create :discussion }
-    let (:motion) { create :motion }
 
-    before { discussion; motion }
+    before { discussion }
 
 
     it "finds a model when the param model_id is present" do
@@ -19,18 +18,6 @@ describe ModelLocator do
 
     it "finds a model when the param id is present" do
       expect(ModelLocator.new(:discussion, id: discussion.id).locate).to eq discussion
-    end
-
-    it "finds an alternate model by model_id" do
-      expect(ModelLocator.new(:motion, motion_id: motion.id).locate).to eq motion
-    end
-
-    it "finds an alternate model by key" do
-      expect(ModelLocator.new(:motion, motion_key: motion.key).locate).to eq motion
-    end
-
-    it "finds an alternate model by id" do
-      expect(ModelLocator.new(:motion, id: motion.id).locate).to eq motion
     end
 
     it "finds a model with an aggregate model name" do

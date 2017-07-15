@@ -7,9 +7,6 @@ describe PollService do
   let(:poll) { create :poll, discussion: discussion }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:motion) { create(:motion, discussion: discussion) }
-  let(:closed_motion) { create(:motion, discussion: discussion, closed_at: 1.day.ago, outcome: "an outcome", outcome_author: user) }
-  let(:vote) { create :vote, motion: motion, statement: "I am a statement" }
   let(:visitor) { LoggedOutUser.new }
   let(:group) { create :group }
   let(:another_group) { create :group }
@@ -229,66 +226,6 @@ describe PollService do
       expect {
         PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: another_user)
       }.to raise_error { CanCan::AccessDenied }
-    end
-  end
-
-  describe 'convert' do
-    before { vote; motion.save }
-
-    it 'creates a poll from an active motion' do
-      expect { PollService.convert(motions: motion) }.to change { Poll.count }.by(1)
-      poll = Poll.last
-
-      expect(poll.motion).to eq motion
-      expect(poll.discussion).to eq motion.discussion
-      expect(poll.group).to eq motion.group
-      expect(group.polls).to include poll
-      expect(discussion.polls).to include poll
-      expect(poll.closing_at).to eq motion.closing_at
-      expect(poll.closed_at).to eq motion.closed_at
-      expect(poll.participants).to eq motion.voters
-      expect(poll.poll_options.map(&:name).sort).to eq ['abstain', 'agree', 'block', 'disagree']
-      expect(poll.stances.count).to eq motion.votes.count
-      expect(poll.stances.first.reason).to eq vote.statement
-      expect(poll.current_outcome).to be_nil
-    end
-
-    it 'saves an outcome on a closed motion' do
-      PollService.convert(motions: closed_motion)
-      poll = Poll.last
-      expect(poll.current_outcome.statement).to eq closed_motion.outcome
-      expect(poll.current_outcome.author).to eq closed_motion.outcome_author
-    end
-
-    it 'does not alter the existing motion' do
-      PollService.convert(motions: motion)
-      expect(motion.reload).to eq motion
-    end
-
-    it 'uses the groups community for voting motions' do
-      PollService.convert(motions: motion)
-      group.add_member! another_user
-
-      poll = Poll.last
-      expect(poll.communities).to include motion.group.community
-      expect(poll.communities.first.includes?(vote.user)).to eq true
-      expect(poll.communities.first.includes?(another_user)).to eq true
-    end
-
-    it 'creates a new community based on the participants for closed motions' do
-      motion.close!
-      PollService.convert(motions: motion)
-      group.add_member! another_user
-
-      poll = Poll.last
-      expect(poll.community_of_type(:loomio_users)).to be_present
-      expect(poll.community_of_type(:loomio_users).includes?(vote.user)).to eq true
-      expect(poll.community_of_type(:loomio_users).includes?(another_user)).to eq false
-    end
-
-    it 'does not create duplicate polls for the same motion' do
-      PollService.convert(motions: motion)
-      expect { PollService.convert(motions: motion) }.to_not change { Poll.count }
     end
   end
 

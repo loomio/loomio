@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Group do
-  let(:motion) { create(:motion, discussion: discussion) }
   let(:user) { create(:user) }
   let(:group) { create(:group) }
   let(:discussion) { create :discussion, group: group }
@@ -58,63 +57,6 @@ describe Group do
                                           group: @group,
                                           inviter: @group.creator)
         expect(@group.invitations_count).to eq 1
-      end
-    end
-
-    describe "#motions_count" do
-      before do
-        @group = create(:group)
-        @user = create(:user)
-        @discussion = create(:discussion, group: @group)
-        @motion = create(:motion, discussion: @discussion)
-      end
-
-      it "returns a count of motions" do
-        expect(@group.reload.motions_count).to eq 1
-      end
-
-      it "updates correctly after creating a motion" do
-        expect {
-          @discussion.motions.create(attributes_for(:motion).merge({ author: @user }))
-        }.to change { @group.reload.motions_count }.by(1)
-      end
-
-      it "updates correctly after deleting a motion" do
-        expect {
-          @motion.destroy
-        }.to change { @group.reload.motions_count }.by(-1)
-      end
-
-      it "updates correctly after its discussion is destroyed" do
-        expect {
-          @discussion.destroy
-        }.to change { @group.reload.motions_count }.by(-1)
-      end
-    end
-
-    describe "#closed_motions_count" do
-      before do
-        motion.close!
-      end
-
-      it "returns a count of closed motions" do
-        expect(group.reload.closed_motions_count).to eq 1
-      end
-
-      it "updates correctly after motion is closed" do
-        expect {
-          discussion.motions.create(attributes_for(:motion).merge({ author: user })).close!
-        }.to change { group.reload.closed_motions_count }.by(1)
-      end
-
-      it "updates correctly after deleting a motion" do
-        expect { motion.destroy }.to change { group.reload.closed_motions_count }.by(-1)
-      end
-
-      it "updates correctly after its discussion is destroyed" do
-        expect {
-          discussion.destroy
-        }.to change { group.reload.closed_motions_count }.by(-1)
       end
     end
 

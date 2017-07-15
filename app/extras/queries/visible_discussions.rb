@@ -105,8 +105,6 @@ class Queries::VisibleDiscussions < Delegator
       join_to_starred_polls && join_to_polls
       @relation = @relation.order('sp.closing_at ASC,
                                    p.closing_at ASC,
-                                   smo.closing_at ASC,
-                                   mo.closing_at ASC,
                                    dv.starred DESC NULLS LAST,
                                    last_activity_at DESC')
     else

@@ -12,7 +12,6 @@ describe API::DiscussionsController do
   let(:another_discussion) { create :discussion }
   let(:comment) { create :comment, discussion: discussion}
   let(:new_comment) { build(:comment, discussion: discussion) }
-  let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
     title: 'Did Charlie Bite You?',
     description: 'From the dawn of internet time...',
@@ -186,66 +185,16 @@ describe API::DiscussionsController do
         expect(json['discussions'].count).to eq 2
       end
     end
-
-    describe 'sorting' do
-      let(:starred_with_proposal) { create :discussion, group: group, title: 'starred_with_proposal' }
-      let(:with_proposal) { create :discussion, group: group, title: 'with_proposal' }
-      let(:starred) { create :discussion, group: group, title: 'starred', last_activity_at: 20.days.ago }
-      let(:recent) { create :discussion, group: group, last_activity_at: 1.day.ago, title: 'recent' }
-      let(:not_recent) { create :discussion, group: group, last_activity_at: 5.days.ago, title: 'not_recent' }
-
-      before do
-        sign_in user
-        recent; not_recent
-      end
-
-      it 'sorts by starred w/ proposals first' do
-        DiscussionReader.for(user: user, discussion: starred_with_proposal).update starred: true
-        DiscussionReader.for(user: user, discussion: starred).update starred: true
-        starred_with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
-        with_proposal.motions         << create(:motion, closing_at: 2.days.from_now)
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq starred_with_proposal.id
-      end
-
-      it 'sorts by proposals second' do
-        DiscussionReader.for(user: user, discussion: starred).update starred: true
-        with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq with_proposal.id
-      end
-
-      it 'sorts by starred third' do
-        DiscussionReader.for(user: user, discussion: starred).update starred: true
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq starred.id
-      end
-
-      it 'sorts by recent activity fourth' do
-        not_recent.update last_activity_at: 10.days.ago
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq recent.id
-      end
-    end
   end
 
   describe 'show' do
     context 'logged in' do
       before { sign_in user }
       it 'returns the discussion json' do
-        proposal
         get :show, id: discussion.key
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users groups proposals discussions])
-        expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id active_proposal_id])
+        expect(json.keys).to include *(%w[users groups discussions])
+        expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id ])
       end
 
       it 'returns the reader fields' do
@@ -597,7 +546,7 @@ describe API::DiscussionsController do
       it 'responds with json' do
         post :create, discussion: discussion_params, format: :json
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users groups proposals discussions])
+        expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[
           id
           key
@@ -608,7 +557,6 @@ describe API::DiscussionsController do
           updated_at
           items_count
           private
-          active_proposal_id
           author_id
           group_id
         ])

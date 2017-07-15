@@ -4,9 +4,8 @@ describe NotificationBaker do
   let(:user) { create :user }
   let(:admin) { create :user }
   let(:group) { create :group }
-  let(:discussion) { create :discussion, group: group }
-  let(:motion) { create :motion, discussion: discussion }
-  let(:event) { Events::MotionClosingSoon.publish!(motion) }
+  let(:discussion) { create :discussion, group: group, make_announcement: true }
+  let(:event) { Events::NewDiscussion.publish!(discussion) }
   let(:added_event) { Events::UserAddedToGroup.publish!(Membership.find_by(user: user, group: group), admin) }
   let(:notification) { Notification.find_by(event: event, user: user) }
   let(:added_notification) { Notification.find_by(event: added_event, user: user) }
@@ -14,6 +13,7 @@ describe NotificationBaker do
 
   before do
     group.add_admin! user
+    group.add_admin! admin
     # simulate an old notification
     notification.update_attribute(:url, nil)
     notification.update_attribute(:translation_values, {})
