@@ -60,7 +60,7 @@ namespace :deploy do
     run_commands [
       "rake 'plugins:fetch[#{plugin_set}]' plugins:install",                             # install plugins specified in plugins/plugins.yml
       "rm -rf plugins/**/.git",                                                          # allow cloned plugins to be added to this repo
-      "cd angular && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",    # build the app via gulp
+      "cd angular && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",           # build the app via gulp
       "cp -r public/client/development public/client/#{Loomio::Version.current}"         # version assets
     ]
   end
@@ -69,8 +69,9 @@ namespace :deploy do
   task :commit do
     puts "Committing assets to deployment branch..."
     run_commands [
-      "find fetched_plugins -name '*.*' | xargs git add -f",                                  # add plugins folder to commit
-      "git add -f plugins", # add plugins symlink
+      "find fetched_plugins -name '*.*' | xargs git add -f",                          # add plugins folder to commit
+      "ln -s fetched_plugins plugins",                                                # add plugins symlink
+      "git add -f plugins",                                                           # add symlink to repo
       "git add public/client/#{Loomio::Version.current} public/client/fonts -f",      # add assets to commit
       "git commit -m 'Add compiled assets / plugin code'"                             # commit assets
     ]
