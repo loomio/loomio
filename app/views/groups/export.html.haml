@@ -1,4 +1,8 @@
 %h1 Export for #{@group.full_name}
+%p
+  Also available in
+  = link_to "XLS", group_export_path(@group, format: 'xls')
+  = link_to "CSV", group_export_path(@group, format: 'csv')
 
 
 = render 'export_table', name: 'Groups',      records: @exporter.groups,      fields: @exporter.group_fields

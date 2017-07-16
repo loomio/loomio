@@ -119,17 +119,12 @@ module.exports = new class GroupsHelper
   # clickAddCoordinatorButton: ->
   #   element(By.css('.leave-group-form__add-coordinator')).click()
 
-  clickStartSubgroupLink: ->
-    element(By.css('.subgroups-card__add-subgroup-link')).click()
-
   groupName: ->
     element(By.css('.group-theme__name')).getText()
 
   visitFirstGroup: ->
     element.all(By.css('.groups-page__parent-group-name a')).first().click()
 
-  clickAddSubgroupLink: ->
-    element(By.css('.group-page-actions__add-subgroup-link')).click()
 
   clickFirstThread: ->
     element(By.css('.thread-preview__link')).click()

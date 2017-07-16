@@ -53,7 +53,6 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  @include fontWeightMedium;
 }
 .lmo-dropdown-menu-item-details{
   font-weight: normal;
@@ -104,7 +103,6 @@ li .lmo-dropdown-menu-item-label{
 }
 
 .lmo-dropdown-heading{
-  @include fontWeightMedium;
   @include fontSmall;
   text-transform: uppercase;
   color: $grey-on-white;

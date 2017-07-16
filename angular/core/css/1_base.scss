@@ -42,10 +42,6 @@ input[type="file"]{
   max-width: 200px;
 }
 
-strong{
-  @include fontWeightBold;
-}
-
 a {
   color: $link-color;
 }

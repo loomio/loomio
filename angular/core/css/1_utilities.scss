@@ -22,9 +22,9 @@
 }
 
 .lmo-actions {
-  @include displayFlex;
+  display: flex;
   justify-content: space-between;
-  -webkit-justify-content: space-between;
+  align-items: center;
 }
 
 .lmo-textarea {
@@ -145,18 +145,14 @@
   img { max-width: 100%; }
   h1 {
     @include fontLarge;
-    // @include fontWeightBold;
     margin: 20px 0 10px 0;
   }
   h2 {
     @include fontMedLarge;
-    // @include fontWeightBold;
   }
   h3 {
-    // @include fontWeightBold;
   }
   h4 {
-    // @include fontWeightBold;
   }
   ul{
     padding: 0 0 10px 24px;

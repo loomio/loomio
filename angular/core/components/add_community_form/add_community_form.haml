@@ -17,7 +17,7 @@
         {{ group.name }}
     .add-community-form__oops{ng-if: "!fetchExecuting && error"}
       .add-community-form__error-icon.material-icons warning
-      .add-community-form__error-explanation.poll-common-helptext{translate: "add_community_form.error_explanation", translate-value-type: "{{community.communityType}}"}
+      .add-community-form__error-explanation.lmo-hint-text{translate: "add_community_form.error_explanation", translate-value-type: "{{community.communityType}}"}
       %md-button.md-primary.md-raised.add-community-form__retry-button{ng-click: "reauth()"}
         %span{translate: "common.action.retry"}
 
