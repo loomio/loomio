@@ -15,7 +15,7 @@ describe PollService do
   let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name }
   let(:identity) { create :slack_identity }
 
-  before { group.add_member!(user); group.community }
+  before { group.add_member!(user) }
 
   describe '#convert_visitors' do
     it 'converts recognised visitors to users' do
@@ -55,32 +55,6 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: user) }.to change { Poll.count }.by(1)
     end
 
-    it 'populates an email community by default' do
-      PollService.create(poll: private_poll, actor: user)
-
-      poll = Poll.last
-      expect(poll.communities.map(&:class)).to include Communities::Email
-    end
-
-    it 'populates a public community if the poll is not part of a group' do
-      poll.discussion = nil
-      PollService.create(poll: poll, actor: user)
-
-      poll = Poll.last
-      expect(poll.communities.map(&:class)).to include Communities::Public
-      expect(poll.communities.map(&:class)).to include Communities::Email
-      expect(poll.anyone_can_participate).to eq true
-    end
-
-    it 'does not populate a public community if the poll is part of a group' do
-      PollService.create(poll: poll, actor: user)
-
-      poll = Poll.last
-      expect(poll.communities.map(&:class)).to_not include Communities::Public
-      expect(poll.communities.map(&:class)).to include Communities::Email
-      expect(poll.anyone_can_participate).to eq false
-    end
-
     it 'populates removing custom poll actions' do
       poll_created.poll_type = 'poll'
       poll_created.poll_options = []
@@ -104,24 +78,6 @@ describe PollService do
 
     it 'does not allow logged out users to create polls' do
       expect { PollService.create(poll: poll_created, actor: logged_out_user) }.to raise_error { CanCan::AccessDenied }
-    end
-
-    it 'creates a poll which references the group community from a discussion' do
-      PollService.create(poll: poll_created, actor: user)
-
-      poll = Poll.last
-      expect(poll.communities).to include group.community
-      expect(poll.discussion).to eq discussion
-      expect(poll.group).to eq discussion.group
-      expect(group.polls).to include poll
-      expect(discussion.polls).to include poll
-    end
-
-    it 'posts to slack if a slack identity is present' do
-      group.community.update(identity: identity)
-      expect { PollService.create(poll: poll_created, actor: user) }.to change { Events::PollPublished.where(kind: :poll_published).count }.by(1)
-      event = Events::PollPublished.where(kind: :poll_published).last
-      expect(event.custom_fields['community_id']).to eq group.community.id
     end
 
     it 'does not allow users to create polls for communities they are not a part of' do

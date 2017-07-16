@@ -11,8 +11,8 @@ describe InvitationsController do
   end
 
   describe "GET 'show'" do
-    let(:invitation) { create(:invitation, token: 'abc', invitable: group, recipient_email: user.email) }
-    let(:start_group_invitation) { create :invitation, token: 'bcd', invitable: another_group, recipient_email: "something@something.com", intent: :start_group, to_be_admin: true }
+    let(:invitation) { create(:invitation, token: 'abc', group: group, recipient_email: user.email) }
+    let(:start_group_invitation) { create :invitation, token: 'bcd', group: another_group, recipient_email: "something@something.com", intent: :start_group, to_be_admin: true }
 
     context 'invitation not found' do
       render_views
@@ -31,7 +31,7 @@ describe InvitationsController do
 
       it 'says sorry invitatino already used' do
         get :show, id: invitation.token
-        expect(response).to redirect_to(invitation.invitable)
+        expect(response).to redirect_to(invitation.group)
       end
     end
 

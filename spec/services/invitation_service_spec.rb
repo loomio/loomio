@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe InvitationService do
   let(:group) { FactoryGirl.create(:formal_group) }
-  let(:invitation) { FactoryGirl.create(:invitation, invitable: group) }
+  let(:invitation) { FactoryGirl.create(:invitation, group: group) }
   let(:user) { FactoryGirl.create(:user) }
 
   describe 'redeem' do
@@ -17,7 +17,7 @@ describe InvitationService do
     end
 
     context 'multiple use' do
-      let(:invitation) { FactoryGirl.create(:invitation, invitable: group, single_use: false) }
+      let(:invitation) { FactoryGirl.create(:invitation, group: group, single_use: false) }
 
       it 'does not mark as accepted' do
         expect(invitation.accepted_at).to eq nil
@@ -27,7 +27,7 @@ describe InvitationService do
     context 'to_be_admin' do
       let(:invitation) { FactoryGirl.create(:invitation,
                                             to_be_admin: true,
-                                            invitable: group) }
+                                            group: group) }
 
       it 'makes the user a group admin' do
         group.admins.reload.should include user

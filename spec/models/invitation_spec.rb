@@ -9,7 +9,7 @@ describe Invitation do
                                     recipient_name: 'Joinky',
                                     intent: 'join_group',
                                     inviter: admin_user,
-                                    invitable: group)
+                                    group: group)
   end
 
   describe 'create' do
@@ -73,7 +73,7 @@ describe Invitation do
     end
 
     it 'specifies the group' do
-      expect(@invitation.invitable).to eq group
+      expect(@invitation.group).to eq group
     end
 
     it 'is to join as an admin' do
