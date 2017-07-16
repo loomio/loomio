@@ -49,41 +49,6 @@ describe Membership do
       @membership.destroy
       subgroup.users.should include(user)
     end
-
-    context do
-      before do
-        discussion = create :discussion,  group: group
-        @motion = create(:motion, discussion: discussion)
-        vote = Vote.new
-        vote.user = user
-        vote.position = "yes"
-        vote.motion = @motion
-        vote.save!
-      end
-
-      it "preserves user's open votes for the group" do
-        @membership.destroy
-        expect(@motion.votes.count).to eq 1
-      end
-
-      it "does not remove user's open votes for other groups" do
-        group2 = create(:formal_group)
-        discussion2 = create :discussion, group: group2
-        motion2 = create(:motion, author: user, discussion: discussion2 )
-        vote = Vote.new
-        vote.user = user
-        vote.position = "yes"
-        vote.motion = motion2
-        vote.save!
-        @membership.destroy
-        expect(motion2.votes.count).to eq 1
-      end
-
-      it "does not fail if motion no longer exists" do
-        @motion.delete
-        lambda { @membership.destroy }.should_not raise_error
-      end
-    end
   end
 
   describe 'volume' do

@@ -50,8 +50,4 @@ class VersionSerializer < ActiveModel::Serializer
   def include_comment?
     object.item_type == 'Comment'
   end
-
-  def include_proposal?
-    object.item_type == 'Motion'
-  end
 end

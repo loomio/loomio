@@ -121,13 +121,6 @@ describe User do
     user.authored_discussions.should include(discussion)
   end
 
-  it "has authored motions" do
-    group.add_member!(user)
-    discussion = create :discussion, group: group
-    motion = FactoryGirl.create(:motion, discussion: discussion, author: user)
-    user.authored_motions.should include(motion)
-  end
-
   describe "name" do
     it "returns '[deactivated account]' if deactivated_at is true (a date is present)" do
       user.update_attribute(:deactivated_at, Time.now)

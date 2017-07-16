@@ -98,63 +98,6 @@ class PollService
     EventBus.broadcast('poll_toggle_subscription', poll, actor)
   end
 
-  def self.create_visitors(poll:, emails:, actor:)
-    actor.ability.authorize! :create_visitors, poll
-
-    VisitorsBatchCreateJob.perform_later(emails, poll.id, actor.id)
-    poll.pending_emails = []
-    poll.save(validate: false)
-
-    EventBus.broadcast('poll_create_visitors', poll, emails, actor)
-  end
-
-  def self.convert(motions:)
-    # create a new poll from the motion
-    Array(motions).map do |motion|
-      next if motion.poll.present?
-      outcome = Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome.present?
-
-      # convert motion to poll
-      poll = Poll.new(
-        poll_type:               "proposal",
-        poll_options_attributes: AppConfig.poll_templates.dig('proposal', 'poll_options_attributes'),
-        key:                     motion.key,
-        discussion:              motion.discussion,
-        motion:                  motion,
-        title:                   motion.name,
-        details:                 motion.description,
-        author_id:               motion.author_id,
-        created_at:              motion.created_at,
-        updated_at:              motion.updated_at,
-        closing_at:              motion.closing_at,
-        closed_at:               motion.closed_at,
-        outcomes:                Array(outcome)
-      )
-      poll.community_of_type(:email, build: true)
-      poll.save(validate: false)
-
-      # convert votes to stances
-      poll.update(
-        stances: motion.votes.map do |vote|
-          stance_choice = StanceChoice.new(poll_option: poll.poll_options.detect { |o| o.name == vote.position_verb })
-          Stance.new(
-            participant_type: 'User',
-            participant_id:   vote.user_id,
-            reason:           vote.statement,
-            latest:           vote.age.zero?,
-            created_at:       vote.created_at,
-            updated_at:       vote.updated_at,
-            stance_choices:   Array(stance_choice)
-          )
-        end
-      )
-      poll.update_stance_data
-
-      # set poll to closed if motion was closed
-      do_closing_work(poll: poll) if motion.closed?
-    end
-  end
-
   def self.convert_visitors(poll: )
     poll.create_guest_group
     poll.visitors.each do |visitor|
@@ -171,6 +114,16 @@ class PollService
     end
 
     do_closing_work(poll: poll) if poll.closed?
+  end
+
+  def self.create_visitors(poll:, emails:, actor:)
+    actor.ability.authorize! :create_visitors, poll
+
+    VisitorsBatchCreateJob.perform_later(emails, poll.id, actor.id)
+    poll.pending_emails = []
+    poll.save(validate: false)
+
+    EventBus.broadcast('poll_create_visitors', poll, emails, actor)
   end
 
   def self.cleanup_examples

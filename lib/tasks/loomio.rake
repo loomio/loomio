@@ -14,7 +14,6 @@ namespace :loomio do
     # PollService.delay.cleanup_examples
     SendMissedYesterdayEmailJob.perform_later
     ResendIgnoredInvitationsJob.perform_later
-    ProposalsClosingSoonJob.perform_later
     LocateUsersAndGroupsJob.perform_later
   end
 

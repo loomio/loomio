@@ -76,14 +76,6 @@ class User < ActiveRecord::Base
            foreign_key: 'author_id',
            dependent: :destroy
 
-  has_many :motions,
-           through: :discussions
-
-  has_many :authored_motions,
-           class_name: 'Motion',
-           foreign_key: 'author_id',
-           dependent: :destroy
-
   has_many :polls, foreign_key: :author_id
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
@@ -94,7 +86,6 @@ class User < ActiveRecord::Base
            source: :communities,
            class_name: "Communities::Base"
 
-  has_many :votes, dependent: :destroy
   has_many :comment_votes, dependent: :destroy
   has_many :stances, as: :participant, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll

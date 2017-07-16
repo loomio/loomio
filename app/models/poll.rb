@@ -27,7 +27,6 @@ class Poll < ActiveRecord::Base
   has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
-  belongs_to :motion
   belongs_to :discussion
   belongs_to :group, class_name: "FormalGroup"
 

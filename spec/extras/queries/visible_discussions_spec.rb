@@ -5,8 +5,6 @@ describe Queries::VisibleDiscussions do
   let(:group) { create :formal_group, discussion_privacy_options: 'public_or_private' }
   let(:author) { create :user }
   let(:discussion) { create :discussion, group: group, author: author, private: true }
-  let(:motion_discussion) { create :discussion, group: group, author: author }
-  let(:motion) { create :motion, discussion: motion_discussion, closing_at: 2.days.from_now }
 
   subject do
     Queries::VisibleDiscussions.new(user: user, groups: [group])
@@ -57,19 +55,6 @@ describe Queries::VisibleDiscussions do
     it 'does not include dismissed discussions' do
       DiscussionReader.for(discussion: discussion, user: user).dismiss!
       subject.unread.should_not include discussion
-    end
-  end
-
-  describe 'with_active_motions' do
-    before do
-      group.add_member! author
-      group.add_member! user
-      motion; discussion; motion_discussion
-    end
-
-    it 'shows discussions with active motions' do
-      expect(subject.with_active_motions).to include motion_discussion
-      expect(subject.with_active_motions).to_not include discussion
     end
   end
 

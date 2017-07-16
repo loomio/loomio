@@ -50,7 +50,6 @@ ActiveAdmin.register Group do
     column "Size", :memberships_count
 
     column "Discussions", :discussions_count
-    column "Motions", :motions_count
     column :created_at
     column :description, :sortable => :description do |group|
       group.description
@@ -91,9 +90,6 @@ ActiveAdmin.register Group do
       row :invitations_count
       row :pending_invitations_count
       row :public_discussions_count
-      row :motions_count
-      row :closed_motions_count
-      row :proposal_outcomes_count
       row :payment_plan
 
       row "Group Privacy" do
@@ -262,17 +258,6 @@ ActiveAdmin.register Group do
     group = Group.friendly.find(params[:id])
     group.unarchive!
     flash[:notice] = "Unarchived #{group.name}"
-    redirect_to [:admin, :groups]
-  end
-
-  member_action :use_polls, :method => :post do
-    group = Group.friendly.find(params[:id])
-    group.features['use_polls'] = true
-    flash[:notice] = "polls enabled for #{group.name}"
-
-    group.polls.where('motion_id is not null').destroy_all
-    PollService.delay.convert(motions: group.motions)
-    group.save!
     redirect_to [:admin, :groups]
   end
 
