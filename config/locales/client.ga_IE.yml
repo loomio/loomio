@@ -315,7 +315,6 @@ ga_IE:
     members_placeholder: 'Is tusa an t-aon duine anseo: tabhair cuirí do dhaoine bheith leat!'
     member_options: Roghanna na gcomhaltaí
     subgroups: 'Fobhaiclí'
-    subgroups_placeholder: 'Ligeann fobhaiclí duit an bhaicle a roinnt i bhfoirne éagsúla.'
     visibility_label: 'Infheictheacht'
     options_label: 'Roghanna'
     options:
@@ -355,21 +354,6 @@ ga_IE:
     more: '... agus a lán eile.'
     upgrade: Uasghrádaigh anois
     donate: Bronn airgid
-  choose_plan_modal:
-    free: Saor in aisce
-    standard: Caighdeánach
-    pro: Pro
-    per_month: /mí
-    standard_group_description: Gach rud atá de dhíth i gcomhair baicle amháin.
-    benefit_1_group: 1 bhaicle amháin
-    benefit_10_groups: 10 mbaicle
-    support_link: B
-    select: Roghnaigh seo
-  subscription_success_modal:
-    heading: Tá tú réidh!
-    contact_link: déan teagmháil linn.
-    sign_off: ❤ ó fhoireann Loomio
-    ok_got_it: Tuigim é!
   group_form:
     start_group_heading: 'Cuir baicle ar bun'
     group_name: 'Ainm na baicle'

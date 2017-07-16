@@ -212,7 +212,6 @@ pl:
     members_placeholder: 'Jesteś jedynym członkiem: zaproś inne osoby!'
     member_options: Opcje członka
     subgroups: 'Podgrupy'
-    subgroups_placeholder: 'Podgrupy pozwalają dzielić grupy na różne zespoły'
     visibility_label: 'Widoczność'
     options_label: 'Opcje'
     options:

@@ -184,10 +184,6 @@ sr_RS:
   gift_card:
     heading: План поклона
     make_a_contribution: Допринесите
-  choose_plan_modal:
-    standard: Стандард
-  subscription_success_modal:
-    ok_got_it: У реду, схватам!
   group_form:
     description: 'Опис'
     advanced_settings: "Напредне опције"

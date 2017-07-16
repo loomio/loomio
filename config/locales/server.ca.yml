@@ -121,19 +121,6 @@ ca:
       header: Ja quasi ho tens! Comprova el teu correu electrònic.
       email_not_arrived: No us ha arribat el correu electrònic?
     start_making_decisions: 'Per començar a prendre decisions junts a Loomio, configureu un grup gratuïtament:'
-  pricing_page:
-    standard: Estàndard
-    free_trial_html: Us demanarem que escolliu un pla de pagament després dels <span>30 dies de prova</span>. No és necessari cap targeta de crèdit.
-    unlimited_members: membres il·limitats
-    unlimited_decisions: decisions il·limitades
-    email_support: assistència per correu electrònic
-    slack_integration_html: |
-      integració amb <strong>Slack</strong>
-    premium_support: assistència premium
-    custom_subdomain_html: |
-      subdomini personalitzable,<br />
-      per exemple: <strong>elteugrup</strong>.loomio.org
-    usage_statistics: ús de les estadístiques
   password_reset:
     forbidden_passwords: Les contrasenyes com "password" estan prohibides per raons de seguretat.
   contact_page:
