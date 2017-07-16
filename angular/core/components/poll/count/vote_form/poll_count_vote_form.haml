@@ -7,7 +7,7 @@
       %validation_errors{subject: "stance", field: "reason"}
 
     .poll-count-vote-form__options
-      %md-button.poll-count-vote-form__option.poll-count-vote-form__option--yes{ng-click: "submit(yes)", ng-style: "{background: yes.color}"}
+      %md-button.poll-count-vote-form__option.poll-count-vote-form__option--yes{ng-click: "submit('yes')", ng-style: "{background: yesColor}"}
         %i.material-icons done
-      %md-button.poll-count-vote-form__option.poll-count-vote-form__option--no{ng-click: "submit(no)", ng-style: "{'border-color': no.color}"}
-        %i.material-icons{ng-style: "{color: no.color}"} clear
+      %md-button.poll-count-vote-form__option.poll-count-vote-form__option--no{ng-click: "submit('no')", ng-style: "{'border-color': noColor}"}
+        %i.material-icons{ng-style: "{color: noColor}"} clear
