@@ -10,7 +10,8 @@ describe 'Group Page', ->
       page.expectElement '.join-group-button__ask-to-join-group'
       page.click '.navbar__sidenav-toggle'
       page.expectElement '.sidebar__list-item--selected'
-    , 60000
+    ,
+      60000
 
   xdescribe 'start group from home page', ->
     it 'allows starting a group via the start_group route', ->
