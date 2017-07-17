@@ -62,7 +62,7 @@ class DiscussionService
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
 
     EventBus.broadcast('discussion_move', discussion, params, actor)
-    Events::DiscussionMoved.publish!(discussion, actor, source)
+    Events::DiscussionMoved.publish!(discussion, actor)
   end
 
   def self.update_reader(discussion:, params:, actor:)

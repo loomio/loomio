@@ -10,12 +10,7 @@ describe API::InvitationsController do
   let(:another_group) { create :formal_group }
   let(:another_group_member) { create :user }
   let(:group) { create :formal_group }
-  let(:user_invitable)    { { id: another_user.id, type: :user } }
-  let(:deactivated_invitable) { { id: deactivated.id, type: :user } }
-  let(:group_invitable)   { { id: another_group.id, type: :group } }
-  let(:contact_invitable) { { email: contact.email, type: :contact } }
-  let(:email_invitable)   { { email: 'mail@gmail.com', type: :email } }
-  let(:pending_invitation) { create :invitation, invitable: group }
+  let(:pending_invitation) { create :invitation, group: group }
   let(:invitation_params)  { { emails: 'rob@example.com, hannah@example.com' } }
 
   before do
@@ -32,7 +27,7 @@ describe API::InvitationsController do
     context 'success' do
       it 'creates invitations' do
         ActionMailer::Base.deliveries = []
-        post :create, invitation_form: invitation_params, group_id: group.id
+        post :bulk_create, invitation_form: invitation_params, group_id: group.id
         json = JSON.parse(response.body)
         invitation = json['invitations'].last
         last_email = ActionMailer::Base.deliveries.last
@@ -45,19 +40,19 @@ describe API::InvitationsController do
     context 'failure' do
       it 'responds with unauthorized for non logged in users' do
         @controller.stub(:current_user).and_return(LoggedOutUser.new)
-        post :create, invitation_form: invitation_params, group_id: group.id
+        post :bulk_create, invitation_form: invitation_params, group_id: group.id
         expect(response.status).to eq 403
       end
 
       it 'responds with bad request if no emails are provided' do
-        post :create, invitation_form: {}, group_id: group.id
+        post :bulk_create, invitation_form: {}, group_id: group.id
         expect(response.status).to eq 400
       end
 
       it 'responds with validation error if max pending invites have been reached' do
         ENV['MAX_PENDING_INVITATIONS'] = "5"
         5.times { group.invitations.create!(intent: :join_group, recipient_email: Faker::Internet.email) }
-        post :create, invitation_form: invitation_params, group_id: group.id
+        post :bulk_create, invitation_form: invitation_params, group_id: group.id
         expect(response.status).to eq 422
         ENV['MAX_PENDING_INVITATIONS'] = nil
       end

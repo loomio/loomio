@@ -309,12 +309,9 @@ describe API::DiscussionsController do
         source_group = discussion.group
         patch :move, id: discussion.id, group_id: destination_group.id, format: :json
 
-        json = JSON.parse(response.body)
-
         # Discussion belongs to new group
         # The eventable of the event is the old group
         expect(discussion.reload.group).to eq destination_group
-        expect(json['groups'].first['id']).to eq source_group.id
       end
     end
   end

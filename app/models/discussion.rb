@@ -42,7 +42,7 @@ class Discussion < ActiveRecord::Base
 
   is_mentionable on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
-  has_paper_trail only: [:title, :description, :private]
+  has_paper_trail only: [:title, :description, :private, :group_id]
 
   belongs_to :group, class_name: 'FormalGroup'
   belongs_to :author, class_name: 'User'

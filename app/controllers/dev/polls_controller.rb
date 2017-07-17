@@ -26,8 +26,8 @@ class Dev::PollsController < Dev::BaseController
     discussion = saved fake_discussion(group: group)
     poll = saved fake_poll(discussion: discussion)
     Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
-    poll.community_of_type(:email, build: true).visitors.create(name: Faker::Name.name)
-    poll.community_of_type(:email, build: true).visitors.create(name: Faker::Name.name)
+    poll.guest_group.add_member! create(:user, email_verified: false)
+    poll.guest_group.add_member! create(:user, email_verified: false)
     poll.update_undecided_visitor_count
     redirect_to poll_url(poll)
   end

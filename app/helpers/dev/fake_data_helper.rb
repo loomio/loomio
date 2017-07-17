@@ -58,7 +58,7 @@ module Dev::FakeDataHelper
     when 'meeting'  then options[:custom_fields][:time_zone] = 'Asia/Seoul'
     end
 
-    Poll.new(options).tap { |p| p.community_of_type(:email, build: true) }
+    Poll.new(options)
   end
 
   def fake_stance(args = {})

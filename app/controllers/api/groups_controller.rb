@@ -20,11 +20,6 @@ class API::GroupsController < API::RestfulController
     respond_with_resource(scope: {current_user: current_user})
   end
 
-  def publish
-    service.publish(group: load_resource, params: publish_params, actor: current_user)
-    respond_with_resource(serializer: Full::GroupSerializer)
-  end
-
   def archive
     service.archive(group: load_resource, actor: current_user)
     respond_with_resource

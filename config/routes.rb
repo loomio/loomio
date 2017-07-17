@@ -146,7 +146,6 @@ Loomio::Application.routes.draw do
 
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do
       post :close, on: :member
-      post :publish, on: :member
       post :add_options, on: :member
       post :create_visitors, on: :member
       post :toggle_subscription, on: :member

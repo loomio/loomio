@@ -30,11 +30,6 @@ class API::PollsController < API::RestfulController
     respond_with_resource
   end
 
-  def publish
-    @event = service.publish(poll: load_resource, params: publish_params, actor: current_user)
-    respond_with_resource
-  end
-
   def search
     self.collection = page_collection poll_search.perform(search_filters)
     respond_with_collection
