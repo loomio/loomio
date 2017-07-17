@@ -1,7 +1,6 @@
 class FormalGroup < Group
   include HasTimeframe
   include MakesAnnouncements
-  include GroupPrivacy
 
   validates_presence_of :name
   validates :name, length: { maximum: 250 }

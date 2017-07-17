@@ -162,8 +162,8 @@ describe API::MembershipsController do
 
     it 'returns visible groups for the given user' do
       public_group
-      private_group.users << another_user
-      group.users << another_user
+      private_group.members << another_user
+      group.members << another_user
 
       get :for_user, user_id: another_user.id
       json = JSON.parse(response.body)
@@ -256,9 +256,9 @@ describe API::MembershipsController do
 
       it 'does not return duplicate users' do
         third_group = create(:formal_group)
-        third_group.users << user
-        third_group.users << user_named_biff
-        another_group.users << user_named_biff
+        third_group.members << user
+        third_group.members << user_named_biff
+        another_group.members << user_named_biff
 
         get :invitables, group_id: group.id, q: 'biff', format: :json
         json = JSON.parse(response.body)

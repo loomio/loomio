@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include SelfReferencing
   include MessageChannel
+  include GroupPrivacy
 
   belongs_to :creator, class_name: 'User'
   belongs_to :parent, class_name: 'Group'
@@ -52,8 +53,8 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def add_members!(users)
-    users.map { |user| add_member!(user) }
+  def add_members!(users, inviter: nil)
+    users.map { |user| add_member!(user, inviter: inviter) }
   end
 
   def add_admin!(user)
@@ -69,47 +70,6 @@ class Group < ActiveRecord::Base
 
   def is_formal_group?
     type == "FormalGroup"
-  end
-
-  # this method's a bit chunky. New class?
-  def group_privacy=(term)
-    case term
-    when 'open'
-      self.is_visible_to_public = true
-      self.discussion_privacy_options = 'public_only'
-      unless %w[approval request].include?(self.membership_granted_upon)
-        self.membership_granted_upon = 'approval'
-      end
-    when 'closed'
-      self.is_visible_to_public = true
-      self.membership_granted_upon = 'approval'
-      unless %w[private_only public_or_private].include?(self.discussion_privacy_options)
-        self.discussion_privacy_options = 'private_only'
-      end
-
-      # closed subgroup of hidden parent means parent members can seeee it!
-      if is_formal_group? && is_subgroup_of_hidden_parent?
-        self.is_visible_to_parent_members = true
-        self.is_visible_to_public = false
-      end
-    when 'secret'
-      self.is_visible_to_public = false
-      self.discussion_privacy_options = 'private_only'
-      self.membership_granted_upon = 'invitation'
-      self.is_visible_to_parent_members = false
-    else
-      raise "group_privacy term not recognised: #{term}"
-    end
-  end
-
-  def group_privacy
-    if is_visible_to_public?
-      self.public_discussions_only? ? 'open' : 'closed'
-    elsif is_formal_group? && is_subgroup_of_hidden_parent? && is_visible_to_parent_members?
-      'closed'
-    else
-      'secret'
-    end
   end
 
   def private_discussions_only?

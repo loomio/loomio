@@ -1,5 +1,4 @@
 class GuestGroup < Group
-  include GroupPrivacy
 
   def invitation_target
     Poll.find_by(guest_group_id: id)

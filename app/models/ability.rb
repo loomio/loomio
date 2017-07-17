@@ -318,9 +318,9 @@ class Ability
     end
 
     can [:show, :toggle_subscription, :subscribe_to], Poll do |poll|
+      poll.anyone_can_participate ||
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
-      poll.anyone_can_participate ||
       poll.members.include?(@user) ||
       poll.invitations.pluck(:token).include?(@user.token)
     end
