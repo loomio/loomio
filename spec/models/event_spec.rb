@@ -424,6 +424,7 @@ describe Event do
 
     before do
       poll_meeting.guest_group.add_member! guest_user
+      poll_meeting.poll_unsubscriptions.create(user: user_unsubscribed)
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
     end
 
@@ -445,7 +446,7 @@ describe Event do
       email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
-      email_users.should include guest_user
+      email_users.should     include guest_user
 
       notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud
@@ -460,6 +461,9 @@ describe Event do
       notification_users.should     include user_membership_mute
       notification_users.should     include user_thread_mute
       notification_users.should_not include poll.author
+
+      notification_users.should     include guest_user
+
     end
 
     it 'notifies mentioned users' do
