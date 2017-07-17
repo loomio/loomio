@@ -7,6 +7,7 @@ window.Loomio.routes = [
   {path: '/groups', component: 'groupsPage' },
   {path: '/explore', component: 'explorePage'},
   {path: '/profile', component: 'profilePage'},
+  {path: '/contact', component: 'contactPage'},
   {path: '/email_preferences', component: 'emailSettingsPage' },
   {path: '/d/:key', component: 'threadPage' },
   {path: '/d/:key/:stub', component: 'threadPage' },

@@ -250,8 +250,6 @@ Loomio::Application.routes.draw do
     get :markdown
   end
 
-  get 'contact(/:destination)', to: 'contact_messages#new'
-  post :contact, to: 'contact_messages#create', as: :contact
   post :email_processor, to: 'griddler/emails#create'
 
   get '/robots'     => 'robots#show'
@@ -266,6 +264,7 @@ Loomio::Application.routes.draw do
   get 'polls'                              => 'application#boot_angular_ui', as: :polls
   get 'explore'                            => 'application#boot_angular_ui', as: :explore
   get 'profile'                            => 'application#boot_angular_ui', as: :profile
+  get 'contact'                            => 'application#boot_angular_ui', as: :contact
   get 'email_preferences'                  => 'application#boot_angular_ui', as: :email_preferences
   get 'apps/registered'                    => 'application#boot_angular_ui'
   get 'apps/authorized'                    => 'application#boot_angular_ui'

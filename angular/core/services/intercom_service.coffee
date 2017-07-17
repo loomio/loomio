@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, AppConfig, Session, LmoUrlService) ->
+angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, AppConfig, Session, ModalService, ContactModal, LmoUrlService) ->
   lastGroup = {}
 
   mapGroup = (group) ->
@@ -70,7 +70,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       if @available()
         $window.Intercom('showNewMessage')
       else
-        $window.open LmoUrlService.contactForm(), '_blank'
+        ModalService.open ContactModal
 
     $rootScope.$on 'logout', (event, group) ->
       service.shutdown()

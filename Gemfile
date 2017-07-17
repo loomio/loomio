@@ -63,6 +63,7 @@ gem 'discriminator', '~> 0.1.1'
 gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
+gem 'intercom', '~> 3.5.10'
 
 group :development, :test do
   gem 'minitest'

@@ -49,6 +49,7 @@ angular.module('loomioApp').directive 'sidebar', ->
     $scope.showContactUs = ->
       # TODO: use loomio_org plugin to determine official site or not
       AppConfig.baseUrl == 'https://www.loomio.org/'
+      true
 
     $scope.contactUs = ->
       IntercomService.contactUs()
