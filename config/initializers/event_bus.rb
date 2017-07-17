@@ -85,11 +85,6 @@ EventBus.configure do |config|
     Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
-  # email and notify users of events
-  Event::KINDS.each do |kind|
-    config.listen("#{kind}_event") { |event| event.trigger! }
-  end
-
   # notify communities of outcome creation
   config.listen("outcome_create") do |outcome|
     outcome.communities.with_identity.each { |community| Events::OutcomePublished.publish!(outcome, community) }

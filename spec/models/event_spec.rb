@@ -372,13 +372,11 @@ describe Event do
       poll.update(voter_can_add_options: true)
       poll.guest_group.add_member! guest_user
     end
-    let(:visitor) { create :visitor, community: poll.community_of_type(:email, build: true) }
-    let(:visitor_stance) { create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: visitor) }
 
     it 'makes an announcement to participants' do
       FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
       poll.make_announcement = true
-      visitor_stance
+      guest_stance = create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: guest_user)
       expect { Events::PollOptionAdded.publish!(poll, poll.author, ["new_option"]) }.to change { emails_sent }
       email_users = Events::PollOptionAdded.last.send(:email_recipients)
       email_users.should      include user_thread_loud
@@ -395,7 +393,7 @@ describe Event do
       email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
-      expect(email_users).to include guest_user
+      email_users.should include guest_user
 
       notification_users = Events::PollOptionAdded.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud
@@ -410,6 +408,8 @@ describe Event do
       notification_users.should_not include user_membership_mute
       notification_users.should_not include user_thread_mute
       notification_users.should_not include poll.author
+
+      notification_users.should include guest_user
     end
 
     it 'does not make an announcement' do
@@ -420,11 +420,11 @@ describe Event do
   end
 
   describe 'outcome_created' do
-    let(:poll_meeting) do
-      create :poll_meeting, discussion: discussion
-    end
+    let(:poll_meeting) { create :poll_meeting, discussion: discussion }
+
     before do
       poll_meeting.guest_group.add_member! guest_user
+      outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
     end
 
     it 'makes an announcement' do
@@ -445,7 +445,7 @@ describe Event do
       email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
-      email_users.should  include guest_user
+      email_users.should include guest_user
 
       notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud
