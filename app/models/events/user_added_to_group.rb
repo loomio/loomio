@@ -15,7 +15,10 @@ class Events::UserAddedToGroup < Event
       )
     end.tap do |events|
       import(events)
-      events.map { |event| EventBus.broadcast('user_added_to_group_event', event) }
+      events.map do |event|
+        event.trigger!
+        EventBus.broadcast('user_added_to_group_event', event)
+      end
     end
   end
 
