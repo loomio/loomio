@@ -166,7 +166,7 @@ describe "User abilities" do
 
       # start_subgroups
       describe "members_can_create_subgroups" do
-        let(:subgroup) { Group.new(parent: group) }
+        let(:subgroup) { build(:formal_group, parent: group) }
 
         context "true" do
           before { group.update_attribute(:members_can_create_subgroups, true) }
@@ -220,8 +220,8 @@ describe "User abilities" do
 
   context "member of a group" do
     let(:group) { create(:formal_group) }
-    let(:subgroup) { build(:group, parent: group) }
-    let(:subgroup_for_another_group) { build(:group, parent: create(:formal_group)) }
+    let(:subgroup) { build(:formal_group, parent: group) }
+    let(:subgroup_for_another_group) { build(:formal_group, parent: create(:formal_group)) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
     let(:discussion) { create :discussion, group: group }
     let(:comment) { build :comment, discussion: discussion, author: user }

@@ -117,7 +117,7 @@ describe Group do
 
     it "can add a member" do
       @group.add_member!(@user)
-      expect(@group.users).to include @user
+      expect(@group.members).to include @user
     end
 
     it 'sets the first admin to be the creator' do
@@ -209,7 +209,7 @@ describe Group do
     let(:subgroup) { create(:formal_group, parent: group) }
 
     it 'returns empty for new group' do
-      expect(build(:group).id_and_subgroup_ids).to be_empty
+      expect(build(:formal_group).id_and_subgroup_ids).to be_empty
     end
 
     it 'returns the id for groups with no subgroups' do

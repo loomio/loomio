@@ -1,5 +1,5 @@
 module Null::User
-  include AvatarInitials
+  # include HasAvatar
   include Null::Object
 
   def can?(*args)
@@ -19,7 +19,7 @@ module Null::User
   def false_methods
     [:is_logged_in?, :is_member_of?, :is_admin_of?, :uses_markdown?,
      :email_when_proposal_closing_soon, :email_missed_yesterday,
-     :email_when_mentioned, :email_on_participation, :email_verified]
+     :email_when_mentioned, :email_on_participation, :email_verified, :email_verified?]
   end
 
   def empty_methods

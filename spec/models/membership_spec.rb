@@ -38,7 +38,7 @@ describe Membership do
       group.reload
       @membership.reload
       @membership.destroy
-      subgroup.users.should_not include(user)
+      subgroup.members.should_not include(user)
     end
 
     it "doesn't remove subgroup memberships if parent is not hidden" do
@@ -47,7 +47,7 @@ describe Membership do
       group.reload
       @membership.reload
       @membership.destroy
-      subgroup.users.should include(user)
+      subgroup.members.should include(user)
     end
   end
 

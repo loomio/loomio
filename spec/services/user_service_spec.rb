@@ -46,7 +46,7 @@ describe UserService do
 
   describe 'delete_spam' do
     let(:spam_user) { FactoryGirl.create :user }
-    let(:spam_group) { FactoryGirl.build :group }
+    let(:spam_group) { FactoryGirl.build :formal_group }
     let(:innocent_group) { FactoryGirl.create :formal_group }
     let(:discussion_in_spam_group) { FactoryGirl.build :discussion, group: spam_group }
     let(:spam_discussion_in_innocent_group) { FactoryGirl.build :discussion, group: innocent_group }

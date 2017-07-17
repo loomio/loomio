@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include AvatarInitials
   include ReadableUnguessableUrls
   include MessageChannel
   include HasExperiences

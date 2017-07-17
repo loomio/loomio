@@ -4,9 +4,8 @@ class Visitor < ActiveRecord::Base
   include UsesWithoutScope
   include NoForbiddenEmails
 
-  has_secure_token :invitation_token
+  has_secure_token :participation_token
 
-  before_create :set_avatar_initials
 
   belongs_to :community, class_name: "Communities::Base"
   has_many :poll_communities, through: :community

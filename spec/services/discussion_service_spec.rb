@@ -240,15 +240,15 @@ describe 'DiscussionService' do
 
   describe 'move' do
     it 'can move a discussion to another group the user is a member of' do
-      group.users << user
-      another_group.users << user
+      group.add_member! user
+      another_group.add_member! user
       DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
       expect(discussion.reload.group).to eq another_group
     end
 
     it 'updates the privacy for private discussion only groups' do
-      group.users << user
-      another_group.users << user
+      group.add_member! user
+      another_group.add_member! user
       another_group.update_column :discussion_privacy_options, 'public_only'
       discussion.update private: true
       DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
@@ -256,8 +256,8 @@ describe 'DiscussionService' do
     end
 
     it 'updates the privacy for public discussion only groups' do
-      group.users << user
-      another_group.users << user
+      group.add_member! user
+      another_group.add_member! user
       another_group.update_column :discussion_privacy_options, 'private_only'
       discussion.update private: false
       DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
@@ -265,30 +265,30 @@ describe 'DiscussionService' do
     end
 
     it 'can move a discussion the user is author of' do
-      group.admins << user
-      another_group.users << user
+      group.add_member! user
+      another_group.add_member! user
       discussion.update author: another_user
       DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
       expect(discussion.reload.group).to eq another_group
     end
 
     it 'does not update other discussion attributes' do
-      group.admins << user
-      another_group.users << user
+      group.add_member! user
+      another_group.add_member! user
       DiscussionService.move(discussion: discussion, params: { group_id: another_group.id, title: 'teehee!' }, actor: user)
       expect(discussion.reload.title).not_to eq 'teehee!'
     end
 
     it 'does not move a discussion the user cannot move' do
-      group.users << user
-      another_group.users << user
+      group.add_member! user
+      another_group.add_member! user
       discussion.update author: another_user
       expect { DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user) }.to raise_error CanCan::AccessDenied
       expect(discussion.reload.group).to_not eq another_group.id
     end
 
     it 'does not move a discussion to a group the user is not a member of' do
-      group.users << user
+      group.members << user
       expect { DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user) }.to raise_error CanCan::AccessDenied
       expect(discussion.reload.group).to_not eq another_group.id
     end

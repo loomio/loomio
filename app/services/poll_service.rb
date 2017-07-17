@@ -19,15 +19,6 @@ class PollService
     Events::PollClosedByUser.publish!(poll, actor)
   end
 
-  def self.publish(poll:, params:, actor:)
-    community = Communities::Base.find(params[:community_id])
-    actor.ability.authorize! :show, community
-    actor.ability.authorize! :share, poll
-
-    EventBus.broadcast('poll_publish', poll, actor, community, params[:message])
-    Events::PollPublished.publish!(poll, actor, community, params[:message])
-  end
-
   def self.publish_closing_soon
     hour_start = 1.day.from_now.at_beginning_of_hour
     hour_finish = hour_start + 1.hour
@@ -101,18 +92,15 @@ class PollService
   def self.convert_visitors(poll: )
     poll.create_guest_group
     poll.visitors.each do |visitor|
-      user = User.find_or_initialize_by(email: visitor.email)
-      if user.persisted?
+      if poll.stances.where(participant: visitor).any?
+        user = User.create(email: visitor.email, email_verified: false)
         poll.guest_group.add_member!(user)
-        poll.stances.where(participant: visitor).update_all(participant_id: user.id, participant_type: "User")
-      else
-        poll.guest_group.invitations.create!(recipient_email: visitor.email,
-        recipient_name: visitor.name,
-        token: visitor.invitation_token,
-        intent: "join_group")
+        poll.stances.where(participant: visitor).update_all(participant_type: 'User', participant_id: user.id)
+      elsif poll.active?
+        poll.guest_group.invitations.create!(recipient_email: visitor.email, token: visitor.participation_token, intent: 'join_poll')
       end
+      visitor.destroy
     end
-
     do_closing_work(poll: poll) if poll.closed?
   end
 

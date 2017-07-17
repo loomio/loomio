@@ -160,38 +160,6 @@ describe API::PollsController do
     end
   end
 
-  describe 'publish' do
-    let(:another_poll) { create :poll }
-    let(:identity) { create :facebook_identity, user: user }
-    let(:community) { create :facebook_community, poll_id: poll.id, identity: identity }
-    let(:another_community) { create :facebook_community }
-
-    before { sign_in user }
-
-    it 'creates a poll publish event' do
-      expect { post :publish, id: poll.id, community_id: community.id }.to change { Event.where(kind: :poll_published).count }.by(1)
-      e = Events::PollPublished.last
-      expect(e.eventable).to eq poll
-      expect(e.custom_fields['community_id'].to_i).to eq community.id
-    end
-
-    it 'can save a message with the publish' do
-      post :publish, id: poll.id, community_id: community.id, message: "a message"
-      e = Events::PollPublished.last
-      expect(e.custom_fields['message']).to eq "a message"
-    end
-
-    it 'authorizes the poll' do
-      post :publish, id: another_poll.id, community_id: community.id
-      expect(response.status).to eq 403
-    end
-
-    it 'authorizes the community' do
-      post :publish, id: poll.id, community_id: another_community.id
-      expect(response.status).to eq 403
-    end
-  end
-
   describe 'create' do
     let(:identity) { create :slack_identity, user: user }
     let(:community) { create :slack_community, identity: identity }
@@ -207,8 +175,8 @@ describe API::PollsController do
       expect(poll.title).to eq poll_params[:title]
       expect(poll.discussion).to eq discussion
       expect(poll.author).to eq user
-      expect(poll.communities.map(&:class)).to include Communities::LoomioGroup
-      expect(poll.communities.map(&:class)).to include Communities::Email
+      expect(poll.guest_group).to be_present
+      expect(poll.guest_group.admins).to include user
 
       json = JSON.parse(response.body)
       expect(json['polls'].length).to eq 1
@@ -222,9 +190,9 @@ describe API::PollsController do
 
       poll = Poll.last
       expect(poll.discussion).to eq nil
-      expect(poll.group).to eq nil
-      expect(poll.communities.map(&:class)).to include Communities::Public
-      expect(poll.communities.map(&:class)).to include Communities::Email
+      expect(poll.group.presence).to eq nil
+      expect(poll.guest_group).to be_present
+      expect(poll.guest_group.admins).to include user
     end
 
     it 'does not allow visitors to create polls' do
@@ -238,14 +206,6 @@ describe API::PollsController do
       expect(response.status).to eq 403
     end
 
-    it 'can accept community_id on a poll' do
-      sign_in user
-      poll_params[:community_id] = community.id
-      expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
-      poll = Poll.last
-      expect(poll.community_ids).to include community.id
-    end
-
     it 'can store an event duration for meeting polls' do
       sign_in user
       poll_params[:poll_type] = 'meeting'
@@ -253,20 +213,6 @@ describe API::PollsController do
       poll_params[:custom_fields] = { meeting_duration: 90 }
       expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
       expect(Poll.last.meeting_duration.to_i).to eq 90
-    end
-
-    it 'publishes to the community if one is specified' do
-      sign_in user
-      poll_params[:community_id] = community.id
-      expect { post :create, poll: poll_params }.to change { Events::PollPublished.where(kind: :poll_published).count }.by(1)
-    end
-
-    it 'does not allow accept community_id for communities the author does not know about' do
-      sign_in user
-      poll_params[:community_id] = another_community.id
-      expect { post :create, poll: poll_params }.to_not change { Events::PollPublished.where(kind: :poll_published).count }
-      poll = Poll.last
-      expect(poll.community_ids).to_not include another_community.id
     end
   end
 
@@ -321,12 +267,6 @@ describe API::PollsController do
       expect(response.status).to eq 403
     end
 
-    it 'allows visitors to add options' do
-      post :add_options, id: poll.key, poll_option_names: 'new_option', invitation_token: visitor.invitation_token
-      expect(response.status).to eq 200
-      expect(poll.reload.poll_option_names).to include 'new_option'
-    end
-
     it 'does nothing if no options passed' do
       sign_in user
       expect { post :add_options, id: poll.key, poll_option_names: [] }.to_not change { poll.poll_options.count }
@@ -366,14 +306,6 @@ describe API::PollsController do
       post :close, id: poll.key
       expect(response.status).to eq 403
       expect(poll.reload.active?).to eq true
-    end
-
-    it 'converts a poll in a loomio group to a loomio user community' do
-      sign_in user
-      PollService.create(poll: poll, actor: user)
-      post :close, id: poll.key
-      expect(poll.reload.communities.map(&:class)).to_not include Communities::LoomioGroup
-      expect(poll.communities.map(&:class)).to include Communities::LoomioUsers
     end
   end
 
@@ -420,34 +352,6 @@ describe API::PollsController do
     it 'does not allow users who cant see the poll to have unsubscriptions' do
       sign_in another_user
       expect { post :toggle_subscription, id: poll.key }.to_not change { poll.unsubscribers.count }
-    end
-  end
-
-  describe 'create_visitors' do
-    let(:pending_emails) { 'one@one.com,two@two.com' }
-    let(:poll) { create :poll, custom_fields: { pending_emails: pending_emails } }
-
-    it 'can create some visitors' do
-      sign_in poll.author
-      expect { post :create_visitors, id: poll.key, emails: pending_emails }.to change { Visitor.count }.by(2)
-      expect(response.status).to eq 200
-    end
-
-    it 'does not send emails to the author' do
-      sign_in poll.author
-      expect { post :create_visitors, id: poll.key, emails: poll.author.email }.to_not change { ActionMailer::Base.deliveries.count }
-      expect(response.status).to eq 200
-    end
-
-    it 'sends emails to each visitor' do
-      sign_in poll.author
-      expect { post :create_visitors, id: poll.key, emails: pending_emails }.to change { ActionMailer::Base.deliveries.count }.by(2)
-    end
-
-    it 'does not allow someone other than the poll author to create visitors' do
-      sign_in create(:user)
-      expect { post :create_visitors, id: poll.key, emails: pending_emails }.to_not change { Visitor.count }
-      expect(response.status).to eq 403
     end
   end
 end

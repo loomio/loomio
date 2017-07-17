@@ -305,7 +305,7 @@ describe API::DiscussionsController do
     context 'success' do
       it 'moves a discussion' do
         destination_group = create :formal_group
-        destination_group.users << user
+        destination_group.members << user
         source_group = discussion.group
         patch :move, id: discussion.id, group_id: destination_group.id, format: :json
 

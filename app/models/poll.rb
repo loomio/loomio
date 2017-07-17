@@ -40,6 +40,7 @@ class Poll < ActiveRecord::Base
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :visitors, through: :communities
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
@@ -52,6 +53,7 @@ class Poll < ActiveRecord::Base
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes, dependent: :destroy
+  has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 

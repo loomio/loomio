@@ -29,8 +29,8 @@ class InvitationsController < ApplicationController
   end
 
   def invitation_callback
-    if !invitation_user && Identities::Base::PROVIDERS.include?(invitation.identity_type)
-      send(:"#{invitation.identity_type}_oauth_url", team: invitation.slack_team_id, back_to: back_to_param)
+    if !invitation_user && Identities::Base::PROVIDERS.include?(invitation.group.identity_type)
+      send(:"#{invitation.group.identity_type}_oauth_url", team: invitation.group.slack_team_id, back_to: back_to_param)
     elsif back_to_param.match(/^http[s]?:\/\/#{ENV['CANONICAL_HOST']}/)
       back_to_param
     else
@@ -48,7 +48,7 @@ class InvitationsController < ApplicationController
 
   def identity
     @identity ||= Identities::Base.find_by(
-      identity_type: invitation.identity_type,
+      identity_type: invitation.group.identity_type,
       uid: params[:uid]
     )
   end

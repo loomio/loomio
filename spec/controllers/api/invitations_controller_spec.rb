@@ -21,9 +21,9 @@ describe API::InvitationsController do
   before do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
     group.admins << user
-    another_group.users << user
-    another_group.users << another_user
-    another_group.users << another_group_member
+    another_group.members << user
+    another_group.members << another_user
+    another_group.members << another_group_member
     pending_invitation
     sign_in user
   end

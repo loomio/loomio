@@ -14,20 +14,15 @@ class FormalGroup < Group
 
   scope :categorised_any, -> { where('groups.category_id IS NOT NULL') }
 
-  scope :archived, -> { where('archived_at IS NOT NULL') }
-  scope :published, -> { where(archived_at: nil) }
+
 
   scope :parents_only, -> { where(parent_id: nil) }
-
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
 
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
-  alias :users :members
-
   has_many :requested_users, through: :membership_requests, source: :user
-  has_many :admins, through: :admin_memberships, source: :user
   has_many :comments, through: :discussions
   has_many :comment_votes, through: :comments
   has_many :motions, through: :discussions

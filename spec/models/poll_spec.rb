@@ -36,25 +36,15 @@ describe Poll do
 
   describe 'anyone_can_participate=' do
     before { poll.save }
-    let(:community) { poll.communities.create(community_type: :public) }
 
-    it 'creates a public community if true' do
-      expect { poll.update(anyone_can_participate: true) }.to change { poll.communities.count }.by(1)
-    end
-
-    it 'removes the public community if it exists' do
-      community
+    it 'changes guest group membership_granted_upon to request' do
       poll.update(anyone_can_participate: true)
-      expect { poll.update(anyone_can_participate: false) }.to change { poll.communities.count }.by(-1)
+      expect(poll.guest_group.reload.membership_granted_upon).to eq 'request'
     end
 
-    it 'does nothing if public community is already present' do
-      community
-      expect { poll.update(anyone_can_participate: true) }.to_not change { poll.communities.count }
-    end
-
-    it 'does nothing if public community doesnt exist' do
-      expect { poll.update(anyone_can_participate: false) }.to_not change { poll.communities.count }
+    it 'changes guest group membership_granted_upon to approval' do
+      poll.update(anyone_can_participate: false)
+      expect(poll.guest_group.reload.membership_granted_upon).to eq 'invitation'
     end
   end
 

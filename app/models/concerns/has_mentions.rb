@@ -11,7 +11,7 @@ module HasMentions
   end
 
   def mentioned_group_members
-    group.users.where(username: mentioned_usernames)
+    group.members.where(username: mentioned_usernames)
   end
 
   def mentioned_usernames

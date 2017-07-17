@@ -529,8 +529,6 @@ en:
       poll_closing_soon: "*%{name}* is closing soon"
       view_it_on_loomio: View it on Loomio
       have_your_say: Have your say
-      poll_published: "*%{author}* published a poll:"
-      poll_published_with_discussion: "*%{author}* published a poll in %{discussion}:"
       outcome_published: "*%{author}* published an outcome:"
       outcome_published_with_discussion: "*%{author}* published an outcome in %{discussion}:"
       position_verbs:
@@ -540,7 +538,6 @@ en:
         block: blocked
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"
-    poll_published: "New decision in *%{group}*: *%{poll}*"
     outcome_published: "New outcome in *%{group}*: *%{poll}*"
     poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
     poll_expired: "*%{poll}* has closed"

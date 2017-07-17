@@ -15,6 +15,7 @@ FactoryGirl.define do
     angular_ui_enabled false
     password 'complex_password'
     time_zone "Pacific/Tarawa"
+    email_verified true
 
     after(:build) do |user|
       user.generate_username
@@ -142,7 +143,7 @@ FactoryGirl.define do
     introduction { Faker::Lorem.sentence(4) }
     email { Faker::Internet.email }
     name { Faker::Name.name }
-    group
+    association :group, factory: :formal_group
   end
 
   factory :attachment do
@@ -248,10 +249,6 @@ FactoryGirl.define do
   factory :email_community, class: Communities::Email
   factory :facebook_community, class: Communities::Facebook
   factory :slack_community, class: Communities::Slack
-
-  factory :loomio_group_community, class: Communities::LoomioGroup do
-    group
-  end
 
   factory :visitor do
     association :community, factory: :public_community

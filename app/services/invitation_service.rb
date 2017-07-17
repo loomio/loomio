@@ -10,6 +10,7 @@ class InvitationService
     EventBus.broadcast('invitation_create', invitation, actor)
     Events::InvitationCreated.publish!(invitation, actor)
   end
+
   def self.create_invite_to_join_group(args)
     args[:to_be_admin] = false
     args[:intent] = 'join_group'
@@ -60,8 +61,7 @@ class InvitationService
 
     user.associate_with_identity(identity)  if identity.present?
 
-    method     = invitation.to_be_admin? ? :add_admin! : :add_member!
-    membership = invitation.group.send(method, user, invitation: invitation)
+    membership = invitation.group.add_member!(user, invitation: invitation)
     invitation.save!
     Events::InvitationAccepted.publish!(membership)
   end

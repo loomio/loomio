@@ -8,6 +8,7 @@ class Group < ActiveRecord::Base
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
   has_many :memberships, -> { where is_suspended: false, archived_at: nil }
   has_many :admin_memberships, -> { where admin: true, archived_at: nil }, class_name: 'Membership'
+  has_many :admins, through: :admin_memberships, source: :user
 
   has_many :membership_requests, dependent: :destroy
   has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
@@ -22,6 +23,9 @@ class Group < ActiveRecord::Base
   has_many :discussions, foreign_key: :group_id, dependent: :destroy
   has_many :polls, foreign_key: :group_id
 
+  scope :archived, -> { where('archived_at IS NOT NULL') }
+  scope :published, -> { where(archived_at: nil) }
+
   define_counter_cache(:polls_count)               { |group| group.polls.count }
   define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
   define_counter_cache(:memberships_count)         { |group| group.memberships.count }
@@ -29,6 +33,10 @@ class Group < ActiveRecord::Base
   define_counter_cache(:invitations_count)         { |group| group.invitations.count }
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
   define_counter_cache(:announcement_recipients_count) { |group| group.memberships.volume_at_least(:normal).count }
+
+  def message_channel
+    "/group-#{self.key}"
+  end
 
   def invitation_target
     self

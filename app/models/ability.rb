@@ -193,7 +193,7 @@ class Ability
     end
 
     can :update, Discussion do |discussion|
-      return false unless user.email_verified?
+      user.email_verified? &&
       if discussion.group.members_can_edit_discussions?
         user_is_member_of?(discussion.group_id)
       else
@@ -206,8 +206,8 @@ class Ability
     end
 
     can :create, Discussion do |discussion|
-      return false unless user.email_verified?
-      (discussion.group.present? &&
+      (user.email_verified? &&
+       discussion.group.present? &&
        discussion.group.members_can_start_discussions? &&
        user_is_member_of?(discussion.group_id)) ||
       user_is_admin_of?(discussion.group_id)
@@ -327,7 +327,7 @@ class Ability
 
     can :create, Poll do |poll|
       @user.email_verified? &&
-      (!poll.group || poll.group.members.includes?(@user))
+      (!poll.group.presence || poll.group.members.include?(@user))
     end
 
     can [:update, :share, :destroy], Poll do |poll|

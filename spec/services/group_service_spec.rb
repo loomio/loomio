@@ -10,7 +10,7 @@ describe 'GroupService' do
   describe 'create' do
     it 'creates a new group' do
       expect { GroupService.create(group: group, actor: user) }.to change { FormalGroup.count }.by(1)
-      expect(Group.last).to be_a FormalGroup
+      expect(group.reload.creator).to eq user
     end
 
     it 'creates a new guest group' do
@@ -40,15 +40,6 @@ describe 'GroupService' do
       expect { GroupService.create(group: group, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
 
-    it 'sets the actor as group creator if logged in' do
-      GroupService.create(group: group, actor: user)
-      expect(group.reload.creator).to eq user
-    end
-
-    it 'leaves the group creator nil if user does not have account' do
-      GroupService.create(group: group, actor: LoggedOutUser.new)
-      expect(group.reload.creator).to be_nil
-    end
 
     context "is_referral" do
       it "is false for first group" do

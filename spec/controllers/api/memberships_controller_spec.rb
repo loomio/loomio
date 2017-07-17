@@ -19,11 +19,11 @@ describe API::MembershipsController do
   before do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
     group.admins << user
-    group.users  << user_named_biff
-    group.users  << user_named_bang
-    another_group.users << user
-    another_group.users << alien_named_bang
-    another_group.users << alien_named_biff
+    group.members  << user_named_biff
+    group.members  << user_named_bang
+    another_group.members << user
+    another_group.members << alien_named_bang
+    another_group.members << alien_named_biff
     sign_in user
   end
 

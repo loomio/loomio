@@ -18,35 +18,32 @@ describe PollService do
   before { group.add_member!(user) }
 
   describe '#convert_visitors' do
-    it 'converts recognised visitors to users' do
-      user = create(:user, email: 'joe@example.com')
+    # convert visitors with stances to unverified users
+    # convert visitors without stances to invitaitons for open polls
+    it 'converts visitors with stances to unverified users' do
       visitor = Visitor.new(name: "joe", email: 'joe@example.com')
       community = poll.community_of_type(:email, build: true)
       community.visitors << visitor
-      PollService.convert_visitors(poll: poll)
-      expect(poll.guest_group.reload.members).to include user
+      community.save
+      visitor.reload
+      stance = create :stance, poll: poll, participant: visitor
+      expect { PollService.convert_visitors(poll: poll)}.to change {poll.guest_group.members.count}.by(1)
+      expect(poll.guest_group.members.count).to eq 1
+      user = poll.guest_group.members.first
+      expect(stance.reload.participant).to eq user
     end
 
-    it 'converts unrecognised visitors to invitations' do
+    it 'converts visitors without stances to invitations' do
       visitor = Visitor.new(name: "joe", email: 'joe@example.com')
       community = poll.community_of_type(:email, build: true)
       community.visitors << visitor
-      PollService.convert_visitors(poll: poll)
-      expect(poll.guest_group.members).to_not include user
-      expect(poll.guest_group.invitations.first.recipient_email).to eq 'joe@example.com'
-    end
-
-    it 'visitor email matches user in poll group' do
-      visitor = Visitor.new(name: "joe", email: 'joe@example.com')
-      user = create(:user, email: 'joe@example.com')
-      poll.group.add_member! user
-      community = poll.community_of_type(:email, build: true)
-      community.visitors << visitor
-
-      stance = create :stance, participant: visitor, poll: poll
-
-      PollService.convert_visitors(poll: poll)
-      expect(user.stances).to include stance
+      community.save
+      visitor.reload
+      poll.save
+      expect { PollService.convert_visitors(poll: poll)}.to_not change {poll.guest_group.members.count}
+      expect(poll.guest_group.reload.invitations.count).to eq 1
+      invitation = poll.guest_group.invitations.first
+      expect(invitation.recipient_email).to eq visitor.email
     end
   end
 
@@ -121,45 +118,6 @@ describe PollService do
       expect(poll_created.reload.title).to eq old_title
     end
 
-    describe 'group_id=' do
-      before { poll_created.update(discussion: nil) }
-
-      it 'associates a poll community if changing the group id' do
-        PollService.update(poll: poll_created, params: {group_id: group.id}, actor: user)
-        expect(poll_created.reload.group).to eq group
-        expect(poll_created.communities).to include group.community
-      end
-
-      it 'removes an associated poll community if changing the group id' do
-        poll_created.update(group: group)
-        PollService.update(poll: poll_created, params: {group_id: nil}, actor: user)
-        expect(poll_created.reload.communities).to_not include group.community
-        expect(poll_created.group).to be_nil
-      end
-
-      it 'changes the poll community when changing groups' do
-        poll_created.update(group: another_group)
-        PollService.update(poll: poll_created, params: {group_id: group.id}, actor: user)
-        expect(poll_created.reload.group).to eq group
-        expect(poll_created.group_id).to eq group.id
-        expect(poll_created.communities).to include group.community
-        expect(poll_created.communities).to_not include another_group.community
-      end
-
-      it 'creates a poll_created event if the poll has moved groups' do
-        expect {
-          PollService.update(poll: poll_created, params: {group_id: another_group.id}, actor: user)
-        }.to change { Event.where(kind: :poll_created).count }.by(1)
-        expect(poll_created.reload.group).to eq another_group
-      end
-
-      it 'does not create a poll_created event if the poll has not moved groups' do
-      expect {
-        PollService.update(poll: poll_created, params: {title: "new title"}, actor: user)
-      }.to_not change { Event.where(kind: :poll_created).count }
-      end
-    end
-
     it 'makes an announcement to participants if make_announcement is true' do
       stance
       expect {
@@ -219,7 +177,7 @@ describe PollService do
     end
   end
 
-  describe 'close', focus: true do
+  describe 'close' do
     it 'closes a poll' do
       PollService.create(poll: poll_created, actor: user)
       PollService.close(poll: poll_created, actor: user)
@@ -234,11 +192,14 @@ describe PollService do
       expect(user.ability.can?(:create, stance_created)).to eq false
     end
 
-    it 'freezes the possible participants from a group' do
+    it 'creates poll_did_not_votes for each member that did not vote' do
+      formal_user = create :user
+      guest_user = create :user
       PollService.create(poll: poll_created, actor: user)
+      poll_created.group.add_member! formal_user
+      poll_created.guest_group.add_member! guest_user
       PollService.close(poll: poll_created, actor: user)
-      group.add_member! another_user
-      expect(poll_created.reload.communities.first.includes?(another_user)).to eq false
+      expect(poll_created.reload.poll_did_not_voters).to include(formal_user, guest_user)
     end
   end
 

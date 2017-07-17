@@ -24,16 +24,6 @@ describe InvitationService do
       end
     end
 
-    context 'to_be_admin' do
-      let(:invitation) { FactoryGirl.create(:invitation,
-                                            to_be_admin: true,
-                                            group: group) }
-
-      it 'makes the user a group admin' do
-        group.admins.reload.should include user
-      end
-    end
-
     context 'not to_be_admin' do
       it 'adds the user to the group as a member' do
         group.members.reload.should include user

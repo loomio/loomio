@@ -10,7 +10,6 @@ describe StanceService do
   let(:public_poll) { create :poll, anyone_can_participate: true }
   let(:public_stance) { build :stance, poll: public_poll, stance_choices: [agree_choice], participant: nil }
   let(:user) { create :user }
-  let(:visitor) { build :visitor }
   let(:another_group_member) { create :user }
   let(:another_user) { create :user }
   let(:stance) { create :stance, poll: poll, stance_choices: [agree_choice], participant: user, reason: "Old one" }
@@ -41,12 +40,6 @@ describe StanceService do
       expect(stance.reload.latest).to eq false
       expect(another_stance.reload.latest).to eq true
       expect(stance_created.reload.latest).to eq true
-    end
-
-    it 'can create a stance with a visitor' do
-      expect { StanceService.create(stance: public_stance, actor: visitor) }.to change { Stance.count }.by(1)
-      expect(visitor.reload.persisted?).to eq true
-      expect(public_stance.reload.participant).to eq visitor
     end
 
     it 'does not create a stance for a logged out user' do
