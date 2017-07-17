@@ -33,12 +33,15 @@ class Invitation < ActiveRecord::Base
   scope :to_unrecognized_user, -> { pending.joins("LEFT OUTER JOIN users ON users.email = invitations.recipient_email").where("users.id IS NULL") }
 
 
-  def locale
-    inviter.locale
+  def mailer
+    case intent
+    when 'join_group' then GroupMailer
+    when 'join_poll' then PollMailer
+    end
   end
 
-  def unsubscribe_token
-    nil
+  def locale
+    (inviter || group.creator || I18n).locale
   end
 
   def time_zone

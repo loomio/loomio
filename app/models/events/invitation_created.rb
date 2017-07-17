@@ -11,17 +11,9 @@ class Events::InvitationCreated < Event
     eventable.group.invitation_target
   end
 
-  def mailer
-    case eventable.intent
-    when 'join_group' then GroupMailer
-    when 'join_poll' then PollMailer
-    # when 'join_discussion' then DiscussionMailer
-    end
-  end
-
   def trigger!
     super
-    mailer.delay(priority: 1).invitation_created(eventable, self)
+    eventable.mailer.delay(priority: 1).invitation_created(eventable, self)
     eventable.increment!(:send_count)
   end
 end

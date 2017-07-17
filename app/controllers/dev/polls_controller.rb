@@ -28,7 +28,6 @@ class Dev::PollsController < Dev::BaseController
     Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
     poll.guest_group.add_member! create(:user, email_verified: false)
     poll.guest_group.add_member! create(:user, email_verified: false)
-    poll.update_undecided_visitor_count
     redirect_to poll_url(poll)
   end
 

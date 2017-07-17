@@ -267,7 +267,7 @@ describe 'DiscussionService' do
     it 'can move a discussion the user is author of' do
       group.add_member! user
       another_group.add_member! user
-      discussion.update author: another_user
+      discussion.update author: user
       DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
       expect(discussion.reload.group).to eq another_group
     end

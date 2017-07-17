@@ -3,8 +3,6 @@ module HasGuestGroup
   included do
     belongs_to :guest_group, class_name: "GuestGroup"
     has_many :guests, through: :guest_group, source: :members
-
-    define_counter_cache(:visitors_count)  { |model| model.guest_group.members.count }
   end
 
   def invite_guest!(name: nil, email:, inviter: nil)

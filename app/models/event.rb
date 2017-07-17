@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
              new_comment visitor_created membership_requested invitation_accepted user_added_to_group user_joined_group
              new_coordinator membership_request_approved comment_liked comment_replied_to user_mentioned invitation_accepted
              poll_created stance_created outcome_created poll_closed_by_user poll_expired poll_edited poll_closing_soon
-             visitor_reminded outcome_published group_identity_created poll_option_added invitation_created).freeze
+             visitor_reminded outcome_published group_identity_created poll_option_added invitation_created invitation_resend).freeze
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true

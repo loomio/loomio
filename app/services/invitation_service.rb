@@ -41,13 +41,6 @@ class InvitationService
     end
   end
 
-  def self.resend(invitation)
-    return unless invitation.is_pending?
-    InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
-                                                        subject_key: "email.resend_to_join_group.subject")
-    invitation
-  end
-
   def self.cancel(invitation:, actor:)
     actor.ability.authorize! :cancel, invitation
     invitation.cancel!(canceller: actor)
@@ -67,6 +60,8 @@ class InvitationService
   end
 
   def self.resend_ignored(send_count:, since:)
-    Invitation.ignored(send_count, since).each { |invitation| resend invitation  }
+    Invitation.ignored(send_count, since).each do |invitation|
+      Events::InvitationResend.publish!(invitation)
+    end
   end
 end

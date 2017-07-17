@@ -42,8 +42,11 @@ module Null::User
       participated_polls: :poll,
       group_polls: :poll,
       polls: :poll,
-      stances: :stance,
-      votes: :vote
+      stances: :stance
     }
+  end
+
+  def identities
+    Identities::Base.none
   end
 end

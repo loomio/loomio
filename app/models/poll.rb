@@ -58,7 +58,6 @@ class Poll < ActiveRecord::Base
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
   define_counter_cache(:stances_count)           { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_visitor_count) { |poll| poll.guest_group.members.without(poll.participants).count }
   define_counter_cache(:undecided_user_count)    { |poll| poll.group.members.without(poll.participants).count }
 
   has_many :poll_communities, dependent: :destroy, autosave: true
