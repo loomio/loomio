@@ -31,7 +31,7 @@ describe InvitationsController do
 
       it 'says sorry invitatino already used' do
         get :show, id: invitation.token
-        expect(response).to redirect_to(invitation.group)
+        expect(response).to redirect_to(group_url(invitation.group))
       end
     end
 
@@ -43,11 +43,6 @@ describe InvitationsController do
         sign_in another_user
         get :show, id: invitation.token
         expect(response).to redirect_to group_url(group)
-      end
-
-      it 'redirects to the oauth path if not a member' do
-        get :show, id: invitation.token
-        expect(response).to redirect_to slack_oauth_url(back_to: "", team: invitation.slack_team_id)
       end
     end
 
@@ -68,22 +63,6 @@ describe InvitationsController do
         InvitationService.should_not_receive(:redeem)
       end
 
-    end
-
-    context "to start group" do
-      it 'creates a user' do
-        start_group_invitation
-        expect { get :show, id: start_group_invitation.token }.to change { User.count }.by(1)
-        u = User.last
-        expect(start_group_invitation.group.reload.admins).to include u
-        expect(u.email).to eq start_group_invitation.recipient_email
-      end
-
-      it 'uses an existing user if one exists' do
-        start_group_invitation.update(recipient_email: another_user.email)
-        expect { get :show, id: start_group_invitation.token }.to_not change { User.count }
-        expect(start_group_invitation.group.reload.admins).to include another_user
-      end
     end
 
     context "user is signed in" do

@@ -46,13 +46,11 @@ class InvitationService
     invitation.cancel!(canceller: actor)
   end
 
-  def self.redeem(invitation, user, identity = nil)
+  def self.redeem(invitation, user)
     return true if invitation.group.members.include?(user) # feedback appreciated
     raise Invitation::InvitationCancelled   if invitation.cancelled?
     raise Invitation::InvitationAlreadyUsed if invitation.accepted?
     invitation.accepted_at = DateTime.now   if invitation.single_use?
-
-    user.associate_with_identity(identity)  if identity.present?
 
     membership = invitation.group.add_member!(user, invitation: invitation)
     invitation.save!

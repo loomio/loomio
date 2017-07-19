@@ -11,10 +11,6 @@ class FormalGroup < Group
 
   default_scope { includes(:default_group_cover) }
 
-  scope :categorised_any, -> { where('groups.category_id IS NOT NULL') }
-
-
-
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
