@@ -214,6 +214,10 @@ es:
       too_many_pending: "Tienes más del máximo de %{count} de invitaciones pendientes para este grupo"
       all_email_addresses_belong_to_members: "No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo."
   password_reset:
+    change_your_password: Cambia tu contraseña
+    change_my_password: Cambiar la contraseña
+    confirm_new_password: Confirma la contraseña
+    new_password: Nueva contraseña
     email_guidelines_html: |
       <p>Introduce la dirección de correo electrónico de tu cuenta de Loomio en el espacio de abajo y se te enviará un enlace para restablecer tu contraseña.</p>
       <p>Si normalmente inicias sesión mediante Facebook, Google, Twitter o Persona, introduce el correo electrónico asociado con esa cuenta.</p>
@@ -569,14 +573,14 @@ es:
       Ok, hagámoslo! <%{url} haz clic aquí para iniciar tu %{type}>.
       (nota: publicaremos en este canal una vez que sea creada, para que todos puedan participar)
     slash_command_help: |
-      Ingresa un estilo de decisión y una cuestión, y comenzaremos desde ahí.
+      Ingresa un estilo de decisión (escrito en Ingles como se muestra debajo) y una cuestión, y comenzaremos desde ahí.
       Puedes elegir estos estilos de decisión:
-      'propuesta': Busca el acuerdo colectivo
-      'comprobar': Comprueba la participación y busca voluntarios
-      'encuesta':    Mide la popularidad de opciones
-      'voto de puntos': Prioriza una lista de opciones
-      'coordinar horario': Encuentra un horario para la reunion
+      'proposal': Busca el acuerdo colectivo
+      'count':      Comprueba la participación y busca voluntarios
+      'poll':          Mide la popularidad de opciones
+      'dot vote':  Prioriza una lista de opciones
+      'meeting':  Encuentra un horario para la reunion
 
       Por ejemplo escribe:
-      /loomio comprobar ¿Quién viene a la fiesta el Domingo?
+      /loomio count ¿Quién viene a la fiesta el Domingo?
       Para iniciar una nueva comprobación.
