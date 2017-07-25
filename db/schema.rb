@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725093925) do
+ActiveRecord::Schema.define(version: 20170725220137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20170725093925) do
     t.datetime "clicked_at"
   end
 
+  add_index "ahoy_messages", ["mailer"], name: "index_ahoy_messages_on_mailer", using: :btree
+  add_index "ahoy_messages", ["to"], name: "index_ahoy_messages_on_to", using: :btree
   add_index "ahoy_messages", ["token"], name: "index_ahoy_messages_on_token", using: :btree
   add_index "ahoy_messages", ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type", using: :btree
 
@@ -280,6 +282,7 @@ ActiveRecord::Schema.define(version: 20170725093925) do
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
   add_index "discussions", ["created_at"], name: "index_discussions_on_created_at", using: :btree
   add_index "discussions", ["group_id"], name: "index_discussions_on_group_id", using: :btree
+  add_index "discussions", ["is_deleted", "archived_at", "private"], name: "index_discussions_visible", using: :btree
   add_index "discussions", ["is_deleted", "archived_at"], name: "index_discussions_on_is_deleted_and_archived_at", using: :btree
   add_index "discussions", ["is_deleted"], name: "index_discussions_on_is_deleted", using: :btree
   add_index "discussions", ["key"], name: "index_discussions_on_key", unique: true, using: :btree
