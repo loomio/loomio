@@ -57,8 +57,6 @@ ActiveRecord::Schema.define(version: 20170725221239) do
     t.datetime "clicked_at"
   end
 
-  add_index "ahoy_messages", ["mailer"], name: "index_ahoy_messages_on_mailer", using: :btree
-  add_index "ahoy_messages", ["to"], name: "index_ahoy_messages_on_to", using: :btree
   add_index "ahoy_messages", ["token"], name: "index_ahoy_messages_on_token", using: :btree
   add_index "ahoy_messages", ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type", using: :btree
 
