@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705033454) do
+ActiveRecord::Schema.define(version: 20170725093925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.string   "attachable_type"
   end
 
+  add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type", using: :btree
   add_index "attachments", ["comment_id"], name: "index_attachments_on_comment_id", using: :btree
 
   create_table "blacklisted_passwords", force: :cascade do |t|
@@ -322,6 +323,17 @@ ActiveRecord::Schema.define(version: 20170705033454) do
   add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true, using: :btree
   add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx", using: :btree
 
+  create_table "group_identities", force: :cascade do |t|
+    t.integer  "group_id",                   null: false
+    t.integer  "identity_id",                null: false
+    t.jsonb    "custom_fields", default: {}, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "group_identities", ["group_id"], name: "index_group_identities_on_group_id", using: :btree
+  add_index "group_identities", ["identity_id"], name: "index_group_identities_on_identity_id", using: :btree
+
   create_table "group_requests", force: :cascade do |t|
     t.string   "name",                limit: 255
     t.text     "description"
@@ -428,6 +440,7 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.integer  "subgroups_count",                                default: 0,     null: false
   end
 
+  add_index "groups", ["archived_at"], name: "index_groups_on_archived_at", using: :btree
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
   add_index "groups", ["cohort_id"], name: "index_groups_on_cohort_id", using: :btree
   add_index "groups", ["created_at"], name: "index_groups_on_created_at", using: :btree
@@ -460,8 +473,10 @@ ActiveRecord::Schema.define(version: 20170705033454) do
   end
 
   add_index "invitations", ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)", using: :btree
+  add_index "invitations", ["cancelled_at"], name: "index_invitations_on_cancelled_at", using: :btree
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
   add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
+  add_index "invitations", ["single_use"], name: "index_invitations_on_single_use", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
 
   create_table "login_tokens", force: :cascade do |t|
@@ -709,6 +724,8 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.jsonb    "custom_fields",  default: {},   null: false
   end
 
+  add_index "outcomes", ["poll_id"], name: "index_outcomes_on_poll_id", using: :btree
+
   create_table "poll_communities", force: :cascade do |t|
     t.integer "poll_id",      null: false
     t.integer "community_id", null: false
@@ -722,12 +739,16 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.integer "user_id"
   end
 
+  add_index "poll_did_not_votes", ["poll_id"], name: "index_poll_did_not_votes_on_poll_id", using: :btree
+  add_index "poll_did_not_votes", ["user_id"], name: "index_poll_did_not_votes_on_user_id", using: :btree
+
   create_table "poll_options", force: :cascade do |t|
     t.string  "name",                 null: false
     t.integer "poll_id"
     t.integer "priority", default: 0, null: false
   end
 
+  add_index "poll_options", ["poll_id"], name: "index_poll_options_on_poll_id", using: :btree
   add_index "poll_options", ["priority"], name: "index_poll_options_on_priority", using: :btree
 
   create_table "poll_references", force: :cascade do |t|
@@ -735,6 +756,8 @@ ActiveRecord::Schema.define(version: 20170705033454) do
     t.string  "reference_type", null: false
     t.integer "poll_id",        null: false
   end
+
+  add_index "poll_references", ["poll_id"], name: "index_poll_references_on_poll_id", using: :btree
 
   create_table "poll_unsubscriptions", force: :cascade do |t|
     t.integer  "poll_id",    null: false
@@ -744,6 +767,8 @@ ActiveRecord::Schema.define(version: 20170705033454) do
   end
 
   add_index "poll_unsubscriptions", ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true, using: :btree
+  add_index "poll_unsubscriptions", ["poll_id"], name: "index_poll_unsubscriptions_on_poll_id", using: :btree
+  add_index "poll_unsubscriptions", ["user_id"], name: "index_poll_unsubscriptions_on_user_id", using: :btree
 
   create_table "polls", force: :cascade do |t|
     t.integer  "author_id",                               null: false
