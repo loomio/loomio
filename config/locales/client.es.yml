@@ -475,7 +475,7 @@ es:
     see_all_members: 'Ve todos los ({{count}}) miembros'
     pending_invitations: '+ ({{count}}) pendientes'
     subgroups: 'Subgrupos'
-    subgroups_placeholder: 'Los subgrupos te permiten dividir el grupo en diferentes equipos'
+    subgroups_placeholder: 'Los subgrupos le dan su propio espacio a los equipos y mantienen las notificaciones enfocadas en las personas indicadas.'
     invite_people: 'Invitar'
     visibility_label: 'Visibilidad'
     options_label: 'Opciones'
@@ -552,39 +552,6 @@ es:
     choose_plan: 'Elige tu plan de pago'
     in_progress_body: 'Gracias por probar Loomio con <strong>{{name}}</strong>. En cualquier momento puedes elegir un plan de pago que funcione para tu grupo.'
     expired_body_html: "<strong>{{name}}</strong> ha llegado al final de su prueba de Loomio. Si quieres seguir usándolo tienes que elegir un plan de pago a la medida de tu grupo."
-  choose_plan_modal:
-    aria_label: Elige el plan de pago
-    heading: Por favor elige un plan de pago para tu grupo.
-    free: 'Gratis '
-    standard: 'Estándar '
-    pro: Pro
-    per_month: /al mes
-    standard_group_description: Todo lo que necesitas para un grupo.
-    free_group_description: 'Plan suportado a donación para grupos comunitarios. '
-    pro_group_description: Para organizaciones con <nobr>múltiples grupos.</nobr>
-    benefit_1_group: 1 grupo
-    benefit_10_groups: 10 grupos
-    benefit_unlimited_members: Ilimitados miembros
-    benefit_unlimited_decisions: Ilimitadas decisiones
-    benefit_priority_support: 'Apoyo personalizado '
-    benefit_help_with_setup: Ayuda con la configuración inicial
-    benefit_community_support: 'Apoyo comunitario '
-    benefit_slack_integration: Integración con Slack.com
-    benefit_custom_domain: 'Dominio personalizado '
-    benefit_analytics_reports: 'Reporte analítico '
-    benefit_data_export: Exportación de datos
-    support_link: 'Hablemos! '
-    prices_in_us_dollars: 'Precios en dolares US, más impuestos en la venta donde aplique  '
-    need_help_please: ¿Necesitas algo más?
-    select: 'Selecciona '
-  subscription_success_modal:
-    aria_label: 'Exitosa suscripción '
-    heading: Estás listo!
-    receipt: 'Recibirás un correo electrónico con el recibo y un enlace de acceso al portal de clientes, desde donde podrás cambiar o cancelar tu suscripción y acceder al historial de pago.  '
-    change_subscription: "Si deseas configurar tu integración con Slack.com o tu dominio personalizado,"
-    contact_link: por favor contáctanos.
-    sign_off: ❤ de parte del equipo de Loomio
-    ok_got_it: Bien, ¡lo tengo!
   group_form:
     aria_label: 'Formulario de grupo'
     start_group_heading: 'Empieza un grupo'
@@ -1207,7 +1174,7 @@ es:
   current_polls_card:
     title: 'Decisiones actuales '
     start_poll: 'Nueva decisión  '
-    no_polls: No hay ninguna Encuesta activa
+    no_polls: No hay decisiones activas en este momento.
   poll_common_collapsed:
     by_who: "por {{name}}"
   poll_common_select_group:
@@ -1307,6 +1274,13 @@ es:
     start: Iniciar
     update: Actualizar
   poll_proposal_form:
+    tool_tip_expanded: |
+      <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción</p>
+      <p>Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo o bloquear, y dar una explicación, o fundamento de su posición</p>
+      <p>Un gráfico de torta, permite tener una visión general de las posiciones del grupo, mientras que las explicaciones o fundamentos, permiten que todas las voces sean escuchadas. </p>
+      <p>No te desanimes si al comienzo no ves que haya acuerdo, las propuestas están diseñadas para hacer visibles los problemas que necesitan resolución..</p>
+      <p>Si hay buena participación, una propuesta es un poderoso mandato para pasar a la acción.</p>
+      <p>Puedes aprender más en la <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Escuela de Loomio</a>.</p>
     tool_tip_collapsed: 'Busca el acuerdo colectivo  '
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta
@@ -1316,6 +1290,11 @@ es:
     proposal_created: Propuesta iniciada
     proposal_updated: Propuesta actualizada
   poll_poll_form:
+    tool_tip_expanded: |
+      <p>Usa una encuesta para medir popularidad u ofrecer alternativas.</p>
+      <p>Proporciona algunas opciones de dónde elegir. Decide si los participantes eligen opciones individuales o múltiples en su respuesta.</p>
+      <p>Todos votan y pueden incluir una fundamentación si lo desean. Los resultados se visualizan en un gráfico de barras.</p>
+      <p>Aprende más en la <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Escuela de Loomio</a>.</p>
     tool_tip_collapsed: 'Mida la popularidad u ofrezca una opción '
     start_header: Iniciar encuesta
     edit_header: Editar encuesta
@@ -1329,14 +1308,27 @@ es:
     poll_created: Encuesta creada
     poll_updated: Encuesta actualizada
   poll_count_form:
+    tool_tip_expanded: |
+      <p>Una <em>comprobación</em> es una herramienta que tiene muchos usos posibles pero solo 2 respuestas: visto o raya.</p>
+      <p>Úsalo para comprometer a la gente, como al pedir confirmación: "asistiré al evento" o "me apuntaré al grupo de trabajo".</p>
+      <p>O úsalo para hacer seguimiento a una tarea: "confirmé que mis datos de contacto están correctos", o "leí el documento y dejé mis comentarios".</p>
+      <p>Una comprobación tiene un <em>objetivo</em>, que es el número de participantes que quisieras. La meta indica al grupo que algo requiere más atención o cuenta con amplio acuerdo.</p>
+      <p>Un día antes de que se cierre la comprobación, se le recordará a quienes no han participado todavía.</p>
+      <p>Aprende más en la <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Escuela de Loomio</a>.</p>
     tool_tip_collapsed: Comprobar la participación y encontrar voluntarios
     start_header: 'Iniciar Comprobación '
     edit_header: 'Editar Comprobación '
     tip: Motiva a las personas con una oferta o un pedido
     title_placeholder: P.ej. ¿Quién quiere unirse al grupo de trabajo?
+    details_placeholder: Explica lo que implica participar o brinda detalles sobre cómo participar.
     count_created: 'Comprobación iniciada '
     count_updated: 'Comprobación actualizada '
   poll_dot_vote_form:
+    tool_tip_expanded: |
+      <p>El voto de puntos es una manera de priorizar un listado de alternativas.</p>
+      <p>Los participantes tienen un número limitado de ‘puntos’ que pueden distribuir del modo que quieran entre las opciones que representen sus preferencias.</p>
+      <p>El proceso da como resultado un gráfico de barras acumulativas además de las asignaciones individuales, con lo que se pueden considerar los distintos puntos de vista.</p>
+      <p>Aprende más en la <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Escuela de Loomio</a>.</p>
     tool_tip_collapsed: Priorizar opciones
     start_header: Iniciar voto de puntos
     edit_header: Editar voto de puntos
@@ -1348,6 +1340,14 @@ es:
     dot_vote_created: Voto de punto creado
     dot_vote_updated: Voto de punto actualizado
   poll_meeting_form:
+    tool_tip_expanded: |
+      <p>Usa una coordinación de horario para saber cuándo hay disponibilidad de la gente para reunirse.</p>
+      <p>Ingresa un listado de fechas u horas en que podrías hacer la reunión.</p>
+      <p>Los participantes marcan aquellas en que pueden asistir o pueden indicar sus circunstancias en el cuadro para que puedas actualizar las alternativas de ser necesario.</p>
+      <p>Si agregas nuevos horarios durante la coordinación de horario, se le pedirá a la gente que ya ha votado que actualice su respuesta.</p>
+      <p>Así puedes saber cuándo está disponible cada uno y decidir el momento de la reunión.</p>
+      <p>Las horas se convierten automáticamente a la zona horaria del participante.</p>
+      <p>Aprende más en la <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Escuela de Loomio</a>.</p>
     tool_tip_collapsed: Encuentra un tiempo para reunirse
     start_header: Iniciar coordinación horaria
     edit_header: Editar coordinación horaria
@@ -1356,6 +1356,13 @@ es:
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
     meeting_created: Coordinación horaria iniciada
     meeting_updated: Coordinación horaria editada
+    timeslots: Horarios
+    no_options: "No has agregado ningún horario todavía."
+    meeting_duration: Duración de reunión
+    add_option_placeholder: Ingrese una nueva hora
+  poll_meeting_time_field:
+    new_time_slot: Nuevo horario
+    closing_hour: Hora de finalización
   poll_proposal_vote_form:
     default_reason_placeholder: Por favor explique su razonamiento
     abstain_reason_placeholder: Deje a la gente saber porqué usted se está omitiendo de esta decisión
@@ -1395,7 +1402,9 @@ es:
     your_response: ¿Cuándo puedes?
     stance_created: Disponibilidad salvada
     stance_updated: Disponibilidad actualizada
+    reason_placeholder: Explica cuando estarás libre (u ocupado), para el caso de que el autor quiera agregar opciones.
   poll_dot_vote_vote_form:
+    dots_remaining: "{{count}} puntos restantes."
     too_many_dots: Usaste demasiados votos.
     stance_created: Voto creado
     stance_updated: Voto actualizado
@@ -1436,9 +1445,19 @@ es:
   poll_common_share_form:
     no_group_selected: Ningún grupo seleccionado
     no_communities: "No haz conectado ninguna comunidad aún. Clic 'añadir comunidad' debajo para conectar una. "
+    share_a_link: Compartir enlace
+    share_a_link_helptext: Crear un enlace compartible para distribuir. Cualquiera que tenga este enlace, podrá participar.
+    anyone_can_participate: Cualquiera con el enlace puede paticipar
     anyone_can_participate_true: Enlace para compartir creado
     anyone_can_participate_false: 'Enlace compartible revocado '
+    get_link: Copiar enlace
+    invite_visitor: Invitados por correo electrónico
+    invite_visitor_helptext: Invitar individuos a esta decisión por correo electrónico. Estos invitados podrán participar únicamente en esta decisión.
+    send_email: Enviar correo electrónico
+    shareable_link_created: Ahora cualquiera puede participar en esta decisión
+    shareable_link_revoked: Ahora esta decisión es solo por invitación
     shareable_link: Enlace para compartir
+    guests_invited: Enviado a  {{count}} personas
     guest_revoked: Acceso revocado para {{email}}
     existing_guests: Invitados
     new_guests: 'Nuevos emails para invitar '
@@ -1446,6 +1465,11 @@ es:
     reminded: 'Recordatorio enviado '
     send_emails: Invitaciones enviadas ({{count}})
     share_group: Grupo de Loomio
+    share_group_helptext: Selecciona un grupo de Loomio con el que compartir esta decisión. Los miembros del grupo podrán participar.
+    cannot_move_poll_helptext: Esta encuesta es parte de la discusión <strong>{{discussion}}</strong> en <strong>{{group}}</strong>, y por eso no puede moverse.
+    move_group_helptext: 'Ten cuidado! Mover una decisión fuera de un grupo puede causar que algunas personas pierdan acceso a la misma. Los votos existentes aún serán contados. '
+    set_group: Establecer grupo
+    group_set: Grupo actualizado
     view_poll: Ver la encuesta
     email_invited: 'Invitación enviada a {{email}}'
     email_exists: '{{email}} ya ha sido invitado'
@@ -1487,10 +1511,51 @@ es:
     email_saved: 'Recibirás un email sobre el resultado de esta encuesta '
     subscribe: Suscribir
     no_thanks: No, gracias
+  poll_common_example_card:
+    what_is_this: "Este es un ejemplo en vivo de {{type}}. Tu eres un participante - pruebalo! "
+    helptext_before: "Cuando estés list@,"
+    helptext_link: "comienza una {{type}}"
+    helptext_after: "propia, e invita a algunas personas a probarlo."
   share_poll_page:
     title: Compartir encuesta - {{title}}
   polls_page:
     heading: Decisiones
+    heading_with_group: Decisiones en {{name}}
     search_placeholder: Buscar encuestas...
     polls_count: Mostrando {{count}} de {{total}} encuestas
     start_new_poll: Nueva decisión
+    filter_placeholder: (todas las encuestas)
+    groups_placeholder: (todos los grupos)
+  auth_form:
+    sign_in_to_loomio: Entrar a Loomio
+    sign_in: Entrar
+    choose_an_account: "Entra a través de un tercero, o ingresa una dirección de correo electrónico para continuar."
+    invalid_email: "Lo lamentamos, eso no parece una dirección de correo electrónico válida"
+    invalid_password: "Lo lamentamos, esa contraseña no coincide con la que tenemos archivada"
+    email_not_found: "Lo lamentamos, no pudimos encontrar una cuenta con esa dirección de correo electrónico"
+    login_link_helptext: |
+      Haz clic en el botón de abajo, y te enviaremos un enlace para ingresar instantáneamente
+      O, puedes configurar una contraseña con la que ingresar, si no quieres recibir un correo.
+    login_link_helptext_with_password: "Introduce tu contraseña, o entra a través de un correo electrónico."
+    sign_up_helptext: "Simplemente ingresa el nombre por el que te gustaría ser conocido, y te enviaremos un enlace para ingresar."
+    oauth_confirm_helptext: "Simplemente confirma tus detalles de abajo, y te enviaremos un enlace para entrar."
+    name_required: Por favor ingresa un nombre
+    welcome: Encantado de conocerte,  {{email}}!
+    welcome_back: Bienvenido nuevamente, {{name}}!
+    login_link: Entra a través de un correo electrónico
+    set_password: Configura la contraseña
+    hello: "Hola, {{name}}!"
+    new_to_loomio: ¿Nuevo en Loomio? Crea una nueva cuenta
+    create_account: Crear una cuenta
+    already_a_user: ¿Ya tienes una cuenta en Loomio? Ingresa tu correo electrónico para enlazar esta cuenta con la tuya
+    link_accounts: Enlazar cuentas
+    check_your_email: ¡Revisa tu correo electrónico!
+    login_link_sent: "Ok. Te hemos enviado un correo electrónico a {{email}}, con un enlace para ingresar inmediatamente. ¡Nos vemos pronto!"
+    password_link_sent: "Te hemos enviado un correo electrónico a {{email}}, con instrucciones en como configurar tu contraseña."
+    signed_in: Entraste exitosamente
+    name: Nombre
+    email: Correo Electrónico
+    password: Contraseña
+  install_slack:
+    install:
+      create_new_group_helptext: ¿No tienes un grupo en Loomio? Simplemente ingresa un nombre, y crearemos uno para ti

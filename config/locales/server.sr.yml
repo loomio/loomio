@@ -176,21 +176,6 @@ sr:
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Nismo poslali pozivnice na pružene eAdrese jer one pripadaju ljudima koji su već u grupi."
-  pricing_page:
-    header: Planovi grupe
-    standard: Standardno
-    free_trial_html: Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije potrebna.
-    get_started_for_free: Počni besplatno
-    unlimited_members: neograničeno članova
-    unlimited_decisions: neograničeno odluka
-    email_support: podrška ePorukom
-    slack_integration_html: |
-      <strong>Slack</strong> integracija
-    premium_support: premijum podrška
-    custom_subdomain_html: |
-      namenski poddomen,<br />
-      npr. <strong>vašagrupa</strong>.loomio.org
-    usage_statistics: statistika korišćenja
   password_reset:
     email_guidelines_html: |
       <p>Unesite adresu ePošte za svoj Loomio nalog u polje ispod i poslaćemo Vam vezu za resetovanje lozinke.</p>

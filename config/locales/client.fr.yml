@@ -473,7 +473,6 @@ fr:
     see_all_members: 'Voir les ({{count}}) membres'
     pending_invitations: '+ ({{count}}) en attente'
     subgroups: 'Sous-groupes'
-    subgroups_placeholder: 'Les sous-groupes vous permettent de diviser le groupe en plusieurs équipes.'
     invite_people: 'Inviter'
     visibility_label: 'Visibilité'
     options_label: 'Options'
@@ -550,39 +549,6 @@ fr:
     choose_plan: 'Choisissez votre formule'
     in_progress_body: 'Merci d''essayer Loomio avec <strong>{{name}}</strong>. Vous pouvez choisir la formule qui vous convient à n''importe quel moment.'
     expired_body_html: "<strong>{{name}}</strong> a désormais atteint la fin de son essai à Loomio. Si vous souhaitez continuer à l'utiliser, vous aurez besoin de choisir une option d'abonnement."
-  choose_plan_modal:
-    aria_label: Choisissez une formule
-    heading: Veuillez choisir votre formule
-    free: Gratuit
-    standard: Standard
-    pro: Pro
-    per_month: /mois
-    standard_group_description: Tout ce dont vous avez besoin pour un groupe.
-    free_group_description: Groupes financés par les dons.
-    pro_group_description: Pour les organismes avec <nobr>plusieurs groupes.</nobr>
-    benefit_1_group: 1 groupe
-    benefit_10_groups: 10 groupes
-    benefit_unlimited_members: Membres illimités
-    benefit_unlimited_decisions: Décisions illimitées
-    benefit_priority_support: Aide Premium
-    benefit_help_with_setup: Aide au démarrage
-    benefit_community_support: Soutien de la communauté
-    benefit_slack_integration: Intégration de Slack
-    benefit_custom_domain: Nom de domaine personnalisé
-    benefit_analytics_reports: Rapports analytiques
-    benefit_data_export: Exportation des données
-    support_link: Parlons!
-    prices_in_us_dollars: Les prix sont en Dollars US, plus les taxes de vente là où elles s'appliquent.
-    need_help_please: Besoin d'autre chose?
-    select: Sélectionner
-  subscription_success_modal:
-    aria_label: Abonnement réussi
-    heading: Vous êtes prêt!
-    receipt: Vous recevrez un email avec votre reçu, incluant un lien vers l'accueil client, où vous pouvez changer, améliorer, ou annuler votre abonnement, et accéder à l'historique des facturations.
-    change_subscription: "Si vous voulez mettre en place l'intégration de Slack ou votre nom de domaine personnalisé,"
-    contact_link: Contactez-nous
-    sign_off: L'équipe Loomio vous ❤
-    ok_got_it: Ok, j'ai compris !
   group_form:
     aria_label: 'Forme du groupe'
     start_group_heading: 'Créer un groupe'
@@ -1221,7 +1187,6 @@ fr:
   current_polls_card:
     title: Décision actuelle
     start_poll: Nouvelle décision
-    no_polls: Il n'y a pas de sondages actifs tout de suite.
   poll_common_collapsed:
     by_who: "par {{name}}"
   poll_common_select_group:
@@ -1608,9 +1573,6 @@ fr:
     password: Mot de passe
   install_slack:
     modal_title: Installer Slack
-    card:
-      title: Connecté à Slack
-      helptext: Ce groupe a été connecté à l'équipe slack <strong><a target='_blank' href='https://{{team}}.slack.com'>{{email}}</a></strong>. Les événements de ce groupe apparaîtront sur la chaîne <strong>{{channel}}</strong>.
     progress:
       install: Installer
       invite: Inviter

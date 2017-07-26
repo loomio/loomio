@@ -185,37 +185,6 @@ pt_BR:
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo."
-  pricing_page:
-    header: Planos do grupo
-    gift: Gratuito
-    standard: Padrão
-    plus: Profissional
-    free_trial_html: Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.
-    get_started_for_free: Comece de graça
-    one_group: um grupo
-    unlimited_members: membros ilimitados
-    unlimited_decisions: decisões ilimitadas
-    email_support: suporte por e-mail
-    slack_integration_html: |+
-      integração <strong>Slack</strong>
-
-    standard_price_html: '<strong>US$19</strong>/mês'
-    gift_price_html: '<strong>US$0</strong>'
-    plus_includes_standard: 'Tudo do Padrão, mais:'
-    standard_includes_free: 'Tudo do Gratuito, mais:'
-    multiple_groups: "até 10 grupos"
-    premium_support: suporte premium
-    help_with_setup: ajuda com configurações iniciais
-    custom_subdomain: subdomínio personalizado
-    analytics_reports: relatórios analíticos
-    contact_us_html: |
-      Os preços estão em dólares americanos, mais taxas onde aplicável. Precisa de algo mais? <a href="/contact">Vamos conversar!</a>
-    custom_subdomain_html: |+
-      subdomínio personalizado,<br />
-      e.g. <strong>seugrupo</strong>.loomio.org
-
-    usage_statistics: estatísticas de uso
-    plus_price_html: '<strong>US$99</strong>/mês'
   password_reset:
     email_guidelines_html: |
       <p>Insira o endereço de e-mail da sua conta Loomio no campo abaixo e ser-lhe-à enviado um link de redefinição de senha.</p>

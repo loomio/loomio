@@ -294,6 +294,7 @@ zh_TW:
     poll_edited: "<strong>{{name}}</strong> 編輯了一個 {{poll_type}}：<strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} 即將關閉：<strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} 已關閉：<strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> 新增了選項到 {{poll_type}}：<strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> 已參與：<strong>{{title}}</strong>"
   position_buttons_panel:
@@ -473,7 +474,7 @@ zh_TW:
     see_all_members: '檢視全部：({{count}}) 位成員'
     pending_invitations: '+ ({{count}}) 個擱置中'
     subgroups: '子群組'
-    subgroups_placeholder: '子群組讓您將大群組分成不同的小組。'
+    subgroups_placeholder: '子群組給團隊擁有自己的空間，並可以注重於通知對的夥伴。'
     invite_people: '邀請'
     visibility_label: '能見度'
     options_label: '選項'
@@ -550,39 +551,6 @@ zh_TW:
     choose_plan: '選擇您的定價方案'
     in_progress_body: '感謝試用 Loomio，<strong>{{name}}</strong>。您可以在任何時間挑選一個適合您的群組的定價方案。'
     expired_body_html: "<strong>{{name}}</strong> 已經結束了 Loomio 的試用。若您想要繼續使用它，您必須挑選一個適合您的定價方案。"
-  choose_plan_modal:
-    aria_label: 選擇方案
-    heading: 請為您的群組選擇方案
-    free: 免費
-    standard: 標準方案
-    pro: 專業
-    per_month: ／月
-    standard_group_description: 在一個群組中您可能需要的每樣東西
-    free_group_description: 社群群組捐款支援計畫。
-    pro_group_description: 有 <nobr>多個群組</nobr> 的組織。
-    benefit_1_group: 1個群組
-    benefit_10_groups: 10個群組
-    benefit_unlimited_members: 無限的成員
-    benefit_unlimited_decisions: 無限的決策
-    benefit_priority_support: 進階支援
-    benefit_help_with_setup: 初始設定協助
-    benefit_community_support: 社群支援
-    benefit_slack_integration: Slack 整合
-    benefit_custom_domain: 自訂網域
-    benefit_analytics_reports: 分析報告
-    benefit_data_export: 資料匯出
-    support_link: 讓我們說說話！
-    prices_in_us_dollars: 價格是以美元計費，再加上營業稅。
-    need_help_please: 需要其他東西？
-    select: 選取
-  subscription_success_modal:
-    aria_label: 訂閱成功
-    heading: 您全部都設定好了！
-    receipt: 您將會收到一封包含收據的電子郵件，其中也會包含客戶入口的連結，您可以在那裡變更、升級或是取消您的訂閱，並存取帳單歷史。
-    change_subscription: "若您想要設定 Slack 整合或是您的自訂網域名稱，"
-    contact_link: 請聯絡我們。
-    sign_off: 從 Loomio 團隊而來的 ❤
-    ok_got_it: 好的，了解了！
   group_form:
     aria_label: '群組表單'
     start_group_heading: '啟動群組'
@@ -1179,6 +1147,14 @@ zh_TW:
     publish_poll: 分享投票
   poll_common_attachment_form:
     label: 附件
+  poll_common_add_option:
+    button:
+      add_option: 新增更多選項
+    modal:
+      title: 新增選項
+    form:
+      add_options: 新增選項
+      options_added: 已加入新選項
   poll_common_card:
     show_results: 顯示結果
   poll_common_index_card:
@@ -1188,12 +1164,16 @@ zh_TW:
   current_polls_card:
     title: 目前的決策
     start_poll: 新決策
-    no_polls: 目前沒有活躍的投票。
+    no_polls: 目前沒有活躍的決策
   poll_common_collapsed:
     by_who: "由 {{name}}"
   poll_common_select_group:
     loomio_group: Loomio 群組
     loomio_group_placeholder: （未選取群組）
+  poll_common_voter_add_options:
+    add_options: 投票者可以新增選項
+    helptext_on: 參與者可以在投票時新增他們自己的選項
+    helptext_off: 參與者將會從您提供的選項中選取
   poll_common_notify_group:
     notify_group: 公告
     members_helptext: 您的群組將不會被通知
@@ -1279,6 +1259,7 @@ zh_TW:
     details: 詳細內容
     options: 選項
     options_placeholder: 輸入新選項...
+    no_options: 您尚未新增任何選項。
     closing: 定案
     start: 啟動
     update: 更新
@@ -1571,8 +1552,11 @@ zh_TW:
   install_slack:
     modal_title: 安裝 Slack
     card:
-      title: 連線到 Slack
-      helptext: 這個群組已經連到 Slack 團隊 <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>。此群組的動態將會在 <strong>{{channel}}</strong> 頻道中出現。
+      install_title: 連線至 Slack
+      install_helptext: Loomio 機器人會通知您的 Slack 團隊在 Loomio 上的討論與決策。您也可以從 Slack 上啟動討論與投票。
+      installed_title: 已連線至 Slack
+      installed_helptext: 這個群組已經連到 Slack 團隊 <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>。此群組的動態將會在 <strong>{{channel}}</strong> 頻道中出現。
+      install_slack: 連線至 Slack
     progress:
       install: 安裝
       invite: 邀請

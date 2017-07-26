@@ -194,36 +194,6 @@ da:
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Der blev ikke afsendt invitationer til emailadresserne der blev angivet da de tilhører personer som allerede er medlemmer af gruppen."
-  pricing_page:
-    header: Gruppe abonnements ordninger
-    gift: Gratis
-    standard: Standard
-    plus: Pro
-    free_trial_html: Efter <span>30-dages gratis prøveperiode</span> beder vi dig om at vælge abonnements ordning.
-    get_started_for_free: Kom igang gratis
-    one_group: en gruppe
-    unlimited_members: uendeligt antal medlemmer
-    unlimited_decisions: uendelige antal beslutninger
-    email_support: email support
-    slack_integration_html: |
-      <strong>Slack</strong> integration
-    standard_price_html: '<strong>$19</strong>/måned'
-    gift_price_html: '<strong>$0</strong>'
-    plus_includes_standard: 'Alt i Standard, plus:'
-    standard_includes_free: 'Alt i Gratis, plus:'
-    multiple_groups: "op til 10 grupper"
-    premium_support: premium support
-    help_with_setup: hjælp til initiel opsætning
-    custom_subdomain: eget subdomæne
-    analytics_reports: statistik rapporter
-    contact_us_html: |+
-      Priser er i UD dollars, plus moms hvor dette er påkrævet. Skal du bruger noget andet? <a href="/contact">Kontakt os!</a>
-
-    custom_subdomain_html: |
-      eget dubdomæne,<br />
-      <strong>dinegruppe</strong>.loomio.org
-    usage_statistics: brugs statistik
-    plus_price_html: '<strong>$99</strong>/måned'
   password_reset:
     email_guidelines_html: |
       <p>Indtast emailadressen for din Loomio konto i feltet herunder, så vil du få tilsendt en nulstill adgangskode url.</p>

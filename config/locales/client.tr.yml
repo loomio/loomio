@@ -350,7 +350,6 @@ tr:
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
     subgroups: 'Alt gruplar'
-    subgroups_placeholder: 'Altgruplar grup içinde farklı takımlar oluşmanızı sağlar.'
     invite_people: 'Davet et'
     visibility_label: 'Görünürlük'
     options_label: 'Seçenekler'
@@ -397,15 +396,6 @@ tr:
     choose_plan: 'Fiyatlandırma planınızı seçin'
     in_progress_body: 'Loomio''yu <strong>{{name}}</strong> ile denediğiniz için teşekkür ederiz. İstediğiniz zaman grubunuza uygun bir fiyatlandırma planı seçebilirsiniz.'
     expired_body_html: "<strong>{{name}}</strong> grubunun Loomio'yu deneme süreci bitti. Kullanmaya devam etmek için, grubunuza uygun bir fiyatlandırma planı seçmeniz gerekir."
-  choose_plan_modal:
-    heading: Lütfen grubunuz için bir plan seçiniz
-    standard: Standart
-    support_link: Haydi konu!
-    select: Seç
-  subscription_success_modal:
-    contact_link: lütfen bizimle iletişime geçin.
-    sign_off: Loomio ekibinden ❤
-    ok_got_it: Tamam, anladım!
   group_form:
     start_group_heading: 'Bir grup başlat'
     start_subgroup_heading: 'Bir alt grup başlat'

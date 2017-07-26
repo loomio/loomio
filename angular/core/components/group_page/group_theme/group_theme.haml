@@ -33,11 +33,9 @@
         %a{lmo-href-for: "group", aria-level: "2"}
           {{group.name}}
       .group-theme__actions{ng-if: "homePage"}
-        .group-theme__member-actions{ng-if: "isMember()"}
-          .pull-right
-            %group_actions_dropdown{group: "group"}
-          .pull-right
-            %outlet{name: "before-group-actions", model: "group"}
-          %group_privacy_button{group: "group"}
         %join_group_button{group: "group"}
-      .clearfix
+        %outlet{name: "group-theme-actions", model: "group"}
+        .group-theme__member-actions{ng-if: "isMember()"}
+          %outlet{name: "group-theme-member-actions", model: "group"}
+          %group_privacy_button{group: "group"}
+          %group_actions_dropdown{group: "group"}

@@ -232,7 +232,10 @@ cs:
   notifications:
     header: "Upozornění"
     no_notifications: "Nemáte žádná upozornění."
+    motion_closed: "Uzavření návrhu: <strong>{{title}}</strong>"
     publish_outcome: "Zveřejnit výsledek"
+    motion_closed_by_user: "<strong>{{name}}</strong> uzavřel návrh <strong>{{title}}</strong>"
+    motion_closed_by_expiry: "Byl uzavřen návrh <strong>{{title}}</strong>"
     user_added_to_group_no_inviter: "Byli jste přidáni do skupiny <strong>{{title}}</strong>"
     motion_closing_soon: "Návrh brzy končí: <strong>{{title}}</strong>"
   position_buttons_panel:
@@ -274,7 +277,7 @@ cs:
     helptext: 'Opravdu chcete uzavřít tento návrh teď?'
     close_proposal_submit: 'Uzavřít návrh'
     messages:
-      success: Návrh uzavřen
+      success: Uzavření návrhu
   extend_proposal_form:
     aria_label: Změnit čas uzavření
     title: 'Změnit čas uzavření'
@@ -374,7 +377,6 @@ cs:
     members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
     see_all_members: 'Zobrazit všechny: ({{count}}) členy'
     subgroups: 'Podskupiny'
-    subgroups_placeholder: 'Podskupiny Vám umožní rozdělit skupinu do několika různých týmů.'
     invite_people: 'Pozvat'
     visibility_label: 'Viditelnost'
     options_label: 'Nastavení'
@@ -388,32 +390,23 @@ cs:
       deactivate_group: 'Deaktivování skupiny'
   description_card:
     title: 'Popis skupiny'
+  archive_group_form:
+    question: 'Opravdu chcete deaktivovat tuto skupinu?'
+    submit: 'Ano, deaktivovat tuto skupinu'
   confirm_gift_plan_modal:
     go_back: Zdokonalená verze
+  donation_modal:
+    contribute: Přispěte
+    got_to_group: Teď ne, děkuji.
+  gift_card:
+    make_a_contribution: Přispěte
   upgrade_plan_card:
     heading: Povýšit pro prémiové funkce
     more: '... a mnohem víc.'
+    upgrade: Vylepšit nyní
     donate: Darovat
-  choose_plan_modal:
-    free: Bezplatný
-    standard: Standardní
-    pro: Profesionální
-    per_month: /měsíc
-    standard_group_description: Vše, co potřebujete, pro jednu skupinu.
-    benefit_1_group: 1 skupina
-    benefit_10_groups: 10 skupin
-    benefit_unlimited_members: Neomezeně členů
-    benefit_unlimited_decisions: Neomezeně rozhodnutí
-    benefit_slack_integration: Integrace se Slack
-    benefit_custom_domain: Vlastní doména
-    support_link: Promluvme si!
-    need_help_please: Potřebujete něco jiného?
-    select: Vybrat
-  subscription_success_modal:
-    heading: Jste připraven/a!
-    contact_link: prosím kontaktujte nás.
-    sign_off: ❤ od týmu Loomio
-    ok_got_it: OK, chápu!
+  trial_card:
+    title: '30 dnů na zkoušku'
   group_form:
     start_group_heading: 'Vytvořit skupinu'
     start_subgroup_heading: 'Vytvořit podskupinu'
@@ -423,7 +416,12 @@ cs:
     subgroup_name: 'Název podskupiny'
     description: 'Popis'
     description_placeholder: 'Můžete popsat účel vaší skupiny, takže Vaši členové skupiny budou vědět, proč jsou tady.'
+    privacy_statement:
+      public_on_web: 'Název a popis budou zveřejněny na webu'
     privacy: 'Soukromí'
+    group_privacy_is_open_description: "Kdokoli může najít skupinu a požádat o členství. Pouze členové mohou vidět, kdo je ve skupině. Všechny vlákna jsou veřejná."
+    group_privacy_is_closed_public_threads_description: "Kdokoli může najít skupinu a požádat o členství. Pouze členové mohou vidět, kdo je ve skupině. Vlákna mohou být veřejná nebo soukromá."
+    group_privacy_is_secret_description: "Pouze pozvaní členové mohou najít skupinu, zjistit, kdo je v ní a vidět vlákna."
     advanced_settings: "Pokročilé nastavení"
     how_do_people_join: "Jak se lidé připojí?"
     membership_granted_upon_request: 'Každý se může připojit ke skupině.'
@@ -439,6 +437,8 @@ cs:
     submit_start_group: 'Vytvořit skupinu'
     submit_start_subgroup: 'Vytvořit podskupinu'
     submit_update: 'Aktualizovat nastavení'
+    messages:
+      group_updated: 'Skupina aktualizována'
   group_help_card:
     title: Nápověda
     ten_tips_article_title: 10 tipů pro rozhodování s Loomiem
@@ -696,6 +696,8 @@ cs:
     messages:
       logo_changed: Logo aktualizováno.
   decision_tools_card:
+    title: Nástroje pro rozhodování
+    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Nápověda</a>
     proposal_title: Návrh
     count_title: Kontrola
     poll_title: Hlasování
@@ -706,8 +708,10 @@ cs:
     reason_placeholder: Jakékoliv další připomínky?
     results: Výsledky
     votes: Hlasování
+    details: Podrobnosti
     share_poll: Sdílet hlasování
     share_proposal: Sdílet návrh
+    start_poll: Spuštění rozhodování
     publish_poll: Sdílet hlasování
   poll_common_index_card:
     title: Předchozí rozhodnutí
@@ -716,19 +720,21 @@ cs:
   current_polls_card:
     title: Aktuální rozhodnutí
     start_poll: Nové rozhodnutí
-    no_polls: V tuto chvíli nejsou aktivní žádná hlasování.
+  poll_common_select_group:
+    loomio_group: Loomio skupina
   poll_common_notify_group:
     notify_group: Oznámení
   poll_common_close_form:
     close_proposal: Uzavřít návrh
     close_poll: Uzavřít hlasování
-    proposal_closed: Návrh uzavřen
+    proposal_closed: Uzavření návrhu
     poll_closed: Hlasování ukončeno
   poll_common_set_outcome_panel:
     share_outcome: Sdílet výsledek
   poll_common_outcome_form:
     submit: Sdílet výsledek
   poll_common_form:
+    details: Podrobnosti
     start: Zahájit
   poll_proposal_form:
     start_header: Vytvořit návrh
@@ -743,15 +749,42 @@ cs:
   poll_proposal_options:
     agree: Souhlasit
     abstain: Zdržet se
+  poll_thread_item:
+    proposal:
+      poll_created: '<strong>{{author}}</strong> vytviřil návrh: <span>{{title}}</span>'
+      poll_expired: 'Uzavření návrhu: <span>{{title}}</span>'
+  poll_admin_page:
+    title: Admin - {{title}}
   poll_common_share_form:
+    no_group_selected: Nebyla vybrána žádná skupina
+    no_communities: "Zatím jste nepřipojili žádné komunity. Klikněte na tlačítko \"přidat komunitu\" a přidejte ji"
+    share_a_link: Sdílet odkaz
+    share_a_link_helptext: Vytvořte sdílený odkaz, který můžete distribuovat. Kdokoliv, kdo má přístup k odkazu, se bude moci účastnit.
+    anyone_can_participate: Kdokoli s odkazem se může účastnit
+    anyone_can_participate_true: Vytvořen odkaz ke sdílení
+    anyone_can_participate_false: Odkaz ke sdílení byl zrušen
+    get_link: Kopírovat odkaz
+    send_email: Odeslat e-mail
+    enter_email: "Např. jmeno.prijmeni@jmenodomeny.cz"
+    reminded: Připomenutí odesláno!
+    send_emails: Odesláno pozvánek ({{count}})
+    share_group: Loomio skupina
+    set_group: Nastavte skupinu
+    group_set: Skupina aktualizována
     view_poll: Zobrazit hlasování
+  poll_common_publish_facebook_preview:
+    just_now: Právě teď
   poll_common_publish_slack_preview:
     view_it_on_loomio: Prohlédněte si to na Loomio
   add_community_form:
     currently_signed_in_as: "Momentálně jste přihlášeni jako:"
     facebook:
       another_account: (Přihlásit se do jiného účtu)
+  poll_common_participant_form:
+    participant_name_placeholder: Jaké je vaše jméno?
   poll_common_subscribe_form:
+    receive_updates_title: Vaše hlasování bylo zaznamenáno
+    receive_updates_helptext: Chcete-li obdržet e-mail s výsledky tohoto hlasování, zadejte níže svou e-mailovou adresu
     subscribe: Přihlásit odběr
     no_thanks: Ne, díky
   poll_common_example_card:
@@ -790,7 +823,10 @@ cs:
       install: Instalovat
       invite: Pozvat
       decide: Rozhodněte se
+    install:
+      group_name: Název skupiny
     invite:
+      publish_group: Uveďte uvítací zprávu
       custom_message: Vlastní zpráva
       set_channel: Nastavte kanál
     decide:
@@ -800,3 +836,4 @@ cs:
       do_it_later: Udělám to později
   slack_added_modal:
     title: Úspěch!
+    start_poll_now: Rozhodněte se nyní

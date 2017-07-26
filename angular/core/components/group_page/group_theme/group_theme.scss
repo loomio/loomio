@@ -46,17 +46,30 @@
 }
 
 .group-theme__name-and-actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 175px;
 }
 
-.group-theme__member-actions{
-  float: right;
+@media (max-width: $small-max-px){
+  .group-theme__name-and-actions{
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
-.group-theme__nonmember-actions { float: right; }
+
+
+.group-theme__actions {
+  display: flex;
+  margin-left: auto;
+}
+
+.group-theme__member-actions{
+  display: flex;
+}
 
 .group-theme__name {
-  float: left;
-  max-width: 50%;
   margin-left: 108px + 15px;
   margin-right: 10px;
   a{color: $primary-text-color;}

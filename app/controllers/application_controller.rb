@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   helper_method :dashboard_or_root_path
 
   before_filter :set_application_locale
-  
+
   around_filter :user_time_zone, if: :user_signed_in?
   after_filter :save_detected_locale, if: :user_signed_in?
 

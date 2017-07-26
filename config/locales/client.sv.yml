@@ -153,8 +153,6 @@ sv:
     go_back: Uppgradera
   upgrade_plan_card:
     donate: Donera
-  choose_plan_modal:
-    support_link: Låt oss samtala!
   group_form:
     privacy: 'Integritet'
     submit_start_group: 'Startgrupp'
