@@ -106,7 +106,7 @@ fdescribe 'Group Page', ->
     it 'redirects to dashboard and opens modal for logged in user with angular enabled', ->
       page.loadPath('setup_new_group')
       browser.get('start_group')
-      page.expectText '.group-form', 'Start a group'
+      page.expectText '.start-group-page', 'Start a group'
 
     it 'starts an open group', ->
       page.loadPath('setup_new_group')
