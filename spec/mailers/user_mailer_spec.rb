@@ -60,7 +60,7 @@ describe UserMailer do
     subject { UserMailer.missed_yesterday(user).deliver_now }
     let(:discussion) { build :discussion, group: group }
     let(:comment) { build :comment, discussion: discussion }
-    let(:group) { create :group }
+    let(:group) { create :formal_group }
     before { group.add_member! user }
 
     let(:some_content) do

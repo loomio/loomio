@@ -62,7 +62,7 @@ describe EmailActionsController do
     it 'marks content as read' do
       @user = create(:user)
       @voter = create(:user)
-      @group = create(:group)
+      @group = create(:formal_group)
       @group.add_member!(@user)
       @group.add_member!(@voter)
       @time_start = 1.hour.ago
