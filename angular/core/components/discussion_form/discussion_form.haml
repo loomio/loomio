@@ -6,8 +6,6 @@
       %h1.lmo-h1.modal-title.lmo-flex__grow{translate: "discussion_form.edit_discussion_title", ng-if: "!discussion.isNew()"}
       %material_modal_header_cancel_button{aria-hidden: "true"}
   .md-dialog-content
-    %form_errors{record: "discussion"}
-
     .thread-helptext{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew()"}
 
     .lmo-form-group{ng-show: "showGroupSelect"}

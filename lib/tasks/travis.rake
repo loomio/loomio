@@ -11,12 +11,6 @@ namespace :travis do
     raise "rspec failed!" unless $?.exitstatus == 0
   end
 
-  task :cucumber do
-    puts "Starting to run cucumber..."
-    system("bundle exec cucumber")
-    raise "cucumber failed!" unless $?.exitstatus == 0
-  end
-
   task :protractor => :environment do
     puts "Starting to run protractor..."
     system("cd angular && gulp protractor:core")

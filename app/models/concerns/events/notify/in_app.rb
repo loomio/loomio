@@ -51,7 +51,6 @@ module Events::Notify::InApp
     when Comment, CommentVote, Discussion then eventable.discussion.title
     when Group, Membership                then eventable.group.full_name
     when Poll, Outcome                    then eventable.poll.title
-    when Motion                           then eventable.name
     end
   end
 end

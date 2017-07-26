@@ -1,12 +1,5 @@
 FactoryGirl.define do
 
-  factory :blog_story do
-    title "MyString"
-    url "MyString"
-    image_url "MyString"
-    published_at "2015-11-18 14:28:30"
-  end
-
   factory :blacklisted_password do
     string "MyString"
   end
@@ -122,82 +115,6 @@ FactoryGirl.define do
   factory :comment_vote do
     comment
     user
-  end
-
-  factory :motion do
-    sequence(:name) { Faker::Name.name }
-    association :author, factory: :user
-    description 'Fake description'
-    discussion
-
-    #after(:build) do |motion|
-      #motion.group.parent.add_member!(motion.author) if motion.group.parent
-      #motion.group.add_member!(motion.author)
-    #end
-
-    after(:create) do |motion|
-      motion.group.add_member!(motion.author)
-    end
-  end
-
-  factory :current_motion, class: Motion do
-    name { Faker::Name.name }
-    association :author, :factory => :user
-    description 'current motion'
-    discussion
-    closing_at { 5.days.from_now }
-    after(:build) do |motion|
-      motion.group.parent.add_member!(motion.author) if motion.group.parent
-      motion.group.add_member!(motion.author)
-    end
-    after(:create) do |motion|
-      motion.group.save
-    end
-
-  end
-
-  factory :motion_read_log do
-    user
-    motion
-  end
-
-  factory :group_setup do
-    group
-    group_name Faker::Name.name
-    group_description "My text outlining the group"
-    privacy 'hidden'
-    members_can_add_members false
-    discussion_title Faker::Name.name
-    discussion_description "My text outlining the discussion"
-    motion_title {Faker::Name.name}
-    motion_description "My text outlining the proposal"
-    close_at_date (Date.today + 3.day).strftime("%d-%m-%Y")
-    close_at_time "12:00"
-    close_at_time_zone "Wellington"
-    admin_email Faker::Internet.email
-    recipients "#{Faker::Internet.email}, #{Faker::Internet.email}"
-    message_subject "Welcome to our world"
-    message_body "Please entertain me"
-   end
-
-  factory :vote do
-    user
-    motion
-    ##  update below with Vote::POSITIONS content if changed###
-    position %w[yes no abstain block].sample
-    statement "A short statement explaining my position."
-    after(:build) do |vote|
-      vote.motion.group.add_member!(vote.user)
-    end
-    after(:create) do |vote|
-      vote.motion.group.save
-    end
-  end
-
-  factory :group_request do
-    name { Faker::Name.name }
-    admin_name { Faker::Name.name }
-    admin_email { Faker::Internet.email }
   end
 
   factory :invitation do

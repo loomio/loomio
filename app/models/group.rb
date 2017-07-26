@@ -131,9 +131,7 @@ class Group < ActiveRecord::Base
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, dependent: :destroy
-  has_many :motions, through: :discussions
   has_many :polls
-  has_many :votes, through: :motions
 
   belongs_to :parent, class_name: 'Group'
   belongs_to :creator, class_name: 'User'
@@ -187,8 +185,6 @@ class Group < ActiveRecord::Base
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
 
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
-  define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
-  define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
   define_counter_cache(:polls_count)               { |group| group.polls.count }
   define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
   define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
@@ -196,7 +192,6 @@ class Group < ActiveRecord::Base
   define_counter_cache(:memberships_count)         { |group| group.memberships.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
   define_counter_cache(:invitations_count)         { |group| group.invitations.count }
-  define_counter_cache(:proposal_outcomes_count)   { |group| group.motions.with_outcomes.count }
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
   define_counter_cache(:announcement_recipients_count) { |group| group.memberships.volume_at_least(:normal).count }
 
@@ -415,10 +410,6 @@ class Group < ActiveRecord::Base
 
   def organisation_discussions_count
     Group.where("parent_id = ? OR (parent_id IS NULL AND groups.id = ?)", parent_or_self.id, parent_or_self.id).sum(:discussions_count)
-  end
-
-  def organisation_motions_count
-    Discussion.published.where(group_id: org_group_ids).sum(:motions_count)
   end
 
   def org_group_ids

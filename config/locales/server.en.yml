@@ -89,14 +89,9 @@ en:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
     view_comment: Click here to view the comment on Loomio
     view_discussion: Click here to view this discussion
-    view_proposal: View this proposal on Loomio
     create_discussion:
       intro_html: "started a thread:"
       intro: "%{who} started a thread:"
-    create_proposal:
-      intro: A new proposal was created in a Loomio group that you belong to.
-      closes_in: Closes in
-      subject: 'New proposal: %{which}'
     daily_activity:
       heading: Your Loomio Activity
       intro: Showing you what’s been happening in your Loomio groups in the last 24 hours
@@ -132,23 +127,6 @@ en:
       context_html: "mentioned you while discussing"
       context: "%{author_name} mentioned you while discussing %{discussion_title}"
       subject: '%{who} mentioned you while discussing "%{which}"'
-    new_motion_created:
-      subject: 'Proposal: %{proposal_title}'
-      context: "started a proposal in %{group_full_name}:"
-    proposal_closed:
-      proposal_has_closed: The proposal has closed.
-      specify_outcome_and_notify_group: Create an outcome and send it to your group!
-      specify_outcome_and_notify_group_html: Create an outcome and send it to your group!
-      subject: Proposal closed - %{which}
-    proposal_outcome:
-      subject: 'Proposal outcome: %{motion}'
-    proposal_closing_soon:
-      closes_on: Closes on
-      closes_at: Closes at
-      closes_in: Closes in
-      subject: 'Closing in 24 hours: %{proposal_title}'
-      headline: "%{author}'s proposal in %{group} is closing soon:"
-      summary: Summary
     thread_mailer:
       footer_text: 'Reply to this email directly or view it on %{hostname}:'
       reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
@@ -158,31 +136,6 @@ en:
       turn_on_notifications_text: 'Turn on email to receive further activity in this discussion: %{url}'
       change_email_preferences_html: Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails.
       change_preferences: 'Change your email preferences:'
-      new_motion_html: 'started a proposal:'
-      new_motion: '%{who} started a proposal:'
-      motion_closing_soon: 'Proposal closing in 24 hours:'
-      proposal_closed: 'Proposal closed:'
-      specify_outcome_html: Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is.
-      specify_outcome: 'Your proposal has closed. Specify an outcome to let everyone know what the result is:'
-      outcome_created_html: "shared an outcome for the proposal:"
-      outcome_created: "%{who} shared an outcome for the proposal:"
-      you_agreed: You %{past_tense_position}
-    analytics:
-      subject: "%{which_group}'s week on Loomio"
-      title: "Your summary for the week starting %{since}"
-      table_header: "Name | Motions created | Discussions created | Comments created | Votes created"
-      stats: "<strong>%{active_members}</strong> out of <strong>%{group_members}</strong> in your group were active in the last week. Your group raised <strong>%{motions}</strong> and made <strong>%{comments}</strong> in <strong>%{discussions}</strong>."
-      contact_us: "Looking for more stats? <a href='%{contact_link}'>Get in touch</a>."
-      no_activity: "Want to talk with one of our collaboration coaches about getting the most out of Loomio? <a href='%{contact_link}'>Get in touch</a>"
-      trial_subscription: "%{which_group} is on a <strong>free trial</strong> ending <strong>%{expires_at}</strong>. You can choose a subscription plan <a href='%{subscription_link}'>here</a>."
-      trial_expired: "%{which_group} has reached the end of its free Loomio trial. "
-      heart: "❤ from team Loomio"
-      unsubscribe: "This email is sent to coordinators of active Loomio groups.<br />If you'd prefer not to receive these emails, <a href='%{contact_link}'>let us know</a>."
-      user_table:
-        motions_created: "Proposals"
-        discussions_created: "Discussions"
-        comments_created: "Comments"
-        votes_created: "Votes"
   footer:
     about: About
     blog: Blog

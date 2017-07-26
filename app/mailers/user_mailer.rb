@@ -4,6 +4,7 @@ class UserMailer < BaseMailer
   layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login, :start_decision]
 
   def missed_yesterday(user, time_since = nil)
+    return unless user.email_missed_yesterday
     @recipient = @user = user
     @time_start = time_since || 24.hours.ago
     @time_finish = Time.zone.now
@@ -48,15 +49,6 @@ class UserMailer < BaseMailer
                      subject_key: "email.user_added_to_group.subject",
                      subject_params: { which_group: @group.full_name, who: @inviter.name },
                      locale: locale_for(@user, @inviter)
-  end
-
-  def analytics(user:, group:)
-    @user, @group = user, group
-    @stats = Queries::GroupAnalytics.new(group: group).stats
-    send_single_mail to: @user.email,
-                     subject_key: "email.analytics.subject",
-                     subject_params: { which_group: @group.name },
-                     locale: locale_for(@user)
   end
 
   def login(user:, token:)

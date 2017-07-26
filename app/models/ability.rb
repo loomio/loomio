@@ -249,57 +249,8 @@ class Ability
       attachment.user_id == user.id
     end
 
-    can [:create], Motion do |motion|
-      discussion = motion.discussion
-      discussion.current_motion.blank? &&
-      ((discussion.group.members_can_raise_motions? &&
-        user_is_member_of?(discussion.group_id)) ||
-        user_is_admin_of?(discussion.group_id) )
-    end
-
-    can [:vote, :make_draft], Motion do |motion|
-      discussion = motion.discussion
-      motion.voting? &&
-      ((discussion.group.members_can_vote? && user_is_member_of?(discussion.group_id)) ||
-        user_is_admin_of?(discussion.group_id) )
-    end
-
-    can [:create], Vote do |vote|
-      motion = vote.motion
-      can? :vote, motion
-    end
-
-    can [:close, :edit_close_date], Motion do |motion|
-      motion.persisted? && motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
-    end
-
-    can [:close], Motion do |motion|
-      motion.persisted? && motion.voting? &&
-       ( user_is_admin_of?(motion.discussion.group_id) or user_is_author_of?(motion) )
-    end
-
-    can [:update], Motion do |motion|
-      motion.voting? &&
-      (motion.can_be_edited? || (not motion.restricted_changes_made?)) &&
-      (user_is_admin_of?(motion.discussion.group_id) || user_is_author_of?(motion))
-    end
-
-    can [:destroy,
-         :create_outcome,
-         :update_outcome], Motion do |motion|
-      user_is_author_of?(motion) or user_is_admin_of?(motion.discussion.group_id)
-    end
-
     can [:show], Comment do |comment|
       can?(:show, comment.discussion)
-    end
-
-    can [:show, :history], Motion do |motion|
-      can?(:show, motion.discussion)
-    end
-
-    can [:show], Vote do |vote|
-      can?(:show, vote.motion)
     end
 
     can :update, Draft do |draft|

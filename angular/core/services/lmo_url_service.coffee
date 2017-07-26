@@ -30,9 +30,6 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     user: (u, params = {}, options = {}) ->
       @buildModelRoute('u', u[options.key || 'username'], null, params, options)
 
-    proposal: (p, params = {}) ->
-      @route model: p.discussion(), action: "proposal/#{p.key}", params: params
-
     comment: (c, params = {}) ->
       @route model: c.discussion(), action: "comment/#{c.id}", params: params
 

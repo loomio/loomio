@@ -21,8 +21,6 @@ describe Event do
   let(:mentioned_user) {FactoryGirl.create :user, username: 'sam', email_when_mentioned: true }
   let(:parent_comment) { FactoryGirl.create :comment, discussion: discussion}
   let(:comment) { FactoryGirl.create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
-  let(:motion) { FactoryGirl.create :motion, discussion: discussion, description: user_mentioned_text }
-  let(:vote) { FactoryGirl.create :vote, motion: motion }
   let(:poll) { FactoryGirl.create :poll, discussion: discussion, details: user_mentioned_text }
   let(:outcome) { FactoryGirl.create :outcome, poll: poll, statement: user_mentioned_text }
 
@@ -107,24 +105,6 @@ describe Event do
     end
   end
 
-  it 'new_vote' do
-    expect { Events::NewVote.publish!(vote) }.to change { emails_sent }
-    email_users = Events::NewVote.last.send(:email_recipients)
-    email_users.should     include user_thread_loud
-    email_users.should     include user_membership_loud
-
-    email_users.should_not include user_membership_normal
-    email_users.should_not include user_thread_normal
-
-    email_users.should_not include user_membership_quiet
-    email_users.should_not include user_thread_quiet
-
-    email_users.should_not include user_membership_mute
-    email_users.should_not include user_thread_mute
-
-    email_users.should_not include vote.author
-  end
-
   it 'new_discussion' do
     discussion.make_announcement = true
     expect { Events::NewDiscussion.publish!(discussion) }.to change { emails_sent }
@@ -143,122 +123,6 @@ describe Event do
 
     email_users.should_not include discussion.author
     email_users.should_not include user_mentioned
-  end
-
-  it 'new_motion' do
-    expect { Events::NewMotion.publish!(motion) }.to change { emails_sent }
-    email_users = Events::NewMotion.last.send(:email_recipients)
-    email_users.should     include user_thread_loud
-    email_users.should     include user_membership_loud
-
-    email_users.should     include user_membership_normal
-    email_users.should     include user_thread_normal
-
-    email_users.should_not include user_membership_quiet
-    email_users.should_not include user_thread_quiet
-
-    email_users.should_not include user_membership_mute
-    email_users.should_not include user_thread_mute
-
-    email_users.should_not include motion.author
-    email_users.should_not include user_mentioned
-  end
-
-  it 'motion_closing_soon' do
-    expect { Events::MotionClosingSoon.publish!(motion) }.to change { emails_sent }
-    email_users = Events::MotionClosingSoon.last.send(:email_recipients)
-    email_users.should     include user_thread_loud
-    email_users.should     include user_membership_loud
-
-    email_users.should     include user_membership_normal
-    email_users.should     include user_thread_normal
-
-    email_users.should_not include user_membership_quiet
-    email_users.should_not include user_thread_quiet
-
-    email_users.should_not include user_membership_mute
-    email_users.should_not include user_thread_mute
-
-    email_users.should     include user_motion_closing_soon
-
-    notification_users = Events::MotionClosingSoon.last.send(:notification_recipients)
-    notification_users.should     include user_thread_loud
-    notification_users.should     include user_membership_loud
-
-    notification_users.should     include user_membership_normal
-    notification_users.should     include user_thread_normal
-
-    notification_users.should_not include user_membership_quiet
-    notification_users.should_not include user_thread_quiet
-
-    notification_users.should_not include user_membership_mute
-    notification_users.should_not include user_thread_mute
-
-    notification_users.should_not include user_motion_closing_soon
-  end
-
-  it 'motion_outcome' do
-    motion.update(outcome_author: user_thread_loud)
-    expect { Events::MotionOutcomeCreated.publish!(motion) }.to change { emails_sent }
-    email_users = Events::MotionOutcomeCreated.last.send(:email_recipients)
-    email_users.should_not include user_thread_loud
-    email_users.should     include user_membership_loud
-
-    email_users.should     include user_membership_normal
-    email_users.should     include user_thread_normal
-
-    email_users.should_not include user_membership_quiet
-    email_users.should_not include user_thread_quiet
-
-    email_users.should_not include user_membership_mute
-    email_users.should_not include user_thread_mute
-
-    email_users.should_not include user_motion_closing_soon
-
-    notification_users = Events::MotionOutcomeCreated.last.send(:notification_recipients)
-    notification_users.should_not include user_thread_loud
-    notification_users.should     include user_membership_loud
-
-    notification_users.should     include user_membership_normal
-    notification_users.should     include user_thread_normal
-
-    notification_users.should_not include user_membership_quiet
-    notification_users.should_not include user_thread_quiet
-
-    notification_users.should_not include user_membership_mute
-    notification_users.should_not include user_thread_mute
-
-    notification_users.should_not include user_motion_closing_soon
-  end
-
-  it 'motion_closed' do
-    expect { Events::MotionClosed.publish!(motion) }.to change { emails_sent }
-    email_users = Events::MotionClosed.last.send(:email_recipients)
-    email_users.should     include user_thread_loud
-    email_users.should     include user_membership_loud
-
-    email_users.should     include user_membership_normal
-    email_users.should     include user_thread_normal
-
-    email_users.should_not include user_membership_quiet
-    email_users.should_not include user_thread_quiet
-
-    email_users.should_not include user_membership_mute
-    email_users.should_not include user_thread_mute
-
-    notification_users = Events::MotionClosed.last.send(:notification_recipients)
-    notification_users.should_not include user_thread_loud
-    notification_users.should_not include user_membership_loud
-
-    notification_users.should_not include user_membership_normal
-    notification_users.should_not include user_thread_normal
-
-    notification_users.should_not include user_membership_quiet
-    notification_users.should_not include user_thread_quiet
-
-    notification_users.should_not include user_membership_mute
-    notification_users.should_not include user_thread_mute
-    notification_users.should     include motion.author
   end
 
   describe 'poll_created' do
