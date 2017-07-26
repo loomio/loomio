@@ -62,7 +62,7 @@ describe UserMailer do
     let(:comment) { build :comment, discussion: discussion }
     let(:group) { create :group }
     before { group.add_member! user }
-    
+
     let(:some_content) do
       DiscussionService.create(discussion: discussion, actor: discussion.author)
       CommentService.create(comment: comment, actor: comment.author)
@@ -74,13 +74,13 @@ describe UserMailer do
     end
 
     it 'does not send a missed yesterday email when there is no unread content' do
-      expect { subject }.to_not change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { subject }.to_not change { ActionMailer::Base.deliveries.count }
     end
 
     it 'does not send a missed yesterday email if I have unsubscribed' do
       user.update(email_missed_yesterday: true)
       some_content
-      expect { subject }.to_not change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { subject }.to_not change { ActionMailer::Base.deliveries.count }
     end
   end
 
