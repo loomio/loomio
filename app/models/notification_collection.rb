@@ -2,7 +2,10 @@ class NotificationCollection
   attr_accessor :notifications
 
   def initialize(user, limit: 30)
-    @notifications = user.notifications.includes(:actor, :event).order(created_at: :desc).limit(limit)
+    @notifications = user.notifications
+                         .includes(:actor)
+                         .order(created_at: :desc)
+                         .limit(limit)
   end
 
   def serialize!(scope = {})

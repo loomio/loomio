@@ -4,6 +4,7 @@ class UserMailer < BaseMailer
   layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login, :start_decision]
 
   def missed_yesterday(user, time_since = nil)
+    return unless user.email_missed_yesterday
     @recipient = @user = user
     @time_start = time_since || 24.hours.ago
     @time_finish = Time.zone.now

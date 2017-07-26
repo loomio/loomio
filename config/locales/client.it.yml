@@ -449,7 +449,6 @@ it:
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
     subgroups: 'Sottogruppi'
-    subgroups_placeholder: 'I sottogruppi permettono di dividere il gruppo più grande in gruppi di lavoro.'
     invite_people: 'Invita'
     visibility_label: 'Visibilità'
     options_label: 'Opzioni'
@@ -512,30 +511,6 @@ it:
     more: '... e molto di più.'
   trial_card:
     choose_plan: 'Scegli il tuo piano'
-  choose_plan_modal:
-    aria_label: Scegli un'offerta
-    heading: Scegli un'offerta per il tuo gruppo per favore
-    free: Gratis
-    standard: Standard
-    pro: Pro
-    per_month: /mese
-    standard_group_description: Tutto ciò di cui hai bisogno per il tuo gruppo
-    benefit_1_group: 1 gruppo
-    benefit_10_groups: 10 gruppi
-    benefit_unlimited_members: Membri illimitati
-    benefit_unlimited_decisions: Decisioni illimitate
-    benefit_slack_integration: Integrazione Slack
-    prices_in_us_dollars: I prezzi sono in dollari americani, IVA esclusa ove applicabile
-    need_help_please: Hai bisogno di qualcos'altro?
-    select: Seleziona
-  subscription_success_modal:
-    aria_label: Sottoscrizione effettuata
-    heading: Tutto a posto!
-    receipt: Riceverai un'email con la tua ricevuta, che include un link al portale cliente, dove puoi cambiare, aggiornare o cancellare la tua sottoscrizione, e accedere alle tue ricevute
-    change_subscription: "Se vuoi configurare l'integrazione di Slack o il tuo nome di dominio personalizzato,"
-    contact_link: non esitare a contattarci.
-    sign_off: ❤ dal team Loomio
-    ok_got_it: Ok
   group_form:
     aria_label: 'Modulo per gruppo'
     start_group_heading: 'Inizia un gruppo'

@@ -129,15 +129,6 @@ tr:
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Sağladığınız e-posta adresleri zaten grupta bulunan kişilere ait olduğundan dolayı bunlara davetiye göndermedik."
-  pricing_page:
-    standard: Standart
-    free_trial_html: <span>30 günlük ücretsiz deneme</span> süresinden sonra fiyatlandırma planı seçmenizi isteyeceğiz. Kredi kartı gerekli değildir.
-    get_started_for_free: Ücretsiz başlayın
-    unlimited_members: sınırsız üyeler
-    unlimited_decisions: sınırsız kararlar
-    email_support: e-posta desteği
-    premium_support: Premium destek
-    usage_statistics: kullanım istatistikleri
   password_reset:
     email_guidelines_html: |
       <p>Aşağıdaki alana Loomio hesabınızın e-posta adresini girin. Size bir şifre sıfırlama bağlantısı gönderilecektir.</p>

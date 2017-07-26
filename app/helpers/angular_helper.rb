@@ -3,7 +3,6 @@ module AngularHelper
   def boot_angular_ui
     metadata if browser.bot? && respond_to?(:metadata, true)
     app_config
-    current_user.update(angular_ui_enabled: true) unless current_user.angular_ui_enabled?
     render 'layouts/angular', layout: false
   end
 

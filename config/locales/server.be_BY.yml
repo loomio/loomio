@@ -119,22 +119,6 @@ be_BY:
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Мы не адпраўлялі запрашэння на прадстаўленыя адрасы электроннай пошты таму, што яны належаць людзям з групы."
-  pricing_page:
-    header: Планы групы
-    standard: Стандарт
-    free_trial_html: Пасля сыходу <span>30-дзённай пробнай версіі</span> мы папросім Вас абраць тарыфны план. Крэдытная картка не патрэбна.
-    get_started_for_free: Пачніце работу бясплатна
-    unlimited_members: неабмежаваная колькасць удзельникаў
-    unlimited_decisions: бязмежнасць рашэнняў
-    email_support: падтрымка па электроннай пошце
-    premium_support: Прэміум-падтрымка
-    custom_subdomain_html: |+
-      сабдамен карыстальніка,<br />
-
-      напрыклад, <strong>yourgroup</strong>.loomio.org
-
-
-    usage_statistics: статыстыка выкарыстання
   password_reset:
     email_guidelines_html: |
       <p>Каб скінуць пароль, увядзіце адрас электроннай пошты для вашага акаўнта на Loomio ў поле ніжэй, і вам будзе даслана спасылка.</p>

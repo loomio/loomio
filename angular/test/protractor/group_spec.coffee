@@ -10,62 +10,19 @@ fdescribe 'Group Page', ->
       page.expectElement '.join-group-button__ask-to-join-group'
       page.click '.navbar__sidenav-toggle'
       page.expectElement '.sidebar__list-item--selected'
-    ,
-      60000
-
-  xdescribe 'start group from home page', ->
-    it 'allows starting a group via the start_group route', ->
-      staticPage.loadPath 'view_homepage_as_visitor'
-      staticPage.click '.header__item--start-button'
-      staticPage.fillIn '#group_name', 'My First Group'
-      staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
-      staticPage.fillIn '#name', 'Test Example'
-      staticPage.fillIn '#email', 'test@example.com'
-      staticPage.click '#sign-up-submit'
-
-      staticPage.loadPath 'last_email'
-      staticPage.click 'a[href]'
-
-      staticPage.fillIn '#user_password', 'vivalarevolucion'
-      staticPage.fillIn '#user_password_confirmation', 'vivalarevolucion'
-      staticPage.click  '#create-account'
-
-      page.expectFlash 'Welcome! You have signed up successfully'
-      page.expectText '.group-theme__name', 'My First Group'
-
-    it 'allows starting a group with an existing email', ->
-      staticPage.loadPath 'view_homepage_as_visitor'
-      staticPage.click '.header__item--start-button'
-      staticPage.fillIn '#group_name', 'My First Group'
-      staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
-      staticPage.fillIn '#name', 'Test Example'
-      staticPage.fillIn '#email', 'patrick_swayze@example.com'
-      staticPage.click '#sign-up-submit'
-
-      staticPage.loadPath 'last_email'
-      staticPage.click 'a[href]'
-
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.click '#sign-in-btn'
-
-      page.expectFlash 'Signed in successfully'
-      page.expectText '.group-theme__name', 'My First Group'
 
   describe 'non-member views group', ->
     describe 'logged out user', ->
-      xit 'should allow you to join an open group', ->
-        staticPage.ignoreSynchronization ->
-          page.loadPath 'view_open_group_as_visitor'
-          page.click '.join-group-button__join-group'
-          browser.driver.sleep(2000)
-          staticPage.fillIn '#user_name', 'Name'
-          staticPage.fillIn '#user_email', 'test@example.com'
-          staticPage.fillIn '#user_password', 'complex_password'
-          staticPage.fillIn '#user_password_confirmation', 'complex_password'
-          staticPage.click '#create-account'
-          browser.driver.sleep(2000)
-          page.expectElement '.sidebar__content'
-          page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
+      it 'should allow you to join an open group', ->
+        page.loadPath 'view_open_group_as_visitor'
+        page.click '.join-group-button__join-group'
+        page.fillIn '.md-input', 'new@account.com'
+        page.click '.auth-email-form__submit'
+        page.fillIn '.md-input', 'New Account'
+        page.click '.auth-signup-form__submit'
+        page.loadPath 'use_last_login_token'
+        page.expectElement '.sidebar__content'
+        page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
 
       it 'should allow you to request to join a closed group', ->
         page.loadPath 'view_closed_group_as_visitor'
@@ -79,10 +36,6 @@ fdescribe 'Group Page', ->
         page.loadPath('view_open_group_as_visitor')
         page.expectNoElement('.thread-preview__dismiss')
         page.expectNoElement('.thread-preview__mute')
-
-      xit 'open group displays previous proposals', ->
-        page.loadPath('view_open_group_as_visitor')
-        page.expectText('.group-decisions-card', 'Let\'s go to the moon!')
 
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->
@@ -107,7 +60,7 @@ fdescribe 'Group Page', ->
     it 'redirects to dashboard and opens modal for logged in user with angular enabled', ->
       page.loadPath('setup_new_group')
       browser.get('start_group')
-      page.expectText '.group-form', 'Start a group'
+      page.expectText '.start-group-page', 'Start a group'
 
     it 'starts an open group', ->
       page.loadPath('setup_new_group')

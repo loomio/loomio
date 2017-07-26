@@ -28,10 +28,7 @@ public/uploads
 
 /dev_plugins/
 /fetched_plugins/
-plugins
-
-# NB: To reveal a plugin to hack on it locally, add a line here telling .gitignore to reveal it:
-# !plugins/my_awesome_plugin
+/plugins
 
 angular/node_modules
 angular/tasks/config/plugins.yml

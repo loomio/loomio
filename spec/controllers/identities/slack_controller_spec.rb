@@ -35,7 +35,8 @@ describe Identities::SlackController do
     let(:group) { create :formal_group }
     let(:discussion) { create :discussion, group: group }
     let(:poll) { create :poll_proposal, discussion: discussion }
-    let(:identity) { create :slack_identity }
+    let(:identity) { create :slack_identity, user: user, uid: "U123" }
+    let(:dangling_identity) { create :slack_identity, user: nil, uid: "U123" }
     let(:payload) { {
       user: { id: identity.uid },
       callback_id: poll.id,
@@ -50,7 +51,6 @@ describe Identities::SlackController do
     }.to_json }
     let(:user) { create :user }
     let(:another_user) { create :user }
-    let(:identity) { create :slack_identity, user: user, uid: "abcd" }
 
     it 'creates a stance' do
       group.add_member! user
@@ -59,6 +59,14 @@ describe Identities::SlackController do
       stance = Stance.last
       expect(stance.participant).to eq user
       expect(stance.poll_options).to include poll.poll_options.first
+    end
+
+    it 'adds the user to the group' do
+      sign_in user
+      expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
+      stance = Stance.last
+      expect(stance.participant).to eq user
+      expect(user.groups).to include poll.group
     end
 
     it 'does not create an invalid stance' do
@@ -79,6 +87,13 @@ describe Identities::SlackController do
       poll.update(discussion: nil, group: nil)
       sign_in user
       expect { post :participate, payload: payload }.to_not change { poll.stances.count }
+      expect(response.status).to eq 200
+    end
+
+    it 'finds the identity associated with a user if it exists' do
+      identity
+      dangling_identity
+      expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
       expect(response.status).to eq 200
     end
   end
