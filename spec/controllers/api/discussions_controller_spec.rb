@@ -122,7 +122,6 @@ describe API::DiscussionsController do
     describe 'filtering' do
       let(:subgroup_discussion) { create :discussion, group: subgroup }
       let(:muted_discussion) { create :discussion, group: group }
-      let(:starred_discussion) { create :discussion, group: group }
       let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
       let(:motionless_discussion) { create :discussion, group: group }
 
@@ -132,7 +131,6 @@ describe API::DiscussionsController do
         subgroup.add_member! user
         discussion.reload
         DiscussionReader.for(user: user, discussion: muted_discussion).set_volume! 'mute'
-        DiscussionReader.for(user: user, discussion: starred_discussion).update starred: true
       end
 
       it 'does not return muted discussions by default' do
@@ -178,43 +176,13 @@ describe API::DiscussionsController do
     end
 
     describe 'sorting' do
-      let(:starred_with_proposal) { create :discussion, group: group, title: 'starred_with_proposal' }
       let(:with_proposal) { create :discussion, group: group, title: 'with_proposal' }
-      let(:starred) { create :discussion, group: group, title: 'starred', last_activity_at: 20.days.ago }
       let(:recent) { create :discussion, group: group, last_activity_at: 1.day.ago, title: 'recent' }
       let(:not_recent) { create :discussion, group: group, last_activity_at: 5.days.ago, title: 'not_recent' }
 
       before do
         sign_in user
         recent; not_recent
-      end
-
-      it 'sorts by starred w/ proposals first' do
-        DiscussionReader.for(user: user, discussion: starred_with_proposal).update starred: true
-        DiscussionReader.for(user: user, discussion: starred).update starred: true
-        starred_with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
-        with_proposal.motions         << create(:motion, closing_at: 2.days.from_now)
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq starred_with_proposal.id
-      end
-
-      it 'sorts by proposals second' do
-        DiscussionReader.for(user: user, discussion: starred).update starred: true
-        with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq with_proposal.id
-      end
-
-      it 'sorts by starred third' do
-        DiscussionReader.for(user: user, discussion: starred).update starred: true
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq starred.id
       end
 
       it 'sorts by recent activity fourth' do
@@ -239,10 +207,10 @@ describe API::DiscussionsController do
       end
 
       it 'returns the reader fields' do
-        DiscussionReader.for(user: user, discussion: discussion).update(starred: true)
+        DiscussionReader.for(user: user, discussion: discussion).update(volume: :mute)
         get :show, id: discussion.key
         json = JSON.parse(response.body)
-        expect(json['discussions'][0]['starred']).to eq true
+        expect(json['discussions'][0]['volume']).to eq :mute
       end
     end
 
@@ -333,7 +301,6 @@ describe API::DiscussionsController do
 
         expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
         expect(json['discussions'][0]['discussion_reader_volume']).to eq reader.discussion_reader_volume
-        expect(json['discussions'][0]['starred']).to eq reader.starred
         expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
       end
     end
@@ -436,50 +403,6 @@ describe API::DiscussionsController do
           poll_ids = json['polls'].map { |p| p['id'] }
           expect(poll_ids).to include poll.id
         end
-      end
-    end
-  end
-
-  describe 'star' do
-    before { sign_in user }
-
-    context 'success' do
-      it 'stars a thread' do
-        put :star, id: discussion.id, format: :json
-        expect(response).to be_success
-        expect(DiscussionReader.for(user: user, discussion: discussion).starred).to eq true
-      end
-    end
-
-    context 'failure' do
-      it 'does not star a thread' do
-        put :star, id: another_discussion.id, format: :json
-        expect(response).to_not be_success
-        expect(DiscussionReader.for(user: user, discussion: another_discussion).starred).to eq false
-      end
-    end
-  end
-
-  describe 'unstar' do
-    before { sign_in user }
-
-    context 'success' do
-      it 'unstars a thread' do
-        reader = DiscussionReader.for(user: user, discussion: discussion)
-        reader.update starred: true
-        put :unstar, id: discussion.id, format: :json
-        expect(response).to be_success
-        expect(reader.reload.starred).to eq false
-      end
-    end
-
-    context 'failure' do
-      it 'does not update a reader' do
-        reader = DiscussionReader.for(user: user, discussion: another_discussion)
-        reader.update starred: true
-        put :unstar, id: another_discussion.id, format: :json
-        expect(response).not_to be_success
-        expect(reader.reload.starred).to eq true
       end
     end
   end

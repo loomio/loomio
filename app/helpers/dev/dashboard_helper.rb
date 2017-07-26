@@ -3,16 +3,8 @@ module Dev::DashboardHelper
     create_discussion!(:pinned_discussion) { |discussion| pin!(discussion) }
   end
 
-  def starred_poll_discussion
-    create_discussion!(:starred_poll_discussion, group: create_poll_group) { |discussion| star!(discussion); add_poll!(discussion) }
-  end
-
   def poll_discussion
     create_discussion!(:poll_discussion, group: create_poll_group) { |discussion| add_poll!(discussion) }
-  end
-
-  def starred_discussion
-    create_discussion!(:starred_discussion) { |discussion| star!(discussion) }
   end
 
   def recent_discussion(group: create_group)
@@ -46,10 +38,6 @@ module Dev::DashboardHelper
 
   def pin!(discussion)
     DiscussionService.pin(discussion: discussion, actor: discussion.author)
-  end
-
-  def star!(discussion, user: patrick)
-    DiscussionService.update_reader(discussion: discussion, params: {starred: true}, actor: patrick)
   end
 
   def mute!(discussion, user: patrick)

@@ -5,8 +5,6 @@ module HasImportance
     enum importances: %w(
       normal_importance
       has_decision
-      starred
-      starred_and_decision
       pinned
     )
 
@@ -20,16 +18,8 @@ module HasImportance
     discussion[:pinned]
   end
 
-  def starred_and_decision
-    starred && has_decision
-  end
-
   def has_decision
     @has_decision ||= discussion.polls.active.any?
-  end
-
-  def starred
-    super if defined?(super)
   end
 
   # always return lowest importance level if we get this far

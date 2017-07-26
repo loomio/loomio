@@ -102,7 +102,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       !!@description
 
     isImportant: ->
-      @pinned or @starred or @hasDecision()
+      @pinned or @hasDecision()
 
     unreadActivityCount: ->
       @salientItemsCount - @readSalientItemsCount
@@ -140,9 +140,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     isMuted: ->
       @volume() == 'mute'
-
-    saveStar: ->
-      @remote.patchMember @keyOrId(), if @starred then 'unstar' else 'star'
 
     update: (attrs) ->
       delete attrs.lastReadSequenceId    if attrs.lastReadSequenceId < @lastReadSequenceId

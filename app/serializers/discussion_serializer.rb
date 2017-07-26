@@ -46,8 +46,7 @@ class DiscussionSerializer < ActiveModel::Serializer
                          :discussion_reader_volume,
                          :last_read_at,
                          :dismissed_at,
-                         :participating,
-                         :starred
+                         :participating
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups

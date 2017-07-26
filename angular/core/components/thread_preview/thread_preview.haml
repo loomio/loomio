@@ -33,8 +33,6 @@
     .thread-preview--right.lmo-flex{layout: "row"}
       .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
         %i.fa.fa-lg.fa-thumb-tack
-      .thread-preview__star.thread-preview__status-icon{ng-if: "!thread.pinned"}
-        %star_toggle{thread: "thread", aria-hidden: "true"}
 
   .thread-preview__actions.hidden-xs{ng-if: "thread.discussionReaderId"}
     %button.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>

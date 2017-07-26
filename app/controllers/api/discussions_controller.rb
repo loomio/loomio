@@ -1,6 +1,6 @@
 class API::DiscussionsController < API::RestfulController
   load_and_authorize_resource only: [:show, :mark_as_read, :dismiss, :move]
-  load_resource only: [:create, :update, :pin, :star, :unstar, :set_volume]
+  load_resource only: [:create, :update, :pin]
   after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
@@ -40,16 +40,8 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def pin
-    service.pin discussion: resource, actor: current_user
+    service.pin discussion: load_resource, actor: current_user
     respond_with_resource
-  end
-
-  def star
-    update_reader starred: true
-  end
-
-  def unstar
-    update_reader starred: false
   end
 
   def set_volume

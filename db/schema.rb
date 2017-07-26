@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170709235914) do
+ActiveRecord::Schema.define(version: 20170726035750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -233,14 +233,12 @@ ActiveRecord::Schema.define(version: 20170709235914) do
     t.integer  "read_salient_items_count", default: 0,     null: false
     t.integer  "volume"
     t.boolean  "participating",            default: false, null: false
-    t.boolean  "starred",                  default: false, null: false
     t.datetime "dismissed_at"
     t.integer  "importance",               default: 0,     null: false
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
   add_index "discussion_readers", ["participating"], name: "index_discussion_readers_on_participating", using: :btree
-  add_index "discussion_readers", ["starred"], name: "index_discussion_readers_on_starred", using: :btree
   add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true, using: :btree
   add_index "discussion_readers", ["user_id", "volume"], name: "index_discussion_readers_on_user_id_and_volume", using: :btree
   add_index "discussion_readers", ["user_id"], name: "index_motion_read_logs_on_user_id", using: :btree
@@ -284,6 +282,8 @@ ActiveRecord::Schema.define(version: 20170709235914) do
     t.integer  "versions_count",                   default: 0
     t.integer  "closed_motions_count",             default: 0,     null: false
     t.integer  "closed_polls_count",               default: 0,     null: false
+    t.boolean  "pinned",               default: false, null: false
+    t.integer  "importance",           default: 0,     null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree

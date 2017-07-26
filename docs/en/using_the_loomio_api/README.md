@@ -371,7 +371,7 @@ These options are further documented in the [README](http://github.com/loomio/sn
   "discussion_reader_id":     "The id of the reader for this discussion and the logged in user (integer, can be null)",
   "discussion_reader_volume": "The volume of the discussion to the current user (string, can be null)",
   "participating":            "Whether the current user is participating in the discussion (boolean, can be null)",
-  "starred":                 "Whether the current user has starred the discussion (boolean, can be null)",
+
 
   # Discussion reader counts
   "read_items_count":         "How many events the current user has read (integer, can be null)",

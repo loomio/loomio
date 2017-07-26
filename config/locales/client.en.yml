@@ -856,7 +856,6 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
     no_threads:
       show_all: You don't have any recent threads.
-      show_starred: You don't have any starred threads.
       show_proposals: There are no proposals currently active.
       show_muted: You don't have any muted threads.
     view_recent: View all recent threads?
@@ -879,9 +878,6 @@ en:
       all: Recent Threads
       all_aria_label: Currently showing recent threads
       all_description: View recent threads
-      starred: Starred Threads
-      starred_aria_label: Currently showing threads I've marked as important
-      starred_description: View only threads you have marked as important
       proposals: Proposals
       proposals_aria_label: Currently showing threads with active proposals
       proposals_description: View only threads with active proposals
@@ -906,9 +902,6 @@ en:
       thisweek: 'This week'
       thismonth: 'This month'
       older: 'Older than a month'
-
-  star_toggle:
-    star: Star thread
 
   inbox_page:
     no_threads: Woohoo! You've read all the threads in your inbox.

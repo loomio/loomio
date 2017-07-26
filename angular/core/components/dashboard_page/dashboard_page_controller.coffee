@@ -26,7 +26,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   @timeframeNames = _.map @timeframes, (timeframe, name) -> name
 
   @loadingViewNames = ['proposals', 'today', 'yesterday']
-  @recentViewNames = ['pinned', 'proposals', 'starred', 'today', 'yesterday', 'thisweek', 'thismonth', 'older']
+  @recentViewNames = ['pinned', 'proposals', 'today', 'yesterday', 'thisweek', 'thismonth', 'older']
 
   @groupThreadLimit = 5
   @groups = -> Session.user().parentGroups()
@@ -44,7 +44,6 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     else
       @views.recent.pinned    = ThreadQueryService.filterQuery ['only_threads_in_my_groups', 'hide_muted', 'show_pinned', @filter], queryType: 'important'
       @views.recent.proposals = ThreadQueryService.filterQuery ['only_threads_in_my_groups', 'hide_muted', 'hide_pinned', 'show_proposals', @filter], queryType: 'important'
-      @views.recent.starred   = ThreadQueryService.filterQuery ['only_threads_in_my_groups', 'hide_muted', 'hide_pinned', 'hide_proposals', @filter], queryType: 'important'
 
       _.each @timeframeNames, (name) =>
         @views.recent[name] = ThreadQueryService.timeframeQuery

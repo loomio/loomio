@@ -6,12 +6,8 @@ describe 'Dashboard Page', ->
     page.loadPath('setup_dashboard')
 
   it 'displays a view of recent threads', ->
-    page.expectText('.dashboard-page__proposals','Starred proposal discussion')
     page.expectText('.dashboard-page__proposals','Proposal discussion')
-    page.expectNoText('.dashboard-page__proposals', 'Starred discussion')
 
-    page.expectText('.dashboard-page__starred', 'Starred discussion')
-    page.expectNoText('.dashboard-page__starred', 'Starred proposal discussion')
     page.expectText('.dashboard-page__today', 'Recent discussion')
 
     page.expectNoText('.dashboard-page__collections', 'Muted discussion')

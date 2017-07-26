@@ -89,7 +89,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_reader_attributes
-    [:discussion_id, :volume, :starred]
+    [:discussion_id, :volume]
   end
 
   def invitation_attributes
@@ -109,7 +109,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_attributes
-    [:title, :attachment_ids, :description, :uses_markdown, :group_id, :private, :iframe_src, :starred, :make_announcement, {attachment_ids: []}]
+    [:title, :attachment_ids, :description, :uses_markdown, :group_id, :private, :iframe_src, :make_announcement, {attachment_ids: []}]
   end
 
   def comment_attributes

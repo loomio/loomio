@@ -85,8 +85,6 @@ class Dev::MainController < Dev::BaseController
   def setup_dashboard
     sign_in patrick
     pinned_discussion
-    starred_poll_discussion
-    starred_discussion
     poll_discussion
     recent_discussion
     old_discussion
@@ -109,7 +107,7 @@ class Dev::MainController < Dev::BaseController
 
   def setup_inbox
     sign_in patrick
-    starred_discussion; recent_discussion group: create_another_group
+    recent_discussion group: create_another_group
     old_discussion; muted_discussion
     redirect_to inbox_url
   end

@@ -19,19 +19,6 @@ describe HasImportance do
     expect(reader.importance).to eq levels[:pinned]
   end
 
-  it 'can detect a thread with a star and an active decision' do
-    reader.update(starred: true)
-    poll
-    subject
-    expect(reader.importance).to eq levels[:starred_and_decision]
-  end
-
-  it 'can detect a thread with a star' do
-    reader.update(starred: true)
-    subject
-    expect(reader.importance).to eq levels[:starred]
-  end
-
   it 'can detect a thread with an active decision' do
     poll
     subject

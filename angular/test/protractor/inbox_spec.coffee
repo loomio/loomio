@@ -7,7 +7,6 @@ describe 'Inbox Page', ->
 
   it 'displays unread threads by group', ->
     expect(inboxHelper.firstGroup()).toContain('Dirty Dancing Shoes')
-    expect(inboxHelper.firstGroup()).toContain('Starred discussion')
     expect(inboxHelper.lastGroup()).toContain('Point Break')
     expect(inboxHelper.lastGroup()).toContain('Recent discussion')
 
