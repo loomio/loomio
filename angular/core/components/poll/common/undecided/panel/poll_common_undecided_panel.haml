@@ -8,4 +8,4 @@
       %h3.lmo-card-subheading{translate: "poll_common_undecided_panel.undecided_visitors", translate-value-count: "{{poll.undecidedVisitorCount}}"}
       %poll_common_undecided_user{ng-if: "canViewVisitors()", user: "visitor", ng-repeat: "visitor in poll.undecidedVisitors()"}
       %md-button{ng-if: "canViewVisitors()", translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "visitorsLoader.loadMore()", ng-if: "moreVisitorsToLoad()"}
-      %p.poll-common-helptext{translate: "poll_common_undecided_panel.hidden_visitors"}
+      %p.lmo-hint-text{translate: "poll_common_undecided_panel.hidden_visitors"}

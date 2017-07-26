@@ -38,7 +38,7 @@ class Clients::Facebook < Clients::Base
 
   # NB: this switch sucks, but it's too early to extract to something else
   def scope
-    %w(email user_managed_groups publish_actions).freeze
+    %w(email).freeze
   end
 
   def client_key_name

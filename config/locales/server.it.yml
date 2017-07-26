@@ -108,16 +108,6 @@ it:
       header: Hai quasi finito! Controlla la tua email.
       email_not_arrived: L'email non è arrivata?
     start_making_decisions: 'Per iniziare a prendere decisioni insieme su Loomio, crea un gruppo'
-  pricing_page:
-    gift: Gratis
-    standard: Standard
-    plus: Pro
-    get_started_for_free: Inizia gratis
-    unlimited_members: numero di membri illimitato
-    unlimited_decisions: numero di decisioni illimitato
-    email_support: supporto email
-    premium_support: supporto premium
-    usage_statistics: statistiche d'uso
   password_reset:
     length_restriction: Le password devono essere lunghe almeno 8 caratteri.
     forbidden_passwords: Le password banali come "password" sono vietate per tenere al sicuro il vostro account.

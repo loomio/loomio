@@ -1,5 +1,10 @@
-.install-slack-card.lmo-card{ng-if: "group.slackChannelName && group.slackTeamName"}
-  %h2.lmo-card-heading{translate: "install_slack.card.title"}
+.install-slack-card.lmo-card
+  %h2.lmo-card-heading{ng-if: "installed()", translate: "install_slack.card.installed_title"}
+  %h2.lmo-card-heading{ng-if: "!installed()", translate: "install_slack.card.install_title"}
   .lmo-flex
     %img.install-slack-card__logo{src: "/img/slack-icon.svg"}
-    %p.install-slack-card__helptext.poll-common-helptext{translate: "install_slack.card.helptext", translate-value-channel: "{{group.slackChannelName}}", translate-value-team: "{{group.slackTeamName}}"}
+    %p.install-slack-card__helptext.lmo-hint-text{ng-if: "installed()", translate: "install_slack.card.installed_helptext", translate-value-channel: "{{group.slackChannelName}}", translate-value-team: "{{group.slackTeamName}}"}
+    %p.install-slack-card__helptext.lmo-hint-text{ng-if: "!installed()", translate: "install_slack.card.install_helptext"}
+  .lmo-actions
+    %outlet{name: "install-slack-card-footer"}
+    %md-button.md-primary.md-raised{translate: "install_slack.card.install_slack", ng-click: "install()", ng-if: "!installed()"}

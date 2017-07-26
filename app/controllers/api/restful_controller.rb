@@ -6,6 +6,7 @@ class API::RestfulController < ActionController::Base
   before_filter :set_application_locale
   before_filter :set_paper_trail_whodunnit
   before_action :set_participation_token
+  after_filter  :save_detected_locale
   snorlax_used_rest!
 
   private

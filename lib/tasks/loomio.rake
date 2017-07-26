@@ -18,13 +18,6 @@ namespace :loomio do
     LocateUsersAndGroupsJob.perform_later
   end
 
-  # http://stackoverflow.com/a/9835162
-  task weekly_tasks: :environment do
-    if Time.now.monday?
-      SendAnalyticsEmailJob.perform_later
-    end
-  end
-
   task resend_ignored_invitations: :environment do
     InvitationService.resend_ignored(send_count: 1, since: 1.day.ago)
     InvitationService.resend_ignored(send_count: 2, since: 3.days.ago)

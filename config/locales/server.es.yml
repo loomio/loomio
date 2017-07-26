@@ -1,7 +1,16 @@
 es:
+  invitation:
+    invitation_not_found: No pudimos encontrar una invitación con el token que nos has dado. Por favor, pide una nueva invitación a tu grupo.
+    invitation_cancelled: Perdón pero esta invitación ha sido revocada por el coordinador del grupo. Por favor, pide una nueva invitación a tu grupo.
+    invitation_already_used: Esta invitación ya ha sido usada. Por favor inicia sesión para ingresar en tu grupo.
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%Y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
   validate:
     motion:
       must_close_in_future: La propuesta debe cerrar en el futuro.
@@ -204,45 +213,11 @@ es:
     error:
       too_many_pending: "Tienes más del máximo de %{count} de invitaciones pendientes para este grupo"
       all_email_addresses_belong_to_members: "No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo."
-  pricing_page:
-    header: 'Planes grupales '
-    gift: 'Gratis '
-    standard: 'Estándar '
-    plus: Pro
-    free_trial_html: 'Te pediremos que elijas tu plan de pago luego de <span>30 días de prueba gratis</span>. No se requiere tarjeta de crédito. '
-    get_started_for_free: 'Comienza gratis '
-    gift_body: Todo lo que necesitas para tomar decisiones eficientes con tu grupo.
-    standard_body_html: Toma decisiones en Slack
-    pro_body_html: Toma decisiones a través de toda tu organización
-    one_group: un grupo
-    unlimited_members: Cantidad ilimitada de miembros
-    unlimited_decisions: 'Cantidad ilimitada de decisiones '
-    coming_facebook: Próximamente integración con Facebook
-    email_support: 'soporte por correo electrónico '
-    coming_soon: 'Próximamente '
-    analytics_report: 'Reporte analítico '
-    data_export: Exportación de datos (CSV o XLS)
-    slack_integration_html: |
-      Integración con <strong>Slack</strong>
-    customer_support_html: Soporte al usuario
-    standard_price_html: '<strong>$19</strong>/al mes'
-    gift_price_html: '<strong>$0</strong>'
-    plus_includes_standard: 'Todo en Estándar, más: '
-    standard_includes_free: 'Todo en Gratis, más: '
-    multiple_groups: "Hasta 10 grupos"
-    premium_support: 'soporte especial '
-    help_with_setup: Ayuda con la configuración inicial
-    ldap_coming_soon: 'Próximamente ActiveDirectory/LDAP '
-    custom_subdomain: 'Dominio personalizado '
-    analytics_reports: 'Reporte analítico '
-    contact_us_html: |
-      Precios en dolares US, más impuestos a la venta donde aplique. ¿Necesitas algo más? <a href="/contact">Hablemos</a>
-    custom_subdomain_html: |
-      subdominio personalizado<br />
-      ej. <strong>tugrupo</strong>.loomio.org
-    usage_statistics: Estadísticas de uso
-    plus_price_html: '<strong>$99</strong>/al mes'
   password_reset:
+    change_your_password: Cambia tu contraseña
+    change_my_password: Cambiar la contraseña
+    confirm_new_password: Confirma la contraseña
+    new_password: Nueva contraseña
     email_guidelines_html: |
       <p>Introduce la dirección de correo electrónico de tu cuenta de Loomio en el espacio de abajo y se te enviará un enlace para restablecer tu contraseña.</p>
       <p>Si normalmente inicias sesión mediante Facebook, Google, Twitter o Persona, introduce el correo electrónico asociado con esa cuenta.</p>
@@ -520,3 +495,92 @@ es:
         stance_created: "<strong>%{actor}</strong> participó en: %{title} "
       body:
         voted: '<strong>%{participant}</strong>:'
+  poll_generator:
+    proposal:
+      title: "Ofrecer un empleo formal a Shelley y Jack"
+      details: 'Shelley y Jack han estado trabajando para nosotros como internos por los últimos 3 meses, ambos han demostrado una dedicación admirable, y claramente son un gran recurso para nuestro equipo. ¿Les ofrecemos una oferta formal de trabajo? '
+    poll:
+      title: "¿Hay alguna alergia de la que debamos saber antes de la cena del Jueves?"
+      details: 'Espero verlos a todos en mi casa! Por favor indica si tienes alguna restricción alimenticia de la que debamos saber. '
+    count:
+      title: "¿Quién quiere organizar el picnic de la empresa?  "
+      details: 'Marsha se sintió muy abrumada la ultima vez, así que esta vez nos gustaría darle un par de ayudantes para que sea más fácil para todos. Por favor indica si te gustaría ayudar. '
+    dot_vote:
+      title: "¿Cuál es la estrategia de nuestra empresa para el próximo cuatrimestre? "
+      details: 'Este es un gran año para nuestra empresa y necesitamos ser estratégicos acerca de como invertimos nuestros limitados recursos. Por favor indica cuales son las áreas que crees son más importantes para que nos enfoquemos el próximo cuatrimestre. '
+    meeting:
+      title: "¿Cuándo debemos tener nuestra próxima reunión de personal?"
+      details: Es tiempo nuevamente para nuestra reunión de personal bimestral. Idealmente nos gustaría reunirnos antes del fin de la semana que viene. ¿Qué día y horario funciona mejor para todos?
+  poll_unsubscribe:
+    title: 'Has sido des-inscripto de %{title} '
+    helptext: 'Ya no recibirás emails sobre esta decisión. '
+    visit_poll: Ver encuesta
+    go_to_dashboad: Ir al panel de control
+  webhooks:
+    slack:
+      poll_expired: "*%{name}* ha cerrado"
+      motion_closed: "*%{name}* ha cerrado "
+      motion_closed_by_user: "*%{name}* ha sido cerrada por *%{author}*"
+      motion_closing_soon: "*%{name}* tiene una propuesta cerrando en 24 horas"
+      motion_outcome_created: "*%{author}* publico un resultado en *%{name}*"
+      motion_outcome_updated: "*%{author}* actualizo el resultado para *%{name}*"
+      new_motion: "*%{author}* inició una nueva propuesta en *%{name}*"
+      new_vote: "*%{author}* %{position}*%{proposal}* en *%{name}* "
+      new_comment: "*%{author}* publico un comentario en *%{name}*"
+      new_discussion: "*%{author}* inició una nueva discusión en *%{group}*"
+      outcome_created: "*%{author}* publico un resultado en *%{name}*"
+      poll_created: "*%{author}* inició una encuesta: *%{name}* "
+      poll_closing_soon: "*%{name}* cerrará pronto "
+      view_it_on_loomio: Velo en Loomio
+      have_your_say: 'Da tu opinión '
+      poll_published: "*%{author}* publicó una encuesta:"
+      poll_published_with_discussion: "*%{author}* publicó una encuesta en %{discussion}:"
+      outcome_published: "*%{author}* publico un resultado:"
+      outcome_published_with_discussion: "*%{author}* publicó un resultado en %{discussion}:"
+      position_verbs:
+        'yes': 'Está de acuerdo en '
+        'no': No está de acuerdo en
+        abstain: Se abstuvo en
+        block: Bloqueó en
+  slack:
+    new_discussion: "Nuevo hilo en *%{group}*: *%{discussion}* "
+    poll_published: "Nueva decisión en *%{group}*: *%{poll}*"
+    outcome_published: "Nuevo resultado en *%{group}*: *%{poll}*"
+    poll_closing_soon: "Recordatorio: *%{poll}* cierra en 24hr"
+    poll_expired: "*%{poll}* ha cerrado"
+    group_published: |
+      Hola, soy Loomio Bot. *%{author}* me ha añadido.
+      Puedo ayudar a tu equipo a tomar decisiones juntos.
+
+      Mis funcionalidades incluyen:
+
+      - resaltar cuando hay decisiones activas
+      - permitirle a las personas votar en decisiones desde Slack
+      - mostrar donde es que las personas están de acuerdo o no
+      - comunicar el resultado de las decisiones
+      - mantener un archivo de decisiones en tu grupo de Loomio.
+
+      Para saber más escribe _/loomio help_
+    request_authorization_message: "Solo un paso más: <%{url}haz clic aquí> para autorizar que tu cuenta de Slack use Loomio. (solo deberás hacerlo una vez)"
+    poll_closed: "*%{title}* ha cerrado! <%{url} haz clic aquí>  para ver el resultado"
+    go_to_slack: Ir a Slack
+    stance_created: Gracias por participar. Votaste *%{position}* en la encuesta <%{poll_url} %{title}>. Si quieres cambiar tu voto, o dar una razón por la que votaste de esta forma, <%{stance_url} haz clic aquí>
+    click_to_vote: "Selecciona una opción debajo para votar:"
+    time_zone_message: (todos los horarios están en la zona horaria %{zone})
+    authorized_message: Genial! Ya estás listo para votar desde Slack.
+    community_poll_published: "@%{username} inició una nueva %{type}:"
+    initiate: |
+      Ok, hagámoslo! <%{url} haz clic aquí para iniciar tu %{type}>.
+      (nota: publicaremos en este canal una vez que sea creada, para que todos puedan participar)
+    slash_command_help: |
+      Ingresa un estilo de decisión (escrito en Ingles como se muestra debajo) y una cuestión, y comenzaremos desde ahí.
+      Puedes elegir estos estilos de decisión:
+      'proposal': Busca el acuerdo colectivo
+      'count':      Comprueba la participación y busca voluntarios
+      'poll':          Mide la popularidad de opciones
+      'dot vote':  Prioriza una lista de opciones
+      'meeting':  Encuentra un horario para la reunion
+
+      Por ejemplo escribe:
+      /loomio count ¿Quién viene a la fiesta el Domingo?
+      Para iniciar una nueva comprobación.

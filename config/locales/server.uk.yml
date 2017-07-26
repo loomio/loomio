@@ -204,48 +204,6 @@ uk:
     error:
       too_many_pending: "Ви досягли більш ніж максимально можливих %{count} запрошень в очікуванні для цієї групи"
       all_email_addresses_belong_to_members: "Ми не відправили запрошення на ці адреси електронної пошти, тому що вони належать людям що вже в групі."
-  pricing_page:
-    header: Плани груп
-    gift: Безкоштовний
-    standard: Стандарт
-    plus: Про
-    free_trial_html: Ми попросимо вас вибрати тарифний план після <span>30-денного безкоштовного пробного використання</span>. Кредитна карта не потрібна.
-    get_started_for_free: Почніть безкоштовно
-    gift_body: Все що вам потрібно аби приймати ефективні рішення з вашою групою.
-    standard_body_html: Прийняти рішення у Slack
-    pro_body_html: Прийняти рішення в вашій організації
-    one_group: одна група
-    unlimited_members: необмежена кількість членів
-    unlimited_decisions: необмежена кількість рішень
-    coming_facebook: Найближчим часом інтеграція з Facebook.
-    email_support: підтримка по електронній пошті
-    coming_soon: Найближчим часом
-    analytics_report: Аналітичні звіти
-    data_export: Експорт даних (CSV або XLS)
-    slack_integration_html: |
-      Інтеграція зі <strong>Slack</strong>
-    customer_support_html: Підтримка клієнтів
-    standard_price_html: '<strong>$19</strong>/на місяць'
-    gift_price_html: '<strong>$0</strong>'
-    plus_includes_standard: 'Все що в плані Стандарт, плюс:'
-    standard_includes_free: 'Все що в плані Безкоштовний, плюс:'
-    multiple_groups: "до 10 груп"
-    premium_support: преміум підтримка
-    help_with_setup: допомога з початковим налаштуванням
-    ldap_coming_soon: ActiveDirectory / LDAP найближчим часом
-    custom_subdomain: піддомен користувача
-    analytics_reports: аналітичні звіти
-    free_is_for_community_and_evaluation_html: |
-      Безкоштовний план призначений для тимчасових користувачів, спільнот та тих, хто хоче оцінити використання Loomio в своїй організації. Ми покладаємось на платні плани для забезпечення підтримки та вдосконалення Loomio.<br/>
-      Ми поважаємо вашу конфіденційність і ніколи не продамо ваші дані стороннім особам, та не розміщуємо рекламу в Loomio.<br/>
-      Якщо ви неприбуткова організація, зв'яжіться з нами щодо знижки.
-    contact_us_html: |
-      Ціни вказані в доларах США; додатково нараховується податок з продажів у випадках, де він має бути застосованим. Потрібно щось ще? <a href="/contact">Давай поговоримо!</a>
-    custom_subdomain_html: |
-      піддомен користувача, <br />
-      наприкалад <strong>yourgroup</strong>.loomio.org
-    usage_statistics: статистика використання
-    plus_price_html: '<strong>$99</strong>/на місяць'
   password_reset:
     email_guidelines_html: |
       <p>Введіть адресу електронної пошти для облікового запису Loomio в поле нижче щоб отримати посилання для скидання пароля.</p>
@@ -277,7 +235,7 @@ uk:
       * Щоб повідомити конкретну людину, введіть @ та її ім'я.
       * Натисніть на значок скріпки щоб додати файли.
 
-      Якщо у вас виникли питання, пошукайте відповіді в [довіднику Loomio] (http://help.loomio.org).
+      Якщо у вас виникли питання, перегляньте відповіді в [довіднику Loomio] (http://help.loomio.org).
   first_proposal:
     name: Приклад пропозиції
     description: |
