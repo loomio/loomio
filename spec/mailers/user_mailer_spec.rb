@@ -78,7 +78,7 @@ describe UserMailer do
     end
 
     it 'does not send a missed yesterday email if I have unsubscribed' do
-      user.update(email_missed_yesterday: true)
+      user.update(email_missed_yesterday: false)
       some_content
       expect { subject }.to_not change { ActionMailer::Base.deliveries.count }
     end
