@@ -60,7 +60,7 @@ before_script:
   - bundle exec rails server > /dev/null &
 
 script:
-  - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec travis:cucumber; fi
+  - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
   - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
 
