@@ -1,6 +1,7 @@
 class Events::OutcomeCreated < Event
   include Events::PollEvent
   include Events::Notify::Author
+  include Events::Notify::ThirdParty
   include Events::LiveUpdate
 
   def self.publish!(outcome)

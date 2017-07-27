@@ -27,6 +27,8 @@ class Group < ActiveRecord::Base
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }
 
+  delegate :locale, to: :creator, allow_nil: true
+
   define_counter_cache(:polls_count)               { |group| group.polls.count }
   define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
   define_counter_cache(:memberships_count)         { |group| group.memberships.count }

@@ -5,6 +5,10 @@ module HasGuestGroup
     has_many :guests, through: :guest_group, source: :members
   end
 
+  def guest_group
+    super || create_guest_group
+  end
+  
   def invite_guest!(name: nil, email:, inviter: nil)
     self.guest_group.invitations.find_or_create_by(
       recipient_email: email,

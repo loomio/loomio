@@ -5,7 +5,7 @@ class Events::GroupIdentityCreated < Event
     create(kind: "group_identity_created",
            user: actor,
            eventable: group_identity,
-           announcement: group_identity.make_announcement,
+           announcement: true,
            created_at: group_identity.created_at).tap { |e| EventBus.broadcast('group_identity_created', e) }
   end
 

@@ -1,6 +1,6 @@
 module Identities::WithClient
   def notify!(event)
-    client.post_content!(event)
+    I18n.with_locale(event.group.locale) { client.post_content!(event) }
   end
 
   def fetch_user_info
