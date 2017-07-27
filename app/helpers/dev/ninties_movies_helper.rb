@@ -61,7 +61,7 @@ module Dev::NintiesMoviesHelper
 
   def create_group
     unless @group
-      @group = Group.create!(name: 'Dirty Dancing Shoes',
+      @group = FormalGroup.create!(name: 'Dirty Dancing Shoes',
                                   group_privacy: 'closed',
                                   discussion_privacy_options: 'public_or_private')
       @group.add_admin!  patrick
@@ -73,7 +73,7 @@ module Dev::NintiesMoviesHelper
 
   def create_poll_group
     unless @poll_group
-      @poll_group = Group.create!(name: 'Dirty Dancing Shoes',
+      @poll_group = FormalGroup.create!(name: 'Dirty Dancing Shoes',
                              group_privacy: 'closed',
                              discussion_privacy_options: 'public_or_private',
                              features: {use_polls: true})
@@ -87,7 +87,7 @@ module Dev::NintiesMoviesHelper
   def multiple_groups
     @groups = []
     10.times do
-      group = Group.new(name: Faker::Name.name,
+      group = FormalGroup.new(name: Faker::Name.name,
                         group_privacy: 'closed',
                         discussion_privacy_options: 'public_or_private')
       group.add_admin! patrick
@@ -98,7 +98,7 @@ module Dev::NintiesMoviesHelper
 
   def muted_create_group
     unless @muted_group
-      @muted_group = Group.create!(name: 'Muted Point Blank',
+      @muted_group = FormalGroup.create!(name: 'Muted Point Blank',
                                         group_privacy: 'closed',
                                         discussion_privacy_options: 'public_or_private')
       @muted_group.add_admin! patrick
@@ -109,7 +109,7 @@ module Dev::NintiesMoviesHelper
 
   def create_another_group
     unless @another_group
-      @another_group = Group.create!(name: 'Point Break',
+      @another_group = FormalGroup.create!(name: 'Point Break',
                                           group_privacy: 'closed',
                                           discussion_privacy_options: 'public_or_private',
                                           description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.')
@@ -152,7 +152,7 @@ module Dev::NintiesMoviesHelper
 
   def create_subgroup
     unless @subgroup
-      @subgroup = Group.create!(name: 'Johnny Utah',
+      @subgroup = FormalGroup.create!(name: 'Johnny Utah',
                                      parent: create_another_group,
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed')
@@ -163,7 +163,7 @@ module Dev::NintiesMoviesHelper
 
   def another_create_subgroup
     unless @another_subgroup
-      @another_subgroup = Group.create!(name: 'Bodhi',
+      @another_subgroup = FormalGroup.create!(name: 'Bodhi',
                                              parent: create_another_group,
                                              group_privacy: 'closed',
                                              discussion_privacy_options: 'public_or_private',
@@ -232,7 +232,7 @@ module Dev::NintiesMoviesHelper
     event = MembershipRequestService.create(membership_request: membership_request, actor: LoggedOutUser.new)
 
     #'membership_request_approved',
-    another_group = Group.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
+    another_group = FormalGroup.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
     GroupService.create(group: another_group, actor: jennifer)
     membership_request = MembershipRequest.new(requestor: patrick, group: another_group)
     event = MembershipRequestService.create(membership_request: membership_request, actor: patrick)
@@ -240,7 +240,7 @@ module Dev::NintiesMoviesHelper
 
     #'user_added_to_group',
     #notify patrick that he has been added to jens group
-    another_group = Group.new(name: 'Planets of the 80\'s')
+    another_group = FormalGroup.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
     MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer, message: 'join in')
 
