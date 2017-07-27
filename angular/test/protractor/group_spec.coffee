@@ -16,26 +16,30 @@ describe 'Group Page', ->
       it 'should allow you to join an open group', ->
         page.loadPath 'view_open_group_as_visitor'
         page.click '.join-group-button__join-group'
-        page.fillIn '.md-input', 'new@account.com'
-        page.click '.auth-email-form__submit'
-        page.fillIn '.md-input', 'New Account'
-        page.click '.auth-signup-form__submit'
-        page.loadPath 'use_last_login_token'
+        page.signInViaEmail('new@account.com')
+        page.click '.join-group-button__join-group'
         page.expectElement '.sidebar__content'
         page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
-
-      it 'should allow you to request to join a closed group', ->
-        page.loadPath 'view_closed_group_as_visitor'
-        page.click '.join-group-button__ask-to-join-group'
-        page.fillIn '#membership-request-name', 'Chevy Chase'
-        page.fillIn '#membership-request-email', 'chevychase@example.com'
-        page.click '.membership-request-form__submit-btn'
-        page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
 
       it 'does not allow mark as read or mute', ->
         page.loadPath('view_open_group_as_visitor')
         page.expectNoElement('.thread-preview__dismiss')
         page.expectNoElement('.thread-preview__mute')
+
+    describe 'signed in user', ->
+      it 'join an open group', ->
+        page.loadPath 'view_open_group_as_non_member'
+        page.click '.join-group-button__join-group'
+        page.sleep(1000) # you can sleep when you're dead
+        page.expectFlash 'You are now a member'
+
+      it 'request to join a closed group group', ->
+        page.loadPath 'view_closed_group_as_non_member'
+        page.click '.join-group-button__join-group'
+        page.fillIn '.membership-request-form__introduction', 'I have a reason'
+        page.click '.membership-request-form__submit-btn'
+        page.sleep(2000)
+        page.expectFlash 'You have requested membership'
 
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->

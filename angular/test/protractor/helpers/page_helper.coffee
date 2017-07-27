@@ -17,6 +17,9 @@ module.exports = new class PageHelper
     browser.driver.sleep(time)
     browser.waitForAngular()
 
+  sleep: (time=1000) ->
+    browser.driver.sleep(time)
+
   expectElement: (selector)->
     expect(element(By.css(selector)).isPresent()).toBe(true)
 
@@ -76,3 +79,16 @@ module.exports = new class PageHelper
         if selected
           console.log "unexpected selected", selector, selected
         expect(selected).toBe(false)
+
+  signInViaPassword: (email, password) ->
+    @fillIn '.auth-email-form__email input', email
+    @click '.auth-email-form__submit'
+    @fillIn '.auth-signin-form__password input', password
+    @click '.auth-signin-form__submit'
+
+  signInViaEmail: (email) ->
+    @fillIn '.md-input', 'new@account.com'
+    @click '.auth-email-form__submit'
+    @fillIn '.md-input', 'New Account'
+    @click '.auth-signup-form__submit'
+    @loadPath 'use_last_login_token'
