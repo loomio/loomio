@@ -1,5 +1,6 @@
 class LoggedOutUser
   include Null::User
+  include AvatarInitials
   attr_accessor :name, :email, :token, :avatar_initials
 
   alias :read_attribute_for_serialization :send
