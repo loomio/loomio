@@ -28,4 +28,11 @@ namespace :travis do
     raise "rspec:plugins failed!" unless rspec_passed
     raise "protractor:plugins failed!" unless protractor_passed
   end
+
+  task :upload_s3 do
+    puts "Uploading failure screenshots..."
+    date = `date "+%Y%m%d%H%M%S"`.chomp
+    system("s3uploader -r us-east-1 -k $ARTIFACTS_KEY -s $ARTIFACTS_SECRET -d #{date} angular/screenshots $ARTIFACTS_BUCKET")
+    puts "Screenshots uploaded to https://loomio-protractor-screenshots.s3.amazonaws.com/#{date}/my-report.html"
+  end
 end

@@ -85,11 +85,6 @@ EventBus.configure do |config|
     Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
-  # notify communities of outcome creation
-  config.listen("outcome_create") do |outcome|
-    outcome.communities.with_identity.each { |community| Events::OutcomePublished.publish!(outcome, community) }
-  end
-
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 

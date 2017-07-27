@@ -8,7 +8,8 @@ class GroupMailer < BaseMailer
                      locale: recipient.locale,
                      from:   from_user_via_loomio(recipient.inviter),
                      reply_to: recipient.inviter.name_and_email,
-                     subject_key: "email.to_join_group.subject"
+                     subject_key: "email.to_join_group.subject",
+                     subject_params: {member: recipient.inviter.name, group_name: recipient.group.full_name}
   end
 
   def invitation_resend(recipient, event)
@@ -19,7 +20,7 @@ class GroupMailer < BaseMailer
                      reply_to: recipient.inviter.name_and_email,
                      subject_key: "email.resend_to_join_group.subject",
                      template_name: :invitation_created,
-                     subject_params: {member: recipient.name, group_name: recipient.group.full_name}
+                     subject_params: {member: recipient.inviter.name, group_name: recipient.group.full_name}
   end
 
   def membership_requested(recipient, event)

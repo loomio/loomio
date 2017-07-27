@@ -14,8 +14,10 @@ describe 'Notifications', ->
     page.expectText '.notifications__dropdown', 'mentioned you in'
     page.expectText '.notifications__dropdown', 'replied to your comment'
     page.expectText '.notifications__dropdown', 'published an outcome'
-    page.expectText '.notifications__dropdown', 'Proposal closed'
-    page.expectText '.notifications__dropdown', 'Proposal is closing'
+    # start a poll
+
+    # page.expectText '.notifications__dropdown', 'Proposal closed'
+    # page.expectText '.notifications__dropdown', 'Proposal is closing'
     page.expectText '.notifications__dropdown', 'liked your comment'
     page.expectText '.notifications__dropdown', 'made you a coordinator'
     page.expectText '.notifications__dropdown', 'participated in'

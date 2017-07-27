@@ -23,7 +23,7 @@ class Identities::Facebook < Identities::Base
   private
 
   def publish_events
-    %w(outcome_published).freeze
+    []
   end
 
   def permissions_response

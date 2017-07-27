@@ -65,4 +65,4 @@ script:
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
 
 after_script:
-  - s3uploader -r us-east-1 -k $ARTIFACTS_KEY -s $ARTIFACTS_SECRET -d `date "+%Y%m%d%H%M%S"` angular/screenshots $ARTIFACTS_BUCKET
+  - bundle exec rake travis:upload_s3
