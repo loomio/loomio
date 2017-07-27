@@ -85,6 +85,7 @@ describe 'CommentService' do
       end
 
       it 'updates the discussion reader' do
+        user.update_attribute(:email_on_participation, false)
         CommentService.create(comment: comment, actor: user)
         expect(reader.reload.participating).to eq true
         expect(reader.reload.volume.to_sym).to eq :normal

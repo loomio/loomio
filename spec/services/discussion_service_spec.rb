@@ -77,12 +77,13 @@ describe 'DiscussionService' do
       end
 
       it 'sets the volume to loud if the user has set email_on_participation' do
-        user.update(email_on_participation: true)
+        user.update_attribute(:email_on_participation, true)
         DiscussionService.create(discussion: discussion, actor: user)
         expect(DiscussionReader.for(user: user, discussion: discussion).volume).to eq 'loud'
       end
 
       it 'does not set the volume if the user has not set email_on_participation' do
+        user.update_attribute(:email_on_participation, false)
         DiscussionService.create(discussion: discussion, actor: user)
         expect(DiscussionReader.for(user: user, discussion: discussion).volume).to_not eq 'loud'
       end
