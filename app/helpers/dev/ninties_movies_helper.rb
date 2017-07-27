@@ -242,7 +242,7 @@ module Dev::NintiesMoviesHelper
     #notify patrick that he has been added to jens group
     another_group = FormalGroup.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
-    MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer, message: 'join in')
+    MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer)
 
     #'new_coordinator',
     #notify patrick that jennifer has made him a coordinator
@@ -253,6 +253,17 @@ module Dev::NintiesMoviesHelper
     #notify patrick that his invitation to emilio has been accepted
     invitation = InvitationService.invite_to_group(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
     InvitationService.redeem(invitation.first, emilio)
+
+    #'poll_created'
+    jen_poll = FactoryGirl.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
+    PollService.create(poll: jen_poll, actor: jennifer)
+
+    #'poll_closing_soon'
+    PollService.publish_closing_soon
+
+    #'outcome_created'
+    outcome = FactoryGirl.build(:outcome, poll: jen_poll)
+    OutcomeService.create(outcome: outcome, actor: jennifer)
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal

@@ -157,19 +157,6 @@ class Dev::MainController < Dev::BaseController
     redirect_to dashboard_url
   end
 
-  def setup_group_with_welcome_modal
-    another_group = Group.new(name: 'Another group',
-                              discussion_privacy_options: :public_only,
-                              is_visible_to_public: true,
-                              membership_granted_upon: :request)
-    group = Group.new(name: 'Welcomed group')
-    GroupService.create(group: another_group, actor: LoggedOutUser.new)
-    GroupService.create(group: group, actor: patrick)
-    group.add_admin! patrick
-    sign_in patrick
-    redirect_to group_url(group)
-  end
-
   # to test subdomains in development
   def setup_group_with_subdomain
     sign_in patrick
@@ -180,37 +167,6 @@ class Dev::MainController < Dev::BaseController
   def setup_group_as_member
     sign_in jennifer
     redirect_to group_url(create_group)
-  end
-
-  def setup_group_with_many_discussions
-    create_group.add_member! emilio
-    40.times do
-      discussion = FactoryGirl.build(:discussion,
-                                     group: create_group,
-                                     private: false,
-                                     author: emilio)
-      DiscussionService.create(discussion: discussion, actor: emilio)
-    end
-    redirect_to group_url(create_group, from: 5)
-  end
-
-  def setup_discussion_with_many_comments
-    create_group.add_member! emilio
-    40.times do |i|
-      comment = FactoryGirl.build(:comment, discussion: create_discussion, body: "#{i} bottles of beer on the wall")
-      CommentService.create(comment: comment, actor: emilio)
-    end
-    redirect_to discussion_url(create_discussion, from: 5)
-  end
-
-  def setup_busy_discussion_with_signed_in_user
-    create_group.add_member! emilio
-    100.times do |i|
-      comment = FactoryGirl.build(:comment, discussion: create_discussion, body: "#{i} bottles of beer on the wall")
-      CommentService.create(comment: comment, actor: emilio)
-    end
-    sign_in patrick
-    redirect_to discussion_url(create_discussion)
   end
 
   def setup_public_group_with_public_content
@@ -256,12 +212,12 @@ class Dev::MainController < Dev::BaseController
   def setup_explore_groups
     sign_in patrick
     30.times do |i|
-      explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
+      explore_group = FormalGroup.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
       GroupService.create(group: explore_group, actor: patrick)
       explore_group.update_attribute(:memberships_count, i)
     end
-    Group.limit(15).update_all(name: 'Footloose')
-    redirect_to group_url(Group.last)
+    FormalGroup.limit(15).update_all(name: 'Footloose')
+    redirect_to group_url(FormalGroup.last)
   end
 
   def setup_group_with_multiple_coordinators
@@ -305,12 +261,6 @@ class Dev::MainController < Dev::BaseController
 
   def setup_team_invitation_link
     redirect_to create_group.shareable_invitation
-  end
-
-  def setup_group_for_invitations
-    create_group
-    create_another_group
-    patricks_contact
   end
 
   def setup_group_with_pending_invitation
