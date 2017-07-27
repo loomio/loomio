@@ -9,7 +9,7 @@ module Dev::NintiesMoviesHelper
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               detected_locale: 'en',
-                              angular_ui_enabled: true)
+                              email_verified: true)
     @patrick.experienced!("introductionCarousel")
     @patrick
   end
@@ -27,7 +27,7 @@ module Dev::NintiesMoviesHelper
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
-                               angular_ui_enabled: true)
+                               email_verified: true)
     @jennifer.experienced!("introductionCarousel")
     @jennifer
   end
@@ -38,7 +38,7 @@ module Dev::NintiesMoviesHelper
                           email: 'max@example.com',
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
-                          angular_ui_enabled: true)
+                          email_verified: true)
     @max.experienced!("introductionCarousel")
     @max
   end
@@ -48,7 +48,7 @@ module Dev::NintiesMoviesHelper
                 User.create!(name: 'Emilio Estevez',
                             email: 'emilio@loomio.org',
                             password: 'gh0stmovie',
-                            angular_ui_enabled: true)
+                            email_verified: true)
   end
 
   def judd
@@ -56,7 +56,7 @@ module Dev::NintiesMoviesHelper
               User.create!(name: 'Judd Nelson',
                            email: 'judd@example.com',
                            password: 'gh0stmovie',
-                           angular_ui_enabled: true)
+                           email_verified: true)
   end
 
   def create_group

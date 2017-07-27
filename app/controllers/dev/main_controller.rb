@@ -221,7 +221,7 @@ class Dev::MainController < Dev::BaseController
 
   def setup_restricted_profile
     sign_in patrick
-    create_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    create_group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     create_group.add_member!(jennifer)
     redirect_to "/u/#{jennifer.username}"
@@ -229,7 +229,7 @@ class Dev::MainController < Dev::BaseController
 
   def setup_profile_with_group_visible_to_members
     sign_in patrick
-    create_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    create_group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     create_group.add_admin!(patrick)
     create_group.add_member!(jennifer)
@@ -238,7 +238,7 @@ class Dev::MainController < Dev::BaseController
 
   def setup_group_with_empty_draft
     sign_in patrick
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: @group)
@@ -325,7 +325,7 @@ class Dev::MainController < Dev::BaseController
 
   def view_open_group_as_non_member
     sign_in patrick
-    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
     membership_granted_upon: 'request',
     group_privacy: 'open')
     @group.add_admin! jennifer
@@ -336,7 +336,7 @@ class Dev::MainController < Dev::BaseController
 
   def view_closed_group_as_non_member
     sign_in patrick
-    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
     @group.add_admin! jennifer
@@ -346,13 +346,13 @@ class Dev::MainController < Dev::BaseController
 
   def view_secret_group_as_non_member
     sign_in patrick
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     redirect_to group_url(@group)
   end
 
   def view_open_group_as_visitor
-    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
     @group.add_admin! jennifer
@@ -361,7 +361,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_open_discussion_as_visitor
-    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
                            membership_granted_upon: 'request',
                            group_privacy: 'open')
     @group.add_member! patrick
@@ -371,7 +371,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_closed_group_as_visitor
-    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
                                 membership_granted_upon: 'approval',
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
@@ -383,14 +383,14 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_secret_group_as_visitor
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin! patrick
     redirect_to group_url(@group)
   end
 
   def setup_open_group
-    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
                                 group_privacy: 'open')
     @group.add_admin!  patrick
     @group.add_member! jennifer
@@ -400,7 +400,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_closed_group
-    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed')
     @group.add_admin!  patrick
     @group.add_member! jennifer
@@ -410,7 +410,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_secret_group
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin!  patrick
     @group.add_member! jennifer

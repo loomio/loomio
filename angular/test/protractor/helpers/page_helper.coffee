@@ -7,10 +7,10 @@ given =  (args) ->
   else
     args
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000
 
 module.exports = new class PageHelper
-  loadPath: (path, timeout = 40000) ->
+  loadPath: (path, timeout = jasmine.DEFAULT_TIMEOUT_INTERVAL) ->
     browser.get('dev/'+path, timeout)
 
   waitForReload: (time=5000)->
