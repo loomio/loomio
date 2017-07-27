@@ -19,12 +19,11 @@
 
 .thread-preview__actions{
   position: absolute;
-  right: 68px;
+  right: 40px;
   transition: opacity 0.25s ease-in-out;
   top: 0;
   opacity: 0;
-  margin-right: $thinPaddingSize;
-  margin-top: $thinPaddingSize;
+  margin: $thinPaddingSize 0;
 }
 
 .thread-preview--left {
