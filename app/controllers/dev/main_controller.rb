@@ -115,7 +115,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_new_group
-    group = Group.new(name: 'Fresh group')
+    group = FormalGroup.new(name: 'Fresh group')
     GroupService.create(group: group, actor: patrick)
     group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: group)
