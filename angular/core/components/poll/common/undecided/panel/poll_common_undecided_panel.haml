@@ -1,11 +1,6 @@
   .poll-common-undecided-panel
-    %md-button.poll-common-undecided-panel__button{ng-if: "canShowUndecided()", ng-click: "showUndecided()", translate: "poll_common_undecided_panel.show_undecided", translate-value-count: "{{poll.undecidedCount()}}", aria-label: "poll_common_undecided_panel.show_undecided"}
-    .poll-common-undecided-panel__panel.poll-common-undecided-panel__users{ng-if: "showingUndecided && poll.undecidedUserCount > 0"}
+    %md-button.poll-common-undecided-panel__button{ng-if: "canShowUndecided()", ng-click: "showUndecided()", translate: "poll_common_undecided_panel.show_undecided", translate-value-count: "{{poll.undecidedUserCount}}", aria-label: "poll_common_undecided_panel.show_undecided"}
+    .poll-common-undecided-panel__panel.poll-common-undecided-panel__users{ng-if: "showingUndecided"}
       %h3.lmo-card-subheading{translate: "poll_common_undecided_panel.undecided_users", translate-value-count: "{{poll.undecidedUserCount}}"}
-      %poll_common_undecided_user{user: "user", ng-repeat: "user in poll.undecidedUsers()"}
-      %md-button{translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "usersLoader.loadMore()", ng-if: "moreUsersToLoad()"}
-    .poll-common-undecided-panel__panel.poll-common-undecided-panel__visitors{ng-if: "showingUndecided && poll.undecidedVisitorCount > 0"}
-      %h3.lmo-card-subheading{translate: "poll_common_undecided_panel.undecided_visitors", translate-value-count: "{{poll.undecidedVisitorCount}}"}
-      %poll_common_undecided_user{ng-if: "canViewVisitors()", user: "visitor", ng-repeat: "visitor in poll.undecidedVisitors()"}
-      %md-button{ng-if: "canViewVisitors()", translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "visitorsLoader.loadMore()", ng-if: "moreVisitorsToLoad()"}
-      %p.lmo-hint-text{translate: "poll_common_undecided_panel.hidden_visitors"}
+      %poll_common_undecided_user{user: "user", ng-repeat: "user in poll.undecided()"}
+      %md-button{translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "undecidedLoader.loadMore()", ng-if: "moreUsersToLoad()"}

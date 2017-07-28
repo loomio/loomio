@@ -4,36 +4,24 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
   controller: ($scope) ->
 
     $scope.canShowUndecided = ->
-      $scope.poll.undecidedCount() > 0 and !$scope.showingUndecided
+      $scope.poll.undecidedUserCount > 0 and !$scope.showingUndecided
 
     params =
-      poll_id: $scope.poll.key
+      poll_id:          $scope.poll.key
       invitation_token: $location.search().invitation_token
 
-    $scope.usersLoader = if $scope.poll.isActive()
+    $scope.undecidedLoader = if $scope.poll.isActive()
       new RecordLoader
-        collection: 'memberships'
-        path:       'undecided'
-        params:     params
+        collection: 'users'
+        params: _.merge(params, {undecided: true})
     else
       new RecordLoader
         collection: 'poll_did_not_votes'
-        params:     params
-
-    $scope.visitorsLoader = new RecordLoader
-      collection: 'visitors'
-      params:     params
-
-    $scope.canViewVisitors = ->
-      AbilityService.canAdministerPoll($scope.poll)
+        params: params
 
     $scope.moreUsersToLoad = ->
-      $scope.usersLoader.numLoaded < $scope.poll.undecidedUserCount
-
-    $scope.moreVisitorsToLoad = ->
-      $scope.visitorsLoader.numLoaded < $scope.poll.undecidedVisitorCount
+      $scope.undecidedLoader.numLoaded < $scope.poll.undecidedUserCount
 
     $scope.showUndecided = ->
       $scope.showingUndecided = true
-      $scope.usersLoader.fetchRecords()
-      $scope.visitorsLoader.fetchRecords()
+      $scope.undecidedLoader.fetchRecords()
