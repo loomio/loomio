@@ -1,12 +1,11 @@
 describe 'Profile', ->
 
   profileHelper = require './helpers/profile_helper.coffee'
-  threadHelper = require './helpers/thread_helper.coffee'
   page = require './helpers/page_helper.coffee'
   staticPage = require './helpers/static_page_helper.coffee'
 
   beforeEach ->
-    threadHelper.load()
+    page.loadPath('setup_discussion')
 
   describe 'updating a profile name', ->
     it 'successfully updates a profile', ->

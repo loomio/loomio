@@ -43,7 +43,6 @@ class PermittedParams < Struct.new(:params)
      :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
      :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
-     :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
      :poll_option_names, {poll_option_names: []},
      :community_id, {community_id: []}]
   end

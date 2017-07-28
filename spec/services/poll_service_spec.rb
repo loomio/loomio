@@ -77,7 +77,7 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: logged_out_user) }.to raise_error { CanCan::AccessDenied }
     end
 
-    it 'does not allow users to create polls for communities they are not a part of' do
+    it 'does not allow users to create polls they are not allowed to' do
       expect { PollService.create(poll: poll_created, actor: another_user) }.to raise_error { CanCan::AccessDenied }
     end
 

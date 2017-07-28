@@ -211,12 +211,6 @@ Loomio::Application.routes.draw do
         post :oauth, on: :collection
       end
     end
-
-    resources :communities, only: [:create, :update, :index]
-    resources :poll_communities, only: [] do
-      delete :destroy, on: :collection
-    end
-
     get "identities/:id/:command", to: "identities#command"
   end
 

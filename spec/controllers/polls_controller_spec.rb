@@ -25,16 +25,6 @@ describe PollsController do
       get :show, key: poll.key
       expect(assigns(:metadata)[:title]).to be_nil
     end
-
-    it 'can show metadata for a community link' do
-      get :show, key: poll.key, identifier: community.identifier
-      expect(assigns(:metadata)[:title]).to eq poll.title
-    end
-
-    it 'does not show identifiers for other communities' do
-      get :show, key: poll.key, identifier: another_community.identifier
-      expect(assigns(:metadata)[:title]).to be_nil
-    end
   end
 
   describe 'unsubscribe' do
