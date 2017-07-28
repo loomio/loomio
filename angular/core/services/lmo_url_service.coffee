@@ -39,7 +39,7 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     membershipRequest: (mr, params = {}, options = {}) ->
       @route model: mr.group(), action: 'membership_requests', params: params
 
-    visitor: ->
+    invitation: ->
       # NOOP for now
 
     oauthApplication: (a, params = {}, options = {}) ->

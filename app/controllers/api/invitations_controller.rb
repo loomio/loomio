@@ -6,18 +6,18 @@ class API::InvitationsController < API::RestfulController
 
   def bulk_create
     self.resource = service.invite_to_group(recipient_emails: email_addresses,
-                                            group: load_and_authorize(:group, :invite_people),
+                                            group: authorize_group(:invite_people),
                                             inviter: current_user)
     respond_with_collection
   end
 
   def pending
-    self.collection = page_collection(load_and_authorize(:group, :view_pending_invitations).invitations.pending)
+    self.collection = page_collection(authorize_group(:view_pending_invitations).invitations.pending)
     respond_with_collection
   end
 
   def shareable
-    self.collection = Array(load_and_authorize(:group, :view_shareable_invitation).shareable_invitation)
+    self.collection = Array(authorize_group(:view_shareable_invitation).shareable_invitation)
     respond_with_collection
   end
 
@@ -28,8 +28,13 @@ class API::InvitationsController < API::RestfulController
 
   private
 
+  def authorize_group(ability)
+    load_and_authorize(:poll, ability, optional: true)&.guest_group ||
+    load_and_authorize(:group, ability)
+  end
+
   def accessible_records
-    resource_class.where(group: load_and_authorize(:group, :invite_people))
+    resource_class.where(group: authorize_group(:invite_people))
   end
 
   def email_addresses

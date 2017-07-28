@@ -109,10 +109,10 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       _.some @recordStore.memberships.where(groupId: @id, userId: user.id)
 
     memberIds: ->
-      _.map @memberships(), (membership) -> membership.userId
+      _.pluck @memberships(), 'userId'
 
     adminIds: ->
-      _.map @adminMemberships(), (membership) -> membership.userId
+      _.pluck @adminMemberships(), 'userId'
 
     parentName: ->
       @parent().name if @parent()?
@@ -165,9 +165,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
 
     hasSubscription: ->
       @subscriptionKind?
-
-    noInvitationsSent: ->
-      @membershipsCount < 2 and @invitationsCount < 2
 
     isSubgroupOfSecretParent: ->
       @isSubgroup() && @parent().privacyIsSecret()

@@ -170,7 +170,7 @@ ActiveAdmin.register Group do
     end
 
     panel("Pending invitations") do
-      table_for group.pending_invitations.each do |invitation|
+      table_for group.invitations.pending.each do |invitation|
         column :recipient_email
         column :link do |i|
           invitation_url(i)

@@ -25,7 +25,7 @@ class InvitationService
     emails = (recipient_emails - group.members.pluck(:email)).take(100)
     raise Invitation::AllInvitesAreMembers.new if emails.empty?
 
-    recent_pending_invitations_count = group.pending_invitations.where("created_at > ?", 2.weeks.ago).count
+    recent_pending_invitations_count = group.invitations.pending.where("created_at > ?", 2.weeks.ago).count
     num_used = recent_pending_invitations_count + emails.length
     max_allowed = ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i + group.memberships_count
 

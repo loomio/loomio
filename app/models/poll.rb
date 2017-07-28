@@ -57,13 +57,23 @@ class Poll < ActiveRecord::Base
 
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
-  define_counter_cache(:stances_count)           { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_user_count)    { |poll| poll.group.members.without(poll.participants).count }
+  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
+  define_counter_cache(:undecided_user_count) do |poll|
+    if poll.active?
+      poll.undecided.count
+    else
+      poll.poll_did_not_votes.count
+    end
+  end
 
   has_many :poll_communities, dependent: :destroy, autosave: true
   has_many :communities, through: :poll_communities
 
   delegate :locale, to: :author
+
+  def undecided_count
+    undecided_user_count + guest_group.pending_invitations_count
+  end
 
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
@@ -126,7 +136,11 @@ class Poll < ActiveRecord::Base
   end
 
   def members
-    User.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users").uniq
+    User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
+  end
+
+  def undecided
+    reload.members.without(participants)
   end
 
   def invitations

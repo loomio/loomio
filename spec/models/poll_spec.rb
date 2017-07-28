@@ -66,4 +66,72 @@ describe Poll do
       expect(poll.is_new_version?).to eq false
     end
   end
+
+  describe 'members' do
+    let(:poll) { create :poll, group: create(:formal_group) }
+    let(:user) { create :user }
+
+    it 'includes members of the guest group' do
+      expect {
+        poll.guest_group.add_member! user
+      }.to change { poll.members.count }.by(1)
+    end
+
+    it 'includes members of the formal group' do
+      expect {
+        poll.group.add_member! user
+      }.to change { poll.members.count }.by(1)
+    end
+
+    it 'decrements when removing from the guest group' do
+      membership = poll.guest_group.add_member! user
+      expect { membership.destroy }.to change { poll.members.count }.by(-1)
+    end
+
+    it 'decrements when removing from the formal group' do
+      membership = poll.group.add_member! user
+      expect { membership.destroy }.to change { poll.members.count }.by(-1)
+    end
+  end
+
+  describe 'undecided' do
+    let(:poll) { create :poll, group: create(:formal_group) }
+    let(:user) { create :user }
+
+    it 'includes members of the guest group' do
+      expect {
+        poll.guest_group.add_member! user
+      }.to change { poll.undecided.count }.by(1)
+    end
+
+    it 'includes members of the formal group' do
+      expect {
+        poll.group.add_member! user
+      }.to change { poll.undecided.count }.by(1)
+    end
+
+    it 'decrements when removing from the guest group' do
+      membership = poll.guest_group.add_member! user
+      expect { membership.destroy }.to change { poll.undecided.count }.by(-1)
+    end
+
+    it 'decrements when removing from the formal group' do
+      membership = poll.group.add_member! user
+      expect { membership.destroy }.to change { poll.undecided.count }.by(-1)
+    end
+
+    it 'decrements when a vote is created' do
+      poll.group.add_member! user
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.undecided.count }.by(-1)
+    end
+  end
+
+  describe 'participants' do
+    let(:poll) { create :poll, group: create(:formal_group) }
+    let(:user) { create :user }
+
+    it 'increments when a vote is created' do
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.participants.count }.by(1)
+    end
+  end
 end

@@ -44,12 +44,8 @@ class PollEmailInfo
     @poll.poll_type
   end
 
-  def undecided_memberships
-    @undecided_members ||= Membership.includes(:user).undecided_for(@poll)
-  end
-
-  def undecided_visitors
-    @undecided_visitors ||= Visitor.undecided_for(@poll)
+  def undecided
+    @undecided ||= @poll.undecided
   end
 
   def undecided_max
