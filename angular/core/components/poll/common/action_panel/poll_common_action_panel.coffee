@@ -4,11 +4,14 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, AppCo
   controller: ($scope, Records, Session) ->
 
     $scope.init = ->
+      invitation_token = $location.search().invitation_token
+      $scope.invitation = Records.invitations.find(token: invitation_token)[0] || {}
       $scope.stance = PollService.lastStanceBy(Session.user(), $scope.poll) or
                       Records.stances.build(
                         pollId:    $scope.poll.id,
                         userId:    AppConfig.currentUserId,
-                        token:     $location.search().invitation_token
+                        token:     invitation_token
+                        visitorAttributes: {email: $scope.invitation.recipientEmail}
                       ).choose($location.search().poll_option_id)
 
     $scope.$on 'refreshStance', $scope.init

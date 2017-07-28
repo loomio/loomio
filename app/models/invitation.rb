@@ -33,6 +33,10 @@ class Invitation < ActiveRecord::Base
   scope :to_unrecognized_user, -> { pending.joins("LEFT OUTER JOIN users ON users.email = invitations.recipient_email").where("users.id IS NULL") }
 
 
+  def unsubscribe_token
+    token
+  end
+
   def mailer
     case intent
     when 'join_group' then GroupMailer
@@ -55,18 +59,6 @@ class Invitation < ActiveRecord::Base
   def name
     recipient_name
   end
-
-  def user_from_recipient!
-    return unless to_start_group?
-    User.find_or_initialize_by(email: self.recipient_email)
-        .tap { |user| user.assign_attributes(name: self.recipient_name) }
-        .tap(&:save)
-  end
-
-  def unverified_user_from_recipient!(name:, email:)
-    User.create!(email_verified: false, email: self.recipient_email || email, name: name)
-  end
-
 
   def cancel!(args = {})
     update!(args.slice(:canceller).merge(cancelled_at: DateTime.now))

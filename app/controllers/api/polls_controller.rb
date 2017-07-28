@@ -3,7 +3,7 @@ class API::PollsController < API::RestfulController
 
   def show
     self.resource = load_and_authorize(:poll)
-    respond_with_resource(scope: {current_user: current_user})
+    respond_with_resource(scope: {current_user: current_user, invitation: invitation_from_token})
   end
 
   def index
@@ -50,6 +50,9 @@ class API::PollsController < API::RestfulController
   end
 
   private
+  def invitation_from_token
+    Invitation.find_by(token: params[:invitation_token])
+  end
 
   def publish_params
     params.slice(:community_id, :message)
