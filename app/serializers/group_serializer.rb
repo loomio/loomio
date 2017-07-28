@@ -1,5 +1,14 @@
 class GroupSerializer < ActiveModel::Serializer
   embed :ids, include: true
+
+  def self.attributes_for_formal(*attrs)
+    attrs.each do |attr|
+      define_method attr, -> { object.send attr }
+      define_method :"include_#{attr}?", -> { object.type == "FormalGroup" }
+    end
+    attributes *attrs
+  end
+
   attributes :id,
              :cohort_id,
              :key,
@@ -8,8 +17,6 @@ class GroupSerializer < ActiveModel::Serializer
              :full_name,
              :description,
              :logo_url_medium,
-             :cover_urls,
-             :has_custom_cover,
              :created_at,
              :creator_id,
              :members_can_add_members,
@@ -32,14 +39,17 @@ class GroupSerializer < ActiveModel::Serializer
              :discussion_privacy_options,
              :has_discussions,
              :has_multiple_admins,
-             :archived_at,
-             :enable_experiments,
-             :experiences,
-             :features,
-             :recent_activity_count,
-             :is_subgroup_of_hidden_parent,
-             :is_visible_to_parent_members,
-             :parent_members_can_see_discussions
+             :archived_at
+
+  attributes_for_formal :cover_urls,
+                        :has_custom_cover,
+                        :experiences,
+                        :enable_experiments,
+                        :features,
+                        :recent_activity_count,
+                        :is_subgroup_of_hidden_parent,
+                        :is_visible_to_parent_members,
+                        :parent_members_can_see_discussions
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
   has_one :parent, serializer: GroupSerializer, root: :groups
@@ -53,7 +63,7 @@ class GroupSerializer < ActiveModel::Serializer
   end
 
   def include_logo_url_medium?
-    object.logo.present?
+    type == "FormalGroup" && object.logo.present?
   end
 
   def cover_urls

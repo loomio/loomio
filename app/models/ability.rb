@@ -52,6 +52,10 @@ class Ability
       user_is_admin_of?(group.id)
     end
 
+    can :view_pending_invitations, Poll do |poll|
+      can? :view_pending_invitations, poll.guest_group
+    end
+
     can :export, Group do |group|
       user.is_admin? or
       (user_is_admin_of?(group.id) && group.features['dataExport'])
@@ -66,6 +70,7 @@ class Ability
       user.email_verified? && user_is_member_of?(group.id)
     end
 
+
     can [:add_members,
          :invite_people,
          :manage_membership_requests,
@@ -73,6 +78,10 @@ class Ability
       user.email_verified? &&
       ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
       user_is_admin_of?(group.id))
+    end
+
+    can :view_shareable_invitation, Poll do |poll|
+      can? :view_shareable_invitation, poll.guest_group
     end
 
     # please note that I don't like this duplication either.

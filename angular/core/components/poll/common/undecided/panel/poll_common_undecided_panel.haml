@@ -1,6 +1,12 @@
   .poll-common-undecided-panel
-    %md-button.poll-common-undecided-panel__button{ng-if: "canShowUndecided()", ng-click: "showUndecided()", translate: "poll_common_undecided_panel.show_undecided", translate-value-count: "{{poll.undecidedUserCount}}", aria-label: "poll_common_undecided_panel.show_undecided"}
+    %md-button.poll-common-undecided-panel__button{ng-if: "canShowUndecided()", ng-click: "showUndecided()", translate: "poll_common_undecided_panel.show_undecided", translate-value-count: "{{poll.undecidedCount}}", aria-label: "poll_common_undecided_panel.show_undecided"}
     .poll-common-undecided-panel__panel.poll-common-undecided-panel__users{ng-if: "showingUndecided"}
-      %h3.lmo-card-subheading{translate: "poll_common_undecided_panel.undecided_users", translate-value-count: "{{poll.undecidedUserCount}}"}
+      %h3.lmo-card-subheading{translate: "poll_common_undecided_panel.undecided_users", translate-value-count: "{{poll.undecidedCount}}"}
       %poll_common_undecided_user{user: "user", ng-repeat: "user in poll.undecided()"}
-      %md-button{translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "undecidedLoader.loadMore()", ng-if: "moreUsersToLoad()"}
+      %poll_common_undecided_user{ng-if: "canSharePoll()", user: "user", ng-repeat: "user in poll.guestGroup().pendingInvitations()"}
+
+      %p{ng-if: "!canSharePoll()"}
+        %span.lmo-hint-text{ng-if: "poll.guestGroup().pendingInvitationsCount == 1", translate: "poll_common_undecided_panel.invitation_count_singular"}
+        %span.lmo-hint-text{ng-if: "poll.guestGroup().pendingInvitationsCount > 1", translate: "poll_common_undecided_panel.invitation_count_plural", translate-value-count: "{{poll.guestGroup().pendingInvitationsCount}}"}
+
+      %md-button{translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "loadMore()", ng-if: "moreToLoad()"}
