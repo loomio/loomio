@@ -94,9 +94,13 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     undecided: ->
       _.difference(@members(), @participants())
 
+    membersCount: ->
+      # NB: this won't work for people who vote, then leave the group.
+      @stancesCount + @undecidedCount
+
     percentVoted: ->
       return 0 if @undecidedUserCount == 0
-      (100 * @stancesCount / (@stancesCount + @undecidedUserCount)).toFixed(0)
+      (100 * @stancesCount / (@membersCount())).toFixed(0)
 
     outcome: ->
       @recordStore.outcomes.find(pollId: @id, latest: true)[0]
@@ -122,7 +126,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @closedAt?
 
     goal: ->
-      @customFields.goal or @possibleParticipants().length
+      @customFields.goal or @membersCount().length
 
     close: =>
       @remote.postMember(@key, 'close')

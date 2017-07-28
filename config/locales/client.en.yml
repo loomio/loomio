@@ -1385,6 +1385,7 @@ en:
 
   poll_common_undecided_panel:
     show_undecided: "Show {{count}} undecided"
+    show_invitations: Show Pending Invitations
     undecided_users: "Undecided ({{count}})"
     invitation_count_singular: "1 additional person has been invited to participate via email"
     invitation_count_plural: "{{count}} additional people have been invited to participate via email"

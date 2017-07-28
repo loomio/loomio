@@ -4,7 +4,9 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
   controller: ($scope) ->
 
     $scope.canShowUndecided = ->
-      $scope.poll.undecidedUserCount > 0 and !$scope.showingUndecided
+      !$scope.showingUndecided and
+      ($scope.poll.undecidedUserCount > 0 or
+       $scope.poll.guestGroup().pendingInvitationsCount > 0)
 
     params =
       poll_id:          $scope.poll.key
@@ -23,6 +25,13 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
     $scope.canSharePoll = ->
       AbilityService.canSharePoll($scope.poll)
 
+    $scope.showUndecided = ->
+      $scope.showingUndecided = true
+      if $scope.moreMembershipsToLoad()
+        $scope.loadMemberships()
+      else
+        $scope.loadInvitations()
+
     $scope.moreMembershipsToLoad = ->
       $scope.loaders.memberships.numLoaded < $scope.poll.undecidedUserCount
 
@@ -30,15 +39,8 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
       $scope.canSharePoll() and
       $scope.loaders.invitations.numLoaded < $scope.poll.guestGroup().pendingInvitationsCount
 
-    $scope.moreToLoad = ->
-      $scope.moreMembershipsToLoad() or $scope.moreInvitationsToLoad()
+    $scope.loadMemberships = ->
+      $scope.loaders.memberships.fetchRecords()
 
-    $scope.showUndecided = ->
-      $scope.showingUndecided = true
-      $scope.loadMore()
-
-    $scope.loadMore = ->
-      if $scope.moreMembershipsToLoad()
-        $scope.loaders.memberships.fetchRecords()
-      else if $scope.moreInvitationsToLoad()
-        $scope.loaders.invitations.fetchRecords()
+    $scope.loadInvitations = ->
+      $scope.loaders.invitations.fetchRecords()
