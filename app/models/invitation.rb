@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  extend Null::User
+  include Null::User
 
   class InvitationCancelled < StandardError; end
   class InvitationAlreadyUsed < StandardError; end
@@ -19,6 +19,7 @@ class Invitation < ActiveRecord::Base
   validates_inclusion_of :intent, :in => ['start_group', 'join_group', 'join_poll']
   scope :chronologically, -> { order('id asc') }
   before_save :ensure_token_is_present
+  after_initialize :apply_null_methods!
 
   delegate :name, to: :inviter, prefix: true, allow_nil: true
 
@@ -31,7 +32,6 @@ class Invitation < ActiveRecord::Base
   scope :to_verified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS TRUE AND users.email = invitations.recipient_email") }
   scope :to_unverified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS FALSE AND users.email = invitations.recipient_email") }
   scope :to_unrecognized_user, -> { pending.joins("LEFT OUTER JOIN users ON users.email = invitations.recipient_email").where("users.id IS NULL") }
-
 
   def unsubscribe_token
     token

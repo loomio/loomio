@@ -1,6 +1,6 @@
 _ = require('lodash')
 
-fdescribe 'Polls', ->
+describe 'Polls', ->
   page = require './helpers/page_helper.coffee'
 
   startPollTest = (poll_type, optionsFn) ->
