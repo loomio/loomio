@@ -35,7 +35,7 @@ describe 'Group Page', ->
 
       it 'request to join a closed group group', ->
         page.loadPath 'view_closed_group_as_non_member'
-        page.click '.join-group-button__join-group'
+        page.click '.join-group-button__ask-to-join-group'
         page.fillIn '.membership-request-form__introduction', 'I have a reason'
         page.click '.membership-request-form__submit-btn'
         page.sleep(2000)
