@@ -17,6 +17,7 @@ module HasGuestGroup
       recipient_name: name,
       inviter: inviter
     )
+    self.guest_group.update_pending_invitations_count
   end
 
   def anyone_can_participate
