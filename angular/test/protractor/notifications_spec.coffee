@@ -11,7 +11,7 @@ describe 'Notifications', ->
       'requested membership to',
       'mentioned you in',
       'replied to your comment',
-      'published an outcome',
+      'shared an outcome',
       'poll is closing soon',
       'started a poll',
       'liked your comment',
