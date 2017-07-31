@@ -13,6 +13,9 @@ class Event < ActiveRecord::Base
   after_create :call_thread_item_created
   after_destroy :call_thread_item_destroyed
 
+  update_counter_cache :discussion, :items_count
+  update_counter_cache :discussion, :salient_items_count
+
   validates :kind, presence: true
   validates :eventable, presence: true
 
@@ -40,10 +43,10 @@ class Event < ActiveRecord::Base
   end
 
   def call_thread_item_created
-    discussion.thread_item_created!(self) if discussion_id.present?
+    discussion.thread_item_created! if discussion_id.present?
   end
 
   def call_thread_item_destroyed
-    discussion.thread_item_destroyed!(self) if discussion_id.present?
+    discussion.thread_item_destroyed! if discussion_id.present?
   end
 end

@@ -83,7 +83,8 @@ describe EmailActionsController do
       StanceService.create(stance: @new_stance, actor: @voter)
 
       reader = DiscussionReader.for(user: @user, discussion: @discussion)
-      expect(@discussion.salient_items_count - reader.read_salient_items_count).to eq 3
+      @discussion.reload
+      expect(@discussion.salient_items_count - reader.read_salient_items_count).to eq 4
 
       get :mark_summary_email_as_read, {
         time_start: @time_start.to_i,
