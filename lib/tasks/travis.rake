@@ -7,7 +7,7 @@ namespace :travis do
 
   task :rspec do
     puts "Starting to run rspec..."
-    system("bundle exec rspec -color")
+    system("bundle exec rspec --color")
     raise "rspec failed!" unless $?.exitstatus == 0
   end
 

@@ -27,7 +27,8 @@ class Dev::PollsController < Dev::BaseController
     poll = saved fake_poll(discussion: discussion)
     Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
     poll.guest_group.add_member! fake_user(email_verified: false)
-    poll.guest_group.add_member! fake_user(email_verified: false)
+    poll.guest_group.invitations.create! recipient_email: "bill@example.com", intent: :join_group
+
     redirect_to poll_url(poll)
   end
 

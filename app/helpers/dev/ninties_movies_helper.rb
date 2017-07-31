@@ -255,14 +255,15 @@ module Dev::NintiesMoviesHelper
     InvitationService.redeem(invitation.first, emilio)
 
     #'poll_created'
-    jen_poll = FactoryGirl.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
-    PollService.create(poll: jen_poll, actor: jennifer)
+    poll = FactoryGirl.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
+    PollService.create(poll: poll, actor: jennifer)
 
     #'poll_closing_soon'
     PollService.publish_closing_soon
 
     #'outcome_created'
-    outcome = FactoryGirl.build(:outcome, poll: jen_poll)
+    poll = FactoryGirl.create(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
+    outcome = FactoryGirl.build(:outcome, poll: poll, make_announcement: true)
     OutcomeService.create(outcome: outcome, actor: jennifer)
 
     #'stance_created'

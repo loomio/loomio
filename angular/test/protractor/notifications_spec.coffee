@@ -4,24 +4,29 @@ describe 'Notifications', ->
   it 'has all the notifications', ->
     page.loadPath 'setup_all_notifications', 60000
 
-    page.expectText '.notifications__activity', '13'
+    notificationTexts = [
+      'accepted your invitation to join',
+      'added you to the group',
+      'approved your request',
+      'requested membership to',
+      'mentioned you in',
+      'replied to your comment',
+      'shared an outcome',
+      'poll is closing soon',
+      'started a poll',
+      'liked your comment',
+      'made you a coordinator',
+      'participated in',
+      'added options to'
+    ]
+
+    page.expectText '.notifications__activity', notificationTexts.length
+
     page.click '.notifications__button'
+    notificationTexts.map (text) ->
+      page.expectText '.notifications__dropdown', text
 
-    page.expectText '.notifications__dropdown', 'accepted your invitation to join'
-    page.expectText '.notifications__dropdown', 'added you to the group'
-    page.expectText '.notifications__dropdown', 'approved your request'
-    page.expectText '.notifications__dropdown', 'requested membership to'
-    page.expectText '.notifications__dropdown', 'mentioned you in'
-    page.expectText '.notifications__dropdown', 'replied to your comment'
-    page.expectText '.notifications__dropdown', 'published an outcome'
-    # start a poll
 
-    # page.expectText '.notifications__dropdown', 'Proposal closed'
-    # page.expectText '.notifications__dropdown', 'Proposal is closing'
-    page.expectText '.notifications__dropdown', 'liked your comment'
-    page.expectText '.notifications__dropdown', 'made you a coordinator'
-    page.expectText '.notifications__dropdown', 'participated in'
-    page.expectText '.notifications__dropdown', 'added options to'
 
   describe 'invitation accepted', ->
 
