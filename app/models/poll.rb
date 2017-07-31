@@ -116,6 +116,7 @@ class Poll < ActiveRecord::Base
     @grouped_stance_choices ||= stance_choices.reasons_first
                                               .where("stance_choices.created_at > ?", since || 100.years.ago)
                                               .includes(:poll_option, stance: :participant)
+                                              .where("stances.latest": true)
                                               .to_a
                                               .group_by(&:poll_option)
   end

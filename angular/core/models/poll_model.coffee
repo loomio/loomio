@@ -108,13 +108,13 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     clearStaleStances: ->
       existing = []
-      _.each @uniqueStances('-createdAt'), (stance) ->
+      _.each @latestStances('-createdAt'), (stance) ->
         if _.contains(existing, stance.participant())
           stance.remove()
         else
           existing.push(stance.participant())
 
-    uniqueStances: (order, limit) ->
+    latestStances: (order, limit) ->
       _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
     cookedDetails: ->

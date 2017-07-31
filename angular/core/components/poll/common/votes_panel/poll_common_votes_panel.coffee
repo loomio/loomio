@@ -30,7 +30,7 @@ angular.module('loomioApp').directive 'pollCommonVotesPanel', (PollService, Reco
         -(stance.pollOption().priority)
 
     $scope.stances = ->
-      $scope.poll.uniqueStances(sortFn[$scope.fix.votesOrder], $scope.loader.numLoaded)
+      $scope.poll.latestStances(sortFn[$scope.fix.votesOrder], $scope.loader.numLoaded)
 
     $scope.changeOrder = ->
       $scope.loader.reset()
@@ -38,6 +38,6 @@ angular.module('loomioApp').directive 'pollCommonVotesPanel', (PollService, Reco
       $scope.loader.fetchRecords()
 
     $scope.loader.fetchRecords()
-    
+
     $scope.$on 'refreshStance', ->
       $scope.loader.fetchRecords()
