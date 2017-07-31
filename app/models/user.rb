@@ -46,6 +46,12 @@ class User < ActiveRecord::Base
            class_name: 'Membership',
            dependent: :destroy
 
+  has_many :formal_groups,
+           -> { where(type: "FormalGroup") },
+           through: :memberships,
+           class_name: 'FormalGroup',
+           source: :group
+
   has_many :adminable_groups,
            -> { where( archived_at: nil) },
            through: :admin_memberships,
@@ -149,7 +155,7 @@ class User < ActiveRecord::Base
   def last_name
     name.split(' ').drop(1).join(' ')
   end
-  
+
   def remember_me
     true
   end
