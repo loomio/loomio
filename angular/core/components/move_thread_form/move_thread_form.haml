@@ -1,15 +1,12 @@
 %md-dialog.move-thread-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %h1.lmo-h1{translate: "move_thread_form.title"}
       %material_modal_header_cancel_button
   .md-dialog-content
-    .lmo-disabled-form{ng-show: "isDisabled"}
-    %md-input-container.md-block
-      %label{for: "group-dropdown", translate: "move_thread_form.body"}
-      %md-select.move-thread-form__group-dropdown#group-dropdown{ng-model: "discussion.groupId", ng-required: true, ng-change: "updateTarget()"}
-        %md-option{ng-repeat: "group in availableGroups() | orderBy: 'fullName' track by group.id", ng-value: "group.id"}
-          %span {{ group.fullName }}
+    %label{for: "group-dropdown", translate: "move_thread_form.body"}
+    %select.move-thread-form__group-dropdown.form-control#group-dropdown{ng-model: "discussion.groupId", ng-required: true, ng-options: "group.id as group.fullName for group in availableGroups() | orderBy: 'fullName' track by group.id", ng-change: "updateTarget()"}
 
     .lmo-md-actions
       %md-button{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

@@ -92,8 +92,7 @@ describe 'Discussion Page', ->
       page.loadPath 'setup_multiple_discussions'
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--move'
-      page.click '.move-thread-form__group-dropdown'
-      page.selectFromDropdown '.move-thread-form__group-dropdown', 0
+      page.selectOption '.move-thread-form__group-dropdown', 'Point Break'
       page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
       page.expectFlash 'Thread has been moved to Point Break'

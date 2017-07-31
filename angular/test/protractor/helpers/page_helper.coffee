@@ -48,9 +48,9 @@ module.exports = new class PageHelper
   fillInAndEnter: (selector, value) ->
     element(By.css(selector)).clear().sendKeys(value).sendKeys(browser.driver.keys('Enter'))
 
-  selectFromDropdown: (selector, index) ->
-    element(By.css(selector)).findElements(by.tagName('option')).then (options) ->
-      options[index].click()
+  selectOption: (selector, option) ->
+    @click selector
+    element(By.cssContainingText('option', option)).click()
 
   expectInputValue: (selector, value) ->
     expect(element(By.css(selector)).getAttribute('value')).toContain(value)
