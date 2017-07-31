@@ -1,5 +1,6 @@
 loomio_webhooks:
   repo:         https://github.com/loomio/loomio_webhooks.git
+  branch:       group-refactor
 
 loomio_org_plugin:
   repo:         https://github.com/loomio/loomio_org_plugin.git
