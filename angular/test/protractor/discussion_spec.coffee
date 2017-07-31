@@ -93,7 +93,7 @@ describe 'Discussion Page', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--move'
       page.click '.move-thread-form__group-dropdown'
-      element(By.cssContainingText('option', 'Point Break')).click()
+      page.selectFromDropdown '.move-thread-form__group-dropdown', 0
       page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
       page.expectFlash 'Thread has been moved to Point Break'
