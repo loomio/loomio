@@ -13,8 +13,9 @@ class Dev::MainController < Dev::BaseController
   end
 
   def accept_last_invitation
-    InvitationService.redeem(Invitation.last, max)
-    redirect_to(create_group)
+    invitation = Invitation.last
+    InvitationService.redeem(invitation, max)
+    redirect_to(group_url(invitation.group))
   end
 
   def use_last_login_token
