@@ -36,7 +36,7 @@ ExampleContent = Struct.new(:group) do
       title:             I18n.t('first_proposal.name'),
       details:           I18n.t('first_proposal.description'),
       closing_at:        (Time.zone.now + 7.days).at_beginning_of_hour
-    ).tap(&:create_guest_group).tap(&:save)
+    ).tap(&:save)
   end
 
   def helper_bot

@@ -40,7 +40,7 @@ class Ability
     end
 
     can [:choose_subscription_plan], Group do |group|
-      user.email_verified? and group.is_parent? and user_is_admin_of?(group.id)
+      user.email_verified? && group.is_parent? && user_is_admin_of?(group.id)
     end
 
     can [:update,
