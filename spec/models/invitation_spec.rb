@@ -12,6 +12,10 @@ describe Invitation do
                                     group: group)
   end
 
+  describe 'recipient_email' do
+    expect(build(:invitation, recipient_email: User::FORBIDDEN_EMAIL_ADDRESSES.first)).to_not be_valid
+  end
+
   describe 'create' do
     it 'gives the invitation a token' do
       @invitation.token.should be_present

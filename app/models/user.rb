@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   include NoForbiddenEmails
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
+  BOT_EMAILS = {
+    helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
+    demo_bot:   ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
+  }.freeze
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :recaptcha
@@ -196,25 +200,20 @@ class User < ActiveRecord::Base
   end
 
   def self.helper_bot
-    find_by(email: helper_bot_email) ||
-    create!(email: helper_bot_email,
+    verified.find_by(email: BOT_EMAILS[:helper_bot]) ||
+    create!(email: BOT_EMAILS[:helper_bot],
             name: 'Loomio Helper Bot',
             password: SecureRandom.hex(20),
-            uses_markdown: true,
+            email_verified: true,
             avatar_kind: :gravatar)
   end
 
-  def self.helper_bot_email
-    ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
-  end
-
   def self.demo_bot
-    find_by(email: demo_bot_email) ||
-    create!(email: demo_bot_email, name: 'Loomio Demo bot', avatar_kind: :gravatar)
-  end
-
-  def self.demo_bot_email
-    ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
+    verified.find_by(email: BOT_EMAILS[:helper_bot]) ||
+    create!(email: BOT_EMAILS[:demo_bot],
+            name: 'Loomio Demo bot',
+            email_verified: true,
+            avatar_kind: :gravatar)
   end
 
   def name

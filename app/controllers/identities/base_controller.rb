@@ -45,7 +45,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def existing_user
-    @existing_user ||= User.find_by(email: identity.email)
+    @existing_user ||= User.verified.find_by(email: identity.email)
   end
 
   def associate_identity
