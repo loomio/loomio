@@ -159,11 +159,13 @@ describe API::MembershipsController do
   describe 'for_user' do
     let(:public_group) { create :formal_group, is_visible_to_public: true }
     let(:private_group) { create :formal_group, is_visible_to_public: false }
+    let(:guest_group) { create :guest_group }
 
     it 'returns visible groups for the given user' do
       public_group
       private_group.members << another_user
       group.members << another_user
+      guest_group.members << another_user
 
       get :for_user, user_id: another_user.id
       json = JSON.parse(response.body)
@@ -171,6 +173,7 @@ describe API::MembershipsController do
       expect(group_ids).to include group.id
       expect(group_ids).to_not include public_group.id
       expect(group_ids).to_not include private_group.id
+      expect(group_ids).to_not include guest_group.id
     end
   end
 
