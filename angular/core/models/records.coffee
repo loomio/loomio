@@ -25,7 +25,6 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 StanceChoiceRecordsInterface,
                                                 OutcomeRecordsInterface,
                                                 PollDidNotVoteRecordsInterface,
-                                                VisitorRecordsInterface,
                                                 IdentityRecordsInterface,
                                                 CommunityRecordsInterface,
                                                 PollCommunityRecordsInterface,
@@ -57,7 +56,6 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
   recordStore.addRecordsInterface(StanceChoiceRecordsInterface)
   recordStore.addRecordsInterface(OutcomeRecordsInterface)
   recordStore.addRecordsInterface(PollDidNotVoteRecordsInterface)
-  recordStore.addRecordsInterface(VisitorRecordsInterface)
   recordStore.addRecordsInterface(IdentityRecordsInterface)
   recordStore.addRecordsInterface(CommunityRecordsInterface)
   recordStore.addRecordsInterface(PollCommunityRecordsInterface)

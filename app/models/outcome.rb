@@ -24,7 +24,7 @@ class Outcome < ActiveRecord::Base
   validate :has_valid_poll_option
 
   def attendee_emails
-     self.stances.join_participants.joins(:stance_choices)
+     self.stances.joins(:participants).joins(:stance_choices)
     .where("stance_choices.poll_option_id": self.poll_option_id)
     .pluck(:"visitors.email", :"users.email").flatten.compact.uniq
   end
