@@ -42,7 +42,10 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   index :download_links => false do
     selectable_column
     column :id
-    column :name { |g| g.full_name }
+    column :name do |g|
+      g.full_name
+    end
+
     column "Size", :memberships_count
 
     column "Discussions", :discussions_count
