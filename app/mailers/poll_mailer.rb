@@ -15,7 +15,7 @@ class PollMailer < BaseMailer
   private
 
   def send_poll_email(recipient, event, action_name)
-    return if User::BOT_EMAILS.values.includes?(recipient.email)
+    return if User::BOT_EMAILS.values.include?(recipient.email)
     headers = {
       "Precedence":               :bulk,
       "X-Auto-Response-Suppress": :OOF,
