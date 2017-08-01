@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, Session, AppConfig, DeactivationModal) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, Session, AppConfig, DeactivationModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'profilePage'})
 
   @init = =>
@@ -10,6 +10,7 @@ angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Rec
       submitFn: Records.users.updateProfile
       successCallback: @init
   @init()
+  $scope.$on 'updateProfile', => @init()
 
   @availableLocales = ->
     AppConfig.locales
