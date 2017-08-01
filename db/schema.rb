@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727031325) do
+ActiveRecord::Schema.define(version: 20170801004434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
+  enable_extension "citext"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -326,17 +327,6 @@ ActiveRecord::Schema.define(version: 20170727031325) do
   add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true, using: :btree
   add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx", using: :btree
 
-  create_table "group_identities", force: :cascade do |t|
-    t.integer  "group_id",                   null: false
-    t.integer  "identity_id",                null: false
-    t.jsonb    "custom_fields", default: {}, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "group_identities", ["group_id"], name: "index_group_identities_on_group_id", using: :btree
-  add_index "group_identities", ["identity_id"], name: "index_group_identities_on_identity_id", using: :btree
-
   create_table "group_requests", force: :cascade do |t|
     t.string   "name",                limit: 255
     t.text     "description"
@@ -394,7 +384,7 @@ ActiveRecord::Schema.define(version: 20170727031325) do
     t.boolean  "parent_members_can_see_discussions",             default: false, null: false
     t.string   "key",                                limit: 255
     t.integer  "category_id"
-    t.string   "subdomain",                          limit: 255
+    t.citext   "subdomain"
     t.integer  "theme_id"
     t.boolean  "is_visible_to_public",                           default: true,  null: false
     t.boolean  "is_visible_to_parent_members",                   default: false, null: false
@@ -455,6 +445,7 @@ ActiveRecord::Schema.define(version: 20170727031325) do
   add_index "groups", ["parent_id"], name: "index_groups_on_parent_id", using: :btree
   add_index "groups", ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions", using: :btree
   add_index "groups", ["recent_activity_count"], name: "index_groups_on_recent_activity_count", using: :btree
+  add_index "groups", ["subdomain"], name: "index_groups_on_subdomain", unique: true, using: :btree
 
   create_table "invitations", force: :cascade do |t|
     t.string   "recipient_email"
@@ -886,7 +877,7 @@ ActiveRecord::Schema.define(version: 20170727031325) do
   add_index "user_deactivation_responses", ["user_id"], name: "index_user_deactivation_responses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                            limit: 255, default: "",         null: false
+    t.citext   "email",                                        default: "",         null: false
     t.string   "encrypted_password",               limit: 128, default: ""
     t.string   "reset_password_token",             limit: 255
     t.datetime "reset_password_sent_at"

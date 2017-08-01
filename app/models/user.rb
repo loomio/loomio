@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   attr_accessor :restricted
   attr_accessor :participation_token
 
-  validates :email, presence: true, uniqueness: true, email: true
+  validates :email, presence: true, uniqueness: true, email: true, length: {maximum: 200}
   validates_inclusion_of :uses_markdown, in: [true,false]
 
   has_many :stances, as: :participant
@@ -191,10 +191,6 @@ class User < ActiveRecord::Base
 
   def time_zone
     self[:time_zone] || 'UTC'
-  end
-
-  def self.find_by_email(email)
-    User.where('lower(email) = ?', email.to_s.downcase).first
   end
 
   def self.helper_bot
