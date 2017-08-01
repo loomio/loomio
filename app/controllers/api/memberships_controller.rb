@@ -4,9 +4,9 @@ class API::MembershipsController < API::RestfulController
   def add_to_subgroup
     group = load_and_authorize(:group)
     users = group.parent.members.where('users.id': params[:user_ids])
-    @memberships = MembershipService.add_users_to_group(users: users,
-                                                        group: group,
-                                                        inviter: current_user)
+    @memberships = service.add_users_to_group(users: users,
+                                              group: group,
+                                              inviter: current_user)
     respond_with_collection
   end
 

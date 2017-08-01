@@ -12,12 +12,14 @@ module Dev::FakeDataHelper
       password: Faker::Internet.password,
       detected_locale: 'en',
       is_admin: true,
+      email_verified: true,
       experiences: {enable_communities: true}
     }.merge(args))
   end
 
+  # todo fake_formal_group ?
   def fake_group(args = {})
-    Group.new({name: Faker::Company.name,
+    FormalGroup.new({name: Faker::Company.name,
       features: {use_polls: true, enable_communities: true}}.merge(args))
   end
 
@@ -57,7 +59,7 @@ module Dev::FakeDataHelper
     when 'meeting'  then options[:custom_fields][:time_zone] = 'Asia/Seoul'
     end
 
-    Poll.new(options).tap { |p| p.community_of_type(:email, build: true) }
+    Poll.new(options)
   end
 
   def fake_stance(args = {})

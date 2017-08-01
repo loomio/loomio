@@ -8,6 +8,10 @@ class PollEmailInfo
     "some reason"
   end
 
+  def login_token
+    @token ||= @recipient.login_tokens.create!(redirect: poll_path(@poll))
+  end
+
   def initialize(recipient:, event:, action_name:)
     @recipient   = recipient
     @event       = event
@@ -40,12 +44,8 @@ class PollEmailInfo
     @poll.poll_type
   end
 
-  def undecided_memberships
-    @undecided_members ||= Membership.includes(:user).undecided_for(@poll)
-  end
-
-  def undecided_visitors
-    @undecided_visitors ||= Visitor.undecided_for(@poll)
+  def undecided
+    @undecided ||= @poll.undecided
   end
 
   def undecided_max
@@ -81,7 +81,7 @@ class PollEmailInfo
       utm_medium: 'email',
       utm_campaign: 'poll_mailer',
       utm_source: action_name,
-      participation_token: @recipient.participation_token
+      invitation_token: @recipient.token
     }.merge(args)
   end
 

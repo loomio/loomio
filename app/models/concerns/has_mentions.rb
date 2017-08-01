@@ -11,7 +11,7 @@ module HasMentions
   end
 
   def mentioned_group_members
-    group.users.where(username: mentioned_usernames)
+    group.members.where(username: mentioned_usernames)
   end
 
   def mentioned_usernames
@@ -19,7 +19,7 @@ module HasMentions
   end
 
   def users_to_not_mention
-    [] # overridden with specific users to not receive mentions
+    User.none # overridden with specific users to not receive mentions
   end
 
   private

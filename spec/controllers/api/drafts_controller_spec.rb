@@ -3,15 +3,13 @@ describe API::DraftsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create :group }
-  let(:another_group) { create :group }
+  let(:group) { create :formal_group }
+  let(:another_group) { create :formal_group }
   let(:discussion) { create :discussion, group: group }
-  let(:motion) { create :motion, discussion: discussion }
 
   let(:user_draft) { create :draft, user: user, draftable: user }
   let(:group_draft) { create :draft, user: user, draftable: group }
   let(:discussion_draft) { create :draft, user: user, draftable: discussion }
-  let(:motion_draft) { create :draft, user: user, draftable: motion }
 
   let(:user_draft_params) {{
     payload: {
@@ -32,19 +30,8 @@ describe API::DraftsController do
   }}
   let(:discussion_draft_params) {{
     payload: {
-      motion: {
-        name: 'Draft motion name',
-        description: 'Draft motion description'
-      },
       comment: {
         body: 'Draft comment body'
-      }
-    }
-  }}
-  let(:motion_draft_params) {{
-    payload: {
-      vote: {
-        statement: 'Draft vote statement'
       }
     }
   }}
@@ -63,11 +50,6 @@ describe API::DraftsController do
         expect(response.status).to eq 403
       end
 
-      it 'returns unauthorized for a motion' do
-        motion_draft
-        get :show, draftable_type: 'Motion', draftable_id: motion.id, format: :json
-        expect(response.status).to eq 403
-      end
     end
   end
 
@@ -115,28 +97,12 @@ describe API::DraftsController do
         draft = Draft.last
         expect(draft.draftable).to eq discussion
         expect(draft.user).to eq user
-        expect(draft.payload['motion']['name']).to eq discussion_draft_params[:payload][:motion][:name]
-        expect(draft.payload['motion']['description']).to eq discussion_draft_params[:payload][:motion][:description]
         expect(draft.payload['comment']['body']).to eq discussion_draft_params[:payload][:comment][:body]
 
         json = JSON.parse(response.body)
-        expect(json['drafts'][0]['payload']['motion']['name']).to eq discussion_draft_params[:payload][:motion][:name]
-        expect(json['drafts'][0]['payload']['motion']['description']).to eq discussion_draft_params[:payload][:motion][:description]
         expect(json['drafts'][0]['payload']['comment']['body']).to eq discussion_draft_params[:payload][:comment][:body]
       end
 
-      it 'creates a new motion draft' do
-        post :update, draft: motion_draft_params, draftable_type: 'motion', draftable_id: motion.id
-        expect(response.status).to eq 200
-
-        draft = Draft.last
-        expect(draft.draftable).to eq motion
-        expect(draft.user).to eq user
-        expect(draft.payload['vote']['statement']).to eq motion_draft_params[:payload][:vote][:statement]
-
-        json = JSON.parse(response.body)
-        expect(json['drafts'][0]['payload']['vote']['statement']).to eq motion_draft_params[:payload][:vote][:statement]
-      end
 
       it 'overwrites a user draft' do
         user_draft
@@ -178,28 +144,10 @@ describe API::DraftsController do
         discussion_draft.reload
         expect(discussion_draft.draftable).to eq discussion
         expect(discussion_draft.user).to eq user
-        expect(discussion_draft.payload['motion']['name']).to eq discussion_draft_params[:payload][:motion][:name]
-        expect(discussion_draft.payload['motion']['description']).to eq discussion_draft_params[:payload][:motion][:description]
         expect(discussion_draft.payload['comment']['body']).to eq discussion_draft_params[:payload][:comment][:body]
 
         json = JSON.parse(response.body)
-        expect(json['drafts'][0]['payload']['motion']['name']).to eq discussion_draft_params[:payload][:motion][:name]
-        expect(json['drafts'][0]['payload']['motion']['description']).to eq discussion_draft_params[:payload][:motion][:description]
         expect(json['drafts'][0]['payload']['comment']['body']).to eq discussion_draft_params[:payload][:comment][:body]
-      end
-
-      it 'overwrites a motion draft' do
-        motion_draft
-        post :update, draft: motion_draft_params, draftable_type: 'motion', draftable_id: motion.id
-        expect(response.status).to eq 200
-
-        motion_draft.reload
-        expect(motion_draft.draftable).to eq motion
-        expect(motion_draft.user).to eq user
-        expect(motion_draft.payload['vote']['statement']).to eq motion_draft_params[:payload][:vote][:statement]
-
-        json = JSON.parse(response.body)
-        expect(json['drafts'][0]['payload']['vote']['statement']).to eq motion_draft_params[:payload][:vote][:statement]
       end
 
       it 'cannot access a group the user does not have access to' do

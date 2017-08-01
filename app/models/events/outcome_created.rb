@@ -1,7 +1,7 @@
 class Events::OutcomeCreated < Event
   include Events::PollEvent
   include Events::Notify::Author
-  include Events::Notify::Visitors
+  include Events::Notify::ThirdParty
   include Events::LiveUpdate
 
   def self.publish!(outcome)
@@ -17,13 +17,5 @@ class Events::OutcomeCreated < Event
 
   def notify_author?
     poll.author_receives_outcome
-  end
-
-  def email_visitors
-    if announcement
-      poll.visitors
-    else
-      Visitor.none
-    end
   end
 end

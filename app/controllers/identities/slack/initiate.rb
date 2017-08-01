@@ -33,12 +33,10 @@ module Identities::Slack::Initiate
   end
 
   def initiate_group
-    # we have the possibility here for finding multiple groups to initiate into.
-    # this is a bit bad, but the user will have the ability to pick the group
-    # before they actually create a poll.
-    @initiate_group ||= Group.joins(community: :identity)
-      .where("(omniauth_identities.custom_fields->'slack_team_id')::jsonb ? :team_id", team_id:    params[:team_id])
-      .where("(communities.custom_fields->'slack_channel_id')::jsonb ? :channel_id",   channel_id: params[:channel_id])
+    @initiate_group ||= Group
+      .joins(:identities)
+      .where("(omniauth_identities.custom_fields->'slack_team_id')::jsonb ? :team_id",    team_id:    params[:team_id])
+      .where("(group_identities.custom_fields->'slack_channel_id')::jsonb ? :channel_id", channel_id: params[:channel_id])
       .first
   end
 

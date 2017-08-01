@@ -9,11 +9,8 @@
       - else
         = render_email_plaintext discussion.description
 
-  - if discussion.group.features['use_polls']
-    - discussion.polls.active_or_closed_after(@time_start).each do |poll|
-      = render "poll_mailer/common/missed_yesterday", poll: poll
-  - elsif motion = discussion.motions.voting_or_closed_after(@time_start).first
-    = render 'thread_mailer/motion', motion: motion
+  - discussion.polls.active_or_closed_after(@time_start).each do |poll|
+    = render "poll_mailer/common/missed_yesterday", poll: poll
 
   .activity-feed
     - reader = @reader_cache.get_for(discussion)

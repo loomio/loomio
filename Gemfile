@@ -84,7 +84,6 @@ group :development do
   # gem 'derailed'
   gem "stackprof"
   gem 'spring'
-  gem "spring-commands-cucumber"
   gem "spring-commands-rspec"
   gem 'bullet'
   gem 'launchy'
@@ -93,7 +92,6 @@ end
 
 group :test do
   gem 's3_uploader'
-  gem 'cucumber-rails', require: false
   gem 'email_spec'
   gem 'poltergeist'
   gem 'webmock'

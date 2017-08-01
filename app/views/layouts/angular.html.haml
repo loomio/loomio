@@ -29,6 +29,7 @@
       %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
       %md_content.lmo-main-content{flex: ""}
         .lmo-main-background
+          %verify_email_notice{'ng-if' => 'isLoggedIn() && !isEmailVerified()'}
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
           %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %outlet{name: 'after-start-menu'}

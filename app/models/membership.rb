@@ -13,6 +13,7 @@ class Membership < ActiveRecord::Base
 
   belongs_to :user, counter_cache: true
   belongs_to :inviter, class_name: 'User'
+  belongs_to :invitation
   has_many :events, as: :eventable, dependent: :destroy
 
   scope :active, -> { published.where(is_suspended: false) }
@@ -22,6 +23,9 @@ class Membership < ActiveRecord::Base
   scope :sorted_by_group_name, -> { joins(:group).order('groups.full_name') }
   scope :chronologically, -> { order('created_at asc') }
 
+  scope :guest,  -> { joins(:group).where("groups.type": "GuestGroup") }
+  scope :formal, -> { joins(:group).where("groups.type": "FormalGroup") }
+
   scope :search_for, ->(query) { joins(:user).where("users.name ilike :query or users.username ilike :query or users.email ilike :query", query: "%#{query}%") }
 
   scope :for_group, lambda {|group| where(group_id: group)}
@@ -30,7 +34,7 @@ class Membership < ActiveRecord::Base
   scope :undecided_for, ->(poll) {
      joins("INNER JOIN users ON users.id = memberships.user_id")
     .joins("LEFT OUTER JOIN stances ON stances.participant_type = 'User' and stances.participant_id = users.id")
-    .where(group: poll.group)
+    .where(group: [poll.group, poll.guest_group])
     .where('stances.id': nil)
   }
 
@@ -39,6 +43,7 @@ class Membership < ActiveRecord::Base
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
+  delegate :token, to: :invitation, allow_nil: true
 
   before_create :set_volume
 
@@ -79,8 +84,7 @@ class Membership < ActiveRecord::Base
   private
 
   def leave_subgroups_of_hidden_parents
-    return if group.nil? #necessary if group is missing (as in case of production data)
-    return unless group.is_hidden_from_public?
+    return unless group&.is_formal_group? && group&.is_hidden_from_public?
     group.subgroups.each do |subgroup|
       subgroup.memberships.where(user_id: user.id).destroy_all
     end

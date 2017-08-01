@@ -5,15 +5,6 @@ module.exports = new class ThreadHelper
   loadWithPublicContent: ->
     browser.get('dev/setup_public_group_with_public_content')
 
-  loadWithActiveProposal: ->
-    browser.get('dev/setup_proposal')
-
-  loadWithClosedProposal: ->
-    browser.get('dev/setup_closed_proposal')
-
-  loadWithSetOutcome: ->
-    browser.get('dev/setup_closed_proposal_with_outcome')
-
   loadWithMultipleDiscussions: ->
     browser.get('dev/setup_multiple_discussions')
 

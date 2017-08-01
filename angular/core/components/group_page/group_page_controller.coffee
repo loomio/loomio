@@ -34,8 +34,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     @performLaunch()
     MessageChannelService.subscribeToGroup(@group)
 
-    @usePolls = PollService.usePollsFor(@group)
-
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
     maxDiscussions = if AbilityService.canViewPrivateContent(@group)
@@ -80,7 +78,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     ModalService.open modal, resolve
 
   @showPreviousPolls = ->
-    @usePolls and
     AbilityService.canViewPreviousPolls(@group)
 
   return
