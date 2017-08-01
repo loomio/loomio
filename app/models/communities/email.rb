@@ -9,6 +9,6 @@ class Communities::Email < Communities::Base
   end
 
   def includes?(participant)
-    visitors.where(revoked: false).pluck(:participation_token).include?(participant.participation_token)
+    visitors.where(revoked: false).pluck(:invitation_token).include?(participant.invitation_token)
   end
 end

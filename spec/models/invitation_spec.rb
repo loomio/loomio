@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe Invitation do
   let(:admin_user){FactoryGirl.create(:admin_user)}
-  let(:group){FactoryGirl.create(:group)}
+  let(:group){FactoryGirl.create(:formal_group)}
 
   before do
     @invitation = Invitation.create(recipient_email: 'test@example.org',
                                     recipient_name: 'Joinky',
                                     intent: 'join_group',
                                     inviter: admin_user,
-                                    invitable: group)
+                                    group: group)
   end
 
   describe 'create' do
@@ -73,7 +73,7 @@ describe Invitation do
     end
 
     it 'specifies the group' do
-      expect(@invitation.invitable).to eq group
+      expect(@invitation.group).to eq group
     end
 
     it 'is to join as an admin' do

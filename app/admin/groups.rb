@@ -8,10 +8,6 @@ ActiveAdmin.register Group do
     def find_resource
       Group.friendly.find(params[:id])
     end
-
-    def collection
-      super.includes(:group_request)
-    end
   end
 
   actions :index, :show, :edit, :update
@@ -25,9 +21,6 @@ ActiveAdmin.register Group do
   filter :analytics_enabled
 
   scope :parents_only
-  scope :engaged
-  scope :engaged_but_stopped
-  scope :has_members_but_never_engaged
 
   batch_action :delete_spam do |group_ids|
     group_ids.each do |group_id|
@@ -53,16 +46,10 @@ ActiveAdmin.register Group do
     column :name do |g|
       simple_format(g.full_name.sub(' - ', "\n \n> "))
     end
-    column :contact do |g|
-      admin_name = ERB::Util.h(g.requestor_name)
-      admin_email = ERB::Util.h(g.requestor_email)
-      simple_format "#{admin_name} \n &lt;#{admin_email}&gt;"
-    end
 
     column "Size", :memberships_count
 
     column "Discussions", :discussions_count
-    column "Motions", :motions_count
     column :created_at
     column :description, :sortable => :description do |group|
       group.description
@@ -103,9 +90,6 @@ ActiveAdmin.register Group do
       row :invitations_count
       row :pending_invitations_count
       row :public_discussions_count
-      row :motions_count
-      row :closed_motions_count
-      row :proposal_outcomes_count
       row :payment_plan
 
       row "Group Privacy" do
@@ -186,7 +170,7 @@ ActiveAdmin.register Group do
     end
 
     panel("Pending invitations") do
-      table_for group.pending_invitations.each do |invitation|
+      table_for group.invitations.pending.each do |invitation|
         column :recipient_email
         column :link do |i|
           invitation_url(i)
@@ -274,17 +258,6 @@ ActiveAdmin.register Group do
     group = Group.friendly.find(params[:id])
     group.unarchive!
     flash[:notice] = "Unarchived #{group.name}"
-    redirect_to [:admin, :groups]
-  end
-
-  member_action :use_polls, :method => :post do
-    group = Group.friendly.find(params[:id])
-    group.features['use_polls'] = true
-    flash[:notice] = "polls enabled for #{group.name}"
-
-    group.polls.where('motion_id is not null').destroy_all
-    PollService.delay.convert(motions: group.motions)
-    group.save!
     redirect_to [:admin, :groups]
   end
 

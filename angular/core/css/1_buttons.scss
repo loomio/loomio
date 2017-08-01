@@ -186,6 +186,14 @@
   @include lmoBtnBlock;
 }
 
+.lmo-dropdown-menu .md-button {
+  min-width: 48px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // Vertically space out multiple block buttons
 .lmo-btn--block + .lmo-btn--block {
   margin-top: 5px;

@@ -1,6 +1,5 @@
 class Events::PollOptionAdded < Event
   include Events::PollEvent
-  include Events::Notify::Visitors
   include Events::Notify::Author
 
   def self.publish!(poll, actor, poll_option_names = [])
@@ -18,8 +17,4 @@ class Events::PollOptionAdded < Event
     if announcement then poll.participants else User.none end
   end
   alias :email_recipients :notification_recipients
-
-  def email_visitors
-    if announcement then poll.visitor_participants else Visitor.none end
-  end
 end

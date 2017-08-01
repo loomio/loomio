@@ -2,7 +2,7 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ($location, Key
   templateUrl: 'generated/components/install_slack/install_form/install_slack_install_form.html'
   controller: ($scope) ->
     $scope.groups = ->
-      _.filter _.sortBy(Session.user().adminGroups(), 'fullName'), (group) -> !group.identityId
+      _.filter _.sortBy(Session.user().adminGroups(), 'fullName')
 
     newGroup = Records.groups.build(name: Session.user().identityFor('slack').customFields.slack_team_name)
 

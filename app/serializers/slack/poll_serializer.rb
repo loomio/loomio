@@ -44,6 +44,7 @@ class Slack::PollSerializer < Slack::BaseSerializer
 
   def text_options
     {
+      poll_type:  I18n.t("poll_types.#{poll.poll_type}"),
       author:     object.user&.name,
       poll:       poll.title,
       discussion: poll.discussion&.title,

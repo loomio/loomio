@@ -7,8 +7,8 @@ describe User do
   }
 
   let(:user) { create(:user) }
-  let(:group) { create(:group) }
-  let(:restrictive_group) { create(:group, members_can_start_discussions: false) }
+  let(:group) { create(:formal_group) }
+  let(:restrictive_group) { create(:formal_group, members_can_start_discussions: false) }
   let(:admin) { create :user }
   let(:new_user) { build(:user, password: "a_good_password", password_confirmation: "a_good_password") }
 
@@ -119,13 +119,6 @@ describe User do
     discussion.author = user
     discussion.save!
     user.authored_discussions.should include(discussion)
-  end
-
-  it "has authored motions" do
-    group.add_member!(user)
-    discussion = create :discussion, group: group
-    motion = FactoryGirl.create(:motion, discussion: discussion, author: user)
-    user.authored_motions.should include(motion)
   end
 
   describe "name" do
@@ -251,20 +244,6 @@ describe User do
       user.name = "Wow this is quite long as a name"
       user.generate_username
       expect(user.username.length).to eq 18
-    end
-  end
-
-  describe 'email_communities' do
-    let!(:email_community) { poll.community_of_type(:email, build: true).tap(&:save) }
-    let!(:another_email_community) { another_poll.community_of_type(:email, build: true).tap(&:save) }
-    let!(:facebook_community) { create :facebook_community, polls: [poll] }
-    let(:poll) { create :poll, author: user }
-    let(:another_poll) { create :poll }
-
-    it 'returns my email communities' do
-      expect(user.email_communities).to include email_community
-      expect(user.email_communities).to_not include facebook_community
-      expect(user.email_communities).to_not include another_email_community
     end
   end
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ExampleContent do
-  let(:group) { Group.new(name: "test") }
+  let(:group) { FormalGroup.new(name: "test") }
   subject { ExampleContent.new(group) }
 
   describe 'add_to_group!' do

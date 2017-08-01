@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe RedirectController do
   describe 'get group_subdomain' do
-    let(:group) { create(:group, subdomain: "subdomain") }
+    let(:group) { create(:formal_group, subdomain: "subdomain") }
 
     it 'redirects to the group if the subdomain exists' do
       expect(request).to receive(:subdomain).and_return(group.subdomain)

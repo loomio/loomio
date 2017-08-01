@@ -20,11 +20,6 @@ class API::GroupsController < API::RestfulController
     respond_with_resource(scope: {current_user: current_user})
   end
 
-  def publish
-    service.publish(group: load_resource, params: publish_params, actor: current_user)
-    respond_with_resource(serializer: Full::GroupSerializer)
-  end
-
   def archive
     service.archive(group: load_resource, actor: current_user)
     respond_with_resource
@@ -55,11 +50,16 @@ class API::GroupsController < API::RestfulController
     Queries::ExploreGroups.new
   end
 
+  def resource_class
+    FormalGroup
+  end
+
   def publish_params
     {
       make_announcement: !!params[:make_announcement],
       identifier:        params.require(:identifier),
-      channel:           params[:channel]
+      channel:           params[:channel],
+      identity_type:     :slack
     }
   end
 

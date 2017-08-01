@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe PollsController do
   let(:user) { create :user }
-  let(:group) { create :group, is_visible_to_public: true }
+  let(:group) { create :formal_group, is_visible_to_public: true }
   let(:discussion) { create :discussion, private: false, group: group }
   let(:poll) { create :poll, author: user }
   let(:user) { create :user }
@@ -23,16 +23,6 @@ describe PollsController do
 
     it 'does not set metadata for private polls' do
       get :show, key: poll.key
-      expect(assigns(:metadata)[:title]).to be_nil
-    end
-
-    it 'can show metadata for a community link' do
-      get :show, key: poll.key, identifier: community.identifier
-      expect(assigns(:metadata)[:title]).to eq poll.title
-    end
-
-    it 'does not show identifiers for other communities' do
-      get :show, key: poll.key, identifier: another_community.identifier
       expect(assigns(:metadata)[:title]).to be_nil
     end
   end

@@ -8,13 +8,10 @@ namespace :loomio do
   end
 
   task hourly_tasks: :environment do
-    MotionService.close_all_lapsed_motions
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
-    # PollService.delay.cleanup_examples
     SendMissedYesterdayEmailJob.perform_later
     ResendIgnoredInvitationsJob.perform_later
-    ProposalsClosingSoonJob.perform_later
     LocateUsersAndGroupsJob.perform_later
   end
 

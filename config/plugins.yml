@@ -1,11 +1,14 @@
 loomio_webhooks:
   repo:         https://github.com/loomio/loomio_webhooks.git
+  branch:       group-refactor
 
 loomio_org_plugin:
   repo:         https://github.com/loomio/loomio_org_plugin.git
+  branch:       group-refactor
 
 loomio_tags:
   repo:         https://github.com/loomio/loomio_tags.git
+  branch:       group-refactor
 
 loomio_truncate_comment:
   repo:         https://github.com/loomio/loomio_truncate_comment.git
@@ -15,4 +18,4 @@ loomio_content_preview:
 
 loomio_onboarding:
   repo:         https://github.com/loomio/loomio_onboarding.git
-  branch:       group-form-update
+  branch:       group-refactor

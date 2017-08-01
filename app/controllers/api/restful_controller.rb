@@ -5,7 +5,7 @@ class API::RestfulController < ActionController::Base
   include ::CurrentUserHelper
   before_filter :set_application_locale
   before_filter :set_paper_trail_whodunnit
-  before_action :set_participation_token
+  before_action :set_invitation_token
   after_filter  :save_detected_locale
   snorlax_used_rest!
 
@@ -60,7 +60,4 @@ class API::RestfulController < ActionController::Base
     Array(resource || collection)
   end
 
-  def set_participation_token
-    current_user.participation_token = params[:participation_token] if current_user.is_logged_in?
-  end
 end

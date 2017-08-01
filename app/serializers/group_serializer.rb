@@ -1,14 +1,24 @@
 class GroupSerializer < ActiveModel::Serializer
   embed :ids, include: true
+
+  def self.attributes_for_formal(*attrs)
+    attrs.each do |attr|
+      define_method attr, -> { object.send attr }
+      define_method :"include_#{attr}?", -> { object.type == "FormalGroup" }
+    end
+    attributes *attrs
+  end
+
   attributes :id,
-             :organisation_id,
              :cohort_id,
              :key,
+             :type,
              :name,
              :full_name,
+             :description,
+             :logo_url_medium,
              :created_at,
              :creator_id,
-             :description,
              :members_can_add_members,
              :members_can_create_subgroups,
              :members_can_start_discussions,
@@ -16,47 +26,36 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_edit_comments,
              :members_can_raise_motions,
              :members_can_vote,
-             :motions_count,
-             :closed_motions_count,
              :polls_count,
              :closed_polls_count,
-             :proposal_outcomes_count,
              :discussions_count,
              :public_discussions_count,
              :announcement_recipients_count,
              :group_privacy,
-             :is_visible_to_parent_members,
-             :parent_members_can_see_discussions,
              :memberships_count,
              :invitations_count,
              :pending_invitations_count,
              :membership_granted_upon,
              :discussion_privacy_options,
-             :logo_url_medium,
-             :cover_urls,
              :has_discussions,
              :has_multiple_admins,
-             :archived_at,
-             :has_custom_cover,
-             :is_subgroup_of_hidden_parent,
-             :enable_experiments,
-             :experiences,
-             :features,
-             :recent_activity_count,
-             :identity_id
+             :archived_at
+
+  attributes_for_formal :cover_urls,
+                        :has_custom_cover,
+                        :experiences,
+                        :enable_experiments,
+                        :features,
+                        :recent_activity_count,
+                        :is_subgroup_of_hidden_parent,
+                        :is_visible_to_parent_members,
+                        :parent_members_can_see_discussions
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
-
   has_one :parent, serializer: GroupSerializer, root: :groups
 
-  private
-
-  def current_user_membership
-    @current_user_membership ||= object.membership_for(scope[:current_user])
-  end
-
-  def include_current_user_membership?
-    scope && scope[:current_user]
+  def cover_photo
+    @cover_photo ||= object.cover_photo
   end
 
   def logo_url_medium
@@ -64,7 +63,7 @@ class GroupSerializer < ActiveModel::Serializer
   end
 
   def include_logo_url_medium?
-    object.logo.present?
+    type == "FormalGroup" && object.logo.present?
   end
 
   def cover_urls
@@ -79,6 +78,20 @@ class GroupSerializer < ActiveModel::Serializer
     cover_photo.present?
   end
 
+  def is_subgroup_of_hidden_parent
+    object.is_subgroup_of_hidden_parent?
+  end
+
+  private
+
+  def current_user_membership
+    @current_user_membership ||= object.membership_for(scope[:current_user])
+  end
+
+  def include_current_user_membership?
+    scope && scope[:current_user]
+  end
+
   def has_discussions
     object.discussions_count > 0
   end
@@ -87,11 +100,4 @@ class GroupSerializer < ActiveModel::Serializer
     object.admin_memberships_count > 1
   end
 
-  def cover_photo
-    @cover_photo ||= object.cover_photo
-  end
-
-  def is_subgroup_of_hidden_parent
-    object.is_subgroup_of_hidden_parent?
-  end
 end

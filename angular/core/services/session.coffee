@@ -1,12 +1,11 @@
-angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window, Records, AppConfig) ->
+angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translate, $window, Records, AppConfig) ->
 
   login: (data) ->
     Records.import(data)
 
-    if @visitor()
-      defaultParams = {participation_token: @visitor().participationToken}
-      Records.stances.remote.defaultParams = defaultParams
-      Records.polls.remote.defaultParams   = defaultParams
+    defaultParams = _.pick {invitation_token: $location.search().invitation_token}, _.identity
+    Records.stances.remote.defaultParams = defaultParams
+    Records.polls.remote.defaultParams   = defaultParams
 
     return unless AppConfig.currentUserId = data.current_user_id
     user = @user()
@@ -26,12 +25,6 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()
-
-  visitor: ->
-    Records.visitors.find(AppConfig.currentVisitorId)
-
-  participant: ->
-    @visitor() or @user()
 
   currentGroupId: ->
     @currentGroup? && @currentGroup.id

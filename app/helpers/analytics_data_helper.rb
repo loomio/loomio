@@ -10,7 +10,7 @@ module AnalyticsDataHelper
     if @group.present? and @group.persisted?
       tg.merge!({
         dimension1: @group.id,
-        dimension2: @group.organisation_id,
+        dimension2: @group.parent_or_self.id,
         dimension3: @group.cohort_id,
       })
     end

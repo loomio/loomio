@@ -1,3 +1,4 @@
+# delete
 module Communities::Notify::Users
   def notify!(event)
     super

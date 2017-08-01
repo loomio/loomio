@@ -4,7 +4,7 @@ describe DiscussionReader do
 
   let(:user) { FactoryGirl.create :user }
   let(:other_user) { FactoryGirl.create :user }
-  let(:group) { FactoryGirl.create :group }
+  let(:group) { FactoryGirl.create :formal_group }
   let(:discussion) { FactoryGirl.create :discussion, group: group }
   let(:membership) { FactoryGirl.create :membership, user: user, group: group, volume: :normal }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
