@@ -14,8 +14,7 @@ class User < ActiveRecord::Base
   attr_accessor :restricted
   attr_accessor :token
 
-  validates :email, presence: true, uniqueness: true, email: true, length: {maximum: 200}
-  validates_inclusion_of :uses_markdown, in: [true,false]
+  validates :email, presence: true, email: true, length: {maximum: 200}
 
   has_many :stances, as: :participant
 
