@@ -26,15 +26,15 @@ module Events::PollEvent
   end
 
   def announcement_notification_recipients
-    poll.group.members
+    poll.members
   end
 
   def specified_notification_recipients
-    Queries::UsersToMentionQuery.for(poll)
+    Queries::UsersToMentionQuery.for(eventable)
   end
 
   def email_recipients
-    return User.none if !poll.group or poll.example
+    return User.none if poll.example
     if announcement
       announcement_email_recipients
     else
@@ -43,7 +43,7 @@ module Events::PollEvent
   end
 
   def announcement_email_recipients
-    Queries::UsersByVolumeQuery.normal_or_loud(poll.discussion || poll.group)
+    Queries::UsersByVolumeQuery.normal_or_loud((poll.discussion || poll.group), poll.guest_group)
   end
 
   def specified_email_recipients

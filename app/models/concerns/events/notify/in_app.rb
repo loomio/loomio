@@ -1,6 +1,11 @@
 module Events::Notify::InApp
   include PrettyUrlHelper
 
+  def trigger!
+    super
+    self.notify_users!
+  end
+
   # send event notifications
   def notify_users!
     notifications.import(notification_recipients.without(user).map { |recipient| notification_for(recipient) })
@@ -51,7 +56,6 @@ module Events::Notify::InApp
     when Comment, CommentVote, Discussion then eventable.discussion.title
     when Group, Membership                then eventable.group.full_name
     when Poll, Outcome                    then eventable.poll.title
-    when Motion                           then eventable.name
     end
   end
 end

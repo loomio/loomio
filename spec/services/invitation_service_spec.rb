@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe InvitationService do
-  let(:group) { FactoryGirl.create(:group) }
-  let(:invitation) { FactoryGirl.create(:invitation, invitable: group) }
+  let(:group) { FactoryGirl.create(:formal_group) }
+  let(:invitation) { FactoryGirl.create(:invitation, group: group) }
   let(:user) { FactoryGirl.create(:user) }
 
   describe 'redeem' do
@@ -17,20 +17,10 @@ describe InvitationService do
     end
 
     context 'multiple use' do
-      let(:invitation) { FactoryGirl.create(:invitation, invitable: group, single_use: false) }
+      let(:invitation) { FactoryGirl.create(:invitation, group: group, single_use: false) }
 
       it 'does not mark as accepted' do
         expect(invitation.accepted_at).to eq nil
-      end
-    end
-
-    context 'to_be_admin' do
-      let(:invitation) { FactoryGirl.create(:invitation,
-                                            to_be_admin: true,
-                                            invitable: group) }
-
-      it 'makes the user a group admin' do
-        group.admins.reload.should include user
       end
     end
 
@@ -76,16 +66,6 @@ describe InvitationService do
       invitation.update_attributes(created_at: 30.hours.ago, send_count: 1)
       InvitationService.resend_ignored(send_count: 1, since: 1.day.ago)
       expect(Invitation.last.send_count).to eq 2
-    end
-  end
-
-  describe 'redeem_with_identity' do
-    let(:identity) { create :slack_identity }
-    it 'associates the identity with the user' do
-      InvitationService.redeem(invitation, user, identity)
-      expect(identity.reload.user).to eq user
-      expect(user.identities).to include identity
-      expect(user.groups).to include group
     end
   end
 end

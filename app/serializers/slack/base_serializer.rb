@@ -15,7 +15,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def channel
-    model.group.community.channel
+    model.group.slack_channel_name
   end
 
   def attachments

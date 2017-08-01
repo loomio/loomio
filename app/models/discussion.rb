@@ -1,22 +1,11 @@
 class Discussion < ActiveRecord::Base
   SALIENT_ITEM_KINDS = %w[new_comment
-                          new_motion
-                          new_vote
-                          motion_closed
-                          motion_closed_by_user
-                          motion_outcome_created
                           stance_created
                           outcome_created
+                          poll_created
                         ]
 
   THREAD_ITEM_KINDS = %w[new_comment
-                         new_motion
-                         new_vote
-                         motion_closed
-                         motion_closed_by_user
-                         motion_edited
-                         motion_outcome_created
-                         motion_outcome_updated
                          discussion_edited
                          discussion_moved
                          poll_created
@@ -31,7 +20,6 @@ class Discussion < ActiveRecord::Base
   include Translatable
   include HasTimeframe
   include HasMentions
-  include HasPolls
   include MessageChannel
   include MakesAnnouncements
   include SelfReferencing
@@ -41,14 +29,9 @@ class Discussion < ActiveRecord::Base
 
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
-  scope :order_by_closing_soon_then_latest_activity, -> { order('motions.closing_at ASC, discussions.last_activity_at DESC') }
 
   scope :visible_to_public, -> { published.where(private: false) }
   scope :not_visible_to_public, -> { where(private: true) }
-  scope :with_motions, -> { where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL)") }
-  scope :without_open_motions, -> { where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)") }
-  scope :with_open_motions, -> { joins(:motions).merge(Motion.voting) }
-  scope :joined_to_current_motion, -> { joins('LEFT OUTER JOIN motions ON motions.discussion_id = discussions.id AND motions.closed_at IS NULL') }
   scope :chronologically, -> { order('created_at asc') }
 
   validates_presence_of :title, :group, :author
@@ -60,17 +43,13 @@ class Discussion < ActiveRecord::Base
 
   is_mentionable on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
-  has_paper_trail only: [:title, :description, :private]
+  has_paper_trail only: [:title, :description, :private, :group_id]
 
-  belongs_to :group
+  belongs_to :group, class_name: 'FormalGroup'
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
-  has_many :motions, dependent: :destroy
   has_many :polls, dependent: :destroy
-  has_one :current_motion, -> { where('motions.closed_at IS NULL') }, class_name: 'Motion'
-  has_one :most_recent_motion, -> { order('motions.created_at DESC') }, class_name: 'Motion'
   has_one :search_vector
-  has_many :votes, through: :motions
   has_many :comments, dependent: :destroy
   has_many :comment_likes, through: :comments, source: :comment_votes
   has_many :commenters, -> { uniq }, through: :comments, source: :user
@@ -103,59 +82,30 @@ class Discussion < ActiveRecord::Base
 
   after_create :set_last_activity_at_to_created_at
 
-  define_counter_cache(:motions_count)        { |discussion| discussion.motions.count }
-  define_counter_cache(:closed_motions_count) { |discussion| discussion.motions.closed.count }
   define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
   define_counter_cache(:versions_count)       { |discussion| discussion.versions.where(event: :update).count }
+  define_counter_cache(:items_count)          { |discussion| discussion.items.count }
+  define_counter_cache(:salient_items_count)  { |discussion| discussion.salient_items.count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
-  update_counter_cache :group, :motions_count
-  update_counter_cache :group, :closed_motions_count
   update_counter_cache :group, :closed_polls_count
-  update_counter_cache :group, :proposal_outcomes_count
 
-  def organisation_id
-    group.parent_id || group_id
+  def update_sequence_info!
+    first_item = discussion.salient_items.order({sequence_id: :asc}).first
+    last_item =  discussion.salient_items.order({sequence_id: :asc}).last
+    discussion.first_sequence_id = first_item&.sequence_id || 0
+    discussion.last_sequence_id  = last_item&.sequence_id || 0
+    discussion.last_activity_at = last_item&.created_at || created_at
+    save!(validate: false)
   end
 
-  alias_method :current_proposal, :current_motion
-
-  def thread_item_created!(item)
-    if THREAD_ITEM_KINDS.include? item.kind
-      self.items_count += 1
-    end
-
-    if SALIENT_ITEM_KINDS.include? item.kind
-      self.salient_items_count += 1
-      self.last_activity_at = item.created_at
-    end
-
-    if self.first_sequence_id == 0
-      self.first_sequence_id = item.sequence_id
-    end
-
-    self.last_sequence_id = item.sequence_id
-
-    save!(validate: false)
+  def thread_item_created!
+    update_sequence_info!
   end
 
   def thread_item_destroyed!(item)
-    self.items_count -= 1
-    self.salient_items_count -= 1 if SALIENT_ITEM_KINDS.include? item.kind
-
-    if item.sequence_id == first_sequence_id
-      self.first_sequence_id = sequence_id_or_0(items.sequenced.first)
-    end
-
-    if item.sequence_id == last_sequence_id
-      last_item = items.sequenced.last
-      self.last_sequence_id = sequence_id_or_0(last_item)
-      self.last_activity_at = salient_items.last.try(:created_at) || created_at
-    end
-
-    save!(validate: false)
-
+    update_sequence_info!
     discussion_readers.
       where('last_read_at <= ?', item.created_at).
       map { |dr| dr.viewed!(dr.last_read_at) }

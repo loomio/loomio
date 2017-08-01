@@ -52,13 +52,12 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member
       get :count_explore_results, on: :collection
-      post :publish, on: :member
       patch :archive, on: :member
       put :archive, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
-    resources :users, only: :show
+    resources :group_identities, only: [:create, :destroy]
 
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
@@ -88,7 +87,8 @@ Loomio::Application.routes.draw do
       post :ignore, on: :member
     end
 
-    resources :invitations, only: [:create, :destroy] do
+    resources :invitations, only: [:index, :create, :destroy] do
+      post :bulk_create, on: :collection
       get :pending, on: :collection
       get :shareable, on: :collection
     end
@@ -144,7 +144,6 @@ Loomio::Application.routes.draw do
 
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do
       post :close, on: :member
-      post :publish, on: :member
       post :add_options, on: :member
       post :create_visitors, on: :member
       post :toggle_subscription, on: :member
@@ -210,12 +209,6 @@ Loomio::Application.routes.draw do
         post :oauth, on: :collection
       end
     end
-
-    resources :communities, only: [:create, :update, :index]
-    resources :poll_communities, only: [] do
-      delete :destroy, on: :collection
-    end
-
     get "identities/:id/:command", to: "identities#command"
   end
 

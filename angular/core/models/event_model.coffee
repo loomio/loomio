@@ -7,7 +7,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     @eventTypeMap:
       group:              'groups'
       discussion:         'discussions'
-      motion:             'proposals'
       comment:            'comments'
       comment_vote:       'comments'
       membership:         'memberships'

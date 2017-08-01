@@ -1,4 +1,5 @@
 module HasAvatar
+  include AvatarInitials
   extend ActiveSupport::Concern
 
   AVATAR_KINDS = %w[initials uploaded gravatar]

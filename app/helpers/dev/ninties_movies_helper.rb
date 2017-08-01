@@ -9,7 +9,7 @@ module Dev::NintiesMoviesHelper
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               detected_locale: 'en',
-                              angular_ui_enabled: true)
+                              email_verified: true)
     @patrick.experienced!("introductionCarousel")
     @patrick
   end
@@ -27,7 +27,7 @@ module Dev::NintiesMoviesHelper
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
-                               angular_ui_enabled: true)
+                               email_verified: true)
     @jennifer.experienced!("introductionCarousel")
     @jennifer
   end
@@ -38,7 +38,7 @@ module Dev::NintiesMoviesHelper
                           email: 'max@example.com',
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
-                          angular_ui_enabled: true)
+                          email_verified: true)
     @max.experienced!("introductionCarousel")
     @max
   end
@@ -48,7 +48,7 @@ module Dev::NintiesMoviesHelper
                 User.create!(name: 'Emilio Estevez',
                             email: 'emilio@loomio.org',
                             password: 'gh0stmovie',
-                            angular_ui_enabled: true)
+                            email_verified: true)
   end
 
   def judd
@@ -56,12 +56,12 @@ module Dev::NintiesMoviesHelper
               User.create!(name: 'Judd Nelson',
                            email: 'judd@example.com',
                            password: 'gh0stmovie',
-                           angular_ui_enabled: true)
+                           email_verified: true)
   end
 
   def create_group
     unless @group
-      @group = Group.create!(name: 'Dirty Dancing Shoes',
+      @group = FormalGroup.create!(name: 'Dirty Dancing Shoes',
                                   group_privacy: 'closed',
                                   discussion_privacy_options: 'public_or_private')
       @group.add_admin!  patrick
@@ -73,7 +73,7 @@ module Dev::NintiesMoviesHelper
 
   def create_poll_group
     unless @poll_group
-      @poll_group = Group.create!(name: 'Dirty Dancing Shoes',
+      @poll_group = FormalGroup.create!(name: 'Dirty Dancing Shoes',
                              group_privacy: 'closed',
                              discussion_privacy_options: 'public_or_private',
                              features: {use_polls: true})
@@ -87,7 +87,7 @@ module Dev::NintiesMoviesHelper
   def multiple_groups
     @groups = []
     10.times do
-      group = Group.new(name: Faker::Name.name,
+      group = FormalGroup.new(name: Faker::Name.name,
                         group_privacy: 'closed',
                         discussion_privacy_options: 'public_or_private')
       group.add_admin! patrick
@@ -98,7 +98,7 @@ module Dev::NintiesMoviesHelper
 
   def muted_create_group
     unless @muted_group
-      @muted_group = Group.create!(name: 'Muted Point Blank',
+      @muted_group = FormalGroup.create!(name: 'Muted Point Blank',
                                         group_privacy: 'closed',
                                         discussion_privacy_options: 'public_or_private')
       @muted_group.add_admin! patrick
@@ -109,7 +109,7 @@ module Dev::NintiesMoviesHelper
 
   def create_another_group
     unless @another_group
-      @another_group = Group.create!(name: 'Point Break',
+      @another_group = FormalGroup.create!(name: 'Point Break',
                                           group_privacy: 'closed',
                                           discussion_privacy_options: 'public_or_private',
                                           description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.')
@@ -152,7 +152,7 @@ module Dev::NintiesMoviesHelper
 
   def create_subgroup
     unless @subgroup
-      @subgroup = Group.create!(name: 'Johnny Utah',
+      @subgroup = FormalGroup.create!(name: 'Johnny Utah',
                                      parent: create_another_group,
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed')
@@ -163,7 +163,7 @@ module Dev::NintiesMoviesHelper
 
   def another_create_subgroup
     unless @another_subgroup
-      @another_subgroup = Group.create!(name: 'Bodhi',
+      @another_subgroup = FormalGroup.create!(name: 'Bodhi',
                                              parent: create_another_group,
                                              group_privacy: 'closed',
                                              discussion_privacy_options: 'public_or_private',
@@ -172,52 +172,6 @@ module Dev::NintiesMoviesHelper
       @another_subgroup.add_admin! patrick
     end
     @another_subgroup
-  end
-
-  def create_proposal
-    unless @proposal
-      @proposal = Motion.new(name: 'lets go hiking to the moon and never ever ever come back!',
-                             closing_at: 3.days.from_now.beginning_of_hour,
-                             discussion: create_discussion)
-      MotionService.create(motion: @proposal, actor: jennifer)
-    end
-    @proposal
-  end
-
-  def create_public_proposal
-    unless @public_proposal
-      @public_proposal = Motion.new(name: 'Lets holiday on Earth instead',
-                                         closing_at: 3.days.from_now.beginning_of_hour,
-                                         discussion: create_public_discussion)
-      MotionService.create(motion: @public_proposal, actor: patrick)
-    end
-    @public_proposal
-  end
-
-  def create_another_public_proposal
-    unless @another_public_proposal
-      @another_public_proposal = Motion.new(name: 'Lets holiday on Venus instead',
-                                         closing_at: 3.days.from_now.beginning_of_hour,
-                                         discussion: create_public_discussion)
-      MotionService.create(motion: @another_public_proposal, actor: jennifer)
-    end
-    @another_public_proposal
-  end
-
-  def create_vote
-    unless @public_vote
-      @public_vote = Vote.new(statement: "Indeed!", position: "yes", motion: create_public_proposal)
-      VoteService.create(vote: @public_vote, actor: patrick)
-    end
-    @public_vote
-  end
-
-  def create_another_vote
-    unless @another_public_vote
-      @another_public_vote = Vote.new(statement: "Nayy!", position: "no", motion: create_public_proposal)
-      VoteService.create(vote: @another_public_vote, actor: max)
-    end
-    @another_public_vote
   end
 
   def membership_request_from_logged_out
@@ -264,23 +218,6 @@ module Dev::NintiesMoviesHelper
     comment_liked_event = CommentService.like(comment: comment, actor: jennifer)
     create_another_group.add_member! jennifer
 
-    #'motion_closing_soon'
-    motion_created_event = MotionService.create(motion: create_another_public_proposal,
-                                                actor: jennifer)
-    closing_soon_event = Events::MotionClosingSoon.publish!(create_another_public_proposal)
-
-    #'motion_closed'
-    second_motion_created_event = MotionService.create(motion: create_public_proposal,
-                                                       actor: patrick)
-
-
-    motion_closed_event = MotionService.close(create_public_proposal)
-
-    #'motion_outcome_created'
-    outcome_event = MotionService.create_outcome(motion: create_another_public_proposal,
-                                                 params: {outcome: 'Were going hiking tomorrow'},
-                                                 actor: jennifer)
-
     #'comment_replied_to'
     reply_comment = Comment.new(discussion: create_discussion,
                                 body: 'I agree with you', parent: comment)
@@ -295,7 +232,7 @@ module Dev::NintiesMoviesHelper
     event = MembershipRequestService.create(membership_request: membership_request, actor: LoggedOutUser.new)
 
     #'membership_request_approved',
-    another_group = Group.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
+    another_group = FormalGroup.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
     GroupService.create(group: another_group, actor: jennifer)
     membership_request = MembershipRequest.new(requestor: patrick, group: another_group)
     event = MembershipRequestService.create(membership_request: membership_request, actor: patrick)
@@ -303,9 +240,9 @@ module Dev::NintiesMoviesHelper
 
     #'user_added_to_group',
     #notify patrick that he has been added to jens group
-    another_group = Group.new(name: 'Planets of the 80\'s')
+    another_group = FormalGroup.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
-    MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer, message: 'join in')
+    MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer)
 
     #'new_coordinator',
     #notify patrick that jennifer has made him a coordinator
@@ -317,6 +254,18 @@ module Dev::NintiesMoviesHelper
     invitation = InvitationService.invite_to_group(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
     InvitationService.redeem(invitation.first, emilio)
 
+    #'poll_created'
+    poll = FactoryGirl.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
+    PollService.create(poll: poll, actor: jennifer)
+
+    #'poll_closing_soon'
+    PollService.publish_closing_soon
+
+    #'outcome_created'
+    poll = FactoryGirl.create(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
+    outcome = FactoryGirl.build(:outcome, poll: poll, make_announcement: true)
+    OutcomeService.create(outcome: outcome, actor: jennifer)
+
     #'stance_created'
     # notify patrick that someone has voted on his proposal
     poll = FactoryGirl.build(:poll, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
@@ -325,7 +274,7 @@ module Dev::NintiesMoviesHelper
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
     #'poll_option_added'
-    poll.tap(&:build_loomio_group_community).tap(&:save).reload
+    poll.tap(&:save).reload
     poll.make_announcement = true
     patrick_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: patrick_stance, actor: patrick)

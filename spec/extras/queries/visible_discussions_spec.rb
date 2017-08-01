@@ -2,11 +2,9 @@ require 'rails_helper'
 
 describe Queries::VisibleDiscussions do
   let(:user) { create :user }
-  let(:group) { create :group, discussion_privacy_options: 'public_or_private' }
+  let(:group) { create :formal_group, discussion_privacy_options: 'public_or_private' }
   let(:author) { create :user }
   let(:discussion) { create :discussion, group: group, author: author, private: true }
-  let(:motion_discussion) { create :discussion, group: group, author: author }
-  let(:motion) { create :motion, discussion: motion_discussion, closing_at: 2.days.from_now }
 
   subject do
     Queries::VisibleDiscussions.new(user: user, groups: [group])
@@ -14,9 +12,9 @@ describe Queries::VisibleDiscussions do
 
   describe 'logged out' do
     let(:logged_out_user) { LoggedOutUser.new }
-    let!(:public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
-    let!(:another_public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
-    let!(:private_discussion) { create(:discussion, group: create(:group, is_visible_to_public: false)) }
+    let!(:public_discussion) { create(:discussion, private: false, group: create(:formal_group, is_visible_to_public: true)) }
+    let!(:another_public_discussion) { create(:discussion, private: false, group: create(:formal_group, is_visible_to_public: true)) }
+    let!(:private_discussion) { create(:discussion, group: create(:formal_group, is_visible_to_public: false)) }
 
     it 'shows groups visible to public if no groups are specified' do
       query = Queries::VisibleDiscussions.new(user: logged_out_user)
@@ -57,19 +55,6 @@ describe Queries::VisibleDiscussions do
     it 'does not include dismissed discussions' do
       DiscussionReader.for(discussion: discussion, user: user).dismiss!
       subject.unread.should_not include discussion
-    end
-  end
-
-  describe 'with_active_motions' do
-    before do
-      group.add_member! author
-      group.add_member! user
-      motion; discussion; motion_discussion
-    end
-
-    it 'shows discussions with active motions' do
-      expect(subject.with_active_motions).to include motion_discussion
-      expect(subject.with_active_motions).to_not include discussion
     end
   end
 
@@ -135,8 +120,8 @@ describe Queries::VisibleDiscussions do
     end
 
     context 'parent_members_can_see_discussions' do
-      let(:parent_group) { create :group, group_privacy: 'secret'}
-      let(:group) { create :group,
+      let(:parent_group) { create :formal_group, group_privacy: 'secret'}
+      let(:group) { create :formal_group,
                            parent: parent_group,
                            parent_members_can_see_discussions: true,
                            is_visible_to_public: false,
@@ -158,8 +143,8 @@ describe Queries::VisibleDiscussions do
     end
 
     context 'only members can see discussions' do
-      let(:parent_group) { create :group }
-      let(:group) { create :group,
+      let(:parent_group) { create :formal_group }
+      let(:group) { create :formal_group,
                            parent: parent_group,
                            parent_members_can_see_discussions: false,
                            is_visible_to_parent_members: true }

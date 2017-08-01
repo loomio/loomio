@@ -2,13 +2,20 @@ require 'rails_helper'
 
 describe 'GroupService' do
   let(:user) { create(:user) }
-  let(:group) { build(:group) }
-  let(:parent) { create(:group, default_group_cover: create(:default_group_cover))}
-  let(:subgroup) { build(:group, parent: parent) }
+  let(:group) { build(:formal_group) }
+  let(:guest_group) { build(:guest_group) }
+  let(:parent) { create(:formal_group, default_group_cover: create(:default_group_cover))}
+  let(:subgroup) { build(:formal_group, parent: parent) }
 
   describe 'create' do
     it 'creates a new group' do
-      expect { GroupService.create(group: group, actor: user) }.to change { Group.count }.by(1)
+      expect { GroupService.create(group: group, actor: user) }.to change { FormalGroup.count }.by(1)
+      expect(group.reload.creator).to eq user
+    end
+
+    it 'creates a new guest group' do
+      expect { GroupService.create(group: group, actor: user) }.to change { GuestGroup.count }.by(1)
+      expect(Group.last.default_group_cover_id).to be_nil
     end
 
     it 'assigns a default group cover' do
@@ -33,15 +40,6 @@ describe 'GroupService' do
       expect { GroupService.create(group: group, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
 
-    it 'sets the actor as group creator if logged in' do
-      GroupService.create(group: group, actor: user)
-      expect(group.reload.creator).to eq user
-    end
-
-    it 'leaves the group creator nil if user does not have account' do
-      GroupService.create(group: group, actor: LoggedOutUser.new)
-      expect(group.reload.creator).to be_nil
-    end
 
     context "is_referral" do
       it "is false for first group" do
@@ -50,28 +48,10 @@ describe 'GroupService' do
       end
 
       it "is true for second group" do
-        create(:group).add_admin! user
+        create(:formal_group).add_admin! user
         GroupService.create(group: group, actor: user)
         expect(group.is_referral).to be true
       end
-    end
-  end
-
-  describe 'publish' do
-    before { group.add_admin! user }
-
-    it 'sets the group community channel id' do
-      GroupService.publish(group: group, actor: user, params: {identifier: "123"})
-      expect(group.reload.community.slack_channel_id).to eq '123'
-    end
-
-    it 'creates a group published event with an announcement' do
-      expect { GroupService.publish(group: group, actor: user, params: {make_announcement: true, identifier: "123"}) }.to change { Events::GroupPublished.where(kind: :group_published).count }.by(1)
-      expect(Events::GroupPublished.last.announcement).to eq true
-    end
-
-    it 'creates a group published event without an announcement' do
-      expect { GroupService.publish(group: group, actor: user, params: {identifier: "123"}) }.to_not change { Events::GroupPublished.where(kind: :group_published).count }
     end
   end
 end

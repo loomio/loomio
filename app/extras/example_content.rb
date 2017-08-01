@@ -29,14 +29,14 @@ ExampleContent = Struct.new(:group) do
   end
 
   def example_proposal
-    @example_motion ||= how_it_works_thread.polls.create(
+    @example_proposal ||= how_it_works_thread.polls.create(
       poll_type:         :proposal,
       poll_option_names: %w[agree abstain disagree block],
       author:            helper_bot,
       title:             I18n.t('first_proposal.name'),
       details:           I18n.t('first_proposal.description'),
       closing_at:        (Time.zone.now + 7.days).at_beginning_of_hour
-    ). tap { |p| p.community_of_type(:email, build: true).save }
+    ).tap(&:save)
   end
 
   def helper_bot

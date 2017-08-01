@@ -563,8 +563,8 @@ response = RestClient.get('loomio.org/api/v1/discussions.json')
   "payload":                  "A JSON dump of information for this draft (see below for more detail) ( json)",
 
   # Relationships
-  "draftable_id":             "The id of the draftable (User, Group, Discussion, or Motion) the draft is associated with (integer)",
-  "draftable_type":           "The type of draftable (User / Group / Discussion / Motion) (string)"
+  "draftable_id":             "The id of the draftable (User, Group, Discussion, or Poll) the draft is associated with (integer)",
+  "draftable_type":           "The type of draftable (User / Group / Discussion / Poll) (string)"
 }
 ```
 

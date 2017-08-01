@@ -1,9 +1,53 @@
 require 'rails_helper'
 describe UserService do
+  describe 'verify' do
+    it 'sets email_verfied true if email is unique' do
+      user = FactoryGirl.create(:user, email_verified: false, email: 'user@example.com')
+      user = UserService.verify(user: user)
+      expect(user.email_verified).to be true
+    end
+
+    it 'merges unverified user records into verified user if verified email exists' do
+      verified_user = FactoryGirl.create(:user, email_verified: true, email: 'user@example.com')
+      unverified_user = FactoryGirl.create(:user, email_verified: false, email: 'user@example.com')
+      stance = FactoryGirl.create(:stance, participant: unverified_user)
+      user = UserService.verify(user: unverified_user)
+      expect(user).to eq verified_user
+      expect(user.email_verified).to be true
+      expect(user.stances.first).to eq stance
+      expect(unverified_user.stances).to be_empty
+    end
+
+    it 'returns user if already verified' do
+      user = FactoryGirl.create(:user, email_verified: true, email: 'user@example.com')
+      user = UserService.verify(user: user)
+      expect(user.email_verified).to be true
+    end
+
+    it 'verified vote exists, vote as unverified user then verify' do
+      poll = FactoryGirl.create(:poll)
+
+      verified_user = FactoryGirl.create(:user, email_verified: true, email: 'user@example.com')
+      verified_stance = FactoryGirl.create(:stance, poll: poll, participant: verified_user)
+
+      unverified_user = FactoryGirl.create(:user, email_verified: false, email: 'user@example.com')
+      unverified_stance = FactoryGirl.create(:stance, poll: poll, participant: unverified_user)
+
+      UserService.verify(user: unverified_user)
+
+      # both votes are recorded, and most recent, is set latest
+      expect(poll.stances.count).to eq 2
+      expect(unverified_stance.reload.latest).to be true
+      expect(verified_stance.reload.latest).to be false
+      expect(verified_user.stances).to include unverified_stance, verified_stance
+      expect(verified_user.stances.count).to eq 2
+    end
+  end
+
   describe 'delete_spam' do
     let(:spam_user) { FactoryGirl.create :user }
-    let(:spam_group) { FactoryGirl.build :group }
-    let(:innocent_group) { FactoryGirl.create :group }
+    let(:spam_group) { FactoryGirl.build :formal_group }
+    let(:innocent_group) { FactoryGirl.create :formal_group }
     let(:discussion_in_spam_group) { FactoryGirl.build :discussion, group: spam_group }
     let(:spam_discussion_in_innocent_group) { FactoryGirl.build :discussion, group: innocent_group }
     let(:discussion_in_innocent_group) { FactoryGirl.create :discussion, group: innocent_group }

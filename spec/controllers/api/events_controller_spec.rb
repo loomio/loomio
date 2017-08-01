@@ -2,7 +2,7 @@ require 'rails_helper'
 describe API::EventsController do
 
   let(:user) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :formal_group }
   let(:discussion) { create :discussion, group: group, private: false }
   let(:another_discussion) { create :discussion, group: group, private: true }
 

@@ -16,9 +16,7 @@ class Stance < ActiveRecord::Base
   belongs_to :participant, polymorphic: true, required: true
 
   update_counter_cache :poll, :stances_count
-  update_counter_cache :poll, :visitors_count
   update_counter_cache :poll, :undecided_user_count
-  update_counter_cache :poll, :undecided_visitor_count
 
   scope :latest, -> { where(latest: true) }
 

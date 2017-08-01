@@ -1,14 +1,6 @@
 module Dev::DashboardHelper
-  def starred_proposal_discussion
-    create_discussion!(:starred_proposal_discussion) { |discussion| star!(discussion); add_proposal!(discussion) }
-  end
-
   def starred_poll_discussion
     create_discussion!(:starred_poll_discussion, group: create_poll_group) { |discussion| star!(discussion); add_poll!(discussion) }
-  end
-
-  def proposal_discussion
-    create_discussion!(:proposal_discussion) { |discussion| add_proposal!(discussion) }
   end
 
   def poll_discussion
@@ -62,10 +54,6 @@ module Dev::DashboardHelper
 
   def participate!(discussion, user: patrick)
     DiscussionReader.for(discussion: discussion, user: user).participate!
-  end
-
-  def add_proposal!(discussion, name: 'Test proposal', actor: jennifer)
-    MotionService.create(motion: Motion.new(name: name, closing_at: 3.days.from_now, discussion: discussion), actor: actor)
   end
 
   def add_poll!(discussion, name: 'Test poll', actor: jennifer)
