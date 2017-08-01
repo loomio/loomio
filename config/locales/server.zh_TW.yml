@@ -1,7 +1,16 @@
 zh_TW:
+  invitation:
+    invitation_not_found: 無法在該邀請碼內找到邀請函。請從您的群組中要求另一份邀請函。
+    invitation_cancelled: 抱歉，這封邀請函已被群組協調者撤銷。請從您的群組中要求另一份邀請函。
+    invitation_already_used: 您已出示過此封邀請函，請直接登入到 Loomio 以進入您的群組。
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
   validate:
     motion:
       must_close_in_future: 提案必須在未來定案。
@@ -204,45 +213,6 @@ zh_TW:
     error:
       too_many_pending: "您在此群組有多於最大 %{count} 個的待處理邀請"
       all_email_addresses_belong_to_members: "我們不會將邀請函寄送給提供的電子郵件地址，因為它們是屬於已經在群組中的人們的。"
-  pricing_page:
-    header: 群組計畫
-    gift: 免費
-    standard: 標準方案
-    plus: 專業
-    free_trial_html: 我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。
-    get_started_for_free: 免費開始
-    gift_body: 您需要與您的群組共同做出有效率的決策的每樣東西
-    standard_body_html: 在 Slack 中做出決策
-    pro_body_html: 在您的組織中做出決策
-    one_group: 一個群組
-    unlimited_members: 不限成員數量
-    unlimited_decisions: 不限決策數量
-    coming_facebook: Facebook 整合即將到來
-    email_support: 電子郵件支援
-    coming_soon: 即將到來
-    analytics_report: 分析回報
-    data_export: 資料匯出（CSV 或 XLS）
-    slack_integration_html: |+
-      <strong>Slack</strong> 整合
-
-    customer_support_html: 客戶支援
-    standard_price_html: '<strong>$19</strong>／月'
-    gift_price_html: '<strong>$0</strong>'
-    plus_includes_standard: '在標準價格中的每樣東西，再加上：'
-    standard_includes_free: '在免費方案中的每樣東西，再加上：'
-    multiple_groups: "多達 10 個群組"
-    premium_support: 進階支援
-    help_with_setup: 初始設定協助
-    ldap_coming_soon: ActiveDirectory/LDAP 即將到來
-    custom_subdomain: 自訂子網域
-    analytics_reports: 分析報告
-    contact_us_html: |
-      價格是以美元計費，再加上營業稅。需要其他東西？<a href="/contact">讓我們談談！</a>
-    custom_subdomain_html: |
-      自訂子網域，<br />
-      例如 <strong>yourgroup</strong>.loomio.org
-    usage_statistics: 使用統計
-    plus_price_html: '<strong>$99</strong>／月'
   password_reset:
     email_guidelines_html: |
       <p>在下面的欄位中填入您 Loomio 帳號的電子郵件地址，然後您將會收到一個密碼的重置連結。</p>
@@ -375,7 +345,7 @@ zh_TW:
       responses: 回應
       change_your_stance: 更改
       create_outcome: 分享成果
-      your_response: 您的回應
+      your_response: "您投票給："
       please_respond: 請回應
       time_zone: （在 %{zone} 顯示的時間）
       undecided_members: 未決定的成員（%{count}）
@@ -414,6 +384,8 @@ zh_TW:
         poll_closing_soon_author: '您的投票將於24小時內關閉：%{title}'
         poll_expired: "投票結果：%{title}"
         poll_expired_author: '您的投票已關閉。請分享成果：%{title}'
+        poll_option_added: '%{actor} 新增選項給：%{title}'
+        poll_option_added_author: '%{actor} 新增選項給：%{title}'
         outcome_created: '%{actor} 分享了一個投票成果：%{title}'
         visitor_created: '%{actor} 想要您投票：%{title}'
         visitor_reminded: '%{actor} 正在等待您的投票：%{title}'
@@ -425,6 +397,8 @@ zh_TW:
         poll_closing_soon_author: '您的投票將於24小時內關閉，現在正是您提醒其他人關於這個投票或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的投票已關閉：%{title}"
         poll_expired_author: '您的投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        poll_option_added: '<strong>%{actor}</strong> 新增選項給：%{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
         outcome_created: '<strong>%{actor}</strong> 已分享了投票的成果。'
         visitor_created: '<strong>%{actor}</strong> 邀請您加入投票：%{title}'
         visitor_reminded: '<strong>%{actor}</strong> 正在等待您的投票：%{title}'
@@ -464,6 +438,8 @@ zh_TW:
         poll_closing_soon_author: '您的點投票將於24小時內關閉：%{title}'
         poll_expired: "點投票結果：%{title}"
         poll_expired_author: '您的點投票已關閉。請分享成果：%{title}'
+        poll_option_added: '%{actor} 新增選項給：%{title}'
+        poll_option_added_author: '%{actor} 新增選項給：%{title}'
         outcome_created: '%{actor} 分享了一個成果：%{title}'
         visitor_created: '%{actor} 邀請您加入點投票：%{title}'
         visitor_reminded: '%{actor} 正在等待您的投票：%{title}'
@@ -475,6 +451,8 @@ zh_TW:
         poll_closing_soon_author: '您的點投票將於24小時內關閉，現在正是您提醒其他人關於這個點投票或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的點投票結果：%{title}"
         poll_expired_author: '您的點投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        poll_option_added: '<strong>%{actor}</strong> 新增選項給：%{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
         outcome_created: '<strong>%{actor}</strong> 已分享了點投票的成果。'
         visitor_created: '<strong>%{actor}</strong> 邀請您加入點投票：%{title}'
         visitor_reminded: '<strong>%{actor}</strong> 正在等待您的投票：%{title}'
@@ -489,6 +467,8 @@ zh_TW:
         poll_closing_soon_author: '您的時間投票將於24小時內關閉：%{title}'
         poll_expired: "時間投票結果：%{title}"
         poll_expired_author: '您的時間投票已關閉。請分享成果：%{title}'
+        poll_option_added: '%{actor} 新增選項給：%{title}'
+        poll_option_added_author: '%{actor} 新增選項給：%{title}'
         outcome_created: '%{actor} 分享了一個成果：%{title}'
         outcome_created_author: '您分享了一個結果：%{title}'
         visitor_created: '%{actor} 想安排時間：%{title}'
@@ -501,6 +481,8 @@ zh_TW:
         poll_closing_soon_author: '您的時間投票將於24小時內關閉，現在正是您提醒其他人關於這時間投票或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的時間投票已關閉"
         poll_expired_author: '您的時間投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        poll_option_added: '<strong>%{actor}</strong> 新增選項給：%{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
         outcome_created: '<strong>%{actor}</strong> 已分享了時間投票的成果。'
         outcome_created_author: '您分享了一個時間投票結果。'
         visitor_created: '<strong>%{actor}</strong> 想安排時間：%{title}'
@@ -524,3 +506,76 @@ zh_TW:
     meeting:
       title: "我們下次的工作會議什麼時候舉辦？"
       details: 時間又到了我們開雙月的工作會議的時候了；理想狀態下，我們應該要在下週末前會面。大家什麼時候有空呢？
+  poll_unsubscribe:
+    title: 您已經從 %{title} 取消訂閱
+    helptext: 您將不會再收到關於此決策的電子郵件。
+    visit_poll: 檢視投票
+    go_to_dashboad: 到控制面板
+  webhooks:
+    slack:
+      poll_expired: "*%{name}* 已定案"
+      motion_closed: "*%{name}* 已定案"
+      motion_closed_by_user: "*%{name}* 已由 *%{author}* 關閉"
+      motion_closing_soon: "*%{name}* 有一個即將在 24 小時內定案的提案"
+      motion_outcome_created: "*%{author}* 在 *%{name}* 中公佈了結果"
+      motion_outcome_updated: "*%{author}* 在 *%{name}* 中更新了結果"
+      new_motion: "*%{author}* 在 *%{name}* 中開始了一個新提議"
+      new_vote: "*%{author}* %{position} *%{proposal}* 在 *%{name}*"
+      new_comment: "*%{author}* 在 *%{name}* 中貼出了新評論"
+      new_discussion: "*%{author}* 在 *%{group}* 啟動了新的討論串"
+      outcome_created: "*%{author}* 在 *%{name}* 中建立了結果"
+      poll_created: "*%{author}* 在 *%{name}* 中啟動投票"
+      poll_closing_soon: "*%{name}* 即將定案"
+      view_it_on_loomio: 在 Loomio 上檢視
+      have_your_say: 擁有發言權
+      poll_published: "*%{author}* 發佈了投票："
+      poll_published_with_discussion: "*%{author}* 在 *%{name}* 中發佈了投票"
+      outcome_published: "*%{author}* 公佈了結果："
+      outcome_published_with_discussion: "*%{author}* 在 %{discussion} 中發佈了結果："
+      position_verbs:
+        'yes': 同意
+        'no': 反對
+        abstain: 棄權
+        block: 阻擋
+  slack:
+    new_discussion: "在 *%{group}* 中的新討論串：*%{discussion}*"
+    poll_published: "在 *%{group}* 中的新討論：*%{poll}*"
+    outcome_published: "在 *%{group}* 中的新結果：*%{poll}*"
+    poll_closing_soon: "提醒：*%{poll}* 將於24小時內關閉"
+    poll_expired: "*%{poll}* 已關閉"
+    group_published: |
+      大家好，我是 Loomio 機器人。*%{author}* 把我加進來了。
+      我可以協助您的團隊共同做出決策。
+
+      我的功能包含了：
+
+      - 當做出決策時突顯
+      - 讓夥伴們從 Slack 上在決冊中投票
+      - 顯示夥伴們同意或反對
+      - 溝通決策的結果
+      - 在您的 Loomio 群組中保留決策紀錄。
+
+      要知道更多東西，請輸入 _/loomio help_
+    request_authorization_message: "只要多一個步驟：<%{url}|點選這裡>以授權您的 Slack 帳號使用 Loomio。（您只需要做這件事情一次）"
+    poll_closed: "*%{title}* 已定案！<%{url}|點選這裡>以檢視結果。"
+    go_to_slack: 到 Slack
+    stance_created: 感謝參與！您已在 <%{poll_url}|%{title}> 投票 *%{position}*。若您想要變更您的投票，或是給出您這麼做的理由，<%{stance_url}|點選這裡>。
+    click_to_vote: "選取下面的其中一個選項來投票："
+    time_zone_message: （所有時間都在 %{zone} 時區）
+    authorized_message: 成功！您已在 Slack 上投票完成了。
+    community_poll_published: "@%{username} 啟動了新的 %{type}："
+    initiate: |
+      好的，讓我們開始吧！<%{url}|點選這裡以啟動您的 %{type}>。
+      （注意，我們將會在它建立時在此頻道中貼出，讓每個人都可以參與）
+    slash_command_help: |
+      只要輸入討論類型與問題，我們就會從那裡取得。
+      您可以從以下的決策類型中選擇：
+      'proposal'：尋求集體共識
+      'count'：     追蹤參與並找到志願者
+      'poll'：        測量選項的人氣
+      'dot vote'： 排序一份選項清單
+      'meeting'： 尋找會面時間
+
+      舉例來說：
+      /loomio count 誰可以來星期天的派對呢？
+      為了開始新計畫。

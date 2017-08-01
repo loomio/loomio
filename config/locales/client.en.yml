@@ -786,7 +786,7 @@ en:
     email_label: 'Email'
     short_bio_label: 'Introduction'
     locale_label: 'Language'
-    short_bio_placeholder: 'Enter a short introduction (max 250 characters)'
+    short_bio_placeholder: 'Enter a short introduction (max 500 characters)'
     locale_placeholder: Select your preferred language
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
@@ -1384,10 +1384,11 @@ en:
     none_of_the_above: (None of the above)
 
   poll_common_undecided_panel:
-    show_undecided: Show {{count}} undecided
-    undecided_users: Undecided Group Members ({{count}})
-    undecided_visitors: Undecided Guests ({{count}})
-    hidden_visitors: Only group coordinators or the poll author may view undecided guests
+    show_undecided: "Show {{count}} undecided"
+    show_invitations: Show Pending Invitations
+    undecided_users: "Undecided ({{count}})"
+    invitation_count_singular: "1 additional person has been invited to participate via email"
+    invitation_count_plural: "{{count}} additional people have been invited to participate via email"
 
   poll_common_set_outcome_panel:
     share_outcome: Share outcome

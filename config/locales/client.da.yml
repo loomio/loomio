@@ -471,7 +471,6 @@ da:
     see_all_members: 'Se alle: ({{count}}) medlemmer'
     pending_invitations: '+ ({{count}}) afventer'
     subgroups: 'Undergrupper'
-    subgroups_placeholder: 'Undergrupper lader dig dele gruppen op i mindre teams.'
     invite_people: 'Inviter'
     visibility_label: 'Visibility'
     options_label: 'Indstillinger'
@@ -519,14 +518,6 @@ da:
     title: 'Deaktiver gruppe'
     question: 'Er du sikker på at du vil deaktivere denne gruppe?'
     submit: 'Ja, deaktiver denne gruppe'
-  choose_plan_modal:
-    free: Gratis
-    standard: Standard
-    pro: Prod
-    free_group_description: Donations baserede ordninger for community groupper.
-    pro_group_description: For organisationer med <nobr>flere grupper.</nobr>
-  subscription_success_modal:
-    ok_got_it: Ok, jeg har forstået!
   group_form:
     aria_label: 'Gruppe formular'
     start_group_heading: 'Opret en gruppe'

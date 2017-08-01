@@ -189,35 +189,6 @@ nl_NL:
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "We hebben geen uitnodigingen naar de opgegeven e-mailadressen gestuurd, omdat deze bij mensen horen die al in de groep zitten."
-  pricing_page:
-    header: Groepsplannen
-    gift: Gratis
-    standard: Standaard
-    plus: Pro
-    free_trial_html: We vragen je om een prijsplan te kiezen na een gratis proefperiode van <span>30 dagen</span>. Je hebt geen credit card nodig.
-    get_started_for_free: Ga gratis aan de slag
-    one_group: een groep
-    unlimited_members: onbeperkt aantal leden
-    unlimited_decisions: onbeperkt aantal beslissingen
-    email_support: e-mailondersteuning
-    slack_integration_html: |
-      <strong>Slack</strong> integratie
-    standard_price_html: '<strong>$19</strong>/maand'
-    gift_price_html: '<strong>$0</strong>'
-    plus_includes_standard: 'Alles in Standaard, plus:'
-    standard_includes_free: 'Alles in Gratis, plus:'
-    multiple_groups: "tot 10 groepen"
-    premium_support: eersteklas ondersteuning
-    help_with_setup: hulp bij eerste setup
-    custom_subdomain: aangepast subdomein
-    analytics_reports: analytische verslagen
-    contact_us_html: |
-      Prijzen zijn in Amerikaanse dollars, plus BTW indien van toepassing. Iets anders nodig? <a href="/contact">Neem contact op!</a>
-    custom_subdomain_html: |
-      aangepast subdomein ,<br />
-      bijv. <strong>jouwgroep</strong>.loomio.org
-    usage_statistics: gebruiksstatistieken
-    plus_price_html: '<strong>$99</strong>/maand'
   password_reset:
     email_guidelines_html: |
       <p>Voer het e-mailadres van je Loomio account in het veld hieronder in en je krijgt een link toegestuurd om je wachtwoord te herstellen.</p>

@@ -1,9 +1,0 @@
-= t(:"email.thread_mailer.motion_closing_soon")
-\
-= @motion.name
-\
-= @motion.description
-\
-- unless @motion.user_has_voted?(@recipient)
-  = t(:"help.have_your_say")
-  = motion_url(@motion)

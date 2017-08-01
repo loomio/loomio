@@ -1,6 +1,6 @@
 class Queries::ExploreGroups < Delegator
   def initialize
-    @relation = Group.where(is_visible_to_public: true)
+    @relation = FormalGroup.where(is_visible_to_public: true)
                      .parents_only
                      .published
                      .order('groups.memberships_count DESC')

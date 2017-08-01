@@ -3,7 +3,7 @@ class PollsController < ApplicationController
 
   def example
     if poll = PollGenerator.new(params[:type]).generate!
-      redirect_to poll_path(poll, participation_token: poll.visitors.first.participation_token)
+      redirect_to poll_path(poll, invitation_token: poll.guest_invitations.first.token)
     else
       redirect_to root_path, notice: "Sorry, we don't know about that poll type"
     end

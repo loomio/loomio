@@ -186,35 +186,6 @@ fr:
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Nous n’avons pas envoyé d’invitation aux adresses de courriel fournies, car elles appartiennent à des personnes qui sont déjà dans le groupe."
-  pricing_page:
-    header: Formules de groupe
-    gift: Gratuit
-    standard: Standard
-    plus: Pro
-    free_trial_html: Nous vous demanderons de choisir votre option tarifaire après une <span>période d’essai gratuite de 30 jours</span>. Aucun besoin de carte bancaire.
-    get_started_for_free: Commencez gratuitement
-    one_group: un groupe
-    unlimited_members: membres illimités
-    unlimited_decisions: décisions illimitées
-    email_support: Support courriel
-    slack_integration_html: |
-      Intégration à <strong>Slack</strong>
-    standard_price_html: '<strong>$19</strong>/mois'
-    gift_price_html: '<strong>$0</strong>'
-    plus_includes_standard: 'Tout le standard, plus :'
-    standard_includes_free: 'Tout le gratuit, plus :'
-    multiple_groups: "jusqu'à 10 groupes"
-    premium_support: support Premium
-    help_with_setup: Aide pour la configuration initiale
-    custom_subdomain: sous-domaine personnalisé
-    analytics_reports: rapports d'analyses
-    contact_us_html: |
-      Les prix sont en dollars US, plus les taxes le cas échéant. Besoin de quelque chose d'autre ?<a href="/contact">Discutons-en !</a>
-    custom_subdomain_html: |
-      Sous nom de domaine personnalisé,<br />
-      ex. <strong>votregroupe</strong>.loomio.org
-    usage_statistics: statistiques d’utilisation
-    plus_price_html: '<strong>$99</strong>/mois'
   password_reset:
     email_guidelines_html: |
       <p>Entrez l’adresse email de votre compte Loomio dans le champ ci-dessous et vous recevrez un lien de réinitialisation de votre mot de passe.</p>

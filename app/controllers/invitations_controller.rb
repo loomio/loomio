@@ -5,21 +5,25 @@ class InvitationsController < ApplicationController
   rescue_from(Invitation::InvitationCancelled) { respond_with_error :"invitation.invitation_cancelled" }
   rescue_from(Invitation::InvitationAlreadyUsed) do
     if current_user.email == invitation.recipient_email
-      redirect_to invitation.invitable
+      redirect_to invitation.group
     else
       respond_with_error :"invitation.invitation_already_used"
     end
   end
 
   def show
-    if invitation_user
-      InvitationService.redeem(invitation, invitation_user, identity)
-      sign_in invitation_user
+    if current_user.is_logged_in?
+      InvitationService.redeem(invitation, current_user)
       session.delete(:pending_invitation_id)
     else
       session[:pending_invitation_id] = params[:id]
     end
-    redirect_to invitation_callback
+
+    if back_to_param.match(/^http[s]?:\/\/#{ENV['CANONICAL_HOST']}/)
+      redirect_to back_to_param
+    else
+      redirect_to group_url(invitation.group)
+    end
   end
 
   private
@@ -29,27 +33,9 @@ class InvitationsController < ApplicationController
   end
 
   def invitation_callback
-    if !invitation_user && Identities::Base::PROVIDERS.include?(invitation.identity_type)
-      send(:"#{invitation.identity_type}_oauth_url", team: invitation.slack_team_id, back_to: back_to_param)
-    elsif back_to_param.match(/^http[s]?:\/\/#{ENV['CANONICAL_HOST']}/)
-      back_to_param
-    else
-      group_url(invitation.group)
-    end
   end
 
   def back_to_param
     @back_to_param ||= URI.unescape params[:back_to].to_s
-  end
-
-  def invitation_user
-    @invitation_user ||= identity&.user || current_user.presence || invitation.user_from_recipient!
-  end
-
-  def identity
-    @identity ||= Identities::Base.find_by(
-      identity_type: invitation.identity_type,
-      uid: params[:uid]
-    )
   end
 end

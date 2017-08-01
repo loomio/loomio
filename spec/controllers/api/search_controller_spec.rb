@@ -2,9 +2,8 @@ require 'rails_helper'
 describe API::SearchController do
 
   let(:user)    { create :user }
-  let(:group)   { create :group }
+  let(:group)   { create :formal_group }
   let(:discussion) { create :discussion, group: group }
-  let(:motion) { create :current_motion, discussion: discussion }
   let(:comment) { create :comment, discussion: discussion }
 
   describe 'index' do
@@ -51,24 +50,6 @@ describe API::SearchController do
       expect(@ranks).to include SearchVector::WEIGHT_VALUES[1]
     end
 
-    it "can find a discussion by proposal name" do
-      motion.update name: 'find me'
-      SearchVector.index! motion.discussion_id
-      search_for('find')
-
-      expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[2]
-    end
-
-    it "can find a discussion by proposal description" do
-      motion.update description: 'find me'
-      SearchVector.index! motion.discussion_id
-      search_for('find')
-
-      expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[1]
-    end
-
     it "can find a discussion by comment body" do
       comment.update body: 'find me'
       SearchVector.index! comment.discussion_id
@@ -78,7 +59,7 @@ describe API::SearchController do
     end
 
     it "does not display content the user does not have access to" do
-      DiscussionService.update discussion: discussion, params: { group: create(:group) }, actor: user
+      DiscussionService.update discussion: discussion, params: { group: create(:formal_group) }, actor: user
       search_for('find')
 
       expect(@result_keys).to_not include discussion.key

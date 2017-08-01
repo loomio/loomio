@@ -40,23 +40,13 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     relationships: ->
       @belongsTo 'author', from: 'users'
       @belongsTo 'discussion'
+      @belongsTo 'group'
+      @belongsTo 'guestGroup', from: 'groups'
       @hasMany   'pollOptions'
       @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
       @hasMany   'pollDidNotVotes'
       @hasMany   'communities'
       @hasMany   'visitors'
-
-    group: ->
-      if @discussion()
-        @discussion().group()
-      else
-        @recordStore.groups.find(@groupId)
-
-    userVoters: ->
-      @recordStore.users.find(_.pluck(@stances(), 'userId'))
-
-    visitorVoters: ->
-      @recordStore.visitors.find(_.pluck(@stances(), 'visitorId'))
 
     newAttachments: ->
       @recordStore.attachments.find(@newAttachmentIds)
@@ -67,54 +57,63 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     hasAttachments: ->
       _.some @attachments()
 
-    communitySize: ->
-      @membersCount() + (@visitorsCount || 0)
-
-    membersCount: ->
-      if @group()
-        @group().membershipsCount
-      else
-        1 # <-- this is the author
-
     announcementSize: (action) ->
       switch action or @notifyAction()
-        when 'publish' then @communitySize()
+        when 'publish' then @stancesCount + @undecidedUserCount
         when 'edit'    then @stancesCount
         else                0
 
-    percentVoted: ->
-      (100 * @stancesCount / @communitySize()).toFixed(0) if @communitySize() > 0
-
-    undecidedCount: ->
-      @undecidedUserCount + @undecidedVisitorCount
-
-    undecidedUsers: ->
-      if @isActive()
-        if @group()
-          _.difference(@group().members(), @userVoters())
-        else
-          _.difference([@author()], @userVoters())
+    memberIds: ->
+      _.uniq if @isActive()
+        @formalMemberIds().concat @guestIds()
       else
-        @recordStore.users.find(_.pluck(@pollDidNotVotes(), 'userId'))
+        @participantIds().concat @undecidedIds()
 
-    undecidedVisitors: ->
-      _.difference(@visitors(), @visitorVoters())
+    formalMemberIds: ->
+      # TODO: membersCanVote
+      if @group() then @group().memberIds() else []
 
-    firstOption: ->
-      _.first @pollOptions()
+    guestIds: ->
+      if @guestGroup() then @guestGroup().memberIds() else []
+
+    participantIds: ->
+      _.pluck(@uniqueStances(), 'userId')
+
+    undecidedIds: ->
+      _.pluck(@pollDidNotVotes(), 'userId')
+
+    # who can vote?
+    members: ->
+      @recordStore.users.find(@memberIds())
+
+    # who's voted?
+    participants: ->
+      @recordStore.users.find(@participantIds())
+
+    # who hasn't voted?
+    undecided: ->
+      _.difference(@members(), @participants())
+
+    membersCount: ->
+      # NB: this won't work for people who vote, then leave the group.
+      @stancesCount + @undecidedCount
+
+    percentVoted: ->
+      return 0 if @undecidedUserCount == 0
+      (100 * @stancesCount / (@membersCount())).toFixed(0)
 
     outcome: ->
       @recordStore.outcomes.find(pollId: @id, latest: true)[0]
 
     clearStaleStances: ->
       existing = []
-      _.each @uniqueStances('-createdAt'), (stance) ->
+      _.each @latestStances('-createdAt'), (stance) ->
         if _.contains(existing, stance.participant())
           stance.remove()
         else
           existing.push(stance.participant())
 
-    uniqueStances: (order, limit) ->
+    latestStances: (order, limit) ->
       _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
     cookedDetails: ->
@@ -127,7 +126,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @closedAt?
 
     goal: ->
-      @customFields.goal or @communitySize()
+      @customFields.goal or @membersCount().length
 
     close: =>
       @remote.postMember(@key, 'close')
@@ -146,10 +145,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     toggleSubscription: =>
       @remote.postMember(@key, 'toggle_subscription')
-
-    enableCommunities: ->
-      (@group() and @group().features.enable_communities) or
-      (@author() and @author().experiences.enable_communities)
 
     notifyAction: ->
       if @isNew()

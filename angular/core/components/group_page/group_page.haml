@@ -14,6 +14,5 @@
         %members_card{group: "groupPage.group", ng-if: "groupPage.canViewMemberships()"}
         %subgroups_card{group: "groupPage.group"}
         %poll_common_index_card{model: "groupPage.group", limit: "5", view-more-link: "true"}
-        %group_previous_proposals_card{group: "groupPage.group", ng-if: "!groupPage.usePolls"}
         %outlet{name: "after-slack-card", model: "groupPage.group"}
         %install_slack_card{group: "groupPage.group"}

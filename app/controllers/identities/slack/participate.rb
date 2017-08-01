@@ -13,7 +13,7 @@ module Identities::Slack::Participate
   end
 
   def respond_with_stance
-    participate_poll&.group&.add_member!(participate_identity&.user)
+    participate_poll&.group.presence&.add_member!(participate_identity&.user)
     return unless participate_stance.present?
     ::Slack::Ephemeral::StanceCreatedSerializer.new(participate_stance, root: false).as_json
   end
@@ -36,7 +36,7 @@ module Identities::Slack::Participate
   end
 
   def participate_identity
-    @participate_participant ||= Identities::Base.find_by(
+    @participate_participant ||= Identities::Base.with_user.find_by(
       identity_type: :slack,
       uid:           participate_payload.dig('user', 'id')
     )

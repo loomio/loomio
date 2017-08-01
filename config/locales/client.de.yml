@@ -378,7 +378,6 @@ de:
     members_placeholder: 'Du bist allein hier: lade einige Leute ein!'
     member_options: Mitgliedseinstellungen
     subgroups: 'Untergruppen'
-    subgroups_placeholder: 'Untergruppen ermöglichen Dir die Gruppe in verschiedene Teams aufzuteilen'
     invite_people: 'Einladen'
     visibility_label: 'Sichtbarkeit'
     options_label: 'Optionen'
@@ -434,20 +433,6 @@ de:
     choose_plan: 'Wähle dein Vertragsmodell'
     in_progress_body: 'Danke für das testen von Loomio in <strong>{{name}}</strong>. Du kannst jederzeit das Vertragsmodell wählen, dass am Besten zu Deiner Gruppe passt.'
     expired_body_html: "<strong>{{name}}</strong> hat das Ende des Loomio Probezeitraums erreicht. Um es weiterhin zu nutzen musst Du ein Vertragsmodell wählen, dass am Besten zu Deiner Gruppe passt."
-  choose_plan_modal:
-    heading: Bitte wähle ein Vertragsmodell für Deine Gruppe.
-    free: Kostenloss
-    standard: Standard
-    pro: Pro
-    per_month: /Monat
-    free_group_description: Spenden-unterstütztes Modell für Community-Gruppen
-    pro_group_description: Für Organisationen mit <nobr>mehreren Gruppen.</nobr>
-    need_help_please: Brauchst Du etwas anderes?
-    select: Wähle
-  subscription_success_modal:
-    contact_link: bitt kontaktiere uns.
-    sign_off: ❤ vom Loomio-Team
-    ok_got_it: Okay, ich hab´s!
   group_form:
     start_group_heading: 'Gründe eine Gruppe'
     start_subgroup_heading: 'Gründe eine Untergruppe'

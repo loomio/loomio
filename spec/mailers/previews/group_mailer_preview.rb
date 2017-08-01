@@ -1,6 +1,6 @@
 class GroupMailerPreview < ActionMailer::Preview
   def membership_request
-    group = FactoryGirl.create(:group)
+    group = FactoryGirl.create(:formal_group)
     membership_request = MembershipRequest.new(group: group,
                                                introduction: "Hi please let me in, I'm relevant")
     user = FactoryGirl.create(:user)
@@ -10,7 +10,7 @@ class GroupMailerPreview < ActionMailer::Preview
   end
 
   def group_email
-    group = FactoryGirl.create(:group)
+    group = FactoryGirl.create(:formal_group)
     sender = group.admins.first
     subject = "Please be aware of the important decision we're making"
     message = "as you all know the things have been happening and we need full engagement for the next thing so please come join us"

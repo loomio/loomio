@@ -413,7 +413,6 @@ el:
     see_all_members: 'Δείτε όλα: ({{count}}) μέλη'
     pending_invitations: '+ ({{count}}) σε εκρεμμότητα'
     subgroups: 'Υποομάδες'
-    subgroups_placeholder: 'Οι υπο-ομάδες σας επιτρέπουν να χωρίσετε την ομάδα σε διαφορετικές ομάδες.'
     invite_people: 'Πρόσκληση'
     visibility_label: 'Ορατότητα'
     options_label: 'Ρυθμίσεις'
@@ -465,37 +464,6 @@ el:
   trial_card:
     title: 'Δοκιμαστική περίοδος 30 ημερών'
     choose_plan: 'Επιλέξτε το χρηματικό πλάνο σας'
-  choose_plan_modal:
-    aria_label: Επιλέξτε πλάνο
-    heading: Παρακαλούμε επιλέξτε πλάνο για την ομάδα σας
-    free: Δωρεάν
-    standard: Τυπικό
-    pro: Επαγγελματικό
-    per_month: /μήνα
-    standard_group_description: Ότι χρειάζεστε από μια ομάδα.
-    free_group_description: Η δωρεά υποστηρίζει το πλάνο για τις κοινωνικές ομάδες.
-    pro_group_description: Για οργανώσεις με <nobr>πολλαπλές ομάδες.</nobr>
-    benefit_1_group: 1 ομάδα
-    benefit_10_groups: 10 ομάδες
-    benefit_unlimited_members: Μέλη χωρίς περιορισμό
-    benefit_unlimited_decisions: Αποφάσεις χωρίς περιορισμό
-    benefit_priority_support: Επαγγελματική υποστήριξη
-    benefit_help_with_setup: Βοήθεια για την αρχική ρύθμιση
-    benefit_community_support: Υποστήριξη κοινότητας
-    benefit_slack_integration: Ενσωμάτωση στο Slack
-    benefit_custom_domain: Σε δικό σας domain
-    benefit_analytics_reports: Αναλυτικές αναφορές
-    benefit_data_export: Εξαγωγή δεδομένων
-    support_link: Ας μιλήσουμε!
-    prices_in_us_dollars: Οι τιμές είναι σε δολλάρια Αμερικής,  συν φόρους πωλήσεων όπου ισχύουν.
-    need_help_please: Χρειάζεστε κάτι άλλο;
-    select: Επιλογή
-  subscription_success_modal:
-    aria_label: Εγγραφή επιτυχής
-    heading: Είστε έτοιμοι!
-    contact_link: παρακαλούμε επικοινωνήστε μαζί μας.
-    sign_off: ❤ από την ομάδα του Loomio
-    ok_got_it: Εντάξει, το κατάλαβα
   group_form:
     aria_label: 'Φόρμα ομάδας'
     start_group_heading: 'Ξεκινήστε μια ομάδα'

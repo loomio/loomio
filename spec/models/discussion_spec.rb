@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Discussion do
   let(:user)       { create :user }
-  let(:group)      { create :group }
+  let(:group)      { create :formal_group }
   let(:discussion) { create :discussion, group: group }
   let(:motion)     { create :motion, discussion: discussion }
 
@@ -24,81 +24,11 @@ describe Discussion do
     end
   end
 
-  describe "#motions_count" do
-    before do
-      @user = create(:user)
-      @group = create(:group)
-      @discussion = create(:discussion, group: @group)
-      @motion = create(:motion, discussion: @discussion)
-    end
-
-    it "returns a count of motions" do
-      expect(@discussion.reload.motions_count).to eq 1
-    end
-
-    it "updates correctly after creating a motion" do
-      expect {
-        @discussion.motions.create(attributes_for(:motion).merge({ author: @user }))
-      }.to change { @discussion.reload.motions_count }.by(1)
-    end
-
-    it "updates correctly after deleting a motion" do
-      expect {
-        @motion.destroy
-      }.to change { @discussion.reload.motions_count }.by(-1)
-    end
-
-  end
-
-  describe "#closed_motions_count" do
-    before do
-      motion.close!
-    end
-
-    it "returns a count of closed motions" do
-      expect(discussion.reload.closed_motions_count).to eq 1
-    end
-
-    it "updates correctly after motion is closed" do
-      expect {
-        discussion.motions.create(attributes_for(:motion).merge({ author: user })).close!
-      }.to change { discussion.reload.closed_motions_count }.by(1)
-    end
-
-    it "updates correctly after deleting a motion" do
-      expect { motion.destroy }.to change { discussion.reload.closed_motions_count }.by(-1)
-    end
-
-  end
-
-  describe "#current_motion" do
-    before do
-      @discussion = create :discussion
-      @motion = create :motion, discussion: @discussion
-    end
-
-    context "where motion is in open" do
-      it "returns motion" do
-        @discussion.current_motion.should eq(@motion)
-      end
-    end
-
-    context "where motion close date has past" do
-      before do
-        @motion.closed_at = 3.days.ago
-        @motion.save!
-      end
-      it "does not return motion" do
-        @discussion.current_motion.should be_nil
-      end
-    end
-  end
-
   describe '#inherit_group_privacy' do
     # provides a default when the discussion is new
     # when present passes the value on unmodified
     let(:discussion) { Discussion.new }
-    let(:group) { Group.new }
+    let(:group) { FormalGroup.new }
 
     subject { discussion.private }
 
@@ -141,7 +71,7 @@ describe Discussion do
 
   describe "validator: privacy_is_permitted_by_group" do
     let(:discussion) { Discussion.new }
-    let(:group) { Group.new }
+    let(:group) { FormalGroup.new }
     subject { discussion }
 
 

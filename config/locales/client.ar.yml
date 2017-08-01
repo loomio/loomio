@@ -265,7 +265,6 @@ ar:
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
     subgroups: 'مجموعة فرعية'
-    subgroups_placeholder: 'تتيح لك المجموعات الفرعية تقسيم المجموعة إلى فرق مختلفة.'
     visibility_label: 'الظهور'
     options_label: 'الخيارات'
     options:
@@ -304,14 +303,6 @@ ar:
     choose_plan: 'قم باختيار خطة التسعير خاصتك'
     in_progress_body: 'شكراً جزيلاً لتجربة لوميو في <strong>{{name}}</strong>. يمكنك اختيار خطة التسعير التي تناسب مجموعتك في أي وقت.'
     expired_body_html: "لقد بلغت <strong>{{name}}</strong> نهاية المدة التجريبية للوميو. للاستمرار في استخدامه عليك اختيار خطة تسعير تناسب مجموعتك."
-  choose_plan_modal:
-    heading: الرجاء اختيار خطة تناسب مجموعتك.
-    standard: قياسية
-    select: اختيار
-  subscription_success_modal:
-    contact_link: الرجاء الاتصال بنا
-    sign_off: ❤ من فريق لوميو
-    ok_got_it: حسناً، لقد فهمت!
   group_form:
     start_group_heading: 'إبدأ مجموعة'
     start_subgroup_heading: 'إبدأ مجموعة فرعية.'

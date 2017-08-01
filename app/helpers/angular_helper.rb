@@ -3,7 +3,6 @@ module AngularHelper
   def boot_angular_ui
     metadata if browser.bot? && respond_to?(:metadata, true)
     app_config
-    current_user.update(angular_ui_enabled: true) unless current_user.angular_ui_enabled?
     render 'layouts/angular', layout: false
   end
 
@@ -16,12 +15,11 @@ module AngularHelper
 
   def app_config
     @appConfig = {
-      bootData:            BootData.new(current_user, current_visitor).data,
+      bootData:            BootData.new(current_user).data,
       version:             Loomio::Version.current,
       environment:         Rails.env,
       loadVideos:          (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),
       flash:               flash.to_h,
-      currentVisitorId:    current_visitor.id,
       currentUserLocale:   current_user.locale,
       currentUrl:          request.original_url,
       permittedParams:     PermittedParamsSerializer.new({}),

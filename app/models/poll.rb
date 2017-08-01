@@ -2,6 +2,7 @@ class Poll < ActiveRecord::Base
   extend  HasCustomFields
   include ReadableUnguessableUrls
   include HasMentions
+  include HasGuestGroup
   include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
@@ -26,9 +27,8 @@ class Poll < ActiveRecord::Base
   has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
-  belongs_to :motion
   belongs_to :discussion
-  belongs_to :group
+  belongs_to :group, class_name: "FormalGroup"
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count
@@ -39,37 +39,41 @@ class Poll < ActiveRecord::Base
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
-  has_many :visitor_participants, through: :stances, source: :participant, source_type: "Visitor"
-  has_many :visitors, through: :communities
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :visitors, through: :communities
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
+  has_many :guest_invitations, through: :guest_group, source: :invitations
+
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
-  has_many :poll_options, dependent: :destroy
+  has_many :poll_options, -> { order(priority: :asc) },  dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes, dependent: :destroy
+  has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
-  define_counter_cache(:stances_count)           { |poll| poll.stances.latest.count }
-  define_counter_cache(:visitors_count)          { |poll| poll.visitors.count }
-  define_counter_cache(:undecided_visitor_count) { |poll| Visitor.undecided_for(poll).count }
-  define_counter_cache(:undecided_user_count)   do |poll|
-    if community = poll.community_of_type(:loomio_users) || poll.group&.community
-      community.members
+  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
+  define_counter_cache(:undecided_user_count) do |poll|
+    if poll.active?
+      poll.undecided.count
     else
-      User.where(id: poll.author_id)
-    end.without(poll.participants).count
+      poll.poll_did_not_votes.count
+    end
   end
 
   has_many :poll_communities, dependent: :destroy, autosave: true
   has_many :communities, through: :poll_communities
 
   delegate :locale, to: :author
+
+  def undecided_count
+    undecided_user_count + guest_group.pending_invitations_count
+  end
 
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
@@ -116,8 +120,32 @@ class Poll < ActiveRecord::Base
     @grouped_stance_choices ||= stance_choices.reasons_first
                                               .where("stance_choices.created_at > ?", since || 100.years.ago)
                                               .includes(:poll_option, stance: :participant)
+                                              .where("stances.latest": true)
                                               .to_a
                                               .group_by(&:poll_option)
+  end
+
+  def group
+    super || NullFormalGroup.new
+  end
+
+  def group_members
+    User.joins(:memberships)
+        .joins(:groups)
+        .where("memberships.group_id": group_id)
+        .where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
+  end
+
+  def members
+    User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
+  end
+
+  def undecided
+    reload.members.without(participants)
+  end
+
+  def invitations
+    Invitation.where(group_id: [group_id, guest_group_id].compact)
   end
 
   def update_stance_data
@@ -150,6 +178,10 @@ class Poll < ActiveRecord::Base
     closed_at.nil?
   end
 
+  def closed?
+    !active?
+  end
+
   def is_single_vote?
     AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
   end
@@ -170,29 +202,12 @@ class Poll < ActiveRecord::Base
     (['title', 'details', 'closing_at'] & self.changes.keys).any?
   end
 
-  def anyone_can_participate
-    @anyone_can_participate ||= community_of_type(:public).present?
-  end
-
-  def anyone_can_participate=(boolean)
-    if boolean
-      community_of_type(:public, build: true)
-    else
-      community_of_type(:public)&.destroy
-    end
-  end
-
   def discussion_id=(discussion_id)
     super.tap { self.group_id = self.discussion&.group_id }
   end
 
   def discussion=(discussion)
     super.tap { self.group_id = self.discussion&.group_id }
-  end
-
-  def build_loomio_group_community
-    poll_communities.find_by(community: community_of_type(:loomio_group))&.destroy
-    poll_communities.build(community: self.group.community) if self.group
   end
 
   def community_of_type(community_type, build: false, params: {})

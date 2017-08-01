@@ -4,36 +4,43 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
   controller: ($scope) ->
 
     $scope.canShowUndecided = ->
-      $scope.poll.undecidedCount() > 0 and !$scope.showingUndecided
+      !$scope.showingUndecided and
+      ($scope.poll.undecidedUserCount > 0 or
+       $scope.poll.guestGroup().pendingInvitationsCount > 0)
 
     params =
-      poll_id: $scope.poll.key
-      participation_token: $location.search().participation_token
+      poll_id:          $scope.poll.key
+      invitation_token: $location.search().invitation_token
 
-    $scope.usersLoader = if $scope.poll.isActive()
-      new RecordLoader
-        collection: 'memberships'
-        path:       'undecided'
-        params:     params
-    else
-      new RecordLoader
-        collection: 'poll_did_not_votes'
-        params:     params
+    $scope.loaders = if $scope.poll.isActive()
+      memberships: new RecordLoader
+        collection: if $scope.poll.isActive() then 'memberships' else 'poll_did_not_votes'
+        path: 'undecided'
+        params: params
+      invitations: new RecordLoader
+        collection: 'invitations'
+        path: 'pending'
+        params: params
 
-    $scope.visitorsLoader = new RecordLoader
-      collection: 'visitors'
-      params:     params
-
-    $scope.canViewVisitors = ->
-      AbilityService.canAdministerPoll($scope.poll)
-
-    $scope.moreUsersToLoad = ->
-      $scope.usersLoader.numLoaded < $scope.poll.undecidedUserCount
-
-    $scope.moreVisitorsToLoad = ->
-      $scope.visitorsLoader.numLoaded < $scope.poll.undecidedVisitorCount
+    $scope.canSharePoll = ->
+      AbilityService.canSharePoll($scope.poll)
 
     $scope.showUndecided = ->
       $scope.showingUndecided = true
-      $scope.usersLoader.fetchRecords()
-      $scope.visitorsLoader.fetchRecords()
+      if $scope.moreMembershipsToLoad()
+        $scope.loadMemberships()
+      else
+        $scope.loadInvitations()
+
+    $scope.moreMembershipsToLoad = ->
+      $scope.loaders.memberships.numLoaded < $scope.poll.undecidedUserCount
+
+    $scope.moreInvitationsToLoad = ->
+      $scope.canSharePoll() and
+      $scope.loaders.invitations.numLoaded < $scope.poll.guestGroup().pendingInvitationsCount
+
+    $scope.loadMemberships = ->
+      $scope.loaders.memberships.fetchRecords()
+
+    $scope.loadInvitations = ->
+      $scope.loaders.invitations.fetchRecords()
