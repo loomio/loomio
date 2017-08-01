@@ -3,8 +3,8 @@
 - login_url = login_token_url(@info.login_token.token, @utm_hash)
 
 - if User.verified.exists?(email: @info.recipient.email)
-  was this you? claim the vote with just one click.
+  = t :"poll_mailer.common.verify_stance_for_verified_user", title: @info.poll.title
   = link_to t(:"email.login.login", name: name), login_url
 - else
-  please verify your email now, or we will not email you about this poll ever again.
+  = t :"poll_mailer.common.verify_stance_for_unverified_user", title: @info.poll.title
   = link_to t(:"email.login.login", name: name), login_url

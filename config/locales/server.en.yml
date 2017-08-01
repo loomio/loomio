@@ -3,7 +3,7 @@ en:
   poll:
     error:
       must_have_options: Polls must have options
-      
+
   invitation:
     invitation_not_found: We could not find an invitation with the token you've given us. Please request another invitation from your group.
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
@@ -337,6 +337,8 @@ en:
       undecided_members: Undecided Members (%{count})
       undecided_visitors: Undecided Guests (%{count})
       more_undecided: "%{count} more..."
+      verify_stance_for_unverified_user: "Thanks for voting in %{title}. Please verify your email address, so we can send you the results when they're ready."
+      verify_stance_for_verified_user: "It looks like you voted in %{title}. If this was you, please click the link below to confirm your vote."
 
     proposal:
       subject:
@@ -350,6 +352,7 @@ en:
         invitation_created: '%{actor} wants your opinion: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
@@ -380,6 +383,7 @@ en:
         invitation_created: '%{actor} wants you to vote: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -410,6 +414,7 @@ en:
         invitation_created: '%{actor} is checking: %{title}'
         visitor_reminded: '%{actor} is waiting for you to respond: %{title}'
         stance_created: "%{actor} participated in: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
@@ -440,6 +445,7 @@ en:
         invitation_created: '%{actor} invited you to join a dot vote: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a dot vote'
@@ -473,6 +479,7 @@ en:
         invitation_created: '%{actor} wants to arrange a time: %{title}'
         visitor_reminded: '%{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a time poll'

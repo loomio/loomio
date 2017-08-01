@@ -118,11 +118,11 @@ describe API::StancesController do
 
       it 'logged in as different email' do
         # user is logged in as someone else
-        # show message they need to logout
+        # show message they need to logout - changed to let them vote...
         sign_in another_user
-        expect { post :create, stance: stance_params, invitation_token: invitation.token }.to_not change { Stance.count }
-        expect(invitation.reload.accepted?).to be false
-        expect(response.status).to eq 403
+        expect { post :create, stance: stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
+        expect(invitation.reload.accepted?).to be true
+        expect(another_user.reload.groups).to include group
       end
 
       it 'not logged in' do
