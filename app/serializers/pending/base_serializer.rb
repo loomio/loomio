@@ -46,6 +46,6 @@ class Pending::BaseSerializer < ActiveModel::Serializer
   end
 
   def user
-    @user ||= User.find_by_email(email) || LoggedOutUser.new
+    @user ||= User.find_by(email: email) || LoggedOutUser.new
   end
 end

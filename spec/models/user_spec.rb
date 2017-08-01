@@ -195,6 +195,13 @@ describe User do
     end
   end
 
+  describe 'find_by_email' do
+    it 'is case insensitive' do
+      user = create(:user, email: "bob@bob.com")
+      expect(User.find_by(email: "BOB@bob.com")).to eq user
+    end
+  end
+
   describe "usernames" do
     before do
       @user1 = User.new(name: "Test User", email: "test1@example.com", password: "passwordXYZ123")
