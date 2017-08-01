@@ -86,4 +86,8 @@ describe Queries::UsersByVolumeQuery do
     users.should_not include user_with_membership_volume_mute
     users.should_not include user_with_archived_membership
   end
+
+  it 'deals with nils' do
+    expect(Queries::UsersByVolumeQuery.normal_or_loud(nil)).to eq User.none
+  end
 end
