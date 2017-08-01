@@ -11,7 +11,7 @@ class GroupExporter
 
   def initialize(group, group_ids)
     @group = group
-    @groups = Group.where(id: group_ids)
+    @groups = FormalGroup.where(id: group_ids)
     @group_fields = %w[id key name description created_at]
 
     @memberships = Membership.where(group_id: group_ids).chronologically
