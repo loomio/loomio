@@ -1,5 +1,9 @@
 ---
 en:
+  poll:
+    error:
+      must_have_options: Polls must have options
+      
   invitation:
     invitation_not_found: We could not find an invitation with the token you've given us. Please request another invitation from your group.
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
