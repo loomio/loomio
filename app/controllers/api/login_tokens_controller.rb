@@ -7,6 +7,6 @@ class API::LoginTokensController < API::RestfulController
   private
 
   def login_token_user
-    User.find_by!(email: params.require(:email))
+    User.order(email_verified: :desc).find_by!(email: params.require(:email))
   end
 end
