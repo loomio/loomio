@@ -6,9 +6,9 @@ module HasGuestGroup
   end
 
   def guest_group
-    super || create_guest_group.tap { self.save! }
+    super || create_guest_group.tap { self.save(validate: false) }
   end
-  
+
   def invite_guest!(name: nil, email:, inviter: nil)
     self.guest_group.invitations.find_or_create_by(
       recipient_email: email,
