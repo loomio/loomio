@@ -18,7 +18,7 @@ class MembershipRequest < ActiveRecord::Base
   has_many :admins, through: :group
 
   validates :introduction, length: { maximum: Rails.application.secrets.max_message_length }
-  
+
   scope :pending, -> { where(response: nil).order('created_at DESC') }
   scope :responded_to, -> { where('response IS NOT ?', nil).order('responded_at DESC') }
   scope :requested_by, ->(user) { where requestor_id: user.id }
@@ -80,7 +80,7 @@ class MembershipRequest < ActiveRecord::Base
 
   def already_in_group?
     if from_a_visitor?
-      group_members.find_by_email(email)
+      group_members.find_by(email: email)
     else
       group_members.include?(requestor)
     end

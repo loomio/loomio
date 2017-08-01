@@ -2,7 +2,7 @@ module Dev::NintiesMoviesHelper
   # try to just return objects here. Don't knit them together. Leave that for
   # the development controller action to do if possible
   def patrick
-    @patrick ||= User.find_by_email('patrick_swayze@example.com') ||
+    @patrick ||= User.find_by(email: 'patrick_swayze@example.com') ||
                  User.create!(name: 'Patrick Swayze',
                               email: 'patrick_swayze@example.com',
                               is_admin: true,
@@ -23,7 +23,7 @@ module Dev::NintiesMoviesHelper
   end
 
   def jennifer
-    @jennifer ||= User.find_by_email('jennifer_grey@example.com') ||
+    @jennifer ||= User.find_by(email: 'jennifer_grey@example.com') ||
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
@@ -33,7 +33,7 @@ module Dev::NintiesMoviesHelper
   end
 
   def max
-    @max ||= User.find_by_email('max@example.com') ||
+    @max ||= User.find_by(email: 'max@example.com') ||
              User.create!(name: 'Max Von Sydow',
                           email: 'max@example.com',
                           password: 'gh0stmovie',
@@ -44,7 +44,7 @@ module Dev::NintiesMoviesHelper
   end
 
   def emilio
-    @emilio ||= User.find_by_email('emilio@loomio.org') ||
+    @emilio ||= User.find_by(email: 'emilio@loomio.org') ||
                 User.create!(name: 'Emilio Estevez',
                             email: 'emilio@loomio.org',
                             password: 'gh0stmovie',
@@ -52,7 +52,7 @@ module Dev::NintiesMoviesHelper
   end
 
   def judd
-    @judd ||= User.find_by_email('judd@example.com') ||
+    @judd ||= User.find_by(email: 'judd@example.com') ||
               User.create!(name: 'Judd Nelson',
                            email: 'judd@example.com',
                            password: 'gh0stmovie',
