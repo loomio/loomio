@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'pollCommonUndecidedUser', (FlashService, 
   controller: ($scope) ->
     $scope.resend = ->
       $scope.user.resend().then ->
-        FlashService.success 'poll_common_undecided_user.invitation_resent'
+        FlashService.success 'common.action.resent'
     LoadingService.applyLoadingFunction $scope, 'resend'
 
     $scope.remind = ->
