@@ -351,7 +351,7 @@ en:
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
         invitation_created: '%{actor} wants your opinion: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        user_reminded: '%{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
 
@@ -365,7 +365,7 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
         invitation_created: '<strong>%{actor}</strong> wants to hear your opinion: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
@@ -384,7 +384,7 @@ en:
         outcome_created: '%{actor} shared a poll outcome: %{title}'
         invitation_created: '%{actor} wants you to vote: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        user_reminded: '%{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
 
@@ -400,7 +400,7 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
         invitation_created: '<strong>%{actor}</strong> invited you to join a poll: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
@@ -417,7 +417,7 @@ en:
         outcome_created: '%{actor} shared an outcome: %{title}'
         invitation_created: '%{actor} is checking: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '%{actor} is waiting for you to respond: %{title}'
+        user_reminded: '%{actor} is waiting for you to respond: %{title}'
         stance_created: "%{actor} participated in: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
 
@@ -431,7 +431,7 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared an outcome.'
         invitation_created: '<strong>%{actor}</strong> is checking: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to respond: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is waiting for you to respond: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
 
       body:
@@ -450,7 +450,7 @@ en:
         outcome_created: '%{actor} shared an outcome: %{title}'
         invitation_created: '%{actor} invited you to join a dot vote: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        user_reminded: '%{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
 
@@ -466,7 +466,7 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a dot vote outcome.'
         invitation_created: '<strong>%{actor}</strong> invited you to join a dot vote: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
@@ -486,7 +486,7 @@ en:
         outcome_created_author: 'You shared an outcome: %{title}'
         invitation_created: '%{actor} wants to arrange a time: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '%{actor} is waiting for your response: %{title}'
+        user_reminded: '%{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
 
@@ -503,7 +503,7 @@ en:
         outcome_created_author: 'You shared a time poll outcome.'
         invitation_created: '<strong>%{actor}</strong> wants to arrange a time: %{title}'
         invitation_resend: '%{actor} is still waiting for you to vote on %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for your response: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
 
       body:

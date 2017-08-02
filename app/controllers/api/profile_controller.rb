@@ -11,6 +11,11 @@ class API::ProfileController < API::RestfulController
     respond_with_resource serializer: UserSerializer
   end
 
+  def remind
+    service.remind(user: load_resource, actor: current_user, model: load_and_authorize(:poll))
+    respond_with_resource
+  end
+
   def update_profile
     service.update(current_user_params)
     respond_with_resource
