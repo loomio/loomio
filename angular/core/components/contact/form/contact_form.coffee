@@ -10,4 +10,4 @@ angular.module('loomioApp').directive 'contactForm', (Session, Records, AbilityS
       $scope.message.email = Session.user().email
 
     $scope.submit = FormService.submit $scope, $scope.message,
-      flashSuccess: "contact_form.sent"
+      flashSuccess: "contact_message_form.new_contact_message"
