@@ -11,3 +11,6 @@ angular.module('loomioApp').factory 'InvitationModel', (BaseModel, AppConfig) ->
 
     isPending: ->
       !@cancelledAt? && !@acceptedAt?
+
+    resend: ->
+      @remote.postMember(@id, 'resend').then => @reminded = true

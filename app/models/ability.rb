@@ -162,7 +162,7 @@ class Ability
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
-    can :create, Invitation do |invitation|
+    can [:create, :resend], Invitation do |invitation|
       can? :invite_people, invitation.group
     end
 
