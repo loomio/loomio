@@ -5,6 +5,12 @@ class StanceService
     EventBus.broadcast 'stance_verify', stance, actor
   end
 
+  def self.destroy(stance:, actor:)
+    actor.ability.authorize! :destroy, stance
+    stance.destroy
+    EventBus.broadcast 'stance_destroy', stance, actor
+  end
+
   def self.create(stance:, actor:)
     actor.ability.authorize! :create, stance
 

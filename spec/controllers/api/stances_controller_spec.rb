@@ -124,6 +124,22 @@ describe API::StancesController do
         expect(response.status).to eq 403
       end
     end
+
+    describe 'destroy' do
+      it 'destroys unverified stances' do
+        sign_in user
+        stance
+        expect{post :destroy, id: stance.id}.to change { unverified_user.stances.count }.by -1
+        expect(response.status).to eq 200
+      end
+
+      it 'cannot destroy verified stances' do
+        sign_in user
+        stance.update(participant: user)
+        expect{post :destroy, id: stance.id}.to_not change { unverified_user.stances.count }
+        expect(response.status).to eq 403
+      end
+    end
   end
 
   describe 'create' do
