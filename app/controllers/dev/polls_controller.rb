@@ -37,20 +37,6 @@ class Dev::PollsController < Dev::BaseController
     redirect_to poll_url(poll)
   end
 
-  def test_poll_in_discussion_with_guest
-    group = create_group_with_members
-    user  = saved fake_user
-    group.add_member!(user)
-    sign_in user
-    discussion = saved fake_discussion(group: group)
-    poll = saved fake_poll(discussion: discussion)
-    Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
-    poll.guest_group.add_member! fake_user(email_verified: false)
-    poll.guest_group.invitations.create! recipient_email: "bill@example.com", intent: :join_group
-
-    redirect_to poll_url(poll)
-  end
-
   def start_poll
     sign_in saved fake_user
     redirect_to new_poll_url
@@ -101,6 +87,8 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_stance_created,         email: true
   observe_scenario :poll_options_added,          email: true, except: [:check, :proposal]
   observe_scenario :poll_options_added_author,   email: true, except: [:check, :proposal]
+  observe_scenario :poll_with_guest
+  observe_scenario :poll_with_guest_as_author
   observe_scenario :poll_notifications
   observe_scenario :poll_created_as_visitor
   observe_scenario :poll_created_as_logged_out
