@@ -13,6 +13,11 @@ class Clients::Intercom < Clients::Base
 
   private
 
+  # Intercom's API is vvverry picky; call to_json on payload before sending.
+  def require_json_payload?
+    true
+  end
+
   def default_params
     {}
   end

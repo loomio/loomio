@@ -50,9 +50,25 @@ class Clients::Base
       is_success: default_is_success
     )
     Clients::Request.new(method, [options[:host], path].join('/'), {
-      options[:params_field] => default_params.merge(params).to_json,
-      :"headers"             => default_headers.merge(headers)
+      options[:params_field] => params_for(params),
+      :"headers"             => headers_for(headers)
     }).tap { |request| request.perform!(options) }
+  end
+
+  def params_for(params = {})
+    if require_json_payload?
+      default_params.merge(params).to_json
+    else
+      default_params.merge(params)
+    end
+  end
+
+  def headers_for(headers = {})
+    default_headers.merge(headers)
+  end
+
+  def require_json_payload?
+    false
   end
 
   # determines whether the response should be deemed successful or not
