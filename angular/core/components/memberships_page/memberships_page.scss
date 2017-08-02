@@ -10,6 +10,12 @@
   }
 }
 
-.memberships-page__search-filter input {
-  padding-left: 35px;
+.memberships-page__top-bar {
+  margin-bottom: 16px;
+}
+
+.memberships-page__actions {
+  display: flex;
+  flex-direction: row;
+  @media(max-width: $tiny-max-px) { flex-direction: column; }
 }
