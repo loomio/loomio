@@ -1044,6 +1044,8 @@ en:
     discussion_moved: 'moved the thread from <span>{{group}}</span>'
 
   contact_message_form:
+    helptext: "Want to get in touch? Just enter a message below and you'll hear from us shortly."
+    contact_us_email: "(You can also always reach us at <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
     contact_us: 'Contact Us'
     name_label: 'Your name'
     name_placeholder: 'Enter your name...'
@@ -1052,7 +1054,7 @@ en:
     message_label: 'Your message'
     message_placeholder: 'Your message...'
     send_message: 'Send Message'
-    new_contact_message: 'Thanks for your message; we''ll be in touch soon!'
+    new_contact_message: "Thanks for getting in touch; we''ll get back to you soon!"
 
   help_page:
     coordinating: 'Coordinating your Loomio group'

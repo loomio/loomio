@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   include LoadAndAuthorize
   include CurrentUserHelper
 
-  helper :analytics_data
   helper :locales
   helper_method :current_user
   helper_method :dashboard_or_root_path

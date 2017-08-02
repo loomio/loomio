@@ -50,7 +50,7 @@ class Clients::Base
       is_success: default_is_success
     )
     Clients::Request.new(method, [options[:host], path].join('/'), {
-      options[:params_field] => default_params.merge(params),
+      options[:params_field] => default_params.merge(params).to_json,
       :"headers"             => default_headers.merge(headers)
     }).tap { |request| request.perform!(options) }
   end
