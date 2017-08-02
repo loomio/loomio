@@ -3,6 +3,14 @@ class Dev::PollsController < Dev::BaseController
   include Dev::PollsScenarioHelper
   skip_before_filter :cleanup_database
 
+  def test_verify_stances
+    user            = fake_user(email_verified: true)
+    unverified_user = fake_user(email: user.email, email_verified: false)
+    saved fake_stance(participant: unverified_user)
+    sign_in user
+    redirect_to verify_stances_path
+  end
+
   def test_verify_vote_by_unverified_user
     poll = saved fake_poll
     unverified_user = saved fake_user(email_verified: false)

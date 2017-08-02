@@ -95,6 +95,14 @@ en:
     page_not_found: 'We were unable to find that. It may have been deleted or moved.'
     internal_server_error: 'We''re sorry, but something went wrong. Please try again.'
 
+  verify_stances:
+    title: Verify votes
+    description: Please review the votes below and verify that they are yours.
+    verify: Verify
+    remove: Remove
+    verify_success: Verified vote
+    remove_success: Removed vote
+
   start_proposal_card:
     title: 'Start a proposal'
     helptext: Ready to make a decision?
