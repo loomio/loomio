@@ -1,4 +1,10 @@
 class StanceService
+  def self.verify(stance:, actor:)
+    actor.ability.authorize! :verify, stance
+    stance.update(participant: actor)
+    EventBus.broadcast 'stance_verify', stance, actor
+  end
+
   def self.create(stance:, actor:)
     actor.ability.authorize! :create, stance
 
