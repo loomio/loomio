@@ -305,6 +305,7 @@ en:
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
     comment_liked: "<strong>{{name}}</strong> liked your comment in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
+    user_reminded: "<strong>{{name}}</strong> is waiting on you to participate in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{title}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{title}}</strong>"
@@ -1384,12 +1385,12 @@ en:
     show_undecided: "Show {{count}} undecided"
     show_invitations: Show Pending Invitations
     undecided_users: "Undecided ({{count}})"
-    reminder_sent: Reminder sent!
     invitation_count_singular: "1 additional person has been invited to participate via email"
     invitation_count_plural: "{{count}} additional people have been invited to participate via email"
 
   poll_common_undecided_user:
-    user_reminded: Reminder notification sent
+    reminded: Reminder sent!
+    reminder_sent: Reminder notification sent
     invitation_resent: Invitation resent
 
   poll_common_set_outcome_panel:

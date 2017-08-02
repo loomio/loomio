@@ -97,6 +97,7 @@ Loomio::Application.routes.draw do
     resources :profile, only: [:show] do
       get  :me, on: :collection
       get  :email_status, on: :collection
+      post :remind, on: :member
       post :update_profile, on: :collection
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection

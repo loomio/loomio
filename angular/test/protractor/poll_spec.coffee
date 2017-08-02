@@ -144,6 +144,7 @@ describe 'Polls', ->
 
   it 'can resend unaccepted invitations', ->
     page.loadPath 'polls/test_proposal_poll_with_guest_as_author'
+    page.click '.show-results-button'
     page.click '.poll-common-undecided-panel__button'
     page.clickFirst '.poll-common-undecided-user__resend'
     page.expectFlash 'Invitation resent'
