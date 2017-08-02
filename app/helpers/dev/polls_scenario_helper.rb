@@ -239,12 +239,12 @@ module Dev::PollsScenarioHelper
     group.add_member!(user)
     group.add_member!(another_user)
 
-    poll = fake_poll(discussion: fake_discussion(group: group))
+    poll = fake_poll(poll_type: poll_type, discussion: fake_discussion(group: group))
     PollService.create(poll: poll, actor: another_user)
     Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
 
     poll.guest_group.add_member! fake_user(email_verified: false)
-    poll.guest_group.invitations.create! recipient_email: "bill@example.com", intent: :join_group
+    poll.invite_guest! email: "bill@example.com"
 
     {group: group,
      poll: poll,

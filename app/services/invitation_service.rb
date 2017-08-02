@@ -41,6 +41,12 @@ class InvitationService
     end
   end
 
+  def self.resend(invitation:, actor:)
+    actor.ability.authorize! :resend, invitation
+    EventBus.broadcast 'invitation_resend', invitation, actor
+    Events::InvitationResend.publish!(invitation)
+  end
+
   def self.cancel(invitation:, actor:)
     actor.ability.authorize! :cancel, invitation
     invitation.cancel!(canceller: actor)
