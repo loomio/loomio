@@ -118,11 +118,11 @@ describe API::StancesController do
 
       it 'logged in as different email' do
         # user is logged in as someone else
-        # show message they need to logout
+        # show message they need to logout - changed to let them vote...
         sign_in another_user
-        expect { post :create, stance: stance_params, invitation_token: invitation.token }.to_not change { Stance.count }
-        expect(invitation.reload.accepted?).to be false
-        expect(response.status).to eq 403
+        expect { post :create, stance: stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
+        expect(invitation.reload.accepted?).to be true
+        expect(another_user.reload.groups).to include group
       end
 
       it 'not logged in' do
@@ -136,7 +136,7 @@ describe API::StancesController do
         expect(participant.email_verified).to be false
         expect(invitation.reload.accepted?).to be true
         expect(last_email.to).to eq ['user@example.com']
-        expect(last_email_html_body).to include "claim the vote"
+        expect(last_email_html_body).to include "confirm your vote"
       end
     end
 
@@ -196,7 +196,7 @@ describe API::StancesController do
         expect(poll.stances.first.participant.email).to eq 'user@example.com'
         expect(poll.guest_group.members).to include(poll.stances.first.participant)
         expect(last_email.to).to eq ['user@example.com']
-        expect(last_email_html_body).to include "verify"
+        expect(last_email_html_body).to include "Please verify your email address"
       end
     end
 
@@ -228,7 +228,7 @@ describe API::StancesController do
           expect(poll.members).to include stance.participant
           expect(poll.members).to_not include User.verified.find_by(email: stance.participant.email)
           expect(last_email.to).to eq [stance.participant.email]
-          expect(last_email_html_body).to include "claim the vote"
+          expect(last_email_html_body).to include "confirm your vote"
         end
 
         it 'user enters unverified users email' do

@@ -1,17 +1,18 @@
 class Queries::UsersByVolumeQuery
   def self.normal_or_loud(*models)
-    base_query(models, mode: :greater_than, volume: DiscussionReader.volumes[:normal])
+    base_query(models.compact, mode: :greater_than, volume: DiscussionReader.volumes[:normal])
   end
 
   %w(mute quiet normal loud).map(&:to_sym).each do |volume|
     define_singleton_method volume, ->(*models) {
-      base_query(models, mode: :equal_to, volume: DiscussionReader.volumes[volume])
+      base_query(models.compact, mode: :equal_to, volume: DiscussionReader.volumes[volume])
     }
   end
 
   private
 
   def self.base_query(models, mode:, volume:)
+    return User.none unless models.present?
     User.active.distinct.from("(#{models.map do
       |m| model_query(m, mode: mode, volume: volume).to_sql
     end.compact.join(" UNION ")}) as users")

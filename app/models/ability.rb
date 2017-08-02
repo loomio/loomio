@@ -108,7 +108,7 @@ class Ability
       user.email_verified? &&
       can?(:show, group) &&
       (group.membership_granted_upon_request? ||
-       group.invitations.find_by(recipient_email: @user.email))
+       group.invitations.useable.find_by(recipient_email: @user.email))
     end
 
     can [:create], GroupIdentity do |group_identity|
@@ -315,14 +315,7 @@ class Ability
       poll.active? && (
         poll.members.include?(@user) ||
         poll.anyone_can_participate ||
-        # is the invitation to a verified user?
-        # if yes, logged in user must be that user
-        # if no, logged in user can use the token.
-        (user.is_logged_in? && poll.invitations.to_verified_user.find_by(token: @user.token, recipient_email: @user.email)) ||
-        (user.is_logged_in? && poll.invitations.shareable.find_by(token: @user.token)) ||
-        (user.is_logged_in? && poll.invitations.to_unverified_user.find_by(token: @user.token)) ||
-        (user.is_logged_in? && poll.invitations.to_unrecognized_user.find_by(token: @user.token)) ||
-        (!user.is_logged_in? && poll.invitations.find_by(token: @user.token))
+        poll.invitations.useable.find_by(token: @user.token)
       )
     end
 
@@ -331,7 +324,7 @@ class Ability
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
       poll.members.include?(@user) ||
-      poll.invitations.pluck(:token).include?(@user.token)
+      poll.invitations.useable.pluck(:token).include?(@user.token)
     end
 
     can :create, Poll do |poll|

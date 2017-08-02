@@ -73,17 +73,6 @@ namespace :loomio do
     CohortService.tag_groups
   end
 
-  task update_blog_stories: :environment do
-    rss = SimpleRSS.parse open('http://blog.loomio.org/category/stories/feed/')
-    BlogStory.destroy_all
-    rss.items.each do |item|
-      BlogStory.create(title: item[:title],
-                       url: item[:link],
-                       image_url: item[:media_content_url].try(:gsub, "http://", "https://"),
-                       published_at: item[:pubDate])
-    end
-  end
-
   task notify_clients_of_update: :environment do
     MessageChannelService.publish({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
   end

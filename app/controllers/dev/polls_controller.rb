@@ -3,6 +3,25 @@ class Dev::PollsController < Dev::BaseController
   include Dev::PollsScenarioHelper
   skip_before_filter :cleanup_database
 
+  def test_verify_vote_by_unverified_user
+    poll = saved fake_poll
+    unverified_user = saved fake_user(email_verified: false)
+    poll.guest_group.add_member! unverified_user
+    stance = fake_stance(poll: poll, participant: unverified_user)
+    StanceService.create(stance: stance, actor: unverified_user)
+    last_email
+  end
+
+  def test_verify_vote_by_verified_user
+    poll = saved fake_poll
+    verified_user = saved fake_user(email: 'user@example.com', email_verified: true)
+    unverified_user = saved fake_user(email: 'user@example.com', email_verified: false)
+    poll.guest_group.add_member! unverified_user
+    stance = fake_stance(poll: poll, participant: unverified_user)
+    StanceService.create(stance: stance, actor: unverified_user)
+    last_email
+  end
+
   def test_discussion
     group = create_group_with_members
     discussion = saved fake_discussion(group: group)

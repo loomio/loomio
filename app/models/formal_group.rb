@@ -49,9 +49,11 @@ class FormalGroup < Group
   delegate :slack_channel_name, to: :slack_identity, allow_nil: true
 
   has_attached_file    :cover_photo,
+                       url: "/system/groups/:attachment/:id_partition/:style/:filename",
                        styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
                        default_url: :default_cover_photo
   has_attached_file    :logo,
+                       url: "/system/groups/:attachment/:id_partition/:style/:filename",
                        styles: { card: "67x67#", medium: "100x100#" },
                        default_url: 'default-logo-:style.png'
 

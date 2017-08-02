@@ -94,6 +94,7 @@ class PollService
     poll.visitors.each do |visitor|
       if poll.stances.where(participant: visitor).any?
         user = User.create(email: visitor.email, email_verified: false)
+        next unless user.valid?
         poll.guest_group.add_member!(user)
         poll.stances.where(participant: visitor).update_all(participant_type: 'User', participant_id: user.id)
       elsif poll.active?

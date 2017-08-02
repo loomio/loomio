@@ -1,4 +1,4 @@
-ActiveAdmin.register Group do
+ActiveAdmin.register FormalGroup, as: 'Group' do
 
   controller do
     def permitted_params
@@ -6,12 +6,11 @@ ActiveAdmin.register Group do
     end
 
     def find_resource
-      Group.friendly.find(params[:id])
+      FormalGroup.friendly.find(params[:id])
     end
   end
 
   actions :index, :show, :edit, :update
-
 
   filter :name
   filter :description
@@ -44,7 +43,7 @@ ActiveAdmin.register Group do
     selectable_column
     column :id
     column :name do |g|
-      simple_format(g.full_name.sub(' - ', "\n \n> "))
+      g.full_name
     end
 
     column "Size", :memberships_count
@@ -205,18 +204,6 @@ ActiveAdmin.register Group do
       end
     end
 
-    panel 'Polls' do
-      enabled = group.features['use_polls']
-      form action: use_polls_admin_group_path(group), method: :post do |f|
-        if enabled
-          f.label "Polls is enabled"
-        else
-          f.label "Polls disabled"
-        end
-        f.input type: :submit, value: 'Enable polls'
-      end
-    end
-
     active_admin_comments
   end
 
@@ -225,17 +212,11 @@ ActiveAdmin.register Group do
       f.input :id, :input_html => { :disabled => true }
       f.input :name, :input_html => { :disabled => true }
       f.input :description
-      f.input :subdomain
-      f.input :theme, as: :select, collection: Theme.all
+      f.input :subdomain, as: :string
       f.input :analytics_enabled
       f.input :enable_experiments
-      f.input :category_id, as: :select, collection: Category.all
     end
     f.actions
-  end
-
-  collection_action :massey_data, method: :get do
-    render json: Group.visible_to_public.pluck(:id, :parent_id, :name, :description)
   end
 
   member_action :move, method: :post do
@@ -274,16 +255,4 @@ ActiveAdmin.register Group do
     group.save
     redirect_to [:admin, :groups]
   end
-
-  #controller do
-    #def set_pagination
-      #if params[:pagination].blank?
-        #@per_page = 40
-      #elsif params[:pagination] == 'false'
-        #@per_page = 999999999
-      #else
-        #@per_page = params[:pagination]
-      #end
-    #end
-  #end
 end
