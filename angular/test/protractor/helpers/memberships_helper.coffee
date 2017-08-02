@@ -10,7 +10,7 @@ module.exports = new class MembershipsHelper
     @searchInput().clear().sendKeys(name)
 
   clickRemoveLink: ->
-    element(By.css('.memberships-page__remove-link')).click()
+    element(By.css('.memberships-panel__remove')).click()
 
   confirmRemoveAction: ->
     element(By.css('.memberships-page__remove-membership-confirm')).click()
@@ -25,7 +25,7 @@ module.exports = new class MembershipsHelper
     element(By.css('.memberships-page__memberships')).getText()
 
   coordinatorCheckbox: ->
-    element(By.css('.memberships-page__make-coordinator'))
+    element(By.css('.memberships-panel__toggle-coordinator'))
 
   checkCoordinatorCheckbox: ->
     @coordinatorCheckbox().click()

@@ -5,6 +5,6 @@
       %a{lmo-href-for: "membership.user()"} {{::membership.user().name}}
       %div @{{::membership.user().username}}
     .memberships-page__actions{ng-if: "canAdministerGroup()", layout: "row"}
-      %md-button.memberships-page__remove-coordinator-link{translate: "memberships_panel.remove_coordinator", ng-if: "membership.admin", ng-click: "toggleAdmin(membership)", ng-disabled: "!canToggleAdmin(membership)"}
-      %md-button.md-primary.memberships-page__add-coordinator-link{translate: "memberships_panel.add_coordinator", ng-if: "!membership.admin", ng-click: "toggleAdmin(membership)"}
-      %md-button.md-warn.memberships-page__remove-link{translate: "common.action.remove", ng-disabled: "!canRemoveMembership(membership)", ng-click: "openRemoveForm(membership)"}
+      %md-button.memberships-panel__toggle-coordinator{translate: "memberships_panel.remove_coordinator", ng-if: "membership.admin", ng-click: "toggleAdmin(membership)", ng-disabled: "!canToggleAdmin(membership)"}
+      %md-button.md-primary.memberships-panel__toggle-coordinator{translate: "memberships_panel.add_coordinator", ng-if: "!membership.admin", ng-click: "toggleAdmin(membership)"}
+      %md-button.md-warn.memberships-panel__remove{translate: "common.action.remove", ng-disabled: "!canRemoveMembership(membership)", ng-click: "openRemoveForm(membership)"}

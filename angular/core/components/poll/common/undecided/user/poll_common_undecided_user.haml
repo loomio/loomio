@@ -5,6 +5,6 @@
     .poll-common-undecided-user--reminded{ng-if: "user.reminded"}
       %p.lmo-hint-text{translate: "poll_common_undecided_user.reminded"}
     .poll-common-undecided-user--unreminded{ng-if: "!user.reminded"}
-      %md-button.md-accent{ng-click: "resend()", ng-if: "user.constructor.singular == 'invitation'", translate: "common.action.resend"}
-      %md-button.md-accent{ng-click: "remind()", ng-if: "user.constructor.singular == 'user'", translate: "common.action.remind"}
+      %md-button.md-accent.poll-common-undecided-user__resend{ng-click: "resend()", ng-if: "user.constructor.singular == 'invitation'", translate: "common.action.resend"}
+      %md-button.md-accent.poll-common-undecided-user__remind{ng-click: "remind()", ng-if: "user.constructor.singular == 'user'", translate: "common.action.remind"}
   %loading{ng-if: "resendExecuting || remindExecuting"}
