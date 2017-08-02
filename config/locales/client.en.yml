@@ -84,6 +84,7 @@ en:
       subscribe: Subscribe
       remind: Remind
       resend: Resend
+      resent: Invitation resent
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -753,6 +754,9 @@ en:
     email: Email
     invitation_link: Invitation link
     sent: Sent
+    sent_at: Sent {{date}}
+    copy_url: Copy URL
+    revoke_invitation: Revoke
 
   cancel_invitation_form:
     heading: Cancel invitation
@@ -1391,7 +1395,6 @@ en:
   poll_common_undecided_user:
     reminded: Reminder sent!
     reminder_sent: Reminder notification sent
-    invitation_resent: Invitation resent
 
   poll_common_set_outcome_panel:
     share_outcome: Share outcome
