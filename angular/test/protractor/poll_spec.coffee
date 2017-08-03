@@ -137,7 +137,8 @@ describe 'Polls', ->
     page.expectText '.poll-common-undecided-panel', '1 additional person has been invited to participate via email'
 
   it 'can remind undecided users', ->
-    page.loadPath 'polls/test_proposal_poll_with_guest'
+    page.loadPath 'polls/test_proposal_poll_with_guest_as_author'
+    page.click '.show-results-button'
     page.click '.poll-common-undecided-panel__button'
     page.clickFirst '.poll-common-undecided-user__remind'
     page.expectFlash 'Reminder notification sent'
@@ -146,5 +147,6 @@ describe 'Polls', ->
     page.loadPath 'polls/test_proposal_poll_with_guest_as_author'
     page.click '.show-results-button'
     page.click '.poll-common-undecided-panel__button'
+    page.click '.poll-common-undecided-panel__show-invitations'
     page.clickFirst '.poll-common-undecided-user__resend'
     page.expectFlash 'Invitation resent'
