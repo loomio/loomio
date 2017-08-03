@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     demo_bot:   ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
   }.freeze
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable
   attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
