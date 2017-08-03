@@ -26,11 +26,11 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
           group_key: groupKey
           per: options['per'] or 30
 
-    fetchByUser: (userKey, options = {}) ->
+    fetchByUser: (user, options = {}) ->
       @fetch
         path: 'for_user'
         params:
-          user_key: userKey
+          user_id: user.id
           per: options['per'] or 30
 
     addUsersToSubgroup: ({groupId, userIds}) ->
