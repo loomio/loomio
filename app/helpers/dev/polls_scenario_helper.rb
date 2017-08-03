@@ -242,6 +242,7 @@ module Dev::PollsScenarioHelper
     poll = fake_poll(poll_type: poll_type, discussion: fake_discussion(group: group))
     PollService.create(poll: poll, actor: another_user)
     Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
+    poll.update_stance_data
 
     poll.guest_group.add_member! fake_user(email_verified: false)
     poll.invite_guest! email: "bill@example.com"
