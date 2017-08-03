@@ -66,20 +66,12 @@
   text-decoration: none;
 }
 
-.thread-preview__icon {
-  @include boxMedium;
-  .user-avatar {
-    pointer-events: none;
-  }
-}
-
-.thread-preview__pie-canvas {
-  @include boxMedium;
+.thread-preview__icon .user-avatar {
+  pointer-events: none;
 }
 
 .thread-preview__text-container{
   @include displayFlex;
-  // line-height: 22px;
   margin-right: 17px;
 }
 

@@ -10,7 +10,9 @@
 }
 
 md-dialog {
+  min-width: $tiny-max-px;
   max-width: 800px !important;
+  max-height: 90%;
 }
 
 .md-dialog-content {

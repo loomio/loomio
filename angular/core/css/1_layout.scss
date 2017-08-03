@@ -30,11 +30,6 @@ body {
   @include lmoRow;
 }
 
-md-dialog {
-  min-width: $tiny-max-px;
-  max-height: 90%;
-}
-
 .lmo-sidebar-and-main-container {
   position: relative;
 }

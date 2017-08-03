@@ -8,15 +8,6 @@
   border: 1px solid #000;
 }
 
-.font-bold {
-  font-weight: bold;
-}
-
-/* use .first if your heading is the first child */
-.first{
-  margin-top: 0;
-}
-
 .lmo-grey {
   color: $grey-on-white;
 }
@@ -45,10 +36,6 @@
   @include fontSmall;
 }
 
-.lmo-bold {
-  font-weight: bold;
-}
-
 .lmo-inline-action {
   min-width: 40px;
   margin: 0;
@@ -65,21 +52,6 @@
   white-space: nowrap;
 }
 
-.table-cell {
-  display: table-cell;
-}
-
-.fat-finger{
-  /*utility class to increase the target size of a link*/
-  min-width: 30px;
-  min-height: 30px;
-  display: block;
-  text-align: right;
-  cursor: pointer;
-  line-height: 32px;
-  i{ line-height: 32px; }
-}
-
 .action{
   color: $grey-on-grey;
   text-decoration: underline;
@@ -89,12 +61,6 @@
   color: $grey-on-grey;
   text-decoration: underline;
   @include fontSmall;
-}
-
-.fa-volume-off-padded{margin: 0 6px 0 3px;}
-
-.font-bold {
-  font-weight: bold;
 }
 
 .page-loading {
@@ -112,10 +78,6 @@
 
 .lmo-vertical-spacer {
   padding: 5px 0;
-}
-
-.lmo-vertical-spacer-lg {
-  padding: 15px 0;
 }
 
 .lmo-placeholder {
@@ -139,35 +101,21 @@
 
 .lmo-markdown-wrapper {
   word-wrap: break-word;
-  p {
-    @include md-body-1;
-  }
+  p { @include md-body-1; }
   img { max-width: 100%; }
   h1 {
     @include fontLarge;
     margin: 20px 0 10px 0;
   }
-  h2 {
-    @include fontMedLarge;
-  }
-  h3 {
-  }
-  h4 {
-  }
-  ul{
-    padding: 0 0 10px 24px;
-  }
-  ul li{
-    list-style: disc;
-  }
+  h2 { @include fontMedLarge; }
+  ul{ padding: 0 0 10px 24px; }
+  ul li{ list-style: disc; }
   pre {
     overflow: auto;
     padding: 10px;
     background: $modal-background-color;
   }
-  blockquote{
-    font-size: inherit;
-  }
+  blockquote{ font-size: inherit; }
   table {
     table-layout: fixed;
     width: 100%;
@@ -177,39 +125,7 @@
     padding: 6px 13px;
     border: 1px solid #ddd;
   }
-  thead td {
-    font-weight: bold;
-  }
-}
-
-.lmo-box--tiny {
-  text-align: center;
-  @include boxTiny;
-}
-
-.lmo-box--small {
-  text-align: center;
-  @include boxSmall;
-}
-
-.lmo-box--medium {
-  text-align: center;
-  @include boxMedium;
-}
-
-.lmo-box--large {
-  text-align: center;
-  @include boxLarge;
-}
-
-.lmo-box--featured {
-  text-align: center;
-  @include boxFeatured;
-}
-
-.lmo-box--medium-circular {
-  border-radius: 50% !important;
-  @include boxMediumCircular;
+  thead td { font-weight: bold; }
 }
 
 .lmo-rounded-corners {
@@ -297,37 +213,6 @@
   padding-top: $navbar-height;
 }
 
-.lmo-search-container {
-  border-radius: 2px;
-  width: 100%;
-  height: 40px;
-  position: relative;
-  overflow: visible;
-  min-width: 190px;
-  background: $card-background-color;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
-  margin: 0 !important;
-}
-
-.lmo-search-container i {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.lmo-search-container input {
-  font-size: 14px;
-  box-sizing: border-box;
-  border: none;
-  box-shadow: none;
-  outline: 0;
-  background: 0 0;
-  width: 100%;
-  padding: 0 15px 0 35px;
-  line-height: 40px;
-  height: 40px;
-}
-
 .lmo-pointer {
   cursor: pointer;
 }
@@ -338,10 +223,6 @@
 
 .lmo-inline-block {
   display: inline-block;
-}
-
-.lmo-vertical-align-top {
-  vertical-align: top;
 }
 
 img.emojione {
