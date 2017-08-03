@@ -7,6 +7,6 @@ class InvitationSerializer < ActiveModel::Serializer
   has_one :inviter, serializer: UserSerializer, root: :users
 
   def url
-    invitation_url(token)
+    invitation_url(token, default_url_options)
   end
 end
