@@ -14,7 +14,6 @@ describe API::ProfileController do
       expect(json.keys).to include *(%w[users])
       expect(json['users'][0].keys).to include *(%w[
         id
-        key
         name
         username
         avatar_initials

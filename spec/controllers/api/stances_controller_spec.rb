@@ -188,7 +188,7 @@ describe API::StancesController do
         it 'enter unverified email address -> please confirm address' do
           user.update(email_verified: false)
           expect { post :create, stance: visitor_stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
-          stance = poll.stances.first
+          stance = poll.stances.last
           expect(invitation.reload.accepted?).to be true
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq 'user@example.com'
@@ -202,7 +202,7 @@ describe API::StancesController do
         it 'enter unrecognised email address -> confirm address' do
           expect { post :create, stance: visitor_stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
           expect(invitation.reload.accepted?).to be true
-          stance = poll.stances.first
+          stance = poll.stances.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq 'user@example.com'
           expect(poll.guest_group.members).to include(stance.participant)

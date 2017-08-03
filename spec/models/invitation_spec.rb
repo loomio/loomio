@@ -12,7 +12,7 @@ describe Invitation do
                                     group: group)
   end
 
-  describe 'recipient_email' do
+  it 'recipient_email' do
     expect(build(:invitation, recipient_email: User::FORBIDDEN_EMAIL_ADDRESSES.first)).to_not be_valid
   end
 
