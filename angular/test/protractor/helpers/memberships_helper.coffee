@@ -22,7 +22,7 @@ module.exports = new class MembershipsHelper
     @searchInput().clear()
 
   membershipsTable: ->
-    element(By.css('.memberships-page__memberships')).getText()
+    element(By.css('.memberships-panel')).getText()
 
   coordinatorCheckbox: ->
     element(By.css('.memberships-panel__toggle-coordinator'))

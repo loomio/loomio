@@ -9,5 +9,5 @@
         %span.lmo-hint-text{ng-if: "poll.guestGroup().pendingInvitationsCount == 1", translate: "poll_common_undecided_panel.invitation_count_singular"}
         %span.lmo-hint-text{ng-if: "poll.guestGroup().pendingInvitationsCount > 1", translate: "poll_common_undecided_panel.invitation_count_plural", translate-value-count: "{{poll.guestGroup().pendingInvitationsCount}}"}
 
-      %md-button{ng-if: "moreMembershipsToLoad()", translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "loadMemberships()"}
-      %md-button{ng-if: "canSharePoll() && !moreMembershipsToLoad() && moreInvitationsToLoad()", translate: "poll_common_undecided_panel.show_invitations", aria-label: "common.action.load_more", ng-click: "loadInvitations()"}
+      %md-button.md-accent{ng-if: "moreMembershipsToLoad()", translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "loadMemberships()"}
+      %md-button.md-accent.poll-common-undecided-panel__show-invitations{ng-if: "canSharePoll() && !moreMembershipsToLoad() && moreInvitationsToLoad()", translate: "poll_common_undecided_panel.show_invitations", aria-label: "common.action.load_more", ng-click: "loadInvitations()"}

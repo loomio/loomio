@@ -279,8 +279,6 @@ describe 'Group Page', ->
       page.click('.group-page-actions__button',
                  '.group-page-actions__leave-group')
       page.expectText('.leave-group-form', 'You cannot leave this group')
-      # page.click('.leave-group-form__add-coordinator')
-      # page.expectElement('.memberships-page__memberships h2')
 
   describe 'archiving a group', ->
 

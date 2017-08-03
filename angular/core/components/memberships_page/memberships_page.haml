@@ -6,7 +6,7 @@
     .lmo-card
       .memberships-page__top-bar.lmo-flex.lmo-flex__space-between.lmo-flex__baseline
         %h2.md-title{translate: "memberships_page.members"}
-        %md-button.md-primary.md-raised{ng-click: "membershipsPage.invitePeople()", ng-if: "membershipsPage.canAddMembers()"}
+        %md-button.md-primary.md-raised.memberships-page__invite{ng-click: "membershipsPage.invitePeople()", ng-if: "membershipsPage.canAddMembers()"}
           %span{translate: "group_page.invite_people"}
       .memberships-page__search-filter
         %input.membership-page__search-filter.form-control{ng-model: "membershipsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "membershipsPage.fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
