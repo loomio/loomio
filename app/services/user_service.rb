@@ -1,12 +1,7 @@
 class UserService
   def self.verify(user: )
     return user if user.email_verified?
-    if verified_user = User.verified.find_by(email: user.email)
-      verified_user
-    else
-      user.update(email_verified: true)
-      user
-    end
+    User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
   end
 
   def self.remind(model:, actor:, user:)
