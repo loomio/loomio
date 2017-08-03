@@ -1,6 +1,6 @@
 %form.poll-proposal-vote-form{ng-submit: "submit()"}
   %poll_common_participant_form{stance: "stance"}
-  
+
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
   .poll-common-vote-form__options
     %md-radio-group{ng-model: "stance.selectedOption"}
@@ -12,11 +12,11 @@
   .poll-common-vote-form__reason
     %md-input-container.md-block
       %label{translate: "poll_common.reason"}
-      %textarea.lmo-primary-form-input.poll-proposal-vote-form__reason{placeholder: "{{reasonPlaceholder() | translate}}", ng-model: "stance.reason", md-max-length: "250", rows: "2"}
+      %textarea.lmo-primary-form-input.poll-proposal-vote-form__reason{placeholder: "{{reasonPlaceholder() | translate}}", ng-model: "stance.reason", md-maxlength: "250", rows: "2"}
       %validation_errors{subject: "stance", field: "reason"}
 
 
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     %show_results_button{ng-if: "stance.isNew()"}
     %div{ng-if: "!stance.isNew()"}
-    %md-button.md-primary.md-raised.poll-proposal-vote-form__submit{type: "submit", translate: "poll_common.vote", aria-label: "{{ 'poll_proposal_vote_form.vote' | translate }}"}
+    %md-button.md-primary.md-raised.poll-common-vote-form__submit{type: "submit", translate: "poll_common.vote", aria-label: "{{ 'poll_proposal_vote_form.vote' | translate }}"}

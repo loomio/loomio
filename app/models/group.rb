@@ -18,7 +18,7 @@ class Group < ActiveRecord::Base
   has_many :invitations, dependent: :destroy
 
   has_many :discussions, foreign_key: :group_id, dependent: :destroy
-  has_many :polls, foreign_key: :group_id
+  has_many :polls, foreign_key: :group_id, dependent: :destroy
 
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }
@@ -47,6 +47,7 @@ class Group < ActiveRecord::Base
 
   def add_member!(user, invitation: nil, inviter: nil)
     tap(&:save!).memberships.find_or_create_by(user: user).tap do |m|
+      m.group.update_undecided_user_count unless m.group.is_formal_group?
       m.update(invitation: invitation, inviter: inviter || invitation&.inviter)
     end
   end

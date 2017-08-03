@@ -192,7 +192,7 @@ describe Identities::SlackController do
       expect(response.status).to eq 400
     end
 
-    it 'does nothing for visitors' do
+    it 'does nothing for logged out users' do
       expect { delete :destroy }.to_not change { user.identities.count }
       expect(response.status).to eq 400
     end

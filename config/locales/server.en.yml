@@ -3,7 +3,7 @@ en:
   poll:
     error:
       must_have_options: Polls must have options
-      
+
   invitation:
     invitation_not_found: We could not find an invitation with the token you've given us. Please request another invitation from your group.
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
@@ -74,7 +74,7 @@ en:
       link_help: "Click the link below to accept the invitation:"
       accept_invitation: "Accept invitation"
     resend_to_join_group:
-      subject: "%{member} is still waiting for you to join %{group_name} on Loomio"
+      subject: "%{member} is waiting for you to join %{group_name} on Loomio"
     to_start_group:
       subject: "Set up your new Loomio group: %{group_name}"
       hi: "Hi %{name},"
@@ -337,6 +337,8 @@ en:
       undecided_members: Undecided Members (%{count})
       undecided_visitors: Undecided Guests (%{count})
       more_undecided: "%{count} more..."
+      verify_stance_for_unverified_user: "Thanks for voting in %{title}. Please verify your email address, so we can send you the results when they're ready."
+      verify_stance_for_verified_user: "It looks like you voted in %{title}. If this was you, please click the link below to confirm your vote."
 
     proposal:
       subject:
@@ -348,8 +350,10 @@ en:
         poll_expired_author: 'Your proposal has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
         invitation_created: '%{actor} wants your opinion: %{title}'
-        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
@@ -360,7 +364,8 @@ en:
         poll_expired_author: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
         invitation_created: '<strong>%{actor}</strong> wants to hear your opinion: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
@@ -378,8 +383,10 @@ en:
         poll_option_added_author: '%{actor} added options to: %{title}'
         outcome_created: '%{actor} shared a poll outcome: %{title}'
         invitation_created: '%{actor} wants you to vote: %{title}'
-        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -392,7 +399,8 @@ en:
         poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
         outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
         invitation_created: '<strong>%{actor}</strong> invited you to join a poll: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
@@ -408,8 +416,10 @@ en:
         poll_expired_author: 'Your check has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         invitation_created: '%{actor} is checking: %{title}'
-        visitor_reminded: '%{actor} is waiting for you to respond: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for you to respond: %{title}'
         stance_created: "%{actor} participated in: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
@@ -420,7 +430,8 @@ en:
         poll_expired_author: 'Here are the results of your check. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared an outcome.'
         invitation_created: '<strong>%{actor}</strong> is checking: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to respond: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to respond: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
 
       body:
@@ -438,8 +449,10 @@ en:
         poll_option_added_author: '%{actor} added options to: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         invitation_created: '%{actor} invited you to join a dot vote: %{title}'
-        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a dot vote'
@@ -452,7 +465,8 @@ en:
         poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
         outcome_created: '<strong>%{actor}</strong> shared a dot vote outcome.'
         invitation_created: '<strong>%{actor}</strong> invited you to join a dot vote: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
@@ -471,8 +485,10 @@ en:
         outcome_created: '%{actor} shared an outcome: %{title}'
         outcome_created_author: 'You shared an outcome: %{title}'
         invitation_created: '%{actor} wants to arrange a time: %{title}'
-        visitor_reminded: '%{actor} is waiting for your response: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a time poll'
@@ -486,7 +502,8 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a time poll outcome.'
         outcome_created_author: 'You shared a time poll outcome.'
         invitation_created: '<strong>%{actor}</strong> wants to arrange a time: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for your response: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
 
       body:
@@ -552,7 +569,7 @@ en:
     poll_created: "New *%{poll_type}* in *%{group}*: *%{poll}*"
     poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
     poll_expired: "*%{poll}* has closed"
-    group_published: |
+    group_identity_created: |
       Hello, I'm Loomio Bot. *%{author}* added me.
       I can help your team make decisions together.
 

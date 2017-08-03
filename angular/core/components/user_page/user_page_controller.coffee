@@ -4,7 +4,7 @@ angular.module('loomioApp').controller 'UserPageController', ($rootScope, $route
   @init = =>
     return if @user
     if @user = (Records.users.find($routeParams.key) or Records.users.find(username: $routeParams.key))[0]
-      @loadGroupsFor(@user.key)
+      @loadGroupsFor(@user.id)
 
   @loadGroupsFor = (userKey) ->
     Records.memberships.fetchByUser(userKey)

@@ -87,7 +87,7 @@ ActiveAdmin.register User do
         column :group_id
         column :group_name do |g|
           group = g.group
-          link_to group.full_name, [:admin, group]
+          link_to group.full_name, admin_group_path(group)
         end
       end
     end

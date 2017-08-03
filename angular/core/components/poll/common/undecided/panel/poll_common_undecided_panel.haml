@@ -2,12 +2,12 @@
     %md-button.poll-common-undecided-panel__button{ng-if: "canShowUndecided()", ng-click: "showUndecided()", translate: "poll_common_undecided_panel.show_undecided", translate-value-count: "{{poll.undecidedCount}}", aria-label: "poll_common_undecided_panel.show_undecided"}
     .poll-common-undecided-panel__panel.poll-common-undecided-panel__users{ng-if: "showingUndecided"}
       %h3.lmo-card-subheading{translate: "poll_common_undecided_panel.undecided_users", translate-value-count: "{{poll.undecidedCount}}"}
-      %poll_common_undecided_user{user: "user", ng-repeat: "user in poll.undecided()"}
+      %poll_common_undecided_user{user: "user", poll: "poll", ng-repeat: "user in poll.undecided()"}
       %poll_common_undecided_user{ng-if: "canSharePoll()", user: "user", ng-repeat: "user in poll.guestGroup().pendingInvitations()"}
 
       %p{ng-if: "!canSharePoll()"}
         %span.lmo-hint-text{ng-if: "poll.guestGroup().pendingInvitationsCount == 1", translate: "poll_common_undecided_panel.invitation_count_singular"}
         %span.lmo-hint-text{ng-if: "poll.guestGroup().pendingInvitationsCount > 1", translate: "poll_common_undecided_panel.invitation_count_plural", translate-value-count: "{{poll.guestGroup().pendingInvitationsCount}}"}
 
-      %md-button{ng-if: "moreMembershipsToLoad()", translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "loadMemberships()"}
-      %md-button{ng-if: "canSharePoll() && !moreMembershipsToLoad() && moreInvitationsToLoad()", translate: "poll_common_undecided_panel.show_invitations", aria-label: "common.action.load_more", ng-click: "loadInvitations()"}
+      %md-button.md-accent{ng-if: "moreMembershipsToLoad()", translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "loadMemberships()"}
+      %md-button.md-accent.poll-common-undecided-panel__show-invitations{ng-if: "canSharePoll() && !moreMembershipsToLoad() && moreInvitationsToLoad()", translate: "poll_common_undecided_panel.show_invitations", aria-label: "common.action.load_more", ng-click: "loadInvitations()"}

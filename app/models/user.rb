@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   include NoForbiddenEmails
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
+  BOT_EMAILS = {
+    helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
+    demo_bot:   ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
+  }.freeze
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :recaptcha
@@ -15,8 +19,6 @@ class User < ActiveRecord::Base
   attr_accessor :token
 
   validates :email, presence: true, email: true, length: {maximum: 200}
-
-  has_many :stances, as: :participant
 
   has_attached_file :uploaded_avatar,
     styles: {
@@ -85,15 +87,9 @@ class User < ActiveRecord::Base
   has_many :polls, foreign_key: :author_id
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
-  has_many :communities, through: :identities, class_name: "Communities::Base"
-  has_many :email_communities,
-           -> { where(community_type: [:email, :public]) },
-           through: :polls,
-           source: :communities,
-           class_name: "Communities::Base"
 
   has_many :comment_votes, dependent: :destroy
-  has_many :stances, as: :participant, dependent: :destroy
+  has_many :stances, foreign_key: :participant_id, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll
   has_many :group_polls, through: :groups, source: :polls
 
@@ -125,6 +121,7 @@ class User < ActiveRecord::Base
   scope :mentioned_in, ->(model) { where(id: model.notifications.user_mentions.pluck(:user_id)) }
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
+  scope :verified_first, -> { order(email_verified: :desc) }
 
   # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
@@ -196,25 +193,20 @@ class User < ActiveRecord::Base
   end
 
   def self.helper_bot
-    find_by(email: helper_bot_email) ||
-    create!(email: helper_bot_email,
+    verified.find_by(email: BOT_EMAILS[:helper_bot]) ||
+    create!(email: BOT_EMAILS[:helper_bot],
             name: 'Loomio Helper Bot',
             password: SecureRandom.hex(20),
-            uses_markdown: true,
+            email_verified: true,
             avatar_kind: :gravatar)
   end
 
-  def self.helper_bot_email
-    ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
-  end
-
   def self.demo_bot
-    find_by(email: demo_bot_email) ||
-    create!(email: demo_bot_email, name: 'Loomio Demo bot', avatar_kind: :gravatar)
-  end
-
-  def self.demo_bot_email
-    ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
+    verified.find_by(email: BOT_EMAILS[:helper_bot]) ||
+    create!(email: BOT_EMAILS[:demo_bot],
+            name: 'Loomio Demo bot',
+            email_verified: true,
+            avatar_kind: :gravatar)
   end
 
   def name

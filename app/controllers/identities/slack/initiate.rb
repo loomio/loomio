@@ -33,7 +33,7 @@ module Identities::Slack::Initiate
   end
 
   def initiate_group
-    @initiate_group ||= Group
+    @initiate_group ||= FormalGroup
       .joins(:identities)
       .where("(omniauth_identities.custom_fields->'slack_team_id')::jsonb ? :team_id",    team_id:    params[:team_id])
       .where("(group_identities.custom_fields->'slack_channel_id')::jsonb ? :channel_id", channel_id: params[:channel_id])

@@ -44,7 +44,7 @@ describe 'Polls', ->
 
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'
-    page.click '.poll-proposal-vote-form__submit'
+    page.click '.poll-common-vote-form__submit'
 
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Agree'
     page.expectText '.poll-common-votes-panel__stance-reason', 'A reason'
@@ -85,7 +85,7 @@ describe 'Polls', ->
 
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'
-    page.click '.poll-proposal-vote-form__submit'
+    page.click '.poll-common-vote-form__submit'
 
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Agree'
     page.expectText '.poll-common-votes-panel__stance-reason', 'A reason'
@@ -106,7 +106,7 @@ describe 'Polls', ->
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
-    page.click '.poll-proposal-vote-form__submit'
+    page.click '.poll-common-vote-form__submit'
 
     page.expectFlash 'Vote created'
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Big Baloo'
@@ -117,7 +117,7 @@ describe 'Polls', ->
     page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
     page.fillIn '.poll-common-participant-form__email', 'big@baloo.ninja'
-    page.click '.poll-proposal-vote-form__submit'
+    page.click '.poll-common-vote-form__submit'
 
     page.expectFlash 'Vote created'
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Big Baloo'
@@ -130,8 +130,23 @@ describe 'Polls', ->
     page.expectFlash 'Invitation email sent to loo@m.io'
 
   it 'can show undecided users', ->
-    page.loadPath 'polls/test_poll_in_discussion_with_guest'
-    page.expectText '.poll-common-undecided-panel__button', 'SHOW 3 UNDECIDED'
+    page.loadPath 'polls/test_proposal_poll_with_guest'
+    page.expectText '.poll-common-undecided-panel__button', 'SHOW 5 UNDECIDED'
     page.click '.poll-common-undecided-panel__button'
-    page.expectText '.poll-common-undecided-panel', 'Undecided (3)'
+    page.expectText '.poll-common-undecided-panel', 'Undecided (5)'
     page.expectText '.poll-common-undecided-panel', '1 additional person has been invited to participate via email'
+
+  it 'can remind undecided users', ->
+    page.loadPath 'polls/test_proposal_poll_with_guest_as_author'
+    page.click '.show-results-button'
+    page.click '.poll-common-undecided-panel__button'
+    page.clickFirst '.poll-common-undecided-user__remind'
+    page.expectFlash 'Reminder notification sent'
+
+  it 'can resend unaccepted invitations', ->
+    page.loadPath 'polls/test_proposal_poll_with_guest_as_author'
+    page.click '.show-results-button'
+    page.click '.poll-common-undecided-panel__button'
+    page.click '.poll-common-undecided-panel__show-invitations'
+    page.clickFirst '.poll-common-undecided-user__resend'
+    page.expectFlash 'Invitation resent'

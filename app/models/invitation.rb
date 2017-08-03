@@ -17,6 +17,7 @@ class Invitation < ActiveRecord::Base
 
   validates_presence_of :group, :intent
   validates_inclusion_of :intent, :in => ['start_group', 'join_group', 'join_poll']
+  validates_exclusion_of :recipient_email, in: User::FORBIDDEN_EMAIL_ADDRESSES
   scope :chronologically, -> { order('id asc') }
   before_save :ensure_token_is_present
   after_initialize :apply_null_methods!

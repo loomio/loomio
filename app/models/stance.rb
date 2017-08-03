@@ -26,6 +26,8 @@ class Stance < ActiveRecord::Base
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
   scope :chronologically, -> { order('created_at asc') }
+  scope :verified,       -> { joins(:participant).where('users.email_verified': true) }
+  scope :unverified,       -> { joins(:participant).where('users.email_verified': false) }
 
   validate :enough_stance_choices
   validate :total_score_is_valid

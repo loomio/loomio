@@ -1,27 +1,6 @@
-.pending-invitations-card {
-  @include card;
-  margin-top: 33px;
-}
-.pending-invitations-card__pending-invitations {
-  width: 100%;
-}
-
-.pending-invitations-card__cancel-link {
-  @include lmoBtnNude;
-  padding: 0;
-  line-height: 1px;
-}
-
-.pending-invitations-card__pending-invitations {
-  td { font-size: 14px; }
-}
-
-
-@media (max-width: $small-max-px) {
-  .pending-invitations-card__invitation-url-heading,
-  .pending-invitations-card__sent-heading,
-  .pending-invitations-card__invitation-url,
-  .pending-invitations-card__sent {
-    display: none;
+.pending-invitations-card__invitation {
+  margin: 12px 0;
+  @media(max-width: $tiny-max-px) {
+    &:not(:last-child) { border-bottom: 1px solid $border-color; }
   }
 }

@@ -45,8 +45,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @hasMany   'pollOptions'
       @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
       @hasMany   'pollDidNotVotes'
-      @hasMany   'communities'
-      @hasMany   'visitors'
 
     newAttachments: ->
       @recordStore.attachments.find(@newAttachmentIds)
@@ -77,7 +75,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       if @guestGroup() then @guestGroup().memberIds() else []
 
     participantIds: ->
-      _.pluck(@uniqueStances(), 'userId')
+      _.pluck(@latestStances(), 'userId')
 
     undecidedIds: ->
       _.pluck(@pollDidNotVotes(), 'userId')
@@ -131,16 +129,12 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     close: =>
       @remote.postMember(@key, 'close')
 
-    publish: (community, message) =>
-      @remote.postMember(@key, 'publish', community_id: community.id, message: message).then =>
-        @published = true
-
     addOptions: =>
       @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
 
-    createVisitors: ->
+    inviteGuests: ->
       @processing = true
-      @remote.postMember(@key, 'create_visitors', emails: @customFields.pending_emails.join(',')).finally =>
+      @remote.postMember(@key, 'invite_guests', emails: @customFields.pending_emails.join(',')).finally =>
         @processing = false
 
     toggleSubscription: =>

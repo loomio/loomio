@@ -12,10 +12,10 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
       poll_id:          $scope.poll.key
       invitation_token: $location.search().invitation_token
 
-    $scope.loaders = if $scope.poll.isActive()
+    $scope.loaders =
       memberships: new RecordLoader
         collection: if $scope.poll.isActive() then 'memberships' else 'poll_did_not_votes'
-        path: 'undecided'
+        path:       if $scope.poll.isActive() then 'undecided' else ''
         params: params
       invitations: new RecordLoader
         collection: 'invitations'

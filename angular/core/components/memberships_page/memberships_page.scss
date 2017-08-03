@@ -1,70 +1,21 @@
-.memberships-page {
-}
-
 .memberships-page__search-filter {
   padding-left: 0;
   position: relative;
-}
 
-.memberships-page__search-filter input {
-  padding-left: 35px;
-}
-
-.memberships-page__search-filter i {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  input { padding-left: 35px; }
+  i {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
 }
 
 .memberships-page__top-bar {
   margin-bottom: 16px;
 }
 
-.memberships-page__memberships {
+.memberships-page__actions {
+  display: flex;
+  flex-direction: row;
+  @media(max-width: $tiny-max-px) { flex-direction: column; }
 }
-
-.memberships-page__remove-link {
-  @include lmoBtnNude;
-}
-
-.memberships-page__make-coordinator {
-  @include lmoBtnNude;
-  -webkit-transform: scale(1.5);
-  -moz-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
-.memberships-page__member-info {
-  padding-left: 10px;
-}
-
-.memberships-page__table-row {
-  padding: 5px 0;
-}
-
-.memberships-panel {
-  display: block;
-  tbody {
-    width: 100%
-  }
-}
-
-.memberships-panel__avatar-cell {
-  width: 50px;
-}
-
-.memberships-panel__member-info-cell {
-  width: 100%
-}
-
-.memberships-panel__row {
-}
-
-// .memberships-panel__spacer-cell
-.memberships-panel__header-cell {
-  @include md-subhead;
-}
-// .memberships-panel__avatar-cell
-// .memberships-panel__member-info-cell
-// .memberships-panel__admin-checkbox-cell
-// .memberships-panel__remove-member-cell

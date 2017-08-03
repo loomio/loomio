@@ -12,7 +12,6 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'contacts'
       @hasMany 'versions'
       @hasMany 'identities'
-      @hasMany 'communities'
 
     identityFor: (type) ->
       _.detect @identities(), (i) -> i.identityType == type
@@ -82,6 +81,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
           thread.update(discussionReaderVolume: null)
         _.each @memberships(), (membership) ->
           membership.update(volume: volume)
+
+    remind: (model) ->
+      @remote.postMember(@id, 'remind', {"#{model.constructor.singular}_id": model.id}).then =>
+        @reminded = true
 
     hasExperienced: (key, group) ->
       if group && @isMemberOf(group)

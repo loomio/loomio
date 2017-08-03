@@ -82,6 +82,9 @@ en:
       delete: Delete
       unsubscribe: Unsubscribe
       subscribe: Subscribe
+      remind: Remind
+      resend: Resend
+      resent: Invitation resent
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -94,6 +97,18 @@ en:
     forbidden: 'You do not have permission to do this.'
     page_not_found: 'We were unable to find that. It may have been deleted or moved.'
     internal_server_error: 'We''re sorry, but something went wrong. Please try again.'
+
+  verify_email_notice:
+    please_verify: Thanks for participating! Please check your email for a link to verify your vote.
+
+  verify_stances:
+    title: Verify votes
+    description: Please review the votes below and verify that they are yours.
+    verify: Verify
+    remove: Remove
+    verify_success: Vote verified
+    remove_success: Vote removed
+    all_done: Great job, you've verified all the votes.
 
   start_proposal_card:
     title: 'Start a proposal'
@@ -303,6 +318,7 @@ en:
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
     comment_liked: "<strong>{{name}}</strong> liked your comment in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
+    user_reminded: "<strong>{{name}}</strong> is waiting on you to participate in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{title}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{title}}</strong>"
@@ -348,13 +364,6 @@ en:
     heading: Positions
     no_votes_yet: Nobody has voted on this proposal yet.
     change_your_vote: Change your position.
-
-  undecided_panel:
-    aria_label: 'Undecided members'
-    show: Show
-    remind: Remind
-    undecided: undecided
-    hide_undecided: Hide undecided members
 
   proposal_pie_chart:
     participation_statement: '{{percentage}}% of members have stated their position ({{number}}/{{total}})'
@@ -746,6 +755,10 @@ en:
     remove_admin_from_self:
       question: 'Are you sure you no longer want to be a coordinator?'
 
+  memberships_panel:
+    add_coordinator: Make coordinator
+    remove_coordinator: Demote coordinator
+
   remove_membership_form:
     aria_label: 'Remove member'
     title: 'Remove member'
@@ -757,6 +770,9 @@ en:
     email: Email
     invitation_link: Invitation link
     sent: Sent
+    sent_at: Sent {{date}}
+    copy_url: Copy URL
+    revoke_invitation: Revoke
 
   cancel_invitation_form:
     heading: Cancel invitation
@@ -1044,6 +1060,8 @@ en:
     discussion_moved: 'moved the thread from <span>{{group}}</span>'
 
   contact_message_form:
+    helptext: "Want to get in touch? Just enter a message below and you'll hear from us shortly."
+    contact_us_email: "(You can also always reach us at <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
     contact_us: 'Contact Us'
     name_label: 'Your name'
     name_placeholder: 'Enter your name...'
@@ -1052,7 +1070,7 @@ en:
     message_label: 'Your message'
     message_placeholder: 'Your message...'
     send_message: 'Send Message'
-    new_contact_message: 'Thanks for your message; we''ll be in touch soon!'
+    new_contact_message: "Thanks for getting in touch; we''ll get back to you soon!"
 
   help_page:
     coordinating: 'Coordinating your Loomio group'
@@ -1390,6 +1408,10 @@ en:
     invitation_count_singular: "1 additional person has been invited to participate via email"
     invitation_count_plural: "{{count}} additional people have been invited to participate via email"
 
+  poll_common_undecided_user:
+    reminded: Reminder sent!
+    reminder_sent: Reminder notification sent
+
   poll_common_set_outcome_panel:
     share_outcome: Share outcome
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
@@ -1628,7 +1650,6 @@ en:
 
   poll_common_share_form:
     no_group_selected: No group selected
-    no_communities: "You haven't connected any communities yet. Click 'add community' below to add one"
     share_a_link: Share link
     share_a_link_helptext: Create a shareable link to distribute. Anyone who has access to the link will be able to participate.
     anyone_can_participate: Anyone with link can participate
@@ -1660,12 +1681,6 @@ en:
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
 
-  poll_common_publish_form:
-    community: Inform the following group of your poll
-    message: Enter a message
-    message_placeholder: Add a message to accompany the link to your poll
-    published: Message successfully sent
-
   poll_common_publish_facebook_preview:
     shared_a: shared a
     link: link
@@ -1676,21 +1691,6 @@ en:
     poll_published_with_discussion: "published a poll in <strong>{{discussion}}</strong>:"
     view_it_on_loomio: View it on Loomio
     timestamp: Today at {{timestamp}}
-
-  add_community_form:
-    title: Add community
-    existing_communities: Previously connected communities
-    no_communities: You haven't connected any communities yet. Select one below to get started.
-    connect_new_community: Connect a new community
-    currently_signed_in_as: "Currently signed in as:"
-    community_created: This poll is now connected to a {{type}} community
-    error_explanation: Oops! We had some trouble connecting to {{type}}. Click below to retry.
-    slack:
-      another_account: (Switch teams)
-      fragment_placeholder: Search for channels...
-    facebook:
-      another_account: (Sign in to another account)
-      fragment_placeholder: Search for groups...
 
   poll_common_participant_form:
     participant_name_placeholder: What is your name?
@@ -1753,6 +1753,7 @@ en:
     login_link_sent: "Ok, We've sent an email to {{email}} with a link to instantly log in. See you soon!"
     password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
     signed_in: Signed in successfully
+    email_verified: Email verified successfully
 
     name: Name
     email: Email

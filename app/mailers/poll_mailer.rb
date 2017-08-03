@@ -8,14 +8,14 @@ class PollMailer < BaseMailer
      outcome_created outcome_created_author invitation_created invitation_resend
      poll_closing_soon poll_closing_soon_author
      poll_expired  poll_expired_author
-     visitor_reminded visitor_created).each do |action|
+     user_reminded).each do |action|
     define_method action, ->(recipient, event) { send_poll_email(recipient, event, action) }
   end
 
   private
 
   def send_poll_email(recipient, event, action_name)
-    return if recipient == User.helper_bot
+    return if User::BOT_EMAILS.values.include?(recipient.email)
     headers = {
       "Precedence":               :bulk,
       "X-Auto-Response-Suppress": :OOF,
@@ -40,7 +40,12 @@ class PollMailer < BaseMailer
       locale:        locale_for(recipient),
       to:            recipient.email,
       subject_key:   "poll_mailer.#{@info.poll_type}.subject.#{action_name}",
-      subject_params: { title: @info.poll.title, actor: @info.actor.name }
+      subject_params: { title: @info.poll.title, actor: @info.actor.name },
+      layout:        layouts[action_name].to_s
     )
+  end
+
+  def layouts
+    HashWithIndifferentAccess.new { :base_mailer }.merge(stance_created_author: :invite_people_mailer)
   end
 end

@@ -108,7 +108,7 @@ class Ability
       user.email_verified? &&
       can?(:show, group) &&
       (group.membership_granted_upon_request? ||
-       group.invitations.find_by(recipient_email: @user.email))
+       group.invitations.useable.find_by(recipient_email: @user.email))
     end
 
     can [:create], GroupIdentity do |group_identity|
@@ -162,7 +162,7 @@ class Ability
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
-    can :create, Invitation do |invitation|
+    can [:create, :resend], Invitation do |invitation|
       can? :invite_people, invitation.group
     end
 
@@ -277,33 +277,9 @@ class Ability
       @user.email_verified?
     end
 
-    # can [:show, :remind], Communities::Base do |community|
-    #   @user.communities.include?(community)
-    # end
-    #
-    # can :manage_visitors, Communities::Base do |community|
-    #   @user.email_communities.include?(community)
-    # end
-    #
-    # can :create, Communities::Base do |community|
-    #   @user.is_logged_in? # TODO: ensure user owns one of the community's polls?
-    # end
-    #
-    # can [:destroy, :update], Communities::Base do |community|
-    #   @user.communities.include? community
-    # end
-    #
-    # can :destroy, PollCommunity do |poll_community|
-    #   @user.can? :share, poll_community.poll
-    # end
-
     can :make_draft, Poll do |poll|
       @user.is_logged_in? && can?(:show, poll)
     end
-
-    # can :create_visitors, Poll do |poll|
-    #   user_is_author_of?(poll)
-    # end
 
     can :add_options, Poll do |poll|
       user_is_author_of?(poll) ||
@@ -315,14 +291,7 @@ class Ability
       poll.active? && (
         poll.members.include?(@user) ||
         poll.anyone_can_participate ||
-        # is the invitation to a verified user?
-        # if yes, logged in user must be that user
-        # if no, logged in user can use the token.
-        (user.is_logged_in? && poll.invitations.to_verified_user.find_by(token: @user.token, recipient_email: @user.email)) ||
-        (user.is_logged_in? && poll.invitations.shareable.find_by(token: @user.token)) ||
-        (user.is_logged_in? && poll.invitations.to_unverified_user.find_by(token: @user.token)) ||
-        (user.is_logged_in? && poll.invitations.to_unrecognized_user.find_by(token: @user.token)) ||
-        (!user.is_logged_in? && poll.invitations.find_by(token: @user.token))
+        poll.invitations.useable.find_by(token: @user.token)
       )
     end
 
@@ -331,7 +300,7 @@ class Ability
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
       poll.members.include?(@user) ||
-      poll.invitations.pluck(:token).include?(@user.token)
+      poll.invitations.useable.pluck(:token).include?(@user.token)
     end
 
     can :create, Poll do |poll|
@@ -339,7 +308,7 @@ class Ability
       (!poll.group.presence || poll.group.members.include?(@user))
     end
 
-    can [:update, :share, :destroy], Poll do |poll|
+    can [:update, :share, :remind, :destroy], Poll do |poll|
       user_is_author_of?(poll) ||
       Array(poll.group&.admins).include?(@user)
     end
@@ -358,6 +327,12 @@ class Ability
 
     can [:make_draft, :create], Stance do |stance|
       @user.can? :vote_in, stance.poll
+    end
+
+    can [:verify, :destroy], Stance do |stance|
+      @user.email_verified? &&
+      stance.participant.email_verified == false &&
+      stance.participant.email == @user.email
     end
 
     can [:create, :update], Outcome do |outcome|

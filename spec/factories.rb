@@ -245,17 +245,6 @@ FactoryGirl.define do
     poll_option
   end
 
-  factory :public_community, class: Communities::Public
-  factory :email_community, class: Communities::Email
-  factory :facebook_community, class: Communities::Facebook
-  factory :slack_community, class: Communities::Slack
-
-  factory :visitor do
-    association :community, factory: :public_community
-    name "John Doe"
-    email "john@doe.com"
-  end
-
   factory :received_email do
     sender_email "John Doe <john@doe.com>"
     body "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah"

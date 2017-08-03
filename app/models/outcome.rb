@@ -7,7 +7,6 @@ class Outcome < ActiveRecord::Base
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false
   belongs_to :author, class_name: 'User', required: true
-  has_many :communities, through: :poll, class_name: "Communities::Base"
   has_many :stances, through: :poll
   has_many :events, as: :eventable
 
@@ -24,9 +23,9 @@ class Outcome < ActiveRecord::Base
   validate :has_valid_poll_option
 
   def attendee_emails
-     self.stances.joins(:participants).joins(:stance_choices)
+     self.stances.joins(:participant).joins(:stance_choices)
     .where("stance_choices.poll_option_id": self.poll_option_id)
-    .pluck(:"visitors.email", :"users.email").flatten.compact.uniq
+    .pluck(:"users.email").flatten.compact.uniq
   end
 
   def store_calendar_invite

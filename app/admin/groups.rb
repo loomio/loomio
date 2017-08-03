@@ -43,7 +43,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     selectable_column
     column :id
     column :name do |g|
-      simple_format(g.full_name.sub(' - ', "\n \n> "))
+      g.full_name
     end
 
     column "Size", :memberships_count

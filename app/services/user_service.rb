@@ -1,17 +1,14 @@
 class UserService
   def self.verify(user: )
-    # if !user.is_verified and verified_sign_in_method
     return user if user.email_verified?
-      # user = UserService.verify(user)
-    # check if already verfied user with
-    if verified_user = User.verified.find_by(email: user.email)
-      # merge records and return verified person
-      move_records(from: user, to: verified_user)
-      verified_user
-    else
-      user.update(email_verified: true)
-      user
-    end
+    User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
+  end
+
+  def self.remind(model:, actor:, user:)
+    actor.ability.authorize! :remind, model
+
+    EventBus.broadcast 'user_remind', model, actor, user
+    Events::UserReminded.publish!(model, actor, user)
   end
 
   def self.move_records(from: , to: )
