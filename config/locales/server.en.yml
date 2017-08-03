@@ -4,6 +4,9 @@ en:
     error:
       must_have_options: Polls must have options
 
+  user:
+    username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
+
   invitation:
     invitation_not_found: We could not find an invitation with the token you've given us. Please request another invitation from your group.
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
