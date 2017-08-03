@@ -52,31 +52,6 @@
   @include lmoBtn;
 }
 
-@mixin lmoBtnDefault{
-  @include lmoBtn;
-  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
-}
-.lmo-btn--default {
-  @include lmoBtnDefault;
-}
-
-@mixin lmoBtnPrimary {
-  @include lmoBtn;
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-}
-.lmo-btn--primary{
-  @include lmoBtnPrimary;
-}
-
-@mixin lmoBtnFeatured{
-  @include lmoBtn;
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-  i.fa{ color: #fff; }
-}
-.lmo-btn--featured {
-  @include lmoBtnFeatured;
-}
-
 @mixin lmoBtnDanger {
   @include lmoBtn;
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);

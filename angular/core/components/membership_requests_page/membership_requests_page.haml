@@ -19,8 +19,8 @@
             .membership-requests-page__pending-request-introduction
               {{request.introduction}}
             .membership-requests-page__actions
-              %button.lmo-btn--primary.membership-requests-page__approve{ng-click: "membershipRequestsPage.approve(request)", translate: "membership_requests_page.approve"}
-              %button.lmo-btn--default.membership-requests-page__ignore{ng-click: "membershipRequestsPage.ignore(request)", translate: "membership_requests_page.ignore"}
+              %md-button.membership-requests-page__ignore{ng-click: "membershipRequestsPage.ignore(request)", translate: "membership_requests_page.ignore"}
+              %md-button.md-primary.md-raised.membership-requests-page__approve{ng-click: "membershipRequestsPage.approve(request)", translate: "membership_requests_page.approve"}
       .membership-requests-page__no-pending-requests{ng-if: "!membershipRequestsPage.group.hasPendingMembershipRequests()", translate: "membership_requests_page.no_pending_requests"}
     .membership-requests-page__previous-requests
       %h3.lmo-card-heading{translate: "membership_requests_page.previous_requests"}

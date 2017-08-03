@@ -8,6 +8,6 @@
     .lmo-form-group
       .lmo-relative.lmo-textarea-wrapper
         %textarea.lmo-textarea.description-card__textarea.form-control.lmo-primary-form-input{msd-elastic: "true", ng-model: "editableDescription", ng-model-options: "{debounce: 150}"}
-    .description-card__actions
-      %button.description-card__cancel.lmo-btn--cancel{ng-click: "disableEditor()", translate: "common.action.cancel"}
-      %button.description-card__save.lmo-btn--primary{ng-click: "save()", translate: "common.action.save"}
+    .lmo-actions
+      %md-button.description-card__cancel{ng-click: "disableEditor()", translate: "common.action.cancel"}
+      %md-button.md-primary.md-raised.description-card__save{ng-click: "save()", translate: "common.action.save"}
