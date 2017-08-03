@@ -5,7 +5,6 @@ class PollService
     poll.assign_attributes(author: actor)
 
     return false unless poll.valid?
-    poll.create_guest_group.add_admin!(actor)
     poll.save!
 
     EventBus.broadcast('poll_create', poll, actor)
@@ -87,22 +86,6 @@ class PollService
     end
 
     EventBus.broadcast('poll_toggle_subscription', poll, actor)
-  end
-
-  def self.convert_visitors(poll: )
-    poll.create_guest_group
-    poll.visitors.each do |visitor|
-      if poll.stances.where(participant: visitor).any?
-        user = User.create(email: visitor.email, email_verified: false)
-        next unless user.valid?
-        poll.guest_group.add_member!(user)
-        poll.stances.where(participant: visitor).update_all(participant_type: 'User', participant_id: user.id)
-      elsif poll.active?
-        poll.guest_group.invitations.create!(recipient_email: visitor.email, token: visitor.participation_token, intent: 'join_poll')
-      end
-      visitor.destroy
-    end
-    do_closing_work(poll: poll) if poll.closed?
   end
 
   def self.create_visitors(poll:, emails:, actor:)

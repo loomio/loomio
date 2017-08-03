@@ -12,8 +12,10 @@ describe Invitation do
                                     group: group)
   end
 
-  it 'recipient_email' do
-    expect(build(:invitation, recipient_email: User::FORBIDDEN_EMAIL_ADDRESSES.first)).to_not be_valid
+  describe 'recipient_email' do
+    it 'is invalid when using a forbidden email' do
+      expect(build(:invitation, recipient_email: User::FORBIDDEN_EMAIL_ADDRESSES.first)).to_not be_valid
+    end
   end
 
   describe 'create' do

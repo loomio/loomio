@@ -89,6 +89,7 @@ Loomio::Application.routes.draw do
 
     resources :invitations, only: [:index, :create, :destroy] do
       post :bulk_create, on: :collection
+      post :resend, on: :member
       get :pending, on: :collection
       get :shareable, on: :collection
     end
@@ -96,6 +97,7 @@ Loomio::Application.routes.draw do
     resources :profile, only: [:show] do
       get  :me, on: :collection
       get  :email_status, on: :collection
+      post :remind, on: :member
       post :update_profile, on: :collection
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection
@@ -245,8 +247,6 @@ Loomio::Application.routes.draw do
     get :markdown
   end
 
-  get 'contact(/:destination)', to: 'contact_messages#new'
-  post :contact, to: 'contact_messages#create', as: :contact
   post :email_processor, to: 'griddler/emails#create'
 
   get '/robots'     => 'robots#show'
@@ -261,6 +261,7 @@ Loomio::Application.routes.draw do
   get 'polls'                              => 'application#boot_angular_ui', as: :polls
   get 'explore'                            => 'application#boot_angular_ui', as: :explore
   get 'profile'                            => 'application#boot_angular_ui', as: :profile
+  get 'contact'                            => 'application#boot_angular_ui', as: :contact
   get 'email_preferences'                  => 'application#boot_angular_ui', as: :email_preferences
   get 'verify_stances'                     => 'application#boot_angular_ui', as: :verify_stances
   get 'apps/registered'                    => 'application#boot_angular_ui'

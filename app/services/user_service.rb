@@ -4,10 +4,16 @@ class UserService
     if verified_user = User.verified.find_by(email: user.email)
       verified_user
     else
-      flash[:notice] = I18n.t('auth_form.email_verified')
       user.update(email_verified: true)
       user
     end
+  end
+
+  def self.remind(model:, actor:, user:)
+    actor.ability.authorize! :remind, model
+
+    EventBus.broadcast 'user_remind', model, actor, user
+    Events::UserReminded.publish!(model, actor, user)
   end
 
   def self.move_records(from: , to: )

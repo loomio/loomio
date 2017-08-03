@@ -33,8 +33,8 @@ describe 'Managing memberships', ->
     it 'allows non-coordinators to add members if the group settings allow', ->
       page.loadPath('setup_group_as_member')
       page.click '.members-card__manage-members'
-      page.expectElement '.memberships-page__memberships'
-      page.expectElement '.members-card__invite-members'
+      page.expectElement '.memberships-panel__membership'
+      page.expectElement '.memberships-page__invite'
 
   describe 'removing coordinator privileges', ->
 
