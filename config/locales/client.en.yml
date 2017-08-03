@@ -786,7 +786,7 @@ en:
     email_label: 'Email'
     short_bio_label: 'Introduction'
     locale_label: 'Language'
-    short_bio_placeholder: 'Enter a short introduction (max 250 characters)'
+    short_bio_placeholder: 'Enter a short introduction (max 500 characters)'
     locale_placeholder: Select your preferred language
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
@@ -1050,6 +1050,8 @@ en:
     discussion_moved: 'moved the thread from <span>{{group}}</span>'
 
   contact_message_form:
+    helptext: "Want to get in touch? Just enter a message below and you'll hear from us shortly."
+    contact_us_email: "(You can also always reach us at <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
     contact_us: 'Contact Us'
     name_label: 'Your name'
     name_placeholder: 'Enter your name...'
@@ -1058,7 +1060,7 @@ en:
     message_label: 'Your message'
     message_placeholder: 'Your message...'
     send_message: 'Send Message'
-    new_contact_message: 'Thanks for your message; we''ll be in touch soon!'
+    new_contact_message: "Thanks for getting in touch; we''ll get back to you soon!"
 
   help_page:
     coordinating: 'Coordinating your Loomio group'
@@ -1390,10 +1392,11 @@ en:
     none_of_the_above: (None of the above)
 
   poll_common_undecided_panel:
-    show_undecided: Show {{count}} undecided
-    undecided_users: Undecided Group Members ({{count}})
-    undecided_visitors: Undecided Guests ({{count}})
-    hidden_visitors: Only group coordinators or the poll author may view undecided guests
+    show_undecided: "Show {{count}} undecided"
+    show_invitations: Show Pending Invitations
+    undecided_users: "Undecided ({{count}})"
+    invitation_count_singular: "1 additional person has been invited to participate via email"
+    invitation_count_plural: "{{count}} additional people have been invited to participate via email"
 
   poll_common_set_outcome_panel:
     share_outcome: Share outcome

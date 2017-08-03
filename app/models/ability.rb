@@ -20,20 +20,6 @@ class Ability
 
     cannot :sign_up, User
 
-    can [:approve, :decline], NetworkMembershipRequest do |request|
-      !request.approved? and request.network.coordinators.include? user
-    end
-
-    can :create, NetworkMembershipRequest do |request|
-      request.group.admins.include?(request.requestor) and
-      request.group.is_parent? and
-      !request.network.groups.include?(request.group)
-    end
-
-    can :manage_membership_requests, Network do |network|
-      network.coordinators.include? user
-    end
-
     can :show, Group do |group|
       if group.archived_at
         false
@@ -54,7 +40,7 @@ class Ability
     end
 
     can [:choose_subscription_plan], Group do |group|
-      group.is_parent? and user_is_admin_of?(group.id)
+      user.email_verified? && group.is_parent? && user_is_admin_of?(group.id)
     end
 
     can [:update,
@@ -64,6 +50,10 @@ class Ability
          :publish,
          :view_pending_invitations], Group do |group|
       user_is_admin_of?(group.id)
+    end
+
+    can :view_pending_invitations, Poll do |poll|
+      can? :view_pending_invitations, poll.guest_group
     end
 
     can :export, Group do |group|
@@ -77,20 +67,27 @@ class Ability
          :make_draft,
          :move_discussions_to,
          :view_previous_proposals], Group do |group|
-      user_is_member_of?(group.id)
+      user.email_verified? && user_is_member_of?(group.id)
     end
+
 
     can [:add_members,
          :invite_people,
          :manage_membership_requests,
          :view_shareable_invitation], Group do |group|
-      (group.members_can_add_members? && user_is_member_of?(group.id)) ||
-      user_is_admin_of?(group.id)
+      user.email_verified? &&
+      ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
+      user_is_admin_of?(group.id))
+    end
+
+    can :view_shareable_invitation, Poll do |poll|
+      can? :view_shareable_invitation, poll.guest_group
     end
 
     # please note that I don't like this duplication either.
     # add_subgroup checks against a parent group
     can [:add_subgroup], Group do |group|
+      user.email_verified? &&
       group.is_parent? &&
       user_is_member_of?(group.id) &&
       (group.members_can_create_subgroups? || user_is_admin_of?(group.id))
@@ -101,17 +98,22 @@ class Ability
       # anyone can create a top level group of their own
       # otherwise, the group must be a subgroup
       # inwhich case we need to confirm membership and permission
-
+      user.email_verified? &&
       group.is_parent? ||
-      user.is_logged_in? &&
       ( user_is_admin_of?(group.parent_id) ||
         (user_is_member_of?(group.parent_id) && group.parent.members_can_create_subgroups?) )
     end
 
     can :join, Group do |group|
+      user.email_verified? &&
       can?(:show, group) &&
       (group.membership_granted_upon_request? ||
-       group.invitations.find_by(recipient_email: @user.email))
+       group.invitations.useable.find_by(recipient_email: @user.email))
+    end
+
+    can [:create], GroupIdentity do |group_identity|
+      user_is_admin_of?(group_identity.group_id) &&
+      user.identities.include?(group_identity.identity)
     end
 
     can [:make_admin], Membership do |membership|
@@ -160,6 +162,10 @@ class Ability
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
+    can :create, Invitation do |invitation|
+      can? :invite_people, invitation.group
+    end
+
     can :cancel, Invitation do |invitation|
       (invitation.inviter == user) or user_is_admin_of?(invitation.group.id)
     end
@@ -196,6 +202,7 @@ class Ability
     end
 
     can :update, Discussion do |discussion|
+      user.email_verified? &&
       if discussion.group.members_can_edit_discussions?
         user_is_member_of?(discussion.group_id)
       else
@@ -212,14 +219,14 @@ class Ability
     end
 
     can :create, Discussion do |discussion|
-      (discussion.group.present? &&
+      (user.email_verified? &&
+       discussion.group.present? &&
        discussion.group.members_can_start_discussions? &&
        user_is_member_of?(discussion.group_id)) ||
       user_is_admin_of?(discussion.group_id)
     end
 
     can [:set_volume,
-         :new_proposal,
          :show_description_history,
          :preview_version], Discussion do |discussion|
       user_is_member_of?(discussion.group_id)
@@ -246,64 +253,15 @@ class Ability
     end
 
     can [:create], Attachment do
-      user.is_logged_in?
+      user.email_verified?
     end
 
     can [:destroy], Attachment do |attachment|
       attachment.user_id == user.id
     end
 
-    can [:create], Motion do |motion|
-      discussion = motion.discussion
-      discussion.current_motion.blank? &&
-      ((discussion.group.members_can_raise_motions? &&
-        user_is_member_of?(discussion.group_id)) ||
-        user_is_admin_of?(discussion.group_id) )
-    end
-
-    can [:vote, :make_draft], Motion do |motion|
-      discussion = motion.discussion
-      motion.voting? &&
-      ((discussion.group.members_can_vote? && user_is_member_of?(discussion.group_id)) ||
-        user_is_admin_of?(discussion.group_id) )
-    end
-
-    can [:create], Vote do |vote|
-      motion = vote.motion
-      can? :vote, motion
-    end
-
-    can [:close, :edit_close_date], Motion do |motion|
-      motion.persisted? && motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
-    end
-
-    can [:close], Motion do |motion|
-      motion.persisted? && motion.voting? &&
-       ( user_is_admin_of?(motion.discussion.group_id) or user_is_author_of?(motion) )
-    end
-
-    can [:update], Motion do |motion|
-      motion.voting? &&
-      (motion.can_be_edited? || (not motion.restricted_changes_made?)) &&
-      (user_is_admin_of?(motion.discussion.group_id) || user_is_author_of?(motion))
-    end
-
-    can [:destroy,
-         :create_outcome,
-         :update_outcome], Motion do |motion|
-      user_is_author_of?(motion) or user_is_admin_of?(motion.discussion.group_id)
-    end
-
     can [:show], Comment do |comment|
       can?(:show, comment.discussion)
-    end
-
-    can [:show, :history], Motion do |motion|
-      can?(:show, motion.discussion)
-    end
-
-    can [:show], Vote do |vote|
-      can?(:show, vote.motion)
     end
 
     can :update, Draft do |draft|
@@ -320,36 +278,36 @@ class Ability
     end
 
     can :create, OauthApplication do |application|
-      @user.is_logged_in?
+      @user.email_verified?
     end
 
-    can [:show, :remind], Communities::Base do |community|
-      @user.communities.include?(community)
-    end
-
-    can :manage_visitors, Communities::Base do |community|
-      @user.email_communities.include?(community)
-    end
-
-    can :create, Communities::Base do |community|
-      @user.is_logged_in? # TODO: ensure user owns one of the community's polls?
-    end
-
-    can [:destroy, :update], Communities::Base do |community|
-      @user.communities.include? community
-    end
-
-    can :destroy, PollCommunity do |poll_community|
-      @user.can? :share, poll_community.poll
-    end
+    # can [:show, :remind], Communities::Base do |community|
+    #   @user.communities.include?(community)
+    # end
+    #
+    # can :manage_visitors, Communities::Base do |community|
+    #   @user.email_communities.include?(community)
+    # end
+    #
+    # can :create, Communities::Base do |community|
+    #   @user.is_logged_in? # TODO: ensure user owns one of the community's polls?
+    # end
+    #
+    # can [:destroy, :update], Communities::Base do |community|
+    #   @user.communities.include? community
+    # end
+    #
+    # can :destroy, PollCommunity do |poll_community|
+    #   @user.can? :share, poll_community.poll
+    # end
 
     can :make_draft, Poll do |poll|
       @user.is_logged_in? && can?(:show, poll)
     end
 
-    can :create_visitors, Poll do |poll|
-      user_is_author_of?(poll)
-    end
+    # can :create_visitors, Poll do |poll|
+    #   user_is_author_of?(poll)
+    # end
 
     can :add_options, Poll do |poll|
       user_is_author_of?(poll) ||
@@ -357,26 +315,25 @@ class Ability
     end
 
     can :vote_in, Poll do |poll|
-      if !poll.active?
-        false
-      elsif poll.discussion
-        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id)) ||
-        user_is_admin_of?(poll.group_id) ||
-        poll.communities.any? { |community| community.includes?(@user) }
-      else
-        user_is_author_of?(poll) || poll.communities.any? { |community| community.includes?(@user) }
-      end
+      # cant have a token of a verified user, and be logged in as another user
+      poll.active? && (
+        poll.members.include?(@user) ||
+        poll.anyone_can_participate ||
+        poll.invitations.useable.find_by(token: @user.token)
+      )
     end
 
     can [:show, :toggle_subscription, :subscribe_to], Poll do |poll|
+      poll.anyone_can_participate ||
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
-      poll.communities.any? { |community| community.includes?(@user) }
+      poll.members.include?(@user) ||
+      poll.invitations.useable.pluck(:token).include?(@user.token)
     end
 
     can :create, Poll do |poll|
-      @user.is_logged_in? &&
-      (!poll.group || poll.group.community.includes?(@user))
+      @user.email_verified? &&
+      (!poll.group.presence || poll.group.members.include?(@user))
     end
 
     can [:update, :share, :destroy], Poll do |poll|
@@ -386,10 +343,6 @@ class Ability
 
     can :close, Poll do |poll|
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
-    end
-
-    can :update, Visitor do |visitor|
-      @user.can?(:create, visitor) || @user.participation_token == visitor.participation_token
     end
 
     can [:show, :destroy], Identities::Base do |identity|

@@ -1,18 +1,17 @@
 require 'rails_helper'
 describe API::DiscussionsController do
 
-  let(:subgroup) { create :group, parent: group }
-  let(:another_group) { create :group }
+  let(:subgroup) { create :formal_group, parent: group }
+  let(:another_group) { create :formal_group }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :formal_group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:another_discussion) { create :discussion }
   let(:comment) { create :comment, discussion: discussion}
   let(:new_comment) { build(:comment, discussion: discussion) }
-  let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
     title: 'Did Charlie Bite You?',
     description: 'From the dawn of internet time...',
@@ -174,36 +173,16 @@ describe API::DiscussionsController do
         expect(json['discussions'].count).to eq 2
       end
     end
-
-    describe 'sorting' do
-      let(:with_proposal) { create :discussion, group: group, title: 'with_proposal' }
-      let(:recent) { create :discussion, group: group, last_activity_at: 1.day.ago, title: 'recent' }
-      let(:not_recent) { create :discussion, group: group, last_activity_at: 5.days.ago, title: 'not_recent' }
-
-      before do
-        sign_in user
-        recent; not_recent
-      end
-
-      it 'sorts by recent activity fourth' do
-        not_recent.update last_activity_at: 10.days.ago
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq recent.id
-      end
-    end
   end
 
   describe 'show' do
     context 'logged in' do
       before { sign_in user }
       it 'returns the discussion json' do
-        proposal
         get :show, id: discussion.key
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users groups proposals discussions])
-        expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id active_proposal_id])
+        expect(json.keys).to include *(%w[users groups discussions])
+        expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id ])
       end
 
       it 'returns the reader fields' do
@@ -311,17 +290,14 @@ describe API::DiscussionsController do
 
     context 'success' do
       it 'moves a discussion' do
-        destination_group = create :group
-        destination_group.users << user
+        destination_group = create :formal_group
+        destination_group.members << user
         source_group = discussion.group
         patch :move, id: discussion.id, group_id: destination_group.id, format: :json
-
-        json = JSON.parse(response.body)
 
         # Discussion belongs to new group
         # The eventable of the event is the old group
         expect(discussion.reload.group).to eq destination_group
-        expect(json['groups'].first['id']).to eq source_group.id
       end
     end
   end
@@ -368,7 +344,7 @@ describe API::DiscussionsController do
         end
 
         it 'can display content from a specified public group' do
-          public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
+          public_group = create :formal_group, discussion_privacy_options: :public_only, is_visible_to_public: true
           can_see_me = create :discussion, group: public_group, private: false
           get :index, group_id: public_group.id, format: :json
           json = JSON.parse(response.body)
@@ -509,7 +485,7 @@ describe API::DiscussionsController do
       it 'responds with json' do
         post :create, discussion: discussion_params, format: :json
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users groups proposals discussions])
+        expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[
           id
           key
@@ -520,7 +496,6 @@ describe API::DiscussionsController do
           updated_at
           items_count
           private
-          active_proposal_id
           author_id
           group_id
         ])

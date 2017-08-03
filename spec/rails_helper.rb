@@ -77,3 +77,11 @@ end
 def described_model_name
   described_class.model_name.singular
 end
+
+def last_email
+  ActionMailer::Base.deliveries.last
+end
+
+def last_email_html_body
+  last_email.parts[1].body
+end

@@ -1,9 +1,19 @@
 class InvitationService
+  def self.create(invitation: , actor: )
+    actor.ability.authorize!(:create, invitation)
+    invitation.inviter = actor
+
+    return false unless invitation.valid?
+
+    invitation.save!
+
+    EventBus.broadcast('invitation_create', invitation, actor)
+    Events::InvitationCreated.publish!(invitation, actor)
+  end
+
   def self.create_invite_to_join_group(args)
     args[:to_be_admin] = false
     args[:intent] = 'join_group'
-    args[:invitable] = args[:group]
-    args.delete(:group)
     Invitation.create!(args)
   end
 
@@ -15,7 +25,7 @@ class InvitationService
     emails = (recipient_emails - group.members.pluck(:email)).take(100)
     raise Invitation::AllInvitesAreMembers.new if emails.empty?
 
-    recent_pending_invitations_count = group.pending_invitations.where("created_at > ?", 2.weeks.ago).count
+    recent_pending_invitations_count = group.invitations.pending.where("created_at > ?", 2.weeks.ago).count
     num_used = recent_pending_invitations_count + emails.length
     max_allowed = ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i + group.memberships_count
 
@@ -26,17 +36,9 @@ class InvitationService
                                                group: group,
                                                message: message,
                                                inviter: inviter)
-
-      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation)
+      Events::InvitationCreated.publish!(invitation, inviter)
       invitation
     end
-  end
-
-  def self.resend(invitation)
-    return unless invitation.is_pending?
-    InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
-                                                        subject_key: "email.resend_to_join_group.subject")
-    invitation
   end
 
   def self.cancel(invitation:, actor:)
@@ -44,20 +46,20 @@ class InvitationService
     invitation.cancel!(canceller: actor)
   end
 
-  def self.redeem(invitation, user, identity = nil)
+  def self.redeem(invitation, user)
+    return true if invitation.group.members.include?(user) # feedback appreciated
     raise Invitation::InvitationCancelled   if invitation.cancelled?
     raise Invitation::InvitationAlreadyUsed if invitation.accepted?
     invitation.accepted_at = DateTime.now   if invitation.single_use?
 
-    user.associate_with_identity(identity)  if identity.present?
-
-    method     = invitation.to_be_admin? ? :add_admin! : :add_member!
-    membership = invitation.group.send(method, user, invitation.inviter)
+    membership = invitation.group.add_member!(user, invitation: invitation)
     invitation.save!
     Events::InvitationAccepted.publish!(membership)
   end
 
   def self.resend_ignored(send_count:, since:)
-    Invitation.ignored(send_count, since).each { |invitation| resend invitation  }
+    Invitation.ignored(send_count, since).each do |invitation|
+      Events::InvitationResend.publish!(invitation)
+    end
   end
 end

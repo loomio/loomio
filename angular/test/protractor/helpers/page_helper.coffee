@@ -7,15 +7,18 @@ given =  (args) ->
   else
     args
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000
 
 module.exports = new class PageHelper
-  loadPath: (path, timeout = 40000) ->
+  loadPath: (path, timeout = jasmine.DEFAULT_TIMEOUT_INTERVAL) ->
     browser.get('dev/'+path, timeout)
 
   waitForReload: (time=5000)->
     browser.driver.sleep(time)
     browser.waitForAngular()
+
+  sleep: (time=1000) ->
+    browser.driver.sleep(time)
 
   expectElement: (selector)->
     expect(element(By.css(selector)).isPresent()).toBe(true)
@@ -44,6 +47,10 @@ module.exports = new class PageHelper
 
   fillInAndEnter: (selector, value) ->
     element(By.css(selector)).clear().sendKeys(value).sendKeys(browser.driver.keys('Enter'))
+
+  selectOption: (selector, option) ->
+    @click selector
+    element(By.cssContainingText('option', option)).click()
 
   expectInputValue: (selector, value) ->
     expect(element(By.css(selector)).getAttribute('value')).toContain(value)
@@ -76,3 +83,16 @@ module.exports = new class PageHelper
         if selected
           console.log "unexpected selected", selector, selected
         expect(selected).toBe(false)
+
+  signInViaPassword: (email, password) ->
+    @fillIn '.auth-email-form__email input', email
+    @click '.auth-email-form__submit'
+    @fillIn '.auth-signin-form__password input', password
+    @click '.auth-signin-form__submit'
+
+  signInViaEmail: (email) ->
+    @fillIn '.md-input', 'new@account.com'
+    @click '.auth-email-form__submit'
+    @fillIn '.md-input', 'New Account'
+    @click '.auth-signup-form__submit'
+    @loadPath 'use_last_login_token'

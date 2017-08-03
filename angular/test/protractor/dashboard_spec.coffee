@@ -6,7 +6,7 @@ describe 'Dashboard Page', ->
     page.loadPath('setup_dashboard')
 
   it 'displays a view of recent threads', ->
-    page.expectText('.dashboard-page__proposals','Proposal discussion')
+    page.expectText('.dashboard-page__proposals','Poll discussion')
 
     page.expectText('.dashboard-page__today', 'Recent discussion')
 

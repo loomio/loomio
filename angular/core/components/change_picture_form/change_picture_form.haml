@@ -1,10 +1,10 @@
-.change-picture-form
+%md-dialog.change-picture-form
   .lmo-disabled-form{ng-show: "isDisabled"}
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{translate: "change_picture_form.title"}
-
-  .modal-body
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "change_picture_form.title"}
+      %material_modal_header_cancel_button
+  .md-dialog-content.md-body-1
     .change-picture-form__helptext{translate: "change_picture_form.helptext"}
     %ul.change-picture-form__options-list
       %li.change-picture-form__option
@@ -25,5 +25,7 @@
               %i.fa.fa-lg.fa-camera
           %span.lmo-option-text{translate: "change_picture_form.use_uploaded"}
         %input.hidden.change-picture-form__file-input{type: "file", ng-model: "files", ng-file-select: "upload(files)"}
-  .modal-footer
-    %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+
+    .lmo-actions
+      %div
+      %md-button{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

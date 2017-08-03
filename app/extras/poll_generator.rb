@@ -3,11 +3,11 @@ PollGenerator = Struct.new(:poll_type) do
   def generate!
     return unless AppConfig.poll_templates.keys.include?(poll_type.to_s)
     poll = Poll.create(default_params)
-    poll.community_of_type(:email, build: true)
+    poll.create_guest_group
     poll.save!
     send(:"#{poll_type}_stances_for", poll)
     poll.update_stance_data
-    poll.community_of_type(:email).visitors.create(email: User.demo_bot.email)
+    poll.invite_guest!(email: User.demo_bot.email)
     poll
   end
 
@@ -138,10 +138,16 @@ PollGenerator = Struct.new(:poll_type) do
   end
 
   def generate_participant_for(poll, index)
-    poll.community_of_type(:email).visitors.create(
+    User.find_or_create_by(participant_params_for(index)).tap do |user|
+      poll.guest_group.add_member! user
+    end
+  end
+
+  def participant_params_for(index)
+    {
       name:  participant_names[index],
       email: "#{participant_names[index].split(' ').first.downcase}@example.com"
-    )
+    }
   end
 
   def participant_names
@@ -152,6 +158,6 @@ PollGenerator = Struct.new(:poll_type) do
       "Lelah Lindgren",
       "Rick Kuhn",
       "Jamie Wright"
-    ]
+    ].freeze
   end
 end

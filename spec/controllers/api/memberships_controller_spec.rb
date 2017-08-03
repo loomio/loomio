@@ -8,8 +8,8 @@ describe API::MembershipsController do
   let(:alien_named_biff) { create :user, name: "Biff Beef", email: 'beef@biff.com' }
   let(:alien_named_bang) { create :user, name: 'Bang Beefthrong' }
 
-  let(:group) { create :group }
-  let(:another_group) { create :group }
+  let(:group) { create :formal_group }
+  let(:another_group) { create :formal_group }
   let(:discussion) { create :discussion, group: group }
   let(:comment_params) {{
     body: 'Yo dawg those kittens be trippin for some dippin',
@@ -19,17 +19,17 @@ describe API::MembershipsController do
   before do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
     group.admins << user
-    group.users  << user_named_biff
-    group.users  << user_named_bang
-    another_group.users << user
-    another_group.users << alien_named_bang
-    another_group.users << alien_named_biff
+    group.members  << user_named_biff
+    group.members  << user_named_bang
+    another_group.members << user
+    another_group.members << alien_named_bang
+    another_group.members << alien_named_biff
     sign_in user
   end
 
   describe 'create' do
     it 'sets the membership volume' do
-      new_group = FactoryGirl.create(:group)
+      new_group = FactoryGirl.create(:formal_group)
       user.update_attribute(:default_membership_volume, 'quiet')
       membership = Membership.create!(user: user, group: new_group)
       expect(membership.volume).to eq 'quiet'
@@ -81,8 +81,8 @@ describe API::MembershipsController do
   describe 'add_to_subgroup' do
     context 'permitted' do
       let(:parent_member) { FactoryGirl.create(:user) }
-      let(:parent_group) { FactoryGirl.create(:group) }
-      let(:subgroup) { create(:group, parent: parent_group) }
+      let(:parent_group) { FactoryGirl.create(:formal_group) }
+      let(:subgroup) { create(:formal_group, parent: parent_group) }
 
       before do
         parent_group.add_member!(user)
@@ -135,7 +135,7 @@ describe API::MembershipsController do
 
       context 'logged out' do
         before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
-        let(:private_group) { create(:group, is_visible_to_public: false) }
+        let(:private_group) { create(:formal_group, is_visible_to_public: false) }
 
         it 'returns users filtered by group for a public group' do
           get :index, group_id: group.id, format: :json
@@ -157,13 +157,15 @@ describe API::MembershipsController do
   end
 
   describe 'for_user' do
-    let(:public_group) { create :group, is_visible_to_public: true }
-    let(:private_group) { create :group, is_visible_to_public: false }
+    let(:public_group) { create :formal_group, is_visible_to_public: true }
+    let(:private_group) { create :formal_group, is_visible_to_public: false }
+    let(:guest_group) { create :guest_group }
 
     it 'returns visible groups for the given user' do
       public_group
-      private_group.users << another_user
-      group.users << another_user
+      private_group.members << another_user
+      group.members << another_user
+      guest_group.members << another_user
 
       get :for_user, user_id: another_user.id
       json = JSON.parse(response.body)
@@ -171,6 +173,7 @@ describe API::MembershipsController do
       expect(group_ids).to include group.id
       expect(group_ids).to_not include public_group.id
       expect(group_ids).to_not include private_group.id
+      expect(group_ids).to_not include guest_group.id
     end
   end
 
@@ -208,7 +211,7 @@ describe API::MembershipsController do
 
     context 'failure' do
       it 'does not allow access to an unauthorized group' do
-        cant_see_me = create :group
+        cant_see_me = create :formal_group
         get :autocomplete, group_id: cant_see_me.id
         expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
@@ -255,10 +258,10 @@ describe API::MembershipsController do
       end
 
       it 'does not return duplicate users' do
-        third_group = create(:group)
-        third_group.users << user
-        third_group.users << user_named_biff
-        another_group.users << user_named_biff
+        third_group = create(:formal_group)
+        third_group.members << user
+        third_group.members << user_named_biff
+        another_group.members << user_named_biff
 
         get :invitables, group_id: group.id, q: 'biff', format: :json
         json = JSON.parse(response.body)

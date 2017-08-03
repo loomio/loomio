@@ -2,7 +2,7 @@ require 'rails_helper'
 describe 'CommentService' do
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create(:group) }
+  let(:group) { create(:formal_group) }
   let(:discussion) { create :discussion, group: group, author: user }
   let(:comment) { create :comment, discussion: discussion, author: user }
   let(:comment_vote) { create :comment_vote, comment: comment, user: user }
@@ -85,6 +85,7 @@ describe 'CommentService' do
       end
 
       it 'updates the discussion reader' do
+        user.update_attribute(:email_on_participation, false)
         CommentService.create(comment: comment, actor: user)
         expect(reader.reload.participating).to eq true
         expect(reader.reload.volume.to_sym).to eq :normal

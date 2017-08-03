@@ -3,6 +3,25 @@ class Dev::PollsController < Dev::BaseController
   include Dev::PollsScenarioHelper
   skip_before_filter :cleanup_database
 
+  def test_verify_vote_by_unverified_user
+    poll = saved fake_poll
+    unverified_user = saved fake_user(email_verified: false)
+    poll.guest_group.add_member! unverified_user
+    stance = fake_stance(poll: poll, participant: unverified_user)
+    StanceService.create(stance: stance, actor: unverified_user)
+    last_email
+  end
+
+  def test_verify_vote_by_verified_user
+    poll = saved fake_poll
+    verified_user = saved fake_user(email: 'user@example.com', email_verified: true)
+    unverified_user = saved fake_user(email: 'user@example.com', email_verified: false)
+    poll.guest_group.add_member! unverified_user
+    stance = fake_stance(poll: poll, participant: unverified_user)
+    StanceService.create(stance: stance, actor: unverified_user)
+    last_email
+  end
+
   def test_discussion
     group = create_group_with_members
     discussion = saved fake_discussion(group: group)
@@ -26,9 +45,9 @@ class Dev::PollsController < Dev::BaseController
     discussion = saved fake_discussion(group: group)
     poll = saved fake_poll(discussion: discussion)
     Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
-    poll.community_of_type(:email, build: true).visitors.create(name: Faker::Name.name)
-    poll.community_of_type(:email, build: true).visitors.create(name: Faker::Name.name)
-    poll.update_undecided_visitor_count
+    poll.guest_group.add_member! fake_user(email_verified: false)
+    poll.guest_group.invitations.create! recipient_email: "bill@example.com", intent: :join_group
+
     redirect_to poll_url(poll)
   end
 

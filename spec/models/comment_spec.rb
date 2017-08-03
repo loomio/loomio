@@ -48,7 +48,7 @@ describe Comment do
 
   describe "#mentioned_group_members" do
     before do
-      @group = create :group
+      @group = create :formal_group
       @member = create :user
       @group.add_member! @member
       @discussion = create :discussion, group: @group

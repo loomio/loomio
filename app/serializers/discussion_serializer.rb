@@ -50,24 +50,10 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
-  has_one :active_proposal, serializer: MotionSerializer, root: :proposals
-  has_one :active_proposal_vote, serializer: VoteSerializer, root: :votes
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
-
-  def include_active_proposal_vote?
-    reader.present? && active_proposal.present?
-  end
-
-  def active_proposal_vote
-    active_proposal.votes.find_by(user_id: reader.user_id)
-  end
 
   def importance
     (reader || object).importance
-  end
-
-  def active_proposal
-    @active_proposal ||= object.current_motion
   end
 
   def active_polls

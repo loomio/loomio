@@ -93,22 +93,11 @@
   @include truncateText;
 }
 
-.thread-preview__proposal-name{
-  // font-size: 93%;
-  padding-left: $thinPaddingSize;
-  padding-right: 5px;
-  @include truncateText;
-}
-
 .thread-preview__group-name{
   @include md-caption;
   @include truncateText;
   padding-left: $thinPaddingSize;
   color: $grey-on-white;
-}
-
-.thread-preview__proposal-closing-container {
-  min-width: 130px;
 }
 
 .thread-preview__unread-count {
@@ -119,11 +108,6 @@
 
 .thread-preview--unread {
   font-weight: 500;
-}
-
-.thread-preview__proposal-closing-at {
-  @include md-caption;
-  color: $highlight-red;
 }
 
 .thread-preview__position-icon-container {
@@ -142,22 +126,6 @@
   height: 21px;
   margin: 1px 0 0 1px;
   width: 21px;
-}
-
-.thread-preview__position-icon--yes {
-  background-image: url(/img/agree.svg);
-}
-
-.thread-preview__position-icon--no {
-  background-image: url(/img/disagree.svg);
-}
-
-.thread-preview__position-icon--block {
-  background-image: url(/img/block.svg);
-}
-
-.thread-preview__position-icon--abstain {
-  background-image: url(/img/abstain.svg);
 }
 
 .thread-preview__undecided-icon {

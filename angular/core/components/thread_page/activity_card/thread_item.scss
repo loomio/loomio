@@ -61,35 +61,3 @@
 .thread-item__timestamp {
   display: inline-block;
 }
-
-.thread-item__vote-statement {
-  color: $primary-text-color;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.thread-item__vote-statement img {
-  vertical-align: bottom;
-}
-
-.thread-item__proposal-icon{
-  @include smallIcon;
-  background-image: url(/img/proposal_icon_30.png);
-  background-repeat: no-repeat;
-}
-
-.thread-item__vote-icon--yes {
-  background-image: url(/img/agree.svg);
-}
-
-.thread-item__vote-icon--abstain {
-  background-image: url(/img/abstain.svg);
-}
-
-.thread-item__vote-icon--no {
-  background-image: url(/img/disagree.svg);
-}
-
-.thread-item__vote-icon--block {
-  background-image: url(/img/block.svg);
-}

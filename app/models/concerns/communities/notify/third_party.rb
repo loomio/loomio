@@ -1,3 +1,4 @@
+# delete
 module Communities::Notify::ThirdParty
   def notify!(event)
     super

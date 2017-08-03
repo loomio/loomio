@@ -3,11 +3,9 @@
     .sr-only
       %span {{thread.authorName()}}: {{thread.title}}.
       %span{ng-if: "thread.hasUnreadActivity()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadActivityCount() }}"}
-      %span{ng-if: "thread.activeProposal()", translate: "dashboard_page.aria_thread.current_proposal", translate-value-name: "{{ thread.activeProposal().name }}"}
-      %span{ng-if: "thread.activeProposal() && lastVoteByCurrentUser(thread)", translate: "dashboard_page.aria_thread.you_voted", translate-value-position: " {{lastVoteByCurrentUser(thread).position}} "}
 
     .thread-preview--left.lmo-flex
-      .thread-preview__icon{ng-if: "usePolls()"}
+      .thread-preview__icon
         %user_avatar{ng-if: "!thread.activePoll()", user: "thread.author()", size: "medium"}
         %poll_common_chart_preview{ng-if: "thread.activePoll()", poll: "thread.activePoll()"}
 
@@ -17,11 +15,6 @@
             {{thread.title}}
           .thread-preview__unread-count{ng-if: "thread.hasUnreadActivity()"}
             ({{thread.unreadActivityCount()}})
-
-        .thread-preview__text-container{ng-if: "thread.activeProposal()"}
-          .thread-preview__proposal-name> {{ thread.activeProposal().name }}
-          .thread-preview__proposal-closing-container{ng-if: "thread.activeProposal().closingSoon()"}
-            %proposal_closing_time.thread-preview__proposal-closing-at{proposal: "thread.activeProposal()"}>
 
         .thread-preview__text-container
           .thread-preview__group-name

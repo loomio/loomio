@@ -28,23 +28,6 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # TODO: find the common thread between these poll_published / poll_created logics
-  # publish to designated community after creation
-  config.listen('poll_create') do |poll, actor|
-    community = Communities::Base.find_by(id: poll.community_id)
-    if poll.author.can?(:show, community)
-      poll.communities << community
-      Events::PollPublished.publish!(poll, actor, community)
-    end
-  end
-
-  # publish to linked slack team after creation
-  config.listen('poll_create') do |poll, actor|
-    if poll.group&.community&.identity.present?
-      Events::PollPublished.publish!(poll, actor, poll.group.community)
-    end
-  end
-
   # publish to new group if group has changed
   config.listen('poll_update') do |poll, actor|
     if poll.versions.last.object_changes.dig('group_id', 1).present? # if we've moved the poll to a new group
@@ -102,28 +85,15 @@ EventBus.configure do |config|
     Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
-  # email and notify users of events
-  Event::KINDS.each do |kind|
-    config.listen("#{kind}_event") { |event| event.trigger! }
-  end
-
-  # notify communities of outcome creation
-  config.listen("outcome_create") do |outcome|
-    outcome.communities.with_identity.each { |community| Events::OutcomePublished.publish!(outcome, community) }
-  end
-
   # update discussion importance
   config.listen('discussion_pin',
-                'poll_create',
-                'poll_close',
-                'poll_destroy',
-                'poll_expire') do |model|
+  'poll_create',
+  'poll_close',
+  'poll_destroy',
+  'poll_expire') do |model|
     model.discussion&.update_importance
     model.discussion&.discussion_readers&.map(&:update_importance)
   end
-
-  # update reader importance
-  config.listen('discussion_update_reader') { |reader| reader.update_importance }
 
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }

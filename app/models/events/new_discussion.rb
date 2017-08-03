@@ -1,6 +1,7 @@
 class Events::NewDiscussion < Event
   include Events::Notify::Users
   include Events::LiveUpdate
+  include Events::Notify::ThirdParty
 
   def self.publish!(discussion)
     create(kind: 'new_discussion',

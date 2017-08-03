@@ -13,8 +13,9 @@ class Dev::MainController < Dev::BaseController
   end
 
   def accept_last_invitation
-    InvitationService.redeem(Invitation.last, max)
-    redirect_to(create_group)
+    invitation = Invitation.last
+    InvitationService.redeem(invitation, max)
+    redirect_to(group_url(invitation.group))
   end
 
   def use_last_login_token
@@ -30,7 +31,7 @@ class Dev::MainController < Dev::BaseController
     invitation = Invitation.create!(
       intent: :join_group,
       inviter: patrick,
-      invitable: create_group,
+      group: create_group,
       recipient_email: "max@example.com",
       recipient_name: "Max Von Sydow"
     )
@@ -41,7 +42,7 @@ class Dev::MainController < Dev::BaseController
     invitation = Invitation.create!(
       intent: :join_group,
       inviter: patrick,
-      invitable: create_group,
+      group: create_group,
       recipient_email: jennifer.email,
       recipient_name: jennifer.name
     )
@@ -113,7 +114,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_new_group
-    group = Group.new(name: 'Fresh group')
+    group = FormalGroup.new(name: 'Fresh group')
     GroupService.create(group: group, actor: patrick)
     group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: group)
@@ -155,19 +156,6 @@ class Dev::MainController < Dev::BaseController
     redirect_to dashboard_url
   end
 
-  def setup_group_with_welcome_modal
-    another_group = Group.new(name: 'Another group',
-                              discussion_privacy_options: :public_only,
-                              is_visible_to_public: true,
-                              membership_granted_upon: :request)
-    group = Group.new(name: 'Welcomed group')
-    GroupService.create(group: another_group, actor: LoggedOutUser.new)
-    GroupService.create(group: group, actor: patrick)
-    group.add_admin! patrick
-    sign_in patrick
-    redirect_to group_url(group)
-  end
-
   # to test subdomains in development
   def setup_group_with_subdomain
     sign_in patrick
@@ -180,47 +168,15 @@ class Dev::MainController < Dev::BaseController
     redirect_to group_url(create_group)
   end
 
-  def setup_group_with_many_discussions
-    create_group.add_member! emilio
-    40.times do
-      discussion = FactoryGirl.build(:discussion,
-                                     group: create_group,
-                                     private: false,
-                                     author: emilio)
-      DiscussionService.create(discussion: discussion, actor: emilio)
-    end
-    redirect_to group_url(create_group, from: 5)
-  end
-
-  def setup_discussion_with_many_comments
-    create_group.add_member! emilio
-    40.times do |i|
-      comment = FactoryGirl.build(:comment, discussion: create_discussion, body: "#{i} bottles of beer on the wall")
-      CommentService.create(comment: comment, actor: emilio)
-    end
-    redirect_to discussion_url(create_discussion, from: 5)
-  end
-
-  def setup_busy_discussion_with_signed_in_user
-    create_group.add_member! emilio
-    100.times do |i|
-      comment = FactoryGirl.build(:comment, discussion: create_discussion, body: "#{i} bottles of beer on the wall")
-      CommentService.create(comment: comment, actor: emilio)
-    end
-    sign_in patrick
-    redirect_to discussion_url(create_discussion)
-  end
-
   def setup_public_group_with_public_content
     create_another_group
-    create_public_proposal
     sign_in jennifer
     redirect_to discussion_url(create_public_discussion)
   end
 
   def setup_restricted_profile
     sign_in patrick
-    create_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    create_group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     create_group.add_member!(jennifer)
     redirect_to "/u/#{jennifer.username}"
@@ -228,7 +184,7 @@ class Dev::MainController < Dev::BaseController
 
   def setup_profile_with_group_visible_to_members
     sign_in patrick
-    create_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    create_group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     create_group.add_admin!(patrick)
     create_group.add_member!(jennifer)
@@ -237,7 +193,7 @@ class Dev::MainController < Dev::BaseController
 
   def setup_group_with_empty_draft
     sign_in patrick
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: @group)
@@ -255,12 +211,12 @@ class Dev::MainController < Dev::BaseController
   def setup_explore_groups
     sign_in patrick
     30.times do |i|
-      explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
+      explore_group = FormalGroup.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
       GroupService.create(group: explore_group, actor: patrick)
       explore_group.update_attribute(:memberships_count, i)
     end
-    Group.limit(15).update_all(name: 'Footloose')
-    redirect_to group_url(Group.last)
+    FormalGroup.limit(15).update_all(name: 'Footloose')
+    redirect_to group_url(FormalGroup.last)
   end
 
   def setup_group_with_multiple_coordinators
@@ -306,12 +262,6 @@ class Dev::MainController < Dev::BaseController
     redirect_to create_group.shareable_invitation
   end
 
-  def setup_group_for_invitations
-    create_group
-    create_another_group
-    patricks_contact
-  end
-
   def setup_group_with_pending_invitation
     sign_in patrick
     pending_invitation
@@ -324,7 +274,7 @@ class Dev::MainController < Dev::BaseController
 
   def view_open_group_as_non_member
     sign_in patrick
-    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
     membership_granted_upon: 'request',
     group_privacy: 'open')
     @group.add_admin! jennifer
@@ -335,7 +285,7 @@ class Dev::MainController < Dev::BaseController
 
   def view_closed_group_as_non_member
     sign_in patrick
-    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
     @group.add_admin! jennifer
@@ -345,24 +295,22 @@ class Dev::MainController < Dev::BaseController
 
   def view_secret_group_as_non_member
     sign_in patrick
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     redirect_to group_url(@group)
   end
 
   def view_open_group_as_visitor
-    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
     @group.add_admin! jennifer
     @discussion = @group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
-    @proposal = @discussion.motions.create!(name: 'Let\'s go to the moon!', closed_at: 3.days.ago, closing_at: 3.days.ago, author: jennifer)
-    @proposal.close!
     redirect_to group_url(@group)
   end
 
   def view_open_discussion_as_visitor
-    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
                            membership_granted_upon: 'request',
                            group_privacy: 'open')
     @group.add_member! patrick
@@ -372,7 +320,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_closed_group_as_visitor
-    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
                                 membership_granted_upon: 'approval',
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
@@ -384,23 +332,14 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_secret_group_as_visitor
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin! patrick
     redirect_to group_url(@group)
   end
 
-  def view_proposal_as_visitor
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
-                                group_privacy: 'secret')
-    @group.add_admin! patrick
-    @discussion = @group.discussions.create!(title: 'This thread is private', private: true, author: patrick)
-    @proposal   = @discussion.motions.create(name: 'lets go hiking', author: patrick)
-    redirect_to motion_url(@proposal)
-  end
-
   def setup_open_group
-    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
                                 group_privacy: 'open')
     @group.add_admin!  patrick
     @group.add_member! jennifer
@@ -410,7 +349,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_closed_group
-    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed')
     @group.add_admin!  patrick
     @group.add_member! jennifer
@@ -420,7 +359,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_secret_group
-    @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+    @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin!  patrick
     @group.add_member! jennifer
@@ -479,51 +418,6 @@ class Dev::MainController < Dev::BaseController
     create_discussion
     sign_in patrick
     create_all_notifications
-    redirect_to discussion_url(create_discussion)
-  end
-
-  def setup_proposal
-    sign_in patrick
-    create_proposal
-    redirect_to discussion_url(create_discussion)
-  end
-
-  def setup_proposal_with_votes
-    sign_in patrick
-    create_vote
-    create_another_vote
-    create_public_discussion.group.add_member! jennifer
-
-    redirect_to discussion_url(create_public_discussion)
-  end
-
-  def setup_closed_proposal
-    sign_in patrick
-    create_proposal
-    MotionService.close(create_proposal)
-    redirect_to discussion_url(create_discussion)
-  end
-
-  def setup_previous_proposal
-    sign_in patrick
-    create_proposal
-    MotionService.close(create_proposal)
-    redirect_to group_previous_proposals_url(create_group)
-  end
-
-  def setup_proposal_closing_soon
-    sign_in patrick
-    create_proposal.update_attribute(:closing_at, 6.hours.from_now)
-    redirect_to discussion_url(create_discussion)
-  end
-
-
-  def setup_closed_proposal_with_outcome
-    sign_in patrick
-    MotionService.close(create_proposal)
-    MotionService.create_outcome(motion: create_proposal,
-                                 params: {outcome: 'Were going hiking tomorrow'},
-                                 actor: patrick)
     redirect_to discussion_url(create_discussion)
   end
 

@@ -12,10 +12,7 @@ class API::TranslationsController < API::RestfulController
   private
 
   def translation_model
-    case params[:model]
-    when 'proposal' then load_and_authorize(:motion)
-    else                 load_and_authorize(params[:model])
-    end
+    load_and_authorize(params[:model])
   end
 
   def translations_for(*locales)
