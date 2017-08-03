@@ -6,7 +6,6 @@ class MakeInvitationsPolymorphic < ActiveRecord::Migration
     end
 
     invitation_count = Invitation.count
-    progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: invitation_count )
 
     Invitation.reset_column_information
     ActiveRecord::Base.record_timestamps = false
@@ -16,8 +15,6 @@ class MakeInvitationsPolymorphic < ActiveRecord::Migration
       Invitation.update_all(invitable_type: 'Group')
 
       Invitation.find_each do |i|
-        progress_bar.increment
-
         i.update_attribute(:invitable_id, i.group_id)
       end
     ensure
