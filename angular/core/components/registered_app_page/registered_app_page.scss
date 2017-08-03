@@ -16,7 +16,5 @@
   background: $background-color;
   padding: 6px 10px;
   border-radius: 5px;
-  width: 100%;
-  text-overflow: ellipsis;
-  overflow-x: hidden;
+  @include truncateText;
 }

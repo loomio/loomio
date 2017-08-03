@@ -100,38 +100,6 @@
   @include lmoBtnSubmit;
 }
 
-@mixin lmoBtnOffer {
-  @include lmoBtn;
-  @include button-variant(white, #4185DE, transparent);
-  i.fa{ color: #fff; }
-}
-
-.lmo-btn--offer {
-  @include lmoBtnOffer;
-}
-
-@mixin lmoBtnNude{
-  @include lmoBtn;
-  @include button-variant($grey-on-grey, transparent, transparent);
-  box-shadow: none;
-  &:hover, &:focus {
-    box-shadow: none;
-    background-color: $list-hover-color;
-  }
-}
-.lmo-btn--nude{
-  @include lmoBtnNude;
-}
-
-@mixin lmoBtnIcon{
-  text-align: left;
-  padding: 6px 12px 6px 9px;
-  i.fa{ padding-right: 2px; }
-}
-.lmo-btn--icon{
-  @include lmoBtnIcon;
-}
-
 @mixin lmoBtnLink {
   background: none;
   border: none;
