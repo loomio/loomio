@@ -49,13 +49,13 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-animate@1.4.14:
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.4.14.tgz#ee4068cafdb7e230026319ec6cb9207aca898038"
+angular-animate@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.4.1.tgz#efee776c182beb77bac8981408c7163d96d78d7d"
 
-angular-aria@1.4.14:
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.4.14.tgz#4c8157181c9f6707314d15c7c2a9cbcbb1eb639e"
+angular-aria@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.4.1.tgz#8eee2751b674d47cc4e559a1b7e73f593fc4fb9d"
 
 angular-clipboard@latest:
   version "1.5.0"
@@ -107,7 +107,7 @@ angular-route@^1.5.5:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.2.tgz#95a349de2e73674f3dd783bb21e8d7b3fc526312"
 
-"angular-sanitize@~> 1.4.14":
+"angular-sanitize@~> 1.4.1":
   version "1.4.14"
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.4.14.tgz#778c4e24941fa982d86cf7ebac3e613fa5d414fc"
 
@@ -131,13 +131,9 @@ angular-translate@~2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/angular-translate/-/angular-translate-2.7.2.tgz#6ce3a3e07f6f2d4436d8b78f0e324294ab31a167"
 
-angular@*, angular@>=1.0.6, angular@>=1.0.8, "angular@>=1.2.26 <=1.6":
+angular@*, angular@1.4.1, angular@>=1.0.6, angular@>=1.0.8, "angular@>=1.2.26 <=1.6":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
-
-angular@1.4.14:
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.14.tgz#9d0feaf60ce6e52ce50f49ee328656d1e1875c37"
 
 angular_record_store@2.7.9:
   version "2.7.9"
