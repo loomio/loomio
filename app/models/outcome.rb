@@ -26,7 +26,7 @@ class Outcome < ActiveRecord::Base
   def attendee_emails
      self.stances.join_participants.joins(:stance_choices)
     .where("stance_choices.poll_option_id": self.poll_option_id)
-    .pluck(:"visitors.email", :"users.email").flatten.compact.uniq
+    .pluck(:"users.email").flatten.compact.uniq
   end
 
   def store_calendar_invite

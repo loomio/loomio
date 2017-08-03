@@ -3,6 +3,26 @@ class Dev::PollsController < Dev::BaseController
   include Dev::PollsScenarioHelper
   skip_before_filter :cleanup_database
 
+  def test_invitation_to_vote_in_poll
+    sign_out
+    email = "#{Random.new(Time.now.to_i).rand(99999999)}@example.com"
+    verified_user = saved fake_user(email_verified: true, email: email, name: 'Verified User')
+    poll = saved fake_poll
+    PollService.create(poll: poll, actor: poll.author)
+    invitation = poll.guest_group.invitations.build recipient_email: email, group: poll.guest_group, intent: :join_poll
+    InvitationService.create(invitation: invitation, actor: poll.author)
+    last_email
+  end
+
+  def test_verify_stances
+    sign_out
+    user            = fake_user(email_verified: true)
+    unverified_user = fake_user(email: user.email, email_verified: false)
+    saved fake_stance(participant: unverified_user)
+    sign_in user
+    redirect_to verify_stances_path
+  end
+
   def test_verify_vote_by_unverified_user
     poll = saved fake_poll
     unverified_user = saved fake_user(email_verified: false)

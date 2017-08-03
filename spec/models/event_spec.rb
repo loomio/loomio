@@ -218,7 +218,6 @@ describe Event do
   end
 
   describe 'poll_closing_soon' do
-    let(:visitor) { poll.community_of_type(:email, build: true).tap(&:save!).visitors.create(name: 'jimbo', email: 'helllloo@example.com')}
     describe 'voters_review_responses', focus: true do
       it 'true' do
         poll = FactoryGirl.build(:poll_proposal, discussion: discussion, make_announcement: true)
@@ -247,18 +246,6 @@ describe Event do
         emailed_users = Events::PollClosingSoon.last.send(:email_recipients)
         emailed_users.should_not include user_thread_loud
         emailed_users.should include user_thread_normal
-      end
-
-      it 'deals with visitors' do
-        poll = FactoryGirl.create(:poll, discussion: discussion)
-        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
-        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: visitor)
-        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        Events::PollClosingSoon.publish!(poll)
-
-        notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
-        notified_users.should_not include user_thread_loud
-        notified_users.should include user_thread_normal
       end
     end
 

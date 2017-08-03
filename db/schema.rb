@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801055842) do
+ActiveRecord::Schema.define(version: 20170802014405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -675,16 +675,15 @@ ActiveRecord::Schema.define(version: 20170801055842) do
   add_index "stance_choices", ["stance_id"], name: "index_stance_choices_on_stance_id", using: :btree
 
   create_table "stances", force: :cascade do |t|
-    t.integer  "poll_id",                         null: false
-    t.integer  "participant_id",                  null: false
-    t.string   "participant_type",                null: false
+    t.integer  "poll_id",                       null: false
+    t.integer  "participant_id",                null: false
     t.string   "reason"
-    t.boolean  "latest",           default: true, null: false
+    t.boolean  "latest",         default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "stances", ["participant_id", "participant_type"], name: "index_stances_on_participant_id_and_participant_type", using: :btree
+  add_index "stances", ["participant_id"], name: "index_stances_on_participant_id", using: :btree
   add_index "stances", ["poll_id"], name: "index_stances_on_poll_id", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|

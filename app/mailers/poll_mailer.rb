@@ -40,7 +40,12 @@ class PollMailer < BaseMailer
       locale:        locale_for(recipient),
       to:            recipient.email,
       subject_key:   "poll_mailer.#{@info.poll_type}.subject.#{action_name}",
-      subject_params: { title: @info.poll.title, actor: @info.actor.name }
+      subject_params: { title: @info.poll.title, actor: @info.actor.name },
+      layout:        layouts[action_name].to_s
     )
+  end
+
+  def layouts
+    HashWithIndifferentAccess.new { :base_mailer }.merge(stance_created_author: :invite_people_mailer)
   end
 end

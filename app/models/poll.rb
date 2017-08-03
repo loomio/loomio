@@ -38,7 +38,7 @@ class Poll < ActiveRecord::Base
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
-  has_many :participants, through: :stances, source: :participant, source_type: "User"
+  has_many :participants, through: :stances, source: :participant
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :visitors, through: :communities
 
@@ -80,7 +80,7 @@ class Poll < ActiveRecord::Base
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
-  scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_type": participant.class.to_s, "stances.participant_id": participant.id) }
+  scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_id": participant.id) }
   scope :authored_by, ->(user) { where(author: user) }
   scope :chronologically, -> { order('created_at asc') }
   scope :with_includes, -> { includes(

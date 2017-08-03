@@ -353,6 +353,12 @@ class Ability
       @user.can? :vote_in, stance.poll
     end
 
+    can [:verify, :destroy], Stance do |stance|
+      @user.email_verified? &&
+      stance.participant.email_verified == false &&
+      stance.participant.email == @user.email
+    end
+
     can [:create, :update], Outcome do |outcome|
       !outcome.poll.active? &&
       user.ability.can?(:update, outcome.poll)
