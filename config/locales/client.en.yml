@@ -95,13 +95,17 @@ en:
     page_not_found: 'We were unable to find that. It may have been deleted or moved.'
     internal_server_error: 'We''re sorry, but something went wrong. Please try again.'
 
+  verify_email_notice:
+    please_verify: Thanks for participating! Please check your email for a link to verify your vote.
+
   verify_stances:
     title: Verify votes
     description: Please review the votes below and verify that they are yours.
     verify: Verify
     remove: Remove
-    verify_success: Verified vote
-    remove_success: Removed vote
+    verify_success: Vote verified
+    remove_success: Vote removed
+    all_done: Great job, you've verified all the votes.
 
   start_proposal_card:
     title: 'Start a proposal'
@@ -1761,6 +1765,7 @@ en:
     login_link_sent: "Ok, We've sent an email to {{email}} with a link to instantly log in. See you soon!"
     password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
     signed_in: Signed in successfully
+    email_verified: Email verified successfully
 
     name: Name
     email: Email

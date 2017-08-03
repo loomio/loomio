@@ -3,21 +3,39 @@ _ = require('lodash')
 describe 'Verify Stances', ->
   page = require './helpers/page_helper.coffee'
 
-  create a public poll and vote as logged in user
-  create a public poll and vote as logged out new user, then verify email or merge accounts
-  create a public poll and vote as logged out existing user, then verify vote
+  describe 'private poll vote as logged out existing user, then verify vote', ->
+    it "creates unverified stance then assigns it to verified user", ->
+      page.loadPath('polls/test_invitation_to_vote_in_poll')
 
-  create a private poll and vote as logged in user
-  create a private poll and vote as logged out new user, and verify email or merge accounts
-  create a private poll and vote as logged out existing user, then verify vote
+      page.click('.poll-mailer__poll-title')
+      page.fillIn ".poll-common-participant-form__name", "Jimmy Unverified"
+      page.clickFirst ".poll-common-vote-form__option"
+      page.click ".poll-common-vote-form__submit"
 
-  describe 'logged out', ->
-    describe 'vote on public poll', ->
-      describe 'with email of verified user', ->
-        it '
-      it 'creates stance and logs in unverified user'
-    describe 'vote on poll via invitation', ->
-      it 'create stance and logs in unverified user'
+      page.expectFlash "Vote created"
+      page.expectElement ".verify-email-notice"
 
-  describe 'logged in', ->
-    describe 'verify stance'
+      page.loadPath('last_email')
+      page.clickFirst("a")
+
+      page.expectText('.sidebar__user-name', 'Verified User')
+      page.click ".verify-stances-page__verify"
+      page.expectFlash "Vote verified"
+
+  describe 'private poll vote as logged out new user, then verify vote', ->
+    it "creates unverified stance then verifies the user", ->
+      page.loadPath('polls/test_invitation_to_vote_in_poll')
+      page.click('.poll-mailer__poll-title')
+      page.fillIn ".poll-common-participant-form__name", "Jimmy New Person"
+      page.fillIn ".poll-common-participant-form__email", "#{_.random(999999999)}@example.com"
+      page.clickFirst ".poll-common-vote-form__option"
+      page.click ".poll-common-vote-form__submit"
+
+      page.expectFlash "Vote created"
+      page.expectElement ".verify-email-notice"
+
+      page.loadPath('last_email')
+      page.clickFirst("a")
+
+      page.expectText('.sidebar__user-name', 'Jimmy New Person')
+      page.expectNoElement ".verify-email-notice"
