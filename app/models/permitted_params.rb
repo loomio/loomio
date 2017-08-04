@@ -1,9 +1,9 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
-    user visitor membership_request membership poll outcome
+    user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response
-    draft oauth_application community poll_community group_identity
+    draft oauth_application group_identity
   )
 
   MODELS.each do |kind|
@@ -16,10 +16,6 @@ class PermittedParams < Struct.new(:params)
 
   alias :read_attribute_for_serialization :send
 
-  def theme_attributes
-    [:name, :style, :pages_logo, :app_logo]
-  end
-
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :uses_markdown, :short_bio,
@@ -29,22 +25,12 @@ class PermittedParams < Struct.new(:params)
      {email_new_discussions_and_proposals_group_ids: []}]
   end
 
-  def community_attributes
-    [:community_type, :poll_id, :identity_id, :identifier,
-     :custom_fields, {custom_fields: [:facebook_group_name, :slack_channel_name]}]
-  end
-
-  def poll_community_attributes
-    [:poll_id, :community_id]
-  end
-
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
      :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
      :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
-     :poll_option_names, {poll_option_names: []},
-     :community_id, {community_id: []}]
+     :poll_option_names, {poll_option_names: []}]
   end
 
   def stance_attributes
@@ -60,10 +46,6 @@ class PermittedParams < Struct.new(:params)
   def outcome_attributes
     [:statement, :poll_id, :poll_option_id, :make_announcement,
      :custom_fields, custom_fields: [:event_location, :event_summary, :event_description]]
-  end
-
-  def visitor_attributes
-    [:name, :email, :revoked, :community_id]
   end
 
   def membership_request_attributes
@@ -111,7 +93,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def contact_message_attributes
-    [:email, :message, :name, :destination]
+    [:email, :message, :name]
   end
 
   def user_deactivation_response_attributes

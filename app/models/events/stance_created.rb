@@ -16,6 +16,9 @@ class Events::StanceCreated < Event
   end
 
   private
+  def author
+    User.verified.find_by(email: eventable.author.email) || eventable.author
+  end
 
   def notification_url
     @notification_url ||= polymorphic_url(eventable.poll)

@@ -61,45 +61,6 @@ describe MembershipRequest do
     end
   end
 
-  context 'visitor' do
-    let(:name) { "Hey There" }
-    let(:email) { "hi@example.org" }
-    let(:membership_request) { create :membership_request, name: name, email: email,
-                                group: group }
-    let(:membership_request_2) { build :membership_request, name: name, email: email,
-                                group: group }
-
-    it 'cannot have multiple pending requests' do
-      membership_request
-      membership_request_2.valid?
-      membership_request_2.should have(1).errors_on(:email)
-      membership_request_2.should have(0).errors_on(:requestor)
-    end
-
-    it 'can make new requests when there are old responded-to requests' do
-      membership_request.response = 'approved'
-      membership_request.responder = responder
-      membership_request.save!
-
-      membership_request_2.valid?
-      membership_request_2.should have(0).errors_on(:email)
-    end
-
-    it 'cannot request if member exists with same email address' do
-      create :membership, group: group, user: requestor
-      membership_request_2.email = requestor.email
-      membership_request_2.valid?
-      membership_request_2.should have(1).errors_on(:email)
-      membership_request_2.should have(0).errors_on(:requestor)
-    end
-
-    it 'cannot have a response without a responder' do
-      membership_request.response = 'approved'
-      membership_request.valid?
-      membership_request.should have(1).errors_on(:responder)
-    end
-  end
-
   describe '#approve!(responder)' do
     before do
       membership_request.approve!(responder)

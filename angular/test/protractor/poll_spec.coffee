@@ -44,7 +44,7 @@ describe 'Polls', ->
 
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'
-    page.click '.poll-proposal-vote-form__submit'
+    page.click '.poll-common-vote-form__submit'
 
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Agree'
     page.expectText '.poll-common-votes-panel__stance-reason', 'A reason'
@@ -85,7 +85,7 @@ describe 'Polls', ->
 
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'
-    page.click '.poll-proposal-vote-form__submit'
+    page.click '.poll-common-vote-form__submit'
 
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Agree'
     page.expectText '.poll-common-votes-panel__stance-reason', 'A reason'
@@ -106,7 +106,7 @@ describe 'Polls', ->
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
-    page.click '.poll-proposal-vote-form__submit'
+    page.click '.poll-common-vote-form__submit'
 
     page.expectFlash 'Vote created'
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Big Baloo'
@@ -117,7 +117,7 @@ describe 'Polls', ->
     page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
     page.fillIn '.poll-common-participant-form__email', 'big@baloo.ninja'
-    page.click '.poll-proposal-vote-form__submit'
+    page.click '.poll-common-vote-form__submit'
 
     page.expectFlash 'Vote created'
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Big Baloo'

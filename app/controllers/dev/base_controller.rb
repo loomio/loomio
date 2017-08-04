@@ -15,7 +15,7 @@ class Dev::BaseController < ApplicationController
     else
       ActionMailer::Base.deliveries
     end.last
-    render template: 'dev/main/last_email', layout: 'base_mailer'
+    render template: 'dev/main/last_email', layout: false
   end
 
   private

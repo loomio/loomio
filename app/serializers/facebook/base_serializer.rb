@@ -16,10 +16,6 @@ class Facebook::BaseSerializer < ActiveModel::Serializer
     message.present?
   end
 
-  def community
-    @community ||= Communities::Base.find(object.custom_fields['community_id'])
-  end
-
   def link_options
     { identifier: community.identifier }
   end

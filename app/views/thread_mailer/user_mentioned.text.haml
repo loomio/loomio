@@ -1,6 +1,0 @@
-= t('email.mentioned.context', discussion_title: @discussion.title, author_name: @author.name)
-
-= @text
-
-- if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
-  = render "attachments", resource: @eventable
