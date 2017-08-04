@@ -30,6 +30,35 @@ module Dev::FakeDataHelper
                     author: fake_user}.merge(args))
   end
 
+  def fake_invitation(args = {})
+    Invitation.new({
+      group: fake_group,
+      recipient_email: Faker::Internet.email
+    }.merge(args))
+  end
+
+  def fake_membership_request(args = {})
+    MembershipRequest.new({
+      requestor: fake_user,
+      group: fake_group
+    }.merge(args))
+  end
+
+  def fake_identity(args = {})
+    Identities::Base.new({
+      user: fake_user,
+      uid: "abc",
+      access_token: SecureRandom.uuid,
+      identity_type: :slack
+    }.merge(args))
+  end
+
+  def fake_draft(args = {})
+    Draft.new({
+      draftable: fake_group
+    }.merge(args))
+  end
+
   def option_names
     seed = (0..20).to_a.sample
     {
@@ -80,18 +109,19 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  def fake_outcome(args = {})
-    poll = fake_poll
-    Outcome.new({poll: poll,
-                author: poll.author,
-                statement: with_markdown(Faker::Hipster.sentence)}.merge(args))
+  def fake_comment_vote(args = {})
+    CommentVote.new({
+      comment: fake_comment,
+      user: fake_user
+    }.merge(args))
   end
 
-  def fake_visitor(args = {})
-    Visitor.new({
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      community: Communities::Public.new
+  def fake_outcome(args = {})
+    poll = fake_poll
+    Outcome.new({
+      poll: poll,
+      author: poll.author,
+      statement: with_markdown(Faker::Hipster.sentence)
     }.merge(args))
   end
 
@@ -100,7 +130,6 @@ module Dev::FakeDataHelper
       sender_email: Faker::Internet.email,
       subject: Faker::ChuckNorris.fact,
       body: "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah",
-
     })
   end
 
@@ -109,5 +138,4 @@ module Dev::FakeDataHelper
   def with_markdown(text)
     "#{text} - **(markdown!)**"
   end
-
 end
