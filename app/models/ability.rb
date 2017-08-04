@@ -333,8 +333,7 @@ class Ability
     end
 
     can [:update, :share, :remind, :destroy], Poll do |poll|
-      user_is_author_of?(poll) ||
-      Array(poll.group&.admins).include?(@user)
+      user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
     end
 
     can :close, Poll do |poll|
