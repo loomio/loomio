@@ -7,7 +7,6 @@ describe API::PollsController do
   let(:another_discussion) { create :discussion, group: group }
   let(:non_group_discussion) { create :discussion }
   let(:user) { create :user }
-  let(:visitor) { create :visitor, community: poll.community_of_type(:email, build: true) }
   let(:another_user) { create :user }
   let!(:poll) { create :poll, title: "POLL!", discussion: discussion, author: user }
   let(:another_poll) { create :poll, title: "ANOTHER", discussion: another_discussion }

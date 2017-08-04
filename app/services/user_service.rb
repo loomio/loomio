@@ -6,7 +6,7 @@ class UserService
     # check if already verfied user with
     if verified_user = User.verified.find_by(email: user.email)
       # merge records and return verified person
-      move_records(from: user, to: verified_user)
+      merge(source: user, destination: verified_user)
       verified_user
     else
       user.update(email_verified: true)
@@ -21,13 +21,13 @@ class UserService
     Events::UserReminded.publish!(model, actor, user)
   end
 
-  def self.move_records(from: , to: )
+  def self.merge(source:, destination:)
     poll_ids = from.participated_poll_ids & to.participated_poll_ids
-    Stance.where(participant_id: from.id).update_all(participant_id: to.id)
-    Stance.where(participant_id: to.id, poll_id: poll_ids).update_all(latest: false)
+    Stance.where(participant: from).update_all(participant: to)
+    Stance.where(participant: to, poll_id: poll_ids).update_all(latest: false)
 
     Poll.where(id: poll_ids).each do |poll|
-      poll.stances.where(participant_id: to.id).order(created_at: :desc).first.update_attribute(:latest, true)
+      poll.stances.where(participant: to).order(created_at: :desc).first.update_attribute(:latest, true)
     end
   end
 

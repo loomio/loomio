@@ -1,10 +1,8 @@
-- # recipient is always an unverified user
 - name = @info.recipient.name || @info.recipient.email
-- login_url = login_token_url(@info.login_token.token, @utm_hash)
 
 - if User.verified.exists?(email: @info.recipient.email)
-  = t :"poll_mailer.common.verify_stance_for_verified_user", title: @info.poll.title
-  = link_to t(:"email.login.login", name: name), login_url
+  %p= t :"poll_mailer.common.verify_stance_for_verified_user", title: @info.poll.title
+  %p= link_to t(:"email.login.login", name: name), login_token_url(@info.login_token(redirect_path: verify_stances_url).token, @utm_hash), class: 'invite-people-mailer__button'
 - else
-  = t :"poll_mailer.common.verify_stance_for_unverified_user", title: @info.poll.title
-  = link_to t(:"email.login.login", name: name), login_url
+  %p= t :"poll_mailer.common.verify_stance_for_unverified_user", title: @info.poll.title
+  %p= link_to t(:"email.login.login", name: name), login_token_url(@info.login_token.token, @utm_hash), class: 'invite-people-mailer__button'

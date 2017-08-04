@@ -28,7 +28,7 @@ describe GroupMailer do
       end
 
       it 'assigns confirmation_url for email body' do
-        @mail.body.encoded.should match(/\/g\/#{@group.key}/)
+        @mail.body.encoded.should match(/#{@group.key}/)
       end
     end
 
