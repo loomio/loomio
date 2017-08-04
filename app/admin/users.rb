@@ -142,7 +142,7 @@ ActiveAdmin.register User do
     begin
       unwanted_user = User.find_by!(email: params[:unwanted_user_email])
       wanted_user = User.find_by!(email: params[:wanted_user_email])
-      MigrateUserService.new(old_id: unwanted_user.id, new_id: wanted_user.id).commit!
+      MigrateUserService.new(source: unwanted_user.id, destination: wanted_user.id).commit!
       redirect_to admin_user_path(wanted_user), notice: "Merged #{params[:unwanted_user_email]} records into #{params[:wanted_user_email]} successfully"
     rescue ActiveRecord::RecordNotFound => e
       render text: "user not found by email: #{params[:wanted_user_email]}"+e.inspect+params.inspect
