@@ -5,7 +5,8 @@ en:
       must_have_options: Polls must have options
 
   user:
-    username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
+    error:
+      username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
 
   invitation:
     invitation_not_found: We could not find an invitation with the token you've given us. Please request another invitation from your group.
