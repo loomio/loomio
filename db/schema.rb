@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803215601) do
+ActiveRecord::Schema.define(version: 20170804043327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -793,7 +793,7 @@ ActiveRecord::Schema.define(version: 20170803215601) do
     t.string   "item_type",      limit: 255, null: false
     t.integer  "item_id",                    null: false
     t.string   "event",          limit: 255, null: false
-    t.string   "whodunnit",      limit: 255
+    t.integer  "whodunnit"
     t.text     "object"
     t.datetime "created_at"
     t.jsonb    "object_changes"
