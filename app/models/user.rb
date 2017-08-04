@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     demo_bot:   ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
   }.freeze
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable
   attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 500
-  validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'profile_page.username_must_be_alphanumeric')
+  validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.username_must_be_alphanumeric')
   validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true

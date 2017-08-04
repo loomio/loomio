@@ -2261,6 +2261,10 @@ marked@^0.3.3:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
 
+material-design-icons@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/material-design-icons/-/material-design-icons-3.0.1.tgz#9a71c48747218ebca51e51a66da682038cdcb7bf"
+
 ment.io@~0.9.15:
   version "0.9.23"
   resolved "https://registry.yarnpkg.com/ment.io/-/ment.io-0.9.23.tgz#bb9b5d548295824a8bfc68bfdd66cbbcd1d82545"

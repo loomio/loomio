@@ -7,7 +7,6 @@ class AddAgeToVotes < ActiveRecord::Migration
     add_index :votes, [:motion_id, :user_id]
 
     puts "updating vote age on #{Vote.count} Vote records"
-    progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Vote.count )
 
     Vote.reset_column_information
     Motion.find_each do |motion|
@@ -16,7 +15,6 @@ class AddAgeToVotes < ActiveRecord::Migration
         motion.votes.where(user_id: user_id).order('created_at DESC').each do |vote|
           Vote.where(id: vote.id).update_all("age = #{count}")
           count += 1
-          progress_bar.increment
         end
       end
     end
