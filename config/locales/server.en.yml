@@ -1,8 +1,40 @@
 ---
 en:
+  explore:
+    header: Explore public groups
+
+  activerecord:
+    errors:
+      messages:
+        blank: can't be blank
+        invalid: is not a valid value
+
+  errors:
+    messages:
+      email: Not a valid email address
+      spoofed_media_type: The contents of that file don't match its filename
+
+  user:
+    error:
+      recaptcha: "We weren't able to verify that you're not a robot 🤖. Please try again!"
+
+  attachment:
+    error:
+      too_large: The file you tried to attach is larger than 100 Megabytes, please choose a smaller file.
+
   poll:
     error:
-      must_have_options: Polls must have options
+      cannot_add_options: Cannot add options to this poll
+      cannot_remove_options: Cannot remove options from this poll
+      must_have_options: Must have at least one poll option
+
+  stance:
+    error:
+      too_short: Please make a selection
+
+  user:
+    error:
+      username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
 
   user:
     error:
