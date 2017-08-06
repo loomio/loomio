@@ -38,9 +38,8 @@ class Poll < ActiveRecord::Base
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
-  has_many :participants, through: :stances, source: :participant, source_type: "User"
+  has_many :participants, through: :stances, source: :participant
   has_many :attachments, as: :attachable, dependent: :destroy
-  has_many :visitors, through: :communities
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
@@ -66,9 +65,6 @@ class Poll < ActiveRecord::Base
     end
   end
 
-  has_many :poll_communities, dependent: :destroy, autosave: true
-  has_many :communities, through: :poll_communities
-
   delegate :locale, to: :author
 
   def undecided_count
@@ -80,14 +76,13 @@ class Poll < ActiveRecord::Base
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
-  scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_type": participant.class.to_s, "stances.participant_id": participant.id) }
+  scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_id": participant.id) }
   scope :authored_by, ->(user) { where(author: user) }
   scope :chronologically, -> { order('created_at asc') }
   scope :with_includes, -> { includes(
     :attachments,
     :poll_options,
     :outcomes,
-    {poll_communities: [:community]},
     {stances: [:stance_choices]})
   }
 
@@ -109,8 +104,6 @@ class Poll < ActiveRecord::Base
   validate :poll_options_are_valid
   validate :closes_in_future
   validate :require_custom_fields
-
-  attr_accessor :community_id
 
   alias_method :user, :author
 
@@ -210,15 +203,7 @@ class Poll < ActiveRecord::Base
     super.tap { self.group_id = self.discussion&.group_id }
   end
 
-  def community_of_type(community_type, build: false, params: {})
-    communities.find_by(community_type: community_type) || (build && build_community(community_type, params)).presence
-  end
-
   private
-
-  def build_community(community_type, params = {})
-    poll_communities.build(community: "Communities::#{community_type.to_s.camelize}".constantize.new(params)).community
-  end
 
   # provides a base hash of 0's to merge with stance data
   def zeroed_poll_options

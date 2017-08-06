@@ -18,7 +18,7 @@ class Group < ActiveRecord::Base
   has_many :invitations, dependent: :destroy
 
   has_many :discussions, foreign_key: :group_id, dependent: :destroy
-  has_many :polls, foreign_key: :group_id
+  has_many :polls, foreign_key: :group_id, dependent: :destroy
 
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }

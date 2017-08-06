@@ -1,21 +1,27 @@
 - raise "No emails sent!" unless @email
+<!DOCTYPE HTML>
+%html{'ng-app' => 'lastEmail'}
+  %head
+    = stylesheet_link_tag 'email'
+    = stylesheet_link_tag 'poll_mailer'
+    %title=action_name
+    %script{src: client_asset_path(:"vendor.min.js")}
+    :javascript
+      angular.module('lastEmail', []).controller('ctrl', function(){})
 
-%head
-  %title=action_name
+  %body{'ng-controller' => 'ctrl'}
+    %p.email-to
+      to:
+      = @email.to
 
-%body
-  %p.email-to
-    to:
-    = @email.to
+    %p.email-from
+      from:
+      = @email.from
 
-  %p.email-from
-    from:
-    = @email.from
+    %p.email-subject
+      subject:
+      = @email.subject
 
-  %p.email-subject
-    subject:
-    = @email.subject
-
-  %p.email-body
-    body:
-    =  raw @email.body.parts.last.decoded
+    %p.email-body
+      body:
+      =  raw @email.body.parts.last.decoded

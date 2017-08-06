@@ -30,7 +30,7 @@ class GroupExporter
     @poll_fields = %w[id key discussion_id group_id author_id title details closing_at closed_at created_at poll_type multiple_choice custom_fields]
 
     @stances = Stance.joins(:poll => {:discussion => :group}).where('discussions.group_id' => group_ids).chronologically
-    @stance_fields = %w[id poll_id participant_id participant_type reason latest created_at updated_at]
+    @stance_fields = %w[id poll_id participant_id reason latest created_at updated_at]
 
     @field_names = {}
   end

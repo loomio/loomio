@@ -5,10 +5,13 @@ module Events::Notify::Author
   end
 
   def email_author!
-    mailer.send(:"#{kind}_author", eventable.author, self).deliver_now if notify_author?
+    mailer.send(:"#{kind}_author", author, self).deliver_now if notify_author?
   end
 
   private
+  def author
+    eventable.author
+  end
 
   # override if we want to send to the author conditionally
   def notify_author?
