@@ -228,14 +228,14 @@ describe 'DiscussionService' do
         DiscussionService.update_reader discussion: discussion,
                                         params: { volume: :mute },
                                         actor: user
-        expect(DiscussionReader.for(user: user, discussion: discussion).volume).to eq :mute
+        expect(DiscussionReader.for(user: user, discussion: discussion).volume).to eq "mute"
       end
     end
 
     it 'does not update if the user cannot update the reader' do
       another_discussion = create(:discussion)
       expect { DiscussionService.update_reader discussion: another_discussion, params: { volume: :mute }, actor: user }.to raise_error CanCan::AccessDenied
-      expect(DiscussionReader.for(user: user, discussion: another_discussion).volume).to_not eq :mute
+      expect(DiscussionReader.for(user: user, discussion: another_discussion).volume).to_not eq "mute"
     end
   end
 

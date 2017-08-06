@@ -168,6 +168,7 @@ describe API::DiscussionsController do
       end
 
       it 'can limit collection size' do
+        discussion; old_discussion; muted_discussion
         get :dashboard, limit: 2
         json = JSON.parse(response.body)
         expect(json['discussions'].count).to eq 2
@@ -189,7 +190,7 @@ describe API::DiscussionsController do
         DiscussionReader.for(user: user, discussion: discussion).update(volume: :mute)
         get :show, id: discussion.key
         json = JSON.parse(response.body)
-        expect(json['discussions'][0]['volume']).to eq :mute
+        expect(json['discussions'][0]['discussion_reader_volume']).to eq "mute"
       end
     end
 

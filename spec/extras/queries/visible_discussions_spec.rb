@@ -11,7 +11,7 @@ describe Queries::VisibleDiscussions do
   end
 
   describe 'sorted_by_importance' do
-    let(:group) { create(:group, is_visible_to_public: true) }
+    let(:group) { create(:formal_group, is_visible_to_public: true) }
     let!(:no_importance) { create :discussion, private: false, group: group }
     let!(:has_decision)  { create :discussion, private: false, group: group, polls: [create(:poll)] }
     let!(:pinned)        { create :discussion, private: false, group: group, pinned: true }
