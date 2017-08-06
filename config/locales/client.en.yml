@@ -82,6 +82,9 @@ en:
       delete: Delete
       unsubscribe: Unsubscribe
       subscribe: Subscribe
+      remind: Remind
+      resend: Resend
+      resent: Invitation resent
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -303,6 +306,7 @@ en:
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
     comment_liked: "<strong>{{name}}</strong> liked your comment in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
+    user_reminded: "<strong>{{name}}</strong> is waiting on you to participate in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{title}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{title}}</strong>"
@@ -348,13 +352,6 @@ en:
     heading: Positions
     no_votes_yet: Nobody has voted on this proposal yet.
     change_your_vote: Change your position.
-
-  undecided_panel:
-    aria_label: 'Undecided members'
-    show: Show
-    remind: Remind
-    undecided: undecided
-    hide_undecided: Hide undecided members
 
   proposal_pie_chart:
     participation_statement: '{{percentage}}% of members have stated their position ({{number}}/{{total}})'
@@ -746,6 +743,10 @@ en:
     remove_admin_from_self:
       question: 'Are you sure you no longer want to be a coordinator?'
 
+  memberships_panel:
+    add_coordinator: Make coordinator
+    remove_coordinator: Demote coordinator
+
   remove_membership_form:
     aria_label: 'Remove member'
     title: 'Remove member'
@@ -757,6 +758,9 @@ en:
     email: Email
     invitation_link: Invitation link
     sent: Sent
+    sent_at: Sent {{date}}
+    copy_url: Copy URL
+    revoke_invitation: Revoke
 
   cancel_invitation_form:
     heading: Cancel invitation
@@ -790,7 +794,6 @@ en:
     locale_placeholder: Select your preferred language
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
-    username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
 
   change_picture_form:
     aria_label: 'Change picture form'
@@ -1397,6 +1400,10 @@ en:
     undecided_users: "Undecided ({{count}})"
     invitation_count_singular: "1 additional person has been invited to participate via email"
     invitation_count_plural: "{{count}} additional people have been invited to participate via email"
+
+  poll_common_undecided_user:
+    reminded: Reminder sent!
+    reminder_sent: Reminder notification sent
 
   poll_common_set_outcome_panel:
     share_outcome: Share outcome

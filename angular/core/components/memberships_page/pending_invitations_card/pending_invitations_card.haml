@@ -1,21 +1,14 @@
 .blank
-  %section.pending-invitations-card{ng-if: "canSeeInvitations() && group.hasPendingInvitations()"}
+  %section.lmo-card.pending-invitations-card{ng-if: "canSeeInvitations() && group.hasPendingInvitations()"}
     %h3.lmo-card-heading{translate: "pending_invitations_card.heading"}
-    %table.pending-invitations-card__pending-invitations
-      %thead
-        %tr
-          %th.pending_invitations_card__email-heading.md-subhead{translate: "pending_invitations_card.email"}
-          %th.pending-invitations-card__invitation-url-heading.md-subhead{translate: "pending_invitations_card.invitation_link"}
-          %th.pending-invitations-card__sent-heading.md-subhead{translate: "pending_invitations_card.sent"}
-          %th
-      %tbody
-        %tr{ng-repeat: "invitation in group.pendingInvitations() track by invitation.id"}
-          %td.pending-invitations-card__email
-            {{invitation.recipientEmail}}
-          %td.pending-invitations-card__invitation-url
-            {{baseUrl}}invitations/{{invitation.token}}
-          %td.pending-invitations-card__sent
-            {{invitationCreatedAt(invitation)}}
-          %td.align-center
-            %button.pending-invitations-card__cancel-link{href: "", ng-click: "openCancelForm(invitation)"}
-              %i.material-icons remove_circle
+    .pending-invitations-card__pending-invitations
+      .lmo-flex.lmo-flex__center.pending-invitations-card__invitation{layout: "row", ng-repeat: "invitation in group.pendingInvitations() track by invitation.id"}
+        .lmo-flex__grow.lmo-flex{layout: "column"}
+          %strong {{invitation.recipientEmail}}
+          .lmo-hint-text{translate: "pending_invitations_card.sent_at", translate-value-date: "{{invitationCreatedAt(invitation)}}"}
+        .memberships-page__actions
+          %loading{ng-if: "resendExecuting"}
+          %md-button.md-accent{ng-if: "!resendExecuting", ng-click: "resend(invitation)", translate: "common.action.resend"}
+          %md-button.md-accent{type: "button", clipboard: "true", text: "invitation.url", on-copied: "copied()"}
+            %span{translate: "pending_invitations_card.copy_url"}
+          %md-button.md-warn{ng-click: "openCancelForm(invitation)", translate: "pending_invitations_card.revoke_invitation"}

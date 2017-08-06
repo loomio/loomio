@@ -28,12 +28,16 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
+  # add poll creator as admin of guest group
+  config.listen('poll_create') { |poll, actor| poll.guest_group.add_admin!(actor) }
+
   # publish to new group if group has changed
   config.listen('poll_update') do |poll, actor|
     if poll.versions.last.object_changes.dig('group_id', 1).present? # if we've moved the poll to a new group
       Events::PollCreated.publish!(poll, actor)
     end
   end
+
 
   # add creator to group if one doesn't exist
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }

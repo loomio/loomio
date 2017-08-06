@@ -231,4 +231,29 @@ module Dev::PollsScenarioHelper
      poll:       observer_poll,
      admin:      admin}
   end
+
+  def poll_with_guest_scenario(poll_type:)
+    group = create_group_with_members
+    user  = saved fake_user
+    another_user = saved fake_user
+    group.add_member!(user)
+    group.add_member!(another_user)
+
+    poll = fake_poll(poll_type: poll_type, discussion: fake_discussion(group: group))
+    PollService.create(poll: poll, actor: another_user)
+    Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
+    poll.update_stance_data
+
+    poll.guest_group.add_member! fake_user(email_verified: false)
+    poll.invite_guest! email: "bill@example.com"
+
+    {group: group,
+     poll: poll,
+     observer: user}
+  end
+
+  def poll_with_guest_as_author_scenario(poll_type:)
+    scenario = poll_with_guest_scenario(poll_type: poll_type)
+    scenario.merge(observer: scenario[:poll].author)
+  end
 end

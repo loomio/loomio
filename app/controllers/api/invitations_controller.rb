@@ -21,6 +21,11 @@ class API::InvitationsController < API::RestfulController
     respond_with_collection
   end
 
+  def resend
+    service.resend(invitation: load_resource, actor: current_user)
+    respond_with_resource
+  end
+
   def destroy
     service.cancel(invitation: load_resource, actor: current_user)
     respond_with_resource

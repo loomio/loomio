@@ -46,3 +46,4 @@ css_includes:
   - angular-material/modules/scss/
 fonts:
   - font-awesome/fonts/*.*
+  - material-design-icons/iconfont/MaterialIcons*

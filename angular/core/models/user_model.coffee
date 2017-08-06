@@ -83,6 +83,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
         _.each @memberships(), (membership) ->
           membership.update(volume: volume)
 
+    remind: (model) ->
+      @remote.postMember(@id, 'remind', {"#{model.constructor.singular}_id": model.id}).then =>
+        @reminded = true
+
     hasExperienced: (key, group) ->
       if group && @isMemberOf(group)
         @membershipFor(group).experiences[key]

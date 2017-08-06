@@ -14,7 +14,6 @@ class FixPrivacy < ActiveRecord::Migration
     Group.reset_column_information
 
     puts "Converting group.privacy setting"
-    progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Group.count )
 
     Group.find_each do |group|
       group.parent_members_can_see_discussions = false
@@ -53,7 +52,6 @@ class FixPrivacy < ActiveRecord::Migration
       end
 
       group.save
-      progress_bar.increment
     end
 
     change_column :groups, :discussion_privacy_options, :string, default: nil, null: false

@@ -1,5 +1,7 @@
 class GuestGroup < Group
 
+  delegate :update_undecided_user_count, to: :invitation_target, allow_nil: true
+
   def invitation_target
     Poll.find_by(guest_group_id: id)
   end

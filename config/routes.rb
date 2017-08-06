@@ -89,6 +89,7 @@ Loomio::Application.routes.draw do
 
     resources :invitations, only: [:index, :create, :destroy] do
       post :bulk_create, on: :collection
+      post :resend, on: :member
       get :pending, on: :collection
       get :shareable, on: :collection
     end
@@ -96,6 +97,7 @@ Loomio::Application.routes.draw do
     resources :profile, only: [:show] do
       get  :me, on: :collection
       get  :email_status, on: :collection
+      post :remind, on: :member
       post :update_profile, on: :collection
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection

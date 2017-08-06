@@ -162,7 +162,7 @@ class Ability
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
-    can :create, Invitation do |invitation|
+    can [:create, :resend], Invitation do |invitation|
       can? :invite_people, invitation.group
     end
 
@@ -336,9 +336,8 @@ class Ability
       (!poll.group.presence || poll.group.members.include?(@user))
     end
 
-    can [:update, :share, :destroy], Poll do |poll|
-      user_is_author_of?(poll) ||
-      Array(poll.group&.admins).include?(@user)
+    can [:update, :share, :remind, :destroy], Poll do |poll|
+      user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
     end
 
     can :close, Poll do |poll|

@@ -9,15 +9,14 @@ module HasGuestGroup
     super || create_guest_group.tap { self.save(validate: false) }
   end
 
-  def invite_guest!(name: nil, email:, inviter: nil)
+  def invite_guest!(name: nil, email:, inviter: self.author)
     self.guest_group.invitations.find_or_create_by(
       recipient_email: email,
-      intent: :join_group
+      intent: :join_poll
     ).update(
       recipient_name: name,
       inviter: inviter
-    )
-    self.guest_group.update_pending_invitations_count
+    ).tap { self.guest_group.update_pending_invitations_count }
   end
 
   def anyone_can_participate

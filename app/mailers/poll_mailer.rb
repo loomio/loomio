@@ -8,7 +8,7 @@ class PollMailer < BaseMailer
      outcome_created outcome_created_author invitation_created invitation_resend
      poll_closing_soon poll_closing_soon_author
      poll_expired  poll_expired_author
-     visitor_reminded visitor_created).each do |action|
+     user_reminded).each do |action|
     define_method action, ->(recipient, event) { send_poll_email(recipient, event, action) }
   end
 
