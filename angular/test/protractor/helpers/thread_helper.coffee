@@ -136,11 +136,5 @@ module.exports = new class ThreadHelper
   selectDeleteThreadOption: ->
     element(By.css('.context-panel__dropdown-options--delete')).click()
 
-  confirmThreadDeletion: ->
-    element(By.css('.delete_thread_form__submit')).click()
-
   threadOptionsDropdown: ->
     element(By.css('.context-panel__dropdown'))
-
-  angularFeedbackCard: ->
-    element(By.css('#angular-feedback-card'))

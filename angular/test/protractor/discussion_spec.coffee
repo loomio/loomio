@@ -100,16 +100,30 @@ describe 'Discussion Page', ->
       page.expectText '.group-theme__name--compact','Point Break'
 
   describe 'delete thread', ->
-    beforeEach ->
-      page.loadPath('setup_discussion')
-
     it 'lets coordinators and thread authors delete threads', ->
-      threadPage.openThreadOptionsDropdown()
-      threadPage.selectDeleteThreadOption()
-      threadPage.confirmThreadDeletion()
-      expect(flashHelper.flashMessage()).toContain('Thread deleted')
-      expect(groupsHelper.groupName().isPresent()).toBe(true)
-      expect(groupsHelper.groupPage()).not.toContain('What star sign are you?')
+      page.loadPath 'setup_discussion'
+      page.click '.context-panel__dropdown-button'
+      page.click '.context-panel__dropdown-options--delete button'
+      page.click '.delete-thread-form__submit'
+
+      page.expectFlash 'Thread deleted'
+      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+      page.expectNoText '.discussions-card', 'What star sign are you?'
+
+  describe 'pin thread', ->
+    it 'can pin from the discussion page', ->
+      page.loadPath 'setup_discussion'
+      page.click '.context-panel__dropdown-button'
+      page.click '.context-panel__dropdown-options--pin button'
+
+      page.expectText '.pin-thread-modal', 'Pinned threads always appear'
+      page.click '.pin-thread-modal__submit'
+
+      page.expectFlash 'Thread pinned'
+      page.expectElement '.context-panel__pin'
+
+      page.click '.sidebar__list-item-button--recent'
+      page.expectElement '.thread-preview__pin'
 
   describe 'changing thread email settings', ->
     beforeEach ->
