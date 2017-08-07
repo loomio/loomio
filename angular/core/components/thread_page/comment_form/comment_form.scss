@@ -7,16 +7,11 @@
   position: relative;
 }
 
-.comment-form__sign-in-btn {
-  @include lmoBtnFeatured;
-  width: 100%;
-}
+.comment-form__sign-in-btn { width: 100% }
 
 .comment-form-button {
   margin-left: 10px;
-  &:hover {
-    cursor: pointer;
-  }
+  &:hover { cursor: pointer; }
 }
 
 .comment-form-container{

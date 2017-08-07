@@ -12,6 +12,6 @@
         .col-xs-7
           .authorized-apps-page__name {{ application.name }}
         .col-xs-4.align-center
-          %button.lmo-btn--danger{ng-click: "authorizedAppsPage.openRevokeForm(application)"}
+          %md-button.md-raised.md-warn{ng-click: "authorizedAppsPage.openRevokeForm(application)"}
             %span{translate: "authorized_apps_page.revoke"}
         .clearfix

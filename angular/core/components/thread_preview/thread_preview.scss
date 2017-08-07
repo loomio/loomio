@@ -27,15 +27,8 @@
   margin-top: $thinPaddingSize;
 }
 
-.thread-preview__dismiss{
-  @include lmoBtnDefault;
-  @include lmoBtnSm;
-}
-
 .thread-preview__mute,
 .thread-preview__unmute {
-  @include lmoBtnDefault;
-  @include lmoBtnSm;
   margin-left: 5px;
   padding: 5px 13px;
   .fa-volume-off{

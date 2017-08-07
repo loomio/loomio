@@ -42,11 +42,10 @@ describe 'Profile', ->
         page.expectText '.only-coordinator-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
 
     describe 'as one of several coordinators of a group', ->
-      xit 'prevents you from deactivating the account', ->
+      it 'prevents you from deactivating the account', ->
         page.loadPath 'setup_group_with_multiple_coordinators'
         page.click '.sidebar__list-item-button--profile'
         page.click '.profile-page__deactivate'
         page.click '.deactivation-modal__confirm'
-        page.click '.lmo-btn--danger'
-        browser.sleep(1000)
-        staticPage.expectFlash 'There is a deactivated account associated with this email address'
+        page.click '.deactivate-user-form__submit'
+        page.expectText '.auth-modal', 'Sign into Loomio'

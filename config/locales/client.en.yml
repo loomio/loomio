@@ -820,7 +820,7 @@ en:
   deactivate_user_form:
     aria_label: 'Deactivate account confirm'
     title: 'Deactivate account'
-    question: 'Would you tell us why you are deactivating your account?'
+    question: 'Would you tell us why you are deactivating?'
     placeholder: 'Answering this question is optional. Any information you share will help us to improve Loomio :)'
     submit: 'Deactivate account'
 

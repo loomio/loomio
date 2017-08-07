@@ -23,7 +23,7 @@
               %label{for: "mentioned-email", translate: "email_settings_page.mentioned_label"}
               .email-settings-page__input-description{translate: "email_settings_page.mentioned_description"}
 
-          %button.email-settings-page__update-button{type: "submit", ng-disabled: "isDisabled", translate: "email_settings_page.update_settings"}
+          %md-button.md-primary.md-raised{type: "submit", ng-disabled: "isDisabled", translate: "email_settings_page.update_settings"}
 
       .email-settings-page__specific-group-settings
         %h3.lmo-h3{translate: "email_settings_page.specific_groups"}
@@ -39,5 +39,5 @@
                 %span {{group.name}}
               %p.email-settings-page__membership-volume{translate: "change_volume_form.{{emailSettingsPage.groupVolume(group)}}_label"}
             .email-settings-page__edit
-              %button.email-settings-page__edit-membership-volume-link.lmo-btn-link{ng-click: "emailSettingsPage.editSpecificGroupVolume(group)", translate: "email_settings_page.edit"}
+              %md-button.md-primary-md-raised.email-settings-page__edit-membership-volume-link{ng-click: "emailSettingsPage.editSpecificGroupVolume(group)", translate: "email_settings_page.edit"}
         %a.email-settings-page__learn-more-link{href: "https://loomio.gitbooks.io/manual/content/en/keeping_up_to_date.html", target: "_blank", translate: "Learn more about email settings..."}
