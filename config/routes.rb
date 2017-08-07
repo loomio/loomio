@@ -168,7 +168,9 @@ Loomio::Application.routes.draw do
       get :my_votes, on: :collection
     end
 
-    resources :stances,     only: [:index, :create, :update] do
+    resources :stances,     only: [:index, :create, :update, :destroy] do
+      get :unverified, on: :collection
+      post :verify, on: :member
       get :my_stances, on: :collection
     end
 
@@ -265,6 +267,7 @@ Loomio::Application.routes.draw do
   get 'profile'                            => 'application#boot_angular_ui', as: :profile
   get 'contact'                            => 'application#boot_angular_ui', as: :contact
   get 'email_preferences'                  => 'application#boot_angular_ui', as: :email_preferences
+  get 'verify_stances'                     => 'application#boot_angular_ui', as: :verify_stances
   get 'apps/registered'                    => 'application#boot_angular_ui'
   get 'apps/authorized'                    => 'application#boot_angular_ui'
   get 'apps/registered/:id'                => 'application#boot_angular_ui'
@@ -274,7 +277,6 @@ Loomio::Application.routes.draw do
   get 'd/:key/proposal/:proposal/outcome'  => 'application#boot_angular_ui', as: :discussion_motion_outcome
   get 'g/:key/membership_requests'         => 'application#boot_angular_ui', as: :group_membership_requests
   get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
-  get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
   get 'g/:key/previous_polls'              => 'application#boot_angular_ui', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui', as: :group_memberships_username
   get 'g/:new'                             => 'application#boot_angular_ui', as: :new_group

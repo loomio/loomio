@@ -13,7 +13,7 @@ class Stance < ActiveRecord::Base
   accepts_nested_attributes_for :stance_choices
   attr_accessor :visitor_attributes
 
-  belongs_to :participant, polymorphic: true, required: true
+  belongs_to :participant, class_name: 'User', required: true
 
   update_counter_cache :poll, :stances_count
   update_counter_cache :poll, :undecided_user_count
@@ -26,11 +26,8 @@ class Stance < ActiveRecord::Base
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
   scope :chronologically, -> { order('created_at asc') }
-
-  scope :join_participants, -> {
-     joins("LEFT OUTER JOIN users ON participant_type = 'User' AND participant_id = users.id")
-    .joins("LEFT OUTER JOIN visitors ON participant_type = 'Visitor' AND participant_id = visitors.id")
-  }
+  scope :verified,       -> { joins(:participant).where('users.email_verified': true) }
+  scope :unverified,       -> { joins(:participant).where('users.email_verified': false) }
 
   validate :enough_stance_choices
   validate :total_score_is_valid

@@ -87,14 +87,6 @@ module Dev::FakeDataHelper
                 statement: with_markdown(Faker::Hipster.sentence)}.merge(args))
   end
 
-  def fake_visitor(args = {})
-    Visitor.new({
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      community: Communities::Public.new
-    }.merge(args))
-  end
-
   def fake_received_email(args = {})
     ReceivedEmail.new({
       sender_email: Faker::Internet.email,

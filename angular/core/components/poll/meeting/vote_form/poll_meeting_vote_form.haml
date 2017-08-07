@@ -21,4 +21,4 @@
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     %show_results_button{ng-if: "stance.isNew()"}
     %div{ng-if: "!stance.isNew()"}
-    %md-button.md-primary.md-raised{type: "submit", translate: "poll_common.vote", aria-label: "{{ 'poll_meeting_vote_form.vote' | translate }}"}
+    %md-button.md-primary.md-raised.poll-common-vote-form__submit{type: "submit", translate: "poll_common.vote", aria-label: "{{ 'poll_meeting_vote_form.vote' | translate }}"}
