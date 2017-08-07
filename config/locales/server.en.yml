@@ -64,6 +64,14 @@ en:
       <h1>Success.</h1>
       <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
 
+  user_mailer:
+    accounts_merged:
+      subject: "Your Loomio user accounts have been merged."
+      body_html: |
+        Hi %{name},
+        Your two loomio accounts have been merged into one account.
+        To access loomio from now on, please use <strong>%{email}</strong> when you sign in.
+
   email:
     login:
       subject: Sign in to Loomio

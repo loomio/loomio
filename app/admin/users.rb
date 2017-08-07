@@ -95,6 +95,14 @@ ActiveAdmin.register User do
       button_to 'Get link to reset password', reset_password_admin_user_path(user), method: :post
     end
 
+    panel 'Merge into another user' do
+      form action: merge_admin_user_path(user), method: :post do |f|
+        f.label "Email address of final user account"
+        f.input name: :destination_email
+        f.input type: :submit, value: "Merge user"
+      end
+    end
+
     if user.deactivation_response.present?
       panel("Deactivation query response") do
         div "#{user.deactivation_response.body}"
@@ -103,10 +111,11 @@ ActiveAdmin.register User do
     active_admin_comments
   end
 
-  member_action :enable_communities, method: :put do
-    user = User.friendly.find(params[:id])
-    user.experiences['enable_communities'] = true
-    user.save
+  member_action :merge, method: :post do
+    source = User.friendly.find(params[:id])
+    destination = User.find_by!(email: params[:destination_email].strip)
+    MigrateUserService.delay.migrate!(source: source, destination: destination)
+    redirect_to admin_user_path(destination)
   end
 
   member_action :deactivate, method: :put do

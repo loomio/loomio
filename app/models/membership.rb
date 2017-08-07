@@ -7,11 +7,7 @@ class Membership < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: :group_id
 
   belongs_to :group
-  update_counter_cache :group, :memberships_count
-  update_counter_cache :group, :admin_memberships_count
-  update_counter_cache :group, :announcement_recipients_count
-
-  belongs_to :user, counter_cache: true
+  belongs_to :user
   belongs_to :inviter, class_name: 'User'
   belongs_to :invitation
   has_many :events, as: :eventable, dependent: :destroy
@@ -44,6 +40,11 @@ class Membership < ActiveRecord::Base
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
   delegate :token, to: :invitation, allow_nil: true
+
+  update_counter_cache :group, :memberships_count
+  update_counter_cache :group, :admin_memberships_count
+  update_counter_cache :group, :announcement_recipients_count
+  update_counter_cache :user,  :memberships_count
 
   before_create :set_volume
 

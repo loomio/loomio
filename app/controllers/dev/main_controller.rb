@@ -12,6 +12,11 @@ class Dev::MainController < Dev::BaseController
     render layout: false
   end
 
+  def setup_accounts_merged_email
+    UserMailer.accounts_merged(patrick).deliver_now
+    last_email
+  end
+
   def accept_last_invitation
     invitation = Invitation.last
     InvitationService.redeem(invitation, max)
