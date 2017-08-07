@@ -179,12 +179,6 @@ ru:
     heading: Позиция
     no_votes_yet: Еще никто не проголосовал по этому предложению
     change_your_vote: Изменить свой выбор
-  undecided_panel:
-    aria_label: 'Непроголосовавшие'
-    show: Показать
-    remind: Напомнить
-    undecided: неопределившиеся
-    hide_undecided: Скрыть неопределившихся
   proposal_pie_chart:
     participation_statement: '{{percentage}}% oучастников группы сделали свой выбор ({{number}}/{{total}})'
   close_proposal_form:

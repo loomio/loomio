@@ -284,12 +284,6 @@ nl_NL:
     heading: Standpunten
     no_votes_yet: Niemand heeft nog op dit voorstel gestemd
     change_your_vote: Verander je standpunt
-  undecided_panel:
-    aria_label: 'Leden die nog onbeslist zijn'
-    show: Toon
-    remind: Herinner
-    undecided: onbeslist
-    hide_undecided: Verberg onbesliste leden
   proposal_pie_chart:
     participation_statement: '{{percentage}}% van de leden heeft hun standpunt gedeeld ({{number}}/{{total}})'
   close_proposal_form:
@@ -889,7 +883,6 @@ nl_NL:
     message_label: 'Je bericht'
     message_placeholder: 'Jouw bericht...'
     send_message: 'Stuur bericht'
-    new_contact_message: 'Bedankt voor je bericht; we nemen snel contact op!'
   help_page:
     coordinating: 'Coördineer jouw Loomio groep'
     coordinating_details: |

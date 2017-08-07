@@ -17,11 +17,6 @@ eo:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> por malaboni aŭ ŝanĝi viajn retpoŝtpreferojn."
     view_comment: Klaku ĉi tie por vidi vian komenton en Loomio
     view_discussion: Klaku ĉi tie por vidi ĉi tiun diskuton
-    view_proposal: Vidi ĉi tiun proponon en Loomio
-    create_proposal:
-      intro: Nova propono kreiĝis en Loomio-grupo al kiu vi apartenas.
-      closes_in: Fermiĝos post
-      subject: 'Nova propono: %{which}'
     daily_activity:
       heading: Via aktiveco en Loomio
       intro: Montras al vi kio okazis en viaj Loomio-grupoj en la lastaj 24 horoj
@@ -35,27 +30,8 @@ eo:
       intro: "%{name} (%{email}) petis aliron al unu el viaj Loomio-grupoj."
       subject: "%{who} petis aliĝi al %{which_group}"
       view_group: Vi povas aprobi aŭ malaprobi la peton ĉi tie
-    new_motion_created:
-      subject: 'Propono: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: La propono fermiĝis.
-      specify_outcome_and_notify_group: Kreu rezulton kaj sendu ĝin al via grupo!
-      specify_outcome_and_notify_group_html: Kreu rezulton kaj sendu ĝin al via grupo!
-      subject: Propono fermita - %{which}
-    proposal_closing_soon:
-      closes_on: Fermiĝos dum
-      closes_at: Fermiĝos je
-      closes_in: Fermiĝos post
-      subject: 'Fermiĝos en 24 horoj: %{proposal_title}'
-      headline: "La propono de %{author} en %{group} baldaŭ fermiĝos:"
-      summary: Resumo
     thread_mailer:
       change_preferences: 'Ŝanĝi viajn retpoŝtajn preferojn:'
-      motion_closing_soon: 'Propono fermiĝos en 24 horoj:'
-      proposal_closed: 'Propono fermita:'
-      specify_outcome_html: Via propono estas fermita. <a href='%{link}'>Decidu rezulton</a> por sciigi al ĉiuj kiel elturniĝis.
-      specify_outcome: 'Via propono estas fermita. Decidu rezulton por sciigi al ĉiuj kiel elturniĝis:'
-      you_agreed: Vi %{past_tense_position}
   footer:
     about: Pri
     blog: Blogo

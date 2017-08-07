@@ -124,8 +124,6 @@ pl:
   proposal_positions_panel:
     heading: Stanowiska
     no_votes_yet: Nikt jeszcze nie głosował tej rekomendacji.
-  undecided_panel:
-    hide_undecided: Ukryj niezdecydowanych członków
   proposal_pie_chart:
     participation_statement: '{{percentage}}% członków, którzy określili swoje stanowisko ({{number}}/{{total}})'
   close_proposal_form:
@@ -350,7 +348,6 @@ pl:
     message_label: 'Twoja wiadomość'
     message_placeholder: 'Twoja wiadomość...'
     send_message: 'Wysłanie Wiadomości'
-    new_contact_message: 'Dziękujemy za Twoją wiadomość, będziemy w kontakcie!'
   help_page:
     coordinating: 'Koordynacja Twoich grup Loomio'
     coordinating_details: |

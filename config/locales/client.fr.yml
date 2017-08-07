@@ -323,12 +323,6 @@ fr:
     heading: Positions
     no_votes_yet: Personne n'a encore voté dans cette proposition.
     change_your_vote: Modifier votre position
-  undecided_panel:
-    aria_label: 'Membres indécis'
-    show: Montrer
-    remind: Rappeler
-    undecided: indécis
-    hide_undecided: Cacher les membres indécis
   proposal_pie_chart:
     participation_statement: '{{percentage}}% des membres ont précisé leur position ({{number}}/{{total}})'
   close_proposal_form:
@@ -473,6 +467,7 @@ fr:
     see_all_members: 'Voir les ({{count}}) membres'
     pending_invitations: '+ ({{count}}) en attente'
     subgroups: 'Sous-groupes'
+    subgroups_placeholder: 'Les sous-groupes permettent à chaque équipe de disposer de son propre espace et d''envoyer les notifications aux bonnes personnes.'
     invite_people: 'Inviter'
     visibility_label: 'Visibilité'
     options_label: 'Options'
@@ -709,11 +704,9 @@ fr:
     email_label: 'E-mail'
     short_bio_label: 'Introduction'
     locale_label: 'Langue'
-    short_bio_placeholder: 'Ecrivez une introduction rapide (max 250 lettres)'
     locale_placeholder: Sélectionnez votre langage préféré
     update_profile: 'Mettre à jour le profil'
     deactivate_account: 'Désactiver le compte'
-    username_must_be_alphanumeric: Le nom d'utilisateur ne doit contenir que des lettres minuscules et des chiffres
   change_picture_form:
     aria_label: 'Changer la forme de l''image'
     title: 'Changer l''image'
@@ -948,7 +941,6 @@ fr:
     message_label: 'Votre message'
     message_placeholder: 'Votre message...'
     send_message: 'Envoyer le Message'
-    new_contact_message: 'Merci de votre message ; nous prendrons rapidement contact !'
   help_page:
     coordinating: 'Coordonner vos groupes Loomio'
     coordinating_details: |+
@@ -1187,6 +1179,7 @@ fr:
   current_polls_card:
     title: Décision actuelle
     start_poll: Nouvelle décision
+    no_polls: Il n'y a pas de décisions actives en ce moment.
   poll_common_collapsed:
     by_who: "par {{name}}"
   poll_common_select_group:
@@ -1244,10 +1237,7 @@ fr:
     change_results_order: Changer l'ordre des résultats
     none_of_the_above: (Aucun des choix ci-dessus)
   poll_common_undecided_panel:
-    show_undecided: Afficher les {{count}} indécis
-    undecided_users: Les indécis du groupe ({{count}})
-    undecided_visitors: Les indécis invités ({{count}})
-    hidden_visitors: Seuls les coordinateurs du groupe ou l'auteur du sondage peut voir les invités indécis
+    show_undecided: "Afficher les {{count}} indécis"
   poll_common_set_outcome_panel:
     share_outcome: Partager le résultat
     poll: 'Ce sondage est fermé. <strong>Partager le résultat</strong> avec les groupes.'
@@ -1456,7 +1446,6 @@ fr:
     title: Administration - {{title}}
   poll_common_share_form:
     no_group_selected: Aucun groupe sélectionné
-    no_communities: "Vous n'êtes connecté à aucune communauté. Cliquez \"ajouter une communauté\" ci-dessous pour en ajouter une."
     share_a_link: Partager un lien
     share_a_link_helptext: Créez un lien partageable à diffuser. N'importe qui ayant accès à ce lien pourra participer.
     anyone_can_participate: N'importe qui ayant un lien peut participer.
@@ -1487,11 +1476,6 @@ fr:
     email_exists: '{{email}} a déjà été invité'
     email_empty: 'Merci de renseigner une adresse mail'
     email_invalid: "Cette adresse mail n'a pas l'air valide"
-  poll_common_publish_form:
-    community: Informer le groupe suivant de votre sondage
-    message: Ajouter un message
-    message_placeholder: Ajouter un message pour accompagner le lien de votre sondage
-    published: Message envoyé avec succès
   poll_common_publish_facebook_preview:
     shared_a: a partagé un
     link: lien
@@ -1501,20 +1485,6 @@ fr:
     poll_published_with_discussion: "a publié un sondage dans <strong>{{discussion}}</strong>:"
     view_it_on_loomio: Voir sur Loomio
     timestamp: Aujourd'hui à {{timestamp}}
-  add_community_form:
-    title: Ajouter une communauté
-    existing_communities: Communautés précédemment connectées
-    no_communities: Vous n'êtes pour l'instant connecté à aucune communauté. Choisissez-en une ci-dessous pour commencer.
-    connect_new_community: Se connecter à une nouvelle communauté
-    currently_signed_in_as: "Actuellement connecté comme :"
-    community_created: Ce sondage est maintenant connecté à un communauté {{type}}
-    error_explanation: Oups ! Nous avons rencontré un problème lors de la connexion à {{type}}. Cliquez ci-dessous pour réessayer.
-    slack:
-      another_account: (Echanger les équipes)
-      fragment_placeholder: Chercher des canaux...
-    facebook:
-      another_account: (Se connecter avec un autre compte)
-      fragment_placeholder: Chercher des groupes...
   poll_common_participant_form:
     participant_name_placeholder: Quel est votre nom ?
   poll_common_subscribe_form:

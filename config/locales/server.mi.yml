@@ -1,9 +1,4 @@
 mi:
-  email:
-    analytics:
-      user_table:
-        motions_created: "Ngā whakatakoto"
-        comments_created: "Kōrero poto"
   footer:
     help: Āwhina
     privacy: Matatapu
