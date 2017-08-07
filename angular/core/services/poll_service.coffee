@@ -24,7 +24,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       criteria =
         latest: true
         pollId: poll.id
-        userId: AppConfig.currentUserId
+        participantId: AppConfig.currentUserId
       _.first _.sortBy(Records.stances.find(criteria), 'createdAt')
 
     hasVoted: (user, poll) ->
@@ -79,7 +79,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
           model.poll().clearStaleStances()
           ScrollService.scrollTo '.poll-common-card__results-shown'
           scope.$emit 'stanceSaved', data.stances[0].key
-          Session.login(current_user_id: data.stances[0].user_id) unless Session.user().emailVerified
+          Session.login(current_user_id: data.stances[0].participant_id) unless Session.user().emailVerified
         cleanupFn: ->
           scope.$emit 'doneProcessing'
       , options))
