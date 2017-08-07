@@ -3,12 +3,6 @@ te:
     to_join_discussion:
       link: చర్చలో పాల్గొనండి
     unsubscribe: 'మీ ఈమెయిలు అభిరుచులను మార్చండి లేదా చందావిరమించుకోండి:'
-    create_proposal:
-      subject: 'కొత్త ప్రతిపాదన: %{which}'
-    proposal_closed:
-      subject: ప్రతిపాదన మూసివేయబడింది - %{which}
-    proposal_closing_soon:
-      summary: సారాంశం
   footer:
     about: గురించి
     blog: బ్లాగు

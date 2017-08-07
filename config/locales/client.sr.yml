@@ -218,9 +218,6 @@ sr:
     heading: Pozicije
     no_votes_yet: Niko nije glasao o ovom predlogu još uvek.
     change_your_vote: Promeni svoju poziciju.
-  undecided_panel:
-    aria_label: 'Neodlučni članovi'
-    hide_undecided: Sakrij neodlučne članove
   proposal_pie_chart:
     participation_statement: '{{percentage}}% članova je odredilo svoju poziciju ({{number}}/{{total}})'
   close_proposal_form:
@@ -694,7 +691,6 @@ sr:
     message_label: 'Tvoja poruka'
     message_placeholder: 'Vaša poruka...'
     send_message: 'Pošalji Poruku'
-    new_contact_message: 'Hvala za poruku; uskoro ćemo Vam se javiti!'
   help_page:
     coordinating: 'Koordiniranje svoje Lumio grupe'
     coordinating_details: |

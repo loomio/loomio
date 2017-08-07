@@ -218,12 +218,6 @@ tr:
     heading: Konumlar
     no_votes_yet: Kimse henüz bu öneriye oy vermedi.
     change_your_vote: Konumunu değiştir
-  undecided_panel:
-    aria_label: 'Kararsız üyeler'
-    show: Göster
-    remind: Hatırlat
-    undecided: kararsız
-    hide_undecided: Kararsız üyeleri sakla
   proposal_pie_chart:
     participation_statement: 'Üyelerin {{percentage}}% kadarı kendi konumlarını belirtti ({{number}}/{{total}})'
   close_proposal_form:
@@ -688,7 +682,6 @@ tr:
     message_label: 'Mesajın'
     message_placeholder: 'Mesajınız...'
     send_message: 'Mesaj gönder'
-    new_contact_message: 'Mesajınız için teşekkürler; yakında irtibat halinde olacağız!'
   help_page:
     coordinating: 'Loomio grubunu koordine etmek'
     coordinating_details: |

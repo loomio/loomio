@@ -248,10 +248,6 @@ de:
     heading: Meinungen
     no_votes_yet: Niemand hat bisher für diesen Vorschalg abgestimmt.
     change_your_vote: Deine Meinung ändern.
-  undecided_panel:
-    aria_label: 'Unentschlossene Mitglieder'
-    remind: Erinnern
-    hide_undecided: Unentschlossene Mitglieder verbergen
   proposal_pie_chart:
     participation_statement: '{{percentage}}% der Mitglieder haben bereits abgestimmt ({{number}}/{{total}})'
   close_proposal_form:
@@ -754,7 +750,6 @@ de:
     message_label: 'Deine Nachricht'
     message_placeholder: 'Deine Nachricht...'
     send_message: 'Nachricht abschicken'
-    new_contact_message: 'Vielen Dank für Deine Nachricht. Wir werden uns bald melden!'
   help_page:
     coordinating: 'Koordiniere deine Loomio Gruppe'
     coordinating_details: |

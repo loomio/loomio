@@ -61,8 +61,6 @@ es:
       invitation_text_html: "te ha invitado a unirte a su grupo"
       link_help: "Haz clic en el enlace para unirte al grupo:"
       accept_invitation: "Aceptar invitación\n "
-    resend_to_join_group:
-      subject: "%{member} todavía está esperando que te sumes al grupo %{group_name} en Loomio"
     to_start_group:
       subject: "Configura tu nuevo grupo en Loomio: %{group_name}"
       hi: "Hola %{name},"
@@ -81,14 +79,9 @@ es:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para dar de baja o cambiar las preferencias de correo electrónico."
     view_comment: Haz clic aquí para ver el comentario en Loomio
     view_discussion: 'Haz clic aquí para ver esta discusión '
-    view_proposal: Ver esta propuesta en Loomio
     create_discussion:
       intro_html: "inicio un hilo:"
       intro: "%{who} inicio un hilo: "
-    create_proposal:
-      intro: Una nueva propuesta fue creada en un grupo de Loomio al que tu perteneces.
-      closes_in: Cierra en
-      subject: 'Nueva propuesta: %{which}'
     daily_activity:
       heading: Tu actividad en Loomio
       intro: Esto es lo que ha pasado en las últimas 24 horas en tus grupos de Loomio
@@ -124,23 +117,6 @@ es:
       context_html: "te mencionó en la discusión "
       context: "%{author_name} te mencionó en la discusión %{discussion_title}"
       subject: '%{who} te ha mencionado en la discusión "%{which}" '
-    new_motion_created:
-      subject: 'Propuesta: %{proposal_title}'
-      context: "comenzó una propuesta en %{group_full_name}:"
-    proposal_closed:
-      proposal_has_closed: La propuesta se ha cerrado
-      specify_outcome_and_notify_group: ¡Crear un resultado y envíalo a tu grupo!
-      specify_outcome_and_notify_group_html: ¡Crear un resultado y envíalo a tu grupo!
-      subject: Propuesta cerrada - %{which}
-    proposal_outcome:
-      subject: 'Resultado de la propuesta: %{motion}'
-    proposal_closing_soon:
-      closes_on: Cierra en
-      closes_at: Cierra a las
-      closes_in: Cierra en
-      subject: 'Cierra en 24 Horas: %{proposal_title}'
-      headline: "La propuesta de %{author} en %{group} cerrará pronto:"
-      summary: Resumen
     thread_mailer:
       footer_text: 'Responder a este correo electrónico directamente o léelo en %{hostname}:'
       reply_or_view_online_html: Responde a este correo electrónico directamente o <a href='%{url}'>léelo en %{hostname}</a>.
@@ -150,31 +126,6 @@ es:
       turn_on_notifications_text: 'Activar el correo electrónico para recibir la actividad futura en esta discusión: %{url}'
       change_email_preferences_html: Cambia tus <a href='%{email_preferences_url}'>preferencias de correo electrónico</a> para darte de baja de estos correos electrónicos.
       change_preferences: 'Cambiar sus preferencias de email'
-      new_motion_html: 'Comenzó una propuesta:'
-      new_motion: '%{who} comenzó una propuesta:'
-      motion_closing_soon: 'Cierra en 24 Horas'
-      proposal_closed: 'Proposición cerrada:'
-      specify_outcome_html: Tu propuesta se ha cerrado. <a href='%{link}'>Especifica un resultado </a> para que todos los conozcan.
-      specify_outcome: ' Su propuesta ha cerrado. Especifique un resultado para que todos lo conozcan:'
-      outcome_created_html: "publicó el resultado para la propuesta:"
-      outcome_created: "%{who} publicó el resultado para la propuesta:"
-      you_agreed: Tú %{past_tense_position}
-    analytics:
-      subject: "semana de %{which_group} en Loomio"
-      title: "Tu resumen para la semana del %{since}"
-      table_header: "Nombre | Propuestas creadas | Discusiones creadas | Comentarios creados | Votos creados"
-      stats: "<strong>%{active_members}</strong> de <strong>%{group_members}</strong> en tu grupo eran activos durante la semana pasada. Tu grupo presentó <strong>%{motions}</strong> e hizo <strong>%{comments}</strong> en <strong>%{discussions}</strong>."
-      contact_us: "Buscas mas estadísticas? <a href='%{contact_link}'>Contáctanos</a>."
-      no_activity: "¿Quieres hablar con uno de nuestros entrenadores en colaboración, para obtener el mejor resultado en tu grupo? <a href='%{contact_link}'>Contáctanos </a>"
-      trial_subscription: "%{which_group} sigue con una <strong>prueba gratis</strong> hasta <strong>%{expires_at}</strong>. Se puede escoger un plan de suscripción <a href='%{subscription_link}'>aqui</a>."
-      trial_expired: "%{which_group} ha llegado al fin de su periodo de prueba gratis de Loomio."
-      heart: "❤ de parte del equipo de Loomio"
-      unsubscribe: "Enviamos este mensaje a los coordinadores de grupos activos en Loomio. <br />Si prefieres no recibir estos mensajes, <a href='%{contact_link}'>dejanos saber</a>."
-      user_table:
-        motions_created: "Propuestas"
-        discussions_created: "Discusiones"
-        comments_created: "Comentarios"
-        votes_created: "Votos"
   footer:
     about: Sobre Loomio
     blog: Blog
@@ -365,8 +316,6 @@ es:
         poll_expired: "Propuesta cerrada: %{title}"
         poll_expired_author: ' Tu propuesta ha cerrado. Comparte un resultado para: %{title}'
         outcome_created: '%{actor} publicó el resultado de la propuesta: %{title}'
-        visitor_created: '%{actor} quiere escuchar tu opinión: %{title}'
-        visitor_reminded: '%{actor} está esperando que votes en: %{title}'
         stance_created: "%{actor} votó en: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> inicio una propuesta'
@@ -376,8 +325,6 @@ es:
         poll_expired: "<strong>%{actor}</strong> propuesta cerrada: %{title}"
         poll_expired_author: 'Tu propuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
         outcome_created: '<strong>%{actor}</strong> publicó el resultado de la propuesta.'
-        visitor_created: '<strong>%{actor}</strong> quiere escuchar tu opinión: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
         stance_created: "<strong>%{actor} </strong> votó en: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -392,8 +339,6 @@ es:
         poll_option_added: '%{actor} ha añadido opciones en: %{title} '
         poll_option_added_author: '%{actor} ha añadido opciones en: %{title}'
         outcome_created: '%{actor} publicó el resultado de la encuesta: %{title}'
-        visitor_created: '%{actor} quiere que votes en: %{title}'
-        visitor_reminded: '%{actor} está esperando que votes en: %{title}'
         stance_created: "%{actor} votó en: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> inicio una encuesta'
@@ -405,8 +350,6 @@ es:
         poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title} '
         poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
-        visitor_created: '<strong>%{actor}</strong> te invitó a participar en la encuesta: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
         stance_created: "<strong>%{actor} </strong> votó en: %{title} "
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -419,8 +362,6 @@ es:
         poll_expired: "Comprobación cerrada: %{title}"
         poll_expired_author: ' Tu comprobación ha cerrado. Comparte el resultado para: %{title}'
         outcome_created: '%{actor} publicó el resultado: %{title}'
-        visitor_created: '%{actor} está mirando: %{title} '
-        visitor_reminded: '%{actor} está esperando tu respuesta en: %{title}'
         stance_created: "%{actor} participó en: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> esta mirando'
@@ -430,8 +371,6 @@ es:
         poll_expired: "La comprobación de<strong>%{actor}</strong> ha cerrado: %{title}"
         poll_expired_author: 'Este es el resultado de tu comprobación. De ser necesario <strong> comparte el resultado</strong> para que la gente sepa lo que sucederá a continuación.'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado.'
-        visitor_created: '<strong>%{actor}</strong> esta mirando: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong está esperando tu respuesta en: %{title}'
         stance_created: "<strong>%{actor}</strong> participó en: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -446,8 +385,6 @@ es:
         poll_option_added: '%{actor} ha añadido opciones en: %{title}'
         poll_option_added_author: '%{actor} ha añadido opciones en: %{title}'
         outcome_created: '%{actor} publicó el resultado: %{title}'
-        visitor_created: '%{actor} te invitó a participar en el voto de puntos: %{title}'
-        visitor_reminded: '%{actor} está esperando que votes en: %{title}'
         stance_created: "%{actor} votó en: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> inició un voto de puntos'
@@ -459,8 +396,6 @@ es:
         poll_option_added: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado del voto de puntos.'
-        visitor_created: '<strong>%{actor}</strong> te invitó a participar en el voto de puntos: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
         stance_created: "<strong>%{actor} </strong> votó en: %{title} "
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -476,8 +411,6 @@ es:
         poll_option_added_author: '%{actor} añadió opciones en: %{title} '
         outcome_created: '%{actor} publicó el resultado: %{title}'
         outcome_created_author: 'Compartiste el resultado para: %{title}'
-        visitor_created: '%{actor} quiere encontrar un horario: %{title}'
-        visitor_reminded: '%{actor} está esperando tu respuesta en: %{title}'
         stance_created: '%{actor} participó en: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> inició una coordinación de horario'
@@ -490,8 +423,6 @@ es:
         poll_option_added_author: '<strong>%{actor}</strong> ha añadido opciones en: %{title}'
         outcome_created: '<strong>%{actor}</strong> publicó el resultado de la coordinación de horario'
         outcome_created_author: 'Compartiste el resultado de la coordinación de horario'
-        visitor_created: '%{actor} quiere encontrar un horario: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong está esperando tu respuesta en: %{title}'
         stance_created: "<strong>%{actor}</strong> participó en: %{title} "
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -533,8 +464,6 @@ es:
       poll_closing_soon: "*%{name}* cerrará pronto "
       view_it_on_loomio: Velo en Loomio
       have_your_say: 'Da tu opinión '
-      poll_published: "*%{author}* publicó una encuesta:"
-      poll_published_with_discussion: "*%{author}* publicó una encuesta en %{discussion}:"
       outcome_published: "*%{author}* publico un resultado:"
       outcome_published_with_discussion: "*%{author}* publicó un resultado en %{discussion}:"
       position_verbs:
@@ -544,23 +473,8 @@ es:
         block: Bloqueó en
   slack:
     new_discussion: "Nuevo hilo en *%{group}*: *%{discussion}* "
-    poll_published: "Nueva decisión en *%{group}*: *%{poll}*"
-    outcome_published: "Nuevo resultado en *%{group}*: *%{poll}*"
     poll_closing_soon: "Recordatorio: *%{poll}* cierra en 24hr"
     poll_expired: "*%{poll}* ha cerrado"
-    group_published: |
-      Hola, soy Loomio Bot. *%{author}* me ha añadido.
-      Puedo ayudar a tu equipo a tomar decisiones juntos.
-
-      Mis funcionalidades incluyen:
-
-      - resaltar cuando hay decisiones activas
-      - permitirle a las personas votar en decisiones desde Slack
-      - mostrar donde es que las personas están de acuerdo o no
-      - comunicar el resultado de las decisiones
-      - mantener un archivo de decisiones en tu grupo de Loomio.
-
-      Para saber más escribe _/loomio help_
     request_authorization_message: "Solo un paso más: <%{url}haz clic aquí> para autorizar que tu cuenta de Slack use Loomio. (solo deberás hacerlo una vez)"
     poll_closed: "*%{title}* ha cerrado! <%{url} haz clic aquí>  para ver el resultado"
     go_to_slack: Ir a Slack

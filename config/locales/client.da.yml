@@ -320,12 +320,6 @@ da:
     heading: Stillingtagen
     no_votes_yet: Der er ingen der har taget stilling til dette forslag endnu.
     change_your_vote: Rediger stillingtagen.
-  undecided_panel:
-    aria_label: 'Medlemmer der ikke har taget stilling'
-    show: Vis
-    remind: Påmind
-    undecided: ikke taget stilling
-    hide_undecided: Skjul medlemmer der ikke har taget stilling
   proposal_pie_chart:
     participation_statement: '{{percentage}}% af medlemmerne har taget stilling ({{number}}/{{total}})'
   close_proposal_form:
@@ -908,7 +902,6 @@ da:
     message_label: 'Din besked'
     message_placeholder: 'Din besked...'
     send_message: 'Send besked'
-    new_contact_message: 'Din besked er modtaget, vil vil tage kontakt til dig snart!'
   help_page:
     coordinating: 'Koordinering af din Loomio gruppe'
     coordinating_details: |
@@ -1352,7 +1345,6 @@ da:
     title: Admin - {{title}}
   poll_common_share_form:
     no_group_selected: Ingen gruppe valgt
-    no_communities: "Du har ikke forbundet nogen eksterne grupper endnu. Klik på 'Tilføj ekstern gruppe' herunder for at tilføje en"
     share_a_link: Delbart link
     anyone_can_participate: Alle kan deltage
     anyone_can_participate_true: Delbart link oprettet
@@ -1374,11 +1366,6 @@ da:
     email_exists: '{{email}} er allerede blevet inviteret'
     email_empty: 'Indtast venligst en email'
     email_invalid: "Emailadressens ser ikke ud til at være en gyldig email"
-  poll_common_publish_form:
-    community: Informer følgende eksterne gruppe om din afstemning
-    message: Indtast en besked
-    message_placeholder: Tilføj en besked som bliver sendt sammen med linket til din afstemning.
-    published: Besked sendt
   poll_common_publish_facebook_preview:
     shared_a: delte en
     link: link
@@ -1388,20 +1375,6 @@ da:
     poll_published_with_discussion: "publicerede en måling i <strong>{{discussion}}</strong>:"
     view_it_on_loomio: Sen den på Loomio
     timestamp: I dag kl. {{timestamp}}
-  add_community_form:
-    title: Tilføj community
-    existing_communities: Tidligere forbundne eksterne grupper
-    no_communities: Du har ikke forbundet nogen eksterne grupper endnu. Vælg venligst en herunder for at fortsætte.
-    connect_new_community: Forbind en ny ekstern grupper
-    currently_signed_in_as: "Logget ind som:"
-    community_created: Denne måling er nu forbundet til en {{type}} ekstern gruppe
-    error_explanation: Oops! Der er opstået en fejl {{type}}. Klik herunder for at prøve igen.
-    slack:
-      another_account: (Skift team)
-      fragment_placeholder: Søg efter kanaler...
-    facebook:
-      another_account: (Log ind med en anden konto)
-      fragment_placeholder: Søg efter gruppe...
   poll_common_participant_form:
     participant_name_placeholder: Hvad er dit navn?
   poll_common_subscribe_form:

@@ -12,7 +12,7 @@ fr:
     reset_password:
       greeting: |
         Bonjour %{name}
-        Voici un lien que vous pouvez utiliser pour réinitialiser le mot de passe de votre profile Loomio :
+        Voici un lien que vous pouvez utiliser pour réinitialiser le mot de passe de votre compte Loomio :
       link_text: Réinitialisez votre mot de passe
       signoff: |
         Vous recevez ce courriel parce que votre adresse a été saisie dans le formulaire de « mot de passe oublié » sur %{hostname}.
@@ -36,8 +36,6 @@ fr:
       invitation_text_html: "vous a invité à rejoindre son groupe"
       link_help: "Cliquez sur le lien ci-dessous pour accepter l'invitation:"
       accept_invitation: "Accepter l'invitation"
-    resend_to_join_group:
-      subject: "%{member} attend toujours que vous rejoigniez le groupe %{group_name} sur Loomio"
     to_start_group:
       subject: "Préparez votre nouveau groupe Loomio: %{group_name}"
       hi: "Salut %{name},"
@@ -56,14 +54,9 @@ fr:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou changer votre e-mail."
     view_comment: Cliquez ici pour voir le commentaire sur Loomio
     view_discussion: Cliquer ici pour voir la discussion
-    view_proposal: Voir cette proposition sur Loomio
     create_discussion:
       intro_html: "commencer une discussion:"
       intro: "%{who} a commencé une discussion:"
-    create_proposal:
-      intro: Une nouvelle proposition a été créée dans un groupe Loomio auquel vous appartenez
-      closes_in: Ferme dans
-      subject: 'Nouvelle proposition - %{which}'
     daily_activity:
       heading: Votre activité Loomio
       intro: Pour voir ce qui s’est passé dans vos groupes Loomio durant les dernières 24 heures
@@ -98,23 +91,6 @@ fr:
       context_html: "vous a mentionné en parlant dans"
       context: "%{author_name} vous a mentionné en parlant dans %{discussion_title}"
       subject: '%{who} vous a mentionné à propos de « %{which} »'
-    new_motion_created:
-      subject: 'Proposition : %{proposal_title}'
-      context: "a démarré une proposition sur %{group_full_name}:"
-    proposal_closed:
-      proposal_has_closed: La proposition est clôturée.
-      specify_outcome_and_notify_group: Créez un résultat et envoyez-le à votre groupe !
-      specify_outcome_and_notify_group_html: Créez un résultat et envoyez-le à votre groupe !
-      subject: Fermeture de la proposition - %{which}
-    proposal_outcome:
-      subject: 'Résultat de la proposition : %{motion}'
-    proposal_closing_soon:
-      closes_on: 'Ferme le '
-      closes_at: Ferme à
-      closes_in: Ferme dans
-      subject: 'Fermeture dans 24 heures : %{proposal_title}'
-      headline: "La proposition de %{author} dans %{group} ferme bientôt :"
-      summary: Résumé
     thread_mailer:
       footer_text: 'Répondez directement à ce courrier ou visualisez-le sur %{hostname} :'
       reply_or_view_online_html: Répondez à ce courrier directement ou <a href='%{url}'>visualisez-le sur %{hostname}</a>.
@@ -124,31 +100,6 @@ fr:
       turn_on_notifications_text: 'Activer les courriers électroniques pour recevoir les activités futures dans cette discussion : %{url}'
       change_email_preferences_html: Changez vos <a href='%{email_preferences_url}'>paramètres de notification</a> pour vous désabonner de ces courriers électroniques.
       change_preferences: 'Modifiez vos préférences de courriel :'
-      new_motion_html: 'a démarré une proposition:'
-      new_motion: '%{who} a lancé une proposition'
-      motion_closing_soon: 'Proposition clôturée dans 24 heures :'
-      proposal_closed: 'Proposition clôturée :'
-      specify_outcome_html: Votre proposition est terminée. Veuillez <a href='%{link}'>publier le résultat</a> pour tout le monde.
-      specify_outcome: 'Votre proposition a été fermée. Spécifiez un résultat afin que tout le monde puisse en être informé :'
-      outcome_created_html: "a partagé un résultat pour la proposition:"
-      outcome_created: "%{who} a partagé un résultat pour la proposition:"
-      you_agreed: Vous %{past_tense_position}
-    analytics:
-      subject: "Semaine de %{which_group} sur Loomio"
-      title: "Votre résumé de la semaine commencée le %{since}"
-      table_header: "Nom | Motions créées | Discussions créées | Commentaires créés | Votes créés"
-      stats: "<strong>%{active_members}</strong> de <strong>%{group_members}</strong> dans votre groupe ont été actifs cette semaine. Votre groupe a créé <strong>%{motions}</strong> et fait <strong>%{comments}</strong> dans <strong>%{discussions}</strong>."
-      contact_us: "Besoin de plus de stats ? <a href='%{contact_link}'>Contactez-nous</a>."
-      no_activity: "Vous voulez parler avec l'un de nos collaborateurs pour obtenir le maximum de Loomio ? <a href='%{contact_link}'>Contactez-nous</a>"
-      trial_subscription: "<strong>L'essai gratuit</strong> de %{which_group} se termine le <strong>%{expires_at}</strong>.  Vous pouvez choisir un abonnement <a href='%{subscription_link}'>ici</a>."
-      trial_expired: "%{which_group} a dépassé sa période d'essai gratuite."
-      heart: "❤ de l'équipe Loomio"
-      unsubscribe: "Cet e-mail est envoyé aux collaborateurs et aux groupes Loomio actifs.<br /> Si vous ne souhaitez pas recevoir ces messages, <a href='%{contact_link}'>faites-le nous savoir</a>."
-      user_table:
-        motions_created: "Propositions"
-        discussions_created: "Discussions"
-        comments_created: "Commentaires"
-        votes_created: "Votes"
   footer:
     about: À propos
     blog: Blog
@@ -314,12 +265,5 @@ fr:
         poll_created: '%{actor} a lancé une proposition : %{title}'
         poll_closing_soon: 'Proposition clôturée dans 24 heures : %{title}'
         poll_closing_soon_author: 'Votre proposition se clôture dans 24 heures : %{title}'
-        visitor_reminded: '%{actor} attend votre vote sur : %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> a démarré une proposition'
-    poll:
-      subject:
-        visitor_reminded: '%{actor} attend votre vote sur : %{title}'
-    dot_vote:
-      subject:
-        visitor_reminded: '%{actor} attend votre vote sur : %{title}'

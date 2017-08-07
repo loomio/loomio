@@ -263,12 +263,6 @@ cs:
     heading: Postoje
     no_votes_yet: Nikdo o tomto návrhu ještě nevolil.
     change_your_vote: Změnit svůj postoj.
-  undecided_panel:
-    aria_label: 'Nerozhodnutí členové'
-    show: Zobrazit
-    remind: Připomenout
-    undecided: nerozhodný
-    hide_undecided: Skrýt nerozhodnuté členy
   proposal_pie_chart:
     participation_statement: '{{percentage}}% členů vyjádřilo svůj postoj ({{number}}/{{total}})'
   close_proposal_form:
@@ -635,7 +629,6 @@ cs:
     message_label: 'Vaše zpráva'
     message_placeholder: 'Vaše zpráva...'
     send_message: 'Odeslat zprávu'
-    new_contact_message: 'Děkujeme za Vaší zprávu; brzy vám napíšeme!'
   help_page:
     coordinating: 'Koordinace vaší Loomio skupiny'
     different_ways: 'Různé způsoby jak použít Loomio'
@@ -757,7 +750,6 @@ cs:
     title: Admin - {{title}}
   poll_common_share_form:
     no_group_selected: Nebyla vybrána žádná skupina
-    no_communities: "Zatím jste nepřipojili žádné komunity. Klikněte na tlačítko \"přidat komunitu\" a přidejte ji"
     share_a_link: Sdílet odkaz
     share_a_link_helptext: Vytvořte sdílený odkaz, který můžete distribuovat. Kdokoliv, kdo má přístup k odkazu, se bude moci účastnit.
     anyone_can_participate: Kdokoli s odkazem se může účastnit
@@ -776,10 +768,6 @@ cs:
     just_now: Právě teď
   poll_common_publish_slack_preview:
     view_it_on_loomio: Prohlédněte si to na Loomio
-  add_community_form:
-    currently_signed_in_as: "Momentálně jste přihlášeni jako:"
-    facebook:
-      another_account: (Přihlásit se do jiného účtu)
   poll_common_participant_form:
     participant_name_placeholder: Jaké je vaše jméno?
   poll_common_subscribe_form:
