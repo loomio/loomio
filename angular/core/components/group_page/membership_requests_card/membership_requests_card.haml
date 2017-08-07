@@ -3,10 +3,9 @@
     %h2.lmo-card-heading{translate: "membership_requests_card.heading"}
     %ul.membership-requests-card__pending-requests
       %li.media{ng-repeat: "membershipRequest in group.pendingMembershipRequests() | orderBy: '-createdAt' | limitTo: 5 track by membershipRequest.id"}
-        %a{lmo-href-for: "group", lmo-href-action: "membership_requests", title: "{{ 'membership_requests_card.manage_requests' | translate }}"}
-          .media-left
-            %user_avatar{user: "membershipRequest.actor()", size: "medium"}
-          .media-body
+        %a.lmo-flex{layout: "row", lmo-href-for: "group", lmo-href-action: "membership_requests", title: "{{ 'membership_requests_card.manage_requests' | translate }}"}
+          %user_avatar.lmo-margin-right{user: "membershipRequest.actor()", size: "medium"}
+          .lmo-truncate
             %span.membership-requests-card__requestor-name {{membershipRequest.actor().name}}
             .lmo-truncate.membership-requests-card__requestor-introduction {{membershipRequest.introduction}}
     %a.membership-requests-card__link.lmo-card-minor-action{lmo-href-for: "group", lmo-href-action: "membership_requests"}
