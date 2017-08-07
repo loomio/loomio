@@ -35,7 +35,6 @@ ActiveAdmin.register User do
       f.input :email
       f.input :username
       f.input :is_admin
-      f.input :angular_ui_enabled
     end
     f.actions
   end

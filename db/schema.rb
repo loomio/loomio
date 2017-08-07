@@ -800,26 +800,8 @@ ActiveRecord::Schema.define(version: 20170806230124) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
-<<<<<<< HEAD
   add_index "versions", ["whodunnit"], name: "index_versions_on_whodunnit", using: :btree
 
-||||||| merged common ancestors
-
-  create_table "visitors", force: :cascade do |t|
-    t.string   "participation_token"
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "avatar_kind",         default: "initials", null: false
-    t.string   "avatar_initials"
-    t.integer  "community_id",                             null: false
-    t.boolean  "revoked",             default: false,      null: false
-  end
-
-=======
-
->>>>>>> master
   create_table "visits", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visitor_id"
     t.string   "ip"
