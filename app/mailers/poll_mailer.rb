@@ -2,6 +2,7 @@ class PollMailer < BaseMailer
   helper :email
   helper :application
   REPLY_DELIMITER = "--"
+  layout 'invite_people_mailer', only: 'stance_created_author'
 
   %w(poll_created poll_edited stance_created stance_created_author
      poll_option_added poll_option_added_author
