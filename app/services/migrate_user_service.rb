@@ -1,4 +1,9 @@
 class MigrateUserService
+  def self.migrate_by_email!(source:, destination:)
+    new(source: User.find_by!(email: source),
+        destination: User.find_by!(email: destination)).migrate!
+  end
+
   def self.migrate!(source:, destination:)
     new(source: source, destination: destination).migrate!
   end
@@ -11,10 +16,12 @@ class MigrateUserService
   end
 
   def migrate!
-    operations.each { |operation| execute(operation) }
+    delete_duplicates
+    operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
     migrate_stances
     update_counters
     source.deactivate!
+    UserMailer.delay.accounts_merged(destination)
   end
 
   SCHEMA = {
@@ -46,13 +53,22 @@ class MigrateUserService
     user_deactivation_responses: :user_id
   }.freeze
 
+  def delete_duplicates
+    Membership.delete(destination.memberships.
+                      joins("INNER JOIN memberships source
+                             ON source.group_id = memberships.group_id
+                             AND source.user_id = #{source.id}").pluck(:"source.id"))
+
+    DiscussionReader.delete(destination.discussion_readers.
+                      joins("INNER JOIN discussion_readers source
+                             ON source.discussion_id = discussion_readers.discussion_id
+                             AND source.user_id = #{source.id}").pluck(:"source.id"))
+  end
+
   def operations
     SCHEMA.map do |table, columns|
-      Array(columns).map(&:to_s).map do |column_name|
-        [
-          "UPDATE #{table} SET #{column_name} = #{destination.id} WHERE #{column_name} = #{source.id}",
-          "DELETE FROM #{table} WHERE #{column_name} = #{source.id}"
-        ]
+      Array(columns).map do |column_name|
+        "UPDATE #{table} SET #{column_name} = #{destination.id} WHERE #{column_name} = #{source.id}"
       end
     end.flatten
   end
@@ -68,12 +84,6 @@ class MigrateUserService
                   .first
                   .update_attribute(:latest, true)
     end
-  end
-
-  def execute(line)
-    ActiveRecord::Base.transaction { ActiveRecord::Base.connection.execute(line) }
-  rescue ActiveRecord::RecordNotUnique
-    puts "Conflict executing #{line}"
   end
 
   def update_counters
@@ -94,5 +104,10 @@ class MigrateUserService
       poll.update_stances_count
       poll.update_stance_data
     end
+
+    [source, destination].each do |user|
+      user.update_memberships_count
+    end
+    destination.update_attribute(:sign_in_count, destination.sign_in_count + source.sign_in_count)
   end
 end

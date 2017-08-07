@@ -23,12 +23,9 @@ class BaseMailer < ActionMailer::Base
     "\"#{user.name} (Loomio)\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   end
 
-  def send_single_mail(locale: , to:, subject_key:, subject_params: {}, layout: 'base_mailer', **options)
+  def send_single_mail(locale: , to:, subject_key:, subject_params: {}, **options)
     I18n.with_locale(locale) do
-      mail options.merge(to: to,
-                          subject: I18n.t(subject_key, subject_params)) do |format|
-        format.html { render layout: layout}
-      end
+      mail options.merge(to: to, subject: I18n.t(subject_key, subject_params)) 
     end
   end
 

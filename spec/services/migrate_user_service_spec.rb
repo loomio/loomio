@@ -12,6 +12,7 @@ describe MigrateUserService do
   let!(:ahoy_event)         { Ahoy::Event.create(id: SecureRandom.uuid, visit: visit, user: patrick) }
 
   let!(:group)              { saved fake_group(name: "Dirty Dancing Shoes") }
+  let!(:another_group)      { saved fake_group(name: "another group") }
   let!(:discussion)         { saved fake_discussion(group: group) }
   let!(:discussion_reader)  { DiscussionReader.for(discussion: discussion, user: patrick) }
   let!(:patrick_comment)    { saved fake_comment(discussion: discussion) }
@@ -29,6 +30,7 @@ describe MigrateUserService do
   let(:membership)          { group.memberships.find_by(user: jennifer) }
   let(:notification)        { patrick.notifications.last }
   let(:version)             { discussion.versions.last }
+  let!(:another_membership) { another_group.add_admin! patrick }
 
   before do
     group.add_admin! patrick
@@ -38,6 +40,9 @@ describe MigrateUserService do
     DiscussionService.update(discussion: discussion, params: {title: "new version"}, actor: patrick)
     version.update(whodunnit: patrick.id)
 
+    DiscussionReader.for(user: patrick, discussion: discussion)
+    DiscussionReader.for(user: jennifer, discussion: discussion)
+
     CommentService.create(comment: patrick_comment, actor: patrick)
     CommentService.create(comment: jennifer_comment, actor: jennifer)
     PollService.create(poll: poll, actor: patrick)
@@ -46,10 +51,13 @@ describe MigrateUserService do
 
     poll.update(closed_at: 1.day.ago)
     OutcomeService.create(outcome: outcome, actor: patrick)
+    [patrick, jennifer].each {|u| u.update_attribute(:sign_in_count, 1) }
   end
 
   it 'updates user_id references from old to new' do
-    MigrateUserService.migrate!(source: patrick, destination: jennifer)
+    expect {MigrateUserService.migrate!(source: patrick, destination: jennifer)}.to change {ActionMailer::Base.deliveries.count}.by(1)
+    patrick.reload
+    jennifer.reload
 
     assert_equal ahoy_event.reload.user, jennifer
     assert_equal ahoy_message.reload.user, jennifer
@@ -70,6 +78,9 @@ describe MigrateUserService do
     assert_equal group_visit.reload.user, jennifer
     assert_equal organisation_visit.reload.user, jennifer
     assert_equal DiscussionReader.find_by(discussion: discussion, user: jennifer).present?, true
+    assert_equal DiscussionReader.count, 1
+    assert_equal another_group.members.include?(jennifer), true
+    assert_equal jennifer.memberships_count, 2
 
     assert_equal 1, poll.reload.stances_count
     assert_equal 1, group.reload.memberships_count
@@ -77,5 +88,6 @@ describe MigrateUserService do
     assert_equal version.reload.whodunnit, jennifer.id
 
     expect(patrick.reload.deactivated_at).to be_present
+    expect(jennifer.reload.sign_in_count).to eq 2
   end
 end
