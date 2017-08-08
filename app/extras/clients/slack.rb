@@ -12,8 +12,12 @@ class Clients::Slack < Clients::Base
     get "team.info", options: { success: ->(response) { response['team'] } }
   end
 
+  # We are doing two requests and combining them here
   def fetch_channels
-    get "channels.list", options: { success: ->(response) { response['channels'] } }
+    pub = fetch_public_channels
+    pri = fetch_private_channels
+    json = if pub.success && pri.success then pub.json + pri.json else [] end
+    OpenStruct.new(json: json)
   end
 
   def post_content!(event)
@@ -26,10 +30,18 @@ class Clients::Slack < Clients::Base
   end
 
   def scope
-    %w(users.profile:read channels:read team:read chat:write:bot commands)
+    %w(users.profile:read channels:read groups:read team:read chat:write:bot commands)
   end
 
   private
+
+  def fetch_public_channels
+    get "channels.list", options: { success: ->(response) { response['channels'] } }
+  end
+
+  def fetch_private_channels
+    get "groups.list", options: { success: ->(response) { response['groups'] } }
+  end
 
   def default_is_success
     ->(response) { response.success? && JSON.parse(response.body)['ok'].present? }
