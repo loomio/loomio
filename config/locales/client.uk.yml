@@ -323,12 +323,6 @@ uk:
     heading: Ставлення
     no_votes_yet: Ще ніхто не проголосував за цю пропозицію.
     change_your_vote: Змінити Ваше ставлення.
-  undecided_panel:
-    aria_label: 'Учасники що не визначились'
-    show: Показати
-    remind: Нагадати
-    undecided: такі що не визначились
-    hide_undecided: Приховати учасників що не визначились
   proposal_pie_chart:
     participation_statement: '{{percentage}}% учасників заявили про своє ставлення ({{number}}/{{total}})'
   close_proposal_form:
@@ -710,11 +704,9 @@ uk:
     email_label: 'Електронна пошта'
     short_bio_label: 'Введення'
     locale_label: 'Мова'
-    short_bio_placeholder: 'Введіть короткий вступ (не більше 250 символів)'
     locale_placeholder: Виберіть потрібну мову
     update_profile: 'Оновити профіль'
     deactivate_account: 'Закрити обліковий запис'
-    username_must_be_alphanumeric: Ім'я користувача повинно містити лише прописні літери та цифри.
   change_picture_form:
     aria_label: 'Змінити обкладинку форми'
     title: 'Змінити обкладинку'
@@ -949,7 +941,6 @@ uk:
     message_label: 'Ваше повідомлення'
     message_placeholder: 'Ваше повідомлення...'
     send_message: 'Надіслати повідомлення'
-    new_contact_message: 'Дякуємо за ваше повідомлення; ми з вами зв''яжемося!'
   help_page:
     coordinating: 'Координація Вашої групи'
     coordinating_details: |
@@ -1238,10 +1229,7 @@ uk:
     change_results_order: Змінити послідовність результатів
     none_of_the_above: (Жоден з вищевказаних)
   poll_common_undecided_panel:
-    show_undecided: Показати {{count}} що не визначились
-    undecided_users: Учасники групи що не визначились ({{count}})
-    undecided_visitors: Гості що не визгначились ({{count}})
-    hidden_visitors: Лише група координаторів або автор опитування можуть переглядати список гостей що не визначились
+    show_undecided: "Показати {{count}} що не визначились"
   poll_common_set_outcome_panel:
     share_outcome: Поширити результат
     poll: 'Це опитування закрито. <strong>Поширте результат</strong> у групі.'
@@ -1450,7 +1438,6 @@ uk:
     title: Адміністратор - {{title}}
   poll_common_share_form:
     no_group_selected: Не вибрана група
-    no_communities: "Ви ще не підключили жодної спільноти. Натисніть «додати спільноту» нижче, аби додати першу"
     share_a_link: Поширити посилання
     share_a_link_helptext: Створити посилання що надає доступ для поширення. Будь-хто хто має посилання зможе брати участь.
     anyone_can_participate: Будь-хто може долучитись за посиланням
@@ -1481,11 +1468,6 @@ uk:
     email_exists: '{{email}} вже було запрошено'
     email_empty: 'Бідь ласка введіть адресу електронної пошти'
     email_invalid: "Це не дійсна адреса електронної пошти"
-  poll_common_publish_form:
-    community: Інформувати наступну групу щодо вашого опитування
-    message: Введіть повідомлення
-    message_placeholder: Додати супроводжувальний текст до посилання на ваше опитування
-    published: Повідомлення надіслано успішно
   poll_common_publish_facebook_preview:
     shared_a: поділився(лась)
     link: посилання
@@ -1495,20 +1477,6 @@ uk:
     poll_published_with_discussion: "опублікував(ла) опитування в <strong>{{discussion}}</strong>:"
     view_it_on_loomio: Переглянути це на Loomio
     timestamp: Сьогодні о {{timestamp}}
-  add_community_form:
-    title: Додати спільноту
-    existing_communities: Раніше підключені спільноти
-    no_communities: Ви не підключені до жодної спільноти. Виберіть один з них нижче аби почати.
-    connect_new_community: Підключіть нову спільноту
-    currently_signed_in_as: "Цього разу увійшли як:"
-    community_created: Це опитування тепер підключене до {{type}} спільноти
-    error_explanation: Упсс! У нас виникли деякі проблеми з підключенням до {{type}}. Натисніть нижче щоб спробувати ще.
-    slack:
-      another_account: (Переключити команди)
-      fragment_placeholder: Шукати канал...
-    facebook:
-      another_account: (Увійти в інший обліковий запис)
-      fragment_placeholder: Шукати групу...
   poll_common_participant_form:
     participant_name_placeholder: Як вас звати?
   poll_common_subscribe_form:

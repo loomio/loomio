@@ -277,33 +277,9 @@ class Ability
       @user.email_verified?
     end
 
-    # can [:show, :remind], Communities::Base do |community|
-    #   @user.communities.include?(community)
-    # end
-    #
-    # can :manage_visitors, Communities::Base do |community|
-    #   @user.email_communities.include?(community)
-    # end
-    #
-    # can :create, Communities::Base do |community|
-    #   @user.is_logged_in? # TODO: ensure user owns one of the community's polls?
-    # end
-    #
-    # can [:destroy, :update], Communities::Base do |community|
-    #   @user.communities.include? community
-    # end
-    #
-    # can :destroy, PollCommunity do |poll_community|
-    #   @user.can? :share, poll_community.poll
-    # end
-
     can :make_draft, Poll do |poll|
       @user.is_logged_in? && can?(:show, poll)
     end
-
-    # can :create_visitors, Poll do |poll|
-    #   user_is_author_of?(poll)
-    # end
 
     can :add_options, Poll do |poll|
       user_is_author_of?(poll) ||
@@ -333,8 +309,7 @@ class Ability
     end
 
     can [:update, :share, :remind, :destroy], Poll do |poll|
-      user_is_author_of?(poll) ||
-      Array(poll.group&.admins).include?(@user)
+      user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
     end
 
     can :close, Poll do |poll|
@@ -351,6 +326,12 @@ class Ability
 
     can [:make_draft, :create], Stance do |stance|
       @user.can? :vote_in, stance.poll
+    end
+
+    can [:verify, :destroy], Stance do |stance|
+      @user.email_verified? &&
+      stance.participant.email_verified == false &&
+      stance.participant.email == @user.email
     end
 
     can [:create, :update], Outcome do |outcome|

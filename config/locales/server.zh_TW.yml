@@ -1,4 +1,10 @@
 zh_TW:
+  poll:
+    error:
+      must_have_options: 投票必須有選項
+  user:
+    error:
+      username_must_be_alphanumeric: 使用者名稱只能包含小寫字母及數字。
   invitation:
     invitation_not_found: 無法在該邀請碼內找到邀請函。請從您的群組中要求另一份邀請函。
     invitation_cancelled: 抱歉，這封邀請函已被群組協調者撤銷。請從您的群組中要求另一份邀請函。
@@ -62,7 +68,7 @@ zh_TW:
       link_help: "點選下面的連結以接受邀請："
       accept_invitation: "接受邀請"
     resend_to_join_group:
-      subject: "%{member} 仍在等待您在 Loomio 上加入 %{group_name}"
+      subject: "%{member} 正等候您加入在 Loomio 上的 %{group_name}"
     to_start_group:
       subject: "設定您的新 Loomio 群組： %{group_name}"
       hi: "%{name} 您好，"
@@ -81,14 +87,9 @@ zh_TW:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
     view_comment: 點擊此處，您可以看到在 Loomio 上的意見。
     view_discussion: 點擊此處，您可以看到這條討論串。
-    view_proposal: 在 Loomio 上觀看這項提案。
     create_discussion:
       intro_html: "啟動討論串："
       intro: "%{who} 啟動了一個討論串："
-    create_proposal:
-      intro: 在您所屬的 Loomio 群組中，有一個新的提案！
-      closes_in: 結束於
-      subject: '新的提案：%{which}'
     daily_activity:
       heading: 您的 Loomio 動態
       intro: 顯示過去 24 小時內在您的 Loomio 群組中發生了甚麼新鮮事
@@ -124,23 +125,6 @@ zh_TW:
       context_html: "提及您當討論"
       context: "%{author_name} 在討論 %{discussion_title} 時提到您"
       subject: '%{who} 在討論「%{which}」時提到您'
-    new_motion_created:
-      subject: '提案：%{proposal_title}'
-      context: "開始一個提案在 %{group_full_name}："
-    proposal_closed:
-      proposal_has_closed: 此提議已經定案。
-      specify_outcome_and_notify_group: 建立成果並發送給您的群組成員！
-      specify_outcome_and_notify_group_html: 建立成果並發送給您的群組成員！
-      subject: 提議已定案 — %{which}
-    proposal_outcome:
-      subject: '提案成果：%{motion}'
-    proposal_closing_soon:
-      closes_on: 定案於
-      closes_at: 定案在
-      closes_in: 即將結束。
-      subject: '24 小時內定案：%{proposal_title}'
-      headline: "%{author} 在 %{group} 群組的提案很快就要定案了："
-      summary: 摘要
     thread_mailer:
       footer_text: '直接回覆本電子郵件，或是到 %{hostname} 上觀看：'
       reply_or_view_online_html: 直接回覆此 Email，或是<a href='%{url}'>在 %{hostname} 上觀看</a>。
@@ -150,31 +134,6 @@ zh_TW:
       turn_on_notifications_text: '為此討論開啟電子郵件以接收所有未來的活動：%{url}'
       change_email_preferences_html: 變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱這些電子郵件。
       change_preferences: '變更您的電子郵件偏好設定：'
-      new_motion_html: '啟動提案：'
-      new_motion: '%{who} 啟動了一個提案：'
-      motion_closing_soon: '24 小時內定案的提議：'
-      proposal_closed: '定案的提議：'
-      specify_outcome_html: 您的提議已經定案。<a href='%{link}'>具體說明成果</a>讓每個人都能知道提案的結果。
-      specify_outcome: '您的提議已經定案。請具體說明成果，讓每個人都能知道提案的結果：'
-      outcome_created_html: "分享了一個提案結果："
-      outcome_created: "%{who} 分享了一個提案結果："
-      you_agreed: 您%{past_tense_position}
-    analytics:
-      subject: "%{which_group} 在 Loomio 上的一週"
-      title: "您的自 %{since} 起的週總結"
-      table_header: "名稱 | 已建立的提案 | 已建立的討論 | 已建立的意見 | 已建立的投票"
-      stats: "<strong>%{group_members}</strong> 中的 <strong>%{active_members}</strong> 在過去一週中在您的群組中相當活躍。您的群組提升了 <strong>%{motions}</strong> 並在<strong>%{discussions}</strong> 中做出了 <strong>%{comments}</strong>。"
-      contact_us: "想看更多統計？<a href='%{contact_link}'>與我們聯絡</a>。"
-      no_activity: "想要與我們的其中一個協作教練討論關於更多 Loomio 的資訊？<a href='%{contact_link}'>與我們聯絡</a>"
-      trial_subscription: "%{which_group} 目前<strong>免費試用</strong>結束於 <strong>%{expires_at}</strong>。您可以在<a href='%{subscription_link}'>這裡</a>選擇一個訂閱計畫。"
-      trial_expired: "%{which_group} 的 Loomio 免費試用已結束。"
-      heart: "從 Loomio 而來的 ❤"
-      unsubscribe: "這封電子郵件已經傳送給活躍的 Loomio 群組的協調者們。<br />若您不想收到這些電子郵件，<a href='%{contact_link}'>讓我們知道</a>。"
-      user_table:
-        motions_created: "提案"
-        discussions_created: "討論"
-        comments_created: "意見"
-        votes_created: "投票"
   footer:
     about: 關於
     blog: 部落格
@@ -214,6 +173,10 @@ zh_TW:
       too_many_pending: "您在此群組有多於最大 %{count} 個的待處理邀請"
       all_email_addresses_belong_to_members: "我們不會將邀請函寄送給提供的電子郵件地址，因為它們是屬於已經在群組中的人們的。"
   password_reset:
+    change_your_password: 變更您的密碼
+    change_my_password: 變更密碼
+    confirm_new_password: 確認密碼
+    new_password: 新密碼
     email_guidelines_html: |
       <p>在下面的欄位中填入您 Loomio 帳號的電子郵件地址，然後您將會收到一個密碼的重置連結。</p>
       <p>如果您是透過 Facebook、Google、Twitter 或是 Persona 登入的話，請輸入與這些帳號相關聯的電子郵件地址。</p>
@@ -351,6 +314,8 @@ zh_TW:
       undecided_members: 未決定的成員（%{count}）
       undecided_visitors: 未決定的來賓 (%{count})
       more_undecided: "%{count} 更多……"
+      verify_stance_for_unverified_user: "感謝您投票給 %{title}。請驗證您的電子郵件地址，這樣我們才能在準備好的時候寄結果給您。"
+      verify_stance_for_verified_user: "您似乎投了 %{title}。如果這個是您的話，請點選下面的連結來確認您的投票。"
     proposal:
       subject:
         poll_created: '%{actor} 啟動了一個提案：%{title}'
@@ -360,9 +325,11 @@ zh_TW:
         poll_expired: "定案的提議：%{title}"
         poll_expired_author: '您的提議已定案。請分享提議的成果：%{title}'
         outcome_created: '%{actor} 分享了一個提案成果：%{title}'
-        visitor_created: '%{actor} 想要您的意見：%{title}'
-        visitor_reminded: '%{actor} 正在等待您的投票：%{title}'
+        invitation_created: '%{actor} 想要您的意見：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：%{actor} 正在等待您的投票：%{title}'
         stance_created: "%{actor} 已經投票：%{title}"
+        stance_created_author: "請驗證您的投票：%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個提案'
         poll_edited: '<strong>%{actor}</strong> 編輯了提案'
@@ -371,8 +338,9 @@ zh_TW:
         poll_expired: "<strong>%{actor}</strong> 的提案已定案：%{title}"
         poll_expired_author: '您的提案已<strong>定案</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
         outcome_created: '<strong>%{actor}</strong> 已分享了提案的成果。'
-        visitor_created: '<strong>%{actor}</strong> 想要聽到您的意見：%{title}'
-        visitor_reminded: '<strong>%{actor}</strong> 正在等待您的投票：%{title}'
+        invitation_created: '<strong>%{actor}</strong> 想要聽到您的意見：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：<strong>%{actor}</strong> 正在等待您的投票：%{title}'
         stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -387,9 +355,11 @@ zh_TW:
         poll_option_added: '%{actor} 新增選項給：%{title}'
         poll_option_added_author: '%{actor} 新增選項給：%{title}'
         outcome_created: '%{actor} 分享了一個投票成果：%{title}'
-        visitor_created: '%{actor} 想要您投票：%{title}'
-        visitor_reminded: '%{actor} 正在等待您的投票：%{title}'
+        invitation_created: '%{actor} 想要您投票：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：%{actor} 正在等待您的投票：%{title}'
         stance_created: "%{actor} 投了票：%{title}"
+        stance_created_author: "請驗證您的投票：%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了投票'
@@ -400,8 +370,9 @@ zh_TW:
         poll_option_added: '<strong>%{actor}</strong> 新增選項給：%{title}'
         poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
         outcome_created: '<strong>%{actor}</strong> 已分享了投票的成果。'
-        visitor_created: '<strong>%{actor}</strong> 邀請您加入投票：%{title}'
-        visitor_reminded: '<strong>%{actor}</strong> 正在等待您的投票：%{title}'
+        invitation_created: '<strong>%{actor}</strong> 邀請您加入投票：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：<strong>%{actor}</strong> 正在等待您的投票：%{title}'
         stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -414,9 +385,11 @@ zh_TW:
         poll_expired: "勾選已關閉：%{title}"
         poll_expired_author: '您的勾選已關閉。請分享投票的成果：%{title}'
         outcome_created: '%{actor} 分享了一個成果：%{title}'
-        visitor_created: '%{actor} 正在勾選：%{title}'
-        visitor_reminded: '%{actor} 正在等待您的回應：%{title}'
+        invitation_created: '%{actor} 正在勾選：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：%{actor} 正在等待您的回應：%{title}'
         stance_created: "%{actor} 已經參與：%{title}"
+        stance_created_author: "請驗證您的投票：%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> 正在勾選'
         poll_edited: '<strong>%{actor}</strong> 編輯了勾選'
@@ -425,8 +398,9 @@ zh_TW:
         poll_expired: "<strong>%{actor}</strong> 的勾選已關閉：%{title}"
         poll_expired_author: '這是您的勾選的成果。若需要的話，<strong>分享成果</strong>來讓人們知道下一步會發生什麼事。'
         outcome_created: '<strong>%{actor}</strong> 已分享了成果。'
-        visitor_created: '<strong>%{actor}</strong> 正在勾選：%{title}'
-        visitor_reminded: '<strong>%{actor}</strong> 正在等待您的回應：%{title}'
+        invitation_created: '<strong>%{actor}</strong> 正在勾選：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：<strong>%{actor}</strong> 正在等待您的回應：%{title}'
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -441,9 +415,11 @@ zh_TW:
         poll_option_added: '%{actor} 新增選項給：%{title}'
         poll_option_added_author: '%{actor} 新增選項給：%{title}'
         outcome_created: '%{actor} 分享了一個成果：%{title}'
-        visitor_created: '%{actor} 邀請您加入點投票：%{title}'
-        visitor_reminded: '%{actor} 正在等待您的投票：%{title}'
+        invitation_created: '%{actor} 邀請您加入點投票：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：%{actor} 正在等待您的投票：%{title}'
         stance_created: "%{actor} 投了票：%{title}"
+        stance_created_author: "請驗證您的投票：%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> 啟動了一個點投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了點投票'
@@ -454,8 +430,9 @@ zh_TW:
         poll_option_added: '<strong>%{actor}</strong> 新增選項給：%{title}'
         poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
         outcome_created: '<strong>%{actor}</strong> 已分享了點投票的成果。'
-        visitor_created: '<strong>%{actor}</strong> 邀請您加入點投票：%{title}'
-        visitor_reminded: '<strong>%{actor}</strong> 正在等待您的投票：%{title}'
+        invitation_created: '<strong>%{actor}</strong> 邀請您加入點投票：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：<strong>%{actor}</strong> 正在等待您的投票：%{title}'
         stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -471,9 +448,11 @@ zh_TW:
         poll_option_added_author: '%{actor} 新增選項給：%{title}'
         outcome_created: '%{actor} 分享了一個成果：%{title}'
         outcome_created_author: '您分享了一個結果：%{title}'
-        visitor_created: '%{actor} 想安排時間：%{title}'
-        visitor_reminded: '%{actor} 正在等待您的回應：%{title}'
+        invitation_created: '%{actor} 想安排時間：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：%{actor} 正在等待您的回應：%{title}'
         stance_created: '%{actor} 已經參與：%{title}'
+        stance_created_author: "請驗證您的投票：%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個時間投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了時間投票'
@@ -485,8 +464,9 @@ zh_TW:
         poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
         outcome_created: '<strong>%{actor}</strong> 已分享了時間投票的成果。'
         outcome_created_author: '您分享了一個時間投票結果。'
-        visitor_created: '<strong>%{actor}</strong> 想安排時間：%{title}'
-        visitor_reminded: '<strong>%{actor}</strong> 正在等待您的回應：%{title}'
+        invitation_created: '<strong>%{actor}</strong> 想安排時間：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：<strong>%{actor}</strong> 正在等待您的回應：%{title}'
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -528,8 +508,6 @@ zh_TW:
       poll_closing_soon: "*%{name}* 即將定案"
       view_it_on_loomio: 在 Loomio 上檢視
       have_your_say: 擁有發言權
-      poll_published: "*%{author}* 發佈了投票："
-      poll_published_with_discussion: "*%{author}* 在 *%{name}* 中發佈了投票"
       outcome_published: "*%{author}* 公佈了結果："
       outcome_published_with_discussion: "*%{author}* 在 %{discussion} 中發佈了結果："
       position_verbs:
@@ -539,11 +517,11 @@ zh_TW:
         block: 阻擋
   slack:
     new_discussion: "在 *%{group}* 中的新討論串：*%{discussion}*"
-    poll_published: "在 *%{group}* 中的新討論：*%{poll}*"
-    outcome_published: "在 *%{group}* 中的新結果：*%{poll}*"
+    outcome_created: "在 *%{group}* 中的結果已貼出：*%{poll}*"
+    poll_created: "新的 *%{poll_type}* 在 *%{group}*：*%{poll}*"
     poll_closing_soon: "提醒：*%{poll}* 將於24小時內關閉"
     poll_expired: "*%{poll}* 已關閉"
-    group_published: |
+    group_identity_created: |
       大家好，我是 Loomio 機器人。*%{author}* 把我加進來了。
       我可以協助您的團隊共同做出決策。
 

@@ -52,8 +52,6 @@ uk:
       invitation_text_html: "запросив(ла) вас приєднатися до своєї групи"
       link_help: "Натисніть на посилання нижче щоб прийняти запрошення:"
       accept_invitation: "Прийняти запрошення"
-    resend_to_join_group:
-      subject: "%{member} чекає на ваше приєднання до %{group_name} в Loomio"
     to_start_group:
       subject: "Створіть вашу нову Loomio групу: %{group_name}"
       hi: "Вітаємо %{name},"
@@ -72,14 +70,9 @@ uk:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> аби відписатися або змінити налаштування електронної пошти"
     view_comment: Натисніть тут щоб переглянути коментар на Loomio
     view_discussion: Натисніть тут для перегляду обговорення
-    view_proposal: Переглянути цю пропозицію на Loomio
     create_discussion:
       intro_html: "почати тему:"
       intro: "%{who} почав тему:"
-    create_proposal:
-      intro: В групі на Loomio, де ви є учасником, створено нову пропозицію.
-      closes_in: Буде закрито через
-      subject: 'Нова пропозиція: %{which}'
     daily_activity:
       heading: Ваші дії на Loomio
       intro: Відображає, що відбулося у твоїй Loomio групі за останні 24 років
@@ -115,23 +108,6 @@ uk:
       context_html: "згадав(ла) вас в обговоренні"
       context: "%{author_name} згадав(ла) вас в обговоренні %{discussion_title}"
       subject: '%{who} згадав(ла) вас в обговоренні "%{which}"'
-    new_motion_created:
-      subject: 'Пропозиція: %{proposal_title}'
-      context: "створив пропозицію у %{group_full_name}:"
-    proposal_closed:
-      proposal_has_closed: Пропозицію закрито.
-      specify_outcome_and_notify_group: Визначте результат та надішліть його своїй группі.
-      specify_outcome_and_notify_group_html: Визначте результат та надішліть його своїй группі.
-      subject: Пропозиція закрита - %{which}
-    proposal_outcome:
-      subject: 'Результат щодо пропозиції: %{motion}'
-    proposal_closing_soon:
-      closes_on: 'Закривається '
-      closes_at: Закривається о
-      closes_in: Буде закрито через
-      subject: 'Закриваються протягом 24 годин: %{proposal_title}'
-      headline: "Пропозицію %{author} у групі %{group} скоро буде закрито:"
-      summary: Підсумок
     thread_mailer:
       footer_text: 'Безпосередньо відповісти на цей лист або переглянути його на %{hostname}:'
       reply_or_view_online_html: Безпосередньо відповісти на цей лист або <a href='%{url}'>переглянути його на %{hostname}</a>.
@@ -141,31 +117,6 @@ uk:
       turn_on_notifications_text: 'Ввімкнути листи щодо майбутньої активності в обговоренні.: %{url}'
       change_email_preferences_html: Змінити ваші <a href='%{email_preferences_url}'>налаштування пошти</a> щоб відписатись від цих листів.
       change_preferences: 'Змінити Ваші налаштування електронної пошти:'
-      new_motion_html: 'вніс(ла) пропозицію:'
-      new_motion: '%{who} вніс(ла) пропозицію:'
-      motion_closing_soon: 'Пропозиція закривається через 24 години'
-      proposal_closed: 'Пропозиція закрита:'
-      specify_outcome_html: Вашу пропозицію закрито. <strong>Опишіть результат</strong> аби всі знали, яким є підсумок.
-      specify_outcome: 'Вашу пропозицію закрито. Опишіть результат аби всі знали, яким є підсумок:'
-      outcome_created_html: "поширив(ла) результат пропозиції:"
-      outcome_created: "%{who} поширив(ла) результат пропозиції:"
-      you_agreed: Ви %{past_tense_position}
-    analytics:
-      subject: "%{which_group} тижнів у Loomio"
-      title: "Ваш підсумок за тиждень, починаючи з %{since}"
-      table_header: "Ім'я | Пропозицій створено | Обговорень створено | Коментарів створено | Голосувань створено"
-      stats: "<strong>%{active_members}</strong> з <strong>%{group_members}</strong> учасників вашої групи були активні протягом останнього тижня. Ваша група підняла <strong>%{motions}</strong> і зробила <strong>%{comments}</strong> в <strong>%{discussions}</strong>."
-      contact_us: "Потрібно більше статистики? <a href='%{contact_link}'>Зв'яжіться з нами</a>."
-      no_activity: "Хочете поговорити з одним з наших фахівців з фасілітації про те, як отримати більше від Loomio? <a href='%{contact_link}'>Зв'яжіться з нами</a>."
-      trial_subscription: "%{which_group} використовує <strong>безкоштовний тріал</strong> що завершується <strong>%{expires_at}</strong>. Ви можете вибрати тарифний план <a href='%{subscription_link}'>за посиланням</a>."
-      trial_expired: "%{which_group} досягла завершення свого безкоштовного тріального періоду з Loomio."
-      heart: "З ❤ від команди Loomio"
-      unsubscribe: "Цей лист відправляється координаторам активних груп у Loomio. <br />Якщо ви не хочете отримувати ці листи, <a href='%{contact_link}'>повідомте нам</a>."
-      user_table:
-        motions_created: "Пропозиції"
-        discussions_created: "Обговорення"
-        comments_created: "Коментарі"
-        votes_created: "Голоси"
   footer:
     about: Про Loomio
     blog: Блог
@@ -351,8 +302,6 @@ uk:
         poll_expired: "Пропозицію закрито: %{title}"
         poll_expired_author: 'Вашу пропозицію закрито. Поширте результат для:: %{title}'
         outcome_created: '%{actor} поширив результат: %{title}'
-        visitor_created: '%{actor} хоче почути вашу думку: %{title}'
-        visitor_reminded: '%{actor} очікує вашого голосу щодо: %{title}'
         stance_created: "%{actor} проголосував щодо: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> вніс(ла) пропозицію'
@@ -362,8 +311,6 @@ uk:
         poll_expired: "Пропозицію внесену <strong>%{actor}</strong> закрито: %{title}"
         poll_expired_author: 'Вашу пропозицію <strong>закрито</strong>. Будь ласка знайдіть час аби врахувати що і як було сказано та <strong>поширте результат</strong> у групі, аби люди знали що буде відбуватися далі., '
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат щодо пропозиції.'
-        visitor_created: '<strong>%{actor}</strong> хоче почути вашу думку: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> очікує вашого голосу щодо: %{title}'
         stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -378,8 +325,6 @@ uk:
         poll_option_added: '%{actor} додав(ла) варіанти до: %{title}'
         poll_option_added_author: '%{actor} додав варіанти до: %{title}'
         outcome_created: '%{actor} поширив(ла) результат опитування: %{title}'
-        visitor_created: '%{actor} пропонує вам проголосувати: %{title}'
-        visitor_reminded: '%{actor} очікує вашого голосу щодо: %{title}'
         stance_created: "%{actor} проголосував щодо: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> розпочав(ла) опитування'
@@ -391,8 +336,6 @@ uk:
         poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат опитування.'
-        visitor_created: '<strong>%{actor}</strong> запропонував(ла) вам долучитись до опитуванняl: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> очікує вашого голосу щодо: %{title}'
         stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -405,8 +348,6 @@ uk:
         poll_expired: "Контрольний список закрито: %{title}"
         poll_expired_author: 'Ваш контрольний список закрито. Поширте результат для: %{title}'
         outcome_created: '%{actor} поширив(ла) результат: %{title}'
-        visitor_created: '%{actor} відмітився в: %{title}'
-        visitor_reminded: '%{actor} очікує вашої відповіді щодо: %{title}'
         stance_created: "%{actor} долучився до: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> відмітився(лась)'
@@ -416,8 +357,6 @@ uk:
         poll_expired: "Контрольний список від <strong>%{actor}</strong> закрито: %{title}"
         poll_expired_author: 'Ось результати вашого контрольного списку. За потреби <strong>поширте результат</strong> аби люди знали що буде відбуватися далі.'
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат.'
-        visitor_created: '<strong>%{actor}</strong> відмітився(лась): %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> очікує вашоЇ відповіді щодо: %{title}'
         stance_created: "<strong>%{actor}</strong> прийняв участь у: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -432,8 +371,6 @@ uk:
         poll_option_added: '%{actor} додав(ла) варіанти до: %{title}'
         poll_option_added_author: '%{actor} додав варіанти до: %{title}'
         outcome_created: '%{actor} поширив(ла) результат: %{title}'
-        visitor_created: '%{actor} запросив вас долучитись до відбіркового голосування: %{title}'
-        visitor_reminded: '%{actor} очікує вашого голосу щодо: %{title}'
         stance_created: "%{actor} проголосував щодо: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> розпочав(ла) відбіркове голосування '
@@ -445,8 +382,6 @@ uk:
         poll_option_added: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат відбіркового голосування .'
-        visitor_created: '<strong>%{actor}</strong> запропонував(ла) вам долучитись до відбіркового голосування: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> очікує вашого голосу щодо: %{title}'
         stance_created: "<strong>%{actor}</strong> проголосував щодо: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -462,8 +397,6 @@ uk:
         poll_option_added_author: '%{actor} додав варіанти до: %{title}'
         outcome_created: '%{actor} поширив(ла) результат: %{title}'
         outcome_created_author: 'Ви поширили результат: %{title}'
-        visitor_created: '%{actor} хоче узгодити час щодо: %{title}'
-        visitor_reminded: '%{actor} очікує вашої відповіді щодо: %{title}'
         stance_created: '%{actor} долучився до: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> розпочав(ла) опитування щодо часу'
@@ -476,8 +409,6 @@ uk:
         poll_option_added_author: '<strong>%{actor}</strong> додав(ла) варіанти до: %{title}'
         outcome_created: '<strong>%{actor}</strong> поширив(ла) результат опитування щодо часу.'
         outcome_created_author: 'Ви поширили результат опитування щодо часу.'
-        visitor_created: '<strong>%{actor}</strong> хоче узгодити час щодо: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> очікує вашоЇ відповіді щодо: %{title}'
         stance_created: "<strong>%{actor}</strong> прийняв участь у: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'

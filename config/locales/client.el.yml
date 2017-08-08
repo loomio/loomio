@@ -274,12 +274,6 @@ el:
     heading: Θέσεις
     no_votes_yet: Κανείς δεν έχει ψηφίσει ακόμα σε αυτή την πρόταση.
     change_your_vote: Άλλαξε την θέση σου.
-  undecided_panel:
-    aria_label: 'Αναποφάσιστα μέλη'
-    show: Δείξε
-    remind: Υπενθύμιση
-    undecided: αναποφάσιστος
-    hide_undecided: Κρύψε τα αναποφάσιστα μέλη
   proposal_pie_chart:
     participation_statement: '{{percentage}}% των μελών έχουν πάρει θέση ({{number}}/{{total}})'
   close_proposal_form:

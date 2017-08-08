@@ -212,9 +212,6 @@ ca:
     heading: Decisions
     no_votes_yet: Encara no ha votat ningú aquesta proposta.
     change_your_vote: Canvia la decisió.
-  undecided_panel:
-    aria_label: 'Membres indecisos'
-    hide_undecided: Oculta els membres indecisos
   proposal_pie_chart:
     participation_statement: '{{percentage}}% dels membres han manifestat la seva decisió ({{number}}/{{total}})'
   close_proposal_form:
@@ -669,7 +666,6 @@ ca:
     message_label: 'El vostre missatge'
     message_placeholder: 'El vostre missatge...'
     send_message: 'Envia el missatge'
-    new_contact_message: 'Gràcies pel missatge; estarem en contacte en breu!'
   help_page:
     coordinating: 'Coordinant el vostre grup de Loomio'
     coordinating_details: |

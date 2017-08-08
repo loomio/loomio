@@ -22,7 +22,7 @@ describe GroupService::PrivacyChange do
       end
 
       it "makes discussions in the group and subgroups private" do
-        expect(Discussion.where(group_id: group.org_group_ids).all?(&:private?)).to be true
+        expect(Discussion.where(group_id: group.id_and_subgroup_ids).all?(&:private?)).to be true
       end
 
       it "makes all public subgroups closed, visible to parent members" do

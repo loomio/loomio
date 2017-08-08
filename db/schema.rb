@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801055842) do
+ActiveRecord::Schema.define(version: 20170806230124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170801055842) do
     t.datetime "clicked_at"
   end
 
+  add_index "ahoy_messages", ["sent_at"], name: "index_ahoy_messages_on_sent_at", using: :btree
   add_index "ahoy_messages", ["token"], name: "index_ahoy_messages_on_token", using: :btree
   add_index "ahoy_messages", ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type", using: :btree
 
@@ -133,15 +134,6 @@ ActiveRecord::Schema.define(version: 20170801055842) do
   add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
-
-  create_table "communities", force: :cascade do |t|
-    t.string   "community_type",              null: false
-    t.jsonb    "custom_fields",  default: {}, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "identity_id"
-    t.string   "identifier"
-  end
 
   create_table "contact_messages", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -378,12 +370,11 @@ ActiveRecord::Schema.define(version: 20170801055842) do
     t.integer  "pending_invitations_count",                      default: 0,              null: false
     t.jsonb    "features",                                       default: {},             null: false
     t.integer  "recent_activity_count",                          default: 0,              null: false
-    t.integer  "community_id"
     t.integer  "closed_polls_count",                             default: 0,              null: false
     t.integer  "announcement_recipients_count",                  default: 0,              null: false
     t.integer  "polls_count",                                    default: 0,              null: false
-    t.string   "type",                                           default: "FormalGroup",  null: false
     t.integer  "subgroups_count",                                default: 0,              null: false
+    t.string   "type",                                           default: "FormalGroup",  null: false
   end
 
   add_index "groups", ["archived_at"], name: "index_groups_on_archived_at", using: :btree
@@ -472,6 +463,7 @@ ActiveRecord::Schema.define(version: 20170801055842) do
 
   add_index "memberships", ["created_at"], name: "index_memberships_on_created_at", using: :btree
   add_index "memberships", ["group_id", "user_id", "is_suspended", "archived_at"], name: "active_memberships", using: :btree
+  add_index "memberships", ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true, using: :btree
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
   add_index "memberships", ["inviter_id"], name: "index_memberships_on_inviter_id", using: :btree
   add_index "memberships", ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume", using: :btree
@@ -489,6 +481,7 @@ ActiveRecord::Schema.define(version: 20170801055842) do
     t.integer  "actor_id"
   end
 
+  add_index "notifications", ["actor_id"], name: "index_notifications_on_actor_id", using: :btree
   add_index "notifications", ["created_at"], name: "index_notifications_on_created_at", order: {"created_at"=>:desc}, using: :btree
   add_index "notifications", ["event_id"], name: "index_notifications_on_event_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
@@ -632,29 +625,27 @@ ActiveRecord::Schema.define(version: 20170801055842) do
   add_index "poll_unsubscriptions", ["user_id"], name: "index_poll_unsubscriptions_on_user_id", using: :btree
 
   create_table "polls", force: :cascade do |t|
-    t.integer  "author_id",                               null: false
-    t.string   "title",                                   null: false
+    t.integer  "author_id",                             null: false
+    t.string   "title",                                 null: false
     t.text     "details"
     t.datetime "closing_at"
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.string   "key",                                     null: false
-    t.string   "poll_type",                               null: false
-    t.jsonb    "stance_data",             default: {}
-    t.integer  "stances_count",           default: 0,     null: false
-    t.boolean  "multiple_choice",         default: false, null: false
-    t.jsonb    "custom_fields",           default: {},    null: false
-    t.jsonb    "stance_counts",           default: [],    null: false
+    t.string   "key",                                   null: false
+    t.string   "poll_type",                             null: false
+    t.jsonb    "stance_data",           default: {}
+    t.integer  "stances_count",         default: 0,     null: false
+    t.boolean  "multiple_choice",       default: false, null: false
+    t.jsonb    "custom_fields",         default: {},    null: false
+    t.jsonb    "stance_counts",         default: [],    null: false
     t.integer  "group_id"
-    t.jsonb    "matrix_counts",           default: [],    null: false
-    t.boolean  "notify_on_participate",   default: false, null: false
-    t.integer  "visitors_count",          default: 0,     null: false
-    t.boolean  "example",                 default: false, null: false
-    t.integer  "undecided_user_count",    default: 0,     null: false
-    t.integer  "undecided_visitor_count", default: 0,     null: false
-    t.boolean  "voter_can_add_options",   default: false, null: false
+    t.jsonb    "matrix_counts",         default: [],    null: false
+    t.boolean  "notify_on_participate", default: false, null: false
+    t.boolean  "example",               default: false, null: false
+    t.integer  "undecided_user_count",  default: 0,     null: false
+    t.boolean  "voter_can_add_options", default: false, null: false
     t.integer  "guest_group_id"
   end
 
@@ -675,16 +666,15 @@ ActiveRecord::Schema.define(version: 20170801055842) do
   add_index "stance_choices", ["stance_id"], name: "index_stance_choices_on_stance_id", using: :btree
 
   create_table "stances", force: :cascade do |t|
-    t.integer  "poll_id",                         null: false
-    t.integer  "participant_id",                  null: false
-    t.string   "participant_type",                null: false
+    t.integer  "poll_id",                       null: false
+    t.integer  "participant_id",                null: false
     t.string   "reason"
-    t.boolean  "latest",           default: true, null: false
+    t.boolean  "latest",         default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "stances", ["participant_id", "participant_type"], name: "index_stances_on_participant_id_and_participant_type", using: :btree
+  add_index "stances", ["participant_id"], name: "index_stances_on_participant_id", using: :btree
   add_index "stances", ["poll_id"], name: "index_stances_on_poll_id", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
@@ -803,25 +793,14 @@ ActiveRecord::Schema.define(version: 20170801055842) do
     t.string   "item_type",      limit: 255, null: false
     t.integer  "item_id",                    null: false
     t.string   "event",          limit: 255, null: false
-    t.string   "whodunnit",      limit: 255
+    t.integer  "whodunnit"
     t.text     "object"
     t.datetime "created_at"
     t.jsonb    "object_changes"
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
-
-  create_table "visitors", force: :cascade do |t|
-    t.string   "participation_token"
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "avatar_kind",         default: "initials", null: false
-    t.string   "avatar_initials"
-    t.integer  "community_id",                             null: false
-    t.boolean  "revoked",             default: false,      null: false
-  end
+  add_index "versions", ["whodunnit"], name: "index_versions_on_whodunnit", using: :btree
 
   create_table "visits", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visitor_id"

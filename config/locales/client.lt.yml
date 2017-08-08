@@ -104,8 +104,6 @@ lt:
     aria_statement_label: 'Pasirinktinai įveskite teiginį, kuris bus įrašytas kartu su jūsų nuomone'
   proposal_positions_panel:
     heading: Nuomonės
-  undecided_panel:
-    hide_undecided: Slėpti neapsisprendusius narius
   proposal_pie_chart:
     participation_statement: '{{percentage}}% narių išreiškė savo nuomonę ({{number}}/{{total}})'
   proposal_form:

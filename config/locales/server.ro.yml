@@ -17,11 +17,6 @@ ro:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
     view_comment: Apasa aici pentru a vedea comentariul pe Loomio
     view_discussion: Apasa aici pentru a vedea aceasta discutie
-    view_proposal: Vizualizeaza aceasta propunere pe Loomio
-    create_proposal:
-      intro: 'O noua propunere a fost creata intr-un grup Loomio de care apartii. '
-      closes_in: Se inchide in
-      subject: 'Propunere noua: %{which}'
     daily_activity:
       heading: Activitatea ta pe Loomio
       intro: Iti aratam ce s-a intamplat in grupurile tale Loomio in ultimele 24 de ore
@@ -38,20 +33,6 @@ ro:
       intro: "%{name} (%{email}) a cerut acces in unul din grupurile tale Loomio."
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
-    new_motion_created:
-      subject: 'Propunere: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: Propunerea a fost inchisa.
-      specify_outcome_and_notify_group: Creeaza un rezultat si trimite-l grupului tau!
-      specify_outcome_and_notify_group_html: Creeaza un rezultat si trimite-l grupului tau!
-      subject: Propunere inchisa - %{which}
-    proposal_closing_soon:
-      closes_on: Se inchide pe
-      closes_at: Se inchide la
-      closes_in: Se inchide in
-      subject: 'Se inchide in 24 de ore: %{proposal_title}'
-      headline: "Propunerea %{author} in grupul %{group} se va inchide in curand:"
-      summary: Sumar
     thread_mailer:
       footer_text: 'Raspunde acestui email sau vezi pe %{hostname}:'
       reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
@@ -61,11 +42,6 @@ ro:
       turn_on_notifications_text: 'Trimite email pentru activitatea viitoare a acestei discutii: %{url}'
       change_email_preferences_html: Schimba-ti <a href='%{email_preferences_url}'>setarile </a> pentru a te dezabona de la aceste emailuri.
       change_preferences: 'Schimba preferintele de email:'
-      motion_closing_soon: 'Propunerea se inchide in 24 de ore:'
-      proposal_closed: 'Propunerea inchisa:'
-      specify_outcome_html: Propunerea ta este inchisa. <a href='%{link}'>Specifica o urmare</a> din care sa se afle care sunt rezultatele.
-      specify_outcome: 'Propunerea ta este inchisa. Specifica o urmare din care sa se afle care sunt rezultatele:'
-      you_agreed: Tu %{past_tense_position}
   footer:
     about: Despre
     blog: Blog

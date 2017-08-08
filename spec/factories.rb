@@ -72,13 +72,10 @@ FactoryGirl.define do
     group_privacy 'open'
     discussion_privacy_options 'public_or_private'
     members_can_add_members true
-    after(:create) do |group, evaluator|
-      user = FactoryGirl.create(:user)
-      if group.parent.present?
-        group.parent.admins << user
-      end
-      group.admins << user
-      group.save!
+    after(:create) do |group|
+      user = create(:user)
+      group.parent&.add_admin!(user)
+      group.add_admin!(user)
     end
   end
 
@@ -99,7 +96,7 @@ FactoryGirl.define do
     uses_markdown false
     private true
     after(:build) do |discussion|
-      discussion.group.parent.add_member!(discussion.author) if discussion.group.parent
+      discussion.group.parent&.add_member!(discussion.author)
       discussion.group.add_member!(discussion.author)
     end
     after(:create) do |discussion|
@@ -243,17 +240,6 @@ FactoryGirl.define do
 
   factory :stance_choice do
     poll_option
-  end
-
-  factory :public_community, class: Communities::Public
-  factory :email_community, class: Communities::Email
-  factory :facebook_community, class: Communities::Facebook
-  factory :slack_community, class: Communities::Slack
-
-  factory :visitor do
-    association :community, factory: :public_community
-    name "John Doe"
-    email "john@doe.com"
   end
 
   factory :received_email do

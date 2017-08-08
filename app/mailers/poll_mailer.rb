@@ -2,6 +2,7 @@ class PollMailer < BaseMailer
   helper :email
   helper :application
   REPLY_DELIMITER = "--"
+  layout 'invite_people_mailer', only: 'stance_created_author'
 
   %w(poll_created poll_edited stance_created stance_created_author
      poll_option_added poll_option_added_author
@@ -40,7 +41,12 @@ class PollMailer < BaseMailer
       locale:        locale_for(recipient),
       to:            recipient.email,
       subject_key:   "poll_mailer.#{@info.poll_type}.subject.#{action_name}",
-      subject_params: { title: @info.poll.title, actor: @info.actor.name }
+      subject_params: { title: @info.poll.title, actor: @info.actor.name },
+      layout:        layouts[action_name].to_s
     )
+  end
+
+  def layouts
+    HashWithIndifferentAccess.new { :base_mailer }.merge(stance_created_author: :invite_people_mailer)
   end
 end

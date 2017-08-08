@@ -20,8 +20,6 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, email: true, length: {maximum: 200}
 
-  has_many :stances, as: :participant
-
   has_attached_file :uploaded_avatar,
     styles: {
       small:  "#{AVATAR_SIZES[:small]}x#{AVATAR_SIZES[:small]}#",
@@ -37,7 +35,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 500
-  validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.username_must_be_alphanumeric')
+  validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
   validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true
@@ -89,15 +87,9 @@ class User < ActiveRecord::Base
   has_many :polls, foreign_key: :author_id
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
-  has_many :communities, through: :identities, class_name: "Communities::Base"
-  has_many :email_communities,
-           -> { where(community_type: [:email, :public]) },
-           through: :polls,
-           source: :communities,
-           class_name: "Communities::Base"
 
   has_many :comment_votes, dependent: :destroy
-  has_many :stances, as: :participant, dependent: :destroy
+  has_many :stances, foreign_key: :participant_id, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll
   has_many :group_polls, through: :groups, source: :polls
 
@@ -129,6 +121,7 @@ class User < ActiveRecord::Base
   scope :mentioned_in, ->(model) { where(id: model.notifications.user_mentions.pluck(:user_id)) }
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
+  scope :verified_first, -> { order(email_verified: :desc) }
 
   # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
@@ -138,6 +131,8 @@ class User < ActiveRecord::Base
     .joins(:memberships)
     .where('memberships.group_id': group.id)
   }
+
+  define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
 
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)

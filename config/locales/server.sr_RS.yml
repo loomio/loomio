@@ -17,11 +17,6 @@ sr_RS:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> за одјаву са листе за обавештења или промену подешавања Ваше еПоште."
     view_comment: Шкљоцните овде да би видели коментар на Лумију
     view_discussion: Шкљоцни овде да видиш ову дискусију
-    view_proposal: Погледајте овај предлог на Лумију
-    create_proposal:
-      intro: Нови предлог је покренут у Лумио групи којој припадате
-      closes_in: Истиче
-      subject: 'Нови предлог: %{which}'
     daily_activity:
       heading: Ваша Лумио активност
       intro: Приказује Вам шта се дешавало у Вашим Лумио групама у последња 24 сата
@@ -38,20 +33,6 @@ sr_RS:
       intro: "%{name} (%{email}) је затражио приступ једној од твојих Лумио група."
       subject: "%{who} је затражио/ла да се придружи %{which_group}"
       view_group: Овде можете одобрити или одбити захтев
-    new_motion_created:
-      subject: 'Предлог: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: Предлог је истекао.
-      specify_outcome_and_notify_group: Одредите исход и пошаљите то својој групи!
-      specify_outcome_and_notify_group_html: Одредите исход и пошаљите то својој групи!
-      subject: Предлог закључен - %{which}
-    proposal_closing_soon:
-      closes_on: Затвара се
-      closes_at: 'Затвара се '
-      closes_in: Истиче
-      subject: 'Истиче кроз 24 сата: %{proposal_title}'
-      headline: "%{author} предлог у групи %{group} ускоро истиче:"
-      summary: Резиме
     thread_mailer:
       footer_text: 'Одговори на ову поруку директно или је погледај на %{hostname}:'
       reply_or_view_online_html: Одговори на ову поруку директно или <a href='%{url}'>погледај је на %{hostname}</a>.
@@ -61,11 +42,6 @@ sr_RS:
       turn_on_notifications_text: 'Укључи обавештења да добијаш информације о будућим активностима у овој дискусији: %{url}'
       change_email_preferences_html: Промени <a href='%{email_preferences_url}'>особине еПорука</a> да се одјавиш са обавештавања.
       change_preferences: 'Промени особине својих еПорука:'
-      motion_closing_soon: 'Предлог истиче кроз 24 часа:'
-      proposal_closed: 'Предлог истекао:'
-      specify_outcome_html: Ваш предлог је истекао. <a href='%{link}'>Одредите један исход</a> да сви знају који је резултат.
-      specify_outcome: 'Ваш предлог је истекао. Одредите један исход да сви виде који је резултат:'
-      you_agreed: Ви %{past_tense_position}
   footer:
     about: О нама
     blog: Блог

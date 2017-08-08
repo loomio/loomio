@@ -266,12 +266,6 @@ pt_BR:
     heading: Posições
     no_votes_yet: Ninguém votou nesta proposta ainda.
     change_your_vote: Modificar sua posição.
-  undecided_panel:
-    aria_label: 'Membros indecisos'
-    show: Mostrar
-    remind: Lembre-se
-    undecided: não-decidido
-    hide_undecided: Ocultar membros indecisos
   proposal_pie_chart:
     participation_statement: '{{percentage}}% dos membros manifestaram suas posições ({{number}}/{{total}})'
   close_proposal_form:
@@ -866,7 +860,6 @@ pt_BR:
     message_label: 'Sua mensagem'
     message_placeholder: 'Sua mensagem...'
     send_message: 'Enviar Mensagem'
-    new_contact_message: 'Obrigado por sua mensagem; estaremos em contato em breve!'
   help_page:
     coordinating: 'Coordenando o seu grupo do Loomio'
     coordinating_details: |
@@ -1129,16 +1122,10 @@ pt_BR:
     get_link: Copiar link
     shareable_link: Link compartilhável
     reminded: Lembrete enviado!
-  poll_common_publish_form:
-    published: Mensagem enviada com sucesso
   poll_common_publish_facebook_preview:
     link: link
   poll_common_publish_slack_preview:
     view_it_on_loomio: Ver no Loomio
-  add_community_form:
-    title: Adicionar comunidade
-    facebook:
-      fragment_placeholder: Procurar por grupos...
   poll_common_participant_form:
     participant_name_placeholder: Qual o seu nome?
   poll_common_subscribe_form:

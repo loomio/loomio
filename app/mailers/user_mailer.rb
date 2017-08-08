@@ -1,7 +1,15 @@
 class UserMailer < BaseMailer
   helper :email
   helper :application
-  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login, :start_decision]
+  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login, :start_decision, :accounts_merged]
+
+  def accounts_merged(user)
+    @user = user
+    @token = user.login_tokens.create!
+    send_single_mail to: @user.email,
+                     subject_key: "user_mailer.accounts_merged.subject",
+                     locale: locale_for(@user)
+  end
 
   def missed_yesterday(user, time_since = nil)
     return unless user.email_missed_yesterday

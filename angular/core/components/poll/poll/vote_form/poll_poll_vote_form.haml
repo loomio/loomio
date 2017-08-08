@@ -1,6 +1,6 @@
 %form.poll-poll-vote-form{ng-submit: "submit()"}
   %poll_common_participant_form{stance: "stance"}
-  
+
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
   .poll-common-vote-form__options
     .poll-poll-vote-form__options{ng-if: "!stance.poll().multipleChoice"}
@@ -24,4 +24,4 @@
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     %show_results_button{ng-if: "stance.isNew()"}
     %div{ng-if: "!stance.isNew()"}
-    %md-button.md-primary.md-raised{type: "submit", translate: "poll_common.vote", aria-label: "{{ 'poll_poll_vote_form.vote' | translate }}"}
+    %md-button.md-primary.md-raised.poll-common-vote-form__submit{type: "submit", translate: "poll_common.vote", aria-label: "{{ 'poll_poll_vote_form.vote' | translate }}"}

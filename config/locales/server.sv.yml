@@ -23,11 +23,6 @@ sv:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
     view_comment: Klicka här för att se kommentaren på Loomio
     view_discussion: Klicka här för att se denna diskussionen
-    view_proposal: Visa detta förslag på Loomio
-    create_proposal:
-      intro: Ett nytt förslag skapades i en Loomiogrupp som du är med i.
-      closes_in: Stänger om
-      subject: 'Nytt förslag: %{which}'
     daily_activity:
       heading: Dina aktiviter i Loomio
       intro: Visar dig vad som har hänt i dina Loomiogrupper under de senaste 24 timmarna
@@ -41,27 +36,8 @@ sv:
       intro: "%{name} (%{email}) har begärt att få tillgång till en av dina Loomiogrupper."
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: Du kan godkänna eller avslå begäran här
-    new_motion_created:
-      subject: 'Förslag: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: Förslaget är stängt.
-      specify_outcome_and_notify_group: Skapa ett resultat och skicka det till din grupp!
-      specify_outcome_and_notify_group_html: Skapa ett resultat och skicka det till din grupp!
-      subject: Förslaget stängt - %{which}
-    proposal_closing_soon:
-      closes_on: Stänger den
-      closes_at: Stänger vid
-      closes_in: Stänger om
-      subject: 'Stänger inom 24 timmar: %{proposal_title}'
-      headline: "%{author}s förslag i %{group} stänger snart:"
-      summary: Sammanfattning
     thread_mailer:
       change_preferences: 'Ändra dina e-postinställningar:'
-      motion_closing_soon: 'Förslag som stänger inom 24 timmar:'
-      proposal_closed: 'Förslag som är stängt:'
-      specify_outcome_html: Ert förslag har stängt. <a href='%{link}'>Ange ett utfall</a> att låta alla veta vad resultatet blir.
-      specify_outcome: 'Ert förslag har stängt. Ange ett utfall för att låta alla veta vad resultatet är:'
-      you_agreed: Du %{past_tense_position}
   footer:
     about: Om
     blog: Blogg

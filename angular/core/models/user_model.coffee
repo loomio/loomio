@@ -12,7 +12,6 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'contacts'
       @hasMany 'versions'
       @hasMany 'identities'
-      @hasMany 'communities'
 
     identityFor: (type) ->
       _.detect @identities(), (i) -> i.identityType == type

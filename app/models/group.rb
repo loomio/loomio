@@ -18,7 +18,7 @@ class Group < ActiveRecord::Base
   has_many :invitations, dependent: :destroy
 
   has_many :discussions, foreign_key: :group_id, dependent: :destroy
-  has_many :polls, foreign_key: :group_id
+  has_many :polls, foreign_key: :group_id, dependent: :destroy
 
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }
@@ -46,9 +46,16 @@ class Group < ActiveRecord::Base
   end
 
   def add_member!(user, invitation: nil, inviter: nil)
-    tap(&:save!).memberships.find_or_create_by(user: user).tap do |m|
-      m.group.update_undecided_user_count unless m.group.is_formal_group?
-      m.update(invitation: invitation, inviter: inviter || invitation&.inviter)
+    save! unless persisted?
+    # TODO: account for archived memberships properly
+    if existing = self.memberships.find_by(user: user)
+      existing
+    else
+      memberships.create(
+        user:       user,
+        invitation: invitation,
+        inviter:    inviter || invitation&.inviter
+      )
     end
   end
 
@@ -69,30 +76,6 @@ class Group < ActiveRecord::Base
 
   def is_formal_group?
     type == "FormalGroup"
-  end
-
-  def private_discussions_only?
-    discussion_privacy_options == 'private_only'
-  end
-
-  def public_discussions_only?
-    discussion_privacy_options == 'public_only'
-  end
-
-  def public_or_private_discussions_allowed?
-    discussion_privacy_options == 'public_or_private'
-  end
-
-  def membership_granted_upon_approval?
-    membership_granted_upon == 'approval'
-  end
-
-  def membership_granted_upon_request?
-    membership_granted_upon == 'request'
-  end
-
-  def membership_granted_upon_invitation?
-    membership_granted_upon == 'invitation'
   end
 
   after_create :guess_cohort

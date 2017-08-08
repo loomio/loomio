@@ -40,7 +40,7 @@ gem 'ahoy_matey', github: 'gdpelican/ahoy', branch: 'user-presence'
 gem 'ahoy_email', '~> 0.3.1'
 gem 'oj'
 gem 'snorlax'
-gem 'custom_counter_cache'
+gem 'custom_counter_cache', github: 'gdpelican/custom_counter_cache'
 gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
@@ -49,7 +49,6 @@ gem 'discriminator', '~> 0.1.1'
 gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
-gem 'intercom', '~> 3.5.10'
 
 group :development, :test do
   gem 'minitest'

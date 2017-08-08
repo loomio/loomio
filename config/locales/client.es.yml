@@ -324,12 +324,6 @@ es:
     heading: Decisiones
     no_votes_yet: Nadie ha votado todavía en esta propuesta
     change_your_vote: Cambia tu posición.
-  undecided_panel:
-    aria_label: 'Miembros indecisos '
-    show: 'Mostrar '
-    remind: 'Recordar '
-    undecided: 'indecisos '
-    hide_undecided: Ocultar miembros indecisos
   proposal_pie_chart:
     participation_statement: '{{percentage}}% de los miembros ha manifestado su decisión ({{number}}/{{total}})'
   close_proposal_form:
@@ -712,11 +706,9 @@ es:
     email_label: 'Correo electrónico'
     short_bio_label: 'Introducción'
     locale_label: 'Idioma'
-    short_bio_placeholder: 'Ingresa una breve introducción (max 250 caracteres) '
     locale_placeholder: 'Selecciona tu lenguaje preferido '
     update_profile: 'Actualizar perfil'
     deactivate_account: 'Desactiva cuenta'
-    username_must_be_alphanumeric: 'El nombre de usuario debe contener solamente letras en minúscula y números '
   change_picture_form:
     aria_label: 'Formulario de cambio de imagen'
     title: 'Cambiar imagen'
@@ -951,7 +943,6 @@ es:
     message_label: 'Tu mensaje'
     message_placeholder: 'Tu mensaje...'
     send_message: 'Enviar mensaje'
-    new_contact_message: 'Gracias por tu mensaje; ¡pronto nos pondremos en contacto contigo!'
   help_page:
     coordinating: 'Coordinando tu grupo en Loomio'
     coordinating_details: |
@@ -1232,10 +1223,7 @@ es:
     change_results_order: Cambiar orden de resultados
     none_of_the_above: '(Ninguno de los mencionados) '
   poll_common_undecided_panel:
-    show_undecided: Mostrar {{count}} indecisos
-    undecided_users: Miembros del grupo indecisos ({{count}})
-    undecided_visitors: Invitados indecisos ({{count}})
-    hidden_visitors: 'Solo el coordinador del grupo o el autor de la encuesta podrá ver los invitados indecisos '
+    show_undecided: "Mostrar {{count}} indecisos"
   poll_common_set_outcome_panel:
     share_outcome: Compartr resultado
     poll: 'Esta encuesta ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'
@@ -1444,7 +1432,6 @@ es:
     title: Administrador - {{title}}
   poll_common_share_form:
     no_group_selected: Ningún grupo seleccionado
-    no_communities: "No haz conectado ninguna comunidad aún. Clic 'añadir comunidad' debajo para conectar una. "
     share_a_link: Compartir enlace
     share_a_link_helptext: Crear un enlace compartible para distribuir. Cualquiera que tenga este enlace, podrá participar.
     anyone_can_participate: Cualquiera con el enlace puede paticipar
@@ -1475,11 +1462,6 @@ es:
     email_exists: '{{email}} ya ha sido invitado'
     email_empty: 'Por favor ingresa una dirección de email '
     email_invalid: "No parece ser una dirección de email valida"
-  poll_common_publish_form:
-    community: Informar al siguiente grupo de tu encuesta
-    message: Ingresa un mensaje
-    message_placeholder: Añade un mensaje que acompañe el enlace de tu encuesta
-    published: Mensaje enviado
   poll_common_publish_facebook_preview:
     shared_a: Comparte un
     link: enlace
@@ -1489,20 +1471,6 @@ es:
     poll_published_with_discussion: "publicó una encuesta en <strong>{{discussion}}</strong>:"
     view_it_on_loomio: Verlo en Loomio
     timestamp: Hoy en {{timestamp}}
-  add_community_form:
-    title: Añadir comunidad
-    existing_communities: Comunidades previamente conectadas
-    no_communities: Todavía no has conectado ninguna comunidad. Seleccione una de abajo para comenzar.
-    connect_new_community: Conectar una nueva comunidad
-    currently_signed_in_as: "Actualmente iniciado como:"
-    community_created: Esta encuesta está ahora conectada a laa comunidad {{type}}
-    error_explanation: ¡Vaya! Tuvimos problemas para conectarnos a {{type}}. Haga clic a continuación para volver a intentarlo.
-    slack:
-      another_account: (Cambiar equipos)
-      fragment_placeholder: Buscar canales ...
-    facebook:
-      another_account: (Ingresa con otra cuenta)
-      fragment_placeholder: Buscar grupos ...
   poll_common_participant_form:
     participant_name_placeholder: ¿Cuál es tu nombre?
   poll_common_subscribe_form:
@@ -1530,9 +1498,12 @@ es:
     sign_in_to_loomio: Entrar a Loomio
     sign_in: Entrar
     choose_an_account: "Entra a través de un tercero, o ingresa una dirección de correo electrónico para continuar."
+    more_providers: Más
+    email_not_present: Se necesita una dirección de correo
     invalid_email: "Lo lamentamos, eso no parece una dirección de correo electrónico válida"
     invalid_password: "Lo lamentamos, esa contraseña no coincide con la que tenemos archivada"
     email_not_found: "Lo lamentamos, no pudimos encontrar una cuenta con esa dirección de correo electrónico"
+    email_placeholder: tu@ejemplo.com
     login_link_helptext: |
       Haz clic en el botón de abajo, y te enviaremos un enlace para ingresar instantáneamente
       O, puedes configurar una contraseña con la que ingresar, si no quieres recibir un correo.
@@ -1557,5 +1528,16 @@ es:
     email: Correo Electrónico
     password: Contraseña
   install_slack:
+    modal_title: Installar Slack
+    card:
+      install_title: Conectar a Slack
+    progress:
+      install: Instalar
+      invite: Invita
+      decide: Decide
     install:
+      heading: 'Primer paso: Selecciona un grupo de Loomio al que unirte'
       create_new_group_helptext: ¿No tienes un grupo en Loomio? Simplemente ingresa un nombre, y crearemos uno para ti
+      group_name: Nombre del grupo
+      group_name_placeholder: Elige un nombre para tu nuevo grupo de Loomio...
+      start_new_group: Empezar un nuevo grupo

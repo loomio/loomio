@@ -236,11 +236,6 @@ ko:
     heading: 선택
     no_votes_yet: 이 제안에 투표한 사람이 아직 없습니다.
     change_your_vote: 나의 선택 변경
-  undecided_panel:
-    aria_label: '결정하지 않은 멤버들'
-    show: 보기
-    undecided: 미결
-    hide_undecided: 결정하지 않은 멤버들을 보여주지 않음
   proposal_pie_chart:
     participation_statement: '{{percentage}}%의 회원이 입장을 선택했습니다({{number}}/{{total}})'
   close_proposal_form:
@@ -764,7 +759,6 @@ ko:
     message_label: '메시지'
     message_placeholder: '메시지...'
     send_message: '메시지 보내기'
-    new_contact_message: '메시지를 주셔서 감사합니다; 곧 연락드리겠습니다!'
   help_page:
     coordinating: '루미오 그룹을 관리하기'
     coordinating_details: |
