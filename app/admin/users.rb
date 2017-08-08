@@ -32,7 +32,7 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs "Details" do
       f.input :name
-      f.input :email
+      f.input :email, as: :string
       f.input :username, as: :string
       f.input :is_admin
     end
