@@ -136,17 +136,12 @@ class FormalGroup < Group
 
   def update_full_name_if_name_changed
     subgroups.map do |subgroup|
-      subgroup.calculate_full_name
-      subgroup.save(validate: false)
-    end if changes.include('name')
+      subgroup.update_attribute :full_name, "#{self.name} - #{subgroup.name}"
+    end if changes.include?('name')
   end
 
   def organisation_discussions_count
     Group.where("parent_id = ? OR (parent_id IS NULL AND groups.id = ?)", parent_or_self.id, parent_or_self.id).sum(:discussions_count)
-  end
-
-  def org_group_ids
-    [parent_or_self.id, parent_or_self.subgroup_ids].flatten
   end
 
   def id_and_subgroup_ids
@@ -170,14 +165,6 @@ class FormalGroup < Group
   end
 
   private
-
-  def calculate_full_name
-    if is_parent?
-      name
-    else
-      parent_name + " - " + name
-    end
-  end
 
   def limit_inheritance
     if parent_id.present?

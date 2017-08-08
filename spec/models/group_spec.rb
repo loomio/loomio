@@ -120,6 +120,11 @@ describe Group do
       expect(@group.members).to include @user
     end
 
+    it "updates the memberships_count" do
+      @group.reload
+      expect { @group.add_member! @user }.to change { @group.reload.memberships_count }.by(1)
+    end
+
     it 'sets the first admin to be the creator' do
       @group = Group.new(name: "Test group")
       @group.add_admin!(@user)
