@@ -22,9 +22,8 @@
 
   .lmo-sidebar-and-main-container {
     display: block;
+    overflow: visible !important;
   }
-
-  .lmo-sidebar-and-main-container { overflow: visible !important; }
 
   .thread-page {
     .group-theme__header--compact {
