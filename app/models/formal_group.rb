@@ -135,7 +135,7 @@ class FormalGroup < Group
     if changes.include?('name')
       update_full_name
       subgroups.each do |subgroup|
-        subgroup.full_name = name + ""   + subgroup.name
+        subgroup.full_name = name + " - " + subgroup.name
         subgroup.save(validate: false)
       end
     end
