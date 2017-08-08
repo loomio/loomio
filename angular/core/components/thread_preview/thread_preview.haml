@@ -27,10 +27,9 @@
     %star_toggle{thread: "thread", aria-hidden: "true"}
 
   .thread-preview__actions.hidden-xs{ng-if: "thread.discussionReaderId"}
-    %button.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
-      %i.fa.fa-check>
-    %button.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}", aria-label: "{{ 'volume_levels.mute' | translate }}" }>
-      %i.fa.fa-volume-off
-      %i.fa.fa-times>
-    %button.thread-preview__unmute{ng-click: "unmuteThread()", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}", aria-label: "{{ 'volume_levels.unmute' | translate }}"}>
-      %i.fa.fa-volume-down>
+    %md-button.md-raised.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
+      .material-icons done
+    %md-button.md-raised.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}", aria-label: "{{ 'volume_levels.mute' | translate }}" }>
+      .material-icons volume_off
+    %md-button.md-raised.thread-preview__unmute{ng-click: "unmuteThread()", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}", aria-label: "{{ 'volume_levels.unmute' | translate }}"}>
+      .material-icons volume_down

@@ -22,10 +22,13 @@
   align-items: center;
 }
 
+.lmo-flex__horizontal-center {
+  justify-content: center;
+}
+
 .lmo-flex__shrink {
   flex-shrink: 1;
 }
-
 
 .lmo-flex__align-top {
   align-items: flex-start;

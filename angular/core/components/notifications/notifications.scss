@@ -1,6 +1,10 @@
 .notifications__button {
-  position: relative;
   i { font-size: 24px; }
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 36px;
 }
 
 .notifications__menu-content {
@@ -14,29 +18,14 @@
 }
 
 .notifications__activity {
-  min-width: 10px;
-  padding: 5px 5px;
-  color: #fff!important;
-  vertical-align: middle;
+  padding: 5px;
+  color: $card-background-color !important;
   font-size: 10px;
   position: absolute;
-  left: 24px;
-  top: 6px;
-  background: #4A90E2!important;
+  left: 12px;
+  top: 0;
+  background: $notification-color !important;
   border-radius: 10px;
-  border: 2px solid #fff;
+  border: 2px solid $card-background-color;
   line-height: 5px;
-}
-
-.notifications__link {
-  color: $primary-text-color;
-}
-
-.notifications__dropdown {
-  margin-top: 8px !important;
-}
-
-.navbar-notifications__blank-message {
-  text-align: center;
-  margin: 10px 0;
 }
