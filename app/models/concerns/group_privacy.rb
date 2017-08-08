@@ -59,6 +59,30 @@ module GroupPrivacy
     !is_visible_to_public?
   end
 
+  def private_discussions_only?
+    discussion_privacy_options == 'private_only'
+  end
+
+  def public_discussions_only?
+    discussion_privacy_options == 'public_only'
+  end
+
+  def public_or_private_discussions_allowed?
+    discussion_privacy_options == 'public_or_private'
+  end
+
+  def membership_granted_upon_approval?
+    membership_granted_upon == 'approval'
+  end
+
+  def membership_granted_upon_request?
+    membership_granted_upon == 'request'
+  end
+
+  def membership_granted_upon_invitation?
+    membership_granted_upon == 'invitation'
+  end
+
   def discussion_private_default
     case discussion_privacy_options
     when 'public_or_private' then nil
