@@ -37,12 +37,9 @@ class FormalGroup < Group
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
   define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
-  define_counter_cache(:memberships_count)         { |group| group.memberships.count }
 
   delegate :include?, to: :users, prefix: true
-  delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
-  delegate :name, to: :parent, prefix: true
 
   delegate :slack_team_id, to: :slack_identity, allow_nil: true
   delegate :slack_channel_id, to: :slack_identity, allow_nil: true
@@ -135,13 +132,17 @@ class FormalGroup < Group
   end
 
   def update_full_name_if_name_changed
-    subgroups.map do |subgroup|
-      subgroup.update_attribute :full_name, "#{self.name} - #{subgroup.name}"
-    end if changes.include?('name')
+    if changes.include?('name')
+      update_full_name
+      subgroups.each do |subgroup|
+        subgroup.full_name = name + ""   + subgroup.name
+        subgroup.save(validate: false)
+      end
+    end
   end
 
-  def organisation_discussions_count
-    Group.where("parent_id = ? OR (parent_id IS NULL AND groups.id = ?)", parent_or_self.id, parent_or_self.id).sum(:discussions_count)
+  def update_full_name
+    self.full_name = calculate_full_name
   end
 
   def id_and_subgroup_ids
@@ -165,6 +166,10 @@ class FormalGroup < Group
   end
 
   private
+
+  def calculate_full_name
+    [parent&.name, name].compact.join(" - ")
+  end
 
   def limit_inheritance
     if parent_id.present?
