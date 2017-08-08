@@ -37,7 +37,7 @@ class FormalGroup < Group
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
   define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
-  define_counter_cache(:memberships_count)         { |group| puts "wark!"; group.memberships.count }
+  define_counter_cache(:memberships_count)         { |group| group.memberships.count }
 
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true

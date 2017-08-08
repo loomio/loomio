@@ -121,7 +121,6 @@ describe Group do
     end
 
     it "updates the memberships_count" do
-      @group.reload
       expect { @group.add_member! @user }.to change { @group.reload.memberships_count }.by(1)
     end
 
