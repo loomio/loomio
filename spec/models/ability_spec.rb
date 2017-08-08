@@ -183,41 +183,6 @@ describe "User abilities" do
     end
   end
 
-  context "suspended member" do
-    let(:group) { create(:formal_group) }
-    let(:admin_group) { create(:formal_group) }
-    let(:subgroup) { create(:formal_group, parent: group) }
-    let(:private_discussion) { create :discussion, group: group, private: true }
-
-
-    context "group is visible to public" do
-      let(:group) { create(:formal_group, is_visible_to_public: true) }
-
-      before do
-        membership = group.add_member!(user)
-        MembershipService.suspend_membership!(membership: membership)
-      end
-
-      it { should be_able_to(:show, group) }
-      it { should_not be_able_to(:show, private_discussion) }
-      it "is no longer a group member" do
-        group.reload
-        group.members.should_not include user
-      end
-    end
-
-    context "group is hidden from public" do
-      let(:group) { create(:formal_group, is_visible_to_public: false) }
-
-      before do
-        membership = group.add_member!(user)
-        MembershipService.suspend_membership!(membership: membership)
-      end
-
-      it { should_not be_able_to(:show, group) }
-    end
-  end
-
   context "member of a group" do
     let(:group) { create(:formal_group) }
     let(:subgroup) { build(:formal_group, parent: group) }

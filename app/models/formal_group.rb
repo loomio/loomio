@@ -37,6 +37,7 @@ class FormalGroup < Group
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
   define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
+  define_counter_cache(:memberships_count)         { |group| puts "wark!"; group.memberships.count }
 
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true
@@ -69,6 +70,9 @@ class FormalGroup < Group
 
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
 
+  def update_undecided_user_count
+    # NOOP: only guest groups have an invitation target
+  end
 
   def shareable_invitation
     invitations.find_or_create_by(
@@ -110,7 +114,6 @@ class FormalGroup < Group
     all_subgroups.update_all(archived_at: nil)
   end
 
-
   def is_subgroup_of_hidden_parent?
     is_subgroup? and parent.is_hidden_from_public?
   end
@@ -131,38 +134,15 @@ class FormalGroup < Group
     memberships.find_by(user_id: user.id)
   end
 
-  def membership(user)
-    membership_for(user)
-  end
-
-  def pending_membership_request_for(user)
-    if user.is_logged_in?
-      membership_requests.pending.where(requestor_id: user.id).first
-    else
-      false
-    end
-  end
-
   def update_full_name_if_name_changed
-    if changes.include?('name')
-      update_full_name
-      subgroups.each do |subgroup|
-        subgroup.full_name = name + " - " + subgroup.name
-        subgroup.save(validate: false)
-      end
-    end
-  end
-
-  def update_full_name
-    self.full_name = calculate_full_name
+    subgroups.map do |subgroup|
+      subgroup.calculate_full_name
+      subgroup.save(validate: false)
+    end if changes.include('name')
   end
 
   def organisation_discussions_count
     Group.where("parent_id = ? OR (parent_id IS NULL AND groups.id = ?)", parent_or_self.id, parent_or_self.id).sum(:discussions_count)
-  end
-
-  def organisation_motions_count
-    Discussion.published.where(group_id: org_group_ids).sum(:motions_count)
   end
 
   def org_group_ids
