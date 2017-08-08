@@ -1,11 +1,12 @@
 %h2= "#{name} (#{records.length})"
 
-%table
-  %thead
-    - fields.each do |field|
-      %th= @exporter.field_names.fetch(field) { field }.humanize
-  %tbody
-    - records.each do |record|
-      %tr
-        - fields.each do |field|
-          %td= record.send(field)
+- if records.length > 0
+  %table
+    %thead
+      - fields.each do |field|
+        %th= @exporter.field_names.fetch(field) { field }.humanize
+    %tbody
+      - records.each do |record|
+        %tr
+          - fields.each do |field|
+            %td= record.send(field)

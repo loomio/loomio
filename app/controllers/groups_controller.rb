@@ -3,10 +3,9 @@ class GroupsController < ApplicationController
   layout false
 
   def export
-    @exporter = GroupExporter.new(load_and_authorize(:group, :export), current_user.group_ids)
+    @exporter = GroupExporter.new(load_and_authorize(:group, :export))
 
     respond_to do |format|
-      format.xls { render formats: [:html] }
       format.html
       format.csv { send_data @exporter.to_csv }
     end

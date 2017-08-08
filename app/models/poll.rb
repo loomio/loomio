@@ -6,6 +6,7 @@ class Poll < ActiveRecord::Base
   include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
+  include UsesOrganisationScope
 
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails
 

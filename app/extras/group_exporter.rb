@@ -1,37 +1,26 @@
 class GroupExporter
+  EXPORT_MODELS = {
+    formal_groups: %w[id key name description created_at],
+    memberships:   %w[group_id user_id user_name admin created_at],
+    invitations:   %w[id group_id recipient_email inviter_name accepted_at],
+    discussions:   %w[id group_id author_id author_name title description created_at],
+    comments:      %w[id group_id discussion_id author_id discussion_title author_name body created_at],
+    polls:         %w[id key discussion_id group_id author_id title details closing_at closed_at created_at poll_type multiple_choice custom_fields],
+    stances:       %w[id poll_id participant_id reason latest created_at updated_at]
+  }.freeze
 
-  attr_reader :groups,      :group_fields,
-              :memberships, :membership_fields,
-              :invitations, :invitation_fields,
-              :discussions, :discussion_fields,
-              :comments,    :comment_fields,
-              :polls,       :poll_fields,
-              :stances,     :stance_fields,
-              :field_names
+  EXPORT_MODELS.keys.each do |model|
+    define_method model, -> {
+      instance_variable_get(:"@#{model}") ||
+      instance_variable_set(:"@#{model}", models_for(model))
+    }
 
-  def initialize(group, group_ids)
+    define_method :"#{model.to_s.singularize}_fields", -> { EXPORT_MODELS[model] }
+  end
+  attr_reader :field_names
+
+  def initialize(group)
     @group = group
-    @groups = FormalGroup.where(id: group_ids)
-    @group_fields = %w[id key name description created_at]
-
-    @memberships = Membership.where(group_id: group_ids).chronologically
-    @membership_fields = %w[group_id user_id user_name admin created_at]
-
-    @invitations = Invitation.where(group_id: group_ids).chronologically
-    @invitation_fields = %w[id group_id recipient_email inviter_name accepted_at]
-
-    @discussions = Discussion.where(group_id: group_ids).chronologically
-    @discussion_fields = %w[id group_id author_id author_name title description created_at]
-
-    @comments = Comment.joins(:discussion => :group).where('discussions.group_id' => group_ids).chronologically
-    @comment_fields = %w[id group_id discussion_id author_id discussion_title author_name body created_at]
-
-    @polls = Poll.joins(:discussion => :group).where('discussions.group_id' => group.id_and_subgroup_ids).chronologically
-    @poll_fields = %w[id key discussion_id group_id author_id title details closing_at closed_at created_at poll_type multiple_choice custom_fields]
-
-    @stances = Stance.joins(:poll => {:discussion => :group}).where('discussions.group_id' => group_ids).chronologically
-    @stance_fields = %w[id poll_id participant_id reason latest created_at updated_at]
-
     @field_names = {}
   end
 
@@ -40,18 +29,24 @@ class GroupExporter
       csv << ["Export for #{@group.full_name}"]
       csv << []
 
-      csv_append(csv, @group_fields, @groups, "Groups")
-      csv_append(csv, @membership_fields, @memberships, "Memberships")
-      csv_append(csv, @discussion_fields, @discussions, "Discussions")
-      csv_append(csv, @comment_fields, @comments, "Comments")
-      csv_append(csv, @poll_fields, @polls, "Polls")
-      csv_append(csv, @stance_fields, @stances, "Stances")
+      EXPORT_MODELS.keys.each do |model|
+        csv_append(
+          csv:    csv,
+          fields: send(:"#{model.to_s.singularize}_fields"),
+          models: send(:"#{model}"),
+          title:  model.to_s.humanize
+        )
+      end
     end
   end
 
   private
 
-  def csv_append(csv, fields, models, title)
+  def models_for(model)
+    model.to_s.classify.constantize.in_organisation(@group).order(created_at: :asc)
+  end
+
+  def csv_append(csv:, fields:, models:, title:)
     csv << ["#{title} (#{models.length})"]
     csv << fields.map(&:humanize)
     models.each { |model| csv << fields.map { |field| model.send(field) } }
