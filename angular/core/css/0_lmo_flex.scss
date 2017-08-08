@@ -32,7 +32,6 @@
 
 .lmo-flex__align-top {
   align-items: flex-start;
-  // justify-content: flex-end;
 }
 
 .lmo-flex__space-between {
@@ -49,14 +48,4 @@
 
 .lmo-flex__no-shrink {
   flex-shrink: 0;
-}
-
-@mixin flexRow {
-  flex-direction: row;
-  -webkit-flex-direction: row;
-}
-
-@mixin flexColumn {
-  flex-direction: column;
-  -webkit-flex-direction: column;
 }

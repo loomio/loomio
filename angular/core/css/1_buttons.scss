@@ -5,15 +5,6 @@
   &:hover{ text-decoration: underline; }
 }
 
-@mixin lmoTranslateLink {
-  display: inline-block;
-  background: none;
-  border: none;
-  text-decoration: none;
-  padding: 0;
-  margin: 0;
-}
-
 .lmo-btn-link {
   @include lmoBtnLink;
 }

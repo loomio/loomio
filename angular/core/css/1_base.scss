@@ -20,10 +20,7 @@ input, select, textarea{
   margin-bottom: 10px;
 }
 
-input[type="file"]{
-  /*This is a hack for now to fix the mobile layout. The file input should be hidden.*/
-  max-width: 200px;
-}
+input[type="file"] { display: none; }
 
 a {
   color: $link-color;
