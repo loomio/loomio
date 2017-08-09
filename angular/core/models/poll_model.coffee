@@ -75,7 +75,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       if @guestGroup() then @guestGroup().memberIds() else []
 
     participantIds: ->
-      _.pluck(@latestStances(), 'userId')
+      _.pluck(@latestStances(), 'participantId')
 
     undecidedIds: ->
       _.pluck(@pollDidNotVotes(), 'userId')
