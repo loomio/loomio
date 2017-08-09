@@ -6,6 +6,7 @@ describe MembershipService do
 
   describe 'join_group' do
     it 'adds the user as creator if the group has no creator' do
+      group.update(creator: nil)
       MembershipService.join_group(group: group, actor: user)
       expect(group.reload.creator).to eq user
     end
