@@ -195,15 +195,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       end
     end
 
-    panel 'Data export' do
-      export_enabled = group.features['dataExport']
-      form action: toggle_export_admin_group_path(group), method: :post do |f|
-        f.label "Data Export is enabled. <a href=\"/g/#{group.key}/export.xls\">XLS</a> <a href=\"/g/#{group.key}/export.html\">HTML</a>".html_safe if export_enabled
-        f.label "Data Export is not enabled" unless export_enabled
-        f.input type: :submit, value: 'Toggle data export'
-      end
-    end
-
     active_admin_comments
   end
 

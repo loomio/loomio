@@ -28,6 +28,7 @@ class Stance < ActiveRecord::Base
   scope :chronologically, -> { order('created_at asc') }
   scope :verified,       -> { joins(:participant).where('users.email_verified': true) }
   scope :unverified,       -> { joins(:participant).where('users.email_verified': false) }
+  scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
 
   validate :enough_stance_choices
   validate :total_score_is_valid
