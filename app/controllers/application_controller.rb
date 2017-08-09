@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   after_filter :save_detected_locale, if: :user_signed_in?
 
   rescue_from(ActionView::MissingTemplate)  { |exception| raise exception unless %w[txt text gif png].include?(params[:format]) }
-  rescue_from(ActiveRecord::RecordNotFound) { respond_with_error :"error.not_found", status: :not_found }
+  rescue_from(ActiveRecord::RecordNotFound) { respond_with_error message: :"error.not_found", status: 404 }
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
       flash[:error] = t("error.access_denied")
@@ -27,18 +27,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def gone
-    head :gone
-  end
-
-  def browser_not_supported
-    render layout: false
-  end
-
   protected
 
-  def respond_with_error(message, status: :bad_request)
-    render 'application/display_error', locals: { message: t(message) }, status: status
+  def respond_with_error(message: "", status: 400)
+    @error_description ||= message
+    render "errors/#{status}", layout: 'error', status: status
   end
 
   def permitted_params

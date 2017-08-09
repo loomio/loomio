@@ -43,10 +43,6 @@ Loomio::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  namespace :popolo, path: '/api/popolo', defaults: {format: :json} do
-    resources :motions, only: :index
-  end
-
   namespace :api, path: '/api/v1', defaults: {format: :json} do
 
     resources :groups, only: [:index, :show, :create, :update] do
@@ -220,8 +216,6 @@ Loomio::Application.routes.draw do
   get '/groups/:id',      to: 'redirect#group_id'
   get '/motions/:id',     to: 'redirect#motion_id'
 
-  get "/browser_not_supported", to: "application#browser_not_supported"
-
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')
   devise_for :users, controllers: { passwords: :"users/passwords" }
@@ -275,7 +269,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
   get 'g/:key/previous_polls'              => 'application#boot_angular_ui', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui', as: :group_memberships_username
-  get 'g/:new'                             => 'application#boot_angular_ui', as: :new_group
+  get 'g/new'                              => 'application#boot_angular_ui', as: :new_group
   get 'p/new(/:type)'                      => 'application#boot_angular_ui', as: :new_poll
   get 'p/example(/:type)'                  => 'polls#example',               as: :example_poll
 
@@ -289,10 +283,10 @@ Loomio::Application.routes.draw do
   get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/:username/'                       => 'users#show',                  as: :user
 
-  get '/notifications/dropdown_items'      => 'application#gone'
-  get '/u/:key(/:stub)'                    => 'application#gone'
-  get '/g/:key/membership_requests/new'    => 'application#gone'
-  get '/comments/:id'                      => 'application#gone'
+  get '/notifications/dropdown_items'      => redirect('410.html')
+  get '/u/:key(/:stub)'                    => redirect('410.html')
+  get '/g/:key/membership_requests/new'    => redirect('410.html')
+  get '/comments/:id'                      => redirect('410.html')
 
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do
