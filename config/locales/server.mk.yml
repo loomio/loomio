@@ -12,10 +12,6 @@ mk:
       subject: "%{member} те покани да се приклучиш во %{group_name} на Loomio"
     view_comment: Кликни овде за да го видиш коментарот на Loomio
     view_discussion: Кликни овде за да ја видиш дискусијата
-    view_proposal: Види го предлогот на Loomio
-    create_proposal:
-      closes_in: Се затвора во
-      subject: 'Нов предлог: %{which}'
     daily_activity:
       heading: Вашата активност на Loomio
       subject: Loomio - Резиме на последните 24 часа
@@ -25,13 +21,6 @@ mk:
     membership_request:
       subject: "%{who} побара да се приклучи во %{which_group}"
       view_group: Можете да го одобрите или одбиете барањето овде
-    proposal_closed:
-      subject: Предлогот е затворен - %{which}
-    proposal_closing_soon:
-      closes_on: Се затвора на
-      closes_at: Се затвора во
-      closes_in: Се затвора во
-      summary: Резиме
   footer:
     about: За Loomio
     blog: Блог

@@ -10,10 +10,6 @@ ga_IE:
     to_start_group:
       subject: "Cuir do bhaicle Loomio nua ar bun: %{group_name}"
     view_discussion: Brúigh anseo chun an plé seo a fheiceáil
-    view_proposal: Féach an togra seo ar Loomio
-    create_proposal:
-      closes_in: Dúnann sé i gceann
-      subject: 'Togra nua: %{which}'
     daily_activity:
       heading: Do Ghníomhaíocht Loomio
       intro: Ag léiriú cad a bhí ar siúil sna baiclí Loomio agatsa sa 24 uair anuas
@@ -25,21 +21,8 @@ ga_IE:
     membership_request:
       subject: "D'iarr %{who} cead dul isteach i %{which_group}"
       view_group: Tig leat an t-iarratas a cheadú nó diúltú dó anseo
-    new_motion_created:
-      subject: 'Togra: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: Dúnadh an togra.
-      subject: Togra dúnta - %{which}
-    proposal_closing_soon:
-      closes_on: Dúnann sé ar an
-      closes_at: Dúnann sé ag a
-      closes_in: Dúnann sé i gceann
-      subject: 'Ag dúnadh i gceann 24 uair: %{proposal_title}'
-      summary: Achoimre
     thread_mailer:
       change_preferences: 'Athraigh do shainroghanna ríomhphoist:'
-      motion_closing_soon: 'Togra a dhúnfaidh i gceann 24 uair:'
-      proposal_closed: 'Tá an togra dúnta:'
   footer:
     about: Maidir linn
     blog: Blag
@@ -75,3 +58,6 @@ ga_IE:
       submit: Seol an teachtaireacht
     messages:
       email_html: "Líon an fhoirm seo, nó seol ríomhphost chuig <a href='mailto:%{email}'>%{email}</a>"
+  poll_mailer:
+    common:
+      unsubscribe: Díliostáil

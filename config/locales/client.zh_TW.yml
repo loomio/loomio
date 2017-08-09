@@ -81,6 +81,9 @@ zh_TW:
       delete: 刪除
       unsubscribe: 取消訂閱
       subscribe: 訂閱
+      remind: 提醒
+      resend: 重新傳送
+      resent: 重新傳送邀請
     formatting_help:
       label: '格式化'
       title: '學習如何使用 Markdown 來格式化您在 Loomio 上的文字'
@@ -281,6 +284,7 @@ zh_TW:
     comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論"
     comment_liked: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 對您的評論按讚"
     user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
+    user_reminded: "<strong>{{name}}</strong> 正在等候您參與 <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格"
     membership_request_approved: '<strong>{{name}}</strong> 接受您加入 <strong>{{title}}</strong> 的請求'
     user_added_to_group: "<strong>{{name}}</strong> 將您加入到群組 <strong>{{title}}</strong>"
@@ -323,12 +327,6 @@ zh_TW:
     heading: 立場表態
     no_votes_yet: 尚未有人在此提案上投票。
     change_your_vote: 變更您的立場。
-  undecided_panel:
-    aria_label: '尚未決定的成員'
-    show: 顯示
-    remind: 提醒
-    undecided: 未決定
-    hide_undecided: 隱藏未決定的成員
   proposal_pie_chart:
     participation_statement: '{{percentage}}% 的成員已經陳述他們的立場 ({{number}}/{{total}})'
   close_proposal_form:
@@ -675,6 +673,9 @@ zh_TW:
       remove_admin_success: '{{name}} 已不再是協調者'
     remove_admin_from_self:
       question: '您確定您真的不想要再當協調者？'
+  memberships_panel:
+    add_coordinator: 成為協作者
+    remove_coordinator: 移除協作者
   remove_membership_form:
     aria_label: '移除成員'
     title: '移除成員'
@@ -685,6 +686,9 @@ zh_TW:
     email: 電子郵件
     invitation_link: 邀請連結
     sent: 已寄出
+    sent_at: '{{date}} 已傳送'
+    copy_url: 複製 URL
+    revoke_invitation: 撤銷
   cancel_invitation_form:
     heading: 取消邀請函
     question: 您確定您想要取消此邀請函嗎？
@@ -711,11 +715,10 @@ zh_TW:
     email_label: '電子郵件'
     short_bio_label: '簡介'
     locale_label: '語言'
-    short_bio_placeholder: '輸入簡短的介紹（最多 250 個字元）'
+    short_bio_placeholder: '輸入簡介（最多 500 字元）'
     locale_placeholder: 選取您偏好的語言
     update_profile: '更新簡歷'
     deactivate_account: '凍結帳號'
-    username_must_be_alphanumeric: 使用者名稱只能包含小寫字母及數字。
   change_picture_form:
     aria_label: '變更照片表單'
     title: '變更照片'
@@ -942,6 +945,8 @@ zh_TW:
   discussion_moved_item:
     discussion_moved: '已從 <span>{{group}}</span> 移動討論串'
   contact_message_form:
+    helptext: "想要取得聯繫？只要在下面輸入訊息，您將會很快就收到我們的消息。"
+    contact_us_email: "（您也可以透過 <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a> 隨時與我們聯繫）"
     contact_us: '聯絡我們'
     name_label: '您的大名'
     name_placeholder: '輸入您的大名...'
@@ -950,7 +955,7 @@ zh_TW:
     message_label: '您的訊息'
     message_placeholder: '您的訊息...'
     send_message: '寄送訊息'
-    new_contact_message: '感謝您的訊息；我們將會聯繫您！'
+    new_contact_message: "感謝您與我們聯繫；我們很快就會回覆！"
   help_page:
     coordinating: '在您的 Loomio 群組中協作'
     coordinating_details: |
@@ -1222,10 +1227,14 @@ zh_TW:
     change_results_order: 變更您的結果順序
     none_of_the_above: （以上皆非）
   poll_common_undecided_panel:
-    show_undecided: 顯示 {{count}} 個未決定
-    undecided_users: 尚未決定的群組成員 ({{count}})
-    undecided_visitors: 尚未決定的來賓 ({{count}})
-    hidden_visitors: 僅群組協調者或投票作者可以檢視尚未決定的來賓
+    show_undecided: "顯示 {{count}} 個未決定"
+    show_invitations: 顯示擱置中的邀請函
+    undecided_users: "未決定的 ({{count}})"
+    invitation_count_singular: "已透過電子郵件邀請 1 個額外的夥伴參與"
+    invitation_count_plural: "已透過電子郵件邀請 {{count}} 個額外的夥伴參與"
+  poll_common_undecided_user:
+    reminded: 提醒已傳送！
+    reminder_sent: 提醒通知已傳送
   poll_common_set_outcome_panel:
     share_outcome: 分享成果
     poll: '此提案已關閉。與群組<strong>分享成果</strong>。'
@@ -1434,7 +1443,6 @@ zh_TW:
     title: 管理 - {{title}}
   poll_common_share_form:
     no_group_selected: 未選擇群組
-    no_communities: "您尚未連到任何社群。點選下方的「加入社群」來新增一個"
     share_a_link: 分享連結
     share_a_link_helptext: 建立一個供散佈用的可分享連結。任何存取連結的人都可以參與。
     anyone_can_participate: 任何有連結的人都可以參與
@@ -1465,11 +1473,6 @@ zh_TW:
     email_exists: '{{email}} 已被邀請'
     email_empty: '請輸入電子郵件'
     email_invalid: "這似乎不是有效的電子郵件"
-  poll_common_publish_form:
-    community: 通知以下群組關於您的投票
-    message: 輸入訊息
-    message_placeholder: 新增一條訊息以附加連結到您的投票中
-    published: 訊息成功傳送
   poll_common_publish_facebook_preview:
     shared_a: 分享一個
     link: 連結
@@ -1479,20 +1482,6 @@ zh_TW:
     poll_published_with_discussion: "在 <strong>{{discussion}}</strong> 中發佈投票。"
     view_it_on_loomio: 在 Loomio 上檢視
     timestamp: 今日 {{timestamp}}
-  add_community_form:
-    title: 新增社群
-    existing_communities: 先前連接的社群
-    no_communities: 您尚未連到任何社群。從下方選取一個來開始。
-    connect_new_community: 連到新的社群
-    currently_signed_in_as: "目前登入為："
-    community_created: 這個投票現在連線到 {{type}} 社群
-    error_explanation: 喔喔！我們連線到 {{type}} 的時候發生了一些問題。點選下面來重試。
-    slack:
-      another_account: （切換團隊）
-      fragment_placeholder: 搜尋頻道⋯
-    facebook:
-      another_account: （以其他帳號登入）
-      fragment_placeholder: 搜尋群組⋯
   poll_common_participant_form:
     participant_name_placeholder: 您的大名是？
   poll_common_subscribe_form:

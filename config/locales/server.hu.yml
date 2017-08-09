@@ -17,11 +17,6 @@ hu:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, hogy leiratkozz vagy megváltoztasd az e-mail beállításaidat."
     view_comment: Kattints ide, hogy megnézd a hozzászólást a Loomión.
     view_discussion: Ide kattintva nézheted meg ezt a témát
-    view_proposal: Nézd meg ezt a javaslatot a Loomio-n
-    create_proposal:
-      intro: Új javaslatot hoztak létre egy Loomio csoportodban.
-      closes_in: Lezárul
-      subject: 'Új javaslat: %{which}'
     daily_activity:
       heading: A Loomio tevékenységed
       intro: Megmutatjuk, mi történt a Loomio csoportjaidban az elmúlt 24 órában
@@ -38,20 +33,6 @@ hu:
       intro: "%{name} (%{email}) hozzáférést kért egy Loomio csoportodhoz."
       subject: "%{who} kérte hogy csatlakozhasson a %{which_group} csoporthoz"
       view_group: Jóváhagyhatod vagy elvetheted a kérelmet itt.
-    new_motion_created:
-      subject: 'Javaslat: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: Ez a javaslat lezárult.
-      specify_outcome_and_notify_group: Készíts egy összegzést és küldd ki a tagoknak!
-      specify_outcome_and_notify_group_html: Készíts egy összegzést és küldd ki a tagoknak!
-      subject: A javaslat lezárult - %{which}
-    proposal_closing_soon:
-      closes_on: Lezáródik
-      closes_at: Lezáródik
-      closes_in: Lezárul
-      subject: 'Lezáródik 24 órán belül: %{proposal_title}'
-      headline: "%{author} javaslata a %{group} csoportban hamarosan lezáródik:"
-      summary: Összefoglalás
     thread_mailer:
       footer_text: 'Közvetlen válasz erre a levélre vagy megnézem itt %{hostname}:'
       reply_or_view_online_html: 'Közvetlen válasz erre az emailre vagy  <a href=''%{url}''>nézd meg ezen: %{hostname}</a>.'
@@ -61,11 +42,6 @@ hu:
       turn_on_notifications_text: 'Emailek bekapcsolása a további aktivitások jelzéséhez ebben a vitában: %{url}'
       change_email_preferences_html: Változtasd meg <a href='%{email_preferences_url}'>email beállításaidat</a> a leíratkozáshoz ezekről a levelekről.
       change_preferences: 'E-mail beállítások megváltoztatása:'
-      motion_closing_soon: '24 órán belül lezáródó javaslat:'
-      proposal_closed: 'A javaslat lezárva:'
-      specify_outcome_html: A javaslatod lezárult. <a href='%{link}'>Készíts egy összegzést</a> hogy mindenki megtudja az eredményt.
-      specify_outcome: 'A javaslatod lezárult. Készíts egy összegzést hogy mindenki megtudja az eredményt:'
-      you_agreed: Te %{past_tense_position}
   footer:
     about: Rólunk
     blog: Blog

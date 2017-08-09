@@ -10,11 +10,6 @@ km:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text} </a> ដើម្បីមិនជាវឬការផ្លាស់ប្តូរចំណង់ចំណូលចិត្តអ៊ីម៉ែលរបស់អ្នក។"
     view_comment: សូមចុចនៅទីនេះ ដើម្បីមើលសេចក្ដីអធិប្បាយនៅលើ Loomio នេះ
     view_discussion: សូមចុចនៅទីនេះដើម្បីមើលការពិភាក្សារនេះ
-    view_proposal: មើលសំណើរនេះនៅលើ Loomio
-    create_proposal:
-      intro: សំណើរថ្មីមួយត្រូវបានបង្កើតឡើងនៅក្នុងក្រុម Loomio ដែលអ្នកជាកម្មសិទ្ធិរបស់។
-      closes_in: បិទខាងក្នុង
-      subject: 'សំណើថ្មី:%{which} '
     daily_activity:
       heading: 'សកម្មភាព Loomio របស់អ្នក '
       intro: បង្ហាញអ្នកពីអ្វីដែរបានកើតឡើងនៅក្នុងក្រុម Loomio របស់អ្នកនៅក្នុង24ម៉ោងចុងក្រោយ
@@ -23,16 +18,6 @@ km:
       intro: "%{name} (%{email}) បានស្នើការចូលដំណើការទៅមួយនៃក្រុម Loomio​ របស់អ្នក "
       subject: "%{who}បានស្នើឲ្យចូលរួម%{which_group} "
       view_group: អ្នកអាចអនុម័ត្តឬទុកសំណើរនៅទីនេះ
-    proposal_closed:
-      specify_outcome_and_notify_group: បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!
-      specify_outcome_and_notify_group_html: បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!
-      subject: 'សំណើបានបិទ -%{which} '
-    proposal_closing_soon:
-      closes_on: បិទនៅលើ​
-      closes_at: បិទនៅ
-      closes_in: បិទខាងក្នុង
-      headline: "%{author}របស់សំណើរក្នុង%{group}ត្រូវបានបិទក្នុងពេលឆាប់ៗ"
-      summary: សេចក្ដីសង្ខេប
   footer:
     about: អំពី
     blog: កំណត់ហេតុបណ្ដាញ

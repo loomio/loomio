@@ -308,12 +308,6 @@ it:
     heading: Posizioni
     no_votes_yet: Ancora nessuno/a ha espresso il suo voto su questa proposta.
     change_your_vote: Cambia la tua posizione.
-  undecided_panel:
-    aria_label: 'Indecisi'
-    show: Mostra
-    remind: Ricorda
-    undecided: indecisi
-    hide_undecided: Nascondi indecisi
   proposal_pie_chart:
     participation_statement: '{{percentage}}% dei votanti ha espresso la propria posizione ({{number}}/{{total}})'
   close_proposal_form:
@@ -776,7 +770,6 @@ it:
     message_label: 'Messaggio'
     message_placeholder: 'Il tuo messaggio...'
     send_message: 'Invia Messaggio'
-    new_contact_message: 'Grazie del messaggio: ti contatteremo appena possibile!'
   help_page:
     coordinating: 'Coordinazione del tuo gruppo Loomio'
     coordinating_details: |

@@ -26,8 +26,6 @@ ca:
       invitation_text_html: "us ha convidat a unir-vos al seu grup"
       link_help: "Cliqueu a l'enllaç de sota per acceptar la invitació:"
       accept_invitation: "Accepta la invitació"
-    resend_to_join_group:
-      subject: "%{member} encara està esperant que us uniu a %{group_name} a Loomio"
     to_start_group:
       subject: "Configureu el nou grup de Loomio: %{group_name}"
       hi: "Hola %{name},"
@@ -46,13 +44,8 @@ ca:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
     view_comment: Feu clic aquí per veure el comentari a Loomio
     view_discussion: Fes click aquí per veure aquesta discussió
-    view_proposal: Veure aquesta proposta a Loomio
     create_discussion:
       intro: "%{who} ha creat una discussió:"
-    create_proposal:
-      intro: S'ha creat una nova proposta a un grup de Loomio al què pertanys.
-      closes_in: Tanca en
-      subject: 'Nova proposta: %{which}'
     daily_activity:
       heading: La teva Activitat a Loomio
       intro: Mostrant el què ha passat als teus grups de loomio les darreres 24 hores
@@ -70,36 +63,8 @@ ca:
       view_group: Pots aprovar o denegar la sol·licitud aquí
     mentioned:
       context: "%{author_name} us ha mencionat en la discussió %{discussion_title}"
-    new_motion_created:
-      subject: 'Proposta: %{proposal_title}'
-      context: "s'ha creat una proposta a %{group_full_name}:"
-    proposal_closed:
-      proposal_has_closed: La proposta s'ha tancat.
-      specify_outcome_and_notify_group: Detalla un resultat i envia'l al grup!
-      specify_outcome_and_notify_group_html: Detalla un resultat i envia'l al grup!
-      subject: Proposta tancada - %{which}
-    proposal_outcome:
-      subject: 'Resultat de la proposta: %{motion}'
-    proposal_closing_soon:
-      closes_on: Tanca el
-      closes_at: Tanca a
-      closes_in: Tanca en
-      subject: 'Es tancarà en 24 hores: %{proposal_title}'
-      headline: "La proposta de %{author} a %{group} es tancarà aviat:"
-      summary: Sumari
     thread_mailer:
       change_preferences: 'Canvia les preferències de correu electrònic'
-      motion_closing_soon: 'La proposta es tancarà en 24 hores:'
-      proposal_closed: 'Proposta tancada:'
-      outcome_created: "%{who} ha compartit el resultat de la proposta:"
-      you_agreed: '%{past_tense_position}'
-    analytics:
-      heart: "❤ de l'equip de Loomio"
-      user_table:
-        motions_created: "Propostes"
-        discussions_created: "Discussions"
-        comments_created: "Comentaris"
-        votes_created: "Vots"
   footer:
     about: Quant a
     blog: Bloc

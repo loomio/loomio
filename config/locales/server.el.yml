@@ -17,11 +17,6 @@ el:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> για να διαγραφείτε ή για να αλλάξετε τις ρυθμίσεις ηλεκτρονικού ταχυδρομείου."
     view_comment: Πατήστε εδώ για να δείτε το σχόλιο στο Loomio
     view_discussion: Πατήστε εδώ για να δείτε αυτή την συζήτηση
-    view_proposal: Εμφάνιση αυτής της πρότασης στο Loomio
-    create_proposal:
-      intro: Μια νέα πρόταση δημιουργήθηκε σε ομάδα του Loomio που ανήκετε.
-      closes_in: Κλείνει σε
-      subject: 'Νέα πρόταση: %{which}'
     daily_activity:
       heading: Η δραστηριότητα σας στο Loomio
       intro: Σας δείχνει τι συμβαίνει στις ομάδες σας στο Loomio τις τελευταίες 24 ώρες
@@ -38,20 +33,6 @@ el:
       intro: "Ο/Η %{name} (%{email}) έχει ζητήσει πρόσβαση σε μία από τις Loomio ομάδες σας."
       subject: "%{who} έχει αιτηθεί να συμμετάσχει στην ομάδα %{which_group}"
       view_group: Μπορείς να εγκρίνεις ή να απορρίψεις την αίτηση εδώ
-    new_motion_created:
-      subject: 'Πρόταση: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: Η πρόταση έκλεισε.
-      specify_outcome_and_notify_group: Δημιουργήστε ένα αποτέλεσμα και στείλτε το στην ομάδα σας!
-      specify_outcome_and_notify_group_html: Δημιουργήστε ένα αποτέλεσμα και στείλτε το στην ομάδα σας!
-      subject: Πρόταση έκλεισε  - %{which}
-    proposal_closing_soon:
-      closes_on: Κλείνει στις
-      closes_at: Κλείνει στις
-      closes_in: Κλείνει σε
-      subject: 'Κλείνει σε 24 ώρες: %{proposal_title}'
-      headline: "Η πρόταση του/της %{author} στο %{group} κλείνει σύντομα:"
-      summary: Σύνοψη
     thread_mailer:
       footer_text: 'Απαντήστε σε αυτό το ηλεκτρονικό μήνυμα απευθείας ή δείτε το στο:
 
@@ -63,11 +44,6 @@ el:
       turn_on_notifications_text: 'Ενεργοποιήστε το ηλεκτρονικό ταχυδρομείο για να λάβετε περαιτέρω δραστηριότητα σε αυτή τη συζήτηση.: %{url}'
       change_email_preferences_html: Αλλάξτε <a href='%{email_preferences_url}'>τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας</a> για να διαγραφείτε από αυτά τα ηλεκτρονικά μηνύματα.
       change_preferences: 'Αλλάξτε τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας:'
-      motion_closing_soon: 'Η πρόταση κλείνει σε 24 ώρες:'
-      proposal_closed: 'Η πρόταση έκλεισε:'
-      specify_outcome_html: Η πρόταση σας έκλεισε. <a href='%{link}'>Καθορίστε ένα αποτέλεσμα</a> για να γνωρίζουν όλοι ποιο είναι το αποτέλεσμα.
-      specify_outcome: 'Η πρόταση σας έκλεισε. Καθορίστε ένα αποτέλεσμα για να γνωρίζουν όλοι ποιο είναι το αποτέλεσμα.'
-      you_agreed: Εσείς %{past_tense_position}
   footer:
     about: Σχετικά
     blog: Ιστολόγιο

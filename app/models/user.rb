@@ -132,6 +132,8 @@ class User < ActiveRecord::Base
     .where('memberships.group_id': group.id)
   }
 
+  define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
+
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
       existing.update(access_token: identity.access_token)

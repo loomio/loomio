@@ -155,9 +155,6 @@ ar:
     heading: مواقف الأعضاء
     no_votes_yet: لم يصوّت أحد على هذا المقترح بعد.
     change_your_vote: قم بتغيير موقفك.
-  undecided_panel:
-    aria_label: 'الأعضاء الذين لم يقرروا بعد'
-    hide_undecided: قم بإخفاء الأعضاء الذين لم يقرروا بعد
   proposal_pie_chart:
     participation_statement: '{{percentage}}% من الأعضاء قاموا بتقرير موقفهم ({{number}}/{{total}})'
   close_proposal_form:
@@ -586,7 +583,6 @@ ar:
     message_label: 'رسالتك'
     message_placeholder: 'ادخل رسالتك...'
     send_message: 'أرسل الرسالة'
-    new_contact_message: 'شكرا لرسالتك؛ سنقوم بالتواصل معك قريباً!'
   help_page:
     coordinating: 'قم بتنسيق مجموعة لوميو الخاصة بك'
     coordinating_details: |

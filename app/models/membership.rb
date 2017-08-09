@@ -7,11 +7,7 @@ class Membership < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: :group_id
 
   belongs_to :group
-  update_counter_cache :group, :memberships_count
-  update_counter_cache :group, :admin_memberships_count
-  update_counter_cache :group, :announcement_recipients_count
-
-  belongs_to :user, counter_cache: true
+  belongs_to :user
   belongs_to :inviter, class_name: 'User'
   belongs_to :invitation
   has_many :events, as: :eventable, dependent: :destroy
@@ -45,18 +41,15 @@ class Membership < ActiveRecord::Base
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
   delegate :token, to: :invitation, allow_nil: true
 
+  update_counter_cache :group, :memberships_count
+  update_counter_cache :group, :admin_memberships_count
+  update_counter_cache :group, :announcement_recipients_count
+  update_counter_cache :group, :undecided_user_count
+  update_counter_cache :user,  :memberships_count
+
   before_create :set_volume
 
   after_destroy :leave_subgroups_of_hidden_parents
-
-  def suspend!
-    update_attribute(:is_suspended, true)
-    subgroup_memberships.each(&:suspend!)
-  end
-
-  def subgroup_memberships
-    Membership.where(group_id: group.subgroup_ids, user_id: user_id)
-  end
 
   def make_admin!
     update_attribute(:admin, true)
@@ -66,19 +59,11 @@ class Membership < ActiveRecord::Base
     update_attribute(:admin, false)
   end
 
-  def group_has_multiple_admins?
-    group.admins.count > 1
-  end
-
-  def user_name_or_email
-    return user_name ? user_name : user_email
-  end
-
   def discussion_readers
     DiscussionReader.
       joins(:discussion).
-      where('discussions.group_id = ?', group_id).
-      where('discussion_readers.user_id = ?', user_id)
+      where("discussions.group_id": group_id).
+      where("discussion_readers.user_id": user_id)
   end
 
   private

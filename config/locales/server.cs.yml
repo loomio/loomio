@@ -49,11 +49,6 @@ cs:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, abyste se odhlásil(a) nebo změnil(a) nastavení emailu."
     view_comment: Klikněte sem pro zobrazení komentáře na Loomio
     view_discussion: Klikněte sem pro zobrazení této diskuze
-    view_proposal: Zobrazte si tento návrh na Loomio
-    create_proposal:
-      intro: Nový návrh byl vytvořen v Loomio skupině, ke které patříte
-      closes_in: Uzavře se
-      subject: 'Nový návrh: %{which}'
     daily_activity:
       heading: Vaše aktivita na Loomiu
       intro: Zobrazuje se, co se dělo ve vašich Loomio skupinách během posledních 24 hodin
@@ -79,31 +74,8 @@ cs:
       button_text: Zobrazit žádost
     mentioned:
       context_html: "zmínil se o vás během diskuse"
-    new_motion_created:
-      subject: 'Návrh: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: Návrh je uzavřen.
-      specify_outcome_and_notify_group: Vytvořte výsledek a pošlete ho své skupině!
-      specify_outcome_and_notify_group_html: Vytvořte výsledek a pošlete ho své skupině!
-      subject: Návrh uzavřen - %{which}
-    proposal_closing_soon:
-      closes_on: Uzavírá se
-      closes_at: Uzavírá se
-      closes_in: Uzavře se
-      subject: 'Uzavřeno během 24 hodin: %{proposal_title}'
-      headline: "návrh %{author} v %{group} se brzy uzavírá:"
-      summary: Shrnutí
     thread_mailer:
       change_preferences: 'Změna nastavení e-mailu:'
-      new_motion: '%{who} vytvořil návrh:'
-      motion_closing_soon: 'Návrhy uzavřené během 24 hodin:'
-      proposal_closed: 'Uzavření návrhu:'
-    analytics:
-      user_table:
-        motions_created: "Návrhy"
-        discussions_created: "Diskuze"
-        comments_created: "Komentáře"
-        votes_created: "Hlasování"
   footer:
     about: O nás
     blog: Blog

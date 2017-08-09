@@ -15,11 +15,6 @@ ja:
     unsubscribe_html: "購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>"
     view_comment: Loomioのコメントを見るにはここをクリックしてください
     view_discussion: このディスカッションを見るにはここをクリックしてください
-    view_proposal: Loomioでこの提案を見る
-    create_proposal:
-      intro: あなたのいるLoomioグループで新しい提案が作成されました
-      closes_in: 後に締め切られます
-      subject: '新しい提案： %{which}'
     daily_activity:
       heading: あなたのLoomioイベント
       intro: 過去24時間にあなたのLoomioグループで起こったことを表示
@@ -28,16 +23,6 @@ ja:
       intro: "%{name}  (%{email}) はあなたのLoomioグループのうち一つのグループへのアクセスを要求しました"
       subject: " %{who}  が %{which_group} に参加するようにお願いしています"
       view_group: ここでリクエストを承認または拒否できます
-    proposal_closed:
-      specify_outcome_and_notify_group: 結論を出してあなたのグループに送りましょう！
-      specify_outcome_and_notify_group_html: 結論を出してあなたのグループに送りましょう！
-      subject: 提案は締め切られました - %{which}
-    proposal_closing_soon:
-      closes_on: 締め切り日：
-      closes_at: 締め切り時間：
-      closes_in: 後に締め切られます
-      headline: " %{group} の %{author} の提案はもうすぐ締め切られます："
-      summary: 要約
   footer:
     about: 会社情報
     blog: ブログ
