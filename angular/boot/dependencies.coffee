@@ -1,6 +1,6 @@
 if (bowser.safari and bowser.version < 9) or
    (bowser.ie and bowser.version < 10)
-  window.location.href = "/browser_not_supported"
+  window.location.href = "/417.html"
 
 angular.module('loomioApp', [
   'ngNewRouter',
