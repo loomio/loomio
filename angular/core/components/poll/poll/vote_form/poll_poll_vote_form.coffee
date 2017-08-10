@@ -3,11 +3,10 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
   templateUrl: 'generated/components/poll/poll/vote_form/poll_poll_vote_form.html'
   controller: ($scope, PollService, MentionService, KeyEventService) ->
     $scope.vars = {}
-
-    multipleChoice = $scope.stance.poll().multipleChoice
+    $scope.pollOptionIdsChecked = {}
 
     initForm = do ->
-      if multipleChoice
+      if $scope.stance.poll().multipleChoice
         $scope.pollOptionIdsChecked = _.fromPairs _.map $scope.stance.stanceChoices(), (choice) ->
           [choice.pollOptionId, true]
       else
@@ -16,7 +15,7 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
     $scope.submit = PollService.submitStance $scope, $scope.stance,
       prepareFn: ->
         $scope.$emit 'processing'
-        selectedOptionIds = if multipleChoice
+        selectedOptionIds = if $scope.stance.poll().multipleChoice
           _.compact(_.map($scope.pollOptionIdsChecked, (v,k) -> parseInt(k) if v))
         else
           [$scope.vars.pollOptionId]

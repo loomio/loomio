@@ -13,11 +13,6 @@ describe DiscussionsController do
       expect(assigns(:discussion)).to eq discussion
     end
 
-    it 'displays an xml error when discussion is not found' do
-      get :show, key: :notakey, format: :xml
-      expect(response.status).to eq 404
-    end
-
     it 'sets metadata for public discussions' do
       get :show, key: discussion.key
       expect(assigns(:metadata)[:title]).to eq discussion.title
