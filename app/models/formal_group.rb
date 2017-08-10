@@ -14,6 +14,7 @@ class FormalGroup < Group
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
+  scope :in_organisation, ->(group) { where(id: group.id_and_subgroup_ids) }
 
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 

@@ -1,11 +1,9 @@
 !!!
 %html{locale: I18n.locale}
   %head
-    - title = @title ? @title : "Loomio | Collaborative Decision-Making"
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
-    %title= title
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
+    %title= @title || "Loomio | Collaborative Decision-Making"
     = stylesheet_link_tag "application"
     = csrf_meta_tags
     = render 'application/social_metadata', description: @meta_description, title: @meta_title

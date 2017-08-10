@@ -2,6 +2,7 @@ class Membership < ActiveRecord::Base
   include HasVolume
   include HasTimeframe
   include HasExperiences
+  include UsesOrganisationScope
 
   validates_presence_of :group, :user, :volume
   validates_uniqueness_of :user_id, scope: :group_id

@@ -16,7 +16,7 @@ en:
 
   user:
     error:
-      recaptcha: "We weren't able to verify that you're not a robot 🤖. Please try again!"
+      recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
 
   attachment:
     error:

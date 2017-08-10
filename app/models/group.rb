@@ -47,16 +47,12 @@ class Group < ActiveRecord::Base
 
   def add_member!(user, invitation: nil, inviter: nil)
     save! unless persisted?
-    # TODO: account for archived memberships properly
-    if existing = self.memberships.find_by(user: user)
-      existing
-    else
-      memberships.create(
-        user:       user,
-        invitation: invitation,
-        inviter:    inviter || invitation&.inviter
-      )
+    self.memberships.find_or_create_by!(user: user) do |m|
+      m.invitation = invitation
+      m.inviter = inviter || invitation&.inviter
     end
+  rescue ActiveRecord::RecordNotUnique
+    retry
   end
 
   def add_members!(users, inviter: nil)

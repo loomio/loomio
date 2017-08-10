@@ -6,6 +6,8 @@ class Invitation < ActiveRecord::Base
   class TooManyPending < StandardError; end
   class AllInvitesAreMembers < StandardError; end
 
+  include UsesOrganisationScope
+
   extend FriendlyId
   friendly_id :token
   belongs_to :inviter, class_name: User
