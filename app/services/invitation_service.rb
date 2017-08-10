@@ -53,7 +53,7 @@ class InvitationService
   end
 
   def self.redeem(invitation, user)
-    return true if invitation.group.members.include?(user) # feedback appreciated
+    return true if invitation.group.members.include?(user)
     raise Invitation::InvitationCancelled   if invitation.cancelled?
     raise Invitation::InvitationAlreadyUsed if invitation.accepted?
     invitation.accepted_at = DateTime.now   if invitation.single_use?
