@@ -83,9 +83,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasContext: ->
       !!@description
 
-    isImportant: ->
-      @pinned or @hasDecision()
-
     unreadActivityCount: ->
       @salientItemsCount - @readSalientItemsCount
 

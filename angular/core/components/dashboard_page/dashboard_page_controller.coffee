@@ -1,79 +1,57 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig, $routeParams, $mdMedia, ModalService, GroupModal) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, RecordLoader, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig, $routeParams, $mdMedia, ModalService, GroupModal) ->
 
   $rootScope.$broadcast('currentComponent', { page: 'dashboardPage', filter: $routeParams.filter })
   $rootScope.$broadcast('setTitle', 'Recent')
   $rootScope.$broadcast('analyticsClearGroup')
 
-  @userHasMuted    = -> Session.user().hasExperienced("mutingThread")
-
-  @perPage = 50
-  @loaded =
-    show_all:           0
-    show_muted:         0
-
-  @views =
-    recent: {}
-    groups: {}
-
-  @loading = -> !AppConfig.dashboardLoaded
-
+  @initialLoad = true
   @timeframes =
     today:     { from: '1 second ago', to: '-10 year ago' } # into the future!
     yesterday: { from: '1 day ago',    to: '1 second ago' }
     thisweek:  { from: '1 week ago',   to: '1 day ago' }
     thismonth: { from: '1 month ago',  to: '1 week ago' }
     older:     { from: '3 month ago',  to: '1 month ago' }
-  @timeframeNames = _.map @timeframes, (timeframe, name) -> name
 
-  @loadingViewNames = ['proposals', 'today', 'yesterday']
-  @recentViewNames = ['pinned', 'proposals', 'today', 'yesterday', 'thisweek', 'thismonth', 'older']
+  @views = {}
+  @viewNames = ['proposals'].concat(_.keys(@timeframes))
+  @loadingViewNames = _.take @viewNames, 3
 
-  @groupThreadLimit = 5
-  @groups = -> Session.user().parentGroups()
-  @moreForThisGroup = (group) -> @views.groups[group.key].length() > @groupThreadLimit
-
-  @displayByGroup = ->
-    _.contains ['show_muted'], @filter
-
-  @updateQueries = =>
-    AppConfig.dashboardLoaded = true if @loaded[@filter] > 0
-    @currentBaseQuery = ThreadQueryService.filterQuery(['only_threads_in_my_groups', @filter])
-    if @displayByGroup()
-      _.each @groups(), (group) =>
-        @views.groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter, queryType: 'all' })
-    else
-      @views.recent.pinned    = ThreadQueryService.filterQuery ['only_threads_in_my_groups', 'hide_muted', 'show_pinned', @filter], queryType: 'important'
-      @views.recent.proposals = ThreadQueryService.filterQuery ['only_threads_in_my_groups', 'hide_muted', 'hide_pinned', 'show_proposals', @filter], queryType: 'important'
-
-      _.each @timeframeNames, (name) =>
-        @views.recent[name] = ThreadQueryService.timeframeQuery
-          name: name
-          filter: ['only_threads_in_my_groups', 'show_not_muted', 'hide_pinned', @filter]
-          timeframe: @timeframes[name]
-
-  @loadMore = =>
-    from = @loaded[@filter]
-    @loaded[@filter] = @loaded[@filter] + @perPage
-
-    Records.discussions.fetchDashboard(
+  @filter = $routeParams.filter || 'hide_muted'
+  @loader = new RecordLoader
+    collection: 'discussions'
+    action: 'dashboard'
+    params:
       filter: @filter
-      from:   from
-      per:    @perPage).then @updateQueries
-  LoadingService.applyLoadingFunction @, 'loadMore'
+      per: 50
+  @loader.fetchRecords().then => @initialLoad = false
 
-  @setFilter = (filter = 'show_all') =>
-    @filter = filter
-    @updateQueries()
-    @loadMore() if @loaded[@filter] == 0
-  @setFilter($routeParams.filter || 'show_all')
+  @loadMore = ->
+    @loader.fetchRecords().then =>
+      @initialLoad = false
+      @views.proposals = ThreadQueryService.queryFor(filters: [
+        'only_threads_in_my_groups',
+        'show_proposals',
+        @filter
+      ])
+
+      _.each _.keys(@timeframes), (name) =>
+        @views[name] = ThreadQueryService.queryFor
+          name: name
+          filters: ['only_threads_in_my_groups', 'hide_proposals', @filter]
+          from: @timeframes[name].from
+          to:   @timeframes[name].to
+  @loadMore()
 
   @noGroups = ->
     !Session.user().hasAnyGroups()
 
+  @noThreads = ->
+    _.all @views, (view) -> !view.any()
+
   @startGroup = ->
     ModalService.open GroupModal, group: -> Records.groups.build()
 
-  $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
+  @userHasMuted = -> Session.user().hasExperienced("mutingThread")
 
   @showLargeImage = -> $mdMedia("gt-sm")
 
