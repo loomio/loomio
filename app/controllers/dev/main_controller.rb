@@ -133,6 +133,12 @@ class Dev::MainController < Dev::BaseController
     redirect_to group_url(create_group)
   end
 
+  def setup_group_with_pinned_discussion
+    sign_in patrick
+    create_discussion.update(pinned: true)
+    redirect_to group_url(create_discussion.group)
+  end
+
   def setup_subgroup
     create_subgroup.add_member! jennifer
     sign_in jennifer

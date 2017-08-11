@@ -2,6 +2,10 @@
   @include lmoRow;
 }
 
+.inbox-page .thread-preview__pin {
+  display: none;
+}
+
 .inbox-page__group {
   margin-bottom: $cardPaddingSize * 2;
 }

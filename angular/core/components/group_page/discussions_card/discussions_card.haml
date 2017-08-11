@@ -7,13 +7,13 @@
   .discussions-card__placeholder
     .lmo-placeholder{translate: "group_page.discussions_placeholder", ng-if: "showThreadsPlaceholder()" }
 
-  .discussions-card__list--empty{ng-if: "!loadMoreExecuting && !discussions.any()"}
+  .discussions-card__list--empty{ng-if: "!loadMoreExecuting && !(discussions.any() || pinned.any())"}
     .discussions-card__list-empty-reason{translate: "group_page.thread_list.empty.{{whyImEmpty()}}"}
     .discussions-card__how-to-gain-access{ng-if: "howToGainAccess()"}
       %span{translate: "group_page.thread_list.empty.{{howToGainAccess()}}"}
 
   .discussions-card__list
-    %section.thread-preview-collection__container{ng-if: "discussions.any()"}
+    %section.thread-preview-collection__container{ng-if: "discussions.any() || pinned.any()"}
       %thread_preview_collection.thread-previews-container--pinned{query: "pinned", limit: "threadLimit"}
       %thread_preview_collection.thread-previews-container--unpinned{query: "discussions", limit: "threadLimit"}
     .lmo-show-more{ng-if: "canLoadMoreDiscussions()"}

@@ -4,7 +4,9 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   $rootScope.$broadcast('setTitle', 'Recent')
   $rootScope.$broadcast('analyticsClearGroup')
 
-  @initialLoad = true
+  AppConfig.dashboardLoaded = false
+  @dashboardLoaded = -> AppConfig.dashboardLoaded
+
   @timeframes =
     today:     { from: '1 second ago', to: '-10 year ago' } # into the future!
     yesterday: { from: '1 day ago',    to: '1 second ago' }
@@ -27,7 +29,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
 
   @loadMore = ->
     @loader.fetchRecords().then =>
-      @initialLoad = false
+      AppConfig.dashboardLoaded = true
       @views.proposals = ThreadQueryService.queryFor(filters: [
         'only_threads_in_my_groups',
         'show_proposals',
