@@ -1611,7 +1611,7 @@ en:
     discussion_context_edited:     "<strong>{{author}}</strong> edited the thread context"
     discussion_attachments_edited: "<strong>{{author}}</strong> edited the thread's attachments"
     discussion_made_public:        "<strong>{{author}}</strong> made the thread public"
-    discussion_made_private:       "<strong>{{author}}</strong> made the thread public"
+    discussion_made_private:       "<strong>{{author}}</strong> made the thread private"
     discussion_edited:             "<strong>{{author}}</strong> edited the thread"
     discussion_moved:              "<strong>{{author}}</strong> moved the thread from <strong>{{title}}</strong>"
     new_comment:                   "<strong>{{author}}</strong>"

@@ -20,11 +20,12 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
         'new_comment'
 
     discussionEditedKey: (event) ->
-      changes = _.keys(Records.versions.find(event.eventable.id).changes)
+      version = Records.versions.find(event.eventable.id)
+      changes = _.keys(version.changes)
       if _.contains(changes, 'title')
         'discussion_title_edited'
       else if _.contains(changes, 'private')
-        if changes.private[1] then 'discussion_made_private' else 'discussion_made_public'
+        if version.changes.private[1] then 'discussion_made_private' else 'discussion_made_public'
       else if _.contains(changes, 'description')
         'discussion_context_edited'
       else if _.contains(changes, 'attachment_ids')
