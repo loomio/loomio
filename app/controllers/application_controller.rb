@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def respond_with_error(message: "", status: 400)
-    @error_description ||= message
+    @error_description ||= t(message)
     render "errors/#{status}", layout: 'error', status: status
   end
 
