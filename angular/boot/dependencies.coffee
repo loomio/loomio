@@ -15,7 +15,6 @@ angular.module('loomioApp', [
   'duScroll',
   'angular-clipboard',
   'checklist-model',
-  'monospaced.elastic',
   'angularMoment',
   'offClick',
   'ngMaterial',

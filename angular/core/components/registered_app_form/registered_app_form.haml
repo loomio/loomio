@@ -24,7 +24,7 @@
 
           %md-input-container.md-block
             %label{for: "application-redirect-uri", translate: "registered_app_form.redirect_uri_label"}
-            %textarea.lmo-textarea{msd-elastic: "true", ng-model: "application.redirectUri", ng-required: "true", placeholder: "{{ 'registered_app_form.redirect_uri_placeholder' | translate }}"}
+            %textarea.lmo-textarea{ng-model: "application.redirectUri", ng-required: "true", placeholder: "{{ 'registered_app_form.redirect_uri_placeholder' | translate }}"}
             .lmo-hint-text{translate: "registered_app_form.redirect_uri_note"}
             %validation_errors{subject: "application", field: "redirectUri"}
 
