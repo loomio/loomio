@@ -8,38 +8,28 @@
   .md-dialog-content
     .thread-helptext{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew()"}
 
-    .lmo-form-group{ng-show: "showGroupSelect"}
+    %md-input-container.md-block{ng-show: "showGroupSelect"}
       %label{for: "discussion-group-field", translate: "discussion_form.group_label"}
-      %select.discussion-form__group-select.form-control#discussion-group-field{ng-model: "discussion.groupId", ng-required: "true", ng-options: "group.id as group.fullName for group in availableGroups() | orderBy: 'fullName'", ng-change: "restoreRemoteDraft(); updatePrivacy()"}
-        %option{value: "", translate: "discussion_form.group_placeholder"}
+      %md-select.discussion-form__group-select#discussion-group-field{ng-model: "discussion.groupId", ng-required: "true", ng-change: "restoreRemoteDraft(); updatePrivacy()"}
+        %md-option{value: "", translate: "discussion_form.group_placeholder"}
+        %md-option{ng-value: "group.id", ng-repeat: "group in availableGroups() | orderBy: 'fullName' track by group.id"}
+          {{group.fullName}}
 
-    .discussion-group-selected{ng_if: "discussion.groupId"}
-      .lmo-form-group
-        %label{for: "discussion-title", translate: "discussion_form.title_label"}
-        .lmo-relative
-          %input.discussion-form__title-input.form-control.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-required: "true", maxlength: "255"}
-        %validation_errors{subject: "discussion", field: "title"}
+    %md-input-container.md-block{ng-if: "discussion.groupId"}
+      %label{for: "discussion-title", translate: "discussion_form.title_label"}
+      .lmo-relative
+        %input.discussion-form__title-input.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-required: "true", maxlength: "255"}
+      %validation_errors{subject: "discussion", field: "title"}
 
-      .lmo-form-group
-        %label{for: "discussion-context", translate: "discussion_form.context_label"}
-        %outlet{name: "before-discussion-form-textarea", model: "discussion"}
-        .lmo-relative.lmo-textarea-wrapper
-          %textarea.lmo-textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: "true", ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
-          %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
-        %outlet{name: "after-discussion-form-textarea", model: "discussion"}
+    %md-input-container.md-block
+      %label{for: "discussion-context", translate: "discussion_form.context_label"}
+      %outlet{name: "before-discussion-form-textarea", model: "discussion"}
+      %textarea.lmo-relative.lmo-textarea.discussion-form__description-input.lmo-primary-form-input#discussion-context{msd-elastic: "true", ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
+        %em oji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
+      %outlet{name: "after-discussion-form-textarea", model: "discussion"}
 
-      .discussion-form__attachments
-        .lmo-md-actions
-          %a.discussion-form__formatting-help.md-button.md-accent{lmo-href: "/markdown", tabindex: 0, target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
-            %span{translate: "common.formatting_help.label"}
-          %md_attachment_form.discussion-form__attachment-form{model: "discussion", ng-if: "discussion.groupId", show-label: "true"}
-
-        %validation_errors.discussion-form__attachment-errors{subject: "discussion", field: "file"}
-        %label.lmo-form-labelled-input
-          %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in discussion.newAttachments() | orderBy: 'id' track by attachment.id"}
-        .clearfix
-
-      .lmo-form-group{ng-show: "showPrivacyForm()"}
+    .discussion-form__privacy{ng-if: "showPrivacyForm()"}
+      %md-input-container.md-block
         %label.lmo-form-labelled-input.discussion-form__public
           %input{type: "radio", ng-model: "discussion.private", ng-value: "false"}
           %span
@@ -48,6 +38,7 @@
             %span.seperator
             %span{translate: "discussion_form.privacy_public"}
 
+      %md-input-container.md-block
         %label.lmo-form-labelled-input.discussion-form__private
           %input{type: "radio", ng-model: "discussion.private", ng-value: "true"}
           %span
@@ -56,13 +47,13 @@
             %span.seperator
             %span{ng-bind-html: "privacyPrivateDescription()"}
 
-      .privacy-notice{ng-show: "!showPrivacyForm()"}
-        %label.lmo-form-labelled-input{ng_hide: "discussion.private"}
-          %span
-            %i.fa.fa-globe>
-            %strong{translate: "common.privacy.public"}
-            %span.seperator
-            %span{translate: "discussion_form.privacy_public"}
+    .privacy-notice{ng-show: "!showPrivacyForm()"}
+      %label.lmo-form-labelled-input{ng_hide: "discussion.private"}
+        %span
+          %i.fa.fa-globe>
+          %strong{translate: "common.privacy.public"}
+          %span.seperator
+          %span{translate: "discussion_form.privacy_public"}
 
         %label.lmo-form-labelled-input{ng-show: "discussion.private"}
           %span
@@ -79,6 +70,10 @@
           %span.seperator{ng-if: "discussion.makeAnnouncement"}
           %span{translate: "discussion_form.notified_count", ng-if: "discussion.makeAnnouncement", translate-values: "{count: discussion.group().announcementRecipientsCount}"}
 
-    .md-dialog-actions.lmo-md-action
+    .lmo-blank
+      %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in discussion.newAttachments() | orderBy: 'id' track by attachment.id"}
+    .lmo-md-actions
+      %md-attachment-form.discussion-form__attachment-form{model: "discussion", ng-if: "discussion.groupId", show-label: "true"}
       %md-button.md-primary.md-raised.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "common.action.start", ng-if: "discussion.isNew()" }
       %md-button.md-primary.md-raised.discussion-form__update{type: "submit", ng-disabled: "submitIsDisabled", translate: "common.action.save", ng-if: "!discussion.isNew()" }
+    %validation_errors.discussion-form__attachment-errors{subject: "discussion", field: "file"}

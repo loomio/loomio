@@ -1,12 +1,19 @@
 // not used yet.. thinking this is where we put md modifer stuff.
 .lmo-md-actions {
-  @include displayFlex;
+  clear: both;
+  display: flex;
   justify-content: space-between;
 }
 
 .lmo-md-action {
-  @include displayFlex;
+  clear: both;
+  display: flex;
   justify-content: flex-end;
+}
+
+.md-button--no-h-margin {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 md-dialog {
