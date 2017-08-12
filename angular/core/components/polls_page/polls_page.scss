@@ -34,6 +34,16 @@
   margin-bottom: 16px;
 }
 
+.polls-page__search {
+  flex-grow: 1;
+  margin: 16px 0 -10px;
+  i {
+    position: absolute;
+    right: 0;
+    color: $grey-on-white;
+  }
+}
+
 @media (max-width: $small-max-px) {
   .polls-page__filters { flex-direction: column; }
   .polls-page__search { margin-bottom: 16px !important; }

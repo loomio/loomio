@@ -13,7 +13,7 @@
               = devise_error_messages!
             = f.hidden_field :reset_password_token
             = f.label :password, t(:'password_reset.new_password')
-            = f.password_field :password, class: "form-control"
+            = f.password_field :password
             = f.label :password_confirmation, t(:'password_reset.confirm_new_password')
-            = f.password_field :password_confirmation, class: "form-control"
-            = f.submit t(:'password_reset.change_my_password'), class: "btn btn-primary"
+            = f.password_field :password_confirmation
+            = f.submit t(:'password_reset.change_my_password')

@@ -12,8 +12,8 @@
               %p.error= t :invalid_email
             .padding
               = f.label :email, t(:email)
-              = f.email_field :email, class: "form-control"
-            = f.submit t(:send_password_reset), class: "btn btn-primary"
+              = f.email_field :email
+            = f.submit t(:send_password_reset)
       .row
         .col-md-6
           %p=t :'password_reset.reset_email_timeframe'
