@@ -1,8 +1,8 @@
 .lmo-one-column-layout
   %main.explore-page
     %h1.lmo-h1-medium{translate: "explore_page.header"}
-    .explore-page__search-field
-      %input.form-control#search-field{ng-model: "explorePage.query", ng-model-options: "{debounce: 600}", ng-change: "explorePage.search()", placeholder: "{{ 'explore_page.search_placeholder' | translate }}"}
+    %md-input-container.explore-page__search-field
+      %input#search-field{ng-model: "explorePage.query", ng-model-options: "{debounce: 600}", ng-change: "explorePage.search()", placeholder: "{{ 'explore_page.search_placeholder' | translate }}"}
       %i.fa.fa-lg.fa-fw.fa-search.explore-page__search-input-icon{ng-hide: "explorePage.query", aria-hidden: "true"}
       %loading{ng-show: "searchExecuting"}
     .explore-page__search-results{ng-show: "explorePage.showMessage()", translate: "{{explorePage.searchResultsMessage()}}", translate-values: "{resultCount: explorePage.resultsCount, searchTerm: explorePage.query}"}
