@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'commentForm', ->
+angular.module('loomioApp').directive 'commentForm', ($translate) ->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
@@ -7,6 +7,12 @@ angular.module('loomioApp').directive 'commentForm', ->
 
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
+
+    $scope.commentPlaceholder = ->
+      if $scope.comment.parentId
+        $translate.instant('comment_form.in_reply_to', name: $scope.comment.parent().authorName())
+      else
+        $translate.instant('comment_form.say_something')
 
     $scope.isLoggedIn = AbilityService.isLoggedIn
 
@@ -47,7 +53,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
       $scope.comment.parentAuthorName = parentComment.authorName()
-      ScrollService.scrollTo('.comment-form__comment-field')
+      ScrollService.scrollTo('.comment-form__comment-field', offset: 150)
 
     $scope.bodySelector = '.comment-form__comment-field'
     EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector

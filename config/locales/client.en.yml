@@ -245,12 +245,13 @@ en:
       replied: '{{name}} notified of reply'
       updated: 'Comment updated'
       destroyed: 'Comment deleted'
+    say_something: Say something...
     edit_comment: 'Edit comment'
     delete_comment: 'Delete comment'
     cancel_reply: 'Cancel Reply'
     confirm_delete_message: 'Are you sure you want to delete this comment?'
     confirm_delete: 'Delete comment'
-    in_reply_to: "In reply to <strong>{{name}}</strong>:"
+    in_reply_to: "In reply to {{name}}:"
     submit_button:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
