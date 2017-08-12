@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       discussion:         'discussions'
       poll:               'polls'
       outcome:            'outcomes'
+      version:            'versions'
       stance:             'stances'
       comment:            'comments'
       comment_vote:       'comments'
@@ -17,33 +18,15 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
 
     relationships: ->
       @belongsTo 'actor', from: 'users'
+      @belongsTo 'discussion'
       @belongsTo 'version'
       @hasMany  'notifications'
-
-    discussion: ->
-      @recordStore.discussions.find(@discussionId)
-
-    translateKey: ->
-      if @kind == 'new_comment' and @model().parentId?
-        'comment_replied_to'
-      else
-        @kind
 
     delete: ->
       @deleted = true
 
     actorName: ->
       @actor().name if @actor()
-
-    isPollEvent: ->
-      _.contains ['poll', 'outcome'], @eventable.type
-
-    title: ->
-      switch @eventable.type
-        when 'comment'             then (@model().parent().authorName() if @model().parent())
-        when 'discussion'          then @model().title
-        when 'poll', 'outcome'     then @model().poll().title
-        when 'group', 'membership' then @model().group().name
 
     isLastRead: ->
       @discussion() &&
