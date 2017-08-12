@@ -2,21 +2,15 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, Session) ->
   new class ThreadQueryService
 
     queryFor: (options = {}) ->
-      threadQueryFor createBaseView(options)
-
-    groupQuery: (group = {}, options = {}) ->
-      threadQueryFor createGroupView(group, options['filter'])
-
-    threadQueryFor = (view) ->
-      threads: -> view.data()
-      length: ->  @threads().length
-      any: ->     @length() > 0
+      threads: -> applyFilters(options).data()
+      length:  -> @threads().length
+      any:     -> @length() > 0
       constructor:
         singular: 'query'
 
-    createBaseView = (options = {}) ->
+    applyFilters = (options) ->
       view = Records.discussions.collection.addDynamicView options.name || 'default'
-      view.applyFind({groupId: { $in: options.group.organisationIds() }})    if options.group
+      view.applyFind(groupId: { $in: options.group.organisationIds() })      if options.group
       view.applyFind(lastActivityAt: { $gt: parseTimeOption(options.from) }) if options.from
       view.applyFind(lastActivityAt: { $lt: parseTimeOption(options.to) })   if options.to
 

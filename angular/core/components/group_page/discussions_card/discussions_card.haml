@@ -14,8 +14,8 @@
 
   .discussions-card__list
     %section.thread-preview-collection__container{ng-if: "discussions.any() || pinned.any()"}
-      %thread_preview_collection.thread-previews-container--pinned{query: "pinned", limit: "threadLimit"}
-      %thread_preview_collection.thread-previews-container--unpinned{query: "discussions", limit: "threadLimit"}
+      %thread_preview_collection.thread-previews-container--pinned{ng-if: "pinned.any()", query: "pinned", limit: "threadLimit"}
+      %thread_preview_collection.thread-previews-container--unpinned{ng-if: "discussions.any()", query: "discussions", limit: "threadLimit"}
     .lmo-show-more{ng-if: "canLoadMoreDiscussions()"}
       %button.discussions-card__show-more{ng-hide: "loadMoreExecuting", ng-click: "loadMore()", translate: "common.action.show_more"}
     %loading{ng-show: "loadMoreExecuting"}

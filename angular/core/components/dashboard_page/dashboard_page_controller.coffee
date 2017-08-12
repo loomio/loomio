@@ -1,48 +1,53 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, RecordLoader, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig, $routeParams, $mdMedia, ModalService, GroupModal) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $routeParams, RecordLoader, Records, Session, ThreadQueryService, AppConfig, $mdMedia, ModalService, GroupModal) ->
 
   $rootScope.$broadcast('currentComponent', { page: 'dashboardPage', filter: $routeParams.filter })
   $rootScope.$broadcast('setTitle', 'Recent')
   $rootScope.$broadcast('analyticsClearGroup')
 
-  AppConfig.dashboardLoaded = false
-  @dashboardLoaded = -> AppConfig.dashboardLoaded
+  @filter = $routeParams.filter || 'hide_muted'
+  filters = (filters) =>
+    ['only_threads_in_my_groups', @filter].concat(filters)
+  @views =
+    proposals: ThreadQueryService.queryFor
+      name:    'dashboardProposals'
+      filters: filters('show_proposals')
+    today:     ThreadQueryService.queryFor
+      name:    'dashboardToday'
+      from:    '1 second ago'
+      to:      '-10 year ago' # into the future!
+      filters: filters('hide_proposals')
+    yesterday: ThreadQueryService.queryFor
+      name:    'dashboardYesterday'
+      from:    '1 day ago'
+      to:      '1 second ago'
+      filters: filters('hide_proposals')
+    thisweek: ThreadQueryService.queryFor
+      name:    'dashboardThisWeek'
+      from:    '1 week ago'
+      to:      '1 day ago'
+      filters: filters('hide_proposals')
+    thismonth: ThreadQueryService.queryFor
+      name:    'dashboardThisMonth'
+      from:    '1 month ago'
+      to:      '1 week ago'
+      filters: filters('hide_proposals')
+    older:
+      name:    'dashboardOlder'
+      from:    '3 month ago'
+      to:      '1 month ago'
+      filters: filters('hide_proposals')
 
-  @timeframes =
-    today:     { from: '1 second ago', to: '-10 year ago' } # into the future!
-    yesterday: { from: '1 day ago',    to: '1 second ago' }
-    thisweek:  { from: '1 week ago',   to: '1 day ago' }
-    thismonth: { from: '1 month ago',  to: '1 week ago' }
-    older:     { from: '3 month ago',  to: '1 month ago' }
-
-  @views = {}
-  @viewNames = ['proposals'].concat(_.keys(@timeframes))
+  @viewNames = _.keys(@views)
   @loadingViewNames = _.take @viewNames, 3
 
-  @filter = $routeParams.filter || 'hide_muted'
   @loader = new RecordLoader
     collection: 'discussions'
     action: 'dashboard'
     params:
       filter: @filter
       per: 50
-  @loader.fetchRecords().then => @initialLoad = false
-
-  @loadMore = ->
-    @loader.fetchRecords().then =>
-      AppConfig.dashboardLoaded = true
-      @views.proposals = ThreadQueryService.queryFor(filters: [
-        'only_threads_in_my_groups',
-        'show_proposals',
-        @filter
-      ])
-
-      _.each _.keys(@timeframes), (name) =>
-        @views[name] = ThreadQueryService.queryFor
-          name: name
-          filters: ['only_threads_in_my_groups', 'hide_proposals', @filter]
-          from: @timeframes[name].from
-          to:   @timeframes[name].to
-  @loadMore()
+  @loader.fetchRecords().then => AppConfig.dashboardLoaded = true
+  @dashboardLoaded = -> AppConfig.dashboardLoaded
 
   @noGroups = ->
     !Session.user().hasAnyGroups()
