@@ -511,5 +511,12 @@ describe Event do
       expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
       expect(Events::StanceCreated.last.send(:notification_recipients)).to be_empty
     end
+
+    it 'does not notify deactivated users' do
+      poll.author.update(deactivated_at: 1.day.ago)
+      expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
+      email_users = Events::StanceCreated.last.send(:email_recipients)
+      expect(email_users).to be_empty
+    end
   end
 end
