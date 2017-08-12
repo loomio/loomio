@@ -13,6 +13,10 @@
   }
 }
 
+.thread-item__headline {
+  min-height: 28px;
+}
+
 .thread-item__title {
   color: $grey-on-white;
   display: inline-block;
@@ -23,24 +27,10 @@
   color: $primary-text-color;
 }
 
-.thread-item__body {
-  margin: 10px 0 10px 0;
-  ol { padding-left: 23px; }
-}
-
 .thread-item__footer {
   @include fontSmall();
   color: $grey-on-white;
   clear: both;
-}
-
-@media (min-width: $tiny-max-px){
-  .thread-item__body, .thread-item__footer{
-    margin-left: 40px;
-  }
-  .thread-item__body{
-    margin-top: 0;
-  }
 }
 
 .thread-item__actions {

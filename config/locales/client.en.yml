@@ -1605,6 +1605,18 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
 
+  thread_item:
+    comment_replied_to:  "<strong>{{author}}</strong> in reply to <strong>{{title}}</strong>"
+    discussion_edited:   "<strong>{{author}}</strong> edited the thread context"
+    discussion_moved:    "<strong>{{author}}</strong> moved the thread from <strong>{{title}}</strong>"
+    new_comment:         "<strong>{{author}}</strong>"
+    outcome_created:     "<strong>{{author}}</strong> shared an outcome for <strong>{{title}}</strong>"
+    poll_closed_by_user: "<strong>{{author}}</strong> closed the {{pollType}}: <strong>{{title}}</strong>"
+    poll_created:        "<strong>{{author}}</strong> started a {{pollType}}: <strong>{{title}}</strong>"
+    poll_edited:         "<strong>{{author}}</strong> edited the {{pollType}}: <strong>{{title}}</strong>"
+    poll_expired:        "{{pollType}} closed: <strong>{{title}}</strong>"
+    stance_created:      "<strong>{{author}}</strong> voted on a {{pollType}}"
+
   poll_thread_item:
     poll:
       poll_created: '<strong>{{author}}</strong> started a new poll: <span>{{title}}</span>'

@@ -1,8 +1,0 @@
-.thread-item{ng_controller: "PollCreatedItemController"}
-  .thread-item__header.media
-    .media-left
-      %user_avatar{user: "event.actor()", size: "small"}
-    .media-body
-      %h3.thread-item__title{id: "event-{{event.id}}"}
-        %span{translate: "poll_thread_item.{{poll.pollType}}.{{event.kind}}", translate-values: "{author: event.actor().name, title: poll.title}"}>
-        %timeago.timeago--inline{timestamp: "event.createdAt"}
