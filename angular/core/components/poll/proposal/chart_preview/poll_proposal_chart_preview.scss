@@ -39,7 +39,9 @@
 }
 
 .poll-proposal-chart-preview__stance--undecided {
+  color: $grey-on-white;
+  font-weight: bold;
   font-size: 16px;
-  margin-top: 0px;
+  margin-top: 2px;
   text-align: center;
 }
