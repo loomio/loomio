@@ -1,0 +1,6 @@
+%span.discussion-privacy-icon
+  %i.material-icons.lmo-margin-right{ng-if: "!private"}> public
+  %i.material-icons.lmo-margin-right{ng-if: "private"}> locked
+  %strong{translate: "common.privacy.{{translateKey()}}"}>
+  %span.seperator>
+  %span{ng-bind-html: "privacyDescription()"}

@@ -7,9 +7,9 @@ angular.module('loomioApp').directive 'groupPrivacyButton', ->
 
     $scope.iconClass = ->
       switch $scope.group.groupPrivacy
-        when 'open'   then 'fa-globe'
-        when 'closed' then 'fa-lock'
-        when 'secret' then 'fa-lock'
+        when 'open'   then 'public'
+        when 'closed' then 'locked'
+        when 'secret' then 'locked'
 
     $scope.privacyDescription = ->
       PrivacyString.group($scope.group)

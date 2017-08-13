@@ -29,38 +29,15 @@
       %outlet{name: "after-discussion-form-textarea", model: "discussion"}
 
     .discussion-form__privacy{ng-if: "showPrivacyForm()"}
-      %md-input-container.md-block
-        %label.lmo-form-labelled-input.discussion-form__public
-          %input{type: "radio", ng-model: "discussion.private", ng-value: "false"}
-          %span
-            %i.fa.fa-globe>
-            %strong{translate: "common.privacy.public" }
-            %span.seperator
-            %span{translate: "discussion_form.privacy_public"}
+      %md-radio-group{ng-model: "discussion.private"}
+        %md-radio-button{ng-model: "discussion.private", ng-value: "false"}
+          %discussion_privacy_icon{discussion: "discussion", private: "false"}
+        %md-radio-button{ng-model: "discussion.private", ng-value: "true"}
+          %discussion_privacy_icon{discussion: "discussion", private: "true"}
 
-      %md-input-container.md-block
-        %label.lmo-form-labelled-input.discussion-form__private
-          %input{type: "radio", ng-model: "discussion.private", ng-value: "true"}
-          %span
-            %i.fa.fa-lock>
-            %strong{translate: "common.privacy.private"}
-            %span.seperator
-            %span{ng-bind-html: "privacyPrivateDescription()"}
-
-    .privacy-notice{ng-show: "!showPrivacyForm()"}
-      %label.lmo-form-labelled-input{ng_hide: "discussion.private"}
-        %span
-          %i.fa.fa-globe>
-          %strong{translate: "common.privacy.public"}
-          %span.seperator
-          %span{translate: "discussion_form.privacy_public"}
-
-        %label.lmo-form-labelled-input{ng-show: "discussion.private"}
-          %span
-            %i.fa.fa-lock>
-            %strong{translate: "common.privacy.private"}
-            %span.seperator
-            %span{ng-bind-html: "privacyPrivateDescription()"}
+    .privacy-notice{ng-if: "!showPrivacyForm()"}
+      %label.lmo-form-labelled-input.discussion-form__privacy-notice
+        %discussion_privacy_icon{discussion: "discussion"}
 
       %label.lmo-form-labelled-input{ng-if: "discussion.isNew()"}
         %input.discussion-form__make-announcement{type: "checkbox", ng-model: "discussion.makeAnnouncement"}
