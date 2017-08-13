@@ -36,11 +36,11 @@
     -# %span{ng-if: "discussion.edited()"}
     -#   %button.context-panel__edited.lmo-btn-link{ng-click: "showRevisionHistory()", translate: "discussion.edited"}>
     -#   %span{aria-hidden: "true"}·
-    %span.nowrap.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
-      %i.fa.fa-lock>
+    %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
+      %i.material-icons> lock_outline
       %span{translate: "common.privacy.private"}
-    %span.nowrap.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
-      %i.fa.fa-globe>
+    %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
+      %i.material-icons> public
       %span{translate: "common.privacy.public"}
     %outlet{name: "after-thread-title", model: "discussion"}
 

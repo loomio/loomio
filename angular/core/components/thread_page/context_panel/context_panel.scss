@@ -16,6 +16,12 @@
   flex-direction: column;
 }
 
+.context-panel__discussion-privacy i {
+  position: relative;
+  font-size: 14px;
+  top: 2px;
+}
+
 .context-panel__thread-actions .star-toggle {
   display: inline-block;
   text-align: center;
