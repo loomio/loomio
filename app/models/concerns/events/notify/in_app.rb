@@ -8,7 +8,7 @@ module Events::Notify::InApp
 
   # send event notifications
   def notify_users!
-    notifications.import(notification_recipients.without(user).map { |recipient| notification_for(recipient) })
+    notifications.import(notification_recipients.active.without(user).map { |recipient| notification_for(recipient) })
   end
   handle_asynchronously :notify_users!
 
