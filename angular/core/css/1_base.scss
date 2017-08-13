@@ -1,9 +1,11 @@
+*, *:before, *:after { box-sizing: border-box; }
+
 body {
   background-color: $background-color;
 }
 
 header {
-  min-height: $navbar-height;
+  min-height: 50px;
   z-index: 100;
 }
 
@@ -24,4 +26,6 @@ input[type="file"] { display: none; }
 
 a {
   color: $link-color;
+  text-decoration: none;
+  &:hover, &:focus { text-decoration: underline; }
 }

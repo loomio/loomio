@@ -45,7 +45,6 @@
     "angular_record_store": "2.7.9",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
-    "bootstrap-sass": "~> 3.3.5",
     "bowser": "latest",
     "checklist-model": "latest",
     "emojione": "^2.1.0",

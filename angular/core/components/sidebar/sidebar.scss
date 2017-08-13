@@ -13,7 +13,7 @@
 .sidebar__list-subhead {
   @include md-caption;
   margin: 0px 0 16px 16px;
-  color: $navbar-default-color;
+  color: $grey-on-white;
 }
 
 .sidebar__list-item-button {
@@ -46,7 +46,7 @@
   width: 20px;
   margin-right: 16px;
   font-size: 22px;
-  color: $navbar-default-color;
+  color: $grey-on-white;
 }
 
 .fa-envelope-o {
@@ -54,11 +54,11 @@
 }
 
 .fa-inbox {
-  color: $brand-success;
+  color: $agree-color;
 }
 
 .fa-clock-o {
-  color: $brand-primary;
+  color: $loomio-orange;
 }
 
 .sidebar__list-item-group-logo {
