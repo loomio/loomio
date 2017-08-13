@@ -17,7 +17,7 @@ describe LoginToken do
   end
 
   it 'is not useable if it is old' do
-    token.update(created_at: 30.minutes.ago)
+    token.update(created_at: 40.minutes.ago)
     expect(token.useable?).to eq false
   end
 end
