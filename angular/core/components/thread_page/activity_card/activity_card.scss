@@ -10,9 +10,12 @@
   padding: 0 10px;
   background-color: $background-color;
   width: 100%;
-  display: block;
   margin-bottom: 20px;
   cursor: pointer;
+  i {
+    margin-right: 4px;
+    font-size: 16px;
+  }
 }
 
 .activity-card__last-read-activity {
