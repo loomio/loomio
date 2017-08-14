@@ -16,7 +16,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     if @comment
       "#comment-#{@comment.id}"
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)
-      '.activity-card__last-read-activity'
+      "#sequence-#{@sequenceIdToFocus}"
     else
       '.context-panel'
 
@@ -52,10 +52,11 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   Records.discussions.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
 
-  $scope.$on 'threadPageEventsLoaded',    (e, event) =>
+  $scope.$on 'threadPageEventsLoaded', (e, event) =>
     $window.location.reload() if @discussion.requireReloadFor(event)
     @eventsLoaded = true
     @comment = Records.comments.find(@requestedCommentId) unless isNaN(@requestedCommentId)
+    @performScroll()
 
   @hasClosedPolls = ->
     _.any @discussion.closedPolls()

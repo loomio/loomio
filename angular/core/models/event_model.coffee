@@ -28,11 +28,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     actorName: ->
       @actor().name if @actor()
 
-    isLastRead: ->
-      @discussion() &&
-      @discussion().isUnread() &&
-      @discussion().lastReadSequenceId == @sequenceId
-
     model: ->
       @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
 

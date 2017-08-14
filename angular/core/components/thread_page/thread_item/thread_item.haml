@@ -1,5 +1,4 @@
--# .thread-item{id: "{{event.sequenceId}}", ng_include: "'thread_page/activity_card/'+ event.kind+ '.html'"}
-.thread-item.lmo-flex.lmo-relative{layout: "row", id: "{{event.sequenceId}}"}
+.thread-item.lmo-flex.lmo-relative{layout: "row", id: "sequence-{{event.sequenceId}}"}
   .thread-item__avatar.lmo-margin-right
     %user_avatar{user: "event.actor()", size: "small", ng-if: "event.actor()"}
   .thread-item__body.lmo-flex.lmo-flex__horizontal-center{layout: "column"}
