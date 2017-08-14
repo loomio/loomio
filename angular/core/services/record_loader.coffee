@@ -18,7 +18,10 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
         path:   @path
         params: _.merge(@params, { from: @from, per: @per })
       .then (data) =>
-        @numLoaded += data[@collection].length
+        if data[@collection].length > 0
+          @numLoaded += data[@collection].length
+        else
+          @exhausted = true
         data
       .finally =>
         @loading = false

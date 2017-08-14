@@ -7,6 +7,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   @filter = $routeParams.filter || 'hide_muted'
   filters = (filters) =>
     ['only_threads_in_my_groups', @filter].concat(filters)
+
   @views =
     proposals: ThreadQueryService.queryFor
       name:    'dashboardProposals'
@@ -31,7 +32,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
       from:    '1 month ago'
       to:      '1 week ago'
       filters: filters('hide_proposals')
-    older:
+    older: ThreadQueryService.queryFor
       name:    'dashboardOlder'
       from:    '3 month ago'
       to:      '1 month ago'
@@ -42,24 +43,17 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
 
   @loader = new RecordLoader
     collection: 'discussions'
-    action: 'dashboard'
+    path: 'dashboard'
     params:
       filter: @filter
       per: 50
   @loader.fetchRecords().then => AppConfig.dashboardLoaded = true
+
   @dashboardLoaded = -> AppConfig.dashboardLoaded
-
-  @noGroups = ->
-    !Session.user().hasAnyGroups()
-
-  @noThreads = ->
-    _.all @views, (view) -> !view.any()
-
-  @startGroup = ->
-    ModalService.open GroupModal, group: -> Records.groups.build()
-
-  @userHasMuted = -> Session.user().hasExperienced("mutingThread")
-
-  @showLargeImage = -> $mdMedia("gt-sm")
+  @noGroups        = -> !Session.user().hasAnyGroups()
+  @noThreads       = -> _.all @views, (view) -> !view.any()
+  @startGroup      = -> ModalService.open GroupModal, group: -> Records.groups.build()
+  @userHasMuted    = -> Session.user().hasExperienced("mutingThread")
+  @showLargeImage  = -> $mdMedia("gt-sm")
 
   return

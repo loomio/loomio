@@ -9,7 +9,9 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, Session) ->
         singular: 'query'
 
     applyFilters = (options) ->
-      view = Records.discussions.collection.addDynamicView options.name || 'default'
+      return view if view = Records.discussions.collection.getDynamicView(options.name || 'default')
+
+      view = Records.discussions.collection.addDynamicView(options.name || 'default')
       view.applyFind(groupId: { $in: options.group.organisationIds() })      if options.group
       view.applyFind(lastActivityAt: { $gt: parseTimeOption(options.from) }) if options.from
       view.applyFind(lastActivityAt: { $lt: parseTimeOption(options.to) })   if options.to
