@@ -3,33 +3,30 @@ angular.module('loomioApp').directive 'groupForm', ->
   templateUrl: 'generated/components/group/form/group_form.html'
   controller: ($scope, $q, $window, $location, KeyEventService, LmoUrlService, FormService, Records, PrivacyString) ->
 
-    submitForm = FormService.submit $scope, $scope.group,
-      drafts: true
-      skipClose: true
-      flashSuccess: ->
-        if $scope.group.isNew()
-          'group_form.messages.group_created'
-        else
-          'group_form.messages.group_updated'
-      successCallback: (response) ->
-        group = Records.groups.find(response.groups[0].key)
-        $scope.$emit 'createComplete', group
-        $location.path LmoUrlService.group(group)
+    $scope.titleLabel = ->
+      if $scope.group.isParent()
+        "group_form.group_name"
+      else
+        "group_form.subgroup_name"
+
+    actionName = if $scope.group.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.group,
       drafts: true
       skipClose: true
-      submitFn: (model) ->
-        confirmation = PrivacyString.confirmGroupPrivacyChange(model)
-        if !confirmation || $window.confirm(message)
-          model.save
-        else
-          $q.defer
-      flashSuccess: ->
-        if $scope.group.isNew()
-          'group_form.messages.group_created'
-        else
-          'group_form.messages.group_updated'
+      prepareFn: ->
+        allowPublic = $scope.group.allowPublicThreads
+        $scope.group.discussionPrivacyOptions = switch $scope.group.groupPrivacy
+          when 'open'   then 'public_only'
+          when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
+          when 'secret' then 'private_only'
+
+        $scope.group.parentMembersCanSeeDiscussions = switch $scope.group.groupPrivacy
+          when 'open'   then true
+          when 'closed' then $scope.group.parentMembersCanSeeDiscussions
+          when 'secret' then false
+      confirmFn: (model) -> PrivacyString.confirmGroupPrivacyChange(model)
+      flashSuccess: -> "group_form.messages.group_#{actionName}"
       successCallback: (response) ->
         group = Records.groups.find(response.groups[0].key)
         $scope.$emit 'createComplete', group
@@ -40,23 +37,7 @@ angular.module('loomioApp').directive 'groupForm', ->
     $scope.privacyStatement = ->
       PrivacyString.groupPrivacyStatement($scope.group)
 
-    $scope.privacyStringFor = (state) ->
-      PrivacyString.group($scope.group, state)
-
-    $scope.buh = {}
-    $scope.buh.allowPublicThreads = $scope.group.allowPublicDiscussions()
-
-    $scope.allowPublicThreadsClicked = ->
-      if $scope.buh.allowPublicThreads
-        $scope.group.discussionPrivacyOptions = 'public_or_private'
-      else
-        $scope.group.discussionPrivacyOptions = 'private_only'
-
-    $scope.groupPrivacyChanged = ->
-      $scope.group.parentMembersCanSeeDiscussions = !$scope.group.privacyIsSecret()
-      switch $scope.group.groupPrivacy
-        when 'open'   then $scope.group.discussionPrivacyOptions = 'public_only'
-        when 'closed' then $scope.allowPublicThreadsClicked()
-        when 'secret' then $scope.group.discussionPrivacyOptions = 'private_only'
+    $scope.privacyStringFor = (privacy) ->
+      PrivacyString.group($scope.group, privacy)
 
     KeyEventService.submitOnEnter $scope

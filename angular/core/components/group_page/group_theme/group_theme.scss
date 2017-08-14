@@ -72,7 +72,10 @@
 .group-theme__name {
   margin-left: 108px + 15px;
   margin-right: 10px;
-  a{color: $primary-text-color;}
+  a {
+    color: $primary-text-color;
+    &:hover { text-decoration: underline; }
+  }
 }
 
 .group-theme__name--compact {

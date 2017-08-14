@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, DraftService, AbilityService, AttachmentService, $filter) ->
+angular.module('loomioApp').factory 'FormService', ($rootScope, $window, FlashService, DraftService, AbilityService, AttachmentService, $filter) ->
   new class FormService
 
     confirmDiscardChanges: (event, record) ->
@@ -18,6 +18,9 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
       options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
       scope.isDisabled = true
       model.setErrors()
+
+    confirm = (confirmMessage) ->
+      if confirmMessage then $window.confirm(confirmMessage) else true
 
     success = (scope, model, options) ->
       (response) ->
@@ -46,16 +49,18 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
 
     submit: (scope, model, options = {}) ->
       DraftService.applyDrafting(scope, model) if options.drafts and AbilityService.isLoggedIn()
-      submitFn = options.submitFn or model.save
+      submitFn  = options.submitFn  or model.save
+      confirmFn = options.confirmFn or (-> false)
       (prepareArgs) ->
         return if scope.isDisabled
         prepare(scope, model, options, prepareArgs)
-        submitFn(model).then(
-          success(scope, model, options),
-          failure(scope, model, options),
-        ).finally(
-          cleanup(scope, model, options)
-        )
+        if confirm(confirmFn(model))
+          submitFn(model).then(
+            success(scope, model, options),
+            failure(scope, model, options),
+          ).finally(
+            cleanup(scope, model, options)
+          )
 
     upload: (scope, model, options = {}) ->
       submitFn = options.submitFn

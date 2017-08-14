@@ -1,8 +1,7 @@
 .group-form
   .lmo-disabled-form{ng-show: "isDisabled"}
   %md-input-container.md-block
-    %label{translate: "group_form.group_name", ng-if: "group.isParent()"}
-    %label{translate: "group_form.subgroup_name", ng-if: "!group.isParent()"}
+    %label{translate: "{{titleLabel()}}"}
     %input.lmo-primary-form-input#group-name{type: "text", placeholder: "{{'group_form.group_name_placeholder' | translate}}", ng-required: true, ng-model: "group.name", md-maxlength: "255"}
     %validation_errors{subject: "group", field: "name"}
 
@@ -14,11 +13,11 @@
 
   %section.group-form__section.group-form__privacy
     %h3.lmo-h3{translate: "group_form.privacy"}
-    %md-radio-group{ng-model: "group.groupPrivacy", ng-change: "groupPrivacyChanged()"}
+    %md-radio-group{ng-model: "group.groupPrivacy"}
       %md-radio-button{ng-repeat: "privacy in ['open', 'closed', 'secret']", ng-value: "privacy", aria-label: "{{privacy}}"}
-        %span
-          %strong{trnaslate: "common.privacy.{{privacy}}"}
-          %span {{ privacyStringFor(privacy) }}
+        .group-form__privacy-title
+          %strong{translate: "common.privacy.{{privacy}}"}
+        .group-form__privacy-subtitle {{ privacyStringFor(privacy) }}
 
   .group-form__advanced{ng-show: "expanded"}
     %section.group-form__section.group-form__joining.lmo-form-group{ng-if: "group.privacyIsOpen()"}
@@ -38,14 +37,6 @@
       %group_setting_checkbox{group: "group", setting: "membersCanEditComments"}
       %group_setting_checkbox{group: "group", setting: "membersCanRaiseMotions"}
       %group_setting_checkbox{group: "group", setting: "membersCanVote"}
-
-      -# %label.lmo-form-labelled-input{ng-if: "group.privacyIsClosed() && !group.isSubgroupOfSecretParent()"}
-      -#   %input.group-form__allow-public-threads{type: "checkbox", ng-model: "buh.allowPublicThreads", ng-change: "allowPublicThreadsClicked()"}
-      -#   %span{translate: "group_form.allow_public_threads"}
-      -#
-      -# %label.lmo-form-labelled-input{ng-if: "group.isSubgroup() && group.privacyIsClosed()"}
-      -#   %input.group-form__parent-members-can-see-discussions{type: "checkbox", ng-model: "group.parentMembersCanSeeDiscussions"}
-      -#   %span{translate: "group_form.parent_members_can_see_discussions", translate-value-parent: "{{group.parent().name}}"}
 
   .lmo-md-actions
     %div{ng-if: "expanded"}
