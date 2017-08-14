@@ -24,17 +24,3 @@
   z-index: 10;
   opacity: 0.5;
 }
-
-label.lmo-form-labelled-input {
-  display: block;
-  font-weight: normal;
-  > input {
-    margin-right: 10px;
-  }
-  > span {
-    > i { width: 15px; }
-    > .seperator::after {
-      content: '\00a0\2013\00a0'
-    }
-  }
-}
