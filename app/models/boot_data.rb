@@ -10,8 +10,9 @@ BootData = Struct.new(:user) do
   private
 
   def add_current_user_to(json)
+    return unless user.is_logged_in?
     json[:current_user_id] = user.id
-    json[:users] = json[:users].reject { |u| u[:id] == user.id } + json.delete(:current_users)
+    json[:users] = Array(json[:users]).reject { |u| u[:id] == user.id } + json.delete(:current_users)
   end
 
   def serializer
