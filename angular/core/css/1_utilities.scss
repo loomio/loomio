@@ -190,6 +190,10 @@
   display: none;
 }
 
+.lmo-hidden {
+  display: none !important;
+}
+
 .lmo-group-theme-padding {
   padding-top: $navbar-height;
 }
