@@ -3,11 +3,16 @@ BootData = Struct.new(:user) do
     ActiveModel::ArraySerializer.new(Array(user),
       scope: serializer_scope,
       each_serializer: serializer,
-      root: :users
-    ).as_json.merge(current_user_id: user&.id)
+      root: :current_users
+    ).as_json.tap { |json| add_current_user_to(json) }
   end
 
   private
+
+  def add_current_user_to(json)
+    json[:current_user_id] = user.id
+    json[:users] = json[:users].reject { |u| u[:id] == user.id } + json.delete(:current_users)
+  end
 
   def serializer
     if user.restricted
@@ -30,6 +35,7 @@ BootData = Struct.new(:user) do
       notifications:      notifications,
       unread:             unread,
       reader_cache:       readers,
+      poll_cache:         active_polls,
       identities:         identities
     }
   end
@@ -47,11 +53,20 @@ BootData = Struct.new(:user) do
   end
 
   def unread
-    @unread ||= Queries::VisibleDiscussions.new(user: user).recent.unread.not_muted.sorted_by_latest_activity
+    @unread ||= Queries::VisibleDiscussions.new(user: user)
+                                           .recent
+                                           .unread
+                                           .not_muted
+                                           .sorted_by_latest_activity
+                                           .includes(:group, :author)
   end
 
   def readers
     @readers ||= Caches::DiscussionReader.new(user: user, parents: unread)
+  end
+
+  def active_polls
+    @active_polls ||= Caches::Poll.new(parents: unread)
   end
 
   def identities
