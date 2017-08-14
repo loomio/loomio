@@ -1,6 +1,3 @@
-loomio_webhooks:
-  repo:         https://github.com/loomio/loomio_webhooks.git
-
 loomio_org_plugin:
   repo:         https://github.com/loomio/loomio_org_plugin.git
 
