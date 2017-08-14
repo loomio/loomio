@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, Session) ->
         singular: 'query'
 
     applyFilters = (options) ->
+      Records.discussions.collection.removeDynamicView(options.name || 'default') if options.overwrite
       return view if view = Records.discussions.collection.getDynamicView(options.name || 'default')
 
       view = Records.discussions.collection.addDynamicView(options.name || 'default')

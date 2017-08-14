@@ -10,10 +10,12 @@ angular.module('loomioApp').directive 'discussionsCard', ->
         name: "group_#{$scope.group.key}_pinned"
         group: $scope.group
         filters: ['show_pinned']
+        overwrite: true
       $scope.discussions = ThreadQueryService.queryFor
         name: "group_#{$scope.group.key}_unpinned"
-        group: $scope.group,
+        group: $scope.group
         filters: ['hide_pinned']
+        overwrite: true
 
     $scope.init()
     $scope.$on 'subgroupsLoaded', $scope.init
