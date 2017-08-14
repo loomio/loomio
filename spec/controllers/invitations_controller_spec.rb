@@ -15,15 +15,14 @@ describe InvitationsController do
     let(:start_group_invitation) { create :invitation, token: 'bcd', group: another_group, recipient_email: "something@something.com", intent: :start_group, to_be_admin: true }
 
     context 'invitation not found' do
-      render_views
       it 'renders error page with not found message' do
         get :show, id: 'asdjhadjkhaskjdsahda'
-        expect(response.body).to match(/could not find an invitation/i)
+        expect(response.status).to eq 404
+        expect(response).to render_template "errors/404"
       end
     end
 
     context 'invitation used' do
-      render_views
       before do
         sign_in user
         invitation.update_attribute(:accepted_at, Time.now)
