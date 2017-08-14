@@ -2,29 +2,18 @@
   margin-bottom: 25px;
 }
 
-.thread-item__header {
+.thread-item__title {
   /* these styles break with BEM but they keep the translations clean*/
+  color: $grey-on-white;
   strong {
     color: $primary-text-color;
     @include md-body-2;
   }
-  span span {
-    color: $primary-text-color;
-  }
+  &::first-letter { text-transform: uppercase; }
 }
 
 .thread-item__headline {
   min-height: 28px;
-}
-
-.thread-item__title {
-  color: $grey-on-white;
-  display: inline-block;
-  & > span { padding-right: 5px; }
-}
-
-.thread-item__title-link {
-  color: $primary-text-color;
 }
 
 .thread-item__footer {

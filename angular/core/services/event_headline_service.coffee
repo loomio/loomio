@@ -38,7 +38,7 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
         when 'comment'             then event.model().parentAuthorName
         when 'poll', 'outcome'     then event.model().poll().title
         when 'group', 'membership' then event.model().group().name
-        when 'version'             then event.model().discussion().title
+        when 'version'             then event.model().model().title
         when 'discussion'
           if event.kind == 'discussion_moved'
             Records.groups.find(event.sourceGroupId).fullName
@@ -46,6 +46,6 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
             event.model().title
 
     pollTypeFor: (event) ->
-      switch event.eventable.type
-        when 'poll', 'stance', 'outcome'
-          $translate.instant("poll_types.#{event.model().poll().pollType}").toLowerCase()
+      poll = switch event.eventable.type
+        when 'poll', 'stance', 'outcome', 'version' then event.model().poll()
+      $translate.instant("poll_types.#{poll.pollType}").toLowerCase() if poll
