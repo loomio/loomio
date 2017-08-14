@@ -2,6 +2,8 @@ angular.module('loomioApp').directive 'authEmailForm', ($translate, AppConfig, K
   scope: {user: '='}
   templateUrl: 'generated/components/auth/email_form/auth_email_form.html'
   controller: ($scope) ->
+    $scope.email = $scope.user.email
+
     $scope.submit = ->
       return unless $scope.validateEmail()
       $scope.$emit 'processing'

@@ -3,6 +3,10 @@ class Pending::InvitationSerializer < Pending::BaseSerializer
     'initials'
   end
 
+  def email_status
+    nil
+  end
+
   def avatar_initials
     name.upcase.split(' ').map(&:first).join
   end
@@ -17,10 +21,6 @@ class Pending::InvitationSerializer < Pending::BaseSerializer
 
   private
 
-  def has_email?
-    email.present?
-  end
-  alias :include_email_status? :has_email?
 
   def has_name?
     name.present?

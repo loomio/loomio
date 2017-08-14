@@ -13,7 +13,7 @@ module.exports = new class PageHelper
   loadPath: (path, timeout = jasmine.DEFAULT_TIMEOUT_INTERVAL) ->
     browser.get('dev/'+path, timeout)
 
-  waitForReload: (time=5000)->
+  waitForReload: (time=2000)->
     browser.driver.sleep(time)
     browser.waitForAngular()
 

@@ -23,7 +23,7 @@ describe LoginTokensController do
 
     it 'does not sign in a user with an expired token' do
       expect(controller).to_not receive(:sign_in)
-      token.update(user: user, created_at: 30.minutes.ago)
+      token.update(user: user, created_at: 25.hours.ago)
       get :show, id: token.token
       expect(response).to redirect_to dashboard_path
     end
