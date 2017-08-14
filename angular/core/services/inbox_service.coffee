@@ -19,5 +19,5 @@ angular.module('loomioApp').factory 'InboxService', (Session, ThreadQueryService
       _.fromPairs _.map Session.user().inboxGroups(), (group) =>
         [
           group.key,
-          ThreadQueryService.queryFor(name: "#{group.key}_inbox", filters: @filters, group: group)
+          ThreadQueryService.queryFor(name: "group_#{group.key}_inbox", filters: @filters, group: group)
         ]

@@ -42,7 +42,7 @@
     "angular-scroll": "~0.6.5",
     "angular-translate": "~2.15.1",
     "angular-translate-loader-url": "~2.7.2",
-    "angular_record_store": "2.7.9",
+    "angular_record_store": "2.7.13",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
     "bootstrap-sass": "~> 3.3.5",
