@@ -38,7 +38,7 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
     isReply: ->
       @parentId?
 
-    hasContext: ->
+    hasDescription: ->
       !!@body
 
     parent: ->

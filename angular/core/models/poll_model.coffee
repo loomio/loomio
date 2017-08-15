@@ -119,6 +119,12 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     cookedDetails: ->
       MentionLinkService.cook(@mentionedUsernames, @details)
 
+    cookedDescription: ->
+      @cookedDetails()
+
+    hasDescription: ->
+      !!@details
+
     isActive: ->
       !@closedAt?
 
