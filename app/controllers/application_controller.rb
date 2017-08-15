@@ -18,6 +18,21 @@ class ApplicationController < ActionController::Base
 
   rescue_from(ActionView::MissingTemplate)  { |exception| raise exception unless %w[txt text gif png].include?(params[:format]) }
   rescue_from(ActiveRecord::RecordNotFound) { respond_with_error message: :"error.not_found", status: 404 }
+
+  rescue_from(Invitation::InvitationCancelled) do
+    session.delete(:pending_invitation_id)
+    respond_with_error message: :"invitation.invitation_cancelled"
+  end
+
+  rescue_from(Invitation::InvitationAlreadyUsed) do
+    session.delete(:pending_invitation_id)
+    if current_user.email == invitation.recipient_email
+      redirect_to invitation.group
+    else
+      respond_with_error message: :"invitation.invitation_already_used"
+    end
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
       flash[:error] = t("error.access_denied")

@@ -115,8 +115,9 @@ class Dev::MainController < Dev::BaseController
 
   def setup_inbox
     sign_in patrick
-    starred_discussion; recent_discussion group: create_another_group
+    starred_discussion; recent_discussion(group: create_another_group)
     old_discussion; muted_discussion
+    recent_discussion.update(author: jennifer)
     redirect_to inbox_url
   end
 
@@ -425,6 +426,13 @@ class Dev::MainController < Dev::BaseController
     create_discussion
     sign_in patrick
     create_all_notifications
+    redirect_to discussion_url(create_discussion)
+  end
+
+  def setup_all_activity_items
+    create_discussion
+    sign_in patrick
+    create_all_activity_items
     redirect_to discussion_url(create_discussion)
   end
 
