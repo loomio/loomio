@@ -3,12 +3,18 @@
   padding: 0;
 }
 
+.mentio-menu ul {
+  margin: 0;
+  padding: 0;
+}
+
 .mentio-menu__item {
   padding: 12px 16px;
   height: auto;
   cursor: pointer;
   &:not(:last-child) { border-bottom: 1px solid $border-color; }
   &:hover { background: $list-hover-color; }
+  &.active { background: $list-hover-color; }
 }
 
 .mentio-menu__avatar {
