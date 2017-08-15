@@ -94,10 +94,7 @@ EventBus.configure do |config|
   'poll_create',
   'poll_close',
   'poll_destroy',
-  'poll_expire') do |model|
-    model.discussion&.update_importance
-    model.discussion&.discussion_readers&.map(&:update_importance)
-  end
+  'poll_expire') { |model| model.discussion&.update_importance }
 
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }

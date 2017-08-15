@@ -52,10 +52,6 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :group, serializer: GroupSerializer, root: :groups
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
 
-  def importance
-    (reader || object).importance
-  end
-
   def active_polls
     scope[:poll_cache].get_for(object)
   end

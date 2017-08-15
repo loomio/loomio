@@ -1,6 +1,5 @@
 class DiscussionReader < ActiveRecord::Base
   include HasVolume
-  include HasImportance
 
   belongs_to :user
   belongs_to :discussion
