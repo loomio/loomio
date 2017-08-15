@@ -27,6 +27,8 @@ class BaseMailer < ActionMailer::Base
     I18n.with_locale(locale) do
       mail options.merge(to: to, subject: I18n.t(subject_key, subject_params))
     end
+  rescue Net::SMTPSyntaxError, Net::SMTPFatalError => e
+    raise "SMTP error to: '#{to}' from: '#{options[:from]}' action: #{action_name} mailer: #{mailer_name} error: #{e}"
   end
 
   def locale_for(*user)
