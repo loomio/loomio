@@ -49,13 +49,13 @@ module.exports = new class ThreadHelper
     element(By.css('.lmo-navbar__btn--notifications'))
 
   mostRecentComment: ->
-    element.all(By.css('.thread-item--comment')).last().getText()
+    element.all(By.css('.new-comment')).last().getText()
 
   replyLinkOnMostRecentComment: ->
     element.all(By.css('.thread-item__action--reply')).last()
 
   inReplyToOnMostRecentComment: ->
-    element.all(By.css('.new-comment__in-reply-to')).last().getText()
+    element.all(By.css('.new-comment--reply')).last().getText()
 
   likeLinkOnMostRecentComment: ->
     element.all(By.css('.thread-item__action--like')).last()

@@ -14,7 +14,7 @@
   %section.group-form__section.group-form__privacy
     %h3.lmo-h3{translate: "group_form.privacy"}
     %md-radio-group{ng-model: "group.groupPrivacy"}
-      %md-radio-button{ng-repeat: "privacy in ['open', 'closed', 'secret']", ng-value: "privacy", aria-label: "{{privacy}}"}
+      %md-radio-button{ng-repeat: "privacy in ['open', 'closed', 'secret']", class: "group-form__privacy-{{privacy}}", ng-value: "privacy", aria-label: "{{privacy}}"}
         .group-form__privacy-title
           %strong{translate: "common.privacy.{{privacy}}"}
         .group-form__privacy-subtitle {{ privacyStringFor(privacy) }}
