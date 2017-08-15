@@ -22,12 +22,14 @@
           %input.discussion-form__title-input.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-required: "true", maxlength: "255"}
         %validation_errors{subject: "discussion", field: "title"}
 
-      %md-input-container.md-block
-        %label{for: "discussion-context", translate: "discussion_form.context_label"}
-        %outlet{name: "before-discussion-form-textarea", model: "discussion"}
-        %textarea.lmo-relative.lmo-textarea.discussion-form__description-input.lmo-primary-form-input#discussion-context{ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
-          %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
-        %outlet{name: "after-discussion-form-textarea", model: "discussion"}
+      %outlet{name: "before-discussion-form-textarea", model: "discussion"}
+      .lmo-relative.lmo-textarea-wrapper
+        %md-input-container.md-block{md-no-float: "true"}
+          %textarea.lmo-relative.lmo-textarea.discussion-form__description-input.lmo-primary-form-input#discussion-context{ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
+          .lmo-md-actions
+            %div
+            %emoji_picker{target-selector: "descriptionSelector"}
+      %outlet{name: "after-discussion-form-textarea", model: "discussion"}
 
       .discussion-form__privacy-form{ng-if: "showPrivacyForm()"}
         %md-radio-group{ng-model: "discussion.private"}
