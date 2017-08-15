@@ -48,7 +48,7 @@
     "bootstrap-sass": "~> 3.3.5",
     "bowser": "latest",
     "checklist-model": "latest",
-    "emojione": "^2.1.0",
+    "emojione": "~> 2.2.7",
     "faye": "latest",
     "font-awesome": "git://github.com/FortAwesome/Font-Awesome#v4.4.0",
     "jstimezonedetect": "~1.0.5",
