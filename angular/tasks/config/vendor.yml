@@ -47,3 +47,5 @@ css_includes:
 fonts:
   - font-awesome/fonts/*.*
   - material-design-icons/iconfont/MaterialIcons*
+emoji:
+  - emojione/assets/png/*.png
