@@ -32,3 +32,8 @@ md-virtual-repeat-container {
 }
 
 md-progress-circular { margin: auto; }
+
+md-input-container textarea {
+  max-height: 400px;
+  overflow: auto;
+}
