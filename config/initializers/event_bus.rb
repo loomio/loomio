@@ -52,6 +52,7 @@ EventBus.configure do |config|
   # update discussion reader after discussion creation / edition
   config.listen('discussion_create',
                 'discussion_update',
+                'comment_create',
                 'comment_like') do |model, actor|
     DiscussionReader.for_model(model, actor).update_reader(volume: :loud)
   end
