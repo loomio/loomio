@@ -25,12 +25,6 @@
   top: 0;
   opacity: 0;
   margin: $thinPaddingSize 0;
-}
-
-.thread-preview--left {
-  max-width: calc(100% - 32px);
-}
-
   .md-button {
     align-items: center;
     display: flex;
@@ -40,6 +34,10 @@
     min-height: 28px;
     .material-icons { font-size: 14px; }
   }
+}
+
+.thread-preview--left {
+  max-width: calc(100% - 32px);
 }
 
 .thread-preview__mute,

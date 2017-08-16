@@ -50,7 +50,7 @@ module.exports = new class PageHelper
 
   selectOption: (selector, option) ->
     @click selector
-    element(By.cssContainingText('option', option)).click()
+    element(By.cssContainingText('md-option', option)).click()
 
   expectInputValue: (selector, value) ->
     expect(element(By.css(selector)).getAttribute('value')).toContain(value)

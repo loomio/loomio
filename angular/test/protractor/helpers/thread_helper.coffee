@@ -67,10 +67,10 @@ module.exports = new class ThreadHelper
     element(By.css('.flash-container')).getText()
 
   mentionList: ->
-    element(By.css('ul.list-group.user-search'))
+    element(By.css('.mentio-menu'))
 
   firstMentionOption: ->
-    @mentionList().element(By.css('li'))
+    @mentionList().element(By.css('md-menu-item'))
 
   clickThreadOptionsDropdownButton: ->
     element(By.css('.context-panel__dropdown-button')).click()
