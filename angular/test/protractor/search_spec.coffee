@@ -8,6 +8,6 @@ describe 'Search', ->
 
     it 'searches for and loads a thread by title', ->
       page.click('.sidebar__list-item-button--recent')
-      page.fillIn('.navbar-search__input', 'what star')
-      page.click('.navbar-search__results a.selector-list-item-link')
+      page.fillIn('.navbar-search__input input', 'what star')
+      page.click('.search-result')
       page.expectText('.context-panel', "What star sign are you?")

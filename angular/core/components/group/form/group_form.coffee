@@ -9,6 +9,12 @@ angular.module('loomioApp').directive 'groupForm', ->
       else
         "group_form.subgroup_name"
 
+    $scope.privacyOptions = ->
+      if $scope.group.isSubgroup() && $scope.group.parent().groupPrivacy == 'secret'
+        ['closed', 'secret']
+      else
+        ['open', 'closed', 'secret']
+
     actionName = if $scope.group.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.group,

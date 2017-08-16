@@ -158,7 +158,7 @@ describe 'Discussion Page', ->
     it 'can add emojis', ->
       page.fillIn '.comment-form__comment-field', 'Here is a dragon!'
       page.click '.emoji-picker__toggle'
-      page.fillIn '.emoji-picker__search', 'drag'
+      page.fillIn '.emoji-picker__search input', 'drag'
       page.clickFirst '.emoji-picker__icon'
       page.click '.comment-form__submit-button'
       page.expectText '.thread-item__body','Here is a dragon!'
