@@ -857,7 +857,6 @@ en:
       loud_description: "When you join a new group, you will be emailed <strong>whenever there is activity</strong>."
       normal_description: "When you join a new group, you will be emailed about <strong>new threads and proposals</strong>."
       quiet_description: "When you join a new group, you <strong>won't be emailed about activity</strong>."
-    change_default: Change default
     edit: Edit
     messages:
       updated: Email settings updated
