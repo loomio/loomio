@@ -61,6 +61,8 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $window, FlashSe
           ).finally(
             cleanup(scope, model, options)
           )
+        else
+          cleanup(scope, model, options)
 
     upload: (scope, model, options = {}) ->
       submitFn = options.submitFn

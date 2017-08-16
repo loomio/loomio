@@ -72,7 +72,7 @@ module.exports = new class PageHelper
 
   expectSelected: ->
     _.each given(arguments), (selector) ->
-      element(By.css(selector)).isSelected().then (selected) ->
+      element(By.css("#{selector}.md-checked")).isSelected().then (selected) ->
         if !selected
           console.log "unexpected not selected", selector, selected
         expect(selected).toBe(true)

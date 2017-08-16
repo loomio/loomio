@@ -44,7 +44,7 @@ describe 'Discussion Page', ->
       page.expectText('.context-panel', 'better title')
       page.expectText('.context-panel', 'improved description')
       page.expectText('.context-panel', 'Private')
-      page.expectText('.thread-item__title', 'updated the thread title, context and privacy')
+      page.expectText('.thread-item__title', 'edited the thread title')
 
     xit 'does not store cancelled thread info', ->
       page.click '.context-panel__dropdown-button',

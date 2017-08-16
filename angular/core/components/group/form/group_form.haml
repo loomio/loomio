@@ -23,20 +23,20 @@
     %section.group-form__section.group-form__joining.lmo-form-group{ng-if: "group.privacyIsOpen()"}
       %h3.lmo-h3{translate: "group_form.how_do_people_join"}
       %md-radio-group{ng-model: "group.membershipGrantedUpon"}
-        %md-radio-button{ng-repeat: "granted in ['request', 'approval']", ng-value: "granted"}
+        %md-radio-button{ng-repeat: "granted in ['request', 'approval']", class: "group-form__membership-granted-upon-{{granted}}", ng-value: "granted"}
           %span{translate: "group_form.membership_granted_upon_{{granted}}"}
 
     %section.group-form__section.group-form__permissions
       %h3.lmo-h3{translate: "group_form.permissions"}
-      %group_setting_checkbox{group: "group", setting: "allowPublicThreads", ng-if: "group.privacyIsClosed() && !group.isSubgroupOfSecretParent()"}
-      %group_setting_checkbox{group: "group", setting: "parentMembersCanSeeDiscussions", translate-values: "{parent: group.parent().name}", ng-if: "group.isSubgroup() && group.privacyIsClosed()"}
-      %group_setting_checkbox{group: "group", setting: "membersCanAddMembers"}
-      %group_setting_checkbox{group: "group", setting: "membersCanCreateSubgroups"}
-      %group_setting_checkbox{group: "group", setting: "membersCanStartDiscussions"}
-      %group_setting_checkbox{group: "group", setting: "membersCanEditDiscussions"}
-      %group_setting_checkbox{group: "group", setting: "membersCanEditComments"}
-      %group_setting_checkbox{group: "group", setting: "membersCanRaiseMotions"}
-      %group_setting_checkbox{group: "group", setting: "membersCanVote"}
+      %group_setting_checkbox.group-form__allow-public-threads{group: "group", setting: "allowPublicThreads", ng-if: "group.privacyIsClosed() && !group.isSubgroupOfSecretParent()"}
+      %group_setting_checkbox.group-form__parent-members-can-see-discussions{group: "group", setting: "parentMembersCanSeeDiscussions", translate-values: "{parent: group.parent().name}", ng-if: "group.isSubgroup() && group.privacyIsClosed()"}
+      %group_setting_checkbox.group-form__members-can-add-members{group: "group", setting: "membersCanAddMembers"}
+      %group_setting_checkbox.group-form__members-can-create-subgroups{group: "group", setting: "membersCanCreateSubgroups"}
+      %group_setting_checkbox.group-form__members-can-start-discussions{group: "group", setting: "membersCanStartDiscussions"}
+      %group_setting_checkbox.group-form__members-can-edit-discussions{group: "group", setting: "membersCanEditDiscussions"}
+      %group_setting_checkbox.group-form__members-can-edit-comments{group: "group", setting: "membersCanEditComments"}
+      %group_setting_checkbox.group-form__members-can-raise-motions{group: "group", setting: "membersCanRaiseMotions"}
+      %group_setting_checkbox.group-form__members-can-vote{group: "group", setting: "membersCanVote"}
 
   .lmo-md-actions
     %div{ng-if: "expanded"}
