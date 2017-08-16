@@ -7,13 +7,11 @@
       .lmo-disabled-form{ng-show: "profilePage.isDisabled"}
       %h3.lmo-h3{translate: "profile_page.edit_profile"}
 
-      %label{for: "user-picture-field", translate: "profile_page.picture_label"}
-      %user_avatar{user: "profilePage.user", size: "featured"}
+      .profile-page__profile-fieldset
+        %user_avatar{user: "profilePage.user", size: "featured"}
+        %md-button.md-accent.md-button--no-h-margin.profile-page__change-picture{ng-click: "profilePage.changePicture()", translate: "profile_page.change_picture_link"}
 
-      .lmo-vertical-spacer
-        %button.profile-page__change-picture.lmo-link{ng-click: "profilePage.changePicture()", translate: "profile_page.change_picture_link"}
-
-      .profile-page__profile-fieldset.lmo-vertical-spacer
+      .profile-page__profile-fieldset
         %md-input-container.md-block
           %label{for: "user-name-field", translate: "profile_page.name_label"}
           %input.profile-page__name-input#user-name-field{ng-required: true, ng-model: "profilePage.user.name"}
@@ -41,13 +39,10 @@
               {{locale.name}}
           %validation_errors{subject: "profilePage.user", field: "selectedLocale"}
 
-      .profile-page__update-account.lmo-flex.lmo-flex__space-between.lmo-vertical-spacer
-        %div
+      .profile-page__update-account.lmo-flex.lmo-flex__space-between
+        %md-button.md-accent.profile-page__change-password{ng-click: "profilePage.changePassword()", translate: "profile_page.change_password_link"}
         %md-button.md-primary.md-raised.profile-page__update-button{ng-click: "profilePage.submit()", ng-disabled: "isDisabled", translate: "profile_page.update_profile"}
 
-      .lmo-vertical-spacer
-        %button.profile-page__change-password.lmo-link{ng-click: "profilePage.changePassword()", translate: "profile_page.change_password_link"}
     .profile-page-card
       %h3.lmo-h3{translate: "profile_page.deactivate_account"}
-
-      %button.profile-page__deactivate.lmo-link.lmo-vertical-spacer{ng-click: "profilePage.deactivateUser()", translate: "profile_page.deactivate_user_link"}
+      %md-button.md-warn.md-button--no-h-margin.profile-page__deactivate{ng-click: "profilePage.deactivateUser()", translate: "profile_page.deactivate_user_link"}

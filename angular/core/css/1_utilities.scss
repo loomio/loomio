@@ -69,10 +69,6 @@
   opacity: 0.5;
 }
 
-.lmo-vertical-spacer {
-  padding: 5px 0;
-}
-
 .lmo-placeholder {
   font-style: italic;
   color: $grey-on-white;
@@ -121,10 +117,6 @@
   thead td { font-weight: bold; }
 }
 
-.lmo-rounded-corners {
-  @include roundedCorners;
-}
-
 .lmo-show-more {
   padding: $cardPaddingSize;
 
@@ -135,17 +127,6 @@
     color: $grey-on-white;
     text-decoration: underline;
   }
-}
-
-.lmo-clearfix {
-  clear: both;
-}
-
-.lmo-option-text {
-  float: left;
-  display: inline-block;
-  line-height: 35px;
-  text-decoration: underline;
 }
 
 .lmo-user-mention {
