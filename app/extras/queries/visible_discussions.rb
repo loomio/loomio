@@ -81,7 +81,7 @@ class Queries::VisibleDiscussions < Delegator
   def sorted_by_importance
     @relation = if @user.is_logged_in?
       @relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = #{@user.id} AND dr.discussion_id = discussions.id")
-               .order('coalesce(dr.importance, discussions.importance) DESC, last_activity_at DESC')
+               .order('discussions.importance DESC, last_activity_at DESC')
     else
       @relation = @relation.order(importance: :desc, last_activity_at: :desc)
     end
