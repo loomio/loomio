@@ -12,7 +12,7 @@ describe 'Discussion Page', ->
     it 'preselects current group', ->
       page.loadPath 'setup_dashboard'
       page.click '.sidebar__list-item-button--muted'
-      page.clickLast '.thread-preview__link'
+      page.clickFirst '.thread-preview__link'
       page.click '.sidebar__list-item-button--start-thread'
       page.expectText '.discussion-form__group-select', 'Muted Point Blank'
 
