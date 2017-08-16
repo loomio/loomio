@@ -2,13 +2,14 @@
   .lmo-disabled-form{ng-show: "isDisabled"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
+      %div
       %h1.lmo-h1.modal-title{translate: "logo_photo_form.heading"}
       %material_modal_header_cancel_button
   .md-dialog-content.md-body-1
-    %button.lmo-btn-link{ng-click: "selectFile()"}
-      .lmo-box--small.lmo-float--left
+    %md-button.lmo-flex{ng-click: "selectFile()"}
+      .user-avatar.lmo-box--small.lmo-margin-right
         .user-avatar__initials--small
-          %i.material-icons camera_enhanced
-      %span.lmo-option-text{translate: "logo_photo_form.upload_link"}
+          %i.material-icons camera_enhance
+      %span{translate: "logo_photo_form.upload_link"}
     %input.hidden.logo-photo-form__file-input{type: "file", ng-model: "files", ng-file-select: "upload(files)"}
-    %p{translate: "logo_photo_form.image_size_helptext"}
+    %p.lmo-hint-text{translate: "logo_photo_form.image_size_helptext"}

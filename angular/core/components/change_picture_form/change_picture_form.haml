@@ -2,10 +2,11 @@
   .lmo-disabled-form{ng-show: "isDisabled"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
+      %div
       %h1.lmo-h1{translate: "change_picture_form.title"}
       %material_modal_header_cancel_button
   .md-dialog-content.md-body-1
-    .lmo-hint-text{translate: "change_picture_form.helptext"}
+    %p.lmo-hint-text{translate: "change_picture_form.helptext"}
     %ul.change-picture-form__options-list
       %li.change-picture-form__option
         %md-button.lmo-flex{ng-click: "submit('initials')"}
