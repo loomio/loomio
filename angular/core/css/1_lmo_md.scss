@@ -41,3 +41,14 @@ md-input-container textarea {
   max-height: 400px;
   overflow: auto;
 }
+
+.md-checkbox--with-summary {
+  .md-container {
+    top: 2px;
+    transform: none;
+  }
+}
+
+.md-datepicker-input {
+  font-size: 16px !important;
+}
