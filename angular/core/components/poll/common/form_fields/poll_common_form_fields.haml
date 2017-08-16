@@ -8,7 +8,7 @@
 
   %outlet{name: "before-poll-form-textarea", model: "poll"}
   .lmo-textarea-wrapper
-    %md-input-container.md-block{md-no-float: "true"}
+    %md-input-container.md-block.md-no-errors{md-no-float: "true"}
       %textarea.lmo-primary-form-input.poll-common-form-fields__details{ng-model: "poll.details", placeholder: "{{detailsPlaceholder()}}", mention-field: "true"}
       .lmo-md-actions
         %div

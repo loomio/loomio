@@ -49,6 +49,10 @@ md-input-container textarea {
   }
 }
 
+.md-no-errors {
+  .md-errors-spacer { display: none; }
+}
+
 .md-datepicker-input {
   font-size: 16px !important;
 }

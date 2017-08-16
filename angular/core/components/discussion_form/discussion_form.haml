@@ -24,7 +24,7 @@
 
       %outlet{name: "before-discussion-form-textarea", model: "discussion"}
       .lmo-relative.lmo-textarea-wrapper
-        %md-input-container.md-block{md-no-float: "true"}
+        %md-input-container.md-block.md-no-errors{md-no-float: "true"}
           %textarea.lmo-relative.lmo-textarea.discussion-form__description-input.lmo-primary-form-input#discussion-context{ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
           .lmo-md-actions
             %div

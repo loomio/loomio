@@ -9,5 +9,5 @@
     .emoji-picker__selector{ng-repeat: "emoji in source"}
       %a.emoji-picker__link{ng-click: "select(emoji)", ng-mouseover: "hover(emoji)"}
         .emoji-picker__icon{ng-bind-html: "render(emoji)"}
-    %md-input-container.md-block.emoji-picker__search
+    %md-input-container.md-block.md-no-errors.emoji-picker__search
       %input{ng-model: "term", ng-change: "search(term)", placeholder: "{{'emoji_picker.search' | translate}}"}

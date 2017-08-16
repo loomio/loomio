@@ -46,7 +46,7 @@
 
 @media (max-width: $small-max-px) {
   .polls-page__filters { flex-direction: column; }
-  .polls-page__search { margin-bottom: 16px !important; }
+  .polls-page__search { width: 100%; }
   .polls-page__status-filter,
   .polls-page__group-filter {
     width: 100%;
