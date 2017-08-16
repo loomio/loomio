@@ -8,6 +8,6 @@
       .lmo-relative
         %md-input-container.md-block
           %textarea.lmo-textarea.edit-comment-form__comment-field{name: "body", ng-model: "comment.body", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "comment-field", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
-        %emoji_picker.lmo-action-dock{target-selector: "bodySelector"}
+        %emoji_picker{target-selector: "bodySelector"}
       .lmo-md-action
         %md-button.md-primary.md-raised.comment-form__submit-btn{type: "submit", translate: "common.action.save_changes"}>

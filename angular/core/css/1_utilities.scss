@@ -57,6 +57,18 @@
   border: 0;
 }
 
+.lmo-disabled-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  border-radius: 6px;
+  z-index: 10;
+  opacity: 0.5;
+}
+
 .lmo-vertical-spacer {
   padding: 5px 0;
 }
@@ -129,22 +141,6 @@
   clear: both;
 }
 
-.lmo-subscription-button {
-  color: #fff;
-  background-color: #4185DE;
-  i.fa { color: #fff; }
-  &:hover { color: #fff; }
-  &:focus { color: #fff; }
-}
-
-.lmo-float--left {
-  float: left;
-}
-
-.lmo-float--right {
-  float: right;
-}
-
 .lmo-option-text {
   float: left;
   display: inline-block;
@@ -166,20 +162,8 @@
   text-align: center;
 }
 
-.option-icon {
-  /* a helper class to display inline icons and avatars */
-  margin: 5px 5px 5px 0;
-  display: inline-block;
-}
-
 .lmo-relative {
   position: relative;
-}
-
-.lmo-action-dock {
-  position: absolute;
-  bottom: 0;
-  right: 0;
 }
 
 .lmo-print-only {
@@ -226,10 +210,6 @@ img.emojione {
   .md-open-menu-container {
     z-index: 1001;
   }
-}
-
-div#intercom-container div#intercom-launcher {
-    right: 85px;
 }
 
 .sr-only {
