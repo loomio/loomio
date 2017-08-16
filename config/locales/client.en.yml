@@ -871,7 +871,6 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
     no_threads:
       show_all: You don't have any recent threads.
-      show_starred: You don't have any starred threads.
       show_proposals: There are no proposals currently active.
       show_muted: You don't have any muted threads.
     view_recent: View all recent threads?
@@ -894,9 +893,6 @@ en:
       all: Recent Threads
       all_aria_label: Currently showing recent threads
       all_description: View recent threads
-      starred: Starred Threads
-      starred_aria_label: Currently showing threads I've marked as important
-      starred_description: View only threads you have marked as important
       proposals: Proposals
       proposals_aria_label: Currently showing threads with active proposals
       proposals_description: View only threads with active proposals
@@ -910,18 +906,17 @@ en:
     thread_preview:
       you_voted: 'You voted {{position}}'
       undecided: 'You are undecided'
+      pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
     threads_from:
       group: 'Threads from'
-      proposals: 'Proposals'
+      pinned: 'Pinned threads'
+      proposals: 'Threads with active decisions'
       starred: 'Starred threads'
       today: 'Today'
       yesterday: 'Yesterday'
       thisweek: 'This week'
       thismonth: 'This month'
       older: 'Older than a month'
-
-  star_toggle:
-    star: Star thread
 
   inbox_page:
     no_threads: Woohoo! You've read all the threads in your inbox.
@@ -952,6 +947,9 @@ en:
     liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
     started_by: 'Started by <strong>{{name}}</strong>'
     edited: 'Edited'
+    pin:
+      pinned: 'Thread pinned'
+      unpinned: 'Thread unpinned'
     volume:
       mute_message: 'Thread muted.'
       unmute_message: 'Thread unmuted'
@@ -963,11 +961,19 @@ en:
     email_settings: 'Email settings'
     edit: 'Edit'
     edit_thread: 'Edit'
+    pin_thread: 'Pin'
+    unpin_thread: 'Unpin'
     mute_thread: 'Mute'
     move_thread: 'Move'
     print_thread: 'Print'
     delete_thread: 'Delete'
     add_comment: 'Comment'
+
+  pin_thread_modal:
+    title: Pin thread
+    helptext: "Pinned threads always appear at the top of their group's list of threads. They can be used to inform members of important announcements, or to promote common material like a code of conduct or community guidelines."
+    helptext_two: "You may remove pins at any time by selecting 'Unpin' from the thread dropdown"
+    pin_thread: Pin thread
 
   delete_thread_form:
     aria_label: 'Delete thread'

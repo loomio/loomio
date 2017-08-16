@@ -4,27 +4,30 @@
   min-height: $boxMediumSize + ($thinPaddingSize * 2);
   border-bottom: 1px solid $border-color;
   position: relative;
+  &:hover .thread-preview__actions { opacity: 1; }
   &.loading-content { padding: 10px; }
-  &:hover {
-    .thread-preview__actions { display: block; }
-  }
 }
 
-.thread-preview__star{
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-right: $cardPaddingSize;
-  margin-top: $thinPaddingSize;
+.thread-preview__status-icon {
+  padding: 4px 8px;
+}
+
+.thread-preview__pin {
+  width: 32px;
+  text-align: center;
 }
 
 .thread-preview__actions{
   position: absolute;
   right: 40px;
-  top: -4px;
-  display: none;
-  margin-right: $thinPaddingSize;
-  margin-top: $thinPaddingSize;
+  transition: opacity 0.25s ease-in-out;
+  top: 0;
+  opacity: 0;
+  margin: $thinPaddingSize 0;
+}
+
+.thread-preview--left {
+  max-width: calc(100% - 32px);
 }
 
 .thread-preview__dismiss{
@@ -55,7 +58,7 @@
 
 .thread-preview__link {
   display: block;
-  padding: $thinPaddingSize $cardPaddingSize;
+  padding: $thinPaddingSize;
   color: $primary-text-color;
   text-decoration: none;
   @include displayFlex;

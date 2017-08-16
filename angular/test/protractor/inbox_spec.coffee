@@ -1,15 +1,16 @@
 describe 'Inbox Page', ->
 
-  inboxHelper = require './helpers/inbox_helper.coffee'
-
-  beforeEach ->
-    inboxHelper.load()
+  page = require './helpers/page_helper.coffee'
 
   it 'displays unread threads by group', ->
-    expect(inboxHelper.firstGroup()).toContain('Dirty Dancing Shoes')
-    expect(inboxHelper.firstGroup()).toContain('Starred discussion')
-    expect(inboxHelper.lastGroup()).toContain('Point Break')
-    expect(inboxHelper.lastGroup()).toContain('Recent discussion')
+    page.loadPath 'setup_inbox'
 
-    expect(inboxHelper.anyThreads()).not.toContain('Muted discussion')
-    expect(inboxHelper.anyThreads()).not.toContain('Old discussion')
+    page.expectText '.inbox-page', 'Dirty Dancing Shoes'
+    page.expectText '.inbox-page', 'Pinned discussion'
+    page.expectElement '.thread-preview__pin'
+
+    page.expectText '.inbox-page', 'Point Break'
+    page.expectText '.inbox-page', 'Recent discussion'
+
+    page.expectNoText '.inbox-page', 'Muted discussion'
+    page.expectNoText '.inbox-page', 'Old discussion'

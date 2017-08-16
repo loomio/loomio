@@ -83,9 +83,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasContext: ->
       !!@description
 
-    isImportant: ->
-      @starred or @hasDecision()
-
     unreadActivityCount: ->
       @salientItemsCount - @readSalientItemsCount
 
@@ -123,9 +120,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     isMuted: ->
       @volume() == 'mute'
 
-    saveStar: ->
-      @remote.patchMember @keyOrId(), if @starred then 'star' else 'unstar'
-
     update: (attrs) ->
       delete attrs.lastReadSequenceId    if attrs.lastReadSequenceId < @lastReadSequenceId
       delete attrs.readSalientItemsCount if attrs.readSalientItemsCount < @readSalientItemsCount
@@ -144,6 +138,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     move: =>
       @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }
+
+    savePin: =>
+      @remote.patchMember @keyOrId(), 'pin'
 
     edited: ->
       @versionsCount > 1

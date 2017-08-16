@@ -89,6 +89,13 @@ EventBus.configure do |config|
     Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
+  # update discussion importance
+  config.listen('discussion_pin',
+  'poll_create',
+  'poll_close',
+  'poll_destroy',
+  'poll_expire') { |model| model.discussion&.update_importance }
+
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 

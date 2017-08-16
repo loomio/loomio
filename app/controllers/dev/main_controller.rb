@@ -90,12 +90,10 @@ class Dev::MainController < Dev::BaseController
 
   def setup_dashboard
     sign_in patrick
-    starred_poll_discussion
-    starred_discussion
+    pinned_discussion
     poll_discussion
     recent_discussion
     old_discussion
-    participating_discussion
     muted_discussion
     muted_group_discussion
     redirect_to dashboard_url
@@ -115,9 +113,8 @@ class Dev::MainController < Dev::BaseController
 
   def setup_inbox
     sign_in patrick
-    starred_discussion; recent_discussion(group: create_another_group)
-    old_discussion; muted_discussion
-    recent_discussion.update(author: jennifer)
+    recent_discussion group: create_another_group
+    old_discussion; muted_discussion; pinned_discussion
     redirect_to inbox_url
   end
 
@@ -134,6 +131,12 @@ class Dev::MainController < Dev::BaseController
     sign_in patrick
     create_group.add_member! emilio
     redirect_to group_url(create_group)
+  end
+
+  def setup_group_with_pinned_discussion
+    sign_in patrick
+    create_discussion.update(pinned: true)
+    redirect_to group_url(create_discussion.group)
   end
 
   def setup_subgroup

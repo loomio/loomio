@@ -1,44 +1,37 @@
 .lmo-one-column-layout
   %main.dashboard-page.lmo-row
-    %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.all", ng-show: "dashboardPage.filter == 'show_all'"}
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.all", ng-show: "dashboardPage.filter == 'hide_muted'"}
     %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.muted", ng-show: "dashboardPage.filter == 'show_muted'"}
-    %section.dashboard-page__collections{ng-if: "dashboardPage.loading()", ng-repeat: "viewName in dashboardPage.loadingViewNames track by $index", class: "dashboard-page__{{viewName}}", aria-hidden: "true"}
+    %section.dashboard-page__loading{ng-if: "!dashboardPage.dashboardLoaded()", ng-repeat: "viewName in dashboardPage.loadingViewNames track by $index", class: "dashboard-page__{{viewName}}", aria-hidden: "true"}
       %h2.dashboard-page__date-range{translate: "dashboard_page.threads_from.{{viewName}}"}
       .thread-previews-container
         %loading_content.thread-preview{line-count: 2, ng-repeat: "i in [1,2] track by $index"}
-    .lmo-blank{ng-if: "!dashboardPage.loading()"}
-      .dashboard-page__no-threads{ng-hide: "dashboardPage.loadMoreExecuting || dashboardPage.currentBaseQuery.any() || dashboardPage.noGroups()"}
-        %span{ng-show: "dashboardPage.filter == 'show_all'", translate: "dashboard_page.no_threads.show_all"}>
-        %span{ng-show: "dashboardPage.filter == 'show_muted' && dashboardPage.userHasMuted()", translate: "dashboard_page.no_threads.show_muted"}>
-        %a{ng-show: "dashboardPage.filter != 'show_all' && dashboardPage.userHasMuted()", translate: "dashboard_page.view_recent", href: "", ng-click: "dashboardPage.setFilter('show_all')"}>
-      .dashboard-page__no-groups{ng-show: "dashboardPage.noGroups() && dashboardPage.filter == 'show_all'"}
-        %p{translate: "dashboard_page.no_groups.show_all"}>
-        %button.lmo-btn-link--blue{translate: "dashboard_page.no_groups.start", ng-click: "dashboardPage.startGroup()"}>
-        %span{translate: "dashboard_page.no_groups.or"}>
-        %span{translate: "dashboard_page.no_groups.join_group"}>
-      .dashboard-page__explain-mute{ng-show: "dashboardPage.filter == 'show_muted' && !dashboardPage.userHasMuted()"}
-        %p
-          %strong{translate: "dashboard_page.explain_mute.title"}
-        %p{translate: "dashboard_page.explain_mute.explanation_html"}
-        %p{translate: "dashboard_page.explain_mute.instructions"}
-        .dashboard-page__mute-image--large{ng-show: "dashboardPage.showLargeImage()"}
-          %img{src: "/img/mute.png"}
-        .dashboard-page__mute-image--small{ng-show: "!dashboardPage.showLargeImage()"}
-          %img{src: "/img/mute-small.png"}
-        %p{translate: "dashboard_page.explain_mute.see_muted_html"}
+    %section.dashboard-page__loaded{ng-if: "dashboardPage.dashboardLoaded()"}
+      .dashboard-page__empty{ng-if: "dashboardPage.noThreads()"}
+        .dashboard-page__no-groups{ng-if: "dashboardPage.noGroups()"}
+          %p{translate: "dashboard_page.no_groups.show_all"}>
+          %button.lmo-btn-link--blue{translate: "dashboard_page.no_groups.start", ng-click: "dashboardPage.startGroup()"}>
+          %span{translate: "dashboard_page.no_groups.or"}>
+          %span{translate: "dashboard_page.no_groups.join_group"}>
+        .dashboard-page__no-threads{ng-if: "!dashboardPage.noGroups()"}
+          %span{ng-show: "dashboardPage.filter == 'show_all'", translate: "dashboard_page.no_threads.show_all"}>
+          %span{ng-show: "dashboardPage.filter == 'show_muted' && dashboardPage.userHasMuted()", translate: "dashboard_page.no_threads.show_muted"}>
+          %a{lmo-href: "/dashboard", ng-show: "dashboardPage.filter != 'show_all' && dashboardPage.userHasMuted()"}
+            %span{translate: "dashboard_page.view_recent"}>
+        .dashboard-page__explain-mute{ng-show: "dashboardPage.filter == 'show_muted' && !dashboardPage.userHasMuted()"}
+          %p
+            %strong{translate: "dashboard_page.explain_mute.title"}
+          %p{translate: "dashboard_page.explain_mute.explanation_html"}
+          %p{translate: "dashboard_page.explain_mute.instructions"}
+          .dashboard-page__mute-image--large{ng-if: "dashboardPage.showLargeImage()"}
+            %img{src: "/img/mute.png"}
+          .dashboard-page__mute-image--small{ng-if: "!dashboardPage.showLargeImage()"}
+            %img{src: "/img/mute-small.png"}
+          %p{translate: "dashboard_page.explain_mute.see_muted_html"}
 
-      .dashboard-page__collections{ng-if: "!dashboardPage.displayByGroup()"}
-        %section.thread-preview-collection__container{ng-if: "dashboardPage.views.recent[viewName].any()", class: "dashboard-page__{{viewName}}", ng-repeat: "viewName in dashboardPage.recentViewNames"}
+      .dashboard-page__collections{ng-if: "!dashboardPage.noThreads()"}
+        %section.thread-preview-collection__container{ng-if: "dashboardPage.views[viewName].any()", class: "dashboard-page__{{viewName}}", ng-repeat: "viewName in dashboardPage.viewNames"}
           %h2.dashboard-page__date-range{translate: "dashboard_page.threads_from.{{viewName}}"}
-          %thread_preview_collection.thread-previews-container{query: "dashboardPage.views.recent[viewName]"}
-        .dashboard-page__footer{in-view: "$inview && dashboardPage.loadMore()", in-view-options: "{debounce: 200}"} .
-        %loading{ng-show: "dashboardPage.loadMoreExecuting"}
-      .dashboard-page__collections{ng-if: "dashboardPage.displayByGroup()"}
-        .dashboard-page__group{ng-repeat: "group in dashboardPage.groups() | orderBy:'name' track by group.id"}
-          %section{ng-if: "dashboardPage.views.groups[group.key].any()", role: "region", aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
-            %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: "true"}>
-            %h2.dashboard-page__group-name
-              %a{lmo-href-for: "group"} {{group.name}}
-            .dashboard-groups.thread-previews-container
-              %thread_preview_collection{query: "dashboardPage.views.groups[group.key]", limit: "dashboardPage.groupThreadLimit"}
-        %loading{ng-show: "dashboardPage.loadMoreExecuting"}
+          %thread_preview_collection.thread-previews-container{query: "dashboardPage.views[viewName]"}
+        .dashboard-page__footer{ng-if: "!dashboardPage.loader.exhausted", in-view: "$inview && dashboardPage.loader.loadMore()", in-view-options: "{debounce: 200}"} .
+        %loading{ng-show: "dashboardPage.loader.loading"}

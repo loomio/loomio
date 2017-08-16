@@ -119,13 +119,17 @@ Loomio::Application.routes.draw do
       patch :mark_as_read, on: :member
       patch :dismiss, on: :member
       patch :set_volume, on: :member
-      patch :star, on: :member
-      patch :unstar, on: :member
+      patch :pin, on: :member
+      patch :unpin, on: :member
+      patch :pin_reader, on: :member
+      patch :unpin_reader, on: :member
       patch :move, on: :member
       put :mark_as_read, on: :member
       put :set_volume, on: :member
-      put :star, on: :member
-      put :unstar, on: :member
+      put :pin, on: :member
+      put :unpin, on: :member
+      put :pin_reader, on: :member
+      put :unpin_reader, on: :member
       put :move, on: :member
       get :dashboard, on: :collection
       get :inbox, on: :collection

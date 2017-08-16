@@ -1,9 +1,9 @@
-angular.module('loomioApp').directive 'sidebar', ->
+angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, Session, InboxService, RestfulClient, UserHelpService, AppConfig, IntercomService, LmoUrlService, Records, ModalService, GroupModal, DiscussionForm, AbilityService)->
   scope: false
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
   replace: true
-  controller: ($scope, Session, $rootScope, $window, RestfulClient, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdMedia, $mdSidenav, LmoUrlService, Records, ModalService, GroupModal, DiscussionForm, AbilityService) ->
+  controller: ($scope) ->
     $scope.currentState = ""
     $scope.showSidebar = true
 
@@ -44,7 +44,7 @@ angular.module('loomioApp').directive 'sidebar', ->
       UserHelpService.helpLink()
 
     $scope.unreadThreadCount = ->
-      ThreadQueryService.filterQuery(['show_unread', 'only_threads_in_my_groups'], queryType: 'inbox').length()
+      InboxService.unreadCount()
 
     $scope.showContactUs = ->
       # TODO: use loomio_org plugin to determine official site or not

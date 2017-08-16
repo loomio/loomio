@@ -36,32 +36,10 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
-  def join_to_polls
-    unless @joined_to_polls
-      @relation = @relation.joins("LEFT OUTER JOIN polls p ON p.discussion_id = discussions.id AND p.closed_at IS NULL")
-      @joined_to_polls = true
-    end
-  end
-
-  def join_to_starred_polls
-    unless @joined_to_starred_polls
-      join_to_discussion_readers
-      @relation = @relation.joins("LEFT OUTER JOIN polls sp ON sp.discussion_id = discussions.id AND sp.closed_at IS NULL AND dv.starred = true")
-      @joined_to_starred_polls = true
-    end
-  end
-
   def participating
     return self unless @user.is_logged_in?
     join_to_discussion_readers
     @relation = @relation.where('dv.participating = true')
-    self
-  end
-
-  def starred
-    return self unless @user.is_logged_in?
-    join_to_discussion_readers
-    @relation = @relation.where('dv.starred = true')
     self
   end
 
@@ -101,14 +79,11 @@ class Queries::VisibleDiscussions < Delegator
   end
 
   def sorted_by_importance
-    if @user.is_logged_in?
-      join_to_starred_polls && join_to_polls
-      @relation = @relation.order('sp.closing_at ASC,
-                                   p.closing_at ASC,
-                                   dv.starred DESC NULLS LAST,
-                                   last_activity_at DESC')
+    @relation = if @user.is_logged_in?
+      @relation.joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = #{@user.id} AND dr.discussion_id = discussions.id")
+               .order('coalesce(dr.importance, discussions.importance) DESC, last_activity_at DESC')
     else
-      @relation = @relation.order(last_activity_at: :desc)
+      @relation = @relation.order(importance: :desc, last_activity_at: :desc)
     end
     self
   end

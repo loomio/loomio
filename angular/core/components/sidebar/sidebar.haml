@@ -13,7 +13,7 @@
   %md_content.sidebar__content.lmo-no-print{flex: "", layout: "column", ng-click: "sidebarItemSelected()", role: "navigation"}
     %md_list.sidebar__list.sidebar__threads{layout: "column", aria-label: "{{ 'sidebar.aria_labels.threads_list' | translate }}"}
       %md_list_item
-        %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{href: "", lmo-href: "/polls", ng-click: "isActive()", aria-label: "{{ 'sidebar.my_decisions' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('pollsPage')}"}
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--decisions{href: "", lmo-href: "/polls", ng-click: "isActive()", aria-label: "{{ 'sidebar.my_decisions' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('pollsPage')}"}
           %md_avatar_icon.sidebar__list-item-icon.material-icons thumbs_up_down
           %span{translate: "common.decisions"}
       %md_list_item

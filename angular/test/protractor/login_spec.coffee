@@ -30,7 +30,7 @@ describe 'Login', ->
       page.waitForReload()
       page.expectFlash 'Signed in successfully'
       page.expectText '.group-theme__name', 'Closed Dirty Dancing Shoes'
-      page.expectText '.thread-previews-container', 'This thread is private'
+      page.expectText '.thread-preview-collection__container', 'This thread is private'
       page.expectElement '.sidebar__content'
 
     it 'can login from a secret group page', ->
