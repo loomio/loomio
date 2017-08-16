@@ -42,3 +42,5 @@ css_includes:
   - angular-material/modules/scss/
 fonts:
   - material-design-icons/iconfont/MaterialIcons*
+emoji:
+  - emojione/assets/png/*.png

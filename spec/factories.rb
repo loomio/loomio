@@ -128,6 +128,7 @@ FactoryGirl.define do
     single_use true
     intent {'join_group'}
     association :inviter, factory: :user
+    association :group, factory: :formal_group
   end
 
   factory :shareable_invitation, class: Invitation do

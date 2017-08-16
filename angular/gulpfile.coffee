@@ -5,6 +5,7 @@ sequence = require 'gulp-run-sequence'
 gulp.task 'fonts',  require('./tasks/fonts')
 gulp.task 'app',    require('./tasks/app')
 gulp.task 'vendor', require('./tasks/vendor')
+gulp.task 'emoji',  require('./tasks/emoji')
 gulp.task 'scss',   require('./tasks/scss')
 gulp.task 'execjs', require('./tasks/execjs')
 gulp.task 'minify-js', require('./tasks/minify_js')
@@ -12,7 +13,7 @@ gulp.task 'minify-css', require('./tasks/minify_css')
 gulp.task 'minify', ['minify-js', 'minify-css']
 
 gulp.task 'compile', (done) -> sequence('compile-fast', 'minify', -> done())
-gulp.task 'compile-fast', ['fonts', 'app','vendor','scss', 'execjs']
+gulp.task 'compile-fast', ['fonts','app','vendor','emoji','scss','execjs']
 
 gulp.task 'dev', -> sequence('compile-fast', require('./tasks/watch'))
 

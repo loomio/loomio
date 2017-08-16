@@ -47,7 +47,7 @@
     "angulartics-google-tag-manager": "0.0.1",
     "bowser": "latest",
     "checklist-model": "latest",
-    "emojione": "^2.1.0",
+    "emojione": "~> 2.2.7",
     "faye": "latest",
     "jstimezonedetect": "~1.0.5",
     "lodash": "3.10.1",
