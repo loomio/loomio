@@ -11,18 +11,14 @@
   padding: 6px 6px 0 6px;
 }
 
-.discussion-form__attachment-form {
-  margin-right: 10px;
+.discussion-form__options md-list-item,
+.discussion-form__options md-list-item .md-no-style {
+  padding: 0 !important;
 }
 
-.discussion-form__privacy-notice {
-  margin: 0 0 16px 16px;
-}
-
-.discussion-form__announcement-size i {
-  position: relative;
-  font-size: 16px;
-  top: 2px;
+.discussion-form__options md-checkbox .md-label {
+  display: block !important;
+  white-space: nowrap;
 }
 
 @media (max-width: $small-max-px){

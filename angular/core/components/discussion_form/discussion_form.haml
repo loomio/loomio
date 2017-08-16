@@ -7,7 +7,7 @@
         %h1.lmo-h1.modal-title{translate: "discussion_form.new_discussion_title", ng-if: "discussion.isNew()"}
         %h1.lmo-h1.modal-title{translate: "discussion_form.edit_discussion_title", ng-if: "!discussion.isNew()"}
         %material_modal_header_cancel_button{aria-hidden: "true"}
-    .md-dialog-content
+    .md-dialog-content.md-body-1
       .lmo-hint-text{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew()"}
 
       %md-input-container.md-block{ng-show: "showGroupSelect"}
@@ -33,24 +33,25 @@
               %emoji_picker{target-selector: "descriptionSelector"}
         %outlet{name: "after-discussion-form-textarea", model: "discussion"}
 
-        .discussion-form__privacy-form{ng-if: "showPrivacyForm()"}
-          %md-radio-group{ng-model: "discussion.private"}
-            %md-radio-button.md-checkbox--with-summary.discussion-form__public{ng-model: "discussion.private", ng-value: "false"}
-              %discussion_privacy_icon{discussion: "discussion", private: "false"}
-            %md-radio-button.md-checkbox--with-summary.discussion-form__private{ng-model: "discussion.private", ng-value: "true"}
-              %discussion_privacy_icon{discussion: "discussion", private: "true"}
+        %md-list.discussion-form__options
+          %md-list-item.discussion-form__privacy-form{ng-if: "showPrivacyForm()"}
+            %md-radio-group{ng-model: "discussion.private"}
+              %md-radio-button.md-checkbox--with-summary.discussion-form__public{ng-model: "discussion.private", ng-value: "false"}
+                %discussion_privacy_icon{discussion: "discussion", private: "false"}
+              %md-radio-button.md-checkbox--with-summary.discussion-form__private{ng-model: "discussion.private", ng-value: "true"}
+                %discussion_privacy_icon{discussion: "discussion", private: "true"}
 
-        .discussion-form__privacy-notice{ng-if: "!showPrivacyForm()"}
-          %label.discussion-form__privacy-notice
-            %discussion_privacy_icon{discussion: "discussion"}
+          %md-list-item.discussion-form__privacy-notice{ng-if: "!showPrivacyForm()"}
+            %label.discussion-form__privacy-notice.lmo-flex{layout: "row"}
+              %i.material-icons.lmo-margin-right{ng-if: "discussion.private"} lock_outline
+              %i.material-icons.lmo-margin-right{ng-if: "!discussion.private"} public
+              %discussion_privacy_icon{discussion: "discussion"}
 
-        .discussion-form__announcement-size{ng-if: "discussion.isNew()"}
-          %md-checkbox.discussion-form__make-announcement{ng-model: "discussion.makeAnnouncement"}
-          %label
-            %i.material-icons.lmo-margin-right notifications
-            %strong{translate: "discussion_form.make_announcement"}>
-            %span.seperator{ng-if: "discussion.makeAnnouncement"}
-            %span{translate: "discussion_form.notified_count", ng-if: "discussion.makeAnnouncement", translate-values: "{count: discussion.group().announcementRecipientsCount}"}
+          %md-list-item.discussion-form__announcement-size{ng-if: "discussion.isNew()"}
+            %md-checkbox.md-checkbox--with-summary.discussion-form__make-announcement{ng-model: "discussion.makeAnnouncement"}
+              .discussion-form__make-announcement-title
+                %strong{translate: "discussion_form.make_announcement"}>
+              .discussion-form__make-announcement-subtitle{translate: "discussion_form.notified_count", ng-if: "discussion.makeAnnouncement", translate-values: "{count: discussion.group().announcementRecipientsCount}"}
 
         .lmo-blank
           %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in discussion.newAttachments() | orderBy: 'id' track by attachment.id"}

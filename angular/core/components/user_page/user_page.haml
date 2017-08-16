@@ -1,7 +1,7 @@
 .loading-wrapper.container.main-container.lmo-one-column-layout
   %loading{ng-if: "!userPage.user"}
   %main.user-page.main-container.lmo-row{ng-if: "userPage.user"}
-    .lmo-card
+    .lmo-card.user-page__profile
       .user-page__content.lmo-flex{layout: "row"}
         %user_avatar.lmo-margin-right{user: "userPage.user", size: "featured"}
         .user-page__info
