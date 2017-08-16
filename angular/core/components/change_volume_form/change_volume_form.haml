@@ -7,7 +7,7 @@
         %material_modal_header_cancel_button
     .md-dialog-content
       %md-radio-group.md-body-1{ng-model: "buh.volume"}
-        %md-radio-button.md-checkbox--with-summary{ng-repeat: "level in volumeLevels", ng-value: "level"}
+        %md-radio-button.md-checkbox--with-summary{ng-repeat: "level in volumeLevels", ng-value: "level", id: "volume-{{level}}"}
           %strong{translate: "change_volume_form.{{level}}_label"}
           .change-volume-form__description{translate: "{{translateKey()}}.{{level}}_description"}
         %md-checkbox.change-volume-form__apply-to-all#apply-to-all{ng-model: "applyToAll"}
