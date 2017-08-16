@@ -1,18 +1,10 @@
 module Dev::DashboardHelper
-  def starred_poll_discussion
-    create_discussion!(:starred_poll_discussion, group: create_poll_group) { |discussion| star!(discussion); add_poll!(discussion) }
+  def pinned_discussion
+    create_discussion!(:pinned_discussion) { |discussion| pin!(discussion) }
   end
 
   def poll_discussion
     create_discussion!(:poll_discussion, group: create_poll_group) { |discussion| add_poll!(discussion) }
-  end
-
-  def starred_discussion
-    create_discussion!(:starred_discussion) { |discussion| star!(discussion) }
-  end
-
-  def participating_discussion
-    create_discussion!(:participating_discussion) { |discussion| participate!(discussion) }
   end
 
   def recent_discussion(group: create_group)
@@ -44,16 +36,12 @@ module Dev::DashboardHelper
     end
   end
 
-  def star!(discussion, user: patrick)
-    DiscussionReader.for(discussion: discussion, user: user).update starred: true
+  def pin!(discussion)
+    DiscussionService.pin(discussion: discussion, actor: discussion.author)
   end
 
   def mute!(discussion, user: patrick)
-    DiscussionReader.for(discussion: discussion, user: user).update volume: DiscussionReader.volumes[:mute]
-  end
-
-  def participate!(discussion, user: patrick)
-    DiscussionReader.for(discussion: discussion, user: user).participate!
+    DiscussionService.update_reader(discussion: discussion, params: {volume: DiscussionReader.volumes[:mute]}, actor: patrick)
   end
 
   def add_poll!(discussion, name: 'Test poll', actor: jennifer)

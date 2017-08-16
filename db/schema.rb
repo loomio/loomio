@@ -156,6 +156,15 @@ ActiveRecord::Schema.define(version: 20170806230124) do
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
+  create_table "decision_emails", force: :cascade do |t|
+    t.string   "subject",    null: false
+    t.string   "body"
+    t.string   "to",         null: false
+    t.string   "cc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
@@ -194,13 +203,12 @@ ActiveRecord::Schema.define(version: 20170806230124) do
     t.integer  "read_salient_items_count", default: 0,     null: false
     t.integer  "volume"
     t.boolean  "participating",            default: false, null: false
-    t.boolean  "starred",                  default: false, null: false
     t.datetime "dismissed_at"
+    t.integer  "importance",               default: 0,     null: false
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
   add_index "discussion_readers", ["participating"], name: "index_discussion_readers_on_participating", using: :btree
-  add_index "discussion_readers", ["starred"], name: "index_discussion_readers_on_starred", using: :btree
   add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true, using: :btree
   add_index "discussion_readers", ["user_id", "volume"], name: "index_discussion_readers_on_user_id_and_volume", using: :btree
   add_index "discussion_readers", ["user_id"], name: "index_motion_read_logs_on_user_id", using: :btree
@@ -242,6 +250,8 @@ ActiveRecord::Schema.define(version: 20170806230124) do
     t.integer  "salient_items_count",             default: 0,     null: false
     t.integer  "versions_count",                  default: 0
     t.integer  "closed_polls_count",              default: 0,     null: false
+    t.integer  "importance",                      default: 0,     null: false
+    t.boolean  "pinned",                          default: false, null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -653,6 +663,14 @@ ActiveRecord::Schema.define(version: 20170806230124) do
   add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
   add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
   add_index "polls", ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true, using: :btree
+
+  create_table "received_emails", force: :cascade do |t|
+    t.text     "headers"
+    t.text     "body"
+    t.string   "sender_email", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"

@@ -38,6 +38,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     parentGroups: ->
       _.filter @groups(), (group) -> group.isParent()
 
+    inboxGroups: ->
+      _.flatten [@parentGroups(), @orphanSubgroups()]
+
     hasAnyGroups: ->
       @groups().length > 0
 

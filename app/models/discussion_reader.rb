@@ -4,13 +4,12 @@ class DiscussionReader < ActiveRecord::Base
   belongs_to :user
   belongs_to :discussion
 
-  def self.for(user: , discussion: )
-    if (!user.nil?) and user.is_logged_in?
-      begin
-        find_or_create_by(user_id: user.id, discussion_id: discussion.id)
-      rescue ActiveRecord::RecordNotUnique
-        retry
-      end
+  delegate :update_importance, to: :discussion
+  delegate :importance, to: :discussion
+
+  def self.for(user:, discussion:)
+    if user&.is_logged_in?
+      find_or_create_by(user: user, discussion: discussion)
     else
       new(discussion: discussion)
     end

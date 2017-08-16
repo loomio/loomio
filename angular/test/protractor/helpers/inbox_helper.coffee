@@ -5,9 +5,3 @@ module.exports = new class InboxHelper
 
   firstGroup: ->
     element.all(By.css('.inbox-page__group')).first().getText()
-
-  lastGroup: ->
-    element.all(By.css('.inbox-page__group')).last().getText()
-
-  anyThreads: ->
-    element(By.css('.inbox-page__threads')).getText()

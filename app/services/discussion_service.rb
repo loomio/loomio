@@ -41,7 +41,7 @@ class DiscussionService
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
-    discussion.assign_attributes(params.slice(:private, :title, :description))
+    discussion.assign_attributes(params.slice(:private, :title, :description, :pinned))
     version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
     discussion.attachment_ids = params[:attachment_ids]
 
@@ -65,11 +65,20 @@ class DiscussionService
     Events::DiscussionMoved.publish!(discussion, actor, source)
   end
 
+  def self.pin(discussion:, actor:)
+    actor.ability.authorize! :pin, discussion
+
+    discussion.update(pinned: !discussion.pinned)
+
+    EventBus.broadcast('discussion_pin', discussion, actor)
+  end
+
   def self.update_reader(discussion:, params:, actor:)
     actor.ability.authorize! :show, discussion
-    DiscussionReader.for(discussion: discussion, user: actor).update(params.slice(:starred, :volume))
+    reader = DiscussionReader.for(discussion: discussion, user: actor)
+    reader.update(params.slice(:volume))
 
-    EventBus.broadcast('discussion_update_reader', discussion, params, actor)
+    EventBus.broadcast('discussion_update_reader', reader, params, actor)
   end
 
   def self.mark_as_read(discussion:, params:, actor:)

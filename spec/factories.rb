@@ -104,6 +104,11 @@ FactoryGirl.define do
     end
   end
 
+  factory :discussion_reader do
+    discussion
+    user
+  end
+
   factory :comment do
     user
     discussion

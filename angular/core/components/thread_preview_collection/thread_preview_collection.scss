@@ -1,4 +1,4 @@
-.inbox-page__groups.thread-previews-container, .dashboard-page__collections .thread-previews-container {
+.thread-previews-container {
   @include cardNoPadding;
   margin-bottom: $cardPaddingSize;
   margin-top: $thinPaddingSize;

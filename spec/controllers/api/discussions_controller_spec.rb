@@ -119,10 +119,8 @@ describe API::DiscussionsController do
     end
 
     describe 'filtering' do
-      let(:participating_discussion) { create :discussion, group: group }
       let(:subgroup_discussion) { create :discussion, group: subgroup }
       let(:muted_discussion) { create :discussion, group: group }
-      let(:starred_discussion) { create :discussion, group: group }
       let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
       let(:motionless_discussion) { create :discussion, group: group }
 
@@ -132,7 +130,6 @@ describe API::DiscussionsController do
         subgroup.add_member! user
         discussion.reload
         DiscussionReader.for(user: user, discussion: muted_discussion).set_volume! 'mute'
-        DiscussionReader.for(user: user, discussion: starred_discussion).update starred: true
       end
 
       it 'does not return muted discussions by default' do
@@ -141,15 +138,6 @@ describe API::DiscussionsController do
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
         expect(ids).to_not include muted_discussion.id
-      end
-
-      it 'can filter by participating' do
-        CommentService.create actor: user, comment: build(:comment, discussion: participating_discussion)
-        get :dashboard, filter: :show_participating
-        json = JSON.parse(response.body)
-        ids = json['discussions'].map { |v| v['id'] }
-        expect(ids).to include participating_discussion.id
-        expect(ids).to_not include discussion.id
       end
 
       it 'can filter by muted' do
@@ -180,6 +168,7 @@ describe API::DiscussionsController do
       end
 
       it 'can limit collection size' do
+        discussion; old_discussion; muted_discussion
         get :dashboard, limit: 2
         json = JSON.parse(response.body)
         expect(json['discussions'].count).to eq 2
@@ -198,10 +187,10 @@ describe API::DiscussionsController do
       end
 
       it 'returns the reader fields' do
-        DiscussionReader.for(user: user, discussion: discussion).update(starred: true)
+        DiscussionReader.for(user: user, discussion: discussion).update(volume: :mute)
         get :show, id: discussion.key
         json = JSON.parse(response.body)
-        expect(json['discussions'][0]['starred']).to eq true
+        expect(json['discussions'][0]['discussion_reader_volume']).to eq "mute"
       end
     end
 
@@ -292,9 +281,7 @@ describe API::DiscussionsController do
 
         expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
         expect(json['discussions'][0]['discussion_reader_volume']).to eq reader.discussion_reader_volume
-        expect(json['discussions'][0]['starred']).to eq reader.starred
         expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
-        expect(json['discussions'][0]['participating']).to eq reader.participating
       end
     end
   end
@@ -393,50 +380,6 @@ describe API::DiscussionsController do
           poll_ids = json['polls'].map { |p| p['id'] }
           expect(poll_ids).to include poll.id
         end
-      end
-    end
-  end
-
-  describe 'star' do
-    before { sign_in user }
-
-    context 'success' do
-      it 'stars a thread' do
-        put :star, id: discussion.id, format: :json
-        expect(response).to be_success
-        expect(DiscussionReader.for(user: user, discussion: discussion).starred).to eq true
-      end
-    end
-
-    context 'failure' do
-      it 'does not star a thread' do
-        put :star, id: another_discussion.id, format: :json
-        expect(response).to_not be_success
-        expect(DiscussionReader.for(user: user, discussion: another_discussion).starred).to eq false
-      end
-    end
-  end
-
-  describe 'unstar' do
-    before { sign_in user }
-
-    context 'success' do
-      it 'unstars a thread' do
-        reader = DiscussionReader.for(user: user, discussion: discussion)
-        reader.update starred: true
-        put :unstar, id: discussion.id, format: :json
-        expect(response).to be_success
-        expect(reader.reload.starred).to eq false
-      end
-    end
-
-    context 'failure' do
-      it 'does not update a reader' do
-        reader = DiscussionReader.for(user: user, discussion: another_discussion)
-        reader.update starred: true
-        put :unstar, id: another_discussion.id, format: :json
-        expect(response).not_to be_success
-        expect(reader.reload.starred).to eq true
       end
     end
   end
@@ -596,4 +539,31 @@ describe API::DiscussionsController do
     end
   end
 
+  describe 'pin' do
+    it 'allows admins to pin a thread' do
+      sign_in user
+      discussion.group.add_admin! user
+      post :pin, id: discussion.id
+      expect(discussion.reload.pinned).to eq true
+    end
+
+    it 'allows admins to unpin a thread' do
+      sign_in user
+      discussion.group.add_admin! user
+      discussion.update(pinned: true)
+      post :pin, id: discussion.id
+      expect(discussion.reload.pinned).to eq false
+    end
+
+    it 'does not allow non-admins to pin a thread' do
+      sign_in another_user
+      post :pin, id: discussion.id
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow logged out users to pin a thread' do
+      post :pin, id: discussion.id
+      expect(response.status).to eq 403
+    end
+  end
 end

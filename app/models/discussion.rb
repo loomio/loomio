@@ -20,6 +20,7 @@ class Discussion < ActiveRecord::Base
   include Translatable
   include HasTimeframe
   include HasMentions
+  include HasImportance
   include MessageChannel
   include MakesAnnouncements
   include SelfReferencing
@@ -50,6 +51,7 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :polls, dependent: :destroy
+  has_many :active_polls, -> { where(closed_at: nil) }, class_name: "Poll"
   has_one :search_vector
   has_many :comments, dependent: :destroy
   has_many :comment_likes, through: :comments, source: :comment_votes

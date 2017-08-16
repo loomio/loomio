@@ -10,6 +10,31 @@ describe Queries::VisibleDiscussions do
     Queries::VisibleDiscussions.new(user: user, groups: [group])
   end
 
+  describe 'sorted_by_importance' do
+    let(:group) { create(:formal_group, is_visible_to_public: true) }
+    let!(:no_importance) { create :discussion, private: false, group: group }
+    let!(:has_decision)  { create :discussion, private: false, group: group, polls: [create(:poll)] }
+    let!(:pinned)        { create :discussion, private: false, group: group, pinned: true }
+
+    it 'orders discussions by importance when logged out' do
+      [pinned, has_decision, no_importance].map(&:update_importance)
+      query = Queries::VisibleDiscussions.new(user: LoggedOutUser.new).sorted_by_importance.to_a
+      expect(query[0]).to eq pinned
+      expect(query[1]).to eq has_decision
+      expect(query[2]).to eq no_importance
+    end
+
+    it 'orders discussions by reader importance when logged in' do
+      group.add_admin! user
+
+      [pinned, has_decision, no_importance].map(&:update_importance)
+      query = Queries::VisibleDiscussions.new(user: user).sorted_by_importance.to_a
+      expect(query[0]).to eq pinned
+      expect(query[1]).to eq has_decision
+      expect(query[2]).to eq no_importance
+    end
+  end
+
   describe 'logged out' do
     let(:logged_out_user) { LoggedOutUser.new }
     let!(:public_discussion) { create(:discussion, private: false, group: create(:formal_group, is_visible_to_public: true)) }
