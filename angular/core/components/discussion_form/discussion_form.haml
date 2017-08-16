@@ -2,9 +2,10 @@
   %form.discussion-forms{name: "discussionForm", ng-paste: "handlePaste($event)", ng_submit: "submit()", ng-disabled: "isDisabled"}
     .lmo-disabled-form{ng-show: "isDisabled"}
     %md-toolbar
-      .md-toolbar-tools.lmo-flex__space-between
-        %h1.lmo-h1.modal-title.lmo-flex__grow{translate: "discussion_form.new_discussion_title", ng-if: "discussion.isNew()"}
-        %h1.lmo-h1.modal-title.lmo-flex__grow{translate: "discussion_form.edit_discussion_title", ng-if: "!discussion.isNew()"}
+      .md-toolbar-tools.lmo-flex.lmo-flex__space-between
+        %i.material-icons forum
+        %h1.lmo-h1.modal-title{translate: "discussion_form.new_discussion_title", ng-if: "discussion.isNew()"}
+        %h1.lmo-h1.modal-title{translate: "discussion_form.edit_discussion_title", ng-if: "!discussion.isNew()"}
         %material_modal_header_cancel_button{aria-hidden: "true"}
     .md-dialog-content
       .lmo-hint-text{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew()"}

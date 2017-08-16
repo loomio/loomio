@@ -5,10 +5,6 @@
   &:hover{ text-decoration: underline; }
 }
 
-.lmo-btn-link {
-  @include lmoBtnLink;
-}
-
 .lmo-btn-link--blue {
   @include lmoBtnLink;
   color: $link-color;
