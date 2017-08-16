@@ -1,15 +1,10 @@
 .add-members-modal__list {
   @include roundedCorners;
-  background-color: white;
   border: 1px solid $border-color;
-  padding-top: 10px;
+  margin: 12px 0;
 }
 
-label.add-members-modal__list-item {
-  font-weight: normal;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-
-  md-checkbox { margin: 0 16px; }
+.add-members-modal__list-item .md-label {
+  display: block !important;
+  white-space: nowrap;
 }

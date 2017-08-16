@@ -34,7 +34,7 @@ describe 'Invitations', ->
     page.click '.invitation-form__submit'
     page.expectText '.invitation-form__validation-errors', "We didn't send invitations to the email addresses provided because they belong to people already in the group."
 
-  it 'lets you add members from the parent to a subgroup', ->
+  fit 'lets you add members from the parent to a subgroup', ->
     page.loadPath 'setup_group'
     page.click '.subgroups-card__start'
 
