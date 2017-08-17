@@ -66,7 +66,8 @@ module Dev::FakeDataHelper
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: 3.times.map{ Faker::Artist.name },
-      meeting: 3.times.map { |i| (seed+i).days.from_now.to_date } + 3.times.map { |i| (seed+i).days.from_now.beginning_of_hour.utc.iso8601 }
+      meeting: 3.times.map { |i| (seed+i).days.from_now.to_date } + 3.times.map { |i| (seed+i).days.from_now.beginning_of_hour.utc.iso8601 },
+      ranked_choice: 3.times.map { Faker::Food.ingredient }
     }.with_indifferent_access
   end
 
@@ -84,8 +85,9 @@ module Dev::FakeDataHelper
     }.merge args
 
     case options[:poll_type].to_s
-    when 'dot_vote' then options[:custom_fields][:dots_per_person] = 10
-    when 'meeting'  then options[:custom_fields][:time_zone] = 'Asia/Seoul'
+    when 'dot_vote'      then options[:custom_fields][:dots_per_person] = 10
+    when 'meeting'       then options[:custom_fields][:time_zone] = 'Asia/Seoul'
+    when 'ranked_choice' then options[:custom_fields][:minimum_stance_choices] = 2
     end
 
     Poll.new(options)
@@ -93,11 +95,13 @@ module Dev::FakeDataHelper
 
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
+    choices = 1..poll.minimum_stance_choices      
+
     Stance.new({
       poll: poll,
       participant: fake_user,
       reason: Faker::Hacker.say_something_smart,
-      stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id}]
+      stance_choices_attributes: choices.map { |i| { poll_option_id: poll.poll_option_ids[i] } }
     }.merge(args))
   end
 
