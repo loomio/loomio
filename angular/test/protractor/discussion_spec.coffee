@@ -95,6 +95,7 @@ describe 'Discussion Page', ->
       page.selectOption '.move-thread-form__group-dropdown', 'Point Break'
       page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
+      page.sleep()
       page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'
       page.expectText '.group-theme__name--compact','Point Break'
 
