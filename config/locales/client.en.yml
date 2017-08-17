@@ -5,6 +5,7 @@ en:
     poll: Poll
     dot_vote: Dot vote
     meeting: Time poll
+    ranked_choice: Ranked choice
   timezones:
     local: Local time ({{value}})
   common:
@@ -1291,6 +1292,7 @@ en:
     poll_title: Poll
     dot_vote_title: Dot Vote
     meeting_title: Time poll
+    ranked_choice_title: Ranked choice
 
   poll_common:
     your_response: Your response
@@ -1384,11 +1386,13 @@ en:
     close_count: Close check
     close_dot_vote: Close dot vote
     close_meeting: Close time poll
+    close_ranked_choice: Close ranked choice poll
     proposal_closed: Proposal closed
     poll_closed: Poll closed
     count_closed: Check closed
     dot_vote_closed: Dote vote closed
     meeting_closed: Time poll closed
+    ranked_choice_closed: Ranked choice poll closed
 
   poll_common_closing_at_field:
     closing: Closing
@@ -1424,6 +1428,7 @@ en:
     count: 'This check has closed. <strong>Share an outcome</strong> to complete the process.'
     meeting: 'This time poll has closed. <strong>Share an outcome</strong> to let others know when the meeting will happen.'
     dot_vote: 'This dot vote has closed. <storng>Share an outcome</strong> with the group.'
+    ranked_choice: 'This ranked choice poll has closed. <strong>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
     new_title: Share an outcome
@@ -1552,6 +1557,21 @@ en:
     meeting_duration: Meeting duration
     add_option_placeholder: Enter a new time
 
+  poll_ranked_choice_form:
+    tool_tip_expanded: |
+      <p>BLARG</p>
+    tool_tip_collapsed: Rank options in order
+    start_header: Start ranked choice
+    edit_header: Edit ranked choice
+    tip: Find out when people are available to meet
+    title_placeholder: E.g. Which country should we visit next?
+    details_placeholder: Provide any clarifying details people might need to participate
+    meeting_created: Ranked choice created
+    meeting_updated: Ranked choice updated
+    no_options: "You haven't added any options yet."
+    add_option_placeholder: Enter a new choice
+    minimum_stance_choices: Options to rank
+
   poll_meeting_time_field:
     new_time_slot: New time slot
     closing_hour: Closing hour
@@ -1594,7 +1614,6 @@ en:
   poll_meeting_chart_panel:
     total: Total
 
-
   poll_poll_vote_form:
     stance_created: Vote created
     stance_updated: Vote updated
@@ -1610,6 +1629,10 @@ en:
     too_many_dots: You have used too many dots.
     stance_created: Vote created
     stance_updated: Vote updated
+
+  poll_ranked_choice_vote_form:
+    stance_created: Choice recorded
+    stance_updated: Choice updated
 
   thread_item:
     comment_replied_to:            "<strong>{{author}}</strong> in reply to <strong>{{title}}</strong>"
@@ -1663,6 +1686,13 @@ en:
       poll_edited: '<strong>{{author}}</strong> edited the time poll: <span>{{title}}</span>'
       poll_expired: 'Time poll closed: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the time poll: <span>{{title}}</span>'
+
+    ranked_choice:
+      poll_created: '<strong>{{author}}</strong> started a ranked choice: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> voted:'
+      poll_edited: '<strong>{{author}}</strong> edited the ranked choice: <span>{{title}}</span>'
+      poll_expired: 'Ranked choice closed: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the ranked choice: <span>{{title}}</span>'
 
     # outcome
     outcome_created: '<strong>{{author}}</strong> shared an outcome:'

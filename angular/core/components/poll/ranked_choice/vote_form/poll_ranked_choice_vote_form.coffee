@@ -4,7 +4,9 @@ angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
   controller: ($scope, PollService, MentionService, KeyEventService) ->
     initForm = do ->
       $scope.minimumStanceChoices  = $scope.stance.poll().customFields.minimum_stance_choices
-      $scope.pollOptions           = $scope.stance.poll().pollOptions()
+      $scope.pollOptions           = _.sortBy $scope.stance.poll().pollOptions(), (option) ->
+        choice = _.find($scope.stance.stanceChoices(), _.matchesProperty('pollOptionId', option.id))
+        (choice or {}).score
 
     $scope.submit = PollService.submitStance $scope, $scope.stance,
       prepareFn: ->
