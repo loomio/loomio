@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
     respond_with_error message: :"invitation.invitation_cancelled"
   end
 
-  rescue_from(Invitation::InvitationAlreadyUsed) do
+  rescue_from(Invitation::InvitationAlreadyUsed) do |exception|
     session.delete(:pending_invitation_id)
-    if current_user.email == invitation.recipient_email
+    if current_user.email == exception.invitation.recipient_email
       redirect_to formal_group_url invitation.group
     else
       respond_with_error message: :"invitation.invitation_already_used"
