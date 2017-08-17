@@ -54,9 +54,9 @@ class InvitationService
 
   def self.redeem(invitation, user)
     return true if invitation.group.members.include?(user)
-    raise Invitation::InvitationCancelled   if invitation.cancelled?
-    raise Invitation::InvitationAlreadyUsed if invitation.accepted?
-    invitation.accepted_at = DateTime.now   if invitation.single_use?
+    raise Invitation::InvitationCancelled                   if invitation.cancelled?
+    raise Invitation::InvitationAlreadyUsed.new(invitation) if invitation.accepted?
+    invitation.accepted_at = DateTime.now                   if invitation.single_use?
 
     membership = invitation.group.add_member!(user, invitation: invitation)
     invitation.save!
