@@ -30,6 +30,25 @@ describe 'Profile', ->
       page.loadPath('setup_restricted_profile')
       page.expectNoText('.user-page__profile', 'Secret Dirty Dancing Shoes')
 
+  describe 'updating a password', ->
+    it 'can set a password', ->
+      page.click '.sidebar__list-item-button--profile'
+      page.click '.profile-page__change-password'
+      page.fillIn '.change-password-form__password', 'Smush'
+      page.fillIn '.change-password-form__password-confirmation', 'Smush'
+      page.click '.change-password-form__submit'
+      page.expectText '.change-password-form', "is too short"
+
+      page.fillIn '.change-password-form__password', 'SmushDemBerries'
+      page.fillIn '.change-password-form__password-confirmation', 'SmishDemBorries'
+      page.click '.change-password-form__submit'
+      page.expectText '.change-password-form', "doesn't match"
+
+      page.fillIn '.change-password-form__password', 'SmushDemBerries'
+      page.fillIn '.change-password-form__password-confirmation', 'SmushDemBerries'
+      page.click '.change-password-form__submit'
+      page.expectFlash 'Your password has been updated'
+
   describe 'deactivating an account', ->
 
     describe 'as the sole coordinator of a group', ->

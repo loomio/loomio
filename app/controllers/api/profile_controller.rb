@@ -46,15 +46,6 @@ class API::ProfileController < API::RestfulController
     respond_with_resource(serializer: Pending::UserSerializer)
   end
 
-  def set_password
-    if resource.presence
-      resource.send_reset_password_instructions
-      head :ok
-    else
-      head :not_found
-    end
-  end
-
   private
 
   def resource

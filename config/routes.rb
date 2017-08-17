@@ -97,10 +97,8 @@ Loomio::Application.routes.draw do
       post :update_profile, on: :collection
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection
-      post :change_password, on: :collection
       post :deactivate, on: :collection
       post :save_experience, on: :collection
-      post :set_password, on: :collection
     end
 
     resources :login_tokens, only: [:create]
@@ -222,7 +220,6 @@ Loomio::Application.routes.draw do
 
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')
-  devise_for :users, controllers: { passwords: :"users/passwords" }
 
   namespace(:subscriptions) do
     get :select_gift_plan

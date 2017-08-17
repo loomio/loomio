@@ -37,6 +37,10 @@ class Full::UserSerializer < UserSerializer
     true
   end
 
+  def include_has_password?
+    true
+  end
+
   private
 
   def from_scope(field)
