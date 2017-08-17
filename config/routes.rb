@@ -220,6 +220,7 @@ Loomio::Application.routes.draw do
 
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')
+  devise_for :users
 
   namespace(:subscriptions) do
     get :select_gift_plan
