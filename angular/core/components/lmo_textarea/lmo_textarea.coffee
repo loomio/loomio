@@ -6,4 +6,5 @@ angular.module('loomioApp').directive 'lmoTextarea', (EmojiService, AttachmentSe
   controller: ($scope, $element) ->
     EmojiService.listen $scope, $scope.model, $scope.field, $element
     MentionService.applyMentions $scope, $scope.model
+    AttachmentService.listenForAttachments $scope, $scope.model
     AttachmentService.listenForPaste $scope
