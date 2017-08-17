@@ -6,12 +6,6 @@
     %input.lmo-primary-form-input.poll-common-form-fields__title{type: "text", placeholder: "{{titlePlaceholder()}}", ng-model: "poll.title", md-maxlength: "250"}
     %validation_errors{subject: "poll", field: "title"}
 
-  %outlet{name: "before-poll-form-textarea", model: "poll"}
-  .lmo-textarea-wrapper
-    %md-input-container.md-block.md-no-errors{md-no-float: "true"}
-      %textarea.lmo-primary-form-input.poll-common-form-fields__details{ng-model: "poll.details", placeholder: "{{detailsPlaceholder()}}", mention-field: "true"}
-      .lmo-md-actions
-        %div
-        %emoji_picker{target-selector: "detailsSelector"}
+  %lmo_textarea{model: "poll", field: "details", label: "'poll_common_form.details' | translate", placeholder: "detailsPlaceholder()"}
 
   %outlet{name: "after-poll-form-textarea", model: "poll"}

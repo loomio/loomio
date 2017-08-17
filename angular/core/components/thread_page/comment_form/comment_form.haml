@@ -2,19 +2,8 @@
   %h2.lmo-card-heading#comment-form-title{translate: "comment_form.aria_label"}>
   %form{ng-if: "showCommentForm()", ng-paste: "handlePaste($event)", ng_submit: "submit()"}
     .lmo-disabled-form{ng-show: "isDisabled"}
-    %input{type: "hidden", ng-model: "comment.usesMarkdown"}
-    %outlet{name: "before-comment-form-textarea", model: "comment"}
-    .lmo-relative.comment-form__textarea-wrapper.lmo-textarea-wrapper
-      %md-input-container.md-block.md-no-errors{md-no-float: "true"}
-        %textarea.lmo-textarea.comment-form__comment-field.lmo-primary-form-input{ng-disabled: "isDisabled", aria-labelledby: "comment-form-title", name: "body", placeholder: "{{commentPlaceholder()}}", ng-model: "comment.body", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
-        .lmo-md-actions
-          .comment-form__privacy-notice{ng-if: "threadIsPublic()", translate: "comment_form.public_privacy_notice"}
-          .comment-form__privacy-notice{ng-if: "threadIsPrivate()", translate: "comment_form.private_privacy_notice", translate-value-group-name: "{{comment.group().fullName}}"}
-          %emoji_picker{target-selector: "bodySelector"}
-    %validation_errors{subject: "comment", field: "body"}
-    %outlet{name: "after-comment-form-textarea", model: "comment"}
-    %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in comment.newAttachments() | orderBy: 'id' track by attachment.id"}
-    .thread-comment-form-actions.lmo-flex.lmo-flex__space-between
+    %lmo_textarea{model: "comment", field: "body", placeholder: "commentPlaceholder()", helptext: "commentHelptext()"}
+    .lmo-md-actions
       %div{ng-if: "submitIsDisabled"}
       .comment-form__actions--left.lmo-flex{layout: "row", ng-if: "!submitIsDisabled"}
         %md-button.comment-form-button{translate: "comment_form.cancel_reply", ng-show: "comment.parentId", ng-click: "comment.parentId = null", tabindex: "-1"}
@@ -24,7 +13,6 @@
       .comment-form__actions--right.lmo-flex{layout: "row"}
         %outlet{name: "after-comment-form", model: "comment"}
         %md-button.md-primary.md-raised.comment-form__submit-button{type: "submit", ng-disabled: "submitIsDisabled", translate: "comment_form.submit_button.label"}
-        %md_attachment_form{model: "comment", show-label: "true"}
     %validation_errors{subject: "comment", field: "file"}
   .comment-form__join-actions{ng-if: "!showCommentForm()"}
     %join_group_button{group: "comment.discussion().group()", ng-if: "isLoggedIn()", block: "true"}

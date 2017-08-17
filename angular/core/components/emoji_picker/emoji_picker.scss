@@ -1,13 +1,3 @@
-.emoji-picker__toggle {
-  opacity: .7;
-  &:hover { opacity: 1; }
-  font-size: 20px;
-  padding: 0;
-  background-color: transparent;
-  padding: 0 5px;
-  border: 0;
-}
-
 .emoji-picker__menu {
   @include card;
   min-width: 190px;

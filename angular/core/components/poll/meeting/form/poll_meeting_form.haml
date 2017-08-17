@@ -7,7 +7,6 @@
       %md-option{ng-repeat: "duration in durations", ng-value: "duration.minutes"}
         {{duration.label}}
 
-  %poll_common_attachment_form{poll: "poll"}
   %poll_common_form_options{poll: "poll"}
   %poll_common_closing_at_field.md-block{poll: "poll"}
   %poll_common_notify_group{model: "poll", notify-action: "{{poll.notifyAction()}}"}

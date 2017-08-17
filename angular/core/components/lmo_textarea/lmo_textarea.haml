@@ -1,0 +1,17 @@
+.lmo-textarea
+  %outlet{name: "before-lmo-textarea", model: "model"}
+  .lmo-relative.lmo-textarea-wrapper
+    %md-input-container.md-block.md-no-errors{md-no-float: "true"}
+      %label{ng-if: "label"} {{label}}
+      %textarea.lmo-textarea.lmo-primary-form-input{ng-disabled: "isDisabled", name: "body", placeholder: "{{placeholder}}", ng-model: "model[field]", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
+    .lmo-md-actions
+      .lmo-flex
+        %validation_errors{ng-if: "model.errors[field]", subject: "model", field: "{{field}}"}
+        .lmo-textarea__helptext{ng-if: "!model.errors[field]"} {{helptext}}
+      .lmo-flex
+        %md_attachment_form{model: "model"}
+        %emoji_picker{target-selector: "bodySelector"}
+  %outlet{name: "after-lmo-textarea", model: "model"}
+  .lmo-textarea__attachments
+    %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in model.newAttachments() | orderBy: 'id' track by attachment.id"}
+  .lmo-textarea__footer

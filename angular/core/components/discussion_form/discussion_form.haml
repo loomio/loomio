@@ -24,14 +24,7 @@
             %input.discussion-form__title-input.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-required: "true", maxlength: "255"}
           %validation_errors{subject: "discussion", field: "title"}
 
-        %outlet{name: "before-discussion-form-textarea", model: "discussion"}
-        .lmo-relative.lmo-textarea-wrapper
-          %md-input-container.md-block.md-no-errors{md-no-float: "true"}
-            %textarea.lmo-relative.lmo-textarea.discussion-form__description-input.lmo-primary-form-input#discussion-context{ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
-            .lmo-md-actions
-              %div
-              %emoji_picker{target-selector: "descriptionSelector"}
-        %outlet{name: "after-discussion-form-textarea", model: "discussion"}
+        %lmo_textarea{model: "discussion", field: "description", placeholder: "'discussion_form.context_placeholder' | translate", label: "'discussion_form.context_label' | translate"}
 
         %md-list.discussion-form__options
           %md-list-item.discussion-form__privacy-form{ng-if: "showPrivacyForm()"}
@@ -53,10 +46,8 @@
                 %strong{translate: "discussion_form.make_announcement"}>
               .discussion-form__make-announcement-subtitle{translate: "discussion_form.notified_count", ng-if: "discussion.makeAnnouncement", translate-values: "{count: discussion.group().announcementRecipientsCount}"}
 
-        .lmo-blank
-          %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in discussion.newAttachments() | orderBy: 'id' track by attachment.id"}
         .lmo-md-actions
-          %md-attachment-form.discussion-form__attachment-form{model: "discussion", ng-if: "discussion.groupId", show-label: "true"}
+          %div
           %md-button.md-primary.md-raised.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "common.action.start", ng-if: "discussion.isNew()" }
           %md-button.md-primary.md-raised.discussion-form__update{type: "submit", ng-disabled: "submitIsDisabled", translate: "common.action.save", ng-if: "!discussion.isNew()" }
         %validation_errors.discussion-form__attachment-errors{subject: "discussion", field: "file"}

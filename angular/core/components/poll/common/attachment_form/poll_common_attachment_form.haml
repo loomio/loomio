@@ -1,5 +1,0 @@
-.poll-common-attachment-form
-  %md_attachment_form{model: "poll", show-label: "true"}
-  %validation_errors{subject: "poll", field: "file"}
-  %label.poll-common-form__label{ng-if: "poll.newAttachments().length >0", translate: "poll_common_attachment_form.label"}
-  %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in poll.newAttachments() | orderBy: 'id' track by attachment.id"}
