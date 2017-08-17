@@ -2,7 +2,6 @@ describe 'Profile', ->
 
   profileHelper = require './helpers/profile_helper.coffee'
   page = require './helpers/page_helper.coffee'
-  staticPage = require './helpers/static_page_helper.coffee'
 
   beforeEach ->
     page.loadPath('setup_discussion')
@@ -17,10 +16,10 @@ describe 'Profile', ->
 
   describe 'visiting a user profile', ->
     it 'displays a user and their non-secret groups', ->
-      profileHelper.visitUserPage('jennifergrey')
-      expect(profileHelper.nameText()).toContain('Jennifer Grey')
-      expect(profileHelper.usernameText()).toContain('@jennifergrey')
-      expect(profileHelper.groupsText()).toContain('Dirty Dancing Shoes')
+      browser.get("u/jennifergrey")
+      page.expectText '.user-page__content', 'Jennifer Grey'
+      page.expectText '.user-page__content', '@jennifergrey'
+      page.expectText '.user-page__groups', 'Dirty Dancing Shoes'
 
     it 'displays secret groups to other members', ->
       page.loadPath('setup_profile_with_group_visible_to_members')
