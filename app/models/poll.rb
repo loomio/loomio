@@ -8,14 +8,15 @@ class Poll < ActiveRecord::Base
   include SelfReferencing
   include UsesOrganisationScope
 
-  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails
+  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name
                        can_add_options can_remove_options author_receives_outcome
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
                        dates_as_options required_custom_fields
-                       require_stance_choice poll_options_attributes).freeze
+                       require_stance_choices require_all_choices
+                       poll_options_attributes).freeze
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_templates.dig(self.poll_type, field) }
   end
@@ -103,6 +104,7 @@ class Poll < ActiveRecord::Base
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
   validate :poll_options_are_valid
+  validate :valid_minimum_stance_choices
   validate :closes_in_future
   validate :require_custom_fields
 
@@ -204,6 +206,10 @@ class Poll < ActiveRecord::Base
     super.tap { self.group_id = self.discussion&.group_id }
   end
 
+  def minimum_stance_choices
+    self.custom_fields.fetch('minimum_stance_choices', 1).to_i
+  end
+
   private
 
   # provides a base hash of 0's to merge with stance data
@@ -238,6 +244,13 @@ class Poll < ActiveRecord::Base
   def prevent_removed_options
     if (template_poll_options - self.poll_options.map(&:name)).any?
       self.errors.add(:poll_options, I18n.t(:"poll.error.cannot_remove_options"))
+    end
+  end
+
+  def valid_minimum_stance_choices
+    return unless require_stance_choices
+    if minimum_stance_choices > poll_options.length
+      self.errors.add(:minimum_stance_choices, I18n.t(:"poll.error.minimum_too_high"))
     end
   end
 
