@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   rescue_from(Invitation::InvitationAlreadyUsed) do
     session.delete(:pending_invitation_id)
     if current_user.email == invitation.recipient_email
-      redirect_to invitation.group
+      redirect_to formal_group_url invitation.group
     else
       respond_with_error message: :"invitation.invitation_already_used"
     end
