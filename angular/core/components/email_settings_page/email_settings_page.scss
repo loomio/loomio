@@ -10,11 +10,9 @@
   margin-top: 40px;
 }
 
-.email-settings-page__groups {
-  margin-top: 20px;
+.email-settings-page__group {
+  padding: 12px 0 !important;
 }
-
-.email-settings-page__group { margin-bottom: 20px; }
 
 .email-settings-page__learn-more-link {
   @include cardMinorAction;
