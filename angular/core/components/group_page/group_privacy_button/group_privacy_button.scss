@@ -1,14 +1,6 @@
-.group-privacy-button {
-  cursor: default;
-  margin: 0 8px;
-  box-shadow: none;
-  &:hover { box-shadow: none; }
-  i {
-    width: 24px;
-    font-size: 20px;
-    position: relative;
-    top: 4px;
-  }
+.group-privacy-button i {
+  margin-right: 4px;
+  font-size: 18px;
 }
 
 .group-privacy-button__tooltip {
