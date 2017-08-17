@@ -171,6 +171,10 @@
   display: inline-block;
 }
 
+.lmo-modal__narrow {
+  max-width: $tiny-max-px;
+}
+
 img.emojione {
   position: relative;
   top: 5px;
