@@ -21,3 +21,18 @@ md-menu-content[role="menu"] {
   position: relative;
   padding: 24px 16px !important;
 }
+
+@media (max-width: $tiny-max-px) {
+  .md-open-menu-container {
+    left: 0     !important;
+    top: 48px   !important;
+    max-height: 90%;
+    width: 100%;
+    overflow-y: auto;
+    .md-button { text-align: center; }
+  }
+}
+
+@media (min-width: $tiny-max-px) {
+  .md-open-menu-container { z-index: 1001; }
+}
