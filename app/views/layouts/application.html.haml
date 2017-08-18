@@ -1,0 +1,16 @@
+!!!
+%html{locale: I18n.locale}
+  %head
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+    %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
+    %title= @title || "Loomio | Collaborative Decision-Making"
+    = stylesheet_link_tag "application"
+    = csrf_meta_tags
+    = render 'application/social_metadata', description: @meta_description, title: @meta_title
+    = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
+
+  %body{class: "pages #{controller_name} #{action_name}"}
+    = render 'application/flash_messages', :flash => flash
+    %main.container= yield
+
+  = javascript_include_tag "application"
