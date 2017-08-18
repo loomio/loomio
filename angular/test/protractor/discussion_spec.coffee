@@ -1,4 +1,4 @@
-fdescribe 'Discussion Page', ->
+describe 'Discussion Page', ->
 
   groupsHelper = require './helpers/groups_helper.coffee'
   discussionForm = require './helpers/discussion_form_helper.coffee'
