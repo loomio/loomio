@@ -41,13 +41,13 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - nvm install 7.4.0
   - nvm use 7.4.0
-  - npm install -g yarn gulp webdriver-manager
+  - npm install -g yarn gulp
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - gem install s3_uploader
   - cd angular; yarn; cd ..
-  - webdriver-manager update
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
   - mkdir $TRAVIS_BUILD_DIR/bin
   - ln -s $TRAVIS_BUILD_DIR/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.18.0 $TRAVIS_BUILD_DIR/bin/geckodriver
   - ln -s fetched_plugins plugins
