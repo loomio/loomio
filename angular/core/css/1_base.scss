@@ -6,7 +6,8 @@ body {
 
 header {
   min-height: $navbar-height;
-  z-index: 100; }
+  z-index: 200;
+}
 
 h1, h2, h3, h4{
   color: $primary-text-color;
