@@ -39,7 +39,7 @@ angular.module('loomioApp').directive 'commentForm', ($translate) ->
 
         successCallback: $scope.init
       KeyEventService.submitOnEnter $scope
-      $scope.$broadcast 'commentFormInit', $scope.comment
+      $scope.$broadcast 'reinitializeForm', $scope.comment
     $scope.init()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
