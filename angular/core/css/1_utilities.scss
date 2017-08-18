@@ -181,29 +181,3 @@ img.emojione {
   width: 20px;
   height: 20px;
 }
-
-@media (max-width: $tiny-max-px) {
-  .md-open-menu-container {
-    left: 0     !important;
-    top: 48px   !important;
-    width: 100%;
-    .md-button { text-align: center; }
-  }
-}
-
-@media (min-width: $tiny-max-px) {
-  .md-open-menu-container {
-    z-index: 1001;
-  }
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-}
