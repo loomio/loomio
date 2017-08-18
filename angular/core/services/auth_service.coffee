@@ -24,7 +24,3 @@ angular.module('loomioApp').factory 'AuthService', ($window, Records, RestfulCli
     sendLoginLink: (user) ->
       new RestfulClient('login_tokens').post('', email: user.email).then ->
         user.sentLoginLink = true
-
-    forgotPassword: (user) ->
-      Records.users.remote.post('set_password', email: user.email).then ->
-        user.sentPasswordLink = true
