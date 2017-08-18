@@ -1,64 +1,34 @@
 class ApplicationController < ActionController::Base
   include LocalesHelper
-  include ApplicationHelper
   include AngularHelper
+  include ApplicationHelper
   include ProtectedFromForgery
-  include LoadAndAuthorize
+  include ErrorRescueHelper
   include CurrentUserHelper
 
-  helper :locales
-  helper_method :current_user
-  helper_method :dashboard_or_root_path
-
-  before_filter :set_invitation_token
+  before_filter :initial_payload, only: :index
   before_filter :set_application_locale
+  before_filter :set_invitation_token
+  around_filter :user_time_zone
+  after_filter  :save_detected_locale
 
-  around_filter :user_time_zone, if: :user_signed_in?
-  after_filter :save_detected_locale, if: :user_signed_in?
+  helper_method :current_user
+  helper_method :client_asset_path
+  helper_method :detectable_locales
 
-  rescue_from(ActionView::MissingTemplate)  { |exception| raise exception unless %w[txt text gif png].include?(params[:format]) }
-  rescue_from(ActiveRecord::RecordNotFound) { respond_with_error message: :"error.not_found", status: 404 }
+  layout false, only: :index
 
-  rescue_from(Invitation::InvitationCancelled) do
-    session.delete(:pending_invitation_id)
-    respond_with_error message: :"invitation.invitation_cancelled"
-  end
-
-  rescue_from(Invitation::InvitationAlreadyUsed) do |exception|
-    session.delete(:pending_invitation_id)
-    if current_user.email == exception.invitation.recipient_email
-      redirect_to formal_group_url invitation.group
-    else
-      respond_with_error message: :"invitation.invitation_already_used"
-    end
-  end
-
-  rescue_from CanCan::AccessDenied do |exception|
-    if user_signed_in?
-      flash[:error] = t("error.access_denied")
-      redirect_to dashboard_path
-    else
-      authenticate_user!
-    end
+  # this boots the angular app
+  def index
   end
 
   protected
 
-  def respond_with_error(message: "", status: 400)
-    @error_description ||= t(message)
-    render "errors/#{status}", layout: 'error', status: status
-  end
-
-  def permitted_params
-    @permitted_params ||= PermittedParams.new(params)
-  end
-
-  def dashboard_or_root_path
-    current_user.is_logged_in? ? dashboard_path : root_path
-  end
-
-  def user_signed_in?
-    current_user.is_logged_in?
+  def initial_payload
+    @payload ||= InitialPayload.new(current_user).payload.merge(
+      flash:           flash.to_h,
+      pendingIdentity: serialized_pending_identity
+    )
   end
 
   def user_time_zone(&block)
