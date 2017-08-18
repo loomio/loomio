@@ -1740,9 +1740,7 @@ en:
     invalid_password: "Sorry, that password doesn't match the one we have on file"
     email_not_found: "Sorry, we couldn't find an account with that email address"
     email_placeholder: you@example.com
-    login_link_helptext: |
-      Click the button below and we'll send you a link to sign in instantly.
-      Or, you can set a password to login with, if you don't want to receive an email.
+    login_link_helptext: Click the button below and we'll send you a link to sign in instantly.
     login_link_helptext_with_password: "Enter your password, or sign in via email."
     sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
     oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
