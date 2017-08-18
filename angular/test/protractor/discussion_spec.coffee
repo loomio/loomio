@@ -1,4 +1,4 @@
-describe 'Discussion Page', ->
+fdescribe 'Discussion Page', ->
 
   groupsHelper = require './helpers/groups_helper.coffee'
   discussionForm = require './helpers/discussion_form_helper.coffee'
@@ -38,7 +38,7 @@ describe 'Discussion Page', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
       page.fillIn('.discussion-form__title-input', 'better title')
-      page.fillIn('.discussion-form__description-input', 'improved description')
+      page.fillIn('.discussion-form textarea', 'improved description')
       page.click('.discussion-form__private')
       page.click('.discussion-form__update')
       page.expectText('.context-panel', 'better title')
@@ -51,25 +51,25 @@ describe 'Discussion Page', ->
                  '.context-panel__dropdown-options--edit'
 
       page.fillIn('.discussion-form__title-input', 'dumb title')
-      page.fillIn('.discussion-form__description-input', 'rubbish description')
+      page.fillIn('.discussion-form textarea', 'rubbish description')
 
       page.click('.modal-cancel')
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
 
       page.expectNoText('.discussion-form__title-input', 'dumb title')
-      page.expectNoText('.discussion-form__description-input', 'rubbish description')
+      page.expectNoText('.discussion-form textarea', 'rubbish description')
 
     xit 'lets you view thread revision history', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
-      page.fillIn '.discussion-form__description-input', 'Revised description'
+      page.fillIn '.discussion-form textarea', 'Revised description'
       page.click '.discussion-form__update'
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
-      page.fillIn '.discussion-form__description-input', 'Revised description'
+      page.fillIn '.discussion-form textarea', 'Revised description'
       page.click '.discussion-form__update'
       page.click '.context-panel__edited'
       page.expectText '.revision-history-modal__body', 'Revised title'
@@ -150,7 +150,7 @@ describe 'Discussion Page', ->
       page.click '.join-group-button__join-group'
       page.expectFlash 'You are now a member of Open Dirty Dancing Shoes'
 
-      page.fillIn '.comment-form__comment-field', 'I am new!'
+      page.fillIn '.comment-form textarea', 'I am new!'
       page.click '.comment-form__submit-button'
       page.expectFlash 'Comment added'
 
@@ -170,7 +170,7 @@ describe 'Discussion Page', ->
       expect(threadPage.mostRecentComment()).toContain('hi this is my comment')
 
     it 'can add emojis', ->
-      page.fillIn '.comment-form__comment-field', 'Here is a dragon!'
+      page.fillIn '.comment-form textarea', 'Here is a dragon!'
       page.click '.emoji-picker__toggle'
       page.fillIn '.emoji-picker__search input', 'drag'
       page.clickFirst '.emoji-picker__icon'
@@ -206,7 +206,7 @@ describe 'Discussion Page', ->
       expect(threadPage.mostRecentComment()).toContain('edited comment right thur')
 
     it 'lets you view comment revision history', ->
-      page.fillIn '.comment-form__comment-field', 'Comment!'
+      page.fillIn '.comment-form textarea', 'Comment!'
       page.click '.comment-form__submit-button'
       page.click '.thread-item__dropdown-button',
                  '.thread-item__edit-link'

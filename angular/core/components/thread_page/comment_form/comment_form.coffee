@@ -45,6 +45,6 @@ angular.module('loomioApp').directive 'commentForm', ($translate) ->
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
       $scope.comment.parentAuthorName = parentComment.authorName()
-      ScrollService.scrollTo('.comment-form__comment-field', offset: 150)
+      ScrollService.scrollTo('.comment-form textarea', offset: 150)
 
     AttachmentService.listenForAttachments $scope, $scope.comment
