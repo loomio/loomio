@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   include ErrorRescueHelper
   include CurrentUserHelper
 
-  before_filter :initial_payload, only: :index
   around_filter :process_time_zone
   around_filter :process_locale         # LocalesHelper
   before_filter :set_invitation_token   # CurrentUserHelper
@@ -16,8 +15,9 @@ class ApplicationController < ActionController::Base
   helper_method :detectable_locales
 
   # this boots the angular app
-  layout false, only: :index
   def index
+    initial_payload
+    render 'application/index', layout: false
   end
 
   protected
