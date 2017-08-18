@@ -3,7 +3,7 @@ class UserSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :username, :short_bio, :avatar_initials, :avatar_kind,
              :avatar_url, :profile_url, :gravatar_md5, :time_zone, :search_fragment,
-             :label, :locale, :created_at, :email_verified
+             :label, :locale, :created_at, :email_verified, :has_password
 
   def label
     username
@@ -29,6 +29,10 @@ class UserSerializer < ActiveModel::Serializer
     object.avatar_kind == 'uploaded'
   end
   alias :include_profile_url? :include_avatar_url?
+
+  def include_has_password?
+    scope[:include_password_status]
+  end
 
   def search_fragment
     scope[:q]

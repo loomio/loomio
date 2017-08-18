@@ -28,7 +28,7 @@ class Pending::BaseSerializer < ActiveModel::Serializer
   end
 
   def has_password
-    user.encrypted_password.present?
+    user.has_password
   end
 
   private
