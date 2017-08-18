@@ -7,18 +7,16 @@ class ApplicationController < ActionController::Base
   include CurrentUserHelper
 
   before_filter :initial_payload, only: :index
-  before_filter :set_application_locale
-  before_filter :set_invitation_token
-  around_filter :user_time_zone
-  after_filter  :save_detected_locale
+  around_filter :process_time_zone
+  around_filter :process_locale         # LocalesHelper
+  before_filter :set_invitation_token   # CurrentUserHelper
 
   helper_method :current_user
   helper_method :client_asset_path
   helper_method :detectable_locales
 
-  layout false, only: :index
-
   # this boots the angular app
+  layout false, only: :index
   def index
   end
 
@@ -31,7 +29,7 @@ class ApplicationController < ActionController::Base
     )
   end
 
-  def user_time_zone(&block)
-    Time.use_zone(TimeZoneToCity.convert(current_user.time_zone), &block)
+  def process_time_zone(&block)
+    Time.use_zone(TimeZoneToCity.convert(current_user.time_zone.to_s), &block)
   end
 end
