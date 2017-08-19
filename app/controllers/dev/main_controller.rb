@@ -12,6 +12,28 @@ class Dev::MainController < Dev::BaseController
     render layout: false
   end
 
+  def setup_nested_comments
+    sign_in patrick
+    group = create_group
+    group.add_admin!(patrick)
+    d    = saved fake_discussion(group: group)
+    c1   = saved fake_comment(discussion: d)
+    c11  = saved fake_comment(discussion: d, parent: c1)
+    c12  = saved fake_comment(discussion: d, parent: c1)
+    c111 = saved fake_comment(discussion: d, parent: c11)
+
+
+    # c2 = saved fake_comment(discussion: d)
+    # c21 = saved fake_comment(discussion: d, parent: c2)
+
+    # [c1, c11, c12, c111, c2, c21].each do |c|
+    [c1, c11, c12, c111].each do |c|
+      CommentService.create(comment: c, actor: patrick)
+    end
+
+    redirect_to discussion_url(d)
+  end
+
   def setup_accounts_merged_email
     UserMailer.accounts_merged(patrick).deliver_now
     last_email

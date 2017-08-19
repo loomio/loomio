@@ -1,0 +1,3 @@
+.event-children
+  -# TODO will need to take notice of activity order later on
+  %thread-item{ng-repeat: "event in parent.children() | orderBy: 'sequence_id' track by event.id", event: "event"}

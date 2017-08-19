@@ -17,11 +17,16 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       membership_request: 'membershipRequests'
 
     relationships: ->
+      @belongsTo 'parent', from: 'events'
+      # @hasMany   'children', from: 'events', with: 'parentId'
       @belongsTo 'actor', from: 'users'
       @belongsTo 'discussion'
       @belongsTo 'version'
       @hasMany  'notifications'
 
+    children: ->
+      @recordStore.events.find(parentId: @id)
+      
     delete: ->
       @deleted = true
 

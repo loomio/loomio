@@ -1631,7 +1631,7 @@ en:
     poll_created:                  "<strong>{{author}}</strong> started a {{polltype}}: <strong>{{title}}</strong>"
     poll_edited:                   "<strong>{{author}}</strong> edited the {{polltype}}: <strong>{{title}}</strong>"
     poll_expired:                  "{{polltype}} closed: <strong>{{title}}</strong>"
-    stance_created:                "<strong>{{author}}</strong> voted"
+    stance_created:                "<strong>{{author}}</strong> voted on: <strong>{{title}}</strong>"
 
   poll_thread_item:
     poll:

@@ -9,6 +9,10 @@
     color: $primary-text-color;
     @include md-body-2;
   }
+  strong:nth-child(2) {
+    font-weight: normal;
+    color: $grey-on-white;
+  }
   &::first-letter { text-transform: uppercase; }
 }
 

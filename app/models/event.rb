@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :eventable, polymorphic: true
   belongs_to :discussion, required: false
   belongs_to :user, required: false
+  belongs_to :parent, required: false, class_name: 'Event'
 
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :chronologically, -> { order(created_at: :asc) }
