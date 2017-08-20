@@ -93,7 +93,6 @@ describe 'Discussion Page', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--move'
       page.selectOption '.move-thread-form__group-dropdown', 'Point Break'
-      page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
       page.sleep()
       page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'
