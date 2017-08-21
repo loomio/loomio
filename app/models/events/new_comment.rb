@@ -5,10 +5,11 @@ class Events::NewComment < Event
   def self.publish!(comment)
     create(kind: 'new_comment',
            eventable: comment,
-           parent: comment.parent&.events&.find_by(kind: 'new_comment'),
+           parent: comment.parent_event,
            discussion: comment.discussion,
            created_at: comment.created_at).tap { |e| EventBus.broadcast('new_comment_event', e) }
   end
+
 
   private
 

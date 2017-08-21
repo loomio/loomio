@@ -7,6 +7,7 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
       @from       = opts.from or 0
       @per        = opts.per or 25
       @numLoaded  = opts.numLoaded or 0
+      @then       = opts.then or ->
 
     reset: ->
       @from       = 0
@@ -23,9 +24,18 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
         else
           @exhausted = true
         data
+      .then(@then)
       .finally =>
         @loading = false
 
+    loadFrom: (from) ->
+      @from = from
+      @fetchRecords()
+
     loadMore: ->
-      @from += @per
+      @from += @per if @numLoaded > 0
+      @fetchRecords()
+
+    loadPrevious: ->
+      @from -= @per if @numLoaded > 0
       @fetchRecords()

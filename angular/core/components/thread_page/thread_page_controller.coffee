@@ -56,7 +56,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $window.location.reload() if @discussion.requireReloadFor(event)
     @eventsLoaded = true
     @comment = Records.comments.find(@requestedCommentId) unless isNaN(@requestedCommentId)
-    @performScroll()
+    # @performScroll()
 
   @hasClosedPolls = ->
     _.any @discussion.closedPolls()

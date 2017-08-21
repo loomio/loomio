@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819002328) do
+ActiveRecord::Schema.define(version: 20170820001201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
-  enable_extension "citext"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -264,6 +264,15 @@ ActiveRecord::Schema.define(version: 20170819002328) do
 
   add_index "drafts", ["user_id", "draftable_type", "draftable_id"], name: "index_drafts_on_user_id_and_draftable_type_and_draftable_id", unique: true, using: :btree
 
+  create_table "event_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "event_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "event_anc_desc_idx", unique: true, using: :btree
+  add_index "event_hierarchies", ["descendant_id"], name: "event_desc_idx", using: :btree
+
   create_table "events", force: :cascade do |t|
     t.string   "kind",           limit: 255
     t.datetime "created_at"
@@ -276,8 +285,12 @@ ActiveRecord::Schema.define(version: 20170819002328) do
     t.boolean  "announcement",               default: false, null: false
     t.jsonb    "custom_fields",              default: {},    null: false
     t.integer  "parent_id"
+    t.string   "ancestry"
+    t.integer  "pos"
+    t.integer  "child_count"
   end
 
+  add_index "events", ["ancestry"], name: "index_events_on_ancestry", using: :btree
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
   add_index "events", ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true, using: :btree
   add_index "events", ["discussion_id"], name: "index_events_on_discussion_id", using: :btree

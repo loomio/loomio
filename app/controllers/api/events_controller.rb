@@ -4,13 +4,21 @@ class API::EventsController < API::RestfulController
   private
 
   def accessible_records
-    load_and_authorize(:discussion).items.sequenced
+    records = load_and_authorize(:discussion).items.sequenced
+    records = records.with_ancestor(params[:parent_id]) if params[:parent_id]
+    records
   end
 
   def page_collection(collection)
-    collection.where('sequence_id >= ?', sequence_id_for(collection))
-              .includes(:eventable)
-              .limit(params[:per] || default_page_size)
+    if params[:parent_id]
+      collection.where('pos >= ?', params.fetch(:from, 0))
+                .includes(:eventable)
+                .limit(params[:per] || default_page_size)
+    else
+      collection.where('sequence_id >= ?', sequence_id_for(collection))
+                .includes(:eventable)
+                .limit(params[:per] || default_page_size)
+    end
   end
 
   def default_page_size

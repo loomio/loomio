@@ -1,3 +1,11 @@
 .event-children
-  -# TODO will need to take notice of activity order later on
-  %thread-item{ng-repeat: "event in parent.children() | orderBy: 'sequence_id' track by event.id", event: "event"}
+  .event-children__load-previous{ng-if: "anyPrevious()"}
+    Load previous {{previousCount()}}
+  %thread-item{ng-repeat: "event in parent.children() | orderBy: page.orderBy track by event.id", event: "event", page: "page"}
+  -# %div
+  -#   parent_id: {{parent.id}}
+  -#   children.length: {{children().length}}
+  -#   parent.childCount: {{parent.childCount}}
+  -#   lastPos: {{lastPos() }}
+  %md-button.event-children__load-next{ng-if: "anyNext()", ng-click: "loader.loadMore()"}
+    Load next {{nextCount()}}

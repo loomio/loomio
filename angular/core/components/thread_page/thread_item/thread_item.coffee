@@ -1,10 +1,10 @@
 angular.module('loomioApp').directive 'threadItem', ($compile, $translate, EventHeadlineService) ->
-  scope: {event: '='}
+  scope: {event: '=', page: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
 
   link: (scope, element, attrs) ->
-    $compile("<event-children parent=\"event\"></event-children>")(scope, (cloned, scope) -> element.append(cloned))
+    $compile("<event-children parent=\"event\" page=\"page\"></event-children>")(scope, (cloned, scope) -> element.append(cloned))
 
   controller: ($scope) ->
     $scope.headline = ->

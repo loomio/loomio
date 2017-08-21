@@ -1,11 +1,11 @@
 class Event < ActiveRecord::Base
   include HasTimeframe
+  has_closure_tree order: :pos
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
   belongs_to :discussion, required: false
   belongs_to :user, required: false
-  belongs_to :parent, required: false, class_name: 'Event'
 
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :chronologically, -> { order(created_at: :asc) }
@@ -17,12 +17,19 @@ class Event < ActiveRecord::Base
   update_counter_cache :discussion, :items_count
   update_counter_cache :discussion, :salient_items_count
 
+  define_counter_cache(:child_count) { |e| e.parent_id ? e.children.count : 0 }
+  update_counter_cache :parent, :child_count
+
   validates :kind, presence: true
   validates :eventable, presence: true
 
   delegate :group, to: :eventable, allow_nil: true
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
+
+  def child_count
+    self[:child_count] || 0
+  end
 
   def active_model_serializer
     "Events::#{eventable.class.to_s.split('::').last}Serializer".constantize

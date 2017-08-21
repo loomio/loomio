@@ -43,6 +43,15 @@ class Comment < ActiveRecord::Base
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
+  def parent_event
+    if parent_id
+      parent.events.find_by(kind: 'new_comment')
+    else
+      discussion.events.find_by(kind: 'new_discussion')
+    end
+  end
+
+
   def is_most_recent?
     discussion.comments.last == self
   end
