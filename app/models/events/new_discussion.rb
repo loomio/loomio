@@ -4,10 +4,7 @@ class Events::NewDiscussion < Event
   include Events::Notify::ThirdParty
 
   def self.publish!(discussion)
-    create(kind: 'new_discussion',
-           user: discussion.author,
-           announcement: discussion.make_announcement,
-           eventable: discussion).tap { |e| EventBus.broadcast('new_discussion_event', e) }
+    super(discussion, user: discussion.author, announcement: discussion.make_announcement)
   end
 
   private

@@ -2,11 +2,6 @@ class Events::MembershipRequested < Event
   include Events::Notify::InApp
   include Events::Notify::Users
 
-  def self.publish!(membership_request)
-    create(kind: "membership_requested",
-           eventable: membership_request).tap { |e| EventBus.broadcast('membership_requested_event', e) }
-  end
-
   private
 
   def notification_recipients

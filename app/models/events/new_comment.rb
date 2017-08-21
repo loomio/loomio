@@ -3,10 +3,7 @@ class Events::NewComment < Event
   include Events::LiveUpdate
 
   def self.publish!(comment)
-    create(kind: 'new_comment',
-           eventable: comment,
-           discussion: comment.discussion,
-           created_at: comment.created_at).tap { |e| EventBus.broadcast('new_comment_event', e) }
+    super(comment, user: comment.author, discussion: comment.discussion)
   end
 
   private

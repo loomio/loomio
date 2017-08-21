@@ -29,6 +29,16 @@ class Event < ActiveRecord::Base
     Events::BaseSerializer
   end
 
+  def self.publish!(eventable, **args)
+    create({
+      kind:          name.demodulize.underscore,
+      eventable:     eventable,
+      created_at:    eventable.created_at
+    }.merge(args.slice(:user, :discussion, :announcement, :custom_fields, :created_at)).tap do |e|
+      EventBus.broadcast("#{event.kind}_event", e)
+    end
+  end
+
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
