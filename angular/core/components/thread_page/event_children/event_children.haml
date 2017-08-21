@@ -1,11 +1,12 @@
-.event-children
-  .event-children__load-previous{ng-if: "anyPrevious()"}
-    Load previous {{previousCount()}}
-  %thread-item{ng-repeat: "event in parent.children() | orderBy: page.orderBy track by event.id", event: "event", page: "page"}
+.event-children.event-children__indent
+  .event-children__load-previous{ng-if: "anyPrevious()", ng-click: "loadPrevious()"}
+    {{previousCount()}} previous
+  %thread-item{ng-repeat: "event in events() | orderBy: page.orderBy track by event.id", event: "event", page: "page"}
   -# %div
   -#   parent_id: {{parent.id}}
-  -#   children.length: {{children().length}}
+  -#   children.length: {{events().length}}
   -#   parent.childCount: {{parent.childCount}}
-  -#   lastPos: {{lastPos() }}
-  %md-button.event-children__load-next{ng-if: "anyNext()", ng-click: "loader.loadMore()"}
-    Load next {{nextCount()}}
+  -#   lastPos: {{lastPos()}}
+  -#   showMore: {{showMore}}
+  %md-button.event-children__load-next{ng-if: "anyNext()", ng-click: "loadMore()"}
+    {{nextCount()}} more

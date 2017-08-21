@@ -12,17 +12,21 @@ angular.module('loomioApp').directive 'eventChildren', (Records, RecordLoader) -
         discussion_key: $scope.page.discussionKey
       per: $scope.page.per
 
-    $scope.children = ->
-      # TODO, rather than within ids, check it's in the sequence_id range, or something else..
-      # Records.events.collection.chain().find(parentId: $scope.parent.id, id: {$in: $scope.page.ids}).simplesort('pos').data()
-      Records.events.collection.chain().find(parentId: $scope.parent.id).simplesort($scope.page.orderBy).data()
+    $scope.events = ->
+      query =
+        parentId: $scope.parent.id
+        sequenceId:
+          $between: [$scope.page.minSequenceId, ($scope.page.maxSequenceId || Number.MAX_VALUE)]
+      delete query.sequenceId if $scope.showMore
+
+      Records.events.collection.find(query)
 
     noneLoaded = ->
-      $scope.children().length == 0
+      $scope.events().length == 0
 
     anyMissing = ->
       $scope.parent.childCount > 0 &&
-      $scope.children().length < $scope.parent.childCount
+      $scope.events().length < $scope.parent.childCount
 
     $scope.anyPrevious = -> anyMissing() && !noneLoaded() && $scope.firstPos() > 0
     $scope.anyNext = -> anyMissing() && (noneLoaded() || ($scope.lastPos() + 1) < $scope.parent.childCount)
@@ -42,17 +46,23 @@ angular.module('loomioApp').directive 'eventChildren', (Records, RecordLoader) -
         $scope.parent.childCount - ($scope.lastPos() + 1)
 
     $scope.loadedChildCount = ->
-      $scope.children().length
+      $scope.events().length
 
     $scope.firstPos = ->
-      if $scope.children().length > 0
-        $scope.children()[0].pos
+      if $scope.events().length > 0
+        $scope.events()[0].pos
 
     $scope.lastPos = ->
-      if $scope.children().length > 0
-        _.last($scope.children()).pos
+      if $scope.events().length > 0
+        _.last($scope.events()).pos
 
-    $scope.loadNext = ->
-      Records
+    $scope.loadMore = ->
+      $scope.showMore = true
+      $scope.loader.loadMore()
 
     $scope.loadPrevious = ->
+      $scope.showMore = true
+      $scope.loader.loadPrevious()
+
+    $scope.showLess = ->
+      $scope.showMore = false

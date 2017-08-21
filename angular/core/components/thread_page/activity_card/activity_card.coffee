@@ -6,24 +6,24 @@ angular.module('loomioApp').directive 'activityCard', ( RecordLoader, $rootScope
   controller: ($scope) ->
     $scope.page =
       viewMode: 'unread'
-      per: 2
+      per: 10
       discussionKey: $scope.discussion.key
 
     applyViewMode = ->
       _.assign $scope.page,
         switch $scope.page.viewMode
           when "unread"
-            orderBy: 'pos'
-            minSequenceId: $scope.discussion.lastReadSequenceId
-            maxSequenceId: $scope.discussion.lastReadSequenceId + $scope.page.per
+            orderBy: 'createdAt'
+            minSequenceId: $scope.discussion.lastReadSequenceId || 1
+            maxSequenceId: ($scope.discussion.lastReadSequenceId || 1) + ($scope.page.per - 1)
           when "oldest"
-            orderBy: 'pos'
-            minSequenceId: 1
-            maxSequenceId: $scope.page.per
-          when "newest"
-            orderBy: '-pos'
-            minSequenceId: $scope.discussion.lastSequenceId - $scope.page.per
-            maxSequenceId: null
+            orderBy: 'createdAt'
+            minSequenceId: $scope.discussion.firstSequenceId
+            maxSequenceId: ($scope.page.per - 1)
+          # when "newest"
+          #   orderBy: '-createdAt'
+          #   minSequenceId: $scope.discussion.lastSequenceId - ($scope.page.per - 1)
+          #   maxSequenceId: null
           else
             console.error "invalid viewMode: #{$scope.page.viewMode}"
 
@@ -43,15 +43,14 @@ angular.module('loomioApp').directive 'activityCard', ( RecordLoader, $rootScope
 
     $scope.events = ->
       # scoped to only those within the sequence window
+
       query =
         sequenceId:
-          $between: [$scope.page.minSequenceId, ($scope.page.maxSequenceId || $scope.discussion.lastSequenceId)]
+          $between: [$scope.page.minSequenceId, ($scope.page.maxSequenceId || Number.MAX_VALUE)]
         discussionId: $scope.discussion.id
 
-      console.log query
       events = Records.events.collection.find(query)
       ids = _.pluck(events, 'id')
-      console.log events
       # elements without their children
       _.reject(events, (e) -> _.includes(ids, e.parentId))
 
@@ -59,21 +58,21 @@ angular.module('loomioApp').directive 'activityCard', ( RecordLoader, $rootScope
       !_.any($scope.events())
 
     $scope.canNextPage = ->
-      (($scope.page.minSequenceId + $scope.page.per) < $scope.discussion.lastSequenceId) &&
+      (($scope.page.minSequenceId + ($scope.page.per - 1)) < $scope.discussion.lastSequenceId) &&
       $scope.page.maxSequenceId != null
 
     $scope.canPreviousPage = ->
-      $scope.page.minSequenceId > 1
+      $scope.page.minSequenceId > $scope.discussion.firstSequenceId
 
     $scope.nextPage = ->
       return unless $scope.canNextPage()
 
       $scope.page.maxSequenceId += $scope.page.per
-      $scope.page.minSequenceId = $scope.page.maxSequenceId - $scope.page.per
+      $scope.page.minSequenceId = $scope.page.maxSequenceId - ($scope.page.per - 1)
 
-      if $scope.page.maxSequenceId > $scope.discussion.lastSequenceId
+      if $scope.page.maxSequenceId >= $scope.discussion.lastSequenceId
         $scope.page.maxSequenceId = null
-        $scope.page.minSequenceId = $scope.discussion.lastSequenceId - $scope.page.per
+        # $scope.page.minSequenceId = $scope.discussion.lastSequenceId - ($scope.page.per - 1)
 
       $scope.loader.loadFrom($scope.page.minSequenceId)
 
@@ -81,11 +80,11 @@ angular.module('loomioApp').directive 'activityCard', ( RecordLoader, $rootScope
       return unless $scope.canPreviousPage()
 
       if $scope.page.maxSequenceId == null
-        $scope.page.maxSequenceId = $scope.discussion.lastSequenceId - $scope.page.per
+        $scope.page.maxSequenceId = ($scope.discussion.lastSequenceId - $scope.page.per)
       else
         $scope.page.maxSequenceId -= $scope.page.per
 
-      $scope.page.minSequenceId = $scope.page.maxSequenceId - $scope.page.per
+      $scope.page.minSequenceId = ($scope.page.maxSequenceId - $scope.page.per + 1)
 
       $scope.loader.loadFrom($scope.page.minSequenceId)
 
