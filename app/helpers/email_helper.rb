@@ -1,6 +1,36 @@
 module EmailHelper
   include PrettyUrlHelper
 
+  def render_rich_text(text, md_boolean=true)
+    return "" if text.blank?
+
+    if md_boolean
+      options = [
+        :no_intra_emphasis   => true,
+        :tables              => true,
+        :fenced_code_blocks  => true,
+        :autolink            => true,
+        :strikethrough       => true,
+        :space_after_headers => true,
+        :superscript         => true,
+        :underline           => true
+      ]
+
+      renderer = Redcarpet::Render::HTML.new(
+        :filter_html         => true,
+        :hard_wrap           => true,
+        :link_attributes     => {target: '_blank'}
+        )
+      markdown = Redcarpet::Markdown.new(renderer, *options)
+      output = markdown.render(text)
+    else
+      output = Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"')
+    end
+
+    output = Emojifier.emojify!(output)
+    Redcarpet::Render::SmartyPants.render(output).html_safe
+  end
+
   def reply_to_address(discussion: , user: )
     pairs = []
     {d: discussion.id, u: user.id, k: user.email_api_key}.each do |key, value|

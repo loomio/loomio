@@ -1,12 +1,10 @@
 module UsesMetadata
-  include AngularHelper
-
   def show
     metadata
     if request.format == :xml
       # load rss feed
     else
-      boot_angular_ui
+      index
     end
   end
 

@@ -1,6 +1,4 @@
 class UserMailer < BaseMailer
-  helper :email
-  helper :application
   layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login, :start_decision, :accounts_merged]
 
   def accounts_merged(user)
