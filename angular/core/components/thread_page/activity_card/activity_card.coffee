@@ -96,7 +96,7 @@ angular.module('loomioApp').directive 'activityCard', ->
 
     $scope.isLastRead = (event) ->
       $scope.lastReadSequenceId == event.sequenceId &&
-      $scope.discussion.isUnread()
+      $scope.lastLoadedSequenceId > event.sequenceId
 
     $scope.init()
     return

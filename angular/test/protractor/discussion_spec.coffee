@@ -76,6 +76,13 @@ describe 'Discussion Page', ->
       page.expectText '.revision-history-modal__body', 'Revised description'
       page.expectText '.revision-history-modal__body', 'What star sign are you?'
 
+  describe 'reading a thread', ->
+    it 'can display an unread content line', ->
+      page.loadPath 'setup_unread_discussion'
+      page.expectText '.activity-card', 'New Activity'
+      browser.refresh()
+      page.expectNoText '.activity-card', 'New Activity'
+
   describe 'muting and unmuting a thread', ->
     it 'lets you mute and unmute', ->
       page.loadPath 'setup_multiple_discussions'
