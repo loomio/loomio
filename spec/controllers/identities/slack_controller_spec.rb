@@ -16,13 +16,13 @@ describe Identities::SlackController do
       identity
       sign_in user
       get :install
-      expect(response).to render_template 'layouts/angular'
+      expect(response).to render_template 'application/index'
     end
 
     it 'boots the app if a pending identity exists' do
       session[:pending_identity_id] = identity.id
       get :install
-      expect(response).to render_template 'layouts/angular'
+      expect(response).to render_template 'application/index'
     end
 
     it 'redirects to oauth path if no identity can be found' do
