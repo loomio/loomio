@@ -21,5 +21,5 @@
         %loading.lmo-inline-action{ng-if: "newInvitation.processing"}
         %md-button.md-primary.md-raised.poll-common-share-form__button.poll-common-share-form__option-button{ng-if: "!newInvitation.processing", ng-disabled: "!newInvitation.recipientEmail", ng-click: "submit()", aria-label: "{{ 'poll_common_share_form.add_email_placeholder' | translate }}"}
           %span{translate: "poll_common_share_form.send_email"}
-    .clearfix
+
     .lmo-validation-error {{ emailValidationError }}

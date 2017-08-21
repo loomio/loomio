@@ -1,11 +1,10 @@
-.dismiss-explanation-modal
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1.dismiss-explanation-modal__title{translate: "dismiss_explanation_modal.dismiss_thread"}
-
-  .modal-body.dismiss-explanation-modal__body
+%md-dialog.dismiss-explanation-modal.lmo-modal__narrow
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "dismiss_explanation_modal.dismiss_thread"}
+      %material_modal_header_cancel_button
+  .md-dialog-content
     .dismiss-explanation-modal__dismiss-explanation{translate: "dismiss_explanation_modal.body_html"}
-
-  .modal-footer.lmo-clearfix
-    %button.dismiss-explanation-modal__dismiss-thread.lmo-btn--submit{type: "button", ng-click: "dismiss()", translate: "dismiss_explanation_modal.dismiss_thread"}
-    %button.dismiss-explanation-modal__cancel.lmo-btn--cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
+    .lmo-md-actions
+      %md-button{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
+      %md-button.md-primary.md-raised{ng-click: "dismiss()", translate: "dismiss_explanation_modal.dismiss_thread"}

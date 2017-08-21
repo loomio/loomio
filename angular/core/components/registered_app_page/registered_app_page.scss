@@ -1,54 +1,20 @@
 .registered-app-page {
   @include card;
-}
-
-.registered-app-page__field {
-  margin: 8px 0 16px;
-}
-
-.registered-app-page__app {
-  margin-bottom: 16px;
-}
-
-.registered-app-page__title {
-  line-height: 50px;
+  margin-top: 16px;
+  h3 { margin-bottom: 0; }
 }
 
 .registered-app-page__app {
-  @include displayFlex;
   margin: 16px 0;
 }
 
-.registered-app-page__notice {
-  @include fontSmall;
-  margin-bottom: 10px;
-}
-
-.registered-app-page__status {
-  margin-bottom: 10px;
-}
-
-.registered-app-page__revoke-access {
-  margin-bottom: 10px;
-}
-
-.registered-app-page__edit {
-  margin-right: 10px;
+.registered-app-page__title {
+  margin-bottom: 16px;
 }
 
 .registered-app-page__code {
   background: $background-color;
   padding: 6px 10px;
   border-radius: 5px;
-  width: 100%;
-  text-overflow: ellipsis;
-  overflow-x: hidden;
-}
-
-.registered-app-page__avatar {
-  width: 50px;
-  height: 50px;
-  float: left;
-  margin-right: 10px;
-  border: 4px solid #fff;
+  @include truncateText;
 }

@@ -50,7 +50,7 @@ module.exports = new class PageHelper
 
   selectOption: (selector, option) ->
     @click selector
-    element(By.cssContainingText('option', option)).click()
+    element(By.cssContainingText('md-option', option)).click()
 
   expectInputValue: (selector, value) ->
     expect(element(By.css(selector)).getAttribute('value')).toContain(value)
@@ -72,7 +72,7 @@ module.exports = new class PageHelper
 
   expectSelected: ->
     _.each given(arguments), (selector) ->
-      element(By.css(selector)).isSelected().then (selected) ->
+      element(By.css("#{selector}.md-checked")).isSelected().then (selected) ->
         if !selected
           console.log "unexpected not selected", selector, selected
         expect(selected).toBe(true)

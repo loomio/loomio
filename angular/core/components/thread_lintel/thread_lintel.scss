@@ -17,7 +17,7 @@
 }
 
 .thread-lintel__content {
-  @include box_shadow(1);
+  @include dropsShadow;
   border: 1px solid $border-color;
   background-color: $card-background-color;
   clear: both;
@@ -52,7 +52,7 @@
 }
 
 .thread-lintel__progress-bar {
-  @include transition(width, 0.5s, ease-in-out);
+  transition: width 0.5s ease-in-out;
   width: 0%;
   background: $progress-bar-color;
   left: 0;

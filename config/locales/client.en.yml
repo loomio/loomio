@@ -245,12 +245,13 @@ en:
       replied: '{{name}} notified of reply'
       updated: 'Comment updated'
       destroyed: 'Comment deleted'
+    say_something: Say something...
     edit_comment: 'Edit comment'
     delete_comment: 'Delete comment'
     cancel_reply: 'Cancel Reply'
     confirm_delete_message: 'Are you sure you want to delete this comment?'
     confirm_delete: 'Delete comment'
-    in_reply_to: "In reply to <strong>{{name}}</strong>:"
+    in_reply_to: "In reply to {{name}}:"
     submit_button:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
@@ -837,7 +838,7 @@ en:
   deactivate_user_form:
     aria_label: 'Deactivate account confirm'
     title: 'Deactivate account'
-    question: 'Would you tell us why you are deactivating your account?'
+    question: 'Would you tell us why you are deactivating?'
     placeholder: 'Answering this question is optional. Any information you share will help us to improve Loomio :)'
     submit: 'Deactivate account'
 
@@ -861,7 +862,6 @@ en:
       loud_description: "When you join a new group, you will be emailed <strong>whenever there is activity</strong>."
       normal_description: "When you join a new group, you will be emailed about <strong>new threads and proposals</strong>."
       quiet_description: "When you join a new group, you <strong>won't be emailed about activity</strong>."
-    change_default: Change default
     edit: Edit
     messages:
       updated: Email settings updated
@@ -1615,6 +1615,23 @@ en:
     too_many_dots: You have used too many dots.
     stance_created: Vote created
     stance_updated: Vote updated
+
+  thread_item:
+    comment_replied_to:            "<strong>{{author}}</strong> in reply to <strong>{{title}}</strong>"
+    discussion_title_edited:       "<strong>{{author}}</strong> edited the thread title: <strong>{{title}}</strong>"
+    discussion_context_edited:     "<strong>{{author}}</strong> edited the thread context"
+    discussion_attachments_edited: "<strong>{{author}}</strong> edited the thread's attachments"
+    discussion_made_public:        "<strong>{{author}}</strong> made the thread public"
+    discussion_made_private:       "<strong>{{author}}</strong> made the thread private"
+    discussion_edited:             "<strong>{{author}}</strong> edited the thread"
+    discussion_moved:              "<strong>{{author}}</strong> moved the thread from <strong>{{title}}</strong>"
+    new_comment:                   "<strong>{{author}}</strong>"
+    outcome_created:               "<strong>{{author}}</strong> shared an outcome for <strong>{{title}}</strong>"
+    poll_closed_by_user:           "<strong>{{author}}</strong> closed the {{polltype}}: <strong>{{title}}</strong>"
+    poll_created:                  "<strong>{{author}}</strong> started a {{polltype}}: <strong>{{title}}</strong>"
+    poll_edited:                   "<strong>{{author}}</strong> edited the {{polltype}}: <strong>{{title}}</strong>"
+    poll_expired:                  "{{polltype}} closed: <strong>{{title}}</strong>"
+    stance_created:                "<strong>{{author}}</strong> voted"
 
   poll_thread_item:
     poll:

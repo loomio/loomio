@@ -65,7 +65,6 @@ class API::DiscussionsController < API::RestfulController
 
   def collection_for_dashboard(collection, filter: params[:filter])
     case filter
-    when 'show_participating' then collection.not_muted.participating.sorted_by_importance
     when 'show_muted'         then collection.muted.sorted_by_latest_activity
     else                           collection.not_muted.sorted_by_importance
     end

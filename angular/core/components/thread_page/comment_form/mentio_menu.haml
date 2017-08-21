@@ -1,7 +1,8 @@
-%ul.list-group.user-search
-  %li.list-group-item{mentio_menu_item: "user", ng_repeat: "user in items track by user.id"}
-    .media-left
-      %user_avatar{user: "user", size: "small"}
-    .mentionable-content
-      .mentionable-name {{user.name}}
-      .mentionable-username {{user.username}}
+%md-menu-content.mentio-menu
+  -# we need a ul for mentio to function properly, herp.
+  %ul
+    %md-menu-item.mentio-menu__item{mentio-menu-item: "user", layout: "row", ng-repeat: "user in items track by user.id"}
+      %user_avatar.mentio-menu__avatar{user: "user", size: "small"}
+      .lmo-flex{layout: "column"}
+        %strong.mentionable-name {{user.name}}
+        .mentionable-username {{user.username}}

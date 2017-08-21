@@ -1,6 +1,6 @@
-.blank
+.notifications
   %md-menu{id: "notifications", md-position-mode: "target target", md-offset: "0 48"}
-    %md-button.notifications__button{ng-click: "toggle($mdMenu)", tabindex: 4}
+    %md-button.notifications__button.lmo-flex{ng-click: "toggle($mdMenu)", tabindex: 4}
       .sr-only{translate: "navbar.notifications"}
       %i.material-icons{ng-if: "hasUnread()"} notifications
       %i.material-icons{ng-if: "!hasUnread()"} notifications_none

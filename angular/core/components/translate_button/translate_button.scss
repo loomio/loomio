@@ -1,6 +1,11 @@
 
 .translate-button {
-  @include lmoTranslateLink;
+  display: inline-block;
+  background: none;
+  border: none;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
 }
 
 .translate-button button {

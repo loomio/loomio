@@ -5,8 +5,8 @@
       %modal_header_cancel_button{aria-hidden: "true"}
 
   %md-dialog-content.md-dialog-content
-    %span{translate: "remove_app_form.question", translate-value-name: "{{application.name}}"}
+    %p.lmo-hint-text{translate: "remove_app_form.question", translate-value-name: "{{application.name}}"}
 
-    .lmo-flex.lmo-flex__space-between.remove-app-form__actions
-      %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
-      %button.lmo-btn--danger{type: "submit", translate: "remove_app_form.submit"}
+    .lmo-flex.lmo-flex__space-between
+      %md-button{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+      %md-button.md-warn.md-raised{type: "submit", translate: "remove_app_form.submit"}

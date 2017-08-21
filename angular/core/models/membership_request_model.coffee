@@ -5,26 +5,21 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel, AppCon
     @indices: ['id', 'groupId']
     @serializableAttributes: AppConfig.permittedParams.membership_request
 
-    # this needs a rethink with more brain power
-    initialize: (data) ->
-      @baseInitialize(data)
-      if !@byExistingUser()
-        @fakeUser =
-          name: @name
-          email: @email
-          avatarKind: 'initials'
-          avatarInitials: _.map(@name.split(' '), (t) -> t[0]).join('')
-
     relationships: ->
       @belongsTo 'group'
       @belongsTo 'requestor', from: 'users'
       @belongsTo 'responder', from: 'users'
 
+    afterConstruction: ->
+      @fakeUser =
+        name: @name
+        email: @email
+        avatarKind: 'initials'
+        constructor: {singular: 'user'}
+        avatarInitials: _.map(@name.split(' '), (t) -> t[0]).join('')
+
     actor: ->
-      if @byExistingUser()
-        @requestor()
-      else
-        @fakeUser
+      if @byExistingUser() then @requestor() else @fakeUser
 
     byExistingUser: -> @requestorId?
 

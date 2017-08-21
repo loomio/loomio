@@ -14,8 +14,6 @@ angular.module('loomioApp', [
   'ui.gravatar',
   'duScroll',
   'angular-clipboard',
-  'checklist-model',
-  'monospaced.elastic',
   'angularMoment',
   'offClick',
   'ngMaterial',

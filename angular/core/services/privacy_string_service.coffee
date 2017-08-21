@@ -43,27 +43,26 @@ angular.module('loomioApp').factory 'PrivacyString', ($translate) ->
 
       $translate.instant("discussion_form.#{key}", group: discussion.group().name, parent: discussion.group().parentName())
 
-    group: (group, state = null) ->
-      if state == null
-        state = group.groupPrivacy
+    group: (group, privacy) ->
+      privacy = privacy || group.groupPrivacy
 
       key = if group.isParent()
-        switch state
+        switch privacy
           when 'open'   then 'group_privacy_is_open_description'
           when 'secret' then 'group_privacy_is_secret_description'
           when 'closed'
-            if group.allowPublicDiscussions()
+            if group.allowPublicThreads
               'group_privacy_is_closed_public_threads_description'
             else
               'group_privacy_is_closed_description'
       else
-        switch state
+        switch privacy
           when 'open'   then 'subgroup_privacy_is_open_description'
           when 'secret' then 'subgroup_privacy_is_secret_description'
           when 'closed'
             if group.isSubgroupOfSecretParent()
               'subgroup_privacy_is_closed_secret_parent_description'
-            else if group.allowPublicDiscussions()
+            else if group.allowPublicThreads
               'subgroup_privacy_is_closed_public_threads_description'
             else
               'subgroup_privacy_is_closed_description'

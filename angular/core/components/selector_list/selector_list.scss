@@ -48,9 +48,6 @@
   background-color: $list-hover-color;
 }
 
-.selector-list .media{ margin-top: 0; }
-.selector-list .media-left { margin-right: 8px; }
-
 .is-subgroup-true .selector-list-item-link{
   padding-left: 53px;
 }
@@ -79,15 +76,11 @@ a .selector-list-item-proposal-details {
   margin-bottom: 5px;
   line-height: 16px;
 }
+
 .selector-list-item-group-name{
   vertical-align: middle;
   color: $primary-text-color !important;
   font-size: 15px;
-}
-
-.selector-list-item-group-logo{
-  @include boxSmall;
-  @include roundedCorners;
 }
 
 .selector-list-item-thread-group-name{

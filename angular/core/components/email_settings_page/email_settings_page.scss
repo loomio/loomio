@@ -6,49 +6,12 @@
   @include card;
 }
 
-.email-settings-page__field {
-  label { margin: 0 0 0 13px; }
-  margin-bottom: 15px;
-}
-
-.email-settings-page__input-description {
-  margin-left: 25px;
-}
-
-.email-settings-page__update-button {
-  @include lmoBtnPrimary;
-}
-
 .email-settings-page__specific-group-settings {
   margin-top: 40px;
 }
 
-.email-settings-page__change-default-link, .email-settings-page__edit-membership-volume-link {
-  @include cardMinorAction;
-  margin-top: 0px;
-  cursor: pointer;
-}
-
-.email-settings-page__groups {
-  list-style: none;
-  margin-top: 20px;
-  padding-left: 0px;
-  max-width: 500px;
-}
-
 .email-settings-page__group {
-  @include displayFlex;
-  margin-bottom: 20px;
-}
-
-.email-settings-page__group-details {
-  margin: 0 0 0 5px;
-  width: 100%;
-}
-
-.email-settings-page__edit {
-  margin-left: 20px;
-  width: $boxMediumSize;
+  padding: 12px 0 !important;
 }
 
 .email-settings-page__learn-more-link {

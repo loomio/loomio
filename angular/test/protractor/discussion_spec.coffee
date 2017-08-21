@@ -12,7 +12,7 @@ describe 'Discussion Page', ->
     it 'preselects current group', ->
       page.loadPath 'setup_dashboard'
       page.click '.sidebar__list-item-button--muted'
-      page.clickLast '.thread-preview__link'
+      page.clickFirst '.thread-preview__link'
       page.click '.sidebar__list-item-button--start-thread'
       page.expectText '.discussion-form__group-select', 'Muted Point Blank'
 
@@ -21,7 +21,7 @@ describe 'Discussion Page', ->
       groupsHelper.loadPath('view_open_group_as_visitor')
       page.expectText('.group-theme__name', 'Open Dirty Dancing Shoes')
       page.expectText('.thread-previews-container--unpinned', 'I carried a watermelon')
-      page.expectText('.navbar__right', 'Log In')
+      page.expectText('.navbar__right', 'LOG IN')
       page.click('.thread-preview__link')
       page.expectText('.context-panel', 'I carried a watermelon')
 
@@ -38,43 +38,50 @@ describe 'Discussion Page', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
       page.fillIn('.discussion-form__title-input', 'better title')
-      page.fillIn('.discussion-form__description-input', 'improved description')
+      page.fillIn('.discussion-form textarea', 'improved description')
       page.click('.discussion-form__private')
       page.click('.discussion-form__update')
       page.expectText('.context-panel', 'better title')
       page.expectText('.context-panel', 'improved description')
       page.expectText('.context-panel', 'Private')
-      page.expectText('.thread-item__title', 'updated the thread title, context and privacy')
+      page.expectText('.thread-item__title', 'edited the thread title')
 
     xit 'does not store cancelled thread info', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
 
       page.fillIn('.discussion-form__title-input', 'dumb title')
-      page.fillIn('.discussion-form__description-input', 'rubbish description')
+      page.fillIn('.discussion-form textarea', 'rubbish description')
 
       page.click('.modal-cancel')
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
 
       page.expectNoText('.discussion-form__title-input', 'dumb title')
-      page.expectNoText('.discussion-form__description-input', 'rubbish description')
+      page.expectNoText('.discussion-form textarea', 'rubbish description')
 
     xit 'lets you view thread revision history', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
-      page.fillIn '.discussion-form__description-input', 'Revised description'
+      page.fillIn '.discussion-form textarea', 'Revised description'
       page.click '.discussion-form__update'
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
-      page.fillIn '.discussion-form__description-input', 'Revised description'
+      page.fillIn '.discussion-form textarea', 'Revised description'
       page.click '.discussion-form__update'
       page.click '.context-panel__edited'
       page.expectText '.revision-history-modal__body', 'Revised title'
       page.expectText '.revision-history-modal__body', 'Revised description'
       page.expectText '.revision-history-modal__body', 'What star sign are you?'
+
+  describe 'reading a thread', ->
+    it 'can display an unread content line', ->
+      page.loadPath 'setup_unread_discussion'
+      page.expectText '.activity-card', 'New Activity'
+      browser.refresh()
+      page.expectNoText '.activity-card', 'New Activity'
 
   describe 'muting and unmuting a thread', ->
     it 'lets you mute and unmute', ->
@@ -93,9 +100,8 @@ describe 'Discussion Page', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--move'
       page.selectOption '.move-thread-form__group-dropdown', 'Point Break'
-      page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
-      page.expectFlash 'Thread has been moved to Point Break'
+      page.sleep()
       page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'
       page.expectText '.group-theme__name--compact','Point Break'
 
@@ -150,7 +156,7 @@ describe 'Discussion Page', ->
       page.click '.join-group-button__join-group'
       page.expectFlash 'You are now a member of Open Dirty Dancing Shoes'
 
-      page.fillIn '.comment-form__comment-field', 'I am new!'
+      page.fillIn '.comment-form textarea', 'I am new!'
       page.click '.comment-form__submit-button'
       page.expectFlash 'Comment added'
 
@@ -170,9 +176,9 @@ describe 'Discussion Page', ->
       expect(threadPage.mostRecentComment()).toContain('hi this is my comment')
 
     it 'can add emojis', ->
-      page.fillIn '.comment-form__comment-field', 'Here is a dragon!'
+      page.fillIn '.comment-form textarea', 'Here is a dragon!'
       page.click '.emoji-picker__toggle'
-      page.fillIn '.emoji-picker__search', 'drag'
+      page.fillIn '.emoji-picker__search input', 'drag'
       page.clickFirst '.emoji-picker__icon'
       page.click '.comment-form__submit-button'
       page.expectText '.thread-item__body','Here is a dragon!'
@@ -206,7 +212,7 @@ describe 'Discussion Page', ->
       expect(threadPage.mostRecentComment()).toContain('edited comment right thur')
 
     it 'lets you view comment revision history', ->
-      page.fillIn '.comment-form__comment-field', 'Comment!'
+      page.fillIn '.comment-form textarea', 'Comment!'
       page.click '.comment-form__submit-button'
       page.click '.thread-item__dropdown-button',
                  '.thread-item__edit-link'
