@@ -27,6 +27,10 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       membersCanCreateSubgroups: false
       motionsCanBeEdited: false
 
+    afterConstruction: ->
+      if @privacyIsClosed()
+        @allowPublicThreads = @discussionPrivacyOptions == 'public_or_private'
+
     relationships: ->
       @hasMany 'discussions'
       @hasMany 'polls'
@@ -125,12 +129,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
 
     privacyIsSecret: ->
       @groupPrivacy == 'secret'
-
-    allowPublicDiscussions: ->
-      if @privacyIsClosed() && @isNew()
-        true
-      else
-        @discussionPrivacyOptions != 'private_only'
 
     isSubgroup: ->
       @parentId?

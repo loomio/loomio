@@ -6,7 +6,9 @@
       %material_modal_header_cancel_button
   .md-dialog-content
     %label{for: "group-dropdown", translate: "move_thread_form.body"}
-    %select.move-thread-form__group-dropdown.form-control#group-dropdown{ng-model: "discussion.groupId", ng-required: true, ng-options: "group.id as group.fullName for group in availableGroups() | orderBy: 'fullName' track by group.id", ng-change: "updateTarget()"}
+    %md-select.move-thread-form__group-dropdown#group-dropdown{ng-model: "discussion.groupId", ng-required: true, ng-change: "updateTarget()"}
+      %md-option{ng-value: "group.id", ng-repeat: "group in availableGroups() | orderBy: 'fullName' track by group.id"}
+        {{group.fullName}}
 
     .lmo-md-actions
       %md-button{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

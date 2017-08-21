@@ -5,35 +5,41 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   $rootScope.$broadcast('analyticsClearGroup')
 
   @filter = $routeParams.filter || 'hide_muted'
+  viewName = (name) =>
+    if @filter == 'show_muted'
+      "dashboard#{_.capitalize(name)}Muted"
+    else
+      "dashboard#{_.capitalize(name)}"
+
   filters = (filters) =>
     ['only_threads_in_my_groups', @filter].concat(filters)
 
   @views =
     proposals: ThreadQueryService.queryFor
-      name:    'dashboardProposals'
+      name:    viewName("proposals")
       filters: filters('show_proposals')
     today:     ThreadQueryService.queryFor
-      name:    'dashboardToday'
+      name:    viewName("today")
       from:    '1 second ago'
       to:      '-10 year ago' # into the future!
       filters: filters('hide_proposals')
     yesterday: ThreadQueryService.queryFor
-      name:    'dashboardYesterday'
+      name:    viewName("yesterday")
       from:    '1 day ago'
       to:      '1 second ago'
       filters: filters('hide_proposals')
     thisweek: ThreadQueryService.queryFor
-      name:    'dashboardThisWeek'
+      name:    viewName("thisWeek")
       from:    '1 week ago'
       to:      '1 day ago'
       filters: filters('hide_proposals')
     thismonth: ThreadQueryService.queryFor
-      name:    'dashboardThisMonth'
+      name:    viewName("thisMonth")
       from:    '1 month ago'
       to:      '1 week ago'
       filters: filters('hide_proposals')
     older: ThreadQueryService.queryFor
-      name:    'dashboardOlder'
+      name:    viewName("older")
       from:    '3 month ago'
       to:      '1 month ago'
       filters: filters('hide_proposals')

@@ -59,6 +59,14 @@ describe 'CommentService' do
       CommentService.create(comment: comment, actor: user)
     end
 
+    it 'sets my volume to loud' do
+      user.update(email_on_participation: true)
+      reader = DiscussionReader.for(discussion: comment.discussion, user: user)
+      reader.set_volume!("normal")
+      CommentService.create(comment: comment, actor: user)
+      expect(reader.reload.volume).to eq "loud"
+    end
+
     it 'saves the comment' do
       comment.should_receive(:save!).and_return(true)
       CommentService.create(comment: comment, actor: user)
@@ -87,7 +95,6 @@ describe 'CommentService' do
       it 'updates the discussion reader' do
         user.update_attribute(:email_on_participation, false)
         CommentService.create(comment: comment, actor: user)
-        expect(reader.reload.participating).to eq true
         expect(reader.reload.volume.to_sym).to eq :normal
       end
 

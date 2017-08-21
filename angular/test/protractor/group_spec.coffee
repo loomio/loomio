@@ -201,7 +201,6 @@ describe 'Group Page', ->
       page.fillIn('#group-name', 'Clean Dancing Shoes')
       page.fillIn('#group-description', 'Dusty sandles')
       page.click('.group-form__submit-button')
-      # page.expectFlash('Group updated')
       page.expectText('.group-theme__name', 'Clean Dancing Shoes')
       page.expectText('.description-card__text', 'Dusty sandles')
 
@@ -211,43 +210,35 @@ describe 'Group Page', ->
       page.expectText('.lmo-validation-error', "can't be blank")
 
     it 'can be a very open group', ->
-      page.click('.group-form__advanced-link')
-
-      selectThese = ['.group-form__privacy-open',
-                      '.group-form__membership-granted-upon-request',
-                      '.group-form__members-can-create-subgroups']
-
-      expectThese = ['.group-form__privacy-open',
-                      '.group-form__membership-granted-upon-request',
-                      '.group-form__members-can-add-members',
-                      '.group-form__members-can-create-subgroups']
-
-      page.click(selectThese)
-      page.click('.group-form__submit-button')
+      page.click '.group-form__advanced-link',
+                 '.group-form__privacy-open',
+                 '.group-form__membership-granted-upon-request',
+                 '.group-form__members-can-create-subgroups',
+                 '.group-form__submit-button'
 
       # confirm privacy change
       page.acceptConfirmDialog()
 
       # reopen form
-      page.click('.group-page-actions__button',
+      page.click '.group-page-actions__button',
                  '.group-page-actions__edit-group-link',
-                 '.group-form__advanced-link')
+                 '.group-form__advanced-link'
 
       # confirm the settings have stuck
-      page.expectSelected(expectThese)
+      page.expectElement '.group-form__privacy-open.md-checked'
+      page.expectElement '.group-form__membership-granted-upon-request.md-checked'
+      page.expectElement '.group-form__members-can-add-members .md-checked'
+      page.expectElement '.group-form__members-can-create-subgroups .md-checked'
 
     it 'can be a very locked down group', ->
-      page.click('.group-form__advanced-link',
-                 '.group-form__privacy-secret')
-
-      options = ['.group-form__members-can-start-discussions',
+      page.click '.group-form__advanced-link',
+                 '.group-form__privacy-secret',
+                 '.group-form__members-can-start-discussions',
                  '.group-form__members-can-edit-discussions',
                  '.group-form__members-can-edit-comments',
                  '.group-form__members-can-raise-motions',
-                 '.group-form__members-can-vote']
-
-      page.click(options)
-      page.click('.group-form__submit-button')
+                 '.group-form__members-can-vote',
+                 '.group-form__submit-button'
 
       # confirm privacy change
       page.acceptConfirmDialog()
@@ -258,8 +249,12 @@ describe 'Group Page', ->
                  '.group-form__advanced-link')
 
       # confirm the settings have stuck
-      page.expectSelected('.group-form__privacy-secret')
-      page.expectNotSelected(options)
+      page.expectElement   '.group-form__privacy-secret.md-checked'
+      page.expectNoElement '.group-form__members-can-start-discussions .md-checked'
+      page.expectNoElement '.group-form__members-can-edit-discussions .md-checked'
+      page.expectNoElement '.group-form__members-can-edit-comments .md-checked'
+      page.expectNoElement '.group-form__members-can-raise-motions .md-checked'
+      page.expectNoElement '.group-form__members-can-vote .md-checked'
 
   describe 'leaving a group', ->
     it 'allows group members to leave the group', ->
@@ -294,7 +289,7 @@ describe 'Group Page', ->
     it 'handles empty draft privacy gracefully', ->
       page.loadPath 'setup_group_with_empty_draft'
       page.click '.discussions-card__new-thread-button'
-      page.expectText('.privacy-notice', 'The thread will only be visible')
+      page.expectText('.discussion-privacy-icon', 'The thread will only be visible')
 
   describe 'starting a discussion', ->
     beforeEach ->
@@ -303,7 +298,7 @@ describe 'Group Page', ->
     it 'successfully starts a discussion', ->
       page.click('.discussions-card__new-thread-button')
       page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
-      page.fillIn('#discussion-context', "I've had the time of my life")
+      page.fillIn('.discussion-form textarea', "I've had the time of my life")
       page.click('.discussion-form__submit')
       page.expectFlash('Thread started')
       page.expectText('.context-panel', 'Nobody puts baby in a corner' )
@@ -312,11 +307,11 @@ describe 'Group Page', ->
     it 'automatically saves drafts', ->
       page.click('.discussions-card__new-thread-button')
       page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
-      page.fillIn('#discussion-context', "I've had the time of my life")
+      page.fillIn('.discussion-form textarea', "I've had the time of my life")
       page.click('.modal-cancel')
       page.click('.discussions-card__new-thread-button')
       page.expectInputValue('#discussion-title', 'Nobody puts baby in a corner' )
-      page.expectInputValue('#discussion-context', "I've had the time of my life" )
+      page.expectInputValue('.discussion-form textarea', "I've had the time of my life" )
 
   describe 'changing membership email settings', ->
     beforeEach ->

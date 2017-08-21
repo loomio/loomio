@@ -63,7 +63,7 @@ describe 'Login', ->
       page.click '.auth-signin-form__submit'
       page.waitForReload()
       page.expectFlash 'Signed in successfully'
-      page.fillIn '.comment-form__comment-field', 'I am new!'
+      page.fillIn '.comment-form textarea', 'I am new!'
       page.click '.comment-form__submit-button'
       page.expectFlash 'Comment added'
 

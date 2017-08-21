@@ -71,11 +71,6 @@ describe 'DiscussionService' do
         DiscussionService.create(discussion: discussion, actor: user)
       end
 
-      it 'marks the discussion reader as participating' do
-        DiscussionService.create(discussion: discussion, actor: user)
-        expect(DiscussionReader.for(user: user, discussion: discussion).participating).to eq true
-      end
-
       it 'sets the volume to loud if the user has set email_on_participation' do
         user.update_attribute(:email_on_participation, true)
         DiscussionService.create(discussion: discussion, actor: user)

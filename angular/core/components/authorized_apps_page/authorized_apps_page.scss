@@ -1,18 +1,6 @@
 .authorized-apps-page {
   @include card;
-}
+  margin-top: 16px;
 
-.authorized-apps-page__table-row {
-  padding: 10px 0;
-}
-
-.authorized-apps-page__name {
-  line-height: 40px;
-  font-weight: bold;
-}
-
-.authorized-apps-page__avatar {
-  width: 40px;
-  height: 40px;
-  border: 4px solid #fff;
+  .lmo-box--small { margin-right: 12px; }
 }

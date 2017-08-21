@@ -1,27 +1,29 @@
-mentio-menu {
-  display: none;
+.mentio-menu {
+  @include dropsShadow;
+  padding: 0;
+}
 
-  ul.list-group {
-    list-style-type: none;
-    margin: 12px 0 0 0;
-    padding: 0;
-    @include box_shadow(1);
-    background: $card-background-color;
-  }
+.mentio-menu ul {
+  margin: 0;
+  padding: 0;
+}
 
-  li.list-group-item {
-    padding: 5px 10px;
-    border-bottom: 1px solid $border-color;
-    cursor: pointer;
-  }
+.mentio-menu__item {
+  padding: 12px 16px;
+  height: auto;
+  cursor: pointer;
+  &:not(:last-child) { border-bottom: 1px solid $border-color; }
+  &:hover { background: $list-hover-color; }
+  &.active { background: $list-hover-color; }
+}
 
-  li.list-group-item.active {
-    background: $list-hover-color;
-  }
+.mentio-menu__avatar {
+  padding: 0;
 }
 
 .mentionable-name {
   @include fontMedium;
+  font-weight: bold;
   line-height: 16px;
 }
 

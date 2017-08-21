@@ -1,15 +1,14 @@
-angular.module('loomioApp').factory 'EmojiService', ($timeout) ->
+angular.module('loomioApp').factory 'EmojiService', ($timeout, AppConfig) ->
   new class EmojiService
-    source: window.Loomio.emojis.source
-    render: window.Loomio.emojis.render
-    defaults: window.Loomio.emojis.defaults
+    source:   AppConfig.emojis.source
+    render:   AppConfig.emojis.render
+    defaults: AppConfig.emojis.defaults
 
-    listen: (scope, model, field, target) ->
-      scope.$on 'emojiSelected', (event, emoji, selector) ->
-        return unless selector == target
-        elem = document.querySelector(selector)
-        caretPosition = elem.selectionEnd
-        model[field] = "#{model[field].substring(0, elem.selectionEnd)} #{emoji} #{model[field].substring(elem.selectionEnd)}"
+    listen: (scope, model, field, elem) ->
+      scope.$on 'emojiSelected', (_, emoji) ->
+        return unless $textarea = elem.find('textarea')[0]
+        caretPosition = $textarea.selectionEnd
+        model[field] = "#{model[field].substring(0, $textarea.selectionEnd)} #{emoji} #{model[field].substring($textarea.selectionEnd)}"
         $timeout ->
-          elem.selectionEnd = elem.selectionStart = caretPosition + emoji.length + 2
-          elem.focus()
+          $textarea.selectionEnd = $textarea.selectionStart = caretPosition + emoji.length + 2
+          $textarea.focus()

@@ -6,6 +6,7 @@
   position: relative;
   &:hover .thread-preview__actions { opacity: 1; }
   &.loading-content { padding: 10px; }
+  &:hover .thread-preview__actions { display: flex; }
 }
 
 .thread-preview__status-icon {
@@ -17,40 +18,30 @@
   text-align: center;
 }
 
-.thread-preview__actions{
+.thread-preview__actions {
   position: absolute;
   right: 40px;
   transition: opacity 0.25s ease-in-out;
   top: 0;
   opacity: 0;
   margin: $thinPaddingSize 0;
+  .md-button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-width: 40px;
+    height: 28px;
+    min-height: 28px;
+    .material-icons { font-size: 14px; }
+  }
 }
 
 .thread-preview--left {
   max-width: calc(100% - 32px);
 }
 
-.thread-preview__dismiss{
-  @include lmoBtnDefault;
-  @include lmoBtnSm;
-}
-
 .thread-preview__mute,
-.thread-preview__unmute {
-  @include lmoBtnDefault;
-  @include lmoBtnSm;
-  margin-left: 5px;
-  padding: 5px 13px;
-  .fa-volume-off{
-    padding-right: 9px;
-  }
-  .fa-times{
-    font-size: 70%;
-    position: relative;
-    right: 10px;
-    bottom: 1px;
-  }
-}
+.thread-preview__unmute { margin-left: 5px }
 
 .thread-preview__screen-only {
   overflow: hidden;
@@ -69,20 +60,12 @@
   text-decoration: none;
 }
 
-.thread-preview__icon {
-  @include boxMedium;
-  .user-avatar {
-    pointer-events: none;
-  }
-}
-
-.thread-preview__pie-canvas {
-  @include boxMedium;
+.thread-preview__icon .user-avatar {
+  pointer-events: none;
 }
 
 .thread-preview__text-container{
   @include displayFlex;
-  // line-height: 22px;
   margin-right: 17px;
 }
 
@@ -132,8 +115,4 @@
   font-size: 14px;
   line-height: 24px;
   text-align: center;
-}
-
-.thread-preview__actions button {
-  width: 40px;
 }

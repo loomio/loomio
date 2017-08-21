@@ -1,10 +1,11 @@
-%form{ng-submit: "submit()"}
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{translate: "revoke_app_form.title", translate-value-name: "{{application.name}}"}
+%md-dialog.revoke-app-form.lmo-modal__narrow
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "revoke_app_form.title", translate-value-name: "{{application.name}}"}
+      %material_modal_header_cancel_button{ng-if: "!preventClose"}
+  .md-dialog-content
+    %p{translate: "revoke_app_form.question", translate-value-name: "{{application.name}}"}
 
-  .modal-body
-    %span{translate: "revoke_app_form.question", translate-value-name: "{{application.name}}"}
-  .modal-footer
-    %button.lmo-btn--danger{type: "submit", translate: "revoke_app_form.submit"}
-    %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+    .lmo-md-actions
+      %md-button{ng-click: "$close()", translate: "common.action.cancel"}
+      %md-button.md-raised.md-warn{ng-click: "submit()", translate: "revoke_app_form.submit"}

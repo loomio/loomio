@@ -13,7 +13,7 @@ module.exports = new class ThreadHelper
     @submitComment()
 
   commentForm: ->
-    element(By.css('.comment-form__comment-field'))
+    element(By.css('.comment-form textarea'))
 
   enterCommentText: (body) ->
     @commentForm().sendKeys(body or 'I am a comment')
@@ -49,13 +49,13 @@ module.exports = new class ThreadHelper
     element(By.css('.lmo-navbar__btn--notifications'))
 
   mostRecentComment: ->
-    element.all(By.css('.thread-item--comment')).last().getText()
+    element.all(By.css('.new-comment')).last().getText()
 
   replyLinkOnMostRecentComment: ->
     element.all(By.css('.thread-item__action--reply')).last()
 
   inReplyToOnMostRecentComment: ->
-    element.all(By.css('.new-comment__in-reply-to')).last().getText()
+    element.all(By.css('.thread-item')).last().getText()
 
   likeLinkOnMostRecentComment: ->
     element.all(By.css('.thread-item__action--like')).last()
@@ -67,10 +67,10 @@ module.exports = new class ThreadHelper
     element(By.css('.flash-container')).getText()
 
   mentionList: ->
-    element(By.css('ul.list-group.user-search'))
+    element(By.css('.mentio-menu'))
 
   firstMentionOption: ->
-    @mentionList().element(By.css('li'))
+    @mentionList().element(By.css('md-menu-item'))
 
   clickThreadOptionsDropdownButton: ->
     element(By.css('.context-panel__dropdown-button')).click()
@@ -88,7 +88,7 @@ module.exports = new class ThreadHelper
     element(By.css('.move-thread-form__group-dropdown'))
 
   contextInput: ->
-    element(By.css('.discussion-form__description-input'))
+    element(By.css('.discussion-form textarea'))
 
   clickUpdateThreadButton: ->
     element(By.css('.discussion-form__update')).click()

@@ -1,9 +1,0 @@
-.thread-item{ng-controller: "StanceCreatedItemController"}
-  .thread-item__header.media.lmo-flex{layout: "row"}
-    .media-left
-      %user_avatar{user: "stance.participant()", size: "small"}
-    .media-body.lmo-flex{layout: "column"}
-      %h3.thread-item__title{id: "event-{{event.id}}", translate: "poll_thread_item.{{stance.poll().pollType}}.{{event.kind}}", translate-values: "{author: stance.participant().name}"}>
-      %poll_common_stance_choice{ng-repeat: "choice in stance.stanceChoices()", ng-if: "choice.score > 0", stance_choice: "choice"}
-      .lmo-markdown-wrapper{marked: "stance.reason", ng-if: "stance.reason"}
-      %timeago.timeago--inline{timestamp: "event.createdAt"}

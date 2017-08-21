@@ -12,15 +12,6 @@ class DiscussionService
        salient_items_count = (SELECT count(id) FROM events WHERE discussions.id = events.discussion_id AND events.kind IN ('#{Discussion::SALIENT_ITEM_KINDS.join('\', \'')}') )")
   end
 
-  def self.mark_as_participating!
-    Discussion.reset_column_information
-    Discussion.includes(:events).find_each(batch_size: 100) do |discussion|
-      participant_ids = (discussion.events.pluck(:user_id) << discussion.author_id).compact.uniq
-      DiscussionReader.where(user_id: participant_ids, discussion: discussion).update_all(participating: true)
-      yield if block_given?
-    end
-  end
-
   def self.create(discussion:, actor:)
     actor.ability.authorize! :create, discussion
     discussion.author = actor

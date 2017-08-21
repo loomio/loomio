@@ -19,7 +19,7 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
       @poll().group() if @poll()
 
     announcementSize: ->
-      @poll.announcementSize @notifyAction()
+      @poll().announcementSize @notifyAction()
 
     notifyAction: ->
       'publish'

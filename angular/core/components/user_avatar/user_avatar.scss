@@ -18,6 +18,8 @@
   box-sizing: border-box;
   text-align: center;
   overflow: hidden;
+  img { width: 100%; }
+  i { line-height: 28px; }
 }
 
 .user-avatar__initials {

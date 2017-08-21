@@ -1,24 +1,3 @@
-.user-page__top-margin {
-  margin-top: 62px;
-}
-
-.user-page__name {
-  @include lmoH1;
-}
-
-.user-page__profile {
-  @include card;
-}
-
-.user-page__left {
-  float: left;
-  padding-right: 20px;
-}
-
-.user-page__right {
-  float: left;
-}
-
-.user-page__groups {
-  line-height: 30px;
-}
+.user-page { margin-top: 16px; }
+.user-page__groups { margin-top: 24px; }
+.user-page__group { padding: 0 !important; }

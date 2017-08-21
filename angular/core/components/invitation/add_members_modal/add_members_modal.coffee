@@ -13,6 +13,15 @@ angular.module('loomioApp').factory 'AddMembersModal', ->
       _.filter group.parent().members(), (user)->
         !user.isMemberOf(group)
 
+    $scope.select = (member) ->
+      if $scope.isSelected(member)
+        _.pull $scope.selectedIds, member.id
+      else
+        $scope.selectedIds.push member.id
+
+    $scope.isSelected = (member) ->
+      _.contains $scope.selectedIds, member.id
+
     $scope.canAddMembers = ->
       $scope.members().length > 0
 

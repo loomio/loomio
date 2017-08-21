@@ -46,15 +46,6 @@ class SearchVector < ActiveRecord::Base
    .order('rank DESC')
   end
 
-  # NB: I am a convenience method which should be removed soon after we think this thing actually works
-  scope :relevence_table, ->(query) do
-    search_without_privacy!(query)
-      .select("date_part('day', current_date - last_activity_at) as days_old")
-      .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{sanitize(query)})) as orig_rank")
-      .select("#{recency_multiplier} as mult")
-      .limit(25).map { |r| puts "|#{r.days_old} | #{r.mult} | #{'%.2f' % r.orig_rank} | #{'%.2f' % r.rank} |" }.compact
-  end
-
   def self.recency_multiplier
     "CASE WHEN date_part('day', current_date - last_activity_at) BETWEEN 0 AND 7   THEN #{RECENCY_VALUES[0]}
           WHEN date_part('day', current_date - last_activity_at) BETWEEN 7 AND 21  THEN #{RECENCY_VALUES[1]}

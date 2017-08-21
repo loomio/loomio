@@ -1,24 +1,4 @@
-.profile-page {
-  @include lmoRow;
-}
-
 .profile-page-card {
   position: relative;
   @include card;
-}
-
-.img-profile {
-  width: 200px;
-}
-
-.profile-group {
-  padding: 5px 0;
-}
-
-.profile-subgroup {
-  padding-left: 20px;
-}
-
-.profile-page__change-picture, .profile-page__change-password {
-  padding: 2px 0 3px 0;
 }

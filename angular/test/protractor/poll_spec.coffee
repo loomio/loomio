@@ -8,8 +8,8 @@ describe 'Polls', ->
       page.loadPath 'polls/test_discussion'
       page.click ".decision-tools-card__poll-type--#{poll_type}"
       page.click ".poll-common-tool-tip__collapse"
-      page.fillIn ".poll-#{_.kebabCase(poll_type)}-form__title", "A new #{poll_type}"
-      page.fillIn ".poll-#{_.kebabCase(poll_type)}-form__details", "Some details for #{poll_type}"
+      page.fillIn ".poll-common-form-fields__title", "A new #{poll_type}"
+      page.fillIn ".poll-common-form-fields textarea", "Some details for #{poll_type}"
       optionsFn() if optionsFn?
       page.click ".poll-common-form__submit"
       page.expectText '.poll-common-summary-panel', "A new #{poll_type}"
@@ -36,8 +36,8 @@ describe 'Polls', ->
     page.loadPath 'polls/test_discussion'
     page.click '.decision-tools-card__poll-type--proposal'
     page.click ".poll-common-tool-tip__collapse"
-    page.fillIn '.poll-proposal-form__title', 'A new proposal'
-    page.fillIn '.poll-proposal-form__details', 'Some details'
+    page.fillIn '.poll-common-form-fields__title', 'A new proposal'
+    page.fillIn '.poll-common-form-fields textarea', 'Some details'
     page.click '.poll-common-form__submit'
     page.expectText '.poll-common-summary-panel__title', 'A new proposal'
     page.expectText '.poll-common-summary-panel__details', 'Some details'
@@ -75,8 +75,8 @@ describe 'Polls', ->
     page.loadPath 'polls/start_poll'
     page.click '.poll-common-choose-type__poll-type--proposal'
     page.click ".poll-common-tool-tip__collapse"
-    page.fillIn '.poll-proposal-form__title', 'A new proposal'
-    page.fillIn '.poll-proposal-form__details', 'Some details'
+    page.fillIn '.poll-common-form-fields__title', 'A new proposal'
+    page.fillIn '.poll-common-form-fields textarea', 'Some details'
     page.click '.poll-common-form__submit'
 
     page.click '.modal-cancel'
@@ -90,7 +90,7 @@ describe 'Polls', ->
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Agree'
     page.expectText '.poll-common-votes-panel__stance-reason', 'A reason'
 
-    page.click '.poll-actions-dropdown'
+    page.click '.poll-actions-dropdown__button'
     page.click '.poll-actions-dropdown__close'
     page.click '.poll-common-close-form__submit'
 

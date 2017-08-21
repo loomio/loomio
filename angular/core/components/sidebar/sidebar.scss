@@ -6,14 +6,10 @@
   border-top: 1px solid rgba(0,0,0,.14);
 }
 
-.sidebar__content {
-  // margin: 8px;
-}
-
 .sidebar__list-subhead {
   @include md-caption;
   margin: 0px 0 16px 16px;
-  color: $navbar-default-color;
+  color: $grey-on-white;
 }
 
 .sidebar__list-item-button {
@@ -46,19 +42,7 @@
   width: 20px;
   margin-right: 16px;
   font-size: 22px;
-  color: $navbar-default-color;
-}
-
-.fa-envelope-o {
-  font-size: 20px;
-}
-
-.fa-inbox {
-  color: $brand-success;
-}
-
-.fa-clock-o {
-  color: $brand-primary;
+  color: $grey-on-white;
 }
 
 .sidebar__list-item-group-logo {
@@ -97,8 +81,8 @@
 .sidebar__user-icon {
   font-size: 32px;
   position: absolute;
-  left: 28px;
-  top: 28px;
+  left: 24px;
+  top: 24px;
 }
 
 .sidebar__user-details {
