@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     company_id: group.id
     key: group.key
     name: group.name
-    description: group.description.substring(0, 250)
+    description: (group.description || "").substring(0, 250)
     admin_link: LmoUrlService.group(group, {}, { noStub: true, absolute: true, namespace: 'admin/groups' })
     plan: group.subscriptionKind
     subscription_kind: group.subscriptionKind
