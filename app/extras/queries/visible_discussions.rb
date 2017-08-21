@@ -36,13 +36,6 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
-  def participating
-    return self unless @user.is_logged_in?
-    join_to_discussion_readers
-    @relation = @relation.where('dv.participating = true')
-    self
-  end
-
   def unread
     return self unless @user.is_logged_in?
     join_to_discussion_readers
