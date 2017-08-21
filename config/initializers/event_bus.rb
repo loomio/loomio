@@ -60,6 +60,14 @@ EventBus.configure do |config|
     ) if event.discussion
   end
 
+  # :/
+  config.listen('discussion_create') do |discussion|
+    DiscussionReader.for(user: discussion.author, discussion: discussion).update_reader(
+      volume: :loud,
+      read_at: discussion.created_at
+    )
+  end
+
   config.listen('discussion_reader_viewed!',
                 'discussion_reader_dismissed!') do |discussion, actor|
 
