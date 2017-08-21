@@ -57,7 +57,7 @@ EventBus.configure do |config|
     DiscussionReader.for_model(event.discussion, event.user).update_reader(
       volume: :loud,
       read_at: event.created_at
-    )
+    ) if event.discussion
   end
 
   config.listen('discussion_reader_viewed!',
