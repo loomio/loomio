@@ -14,4 +14,11 @@ angular.module('loomioApp').directive 'userAvatar', ->
         when 'large', 'large-circular'   then 80
         when 'featured'                  then 175
 
+    $scope.uploadedAvatarUrl = ->
+      return unless $scope.user.avatarKind == 'uploaded'
+      switch $scope.size
+        when 'small'                               then $scope.user.avatarUrl.small
+        when 'medium', 'medium-circular'           then $scope.user.avatarUrl.medium
+        when 'large', 'large-circular', 'featured' then $scope.user.avatarUrl.large
+
     return
