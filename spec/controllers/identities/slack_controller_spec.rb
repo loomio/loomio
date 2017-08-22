@@ -43,6 +43,18 @@ describe Identities::SlackController do
       actions: [{ name: poll.poll_options.first.name }],
       team: { id: 'T123', name: 'billsbarbies' }
     }.to_json }
+    let(:payload_without_poll) { {
+      user: { id: identity.uid },
+      callback_id: 'notapoll',
+      actions: [{ name: poll.poll_options.first.name }],
+      team: { id: 'T123', name: 'billsbarbies' }
+    }}
+    let(:payload_without_user) { {
+      user: { id: 'notauser' },
+      callback_id: poll.id,
+      actions: [{ name: poll.poll_options.first.name }],
+      team: { id: 'T123', name: 'billsbarbies' }
+    }.to_json }
     let(:bad_payload) { {
       user: { id: identity.uid },
       callback_id: poll.id,
@@ -67,6 +79,12 @@ describe Identities::SlackController do
       stance = Stance.last
       expect(stance.participant).to eq user
       expect(user.groups).to include poll.group
+    end
+
+    it 'responds when no poll is found' do
+      expect { post :participate, payload: payload_without_poll }.to_not change { Stance.count }
+      expect(response.status).to eq 200
+      expect(response.body).to include "poll was not found"
     end
 
     it 'does not create an invalid stance' do
@@ -95,6 +113,12 @@ describe Identities::SlackController do
       dangling_identity
       expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
       expect(response.status).to eq 200
+    end
+
+    it 'responds with unauthorized message if no user is found' do
+      expect { post :participate, payload: payload_without_user }.to_not change { poll.stances.count }
+      expect(response.status).to eq 200
+      expect(response.body).to include "authorize your slack account"
     end
   end
 
