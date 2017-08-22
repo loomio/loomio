@@ -240,7 +240,7 @@ class Ability
     end
 
     can :create, Reaction do |reaction|
-      user_is_member_of?(reaction.reactable.group)
+      user_is_member_of?(reaction.reactable.group.id)
     end
 
     can :destroy, Reaction do |reaction|

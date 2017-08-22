@@ -23,11 +23,20 @@ angular.module('loomioApp').factory 'ReactionService', ($translate, Records, Ses
 
       $scope.like = ->
         addLiker()
-        recordStore.like(Session.user(), model).then (->), removeLiker
+        Records.reactions.build(
+          reactableId: model.id
+          reactableType: _.capitalize(model.constructor.singular)
+          reaction: '+1'
+        ).save().then (->), removeLiker
 
       $scope.unlike = ->
         removeLiker()
-        recordStore.unlike(Session.user(), model).then (->), addLiker
+        Records.reactions.find(
+          userId: Session.user().id
+          reactableId: model.id
+          reactableType: _.capitalize(model.constructor.singular)
+          reaction: '+1'
+        ).destroy().then (->), addLiker
 
       $scope.$watch 'model.reactorIds', updateReactionSentence
 

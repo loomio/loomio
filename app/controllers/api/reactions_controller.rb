@@ -1,2 +1,2 @@
-class ReactionsController < API::RestfulController
+class API::ReactionsController < API::RestfulController
 end

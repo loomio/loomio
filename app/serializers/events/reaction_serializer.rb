@@ -1,5 +1,5 @@
 class Events::ReactionSerializer < Events::BaseSerializer
   def eventable
-    object.eventable.comment # because the client doesn't know about comment_votes
+    object.eventable.reactable # because the client doesn't know about reactions
   end
 end

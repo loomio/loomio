@@ -21,9 +21,9 @@ class EventCollection
 
   def reactors
     @reactors ||= User.joins(:reactions)
-                    .select('users.*').select('reactions.reactable_id')
-                    .where('reactions.reactable_id': event_comment_ids, 'reactions.reactable_type': 'Comment')
-                    .group_by(&:comment_id)
+                      .select('users.*').select('reactions.reactable_id')
+                      .where('reactions.reactable_id': event_comment_ids, 'reactions.reactable_type': 'Comment')
+                      .group_by(&:reactable_id)
   end
 
   def mentions
@@ -31,8 +31,10 @@ class EventCollection
   end
 
   def attachments
-    @attachments ||= Attachment.where(attachable_type: "Comment", attachable_id: event_comment_ids)
-                               .group_by(&:attachable_id)
+    @attachments ||= Attachment.where(
+      attachable_type: "Comment",
+      attachable_id: event_comment_ids
+    ).group_by(&:attachable_id)
   end
 
   def event_comment_ids

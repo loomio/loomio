@@ -13,26 +13,6 @@ describe 'CommentService' do
     group.add_member! another_user
   end
 
-  describe 'like' do
-    it 'creates a like for the current user on a comment' do
-      expect { CommentService.like(comment: comment, actor: user) }.to change { CommentVote.count }.by(1)
-    end
-
-    it 'does not notify if the user is no longer in the group' do
-      comment
-      group.memberships.find_by(user: user).destroy
-      expect { CommentService.like(comment: comment, actor: another_user) }.to_not change { user.notifications.count }
-    end
-  end
-
-  describe 'unlike' do
-    before { reaction }
-
-    it 'removes a like for the current user on a comment' do
-      expect { CommentService.unlike(comment: comment, actor: user) }.to change { CommentVote.count }.by(-1)
-    end
-  end
-
   describe 'destroy' do
 
     it 'checks the actor has permission' do
