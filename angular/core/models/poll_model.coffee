@@ -58,6 +58,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       _.some @attachments()
 
     announcementSize: (action) ->
+      return @group().membershipsCount unless @id 
       switch action or @notifyAction()
         when 'publish' then @stancesCount + @undecidedUserCount
         when 'edit'    then @stancesCount
