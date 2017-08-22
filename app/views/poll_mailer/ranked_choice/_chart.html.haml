@@ -1,1 +1,6 @@
-TODO: make a chart
+%h3= t('poll_mailer.common.results')
+%table{style: "width: 100%"}
+  - @info.poll_options.sort_by(&:total_score).reverse.each_with_index do |poll_option, index|
+    %tr
+      %td= render "poll_mailer/common/chip", color: poll_option.color
+      %td #{index+1} - #{poll_option.display_name}
