@@ -13,7 +13,7 @@ class API::EventsController < API::RestfulController
     if params[:parent_id]
       collection.where('pos >= ?', params.fetch(:from, 0))
                 .where(parent_id: params[:parent_id]) # could change to decendants of
-                .includes(:eventable)
+                .includes(:eventable, :parent, :actor)
                 .limit(params[:per] || default_page_size)
     else
       collection.where('sequence_id >= ?', sequence_id_for(collection))

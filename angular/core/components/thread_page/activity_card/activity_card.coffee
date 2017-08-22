@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'activityCard', ( RecordLoader, $rootScope
   controller: ($scope) ->
     $scope.page =
       viewMode: 'unread'
-      per: 10
+      per: 1
       discussionKey: $scope.discussion.key
 
     applyViewMode = ->
@@ -67,24 +67,25 @@ angular.module('loomioApp').directive 'activityCard', ( RecordLoader, $rootScope
     $scope.nextPage = ->
       return unless $scope.canNextPage()
 
-      $scope.page.maxSequenceId += $scope.page.per
-      $scope.page.minSequenceId = $scope.page.maxSequenceId - ($scope.page.per - 1)
+      $scope.page.minSequenceId += $scope.page.per
+      $scope.page.maxSequenceId = $scope.page.minSequenceId + ($scope.page.per - 1)
 
       if $scope.page.maxSequenceId >= $scope.discussion.lastSequenceId
         $scope.page.maxSequenceId = null
-        # $scope.page.minSequenceId = $scope.discussion.lastSequenceId - ($scope.page.per - 1)
 
       $scope.loader.loadFrom($scope.page.minSequenceId)
 
     $scope.previousPage = ->
       return unless $scope.canPreviousPage()
 
-      if $scope.page.maxSequenceId == null
-        $scope.page.maxSequenceId = ($scope.discussion.lastSequenceId - $scope.page.per)
-      else
-        $scope.page.maxSequenceId -= $scope.page.per
+      $scope.page.minSequenceId -= $scope.page.per
+      if $scope.page.minSequenceId < $scope.discussion.firstSequenceId
+        $scope.page.minSequenceId = $scope.discussion.firstSequenceId
 
-      $scope.page.minSequenceId = ($scope.page.maxSequenceId - $scope.page.per + 1)
+      $scope.page.maxSequenceId = $scope.page.minSequenceId + ($scope.page.per - 1)
+
+      if $scope.page.maxSequenceId >= $scope.discussion.lastSequenceId
+        $scope.page.maxSequenceId = null
 
       $scope.loader.loadFrom($scope.page.minSequenceId)
 
