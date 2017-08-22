@@ -14,6 +14,3 @@ angular.module('loomioApp').factory 'StanceChoiceModel', (BaseModel, AppConfig) 
 
     poll: ->
       @stance().poll() if @stance()
-
-    rank: ->
-      @poll().customFields.minimum_stance_choices - @score + 1
