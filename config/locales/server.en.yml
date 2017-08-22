@@ -381,6 +381,7 @@ en:
       undecided_members: Undecided Members (%{count})
       undecided_visitors: Undecided Guests (%{count})
       more_undecided: "%{count} more..."
+      vote_now: Vote now
       verify_stance_for_unverified_user: "Thanks for voting in %{title}. Please verify your email address, so we can send you the results when they're ready."
       verify_stance_for_verified_user: "It looks like you voted in %{title}. If this was you, please click the link below to confirm your vote."
 

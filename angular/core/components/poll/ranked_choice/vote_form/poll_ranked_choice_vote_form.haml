@@ -5,7 +5,7 @@
   .lmo-flex{sv-root: "true", layout: "row"}
     %md-list.lmo-flex{layout: "column"}
       %md-list-item.poll-ranked-choice-vote-form__ordinal{ng-repeat: "option in pollOptions"}
-        %span{ng-if: "$index < minimumStanceChoices"} {{$index+1 | ordinal}}
+        %span{ng-if: "$index < numChoices"} {{$index+1}}
 
     %md-list.lmo-flex{layout: "column", sv-part: "pollOptions"}
       %md-list-item.poll-common-vote-form__option.lmo-flex{sv-element: "true", layout: "row", ng-repeat: "option in pollOptions"}
