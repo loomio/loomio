@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'activityCard', ( RecordLoader, $rootScope
   controller: ($scope) ->
     $scope.page =
       viewMode: 'unread'
-      per: 1
+      per: 100
       discussionKey: $scope.discussion.key
 
     applyViewMode = ->
