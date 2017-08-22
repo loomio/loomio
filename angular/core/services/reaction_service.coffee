@@ -16,10 +16,10 @@ angular.module('loomioApp').factory 'ReactionService', ($translate, Records, Ses
       recordStore = Records[model.constructor.plural]
 
       $scope.anybodyLikesIt = ->
-        model.likerIds.length > 0
+        model.reactorIds.length > 0
 
       $scope.currentUserLikesIt = ->
-        _.contains model.likers(), Session.user()
+        _.contains model.reactors(), Session.user()
 
       $scope.like = ->
         addLiker()
@@ -29,14 +29,14 @@ angular.module('loomioApp').factory 'ReactionService', ($translate, Records, Ses
         removeLiker()
         recordStore.unlike(Session.user(), model).then (->), addLiker
 
-      $scope.$watch 'model.likerIds', updateReactionSentence
+      $scope.$watch 'model.reactorIds', updateReactionSentence
 
     sentenceFor: (model) ->
-      otherIds   = _.without(model.likerIds, Session.user().id)
-      otherUsers = _.filter model.likers(), (user) -> _.contains(otherIds, user.id)
+      otherIds   = _.without(model.reactorIds, Session.user().id)
+      otherUsers = _.filter model.reactors(), (user) -> _.contains(otherIds, user.id)
       otherNames = _.map otherUsers, (user) -> user.name
 
-      if _.contains(model.likerIds, Session.user().id)
+      if _.contains(model.reactorIds, Session.user().id)
         switch otherNames.length
           when 0
             # You like this.

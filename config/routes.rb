@@ -147,10 +147,8 @@ Loomio::Application.routes.draw do
 
     resources :poll_did_not_votes, only: :index
 
-    resources :comments,    only: [:create, :update, :destroy] do
-      post :like, on: :member
-      post :unlike, on: :member
-    end
+    resources :comments,    only: [:create, :update, :destroy]
+    resources :reactions,   only: [:create, :destroy]
 
     resources :attachments, only: [:create, :destroy]
 

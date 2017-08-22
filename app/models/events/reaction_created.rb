@@ -1,11 +1,12 @@
-class Events::CommentLiked < Event
+class Events::ReactionCreated < Event
   include Events::Notify::InApp
   include Events::LiveUpdate
   include PrettyUrlHelper
 
-  def self.publish!(comment_vote)
-    create(kind: "comment_liked",
-           eventable: comment_vote).tap { |e| EventBus.broadcast('comment_liked_event', e) }
+  def self.publish!(reaction)
+    return unless reaction.reactable.is_a?(Comment)
+    create(kind: "reaction_created",
+           eventable: reaction).tap { |e| EventBus.broadcast('reaction_created_event', e) }
   end
 
   private
@@ -18,6 +19,6 @@ class Events::CommentLiked < Event
   end
 
   def comment
-    @comment ||= eventable&.comment
+    @comment ||= eventable&.reactable
   end
 end

@@ -5,7 +5,7 @@ describe 'CommentService' do
   let(:group) { create(:formal_group) }
   let(:discussion) { create :discussion, group: group, author: user }
   let(:comment) { create :comment, discussion: discussion, author: user }
-  let(:comment_vote) { create :comment_vote, comment: comment, user: user }
+  let(:reaction) { create :reaction, reactable: comment, user: user }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:comment_params) {{ body: 'My body is ready' }}
 
@@ -26,7 +26,7 @@ describe 'CommentService' do
   end
 
   describe 'unlike' do
-    before { comment_vote }
+    before { reaction }
 
     it 'removes a like for the current user on a comment' do
       expect { CommentService.unlike(comment: comment, actor: user) }.to change { CommentVote.count }.by(-1)

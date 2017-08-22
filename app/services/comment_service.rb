@@ -1,22 +1,4 @@
 class CommentService
-  def self.unlike(comment:, actor:)
-    return false unless comment.likers.include? actor
-    actor.ability.authorize!(:unlike, comment)
-
-    comment_vote = CommentVote.find_by(comment_id: comment.id, user_id: actor.id)
-    comment_vote.destroy
-
-    EventBus.broadcast('comment_unlike', comment_vote)
-  end
-
-  def self.like(comment:, actor:)
-    actor.ability.authorize!(:like, comment)
-
-    comment_vote = CommentVote.find_or_create_by(comment_id: comment.id, user_id: actor.id)
-
-    EventBus.broadcast('comment_like', comment_vote)
-    Events::CommentLiked.publish!(comment_vote)
-  end
 
   def self.create(comment:, actor:)
     actor.ability.authorize! :create, comment

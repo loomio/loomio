@@ -239,8 +239,12 @@ class Ability
       user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
     end
 
-    can [:like, :unlike], Comment do |comment|
-      user_is_member_of?(comment.group.id)
+    can :create, Reaction do |reaction|
+      user_is_member_of?(reaction.reactable.group)
+    end
+
+    can :destroy, Reaction do |reaction|
+      user_is_author_of?(reaction)
     end
 
     can [:add_comment, :make_draft], Discussion do |discussion|

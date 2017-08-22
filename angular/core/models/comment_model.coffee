@@ -14,7 +14,7 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       usesMarkdown: true
       discussionId: null
       body: ''
-      likerIds:           []
+      reactorIds:         []
       attachmentIds:      []
       mentionedUsernames: []
 
@@ -44,8 +44,8 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
     parent: ->
       @recordStore.comments.find(@parentId)
 
-    likers: ->
-      @recordStore.users.find(@likerIds)
+    reactors: ->
+      @recordStore.users.find(@reactorIds)
 
     newAttachments: ->
       @recordStore.attachments.find(@newAttachmentIds)
@@ -63,13 +63,13 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       @author().avatarOrInitials()
 
     addLiker: (user) ->
-      @likerIds.push user.id
+      @reactorIds.push user.id
 
     removeLiker: (user) ->
       @removeLikerId(user.id)
 
     removeLikerId: (id) ->
-      @likerIds = _.without(@likerIds, id)
+      @reactorIds = _.without(@reactorIds, id)
 
     cookedBody: ->
       cooked = @body
