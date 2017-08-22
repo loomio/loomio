@@ -22,8 +22,16 @@ md-dialog {
   @media (max-width: $tiny-max-px) { min-width: 100%; }
 }
 
-md-menu-content[role="menu"] {
-  max-height: inherit;
+md-menu-content[role="menu"] { max-height: inherit; }
+
+.md-button--nude {
+  opacity: .7;
+  &:hover { opacity: 1; }
+  font-size: 20px;
+  padding: 0;
+  background-color: transparent;
+  padding: 0 4px;
+  border: 0;
 }
 
 .md-button--nude {
@@ -59,10 +67,20 @@ md-input-container textarea {
   }
 }
 
-.md-no-errors {
-  .md-errors-spacer { display: none; }
+.md-no-errors .md-errors-spacer { display: none; }
+.md-datepicker-input { font-size: 16px !important; }
+
+@media (max-width: $tiny-max-px) {
+  .md-open-menu-container {
+    left: 0     !important;
+    top: 48px   !important;
+    max-height: 90%;
+    width: 100%;
+    overflow-y: auto;
+    .md-button { text-align: center; }
+  }
 }
 
-.md-datepicker-input {
-  font-size: 16px !important;
+@media (min-width: $tiny-max-px) {
+  .md-open-menu-container { z-index: 1001; }
 }

@@ -20,7 +20,6 @@
 
   .auth-signin-form__no-password{ng-if: "!user.hasPassword"}
     .lmo-actions
-      %md-button.auth-signin-form__set-password{ng-click: "setPassword()"}
-        %span{translate: "auth_form.set_password"}
+      %div
       %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "sendLoginLink()"}
         %span{translate: "auth_form.login_link"}

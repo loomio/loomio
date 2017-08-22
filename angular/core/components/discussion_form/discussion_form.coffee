@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, Session, Records, AbilityService, FormService, MentionService, AttachmentService, KeyEventService, PrivacyString, EmojiService) ->
+  controller: ($scope, $controller, $location, discussion, Session, Records, AbilityService, FormService, MentionService, AttachmentService, KeyEventService, PrivacyString) ->
     $scope.discussion = discussion.clone()
 
     if $scope.discussion.isNew()

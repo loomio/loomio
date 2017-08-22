@@ -2,9 +2,15 @@ class Invitation < ActiveRecord::Base
   include Null::User
 
   class InvitationCancelled < StandardError; end
-  class InvitationAlreadyUsed < StandardError; end
   class TooManyPending < StandardError; end
   class AllInvitesAreMembers < StandardError; end
+  class InvitationAlreadyUsed < StandardError
+    attr_accessor :invitation
+    def initialize(invitation)
+      @invitation = invitation
+      super
+    end
+  end
 
   include UsesOrganisationScope
 

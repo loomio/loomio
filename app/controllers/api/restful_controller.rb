@@ -3,11 +3,10 @@ class API::RestfulController < ActionController::Base
   include ::ProtectedFromForgery
   include ::LoadAndAuthorize
   include ::CurrentUserHelper
-  before_filter :set_application_locale
-  before_filter :set_paper_trail_whodunnit
-  before_action :set_invitation_token
-  after_filter  :save_detected_locale
-  snorlax_used_rest!
+  around_filter :process_locale            # LocalesHelper
+  before_action :set_invitation_token      # CurrentUserHelper
+  before_filter :set_paper_trail_whodunnit # gem 'paper_trail'
+  snorlax_used_rest!                       # gem 'snorlax'
 
   private
 

@@ -298,7 +298,7 @@ describe 'Group Page', ->
     it 'successfully starts a discussion', ->
       page.click('.discussions-card__new-thread-button')
       page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
-      page.fillIn('#discussion-context', "I've had the time of my life")
+      page.fillIn('.discussion-form textarea', "I've had the time of my life")
       page.click('.discussion-form__submit')
       page.expectFlash('Thread started')
       page.expectText('.context-panel', 'Nobody puts baby in a corner' )
@@ -307,11 +307,11 @@ describe 'Group Page', ->
     it 'automatically saves drafts', ->
       page.click('.discussions-card__new-thread-button')
       page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
-      page.fillIn('#discussion-context', "I've had the time of my life")
+      page.fillIn('.discussion-form textarea', "I've had the time of my life")
       page.click('.modal-cancel')
       page.click('.discussions-card__new-thread-button')
       page.expectInputValue('#discussion-title', 'Nobody puts baby in a corner' )
-      page.expectInputValue('#discussion-context', "I've had the time of my life" )
+      page.expectInputValue('.discussion-form textarea', "I've had the time of my life" )
 
   describe 'changing membership email settings', ->
     beforeEach ->

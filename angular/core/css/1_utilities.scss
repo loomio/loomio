@@ -1,14 +1,10 @@
-.debug {
-  border: 1px solid #000;
-}
-
 .lmo-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.lmo-textarea {
+textarea .lmo-textarea {
   resize: none;
   min-height: 100px;
 }

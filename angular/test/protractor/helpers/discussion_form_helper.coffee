@@ -11,7 +11,7 @@ module.exports = new class DiscussionFormHelper
     element(By.css('.discussion-form__title-input'))
 
   descriptionField: ->
-    element(By.css('.discussion-form__description-input'))
+    element(By.css('.discussion-form textarea'))
 
   clickSubmit: ->
     element.all(By.css('.discussion-form__submit')).first().click()

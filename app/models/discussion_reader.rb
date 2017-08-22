@@ -22,7 +22,6 @@ class DiscussionReader < ActiveRecord::Base
   def update_reader(read_at: nil, volume: nil, participate: false, dismiss: false)
     viewed!(read_at, persist: false)    if read_at
     set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
-    participate!(persist: false)        if participate
     dismiss!(persist: false)            if dismiss
     save(validate: false)               if changed?
   end
@@ -37,11 +36,6 @@ class DiscussionReader < ActiveRecord::Base
   def dismiss!(persist: true)
     self.dismissed_at = Time.zone.now
     EventBus.broadcast('discussion_reader_dismissed!', discussion, user)
-    save if persist
-  end
-
-  def participate!(persist: true)
-    self.participating = true
     save if persist
   end
 

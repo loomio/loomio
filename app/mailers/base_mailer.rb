@@ -4,6 +4,9 @@ class BaseMailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper
   include EmailHelper
 
+  helper :email
+  helper :application
+
   add_template_helper(PrettyUrlHelper)
 
   NOTIFICATIONS_EMAIL_ADDRESS = "notifications@#{ENV['SMTP_DOMAIN']}"

@@ -13,7 +13,7 @@ module.exports = new class ThreadHelper
     @submitComment()
 
   commentForm: ->
-    element(By.css('.comment-form__comment-field'))
+    element(By.css('.comment-form textarea'))
 
   enterCommentText: (body) ->
     @commentForm().sendKeys(body or 'I am a comment')
@@ -88,7 +88,7 @@ module.exports = new class ThreadHelper
     element(By.css('.move-thread-form__group-dropdown'))
 
   contextInput: ->
-    element(By.css('.discussion-form__description-input'))
+    element(By.css('.discussion-form textarea'))
 
   clickUpdateThreadButton: ->
     element(By.css('.discussion-form__update')).click()

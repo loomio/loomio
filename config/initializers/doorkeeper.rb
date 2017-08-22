@@ -4,7 +4,7 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    if user_signed_in?
+    if current_user.is_logged_in?
       current_user
     else
       session['user_return_to'] = request.fullpath

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
+  attr_writer :has_password
 
   validates :email, presence: true, email: true, length: {maximum: 200}
 
@@ -161,6 +162,10 @@ class User < ActiveRecord::Base
 
   def is_logged_in?
     true
+  end
+
+  def has_password
+    self.encrypted_password.present?
   end
 
   def email_status

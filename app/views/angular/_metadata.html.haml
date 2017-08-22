@@ -1,11 +1,11 @@
-%meta{property: 'og:site_name',    content: @appConfig[:siteName]}
-%meta{property: 'og:locale',       content: @appConfig[:currentUserLocale]}
-%meta{property: 'og:url',          content: @appConfig[:currentUrl]}
+%meta{property: 'og:site_name',    content: ENV.fetch('SITE_NAME', 'Loomio')}
+%meta{property: 'og:locale',       content: current_user.locale}
+%meta{property: 'og:url',          content: request.original_url}
 %meta{property: 'fb:app_id',       content: ENV['FB_APP_ID_META']}
 
 %meta{name: 'twitter:card',        content: :summary}
-%meta{name: 'twitter:site',        content: @appConfig[:siteName]}
-%meta{name: 'twitter:url',         content: @appConfig[:currentUrl]}
+%meta{name: 'twitter:site',        content: ENV.fetch('SITE_NAME', 'Loomio')}
+%meta{name: 'twitter:url',         content: request.original_url}
 
 - if @metadata
   %meta{property: 'og:title',        content: @metadata[:title]}

@@ -63,7 +63,7 @@ describe 'Login', ->
       page.click '.auth-signin-form__submit'
       page.waitForReload()
       page.expectFlash 'Signed in successfully'
-      page.fillIn '.comment-form__comment-field', 'I am new!'
+      page.fillIn '.comment-form textarea', 'I am new!'
       page.click '.comment-form__submit-button'
       page.expectFlash 'Comment added'
 
@@ -121,15 +121,6 @@ describe 'Login', ->
       page.loadPath 'use_last_login_token'
       page.expectFlash 'Signed in successfully'
       page.expectElement '.comment-form__submit-button'
-
-    it 'can set a password', ->
-      page.loadPath 'setup_dashboard_as_visitor'
-      page.click '.navbar__sign-in'
-      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
-      page.click '.auth-email-form__submit'
-      page.click '.auth-signin-form__set-password'
-      page.expectText '.auth-form', 'Check your email'
-      page.expectText '.auth-form', 'set your password'
 
     it 'can accept an invitation', ->
       page.loadPath 'setup_invitation_to_user'

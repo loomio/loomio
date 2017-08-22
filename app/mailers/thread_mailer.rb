@@ -1,6 +1,4 @@
 class ThreadMailer < BaseMailer
-  helper :email
-  helper :application
   layout 'thread_mailer'
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
 
