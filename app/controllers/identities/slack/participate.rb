@@ -17,7 +17,7 @@ module Identities::Slack::Participate
   end
 
   def poll_not_found
-    ::Slack::Ephemeral::PollNotFoundSerializer.new(participate_poll, root: false).as_json
+    ::Slack::Ephemeral::PollNotFoundSerializer.new({}, root: false).as_json
   end
 
   def poll_closed

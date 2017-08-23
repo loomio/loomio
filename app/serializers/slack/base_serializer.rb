@@ -65,7 +65,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def slack_link_for(obj, opts = {})
-    if opts[:invitation] && obj.group
+    if opts[:invitation] && obj.group.presence
       back_to = scope.fetch(:back_to, slack_link_for(obj, opts.except(:invitation)))
       invitation_url(invitation_token, link_options.merge(back_to: back_to))
     else
@@ -78,7 +78,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def model
-    @model ||= object.eventable
+    @model ||= object
   end
 
   def author

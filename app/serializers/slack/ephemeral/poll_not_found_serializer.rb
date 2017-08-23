@@ -1,4 +1,4 @@
-class Slack::Ephemeral::PollClosedSerializer < Slack::BaseSerializer
+class Slack::Ephemeral::PollNotFoundSerializer < Slack::BaseSerializer
   include Slack::Ephemeral::Message
 
   def text
