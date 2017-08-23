@@ -1,7 +1,6 @@
-class Memos::CommentUnliked < Memo
+class Memos::ReactionDestroyed < Memo
   def initialize(reaction:)
-    @comment = comment
-    @user = user
+    @reaction = reaction
   end
 
   def kind

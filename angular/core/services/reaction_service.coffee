@@ -2,43 +2,11 @@ angular.module('loomioApp').factory 'ReactionService', ($translate, Records, Ses
   new class ReactionService
 
     listenForReactions: ($scope, model) ->
-      updateReactionSentence = =>
-        $scope.reactionSentence = @sentenceFor model
-
-      addLiker = ->
-        model.addLiker Session.user()
-        updateReactionSentence()
-
-      removeLiker = ->
-        model.removeLiker Session.user()
-        updateReactionSentence()
-
-      recordStore = Records[model.constructor.plural]
-
-      $scope.anybodyLikesIt = ->
-        model.reactorIds.length > 0
+      $scope.$watch 'eventable.reactions().length', =>
+        $scope.reactionSentence = @sentenceFor(model)
 
       $scope.currentUserLikesIt = ->
-        _.contains model.reactors(), Session.user()
-
-      $scope.like = ->
-        addLiker()
-        Records.reactions.build(
-          reactableId: model.id
-          reactableType: _.capitalize(model.constructor.singular)
-          reaction: '+1'
-        ).save().then (->), removeLiker
-
-      $scope.unlike = ->
-        removeLiker()
-        Records.reactions.find(
-          userId: Session.user().id
-          reactableId: model.id
-          reactableType: _.capitalize(model.constructor.singular)
-          reaction: '+1'
-        ).destroy().then (->), addLiker
-
-      $scope.$watch 'model.reactorIds', updateReactionSentence
+        _.contains _.pluck(model.reactions(), 'userId'), Session.user().id
 
     sentenceFor: (model) ->
       otherIds   = _.without(model.reactorIds, Session.user().id)

@@ -29,6 +29,18 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       data.comment.attachment_ids = @newAttachmentIds
       data
 
+    reactions: ->
+      @recordStore.reactions.find
+        reactableId: @id
+        reactableType: _.capitalize(@constructor.singular)
+
+    react: (reaction = '+1') ->
+      @recordStore.reactions.build(
+        reactableId: @id
+        reactableType: _.capitalize(@constructor.singular)
+        reaction: reaction
+      ).save()
+
     group: ->
       @discussion().group()
 

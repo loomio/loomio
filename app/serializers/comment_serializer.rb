@@ -7,8 +7,8 @@ class CommentSerializer < ActiveModel::Serializer
   has_many :reactions, serializer: ReactionSerializer, root: :reactions
   has_many :attachments, serializer: AttachmentSerializer, root: :attachments
 
-  def reactors
-    from_cache :reactors
+  def reactions
+    scope.dig(:cache, :reactions).get_for(object)
   end
 
   def mentioned_usernames
@@ -19,9 +19,9 @@ class CommentSerializer < ActiveModel::Serializer
     from_cache :attachments
   end
 
-  # def include_reactors?
-  #   from_cache(:reactors).present?
-  # end
+  def include_reactions?
+    scope.dig(:cache, :reactions).present?
+  end
 
   def include_mentioned_usernames?
     from_cache(:mentions).present?

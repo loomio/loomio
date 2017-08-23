@@ -2,10 +2,17 @@ class Reaction < ActiveRecord::Base
   belongs_to :reactable, polymorphic: true
   belongs_to :user
 
-  validates_uniqueness_of :user_id, scope: [:reactable_id, :reactable_type]
+  # TODO: ensure one reaction per reactable
+  # validates_uniqueness_of :user_id, scope: :reactable
   validates_presence_of :user, :reactable
 
+  delegate :group, to: :reactable, allow_nil: true
+
   alias :author :user
+
+  def author_id
+    user_id
+  end
 
   def message_channel
     case reactable

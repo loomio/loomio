@@ -19,9 +19,10 @@ class UserSerializer < ActiveModel::Serializer
 
   def avatar_url
     {
-      small:  object.avatar_url(:small),
-      medium: object.avatar_url(:medium),
-      large:  object.avatar_url(:large)
+      small:    object.avatar_url(:small),
+      medium:   object.avatar_url(:medium),
+      large:    object.avatar_url(:large),
+      original: object.avatar_url(:original)
     }
   end
 

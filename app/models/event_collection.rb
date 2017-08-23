@@ -16,14 +16,11 @@ class EventCollection
   private
 
   def default_scope
-    { cache: { reactors: reactors, attachments: attachments, mentions: mentions } }
+    { cache: { reactions: reaction_cache, attachments: attachments, mentions: mentions } }
   end
 
-  def reactors
-    @reactors ||= User.joins(:reactions)
-                      .select('users.*').select('reactions.reactable_id')
-                      .where('reactions.reactable_id': event_comment_ids, 'reactions.reactable_type': 'Comment')
-                      .group_by(&:reactable_id)
+  def reaction_cache
+    @reaction_cache ||= Caches::Reaction.new(parents: events.map(&:eventable))
   end
 
   def mentions
