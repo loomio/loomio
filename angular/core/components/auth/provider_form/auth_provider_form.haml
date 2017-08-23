@@ -3,5 +3,6 @@
   .auth-provider-form__providers.lmo-flex{layout: "row"}
     .auth-provider-form__provider{ng-repeat: "provider in providers"}
       %button.md-button.md-raised.lmo-flex{type: "button", class: "{{provider.name}}", ng-click: "select(provider)"}
-        %img.auth-provider-form__icon{src: "/img/{{provider.name}}-icon.svg", alt: "{{provider.name}}"}
+        -# the slack icon makes our site look broken..
+        -# %img.auth-provider-form__icon{src: "/img/{{provider.name}}-icon.svg", alt: "{{provider.name}}"}
         %span> {{provider.name}}
