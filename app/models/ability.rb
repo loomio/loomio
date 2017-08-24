@@ -342,6 +342,10 @@ class Ability
       user.ability.can?(:update, outcome.poll)
     end
 
+    can :create, ContactRequest do |request|
+      (@user.groups & request.recipient.groups).any?
+    end
+
     add_additional_abilities
   end
 

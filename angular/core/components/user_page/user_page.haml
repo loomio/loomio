@@ -5,7 +5,7 @@
       .user-page__content.lmo-flex{layout: "row"}
         .user-page__avatar.lmo-margin-right
           %user_avatar{user: "userPage.user", size: "featured"}
-          %md-button.md-block.md-primary.md-raised.user-page__contact-user{ng-click: "userPage.contactUser()", translate: "user_page.contact_user", translate-value-name: "{{userPage.user.firstName()}}"}
+          %md-button.md-block.md-primary.md-raised.user-page__contact-user{ng-if: "userPage.canContactUser()", ng-click: "userPage.contactUser()", translate: "user_page.contact_user", translate-value-name: "{{userPage.user.firstName()}}"}
         .user-page__info
           %h1.lmo-h1 {{userPage.user.name}}
           .lmo-hint-text @{{userPage.user.username}}

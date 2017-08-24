@@ -3,7 +3,9 @@ angular.module('loomioApp').directive 'contactRequestForm', (Records, FormServic
   templateUrl: 'generated/components/contact_request/form/contact_request_form.html'
   controller: ($scope) ->
 
-    $scope.contactRequest = Records.contactRequests.build(user: $scope.user)
+    $scope.contactRequest = Records.contactRequests.build(recipientId: $scope.user.id)
 
     $scope.submit = FormService.submit $scope, $scope.contactRequest,
-      flashSuccess: "contact_user_form.email_sent"
+      flashSuccess: "contact_request_form.email_sent"
+      flashOptions: {name: $scope.user.name}
+      successCallback: -> $scope.$emit '$close'

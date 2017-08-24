@@ -12,7 +12,8 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
 
     canContactUser: (user) ->
       @isLoggedIn() &&
-      _.any(Session.user().groupIds() & user.groupIds())
+      Session.user().id != user.id &&
+      _.intersection(Session.user().groupIds(), user.groupIds()).length
 
     canAddComment: (thread) ->
       Session.user().isMemberOf(thread.group())

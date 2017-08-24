@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response
-    draft oauth_application group_identity
+    draft oauth_application group_identity contact_request
   )
 
   MODELS.each do |kind|
@@ -106,5 +106,9 @@ class PermittedParams < Struct.new(:params)
 
   def oauth_application_attributes
     [:name, :redirect_uri, :logo]
+  end
+
+  def contact_request_attributes
+    [:recipient_id, :message]
   end
 end

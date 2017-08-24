@@ -794,6 +794,7 @@ en:
     modal_title: "Email {{name}}"
     message_placeholder: Introduce yourself and share why you'd like to make contact.
     helptext: "{{name}} will be emailed your name, email address, and message"
+    email_sent: "Email sent to {{name}}"
 
   profile_page:
     messages:
