@@ -1,4 +1,4 @@
-class Slack::Ephemeral::RequestAuthorizationSerializer < Slack::BaseSerializer
+class Slack::Ephemeral::UserNotFoundSerializer < Slack::BaseSerializer
   include Slack::Ephemeral::Message
 
   def text
