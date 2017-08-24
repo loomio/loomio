@@ -17,6 +17,7 @@ en:
   user:
     error:
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
+      username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
   attachment:
     error:

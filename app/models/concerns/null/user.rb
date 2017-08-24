@@ -49,4 +49,8 @@ module Null::User
   def identities
     Identities::Base.none
   end
+
+  def is_admin?
+    false
+  end
 end
