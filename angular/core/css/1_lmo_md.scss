@@ -60,13 +60,16 @@ md-input-container textarea {
 .md-no-errors .md-errors-spacer { display: none; }
 .md-datepicker-input { font-size: 16px !important; }
 
+.md-open-menu-container {
+  max-height: 90%;
+  overflow-y: auto;
+}
+
 @media (max-width: $tiny-max-px) {
   .md-open-menu-container {
     left: 0     !important;
     top: 48px   !important;
-    max-height: 90%;
     width: 100%;
-    overflow-y: auto;
     .md-button { text-align: center; }
   }
 }

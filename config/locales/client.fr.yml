@@ -279,7 +279,7 @@ fr:
     new_vote: "<strong>{{name}}</strong> {{position}} sur la proposition <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> a commenté sur <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> a répondu à votre commentaire sur <strong>{{title}}</strong>"
-    comment_liked: "<strong>{{name}}</strong> a aimé votre commentaire dans <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> a aimé votre commentaire dans <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> vous a mentionné dans <strong>{{title}}</strong"
     membership_requested: "<strong>{{name}}</strong> a demandé à être membre de <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> a approuvé votre demande de rejoindre <strong>{{title}}</strong>'

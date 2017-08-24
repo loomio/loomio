@@ -266,7 +266,7 @@ it:
     new_vote: "<strong>{{name}}</strong> {{position}} sulla proposta <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> ha commentato su <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha risposto al tuo commento in <strong>{{title}}</strong>"
-    comment_liked: "A <strong>{{name}}</strong> piace il tuo commento in <strong>{{title}}</strong>"
+    reaction_created: "A <strong>{{name}}</strong> piace il tuo commento in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> ti ha menzionato in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ha chiesto di iscriversi a <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> ha approvato la tua richiesta di iscriverti a <strong>{{title}}</strong>'
