@@ -4,7 +4,6 @@ class BaseMailer < ActionMailer::Base
   include EmailHelper
 
   helper :email
-  helper :application
 
   add_template_helper(PrettyUrlHelper)
 
