@@ -1,5 +1,4 @@
 class BaseMailer < ActionMailer::Base
-  include ApplicationHelper
   include ERB::Util
   include ActionView::Helpers::TextHelper
   include EmailHelper
