@@ -14,7 +14,6 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       usesMarkdown: true
       discussionId: null
       body: ''
-      reactorIds:         []
       attachmentIds:      []
       mentionedUsernames: []
 
@@ -34,13 +33,6 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
         reactableId: @id
         reactableType: _.capitalize(@constructor.singular)
 
-    react: (reaction = '+1') ->
-      @recordStore.reactions.build(
-        reactableId: @id
-        reactableType: _.capitalize(@constructor.singular)
-        reaction: reaction
-      ).save()
-
     group: ->
       @discussion().group()
 
@@ -57,13 +49,13 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       @recordStore.comments.find(@parentId)
 
     reactors: ->
-      @recordStore.users.find(@reactorIds)
+      @recordStore.users.find(_.pluck(@reactions(), 'userId'))
 
     newAttachments: ->
       @recordStore.attachments.find(@newAttachmentIds)
 
     attachments: ->
-      @recordStore.attachments.find(attachableId: @id, attachableType: 'Comment')
+      @recordStore.attachments.find(attachableId: @id, attachableType: _.capitalize(@constructor.singular))
 
     authorName: ->
       @author().name
@@ -73,15 +65,6 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
 
     authorAvatar: ->
       @author().avatarOrInitials()
-
-    addLiker: (user) ->
-      @reactorIds.push user.id
-
-    removeLiker: (user) ->
-      @removeLikerId(user.id)
-
-    removeLikerId: (id) ->
-      @reactorIds = _.without(@reactorIds, id)
 
     cookedBody: ->
       cooked = @body

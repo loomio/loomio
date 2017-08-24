@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Records, AbilityService, ReactionService, TranslationService, ModalService, DeleteCommentForm, EditCommentForm, LoadingService, RevisionHistoryModal) ->
+angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Records, AbilityService, ReactionService, TranslationService, ModalService, DeleteCommentForm, EditCommentForm, RevisionHistoryModal) ->
   scope: {eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'
@@ -21,18 +21,6 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Record
 
     $scope.showCommentActions = ->
       AbilityService.canRespondToComment($scope.eventable)
-
-    $scope.react = ->
-      $scope.eventable.react('+1')
-    LoadingService.applyLoadingFunction $scope, 'react'
-
-    $scope.unreact = ->
-      _.find($scope.eventable.reactions(),
-        reactableId: $scope.eventable.id
-        reactableType: 'Comment'
-        userId: Session.user().id
-      ).destroy()
-    LoadingService.applyLoadingFunction $scope, 'react'
 
     $scope.reply = ->
       $rootScope.$broadcast 'replyToCommentClicked', $scope.eventable

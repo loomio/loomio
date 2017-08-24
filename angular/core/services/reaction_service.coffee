@@ -1,45 +1,47 @@
-angular.module('loomioApp').factory 'ReactionService', ($translate, Records, Session) ->
+angular.module('loomioApp').factory 'ReactionService', ($translate, Records, Session, LoadingService) ->
   new class ReactionService
 
     listenForReactions: ($scope, model) ->
-      $scope.$watch 'eventable.reactions().length', =>
-        $scope.reactionSentence = @sentenceFor(model)
+      $scope.currentUserReaction = ->
+        _.first Records.reactions.find
+          reactableId:   model.id
+          reactableType: _.capitalize(model.constructor.singular)
+          userId:        Session.user().id
 
-      $scope.currentUserLikesIt = ->
-        _.contains _.pluck(model.reactions(), 'userId'), Session.user().id
+      $scope.react = ->
+        Records.reactions.build(
+          reactableId:   model.id
+          reactableType: _.capitalize(model.constructor.singular)
+          reaction: '+1'
+        ).save()
+      LoadingService.applyLoadingFunction $scope, 'react'
 
-    sentenceFor: (model) ->
-      otherIds   = _.without(model.reactorIds, Session.user().id)
-      otherUsers = _.filter model.reactors(), (user) -> _.contains(otherIds, user.id)
-      otherNames = _.map otherUsers, (user) -> user.name
+      $scope.unreact = ->
+        $scope.currentUserReaction().destroy()
+      LoadingService.applyLoadingFunction $scope, 'unreact'
 
-      if _.contains(model.reactorIds, Session.user().id)
-        switch otherNames.length
-          when 0
+      $scope.reactionSentence = ->
+        return '' unless model.reactors().length
+        otherNames  = _.pluck _.without(model.reactors(), Session.user()), 'name'
+        translateKey = if $scope.reactExecuting or $scope.currentUserReaction()
+          switch otherNames.length
             # You like this.
-            $translate.instant('discussion.you_like_this')
-          when 1
+            when 0 then 'discussion.you_like_this'
             # liked by you and Rebeka.
-            $translate.instant('discussion.liked_by_you_and_someone',
-                       name: otherNames[0])
-          else
+            when 1 then 'discussion.liked_by_you_and_someone'
             # liked by you, Rebeka and Joshua.
-            joinedNames = otherNames.slice(0, -1).join(', ')
-            name = otherNames.slice(-1)[0]
-            $translate.instant('discussion.liked_by_you_and_others',
-                       joinedNames: joinedNames, name: name)
-      else
-        switch otherNames.length
-          when 0
-            ''
-          when 1
+            else        'discussion.liked_by_you_and_others'
+        else
+          switch otherNames.length
             # Liked by Rebeka.
-            $translate.instant('discussion.liked_by_someone', name: otherNames[0])
-          when 2
+            when 1 then 'discussion.liked_by_someone'
             # Liked by Rebeka and Joshua.
-            $translate.instant('discussion.liked_by_two_others', name_1: otherNames[0], name_2: otherNames[1])
-          else
+            when 2 then 'discussion.liked_by_two_others'
             # Liked by Rebeka, Someone and Joshua
-            joinedNames = otherNames.slice(0, -1).join(', ')
-            name = otherNames.slice(-1)[0]
-            $translate.instant('discussion.liked_by_many_others', joinedNames: joinedNames, name: name)
+            else        'discussion.liked_by_many_others'
+
+        $translate.instant translateKey,
+          joinedNames: _.initial(otherNames).join(', ')
+          name:        _.last(otherNames)
+
+      true
