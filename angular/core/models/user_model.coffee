@@ -13,6 +13,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'versions'
       @hasMany 'identities'
 
+    localeName: ->
+      (_.find(AppConfig.locales, (h) => h.key == @locale) or {}).name
+
     identityFor: (type) ->
       _.detect @identities(), (i) -> i.identityType == type
 

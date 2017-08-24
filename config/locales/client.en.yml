@@ -784,7 +784,9 @@ en:
       success: Invitation cancelled
 
   user_page:
-    introduction: Introduction
+    location_field: 'Location: {{value}}'
+    locale_field: 'Language: {{value}}'
+    online_field: 'Online: {{value}}'
 
   profile_page:
     messages:
@@ -803,8 +805,10 @@ en:
     email_label: 'Email'
     short_bio_label: 'Introduction'
     locale_label: 'Language'
-    short_bio_placeholder: 'Enter a short introduction (max 500 characters)'
+    short_bio_placeholder: 'Please introduce yourself, include areas of expertise, topics of interest, and any affiliated organizations'
     locale_placeholder: Select your preferred language
+    location_label: 'Location'
+    location_placeholder: 'Where are you based?'
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
 

@@ -13,7 +13,7 @@ module Null::User
   def nil_methods
     [:key, :username, :short_bio, :selected_locale, :deactivated_at, :time_zone,
      :default_membership_volume, :unsubscribe_token, :slack_identity,
-     :encrypted_password, :associate_with_identity]
+     :encrypted_password, :associate_with_identity, :update_attribute]
   end
 
   def false_methods
