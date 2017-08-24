@@ -84,6 +84,7 @@ en:
       subscribe: Subscribe
       remind: Remind
       resend: Resend
+      send: Send
       resent: Invitation resent
     formatting_help:
       label: 'Formatting'
@@ -784,9 +785,15 @@ en:
       success: Invitation cancelled
 
   user_page:
+    contact_user: 'Contact {{name}}'
     location_field: 'Location: {{value}}'
     locale_field: 'Language: {{value}}'
     online_field: 'Online: {{value}}'
+
+  contact_request_form:
+    modal_title: "Email {{name}}"
+    message_placeholder: Introduce yourself and share why you'd like to make contact.
+    helptext: "{{name}} will be emailed your name, email address, and message"
 
   profile_page:
     messages:

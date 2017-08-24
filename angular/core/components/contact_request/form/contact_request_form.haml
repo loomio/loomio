@@ -1,0 +1,7 @@
+.contact-user-form
+  %md-input-container.md-block{md-no-float: ""}
+    %textarea{ng-model: "contactRequest.message", placeholder: "{{contact_request_form.message_placeholder | translate}}", md-maxlength: "500"}
+
+  .lmo-md-actions
+    %p.lmo-hint-text.lmo-flex__grow{translate: "contact_request_form.helptext", translate-value-name: "{{user.firstName()}}"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.send"}
