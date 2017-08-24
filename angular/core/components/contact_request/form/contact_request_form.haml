@@ -2,8 +2,8 @@
   .lmo-disabled-form{ng-if: "isDisabled"}
   %md-input-container.md-block
     %label{translate: "contact_request_form.message_placeholder"}
-    %textarea{ng-model: "contactRequest.message", md-maxlength: "500"}
+    %textarea.contact-request-form__message{ng-model: "contactRequest.message", md-maxlength: "500"}
 
   .lmo-md-actions
     %p.lmo-hint-text.lmo-flex__grow{translate: "contact_request_form.helptext", translate-value-name: "{{user.firstName()}}"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.send"}
+    %md-button.md-primary.md-raised.contact-request-form__submit{ng-click: "submit()", translate: "common.action.send"}
