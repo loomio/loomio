@@ -4,8 +4,4 @@ class Slack::Ephemeral::PollNotFoundSerializer < Slack::BaseSerializer
   def text
     I18n.t(:"slack.poll_not_found")
   end
-
-  def model
-    object
-  end
 end

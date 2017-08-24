@@ -78,7 +78,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def model
-    @model ||= object
+    @model ||= object.eventable
   end
 
   def author
