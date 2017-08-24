@@ -28,9 +28,9 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
     $scope.showUndecided = ->
       $scope.showingUndecided = true
       if $scope.moreMembershipsToLoad()
-        $scope.loadMemberships()
+        $scope.loaders.memberships.fetchRecords()
       else
-        $scope.loadInvitations()
+        $scope.loaders.invitations.fetchRecords()
 
     $scope.moreMembershipsToLoad = ->
       $scope.loaders.memberships.numLoaded < $scope.poll.undecidedUserCount
@@ -40,7 +40,7 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
       $scope.loaders.invitations.numLoaded < $scope.poll.guestGroup().pendingInvitationsCount
 
     $scope.loadMemberships = ->
-      $scope.loaders.memberships.fetchRecords()
+      $scope.loaders.memberships.loadMore()
 
     $scope.loadInvitations = ->
-      $scope.loaders.invitations.fetchRecords()
+      $scope.loaders.invitations.loadMore()
