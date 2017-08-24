@@ -32,4 +32,9 @@ class ApplicationController < ActionController::Base
   def process_time_zone(&block)
     Time.use_zone(TimeZoneToCity.convert(current_user.time_zone.to_s), &block)
   end
+
+  def hosted_by_loomio?
+    false # overridden with loomio_org_plugin
+  end
+  helper_method :hosted_by_loomio?
 end
