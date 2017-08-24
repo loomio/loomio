@@ -6,7 +6,8 @@ class Events::ReactionCreated < Event
   def self.publish!(reaction)
     return unless reaction.reactable.is_a?(Comment)
     create(kind: "reaction_created",
-           eventable: reaction).tap { |e| EventBus.broadcast('reaction_created_event', e) }
+           eventable: reaction,
+           created_at: reaction.created_at).tap { |e| EventBus.broadcast('reaction_created_event', e) }
   end
 
   private
