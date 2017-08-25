@@ -1,18 +1,15 @@
-.discussion-form__formatting-help {
-  margin-right: 10px;
-  line-height: 30px;
+.discussion-form__options {
+  clear: both;
 }
 
-.discussion-form__attachments {
-  margin-left: -5px;
+.discussion-form__options md-list-item,
+.discussion-form__options md-list-item .md-no-style {
+  padding: 0 !important;
 }
 
-.discussion-form__attachment-errors {
-  padding: 6px 6px 0 6px;
-}
-
-.discussion-form__attachment-form {
-  margin-right: 10px;
+.discussion-form__options md-checkbox .md-label {
+  display: block !important;
+  white-space: nowrap;
 }
 
 @media (max-width: $small-max-px){

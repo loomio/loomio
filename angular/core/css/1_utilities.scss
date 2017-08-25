@@ -1,52 +1,22 @@
-.menu-image { padding: 15px; }
-
-.underlined-link {
-  text-decoration: underline;
-}
-
-.debug {
-  border: 1px solid #000;
-}
-
-.font-bold {
-  font-weight: bold;
-}
-
-/* use .first if your heading is the first child */
-.first{
-  margin-top: 0;
-}
-
-.lmo-grey {
-  color: $grey-on-white;
-}
-
 .lmo-actions {
-  @include displayFlex;
+  display: flex;
   justify-content: space-between;
-  -webkit-justify-content: space-between;
+  align-items: center;
 }
 
-.lmo-textarea {
+textarea .lmo-textarea {
   resize: none;
   min-height: 100px;
 }
 
-.lmo-last{
-  /* utility class to use when you want to fix up
-     the margins on your card, e.g. if the last
-     element in the card is a paragraph */
-  margin-bottom: -10px;
+.lmo-margin-right {
+  margin-right: 12px;
 }
 
 .lmo-validation-error {
   color: $highlight-red;
   display: block;
   @include fontSmall;
-}
-
-.lmo-bold {
-  font-weight: bold;
 }
 
 .lmo-inline-action {
@@ -65,36 +35,9 @@
   white-space: nowrap;
 }
 
-.table-cell {
-  display: table-cell;
-}
-
-.fat-finger{
-  /*utility class to increase the target size of a link*/
-  min-width: 30px;
-  min-height: 30px;
-  display: block;
-  text-align: right;
-  cursor: pointer;
-  line-height: 32px;
-  i{ line-height: 32px; }
-}
-
 .action{
   color: $grey-on-grey;
   text-decoration: underline;
-}
-
-.small-action{
-  color: $grey-on-grey;
-  text-decoration: underline;
-  @include fontSmall;
-}
-
-.fa-volume-off-padded{margin: 0 6px 0 3px;}
-
-.font-bold {
-  font-weight: bold;
 }
 
 .page-loading {
@@ -110,12 +53,16 @@
   border: 0;
 }
 
-.lmo-vertical-spacer {
-  padding: 5px 0;
-}
-
-.lmo-vertical-spacer-lg {
-  padding: 15px 0;
+.lmo-disabled-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  border-radius: 6px;
+  z-index: $z-low;
+  opacity: 0.5;
 }
 
 .lmo-placeholder {
@@ -139,39 +86,21 @@
 
 .lmo-markdown-wrapper {
   word-wrap: break-word;
-  p {
-    @include md-body-1;
-  }
+  p { @include md-body-1; }
   img { max-width: 100%; }
   h1 {
     @include fontLarge;
-    // @include fontWeightBold;
     margin: 20px 0 10px 0;
   }
-  h2 {
-    @include fontMedLarge;
-    // @include fontWeightBold;
-  }
-  h3 {
-    // @include fontWeightBold;
-  }
-  h4 {
-    // @include fontWeightBold;
-  }
-  ul{
-    padding: 0 0 10px 24px;
-  }
-  ul li{
-    list-style: disc;
-  }
+  h2 { @include fontMedLarge; }
+  ul{ padding: 0 0 10px 24px; }
+  ul li{ list-style: disc; }
   pre {
     overflow: auto;
     padding: 10px;
     background: $modal-background-color;
   }
-  blockquote{
-    font-size: inherit;
-  }
+  blockquote{ font-size: inherit; }
   table {
     table-layout: fixed;
     width: 100%;
@@ -181,43 +110,7 @@
     padding: 6px 13px;
     border: 1px solid #ddd;
   }
-  thead td {
-    font-weight: bold;
-  }
-}
-
-.lmo-box--tiny {
-  text-align: center;
-  @include boxTiny;
-}
-
-.lmo-box--small {
-  text-align: center;
-  @include boxSmall;
-}
-
-.lmo-box--medium {
-  text-align: center;
-  @include boxMedium;
-}
-
-.lmo-box--large {
-  text-align: center;
-  @include boxLarge;
-}
-
-.lmo-box--featured {
-  text-align: center;
-  @include boxFeatured;
-}
-
-.lmo-box--medium-circular {
-  border-radius: 50% !important;
-  @include boxMediumCircular;
-}
-
-.lmo-rounded-corners {
-  @include roundedCorners;
+  thead td { font-weight: bold; }
 }
 
 .lmo-show-more {
@@ -230,37 +123,6 @@
     color: $grey-on-white;
     text-decoration: underline;
   }
-}
-
-.lmo-clearfix {
-  clear: both;
-}
-
-.lmo-subscription-button {
-  color: #fff;
-  background-color: #4185DE;
-  i.fa { color: #fff; }
-  &:hover { color: #fff; }
-  &:focus { color: #fff; }
-}
-
-.lmo-float--left {
-  float: left;
-}
-
-.lmo-float--right {
-  float: right;
-}
-
-.lmo-option-text {
-  float: left;
-  display: inline-block;
-  line-height: 35px;
-  text-decoration: underline;
-}
-
-.dropdown-menu i.fa {
-  width: 30px;
 }
 
 .lmo-user-mention {
@@ -277,59 +139,20 @@
   text-align: center;
 }
 
-.option-icon {
-  /* a helper class to display inline icons and avatars */
-  margin: 5px 5px 5px 0;
-  display: inline-block;
-}
-
 .lmo-relative {
   position: relative;
-}
-
-.lmo-action-dock {
-  position: absolute;
-  bottom: 0;
-  right: 0;
 }
 
 .lmo-print-only {
   display: none;
 }
 
+.lmo-hidden {
+  display: none !important;
+}
+
 .lmo-group-theme-padding {
   padding-top: $navbar-height;
-}
-
-.lmo-search-container {
-  border-radius: 2px;
-  width: 100%;
-  height: 40px;
-  position: relative;
-  overflow: visible;
-  min-width: 190px;
-  background: $card-background-color;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
-  margin: 0 !important;
-}
-
-.lmo-search-container i {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.lmo-search-container input {
-  font-size: 14px;
-  box-sizing: border-box;
-  border: none;
-  box-shadow: none;
-  outline: 0;
-  background: 0 0;
-  width: 100%;
-  padding: 0 15px 0 35px;
-  line-height: 40px;
-  height: 40px;
 }
 
 .lmo-pointer {
@@ -344,8 +167,8 @@
   display: inline-block;
 }
 
-.lmo-vertical-align-top {
-  vertical-align: top;
+.lmo-modal__narrow {
+  max-width: $tiny-max-px;
 }
 
 img.emojione {
@@ -355,41 +178,13 @@ img.emojione {
   height: 20px;
 }
 
-@media (max-width: $tiny-max-px) {
-  .md-open-menu-container {
-    left: 0     !important;
-    top: 48px   !important;
-    width: 100%;
-    .md-button { text-align: center; }
-  }
-}
-
-@media (min-width: $tiny-max-px) {
-  .md-open-menu-container {
-    z-index: 1001;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-div#intercom-container div#intercom-launcher {
-    right: 85px;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }

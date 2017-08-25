@@ -2,7 +2,7 @@
   - if @info.poll.discussion
     = render "poll_mailer/common/discussion_info", discussion: @info.poll.discussion
 
-  %h1= link_to @info.poll.title, @info.links[:target]
+  %h1= link_to @info.poll.title, @info.links[:target], class: 'poll-mailer__poll-title'
   %p
 
   - if @info.outcome

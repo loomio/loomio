@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe GroupService::PrivacyChange do
   describe 'getting private' do
-    let(:group) { FactoryGirl.create(:group, group_privacy: 'open') }
-    let(:subgroup) { create(:group, parent: group, group_privacy: 'open') }
-    let(:other_subgroup) { create(:group, parent: group, group_privacy: 'open') }
+    let(:group) { FactoryGirl.create(:formal_group, group_privacy: 'open') }
+    let(:subgroup) { create(:formal_group, parent: group, group_privacy: 'open') }
+    let(:other_subgroup) { create(:formal_group, parent: group, group_privacy: 'open') }
 
     before do
       create(:discussion, group: group, private: false)
@@ -22,7 +22,7 @@ describe GroupService::PrivacyChange do
       end
 
       it "makes discussions in the group and subgroups private" do
-        expect(Discussion.where(group_id: group.org_group_ids).all?(&:private?)).to be true
+        expect(Discussion.where(group_id: group.id_and_subgroup_ids).all?(&:private?)).to be true
       end
 
       it "makes all public subgroups closed, visible to parent members" do
@@ -48,7 +48,7 @@ describe GroupService::PrivacyChange do
   end
 
   describe 'getting public' do
-    let(:group) { FactoryGirl.create(:group, group_privacy: 'secret') }
+    let(:group) { FactoryGirl.create(:formal_group, group_privacy: 'secret') }
 
     before do
       create(:discussion, group: group, private: true)

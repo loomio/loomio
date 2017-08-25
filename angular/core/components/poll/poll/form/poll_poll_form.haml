@@ -1,23 +1,7 @@
 .poll-poll-form
-  %poll_common_tool_tip{poll: "poll"}
-
-  %md-input-container.md-block
-    %label{translate: "poll_common_form.title"}
-    %input.lmo-primary-form-input.poll-poll-form__title{type: "text", placeholder: "{{'poll_poll_form.title_placeholder' | translate}}", ng-model: "poll.title", md-maxlength="250"}
-    %validation_errors{subject: "poll", field: "title"}
-
-  %md-input-container.md-block
-    %label{translate: "poll_common_form.details"}
-    %textarea.lmo-primary-form-input.poll-poll-form__details{ng-model: "poll.details", placeholder: "{{'poll_poll_form.details_placeholder' | translate}}", mention-field: "true"}
-    %outlet{name: "after-poll-form-textarea", model: "poll"}
-
-  .md-input-compensate
-    %poll_common_attachment_form{poll: "poll"}
-
+  %poll_common_form_fields{poll: "poll"}
   %poll_common_form_options{poll: "poll"}
-
-  .md-input-compensate
-    %poll_common_closing_at_field.md-block{poll: "poll"}
+  %poll_common_closing_at_field.md-input-compensate.md-block{poll: "poll"}
 
   .md-input-compensate
     .md-block.poll-poll-form__multiple-choice.poll-common-checkbox-option
@@ -26,6 +10,7 @@
         %p.md-caption{translate: "poll_poll_form.multiple_choice_explained"}
       %md-checkbox{ng-model: "poll.multipleChoice", aria-label: "{{ 'poll_poll_form.multiple_choice' | translate }}"}
 
-  %poll_common_notify_group{model: "poll"}
+  %poll_common_notify_group{model: "poll", notify-action: "{{poll.notifyAction()}}"}
+  %poll_common_voter_add_options{poll: "poll"}
   %poll_common_notify_on_participate{poll: "poll"}
   %poll_common_form_actions{poll: "poll", submit: "submit", back: "back"}

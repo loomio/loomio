@@ -7,7 +7,10 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     @eventTypeMap:
       group:              'groups'
       discussion:         'discussions'
-      motion:             'proposals'
+      poll:               'polls'
+      outcome:            'outcomes'
+      version:            'versions'
+      stance:             'stances'
       comment:            'comments'
       comment_vote:       'comments'
       membership:         'memberships'
@@ -15,6 +18,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
 
     relationships: ->
       @belongsTo 'actor', from: 'users'
+      @belongsTo 'discussion'
       @belongsTo 'version'
       @hasMany  'notifications'
 
@@ -22,7 +26,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @deleted = true
 
     actorName: ->
-      @actor().name
+      @actor().name if @actor()
 
     model: ->
       @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)

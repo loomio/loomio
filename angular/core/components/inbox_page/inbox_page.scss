@@ -2,6 +2,10 @@
   @include lmoRow;
 }
 
+.inbox-page .thread-preview__pin {
+  display: none;
+}
+
 .inbox-page__group {
   margin-bottom: $cardPaddingSize * 2;
 }
@@ -15,7 +19,6 @@
 }
 
 .inbox-page__group-name a{
-  @include fontWeightMedium;
   @include fontMedium;
   line-height: 30px;
   color: $grey-on-grey;

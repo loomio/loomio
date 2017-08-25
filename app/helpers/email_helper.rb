@@ -1,6 +1,36 @@
 module EmailHelper
   include PrettyUrlHelper
 
+  def render_rich_text(text, md_boolean=true)
+    return "" if text.blank?
+
+    if md_boolean
+      options = [
+        :no_intra_emphasis   => true,
+        :tables              => true,
+        :fenced_code_blocks  => true,
+        :autolink            => true,
+        :strikethrough       => true,
+        :space_after_headers => true,
+        :superscript         => true,
+        :underline           => true
+      ]
+
+      renderer = Redcarpet::Render::HTML.new(
+        :filter_html         => true,
+        :hard_wrap           => true,
+        :link_attributes     => {target: '_blank'}
+        )
+      markdown = Redcarpet::Markdown.new(renderer, *options)
+      output = markdown.render(text)
+    else
+      output = Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"')
+    end
+
+    output = Emojifier.emojify!(output)
+    Redcarpet::Render::SmartyPants.render(output).html_safe
+  end
+
   def reply_to_address(discussion: , user: )
     pairs = []
     {d: discussion.id, u: user.id, k: user.email_api_key}.each do |key, value|
@@ -29,19 +59,6 @@ module EmailHelper
     time.in_time_zone(TimeZoneToCity.convert zone).strftime('%l:%M%P - %A %-d %b %Y')
   end
 
-  def motion_closing_time_for(user)
-    @motion.closing_at.in_time_zone(TimeZoneToCity.convert user.time_zone).strftime('%A %-d %b - %l:%M%P')
-  end
-
-  def motion_sparkline(motion)
-    values = motion.vote_counts.values
-    if values.sum == 0
-      '0,0,0,0,1'
-    else
-      values.join(',')
-    end
-  end
-
   def time_formatted_relative_to_age(time)
     current_time = Time.zone.now
     if time.to_date == Time.zone.now.to_date
@@ -54,34 +71,39 @@ module EmailHelper
   end
 
   def google_pie_chart_url(poll)
-    sparkline    = proposal_sparkline(poll)
-    color_values = poll_color_values(poll.poll_type).presence || ['#aaa']
-    colors       = color_values.map { |color| color.sub('#', '') }.join('|')
-    URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{sparkline}&chco=#{colors}")
-  end
-
-  def poll_color_values(poll_type)
-    Poll::COLORS.fetch(poll_type, [])
+    URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}")
   end
 
   def proposal_sparkline(poll)
-    poll.stance_counts.join(',')
+    if poll.stance_counts.max.to_i > 0
+      poll.stance_counts.join(',')
+    else
+      '1'
+    end
+  end
+
+  def proposal_colors(poll)
+    if poll.stance_counts.max.to_i > 0
+      AppConfig.colors.fetch(poll.poll_type, []).map { |color| color.sub('#', '') }.join('|')
+    else
+      'aaaaaa'
+    end
   end
 
   def percentage_for(poll, index)
-    if poll.stance_counts.max.to_i <= 0
-      0
-    else
+    if poll.stance_counts.max.to_i > 0
       (100 * poll.stance_counts[index].to_f / poll.stance_counts.max).to_i
+    else
+      0
     end
   end
 
   def dot_vote_stance_choice_percentage_for(stance, stance_choice)
-    max = stance.poll.custom_fields['dots_per_person'].to_i
-    if max <= 0
-      0
-    else
+    max = stance.poll.dots_per_person.to_i
+    if max > 0
       (100 * stance_choice.score.to_f / max).to_i
+    else
+      0
     end
   end
 end

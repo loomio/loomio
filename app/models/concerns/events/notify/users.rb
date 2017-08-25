@@ -1,8 +1,12 @@
 module Events::Notify::Users
+  def trigger!
+    super
+    email_users!
+  end
 
   # send event emails
   def email_users!
-    email_recipients.without(user).each do |recipient|
+    email_recipients.active.without(user).uniq.each do |recipient|
       mailer.delay.send(kind, recipient, self)
     end
   end

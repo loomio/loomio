@@ -1,0 +1,43 @@
+.thread-item {
+  margin-bottom: 25px;
+}
+
+.thread-item__title {
+  /* these styles break with BEM but they keep the translations clean*/
+  color: $grey-on-white;
+  strong {
+    color: $primary-text-color;
+    @include md-body-2;
+  }
+  &::first-letter { text-transform: uppercase; }
+}
+
+.thread-item__headline {
+  min-height: 28px;
+  margin-right: 40px;
+}
+
+.thread-item__footer {
+  @include fontSmall();
+  color: $grey-on-white;
+  clear: both;
+}
+
+.thread-item__actions {
+  margin-right: 3px;
+  display: inline-block;
+}
+
+.thread-item__action {
+  @include lmoBtnLink;
+  color: $link-color;
+}
+
+.thread-item__action--view-edits {
+  @include lmoBtnLink;
+  color: $grey-on-white;
+}
+
+.thread-item__timestamp {
+  display: inline-block;
+}

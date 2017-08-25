@@ -1,6 +1,6 @@
 class PollEmailInfo
   include Routing
-  attr_reader :recipient, :poll, :actor, :action_name, :eventable
+  attr_reader :recipient, :poll, :actor, :action_name, :eventable, :event
 
   def send_reason
     # TODO: determine why this recipient is receiving this email
@@ -8,12 +8,24 @@ class PollEmailInfo
     "some reason"
   end
 
-  def initialize(recipient: LoggedOutUser.new, poll:, actor: LoggedOutUser.new, action_name:, eventable: nil)
+  def login_token(redirect_path: poll_path(@poll))
+    @token ||= @recipient.login_tokens.create!(redirect: redirect_path)
+  end
+
+  def initialize(recipient:, event:, action_name:)
     @recipient   = recipient
-    @poll        = poll
-    @actor       = actor
-    @eventable   = eventable
+    @event       = event
+    @poll        = event.poll
+    @eventable   = event.eventable
     @action_name = action_name
+  end
+
+  def actor
+    @actor ||= if @event.eventable.is_a?(Stance)
+      @event.eventable.participant
+    else
+      @event.user || LoggedOutUser.new
+    end
   end
 
   def recipient_stance
@@ -32,12 +44,8 @@ class PollEmailInfo
     @poll.poll_type
   end
 
-  def undecided_memberships
-    @undecided_members ||= Membership.includes(:user).undecided_for(@poll)
-  end
-
-  def undecided_visitors
-    @undecided_visitors ||= Visitor.undecided_for(@poll)
+  def undecided
+    @undecided ||= @poll.undecided
   end
 
   def undecided_max
@@ -45,7 +53,7 @@ class PollEmailInfo
   end
 
   def time_zone
-    @recipient.time_zone || @poll.custom_fields['time_zone']
+    @recipient.time_zone || @poll.time_zone
   end
 
   def formatted_time_zone
@@ -73,7 +81,7 @@ class PollEmailInfo
       utm_medium: 'email',
       utm_campaign: 'poll_mailer',
       utm_source: action_name,
-      participation_token: @recipient.participation_token
+      invitation_token: @recipient.token
     }.merge(args)
   end
 

@@ -1,31 +1,6 @@
 .navbar-search
-  .navbar-search__input-wrapper
-    %label.sr-only{translate: "navbar.search.label"}
-    %input.navbar-search__input.form-control#primary-search-input{ng-model: "query", ng-model-options: "{debounce: {default: 400, blur: 200}}", ng-change: "getSearchResults(query)", placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: "focused = true", ng-blur: "handleSearchBlur()", tabindex: 2, aria-haspopup: "true"}
-    %i.fa.fa-fw.fa-search.navbar-search__input-icon{ng-hide: "query", aria-hidden: "true"}
-    %i.fa.fa-fw.fa-times.navbar-search__input-icon{ng-show: "query", ng-click: "clearAndFocusInput()", title: "{{ 'navbar.search.close' | translate }}", aria-label: "{{ 'navbar.search.close' | translate }}"}
-
-  .navbar-search__results{ng-show: "showDropdown()", aria-label: "{{ 'navbar.search.results_aria_label' | translate }}"}
-    %ul.group-selector-list.selector-list
-      %li.navbar-search__list-item.selector-list-header{ng-show: "groups().length > 0"}
-        %h3.lmo-dropdown-heading{translate: "common.groups"}
-      %li.navbar-search__list-item.navbar-search__list-option.selector-list-item.media{ng-repeat: "group in groups() | orderBy: 'fullName' track by group.id", ng-class: "{'selector-list-item-no-bottom-line': (queryEmpty()), 'selector-list-item-top-line': (queryEmpty() && group.isParent())}"}
-        %a.selector-list-item-link{lmo-href-for: "group", ng-mousedown: "closeSearchDropdown($event)", ng-blur: "handleSearchBlur()"}
-          .media-left
-            .selector-list-item-group-logo{ng-if: "group.isSubgroup() && queryEmpty()"}
-            %img.selector-list-item-group-logo{ng-if: "group.isParent() || queryPresent()", ng-src: "{{group.logoUrl()}}", aria-hidden: "true"}
-          .selector-list-item-group-name.media-body
-            .blank{ng-if: "queryPresent()" }
-              {{ group.fullName }}
-            .blank{ng-if: "queryEmpty()", ng-class: "{'font-bold': group.isParent()}" }
-              {{ group.name }}
-
-    %ul.thread-list.selector-list{ng-show: "query"}
-      %li.navbar-search__list-item.selector-list-item.search-loading{ng-show: "searching"}
-        %loading
-      %li.navbar-search__list-item.selector-list-item.no-results-found{ng-show: "noResultsFound()", translate: "navbar.search.no_results"}
-      %li.navbar-search__list-item.selector-list-header{ng-show: "searchResults && !(searching || noResultsFound())"}
-        %h3.lmo-dropdown-heading{translate: "navbar.search.discussions"}
-      %li.navbar-search__list-item.navbar-search__list-option.selector-list-item.media{ng-show: "!(searching || noResultsFound())", ng-repeat: "searchResult in searchResults | orderBy: ['-rank', '-lastActivityAt']"}
-        %a.search-result.selector-list-item-link#navbar-search__selector-link{lmo-href-for: "searchResult", ng-mousedown: "closeSearchDropdown($event)", ng-blur: "handleSearchBlur()"}
-          %search_result{result: "searchResult"}
+  %md-autocomplete.navbar-search__input{md-min-length: 3, md-delay: 300, md-menu-class: "navbar-search__results", md-selected-item: "selectedResult", md-search-text: "query", md-selected-item-change: "goToItem(result)", md-items: "result in search(query) | orderBy: ['-rank', '-lastActivityAt']", placeholder: "{{ 'navbar.search.placeholder' | translate }}"}
+    %md-item-template
+      %search_result{result: "result"}
+    %md-not-found
+      %span{translate: "navbar.search.no_results"}

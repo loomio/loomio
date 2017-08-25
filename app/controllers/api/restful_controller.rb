@@ -3,10 +3,10 @@ class API::RestfulController < ActionController::Base
   include ::ProtectedFromForgery
   include ::LoadAndAuthorize
   include ::CurrentUserHelper
-  before_filter :set_application_locale
-  before_filter :set_paper_trail_whodunnit
-  before_action :set_participation_token
-  snorlax_used_rest!
+  around_filter :process_locale            # LocalesHelper
+  before_action :set_invitation_token      # CurrentUserHelper
+  before_filter :set_paper_trail_whodunnit # gem 'paper_trail'
+  snorlax_used_rest!                       # gem 'snorlax'
 
   private
 
@@ -59,7 +59,4 @@ class API::RestfulController < ActionController::Base
     Array(resource || collection)
   end
 
-  def set_participation_token
-    current_user.participation_token = params[:participation_token] if current_user.is_logged_in?
-  end
 end

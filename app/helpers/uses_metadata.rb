@@ -1,31 +1,21 @@
 module UsesMetadata
-  include AngularHelper
-
   def show
     metadata
     if request.format == :xml
       # load rss feed
     else
-      boot_angular_ui
+      index
     end
   end
 
   private
 
   def metadata
-    @metadata ||= if metadata_user.can? :show, resource
+    @metadata ||= if current_user.can? :show, resource
       "Metadata::#{controller_name.singularize.camelize}Serializer".constantize.new(resource)
     else
       {}
     end.as_json
-  end
-
-  # metadata user defines who we determine can see metadata or not.
-  # defaults to the current user
-  # we override this when we want to be able to pass query parameters which allow
-  # otherwise unauthorized users to view metadata (for example, when scraping from a facebook group)
-  def metadata_user
-    current_user
   end
 
   def resource

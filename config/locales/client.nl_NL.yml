@@ -284,12 +284,6 @@ nl_NL:
     heading: Standpunten
     no_votes_yet: Niemand heeft nog op dit voorstel gestemd
     change_your_vote: Verander je standpunt
-  undecided_panel:
-    aria_label: 'Leden die nog onbeslist zijn'
-    show: Toon
-    remind: Herinner
-    undecided: onbeslist
-    hide_undecided: Verberg onbesliste leden
   proposal_pie_chart:
     participation_statement: '{{percentage}}% van de leden heeft hun standpunt gedeeld ({{number}}/{{total}})'
   close_proposal_form:
@@ -433,7 +427,6 @@ nl_NL:
     see_all_members: 'Zie alle: ({{count}}) leden'
     pending_invitations: '+ ({{count}}) bezig'
     subgroups: 'Subgroepen'
-    subgroups_placeholder: 'Met subgroepen kun je de groep in verschillende teams verdelen.'
     visibility_label: 'Zichtbaarheid'
     options_label: 'Opties'
     options:
@@ -509,39 +502,6 @@ nl_NL:
     choose_plan: 'Kies je prijsplan'
     in_progress_body: 'Bedankt dat je Loomio uitprobeert met <strong>{{name}}</strong>. Je kunt op elk moment een prijsplan kiezen dat bij jouw groep past.'
     expired_body_html: "<strong>{{name}}</strong> heeft het einde van de Loomio proefperiode bereikt. Om het te blijven gebruiken, moet je een prijsplan kiezen dat bij je groep past."
-  choose_plan_modal:
-    aria_label: Kies plan
-    heading: Kies alsjeblieft een plan voor jouw groep
-    free: Gratis
-    standard: Standaard
-    pro: Pro
-    per_month: /maand
-    standard_group_description: Alles wat je nodig hebt voor één groep
-    free_group_description: Door donaties ondersteund prijsplan voor gemeenschapsgroepen.
-    pro_group_description: Voor organisaties met <nobr>meerdere groepen.</nobr>
-    benefit_1_group: 1 groep
-    benefit_10_groups: 10 groepen
-    benefit_unlimited_members: Onbeperkt aantal leden
-    benefit_unlimited_decisions: Onbeperkt aantal besluiten
-    benefit_priority_support: Eersteklas ondersteuning
-    benefit_help_with_setup: Hulp bij eerste installatie
-    benefit_community_support: Gemeenschapsondersteuning
-    benefit_slack_integration: Slack integratie
-    benefit_custom_domain: Aangepast domein
-    benefit_analytics_reports: Analyserapport
-    benefit_data_export: Gegevensexport
-    support_link: Laten we praten!
-    prices_in_us_dollars: Prijzen zijn in Amerikaanse dollars, plus btw waar van toepassing
-    need_help_please: Iets  anders nodig?
-    select: Selecteer
-  subscription_success_modal:
-    aria_label: Inschrijving geslaagd
-    heading: Je bent er helemaal klaar voor!
-    receipt: Je ontvangt een e-mailbericht met je betalingsbewijs, inclusief een link naar het klantenportaal, waar je je abonnement kunt veranderen, upgraden, of opzeggen en waar je toegang hebt tot je factuurgeschiedenis
-    change_subscription: "Als je Slack integratie wil inschakelen of je aangepaste domeinnaam,"
-    contact_link: neem contact met ons op.
-    sign_off: ❤️ van het Loomio team
-    ok_got_it: Okee, ik snap 't!
   group_form:
     aria_label: 'Groepsformulier'
     start_group_heading: 'Begin een groep'
@@ -923,7 +883,6 @@ nl_NL:
     message_label: 'Je bericht'
     message_placeholder: 'Jouw bericht...'
     send_message: 'Stuur bericht'
-    new_contact_message: 'Bedankt voor je bericht; we nemen snel contact op!'
   help_page:
     coordinating: 'Coördineer jouw Loomio groep'
     coordinating_details: |
@@ -1148,10 +1107,6 @@ nl_NL:
     priority_last: Geblokkeerd eerst
     no_votes_yet: Er zijn nog geen stemmen uitgebracht.
     change_results_order: Verander volgorde resultaten
-    show_undecided: Toon onbeslist
-  poll_common_did_not_votes_panel:
-    undecided: Onbeslist ({{count}})
-    show_undecided: Toon onbeslist
   poll_common_set_outcome_panel:
     share_outcome: Deel uitkomst
     poll: 'Deze peiling is gesloten. <strong>Deel de uitkomst</strong> met de groep.'
@@ -1223,7 +1178,6 @@ nl_NL:
     stance_created: Stemming gemaakt
     stance_updated: Stemming geactualiseerd
   poll_dot_vote_vote_form:
-    dots_remaining: Je hebt {{count}} stippen over.
     too_many_dots: Je hebt teveel stippen gebruikt.
     stance_created: Stemming gemaakt
     stance_updated: Stemming aangepast

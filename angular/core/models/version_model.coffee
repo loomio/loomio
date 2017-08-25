@@ -7,7 +7,6 @@ angular.module('loomioApp').factory 'VersionModel', (BaseModel) ->
     relationships: ->
       @belongsTo 'discussion'
       @belongsTo 'comment'
-      @belongsTo 'proposal'
       @belongsTo 'poll'
       @belongsTo 'author', from: 'users', by: 'whodunnit'
 
@@ -19,7 +18,7 @@ angular.module('loomioApp').factory 'VersionModel', (BaseModel) ->
        _.include(_.keys(@changes), name)
 
     model: ->
-      @discussion() or @comment()
+      @discussion() or @poll() or @comment()
 
     isCurrent: ->
       @id == _.last(@model().versions())['id']

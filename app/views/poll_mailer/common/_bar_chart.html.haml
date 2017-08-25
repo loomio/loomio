@@ -7,4 +7,4 @@
       %td
         %table{style: "width: #{percentage_for(@info.poll, index)}%"}
           %tr
-            %td{height: '48px', style: "background-color: #{Poll::COLORS.dig(@info.poll_type, index)}"}
+            %td{height: '48px', style: "background-color: #{AppConfig.colors.dig(@info.poll_type, index)}"}

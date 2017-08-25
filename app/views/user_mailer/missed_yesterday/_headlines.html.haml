@@ -3,9 +3,5 @@
   %h3=link_to group.full_name, group_url(group, @utm_hash)
   %ul
     - @discussions_by_group[group].each do |discussion|
-      - hl = DiscussionHeadline.new(discussion, @time_frame)
       %li
         = link_to discussion.title, discussion_url(discussion)
-        - if hl.has_motion?
-          \-
-          = hl.motion.title

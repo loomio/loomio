@@ -28,22 +28,8 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # TODO: find the common thread between these poll_published / poll_created logics
-  # publish to designated community after creation
-  config.listen('poll_create') do |poll, actor|
-    community = Communities::Base.find_by(id: poll.community_id)
-    if poll.author.can?(:show, community)
-      poll.communities << community
-      Events::PollPublished.publish!(poll, actor, community)
-    end
-  end
-
-  # publish to linked slack team after creation
-  config.listen('poll_create') do |poll, actor|
-    if poll.group&.community&.identity.present?
-      Events::PollPublished.publish!(poll, actor, poll.group.community)
-    end
-  end
+  # add poll creator as admin of guest group
+  config.listen('poll_create') { |poll, actor| poll.guest_group.add_admin!(actor) }
 
   # publish to new group if group has changed
   config.listen('poll_update') do |poll, actor|
@@ -51,6 +37,7 @@ EventBus.configure do |config|
       Events::PollCreated.publish!(poll, actor)
     end
   end
+
 
   # add creator to group if one doesn't exist
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
@@ -60,13 +47,25 @@ EventBus.configure do |config|
   config.listen('comment_update')  { |comment|      Memos::CommentUpdated.publish!(comment) }
   config.listen('comment_unlike')  { |comment_vote| Memos::CommentUnliked.publish!(comment: comment_vote.comment, user: comment_vote.user) }
 
-  config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).participate! }
+  config.listen('new_comment_event',
+                'discussion_edited_event',
+                'poll_created_event',
+                'poll_edited_event',
+                'stance_created_event',
+                'outcome_created_event',
+                'poll_closed_by_user_event') do |event|
+    DiscussionReader.for_model(event.discussion, event.user).update_reader(
+      volume: :loud,
+      read_at: event.created_at
+    ) if event.discussion
+  end
 
-  # update discussion reader after discussion creation / edition
-  config.listen('discussion_create',
-                'discussion_update',
-                'comment_like') do |model, actor|
-    DiscussionReader.for_model(model, actor).update_reader(volume: :loud)
+  # :/
+  config.listen('discussion_create') do |discussion|
+    DiscussionReader.for(user: discussion.author, discussion: discussion).update_reader(
+      volume: :loud,
+      read_at: discussion.created_at
+    )
   end
 
   config.listen('discussion_reader_viewed!',
@@ -102,15 +101,12 @@ EventBus.configure do |config|
     Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
-  # email and notify users of events
-  Event::KINDS.each do |kind|
-    config.listen("#{kind}_event") { |event| event.trigger! }
-  end
-
-  # notify communities of outcome creation
-  config.listen("outcome_create") do |outcome|
-    outcome.communities.with_identity.each { |community| Events::OutcomePublished.publish!(outcome, community) }
-  end
+  # update discussion importance
+  config.listen('discussion_pin',
+  'poll_create',
+  'poll_close',
+  'poll_destroy',
+  'poll_expire') { |model| model.discussion&.update_importance }
 
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }

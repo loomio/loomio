@@ -2,7 +2,7 @@ require 'rails_helper'
 describe 'CommentService' do
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create(:group) }
+  let(:group) { create(:formal_group) }
   let(:discussion) { create :discussion, group: group, author: user }
   let(:comment) { create :comment, discussion: discussion, author: user }
   let(:comment_vote) { create :comment_vote, comment: comment, user: user }
@@ -59,6 +59,14 @@ describe 'CommentService' do
       CommentService.create(comment: comment, actor: user)
     end
 
+    it 'sets my volume to loud' do
+      user.update(email_on_participation: true)
+      reader = DiscussionReader.for(discussion: comment.discussion, user: user)
+      reader.set_volume!("normal")
+      CommentService.create(comment: comment, actor: user)
+      expect(reader.reload.volume).to eq "loud"
+    end
+
     it 'saves the comment' do
       comment.should_receive(:save!).and_return(true)
       CommentService.create(comment: comment, actor: user)
@@ -85,8 +93,8 @@ describe 'CommentService' do
       end
 
       it 'updates the discussion reader' do
+        user.update_attribute(:email_on_participation, false)
         CommentService.create(comment: comment, actor: user)
-        expect(reader.reload.participating).to eq true
         expect(reader.reload.volume.to_sym).to eq :normal
       end
 

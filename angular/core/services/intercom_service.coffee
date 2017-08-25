@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, AppConfig, Session, LmoUrlService) ->
+angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, AppConfig, Session, ModalService, ContactModal, LmoUrlService) ->
   lastGroup = {}
 
   mapGroup = (group) ->
@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     company_id: group.id
     key: group.key
     name: group.name
-    description: group.description.substring(0, 250)
+    description: (group.description || "").substring(0, 250)
     admin_link: LmoUrlService.group(group, {}, { noStub: true, absolute: true, namespace: 'admin/groups' })
     plan: group.subscriptionKind
     subscription_kind: group.subscriptionKind
@@ -17,11 +17,8 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     group_privacy: group.groupPrivacy
     cohort_id: group.cohortId
     created_at: group.createdAt.format()
-    motions_count: group.motionsCount
     discussions_count: group.discussionsCount
     memberships_count: group.membershipsCount
-    proposal_outcomes_count: group.proposalOutcomesCount
-    closed_motions_count: group.closedMotionsCount
     has_custom_cover: group.hasCustomCover
     invitations_count: group.invitationsCount
 
@@ -36,9 +33,9 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
 
       $window.Intercom 'boot',
        admin_link: LmoUrlService.user(user, {}, { noStub: true, absolute: true, namespace: 'admin/users', key: 'id' })
-       app_id: AppConfig.intercomAppId
+       app_id: AppConfig.intercom.appId
        user_id: user.id
-       user_hash: AppConfig.intercomUserHash
+       user_hash: AppConfig.intercom.userHash
        email: user.email
        name: user.name
        username: user.username
@@ -70,7 +67,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       if @available()
         $window.Intercom('showNewMessage')
       else
-        $window.open LmoUrlService.contactForm(), '_blank'
+        ModalService.open ContactModal
 
     $rootScope.$on 'logout', (event, group) ->
       service.shutdown()

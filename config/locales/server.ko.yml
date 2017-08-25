@@ -15,11 +15,6 @@ ko:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
     view_comment: 루미오에 댓글을 보기 위해서는 여기를 클릭하세요.
     view_discussion: 토론을 보기 위해서 여기를 선택하세요.
-    view_proposal: 루미오에서 이 제안 보기
-    create_proposal:
-      intro: 사용자가 소속되어 있는 루미오 그룹에 새로운 제안이 만들어졌습니다.
-      closes_in: '닫습니다. '
-      subject: '새로운 제안 : %{which}'
     daily_activity:
       heading: 당신의 루미오 활동
       intro: 지난 24시간 동안 여러분의 루미오 그룹에 어떤 일이 있었는지를 보여줍니다.
@@ -30,16 +25,6 @@ ko:
       intro: "%{name} (%{email}) 이 당신의 루미오 그룹에 접근 요청을 했습니다."
       subject: "%{who}님이  %{which_group}에 가입을 요청했습니다. "
       view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.
-    proposal_closed:
-      specify_outcome_and_notify_group: 결과를 만들고 그룹 멤버들에게 보내기
-      specify_outcome_and_notify_group_html: 결과를 만들고 그룹 멤버들에게 보내기
-      subject: 닫힌 제안 - %{which}
-    proposal_closing_soon:
-      closes_on: 닫습니다.
-      closes_at: 에 종료됩니다.
-      closes_in: '닫습니다. '
-      headline: "%{group} 그룹에 %{author}님의 제안이 곧 마감이 됩니다."
-      summary: 요약
   footer:
     about: 소개
     blog: 블로그
@@ -57,16 +42,6 @@ ko:
     group_description_placeholder: 그룹의 멤버들이 왜 여기에 모여 있는지 인식할 수 있도록 이 그룹의 목적을 설명해주세요.
     success:
       header: 거의 다 되었습니다. 이메일을 확인해 주세요.
-  pricing_page:
-    gift: 무료
-    standard: 일반
-    free_trial_html: <span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.
-    get_started_for_free: 무료로 시작하기
-    unlimited_members: 멤버 제한 없음
-    unlimited_decisions: 의사결정 횟수 제한 없음
-    email_support: 이메일 지원
-    premium_support: 프리미엄 지원
-    usage_statistics: 사용량 통계
   contact_page:
     contact_us: 연락하기
     contact_form: 연락처양식

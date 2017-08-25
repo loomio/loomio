@@ -5,12 +5,20 @@ describe Stance do
     let(:proposal) { create :poll_proposal }
     let(:user) { create :user }
 
+    before { poll.create_guest_group }
+
     it 'allows no stance choices for meetings / polls' do
       expect(Stance.new(poll: poll, participant: user)).to be_valid
     end
 
     it 'requires a stance choice for proposals' do
       expect(Stance.new(poll: proposal, participant: user)).to_not be_valid
+    end
+  end
+
+  describe 'statement' do
+    it 'has a length validation' do
+      expect(build(:stance, reason: "a"*400)).to_not be_valid
     end
   end
 

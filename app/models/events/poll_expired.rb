@@ -1,5 +1,7 @@
 class Events::PollExpired < Event
   include Events::PollEvent
+  include Events::Notify::Author
+  include Events::Notify::ThirdParty
 
   def self.publish!(poll)
     create(kind: "poll_expired",
@@ -12,11 +14,6 @@ class Events::PollExpired < Event
   def notify_users!
     super
     notification_for(poll.author).save
-  end
-
-  def email_users!
-    super
-    mailer.poll_expired_author(poll.author, self).deliver_now
   end
 
   private

@@ -211,9 +211,6 @@ hu:
     heading: Álláspontok
     no_votes_yet: Erre a javaslatra még senki nem szavazott.
     change_your_vote: Változtasd meg az álláspontod.
-  undecided_panel:
-    aria_label: 'Ők még nem döntöttek.'
-    hide_undecided: Rejtsd el azokat, akik még nem döntöttek.
   proposal_pie_chart:
     participation_statement: '{{percentage}}% a tagok közül állást foglalt ({{number}}/{{total}})'
   close_proposal_form:

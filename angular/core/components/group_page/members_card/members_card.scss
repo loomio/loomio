@@ -20,20 +20,6 @@
   margin: 0 2px 2px 0;
 }
 
-.members-card__invite-members {
-  // clear: both;
-  // padding-top: 10px;
-}
-
-.members-card__invite-members-btn{
-  position: relative;
-  top: 6px;
-  right: -8px;
-  // @include lmoBtnFeatured;
-  // // @include lmoBtnBlock;
-  // @include lmoBtnIcon;
-}
-
 .members-card__manage-members {
   @include cardMinorAction;
 }

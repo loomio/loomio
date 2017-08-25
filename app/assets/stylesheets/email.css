@@ -36,6 +36,21 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   margin: 0 10px;
 }
 
+.base-mailer__avatar-initials {
+  margin: 10px auto;
+  border: 1px solid #dcdcdc;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+.base-mailer__avatar-image {
+  margin: 0 10px 10px 0;
+  width: 50px;
+  height: 50px;
+}
+
 .invite-people-mailer {
   text-align: center;
   background-color: #F1F1F1;
@@ -49,20 +64,6 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 
 .invite-people-mailer__context {
   margin-bottom: 30px;
-}
-
-.invite-people-mailer__avatar-initials {
-  margin: 10px auto;
-  border: 1px solid #dcdcdc;
-  font-size: 18px;
-  line-height: 50px;
-  text-align: center;
-  width: 50px;
-  height: 50px;
-}
-
-.invite-people-mailer__avatar-image {
-  margin: 0 10px 10px 0;
 }
 
 .invite-people-mailer__body {

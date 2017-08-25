@@ -35,8 +35,6 @@ pt_BR:
       invitation_text_html: "convidou você para um grupo no Loomio"
       link_help: "Clique no link abaixo para aceitar o convite:"
       accept_invitation: "Aceitar convite"
-    resend_to_join_group:
-      subject: "%{member} ainda está esperando você para entrar em %{group_name} no Loomio"
     to_start_group:
       subject: "Configure seu novo grupo Loomio: %{group_name}"
       hi: "Olá %{name},"
@@ -55,14 +53,9 @@ pt_BR:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
     view_comment: Clique aqui para ver o comentário no Loomio
     view_discussion: Clique aqui para ver esta discussão
-    view_proposal: Ver esta proposta no Loomio
     create_discussion:
       intro_html: "iniciou um tópico:"
       intro: "%{who} iniciou um tópico:"
-    create_proposal:
-      intro: Uma nova proposta foi criada em um dos grupos do Loomio dos quais você faz parte.
-      closes_in: Encerra em
-      subject: 'Nova proposta: %{which}'
     daily_activity:
       heading: Suas atividades no Loomio
       intro: Exibindo o que tem acontecido nos seus grupos no Loomio nas últimas 24 horas
@@ -97,23 +90,6 @@ pt_BR:
       context_html: "mencionou você durante a discussão"
       context: "%{author_name} mencionou você durante a discussão %{discussion_title}"
       subject: '%{who} mencionou você durante a discussão "%{which}"'
-    new_motion_created:
-      subject: 'Proposta: %{proposal_title}'
-      context: "criou uma proposta no grupo %{group_full_name}:"
-    proposal_closed:
-      proposal_has_closed: A proposta foi encerrada.
-      specify_outcome_and_notify_group: Crie um resultado e envie para seu grupo!
-      specify_outcome_and_notify_group_html: Crie um resultado e envie para seu grupo!
-      subject: Proposta encerrada - %{which}
-    proposal_outcome:
-      subject: 'Resultado da proposta: %{motion}'
-    proposal_closing_soon:
-      closes_on: Encerra em
-      closes_at: Encerra em
-      closes_in: Encerra em
-      subject: 'Encerrando em 24 horas: %{proposal_title}'
-      headline: "A proposta de %{author} no grupo %{group} encerrará em breve:"
-      summary: Resumo
     thread_mailer:
       footer_text: 'Responda este e-mail diretamente ou veja em %{hostname}:'
       reply_or_view_online_html: Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>.
@@ -123,31 +99,6 @@ pt_BR:
       turn_on_notifications_text: 'Ligar e-mail para receber atividades nesta discussão: %{url}'
       change_email_preferences_html: Modifique suas <a href='%{email_preferences_url}'>preferências de e-mail</a> para cancelar subscrições destes e-mails.
       change_preferences: 'Modifique suas preferências de e-mail:'
-      new_motion_html: 'criou uma proposta:'
-      new_motion: '%{who} criou uma proposta:'
-      motion_closing_soon: 'Proposta encerra em 24 horas:'
-      proposal_closed: 'Proposta encerrada:'
-      specify_outcome_html: Sua proposta foi encerrada. <a href='%{link}'>Especifique um resultado</a> para que todos saibam.
-      specify_outcome: 'Sua proposta foi encerrada. Especifique um resultado para que todos saibam.'
-      outcome_created_html: "compartilhou um resultado para a proposta:"
-      outcome_created: "%{who} compartilhou um resultado para a proposta:"
-      you_agreed: Você %{past_tense_position}
-    analytics:
-      subject: "Semana do %{which_group} no Loomio"
-      title: "Seu resumo da semana desde %{since}"
-      table_header: "Nome | Propostas criadas | Discussões criadas | Comentários criados | Votações criadas"
-      stats: "<strong>%{active_members}</strong> dos <strong>%{group_members}</strong> em seu grupo estiveram ativos na última semana. Seu grupo avançou <strong>%{motions}</strong> e fez <strong>%{comments}</strong> em <strong>%{discussions}</strong>."
-      contact_us: "Buscando mais estatísticas? <a href='%{contact_link}'>Entre em contato</a>."
-      no_activity: "Gostaria de falar com um dos nossos consultores colaboradores sobre como extrair o máximo do Loomio? <a href='%{contact_link}'>Entre em contato</a>"
-      trial_subscription: "%{which_group} está com <strong>período de testes gratuito</strong> finalizando em <strong>%{expires_at}</strong>. Você pode selecionar uma forma de assinatura <a href='%{subscription_link}'>aqui</a>."
-      trial_expired: "%{which_group} chegou ao fim do seu período de testes gratuitos no Loomio. "
-      heart: "❤ da equipe Loomio"
-      unsubscribe: "Este email é enviado a coordenadores de grupos ativos no Loomio.<br />Caso prefira não receber estes emails, <a href='%{contact_link}'>basta dizer</a>."
-      user_table:
-        motions_created: "Propostas"
-        discussions_created: "Discussões"
-        comments_created: "Comentários"
-        votes_created: "Votações"
   footer:
     about: Sobre
     blog: Blog
@@ -185,41 +136,6 @@ pt_BR:
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo."
-  pricing_page:
-    header: Planos do grupo
-    gift: Gratuito
-    standard: Padrão
-    plus: Profissional
-    free_trial_html: Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.
-    get_started_for_free: Comece de graça
-    gift_body: Plano de suporte a grupos comunitários por doação.
-    standard_body_html: Tudo o que você precisa para <nobr>um grupo.</nobr>
-    pro_body_html: Para organizações com <nobr>multiplos grupos.</nobr>
-    one_group: um grupo
-    unlimited_members: membros ilimitados
-    unlimited_decisions: decisões ilimitadas
-    email_support: suporte por e-mail
-    slack_integration_html: |+
-      integração <strong>Slack</strong>
-
-    standard_price_html: '<strong>US$19</strong>/mês'
-    gift_price_html: '<strong>US$0</strong>'
-    plus_includes_standard: 'Tudo do Padrão, mais:'
-    standard_includes_free: 'Tudo do Gratuito, mais:'
-    multiple_groups: "até 10 grupos"
-    premium_support: suporte premium
-    help_with_setup: ajuda com configurações iniciais
-    custom_subdomain: subdomínio personalizado
-    analytics_reports: relatórios analíticos
-    data_export: exportação de dados
-    contact_us_html: |
-      Os preços estão em dólares americanos, mais taxas onde aplicável. Precisa de algo mais? <a href="/contact">Vamos conversar!</a>
-    custom_subdomain_html: |+
-      subdomínio personalizado,<br />
-      e.g. <strong>seugrupo</strong>.loomio.org
-
-    usage_statistics: estatísticas de uso
-    plus_price_html: '<strong>US$99</strong>/mês'
   password_reset:
     email_guidelines_html: |
       <p>Insira o endereço de e-mail da sua conta Loomio no campo abaixo e ser-lhe-à enviado um link de redefinição de senha.</p>
@@ -337,7 +253,3 @@ pt_BR:
       view_on_loomio: Ver no Loomio
       results: Resultados
       create_outcome: Compartilhar resultado
-      your_response: Sua resposta
-    meeting:
-      header:
-        visitor_reminded: '<strong>%{actor}</strong> está esperando sua resposta: %{title}'

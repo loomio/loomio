@@ -1,8 +1,3 @@
-.poll-common-helptext {
-  @include fontSmall;
-  font-style: italic;
-}
-
 .poll-common-tip {
   @include fontSmall;
   font-style: italic;
@@ -20,10 +15,6 @@
 
 .poll-common-modal {
   max-width: 400px;
-}
-
-.poll-common-modal__narrow {
-  width: 480px;
 }
 
 .poll-common-vote-form__border-chip {
@@ -54,6 +45,7 @@
 .poll-common-vote-form__option {
   min-height: 48px;
   margin-bottom: 16px;
+  padding-right: 20px;
 }
 
 .poll-common-vote-form__option .md-no-style {

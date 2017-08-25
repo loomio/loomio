@@ -1,6 +1,6 @@
 class VisitService
   def self.record(visit: , group: , user:)
-    return unless visit
+    return unless visit && user.is_logged_in?
     begin
       organisation = group.parent_or_self
       OrganisationVisit.find_or_create_by(visit: visit, organisation: organisation) do |ov|

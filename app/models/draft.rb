@@ -5,7 +5,7 @@ class Draft < ActiveRecord::Base
   validates :user, presence: true
   validates :draftable, presence: true
 
-  DRAFTABLE_MODELS = ['user', 'group', 'discussion', 'motion', 'poll']
+  DRAFTABLE_MODELS = ['user', 'group', 'discussion', 'poll']
 
   class << self
     def purge(user:, draftable:, field:)

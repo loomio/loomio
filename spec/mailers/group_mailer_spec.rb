@@ -3,7 +3,7 @@ require "rails_helper"
 describe GroupMailer do
   describe '#membership_requested' do
     before do
-      @group = create(:group)
+      @group = create(:formal_group)
       @admin = @group.admins.first
       @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
       @event = Event.create(kind: 'membership_requested', eventable: @membership_request)
@@ -28,7 +28,7 @@ describe GroupMailer do
       end
 
       it 'assigns confirmation_url for email body' do
-        @mail.body.encoded.should match(/\/g\/#{@group.key}/)
+        @mail.body.encoded.should match(/#{@group.key}/)
       end
     end
 

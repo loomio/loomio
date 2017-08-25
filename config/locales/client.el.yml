@@ -1,5 +1,20 @@
 el:
+  poll_types:
+    proposal: Πρόταση
+    count: Έλεγχος
+    poll: Ψηφοφορία
+    dot_vote: Ψήφος κουκίδας
+    meeting: Χρόνος ψηφοφορίας
+  timezones:
+    local: Τοπική ώρα ({{value}})
   common:
+    expand: Επέκταση
+    all_day: Όλη μέρα
+    ok_got_it: Εντάξει, το κατάλαβα
+    learn_more: Μάθε περισσότερα
+    not_found: Δεν βρέθηκε
+    time_zone: Ώρα ζώνης
+    local_time: Τοπική ώρα
     confirm_discard_changes: Απορρίψτε τις αλλαγές σας;
     time:
       am: π.μ.
@@ -10,6 +25,10 @@ el:
     notification_volume: 'Ένταση ειδοποιήσεων'
     group: 'Ομάδα'
     groups: 'Ομάδες'
+    threads: 'Θέματα'
+    decisions: 'Αποφάσεις'
+    settings: 'Ρυθμίσεις'
+    help: 'Βοήθεια'
     privacy:
       privacy: 'Ιδιωτικότητα'
       public: 'Δημόσιο'
@@ -27,14 +46,20 @@ el:
     more_help: 'Περισσότερη βοήθεια'
     models:
       proposal: 'Πρόταση'
+    copy: 'Αντιγραφή'
+    copy_text: 'Αντιγραφή κειμένου'
+    copied: 'Αντιγράφηκε στο πρόχειρο'
     action:
+      next: 'Επόμενο'
       close: 'Κλείσε'
       save: 'Αποθήκευση'
       save_changes: 'Αποθήκευση αλλαγών'
       update_settings: 'Ενημέρωση ρυθμίσεων'
       reply: 'Απάντηση'
       edit: 'Επεξεργασία'
+      remove: 'Αφαίρεση'
       like: 'Αρέσει'
+      back: 'Πίσω'
       unlike: 'Δεν μ''άρέσει'
       update: 'Ενημέρωση'
       cancel: 'Ακύρωση'
@@ -45,9 +70,23 @@ el:
       loading: 'Φορτώνει'
       translate: 'Μετάφραση'
       translated: 'Μεταφράση από τον Μεταφραστή Bing'
+      upload: 'Ανέβασμα'
       uploading: 'Φορτώνει'
+      load_more: 'Φόρτωση περισσότερα'
+      share: Μοίρασμα
+      ok: Εντάξει!
+      retry: Ξαναδοκιμάστε
+      done: Έγινε
+      start: Εκίνηση
+      delete: Διαγραφή
+      unsubscribe: Κατάργηση εγγραφής
+      subscribe: Εγγραφή
     formatting_help:
+      label: 'Μορφοποίηση'
       title: 'Μάθετε πως να χρησιμοποιείτε το Markdown για να μορφωποιήσετε το κείμενο σας στο Loomio'
+  devise:
+    failure:
+      inactive: 'Υπάρχει ανενεργός λογαριασμός συνδεδεμένος με αυτή την ηλεκτρονική διεύθυνση. Εάν θέλετε να ξανά-ενεργοποιήσετε τον λογαριασμό σας, επικοινωνήστε μαζί μας.'
   error_page:
     forbidden: 'Δεν έχετε το δικαίωμα για να το κάνετε αυτό.'
     page_not_found: 'Ήταν αδύνατον να βρούμε αυτό. Πιθανώς έχει διαγραφεί ή μετακινηθεί.'
@@ -58,7 +97,10 @@ el:
   proposal_outcome_panel:
     heading: Αποτέλεσμα
     set_outcome_hint: Χρησιμοποιήστε αυτό το κενό να ενημερώσετε όλους ποιο είναι το αποτέλεσμα της πρότασης.
+    set_outcome_btn: Ορίστε το αποτέλεσμα
+    edit_outcome_link: Επεξεργαστείτε το αποτέλεσμα
   proposal_outcome_form:
+    aria_label: Φόρμα πρότασης αποτελέσματος
     set_outcome: Βάλτε αποτέλεσμα της πρότασης
     update_outcome: Ανανεώστε το αποτέλεσμα της πρότασης
     outcome_label: αποτέλεσμα πρότασης
@@ -71,6 +113,10 @@ el:
     heading: Προηγούμενες Προτάσεις
   previous_proposals_page:
     heading: Προηγούμενες προτάσεις
+  previous_polls_page:
+    heading: Δραστηρίοτητες στο {{name}}
+    polls_count: Βλέπετε {{loaded}} των {{total}} αποφάσεων
+    search_activities: Ψάξτε αποφάσεις
   proposal_collapsed:
     expand: Επέκτεινε
     outcome: 'Αποτέλεσμα: {{outcome}}'
@@ -80,14 +126,66 @@ el:
     quiet: 'Ήσυχα'
     mute: 'Σίγαση'
     unmute: 'Κατάργηση σίγασης'
+  change_volume_form:
+    aria_label: "Αλλαγή ρυθμίσεων ηλεκτρονικής διεύθυνσης φόρμας"
+    loud_label: "Όλες οι δραστηριότητες"
+    normal_label: "Ανακοινώσεις"
+    quiet_label: "Όχι emails"
+    mute_label: "Σίγαση"
+    discussion:
+      title: "Ρυθμίσεις ηλεκτρονικής διεύθυνσης για {{title}}"
+      loud_description: "Θα σας έρχετε ηλεκτρονικό μήνυμα όταν υπάρχει δραστηριότητα σε αυτό το θέμα."
+      normal_description: "Θα σας έρχετε ηλεκτρονικό μήνυμα όταν η πρόταση ξεκινήσει, ή είνα να κλείσει, ή το αποτέλεσμα δημοσιεύετε."
+      quiet_description: "Δεν θα σας έρθει ηλεκτρονικό μήνυμα σχετικά με αυτό το θέμα."
+      apply_to_all: "Εφαρμόστε αυτές τις ρυθμίσεις σε όλα τα θέματα σε αυτή την ομάδα."
+      messages:
+        loud: "Θα σας έρχετε ηλεκτρονικό μήνυμα για την δραστηριότητα σε αυτό το θέμα."
+        normal: "Θα σας έρχετε ηλεκτρονικό μήνυμα σχετικά με τις προτάσεις σε αυτό το θέμα."
+        quiet: "Δεν θα σας έρχεται ηλεκτρονικό μήνυμα σχετικά με αυτό το θέμα."
+    membership:
+      title: "Ρυθμίσεις ηλεκτρονικής διεύθυνσης για {{title}}"
+      loud_description: "Θα σας έρχεται ηλεκτρονικό μήνυμα όται υπάρχει δραστηριότητα σε αυτή την ομάδα."
+      normal_description: "Θα σας έρχεται ηλεκτρονικό μήνυμα μόνο με τις ανακοινώσεις σε αυτή την ομάδα."
+      quiet_description: "Δεν θα σας έρχονται ηλεκτρονικά μηνύματα σχετικά με την δραστηριότητα σε αυτή την ομάδα."
+      apply_to_all: "Εφαρμόστε αυτές τις ρυθμίσεις σε όλες τις ομάδες μου."
+      messages:
+        loud: "Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε αυτή την ομάδα."
+        normal: "Θα σας έρχεται ηλεκτρονικό μήνυμα μόνο με τις ανακοινώσεις σε αυτή την ομάδα."
+        quiet: "Δεν θα σας έρχονται ηλεκτρονικά μηνύματα σχετικά με αυτή την ομάδα."
+    all_groups:
+      messages:
+        loud: "Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε όλες τις ομάδες σας."
+        normal: "Θα σας έρχονται ηλεκτρονικά μηνύματα μόνο με τις ανακοινώσεις σε όλες τις ομάδες σας."
+        quiet: "Δεν θα σας έρχεται κανένα ηλεκτρονικό μήνυμα σε καμία από τις ομάδες σας."
+    user:
+      title: Ρυθμίσεις ηλεκτρονικών μηνυμάτων για νέες ομάδες
+      apply_to_all: "Εφαρμόστε αυτές τις ρυθμίσεις σε όλες τις ομάδες μου."
   inbox:
     clear: 'Καθάρισμα'
     latest: 'Τελευταία'
     unread: 'Αδιάβαστα'
     closing_in: 'Κλείνει'
+  sign_up_form:
+    aria_label: 'Φόρμα εγγραφής'
+    title: "Καλώς ήρθατε στο Loomio! Πάμε να φτιάξουμε τις ρυθμίσεις"
+    name_label: 'Το όνομα σας:'
+    name_placeholder: 'Jane Doe'
+    email_label: 'Διεύθυνση ηλεκτρονικού ταχυδρομείου:'
+    email_placeholder: 'you@example.com'
+    password_label: 'Κωδικός:'
+    password_confirmation_label: 'Ξανά τον ίδιο κωδικό:'
+    sign_in_message: 'Έχετε ήδη λογαριασμό;'
+    sign_in: 'Είσοδος'
+    sign_up: 'Δημιουργία λογαριασμόυ'
+  signed_out_modal:
+    aria_label: 'Η σύνοδος έληξε'
+    title: "Η σύνοδος σας έληξε"
+    message: "Έχετε εισέλθει στο Loomio από άλλο παράθυρο. Παρακαλούμε ξανά-συνδεθείτε για να συνεχίσετε."
+    ok: "Εντάξει"
   comment_form:
     aria_label: 'Πρόσθεσε ένα σχόλιο'
     attachments:
+      add_attachment: 'Επισυνάψτε αρχείο'
       remove_attachment: 'Αφαίρεσε συννημένο'
     messages:
       created: 'Το σχόλιο προστέθηκε'
@@ -98,21 +196,39 @@ el:
     delete_comment: 'Διαγραφή σχόλιου'
     cancel_reply: 'Ακύρωση Απάντησης'
     confirm_delete_message: 'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?'
+    confirm_delete: 'Διαγραφή σχολίου'
     in_reply_to: "Σε απάντηση στον/στην <strong>{{name}}</strong>:"
     submit_button:
       label: 'Δημοσίευση'
     private_privacy_notice: 'Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{groupName}}.'
     public_privacy_notice: 'Το σχόλιο σας θα είναι ορατό σε όλους στο διαδίκτυο.'
+    sign_in: "Εισέλθετε για να συμμετάσχετε στην συζήτηση"
   sidebar:
+    recent_threads: 'Πρόσφατα θέματα'
+    unread_threads: 'Αδιάβαστα θέματα ({{count}})'
+    muted_threads: 'Θέματα σε σίγαση'
+    start_group: 'Νέα ομάδα'
+    explore: 'Δημόσιες ομάδες'
     edit_profile: 'Επεξεργασία προφίλ'
     email_settings: 'Ρυθμίσεις ηλεκτρονικού ταχυδρομείου'
     help: 'Βοήθεια'
+    contact: 'Επικοινωνήστε με το Loomio'
     sign_out: 'Αποσύνδεση'
+    start_thread: Νέο θέμα
+    start_decision: Νέα απόφαση
+    aria_labels:
+      heading: 'Πλευρική στήλη'
+      threads_list: 'Ενέργειες θεμάτων'
+      groups_list: 'Ομάδες'
+      user_list: 'Ενέργειες χρήστη'
   navbar:
     recent_title: 'Πήγαινε στον πίνακα διαχείρισης'
     unread_title: 'Δες την αδιάβαστη δραστηριότητα'
+    start_thread: 'Νέο θέμα'
     notifications: 'Πίνακας ειδοποιήσεων'
     search:
+      label: 'Πεδίο εύρεσης; ψάξτε για ομάδες και θέματα'
+      results_aria_label: 'Αποτελέσματα εύρεσης'
       no_results: 'Δεν βρέθηκαν θέματα'
       close: 'Κλείσε τον πίνακα εύρεσης'
       placeholder: 'Εύρεση'
@@ -120,13 +236,20 @@ el:
       discussions: 'Θέματα'
       proposals: 'Προτάσεις'
       comments: 'Σχόλια'
+    sign_in: 'Είσοδος'
+    toggle_sidebar: 'Εναλλαγή πλευρικής στήλης'
+    logo_title: 'Κεντρική σελίδα'
   start_menu:
+    label: 'Ενέργειες χρήστη'
+    title: 'Ενέργεια'
     start_group: 'Ξεκινήστε μια ομάδα'
     start_subgroup: 'Ξεκινήστε μια υπο-ομάδα'
     start_thread: 'Ξεκινήστε ένα θέμα'
+    start_poll: 'Έναρξη ψηφοφορίας'
     invite_people: 'Προσκαλέστε άτομα'
   notifications:
     header: "Ειδοποιήσεις"
+    no_notifications: "Δεν έχετε καμία ειδοποίηση"
   position_buttons_panel:
     heading: Πείτε την γνώμη σας
   vote_form:
@@ -151,21 +274,22 @@ el:
     heading: Θέσεις
     no_votes_yet: Κανείς δεν έχει ψηφίσει ακόμα σε αυτή την πρόταση.
     change_your_vote: Άλλαξε την θέση σου.
-  undecided_panel:
-    aria_label: 'Αναποφάσιστα μέλη'
-    hide_undecided: Κρύψε τα αναποφάσιστα μέλη
   proposal_pie_chart:
     participation_statement: '{{percentage}}% των μελών έχουν πάρει θέση ({{number}}/{{total}})'
   close_proposal_form:
+    aria_label: 'Κλείσιμο πρότασης'
     close_proposal: 'Κλείστε την πρόταση'
     helptext: 'Είστε σίγουρος/η πως θέλετε να κλείσετε τώρα την πρόταση;'
+    close_proposal_submit: 'Κλείσιμο πρότασης'
     messages:
       success: Η πρόταση έκλεισε
   extend_proposal_form:
+    aria_label: Αλλαγή ώρας κλεισίματος
     title: 'Άλλαξε την ώρα κλεισίματος'
     success: 'Η ώρα κλεισίματος της πρότασης ανανεώθηκε'
     submit: 'Ανανέωση ώρα κλεισίματος'
   proposal_form:
+    aria_label: 'Φόρμα πρότασης'
     messages:
       created: 'Η πρόταση ξεκίνησε'
       updated: 'Η πρόταση ανανεώθηκε'
@@ -173,14 +297,20 @@ el:
     start_a_proposal: 'Ξεκινήστε μια πρόταση'
     edit_proposal: 'Επεξεργασία πρότασης'
     what_does_a_proposal_do: 'Οι προτάσεις σας αφήνουν να δείτε πως αισθάνεται ο καθένας για μια συγκεκριμένη πορεία δράσης.'
+    proposal_ideas: Χρειάζεστε ιδέες για να γράψετε μια καλή πρόταση;
+    proposal_ideas_title: 9 τρόποι για να χρησιμοποιήσετε μια πρόταση του Loomio για να κάνετε την συζήτηση δράση
+    editing_title_and_description_forbidden: 'Δεν μπορείτε να αλλάξετε τον τίτλο ή την περιγραφή της πρότασης αφ'' ότου έχουν ψηφίσει άνθρωποι. Εάν οι λεπτομέρειες έχουν αλλάξει, παρακαλούμε κλείστε την πρόταση και ξεκινήστε άλλη.'
+    title_placeholder: 'π.χ. Πάμε στο φεγγάρι'
     title_label: 'Τίτλος'
     closes_at_label: 'Κλείνει στις'
     closes: 'Κλείνει'
     details_label: 'Λεπτομέρειες'
+    details_placeholder: "Δώστε αρκετές πληροφορίες ώστε όλοι να γνωρίζουν ακριβώς τι σημαίνει να συμφωνήσου ή να διαφωνήσου με την πρόταση σας"
   discussion_record:
     created: 'Το θέμα {{title}} δημιουργήθηκε επιτυχώς στην ομάδα {{groupName}}'
     updated: 'Οι αλλαγές αποθηκεύτηκαν στον τίτλο {{title}}'
   discussion_form:
+    aria_label: 'Φόρμα θέματος'
     messages:
       created: 'Το θέμα ξεκίνησε'
       updated: 'Το θέμα ανανεώθηκε'
@@ -196,6 +326,8 @@ el:
     privacy_public: 'Οποιοσδήποτε μπορεί να δει αυτό το θέμα. Μόνο μέλη μπορούν να συμμετάσχουν.'
     privacy_private: 'Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας {{group}}.'
     privacy_organisation: 'Το θέμα θα είναι ορατό μόνο στα μέλη της {{parent}} και μέλη της ομάδα {{group}}.'
+    make_announcement: Ανακοίνωση
+    notified_count: '{{count}} άνθρωποι θα ενημερωθούν με ηλεκτρονικό μήνυμα'
   proposal_expanded:
     collapse: Συρρίκνωση
     current_votes: Τωρινές ψήφοι
@@ -215,42 +347,179 @@ el:
       <p> Εκτιμούμε πραγματικά την υποστήριξή σας στη διάρκεια του έτους, και είμαστε πραγματικά ενθουσιασμένοι  που κάνατε το Loomio ακόμη καλύτερο μέσα στο 2016. </p>
 
       <p> Είναι χρήσιμο το Loomio στην ομάδα σας; Μόλις κυκλοφορήσαμε τα σχέδια τιμολόγησης μας και ζητάμε από τις ομάδες που έχουν χρησιμοποιήσει το Loomio για κάποσο να επιλέξουν ένα σχέδιο που τους ταιριάζει. </p>
+    submit: "Δείξε μου τα σχέδια"
+  group_welcome_modal:
+    aria_label: "Καλώς ήρθατε"
+    creator_heading: "Καλώς ήρθατε στη νέα ομάδα σας"
+    member_heading: "Καλώς ήρθατε στο Loomio"
+    ok_got_it: "Εντάξει, το κατάλαβα"
+  cover_photo_form:
+    aria_label: 'Αλλάξτε την φωτογραφία φόρμας εξωφύλλου'
+    heading: 'Νέα φωτογραφία εξωφύλλου'
+    upload_link: 'Ανεβάστε νέα φωτογραφία εξωφύλλου'
+    image_size_helptext: 'Το καταλληλότερο μέγεθος εικόνας είναι 1400×320px'
+    upload_success: 'Η φωτογραφία εξωφύλλου ανανεώθηκε επιτυχώς'
+  logo_photo_form:
+    aria_label: 'Αλλάξτε την φόρμα λογότυπου της ομάδας'
+    heading: 'Νέο λογότυπο ομάδας'
+    upload_link: 'Ανεβάστε νέο λογότυπο ομάδας'
+    image_size_helptext: 'Ιδανικό μέγεθος είναι 100×100px'
+    upload_success: 'Το λογότυπο ανανεώθηκε επιτυχώς'
   join_group_button:
     join_group: Συμμετάσχετε στην ομάδα
+    membership_requested: Το αίτημα της ιδιότητας μέλους εκκρεμεί
+    messages:
+      joined_group: 'Τώρα είστε μέλος της ομάδας {{group}}'
   membership_request_form:
+    aria_label: Φόρμα αιτήματος μέλους
     heading: Δηλώστε συμμετοχή στην ομάδα
     name_label: Όνομα
     email_label: Ηλεκτρονική Διεύθυνση
+    introduction_label: Γιατί θέλετε να συμμετάσχετε;
+    submit_button: Ρωτήστε για να συμμετάσχετε
+    introduction_over_limit: Η απάντηση είναι πολύ μεγάλη
+    messages:
+      membership_requested: 'Έχετε αιτηθεί εγγραφή μέλους στην ομάδα {{group}}'
+  revision_history_modal:
+    aria_label: Αναθεώρηση ιστορικού
+    thread_header: Το θέμα περιέχει αναθεώρηση ιστορικού
+    comment_header: Ιστορικό αναθεωρήσεων της επεξεργασίας του σχολίου
+    started_by: 'Ξεκίνησε από <strong>{{name}}</strong>'
+    edited_by: 'Επεξεργάστηκε από <strong>{{name}}</strong>'
+    posted: Δημοσιεύθηκε
   group_page:
     thread_list:
       empty:
+        no_discussions_in_group: "Αυτή η ομάδα δεν έχει θέματα ακόμα."
         membership_is_invitation_only: "Για να συμμετάσχετε σε αυτή την ομάδα πρέπει να έχετε προσκεκληθεί από ένα μέλος."
         membership_is_invitation_by_admin_only: "Για να συμμετάσχετε σε αυτή την ομάδα πρέπει να έχετε προσκεκληθεί από έναν συντονιστή."
+    messages:
+      archive_group_success: 'Αυτή η ομάδα έχει απενεργοποιηθεί'
+    group_logo: 'Λογότυπο ομάδας'
+    new_photo: 'Νέα φωτογραφία'
+    new_cover_photo: 'Ανεβάστε νέα φωτογραφία εξωφύλλου'
+    new_group_logo: 'Ανεβάστε νέο λογότυπο ομάδας'
     discussions: 'Θέματα'
+    discussions_placeholder: 'Ένα νήμα είναι όπου όλοι μπορούν να συζητήσουν ένα θέμα και να πάρουν αποφάσεις μαζί.'
+    members: 'Μέλη'
+    members_placeholder: 'Είστε ο μοναδικός εδώ: προσκαλέστε κάποια άτομα να συμμετάσχουν μαζί σας!'
+    member_options: Επιλογές μέλους
+    see_all_members: 'Δείτε όλα: ({{count}}) μέλη'
+    pending_invitations: '+ ({{count}}) σε εκρεμμότητα'
+    subgroups: 'Υποομάδες'
+    invite_people: 'Πρόσκληση'
+    visibility_label: 'Ορατότητα'
     options_label: 'Ρυθμίσεις'
     options:
       label: 'Ρυθμίσεις'
+      edit_group: 'Ρυθμίσεις επεξεργασίας ομάδας'
+      manage_members: 'Διαχείριση μελών'
+      add_subgroup: 'Προσθέστε υποομάδα'
     volume:
       loud: Αποστολή ηλεκτρονικού μηνύματος όποτε υπάρχει δραστηριότητα.
       quiet: Μην στείλετε ηλεκτρονικό μήνυμα για αυτή την ομάδα. Η δραστηριότητα θα εμφανιστεί στο ταμπλό.
       mute: Απόκρυψη αυτής της ομάδας από το ταμπλό και καμμία ειδοποιήση εκτός εάν @αναφερθώ.
-  choose_plan_modal:
-    standard: Τυπικό
+  description_card:
+    title: 'Περιγραφή ομάδας'
+    placeholder: 'Οι συντονιστές της ομάδας μπορούν να χρησιμοποιούν αυτή την περιοχή για να περιγράψουν τον σκοπό της ομάδας, ώστε όλοι να γνωρίζουν γιατί είναι εδώ.'
+    messages:
+      description_updated: 'Η περιγραφή ανανεώθηκε'
+  leave_group_form:
+    aria_label: 'Φύγετε από την ομάδα'
+    title: 'Φύγετε από την ομάδα '
+    question: 'Είστε σίγουροι ότι θέλετε να φύγετε από την ομάδα;'
+    submit: 'Ναι, φύγετε από την ομάδα'
+    cannot_leave_group: 'Δεν μπορείτε να φύγετε από αυτή την ομάδα διότι είστε ο τελευταίος συντονιστής. Χρειάζεται να επιλέξετε άλλο συντονιστή ή να απενεργοποίησετε την ομάδα.'
+    add_coordinator: 'Προσθήκη συντονιστή'
+  archive_group_form:
+    aria_label: 'Απενεργοποίηση ομάδας'
+    title: 'Απενεργοποίηση ομάδας'
+    question: 'Είστε σίγουροι ότι θέλετε να απενεργοποίησετε την ομάδα;'
+    submit: 'Ναι, απενεργοποίηστε την ομάδα'
+  confirm_gift_plan_modal:
+    heading: Οι δωρεάν ομάδες υποστηρίζονται από δωρέες
+    body: Οι δωρεές κάνουν δυνατό τις ομάδες που το χρειάζονται να μπορούν να χρησιμοποίουν το Loomio δωρεάν. Περιστασιακά θα ζητήσουμε από τους χρήστες ελεύθερων ομάδων να συνεισφέρουν εθελοντικά.
+    got_it: Παραμείνετε δωρεάν
+    go_back: Αναβάθμιση
+  donation_modal:
+    heading: Κάντε μια δωρεά στο Loomio;
+    body: "Το loomio είναι μια κοινωνική επιχείρηση. Η αποστολή μας είναι να δημιουργήσουμε έναν κόσμο όπου είναι εύκολο να συμμετάσχει οποιοδήποτε σε αποφάσεις που τον αφορούν."
+    contribute: Κάντε μια δωρεά
+    got_to_group: Όχι τώρα, ευχαριστώ.
+  gift_card:
+    heading: Σχέδιο δώρου
+    make_a_contribution: Κάντε μια δωρεά
+  upgrade_plan_card:
+    heading: Αναβαθμίστε για χαρακτηριστικά υψηλής ποιότητας
+    donations: Δεν θα ξανά ζητηθεί από τα μέλη της ομάδας σας να κάνουν δωρεά.
+    more: '... και πολλά άλλα.'
+    upgrade: Αναβάθμιση τώρα
+    donate: Δωρεά
+  trial_card:
+    title: 'Δοκιμαστική περίοδος 30 ημερών'
+    choose_plan: 'Επιλέξτε το χρηματικό πλάνο σας'
   group_form:
+    aria_label: 'Φόρμα ομάδας'
+    start_group_heading: 'Ξεκινήστε μια ομάδα'
+    start_subgroup_heading: 'Ξεκινήστε μια υπό ομάδα'
+    edit_group_heading: 'Επεξεργαστείτε τις ρυθμίσεις της ομάδας'
+    edit_subgroup_heading: 'Επεξεργαστείτε τις ρυθμίσεις της υπο ομάδας'
+    group_name: 'Όνομα ομάδας'
+    group_name_placeholder: 'Πως θέλετε να λέτε την ομάδα σας;'
+    subgroup_name: 'Όνομα υπο ομάδας'
+    description: 'Περιγραφή'
+    description_placeholder: 'Περιγράψτε τον σκοπό της ομάδας σας, ώστε τα μέλη της ομάδας σας να γνωρίζουν γιατί είναι εδώ.'
+    privacy_statement:
+      public_on_web: 'Το όνομα και η περιγραφή θα είναι δημόσια στο διαδίκτυο'
+      private_to_group: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη.'
+      private_to_parent_members: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη του {{parent}}'
     privacy: 'Ιδιωτικότητα'
+    thread_privacy: 'Ιδιωτικότητα του θέματος'
+    public_threads: 'Μόνο δημόσια θέματα'
+    public_discussions_subgroup: 'Οποιοσδήποτε στο {{parentGroupName}} μπορεί να δει τις συζητήσεις'
+    public_or_private_threads: 'Επιτρέπονται δημόσια και ιδιωτικά θέματα'
+    private_threads: 'Μόνο τα μέλη μπορούν να δεις τις συζητήσεις'
+    permissions: 'Δικαιώματα'
+    allow_public_threads: 'Επιτρέπονται δημόσια θέματα σε αυτή την ομάδα.'
+    parent_members_can_see_discussions: 'Τα μέλη του {{parent}} μπορούν να δουν τα ιδιωτικά θέματα.'
+    members_can_add_members: 'Τα μέλη μπορούν να προσκαλέσουν ανθρώπους και να εγκρίνουν τις αιτήσεις συμμετοχής.'
+    members_can_create_subgroups: 'Τα μέλη μπορούν να δημιουργήσουν υπο ομάδες.'
+    members_can_edit_discussions: 'Τα μέλη μπορούν να ενημερώσουν το περιεχόμενο και το τίτλο κάθε θέματος.'
+    members_can_edit_comments: 'Τα μέλη μπορούν να επεξεργαστούν τα δικά τους σχόλια ανά πάσα στιγμή.'
+    members_can_start_discussions: 'Τα μέλη μπορούν να ξεκινούν νέα θέματα.'
+    members_can_vote: 'Τα μέλη μπορούν να ψηφίζουν στις προτάσεις.'
+    members_can_raise_motions: 'Τα μέλη μπορούν να ξεκινούν προτάσεις.'
+    submit_start_group: 'Δημιουργία ομάδας'
+    submit_start_subgroup: 'Δημιουργία υπο ομάδας'
     submit_update: 'Ενημέρωση ρυθμίσεων'
+    messages:
+      group_created: 'Η ομάδα ξεκίνησε'
+      group_updated: 'Η ομάδα ενημερώθηκε'
+  membership_requests_card:
+    heading: 'Αιτήσεις εγγραφής μελών'
+    manage_requests: Διαχείριση αιτήσεων
+    manage_requests_with_count: Διαχείριση αιτήσεων ({{count}})
+  group_help_card:
+    title: Βοήθεια
+    ten_tips_article_title: 10 συμβουλές για να παίρνετε μεγάλες αποφάσεις με το Loomio
+    nine_ways_to_use_proposals: 9 τρόποι για να χρησιμοποίησετε μια πρόταση στο Loomio και να μετατρέψετε την συζήτηση σε δράση
   membership_requests_page:
+    heading: Αιτήσεις εγγραφής μελών
     approve: Έγκριση
     ignore: Αγνοήστε
   group_previous_proposals_card:
     heading: Προηγούμενες προτάσεις
   invitation_form:
     invite_people: 'Προσκαλέστε άτομα'
+    copy_link: 'Αντιγραφή'
+    done: 'Έγινε'
   memberships_page:
     members: 'Μέλη'
     name_label: 'Όνομα'
     coordinator_label: 'Συντονιστής'
     remove_member_label: 'Αφαιρέστε'
+  remove_membership_form:
+    submit: 'Αφαίρεση'
   profile_page:
     profile: 'Προφίλ'
     picture_label: 'Εικόνα'
@@ -263,6 +532,7 @@ el:
   dashboard_page:
     aria_label: 'Πίνακας Εργαλείων'
     no_groups:
+      start: Εκίνηση
       or: ή
     mark_as_read: Σημείωσε ως διαβασμένα
     filtering:
@@ -272,6 +542,7 @@ el:
       yesterday: 'Εχθές'
   inbox_page:
     no_groups:
+      start: Εκίνηση
       or: ή
   discussion:
     proposals: 'Προτάσεις'
@@ -279,6 +550,9 @@ el:
     started_by: 'Ξεκίνησε από τον/την <strong>{{name}}</strong>'
   thread_group:
     aria_label: 'Όνομα ομάδας'
+  thread_context:
+    mute_thread: 'Σίγαση'
+    delete_thread: 'Διαγραφή'
   delete_comment_dialog:
     title: 'Διαγραφή σχόλιου'
     question: 'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?'
@@ -375,3 +649,28 @@ el:
     vote: 'Μπορείτε να αλλάξετε την θέση σας ανά πάσα στιγμή'
   angular:
     collapse: Συρρίκνωση
+  decision_tools_card:
+    proposal_title: Πρόταση
+    count_title: Έλεγχος
+    poll_title: Ψηφοφορία
+    meeting_title: Χρόνος ψηφοφορίας
+  current_polls_card:
+    start_poll: Νέα απόφαση
+  poll_common_notify_group:
+    notify_group: Ανακοίνωση
+  poll_common_close_form:
+    close_proposal: Κλείσιμο πρότασης
+  poll_common_form:
+    start: Εκίνηση
+  poll_common_share_form:
+    group_set: Η ομάδα ενημερώθηκε
+  poll_common_subscribe_form:
+    subscribe: Εγγραφή
+  polls_page:
+    heading: Αποφάσεις
+    start_new_poll: Νέα απόφαση
+  auth_form:
+    email_placeholder: you@example.com
+  install_slack:
+    progress:
+      invite: Πρόσκληση

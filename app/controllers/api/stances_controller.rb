@@ -1,5 +1,17 @@
 class API::StancesController < API::RestfulController
   alias :update :create
+  before_action :set_guest_params, only: :create
+  after_action :sign_in_unverified_user, only: :create
+
+  def unverified
+    self.collection = page_collection unverified_stances
+    respond_with_collection
+  end
+
+  def verify
+    service.verify(stance: load_resource, actor: current_user)
+    respond_with_resource
+  end
 
   def my_stances
     self.collection = current_user.stances.latest.includes({poll: :discussion})
@@ -9,23 +21,22 @@ class API::StancesController < API::RestfulController
   end
 
   private
-
-  def create_action
-    @event = service.create(stance: resource, actor: current_user.presence || update_visitor)
+  def unverified_stances
+    resource_class.unverified.where('users.email': current_user.email)
   end
 
-  def update_visitor
-    (current_visitor.presence || existing_visitor_participant || Visitor.new).tap do |visitor|
-      visitor.assign_attributes(Hash(resource_params[:visitor_attributes]).slice(:name, :email))
-      visitor.community ||= resource.poll.community_of_type(:public)
-    end
+  def sign_in_unverified_user
+    sign_in(resource.participant, verified_sign_in_method: false) if resource.persisted? && !resource.participant.email_verified
   end
 
-  def existing_visitor_participant
-    resource.poll.stances.latest
-            .joins("INNER JOIN visitors ON stances.participant_type = 'Visitor' AND stances.participant_id = visitors.id")
-            .find_by("visitors.email": resource_params.dig(:visitor_attributes, :email))
-            &.participant
+  def set_guest_params
+    return if current_user.is_logged_in?
+    current_user.name  = guest_params[:name]
+    current_user.email = guest_params[:email]
+  end
+
+  def guest_params
+    @guest_params ||= Hash(resource_params.delete(:visitor_attributes))
   end
 
   def accessible_records
@@ -39,5 +50,4 @@ class API::StancesController < API::RestfulController
       collection
     end
   end
-
 end

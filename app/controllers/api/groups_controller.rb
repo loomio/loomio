@@ -2,6 +2,7 @@ class API::GroupsController < API::RestfulController
   include UsesFullSerializer
   load_and_authorize_resource only: :show, find_by: :key
   load_resource only: [:upload_photo], find_by: :key
+  after_action :track_visit, only: :show
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
@@ -17,11 +18,6 @@ class API::GroupsController < API::RestfulController
     instantiate_resource
     create_action
     respond_with_resource(scope: {current_user: current_user})
-  end
-
-  def publish
-    service.publish(group: load_resource, params: publish_params, actor: current_user)
-    respond_with_resource
   end
 
   def archive
@@ -41,6 +37,9 @@ class API::GroupsController < API::RestfulController
   end
 
   private
+  def track_visit
+    VisitService.record(group: resource, visit: current_visit, user: current_user)
+  end
 
   def ensure_photo_params
     params.require(:file)
@@ -51,11 +50,16 @@ class API::GroupsController < API::RestfulController
     Queries::ExploreGroups.new
   end
 
+  def resource_class
+    FormalGroup
+  end
+
   def publish_params
     {
       make_announcement: !!params[:make_announcement],
       identifier:        params.require(:identifier),
-      channel:           params[:channel]
+      channel:           params[:channel],
+      identity_type:     :slack
     }
   end
 

@@ -1,0 +1,12 @@
+.lmo-textarea md-input-container {
+  margin-bottom: 0;
+}
+
+.lmo-textarea__helptext {
+  @include md-caption;
+  color: $grey-on-white;
+}
+
+.lmo-textarea__footer {
+  clear: both;
+}

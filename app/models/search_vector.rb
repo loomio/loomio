@@ -16,10 +16,8 @@ class SearchVector < ActiveRecord::Base
 
   DISCUSSION_FIELD_WEIGHTS = {
     'discussions.title'        => :A,
-    'motion_names'             => :B,
     'poll_titles'              => :B,
     'discussions.description'  => :C,
-    'motion_descriptions'      => :C,
     'poll_details'             => :C,
     'comment_bodies'           => :D
   }.freeze
@@ -46,15 +44,6 @@ class SearchVector < ActiveRecord::Base
    .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) * #{recency_multiplier} as rank")
    .where("search_vector @@ plainto_tsquery(#{query})")
    .order('rank DESC')
-  end
-
-  # NB: I am a convenience method which should be removed soon after we think this thing actually works
-  scope :relevence_table, ->(query) do
-    search_without_privacy!(query)
-      .select("date_part('day', current_date - last_activity_at) as days_old")
-      .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{sanitize(query)})) as orig_rank")
-      .select("#{recency_multiplier} as mult")
-      .limit(25).map { |r| puts "|#{r.days_old} | #{r.mult} | #{'%.2f' % r.orig_rank} | #{'%.2f' % r.rank} |" }.compact
   end
 
   def self.recency_multiplier
@@ -93,16 +82,9 @@ class SearchVector < ActiveRecord::Base
 
   def vector_for_discussion
     Discussion.select(self.class.discussion_field_weights + ' as search_vector')
-              .joins("LEFT JOIN (#{vector_for_motions.to_sql})  motions ON TRUE")
               .joins("LEFT JOIN (#{vector_for_polls.to_sql})    polls ON TRUE")
               .joins("LEFT JOIN (#{vector_for_comments.to_sql}) comments ON TRUE")
               .where(id: self.discussion_id)
-  end
-
-  def vector_for_motions
-    Motion.select("string_agg(name, ',')                     AS motion_names")
-          .select("LEFT(string_agg(description, ','), 10000) AS motion_descriptions")
-          .where(discussion_id: self.discussion_id)
   end
 
   def vector_for_polls

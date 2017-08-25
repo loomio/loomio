@@ -32,10 +32,9 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs "Details" do
       f.input :name
-      f.input :email
-      f.input :username
+      f.input :email, as: :string
+      f.input :username, as: :string
       f.input :is_admin
-      f.input :angular_ui_enabled
     end
     f.actions
   end
@@ -67,7 +66,7 @@ ActiveAdmin.register User do
           table_for user.adminable_groups.published.select{|g| g.admins.count == 1}.each do |group|
             column :id
             column :name do |group|
-              link_to group.name, [:admin, group]
+              link_to group.name, admin_group_path(group)
             end
           end
         end
@@ -87,13 +86,21 @@ ActiveAdmin.register User do
         column :group_id
         column :group_name do |g|
           group = g.group
-          link_to group.full_name, [:admin, group]
+          link_to group.full_name, admin_group_path(group)
         end
       end
     end
 
     panel("Reset Password") do
       button_to 'Get link to reset password', reset_password_admin_user_path(user), method: :post
+    end
+
+    panel 'Merge into another user' do
+      form action: merge_admin_user_path(user), method: :post do |f|
+        f.label "Email address of final user account"
+        f.input name: :destination_email
+        f.input type: :submit, value: "Merge user"
+      end
     end
 
     if user.deactivation_response.present?
@@ -104,10 +111,11 @@ ActiveAdmin.register User do
     active_admin_comments
   end
 
-  member_action :enable_communities, method: :put do
-    user = User.friendly.find(params[:id])
-    user.experiences['enable_communities'] = true
-    user.save
+  member_action :merge, method: :post do
+    source = User.friendly.find(params[:id])
+    destination = User.find_by!(email: params[:destination_email].strip)
+    MigrateUserService.delay.migrate!(source: source, destination: destination)
+    redirect_to admin_user_path(destination)
   end
 
   member_action :deactivate, method: :put do

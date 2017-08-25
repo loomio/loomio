@@ -6,7 +6,17 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   controller: ($scope, $location, Records, ModalService, DiscussionForm, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
     $scope.threadLimit = $scope.pageWindow.current
     $scope.init = ->
-      $scope.discussions = ThreadQueryService.groupQuery($scope.group, filter: 'all', queryType: 'all')
+      $scope.pinned      = ThreadQueryService.queryFor
+        name: "group_#{$scope.group.key}_pinned"
+        group: $scope.group
+        filters: ['show_pinned']
+        overwrite: true
+      $scope.discussions = ThreadQueryService.queryFor
+        name: "group_#{$scope.group.key}_unpinned"
+        group: $scope.group
+        filters: ['hide_pinned']
+        overwrite: true
+
     $scope.init()
     $scope.$on 'subgroupsLoaded', $scope.init
 

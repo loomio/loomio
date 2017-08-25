@@ -1,9 +1,10 @@
 class Full::PollSerializer < ::PollSerializer
-  attributes :poll_option_names, :email_community_id,
-             :mentioned_usernames, :complete
+  attributes :poll_option_names, :mentioned_usernames, :complete
 
+  has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_many :attachments, serializer: AttachmentSerializer, root: :attachments
+  has_one :invitation
 
   def complete
     true
@@ -17,8 +18,7 @@ class Full::PollSerializer < ::PollSerializer
     object.poll_option_attributes.select { |attr| attr[:_destroy] }.map { |attr| attr[:id] }
   end
 
-  def email_community_id
-    object.community_of_type(:email, build: true).tap(&:save).id
+  def invitation
+    scope[:invitation]
   end
-
 end

@@ -1,18 +1,17 @@
 require 'rails_helper'
 describe API::DiscussionsController do
 
-  let(:subgroup) { create :group, parent: group }
-  let(:another_group) { create :group }
+  let(:subgroup) { create :formal_group, parent: group }
+  let(:another_group) { create :formal_group }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :formal_group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:another_discussion) { create :discussion }
   let(:comment) { create :comment, discussion: discussion}
   let(:new_comment) { build(:comment, discussion: discussion) }
-  let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
     title: 'Did Charlie Bite You?',
     description: 'From the dawn of internet time...',
@@ -120,10 +119,8 @@ describe API::DiscussionsController do
     end
 
     describe 'filtering' do
-      let(:participating_discussion) { create :discussion, group: group }
       let(:subgroup_discussion) { create :discussion, group: subgroup }
       let(:muted_discussion) { create :discussion, group: group }
-      let(:starred_discussion) { create :discussion, group: group }
       let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
       let(:motionless_discussion) { create :discussion, group: group }
 
@@ -133,7 +130,6 @@ describe API::DiscussionsController do
         subgroup.add_member! user
         discussion.reload
         DiscussionReader.for(user: user, discussion: muted_discussion).set_volume! 'mute'
-        DiscussionReader.for(user: user, discussion: starred_discussion).update starred: true
       end
 
       it 'does not return muted discussions by default' do
@@ -142,15 +138,6 @@ describe API::DiscussionsController do
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
         expect(ids).to_not include muted_discussion.id
-      end
-
-      it 'can filter by participating' do
-        CommentService.create actor: user, comment: build(:comment, discussion: participating_discussion)
-        get :dashboard, filter: :show_participating
-        json = JSON.parse(response.body)
-        ids = json['discussions'].map { |v| v['id'] }
-        expect(ids).to include participating_discussion.id
-        expect(ids).to_not include discussion.id
       end
 
       it 'can filter by muted' do
@@ -181,58 +168,10 @@ describe API::DiscussionsController do
       end
 
       it 'can limit collection size' do
+        discussion; old_discussion; muted_discussion
         get :dashboard, limit: 2
         json = JSON.parse(response.body)
         expect(json['discussions'].count).to eq 2
-      end
-    end
-
-    describe 'sorting' do
-      let(:starred_with_proposal) { create :discussion, group: group, title: 'starred_with_proposal' }
-      let(:with_proposal) { create :discussion, group: group, title: 'with_proposal' }
-      let(:starred) { create :discussion, group: group, title: 'starred', last_activity_at: 20.days.ago }
-      let(:recent) { create :discussion, group: group, last_activity_at: 1.day.ago, title: 'recent' }
-      let(:not_recent) { create :discussion, group: group, last_activity_at: 5.days.ago, title: 'not_recent' }
-
-      before do
-        sign_in user
-        recent; not_recent
-      end
-
-      it 'sorts by starred w/ proposals first' do
-        DiscussionReader.for(user: user, discussion: starred_with_proposal).update starred: true
-        DiscussionReader.for(user: user, discussion: starred).update starred: true
-        starred_with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
-        with_proposal.motions         << create(:motion, closing_at: 2.days.from_now)
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq starred_with_proposal.id
-      end
-
-      it 'sorts by proposals second' do
-        DiscussionReader.for(user: user, discussion: starred).update starred: true
-        with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq with_proposal.id
-      end
-
-      it 'sorts by starred third' do
-        DiscussionReader.for(user: user, discussion: starred).update starred: true
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq starred.id
-      end
-
-      it 'sorts by recent activity fourth' do
-        not_recent.update last_activity_at: 10.days.ago
-        get :dashboard
-
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['id']).to eq recent.id
       end
     end
   end
@@ -241,18 +180,17 @@ describe API::DiscussionsController do
     context 'logged in' do
       before { sign_in user }
       it 'returns the discussion json' do
-        proposal
         get :show, id: discussion.key
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users groups proposals discussions])
-        expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id active_proposal_id])
+        expect(json.keys).to include *(%w[users groups discussions])
+        expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id ])
       end
 
       it 'returns the reader fields' do
-        DiscussionReader.for(user: user, discussion: discussion).update(starred: true)
+        DiscussionReader.for(user: user, discussion: discussion).update(volume: :mute)
         get :show, id: discussion.key
         json = JSON.parse(response.body)
-        expect(json['discussions'][0]['starred']).to eq true
+        expect(json['discussions'][0]['discussion_reader_volume']).to eq "mute"
       end
     end
 
@@ -343,9 +281,7 @@ describe API::DiscussionsController do
 
         expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
         expect(json['discussions'][0]['discussion_reader_volume']).to eq reader.discussion_reader_volume
-        expect(json['discussions'][0]['starred']).to eq reader.starred
         expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
-        expect(json['discussions'][0]['participating']).to eq reader.participating
       end
     end
   end
@@ -355,17 +291,14 @@ describe API::DiscussionsController do
 
     context 'success' do
       it 'moves a discussion' do
-        destination_group = create :group
-        destination_group.users << user
+        destination_group = create :formal_group
+        destination_group.members << user
         source_group = discussion.group
         patch :move, id: discussion.id, group_id: destination_group.id, format: :json
-
-        json = JSON.parse(response.body)
 
         # Discussion belongs to new group
         # The eventable of the event is the old group
         expect(discussion.reload.group).to eq destination_group
-        expect(json['groups'].first['id']).to eq source_group.id
       end
     end
   end
@@ -412,7 +345,7 @@ describe API::DiscussionsController do
         end
 
         it 'can display content from a specified public group' do
-          public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
+          public_group = create :formal_group, discussion_privacy_options: :public_only, is_visible_to_public: true
           can_see_me = create :discussion, group: public_group, private: false
           get :index, group_id: public_group.id, format: :json
           json = JSON.parse(response.body)
@@ -447,50 +380,6 @@ describe API::DiscussionsController do
           poll_ids = json['polls'].map { |p| p['id'] }
           expect(poll_ids).to include poll.id
         end
-      end
-    end
-  end
-
-  describe 'star' do
-    before { sign_in user }
-
-    context 'success' do
-      it 'stars a thread' do
-        put :star, id: discussion.id, format: :json
-        expect(response).to be_success
-        expect(DiscussionReader.for(user: user, discussion: discussion).starred).to eq true
-      end
-    end
-
-    context 'failure' do
-      it 'does not star a thread' do
-        put :star, id: another_discussion.id, format: :json
-        expect(response).to_not be_success
-        expect(DiscussionReader.for(user: user, discussion: another_discussion).starred).to eq false
-      end
-    end
-  end
-
-  describe 'unstar' do
-    before { sign_in user }
-
-    context 'success' do
-      it 'unstars a thread' do
-        reader = DiscussionReader.for(user: user, discussion: discussion)
-        reader.update starred: true
-        put :unstar, id: discussion.id, format: :json
-        expect(response).to be_success
-        expect(reader.reload.starred).to eq false
-      end
-    end
-
-    context 'failure' do
-      it 'does not update a reader' do
-        reader = DiscussionReader.for(user: user, discussion: another_discussion)
-        reader.update starred: true
-        put :unstar, id: another_discussion.id, format: :json
-        expect(response).not_to be_success
-        expect(reader.reload.starred).to eq true
       end
     end
   end
@@ -597,7 +486,7 @@ describe API::DiscussionsController do
       it 'responds with json' do
         post :create, discussion: discussion_params, format: :json
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users groups proposals discussions])
+        expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[
           id
           key
@@ -608,7 +497,6 @@ describe API::DiscussionsController do
           updated_at
           items_count
           private
-          active_proposal_id
           author_id
           group_id
         ])
@@ -651,4 +539,31 @@ describe API::DiscussionsController do
     end
   end
 
+  describe 'pin' do
+    it 'allows admins to pin a thread' do
+      sign_in user
+      discussion.group.add_admin! user
+      post :pin, id: discussion.id
+      expect(discussion.reload.pinned).to eq true
+    end
+
+    it 'allows admins to unpin a thread' do
+      sign_in user
+      discussion.group.add_admin! user
+      discussion.update(pinned: true)
+      post :pin, id: discussion.id
+      expect(discussion.reload.pinned).to eq false
+    end
+
+    it 'does not allow non-admins to pin a thread' do
+      sign_in another_user
+      post :pin, id: discussion.id
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow logged out users to pin a thread' do
+      post :pin, id: discussion.id
+      expect(response.status).to eq 403
+    end
+  end
 end

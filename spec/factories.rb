@@ -1,19 +1,12 @@
 FactoryGirl.define do
 
-  factory :blog_story do
-    title "MyString"
-    url "MyString"
-    image_url "MyString"
-    published_at "2015-11-18 14:28:30"
-  end
-
   factory :blacklisted_password do
     string "MyString"
   end
 
   factory :membership do |m|
     m.user { |u| u.association(:user)}
-    m.group { |g| g.association(:group)}
+    m.group { |g| g.association(:formal_group)}
   end
 
   factory :user do
@@ -22,6 +15,7 @@ FactoryGirl.define do
     angular_ui_enabled false
     password 'complex_password'
     time_zone "Pacific/Tarawa"
+    email_verified true
 
     after(:build) do |user|
       user.generate_username
@@ -72,37 +66,47 @@ FactoryGirl.define do
     source 'gmail'
   end
 
-  factory :group do
+  factory :formal_group do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'
     group_privacy 'open'
     discussion_privacy_options 'public_or_private'
     members_can_add_members true
-    after(:create) do |group, evaluator|
-      user = FactoryGirl.create(:user)
-      #group.pending_invitations << FactoryGirl.create(:invitation, invitable: group)
-      if group.parent.present?
-        group.parent.admins << user
-      end
-      group.admins << user
-      group.save!
+    after(:create) do |group|
+      user = create(:user)
+      group.parent&.add_admin!(user)
+      group.add_admin!(user)
     end
+  end
+
+  factory :guest_group do
+    group_privacy 'closed'
+  end
+
+  factory :group_identity do
+    association :group, factory: :formal_group
+    association :identity, factory: :slack_identity
   end
 
   factory :discussion do
     association :author, :factory => :user
-    group
+    association :group, :factory => :formal_group
     title { Faker::Name.name }
     description 'A description for this discussion. Should this be *rich*?'
     uses_markdown false
     private true
     after(:build) do |discussion|
-      discussion.group.parent.add_member!(discussion.author) if discussion.group.parent
+      discussion.group.parent&.add_member!(discussion.author)
       discussion.group.add_member!(discussion.author)
     end
     after(:create) do |discussion|
       discussion.group.save
     end
+  end
+
+  factory :discussion_reader do
+    discussion
+    user
   end
 
   factory :comment do
@@ -124,85 +128,17 @@ FactoryGirl.define do
     user
   end
 
-  factory :motion do
-    sequence(:name) { Faker::Name.name }
-    association :author, factory: :user
-    description 'Fake description'
-    discussion
-
-    #after(:build) do |motion|
-      #motion.group.parent.add_member!(motion.author) if motion.group.parent
-      #motion.group.add_member!(motion.author)
-    #end
-
-    after(:create) do |motion|
-      motion.group.add_member!(motion.author)
-    end
-  end
-
-  factory :current_motion, class: Motion do
-    name { Faker::Name.name }
-    association :author, :factory => :user
-    description 'current motion'
-    discussion
-    closing_at { 5.days.from_now }
-    after(:build) do |motion|
-      motion.group.parent.add_member!(motion.author) if motion.group.parent
-      motion.group.add_member!(motion.author)
-    end
-    after(:create) do |motion|
-      motion.group.save
-    end
-
-  end
-
-  factory :motion_read_log do
-    user
-    motion
-  end
-
-  factory :group_setup do
-    group
-    group_name Faker::Name.name
-    group_description "My text outlining the group"
-    privacy 'hidden'
-    members_can_add_members false
-    discussion_title Faker::Name.name
-    discussion_description "My text outlining the discussion"
-    motion_title {Faker::Name.name}
-    motion_description "My text outlining the proposal"
-    close_at_date (Date.today + 3.day).strftime("%d-%m-%Y")
-    close_at_time "12:00"
-    close_at_time_zone "Wellington"
-    admin_email Faker::Internet.email
-    recipients "#{Faker::Internet.email}, #{Faker::Internet.email}"
-    message_subject "Welcome to our world"
-    message_body "Please entertain me"
-   end
-
-  factory :vote do
-    user
-    motion
-    ##  update below with Vote::POSITIONS content if changed###
-    position %w[yes no abstain block].sample
-    statement "A short statement explaining my position."
-    after(:build) do |vote|
-      vote.motion.group.add_member!(vote.user)
-    end
-    after(:create) do |vote|
-      vote.motion.group.save
-    end
-  end
-
-  factory :group_request do
-    name { Faker::Name.name }
-    admin_name { Faker::Name.name }
-    admin_email { Faker::Internet.email }
-  end
-
   factory :invitation do
     recipient_email { Faker::Internet.email }
+    single_use true
     intent {'join_group'}
+    association :inviter, factory: :user
+    association :group, factory: :formal_group
+  end
+
+  factory :shareable_invitation, class: Invitation do
+    single_use false
+    intent 'join_group'
     association :inviter, factory: :user
   end
 
@@ -210,7 +146,7 @@ FactoryGirl.define do
     introduction { Faker::Lorem.sentence(4) }
     email { Faker::Internet.email }
     name { Faker::Name.name }
-    group
+    association :group, factory: :formal_group
   end
 
   factory :attachment do
@@ -275,9 +211,8 @@ FactoryGirl.define do
     title "This is a poll"
     details "with a description"
     association :author, factory: :user
+    association :guest_group, factory: :guest_group
     poll_option_names ["engage"]
-
-    after(:build) { |poll| poll.community_of_type(:email, build: true).save }
   end
 
   factory :poll_proposal, class: Poll do
@@ -286,8 +221,7 @@ FactoryGirl.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names %w[agree abstain disagree block]
-
-    after(:build) { |poll| poll.community_of_type(:email, build: true) }
+    association :guest_group, factory: :guest_group
   end
 
   factory :poll_meeting, class: Poll do
@@ -296,8 +230,7 @@ FactoryGirl.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names ['01-01-2015']
-
-    after(:build) { |poll| poll.community_of_type(:email, build: true) }
+    association :guest_group, factory: :guest_group
   end
 
   factory :outcome do
@@ -313,21 +246,6 @@ FactoryGirl.define do
 
   factory :stance_choice do
     poll_option
-  end
-
-  factory :public_community, class: Communities::Public
-  factory :email_community, class: Communities::Email
-  factory :facebook_community, class: Communities::Facebook
-  factory :slack_community, class: Communities::Slack
-
-  factory :loomio_group_community, class: Communities::LoomioGroup do
-    group
-  end
-
-  factory :visitor do
-    association :community, factory: :public_community
-    name "John Doe"
-    email "john@doe.com"
   end
 
   factory :received_email do

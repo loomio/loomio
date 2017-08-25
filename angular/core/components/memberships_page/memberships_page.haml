@@ -6,12 +6,14 @@
     .lmo-card
       .memberships-page__top-bar.lmo-flex.lmo-flex__space-between.lmo-flex__baseline
         %h2.md-title{translate: "memberships_page.members"}
-        %md-button.md-primary.md-raised{ng-click: "membershipsPage.invitePeople()"}
+        %md-button.md-primary.md-raised.memberships-page__invite{ng-click: "membershipsPage.invitePeople()", ng-if: "membershipsPage.canAddMembers()"}
           %span{translate: "group_page.invite_people"}
-      .memberships-page__search-filter
-        %input.membership-page__search-filter.form-control{ng-model: "membershipsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "membershipsPage.fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
-        %i.fa.fa-lg.fa-search
-      %admin_memberships_panel{ng-if: "membershipsPage.canAdministerGroup()", memberships: "membershipsPage.memberships", group: "membershipsPage.group"}
-      .memberships-page__memberships
-        %memberships_panel{ng-if: "!membershipsPage.canAdministerGroup()", memberships: "membershipsPage.memberships", group: "membershipsPage.group"}
+      %md-input-container.md-block.memberships-page__search-filter{md-no-float: "true"}
+        %input.membership-page__search-filter{ng-model: "membershipsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "membershipsPage.fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
+        %i.material-icons search
+      %memberships_panel{memberships: "membershipsPage.memberships", group: "membershipsPage.group"}
+      .lmo-flex.lmo-flex__space-between{ng-if: "membershipsPage.group.membershipsCount > 25"}
+        %div
+        %md-button.md-primary.md-raised{ng-click: "membershipsPage.invitePeople()", ng-if: "membershipsPage.canAddMembers()"}
+          %span{translate: "group_page.invite_people"}
     %pending_invitations_card{group: "membershipsPage.group"}

@@ -1,5 +1,7 @@
 %section.context-panel{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
   .context-panel__top
+    .context-panel__pin{ng-if: "discussion.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
+      %i.fa.fa-lg.fa-thumb-tack
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
       %h1.lmo-h1.context-panel__heading{ng-if: "!translation"}
         {{discussion.title}}
@@ -17,6 +19,10 @@
             %md-button{ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}
           %md-menu-item.context-panel__dropdown-options--edit{ng-if: "canEditThread()"}
             %md-button{ng-click: "editThread()", translate: "thread_context.edit"}
+          %md-menu-item.context-panel__dropdown-options--pin{ng-show: "!discussion.pinned && canPinThread()"}
+            %md-button{ng-click: "pinThread()", translate: "thread_context.pin_thread"}
+          %md-menu-item.context-panel__dropdown-options--pin{ng-show: "discussion.pinned && canPinThread()"}
+            %md-button{ng-click: "unpinThread()", translate: "thread_context.unpin_thread"}
           %md-menu-item.context-panel__dropdown-options--mute{ng-show: "!discussion.isMuted()"}
             %md-button{ng-click: "muteThread()", translate: "volume_levels.mute"}
           %md-menu-item.context-panel__dropdown-options--unmute{ng-show: "discussion.isMuted()"}
@@ -36,11 +42,11 @@
     -# %span{ng-if: "discussion.edited()"}
     -#   %button.context-panel__edited.lmo-btn-link{ng-click: "showRevisionHistory()", translate: "discussion.edited"}>
     -#   %span{aria-hidden: "true"}·
-    %span.nowrap.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
-      %i.fa.fa-lock>
+    %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
+      %i.material-icons> lock_outline
       %span{translate: "common.privacy.private"}
-    %span.nowrap.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
-      %i.fa.fa-globe>
+    %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
+      %i.material-icons> public
       %span{translate: "common.privacy.public"}
     %outlet{name: "after-thread-title", model: "discussion"}
 

@@ -236,11 +236,6 @@ ko:
     heading: 선택
     no_votes_yet: 이 제안에 투표한 사람이 아직 없습니다.
     change_your_vote: 나의 선택 변경
-  undecided_panel:
-    aria_label: '결정하지 않은 멤버들'
-    show: 보기
-    undecided: 미결
-    hide_undecided: 결정하지 않은 멤버들을 보여주지 않음
   proposal_pie_chart:
     participation_statement: '{{percentage}}%의 회원이 입장을 선택했습니다({{number}}/{{total}})'
   close_proposal_form:
@@ -369,7 +364,6 @@ ko:
     members_placeholder: '이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.'
     member_options: 멤버 옵션
     subgroups: '소그룹'
-    subgroups_placeholder: '소그룹으로 그룹을 여러 다른 팀으로 나눕니다.'
     visibility_label: '공개도'
     options_label: '선택사항'
     options:
@@ -433,17 +427,6 @@ ko:
     choose_plan: '가격 체계를 선택하세요.'
     in_progress_body: '<strong>{{name}}</strong>으로 루미오를 시범 사용해주신 것에 대해 감사드립니다. 언제든지 귀하의 그룹에 적합한 가격 체계를 선택하실 수 있습니다.'
     expired_body_html: "<strong>{{name}}</strong> 님의 루미오 시범 사용이 만료되었습니다. 계속 사용하시려면 귀하의 그룹에 적합한 가격체계를 선택하세요."
-  choose_plan_modal:
-    heading: 귀하의 그룹에 적합한 가격 체계를 선택하세요.
-    free: 무료
-    standard: 일반
-    benefit_1_group: 1 그룹
-    benefit_10_groups: 10 그룹
-    select: 선택
-  subscription_success_modal:
-    contact_link: 연락해 주세요.
-    sign_off: 루미오 팀으로부터 ❤
-    ok_got_it: 네, 알겠습니다!
   group_form:
     start_group_heading: '그룹 시작하기'
     start_subgroup_heading: '소그룹 시작하기'
@@ -776,7 +759,6 @@ ko:
     message_label: '메시지'
     message_placeholder: '메시지...'
     send_message: '메시지 보내기'
-    new_contact_message: '메시지를 주셔서 감사합니다; 곧 연락드리겠습니다!'
   help_page:
     coordinating: '루미오 그룹을 관리하기'
     coordinating_details: |

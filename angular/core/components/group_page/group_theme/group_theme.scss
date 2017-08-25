@@ -8,7 +8,11 @@
   top: 0;
   width: 100%;
   height: 320px;
-  z-index: 0;
+  z-index: $z-zero;
+  &:hover .group-theme__upload-photo {
+    button { background: $list-hover-transparent-color; }
+    .group-theme__upload-help-text { opacity: 1; }
+  }
 }
 
 .group-theme__header{
@@ -38,6 +42,10 @@
   height: 108px;
   background: url('http://placehold.it/100x100') no-repeat top center white;
   border: 4px solid #fff;
+  &:hover .group-theme__upload-photo {
+    button { background: $list-hover-transparent-color; }
+    .group-theme__upload-help-text { opacity: 1; }
+  }
 }
 
 .group-theme__logo--compact {
@@ -46,20 +54,36 @@
 }
 
 .group-theme__name-and-actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 175px;
 }
 
-.group-theme__member-actions{
-  float: right;
+@media (max-width: $small-max-px){
+  .group-theme__name-and-actions{
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
-.group-theme__nonmember-actions { float: right; }
+
+
+.group-theme__actions {
+  display: flex;
+  margin-left: auto;
+}
+
+.group-theme__member-actions{
+  display: flex;
+}
 
 .group-theme__name {
-  float: left;
-  max-width: 50%;
   margin-left: 108px + 15px;
   margin-right: 10px;
-  a{color: $primary-text-color;}
+  a {
+    color: $primary-text-color;
+    &:hover { text-decoration: underline; }
+  }
 }
 
 .group-theme__name--compact {
@@ -72,22 +96,22 @@
 }
 
 .group-theme__name--compact a {
-  @include fontWeightMedium;
   color: white;
 }
 
 .group-theme__upload-photo {
-  position: relative;
   cursor: pointer;
-  top: 2px;
-  left: 2px;
-  width: 95px;
-  height: 30px;
-  i {
-    margin: 8px 5px 5px 5px;
+  width: 100%;
+  button {
+    transition: 0.25s background-color ease-in-out;
+    border: 0;
+    padding: 4px;
+    border-radius: 4px;
+    background: transparent;
   }
-  &:hover {
-    background-color: $list-hover-color;
+  i {
+    margin-right: 4px;
+    width: 24px;
   }
 }
 
@@ -97,6 +121,8 @@
 }
 
 .group-theme__upload-help-text {
+  transition: 0.25s opacity ease-in-out;
+  opacity: 0;
   @include fontTiny;
   color: $primary-text-color;
 }

@@ -7,43 +7,23 @@
   position: relative;
 }
 
-.comment-form__sign-in-btn {
-  @include lmoBtnFeatured;
-  width: 100%;
-}
+.comment-form__sign-in-btn { width: 100% }
 
 .comment-form-button {
   margin-left: 10px;
-  &:hover {
-    cursor: pointer;
-  }
+  &:hover { cursor: pointer; }
 }
 
 .comment-form-container{
   width: 100%;
 }
 
-.comment-form__privacy-notice {
-  @include md-caption;
-  color: #767676;
-}
-
 .comment-form__join-actions button {
   width: 100%;
 }
 
-.thread-comment-form-actions {
-  clear: both;
-  padding: 10px 0;
-}
 .comment-form__submit-button {
   order: 2;
   position: relative;
   right: -6px;
-}
-
-@media(max-width: $tiny-max-px) {
-  .comment-form__formatting {
-    display: none;
-  }
 }

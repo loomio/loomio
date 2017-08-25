@@ -2,7 +2,7 @@ class API::IdentitiesController < API::RestfulController
   ACTION_NAMES = %w(channels admin_groups)
 
   def command
-    current_participant.ability.authorize! :show, identity
+    current_user.ability.authorize! :show, identity
     if valid_command?
       render json: api_response.json, root: false
     else

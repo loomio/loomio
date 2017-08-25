@@ -16,13 +16,13 @@ describe Identities::SlackController do
       identity
       sign_in user
       get :install
-      expect(response).to render_template 'layouts/angular'
+      expect(response).to render_template 'application/index'
     end
 
     it 'boots the app if a pending identity exists' do
       session[:pending_identity_id] = identity.id
       get :install
-      expect(response).to render_template 'layouts/angular'
+      expect(response).to render_template 'application/index'
     end
 
     it 'redirects to oauth path if no identity can be found' do
@@ -32,12 +32,25 @@ describe Identities::SlackController do
   end
 
   describe 'participate' do
-    let(:group) { create :group }
+    let(:group) { create :formal_group }
     let(:discussion) { create :discussion, group: group }
     let(:poll) { create :poll_proposal, discussion: discussion }
-    let(:identity) { create :slack_identity }
+    let(:identity) { create :slack_identity, user: user, uid: "U123" }
+    let(:dangling_identity) { create :slack_identity, user: nil, uid: "U123" }
     let(:payload) { {
       user: { id: identity.uid },
+      callback_id: poll.id,
+      actions: [{ name: poll.poll_options.first.name }],
+      team: { id: 'T123', name: 'billsbarbies' }
+    }.to_json }
+    let(:payload_without_poll) { {
+      user: { id: identity.uid },
+      callback_id: 'notapoll',
+      actions: [{ name: poll.poll_options.first.name }],
+      team: { id: 'T123', name: 'billsbarbies' }
+    }.to_json}
+    let(:payload_without_user) { {
+      user: { id: 'notauser' },
       callback_id: poll.id,
       actions: [{ name: poll.poll_options.first.name }],
       team: { id: 'T123', name: 'billsbarbies' }
@@ -50,7 +63,6 @@ describe Identities::SlackController do
     }.to_json }
     let(:user) { create :user }
     let(:another_user) { create :user }
-    let(:identity) { create :slack_identity, user: user, uid: "abcd" }
 
     it 'creates a stance' do
       group.add_member! user
@@ -59,6 +71,20 @@ describe Identities::SlackController do
       stance = Stance.last
       expect(stance.participant).to eq user
       expect(stance.poll_options).to include poll.poll_options.first
+    end
+
+    it 'adds the user to the group' do
+      sign_in user
+      expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
+      stance = Stance.last
+      expect(stance.participant).to eq user
+      expect(user.groups).to include poll.group
+    end
+
+    it 'responds when no poll is found' do
+      expect { post :participate, payload: payload_without_poll }.to_not change { Stance.count }
+      expect(response.status).to eq 200
+      expect(response.body).to include "poll was not found"
     end
 
     it 'does not create an invalid stance' do
@@ -75,11 +101,24 @@ describe Identities::SlackController do
       expect(response.status).to eq 200
     end
 
-    it 'responds with an auth link if poll is not part of a group' do
+    xit 'responds with an auth link if poll is not part of a group' do
       poll.update(discussion: nil, group: nil)
       sign_in user
       expect { post :participate, payload: payload }.to_not change { poll.stances.count }
       expect(response.status).to eq 200
+    end
+
+    it 'finds the identity associated with a user if it exists' do
+      identity
+      dangling_identity
+      expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
+      expect(response.status).to eq 200
+    end
+
+    it 'responds with unauthorized message if no user is found' do
+      expect { post :participate, payload: payload_without_user }.to_not change { poll.stances.count }
+      expect(response.status).to eq 200
+      expect(response.body).to include "authorize your slack account"
     end
   end
 
@@ -177,7 +216,7 @@ describe Identities::SlackController do
       expect(response.status).to eq 400
     end
 
-    it 'does nothing for visitors' do
+    it 'does nothing for logged out users' do
       expect { delete :destroy }.to_not change { user.identities.count }
       expect(response.status).to eq 400
     end

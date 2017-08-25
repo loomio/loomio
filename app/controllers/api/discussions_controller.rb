@@ -1,6 +1,7 @@
 class API::DiscussionsController < API::RestfulController
   load_and_authorize_resource only: [:show, :mark_as_read, :dismiss, :move]
-  load_resource only: [:create, :update, :star, :unstar, :set_volume]
+  load_resource only: [:create, :update, :pin]
+  after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
   include UsesFullSerializer
@@ -38,30 +39,32 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
-  def star
-    service.update_reader discussion: resource, params: { starred: true }, actor: current_user
-    respond_with_resource
-  end
-
-  def unstar
-    service.update_reader discussion: resource, params: { starred: false }, actor: current_user
+  def pin
+    service.pin discussion: load_resource, actor: current_user
     respond_with_resource
   end
 
   def set_volume
-    service.update_reader discussion: resource, params: { volume: params[:volume] }, actor: current_user
-    respond_with_resource
+    update_reader volume: params[:volume]
   end
 
   private
+
+  def track_visit
+    VisitService.record(group: resource.group, visit: current_visit, user: current_user)
+  end
 
   def accessible_records
     Queries::VisibleDiscussions.new(user: current_user, group_ids: @group && @group.id_and_subgroup_ids)
   end
 
+  def update_reader(params = {})
+    service.update_reader discussion: load_resource, params: params, actor: current_user
+    respond_with_resource
+  end
+
   def collection_for_dashboard(collection, filter: params[:filter])
     case filter
-    when 'show_participating' then collection.not_muted.participating.sorted_by_importance
     when 'show_muted'         then collection.muted.sorted_by_latest_activity
     else                           collection.not_muted.sorted_by_importance
     end

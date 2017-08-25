@@ -27,9 +27,12 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       membersCanCreateSubgroups: false
       motionsCanBeEdited: false
 
+    afterConstruction: ->
+      if @privacyIsClosed()
+        @allowPublicThreads = @discussionPrivacyOptions == 'public_or_private'
+
     relationships: ->
       @hasMany 'discussions'
-      @hasMany 'proposals'
       @hasMany 'polls'
       @hasMany 'membershipRequests'
       @hasMany 'memberships'
@@ -45,10 +48,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     shareableInvitation: ->
       @recordStore.invitations.find(singleUse:false, groupId: @id)[0]
 
-    closedProposals: ->
-      _.filter @proposals(), (proposal) ->
-        proposal.isClosed()
-
     closedPolls: ->
       _.filter @polls(), (poll) ->
         !poll.isActive()
@@ -56,9 +55,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     activePolls: ->
       _.filter @polls(), (poll) ->
         poll.isActive()
-
-    hasPreviousProposals: ->
-      _.some @closedProposals()
 
     pendingMembershipRequests: ->
       _.filter @membershipRequests(), (membershipRequest) ->
@@ -117,10 +113,10 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       _.some @recordStore.memberships.where(groupId: @id, userId: user.id)
 
     memberIds: ->
-      _.map @memberships(), (membership) -> membership.userId
+      _.pluck @memberships(), 'userId'
 
     adminIds: ->
-      _.map @adminMemberships(), (membership) -> membership.userId
+      _.pluck @adminMemberships(), 'userId'
 
     parentName: ->
       @parent().name if @parent()?
@@ -133,12 +129,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
 
     privacyIsSecret: ->
       @groupPrivacy == 'secret'
-
-    allowPublicDiscussions: ->
-      if @privacyIsClosed() && @isNew()
-        true
-      else
-        @discussionPrivacyOptions != 'private_only'
 
     isSubgroup: ->
       @parentId?
@@ -163,9 +153,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       else
         @coverUrls[size] || @coverUrls.small
 
-    publish: (identifier, channel) =>
-      @remote.postMember(@key, 'publish', { make_announcement: @makeAnnouncement, identifier: identifier, channel: channel })
-
     archive: =>
       @remote.patchMember(@key, 'archive').then =>
         @remove()
@@ -176,9 +163,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
 
     hasSubscription: ->
       @subscriptionKind?
-
-    noInvitationsSent: ->
-      @membershipsCount < 2 and @invitationsCount < 2
 
     isSubgroupOfSecretParent: ->
       @isSubgroup() && @parent().privacyIsSecret()

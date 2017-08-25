@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams, CommunityService, MessageChannelService, Records, $location, ModalService, PollService, PollCommonOutcomeForm, PollCommonEditVoteModal, AddCommunityModal, PollCommonShareModal, Session) ->
+angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams, MessageChannelService, Records, $location, ModalService, PollService, PollCommonOutcomeModal, PollCommonEditVoteModal, PollCommonShareModal, Session) ->
   $rootScope.$broadcast('currentComponent', { page: 'pollPage', skipScroll: true })
 
   @init = (poll) =>
@@ -7,18 +7,14 @@ angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope
       $rootScope.$broadcast 'setTitle', @poll.title
       MessageChannelService.subscribeToPoll(@poll)
 
-      if $location.search().add_community
-        ModalService.open AddCommunityModal, community: =>
-          CommunityService.buildCommunity(@poll, $location.search().add_community)
-
       if $location.search().share
         ModalService.open PollCommonShareModal, poll: => @poll
 
       if $location.search().set_outcome
-        ModalService.open PollCommonOutcomeForm, outcome: => Records.outcomes.build(pollId: @poll.id)
+        ModalService.open PollCommonOutcomeModal, outcome: => Records.outcomes.build(pollId: @poll.id)
 
       if $location.search().change_vote
-        ModalService.open PollCommonEditVoteModal, stance: => PollService.lastStanceBy(Session.participant(), @poll)
+        ModalService.open PollCommonEditVoteModal, stance: => PollService.lastStanceBy(Session.user(), @poll)
 
   Records.polls.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)

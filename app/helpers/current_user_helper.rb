@@ -1,14 +1,13 @@
 module CurrentUserHelper
+  include PendingActionsHelper
+
+  def sign_in(user, verified_sign_in_method: true)
+    user = UserService.verify(user: user) if verified_sign_in_method
+    super(user) && handle_pending_actions(user)
+  end
+
   def current_user
     @current_user ||= token_user || super || restricted_user || LoggedOutUser.new
-  end
-
-  def current_visitor
-    @current_visitor ||= Visitor.find_by(participation_token: params[:participation_token]) || LoggedOutUser.new
-  end
-
-  def current_participant
-    current_visitor.presence || current_user
   end
 
   private
@@ -21,5 +20,9 @@ module CurrentUserHelper
 
   def restricted_user
     User.find_by!(params.slice(:unsubscribe_token)).tap { |user| user.restricted = true } if params[:unsubscribe_token]
+  end
+
+  def set_invitation_token
+    current_user.token = params[:invitation_token] if params[:invitation_token]
   end
 end

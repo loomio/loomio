@@ -1,11 +1,9 @@
-.md-attachment-form__icon{
-  font-size: 15px !important;
-  margin-right: 4px;
+.md-attachment-form__button {
+  min-width: 32px;
 }
 
-.md-attachment-form-in-progress {
-  display: inline-block;
-  vertical-align: middle;
+.md-attachment-form__icon {
+  font-size: 20px !important;
 }
 
 .md-attachment-form-progress-field {
@@ -14,18 +12,18 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
-  padding: 7px 0;
-  height: 35px;
   text-align: center;
   position: relative;
 }
 
 .md-attachment-form-progress-text {
   position: absolute;
+  overflow: auto;
+  @include truncateText;
   left: 0;
   line-height: 35px;
   width: 100%;
-  z-index: 10;
+  z-index: $z-low;
   color: #444;
 }
 
@@ -36,6 +34,10 @@
   font-size: 30px;
   color: white;
   text-shadow: 0 0 3px black;
+}
+
+.md-attachment-form-progress-field .md-attachment-form__cancel {
+  margin-top: -8px !important;
 }
 
 .md-attachment-form-progress-bar {

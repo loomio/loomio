@@ -1,3 +1,8 @@
-.edit-comment-form__comment-field {
-  min-height: 225px;
+.edit-comment-form {
+  overflow: visible;
+  & > form { overflow: visible; }
+}
+
+.edit-comment-form .emoji-picker__menu {
+  z-index: $z-low;
 }

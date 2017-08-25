@@ -14,7 +14,7 @@ describe UserMailer do
   context 'sending email on membership approval' do
     before :each do
       @user = create(:user)
-      @group = create(:group)
+      @group = create(:formal_group)
       @membership = create(:membership, user: @user, group: @group)
       @event = Events::MembershipRequestApproved.create(kind: 'membership_request_approved', user: @user, eventable: @membership)
       @mail = UserMailer.membership_request_approved(@user, @event)
@@ -40,7 +40,7 @@ describe UserMailer do
     before :each do
       @user = create(:user)
       @inviter = create(:user)
-      @group = create(:group, full_name: "Group full name")
+      @group = create(:formal_group, full_name: "Group full name")
       @membership = create(:membership, user: @user, group: @group, inviter: @inviter)
       @event = Events::UserAddedToGroup.create(kind: 'user_added_to_group', user: @inviter, eventable: @membership)
       @mail = UserMailer.user_added_to_group(@user, @event)
@@ -52,6 +52,35 @@ describe UserMailer do
 
     it 'uses group.full_name in the email body' do
       expect(@mail.body.encoded).to  include @group.full_name
+    end
+  end
+
+  describe 'missed_yesterday' do
+    let(:user) { create :user, email_missed_yesterday: true }
+    subject { UserMailer.missed_yesterday(user).deliver_now }
+    let(:discussion) { build :discussion, group: group }
+    let(:comment) { build :comment, discussion: discussion }
+    let(:group) { create :formal_group }
+    before { group.add_member! user }
+
+    let(:some_content) do
+      DiscussionService.create(discussion: discussion, actor: discussion.author)
+      CommentService.create(comment: comment, actor: comment.author)
+    end
+
+    it 'sends a missed yesterday email' do
+      some_content
+      expect { subject }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
+    it 'does not send a missed yesterday email when there is no unread content' do
+      expect { subject }.to_not change { ActionMailer::Base.deliveries.count }
+    end
+
+    it 'does not send a missed yesterday email if I have unsubscribed' do
+      user.update(email_missed_yesterday: false)
+      some_content
+      expect { subject }.to_not change { ActionMailer::Base.deliveries.count }
     end
   end
 

@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
 
     defaultValues: ->
       statement: ''
+      customFields: {}
 
     relationships: ->
       @belongsTo 'author', from: 'users'
@@ -17,11 +18,8 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
     group: ->
       @poll().group() if @poll()
 
-    communitySize: ->
-      @poll().communitySize()
-
     announcementSize: ->
-      @communitySize()
+      @poll().announcementSize @notifyAction()
 
     notifyAction: ->
       'publish'

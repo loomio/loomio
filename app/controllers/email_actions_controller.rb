@@ -28,12 +28,9 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     respond_to do |format|
       format.html {
         flash[:notice] = I18n.t "email.missed_yesterday.marked_as_read_success"
-        redirect_to dashboard_or_root_path
+        redirect_to root_path
       }
-      format.gif {
-        send_file Rails.root.join('app','assets','images', 'empty.gif'),
-                  type: 'image/gif', disposition: 'inline'
-      }
+      format.gif { respond_with_pixel }
     end
   end
 
@@ -45,7 +42,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
   def set_discussion_volume(volume:, flash_notice:)
     DiscussionReader.for(discussion: discussion, user: user).set_volume! volume
-    redirect_to dashboard_or_root_path, notice: t(flash_notice, thread_title: discussion.title)
+    redirect_to root_path, notice: t(flash_notice, thread_title: discussion.title)
   end
 
   def discussion

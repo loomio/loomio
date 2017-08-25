@@ -1,23 +1,25 @@
 class User < ActiveRecord::Base
-  include AvatarInitials
   include ReadableUnguessableUrls
   include MessageChannel
   include HasExperiences
   include HasAvatar
   include UsesWithoutScope
   include SelfReferencing
+  include NoForbiddenEmails
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
+  BOT_EMAILS = {
+    helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
+    demo_bot:   ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
+  }.freeze
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable
   attr_accessor :recaptcha
   attr_accessor :restricted
-  attr_accessor :participation_token
+  attr_accessor :token
+  attr_writer :has_password
 
-  validates :email, presence: true, uniqueness: true, email: true
-  validates_inclusion_of :uses_markdown, in: [true,false]
-
-  has_many :stances, as: :participant
+  validates :email, presence: true, email: true, length: {maximum: 200}
 
   has_attached_file :uploaded_avatar,
     styles: {
@@ -33,8 +35,9 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username
   validates_length_of :username, maximum: 30
-  validates_length_of :short_bio, maximum: 250
-  validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'error.username_must_be_alphanumeric')
+  validates_length_of :short_bio, maximum: 500
+  validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
+  validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true
   validates :password, nontrivial_password: true, allow_nil: true
@@ -45,6 +48,12 @@ class User < ActiveRecord::Base
            -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
            class_name: 'Membership',
            dependent: :destroy
+
+  has_many :formal_groups,
+           -> { where(type: "FormalGroup") },
+           through: :memberships,
+           class_name: 'FormalGroup',
+           source: :group
 
   has_many :adminable_groups,
            -> { where( archived_at: nil) },
@@ -76,27 +85,12 @@ class User < ActiveRecord::Base
            foreign_key: 'author_id',
            dependent: :destroy
 
-  has_many :motions,
-           through: :discussions
-
-  has_many :authored_motions,
-           class_name: 'Motion',
-           foreign_key: 'author_id',
-           dependent: :destroy
-
   has_many :polls, foreign_key: :author_id
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
-  has_many :communities, through: :identities, class_name: "Communities::Base"
-  has_many :email_communities,
-           -> { where(community_type: [:email, :public]) },
-           through: :polls,
-           source: :communities,
-           class_name: "Communities::Base"
 
-  has_many :votes, dependent: :destroy
   has_many :comment_votes, dependent: :destroy
-  has_many :stances, as: :participant, dependent: :destroy
+  has_many :stances, foreign_key: :participant_id, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll
   has_many :group_polls, through: :groups, source: :polls
 
@@ -126,6 +120,9 @@ class User < ActiveRecord::Base
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
   scope :mentioned_in, ->(model) { where(id: model.notifications.user_mentions.pluck(:user_id)) }
+  scope :verified, -> { where(email_verified: true) }
+  scope :unverified, -> { where(email_verified: false) }
+  scope :verified_first, -> { order(email_verified: :desc) }
 
   # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
@@ -136,13 +133,7 @@ class User < ActiveRecord::Base
     .where('memberships.group_id': group.id)
   }
 
-  def slack_identity
-    identities.find_by(identity_type: :slack)
-  end
-
-  def facebook_identity
-    identities.find_by(identity_type: :facebook)
-  end
+  define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
 
   def associate_with_identity(identity)
     if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
@@ -153,12 +144,28 @@ class User < ActiveRecord::Base
     end
   end
 
+  def identity_for(type)
+    identities.find_by(identity_type: type)
+  end
+
+  def first_name
+    name.split(' ').first
+  end
+
+  def last_name
+    name.split(' ').drop(1).join(' ')
+  end
+
   def remember_me
     true
   end
 
   def is_logged_in?
     true
+  end
+
+  def has_password
+    self.encrypted_password.present?
   end
 
   def email_status
@@ -192,30 +199,21 @@ class User < ActiveRecord::Base
     self[:time_zone] || 'UTC'
   end
 
-  def self.find_by_email(email)
-    User.where('lower(email) = ?', email.to_s.downcase).first
-  end
-
   def self.helper_bot
-    find_by(email: helper_bot_email) ||
-    create!(email: helper_bot_email,
+    verified.find_by(email: BOT_EMAILS[:helper_bot]) ||
+    create!(email: BOT_EMAILS[:helper_bot],
             name: 'Loomio Helper Bot',
             password: SecureRandom.hex(20),
-            uses_markdown: true,
+            email_verified: true,
             avatar_kind: :gravatar)
   end
 
-  def self.helper_bot_email
-    ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
-  end
-
   def self.demo_bot
-    find_by(email: demo_bot_email) ||
-    create!(email: demo_bot_email, name: 'Loomio Demo bot', avatar_kind: :gravatar)
-  end
-
-  def self.demo_bot_email
-    ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
+    verified.find_by(email: BOT_EMAILS[:helper_bot]) ||
+    create!(email: BOT_EMAILS[:demo_bot],
+            name: 'Loomio Demo bot',
+            email_verified: true,
+            avatar_kind: :gravatar)
   end
 
   def name
@@ -245,7 +243,11 @@ class User < ActiveRecord::Base
   end
 
   def locale
-    selected_locale || detected_locale || I18n.default_locale
+    selected_locale || detected_locale || I18n.locale
+  end
+
+  def update_detected_locale(locale)
+    self.update_attribute(:detected_locale, locale) if self.detected_locale&.to_sym != locale.to_sym
   end
 
   def generate_username

@@ -212,9 +212,6 @@ ca:
     heading: Decisions
     no_votes_yet: Encara no ha votat ningú aquesta proposta.
     change_your_vote: Canvia la decisió.
-  undecided_panel:
-    aria_label: 'Membres indecisos'
-    hide_undecided: Oculta els membres indecisos
   proposal_pie_chart:
     participation_statement: '{{percentage}}% dels membres han manifestat la seva decisió ({{number}}/{{total}})'
   close_proposal_form:
@@ -321,7 +318,6 @@ ca:
     members: 'Membres'
     member_options: Opcions de membres
     subgroups: 'Subgrups'
-    subgroups_placeholder: 'Els subgrups us permeten dividir el grup en diferents equips.'
     visibility_label: 'Visibilitat'
     options_label: 'Opcions'
     options:
@@ -353,13 +349,6 @@ ca:
   trial_card:
     choose_plan: 'Escolliu el pla de pagament'
     expired_body_html: "<strong>{{name}}</strong> ha arribat al final del període de prova de Loomio. Per continuar utilitzant-lo, escolliu un pla de pagament que s'ajusti al vostre grup."
-  choose_plan_modal:
-    heading: Si us plau, escolliu un pla per al vostre grup
-    standard: Estàndard
-    select: Selecciona
-  subscription_success_modal:
-    contact_link: si us plau, contacteu amb nosaltres.
-    sign_off: ❤ de l'equip de Loomio
   group_form:
     start_group_heading: 'Creació d''un grup'
     start_subgroup_heading: 'Creació d''un subgrup'
@@ -677,7 +666,6 @@ ca:
     message_label: 'El vostre missatge'
     message_placeholder: 'El vostre missatge...'
     send_message: 'Envia el missatge'
-    new_contact_message: 'Gràcies pel missatge; estarem en contacte en breu!'
   help_page:
     coordinating: 'Coordinant el vostre grup de Loomio'
     coordinating_details: |

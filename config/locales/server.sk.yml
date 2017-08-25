@@ -17,11 +17,6 @@ sk:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, aby ste sa odhlásil(a) alebo zmenil(a) nastavenia emailu."
     view_comment: Kliknite sem na zobrazenie komentárov na Loomio
     view_discussion: Kliknite sem na zobrazenie tejto diskusie
-    view_proposal: Zobrazte si tento návrh na Loomio
-    create_proposal:
-      intro: Nový návrh byl vytvorený v Loomio skupine, ku ktorej patríte
-      closes_in: Uzatvára sa za
-      subject: 'Nový návrh: %{which}'
     daily_activity:
       heading: Vaša aktivita na Loomiu
       intro: Zobrazuje sa, čo sa udialo vo vašich Loomio skupinách behom ostatných 24 hodín
@@ -35,27 +30,8 @@ sk:
       intro: "%{name} (%{email}) požiadal(a) o prístup k jednej z vašich Loomio skupín."
       subject: "%{who} požiadal(a) o členstvo v %{which_group}"
       view_group: Môžete schváliť alebo odmietnuť žiadosť tu
-    new_motion_created:
-      subject: 'Návrh: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: Návrh je uzatvorený.
-      specify_outcome_and_notify_group: Vytvorte výsledok a pošlite ho svojej skupine!
-      specify_outcome_and_notify_group_html: Vytvorte výsledok a pošlite ho svojej skupine!
-      subject: Návrh uzatvorený - %{which}
-    proposal_closing_soon:
-      closes_on: Uzatvára sa
-      closes_at: Uzatvára sa
-      closes_in: Uzatvára sa za
-      subject: 'Uzatvorené behom 24 hodín: %{proposal_title}'
-      headline: "návrh %{author} v %{group} sa čoskoro uzatvára:"
-      summary: Zhrnutie
     thread_mailer:
       change_preferences: 'Zmena nastavenia e-mailu:'
-      motion_closing_soon: 'Návrhy uzatvorené behom 24 hodin:'
-      proposal_closed: 'Návrh uzatvorený:'
-      specify_outcome_html: Váš návrh bol uzatvorený. <a href='%{link}'>Sformulujte výsledok</a> a všetkým ho oznámte.
-      specify_outcome: 'Váš návrh bol uzatvorený. Sformulujte výsledok a všetkým ho oznámte. '
-      you_agreed: Vy %{past_tense_position}
   footer:
     about: O nás
     blog: Blog

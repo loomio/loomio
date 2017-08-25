@@ -4,13 +4,12 @@ class DiscussionReader < ActiveRecord::Base
   belongs_to :user
   belongs_to :discussion
 
-  def self.for(user: , discussion: )
-    if (!user.nil?) and user.is_logged_in?
-      begin
-        find_or_create_by(user_id: user.id, discussion_id: discussion.id)
-      rescue ActiveRecord::RecordNotUnique
-        retry
-      end
+  delegate :update_importance, to: :discussion
+  delegate :importance, to: :discussion
+
+  def self.for(user:, discussion:)
+    if user&.is_logged_in?
+      find_or_create_by(user: user, discussion: discussion)
     else
       new(discussion: discussion)
     end
@@ -23,7 +22,6 @@ class DiscussionReader < ActiveRecord::Base
   def update_reader(read_at: nil, volume: nil, participate: false, dismiss: false)
     viewed!(read_at, persist: false)    if read_at
     set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
-    participate!(persist: false)        if participate
     dismiss!(persist: false)            if dismiss
     save(validate: false)               if changed?
   end
@@ -38,11 +36,6 @@ class DiscussionReader < ActiveRecord::Base
   def dismiss!(persist: true)
     self.dismissed_at = Time.zone.now
     EventBus.broadcast('discussion_reader_dismissed!', discussion, user)
-    save if persist
-  end
-
-  def participate!(persist: true)
-    self.participating = true
     save if persist
   end
 

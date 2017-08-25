@@ -28,7 +28,7 @@ class Pending::BaseSerializer < ActiveModel::Serializer
   end
 
   def has_password
-    user.encrypted_password.present?
+    user.has_password
   end
 
   private
@@ -46,6 +46,6 @@ class Pending::BaseSerializer < ActiveModel::Serializer
   end
 
   def user
-    @user ||= User.find_by_email(email) || LoggedOutUser.new
+    @user ||= User.verified.find_by(email: email) || LoggedOutUser.new
   end
 end

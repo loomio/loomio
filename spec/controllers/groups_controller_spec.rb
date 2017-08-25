@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe GroupsController do
-  let(:group) { create :group }
+  let(:group) { create :formal_group }
   let(:user) { create :user }
   before { group.add_member! user }
 

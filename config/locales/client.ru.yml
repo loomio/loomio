@@ -179,12 +179,6 @@ ru:
     heading: Позиция
     no_votes_yet: Еще никто не проголосовал по этому предложению
     change_your_vote: Изменить свой выбор
-  undecided_panel:
-    aria_label: 'Непроголосовавшие'
-    show: Показать
-    remind: Напомнить
-    undecided: неопределившиеся
-    hide_undecided: Скрыть неопределившихся
   proposal_pie_chart:
     participation_statement: '{{percentage}}% oучастников группы сделали свой выбор ({{number}}/{{total}})'
   close_proposal_form:
@@ -255,13 +249,6 @@ ru:
   archive_group_form:
     aria_label: 'Деактивировать группу'
     title: 'Деактивировать группу'
-  choose_plan_modal:
-    benefit_1_group: 1 группа
-    benefit_10_groups: 10 групп
-    need_help_please: Необходимо что-то еще?
-    select: Выделить
-  subscription_success_modal:
-    contact_link: пожалуйста свяжитесь с нами.
   group_form:
     start_group_heading: 'Создать группу'
     start_subgroup_heading: 'Создать подгруппу'

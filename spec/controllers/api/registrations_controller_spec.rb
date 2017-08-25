@@ -35,4 +35,15 @@ describe API::RegistrationsController do
       expect(response.status).to eq 422
     end
   end
+
+  describe 'oauth' do
+    let(:invitation) { create :invitation, accepted_at: 1.day.ago }
+    let(:identity) { create :slack_identity, name: "Bill Bobbington", email: "bill@bobbington.ninja" }
+    it 'removes a pending invitation if its already been used' do
+      session[:pending_invitation_id] = invitation.token
+      session[:pending_identity_id]   = identity.id
+      expect { get :oauth }.to change { User.count }.by(1)
+      expect(session[:pending_invitation_id]).to be_nil
+    end
+  end
 end

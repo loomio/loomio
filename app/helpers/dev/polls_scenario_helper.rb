@@ -32,6 +32,21 @@ module Dev::PollsScenarioHelper
      poll:     scenario[:poll]}
   end
 
+  def poll_options_added_scenario(poll_type:)
+    scenario = poll_stance_created_scenario(poll_type: poll_type)
+    scenario[:poll].make_announcement = true
+    PollService.add_options(poll: scenario[:poll],
+                            actor: scenario[:actor],
+                            params: {poll_option_names: option_names[poll_type]})
+
+    scenario.merge(observer: scenario[:voter])
+  end
+
+  def poll_options_added_author_scenario(poll_type:)
+    scenario = poll_options_added_scenario(poll_type: poll_type)
+    scenario.merge(observer: scenario[:poll].author)
+  end
+
   def poll_created_as_logged_out_scenario(poll_type:)
     scenario = poll_created_as_visitor_scenario(poll_type: poll_type)
     scenario[:poll].update(anyone_can_participate: true)
@@ -41,14 +56,15 @@ module Dev::PollsScenarioHelper
   end
 
   def poll_created_as_visitor_scenario(poll_type:)
+    # TODO: fix me
     actor = saved fake_user
     poll = fake_poll(poll_type: poll_type, discussion: nil, make_announcement: true)
     event = PollService.create(poll: poll, actor: actor)
-    visitor = Visitor.create(email: "hello@test.com", community: poll.community_of_type(:email))
+    invitation = poll.guest_group.invitations.create(recipient_email: "hello@test.com", intent: :join_poll)
 
     {poll: poll,
      actor: actor,
-     params: {participation_token: visitor.participation_token}}
+     params: {invitation_token: invitation.token}}
   end
 
   def poll_edited_scenario(poll_type:)
@@ -89,7 +105,9 @@ module Dev::PollsScenarioHelper
                                                      poll_type: poll_type,
                                                      discussion: discussion,
                                                      closing_at: 1.day.from_now))
+
     PollService.create(poll: poll, actor: actor)
+
     PollService.publish_closing_soon
 
     { discussion: discussion,
@@ -207,5 +225,30 @@ module Dev::PollsScenarioHelper
      observer:   observer,
      poll:       observer_poll,
      admin:      admin}
+  end
+
+  def poll_with_guest_scenario(poll_type:)
+    group = create_group_with_members
+    user  = saved fake_user
+    another_user = saved fake_user
+    group.add_member!(user)
+    group.add_member!(another_user)
+
+    poll = fake_poll(poll_type: poll_type, discussion: fake_discussion(group: group))
+    PollService.create(poll: poll, actor: another_user)
+    Stance.create(poll: poll, participant: user, choice: poll.poll_option_names.first)
+    poll.update_stance_data
+
+    poll.guest_group.add_member! fake_user(email_verified: false)
+    poll.invite_guest! email: "bill@example.com"
+
+    {group: group,
+     poll: poll,
+     observer: user}
+  end
+
+  def poll_with_guest_as_author_scenario(poll_type:)
+    scenario = poll_with_guest_scenario(poll_type: poll_type)
+    scenario.merge(observer: scenario[:poll].author)
   end
 end

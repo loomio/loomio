@@ -1,5 +1,5 @@
 .notifications__button {
-  position: relative;
+  min-width: 36px;
   i { font-size: 24px; }
 }
 
@@ -20,8 +20,8 @@
   vertical-align: middle;
   font-size: 10px;
   position: absolute;
-  left: 24px;
-  top: 6px;
+  left: 12px;
+  top: 0;
   background: #4A90E2!important;
   border-radius: 10px;
   border: 2px solid #fff;
@@ -30,10 +30,6 @@
 
 .notifications__link {
   color: $primary-text-color;
-}
-
-.notifications__dropdown {
-  margin-top: 8px !important;
 }
 
 .navbar-notifications__blank-message {

@@ -1,9 +1,9 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
-    user visitor vote motion membership_request membership poll outcome
+    user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
-    attachment contact_message user_deactivation_response network_membership_request
-    draft oauth_application community poll_community
+    attachment contact_message user_deactivation_response
+    draft oauth_application group_identity
   )
 
   MODELS.each do |kind|
@@ -16,10 +16,6 @@ class PermittedParams < Struct.new(:params)
 
   alias :read_attribute_for_serialization :send
 
-  def theme_attributes
-    [:name, :style, :pages_logo, :app_logo]
-  end
-
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :uses_markdown, :short_bio,
@@ -29,41 +25,17 @@ class PermittedParams < Struct.new(:params)
      {email_new_discussions_and_proposals_group_ids: []}]
   end
 
-  def vote_attributes
-    [:position, :statement, :proposal_id, :motion_id]
-  end
-
-  def network_membership_request_attributes
-    [:group_id, :network_id, :message]
-  end
-
-  def motion_attributes
-    [:name, :description, :discussion_id, :closing_at, :outcome, :attachment_ids, {attachment_ids: []}]
-  end
-  alias_method :proposal_attributes, :motion_attributes
-
-  def community_attributes
-    [:community_type, :poll_id, :identity_id, :identifier,
-     :custom_fields, {custom_fields: [:facebook_group_name, :slack_channel_name]}]
-  end
-
-  def poll_community_attributes
-    [:poll_id, :community_id]
-  end
-
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
-     :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate,
-     :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :pending_emails, {pending_emails: []}]},
+     :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
+     :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
-     :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
-     :poll_option_names, {poll_option_names: []},
-     :community_id, {community_id: []}]
+     :poll_option_names, {poll_option_names: []}]
   end
 
   def stance_attributes
     [:poll_id, :reason,
-     :visitor_attributes, {visitor_attributes: [:name, :email, :participation_token]},
+     :visitor_attributes, {visitor_attributes: [:name, :email, :invitation_token]},
      :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]}]
   end
 
@@ -72,11 +44,8 @@ class PermittedParams < Struct.new(:params)
   end
 
   def outcome_attributes
-    [:statement, :poll_id, :make_announcement]
-  end
-
-  def visitor_attributes
-    [:name, :email, :revoked, :community_id]
+    [:statement, :poll_id, :poll_option_id, :make_announcement,
+     :custom_fields, custom_fields: [:event_location, :event_summary, :event_description]]
   end
 
   def membership_request_attributes
@@ -88,11 +57,11 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_reader_attributes
-    [:discussion_id, :volume, :starred]
+    [:discussion_id, :volume]
   end
 
   def invitation_attributes
-    [:recipient_email, :recipient_name, :intent]
+    [:recipient_email, :recipient_name, :intent, :group_id]
   end
 
   def group_request_attributes
@@ -103,12 +72,16 @@ class PermittedParams < Struct.new(:params)
     [:parent_id, :name, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
      :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
-     :membership_granted_upon, :cover_photo, :logo, :category_id, :identity_id, :make_announcement,
+     :membership_granted_upon, :cover_photo, :logo, :category_id, :make_announcement,
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
   end
 
+  def group_identity_attributes
+    [:group_id, :identity_type, :make_announcement, :custom_fields, custom_fields: [:slack_channel_name, :slack_channel_id]]
+  end
+
   def discussion_attributes
-    [:title, :attachment_ids, :description, :uses_markdown, :group_id, :private, :iframe_src, :starred, :make_announcement, {attachment_ids: []}]
+    [:title, :attachment_ids, :description, :uses_markdown, :group_id, :private, :iframe_src, :make_announcement, {attachment_ids: []}]
   end
 
   def comment_attributes
@@ -120,7 +93,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def contact_message_attributes
-    [:email, :message, :name, :destination]
+    [:email, :message, :name]
   end
 
   def user_deactivation_response_attributes

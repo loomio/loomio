@@ -3,40 +3,11 @@
   margin-top: 16px;
 }
 
-.registered-apps-page__table {
+.registered-apps-page__apps {
   width: 100%;
-  margin: 16px 0;
-}
-
-.registered-apps-page__table thead {
-  font-weight: bold;
-}
-
-.registered-apps-page__remove-link {
-  @include lmoBtnNude;
-}
-
-.registered-apps-page__name {
-  line-height: 40px;
-  font-weight: bold;
 }
 
 .registered-apps-page__code {
-  display: block;
-  text-align: left;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  word-break: normal;
-}
-
-.registered-apps-page__avatar {
-  width: 40px;
-  height: 40px;
-  border: 4px solid #fff;
-}
-
-.registered-apps-page__actions {
-  @include displayFlex;
-  justify-content: flex-end;
-  -webkit-justify-content: flex-end;
+  max-width: 300px;
+  @include truncateText;
 }

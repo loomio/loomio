@@ -1,7 +1,10 @@
-%form{ng-submit: "submit()"}
-  .modal-header
-    %h1.lmo-h1{translate: "signed_out_modal.title"}
-  .modal-body
+%md-dialog.signed-out-modal.lmo-modal__narrow
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "signed_out_modal.title"}
+  .md-dialog-content
     %span{translate: "signed_out_modal.message"}
-  .modal-footer
-    %button.lmo-btn--submit{type: "submit", translate: "signed_out_modal.ok"}
+
+    .lmo-md-actions
+      %div
+      %md-button.md-primary.md-raised{ng-click: "submit()", translate: "signed_out_modal.ok"}

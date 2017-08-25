@@ -3,7 +3,7 @@
   left: 20px;
   min-width: 220px;
   position: fixed;
-  z-index: 2000;
+  z-index: $z-high;
 }
 
 .flash-root__container {
@@ -73,10 +73,8 @@
   cursor: pointer;
 }
 
-.flash-root__loading.page-loading {
-  padding: 0 12px 0 0;
-  display: inline-block;
-  color: white;
+.flash-root__message .page-loading {
+  padding: 0;
 }
 
 .flash-root__container.ng-hide-add    { animation:0.7s fadeOut ease-in; }

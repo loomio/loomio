@@ -369,9 +369,8 @@ These options are further documented in the [README](http://github.com/loomio/sn
 
   # Discussion reader basics
   "discussion_reader_id":     "The id of the reader for this discussion and the logged in user (integer, can be null)",
-  "discussion_reader_volume": "The volume of the discussion to the current user (string, can be null)",
-  "participating":            "Whether the current user is participating in the discussion (boolean, can be null)",
-  "starred":                 "Whether the current user has starred the discussion (boolean, can be null)",
+  "discussion_reader_volume": "The volume of the discussion to the current user (string, can be null)"
+
 
   # Discussion reader counts
   "read_items_count":         "How many events the current user has read (integer, can be null)",
@@ -563,8 +562,8 @@ response = RestClient.get('loomio.org/api/v1/discussions.json')
   "payload":                  "A JSON dump of information for this draft (see below for more detail) ( json)",
 
   # Relationships
-  "draftable_id":             "The id of the draftable (User, Group, Discussion, or Motion) the draft is associated with (integer)",
-  "draftable_type":           "The type of draftable (User / Group / Discussion / Motion) (string)"
+  "draftable_id":             "The id of the draftable (User, Group, Discussion, or Poll) the draft is associated with (integer)",
+  "draftable_type":           "The type of draftable (User / Group / Discussion / Poll) (string)"
 }
 ```
 

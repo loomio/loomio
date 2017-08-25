@@ -12,13 +12,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'contacts'
       @hasMany 'versions'
       @hasMany 'identities'
-      @hasMany 'communities'
 
-    facebookIdentity: ->
-      _.detect @identities(), (i) -> i.identityType == 'facebook'
-
-    slackIdentity: ->
-      _.detect @identities(), (i) -> i.identityType == 'slack'
+    identityFor: (type) ->
+      _.detect @identities(), (i) -> i.identityType == type
 
     membershipFor: (group) ->
       _.first @recordStore.memberships.find(groupId: group.id, userId: @id)
@@ -41,6 +37,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
 
     parentGroups: ->
       _.filter @groups(), (group) -> group.isParent()
+
+    inboxGroups: ->
+      _.flatten [@parentGroups(), @orphanSubgroups()]
 
     hasAnyGroups: ->
       @groups().length > 0
@@ -85,6 +84,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
           thread.update(discussionReaderVolume: null)
         _.each @memberships(), (membership) ->
           membership.update(volume: volume)
+
+    remind: (model) ->
+      @remote.postMember(@id, 'remind', {"#{model.constructor.singular}_id": model.id}).then =>
+        @reminded = true
 
     hasExperienced: (key, group) ->
       if group && @isMemberOf(group)

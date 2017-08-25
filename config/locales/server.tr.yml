@@ -38,11 +38,6 @@ tr:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
     view_comment: Bu yorumu Loomio'da görüntülemek için buraya tıkla
     view_discussion: Bu müzakereyi görüntülemek için buraya tıkla
-    view_proposal: Bu öneriyi Loomio üzerinde görüntüle
-    create_proposal:
-      intro: Ait olduğunuz bir Loomio grubunda yeni bir öneri oluşturuldu.
-      closes_in: içinde kapanacak
-      subject: 'Yeni öneri: %{which}'
     daily_activity:
       heading: Loomio Aktiviten
       intro: Son 24 saat içinde Loomio gruplarınızda neler olduğunu gösterir
@@ -62,22 +57,6 @@ tr:
       intro: "%{name} (%{email}) Loomio gruplarından birine erişim hakkı istedi."
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
-    new_motion_created:
-      subject: 'Öneri: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: Öneri kapatıldı.
-      specify_outcome_and_notify_group: Bir sonuç oluştur ve grubuna gönder!
-      specify_outcome_and_notify_group_html: Bir sonuç oluştur ve grubuna gönder!
-      subject: Öneri kapandı - %{which}
-    proposal_outcome:
-      subject: 'Öneri sonucu: %{motion}'
-    proposal_closing_soon:
-      closes_on: de kapanır
-      closes_at: de kapanır
-      closes_in: içinde kapanacak
-      subject: '24 saat içinde kapanıyor: %{proposal_title}'
-      headline: "%{author}'nin %{group} grubundaki önerisi yakında kapanacak:"
-      summary: Özet
     thread_mailer:
       footer_text: 'Bu e-postayı doğrudan yanıtlayın veya %{hostname} üzerinde görüntüleyin:'
       reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
@@ -87,11 +66,6 @@ tr:
       turn_on_notifications_text: 'Bundan sonraki faaliyet bildirimlerini alabilmek için bu müzakerenin e-posta servisini aktive edin: %{url}'
       change_email_preferences_html: Bu e-posta listesinden çıkmak için <a href='%{email_preferences_url}'>e-posta tercihlerinizi</a> değişitirin.
       change_preferences: 'E-posta tercihlerini değiştir:'
-      motion_closing_soon: 'Teklif 24 saat içinde kapanıyor:'
-      proposal_closed: 'Öneri kapandı:'
-      specify_outcome_html: Sizin öneriniz kapandı. Herkesin bilmesi için <a href='%{link}'>bir sonuç belirtin</a>.
-      specify_outcome: 'Sizin öneriniz kapandı. Herkesin bilmesi için bir sonuç belirtin:'
-      you_agreed: Sen %{past_tense_position}
   footer:
     about: Hakkında
     blog: Blog
@@ -129,15 +103,6 @@ tr:
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Sağladığınız e-posta adresleri zaten grupta bulunan kişilere ait olduğundan dolayı bunlara davetiye göndermedik."
-  pricing_page:
-    standard: Standart
-    free_trial_html: <span>30 günlük ücretsiz deneme</span> süresinden sonra fiyatlandırma planı seçmenizi isteyeceğiz. Kredi kartı gerekli değildir.
-    get_started_for_free: Ücretsiz başlayın
-    unlimited_members: sınırsız üyeler
-    unlimited_decisions: sınırsız kararlar
-    email_support: e-posta desteği
-    premium_support: Premium destek
-    usage_statistics: kullanım istatistikleri
   password_reset:
     email_guidelines_html: |
       <p>Aşağıdaki alana Loomio hesabınızın e-posta adresini girin. Size bir şifre sıfırlama bağlantısı gönderilecektir.</p>

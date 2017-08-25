@@ -12,12 +12,14 @@ module Dev::FakeDataHelper
       password: Faker::Internet.password,
       detected_locale: 'en',
       is_admin: true,
+      email_verified: true,
       experiences: {enable_communities: true}
     }.merge(args))
   end
 
+  # todo fake_formal_group ?
   def fake_group(args = {})
-    Group.new({name: Faker::Company.name,
+    FormalGroup.new({name: Faker::Company.name,
       features: {use_polls: true, enable_communities: true}}.merge(args))
   end
 
@@ -28,15 +30,47 @@ module Dev::FakeDataHelper
                     author: fake_user}.merge(args))
   end
 
-  def fake_poll(args = {})
-    option_names = {
+  def fake_invitation(args = {})
+    Invitation.new({
+      group: fake_group,
+      recipient_email: Faker::Internet.email
+    }.merge(args))
+  end
+
+  def fake_membership_request(args = {})
+    MembershipRequest.new({
+      requestor: fake_user,
+      group: fake_group
+    }.merge(args))
+  end
+
+  def fake_identity(args = {})
+    Identities::Base.new({
+      user: fake_user,
+      uid: "abc",
+      access_token: SecureRandom.uuid,
+      identity_type: :slack
+    }.merge(args))
+  end
+
+  def fake_draft(args = {})
+    Draft.new({
+      draftable: fake_group
+    }.merge(args))
+  end
+
+  def option_names
+    seed = (0..20).to_a.sample
+    {
       poll: 3.times.map{ Faker::Food.ingredient },
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: 3.times.map{ Faker::Artist.name },
-      meeting: 3.times.map { |i| i.days.from_now.to_date } + 3.times.map { |i| i.days.from_now.beginning_of_hour.utc.iso8601 }
+      meeting: 3.times.map { |i| (seed+i).days.from_now.to_date } + 3.times.map { |i| (seed+i).days.from_now.beginning_of_hour.utc.iso8601 }
     }.with_indifferent_access
+  end
 
+  def fake_poll(args = {})
     options = {
       author: fake_user,
       discussion: fake_discussion,
@@ -54,7 +88,7 @@ module Dev::FakeDataHelper
     when 'meeting'  then options[:custom_fields][:time_zone] = 'Asia/Seoul'
     end
 
-    Poll.new(options).tap { |p| p.community_of_type(:email, build: true) }
+    Poll.new(options)
   end
 
   def fake_stance(args = {})
@@ -75,18 +109,19 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  def fake_outcome(args = {})
-    poll = fake_poll
-    Outcome.new({poll: poll,
-                author: poll.author,
-                statement: with_markdown(Faker::Hipster.sentence)}.merge(args))
+  def fake_comment_vote(args = {})
+    CommentVote.new({
+      comment: fake_comment,
+      user: fake_user
+    }.merge(args))
   end
 
-  def fake_visitor(args = {})
-    Visitor.new({
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      community: Communities::Public.new
+  def fake_outcome(args = {})
+    poll = fake_poll
+    Outcome.new({
+      poll: poll,
+      author: poll.author,
+      statement: with_markdown(Faker::Hipster.sentence)
     }.merge(args))
   end
 
@@ -95,7 +130,6 @@ module Dev::FakeDataHelper
       sender_email: Faker::Internet.email,
       subject: Faker::ChuckNorris.fact,
       body: "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah",
-      
     })
   end
 
@@ -104,5 +138,4 @@ module Dev::FakeDataHelper
   def with_markdown(text)
     "#{text} - **(markdown!)**"
   end
-
 end

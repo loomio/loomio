@@ -8,36 +8,36 @@
 
         %form{ng-submit: "emailSettingsPage.submit()"}
           .email-settings-page__global-email-settings-options
-            .email-settings-page__field
-              %input.email-settings-page__daily-summary#daily-summary-email{type: "checkbox", ng-model: "emailSettingsPage.user.emailMissedYesterday"}
-              %label{for: "daily-summary-email", translate: "email_settings_page.daily_summary_label"}
+            %md-checkbox.md-checkbox--with-summary.email-settings-page__daily-summary#daily-summary-email{ng-model: "emailSettingsPage.user.emailMissedYesterday"}
+              %strong{for: "daily-summary-email", translate: "email_settings_page.daily_summary_label"}
               .email-settings-page__input-description{translate: "email_settings_page.daily_summary_description"}
 
-            .email-settings-page__field
-              %input.email-settings-page__on-participation#on-participation-email{type: "checkbox", ng-model: "emailSettingsPage.user.emailOnParticipation"}
-              %label{for: "on-participation-email", translate: "email_settings_page.on_participation_label"}
+            %md-checkbox.md-checkbox--with-summary.email-settings-page__on-participation#on-participation-email{ng-model: "emailSettingsPage.user.emailOnParticipation"}
+              %strong{for: "on-participation-email", translate: "email_settings_page.on_participation_label"}
               .email-settings-page__input-description{translate: "email_settings_page.on_participation_description"}
 
-            .email-settings-page__field
-              %input.email-settings-page__mentioned#mentioned-email{type: "checkbox", ng-model: "emailSettingsPage.user.emailWhenMentioned"}
-              %label{for: "mentioned-email", translate: "email_settings_page.mentioned_label"}
+            %md-checkbox.md-checkbox--with-summary.email-settings-page__mentioned#mentioned-email{ng-model: "emailSettingsPage.user.emailWhenMentioned"}
+              %strong{for: "mentioned-email", translate: "email_settings_page.mentioned_label"}
               .email-settings-page__input-description{translate: "email_settings_page.mentioned_description"}
 
-          %button.email-settings-page__update-button{type: "submit", ng-disabled: "isDisabled", translate: "email_settings_page.update_settings"}
+          %md-button.md-primary.md-raised.email-settings-page__update-button{type: "submit", ng-disabled: "isDisabled", translate: "email_settings_page.update_settings"}
 
       .email-settings-page__specific-group-settings
         %h3.lmo-h3{translate: "email_settings_page.specific_groups"}
-        .email-settings-page__default-description{translate: "{{emailSettingsPage.defaultSettingsDescription()}}"}
-        %button.email-settings-page__change-default-link.lmo-btn-link{ng-click: "emailSettingsPage.changeDefaultMembershipVolume()", translate: "email_settings_page.change_default"}
-        %ul.email-settings-page__groups
-          %li.email-settings-page__group{ng-repeat: "group in emailSettingsPage.user.groups() track by group.id"}
-            %group_avatar{group: "group", size: "medium"}
-            .email-settings-page__group-details
+        %md-list.email-settings-page__groups
+          %md-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between
+            .lmo-box--medium.lmo-margin-right.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center
+              %i.material-icons group_add
+            .email-settings-page__default-description{translate: "{{emailSettingsPage.defaultSettingsDescription()}}"}
+            %md-button.md-accent.email-settings-page__change-default-link{ng-click: "emailSettingsPage.changeDefaultMembershipVolume()", translate: "common.action.edit"}
+          %md-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between{ng-repeat: "group in emailSettingsPage.user.groups() track by group.id"}
+            %group_avatar.lmo-margin-right{group: "group", size: "medium"}
+            .email-settings-page__group-details.lmo-flex__grow
               %strong.email-settings-page__group-name
                 %span{ng-if: "group.isSubgroup()"}>
                   {{group.parentName()}} -
                 %span {{group.name}}
-              %p.email-settings-page__membership-volume{translate: "change_volume_form.{{emailSettingsPage.groupVolume(group)}}_label"}
+              .email-settings-page__membership-volume{translate: "change_volume_form.{{emailSettingsPage.groupVolume(group)}}_label"}
             .email-settings-page__edit
-              %button.email-settings-page__edit-membership-volume-link.lmo-btn-link{ng-click: "emailSettingsPage.editSpecificGroupVolume(group)", translate: "email_settings_page.edit"}
+              %md-button.md-accent.email-settings-page__edit-membership-volume-link{ng-click: "emailSettingsPage.editSpecificGroupVolume(group)", translate: "email_settings_page.edit"}
         %a.email-settings-page__learn-more-link{href: "https://loomio.gitbooks.io/manual/content/en/keeping_up_to_date.html", target: "_blank", translate: "Learn more about email settings..."}

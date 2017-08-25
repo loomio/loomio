@@ -1,7 +1,8 @@
 angular.module('loomioApp').directive 'installSlackForm', (FormService, Session, Records, LoadingService, LmoUrlService)->
+  scope: {group: '='}
   templateUrl: 'generated/components/install_slack/form/install_slack_form.html'
   controller: ($scope) ->
-    $scope.currentStep = 'install'
+    $scope.currentStep = if $scope.group then 'invite' else 'install'
 
     $scope.$on 'installComplete', (event, group) ->
       $scope.group = group
@@ -12,7 +13,7 @@ angular.module('loomioApp').directive 'installSlackForm', (FormService, Session,
       $scope.currentStep = 'decide'
       $scope.isDisabled = false
 
-    $scope.$on 'decideComplete', $scope.$close
+    $scope.$on 'decideComplete', -> $scope.$emit('$close')
 
     $scope.progress = ->
       switch $scope.currentStep

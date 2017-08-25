@@ -38,7 +38,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     relationships: ->
       @hasMany 'comments', sortBy: 'createdAt'
       @hasMany 'events', sortBy: 'sequenceId'
-      @hasMany 'proposals', sortBy: 'createdAt', sortDesc: true
       @hasMany 'polls', sortBy: 'createdAt', sortDesc: true
       @hasMany 'versions', sortBy: 'createdAt'
       @belongsTo 'group'
@@ -54,23 +53,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     groupName: ->
       @group().name if @group()
 
-    activeProposals: ->
-      _.filter @proposals(), (proposal) ->
-        proposal.isActive()
-
-    closedProposals: ->
-      _.reject @proposals(), (proposal) ->
-        proposal.isActive()
-
-    anyClosedProposals: ->
-      _.some(@closedProposals())
-
-    activeProposal: ->
-      _.first(@activeProposals())
-
-    hasActiveProposal: ->
-      @activeProposal()?
-
     activePolls: ->
       _.filter @polls(), (poll) ->
         poll.isActive()
@@ -79,7 +61,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       _.any @activePolls()
 
     hasDecision: ->
-      @hasActiveProposal() or @hasActivePoll()
+      @hasActivePoll()
 
     closedPolls: ->
       _.filter @polls(), (poll) ->
@@ -98,11 +80,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasUnreadActivity: ->
       @isUnread() && @unreadActivityCount() > 0
 
-    hasContext: ->
+    hasDescription: ->
       !!@description
-
-    isImportant: ->
-      @starred or @hasDecision()
 
     unreadActivityCount: ->
       @salientItemsCount - @readSalientItemsCount
@@ -141,9 +120,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     isMuted: ->
       @volume() == 'mute'
 
-    saveStar: ->
-      @remote.patchMember @keyOrId(), if @starred then 'star' else 'unstar'
-
     update: (attrs) ->
       delete attrs.lastReadSequenceId    if attrs.lastReadSequenceId < @lastReadSequenceId
       delete attrs.readSalientItemsCount if attrs.readSalientItemsCount < @readSalientItemsCount
@@ -162,6 +138,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     move: =>
       @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }
+
+    savePin: =>
+      @remote.patchMember @keyOrId(), 'pin'
 
     edited: ->
       @versionsCount > 1

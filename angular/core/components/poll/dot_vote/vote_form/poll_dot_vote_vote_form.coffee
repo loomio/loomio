@@ -4,6 +4,20 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
   controller: ($scope, Records, PollService, MentionService, KeyEventService) ->
     $scope.vars = {}
 
+    percentageFor = (choice) ->
+      max = $scope.stance.poll().customFields.dots_per_person
+      return unless max > 0
+      "#{100 * choice.score / max}%"
+
+    backgroundImageFor = (option) ->
+      "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
+
+    $scope.styleData = (choice) ->
+      option = $scope.optionFor(choice)
+      'border-color': option.color
+      'background-image': backgroundImageFor(option)
+      'background-size': percentageFor(choice)
+
     $scope.stanceChoiceFor = (option) ->
       _.first(_.filter($scope.stance.stanceChoices(), (choice) ->
         choice.pollOptionId == option.id
@@ -21,9 +35,12 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
     $scope.tooManyDots = ->
       $scope.dotsRemaining() < 0
 
-    $scope.stanceChoices = _.map $scope.stance.poll().pollOptions(), (option) ->
-      poll_option_id: option.id
-      score: $scope.stanceChoiceFor(option).score
+    $scope.setStanceChoices = ->
+      $scope.stanceChoices = _.map $scope.stance.poll().pollOptions(), (option) ->
+        poll_option_id: option.id
+        score: $scope.stanceChoiceFor(option).score
+    $scope.setStanceChoices()
+    $scope.$on 'pollOptionsAdded', $scope.setStanceChoices
 
     $scope.submit = PollService.submitStance $scope, $scope.stance,
       prepareFn: ->

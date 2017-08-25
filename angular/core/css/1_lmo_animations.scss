@@ -27,3 +27,31 @@
     right: 0;
   }
 }
+
+.lmo-drop-animation {
+  position: relative;
+
+  .animated {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    position: relative;
+  }
+
+  .ng-leave.ng-leave-active, .ng-enter { opacity: 0; }
+  .ng-enter.ng-enter-active, .ng-leave { opacity: 1; }
+
+  .animated:not(.ng-hide) {
+    max-height: 1000px;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

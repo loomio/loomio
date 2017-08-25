@@ -266,12 +266,6 @@ pt_BR:
     heading: Posições
     no_votes_yet: Ninguém votou nesta proposta ainda.
     change_your_vote: Modificar sua posição.
-  undecided_panel:
-    aria_label: 'Membros indecisos'
-    show: Mostrar
-    remind: Lembre-se
-    undecided: não-decidido
-    hide_undecided: Ocultar membros indecisos
   proposal_pie_chart:
     participation_statement: '{{percentage}}% dos membros manifestaram suas posições ({{number}}/{{total}})'
   close_proposal_form:
@@ -414,7 +408,6 @@ pt_BR:
     see_all_members: 'Veja todos: ({{count}}) membros'
     pending_invitations: '+ ({{count}}) pendentes'
     subgroups: 'Subgrupos'
-    subgroups_placeholder: 'Subgrupos permitem dividir o grupo em diferentes times'
     visibility_label: 'Visibilidade'
     options_label: 'Opções'
     options:
@@ -488,39 +481,6 @@ pt_BR:
     choose_plan: 'Escolha seu plano de pagamento'
     in_progress_body: 'Obrigado por experimentar Loomio com <strong>{{name}}</strong>. Você pode escolher um plano de preços que se adapte ao seu grupo a qualquer momento.'
     expired_body_html: "<strong>{{name}}</strong> chegou ao fim do teste no Loomio. Para continuar utilizando, você precisa escolher um plano de preços que se adapte ao seu grupo."
-  choose_plan_modal:
-    aria_label: Escolha um plano
-    heading: Por favor, escolha um plano para o seu grupo
-    free: Gratuito
-    standard: Padrão
-    pro: Profissional
-    per_month: /mês
-    standard_group_description: Tudo o que você precisa para um grupo.
-    free_group_description: Plano de suporte a grupos comunitários por doação.
-    pro_group_description: Para organizações com <nobr>multiplos grupos.</nobr>
-    benefit_1_group: 1 grupo
-    benefit_10_groups: 10 grupos
-    benefit_unlimited_members: Membros ilimitados
-    benefit_unlimited_decisions: Decisões ilimitadas
-    benefit_priority_support: Suporte premium
-    benefit_help_with_setup: Ajuda com configurações iniciais
-    benefit_community_support: Suporte comunitário
-    benefit_slack_integration: Integração com o Slack
-    benefit_custom_domain: Domínio personalizado
-    benefit_analytics_reports: Relatórios analíticos
-    benefit_data_export: Exportação de dados
-    support_link: Vamos conversar!
-    prices_in_us_dollars: Os preços estão em dólares americanos, mais taxas onde aplicável.
-    need_help_please: Precisa de algo mais?
-    select: Selecione
-  subscription_success_modal:
-    aria_label: Assinatura confirmada
-    heading: Está tudo certo!
-    receipt: Você receberá um email com o seu comprovante, incluindo um link para o portal do cliente, onde você poderá modificar, atualizar ou cancelar a sua assinatura, e acessar seu histórico de pagamentos.
-    change_subscription: "Se você quiser configurar integração com o Slack ou personalizar o seu domínio,"
-    contact_link: por favor, entre em contato conosco.
-    sign_off: ❤ da equipe Loomio
-    ok_got_it: Ok, entendi!
   group_form:
     aria_label: 'Formulário do grupo'
     start_group_heading: 'Iniciar um grupo'
@@ -900,7 +860,6 @@ pt_BR:
     message_label: 'Sua mensagem'
     message_placeholder: 'Sua mensagem...'
     send_message: 'Enviar Mensagem'
-    new_contact_message: 'Obrigado por sua mensagem; estaremos em contato em breve!'
   help_page:
     coordinating: 'Coordenando o seu grupo do Loomio'
     coordinating_details: |
@@ -1096,9 +1055,6 @@ pt_BR:
     closing: Encerrando
   poll_common_votes_panel:
     change_results_order: Mudar ordem dos resultados
-    show_undecided: Mostrar pessoas indecisas
-  poll_common_did_not_votes_panel:
-    show_undecided: Mostrar pessoas indecisas
   poll_common_set_outcome_panel:
     share_outcome: Compartilhar resultado
   poll_common_outcome_form:
@@ -1166,16 +1122,10 @@ pt_BR:
     get_link: Copiar link
     shareable_link: Link compartilhável
     reminded: Lembrete enviado!
-  poll_common_publish_form:
-    published: Mensagem enviada com sucesso
   poll_common_publish_facebook_preview:
     link: link
   poll_common_publish_slack_preview:
     view_it_on_loomio: Ver no Loomio
-  add_community_form:
-    title: Adicionar comunidade
-    facebook:
-      fragment_placeholder: Procurar por grupos...
   poll_common_participant_form:
     participant_name_placeholder: Qual o seu nome?
   poll_common_subscribe_form:

@@ -1,8 +1,59 @@
 ---
 en:
+  explore:
+    header: Explore public groups
+
+  activerecord:
+    errors:
+      messages:
+        blank: can't be blank
+        invalid: is not a valid value
+
+  errors:
+    messages:
+      email: Not a valid email address
+      spoofed_media_type: The contents of that file don't match its filename
+
+  user:
+    error:
+      recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
+      username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
+
+  attachment:
+    error:
+      too_large: The file you tried to attach is larger than 100 Megabytes, please choose a smaller file.
+
+  poll:
+    error:
+      cannot_add_options: Cannot add options to this poll
+      cannot_remove_options: Cannot remove options from this poll
+      must_have_options: Must have at least one poll option
+
+  stance:
+    error:
+      too_short: Please make a selection
+
+  user:
+    error:
+      username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
+
+  user:
+    error:
+      username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
+
+  invitation:
+    invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
+    invitation_already_used: This invitation has already been used. Please sign in to loomio directly to continue to your group.
+
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
+
   validate:
     motion:
       must_close_in_future: Proposal must close in the future.
@@ -13,12 +64,20 @@ en:
       <h1>Success.</h1>
       <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
 
+  user_mailer:
+    accounts_merged:
+      subject: "Your Loomio user accounts have been merged."
+      body_html: |
+        Hi %{name},
+        Your two loomio accounts have been merged into one account.
+        To access loomio from now on, please use <strong>%{email}</strong> when you sign in.
+
   email:
     login:
       subject: Sign in to Loomio
       intro: Hi %{name}, here is a link to sign in to your Loomio account.
       login: Sign in to Loomio as %{name}
-      resend: This link will expire at %{expires_at}. If that time has passed, you can follow the link above to get another link.
+      resend: This link will expire in 24 hours and can only be used once.
 
     reset_password:
       greeting: |
@@ -59,7 +118,7 @@ en:
       link_help: "Click the link below to accept the invitation:"
       accept_invitation: "Accept invitation"
     resend_to_join_group:
-      subject: "%{member} is still waiting for you to join %{group_name} on Loomio"
+      subject: "%{member} is waiting for you to join %{group_name} on Loomio"
     to_start_group:
       subject: "Set up your new Loomio group: %{group_name}"
       hi: "Hi %{name},"
@@ -78,20 +137,16 @@ en:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
     view_comment: Click here to view the comment on Loomio
     view_discussion: Click here to view this discussion
-    view_proposal: View this proposal on Loomio
     create_discussion:
       intro_html: "started a thread:"
       intro: "%{who} started a thread:"
-    create_proposal:
-      intro: A new proposal was created in a Loomio group that you belong to.
-      closes_in: Closes in
-      subject: 'New proposal: %{which}'
     daily_activity:
       heading: Your Loomio Activity
       intro: Showing you what’s been happening in your Loomio groups in the last 24 hours
       subject: Loomio - Summary of the last 24 hours
     missed_yesterday:
       subject: Yesterday on Loomio
+      do_not_reply: Please do not reply to this email.
       headlines: Headlines
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
@@ -120,23 +175,6 @@ en:
       context_html: "mentioned you while discussing"
       context: "%{author_name} mentioned you while discussing %{discussion_title}"
       subject: '%{who} mentioned you while discussing "%{which}"'
-    new_motion_created:
-      subject: 'Proposal: %{proposal_title}'
-      context: "started a proposal in %{group_full_name}:"
-    proposal_closed:
-      proposal_has_closed: The proposal has closed.
-      specify_outcome_and_notify_group: Create an outcome and send it to your group!
-      specify_outcome_and_notify_group_html: Create an outcome and send it to your group!
-      subject: Proposal closed - %{which}
-    proposal_outcome:
-      subject: 'Proposal outcome: %{motion}'
-    proposal_closing_soon:
-      closes_on: Closes on
-      closes_at: Closes at
-      closes_in: Closes in
-      subject: 'Closing in 24 hours: %{proposal_title}'
-      headline: "%{author}'s proposal in %{group} is closing soon:"
-      summary: Summary
     thread_mailer:
       footer_text: 'Reply to this email directly or view it on %{hostname}:'
       reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
@@ -146,31 +184,6 @@ en:
       turn_on_notifications_text: 'Turn on email to receive further activity in this discussion: %{url}'
       change_email_preferences_html: Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails.
       change_preferences: 'Change your email preferences:'
-      new_motion_html: 'started a proposal:'
-      new_motion: '%{who} started a proposal:'
-      motion_closing_soon: 'Proposal closing in 24 hours:'
-      proposal_closed: 'Proposal closed:'
-      specify_outcome_html: Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is.
-      specify_outcome: 'Your proposal has closed. Specify an outcome to let everyone know what the result is:'
-      outcome_created_html: "shared an outcome for the proposal:"
-      outcome_created: "%{who} shared an outcome for the proposal:"
-      you_agreed: You %{past_tense_position}
-    analytics:
-      subject: "%{which_group}'s week on Loomio"
-      title: "Your summary for the week starting %{since}"
-      table_header: "Name | Motions created | Discussions created | Comments created | Votes created"
-      stats: "<strong>%{active_members}</strong> out of <strong>%{group_members}</strong> in your group were active in the last week. Your group raised <strong>%{motions}</strong> and made <strong>%{comments}</strong> in <strong>%{discussions}</strong>."
-      contact_us: "Looking for more stats? <a href='%{contact_link}'>Get in touch</a>."
-      no_activity: "Want to talk with one of our collaboration coaches about getting the most out of Loomio? <a href='%{contact_link}'>Get in touch</a>"
-      trial_subscription: "%{which_group} is on a <strong>free trial</strong> ending <strong>%{expires_at}</strong>. You can choose a subscription plan <a href='%{subscription_link}'>here</a>."
-      trial_expired: "%{which_group} has reached the end of its free Loomio trial. "
-      heart: "❤ from team Loomio"
-      unsubscribe: "This email is sent to coordinators of active Loomio groups.<br />If you'd prefer not to receive these emails, <a href='%{contact_link}'>let us know</a>."
-      user_table:
-        motions_created: "Proposals"
-        discussions_created: "Discussions"
-        comments_created: "Comments"
-        votes_created: "Votes"
   footer:
     about: About
     blog: Blog
@@ -207,53 +220,21 @@ en:
     start_making_decisions: 'To start making decisions together on Loomio, set up a group for free:'
   invitation_form:
     error:
+      too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
       all_email_addresses_belong_to_members: "We didn't send invitations to the email addresses provided because they belong to people already in the group."
-  pricing_page:
-    header: Group plans
-    gift: Free
-    standard: Standard
-    plus: Pro
-    free_trial_html: We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required.
-    get_started_for_free: Get started for free
-    gift_body: Everything you need to make effective decisions with your group.
-    standard_body_html: Make decisions in Slack
-    pro_body_html: Make decisions across your organisation
-    one_group: one group
-    unlimited_members: unlimited members
-    unlimited_decisions: unlimited decisions
-    coming_facebook: Facebook integration coming soon.
-    email_support: email support
-    coming_soon: Coming soon
-    analytics_report: Analytics report
-    data_export: Data export (CSV or XLS)
-    slack_integration_html: |
-      <strong>Slack</strong> integration
-    customer_support_html: Customer support
-    standard_price_html: '<strong>$19</strong>/month'
-    gift_price_html: '<strong>$0</strong>'
-    plus_includes_standard: 'Everything in Standard, plus:'
-    standard_includes_free: 'Everything in Free, plus:'
-    multiple_groups: "up to 10 groups"
-    premium_support: premium support
-    help_with_setup: help with initial setup
-    ldap_coming_soon: ActiveDirectory/LDAP coming soon
-    custom_subdomain: custom subdomain
-    analytics_reports: analytics reports
-    contact_us_html: |
-      Prices are in US dollars, plus sales tax where applicable. Need something else? <a href="/contact">Let's talk!</a>
 
-    custom_subdomain_html: |
-      custom subdomain,<br />
-      e.g. <strong>yourgroup</strong>.loomio.org
-    usage_statistics: usage statistics
-    plus_price_html: '<strong>$99</strong>/month'
   password_reset:
+    change_your_password: Change your password
+    change_my_password: Change password
+    confirm_new_password: Confirm password
+    new_password: New password
     email_guidelines_html: |
       <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>
       <p>If you normally sign in via Facebook, Google, Twitter or Persona, enter the email address associated with that account.</p>
     reset_email_timeframe: It may take up to 5 minutes for the email to arrive. If it doesn't show up, be sure to check your spam folder.
     length_restriction: Passwords must be at least 8 characters long.
     forbidden_passwords: Common passwords such as “password” are forbidden to keep your account safe.
+
   introduction_thread:
     title: Welcome! Please introduce yourself
     description: |
@@ -394,12 +375,14 @@ en:
       responses: Responses
       change_your_stance: Change
       create_outcome: Share outcome
-      your_response: Your response
+      your_response: "You voted:"
       please_respond: Please respond
       time_zone: (Times displayed in %{zone})
       undecided_members: Undecided Members (%{count})
-      undecided_visitors: Undecided Visitors (%{count})
+      undecided_visitors: Undecided Guests (%{count})
       more_undecided: "%{count} more..."
+      verify_stance_for_unverified_user: "Thanks for voting in %{title}. Please verify your email address, so we can send you the results when they're ready."
+      verify_stance_for_verified_user: "It looks like you voted in %{title}. If this was you, please click the link below to confirm your vote."
 
     proposal:
       subject:
@@ -410,9 +393,11 @@ en:
         poll_expired: "Proposal closed: %{title}"
         poll_expired_author: 'Your proposal has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
-        visitor_created: '%{actor} wants your opinion: %{title}'
-        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        invitation_created: '%{actor} wants your opinion: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
@@ -422,8 +407,9 @@ en:
         poll_expired: "<strong>%{actor}'s</strong> proposal has closed: %{title}"
         poll_expired_author: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
-        visitor_created: '<strong>%{actor}</strong> wants to hear your opinion: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        invitation_created: '<strong>%{actor}</strong> wants to hear your opinion: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
@@ -437,10 +423,14 @@ en:
         poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
         poll_expired: "Poll results: %{title}"
         poll_expired_author: 'Your poll has closed. Share an outcome for: %{title}'
+        poll_option_added: '%{actor} added options to: %{title}'
+        poll_option_added_author: '%{actor} added options to: %{title}'
         outcome_created: '%{actor} shared a poll outcome: %{title}'
-        visitor_created: '%{actor} wants you to vote: %{title}'
-        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        invitation_created: '%{actor} wants you to vote: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -449,9 +439,12 @@ en:
         poll_closing_soon_author: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> poll closed: %{title}"
         poll_expired_author: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
+        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
         outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
-        visitor_created: '<strong>%{actor}</strong> invited you to join a poll: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        invitation_created: '<strong>%{actor}</strong> invited you to join a poll: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
@@ -466,9 +459,11 @@ en:
         poll_expired: "Check closed: %{title}"
         poll_expired_author: 'Your check has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
-        visitor_created: '%{actor} is checking: %{title}'
-        visitor_reminded: '%{actor} is waiting for you to respond: %{title}'
+        invitation_created: '%{actor} is checking: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for you to respond: %{title}'
         stance_created: "%{actor} participated in: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
@@ -478,8 +473,9 @@ en:
         poll_expired: "<strong>%{actor}'s</strong> check closed: %{title}"
         poll_expired_author: 'Here are the results of your check. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared an outcome.'
-        visitor_created: '<strong>%{actor}</strong> is checking: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to respond: %{title}'
+        invitation_created: '<strong>%{actor}</strong> is checking: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to respond: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
 
       body:
@@ -493,10 +489,14 @@ en:
         poll_closing_soon_author: 'Your dot vote closes in 24 hours: %{title}'
         poll_expired: "Dot vote results: %{title}"
         poll_expired_author: 'Your dot vote has closed. Share an outcome for: %{title}'
+        poll_option_added: '%{actor} added options to: %{title}'
+        poll_option_added_author: '%{actor} added options to: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
-        visitor_created: '%{actor} invited you to join a dot vote: %{title}'
-        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        invitation_created: '%{actor} invited you to join a dot vote: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a dot vote'
@@ -505,9 +505,12 @@ en:
         poll_closing_soon_author: 'Your dot vote is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
         poll_expired: "Results for <strong>%{actor}'s</strong> dot vote: %{title}"
         poll_expired_author: 'Your dot vote has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
+        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
         outcome_created: '<strong>%{actor}</strong> shared a dot vote outcome.'
-        visitor_created: '<strong>%{actor}</strong> invited you to join a dot vote: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        invitation_created: '<strong>%{actor}</strong> invited you to join a dot vote: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
@@ -521,10 +524,15 @@ en:
         poll_closing_soon_author: 'Your time poll closes in 24 hours: %{title}'
         poll_expired: "Time poll results: %{title}"
         poll_expired_author: 'Your time poll has closed. Share an outcome for: %{title}'
+        poll_option_added: '%{actor} added options to: %{title}'
+        poll_option_added_author: '%{actor} added options to: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
-        visitor_created: '%{actor} wants to arrange a time: %{title}'
-        visitor_reminded: '%{actor} is waiting for your response: %{title}'
+        outcome_created_author: 'You shared an outcome: %{title}'
+        invitation_created: '%{actor} wants to arrange a time: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
+        stance_created_author: "Please verify your vote on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a time poll'
@@ -533,9 +541,13 @@ en:
         poll_closing_soon_author: 'Your time poll is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> time poll has closed"
         poll_expired_author: 'Your time poll has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
+        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
         outcome_created: '<strong>%{actor}</strong> shared a time poll outcome.'
-        visitor_created: '<strong>%{actor}</strong> wants to arrange a time: %{title}'
-        visitor_reminded: '<strong>%{actor}</strong> is waiting for your response: %{title}'
+        outcome_created_author: 'You shared a time poll outcome.'
+        invitation_created: '<strong>%{actor}</strong> wants to arrange a time: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
 
       body:
@@ -561,3 +573,54 @@ en:
     meeting:
       title: "When should we have our next staff meeting?"
       details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
+
+  poll_unsubscribe:
+    title: You have been unsubscribed from %{title}
+    helptext: You will no longer receive emails about this decision.
+    visit_poll: View poll
+    go_to_dashboad: Go to dashboard
+
+  slack:
+    new_discussion: "New thread in *%{group}*: *%{discussion}*"
+    outcome_created: "Outcome posted in *%{group}*: *%{poll}*"
+    poll_created: "New *%{poll_type}* in *%{group}*: *%{poll}*"
+    poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
+    poll_expired: "*%{poll}* has closed"
+    poll_not_found: "Sorry, that poll was not found. Type '/loomio <poll_type> <title>' to start another one?"
+    stance_not_valid: "Sorry, we weren't able to create a stance for *%{poll}*. <%{url}|Click here> to vote on the poll directly."
+    group_identity_created: |
+      Hello, I'm Loomio Bot. *%{author}* added me.
+      I can help your team make decisions together.
+
+      My functions include:
+
+      - highlighting when decisions are happening
+      - letting people vote on decisions from Slack
+      - showing where people agree and disagree
+      - communicating the outcome of decisions
+      - keeping a record of decisions in your Loomio group.
+
+      To find out more, type _/loomio help_
+    request_authorization_message: "Just one more step: <%{url}|Click here> to authorize your slack account to use Loomio. (You'll only have to do this once)"
+    poll_closed: "*%{title}* has closed already! <%{url}|Click here> to view the results."
+    go_to_slack: Go to Slack
+    stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you''d like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
+    click_to_vote: "Select an option below to vote:"
+    time_zone_message: (all times are in the %{zone} time zone)
+    authorized_message: Success! You're all set up to vote on slack now.
+    community_poll_published: "@%{username} started a new %{type}:"
+    initiate: |
+      Okay, let's do this! <%{url}|Click here to start your %{type}>.
+      (note: we'll post into this channel once it's created, so that everyone can participate)
+    slash_command_help: |
+      Just enter a decision type and a question, and we'll take it from there.
+      You can choose from the following decision types:
+      'proposal': Seek collective agreement
+      'count':      Track participation and find volunteers
+      'poll':         Measure popularity of options
+      'dot vote': Prioritise a list of options
+      'meeting': Find a time to meet
+
+      For example:
+      /loomio count Who's coming to the party on Sunday?
+      In order to start a new count.

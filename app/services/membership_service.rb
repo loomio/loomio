@@ -29,20 +29,16 @@ class MembershipService
      Events::UserJoinedGroup.publish!(membership)
    end
 
-  def self.add_users_to_group(users: , group: , inviter: , message: nil)
+  def self.add_users_to_group(users:, group:, inviter:)
     inviter.ability.authorize!(:add_members, group)
-    group.add_members!(users, inviter).tap do |memberships|
-      Events::UserAddedToGroup.bulk_publish!(memberships, inviter, message)
+    group.add_members!(users, inviter: inviter).tap do |memberships|
+      Events::UserAddedToGroup.bulk_publish!(memberships, inviter)
     end
   end
 
   def self.destroy(membership:, actor:)
     actor.ability.authorize! :destroy, membership
     membership.destroy
-  end
-
-  def self.suspend_membership!(membership:)
-    membership.suspend!
   end
 
   def self.save_experience(membership:, actor:, params:)

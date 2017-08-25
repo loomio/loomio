@@ -1,31 +1,15 @@
 .poll-meeting-form
-  %poll_common_tool_tip{poll: "poll"}
+  %poll_common_form_fields{poll: "poll"}
 
   %md-input-container.md-block
-    %label{translate: "poll_common_form.title"}
-    %input.lmo-primary-form-input.poll-meeting-form__title{type: "text", placeholder: "{{'poll_meeting_form.title_placeholder' | translate}}", ng-model: "poll.title", md-maxlength="250"}
-    %validation_errors{subject: "poll", field: "title"}
+    %label{translate: "poll_meeting_form.meeting_duration"}
+    %md-select{ng-model: "poll.customFields.meeting_duration"}
+      %md-option{ng-repeat: "duration in durations", ng-value: "duration.minutes"}
+        {{duration.label}}
 
-  %md-input-container.md-block
-    %label{translate: "poll_common_form.details"}
-    %textarea.lmo-primary-form-input.poll-meeting-form__details{ng-model: "poll.details", placeholder: "{{'poll_meeting_form.details_placeholder' | translate}}", mention-field: "true"}
-    %outlet{name: "after-poll-form-textarea", model: "poll"}
-
-  .md-input-compensate
-    %poll_common_attachment_form{poll: "poll"}
-
-  %md-list.md-block
-    .poll-meeting-form__label-and-timezone
-      %label.poll-common-form__options-label.md-caption.lmo-flex__grow{translate: "poll_common_form.options"}
-      %time_zone_select.lmo-flex__shrink{zone: "poll.customFields.time_zone"}
-    %validation_errors{subject: "poll", field: "pollOptions"}
-    .poll-meeting-form__options
-      %md-list-item.poll-meeting-form__poll-option-names{layout: "row", ng-repeat: "name in poll.pollOptionNames track by $index"}
-        %poll_meeting_time.poll-meeting-form__option-text.lmo-flex__grow{name: "name", zone: "zone"}
-        %md-button.poll-meeting-form__option-button.lmo-inline-action{ng-click: "removeOption(name)", aria-label: "{{ 'poll_meeting_form.remove_option' | translate }}"}
-          %i.material-icons.poll-meeting-form__option-icon clear
-      %poll_meeting_time_field{poll: "poll"}
-
-  %poll_common_notify_group{model: "poll"}
+  %poll_common_form_options{poll: "poll"}
+  %poll_common_closing_at_field.md-block{poll: "poll"}
+  %poll_common_notify_group{model: "poll", notify-action: "{{poll.notifyAction()}}"}
+  %poll_common_voter_add_options{poll: "poll"}
   %poll_common_notify_on_participate{poll: "poll"}
   %poll_common_form_actions{poll: "poll", submit: "submit", back: "back"}

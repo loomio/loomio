@@ -6,6 +6,9 @@ angular.module('loomioApp').directive 'authAvatar', ->
       $scope.avatarUser =
         constructor: {singular: 'user'}
         avatarKind:  'uploaded'
-        avatarUrl:   '/img/mascot.png'
+        avatarUrl:
+          small:  '/img/mascot.png'
+          medium: '/img/mascot.png'
+          large:  '/img/mascot.png'
     else
       $scope.avatarUser = $scope.user

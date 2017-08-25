@@ -3,6 +3,7 @@ class LoginTokensController < ApplicationController
   def show
     if login_token.useable?
       login_token.update(used: true)
+      login_token.user.update(email_verified: true)
       sign_in(login_token.user)
       flash[:notice] = t(:'devise.sessions.signed_in')
     else

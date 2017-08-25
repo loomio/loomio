@@ -13,12 +13,18 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
       @numLoaded  = 0
 
     fetchRecords: ->
+      @loading = true
       Records[_.camelCase(@collection)].fetch
         path:   @path
         params: _.merge(@params, { from: @from, per: @per })
       .then (data) =>
-        @numLoaded += data[@collection].length
+        if data[@collection].length > 0
+          @numLoaded += data[@collection].length
+        else
+          @exhausted = true
         data
+      .finally =>
+        @loading = false
 
     loadMore: ->
       @from += @per

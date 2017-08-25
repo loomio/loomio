@@ -1,11 +1,10 @@
-angular.module('loomioApp').factory 'ChangePasswordForm', ->
+angular.module('loomioApp').factory 'ChangePasswordForm', (Session, Records, FormService) ->
   templateUrl: 'generated/components/change_password_form/change_password_form.html'
-  controller: ($scope, $rootScope, Session, Records, AuthService) ->
+  controller: ($scope) ->
     $scope.user = Session.user().clone()
 
-    $scope.submit = ->
-      $scope.processing = true
-      AuthService.forgotPassword($scope.user).then ->
-        $scope.user.sentPasswordLink = true
-      .finally ->
-        $scope.processing = false
+    actionName = if $scope.user.hasPassword then 'password_changed' else 'password_set'
+
+    $scope.submit = FormService.submit $scope, $scope.user,
+      submitFn: Records.users.updateProfile
+      flashSuccess: "change_password_form.#{actionName}"

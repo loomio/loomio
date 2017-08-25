@@ -5,21 +5,14 @@ he:
       message_intro: "%{who} אמר/ה:"
       link: הצטרפות לדיון
     view_discussion: לחצו כאן להצגת דיון זה
-    view_proposal: הצגת הצעה זו ב Loomio
-    create_proposal:
-      intro: הצעה חדשה נוצרה בקבוצה אליה את/ה משויכ/ת.
-      subject: 'הצעה חדשה %{which}'
     daily_activity:
       subject: Loomio - סיכום 24 השעות האחרונות
     missed_yesterday:
       subject: אתמול בLoomio
       mark_as_read: סמן כנקרא
       thanks_for_reading: תודה שקראת. יום טוב!
-    proposal_closing_soon:
-      summary: סיכום
     thread_mailer:
       change_preferences: 'שינוי העדפות הדוא״ל שלך:'
-      proposal_closed: 'ההצעה נסגרה:'
   footer:
     about: אודות
     blog: בלוג

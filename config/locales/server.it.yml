@@ -18,11 +18,6 @@ it:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
     view_comment: Clicca qui per vedere il commento su Loomio
     view_discussion: Clicca qui per vedere la discussione
-    view_proposal: Vedi questa proposta su Loomio
-    create_proposal:
-      intro: È stata creata una nuova proposta in un gruppo Loomio al quale partecipi.
-      closes_in: Chiude tra
-      subject: 'Nuova proposta: %{which}'
     daily_activity:
       heading: La tua attività su Loomio
       intro: Ti facciamo vedere cos'è successo nei tuoi gruppi Loomio nelle ultime 24 ore
@@ -44,22 +39,6 @@ it:
       view_group: Puoi approvare o rifiutare la richiesta qui
     mentioned:
       subject: '%{who} ti ha menzionato discutendo di "%{which}"'
-    new_motion_created:
-      subject: 'Proposta: %{proposal_title}'
-    proposal_closed:
-      proposal_has_closed: La proposta è chiusa.
-      specify_outcome_and_notify_group: Crea un risultato e mandalo al tuo gruppo!
-      specify_outcome_and_notify_group_html: Crea un risultato e mandalo al tuo gruppo!
-      subject: Proposta chiusa - %{which}
-    proposal_outcome:
-      subject: 'Esito della proposta: %{motion}'
-    proposal_closing_soon:
-      closes_on: Chiude su
-      closes_at: Chiude a
-      closes_in: Chiude tra
-      subject: 'Chiude in 24 ore: %{proposal_title}'
-      headline: "la proposta di %{author} in %{group} sta per essere chiusa:"
-      summary: Riassunto
     thread_mailer:
       footer_text: 'Rispondi direttamente a questa email o visualizzala su %{hostname}:'
       reply_or_view_online_html: Rispondi direttamente a questa email oppure <a href='%{url}'>guardala su %{hostname}</a>.
@@ -69,14 +48,6 @@ it:
       turn_on_notifications_text: 'Attiva le email per ricevere più notifiche sull''attività di questa discussione: %{url}'
       change_email_preferences_html: Cambia le tue <a href='%{email_preferences_url}'> opzioni email </a> per disiscriverti da queste email.
       change_preferences: 'Cambia le tue opzioni email:'
-      motion_closing_soon: 'La proposta chiude in 24 ore:'
-      proposal_closed: 'Proposta chiusa:'
-      specify_outcome_html: La tua proposta è chiusa. <a href='%{link}'>Specifica un risultato</a> per far sapere a tutti qual è l'esito.
-      specify_outcome: 'La tua proposta è chiusa. Specifica un risultato per far sapere a tutti qual è l''esito.'
-      you_agreed: Tu %{past_tense_position}
-    analytics:
-      user_table:
-        votes_created: "Voti"
   footer:
     about: About
     blog: Blog
@@ -108,16 +79,6 @@ it:
       header: Hai quasi finito! Controlla la tua email.
       email_not_arrived: L'email non è arrivata?
     start_making_decisions: 'Per iniziare a prendere decisioni insieme su Loomio, crea un gruppo'
-  pricing_page:
-    gift: Gratis
-    standard: Standard
-    plus: Pro
-    get_started_for_free: Inizia gratis
-    unlimited_members: numero di membri illimitato
-    unlimited_decisions: numero di decisioni illimitato
-    email_support: supporto email
-    premium_support: supporto premium
-    usage_statistics: statistiche d'uso
   password_reset:
     length_restriction: Le password devono essere lunghe almeno 8 caratteri.
     forbidden_passwords: Le password banali come "password" sono vietate per tenere al sicuro il vostro account.
@@ -136,4 +97,3 @@ it:
   poll_mailer:
     common:
       results: Risultati
-      your_response: La tua risposta

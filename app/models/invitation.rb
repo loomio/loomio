@@ -1,47 +1,72 @@
 class Invitation < ActiveRecord::Base
+  include Null::User
 
-  class InvitationCancelled < StandardError
-  end
-
+  class InvitationCancelled < StandardError; end
+  class TooManyPending < StandardError; end
+  class AllInvitesAreMembers < StandardError; end
   class InvitationAlreadyUsed < StandardError
+    attr_accessor :invitation
+    def initialize(invitation)
+      @invitation = invitation
+      super
+    end
   end
+
+  include UsesOrganisationScope
 
   extend FriendlyId
   friendly_id :token
   belongs_to :inviter, class_name: User
-  belongs_to :invitable, polymorphic: true
+  belongs_to :group
   belongs_to :canceller, class_name: User
 
-  update_counter_cache :invitable, :invitations_count
-  update_counter_cache :invitable, :pending_invitations_count
+  update_counter_cache :group, :invitations_count
+  update_counter_cache :group, :pending_invitations_count
 
-  validates_presence_of :invitable, :intent
-  validates_inclusion_of :invitable_type, :in => ['Group', 'Discussion']
-  validates_inclusion_of :intent, :in => ['start_group', 'join_group', 'join_discussion']
+  validates_presence_of :group, :intent
+  validates_inclusion_of :intent, :in => ['start_group', 'join_group', 'join_poll']
+  validates_exclusion_of :recipient_email, in: User::FORBIDDEN_EMAIL_ADDRESSES
   scope :chronologically, -> { order('id asc') }
   before_save :ensure_token_is_present
+  after_initialize :apply_null_methods!
 
   delegate :name, to: :inviter, prefix: true, allow_nil: true
-  delegate :slack_team_id, to: :group, allow_nil: true
-  delegate :identity_type, to: :group, allow_nil: true
 
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
-  scope :pending, -> { not_cancelled.single_use.where(accepted_at: nil) }
+  scope :useable, -> { not_cancelled.where(accepted_at: nil) }
+  scope :pending, -> { useable.single_use }
   scope :shareable, -> { not_cancelled.where(single_use: false) }
   scope :single_use, -> { not_cancelled.where(single_use: true) }
   scope :ignored, -> (send_count, since) { pending.where(send_count: send_count).where('created_at < ?', since) }
+  scope :to_verified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS TRUE AND users.email = invitations.recipient_email") }
+  scope :to_unverified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS FALSE AND users.email = invitations.recipient_email") }
+  scope :to_unrecognized_user, -> { pending.joins("LEFT OUTER JOIN users ON users.email = invitations.recipient_email").where("users.id IS NULL") }
 
-  alias :group :invitable
-
-  def invitable_name
-    invitable&.full_name
+  def unsubscribe_token
+    token
   end
 
-  def user_from_recipient!
-    return unless to_start_group?
-    User.find_or_initialize_by(email: self.recipient_email)
-        .tap { |user| user.assign_attributes(name: self.recipient_name) }
-        .tap(&:save)
+  def mailer
+    case intent
+    when 'join_group' then GroupMailer
+    when 'join_poll' then PollMailer
+    end
+  end
+
+  def locale
+    (inviter || group.creator || I18n).locale
+  end
+
+  def time_zone
+    inviter.time_zone
+  end
+
+  def email
+    recipient_email
+  end
+
+  def name
+    recipient_name
   end
 
   def cancel!(args = {})
@@ -49,7 +74,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def cancelled?
-    invitable.blank? || cancelled_at
+    cancelled_at
   end
 
   def accepted?

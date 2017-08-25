@@ -1,0 +1,42 @@
+!!!
+%html{'ng-app' => 'loomioApp', 'ng-controller' => 'RootController as app'}
+  %head
+    %title Loomio
+    %meta{charset: 'utf-8'}
+    %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
+    %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
+    %base{href: '/'}
+
+    %link{rel: 'canonical', 'ng-if' => 'links.canonical', 'ng-href' => '{{links.canonical}}'}
+    %link{rel: 'alternate', type: 'application/rss+xml', 'ng-if' => 'links.rss', 'ng-href' => '{{links.rss}}'}
+    %link{rel: 'prev', 'ng-if' => 'links.prev', 'ng-href' => '{{links.prev}}'}
+    %link{rel: 'next', 'ng-if' => 'links.next', 'ng-href' => '{{links.next}}'}
+    %link{rel: 'manifest', href: '/manifest.json'}
+
+    %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet'}
+
+    = render 'angular/metadata'
+    = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
+    = render 'angular/intercom' if current_user.is_logged_in?
+
+  %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
+    %flash
+    %navbar
+
+    %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
+      %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
+      %md_content.lmo-main-content{flex: ""}
+        .lmo-main-background
+          %verify_email_notice{'ng-if' => 'isLoggedIn() && !isEmailVerified()'}
+          %ng_outlet{'ng-if' => '!refreshing && !pageError'}
+          %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
+    %outlet{name: 'after-start-menu'}
+
+    %script{src: client_asset_path(:"vendor.min.js")}
+    :javascript
+      window.Loomio = #{@payload.to_json.html_safe}
+      window.Loomio.emojis.source = (emojione.shortnames || "").split("|")
+      window.Loomio.emojis.render = emojione.shortnameToImage
+    %script{src: client_asset_path(:"app.js")}
+
+    = javascript_include_tag 'angular_ahoy' if hosted_by_loomio?

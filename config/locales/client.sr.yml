@@ -218,9 +218,6 @@ sr:
     heading: Pozicije
     no_votes_yet: Niko nije glasao o ovom predlogu još uvek.
     change_your_vote: Promeni svoju poziciju.
-  undecided_panel:
-    aria_label: 'Neodlučni članovi'
-    hide_undecided: Sakrij neodlučne članove
   proposal_pie_chart:
     participation_statement: '{{percentage}}% članova je odredilo svoju poziciju ({{number}}/{{total}})'
   close_proposal_form:
@@ -337,7 +334,6 @@ sr:
     members_placeholder: 'Samo si ti ovde: pozovi neke ljude da ti se pridruže!'
     member_options: Opcije člana
     subgroups: 'Podgrupe'
-    subgroups_placeholder: 'Podgrupe tu omogućavaju da podeliš grupu u različite timove.'
     visibility_label: 'Vidljivost'
     options_label: 'Opcije'
     options:
@@ -377,14 +373,6 @@ sr:
     choose_plan: 'Odaberi svoj plan plaćanja'
     in_progress_body: 'Hvala što ste isprobali Lumio sa <strong>{{name}}</strong>. Uvek možeš izabrati plan plaćanja koji odgovara tvojoj grupi.'
     expired_body_html: "<strong>{{name}}</strong> je ostario/la kraj probnog perioda Lumija. Da nastavite sa upotrebom, trebate odabrati plan cene koja odgovara Vašoj grupi."
-  choose_plan_modal:
-    heading: Molim izaberite plan za svoju grupu
-    standard: Standardno
-    select: Odaberi
-  subscription_success_modal:
-    contact_link: molimo kontaktirajte nas.
-    sign_off: ❤ od Loomio tima
-    ok_got_it: U redu, shvatam!
   group_form:
     start_group_heading: 'Kreiraj grupu'
     start_subgroup_heading: 'Kreiraj podgrupu'
@@ -703,7 +691,6 @@ sr:
     message_label: 'Tvoja poruka'
     message_placeholder: 'Vaša poruka...'
     send_message: 'Pošalji Poruku'
-    new_contact_message: 'Hvala za poruku; uskoro ćemo Vam se javiti!'
   help_page:
     coordinating: 'Koordiniranje svoje Lumio grupe'
     coordinating_details: |

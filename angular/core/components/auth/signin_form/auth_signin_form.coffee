@@ -19,9 +19,5 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate, $window, Se
       else
         $scope.sendLoginLink()
 
-    $scope.setPassword = ->
-      $scope.$emit 'processing'
-      AuthService.forgotPassword($scope.user).finally -> $scope.$emit 'doneProcessing'
-
     KeyEventService.submitOnEnter($scope, anyEnter: true)
     $scope.$emit 'focus'

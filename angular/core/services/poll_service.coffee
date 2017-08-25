@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfig, Records, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfig, Records, Session, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -22,25 +22,30 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
 
     lastStanceBy: (participant, poll) ->
       criteria =
-        latest:    true
-        pollId:    poll.id
-      if AppConfig.currentUserId
-        criteria.userId = AppConfig.currentUserId
-      else if AppConfig.currentVisitorId
-        criteria.visitorId = AppConfig.currentVisitorId
+        latest: true
+        pollId: poll.id
+        participantId: AppConfig.currentUserId
       _.first _.sortBy(Records.stances.find(criteria), 'createdAt')
 
-    hasVoted: (participant, poll) ->
-      @lastStanceBy(participant, poll)?
+    hasVoted: (user, poll) ->
+      @lastStanceBy(user, poll)?
 
     iconFor: (poll) ->
       @fieldFromTemplate(poll.pollType, 'material_icon')
 
-    usePollsFor: (model) ->
-      model.group().features.use_polls && !$location.search().proposalView
-
     optionByName: (poll, name) ->
       _.find poll.pollOptions(), (option) -> option.name == name
+
+    submitOutcome: (scope, model, options = {}) ->
+      actionName = if scope.outcome.isNew() then 'created' else 'updated'
+      FormService.submit(scope, model, _.merge(
+        flashSuccess: "poll_common_outcome_form.outcome_#{actionName}"
+        drafts: true
+        failureCallback: ->
+          ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+        successCallback: (data) ->
+          scope.$emit 'outcomeSaved', data.outcomes[0].id
+      , options))
 
     submitPoll: (scope, model, options = {}) ->
       actionName = if scope.poll.isNew() then 'created' else 'updated'
@@ -72,8 +77,9 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
           scope.$emit 'processing'
         successCallback: (data) ->
           model.poll().clearStaleStances()
-          AppConfig.currentVisitorId = data.stances[0].visitor_id
+          ScrollService.scrollTo '.poll-common-card__results-shown'
           scope.$emit 'stanceSaved', data.stances[0].key
+          Session.login(current_user_id: data.stances[0].participant_id) unless Session.user().emailVerified
         cleanupFn: ->
           scope.$emit 'doneProcessing'
       , options))

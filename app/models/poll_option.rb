@@ -8,12 +8,12 @@ class PollOption < ActiveRecord::Base
   has_many :stances, through: :stance_choices
 
   def color
-    Poll::COLORS.dig(poll.poll_type, self.priority)
+    AppConfig.colors.dig(poll.poll_type, self.priority)
   end
 
   def display_name(zone: nil)
     if poll.dates_as_options
-      formatted_datetime(name, zone || poll.custom_fields['time_zone'])
+      formatted_datetime(name, zone || poll.time_zone)
     else
       name.humanize
     end

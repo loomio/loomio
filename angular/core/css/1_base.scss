@@ -1,51 +1,30 @@
+*, *:before, *:after { box-sizing: border-box; }
+
 body {
-  // @include fontMedium;
   background-color: $background-color;
-  // word-wrap: break-word;
 }
 
 header {
   min-height: $navbar-height;
-  z-index: 100; }
+  z-index: $z-high;
+}
 
-h1, h2, h3, h4{
+h1, h2, h3, h4 {
   color: $primary-text-color;
   text-transform: none;
   @include fontMedium;
   margin: 0;
   padding: 0;
   font-weight: normal;
-
-
-  /*
-  We reset styles on headings for accessibility.
-
-  Semantically we want to enforce a strict hierarchy...
-  h1
-   - h2
-   - h2
-     - h3
-  -h2
-
-  ...but we don't always want the style to match that structure.
-
-  Use .lmo-h1, .lmo-h2 etc to get the styles you want.
-  */
 }
 
 input, select, textarea{
   margin-bottom: 10px;
 }
 
-input[type="file"]{
-  /*This is a hack for now to fix the mobile layout. The file input should be hidden.*/
-  max-width: 200px;
-}
-
-strong{
-  @include fontWeightBold;
-}
+input[type="file"] { display: none; }
 
 a {
   color: $link-color;
+  text-decoration: none;
 }

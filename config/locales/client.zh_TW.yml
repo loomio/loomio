@@ -81,6 +81,9 @@ zh_TW:
       delete: 刪除
       unsubscribe: 取消訂閱
       subscribe: 訂閱
+      remind: 提醒
+      resend: 重新傳送
+      resent: 重新傳送邀請
     formatting_help:
       label: '格式化'
       title: '學習如何使用 Markdown 來格式化您在 Loomio 上的文字'
@@ -281,6 +284,7 @@ zh_TW:
     comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論"
     comment_liked: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 對您的評論按讚"
     user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
+    user_reminded: "<strong>{{name}}</strong> 正在等候您參與 <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格"
     membership_request_approved: '<strong>{{name}}</strong> 接受您加入 <strong>{{title}}</strong> 的請求'
     user_added_to_group: "<strong>{{name}}</strong> 將您加入到群組 <strong>{{title}}</strong>"
@@ -294,6 +298,7 @@ zh_TW:
     poll_edited: "<strong>{{name}}</strong> 編輯了一個 {{poll_type}}：<strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} 即將關閉：<strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} 已關閉：<strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> 新增了選項到 {{poll_type}}：<strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> 已參與：<strong>{{title}}</strong>"
   position_buttons_panel:
@@ -322,12 +327,6 @@ zh_TW:
     heading: 立場表態
     no_votes_yet: 尚未有人在此提案上投票。
     change_your_vote: 變更您的立場。
-  undecided_panel:
-    aria_label: '尚未決定的成員'
-    show: 顯示
-    remind: 提醒
-    undecided: 未決定
-    hide_undecided: 隱藏未決定的成員
   proposal_pie_chart:
     participation_statement: '{{percentage}}% 的成員已經陳述他們的立場 ({{number}}/{{total}})'
   close_proposal_form:
@@ -473,7 +472,7 @@ zh_TW:
     see_all_members: '檢視全部：({{count}}) 位成員'
     pending_invitations: '+ ({{count}}) 個擱置中'
     subgroups: '子群組'
-    subgroups_placeholder: '子群組讓您將大群組分成不同的小組。'
+    subgroups_placeholder: '子群組給團隊擁有自己的空間，並可以注重於通知對的夥伴。'
     invite_people: '邀請'
     visibility_label: '能見度'
     options_label: '選項'
@@ -550,39 +549,6 @@ zh_TW:
     choose_plan: '選擇您的定價方案'
     in_progress_body: '感謝試用 Loomio，<strong>{{name}}</strong>。您可以在任何時間挑選一個適合您的群組的定價方案。'
     expired_body_html: "<strong>{{name}}</strong> 已經結束了 Loomio 的試用。若您想要繼續使用它，您必須挑選一個適合您的定價方案。"
-  choose_plan_modal:
-    aria_label: 選擇方案
-    heading: 請為您的群組選擇方案
-    free: 免費
-    standard: 標準方案
-    pro: 專業
-    per_month: ／月
-    standard_group_description: 在一個群組中您可能需要的每樣東西
-    free_group_description: 社群群組捐款支援計畫。
-    pro_group_description: 有 <nobr>多個群組</nobr> 的組織。
-    benefit_1_group: 1個群組
-    benefit_10_groups: 10個群組
-    benefit_unlimited_members: 無限的成員
-    benefit_unlimited_decisions: 無限的決策
-    benefit_priority_support: 進階支援
-    benefit_help_with_setup: 初始設定協助
-    benefit_community_support: 社群支援
-    benefit_slack_integration: Slack 整合
-    benefit_custom_domain: 自訂網域
-    benefit_analytics_reports: 分析報告
-    benefit_data_export: 資料匯出
-    support_link: 讓我們說說話！
-    prices_in_us_dollars: 價格是以美元計費，再加上營業稅。
-    need_help_please: 需要其他東西？
-    select: 選取
-  subscription_success_modal:
-    aria_label: 訂閱成功
-    heading: 您全部都設定好了！
-    receipt: 您將會收到一封包含收據的電子郵件，其中也會包含客戶入口的連結，您可以在那裡變更、升級或是取消您的訂閱，並存取帳單歷史。
-    change_subscription: "若您想要設定 Slack 整合或是您的自訂網域名稱，"
-    contact_link: 請聯絡我們。
-    sign_off: 從 Loomio 團隊而來的 ❤
-    ok_got_it: 好的，了解了！
   group_form:
     aria_label: '群組表單'
     start_group_heading: '啟動群組'
@@ -707,6 +673,9 @@ zh_TW:
       remove_admin_success: '{{name}} 已不再是協調者'
     remove_admin_from_self:
       question: '您確定您真的不想要再當協調者？'
+  memberships_panel:
+    add_coordinator: 成為協作者
+    remove_coordinator: 移除協作者
   remove_membership_form:
     aria_label: '移除成員'
     title: '移除成員'
@@ -717,6 +686,9 @@ zh_TW:
     email: 電子郵件
     invitation_link: 邀請連結
     sent: 已寄出
+    sent_at: '{{date}} 已傳送'
+    copy_url: 複製 URL
+    revoke_invitation: 撤銷
   cancel_invitation_form:
     heading: 取消邀請函
     question: 您確定您想要取消此邀請函嗎？
@@ -743,7 +715,7 @@ zh_TW:
     email_label: '電子郵件'
     short_bio_label: '簡介'
     locale_label: '語言'
-    short_bio_placeholder: '輸入簡短的介紹（最多 250 個字元）'
+    short_bio_placeholder: '輸入簡介（最多 500 字元）'
     locale_placeholder: 選取您偏好的語言
     update_profile: '更新簡歷'
     deactivate_account: '凍結帳號'
@@ -973,6 +945,8 @@ zh_TW:
   discussion_moved_item:
     discussion_moved: '已從 <span>{{group}}</span> 移動討論串'
   contact_message_form:
+    helptext: "想要取得聯繫？只要在下面輸入訊息，您將會很快就收到我們的消息。"
+    contact_us_email: "（您也可以透過 <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a> 隨時與我們聯繫）"
     contact_us: '聯絡我們'
     name_label: '您的大名'
     name_placeholder: '輸入您的大名...'
@@ -981,7 +955,7 @@ zh_TW:
     message_label: '您的訊息'
     message_placeholder: '您的訊息...'
     send_message: '寄送訊息'
-    new_contact_message: '感謝您的訊息；我們將會聯繫您！'
+    new_contact_message: "感謝您與我們聯繫；我們很快就會回覆！"
   help_page:
     coordinating: '在您的 Loomio 群組中協作'
     coordinating_details: |
@@ -1148,6 +1122,7 @@ zh_TW:
       success: "「{{name}}」已無法使用您的帳號"
   decision_tools_card:
     title: 決策工具
+    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">說明</a>
     proposal_title: 提案
     count_title: 勾選
     poll_title: 投票
@@ -1157,6 +1132,7 @@ zh_TW:
     your_response: 您的回應
     change_your_response: 變更您的回應
     reason: 理由
+    reason_placeholder: 任何額外的意見？
     message: 訊息
     results: 結果
     vote: 投票
@@ -1176,6 +1152,14 @@ zh_TW:
     publish_poll: 分享投票
   poll_common_attachment_form:
     label: 附件
+  poll_common_add_option:
+    button:
+      add_option: 新增更多選項
+    modal:
+      title: 新增選項
+    form:
+      add_options: 新增選項
+      options_added: 已加入新選項
   poll_common_card:
     show_results: 顯示結果
   poll_common_index_card:
@@ -1185,17 +1169,33 @@ zh_TW:
   current_polls_card:
     title: 目前的決策
     start_poll: 新決策
-    no_polls: 目前沒有活躍的投票。
+    no_polls: 目前沒有活躍的決策
   poll_common_collapsed:
     by_who: "由 {{name}}"
   poll_common_select_group:
     loomio_group: Loomio 群組
     loomio_group_placeholder: （未選取群組）
+  poll_common_voter_add_options:
+    add_options: 投票者可以新增選項
+    helptext_on: 參與者可以在投票時新增他們自己的選項
+    helptext_off: 參與者將會從您提供的選項中選取
   poll_common_notify_group:
     notify_group: 公告
     members_helptext: 您的群組將不會被通知
     members_count: "{{count}} 個人將會被通知"
     participants_count: "{{count}} 個已投票的人將會被通知"
+  poll_common_calendar_invite:
+    calendar_invite: 包含此結果的行事曆邀請
+    poll_option_id: 會面時間
+    helptext_on: 使用者將可以加入這個會面到他們的行事曆中
+    helptext_off: 沒有會面邀請將會被寄送
+    event_duration: 持續時間
+    event_summary: 摘要
+    event_summary_placeholder: 您想要叫這個會面什麼名字？
+    event_description: 會面描述
+    event_description_placeholder: 這次會面的議程是什麼？
+    location: 位置
+    location_placeholder: 這個會面會在哪裡舉辦？
   poll_common_notify_on_participate:
     notify_on_participate: 當夥伴參與時通知我
     helptext_on: 您將會在其他人參與時被通知
@@ -1225,11 +1225,16 @@ zh_TW:
     priority_last: 阻擋的放在最前面
     no_votes_yet: 尚未有人投票。
     change_results_order: 變更您的結果順序
-    show_undecided: 顯示未決定的
     none_of_the_above: （以上皆非）
-  poll_common_did_not_votes_panel:
-    undecided: 未決定的 ({{count}})
-    show_undecided: 顯示未決定的
+  poll_common_undecided_panel:
+    show_undecided: "顯示 {{count}} 個未決定"
+    show_invitations: 顯示擱置中的邀請函
+    undecided_users: "未決定的 ({{count}})"
+    invitation_count_singular: "已透過電子郵件邀請 1 個額外的夥伴參與"
+    invitation_count_plural: "已透過電子郵件邀請 {{count}} 個額外的夥伴參與"
+  poll_common_undecided_user:
+    reminded: 提醒已傳送！
+    reminder_sent: 提醒通知已傳送
   poll_common_set_outcome_panel:
     share_outcome: 分享成果
     poll: '此提案已關閉。與群組<strong>分享成果</strong>。'
@@ -1263,6 +1268,7 @@ zh_TW:
     details: 詳細內容
     options: 選項
     options_placeholder: 輸入新選項...
+    no_options: 您尚未新增任何選項。
     closing: 定案
     start: 啟動
     update: 更新
@@ -1273,7 +1279,7 @@ zh_TW:
       <p>一份圓餅圖會顯示在群組中對於該議題的立場，讓每個人的聲音都能被聽到。</p>
       <p>若您一開始沒看到同意的人，別氣餒，提案就是設計用來突顯需要解決的問題。</p>
       <p>在有良好參與者的狀況下，一個提案就是採與行動的有利動作。</p>
-      <p>在 <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Loomio 學院</a> 找找更多資訊。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 尋求共識
     start_header: 啟動提案
     edit_header: 編輯提案
@@ -1287,6 +1293,7 @@ zh_TW:
       <p>使用投票來衡量人氣或是提供選項。</p>
       <p>提供一些選項來供群組成員選取。決定參與者可以選取一個或多個選項來當做他們的回應。</p>
       <p>每個人投票，且如果他們想要的話也可以同時輸入一段陳述。結果會以長條圖呈現。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 測量人氣或是提供選項
     start_header: 啟動投票
     edit_header: 編輯投票
@@ -1306,12 +1313,13 @@ zh_TW:
       <p>或是使用其來追蹤工作的完成度：「我已經檢查過我的連絡人詳細資訊，一切都沒錯」，或是「我已經讀過文件且留下了我的意見了」。</p>
       <p>勾選是有<em>目標</em>的，其應該是您想要有多少參與者的數量。如果某些事情需要更多的關注或是需要更多參與者訂閱，那麼目標就是向團隊表明這些事情。</p>
       <p>在勾選關閉的前一天，它將會提醒那些還沒參與的人（也許是數位游牧者？）。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 追蹤參與者與找到志願者
     start_header: 啟動勾選
     edit_header: 編輯勾選
     tip: 吸引人們提出邀約或要求
     title_placeholder: 例如：誰想要加入工作小組？
-    details_placeholder: 解釋為什麼要參與，或是詳細說明要如何參與。
+    details_placeholder: '參與解釋為什麼要參與，或是詳細說明要如何參與。 '
     count_created: 勾選已啟動
     count_updated: 勾選已更新
   poll_dot_vote_form:
@@ -1319,6 +1327,7 @@ zh_TW:
       <p>點投票是列出選項清單順序的方法。</p>
       <p>參與者會被給予有限的「點」，其可以被分配在他們喜歡的的選項來表示自己的偏好。</p>
       <p>這個過程會產生一個累計的長條圖以及個別分配，讓您可以考慮各種觀點。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 選項排序
     start_header: 啟動點投票
     edit_header: 編輯點投票
@@ -1337,6 +1346,7 @@ zh_TW:
       <p>若您在時間投票中新增了新的時間，已經投票的夥伴將會被提醒要更新他們的回應。</p>
       <p>您可以看到哪些人什麼時候有空，並決定何時要會面。</p>
       <p>時間將會被自動轉換為參與者的時區。</p>
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 找到會面的時間
     start_header: 啟動時間投票
     edit_header: 編輯時間投票
@@ -1345,7 +1355,13 @@ zh_TW:
     details_placeholder: 提供更詳細的資訊給需要參與的夥伴們
     meeting_created: 時間投票已建立
     meeting_updated: 時間投票已更新
-    add_option_placeholder: 輸入時間
+    timeslots: 時間欄位
+    no_options: "您尚未新增任何時間欄位。"
+    meeting_duration: 會面持續時間
+    add_option_placeholder: 輸入新時間
+  poll_meeting_time_field:
+    new_time_slot: 新時間欄位
+    closing_hour: 關閉時間
   poll_proposal_vote_form:
     default_reason_placeholder: 請解釋您的理由
     abstain_reason_placeholder: 讓人們知道您為什麼作出了這個決定
@@ -1385,8 +1401,9 @@ zh_TW:
     your_response: 您何時能參加？
     stance_created: 可用度已儲存
     stance_updated: 可用度已更新
+    reason_placeholder: 解釋您何時有空（或是忙碌），讓作者新增新的選項。
   poll_dot_vote_vote_form:
-    dots_remaining: 您還剩 {{count}} 點。
+    dots_remaining: "剩餘 {{count}} 點。"
     too_many_dots: 您使用了太多點數。
     stance_created: 已建立投票
     stance_updated: 已更新投票
@@ -1426,7 +1443,6 @@ zh_TW:
     title: 管理 - {{title}}
   poll_common_share_form:
     no_group_selected: 未選擇群組
-    no_communities: "您尚未連到任何社群。點選下方的「加入社群」來新增一個"
     share_a_link: 分享連結
     share_a_link_helptext: 建立一個供散佈用的可分享連結。任何存取連結的人都可以參與。
     anyone_can_participate: 任何有連結的人都可以參與
@@ -1434,7 +1450,10 @@ zh_TW:
     anyone_can_participate_false: 可分享的連結已撤銷
     get_link: 複製連結
     invite_visitor: 電子郵件訪客
+    invite_visitor_helptext: 透過電子郵件邀請個人來參與這次的決策。來賓將僅能參與此次的決策。
     send_email: 傳送電子郵件
+    shareable_link_created: 任何人都可以參與此次的決策
+    shareable_link_revoked: 此次的決策現在僅限邀請
     shareable_link: 可分享的連結
     guests_invited: 寄送給 {{count}} 個夥伴
     guest_revoked: 已撤銷 {{email}} 的存取權
@@ -1443,16 +1462,17 @@ zh_TW:
     enter_email: "例如：guest@example.com"
     reminded: 提醒已傳送！
     send_emails: 傳送邀請函 ({{count}})
+    share_group: Loomio 群組
+    share_group_helptext: 選擇一個 Loomio 群組來分享這次的決策。該群組的成員也可以參與。
+    cannot_move_poll_helptext: 這個投票是 <strong>{{group}}</strong> 中的 <strong>{{discussion}}</strong> 討論的一部份，所以無法被移動。
+    move_group_helptext: 小心！移動決策到群組外可能會讓一些人無法存取它。已有的投票仍將會被記錄。
+    set_group: 設定群組
+    group_set: 群組已更新
     view_poll: 檢視投票
     email_invited: '邀請函已寄送給 {{email}}'
     email_exists: '{{email}} 已被邀請'
     email_empty: '請輸入電子郵件'
     email_invalid: "這似乎不是有效的電子郵件"
-  poll_common_publish_form:
-    community: 通知以下群組關於您的投票
-    message: 輸入訊息
-    message_placeholder: 新增一條訊息以附加連結到您的投票中
-    published: 訊息成功傳送
   poll_common_publish_facebook_preview:
     shared_a: 分享一個
     link: 連結
@@ -1462,20 +1482,6 @@ zh_TW:
     poll_published_with_discussion: "在 <strong>{{discussion}}</strong> 中發佈投票。"
     view_it_on_loomio: 在 Loomio 上檢視
     timestamp: 今日 {{timestamp}}
-  add_community_form:
-    title: 新增社群
-    existing_communities: 先前連接的社群
-    no_communities: 您尚未連到任何社群。從下方選取一個來開始。
-    connect_new_community: 連到新的社群
-    currently_signed_in_as: "目前登入為："
-    community_created: 這個投票現在連線到 {{type}} 社群
-    error_explanation: 喔喔！我們連線到 {{type}} 的時候發生了一些問題。點選下面來重試。
-    slack:
-      another_account: （切換團隊）
-      fragment_placeholder: 搜尋頻道⋯
-    facebook:
-      another_account: （以其他帳號登入）
-      fragment_placeholder: 搜尋群組⋯
   poll_common_participant_form:
     participant_name_placeholder: 您的大名是？
   poll_common_subscribe_form:
@@ -1484,6 +1490,11 @@ zh_TW:
     email_saved: 您將會收到一封關於此投票結果的電子郵件
     subscribe: 訂閱
     no_thanks: 不用了，謝謝
+  poll_common_example_card:
+    what_is_this: "這裡有五個 {{type}} 的範例。您是參與者，來試試看吧！"
+    helptext_before: "當您準備好時，"
+    helptext_link: "啟動一個 {{type}}"
+    helptext_after: "您自己，或是邀請一些夥伴來試試。"
   share_poll_page:
     title: 分享投票 - {{title}}
   polls_page:
@@ -1510,6 +1521,7 @@ zh_TW:
     login_link_helptext_with_password: "輸入您的密碼，或是透過電子郵件登入。"
     sign_up_helptext: "只要輸入您使用的名稱，我們就會寄送一個連結供您登入。"
     oauth_confirm_helptext: "只要在下面確認您的詳細資料，我們就會傳送連結給您來登入。"
+    name_required: 請輸入名稱
     welcome: 您好，{{email}}！
     welcome_back: 歡迎回來，{{name}}！
     login_link: 透過電子郵件登入
@@ -1529,8 +1541,11 @@ zh_TW:
   install_slack:
     modal_title: 安裝 Slack
     card:
-      title: 連線到 Slack
-      helptext: 這個群組已經連到 Slack 團隊 <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>。此群組的動態將會在 <strong>{{channel}}</strong> 頻道中出現。
+      install_title: 連線至 Slack
+      install_helptext: Loomio 機器人會通知您的 Slack 團隊在 Loomio 上的討論與決策。您也可以從 Slack 上啟動討論與投票。
+      installed_title: 已連線至 Slack
+      installed_helptext: 這個群組已經連到 Slack 團隊 <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>。此群組的動態將會在 <strong>{{channel}}</strong> 頻道中出現。
+      install_slack: 連線至 Slack
     progress:
       install: 安裝
       invite: 邀請

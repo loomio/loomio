@@ -1,64 +1,50 @@
-angular.module('loomioApp').directive 'commentForm', ->
+angular.module('loomioApp').directive 'commentForm', ($translate) ->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
   controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService, ModalService, AuthModal) ->
 
-    $scope.$on 'remindUndecided', (event) ->
-      return unless $scope.discussion.activeProposal()
-      ScrollService.scrollTo('.comment-form__comment-field')
-      undecided = _.map $scope.discussion.activeProposal().undecidedMembers(), (member) -> "@#{member.username}"
-      $scope.comment.body = undecided.join(', ')
-
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
 
-    $scope.isLoggedIn = AbilityService.isLoggedIn
-
-    $scope.signIn = ->
-      ModalService.open AuthModal
-
-    $scope.threadIsPublic = ->
-      $scope.discussion.private == false
-
-    $scope.threadIsPrivate = ->
-      $scope.discussion.private == true
-
-    successMessage = ->
-      if $scope.comment.isReply()
-        'comment_form.messages.replied'
+    $scope.commentHelptext = ->
+      if $scope.discussion.private
+        $translate.instant 'comment_form.private_privacy_notice', groupName: $scope.comment.group().fullName
       else
-        'comment_form.messages.created'
-    successMessageName = ->
-      if $scope.comment.isReply()
-        $scope.comment.parent().authorName()
+        $translate.instant 'comment_form.public_privacy_notice'
 
-    $scope.listenForSubmitOnEnter = ->
-      KeyEventService.submitOnEnter $scope
-    $scope.$on 'voteCreated',     $scope.listenForSubmitOnEnter
-    $scope.$on 'proposalCreated', $scope.listenForSubmitOnEnter
+    $scope.commentPlaceholder = ->
+      if $scope.comment.parentId
+        $translate.instant('comment_form.in_reply_to', name: $scope.comment.parent().authorName())
+      else
+        $translate.instant('comment_form.say_something')
+
+    $scope.isLoggedIn = AbilityService.isLoggedIn
+    $scope.signIn = -> ModalService.open AuthModal
 
     $scope.init = ->
       $scope.comment = Records.comments.build(discussionId: $scope.discussion.id, authorId: Session.user().id)
       $scope.submit = FormService.submit $scope, $scope.comment,
         drafts: true
         submitFn: $scope.comment.save
-        flashSuccess: successMessage
+        flashSuccess: ->
+          if $scope.comment.isReply()
+            'comment_form.messages.replied'
+          else
+            'comment_form.messages.created'
         flashOptions:
-          name: successMessageName
+          name: ->
+            $scope.comment.parent().authorName() if $scope.comment.isReply()
+
         successCallback: $scope.init
-      $scope.listenForSubmitOnEnter()
-      $scope.$broadcast 'commentFormInit', $scope.comment
+      KeyEventService.submitOnEnter $scope
+      $scope.$broadcast 'reinitializeForm', $scope.comment
     $scope.init()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
       $scope.comment.parentAuthorName = parentComment.authorName()
-      ScrollService.scrollTo('.comment-form__comment-field')
+      ScrollService.scrollTo('.comment-form textarea', offset: 150)
 
-    $scope.bodySelector = '.comment-form__comment-field'
-    EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector
-    AttachmentService.listenForPaste $scope
-    MentionService.applyMentions $scope, $scope.comment
     AttachmentService.listenForAttachments $scope, $scope.comment

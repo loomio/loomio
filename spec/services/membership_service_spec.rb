@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 describe MembershipService do
-  let(:group) { create :group, discussion_privacy_options: :public_only, is_visible_to_public: true, membership_granted_upon: :request }
+  let(:group) { create :formal_group, discussion_privacy_options: :public_only, is_visible_to_public: true, membership_granted_upon: :request }
   let(:user)  { create :user }
 
   describe 'join_group' do
     it 'adds the user as creator if the group has no creator' do
+      group.update(creator: nil)
       MembershipService.join_group(group: group, actor: user)
       expect(group.reload.creator).to eq user
     end

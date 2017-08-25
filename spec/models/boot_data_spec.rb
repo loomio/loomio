@@ -2,7 +2,7 @@ require 'rails_helper'
 
  describe BootData do
     let(:user) { create :user }
-    let(:group) { create :group }
+    let(:group) { create :formal_group }
     let(:discussion) { create :discussion, group: group }
     let!(:membership) { group.add_member! user }
     let(:subject) { BootData.new(user) }

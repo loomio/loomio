@@ -1,12 +1,10 @@
 describe 'Profile', ->
 
   profileHelper = require './helpers/profile_helper.coffee'
-  threadHelper = require './helpers/thread_helper.coffee'
   page = require './helpers/page_helper.coffee'
-  staticPage = require './helpers/static_page_helper.coffee'
 
   beforeEach ->
-    threadHelper.load()
+    page.loadPath('setup_discussion')
 
   describe 'updating a profile name', ->
     it 'successfully updates a profile', ->
@@ -18,10 +16,10 @@ describe 'Profile', ->
 
   describe 'visiting a user profile', ->
     it 'displays a user and their non-secret groups', ->
-      profileHelper.visitUserPage('jennifergrey')
-      expect(profileHelper.nameText()).toContain('Jennifer Grey')
-      expect(profileHelper.usernameText()).toContain('@jennifergrey')
-      expect(profileHelper.groupsText()).toContain('Dirty Dancing Shoes')
+      browser.get("u/jennifergrey")
+      page.expectText '.user-page__content', 'Jennifer Grey'
+      page.expectText '.user-page__content', '@jennifergrey'
+      page.expectText '.user-page__groups', 'Dirty Dancing Shoes'
 
     it 'displays secret groups to other members', ->
       page.loadPath('setup_profile_with_group_visible_to_members')
@@ -30,6 +28,25 @@ describe 'Profile', ->
     it 'does not display secret groups to visitors', ->
       page.loadPath('setup_restricted_profile')
       page.expectNoText('.user-page__profile', 'Secret Dirty Dancing Shoes')
+
+  describe 'updating a password', ->
+    it 'can set a password', ->
+      page.click '.sidebar__list-item-button--profile'
+      page.click '.profile-page__change-password'
+      page.fillIn '.change-password-form__password', 'Smush'
+      page.fillIn '.change-password-form__password-confirmation', 'Smush'
+      page.click '.change-password-form__submit'
+      page.expectText '.change-password-form', "is too short"
+
+      page.fillIn '.change-password-form__password', 'SmushDemBerries'
+      page.fillIn '.change-password-form__password-confirmation', 'SmishDemBorries'
+      page.click '.change-password-form__submit'
+      page.expectText '.change-password-form', "doesn't match"
+
+      page.fillIn '.change-password-form__password', 'SmushDemBerries'
+      page.fillIn '.change-password-form__password-confirmation', 'SmushDemBerries'
+      page.click '.change-password-form__submit'
+      page.expectFlash 'Your password has been updated'
 
   describe 'deactivating an account', ->
 
@@ -43,11 +60,10 @@ describe 'Profile', ->
         page.expectText '.only-coordinator-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
 
     describe 'as one of several coordinators of a group', ->
-      xit 'prevents you from deactivating the account', ->
+      it 'prevents you from deactivating the account', ->
         page.loadPath 'setup_group_with_multiple_coordinators'
         page.click '.sidebar__list-item-button--profile'
         page.click '.profile-page__deactivate'
         page.click '.deactivation-modal__confirm'
-        page.click '.lmo-btn--danger'
-        browser.sleep(1000)
-        staticPage.expectFlash 'There is a deactivated account associated with this email address'
+        page.click '.deactivate-user-form__submit'
+        page.expectText '.auth-modal', 'Sign into Loomio'
