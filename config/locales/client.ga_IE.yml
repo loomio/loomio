@@ -179,7 +179,6 @@ ga_IE:
     cancel_reply: 'Cuir an freagra ar ceal'
     confirm_delete_message: 'An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?'
     confirm_delete: 'Scrios an trácht'
-    in_reply_to: "Mar fhreagra ar <strong>{{name}}</strong>:"
     submit_button:
       label: 'Foilsigh é'
   sidebar:
@@ -502,8 +501,6 @@ ga_IE:
   change_picture_form:
     title: 'Athraigh an pictiúr'
     use_uploaded: 'Uasluchtaigh pictiúr nua'
-  change_password_form:
-    title: Athshocraigh an focal faire
   deactivation_modal:
     aria_label: 'Díghníomhachtaigh an cuntas'
     introduction: 'Nuair a dhíghníomhachtaíonn tú do chuntas:'
@@ -515,7 +512,6 @@ ga_IE:
     all_groups: Socruithe i gcomhair gach baicle
     daily_summary_label: Ríomhphost le hachoimre laethúil
     mentioned_description: "Nuair is mian le duine éigin d'aird a tharraing orthu, @déanfaidh siad tagairt duit. Molaimid duit é sin a fhágáil ar siúl, ionas go bhfaighfear ríomhphost nuair a tharlaíonn seo."
-    change_default: Athraigh an réamhshocrú
     edit: Eagar
     messages:
       updated: Nuashonraigh na socruithe ríomhphoist
@@ -526,7 +522,6 @@ ga_IE:
       or: nó
     no_threads:
       show_all: Níl aon snáithe le déanaí agat.
-      show_starred: Níl aon snáithe agat a bhfuil réalta uirthi.
       show_proposals: Níl aon tograí atá gníomhach faoi láthair.
       show_muted: Níl aon snáithe balbhaithe agat.
     view_recent: Féach ar gach snáithe le déanaí?
@@ -540,9 +535,6 @@ ga_IE:
       all: Snáitheanna Le Déanaí
       all_aria_label: Ag taispeáint faoi láthair na snáitheanna le déanaí
       all_description: Féach ar snáitheanna le déanaí
-      starred: Snáitheanna a bhfuil Réalt Orthu
-      starred_aria_label: Ag taispeáint faoi láthair na snáitheanna a rianaigh mé go bhfuil siad tábhachtach
-      starred_description: Féach ar na snáitheanna amháin a rianaigh tú go bhfuil siad tábhachtach
       proposals: Tograí
       proposals_aria_label: Ag taispeáint faoi láthair na snáitheanna a bhfuil tograí gníomhaíocht acu
       proposals_description: Féach ar snáitheanna le tograí gníomhacha amháin
@@ -557,15 +549,12 @@ ga_IE:
       undecided: 'Níl cinneadh déanta agat'
     threads_from:
       group: 'Snáitheanna'
-      proposals: 'Tograí'
       starred: 'Snáitheanna le réalta'
       today: 'Inniu'
       yesterday: 'Inné'
       thisweek: 'Ón tseachtain seo'
       thismonth: 'Ón mhí seo'
       older: 'Ó bhreis agus mí ó shin'
-  star_toggle:
-    star: Cuir réalt leis an snáithe
   inbox_page:
     no_threads: Comhghairdeas! Tá gach snáithe i do bhosca isteach léite agat.
     unread_threads: Snáitheanna Neamhléite

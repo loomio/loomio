@@ -188,7 +188,6 @@ pt_BR:
     cancel_reply: 'Cancelar Resposta'
     confirm_delete_message: 'Você tem certeza que deseja apagar este comentário?'
     confirm_delete: 'Apagar comentário'
-    in_reply_to: "Em resposta a <strong>{{name}}</strong>:"
     submit_button:
       label: 'Postagem'
     private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{groupName}}.'
@@ -649,7 +648,6 @@ pt_BR:
   deactivate_user_form:
     aria_label: 'Confirmação de desativação da conta'
     title: 'Desativar conta'
-    question: 'Você se importaria em nos dizer o porquê de estar desativando a sua conta?'
     placeholder: 'Responder esta pergunta é opcional. Qualquer informação que você compartilhar nos ajudará a melhorar o Loomio :)'
     submit: 'Desativar conta'
   only_coordinator_modal:
@@ -671,7 +669,6 @@ pt_BR:
       loud_description: "Quando você entrar em um novo grupo, você receberá e-mail <strong>sempre que houver atividade</strong>."
       normal_description: "Quando você entrar em um novo grupo, você receberá e-mails sobre <strong>novos tópicos e propostas</strong>."
       quiet_description: "Quando você entrar em um novo grupo, você <strong>não receberá e-mails sobre atividades</strong>."
-    change_default: Modificar padrão
     edit: Editar
     messages:
       updated: Configurações de e-mail atualizadas
@@ -685,7 +682,6 @@ pt_BR:
       join_group: <a href="/explore">participe</a> de um grupo para ver os tópicos.
     no_threads:
       show_all: Você não tem tópicos recentes.
-      show_starred: Você não tem nenhum tópico com estrela.
       show_proposals: Não há propostas ativas no momento.
       show_muted: Você não tem nenhum tópico mudo.
     view_recent: Ver todos os tópicos recentes?
@@ -708,9 +704,6 @@ pt_BR:
       all: Tópicos Recentes
       all_aria_label: No momento, mostrando tópicos recentes
       all_description: Ver tópicos recentes
-      starred: Tópicos com Estrela
-      starred_aria_label: No momento, mostrando tópicos que marquei como importantes
-      starred_description: Ver apenas tópicos que você marcou como importantes
       proposals: Propostas
       proposals_aria_label: No momento, mostrando tópicos com propostas ativas
       proposals_description: Ver apenas tópicos com propostas ativas
@@ -726,15 +719,12 @@ pt_BR:
       undecided: 'Você está indeciso'
     threads_from:
       group: 'Tópicos de'
-      proposals: 'Propostas'
       starred: 'Tópicos com estrela'
       today: 'Hoje'
       yesterday: 'Ontem'
       thisweek: 'Esta semana'
       thismonth: 'Este mês'
       older: 'Mais de um mês'
-  star_toggle:
-    star: Tópico estrela
   inbox_page:
     no_threads: Legal! Você leu todos os tópicos na sua caixa de entrada.
     unread_threads: Tópicos Não Lidos

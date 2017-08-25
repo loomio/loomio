@@ -24,7 +24,7 @@ de:
     group_email:
       intro: "%{who} hat eine Ankündigung zu %{group}:"
     by_who: von %{person}
-    reply_to_this_discussion: Dieser Diskussion antworten
+    reply_to_this_discussion: Auf diese Diskussion antworten
     to_join_discussion:
       subject: "%{who} hat dich zu einer Diskussion auf Loomio eingeladen"
       content: 'Du wurdest zur Diskussion %{discussion} eingeladen'
@@ -53,7 +53,7 @@ de:
       content_html: "<strong>%{who}</strong> hat dich zu <strong>%{which_group}</strong> hinzugefügt."
       link_help: "Klicke auf den untenstehenden Link, um zur Gruppe zu kommen:"
     unsubscribe: 'Bestelle eMails ab oder ändere Deine eMail-Einstellungen:'
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> um Deine eMail-Einstellungen zu ändern und eMails abzubestellen."
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> um Benachrichtigungen zu deaktivieren oder um deine E-Mail-Einstellungen zu ändern."
     view_comment: Klicke hier um den Kommentar auf Loomio zu sehen
     view_discussion: Klicke hier um diese Diskussion zu sehen
     create_discussion:
@@ -65,10 +65,11 @@ de:
       subject: Loomio - Zusammenfassung der letzten 24 Stunden
     missed_yesterday:
       subject: Gestern auf Loomio
-      headlines: Schlagzeilen
+      do_not_reply: Bitte auf diese E-Mail nicht direkt antworten.
+      headlines: Neue Diskussionsbeiträge
       mark_as_read: Als gelesen markieren
-      thanks_for_reading: Vielen Dank fürs Lesen. Wir wünschen einen schönen Tag!
-      heres_what_happened: "Was gestern auf Loomio passiert ist."
+      thanks_for_reading: Vielen Dank fürs Lesen, wir wünschen noch einen schönen Tag!
+      heres_what_happened: "Hier ist ein Überblick, was gestern auf Loomio passiert ist."
       marked_as_read_success: Alles aus der eMail wurde als gelesen markiert
     comment_replied_to:
       context_html: 'beantwortete deinen Kommentar in'

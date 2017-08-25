@@ -221,7 +221,6 @@ sr_RS:
     filtering:
       proposals: Предлози
     threads_from:
-      proposals: 'Предлози'
       today: 'Данас'
       yesterday: 'Јуче'
   inbox_page:

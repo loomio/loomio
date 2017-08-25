@@ -111,7 +111,7 @@ de:
   change_volume_form:
     loud_label: "Alle Meldungen"
     normal_label: "Ankündigungen"
-    quiet_label: "Keine Emails"
+    quiet_label: "Keine E-Mails"
     mute_label: "Stumm"
     discussion:
       title: "eMail-Einstellungen für {{title}}"
@@ -136,7 +136,7 @@ de:
         loud: "Du wirst über alles per eMail benachrichtigt, sobald in einer Deiner Gruppen etwas passiert."
         quiet: "Du wirst über nichts in Deinen Gruppen benachrichtigt."
     user:
-      title: eMail-Einstellungen für neue Gruppen
+      title: E-Mail-Einstellungen für neue Gruppen
       loud_description: "Du wirst benachrichtigt, sobald in Gruppen, denen Du beitrittst, etwas passiert."
       quiet_description: "Du wirst über nichts in Gruppen benachrichtigt, denen Du beitrittst."
       apply_to_all: "Diese Einstellungen für alle meine Gruppen übernehmen."
@@ -178,7 +178,6 @@ de:
     cancel_reply: 'Antwort abbrechen'
     confirm_delete_message: 'Bist Du sicher, dass Du diesen Kommentar löschen willst?'
     confirm_delete: 'Kommentar löschen'
-    in_reply_to: "In Antwort zu <strong>{{name}}</strong>:"
     submit_button:
       label: 'Veröffentlichen'
     private_privacy_notice: 'Dein Kommentar wird nur für Mitglieder von {{groupName}} zu lesen sein.'
@@ -374,6 +373,7 @@ de:
     members_placeholder: 'Du bist allein hier: lade einige Leute ein!'
     member_options: Mitgliedseinstellungen
     subgroups: 'Untergruppen'
+    subgroups_placeholder: 'Untergruppen bieten einen eigenen Raum für Teams und sorgen dafür, dass Benachrichtigungen zielgerichtet die richtigen Leute erreichen.'
     invite_people: 'Einladen'
     visibility_label: 'Sichtbarkeit'
     options_label: 'Optionen'
@@ -406,6 +406,7 @@ de:
       aria_label: 'Gruppen-Privatsphäre: {{privacy}}'
   description_card:
     title: 'Gruppenbeschreibung'
+    placeholder: 'Gruppen-Koordinatoren können dieses Feld nutzen, um den Zweck der Gruppe zu beschreiben, damit die Teilnehmer wissen, warum sie hier sind.'
   leave_group_form:
     aria_label: 'Gruppe verlassen'
     title: 'Gruppe verlassen'
@@ -569,8 +570,6 @@ de:
     email_label: 'eMail'
     locale_label: 'Sprache'
     update_profile: 'Profil aktualisieren'
-  change_password_form:
-    title: Passwort zurücksetzen
   email_settings_page:
     header: eMail-Einstellungen
     all_groups: Einstellungen für alle Gruppen
@@ -585,7 +584,6 @@ de:
       loud_description: "Wenn Du einer Gruppe beitrittst, dann wirst Du per eMail benachrichtigt, <strong>sobald etwas passiert</strong>."
       normal_description: "Wenn Du einer Gruppe beitrittst, dann wirst Du per eMail über <strong>neue Diskussionene und Voschläge </strong> benachrichtigt."
       quiet_description: "Wenn Du einer Gruppe beitrittst, dann wirst Du <strong>keine eMail erhalten</strong>."
-    change_default: Standardeinstellungen ändern
     edit: Bearbeiten
     messages:
       updated: eMail-Einstellungen aktualisiert
@@ -596,7 +594,6 @@ de:
       or: oder
     no_threads:
       show_all: Du hast keine aktuellen Diskussionen.
-      show_starred: Du hast keine favorisierten Diskussionen.
       show_proposals: Momentan sind keine Vorschläge am Laufen.
       show_muted: Du hast keine Diskussionen auf stumm gesetzt.
     view_recent: Alle neuen Diskussionen anzeigen?
@@ -609,9 +606,6 @@ de:
       all: Aktuelle Diskussionen
       all_aria_label: Momentan werden alle aktuellen Diskussionen angezeigt
       all_description: Aktuelle Diskussionen anzeigen
-      starred: Favorisierte Diskussionen
-      starred_aria_label: Momentan werden alle Diskussionen angezeigt, die ich als wichtig markiert habe
-      starred_description: Nur Diskussionen anzeigen, die Du als wichtig (Stern) markiert hast
       proposals: Vorschläge
       proposals_aria_label: Momentan werden Diskussionen mit laufenden Vorschlägen angezeigt
       proposals_description: Nur Diskussionen mit laufenden Vorschlägen anzeigen
@@ -627,15 +621,12 @@ de:
       undecided: 'Du bist unentschlossen'
     threads_from:
       group: 'Diskussionen von'
-      proposals: 'Vorschläge'
       starred: 'Favorisierte Diskussionen'
       today: 'Heute'
       yesterday: 'Gestern'
       thisweek: 'In dieser Woche'
       thismonth: 'Diesen Monat'
       older: 'Älter als einen Monat'
-  star_toggle:
-    star: Diskussion favorisieren
   inbox_page:
     no_threads: Yippie! Du hast alle Diskussionen in Deinem Posteingang gelesen.
     unread_threads: Ungelesene Diskussionen
@@ -903,13 +894,19 @@ de:
     messages:
       success: "'{{name}}' kann Dein Konto nicht mehr nutzen."
   decision_tools_card:
+    title: Entscheidungswerkzeuge
     proposal_title: Vorschläge
     poll_title: Umfrage
   poll_common:
     your_response: Deine Antworte
     results: Ergebnisse
     votes: Stimmen
+    start_poll: Entscheidung vorbereiten
+  poll_common_index_card:
+    title: Bisherige Entscheidungen
+    no_polls: Bislang sind keine Entscheidungen getroffen worden.
   current_polls_card:
+    title: Aktuelle Abstimmungen
     start_poll: Neue Entscheidung
   poll_common_collapsed:
     by_who: "von {{name}}"
@@ -924,6 +921,14 @@ de:
     submit: Ergebnis teilen
   poll_common_form:
     start: Start
+  poll_proposal_form:
+    tool_tip_collapsed: Gemeinschaftlich abstimmen
+  poll_poll_form:
+    tool_tip_collapsed: Beliebtheit eines Vorschlags messen oder Handlungsoptionen anbieten
+  poll_dot_vote_form:
+    tool_tip_collapsed: Unterschiedliche Handlungsoptionen priorisieren
+  poll_meeting_form:
+    tool_tip_collapsed: Gemeinsam passende Zeiten für Meetings finden
   polls_page:
     heading: Entscheidungen
     start_new_poll: Neue Entscheidung

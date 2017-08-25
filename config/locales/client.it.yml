@@ -205,7 +205,6 @@ it:
     cancel_reply: 'Annulla risposta'
     confirm_delete_message: 'Sei sicuro che vuoi cancellare questo commento?'
     confirm_delete: 'Cancella commento'
-    in_reply_to: "Rispondendo a <strong>{{name}}</strong>:"
     submit_button:
       label: 'Post'
     private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
@@ -639,7 +638,6 @@ it:
     submit: 'Sì, voglio disattivare'
   deactivate_user_form:
     title: 'Disattiva l''account'
-    question: 'Ti andrebbe di spiegarci perché stai disattivando l''account?'
     placeholder: 'Rispondere a questa domanda è opzionale. Tutte le informazioni che ci dai, ci aiutano a migliorare Loomio :)'
     submit: 'Disattiva l''account'
   only_coordinator_modal:
@@ -654,7 +652,6 @@ it:
     update_settings: Salva modifiche
     default_settings:
       loud_description: "Quando ti iscrivi a un nuovo gruppo, ti viene inviata un'email <strong>ogni qual volta vi sia attività</strong>."
-    change_default: Cambia configurazione base
     edit: Modifica
     messages:
       updated: Impostazioni della posta elettronica aggiornate.
@@ -665,7 +662,6 @@ it:
       or: o
     no_threads:
       show_all: Non hai alcuna discussione recente
-      show_starred: Non hai alcuna discussione segnalata con stelle
       show_proposals: Non ci sono proposte attive in questo momento.
       show_muted: Non hai discussioni silenziate
     view_recent: Vuoi vedere le discussioni recenti?
@@ -681,9 +677,6 @@ it:
       all: Discussioni recenti
       all_aria_label: Sto mostrando le discussioni recenti
       all_description: Vedi discussioni recenti
-      starred: Discussioni
-      starred_aria_label: Sto mostrando solo le discussioni che ho segnato come importanti
-      starred_description: Vedi solo le discussioni segnate come importanti
       proposals: Proposte
       proposals_aria_label: Sto mostrando solo le discussioni con proposte attive
       proposals_description: Visualizza solo le discussioni che contengono proposte attive
@@ -695,7 +688,6 @@ it:
       you_voted: 'Il tuo voto: {{position}}.'
     threads_from:
       group: 'Discussioni da'
-      proposals: 'Proposte'
       today: 'Oggi'
       yesterday: 'Ieri'
       thisweek: 'Questa Settimana'
