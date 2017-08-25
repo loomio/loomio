@@ -1,93 +1,102 @@
-angular.module('loomioApp').directive 'activityCard', ( RecordLoader, $rootScope, Records)->
+angular.module('loomioApp').directive 'activityCard', ->
   scope: {discussion: '=', loading: '=', activeCommentId: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   replace: true
-  controller: ($scope) ->
-    $scope.page =
-      viewMode: 'unread'
-      per: 100
-      discussionKey: $scope.discussion.key
+  controller: ($scope, $location, $mdDialog, $rootScope, $window, $timeout, Records, AppConfig, AbilityService, PaginationService, LoadingService, ModalService) ->
 
-    applyViewMode = ->
-      _.assign $scope.page,
-        switch $scope.page.viewMode
-          when "unread"
-            orderBy: 'createdAt'
-            minSequenceId: $scope.discussion.lastReadSequenceId || 1
-            maxSequenceId: ($scope.discussion.lastReadSequenceId || 1) + ($scope.page.per - 1)
-          when "oldest"
-            orderBy: 'createdAt'
-            minSequenceId: $scope.discussion.firstSequenceId
-            maxSequenceId: ($scope.page.per - 1)
-          # when "newest"
-          #   orderBy: '-createdAt'
-          #   minSequenceId: $scope.discussion.lastSequenceId - ($scope.page.per - 1)
-          #   maxSequenceId: null
-          else
-            console.error "invalid viewMode: #{$scope.page.viewMode}"
+    $scope.$on 'fetchRecordsForPrint', (event, options = {}) ->
+      $scope.loadEvents(per: Number.MAX_SAFE_INTEGER).then ->
+        $mdDialog.cancel()
+        $timeout -> $window.print()
+
+    $scope.firstLoadedSequenceId = 0
+    $scope.lastLoadedSequenceId = 0
+    $scope.lastReadSequenceId = $scope.discussion.lastReadSequenceId
+    $scope.pagination = (current) ->
+      PaginationService.windowFor
+        current:  current
+        min:      $scope.discussion.firstSequenceId
+        max:      $scope.discussion.lastSequenceId
+        pageType: 'activityItems'
+    visibleSequenceIds = []
 
     $scope.init = ->
-      applyViewMode()
+      $scope.discussion.markAsRead(0)
 
-      $scope.loader = new RecordLoader
-        collection: 'events'
-        params:
-          discussion_key: $scope.discussion.key
-        per: $scope.page.per
-        from: $scope.page.from
-        then: (data) ->
-          $rootScope.$broadcast 'threadPageEventsLoaded'
+      $scope.loadEventsForwards(
+        commentId: $scope.activeCommentId
+        sequenceId: $scope.initialLoadSequenceId()).then ->
+        $rootScope.$broadcast 'threadPageEventsLoaded'
 
-      $scope.loader.loadMore()
+    $scope.initialLoadSequenceId = ->
+      return $location.search().from       if $location.search().from      # respond to ?from parameter
+      return 0                             if !AbilityService.isLoggedIn() # show beginning of discussion for logged out users
+      return $scope.lastReadSequenceId - 5 if $scope.discussion.isUnread() # show newest unread content for logged in users
+      return $scope.pagination($scope.discussion.lastSequenceId).prev      # show latest content if the discussion has been read
+
+    $scope.beforeCount = ->
+      $scope.firstLoadedSequenceId - $scope.discussion.firstSequenceId
+
+    updateLastSequenceId = ->
+      visibleSequenceIds = _.uniq(visibleSequenceIds)
+      $rootScope.$broadcast('threadPosition', $scope.discussion, _.max(visibleSequenceIds))
+
+    addSequenceId = (id) ->
+      visibleSequenceIds.push(id)
+      updateLastSequenceId()
+
+    removeSequenceId = (id) ->
+      visibleSequenceIds = _.without(visibleSequenceIds, id)
+      updateLastSequenceId()
+
+    $scope.threadItemHidden = (item) ->
+      removeSequenceId(item.sequenceId)
+
+    $scope.threadItemVisible = (item) ->
+      addSequenceId(item.sequenceId)
+      $scope.discussion.markAsRead(item.sequenceId)
+      $scope.loadEventsForwards(sequenceId: $scope.lastLoadedSequenceId) if $scope.loadMoreAfterReading(item)
+
+    $scope.loadEvents = ({from, per, commentId}) ->
+      from = 0 unless from?
+      per  = per or $scope.pagination().pageSize
+
+      Records.events.fetchByDiscussion($scope.discussion.key,
+        from: from
+        per: per
+        comment_id: commentId).then ->
+        $scope.firstLoadedSequenceId = $scope.discussion.minLoadedSequenceId()
+        $scope.lastLoadedSequenceId  = $scope.discussion.maxLoadedSequenceId()
+
+    $scope.loadEventsForwards = ({commentId, sequenceId}) ->
+      $scope.loadEvents(commentId: commentId, from: sequenceId)
+    LoadingService.applyLoadingFunction $scope, 'loadEventsForwards'
+
+    $scope.loadEventsBackwards = ->
+      $scope.loadEvents(from: $scope.pagination($scope.firstLoadedSequenceId).prev)
+    LoadingService.applyLoadingFunction $scope, 'loadEventsBackwards'
+
+    $scope.canLoadBackwards = ->
+      $scope.firstLoadedSequenceId > $scope.discussion.firstSequenceId and
+      !($scope.loadEventsForwardsExecuting or $scope.loadEventsBackwardsExecuting)
+
+    $scope.loadMoreAfterReading = (item) ->
+      item.sequenceId == $scope.lastLoadedSequenceId and
+      item.sequenceId < $scope.discussion.lastSequenceId
+
+    $scope.safeEvent = (kind) ->
+      _.contains AppConfig.safeThreadItemKinds, kind
 
     $scope.events = ->
-      # scoped to only those within the sequence window
-
-      query =
-        sequenceId:
-          $between: [$scope.page.minSequenceId, ($scope.page.maxSequenceId || Number.MAX_VALUE)]
-        discussionId: $scope.discussion.id
-
-      events = Records.events.collection.find(query)
-      ids = _.pluck(events, 'id')
-      # elements without their children
-      _.reject(events, (e) -> _.includes(ids, e.parentId))
+      _.filter $scope.discussion.events(), (event) -> $scope.safeEvent(event.kind)
 
     $scope.noEvents = ->
-      !_.any($scope.events())
+      !$scope.loadEventsForwardsExecuting and !_.any($scope.events())
 
-    $scope.canNextPage = ->
-      (($scope.page.minSequenceId + ($scope.page.per - 1)) < $scope.discussion.lastSequenceId) &&
-      $scope.page.maxSequenceId != null
-
-    $scope.canPreviousPage = ->
-      $scope.page.minSequenceId > $scope.discussion.firstSequenceId
-
-    $scope.nextPage = ->
-      return unless $scope.canNextPage()
-
-      $scope.page.minSequenceId += $scope.page.per
-      $scope.page.maxSequenceId = $scope.page.minSequenceId + ($scope.page.per - 1)
-
-      if $scope.page.maxSequenceId >= $scope.discussion.lastSequenceId
-        $scope.page.maxSequenceId = null
-
-      $scope.loader.loadFrom($scope.page.minSequenceId)
-
-    $scope.previousPage = ->
-      return unless $scope.canPreviousPage()
-
-      $scope.page.minSequenceId -= $scope.page.per
-      if $scope.page.minSequenceId < $scope.discussion.firstSequenceId
-        $scope.page.minSequenceId = $scope.discussion.firstSequenceId
-
-      $scope.page.maxSequenceId = $scope.page.minSequenceId + ($scope.page.per - 1)
-
-      if $scope.page.maxSequenceId >= $scope.discussion.lastSequenceId
-        $scope.page.maxSequenceId = null
-
-      $scope.loader.loadFrom($scope.page.minSequenceId)
+    $scope.isLastRead = (event) ->
+      $scope.lastReadSequenceId == event.sequenceId &&
+      $scope.lastLoadedSequenceId > event.sequenceId
 
     $scope.init()
     return

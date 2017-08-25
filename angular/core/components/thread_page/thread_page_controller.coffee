@@ -8,6 +8,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $location.search().comment = match[1]
       $location.hash('')
 
+  @useNested = ->
+    @discussion.group.features.nested_comments
+
   @performScroll = ->
     ScrollService.scrollTo @elementToFocus(), offset: 150
     $location.url($location.path())
