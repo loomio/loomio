@@ -7,3 +7,10 @@ angular.module('loomioApp').factory 'SearchResultRecordsInterface', (BaseRecords
         params:
           q: fragment
           per: 5
+
+    fetchNotified: (fragment) ->
+      @fetch
+        path: 'notified'
+        params:
+          q: fragment
+          per: 5

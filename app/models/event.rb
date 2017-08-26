@@ -34,9 +34,13 @@ class Event < ActiveRecord::Base
       kind:          name.demodulize.underscore,
       eventable:     eventable,
       created_at:    eventable.created_at
-    }.merge(args.slice(:user, :discussion, :announcement, :custom_fields, :created_at)).tap do |e|
-      EventBus.broadcast("#{event.kind}_event", e)
-    end
+    }.merge(args.slice(
+      :user,
+      :discussion,
+      :announcement,
+      :custom_fields,
+      :created_at))
+    ).tap { |e| EventBus.broadcast("#{e.kind}_event", e) }
   end
 
   # this is called after create, and calls methods defined by the event concerns

@@ -120,7 +120,9 @@ Loomio::Application.routes.draw do
       get :inbox, on: :collection
     end
 
-    resources :search, only: :index
+    resources :search, only: :index do
+      get :notified, on: :collection
+    end
 
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do
       post :close, on: :member
