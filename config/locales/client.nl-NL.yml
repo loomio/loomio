@@ -893,7 +893,6 @@ nl-NL:
     liked_by_two_others: '{{name_1}} en {{name_2}} vinden dit leuk.'
     liked_by_many_others: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
     liked_by_name: 'Leuk gevonden door {{name}}.'
-    liked_by_names_and_name: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
     started_by: 'Gestart door <strong>{{name}}</strong>'
     edited: Bewerkt
     volume:

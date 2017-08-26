@@ -825,7 +825,6 @@ fr:
     liked_by_two_others: '{{name_1}} et {{name_2}} aiment ça.'
     liked_by_many_others: 'Aimé par {{joinedNames}} et {{name}}.'
     liked_by_name: 'Aimé par {{name}}.'
-    liked_by_names_and_name: 'Aimé par {{joinedNames}} et {{name}}.'
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited: 'Modifié'
     volume:

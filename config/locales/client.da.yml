@@ -787,7 +787,6 @@ da:
     liked_by_two_others: '{{name_1}} og {{name_2}} like dette.'
     liked_by_many_others: 'Liket af {{joinedNames}} og {{name}}.'
     liked_by_name: 'Liket af {{name}}.'
-    liked_by_names_and_name: 'Liket af {{joinedNames}} og {{name}}.'
     started_by: 'Oprettet af <strong>{{name}}</strong>'
     edited: 'Redigeret'
     volume:

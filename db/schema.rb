@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822083137) do
+ActiveRecord::Schema.define(version: 20170826122955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -654,7 +654,7 @@ ActiveRecord::Schema.define(version: 20170822083137) do
   end
 
   add_index "reactions", ["created_at"], name: "index_reactions_on_created_at", using: :btree
-  add_index "reactions", ["reactable_id"], name: "index_reactions_on_reactable_id", using: :btree
+  add_index "reactions", ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type", using: :btree
   add_index "reactions", ["user_id"], name: "index_reactions_on_user_id", using: :btree
 
   create_table "stance_choices", force: :cascade do |t|

@@ -593,7 +593,6 @@ cs:
     liked_by_two_others: '{{name_1}} a {{name_2}} se toto líbí.'
     liked_by_many_others: '{{joinedNames}} a {{name}} se toto líbí.'
     liked_by_name: '{{name}} se toto líbí.'
-    liked_by_names_and_name: '{{joinedNames}} a {{name}} se toto líbí.'
     started_by: 'Vytvořeno <strong>{{name}}</strong>'
     edited: 'Upraveno'
     volume:

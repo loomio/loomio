@@ -825,7 +825,6 @@ uk:
     liked_by_two_others: '{{name_1}} та {{name_2}} уподобали це.'
     liked_by_many_others: 'Сподобалось {{joinedNames}} та {{name}}.'
     liked_by_name: 'Сподобалось {{name}}.'
-    liked_by_names_and_name: 'Сподобалось {{joinedNames}} та {{name}}.'
     started_by: 'Створено <strong>{{name}}</strong>'
     edited: 'Відредаговано'
     volume:

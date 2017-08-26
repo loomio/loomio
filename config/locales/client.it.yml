@@ -714,7 +714,6 @@ it:
     liked_by_two_others: 'Piace a {{name_1}} e {{name_2}}.'
     liked_by_many_others: 'Piace a {{joinedNames}} e {{name}}.'
     liked_by_name: 'Piace a {{name}}.'
-    liked_by_names_and_name: 'Piace a {{joinedNames}} e {{name}}.'
     started_by: 'Iniziato da <strong>{{name}}</strong>'
   thread_group:
     aria_label: 'Nome gruppo'

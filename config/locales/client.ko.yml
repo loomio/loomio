@@ -669,7 +669,6 @@ ko:
     liked_by_two_others: '{{name_1}}과 {{name_2}}가 좋아합니다.'
     liked_by_many_others: '{{joinedNames}}과 {{name}}님이 좋아합니다.'
     liked_by_name: '{{name}}님이 좋아합니다.'
-    liked_by_names_and_name: '{{joinedNames}}과 {{name}}님이 좋아합니다.'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
   thread_group:
     aria_label: '그룹명'

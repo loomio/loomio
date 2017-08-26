@@ -565,7 +565,6 @@ ca:
     liked_by_two_others: '{{name_1}} i{{name_2}} els agrada.'
     liked_by_many_others: 'A  {{joinedNames}} i {{name}} els hi ha agradat.'
     liked_by_name: 'A {{name}} li ha agradat.'
-    liked_by_names_and_name: 'A  {{joinedNames}} i {{name}} els hi ha agradat.'
     started_by: 'Destacat per <strong>{{name}}</strong>'
     edited: 'Editat'
     volume:

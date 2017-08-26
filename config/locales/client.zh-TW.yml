@@ -884,7 +884,6 @@ zh-TW:
     liked_by_two_others: '{{name_1}} 與 {{name_2}} 對此按讚。'
     liked_by_many_others: '{{joinedNames}} 與 {{name}} 對此按讚。'
     liked_by_name: '{{name}} 對此按讚。'
-    liked_by_names_and_name: '{{joinedNames}} 與 {{name}} 對此按讚。'
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited: 已編輯
     volume:

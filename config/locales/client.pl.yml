@@ -313,7 +313,6 @@ pl:
     liked_by_two_others: '{{name_1}} i {{name_2}} lubią to.'
     liked_by_many_others: 'Lubiane przez {{joinedNames}} oraz {{name}}.'
     liked_by_name: 'Lubiane przez {{name}}.'
-    liked_by_names_and_name: 'Lubiane przez {{joinedNames}} oraz {{name}}.'
     started_by: 'Rozpoczęte przez <strong>{{name}}</strong>'
   thread_group:
     aria_label: 'Nazwa grupy'

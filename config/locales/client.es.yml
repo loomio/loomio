@@ -863,7 +863,6 @@ es:
     liked_by_two_others: 'A {{name_1}} y a {{name_2}} les gusta esto.'
     liked_by_many_others: 'A {{joinedNames}} y a {{name}} les ha gustado.'
     liked_by_name: 'Le ha gustado a {{name}}.'
-    liked_by_names_and_name: 'A {{joinedNames}} y a {{name}} les ha gustado.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited: 'Editado'
     pin:
