@@ -54,7 +54,6 @@ class Discussion < ActiveRecord::Base
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: "Poll"
   has_one :search_vector
   has_many :comments, dependent: :destroy
-  has_many :comment_likes, through: :comments, source: :comment_votes
   has_many :commenters, -> { uniq }, through: :comments, source: :user
   has_many :attachments, as: :attachable, dependent: :destroy
 

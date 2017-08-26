@@ -1,12 +1,30 @@
 zh_TW:
+  explore:
+    header: 探索公開群組
+  activerecord:
+    errors:
+      messages:
+        blank: 不能留白
+        invalid: 不是有效的值
+  errors:
+    messages:
+      email: 您輸入的不是有效的電子郵件地址
+      spoofed_media_type: 檔案內容不符合其檔案名稱
+  attachment:
+    error:
+      too_large: 您打算附加的檔案超過 100MB，請選擇較小的檔案。
   poll:
     error:
-      must_have_options: 投票必須有選項
+      cannot_add_options: 無法新增選項到此投票
+      cannot_remove_options: 無法從此投票移除選項
+      must_have_options: 必須至少有一個投票選項
+  stance:
+    error:
+      too_short: 請選擇
   user:
     error:
       username_must_be_alphanumeric: 使用者名稱只能包含小寫字母及數字。
   invitation:
-    invitation_not_found: 無法在該邀請碼內找到邀請函。請從您的群組中要求另一份邀請函。
     invitation_cancelled: 抱歉，這封邀請函已被群組協調者撤銷。請從您的群組中要求另一份邀請函。
     invitation_already_used: 您已出示過此封邀請函，請直接登入到 Loomio 以進入您的群組。
   date:
@@ -25,12 +43,19 @@ zh_TW:
     gift_plan_selected_for_group_html: |
       <h1>成功。</h1>
       <p>您為您的群組 <a href="/g/%{group_key}">%{group}</a> 選擇了免費方案</p>
+  user_mailer:
+    accounts_merged:
+      subject: "您的 Loomio 使用者帳號已經合併。"
+      body_html: |
+        %{name} 您好，
+        您的兩個 Loomio 帳號已經合併為一個。
+        從現在開始，要存取 Loomio，請使用 <strong>%{email}</strong> 登入。
   email:
     login:
       subject: 登入 Loomio
       intro: '%{name}，您好，這是用來登入您的 Loomio 帳號的連結。'
       login: 以 %{name} 的身份登入 Loomio
-      resend: 這個連結將於 %{expires_at} 過期。如果過了這個時間，您可以從上面的連結取得另外的連結。
+      resend: 這個連結將會在24小時後過期且僅可使用一次。
     reset_password:
       greeting: |
         嗨，%{name}
@@ -491,30 +516,6 @@ zh_TW:
     helptext: 您將不會再收到關於此決策的電子郵件。
     visit_poll: 檢視投票
     go_to_dashboad: 到控制面板
-  webhooks:
-    slack:
-      poll_expired: "*%{name}* 已定案"
-      motion_closed: "*%{name}* 已定案"
-      motion_closed_by_user: "*%{name}* 已由 *%{author}* 關閉"
-      motion_closing_soon: "*%{name}* 有一個即將在 24 小時內定案的提案"
-      motion_outcome_created: "*%{author}* 在 *%{name}* 中公佈了結果"
-      motion_outcome_updated: "*%{author}* 在 *%{name}* 中更新了結果"
-      new_motion: "*%{author}* 在 *%{name}* 中開始了一個新提議"
-      new_vote: "*%{author}* %{position} *%{proposal}* 在 *%{name}*"
-      new_comment: "*%{author}* 在 *%{name}* 中貼出了新評論"
-      new_discussion: "*%{author}* 在 *%{group}* 啟動了新的討論串"
-      outcome_created: "*%{author}* 在 *%{name}* 中建立了結果"
-      poll_created: "*%{author}* 在 *%{name}* 中啟動投票"
-      poll_closing_soon: "*%{name}* 即將定案"
-      view_it_on_loomio: 在 Loomio 上檢視
-      have_your_say: 擁有發言權
-      outcome_published: "*%{author}* 公佈了結果："
-      outcome_published_with_discussion: "*%{author}* 在 %{discussion} 中發佈了結果："
-      position_verbs:
-        'yes': 同意
-        'no': 反對
-        abstain: 棄權
-        block: 阻擋
   slack:
     new_discussion: "在 *%{group}* 中的新討論串：*%{discussion}*"
     outcome_created: "在 *%{group}* 中的結果已貼出：*%{poll}*"

@@ -255,7 +255,6 @@ describe "User abilities" do
     it { should     be_able_to(:destroy, user_comment) }
     it { should_not be_able_to(:destroy, discussion) }
     it { should_not be_able_to(:destroy, another_user_comment) }
-    it { should     be_able_to(:like, Comment) }
     it { should     be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:make_admin, @membership) }
     it { should_not be_able_to(:make_admin, @other_membership) }
@@ -398,7 +397,6 @@ describe "User abilities" do
 
     it { should_not be_able_to(:destroy, another_user_comment) }
     it { should_not be_able_to(:like, another_user_comment) }
-    it { should_not be_able_to(:unlike, another_user_comment) }
   end
 
   context "Loomio admin deactivates other_user" do

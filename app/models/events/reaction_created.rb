@@ -1,10 +1,10 @@
-class Events::CommentLiked < Event
+class Events::ReactionCreated < Event
   include Events::Notify::InApp
   include Events::LiveUpdate
   include PrettyUrlHelper
 
-  def self.publish!(comment_vote)
-    super(comment_vote)
+  def self.publish!(reaction)
+    super(reaction) if reaction.reactable.is_a?(Comment)
   end
 
   private
@@ -17,6 +17,6 @@ class Events::CommentLiked < Event
   end
 
   def comment
-    @comment ||= eventable&.comment
+    @comment ||= eventable&.reactable
   end
 end

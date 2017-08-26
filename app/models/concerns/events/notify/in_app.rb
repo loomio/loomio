@@ -52,10 +52,12 @@ module Events::Notify::InApp
 
   def notification_translation_title
     case eventable
-    when PaperTrail::Version              then eventable.item.title
-    when Comment, CommentVote, Discussion then eventable.discussion.title
-    when Group, Membership                then eventable.group.full_name
-    when Poll, Outcome                    then eventable.poll.title
+    when PaperTrail::Version then eventable.item.title
+    when Comment, Discussion then eventable.discussion.title
+    when Group, Membership   then eventable.group.full_name
+    when Poll, Outcome       then eventable.poll.title
+    # TODO: deal with polymorphic reactions here
+    when Reaction            then eventable.reactable.discussion.title
     end
   end
 end

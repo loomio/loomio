@@ -123,9 +123,10 @@ FactoryGirl.define do
     end
   end
 
-  factory :comment_vote do
-    comment
+  factory :reaction do
+    association :reactable, factory: :comment
     user
+    reaction "+1"
   end
 
   factory :invitation do

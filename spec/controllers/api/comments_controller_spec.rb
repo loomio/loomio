@@ -17,33 +17,6 @@ describe API::CommentsController do
       sign_in user
     end
 
-    describe 'like' do
-      context 'success' do
-        it "likes the comment" do
-          post :like, id: comment.id
-          expect(comment.reload.likers).to include user
-        end
-      end
-
-      context 'failure' do
-        it "responds with an error when the user is unauthorized" do
-          sign_in another_user
-          post :like, id: comment.id
-          expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
-        end
-      end
-    end
-
-    describe 'unlike' do
-      context 'success' do
-        it "unlikes the comment" do
-          comment.likers << user
-          post :unlike, id: comment.id
-          expect(comment.reload.likers).to_not include user
-        end
-      end
-    end
-
     describe 'update' do
       let(:comment_params) { {body: 'updated content'} }
 

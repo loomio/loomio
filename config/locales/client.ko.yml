@@ -166,7 +166,6 @@ ko:
     delete_comment: '댓글 삭제'
     cancel_reply: '답변 취소'
     confirm_delete_message: '댓글을 지우시겠습니까?'
-    in_reply_to: "<strong>{{name}}</strong>에 대한 답변:"
     submit_button:
       label: '저장하기'
     private_privacy_notice: '작성하신 댓글은 {{groupName}} 그룹만 볼 수 있습니다.'
@@ -582,7 +581,6 @@ ko:
   deactivate_user_form:
     aria_label: '계정 비활성화가 확인됨.'
     title: '계정 비활성화'
-    question: '당신의 계정을 비활성화한 사유를 말씀해주세요.'
     placeholder: '이 질문에 답하지 않으셔도 됩니다. 이렇게 정보를 공유해주시면 루미오를 향상시키는데 도움이 됩니다. :)'
     submit: '계정 비활성화'
   only_coordinator_modal:
@@ -601,7 +599,6 @@ ko:
       loud_description: "새로운 그룹에 참여하면, 당신은 <strong>행동이 있을 때마다</strong>이메일을 받을 수 있습니다."
       normal_description: "새로운 그룹에 참여하면, <strong>당신은 새로운 모둠과 제안</strong>에 대해 이메일을 받을 수 없습니다."
       quiet_description: "새로운 그룹에 참여하면, 당신은 <strong>행동에 대해 이메일을 받을 수 없습니다.</strong>."
-    change_default: 초기설정을 변경
     edit: 편집
     messages:
       updated: 이메일 설정을 저장했습니다.
@@ -615,7 +612,6 @@ ko:
       join_group: '주제를 보기 위해 그룹에 <a href="/explore">참여합니다</a> '
     no_threads:
       show_all: 최근 주제가 없습니다.
-      show_starred: 별표 체크한 주제가 없습니다.
       show_proposals: 현재 활성화된 제안이 없습니다.
       show_muted: 알림이 묵음 처리된 주제가 없습니다.
     view_recent: 최근 주제를 모두 보시겠습니까?
@@ -632,9 +628,6 @@ ko:
       all: 최근 주제
       all_aria_label: 가장 최근의 토론을 보고 있음
       all_description: 최근 주제 보기
-      starred: 별표 체크된 주제
-      starred_aria_label: 당신이 중요하다고 표시한 토론을 보고 있음
-      starred_description: 중요 표시한 주제만 보기
       proposals: 제안
       proposals_aria_label: 활성화된 제안이 있는 주제만 보기
       proposals_description: 활성화된 제안이 있는 주제만 보기
@@ -647,15 +640,12 @@ ko:
       you_voted: '투표 완료: {{position}}.'
     threads_from:
       group: '에서 비롯된 토론'
-      proposals: '제안'
       starred: '별표 표시된 주제'
       today: '오늘'
       yesterday: '어제'
       thisweek: '이번주'
       thismonth: '이번달'
       older: '한달 전'
-  star_toggle:
-    star: 별표 체크
   inbox_page:
     no_threads: 이야! inbox의 모든 주제를 읽었군요.
     unread_threads: 읽지 않은 쓰레드
@@ -679,7 +669,6 @@ ko:
     liked_by_two_others: '{{name_1}}과 {{name_2}}가 좋아합니다.'
     liked_by_many_others: '{{joinedNames}}과 {{name}}님이 좋아합니다.'
     liked_by_name: '{{name}}님이 좋아합니다.'
-    liked_by_names_and_name: '{{joinedNames}}과 {{name}}님이 좋아합니다.'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
   thread_group:
     aria_label: '그룹명'

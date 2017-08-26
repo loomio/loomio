@@ -16,14 +16,11 @@ class EventCollection
   private
 
   def default_scope
-    { cache: { likers: likers, attachments: attachments, mentions: mentions } }
+    { cache: { reactions: reaction_cache, attachments: attachments, mentions: mentions } }
   end
 
-  def likers
-    @likers ||= User.joins(:comment_votes)
-                    .select('users.*').select('comment_votes.comment_id')
-                    .where('comment_votes.comment_id': event_comment_ids)
-                    .group_by(&:comment_id)
+  def reaction_cache
+    @reaction_cache ||= Caches::Reaction.new(parents: events.map(&:eventable))
   end
 
   def mentions
@@ -31,8 +28,10 @@ class EventCollection
   end
 
   def attachments
-    @attachments ||= Attachment.where(attachable_type: "Comment", attachable_id: event_comment_ids)
-                               .group_by(&:attachable_id)
+    @attachments ||= Attachment.where(
+      attachable_type: "Comment",
+      attachable_id: event_comment_ids
+    ).group_by(&:attachable_id)
   end
 
   def event_comment_ids

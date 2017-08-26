@@ -109,10 +109,11 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  def fake_comment_vote(args = {})
-    CommentVote.new({
-      comment: fake_comment,
-      user: fake_user
+  def fake_reaction(args = {})
+    Reaction.new({
+      reactable: fake_comment,
+      user: fake_user,
+      reaction: "+1"
     }.merge(args))
   end
 

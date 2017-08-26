@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
 
-  has_many :comment_votes, dependent: :destroy
+  has_many :reactions, dependent: :destroy
   has_many :stances, foreign_key: :participant_id, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll
   has_many :group_polls, through: :groups, source: :polls
