@@ -235,6 +235,9 @@ en:
     message: "You have been logged out of Loomio from another window. Please sign back in to continue."
     ok: "Ok"
 
+  comment_reply_form:
+    aria_label: 'Add a reply'
+    
   comment_form:
     aria_label: 'Add a comment'
     attachments:
