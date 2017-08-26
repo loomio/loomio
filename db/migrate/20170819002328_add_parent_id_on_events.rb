@@ -1,7 +1,6 @@
 class AddParentIdOnEvents < ActiveRecord::Migration
   def change
     add_column :events, :parent_id, :integer
-    # TODO use async method to add this?
-    add_index :events, :parent_id
+    add_index :events, :parent_id, where: "(parent_id IS NOT NULL)"
   end
 end

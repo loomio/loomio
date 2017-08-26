@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'nestedActivityCard', ( RecordLoader, $roo
   controller: ($scope) ->
     $scope.page =
       viewMode: 'unread'
-      per: 5
+      per: 50
       discussionKey: $scope.discussion.key
 
     applyViewMode = ->
@@ -35,7 +35,7 @@ angular.module('loomioApp').directive 'nestedActivityCard', ( RecordLoader, $roo
         params:
           discussion_key: $scope.discussion.key
         per: $scope.page.per
-        from: $scope.page.from
+        from: $scope.page.minSequenceId
         then: (data) ->
           $rootScope.$broadcast 'threadPageEventsLoaded'
 
@@ -56,6 +56,9 @@ angular.module('loomioApp').directive 'nestedActivityCard', ( RecordLoader, $roo
 
     $scope.noEvents = ->
       !_.any($scope.events())
+
+    $scope.numPrevious = ->
+      $scope.page.minSequenceId - $scope.discussion.firstSequenceId
 
     $scope.canNextPage = ->
       (($scope.page.minSequenceId + ($scope.page.per - 1)) < $scope.discussion.lastSequenceId) &&

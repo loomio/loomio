@@ -5,14 +5,14 @@ class API::EventsController < API::RestfulController
 
   def accessible_records
     records = load_and_authorize(:discussion).items.sequenced
-    records = records.with_ancestor(params[:parent_id]) if params[:parent_id]
+    records = records.where(parent_id: params[:parent_id]) if params[:parent_id]
     records
   end
 
   def page_collection(collection)
     if params[:parent_id]
       collection.where('pos >= ?', params.fetch(:from, 0))
-                .where(parent_id: params[:parent_id]) # could change to decendants of
+                .where(parent_id: params[:parent_id])
                 .includes(:eventable, :parent)
                 .limit(params[:per] || default_page_size)
     else

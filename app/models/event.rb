@@ -1,11 +1,12 @@
 class Event < ActiveRecord::Base
   include HasTimeframe
-  has_closure_tree order: :pos
+  include NumericOrderSupport
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
   belongs_to :discussion, required: false
   belongs_to :user, required: false
+
 
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :chronologically, -> { order(created_at: :asc) }
@@ -16,9 +17,6 @@ class Event < ActiveRecord::Base
 
   update_counter_cache :discussion, :items_count
   update_counter_cache :discussion, :salient_items_count
-
-  define_counter_cache(:child_count) { |e| e.parent_id ? e.children.count : 0 }
-  update_counter_cache :parent, :child_count
 
   validates :kind, presence: true
   validates :eventable, presence: true
@@ -43,12 +41,6 @@ class Event < ActiveRecord::Base
   end
 
   private
-
-  # which communities should know about this event?
-  # Polls override this to look at the communities associated with the poll.
-  def communities
-    Array(eventable&.group&.community)
-  end
 
   def call_thread_item_created
     discussion.thread_item_created! if discussion_id.present?

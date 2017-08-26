@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820001201) do
+ActiveRecord::Schema.define(version: 20170826033216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -264,15 +264,6 @@ ActiveRecord::Schema.define(version: 20170820001201) do
 
   add_index "drafts", ["user_id", "draftable_type", "draftable_id"], name: "index_drafts_on_user_id_and_draftable_type_and_draftable_id", unique: true, using: :btree
 
-  create_table "event_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id",   null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations",   null: false
-  end
-
-  add_index "event_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "event_anc_desc_idx", unique: true, using: :btree
-  add_index "event_hierarchies", ["descendant_id"], name: "event_desc_idx", using: :btree
-
   create_table "events", force: :cascade do |t|
     t.string   "kind",           limit: 255
     t.datetime "created_at"
@@ -285,17 +276,16 @@ ActiveRecord::Schema.define(version: 20170820001201) do
     t.boolean  "announcement",               default: false, null: false
     t.jsonb    "custom_fields",              default: {},    null: false
     t.integer  "parent_id"
-    t.string   "ancestry"
     t.integer  "pos"
     t.integer  "child_count"
   end
 
-  add_index "events", ["ancestry"], name: "index_events_on_ancestry", using: :btree
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
   add_index "events", ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true, using: :btree
   add_index "events", ["discussion_id"], name: "index_events_on_discussion_id", using: :btree
   add_index "events", ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id", using: :btree
-  add_index "events", ["parent_id"], name: "index_events_on_parent_id", using: :btree
+  add_index "events", ["parent_id", "pos"], name: "index_events_on_parent_id_and_pos", where: "(pos IS NOT NULL)", using: :btree
+  add_index "events", ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)", using: :btree
   add_index "events", ["sequence_id"], name: "index_events_on_sequence_id", using: :btree
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|

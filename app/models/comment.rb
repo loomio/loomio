@@ -44,8 +44,12 @@ class Comment < ActiveRecord::Base
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
   def parent_event
-    if parent_id
-      parent.events.find_by(kind: 'new_comment')
+    if parent_id #comment parent
+      next_parent = parent
+      while (next_parent.parent) do
+        next_parent = next_parent.parent
+      end
+      next_parent.events.find_by(kind: 'new_comment')
     else
       discussion.events.find_by(kind: 'new_discussion')
     end

@@ -7,14 +7,12 @@
       -# %md-option{value: "-likesCount"} Popular
   %div
     per: {{page.per}} min: {{page.minSequenceId}} max: {{page.maxSequenceId}} first: {{discussion.firstSequenceId}} last: {{discussion.lastSequenceId}} lastRead: {{discussion.lastReadSequenceId}}
-  %div
-    %md-button{ng-click: "previousPage()", ng-if: "canPreviousPage()"} Previous Page
 
   %loading_content{ng-if: "loader.loading", block-count: 2}
   .activity-card__content{ng-if: "!loader.loading"}
-    -# %a.activity-card__load-backwards.lmo-flex.lmo-flex__center.lmo-no-print{href: "", ng-show: "canLoadBackwards()", ng-click: "loadEventsBackwards()", tabindex: "0"}
-    -#   %i.material-icons> autorenew
-    -#   %span{translate: "discussion.load_previous", translate-value-count: "{{beforeCount()}}"}
+    %a.activity-card__load-backwards.lmo-flex.lmo-flex__center.lmo-no-print{href: "", ng-show: "canPreviousPage()", ng-click: "previousPage()", tabindex: "0"}
+      %i.material-icons> autorenew
+      %span{translate: "discussion.load_previous", translate-value-count: "{{numPrevious()}}"}
     -# %loading.activity-card__loading.page-loading{ng-show: "loadEventsBackwardsExecuting"}
     .activity-card__no-activity.lmo-placeholder.align-center{ng-if: "noEvents()", translate: "discussion.activity_placeholder"}
     %ul.activity-card__activity-list
