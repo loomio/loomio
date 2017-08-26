@@ -92,7 +92,7 @@ cmn:
       by_expiry: 提议已经关闭了
     new_vote: "%{position}建议上的"
     new_comment: 讨论后的评论
-    comment_liked: 喜欢你在讨论中说的评论
+    reaction_created: 喜欢你在讨论中说的评论
     user_mentioned: 在评论中提到了你
     membership_requested: 要求会员
     user_added_to_group: 把你添加到组

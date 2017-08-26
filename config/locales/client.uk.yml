@@ -278,7 +278,7 @@ uk:
     new_vote: "<strong>{{name}}</strong> {{position}} щодо пропозиції <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> прокоментував(ла) <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> відповів(ла) на ваш коментар у <strong>{{title}}</strong>"
-    comment_liked: "<strong>{{name}}</strong> вподобав(ла) ваш коментар у <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> вподобав(ла) ваш коментар у <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> згадав(ла) вас у <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> зробив(ла) запит на долучення до <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> схвалив ваш запит на долучення до <strong>{{title}}</strong>'

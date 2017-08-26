@@ -17,7 +17,7 @@ describe MigrateUserService do
   let!(:discussion_reader)  { DiscussionReader.for(discussion: discussion, user: patrick) }
   let!(:patrick_comment)    { saved fake_comment(discussion: discussion) }
   let!(:jennifer_comment)   { saved fake_comment(discussion: discussion) }
-  let!(:comment_vote)       { saved fake_comment_vote(comment: patrick_comment, user: patrick) }
+  let!(:reaction)           { saved fake_reaction(reactable: patrick_comment, user: patrick) }
   let!(:poll)               { saved fake_poll(discussion: discussion) }
   let!(:outcome)            { saved fake_outcome(poll: poll) }
   let!(:patrick_stance)     { saved fake_stance(poll: poll) }
@@ -65,7 +65,7 @@ describe MigrateUserService do
     assert_equal invitation.reload.inviter, jennifer
     assert_equal group.reload.creator, jennifer
     assert_equal membership.reload.user, jennifer
-    assert_equal comment_vote.reload.author, jennifer
+    assert_equal reaction.reload.author, jennifer
     assert_equal poll.reload.author, jennifer
     assert_equal outcome.reload.author, jennifer
     assert_equal patrick_stance.reload.author, jennifer

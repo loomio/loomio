@@ -276,7 +276,7 @@ da:
     new_vote: "<strong>{{name}}</strong> {{position}} på forlaget <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> kommenterede på <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> svarede på din kommentar i <strong>{{title}}</strong>"
-    comment_liked: "<strong>{{name}}</strong> likede din kommentar i <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> likede din kommentar i <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> nævnte dig i <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ønsker at blive medlem af <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> godkendte dit ønske om at blive medlem <strong>{{title}}</strong>'
