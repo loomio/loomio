@@ -1,5 +1,8 @@
 class PollsController < ApplicationController
   include UsesMetadata
+  include LoadAndAuthorize
+
+  helper :email
 
   def example
     if poll = PollGenerator.new(params[:type]).generate!
@@ -10,7 +13,8 @@ class PollsController < ApplicationController
   end
 
   def embed
-    @info = PollEmailInfo.new(poll: load_and_authorize(:poll), action_name: :embed)
+    @info = PollEmailInfo.new(poll: load_and_authorize(:poll, :embed), action_name: :embed)
+    headers.delete 'X-Frame-Options'
     render layout: false
   end
 

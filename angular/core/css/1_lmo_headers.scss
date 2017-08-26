@@ -14,10 +14,7 @@
   margin: 8px 0;
 }
 .lmo-h3{
-  @include fontSmall;
-  color: $grey-on-white;
-  font-weight: bold;
-  margin-bottom: 10px;
+  @include lmoH3;
 }
 .lmo-h4{
   @include fontSmall;

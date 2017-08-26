@@ -1715,17 +1715,18 @@ en:
       If you'd like to embed this Loomio poll into another webpage, you can do so by pasting the code below into the <head/> element of your webpage.<br>
       It will appear on the page in an iframe, which will look like this:&nbsp;
     display_code: |
-      <;div id="loomio-poll-{{key}}"></div><br/>
-      <;script type="text/javascript"><br/>
-      &nbsp;&nbsp;(function() {<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;window.Loomio = { pollKey: '{{key}}', host: '{{host}}' };<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;var d = document.createElement('script');d.type = 'text/javascript'; d.src = '{{host}}client/common/embed.js'; d.async = true;<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);<br/>
-      &nbsp;&nbsp;})();<br/>
-      <;/script>
+      <<span></span>div id="loomio-poll-{{key}}"></div><br/>
+      &nbsp;&nbsp;<<span></span>script type="text/javascript"><br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;(function() {<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.Loomio = { pollKey: '{{key}}', host: '{{host}}' };<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var d = document.createElement('script');d.type = 'text/javascript'; d.src = '{{host}}javascripts/embed.js'; d.async = true;<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;})();<br/>
+      &nbsp;&nbsp;<<span></span>/script><br/>
+      <<span></span>/div>
     minified_code: |
       <div id="loomio-poll-{{key}}"></div>
-      <script type="text/javascript">(function(){window.Loomio={pollKey:'{{key}}',host:'{{host}}'};var d=document.createElement('script');d.type='text/javascript';d.src='{{host}}client/common/embed.js';d.async=true;(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);})();</script>
+      <script type="text/javascript">(function(){window.Loomio={pollKey:'{{key}}',host:'{{host}}'};var d=document.createElement('script');d.type='text/javascript';d.src='{{host}}javascripts/embed.js';d.async=true;(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);})();</script>
     copy_code: Copy embed code
 
   poll_common_participant_form:

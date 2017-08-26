@@ -1,4 +1,44 @@
-.loomio-poll
-  = render "poll_mailer/common/summary"
-  = render "poll_mailer/#{@info.poll_type}/chart" if @info.poll.stances.any?
-  = "Vote!" if @info.poll.anyone_can_participate && @info.poll.active?
+- action_text     = if @info.poll.active? then "embed.vote" else "embed.view_decision" end
+- closing_at_text = if @info.poll.active? then "embed.closing_at" else "embed.closed_at" end
+
+%html
+  %head
+    %base{target: "_blank"}
+    = stylesheet_link_tag "embed"
+  %body.loomio-embedded-poll
+    = render "poll_mailer/common/discussion_info", discussion: @info.poll.discussion if @info.poll.discussion
+
+    .lmo-card
+      %h1= link_to @info.poll.title, @info.links[:target], class: 'lmo-h1'
+      .loomio-embedded-poll__started-by
+        %span= t(:"embed.started_by", name: @info.poll.author.name)
+        %span ·
+        %abbr.closing-in.timeago--inline= t closing_at_text, time: time_ago_in_words(@info.poll.closed_at || @info.poll.closing_at)
+
+      - if @info.outcome
+        %h3= t(:"poll_common.outcome")
+        %p= render_rich_text @info.outcome.statement
+
+        %h3= t(:"poll_types.#{@info.poll_type}")
+
+      %p= render_rich_text @info.poll.details
+
+      = render "poll_mailer/#{@info.poll_type}/chart"
+
+      .loomio-embedded-poll__results.lmo-hidden
+        = render "poll_mailer/#{@info.poll_type}/responses"
+
+      .lmo-md-actions
+        - if @info.poll.stances_count > 0
+          .loomio-embedded-poll__show-results-placeholder.lmo-hidden
+          .md-button.md-accent.loomio-embedded-poll__show-results= t(:"embed.show_responses")
+        - else
+          .loomio-embedded-poll__show-results-placeholder
+        .md-button.md-primary.md-raised.loomio-embedded-poll__go-to-poll= link_to t(action_text), poll_url(@info.poll)
+
+    :javascript
+      document.querySelector('.loomio-embedded-poll__show-results').addEventListener('click', function(e) {
+        document.querySelector('.loomio-embedded-poll__results').classList.remove('lmo-hidden')
+        document.querySelector('.loomio-embedded-poll__results-placeholder').classList.remove('lmo-hidden')
+        document.querySelector('.loomio-embedded-poll__show-results').classList.add('lmo-hidden')
+      })
