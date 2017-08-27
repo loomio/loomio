@@ -5,12 +5,6 @@ angular.module('loomioApp').directive 'eventChildren', (Records, RecordLoader) -
   replace: true
   controller: ($scope, $rootScope) ->
 
-    $scope.$on 'replyToCommentClicked', (parentComment) ->
-      # $scope.parentComment = parentComment
-      # $scope.discussion = parentComment.discussion()
-      console.log "replyToCommentClicked"
-      $scope.showReplyForm = true
-
     $scope.loader = new RecordLoader
       collection: 'events'
       params:

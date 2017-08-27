@@ -1,7 +1,7 @@
 .event-children.event-children__indent
   .event-children__load-previous{ng-if: "anyPrevious()", ng-click: "loadPrevious()"}
     {{previousCount()}} previous
-  %thread-item{ng-repeat: "event in events() | orderBy: page.orderBy track by event.id", event: "event", page: "page"}
+  %thread-item{ng-repeat: "event in events() | orderBy: page.orderBy track by event.id", event: "event", page: "page", root: "false"}
   -# %div
   -#   parent_id: {{parent.id}}
   -#   children.length: {{events().length}}
