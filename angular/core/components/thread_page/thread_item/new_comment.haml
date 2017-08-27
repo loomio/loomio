@@ -32,7 +32,4 @@
     .thread-item__liked-by{ng-if: "anybodyLikesIt()"}
       {{ reactionSentence }}
 
-    .thread-item__reply-form{ng-if: "showReplyForm"}
-      %comment_reply_form.lmo-no-print{parent_comment: "eventable"}
-
     %outlet{name: "after-comment-event", model: "eventable"}

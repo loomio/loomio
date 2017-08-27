@@ -1,9 +1,15 @@
 angular.module('loomioApp').directive 'eventChildren', (Records, RecordLoader) ->
-  scope: {parent: '=', page: '='}
+  scope: {discussion: '=', parent: '=', page: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/event_children/event_children.html'
   replace: true
   controller: ($scope, $rootScope) ->
+
+    $scope.$on 'replyToCommentClicked', (parentComment) ->
+      # $scope.parentComment = parentComment
+      # $scope.discussion = parentComment.discussion()
+      console.log "replyToCommentClicked"
+      $scope.showReplyForm = true
 
     $scope.loader = new RecordLoader
       collection: 'events'

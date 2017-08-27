@@ -237,7 +237,7 @@ en:
 
   comment_reply_form:
     aria_label: 'Add a reply'
-    
+
   comment_form:
     aria_label: 'Add a comment'
     attachments:

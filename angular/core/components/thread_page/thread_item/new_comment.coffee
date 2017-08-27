@@ -23,8 +23,12 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Record
       AbilityService.canRespondToComment($scope.eventable)
 
     $scope.reply = ->
-      $scope.showReplyForm = true
-      # $rootScope.$broadcast 'replyToCommentClicked', $scope.eventable
+      if $scope.eventable.isReply()
+        console.log 'emit', $scope.eventable
+        $scope.$emit 'replyToCommentClicked', $scope.eventable
+      else
+        console.log 'broadcast', $scope.eventable
+        $scope.$broadcast 'replyToCommentClicked', $scope.eventable
 
     $scope.showRevisionHistory = ->
       ModalService.open RevisionHistoryModal, model: => $scope.eventable

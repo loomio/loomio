@@ -16,6 +16,7 @@ class Dev::MainController < Dev::BaseController
     sign_in patrick
     group = create_group
     group.add_admin!(patrick)
+    EventParentMigrator.migrate_group!(group)
     d    = saved fake_discussion(group: group)
     DiscussionService.create(discussion: d, actor: patrick)
 

@@ -1,0 +1,6 @@
+%section.add-comment-panel{aria-labelledby: "add-comment-panel-title"}
+  %h2.lmo-card-heading#add-comment-panel-title{translate: "comment_form.aria_label"}>
+  %comment_form{discussion: "discussion", ng-if: "showCommentForm()"}
+  .add-comment-panel__join-actions{ng-if: "!showCommentForm()"}
+    %join_group_button{group: "comment.discussion().group()", ng-if: "isLoggedIn()", block: "true"}
+    %md-button.md-primary.md-raised.add-comment-panel__sign-in-btn{translate: "comment_form.sign_in", ng-click: "signIn()", ng-if: "!isLoggedIn()"}

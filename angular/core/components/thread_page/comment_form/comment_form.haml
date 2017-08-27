@@ -1,6 +1,5 @@
-%section.comment-form{aria-labelledby: "comment-form-title"}
-  %h2.lmo-card-heading#comment-form-title{translate: "comment_form.aria_label"}>
-  %form{ng-if: "showCommentForm()", ng-paste: "handlePaste($event)", ng_submit: "submit()"}
+.comment-form
+  %form{ng-paste: "handlePaste($event)", ng_submit: "submit()"}
     .lmo-disabled-form{ng-show: "isDisabled"}
     %lmo_textarea{model: "comment", field: "body", placeholder: "commentPlaceholder()", helptext: "commentHelptext()"}
     .lmo-md-actions
@@ -14,6 +13,3 @@
         %outlet{name: "before-comment-submit", model: "comment"}
         %md-button.md-primary.md-raised.comment-form__submit-button{type: "submit", ng-disabled: "submitIsDisabled", translate: "comment_form.submit_button.label"}
     %validation_errors{subject: "comment", field: "file"}
-  .comment-form__join-actions{ng-if: "!showCommentForm()"}
-    %join_group_button{group: "comment.discussion().group()", ng-if: "isLoggedIn()", block: "true"}
-    %md-button.md-primary.md-raised.comment-form__sign-in-btn{translate: "comment_form.sign_in", ng-click: "signIn()", ng-if: "!isLoggedIn()"}
