@@ -36,6 +36,7 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, R
 
         successCallback: $scope.init
       KeyEventService.submitOnEnter $scope
+      #NOTE: listen for emoji events
       $scope.$broadcast 'reinitializeForm', $scope.comment
     $scope.init()
 

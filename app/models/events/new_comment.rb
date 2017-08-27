@@ -6,6 +6,7 @@ class Events::NewComment < Event
     create(kind: 'new_comment',
            eventable: comment,
            parent: comment.parent_event,
+           user:   comment.author,
            discussion: comment.discussion,
            created_at: comment.created_at).tap { |e| EventBus.broadcast('new_comment_event', e) }
   end

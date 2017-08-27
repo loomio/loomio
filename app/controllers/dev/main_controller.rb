@@ -448,6 +448,18 @@ class Dev::MainController < Dev::BaseController
     redirect_to discussion_url(create_discussion)
   end
 
+  def setup_unread_discussion
+    read = Comment.new(discussion: create_discussion, body: "Here is some read content")
+    unread = Comment.new(discussion: create_discussion, body: "Here is some unread content")
+    another_unread = Comment.new(discussion: create_discussion, body: "Here is some more unread content")
+    sign_in patrick
+    
+    CommentService.create(comment: read, actor: patrick)
+    CommentService.create(comment: unread, actor: jennifer)
+    CommentService.create(comment: another_unread, actor: jennifer)
+    redirect_to discussion_url(create_discussion)
+  end
+
   def setup_busy_discussion
     create_discussion
     sign_in patrick

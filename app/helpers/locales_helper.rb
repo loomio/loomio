@@ -1,6 +1,13 @@
 #require 'http_accept_language'
 
 module LocalesHelper
+
+  def process_locale
+    I18n.locale = best_locale
+    yield if block_given?
+    save_detected_locale
+  end
+
   def selectable_locales
     Loomio::I18n::SELECTABLE_LOCALES
   end

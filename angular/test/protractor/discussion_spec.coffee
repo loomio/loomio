@@ -76,6 +76,13 @@ describe 'Discussion Page', ->
       page.expectText '.revision-history-modal__body', 'Revised description'
       page.expectText '.revision-history-modal__body', 'What star sign are you?'
 
+  describe 'reading a thread', ->
+    it 'can display an unread content line', ->
+      page.loadPath 'setup_unread_discussion'
+      page.expectText '.activity-card', 'New Activity'
+      browser.refresh()
+      page.expectNoText '.activity-card', 'New Activity'
+
   describe 'muting and unmuting a thread', ->
     it 'lets you mute and unmute', ->
       page.loadPath 'setup_multiple_discussions'
@@ -93,7 +100,6 @@ describe 'Discussion Page', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--move'
       page.selectOption '.move-thread-form__group-dropdown', 'Point Break'
-      page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
       page.sleep()
       page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'

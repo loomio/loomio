@@ -35,7 +35,6 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
 
     titleFor: (event) ->
       switch event.eventable.type
-        when 'stance'              then event.model().poll().title
         when 'comment'             then event.model().parentAuthorName
         when 'poll', 'outcome'     then event.model().poll().title
         when 'group', 'membership' then event.model().group().name

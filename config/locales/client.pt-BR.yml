@@ -837,7 +837,6 @@ pt-BR:
     liked_by_two_others: '{{name_1}} e {{name_2}} curtem isso.'
     liked_by_many_others: 'Curtido por {{joinedNames}} e {{name}}.'
     liked_by_name: 'Curtido por {{name}}.'
-    liked_by_names_and_name: 'Curtido por {{joinedNames}} e {{name}}.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited: Editado
     volume:

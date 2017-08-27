@@ -30,4 +30,10 @@ module PendingActionsHelper
   def pending_user
     @pending_user ||= User.find_by(id: session[:pending_user_id]) if session[:pending_user_id]
   end
+
+  def serialized_pending_identity
+    Pending::IdentitySerializer.new(pending_identity, root: false).as_json ||
+    Pending::InvitationSerializer.new(pending_invitation, root: false).as_json ||
+    Pending::UserSerializer.new(pending_user, root: false).as_json
+  end
 end

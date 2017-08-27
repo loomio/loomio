@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170826033216) do
+||||||| merged common ancestors
+ActiveRecord::Schema.define(version: 20170816051532) do
+=======
+ActiveRecord::Schema.define(version: 20170826122955) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,17 +109,6 @@ ActiveRecord::Schema.define(version: 20170826033216) do
 
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "tag_desc_idx", using: :btree
-
-  create_table "comment_votes", force: :cascade do |t|
-    t.integer  "comment_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comment_votes", ["comment_id"], name: "index_comment_votes_on_comment_id", using: :btree
-  add_index "comment_votes", ["created_at"], name: "index_comment_votes_on_created_at", using: :btree
-  add_index "comment_votes", ["user_id"], name: "index_comment_votes_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "discussion_id",       default: 0
@@ -659,6 +654,19 @@ ActiveRecord::Schema.define(version: 20170826033216) do
   add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
   add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
   add_index "polls", ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true, using: :btree
+
+  create_table "reactions", force: :cascade do |t|
+    t.integer  "reactable_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "reaction",       default: "+1",      null: false
+    t.string   "reactable_type", default: "Comment", null: false
+  end
+
+  add_index "reactions", ["created_at"], name: "index_reactions_on_created_at", using: :btree
+  add_index "reactions", ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type", using: :btree
+  add_index "reactions", ["user_id"], name: "index_reactions_on_user_id", using: :btree
 
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"

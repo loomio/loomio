@@ -1,6 +1,4 @@
 class RedirectController < ApplicationController
-  skip_before_filter :set_application_locale
-
   def subdomain
     redirect model: :group, to: Group.find_by!(subdomain: request.subdomain)
   end

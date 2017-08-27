@@ -43,18 +43,29 @@ EventBus.configure do |config|
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
 
   # send memos to client side after comment change
-  config.listen('comment_destroy') { |comment|      Memos::CommentDestroyed.publish!(comment) }
-  config.listen('comment_update')  { |comment|      Memos::CommentUpdated.publish!(comment) }
-  config.listen('comment_unlike')  { |comment_vote| Memos::CommentUnliked.publish!(comment: comment_vote.comment, user: comment_vote.user) }
+  config.listen('comment_destroy')  { |comment|  Memos::CommentDestroyed.publish!(comment) }
+  config.listen('comment_update')   { |comment|  Memos::CommentUpdated.publish!(comment) }
+  config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
 
-  config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).participate! }
+  config.listen('new_comment_event',
+                'discussion_edited_event',
+                'poll_created_event',
+                'poll_edited_event',
+                'stance_created_event',
+                'outcome_created_event',
+                'poll_closed_by_user_event') do |event|
+    DiscussionReader.for_model(event.discussion, event.user).update_reader(
+      volume: :loud,
+      read_at: event.created_at
+    ) if event.discussion
+  end
 
-  # update discussion reader after discussion creation / edition
-  config.listen('discussion_create',
-                'discussion_update',
-                'comment_create',
-                'comment_like') do |model, actor|
-    DiscussionReader.for_model(model, actor).update_reader(volume: :loud)
+  # :/
+  config.listen('discussion_create') do |discussion|
+    DiscussionReader.for(user: discussion.author, discussion: discussion).update_reader(
+      volume: :loud,
+      read_at: discussion.created_at
+    )
   end
 
   config.listen('discussion_reader_viewed!',

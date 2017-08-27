@@ -147,10 +147,8 @@ Loomio::Application.routes.draw do
 
     resources :poll_did_not_votes, only: :index
 
-    resources :comments,    only: [:create, :update, :destroy] do
-      post :like, on: :member
-      post :unlike, on: :member
-    end
+    resources :comments,    only: [:create, :update, :destroy]
+    resources :reactions,   only: [:index, :create, :destroy]
 
     resources :attachments, only: [:create, :destroy]
 
@@ -212,27 +210,27 @@ Loomio::Application.routes.draw do
 
   get '/start_group', to: redirect('/g/new')
 
-  get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
-  get 'dashboard/:filter'                  => 'application#boot_angular_ui'
-  get 'inbox'                              => 'application#boot_angular_ui', as: :inbox
-  get 'groups'                             => 'application#boot_angular_ui', as: :groups
-  get 'polls'                              => 'application#boot_angular_ui', as: :polls
-  get 'explore'                            => 'application#boot_angular_ui', as: :explore
-  get 'profile'                            => 'application#boot_angular_ui', as: :profile
-  get 'contact'                            => 'application#boot_angular_ui', as: :contact
-  get 'email_preferences'                  => 'application#boot_angular_ui', as: :email_preferences
-  get 'verify_stances'                     => 'application#boot_angular_ui', as: :verify_stances
-  get 'apps/registered'                    => 'application#boot_angular_ui'
-  get 'apps/authorized'                    => 'application#boot_angular_ui'
-  get 'apps/registered/:id'                => 'application#boot_angular_ui'
-  get 'apps/registered/:id/:slug'          => 'application#boot_angular_ui'
-  get 'd/:key/comment/:comment'            => 'application#boot_angular_ui', as: :discussion_comment
-  get 'g/:key/membership_requests'         => 'application#boot_angular_ui', as: :group_membership_requests
-  get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
-  get 'g/:key/previous_polls'              => 'application#boot_angular_ui', as: :group_previous_polls
-  get 'g/:key/memberships/:username'       => 'application#boot_angular_ui', as: :group_memberships_username
-  get 'g/new'                              => 'application#boot_angular_ui', as: :new_group
-  get 'p/new(/:type)'                      => 'application#boot_angular_ui', as: :new_poll
+  get 'dashboard'                          => 'application#index', as: :dashboard
+  get 'dashboard/:filter'                  => 'application#index'
+  get 'inbox'                              => 'application#index', as: :inbox
+  get 'groups'                             => 'application#index', as: :groups
+  get 'polls'                              => 'application#index', as: :polls
+  get 'explore'                            => 'application#index', as: :explore
+  get 'profile'                            => 'application#index', as: :profile
+  get 'contact'                            => 'application#index', as: :contact
+  get 'email_preferences'                  => 'application#index', as: :email_preferences
+  get 'verify_stances'                     => 'application#index', as: :verify_stances
+  get 'apps/registered'                    => 'application#index'
+  get 'apps/authorized'                    => 'application#index'
+  get 'apps/registered/:id'                => 'application#index'
+  get 'apps/registered/:id/:slug'          => 'application#index'
+  get 'd/:key/comment/:comment'            => 'application#index', as: :discussion_comment
+  get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
+  get 'g/:key/memberships'                 => 'application#index', as: :group_memberships
+  get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls
+  get 'g/:key/memberships/:username'       => 'application#index', as: :group_memberships_username
+  get 'g/new'                              => 'application#index', as: :new_group
+  get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'p/example(/:type)'                  => 'polls#example',               as: :example_poll
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export

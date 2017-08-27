@@ -2,8 +2,8 @@ class UserSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :name, :username, :short_bio, :avatar_initials, :avatar_kind,
-             :avatar_url, :profile_url, :gravatar_md5, :time_zone, :search_fragment,
-             :label, :locale, :created_at, :email_verified, :has_password
+             :avatar_url, :gravatar_md5, :time_zone, :search_fragment, :label,
+             :locale, :created_at, :email_verified, :has_password
 
   def label
     username
@@ -18,17 +18,17 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def avatar_url
-    object.avatar_url :large
-  end
-
-  def profile_url
-    object.avatar_url :large
+    {
+      small:    object.avatar_url(:small),
+      medium:   object.avatar_url(:medium),
+      large:    object.avatar_url(:large),
+      original: object.avatar_url(:original)
+    }
   end
 
   def include_avatar_url?
     object.avatar_kind == 'uploaded'
   end
-  alias :include_profile_url? :include_avatar_url?
 
   def include_has_password?
     scope[:include_password_status]

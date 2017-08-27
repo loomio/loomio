@@ -81,7 +81,6 @@ fi:
       destroyed: 'Kommentti poistettiin'
     edit_comment: 'Muokkaa kommenttia'
     delete_comment: 'Poista kommentti'
-    in_reply_to: "Vastaus henkilölle <strong>{{name}}</strong>:"
     private_privacy_notice: 'Sinun kommenttisi tulee olemaan vain näkyvillä {{groupName}}-ryhmän jäsenille.'
     public_privacy_notice: 'Sinun kommenttisi tulee olemaan näkyvillä kaikille webissä.'
   sidebar:

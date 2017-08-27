@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   include UsesMetadata
+  include LoadAndAuthorize
   layout false
 
   def export

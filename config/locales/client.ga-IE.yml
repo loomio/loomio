@@ -586,7 +586,6 @@ ga-IE:
     liked_by_two_others: 'Is maith le {{name_1}} agus {{name_2}} seo.'
     liked_by_many_others: 'Thaitin sé le {{joinedNames}} agus {{name}}.'
     liked_by_name: 'Thaitin sé le {{name}}.'
-    liked_by_names_and_name: 'Thaitin sé le {{joinedNames}} agus {{name}}.'
     started_by: 'Tosaithe ag <strong>{{name}}</strong> '
     edited: Curtha in eagar
     volume:

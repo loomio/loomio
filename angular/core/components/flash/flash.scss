@@ -3,7 +3,7 @@
   left: 20px;
   min-width: 220px;
   position: fixed;
-  z-index: 2000;
+  z-index: $z-high;
 }
 
 .flash-root__container {

@@ -151,7 +151,6 @@ tr:
     cancel_reply: 'Cevabı İptal Et'
     confirm_delete_message: 'Bu yorumu silmek istediğinden emin misin?'
     confirm_delete: 'Yorumu sil'
-    in_reply_to: "<strong>{{name}}</strong> kişisine cevaben"
     submit_button:
       label: 'Gönder'
     private_privacy_notice: 'Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.'
@@ -537,7 +536,6 @@ tr:
       or: veya
     no_threads:
       show_all: Herhangi bir yeni konunuz yok.
-      show_starred: Herhangi bir yıldızlı konunuz yok.
       show_proposals: Şu anda etkin herhangi bir öneri yok.
       show_muted: Sesi kısılmış herhangi bir konunuz yok.
     view_recent: Tüm son konuları görüntüle?
@@ -550,9 +548,6 @@ tr:
       all: Son Konular
       all_aria_label: Şu anda son konular görüntüleniyor
       all_description: Son konuları görüntüle
-      starred: Yıldızlı Konular
-      starred_aria_label: Şu anda önemli olarak işaretlediğim konular görüntüleniyor
-      starred_description: Sadece önemli olarak işaretlediğiniz konuları görüntüleyin.
       proposals: Öneriler
       proposals_aria_label: Şu anda aktif önerileri olan konular görüntüleniyor
       proposals_description: Sadece aktif önerileri olan konuları görüntüle
@@ -565,15 +560,12 @@ tr:
       you_voted: 'Oy verdiniz: {{position}}.'
     threads_from:
       group: 'tarafından konular'
-      proposals: 'Öneriler'
       starred: 'Yıldızlı konular'
       today: 'Bugün'
       yesterday: 'Dün'
       thisweek: 'Bu hafta'
       thismonth: 'Bu ay'
       older: 'Bir aydan daha eski'
-  star_toggle:
-    star: Yıldız konu
   inbox_page:
     no_threads: Yaşasın! Gelen kutunuzdaki bütün konuları okudunuz.
     unread_threads: Okunmamış konular
@@ -596,7 +588,6 @@ tr:
     liked_by_two_others: '{{name_1}} ve {{name_2}} bunu beğendi.'
     liked_by_many_others: '{{joinedNames}} ve {{name}} tarafından beğenildi.'
     liked_by_name: '{{name}} tarafından beğenildi.'
-    liked_by_names_and_name: '{{joinedNames}} ve {{name}} tarafından beğenildi.'
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
     edited: 'Düzenlendi'
   thread_group:

@@ -10,7 +10,6 @@
     = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
 
   %body{class: "pages #{controller_name} #{action_name}"}
-    = render 'application/flash_messages', :flash => flash
     %main.container= yield
 
   = javascript_include_tag "application"

@@ -187,7 +187,6 @@ nl_NL:
     delete_comment: 'Verwijder reactie'
     cancel_reply: 'Annuleren antwoord'
     confirm_delete_message: 'Weet je zeker dat je deze reactie wilt verwijderen?'
-    in_reply_to: "In antwoord op <strong>{{name}}</strong>:"
     submit_button:
       label: 'Plaatsen'
     private_privacy_notice: 'Je commentaar is alleen zichtbaar voor leden van {{groupName}}.'
@@ -242,7 +241,7 @@ nl_NL:
     new_vote: "<strong>{{name}}</strong> {{position}} ten aanzien van het voorstel <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> heeft gereageerd op <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> heeft geantwoord op je opmerking in <strong>{{title}}</strong>"
-    comment_liked: "<strong>{{name}}</strong> vindt je opmerking leuk in <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> vindt je opmerking leuk in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> heeft je vermeld in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> heeft gevraagd lid te mogen worden van <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> heeft je deelnameverzoek goedgekeurd <strong>{{title}}</strong>'
@@ -674,7 +673,6 @@ nl_NL:
   deactivate_user_form:
     aria_label: 'Bevestig deactivatie account'
     title: 'Deactiveer account'
-    question: 'Wil je ons vertellen waarom je je account deactiveert?'
     placeholder: 'Het beantwoorden van deze vraag is optioneel. Alle informatie die je deelt, helpt ons om Loomio te verbeteren :)'
     submit: 'Deactiveer account'
   only_coordinator_modal:
@@ -696,7 +694,6 @@ nl_NL:
       loud_description: "Als je je aansluit bij een nieuwe groep, krijg je een email <strong>zodra er activiteit is</strong>."
       normal_description: "Als je je aansluit bij een nieuwe groep, krijg je een email over <strong>nieuwe discussies en voorstellen</strong>."
       quiet_description: "Als je je aansluit bij een nieuwe groep, krijg je <strong>geen email over activiteit</strong>."
-    change_default: Verander standaard
     edit: Bewerk
     messages:
       updated: E-mailinstellingen bijgewerkt
@@ -710,7 +707,6 @@ nl_NL:
       join_group: <a href="/explore">wordt lid</a> van een groep om discussies te zien.
     no_threads:
       show_all: Je hebt geen recente discussies.
-      show_starred: Je hebt geen gemarkeerde discussies.
       show_proposals: Er zijn geen voorstellen actief op dit moment.
       show_muted: Je hebt geen gedempte discussies.
     view_recent: Bekijk alle recente discussies?
@@ -733,9 +729,6 @@ nl_NL:
       all: Recente discussies
       all_aria_label: Toont momenteel recente discussies
       all_description: Bekijk recente discussies
-      starred: Gemarkeerde discussies
-      starred_aria_label: Toont momenteel discussies die ik gemarkeerd heb als belangrijk
-      starred_description: Bekijk alleen discussies die je als belangrijk hebt gemarkeerd
       proposals: Voorstellen
       proposals_aria_label: Toont momentel discussies met actieve voorstellen
       proposals_description: Bekijk alleen discussies met actieve voorstellen
@@ -751,15 +744,12 @@ nl_NL:
       undecided: 'Je bent onbeslist'
     threads_from:
       group: 'Discussies van'
-      proposals: 'Voorstellen'
       starred: 'Gemarkeerde discussies'
       today: 'Vandaag'
       yesterday: 'Gisteren'
       thisweek: 'Deze week'
       thismonth: 'Deze maand'
       older: 'Ouder dan een maand'
-  star_toggle:
-    star: Gemarkeerde discussie
   inbox_page:
     no_threads: Woehoe! Je hebt alle discussies in je postvak gelezen.
     unread_threads: Ongelezen discussies
@@ -784,7 +774,6 @@ nl_NL:
     liked_by_two_others: '{{name_1}} en {{name_2}} vinden dit leuk.'
     liked_by_many_others: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
     liked_by_name: 'Leuk gevonden door {{name}}.'
-    liked_by_names_and_name: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
     started_by: 'Gestart door <strong>{{name}}</strong>'
     edited: 'Bewerkt'
     volume:

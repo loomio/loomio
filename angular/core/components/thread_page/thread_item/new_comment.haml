@@ -20,8 +20,8 @@
 
   .thread-item__footer.new-comment__footer
     .thread-item__actions{ng-if: "showCommentActions()"}
-      %button.thread-item__action.thread-item__action--like.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.like", ng-show: "!currentUserLikesIt()", ng-click: "like()"}>
-      %button.thread-item__action.thread-item__action--unlike.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.unlike", ng-click: "unlike()", ng-show: "currentUserLikesIt()"}>
+      %button.thread-item__action.thread-item__action--like.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.like", ng-if: "!(reactExecuting || currentUserReaction())", ng-click: "react('+1')"}>
+      %button.thread-item__action.thread-item__action--unlike.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.unlike", ng-click: "unreact()", ng-if: "reactExecuting || currentUserReaction()"}>
       %span.lmo-no-print{aria-hidden: "true"}>·
       %button.thread-item__action.thread-item__action--reply.lmo-no-print{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
       %translate_button.lmo-no-print{model: "eventable", showdot: "true"}
@@ -29,7 +29,5 @@
         %span{aria-hidden: "true"}·
         %button.thread-item__action--view-edits{ng-click: "showRevisionHistory()", translate: "new_comment_item.edited"}>
 
-    .thread-item__liked-by{ng-if: "anybodyLikesIt()"}
-      {{ reactionSentence }}
-
     %outlet{name: "after-comment-event", model: "eventable"}
+    .thread-item__liked-by {{ reactionSentence() }}

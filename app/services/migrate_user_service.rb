@@ -29,7 +29,7 @@ class MigrateUserService
     ahoy_messages: :user_id,
     attachments: :user_id,
     comments: :user_id,
-    comment_votes: :user_id,
+    reactions: :user_id,
     contacts: :user_id,
     discussion_readers: :user_id,
     discussions: :author_id,

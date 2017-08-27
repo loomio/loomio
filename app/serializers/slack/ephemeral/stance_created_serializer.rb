@@ -3,10 +3,10 @@ class Slack::Ephemeral::StanceCreatedSerializer < Slack::BaseSerializer
 
   def text
     I18n.t(:"slack.stance_created", {
-      title:      object.eventable.poll.title,
-      position:   object.eventable.poll_options.first.display_name,
-      stance_url: slack_link_for(object.eventable, invitation: true),
-      poll_url:   slack_link_for(object.eventable.poll, invitation: true)
+      title:      model.poll.title,
+      position:   model.poll_options.first.display_name,
+      stance_url: slack_link_for(model, invitation: true),
+      poll_url:   slack_link_for(model.poll, invitation: true)
     })
   end
 end

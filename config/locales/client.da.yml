@@ -215,7 +215,6 @@ da:
     cancel_reply: 'Fortryd svar'
     confirm_delete_message: 'Er du sikker på at du vil slette denne kommentar?'
     confirm_delete: 'Slet kommentar'
-    in_reply_to: "Som svar til <strong>{{name}}</strong>:"
     submit_button:
       label: 'Gem'
     private_privacy_notice: 'Din kommentar til kun være synlig for medlemmer af {{groupName}}.'
@@ -277,7 +276,7 @@ da:
     new_vote: "<strong>{{name}}</strong> {{position}} på forlaget <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> kommenterede på <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> svarede på din kommentar i <strong>{{title}}</strong>"
-    comment_liked: "<strong>{{name}}</strong> likede din kommentar i <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> likede din kommentar i <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> nævnte dig i <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ønsker at blive medlem af <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> godkendte dit ønske om at blive medlem <strong>{{title}}</strong>'
@@ -676,9 +675,6 @@ da:
     use_initials: 'Benyt initialer'
     use_gravatar: 'Benyt gravatar'
     use_uploaded: 'Upload et nyt billede'
-  change_password_form:
-    title: Skift adgangskode
-    helptext: Adgangskoden skal være 8 tegn lang. Almindelige adgangskoder så som "password" er ikke tilladt for at sikre din konto.
   deactivation_modal:
     aria_label: 'Deaktiver konto'
     introduction: 'Når du deaktiverer din konto:'
@@ -690,7 +686,6 @@ da:
   deactivate_user_form:
     aria_label: 'Bekræft deaktiver konto'
     title: 'Deaktiver konto'
-    question: 'Would you tell us why you are deactivating your account?'
     placeholder: 'Du behøver ikke at svar poå dette spørgsmål. Al information som du deler vil hjælpe os at gøre Loomio bedre :)'
     submit: 'Deaktiver konto'
   only_coordinator_modal:
@@ -712,7 +707,6 @@ da:
       loud_description: "When you join a new group, you will be emailed <strong>whenever there is activity</strong>."
       normal_description: "When you join a new group, you will be emailed about <strong>new threads and proposals</strong>."
       quiet_description: "When you join a new group, you <strong>won't be emailed about activity</strong>."
-    change_default: Rediger standard
     edit: Rediger
     messages:
       updated: Emailindstillinger gemt
@@ -726,7 +720,6 @@ da:
       join_group: <a href="/explore">blive medlem</a> af en gruppe for at se debatter.
     no_threads:
       show_all: Du har ikke nogen seneste debatter.
-      show_starred: Du har ikke nogen stjernemarkerede debatter.
       show_proposals: Der er pt. ikke nogen aktive forslag.
       show_muted: Du har ikke nogen debatter uden notifikationer.
     view_recent: Vis alle seneste debatter?
@@ -749,9 +742,6 @@ da:
       all: Seneste debatter
       all_aria_label: Viser pt. seneste debatter
       all_description: Vis seneste debatter
-      starred: Stjernemarkerede debatter
-      starred_aria_label: Viser pt. debatter som jeg har markeret som vigtige
-      starred_description: Vis kun debatter som du har markeret som vigtige
       proposals: Forslag
       proposals_aria_label: Viser pt. debatter med aktive forslag
       proposals_description: Vis kun debatter med aktive forslag
@@ -767,15 +757,12 @@ da:
       undecided: 'De har ikke stemt'
     threads_from:
       group: 'Debatter fra'
-      proposals: 'Forslag'
       starred: 'Stjernemarkerede debatter'
       today: 'I dag'
       yesterday: 'I går'
       thisweek: 'Denne uge'
       thismonth: 'Denne måned'
       older: 'Ældre end en måned'
-  star_toggle:
-    star: Stjernemarker debat
   inbox_page:
     no_threads: Woohoo! Du har læst alle dine debatindlæg i din indbox.
     unread_threads: Ulæste debatter
@@ -800,7 +787,6 @@ da:
     liked_by_two_others: '{{name_1}} og {{name_2}} like dette.'
     liked_by_many_others: 'Liket af {{joinedNames}} og {{name}}.'
     liked_by_name: 'Liket af {{name}}.'
-    liked_by_names_and_name: 'Liket af {{joinedNames}} og {{name}}.'
     started_by: 'Oprettet af <strong>{{name}}</strong>'
     edited: 'Redigeret'
     volume:
