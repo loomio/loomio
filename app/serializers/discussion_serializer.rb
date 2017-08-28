@@ -17,10 +17,6 @@ class DiscussionSerializer < ActiveModel::Serializer
     @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]
   end
 
-  def scope
-    super || {}
-  end
-
   attributes :id,
              :key,
              :title,
