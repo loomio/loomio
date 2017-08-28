@@ -1,18 +1,22 @@
+$chip-height: 40px;
+
 .notify-input {
   margin: 24px 0;
 }
 
 .notify-input__label {
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(0, 0, 0, 0.38) !important;
 }
 
 .notify-input__chips md-chip {
-  height: 40px;
+  height: $chip-height;
   padding: 4px;
   padding-right: 28px !important;
 }
 
-.notify-input input::placeholder {
-  font-size: 14px;
+.notify-input input {
+  height: $chip-height;
+  margin-bottom: 0;
+  &::placeholder { font-size: 14px; }
 }
