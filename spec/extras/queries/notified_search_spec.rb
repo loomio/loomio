@@ -46,6 +46,12 @@ describe Queries::NotifiedSearch do
       expect(subject('better')).to be_empty
     end
 
+    it 'does not find empty groups' do
+      another_group.memberships.destroy_all
+      another_group.add_member! user
+      expect(subject('better')).to be_empty
+    end
+
     it 'finds an invitation if the query is an email' do
       expect(subject('wark@wark.com').map(&:title)).to include 'wark@wark.com'
     end

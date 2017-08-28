@@ -1,6 +1,6 @@
 .notify-input
   %md-chips.notify-input__chips{ng-model: "model.notified", md-require-match: "true"}
-    %md-autocomplete{md-items: "$chip in search(query)", md-search-text: "query", placeholder: "Enter groups, usernames, or email addresses of people to notify", md-min-length: "3", md-delay: "300"}
+    %md-autocomplete{md-items: "$chip in search(query)", md-no-cache: "true", md-search-text: "query", placeholder: "Enter groups, usernames, or email addresses of people to notify", md-min-length: "3", md-delay: "300"}
       %md-item-template
         %notify_chip{chip: "$chip"}
     %md-chip-template

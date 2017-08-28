@@ -1,6 +1,6 @@
 class Notified::Invitation < Notified::Base
   def id
-    nil
+    model
   end
 
   def type

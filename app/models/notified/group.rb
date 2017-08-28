@@ -1,7 +1,6 @@
 class Notified::Group < Notified::Base
   def initialize(model, notifier)
-    super(model)
-    @notifier = notifier
+    super(model).tap { @notifier = notifier }
   end
 
   def id
