@@ -1,19 +1,29 @@
-Notified::Group = Struct.new(:group) do
-  alias :read_attribute_for_serialization :send
+class Notified::Group < Notified::Base
+  def initialize(model, notifier)
+    super(model)
+    @notifier = notifier
+  end
 
   def id
-    group.id
+    model.id
   end
 
   def title
-    group.full_name
+    model.full_name
   end
 
   def subtitle
-    "(X members)"
+    I18n.t(:"notified.group_users", count: notified_ids.length)
   end
 
   def icon_url
-    group.logo.presence&.url(:card) || '/img/default-logo-medium.png'
+    model.logo.presence&.url(:card) || '/img/default-logo-medium.png'
+  end
+
+  def notified_ids
+    @notified_ids ||= Queries::UsersByVolumeQuery
+                        .normal_or_loud(model)
+                        .without(@notifier)
+                        .pluck(:id)
   end
 end

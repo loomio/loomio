@@ -14,7 +14,7 @@ Queries::NotifiedSearch = Struct.new(:query, :user) do
   end
 
   def visible_groups
-    user.formal_groups.search_for(query).map { |group| Notified::Group.new(group) }
+    user.formal_groups.search_for(query).map { |group| Notified::Group.new(group, user) }
   end
 
   def visible_invitations

@@ -1,19 +1,21 @@
-Notified::User = Struct.new(:user) do
-  alias :read_attribute_for_serialization :send
-
+class Notified::User < Notified::Base
   def id
-    user.id
+    model.id
   end
 
   def title
-    user.name
+    model.name
   end
 
   def subtitle
-    :"@#{user.username}"
+    model.username
   end
 
   def icon_url
-    user.avatar_url(:small)
+    model.avatar_url(:small)
+  end
+
+  def notified_ids
+    Array(model.id)
   end
 end

@@ -1,16 +1,13 @@
-Notified::Invitation = Struct.new(:email) do
-  alias :read_attribute_for_serialization :send
+class Notified::Invitation < Notified::Base
+  def id
+    nil
+  end
+
+  def type
+    "Invitation"
+  end
 
   def title
-    email
-  end
-  alias :id :title
-
-  def subtitle
-    nil
-  end
-
-  def icon_url
-    nil
+    model
   end
 end
