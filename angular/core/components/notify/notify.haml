@@ -1,8 +1,0 @@
-.notify
-  %md-contact-chips{ng-model: "model.notified", md-contact-name: "name", md-contact-email: "label", md-contact-image: "avatarUrl.small", md-contacts: "search($query)", md-min-length: "3"}
-    %md-chip-template
-      .notify__user{ng-if: "$chip.id"}
-        %user_avatar{user: "$chip", size: "small"}
-        %strong {{$chip.name}}
-      .notify__email{ng-if: "!$chip.id"}
-        %strong {{$chip.email}}

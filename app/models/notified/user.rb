@@ -10,7 +10,7 @@ Notified::User = Struct.new(:user) do
   end
 
   def subtitle
-    user.username
+    :"@#{user.username}"
   end
 
   def icon_url

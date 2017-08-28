@@ -14,6 +14,6 @@ Notified::Group = Struct.new(:group) do
   end
 
   def icon_url
-    group.logo.url(:card)
+    group.logo.presence&.url(:card) || '/img/default-logo-medium.png'
   end
 end

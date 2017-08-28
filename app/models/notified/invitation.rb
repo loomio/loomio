@@ -7,10 +7,10 @@ Notified::Invitation = Struct.new(:email) do
   alias :id :title
 
   def subtitle
-    "??"
+    nil
   end
 
   def icon_url
-    "wark"
+    nil
   end
 end
