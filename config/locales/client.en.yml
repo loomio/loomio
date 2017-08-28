@@ -1749,6 +1749,10 @@ en:
     filter_placeholder: (All polls)
     groups_placeholder: (All groups)
 
+  notify_input:
+    label: People to notify
+    placeholder: Enter groups, usernames, or email addresses of people to notify
+
   auth_form:
     sign_in_to_loomio: Sign into Loomio
     sign_in: Sign in

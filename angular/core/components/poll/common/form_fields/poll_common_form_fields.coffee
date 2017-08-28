@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonFormFields', ($translate, Session, AbilityService, EmojiService) ->
+angular.module('loomioApp').directive 'pollCommonFormFields', ($translate, Records, Session, AbilityService, EmojiService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/form_fields/poll_common_form_fields.html'
   controller: ($scope) ->
@@ -18,3 +18,10 @@ angular.module('loomioApp').directive 'pollCommonFormFields', ($translate, Sessi
 
     $scope.detailsPlaceholder = ->
       $translate.instant("poll_#{$scope.poll.pollType}_form.details_placeholder")
+
+    $scope.changeGroup = ->
+      $scope.poll.notified = _.reject $scope.poll.notified, (notified) ->
+        notified.type == "FormalGroup"
+      if $scope.poll.group()
+        Records.searchResults.fetchNotified($scope.poll.group().name).then (data) ->
+          $scope.poll.notified.push(data[0]) if data.length
