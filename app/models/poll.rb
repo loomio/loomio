@@ -4,6 +4,7 @@ class Poll < ActiveRecord::Base
   include HasMentions
   include HasGuestGroup
   include MakesAnnouncements
+  include MakesNotifications
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope

@@ -15,7 +15,7 @@ class PollEmailInfo
   def initialize(recipient:, event:, action_name:)
     @recipient   = recipient
     @event       = event
-    @poll        = event.poll
+    @poll        = event.eventable.poll
     @eventable   = event.eventable
     @action_name = action_name
   end

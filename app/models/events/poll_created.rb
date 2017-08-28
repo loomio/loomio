@@ -1,12 +1,9 @@
 class Events::PollCreated < Event
   include Events::LiveUpdate
-  include Events::PollEvent
+  include Events::Notify::FromAuthor
   include Events::Notify::ThirdParty
 
   def self.publish!(poll, actor)
-    super poll,
-          user: actor,
-          discussion: poll.discussion,
-          announcement: poll.make_announcement
+    super poll, user: actor, discussion: poll.discussion
   end
 end
