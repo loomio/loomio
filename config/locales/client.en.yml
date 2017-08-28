@@ -1463,6 +1463,9 @@ en:
     closing: Closing
     start: Start
     update: Update
+    group_label: Group
+    group_placeholder: Select a group (optional)
+    no_group: (No group selected)
 
   poll_proposal_form:
     tool_tip_expanded: |
