@@ -1751,7 +1751,7 @@ en:
 
   notify_input:
     label: People to notify
-    placeholder: Enter groups, usernames, or email addresses of people to notify
+    placeholder: Enter groups, usernames, or email addresses
 
   auth_form:
     sign_in_to_loomio: Sign into Loomio
