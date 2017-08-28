@@ -8,7 +8,7 @@ class CommentSerializer < ActiveModel::Serializer
   has_many :attachments, serializer: AttachmentSerializer, root: :attachments
 
   def reactions
-    Hash(scope).dig(:cache, :reactions).get_for(object)
+    scope.dig(:cache, :reactions).get_for(object)
   end
 
   def mentioned_usernames
@@ -41,7 +41,11 @@ class CommentSerializer < ActiveModel::Serializer
   # This allows us to make 1 query to fetch all attachments, or reactors for a series
   # of comments, rather than needing to do a separate query for each comment
   def from_cache(field)
-    Hash(scope).dig(:cache, field, object.id)
+    scope.dig(:cache, field, object.id)
+  end
+
+  def scope
+    Hash(super)
   end
 
 end
