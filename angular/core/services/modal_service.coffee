@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $tim
         controller:     modal.controller
         size:           modal.size or ''
         resolve:        resolve
-        escapeToClose:  resolve.preventClose()
+        escapeToClose:  !resolve.preventClose()
         ariaLabel:      $translate.instant("#{modal.templateUrl.split('/').pop().replace('.html', '')}.aria_label")
         onComplete:     focusElement
 
