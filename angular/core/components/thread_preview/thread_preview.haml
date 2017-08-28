@@ -27,7 +27,7 @@
       .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
         %i.fa.fa-lg.fa-thumb-tack
 
-  .thread-preview__actions.hidden-xs{ng-if: "thread.discussionReaderId"}
+  .thread-preview__actions.lmo-hide-on-xs{ng-if: "thread.discussionReaderId"}
     %md-button.md-raised.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
       .material-icons done
     %md-button.md-raised.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}", aria-label: "{{ 'volume_levels.mute' | translate }}" }>

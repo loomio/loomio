@@ -45,9 +45,7 @@
 }
 
 @media(max-width: $tiny-max-px) {
-  .lmo-hide-on-xs {
-    display: none;
-  }
+  .lmo-hide-on-xs { display: none !important; }
 }
 
 @media (max-width: $tiny-max-px){

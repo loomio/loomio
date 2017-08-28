@@ -8,7 +8,7 @@ class CommentSerializer < ActiveModel::Serializer
   has_many :attachments, serializer: AttachmentSerializer, root: :attachments
 
   def reactions
-    scope.dig(:cache, :reactions).get_for(object)
+    Hash(scope).dig(:cache, :reactions).get_for(object)
   end
 
   def mentioned_usernames

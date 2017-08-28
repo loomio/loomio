@@ -6,7 +6,6 @@
   position: relative;
   &:hover .thread-preview__actions { opacity: 1; }
   &.loading-content { padding: 10px; }
-  &:hover .thread-preview__actions { display: flex; }
 }
 
 .thread-preview__status-icon {
@@ -20,6 +19,7 @@
 
 .thread-preview__actions {
   position: absolute;
+  display: flex;
   right: 40px;
   transition: opacity 0.25s ease-in-out;
   top: 0;
