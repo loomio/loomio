@@ -49,4 +49,4 @@ RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 # source the config file and run puma when the container starts
-CMD if [ "$TASK" = "worker" ]; then bundle exec rake jobs:work; else bundle exec puma -C config/puma.rb; fi
+CMD docker_start.sh
