@@ -1,5 +1,6 @@
 .notification {
   @include displayFlex;
+  @include listTransition;
   padding: 13px;
 }
 
