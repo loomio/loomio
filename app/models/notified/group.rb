@@ -4,7 +4,7 @@ class Notified::Group < Notified::Base
   end
 
   def id
-    model.id
+    model.key
   end
 
   def title

@@ -235,6 +235,13 @@ en:
     message: "You have been logged out of Loomio from another window. Please sign back in to continue."
     ok: "Ok"
 
+  notify_group:
+    modal_title: People to notify
+    modal_error: Sorry, we couldn't find that group. Please try again!
+    search_placeholder: Search
+    members_count: "{{count}} people selected"
+    group_subtitle: ({{count}} members)
+
   comment_form:
     aria_label: 'Add a comment'
     attachments:
