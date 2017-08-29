@@ -19,9 +19,12 @@ angular.module('loomioApp').directive 'pollCommonFormFields', ($translate, Recor
     $scope.detailsPlaceholder = ->
       $translate.instant("poll_#{$scope.poll.pollType}_form.details_placeholder")
 
-    $scope.changeGroup = ->
+    $scope.$watch 'poll.group().key', (_newId, prevId) ->
+      # remove previous group
       $scope.poll.notified = _.reject $scope.poll.notified, (notified) ->
-        notified.type == "FormalGroup"
+        notified.id == prevId
+
+      # add new group
       if $scope.poll.group()
         Records.searchResults.fetchNotified($scope.poll.group().name).then (data) ->
           $scope.poll.notified.push(data[0]) if data.length

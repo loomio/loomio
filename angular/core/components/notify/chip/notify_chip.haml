@@ -4,6 +4,6 @@
     %img.notify-chip__avatar{ng-switch-when: "FormalGroup", src: "/img/default-logo-medium.png"}
     %i.material-icons{ng-switch-when: "User"} person
     %i.material-icons{ng-switch-when: "Invitation"} mail_outline
-  .notify-chip__content.lmo-flex{layout: "column", ng-click: "editChip()"}
+  .notify-chip__content.lmo-flex{layout: "column"}
     %strong {{chip.title}}
     %span{ng-if: "chip.subtitle"} {{chip.subtitle}}
