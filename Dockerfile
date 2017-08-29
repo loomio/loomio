@@ -29,7 +29,7 @@ COPY config/database.docker.yml /loomio/config/database.yml
 
 WORKDIR /loomio/angular
 RUN npm install -g yarn
-RUN npm install
+RUN yarn
 RUN npm rebuild node-sass
 
 WORKDIR /loomio
@@ -49,4 +49,4 @@ RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 # source the config file and run puma when the container starts
-CMD docker_start.sh
+CMD /loomio/docker_start.sh
