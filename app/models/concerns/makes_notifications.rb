@@ -8,7 +8,7 @@ module MakesNotifications
   end
 
   def notified_users
-    @notified_users ||= User.where(id: notified_user_ids)
+    @notified_users ||= User.distinct.where(id: notified_user_ids)
   end
 
   def notified_user_ids

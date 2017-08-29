@@ -103,10 +103,19 @@ EventBus.configure do |config|
 
   # update discussion importance
   config.listen('discussion_pin',
-  'poll_create',
-  'poll_close',
-  'poll_destroy',
-  'poll_expire') { |model| model.discussion&.update_importance }
+                'poll_create',
+                'poll_close',
+                'poll_destroy',
+                'poll_expire') { |model| model.discussion&.update_importance }
+
+  # add notified users to guest group
+  config.listen('poll_create') do |model, actor|
+    MembershipService.add_users_to_group(
+      group: model.guest_group,
+      users: model.notified_users.without(model.group&.members),
+      inviter: actor
+    )
+  end
 
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
