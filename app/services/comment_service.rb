@@ -18,7 +18,7 @@ class CommentService
 
   def self.update(comment:, params:, actor:)
     comment.edited_at = Time.zone.now
-    comment.body = params[:body]
+    comment.assign_attributes(params.slice(:body, :attachment_ids))
 
     return false unless comment.valid?
     actor.ability.authorize! :update, comment

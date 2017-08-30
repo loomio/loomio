@@ -5,7 +5,7 @@
 .thread-item__title {
   /* these styles break with BEM but they keep the translations clean*/
   color: $grey-on-white;
-  strong {
+  strong, a {
     color: $primary-text-color;
     @include md-body-2;
   }

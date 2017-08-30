@@ -13,8 +13,8 @@
   height: auto;
   cursor: pointer;
   &:not(:last-child) { border-bottom: 1px solid $border-color; }
-  &:hover { background: $list-hover-color; }
-  &.active { background: $list-hover-color; }
+  &:hover { background: $background-color; }
+  &.active { background: $background-color; }
 }
 
 .mentio-menu__avatar {
