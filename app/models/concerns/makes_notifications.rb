@@ -1,6 +1,6 @@
 module MakesNotifications
   def notified=(hash)
-    @notified = hash
+    @notified = hash.map(&:with_indifferent_access)
   end
 
   def notified

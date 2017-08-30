@@ -254,4 +254,22 @@ FactoryGirl.define do
     body "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah"
   end
 
+  factory :notified_user, class: Notified::User do
+    skip_create
+    association :model, factory: :user
+    initialize_with { new(model) }
+  end
+
+  factory :notified_group, class: Notified::Group do
+    skip_create
+    association :model, factory: :formal_group
+    initialize_with { new(model, nil) }
+  end
+
+  factory :notified_invitation, class: Notified::Invitation do
+    skip_create
+    model "bill@dog.ninja"
+    initialize_with { new(model) }
+  end
+
 end

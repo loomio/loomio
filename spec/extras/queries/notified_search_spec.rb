@@ -39,7 +39,7 @@ describe Queries::NotifiedSearch do
     end
 
     it 'finds groups the user is a member of' do
-      expect(subject('dirty').map(&:id)).to include group.id
+      expect(subject('dirty').map(&:id)).to include group.key
     end
 
     it 'does not find groups the user is not a part of' do

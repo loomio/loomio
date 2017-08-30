@@ -17,4 +17,8 @@ class Events::UserMentioned < Event
   def notification_recipients
     User.where(id: custom_fields['mentioned_user_id'].to_i)
   end
+
+  def mailer
+    ThreadMailer
+  end
 end

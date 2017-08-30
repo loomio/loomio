@@ -1,5 +1,5 @@
 class Notified::Base
-  attr_reader :model
+  attr_accessor :model
   alias :read_attribute_for_serialization :send
 
   def initialize(model)
@@ -28,5 +28,9 @@ class Notified::Base
 
   def notified_ids
     []
+  end
+
+  def as_json
+    NotifiedSerializer.new(self, root: false).as_json
   end
 end

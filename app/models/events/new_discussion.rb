@@ -16,4 +16,8 @@ class Events::NewDiscussion < Event
       Queries::UsersByVolumeQuery.loud(eventable)
     end.without(eventable.author).without(eventable.mentioned_group_members)
   end
+
+  def mailer
+    ThreadMailer
+  end
 end
