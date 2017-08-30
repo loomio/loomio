@@ -8,7 +8,7 @@ module MakesNotifications
   end
 
   def notified_when_created
-    events.find_by(kind: created_event_kind)&.custom_fields&.dig(:notified)
+    events.find_by(kind: created_event_kind)&.custom_fields&.dig('notified')
   end
 
   def notified_users

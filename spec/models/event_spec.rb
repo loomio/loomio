@@ -339,7 +339,21 @@ describe Event do
     end
 
     it 'notifies everyone if announcement' do
-      poll.notified = [build(:notified_group, model: discussion.group).as_json]
+
+      # NB these are specified by the author, but will come in with these as the default
+      poll.notified = [
+        build(:notified_group, model: discussion.group).as_json.merge(notified_ids: [
+          user_membership_loud.id,
+          user_thread_loud.id,
+          user_membership_normal.id,
+          user_thread_normal.id,
+          user_membership_quiet.id,
+          user_thread_quiet.id,
+          user_membership_mute.id,
+          user_thread_mute.id
+        ])
+      ]
+
       Events::PollCreated.publish!(poll, poll.author)
       @event = Events::PollExpired.publish!(poll)
 

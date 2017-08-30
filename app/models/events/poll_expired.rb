@@ -19,10 +19,10 @@ class Events::PollExpired < Event
 
   # the author is always notified above, so don't notify them twice
   def notification_recipients
-    super.without(eventable.author)
+    super.without(eventable.unsubscribers).without(eventable.author)
   end
 
   def email_recipients
-    super.without(eventable.author)
+    super.without(eventable.unsubscribers).without(eventable.author)
   end
 end
