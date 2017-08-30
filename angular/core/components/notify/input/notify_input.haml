@@ -6,8 +6,8 @@
         %notify_chip{chip: "$chip"}
     %md-chip-template
       %notify_chip{chip: "$chip", ng-if: "$chip.type != 'FormalGroup'"}
-      %md-menu.lmo-pointer{ng-if: "$chip.type == 'FormalGroup'", ng-click: "$mdMenu.open($event)"}
-        %notify_chip{chip: "$chip"}
+      %md-menu.lmo-pointer{ng-if: "$chip.type == 'FormalGroup'"}
+        %notify_chip{ng-click: "$mdMenu.open($event)", chip: "$chip"}
         %md-menu-content.notify-input__menu-content
           %notify_group_form{notified: "$chip"}
   .lmo-md-action

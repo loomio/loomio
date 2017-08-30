@@ -3,6 +3,8 @@ angular.module('loomioApp').directive 'notifyGroupForm', ($translate, Records, L
   restrict: 'E'
   templateUrl: 'generated/components/notify/group/form/notify_group_form.html'
   controller: ($scope) ->
+    $scope.search =
+      fragment: ""
 
     $scope.init = ->
       Records.memberships.fetchByGroup($scope.notified.id, per: 1000).then ->
@@ -14,9 +16,9 @@ angular.module('loomioApp').directive 'notifyGroupForm', ($translate, Records, L
 
     $scope.updateVisible = ->
       _.map $scope.group.members(), (user) ->
-        user.showInNotifyGroup = _.isEmpty($scope.fragment) or
-                                 user.name.match(///#{$scope.fragment}///) or
-                                 user.username.match(///#{$scope.fragment}///)
+        user.showInNotifyGroup = _.isEmpty($scope.search.fragment) or
+                                 user.name.match(///#{$scope.search.fragment}///) or
+                                 user.username.match(///#{$scope.search.fragment}///)
 
     $scope.userIds = {}
     _.each $scope.notified.notified_ids, (id) -> $scope.userIds[id] = true

@@ -10,7 +10,7 @@
       .notify-group-form__filter.lmo-flex
         %md-input-container.polls-page__search.md-block{md-no-float: "true"}
           %i.material-icons search
-          %input{ng-model: "fragment", ng-change: "updateVisible()", ng-model-options: "{debounce: 300}", placeholder: "{{'notify_group.search_placeholder' | translate}}"}
+          %input{ng-model: "search.fragment", ng-change: "updateVisible()", ng-model-options: "{debounce: 300}", placeholder: "{{'notify_group.search_placeholder' | translate}}"}
 
       %md-list.notify-group-form__members
         %md-list-item.notify-group-form__member.lmo-flex.lmo-flex__center.lmo-flex__space-between{ng-show: "user.showInNotifyGroup", layout: "row", ng-repeat: "user in group.members() | orderBy: 'name' track by user.id"}
