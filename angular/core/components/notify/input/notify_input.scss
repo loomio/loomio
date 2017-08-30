@@ -22,5 +22,9 @@ $chip-height: 40px;
 .notify-input input {
   height: $chip-height;
   margin-bottom: 0;
-  &::placeholder { font-size: 14px; }
+  padding: 4px !important;
+  &::placeholder {
+    @include truncateText;
+    font-size: 14px;
+  }
 }
