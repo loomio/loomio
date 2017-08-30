@@ -15,7 +15,7 @@ class Events::NewDiscussion < Event
       Queries::UsersByVolumeQuery.normal_or_loud(eventable)
     else
       Queries::UsersByVolumeQuery.loud(eventable)
-    end.without(eventable.author).without(eventable.new_mentioned_group_members)
+    end.without(eventable.author).without(eventable.mentioned_group_members)
   end
 
   def mailer

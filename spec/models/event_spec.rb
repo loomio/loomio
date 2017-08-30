@@ -99,7 +99,7 @@ describe Event do
   describe 'user_mentioned' do
     it 'notifies the mentioned user' do
       CommentService.create(comment: comment, actor: comment.author)
-      event = Events::UserMentioned.where(kind: :user_mentioned).last
+      event = Events::UserMentioned.find_by(kind: :user_mentioned)
       expect(event.eventable).to eq comment
       email_users = event.send(:email_recipients)
       expect(email_users.length).to eq 1
@@ -114,7 +114,7 @@ describe Event do
   it 'new_discussion' do
     discussion.make_announcement = true
     expect { Events::NewDiscussion.publish!(discussion) }.to change { emails_sent }
-    email_users = Events::NewDiscussion.last.send(:email_recipients)
+    email_users = Events::NewDiscussion.find_by(kind: :new_discussion).send(:email_recipients)
     email_users.should     include user_thread_loud
     email_users.should     include user_membership_loud
 
@@ -132,10 +132,24 @@ describe Event do
   end
 
   describe 'poll_created' do
-    it 'makes an announcement' do
-      poll.make_announcement = true
-      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }
-      email_users = Events::PollCreated.last.send(:email_recipients)
+    it 'sends notifications specified by the author' do
+
+      # NB these are specified by the author, but will come in with these as the default
+      poll.notified = [
+        build(:notified_group, model: discussion.group).as_json.merge(notified_ids: [
+          user_membership_loud.id,
+          user_thread_loud.id,
+          user_membership_normal.id,
+          user_thread_normal.id,
+          user_membership_quiet.id,
+          user_thread_quiet.id,
+          user_membership_mute.id,
+          user_thread_mute.id
+        ])
+      ]
+
+      expect { @event = Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }
+      email_users = @event.send(:email_recipients)
       email_users.should     include user_thread_loud
       email_users.should     include user_membership_loud
 
@@ -150,7 +164,7 @@ describe Event do
       email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
-      notification_users = Events::PollCreated.last.send(:notification_recipients)
+      notification_users = @event.send(:notification_recipients)
       notification_users.should     include user_thread_loud
       notification_users.should     include user_membership_loud
 
@@ -222,9 +236,12 @@ describe Event do
       it 'true' do
         poll = FactoryGirl.build(:poll_proposal, discussion: discussion)
         poll.notified = [
-          build(:notified_group, model: discussion.group, notified_ids: [user_thread_loud.id, user_thread_normal.id]),
-          build(:notified_user, model: another_user),
-          build(:notified_invitation, model: "test@test.com")
+          build(:notified_group, model: discussion.group).as_json.merge(notified_ids: [
+            user_thread_loud.id,
+            user_thread_normal.id
+          ]),
+          build(:notified_user, model: another_user).as_json,
+          build(:notified_invitation, model: "test@test.com").as_json
         ]
         PollService.create(poll: poll, actor: discussion.group.admins.first)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
@@ -322,13 +339,11 @@ describe Event do
     end
 
     it 'notifies everyone if announcement' do
-      poll.make_announcement = true
+      poll.notified = [build(:notified_group, model: discussion.group).as_json]
       Events::PollCreated.publish!(poll, poll.author)
-      Events::PollExpired.publish!(poll)
-      event = Events::PollExpired.last
+      @event = Events::PollExpired.publish!(poll)
 
-      expect(event.announcement).to eq true
-      email_users = event.send(:email_recipients)
+      email_users = @event.send(:email_recipients)
       email_users.should     include user_thread_loud
       email_users.should     include user_membership_loud
 
@@ -343,7 +358,7 @@ describe Event do
       email_users.should_not include user_unsubscribed
       email_users.should_not include poll.author
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = @event.send(:notification_recipients)
       notification_users.should     include user_thread_loud
       notification_users.should     include user_membership_loud
 

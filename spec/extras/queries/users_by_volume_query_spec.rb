@@ -59,6 +59,21 @@ describe Queries::UsersByVolumeQuery do
     users.should_not include user_with_archived_membership
   end
 
+  it "mute or quiet" do
+    users = Queries::UsersByVolumeQuery.mute_or_quiet(discussion)
+    users.should_not include user_with_reader_volume_loud
+    users.should_not include user_with_reader_volume_normal
+    users.should_not include user_with_membership_volume_loud
+    users.should_not include user_with_membership_volume_normal
+
+    users.should     include user_with_membership_volume_quiet
+    users.should     include user_with_membership_volume_mute
+    users.should     include user_with_reader_volume_quiet
+    users.should     include user_with_reader_volume_mute
+    users.should_not include user_with_archived_membership
+  end
+
+
   it "mute" do
     users = Queries::UsersByVolumeQuery.mute(discussion)
     users.should     include user_with_membership_volume_mute

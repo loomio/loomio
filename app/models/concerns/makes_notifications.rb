@@ -1,10 +1,10 @@
 module MakesNotifications
   def notified=(hash)
-    @notified = Array(hash).map(&:with_indifferent_access)
+    @notified = Array(hash)
   end
 
   def notified
-    Array(@notified)
+    Array(@notified).map(&:with_indifferent_access)
   end
 
   def notified_when_created
