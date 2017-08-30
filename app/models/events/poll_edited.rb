@@ -17,7 +17,7 @@ class Events::PollEdited < Event
   alias :announcement_email_recipients :announcement_notification_recipients
 
   def specified_notification_recipients
-    Queries::UsersToMentionQuery.for(poll)
+    poll.new_mentioned_group_members
   end
   alias :specified_email_recipients :specified_notification_recipients
 end

@@ -5,8 +5,6 @@ EventBus.configure do |config|
   # Purge drafts after model creation
   config.listen('discussion_create') { |discussion| Draft.purge(user: discussion.author, draftable: discussion.group, field: :discussion) }
   config.listen('comment_create')    { |comment|    Draft.purge_without_delay(user: comment.user, draftable: comment.discussion, field: :comment) }
-  config.listen('motion_create')     { |motion|     Draft.purge(user: motion.author, draftable: motion.discussion, field: :motion) }
-  config.listen('vote_create')       { |vote|       Draft.purge(user: vote.user, draftable: vote.motion, field: :vote) }
   config.listen('poll_create')       { |poll|       Draft.purge(user: poll.author, draftable: poll.discussion, field: :poll) }
 
   # Add creator to group on group creation
@@ -21,8 +19,6 @@ EventBus.configure do |config|
   # Index search vectors after model creation
   config.listen('discussion_create',
                 'discussion_update',
-                'motion_create',
-                'motion_update',
                 'comment_create',
                 'comment_update',
                 'poll_create',
@@ -90,16 +86,6 @@ EventBus.configure do |config|
 
   # publish reply event after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
-
-  # publish mention events after model create / update
-  config.listen('comment_create',
-                'comment_update',
-                'motion_create',
-                'motion_update',
-                'discussion_create',
-                'discussion_update') do |model, actor|
-    Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
-  end
 
   # update discussion importance
   config.listen('discussion_pin',

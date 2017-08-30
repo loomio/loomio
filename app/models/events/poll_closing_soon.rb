@@ -1,35 +1,24 @@
 class Events::PollClosingSoon < Event
-  include Events::PollEvent
   include Events::Notify::Author
+  include Events::Notify::Users
+  include Events::Notify::FromAuthor
   include Events::Notify::ThirdParty
 
   def self.publish!(poll)
+    poll.notified = poll.notified_when_created
     super poll,
           user: poll.author,
-          announcement: !!poll.events.find_by(kind: :poll_created)&.announcement,
           created_at: Time.now
   end
 
   private
 
-  def announcement_notification_recipients
-    return User.none unless poll.group
-    recipients = poll.group.members
-    recipients = recipients.without(poll.participants) unless poll.voters_review_responses
-    recipients
+  def email_recipients
+    if eventable.voters_review_responses
+      super.merge(eventable.participants)
+    else
+      super
+    end
   end
-
-  def announcement_email_recipients
-    return User.none unless poll.group
-    recipients = Queries::UsersByVolumeQuery.normal_or_loud(poll.discussion)
-    recipients = recipients.without(poll.participants) unless poll.voters_review_responses
-    recipients
-  end
-
-  # don't notify mentioned users for poll closing soon
-  def specified_notification_recipients
-    User.none
-  end
-  alias :specified_email_recipients :specified_notification_recipients
 
 end

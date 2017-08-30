@@ -53,11 +53,12 @@ class Comment < ActiveRecord::Base
     group.members_can_edit_comments? or is_most_recent?
   end
 
+  private
+
   def users_to_not_mention
     User.where(username: parent&.author&.username)
   end
 
-  private
   def attachments_owned_by_author
     return if attachments.pluck(:user_id).select { |user_id| user_id != user.id }.empty?
     errors.add(:attachments, "Attachments must be owned by author")

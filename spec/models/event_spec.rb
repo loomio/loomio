@@ -90,6 +90,12 @@ describe Event do
     email_users.should_not include comment.parent.author
   end
 
+  it 'comment_edited' do
+    comment.body = user_mentioned_text
+    expect { Events::CommentEdited.publish!(comment, comment.author) }.to change { Event.where(kind: :user_mentioned).count }.by(1)
+    expect { Events::CommentEdited.publish!(comment, comment.author) }.to_not change { Event.where(kind: :user_mentioned).count }
+  end
+
   describe 'user_mentioned' do
     it 'notifies the mentioned user' do
       CommentService.create(comment: comment, actor: comment.author)
@@ -160,14 +166,8 @@ describe Event do
     end
 
     it 'notifies mentioned users' do
-      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }
-      email_users = Events::PollCreated.last.send(:email_recipients)
-      expect(email_users.length).to eq 1
-      expect(email_users).to include user_mentioned
-
-      notification_users = Events::PollCreated.last.send(:notification_recipients)
-      expect(notification_users.length).to eq 1
-      expect(notification_users).to include user_mentioned
+      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { Event.where(kind: :user_mentioned).count }.by(1)
+      expect(User.mentioned_in(poll)).to include user_mentioned
     end
   end
 
@@ -220,7 +220,12 @@ describe Event do
   describe 'poll_closing_soon' do
     describe 'voters_review_responses', focus: true do
       it 'true' do
-        poll = FactoryGirl.build(:poll_proposal, discussion: discussion, make_announcement: true)
+        poll = FactoryGirl.build(:poll_proposal, discussion: discussion)
+        poll.notified = [
+          build(:notified_group, model: discussion.group, notified_ids: [user_thread_loud.id, user_thread_normal.id]),
+          build(:notified_user, model: another_user),
+          build(:notified_invitation, model: "test@test.com")
+        ]
         PollService.create(poll: poll, actor: discussion.group.admins.first)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }

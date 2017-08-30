@@ -1,4 +1,5 @@
 class Events::NewComment < Event
+  include Events::Notify::Mentions
   include Events::Notify::Users
   include Events::LiveUpdate
 
@@ -11,7 +12,7 @@ class Events::NewComment < Event
   def email_recipients
     Queries::UsersByVolumeQuery.loud(eventable.discussion)
                                .without(eventable.author)
-                               .without(eventable.mentioned_group_members)
+                               .without(eventable.new_mentioned_group_members)
                                .without(eventable.parent_author)
   end
 

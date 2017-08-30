@@ -30,7 +30,7 @@ module Events::PollEvent
   end
 
   def specified_notification_recipients
-    Queries::UsersToMentionQuery.for(eventable)
+    eventable.new_mentioned_group_members
   end
 
   def email_recipients

@@ -26,5 +26,6 @@ class CommentService
     comment.attachments.where('id NOT IN (?)', params[:attachment_ids]).destroy_all
 
     EventBus.broadcast('comment_update', comment, actor)
+    Events::CommentEdited.publish!(comment, actor)
   end
 end
