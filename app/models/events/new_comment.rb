@@ -14,4 +14,8 @@ class Events::NewComment < Event
                                .without(eventable.mentioned_group_members)
                                .without(eventable.parent_author)
   end
+
+  def mailer
+    ThreadMailer
+  end
 end
