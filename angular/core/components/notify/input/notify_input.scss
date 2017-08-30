@@ -9,6 +9,10 @@ $chip-height: 40px;
   color: rgba(0, 0, 0, 0.38) !important;
 }
 
+.notify-input__menu-content {
+  padding: 0;
+}
+
 .notify-input__chips md-chip {
   height: $chip-height;
   padding: 4px;

@@ -1,9 +1,0 @@
-%md-dialog.notify-group-modal.lmo-modal__narrow
-  %md-toolbar
-    .md-toolbar-tools.lmo-flex__space-between
-      %h1.lmo-h1{translate: "notify_group.modal_title"}
-      %material_modal_header_cancel_button
-  .md-dialog-content
-    %loading{ng-if: "initExecuting"}
-    %p.lmo-hint-text{translate: "notify_group.modal_error", ng-if: "!initExecuting && !group"}
-    %notify_group_form{ng-if: "group", group: "group", notified: "notified"}

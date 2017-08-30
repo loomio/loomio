@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'notifyInput', (Records, ModalService, NotifyGroupModal) ->
+angular.module('loomioApp').directive 'notifyInput', (Records) ->
   scope: {model: '='}
   restrict: 'E'
   templateUrl: 'generated/components/notify/input/notify_input.html'
@@ -6,5 +6,9 @@ angular.module('loomioApp').directive 'notifyInput', (Records, ModalService, Not
     $scope.search = (query) ->
       Records.searchResults.fetchNotified(query)
 
-    $scope.edit = ($chip) ->
-      ModalService.open(NotifyGroupModal, notified: -> $chip) if $chip.type == 'FormalGroup'
+    $scope.totalNotified = ->
+      _.sum $scope.model.notified, (notified) ->
+        switch notified.type
+          when 'FormalGroup' then notified.notified_ids.length
+          when 'User'        then 1
+          when 'Invitation'  then 1
