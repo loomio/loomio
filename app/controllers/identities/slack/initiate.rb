@@ -19,8 +19,8 @@ module Identities::Slack::Initiate
   def respond_with_initiate_unauthorized
     return if initiate_group.present?
     I18n.t(:"slack.request_authorization_message", url: request_authorization_url(
-      id:   params[:team_id],
-      name: params[:team_domain]
+      id:     params[:team_id],
+      domain: params[:team_domain]
     ))
   end
 
