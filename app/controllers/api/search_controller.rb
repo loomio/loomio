@@ -5,11 +5,6 @@ class API::SearchController < API::RestfulController
     respond_with_collection serializer: SearchResultSerializer, root: :search_results
   end
 
-  def notified
-    @search = Queries::NotifiedSearch.new(params[:q], current_user).results
-    respond_with_collection serializer: NotifiedResultSerializer, root: false
-  end
-
   private
 
   def search_params

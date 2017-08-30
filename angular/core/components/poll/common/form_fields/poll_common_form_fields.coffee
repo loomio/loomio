@@ -26,5 +26,5 @@ angular.module('loomioApp').directive 'pollCommonFormFields', ($translate, Recor
 
       # add new group
       if $scope.poll.group()
-        Records.searchResults.fetchNotified($scope.poll.group().name).then (data) ->
+        Records.notified.fetchByFragment($scope.poll.group().name).then (data) ->
           $scope.poll.notified.push(data[0]) if data.length

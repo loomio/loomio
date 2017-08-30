@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'notifyInput', (Records) ->
   templateUrl: 'generated/components/notify/input/notify_input.html'
   controller: ($scope) ->
     $scope.search = (query) ->
-      Records.searchResults.fetchNotified(query)
+      Records.notified.fetchByFragment(query)
 
     $scope.totalNotified = ->
       _.sum $scope.model.notified, (notified) ->
