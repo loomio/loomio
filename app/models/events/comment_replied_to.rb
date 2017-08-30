@@ -16,4 +16,8 @@ class Events::CommentRepliedTo < Event
   def notification_recipients
     User.where(id: eventable.parent.author_id)
   end
+
+  def mailer
+    ThreadMailer
+  end
 end
