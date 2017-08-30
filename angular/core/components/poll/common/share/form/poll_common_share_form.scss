@@ -1,17 +1,8 @@
-poll_common_manage_card {
-  flex-grow: 1;
-}
-
 .poll-common-share-form .md-list-item-inner{
   padding: 0;
 }
 .poll-common-share-form md-list-item{
   padding: 0;
-}
-
-.poll-common-share-form__form {
-  display: block;
-  margin-bottom: 40px;
 }
 
 .poll-common-share-form__icon {
@@ -38,10 +29,6 @@ poll_common_manage_card {
   justify-content: center;
 }
 
-.poll-common-share-form__group-select {
-  min-width: 0;
-}
-
 .poll-common-share-form__option-icon {
   margin: auto;
 }
@@ -50,12 +37,6 @@ poll_common_manage_card {
   justify-content: space-between;
   width: 100%;
   pointer-events: auto;
-}
-
-.poll-common-share-form__loomio-group {
-  margin-top: -50px;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .poll-common-share-form__emails {
@@ -95,26 +76,4 @@ poll_common_manage_card {
   align-items: center;
   margin: 8px 0 0 0;
   padding: 8px;
-}
-
-.poll-common-share-form__community {
-  align-items: center;
-  width: 100%;
-}
-
-.poll-common-share-form__community-icon {
-  width: 48px;
-  height: 48px;
-}
-
-.poll-common-share-form__community-icon--slack {
-  padding: 5px;
-}
-
-.poll-common-share-form__community-icon--facebook {
-  padding: 10px;
-}
-
-.poll-common-share-form__h3 {
-  margin-top: 0;
 }
