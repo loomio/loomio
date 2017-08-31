@@ -10,4 +10,8 @@ module Events::Notify::FromAuthor
   def notification_recipients
     eventable.notified_users
   end
+
+  def invitation_recipients
+    eventable.notified_emails
+  end
 end
