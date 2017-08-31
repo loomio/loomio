@@ -17,6 +17,7 @@ class Events::PollExpired < Event
 
   private
 
+  # 'super' here are the people who were notified when the poll was first created
   # the author is always notified above, so don't notify them twice
   def notification_recipients
     super.without(eventable.unsubscribers).without(eventable.author)

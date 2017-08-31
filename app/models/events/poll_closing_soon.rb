@@ -13,12 +13,31 @@ class Events::PollClosingSoon < Event
 
   private
 
+  # 'super' here are the people who were notified when the poll was first created
   def email_recipients
-    if eventable.voters_review_responses
-      super.merge(eventable.participants)
-    else
-      super
-    end
+    users_who_care(super)
   end
 
+  def notification_recipients
+    users_who_care(super)
+  end
+
+  private
+
+  def users_who_care(relation)
+    if eventable.voters_review_responses
+      # remind notified users, plus ask participants to review
+      users_in_any(relation, eventable.participants)
+    else
+      # remind notified users, don't notify participants
+      relation.without(eventable.participants)
+    end.without(eventable.unsubscribers)
+  end
+
+  def users_in_any(*recipients)
+    User.from "(#{recipients.map(&:to_sql)
+                            .map(&:presence)
+                            .compact
+                            .join(" UNION ")}) as users"
+  end
 end
