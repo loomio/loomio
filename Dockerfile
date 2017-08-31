@@ -4,8 +4,8 @@
 #
 # It is not a standalone image.
 #
-FROM ruby:2.3.1
-ENV REFRESHED_AT 2015-08-07
+FROM ruby:2.3.4
+ENV REFRESHED_AT 2017-08-29
 
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
 
@@ -19,7 +19,7 @@ RUN apt-get install -y libxml2-dev libxslt1-dev
 # RUN apt-get install -y python python-dev python-pip python-virtualenv
 
 # install node
-RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
 # RUN mkdir /loomio
@@ -29,7 +29,7 @@ COPY config/database.docker.yml /loomio/config/database.yml
 
 WORKDIR /loomio/angular
 RUN npm install -g yarn
-RUN npm install
+RUN yarn
 RUN npm rebuild node-sass
 
 WORKDIR /loomio
@@ -49,4 +49,4 @@ RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 # source the config file and run puma when the container starts
-CMD bundle exec puma -C config/puma.rb
+CMD /loomio/docker_start.sh

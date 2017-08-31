@@ -1,5 +1,5 @@
 workers Integer(ENV['PUMA_WORKERS'] || 1)
-threads_count = Integer(ENV['MAX_THREADS'] || 4)
+threads_count = Integer(ENV['MAX_THREADS'] || 2)
 threads threads_count, threads_count
 
 preload_app!
