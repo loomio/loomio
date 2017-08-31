@@ -17,8 +17,8 @@ angular.module('loomioApp').directive 'notifyGroupForm', ($translate, Records, L
     $scope.updateVisible = ->
       _.map $scope.group.members(), (user) ->
         user.showInNotifyGroup = _.isEmpty($scope.search.fragment) or
-                                 user.name.match(///#{$scope.search.fragment}///) or
-                                 user.username.match(///#{$scope.search.fragment}///)
+                                 user.name.match(///#{$scope.search.fragment}///i) or
+                                 user.username.match(///#{$scope.search.fragment}///i)
 
     $scope.userIds = {}
     _.each $scope.notified.notified_ids, (id) -> $scope.userIds[id] = true
