@@ -137,14 +137,14 @@ describe Poll do
 
   describe 'notified_when_created' do
     it 'pulls notify from the poll_created event' do
-      notified = build(:notified_user, model: user).as_json
+      notified = build(:notified_user, model: create(:user)).as_json
       Event.create!(
         kind: :poll_created,
         eventable: poll,
         user: poll.author,
         custom_fields: { notified: notified }
       )
-      expect(poll.reload.notified_when_created).to eq notified
+      expect(poll.reload.notified_when_created.with_indifferent_access).to eq notified.with_indifferent_access
     end
   end
 end
