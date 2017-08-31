@@ -11,11 +11,10 @@ class Events::InvitationAccepted < Event
     User.where(id: eventable.inviter_id)
   end
 
-  def notification_actor
-    eventable&.user
-  end
-
-  def notification_url
-    group_memberships_username_url(eventable.group, eventable.user.username) if eventable
+  def notification_params
+    super.merge(
+      actor: eventable.user,
+      url:  group_memberships_username_url(eventable.group, eventable.user.username)
+    )
   end
 end

@@ -49,8 +49,4 @@ module Events::PollEvent
   def specified_email_recipients
     notification_recipients.where(email_when_mentioned: true)
   end
-
-  def notification_translation_values
-    super.merge(poll_type: I18n.t(:"poll_types.#{poll.poll_type}").downcase)
-  end
 end

@@ -16,14 +16,6 @@ class Events::StanceCreated < Event
     User.verified.find_by(email: eventable.author.email) || eventable.author
   end
 
-  def notification_url
-    @notification_url ||= polymorphic_url(eventable.poll)
-  end
-
-  def notification_translation_title
-    eventable.poll.title
-  end
-
   def notification_recipients
     if poll.notify_on_participate?
       User.where(id: poll.author_id).without(eventable.participant)
