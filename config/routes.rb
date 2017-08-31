@@ -191,9 +191,11 @@ Loomio::Application.routes.draw do
     post :webhook
   end
 
-  resources :received_emails, only: :create
   resources :invitations,     only: :show
   resources :login_tokens,    only: :show
+
+  resources :received_emails, only: :create
+  post :email_processor, to: 'received_emails#reply'
 
   namespace :email_actions do
     get 'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
@@ -202,7 +204,6 @@ Loomio::Application.routes.draw do
     get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
   end
 
-  post :email_processor, to: 'griddler/emails#create'
 
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
