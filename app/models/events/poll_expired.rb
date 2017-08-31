@@ -10,20 +10,19 @@ class Events::PollExpired < Event
           created_at: poll.closed_at
   end
 
-  def notify_users!
-    super
-    notification_for(eventable.author).save
-  end
-
   private
 
   # 'super' here are the people who were notified when the poll was first created
-  # the author is always notified above, so don't notify them twice
   def notification_recipients
-    super.without(eventable.unsubscribers).without(eventable.author)
+    users_who_care(super)
   end
 
   def email_recipients
-    super.without(eventable.unsubscribers).without(eventable.author)
+    users_who_care(super)
+  end
+
+  # we also always notified the author of poll expiry (unless they have unsubscribed)
+  def users_who_care(relation)
+    users_in_any(relation, User.where(id: eventable.author_id)).without(eventable.unsubscribers)
   end
 end

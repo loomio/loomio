@@ -63,4 +63,12 @@ class Event < ActiveRecord::Base
   def call_thread_item_destroyed
     discussion.thread_item_destroyed!(self) if discussion_id.present?
   end
+
+  # TODO: find a better place for this
+  def users_in_any(*recipients)
+    User.from "(#{recipients.map(&:to_sql)
+                            .map(&:presence)
+                            .compact
+                            .join(" UNION ")}) as users"
+  end
 end

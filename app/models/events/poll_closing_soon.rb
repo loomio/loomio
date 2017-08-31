@@ -29,15 +29,8 @@ class Events::PollClosingSoon < Event
       # remind notified users, plus ask participants to review
       users_in_any(relation, eventable.participants)
     else
-      # remind notified users, don't notify participants
+      # remind notified users, but don't notify participants
       relation.without(eventable.participants)
     end.without(eventable.unsubscribers)
-  end
-
-  def users_in_any(*recipients)
-    User.from "(#{recipients.map(&:to_sql)
-                            .map(&:presence)
-                            .compact
-                            .join(" UNION ")}) as users"
   end
 end
