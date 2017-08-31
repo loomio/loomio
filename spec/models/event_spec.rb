@@ -269,12 +269,12 @@ describe Event do
 
       it 'false' do
         build_poll_closing_soon(:meeting)
-        expect { @event = Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
+        expect { @event = Events::PollClosingSoon.publish!(@poll) }.to change { emails_sent }
 
         notified_users = @event.send(:notification_recipients)
         notified_users.should include user_thread_loud
         notified_users.should include user_thread_normal
-        notified_users.should include user_left_group
+        notified_users.should include user_left_group # because they were added as a guest
         notified_users.should_not include user_thread_quiet # because they voted
         notified_users.should_not include user_unsubscribed
 

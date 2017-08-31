@@ -4,9 +4,7 @@ module Events::Notify::FromAuthor
   include Events::Notify::Email
 
   def email_recipients
-    eventable.notified_users.without(
-      Queries::UsersByVolumeQuery.mute_or_quiet(eventable.discussion || eventable.group)
-    )
+    eventable.notified_users.who_want_email_for(eventable.discussion || eventable.group)
   end
 
   def notification_recipients
