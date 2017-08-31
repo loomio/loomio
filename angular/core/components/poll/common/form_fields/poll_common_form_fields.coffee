@@ -19,12 +19,20 @@ angular.module('loomioApp').directive 'pollCommonFormFields', ($translate, Recor
     $scope.detailsPlaceholder = ->
       $translate.instant("poll_#{$scope.poll.pollType}_form.details_placeholder")
 
-    $scope.$watch 'poll.group().key', (_newId, prevId) ->
-      # remove previous group
-      $scope.poll.notified = _.reject $scope.poll.notified, (notified) ->
-        notified.id == prevId
+    if $scope.poll.isNew()
+      # sync notified group with the currently selected group
+      $scope.showGroupSelect = true
+      $scope.$watch 'poll.group().key', (_newId, prevId) ->
 
-      # add new group
-      if $scope.poll.group()
-        Records.notified.fetchByFragment($scope.poll.group().name).then (data) ->
-          $scope.poll.notified.push(data[0]) if data.length
+        # remove previous group
+        $scope.poll.notified = _.reject $scope.poll.notified, (notified) ->
+          notified.id == prevId
+
+        # add new group
+        if $scope.poll.group()
+          Records.notified.fetchByFragment($scope.poll.group().name).then (data) ->
+            $scope.poll.notified.push(data[0]) if data.length
+    else
+      # notify the participants of the poll by default
+      Records.notified.fetchByPoll($scope.poll.key).then (notified) ->
+        $scope.poll.notified = notified

@@ -9,3 +9,10 @@ angular.module('loomioApp').factory 'NotifiedRecordsInterface', (BaseRecordsInte
         params:
           q: fragment
           per: 5
+
+    fetchByPoll: (pollKey) ->
+      @fetch
+        path: 'poll'
+        params:
+          poll_key: pollKey
+          per: 1000

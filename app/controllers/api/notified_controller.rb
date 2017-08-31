@@ -5,7 +5,16 @@ class API::NotifiedController < API::RestfulController
     respond_with_collection
   end
 
+  def poll
+    self.collection = participants_to_notify.map { |user| Notified::User.new(user) }
+    respond_with_collection
+  end
+
   private
+
+  def participants_to_notify
+    load_and_authorize(:poll).participants.without(current_user)
+  end
 
   def resource_plural
     super.pluralize
