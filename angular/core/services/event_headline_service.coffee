@@ -3,7 +3,8 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
 
     headlineFor: (event) ->
       $translate.instant "thread_item.#{@headlineKeyFor(event)}",
-        author:   event.actorName(),
+        author:   event.actorName()
+        username: event.actorUsername()
         title:    @titleFor(event)
         polltype: @pollTypeFor(event)
 

@@ -137,6 +137,12 @@ describe Identities::SlackController do
       expect(response.status).to eq 200
       expect(response.body).to include "authorize your slack account"
     end
+
+    it 'responds with a message if the poll is closed' do
+      poll.update(closed_at: 1.day.ago)
+      expect { post :participate, payload: payload }.to_not change { poll.stances.count }
+      expect(response.status).to eq 200
+    end
   end
 
   describe 'create' do
