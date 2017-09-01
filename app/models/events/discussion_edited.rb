@@ -2,9 +2,14 @@ class Events::DiscussionEdited < Event
   include Events::Notify::Mentions
 
   def self.publish!(discussion, editor)
-    super discussion,
+    return unless version = discussion.versions.last
+    super version,
           user: editor,
-          discussion: discussion,
-          created_at: discussion.versions.last.created_at
+          discussion: version.item,
+          created_at: version.created_at
+  end
+
+  def mention_recipients
+    eventable.item.new_mentioned_group_members
   end
 end
