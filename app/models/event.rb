@@ -65,10 +65,10 @@ class Event < ActiveRecord::Base
   end
 
   # TODO: find a better place for this
-  def users_in_any(*recipients)
-    User.from "(#{recipients.map(&:to_sql)
-                            .map(&:presence)
-                            .compact
-                            .join(" UNION ")}) as users"
+  def users_in_any(*relations)
+    User.from "(#{relations.map(&:to_sql)
+                           .map(&:presence)
+                           .compact
+                           .join(" UNION ")}) as users"
   end
 end
