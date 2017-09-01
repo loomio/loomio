@@ -214,6 +214,9 @@ FactoryGirl.define do
     association :author, factory: :user
     association :guest_group, factory: :guest_group
     poll_option_names ["engage"]
+    after(:build) do |poll|
+      poll.notified ||= [build(:notified_group, model: poll.group)] if poll.group
+    end
   end
 
   factory :poll_proposal, class: Poll do

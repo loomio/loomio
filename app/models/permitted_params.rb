@@ -31,7 +31,7 @@ class PermittedParams < Struct.new(:params)
      :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
      :poll_option_names, {poll_option_names: []},
-     :notified, {notified: [:id, :type, :title, :subtitle, :icon_url, :notified_ids, {notified_ids: []}]}]
+     :notified, {notified: [:editing, :id, :type, :title, :subtitle, :icon_url, :notified_ids, {notified_ids: []}]}]
   end
 
   def stance_attributes
