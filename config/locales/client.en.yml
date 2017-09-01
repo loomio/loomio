@@ -241,6 +241,8 @@ en:
     search_placeholder: Search
     members_count: "{{count}} people selected"
     group_subtitle: ({{count}} members)
+    user_is_muted: This person has requested to not receive updates from this group. They will still be able to see and participate in decisions.
+    user_is_loud: This person has requested to receive updates about all decisions in this group.
 
   comment_form:
     aria_label: 'Add a comment'

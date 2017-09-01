@@ -11,7 +11,11 @@
   overflow: auto;
 }
 
-.notify-group-form__member {
-  .md-list-item-inner { padding: 0; }
-  md-checkbox         { margin: 16px 0 !important; }
+.notify-group-form__member .md-list-item-inner {
+  padding: 0;
+}
+
+.notify-group-form__checkbox {
+  pointer-events: auto !important;
+  md-checkbox { margin: 16px 0 !important; }
 }
