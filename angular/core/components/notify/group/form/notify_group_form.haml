@@ -15,7 +15,9 @@
       %md-list.notify-group-form__members
         %md-list-item.notify-group-form__member.lmo-flex.lmo-flex__center.lmo-flex__space-between{ng-if: "!userIsMe(user)", ng-show: "user.showInNotifyGroup", layout: "row", ng-repeat: "user in group.members() | orderBy: 'name' track by user.id"}
           %user_avatar.lmo-margin-right{user: "user", size: "small"}
-          .lmo-flex__grow {{ ::user.name }}
+          .lmo-flex__grow.lmo-flex{layout: "column"}
+            .notify-group-form__name {{ ::user.name }}
+            .md-caption @{{ ::user.username }}
           .notify-group-form__checkbox
             %md-checkbox{ng-disabled: "::loudOrMute(user)", ng-model: "userIds[user.id]"}
             %md-tooltip.help-bubble__tooltip{ng-if: "::user.membershipFor(group).volume == 'loud'", md-z-index: 1000}
