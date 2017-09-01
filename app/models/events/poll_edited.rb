@@ -10,6 +10,10 @@ class Events::PollEdited < Event
 
   private
 
+  def poll
+    eventable.item.poll
+  end
+
   # notify those who have already participated in the poll of the change
   def announcement_notification_recipients
     poll.participants
