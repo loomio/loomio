@@ -9,8 +9,7 @@ class Identities::BaseController < ApplicationController
       associate_identity
       redirect_to session.delete(:back_to) || dashboard_path
     else
-      # TODO: this should be an error page, not JSON
-      render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
+      respond_with_error message: "Could not connect to #{controller_name}!"
     end
   end
 
@@ -19,7 +18,7 @@ class Identities::BaseController < ApplicationController
       i.destroy
       redirect_to request.referrer || root_path
     else
-      render json: { error: "Not connected to #{controller_name}!" }, status: :bad_request
+      respond_with_error message: "Not connected to #{controller_name}!"
     end
   end
 
