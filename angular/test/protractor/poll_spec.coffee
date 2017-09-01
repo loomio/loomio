@@ -122,7 +122,7 @@ describe 'Polls', ->
     page.expectFlash 'Vote created'
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Big Baloo'
 
-  it 'can invite users via email', ->
+  xit 'can invite users via email', ->
     page.loadPath 'polls/test_proposal_poll_share'
     page.fillIn '.poll-common-share-form__add-option-input', 'loo@m.io'
     page.click '.poll-common-share-form__option-button'
