@@ -583,7 +583,7 @@ en:
     go_to_dashboad: Go to dashboard
 
   notified:
-    group_users: "(%{count} users)"
+    group_users: "(%{count} people)"
 
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"

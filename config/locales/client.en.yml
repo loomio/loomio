@@ -240,7 +240,7 @@ en:
     modal_error: Sorry, we couldn't find that group. Please try again!
     search_placeholder: Search
     members_count: "{{count}} people selected"
-    group_subtitle: ({{count}} members)
+    group_subtitle: ({{count}} people)
     user_is_muted: This person has requested to not receive updates from this group. They will still be able to see and participate in decisions.
     user_is_loud: This person has requested to receive updates about all decisions in this group.
 
@@ -1543,6 +1543,7 @@ en:
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option
     dots_per_person: Dots per person
+    dots_per_person_helptext: Number of votes to allocate to each participant
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
 
