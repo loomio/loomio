@@ -354,11 +354,11 @@ describe Event do
     it 'notifies the author' do
       expect { Events::PollExpired.publish!(poll) }.to change { emails_sent }
       email_users = Events::PollExpired.last.send(:email_recipients)
-      expect(email_users).to be_empty # the author is notified via a separate email
+      expect(email_users.length).to eq 1
+      expect(email_users).to include poll.author
 
       notification_users = Events::PollExpired.last.send(:notification_recipients)
-      expect(notification_users).to be_empty
-      expect(notification_users).to_not include poll.author
+      expect(notification_users).to include poll.author
       n = Notification.last
       expect(n.user).to eq poll.author
       expect(n.kind).to eq 'poll_expired'
@@ -401,7 +401,7 @@ describe Event do
       email_users.should_not include user_membership_mute
       email_users.should_not include user_thread_mute
       email_users.should_not include user_unsubscribed
-      email_users.should_not include poll.author
+      email_users.should include poll.author # notify the author of poll expiry
 
       notification_users = @event.send(:notification_recipients)
       notification_users.should     include user_thread_loud
@@ -415,7 +415,7 @@ describe Event do
 
       notification_users.should     include user_membership_mute
       notification_users.should     include user_thread_mute
-      notification_users.should_not include poll.author
+      notification_users.should include poll.author
     end
   end
 
