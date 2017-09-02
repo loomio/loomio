@@ -151,7 +151,7 @@ describe 'Polls', ->
     page.clickFirst '.poll-common-undecided-user__resend'
     page.expectFlash 'Invitation resent'
 
-  fit 'can notify groups', ->
+  it 'can notify groups', ->
     page.loadPath 'setup_group_with_volumes'
     page.click '.current-polls-card__start-poll'
     page.click '.poll-common-choose-type__poll-type--proposal'
