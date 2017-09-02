@@ -183,6 +183,6 @@ describe 'Login', ->
       page.loadPath 'setup_deactivated_user'
       page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
       page.click '.auth-email-form__submit'
-      page.expectText '.auth-inaction-form', 'has been deactivated!'
+      page.expectText '.auth-inactive-form', 'has been deactivated!'
       page.click '.auth-inactive-form__submit'
       page.expectElement '.contact-form'
