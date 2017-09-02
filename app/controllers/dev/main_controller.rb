@@ -32,6 +32,11 @@ class Dev::MainController < Dev::BaseController
     redirect_to new_user_session_url
   end
 
+  def setup_deactivated_user
+    patrick.update(deactivated_at: 1.day.ago)
+    redirect_to dashboard_url
+  end
+
   def setup_invitation_to_visitor
     invitation = Invitation.create!(
       intent: :join_group,

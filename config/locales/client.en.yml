@@ -1770,6 +1770,7 @@ en:
     sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
     oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
     name_required: Please enter a name
+    account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
 
     welcome: Nice to meet you, {{email}}!
     welcome_back: Welcome back, {{name}}!
