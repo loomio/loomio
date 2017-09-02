@@ -23,6 +23,7 @@ namespace :loomio do
     ResendIgnoredInvitationsJob.perform_later
     LocateUsersAndGroupsJob.perform_later
     if (Time.now.hour == 0)
+      # daily tasks
       UsageReportService.send
     end
   end
