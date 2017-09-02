@@ -8,10 +8,8 @@ class UsageReportService
       comments_count: Comment.count,
       polls_count: Poll.count,
       stances_count: Stance.count,
-      reactions_count: Reaction.count,
       visits_count: Visit.count,
-      canonical_host: ENV['CANONICAL_HOST'],
-      support_email: ENV['SUPPORT_EMAIL']
+      canonical_host: ENV['CANONICAL_HOST']
     })
   end
 end
