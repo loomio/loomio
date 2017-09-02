@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826122955) do
+ActiveRecord::Schema.define(version: 20170901005004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
-  enable_extension "citext"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -727,6 +727,21 @@ ActiveRecord::Schema.define(version: 20170826122955) do
   end
 
   add_index "translations", ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id", using: :btree
+
+  create_table "usage_reports", force: :cascade do |t|
+    t.integer  "groups_count"
+    t.integer  "users_count"
+    t.integer  "discussions_count"
+    t.integer  "polls_count"
+    t.integer  "comments_count"
+    t.integer  "stances_count"
+    t.integer  "reactions_count"
+    t.integer  "visits_count"
+    t.string   "canonical_host"
+    t.string   "support_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_deactivation_responses", force: :cascade do |t|
     t.integer "user_id"
