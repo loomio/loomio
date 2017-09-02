@@ -1596,6 +1596,10 @@ en:
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
 
+  poll_count_options:
+    yes_meaning: I volunteer, give my consent, or have completed the given task
+    no_meaning: I am unable to contribute or to participate in this decision
+
   poll_count_vote_form:
     reason_label: Message
     reason_placeholder: Leave a message if you like
