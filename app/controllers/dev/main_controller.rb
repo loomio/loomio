@@ -32,6 +32,11 @@ class Dev::MainController < Dev::BaseController
     redirect_to new_user_session_url
   end
 
+  def setup_deactivated_user
+    patrick.update(deactivated_at: 1.day.ago)
+    redirect_to dashboard_url
+  end
+
   def setup_invitation_to_visitor
     invitation = Invitation.create!(
       intent: :join_group,
@@ -430,7 +435,7 @@ class Dev::MainController < Dev::BaseController
     unread = Comment.new(discussion: create_discussion, body: "Here is some unread content")
     another_unread = Comment.new(discussion: create_discussion, body: "Here is some more unread content")
     sign_in patrick
-    
+
     CommentService.create(comment: read, actor: patrick)
     CommentService.create(comment: unread, actor: jennifer)
     CommentService.create(comment: another_unread, actor: jennifer)
