@@ -10,4 +10,8 @@ class Events::PollCreated < Event
           discussion: poll.discussion,
           custom_fields: { notified: poll.notified }
   end
+
+  def mention_recipients
+    eventable.new_mentioned_group_members
+  end
 end

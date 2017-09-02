@@ -18,6 +18,10 @@ class Events::NewDiscussion < Event
     end.without(eventable.author).without(eventable.mentioned_group_members)
   end
 
+  def mention_recipients
+    eventable.new_mentioned_group_members
+  end
+
   def mailer
     ThreadMailer
   end

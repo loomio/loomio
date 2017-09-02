@@ -16,6 +16,10 @@ class Events::NewComment < Event
                                .without(eventable.parent_author)
   end
 
+  def mention_recipients
+    eventable.new_mentioned_group_members
+  end
+
   def mailer
     ThreadMailer
   end

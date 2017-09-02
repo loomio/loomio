@@ -10,7 +10,8 @@ module Events::Notify::Mentions
   end
   handle_asynchronously :notify_mentions!
 
+  # who should receive mentions from this event?
   def mention_recipients
-    eventable.new_mentioned_group_members
+    User.none
   end
 end
