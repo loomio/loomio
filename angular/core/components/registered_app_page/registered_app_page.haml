@@ -2,8 +2,8 @@
   %loading{ng-if: "!registeredAppPage.application"}
   %main.registered-app-page{ng-if: "registeredAppPage.application"}
     .lmo-flex.registered-app-page__app{layout: "column"}
-      .lmo-flex.registered-app-page__title{layout: "row"}
-        %img.lmo-box--small{ng-src: "{{registeredAppPage.application.logoUrl}}"}
+      .lmo-flex.lmo-flex__center.registered-app-page__title{layout: "row"}
+        %img.lmo-box--small.lmo-margin-right{ng-src: "{{registeredAppPage.application.logoUrl}}"}
         %h1.lmo-h1 {{ registeredAppPage.application.name }}
 
       %h3.lmo-h3{translate: "registered_app_page.uid"}
