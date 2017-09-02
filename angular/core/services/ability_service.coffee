@@ -20,6 +20,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       group and
       (@canAdministerGroup(group) or Session.user().isMemberOf(group) and group.membersCanRaiseMotions)
 
+    canParticipateInPoll: (poll) ->
+      poll and
+      (@canAdministerPoll(poll) or Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
+
     canEditThread: (thread) ->
       @canAdministerGroup(thread.group()) or
       Session.user().isMemberOf(thread.group()) and

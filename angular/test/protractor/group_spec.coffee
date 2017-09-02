@@ -336,3 +336,13 @@ describe 'Group Page', ->
     it 'handles subdomain redirects', ->
       page.loadPath 'setup_group_with_subdomain'
       page.expectText '.group-theme__name', 'Ghostbusters'
+
+  describe 'group settings', ->
+    fit 'handles advanced group settings', ->
+      page.loadPath 'setup_group_with_restrictive_settings'
+      page.expectNoElement '.current-polls-card__start-poll'
+      page.expectNoElement '.subgroups-card__start'
+      page.expectNoElement '.discussions-card__new-thread-button'
+      page.expectNoElement '..members-card__invite-members'
+      page.click '.poll-common-preview'
+      page.expectNoElement '.poll-common-vote-form__submit'

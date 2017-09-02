@@ -139,6 +139,22 @@ class Dev::MainController < Dev::BaseController
     redirect_to group_url(create_discussion.group)
   end
 
+  def setup_group_with_restrictive_settings
+    sign_in jennifer
+    create_stance
+    create_discussion
+    create_group.update(
+      members_can_add_members:       false,
+      members_can_edit_discussions:  false,
+      members_can_edit_comments:     false,
+      members_can_raise_motions:     false,
+      members_can_vote:              false,
+      members_can_start_discussions: false,
+      members_can_create_subgroups:  false
+    )
+    redirect_to group_url create_group
+  end
+
   def setup_subgroup
     create_subgroup.add_member! jennifer
     sign_in jennifer
@@ -430,7 +446,7 @@ class Dev::MainController < Dev::BaseController
     unread = Comment.new(discussion: create_discussion, body: "Here is some unread content")
     another_unread = Comment.new(discussion: create_discussion, body: "Here is some more unread content")
     sign_in patrick
-    
+
     CommentService.create(comment: read, actor: patrick)
     CommentService.create(comment: unread, actor: jennifer)
     CommentService.create(comment: another_unread, actor: jennifer)
