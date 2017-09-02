@@ -134,7 +134,7 @@ class User < ActiveRecord::Base
   }
 
   def self.email_status_for(email)
-    verified_first.find_by(email: email)&.email_status
+    (verified_first.find_by(email: email) || LoggedOutUser.new).email_status
   end
 
   define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
