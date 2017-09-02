@@ -31,6 +31,7 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
+    resources :usage_reports, only: [:create]
 
     resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member

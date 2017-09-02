@@ -16,16 +16,15 @@ namespace :loomio do
     end
   end
 
-  task daily_tasks: :environment do
-    CountGroupRecentActivityJob.perform_later
-  end
-
   task hourly_tasks: :environment do
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
     SendMissedYesterdayEmailJob.perform_later
     ResendIgnoredInvitationsJob.perform_later
     LocateUsersAndGroupsJob.perform_later
+    if (Time.now.hour == 0)
+      UsageReportService.send
+    end
   end
 
   task resend_ignored_invitations: :environment do
