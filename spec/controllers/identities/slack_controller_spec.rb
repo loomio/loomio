@@ -140,7 +140,7 @@ describe Identities::SlackController do
 
     it 'responds with a message if the poll is closed' do
       poll.update(closed_at: 1.day.ago)
-      expect { post :participate, payload: payload }.to_not change { poll.stances.count }
+      expect { post :participate, payload: payload.to_json }.to_not change { poll.stances.count }
       expect(response.status).to eq 200
     end
   end
