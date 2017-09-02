@@ -6,7 +6,7 @@ module Events::Notify::Mentions
 
   # send event notifications
   def notify_mentions!
-    mention_recipients.each { |mention| Events::UserMentioned.publish!(eventable, user, mention) }
+    mention_recipients.each { |mention| Events::UserMentioned.publish!(eventable.mentionable, user, mention) }
   end
   handle_asynchronously :notify_mentions!
 

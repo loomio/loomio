@@ -24,14 +24,11 @@ class ThreadMailer < BaseMailer
   def user_mentioned(recipient, event)
     @recipient = recipient
     @event = event
-    @eventable = event.eventable
-    @text = case @eventable
-    when Discussion         then @eventable.description
-    when Comment            then @eventable.body
-    end
-    @discussion = @eventable.is_a?(Discussion) ? @eventable : @eventable.discussion
+    @eventable = if event.eventable.is_a?(PaperTrail::Version) then event.eventable.item else event.eventable end
+    @discussion = @eventable.discussion
     @author = @eventable.author
     @link = polymorphic_url(@eventable)
+    @text = polymorphic_description(@eventable)
     send_thread_email(subject_key: 'email.mentioned.subject',
                       subject_params: { who: @author.name,
                                         which: @discussion.title } )

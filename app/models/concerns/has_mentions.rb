@@ -10,6 +10,10 @@ module HasMentions
     end
   end
 
+  def mentionable
+    self
+  end
+
   def mentioned_group_members
     group.members.where(username: mentioned_usernames).without(users_to_not_mention)
   end

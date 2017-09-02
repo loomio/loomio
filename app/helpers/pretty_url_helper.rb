@@ -28,12 +28,24 @@ module PrettyUrlHelper
 
   def polymorphic_title(model)
     case model
-    when PaperTrail::Version   then model.item.title
+    when PaperTrail::Version   then polymorphic_title(model.item)
     when Comment, Discussion   then model.discussion.title
     when Group, Membership     then model.group.full_name
     when Poll, Outcome, Stance then model.poll.title
     # TODO: deal with polymorphic reactions here
     when Reaction              then model.reactable.discussion.title
+    end
+  end
+
+  def polymorphic_description(model)
+    case model
+    when PaperTrail::Version then polymorphic_description(model.item)
+    when Group, Membership   then model.group.description
+    when Discussion          then model.description
+    when Poll                then model.details
+    when Outcome             then model.statement
+    when Stance              then model.reason
+    when Comment             then model.body
     end
   end
 
