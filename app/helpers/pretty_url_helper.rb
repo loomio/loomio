@@ -15,7 +15,7 @@ module PrettyUrlHelper
     when FormalGroup, GroupIdentity    then group_url(model.group, opts)
     when PaperTrail::Version           then polymorphic_url(model.item, opts)
     when Membership, MembershipRequest then group_url(model.group, opts)
-    when Outcome                       then poll_url(model.poll, opts.merge(set_outcome: true))
+    when Outcome                       then poll_url(model.poll, opts)
     when Stance                        then poll_url(model.poll, opts.merge(change_vote: true))
     when Comment                       then comment_url(model.discussion, model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
