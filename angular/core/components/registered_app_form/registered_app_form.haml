@@ -11,7 +11,7 @@
     %form.md-dialog-content.registered-app-form
       .lmo-flex{layout: "row"}
         .lmo-flex{layout: "column"}
-          %img{ng-src: "{{application.logoUrl}}"}
+          %img.lmo-box--medium{ng-src: "{{application.logoUrl}}"}
           %md-button{ng-if: "!application.isNew()", type: "button", ng-click: "clickFileUpload()"}>
             %span{translate: "common.action.upload"}>
           %input.hidden{type: "file", ng-model: "file", ng-file-select: "upload(file)"}
