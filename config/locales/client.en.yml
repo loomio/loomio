@@ -1339,6 +1339,9 @@ en:
     no_polls: No previous decisions found.
     count: "See all: ({{count}}) decisions"
 
+  poll_common_action_panel:
+    unable_to_vote: You do not have permission to vote in this decision.
+
   current_polls_card:
     title: Current decisions
     start_poll: New decision
