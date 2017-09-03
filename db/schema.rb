@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903235509) do
+ActiveRecord::Schema.define(version: 20170903235705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -741,6 +741,8 @@ ActiveRecord::Schema.define(version: 20170903235509) do
     t.datetime "updated_at"
     t.string   "version"
   end
+
+  add_index "usage_reports", ["canonical_host"], name: "index_usage_reports_on_canonical_host", using: :btree
 
   create_table "user_deactivation_responses", force: :cascade do |t|
     t.integer "user_id"
