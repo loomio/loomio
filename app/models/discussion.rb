@@ -18,6 +18,7 @@ class Discussion < ActiveRecord::Base
 
   include ReadableUnguessableUrls
   include Translatable
+  include Reactable
   include HasTimeframe
   include HasMentions
   include HasImportance

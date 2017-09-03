@@ -39,9 +39,6 @@
     %timeago.nowrap{timestamp: "::discussion.createdAt" }>
     %translate_button.lmo-card-minor-action{model: "discussion", showdot: "true"}>
     %span{aria-hidden: "true"}·
-    -# %span{ng-if: "discussion.edited()"}
-    -#   %button.context-panel__edited.lmo-btn-link{ng-click: "showRevisionHistory()", translate: "discussion.edited"}>
-    -#   %span{aria-hidden: "true"}·
     %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
       %i.material-icons> lock_outline
       %span{translate: "common.privacy.private"}
@@ -57,6 +54,14 @@
     .context-panel__attachment{ng-repeat: "attachment in discussion.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "context"}
 
+  %reactions_display{model: "discussion"}
   .context-panel__actions
-    %md-button.md-accent.context-panel__add-comment.lmo-no-print{ng-click: "scrollToCommentForm()", translate: "thread_context.add_comment", ng-if: "canAddComment()"}
-    %md-button.md-accent.context-panel__edit.lmo-no-print{ng-click: "editThread()", translate: "thread_context.edit_thread", ng-if: "canEditThread()"}
+    %reactions_input{model: "discussion"}
+    %md-button.md-button--tiny{ng-if: "canAddComment()", ng-click: "scrollToCommentForm()"}
+      %i.material-icons reply
+      %md-tooltip{md-delay: "750"}
+        %span{translate: "context_panel.add_a_comment"}
+    %md-button.md-button--tiny{ng-if: "canEditThread()", ng-click: "editThread()"}
+      %i.material-icons edit
+      %md-tooltip{md-delay: "750"}
+        %span{translate: "context_panel.edit_thread"}

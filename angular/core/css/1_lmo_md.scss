@@ -15,6 +15,24 @@
   margin-right: 0;
 }
 
+.md-button--tiny {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  margin: 0 4px;
+  color: $grey-on-white;
+  overflow: visible;
+  &:hover { color: $primary-text-color; }
+  i { font-size: 20px; }
+  i.lmo-helper-icon {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 16px;
+  }
+}
+
 md-dialog {
   min-width: $tiny-max-px;
   max-width: 800px;

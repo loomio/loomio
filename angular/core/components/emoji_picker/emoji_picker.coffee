@@ -1,4 +1,5 @@
 angular.module('loomioApp').directive 'emojiPicker', ->
+  scope: {reaction: '='}
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
@@ -16,7 +17,8 @@ angular.module('loomioApp').directive 'emojiPicker', ->
     $scope.toggleMenu = ->
       $scope.showMenu = !$scope.showMenu
       $scope.search()
-      $timeout -> document.querySelector('.emoji-picker__search').focus() if $scope.showMenu
+      if $scope.showMenu and !$scope.reaction
+        $timeout -> document.querySelector('.emoji-picker__search').focus()
 
     $scope.hideMenu = ->
       return unless $scope.showMenu

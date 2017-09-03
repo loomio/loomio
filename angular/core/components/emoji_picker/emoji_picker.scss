@@ -20,6 +20,10 @@
   vertical-align: middle;
 }
 
+.emoji-picker__emojis {
+  flex-wrap: wrap;
+}
+
 .emoji-picker__selector {
   display: inline-block;
   &:hover {

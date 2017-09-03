@@ -1,0 +1,5 @@
+.reactions-display
+  %loading{ng-if: "!loaded"}
+  .reaction.lmo-pointer{ng-if: "loaded", ng-class: "{'reaction--inactive': isInactive(reaction)}", ng-mouseover: "setCurrent(reaction)", ng-mouseleave: "setCurrent()", ng-repeat: "reaction in model.reactions() track by reaction.id"}
+    .reaction__emoji{marked: "reaction.reaction"}
+  %span.lmo-hint-text {{reactionSentence()}}
