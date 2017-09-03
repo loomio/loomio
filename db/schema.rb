@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20170901005004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
+  enable_extension "citext"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -735,10 +735,8 @@ ActiveRecord::Schema.define(version: 20170901005004) do
     t.integer  "polls_count"
     t.integer  "comments_count"
     t.integer  "stances_count"
-    t.integer  "reactions_count"
     t.integer  "visits_count"
     t.string   "canonical_host"
-    t.string   "support_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
