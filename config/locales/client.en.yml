@@ -1795,6 +1795,8 @@ en:
 
   install_slack:
     modal_title: Install Slack
+    modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.
+    login_to_slack: Log in to Slack
 
     card:
       install_title: Connect to Slack
