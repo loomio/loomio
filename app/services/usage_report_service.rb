@@ -2,6 +2,7 @@ class UsageReportService
   def self.send
     return if ENV['DISABLE_USAGE_REPORTING']
     Clients::Loomio.new.send_usage_report!({
+      version: Loomio::Version.current,
       groups_count: Group.count,
       users_count: User.count,
       discussions_count: Discussion.count,
