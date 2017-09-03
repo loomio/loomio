@@ -2,4 +2,7 @@
   %poll_common_stance_choice{ng-repeat: "choice in eventable.stanceChoices()", ng-if: "choice.score > 0", stance_choice: "choice"}
   .lmo-hint-text{ng-if: "eventable.stanceChoices().length == 0", translate: "poll_common_votes_panel.none_of_the_above"}
   .lmo-markdown-wrapper{marked: "eventable.reason", ng-if: "eventable.reason"}
-  %reactions_display{model: "eventable"}
+  .lmo-md-actions
+    %reactions_display{model: "eventable"}
+    .lmo-flex{layout: "row"}
+      %reactions_input{model: "eventable"}

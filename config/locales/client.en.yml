@@ -471,7 +471,7 @@ en:
     posted: Posted
 
   reactions_input:
-    add_reaction: Add a reaction
+    add_your_reaction: Add your reaction
 
   reactions_display:
     one_reaction: "{{first}} reacted {{reaction}}"

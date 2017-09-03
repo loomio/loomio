@@ -57,6 +57,7 @@
   .lmo-md-actions
     %reactions_display.context-panel__actions-left{model: "discussion"}
     .lmo-flex{layout: "row"}
+      %reactions_input{model: "discussion"}
       %md-button.md-button--tiny{ng-if: "canAddComment()", ng-click: "scrollToCommentForm()"}
         %i.material-icons reply
         %md-tooltip{md-delay: "750"}

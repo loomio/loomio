@@ -2,6 +2,7 @@
   .page-loading { padding: 0; }
   .emoji-picker__menu { left: 0; }
   .reaction__emoji > p { margin: 0; }
+  height: 36px;
 }
 
 .reaction {
@@ -32,8 +33,6 @@
 
 .reactions-display__sentence {
   font-size: 14px;
-  margin-top: 8px;
-  line-height: 24px;
   img.emojione { height: 16px; width: 16px; }
   p { margin: 0; }
 }

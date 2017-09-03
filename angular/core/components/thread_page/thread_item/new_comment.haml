@@ -20,8 +20,7 @@
 
   .thread-item__footer.new-comment__footer
     .thread-item__actions{ng-if: "showCommentActions()"}
-      %button.thread-item__action.thread-item__action--like.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.like", ng-if: "!(reactExecuting || currentUserReaction())", ng-click: "react('+1')"}>
-      %button.thread-item__action.thread-item__action--unlike.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.unlike", ng-click: "unreact()", ng-if: "reactExecuting || currentUserReaction()"}>
+      %reactions_display{model: "eventable"}
       %span.lmo-no-print{aria-hidden: "true"}>·
       %button.thread-item__action.thread-item__action--reply.lmo-no-print{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
       %translate_button.lmo-no-print{model: "eventable", showdot: "true"}
