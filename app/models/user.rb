@@ -133,6 +133,10 @@ class User < ActiveRecord::Base
     .where('memberships.group_id': group.id)
   }
 
+  def self.email_status_for(email)
+    (verified_first.find_by(email: email) || LoggedOutUser.new).email_status
+  end
+
   define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
 
   def associate_with_identity(identity)

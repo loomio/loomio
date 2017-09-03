@@ -1339,6 +1339,9 @@ en:
     no_polls: No previous decisions found.
     count: "See all: ({{count}}) decisions"
 
+  poll_common_action_panel:
+    unable_to_vote: You do not have permission to vote in this decision.
+
   current_polls_card:
     title: Current decisions
     start_poll: New decision
@@ -1583,6 +1586,10 @@ en:
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
 
+  poll_count_options:
+    yes_meaning: I volunteer, give my consent, or have completed the given task
+    no_meaning: I am unable to contribute or to participate in this decision
+
   poll_count_vote_form:
     reason_label: Message
     reason_placeholder: Leave a message if you like
@@ -1763,6 +1770,7 @@ en:
     sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
     oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
     name_required: Please enter a name
+    account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
 
     welcome: Nice to meet you, {{email}}!
     welcome_back: Welcome back, {{name}}!
@@ -1787,6 +1795,8 @@ en:
 
   install_slack:
     modal_title: Install Slack
+    modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.
+    login_to_slack: Log in to Slack
 
     card:
       install_title: Connect to Slack

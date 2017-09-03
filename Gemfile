@@ -51,6 +51,7 @@ gem "autoprefixer-rails"
 gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
 
 group :development, :test do
+  gem 'lograge'
   gem 'minitest'
   gem 'timecop'
   gem 'byebug'

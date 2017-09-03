@@ -28,6 +28,10 @@ module Identities::Slack::Initiate
     I18n.t(:"slack.slash_command_help")
   end
 
+  def initiate_ensure_token
+    head :bad_request unless params[:token] == ENV['SLACK_VERIFICATION_TOKEN']
+  end
+
   def initiate_identity
     @initiate_identity ||= Identities::Slack.find_by(identity_type: :slack, uid: params[:user_id])
   end
