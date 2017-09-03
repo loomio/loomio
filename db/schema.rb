@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901005004) do
+ActiveRecord::Schema.define(version: 20170903235509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -739,6 +739,7 @@ ActiveRecord::Schema.define(version: 20170901005004) do
     t.string   "canonical_host"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "version"
   end
 
   create_table "user_deactivation_responses", force: :cascade do |t|
