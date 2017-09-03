@@ -1,5 +1,7 @@
 .reactions-display {
-  margin: 0 8px;
+  .page-loading { padding: 0; }
+  .emoji-picker__menu { left: 0; }
+  .reaction__emoji > p { margin: 0; }
 }
 
 .reaction {
@@ -17,9 +19,21 @@
   &:nth-child(7) { right: 28px; }
   &:nth-child(8) { right: 32px; }
   &:nth-child(9) { right: 36px; }
+  &.emoji-picker { top: 3px; }
   &--inactive { opacity: 0.3; }
+  .material-icons { color: $grey-on-white; }
+  .lmo-helper-icon {
+    position: absolute;
+    font-size: 15px;
+    right: -4px;
+    top: -4px;
+  }
 }
 
-.reaction__emoji > p {
-  margin: 0;
+.reactions-display__sentence {
+  font-size: 14px;
+  margin-top: 8px;
+  line-height: 24px;
+  img.emojione { height: 16px; width: 16px; }
+  p { margin: 0; }
 }

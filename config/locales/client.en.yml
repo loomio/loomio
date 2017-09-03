@@ -474,9 +474,9 @@ en:
     add_reaction: Add a reaction
 
   reactions_display:
-    one_reaction: "{{first}}"
-    two_reactions: "{{first}} and {{second}}"
-    many_reactions: "{{first}}, {{second}}, and {{count}} others"
+    one_reaction: "{{first}} reacted {{reaction}}"
+    two_reactions: "{{first}} and {{second}} reacted {{reaction}}"
+    many_reactions: "{{first}}, {{second}}, and {{count}} others reacted {{reacted}}"
 
   group_page:
     thread_list:

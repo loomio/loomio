@@ -4,6 +4,7 @@ angular.module('loomioApp').directive 'reactionsDisplay', ($translate, Session, 
   templateUrl: 'generated/components/reactions/display/reactions_display.html'
   replace: true
   controller: ($scope) ->
+    $scope.diameter = 16
     $scope.current = 'all'
     $scope.sanitize = (reaction) ->
       return 'all' unless reaction
@@ -14,18 +15,29 @@ angular.module('loomioApp').directive 'reactionsDisplay', ($translate, Session, 
         reactableType: _.capitalize($scope.model.constructor.singular)
         reactableId:   $scope.model.id
       ).reduce (hash, reaction) ->
-        r = $scope.sanitize reaction
-        hash[r] = hash[r] or []
-        hash[r].push  reaction.userId
+        hash[reaction.reaction] = hash[reaction.reaction] or []
+        hash[reaction.reaction].push  reaction.userId
         hash.all.push reaction.userId
         hash
       , { all: [] }
 
+    $scope.reactions = ->
+      _.difference _.keys($scope.reactionHash()), ['all']
+
+    $scope.$on 'emojiSelected', (_event, emoji) ->
+      params =
+        reactableType: _.capitalize($scope.model.constructor.singular)
+        reactableId:   $scope.model.id
+        userId:        Session.user().id
+      reaction = Records.reactions.find(params)[0] || Records.reactions.build(params)
+      reaction.reaction = emoji
+      reaction.save()
+
     $scope.setCurrent = (reaction) ->
-      $scope.current = $scope.sanitize(reaction)
+      $scope.current = reaction or 'all'
 
     $scope.isInactive = (reaction) ->
-      $scope.current != 'all' and $scope.current != $scope.sanitize(reaction)
+      $scope.current != 'all' and $scope.current != reaction
 
     $scope.reactionSentence = ->
       users = Records.users.find($scope.reactionHash()[$scope.current]).sort (a,b) ->
@@ -47,6 +59,7 @@ angular.module('loomioApp').directive 'reactionsDisplay', ($translate, Session, 
         first:  names[0]
         second: names[1]
         count:  names.length - 2
+        reaction: ($scope.current unless $scope.current == 'all')
 
     Records.reactions.fetch(params:
       reactable_type: _.capitalize($scope.model.constructor.singular)

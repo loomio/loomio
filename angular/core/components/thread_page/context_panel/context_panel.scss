@@ -56,17 +56,6 @@
   margin-top: 16px;
 }
 
-.context-panel__actions {
-  @include displayFlex;
-  justify-content: flex-start;
-  margin-top: 16px;
-}
-
-.context-panel__edit,
-.context-panel__add-comment {
-  margin: 16px 16px 0 0;
-}
-
 @media (min-width: $medium-max-px) {
   .context-panel__before-thread-actions {
     order: 0;

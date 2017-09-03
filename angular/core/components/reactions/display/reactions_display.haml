@@ -1,5 +1,7 @@
 .reactions-display
-  %loading{ng-if: "!loaded"}
-  .reaction.lmo-pointer{ng-if: "loaded", ng-class: "{'reaction--inactive': isInactive(reaction)}", ng-mouseover: "setCurrent(reaction)", ng-mouseleave: "setCurrent()", ng-repeat: "reaction in model.reactions() track by reaction.id"}
-    .reaction__emoji{marked: "reaction.reaction"}
-  %span.lmo-hint-text {{reactionSentence()}}
+  %loading{ng-if: "!loaded", diameter: "diameter"}
+  .lmo-flex{ng-if: "loaded", layout: "row"}
+    .reaction.lmo-pointer{ng-if: "loaded", ng-class: "{'reaction--inactive': isInactive(reaction)}", ng-mouseover: "setCurrent(reaction)", ng-mouseleave: "setCurrent()", ng-repeat: "reaction in reactions() track by $index"}
+      .reaction__emoji{marked: "reaction"}
+    %emoji_picker.reaction{reaction: "true", ng-class: "{'reaction--inactive': isInactive()}"}
+  .reactions-display__sentence.lmo-hint-text{marked: "reactionSentence()"}
