@@ -17,8 +17,8 @@ class API::ReactionsController < API::RestfulController
 
   def reactable_params
     case action_name
-    when 'update' then resource_params
-    when 'index'  then params
+    when 'create', 'update' then resource_params
+    when 'index'            then params
     end
   end
 end

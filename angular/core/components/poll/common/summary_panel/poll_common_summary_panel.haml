@@ -17,3 +17,6 @@
   .poll-common-summary-panel__attachments{ng-if: "poll.hasAttachments()"}
     .poll-common-summary-panel__attachment{ng-repeat: "attachment in poll.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "context"}
+
+  %reactions_display{model: "poll"}
+  %reactions_input{model: "poll"}
