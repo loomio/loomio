@@ -1,6 +1,6 @@
-class API::UsageReportsController < ActionController::Base
+class API::UsageReportsController < ApplicationController
   def create
-    UsageReport.create!(params[:usage_report]) if ENV['HOSTED_BY_LOOMIO']
+    UsageReport.create!(params[:usage_report]) if hosted_by_loomio?
     head :ok
   end
 
