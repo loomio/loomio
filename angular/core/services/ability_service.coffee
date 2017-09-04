@@ -26,6 +26,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       !poll.group() or
       (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
 
+    canEditStance: (stance) ->
+      Session.user() == stance.author()
+
     canEditThread: (thread) ->
       @canAdministerGroup(thread.group()) or
       Session.user().isMemberOf(thread.group()) and

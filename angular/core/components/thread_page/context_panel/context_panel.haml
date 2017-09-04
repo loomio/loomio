@@ -56,13 +56,4 @@
 
   .lmo-md-actions
     %reactions_display.context-panel__actions-left{model: "discussion"}
-    .lmo-flex{layout: "row"}
-      %reactions_input{model: "discussion"}
-      %md-button.md-button--tiny{ng-if: "canAddComment()", ng-click: "scrollToCommentForm()"}
-        %i.material-icons reply
-        %md-tooltip{md-delay: "750"}
-          %span{translate: "context_panel.add_a_comment"}
-      %md-button.md-button--tiny{ng-if: "canEditThread()", ng-click: "editThread()"}
-        %i.material-icons edit
-        %md-tooltip{md-delay: "750"}
-          %span{translate: "context_panel.edit_thread"}
+    %action_dock{model: "discussion", actions: "actions"}

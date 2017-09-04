@@ -1,7 +1,17 @@
-angular.module('loomioApp').directive 'stanceCreated', (ReactionService) ->
+angular.module('loomioApp').directive 'stanceCreated', (ModalService, PollCommonEditVoteModal, AbilityService, ReactionService) ->
   scope: {eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/stance_created.html'
   replace: true
   controller: ($scope) ->
+    $scope.actions = [
+      name: 'react'
+      canPerform: -> AbilityService.canParticipateInPoll($scope.eventable.poll())
+    ,
+      name: 'edit_stance'
+      icon: 'edit'
+      canPerform: -> AbilityService.canEditStance($scope.eventable)
+      perform: -> ModalService.open PollCommonEditVoteModal, stance: -> $scope.eventable
+    ]
+
     ReactionService.listenForReactions($scope, $scope.eventable)

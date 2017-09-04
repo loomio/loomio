@@ -20,9 +20,6 @@ angular.module('loomioApp').directive 'contextPanel', ->
     $scope.editThread = ->
       ModalService.open DiscussionForm, discussion: => $scope.discussion
 
-    $scope.scrollToCommentForm = ->
-      ScrollService.scrollTo('.comment-form textarea')
-
     $scope.canPinThread = ->
       AbilityService.canPinThread($scope.discussion)
 
@@ -64,8 +61,20 @@ angular.module('loomioApp').directive 'contextPanel', ->
     $scope.showRevisionHistory = ->
       ModalService.open RevisionHistoryModal, model: => $scope.discussion
 
-    $scope.canAddComment = ->
-      AbilityService.canAddComment($scope.discussion)
+    $scope.actions = [
+      name: 'react'
+      canPerform: -> AbilityService.canAddComment($scope.discussion)
+    ,
+      name: 'edit_thread'
+      icon: 'edit'
+      canPerform: -> AbilityService.canEditThread($scope.discussion)
+      perform:    -> ModalService.open DiscussionForm, discussion: -> $scope.discussion
+    ,
+      name: 'add_comment'
+      icon: 'reply'
+      canPerform: -> AbilityService.canAddComment($scope.discussion)
+      perform:    -> ScrollService.scrollTo('.comment-form textarea')
+    ]
 
     TranslationService.listenForTranslations($scope)
     ReactionService.listenForReactions($scope, $scope.discussion)

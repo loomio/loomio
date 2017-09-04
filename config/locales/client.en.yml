@@ -427,9 +427,15 @@ en:
     make_announcement: Announcement
     notified_count: '{{count}} people will be emailed'
 
-  context_panel:
-    add_a_comment: Comment on this thread
+  action_dock:
+    react: Add your reaction
+    add_comment: Comment on this thread
     edit_thread: Edit this thread
+    edit_poll: Edit this decision
+    edit_stance: Change your stance
+    edit_comment: Edit your comment
+    delete_comment: Remove this comment
+    reply_to_comment: Reply to this comment
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
