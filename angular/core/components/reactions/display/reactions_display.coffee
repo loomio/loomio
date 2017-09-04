@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'reactionsDisplay', ($translate, Session, Records) ->
+angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records) ->
   scope: {model: '='}
   restrict: 'E'
   templateUrl: 'generated/components/reactions/display/reactions_display.html'
@@ -24,42 +24,18 @@ angular.module('loomioApp').directive 'reactionsDisplay', ($translate, Session, 
     $scope.reactions = ->
       _.difference _.keys($scope.reactionHash()), ['all']
 
-    $scope.$on 'emojiSelected', (_event, emoji) ->
-      params =
-        reactableType: _.capitalize($scope.model.constructor.singular)
-        reactableId:   $scope.model.id
-        userId:        Session.user().id
-      reaction = Records.reactions.find(params)[0] || Records.reactions.build(params)
-      reaction.reaction = emoji
-      reaction.save()
-
     $scope.setCurrent = (reaction) ->
       $scope.current = reaction or 'all'
 
     $scope.isInactive = (reaction) ->
       $scope.current != 'all' and $scope.current != reaction
 
-    $scope.reactionSentence = ->
-      users = Records.users.find($scope.reactionHash()[$scope.current]).sort (a,b) ->
-        -1 if a == Session.user()
-      return unless users.length
+    $scope.maxNamesCount = 5
+    $scope.namesFor = (reaction) ->
+      _.pluck Records.users.find($scope.reactionHash()[reaction]), 'name'
 
-      names = _.map users, (user) ->
-        if user == Session.user()
-          $translate.instant('common.you')
-        else
-          user.name
-
-      translation = switch names.length
-        when 1 then 'reactions_display.one_reaction'
-        when 2 then 'reactions_display.two_reactions'
-        else        'reactions_display.many_reactions'
-
-      $translate.instant translation,
-        first:  names[0]
-        second: names[1]
-        count:  names.length - 2
-        reaction: ($scope.current unless $scope.current == 'all')
+    $scope.countFor = (reaction) ->
+      $scope.namesFor(reaction).length - $scope.maxNamesCount
 
     Records.reactions.fetch(params:
       reactable_type: _.capitalize($scope.model.constructor.singular)

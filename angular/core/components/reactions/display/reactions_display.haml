@@ -1,6 +1,11 @@
-.reactions-display
+.reactions-display.lmo-flex.lmo-flex__center{layout: "row"}
   %loading{ng-if: "!loaded", diameter: "diameter"}
   .lmo-flex.lmo-flex__center{ng-if: "loaded", layout: "row"}
     .reaction.lmo-pointer{ng-if: "loaded", ng-class: "{'reaction--inactive': isInactive(reaction)}", ng-mouseover: "setCurrent(reaction)", ng-mouseleave: "setCurrent()", ng-repeat: "reaction in reactions() track by $index"}
       .reaction__emoji{marked: "reaction"}
-    .reactions-display__sentence.lmo-hint-text{marked: "reactionSentence()"}
+      %md-tooltip{md-delay: "100"}
+        .reactions-display__name{ng-repeat: "name in namesFor(reaction) | limitTo: maxNamesCount track by $index"}
+          {{ name }}
+        .reactions-display__name.eactions-display__more{ng-if: "countFor(reaction) > 0"}
+          %span{translate: "reactions_display.more_reactions", translate-value-count: "{{countFor(reaction)}}"}
+  %strong.reactions-display__count {{ reactionHash().all.length }}

@@ -31,6 +31,19 @@
   }
 }
 
+.reaction__emoji {
+  pointer-events: none;
+}
+
+.reactions-display__name {
+  line-height: 24px;
+}
+
+.reactions-display__count {
+  position: relative;
+  top: 3px;
+}
+
 .reactions-display__sentence {
   font-size: 14px;
   img.emojione { height: 16px; width: 16px; }

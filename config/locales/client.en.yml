@@ -480,9 +480,7 @@ en:
     add_your_reaction: Add your reaction
 
   reactions_display:
-    one_reaction: "{{first}} reacted {{reaction}}"
-    two_reactions: "{{first}} and {{second}} reacted {{reaction}}"
-    many_reactions: "{{first}}, {{second}}, and {{count}} others reacted {{reacted}}"
+    more_reactions: "{{count}} more..."
 
   group_page:
     thread_list:
