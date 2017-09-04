@@ -1,6 +1,6 @@
 class API::UsageReportsController < ApplicationController
   def create
-    UsageReport.create!(params[:usage_report]) if hosted_by_loomio?
+    UsageReport.create!(params[:usage_report])
     head :ok
   end
 
