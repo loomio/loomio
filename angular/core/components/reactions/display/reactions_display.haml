@@ -8,4 +8,4 @@
           {{ name }}
         .reactions-display__name.eactions-display__more{ng-if: "countFor(reaction) > 0"}
           %span{translate: "reactions_display.more_reactions", translate-value-count: "{{countFor(reaction)}}"}
-  %strong.reactions-display__count {{ reactionHash().all.length }}
+  %strong.reactions-display__count{ng-if: "reactionHash().all.length > 0"} {{ reactionHash().all.length }}
