@@ -4,9 +4,9 @@
   margin-bottom: 32px;
 }
 
-.poll-common-card {
-  .action-dock { opacity: 0.15; }
-  &:hover .action-dock { opacity: 1 }
+.poll-common-card__title {
+  @include md-title;
+  margin-bottom: 8px;
 }
 
 .poll-common-modal-header {

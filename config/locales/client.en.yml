@@ -440,6 +440,8 @@ en:
     delete_comment: Remove this comment
     reply_to_comment: Reply to this comment
     translate_comment: Translate this comment
+    edit_outcome: Update this outcome
+    translate_outcome: Translate this outcome
     show_history: Show edit history
 
   cover_photo_form:

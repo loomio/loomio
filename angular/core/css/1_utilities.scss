@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+.lmo-action-dock-wrapper {
+  .action-dock { opacity: 0.15; }
+  &:hover .action-dock { opacity: 1 }
+}
+
 textarea .lmo-textarea {
   resize: none;
   min-height: 100px;
