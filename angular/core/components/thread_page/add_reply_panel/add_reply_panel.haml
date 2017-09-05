@@ -1,4 +1,9 @@
 .add-reply-panel{ng-if: "show"}
-  Reply to Someone
-  Cancel reply button
+  .lmo-flex.lmo-flex__center
+    .add-reply-panel__title.lmo-flex__grow
+      Reply to {{parentComment.authorName()}}
+    %md-button.thread-item__dropdown-button{ng-click: "close()"}
+      .sr-only{translate: "comment_form.cancel_reply"}
+      %i.material-icons close
+
   %comment_form{discussion: "discussion", parent_comment: "parentComment"}

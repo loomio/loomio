@@ -29,6 +29,7 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, R
         drafts: true
         submitFn: $scope.comment.save
         flashSuccess: ->
+          $scope.$emit 'commentSaved'
           if $scope.comment.isReply()
             'comment_form.messages.replied'
           else
