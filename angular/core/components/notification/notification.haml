@@ -1,4 +1,4 @@
-%li.selector-list-item{ng-class: "{'lmo-active': !notification.viewed}"}
+%li{ng-class: "{'lmo-active': !notification.viewed}"}
   %a.notification{class: "navbar-notifications__{{notification.kind}}", href: "{{notification.url}}", ng-click: "broadcastThreadEvent(notification)"}
     .notification__avatar
       %user_avatar{ng-if: "actor()", user: "actor()", size: "small"}

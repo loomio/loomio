@@ -26,6 +26,18 @@
   align-items: center;
 }
 
+.poll-common-vote-form__tooltip {
+  max-width: 200px;
+  text-align: center;
+  @include fontSmall;
+  font-style: italic;
+  padding: 8px;
+  margin-top: 4px !important;
+  white-space: normal;
+  height: auto;
+  line-height: 20px;
+}
+
 .poll-common-vote-form__options .md-list-item-inner {
   padding-left: 0;
   padding-right: 0;

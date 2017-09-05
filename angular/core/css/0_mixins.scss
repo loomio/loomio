@@ -44,7 +44,7 @@ $cardPaddingSize: 16px;
   transition: 0.25s background-color ease-in-out;
   color: $primary-text-color;
   &:hover {
-    background: $list-hover-color;
+    background: $background-color;
     text-decoration: none;
   }
 }

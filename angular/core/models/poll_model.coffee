@@ -110,7 +110,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       existing = []
       _.each @latestStances('-createdAt'), (stance) ->
         if _.contains(existing, stance.participant())
-          stance.remove()
+          stance.latest = false
         else
           existing.push(stance.participant())
 

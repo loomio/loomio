@@ -14,7 +14,7 @@
 
 .registered-app-page__code {
   background: $background-color;
-  padding: 6px 10px;
-  border-radius: 5px;
+  padding: 8px;
+  @include roundedCorners;
   @include truncateText;
 }

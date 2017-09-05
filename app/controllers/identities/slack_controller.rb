@@ -3,6 +3,8 @@ class Identities::SlackController < Identities::BaseController
   include Identities::Slack::Install
   include Identities::Slack::Initiate
   include Identities::Slack::Participate
+  before_filter :initiate_ensure_token, only: :initiate
+  before_filter :participate_ensure_token, only: :participate
 
   def authorized
     @team = params[:team]

@@ -28,7 +28,7 @@ module.exports = new class ThreadHelper
     element(By.css('.thread-item__edit-link')).click()
 
   editCommentText: (body) ->
-    element(By.css('.edit-comment-form__comment-field')).clear().sendKeys(body)
+    element(By.css('.edit-comment-form textarea')).clear().sendKeys(body)
 
   submitEditedComment: ->
     element(By.css('.comment-form__submit-btn')).click()

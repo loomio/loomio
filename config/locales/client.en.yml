@@ -1342,6 +1342,9 @@ en:
     no_polls: No previous decisions found.
     count: "See all: ({{count}}) decisions"
 
+  poll_common_action_panel:
+    unable_to_vote: You do not have permission to vote in this decision.
+
   current_polls_card:
     title: Current decisions
     start_poll: New decision
@@ -1586,6 +1589,10 @@ en:
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
 
+  poll_count_options:
+    yes_meaning: I volunteer, give my consent, or have completed the given task
+    no_meaning: I am unable to contribute or to participate in this decision
+
   poll_count_vote_form:
     reason_label: Message
     reason_placeholder: Leave a message if you like
@@ -1619,21 +1626,21 @@ en:
     stance_updated: Vote updated
 
   thread_item:
-    comment_replied_to:            "<strong>{{author}}</strong> in reply to <strong>{{title}}</strong>"
-    discussion_title_edited:       "<strong>{{author}}</strong> edited the thread title: <strong>{{title}}</strong>"
-    discussion_context_edited:     "<strong>{{author}}</strong> edited the thread context"
-    discussion_attachments_edited: "<strong>{{author}}</strong> edited the thread's attachments"
-    discussion_made_public:        "<strong>{{author}}</strong> made the thread public"
-    discussion_made_private:       "<strong>{{author}}</strong> made the thread private"
-    discussion_edited:             "<strong>{{author}}</strong> edited the thread"
-    discussion_moved:              "<strong>{{author}}</strong> moved the thread from <strong>{{title}}</strong>"
-    new_comment:                   "<strong>{{author}}</strong>"
-    outcome_created:               "<strong>{{author}}</strong> shared an outcome for <strong>{{title}}</strong>"
-    poll_closed_by_user:           "<strong>{{author}}</strong> closed the {{polltype}}: <strong>{{title}}</strong>"
-    poll_created:                  "<strong>{{author}}</strong> started a {{polltype}}: <strong>{{title}}</strong>"
-    poll_edited:                   "<strong>{{author}}</strong> edited the {{polltype}}: <strong>{{title}}</strong>"
+    comment_replied_to:            "<strong><a href='u/{{username}}'>{{author}}</a></strong> in reply to <strong>{{title}}</strong>"
+    discussion_title_edited:       "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread title: <strong>{{title}}</strong>"
+    discussion_context_edited:     "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread context"
+    discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread's attachments"
+    discussion_made_public:        "<strong><a href='u/{{username}}'>{{author}}</a></strong> made the thread public"
+    discussion_made_private:       "<strong><a href='u/{{username}}'>{{author}}</a></strong> made the thread private"
+    discussion_edited:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread"
+    discussion_moved:              "<strong><a href='u/{{username}}'>{{author}}</a></strong> moved the thread from <strong>{{title}}</strong>"
+    new_comment:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
+    outcome_created:               "<strong><a href='u/{{username}}'>{{author}}</a></strong> shared an outcome for <strong>{{title}}</strong>"
+    poll_closed_by_user:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the {{polltype}}: <strong>{{title}}</strong>"
+    poll_created:                  "<strong><a href='u/{{username}}'>{{author}}</a></strong> started a {{polltype}}: <strong>{{title}}</strong>"
+    poll_edited:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the {{polltype}}: <strong>{{title}}</strong>"
     poll_expired:                  "{{polltype}} closed: <strong>{{title}}</strong>"
-    stance_created:                "<strong>{{author}}</strong> voted on: <strong>{{title}}</strong>"
+    stance_created:                "<strong><a href='u/{{username}}'>{{author}}</a></strong> voted on: <strong>{{title}}</strong>"
 
   poll_thread_item:
     poll:
@@ -1766,6 +1773,7 @@ en:
     sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
     oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
     name_required: Please enter a name
+    account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
 
     welcome: Nice to meet you, {{email}}!
     welcome_back: Welcome back, {{name}}!
@@ -1790,6 +1798,8 @@ en:
 
   install_slack:
     modal_title: Install Slack
+    modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.
+    login_to_slack: Log in to Slack
 
     card:
       install_title: Connect to Slack

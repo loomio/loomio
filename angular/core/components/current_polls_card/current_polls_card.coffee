@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'currentPollsCard', (Records, LoadingService, ModalService, PollCommonStartModal) ->
+angular.module('loomioApp').directive 'currentPollsCard', (Records, LoadingService, AbilityService, ModalService, PollCommonStartModal) ->
   scope: {model: '='}
   templateUrl: 'generated/components/current_polls_card/current_polls_card.html'
   controller: ($scope) ->
@@ -12,3 +12,6 @@ angular.module('loomioApp').directive 'currentPollsCard', (Records, LoadingServi
 
     $scope.startPoll = ->
       ModalService.open PollCommonStartModal, poll: -> Records.polls.build(groupId: $scope.model.id)
+
+    $scope.canStartPoll = ->
+      AbilityService.canStartPoll($scope.model.group())

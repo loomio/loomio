@@ -30,7 +30,7 @@ class Membership < ActiveRecord::Base
 
   scope :undecided_for, ->(poll) {
      joins("INNER JOIN users ON users.id = memberships.user_id")
-    .joins("LEFT OUTER JOIN stances ON stances.participant_id = users.id")
+    .joins("LEFT OUTER JOIN stances ON stances.participant_id = users.id AND stances.poll_id = #{poll.id}")
     .where(group: [poll.group, poll.guest_group])
     .where('stances.id': nil)
   }
