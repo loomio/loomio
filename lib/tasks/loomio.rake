@@ -33,6 +33,10 @@ namespace :loomio do
     InvitationService.resend_ignored(send_count: 2, since: 3.days.ago)
   end
 
+  task generate_error: :environment do
+    raise "this is an exception to test exception handling"
+  end
+
   task refresh_likes: :environment do
     progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Comment.count )
 
