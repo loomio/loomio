@@ -15,19 +15,19 @@ describe ReactionService do
 
   describe 'update' do
     it 'creates a like for the current user on a comment' do
-      expect { ReactionService.update(reaction: reaction, actor: user) }.to change { Reaction.count }.by(1)
+      expect { ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: user) }.to change { Reaction.count }.by(1)
     end
 
     it 'updates an existing like if one already exists' do
       existing = create :reaction, reactable: comment, user: user, reaction: ":star:"
-      expect { ReactionService.update(reaction: reaction, actor: user) }.to_not change { Reaction.count }
+      expect { ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: user) }.to_not change { Reaction.count }
       expect(existing.reload.reaction).to eq ":heart:"
     end
 
     it 'does not notify if the user is no longer in the group' do
       comment
       group.memberships.find_by(user: user).destroy
-      expect { ReactionService.update(reaction: reaction, actor: another_user) }.to_not change { user.notifications.count }
+      expect { ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: another_user) }.to_not change { user.notifications.count }
     end
   end
 
