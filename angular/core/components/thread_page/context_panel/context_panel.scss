@@ -1,7 +1,10 @@
 .context-panel {
   @include card;
   .lmo-card-heading { margin-top: 7px; }
+  .action-dock { opacity: 0.15; }
+  &:hover .action-dock { opacity: 1 }
 }
+
 .context-panel__top {
   @include displayFlex;
 }
