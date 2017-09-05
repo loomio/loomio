@@ -40,6 +40,7 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
         when 'poll', 'outcome'     then event.model().poll().title
         when 'group', 'membership' then event.model().group().name
         when 'version'             then event.model().model().title
+        when 'stance'              then event.model().poll().title
         when 'discussion'
           if event.kind == 'discussion_moved'
             Records.groups.find(event.sourceGroupId).fullName
