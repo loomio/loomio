@@ -1,6 +1,5 @@
 describe 'Invitations', ->
   page = require './helpers/page_helper.coffee'
-  staticPage = require './helpers/static_page_helper.coffee'
 
   it 'sends default invitations to a couple of people', ->
     page.loadPath 'setup_new_group'
@@ -55,73 +54,73 @@ describe 'Invitations', ->
     page.click '.start-menu__invitePeople'
     page.expectText '.invitation-form__group-select', 'Dirty Dancing Shoes'
 
-  xit 'allows sign in for invitations with existing email addresses', ->
-    staticPage.loadPath 'setup_existing_user_invitation'
-    staticPage.click 'a[href]'
+  # xit 'allows sign in for invitations with existing email addresses', ->
+  #   staticPage.loadPath 'setup_existing_user_invitation'
+  #   staticPage.click 'a[href]'
+  #
+  #   staticPage.expectText 'h1', 'Dirty Dancing Shoes'
+  #   staticPage.fillIn '#user_password', 'gh0stmovie'
+  #   staticPage.click '#sign-in-btn'
+  #   page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+  #   page.expectText '.members-card__list', 'JN'
 
-    staticPage.expectText 'h1', 'Dirty Dancing Shoes'
-    staticPage.fillIn '#user_password', 'gh0stmovie'
-    staticPage.click '#sign-in-btn'
-    page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
-    page.expectText '.members-card__list', 'JN'
+  # xit 'allows sign up for invitations with new email addresses', ->
+  #   staticPage.loadPath 'setup_new_user_invitation'
+  #   staticPage.click 'a[href]'
+  #
+  #   staticPage.expectText 'h1', 'Dirty Dancing Shoes'
+  #   staticPage.fillIn '#user_name', 'Judd Nelson'
+  #   staticPage.fillIn '#user_password', 'gh0stmovie'
+  #   staticPage.fillIn '#user_password_confirmation', 'gh0stmovie'
+  #   staticPage.click '#create-account'
+  #
+  #   page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+  #   page.expectText '.members-card__list', 'JN'
 
-  xit 'allows sign up for invitations with new email addresses', ->
-    staticPage.loadPath 'setup_new_user_invitation'
-    staticPage.click 'a[href]'
+  # xit 'allows sign up for team invitation link', ->
+  #   staticPage.ignoreSynchronization ->
+  #     staticPage.loadPath 'setup_team_invitation_link'
+  #
+  #     staticPage.fillIn '#user_name', 'Judd Nelson'
+  #     staticPage.fillIn '#user_email', 'judd@example.com'
+  #     staticPage.fillIn '#user_password', 'gh0stmovie'
+  #     staticPage.fillIn '#user_password_confirmation', 'gh0stmovie'
+  #     staticPage.click '#create-account'
 
-    staticPage.expectText 'h1', 'Dirty Dancing Shoes'
-    staticPage.fillIn '#user_name', 'Judd Nelson'
-    staticPage.fillIn '#user_password', 'gh0stmovie'
-    staticPage.fillIn '#user_password_confirmation', 'gh0stmovie'
-    staticPage.click '#create-account'
+      # page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+      # page.expectText '.members-card__list', 'JN'
 
-    page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
-    page.expectText '.members-card__list', 'JN'
+  # xit 'takes the user to the group if they\'ve already accepted', ->
+  #   staticPage.ignoreSynchronization ->
+  #     staticPage.loadPath 'setup_used_invitation'
+  #
+  #     staticPage.click 'a[href]'
+  #
+  #     staticPage.fillIn '#user_password', 'gh0stmovie'
+  #     staticPage.click '#sign-in-btn'
+  #
+  #     page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+  #     page.expectText '.members-card__list', 'JN'
 
-  xit 'allows sign up for team invitation link', ->
-    staticPage.ignoreSynchronization ->
-      staticPage.loadPath 'setup_team_invitation_link'
-
-      staticPage.fillIn '#user_name', 'Judd Nelson'
-      staticPage.fillIn '#user_email', 'judd@example.com'
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.fillIn '#user_password_confirmation', 'gh0stmovie'
-      staticPage.click '#create-account'
-
-      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
-      page.expectText '.members-card__list', 'JN'
-
-  xit 'takes the user to the group if they\'ve already accepted', ->
-    staticPage.ignoreSynchronization ->
-      staticPage.loadPath 'setup_used_invitation'
-
-      staticPage.click 'a[href]'
-
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.click '#sign-in-btn'
-
-      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
-      page.expectText '.members-card__list', 'JN'
-
-  xit 'displays an error if logging in as a different user', ->
-    staticPage.ignoreSynchronization ->
-      staticPage.loadPath 'setup_used_invitation'
-
-      staticPage.click 'a[href]'
-
-      staticPage.fillIn '#user_email', 'emilio@loomio.org'
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.click '#sign-in-btn'
-
-      staticPage.expectText 'body.invitations', 'This invitation has already been used'
-
-  xit 'displays an error if the invitation has been cancelled', ->
-    staticPage.ignoreSynchronization ->
-      staticPage.loadPath 'setup_cancelled_invitation'
-
-      staticPage.click 'a[href]'
-
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.click '#sign-in-btn'
-
-      staticPage.expectText 'body.invitations', 'This invitation has been cancelled'
+  # xit 'displays an error if logging in as a different user', ->
+  #   staticPage.ignoreSynchronization ->
+  #     staticPage.loadPath 'setup_used_invitation'
+  #
+  #     staticPage.click 'a[href]'
+  #
+  #     staticPage.fillIn '#user_email', 'emilio@loomio.org'
+  #     staticPage.fillIn '#user_password', 'gh0stmovie'
+  #     staticPage.click '#sign-in-btn'
+  #
+  #     staticPage.expectText 'body.invitations', 'This invitation has already been used'
+  #
+  # xit 'displays an error if the invitation has been cancelled', ->
+  #   staticPage.ignoreSynchronization ->
+  #     staticPage.loadPath 'setup_cancelled_invitation'
+  #
+  #     staticPage.click 'a[href]'
+  #
+  #     staticPage.fillIn '#user_password', 'gh0stmovie'
+  #     staticPage.click '#sign-in-btn'
+  #
+  #     staticPage.expectText 'body.invitations', 'This invitation has been cancelled'

@@ -1,7 +1,6 @@
 describe 'Group Page', ->
 
   page = require './helpers/page_helper.coffee'
-  staticPage = require './helpers/static_page_helper.coffee'
 
   describe 'visiting a parent group as a subgroup member', ->
     it 'displays parent group in sidebar if member of a subgroup', ->
