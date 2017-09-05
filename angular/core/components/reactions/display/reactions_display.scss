@@ -10,6 +10,7 @@
   position: relative;
   transition: opacity ease-in-out 0.25s;
   opacity: 1;
+
   &:nth-child(0) { right: 0; }
   &:nth-child(1) { right: 4px; }
   &:nth-child(2) { right: 8px; }
@@ -21,8 +22,10 @@
   &:nth-child(8) { right: 32px; }
   &:nth-child(9) { right: 36px; }
   &.emoji-picker { top: 3px; }
+
   &--inactive { opacity: 0.3; }
   .material-icons { color: $grey-on-white; }
+  img.emojione { top: 1px; }
   .lmo-helper-icon {
     position: absolute;
     font-size: 15px;
@@ -41,11 +44,5 @@
 
 .reactions-display__count {
   position: relative;
-  top: 3px;
-}
-
-.reactions-display__sentence {
-  font-size: 14px;
-  img.emojione { height: 16px; width: 16px; }
-  p { margin: 0; }
+  bottom: 1px;
 }
