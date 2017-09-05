@@ -341,6 +341,10 @@ class Ability
       stance.participant.email == @user.email
     end
 
+    can :show, Outcome do |outcome|
+      can? :show, outcome.poll
+    end
+
     can [:create, :update], Outcome do |outcome|
       !outcome.poll.active? &&
       user.ability.can?(:update, outcome.poll)
