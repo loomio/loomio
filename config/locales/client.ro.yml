@@ -95,7 +95,6 @@ ro:
     delete_comment: 'Sterge comentariu'
     cancel_reply: 'Anuleaza replica'
     confirm_delete_message: 'Esti sigur ca vrei sa stergi acest comentariu?'
-    in_reply_to: "Replicandu-i lui <strong>{{name}}</strong>:"
     submit_button:
       label: 'Postare'
     private_privacy_notice: 'Comentariul tau va fi vizibile doar membrilor grupului {{groupName}}.'
@@ -230,7 +229,6 @@ ro:
       or: sau
     no_threads:
       show_all: Nu ai nici o discutie recenta.
-      show_starred: Nu ai nici o discutie cu steluta.
       show_muted: Nu ai nici o discutie dezactivata.
     view_recent: Vezi toate discuțiile recente?
     load_more: Incarca mai multe discutii
@@ -241,9 +239,6 @@ ro:
       all: Discuțiile recente
       all_aria_label: Discutii recente in curs
       all_description: Vezi discuțiile recente
-      starred: Discutiile cu steluta
-      starred_aria_label: Discutii in curs pe care le-am marcat ca importante
-      starred_description: Vezi doar discutii pe care le-ai marcat ca importante
       proposals: Propuneri
       proposals_aria_label: Discutii in curs care au propuneri active
       proposals_description: Vezi doar discutii care au propuneri active
@@ -255,8 +250,6 @@ ro:
       starred: 'Discutii marcate cu steluta'
       today: 'Astazi'
       yesterday: 'Ieri'
-  star_toggle:
-    star: 'Marcheaza cu steluta discutia '
   inbox_page:
     no_threads: Woohoo! Ai citit toate discutiile din inbox.
     unread_threads: Discutii necitite

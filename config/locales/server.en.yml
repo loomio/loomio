@@ -17,6 +17,7 @@ en:
   user:
     error:
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
+      username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
   attachment:
     error:
@@ -176,6 +177,8 @@ en:
       context: "%{author_name} mentioned you while discussing %{discussion_title}"
       subject: '%{who} mentioned you while discussing "%{which}"'
     thread_mailer:
+      new_discussion:
+        header_html: '<strong>%{actor}</strong> started a thread:'
       footer_text: 'Reply to this email directly or view it on %{hostname}:'
       reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
       turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
@@ -622,41 +625,16 @@ en:
     visit_poll: View poll
     go_to_dashboad: Go to dashboard
 
-  webhooks:
-    slack:
-      poll_created: "*%{author}* started a new poll in *%{name}*"
-      poll_closing_soon: "*%{name}* has a poll closing in 24 hours"
-      poll_expired: "*%{name}* has closed"
-      outcome_created: "*%{author}* published an outcome in *%{name}*"
-      motion_closed: "*%{name}* has closed"
-      motion_closed_by_user: "*%{name}* has been closed by *%{author}*"
-      motion_closing_soon: "*%{name}* has a proposal closing in 24 hours"
-      motion_outcome_created: "*%{author}* published an outcome in *%{name}*"
-      motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
-      new_motion: "*%{author}* started a new proposal in *%{name}*"
-      new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
-      new_comment: "*%{author}* posted a new comment in *%{name}*"
-      new_discussion: "*%{author}* started a new discussion in *%{group}*"
-      outcome_created: "*%{author}* created an outcome for *%{name}*"
-      poll_created: "*%{author}* started a poll: *%{name}*"
-      poll_closing_soon: "*%{name}* is closing soon"
-      view_it_on_loomio: View it on Loomio
-      have_your_say: Have your say
-      outcome_published: "*%{author}* published an outcome:"
-      outcome_published_with_discussion: "*%{author}* published an outcome in %{discussion}:"
-      position_verbs:
-        'yes': agreed on
-        'no': disagreed on
-        abstain: abstained on
-        block: blocked
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"
     outcome_created: "Outcome posted in *%{group}*: *%{poll}*"
     poll_created: "New *%{poll_type}* in *%{group}*: *%{poll}*"
     poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
     poll_expired: "*%{poll}* has closed"
+    poll_not_found: "Sorry, that poll was not found. Type '/loomio <poll_type> <title>' to start another one?"
+    stance_not_valid: "Sorry, we weren't able to create a stance for *%{poll}*. <%{url}|Click here> to vote on the poll directly."
     group_identity_created: |
-      Hello, I'm Loomio Bot. *%{author}* added me.
+      Hello, I'm Loomio Bot! *%{author}* added me.
       I can help your team make decisions together.
 
       My functions include:
@@ -668,6 +646,9 @@ en:
       - keeping a record of decisions in your Loomio group.
 
       To find out more, type _/loomio help_
+
+      You'll need to be a part of the Loomio group *%{group}* to participate.
+      If you haven't joined yet, <%{url}|Click here> to do so.
     request_authorization_message: "Just one more step: <%{url}|Click here> to authorize your slack account to use Loomio. (You'll only have to do this once)"
     poll_closed: "*%{title}* has closed already! <%{url}|Click here> to view the results."
     go_to_slack: Go to Slack

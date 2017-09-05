@@ -61,7 +61,7 @@ textarea .lmo-textarea {
   bottom: 0;
   background-color: white;
   border-radius: 6px;
-  z-index: 10;
+  z-index: $z-low;
   opacity: 0.5;
 }
 

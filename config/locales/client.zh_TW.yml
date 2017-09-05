@@ -94,6 +94,16 @@ zh_TW:
     forbidden: '您沒有足夠的權限。'
     page_not_found: '我們找不到它。它可能已經被刪除或移動了。'
     internal_server_error: '很抱歉，但是有些事情不太對勁。請再試一次。'
+  verify_email_notice:
+    please_verify: 感謝參與！請檢查您的電子郵件來找找驗證您的投票的連結。
+  verify_stances:
+    title: 驗證投票
+    description: 請審閱下方的投票並驗證其是否為您的投票。
+    verify: 驗證
+    remove: 移除
+    verify_success: 投票已驗證
+    remove_success: 投票已移除
+    all_done: 做得好，您已經驗證所有投票了。
   start_proposal_card:
     title: '啟動提案'
     helptext: 準備好作出決策了嗎？
@@ -215,12 +225,13 @@ zh_TW:
       replied: '{{name}} 回覆通知'
       updated: '意見已更新'
       destroyed: '意見已刪除'
+    say_something: 留下些想法⋯
     edit_comment: '編輯意見'
     delete_comment: '刪除意見'
     cancel_reply: '取消回覆'
     confirm_delete_message: '您確定要刪除這個意見嗎？'
     confirm_delete: '刪除意見'
-    in_reply_to: "回覆給 <strong>{{name}}</strong>："
+    in_reply_to: "回覆給 {{name}}："
     submit_button:
       label: '貼文'
     private_privacy_notice: '您的意見只會被 {{groupName}} 群組的成員看到。'
@@ -282,7 +293,7 @@ zh_TW:
     new_vote: "<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上評論"
     comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論"
-    comment_liked: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 對您的評論按讚"
+    reaction_created: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 對您的評論按讚"
     user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
     user_reminded: "<strong>{{name}}</strong> 正在等候您參與 <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格"
@@ -727,9 +738,14 @@ zh_TW:
     use_gravatar: '使用 gravatar'
     use_uploaded: '上傳新照片'
   change_password_form:
-    title: 重設密碼
-    helptext: 忘記您的密碼？沒問題！只要點選下面的連結我們就會以電子郵件的方式告訴您如何設定新的密碼。
-    reset_my_password: 重設我的密碼
+    set_password_title: 設定密碼
+    change_password_title: 變更您的密碼
+    set_password_helptext: 請輸入密碼以登入，最少需要 8 個字元
+    change_password_helptext: 忘記您的密碼或是想要變更密碼嗎？只要在這裡輸入新的密碼就可以了。
+    set_password: 設定密碼
+    change_password: 變更密碼
+    password_changed: 您的密碼已更新
+    password_set: 您的密碼已設定
   deactivation_modal:
     aria_label: '凍結帳號'
     introduction: '當您停用您的帳號：'
@@ -741,7 +757,7 @@ zh_TW:
   deactivate_user_form:
     aria_label: '確認凍結帳號'
     title: '凍結帳號'
-    question: '您可以告訴我們為何您現在要凍結您的帳號嗎？'
+    question: '您可以告訴我們為何您要凍結您的帳號嗎？'
     placeholder: '回答這個問題是選擇性的。您所分享的任何資訊將會幫助我們改進 Loomio :)'
     submit: '凍結帳號'
   only_coordinator_modal:
@@ -763,7 +779,6 @@ zh_TW:
       loud_description: "當您加入一個新群組時，您將會<strong>有動態時</strong>收到電子郵件。"
       normal_description: "當您加入新群組時，您將會收到關於<strong>新討論串與提案</strong>的電子郵件。"
       quiet_description: "當您加入新群組時，您將<strong>不會收到關於動態</strong>的電子郵件。"
-    change_default: 變更預設值
     edit: 編輯
     messages:
       updated: 電子郵件設定已更新
@@ -777,7 +792,6 @@ zh_TW:
       join_group: <a href="/explore">加入</a>群組以觀看討論串。
     no_threads:
       show_all: 您沒有任何最近的討論串
-      show_starred: 您沒有已標記星號的討論串。
       show_proposals: 目前沒有活躍的提案。
       show_muted: 您沒有任何已靜音的討論串。
     view_recent: 檢視所有最近的討論串？
@@ -800,9 +814,6 @@ zh_TW:
       all: 最近的討論串
       all_aria_label: 目前正在顯示最近的討論串
       all_description: 檢視最近的討論串
-      starred: 已標記星號的討論串
-      starred_aria_label: 目前正在顯示我已標為重要的討論串
-      starred_description: 僅檢視被您標記為重要的討論串
       proposals: 提議
       proposals_aria_label: 目前正在顯示有活躍提案的討論串
       proposals_description: 僅檢視有活躍提案的討論串
@@ -816,17 +827,17 @@ zh_TW:
     thread_preview:
       you_voted: '您已經投了 {{position}}.'
       undecided: '您尚未決定'
+      pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
     threads_from:
       group: '討論串從'
-      proposals: '提議'
+      pinned: '已釘選的討論串'
+      proposals: '有活躍決策的討論串'
       starred: '已標記星號的討論串'
       today: '今天'
       yesterday: '昨日'
       thisweek: '本週'
       thismonth: ' 本月'
       older: '早於一個月'
-  star_toggle:
-    star: 對討論串標記星號
   inbox_page:
     no_threads: 太棒了！您已經讀完了您收件匣中所有的討論串。
     unread_threads: 未讀的討論串
@@ -851,9 +862,11 @@ zh_TW:
     liked_by_two_others: '{{name_1}} 與 {{name_2}} 對此按讚。'
     liked_by_many_others: '{{joinedNames}} 與 {{name}} 對此按讚。'
     liked_by_name: '{{name}} 對此按讚。'
-    liked_by_names_and_name: '{{joinedNames}} 與 {{name}} 對此按讚。'
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited: '已編輯'
+    pin:
+      pinned: '討論串已釘選'
+      unpinned: '討論串已取消釘選'
     volume:
       mute_message: '討論串已靜音。'
       unmute_message: '討論串靜音'
@@ -865,11 +878,18 @@ zh_TW:
     email_settings: '電子郵件設定'
     edit: '編輯'
     edit_thread: '編輯'
+    pin_thread: '釘選'
+    unpin_thread: '取消釘選'
     mute_thread: '靜音'
     move_thread: '移動'
     print_thread: '列印'
     delete_thread: '刪除'
     add_comment: '意見'
+  pin_thread_modal:
+    title: 釘選討論串
+    helptext: "已釘選的討論串總是會顯示在它們群組討論串清單的頂部。它們可以被用於提醒成員重要的公告，或是推廣一些一般的文章，如行為規範或社群指南等等。"
+    helptext_two: "您可以在任何時候透過從討論串下拉式選單選取「取消釘選」來移除釘選"
+    pin_thread: 釘選討論串
   delete_thread_form:
     aria_label: '刪除討論串'
     title: 刪除討論串
@@ -1407,6 +1427,22 @@ zh_TW:
     too_many_dots: 您使用了太多點數。
     stance_created: 已建立投票
     stance_updated: 已更新投票
+  thread_item:
+    comment_replied_to: "<strong>{{author}}</strong> 在回覆 <strong>{{title}}</strong>"
+    discussion_title_edited: "<strong>{{author}}</strong>已更新討論串的標題：<strong>{{title}}</strong>"
+    discussion_context_edited: "<strong>{{author}}</strong> 已經編輯了此討論串的內容"
+    discussion_attachments_edited: "<strong>{{author}}</strong> 已經編輯了此討論串的附件"
+    discussion_made_public: "<strong>{{author}}</strong> 已經將討論串設為公開"
+    discussion_made_private: "<strong>{{author}}</strong> 已經將討論串設為私密"
+    discussion_edited: "<strong>{{author}}</strong> 已經編輯了討論串"
+    discussion_moved: "<strong>{{author}}</strong>已從<strong>{{title}}</strong> 移動討論串"
+    new_comment: "<strong>{{author}}</strong>"
+    outcome_created: "<strong>{{author}}</strong> 分享了 <strong>{{title}}</strong> 的成果"
+    poll_closed_by_user: "<strong>{{author}}</strong> 已關閉投票 {{polltype}}：<strong>{{title}}</strong>"
+    poll_created: "<strong>{{author}}</strong> 啟動了一個 {{polltype}}：<strong>{{title}}</strong>"
+    poll_edited: "<strong>{{author}}</strong> 已編輯投票 {{polltype}}：<strong>{{title}}</strong>"
+    poll_expired: "{{polltype}} 已關閉：<strong>{{title}}</strong>"
+    stance_created: "<strong>{{author}}</strong> 已投票"
   poll_thread_item:
     poll:
       poll_created: '<strong>{{author}}</strong> 已啟動了一個新投票：<span>{{title}}</span>'
@@ -1516,8 +1552,8 @@ zh_TW:
     email_not_found: "抱歉，我們找不到與此電子郵件地址相關的帳號"
     email_placeholder: you@example.com
     login_link_helptext: |
-      點選下面的按鈕，我們就會立刻將登入連結寄給您。
-      或是逤您不想要收到電子郵件的話，您也可以設定一組用於登入的密碼。
+      點選下面的按鈕，然後我們就會傳送立刻登入的連結給您。
+      若您未來想要使用密碼登入，您可以從您的簡歷頁面設定一個。
     login_link_helptext_with_password: "輸入您的密碼，或是透過電子郵件登入。"
     sign_up_helptext: "只要輸入您使用的名稱，我們就會寄送一個連結供您登入。"
     oauth_confirm_helptext: "只要在下面確認您的詳細資料，我們就會傳送連結給您來登入。"
@@ -1535,6 +1571,7 @@ zh_TW:
     login_link_sent: "好的，我們已經傳送一封包含可以立刻登入的連結的電子郵件到 {{email}}。待會見！"
     password_link_sent: "我們已經寄送一封包含了如何設定您的密碼的電子郵件到 {{email}} 了。"
     signed_in: 登入成功
+    email_verified: 電子郵件驗證成功
     name: 名稱
     email: 電子郵件
     password: 密碼

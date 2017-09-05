@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.3.4'
 gem 'rails', '~> 4.2.5.2'
 gem 'rake', '11.3.0'
 gem 'pg', '~> 0.18.4'
@@ -16,7 +16,7 @@ gem 'gravtastic'
 gem 'paperclip', '~> 4.3.6'
 gem 'activeadmin', github: 'gdpelican/activeadmin'
 gem 'nokogiri'
-gem 'twitter-text'
+gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.3.4'
 gem 'paper_trail', '~> 4.0.2'
 gem 'delayed_job', '~> 4.0.2'
@@ -51,6 +51,7 @@ gem "autoprefixer-rails"
 gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
 
 group :development, :test do
+  gem 'lograge'
   gem 'minitest'
   gem 'timecop'
   gem 'byebug'

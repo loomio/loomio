@@ -280,7 +280,7 @@ nl-NL:
     new_vote: '<strong>{{name}}</strong> {{position}} ten aanzien van het voorstel <strong>{{title}}</strong>'
     new_comment: '<strong>{{name}}</strong> heeft gereageerd op <strong>{{title}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> heeft geantwoord op je opmerking in <strong>{{title}}</strong>'
-    comment_liked: '<strong>{{name}}</strong> vindt je opmerking leuk in <strong>{{title}}</strong>'
+    reaction_created: '<strong>{{name}}</strong> vindt je opmerking leuk in <strong>{{title}}</strong>'
     user_mentioned: '<strong>{{name}}</strong> heeft je vermeld in <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> heeft gevraagd lid te mogen worden van <strong>{{title}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> heeft je deelnameverzoek goedgekeurd <strong>{{title}}</strong>'
@@ -893,7 +893,6 @@ nl-NL:
     liked_by_two_others: '{{name_1}} en {{name_2}} vinden dit leuk.'
     liked_by_many_others: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
     liked_by_name: 'Leuk gevonden door {{name}}.'
-    liked_by_names_and_name: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
     started_by: 'Gestart door <strong>{{name}}</strong>'
     edited: Bewerkt
     volume:

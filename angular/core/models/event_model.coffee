@@ -28,6 +28,9 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     actorName: ->
       @actor().name if @actor()
 
+    actorUsername: ->
+      @actor().username if @actor()
+
     model: ->
       @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
 

@@ -1,11 +1,12 @@
 .notification {
   @include displayFlex;
+  @include listTransition;
   padding: 13px;
 }
 
 .notification:hover {
   text-decoration: none;
-  background-color: $list-hover-color;
+  background-color: $background-color;
 }
 
 

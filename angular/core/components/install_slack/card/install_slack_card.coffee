@@ -6,8 +6,4 @@ angular.module('loomioApp').directive 'installSlackCard', ($location, $window, S
       $scope.group.slackChannelName && $scope.group.slackTeamName
 
     $scope.install = ->
-      if Session.user().identityFor('slack')
-        ModalService.open InstallSlackModal, group: -> $scope.group
-      else
-        $location.search('install_slack', true)
-        $window.location.href = '/slack/oauth'
+      ModalService.open InstallSlackModal, group: -> $scope.group

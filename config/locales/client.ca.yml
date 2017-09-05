@@ -153,7 +153,6 @@ ca:
     delete_comment: 'Elimina el comentari'
     cancel_reply: 'Cancel·la la resposta'
     confirm_delete_message: 'Esteu segur que voleu eliminar aquest comentari?'
-    in_reply_to: "Com a resposta a <strong>{{name}}</strong>:"
     submit_button:
       label: 'Publica'
     private_privacy_notice: 'El comentari només serà visible pels membres de {{groupName}}.'
@@ -495,7 +494,6 @@ ca:
       loud_description: "Quan us uniu a un grup nou, rebre un correu electrònic <strong>cada cop que hi hagi activitat</strong>."
       normal_description: "Quan us uniu a un grup nou, rebre un correu electrònic sobre <strong>noves discussions i propostes</strong>."
       quiet_description: "Quan us uniu a un grup nou, <strong>no rebreu cap correu electrònic sobre la seva activitat</strong>."
-    change_default: Canvia la configuració per defecte
     edit: Edita
     messages:
       updated: Configuració del correu electrònic actualitzada
@@ -509,7 +507,6 @@ ca:
       join_group: <a href="/explore">uniu-vos</a> a un grup per veure les discussions.
     no_threads:
       show_all: No teniu cap discussió recent.
-      show_starred: No teniu cap discussió destacada.
       show_proposals: Actualment no hi ha cap proposta activa.
       show_muted: No teniu cap discussió silenciada.
     view_recent: Voleu veure totes les discussions recents?
@@ -524,9 +521,6 @@ ca:
       all: Discussions recents
       all_aria_label: Mostrant les discussions recents
       all_description: Veure les discussions recents
-      starred: Discussions destacades
-      starred_aria_label: Mostrant les discussions marcades com a importants
-      starred_description: Mostra només les discussions marcades com a importants
       proposals: Propostes
       proposals_aria_label: Mostrant les discussions amb propostes actives
       proposals_description: Mostra només les discussions amb propostes actives
@@ -542,15 +536,12 @@ ca:
       undecided: 'Esteu indecís'
     threads_from:
       group: 'Discussions de'
-      proposals: 'Propostes'
       starred: 'Discussions destacades'
       today: 'Avui'
       yesterday: 'Ahir'
       thisweek: 'Aquesta setmana'
       thismonth: 'Aquest mes'
       older: 'Fa més d''un mes'
-  star_toggle:
-    star: Destaca la discussió
   inbox_page:
     no_threads: Heu llegit totes les discussions de la vostra safata.
     unread_threads: Discussions no llegides
@@ -574,7 +565,6 @@ ca:
     liked_by_two_others: '{{name_1}} i{{name_2}} els agrada.'
     liked_by_many_others: 'A  {{joinedNames}} i {{name}} els hi ha agradat.'
     liked_by_name: 'A {{name}} li ha agradat.'
-    liked_by_names_and_name: 'A  {{joinedNames}} i {{name}} els hi ha agradat.'
     started_by: 'Destacat per <strong>{{name}}</strong>'
     edited: 'Editat'
     volume:

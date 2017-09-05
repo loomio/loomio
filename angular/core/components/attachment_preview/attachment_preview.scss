@@ -3,18 +3,44 @@
   &:hover .attachment-preview__file--image { opacity: 1; }
 }
 
-.attachment-preview img {
-  border-radius: 5px;
-  max-width: 100%;
-  max-height: 320px;
-  border: 1px solid $border-color;
+.attachment-preview__image {
+  text-align: center;
+  background: $background-color;
+  background: lighten($background-color, 5%);
+  @include roundedCorners;
+  img {
+    max-width: 100%;
+    max-height: 320px;
+    margin-bottom: -5px; // wtf
+    border: 1px solid $border-color;
+    @include roundedCorners;
+  }
+}
+
+.attachment-preview__file--thread {
+  min-height: 32px;
+
+  .material-icons {
+    font-size: 20px;
+    padding: 0 4px;
+  }
+
+  .attachment-preview__filename {
+    @include truncateText;
+    padding: 0 4px;
+  }
+
+  .attachment-preview__filesize {
+    white-space: nowrap;
+    padding: 0 4px;
+  }
 }
 
 .attachment-preview--thumb {
   width: 100px;
   height: 100px;
   background: $background-color;
-  border-radius: 5px;
+  @include roundedCorners;
   margin: 5px 5px 5px;
   float: left;
 }
@@ -24,16 +50,14 @@
   position: relative;
 }
 
-.attachment-preview__link {
-  &:hover {
-    text-decoration: none;
-    cursor: pointer;
-  }
+.attachment-preview__link:hover {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .attachment-preview__file {
-  border-radius: 5px;
-  display: block;
+  @include roundedCorners;
+  display: flex;
   background: $background-color;
   color: $grey-on-grey;
 }
@@ -41,31 +65,20 @@
 .attachment-preview__file--thumb {
   width: 100px;
   height: 100px;
-  font-size: 30px;
-  line-height: 100px;
-  text-align: center;
-}
-
-.attachment-preview__file--thread {
-  padding: 4px 4px 4px 31px;
-  text-indent: -11px;
-  i {
-    padding-right: 1px;
-  }
+  .material-icons { font-size: 30px; }
 }
 
 .attachment-preview__file--image {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(255,255,255,.8);
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 3px 3px;
+  background: $background-transparent-color;
   opacity: 0;
   pointer-events: none;
-  white-space: nowrap;
-  overflow: hidden;
   transition: opacity 0.5s;
 }
+
 .attachment-preview__destroy {
   position: absolute;
   top: 0;

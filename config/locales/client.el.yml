@@ -197,7 +197,6 @@ el:
     cancel_reply: 'Ακύρωση Απάντησης'
     confirm_delete_message: 'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?'
     confirm_delete: 'Διαγραφή σχολίου'
-    in_reply_to: "Σε απάντηση στον/στην <strong>{{name}}</strong>:"
     submit_button:
       label: 'Δημοσίευση'
     private_privacy_notice: 'Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{groupName}}.'

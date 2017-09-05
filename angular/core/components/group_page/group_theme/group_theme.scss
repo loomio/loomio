@@ -8,9 +8,9 @@
   top: 0;
   width: 100%;
   height: 320px;
-  z-index: 0;
+  z-index: $z-zero;
   &:hover .group-theme__upload-photo {
-    button { background: $list-hover-transparent-color; }
+    button { background: $background-transparent-color; }
     .group-theme__upload-help-text { opacity: 1; }
   }
 }
@@ -43,7 +43,7 @@
   background: url('http://placehold.it/100x100') no-repeat top center white;
   border: 4px solid #fff;
   &:hover .group-theme__upload-photo {
-    button { background: $list-hover-transparent-color; }
+    button { background: $background-transparent-color; }
     .group-theme__upload-help-text { opacity: 1; }
   }
 }

@@ -14,6 +14,8 @@ class Stance < ActiveRecord::Base
   attr_accessor :visitor_attributes
 
   belongs_to :participant, class_name: 'User', required: true
+  alias :user :participant
+  alias :author :participant
 
   update_counter_cache :poll, :stances_count
   update_counter_cache :poll, :undecided_user_count

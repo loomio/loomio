@@ -216,7 +216,7 @@ describe 'Discussion Page', ->
       page.click '.comment-form__submit-button'
       page.click '.thread-item__dropdown-button',
                  '.thread-item__edit-link'
-      page.fillIn '.edit-comment-form__comment-field', 'Revised comment!'
+      page.fillIn '.edit-comment-form textarea', 'Revised comment!'
       page.click  '.comment-form__submit-btn'
       browser.sleep(2000)
       page.click '.thread-item__action--view-edits'

@@ -58,6 +58,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       _.some @attachments()
 
     announcementSize: (action) ->
+      return @group().announcementRecipientsCount if @isNew()
       switch action or @notifyAction()
         when 'publish' then @stancesCount + @undecidedUserCount
         when 'edit'    then @stancesCount
@@ -109,7 +110,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       existing = []
       _.each @latestStances('-createdAt'), (stance) ->
         if _.contains(existing, stance.participant())
-          stance.remove()
+          stance.latest = false
         else
           existing.push(stance.participant())
 

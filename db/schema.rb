@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816051532) do
+ActiveRecord::Schema.define(version: 20170903235705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,17 +103,6 @@ ActiveRecord::Schema.define(version: 20170816051532) do
 
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "tag_desc_idx", using: :btree
-
-  create_table "comment_votes", force: :cascade do |t|
-    t.integer  "comment_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comment_votes", ["comment_id"], name: "index_comment_votes_on_comment_id", using: :btree
-  add_index "comment_votes", ["created_at"], name: "index_comment_votes_on_created_at", using: :btree
-  add_index "comment_votes", ["user_id"], name: "index_comment_votes_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "discussion_id",       default: 0
@@ -655,6 +644,19 @@ ActiveRecord::Schema.define(version: 20170816051532) do
   add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
   add_index "polls", ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true, using: :btree
 
+  create_table "reactions", force: :cascade do |t|
+    t.integer  "reactable_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "reaction",       default: "+1",      null: false
+    t.string   "reactable_type", default: "Comment", null: false
+  end
+
+  add_index "reactions", ["created_at"], name: "index_reactions_on_created_at", using: :btree
+  add_index "reactions", ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type", using: :btree
+  add_index "reactions", ["user_id"], name: "index_reactions_on_user_id", using: :btree
+
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"
     t.integer  "poll_option_id"
@@ -725,6 +727,22 @@ ActiveRecord::Schema.define(version: 20170816051532) do
   end
 
   add_index "translations", ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id", using: :btree
+
+  create_table "usage_reports", force: :cascade do |t|
+    t.integer  "groups_count"
+    t.integer  "users_count"
+    t.integer  "discussions_count"
+    t.integer  "polls_count"
+    t.integer  "comments_count"
+    t.integer  "stances_count"
+    t.integer  "visits_count"
+    t.string   "canonical_host"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "version"
+  end
+
+  add_index "usage_reports", ["canonical_host"], name: "index_usage_reports_on_canonical_host", using: :btree
 
   create_table "user_deactivation_responses", force: :cascade do |t|
     t.integer "user_id"

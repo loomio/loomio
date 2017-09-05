@@ -10,11 +10,11 @@
   %md-dialog-content
     %form.md-dialog-content.registered-app-form
       .lmo-flex{layout: "row"}
-        .lmo-flex{layout: "column"}
-          %img{ng-src: "{{application.logoUrl}}"}
-          %md-button{ng-if: "!application.isNew()", type: "button", ng-click: "clickFileUpload()"}>
+        .lmo-flex.lmo-margin-right{layout: "column"}
+          %img.lmo-box--large{ng-src: "{{application.logoUrl}}"}
+          %md-button.md-accent.registered-app-form__upload-button{ng-if: "!application.isNew()", type: "button", ng-click: "clickFileUpload()"}>
             %span{translate: "common.action.upload"}>
-          %input.hidden{type: "file", ng-model: "file", ng-file-select: "upload(file)"}
+          %input.hidden.registered-app-form__logo-input{type: "file", ng-model: "file", ng-file-select: "upload(file)"}
 
         .lmo-flex{layout: "column"}
           %md-input-container.md-block
