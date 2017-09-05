@@ -70,6 +70,11 @@ angular.module('loomioApp').directive 'contextPanel', ->
       canPerform: -> AbilityService.canEditThread($scope.discussion)
       perform:    -> ModalService.open DiscussionForm, discussion: -> $scope.discussion
     ,
+      name: 'translate_thread'
+      icon: 'translate'
+      canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
+      perform:    -> TranslationService.inline($scope, $scope.discussion)
+    ,
       name: 'add_comment'
       icon: 'reply'
       canPerform: -> AbilityService.canAddComment($scope.discussion)

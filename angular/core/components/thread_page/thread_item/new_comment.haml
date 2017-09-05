@@ -1,5 +1,5 @@
 .new-comment{id: "comment-{{eventable.id}}"}
-  .thread-item__body.new-comment__body.lmo-markdown-wrapper{marked: "eventable.cookedBody()"}
+  .thread-item__body.new-comment__body.lmo-markdown-wrapper{ng-if: "!translation", marked: "eventable.cookedBody()"}
   %translation.thread-item__body{ng-if: "translation", translation: "translation", field: "body"}
 
   %outlet{name: "after-comment-body", model: "eventable"}
@@ -11,13 +11,5 @@
   .lmo-md-actions
     %reactions_display{model: "eventable"}
     %action_dock{model: "eventable", actions: "actions"}
-    -# .thread-item__actions{ng-if: "showCommentActions()"}
-    -#   %reactions_display{model: "eventable"}
-    -#   %span.lmo-no-print{aria-hidden: "true"}>·
-    -#   %button.thread-item__action.thread-item__action--reply.lmo-no-print{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
-    -#   %translate_button.lmo-no-print{model: "eventable", showdot: "true"}
-    -#   %span.md-caption{ng-if: "eventable.edited()"}
-    -#     %span{aria-hidden: "true"}·
-    -#     %button.thread-item__action--view-edits{ng-click: "showRevisionHistory()", translate: "new_comment_item.edited"}>
 
   %outlet{name: "after-comment-event", model: "eventable"}

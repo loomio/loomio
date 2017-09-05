@@ -37,7 +37,6 @@
   .context-panel__details.md-body-1
     %span{translate: "discussion.started_by", translate-value-name: "{{::discussion.authorName()}}"}
     %timeago.nowrap{timestamp: "::discussion.createdAt" }>
-    %translate_button.lmo-card-minor-action{model: "discussion", showdot: "true"}>
     %span{aria-hidden: "true"}·
     %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
       %i.material-icons> lock_outline

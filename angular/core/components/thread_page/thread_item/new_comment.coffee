@@ -4,9 +4,6 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Record
   templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'
   replace: true
   controller: ($scope) ->
-    $scope.showRevisionHistory = ->
-      ModalService.open RevisionHistoryModal, model: => $scope.eventable
-
     $scope.actions = [
       name: 'react'
       canPerform: -> AbilityService.canAddComment($scope.eventable.discussion())
@@ -23,8 +20,13 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Record
     ,
       name: 'translate_comment'
       icon: 'translate'
-      canPerform: -> AbilityService.canTranslate($scope.eventable)
-      perform:    ->
+      canPerform: -> $scope.eventable.body && AbilityService.canTranslate($scope.eventable) && !$scope.translation
+      perform:    -> TranslationService.inline($scope, $scope.eventable)
+    ,
+      name: 'show_history'
+      icon: 'history'
+      canPerform: -> $scope.eventable.edited()
+      perform:    -> ModalService.open RevisionHistoryModal, model: -> $scope.eventable
     ,
       name: 'delete_comment'
       icon: 'delete'

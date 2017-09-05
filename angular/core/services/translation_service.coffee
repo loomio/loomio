@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'TranslationService', ($translate) ->
+angular.module('loomioApp').factory 'TranslationService', ($translate, Session, Records) ->
   new class TranslationService
 
     # this sucks atm, but I want to improve and reintroduce it.
@@ -12,13 +12,13 @@ angular.module('loomioApp').factory 'TranslationService', ($translate) ->
     #   else if retries > 0
     #     $timeout => @eagerTranslate(scope, translations, retries - 1)
 
-    # ensure we've received a response from the url loader
-    translationTable: ->
-      @translationTable = @translationTable or $translate.getTranslationTable()
-
-    listenForTranslations: (scope, context) ->
-      context = context or scope
+    listenForTranslations: (scope) ->
       scope.$on 'translationComplete', (e, translatedFields) =>
         return if e.defaultPrevented
         e.preventDefault()
-        context.translation = translatedFields
+        scope.translation = translatedFields
+
+    inline: (scope, model) ->
+      Records.translations.fetchTranslation(model, Session.user().locale).then (data) ->
+        scope.translated = true
+        scope.$emit 'translationComplete', data.translations[0].fields

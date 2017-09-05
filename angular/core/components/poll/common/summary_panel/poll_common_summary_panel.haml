@@ -8,7 +8,6 @@
     %span{translate: "poll_card.started_by", translate-value-name: "{{poll.author().name}}"}
     %span{aria-hidden: "true"}>·
     %poll_common_closing_at{poll: "poll"}
-    %translate_button.lmo-card-minor-action{model: "poll", showdot: "true"}>
 
   .poll-common-summary-panel__details.lmo-markdown-wrapper{ng-if: "!translation", marked: "poll.cookedDetails()"}
   .poll-common-summary-panel__details{ng-if: "translation"}

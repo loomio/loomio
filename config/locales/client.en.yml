@@ -431,11 +431,16 @@ en:
     react: Add your reaction
     add_comment: Comment on this thread
     edit_thread: Edit this thread
+    translate_thread: Translate this thread
     edit_poll: Edit this decision
+    translate_poll: Translate this poll
     edit_stance: Change your stance
+    translate_stance: Translate this stance
     edit_comment: Edit your comment
     delete_comment: Remove this comment
     reply_to_comment: Reply to this comment
+    translate_comment: Translate this comment
+    show_history: Show edit history
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
