@@ -172,7 +172,7 @@ describe 'Discussion Page', ->
 
     it 'can add emojis', ->
       page.fillIn '.comment-form textarea', 'Here is a dragon!'
-      page.click '.emoji-picker__toggle'
+      page.click '.comment-form .emoji-picker__toggle'
       page.fillIn '.emoji-picker__search input', 'drag'
       page.clickFirst '.emoji-picker__icon'
       page.click '.comment-form__submit-button'
@@ -185,12 +185,12 @@ describe 'Discussion Page', ->
       page.click '.action-dock__button--reply_to_comment'
       page.fillIn '.comment-form textarea', 'hi this is my comment'
       page.click '.comment-form__submit-button'
-      page.expectText '.new-comment:last-child', 'in reply to'
+      page.expectText '.thread-item:last-child', 'in reply to'
       page.expectFlash 'Patrick Swayze notified of reply'
 
     it 'can react to a comment', ->
-      page.click '.emoji-picker__toggle',
-                 '.emoji-picker__icon:first img'
+      page.click '.comment-form .emoji-picker__toggle',
+                 '.comment-form .emoji-picker__icon:first-child img'
       page.expectElement '.reaction'
       page.expectText '.reactions-display__count', '1'
 
@@ -205,14 +205,14 @@ describe 'Discussion Page', ->
       page.fillIn '.comment-form textarea', 'original comment right hur'
       page.click '.comment-form__submit-button'
       page.click '.action-dock__button--edit_comment'
-      page.fillIn '.comment-form textarea', 'edited comment right thur'
+      page.fillIn '.edit-comment-form textarea', 'edited comment right thur'
       page.click '.comment-form__submit-button'
       page.expectText '.new-comment', 'edited comment right thur'
 
     it 'lets you view comment revision history', ->
       page.fillIn '.comment-form textarea', 'Comment!'
       page.click '.comment-form__submit-button'
-      page.click '.action-dock__button-edit_comment'
+      page.click '.action-dock__button--edit_comment'
       page.fillIn '.edit-comment-form textarea', 'Revised comment!'
       page.click  '.comment-form__submit-btn'
       page.click '.action-dock__button--show_history'

@@ -12,8 +12,8 @@ describe 'Polls', ->
       page.fillIn ".poll-common-form-fields textarea", "Some details for #{poll_type}"
       optionsFn() if optionsFn?
       page.click ".poll-common-form__submit"
-      page.expectText '.poll-common-details-panel', "A new #{poll_type}"
-      page.expectText '.poll-common-details-panel', "Some details for #{poll_type}"
+      page.expectText '.poll-common-card', "A new #{poll_type}"
+      page.expectText '.poll-common-card', "Some details for #{poll_type}"
 
   describe 'start, vote for each poll type', ->
     it 'starts a proposal', startPollTest('proposal')
