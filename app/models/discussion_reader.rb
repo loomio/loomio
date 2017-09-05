@@ -41,9 +41,9 @@ class DiscussionReader < ActiveRecord::Base
 
   def volume
     if persisted?
-      super || membership&.volume || 'normal'
+      super || membership_volume || 'normal'
     else
-      membership.volume
+      membership_volume
     end
   end
 
@@ -68,6 +68,6 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def membership
-    @membership ||= discussion.group.membership_for(user)
+    @membership ||= discussion.group&.membership_for(user)&.volume
   end
 end
