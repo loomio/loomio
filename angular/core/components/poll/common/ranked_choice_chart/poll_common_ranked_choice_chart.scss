@@ -1,12 +1,24 @@
 .poll-common-ranked-choice-chart {
   width: 100%;
   text-align: right;
-  th { font-weight: normal; }
-  tr { min-height: 48px; }
+  position: relative;
 }
 
-.poll-common-ranked-choice-chart__option-name {
-  text-align: left;
-  white-space: nowrap;
-  height: 48px;
+.poll-common-ranked-choice-chart__cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 48px;
+  padding: 4px;
+  &.poll-common-ranked-choice-chart__cell--name {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: $tiny-max-px) {
+  .poll-common-ranked-choice-chart__table {
+    position: absolute;
+    right: 0;
+    background: rgba(255,255,255,0.7);
+  }
 }

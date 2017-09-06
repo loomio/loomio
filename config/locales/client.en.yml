@@ -50,7 +50,7 @@ en:
     copy: 'Copy'
     copy_text: 'Copy text'
     copied: 'Copied to clipboard'
-    points_abbrev: ({{score}} pts)
+    points_abbrev: Each vote worth {{score}} points
     total: Total
     action:
       back: 'Back'
@@ -1588,6 +1588,8 @@ en:
     no_options: "You haven't added any options yet."
     add_option_placeholder: Enter a new choice
     minimum_stance_choices: Options to rank
+    ranked_choice_created: Ranked choice created
+    ranked_choice_updated: Ranked choice updated
 
   poll_meeting_time_field:
     new_time_slot: New time slot
