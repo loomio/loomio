@@ -50,6 +50,8 @@ en:
     copy: 'Copy'
     copy_text: 'Copy text'
     copied: 'Copied to clipboard'
+    points_abbrev: ({{score}} pts)
+    total: Total
     action:
       back: 'Back'
       next: 'Next'
@@ -89,6 +91,13 @@ en:
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text on Loomio'
+
+  ordinal:
+    1: 1st
+    2: 2nd
+    3: 3rd
+    4: 4th
+    5: 5th
 
   devise:
     failure:

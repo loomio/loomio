@@ -1,0 +1,12 @@
+.poll-common-ranked-choice-chart {
+  width: 100%;
+  text-align: right;
+  th { font-weight: normal; }
+  tr { min-height: 48px; }
+}
+
+.poll-common-ranked-choice-chart__option-name {
+  text-align: left;
+  white-space: nowrap;
+  height: 48px;
+}

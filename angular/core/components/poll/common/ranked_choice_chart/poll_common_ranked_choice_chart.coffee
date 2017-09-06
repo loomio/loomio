@@ -5,6 +5,15 @@ angular.module('loomioApp').directive 'pollCommonRankedChoiceChart', (AppConfig,
     $scope.countFor = (option) ->
       $scope.poll.stanceData[option.name] or 0
 
+    $scope.rankFor = (score) ->
+      $scope.poll.customFields.minimum_stance_choices - score + 1
+
+    $scope.votesFor = (option, score) ->
+      _.filter(option.stanceChoices(), (choice) -> choice.score == score).length
+
+    $scope.scores = ->
+      [$scope.poll.customFields.minimum_stance_choices..1]
+
     $scope.pollOptions = ->
       _.sortBy $scope.poll.pollOptions(), (option) -> -$scope.countFor(option)
 
@@ -21,4 +30,4 @@ angular.module('loomioApp').directive 'pollCommonRankedChoiceChart', (AppConfig,
 
     $scope.styleData = (option) ->
       'background-image': backgroundImageFor(option)
-      'background-size': percentageFor(option)
+      'width': percentageFor(option)

@@ -1,3 +1,13 @@
-.poll-common-ranked-choice-chart
-  .poll-common-bar-chart__bar{ng-repeat: "option in pollOptions() track by option.id", ng-style: "styleData(option)"}
-    {{barTextFor(option)}}
+%table.poll-common-ranked-choice-chart
+  %thead
+    %th
+    %th{ng-repeat: "score in scores()"}
+      %strong{translate: "ordinal.{{rankFor(score)}}"}>
+      %span{translate: "common.points_abbrev", translate-value-score: "{{score}}"}
+    %th
+      %strong{translate: "common.total"}
+  %tr{ng-repeat: "option in pollOptions() track by option.id"}
+    %td
+      .poll-common-ranked-choice-chart__option-name.lmo-flex.lmo-flex__center{ng-style: "styleData(option)"} {{option.name}}
+    %td{ng-repeat: "score in scores()"} {{votesFor(option, score)}}
+    %td {{countFor(option)}}
