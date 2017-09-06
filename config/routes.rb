@@ -148,7 +148,7 @@ Loomio::Application.routes.draw do
     resources :poll_did_not_votes, only: :index
 
     resources :comments,    only: [:create, :update, :destroy]
-    resources :reactions,   only: [:create, :update, :index]
+    resources :reactions,   only: [:create, :update, :index, :destroy]
 
     resources :attachments, only: [:create, :destroy]
 
