@@ -14,10 +14,7 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, R
               .replace('&gt;', '>')
 
     $scope.commentPlaceholder = ->
-      if $scope.comment.parentId
-        $translate.instant('comment_form.in_reply_to', name: $scope.comment.parent().authorName())
-      else
-        $translate.instant('comment_form.say_something')
+      $translate.instant('comment_form.write_a_comment')
 
     $scope.init = ->
       $scope.comment = Records.comments.build
