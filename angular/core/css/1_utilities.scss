@@ -193,6 +193,18 @@ img.emojione {
   }
 }
 
+.lmo-number-input {
+  width: 35px !important;
+  text-align: center;
+  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

@@ -1591,6 +1591,7 @@ en:
     no_options: "You haven't added any options yet."
     add_option_placeholder: Enter a new choice
     minimum_stance_choices: Options to rank
+    minimum_stance_choices_helptext: Number of options each voter may rank
     ranked_choice_created: Ranked choice created
     ranked_choice_updated: Ranked choice updated
 
