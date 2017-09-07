@@ -64,10 +64,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @id == object.authorId
 
     isAdminOf: (group) ->
-      _.contains(group.adminIds(), @id)
+      _.contains(group.adminIds(), @id) if group
 
     isMemberOf: (group) ->
-      _.contains(group.memberIds(), @id)
+      _.contains(group.memberIds(), @id) if group
 
     firstName: ->
       _.first @name.split(' ') if @name

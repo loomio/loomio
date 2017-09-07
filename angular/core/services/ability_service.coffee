@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       AppConfig.currentUserId?
 
     canAddComment: (thread) ->
-      Session.user().isMemberOf(thread.group())
+      @canParticipateInDiscussion(thread)
 
     canRespondToComment: (comment) ->
       Session.user().isMemberOf(comment.group())
@@ -25,6 +25,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       @canAdministerPoll(poll) or
       !poll.group() or
       (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
+
+    canParticipateInDiscussion: (thread) ->
+      Session.user().isMemberOf(thread.group()) or
+      Session.user().isMemberOf(thread.guestGroup())
 
     canEditStance: (stance) ->
       Session.user() == stance.author()
@@ -46,16 +50,23 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       Session.user().isAuthorOf(thread)
 
     canPinThread: (thread) ->
-      @canAdministerGroup(thread.group())
+      if thread.group()
+        @canAdministerGroup(thread.group())
+      else
+        @canAdministerThread(thread)
 
     canChangeThreadVolume: (thread) ->
-      Session.user().isMemberOf(thread.group())
+      @canParticipateInDiscussion(thread)
 
     canChangeGroupVolume: (group) ->
       Session.user().isMemberOf(group)
 
     canAdministerGroup: (group) ->
       Session.user().isAdminOf(group)
+
+    canAdministerThread: (thread) ->
+      Session.user().isMemberOf(thread.group()) or
+      Session.user().isAdminOf(thread.guestGroup())
 
     canManageGroupSubscription: (group) ->
       group.isParent() and

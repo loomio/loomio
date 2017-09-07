@@ -41,6 +41,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @hasMany 'polls', sortBy: 'createdAt', sortDesc: true
       @hasMany 'versions', sortBy: 'createdAt'
       @belongsTo 'group'
+      @belongsTo 'guestGroup', from: 'groups' 
       @belongsTo 'author', from: 'users'
 
     reactions: ->

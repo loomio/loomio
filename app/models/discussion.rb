@@ -135,7 +135,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def privacy_is_permitted_by_group
-    return unless group.present?
+    return unless group.presence
     if group.private_discussions_only? && !private?
       errors.add(:private, "must be private in this group")
     end

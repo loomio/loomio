@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826122955) do
+ActiveRecord::Schema.define(version: 20170907184652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,17 @@ ActiveRecord::Schema.define(version: 20170826122955) do
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "tag_desc_idx", using: :btree
 
+  create_table "comment_votes", force: :cascade do |t|
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comment_votes", ["comment_id"], name: "index_comment_votes_on_comment_id", using: :btree
+  add_index "comment_votes", ["created_at"], name: "index_comment_votes_on_created_at", using: :btree
+  add_index "comment_votes", ["user_id"], name: "index_comment_votes_on_user_id", using: :btree
+
   create_table "comments", force: :cascade do |t|
     t.integer  "discussion_id",       default: 0
     t.text     "body",                default: ""
@@ -145,6 +156,15 @@ ActiveRecord::Schema.define(version: 20170826122955) do
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "decision_emails", force: :cascade do |t|
+    t.string   "subject",    null: false
+    t.string   "body"
+    t.string   "to",         null: false
+    t.string   "cc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"
@@ -232,11 +252,13 @@ ActiveRecord::Schema.define(version: 20170826122955) do
     t.integer  "closed_polls_count",              default: 0,     null: false
     t.boolean  "pinned",                          default: false, null: false
     t.integer  "importance",                      default: 0,     null: false
+    t.integer  "guest_group_id"
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
   add_index "discussions", ["created_at"], name: "index_discussions_on_created_at", using: :btree
   add_index "discussions", ["group_id"], name: "index_discussions_on_group_id", using: :btree
+  add_index "discussions", ["guest_group_id"], name: "index_discussions_on_guest_group_id", unique: true, using: :btree
   add_index "discussions", ["is_deleted", "archived_at", "private"], name: "index_discussions_visible", using: :btree
   add_index "discussions", ["is_deleted", "archived_at"], name: "index_discussions_on_is_deleted_and_archived_at", using: :btree
   add_index "discussions", ["is_deleted"], name: "index_discussions_on_is_deleted", using: :btree
@@ -657,6 +679,14 @@ ActiveRecord::Schema.define(version: 20170826122955) do
   add_index "reactions", ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type", using: :btree
   add_index "reactions", ["user_id"], name: "index_reactions_on_user_id", using: :btree
 
+  create_table "received_emails", force: :cascade do |t|
+    t.text     "headers"
+    t.text     "body"
+    t.string   "sender_email", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"
     t.integer  "poll_option_id"
@@ -728,6 +758,22 @@ ActiveRecord::Schema.define(version: 20170826122955) do
 
   add_index "translations", ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id", using: :btree
 
+  create_table "usage_reports", force: :cascade do |t|
+    t.integer  "groups_count"
+    t.integer  "users_count"
+    t.integer  "discussions_count"
+    t.integer  "polls_count"
+    t.integer  "comments_count"
+    t.integer  "stances_count"
+    t.integer  "visits_count"
+    t.string   "canonical_host"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "version"
+  end
+
+  add_index "usage_reports", ["canonical_host"], name: "index_usage_reports_on_canonical_host", using: :btree
+
   create_table "user_deactivation_responses", force: :cascade do |t|
     t.integer "user_id"
     t.text    "body"
@@ -736,7 +782,7 @@ ActiveRecord::Schema.define(version: 20170826122955) do
   add_index "user_deactivation_responses", ["user_id"], name: "index_user_deactivation_responses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.citext   "email",                                        default: "",         null: false
+    t.citext   "email",                                        default: "",                    null: false
     t.string   "encrypted_password",               limit: 128, default: ""
     t.string   "reset_password_token",             limit: 255
     t.datetime "reset_password_sent_at"
@@ -751,37 +797,39 @@ ActiveRecord::Schema.define(version: 20170826122955) do
     t.string   "name",                             limit: 255
     t.datetime "deactivated_at"
     t.boolean  "is_admin",                                     default: false
-    t.string   "avatar_kind",                      limit: 255, default: "initials", null: false
+    t.string   "avatar_kind",                      limit: 255, default: "initials",            null: false
     t.string   "uploaded_avatar_file_name",        limit: 255
     t.string   "uploaded_avatar_content_type",     limit: 255
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials",                  limit: 255
     t.string   "username",                         limit: 255
-    t.boolean  "email_when_proposal_closing_soon",             default: false,      null: false
+    t.boolean  "email_when_proposal_closing_soon",             default: false,                 null: false
     t.string   "authentication_token",             limit: 255
     t.string   "unsubscribe_token",                limit: 255
-    t.integer  "memberships_count",                            default: 0,          null: false
-    t.boolean  "uses_markdown",                                default: false,      null: false
+    t.integer  "memberships_count",                            default: 0,                     null: false
+    t.boolean  "uses_markdown",                                default: false,                 null: false
     t.string   "selected_locale",                  limit: 255
     t.string   "time_zone",                        limit: 255
     t.string   "key",                              limit: 255
     t.string   "detected_locale",                  limit: 255
-    t.boolean  "email_missed_yesterday",                       default: true,       null: false
+    t.boolean  "email_missed_yesterday",                       default: true,                  null: false
     t.string   "email_api_key",                    limit: 255
-    t.boolean  "email_when_mentioned",                         default: true,       null: false
-    t.boolean  "angular_ui_enabled",                           default: true,       null: false
-    t.boolean  "email_on_participation",                       default: true,       null: false
-    t.integer  "default_membership_volume",                    default: 2,          null: false
+    t.boolean  "email_when_mentioned",                         default: true,                  null: false
+    t.boolean  "angular_ui_enabled",                           default: true,                  null: false
+    t.boolean  "email_on_participation",                       default: true,                  null: false
+    t.integer  "default_membership_volume",                    default: 2,                     null: false
     t.string   "country"
     t.string   "region"
     t.string   "city"
-    t.jsonb    "experiences",                                  default: {},         null: false
+    t.jsonb    "experiences",                                  default: {},                    null: false
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"
-    t.string   "short_bio",                                    default: "",         null: false
-    t.boolean  "email_verified",                               default: false,      null: false
+    t.string   "short_bio",                                    default: "",                    null: false
+    t.boolean  "email_verified",                               default: false,                 null: false
+    t.string   "location",                                     default: "",                    null: false
+    t.datetime "last_seen_at",                                 default: '2017-09-07 16:27:00', null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

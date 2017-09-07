@@ -1,7 +1,7 @@
 .loading-wrapper.lmo-two-column-layout
   %loading{ng-if: "!threadPage.discussion"}
   %main.thread-page.lmo-row{ng-if: "threadPage.discussion"}
-    %group_theme{group: "threadPage.discussion.group()", compact: "true"}
+    %group_theme{group: "threadPage.discussion.group()", compact: "true", ng-if: "threadPage.discussion.group()"}
     .thread-page__main-content
       %outlet.before-column-right.lmo-column-right{name: "before-thread-page-column-right", ng-if: "threadPage.eventsLoaded", model: "threadPage.discussion"}
       %poll_common_card.lmo-card--no-padding.lmo-column-right{poll: "poll", ng-repeat: "poll in threadPage.discussion.activePolls() track by poll.id"}

@@ -10,14 +10,15 @@
     .md-dialog-content.md-body-1
       .lmo-hint-text{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew()"}
 
-      %md-input-container.md-block{ng-show: "showGroupSelect"}
+      %md-input-container.md-block{ng-if: "showGroupSelect"}
         %label{for: "discussion-group-field", translate: "discussion_form.group_label"}
         %md-select.discussion-form__group-select#discussion-group-field{ng-model: "discussion.groupId", placeholder: "{{'discussion_form.group_placeholder' | translate}}", ng-required: "true", ng-change: "restoreRemoteDraft(); updatePrivacy()"}
+          %md-option{ng-value: "", translate: "poll_common_form.no_group"}
           %md-option{ng-value: "group.id", ng-repeat: "group in availableGroups() | orderBy: 'fullName' track by group.id"}
             {{group.fullName}}
         .md-errors-spacer
 
-      .discussion-form__group-selected{ng-if: "discussion.groupId"}
+      .discussion-form__group-selected
         %md-input-container.md-block
           %label{for: "discussion-title", translate: "discussion_form.title_label"}
           .lmo-relative
@@ -40,16 +41,12 @@
               %i.material-icons.lmo-margin-right{ng-if: "!discussion.private"} public
               %discussion_privacy_icon{discussion: "discussion"}
 
-          %md-list-item.discussion-form__announcement-size{ng-if: "discussion.isNew()"}
-            %md-checkbox.md-checkbox--with-summary.discussion-form__make-announcement{ng-model: "discussion.makeAnnouncement"}
-              .discussion-form__make-announcement-title
-                %strong{translate: "discussion_form.make_announcement"}>
-              -# .discussion-form__make-announcement-subtitle{translate: "discussion_form.notified_count", ng-if: "discussion.makeAnnouncement", translate-values: "{count: discussion.group().announcementRecipientsCount}"}
+          %notify_input{model: "discussion"}
 
         .lmo-md-actions
           %div
           .lmo-actions
             %outlet{name: "before-discussion-submit", model: "discussion"}
-            %md-button.md-primary.md-raised.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "common.action.start", ng-if: "discussion.isNew()" }
+            %md-button.md-primary.md-raised.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled", translate: "common.action.start", ng-if: "discussion.isNew()" }
             %md-button.md-primary.md-raised.discussion-form__update{type: "submit", ng-disabled: "submitIsDisabled", translate: "common.action.save", ng-if: "!discussion.isNew()" }
         %validation_errors.discussion-form__attachment-errors{subject: "discussion", field: "file"}

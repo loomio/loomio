@@ -5,6 +5,7 @@ module Null::Object
     apply_null_method :empty_methods, []
     apply_null_method :hash_methods,  {}
     apply_null_method :true_methods,  true
+    apply_null_method :zero_methods,  0
     apply_null_method :none_methods,  ->(model) { model.to_s.singularize.classify.constantize.none }
   end
 
@@ -33,6 +34,10 @@ module Null::Object
   end
 
   def true_methods
+    []
+  end
+
+  def zero_methods
     []
   end
 

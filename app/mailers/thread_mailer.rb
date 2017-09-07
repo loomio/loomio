@@ -60,12 +60,6 @@ class ThreadMailer < BaseMailer
     headers['X-Auto-Response-Suppress'] = 'OOF'
     headers['Auto-Submitted'] = 'auto-generated'
 
-    if @discussion.group
-      reply_to = reply_to_address_with_group_name(discussion: @discussion, user: @recipient)
-      subject_params = {
-      }
-    end
-
     if subject_key.nil? or @following
       subject_key = 'email.custom'
       subject_params = {text: "[#{@discussion.group.full_name}] #{@discussion.title}"}
@@ -73,7 +67,7 @@ class ThreadMailer < BaseMailer
 
     send_single_mail  to: @recipient.email,
                       from: from_user_via_loomio(@author),
-                      reply_to: reply_to_address
+                      reply_to: reply_to_address(discussion: @discussion, user: @recipient),
                       subject_key: subject_key,
                       subject_params: subject_params,
                       locale: @recipient.locale

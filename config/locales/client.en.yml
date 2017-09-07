@@ -431,7 +431,9 @@ en:
     context_placeholder: 'Give enough background information for the group to have a productive discussion. This can be updated as the discussion progresses'
     privacy_label: 'Privacy'
     privacy_public: 'Anyone can see the thread. Only members can participate.'
+    privacy_public_no_group: 'Anyone can see and participate in this thread'
     privacy_private: 'The thread will only be visible to members of {{group}}.'
+    privacy_private_no_group: 'Only those you invite will be able to view and participate'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     make_announcement: Announcement
     notified_count: '{{count}} people will be emailed'

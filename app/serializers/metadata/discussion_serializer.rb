@@ -11,4 +11,8 @@ class Metadata::DiscussionSerializer < ActiveModel::Serializer
   def image_url
     object.group.logo.url
   end
+
+  def include_image_url?
+    object.group.presence
+  end
 end

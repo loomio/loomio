@@ -216,11 +216,12 @@ class Ability
     end
 
     can :create, Discussion do |discussion|
-      (user.email_verified? &&
-       discussion.group.present? &&
-       discussion.group.members_can_start_discussions? &&
-       user_is_member_of?(discussion.group_id)) ||
-      user_is_admin_of?(discussion.group_id)
+      if discussion.group.presence
+        (user_is_member_of?(discussion.group_id) && discussion.group.members_can_start_discussions?) ||
+        user_is_admin_of?(discussion.group_id)
+      else
+        user.email_verified?
+      end
     end
 
     can [:set_volume,
