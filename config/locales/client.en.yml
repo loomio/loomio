@@ -1576,7 +1576,10 @@ en:
 
   poll_ranked_choice_form:
     tool_tip_expanded: |
-      <p>BLARG</p>
+      <p>Ranked choice is a voting method which allows each voter to respond with their preferences in order.</p>
+      <p>It's preferable when 'vote stealing' is a concern (ie, two somewhat popular options are similar enough that they
+         end up sharing votes between them), and can be used to implement a Condorcet, or Instant Runoff style election.
+      </p>
     tool_tip_collapsed: Rank options in order
     start_header: Start ranked choice
     edit_header: Edit ranked choice
