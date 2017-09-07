@@ -1,35 +1,28 @@
 class Events::PollExpired < Event
-  include Events::PollEvent
+  include Events::Notify::FromAuthor
   include Events::Notify::Author
   include Events::Notify::ThirdParty
 
   def self.publish!(poll)
-    create(kind: "poll_expired",
-           eventable: poll,
-           discussion: poll.discussion,
-           announcement: !!poll.events.find_by(kind: :poll_created)&.announcement,
-           created_at: poll.closed_at).tap { |e| EventBus.broadcast('poll_expired_event', e) }
-  end
-
-  def notify_users!
-    super
-    notification_for(poll.author).save
+    poll.notified = poll.notified_when_created
+    super poll,
+          discussion: poll.discussion,
+          created_at: poll.closed_at
   end
 
   private
 
-  # the author is always notified above, so don't notify them twice
+  # 'super' here are the people who were notified when the poll was first created
   def notification_recipients
-    super.without(poll.author)
+    users_who_care(super)
   end
 
   def email_recipients
-    super.without(poll.author)
+    users_who_care(super)
   end
 
-  # don't notify mentioned users for poll expired
-  def specified_notification_recipients
-    User.none
+  # we also always notified the author of poll expiry (unless they have unsubscribed)
+  def users_who_care(relation)
+    users_in_any(relation, User.where(id: eventable.author_id)).without(eventable.unsubscribers)
   end
-  alias :specified_email_recipients :specified_notification_recipients
 end

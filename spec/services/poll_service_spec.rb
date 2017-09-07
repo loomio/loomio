@@ -50,20 +50,22 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: another_user) }.to raise_error { CanCan::AccessDenied }
     end
 
-    describe 'announcements' do
-      it 'announces the poll to a group' do
-        poll_created.make_announcement = true
+    describe 'notified' do
+      it 'notifies users' do
+        poll_created.notified = [build(:notified_user, model: another_user).as_json]
+        expect { PollService.create(poll: poll_created, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
+
+      it 'notifies groups' do
+        poll_created.notified = [build(:notified_group, model: group).as_json]
         expect { PollService.create(poll: poll_created, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(poll_created.group.members.count - 1)
       end
 
-      it 'does not announce unless make_announcement is set to true' do
-        expect { PollService.create(poll: poll_created, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
+      it 'notifies invitations' do
+        poll_created.notified = [build(:notified_invitation).as_json]
+        expect { PollService.create(poll: poll_created, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(poll_created.reload.guest_group.invitations.pending.count).to eq 1
       end
-
-      # it 'does not announce if a group is not specified' do
-      #   poll_created.make_announcement = true
-      #   expect { PollService.create(poll: poll_created, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
-      # end
     end
 
   end

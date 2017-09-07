@@ -1,5 +1,3 @@
 .poll-common-share-form
-  %poll_common_share_group_form.poll-common-share-form__form{poll: "poll", ng-if: "hasGroups()"}
   %poll_common_share_link_form.poll-common-share-form__form{poll: "poll"}
   %poll_common_share_email_form.poll-common-share-form__form{poll: "poll", ng-if: "hasPendingEmails()"}
-  %poll_common_share_visitor_form.poll-common-share-form__form{poll: "poll", ng-if: "!hasPendingEmails()"}

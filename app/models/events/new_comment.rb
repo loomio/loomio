@@ -1,13 +1,10 @@
 class Events::NewComment < Event
+  include Events::Notify::Mentions
   include Events::Notify::Users
   include Events::LiveUpdate
 
   def self.publish!(comment)
-    create(kind: 'new_comment',
-           eventable: comment,
-           user: comment.author,
-           discussion: comment.discussion,
-           created_at: comment.created_at).tap { |e| EventBus.broadcast('new_comment_event', e) }
+    super(comment, user: comment.author, discussion: comment.discussion)
   end
 
   private
@@ -15,7 +12,15 @@ class Events::NewComment < Event
   def email_recipients
     Queries::UsersByVolumeQuery.loud(eventable.discussion)
                                .without(eventable.author)
-                               .without(eventable.mentioned_group_members)
+                               .without(eventable.new_mentioned_group_members)
                                .without(eventable.parent_author)
+  end
+
+  def mention_recipients
+    eventable.new_mentioned_group_members
+  end
+
+  def mailer
+    ThreadMailer
   end
 end

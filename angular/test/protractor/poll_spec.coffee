@@ -122,7 +122,7 @@ describe 'Polls', ->
     page.expectFlash 'Vote created'
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Big Baloo'
 
-  it 'can invite users via email', ->
+  xit 'can invite users via email', ->
     page.loadPath 'polls/test_proposal_poll_share'
     page.fillIn '.poll-common-share-form__add-option-input', 'loo@m.io'
     page.click '.poll-common-share-form__option-button'
@@ -150,3 +150,17 @@ describe 'Polls', ->
     page.click '.poll-common-undecided-panel__show-invitations'
     page.clickFirst '.poll-common-undecided-user__resend'
     page.expectFlash 'Invitation resent'
+
+  it 'can notify groups', ->
+    page.loadPath 'setup_group_with_volumes'
+    page.click '.current-polls-card__start-poll'
+    page.click '.poll-common-choose-type__poll-type--proposal'
+    page.fillIn '.poll-common-form-fields__title', 'Notify that group!'
+    page.expectText '.notify-input', 'Dirty Dancing Shoes'
+    page.expectText '.notify-input', '(2 people)'
+    page.click '.notify-chip'
+    page.expectText '.notify-group-form', 'Emilio Estevez'
+    page.expectText '.notify-group-form', '2 people selected'
+    page.click '.notify-group-form__member:first-child'
+    page.click '.notify-group-form__submit'
+    page.expectText '.notify-input', '(3 people)'

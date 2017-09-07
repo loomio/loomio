@@ -1,8 +1,13 @@
 module UsesFullSerializer
   def resource_serializer
-    case action_name
-    when 'show' then "Full::#{controller_name.singularize.camelize}Serializer".constantize
-    else super
+    if full_controller_actions.include? action_name
+      "Full::#{controller_name.singularize.camelize}Serializer".constantize
+    else
+      super
     end
+  end
+
+  def full_controller_actions
+    ['show']
   end
 end

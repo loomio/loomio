@@ -1,13 +1,11 @@
 class Events::NewDiscussion < Event
   include Events::Notify::Users
+  include Events::Notify::Mentions
   include Events::LiveUpdate
   include Events::Notify::ThirdParty
 
   def self.publish!(discussion)
-    create(kind: 'new_discussion',
-           user: discussion.author,
-           announcement: discussion.make_announcement,
-           eventable: discussion).tap { |e| EventBus.broadcast('new_discussion_event', e) }
+    super(discussion, user: discussion.author, announcement: discussion.make_announcement)
   end
 
   private
@@ -18,5 +16,13 @@ class Events::NewDiscussion < Event
     else
       Queries::UsersByVolumeQuery.loud(eventable)
     end.without(eventable.author).without(eventable.mentioned_group_members)
+  end
+
+  def mention_recipients
+    eventable.new_mentioned_group_members
+  end
+
+  def mailer
+    ThreadMailer
   end
 end

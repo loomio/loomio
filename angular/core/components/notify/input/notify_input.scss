@@ -1,0 +1,30 @@
+$chip-height: 40px;
+
+.notify-input {
+  margin: 24px 0;
+}
+
+.notify-input__label {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.38) !important;
+}
+
+.notify-input__menu-content {
+  padding: 0;
+}
+
+.notify-input__chips md-chip {
+  height: $chip-height;
+  padding: 4px;
+  padding-right: 28px !important;
+}
+
+.notify-input input {
+  height: $chip-height;
+  margin-bottom: 0;
+  padding: 4px !important;
+  &::placeholder {
+    @include truncateText;
+    font-size: 14px;
+  }
+}

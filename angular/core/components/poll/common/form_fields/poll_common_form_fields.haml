@@ -1,6 +1,14 @@
 .poll-common-form-fields
   %poll_common_tool_tip{poll: "poll"}
 
+  %md-input-container.md-block{ng-if: "showGroupSelect"}
+    %label{for: "poll-group-field", translate: "poll_common_form.group_label"}
+    %md-select.poll-common-form-fields__group-select#poll-group-field{ng-disabled: "poll.discussionId", ng-model: "poll.groupId", placeholder: "{{'poll_common_form.group_placeholder' | translate}}", ng-change: "changeGroup()"}
+      %md-option{ng-value: "", translate: "poll_common_form.no_group"}
+      %md-option{ng-value: "group.id", ng-repeat: "group in availableGroups() | orderBy: 'fullName' track by group.id"}
+        {{group.fullName}}
+    .md-errors-spacer
+
   %md-input-container.md-block
     %label{translate: "poll_common_form.title"}
     %input.lmo-primary-form-input.poll-common-form-fields__title{type: "text", placeholder: "{{titlePlaceholder()}}", ng-model: "poll.title", md-maxlength: "250"}

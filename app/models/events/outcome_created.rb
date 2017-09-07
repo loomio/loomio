@@ -5,12 +5,10 @@ class Events::OutcomeCreated < Event
   include Events::LiveUpdate
 
   def self.publish!(outcome)
-    create(kind: "outcome_created",
-           user: outcome.author,
-           eventable: outcome,
-           announcement: outcome.make_announcement,
-           discussion: outcome.poll.discussion,
-           created_at: outcome.created_at).tap { |e| EventBus.broadcast('outcome_created_event', e) }
+    super outcome,
+          user: outcome.author,
+          discussion: outcome.poll.discussion,
+          announcement: outcome.make_announcement
   end
 
   private

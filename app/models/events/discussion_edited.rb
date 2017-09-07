@@ -1,12 +1,15 @@
 class Events::DiscussionEdited < Event
+  include Events::Notify::Mentions
+
   def self.publish!(discussion, editor)
-    create(kind: "discussion_edited",
-           eventable: discussion.versions.last,
-           user: editor,
-           discussion_id: discussion.id).tap { |e| EventBus.broadcast('discussion_edited_event', e) }
+    return unless version = discussion.versions.last
+    super version,
+          user: editor,
+          discussion: version.item,
+          created_at: version.created_at
   end
 
-  def communities
-    Array(eventable&.item&.group&.community)
+  def mention_recipients
+    eventable.item.new_mentioned_group_members
   end
 end

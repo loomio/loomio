@@ -8,20 +8,13 @@ module Events::Notify::InApp
 
   # send event notifications
   def notify_users!
-    notifications.import(notification_recipients.active.without(user).map { |recipient| notification_for(recipient) })
+    notifications.import(notification_recipients.active.without(user).map do |recipient|
+      notifications.build({user: recipient}.merge(notification_params))
+    end)
   end
   handle_asynchronously :notify_users!
 
   private
-
-  def notification_for(recipient)
-    notifications.build(
-      user:               recipient,
-      actor:              notification_actor,
-      url:                notification_url,
-      translation_values: notification_translation_values
-    )
-  end
 
   # which users should receive an in-app notification about this event?
   # (NB: This must return an ActiveRecord::Relation)
@@ -29,35 +22,22 @@ module Events::Notify::InApp
     User.none
   end
 
-  # defines the avatar which appears next to the notification
-  def notification_actor
-    @notification_actor ||= user || eventable&.author
+  def notification_params
+    return {} unless eventable
+    actor = user || (eventable.author if eventable.respond_to?(:author))
+    @notification_params ||= {
+      actor:       actor,                       # defines the avatar which appears next to the notification
+      url:         polymorphic_url(eventable),  # defines the link that clicking on the notification takes you to
+      translation_values: {                     # defines values to be passed to the translation for the notification
+        name:      actor&.name,
+        title:     polymorphic_title(eventable),
+        poll_type: eventable_poll_type
+      }
+    }
   end
 
-  # defines the link that clicking on the notification takes you to
-  def notification_url
-    @notification_url ||= polymorphic_url(eventable)
-  end
-
-  # defines the values that are passed to the translation for notification text
-  # by default we infer the values needed from the eventable class,
-  # but this method can be overridden with any translation values for a particular event
-  def notification_translation_values
-    { name: notification_translation_name, title: notification_translation_title }
-  end
-
-  def notification_translation_name
-    notification_actor&.name
-  end
-
-  def notification_translation_title
-    case eventable
-    when PaperTrail::Version then eventable.item.title
-    when Comment, Discussion then eventable.discussion.title
-    when Group, Membership   then eventable.group.full_name
-    when Poll, Outcome       then eventable.poll.title
-    # TODO: deal with polymorphic reactions here
-    when Reaction            then eventable.reactable.discussion.title
-    end
+  def eventable_poll_type
+    return unless eventable.respond_to?(:poll)
+    I18n.t(:"poll_types.#{eventable.poll.poll_type}").downcase
   end
 end

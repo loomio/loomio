@@ -1,35 +1,36 @@
 class Events::PollClosingSoon < Event
-  include Events::PollEvent
   include Events::Notify::Author
+  include Events::Notify::Users
+  include Events::Notify::FromAuthor
   include Events::Notify::ThirdParty
 
   def self.publish!(poll)
-    create(kind: "poll_closing_soon",
-           user: poll.author,
-           announcement: !!poll.events.find_by(kind: :poll_created)&.announcement,
-           eventable: poll).tap { |e| EventBus.broadcast('poll_closing_soon_event', e) }
+    poll.notified = poll.notified_when_created
+    super poll,
+          user: poll.author,
+          created_at: Time.now
   end
 
   private
 
-  def announcement_notification_recipients
-    return User.none unless poll.group
-    recipients = poll.group.members
-    recipients = recipients.without(poll.participants) unless poll.voters_review_responses
-    recipients
+  # 'super' here are the people who were notified when the poll was first created
+  def email_recipients
+    users_who_care(super)
   end
 
-  def announcement_email_recipients
-    return User.none unless poll.group
-    recipients = Queries::UsersByVolumeQuery.normal_or_loud(poll.discussion)
-    recipients = recipients.without(poll.participants) unless poll.voters_review_responses
-    recipients
+  def notification_recipients
+    users_who_care(super)
   end
 
-  # don't notify mentioned users for poll closing soon
-  def specified_notification_recipients
-    User.none
-  end
-  alias :specified_email_recipients :specified_notification_recipients
+  private
 
+  def users_who_care(relation)
+    if eventable.voters_review_responses
+      # remind notified users, plus ask participants to review
+      users_in_any(relation, eventable.participants)
+    else
+      # remind notified users, but don't notify participants
+      relation.without(eventable.participants)
+    end.without(eventable.unsubscribers)
+  end
 end
