@@ -15,6 +15,10 @@
   }
 }
 
+.poll-common-ranked-choice-chart__cell-column {
+  padding: 0 4px;
+}
+
 @media (max-width: $tiny-max-px) {
   .poll-common-ranked-choice-chart__table {
     position: absolute;

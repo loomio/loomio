@@ -4,7 +4,7 @@
     .poll-common-ranked-choice-chart__cell.poll-common-ranked-choice-chart__cell--name{ng-repeat: "option in pollOptions() track by option.id", ng-style: "styleData(option)"}
       {{option.name}}
   .poll-common-ranked-choice-chart__table{layout: "row"}
-    .poll-common-ranked-choice-chart__cell{layout: "column", ng-repeat: "score in scores() track by $index"}
+    .poll-common-ranked-choice-chart__cell.poll-common-ranked-choice-chart__cell-column{layout: "column", ng-repeat: "score in scores() track by $index"}
       .poll-common-ranked-choice-chart__cell.lmo-flex__horizontal-center{layout: "column"}
         %strong{translate: "ordinal.{{rankFor(score)}}"}>
         %md-tooltip
