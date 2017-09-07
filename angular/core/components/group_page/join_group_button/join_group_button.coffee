@@ -1,9 +1,10 @@
 angular.module('loomioApp').directive 'joinGroupButton', ->
-  scope: {group: '=', block: '=?'}
+  scope: {discussion: '=?', group: '=?', block: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/join_group_button/join_group_button.html'
   replace: true
   controller: ($rootScope, $scope, AbilityService, ModalService, AuthModal, Session, Records, FlashService, MembershipRequestForm) ->
+    $scope.group = $scope.group or $scope.discussion.group() or $scope.discussion.guestGroup()
     Records.membershipRequests.fetchMyPendingByGroup($scope.group.key)
 
     $scope.isMember = ->

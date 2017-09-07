@@ -48,6 +48,7 @@ module Null::Group
 
   def false_methods
     [
+      :parent_members_can_see_discussions?,
       :members_can_start_discussions?,
       :marked_for_destruction?,
       :destroyed?,

@@ -24,8 +24,10 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # add poll creator as admin of guest group
-  config.listen('poll_create') { |poll, actor| poll.guest_group.add_admin!(actor) }
+  # add creator as admin of guest group
+  config.listen('poll_create', 'discussion_create') do |model, actor|
+    model.guest_group.add_admin!(actor)
+  end
 
   # publish to new group if group has changed
   config.listen('poll_update') do |poll, actor|
