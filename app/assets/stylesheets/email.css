@@ -229,3 +229,7 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 .align-left {
   text-align: left;
 }
+
+.align-right {
+  text-align: right;
+}

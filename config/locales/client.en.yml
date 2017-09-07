@@ -93,11 +93,11 @@ en:
       title: 'Learn how to use Markdown to format your text on Loomio'
 
   ordinal:
-    1: 1st
-    2: 2nd
-    3: 3rd
-    4: 4th
-    5: 5th
+    _1: 1st
+    _2: 2nd
+    _3: 3rd
+    _4: 4th
+    _5: 5th
 
   devise:
     failure:
