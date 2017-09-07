@@ -15,7 +15,7 @@ describe Poll do
   end
 
   it 'does not allow higher minimum stance choices than number of poll options' do
-    ranked_choice.minimum_stance_choices = ranked_choice.poll_option_names.length + 1
+    ranked_choice.minimum_stance_choices = ranked_choice.poll_options.length + 1
     expect(ranked_choice).to_not be_valid
   end
 
