@@ -1,12 +1,9 @@
-= render 'avatar', user: @author
-.thread-mailer__subject
-  %strong
-    = @discussion.author.name
-  %span
-    = t :"email.create_discussion.intro_html"
-  %span
-    %strong
-      = link_to @discussion.title, discussion_url(@discussion, @utm_hash)
+%table
+  %tr
+    %td= render 'avatar', user: @author
+    %td
+      =raw t(:"email.thread_mailer.new_discussion.header_html", actor: @author.name)
+      %strong= link_to @discussion.title, discussion_url(@discussion, @utm_hash)
 
 = render_rich_text(@discussion.description, @discussion.uses_markdown)
 - if @discussion.attachments.any?

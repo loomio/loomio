@@ -13,5 +13,5 @@
           %i.material-icons{ng-if: "stance.votedFor(option)"} check
       %tr.poll-meeting-chart-panel__bold
         %td{translate: "poll_meeting_chart_panel.total"}
-        %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
-          {{option.latestStances().length}}
+        %td.poll-meeting-chart-panel__cell{ng-repeat: "stanceCount in poll.stanceCounts track by $index"}
+          {{ stanceCount }}

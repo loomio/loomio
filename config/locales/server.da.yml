@@ -15,7 +15,6 @@ da:
       subject: Log ind på Loomio
       intro: Hej %{name}, her er et link så du kan logge ind på din Loomio konto.
       login: Log ind på Loomio som %{name}
-      resend: Dette link vil udløbe %{expires_at}. Hvis linket er udløbet så kan du stadig trykke på lnket for at få et nyt link.
     reset_password:
       greeting: |+
         Hej %{name}

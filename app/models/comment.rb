@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   include Translatable
+  include Reactable
   include HasMentions
 
   has_paper_trail only: [:body]
@@ -14,10 +15,7 @@ class Comment < ActiveRecord::Base
   alias_attribute :author, :user
   alias_attribute :author_id, :user_id
 
-  has_many :comment_votes, -> { joins('INNER JOIN users ON comment_votes.user_id = users.id AND users.deactivated_at IS NULL' )}, dependent: :destroy
-
   has_many :events, as: :eventable, dependent: :destroy
-  has_many :likers, through: :comment_votes, source: :user
   has_many :attachments, as: :attachable, dependent: :destroy
 
   validates_presence_of :user

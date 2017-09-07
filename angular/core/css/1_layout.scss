@@ -9,7 +9,7 @@
 .lmo-one-column-layout, .lmo-two-column-layout{
   margin: auto;
   padding-bottom: 25px;
-  z-index: 0;
+  z-index: $z-zero;
   min-width: 320px;
 }
 
@@ -45,9 +45,7 @@
 }
 
 @media(max-width: $tiny-max-px) {
-  .lmo-hide-on-xs {
-    display: none;
-  }
+  .lmo-hide-on-xs { display: none !important; }
 }
 
 @media (max-width: $tiny-max-px){

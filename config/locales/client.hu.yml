@@ -152,7 +152,6 @@ hu:
     delete_comment: 'Hozzászólás törlése'
     cancel_reply: 'Válasz törlése'
     confirm_delete_message: 'Biztosan törölni akarod ezt a hozzászólást?'
-    in_reply_to: "Válasz @<strong>{{name}}</strong>:"
     submit_button:
       label: 'Bejegyzés'
     private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'

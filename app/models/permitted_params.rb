@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response
-    draft oauth_application group_identity contact_request
+    draft oauth_application group_identity contact_request reaction
   )
 
   MODELS.each do |kind|
@@ -86,6 +86,10 @@ class PermittedParams < Struct.new(:params)
 
   def comment_attributes
     [:body, :attachment_ids, :uses_markdown, :discussion_id, :parent_id, {attachment_ids: []}]
+  end
+
+  def reaction_attributes
+    [:reaction, :reactable_id, :reactable_type]
   end
 
   def attachment_attributes

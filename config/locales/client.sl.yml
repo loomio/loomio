@@ -154,7 +154,6 @@ sl:
     liked_by_two_others: '{{name_1}} in {{name_2}} sta všečkala.'
     liked_by_many_others: 'Všečkala {{joinedNames}} in {{name}}.'
     liked_by_name: 'Všečkal/a {{name}}.'
-    liked_by_names_and_name: 'Všečkala {{joinedNames}} in {{name}}.'
     started_by: 'Začel/a <strong>{{name}}</strong>'
   thread_group:
     aria_label: 'Ime skupine'

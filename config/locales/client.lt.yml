@@ -70,7 +70,6 @@ lt:
     delete_comment: 'Ištrinti komentarą'
     cancel_reply: 'Atsisakyti atsakymo'
     confirm_delete_message: 'Ar jūs tikrai norite ištrinti šį komentarą?'
-    in_reply_to: "Atsakant į tai, ką rašė <strong>{{name}}</strong>:"
     submit_button:
       label: 'Išsiųsti'
     private_privacy_notice: 'Jūsų komentaras bus matomas tik {{groupName}} grupės nariams.'

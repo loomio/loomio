@@ -1,5 +1,5 @@
 kinds:
-  - comment_liked
+  - reaction_created
   - motion_closing_soon
   - comment_replied_to
   - user_mentioned

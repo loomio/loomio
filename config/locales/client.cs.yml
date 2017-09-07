@@ -80,6 +80,9 @@ cs:
       delete: Odstranit
       unsubscribe: Odhlásit odběr
       subscribe: Přihlásit odběr
+      remind: Připomenout
+      resend: Přeposlat
+      resent: Pozvánka přeposlána
     formatting_help:
       label: 'Formátování'
       title: 'Naučte se používat Markdown k formátování textu na Loomio'
@@ -88,12 +91,24 @@ cs:
       inactive: 'K této e-mailové adrese je přiřazen deaktivovaný účet. Chcete-li svůj účet znovu aktivovat, kontaktujte nás.'
   error_page:
     forbidden: 'K této akci nemáte oprávnění.'
+    page_not_found: 'Položka nebyla nalezena. Je možné, že byla smazána.'
     internal_server_error: 'Omlouváme se, ale něco se pokazilo. Prosím zkuste to znovu.'
+  verify_email_notice:
+    please_verify: Děkujeme za účast! Zkontrolujte prosím Vaši emailovou schránku, aby jste potvrdili Váš hlas pomocí odkazu.
+  verify_stances:
+    title: Ověřit hlasy
+    description: Zkontrolujte prosím hlasy níže a potvrďte, že se jedná o Vaše hlasy.
+    verify: Ověřit
+    remove: Odebrat
+    verify_success: Hlas ověřen
+    remove_success: Hlas odebrán
+    all_done: Dobrá práce, ověřili jste všechny Vaše hlasy.
   start_proposal_card:
     title: 'Vytvořit návrh'
     helptext: Připraveni učinit rozhodnutí?
   proposal_outcome_panel:
     heading: Výsledek
+    set_outcome_hint: Použijte tento prostor, aby jste dali vědět o výsledku návrhu.
     set_outcome_btn: undefined
     edit_outcome_link: Upravit výsledek
   proposal_outcome_form:
@@ -118,8 +133,13 @@ cs:
     expand: Rozbalit
     outcome: 'Výsledek: {{outcome}}'
   volume_levels:
+    loud: 'Hlasitý'
+    normal: 'Normální'
+    quiet: 'Tichý'
     mute: 'Ztlumit'
+    unmute: 'Zapnout zvuk'
   change_volume_form:
+    aria_label: "Změnit formulář nastavení emailu"
     loud_label: "Všechny aktivity"
     normal_label: "Oznámení"
     quiet_label: "Žádné e-maily"
@@ -131,9 +151,12 @@ cs:
       quiet_description: "Nebudete o tomto vláknu obesíláni e-mailem."
       apply_to_all: "Použít tato nastavení na všechny vlákna v této skupině."
       messages:
+        loud: "Budete informován o aktivitě v tomto vlákně emailem."
+        normal: "Budete informován o návrzích v tomto vlákně emailem."
         quiet: "Nebudete o tomto vláknu obesíláni e-mailem."
     membership:
       title: "Nastavení emailu pro {{title}}"
+      loud_description: "Budete obesláni e-mailem vždy, když bude v tomto vláknu aktivita."
       apply_to_all: "Použít tato nastavení pro všechny mé skupiny."
     user:
       title: Nastavení e-mailů pro nové skupiny
@@ -179,7 +202,6 @@ cs:
     cancel_reply: 'Zrušit odpověď'
     confirm_delete_message: 'Opravdu chcete odstranit tento komentář?'
     confirm_delete: 'Odstranit komentář'
-    in_reply_to: "V reakci na <strong>{{name}}</strong>:"
     submit_button:
       label: 'Odeslat'
     private_privacy_notice: 'Váš komentář bude viditelný pouze pro členy {{groupName}}.'
@@ -232,10 +254,13 @@ cs:
   notifications:
     header: "Upozornění"
     no_notifications: "Nemáte žádná upozornění."
+    new_discussion: "<strong>{{name}}</strong> zahájil(a) diskuzi <strong>{{title}}</strong>"
+    new_motion: "<strong>{{name}}</strong> vytvořil(a) návrh <span>{{title}}</span>"
     motion_closed: "Uzavření návrhu: <strong>{{title}}</strong>"
     publish_outcome: "Zveřejnit výsledek"
     motion_closed_by_user: "<strong>{{name}}</strong> uzavřel návrh <strong>{{title}}</strong>"
     motion_closed_by_expiry: "Byl uzavřen návrh <strong>{{title}}</strong>"
+    new_comment: "<strong>{{name}}</strong> okomentoval(a) <strong>{{title}}</strong>"
     user_added_to_group_no_inviter: "Byli jste přidáni do skupiny <strong>{{title}}</strong>"
     motion_closing_soon: "Návrh brzy končí: <strong>{{title}}</strong>"
   position_buttons_panel:
@@ -470,6 +495,8 @@ cs:
       remove_member_success: 'Odebrán {{name}}'
       make_admin_success: '{{name}} je nyní koordinátorem'
       remove_admin_success: '{{name}} již není koordinátor'
+  remove_membership_form:
+    submit: 'Odebrat'
   pending_invitations_card:
     heading: Nevyřízené pozvánky
     email: Email
@@ -506,7 +533,6 @@ cs:
     specific_groups: Nastavení pro konkrétní skupiny
     default_settings:
       normal_description: "Když se připojíte k nové skupině, obdržíte e-maily o <strong>novách vláknech a návrzích</strong>."
-    change_default: Změnit výchozí
     edit: Upravit
   dashboard_page:
     aria_label: 'Ovládací panel'
@@ -515,7 +541,6 @@ cs:
       or: nebo
     no_threads:
       show_all: Nemáte žádná aktuální vlákna
-      show_starred: Nemáte žádná vlákna s hvězdičkou.
       show_proposals: Žádné návrhy nejsou momentálně aktivní.
       show_muted: Nemáte žádná ztlumená vlákna.
     view_recent: Zobrazit všechna aktuální vlákna?
@@ -528,9 +553,6 @@ cs:
       all: Aktuální vlákna
       all_aria_label: Momentálně se zobrazují aktuální vlákna
       all_description: Zobrazit aktuální vlákna
-      starred: Vlákna s hvězdičkou
-      starred_aria_label: Momentálně se zobrazují vlákna označená jako důležitá
-      starred_description: Zobrazit jen vlákna, která jste označil(a) za důležitá.
       proposals: Návrhy
       proposals_aria_label: Momentálně se zobrazují vlákna s aktivními návrhy
       proposals_description: Zobrazit jen vlákna s aktivními návrhy
@@ -543,7 +565,6 @@ cs:
       you_voted: 'Volil(a) jste: {{position}}.'
     threads_from:
       group: 'Vlákna z'
-      proposals: 'Návrhy'
       today: 'Dnes'
       yesterday: 'Včera'
       thisweek: 'tohoto týdne'
@@ -572,7 +593,6 @@ cs:
     liked_by_two_others: '{{name_1}} a {{name_2}} se toto líbí.'
     liked_by_many_others: '{{joinedNames}} a {{name}} se toto líbí.'
     liked_by_name: '{{name}} se toto líbí.'
-    liked_by_names_and_name: '{{joinedNames}} a {{name}} se toto líbí.'
     started_by: 'Vytvořeno <strong>{{name}}</strong>'
     edited: 'Upraveno'
     volume:

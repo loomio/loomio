@@ -5,16 +5,25 @@
 .thread-item__title {
   /* these styles break with BEM but they keep the translations clean*/
   color: $grey-on-white;
-  strong {
+  strong, a {
     color: $primary-text-color;
     @include md-body-2;
+  }
+  strong:nth-child(2) {
+    font-weight: normal;
+    color: $grey-on-white;
   }
   &::first-letter { text-transform: uppercase; }
 }
 
+
 .thread-item__headline {
   min-height: 28px;
   margin-right: 40px;
+}
+
+.thread-item__body {
+  width: calc(100% - 32px);
 }
 
 .thread-item__footer {

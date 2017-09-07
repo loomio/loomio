@@ -3,7 +3,8 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
 
     headlineFor: (event) ->
       $translate.instant "thread_item.#{@headlineKeyFor(event)}",
-        author:   event.actorName(),
+        author:   event.actorName()
+        username: event.actorUsername()
         title:    @titleFor(event)
         polltype: @pollTypeFor(event)
 
@@ -39,6 +40,7 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
         when 'poll', 'outcome'     then event.model().poll().title
         when 'group', 'membership' then event.model().group().name
         when 'version'             then event.model().model().title
+        when 'stance'              then event.model().poll().title
         when 'discussion'
           if event.kind == 'discussion_moved'
             Records.groups.find(event.sourceGroupId).fullName

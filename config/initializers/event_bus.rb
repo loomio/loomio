@@ -43,9 +43,9 @@ EventBus.configure do |config|
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
 
   # send memos to client side after comment change
-  config.listen('comment_destroy') { |comment|      Memos::CommentDestroyed.publish!(comment) }
-  config.listen('comment_update')  { |comment|      Memos::CommentUpdated.publish!(comment) }
-  config.listen('comment_unlike')  { |comment_vote| Memos::CommentUnliked.publish!(comment: comment_vote.comment, user: comment_vote.user) }
+  config.listen('comment_destroy')  { |comment|  Memos::CommentDestroyed.publish!(comment) }
+  config.listen('comment_update')   { |comment|  Memos::CommentUpdated.publish!(comment) }
+  config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
 
   config.listen('new_comment_event',
                 'discussion_edited_event',

@@ -20,7 +20,6 @@ class FormalGroup < Group
 
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :comments, through: :discussions
-  has_many :comment_votes, through: :comments
   has_many :motions, through: :discussions
   has_many :votes, through: :motions
   has_many :group_identities, dependent: :destroy, foreign_key: :group_id

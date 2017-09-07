@@ -42,32 +42,32 @@ describe Identities::SlackController do
       callback_id: poll.id,
       actions: [{ name: poll.poll_options.first.name }],
       team: { id: 'T123', name: 'billsbarbies' }
-    }.to_json }
+    } }
     let(:payload_without_poll) { {
       user: { id: identity.uid },
       callback_id: 'notapoll',
       actions: [{ name: poll.poll_options.first.name }],
       team: { id: 'T123', name: 'billsbarbies' }
-    }.to_json}
+    } }
     let(:payload_without_user) { {
       user: { id: 'notauser' },
       callback_id: poll.id,
       actions: [{ name: poll.poll_options.first.name }],
       team: { id: 'T123', name: 'billsbarbies' }
-    }.to_json }
+    } }
     let(:bad_payload) { {
       user: { id: identity.uid },
       callback_id: poll.id,
       actions: [],
       team: {}
-    }.to_json }
+    } }
     let(:user) { create :user }
     let(:another_user) { create :user }
 
     it 'creates a stance' do
       group.add_member! user
       sign_in user
-      expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
+      expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
       stance = Stance.last
       expect(stance.participant).to eq user
       expect(stance.poll_options).to include poll.poll_options.first
@@ -75,14 +75,31 @@ describe Identities::SlackController do
 
     it 'adds the user to the group' do
       sign_in user
-      expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
+      expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
       stance = Stance.last
       expect(stance.participant).to eq user
       expect(user.groups).to include poll.group
     end
 
+    describe 'with verification token set' do
+      before { ENV['SLACK_VERIFICATION_TOKEN'] = 'sometoken' }
+      after  { ENV['SLACK_VERIFICATION_TOKEN'] = nil }
+
+      it 'responds correctly when verification token is supplied' do
+        payload[:token] = 'sometoken'
+        expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
+        expect(response.status).to eq 200
+      end
+
+      it 'responds with bad request when no token is supplied' do
+        payload[:token] = 'anothertoken'
+        expect { post :participate, payload: payload.to_json }.to_not change { poll.stances.count }
+        expect(response.status).to eq 400
+      end
+    end
+
     it 'responds when no poll is found' do
-      expect { post :participate, payload: payload_without_poll }.to_not change { Stance.count }
+      expect { post :participate, payload: payload_without_poll.to_json }.to_not change { Stance.count }
       expect(response.status).to eq 200
       expect(response.body).to include "poll was not found"
     end
@@ -90,13 +107,13 @@ describe Identities::SlackController do
     it 'does not create an invalid stance' do
       group.add_member! user
       sign_in user
-      expect { post :participate, payload: bad_payload }.to_not change { poll.stances.count }
+      expect { post :participate, payload: bad_payload.to_json }.to_not change { poll.stances.count }
       expect(response.status).to eq 200 # we still render out a message to slack, so this response must be 'OK'
     end
 
     it 'responds with a stance if poll is part of a group' do
       sign_in user
-      expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
+      expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
       expect(user.reload.groups).to include poll.group
       expect(response.status).to eq 200
     end
@@ -104,21 +121,27 @@ describe Identities::SlackController do
     xit 'responds with an auth link if poll is not part of a group' do
       poll.update(discussion: nil, group: nil)
       sign_in user
-      expect { post :participate, payload: payload }.to_not change { poll.stances.count }
+      expect { post :participate, payload: payload.to_json }.to_not change { poll.stances.count }
       expect(response.status).to eq 200
     end
 
     it 'finds the identity associated with a user if it exists' do
       identity
       dangling_identity
-      expect { post :participate, payload: payload }.to change { poll.stances.count }.by(1)
+      expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
       expect(response.status).to eq 200
     end
 
     it 'responds with unauthorized message if no user is found' do
-      expect { post :participate, payload: payload_without_user }.to_not change { poll.stances.count }
+      expect { post :participate, payload: payload_without_user.to_json }.to_not change { poll.stances.count }
       expect(response.status).to eq 200
       expect(response.body).to include "authorize your slack account"
+    end
+
+    it 'responds with a message if the poll is closed' do
+      poll.update(closed_at: 1.day.ago)
+      expect { post :participate, payload: payload.to_json }.to_not change { poll.stances.count }
+      expect(response.status).to eq 200
     end
   end
 

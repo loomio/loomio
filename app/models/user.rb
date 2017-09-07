@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
 
-  has_many :comment_votes, dependent: :destroy
+  has_many :reactions, dependent: :destroy
   has_many :stances, foreign_key: :participant_id, dependent: :destroy
   has_many :participated_polls, through: :stances, source: :poll
   has_many :group_polls, through: :groups, source: :polls
@@ -132,6 +132,10 @@ class User < ActiveRecord::Base
     .joins(:memberships)
     .where('memberships.group_id': group.id)
   }
+
+  def self.email_status_for(email)
+    (verified_first.find_by(email: email) || LoggedOutUser.new).email_status
+  end
 
   define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
 

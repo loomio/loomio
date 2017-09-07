@@ -7,4 +7,4 @@
     %poll_common_preview{poll: "poll", ng-repeat: "poll in polls() track by poll.id"}
   .lmo-actions
     .buh
-    %md-button.md-primary.md-raised{ng-click: "startPoll()", translate: "current_polls_card.start_poll"}
+    %md-button.md-primary.md-raised.current-polls-card__start-poll{ng-click: "startPoll()", ng-if: "canStartPoll()", translate: "current_polls_card.start_poll"}
