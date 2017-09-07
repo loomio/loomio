@@ -1,40 +1,28 @@
-angular.module('loomioApp').directive 'emojiPicker', ->
+angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout, EmojiService, KeyEventService)->
   scope: {reaction: '='}
   restrict: 'E'
-  replace: true
   templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
-  controller: ($scope, $timeout, EmojiService, KeyEventService) ->
+  controller: ($scope) ->
+    $scope.name = EmojiService.name
     $scope.render = EmojiService.render
+    $scope.imgSrcFor = EmojiService.imgSrcFor
 
     $scope.search = (term) ->
       $scope.hovered = {}
       $scope.source = if term
-        _.take _.filter(EmojiService.source, (emoji) -> emoji.match(///^:#{term}///i)), 15
+        _.take _.filter(EmojiService.source, (emoji) -> emoji.match(///^:#{term}///i)), 20
       else
         EmojiService.defaults
     $scope.search()
 
-    $scope.toggleMenu = ->
-      $scope.showMenu = !$scope.showMenu
+    $scope.toggleMenu = ($mdMenu, $event)->
+      $mdMenu.open($event);
       $scope.search()
-      if $scope.showMenu and !$scope.reaction
+      if !$scope.reaction
         $timeout -> document.querySelector('.emoji-picker__search').focus()
-
-    $scope.hideMenu = ->
-      return unless $scope.showMenu
-      $scope.hovered = {}
-      $scope.term = ''
-      $scope.toggleMenu()
-    KeyEventService.registerKeyEvent $scope, 'pressedEsc', $scope.toggleMenu, -> $scope.showMenu
-
-    $scope.hover = (emoji) ->
-      $scope.hovered =
-        name: emoji
-        image: $scope.render(emoji)
 
     $scope.select = (emoji) ->
       $scope.$emit 'emojiSelected', emoji
-      $scope.hideMenu()
 
     $scope.noEmojisFound = ->
       $scope.source.length == 0

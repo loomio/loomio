@@ -1,4 +1,36 @@
 en:
+  reactions:
+    slight_smile: Like
+    heart: Love
+    laughing: Laugh
+    clap: Clap
+    hugging: Hug
+    sunglasses: Cool
+    wink: Wink
+    nerd: Smart
+    relieved: Relieved
+    worried: Worried
+    confused: Confused
+    confounded: Confounded
+    neutral_face: Neutral
+    slight_frown: Frown
+    disappointed: Disappointed
+    angry: Angry
+    weary: Weary
+    astonished: Astonished
+    rolling_eyes: Rolling eyes
+    cry: Cry
+    scream: Scream
+    sleeping: Bored
+    thinking: Thinking
+    raised_hands: Raised hands
+    pray: Pray
+    fingers_crossed: Fingers crossed
+    v: Peace
+    metal: Metal
+    ok_hand: Ok
+    wave: Wave
+
   poll_types:
     proposal: Proposal
     count: Check
@@ -428,20 +460,20 @@ en:
     notified_count: '{{count}} people will be emailed'
 
   action_dock:
-    react: Add your reaction
-    add_comment: Comment on this thread
-    edit_thread: Edit this thread
-    translate_thread: Translate this thread
-    edit_poll: Edit this decision
-    translate_poll: Translate this poll
-    edit_stance: Change your stance
-    translate_stance: Translate this stance
-    edit_comment: Edit your comment
-    delete_comment: Remove this comment
-    reply_to_comment: Reply to this comment
-    translate_comment: Translate this comment
-    edit_outcome: Update this outcome
-    translate_outcome: Translate this outcome
+    react: Add reaction
+    add_comment: Comment
+    edit_thread: Edit context
+    translate_thread: Translate context
+    edit_poll: Edit poll
+    translate_poll: Translate poll
+    edit_stance: Change your vote
+    translate_stance: Translate vote
+    edit_comment: Edit comment
+    delete_comment: Delete comment
+    reply_to_comment: Reply
+    translate_comment: Translate comment
+    edit_outcome: Edit outcome
+    translate_outcome: Translate outcome
     show_history: Show edit history
 
   cover_photo_form:
@@ -1528,6 +1560,7 @@ en:
     block_reason_placeholder: Explain your objection to this proposal and why it should not go ahead
     stance_created: Vote created
     stance_updated: Vote updated
+    vote: Vote
 
   poll_proposal_options:
     agree: Agree

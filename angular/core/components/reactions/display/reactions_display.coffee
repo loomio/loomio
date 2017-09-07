@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records) ->
+angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, EmojiService) ->
   scope: {model: '='}
   restrict: 'E'
   templateUrl: 'generated/components/reactions/display/reactions_display.html'
@@ -9,6 +9,9 @@ angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records) ->
     $scope.sanitize = (reaction) ->
       return 'all' unless reaction
       reaction.reaction.replace(/:/g, '')
+
+    $scope.reactionName = (reaction) ->
+      EmojiService.name(reaction)
 
     $scope.reactionHash = ->
       Records.reactions.find(

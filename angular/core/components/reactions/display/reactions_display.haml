@@ -4,6 +4,7 @@
     .reaction.lmo-pointer{ng-if: "loaded", ng-class: "{'reaction--inactive': isInactive(reaction)}", ng-mouseover: "setCurrent(reaction)", ng-mouseleave: "setCurrent()", ng-repeat: "reaction in reactions() track by $index"}
       .reaction__emoji{marked: "reaction"}
       %md-tooltip{md-delay: "100"}
+        {{ reactionName(reaction) }}
         .reactions-display__name{ng-repeat: "name in namesFor(reaction) | limitTo: maxNamesCount track by $index"}
           {{ name }}
         .reactions-display__name.eactions-display__more{ng-if: "countFor(reaction) > 0"}
