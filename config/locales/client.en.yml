@@ -347,6 +347,7 @@ en:
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
 
+
   position_buttons_panel:
     heading: Have your say
 
@@ -1609,46 +1610,8 @@ en:
     poll_created:                  "<strong><a href='u/{{username}}'>{{author}}</a></strong> started a {{polltype}}: <strong>{{title}}</strong>"
     poll_edited:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the {{polltype}}: <strong>{{title}}</strong>"
     poll_expired:                  "{{polltype}} closed: <strong>{{title}}</strong>"
-    stance_created:                "<strong><a href='u/{{username}}'>{{author}}</a></strong> voted"
+    stance_created:                "<strong><a href='u/{{username}}'>{{author}}</a></strong> voted on: <strong>{{title}}</strong>"
 
-  poll_thread_item:
-    poll:
-      poll_created: '<strong>{{author}}</strong> started a new poll: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> voted:'
-      poll_edited: '<strong>{{author}}</strong> edited the poll: <span>{{title}}</span>'
-      poll_expired: 'Poll closed: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the poll: <span>{{title}}</span>'
-
-    proposal:
-      poll_created: '<strong>{{author}}</strong> started a proposal: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> voted:'
-      poll_edited: '<strong>{{author}}</strong> edited the proposal: <span>{{title}}</span>'
-      poll_expired: 'Proposal closed: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the proposal: <span>{{title}}</span>'
-
-    count:
-      poll_created: '<strong>{{author}}</strong> started a check: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> responded:'
-      poll_edited: '<strong>{{author}}</strong> edited the check: <span>{{title}}</span>'
-      poll_expired: 'Check closed: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the check: <span>{{title}}</span>'
-
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> voted:'
-      poll_edited: '<strong>{{author}}</strong> edited the dot vote: <span>{{title}}</span>'
-      poll_expired: 'Dot vote closed: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
-
-    meeting:
-      poll_created: '<strong>{{author}}</strong> started a time poll: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> responded:'
-      poll_edited: '<strong>{{author}}</strong> edited the time poll: <span>{{title}}</span>'
-      poll_expired: 'Time poll closed: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the time poll: <span>{{title}}</span>'
-
-    # outcome
-    outcome_created: '<strong>{{author}}</strong> shared an outcome:'
 
   poll_admin_page:
     title: Admin - {{title}}
@@ -1773,6 +1736,8 @@ en:
 
   install_slack:
     modal_title: Install Slack
+    modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.
+    login_to_slack: Log in to Slack
 
     card:
       install_title: Connect to Slack
