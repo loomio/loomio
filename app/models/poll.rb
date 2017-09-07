@@ -16,7 +16,7 @@ class Poll < ActiveRecord::Base
                        has_variable_score voters_review_responses
                        dates_as_options required_custom_fields
                        require_stance_choices require_all_choices
-                       poll_options_attributes).freeze
+                       poll_options_attributes experimental).freeze
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_templates.dig(self.poll_type, field) }
   end
