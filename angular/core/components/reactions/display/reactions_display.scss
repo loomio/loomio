@@ -38,6 +38,10 @@
   pointer-events: none;
 }
 
+.reactions-display__emojis {
+  // compensate for emoji squishing
+  padding-left: 4px;
+}
 .reactions-display__name {
   line-height: 24px;
 }
