@@ -3,5 +3,5 @@
     %reactions_input{model: "model", ng-if: "action.name == 'react'"}
     %md-button.md-button--tiny{aria-label: "{{'action_dock.'+action.name | translate}}", class: "action-dock__button--{{action.name}}", ng-if: "action.name != 'react'", ng-click: "action.perform()"}
       %i.material-icons {{ action.icon }}
-      %md-tooltip{md-delay: "750"}
+      %md-tooltip{md-delay: "500"}
         %span{translate: "action_dock.{{ action.name }}"}

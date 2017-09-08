@@ -41,7 +41,10 @@
 .reactions-display__name {
   line-height: 24px;
 }
-
+.reactions-display__names {
+  color: $grey-on-white;
+  @include md-caption;
+}
 .reactions-display__count {
   position: relative;
   bottom: 1px;

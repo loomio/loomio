@@ -519,7 +519,8 @@ en:
     add_your_reaction: Add your reaction
 
   reactions_display:
-    more_reactions: "{{count}} more..."
+    more_reactions: "{{count}} more"
+    name_and_count_others: "{{name}} and {{count}} more"
 
   group_page:
     thread_list:

@@ -1,12 +1,15 @@
 .reactions-display.lmo-flex.lmo-flex__center{layout: "row"}
   %loading{ng-if: "!loaded", diameter: "diameter"}
   .lmo-flex.lmo-flex__center{ng-if: "loaded", layout: "row"}
-    .reaction.lmo-pointer{ng-if: "loaded", ng-class: "{'reaction--inactive': isInactive(reaction)}", ng-mouseover: "setCurrent(reaction)", ng-mouseleave: "setCurrent()", ng-repeat: "reaction in reactions() track by $index"}
+    .reaction.lmo-pointer{ng-if: "loaded", ng-class: "{'reaction--inactive': isInactive(reaction)}", ng-mouseover: "setCurrent(reaction)", ng-mouseleave: "setCurrent()", ng-repeat: "reaction in reactionNames() track by $index"}
       .reaction__emoji{marked: "reaction"}
-      %md-tooltip{md-delay: "100"}
-        {{ reactionName(reaction) }}
-        .reactions-display__name{ng-repeat: "name in namesFor(reaction) | limitTo: maxNamesCount track by $index"}
+      %md-tooltip
+        %strong {{ translate(reaction) }}
+        .reactions-display__name{ng-repeat: "name in reactionHash()[reaction] | limitTo: maxNamesCount track by $index"}
           {{ name }}
         .reactions-display__name.eactions-display__more{ng-if: "countFor(reaction) > 0"}
           %span{translate: "reactions_display.more_reactions", translate-value-count: "{{countFor(reaction)}}"}
-  %strong.reactions-display__count{ng-if: "reactionHash().all.length > 0"} {{ reactionHash().all.length }}
+
+    .reactions-display__names
+      %span{ng-if: "reactionHash().all.length == 1"} {{reactionHash().all[0]}}
+      %span{ng-if: "reactionHash().all.length > 1", translate: "reactions_display.name_and_count_others", translate-values: "{name: reactionHash().all[0], count: reactionHash().all.length - 1}"}

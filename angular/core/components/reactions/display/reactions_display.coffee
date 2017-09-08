@@ -6,26 +6,26 @@ angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, Emo
   controller: ($scope) ->
     $scope.diameter = 16
     $scope.current = 'all'
-    $scope.sanitize = (reaction) ->
-      return 'all' unless reaction
-      reaction.reaction.replace(/:/g, '')
 
-    $scope.reactionName = (reaction) ->
-      EmojiService.name(reaction)
-
-    $scope.reactionHash = ->
-      Records.reactions.find(
+    $scope.reactions = ->
+      Records.reactions.find
         reactableType: _.capitalize($scope.model.constructor.singular)
         reactableId:   $scope.model.id
-      ).reduce (hash, reaction) ->
+
+    $scope.reactionNames = ->
+      _.difference _.keys($scope.reactionHash()), ['all']
+
+    $scope.reactionHash = ->
+      $scope.reactions().reduce (hash, reaction) ->
+        name = reaction.user().name
         hash[reaction.reaction] = hash[reaction.reaction] or []
-        hash[reaction.reaction].push  reaction.userId
-        hash.all.push reaction.userId
+        hash[reaction.reaction].push name
+        hash.all.push name
         hash
       , { all: [] }
 
-    $scope.reactions = ->
-      _.difference _.keys($scope.reactionHash()), ['all']
+    $scope.translate = (reaction) ->
+      EmojiService.translate(reaction)
 
     $scope.setCurrent = (reaction) ->
       $scope.current = reaction or 'all'
@@ -33,12 +33,10 @@ angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, Emo
     $scope.isInactive = (reaction) ->
       $scope.current != 'all' and $scope.current != reaction
 
-    $scope.maxNamesCount = 5
-    $scope.namesFor = (reaction) ->
-      _.pluck Records.users.find($scope.reactionHash()[reaction]), 'name'
+    $scope.maxNamesCount = 10
 
     $scope.countFor = (reaction) ->
-      $scope.namesFor(reaction).length - $scope.maxNamesCount
+      $scope.reactionHash()[reaction].length - $scope.maxNamesCount
 
     Records.reactions.fetch(params:
       reactable_type: _.capitalize($scope.model.constructor.singular)

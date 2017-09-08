@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout, Emoj
   restrict: 'E'
   templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
   controller: ($scope) ->
-    $scope.name = EmojiService.name
+    $scope.translate = EmojiService.translate
     $scope.render = EmojiService.render
     $scope.imgSrcFor = EmojiService.imgSrcFor
 
