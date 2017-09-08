@@ -15,12 +15,12 @@ module HasMentions
   end
 
   def mentioned_group_members
-    group.members.where(username: mentioned_usernames).without(users_to_not_mention)
+    members.where(username: mentioned_usernames).without(users_to_not_mention)
   end
 
   # avoid re-mentioning users for this model
   def new_mentioned_group_members
-    mentioned_group_members.without(group.members.mentioned_in(self))
+    mentioned_group_members.without(members.mentioned_in(self))
   end
 
   def mentioned_usernames

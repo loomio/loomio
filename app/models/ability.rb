@@ -186,6 +186,7 @@ class Ability
       (
         !discussion.private ||
         user_is_member_of?(discussion.group_id) ||
+        user_is_member_of?(discussion.guest_group_id) ||
         (discussion.group&.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id))
       )
     end
@@ -231,15 +232,17 @@ class Ability
     end
 
     can [:create], Comment do |comment|
-      comment.discussion && user_is_member_of?(comment.group.id)
+      can? :add_comment, comment.discussion
     end
 
     can [:update], Comment do |comment|
-      user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
+      can? :add_comment, comment.discussion &&
+      user_is_author_of?(comment) &&
+      comment.can_be_edited?
     end
 
     can :update, Reaction do |reaction|
-      user_is_member_of?(reaction.reactable.group.id)
+      reaction.reactable.members.include?(@user)
     end
 
     can :destroy, Reaction do |reaction|
@@ -247,7 +250,8 @@ class Ability
     end
 
     can [:add_comment, :make_draft], Discussion do |discussion|
-      user_is_member_of?(discussion.group_id)
+      user_is_member_of?(discussion.group_id) ||
+      user_is_member_of?(discussion.guest_group_id)
     end
 
     can [:destroy], Comment do |comment|

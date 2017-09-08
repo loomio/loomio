@@ -265,6 +265,7 @@ en:
     submit_button:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
+    private_privacy_notice_no_group: 'Your comment will only be visible to people invited to this thread.'
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
     sign_in: "Log in to join the conversation"
 

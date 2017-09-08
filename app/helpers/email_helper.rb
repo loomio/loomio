@@ -42,7 +42,7 @@ module EmailHelper
   def reply_to_address(discussion: , user: )
     [
       ("\"#{discussion.group.full_name}\"" if discussion.group),
-      "<#{mailbox}@#{ENV['REPLY_TO_HOST']}>"
+      "<#{mailbox(discussion: discussion, user: user)}@#{ENV['REPLY_TO_HOST']}>"
     ].compact.join(' ')
   end
 

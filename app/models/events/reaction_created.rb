@@ -12,7 +12,7 @@ class Events::ReactionCreated < Event
   def notification_recipients
     return User.none if !comment ||                # there is no comment
                          user == comment.author || # you liked your own comment
-                         !comment.group.memberships.find_by(user: comment.author) # the author has left the group
+                         !comment.members.include?(comment.author) # the author has left the group
     User.where(id: comment.author_id)
   end
 

@@ -67,7 +67,7 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
-  def membership
-    @membership ||= discussion.group&.membership_for(user)&.volume
+  def membership_volume
+    discussion.group&.membership_for(user)&.volume
   end
 end

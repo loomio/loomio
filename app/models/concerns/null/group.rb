@@ -26,6 +26,7 @@ module Null::Group
       :created_at,
       :creator_id,
       :group_privacy,
+      :membership_for,
       :membership_granted_upon,
       :discussion_privacy_options,
       :has_discussions,
