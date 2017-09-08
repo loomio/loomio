@@ -18,12 +18,6 @@ describe ReactionService do
       expect { ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: user) }.to change { Reaction.count }.by(1)
     end
 
-    it 'updates an existing like if one already exists' do
-      existing = create :reaction, reactable: comment, user: user, reaction: ":star:"
-      expect { ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: user) }.to_not change { Reaction.count }
-      expect(existing.reload.reaction).to eq ":heart:"
-    end
-
     it 'does not notify if the user is no longer in the group' do
       comment
       group.memberships.find_by(user: user).destroy

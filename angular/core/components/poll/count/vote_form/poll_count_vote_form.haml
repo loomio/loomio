@@ -15,3 +15,6 @@
         %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750", md-direction: "left"}
           %span{translate: "poll_count_options.no_meaning"}
         %i.material-icons{ng-style: "{color: noColor}"} clear
+
+  .poll-common-form-actions.lmo-flex.lmo-flex__space-between
+    %show_results_button{ng-if: "stance.isNew()"}

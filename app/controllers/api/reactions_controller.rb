@@ -8,7 +8,10 @@ class API::ReactionsController < API::RestfulController
   end
 
   def load_resource
-    self.resource = resource_class.find_or_initialize_by(user: current_user, reactable: reactable)
+    self.resource = case action_name
+    when 'create', 'update' then resource_class.find_or_initialize_by(user: current_user, reactable: reactable)
+    else super
+    end
   end
 
   def reactable

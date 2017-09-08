@@ -189,7 +189,7 @@ describe 'Discussion Page', ->
       page.expectFlash 'Patrick Swayze notified of reply'
 
     it 'can react to a comment', ->
-      page.click '.comment-form .emoji-picker__toggle',
+      page.click '.comment-form .action-dock__button--react',
                  '.comment-form .emoji-picker__icon:first-child img',
                  '.comment-form__submit-button'
       page.expectElement '.reaction'
@@ -207,7 +207,7 @@ describe 'Discussion Page', ->
       page.click '.comment-form__submit-button'
       page.click '.action-dock__button--edit_comment'
       page.fillIn '.edit-comment-form textarea', 'edited comment right thur'
-      page.click '.edit-comment-form__submit-button'
+      page.click '.comment-form__submit-btn'
       page.expectText '.new-comment', 'edited comment right thur'
 
     it 'lets you view comment revision history', ->
