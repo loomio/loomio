@@ -1,0 +1,11 @@
+%md-dialog.discussion-form.lmo-modal__narrow
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %i.material-icons forum
+      .discussion-form__title
+        .discussion-form__group-title
+          %h1.lmo-h1{ng-if: "group.isNew()", translate: "discussion_form.start_discussion"}
+          %h1.lmo-h1{ng-if: "!group.isNew()", translate: "discussion_form.edit_discussion"}
+      %material_modal_header_cancel_button
+  .md-dialog-content.md-body-1.lmo-slide-animation
+    %discussion_form{discussion: "discussion"}

@@ -1,8 +1,7 @@
-angular.module('loomioApp').factory 'DiscussionForm', ->
-  templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, Session, Records, AbilityService, FormService, MentionService, AttachmentService, KeyEventService, PrivacyString) ->
-    $scope.discussion = discussion.clone()
-
+angular.module('loomioApp').directive 'discussionForm', ->
+  scope: {discussion: '='}
+  templateUrl: 'generated/components/discussion/form/discussion_form.html'
+  controller: ($scope, $controller, $location, Session, Records, AbilityService, FormService, MentionService, AttachmentService, KeyEventService, PrivacyString) ->
     if $scope.discussion.isNew()
       $scope.discussion.makeAnnouncement = true
       $scope.showGroupSelect = true
