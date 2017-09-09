@@ -3,6 +3,7 @@
   %md-input-container.md-block
     %label{translate: "contact_request_form.message_placeholder"}
     %textarea.contact-request-form__message.lmo-primary-form-input{ng-model: "contactRequest.message", md-maxlength: "500"}
+    %validation_errors{subject: "contactRequest", field: "message"}
 
   .lmo-md-actions
     %p.lmo-textarea__helptext.lmo-flex__grow{translate: "contact_request_form.helptext", translate-value-name: "{{user.firstName()}}"}

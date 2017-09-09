@@ -1,16 +1,14 @@
 class ContactRequest
   include ActiveModel::Model
+  include ActiveModel::Validations
 
   attr_accessor :message, :sender, :recipient_id
+  validates :message, :sender, :recipient, presence: true
 
   def save
-    UserMailer.contact_request(contact_request: self).deliver_now if valid?
+    valid? && UserMailer.contact_request(contact_request: self).deliver_now if valid?
   end
   alias :save! :save
-
-  def valid?
-    message.present?
-  end
 
   def recipient
     @recipient ||= User.find self.recipient_id
