@@ -229,7 +229,7 @@ class Ability
     end
 
     can :create, Discussion do |discussion|
-      user_is_admin_of_discussion(discussion) ||
+      user_is_admin_of_discussion?(discussion) ||
       (
         discussion.group&.members_can_start_discussions &&
         user_is_member_of_discussion?(discussion)
