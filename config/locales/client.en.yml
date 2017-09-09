@@ -84,6 +84,7 @@ en:
       subscribe: Subscribe
       remind: Remind
       resend: Resend
+      send: Send
       resent: Invitation resent
     formatting_help:
       label: 'Formatting'
@@ -785,7 +786,16 @@ en:
       success: Invitation cancelled
 
   user_page:
-    introduction: Introduction
+    contact_user: 'Contact {{name}}'
+    location_field: 'Location: {{value}}'
+    locale_field: 'Language: {{value}}'
+    online_field: 'Online: {{value}}'
+
+  contact_request_form:
+    modal_title: "Email {{name}}"
+    message_placeholder: Introduce yourself and share why you'd like to make contact.
+    helptext: "{{name}} will be emailed your name, email address, and message"
+    email_sent: "Email sent to {{name}}"
 
   profile_page:
     messages:
@@ -804,8 +814,10 @@ en:
     email_label: 'Email'
     short_bio_label: 'Introduction'
     locale_label: 'Language'
-    short_bio_placeholder: 'Enter a short introduction (max 500 characters)'
+    short_bio_placeholder: 'Please introduce yourself, include areas of expertise, topics of interest, and any affiliated organizations'
     locale_placeholder: Select your preferred language
+    location_label: 'Location'
+    location_placeholder: 'Where are you based?'
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
 

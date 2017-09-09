@@ -190,6 +190,17 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   font-size: small;
 }
 
+.user-mailer__contact-request-context {
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+}
+
+.user-mailer__contact-request {
+  text-align: left;
+  padding: 20px 0;
+}
+
 .user-mailer__message-container {
   margin: 40px 0;
 }
