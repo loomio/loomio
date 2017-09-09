@@ -23,7 +23,7 @@ describe API::CommentsController do
       context 'success' do
         it "updates a comment" do
           post :update, id: comment.id, comment: comment_params
-          expect(response).to be_success
+          expect(response.status).to eq 200
           expect(comment.reload.body).to eq comment_params[:body]
         end
       end

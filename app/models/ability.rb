@@ -242,7 +242,7 @@ class Ability
     end
 
     can [:update], Comment do |comment|
-      can? :add_comment, comment.discussion &&
+      can?(:add_comment, comment.discussion) &&
       user_is_author_of?(comment) &&
       comment.can_be_edited?
     end
