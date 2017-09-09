@@ -36,6 +36,11 @@
   }
 }
 
+.md-button--absolute {
+  position: absolute;
+  right: 0;
+}
+
 md-dialog {
   min-width: $tiny-max-px;
   max-width: 800px;

@@ -29,12 +29,6 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
   LoadingService.applyLoadingFunction @, 'search'
   @search()
 
-  @groupCover = (group) ->
-    { 'background-image': "url(#{group.coverUrl('small')})" }
-
-  @groupDescription = (group) ->
-    _.trunc group.description, 100 if group.description
-
   @showMessage = ->
     !@searching &&
     @query &&

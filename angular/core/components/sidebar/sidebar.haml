@@ -21,7 +21,7 @@
           %md_button.sidebar__list-item-button.sidebar__list-item-button--decisions{href: "", lmo-href: "/polls", aria-label: "{{ 'sidebar.decisions' | translate }}"}
             %md_avatar_icon.sidebar__list-item-icon.material-icons thumbs_up_down
             %span{translate: "sidebar.decisions"}
-          %md_button.md-button--tiny
+          %md_button.md-button--tiny.md-button--absolute{ng-click: "startPoll()"}
             %i.material-icons add
             %md-tooltip
               %span{translate: "sidebar.new_decision"}
@@ -29,7 +29,7 @@
           %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{href: "", lmo-href: "/dashboard", aria-label: "{{ 'sidebar.recent' | translate }}"}
             %i.sidebar__list-item-icon.material-icons forum
             %span{translate: "sidebar.threads"}
-          %md_button.md-button--tiny
+          %md_button.md-button--tiny.md-button--absolute{ng-click: "startThread()"}
             %i.material-icons add
             %md-tooltip
               %span{translate: "sidebar.new_thread"}
@@ -37,7 +37,7 @@
           %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{href: "", lmo-href: "/groups", aria-label: "{{ 'sidebar.recent' | translate }}"}
             %i.sidebar__list-item-icon.material-icons group
             %span{translate: "sidebar.groups"}
-          %md_button.md-button--tiny
+          %md_button.md-button--tiny.md-button--absolute{ng-click: "startGroup()"}
             %i.material-icons add
             %md-tooltip
               %span{translate: "sidebar.new_group"}
