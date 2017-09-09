@@ -76,7 +76,7 @@ class UserMailer < BaseMailer
 
     send_single_mail to: @contact_request.recipient.email,
                      from: from_user_via_loomio(@contact_request.sender),
-                     reply_to: @contact_request.sender.email,
+                     reply_to: @contact_request.sender.name_and_email,
                      subject_key: "email.contact_request.subject",
                      subject_params: { name: @contact_request.sender.name },
                      locale: locale_for(@contact_request.recipient, @contact_request.sender)
