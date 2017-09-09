@@ -62,4 +62,5 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
   recordStore.addRecordsInterface(GroupIdentityRecordsInterface)
   recordStore.addRecordsInterface(ReactionRecordsInterface)
   recordStore.addRecordsInterface(NotifiedRecordsInterface)
+  recordStore.addRecordsInterface(ContactRequestRecordsInterface)
   recordStore

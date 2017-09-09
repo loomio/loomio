@@ -826,10 +826,10 @@ ActiveRecord::Schema.define(version: 20170907184652) do
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"
-    t.string   "short_bio",                                    default: "",                    null: false
-    t.boolean  "email_verified",                               default: false,                 null: false
-    t.string   "location",                                     default: "",                    null: false
-    t.datetime "last_seen_at",                                 default: '2017-09-07 16:27:00', null: false
+    t.string   "short_bio",                                    default: "",         null: false
+    t.boolean  "email_verified",                               default: false,      null: false
+    t.string   "location",                                     default: "",         null: false
+    t.datetime "last_seen_at",                                 default: "now()",    null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

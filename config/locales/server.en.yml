@@ -79,6 +79,11 @@ en:
       login: Sign in to Loomio as %{name}
       resend: This link will expire in 24 hours and can only be used once.
 
+    contact_request:
+       subject: "%{name} would like to connect with you on Loomio!"
+       intro: "%{name} (%{email}) has sent you a request to connect."
+       footer: "You may respond to %{name} directly by replying to this email."
+
     reset_password:
       greeting: |
         Hi %{name}
