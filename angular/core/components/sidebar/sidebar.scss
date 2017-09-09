@@ -6,6 +6,10 @@
   border-top: 1px solid rgba(0,0,0,.14);
 }
 
+.sidebar__content {
+  height: 100%;
+}
+
 .sidebar__list-subhead {
   @include md-caption;
   margin: 0px 0 16px 16px;

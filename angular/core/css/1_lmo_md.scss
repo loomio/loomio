@@ -93,6 +93,10 @@ md-input-container textarea {
   }
 }
 
+.md-sidenav-left {
+  display: flex !important;
+}
+
 .md-no-errors .md-errors-spacer { display: none; }
 .md-datepicker-input { font-size: 16px !important; }
 

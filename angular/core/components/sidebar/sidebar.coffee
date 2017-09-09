@@ -7,18 +7,6 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
     $scope.currentState = ""
     $scope.showSidebar = true
 
-    $scope.hasAnyGroups = ->
-      Session.user().hasAnyGroups()
-
-    availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
-        AbilityService.canAddMembers(group)
-
-    $scope.currentGroup = ->
-      return _.first(availableGroups()) if availableGroups().length == 1
-      _.find(availableGroups(), (g) -> g.id == Session.currentGroupId()) || Records.groups.build()
-
-
     $scope.$on 'toggleSidebar', (event, show) ->
       if !_.isUndefined(show)
         $scope.showSidebar = show
@@ -58,7 +46,7 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
         $mdSidenav('left').close()
 
     $scope.groups = ->
-      Session.user().groups().concat(Session.user().orphanParents())
+      Session.user().formalGroups().concat(Session.user().orphanParents())
 
     $scope.currentUser = ->
       Session.user()

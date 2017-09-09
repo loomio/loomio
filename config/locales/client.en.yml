@@ -270,10 +270,13 @@ en:
     sign_in: "Log in to join the conversation"
 
   sidebar:
-    recent_threads: 'Recent threads'
-    unread_threads: 'Unread threads ({{count}})'
-    muted_threads: 'Muted threads'
-    start_group: 'New group'
+    unread: Inbox ({{count}})
+    decisions: Decisions
+    new_decision: Start a new decision
+    threads: Threads
+    new_thread: Start a new thread
+    groups: Groups
+    new_group: Start a new group
     explore: 'Public groups'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
