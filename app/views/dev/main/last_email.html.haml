@@ -22,6 +22,10 @@
       subject:
       = @email.subject
 
+    %p.email-headers
+      headers:
+      = @email.headers
+
     %p.email-body
       body:
       =  raw @email.body.parts.last.decoded
