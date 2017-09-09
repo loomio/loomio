@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'pollCommonFormFields', ($translate, Recor
   templateUrl: 'generated/components/poll/common/form_fields/poll_common_form_fields.html'
   controller: ($scope) ->
     $scope.availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
+      _.filter Session.user().formalGroups(), (group) ->
         AbilityService.canStartPoll(group)
 
     $scope.showGroupSelect = $scope.poll.isNew()

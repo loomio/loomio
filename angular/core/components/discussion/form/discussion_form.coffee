@@ -20,7 +20,7 @@ angular.module('loomioApp').directive 'discussionForm', ->
         $location.path "/d/#{discussion.key}" if actionName == 'created'
 
     $scope.availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
+      _.filter Session.user().formalGroups(), (group) ->
         AbilityService.canStartThread(group)
 
     # NB; this overrides the restoreDraft() function applied in draft_service

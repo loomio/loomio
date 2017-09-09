@@ -59,12 +59,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       @canAdministerGroup(thread.group()) or
       Session.user().isAuthorOf(thread)
 
-    canPinThread: (thread) ->
-      if thread.group()
-        @canAdministerGroup(thread.group())
-      else
-        @canAdministerThread(thread)
-
     canChangeThreadVolume: (thread) ->
       @canParticipateInDiscussion(thread)
 
