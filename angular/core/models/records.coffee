@@ -27,6 +27,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 PollDidNotVoteRecordsInterface,
                                                 IdentityRecordsInterface,
                                                 ContactMessageRecordsInterface,
+                                                ContactRequestRecordsInterface,
                                                 GroupIdentityRecordsInterface,
                                                 ReactionRecordsInterface,
                                                 NotifiedRecordsInterface) ->
@@ -59,8 +60,8 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
   recordStore.addRecordsInterface(PollDidNotVoteRecordsInterface)
   recordStore.addRecordsInterface(IdentityRecordsInterface)
   recordStore.addRecordsInterface(ContactMessageRecordsInterface)
+  recordStore.addRecordsInterface(ContactRequestRecordsInterface)
   recordStore.addRecordsInterface(GroupIdentityRecordsInterface)
   recordStore.addRecordsInterface(ReactionRecordsInterface)
   recordStore.addRecordsInterface(NotifiedRecordsInterface)
-  recordStore.addRecordsInterface(ContactRequestRecordsInterface)
   recordStore
