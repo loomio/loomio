@@ -49,17 +49,23 @@ module Null::Group
 
   def false_methods
     [
-      :parent_members_can_see_discussions?,
-      :members_can_start_discussions?,
       :marked_for_destruction?,
       :destroyed?,
-      :members_can_add_members,
-      :members_can_create_subgroups,
+      :parent_members_can_see_discussions?,
+      :members_can_start_discussions?,
       :members_can_start_discussions,
+      :members_can_add_members,
+      :members_can_add_members?,
+      :members_can_create_subgroups,
+      :members_can_create_subgroups?,
       :members_can_edit_discussions,
+      :members_can_edit_discussions?,
       :members_can_edit_comments,
+      :members_can_edit_comments?,
       :members_can_raise_motions,
+      :members_can_raise_motions?,
       :members_can_vote,
+      :members_can_vote?,
       :new_record?
     ]
   end

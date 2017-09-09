@@ -12,6 +12,7 @@ angular.module('loomioApp').directive 'discussionForm', ->
       flashSuccess: "discussion_form.messages.#{actionName}"
       drafts: true
       successCallback: (response) =>
+        $scope.$emit 'discussionSaved'
         discussion = response.discussions[0]
         Records.attachments.find(attachableId: discussion.id, attachableType: 'Discussion')
                            .filter (attachment) -> !_.contains(discussion.attachment_ids, attachment.id)
