@@ -15,7 +15,6 @@ class Ability
   end
 
   def user_is_admin_of_discussion?(discussion)
-    user_is_author_of?(discussion) ||
     user_is_admin_of?(discussion.group_id) ||
     user_is_admin_of?(discussion.guest_group_id)
   end
