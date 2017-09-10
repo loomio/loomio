@@ -101,6 +101,7 @@ FactoryGirl.define do
     end
     after(:create) do |discussion|
       discussion.group.save
+      discussion.guest_group.add_admin! discussion.author
     end
   end
 
