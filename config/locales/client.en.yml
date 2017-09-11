@@ -522,7 +522,10 @@ en:
 
   reactions_display:
     more_reactions: "{{count}} more"
-    name_and_count_others: "{{name}} and {{count}} more"
+    you: "You"
+    you_and_name: "You and {{name}}"
+    you_and_name_and_count_more: "You, {{name}} and {{count}} more"
+    name_and_count_more: "{{name}} and {{count}} more"
 
   group_page:
     thread_list:

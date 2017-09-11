@@ -14,6 +14,11 @@
           .reactions-display__name.eactions-display__more{ng-if: "countFor(reaction) > 0"}
             %span{translate: "reactions_display.more_reactions", translate-value-count: "{{countFor(reaction)}}"}
 
-    .reactions-display__names
+    .reactions-display__names{ng-if: "myReaction()"}
+      %span{ng-if: "reactionHash().all.length == 1", translate: "reactions_display.you"}
+      %span{ng-if: "reactionHash().all.length == 2", translate: "reactions_display.you_and_name", translate-values: "{name: otherReaction().user().name}"}
+      %span{ng-if: "reactionHash().all.length > 2", translate: "reactions_display.you_and_name_and_count_more", translate-values: "{name: otherReaction().user().name, count: reactionHash().all.length - 2}"}
+
+    .reactions-display__names{ng-if: "!myReaction()"}
       %span{ng-if: "reactionHash().all.length == 1"} {{reactionHash().all[0]}}
-      %span{ng-if: "reactionHash().all.length > 1", translate: "reactions_display.name_and_count_others", translate-values: "{name: reactionHash().all[0], count: reactionHash().all.length - 1}"}
+      %span{ng-if: "reactionHash().all.length > 1", translate: "reactions_display.name_and_count_more", translate-values: "{name: reactionHash().all[0], count: reactionHash().all.length - 1}"}

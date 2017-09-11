@@ -6,14 +6,6 @@ angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, Emo
   controller: ($scope) ->
     $scope.diameter = 16
 
-    # removed as it felt very slow for me
-    # $scope.current = 'all'
-    # $scope.setCurrent = (reaction) ->
-    #   $scope.current = reaction or 'all'
-    #
-    # $scope.isInactive = (reaction) ->
-    #   $scope.current != 'all' and $scope.current != reaction
-
     reactionParams = ->
       reactableType: _.capitalize($scope.model.constructor.singular)
       reactableId:   $scope.model.id
@@ -26,7 +18,10 @@ angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, Emo
       mine.destroy() if mine
 
     $scope.myReaction = ->
-      Records.reactions.find(_.merge(reactionParams(), userId: Session.user().id))
+      Records.reactions.find(_.merge(reactionParams(), userId: Session.user().id))[0]
+
+    $scope.otherReaction = ->
+      Records.reactions.find(_.merge(reactionParams(), {userId: {'$ne': Session.user().id}}))[0]
 
     $scope.reactionTypes = ->
       _.difference _.keys($scope.reactionHash()), ['all']
@@ -42,12 +37,12 @@ angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, Emo
     , 250
     , {leading: true}
 
+
     $scope.translate = (reaction) ->
       EmojiService.translate(reaction)
 
     $scope.reactionTypes = ->
       _.difference _.keys($scope.reactionHash()), ['all']
-
 
     $scope.maxNamesCount = 10
 
