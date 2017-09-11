@@ -293,7 +293,7 @@ zh_TW:
     new_vote: "<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上評論"
     comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論"
-    reaction_created: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 對您的評論按讚"
+    reaction_created: "<strong>{{name}}</strong> 喜歡您在 <strong>{{title}}</strong> 的評論"
     user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
     user_reminded: "<strong>{{name}}</strong> 正在等候您參與 <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格"
@@ -707,8 +707,6 @@ zh_TW:
     cancel: '否'
     messages:
       success: 邀請函已取消
-  user_page:
-    introduction: 簡介
   profile_page:
     messages:
       updated: '簡歷已更新'
@@ -726,7 +724,6 @@ zh_TW:
     email_label: '電子郵件'
     short_bio_label: '簡介'
     locale_label: '語言'
-    short_bio_placeholder: '輸入簡介（最多 500 字元）'
     locale_placeholder: 選取您偏好的語言
     update_profile: '更新簡歷'
     deactivate_account: '凍結帳號'
@@ -859,7 +856,7 @@ zh_TW:
     liked_by_you_and_someone: '您與 {{name}} 對此按讚。'
     liked_by_you_and_others: '您、{{joinedNames}} 與 {{name}} 對此按讚。'
     liked_by_someone: '{{name}} 對此按讚。'
-    liked_by_two_others: '{{name_1}} 與 {{name_2}} 對此按讚。'
+    liked_by_two_others: '{{joinedNames}} 與 {{name}} 喜歡這個。'
     liked_by_many_others: '{{joinedNames}} 與 {{name}} 對此按讚。'
     liked_by_name: '{{name}} 對此按讚。'
     started_by: '由 <strong>{{name}}</strong> 所啟動'
@@ -1186,6 +1183,8 @@ zh_TW:
     title: 之前的決策
     no_polls: 找不到之前的決策。
     count: "檢視全部：({{count}}) 個決策"
+  poll_common_action_panel:
+    unable_to_vote: 您沒有在此決策中投票的權限。
   current_polls_card:
     title: 目前的決策
     start_poll: 新決策
@@ -1403,6 +1402,9 @@ zh_TW:
     block: 阻擋
     block_verb: "阻擋"
     block_meaning: 需要群組的關注來解決更深層的問題
+  poll_count_options:
+    yes_meaning: 我自願，給予我的同意，或是完成了任務
+    no_meaning: 我不能貢獻或參與這個決策
   poll_count_vote_form:
     reason_label: 訊息
     reason_placeholder: 如果您想要的話可以留下訊息
@@ -1428,53 +1430,21 @@ zh_TW:
     stance_created: 已建立投票
     stance_updated: 已更新投票
   thread_item:
-    comment_replied_to: "<strong>{{author}}</strong> 在回覆 <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong>{{author}}</strong>已更新討論串的標題：<strong>{{title}}</strong>"
-    discussion_context_edited: "<strong>{{author}}</strong> 已經編輯了此討論串的內容"
-    discussion_attachments_edited: "<strong>{{author}}</strong> 已經編輯了此討論串的附件"
-    discussion_made_public: "<strong>{{author}}</strong> 已經將討論串設為公開"
-    discussion_made_private: "<strong>{{author}}</strong> 已經將討論串設為私密"
-    discussion_edited: "<strong>{{author}}</strong> 已經編輯了討論串"
-    discussion_moved: "<strong>{{author}}</strong>已從<strong>{{title}}</strong> 移動討論串"
-    new_comment: "<strong>{{author}}</strong>"
-    outcome_created: "<strong>{{author}}</strong> 分享了 <strong>{{title}}</strong> 的成果"
-    poll_closed_by_user: "<strong>{{author}}</strong> 已關閉投票 {{polltype}}：<strong>{{title}}</strong>"
-    poll_created: "<strong>{{author}}</strong> 啟動了一個 {{polltype}}：<strong>{{title}}</strong>"
-    poll_edited: "<strong>{{author}}</strong> 已編輯投票 {{polltype}}：<strong>{{title}}</strong>"
+    comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 在回覆 <strong>{{title}}</strong>"
+    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了討論串標題： <strong>{{title}}</strong>"
+    discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了討論內容"
+    discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了討論串的附件"
+    discussion_made_public: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 讓討論串變為公開"
+    discussion_made_private: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 讓討論串變為私密"
+    discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了討論串"
+    discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 從 <strong>{{title}}</strong> 移動了討論串"
+    new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
+    outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 分享了 <strong>{{title}}</strong> 的結果"
+    poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 關閉了 {{polltype}}：<strong>{{title}}</strong>"
+    poll_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 啟動了 {{polltype}}：<strong>{{title}}</strong>"
+    poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了 {{polltype}}：<strong>{{title}}</strong>"
     poll_expired: "{{polltype}} 已關閉：<strong>{{title}}</strong>"
-    stance_created: "<strong>{{author}}</strong> 已投票"
-  poll_thread_item:
-    poll:
-      poll_created: '<strong>{{author}}</strong> 已啟動了一個新投票：<span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> 已投票：'
-      poll_edited: '<strong>{{author}}</strong> 編輯了投票：<span>{{title}}</span>'
-      poll_expired: '投票已關閉：<span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> 已關閉投票：<span>{{title}}</span>'
-    proposal:
-      poll_created: '<strong>{{actor}}</strong> 已啟動一個提案：<span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> 已投票：'
-      poll_edited: '<strong>{{author}}</strong> 編輯了提案：<span>{{title}}</span>'
-      poll_expired: '提案已定案：<span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> 已定案了一個提案：<span>{{title}}</span>'
-    count:
-      poll_created: '<strong>{{author}}</strong> 已啟動了一個勾選：<span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> 已回應：'
-      poll_edited: '<strong>{{author}}</strong> 編輯了勾選：<span>{{title}}</span>'
-      poll_expired: '勾選已關閉：<span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> 關閉了勾選：<span>{{title}}</span>'
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> 已啟動了一個點投票：<span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> 已投票：'
-      poll_edited: '<strong>{{author}}</strong> 編輯了點投票：<span>{{title}}</span>'
-      poll_expired: '點投票已關閉：<span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> 關閉了點投票：<span>{{title}}</span>'
-    meeting:
-      poll_created: '<strong>{{author}}</strong> 已啟動了一個時間投票：<span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> 已回應：'
-      poll_edited: '<strong>{{author}}</strong> 編輯了時間投票：<span>{{title}}</span>'
-      poll_expired: '時間投票已關閉：<span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> 已關閉時間投票：<span>{{title}}</span>'
-    outcome_created: '<strong>{{author}}</strong> 已分享了成果：'
+    stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong>投票給：<strong>{{title}}</strong>"
   poll_admin_page:
     title: 管理 - {{title}}
   poll_common_share_form:
@@ -1558,6 +1528,7 @@ zh_TW:
     sign_up_helptext: "只要輸入您使用的名稱，我們就會寄送一個連結供您登入。"
     oauth_confirm_helptext: "只要在下面確認您的詳細資料，我們就會傳送連結給您來登入。"
     name_required: 請輸入名稱
+    account_inactive: 喔~喔~，看來 {{email}} 的帳號已經停用了！請聯絡我們來重新啟用您的帳號，
     welcome: 您好，{{email}}！
     welcome_back: 歡迎回來，{{name}}！
     login_link: 透過電子郵件登入
@@ -1577,6 +1548,8 @@ zh_TW:
     password: 密碼
   install_slack:
     modal_title: 安裝 Slack
+    modal_helptext: 首先，您將需要登入到 Slack 中。我們將會在一秒內將您重新導向到那裡，或是您可以點選下面的按鈕來繼續。
+    login_to_slack: 登入到 Slack
     card:
       install_title: 連線至 Slack
       install_helptext: Loomio 機器人會通知您的 Slack 團隊在 Loomio 上的討論與決策。您也可以從 Slack 上啟動討論與投票。

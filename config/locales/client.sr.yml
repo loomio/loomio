@@ -587,7 +587,6 @@ sr:
     liked_by_you_and_someone: 'Tebi i {{name}} se sviđa ovo.'
     liked_by_you_and_others: 'Sviđa se tebi, {{joinedNames}} i {{name}}.'
     liked_by_someone: '{{name}} voli ovo.'
-    liked_by_two_others: '{{name_1}} i {{name_2}} vole ovo.'
     liked_by_many_others: 'Sviđa se {{joinedNames}} i {{name}}.'
     liked_by_name: 'Sviđa se {{name}}.'
     started_by: 'Kreirano od strane <strong>{{name}}</strong> '
