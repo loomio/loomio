@@ -351,7 +351,7 @@ en:
     new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> commented on <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> liked your comment in <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> reacted to your comment in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> is waiting on you to participate in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
@@ -948,13 +948,6 @@ en:
     proposals: 'Proposals'
     previous_proposals: 'Previous Proposals'
     load_previous: 'Load earlier activity'
-    you_like_this: 'You like this.'
-    liked_by_you_and_someone: 'You and {{name}} like this.'
-    liked_by_you_and_others: 'Liked by you, {{joinedNames}} and {{name}}.'
-    liked_by_someone: '{{name}} likes this.'
-    liked_by_two_others: '{{joinedNames}} and {{name}} like this.'
-    liked_by_many_others: 'Liked by {{joinedNames}} and {{name}}.'
-    liked_by_name: 'Liked by {{name}}.'
     started_by: 'Started by <strong>{{name}}</strong>'
     edited: 'Edited'
     pin:
@@ -963,6 +956,7 @@ en:
     volume:
       mute_message: 'Thread muted.'
       unmute_message: 'Thread unmuted'
+
   thread_group:
     aria_label: 'Group name'
   thread_context:
