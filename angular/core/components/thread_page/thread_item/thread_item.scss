@@ -37,6 +37,10 @@
   display: inline-block;
 }
 
+.thread-item__link:hover  {
+  text-decoration: underline;
+}
+
 .thread-item__action {
   @include lmoBtnLink;
   color: $link-color;
