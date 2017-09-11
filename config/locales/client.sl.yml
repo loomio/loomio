@@ -151,7 +151,6 @@ sl:
     liked_by_you_and_someone: 'Ti in {{name}} sta všečkala.'
     liked_by_you_and_others: 'Všečkali ti, {{joinedNames}} in {{name}}.'
     liked_by_someone: '{{name}} je všekal/a.'
-    liked_by_two_others: '{{name_1}} in {{name_2}} sta všečkala.'
     liked_by_many_others: 'Všečkala {{joinedNames}} in {{name}}.'
     liked_by_name: 'Všečkal/a {{name}}.'
     started_by: 'Začel/a <strong>{{name}}</strong>'

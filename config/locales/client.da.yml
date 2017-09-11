@@ -276,7 +276,6 @@ da:
     new_vote: "<strong>{{name}}</strong> {{position}} på forlaget <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> kommenterede på <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> svarede på din kommentar i <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> likede din kommentar i <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> nævnte dig i <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ønsker at blive medlem af <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> godkendte dit ønske om at blive medlem <strong>{{title}}</strong>'
@@ -784,7 +783,6 @@ da:
     liked_by_you_and_someone: 'Du og {{name}} like dette.'
     liked_by_you_and_others: 'Liket af dig, {{joinedNames}} og {{name}}.'
     liked_by_someone: '{{name}} like dette.'
-    liked_by_two_others: '{{name_1}} og {{name_2}} like dette.'
     liked_by_many_others: 'Liket af {{joinedNames}} og {{name}}.'
     liked_by_name: 'Liket af {{name}}.'
     started_by: 'Oprettet af <strong>{{name}}</strong>'
@@ -1295,38 +1293,6 @@ da:
     too_many_dots: Du har brugt for mange prikker.
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
-  poll_thread_item:
-    poll:
-      poll_created: '<strong>{{author}}</strong> oprettede en ny meningsmåling: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemmer afgivet:'
-      poll_edited: '<strong>{{author}}</strong> redigerede meningsmålingen: <span>{{title}}</span>'
-      poll_expired: 'Meningsmåling lukket: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede meningsmålingen: <span>{{title}}</span>'
-    proposal:
-      poll_created: '<strong>{{author}}</strong> oprettede et forslag: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemmer afgivet:'
-      poll_edited: '<strong>{{author}}</strong> redigerede forslaget: <span>{{title}}</span>'
-      poll_expired: 'Forslag lukket: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede forslag: <span>{{title}}</span>'
-    count:
-      poll_created: '<strong>{{author}}</strong> oprettede et checkmåling: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemmer afgivet:'
-      poll_edited: '<strong>{{author}}</strong> redigerede checkmålingen: <span>{{title}}</span>'
-      poll_expired: 'Checkmåling lukket: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede checkmålingen: <span>{{title}}</span>'
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> oprettede en prikafstemning: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemmer afgivet:'
-      poll_edited: '<strong>{{author}}</strong> redigerede prikafstemningen: <span>{{title}}</span>'
-      poll_expired: 'Prikafstemning lukket: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede prikafstemningen: <span>{{title}}</span>'
-    meeting:
-      poll_created: '<strong>{{author}}</strong> oprettede en find et tidspunkt: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> har svaret:'
-      poll_edited: '<strong>{{author}}</strong> redigerede find et tidspunkt: <span>{{title}}</span>'
-      poll_expired: 'Find et tidspunkt: <span>{{title}}</span> er lukket'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede find et tidspunkt: <span>{{title}}</span>'
-    outcome_created: '<strong>{{author}}</strong> delte et resultat:'
   poll_admin_page:
     title: Admin - {{title}}
   poll_common_share_form:
