@@ -1,5 +1,5 @@
 class UserMailer < BaseMailer
-  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login, :start_decision, :accounts_merged]
+  layout 'invite_people_mailer', only: [:membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged]
 
   def accounts_merged(user)
     @user = user
@@ -69,5 +69,16 @@ class UserMailer < BaseMailer
     send_single_mail to: @email.sender_email,
                      subject_key: "email.start_decision.subject",
                      locale: locale_for(@email)
+  end
+
+  def contact_request(contact_request:)
+    @contact_request = contact_request
+
+    send_single_mail to: @contact_request.recipient.email,
+                     from: from_user_via_loomio(@contact_request.sender),
+                     reply_to: @contact_request.sender.name_and_email,
+                     subject_key: "email.contact_request.subject",
+                     subject_params: { name: @contact_request.sender.name },
+                     locale: locale_for(@contact_request.recipient, @contact_request.sender)
   end
 end

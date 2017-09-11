@@ -22,6 +22,10 @@ module CurrentUserHelper
     User.find_by!(params.slice(:unsubscribe_token)).tap { |user| user.restricted = true } if params[:unsubscribe_token]
   end
 
+  def set_last_seen_at
+    current_user.update_attribute :last_seen_at, Time.now
+  end
+
   def set_invitation_token
     current_user.token = params[:invitation_token] if params[:invitation_token]
   end

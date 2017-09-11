@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   around_filter :process_time_zone
   around_filter :process_locale         # LocalesHelper
   before_filter :set_invitation_token   # CurrentUserHelper
+  before_filter :set_last_seen_at       # CurrentUserHelper
 
   helper_method :current_user
   helper_method :client_asset_path

@@ -162,6 +162,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :contact_messages, only: :create
+    resources :contact_requests, only: :create
 
     resources :versions, only: :index
 
