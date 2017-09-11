@@ -135,11 +135,6 @@ en:
       link_help: "Click the link below to go to the group:"
     unsubscribe: 'Unsubscribe or change your email preferences:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
-    view_comment: Click here to view the comment on Loomio
-    view_discussion: Click here to view this discussion
-    create_discussion:
-      intro_html: "started a thread:"
-      intro: "%{who} started a thread:"
     daily_activity:
       heading: Your Loomio Activity
       intro: Showing you what’s been happening in your Loomio groups in the last 24 hours
@@ -152,12 +147,7 @@ en:
       thanks_for_reading: Thanks for reading, have a great day!
       heres_what_happened: "Here’s what happened on Loomio yesterday."
       marked_as_read_success: Everything from the email has been marked as read
-    comment_replied_to:
-      context_html: 'replied to your comment in'
-      context: '%{author_name} replied to your comment in %{discussion_title}'
-      subject: "%{who} replied to your comment in the %{which} group on Loomio"
-    new_comment:
-      context: 'commented in'
+
     group_membership_approved:
       intro: "Your request for access to the group %{group_name} has been approved."
       intro_html: "Your request for access to the group <strong>%{group_name}</strong> has been approved."
@@ -165,27 +155,38 @@ en:
       subject: "Your request to join %{group_name} on Loomio has been approved"
       join_group: "Join group"
       view_group_text: "Click below to view the group on Loomio:"
+
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
       intro_html: has requested access to one of your groups.
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
       button_text: View request
-    mentioned:
-      context_html: "mentioned you while discussing"
-      context: "%{author_name} mentioned you while discussing %{discussion_title}"
-      subject: '%{who} mentioned you while discussing "%{which}"'
-    thread_mailer:
-      new_discussion:
-        header_html: '<strong>%{actor}</strong> started a thread:'
-      footer_text: 'Reply to this email directly or view it on %{hostname}:'
-      reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
-      turn_off_notifications_text: 'Turn off emails for this discussion: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Turn on emails for this discussion</a> to receive further activity."
-      turn_on_notifications_text: 'Turn on email to receive further activity in this discussion: %{url}'
-      change_email_preferences_html: Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails.
-      change_preferences: 'Change your email preferences:'
+
+  email_actions:
+    unfollowed_discussion: You have turned off emails for the thread.
+
+  thread_mailer:
+    new_discussion:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> started a thread: %{discussion}"
+
+    new_comment:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> commented in: %{discussion}"
+
+    comment_replied_to:
+      subject: '%{actor} replied to you in: %{discussion}'
+      subject_html: '<strong>%{actor}</strong> replied to you in: %{discussion}'
+
+    user_mentioned:
+      subject: '%{actor} mentioned you in: %{discussion}'
+      subject_html: "<strong>%{actor}</strong> mentioned you in %{discussion}"
+
+    reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
+    change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a>."
+
   footer:
     about: About
     blog: Blog
