@@ -12,6 +12,6 @@
       %label
       %input{ng-model: "term", ng-change: "search(term)", placeholder: "{{'emoji_picker.search' | translate}}"}
     %md-menu-item.emoji-picker__selector{ng-repeat: "emoji in source"}
-      %md-button.md-button--tiny.emoji-picker__link{ng-click: "select(emoji)"}
+      %md-button.md-button--tiny.emoji-picker__link{ng-click: "select(emoji)", title: "{{translate(emoji)}}"}
         .emoji-picker__icon
-          %img.emojione{alt: "{{translate(emoji)}}", title: "{{translate(emoji)}}", ng-src: "{{imgSrcFor(emoji)}}"}
+          %img.emojione{alt: "{{translate(emoji)}}", ng-src: "{{imgSrcFor(emoji)}}"}
