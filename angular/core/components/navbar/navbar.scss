@@ -1,4 +1,8 @@
 .lmo-navbar {
+  .navbar__icon {
+    width: 24px;
+    height: 24px;
+  }
   .md-toolbar-tools {
     background-color: #fff;
     box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
@@ -13,15 +17,14 @@
 
   .md-toolbar-tools a { color: $primary-text-color; }
 
-  .navbar__left, .navbar__middle, .navbar__right {
+  .navbar__left, .navbar__right {
+    display: flex;
     align-items: center;
-    @include displayFlex;
-    flex-basis: 33%;
-    flex-grow: 0;
   }
 
   .navbar__left {
     justify-content: flex-start;
+    flex-grow: 1
   }
 
   .navbar__middle {

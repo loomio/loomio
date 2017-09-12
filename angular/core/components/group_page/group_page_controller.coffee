@@ -49,6 +49,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
     $rootScope.$broadcast 'viewingGroup', @group
     $rootScope.$broadcast 'setTitle', @group.fullName
+    $rootScope.$broadcast('setIcon', @group.logoUrl())
+
     $rootScope.$broadcast 'analyticsSetGroup', @group
     $rootScope.$broadcast 'currentComponent',
       page: 'groupPage'

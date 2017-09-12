@@ -1,6 +1,7 @@
 angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScope, Records, Session, AppConfig, LoadingService, InboxService, ModalService, GroupModal) ->
   $rootScope.$broadcast('currentComponent', {page: 'inboxPage'})
-  $rootScope.$broadcast('setTitle', 'Inbox')
+  $rootScope.$broadcast 'setTitleKey', 'inbox_page.unread_threads'
+  $rootScope.$broadcast 'setDefaultIcon'
   $rootScope.$broadcast('analyticsClearGroup')
 
   @threadLimit = 50

@@ -13,6 +13,14 @@ InitialPayload = Struct.new(:user) do
       locales:             angular_locales,
       recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
       baseUrl:             root_url,
+      theme: {
+        icon_src:                          ENV.fetch('THEME_APP_ICON_SRC', '/theme/icon_200.png'),
+        logo_src:                          ENV.fetch('THEME_APP_LOGO_SRC', '/theme/logo_wide_small.png'),
+        primary_palette:                   ENV.fetch('THEME_PRIMARY_PALETTE', 'orange'),
+        accent_palette:                    ENV.fetch('THEME_ACCENT_PALETTE', 'cyan'),
+        primary_palette_config: JSON.parse(ENV.fetch('THEME_PRIMARY_PALETTE_CONFIG', '{"default": "400"}')),
+        accent_palette_config:  JSON.parse(ENV.fetch('THEME_ACCENT_PALETTE_CONFIG', '{"default": "500"}'))
+      },
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       inlineTranslation: {

@@ -1,5 +1,6 @@
 .dashboard-page {
   @include lmoRow;
+  margin-top: 24px;
 }
 
 .dashboard-page .thread-preview__pin {

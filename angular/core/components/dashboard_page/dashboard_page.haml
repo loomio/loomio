@@ -1,7 +1,5 @@
 .lmo-one-column-layout
   %main.dashboard-page.lmo-row
-    %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.all", ng-show: "dashboardPage.filter == 'hide_muted'"}
-    %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.muted", ng-show: "dashboardPage.filter == 'show_muted'"}
     %section.dashboard-page__loading{ng-if: "!dashboardPage.dashboardLoaded()", ng-repeat: "viewName in dashboardPage.loadingViewNames track by $index", class: "dashboard-page__{{viewName}}", aria-hidden: "true"}
       %h2.dashboard-page__date-range{translate: "dashboard_page.threads_from.{{viewName}}"}
       .thread-previews-container

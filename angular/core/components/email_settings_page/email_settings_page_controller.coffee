@@ -1,5 +1,7 @@
 angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope, $translate, Records, AbilityService, FormService, Session, $location, ModalService, ChangeVolumeForm) ->
   $rootScope.$broadcast('currentComponent', { page: 'emailSettingsPage'})
+  $rootScope.$broadcast('setTitleKey', 'email_settings_page.header')
+  $rootScope.$broadcast('setDefaultIcon')
 
   @init = =>
     return unless AbilityService.isLoggedIn() or Session.user().restricted?

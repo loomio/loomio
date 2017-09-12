@@ -1,10 +1,16 @@
 angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $routeParams, RecordLoader, Records, Session, ThreadQueryService, AppConfig, $mdMedia, ModalService, GroupModal) ->
 
   $rootScope.$broadcast('currentComponent', { page: 'dashboardPage', filter: $routeParams.filter })
-  $rootScope.$broadcast('setTitle', 'Recent')
+  $rootScope.$broadcast('setDefaultIcon')
   $rootScope.$broadcast('analyticsClearGroup')
 
   @filter = $routeParams.filter || 'hide_muted'
+
+  if @filter == 'show_muted'
+    $rootScope.$broadcast('setTitleKey', 'dashboard_page.filtering.muted')
+  else
+    $rootScope.$broadcast('setTitleKey', 'dashboard_page.filtering.all')
+
   viewName = (name) =>
     if @filter == 'show_muted'
       "dashboard#{_.capitalize(name)}Muted"

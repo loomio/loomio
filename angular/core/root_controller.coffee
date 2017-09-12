@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $translate, $timeout, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.isEmailVerified = AbilityService.isEmailVerified
   $scope.currentComponent = 'nothing yet'
@@ -36,8 +36,21 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
     $scope.links = options.links or {}
     $scope.forceSignIn() if AbilityService.requireLoginFor(options.page) or AppConfig.pendingIdentity?
 
-  $scope.$on 'setTitle', (event, title) ->
+  setTitle = (title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
+    Session.pageTitle = title
+
+  $scope.$on 'setTitle', (event, title) ->
+    setTitle(title)
+
+  $scope.$on 'setTitleKey', (event, key) ->
+    setTitle($translate.instant(key))
+
+  $scope.$on 'setIcon', (event, iconSrc) ->
+    Session.iconSrc = iconSrc
+
+  $scope.$on 'setDefaultIcon', (event, iconSrc) ->
+    Session.iconSrc = AppConfig.theme.icon_src
 
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error
