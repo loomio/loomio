@@ -294,7 +294,7 @@ es:
     new_vote: "<strong>{{name}}</strong> {{position}} a la propuesta <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> ha comentado en <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha contestado a tu comentario en <strong>{{title}}</strong>"
-    reaction_created: "A <strong>{{name}}</strong> le ha gustado tu comentario en <strong>{{title}}</strong>"
+    reaction_created: "<strong> {{name}}</strong> le gusta tu comentario en <strong> {{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> te ha mencionado en <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> esta esperando que participes en <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ha solicitado unirse a <strong>{{title}}</strong>"
@@ -708,8 +708,6 @@ es:
     cancel: 'No '
     messages:
       success: 'invitación cancelada '
-  user_page:
-    introduction: 'Introducción '
   profile_page:
     messages:
       updated: 'Perfil actualizado'
@@ -727,7 +725,6 @@ es:
     email_label: 'Correo electrónico'
     short_bio_label: 'Introducción'
     locale_label: 'Idioma'
-    short_bio_placeholder: 'Ingresa una breve introducción (max 500 caracteres) '
     locale_placeholder: 'Selecciona tu lenguaje preferido '
     update_profile: 'Actualizar perfil'
     deactivate_account: 'Desactiva cuenta'
@@ -860,7 +857,7 @@ es:
     liked_by_you_and_someone: 'A ti y a {{name}} les gusta esto.'
     liked_by_you_and_others: 'Te ha gustado a ti, a {{joinedNames}} y a {{name}}.'
     liked_by_someone: 'A {{name}} le gusta esto.'
-    liked_by_two_others: 'A {{name_1}} y a {{name_2}} les gusta esto.'
+    liked_by_two_others: '{{joinedNames}} y {{name}} les gusta esto.'
     liked_by_many_others: 'A {{joinedNames}} y a {{name}} les ha gustado.'
     liked_by_name: 'Le ha gustado a {{name}}.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
@@ -1196,6 +1193,8 @@ es:
     title: Decisiones anteriores
     no_polls: No se han encontrado decisiones anteriores
     count: "Ve todas: las ({{count}}) decisiones"
+  poll_common_action_panel:
+    unable_to_vote: No tienes permiso para votar en esta desición
   current_polls_card:
     title: 'Decisiones actuales '
     start_poll: 'Nueva decisión  '
@@ -1413,6 +1412,8 @@ es:
     block: Bloquear
     block_verb: "Bloqueado "
     block_meaning: La atención urgente del grupo es necesaria para abordar una profunda preocupación
+  poll_count_options:
+    no_meaning: Estoy habilitado para contribuir o participar en esta decisión
   poll_count_vote_form:
     reason_label: Mensaje
     reason_placeholder: 'Deja un mensaje si quieres '
@@ -1438,53 +1439,14 @@ es:
     stance_created: Voto creado
     stance_updated: Voto actualizado
   thread_item:
-    comment_replied_to: "<strong>{{author}}</strong> en respuesta a <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong>{{actor}}</strong> editó el título del hilo: <span>{{title}}</span>"
-    discussion_context_edited: "<strong>{{actor}}</strong> editó el contexto del hilo"
-    discussion_attachments_edited: "<strong>{{actor}}</strong> editó los adjuntos del hilo"
-    discussion_made_public: "<strong>{{actor}}</strong> ha hecho el hilo público"
-    discussion_made_private: "<strong>{{actor}}</strong> ha hecho el hilo privado"
-    discussion_edited: "<strong>{{actor}}</strong> editó el hilo"
-    discussion_moved: "<strong>{{author}}</strong> movió el hilo de <strong>{{title}}</strong>"
-    new_comment: "<strong>{{author}}</strong>"
-    outcome_created: "<strong>{{name}}</strong> compartió el resultado de <strong>{{title}}</strong>"
-    poll_closed_by_user: "<strong>{{author}}</strong> cerro la {{polltype}}: <strong>{{title}}</strong>"
-    poll_created: "<strong>{{name}}</strong> empezó una {{polltype}}: <strong>{{title}}</strong>"
-    poll_edited: "<strong>{{name}}</strong> editó una {{polltype}}: <strong>{{title}}</strong>"
+    comment_replied_to: "<strong><a href='u/{{username}}'>{{autor}}</a></strong> en respuesta a <strong> {{tittle}}</strong>"
+    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el titulo del hilo <strong>{{title}}</strong>"
+    discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el contexto del hilo"
+    discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado los anexos del hilo"
+    discussion_made_public: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha hecho el hilo publico"
+    discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el hilo"
+    poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha cerrado el {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} ha cerrado: <strong>{{title}}</strong>"
-    stance_created: "<strong>{{author}}</strong> votó"
-  poll_thread_item:
-    poll:
-      poll_created: '<strong>{{author}}</strong> inició una encuesta: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> votó: '
-      poll_edited: '<strong>{{author}}</strong> editó la encuesta: <span>{{title}}</span>'
-      poll_expired: 'Encuesta cerrada: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> cerro la encuesta: <span>{{title}}</span>'
-    proposal:
-      poll_created: '<strong>{{author}}</strong> inició una propuesta: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> votó: '
-      poll_edited: '<strong>{{author}}</strong> editó la propuesta: <span>{{title}}</span>'
-      poll_expired: 'Propuesta cerrada: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> cerró la propuesta: <span>{{title}}</span>'
-    count:
-      poll_created: '<strong>{{author}}</strong> inició una comprobación: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> respondió: '
-      poll_edited: '<strong>{{author}}</strong> editó la comprobación: <span>{{title}}</span>'
-      poll_expired: 'Comprobación cerrada: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> cerró la comprobación: <span>{{title}}</span>'
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> inició un voto de puntos: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> votó: '
-      poll_edited: '<strong>{{author}}</strong> editó el voto de puntos: <span>{{title}}</span>'
-      poll_expired: 'Voto de puntos finalizado: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> cerró el voto de puntos: <span>{{title}}</span>'
-    meeting:
-      poll_created: '<strong>{{author}}</strong> inició una coordinación horaria: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> respondió:'
-      poll_edited: '<strong>{{author}}</strong> editó la coordinación horaria: <span>{{title}}</span>'
-      poll_expired: 'Coordinación horaria cerrada: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> cerró la coordinación horaria: <span>{{title}}</span>'
-    outcome_created: '<strong>{{author}}</strong> publicó el resultado:'
   poll_admin_page:
     title: Administrador - {{title}}
   poll_common_share_form:
@@ -1568,6 +1530,7 @@ es:
     sign_up_helptext: "Simplemente ingresa el nombre por el que te gustaría ser conocido, y te enviaremos un enlace para ingresar."
     oauth_confirm_helptext: "Simplemente confirma tus detalles de abajo, y te enviaremos un enlace para entrar."
     name_required: Por favor ingresa un nombre
+    account_inactive: ¡Vaya! parece que la cuenta {{email}} está desactivada. Póngase en contacto con nosotros para reactivarla.
     welcome: Encantado de conocerte,  {{email}}!
     welcome_back: Bienvenido nuevamente, {{name}}!
     login_link: Entra a través de un correo electrónico

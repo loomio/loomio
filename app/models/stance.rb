@@ -1,5 +1,6 @@
 class Stance < ActiveRecord::Base
   include HasMentions
+  include Reactable
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
   include Translatable

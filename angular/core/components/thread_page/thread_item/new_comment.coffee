@@ -4,29 +4,35 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Record
   templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'
   replace: true
   controller: ($scope) ->
-    $scope.editComment = ->
-      ModalService.open EditCommentForm, comment: -> $scope.eventable
-
-    $scope.deleteComment = ->
-      ModalService.open DeleteCommentForm, comment: -> $scope.eventable
-
-    $scope.showContextMenu = ->
-      $scope.canEditComment($scope.eventable) or $scope.canDeleteComment($scope.eventable)
-
-    $scope.canEditComment = ->
-      AbilityService.canEditComment($scope.eventable)
-
-    $scope.canDeleteComment = ->
-      AbilityService.canDeleteComment($scope.eventable)
-
-    $scope.showCommentActions = ->
-      AbilityService.canRespondToComment($scope.eventable)
-
-    $scope.reply = ->
-      $rootScope.$broadcast 'replyToCommentClicked', $scope.eventable
-
-    $scope.showRevisionHistory = ->
-      ModalService.open RevisionHistoryModal, model: => $scope.eventable
+    $scope.actions = [
+      name: 'react'
+      canPerform: -> AbilityService.canAddComment($scope.eventable.discussion())
+    ,
+      name: 'reply_to_comment'
+      icon: 'reply'
+      canPerform: -> AbilityService.canRespondToComment($scope.eventable)
+      perform:    -> $rootScope.$broadcast 'replyToCommentClicked', $scope.eventable
+    ,
+      name: 'edit_comment'
+      icon: 'edit'
+      canPerform: -> AbilityService.canEditComment($scope.eventable)
+      perform:    -> ModalService.open EditCommentForm, comment: -> $scope.eventable
+    ,
+      name: 'translate_comment'
+      icon: 'translate'
+      canPerform: -> $scope.eventable.body && AbilityService.canTranslate($scope.eventable) && !$scope.translation
+      perform:    -> TranslationService.inline($scope, $scope.eventable)
+    ,
+      name: 'show_history'
+      icon: 'history'
+      canPerform: -> $scope.eventable.edited()
+      perform:    -> ModalService.open RevisionHistoryModal, model: -> $scope.eventable
+    ,
+      name: 'delete_comment'
+      icon: 'delete'
+      canPerform: -> AbilityService.canDeleteComment($scope.eventable)
+      perform:    -> ModalService.open DeleteCommentForm, comment: -> $scope.eventable
+    ]
 
     ReactionService.listenForReactions($scope, $scope.eventable)
     TranslationService.listenForTranslations($scope)

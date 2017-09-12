@@ -488,7 +488,6 @@ ar:
     liked_by_you_and_someone: 'أنت و {{name}} أعجبتم بهذا'
     liked_by_you_and_others: 'تم الإعجاب من قبلك، {{joinedNames}}  و {{name}}.'
     liked_by_someone: '{{name}} أعجب بهذا.'
-    liked_by_two_others: '{{name_1}} و{{name_2}} أعجبهم هذا.'
     liked_by_many_others: 'تم الإعجاب من قبل {{joinedNames}} و{{name}}.'
     liked_by_name: 'تم الإعجاب من قبل {{name}}.'
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong> '

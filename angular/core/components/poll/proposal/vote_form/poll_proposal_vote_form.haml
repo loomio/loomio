@@ -17,8 +17,7 @@
       %textarea.lmo-primary-form-input.poll-proposal-vote-form__reason{placeholder: "{{reasonPlaceholder() | translate}}", ng-model: "stance.reason", md-maxlength: "250", rows: "2"}
       %validation_errors{subject: "stance", field: "reason"}
 
-
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     %show_results_button{ng-if: "stance.isNew()"}
     %div{ng-if: "!stance.isNew()"}
-    %md-button.md-primary.md-raised.poll-common-vote-form__submit{type: "submit", translate: "poll_common.vote", aria-label: "{{ 'poll_proposal_vote_form.vote' | translate }}"}
+    %md-button.md-primary.md-raised.poll-common-vote-form__submit{type: "submit", translate: "poll_common.vote"}

@@ -1,11 +1,5 @@
 describe 'Discussion Page', ->
 
-  groupsHelper = require './helpers/groups_helper.coffee'
-  discussionForm = require './helpers/discussion_form_helper.coffee'
-  threadPage = require './helpers/thread_helper.coffee'
-  flashHelper = require './helpers/flash_helper.coffee'
-  emailhelper = require './helpers/email_helper.coffee'
-  staticPage = require './helpers/static_page_helper.coffee'
   page = require './helpers/page_helper.coffee'
 
   describe 'starting a thread via start menu', ->
@@ -18,7 +12,7 @@ describe 'Discussion Page', ->
 
   describe 'viewing while logged out', ->
     it 'should display content for a public thread', ->
-      groupsHelper.loadPath('view_open_group_as_visitor')
+      page.loadPath('view_open_group_as_visitor')
       page.expectText('.group-theme__name', 'Open Dirty Dancing Shoes')
       page.expectText('.thread-previews-container--unpinned', 'I carried a watermelon')
       page.expectText('.navbar__right', 'LOG IN')
@@ -172,67 +166,63 @@ describe 'Discussion Page', ->
       page.loadPath('setup_discussion')
 
     it 'adds a comment', ->
-      threadPage.addComment('hi this is my comment')
-      expect(threadPage.mostRecentComment()).toContain('hi this is my comment')
+      page.fillIn '.comment-form textarea', 'hi this is my comment'
+      page.click '.comment-form__submit-button'
+      page.expectText '.new-comment', 'hi this is my comment'
 
-    it 'can add emojis', ->
+    xit 'can add emojis', ->
       page.fillIn '.comment-form textarea', 'Here is a dragon!'
-      page.click '.emoji-picker__toggle'
-      page.fillIn '.emoji-picker__search input', 'drag'
-      page.clickFirst '.emoji-picker__icon'
+      page.click '.comment-form .emoji-picker__toggle'
+      page.fillIn '.emoji-picker__search input', 'dragon_face'
+      page.click '.emoji-picker__selector:first-child'
+      page.sleep(2000)
       page.click '.comment-form__submit-button'
       page.expectText '.thread-item__body','Here is a dragon!'
       page.expectElement '.thread-item__body img'
 
     it 'replies to a comment', ->
-      threadPage.addComment('original comment right heerrr')
-      threadPage.replyLinkOnMostRecentComment().click()
-      threadPage.addComment('hi this is my comment')
-      expect(threadPage.inReplyToOnMostRecentComment()).toContain('in reply to')
-      expect(flashHelper.flashMessage()).toContain('Patrick Swayze notified of reply')
+      page.fillIn '.comment-form textarea', 'original comment right heerrr'
+      page.click '.comment-form__submit-button'
+      page.click '.action-dock__button--reply_to_comment'
+      page.fillIn '.comment-form textarea', 'hi this is my comment'
+      page.click '.comment-form__submit-button'
+      page.expectText '.activity-card__activity-list-item:last-child', 'in reply to'
+      page.expectFlash 'Patrick Swayze notified of reply'
 
-    it 'likes a comment', ->
-      threadPage.addComment('hi')
-      threadPage.likeLinkOnMostRecentComment().click()
-      expect(threadPage.likedByOnMostRecentComment()).toContain('You like this.')
+    it 'can react to a comment', ->
+      page.expectNoElement '.reaction'
+      page.click '.action-dock__button--react',
+                 '.emoji-picker__selector:first-child'
+      page.expectElement '.reaction'
 
     it 'mentions a user', ->
-      threadPage.enterCommentText('@jennifer')
-      expect(threadPage.mentionList().getText()).toContain('Jennifer Grey')
-      threadPage.firstMentionOption().click()
-      threadPage.submitComment()
-      expect(threadPage.mostRecentComment()).toContain('@jennifergrey')
+      page.fillIn '.comment-form textarea', '@jennifer'
+      page.expectText '.mentio-menu', 'Jennifer Grey'
+      page.click '.mentio-menu md-menu-item'
+      page.click '.comment-form__submit-button'
+      page.expectText '.new-comment', '@jennifergrey'
 
     it 'edits a comment', ->
-      threadPage.addComment('original comment right hur')
-      threadPage.clickThreadItemOptionsButton()
-      threadPage.selectEditCommentOption()
-      threadPage.editCommentText('edited comment right thur')
-      threadPage.submitEditedComment()
-      expect(threadPage.mostRecentComment()).toContain('edited comment right thur')
+      page.fillIn '.comment-form textarea', 'original comment right hur'
+      page.click '.comment-form__submit-button'
+      page.click '.action-dock__button--edit_comment'
+      page.fillIn '.edit-comment-form textarea', 'edited comment right thur'
+      page.click '.comment-form__submit-btn'
+      page.expectText '.new-comment', 'edited comment right thur'
 
     it 'lets you view comment revision history', ->
       page.fillIn '.comment-form textarea', 'Comment!'
       page.click '.comment-form__submit-button'
-      page.click '.thread-item__dropdown-button',
-                 '.thread-item__edit-link'
+      page.click '.action-dock__button--edit_comment'
       page.fillIn '.edit-comment-form textarea', 'Revised comment!'
       page.click  '.comment-form__submit-btn'
-      browser.sleep(2000)
-      page.click '.thread-item__action--view-edits'
+      page.click '.action-dock__button--show_history'
       page.expectText '.revision-history-modal__body', 'Revised comment!'
       page.expectText '.revision-history-modal__body', 'Comment!'
 
     it 'deletes a comment', ->
-      threadPage.addComment('original comment right hur')
-      threadPage.clickThreadItemOptionsButton()
-      threadPage.selectDeleteCommentOption()
-      threadPage.confirmCommentDeletion()
-      expect(threadPage.activityPanel()).not.toContain('original comment right thur')
-
-  xdescribe 'following a link in a thread email', ->
-    it 'successfully takes you to relevant comment', ->
-      page.loadPath 'setup_reply_email'
-      emailhelper.openLastEmail()
-      staticPage.click 'a'
-      page.expectText '.activity-card', 'Hello Jennifer'
+      page.fillIn '.comment-form textarea', 'original comment right hur'
+      page.click '.comment-form__submit-button'
+      page.click '.action-dock__button--delete_comment',
+                 '.delete-comment-form__delete-button'
+      page.expectNoText '.activity-card', 'original comment right thur'

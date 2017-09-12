@@ -18,6 +18,7 @@ class Discussion < ActiveRecord::Base
 
   include ReadableUnguessableUrls
   include Translatable
+  include Reactable
   include HasTimeframe
   include HasMentions
   include HasImportance
@@ -124,6 +125,14 @@ class Discussion < ActiveRecord::Base
     if self[:private].nil? and group.present?
       self[:private] = group.discussion_private_default
     end
+  end
+
+  def discussion
+    self
+  end
+
+  def body
+    self.description
   end
 
   private

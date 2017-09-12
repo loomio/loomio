@@ -1,8 +1,9 @@
 class ReactionService
-  def self.create(reaction:, actor:)
-    actor.ability.authorize! :create, reaction
+  def self.update(reaction:, params:, actor:)
+    actor.ability.authorize! :update, reaction
 
-    reaction.assign_attributes(user: actor)
+    reaction.user = actor
+    reaction.assign_attributes(params.slice(:reaction))
 
     return false unless reaction.valid?
     reaction.save!
