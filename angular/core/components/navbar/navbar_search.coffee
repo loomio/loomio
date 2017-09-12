@@ -4,6 +4,9 @@ angular.module('loomioApp').directive 'navbarSearch', ($timeout, $location, Reco
   templateUrl: 'generated/components/navbar/navbar_search.html'
   replace: true
   controller: ($scope) ->
+    $scope.$on 'currentComponent', ->
+      $scope.isOpen = false
+      
     $scope.isOpen = false
     $scope.open = ->
       $scope.isOpen = true

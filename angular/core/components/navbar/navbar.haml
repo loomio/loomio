@@ -1,11 +1,10 @@
 %header.lmo-navbar
   %md_toolbar
-    .md-toolbar-tools.lmo-relative
+    .md-toolbar-tools.lmo-relative.navbar__logo-bg{ng-style: "bgStyle()"}
       .navbar__left
         %md_icon_button.navbar__sidenav-toggle{ng-click: "toggleSidebar()", aria-label: "{{ 'navbar.toggle_sidebar' | translate }}"}
-          %img.navbar__icon{ng-src: "{{iconSrc()}}", aria-hidden: "true"}
-          -# %i.material-icons &#xE5D2;
-        %h1 {{title()}}
+          %i.material-icons &#xE5D2;
+        %h1.navbar__title.lmo-truncate-text {{title()}}
 
       .navbar__right
         %navbar_search{ng-show: "isLoggedIn()"}

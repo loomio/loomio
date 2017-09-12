@@ -1,4 +1,22 @@
 .lmo-navbar {
+  .navbar__logo-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 20px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .navbar__logo-bg {
+      background-size: auto 20px;
+    }
+  }
+
+  @media only screen and (max-width: 767px ) {
+    .navbar__logo-bg {
+      background-size: 0;
+    }
+  }
+
   .navbar__icon {
     width: 24px;
     height: 24px;

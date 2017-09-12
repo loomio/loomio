@@ -26,7 +26,18 @@ angular.module('loomioApp').controller 'RootController', ($scope, $translate, $t
     IntercomService.boot()
     MessageChannelService.subscribe()
 
+  setTitle = (title) ->
+    document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
+    Session.pageTitle = title
+
   $scope.$on 'currentComponent', (event, options = {}) ->
+    if options.titleKey
+      setTitle($translate.instant(options.titleKey))
+      Session.showLogo = true
+    else if options.title
+      Session.showLogo = false
+      setTitle(options.title)
+
     Session.currentGroup = options.group
     IntercomService.updateWithGroup(Session.currentGroup)
 
@@ -36,21 +47,6 @@ angular.module('loomioApp').controller 'RootController', ($scope, $translate, $t
     $scope.links = options.links or {}
     $scope.forceSignIn() if AbilityService.requireLoginFor(options.page) or AppConfig.pendingIdentity?
 
-  setTitle = (title) ->
-    document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
-    Session.pageTitle = title
-
-  $scope.$on 'setTitle', (event, title) ->
-    setTitle(title)
-
-  $scope.$on 'setTitleKey', (event, key) ->
-    setTitle($translate.instant(key))
-
-  $scope.$on 'setIcon', (event, iconSrc) ->
-    Session.iconSrc = iconSrc
-
-  $scope.$on 'setDefaultIcon', (event, iconSrc) ->
-    Session.iconSrc = AppConfig.theme.icon_src
 
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error

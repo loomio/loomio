@@ -1,7 +1,5 @@
 angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, Session, AppConfig, DeactivationModal) ->
-  $rootScope.$broadcast('currentComponent', { page: 'profilePage'})
-  $rootScope.$broadcast('setTitleKey', 'profile_page.profile')
-  $rootScope.$broadcast('setDefaultIcon')
+  $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
 
   @init = =>
     return unless AbilityService.isLoggedIn()
