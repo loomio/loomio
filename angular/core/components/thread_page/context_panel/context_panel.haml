@@ -1,7 +1,8 @@
 %section.context-panel.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
   .context-panel__top
     .context-panel__pin{ng-if: "discussion.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
-      %i.fa.fa-lg.fa-thumb-tack
+      %i.material-icons location_on
+
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
       %h1.lmo-h1.context-panel__heading{ng-if: "!translation"}
         {{discussion.title}}

@@ -79,6 +79,16 @@ angular.module('loomioApp').directive 'contextPanel', ->
       icon: 'reply'
       canPerform: -> AbilityService.canAddComment($scope.discussion)
       perform:    -> ScrollService.scrollTo('.comment-form textarea')
+    ,
+      name: 'pin_thread'
+      icon: 'location_on'
+      canPerform: -> AbilityService.canPinThread($scope.discussion)
+      perform:    -> ThreadService.pin($scope.discussion)
+    ,
+      name: 'unpin_thread'
+      icon: 'location_off'
+      canPerform: -> AbilityService.canUnpinThread($scope.discussion)
+      perform:    -> ThreadService.unpin($scope.discussion)
     ]
 
     TranslationService.listenForTranslations($scope)

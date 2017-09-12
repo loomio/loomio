@@ -40,7 +40,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
 
     canPinThread: (thread) ->
-      @canAdministerGroup(thread.group())
+      !thread.pinned && @canAdministerGroup(thread.group())
+
+    canUnpinThread: (thread) ->
+      thread.pinned && @canAdministerGroup(thread.group())
 
     canMoveThread: (thread) ->
       @canAdministerGroup(thread.group()) or
@@ -49,9 +52,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     canDeleteThread: (thread) ->
       @canAdministerGroup(thread.group()) or
       Session.user().isAuthorOf(thread)
-
-    canPinThread: (thread) ->
-      @canAdministerGroup(thread.group())
 
     canChangeThreadVolume: (thread) ->
       Session.user().isMemberOf(thread.group())
