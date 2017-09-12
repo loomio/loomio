@@ -127,6 +127,14 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def discussion
+    self
+  end
+
+  def body
+    self.description
+  end
+
   private
   def set_last_activity_at_to_created_at
     update_attribute(:last_activity_at, created_at)

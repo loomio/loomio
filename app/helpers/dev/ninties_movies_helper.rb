@@ -124,9 +124,9 @@ module Dev::NintiesMoviesHelper
   def create_discussion
     unless @discussion
       @discussion = Discussion.create(title: 'What star sign are you?',
-                                           private: false,
-                                           group: create_group,
-                                           author: jennifer)
+                                       private: false,
+                                       group: create_group,
+                                       author: jennifer)
       DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     end
     @discussion

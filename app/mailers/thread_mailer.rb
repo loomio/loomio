@@ -1,58 +1,23 @@
 class ThreadMailer < BaseMailer
   layout 'thread_mailer'
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
-
-  def new_discussion(recipient, event)
-    @recipient = recipient
-    @event = event
-    @discussion = event.eventable
-    @author = @discussion.author
-    @link = polymorphic_url(@discussion, @utm_hash)
-    send_thread_email
-  end
-
-  def new_comment(recipient, event)
-    @recipient = recipient
-    @event = event
-    @comment = event.eventable
-    @discussion = @comment.discussion
-    @author = @comment.author
-    @link = polymorphic_url(@comment, @utm_hash)
-    send_thread_email
-  end
-
-  def user_mentioned(recipient, event)
-    @recipient = recipient
-    @event = event
-    @eventable = event.eventable
-    @text = case @eventable
-    when Discussion         then @eventable.description
-    when Comment            then @eventable.body
-    end
-    @discussion = @eventable.is_a?(Discussion) ? @eventable : @eventable.discussion
-    @author = @eventable.author
-    @link = polymorphic_url(@eventable)
-    send_thread_email(subject_key: 'email.mentioned.subject',
-                      subject_params: { who: @author.name,
-                                        which: @discussion.title } )
-  end
-
-  def comment_replied_to(recipient, event)
-    @recipient = recipient
-    @event = event
-    @reply = event.eventable
-    @discussion = @reply.discussion
-    @author = @reply.author
-    @link = polymorphic_url(@reply, @utm_hash)
-    send_thread_email(subject_key: 'email.comment_replied_to.subject',
-                      subject_params: { who: @author.name,
-                                        which: @discussion.group.full_name })
+  %w(new_discussion new_comment user_mentioned comment_replied_to).each do |action|
+    define_method action, ->(recipient, event) { send_thread_email(recipient, event, action) }
   end
 
   private
+  def send_thread_email(recipient, event, action)
+    return if recipient == User.helper_bot
 
-  def send_thread_email(subject_key: nil, subject_params: nil)
-    return if @recipient == User.helper_bot
+    @recipient = recipient
+    @event = event
+    @eventable = event.eventable
+    @discussion = @eventable.discussion
+    @author = @eventable.author
+    @text = @eventable.body
+    @link = polymorphic_url(@eventable)
+
+
     @following = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
     @utm_hash = utm_hash
 
@@ -61,16 +26,13 @@ class ThreadMailer < BaseMailer
     headers['X-Auto-Response-Suppress'] = 'OOF'
     headers['Auto-Submitted'] = 'auto-generated'
 
-    if subject_key.nil? or @following
-      subject_key = 'email.custom'
-      subject_params = {text: "[#{@discussion.group.full_name}] #{@discussion.title}"}
-    end
-
     send_single_mail  to: @recipient.email,
                       from: from_user_via_loomio(@author),
                       reply_to: reply_to_address_with_group_name(discussion: @discussion, user: @recipient),
-                      subject_key: subject_key,
-                      subject_params: subject_params,
+                      subject_key: "thread_mailer.#{action_name}.subject",
+                      subject_params: { actor: @author.name,
+                                        group: @discussion.group.full_name,
+                                        discussion: @discussion.title },
                       locale: @recipient.locale
   end
 
