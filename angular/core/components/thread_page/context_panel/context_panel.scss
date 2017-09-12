@@ -45,8 +45,9 @@
   margin-bottom: 15px;
 }
 
-.context-panel__description p:last-of-type{
-  margin-bottom: 0;
+.context-panel__description {
+  margin-bottom: 16px;
+  p:last-of-type { margin-bottom: 0; }
 }
 
 .context-panel__attachments {
