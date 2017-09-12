@@ -1,4 +1,4 @@
-.poll-ranked-choice-vote-form
+.poll-ranked-choice-vote-form.lmo-relative
   %poll_common_participant_form{stance: "stance"}
 
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
@@ -8,7 +8,7 @@
       %md-list-item.poll-ranked-choice-vote-form__ordinal{ng-repeat: "option in pollOptions"}
         %span{ng-if: "$index < numChoices"} {{$index+1}}
 
-    %md-list.lmo-flex.lmo-flex__grow.lmo-relative{layout: "column", sv-part: "pollOptions"}
+    %md-list.lmo-flex.lmo-flex__grow{layout: "column", sv-part: "pollOptions"}
       %md-list-item.poll-common-vote-form__option.lmo-flex.lmo-pointer.lmo-flex__space-between{sv-element: "true", layout: "row", ng-repeat: "option in pollOptions"}
         .poll-common-vote-form__option-name.poll-common-vote-form__border-chip.lmo-flex__grow{ng-style: "{'border-color': option.color}"}
           {{option.name}}
