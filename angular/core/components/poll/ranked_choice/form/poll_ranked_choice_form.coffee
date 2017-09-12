@@ -9,6 +9,7 @@ angular.module('loomioApp').directive 'pollRankedChoiceForm', ->
         $scope.$broadcast('addPollOption')
 
     setMinimumStanceChoices = ->
+      return unless $scope.poll.isNew()
       $scope.poll.customFields.minimum_stance_choices =
         _.max [$scope.poll.pollOptionNames.length, 1]
     setMinimumStanceChoices()
