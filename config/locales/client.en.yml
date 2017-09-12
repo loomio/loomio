@@ -1585,7 +1585,7 @@ en:
     start_header: Start ranked choice
     edit_header: Edit ranked choice
     tip: Find out when people are available to meet
-    title_placeholder: E.g. Which country should we visit next?
+    title_placeholder: E.g. who should take over as chairman of the board?
     details_placeholder: Provide any clarifying details people might need to participate
     meeting_created: Ranked choice created
     meeting_updated: Ranked choice updated
@@ -1660,6 +1660,7 @@ en:
     stance_updated: Vote updated
 
   poll_ranked_choice_vote_form:
+    helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top {{count}} choices will be recorded.
     stance_created: Choice recorded
     stance_updated: Choice updated
 
