@@ -4,7 +4,7 @@
     %th
     %th
     - (1..@info.poll.minimum_stance_choices).each do |score|
-      %th.align-right= t(:"ordinal.#{score}")
+      %th.align-right= t(:"ordinal._#{score}")
     %th.align-right= t(:"common.total")
   - @info.poll_options.sort_by(&:total_score).reverse.each_with_index do |poll_option, index|
     %tr

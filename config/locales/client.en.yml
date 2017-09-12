@@ -132,6 +132,11 @@ en:
     _3: 3rd
     _4: 4th
     _5: 5th
+    _6: 6th
+    _7: 7th
+    _8: 8th
+    _9: 9th
+    _10: 10th
 
   devise:
     failure:
