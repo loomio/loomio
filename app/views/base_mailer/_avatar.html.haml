@@ -3,4 +3,4 @@
     .base-mailer__avatar-initials
       = user.avatar_initials
   - else
-    = image_tag user.avatar_url(:"medium"), alt: "#{user.name}", class: "base-mailer__avatar-image"
+    = image_tag user.avatar_url(:medium), alt: "#{user.name}", class: "base-mailer__avatar-image"
