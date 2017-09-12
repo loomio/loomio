@@ -1,15 +1,5 @@
 .new-comment{id: "comment-{{eventable.id}}"}
-  %md-menu.new-comment__menu.lmo-dropdown-menu.lmo-no-print{ng-if: "showContextMenu()", md-position-mode: "target-right target"}
-    %md-button.thread-item__dropdown-button{ng-click: "$mdMenu.open()"}
-      .sr-only{translate: "new_comment_item.context_menu.aria_label"}
-      %i.material-icons expand_more
-    %md-menu-content
-      %md-menu-item.thread-item__edit-link{ng-if: "canEditComment()"}
-        %md-button{ng-click: "editComment()", translate: "common.action.edit"}
-      %md-menu-item.thread-item__delete-link{ng-if: "canDeleteComment()"}
-        %md-button{ng-click: "deleteComment()", translate: "common.action.delete"}
-
-  .thread-item__body.new-comment__body.lmo-markdown-wrapper{marked: "eventable.cookedBody()"}
+  .thread-item__body.new-comment__body.lmo-markdown-wrapper{ng-if: "!translation", marked: "eventable.cookedBody()"}
   %translation.thread-item__body{ng-if: "translation", translation: "translation", field: "body"}
 
   %outlet{name: "after-comment-body", model: "eventable"}
@@ -18,16 +8,8 @@
     .thread-item__attachment{ng-repeat: "attachment in eventable.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "thread"}
 
-  .thread-item__footer.new-comment__footer
-    .thread-item__actions{ng-if: "showCommentActions()"}
-      %button.thread-item__action.thread-item__action--like.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.like", ng-if: "!(reactExecuting || currentUserReaction())", ng-click: "react('+1')"}>
-      %button.thread-item__action.thread-item__action--unlike.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.unlike", ng-click: "unreact()", ng-if: "reactExecuting || currentUserReaction()"}>
-      %span.lmo-no-print{aria-hidden: "true"}>·
-      %button.thread-item__action.thread-item__action--reply.lmo-no-print{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
-      %translate_button.lmo-no-print{model: "eventable", showdot: "true"}
-      %span.md-caption{ng-if: "eventable.edited()"}
-        %span{aria-hidden: "true"}·
-        %button.thread-item__action--view-edits{ng-click: "showRevisionHistory()", translate: "new_comment_item.edited"}>
+  .lmo-md-actions
+    %reactions_display{model: "eventable"}
+    %action_dock{model: "eventable", actions: "actions"}
 
-    %outlet{name: "after-comment-event", model: "eventable"}
-    .thread-item__liked-by {{ reactionSentence() }}
+  %outlet{name: "after-comment-event", model: "eventable"}

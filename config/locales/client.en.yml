@@ -1,4 +1,36 @@
 en:
+  reactions:
+    slight_smile: Like
+    heart: Love
+    laughing: Laugh
+    clap: Clap
+    hugging: Hug
+    sunglasses: Cool
+    wink: Wink
+    nerd: Smart
+    relieved: Relieved
+    worried: Worried
+    confused: Confused
+    confounded: Confounded
+    neutral_face: Neutral
+    slight_frown: Frown
+    disappointed: Disappointed
+    angry: Angry
+    weary: Weary
+    astonished: Astonished
+    rolling_eyes: Rolling eyes
+    cry: Cry
+    scream: Scream
+    sleeping: Bored
+    thinking: Thinking
+    raised_hands: Raised hands
+    pray: Pray
+    fingers_crossed: Fingers crossed
+    v: Peace
+    metal: Metal
+    ok_hand: Ok
+    wave: Wave
+
   poll_types:
     proposal: Proposal
     count: Check
@@ -8,6 +40,7 @@ en:
   timezones:
     local: Local time ({{value}})
   common:
+    you: You
     expand: Expand
     all_day: All day
     ok_got_it: Ok, got it
@@ -318,7 +351,7 @@ en:
     new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> commented on <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> liked your comment in <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> reacted to your comment in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> is waiting on you to participate in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
@@ -428,37 +461,24 @@ en:
     make_announcement: Announcement
     notified_count: '{{count}} people will be emailed'
 
-  proposal_expanded:
-    collapse: Collapse
-    current_votes: Current votes
-    started_by: 'Started by <strong>{{name}}</strong>'
-    only_voter_is_you: 'No other members have voted yet.'
-    extend_proposal: 'Change closing time'
-    edit_proposal: 'Edit proposal'
-    close_proposal: 'Close proposal'
-    closed_badge: Closed
-
-
-  proposal_position_yes: 'Agree'
-  proposal_position_abstain: 'Abstain'
-  proposal_position_no: 'Disagree'
-  proposal_position_block: 'Block'
-
-  legacy_trial_expired_modal:
-    heading: "Thanks for using Loomio this year!"
-    body: |
-      <p>We really appreciate your support over the year, and we’re really excited about making Loomio even better in 2016.</p>
-      <p>Is Loomio useful to your group? We’ve just released our pricing plans and we’re asking groups who’ve been using Loomio for a while to pick a plan that suits them.</p>
-    submit: "Show me the plans"
-
-  group_welcome_modal:
-    aria_label: "Welcome"
-    creator_heading: "Welcome to your new group"
-    member_heading: "Welcome to Loomio"
-    creator_info: "You are the group <strong>coordinator</strong>, which is like being a host. Watch the video, then check out the example threads."
-    member_info: "Watch this video for an overview of how Loomio works. Then try posting a comment in a discussion thread, or start one of your own!"
-    creator_footer: "When you’re ready, <strong>invite people</strong> in."
-    ok_got_it: "Ok, got it!"
+  action_dock:
+    react: Add reaction
+    add_comment: Comment
+    edit_thread: Edit context
+    translate_thread: Translate context
+    edit_poll: Edit poll
+    translate_poll: Translate poll
+    edit_stance: Change your vote
+    translate_stance: Translate vote
+    edit_comment: Edit comment
+    delete_comment: Delete comment
+    reply_to_comment: Reply
+    translate_comment: Translate comment
+    edit_outcome: Edit outcome
+    translate_outcome: Translate outcome
+    show_history: Show edit history
+    pin_thread: Pin thread
+    unpin_thread: Un-pin thread
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -498,6 +518,16 @@ en:
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     posted: Posted
+
+  reactions_input:
+    add_your_reaction: Add your reaction
+
+  reactions_display:
+    more_reactions: "{{count}} more"
+    you: "You"
+    you_and_name: "You and {{name}}"
+    you_and_name_and_count_more: "You, {{name}} and {{count}} more"
+    name_and_count_more: "{{name}} and {{count}} more"
 
   group_page:
     thread_list:
@@ -581,41 +611,6 @@ en:
     title: 'Deactivate group'
     question: 'Are you sure you want to deactivate this group?'
     submit: 'Yes, Deactivate this group'
-
-  confirm_gift_plan_modal:
-    heading: Free groups are donation supported
-    body: Donations make it possible for groups who need it to use Loomio for free. We will occasionally ask users of free groups to make a voluntary contribution.
-    got_it: Stay on free
-    go_back: Upgrade
-
-  donation_modal:
-    heading: Make a donation to Loomio?
-    body: "Loomio is a social enterprise. Our mission is to create a world where it's easy for anyone to participate in the decisions that affect them."
-    contribute: Make a contribution
-    got_to_group: Not now, thank you.
-
-  gift_card:
-    heading: Gift plan
-    body: "<strong>{{name}}</strong> is a giftsupported group. To support Loomio to keep helping groups like yours, click here:"
-    make_a_contribution: Make a contribution
-
-  upgrade_plan_card:
-    heading: Upgrade for premium features
-    slack_html: "<strong>Slack integration</strong>: Loomio and Slack work great together! Link them up."
-    domain_html: "<strong>Custom domain</strong>: Make your group easy to find with yourname.loomio.org"
-    help_html: "<strong>Expert help</strong>: Loomio's collaboration consultants will get your group humming"
-    analytics_html: "<strong>Analytics reports</strong>: Get insights into your group's engagement"
-    donations: Your group members will no longer be asked to donate.
-    more: … and lots more.
-    upgrade: Upgrade now
-    donate: Donate
-
-  trial_card:
-    title: '30day trial'
-    choose_plan: 'Choose your pricing plan'
-    in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that suits your group at any time.'
-    expired_body_html: "<strong>{{name}}</strong> has reached the end of its Loomio trial. To keep using it, you’ll need to pick a pricing plan that suits your group."
-
 
   group_form:
     aria_label: 'Group form'
@@ -955,13 +950,6 @@ en:
     proposals: 'Proposals'
     previous_proposals: 'Previous Proposals'
     load_previous: 'Load earlier activity'
-    you_like_this: 'You like this.'
-    liked_by_you_and_someone: 'You and {{name}} like this.'
-    liked_by_you_and_others: 'Liked by you, {{joinedNames}} and {{name}}.'
-    liked_by_someone: '{{name}} likes this.'
-    liked_by_two_others: '{{joinedNames}} and {{name}} like this.'
-    liked_by_many_others: 'Liked by {{joinedNames}} and {{name}}.'
-    liked_by_name: 'Liked by {{name}}.'
     started_by: 'Started by <strong>{{name}}</strong>'
     edited: 'Edited'
     pin:
@@ -970,6 +958,7 @@ en:
     volume:
       mute_message: 'Thread muted.'
       unmute_message: 'Thread unmuted'
+
   thread_group:
     aria_label: 'Group name'
   thread_context:
@@ -1584,6 +1573,7 @@ en:
     block_reason_placeholder: Explain your objection to this proposal and why it should not go ahead
     stance_created: Vote created
     stance_updated: Vote updated
+    vote: Vote
 
   poll_proposal_options:
     agree: Agree

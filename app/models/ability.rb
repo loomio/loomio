@@ -239,7 +239,7 @@ class Ability
       user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
     end
 
-    can :create, Reaction do |reaction|
+    can :update, Reaction do |reaction|
       user_is_member_of?(reaction.reactable.group.id)
     end
 
@@ -339,6 +339,10 @@ class Ability
       @user.email_verified? &&
       stance.participant.email_verified == false &&
       stance.participant.email == @user.email
+    end
+
+    can :show, Outcome do |outcome|
+      can? :show, outcome.poll
     end
 
     can [:create, :update], Outcome do |outcome|

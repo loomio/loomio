@@ -12,6 +12,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'contacts'
       @hasMany 'versions'
       @hasMany 'identities'
+      @hasMany 'reactions'
 
     localeName: ->
       (_.find(AppConfig.locales, (h) => h.key == @locale) or {}).name

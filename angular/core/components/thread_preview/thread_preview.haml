@@ -25,7 +25,7 @@
 
     .thread-preview--right.lmo-flex{layout: "row"}
       .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
-        %i.fa.fa-lg.fa-thumb-tack
+        %i.material-icons location_on
 
   .thread-preview__actions.lmo-hide-on-xs{ng-if: "thread.discussionReaderId"}
     %md-button.md-raised.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>

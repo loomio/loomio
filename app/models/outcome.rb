@@ -2,6 +2,8 @@ class Outcome < ActiveRecord::Base
   extend  HasCustomFields
   include MakesAnnouncements
   include HasMentions
+  include Reactable
+  include Translatable
   set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location
 
   belongs_to :poll, required: true
@@ -16,8 +18,10 @@ class Outcome < ActiveRecord::Base
   delegate :group_id, to: :poll
   delegate :discussion, to: :poll
   delegate :discussion_id, to: :poll
+  delegate :locale, to: :poll
 
   is_mentionable on: :statement
+  is_translatable on: :statement
 
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option

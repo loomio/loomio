@@ -48,6 +48,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
       @hasMany   'pollDidNotVotes'
 
+    reactions: ->
+      @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
+
     newAttachments: ->
       @recordStore.attachments.find(@newAttachmentIds)
 

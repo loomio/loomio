@@ -4,6 +4,11 @@
   margin-bottom: 32px;
 }
 
+.poll-common-card__title {
+  @include md-title;
+  margin-bottom: 8px;
+}
+
 .poll-common-modal-header {
   @include displayFlex;
 }
