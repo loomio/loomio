@@ -14,4 +14,4 @@
     %md-menu-item.emoji-picker__selector{ng-repeat: "emoji in source"}
       %md-button.md-button--tiny.emoji-picker__link{ng-click: "select(emoji)"}
         .emoji-picker__icon
-          %img.emojione{alt: "{{translate(emoji)}}", title: "{{translate(emoji)}}", src: "{{imgSrcFor(emoji)}}"}
+          %img.emojione{alt: "{{translate(emoji)}}", title: "{{translate(emoji)}}", ng-src: "{{imgSrcFor(emoji)}}"}
