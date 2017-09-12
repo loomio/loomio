@@ -21,7 +21,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       template[field]
 
     templateFor: (pollType) ->
-      @activePollTemplates()[pollType]
+      AppConfig.pollTemplates[pollType]
 
     lastStanceBy: (participant, poll) ->
       criteria =
