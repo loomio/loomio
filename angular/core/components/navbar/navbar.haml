@@ -4,7 +4,7 @@
       .navbar__left
         %md_icon_button.navbar__sidenav-toggle{ng-click: "toggleSidebar()", aria-label: "{{ 'navbar.toggle_sidebar' | translate }}"}
           %i.material-icons &#xE5D2;
-        %h1.navbar__title.lmo-truncate-text {{title()}}
+        %h1.navbar__title {{title()}}
 
       .navbar__right
         %navbar_search{ng-show: "isLoggedIn()"}
