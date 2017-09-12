@@ -1,0 +1,4 @@
+.poll-common-stance-choice.poll-common-stance-choice--poll
+  %poll_common_stance_icon{stance_choice: "stanceChoice"}
+  %span{ng-if: "hasVariableScore()"}> {{stanceChoice.score}} -
+  %span {{stanceChoice.pollOption().name}}

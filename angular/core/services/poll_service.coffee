@@ -11,7 +11,10 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
 
     activePollTemplates: ->
       # this could have group-specific logic later.
-      AppConfig.pollTemplates
+      # (LATER...) gasp now it does!
+      _.pickBy AppConfig.pollTemplates, (template) ->
+        !template.experimental or
+        (Session.currentGroup or {}).enableExperiments
 
     fieldFromTemplate: (pollType, field) ->
       return unless template = @templateFor(pollType)

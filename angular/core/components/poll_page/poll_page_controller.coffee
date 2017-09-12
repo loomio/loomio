@@ -5,6 +5,11 @@ angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope
     if poll and !@poll?
       @poll = poll
       $rootScope.$broadcast 'setTitle', @poll.title
+      $rootScope.$broadcast 'currentComponent',
+        page: 'threadPage'
+        group: @poll.group()
+        skipScroll: true
+
       MessageChannelService.subscribeToPoll(@poll)
 
       if $location.search().share

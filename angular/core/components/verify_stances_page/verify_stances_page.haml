@@ -6,7 +6,7 @@
         %p.lmo-hint-text{translate: "verify_stances.description"}
         .verify-stances-page__stance{ng-repeat: "stance in stances() track by stance.id"}
           {{stance.poll().title}}
-          %poll_common_stance_choice{stance_choice: "choice", ng-if: "choice.score > 0", ng-repeat: "choice in stance.stanceChoices()"}
+          %poll_common_directive{name: "stance_choice", stance_choice: "choice", ng-if: "choice.score > 0", ng-repeat: "choice in stance.stanceChoices()"}
           %p {{stance.reason}}
           %md-button.verify-stances-page__verify{ng-click: "verify(stance)", translate: "verify_stances.verify"}
           %md-button.verify-stances-page__remove{ng-click: "remove(stance)", translate: "verify_stances.remove"}
