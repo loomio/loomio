@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, EmojiService) ->
-  scope: {model: '='}
+  scope: {model: '=', load: '@'}
   restrict: 'E'
   templateUrl: 'generated/components/reactions/display/reactions_display.html'
   replace: true
@@ -49,8 +49,11 @@ angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, Emo
     $scope.countFor = (reaction) ->
       $scope.reactionHash()[reaction].length - $scope.maxNamesCount
 
-    Records.reactions.fetch(params:
-      reactable_type: _.capitalize($scope.model.constructor.singular)
-      reactable_id:   $scope.model.id
-    ).finally ->
+    if $scope.load
+      Records.reactions.fetch(params:
+        reactable_type: _.capitalize($scope.model.constructor.singular)
+        reactable_id:   $scope.model.id
+      ).finally ->
+        $scope.loaded = true
+    else
       $scope.loaded = true
