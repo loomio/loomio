@@ -39,8 +39,6 @@ cmn:
     group_label: '组'
     title_label: '标题'
     context_label: '上下文'
-  proposal_expanded:
-    close_proposal: '关闭的提议'
   membership_request_form:
     name_label: 名字
     email_label: 邮件

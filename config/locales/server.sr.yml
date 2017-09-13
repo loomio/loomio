@@ -47,11 +47,6 @@ sr:
       link_help: "Škljocnite na adresu ispod da odete do grupe:"
     unsubscribe: 'Odjavite se ili promenite podešavanja ePošte'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavu sa liste za obaveštenja ili promenu podešavanja Vaše ePošte."
-    view_comment: Škljocnite ovde da bi videli komentar na Lumiju
-    view_discussion: Škljocni ovde da vidiš ovu diskusiju
-    create_discussion:
-      intro_html: "pokrenuta nit:"
-      intro: "%{who} pokrenuo/la nit:"
     daily_activity:
       heading: Vaša Lumio aktivnost
       intro: Prikazuje Vam šta se dešavalo u Vašim Lumio grupama u poslednja 24 sata
@@ -63,12 +58,6 @@ sr:
       thanks_for_reading: Hvala na čitanju, prijatan dan!
       heres_what_happened: "Evo šta se dogodilo na Lumiju juče."
       marked_as_read_success: Sve ePoruke su označene kao pročitane
-    comment_replied_to:
-      context_html: 'odgovorio/la na Vaš komentar u'
-      context: '%{author_name} je odgovorio/la na Vaš komentar u %{discussion_title}'
-      subject: "%{who} je odgovorio/la na tvoj komentar u %{which} groupi na Lumiju"
-    new_comment:
-      context: 'komentarisao/la u'
     group_membership_approved:
       intro: "Vaš zahtev za pristup grupi %{group_name} je odobren."
       intro_html: "Vaš zahtev za pristup grupi <strong>%{group_name}</strong> je odobren."
@@ -80,19 +69,6 @@ sr:
       intro: "%{name} (%{email}) je zatražio pristup jednoj od tvojih Lumio grupa."
       subject: "%{who} je zatražio da se pridruži %{which_group}"
       view_group: Ovde možete odobriti ili odbiti zahtev
-    mentioned:
-      context_html: "te je pomenuo/la u diskusiji"
-      context: "%{author_name} Vas je pomenuo/la tokom diskusije \"%{discussion_title}\""
-      subject: '%{who} te je pomenuo/la tokom diskusije "%{which}"'
-    thread_mailer:
-      footer_text: 'Odgovori na ovu poruku direktno ili je pogledaj na %{hostname}:'
-      reply_or_view_online_html: Odgovori na ovu poruku direktno ili <a href='%{url}'>pogledaj je na %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Isključi ePoruke</a> za ovu diskusiju."
-      turn_off_notifications_text: 'Isključi ePoruke za ovu diskusiju: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Uključi ePoruke za ovu diskusiju</a> da primaš dalje aktivnosti."
-      turn_on_notifications_text: 'Uključi ePoruke da primaš dalje aktivnosti iz ove diskusije: %{url}'
-      change_email_preferences_html: Promeni svoja <a href='%{email_preferences_url}'>podešavanja o ePorukama</a> da prestaneš da primaš ove ePoruke.
-      change_preferences: 'Promeni svoja podešavanja o ePorukama:'
   footer:
     about: O nama
     blog: Blog

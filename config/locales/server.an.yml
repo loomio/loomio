@@ -15,8 +15,6 @@ an:
       subject: "Configura o tuyo nuevo grupo en Loomio: %{group_name}"
     unsubscribe: 'Da de baixa u cambea as preferencias d''o tuyo correu electronico:   '
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> ta dar de baixa u cambiar as preferencias de correu electronico."
-    view_comment: Fe clic aquí ta veyer o comentario en Loomio
-    view_discussion: 'Fe clic aquí ta veyer ista discusión '
     daily_activity:
       heading: A tuya actividat en Loomio
       intro: Isto ye o que ha pasau en as zagueras 24 horas en os tuyos grupos de Loomio
@@ -30,8 +28,6 @@ an:
       intro: "%{name} (%{email}) ha pediu acceso a un d''os tuyos grupos de Loomio."
       subject: "%{who} ha pediu acceso a %{which_group}"
       view_group: Puetz acceptar u refusar a petición aquí
-    thread_mailer:
-      change_preferences: 'Cambiar as tuyas preferencias d''email:'
   footer:
     about: Sobre Loomio
     blog: Blog

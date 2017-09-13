@@ -15,8 +15,6 @@ sk:
       subject: "Zriaďte si svoju novú Loomio skupinu: %{group_name}"
     unsubscribe: 'Odhláste sa alebo si zmeňte nastavenia emailu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, aby ste sa odhlásil(a) alebo zmenil(a) nastavenia emailu."
-    view_comment: Kliknite sem na zobrazenie komentárov na Loomio
-    view_discussion: Kliknite sem na zobrazenie tejto diskusie
     daily_activity:
       heading: Vaša aktivita na Loomiu
       intro: Zobrazuje sa, čo sa udialo vo vašich Loomio skupinách behom ostatných 24 hodín
@@ -30,8 +28,6 @@ sk:
       intro: "%{name} (%{email}) požiadal(a) o prístup k jednej z vašich Loomio skupín."
       subject: "%{who} požiadal(a) o členstvo v %{which_group}"
       view_group: Môžete schváliť alebo odmietnuť žiadosť tu
-    thread_mailer:
-      change_preferences: 'Zmena nastavenia e-mailu:'
   footer:
     about: O nás
     blog: Blog

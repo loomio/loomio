@@ -36,8 +36,6 @@ tr:
       link_help: "Gruba gitmek için aşağıdaki bağlantıyı tıklayın:"
     unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
-    view_comment: Bu yorumu Loomio'da görüntülemek için buraya tıkla
-    view_discussion: Bu müzakereyi görüntülemek için buraya tıkla
     daily_activity:
       heading: Loomio Aktiviten
       intro: Son 24 saat içinde Loomio gruplarınızda neler olduğunu gösterir
@@ -48,24 +46,10 @@ tr:
       mark_as_read: Okundu olarak işaretle
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
-    comment_replied_to:
-      context_html: 'şurada yorumunu yanıtladı '
-      subject: "%{who} Loomio'daki %{which} grubunda yorumunuzu yanıtladı"
-    new_comment:
-      context: 'şurada yorumlandı'
     membership_request:
       intro: "%{name} (%{email}) Loomio gruplarından birine erişim hakkı istedi."
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
-    thread_mailer:
-      footer_text: 'Bu e-postayı doğrudan yanıtlayın veya %{hostname} üzerinde görüntüleyin:'
-      reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
-      turn_off_notifications_html: "Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>."
-      turn_off_notifications_text: 'Bu müzakere için e-postaları devre dışı bırakın: %{url}'
-      turn_on_notifications_html: "Bundan sonraki faaliyet bildirimlerini alabilmek için <a href='%{url}'>bu müzakerenin e-posta servisini aktive edin</a>."
-      turn_on_notifications_text: 'Bundan sonraki faaliyet bildirimlerini alabilmek için bu müzakerenin e-posta servisini aktive edin: %{url}'
-      change_email_preferences_html: Bu e-posta listesinden çıkmak için <a href='%{email_preferences_url}'>e-posta tercihlerinizi</a> değişitirin.
-      change_preferences: 'E-posta tercihlerini değiştir:'
   footer:
     about: Hakkında
     blog: Blog

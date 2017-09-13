@@ -139,8 +139,6 @@ mi:
     group_label: 'Rōpū'
     title_label: 'Taitara'
     privacy_label: 'Matatapu'
-  proposal_expanded:
-    closed_badge: Kua kati
   membership_request_form:
     name_label: Ingoa
     email_label: Īmēra

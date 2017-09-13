@@ -61,9 +61,6 @@ gl:
     title_label: 'Título'
     context_label: 'Contexto'
     privacy_label: 'Privacidade'
-  proposal_expanded:
-    edit_proposal: 'Editar proposta'
-    close_proposal: 'Pechar proposta'
   join_group_button:
     join_group: Unirse ó grupo
   membership_request_form:

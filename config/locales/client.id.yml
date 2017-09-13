@@ -58,8 +58,6 @@ id:
     title_label: 'Judul'
     context_label: 'Konteks'
     privacy_label: 'Kebijakan Privasi'
-  proposal_expanded:
-    close_proposal: 'Tutup usulan'
   membership_request_form:
     heading: Minta untuk bergabung dalam kelompok
     name_label: Nama

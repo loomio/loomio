@@ -13,8 +13,6 @@ ko:
       subject: "새로운 루미오 그룹 설정 : %{group_name}"
     unsubscribe: '구독중지 혹은 이메일 설정을 변경하세요.'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
-    view_comment: 루미오에 댓글을 보기 위해서는 여기를 클릭하세요.
-    view_discussion: 토론을 보기 위해서 여기를 선택하세요.
     daily_activity:
       heading: 당신의 루미오 활동
       intro: 지난 24시간 동안 여러분의 루미오 그룹에 어떤 일이 있었는지를 보여줍니다.

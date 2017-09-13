@@ -70,9 +70,6 @@ sk:
     title_label: 'Názov'
     context_label: 'Kontext'
     privacy_label: 'Súkromie'
-  proposal_expanded:
-    edit_proposal: 'Upraviť návrh'
-    close_proposal: 'Uzavrieť návrh'
   join_group_button:
     join_group: Pripojiť sa ku skupine
   membership_request_form:

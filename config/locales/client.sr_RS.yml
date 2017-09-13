@@ -135,25 +135,6 @@ sr_RS:
     title_label: 'Наслов'
     context_label: 'Контекст'
     privacy_label: 'Приватност'
-  proposal_expanded:
-    collapse: Склопи
-    current_votes: Тренутни гласови
-    started_by: 'Креирао/ла <strong>{{name}}</strong>'
-    only_voter_is_you: 'Други чланови нису још увек гласали.'
-    extend_proposal: 'Промени датум затварања'
-    edit_proposal: 'Измени предлог'
-    close_proposal: 'Затвори предлог'
-    closed_badge: Истекло
-  proposal_position_yes: 'Сагласност'
-  proposal_position_abstain: 'Уздржаност'
-  proposal_position_no: 'Несагласност'
-  proposal_position_block: 'Одбијање'
-  legacy_trial_expired_modal:
-    heading: "Хвала што користите Лумио ове године! "
-  group_welcome_modal:
-    creator_heading: "Добродошли у своју нову групу"
-    member_heading: "Добродошли на Лумио"
-    ok_got_it: "У реду, схватам!"
   join_group_button:
     join_group: Придружи се групи
   membership_request_form:
@@ -179,11 +160,6 @@ sr_RS:
       loud: Обавести увек када има активности.
       quiet: Не обавештавај о овој групи. Активност ће бити приказана на почетној страни.
       mute: Сакриј ову групу и не обавештавај док ме неко не @означи.
-  donation_modal:
-    contribute: Допринесите
-  gift_card:
-    heading: План поклона
-    make_a_contribution: Допринесите
   group_form:
     description: 'Опис'
     advanced_settings: "Напредне опције"

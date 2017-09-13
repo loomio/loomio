@@ -67,11 +67,6 @@ uk:
       link_help: "Натисніть на посилання нижче щоб перейти до групи:"
     unsubscribe: 'Відпісатися, або змінити Ваші налаштування електронної пошти:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> аби відписатися або змінити налаштування електронної пошти"
-    view_comment: Натисніть тут щоб переглянути коментар на Loomio
-    view_discussion: Натисніть тут для перегляду обговорення
-    create_discussion:
-      intro_html: "почати тему:"
-      intro: "%{who} почав тему:"
     daily_activity:
       heading: Ваші дії на Loomio
       intro: Відображає, що відбулося у твоїй Loomio групі за останні 24 років
@@ -84,12 +79,6 @@ uk:
       thanks_for_reading: Дякуємо за читання, гарного дня!
       heres_what_happened: "Ось що відбулося у Loomio вчора."
       marked_as_read_success: Все в листі було позначено як прочитане
-    comment_replied_to:
-      context_html: 'відповів(ла) на ваш коментар в'
-      context: '%{author_name} відповів(ла) на ваш коментар в %{discussion_title}'
-      subject: "%{who} відповів(ла) на ваш коментар в групі %{which} Loomio"
-    new_comment:
-      context: 'прокоментував в'
     group_membership_approved:
       intro: "Ваш запит на участь у групі %{group_name} було схвалено."
       intro_html: "Ваш запит на участь у групі <strong>%{group_name}</strong> було схвалено."
@@ -103,19 +92,6 @@ uk:
       subject: "%{who} зробив запит на приєднання до %{which_group}"
       view_group: Тут ви можете підтвердити або відхилити запит
       button_text: Переглянути запит
-    mentioned:
-      context_html: "згадав(ла) вас в обговоренні"
-      context: "%{author_name} згадав(ла) вас в обговоренні %{discussion_title}"
-      subject: '%{who} згадав(ла) вас в обговоренні "%{which}"'
-    thread_mailer:
-      footer_text: 'Безпосередньо відповісти на цей лист або переглянути його на %{hostname}:'
-      reply_or_view_online_html: Безпосередньо відповісти на цей лист або <a href='%{url}'>переглянути його на %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Вимкнути листи</a> з цього обговорення."
-      turn_off_notifications_text: 'Вимкнути листи з обговорення.: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Ввімкнути листи з цього обговорення</a> щоб отримувати сповіщення про майбутню активність."
-      turn_on_notifications_text: 'Ввімкнути листи щодо майбутньої активності в обговоренні.: %{url}'
-      change_email_preferences_html: Змінити ваші <a href='%{email_preferences_url}'>налаштування пошти</a> щоб відписатись від цих листів.
-      change_preferences: 'Змінити Ваші налаштування електронної пошти:'
   footer:
     about: Про Loomio
     blog: Блог
