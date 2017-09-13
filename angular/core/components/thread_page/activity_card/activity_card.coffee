@@ -51,13 +51,13 @@ angular.module('loomioApp').directive 'activityCard', ->
       visibleSequenceIds = _.without(visibleSequenceIds, id)
       updateLastSequenceId()
 
-    $scope.threadItemHidden = (event) ->
-      removeSequenceId(event.sequenceId)
+    $scope.threadItemHidden = (item) ->
+      removeSequenceId(item.sequenceId)
 
-    $scope.threadItemVisible = (event) ->
-      addSequenceId(event.sequenceId)
-      event.markAsRead()
-      $scope.loadEventsForwards(sequenceId: $scope.lastLoadedSequenceId) if $scope.loadMoreAfterReading(event)
+    $scope.threadItemVisible = (item) ->
+      addSequenceId(item.sequenceId)
+      item.markAsRead()
+      $scope.loadEventsForwards(sequenceId: $scope.lastLoadedSequenceId) if $scope.loadMoreAfterReading(item)
 
     $scope.loadEvents = ({from, per, commentId}) ->
       from = 0 unless from?
@@ -82,9 +82,9 @@ angular.module('loomioApp').directive 'activityCard', ->
       $scope.firstLoadedSequenceId > $scope.discussion.firstSequenceId and
       !($scope.loadEventsForwardsExecuting or $scope.loadEventsBackwardsExecuting)
 
-    $scope.loadMoreAfterReading = (event) ->
-      event.sequenceId == $scope.lastLoadedSequenceId and
-      event.sequenceId < $scope.discussion.lastSequenceId
+    $scope.loadMoreAfterReading = (item) ->
+      item.sequenceId == $scope.lastLoadedSequenceId and
+      item.sequenceId < $scope.discussion.lastSequenceId
 
     $scope.safeEvent = (kind) ->
       _.contains AppConfig.safeThreadItemKinds, kind
