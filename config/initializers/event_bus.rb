@@ -54,22 +54,16 @@ EventBus.configure do |config|
   config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
 
   config.listen('new_comment_event',
+                'new_discussion_event',
                 'discussion_edited_event',
                 'poll_created_event',
                 'poll_edited_event',
                 'stance_created_event',
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
-    DiscussionReader.for_model(event.discussion, event.user).update_reader(
+    DiscussionReader.for_model(event.discussion, event.user)&.update_reader(
       volume: :loud,
       read_at: event.created_at
-    ) if event.discussion
-  end
-
-  config.listen('discussion_create') do |discussion|
-    DiscussionReader.for(user: discussion.author, discussion: discussion).update_reader(
-      volume: :loud,
-      read_at: discussion.created_at
     )
   end
 
@@ -108,10 +102,10 @@ EventBus.configure do |config|
 
   # update discussion importance
   config.listen('discussion_pin',
-  'poll_create',
-  'poll_close',
-  'poll_destroy',
-  'poll_expire') { |model| model.discussion&.update_importance }
+                'poll_create',
+                'poll_close',
+                'poll_destroy',
+                'poll_expire') { |model| model.discussion&.update_importance }
 
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
