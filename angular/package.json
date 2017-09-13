@@ -7,8 +7,8 @@
     "test": "gulp test"
   },
   "engines": {
-    "npm": "~2.14.20",
-    "node": "8.4.0"
+    "npm": ">= 2.14.20",
+    "node": ">= 8.4.0"
   },
   "repository": {
     "type": "git",
