@@ -31,11 +31,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
     Session.pageTitle = title
 
   $scope.$on 'currentComponent', (event, options = {}) ->
-    if options.titleKey
-      setTitle($translate.instant(options.titleKey))
-    else if options.title
-      setTitle(options.title)
-
+    setTitle(options.title or $translate.instant(options.titleKey))
     Session.currentGroup = options.group
     IntercomService.updateWithGroup(Session.currentGroup)
 
