@@ -4,7 +4,7 @@
   .thread-item__body.lmo-flex.lmo-flex__horizontal-center{layout: "column"}
     .thread-item__headline.lmo-flex.lmo-flex__center.lmo-flex__grow{layout: "row"}
       %h3.thread-item__title{id: "event-{{event.id}}"}
-        %span{ng-bind-html: "headline()"}
+        %span{ng-bind-html: "::headline()"}
         %span{aria-hidden: "true"}>·
         %a.thread-item__link.lmo-pointer{href: "{{link()}}"}
           %timeago.timeago--inline{timestamp: "event.createdAt"}

@@ -8,7 +8,7 @@
       .reaction.lmo-pointer{ng-if: "loaded", ng-click: "removeMine(reaction)", ng-repeat: "reaction in reactionTypes() track by $index"}
         .reaction__emoji{marked: "reaction"}
         %md-tooltip
-          %strong {{ translate(reaction) }}
+          %strong {{::translate(reaction) }}
           .reactions-display__name{ng-repeat: "name in reactionHash()[reaction] | limitTo: maxNamesCount track by $index"}
             {{ name }}
           .reactions-display__name.eactions-display__more{ng-if: "countFor(reaction) > 0"}
