@@ -91,7 +91,9 @@ Loomio::Application.routes.draw do
 
     resources :login_tokens, only: [:create]
 
-    resources :events, only: :index
+    resources :events, only: :index do
+      post  :mark_as_read, on: :member
+    end
     resources :drafts do
       collection do
         get    '/:draftable_type/:draftable_id', action: :show

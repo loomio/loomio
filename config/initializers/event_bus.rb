@@ -61,19 +61,17 @@ EventBus.configure do |config|
                 'stance_created_event',
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
-    DiscussionReader.for_model(event.discussion, event.user)&.update_reader(
+    DiscussionReader.for_model(event.discussion, event.user).update_reader(
       volume: :loud,
       read_at: event.created_at
     )
   end
 
-  config.listen('discussion_reader_viewed!',
-                'discussion_reader_dismissed!') do |discussion, actor|
-
-    reader_cache = Caches::DiscussionReader.new(user: actor, parents: Array(discussion))
-    collection = ActiveModel::ArraySerializer.new([discussion], each_serializer: MarkedAsRead::DiscussionSerializer, root: 'discussions', scope: { reader_cache: reader_cache } )
-
-    MessageChannelService.publish(collection, to: actor)
+  config.listen('discussion_reader_viewed!', 'discussion_reader_dismissed!') do |reader|
+    MessageChannelService.publish(
+      DiscussionReaderSerializer.new(reader, root: :discussions).as_json,
+      to: reader.user
+    )
   end
 
   # alert clients that notifications have been read

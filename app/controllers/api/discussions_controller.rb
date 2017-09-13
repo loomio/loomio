@@ -45,7 +45,8 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def set_volume
-    update_reader volume: params[:volume]
+    service.update_reader discussion: load_resource, params: params, actor: current_user
+    respond_with_resource
   end
 
   private
@@ -56,11 +57,6 @@ class API::DiscussionsController < API::RestfulController
 
   def accessible_records
     Queries::VisibleDiscussions.new(user: current_user, group_ids: @group && @group.id_and_subgroup_ids)
-  end
-
-  def update_reader(params = {})
-    service.update_reader discussion: load_resource, params: params, actor: current_user
-    respond_with_resource
   end
 
   def collection_for_dashboard(collection, filter: params[:filter])

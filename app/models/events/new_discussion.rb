@@ -11,6 +11,10 @@ class Events::NewDiscussion < Event
            created_at: discussion.created_at).tap { |e| EventBus.broadcast('new_discussion_event', e) }
   end
 
+  def discussion
+    eventable
+  end
+
   private
 
   def email_recipients
