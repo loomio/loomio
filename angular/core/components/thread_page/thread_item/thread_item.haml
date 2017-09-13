@@ -6,6 +6,6 @@
       %h3.thread-item__title{id: "event-{{event.id}}"}
         %span{ng-bind-html: "headline()"}
         %span{aria-hidden: "true"}>·
-        %a.thread-item__link.lmo-pointer{lmo-href: "{{link()}}"}
+        %a.thread-item__link.lmo-pointer{href: "{{link()}}"}
           %timeago.timeago--inline{timestamp: "event.createdAt"}
     %thread_item_directive.thread-item__directive{event: "event"}

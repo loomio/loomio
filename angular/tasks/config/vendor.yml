@@ -34,6 +34,7 @@ js:
   - angulartics/src/angulartics.js
   - angulartics/src/angulartics-gtm.js
   - angular-recaptcha/release/angular-recaptcha.js
+  - angular-sortable-view/src/angular-sortable-view.js
 execjs:
   - lodash/index.js
   - emojione/lib/js/emojione.js

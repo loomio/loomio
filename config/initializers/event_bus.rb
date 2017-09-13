@@ -66,7 +66,6 @@ EventBus.configure do |config|
     ) if event.discussion
   end
 
-  # :/
   config.listen('discussion_create') do |discussion|
     DiscussionReader.for(user: discussion.author, discussion: discussion).update_reader(
       volume: :loud,

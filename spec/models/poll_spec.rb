@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Poll do
   let(:poll_option) { create :poll_option, name: "agree" }
   let(:poll) { build :poll, poll_options: [poll_option] }
+  let(:ranked_choice) { build :poll_ranked_choice }
 
   it 'validates correctly if no poll option changes have been made' do
     expect(poll.valid?).to eq true
@@ -11,6 +12,11 @@ describe Poll do
   it 'does not allow changing poll options if the template does not allow' do
     poll.poll_options.build
     expect(poll.valid?).to eq false
+  end
+
+  it 'does not allow higher minimum stance choices than number of poll options' do
+    ranked_choice.minimum_stance_choices = ranked_choice.poll_options.length + 1
+    expect(ranked_choice).to_not be_valid
   end
 
   it 'allows closing dates in the future' do

@@ -115,6 +115,10 @@ angular-scroll@~0.6.5:
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/angular-scroll/-/angular-scroll-0.6.5.tgz#2c5bbd9e4f72315b0f73146f857fd559252f941d"
 
+angular-sortable-view@0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/angular-sortable-view/-/angular-sortable-view-0.0.15.tgz#e8463df909db83d641b028f0773a10d50292874f"
+
 angular-translate-loader-url@~2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/angular-translate-loader-url/-/angular-translate-loader-url-2.7.2.tgz#c0dfdc738cdb4b773a944356a580e7b0ac0a4c53"
@@ -131,7 +135,7 @@ angular-translate@~2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/angular-translate/-/angular-translate-2.7.2.tgz#6ce3a3e07f6f2d4436d8b78f0e324294ab31a167"
 
-angular@*, angular@1.4.1, angular@>=1.0.6, angular@>=1.0.8, "angular@>=1.2.26 <=1.6":
+angular@*, angular@1.4.1, angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
 
@@ -348,10 +352,6 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-"bootstrap-sass@~> 3.3.5":
-  version "3.3.7"
-  resolved "https://registry.yarnpkg.com/bootstrap-sass/-/bootstrap-sass-3.3.7.tgz#6596c7ab40f6637393323ab0bc80d064fc630498"
-
 bowser@latest:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.6.1.tgz#9157e9498f456e937173a2918f3b2161e5353eb3"
@@ -477,12 +477,6 @@ change-case@2.3.x:
     title-case "^1.1.0"
     upper-case "^1.1.1"
     upper-case-first "^1.1.0"
-
-checklist-model@latest:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/checklist-model/-/checklist-model-0.11.0.tgz#5f57b34a21b59ffd7a0c351efb9fe9d7fa92d3e0"
-  dependencies:
-    angular ">=1.0.8"
 
 chokidar@^1.6.1:
   version "1.6.1"
@@ -925,10 +919,6 @@ first-chunk-stream@^2.0.0:
 flagged-respawn@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/flagged-respawn/-/flagged-respawn-0.3.2.tgz#ff191eddcd7088a675b2610fffc976be9b8074b5"
-
-"font-awesome@git://github.com/FortAwesome/Font-Awesome#v4.4.0":
-  version "4.4.0"
-  resolved "git://github.com/FortAwesome/Font-Awesome#e554555d73a44e0a7d11b0361ad7a5325a5f551c"
 
 for-in@^0.1.5:
   version "0.1.6"

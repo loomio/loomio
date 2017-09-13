@@ -183,6 +183,33 @@ img.emojione {
   height: 20px;
 }
 
+@media (max-width: $tiny-max-px) {
+  .md-open-menu-container {
+    left: 0     !important;
+    top: 48px   !important;
+    width: 100%;
+    .md-button { text-align: center; }
+  }
+}
+
+@media (min-width: $tiny-max-px) {
+  .md-open-menu-container {
+    z-index: 1001;
+  }
+}
+
+.lmo-number-input {
+  width: 35px !important;
+  text-align: center;
+  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

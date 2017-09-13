@@ -6,8 +6,9 @@ namespace :bootstrap do
     `brew install postgresql` unless pg_installed?
     `gem install bundler`     unless bundler_installed?
     `npm install -g gulp`     unless gulp_installed?
+    `npm install -g yarn`     unless yarn_installed?
     `bundle install`
-    `cd angular && npm install && cd ..`
+    `cd angular && yarn && cd ..`
   end
 
   desc "Create database.yml file"
@@ -59,6 +60,11 @@ namespace :bootstrap do
 
   def gulp_installed?
     `which gulp`
+    $?.success?
+  end
+
+  def yarn_installed?
+    `which yarn`
     $?.success?
   end
 end
