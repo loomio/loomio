@@ -3,7 +3,7 @@
     %md-input-container.md-block.md-no-errors{md-no-float: "true"}
       %label{ng-if: "label"} {{label}}
       %outlet{name: "before-lmo-textarea", model: "model"}
-      %textarea.lmo-textarea.lmo-primary-form-input{ng-disabled: "isDisabled", name: "body", placeholder: "{{placeholder}}", ng-model: "model[field]", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
+      %textarea.lmo-textarea.lmo-primary-form-input{ng-disabled: "isDisabled", ng-paste: "handlePaste($event)", name: "body", placeholder: "{{placeholder}}", ng-model: "model[field]", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
     .lmo-md-actions
       %div{ng-if: "submitIsDisabled"}
       .lmo-flex{ng-if: "!submitIsDisabled"}
