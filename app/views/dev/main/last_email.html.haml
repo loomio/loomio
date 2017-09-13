@@ -22,6 +22,10 @@
       subject:
       = @email.subject
 
+    %p.email-reply-to
+      reply to:
+      = @email.reply_to
+
     %p.email-body
       body:
       =  raw @email.body.parts.last.decoded

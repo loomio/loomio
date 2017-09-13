@@ -2,10 +2,10 @@ angular.module('loomioApp').factory 'TranslationRecordsInterface', (BaseRecordsI
   class TranslationRecordsInterface extends BaseRecordsInterface
     model: TranslationModel
 
-    fetchTranslation: (translatable, language) ->
+    fetchTranslation: (translatable, locale) ->
       @fetch
         path: 'inline'
         params:
           model: translatable.constructor.singular
           id: translatable.id
-          to: language
+          to: locale

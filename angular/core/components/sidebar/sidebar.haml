@@ -1,4 +1,4 @@
-%md-sidenav.md-sidenav-left.lmo-no-print{role: "navigation", md-component-id: "left", md-is-open: "showSidebar", md-is-locked-open: "$mdMedia('gt-md') && showSidebar", md-whiteframe: "4", aria-label: "{{ 'sidebar.aria_labels.heading' | translate }}"}
+%md-sidenav.md-sidenav-left.lmo-no-print{role: "navigation", md-component-id: "left", md-is-open: "showSidebar", md-is-locked-open: "$mdMedia('gt-md') && showSidebar", md-whiteframe: "4", aria-label: "{{ 'sidebar.aria_labels.heading' | translate }}", aria-hidden: "{{!showSidebar}}"}
   .sidebar__user-panel.lmo-no-print
     %a.sidebar__user-avatar-container{lmo-href: "/profile"}
       %user_avatar{user: "currentUser()", size: "medium-circular", ng-if: "currentUser().avatarKind != 'initials'"}

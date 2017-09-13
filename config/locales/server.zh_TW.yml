@@ -151,6 +151,8 @@ zh_TW:
       context: "%{author_name} 在討論 %{discussion_title} 時提到您"
       subject: '%{who} 在討論「%{which}」時提到您'
     thread_mailer:
+      new_discussion:
+        header_html: '<strong>%{actor}</strong> 啟動了討論串：'
       footer_text: '直接回覆本電子郵件，或是到 %{hostname} 上觀看：'
       reply_or_view_online_html: 直接回覆此 Email，或是<a href='%{url}'>在 %{hostname} 上觀看</a>。
       turn_off_notifications_html: "為此討論<a href='%{url}'>關閉電子郵件</a>。"
@@ -522,6 +524,8 @@ zh_TW:
     poll_created: "新的 *%{poll_type}* 在 *%{group}*：*%{poll}*"
     poll_closing_soon: "提醒：*%{poll}* 將於24小時內關閉"
     poll_expired: "*%{poll}* 已關閉"
+    poll_not_found: "抱歉，找不到該投票。輸入 '/loomio <poll_type> <title>' 來開始新的？"
+    stance_not_valid: "抱歉，我們無法為 *%{poll}* 建立立場。<%{url}|點選這裡>來直接在投票上投出您的一票。"
     group_identity_created: |
       大家好，我是 Loomio 機器人。*%{author}* 把我加進來了。
       我可以協助您的團隊共同做出決策。
@@ -535,6 +539,9 @@ zh_TW:
       - 在您的 Loomio 群組中保留決策紀錄。
 
       要知道更多東西，請輸入 _/loomio help_
+
+      您必須為 Loomio 群組 *%{group}* 的成員才能參與。
+      若您尚未加入，<%{url}|點選這裡>以加入。
     request_authorization_message: "只要多一個步驟：<%{url}|點選這裡>以授權您的 Slack 帳號使用 Loomio。（您只需要做這件事情一次）"
     poll_closed: "*%{title}* 已定案！<%{url}|點選這裡>以檢視結果。"
     go_to_slack: 到 Slack

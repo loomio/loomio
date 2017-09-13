@@ -145,7 +145,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       else if @isSubgroup()
         @parent().logoUrl()
       else
-        '/img/default-logo-medium.png'
+        AppConfig.theme.default_group_logo_src
 
     coverUrl: (size) ->
       if @isSubgroup() && !@hasCustomCover

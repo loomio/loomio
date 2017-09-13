@@ -14,7 +14,7 @@ describe 'Notifications', ->
       'shared an outcome',
       'poll is closing soon',
       'started a poll',
-      'liked your comment',
+      'reacted to your comment',
       'made you a coordinator',
       'participated in',
       'added options to'

@@ -16,6 +16,9 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
       @hasMany 'stanceChoices'
       @belongsTo 'participant', from: 'users'
 
+    reactions: ->
+      @recordStore.reactions.find(reactableId: @id, reactableType: "Stance")
+
     author: ->
       @participant()
 

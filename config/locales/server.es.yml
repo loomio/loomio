@@ -525,19 +525,6 @@ es:
     poll_expired: "*%{poll}* ha cerrado"
     poll_not_found: "Perdón pero esa encuesta no fue encontrada. Escribe '/loomio<poll_type><title>' para iniciar otra?"
     stance_not_valid: "Perdón pero no pudimos crear el voto en *%{poll}*. <%{url} |Haz clic aquí> para votar directamente. "
-    group_identity_created: |
-      Hola, soy Loomio Bot. *%{author}* me ha añadido.
-      Puedo ayudar a tu equipo a tomar decisiones juntos.
-
-      Mis funcionalidades incluyen:
-
-      - resaltar cuando hay decisiones activas
-      - permitirle a las personas votar en decisiones desde Slack
-      - mostrar donde es que las personas están de acuerdo o no
-      - comunicar el resultado de las decisiones
-      - mantener un archivo de decisiones en tu grupo de Loomio.
-
-      Para saber más escribe _/loomio help_
     request_authorization_message: "Solo un paso más: <%{url}haz clic aquí> para autorizar que tu cuenta de Slack use Loomio. (solo deberás hacerlo una vez)"
     poll_closed: "*%{title}* ha cerrado! <%{url} haz clic aquí>  para ver el resultado"
     go_to_slack: Ir a Slack

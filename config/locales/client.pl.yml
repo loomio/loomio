@@ -310,7 +310,6 @@ pl:
     liked_by_you_and_someone: 'Ty i {{name}} lubicie to.'
     liked_by_you_and_others: 'Lubione przez Ciebie, {{joinedNames}} oraz {{name}}.'
     liked_by_someone: '{{name}} lubi to.'
-    liked_by_two_others: '{{name_1}} i {{name_2}} lubią to.'
     liked_by_many_others: 'Lubiane przez {{joinedNames}} oraz {{name}}.'
     liked_by_name: 'Lubiane przez {{name}}.'
     started_by: 'Rozpoczęte przez <strong>{{name}}</strong>'

@@ -10,6 +10,11 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     isUser: ->
       AppConfig.currentUserId?
 
+    canContactUser: (user) ->
+      @isLoggedIn() &&
+      Session.user().id != user.id &&
+      _.intersection(Session.user().groupIds(), user.groupIds()).length
+
     canAddComment: (thread) ->
       Session.user().isMemberOf(thread.group())
 
@@ -26,13 +31,19 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       !poll.group() or
       (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
 
+    canEditStance: (stance) ->
+      Session.user() == stance.author()
+
     canEditThread: (thread) ->
       @canAdministerGroup(thread.group()) or
       Session.user().isMemberOf(thread.group()) and
       (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
 
     canPinThread: (thread) ->
-      @canAdministerGroup(thread.group())
+      !thread.pinned && @canAdministerGroup(thread.group())
+
+    canUnpinThread: (thread) ->
+      thread.pinned && @canAdministerGroup(thread.group())
 
     canMoveThread: (thread) ->
       @canAdministerGroup(thread.group()) or
@@ -41,9 +52,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     canDeleteThread: (thread) ->
       @canAdministerGroup(thread.group()) or
       Session.user().isAuthorOf(thread)
-
-    canPinThread: (thread) ->
-      @canAdministerGroup(thread.group())
 
     canChangeThreadVolume: (thread) ->
       Session.user().isMemberOf(thread.group())

@@ -476,8 +476,6 @@ ga_IE:
     cancel: 'Ná cealaigh é'
     messages:
       success: Cuireadh curtha ar ceal
-  user_page:
-    introduction: Réamhrá
   profile_page:
     messages:
       updated: 'Nuashonraíodh an bheathaisnéisín'
@@ -574,7 +572,6 @@ ga_IE:
     liked_by_you_and_someone: 'Is maith leatsa agus {{name}} seo.'
     liked_by_you_and_others: 'Léirigh tusa, {{joinedNames}} agus {{name}} gur maith libh seo.'
     liked_by_someone: 'Is maith le {{name}} seo.'
-    liked_by_two_others: 'Is maith le {{name_1}} agus {{name_2}} seo.'
     liked_by_many_others: 'Thaitin sé le {{joinedNames}} agus {{name}}.'
     liked_by_name: 'Thaitin sé le {{name}}.'
     started_by: 'Tosaithe ag <strong>{{name}}</strong> '

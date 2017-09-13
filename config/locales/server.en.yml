@@ -79,6 +79,11 @@ en:
       login: Sign in to Loomio as %{name}
       resend: This link will expire in 24 hours and can only be used once.
 
+    contact_request:
+       subject: "%{name} would like to connect with you on Loomio!"
+       intro: "%{name} (%{email}) has sent you a request to connect."
+       footer: "You may respond to %{name} directly by replying to this email."
+
     reset_password:
       greeting: |
         Hi %{name}
@@ -98,6 +103,7 @@ en:
       poll: Start a poll
       dot_vote: Start a dot vote
       meeting: Schedule a time
+      ranked_choice: Start a ranked choice
 
     custom: "%{text}"
     group_email:
@@ -135,11 +141,6 @@ en:
       link_help: "Click the link below to go to the group:"
     unsubscribe: 'Unsubscribe or change your email preferences:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
-    view_comment: Click here to view the comment on Loomio
-    view_discussion: Click here to view this discussion
-    create_discussion:
-      intro_html: "started a thread:"
-      intro: "%{who} started a thread:"
     daily_activity:
       heading: Your Loomio Activity
       intro: Showing you what’s been happening in your Loomio groups in the last 24 hours
@@ -152,12 +153,7 @@ en:
       thanks_for_reading: Thanks for reading, have a great day!
       heres_what_happened: "Here’s what happened on Loomio yesterday."
       marked_as_read_success: Everything from the email has been marked as read
-    comment_replied_to:
-      context_html: 'replied to your comment in'
-      context: '%{author_name} replied to your comment in %{discussion_title}'
-      subject: "%{who} replied to your comment in the %{which} group on Loomio"
-    new_comment:
-      context: 'commented in'
+
     group_membership_approved:
       intro: "Your request for access to the group %{group_name} has been approved."
       intro_html: "Your request for access to the group <strong>%{group_name}</strong> has been approved."
@@ -165,27 +161,38 @@ en:
       subject: "Your request to join %{group_name} on Loomio has been approved"
       join_group: "Join group"
       view_group_text: "Click below to view the group on Loomio:"
+
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
       intro_html: has requested access to one of your groups.
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
       button_text: View request
-    mentioned:
-      context_html: "mentioned you while discussing"
-      context: "%{author_name} mentioned you while discussing %{discussion_title}"
-      subject: '%{who} mentioned you while discussing "%{which}"'
-    thread_mailer:
-      new_discussion:
-        header_html: '<strong>%{actor}</strong> started a thread:'
-      footer_text: 'Reply to this email directly or view it on %{hostname}:'
-      reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
-      turn_off_notifications_text: 'Turn off emails for this discussion: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Turn on emails for this discussion</a> to receive further activity."
-      turn_on_notifications_text: 'Turn on email to receive further activity in this discussion: %{url}'
-      change_email_preferences_html: Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails.
-      change_preferences: 'Change your email preferences:'
+
+  email_actions:
+    unfollowed_discussion: You have turned off emails for the thread.
+
+  thread_mailer:
+    new_discussion:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> started a thread: %{discussion}"
+
+    new_comment:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> commented in: %{discussion}"
+
+    comment_replied_to:
+      subject: '%{actor} replied to you in: %{discussion}'
+      subject_html: '<strong>%{actor}</strong> replied to you in: %{discussion}'
+
+    user_mentioned:
+      subject: '%{actor} mentioned you in: %{discussion}'
+      subject_html: "<strong>%{actor}</strong> mentioned you in %{discussion}"
+
+    reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
+    change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a>."
+
   footer:
     about: About
     blog: Blog
@@ -383,6 +390,7 @@ en:
       undecided_members: Undecided Members (%{count})
       undecided_visitors: Undecided Guests (%{count})
       more_undecided: "%{count} more..."
+      vote_now: Vote now
       verify_stance_for_unverified_user: "Thanks for voting in %{title}. Please verify your email address, so we can send you the results when they're ready."
       verify_stance_for_verified_user: "It looks like you voted in %{title}. If this was you, please click the link below to confirm your vote."
 
@@ -555,6 +563,43 @@ en:
       body:
         voted: '<strong>%{participant}</strong>:'
 
+    ranked_choice:
+      subject:
+        poll_created: '%{actor} started a ranked choice: %{title}'
+        poll_edited: '%{actor} edited the ranked choice: %{title}'
+        poll_closing_soon: 'Ranked choice closing in 24 hours: %{title}'
+        poll_closing_soon_author: 'Your ranked choice closes in 24 hours: %{title}'
+        poll_expired: "Ranked choice results: %{title}"
+        poll_expired_author: 'Your ranked choice has closed. Share an outcome for: %{title}'
+        poll_option_added: '%{actor} added options to: %{title}'
+        poll_option_added_author: '%{actor} added options to: %{title}'
+        outcome_created: '%{actor} shared an outcome: %{title}'
+        outcome_created_author: 'You shared an outcome: %{title}'
+        invitation_created: '%{actor} wants to arrange a time: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: %{actor} is waiting for your response: %{title}'
+        stance_created: '%{actor} participated in: %{title}'
+        stance_created_author: "Please verify your vote on: %{title}"
+
+      header:
+        poll_created: '<strong>%{actor}</strong> started a ranked choice'
+        poll_edited: '<strong>%{actor}</strong> edited the ranked choice'
+        poll_closing_soon: '<strong>%{actor}</strong>''s ranked choice is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
+        poll_closing_soon_author: 'Your ranked choice is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
+        poll_expired: "<strong>%{actor}'s</strong> ranked choice has closed"
+        poll_expired_author: 'Your ranked choice has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
+        poll_option_added: '<strong>%{actor}</strong> added options to: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
+        outcome_created: '<strong>%{actor}</strong> shared a ranked choice outcome.'
+        outcome_created_author: 'You shared a ranked choice outcome.'
+        invitation_created: '<strong>%{actor}</strong> wants to arrange a time: %{title}'
+        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for your response: %{title}'
+        stance_created: "<strong>%{actor}</strong> participated in: %{title}"
+
+      body:
+        voted: '<strong>%{participant}</strong>:'
+
   poll_generator:
     proposal:
       title: "Extend offer letters to Shelley and Jack"
@@ -571,6 +616,10 @@ en:
     dot_vote:
       title: "What's our company strategy for next quarter?"
       details: This is a big year for our company and we need to be strategic about what we put our limited resourcing into. Please indicate which areas you think are most important to focus on over the next quarter.
+
+    ranked_choice:
+      title: "Who should be our next deputy mayor?"
+      details: "It's time for our semi-annual elections! This is an official instant runoff poll which will determine our next deputy mayor. Be sure to read up on each of the candidates on our website!"
 
     meeting:
       title: "When should we have our next staff meeting?"

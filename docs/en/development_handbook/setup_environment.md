@@ -95,8 +95,8 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | b
 Now build and install node
 
 ```
-nvm install 7.4.0
-nvm alias default 7.4.0
+nvm install 8.4.0
+nvm alias default 8.4.0
 npm install -g gulp
 ```
 

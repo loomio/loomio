@@ -29,7 +29,7 @@ describe Comment do
   describe "#destroy" do
     let(:reaction) { build :reaction, reactable: comment }
     it "destroys comment votes" do
-      ReactionService.create(reaction: reaction, actor: user)
+      ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: user)
       expect(Reaction.where(reactable: comment, user_id: user.id).exists?).to be true
       comment.destroy
       expect(Reaction.where(reactable: comment, user_id: user.id).exists?).to be false
