@@ -190,6 +190,10 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   font-size: small;
 }
 
+.thread-mailer__footer-logo {
+  height: 20px;
+}
+
 .user-mailer__contact-request-context {
   font-size: 14px;
   text-align: left;
