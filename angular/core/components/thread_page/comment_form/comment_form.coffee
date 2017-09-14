@@ -23,7 +23,8 @@ angular.module('loomioApp').directive 'commentForm', ($translate) ->
       else
         $translate.instant('comment_form.say_something')
 
-    $scope.isLoggedIn = AbilityService.isLoggedIn
+    $scope.isLoggedIn = ->
+      AbilityService.isLoggedIn()
     $scope.signIn = -> ModalService.open AuthModal
 
     $scope.init = ->

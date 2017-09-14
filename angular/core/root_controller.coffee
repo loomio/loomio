@@ -1,6 +1,8 @@
 angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
-  $scope.isLoggedIn = AbilityService.isLoggedIn
-  $scope.isEmailVerified = AbilityService.isEmailVerified
+  $scope.isLoggedIn = ->
+    AbilityService.isLoggedIn()
+  $scope.isEmailVerified = ->
+    AbilityService.isEmailVerified()
   $scope.currentComponent = 'nothing yet'
 
   # NB: $scope.refresh triggers the ng-if for the ng-outlet in the layout.

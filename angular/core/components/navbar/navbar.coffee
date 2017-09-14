@@ -7,7 +7,8 @@ angular.module('loomioApp').directive 'navbar', ($rootScope, ModalService, AuthM
     $scope.bgStyle = ->
       {'background-image': "url(#{AppConfig.theme.small_logo_src})"}
 
-    $scope.isLoggedIn = AbilityService.isLoggedIn
+    $scope.isLoggedIn = ->
+      AbilityService.isLoggedIn()
     $scope.toggleSidebar = -> $rootScope.$broadcast 'toggleSidebar'
 
     $scope.signIn = ->
