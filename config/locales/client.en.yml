@@ -1813,6 +1813,12 @@ en:
       installed_title: Connected to Slack
       installed_helptext: This group has been connected to the slack team <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>. Events from this group will appear in the <strong>{{channel}}</strong> channel.
       install_slack: Connect Slack
+      remove_identity: Remove this integration
+      confirm_remove_title: Remove slack integration
+      confirm_remove_helptext: |
+        Your slack channel will no longer receive updates about this group.
+        You can always go back and add it again.
+      identity_removed: Integration removed
 
     progress:
       install: Install
