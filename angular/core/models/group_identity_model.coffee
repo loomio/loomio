@@ -16,7 +16,7 @@ angular.module('loomioApp').factory 'GroupIdentityModel', (AppConfig, BaseModel)
       _.first @recordStore.identities.find(id: @identityId)
 
     slackTeamName: ->
-      @userIdentity().slackTeamName
+      @userIdentity().customFields.slack_team_name
 
     slackChannelName: ->
       @customFields.slack_channel_name
