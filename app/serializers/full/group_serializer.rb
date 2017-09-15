@@ -1,3 +1,7 @@
 class Full::GroupSerializer < GroupSerializer
-  attributes :slack_channel_name, :slack_team_name
+  has_one :slack_group_identity, serializer: GroupIdentitySerializer, root: :group_identities
+
+  def slack_group_identity
+    object.identity_for(:slack)
+  end
 end
