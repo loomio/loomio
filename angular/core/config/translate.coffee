@@ -1,4 +1,4 @@
 angular.module('loomioApp').config ($translateProvider) ->
-  $translateProvider.useSanitizeValueStrategy('escapeParameters')
-                    .useStaticFilesLoader(prefix: '/translations/', suffix: '.json')
+  $translateProvider.useStaticFilesLoader(prefix: '/translations/', suffix: '.json')
+                    .useSanitizeValueStrategy('escapeParameters')
                     .preferredLanguage(window.Loomio.currentUserLocale || 'en')
