@@ -42,7 +42,7 @@
     "angular-scroll": "~0.6.5",
     "angular-sortable-view": "0.0.15",
     "angular-translate": "~2.15.1",
-    "angular-translate-loader-url": "~2.7.2",
+    "angular-translate-loader-static-files": "latest",
     "angular_record_store": "2.7.13",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
