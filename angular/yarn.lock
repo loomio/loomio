@@ -119,11 +119,11 @@ angular-sortable-view@0.0.15:
   version "0.0.15"
   resolved "https://registry.yarnpkg.com/angular-sortable-view/-/angular-sortable-view-0.0.15.tgz#e8463df909db83d641b028f0773a10d50292874f"
 
-angular-translate-loader-url@~2.7.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/angular-translate-loader-url/-/angular-translate-loader-url-2.7.2.tgz#c0dfdc738cdb4b773a944356a580e7b0ac0a4c53"
+angular-translate-loader-static-files@latest:
+  version "2.15.2"
+  resolved "https://registry.yarnpkg.com/angular-translate-loader-static-files/-/angular-translate-loader-static-files-2.15.2.tgz#38f27b0dfd8b631b8ce8b3e0f06aa3f1311105e9"
   dependencies:
-    angular-translate "~2.7.2"
+    angular-translate "~2.15.2"
 
 angular-translate@~2.15.1:
   version "2.15.1"
@@ -131,9 +131,11 @@ angular-translate@~2.15.1:
   dependencies:
     angular ">=1.2.26 <=1.6"
 
-angular-translate@~2.7.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/angular-translate/-/angular-translate-2.7.2.tgz#6ce3a3e07f6f2d4436d8b78f0e324294ab31a167"
+angular-translate@~2.15.2:
+  version "2.15.2"
+  resolved "https://registry.yarnpkg.com/angular-translate/-/angular-translate-2.15.2.tgz#f9a3c2b8d5daeb7d76c9e2c01ff3c3d57fe12b90"
+  dependencies:
+    angular ">=1.2.26 <=1.6"
 
 angular@*, angular@1.4.1, angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
   version "1.4.1"
