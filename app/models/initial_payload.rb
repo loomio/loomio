@@ -16,6 +16,7 @@ InitialPayload = Struct.new(:user) do
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       theme:               AppConfig.theme,
+      features:            AppConfig.features,
       inlineTranslation: {
         isAvailable:       TranslationService.app_key.present?,
         supportedLangs:    TranslationService.supported_languages
