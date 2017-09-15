@@ -113,6 +113,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     canManageMembershipRequests: (group) ->
       (group.membersCanAddMembers and Session.user().isMemberOf(group)) or @canAdministerGroup(group)
 
+    canStartGroups: ->
+      AppConfig.features.create_group || Session.user().isAdmin
+      
     canViewGroup: (group) ->
       !group.privacyIsSecret() or
       Session.user().isMemberOf(group)

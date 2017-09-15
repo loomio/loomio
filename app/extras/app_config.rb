@@ -30,4 +30,17 @@ class AppConfig
       accent_palette_config:  JSON.parse(ENV.fetch('THEME_ACCENT_PALETTE_CONFIG', '{"default": "500"}'))
     }
    end
+
+   def self.features
+     {
+       create_user:   env_boolean('FEATURES_CREATE_USER', true),
+       create_group:  env_boolean('FEATURES_CREATE_GROUP', true),
+       public_groups: env_boolean('FEATURES_PUBLIC_GROUPS', true),
+       help_link:     env_boolean('FEATURES_HELP_LINK', true)
+     }
+   end
+
+   def self.env_boolean(key, default)
+     %w(1 true).include? ENV.fetch(key, default).to_s
+   end
 end

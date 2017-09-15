@@ -1,6 +1,9 @@
 module Null::User
   # include HasAvatar
   include Null::Object
+  def is_admin
+    false
+  end
 
   def can?(*args)
     ability.can?(*args)

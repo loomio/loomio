@@ -3,7 +3,7 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    if resource.save
+    if can_create? && resource.save
       LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
       head :ok
     else
@@ -23,6 +23,9 @@ class API::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+  def can_create?
+    AppConfig.features[:create_user] || pending_invitation
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
