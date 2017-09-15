@@ -19,9 +19,7 @@ namespace :loomio do
   task generate_static_translations: :environment do
     Loomio::I18n::SELECTABLE_LOCALES.each do |locale|
       puts "Writing public/translations/#{locale}.json..."
-      File.open("public/translations/#{locale}.json", "w+") do |f|
-        f << ClientTranslationService.new(locale).to_json
-      end
+      File.write("public/translations/#{locale}.json", ClientTranslationService.new(locale).to_json)
     end
   end
 
