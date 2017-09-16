@@ -6,8 +6,6 @@ describe API::EventsController do
   let(:group) { create :formal_group }
   let(:discussion) { create :discussion, group: group, private: false }
   let(:another_discussion) { create :discussion, group: group, private: true }
-  let!(:event) { create :event, sequence_id: 2, discussion: discussion, user: another_user }
-  let!(:another_event) { create :event, sequence_id: 3 }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
 
   before do
@@ -16,6 +14,8 @@ describe API::EventsController do
   end
 
   describe 'mark_as_read' do
+    let!(:event) { create :event, sequence_id: 2, discussion: discussion, user: another_user }
+    let!(:another_event) { create :event, sequence_id: 3 }
 
     context 'signed out' do
       it 'does not attempt to mark discussions as read while logged out' do
