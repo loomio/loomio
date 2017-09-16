@@ -3,6 +3,8 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
   $scope.isEmailVerified = AbilityService.isEmailVerified
   $scope.currentComponent = 'nothing yet'
 
+  $translate.onReady -> $scope.translationsLoaded = true
+
   # NB: $scope.refresh triggers the ng-if for the ng-outlet in the layout.
   # This means that we re-initialize the controller for the page, which is what we want
   # for actions like logging in or out, without refreshing the whole app.

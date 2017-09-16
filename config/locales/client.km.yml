@@ -57,8 +57,6 @@ km:
     title_label: 'ចំណងជើង'
     context_label: 'បរិបទ '
     privacy_label: 'ភាពជាឯកជន​'
-  proposal_expanded:
-    close_proposal: 'បិទសំណើ'
   membership_request_form:
     heading: សួរទៅក្រុមចូលរួម
     name_label: ឈ្មោះ

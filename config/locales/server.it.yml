@@ -16,8 +16,6 @@ it:
       subject: "Imposta il tuo nuovo gruppo Loomio: %{group_name}"
     unsubscribe: 'Disiscriviti o cambia le preferenze email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
-    view_comment: Clicca qui per vedere il commento su Loomio
-    view_discussion: Clicca qui per vedere la discussione
     daily_activity:
       heading: La tua attività su Loomio
       intro: Ti facciamo vedere cos'è successo nei tuoi gruppi Loomio nelle ultime 24 ore
@@ -29,25 +27,12 @@ it:
       thanks_for_reading: Grazie per aver letto, buona giornata!
       heres_what_happened: "Ecco cos'è successo ieri su Loomio"
       marked_as_read_success: Tutte le email sono state contrassegnate come lette
-    comment_replied_to:
-      subject: "%{who} ha risposto al tuo commento nel gruppo %{which} su Loomio"
     group_membership_approved:
       join_group: "Iscriviti al gruppo"
     membership_request:
       intro: "%{name} (%{email}) ha richiesto l'accesso a uno dei tuoi gruppi Loomio."
       subject: "%{who} ha richiesto di entrare in %{which_group}"
       view_group: Puoi approvare o rifiutare la richiesta qui
-    mentioned:
-      subject: '%{who} ti ha menzionato discutendo di "%{which}"'
-    thread_mailer:
-      footer_text: 'Rispondi direttamente a questa email o visualizzala su %{hostname}:'
-      reply_or_view_online_html: Rispondi direttamente a questa email oppure <a href='%{url}'>guardala su %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Disattiva emails</a> per questa discussione."
-      turn_off_notifications_text: 'Disattiva le email per questa discussione: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Attiva le email per questa discussione</a> per ricevere ulteriori aggiornamenti sull'attività."
-      turn_on_notifications_text: 'Attiva le email per ricevere più notifiche sull''attività di questa discussione: %{url}'
-      change_email_preferences_html: Cambia le tue <a href='%{email_preferences_url}'> opzioni email </a> per disiscriverti da queste email.
-      change_preferences: 'Cambia le tue opzioni email:'
   footer:
     about: About
     blog: Blog

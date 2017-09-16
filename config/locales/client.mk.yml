@@ -55,9 +55,6 @@ mk:
     title_label: 'Наслов'
     context_label: 'Контекст'
     privacy_label: 'Приватност'
-  proposal_expanded:
-    edit_proposal: 'Измени го предлогот'
-    close_proposal: 'Затвори го предлогот'
   join_group_button:
     join_group: Приклучи се во групата
   membership_request_form:

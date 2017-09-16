@@ -1,10 +1,11 @@
-%md-dialog
+%md-dialog.lmo-modal__narrow
+  .lmo-disabled-form{ng-show: "isDisabled"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %h1.lmo-h1{translate: "{{text.title}}"}
       %material_modal_header_cancel_button{ng-if: "!forceSubmit"}
   .md-dialog-content
-    %p.lmo-hint-text{translate: "{{text.help}}"}
+    %p.lmo-hint-text{translate: "{{text.helptext}}"}
     .lmo-md-actions
       %div{ng-if: "forceSubmit"}
       %md-button{ng-if: "!forceSubmit", ng-click: "$close()", type: "button", translate: "common.action.cancel"}

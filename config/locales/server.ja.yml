@@ -13,8 +13,6 @@ ja:
       subject: "新しいLoomioグループを立ち上げる： %{group_name}"
     unsubscribe: '購読をやめる、またはEメール設定を変更する：'
     unsubscribe_html: "購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>"
-    view_comment: Loomioのコメントを見るにはここをクリックしてください
-    view_discussion: このディスカッションを見るにはここをクリックしてください
     daily_activity:
       heading: あなたのLoomioイベント
       intro: 過去24時間にあなたのLoomioグループで起こったことを表示

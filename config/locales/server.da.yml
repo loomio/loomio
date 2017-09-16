@@ -59,11 +59,6 @@ da:
       link_help: "Klik på linket herunder for at gå til gruppen:"
     unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
-    view_comment: Klik her for at se kommentaren på Loomio
-    view_discussion: Klik her for at se denne diskussion
-    create_discussion:
-      intro_html: "startede en diskussion:"
-      intro: "%{who} startede en diskussion:"
     daily_activity:
       heading: Din Loomio-aktivitet
       intro: Viser dig hvad der er sket i dine Loomio-grupper i de sidste 24 timer
@@ -75,12 +70,6 @@ da:
       thanks_for_reading: Tak fordi du læste, hav en god dag!
       heres_what_happened: "Her er en oversigt over hvad der skete på Loomio i går."
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
-    comment_replied_to:
-      context_html: 'svarede på din kommentar i'
-      context: '%{author_name} svarede på din kommentar i %{discussion_title}'
-      subject: "%{who} svarede på din kommentar i %{which} gruppen på Loomio"
-    new_comment:
-      context: 'kommenterede i'
     group_membership_approved:
       intro: "Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt."
       intro_html: "Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt."
@@ -94,19 +83,6 @@ da:
       subject: "%{who} har anmodet om medlemskab af %{which_group}"
       view_group: Du kan godkende eller afvise anmodningen her
       button_text: Vis anmodning
-    mentioned:
-      context_html: "omtalte dig i en diskussion"
-      context: "%{author_name} omtalte dig i en diskussion %{discussion_title}"
-      subject: '%{who}  omtalte dig i en diskussion "%{which}"'
-    thread_mailer:
-      footer_text: 'Svar på denne email eller se det på %{hostname}:'
-      reply_or_view_online_html: Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Slå email notifikationer fra</a> for denne diskussion."
-      turn_off_notifications_text: 'Slå email notifikationer fra for denne diskussion: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Slå email notifikationer til for denne diskussion</a> for at modtage notifikationer ved yderligere aktivitet."
-      turn_on_notifications_text: 'Slå email notifikationer til for at modtage notifikationer ved yderligere aktivitet i denne diskussion: %{url}'
-      change_email_preferences_html: Rediger dine <a href='%{email_preferences_url}'>e-mail-indstillinger</a> for at afmelde disse emails.
-      change_preferences: 'Rediger dine e-mail-indstillinger:'
   footer:
     about: Om
     blog: Blog

@@ -33,8 +33,6 @@ hr:
     close_proposal: 'Zatvori prijedlog'
   discussion_form:
     privacy_label: 'Privatnost'
-  proposal_expanded:
-    close_proposal: 'Zatvori prijedlog'
   join_group_button:
     join_group: 'Pridruži se grupi '
   membership_request_form:

@@ -15,8 +15,6 @@ sr_RS:
       subject: "Подесите своју нову Лумио групу: %{group_name}"
     unsubscribe: 'Одјавите се или промените подешавања еПоште'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> за одјаву са листе за обавештења или промену подешавања Ваше еПоште."
-    view_comment: Шкљоцните овде да би видели коментар на Лумију
-    view_discussion: Шкљоцни овде да видиш ову дискусију
     daily_activity:
       heading: Ваша Лумио активност
       intro: Приказује Вам шта се дешавало у Вашим Лумио групама у последња 24 сата
@@ -27,21 +25,10 @@ sr_RS:
       mark_as_read: Означи као прочитано
       thanks_for_reading: Хвала на читању, пријатан дан!
       marked_as_read_success: Све еПоруке су означене као прочитане
-    comment_replied_to:
-      subject: "%{who} је одговорио/ла на твој коментар у %{which} групи на Лумију"
     membership_request:
       intro: "%{name} (%{email}) је затражио приступ једној од твојих Лумио група."
       subject: "%{who} је затражио/ла да се придружи %{which_group}"
       view_group: Овде можете одобрити или одбити захтев
-    thread_mailer:
-      footer_text: 'Одговори на ову поруку директно или је погледај на %{hostname}:'
-      reply_or_view_online_html: Одговори на ову поруку директно или <a href='%{url}'>погледај је на %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Искључи обавештења</a> о овој дискусији."
-      turn_off_notifications_text: 'Искључи обавештења о овој дискусији: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Укључи обавештења о овој дискусији</a> да добијаш даље активности."
-      turn_on_notifications_text: 'Укључи обавештења да добијаш информације о будућим активностима у овој дискусији: %{url}'
-      change_email_preferences_html: Промени <a href='%{email_preferences_url}'>особине еПорука</a> да се одјавиш са обавештавања.
-      change_preferences: 'Промени особине својих еПорука:'
   footer:
     about: О нама
     blog: Блог

@@ -51,11 +51,6 @@ pt_BR:
       link_help: "Clique no link abaixo para ir para o grupo:"
     unsubscribe: 'Cancelar inscrição ou modificar suas preferências de e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
-    view_comment: Clique aqui para ver o comentário no Loomio
-    view_discussion: Clique aqui para ver esta discussão
-    create_discussion:
-      intro_html: "iniciou um tópico:"
-      intro: "%{who} iniciou um tópico:"
     daily_activity:
       heading: Suas atividades no Loomio
       intro: Exibindo o que tem acontecido nos seus grupos no Loomio nas últimas 24 horas
@@ -67,12 +62,6 @@ pt_BR:
       thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
       heres_what_happened: "Eis o que aconteceu ontem no Loomio."
       marked_as_read_success: Tudo no e-mail foi marcado como lido
-    comment_replied_to:
-      context_html: 'respondeu ao seu comentário em'
-      context: '%{author_name} respondeu ao seu comentário em %{discussion_title}'
-      subject: "%{who} respondeu ao seu comentário no grupo %{which} do Loomio"
-    new_comment:
-      context: 'comentou em'
     group_membership_approved:
       intro: "Sua solicitação para ter acesso ao grupo %{group_name} foi aprovada."
       intro_html: "Sua solicitação para ter acesso ao grupo <strong>%{group_name}</strong> foi aprovada."
@@ -86,19 +75,6 @@ pt_BR:
       subject: "%{who} solicitou entrada em %{which_group}"
       view_group: Você pode aprovar ou recusar o pedido aqui
       button_text: Ver solicitação
-    mentioned:
-      context_html: "mencionou você durante a discussão"
-      context: "%{author_name} mencionou você durante a discussão %{discussion_title}"
-      subject: '%{who} mencionou você durante a discussão "%{which}"'
-    thread_mailer:
-      footer_text: 'Responda este e-mail diretamente ou veja em %{hostname}:'
-      reply_or_view_online_html: Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."
-      turn_off_notifications_text: 'Desligar e-mails para esta discussão: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Ligar e-mails nesta discussão</a> para receber atividades."
-      turn_on_notifications_text: 'Ligar e-mail para receber atividades nesta discussão: %{url}'
-      change_email_preferences_html: Modifique suas <a href='%{email_preferences_url}'>preferências de e-mail</a> para cancelar subscrições destes e-mails.
-      change_preferences: 'Modifique suas preferências de e-mail:'
   footer:
     about: Sobre
     blog: Blog

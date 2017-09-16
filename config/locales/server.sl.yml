@@ -15,8 +15,6 @@ sl:
       subject: "Vzpostavi svojo novo skupino na Loomiu: %{group_name}"
     unsubscribe: 'Odjavi se ali spremeni svoje email nastavitve:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
-    view_comment: Klikni sem za ogled komentarja na Loomiu
-    view_discussion: Klikni sem za ogled razprave
     daily_activity:
       heading: Tvoja aktivnost na Loomiu
       intro: Prikazuje dogajanja v tvojih skupinah na Loomiu v zadnjih 24 urah
@@ -31,14 +29,6 @@ sl:
       intro: "%{name} (%{email}) je zaprosil za dostop do ene od tvojih skupin na Loomiu."
       subject: "%{who} je zaprosil za vstop v %{which_group}"
       view_group: Prošnjo lahko odobriš ali zavrneš tukaj
-    thread_mailer:
-      footer_text: 'Odgovori na ta email, ali ga poglej na %{hostname}:'
-      reply_or_view_online_html: Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Izklopi emaile</a> za to razpravo."
-      turn_off_notifications_text: 'Izklopi emaile za to razpravo: %{url}'
-      turn_on_notifications_text: 'Vklopi email za obveščanje o novih aktivnostih v tej razpravi: %{url}'
-      change_email_preferences_html: Za odjavo od teh sporočil spremeni svoje <a href='%{email_preferences_url}'>email nastavitve</a>.
-      change_preferences: 'Spremeni svoje email nastavitve:'
   footer:
     about: O nas
     blog: Blog

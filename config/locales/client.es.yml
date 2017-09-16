@@ -1,13 +1,46 @@
 es:
+  reactions:
+    slight_smile: Gusta
+    heart: Encanta
+    laughing: Risa
+    clap: 'Aplauso '
+    hugging: 'Abrazo '
+    sunglasses: Guay
+    wink: Guiño
+    nerd: Listo
+    relieved: 'Aliviado '
+    worried: 'Preocupado '
+    confused: 'Confundido '
+    confounded: Condenado
+    neutral_face: Neutral
+    slight_frown: 'Ceño fruncido  '
+    disappointed: 'Decepcionado '
+    angry: 'Enojado '
+    weary: Cansado
+    astonished: 'Asombrado '
+    rolling_eyes: 'Revolear los ojos '
+    cry: 'Llorar '
+    scream: 'Gritar '
+    sleeping: 'Aburrido '
+    thinking: 'Pensando '
+    raised_hands: 'Manos al aire '
+    pray: 'Rezar '
+    fingers_crossed: 'Dedos cruzados '
+    v: Paz
+    metal: Metal
+    ok_hand: Ok
+    wave: Saludar
   poll_types:
     proposal: Propuesta
     count: Comprobar
     poll: Encuesta
     dot_vote: Voto de Puntos
     meeting: Coordinar horario
+    ranked_choice: Opción priorizada
   timezones:
     local: Hora local ({{value}})
   common:
+    you: Tú
     expand: Expandir
     all_day: Todo el día
     ok_got_it: Bien, ¡lo tengo!
@@ -49,6 +82,8 @@ es:
     copy: 'Copiar'
     copy_text: 'Copiar texto'
     copied: 'Copiado al portapapeles'
+    points_abbrev: 'Cada voto vale {{score}} puntos '
+    total: Total
     action:
       next: 'Siguiente'
       close: 'Cerrar'
@@ -83,10 +118,22 @@ es:
       subscribe: Suscribirme a la lista de email
       remind: 'Recordar '
       resend: 'Reenviar '
+      send: Enviar
       resent: Reenviar invitación
     formatting_help:
       label: 'Formato '
       title: 'Aprende a usar Markdown para dar formato a tu texto en Loomio'
+  ordinal:
+    _1: 1º
+    _2: 2º
+    _3: 3º
+    _4: 4º
+    _5: 5º
+    _6: 6º
+    _7: 7º
+    _8: 8º
+    _9: 9º
+    _10: 10º
   devise:
     failure:
       inactive: 'Hay una cuenta Desactivada asociada a este email. Contáctanos si quieres Reactivar tu cuenta.'
@@ -294,7 +341,7 @@ es:
     new_vote: "<strong>{{name}}</strong> {{position}} a la propuesta <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> ha comentado en <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha contestado a tu comentario en <strong>{{title}}</strong>"
-    reaction_created: "<strong> {{name}}</strong> le gusta tu comentario en <strong> {{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> ha reaccionado a tu comentario en <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> te ha mencionado en <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> esta esperando que participes en <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ha solicitado unirse a <strong>{{title}}</strong>"
@@ -393,33 +440,24 @@ es:
     privacy_organisation: 'Los hilos serán visibles para miembros de {{parent}} y miembros de {{group}}.'
     make_announcement: Anuncio
     notified_count: '{{count}} personas recibirán un correo electrónico'
-  proposal_expanded:
-    collapse: Contraer
-    current_votes: Votos actuales
-    started_by: 'Iniciado por <strong>{{name}}</strong>'
-    only_voter_is_you: 'Ningún otro miembro ha votado todavía'
-    extend_proposal: 'Cambiar fecha de cierre'
-    edit_proposal: 'Editar propuesta'
-    close_proposal: 'Cerrar propuesta'
-    closed_badge: Cerrado
-  proposal_position_yes: 'De acuerdo'
-  proposal_position_abstain: 'Abstenerse'
-  proposal_position_no: 'En desacuerdo'
-  proposal_position_block: 'Bloquear'
-  legacy_trial_expired_modal:
-    heading: "Gracias por usar Loomio este año!"
-    body: |
-      <p>Realmente apreciamos tu apoyo en este año, y estamos entusiasmados de mejorar Loomio aún más en 2016.</p>
-      <p>¿Encuentras que Loomio es útil para tu grupo? Acabamos de lanzar nuestros planes de pago y le estamos pidiendo a los grupos que han utilizado Loomio por un tiempo que elijan un plan que les convenga.</p>
-    submit: "Muéstrame los planes"
-  group_welcome_modal:
-    aria_label: "Bienvenid@"
-    creator_heading: "Bienvenido/a a tu nuevo grupo"
-    member_heading: "Bienvenido/a a Loomio"
-    creator_info: "Eres el <strong>coordinador</strong> del grupo, que es como ser el anfitrión. Mira el vídeo y los hilos de ejemplo."
-    member_info: "Mira éste vídeo para tener una idea de como funciona Loomio. Luego, pruébalo haciendo un comentario en un hilo de discusión, o inicia un hilo nuevo."
-    creator_footer: "Cuando estés listo, <strong>invita gente</strong> a sumarse. "
-    ok_got_it: "Bien, ¡lo tengo!"
+  action_dock:
+    react: 'Añadir reacción '
+    add_comment: Comentario
+    edit_thread: Editar contexto
+    translate_thread: Traducir contexto
+    edit_poll: Editar encuesta
+    translate_poll: Traducir encuesta
+    edit_stance: Cambia tu voto
+    translate_stance: Traducir voto
+    edit_comment: Editar comentario
+    delete_comment: 'Eliminar comentario '
+    reply_to_comment: Responder
+    translate_comment: Traducir comentario
+    edit_outcome: Editar el resultado
+    translate_outcome: Traducir resultado
+    show_history: Ver historial de revisión
+    pin_thread: Fijar hilo
+    unpin_thread: Soltar hilo
   cover_photo_form:
     aria_label: 'Formulario de carga para la foto de portada '
     heading: 'Nueva foto de portada '
@@ -454,6 +492,14 @@ es:
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
     posted: Enviado
+  reactions_input:
+    add_your_reaction: 'Añadir reacción '
+  reactions_display:
+    more_reactions: "{{count}}  más"
+    you: "Tú"
+    you_and_name: "Tú y {{name}}"
+    you_and_name_and_count_more: "Tú, {{name}} y {{count}} más"
+    name_and_count_more: "{{name}} y {{count}} más"
   group_page:
     thread_list:
       empty:
@@ -532,35 +578,6 @@ es:
     title: 'Desactivar el grupo '
     question: '¿Estás seguro de que quieres desactivar este grupo?'
     submit: 'Sí, desactivar este grupo'
-  confirm_gift_plan_modal:
-    heading: 'Grupos Gratis son soportados a donación  '
-    body: Las donaciones hacen posible que grupos sin presupuesto usen Loomio de forma gratuita. Ocasionalmente invitaremos a los miembros de grupo en plan Gratis a realizar una donación voluntaria.
-    got_it: Quédate en plan Gratis
-    go_back: Cambia el plan
-  donation_modal:
-    heading: ¿Quieres hacer una donación a Loomio?
-    body: "Loomio es una empresa social. Nuestra misión es crear un mundo donde sea fácil para todos el participar en decisiones que los afectan. "
-    contribute: Has una contribución
-    got_to_group: No ahora, gracias.
-  gift_card:
-    heading: 'Plan Donación '
-    body: "<strong>{{name}}</strong> es un grupo apoyado por donaciones. Para que Loomio pueda seguir ayudando a grupos como el tuyo, haz clic aquí:"
-    make_a_contribution: 'Haz una contribución '
-  upgrade_plan_card:
-    heading: Diferencias de los planes pagos
-    slack_html: "<strong>Integración con Slack</strong>: Loomio y Slack funcionan genial juntos! Enlazalos "
-    domain_html: "<strong>Dominio personalizado</strong>: Haz tu grupo fácil de encontrar con tugrupo.loomio.org"
-    help_html: "<strong>Ayuda de expertos</strong>: Los consultores de colaboración de Loomio harán que tu grupo sea más eficaz "
-    analytics_html: "<strong>Reporte analítico</strong>: Recibe detalles sobre la participación en tu grupo"
-    donations: 'A los miembros de tu grupo yo no se les pedirá donación. '
-    more: '... y mucho más.'
-    upgrade: 'Elige un plan '
-    donate: 'Donación '
-  trial_card:
-    title: 'Prueba de 30 días'
-    choose_plan: 'Elige tu plan de pago'
-    in_progress_body: 'Gracias por probar Loomio con <strong>{{name}}</strong>. En cualquier momento puedes elegir un plan de pago que funcione para tu grupo.'
-    expired_body_html: "<strong>{{name}}</strong> ha llegado al final de su prueba de Loomio. Si quieres seguir usándolo tienes que elegir un plan de pago a la medida de tu grupo."
   group_form:
     aria_label: 'Formulario de grupo'
     start_group_heading: 'Empieza un grupo'
@@ -708,6 +725,16 @@ es:
     cancel: 'No '
     messages:
       success: 'invitación cancelada '
+  user_page:
+    contact_user: 'Contactar {{name}}'
+    location_field: 'Ubicación: {{value}}'
+    locale_field: 'Idioma: {{value}}'
+    online_field: 'Online: {{value}}'
+  contact_request_form:
+    modal_title: "Email: {{name}}"
+    message_placeholder: Comparte una breve introducción personal y di porqué te quieres contactar.
+    helptext: "A {{name}} le será enviado tu nombre, dirección de email y mensaje.  "
+    email_sent: "Email enviado a {{name}}"
   profile_page:
     messages:
       updated: 'Perfil actualizado'
@@ -725,7 +752,10 @@ es:
     email_label: 'Correo electrónico'
     short_bio_label: 'Introducción'
     locale_label: 'Idioma'
+    short_bio_placeholder: 'Por favor ingresa una introducción personal, incluye áreas de especialización, tópicos de interés, y afiliación con organizaciones.'
     locale_placeholder: 'Selecciona tu lenguaje preferido '
+    location_label: 'Ubicación '
+    location_placeholder: '¿Dónde estas basado?'
     update_profile: 'Actualizar perfil'
     deactivate_account: 'Desactiva cuenta'
   change_picture_form:
@@ -853,13 +883,6 @@ es:
     proposals: 'Propuestas'
     previous_proposals: 'Propuestas anteriores'
     load_previous: 'Cargar actividad más reciente'
-    you_like_this: 'Te gusta esto.'
-    liked_by_you_and_someone: 'A ti y a {{name}} les gusta esto.'
-    liked_by_you_and_others: 'Te ha gustado a ti, a {{joinedNames}} y a {{name}}.'
-    liked_by_someone: 'A {{name}} le gusta esto.'
-    liked_by_two_others: '{{joinedNames}} y {{name}} les gusta esto.'
-    liked_by_many_others: 'A {{joinedNames}} y a {{name}} les ha gustado.'
-    liked_by_name: 'Le ha gustado a {{name}}.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited: 'Editado'
     pin:
@@ -1155,6 +1178,7 @@ es:
     poll_title: 'Encuesta '
     dot_vote_title: Voto de Punto
     meeting_title: Coordinar horario
+    ranked_choice_title: Opción priorizada
   poll_common:
     your_response: Tu respuesta
     change_your_response: Cambie su respuesta
@@ -1237,11 +1261,13 @@ es:
     close_count: 'Cerrar comprobación '
     close_dot_vote: Cerrar voto de puntos
     close_meeting: Cerrar coordinación de horario
+    close_ranked_choice: 'Cerrar encuesta de opción priorizada '
     proposal_closed: Propuesta cerrada
     poll_closed: Encuesta cerrada
     count_closed: 'Comprobación cerrada '
     dot_vote_closed: Voto por puntos cerrado
     meeting_closed: Coordinación de horario cerrada
+    ranked_choice_closed: Encuesta de opción priorizada ha cerrado
   poll_common_closing_at_field:
     closing: Cerrando
     closing_hour: Hora de cierre
@@ -1271,6 +1297,7 @@ es:
     count: 'Esta comprobación ha cerrado. <strong>Comparte el resultado</strong> para completar el proceso. '
     meeting: 'Esta coordinación de horario ha cerrado. <strong>Comparte un resultado</strong> para que otros sepan el mejor horario.'
     dot_vote: 'Este voto por puntos ha cerrado. <strong>Comparte un resultado</strong> con el grupo.'
+    ranked_choice: 'Esta encuesta de opción priorizada ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'
   poll_common_outcome_form:
     new_title: Comparte un resultado
     update_title: Actualizar el resultado
@@ -1388,6 +1415,26 @@ es:
     no_options: "No has agregado ningún horario todavía."
     meeting_duration: Duración de reunión
     add_option_placeholder: Ingrese una nueva hora
+  poll_ranked_choice_form:
+    tool_tip_expanded: |
+      <p>La opción priorizada es un método de votación que permite a cada persona responder con un orden de preferencia.</p>
+      <p>Es preferente cuando el 'robo de votos' es una preocupación (ej. dos opciones bastante populares son tan similares
+      que los votos terminan siendo compartidos entre ambas), y pueden ser usadas para implementar un Condorcet o  una sistema de elección de segunda vuelta instantáneas (Instant Runoff Voting).
+      </p>
+    tool_tip_collapsed: 'Prioriza las opciones en orden '
+    start_header: 'Inicia una opción priorizada '
+    edit_header: 'Editar opción priorizada '
+    tip: 'Averigua cuando la gente está disponible para reunirse '
+    title_placeholder: Ej, ¿Quién debe ser el próximo presidente de la junta?
+    details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
+    meeting_created: Opción priorizada creada
+    meeting_updated: Opción priorizada actualizada
+    no_options: "No haz añadido ninguna opción aún"
+    add_option_placeholder: Ingresa una nueva opción
+    minimum_stance_choices: Opciones para priorizar
+    minimum_stance_choices_helptext: 'Número de opciones que cada persona puede priorizar '
+    ranked_choice_created: 'Opción priorizada creada '
+    ranked_choice_updated: 'Opción priorizada actualizada '
   poll_meeting_time_field:
     new_time_slot: Nuevo horario
     closing_hour: Hora de finalización
@@ -1399,6 +1446,7 @@ es:
     block_reason_placeholder: Explique su objeción a esta propuesta y por qué no debe seguir adelante
     stance_created: Voto creado
     stance_updated: Voto actualizado
+    vote: Votar
   poll_proposal_options:
     agree: De acuerdo
     agree_verb: "acordado"
@@ -1413,6 +1461,7 @@ es:
     block_verb: "Bloqueado "
     block_meaning: La atención urgente del grupo es necesaria para abordar una profunda preocupación
   poll_count_options:
+    yes_meaning: He voluntariado, dado mi consentimiento, o completado la tarea
     no_meaning: Estoy habilitado para contribuir o participar en esta decisión
   poll_count_vote_form:
     reason_label: Mensaje
@@ -1438,15 +1487,26 @@ es:
     too_many_dots: Usaste demasiados votos.
     stance_created: Voto creado
     stance_updated: Voto actualizado
+  poll_ranked_choice_vote_form:
+    helptext: 'Agarra y mueve las opciones en orden de preferencia (1 siendo tu opción más preferida). Tus {{count}} opciones serán registradas. '
+    stance_created: 'Opción registrada '
+    stance_updated: Opción actualizada
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{autor}}</a></strong> en respuesta a <strong> {{tittle}}</strong>"
     discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el titulo del hilo <strong>{{title}}</strong>"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el contexto del hilo"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado los anexos del hilo"
     discussion_made_public: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha hecho el hilo publico"
+    discussion_made_private: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha hecho el hilo privado"
     discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el hilo"
+    discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> movió el hilo de <strong>{{title}}</strong>"
+    new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
+    outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> compartió un resultado para <strong>{{title}}</strong>"
     poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha cerrado el {{polltype}}: <strong>{{title}}</strong>"
+    poll_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> inició un {{polltype}}: <strong>{{title}}</strong>"
+    poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> editó el {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} ha cerrado: <strong>{{title}}</strong>"
+    stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> votó en: <strong> {{title}}</strong>"
   poll_admin_page:
     title: Administrador - {{title}}
   poll_common_share_form:
@@ -1550,6 +1610,8 @@ es:
     password: Contraseña
   install_slack:
     modal_title: Installar Slack
+    modal_helptext: 'Primero, deberás ingresar en Slack. Te enviaremos ahí automáticamente en un segundo, o puedes hacer clic en el siguiente botón para continuar. '
+    login_to_slack: Ingresar en Slack
     card:
       install_title: Conectar a Slack
       install_helptext: Loomio bot notifica a tu grupo en Slack de las discusiones y decisiones en Loomio. También te ayuda a iniciar decisiones y votar desde Slack.
