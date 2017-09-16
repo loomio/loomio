@@ -14,29 +14,6 @@ describe API::TranslationsController do
     sign_in user
   end
 
-  describe 'show' do
-    it 'responds to a language' do
-      get :show, lang: :fr
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json['common']['group']).to eq 'Groupe'
-    end
-
-    it 'renders I18n.default by default' do
-      get :show
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json['common']['group']).to eq 'Group'
-    end
-
-    it 'handles fallbacks correctly' do
-      get :show, lang: :pt
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json['common']['group']).to eq 'Grupo'
-    end
-  end
-
   describe 'inline' do
     context 'success' do
 
