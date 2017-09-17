@@ -30,4 +30,13 @@ class AppConfig
       accent_palette_config:  JSON.parse(ENV.fetch('THEME_ACCENT_PALETTE_CONFIG', '{"default": "500"}'))
     }
    end
+
+   def self.features
+     {
+       create_user:   !ENV['FEATURES_DISABLE_CREATE_USER'],
+       create_group:  !ENV['FEATURES_DISABLE_CREATE_GROUP'],
+       public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
+       help_link:     !ENV['FEATURES_DISABLE_HELP_LINK']
+     }
+   end
 end

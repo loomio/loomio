@@ -1,9 +1,10 @@
 class API::RegistrationsController < Devise::RegistrationsController
-  before_filter :configure_permitted_parameters
+  before_action :configure_permitted_parameters
+  before_action :permission_check, only: :create
 
   def create
     build_resource(sign_up_params)
-    if resource.save
+    if can_create? && resource.save
       LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
       head :ok
     else
@@ -23,6 +24,9 @@ class API::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+  def permission_check
+    AppConfig.features[:create_user] || pending_invitation
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
