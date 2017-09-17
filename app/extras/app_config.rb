@@ -33,14 +33,10 @@ class AppConfig
 
    def self.features
      {
-       create_user:   env_boolean('FEATURES_CREATE_USER', true),
-       create_group:  env_boolean('FEATURES_CREATE_GROUP', true),
-       public_groups: env_boolean('FEATURES_PUBLIC_GROUPS', true),
-       help_link:     env_boolean('FEATURES_HELP_LINK', true)
+       create_user:   !ENV['FEATURES_DISABLE_CREATE_USER'],
+       create_group:  !ENV['FEATURES_DISABLE_CREATE_GROUP'],
+       public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
+       help_link:     !ENV['FEATURES_DISABLE_HELP_LINK']
      }
-   end
-
-   def self.env_boolean(key, default)
-     %w(1 true).include? ENV.fetch(key, default).to_s
    end
 end

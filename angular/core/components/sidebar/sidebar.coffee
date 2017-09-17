@@ -66,7 +66,7 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
       Session.user()
 
     $scope.canStartGroup = -> AbilityService.canStartGroups()
-    $scope.canPublicGroups = -> AppConfig.features.public_groups
+    $scope.canViewPublicGroups = -> AbilityService.canViewPublicGroups()
 
     $scope.startGroup = ->
       ModalService.open GroupModal, group: -> Records.groups.build()
