@@ -1,5 +1,5 @@
 .auth-provider-form
-  .lmo-hint-text{translate: "auth_form.choose_an_account"}
+  .lmo-hint-text{translate: "auth_form.choose_an_account", ng-if: "providers.length > 0"}
   .auth-provider-form__providers.lmo-flex{layout: "row"}
     .auth-provider-form__provider{ng-repeat: "provider in providers"}
       %button.md-button.md-raised{type: "button", class: "{{provider.name}}", ng-click: "select(provider)"}
