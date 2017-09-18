@@ -1766,6 +1766,7 @@ en:
     sign_in_to_loomio: Sign into Loomio
     sign_in: Sign in
     choose_an_account: "Sign in via a third party, or enter your email address to continue."
+    invitation_required: Account not found. New accounts are by invitation only.
     more_providers: More
     email_not_present: An email address is required
     invalid_email: "Sorry, that doesn't look like a valid email address"
