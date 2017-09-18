@@ -29,13 +29,13 @@ class DiscussionReader < ActiveRecord::Base
   def viewed!(read_at, persist: true)
     return if self.last_read_at && self.last_read_at > read_at
     assign_attributes(read_attributes(read_at))
-    EventBus.broadcast('discussion_reader_viewed!', discussion, user)
+    EventBus.broadcast('discussion_reader_viewed!', self)
     save if persist
   end
 
   def dismiss!(persist: true)
     self.dismissed_at = Time.zone.now
-    EventBus.broadcast('discussion_reader_dismissed!', discussion, user)
+    EventBus.broadcast('discussion_reader_dismissed!', self)
     save if persist
   end
 
