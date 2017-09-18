@@ -11,6 +11,7 @@ angular.module('loomioApp').factory 'MembershipRequestForm', ->
       flashOptions:
         group: group.fullName
 
-    $scope.isLoggedIn = AbilityService.isLoggedIn
+    $scope.isLoggedIn = ->
+      AbilityService.isLoggedIn()
 
     return

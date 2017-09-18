@@ -6,6 +6,10 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
     @serializableAttributes: AppConfig.permittedParams.stance
     @draftParent: 'poll'
     @draftPayloadAttributes: ['reason']
+    @memoize: [
+      'stanceChoice',
+      'pollOption'
+    ]
 
     defaultValues: ->
       reason: ''
@@ -15,6 +19,9 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
       @belongsTo 'poll'
       @hasMany 'stanceChoices'
       @belongsTo 'participant', from: 'users'
+
+    reactions: ->
+      @recordStore.reactions.find(reactableId: @id, reactableType: "Stance")
 
     author: ->
       @participant()

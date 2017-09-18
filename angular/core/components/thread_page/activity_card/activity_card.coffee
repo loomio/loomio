@@ -13,6 +13,7 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
     $scope.lastReadSequenceId = $scope.discussion.lastReadSequenceId
+    $scope.hasNewActivity = $scope.lastReadSequenceId < $scope.discussion.lastSequenceId
     $scope.pagination = (current) ->
       PaginationService.windowFor
         current:  current

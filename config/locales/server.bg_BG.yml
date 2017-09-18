@@ -4,8 +4,6 @@ bg_BG:
       intro: "%{who} направи обявление в %{group}:"
     unsubscribe: 'Отписване или промяна на вашите e-mail предпочитания:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> за да се отпишете или смените e-mail предпочитаията си."
-    view_comment: Кликнете тук за да видите коментара в Loomio
-    view_discussion: Кликнете тук за да видите тази дискусия
     daily_activity:
       heading: Вашата Loomio Активност
       intro: Показва какво се е случило във вашите Loomio групи през последните 24 часа

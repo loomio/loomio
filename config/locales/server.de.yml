@@ -57,7 +57,7 @@ de:
     view_comment: Klicke hier um den Kommentar auf Loomio zu sehen
     view_discussion: Klicke hier um diese Diskussion zu sehen
     create_discussion:
-      intro_html: "eröffnete ein Thema:"
+      intro_html: "hat ein neues Thema erstellt:"
       intro: "%{who} hat ein Thema eröffnet:"
     daily_activity:
       heading: Deine Loomio Aktivität
@@ -85,7 +85,7 @@ de:
       join_group: "Der Gruppe beitreten"
       view_group_text: "Klicke unten, um die Gruppe auf Loomio anzusehen:"
     membership_request:
-      intro: "%{name} (%{email}) bittet um Zugang zu einer Deiner Loomio Gruppen."
+      intro: "%{name} (%{email}) möchte einer deiner Loomio-Gruppen beitreten."
       intro_html: hat um Aufnahme in eine deiner Gruppen gebeten.
       subject: "%{who} bittet darum %{which_group} beitreten zu dürfen."
       view_group: Du kannst die Anfrage hier annehmen oder ablehnen
@@ -95,14 +95,16 @@ de:
       context: "%{author_name} hat dich im Thema %{discussion_title} erwähnt"
       subject: '%{who} hat dich in der Diskussion zu "%{which}" erwähnt'
     thread_mailer:
-      footer_text: 'Antworte auf diese eMail sofort oder auf %{hostname}: ansehen:'
-      reply_or_view_online_html: Antworte auf diese eMail sofort oder<a href='%{url}'> auf %{hostname}  ansehen</a>.
+      new_discussion:
+        header_html: '<strong>%{actor}</strong> hat ein neues Thema erstellt:'
+      footer_text: 'Du kannst direkt auf diese E-Mail antworten oder sie auf %{hostname}: ansehen:'
+      reply_or_view_online_html: Du kannst direkt auf diese E-Mail antworten oder sie <a href='%{url}'> auf %{hostname}  ansehen</a>.
       turn_off_notifications_html: "<a href='%{url}'> Deaktivieren Sie E-Mails </a> für diese Diskussion."
       turn_off_notifications_text: 'Deaktivieren Sie E-Mails für diese Diskussion: %{url}'
       turn_on_notifications_html: "<a href='%{url}'>E-Mails für diese Diskussion aktivieren</a> um über weitere Aktivitäten informiert zu werden."
       turn_on_notifications_text: 'Aktiviere E-Mails, um über weitere Aktivitäten in dieser Diskussion informiert zu werden: %{url} '
-      change_email_preferences_html: Ändere deine <a href='%{email_preferences_url}'>eMail-Einstellungen</a> um weniger Loomio eMails zu erhalten.
-      change_preferences: 'Ändere Deine eMail Einstellungen:'
+      change_email_preferences_html: <a href='%{email_preferences_url}'>E-Mail-Einstellungen</a>ändern , um Benachrichtigungs-E-Mails zu deaktivieren.
+      change_preferences: 'Ändere Deine E-Mail-Einstellungen:'
   footer:
     about: Über Loomio
     blog: Blog
@@ -135,7 +137,7 @@ de:
       header: Du bist fast fertig! Prüfe Deine eMails.
       email_delivered: Wir haben eine eMail an %{email} gesendet. Bitte folge dem darin enthaltenen Link um Deine neue Gruppe einzurichten.
       email_not_arrived: Kam die eMail nicht an?
-      please_hold: Bitte gib der eMail 5 Minuten Zeit und prüfe auch Deinen Spam-Ordner.
+      please_hold: Der Versand der E-Mail kann bis zu 5 Minuten dauern. Bitte überprüfe auch Deinen Spam-Ordner.
     start_making_decisions: 'Um gemeinsam auf Loomio Entscheidungen zu treffen, erstelle kostenlos eine Gruppe:'
   invitation_form:
     error:
@@ -275,14 +277,15 @@ de:
       create_outcome: Ergebnis teilen
       please_respond: Bitte antworten
       time_zone: (Zeitangaben in %{zone})
+      verify_stance_for_unverified_user: "Danke für deine Abstimmungsbeteiligung bei %{title}. Bitte verifiziere deine E-Mail-Adresse, damit wir dir die Ergebnisse der Abstimmung zusenden können."
     proposal:
       subject:
-        poll_created: '%{actor} startete einen Vorschlag: %{title}'
+        poll_created: '%{actor} hat einen Vorschlag erstellt: %{title}'
         poll_closing_soon: 'Der Vorschlag läuft ab in 24 Stunden: %{title}'
         poll_closing_soon_author: 'Dein Vorschlag läuft ab in 24 Stunden: %{title}'
         outcome_created: '%{actor} teilte das Ergebnis des Vorschlags: %{title}'
       header:
-        poll_created: '<strong>%{actor}</strong> startete einen Vorschlag'
+        poll_created: '<strong>%{actor}</strong> hat einen Vorschlag erstellt'
         poll_closing_soon: '<strong>%{actor}</strong>''s Vorschlag läuft in 24 Stunden ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder andere zum Mitmachen zu bewegen.'
         poll_closing_soon_author: 'Dein Vorschlag läuft in 24 Stunden ab - jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis geteilt.'
@@ -313,7 +316,7 @@ de:
         voted: '<strong>%{participant}</strong>:'
     dot_vote:
       subject:
-        poll_created: '%{actor} startete eine Priorisierung: %{title}'
+        poll_created: '%{actor} hat eine neue Priorisierung erstellt: %{title}'
         poll_closing_soon: 'Die Priorisierung %{title} läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Deine Priorisierung %{title} läuft in 24 Stunden ab'
         outcome_created: '%{actor} teilte das Ergebnis für: %{title}'

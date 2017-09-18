@@ -1,0 +1,18 @@
+  .poll-common-details-panel.lmo-action-dock-wrapper
+    %h3.lmo-card-subheading{translate: "poll_common.details", ng-if: "poll.outcome()"}
+    .poll-common-details-panel__started-by
+      %span{translate: "poll_card.started_by", translate-value-name: "{{poll.author().name}}"}
+      %span{aria-hidden: "true"}>·
+      %poll_common_closing_at{poll: "poll"}
+
+    .poll-common-details-panel__details.lmo-markdown-wrapper{ng-if: "!translation", marked: "poll.cookedDetails()"}
+    .poll-common-details-panel__details{ng-if: "translation"}
+      %translation.lmo-markdown-wrapper{translation: "translation", field: "details"}
+
+    .poll-common-details-panel__attachments{ng-if: "poll.hasAttachments()"}
+      .poll-common-details-panel__attachment{ng-repeat: "attachment in poll.attachments() | orderBy:'createdAt' track by attachment.id"}
+        %attachment_preview{attachment: "attachment", mode: "context"}
+
+    .lmo-md-actions
+      %reactions_display{model: "poll", load: "true"}
+      %action_dock{model: "poll", actions: "actions"}

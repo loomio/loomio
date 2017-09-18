@@ -63,9 +63,6 @@ he:
     title_label: 'תואר'
     context_label: 'הקשר'
     privacy_label: 'פרטיות'
-  proposal_expanded:
-    edit_proposal: 'עריכת הצעה'
-    close_proposal: 'סגירת הצעה'
   join_group_button:
     join_group: הצטרפו לקבוצה
   membership_request_form:

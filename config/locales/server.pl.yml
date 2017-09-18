@@ -2,8 +2,6 @@ pl:
   email:
     missed_yesterday:
       mark_as_read: Oznaczenie jako przeczytane
-    thread_mailer:
-      change_preferences: 'Zmiana ustawień poczty.'
   footer:
     about: O...
     blog: Blog

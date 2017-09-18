@@ -10,7 +10,9 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       allowContinue:  opts.allowContinue
 
   @addLauncher =>
-    ModalService.open InstallSlackModal, group: => @group
+    ModalService.open InstallSlackModal,
+      group: => @group
+      requirePaidPlan: -> true
   , ->
     $location.search().install_slack
 
@@ -31,7 +33,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @init = (group) =>
     @group = group
-    @performLaunch()
     MessageChannelService.subscribeToGroup(@group)
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
@@ -46,10 +47,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       max:      maxDiscussions
       pageType: 'groupThreads'
 
-    $rootScope.$broadcast 'viewingGroup', @group
-    $rootScope.$broadcast 'setTitle', @group.fullName
-    $rootScope.$broadcast 'analyticsSetGroup', @group
     $rootScope.$broadcast 'currentComponent',
+      title: @group.fullName
       page: 'groupPage'
       group: @group
       key: @group.key
@@ -58,6 +57,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
         rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
         prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
         next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
+
+    @performLaunch()
 
   @canViewMemberships = ->
     AbilityService.canViewMemberships(@group)

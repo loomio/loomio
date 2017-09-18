@@ -20,7 +20,7 @@ class EventCollection
   end
 
   def reaction_cache
-    @reaction_cache ||= Caches::Reaction.new(parents: events.map(&:eventable))
+    @reaction_cache ||= Caches::Reaction.new(parents: eventables)
   end
 
   def mentions
@@ -32,6 +32,11 @@ class EventCollection
       attachable_type: "Comment",
       attachable_id: event_comment_ids
     ).group_by(&:attachable_id)
+  end
+
+  def eventables
+    Event.where(id: @events.map(&:id)).includes(:eventable)
+    @events.map(&:eventable)
   end
 
   def event_comment_ids

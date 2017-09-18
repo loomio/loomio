@@ -1,11 +1,12 @@
-angular.module('loomioApp').factory 'ReactionModel', (BaseModel) ->
+angular.module('loomioApp').factory 'ReactionModel', (BaseModel, AppConfig) ->
   class ReactionModel extends BaseModel
     @singular: 'reaction'
     @plural: 'reactions'
     @indices: ['userId', 'reactableId']
+    @serializableAttributes: AppConfig.permittedParams.reaction
 
     relationships: ->
       @belongsTo 'user'
 
-    reactable: ->
-      Records["#{@reactableType.toLowerCase()}s"].find(@reactableId)
+    model: ->
+      @recordStore["#{@reactableType.toLowerCase()}s"].find(@reactableId)

@@ -31,3 +31,6 @@ ru:
       name: Ваше имя
       email: Ваш электронный адрес
       message: Ваше сообщение
+  poll_mailer:
+    common:
+      unsubscribe: Отписаться

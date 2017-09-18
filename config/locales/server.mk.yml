@@ -10,8 +10,6 @@ mk:
       link: Приклучи се на дискусијата
     to_join_group:
       subject: "%{member} те покани да се приклучиш во %{group_name} на Loomio"
-    view_comment: Кликни овде за да го видиш коментарот на Loomio
-    view_discussion: Кликни овде за да ја видиш дискусијата
     daily_activity:
       heading: Вашата активност на Loomio
       subject: Loomio - Резиме на последните 24 часа

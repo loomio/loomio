@@ -56,6 +56,10 @@ module Identities::Slack::Participate
     )&.user
   end
 
+  def participate_ensure_token
+    head :bad_request unless participate_payload['token'] == ENV['SLACK_VERIFICATION_TOKEN']
+  end
+
   def participate_payload
     @participate_payload ||= JSON.parse(params.require(:payload))
   end

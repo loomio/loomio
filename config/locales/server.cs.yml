@@ -47,8 +47,6 @@ cs:
       link_help: "Kliknutím na odkaz níže přejdete do skupiny:"
     unsubscribe: 'Odhlašte se nebo si změňte nastavení emailu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, abyste se odhlásil(a) nebo změnil(a) nastavení emailu."
-    view_comment: Klikněte sem pro zobrazení komentáře na Loomio
-    view_discussion: Klikněte sem pro zobrazení této diskuze
     daily_activity:
       heading: Vaše aktivita na Loomiu
       intro: Zobrazuje se, co se dělo ve vašich Loomio skupinách během posledních 24 hodin
@@ -60,10 +58,6 @@ cs:
       thanks_for_reading: Děkujeme za přečtení a přejeme hezký den!
       heres_what_happened: "Tady je to, co se stalo na Loomio včera."
       marked_as_read_success: Všechno z e-mailu bylo označeno jako přečtené
-    comment_replied_to:
-      context_html: 'odpověděl na váš komentář v '
-      context: '%{author_name} odpověděl na váš komentář v %{discussion_title}'
-      subject: "%{who} odpověděl na váš komentář v  %{which} skupině na Loomio"
     group_membership_approved:
       join_group: "Přidat se ke skupině"
       view_group_text: "Klepnutím níže zobrazíte skupinu na Loomio:"
@@ -72,10 +66,6 @@ cs:
       subject: "%{who} zažádal(a) o členství v %{which_group}"
       view_group: Můžete schválit či odmítnout žádost zde
       button_text: Zobrazit žádost
-    mentioned:
-      context_html: "zmínil se o vás během diskuse"
-    thread_mailer:
-      change_preferences: 'Změna nastavení e-mailu:'
   footer:
     about: O nás
     blog: Blog

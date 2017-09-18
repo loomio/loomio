@@ -6,6 +6,12 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     @serializableAttributes: AppConfig.permittedParams.poll
     @draftParent: 'draftParent'
     @draftPayloadAttributes: ['title', 'details']
+    @memoize: [
+      'latestStances',
+      'cookedDescription',
+      'memberIds',
+      'participantIds'
+    ]
 
     draftParent: ->
       @discussion() or @author()
@@ -48,6 +54,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @hasMany   'pollOptions'
       @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
       @hasMany   'pollDidNotVotes'
+
+    reactions: ->
+      @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
     newAttachments: ->
       @recordStore.attachments.find(@newAttachmentIds)
@@ -111,7 +120,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       existing = []
       _.each @latestStances('-createdAt'), (stance) ->
         if _.contains(existing, stance.participant())
-          stance.remove()
+          stance.latest = false
         else
           existing.push(stance.participant())
 

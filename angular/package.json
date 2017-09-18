@@ -7,8 +7,8 @@
     "test": "gulp test"
   },
   "engines": {
-    "npm": "~2.14.20",
-    "node": "7.4.0"
+    "npm": ">= 2.14.20",
+    "node": ">= 8.4.0"
   },
   "repository": {
     "type": "git",
@@ -40,9 +40,10 @@
     "angular-route": "^1.5.5",
     "angular-sanitize": "~> 1.4.1",
     "angular-scroll": "~0.6.5",
+    "angular-sortable-view": "0.0.15",
     "angular-translate": "~2.15.1",
-    "angular-translate-loader-url": "~2.7.2",
-    "angular_record_store": "2.7.13",
+    "angular-translate-loader-static-files": "latest",
+    "angular_record_store": "2.8.2",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
     "bowser": "latest",

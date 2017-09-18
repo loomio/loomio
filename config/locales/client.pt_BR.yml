@@ -746,7 +746,6 @@ pt_BR:
     liked_by_you_and_someone: 'Você e {{name}} curtem isso.'
     liked_by_you_and_others: 'Curtido por você {{joinedNames}} e {{name}}.'
     liked_by_someone: '{{name}} curte isso.'
-    liked_by_two_others: '{{name_1}} e {{name_2}} curtem isso.'
     liked_by_many_others: 'Curtido por {{joinedNames}} e {{name}}.'
     liked_by_name: 'Curtido por {{name}}.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
@@ -1096,13 +1095,6 @@ pt_BR:
     your_response: Quando você pode participar?
   poll_dot_vote_vote_form:
     stance_updated: Voto atualizado
-  poll_thread_item:
-    proposal:
-      poll_expired: 'Proposta encerrada: <span>{{title}}</span>'
-    count:
-      stance_created: '<strong>{{author}}</strong> respondeu:'
-    meeting:
-      stance_created: '<strong>{{author}}</strong> respondeu:'
   poll_common_share_form:
     no_group_selected: Nenhum grupo selecionado
     share_a_link: Compartilhar link

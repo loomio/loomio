@@ -9,4 +9,14 @@ angular.module('loomioApp').factory 'GroupIdentityModel', (AppConfig, BaseModel)
 
     relationships: ->
       @belongsTo 'group'
-      @belongsTo 'identity'
+      # @belongsTo 'identity'
+
+    # because 'identity' is reserved
+    userIdentity: ->
+      _.first @recordStore.identities.find(id: @identityId)
+
+    slackTeamName: ->
+      @userIdentity().customFields.slack_team_name
+
+    slackChannelName: ->
+      @customFields.slack_channel_name

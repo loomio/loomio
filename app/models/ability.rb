@@ -115,6 +115,10 @@ class Ability
       user.identities.include?(group_identity.identity)
     end
 
+    can [:destroy], GroupIdentity do |group_identity|
+      user_is_admin_of?(group_identity.group_id)
+    end
+
     can [:make_admin], Membership do |membership|
       user_is_admin_of?(membership.group_id)
     end
@@ -239,7 +243,7 @@ class Ability
       user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
     end
 
-    can :create, Reaction do |reaction|
+    can :update, Reaction do |reaction|
       user_is_member_of?(reaction.reactable.group.id)
     end
 
@@ -341,9 +345,17 @@ class Ability
       stance.participant.email == @user.email
     end
 
+    can :show, Outcome do |outcome|
+      can? :show, outcome.poll
+    end
+
     can [:create, :update], Outcome do |outcome|
       !outcome.poll.active? &&
       user.ability.can?(:update, outcome.poll)
+    end
+
+    can :create, ContactRequest do |request|
+      (@user.groups & request.recipient.groups).any?
     end
 
     add_additional_abilities

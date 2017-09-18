@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826122955) do
+ActiveRecord::Schema.define(version: 20170903235705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -728,6 +728,22 @@ ActiveRecord::Schema.define(version: 20170826122955) do
 
   add_index "translations", ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id", using: :btree
 
+  create_table "usage_reports", force: :cascade do |t|
+    t.integer  "groups_count"
+    t.integer  "users_count"
+    t.integer  "discussions_count"
+    t.integer  "polls_count"
+    t.integer  "comments_count"
+    t.integer  "stances_count"
+    t.integer  "visits_count"
+    t.string   "canonical_host"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "version"
+  end
+
+  add_index "usage_reports", ["canonical_host"], name: "index_usage_reports_on_canonical_host", using: :btree
+
   create_table "user_deactivation_responses", force: :cascade do |t|
     t.integer "user_id"
     t.text    "body"
@@ -782,6 +798,8 @@ ActiveRecord::Schema.define(version: 20170826122955) do
     t.string   "remember_token"
     t.string   "short_bio",                                    default: "",         null: false
     t.boolean  "email_verified",                               default: false,      null: false
+    t.string   "location",                                     default: "",         null: false
+    t.datetime "last_seen_at",                                 default: "now()",    null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

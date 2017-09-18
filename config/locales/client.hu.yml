@@ -227,11 +227,6 @@ hu:
     title_label: 'Cím'
     context_label: 'Leírás'
     privacy_label: 'Adatvédelem'
-  proposal_expanded:
-    started_by: '<strong>{{name}}</strong> indította'
-    edit_proposal: 'Javaslat szerkesztése'
-    close_proposal: 'Javaslat lezárása'
-    closed_badge: Zárva
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
   membership_request_form:
@@ -294,7 +289,6 @@ hu:
   discussion:
     proposals: 'Javaslatok'
     previous_proposals: 'Előző javaslatok'
-    liked_by_someone: '{{name}} kedveli ezt.'
     started_by: '<strong>{{name}}</strong> indította'
   thread_group:
     aria_label: 'Csoport neve'

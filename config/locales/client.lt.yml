@@ -122,14 +122,6 @@ lt:
     title_placeholder: 'Kokia tema diskutuosite?'
     context_label: 'Kontekstas'
     privacy_label: 'Privatumas'
-  proposal_expanded:
-    collapse: Suskleisti
-    edit_proposal: 'Redaguoti pasiūlymą'
-  proposal_position_yes: 'Pritariu'
-  proposal_position_abstain: 'Susilaikau'
-  proposal_position_no: 'Nepritariu'
-  group_welcome_modal:
-    ok_got_it: "Gerai, supratau!"
   join_group_button:
     messages:
       joined_group: 'Dabar jūs esate {{group}} grupės narys'
@@ -241,7 +233,6 @@ lt:
     proposals: 'Pasiūlymai'
     previous_proposals: 'Ankstesni pasiūlymai'
     load_previous: 'Įkelti ankstesnę veiklą'
-    you_like_this: 'Jums tai patinka.'
   thread_group:
     aria_label: 'Grupės pavadinimas'
   thread_context:

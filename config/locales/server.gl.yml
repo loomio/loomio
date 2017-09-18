@@ -5,11 +5,8 @@ gl:
     to_join_discussion:
       message_intro: "%{who} dixo:"
       link: Unirse ó debate
-    view_discussion: Preme aquí para este debate
     daily_activity:
       subject: Loomio - Resumo das últimas 24 horas
-    thread_mailer:
-      change_preferences: 'Cambiar as preferencias de correo:'
   footer:
     about: Acerca de
     blog: Blogue

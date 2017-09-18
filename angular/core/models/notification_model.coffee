@@ -2,6 +2,7 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel, $translate)
   class NotificationModel extends BaseModel
     @singular: 'notification'
     @plural: 'notifications'
+    @memoize: ['content']
 
     relationships: ->
       @belongsTo 'event'

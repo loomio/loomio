@@ -21,8 +21,6 @@ sv:
       subject: "Starta din nya Loomiogrupp: %{group_name}"
     unsubscribe: 'Avregistrera dig eller ändra dina e-postinställningar:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
-    view_comment: Klicka här för att se kommentaren på Loomio
-    view_discussion: Klicka här för att se denna diskussionen
     daily_activity:
       heading: Dina aktiviter i Loomio
       intro: Visar dig vad som har hänt i dina Loomiogrupper under de senaste 24 timmarna
@@ -36,8 +34,6 @@ sv:
       intro: "%{name} (%{email}) har begärt att få tillgång till en av dina Loomiogrupper."
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: Du kan godkänna eller avslå begäran här
-    thread_mailer:
-      change_preferences: 'Ändra dina e-postinställningar:'
   footer:
     about: Om
     blog: Blogg

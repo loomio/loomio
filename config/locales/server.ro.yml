@@ -15,8 +15,6 @@ ro:
       subject: "Seteaza noul tau grup Loomio:  %{group_name}"
     unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
-    view_comment: Apasa aici pentru a vedea comentariul pe Loomio
-    view_discussion: Apasa aici pentru a vedea aceasta discutie
     daily_activity:
       heading: Activitatea ta pe Loomio
       intro: Iti aratam ce s-a intamplat in grupurile tale Loomio in ultimele 24 de ore
@@ -27,21 +25,10 @@ ro:
       mark_as_read: Marcheaza ca citit
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
-    comment_replied_to:
-      subject: "%{who} a raspuns comentariului tau in %{which} grup Loomio"
     membership_request:
       intro: "%{name} (%{email}) a cerut acces in unul din grupurile tale Loomio."
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
-    thread_mailer:
-      footer_text: 'Raspunde acestui email sau vezi pe %{hostname}:'
-      reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."
-      turn_off_notifications_text: 'Nu mai trimite email pentru aceasta discutie: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Trimite email pentru aceasta discutie</a> cu informatii despre activitatea acesteia."
-      turn_on_notifications_text: 'Trimite email pentru activitatea viitoare a acestei discutii: %{url}'
-      change_email_preferences_html: Schimba-ti <a href='%{email_preferences_url}'>setarile </a> pentru a te dezabona de la aceste emailuri.
-      change_preferences: 'Schimba preferintele de email:'
   footer:
     about: Despre
     blog: Blog

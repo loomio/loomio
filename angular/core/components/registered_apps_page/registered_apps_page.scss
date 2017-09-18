@@ -11,3 +11,7 @@
   max-width: 300px;
   @include truncateText;
 }
+
+.registered-apps-page__clear {
+  min-width: 32px;
+}

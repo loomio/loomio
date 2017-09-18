@@ -1,9 +1,3 @@
-= render 'avatar', user: @author 
-.thread-mailer__subject
-  %strong= @author.name
-  %span= t(:"email.comment_replied_to.context_html")
-  %span
-    %strong
-      = link_to @discussion.title, discussion_url(@discussion)
-= render_rich_text(@reply.body, @reply.uses_markdown)
-= render 'attachments', resource: @reply if @reply.attachments.any?
+= render "thread_mailer/header"
+= render "thread_mailer/body"
+= render "thread_mailer/footer"

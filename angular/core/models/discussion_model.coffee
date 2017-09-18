@@ -7,6 +7,17 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     @draftParent: 'group'
     @draftPayloadAttributes: ['title', 'description']
     @serializableAttributes: AppConfig.permittedParams.discussion
+    @memoize: [
+      'hasDecision',
+      'activePolls',
+      'isUnread',
+      'isDimissed',
+      'minLoadedSequenceId',
+      'maxLoadedSequenceId',
+      'hasUnreadActivity',
+      'hasAttachments',
+      'cookedDescription'
+    ]
 
     afterConstruction: ->
       @private = @privateDefaultValue() if @isNew()
@@ -42,6 +53,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @hasMany 'versions', sortBy: 'createdAt'
       @belongsTo 'group'
       @belongsTo 'author', from: 'users'
+
+    reactions: ->
+      @recordStore.reactions.find(reactableId: @id, reactableType: "Discussion")
 
     translationOptions: ->
       title:     @title

@@ -16,8 +16,11 @@ namespace :loomio do
     end
   end
 
-  task daily_tasks: :environment do
-    CountGroupRecentActivityJob.perform_later
+  task generate_static_translations: :environment do
+    Loomio::I18n::SELECTABLE_LOCALES.each do |locale|
+      puts "Writing public/translations/#{locale}.json..."
+      File.write("public/translations/#{locale}.json", ClientTranslationService.new(locale).to_json)
+    end
   end
 
   task hourly_tasks: :environment do
@@ -26,11 +29,19 @@ namespace :loomio do
     SendMissedYesterdayEmailJob.perform_later
     ResendIgnoredInvitationsJob.perform_later
     LocateUsersAndGroupsJob.perform_later
+    if (Time.now.hour == 0)
+      # daily tasks
+      UsageReportService.send
+    end
   end
 
   task resend_ignored_invitations: :environment do
     InvitationService.resend_ignored(send_count: 1, since: 1.day.ago)
     InvitationService.resend_ignored(send_count: 2, since: 3.days.ago)
+  end
+
+  task generate_error: :environment do
+    raise "this is an exception to test exception handling"
   end
 
   task refresh_likes: :environment do

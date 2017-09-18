@@ -278,7 +278,6 @@ uk:
     new_vote: "<strong>{{name}}</strong> {{position}} щодо пропозиції <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> прокоментував(ла) <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> відповів(ла) на ваш коментар у <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> вподобав(ла) ваш коментар у <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> згадав(ла) вас у <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> зробив(ла) запит на долучення до <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> схвалив ваш запит на долучення до <strong>{{title}}</strong>'
@@ -684,8 +683,6 @@ uk:
     cancel: 'Ні'
     messages:
       success: Зпрошення скасовано
-  user_page:
-    introduction: Введення
   profile_page:
     messages:
       updated: 'Профіль оновлено'
@@ -822,7 +819,6 @@ uk:
     liked_by_you_and_someone: 'Вам та {{name}} це сподобалось.'
     liked_by_you_and_others: 'Сподобалось вам, {{joinedNames}} та {{name}}.'
     liked_by_someone: '{{name}} уподобав це.'
-    liked_by_two_others: '{{name_1}} та {{name_2}} уподобали це.'
     liked_by_many_others: 'Сподобалось {{joinedNames}} та {{name}}.'
     liked_by_name: 'Сподобалось {{name}}.'
     started_by: 'Створено <strong>{{name}}</strong>'
@@ -1387,38 +1383,6 @@ uk:
     too_many_dots: Ви використали занадто багато точок.
     stance_created: Голосування створено
     stance_updated: Голосування оновлено
-  poll_thread_item:
-    poll:
-      poll_created: '<strong>{{author}}</strong> розпочав(ла) нове опитування: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> проголосував:'
-      poll_edited: '<strong>{{author}}</strong> відредагував(ла) опитування: <span>{{title}}</span>'
-      poll_expired: 'Опитування закрито: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> закрив(ла) опитування: <span>{{title}}</span>'
-    proposal:
-      poll_created: '<strong>{{author}}</strong> вніс(ла) пропозицію: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> проголосував:'
-      poll_edited: '<strong>{{author}}</strong> відредагував(ла) пропозицію: <span>{{title}}</span>'
-      poll_expired: 'Пропозицію закрито: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> закрив(ла) пропозицію: <span>{{title}}</span>'
-    count:
-      poll_created: '<strong>{{author}}</strong> створив(ла) контрольний список: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> відповів:'
-      poll_edited: '<strong>{{author}}</strong> відредагував(ла) контрольний список: <span>{{title}}</span>'
-      poll_expired: 'Контрольний список закрито: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> закрив(ла) контрольний список: <span>{{title}}</span>'
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> розпочав(ла) відбіркове голосування: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> проголосував:'
-      poll_edited: '<strong>{{author}}</strong> відредагував(ла) відбіркове голосування: <span>{{title}}</span>'
-      poll_expired: 'Відбіркове голосування закрито: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> закрив(ла) відбіркове голосування: <span>{{title}}</span>'
-    meeting:
-      poll_created: '<strong>{{author}}</strong> розпочав(ла) опитування щодо часу: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> відповів:'
-      poll_edited: '<strong>{{author}}</strong> відредагував(ла) опитування щодо часу: <span>{{title}}</span>'
-      poll_expired: 'Опитування щодо часу закрито: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> закрив(ла) опитування щодо часу: <span>{{title}}</span>'
-    outcome_created: '<strong>{{author}}</strong> опублікував(ла) результат:'
   poll_admin_page:
     title: Адміністратор - {{title}}
   poll_common_share_form:

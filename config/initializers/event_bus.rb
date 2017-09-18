@@ -34,6 +34,12 @@ EventBus.configure do |config|
     end
   end
 
+  # mark invitations with the new user's email as used
+  config.listen('user_added_to_group_event', 'user_joined_group_event') do |event|
+    event.eventable.group.invitations.pending
+         .where(recipient_email: event.eventable.user.email)
+         .update_all(accepted_at: event.created_at || Time.now)
+  end
 
   # add creator to group if one doesn't exist
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
@@ -56,7 +62,6 @@ EventBus.configure do |config|
     ) if event.discussion
   end
 
-  # :/
   config.listen('discussion_create') do |discussion|
     DiscussionReader.for(user: discussion.author, discussion: discussion).update_reader(
       volume: :loud,

@@ -2,7 +2,8 @@ angular.module('loomioApp').directive 'contactForm', (Session, Records, AbilityS
   templateUrl: 'generated/components/contact/form/contact_form.html'
   controller: ($scope) ->
 
-    $scope.isLoggedIn = AbilityService.isLoggedIn
+    $scope.isLoggedIn = ->
+      AbilityService.isLoggedIn()
 
     $scope.message = Records.contactMessages.build()
     if $scope.isLoggedIn()

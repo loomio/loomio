@@ -177,3 +177,12 @@ describe 'Login', ->
       page.loadPath 'use_last_login_token'
       page.expectFlash 'Signed in successfully'
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+
+  describe 'inactive account', ->
+    it 'prompts the user to contact us to reactivate', ->
+      page.loadPath 'setup_deactivated_user'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.expectText '.auth-inactive-form', 'has been deactivated!'
+      page.click '.auth-inactive-form__submit'
+      page.expectElement '.contact-form'

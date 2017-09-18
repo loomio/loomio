@@ -15,8 +15,6 @@ eo:
       subject: "Konfiguri vian novan Loomio-grupon: %{group_name}"
     unsubscribe: 'Malaboni aŭ ŝanĝi viajn retpoŝtpreferojn:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> por malaboni aŭ ŝanĝi viajn retpoŝtpreferojn."
-    view_comment: Klaku ĉi tie por vidi vian komenton en Loomio
-    view_discussion: Klaku ĉi tie por vidi ĉi tiun diskuton
     daily_activity:
       heading: Via aktiveco en Loomio
       intro: Montras al vi kio okazis en viaj Loomio-grupoj en la lastaj 24 horoj
@@ -30,8 +28,6 @@ eo:
       intro: "%{name} (%{email}) petis aliron al unu el viaj Loomio-grupoj."
       subject: "%{who} petis aliĝi al %{which_group}"
       view_group: Vi povas aprobi aŭ malaprobi la peton ĉi tie
-    thread_mailer:
-      change_preferences: 'Ŝanĝi viajn retpoŝtajn preferojn:'
   footer:
     about: Pri
     blog: Blogo

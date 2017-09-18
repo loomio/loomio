@@ -9,10 +9,13 @@ angular.module('loomioApp').directive 'commentForm', ($translate) ->
       AbilityService.canAddComment($scope.discussion)
 
     $scope.commentHelptext = ->
-      if $scope.discussion.private
+      helptext = if $scope.discussion.private
         $translate.instant 'comment_form.private_privacy_notice', groupName: $scope.comment.group().fullName
       else
         $translate.instant 'comment_form.public_privacy_notice'
+      helptext.replace('&amp;', '&')
+              .replace('&lt;', '<')
+              .replace('&gt;', '>')
 
     $scope.commentPlaceholder = ->
       if $scope.comment.parentId
@@ -20,7 +23,8 @@ angular.module('loomioApp').directive 'commentForm', ($translate) ->
       else
         $translate.instant('comment_form.say_something')
 
-    $scope.isLoggedIn = AbilityService.isLoggedIn
+    $scope.isLoggedIn = ->
+      AbilityService.isLoggedIn()
     $scope.signIn = -> ModalService.open AuthModal
 
     $scope.init = ->

@@ -124,9 +124,9 @@ module Dev::NintiesMoviesHelper
   def create_discussion
     unless @discussion
       @discussion = Discussion.create(title: 'What star sign are you?',
-                                           private: false,
-                                           group: create_group,
-                                           author: jennifer)
+                                       private: false,
+                                       group: create_group,
+                                       author: jennifer)
       DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     end
     @discussion
@@ -286,9 +286,9 @@ module Dev::NintiesMoviesHelper
   def create_all_notifications
     #'reaction_created'
     comment = Comment.new(discussion: create_discussion, body: 'I\'m rather likeable')
-    reaction = Reaction.new(reactable: comment, reaction: "+1")
+    reaction = Reaction.new(reactable: comment, reaction: ":heart:")
     new_comment_event = CommentService.create(comment: comment, actor: patrick)
-    reaction_created_event = ReactionService.create(reaction: reaction, actor: jennifer)
+    reaction_created_event = ReactionService.update(reaction: reaction, params: {reaction: ':slight_smile:'}, actor: jennifer)
     create_another_group.add_member! jennifer
 
     #'comment_replied_to'
