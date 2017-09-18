@@ -51,7 +51,7 @@ InitialPayload = Struct.new(:user) do
       end.compact,
       intercom: {
         appId: Rails.application.secrets.intercom_app_id,
-        userHash: Digest::SHA1.hexdigest("#{Rails.application.secrets.intercom_app_secret}#{user.id}")
+        userHash: Digest::SHA256.hexdigest("#{Rails.application.secrets.intercom_app_secret}#{user.id}")
       }.compact
     }
   end
