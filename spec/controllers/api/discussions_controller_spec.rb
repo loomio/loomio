@@ -485,6 +485,22 @@ describe API::DiscussionsController do
     end
   end
 
+  describe 'mark_as_seen' do
+    it 'marks a discussion as seen' do
+      sign_in user
+      expect { post :mark_as_seen, id: discussion.id }.to change { user.discussion_readers.count }.by(1)
+      dr = DiscussionReader.last
+      expect(dr.discussion).to eq discussion
+      expect(dr.last_read_at).to be_present
+      expect(dr.last_read_sequence_id).to eq 0
+    end
+
+    it 'does not allow non-users to mark discussions as seen' do
+      post :mark_as_seen, id: discussion.id
+      expect(response.status).to eq 403
+    end
+  end
+
   describe 'pin' do
     it 'allows admins to pin a thread' do
       sign_in user

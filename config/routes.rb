@@ -104,7 +104,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
-      patch :mark_as_read, on: :member
+      patch :mark_as_seen, on: :member
       patch :dismiss, on: :member
       patch :set_volume, on: :member
       patch :pin, on: :member
