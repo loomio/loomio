@@ -34,7 +34,7 @@ describe API::EventsController do
 
       it "Marks thread item as read" do
         patch :mark_as_read, id: event.id
-        expect(reader.reload.last_read_at).to eq event.created_at
+        expect(reader.reload.last_read_at).to be_within(1.second).of event.created_at
         expect(reader.last_read_sequence_id).to eq 2
         expect(response.status).to eq 200
       end
