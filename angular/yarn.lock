@@ -141,9 +141,9 @@ angular@*, angular@1.4.1, angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
 
-angular_record_store@2.8.1:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-2.8.1.tgz#e5b0d9c885e4b2596e78c6ed1e1a06b0b0f79a8c"
+angular_record_store@2.8.2:
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-2.8.2.tgz#bd2a1a764e0c866ff9a7a6a04cc0dc550ec9c5ee"
   dependencies:
     coffeeify "^1.1.0"
     lodash "^3.10.1"
