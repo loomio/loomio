@@ -6,6 +6,12 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     @serializableAttributes: AppConfig.permittedParams.poll
     @draftParent: 'draftParent'
     @draftPayloadAttributes: ['title', 'details']
+    @memoize: [
+      'latestStances',
+      'cookedDescription',
+      'memberIds',
+      'participantIds'
+    ]
 
     draftParent: ->
       @discussion() or @author()
