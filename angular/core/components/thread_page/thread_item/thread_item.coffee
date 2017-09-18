@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'threadItem', ($translate, LmoUrlService, EventHeadlineService) ->
+angular.module('loomioApp').directive 'threadItem', ($translate, Records, LmoUrlService, EventHeadlineService) ->
   scope: {event: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
@@ -6,5 +6,6 @@ angular.module('loomioApp').directive 'threadItem', ($translate, LmoUrlService, 
     $scope.headline = ->
       EventHeadlineService.headlineFor($scope.event)
 
-    $scope.link = ->
+    $scope.link = Records.memoize ->
       LmoUrlService.discussion $scope.event.discussion(), from: $scope.event.sequenceId
+    , $scope.event
