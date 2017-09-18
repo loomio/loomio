@@ -4,7 +4,7 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    if can_create? && resource.save
+    if resource.save
       LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
       head :ok
     else
