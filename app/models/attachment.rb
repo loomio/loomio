@@ -37,6 +37,10 @@ class Attachment < ActiveRecord::Base
   def location
     self[:location] || file.url(:original)
   end
-  alias :original :location
 
+  def url
+    location.starts_with?("/") ? "#{lmo_asset_host}#{location}" : location
+  end
+
+  alias :original :location
 end
