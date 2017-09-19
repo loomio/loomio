@@ -1767,6 +1767,7 @@ en:
     sign_in: Sign in
     invitation_required: You need an invitation to create an account.
     choose_an_account: "Sign in via a third party, or enter your email address to continue."
+    invitation_required: Account not found. New accounts are by invitation only.
     more_providers: More
     email_not_present: An email address is required
     invalid_email: "Sorry, that doesn't look like a valid email address"

@@ -197,7 +197,7 @@ class Ability
       end
     end
 
-    can :mark_as_read, Discussion do |discussion|
+    can [:mark_as_read, :mark_as_seen], Discussion do |discussion|
       @user.is_logged_in? && can?(:show, discussion)
     end
 
