@@ -22,7 +22,7 @@
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %flash
-    %navbar
+    %navbar{'ng-if' => 'translationsLoaded'}
 
     %md_content.lmo-sidebar-and-main-container{'ng-if' => 'translationsLoaded', layout: "row", flex: ""}
       %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
