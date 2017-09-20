@@ -75,6 +75,12 @@ angular.module('loomioApp').directive 'contextPanel', ->
       canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
       perform:    -> TranslationService.inline($scope, $scope.discussion)
     ,
+      name: 'view_documents'
+      icon: 'description'
+      canPerform: -> $scope.discussion.documents().length > 0
+      perform:    -> ScrollService.scrollTo('.document-card')
+      count:      -> $scope.discussion.documents().length
+    ,
       name: 'add_comment'
       icon: 'reply'
       canPerform: -> AbilityService.canAddComment($scope.discussion)

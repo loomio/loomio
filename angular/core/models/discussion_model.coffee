@@ -54,6 +54,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @belongsTo 'group'
       @belongsTo 'author', from: 'users'
 
+    documents: ->
+      @recordStore.documents.find(modelId: @id, modelType: "Discussion")
+
     reactions: ->
       @recordStore.reactions.find(reactableId: @id, reactableType: "Discussion")
 

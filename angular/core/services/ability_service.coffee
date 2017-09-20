@@ -80,6 +80,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       @canAdministerGroup(group) or
       (Session.user().isMemberOf(group) and group.membersCanAddMembers)
 
+    canAddDocuments: (group) ->
+      @canAdministerGroup(group)
+
     canCreateSubgroups: Records.memoize (group) ->
       group.isParent() and
       (@canAdministerGroup(group) or

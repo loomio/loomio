@@ -1,5 +1,7 @@
 angular.module('loomioApp').factory 'MdAttachmentFormController', ->
   ($scope, $element, Records) ->
+    $scope.icon = $scope.icon || 'attach_file'
+
     $scope.upload = ->
       $scope.model.setErrors({})
       for file in $scope.files

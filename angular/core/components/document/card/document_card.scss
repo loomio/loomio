@@ -1,9 +1,8 @@
-.documents-card__documents {
+.document-card__documents {
   flex-wrap: wrap;
-  justify-content: center;
 }
 
-.documents-card__document {
+.document-card__document {
   flex-basis: 50%;
   max-width: 120px;
   height: 80px;
@@ -11,25 +10,18 @@
   color: $primary-text-color;
   @include roundedCorners;
   border: 1px solid $border-color;
-  margin: 8px;
+  margin: 8px 8px 8px 0;
   padding: 8px;
-  overflow: hidden;
 }
 
-.documents-card__chip {
+.document-card__chip {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 16px;
-  height: 16px;
-}
-
-.documents-card__triangle {
-  background: white;
-  position: absolute;
-  right: -12px;
-  bottom: -12px;
-  width: 24px;
-  height: 24px;
-  transform: rotate(45deg);
+  right: -1px;
+  bottom: -1px;
+  height: 0;
+  width: 0;
+  border-right: 8px solid $card-background-color !important;
+  border-bottom: 8px solid $card-background-color !important;
+  border-top: 8px solid;
+  border-left: 8px solid;
 }
