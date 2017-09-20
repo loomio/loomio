@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903235705) do
+ActiveRecord::Schema.define(version: 20170920001402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20170903235705) do
 
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "tag_desc_idx", using: :btree
+
 
   create_table "comments", force: :cascade do |t|
     t.integer  "discussion_id",       default: 0
@@ -243,6 +244,18 @@ ActiveRecord::Schema.define(version: 20170903235705) do
   add_index "discussions", ["key"], name: "index_discussions_on_key", unique: true, using: :btree
   add_index "discussions", ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: {"last_activity_at"=>:desc}, using: :btree
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
+
+  create_table "documents", force: :cascade do |t|
+    t.integer  "model_id",      null: false
+    t.string   "model_type",    null: false
+    t.integer  "attachment_id"
+    t.string   "title"
+    t.string   "url"
+    t.string   "doctype",       null: false
+    t.string   "color",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "drafts", force: :cascade do |t|
     t.integer "user_id"

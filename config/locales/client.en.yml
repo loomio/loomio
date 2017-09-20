@@ -696,6 +696,20 @@ en:
     manage_requests: Manage requests
     manage_requests_with_count: Manage requests ({{count}})
 
+  document:
+    card:
+      title: Documents
+      add_document: Add
+    modal:
+      title: Add a document
+    form:
+      url_label: Resource Url
+      url_placeholder: E.g. https://www.example.com/resource.txt
+      title_label: Title
+      title_placeholder: E.g. 'Community Guidelines'
+    flash:
+      success: Document saved
+
   group_help_card:
     title: Help
     ten_tips_article_title: 10 tips for making great decisions with Loomio

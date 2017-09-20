@@ -8,6 +8,7 @@ class AppConfig
     providers
     timezones
     notifications
+    doctypes
   )
 
   CONFIG_FILES.each do |config|

@@ -359,6 +359,14 @@ class Ability
       (@user.groups & request.recipient.groups).any?
     end
 
+    can :create, Document do |document|
+      user_is_admin_of? document.model.group.id
+    end
+
+    can :destroy, Document do |document|
+      user_is_admin_of? document.model.group.id
+    end
+
     add_additional_abilities
   end
 

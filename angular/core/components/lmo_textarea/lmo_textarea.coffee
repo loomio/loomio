@@ -11,4 +11,9 @@ angular.module('loomioApp').directive 'lmoTextarea', (EmojiService, AttachmentSe
       AttachmentService.listenForAttachments $scope, $scope.model
       AttachmentService.listenForPaste $scope
     $scope.init($scope.model)
-    $scope.$on 'reinitializeForm', (_, model) -> $scope.init(model)
+
+    $scope.$on 'reinitializeForm', (_, model) ->
+      $scope.init(model)
+
+    $scope.$on 'attachmentUploaded', (_, attachment) ->
+      $scope.model.newAttachmentIds.push(attachment.id)

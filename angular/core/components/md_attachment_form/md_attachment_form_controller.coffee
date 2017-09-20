@@ -19,7 +19,7 @@ angular.module('loomioApp').factory 'MdAttachmentFormController', ->
     $scope.success = (response) ->
       data = response.data || response
       _.each data.attachments, (attachment) ->
-        $scope.model.newAttachmentIds.push(attachment.id)
+        $scope.$emit 'attachmentUploaded', attachment
 
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)

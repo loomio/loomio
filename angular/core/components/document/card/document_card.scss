@@ -1,0 +1,35 @@
+.documents-card__documents {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.documents-card__document {
+  flex-basis: 50%;
+  max-width: 120px;
+  height: 80px;
+  background: $background-color;
+  color: $primary-text-color;
+  @include roundedCorners;
+  border: 1px solid $border-color;
+  margin: 8px;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.documents-card__chip {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.documents-card__triangle {
+  background: white;
+  position: absolute;
+  right: -12px;
+  bottom: -12px;
+  width: 24px;
+  height: 24px;
+  transform: rotate(45deg);
+}

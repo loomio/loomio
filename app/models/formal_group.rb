@@ -24,6 +24,7 @@ class FormalGroup < Group
   has_many :votes, through: :motions
   has_many :group_identities, dependent: :destroy, foreign_key: :group_id
   has_many :identities, through: :group_identities
+  has_many :documents, as: :model
 
   belongs_to :cohort
   belongs_to :default_group_cover

@@ -1,0 +1,15 @@
+.document-form
+  %md-input-container.md-block
+    %label{translate: "document.form.url_label"}
+    .lmo-flex{layout: "row"}
+      %input.lmo-flex__grow{ng-model: "document.url", ng-disabled: "disabled", placeholder: "{{'document.form.url_placeholder' | translate }}"}
+      %md_attachment_form.document-form__attachment-form{model: "model"}
+    %validation_errors{subject: "document", field: "url"}
+
+  %md-input-container.md-block
+    %label{translate: "document.form.title_label"}
+    %input{ng-model: "document.title", placeholder: "{{'document.form.title_placeholder' | translate }}"}
+    %validation_errors{subject: "document", field: "url"}
+
+  .lmo-md-action
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.save"}

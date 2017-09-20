@@ -1,0 +1,19 @@
+- name: github
+  regex: github.com
+  color: "#444444"
+
+- name: trello
+  regex: trello.com
+  color: "#AA4466"
+
+- name: google_doc
+  regex: drive\.google\.com
+  color: "#4466AA"
+
+- name: image
+  regex: \.[gif|jpg|jpeg]$
+  color: "#CCCCCC"
+
+- name: pdf
+  regex: \.pdf$
+  color: "#BB4444"

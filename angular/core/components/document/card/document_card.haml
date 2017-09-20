@@ -1,0 +1,9 @@
+%section.documents-card.lmo-card.lmo-no-print
+  %h2#documents-card-title.lmo-card-heading{translate: "document.card.title"}
+  .documents-card__documents.lmo-flex{layout: "row"}
+    %a.documents-card__document.lmo-pointer.lmo-relative{href: "{{document.url}}", target: "_blank", ng-repeat: "document in model.documents() track by document.id"}
+      {{ document.title }}
+      %span.documents-card__chip{ng-style: "{'background-color': document.color}"}
+      %span.documents-card__triangle
+  .lmo-md-action
+    %md-button.md-raised.md-primary{ng-click: "addDocument()", translate: "document.card.add_document"}
