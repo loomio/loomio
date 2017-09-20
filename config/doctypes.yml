@@ -17,3 +17,7 @@
 - name: pdf
   regex: \.pdf$
   color: "#BB4444"
+
+- name: unknown
+  regex: .*
+  color: "#ABCABC"
