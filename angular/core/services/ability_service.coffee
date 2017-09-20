@@ -1,183 +1,183 @@
 angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Session) ->
   new class AbilityService
 
-    isLoggedIn: Records.memoize ->
+    isLoggedIn: ->
       @isUser() and !Session.user().restricted?
 
-    isEmailVerified: Records.memoize ->
+    isEmailVerified: ->
       @isLoggedIn() && Session.user().emailVerified
 
-    isUser: Records.memoize ->
+    isUser: ->
       AppConfig.currentUserId?
 
-    canContactUser: Records.memoize (user) ->
+    canContactUser: (user) ->
       @isLoggedIn() &&
       Session.user().id != user.id &&
       _.intersection(Session.user().groupIds(), user.groupIds()).length
 
-    canAddComment: Records.memoize (thread) ->
+    canAddComment: (thread) ->
       Session.user().isMemberOf(thread.group())
 
-    canRespondToComment: Records.memoize (comment) ->
+    canRespondToComment: (comment) ->
       Session.user().isMemberOf(comment.group())
 
-    canStartPoll: Records.memoize (group) ->
+    canStartPoll: (group) ->
       group and
       (@canAdministerGroup(group) or Session.user().isMemberOf(group) and group.membersCanRaiseMotions)
 
-    canParticipateInPoll: Records.memoize (poll) ->
+    canParticipateInPoll: (poll) ->
       return false unless poll
       @canAdministerPoll(poll) or
       !poll.group() or
       (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
 
-    canEditStance: Records.memoize (stance) ->
+    canEditStance: (stance) ->
       Session.user() == stance.author()
 
-    canEditThread: Records.memoize (thread) ->
+    canEditThread: (thread) ->
       @canAdministerGroup(thread.group()) or
       Session.user().isMemberOf(thread.group()) and
       (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
 
-    canPinThread: Records.memoize (thread) ->
+    canPinThread: (thread) ->
       !thread.pinned && @canAdministerGroup(thread.group())
 
-    canUnpinThread: Records.memoize (thread) ->
+    canUnpinThread: (thread) ->
       thread.pinned && @canAdministerGroup(thread.group())
 
-    canMoveThread: Records.memoize (thread) ->
+    canMoveThread: (thread) ->
       @canAdministerGroup(thread.group()) or
       Session.user().isAuthorOf(thread)
 
-    canDeleteThread: Records.memoize (thread) ->
+    canDeleteThread: (thread) ->
       @canAdministerGroup(thread.group()) or
       Session.user().isAuthorOf(thread)
 
-    canChangeThreadVolume: Records.memoize (thread) ->
+    canChangeThreadVolume: (thread) ->
       Session.user().isMemberOf(thread.group())
 
-    canChangeGroupVolume: Records.memoize (group) ->
+    canChangeGroupVolume: (group) ->
       Session.user().isMemberOf(group)
 
-    canAdministerGroup: Records.memoize (group) ->
+    canAdministerGroup: (group) ->
       Session.user().isAdminOf(group)
 
-    canManageGroupSubscription: Records.memoize (group) ->
+    canManageGroupSubscription: (group) ->
       group.isParent() and
       @canAdministerGroup(group) and
       group.subscriptionKind? and
       group.subscriptionKind != 'trial' and
       group.subscriptionPaymentMethod != 'manual'
 
-    isCreatorOf: Records.memoize (group) ->
+    isCreatorOf: (group) ->
       Session.user().id == group.creatorId
 
-    canStartThread: Records.memoize (group) ->
+    canStartThread: (group) ->
       @canAdministerGroup(group) or
       (Session.user().isMemberOf(group) and group.membersCanStartDiscussions)
 
-    canAddMembers: Records.memoize (group) ->
+    canAddMembers: (group) ->
       @canAdministerGroup(group) or
       (Session.user().isMemberOf(group) and group.membersCanAddMembers)
 
-    canCreateSubgroups: Records.memoize (group) ->
+    canCreateSubgroups: (group) ->
       group.isParent() and
       (@canAdministerGroup(group) or
       (Session.user().isMemberOf(group) and group.membersCanCreateSubgroups))
 
-    canEditGroup: Records.memoize (group) ->
+    canEditGroup: (group) ->
       @canAdministerGroup(group)
 
-    canArchiveGroup: Records.memoize (group) ->
+    canArchiveGroup: (group) ->
       @canAdministerGroup(group)
 
-    canEditComment: Records.memoize (comment) ->
+    canEditComment: (comment) ->
       Session.user().isMemberOf(comment.group()) and
       Session.user().isAuthorOf(comment) and
       (comment.isMostRecent() or comment.group().membersCanEditComments)
 
-    canDeleteComment: Records.memoize (comment) ->
+    canDeleteComment: (comment) ->
       (Session.user().isMemberOf(comment.group()) and
       Session.user().isAuthorOf(comment)) or
       @canAdministerGroup(comment.group())
 
-    canRemoveMembership: Records.memoize (membership) ->
+    canRemoveMembership: (membership) ->
       membership.group().memberIds().length > 1 and
       (!membership.admin or membership.group().adminIds().length > 1) and
       (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
 
-    canDeactivateUser: Records.memoize ->
+    canDeactivateUser: ->
      _.all Session.user().memberships(), (membership) ->
        !membership.admin or membership.group().hasMultipleAdmins
 
-    canManageMembershipRequests: Records.memoize (group) ->
+    canManageMembershipRequests: (group) ->
       (group.membersCanAddMembers and Session.user().isMemberOf(group)) or @canAdministerGroup(group)
 
-    canViewPublicGroups: Records.memoize ->
+    canViewPublicGroups: ->
       AppConfig.features.public_groups
 
-    canStartGroups: Records.memoize ->
+    canStartGroups: ->
       AppConfig.features.create_group || Session.user().isAdmin
 
-    canViewGroup: Records.memoize (group) ->
+    canViewGroup: (group) ->
       !group.privacyIsSecret() or
       Session.user().isMemberOf(group)
 
-    canViewPrivateContent: Records.memoize (group) ->
+    canViewPrivateContent: (group) ->
       Session.user().isMemberOf(group)
 
-    canCreateContentFor: Records.memoize (group) ->
+    canCreateContentFor: (group) ->
       Session.user().isMemberOf(group)
 
-    canViewMemberships: Records.memoize (group) ->
+    canViewMemberships: (group) ->
       Session.user().isMemberOf(group)
 
-    canViewPreviousPolls: Records.memoize (group) ->
+    canViewPreviousPolls: (group) ->
       @canViewGroup(group)
 
-    canJoinGroup: Records.memoize (group) ->
+    canJoinGroup: (group) ->
       (group.membershipGrantedUpon == 'request') and
       @canViewGroup(group) and
       !Session.user().isMemberOf(group)
 
-    canRequestMembership: Records.memoize (group) ->
+    canRequestMembership: (group) ->
       (group.membershipGrantedUpon == 'approval') and
       @canViewGroup(group) and
       !Session.user().isMemberOf(group)
 
-    canTranslate: Records.memoize (model) ->
+    canTranslate: (model) ->
       AppConfig.inlineTranslation.isAvailable? and
       _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
       Session.user().locale != model.author().locale
 
-    canSubscribeToPoll: Records.memoize (poll) ->
+    canSubscribeToPoll: (poll) ->
       if poll.group()
         @canViewGroup(poll.group())
       else
         @canAdministerPoll() || _.contains(@poll().voters(), Session.user())
 
-    canSharePoll: Records.memoize (poll) ->
+    canSharePoll: (poll) ->
       @canEditPoll(poll)
 
-    canEditPoll: Records.memoize (poll) ->
+    canEditPoll: (poll) ->
       poll.isActive() and @canAdministerPoll(poll)
 
-    canDeletePoll: Records.memoize (poll) ->
+    canDeletePoll: (poll) ->
       @canAdministerPoll(poll)
 
-    canSetPollOutcome: Records.memoize (poll) ->
+    canSetPollOutcome: (poll) ->
       poll.isClosed() and @canAdministerPoll(poll)
 
-    canAdministerPoll: Records.memoize (poll) ->
+    canAdministerPoll: (poll) ->
       if poll.group()
         (@canAdministerGroup(poll.group()) or (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
       else
         Session.user().isAuthorOf(poll)
 
-    canClosePoll: Records.memoize (poll) ->
+    canClosePoll: (poll) ->
       @canEditPoll(poll)
 
-    requireLoginFor: Records.memoize (page) ->
+    requireLoginFor: (page) ->
       return false if @isLoggedIn()
       switch page
         when 'emailSettingsPage' then !Session.user().restricted?
