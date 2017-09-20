@@ -117,6 +117,6 @@ class PermittedParams < Struct.new(:params)
   end
 
   def document_attributes
-    [:url, :model_id, :model_type]
+    [:url, :title, :model_id, :model_type]
   end
 end

@@ -1,23 +1,59 @@
-- name: github
-  regex: github.com
-  color: "#444444"
-
-- name: trello
-  regex: trello.com
-  color: "#AA4466"
-
-- name: google_doc
-  regex: drive\.google\.com
-  color: "#4466AA"
+- name: youtube_video
+  regex: youtube.com\/watch\/
+  color: "#BB0000"
 
 - name: image
-  regex: \.[gif|jpg|jpeg]$
-  color: "#CCCCCC"
+  regex: \.(gif|jpg|jpeg|png|tiff|svg)(\?\d+)*$
+  color: "#ABCABC"
 
 - name: pdf
-  regex: \.pdf$
+  regex: \.pdf(\?\d+)*$
   color: "#BB4444"
 
-- name: unknown
+- name: excel
+  regex: \.(xls|xlsx)(\?\d+)*$
+  color: "#44AA66"
+
+- name: document
+  regex: \.(doc|docx)(\?\d+)*$
+  color: "#4466AA"
+
+- name: csv
+  regex: \.csv(\?\d+)*$
+  color: "#44AA66"
+
+- name: video
+  regex: \.(mp4|mov|m4a)
+  color: "#BB0000"
+
+- name: text
+  regex: \.(txt)
+  color: "#4466AA"
+
+- name: google_doc
+  regex: docs\.google\.com\/documents
+  color: "#4466AA"
+
+- name: google_sheet
+  regex: docs\.google\.com\/spreadsheets
+  color: "#44AA66"
+
+- name: google_drive
+  regex: docs\.google\.com\/
+  color: "#4466AA"
+
+- name: pull_request
+  regex: github.com\/.*\/pulls\/
+  color: "#444444"
+
+- name: trello_board
+  regex: trello.com\/b\/
+  color: "#026AA7"
+
+- name: trello_card
+  regex: trello.com\/c\/
+  color: "#026AA7"
+
+- name: other
   regex: .*
-  color: "#ABCABC"
+  color: "#CCCCCC"

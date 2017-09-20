@@ -6,10 +6,13 @@ class Document < ActiveRecord::Base
   validates :color, presence: true
   before_validation :set_metadata
 
+  def reset_metadata!
+    update(doctype: metadata['name'], color: metadata['color'])
+  end
+
   private
 
   def set_metadata
-    self.title   ||= "default title"
     self.doctype ||= metadata['name']
     self.color   ||= metadata['color']
   end

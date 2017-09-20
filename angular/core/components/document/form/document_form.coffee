@@ -11,5 +11,6 @@ angular.module('loomioApp').directive 'documentForm', (Records, FormService) ->
       $scope.disabled = true
 
     $scope.submit = FormService.submit $scope, $scope.document,
-     successFlash: "document.flash.success"
-     
+      successFlash: "document.flash.success"
+
+    $scope.$close = -> $scope.$emit '$close'

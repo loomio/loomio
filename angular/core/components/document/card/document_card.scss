@@ -3,9 +3,10 @@
 }
 
 .document-card__document {
+  word-break: break-all;
   flex-basis: 50%;
   max-width: 120px;
-  height: 80px;
+  min-height: 80px;
   background: $background-color;
   color: $primary-text-color;
   @include roundedCorners;
@@ -24,4 +25,9 @@
   border-bottom: 8px solid $card-background-color !important;
   border-top: 8px solid;
   border-left: 8px solid;
+}
+
+.document-card__document-doctype {
+  color: $grey-on-grey;
+  @include fontTiny;
 }
