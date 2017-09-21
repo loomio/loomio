@@ -12,7 +12,7 @@ angular.module('loomioApp').factory 'EmojiService', ($timeout, AppConfig, $trans
     translate: (shortname_with_colons) ->
       shortname = shortname_with_colons.replace(/:/g, '')
       str = $translate.instant("reactions.#{shortname}")
-      if str.startsWith("reactions.")
+      if _.startsWith(str, "reactions.")
         shortname
       else
         str
