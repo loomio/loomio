@@ -19,6 +19,7 @@ class AppConfig
 
   def self.theme
     {
+      site_name:                         ENV.fetch('SITE_NAME', 'Loomio'),
       icon_src:                          ENV.fetch('THEME_ICON_SRC', '/theme/icon.png'),
       small_logo_src:                    ENV.fetch('THEME_SMALL_LOGO_SRC', '/theme/small_logo.png'),
       large_logo_src:                    ENV.fetch('THEME_LARGE_LOGO_SRC', '/theme/large_logo.png'),
@@ -27,7 +28,9 @@ class AppConfig
       primary_palette:                   ENV.fetch('THEME_PRIMARY_PALETTE', 'orange'),
       accent_palette:                    ENV.fetch('THEME_ACCENT_PALETTE', 'cyan'),
       primary_palette_config: JSON.parse(ENV.fetch('THEME_PRIMARY_PALETTE_CONFIG', '{"default": "400"}')),
-      accent_palette_config:  JSON.parse(ENV.fetch('THEME_ACCENT_PALETTE_CONFIG', '{"default": "500"}'))
+      accent_palette_config:  JSON.parse(ENV.fetch('THEME_ACCENT_PALETTE_CONFIG', '{"default": "500"}')),
+      custom_primary_palette: json_parse_or_false('THEME_CUSTOM_PRIMARY_PALETTE'),
+      custom_accent_palette:  json_parse_or_false('THEME_CUSTOM_ACCENT_PALETTE')
     }
    end
 
@@ -38,5 +41,13 @@ class AppConfig
        public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
        help_link:     !ENV['FEATURES_DISABLE_HELP_LINK']
      }
+   end
+
+   def self.json_parse_or_false(name)
+     if ENV[name]
+       JSON.parse(ENV[name])
+     else
+       false
+     end
    end
 end

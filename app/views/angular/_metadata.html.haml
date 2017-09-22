@@ -1,10 +1,10 @@
-%meta{property: 'og:site_name',    content: ENV.fetch('SITE_NAME', 'Loomio')}
+%meta{property: 'og:site_name',    content: AppConfig.theme[:site_name]}
 %meta{property: 'og:locale',       content: current_user.locale}
 %meta{property: 'og:url',          content: request.original_url}
 %meta{property: 'fb:app_id',       content: ENV['FB_APP_ID_META']}
 
 %meta{name: 'twitter:card',        content: :summary}
-%meta{name: 'twitter:site',        content: ENV.fetch('SITE_NAME', 'Loomio')}
+%meta{name: 'twitter:site',        content: AppConfig.theme[:site_name]}
 %meta{name: 'twitter:url',         content: request.original_url}
 
 - if @metadata
