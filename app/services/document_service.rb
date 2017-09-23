@@ -8,6 +8,17 @@ class DocumentService
     EventBus.broadcast 'document_create', document, actor
   end
 
+  def self.update(document:, params:, actor:)
+    actor.ability.authorize! :update, document
+
+    document.assign_attributes(params.slice(:url, :title))
+
+    return unless document.valid?
+    document.save!
+
+    EventBus.broadcast 'document_update', document, params, actor
+  end
+
   def self.destroy(document:, actor:)
     actor.ability.authorize! :destroy, document
 

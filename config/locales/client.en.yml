@@ -728,6 +728,7 @@ en:
       title_placeholder: E.g. 'Community Guidelines'
     flash:
       success: Document saved
+      destroyed: Document removed
 
   group_help_card:
     title: Help

@@ -83,6 +83,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     canAddDocuments: (group) ->
       @canAdministerGroup(group)
 
+    canEditDocument: (group) ->
+      @canAdministerGroup(group)
+
     canCreateSubgroups: (group) ->
       group.isParent() and
       (@canAdministerGroup(group) or

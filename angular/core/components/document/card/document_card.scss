@@ -1,18 +1,14 @@
-.document-card__documents {
-  flex-wrap: wrap;
+.document-card__document {
+  width: 100%;
+  background: $background-color;
+  border: 1px solid $border-color;
+  @include roundedCorners;
+  padding: 4px;
+  margin: 4px 0;
 }
 
-.document-card__document {
-  word-break: break-all;
-  flex-basis: 50%;
-  max-width: 120px;
-  min-height: 80px;
-  background: $background-color;
+.document-card__document-title {
   color: $primary-text-color;
-  @include roundedCorners;
-  border: 1px solid $border-color;
-  margin: 8px 8px 8px 0;
-  padding: 8px;
 }
 
 .document-card__chip {

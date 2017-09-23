@@ -13,5 +13,7 @@
       %validation_errors{subject: "document", field: "url"}
     %md_attachment_form.document-form__attachment-form{model: "model", icon: "file_upload"}
 
-  .lmo-md-action
+  .lmo-md-actions
+    %div{ng-if: "document.isNew()"}
+    %md-button.md-warn.md-raised{ng-if: "!document.isNew()", ng-click: "destroy()", translate: "common.action.remove"}
     %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.save"}
