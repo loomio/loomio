@@ -1,8 +1,8 @@
 class ClientTranslationService
   attr_reader :locale
 
-  def initialize(locale = I18n.default_locale)
-    @locale = Loomio::I18n::FALLBACKS[locale].to_s
+  def initialize(locale = nil)
+    @locale = (Loomio::I18n::FALLBACKS[locale] || I18n.default_locale).to_s
   end
 
   def as_json

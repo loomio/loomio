@@ -1,6 +1,6 @@
 class API::TranslationsController < API::RestfulController
   def show
-    render json: ClientTranslationService.new(params[:lang]).to_json
+    render json: ClientTranslationService.new(params[:lang]).as_json
   end
 
   def inline
