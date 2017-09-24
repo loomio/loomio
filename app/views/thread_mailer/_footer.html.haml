@@ -12,4 +12,4 @@
       = t :'thread_mailer.turn_off_notifications_html', url: email_actions_unfollow_discussion_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token, discussion_id: @discussion.id))
 
     = t :"thread_mailer.change_email_preferences_html", email_preferences_url: email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))
-  = image_tag AppConfig.theme[:small_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
+  = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"

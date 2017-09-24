@@ -2,7 +2,7 @@
   .navbar__logo-bg {
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto 20px;
+    background-size: auto 32px;
   }
 
   .md-toolbar-tools {
@@ -26,6 +26,7 @@
   }
   .navbar__middle{
     flex-grow: 1;
+    height: 100%;
   }
 
   .navbar__left {
