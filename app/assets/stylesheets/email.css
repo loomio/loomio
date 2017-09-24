@@ -29,6 +29,7 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 .mailer__header-logo-image {
   margin: 15px 0 10px 0;
   max-width: 200px;
+  height: 64px;
 }
 
 .mailer__header-logo {
@@ -191,7 +192,7 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 }
 
 .thread-mailer__footer-logo {
-  height: 20px;
+  height: 32px;
 }
 
 .user-mailer__contact-request-context {

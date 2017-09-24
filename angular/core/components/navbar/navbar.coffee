@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'navbar', ($rootScope, ModalService, AuthM
   replace: true
   controller: ($scope) ->
     $scope.bgStyle = ->
-      {'background-image': "url(#{AppConfig.theme.small_logo_src})"}
+      {'background-image': "url(#{AppConfig.theme.app_logo_src})"}
 
     $scope.isLoggedIn = ->
       AbilityService.isLoggedIn()

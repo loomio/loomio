@@ -7,6 +7,6 @@
       .invite-people-mailer__container
         .mailer__header
           .mailer__header-logo
-            = image_tag AppConfig.theme[:large_logo_src], alt: "Logo", class: "mailer__header-logo-image"
+            = image_tag AppConfig.theme[:email_header_logo_src], alt: "Logo", class: "mailer__header-logo-image"
         .invite-people-mailer__body
           = yield
