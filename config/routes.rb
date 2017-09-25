@@ -156,6 +156,7 @@ Loomio::Application.routes.draw do
     resources :attachments, only: [:create, :destroy]
 
     resource :translations, only: [] do
+      get :show, on: :collection
       get :inline, to: 'translations#inline'
     end
 

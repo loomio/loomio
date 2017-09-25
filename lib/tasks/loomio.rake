@@ -2,7 +2,7 @@ namespace :loomio do
   task :generate_test_error do
     raise "this is a generated test error"
   end
-  
+
   task :version do
     puts Loomio::Version.current
   end
@@ -17,13 +17,6 @@ namespace :loomio do
           layout: "error"
         )
       end
-    end
-  end
-
-  task generate_static_translations: :environment do
-    Loomio::I18n::SELECTABLE_LOCALES.each do |locale|
-      puts "Writing public/translations/#{locale}.json..."
-      File.write("public/translations/#{locale}.json", ClientTranslationService.new(locale).to_json)
     end
   end
 
