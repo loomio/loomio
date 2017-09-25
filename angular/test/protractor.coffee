@@ -11,7 +11,7 @@ exports.config =
   seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.5.3.jar'
   allScriptsTimeout: 60000
   capabilities:
-    browserName:     'chrome'
+    browserName:     'firefox'
   baseUrl:           'http://localhost:3000'
   jasmineNodeOpts:
     onComplete: null

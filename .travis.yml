@@ -15,7 +15,6 @@ cache:
     - angular/node_modules
 
 addons:
-  chrome: stable
   firefox: "55.0"
   postgresql: "9.5"
   apt:
