@@ -3,7 +3,6 @@
     width: 100%;
     @include dropsShadow;
     background: $card-background-color;
-    &[style] { transform: rotate(5deg); }
   }
   .poll-common-vote-form__border-chip {
     min-height: 36px;
