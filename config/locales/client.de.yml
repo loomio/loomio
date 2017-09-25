@@ -646,7 +646,6 @@ de:
     liked_by_you_and_someone: 'Dir und {{name}} gefällt dies.'
     liked_by_you_and_others: 'Gefällt Dir, {{joinedNames}} und {{name}}.'
     liked_by_someone: '{{name}} gefällt dies.'
-    liked_by_two_others: '{{name_1}} und {{name_2}} gefällt dies.'
     liked_by_many_others: 'Gefällt {{joinedNames}} und {{name}}.'
     liked_by_name: 'Gefällt {{name}}.'
     started_by: 'Eröffnet von <strong>{{name}}</strong>'

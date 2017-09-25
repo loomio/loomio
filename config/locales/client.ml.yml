@@ -59,8 +59,6 @@ ml:
     title_label: 'തലക്കെട്ട്'
     context_label: 'പശ്ചാത്തലം'
     privacy_label: 'സ്വകാര്യത'
-  proposal_expanded:
-    close_proposal: 'ശുപാര്‍ശ അവസാനിപ്പിക്കുക'
   membership_request_form:
     heading: കൂട്ടത്തില്‍ ചേരാന്‍ ചോദിക്കുക
     name_label: പേരു്

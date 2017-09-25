@@ -16,8 +16,6 @@ ar:
       subject: "قم بإنشاء مجموعة لوميو جديدة: %{group_name}"
     unsubscribe: 'قم بإلغاء الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
-    view_comment: انقر هنا لاستعراض التعليق على لوميو
-    view_discussion: انقر هنا لاستعراض هذا النقاش
     daily_activity:
       heading: 'نشاطك على لوميو '
       intro: إظهار ماذا حدث على مجموعات لوميو خلال ال24 ساعة الماضية
@@ -29,21 +27,10 @@ ar:
       thanks_for_reading: شكرا للقراءة، نتمنى لك يوماً سعيداً!
       heres_what_happened: "هاك ما حصل على لوميو أمس."
       marked_as_read_success: تم تحديد كل شيء في الرسالة الالكترونية كمقروء
-    comment_replied_to:
-      subject: "%{who} قام بالرد على تعليقك في مجموعة لوميو %{which}"
     membership_request:
       intro: "%{name} (%{email}) قام بطلب الدخول إلى أحد مجموعاتك على لوميو."
       subject: "%{who} قام بطلب الانضمام إلى %{which_group}"
       view_group: يمكنك الموافقة أو إلغاء الطلب هنا
-    thread_mailer:
-      footer_text: 'قم بالرد مباشرة على هذه الرسالة أو استعرضها على %{hostname}:'
-      reply_or_view_online_html: قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."
-      turn_off_notifications_text: 'قم بإطفاء الرسائل الالكترونية لهذا النقاش: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>قم بتشغيل الرسائل الالكترونية لهذا النقاش</a> لاستقبال المزيد من النشاطات. "
-      turn_on_notifications_text: 'قم بتشغيل الرسائل الالكترونية لاستقبال المزيد من النشاطات في هذا النقاش: %{url}'
-      change_email_preferences_html: قم بتغيير <a href='%{email_preferences_url}'>تفضيلات البريد الالكتروني</a> لإلغاء الإشتراك في هذه الرسالة الالكترونية.
-      change_preferences: 'تغيير تفضيلات البريد الالكتروني خاصتك:'
   footer:
     about: حول
     blog: مدونة

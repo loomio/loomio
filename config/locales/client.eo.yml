@@ -91,9 +91,6 @@ eo:
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
-  proposal_expanded:
-    edit_proposal: 'Redakti proponon'
-    close_proposal: 'Fermi proponon'
   join_group_button:
     join_group: Aliĝi al la grupo
   membership_request_form:

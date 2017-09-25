@@ -28,6 +28,7 @@ class UserMailer < BaseMailer
       @discussions_by_group = @discussions.group_by(&:group)
       send_single_mail to: @user.email,
                        subject_key: "email.missed_yesterday.subject",
+                       subject_params: { site_name: AppConfig.theme[:site_name] },
                        locale: locale_for(@user)
     end
   end
@@ -52,7 +53,7 @@ class UserMailer < BaseMailer
                      from: from_user_via_loomio(@inviter),
                      reply_to: @inviter.try(:name_and_email),
                      subject_key: "email.user_added_to_group.subject",
-                     subject_params: { which_group: @group.full_name, who: @inviter.name },
+                     subject_params: { which_group: @group.full_name, who: @inviter.name, site_name: AppConfig.theme[:site_name] },
                      locale: locale_for(@user, @inviter)
   end
 
@@ -61,6 +62,7 @@ class UserMailer < BaseMailer
     @token = token
     send_single_mail to: @user.email,
                      subject_key: "email.login.subject",
+                     subject_params: {site_name: AppConfig.theme[:site_name]},
                      locale: locale_for(@user)
   end
 

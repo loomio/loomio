@@ -13,4 +13,10 @@ class GroupIdentityService
     Events::GroupIdentityCreated.publish!(group_identity, actor)
     EventBus.broadcast('group_identity_create', group_identity, actor)
   end
+
+  def self.destroy(group_identity:, actor:)
+    actor.ability.authorize! :destroy, group_identity
+    group_identity.destroy
+    EventBus.broadcast('group_identity_destroy', group_identity, actor)
+  end
 end

@@ -158,10 +158,6 @@ ro:
     privacy_public: 'Oricine poate vedea o discutie. Doar membrii pot participa.'
     privacy_private: 'Discutia va fi vizibila doar membrilor grupului {{group}}.'
     privacy_organisation: 'Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.'
-  proposal_expanded:
-    edit_proposal: 'Editeaza propunerea'
-    close_proposal: 'Inchide propunerea'
-    closed_badge: Inchis
   join_group_button:
     join_group: Alatură-te grupului
   membership_request_form:

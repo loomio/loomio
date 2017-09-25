@@ -585,7 +585,6 @@ tr:
     liked_by_you_and_someone: 'Sen ve {{name}} bunu beğendiniz.'
     liked_by_you_and_others: 'Sen,  {{joinedNames}} ve {{name}} bunu beğendiniz.'
     liked_by_someone: '{{name}} bunu beğendi.'
-    liked_by_two_others: '{{name_1}} ve {{name_2}} bunu beğendi.'
     liked_by_many_others: '{{joinedNames}} ve {{name}} tarafından beğenildi.'
     liked_by_name: '{{name}} tarafından beğenildi.'
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'

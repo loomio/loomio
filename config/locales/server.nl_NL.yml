@@ -55,11 +55,6 @@ nl_NL:
       link_help: "Klik op de link hieronder om naar de groep te gaan:"
     unsubscribe: 'Uitschrijven of je e-mailvoorkeuren aanpassen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mailvoorkeuren aan te passen."
-    view_comment: Klik hier om de reactie op Loomio te zien
-    view_discussion: Klik hier om deze discussie te bekijken
-    create_discussion:
-      intro_html: "begon een discussie"
-      intro: "%{who} begon een discussie:"
     daily_activity:
       heading: Jouw Loomio Activiteit
       intro: 'Tonen wat er in de laatste 24 uur in jouw Loomio groepen is gebeurd '
@@ -71,12 +66,6 @@ nl_NL:
       thanks_for_reading: Bedankt voor het lezen, een fijne dag gewenst!
       heres_what_happened: "Dit gebeurde er gisteren op Loomio."
       marked_as_read_success: Alles uit de e-mail is gemarkeerd als gelezen
-    comment_replied_to:
-      context_html: 'antwoordde op je opmerking in'
-      context: '%{author_name} antwoordde op je opmerking in %{discussion_title}'
-      subject: "%{who} reageerde op jouw reactie in de %{which} groep op Loomio"
-    new_comment:
-      context: 'reageerde op'
     group_membership_approved:
       intro: "Je verzoek om toegang tot groep %{group_name} is goedgekeurd."
       intro_html: "Je verzoek om toegang tot groep <strong>%{group_name}</strong> is goedgekeurd."
@@ -90,19 +79,6 @@ nl_NL:
       subject: "%{who} heeft aangevraagd om lid te worden van %{which_group}"
       view_group: Je kan hier de aanvraag goed- of afkeuren
       button_text: Bekijk verzoek
-    mentioned:
-      context_html: "vermeldde je in discussie"
-      context: "%{author_name} heeft je vermeld in het gesprek %{discussion_title}"
-      subject: '%{who} heeft je vermeld in een gesprek "%{which}" '
-    thread_mailer:
-      footer_text: 'Beantwoord deze e-mail direct of bekijk op %{hostname}:'
-      reply_or_view_online_html: Beantwoord deze e-mail direct of <a href='%{url}'>bekijk deze op %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Zet e-mails uit</a> voor deze discussie."
-      turn_off_notifications_text: 'Zet e-mails uit voor deze discussie: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Zet e-mails aan voor deze discussie</a> om nieuwe activiteit te ontvangen."
-      turn_on_notifications_text: 'Zet email aan om verdere activiteit in dit gesprek te ontvangen: %{url}'
-      change_email_preferences_html: Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails.
-      change_preferences: 'Verander je e-mail-voorkeuren:'
   footer:
     about: Over
     blog: Blog

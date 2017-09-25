@@ -39,8 +39,6 @@ te:
     title_label: 'శీర్షిక'
     context_label: 'సందర్భం'
     privacy_label: 'గోప్యత'
-  proposal_expanded:
-    close_proposal: 'ప్రతిపాదనను మూసివేయి'
   membership_request_form:
     heading: సమూహంలో చేరుటకు అడగండి
     name_label: పేరు

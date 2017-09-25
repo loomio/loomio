@@ -9,7 +9,6 @@ ga_IE:
       link: Bí istigh sa phlé
     to_start_group:
       subject: "Cuir do bhaicle Loomio nua ar bun: %{group_name}"
-    view_discussion: Brúigh anseo chun an plé seo a fheiceáil
     daily_activity:
       heading: Do Ghníomhaíocht Loomio
       intro: Ag léiriú cad a bhí ar siúil sna baiclí Loomio agatsa sa 24 uair anuas
@@ -21,8 +20,6 @@ ga_IE:
     membership_request:
       subject: "D'iarr %{who} cead dul isteach i %{which_group}"
       view_group: Tig leat an t-iarratas a cheadú nó diúltú dó anseo
-    thread_mailer:
-      change_preferences: 'Athraigh do shainroghanna ríomhphoist:'
   footer:
     about: Maidir linn
     blog: Blag

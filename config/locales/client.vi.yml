@@ -51,8 +51,6 @@ vi:
     title_label: 'Tiêu đề'
     context_label: 'Nội dung'
     privacy_label: 'Quyền riêng tư'
-  proposal_expanded:
-    close_proposal: 'Đóng lại lời đề nghị'
   membership_request_form:
     name_label: Tên
     email_label: Email

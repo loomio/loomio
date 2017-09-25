@@ -4,8 +4,6 @@ vi:
       intro: "%{who} đã tạo một tuyên bố mới trong %{group}:"
     unsubscribe: 'Bỏ việc đăng ký theo dõi hoặc thay đổi tùy chọn về địa chỉ email của bạn:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> để bỏ việc đăng ký theo dõi hoặc thay đổi tùy chọn về địa chỉ email của bạn."
-    view_comment: Click vào đây để xem các bình luận trên Loomio
-    view_discussion: Click vào đây để xem phần thảo luận này
     daily_activity:
       heading: Các hoạt động trên Loomio của bạn
       intro: Hiển thị các sự kiện đang xảy ra trong các nhóm mà bạn đã tham gia vào trong vòng 24 giờ vừa qua

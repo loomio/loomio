@@ -81,6 +81,8 @@ fr:
       delete: Supprimer
       unsubscribe: Se désinscrire
       subscribe: S'inscrire
+      remind: Rappel
+      resend: Renvoyer
     formatting_help:
       label: 'Mise en forme'
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte sur Loomio'
@@ -91,6 +93,12 @@ fr:
     forbidden: 'Vous n''avez pas la permission de faire cela.'
     page_not_found: 'Nous n''avons pas pu trouver cela. Cela a dû être supprimé ou déplacé.'
     internal_server_error: 'Nous sommes désolés mais quelque chose s''est mal passé. Veuillez essayer à nouveau.'
+  verify_stances:
+    verify: Vérifier
+    remove: Retirer
+    verify_success: Vote vérifié
+    remove_success: Vote supprimé
+    all_done: Bon travail, vous avez vérifié tous les votes.
   start_proposal_card:
     title: 'Lancer une proposition'
     helptext: Prêt à prendre une décision ?
@@ -212,11 +220,13 @@ fr:
       replied: '{{name}} a été notifié de la réponse.'
       updated: 'Commentaire mis à jour'
       destroyed: 'Commentaire effacé'
+    say_something: Dites quelque chose...
     edit_comment: 'Modifier le commentaire'
     delete_comment: 'Effacer le commentaire'
     cancel_reply: 'Annuler la réponse'
     confirm_delete_message: 'Etes vous certain de vouloir effacer ce commentaire ?'
     confirm_delete: 'Effacer le commentaire'
+    in_reply_to: "En réponse à {{name}}:"
     submit_button:
       label: 'Publier'
     private_privacy_notice: 'Votre commentaire sera visible seulement des membres de {{groupName}}.'
@@ -278,7 +288,6 @@ fr:
     new_vote: "<strong>{{name}}</strong> {{position}} sur la proposition <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> a commenté sur <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> a répondu à votre commentaire sur <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> a aimé votre commentaire dans <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> vous a mentionné dans <strong>{{title}}</strong"
     membership_requested: "<strong>{{name}}</strong> a demandé à être membre de <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> a approuvé votre demande de rejoindre <strong>{{title}}</strong>'
@@ -677,6 +686,7 @@ fr:
     email: Adresse e-mail
     invitation_link: Lien d'invitation
     sent: Envoyé
+    copy_url: Copier l'URL
   cancel_invitation_form:
     heading: Annuler l'invitation
     question: Êtes-vous certain de vouloir annuler cette invitation ?
@@ -684,8 +694,6 @@ fr:
     cancel: 'Non'
     messages:
       success: Invitation annulée
-  user_page:
-    introduction: Introduction
   profile_page:
     messages:
       updated: 'Profil mis à jour'
@@ -713,6 +721,9 @@ fr:
     use_initials: 'Utiliser mes initiales'
     use_gravatar: 'Utiliser gravatar'
     use_uploaded: 'Télécharger une nouvelle image'
+  change_password_form:
+    set_password_title: Définir un mot de passe
+    change_password_title: Modifier votre mot de passe
   deactivation_modal:
     aria_label: 'Désactiver le compte'
     introduction: 'Quand vous désactivez votre compte:'
@@ -793,8 +804,10 @@ fr:
     thread_preview:
       you_voted: 'Vous avez voté {{position}}'
       undecided: 'Vous n''avez pas pris de décision'
+      pinned: "Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l'ensemble des utilisateurs."
     threads_from:
       group: 'Discussions depuis'
+      pinned: 'Discussions épinglées'
       starred: 'Discussions favorites'
       today: 'Aujourd''hui'
       yesterday: 'Hier'
@@ -822,11 +835,13 @@ fr:
     liked_by_you_and_someone: 'Vous et {{name}} aimez ça.'
     liked_by_you_and_others: 'Aimé par vous, {{joinedNames}} et {{name}}.'
     liked_by_someone: '{{name}} aime ca.'
-    liked_by_two_others: '{{name_1}} et {{name_2}} aiment ça.'
     liked_by_many_others: 'Aimé par {{joinedNames}} et {{name}}.'
     liked_by_name: 'Aimé par {{name}}.'
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited: 'Modifié'
+    pin:
+      pinned: 'Discussion épinglée'
+      unpinned: 'Discussion plus épinglée'
     volume:
       mute_message: 'Discussion désactivée.'
       unmute_message: 'Discussion réactivée'
@@ -838,11 +853,16 @@ fr:
     email_settings: 'Paramètres e-mail'
     edit: 'Modifier'
     edit_thread: 'Modifier'
+    pin_thread: 'Épingler'
+    unpin_thread: 'Ne plus épingler'
     mute_thread: 'Désactiver'
     move_thread: 'Déplacer'
     print_thread: 'Imprimer'
     delete_thread: 'Supprimer'
     add_comment: 'Commentaire'
+  pin_thread_modal:
+    title: Épingler la discussion
+    pin_thread: Épingler la discussion
   delete_thread_form:
     aria_label: 'Supprimer la discussion'
     title: Supprimer la discussion
@@ -1223,6 +1243,7 @@ fr:
     none_of_the_above: (Aucun des choix ci-dessus)
   poll_common_undecided_panel:
     show_undecided: "Afficher les {{count}} indécis"
+    show_invitations: Montrer les invitations en attente
   poll_common_set_outcome_panel:
     share_outcome: Partager le résultat
     poll: 'Ce sondage est fermé. <strong>Partager le résultat</strong> avec les groupes.'
@@ -1395,38 +1416,6 @@ fr:
     too_many_dots: Vous avez utilisé trop de points
     stance_created: Vote créé
     stance_updated: Vote mis à jour
-  poll_thread_item:
-    poll:
-      poll_created: '<strong>{{author}}</strong> a commencé un nouveau sondage : <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> a voté :'
-      poll_edited: '<strong>{{author}}</strong> a édité le sondage : <span>{{title}}</span>'
-      poll_expired: 'Sondage fermé : <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> a fermé le sondage : <span>{{title}}</span>'
-    proposal:
-      poll_created: '<strong>{{author}}</strong> a démarré une proposition : <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> a voté :'
-      poll_edited: '<strong>{{author}}</strong> a édité la proposition : <span>{{title}}</span>'
-      poll_expired: 'Proposition fermée : <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> a fermé la proposition : <span>{{title}}</span>'
-    count:
-      poll_created: '<strong>{{author}}</strong> a démarré une vérification: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> a répondu :'
-      poll_edited: '<strong>{{author}}</strong> a modifié une vérification: <span>{{title}}</span>'
-      poll_expired: 'Vérification terminée: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> a clôturé la vérification : <span>{{title}}</span>'
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> a démarré un vote à points : <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> a voté :'
-      poll_edited: '<strong>{{author}}</strong> a édité un vote à points : <span>{{title}}</span>'
-      poll_expired: 'Vote à points fermé : <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> a fermé le vote à points : <span>{{title}}</span>'
-    meeting:
-      poll_created: '<strong>{{author}}</strong> a démarré un sondage réunion : <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> a répondu :'
-      poll_edited: '<strong>{{author}}</strong> a édité le sondage réunion : <span>{{title}}</span>'
-      poll_expired: 'Sondage de type horaire fermé : <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> a fermé le sondage réunion : <span>{{title}}</span>'
-    outcome_created: '<strong>{{author}}</strong> a partagé un résultat :'
   poll_admin_page:
     title: Administration - {{title}}
   poll_common_share_form:

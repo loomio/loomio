@@ -107,6 +107,7 @@ class Ability
       # anyone can create a top level group of their own
       # otherwise, the group must be a subgroup
       # inwhich case we need to confirm membership and permission
+      (user.is_admin or AppConfig.features[:create_group]) &&
       user.email_verified? &&
       group.is_parent? ||
       ( user_is_admin_of?(group.parent_id) ||
@@ -123,6 +124,10 @@ class Ability
     can [:create], GroupIdentity do |group_identity|
       user_is_admin_of?(group_identity.group_id) &&
       user.identities.include?(group_identity.identity)
+    end
+
+    can [:destroy], GroupIdentity do |group_identity|
+      user_is_admin_of?(group_identity.group_id)
     end
 
     can [:make_admin], Membership do |membership|
@@ -203,7 +208,7 @@ class Ability
       )
     end
 
-    can :mark_as_read, Discussion do |discussion|
+    can [:mark_as_read, :mark_as_seen], Discussion do |discussion|
       @user.is_logged_in? && can?(:show, discussion)
     end
 

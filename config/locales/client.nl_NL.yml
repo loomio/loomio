@@ -241,7 +241,6 @@ nl_NL:
     new_vote: "<strong>{{name}}</strong> {{position}} ten aanzien van het voorstel <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> heeft gereageerd op <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> heeft geantwoord op je opmerking in <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> vindt je opmerking leuk in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> heeft je vermeld in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> heeft gevraagd lid te mogen worden van <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> heeft je deelnameverzoek goedgekeurd <strong>{{title}}</strong>'
@@ -771,7 +770,6 @@ nl_NL:
     liked_by_you_and_someone: 'Jij en {{name}} vinden dit leuk.'
     liked_by_you_and_others: 'Leuk gevonden door jou {{joinedNames}} en {{name}}.'
     liked_by_someone: '{{name}} vindt dit leuk.'
-    liked_by_two_others: '{{name_1}} en {{name_2}} vinden dit leuk.'
     liked_by_many_others: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
     liked_by_name: 'Leuk gevonden door {{name}}.'
     started_by: 'Gestart door <strong>{{name}}</strong>'
@@ -1170,29 +1168,6 @@ nl_NL:
     too_many_dots: Je hebt teveel stippen gebruikt.
     stance_created: Stemming gemaakt
     stance_updated: Stemming aangepast
-  poll_thread_item:
-    poll:
-      poll_created: '<strong>{{author}}</strong> is een nieuwe peiling gestart <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemde:'
-      poll_edited: '<strong>{{author}}</strong> heeft de peiling aangepast: <span>{{title}}</span>'
-      poll_expired: 'Peiling gesloten: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> heeft de peiling gesloten: <span>{{title}}</span>'
-    proposal:
-      poll_created: '<strong>{{author}}</strong> heeft een voorstel gestart: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong>  stemde:'
-      poll_edited: '<strong>{{author}}</strong> heeft het voorstel aangepast: <span>{{title}}</span>'
-      poll_expired: 'Voorstel gesloten: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> heeft voorstel gesloten: <span>{{title}}</span>'
-    count:
-      stance_created: '<strong>{{author}}</strong> antwoordde:'
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> is een stippen stemming begonnen: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemde:'
-      poll_edited: '<strong>{{author}}</strong> heeft de stippen stemming aangepast: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> heeft de stippen stemming gesloten: <span>{{title}}</span>'
-    meeting:
-      stance_created: '<strong>{{author}}</strong> antwoordde:'
-    outcome_created: '<strong>{{author}}</strong> heeft een uitkomst gedeeld:'
   poll_admin_page:
     title: Admin - {{title}}
   poll_common_share_form:

@@ -42,10 +42,6 @@ ca:
       link_help: "Cliqueu a l'enllaç de sota per a anar al grup:"
     unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
-    view_comment: Feu clic aquí per veure el comentari a Loomio
-    view_discussion: Fes click aquí per veure aquesta discussió
-    create_discussion:
-      intro: "%{who} ha creat una discussió:"
     daily_activity:
       heading: La teva Activitat a Loomio
       intro: Mostrant el què ha passat als teus grups de loomio les darreres 24 hores
@@ -61,10 +57,6 @@ ca:
       intro: "%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio."
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: Pots aprovar o denegar la sol·licitud aquí
-    mentioned:
-      context: "%{author_name} us ha mencionat en la discussió %{discussion_title}"
-    thread_mailer:
-      change_preferences: 'Canvia les preferències de correu electrònic'
   footer:
     about: Quant a
     blog: Bloc

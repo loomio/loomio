@@ -143,3 +143,14 @@
 .poll-mailer-meeting__participant-name {
   padding-right: 16px;
 }
+
+.poll-mailer__button {
+  background-color: #5cb85c;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  margin: 16px 0;
+  text-decoration: none;
+  padding: 12px 30px;
+}

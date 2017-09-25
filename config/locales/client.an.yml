@@ -70,9 +70,6 @@ an:
     title_label: 'Titol'
     context_label: 'Contexto'
     privacy_label: 'Privacidat'
-  proposal_expanded:
-    edit_proposal: 'Editar propuesta'
-    close_proposal: 'Zarrar propuesta'
   join_group_button:
     join_group: Unir-se a o grupo
   membership_request_form:

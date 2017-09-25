@@ -1,43 +1,59 @@
-angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records) ->
-  scope: {model: '='}
+angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, EmojiService) ->
+  scope: {model: '=', load: '@'}
   restrict: 'E'
   templateUrl: 'generated/components/reactions/display/reactions_display.html'
   replace: true
   controller: ($scope) ->
     $scope.diameter = 16
-    $scope.current = 'all'
-    $scope.sanitize = (reaction) ->
-      return 'all' unless reaction
-      reaction.reaction.replace(/:/g, '')
 
-    $scope.reactionHash = ->
-      Records.reactions.find(
-        reactableType: _.capitalize($scope.model.constructor.singular)
-        reactableId:   $scope.model.id
-      ).reduce (hash, reaction) ->
-        hash[reaction.reaction] = hash[reaction.reaction] or []
-        hash[reaction.reaction].push  reaction.userId
-        hash.all.push reaction.userId
-        hash
-      , { all: [] }
+    reactionParams = ->
+      reactableType: _.capitalize($scope.model.constructor.singular)
+      reactableId:   $scope.model.id
 
-    $scope.reactions = ->
+    $scope.removeMine = (reaction) ->
+      mine = Records.reactions.find(_.merge(reactionParams(),
+        userId:   Session.user().id
+        reaction: reaction
+      ))[0]
+      mine.destroy() if mine
+
+    $scope.myReaction = ->
+      Records.reactions.find(_.merge(reactionParams(), userId: Session.user().id))[0]
+
+    $scope.otherReaction = ->
+      Records.reactions.find(_.merge(reactionParams(), {userId: {'$ne': Session.user().id}}))[0]
+
+    $scope.reactionTypes = ->
       _.difference _.keys($scope.reactionHash()), ['all']
 
-    $scope.setCurrent = (reaction) ->
-      $scope.current = reaction or 'all'
+    $scope.reactionHash = _.throttle ->
+      Records.reactions.find(reactionParams()).reduce (hash, reaction) ->
+        name = reaction.user().name
+        hash[reaction.reaction] = hash[reaction.reaction] or []
+        hash[reaction.reaction].push name
+        hash.all.push name
+        hash
+      , { all: [] }
+    , 250
+    , {leading: true}
 
-    $scope.isInactive = (reaction) ->
-      $scope.current != 'all' and $scope.current != reaction
 
-    $scope.maxNamesCount = 5
-    $scope.namesFor = (reaction) ->
-      _.pluck Records.users.find($scope.reactionHash()[reaction]), 'name'
+    $scope.translate = (reaction) ->
+      EmojiService.translate(reaction)
+
+    $scope.reactionTypes = ->
+      _.difference _.keys($scope.reactionHash()), ['all']
+
+    $scope.maxNamesCount = 10
 
     $scope.countFor = (reaction) ->
-      $scope.namesFor(reaction).length - $scope.maxNamesCount
+      $scope.reactionHash()[reaction].length - $scope.maxNamesCount
 
-    Records.reactions.fetch(params:
-      reactable_type: _.capitalize($scope.model.constructor.singular)
-      reactable_id: $scope.model.id
-    ).finally -> $scope.loaded = true
+    if $scope.load
+      Records.reactions.fetch(params:
+        reactable_type: _.capitalize($scope.model.constructor.singular)
+        reactable_id:   $scope.model.id
+      ).finally ->
+        $scope.loaded = true
+    else
+      $scope.loaded = true

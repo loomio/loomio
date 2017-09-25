@@ -1,10 +1,10 @@
-angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
+angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Session) ->
   new class AbilityService
 
-    isLoggedIn: =>
+    isLoggedIn: ->
       @isUser() and !Session.user().restricted?
 
-    isEmailVerified: =>
+    isEmailVerified: ->
       @isLoggedIn() && Session.user().emailVerified
 
     isUser: ->
@@ -49,7 +49,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       )
 
     canPinThread: (thread) ->
-      @canAdministerGroup(thread.group())
+      !thread.pinned && @canAdministerGroup(thread.group())
+
+    canUnpinThread: (thread) ->
+      thread.pinned && @canAdministerGroup(thread.group())
 
     canMoveThread: (thread) ->
       @canAdministerGroup(thread.group()) or
@@ -122,6 +125,12 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
 
     canManageMembershipRequests: (group) ->
       (group.membersCanAddMembers and Session.user().isMemberOf(group)) or @canAdministerGroup(group)
+
+    canViewPublicGroups: ->
+      AppConfig.features.public_groups
+
+    canStartGroups: ->
+      AppConfig.features.create_group || Session.user().isAdmin
 
     canViewGroup: (group) ->
       !group.privacyIsSecret() or

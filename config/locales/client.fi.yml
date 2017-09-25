@@ -95,8 +95,6 @@ fi:
   discussion_form:
     group_label: 'Ryhmä'
     privacy_label: 'Yksityisyys'
-  proposal_expanded:
-    closed_badge: Suljettu
   group_form:
     privacy: 'Yksityisyys'
     submit_update: 'Päivitä asetukset'

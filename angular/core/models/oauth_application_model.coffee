@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'OauthApplicationModel', (BaseModel, AppConf
     @serializableAttributes: AppConfig.permittedParams.oauth_application
 
     defaultValues: ->
-      logoUrl: '/img/default-logo-medium.png'
+      logoUrl: AppConfig.theme.default_group_logo_src
 
     redirectUriArray: ->
       @redirectUri.split("\n")

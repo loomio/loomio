@@ -12,6 +12,68 @@ class Dev::MainController < Dev::BaseController
     render layout: false
   end
 
+  def setup_thread_mailer_new_discussion_email
+    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group.add_admin!  patrick
+    @group.add_member! jennifer
+
+    @discussion = Discussion.create(title: 'What star sign are you?',
+                                     group: @group,
+                                     description: "Wow, what a __great__ day.",
+                                     make_announcement: true,
+                                     author: jennifer)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    last_email
+  end
+
+  def setup_thread_mailer_new_comment_email
+    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group.add_admin!(patrick).set_volume!(:loud)
+    @group.add_member! jennifer
+
+    @discussion = Discussion.new(title: 'What star sign are you?',
+                                 group: @group,
+                                 description: "Wow, what a __great__ day.",
+                                 make_announcement: false,
+                                 author: jennifer)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    @comment = Comment.new(author: jennifer, body: "hello _patrick_.", discussion: @discussion)
+    CommentService.create(comment: @comment, actor: jennifer)
+    last_email
+  end
+
+  def setup_thread_mailer_user_mentioned_email
+    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group.add_admin!(patrick)
+    @group.add_member! jennifer
+
+    @discussion = Discussion.new(title: 'What star sign are you?',
+                                 group: @group,
+                                 description: "hey @patrickswayze wanna dance?",
+                                 make_announcement: false,
+                                 author: jennifer)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    last_email
+  end
+
+  def setup_thread_mailer_comment_replied_to_email
+    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
+    @group.add_admin!(patrick)
+    @group.add_member! jennifer
+
+    @discussion = Discussion.new(title: 'What star sign are you?',
+                                 group: @group,
+                                 description: "Wow, what a __great__ day.",
+                                 make_announcement: false,
+                                 author: jennifer)
+    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    @comment = Comment.new(body: "hello _patrick.", discussion: @discussion)
+    CommentService.create(comment: @comment, actor: jennifer)
+    @reply_comment = Comment.new(body: "why, hello there jen", parent: @comment, discussion: @discussion)
+    CommentService.create(comment: @reply_comment, actor: patrick)
+    last_email
+  end
+
   def setup_accounts_merged_email
     UserMailer.accounts_merged(patrick).deliver_now
     last_email

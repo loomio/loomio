@@ -19,7 +19,7 @@ table.stats-table th { font-weight: bold; color: #666; }
 .footer { font-size: 12px; color: #666; }
 img { max-width: 500px; }
 img.emojione { width: 25px; vertical-align: bottom; }
-body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica Neue", "Arial", sans-serif; }
+body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 
 .mailer__header {
@@ -28,7 +28,7 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 
 .mailer__header-logo-image {
   margin: 15px 0 10px 0;
-  max-width: 200px;
+  height: 64px;
 }
 
 .mailer__header-logo {
@@ -42,13 +42,13 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   font-size: 18px;
   line-height: 50px;
   text-align: center;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 .base-mailer__avatar-image {
   margin: 0 10px 10px 0;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 .invite-people-mailer {
@@ -190,6 +190,10 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   font-size: small;
 }
 
+.thread-mailer__footer-logo {
+  height: 32px;
+}
+
 .user-mailer__contact-request-context {
   font-size: 14px;
   text-align: left;
@@ -239,4 +243,8 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 
 .align-left {
   text-align: left;
+}
+
+.align-right {
+  text-align: right;
 }

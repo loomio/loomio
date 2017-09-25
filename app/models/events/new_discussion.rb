@@ -5,7 +5,10 @@ class Events::NewDiscussion < Event
   include Events::Notify::ThirdParty
 
   def self.publish!(discussion)
-    super(discussion, user: discussion.author, announcement: discussion.make_announcement)
+    super discussion,
+          user: discussion.author,
+          announcement: discussion.make_announcement,
+          created_at: discussion.created_at
   end
 
   private

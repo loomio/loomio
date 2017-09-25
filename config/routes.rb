@@ -91,7 +91,9 @@ Loomio::Application.routes.draw do
 
     resources :login_tokens, only: [:create]
 
-    resources :events, only: :index
+    resources :events, only: :index do
+      post  :mark_as_read, on: :member
+    end
     resources :drafts do
       collection do
         get    '/:draftable_type/:draftable_id', action: :show
@@ -102,7 +104,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
-      patch :mark_as_read, on: :member
+      patch :mark_as_seen, on: :member
       patch :dismiss, on: :member
       patch :set_volume, on: :member
       patch :pin, on: :member
@@ -152,11 +154,12 @@ Loomio::Application.routes.draw do
     resources :poll_did_not_votes, only: :index
 
     resources :comments,    only: [:create, :update, :destroy]
-    resources :reactions,   only: [:create, :update, :index]
+    resources :reactions,   only: [:create, :update, :index, :destroy]
 
     resources :attachments, only: [:create, :destroy]
 
-    resource :translations, only: :show do
+    resource :translations, only: [] do
+      get :show, on: :collection
       get :inline, to: 'translations#inline'
     end
 
