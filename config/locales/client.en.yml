@@ -1590,7 +1590,7 @@ en:
     start_header: Start ranked choice
     edit_header: Edit ranked choice
     tip: Find out when people are available to meet
-    title_placeholder: E.g. who should take over as chairman of the board?
+    title_placeholder: E.g. Who would you like as mayor?
     details_placeholder: Provide any clarifying details people might need to participate
     meeting_created: Ranked choice created
     meeting_updated: Ranked choice updated
