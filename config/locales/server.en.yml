@@ -626,6 +626,14 @@ en:
     visit_poll: View poll
     go_to_dashboad: Go to dashboard
 
+  embed:
+    started_by: Started by %{name}
+    show_responses: Show responses
+    vote: Vote
+    view_decision: View Decision
+    closed_at: Closed %{time} ago
+    closing_at: Closing in %{time}
+
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"
     outcome_created: "Outcome posted in *%{group}*: *%{poll}*"

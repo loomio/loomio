@@ -307,7 +307,7 @@ class Ability
       )
     end
 
-    can [:show, :toggle_subscription, :subscribe_to], Poll do |poll|
+    can [:show, :toggle_subscription, :subscribe_to, :embed], Poll do |poll|
       poll.anyone_can_participate ||
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||

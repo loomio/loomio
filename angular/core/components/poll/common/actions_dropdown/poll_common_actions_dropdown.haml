@@ -10,6 +10,8 @@
       %md-button{ng-click: "sharePoll()", translate: "common.action.share"}
     %md-menu-item.poll-actions-dropdown__edit{ng-if: "canEditPoll()"}
       %md-button{ng-click: "editPoll()", translate: "common.action.edit"}
+    %md-menu-item.poll-actions-dropdown__embed{ng-if: "canEmbedPoll()"}
+      %md-button{ng-click: "embedPoll()", translate: "common.action.embed"}
     %md-menu-item.poll-actions-dropdown__close{ng-if: "canClosePoll()"}
       %md-button{ng-click: "closePoll()", translate: "common.action.close"}
     %md-menu-item.poll-actions-dropdown__delete{ng-if: "canDeletePoll()"}

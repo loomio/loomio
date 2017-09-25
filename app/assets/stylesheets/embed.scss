@@ -1,0 +1,53 @@
+@import 'poll_mailer';
+@import '../../../angular/node_modules/angular-material/angular-material.scss';
+@import '../../../angular/core/css/main';
+
+.loomio-embedded-poll {
+  margin: 16px;
+
+  .poll-mailer-common__discussion-info {
+    color: white;
+    text-decoration: none;
+    background: rgba(0,0,0,0.5);
+    margin-bottom: 16px;
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 0;
+    }
+    td:first-child { background: white; }
+    td:last-child { padding-left: 5px; }
+    a {
+      color: white;
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  h1 a {
+    color: $primary-text-color;
+    margin-bottom: 10px;
+    &:hover { text-decoration: underline; }
+  }
+
+  h3 {
+    @include lmoH3;
+    margin-top: 20px;
+  }
+
+  &__started-by {
+    @include fontSmall;
+    color: $grey-on-white;
+  }
+
+  &__go-to-poll {
+    a { color: $primary-text-color; }
+    background-color: rgb(255,167,38);
+  }
+
+  &__show-results {
+    color: rgb(0,188,212);
+  }
+
+}

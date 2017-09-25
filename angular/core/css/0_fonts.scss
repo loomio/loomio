@@ -156,3 +156,10 @@
   margin: 0;
   outline: 0;
 }
+
+@mixin lmoH3 {
+  @include fontSmall;
+  color: $grey-on-white;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

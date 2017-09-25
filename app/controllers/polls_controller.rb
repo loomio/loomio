@@ -1,5 +1,8 @@
 class PollsController < ApplicationController
   include UsesMetadata
+  include LoadAndAuthorize
+
+  helper :email
 
   def example
     if poll = PollGenerator.new(params[:type]).generate!
@@ -7,6 +10,12 @@ class PollsController < ApplicationController
     else
       redirect_to root_path, notice: "Sorry, we don't know about that poll type"
     end
+  end
+
+  def embed
+    @info = PollEmailInfo.new(poll: load_and_authorize(:poll, :embed), action_name: :embed)
+    headers.delete 'X-Frame-Options'
+    render layout: false
   end
 
   def unsubscribe

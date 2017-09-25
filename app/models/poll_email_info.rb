@@ -12,16 +12,16 @@ class PollEmailInfo
     @token ||= @recipient.login_tokens.create!(redirect: redirect_path)
   end
 
-  def initialize(recipient:, event:, action_name:)
+  def initialize(recipient: LoggedOutUser.new, poll: nil, event: nil, action_name:)
     @recipient   = recipient
     @event       = event
-    @poll        = event.poll
-    @eventable   = event.eventable
+    @poll        = poll || event.poll
+    @eventable   = poll || event.eventable
     @action_name = action_name
   end
 
   def actor
-    @actor ||= if @event.eventable.is_a?(Stance)
+    @actor ||= if @eventable.is_a?(Stance)
       @event.eventable.participant
     else
       @event.user || LoggedOutUser.new
