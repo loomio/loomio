@@ -50,6 +50,7 @@ EventBus.configure do |config|
   config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
 
   config.listen('new_comment_event',
+                'new_discussion_event',
                 'discussion_edited_event',
                 'poll_created_event',
                 'poll_edited_event',
@@ -62,20 +63,11 @@ EventBus.configure do |config|
     ) if event.discussion
   end
 
-  config.listen('discussion_create') do |discussion|
-    DiscussionReader.for(user: discussion.author, discussion: discussion).update_reader(
-      volume: :loud,
-      read_at: discussion.created_at
+  config.listen('discussion_reader_viewed!', 'discussion_reader_dismissed!') do |reader|
+    MessageChannelService.publish(
+      DiscussionReaderSerializer.new(reader, root: :discussions).as_json,
+      to: reader.user
     )
-  end
-
-  config.listen('discussion_reader_viewed!',
-                'discussion_reader_dismissed!') do |discussion, actor|
-
-    reader_cache = Caches::DiscussionReader.new(user: actor, parents: Array(discussion))
-    collection = ActiveModel::ArraySerializer.new([discussion], each_serializer: MarkedAsRead::DiscussionSerializer, root: 'discussions', scope: { reader_cache: reader_cache } )
-
-    MessageChannelService.publish(collection, to: actor)
   end
 
   # alert clients that notifications have been read

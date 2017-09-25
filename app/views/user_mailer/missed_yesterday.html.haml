@@ -1,6 +1,6 @@
 .everything
   %p
-    = t(:'email.missed_yesterday.heres_what_happened')
+    = t(:'email.missed_yesterday.heres_what_happened', site_name: AppConfig.theme[:site_name])
     = t(:'email.missed_yesterday.do_not_reply')
   %h1= t(:'email.missed_yesterday.headlines')
   .toc

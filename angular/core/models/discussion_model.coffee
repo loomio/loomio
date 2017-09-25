@@ -7,17 +7,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     @draftParent: 'group'
     @draftPayloadAttributes: ['title', 'description']
     @serializableAttributes: AppConfig.permittedParams.discussion
-    @memoize: [
-      'hasDecision',
-      'activePolls',
-      'isUnread',
-      'isDimissed',
-      'minLoadedSequenceId',
-      'maxLoadedSequenceId',
-      'hasUnreadActivity',
-      'hasAttachments',
-      'cookedDescription'
-    ]
 
     afterConstruction: ->
       @private = @privateDefaultValue() if @isNew()
@@ -139,12 +128,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       delete attrs.readSalientItemsCount if attrs.readSalientItemsCount < @readSalientItemsCount
       @baseUpdate(attrs)
 
-    markAsRead: (sequenceId) ->
-      sequenceId = @lastSequenceId if isNaN(sequenceId)
-
-      if @discussionReaderId? and (_.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId)
-        @remote.patchMember @keyOrId(), 'mark_as_read', sequence_id: sequenceId
-        @update(lastReadAt: moment(), lastReadSequenceId: sequenceId)
+    markAsSeen: ->
+      return unless @discussionReaderId and !@lastReadAt
+      @remote.patchMember @keyOrId(), 'mark_as_seen'
+      @update(lastReadAt: moment(), lastReadSequenceId: 0)
 
     dismiss: ->
       @remote.patchMember @keyOrId(), 'dismiss'

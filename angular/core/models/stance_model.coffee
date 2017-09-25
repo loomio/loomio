@@ -6,10 +6,6 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
     @serializableAttributes: AppConfig.permittedParams.stance
     @draftParent: 'poll'
     @draftPayloadAttributes: ['reason']
-    @memoize: [
-      'stanceChoice',
-      'pollOption'
-    ]
 
     defaultValues: ->
       reason: ''

@@ -88,6 +88,14 @@ FactoryGirl.define do
     association :identity, factory: :slack_identity
   end
 
+  factory :event do
+    discussion
+    association :eventable, factory: :comment
+    user
+    sequence_id 1
+    kind :new_comment
+  end
+
   factory :discussion do
     association :author, :factory => :user
     association :group, :factory => :formal_group

@@ -42,7 +42,7 @@
     "angular-scroll": "~0.6.5",
     "angular-sortable-view": "0.0.15",
     "angular-translate": "~2.15.1",
-    "angular-translate-loader-static-files": "latest",
+    "angular-translate-loader-url": "latest",
     "angular_record_store": "2.8.2",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
@@ -76,7 +76,7 @@
     "gulp-htmlmin": "^1.3.0",
     "gulp-pipe": "^1.0.4",
     "gulp-plumber": "^1.1.0",
-    "gulp-protractor": "4.0.0",
+    "gulp-protractor": "4.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-run-sequence": "^0.3.2",
@@ -85,8 +85,7 @@
     "gulp-watch": "^4.3.5",
     "gulp-autoprefixer": "latest",
     "node-yaml-config": "0.0.3",
-    "protractor": "5.1.1",
-    "protractor-jasmine2-screenshot-reporter": "^0.3.5",
-    "geckodriver": "latest"
+    "protractor": "5.1.2",
+    "protractor-jasmine2-screenshot-reporter": "^0.4.1"
   }
 }

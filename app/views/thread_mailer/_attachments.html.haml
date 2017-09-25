@@ -4,10 +4,10 @@
     - resource.attachments.each do |attachment|
       %li.thread-mailer__list-item
         - if attachment.is_an_image?
-          %a{href: attachment.location, target: '_blank'}
-            %img{src: attachment.location, alt: attachment.filename}
+          %a{href: attachment.url, target: '_blank'}
+            %img{src: attachment.url, alt: attachment.filename}
         - else
-          %a.thread-mailer__file-attachment{href: attachment.location, target: '_blank'}
+          %a.thread-mailer__file-attachment{href: attachment.url, target: '_blank'}
             %span
               = image_tag('thread_mailer/paperclip.png', alt: 'attachment icon', class: 'thread-mailer__attachment-icon')
             %span.thread-mailer__file-attachment-filername

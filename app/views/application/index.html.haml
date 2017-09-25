@@ -1,7 +1,7 @@
 !!!
 %html{'ng-app' => 'loomioApp', 'ng-controller' => 'RootController as app'}
   %head
-    %title Loomio
+    %title= AppConfig.theme[:site_name]
     %meta{charset: 'utf-8'}
     %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
@@ -22,7 +22,7 @@
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %flash
-    %navbar
+    %navbar{'ng-if' => 'translationsLoaded'}
 
     %md_content.lmo-sidebar-and-main-container{'ng-if' => 'translationsLoaded', layout: "row", flex: ""}
       %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}

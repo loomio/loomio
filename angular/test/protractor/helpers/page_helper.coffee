@@ -37,7 +37,7 @@ module.exports = new class PageHelper
     @findFirst(selector).click()
 
   clickLast: (selector) ->
-    @findLast().click()
+    @findLast(selector).click()
 
   findFirst: (selector) ->
     element.all(By.css(selector)).first()

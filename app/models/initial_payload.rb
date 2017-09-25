@@ -16,6 +16,7 @@ InitialPayload = Struct.new(:user) do
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       theme:               AppConfig.theme,
+      features:            AppConfig.features,
       inlineTranslation: {
         isAvailable:       TranslationService.app_key.present?,
         supportedLangs:    TranslationService.supported_languages
@@ -51,7 +52,11 @@ InitialPayload = Struct.new(:user) do
       end.compact,
       intercom: {
         appId: Rails.application.secrets.intercom_app_id,
-        userHash: Digest::SHA1.hexdigest("#{Rails.application.secrets.intercom_app_secret}#{user.id}")
+        userHash: (OpenSSL::HMAC.hexdigest(
+          'sha256',
+          Rails.application.secrets.intercom_app_secret,
+          user.id.to_s
+        ) if Rails.application.secrets.intercom_app_secret)
       }.compact
     }
   end
