@@ -17,7 +17,7 @@ angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, Emo
       ))[0]
       mine.destroy() if mine
 
-    $scope.myReaction = Records.memoize ->
+    $scope.myReaction = ->
       Records.reactions.find(_.merge(reactionParams(), userId: Session.user().id))[0]
 
     $scope.otherReaction = ->
