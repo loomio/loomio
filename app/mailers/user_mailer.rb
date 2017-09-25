@@ -61,6 +61,7 @@ class UserMailer < BaseMailer
     @token = token
     send_single_mail to: @user.email,
                      subject_key: "email.login.subject",
+                     subject_params: {site_name: AppConfig.theme[:site_name]},
                      locale: locale_for(@user)
   end
 

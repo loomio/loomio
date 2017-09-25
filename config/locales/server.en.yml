@@ -74,9 +74,9 @@ en:
 
   email:
     login:
-      subject: Sign in to Loomio
-      intro: Hi %{name}, here is a link to sign in to your Loomio account.
-      login: Sign in to Loomio as %{name}
+      subject: Sign in to %{site_name}
+      intro: Hi %{name}, here is a link to sign in to your %{site_name} account.
+      login: Sign in as %{name}
       resend: This link will expire in 24 hours and can only be used once.
 
     contact_request:
@@ -110,15 +110,10 @@ en:
       intro: "%{who} made an announcement to %{group}:"
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    to_join_discussion:
-      subject: "%{who} wants you to join a discussion on Loomio"
-      content: 'You''ve been invited to participate in the discussion: %{discussion}'
-      message_intro: "%{who} says:"
-      link: Join the discussion
     value_proposition: "Loomio is a place for groups to make decisions together"
     view_group: View group
     to_join_group:
-      subject: "%{member} has invited you to join %{group_name} on Loomio"
+      subject: "%{member} has invited you to join %{group_name} on %{site_name}"
       invitation_text: "%{member} has invited you to join their group %{group_name}."
       invitation_text_html: "has invited you to join their group"
       link_help: "Click the link below to accept the invitation:"
