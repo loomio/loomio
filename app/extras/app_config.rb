@@ -40,7 +40,8 @@ class AppConfig
        create_user:   !ENV['FEATURES_DISABLE_CREATE_USER'],
        create_group:  !ENV['FEATURES_DISABLE_CREATE_GROUP'],
        public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
-       help_link:     !ENV['FEATURES_DISABLE_HELP_LINK']
+       help_link:     !ENV['FEATURES_DISABLE_HELP_LINK'],
+       slack:         !!ENV['SLACK_APP_KEY']
      }
    end
 
