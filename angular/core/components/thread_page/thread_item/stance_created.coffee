@@ -6,12 +6,12 @@ angular.module('loomioApp').directive 'stanceCreated', (ModalService, Translatio
   controller: ($scope) ->
     $scope.actions = [
       name: 'translate_stance'
-      icon: 'translate'
+      icon: 'mdi-translate'
       canPerform: -> $scope.eventable.reason && AbilityService.canTranslate($scope.eventable)  && !$scope.translation
       perform:    -> TranslationService.inline($scope, $scope.eventable)
     ,
       name: 'edit_stance'
-      icon: 'edit'
+      icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditStance($scope.eventable)
       perform:    -> ModalService.open PollCommonEditVoteModal, stance: -> $scope.eventable
     ]

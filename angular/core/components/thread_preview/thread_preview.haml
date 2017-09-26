@@ -25,12 +25,12 @@
 
     .thread-preview--right.lmo-flex{layout: "row"}
       .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
-        %i.material-icons location_on
+        %i.mdi.mdi-pin
 
   .thread-preview__actions.lmo-hide-on-xs{ng-if: "thread.discussionReaderId"}
     %md-button.md-raised.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
-      .material-icons done
+      .mdi.mdi-check
     %md-button.md-raised.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}", aria-label: "{{ 'volume_levels.mute' | translate }}" }>
-      .material-icons volume_off
+      .mdi.mdi-volume-mute
     %md-button.md-raised.thread-preview__unmute{ng-click: "unmuteThread()", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}", aria-label: "{{ 'volume_levels.unmute' | translate }}"}>
-      .material-icons volume_down
+      .mdi.mdi-volume-plus

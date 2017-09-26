@@ -8,13 +8,13 @@
       .poll-common-share-form__visitor.lmo-flex{ng-repeat: "email in poll.customFields.pending_emails track by $index"}
         .poll-common-share-form__email.lmo-flex__grow {{email}}
         %md-button.lmo-inline-action{ng-click: "remove(email)"}
-          %i.material-icons clear
+          %i.mdi.mdi-close
 
     %md-list-item.poll-common-share-form__add-option{flex: "true", layout: "row"}
       %md-input-container.lmo-flex__grow{md-no-float: "true"}
         %input.poll-common-share-form__add-option-input{type: "text", placeholder: "{{ 'poll_common_share_form.enter_email' | translate }}", ng-model: "newEmail"}
       %md-button.poll-common-share-form__option-button.poll-common-share-form__add-button{ng-click: "addIfValid()", ng-disabled: "poll.customFields.pending_emails.length == 0", aria-label: "{{ 'poll_common_share_form.enter_email' | translate }}"}
-        %i.material-icons add
+        %i.mdi.mdi-plus
 
     .lmo-validation-error {{ emailValidationError }}
   .lmo-flex.lmo-flex__space-between
