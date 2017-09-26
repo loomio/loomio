@@ -14,7 +14,7 @@
       %md-menu.lmo-dropdown-menu{ng-if: "showContextMenu()", md-position-mode: "target-right target"}
         %md-button.context-panel__dropdown-button{ng-click: "$mdMenu.open()"}
           .sr-only{translate: "thread_context.thread_options"}
-          %i.mdi.mdi-chevron-down
+          %i.mdi.mdi-24px.mdi-chevron-down
         %md-menu-content
           %md-menu-item.context-panel__dropdown-options--email-settings{ng-if: "canChangeVolume()"}
             %md-button{ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}

@@ -23,9 +23,9 @@
 
         %outlet{name: "after-thread-preview", model: "thread"}
 
-    .thread-preview--right.lmo-flex{layout: "row"}
+    .thread-preview--right.lmo-flex.lmo-flex__center{layout: "row"}
       .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
-        %i.mdi.mdi-pin
+        %i.mdi.mdi-24px.mdi-pin
 
   .thread-preview__actions.lmo-hide-on-xs{ng-if: "thread.discussionReaderId"}
     %md-button.md-raised.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>

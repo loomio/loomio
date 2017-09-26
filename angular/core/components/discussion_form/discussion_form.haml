@@ -36,8 +36,8 @@
 
           %md-list-item.discussion-form__privacy-notice{ng-if: "!showPrivacyForm()"}
             %label.discussion-form__privacy-notice.lmo-flex{layout: "row"}
-              %i.mdi.mdi-lock-outline.lmo-margin-right{ng-if: "discussion.private"}
-              %i.mdi.mdi-earth.lmo-margin-right{ng-if: "!discussion.private"}
+              %i.mdi.mdi-24px.mdi-lock-outline.lmo-margin-right{ng-if: "discussion.private"}
+              %i.mdi.mdi-24px.mdi-earth.lmo-margin-right{ng-if: "!discussion.private"}
               %discussion_privacy_icon{discussion: "discussion"}
 
           %md-list-item.discussion-form__announcement-size{ng-if: "discussion.isNew()"}
