@@ -51,7 +51,7 @@ class Poll < ActiveRecord::Base
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
-  has_many :poll_options, -> { order(priority: :asc) },  dependent: :destroy
+  has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes, dependent: :destroy
@@ -156,10 +156,7 @@ class Poll < ActiveRecord::Base
         GROUP BY poll_options.name
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
 
-    update_attribute(:stance_counts,
-      poll_options.order(:priority)
-                  .pluck(:name)
-                  .map { |name| stance_data[name] })
+    update_attribute(:stance_counts, ordered_poll_options.map { |name| stance_data[name] })
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
     update_attribute(:matrix_counts,
@@ -181,6 +178,11 @@ class Poll < ActiveRecord::Base
 
   def is_single_vote?
     AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
+  end
+
+  def ordered_poll_options
+    order_field = self.dates_as_options ? :name : :priority
+    self.poll_options.order(order_field => :asc)
   end
 
   def poll_option_names
