@@ -1,9 +1,7 @@
 .thread-item {
   margin-bottom: 25px;
 }
-.thread-item__directive {
-  // margin-left: -42px;
-}
+
 .thread-item__title {
   /* these styles break with BEM but they keep the translations clean*/
   color: $grey-on-white;
@@ -28,8 +26,6 @@
 }
 @media (max-width: $tiny-max-px){
   .thread-item__directive {
-  // .thread-item__body .new-comment,
-  // .thread-item__body .poll-common-stance-choice {
     margin-left: -42px;
   }
 }
