@@ -54,6 +54,29 @@ describe Poll do
     end
   end
 
+  describe 'ordered_poll_options' do
+    let(:poll) { create :poll }
+    let(:meeting) { create :poll_meeting }
+
+    it 'orders by priority when non-meeting poll' do
+      poll.update(poll_option_names: [
+        'Orange',
+        'Apple',
+        'Pineapple'
+      ])
+      expect(poll.ordered_poll_options.first.name).to eq 'Orange'
+    end
+
+    it 'orders by name when meeting poll' do
+      meeting.update(poll_option_names: [
+        '01-01-2018',
+        '01-01-2017',
+        '01-01-2016',
+      ])
+      expect(meeting.ordered_poll_options.first.name).to eq '01-01-2016'
+    end
+  end
+
   describe 'is_new_version?' do
     before { poll.save }
 

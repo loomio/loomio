@@ -33,11 +33,7 @@ class PollEmailInfo
   end
 
   def poll_options
-    if @poll.dates_as_options
-      @poll.poll_options.order(name: :asc)
-    else
-      @poll.poll_options
-    end
+    @poll.ordered_poll_options
   end
 
   def poll_type
