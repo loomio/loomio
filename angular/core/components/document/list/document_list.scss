@@ -1,4 +1,4 @@
-.document-card__document {
+.document-list__document {
   width: 100%;
   background: $background-color;
   border: 1px solid $border-color;
@@ -7,11 +7,11 @@
   margin: 4px 0;
 }
 
-.document-card__document-title {
+.document-list__document-title {
   color: $primary-text-color;
 }
 
-.document-card__chip {
+.document-list__chip {
   position: absolute;
   right: -1px;
   bottom: -1px;
@@ -23,7 +23,7 @@
   border-left: 8px solid;
 }
 
-.document-card__document-doctype {
+.document-list__document-doctype {
   color: $grey-on-grey;
   @include fontTiny;
 }

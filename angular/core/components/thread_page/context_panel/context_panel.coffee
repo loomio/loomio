@@ -1,9 +1,9 @@
-angular.module('loomioApp').directive 'contextPanel', ->
+angular.module('loomioApp').directive 'contextPanel', ($rootScope, $window, $timeout, Records, AbilityService, Session, ReactionService, ModalService, DocumentModal, ChangeVolumeForm, DiscussionForm, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal, TranslationService, ScrollService) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/thread_page/context_panel/context_panel.html'
-  controller: ($scope, $rootScope, $window, $timeout, AbilityService, Session, ReactionService, ModalService, ChangeVolumeForm, DiscussionForm, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal, TranslationService, ScrollService) ->
+  controller: ($scope) ->
 
     $scope.showContextMenu = ->
       AbilityService.canChangeThreadVolume($scope.discussion)
@@ -70,16 +70,18 @@ angular.module('loomioApp').directive 'contextPanel', ->
       canPerform: -> AbilityService.canEditThread($scope.discussion)
       perform:    -> ModalService.open DiscussionForm, discussion: -> $scope.discussion
     ,
+      name: 'add_resource'
+      icon: 'attachment'
+      canPerform: -> AbilityService.canAdministerGroup($scope.discussion.group())
+      perform:    -> ModalService.open DocumentModal, doc: ->
+        Records.documents.build
+          modelId:   $scope.discussion.id
+          modelType: 'Discussion'
+    ,
       name: 'translate_thread'
       icon: 'translate'
       canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
       perform:    -> TranslationService.inline($scope, $scope.discussion)
-    ,
-      name: 'view_documents'
-      icon: 'description'
-      canPerform: -> $scope.discussion.documents().length > 0
-      perform:    -> ScrollService.scrollTo('.document-card')
-      count:      -> $scope.discussion.documents().length
     ,
       name: 'add_comment'
       icon: 'reply'

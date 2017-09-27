@@ -381,6 +381,8 @@ en:
 
   action_dock:
     react: Add reaction
+    add_resource: Add a resource
+    edit_group: Edit group context
     add_comment: Comment
     edit_thread: Edit context
     translate_thread: Translate context
@@ -601,10 +603,8 @@ en:
     manage_requests_with_count: Manage requests ({{count}})
 
   document:
-    card:
-      title: Documents
-      helptext: Documents are additional resources which provide context or source material for a discussion or group.
-      add_document: Add
+    list:
+      title: Resources
       doctype:
         pull_request: Pull request
         trello_board: Trello board
