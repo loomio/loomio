@@ -1,4 +1,4 @@
-.install-slack-card.lmo-card
+.install-slack-card.lmo-card{ng-if: "show()"}
   %h2.lmo-card-heading{ng-if: "groupIdentity()", translate: "install_slack.card.installed_title"}
   %h2.lmo-card-heading{ng-if: "!groupIdentity()", translate: "install_slack.card.install_title"}
   .lmo-flex

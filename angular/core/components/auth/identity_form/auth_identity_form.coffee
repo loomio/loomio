@@ -1,7 +1,8 @@
-angular.module('loomioApp').directive 'authIdentityForm', ($translate) ->
+angular.module('loomioApp').directive 'authIdentityForm', ($translate, AppConfig) ->
   scope: {user: '=', identity: '='}
   templateUrl: 'generated/components/auth/identity_form/auth_identity_form.html'
   controller: ($scope, AuthService, KeyEventService) ->
+    $scope.siteName = AppConfig.theme.site_name
     $scope.createAccount = ->
       $scope.$emit 'processing'
       AuthService.confirmOauth().then (->), -> $scope.$emit 'doneProcessing'

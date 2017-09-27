@@ -6,12 +6,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     @serializableAttributes: AppConfig.permittedParams.poll
     @draftParent: 'draftParent'
     @draftPayloadAttributes: ['title', 'details']
-    @memoize: [
-      'latestStances',
-      'cookedDescription',
-      'memberIds',
-      'participantIds'
-    ]
 
     draftParent: ->
       @discussion() or @author()
@@ -109,7 +103,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @stancesCount + @undecidedCount
 
     percentVoted: ->
-      return 0 if @undecidedUserCount == 0
+      return 0 if @membersCount() == 0
       (100 * @stancesCount / (@membersCount())).toFixed(0)
 
     outcome: ->

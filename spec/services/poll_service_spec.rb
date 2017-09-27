@@ -87,11 +87,26 @@ describe PollService do
       expect(poll_created.reload.title).to eq old_title
     end
 
-    it 'makes an announcement to participants if make_announcement is true' do
-      stance
-      expect {
-        PollService.update(poll: poll_created, params: { details: "A new description", make_announcement: true }, actor: user)
-      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    describe 'announcements' do
+      it 'creates a new poll_created event when changing groups' do
+        expect {
+          PollService.update(poll: poll_created, params: { group_id: another_group.id }, actor: user)
+        }.to change { Event.where(kind: :poll_created).count }.by(1)
+        expect(Event.where(kind: :poll_created).last.announcement).to eq true
+      end
+
+      it 'does not create a poll_created event when not changing groups' do
+        expect {
+          PollService.update(poll: poll_created, params: { details: "A new description" }, actor: user)
+        }.to_not change { Event.where(kind: :poll_created).count }
+      end
+
+      it 'makes an announcement to participants if make_announcement is true' do
+        stance
+        expect {
+          PollService.update(poll: poll_created, params: { details: "A new description", make_announcement: true }, actor: user)
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
     end
 
     it 'creates a new poll edited event for poll option changes' do

@@ -74,9 +74,9 @@ en:
 
   email:
     login:
-      subject: Sign in to Loomio
-      intro: Hi %{name}, here is a link to sign in to your Loomio account.
-      login: Sign in to Loomio as %{name}
+      subject: Sign in to %{site_name}
+      intro: Hi %{name}, here is a link to sign in to your %{site_name} account.
+      login: Sign in as %{name}
       resend: This link will expire in 24 hours and can only be used once.
 
     contact_request:
@@ -110,60 +110,40 @@ en:
       intro: "%{who} made an announcement to %{group}:"
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    to_join_discussion:
-      subject: "%{who} wants you to join a discussion on Loomio"
-      content: 'You''ve been invited to participate in the discussion: %{discussion}'
-      message_intro: "%{who} says:"
-      link: Join the discussion
     value_proposition: "Loomio is a place for groups to make decisions together"
     view_group: View group
     to_join_group:
-      subject: "%{member} has invited you to join %{group_name} on Loomio"
+      subject: "%{member} has invited you to join %{group_name} on %{site_name}"
       invitation_text: "%{member} has invited you to join their group %{group_name}."
       invitation_text_html: "has invited you to join their group"
       link_help: "Click the link below to accept the invitation:"
       accept_invitation: "Accept invitation"
     resend_to_join_group:
-      subject: "%{member} is waiting for you to join %{group_name} on Loomio"
-    to_start_group:
-      subject: "Set up your new Loomio group: %{group_name}"
-      hi: "Hi %{name},"
-      intro: "Click the link below to set up your group %{group_name}:"
-      intro_html: "Click below to set up your group:"
-      start_group: "Start my group"
-      closing_message: "If you need help or have a question, just reply to this email."
-      thanks: "Thanks,"
-      loomio_team: "The Loomio Team"
+      subject: "%{member} is waiting for you to join %{group_name} on %{site_name}"
     user_added_to_group:
-      subject: "%{who} has added you to %{which_group} on Loomio"
+      subject: "%{who} has added you to %{which_group} on %{site_name}"
       content: "%{who} has added you to %{which_group}."
       content_html: "<strong>%{who}</strong> has added you to <strong>%{which_group}</strong>."
       link_help: "Click the link below to go to the group:"
     unsubscribe: 'Unsubscribe or change your email preferences:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
-    daily_activity:
-      heading: Your Loomio Activity
-      intro: Showing you what’s been happening in your Loomio groups in the last 24 hours
-      subject: Loomio - Summary of the last 24 hours
     missed_yesterday:
-      subject: Yesterday on Loomio
+      subject: Yesterday on %{site_name}
       do_not_reply: Please do not reply to this email.
       headlines: Headlines
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
-      heres_what_happened: "Here’s what happened on Loomio yesterday."
+      heres_what_happened: "Here’s what happened on %{site_name} yesterday."
       marked_as_read_success: Everything from the email has been marked as read
 
     group_membership_approved:
       intro: "Your request for access to the group %{group_name} has been approved."
       intro_html: "Your request for access to the group <strong>%{group_name}</strong> has been approved."
       link_help: "Click the link below to join %{group_name} and get started:"
-      subject: "Your request to join %{group_name} on Loomio has been approved"
+      subject: "Your request to join %{group_name} has been approved"
       join_group: "Join group"
-      view_group_text: "Click below to view the group on Loomio:"
 
     membership_request:
-      intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
       intro_html: has requested access to one of your groups.
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
@@ -203,30 +183,6 @@ en:
     public_groups: Public groups
     terms: Terms
     independent_install_html: '%{hostname} is running an independent copy of Loomio: <a href="http://github.com/loomio/loomio">find out more</a>.'
-  start_group_form:
-    enable_angular:
-      header: New groups start in Loomio 1.0
-      subtitle: 'To start a new group, you''ll need to switch to the brand new version of Loomio:'
-      switch_to_angular: Start a group in the new Loomio
-      helptext: We've rebuilt Loomio from the ground up. You can read about what's new <a href="/angular">here</a>.<br/>You'll be able to switch back to the old version any time you like.
-    header: Start a new group
-    form_error: Some information is missing or incorrect.
-    name: Your name
-    name_error: Name is required
-    email: Your email
-    email_error: Not a valid email address.
-    group_name: Group name
-    group_description: Group description
-    group_description_placeholder: Describe the purpose of your group so your group members know why they are here.
-    group_name_error: Group name is required
-    pricing_html: In 30 days, we'll ask you to choose a <a href='%{link}' target='_blank'>pricing plan</a>.
-    terms_html: By starting a group, you agree to Loomio's <a href='%{link}' target='_blank'>terms of service</a>.
-    success:
-      header: You're almost done! Check your email.
-      email_delivered: We've sent an email to %{email}. Please follow the link inside to setup your new group.
-      email_not_arrived: Email has not arrived?
-      please_hold: Please allow up to five 5 minutes for the email to arrive and be sure to check your spam folder.
-    start_making_decisions: 'To start making decisions together on Loomio, set up a group for free:'
   invitation_form:
     error:
       too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
@@ -365,20 +321,11 @@ en:
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
 
-  beta_banner:
-    new_loomio_html: |
-      <strong>The New Loomio is faster, prettier, and better!</strong> We're switching everyone over.
-    upgrade_browser_html: |
-      We only support modern versions of Internet Explore (10+). You will need to <a href='http://outdatedbrowser.com/en' target='_blank'>upgrade your browser</a> to keep using Loomio.
-      <strong>The New Loomio is here!</strong> It's faster, prettier, and mobile-ready.
-    more_info: More info...
-    button_text: Switch to the new Loomio
-
   poll_mailer:
     common:
       or: or
       why_send_this: You are receiving this email because %{reason}
-      view_on_loomio: View it on Loomio
+      view_on_loomio: View it on %{site_name}
       unsubscribe: Unsubscribe
       results: Results
       responses: Responses

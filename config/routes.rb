@@ -157,6 +157,7 @@ Loomio::Application.routes.draw do
     resources :documents, only: [:create, :update, :destroy, :index]
 
     resource :translations, only: [] do
+      get :show, on: :collection
       get :inline, to: 'translations#inline'
     end
 

@@ -14,6 +14,20 @@ describe API::TranslationsController do
     sign_in user
   end
 
+  describe 'show' do
+    it 'returns a translation based on lang parameter' do
+      get :show, lang: :es
+      json = JSON.parse(response.body)
+      expect(json.dig('common', 'action', 'save')).to eq 'Guardar'
+    end
+
+    it 'returns english by default' do
+      get :show
+      json = JSON.parse(response.body)
+      expect(json.dig('common', 'action', 'save')).to eq 'Save'
+    end
+  end
+
   describe 'inline' do
     context 'success' do
 

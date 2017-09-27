@@ -159,41 +159,10 @@ en:
     remove_success: Vote removed
     all_done: Great job, you've verified all the votes.
 
-  start_proposal_card:
-    title: 'Start a proposal'
-    helptext: Ready to make a decision?
-
-  proposal_outcome_panel:
-    heading: Outcome
-    set_outcome_hint: Use this space to let everyone know the outcome of the proposal.
-    set_outcome_btn: Set outcome
-    edit_outcome_link: Edit outcome
-
-  proposal_outcome_form:
-    aria_label: Proposal outcome form
-    set_outcome: Set proposal outcome
-    update_outcome: Update proposal outcome
-    outcome_label: Proposal outcome
-    outcome_placeholder: Let everyone know the outcome of the proposal.
-    publish_outcome: Publish outcome
-    messages:
-      created: Outcome published
-      updated: Outcome updated
-
-  previous_proposals_card:
-    heading: Previous Proposals
-
-  previous_proposals_page:
-    heading: Previous proposals
-
   previous_polls_page:
     heading: Activities in {{name}}
     polls_count: Showing {{loaded}} of {{total}} decisions
     search_activities: Search decisions
-
-  proposal_collapsed:
-    expand: Expand
-    outcome: 'Outcome: {{outcome}}'
 
   volume_levels:
     loud: 'Loud'
@@ -266,17 +235,8 @@ en:
     closing_in: 'Closing '
 
   sign_up_form:
-    aria_label: 'Sign up form'
-    title: "Welcome to Loomio! Let's get you set up"
-    name_label: 'Your name:'
-    name_placeholder: 'Jane Doe'
-    email_label: 'Email:'
-    email_placeholder: 'you@example.com'
     password_label: 'Password:'
     password_confirmation_label: 'That password again:'
-    sign_in_message: 'Have an account already?'
-    sign_in: 'Sign In'
-    sign_up: 'Create an Account'
 
   signed_out_modal:
     aria_label: 'Session ended'
@@ -386,71 +346,14 @@ en:
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
 
-
   position_buttons_panel:
     heading: Have your say
-
-  vote_form:
-    aria_label: Vote form
-    heading: Have your say
-    no_statement: No statement.
-    statement_over_limit: 'Character limit reached. Short position statements create a succinct summary. If you want to say more, post a comment.'
-    i_agree: 'I agree'
-    i_agree_details: 'I support this and want it to go ahead.'
-    i_abstain: 'I abstain'
-    i_abstain_details: 'I am happy for the group to decide without me.'
-    i_disagree: 'I disagree'
-    i_disagree_details: 'I think we can probably do better.'
-    i_block: 'I block'
-    i_block_details: 'I have strong objections to this proposal and am not OK with it going ahead.'
-    submit_position: 'Submit position'
-    change_position: 'Change position'
-    select_position: 'Select position'
-    statement_placeholder: 'Share your thoughts with the group.'
-    aria_statement_label: 'Optionally enter a statement to be recorded with your position'
-    messages:
-      created: Vote added
-
-  proposal_positions_panel:
-    heading: Positions
-    no_votes_yet: Nobody has voted on this proposal yet.
-    change_your_vote: Change your position.
-
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% of members have stated their position ({{number}}/{{total}})'
-
-  close_proposal_form:
-    aria_label: 'Close proposal'
-    close_proposal: 'Close proposal'
-    helptext: 'Are you sure you want to close this proposal now?'
-    close_proposal_submit: 'Close proposal'
-    messages:
-      success: Proposal closed
 
   extend_proposal_form:
     aria_label: Change close time
     title: 'Change close time'
     success: 'Proposal close time updated'
     submit: 'Update closing time'
-
-  proposal_form:
-    aria_label: 'Proposal form'
-    messages:
-      created: 'Proposal started'
-      updated: 'Proposal updated'
-    start_proposal: 'Start proposal'
-    start_a_proposal: 'Start a proposal'
-    edit_proposal: 'Edit proposal'
-    what_does_a_proposal_do: 'Proposals let you see how everyone feels about a particular course of action.'
-    proposal_ideas: Need ideas for writing a good proposal?
-    proposal_ideas_title: 9 ways to use a Loomio proposal to turn talk into action
-    editing_title_and_description_forbidden: 'You cannot change the title or description of a proposal after people have voted. If details have changed, please close the proposal and start another.'
-    title_placeholder: 'Eg: Let’s go to the moon'
-    title_label: 'Title'
-    closes_at_label: 'Closes at'
-    closes: 'Closes'
-    details_label: 'Details'
-    details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree with your proposal"
 
   discussion_record:
     created: 'The thread {{title}} was successfully created in {{groupName}}'
@@ -888,7 +791,7 @@ en:
     introduction: 'When you deactivate your account:'
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
-    no_emails: 'You will no longer receive Loomiorelated emails'
+    no_emails: 'You will no longer receive Loomio related emails'
     contact_for_reactivation: 'You will need to contact us to reactivate your account'
     submit: 'Yes, I want to deactivate'
 
@@ -908,7 +811,7 @@ en:
     header: Email settings
     all_groups: Settings for all groups
     daily_summary_label: Daily summary email
-    daily_summary_description: "Each morning, you will get an email with any activity that you missed the day before. This email provides an easy routine for staying up to date with Loomio activity."
+    daily_summary_description: "Each morning, you will get an email with any activity that you missed the day before. This makes it easy to stay up to date with activity."
     on_participation_label: Subscribe on participation
     on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
     mentioned_label: Mentions
@@ -1132,110 +1035,6 @@ en:
     send_message: 'Send Message'
     new_contact_message: "Thanks for getting in touch; we''ll get back to you soon!"
 
-  help_page:
-    coordinating: 'Coordinating your Loomio group'
-    coordinating_details: |
-       As the coordinator, you’re responsible for setting up your Loomio group and inviting
-       everyone in. As well as learning how to use a new piece of software, your group will
-       be learning new processes for collaborating more effectively and making good decisions
-       together. Here are some tips for supporting your group to succeed:
-    different_ways: 'Different ways to use Loomio'
-    engaging_html: |
-      <h2>Tips for engaging your group</h2>
-      <p>People will be excited to jump in and start participating when there’s an engaging
-      proposal on the table. A good proposal contains a plan of action for the group, so
-      that it’s immediately obvious what it means to agree or disagree. Think about how you
-      can identify discussions/decisions the group is currently undertaking in person or by
-      email that would be easier if they were on Loomio.</p>
-      <p>If your group is just starting out, you could start a lighthearted decision, to give
-      everyone a chance to play with the tool and see the decisionmaking process in action.</p>
-      <p>Another simple way to encourage people to engage in a discussion is to use the @mention
-      feature to prompt specific people; this will send them an email to tell them they’ve been
-      mentioned in a comment.</p>
-    example1_html: |
-      <h3>You need the group to discuss a broad topic and develop a solution together</h3>
-      <p>Strategy: Discuss a topic for a while before creating a proposal.</p>
-      <p>Discussions often reach the best outcome if you build shared understanding
-      about the problem before jumping to a specific solution. When people get to
-      participate in the process, they’re much more likely to be on board with the outcome.</p>
-    example2_html: |
-      <h3>You already have a proposal in mind, and you want to get signoff from the group to move forward.</h3>
-      <p>Strategy: Start a discussion about a specific decision and make a proposal immediately.</p>
-      <p>If you’ve got a clear outcome in mind but you want to make sure there aren’t any critical concerns,
-      you can use the proposal to get quick input into a decision.</p>
-      <p>You can do things like finalise a document, approve an application, or signoff on a piece of work.</p>
-    get_in_touch: "Get in touch"
-    get_in_touch_description_html: "If you have any questions or feedback, <a href='%{link}'>drop us a line</a>."
-    getting_started: "Getting started"
-    getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
-    getting_the_most: 'Getting the most out of Loomio'
-    have_your_say: "Have your say"
-    have_your_say_details_html: |
-      <p>When you’re ready to have your say, click one of the four decision buttons.</p>
-      <p>When you’ve made your decision, give a brief explanation. Underneath the pie,
-      you can see what everyone else thinks. This makes it quick and easy to catch up
-      with the discussion. As new information comes to light, you can change your
-      position at any time.</p>
-    have_a_discussion: "Have a discussion"
-    have_a_discussion_description: "The topic and any relevant background information sit at the top of the page. Use the comment box to add your voice to the discussion."
-    help: "Help"
-    how_it_works: "How it works"
-    invitation_html: |
-      <h2>Writing a great invitation</h2>
-      <p>The first question every new member will have is ‘what is this group for?’</p>
-      <p>Think about the simplest way you can describe the group: What do you want to
-      achieve together? What types of decisions will you be making? Who will be involved?</p>
-      <p>It can be a good idea to talk to your group first before you invite them to join Loomio.</p>
-      <p>People will want to know why they’ve been invited, what’s expected of them,
-      and why it’s worth their time to learn how to use a new tool.</p>
-    join_the_community: "Join the community"
-    join_the_community_description_html: "Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Click here to go the Loomio Community group</a>."
-    images_and_text_formatting: "Images and text formatting"
-    images_and_text_formatting_html: |
-      <p>Loomio uses ‘Markdown’ for image embedding and text formatting.
-      You can switch Markdown on with the small grey icon under the comment box.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Click here</a>
-      for information on how to use Markdown.</p>
-    keep_up_to_date: "Keep up to date"
-    keep_up_to_date_html: |
-      <p>Clicking your group name at the top of the screen takes you to your Group Page,
-      where you can see a list of all the discussions and decisions for that group. If
-      you’re in more than one group, you can see all the activity in all of your groups
-      at once on the Home Page.</p>
-      <p>You’ll get email notifications when important things happen in your group.
-      You can change your email preferences <a href="%{link}"">here</a>.</p>
-    make_a_decision: "Make a decision"
-    make_a_decision_description: "When the group is ready to make a decision, anyone can make a proposal. Outline a clear course of action and give some background so everyone knows exactly what it means to agree or disagree."
-    prompt_people_details: "If you want to get the attention of a specific person in your group, type ‘@’ followed by their name. They’ll get an email letting them know you’ve mentioned them in a comment."
-    prompt_people_html: "Prompt people with <span class='blue'>@mentions</span>"
-    positions_agree_description: "<span>Agree</span> means you’re happy with the proposal."
-    positions_abstain_description: "<span>Abstain</span> means you’re unsure, or you’re happy for the group to decide without you."
-    positions_disagree_description: "<span>Disagree</span> means you think there might be a better alternative, but you’re willing to go with the group’s decision."
-    positions_block_description: "<span>Block</span> means you’ve got serious objections and you’ll be extremely unhappy if this proposal goes ahead."
-    start_discussion: "Starting an engaging discussion"
-    start_discussion_html:  |
-      <p>When you start a discussion, make sure the title conveys the topic succinctly.
-      Use the Context Panel to give all the background information necessary for the
-      group to have a productive and informed discussion.</p>
-      <p>During the discussion, the Context Panel can be updated as new information
-      comes to light. As well as clarifying the topic, you can use this space for
-      sharing resources, summarising the discussion as it progresses, or outlining the
-      decisionmaking protocols your group is using.</p>
-    start_proposal: "Writing a clear proposal"
-    start_proposal_html: |
-      <p> If you make the title clear and succinct, people will immediately know exactly
-      what it means to agree or disagree.</p>
-      <p>It’s not the end of the world if a proposal doesn’t get clear agreement immediately.
-      If the group doesn’t love the first proposal, anyone can start a new proposal to
-      address the concerns raised, and keep the process moving forward.</p>
-      <p>Through this dynamic process, the collective wisdom of your group can generate better
-      ideas than anyone would have come up with on their own.</p>
-      <p>The deadline on a proposal can be extended at any time, if it looks like the decision
-      needs some more space. Everyone will get an email notification 24 hours before a proposal closes.</p>
-    video_id: "52025402"
-    video_tutorial: "Video tutorial"
-    video_tutorial_description: "Check out the video for a quick demonstration of how to use Loomio."
-
   hint:
     context: 'Tips for using the context panel'
     discussion: 'Tips for starting an engaging discussion'
@@ -1244,48 +1043,15 @@ en:
     vote: 'You can change your position at any time'
 
   explore_page:
-    header: Explore Loomio groups
-    search_placeholder: Search for public Loomio groups
+    header: Explore groups
+    search_placeholder: Search for public groups
     single_search_result: "1 public group matching <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} public groups matching <strong>{{searchTerm}}:</strong>"
     no_results_found: "<strong>Can't find the group you're looking for?</strong> If a group's privacy is set to 'secret', it won't appear here. If you know who coordinates the group, you could ask them for an invite."
 
-  angular:
-    switch_back: 'Switch back to old Loomio'
-    give_feedback: 'Give feedback'
-    collapse: Collapse
-    enable:
-      invite: 'Try the new Loomio!'
-      title: 'Try the new Loomio'
-      intro: "We've rebuilt Loomio and we need your help to make sure it is awesome!"
-      body_html: |
-        <p></p>
-        <h3>What's the difference anyway?</h3>
-
-        <p>
-          The new interface is like the old interface but newer:
-          <ul>
-            <li>Everything updates live on the page as it happens</li>
-            <li>It’s designed for all your devices, from smartphone to desktop</li>
-            <li>It’s accessible to people who are blind, and translated into <a href="https://www.loomio.org/translation">heaps of languages</a>
-          </ul>
-        </p>
-
-        <p>It uses the same database as the old interface, meaning it will have all your existing groups and discussions.</p>
-        <p>There is a link to "Give feedback" in the bottom left corner. You'll also see a link there to "Switch back to old Loomio", which will remain available for the next little while.</p>
-        <p>We really look forward to hearing your feedback, thanks for your time and support.</p>
-
-      button_text: 'Enable the new Loomio'
-
-    disable:
-      title: 'Thanks for trying the new Loomio'
-      body_html: "<p>Yikes, did we do something wrong? We're sorry if you had a bad time in the new Loomio.</p>"
-      give_feedback: "Before you go please consider sharing your feedback so we can improve."
-      button_text: 'Switch back to the old Loomio'
-
   global:
     messages:
-      app_update: 'A new version of Loomio is available'
+      app_update: 'A new version of the app is available'
       reload: 'Reload'
 
   emoji_picker:
@@ -1403,7 +1169,7 @@ en:
     by_who: "by {{name}}"
 
   poll_common_select_group:
-    loomio_group: Loomio group
+    loomio_group: Group
     loomio_group_placeholder: (no group selected)
 
   poll_common_voter_add_options:
@@ -1506,7 +1272,7 @@ en:
   poll_common_unsubscribe_form:
     title: Receive updates
     label: Receive email updates about this decision
-    tooltip: Loomio can send email updates to keep you informed about this decision, such as when it is edited, when it expires, or when an outcome has been set. Unchecking this box ensures that you won't receive further email notifications for decision.
+    tooltip: Email updates keep you informed about this decision, such as when it is edited, when it expires, or when an outcome has been set. Unchecking this box ensures that you won't receive further email notifications for decision.
     helptext_on: You will receive emails about activity in this decision
     helptext_off: You will not receive any emails about this decision
     subscribed: Successfully subscribed
@@ -1624,7 +1390,7 @@ en:
     start_header: Start ranked choice
     edit_header: Edit ranked choice
     tip: Find out when people are available to meet
-    title_placeholder: E.g. who should take over as chairman of the board?
+    title_placeholder: E.g. Who would you like as mayor?
     details_placeholder: Provide any clarifying details people might need to participate
     meeting_created: Ranked choice created
     meeting_updated: Ranked choice updated
@@ -1745,8 +1511,8 @@ en:
     enter_email: "E.g. guest@example.com"
     reminded: Reminder sent!
     send_emails: Send invitations ({{count}})
-    share_group: Loomio group
-    share_group_helptext: Select a Loomio group to share this decision with. Members of the group will be able to participate.
+    share_group: Group
+    share_group_helptext: Select a group to share this decision with. Members of the group will be able to participate.
     cannot_move_poll_helptext: This poll is part of the discussion <strong>{{discussion}}</strong> in <strong>{{group}}</strong>, and so cannot be moved.
     move_group_helptext: Be careful! Moving a decision out of a group may cause some people to lose access to it. Existing votes will still be recorded.
     set_group: Set group
@@ -1765,7 +1531,7 @@ en:
   poll_common_publish_slack_preview:
     poll_published: "published a poll:"
     poll_published_with_discussion: "published a poll in <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: View it on Loomio
+    view_it_on_loomio: View it on {{site_name}}
     timestamp: Today at {{timestamp}}
 
   poll_common_participant_form:
@@ -1797,7 +1563,7 @@ en:
     groups_placeholder: (All groups)
 
   auth_form:
-    sign_in_to_loomio: Sign into Loomio
+    sign_in_to_loomio: Sign into {{site_name}}
     sign_in: Sign in
     invitation_required: You need an invitation to create an account.
     choose_an_account: "Sign in via a third party, or enter your email address to continue."
@@ -1823,9 +1589,9 @@ en:
     set_password: Set password
 
     hello: "Hello, {{name}}!"
-    new_to_loomio: New to Loomio? Create a new account
+    new_to_loomio: New to {{site_name}}? Create a new account
     create_account: Create account
-    already_a_user: Already have a Loomio account? Enter your email address to link this account to yours
+    already_a_user: Already have a {{site_name}} account? Enter your email address to link this account to yours
     link_accounts: Link accounts
 
     check_your_email: Check your email!
@@ -1897,7 +1663,7 @@ en:
   slack_added_modal:
     title: Success!
     helptext: |
-      You've successfully added Slack to your Loomio group <strong>{{name}}</strong>.
+      You've successfully added Slack to your group <strong>{{name}}</strong>.
       Now, whenever anyone starts a poll in this group, they'll have the option to
       post updates about that poll into a channel in your slack team.
     start_poll_now: Make a decision now
