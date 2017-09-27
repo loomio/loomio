@@ -1,5 +1,5 @@
 class API::LoginTokensController < API::RestfulController
-  before_action :update_detected_locale
+  before_action :update_detected_locale, only: :create
   
   def create
     service.create(actor: login_token_user, uri: URI::parse(request.referrer.to_s))
