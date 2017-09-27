@@ -1,3 +1,6 @@
+//= depend_on "_variables.scss.erb"
+@import 'variables';
+
 .poll-mailer-common-responses__poll-option {
   border-left: 5px solid;
   padding-left: 10px;
@@ -62,28 +65,6 @@
   width: 24px;
 }
 
-.poll-mailer__create-outcome-button {
-  background-color: #5cb85c;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 16px;
-  margin: 0;
-  text-decoration: none;
-  white-space: nowrap;
-  max-width: 80px;
-  padding: 12px 30px;
-}
-
-.poll-mailer__vote-button {
-  /*border: 1px solid #70c9f8;*/
-  border: 2px solid black;
-  padding: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-  /*background-color: #70c9f8;*/
-  /*color: white;*/
-}
-
 .poll-mailer__text-align-center {
   text-align: center;
 }
@@ -132,7 +113,7 @@
 }
 
 .poll-mailer-meeting__cell--active {
-  background: #70C9F8;
+  background: $accent-color;
 }
 
 .poll-mailer-meeting__cell--active img {
@@ -142,15 +123,4 @@
 
 .poll-mailer-meeting__participant-name {
   padding-right: 16px;
-}
-
-.poll-mailer__button {
-  background-color: #5cb85c;
-  border-radius: 4px;
-  color: #fff;
-  display: inline-block;
-  font-size: 16px;
-  margin: 16px 0;
-  text-decoration: none;
-  padding: 12px 30px;
 }

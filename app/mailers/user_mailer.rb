@@ -6,6 +6,7 @@ class UserMailer < BaseMailer
     @token = user.login_tokens.create!
     send_single_mail to: @user.email,
                      subject_key: "user_mailer.accounts_merged.subject",
+                     subject_params: { site_name: AppConfig.theme[:site_name] },
                      locale: locale_for(@user)
   end
 
@@ -80,7 +81,8 @@ class UserMailer < BaseMailer
                      from: from_user_via_loomio(@contact_request.sender),
                      reply_to: @contact_request.sender.name_and_email,
                      subject_key: "email.contact_request.subject",
-                     subject_params: { name: @contact_request.sender.name },
+                     subject_params: { name: @contact_request.sender.name,
+                                       site_name: AppConfig.theme[:site_name]},
                      locale: locale_for(@contact_request.recipient, @contact_request.sender)
   end
 end
