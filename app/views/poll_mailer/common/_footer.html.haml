@@ -6,4 +6,4 @@
     - if @info.recipient.is_logged_in?
       %span= t(:"poll_mailer.common.or")
       = link_to t(:"poll_mailer.common.unsubscribe"), @info.links[:unsubscribe]
-  .thread-mailer__footer-logo= image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo"
+  = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
