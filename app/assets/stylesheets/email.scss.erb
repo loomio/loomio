@@ -1,3 +1,6 @@
+//= depend_on "_variables.scss.erb"
+@import 'variables';
+
 .everything{width: 600px;}
 .icon { width: 50px; vertical-align: top }
 .light-discussion .icon img { width: 40px }
@@ -32,7 +35,7 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
 }
 
 .mailer__header-logo {
-  border-bottom: 1px solid #F7A915;
+  border-bottom: 1px solid $primary-color;
   margin: 0 10px;
 }
 
@@ -45,6 +48,7 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
   width: 40px;
   height: 40px;
 }
+
 .base-mailer__avatar-image {
   margin: 0 10px 10px 0;
   width: 40px;
@@ -81,19 +85,34 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
   padding: 0 20px;
 }
 
-.invite-people-mailer__button {
-  background-color: #5cb85c;
-  border: #4cae4c;
+.base-mailer__button {
   border-radius: 4px;
-  color: #fff;
   cursor: pointer;
-  display: inline;
   font-size: 16px;
-  margin: 0;
+  line-height: 80px;
+  margin: 16px;
   text-decoration: none;
   white-space: nowrap;
   max-width: 80px;
+  padding: 16px;
+}
+
+.base-mailer__button--primary {
+  background-color: $primary-color;
+  border: darken($primary-color, 10%);
+  color: $text-on-primary-color;
+}
+
+.base-mailer__button--accent {
+  background-color: $accent-color;
+  border: darken($accent-color, 10%);
+  color: $text-on-accent-color;
+}
+
+.user-mailer__start-decision-button {
+  display: inline-block;
   padding: 12px 30px;
+  min-width: 150px;
 }
 
 .invite-people-mailer__value-proposition {
@@ -190,7 +209,7 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
   font-size: small;
 }
 
-.thread-mailer__footer-logo {
+.thread-mailer__footer-logo img{
   height: 32px;
 }
 
@@ -217,22 +236,6 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
 .user-mailer__start-decision-helptext {
   margin: 8px 0;
   font-size: 14px;
-}
-
-.user-mailer__start-decision-button {
-  background-color: #5cb85c;
-  border: #4cae4c;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 16px;
-  margin: 0;
-  text-decoration: none;
-  white-space: nowrap;
-  padding: 12px 30px;
-  min-width: 150px;
-  text-align: left;
 }
 
 .user-mailer__start-decision-logo {
