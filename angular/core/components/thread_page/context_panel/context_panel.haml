@@ -1,7 +1,7 @@
 %section.context-panel.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
   .context-panel__top
     .context-panel__pin{ng-if: "discussion.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
-      %i.material-icons location_on
+      %i.mdi.mdi-pin
 
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
       %h1.lmo-h1.context-panel__heading{ng-if: "!translation"}
@@ -14,7 +14,7 @@
       %md-menu.lmo-dropdown-menu{ng-if: "showContextMenu()", md-position-mode: "target-right target"}
         %md-button.context-panel__dropdown-button{ng-click: "$mdMenu.open()"}
           .sr-only{translate: "thread_context.thread_options"}
-          %i.material-icons expand_more
+          %i.mdi.mdi-24px.mdi-chevron-down
         %md-menu-content
           %md-menu-item.context-panel__dropdown-options--email-settings{ng-if: "canChangeVolume()"}
             %md-button{ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}
@@ -40,10 +40,10 @@
     %timeago.nowrap{timestamp: "::discussion.createdAt" }>
     %span{aria-hidden: "true"}·
     %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
-      %i.material-icons> lock_outline
+      %i.mdi.mdi-lock-outline>
       %span{translate: "common.privacy.private"}
     %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
-      %i.material-icons> public
+      %i.mdi.mdi-earth>
       %span{translate: "common.privacy.public"}
     %outlet{name: "after-thread-title", model: "discussion"}
 

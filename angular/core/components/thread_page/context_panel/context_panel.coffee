@@ -66,7 +66,7 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $window, $tim
       canPerform: -> AbilityService.canAddComment($scope.discussion)
     ,
       name: 'edit_thread'
-      icon: 'edit'
+      icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread($scope.discussion)
       perform:    -> ModalService.open DiscussionForm, discussion: -> $scope.discussion
     ,
@@ -79,22 +79,22 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $window, $tim
           modelType: 'Discussion'
     ,
       name: 'translate_thread'
-      icon: 'translate'
+      icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
       perform:    -> TranslationService.inline($scope, $scope.discussion)
     ,
       name: 'add_comment'
-      icon: 'reply'
+      icon: 'mdi-reply'
       canPerform: -> AbilityService.canAddComment($scope.discussion)
       perform:    -> ScrollService.scrollTo('.comment-form textarea')
     ,
       name: 'pin_thread'
-      icon: 'location_on'
+      icon: 'mdi-pin'
       canPerform: -> AbilityService.canPinThread($scope.discussion)
       perform:    -> ThreadService.pin($scope.discussion)
     ,
       name: 'unpin_thread'
-      icon: 'location_off'
+      icon: 'mdi-pin-off'
       canPerform: -> AbilityService.canUnpinThread($scope.discussion)
       perform:    -> ThreadService.unpin($scope.discussion)
     ]

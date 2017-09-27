@@ -8,11 +8,11 @@
       .poll-common-share-form__visitor.lmo-flex{ng-repeat: "invitation in invitations() | orderBy: 'updatedAt'"}
         .poll-common-share-form__email.lmo-flex__grow {{invitation.recipientEmail}}
         %md-button.lmo-inline-action{ng-click: "remind(visitor)", ng-if: "!invitation.reminded && !invitation.processing"}
-          %i.material-icons redo
+          %i.mdi.mdi-redo
         %loading{ng-if: "invitation.processing"}
         %span.poll-common-share-form__reminded{ng-if: "invitation.reminded", translate: "poll_common_share_form.reminded"}
         %md-button.lmo-inline-action{ng-if: "!poll.anyoneCanParticipate", ng-click: "revoke(invitation)"}
-          %i.material-icons clear
+          %i.mdi.mdi-clear
 
     %md-list-item.poll-common-share-form__add-option{flex: "true", layout: "row"}
       %md-input-container.lmo-flex__grow{md-no-float: "true"}

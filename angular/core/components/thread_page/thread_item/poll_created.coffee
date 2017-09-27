@@ -9,12 +9,12 @@ angular.module('loomioApp').directive 'pollCreated', (TranslationService, Reacti
       canPerform: -> AbilityService.canParticipateInPoll($scope.eventable.poll())
     ,
       name: 'edit_poll'
-      icon: 'edit'
+      icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditPoll($scope.eventable)
       perform:    -> ModalService.open PollCommonFormModal, poll: -> $scope.eventable
     ,
       name: 'translate_outcome'
-      icon: 'translate'
+      icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.eventable)
       perform:    -> TranslationService.inline($scope, $scope.eventable)
     ]

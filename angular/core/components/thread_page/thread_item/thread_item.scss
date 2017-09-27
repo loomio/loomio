@@ -22,8 +22,14 @@
 }
 
 .thread-item__body {
-  width: calc(100% - 32px);
+  width: 100%;
 }
+@media (max-width: $tiny-max-px){
+  .thread-item__directive {
+    margin-left: -42px;
+  }
+}
+
 
 .thread-item__footer {
   @include fontSmall();
