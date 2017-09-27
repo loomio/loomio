@@ -2,8 +2,8 @@
   %md-menu{id: "notifications", md-position-mode: "target target", md-offset: "0 48"}
     %md-button.notifications__button.lmo-flex{ng-click: "toggle($mdMenu)", tabindex: 4}
       .sr-only{translate: "navbar.notifications"}
-      %i.material-icons{ng-if: "hasUnread()"} notifications
-      %i.material-icons{ng-if: "!hasUnread()"} notifications_none
+      %i.mdi.mdi-bell{ng-if: "hasUnread()"}
+      %i.mdi.mdi-bell-outline{ng-if: "!hasUnread()"}
       %span.badge.notifications__activity{ng-if: "hasUnread()"} {{unreadCount()}}
     %md-menu-content.notifications__menu-content.notifications__dropdown
       %notification{notification: "notification", ng-repeat: "notification in notifications() | orderBy: '-createdAt' track by notification.id"}

@@ -10,7 +10,7 @@
       %tr{ng-repeat: "stance in poll.latestStances() track by stance.id"}
         %td.poll-meeting-chart-panel__participant-name {{ stance.participant().name }}
         %td.poll-meeting-chart-panel__cell{ng-class: "{'poll-meeting-chart-panel--active': stance.votedFor(option), 'poll-meeting-chart-panel--inactive': !stance.votedFor(option)}", ng-repeat: "option in poll.pollOptions() | orderBy: 'name' track by option.id"}
-          %i.material-icons{ng-if: "stance.votedFor(option)"} check
+          %i.mdi.mdi-check{ng-if: "stance.votedFor(option)"}
       %tr.poll-meeting-chart-panel__bold
         %td{translate: "poll_meeting_chart_panel.total"}
         %td.poll-meeting-chart-panel__cell{ng-repeat: "stanceCount in poll.stanceCounts track by $index"}

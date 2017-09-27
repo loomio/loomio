@@ -5,6 +5,6 @@
       .poll-common-start-poll__header.lmo-flex{ng-if: "!startPollPage.poll.pollType"}
         %h2.lmo-card-heading{translate: "poll_common.start_poll"}
       .poll-common-start-poll__header.lmo-flex{ng-if: "startPollPage.poll.pollType"}
-        %i.material-icons {{ startPollPage.icon() }}
+        %i.mdi{class: "{{ startPollPage.icon() }}"}
         %h2.lmo-card-heading.poll-common-card-header__poll-type{translate: "poll_types.{{startPollPage.poll.pollType}}"}
       %poll_common_start_poll.lmo-flex__grow{poll: "startPollPage.poll"}

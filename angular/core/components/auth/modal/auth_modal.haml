@@ -2,9 +2,9 @@
   .lmo-disabled-form{ng-show: "isDisabled"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
-      %i.material-icons{ng-if: "!showBackButton()"} lock_open
+      %i.mdi.mdi-lock-open{ng-if: "!showBackButton()"}
       %a.auth-modal__back{ng-click: "back()", ng-if: "showBackButton()"}
-        %i.material-icons arrow_back
+        %i.mdi.mdi-keyboard-backspace
       %h1.lmo-h1{translate: "auth_form.sign_in_to_loomio", translate-values: "{site_name: siteName}"}
       %material_modal_header_cancel_button{ng-if: "!preventClose"}
       %div{ng-if: "preventClose"}

@@ -3,7 +3,7 @@
   %loading_content{ng-if: "loading", block-count: 2}
   .activity-card__content{ng-if: "!loading"}
     %a.activity-card__load-backwards.lmo-flex.lmo-flex__center.lmo-no-print{href: "", ng-show: "canLoadBackwards()", ng-click: "loadEventsBackwards()", tabindex: "0"}
-      %i.material-icons> autorenew
+      %i.mdi.mdi-autorenew>
       %span{translate: "discussion.load_previous", translate-value-count: "{{beforeCount()}}"}
     %loading.activity-card__loading.page-loading{ng-show: "loadEventsBackwardsExecuting"}
     .activity-card__no-activity.lmo-placeholder.align-center{ng-if: "noEvents()", translate: "discussion.activity_placeholder"}
