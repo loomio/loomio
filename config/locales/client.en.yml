@@ -124,7 +124,7 @@ en:
       resent: Invitation resent
     formatting_help:
       label: 'Formatting'
-      title: 'Learn how to use Markdown to format your text on Loomio'
+      title: 'Learn how to use Markdown to format your text'
 
   ordinal:
     _1: 1st
@@ -241,7 +241,7 @@ en:
   signed_out_modal:
     aria_label: 'Session ended'
     title: "Your session has ended"
-    message: "You have been logged out of Loomio from another window. Please sign back in to continue."
+    message: "You have been logged out from another window. Please sign back in to continue."
     ok: "Ok"
 
   comment_form:
@@ -632,12 +632,6 @@ en:
     flash:
       success: Document saved
       destroyed: Document removed
-
-  group_help_card:
-    title: Help
-    ten_tips_article_title: 10 tips for making great decisions with Loomio
-    nine_ways_to_use_proposals: 9 ways to use a Loomio proposal to turn a conversation into action
-
   membership_requests_page:
     heading: Membership Requests
     approve: Approve
@@ -667,7 +661,7 @@ en:
     email_addresses: 'Email addresses'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Copy the link and send it to anyone you want to join the group. This will give them access to all threads in the group.'
-    email_explanation: 'Alternatively, enter email addresses below and Loomio will send them an invitation by email.'
+    email_explanation: 'Alternatively, enter email addresses below to send invitations by email.'
     add_custom_message: 'Make your invite personal, '
     add_custom_message_link: 'add a custom message.'
     custom_message: 'Custom message'
@@ -791,7 +785,7 @@ en:
     introduction: 'When you deactivate your account:'
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
-    no_emails: 'You will no longer receive Loomio related emails'
+    no_emails: 'You will no longer receive notification emails'
     contact_for_reactivation: 'You will need to contact us to reactivate your account'
     submit: 'Yes, I want to deactivate'
 
@@ -1636,7 +1630,7 @@ en:
       add_to_group_helptext: Select a group to link with Slack
       create_new_group_helptext: Don't have a Loomio group? Simply enter a name and we'll make one for you
       group_name: Group name
-      group_name_placeholder: Name your new Loomio group...
+      group_name_placeholder: Name your new group...
       slack_installed: Slack installed
       install_slack: Install slack now
       start_new_group: Start a new group

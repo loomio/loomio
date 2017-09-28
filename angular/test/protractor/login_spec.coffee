@@ -110,7 +110,7 @@ describe 'Login', ->
       page.expectText '.auth-form', 'instantly log in'
       page.loadPath 'use_last_login_token'
       page.expectFlash 'Signed in successfully'
-      page.expectText '.explore-page', 'Explore Loomio groups'
+      page.expectText '.explore-page', 'Explore groups'
 
     it 'can login from a discussion page', ->
       page.loadPath 'view_open_discussion_as_visitor'

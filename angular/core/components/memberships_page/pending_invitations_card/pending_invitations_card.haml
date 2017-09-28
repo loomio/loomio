@@ -7,8 +7,8 @@
           %strong {{invitation.recipientEmail}}
           .lmo-hint-text{translate: "pending_invitations_card.sent_at", translate-value-date: "{{invitationCreatedAt(invitation)}}"}
         .memberships-page__actions
-          %loading{ng-if: "resendExecuting"}
-          %md-button.md-accent{ng-if: "!resendExecuting", ng-click: "resend(invitation)", translate: "common.action.resend"}
+          %loading{ng-if: "invitation.resending"}
+          %md-button.md-accent{ng-if: "!invitation.resending", ng-click: "resend(invitation)", translate: "common.action.resend"}
           %md-button.md-accent{type: "button", clipboard: "true", text: "invitation.url", on-copied: "copied()"}
             %span{translate: "pending_invitations_card.copy_url"}
           %md-button.md-warn{ng-click: "openCancelForm(invitation)", translate: "pending_invitations_card.revoke_invitation"}

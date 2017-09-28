@@ -3,9 +3,17 @@
   @include listTransition;
   min-height: $boxMediumSize + ($thinPaddingSize * 2);
   border-bottom: 1px solid $border-color;
-  position: relative;
   &:hover .thread-preview__actions { opacity: 1; }
   &.loading-content { padding: 10px; }
+  position: relative;
+}
+
+.thread-preview__link {
+  display: flex;
+  justify-content: space-between;
+  padding: $thinPaddingSize $cardPaddingSize;
+  color: $primary-text-color;
+  text-decoration: none;
 }
 
 .thread-preview__status-icon {
@@ -20,7 +28,7 @@
 .thread-preview__actions {
   position: absolute;
   display: flex;
-  right: 0px;
+  right: 40px;
   transition: opacity 0.25s ease-in-out;
   top: 0;
   opacity: 0;
@@ -34,24 +42,9 @@
   }
 }
 
-.thread-preview--left {
-  width: 100%;
-}
-
 .thread-preview__mute,
 .thread-preview__unmute { margin-left: 8px }
 
-.thread-preview__screen-only {
-  overflow: hidden;
-}
-
-.thread-preview__link {
-  display: block;
-  padding: $thinPaddingSize $cardPaddingSize;
-  color: $primary-text-color;
-  text-decoration: none;
-  @include displayFlex;
-}
 
 .thread-preview__link:hover {
   color: $primary-text-color;
@@ -63,6 +56,12 @@
 }
 
 .thread-preview__text-container{
+  display: flex;
+}
+
+.thread-preview__details {
+  min-width: 0;
+  flex-grow: 1;
 }
 
 .thread-preview__title{

@@ -4,6 +4,6 @@
 %br
 %strong= @recipient.group.full_name
 .invite-people-mailer__message-container
-  = link_to t(:"email.to_join_group.accept_invitation"), invitation_url(@recipient, @utm_hash), class: "invite-people-mailer__button"
+  = link_to t(:"email.to_join_group.accept_invitation"), invitation_url(@recipient, @utm_hash), class: "base-mailer__button base-mailer__button--accent"
 .invite-people-mailer__value-proposition
-  = t(:"email.value_proposition")
+  = t(:"email.value_proposition", site_name: AppConfig.theme[:site_name])
