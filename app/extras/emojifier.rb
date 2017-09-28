@@ -6,4 +6,8 @@ class Emojifier
     eval "(emojione.imagePathPNG = \"#{root_url}\" + emojione.imagePathPNG) &&
           (emojione.shortnameToImage(\"?\"))", text
   end
+
+  def self.emojify_src!(text)
+    emojify!(text).match(/src=\"(.*)\"/)&.send(:[], 1)
+  end
 end
