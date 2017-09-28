@@ -113,7 +113,7 @@ es:
       intro: "Tu solicitud para acceder al grupo %{group_name} ha sido aprobada."
       intro_html: "Tu solicitud para acceder al grupo <strong>%{group_name}</strong> ha sido aprobada."
       link_help: "Haz clic en el siguiente enlace para unirte a %{group_name} y comenzar:"
-      subject: "Tu solicitud para unirte a  %{group_name}  ha sido aprobada."
+      subject: "Tu solicitud para unirte a %{group_name} ha sido aprobada."
       join_group: "Unirte al grupo"
     membership_request:
       intro_html: ha solicitado el acceso a uno de tus grupos.

@@ -1286,7 +1286,7 @@ es:
     stance_created: 'Opción registrada '
     stance_updated: Opción actualizada
   thread_item:
-    comment_replied_to: "<strong><a href='u/{{username}}'>{{autor}}</a></strong> en respuesta a <strong> {{tittle}}</strong>"
+    comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> en respuesta a <strong> {{title}}</strong>"
     discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el titulo del hilo <strong>{{title}}</strong>"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el contexto del hilo"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado los anexos del hilo"
