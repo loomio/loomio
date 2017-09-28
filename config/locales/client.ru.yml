@@ -83,7 +83,6 @@ ru:
       resent: Переслать приглашение
     formatting_help:
       label: 'Форматирование'
-      title: 'Узнать как использовать Пометки для форматирования вашего текста в Лумио'
   devise:
     failure:
       inactive: 'Аккаунт, связанный с указанным адресом электронной почты, деактивирован. Если вы хотите раективировать аккаунт, свяжитесь с нами.'
@@ -101,35 +100,10 @@ ru:
     verify_success: Голосование подтверждено
     remove_success: Голосование удалено
     all_done: Отличная работа, Вы подтвердили все голосование
-  start_proposal_card:
-    title: 'Создать голосование'
-    helptext: Готовы принять решение?
-  proposal_outcome_panel:
-    heading: Итог
-    set_outcome_hint: 'Используйте это поле '
-    set_outcome_btn: Установить результат
-    edit_outcome_link: Редактировать результат
-  proposal_outcome_form:
-    aria_label: Результат голосования
-    set_outcome: 'Подвести итоги голосования '
-    update_outcome: Обновить итоги голосования
-    outcome_label: Результат голосования
-    outcome_placeholder: Сообщить всем результат голосования
-    publish_outcome: Опубликовать результат
-    messages:
-      created: Результат опубликован
-      updated: Результат обновлен
-  previous_proposals_card:
-    heading: Предыдущие голосования
-  previous_proposals_page:
-    heading: Предыдущие предложения
   previous_polls_page:
     heading: Активности в {{имя}}
     polls_count: Показать {{загруженное}}  {{итог}} решения
     search_activities: Поиск решений
-  proposal_collapsed:
-    expand: Расширить
-    outcome: 'Решения: {{outcome}}'
   volume_levels:
     loud: 'Заметный'
     normal: 'Нормальный'
@@ -166,15 +140,8 @@ ru:
     unread: 'Непрочитанные'
     closing_in: 'Закрывается'
   sign_up_form:
-    name_label: 'Ваше имя:'
-    name_placeholder: 'Имя Фамилия'
-    email_label: 'Email:'
-    email_placeholder: 'You@example.com'
     password_label: 'Пароль:'
     password_confirmation_label: 'Введите пароль повторно:'
-    sign_in_message: 'Уже зарегистрированы?'
-    sign_in: 'Войти'
-    sign_up: 'Зарегистрироваться'
   comment_form:
     aria_label: 'Добавить комментарий '
     attachments:
@@ -215,45 +182,6 @@ ru:
     no_notifications: "У Вас нет уведомлений"
   position_buttons_panel:
     heading: Выразить свое мнение
-  vote_form:
-    aria_label: Форма для голосования
-    heading: Выразить свое мнение
-    i_agree: 'Я согласен'
-    i_agree_details: 'Всецело поддерживаю'
-    i_abstain: 'Я воздерживаюсь'
-    i_abstain_details: 'Я был бы рад, если группа примет решение без меня.'
-    i_disagree: 'Я не соласен'
-    i_disagree_details: 'Я думаю что есть более подходящее решение'
-    i_block: 'Я блокирую'
-    i_block_details: 'Я категорически против данного предложения'
-    submit_position: 'Высказать позицию'
-    change_position: 'Изменить позицию'
-    select_position: 'Выбрать позицию'
-    statement_placeholder: 'Поделитесь своим мнением с группой'
-    messages:
-      created: Голос добавлен
-  proposal_positions_panel:
-    heading: Позиция
-    no_votes_yet: Еще никто не проголосовал по этому предложению
-    change_your_vote: Изменить свой выбор
-  proposal_pie_chart:
-    participation_statement: '{{процент}}% участников группы сделали свой выбор ({{номер}}/{{итог}})'
-  close_proposal_form:
-    close_proposal: 'Закрыть предложение'
-    messages:
-      success: Голосование закрыто
-  proposal_form:
-    messages:
-      created: 'Предложение размещено'
-      updated: 'Предложение изменено'
-    start_proposal: 'Разместить предложение'
-    start_a_proposal: 'Создать голосование'
-    edit_proposal: 'Изменить предложение'
-    proposal_ideas: Нужны идеи чтобы написать хорошее предложение?
-    title_label: 'Название'
-    closes_at_label: 'Закрывается в'
-    closes: 'Закрывается'
-    details_label: 'Детали'
   discussion_record:
     updated: 'Сохранить изменения для {{title}}'
   discussion_form:
@@ -262,10 +190,6 @@ ru:
     title_label: 'Название'
     context_label: 'Описание'
     privacy_label: 'Конфиденциальность'
-  proposal_expanded:
-    edit_proposal: 'Изменить предложение'
-    close_proposal: 'Закрыть предложение'
-    closed_badge: Закрыть
   cover_photo_form:
     heading: 'Новое фото обложки'
     upload_link: 'Загрузить новое фото обложки'
@@ -313,8 +237,6 @@ ru:
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     privacy: 'Конфиденциальность'
     submit_update: 'Обновить настройки'
-  group_help_card:
-    title: Помощь
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
@@ -371,9 +293,6 @@ ru:
   discussion:
     proposals: 'Голосования'
     previous_proposals: 'Предыдущие голосования'
-    you_like_this: 'Вам нравится это'
-    liked_by_you_and_someone: 'Вам и {{name}} это нравится.'
-    liked_by_someone: '{{name}} это понравилось .'
   thread_group:
     aria_label: 'Название группы'
   thread_context:
@@ -407,32 +326,12 @@ ru:
     message_label: 'Ваше сообщение'
     message_placeholder: 'Ваше сообщение...'
     send_message: 'Отправить сообщение'
-  help_page:
-    coordinating: 'Координация вашей группы'
-    different_ways: 'Различные способы использовать Loomio'
-    get_in_touch: "Оставаться на связи"
-    get_in_touch_description_html: "Если у Вас есть вопросы или отзыв, <a href='%{link}'>черкните нам пару строк</a>."
-    getting_started: "С чего начать"
-    have_your_say: "Выразить свое мнение"
-    help: "Помощь"
-    how_it_works: "Как это работает"
-    join_the_community: "Присоединиться к сообществу"
-    make_a_decision: "Принять решение"
-    make_a_decision_description: "Когда группа готова принять решение, каждый может сделать предложение. Обозначьте ясный порядок действий и дайте пояснения, чтобы каждый точно знал, что означает согласиться или не согласиться."
-    positions_agree_description: "<span>Согласен(-на)</span> означает, что Вы довольны предложением."
-    start_discussion: "Начиная интересное обсуждение"
-    start_proposal: "Написание понятного предложения"
-    video_tutorial: "Видеоучебник"
-    video_tutorial_description: "Посмотрите видео, которое вкратце покажет, как использовать Loomio."
   hint:
     context: 'Подсказки для использования контекстной панели'
     discussion: 'Подсказки для начала увлекательного обсуждения'
     invitation: 'Подсказки для написания отличного приглашения'
     proposal: 'Подсказки для написания понятного предложения'
     vote: 'Вы можете изменить вашу позицию в любое время'
-  global:
-    messages:
-      app_update: 'Доступна новая версия Loomio'
   registered_apps_page:
     name: Имя
   registered_app_form:

@@ -75,7 +75,6 @@ tr:
       start: Başla
     formatting_help:
       label: 'Biçimlendirme'
-      title: 'Loomio üzerinde metni biçimlendirmek için Markdown''ı nasıl kullanacağınızı öğrenin'
   devise:
     failure:
       inactive: 'Bu e-posta adresiyle ilişkili devre dışı bırakılmış bir hesap var. Hesabınızı yeniden etkinleştirmek istiyorsanız, bizimle iletişime geçin.'
@@ -83,33 +82,8 @@ tr:
     forbidden: 'Bunu yapmaya yetkin bulunmuyor.'
     page_not_found: 'Bulunamadı. Bu taşınmış veya silinmiş olabilir.'
     internal_server_error: 'Üzgünüz, yanlış giden birşeyler oldu. Lütfen tekrar deneyin.'
-  start_proposal_card:
-    title: 'Bir öneri başlat'
-    helptext: Bir karar vermek için hazır mısınız?
-  proposal_outcome_panel:
-    heading: Sonuç
-    set_outcome_hint: Herkese önerinin sonucunu bildirmek için bu alanı kullanın.
-    set_outcome_btn: Sonucu ayarla
-    edit_outcome_link: Sonucu düzenle
-  proposal_outcome_form:
-    aria_label: Öneri sonuç formu
-    set_outcome: Öneri sonucunu ayarla
-    update_outcome: Öneri sonucunu güncelle
-    outcome_label: Öneri sonucu
-    outcome_placeholder: Herkese önerinin sonucunu bildir.
-    publish_outcome: Sonuç yayınla
-    messages:
-      created: Sonuç yayınlandı
-      updated: Sonuç güncellendi
-  previous_proposals_card:
-    heading: Geçmiş Öneriler
-  previous_proposals_page:
-    heading: Geçmiş öneriler
   previous_polls_page:
     heading: '{{name}} içindeki etkinlikler'
-  proposal_collapsed:
-    expand: Genişlet
-    outcome: 'Sonuç: {{outcome}}'
   volume_levels:
     loud: 'Yüksek sesli'
     normal: 'Normal'
@@ -132,8 +106,6 @@ tr:
     latest: 'En yeniler'
     unread: 'Okunmamış'
     closing_in: 'Kapanış'
-  sign_up_form:
-    email_label: 'E-posta:'
   signed_out_modal:
     ok: "Tamam"
   comment_form:
@@ -194,58 +166,11 @@ tr:
     publish_outcome: "Bir sonuç yayınla"
   position_buttons_panel:
     heading: Söz sahibi ol
-  vote_form:
-    aria_label: Oylama formu
-    heading: Söz sahibi ol
-    no_statement: Yorum yok.
-    i_agree: 'Katılıyorum'
-    i_agree_details: 'Ben bunu destekliyorum ve devam etmesini istiyorum.'
-    i_abstain: 'Çekimserim'
-    i_abstain_details: 'Grubun bensiz karar vermesine razıyım.'
-    i_disagree: 'Katılmıyorum'
-    i_disagree_details: 'Ben muhtemelen daha iyisini yapabileceğimizi düşünüyorum.'
-    i_block: 'İtiraz ediyorum'
-    i_block_details: 'Bu öneriye şiddetle karşı çıkıyorum ve hayata geçirilmesine razı değilim.'
-    submit_position: 'Konumunu gir'
-    change_position: 'Konumunu değiştir'
-    select_position: 'Konumunu seç'
-    statement_placeholder: 'Düşüncelerinizi grupla paylaşın.'
-    aria_statement_label: 'İsteğe bağlı olarak, konumuz ile kaydedilmek için bir açıklama giriniz '
-    messages:
-      created: Oy eklendi
-  proposal_positions_panel:
-    heading: Konumlar
-    no_votes_yet: Kimse henüz bu öneriye oy vermedi.
-    change_your_vote: Konumunu değiştir
-  proposal_pie_chart:
-    participation_statement: 'Üyelerin {{percentage}}% kadarı kendi konumlarını belirtti ({{number}}/{{total}})'
-  close_proposal_form:
-    aria_label: 'Öneriyi kapat'
-    close_proposal: 'Öneriyi kapat'
-    helptext: 'Bu öneriyi şimdi kapatmak istediğinizden emin misiniz?'
-    close_proposal_submit: 'Öneriyi kapat'
-    messages:
-      success: Öneri kapatıldı
   extend_proposal_form:
     aria_label: Kapanış saatini değiştir
     title: 'Kapanış saatini değiştir'
     success: 'Öneri kapanış süresi güncellendi'
     submit: 'Kapanış saatini güncelle'
-  proposal_form:
-    aria_label: 'Öneri formu'
-    messages:
-      created: 'Öneri başlatıldı'
-      updated: 'Öneri güncellendi'
-    start_proposal: 'Öneri başlat'
-    start_a_proposal: 'Bir öneri başlat'
-    edit_proposal: 'Öneri düzenle'
-    what_does_a_proposal_do: 'Öneriler, belirli bir davranış biçimi hakkında diğer herkesin nasıl hissettiğini görmenizi sağlar.'
-    proposal_ideas: İyi bir teklif yazmak için fikirlere mi ihtiyacınız var?
-    title_placeholder: 'Örn: Hadi aya gidelim'
-    title_label: 'Başlık'
-    closes_at_label: 'de kapanır'
-    closes: 'Kapanış'
-    details_label: 'Detaylar'
   discussion_record:
     created: '{{title}} konusu {{groupName}} grubunda başarıyla oluşturuldu '
     updated: 'Değişiklikleri {{title}} konusuna kaydet'
@@ -266,29 +191,6 @@ tr:
     privacy_private: 'Konu sadece {{group}} grubunun üyelerine görünür olacaktır.'
     privacy_organisation: 'Konu {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
     make_announcement: Duyuru
-  proposal_expanded:
-    collapse: Ayrıntıları gizle
-    current_votes: Güncel oylar
-    started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
-    only_voter_is_you: 'Diğer üyeler henüz oy vermedi.'
-    extend_proposal: 'Kapanış saatini değiştir'
-    edit_proposal: 'Öneri düzenle'
-    close_proposal: 'Öneriyi kapat'
-    closed_badge: Kapalı
-  proposal_position_yes: 'Katılıyorum'
-  proposal_position_abstain: 'Çekimserim'
-  proposal_position_no: 'Katılmıyorum'
-  proposal_position_block: 'Engelle'
-  legacy_trial_expired_modal:
-    heading: "Bu yıl Loomio kullandığınız için teşekkür ederiz!"
-    body: |
-      <p>Geçen yıl boyunca bize verdiğiniz destek için teşekkür ederiz ve 2016 yılında Loomio'yu daha iyi hale getirmek konusunda çok heyecanlıyız.</p>
-      <p>Loomio grubunuza yararlı oluyor mu? Kısa bir zaman önce kendi fiyatlandırma planlarımızı sunduk ve gruplara kendilerine uygun bir plan almalarını rica ediyoruz.</p>
-    submit: "Bana planları göster"
-  group_welcome_modal:
-    aria_label: "Hoşgeldin"
-    member_heading: "Loomio'ya hoşgeldin"
-    ok_got_it: "Tamam, anladım!"
   cover_photo_form:
     heading: 'Yeni kapak fotoğrafı'
     upload_link: 'Yeni kapak fotoğrafı yükle'
@@ -375,20 +277,6 @@ tr:
       aria_label: 'Grup gizliliği: {{privacy}}'
   description_card:
     title: 'Grup açıklaması'
-  confirm_gift_plan_modal:
-    go_back: Yükselt
-  donation_modal:
-    body: "Loomio bir sosyal kuruluştur. Misyonumuz herkes için, kendisini etkileyen kararlara katılmanın kolay olduğu bir dünya yaratmak."
-    contribute: Bir katkıda bulunun
-  gift_card:
-    heading: Hediye planı
-    make_a_contribution: Bir katkıda bulunun
-  upgrade_plan_card:
-    donate: Bağış
-  trial_card:
-    choose_plan: 'Fiyatlandırma planınızı seçin'
-    in_progress_body: 'Loomio''yu <strong>{{name}}</strong> ile denediğiniz için teşekkür ederiz. İstediğiniz zaman grubunuza uygun bir fiyatlandırma planı seçebilirsiniz.'
-    expired_body_html: "<strong>{{name}}</strong> grubunun Loomio'yu deneme süreci bitti. Kullanmaya devam etmek için, grubunuza uygun bir fiyatlandırma planı seçmeniz gerekir."
   group_form:
     start_group_heading: 'Bir grup başlat'
     start_subgroup_heading: 'Bir alt grup başlat'
@@ -437,10 +325,6 @@ tr:
     heading: 'Üyelik talepleri'
     manage_requests: Talepleri yönet
     manage_requests_with_count: Talepleri yönet ({{count}})
-  group_help_card:
-    title: Yardım
-    ten_tips_article_title: Loomio ile mükemmel kararlar verebilmek için 10 ipucu
-    nine_ways_to_use_proposals: Bir sohbeti eyleme çevirmek için Loomio önerilerini kullanmanın 9 yolu
   membership_requests_page:
     heading: Üyelik talepleri
     approve: Onayla
@@ -462,7 +346,6 @@ tr:
     copy_link: 'Kopyala'
     email_addresses: 'E-posta adresleri'
     email_addresses_placeholder: 'Örn. helperbot@loomio.org, friendlybot@loomio.org'
-    email_explanation: 'Alternatif olarak, e-posta adreslerini aşağıdaki alana girin ve Loomio e-posta ile onlara bir davetiye gönderecek.'
     add_custom_message: 'Davetinizi kişiselleştirin,'
     add_custom_message_link: 'özel bir mesaj ekleyin.'
     custom_message: 'Özel mesaj'
@@ -581,12 +464,6 @@ tr:
     proposals: 'Öneriler'
     previous_proposals: 'Önceki Öneriler'
     load_previous: 'Daha önceki aktiviteyi yükle'
-    you_like_this: 'Bunu beğendin.'
-    liked_by_you_and_someone: 'Sen ve {{name}} bunu beğendiniz.'
-    liked_by_you_and_others: 'Sen,  {{joinedNames}} ve {{name}} bunu beğendiniz.'
-    liked_by_someone: '{{name}} bunu beğendi.'
-    liked_by_many_others: '{{joinedNames}} ve {{name}} tarafından beğenildi.'
-    liked_by_name: '{{name}} tarafından beğenildi.'
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
     edited: 'Düzenlendi'
   thread_group:
@@ -672,105 +549,14 @@ tr:
     message_label: 'Mesajın'
     message_placeholder: 'Mesajınız...'
     send_message: 'Mesaj gönder'
-  help_page:
-    coordinating: 'Loomio grubunu koordine etmek'
-    coordinating_details: |
-      Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten
-      sen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı sıra, grubun
-      daha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler öğrenecek.
-      İşte grubunun başarılı olmasını desteklemen için bazı ipuçları:
-    different_ways: 'Loomio''yu kullanmanın çeşitli yolları'
-    example1_html: |
-      <h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>
-      <p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>
-      <p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen,
-      müzakereler genellikle en iyi sonuca ulaşır. Kişiler bu sürece
-      katılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha olasıdır.</p>
-    get_in_touch: "İletişime geç"
-    get_in_touch_description_html: "Herhangi bir sorunuz veya geri bildiriminiz varsa, <a href='%{link}'>bize yazın</a>."
-    getting_started: "Başlarken"
-    getting_started_description: "Sol tarafta, grup bir konuyu tartışır, fikir ve bilgi alışverişinde bulunur. Grubun almasını gerektiren bir karar var olduğunda, sağ tarafta belirir."
-    getting_the_most: 'Loomio''dan en iyi şekilde yararlanmak'
-    have_your_say: "Söz sahibi ol"
-    have_your_say_details_html: |
-      <p>Hazır olduğunda dört karar düğmesinden birisini tıkla</p>
-      <p>Karar verdiğinde kısaca açıklama yap. Pasta grafiğinin altında
-      diğer herkesin ne düşündüğünü görebilirsin. Bu hızlıca ve kolayca tartışmalara yetişmeni sağlar. Yeni bir enformasyon geldiğinde, herhangi bir zamanda posizyonunu değiştirebilirsin. </p>
-    have_a_discussion: "Bir müzakereye katıl"
-    have_a_discussion_description: "Konu ve ilgili arka plan bilgileri sayfanın üstünde bulunuyor. Müzakerede sesini duyurmak için yorum kutusunu kullan."
-    help: "Yardım"
-    how_it_works: "Nasıl çalışıyor"
-    invitation_html: |+
-      <h2>İyi bir davet yazmak</h2>
-      <p>Her yeni üyenin ilk sorusu 'Bu grup ne için?' olacaktır.</p>
-      <p>Grubu tanımlaman için en basit yolu düşün. Birlikte neyi
-      elde etmek istiyorsun? Ne tür kararşar alacaksınız? Kim dahil olacak?</p>
-      <p>Onlar Loomio'ya davet etmeden önce grubunla konuşmak iyi bir fikir olabilir.
-      </p>
-      <p>İnsanlar neden davet edildiklerini ve onlardan nelerin beklendiğini,
-      ve yeni bir aracı kullanmayı öğrenmek için zamanlarından harcamaya değip değimediğini bilmek isteyecek.</p>
-
-    join_the_community: "Topluluğa katıl"
-    join_the_community_description_html: "Loomio'yu nasıl geliştirilebiliriz ve nasıl en iyi şekilde kullanabiliriz konularını konuştuğumuz Loomio Topluluğuna herkes katılmakta özgürdür.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Loomio Topluluğu grubuna gitmek için  tıklayın</a>."
-    images_and_text_formatting: "Resimler ve metin biçimlendirme"
-    images_and_text_formatting_html: |
-      <p>Loomio, resim gömme ve metin biçimlendirme amacıyla ‘Markdown’ dilini kullanıyor.
-      Markdown desteğini yorum kısmının üzerindeki ufak gri simge ile açıp kapayabilirsiniz.</p>
-      <p>Markdown kullanımı hakkında daha fazla bilgi için <a href='https://www.loomio.org/discussions/1124'>burayı tıklayın.</a></p>
-    keep_up_to_date: "Güncel tutun"
-    keep_up_to_date_html: |
-      <p>Ekranın üst kısmındaki grup adını tıklamak sizi grup içindeki müzakereleri
-      ve kararları görüntüleyebileceğiniz Grup Sayfasına götürür. Eğer
-      birden fazla gruba dahilseniz, bu gruplardaki tüm aktiviteleri
-      Ana Sayfada tek bir seferde görebilirsiniz.</p>
-      <p>Grubunuzda önemli şeyler olduğunda e-posta bildirimi alırsınız.
-      E-posta tercihlerinizi <a href="%{link}"">buradan</a> değiştirebilirsiniz.</p>
-    make_a_decision: "Bir karar ver"
-    make_a_decision_description: "Grup karar vermeye hazır olduğunda herkes teklifte bulunabilir. Kararın ne getireceğini açık bir şekilde anlat ve insanlara onaylamanın veya reddetmenin ne anlama geleceğini anlamaları için gerekli bilgileri ver."
-    prompt_people_details: "Eğer, grubunuzdaki belirli bir kişinin dikkatini çekmek istiyorsanız, onun rumuz ismi'ni ‘@’ ile beraber yazın. Sonrasında, sizin, bir yorumda ondan bahsettiğinizi bildirecek bir e-posta o kişinin tarafına gönderilecektir."
-    prompt_people_html: "Kişileri <span class='blue'>@bahset</span> ile harekete geçir"
-    positions_agree_description: "<span>Katılıyorum</span> öneriden memnun olduğun anlamına gelir."
-    positions_abstain_description: "<span>Çekimserim</span> emin olmadığın ya da grubun senin katılımın olmadan karar vermesine razı olduğun anlamına gelir."
-    positions_disagree_description: "<span>Katılmıyorum</span> means daha iyi bir alternatif olabileceğini düşündüğün, ancak grubun aldığı karara uyduğun anlamına gelir."
-    positions_block_description: "<span>İtiraz ediyorum</span> öneriye şiddetle karşı çıktığın ve hayata geçirilmesine razı olmadığın anlamına gelir."
-    start_discussion: "İlgi çekici bir müzakere başlatma"
-    start_proposal: "Anlaşılır bir öneri yazma"
-    start_proposal_html: |+
-      <p>Eğer başlığınız açık ve öz ise, kişiler katılıyorum ya da
-      katılmıyorum demenin tam olarak ne anlama geldiğini anında bilirler.</p>
-      <p> Eğer bir öneride anında net bir anlaşma sağlanamazsa bu dünyanın sonu demek değil.
-      Eğer grup ilk öneriyi beğenmediyse, herhangi biri endişeleri
-      gidermek için yeni bir öneri başlatabilir ve ilerleme süreci devam eder.</p>
-      <p>Bu dinamik süreçte, grubunuzun ortak bilgeliği, kişilerin tek
-      başına bulabileceğinden daha iyi fikirler üretir.</p>
-      <p>Eğer kararın bulunması zaman alacak gibi görünüyorsa, önerinin teslim tarihi her an ileriye atılabilir.
-      Bir önerinin süresi dolmadan 24 saat önce herkes bir e-posta bildirimi alır.</p>
-
-    video_id: "52025402"
-    video_tutorial: "Eğitim videosu"
-    video_tutorial_description: "Loomio nasıl kullanılır tanıtım videosuna göz at."
   hint:
     context: 'İçerik panelini kullanmak için ipuçları'
     discussion: 'İlgi çekici bir müzakere başlatmak için ipuçları'
     invitation: 'Harika bir davetiye yazmak için ipuçları'
     proposal: 'Anlaşılır bir öneri yazmak için ipuçları'
     vote: 'Konumunu istediğin zaman değiştirebilirsin'
-  angular:
-    switch_back: 'Eski Loomio''ya geri dön'
-    give_feedback: 'Geri bildirim ver'
-    collapse: Ayrıntıları gizle
-    enable:
-      invite: 'Yeni Loomio''yu deneyin!'
-      title: 'Yeni Loomio''yu deneyin!'
-      button_text: 'Yeni Loomio''yu etkinleştir'
-    disable:
-      title: 'Yeni Loomio''yu denediğiniz için teşekkür ederiz'
-      body_html: "<p>Aman, yanlış bir şey mi yaptık? Eğer yeni Loomio'da kötü bir zaman geçirdiyseniz, üzgünüz.</p>"
-      give_feedback: "Gitmeden önce kendimizi geliştirebilmemiz için lütfen görüşlerinizi paylaşın."
-      button_text: 'Eski Loomio''ya geri dön'
   global:
     messages:
-      app_update: 'Loomio''nun yeni bir sürümü mevcut'
       reload: 'Tekrar yükle'
   emoji_picker:
     search: "Bir emoji bulun..."

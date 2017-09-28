@@ -20,11 +20,6 @@ sk:
       cancel: 'Zrušiť'
   error_page:
     forbidden: 'Na túto akciu nemáte oprávnenie.'
-  proposal_outcome_panel:
-    heading: Výsledok
-  proposal_outcome_form:
-    outcome_label: Výsledok návrhu
-    publish_outcome: Publikovať výsledok
   inbox:
     clear: 'Vyčistiť'
     unread: 'Neprečítané'
@@ -45,26 +40,6 @@ sk:
     header: "Upozornenie"
   position_buttons_panel:
     heading: Vyjadrite svoj názor
-  vote_form:
-    heading: Vyjadrite svoj názor
-    i_agree: 'Súhlasím'
-    i_abstain: 'Zdržujem sa'
-    i_abstain_details: 'Budem rád, ak sa skupina rozhodne bezo mňa.'
-    i_disagree: 'Nesúhlasím'
-    i_disagree_details: 'Myslím, že by to šlo lepšie.'
-    i_block: 'Zamietam'
-    i_block_details: 'Mám silné námietky proti tomuto návrhu a nechcem, aby prešiel.'
-    submit_position: 'Odoslať postoj'
-  proposal_positions_panel:
-    heading: Hlasy
-  close_proposal_form:
-    close_proposal: 'Uzavrieť návrh'
-  proposal_form:
-    start_proposal: 'Vytvoriť návrh'
-    edit_proposal: 'Upraviť návrh'
-    title_label: 'Názov'
-    closes_at_label: 'Uzatvára sa'
-    details_label: 'Podrobnosti'
   discussion_form:
     group_label: 'Skupina'
     title_label: 'Názov'
@@ -124,77 +99,6 @@ sk:
     name_label: 'Vaše meno'
     email_label: 'Vaša emailová adresa'
     message_label: 'Vaša správa'
-  help_page:
-    coordinating: 'Koordinácia vašej Loomio skupiny'
-    coordinating_details: |
-      Ako koordinátor ste zodpovedný/á za konfiguráciu nastavení pre vašu Loomio skupinu a rozoslanie pozvánok do nej. Budete sa musieť aj naučiť používať túto aplikáciu a túto znalosť šíriť medzi členmi skupiny, aby boli funkcie ktoré aplikácia ponúka využívané efektívne. Tu je niekoľko tipov ktoré vám pomôžu v tejto úlohe:
-    different_ways: 'Rôzne spôsoby ako používať Loomio'
-    example1_html: |
-      <h3>Vaša skupina potrebuje dosiahnuť riešenie komplexného problému</h3>
-      <p>Stratégia: Predtým než sformulujete návrh, diskutujte o probléme istý čas.</p>
-      <p>Diskusie často vedú k jednotnému pohľadu na problém a ten zvyšuje pravdepodobnosť,
-      že bude sformulovaný kvalitný návrh. Ak sú ľudia od počiatku zaangažovaní v diskusii o
-      probléme, zvyšuje sa pravdepodobnosť že aj prijmú konečné rozhodnutie.</p>
-    get_in_touch: "Spojte sa s nami"
-    get_in_touch_description_html: "Pokiaľ máte akékoľvek otázky alebo pripomienky, <a href='%{link}'>napíšte nám</a>."
-    getting_started: "Ako začať"
-    getting_started_description: "Naľavo skupina prediskutuje tému, vymení si názory a informácie. Keď nastane čas na rozhodnutie, toto sa objaví napravo."
-    getting_the_most: 'Získajte čo najviac z Loomia'
-    have_your_say: "Vyjadrite svoj názor"
-    have_your_say_details_html: |
-      <p>Ak ste pripravený/á hlasovať, voľte kliknutím na jedno z hlasovacích tlačidiel.</p>
-      <p>Môžte prípadne aj poskytnúť stručné zdôvodnenie vašej voľby. Pod grafom je vidieť
-      poznámky uvedené inými hlasujúcimi. Počas hlasovanie môžte meniť svoj postoj, ak
-      sa tento mení pod vplyvom názorov iných hlasujúcich.</p>
-    have_a_discussion: "Diskutujte"
-    have_a_discussion_description: "Téma a akékoľvek relevantné súvisiace informácie sa nachádzajú v hornej časti stránky. Pomocou poľa pre komentár vneste svoj názor do diskusie."
-    help: "Pomocník"
-    how_it_works: "Ako to funguje"
-    invitation_html: |
-      <h2>Ako napísať efektívnu pozvánku</h2>
-      <p>Prvá otázka ktorá bude zaujímať väčšinu nových členov je, 'načo je táto skupina?' </p>
-      <p>Porozmýšľajte nad najjednoduchším opisom poslania skupiny: Čo chcete aby jej členovia
-      spolu dosiahli? Aký typ rozhodnutí sa v nej bude prijímať? Kto sú typickí členovia skupiny?</p>
-      <p></p>
-      <p>Pred samotným pozvaním nových členov je dobré sa s nimi najprv porozprávať a objasniť
-      im dôvody, pre ktoré by mali s členstvom v skupine súhlasiť.</p>
-    join_the_community: "Staňte sa súčasťou komunity"
-    images_and_text_formatting: "Obrázky a formátovanie textu"
-    images_and_text_formatting_html: |
-      <p>Loomio používa ‘Markdown’ formát na vkladanie obrázkov a formátovanie štýlu textu.
-      Do Markdown módu môžte prepnúť kliknutím na šedú ikonku pod poľom na vkladanie komentára.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Kliknite sem</a>
-      ak sa chcete dozvedieť ako používať Markdown.</p>
-    keep_up_to_date: "Zostaňte informovaný(a)"
-    keep_up_to_date_html: |
-      <p>Kliknutím na názov vašej skupiny na vrchu stránky sa zobrazí stránka skupiny,
-      kde môžte vidieť zoznam všetkých diskusií a rozhodnutí prijatých v tej skupine.
-      Ak ste členom/kou viacerých skupín, možte vidieť všetky informácie zo všetkých skupín
-      na domovskej stránke.</p>
-      <p>O dôležitých udalostiach vo vašej skupine budete informovaný/á pomocou emailu.
-      Nastavenia zasielania emailových správ môžte <a href="%{link}""> zmeniť tu</a>.</p>
-    make_a_decision: "Rozhodnite sa"
-    make_a_decision_description: "Keď je skupina pripravená urobiť rozhodnutie, každý môže vytvoriť návrh. Krátko popíšte jasný návrh postupu a poskytnite určitý základ, aby každý vedel, čo presne znamená súhlasiť, alebo nesúhlasiť."
-    prompt_people_details: "Pokiaľ chcete získať pozornosť konkrétnej osoby vo vašej skupine, napíšte ‚@‘ nasledované ich menom. Oslovaný(á) dostane email, který ich upozorní, že ste ho(ju) spomenul(a)."
-    prompt_people_html: "Vyzvite ľudí pomocou <span class='blue'>@zmienky</span>"
-    positions_agree_description: "<span>Súhlasím</span> znamená, že ste s návrhom spokojný(á)."
-    positions_abstain_description: "<span>Zdržujem sa</span> znamená, že si nie ste istý(á), alebo že budete rád(a), ak sa skupina rozhodne bez vás."
-    positions_disagree_description: "<span>Nesúhlasím</span> znamená, že myslíte, že by mohla existovať lepšia možnosť, ale ste ochotný(á) prijať rozhodnutie skupiny."
-    positions_block_description: "<span>Zamietam</span> znamená, že máte vážne námietky a budete veľmi nešťastná/ý, pokiaľ sa bude podľa návrhu postupovať."
-    start_discussion: "Zahájenie pútavej diskusie"
-    start_proposal: "Napísanie jasného návrhu"
-    start_proposal_html: |
-      <p> Ak zvolíte výstižný názov, ľudia budú hneď vedieť čo v nej znamená súhlasiť
-      alebo nesúhlasiť.</p>
-      <p>Nebude tragédiou ak návrh hneď nedosiahne jasný súhlas. Ak väčšina považuje prvý
-      návrh za nezaujímavý,  ktokoľvek môže začať nový.</p>
-      <p>Týmto dynamickým procesom sa môže skupina kolektívne dopracovať k lepším
-      formuláciam problému ako by to dokázal jednotlivec.</p>
-      <p>Konečný termín na uzatvorenie diskusie sa dá kedykoľvek posunúť, ak to vyzerá
-      tak, že diskusia potrebuje viac času. Každý dostane email 24 hodín pred jej uzatvorením.</p>
-    video_id: "52025402"
-    video_tutorial: "Zobraziť tutoriál"
-    video_tutorial_description: "Pozrite si rýchlu ukážku toho, ako sa Loomio používa."
   hint:
     context: 'Rady pre používánie kontextového panelu'
     discussion: 'Rady na zahájenie pútavej diskusie'

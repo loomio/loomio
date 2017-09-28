@@ -41,14 +41,6 @@ lt:
   error_page:
     forbidden: 'Jūs neturite leidimo tai padaryti.'
     internal_server_error: 'Atleiskite, bet įvyko kažkokia klaida. Prašome bandyti dar kartą.'
-  start_proposal_card:
-    title: 'Pateikti pasiūlymą'
-  previous_proposals_card:
-    heading: Ankstesni pasiūlymai
-  previous_proposals_page:
-    heading: Ankstesni pasiūlymai
-  proposal_collapsed:
-    expand: Išskleisti
   volume_levels:
     loud: 'Garsus'
     normal: 'Normalus'
@@ -93,27 +85,6 @@ lt:
     header: "Pranešimai"
   position_buttons_panel:
     heading: Tarkite savo žodį
-  vote_form:
-    heading: Tarkite savo žodį
-    i_agree: 'Aš pritariu'
-    i_abstain: 'Aš susilaikau'
-    i_disagree: 'Aš nepritariu'
-    submit_position: 'Pateikti nuomonę'
-    statement_placeholder: 'Pasidalinkite savo mintimis su grupe.'
-    aria_statement_label: 'Pasirinktinai įveskite teiginį, kuris bus įrašytas kartu su jūsų nuomone'
-  proposal_positions_panel:
-    heading: Nuomonės
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% narių išreiškė savo nuomonę ({{number}}/{{total}})'
-  proposal_form:
-    messages:
-      updated: 'Pasiūlymas atnaujintas'
-    start_proposal: 'Pateikti pasiūlymą'
-    start_a_proposal: 'Pateikti pasiūlymą'
-    edit_proposal: 'Redaguoti pasiūlymą'
-    what_does_a_proposal_do: 'Pasiūlymai parodo, ką kiekvienas žmogus mano apie tam tikrą veiksmų planą.'
-    title_label: 'Antraštė'
-    details_label: 'Išsamesnė Informacija'
   discussion_form:
     new_discussion_title: 'Kurti naują giją'
     edit_discussion_title: 'Redaguoti giją'
@@ -163,8 +134,6 @@ lt:
     members_can_create_subgroups: 'Nariai gali kurti pogrupius.'
     members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
-  group_help_card:
-    title: Pagalba
   group_previous_proposals_card:
     heading: Ankstesni pasiūlymai
   invitation_form:
@@ -256,15 +225,3 @@ lt:
   contact_message_form:
     email_label: 'Jūsų el. pašto adresas'
     email_placeholder: 'Įveskite savo el. pašto adresą...'
-  help_page:
-    getting_started: "Darbo pradžia"
-    have_your_say: "Tarkite savo žodį"
-    help: "Pagalba"
-    join_the_community_description_html: "Visi yra kviečiami prisijungti prie Loomio Bendruomenės, kurioje mes aptarinėjame, kaip geriausiai išnaudoti įrankį ir kaip jis gali būti patobulintas.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Spustelkite čia, kad pereitumėte į Loomio Bendruomenės grupę</a>."
-    positions_agree_description: "<span>Pritariu</span> reiškia, kad jums patinka pasiūlymas."
-    positions_disagree_description: "<span>Nepritariu</span> reiškia, kad jūs galvojate, jog gali būti geresnių alternatyvų, tačiau neprieštarausite grupės sprendimui."
-  angular:
-    switch_back: 'Perjungti atgal į senąją Loomio'
-    give_feedback: 'Siųsti atsiliepimus'
-    disable:
-      button_text: 'Perjungti atgal į senąją Loomio'

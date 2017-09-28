@@ -15,30 +15,14 @@ be_BY:
       intro: "Карыстальнік %{who} зрабіў аб'яву ў групе %{group}:"
     by_who: аўтар - %{person}
     reply_to_this_discussion: Адказаць у абмеркаванні
-    to_join_discussion:
-      subject: "%{who} хоча далучыць Вас да абмеркавання на Loomio"
-      content: 'Вас запрасілі для ўдзелу ў абмеркаванні %{discussion}'
-      message_intro: "%{who} кажа:"
-      link: Далучыцца да абмеркавання
-    to_join_group:
-      subject: "%{member} запрасіў вас далучыцца да %{group_name} на Loomio"
-    to_start_group:
-      subject: "Стварыць новую групу на Loomio: %{group_name}"
     unsubscribe: 'Адпісацца ці змяніць свае налады электроннай пошты:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> каб адпісацца ці змяніць свае налады электроннай пошты."
-    daily_activity:
-      heading: Ваша дзейнасць на Loomio
-      intro: Што адбывалася ў вашых групах на Loomio у апошнія 24 гадзіны
-      subject: Loomio - Што адбывалася ў апошнія 24 гадзіны
     missed_yesterday:
-      subject: Учора на Loomio
       headlines: Апошнія навіны
       mark_as_read: Адзначыць як прачытанае
       thanks_for_reading: Дзякуем, што прачыталі! Цудоўнага вам дня!
-      heres_what_happened: "Вось што адбывалася ў Loomio учора."
       marked_as_read_success: Усе паведамленні з ліста былі пазначаны як прачытаныя
     membership_request:
-      intro: "%{name} (%{email}) запытаў далучэння да адной з вашых груп на Loomio."
       subject: "%{who} запытаў далучэння да %{which_group}"
       view_group: Вы можаце зацвердзіць ці адмовіць запыт тут
   footer:
@@ -51,30 +35,6 @@ be_BY:
     public_groups: Публічныя групы
     terms: Умовы
     independent_install_html: '%{hostname} выкарыстоўвае незалежную копію Loomio: <a href="http://github.com/loomio/loomio">даведайцеся больш</a>.'
-  start_group_form:
-    enable_angular:
-      header: Распачаць новыя групы ў Loomio 1.0
-      subtitle: 'Каб распачаць новую групу, вам неабходна пераключыцца на новую версію Loomio:'
-      switch_to_angular: Распачаць групу ў новым Loomio
-      helptext: Мы перабудавалі Loomio з нуля. Вы можаце прачытаць пра змены <a href="/angular">тут</a>.<br/>Вы зможаце пераключыцца назад на старую версію ў любы момант.
-    header: Стварыць новую групу
-    form_error: Некаторая інфармацыя напісана не поўна ці памылкова
-    name: Ваша імя
-    name_error: Напішыце імя
-    email: Ваш email
-    email_error: Нядзейсны email адрас.
-    group_name: Назва групы
-    group_description: Апісанне групы
-    group_description_placeholder: Апішыце мэты вашай групы, каб чальцы групы ведалі, навошта яны тут.
-    group_name_error: Напішыце назву групы
-    pricing_html: Праз 30 дзён мы будзем прасіць вас абраць <a href='%{link}' target='_blank'>тарыфны план</a>.
-    terms_html: Распачынаючы групу, вы згаджаецеся з <a href='%{link}' target='_blank'>умовамі выкарыстання</a> Loomio.
-    success:
-      header: Вы амаль што скончылі! Праверце сваю пошту.
-      email_delivered: Мы даслалі ліст на адрас %{email}. Калі ласка, прайдзіце па спасылцы з ліста, каб наладзіць вашу новую групу.
-      email_not_arrived: Ліст не прыйшоў?
-      please_hold: Калі ласка, дайце лісту 5 хвілін дайсці да вас і праверце папку са спамам.
-    start_making_decisions: 'Каб пачаць разам прымаць вырашэнні на Loomio, стварыце бясплатна групу:'
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Мы не адпраўлялі запрашэння на прадстаўленыя адрасы электроннай пошты таму, што яны належаць людзям з групы."

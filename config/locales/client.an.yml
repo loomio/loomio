@@ -20,11 +20,6 @@ an:
       cancel: 'Cancelar'
   error_page:
     forbidden: 'No tiens permisos ta fer isto.'
-  proposal_outcome_panel:
-    heading: Resultau
-  proposal_outcome_form:
-    outcome_label: Resultau d'a propuesta
-    publish_outcome: Publicar o resultau
   inbox:
     clear: 'Limpiar'
     unread: 'No leyiu'
@@ -45,26 +40,6 @@ an:
     header: "Notificacions"
   position_buttons_panel:
     heading: 'Da a tuya opinión '
-  vote_form:
-    heading: 'Da a tuya opinión '
-    i_agree: 'Soi d''alcuerdo'
-    i_abstain: 'M''abstiengo'
-    i_abstain_details: 'Soi contento con o que o grupo decida sin yo.'
-    i_disagree: 'No soi d''alcuerdo'
-    i_disagree_details: ' Creigo que podemos fer-lo millor, pero si a resta d''o grupo siente que ye o millor curso d''''acción, alavez yo soi d''''alcuerdo con que siga abance.'
-    i_block: 'Bloco'
-    i_block_details: 'Tiengo fuertes obcheccions a ista propuesta y no soi d''alcuerdo con que siga ta debant.'
-    submit_position: 'Ninviar posición'
-  proposal_positions_panel:
-    heading: Posicions
-  close_proposal_form:
-    close_proposal: 'Zarrar propuesta'
-  proposal_form:
-    start_proposal: 'Empecipiar propuesta'
-    edit_proposal: 'Editar propuesta'
-    title_label: 'Titol'
-    closes_at_label: 'Se zarrará a las'
-    details_label: 'Detalles'
   discussion_form:
     group_label: 'Grupo'
     title_label: 'Titol'
@@ -124,75 +99,6 @@ an:
     name_label: 'O tuyo nombre'
     email_label: 'O tuyo correu electronico'
     message_label: 'O tuyo mensache'
-  help_page:
-    coordinating: 'Cómo coordinar o tuyo grupo en Loomio'
-    coordinating_details: |
-      Como co-ordinador, yes responsable d'encetar o tuyo grupo y convidar
-      a totz a participar. Ademas d'aprender a usar una nueva ferramienta de software, o tuyo grupo
-      será aprendendo nuevos procesos ta colaborar mas efectivament y prenendo buenas decisions
-      chuntos. Aquí puetz trobar qualques consellos ta que o tuyo grupo tienga muito exito:
-    different_ways: 'Trazas diferents d''usar Loomio'
-    example1_html: |
-      <h3>O grupo ha de discutir sobre un tema amplio y desembolicar una solucion conchunta</h3>
-      <p>Estratechia: Discutir o tema entre un tiempo antes d'empecipiar una propuesta.</p>
-      <p>A ormino, as discusions obtienen os millors resultaus si se crea un entendimiento
-      compartido sobre o problema antes de decantar-se por una solucion concreta. Quan a chent
-      empieza a participar en o proceso, ye muito mas prebable que sigan satisfeitos con
-      o resultau u decision final.</p>
-    get_in_touch: "Mete-te en contacto"
-    get_in_touch_description_html: "Si tiens preguntas u sucherencias, <a href='%{link}'> escribe a</a>."
-    getting_started: "Primers pasos"
-    getting_started_description: "A la zurda, o grupo debate un tema, intercambiando ideyas y información. Quan cal prener una decisión, amaneixe a la dreita."
-    getting_the_most: 'Aprofitando o maximo de Loomio'
-    have_your_say: "Da a tuya opinión "
-    have_your_say_details_html: |
-      <p>Quan sigas presto ta decidir, clica en un d'os quatro botons de decisión.</p>
-      <p>Malas que haigas decidiu, da una breu explicación. Debaixo d'o grafico circular
-      puetz veyer o que piensan os de demás, facilitando una rapida comprensión d'o estau d''a discusión.
-      A medida que se vaiga adhibindo nueva informacón puetz ir cambiando a tuya decisión en qualsiquier momento</p>
-    have_a_discussion: "Discutir un tema"
-    have_a_discussion_description: "O tema y qualsiquier atra información relevant se troban en a parte superior d''a pachina. Fe servir o quadro de comentario ta adhibir a tuya voz en dita discusión."
-    help: "Aduya"
-    how_it_works: "Cómo funciona"
-    invitation_html: |
-      <h2>Redactar una buena invitación</h2>
-      <p>A primera pregunta que tot nuevo miembro se fará ye «A qué s'adedica iste grupo?»</p>
-      <p>Piensa en a forma mas sencilla con la puedas describir a o grupo: Qué queretz aconseguir chuntos? Qué tipo de decisions prendretz? Quí serán embrecaus?</p>
-      <p>Podría estar buena ideya charrar en primeras con o tuyo grupo, antes de convidar-les a Loomio.</p>
-      <p>As personas querrán saber por qué han estau convidadas, qué s'aspera d'ellas,
-      y por qué mereixe o suyo tiempo aprender a usar una nueva ferramienta.</p>
-    join_the_community: "Unir a la comunidat"
-    images_and_text_formatting: "Imagenes y formato de texto"
-    images_and_text_formatting_html: |
-      <p>Loomio fa servir «marcadors» ta incluir imachens y formato de texto.
-      Puetz activar marcadors con o chicot icono griso que i hai debaixo d'o quadro de comentarios.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Preta aquí</a>
-      ta información sobre cómo usar marcadors.</p>
-    keep_up_to_date: "Mantiene-te informau"
-    keep_up_to_date_html: |
-      <p>Pretando en o cobalto d'a pachina o nombre d'o tuyo grupo, irás ta la pachina d'o tuyo grupo,
-      an que podrás veyer una lista de todas as discusions y decisions d'ixe grupo. Si yes en mas d'un grupo, en a pachina d'inicio puetz veyer d'una sola vegada toda l'actividat de totz os tuyos grupos.</p>
-      <p>Recibirás un correu electronico quan ocurran fetas importants en o tuyo grupo.
-      Puetz modificar as tuyas preferencias de correu electronico <a href="%{link}"">aquí</a>.</p>
-    make_a_decision: "Prene una decisión"
-    make_a_decision_description: "Quan a conversa tien establida un tiempo determinau, qualsiquiera puede encetar una propuesta. Quan sías presto ta dar a tuya opinión, fe clic en un d'os quatro botons de decisión:"
-    prompt_people_details: "Si quiers l'atención d'una persona especifica en o tuyo grupo, escribe «@» seguiu d'o nombre d'a persona, y recibirá un correu electronico fendo-le saber que l'has mencionau en un comentario."
-    prompt_people_html: "Clama l'atención d'una persona con <span class='blue'>@nombre</span>"
-    positions_agree_description: "<span>D'alcuerdo</span> significa que te fa goyo a propuesta."
-    positions_abstain_description: "<span>Abstención</span>, significa que yes indeciso, u que te pareixe bien que o grupo decida sin tu."
-    positions_disagree_description: "<span>En desalcuerdo</span>, significa que piensas que i hai una millor alternativa, pero no tiens problema con seguir a decisión d'o grupo."
-    positions_block_description: "<span>Blocar</span>, significa que tiens serias obcheccions y no te faría brenca goyo si a propuesta seguise enta debant."
-    start_discussion: "Empecipiar una discusión participativa"
-    start_proposal: "Crear una propuesta clara"
-    start_proposal_html: |
-      <p> Si fas un titol claro y succinto, a chent sabrán de camín qué significa exactament estar u no d'alcuerdo.</p>
-      <p>No ye a fin d'o mundo si una propuesta no tien un claro alcuerdo immediatament.
-      Si a o grupo no le fa goyo a primer propuesta, qualsiquiera puede prencipiar una nueva propuesta ta abordar os problemas surtius y mantener l'abance d''o proceso.</p>
-      <p>A traviés d'iste proceso dinamico, a sabiduría colectiva d'o tuyo grupo puede chenerar millors ideyas que as que a dengún solet le podrían ocurrir.</p>
-      <p>A calendata de finalización d'una propuesta puede estar enamplada en qualsiquier momento, si pareixese que a decisión ameneste bell poquet mas d'espacio. Totz recibirán un correu electronico 24 horas antes que una propuesta finalice.</p>
-    video_id: "67765444"
-    video_tutorial: "Tutorial de video"
-    video_tutorial_description: "Mira-te o video ta una demostración rapida."
   hint:
     context: 'Consellos ta usar o panel de contexto'
     discussion: 'Consellos ta empecipiar una discusión participativa'

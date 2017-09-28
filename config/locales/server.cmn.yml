@@ -1,8 +1,3 @@
 cmn:
-  email:
-    daily_activity:
-      intro: 展示上一个24小时你的Loomio所发生的事情
   footer:
     public_groups: 公共组团
-  start_group_form:
-    group_description: 团队讨论

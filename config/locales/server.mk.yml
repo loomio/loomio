@@ -3,18 +3,7 @@ mk:
     group_email:
       intro: "%{who} направи најава во %{group}:"
     reply_to_this_discussion: Врати на дискусијата
-    to_join_discussion:
-      subject: "%{who} сака да се приклучиш во дискусија на Loomio"
-      content: 'Треба да си поканет/а за да учествуваш во дискусијата: %{discussion}'
-      message_intro: "%{who} кажува:"
-      link: Приклучи се на дискусијата
-    to_join_group:
-      subject: "%{member} те покани да се приклучиш во %{group_name} на Loomio"
-    daily_activity:
-      heading: Вашата активност на Loomio
-      subject: Loomio - Резиме на последните 24 часа
     missed_yesterday:
-      subject: Вчера на Loomio
       mark_as_read: Означи го како прочитано
     membership_request:
       subject: "%{who} побара да се приклучи во %{which_group}"
@@ -28,13 +17,6 @@ mk:
     pricing: Ценовник
     public_groups: Јавни групи
     terms: Услови
-  start_group_form:
-    header: Започни нова група
-    name: Твоето име
-    group_name: Име на групата
-    group_description: Опис на групата
-    success:
-      header: Речиси си готов/а! Провери ја твојата електронска пошта.
   contact_page:
     contact_us: Контактирајте не
     labels:

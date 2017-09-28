@@ -18,55 +18,29 @@ sr:
       intro: "%{who} je napravio/la objavu za grupu %{group}:"
     by_who: od strane %{person}
     reply_to_this_discussion: Odgovori u ovoj diskusiji
-    to_join_discussion:
-      subject: "%{who} želi da se pridružiš diskusiji na Lumiju."
-      content: 'Pozvani ste da učestvujete u diskusiji: %{discussion}'
-      message_intro: "%{who} kaže:"
-      link: Pridruži se diskusiji
-    value_proposition: "Lumio je prostor za grupe da zajednički odlučuju"
     view_group: Vidi grupu
     to_join_group:
-      subject: "%{member} Vas je pozvao/la da se pridružite %{group_name} na Lumiju"
       invitation_text: "%{member} Vas poziva da se priključite grupi %{group_name}."
       invitation_text_html: "Vas poziva da se priključite grupi"
       link_help: "Škljocnite na adresu ispod da prihvatite poziv:"
       accept_invitation: "Prihvati poziv"
-    to_start_group:
-      subject: "Podesite svoju novu Lumio grupu: %{group_name}"
-      hi: "Zdravo %{name},"
-      intro: "Škljocnite na adresu ispod da podesite svoju grupu %{group_name}:"
-      intro_html: "Škljocnite ispod da podesite svoju grupu:"
-      start_group: "Pokreni moju grupu"
-      closing_message: "Ako Vam treba pomoć ili imate pitanje, samo odgovorite na ovu ePoruku."
-      thanks: "Hvala,"
-      loomio_team: "Lumio Tim"
     user_added_to_group:
-      subject: "%{who} Vas je dodao/la u %{which_group} na Lumiju"
       content: "%{who} Vas je dodao/la u %{which_group}."
       content_html: "<strong>%{who}</strong> Vas je dodao/la u <strong>%{which_group}</strong>."
       link_help: "Škljocnite na adresu ispod da odete do grupe:"
     unsubscribe: 'Odjavite se ili promenite podešavanja ePošte'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavu sa liste za obaveštenja ili promenu podešavanja Vaše ePošte."
-    daily_activity:
-      heading: Vaša Lumio aktivnost
-      intro: Prikazuje Vam šta se dešavalo u Vašim Lumio grupama u poslednja 24 sata
-      subject: Lumio - Rezime poslednjih 24 sata
     missed_yesterday:
-      subject: Juče na Lumiju
       headlines: Naslovi
       mark_as_read: Označi kao pročitano
       thanks_for_reading: Hvala na čitanju, prijatan dan!
-      heres_what_happened: "Evo šta se dogodilo na Lumiju juče."
       marked_as_read_success: Sve ePoruke su označene kao pročitane
     group_membership_approved:
       intro: "Vaš zahtev za pristup grupi %{group_name} je odobren."
       intro_html: "Vaš zahtev za pristup grupi <strong>%{group_name}</strong> je odobren."
       link_help: "Škljovnite na adresu ispod da se priključite %{group_name} i počnete:"
-      subject: "Vaš zahtev da se priključite u '%{group_name}' na Lumiju je odobren"
       join_group: "Pridruži se grupi"
-      view_group_text: "Škljocni ispod da vidiš grupu na Lumiju:"
     membership_request:
-      intro: "%{name} (%{email}) je zatražio pristup jednoj od tvojih Lumio grupa."
       subject: "%{who} je zatražio da se pridruži %{which_group}"
       view_group: Ovde možete odobriti ili odbiti zahtev
   footer:
@@ -79,30 +53,6 @@ sr:
     public_groups: Javne grupe
     terms: Uslovi
     independent_install_html: '%{hostname} koristi jednu nezavisnu kopiju Lumija: <a href="http://github.com/loomio/loomio">saznaj više</a>.'
-  start_group_form:
-    enable_angular:
-      header: Nove grupe pokrenute u Lumio 1.0
-      subtitle: 'Da kreirate novu grupu, morate preći na potpuno novu verziju Lumija:'
-      switch_to_angular: Kreirajte grupu u novom Lumiju
-      helptext: Izgradili smo Lumio iznova. Možeš pročitati šta je novo <a href="/angular">ovde</a>.<br/>Možeš se vratiti na staru verziju u svakom trenutku.
-    header: Započni novu grupu
-    form_error: Neka informacija nedostaje ili je netačna.
-    name: Tvoje ime
-    name_error: Ime je neophodno
-    email: Tvoja ePošta
-    email_error: Neispravna adresa ePošte
-    group_name: Naziv grupe
-    group_description: Opis grupe
-    group_description_placeholder: Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.
-    group_name_error: Naziv grupe je neophodan
-    pricing_html: Kroz 30 dana, pitaćemo te da odabereš <a href='%{link}' target='_blank'>cenovni plan</a>.
-    terms_html: Pokretanjem grupe, slažete se sa Loomio <a href='%{link}' target='_blank'>pravilima korišćenja</a>.
-    success:
-      header: Još malo pa gotovo! Proverite ePoštu.
-      email_delivered: Poslata Vam je jedna ePoruka na %{email}. Molim pratite vezu u njoj da postavite svoju novu grupu.
-      email_not_arrived: ePoruka nije stigla?
-      please_hold: Molim sačekajte do 5 minuta da ePoruka stigne i uverite se da ste proverili i svoj spam direktorijum.
-    start_making_decisions: 'Da počnete donositi odluke zajedno na Lumiju, kreirajte grupu besplatno:'
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Nismo poslali pozivnice na pružene eAdrese jer one pripadaju ljudima koji su već u grupi."
@@ -174,11 +124,3 @@ sr:
         Za slike važi isto pravilo, samo se koristi uzvičnik kao prefiks.
 
         ![lumio logo](https://i.imgur.com/Fvtworb.png)
-  beta_banner:
-    new_loomio_html: |
-      <strong>Novi Lumio je brži, zgodniji i bolji!</strong> Prebacujemo sve tamo.
-    upgrade_browser_html: |
-      Podržavamo samo novije verzije Internet Explorer-a (10+). Moraš <a href='http://outdatedbrowser.com/en' target='_blank'>ažurirati svoj pretrazivač</a> kako bi nastavio koristiti Lumio.
-      <strong>Novi Lumio je stigao!</strong> Brži je, lepši i može se koristiti putem telefona.
-    more_info: Detaljnije...
-    button_text: Prebaci se na novi Lumio
