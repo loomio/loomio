@@ -7,13 +7,14 @@ class Document < ActiveRecord::Base
   before_validation :set_metadata
 
   def reset_metadata!
-    update(doctype: metadata['name'], color: metadata['color'])
+    update(doctype: metadata['name'], icon: metadata['icon'], color: metadata['color'])
   end
 
   private
 
   def set_metadata
     self.doctype ||= metadata['name']
+    self.icon    ||= metadata['icon']
     self.color   ||= metadata['color']
   end
 

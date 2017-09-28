@@ -10,7 +10,7 @@
         %validation_errors{ng-if: "model.errors[field]", subject: "model", field: "{{field}}"}
         .lmo-textarea__helptext{ng-if: "!model.errors[field]"} {{helptext}}
       .lmo-flex
-        %md_attachment_form{model: "model"}
+        %attachment_form{model: "model"}
         %emoji_picker{target-selector: "bodySelector"}
   %outlet{name: "after-lmo-textarea", model: "model"}
   .lmo-textarea__attachments

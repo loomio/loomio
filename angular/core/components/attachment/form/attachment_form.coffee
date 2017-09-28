@@ -1,7 +1,9 @@
-angular.module('loomioApp').factory 'MdAttachmentFormController', ->
-  ($scope, $element, Records) ->
-    $scope.icon = $scope.icon || 'attach_file'
-
+angular.module('loomioApp').directive 'attachmentForm', (Records) ->
+  scope: {model: '=', showLabel: '=?'}
+  restrict: 'E'
+  templateUrl: 'generated/components/attachment/form/attachment_form.html'
+  replace: true
+  controller: ($scope, $element) ->
     $scope.upload = ->
       $scope.model.setErrors({})
       for file in $scope.files

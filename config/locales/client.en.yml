@@ -605,22 +605,6 @@ en:
   document:
     list:
       title: Resources
-      doctype:
-        pull_request: Pull request
-        trello_board: Trello board
-        trello_card: Trello card
-        google_doc: Google doc
-        google_sheet: Google sheet
-        google_drive: Google drive
-        youtube_video: Youtube video
-        text: Text file
-        image: Image
-        document: Word Doc
-        excel: Excel Sheet
-        pdf: PDF
-        csv: CSV
-        video: Video file
-        other: Other
     modal:
       title: Add a document
     form:
@@ -632,6 +616,7 @@ en:
     flash:
       success: Document saved
       destroyed: Document removed
+
   membership_requests_page:
     heading: Membership Requests
     approve: Approve

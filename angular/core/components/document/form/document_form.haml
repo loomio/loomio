@@ -11,7 +11,7 @@
       %label{translate: "document.form.url_label"}
       %input.lmo-flex__grow{ng-model: "document.url", ng-disabled: "disabled", placeholder: "{{'document.form.url_placeholder' | translate }}"}
       %validation_errors{subject: "document", field: "url"}
-    %md_attachment_form.document-form__attachment-form{model: "model", icon: "file_upload"}
+    %attachment_form.document-form__attachment-form{model: "model"}
 
   .lmo-md-actions
     %div{ng-if: "document.isNew()"}
