@@ -14,14 +14,14 @@ angular.module('loomioApp').directive 'descriptionCard', (Records, ModalService,
 
     $scope.actions = [
       name: 'edit_group'
-      icon: 'edit'
+      icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditGroup($scope.group)
       perform:    ->
         $scope.editorEnabled = true
         $scope.buh = {editableDescription: $scope.group.description}
     ,
       name: 'add_resource'
-      icon: 'attachment'
+      icon: 'mdi-attachment'
       canPerform: -> AbilityService.canAdministerGroup($scope.group)
       perform:    -> ModalService.open DocumentModal, doc: ->
         Records.documents.build
