@@ -1,7 +1,7 @@
 This page is a guide for people who would like to contribute translations to Loomio.
 
 **Links** 
-- [Loomio Community - Translators group](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation)
+- [Loomio Community - Translation](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation)
 - [Loomio on Transifex](https://www.transifex.com/projects/p/loomio-1/)
 
 ## We use Transifex
@@ -102,11 +102,9 @@ As you translate, you might encounter questions like:
 
 In a lot of cases, it's best to work through these challenges with other translators in your language.
 
-Feel free to bring these questions up in the Loomio Community translation group.
- 
-context: [Github](https://github.com/loomio/loomio) is where the working code of Loomio is managed and deployed from.
- 
+Feel free to bring these questions up in the [Loomio Community - Translation](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation) group.
+
 
 ## Improving processes, giving feedback
 
-If you would like to suggest an improvement, or have some feedback on the translation process, please feel free to start a discussion in the [Loomio group](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation), or email Nati at nati@loomio.org  
+If you would like to suggest an improvement, or have some feedback on the translation process, please feel free to start a discussion in the [Loomio Community - Translation](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation), or email Nati at nati@loomio.org  
