@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'pollCreated', (TranslationService, Reacti
   controller: ($scope) ->
     $scope.actions = [
       name: 'react'
-      canPerform: -> AbilityService.canParticipateInPoll($scope.eventable.poll())
+      canPerform: -> AbilityService.canReactToPoll($scope.eventable.poll())
     ,
       name: 'edit_poll'
       icon: 'mdi-pencil'
