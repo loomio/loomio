@@ -49,6 +49,9 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     documents: ->
       @recordStore.documents.find(modelType: 'Group', modelId: @id)
 
+    hasDocuments: ->
+      @documents().length > 0
+
     shareableInvitation: ->
       @recordStore.invitations.find(singleUse:false, groupId: @id)[0]
 

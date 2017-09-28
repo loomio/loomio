@@ -4,3 +4,9 @@ angular.module('loomioApp').factory 'DocumentModel', (BaseModel, AppConfig) ->
     @plural: 'documents'
     @indices: ['modelId']
     @serializableAttributes: AppConfig.permittedParams.document
+
+    relationships: ->
+      @belongsTo 'author', from: 'users', by: 'authorId'
+
+    model: ->
+      @recordStore["#{@modelType.toLowerCase()}s"].find(@modelId)

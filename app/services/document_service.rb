@@ -2,6 +2,7 @@ class DocumentService
   def self.create(document:, actor:)
     actor.ability.authorize! :create, document
 
+    document.assign_attributes(author: actor)
     return unless document.valid?
     document.save!
 

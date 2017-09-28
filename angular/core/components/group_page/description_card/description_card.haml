@@ -4,10 +4,13 @@
     .description-card__placeholder.lmo-placeholder.md-caption{translate: "description_card.placeholder", ng-if: "!group.description"}
     .description-card__text.lmo-markdown-wrapper{marked: "group.description"}
     %document_list{model: "group"}
+    %a{lmo-href-for: "group", lmo-href-action: "documents"}
+      %span{translate: "description_card.view_documents"}
+
     .lmo-md-action
       %action_dock{model: "group", actions: "actions"}
   %md-input-container.md-block{ng-if: "editorEnabled"}
     %textarea.lmo-textarea.description-card__textarea.lmo-primary-form-input{ng-model: "buh.editableDescription", ng-model-options: "{debounce: 150}"}
-    .lmo-actions
+    .lmo-md-actions
       %md-button.md-button--no-h-margin.description-card__cancel{ng-click: "disableEditor()", translate: "common.action.cancel"}
       %md-button.md-button--no-h-margin.md-primary.md-raised.description-card__save{ng-click: "save()", translate: "common.action.save"}

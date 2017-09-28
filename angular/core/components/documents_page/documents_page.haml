@@ -1,0 +1,24 @@
+.loading-wrapper.lmo-one-column-layout
+  %loading{ng-if: "!documentsPage.group"}
+  %main.documents-page{ng-if: "documentsPage.group"}
+    .lmo-group-theme-padding
+    %group_theme{group: "documentsPage.group"}
+    .lmo-card
+      .documents-page__top-bar.lmo-flex.lmo-flex__space-between.lmo-flex__baseline
+        %h2.lmo-h2.md-title{translate: "documents_page.members"}
+        %md-button.md-primary.md-raised.documents-page__invite{ng-click: "documentsPage.addDocument()", ng-if: "documentsPage.canAdministerGroup()"}
+          %span{translate: "documents_page.add_document"}
+      %md-input-container.md-block.documents-page__search-filter{md-no-float: "true"}
+        %input.membership-page__search-filter{ng-model: "documentsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "documentsPage.fetchMemberships()", placeholder: "{{'documents_page.fragment_placeholder' | translate}}"}
+        %i.mdi.mdi-magnify
+      %md-list.lmo-flex{layout: "column"}
+        %md-list-item{layout: "row", ng-repeat: "document in documentsPage.documents()"}
+          %i.mdi{class: "mdi-{{document.icon}}"}
+          %span {{document.title}}
+          %span{ng-if: "document.model().constructor.singular == 'Discussion'"} {{ document.model().title }}
+          %span {{document.author().name}}
+          %timeago{timestamp: "document.createdAt"}
+          %md-button.md-button--tiny{ng-click: "documentsPage.edit(document)"}
+            %i.mdi.mdi-pencil
+          %md-button.md-button--tiny{ng-click: "documentsPage.remove(document)"}
+            %i.mdi.mdi-window-close
