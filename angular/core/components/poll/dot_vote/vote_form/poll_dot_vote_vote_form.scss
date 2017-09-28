@@ -5,7 +5,7 @@
 .poll-dot-vote-vote-form__input-container {
   width: 100%;
   min-height: 48px;
-  @include displayFlex;
+  display: flex;
 }
 
 .poll-dot-vote-vote-form__dot-input {
@@ -35,7 +35,7 @@
 }
 
 .poll-dot-vote-vote-form__dot-input-field {
-  @include displayFlex;
+  display: flex;
   justify-content: flex-end;
   text-align: center;
   min-height: 48px;

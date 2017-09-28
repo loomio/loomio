@@ -77,9 +77,8 @@
 
 @media (max-width: $small-max-px) {
   .thread-page__main-content {
-    @include displayFlex;
+    display: flex;
     flex-direction: column;
-    -webkit-flex-direction: column;
   }
   .context-panel           { order: 10; }
 

@@ -80,9 +80,8 @@
 }
 
 .install-slack-invite-preview__option {
-  @include displayFlex;
+  display: flex;
   align-items: center;
-  -webkit-align-items: center;
   cursor: pointer;
   background-color: transparent;
   border: 1px solid rgba(160,160,162,.5);

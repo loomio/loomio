@@ -6,7 +6,7 @@
 }
 
 .poll-ranked-choice-form__option-button {
-  @include displayFlex;
+  display: flex;
   min-width: 24px;
   margin: 0 16px;
 }
