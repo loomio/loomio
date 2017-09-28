@@ -279,7 +279,6 @@ zh-TW:
     new_vote: '<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>'
     new_comment: '<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上評論'
     comment_replied_to: '<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論'
-    reaction_created: '<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 對您的評論按讚'
     user_mentioned: '<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您'
     membership_requested: '<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格'
     membership_request_approved: '<strong>{{name}}</strong> 接受您加入 <strong>{{title}}</strong> 的請求'
