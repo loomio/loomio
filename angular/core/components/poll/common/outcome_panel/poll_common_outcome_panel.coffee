@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'pollCommonOutcomePanel', (AbilityService,
 
     $scope.actions = [
       name: 'react'
-      canPerform: -> AbilityService.canParticipateInPoll($scope.poll)
+      canPerform: -> AbilityService.canReactToPoll($scope.poll)
     ,
       name: 'edit_outcome'
       icon: 'mdi-pencil'
