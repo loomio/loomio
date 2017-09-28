@@ -1,29 +1,8 @@
 This page is a guide for people who would like to contribute translations to Loomio.
 
-_If you're a developer, check out the [code guide](https://github.com/loomio/loomio/wiki/Translation-for-Developers)_
-
-## Contents
-
-1. [**Getting Started**](https://github.com/loomio/loomio/wiki/Translation#getting-started)
-  1. join an existing language
-  2. create a new language
-  3. set a fall-back language (optional) 
-2. [**How to translate**](https://github.com/loomio/loomio/wiki/Translation#how-to-translate)
-  1. the basics
-  2. more advanced translation
-  3. working within a community of translators
-3. [How to get translations up on Loomio.org](https://github.com/loomio/loomio/wiki/Translation#how-to-get-translations-up-on-loomioorg)
-4. [Improving processes, giving feedback](https://github.com/loomio/loomio/wiki/Translation#improving-processes-giving-feedback)
-
----
-
-**Links** - - {
-[Email us](mailto: contact@loomio.org) } - {
-[Loomio group](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation) } - {
-[Transifex](https://www.transifex.com/projects/p/loomio-1/)  } - { 
-[Twitter updates](https://twitter.com/search?f=realtime&q=%40loomio%20%23translation) } - -
-
----
+**Links** 
+- [Loomio Community - Translators group](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation)
+- [Loomio on Transifex](https://www.transifex.com/projects/p/loomio-1/)
 
 ## We use Transifex
 
