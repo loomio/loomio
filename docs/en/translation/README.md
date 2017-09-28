@@ -91,7 +91,7 @@ English
 
 Spanish
 ```
-<strong><a href='u/{{username}}'>{{autor}}</a></strong> en respuesta a <strong>{{title}}</strong>
+<strong><a href='u/{{username}}'>{{author}}</a></strong> en respuesta a <strong>{{title}}</strong>
 ```
 
 ### Working within a community of translators
