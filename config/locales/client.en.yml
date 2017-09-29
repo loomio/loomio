@@ -760,7 +760,7 @@ en:
     aria_label: 'Deactivate account confirm'
     title: 'Deactivate account'
     question: 'Would you tell us why you are deactivating?'
-    placeholder: 'Answering this question is optional. Any information you share will help us to improve Loomio :)'
+    placeholder: 'Answering this question is optional. Any information you share will help us to improve :)'
     submit: 'Deactivate account'
 
   only_coordinator_modal:
