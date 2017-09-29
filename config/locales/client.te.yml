@@ -23,17 +23,6 @@ te:
       discussions: 'చర్చలు'
   notifications:
     header: "గమనికలు"
-  vote_form:
-    i_agree: 'నేను అంగీకరిస్తున్నాను'
-    submit_position: 'స్థానాన్ని సమర్పించండి'
-  proposal_positions_panel:
-    heading: స్థానాలు
-  close_proposal_form:
-    close_proposal: 'ప్రతిపాదనను మూసివేయి'
-  proposal_form:
-    start_proposal: 'ప్రతిపాదనను ప్రారంభించండి'
-    title_label: 'శీర్షిక'
-    details_label: 'వివరాలు'
   discussion_form:
     group_label: 'సమూహం'
     title_label: 'శీర్షిక'
@@ -73,14 +62,6 @@ te:
     name_label: 'మీ పేరు'
     email_label: 'మీ ఈమెయిలు చిరునామా'
     message_label: 'మీ సందేశం'
-  help_page:
-    getting_started: "ఆరంభించండి"
-    help: "సహాయం"
-    how_it_works: "ఎలా పనిచేస్తుంది"
-    join_the_community: "సంఘంలో చేరండి"
-    make_a_decision: "ఒక నిర్ణయాన్ని తీసుకోండి"
-    video_id: "52025402"
-    video_tutorial: "దృశ్యక ఉపశిక్షణ"
   registered_apps_page:
     name: పేరు
     create_new_application: kotta firyaadu

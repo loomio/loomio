@@ -1,7 +1,6 @@
 .poll-common-collapsed {
-  @include displayFlex;
+  display: flex;
   align-items: center;
-  -webkit-align-items: center;
   cursor: pointer;
 }
 

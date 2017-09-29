@@ -1,7 +1,7 @@
 .poll-ranked-choice-vote-form {
   .poll-common-vote-form__option {
     width: 100%;
-    @include dropsShadow;
+    box-shadow: $whiteframe-shadow-2dp;
     background: $card-background-color;
   }
   .poll-common-vote-form__border-chip {

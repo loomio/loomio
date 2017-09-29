@@ -1,7 +1,5 @@
 te:
   email:
-    to_join_discussion:
-      link: చర్చలో పాల్గొనండి
     unsubscribe: 'మీ ఈమెయిలు అభిరుచులను మార్చండి లేదా చందావిరమించుకోండి:'
   footer:
     about: గురించి
@@ -12,10 +10,6 @@ te:
     pricing: ధర
     public_groups: బహిరంగ సమూహాలు
     terms: షరతులు
-  start_group_form:
-    name: మీ పేరు
-    group_name: సమూహం పేరు
-    group_description: సమూహ వివరణ
   contact_page:
     labels:
       name: మీ పేరు

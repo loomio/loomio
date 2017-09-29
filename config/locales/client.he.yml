@@ -20,10 +20,6 @@ he:
       cancel: 'ביטול'
   error_page:
     forbidden: 'אין לך הרשאות לעשות זאת.'
-  proposal_outcome_panel:
-    heading: תוצאה
-  proposal_outcome_form:
-    outcome_label: תוצאת ההצעה
   inbox:
     clear: 'נקה/י'
     unread: 'לא-נקרא'
@@ -41,23 +37,6 @@ he:
       discussions: 'דיונים'
   notifications:
     header: "התרעות"
-  vote_form:
-    i_agree: 'אני מסכימ/ה'
-    i_abstain: 'אני נמנע/ת'
-    i_abstain_details: 'אעדיף שהקבוצה תחליט בלעדיי'
-    i_disagree: 'אני לא מסכימ/ה'
-    i_disagree_details: 'אני מאמינ/ה שאנחנו יכולים למצוא פתרון טוב יותר'
-    i_block: 'אני חוסמ/ת'
-    submit_position: 'הגשת עמדה'
-  proposal_positions_panel:
-    heading: עמדות
-  close_proposal_form:
-    close_proposal: 'סגירת הצעה'
-  proposal_form:
-    start_proposal: 'התחלת הצעה'
-    edit_proposal: 'עריכת הצעה'
-    title_label: 'תואר'
-    details_label: 'פרטים'
   discussion_form:
     group_label: 'קבוצה'
     title_label: 'תואר'
@@ -106,9 +85,5 @@ he:
     name_label: 'שמך'
     email_label: 'כתובת הדוא״ל שלך'
     message_label: 'ההודעה שלך'
-  help_page:
-    getting_started: "מתחילים"
-    help: "עזרה"
-    start_discussion: "מתחיל בדיון מרתק"
   hint:
     discussion: 'טיפים להתחלת דיון מרתק'

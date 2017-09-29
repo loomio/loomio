@@ -1,6 +1,6 @@
 .poll-dot-vote-form__poll-option-names {
   width: 100%;
-  @include displayFlex;
+  display: flex;
   justify-content: space-between;
 }
 

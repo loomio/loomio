@@ -51,8 +51,6 @@ ko:
       translated: 'Bing으로 번역'
       upload: '업로드'
       uploading: '업로딩중...'
-    formatting_help:
-      title: '텍스트양식 마크다운 사용법을 배우세요.'
   devise:
     failure:
       inactive: '이 이메일 주소와 연결된 비활성화된 계정이 있습니다. 당신의 계정을 재활성화시키려면, 우리에게 연락하십시요.'
@@ -60,29 +58,6 @@ ko:
     forbidden: '권한이 없습니다.'
     page_not_found: '항목을 찾을 수가 없습니다. 삭제되었거나 옮겨진 것 같습니다.'
     internal_server_error: '죄송합니다만 뭔가가 잘못되었습니다. 다시 시도해 보세요.'
-  start_proposal_card:
-    title: '제안 시작하기'
-    helptext: 의사를 결정하셨습니까?
-  proposal_outcome_panel:
-    heading: 결과
-    set_outcome_hint: 이 제안의 결과를 모두가 알도록 이 공간을 이용하세요.
-  proposal_outcome_form:
-    aria_label: 제안 결과 양식
-    set_outcome: 제안 결과 설정하기
-    update_outcome: 제안 결과 수정하기
-    outcome_label: 제안 결과
-    outcome_placeholder: 이 제안의 결과를 모두에게 알리세요.
-    publish_outcome: 결과 올리기
-    messages:
-      created: 결과가 공개되었습니다.
-      updated: 결과가 수정되었습니다.
-  previous_proposals_card:
-    heading: 이전 제안
-  previous_proposals_page:
-    heading: 이전 제안
-  proposal_collapsed:
-    expand: 열기
-    outcome: '결과: {{outcome}}'
   volume_levels:
     loud: '크게'
     normal: '보통'
@@ -137,21 +112,11 @@ ko:
     unread: '읽지않음'
     closing_in: '닫는중'
   sign_up_form:
-    aria_label: '가입양식'
-    title: "로미오에 오신 것을 환영합니다.  환경설정을 하세요."
-    name_label: '가입자 이름'
-    name_placeholder: '익명의 여성'
-    email_label: '이메일:'
-    email_placeholder: 'you@example.com'
     password_label: '비밀번호:'
     password_confirmation_label: '비밀번호 다시 입력'
-    sign_in_message: '벌써 계정을 갖고 있나요?'
-    sign_in: '가입'
-    sign_up: '계정 생성'
   signed_out_modal:
     aria_label: '세션이 종료됐습니다.'
     title: "당신의 세션이 종료됐습니다."
-    message: "다른 윈도우(컴퓨터나 브라우저)로부터 루미오 계정이 로그아웃됐습니다. 계속하려면 재 로그인 해주세요."
     ok: "OK"
   comment_form:
     aria_label: '댓글 추가하기'
@@ -212,55 +177,11 @@ ko:
     publish_outcome: "결과 인쇄하기"
   position_buttons_panel:
     heading: 한말씀
-  vote_form:
-    aria_label: 투표 양식
-    heading: 한말씀
-    no_statement: 내용 없음.
-    i_agree: '동의'
-    i_agree_details: '동의하며 계속하겠습니다.'
-    i_abstain: '기권'
-    i_abstain_details: '나를 제외하고 의사결정이 내려져도 괜찮습니다.'
-    i_disagree: '동의하지 않음'
-    i_disagree_details: '제가 생각에는 우리가 더 잘 할 수 있음.'
-    i_block: '차단'
-    i_block_details: '저는 이 제안에 강하게 반대를 하고 앞으로 가는것을 반대합니다.'
-    submit_position: '선택 제출'
-    change_position: '선택 변경'
-    select_position: '선택 결정'
-    statement_placeholder: '자신의 의견을 이 그룹에 나눠 주세요.'
-    aria_statement_label: '부가적으로, 당신의 선택과 함께 기록될 설명을 기입하여 주십시오.'
-    messages:
-      created: 투표를 추가하였습니다.
-  proposal_positions_panel:
-    heading: 선택
-    no_votes_yet: 이 제안에 투표한 사람이 아직 없습니다.
-    change_your_vote: 나의 선택 변경
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}%의 회원이 입장을 선택했습니다({{number}}/{{total}})'
-  close_proposal_form:
-    aria_label: '제안 마감'
-    close_proposal: '제안 마감'
-    helptext: '이 제안을 지금 종료합니다. 확실하십니까?'
-    messages:
-      success: 제안 종료됨
   extend_proposal_form:
     aria_label: 종료 시간 변경
     title: '종료 시간 변경'
     success: '제안 종료 시간 변경 완료'
     submit: '종료 시간을 수정합니다'
-  proposal_form:
-    aria_label: '제안양식'
-    messages:
-      created: '제안이 시작되었습니다'
-      updated: '제안 수정 완료'
-    start_proposal: '제안 시작하기'
-    start_a_proposal: '제안 시작하기'
-    edit_proposal: '제안 수정하기'
-    what_does_a_proposal_do: '제안은 특정한 행동방침에 대해 다른 사람들이 어떻게 생각하는지를 보여줍니다.'
-    title_label: '제목'
-    closes_at_label: '에 종료됩니다.'
-    closes: '종료'
-    details_label: '세부사항'
   discussion_record:
     created: '해당 쓰레드 {{title}}은 {{groupName}}에 성공적으로 생성되었습니다.'
     updated: '제목을 {{title}}으로 바꾸었습니다.'
@@ -281,30 +202,6 @@ ko:
     privacy_public: '누구나 이 쓰레드를 볼 수 있지만, 회원만 참여할 수 있습니다.'
     privacy_private: '이 쓰레드는 {{group}}의 멤버만 볼 수 있습니다.'
     privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
-  proposal_expanded:
-    collapse: 닫기
-    current_votes: 현재 투표
-    started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
-    only_voter_is_you: '아직 투표한 멤버가 없습니다.'
-    extend_proposal: '종료 시간 변경 중'
-    edit_proposal: '제안 수정하기'
-    close_proposal: '제안 마감'
-    closed_badge: 종료
-  proposal_position_yes: '찬성'
-  proposal_position_abstain: '기권'
-  proposal_position_no: '동의하지 않음'
-  proposal_position_block: '차단'
-  legacy_trial_expired_modal:
-    heading: "올해도 루미오를 이용해주셔서 감사합니다!"
-    body: |
-      <p>지난 한해 동안 지원해주신 것에 정말로 감사드리며, 또한 우리는 2016년에 보다 나은 루미오를 만드는 작업에 들떠 있습니다.</p>
-      <p>루미오가 귀하의 단체에 유용했나요? 우리는 이제 막 가격 정책을 발표했습니다. 그리고 지금까지 루미오를 어느 정도 사용해온 단체들에게 자신들에게 적합한 정책plan을 선택해달라고 요청했습니다.</p>
-    submit: "계획을 보여주세요"
-  group_welcome_modal:
-    aria_label: "환영합니다"
-    creator_heading: "새로운 그룹에 오신것을 환영합니다"
-    member_heading: "루미오에 오신 것을 환영합니다."
-    ok_got_it: "네, 알겠습니다!"
   cover_photo_form:
     aria_label: '커버 사진 양식 교체'
     heading: '새로운 커버 사진'
@@ -408,24 +305,6 @@ ko:
     title: '그룹 비활성화'
     question: '정말 이 그룹을 비활성화하시겠습니까?'
     submit: '네, 이 그룹을 비활성화하겠습니다.'
-  confirm_gift_plan_modal:
-    got_it: 무료로 사용하기
-    go_back: 업그레이드
-  donation_modal:
-    body: "루미오는 사회적 기업입니다. 우리의 사명은 누구나 자기에게 영향을 미치는 의사결정에 쉽게 참여할 수 있는 세계를 만드는 것입니다. "
-    contribute: 공헌하기
-    got_to_group: 지금은 아닙니다. 감사합니다.
-  gift_card:
-    heading: 선물 계획
-    make_a_contribution: 공헌하기
-  upgrade_plan_card:
-    heading: 프리미엄 기능으로 업그레이드
-    upgrade: 지금 업그레이드
-    donate: 기부하기
-  trial_card:
-    choose_plan: '가격 체계를 선택하세요.'
-    in_progress_body: '<strong>{{name}}</strong>으로 루미오를 시범 사용해주신 것에 대해 감사드립니다. 언제든지 귀하의 그룹에 적합한 가격 체계를 선택하실 수 있습니다.'
-    expired_body_html: "<strong>{{name}}</strong> 님의 루미오 시범 사용이 만료되었습니다. 계속 사용하시려면 귀하의 그룹에 적합한 가격체계를 선택하세요."
   group_form:
     start_group_heading: '그룹 시작하기'
     start_subgroup_heading: '소그룹 시작하기'
@@ -472,10 +351,6 @@ ko:
     heading: '멤버십 요청'
     manage_requests: 요청 관리
     manage_requests_with_count: 요청 관리 ({{count}})
-  group_help_card:
-    title: 도움말
-    ten_tips_article_title: 루미오로 탁월한 의사결정을 하는 10가지 요령
-    nine_ways_to_use_proposals: 대화를 행동으로 옮길 수 있도록 루미오 제안을 활용하는 9가지 방법
   membership_requests_page:
     heading: 멤버십 요청
     approve: 승인
@@ -499,7 +374,6 @@ ko:
     email_addresses: '이메일 주소'
     email_addresses_placeholder: '예를 들어 helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: '링크를 복사해서 그룹에 초대하고 싶은 사람에게 보내십시요. 초대받은 사람은 그룹의 모든 모둠(Threads)에 접근할 수 있다.'
-    email_explanation: '그 대신에, 아래 이메일주소로 들어가면 루미오가 이메일로 초대장을 보낸다.'
     add_custom_message: '초대하기'
     add_custom_message_link: '개인 메시지 추가'
     custom_message: '개인 메시지'
@@ -662,12 +536,6 @@ ko:
     proposals: '제안'
     previous_proposals: '이전 제안'
     load_previous: '이전 활동내역 보기'
-    you_like_this: '좋아합니다.'
-    liked_by_you_and_someone: '귀하와 {{name}}이 좋아합니다.'
-    liked_by_you_and_others: '귀하와 {{joinedNames}} 그리고 {{name}}님이 좋아합니다.'
-    liked_by_someone: '{{name}}가 좋아합니다.'
-    liked_by_many_others: '{{joinedNames}}과 {{name}}님이 좋아합니다.'
-    liked_by_name: '{{name}}님이 좋아합니다.'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
   thread_group:
     aria_label: '그룹명'
@@ -747,97 +615,14 @@ ko:
     message_label: '메시지'
     message_placeholder: '메시지...'
     send_message: '메시지 보내기'
-  help_page:
-    coordinating: '루미오 그룹을 관리하기'
-    coordinating_details: |
-      코디네이터로서 귀하는 루미오 그룹을 만들고 다른 사람들을 초대할 의무가 있습니다.
-      루미오의 새로운 기능 사용법을 익혀 감에 따라 귀하의 그룹은 보다 효과적으로 협업하고
-      함께 훌륭한 의사결정을 만들어내는 새로운 프로세스를 배우게 될 것입니다.
-      여기 성공적인 그룹을 만드는데 도움이 되는 몇가지 요령이 있습니다.
-    different_ways: '루미오를 사용하기 위한 다른 방법들'
-    example1_html: |
-      <h3>폭넓은 주제에 대해 논의하고 함께 해결책을 만들어가기 위해 그룹이 필요합니다.</h3>
-      <p>전략: 제안을 하기 전에 한동안 어떤 주제에 대해 논의해 봅니다.</p>
-      <p>구체적인 해결책으로 바로 넘어가기 전에, 문제에 대해 충분히 서로 이해한다면, 논의를 통해 최고의 결과에 도달할 수 있습니다. 사람들이 그 과정에 참여할 때, 그 결과에 동참할 확률이 높아질 겁니다.</p>
-    get_in_touch: "연락하기"
-    get_in_touch_description_html: "질문이나 의견이 있다면 <a href='%{link}'>연락해 주세요.</a>."
-    getting_started: "시작하기"
-    getting_started_description: "왼편에는 그룹 토론의 주제와 교환하고 있는 생각과 정보들이 있으며, 그룹에서 결정을 내린경우는 오른쪽에 나타나게 됩니다."
-    getting_the_most: '루미오를 최대한으로 활용하기'
-    have_your_say: "한말씀"
-    have_your_say_details_html: |
-      <p>이야기할 준비가 됐다면 네 개의 결정 버튼을 클릭하세요.</p>
-      <p>결정을 했다면, 간략하게 설명을 달아주세요. 파이 차트 아래에서,
-      다른 사람들의 생각을 볼 수 있어서 빠르고 쉽게 논의를 파악할 수 있습니다. 새로운 정보를 알게 되면, 언제든 결정을 바꿀 수 있습니다.</p>
-    have_a_discussion: "토론 하기"
-    have_a_discussion_description: "주제와 관련된 정보와 배경 정보는 페이지의 상단에 위치해 있습니다. \n토론에 여러분의 목소리를 담기 위해서는 댓글 상자를 이용하세요."
-    help: "도움말"
-    how_it_works: "사용설명"
-    invitation_html: |
-      <h2>훌륭한 초대글 작성하기</h2>
-      <p>새로 온 사람들이면 누구나 궁금해하는 첫 질문은 ‘이 그룹은 뭐하는 곳이지?’입니다.</p>
-      <p>그룹을 설명할 수 있는 가장 단순한 방법에 대해 생각해보세요: 무엇을 함께 해보고
-      싶나요? 어떤 종류의 결정을 하죠?</p>
-      <p>사람들을 루미오에 가입하도록 초대하기 전에 우선 사람들과 이야기해 보는게 좋습니다.</p>
-      <p>사람들은 왜 내가 초대받았는지, 나에게 뭘 기대하는지
-      왜 시간을 들여 새로운 도구를 사용하는 방법을 배워야 하는지 알고 싶어하겠죠.</p>
-    join_the_community: "커뮤니티에 참여하기"
-    join_the_community_description_html: "우리가 루미오라는 도구를 최대한 활용하는 방법과 어떻게 하면 더 향상시킬 수 있을지에 대해 이야기하는 루미오 커뮤니티에 들어오는 모든 사람들을 환영합니다.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>루미오 커뮤니티에 가려면 여기를 클릭하세요</a>."
-    images_and_text_formatting: "이미지와 문자 형식"
-    images_and_text_formatting_html: |
-      <p>루미오는 이미지를 표시하고 텍스트 스타일링을 위해 ‘마크다운’을 사용합니다.
-      댓글 영역 아래 조그만 회색 아이콘을 클릭해 마크다운을 사용할 수 있습니다.</p>
-      <p>마크다운 사용법을 알고 싶으면
-      <a href='https://www.loomio.org/discussions/1124'>여기를 클릭하세요</a>.
-      </p>
-    keep_up_to_date: "최신 상태로 유지"
-    keep_up_to_date_html: |
-      <p>화면 상단의 그룹명을 클릭하면 그룹 페이지로 갈 수 있습니다.
-      거기서 그 그룹의 모든 논의와 결정들의 목록을 볼 수 있습니다.
-      하나 이상의 그룹에 참여하고 있으면, 홈페이지에서 한번에 모든 그룹의 모든 활동을 볼 수 있습니다.</p>
-      <p>참여하고 있는 그룹에서 중요한 일이 벌어지면 이메일로 알림을 받게 됩니다.
-      <a href="%{link}"">여기서</a> 이메일 설정을 수정할 수 있습니다.</p>
-    make_a_decision: "의사결정하기"
-    make_a_decision_description: "그룹이 결정을 내릴 준비가 되면 누구나 제안을 할 수 있습니다. 행동의 과정을 명확히 설명하고 동의하거나 동의하지 않는것이 어떤 뜻인지 배경정보를 제공해 주세요."
-    prompt_people_details: "그룹에 특정인에 관심을 얻기를 원한다면 '@'뒤에 이름을 적으세요. 그렇게 하면 코멘트에 이름이 언급된 내용을 이메일을 통해서 알게 됩니다."
-    prompt_people_html: "<span class='blue'>@mentions</span>으로 알려주기"
-    positions_agree_description: "<span>동의</span> 는 제안을 좋아한다는 뜻입니다."
-    positions_abstain_description: "<span>기권</span> 은 확신하지 않거나 다른 사람들이 당신을 제외하고 결정을 내리는것에 동의한다는 뜻입니다."
-    positions_disagree_description: "<span>반대</span> 는 더 낳은 대안이 있다고 생각하지만 그룹에서 계속 논의가 이어지기를 바란다는 뜻입니다. "
-    positions_block_description: "<span>차단</span> 은 심각하게 반대하고 있고 이것이 제안으로 발전하는것을 반대합니다."
-    start_discussion: "토론에 참여 시작하기"
-    start_proposal: "명확한 제안 작성하기"
-    start_proposal_html: |
-      <p> 제목을 명확하고 간결하게 만들면, 사람들은 즉시 동의할지 아니면 반대할지 알 수 있게 됩니다.</p>
-      <p>제안이 바로 명확한 합의에 이르지 못한다고 해서 세계가 멸망하는 건 아니죠.
-      그룹이 첫 번째 제안을 좋아하지 않으면 누구나 새로운 제안을 시작해서 제기한 문제를 해결하고 앞으로 나아가기 위한 과정을 계속할 수 있습니다.</p>
-      <p>이런 역동적인 과정 속에서, 그룹의 집단적 지혜를 통해 누구나 각자 생각할 수 있는 것보다 더 좋은 생각에 도달할 수 있습니다.</p>
-      <p>결정하는데 여유가 더 필요한 것 같으면, 언제든 제안 마감시간을 연장할 수 있습니다. 제안 마감 24 시간 전에 모든 사람들은 이메일 알림을 받게 됩니다.</p>
-    video_id: "52025402"
-    video_tutorial: "동영상 설명"
-    video_tutorial_description: "루미오 사용법을 다룬 동영상을 살펴보세요."
   hint:
     context: '켄텍스트 패널 사용을 위한 도움말'
     discussion: '토론 참여를 시작하기 위한 도움말'
     invitation: '훌륭한 초대를 쓰기 위한 도움말'
     proposal: '명확한 제안을 쓰기을 위한 도움말'
     vote: '선택은 언제나 변경할 수 있습니다.'
-  angular:
-    switch_back: '이전 루미오로 돌아가기'
-    give_feedback: '피드백 남기기'
-    collapse: 닫기
-    enable:
-      invite: '새로운 루미오 사용하기'
-      title: '새로운 루미오 사용하기'
-      button_text: '새로운 루미오 보기'
-    disable:
-      title: '새로운 루미오를 이용해주셔서 감사합니다'
-      body_html: "<p>이런 뭔가 잘못 처리되었나요? 새로운 버전의 루미오에서 좋지 않은 일이 발생되어 죄송합니다.</p>"
-      give_feedback: "우리가 더 나아질 수 있도록 피드백을 나눠주세요."
-      button_text: '이전 루미오로 돌아가기'
   global:
     messages:
-      app_update: '새로운 루미오를 사용할 수 있습니다.'
       reload: '다시 불러오기'
   emoji_picker:
     search: "이모티콘을 찾으세요."

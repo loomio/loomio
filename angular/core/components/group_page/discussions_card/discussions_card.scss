@@ -3,9 +3,8 @@
 }
 
 .discussions-card__header{
-  margin: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
-  @include displayFlex;
-  -webkit-justify-content: space-between;
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+  display: flex;
   justify-content: space-between;
 }
 

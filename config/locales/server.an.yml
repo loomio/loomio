@@ -4,28 +4,13 @@ an:
       intro: "%{who} fació un anuncio en %{group}:"
     by_who: por %{person}
     reply_to_this_discussion: Contestar a ista discusión
-    to_join_discussion:
-      subject: "%{who} deseya que t'unas a una discusión en Loomio"
-      content: 'Has estau convidau/a a participar en a discusión: %{discussion}'
-      message_intro: "%{who} diz:"
-      link: Unir a la discusión
-    to_join_group:
-      subject: "%{member} t'ha convidau a unir-te a %{group_name} en Loomio"
-    to_start_group:
-      subject: "Configura o tuyo nuevo grupo en Loomio: %{group_name}"
     unsubscribe: 'Da de baixa u cambea as preferencias d''o tuyo correu electronico:   '
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> ta dar de baixa u cambiar as preferencias de correu electronico."
-    daily_activity:
-      heading: A tuya actividat en Loomio
-      intro: Isto ye o que ha pasau en as zagueras 24 horas en os tuyos grupos de Loomio
-      subject: Loomio - Resumen d'as zagueras 24 horas
     missed_yesterday:
-      subject: Ahiere en Loomio
       mark_as_read: Marcar como leyiu
       thanks_for_reading: Gracias por leyer, que tiengas un buen día!
       marked_as_read_success: Tot o conteniu d''o correu ha estau marcau como leyiu
     membership_request:
-      intro: "%{name} (%{email}) ha pediu acceso a un d''os tuyos grupos de Loomio."
       subject: "%{who} ha pediu acceso a %{which_group}"
       view_group: Puetz acceptar u refusar a petición aquí
   footer:
@@ -37,13 +22,6 @@ an:
     pricing: Pres
     public_groups: Grupos Publicos
     terms: Termens
-  start_group_form:
-    header: Empecipiar un nuevo grupo
-    name: O tuyo nombre
-    group_name: Nombre d'o grupo
-    group_description: Descripción d'o grupo
-    success:
-      header: 'Ya quasi has rematau! Revisa o tuyo correu electronico. '
   contact_page:
     contact_us: Contacta con nusatros
     labels:

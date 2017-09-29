@@ -1,5 +1,5 @@
 .poll-common-votes-panel__stance {
-  @include displayFlex;
+  display: flex;
   align-items: flex-start;
   margin: 7px 0;
 }

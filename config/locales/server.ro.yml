@@ -4,29 +4,14 @@ ro:
       intro: "%{who} a facut un anunt in %{group}:"
     by_who: de catre %{person}
     reply_to_this_discussion: Raspunde acestei discutii
-    to_join_discussion:
-      subject: "%{who} te invită la o discuţie pe Loomio."
-      content: 'Ai primit invitatie la discutia: %{discussion}'
-      message_intro: "%{who} spune:"
-      link: Alatura-te discutiei
-    to_join_group:
-      subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"
-    to_start_group:
-      subject: "Seteaza noul tau grup Loomio:  %{group_name}"
     unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
-    daily_activity:
-      heading: Activitatea ta pe Loomio
-      intro: Iti aratam ce s-a intamplat in grupurile tale Loomio in ultimele 24 de ore
-      subject: Loomio - Sumarul ultimelor 24 de ore
     missed_yesterday:
-      subject: Ieri pe Loomio
       headlines: Titluri
       mark_as_read: Marcheaza ca citit
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
     membership_request:
-      intro: "%{name} (%{email}) a cerut acces in unul din grupurile tale Loomio."
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
   footer:
@@ -39,22 +24,6 @@ ro:
     public_groups: Grupuri publice
     terms: Termeni
     independent_install_html: '%{hostname} gazduieste o copie Loomio independenta: <a href="http://github.com/loomio/loomio">vezi mai mult</a>.'
-  start_group_form:
-    header: Creare grup nou
-    form_error: Unele informatii lipsesc sau sunt incorecte
-    name: Nume
-    name_error: Numele este necesar
-    email: Adresa ta de email
-    email_error: Adresa de email nu este valida
-    group_name: Numele grupului
-    group_description: Descrierea grupului
-    group_name_error: Numele grupului
-    terms_html: Lansand un grup Loomio esti de acord cu <a href='%{link}' target='_blank'>Termenii si Conditiile</a>.
-    success:
-      header: Aproape ai terminat! Verifica-ti mailul.
-      email_delivered: Am trimis un email la %{email}. Te rugam acceseaza linkul indicat pentru a lansa noul tau grup.
-      email_not_arrived: Nu ai primit emailul?
-      please_hold: Te rugam asteapta 5 minute pentru a permite acestui email sa ajunga si verifica si  recipientul spam.
   password_reset:
     email_guidelines_html: |
       <p>Introdu adresa ta de email in campul de mai jos si vei primi un link pentru a reseta parola.</p>

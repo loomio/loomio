@@ -5,7 +5,7 @@
 }
 
 .poll-count-chart-panel__progress {
-  @include displayFlex;
+  display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
@@ -17,7 +17,7 @@
 }
 
 .poll-count-chart-panel__data {
-  @include displayFlex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;

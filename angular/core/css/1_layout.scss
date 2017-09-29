@@ -91,7 +91,7 @@
     The left col consumes the rest of the available space.
   */
 
-  $large-right-col-ratio: (400 + 10) / $medium-max;
+  $large-right-col-ratio: (400 + 16) / $medium-max;
   .lmo-thread-column-right {
     width: percentage($large-right-col-ratio);
   }

@@ -10,7 +10,7 @@
 }
 
 .poll-common-modal-header {
-  @include displayFlex;
+  display: flex;
 }
 
 .poll-common-modal-header h1 {
@@ -27,7 +27,7 @@
   padding-left: 8px;
   @include truncateText;
   min-height: 48px;
-  @include displayFlex;
+  display: flex;
   align-items: center;
 }
 
@@ -79,7 +79,7 @@
 
 .poll-common-vote-form__radio-button .md-label {
   margin-left: 0;
-  @include displayFlex;
+  display: flex;
   align-items: center;
   min-height: 48px;
   // padding: 8px 0;
@@ -94,7 +94,7 @@
 }
 
 .poll-common-checkbox-option {
-  @include displayFlex;
+  display: flex;
   margin-bottom: 16px;
   padding-left: 2px;
 }

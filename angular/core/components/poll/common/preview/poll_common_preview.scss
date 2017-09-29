@@ -1,5 +1,5 @@
 a.poll-common-preview {
-  @include displayFlex;
+  display: flex;
   @include listTransition;
   width: 100%;
   text-decoration: none;
