@@ -19,6 +19,7 @@ end
 
 module Loomio
   class Application < Rails::Application
+    config.middleware.use Rack::Attack
     config.active_job.queue_adapter = :delayed_job
 
     config.generators do |g|
