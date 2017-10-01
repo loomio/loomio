@@ -65,6 +65,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'gemrat'
+  gem 'derailed'
 end
 
 group :development do
@@ -98,6 +99,7 @@ group :production do
   gem 'delayed-plugins-airbrake'
   gem 'dalli'
   gem 'newrelic_rpm'
+  gem 'scout_apm'
   gem 'heroku-deflater'
 end
 
