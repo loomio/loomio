@@ -11,25 +11,18 @@ class Rack::Attack
             '/api/v1/attachments',
             '/api/v1/contact_messages']
 
-  # heavy throttling - 3 per minute, 10 per hour, 50 per day
-  Rack::Attack.throttle('heavy/minute', :limit => 3, :period => 1.minute) do |req|
-    heavy.any? {|route| req.path.starts_with?(route)} && req.post?
+  {3  => 1.minute,
+   10 => 1.hour,
+   30 => 1.day}.each_pair do |limit, period|
+    Rack::Attack.throttle("#{limit}#{period}", :limit => limit, :period => period) do |req|
+      req.ip if heavy.any? {|route| req.path.starts_with?(route)} && req.post?
+    end
   end
 
-  Rack::Attack.throttle('heavy/hour', :limit => 10, :period => 1.hour) do |req|
-    heavy.any? {|route| req.path.starts_with?(route)} && req.post?
-  end
-
-  Rack::Attack.throttle('heavy/day', :limit => 50, :period => 1.day) do |req|
-    heavy.any? {|route| req.path.starts_with?(route)} && req.post?
-  end
-
-  # medium 10 per minute, 300 per day
-  Rack::Attack.throttle('medium/minute', :limit => 10, :period => 1.minute) do |req|
-    medium.any? {|route| req.path.starts_with?(route)} && req.post?
-  end
-
-  Rack::Attack.throttle('medium/day', :limit => 300, :period => 1.day) do |req|
-    medium.any? {|route| req.path.starts_with?(route)} && req.post?
+  {10  => 1.minute,
+   300 => 1.day}.each_pair do |limit, period|
+    Rack::Attack.throttle("#{limit}#{period}", :limit => limit, :period => period) do |req|
+      req.ip if medium.any? {|route| req.path.starts_with?(route)} && req.post?
+    end
   end
 end
