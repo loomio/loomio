@@ -3,7 +3,7 @@ class UserSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :username, :short_bio, :avatar_initials, :avatar_kind,
              :avatar_url, :gravatar_md5, :time_zone, :search_fragment, :label,
-             :locale, :location, :created_at, :email_verified, :has_password,
+             :locale, :location, :city, :region, :country, :created_at, :email_verified, :has_password,
              :last_seen_at
 
   def label
