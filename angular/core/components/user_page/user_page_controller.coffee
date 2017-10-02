@@ -6,6 +6,9 @@ angular.module('loomioApp').controller 'UserPageController', ($rootScope, $route
       $rootScope.$broadcast 'currentComponent', {title: @user.name, page: 'userPage'}
       @loadGroupsFor(@user)
 
+  @location = =>
+    @user.location || @user.detectedLocation().join(', ')
+
   @canContactUser = ->
     AbilityService.canContactUser(@user)
 
