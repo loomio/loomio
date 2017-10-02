@@ -602,11 +602,22 @@ en:
     manage_requests: Manage requests
     manage_requests_with_count: Manage requests ({{count}})
 
+  documents_page:
+    title: Resources
+    fragment_placeholder: Search for resources...
+    add_document: Add resource
+    no_documents: No resources found for this group. Click 'Add Resource' above to add one.
+    column_titles:
+      title: Title
+      discussion: Thread
+      author: Author
+      created_at: Added
+
   document:
     list:
       title: Resources
     modal:
-      title: Add a document
+      title: Add a resource
     form:
       helptext: Enter a url for this resource, or click the icon to the right to upload a file from your computer.
       url_label: Resource Url
@@ -614,8 +625,8 @@ en:
       title_label: Title
       title_placeholder: E.g. 'Community Guidelines'
     flash:
-      success: Document saved
-      destroyed: Document removed
+      success: Resource saved
+      destroyed: Resource removed
 
   membership_requests_page:
     heading: Membership Requests

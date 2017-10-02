@@ -10,3 +10,9 @@ angular.module('loomioApp').factory 'DocumentModel', (BaseModel, AppConfig) ->
 
     model: ->
       @recordStore["#{@modelType.toLowerCase()}s"].find(@modelId)
+
+    authorName: ->
+      @author().name if @author()
+
+    discussionTitle: ->
+      model().discussion().title unless @modelType == 'Group'
