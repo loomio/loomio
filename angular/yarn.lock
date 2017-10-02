@@ -49,13 +49,13 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-animate@1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.4.1.tgz#efee776c182beb77bac8981408c7163d96d78d7d"
+angular-animate@1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.6.6.tgz#6925647b141a040d241bf125040f1a150fcd8a70"
 
-angular-aria@1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.4.1.tgz#8eee2751b674d47cc4e559a1b7e73f593fc4fb9d"
+angular-aria@1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.6.6.tgz#58dd748e09564bc8409f739bde57b35fbee5b6a5"
 
 angular-clipboard@latest:
   version "1.5.0"
@@ -79,17 +79,13 @@ angular-material@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/angular-material/-/angular-material-1.1.4.tgz#27de35646f54ccd320080af0c708e1b438af87f6"
 
-angular-messages@^1.5.5:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.6.2.tgz#03838b7ec5cc8671153035a59068f2fbd4e37ce4"
+angular-messages@1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.6.6.tgz#a9bb3fc5f971d745cd3a3bdbaabc6f1f4deb13f3"
 
-angular-mocks@^1.5.5:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.6.2.tgz#fbb28208e74d3512769afdb8771f5cc5a99f9128"
-
-"angular-moment@~> 1.0.0-beta.3":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/angular-moment/-/angular-moment-1.0.1.tgz#509d3326aea23f78221cfddb2b62bfede6841d31"
+angular-moment@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/angular-moment/-/angular-moment-1.1.0.tgz#9a7c4688151b08ee308623d958d98b0a4f4fb61b"
   dependencies:
     moment ">=2.8.0 <3.0.0"
 
@@ -103,13 +99,13 @@ angular-recaptcha@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/angular-recaptcha/-/angular-recaptcha-4.1.0.tgz#ca5de30a8f020e73d517b9097059ad8851a29847"
 
-angular-route@^1.5.5:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.2.tgz#95a349de2e73674f3dd783bb21e8d7b3fc526312"
+angular-route@1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.6.tgz#8c11748aa195c717b1b615a7e746442bfc7c61f4"
 
-"angular-sanitize@~> 1.4.1":
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.4.14.tgz#778c4e24941fa982d86cf7ebac3e613fa5d414fc"
+angular-sanitize@1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.6.6.tgz#0fd065a19931517fbece66596d325d72b6e06041"
 
 angular-scroll@~0.6.5:
   version "0.6.5"
@@ -137,9 +133,13 @@ angular-translate@~2.15.2:
   dependencies:
     angular ">=1.2.26 <=1.6"
 
-angular@*, angular@1.4.1, angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
+angular@*, angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
+
+angular@1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.6.tgz#fd5a3cfb437ce382d854ee01120797978527cb64"
 
 angular_record_store@2.8.2:
   version "2.8.2"
