@@ -19,6 +19,13 @@ class Events::ReactionCreated < Event
     User.where(id: comment.author_id)
   end
 
+  def notification_translation_values
+    super.merge(
+      reaction:     eventable.reaction.downcase,
+      reaction_src: Emojifier.emojify_src!(eventable.reaction.downcase)
+    )
+  end
+
   def comment
     @comment ||= eventable&.reactable
   end
