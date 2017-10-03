@@ -15,7 +15,7 @@
   width: 100%;
   border-radius: 6px;
   position: relative;
-  @include displayFlex;
+  display: flex;
 }
 
 .flash-root__container.ng-enter {

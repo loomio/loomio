@@ -3,11 +3,10 @@
     %h1.lmo-h1-medium{translate: "explore_page.header"}
     %md-input-container.explore-page__search-field
       %input#search-field{ng-model: "explorePage.query", ng-model-options: "{debounce: 600}", ng-change: "explorePage.search()", placeholder: "{{ 'explore_page.search_placeholder' | translate }}"}
-      %i.material-icons{aria-hidden: "true"} search
+      %i.mdi.mdi-magnify{aria-hidden: "true"}
       %loading{ng-show: "searchExecuting"}
     .explore-page__search-results{ng-show: "explorePage.showMessage()", translate: "{{explorePage.searchResultsMessage()}}", translate-values: "{resultCount: explorePage.resultsCount, searchTerm: explorePage.query}"}
-    %group_collection{model: "explorePage"}
-    .lmo-show-more{ng-show: "explorePage.canLoadMoreGroups"}
+    %group_collection{model: "explorePage"}    .lmo-show-more{ng-show: "explorePage.canLoadMoreGroups"}
       %button.explore-page__show-more{ng-hide: "searchExecuting", ng-click: "explorePage.loadMore()", translate: "common.action.show_more"}
     %loading{ng-show: "searchExecuting"}
     .explore-page__no-results-found{ng-show: "explorePage.noResultsFound()", translate: "explore_page.no_results_found"}

@@ -6,15 +6,15 @@ angular.module('loomioApp').directive 'outcomeCreated', (TranslationService, Rea
   controller: ($scope) ->
     $scope.actions = [
       name: 'react'
-      canPerform: -> AbilityService.canParticipateInPoll($scope.eventable.poll())
+      canPerform: -> AbilityService.canReactToPoll($scope.eventable.poll())
     ,
       name: 'edit_outcome'
-      icon: 'edit'
+      icon: 'mdi-pencil'
       canPerform: -> AbilityService.canSetPollOutcome($scope.eventable.poll())
       perform:    -> ModalService.open PollCommonOutcomeModal, outcome: -> $scope.eventable
     ,
       name: 'translate_outcome'
-      icon: 'translate'
+      icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.eventable)
       perform:    -> TranslationService.inline($scope, $scope.eventable)
     ]

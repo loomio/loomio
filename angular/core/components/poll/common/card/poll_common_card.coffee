@@ -3,9 +3,7 @@ angular.module('loomioApp').directive 'pollCommonCard', (Session, Records, Loadi
   templateUrl: 'generated/components/poll/common/card/poll_common_card.html'
   replace: true
   controller: ($scope) ->
-    $scope.init = -> Records.polls.findOrFetchById($scope.poll.key)
-    LoadingService.applyLoadingFunction $scope, 'init'
-    $scope.init() unless $scope.poll.complete
+    Records.polls.findOrFetchById($scope.poll.key) unless $scope.poll.complete
 
     $scope.buttonPressed = false
     $scope.$on 'showResults', ->

@@ -1,13 +1,7 @@
 he:
   email:
     reply_to_this_discussion: השיבו לדיון זה
-    to_join_discussion:
-      message_intro: "%{who} אמר/ה:"
-      link: הצטרפות לדיון
-    daily_activity:
-      subject: Loomio - סיכום 24 השעות האחרונות
     missed_yesterday:
-      subject: אתמול בLoomio
       mark_as_read: סמן כנקרא
       thanks_for_reading: תודה שקראת. יום טוב!
   footer:
@@ -19,13 +13,6 @@ he:
     pricing: תמחור
     public_groups: קבוצות ציבוריות
     terms: תנאי שימוש
-  start_group_form:
-    header: התחילו קבוצה חדשה
-    name: שמך
-    group_name: שם הקבוצה
-    group_description: תיאור קבוצה
-    success:
-      header: כמעט סיימת. הודעה נשלחה לתיבת הדוא״ל שלך.
   contact_page:
     contact_us: צרו קשר
     labels:

@@ -4,29 +4,14 @@ hu:
       intro: "%{who} bejelentést tett a(z)  %{group} csoportban:"
     by_who: '%{person} által'
     reply_to_this_discussion: Válaszolj erre a témára
-    to_join_discussion:
-      subject: "%{who} meghív egy megbeszélésre a Loomio-n"
-      content: 'Meghívót kaptál a megbeszélésre: %{discussion}'
-      message_intro: "%{who} mondta:"
-      link: Bekapcsolódás a vitába
-    to_join_group:
-      subject: "%{member} mehívott hogy kapcsolódj a %{group_name} csoporthoz a Loomio-n"
-    to_start_group:
-      subject: "Állítsd be az új Loomio csoportodat: %{group_name}"
     unsubscribe: 'Leiratkozás vagy az e-mail beállítások megváltoztatása:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, hogy leiratkozz vagy megváltoztasd az e-mail beállításaidat."
-    daily_activity:
-      heading: A Loomio tevékenységed
-      intro: Megmutatjuk, mi történt a Loomio csoportjaidban az elmúlt 24 órában
-      subject: Loomio - az elmúlt 24 óra összefoglalása
     missed_yesterday:
-      subject: Tegnap a Loomio-n
       headlines: Szalagcímek
       mark_as_read: Olvasottként jelöl
       thanks_for_reading: Köszönjük az elolvasást, kellemes napot!
       marked_as_read_success: Minden olvasottként van jelölve
     membership_request:
-      intro: "%{name} (%{email}) hozzáférést kért egy Loomio csoportodhoz."
       subject: "%{who} kérte hogy csatlakozhasson a %{which_group} csoporthoz"
       view_group: Jóváhagyhatod vagy elvetheted a kérelmet itt.
   footer:
@@ -39,19 +24,6 @@ hu:
     public_groups: Nyilvános csoportok
     terms: Feltételek
     independent_install_html: '%{hostname} a Loomio egy független másolatát futtatja:<a href="http://github.com/loomio/loomio">bővebben</a>.'
-  start_group_form:
-    header: Új csoport létrehozása
-    form_error: Néhány információ hiányzik vagy hibás.
-    name: Neved
-    name_error: Név megadása kötelező
-    email: email címed
-    email_error: Hibás email cím.
-    group_name: Csoport neve
-    group_description: A csoport leírása
-    group_name_error: Csoportnév kötelező
-    terms_html: Csoportod indításával elfogadod a Loomio <a href='%{link}' target='_blank'>szolgáltatási feltételeit</a>.
-    success:
-      header: Mindjárt kész! Ellenőrizd az e-mailed.
   contact_page:
     contact_us: Értesíts minket
     labels:

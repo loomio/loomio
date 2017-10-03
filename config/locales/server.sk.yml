@@ -4,28 +4,13 @@ sk:
       intro: "%{who} oznámil(a) skupine %{group}:"
     by_who: od člena %{person}
     reply_to_this_discussion: Odpovedať na diskusiu
-    to_join_discussion:
-      subject: "%{who} chce, aby ste sa zapojil(a) do diskusie na Loomio"
-      content: 'Bol(a) ste pozvaný(á), aby ste sa zapojil(a) do diskusie: %{discussion}'
-      message_intro: "%{who} tvrdí:"
-      link: Zapojte sa do diskuze
-    to_join_group:
-      subject: "%{member} vás pozval(a) do skupiny %{group_name} na Loomio"
-    to_start_group:
-      subject: "Zriaďte si svoju novú Loomio skupinu: %{group_name}"
     unsubscribe: 'Odhláste sa alebo si zmeňte nastavenia emailu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, aby ste sa odhlásil(a) alebo zmenil(a) nastavenia emailu."
-    daily_activity:
-      heading: Vaša aktivita na Loomiu
-      intro: Zobrazuje sa, čo sa udialo vo vašich Loomio skupinách behom ostatných 24 hodín
-      subject: Loomio -- Súhrn za ostatných 24 hodín
     missed_yesterday:
-      subject: Včera na Loomio
       mark_as_read: Označiť ako prečítané
       thanks_for_reading: Vďaka za čítanie a prajeme pekný deň!
       marked_as_read_success: Všetko z emailu bolo označené ako prečítané
     membership_request:
-      intro: "%{name} (%{email}) požiadal(a) o prístup k jednej z vašich Loomio skupín."
       subject: "%{who} požiadal(a) o členstvo v %{which_group}"
       view_group: Môžete schváliť alebo odmietnuť žiadosť tu
   footer:
@@ -37,13 +22,6 @@ sk:
     pricing: Cenník
     public_groups: Verejné skupiny
     terms: Podmienky
-  start_group_form:
-    header: Vytvoriť novú skupinu
-    name: Vaše meno
-    group_name: Názov skupiny
-    group_description: Popis skupiny
-    success:
-      header: Ste takmer pri konci! Skontrolujte si email.
   contact_page:
     contact_us: Kontaktujte nás
     labels:

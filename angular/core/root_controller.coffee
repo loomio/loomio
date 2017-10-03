@@ -31,7 +31,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
     MessageChannelService.subscribe()
 
   setTitle = (title) ->
-    document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
+    document.querySelector('title').text = _.trunc(title, 300) + " | #{AppConfig.theme.site_name}"
     Session.pageTitle = title
 
   $scope.$on 'currentComponent', (event, options = {}) ->

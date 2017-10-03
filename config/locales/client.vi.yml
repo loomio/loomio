@@ -12,8 +12,6 @@ vi:
       cancel: 'Hủy bỏ'
   error_page:
     forbidden: 'Bạn không có quyền thực hiện thao tác này.'
-  proposal_outcome_panel:
-    heading: Kết quả
   comment_form:
     delete_comment: 'Xóa bình luận'
     confirm_delete_message: 'Bạn có chắc muốn xóa bình luận này?'
@@ -28,24 +26,6 @@ vi:
     header: "Thông báo"
   position_buttons_panel:
     heading: Phát biểu ý kiến của bạn
-  vote_form:
-    heading: Phát biểu ý kiến của bạn
-    i_agree: 'Tôi đồng ý'
-    i_abstain: 'Tôi còn do dự'
-    i_abstain_details: 'Tôi rất vui vì nhóm đã quyết định tiếp tục duy trì mà không có mình.'
-    i_disagree: 'Tôi không đồng ý'
-    i_disagree_details: 'Tôi nghĩ rằng lẽ ra chúng ta có thể làm tốt hơn.'
-    i_block: 'Tôi chặn'
-    i_block_details: 'Tôi có ý kiến phản đối mạnh mẽ về lời đề nghị này và KHÔNG muốn tiếp tục với điều này.'
-    submit_position: 'Đệ trình kiến nghị'
-  proposal_positions_panel:
-    heading: Các kiến nghị
-  close_proposal_form:
-    close_proposal: 'Đóng lại lời đề nghị'
-  proposal_form:
-    start_proposal: 'Bắt đầu lời đề nghị'
-    title_label: 'Tiêu đề'
-    details_label: 'Chi tiết'
   discussion_form:
     group_label: 'Nhóm'
     title_label: 'Tiêu đề'
@@ -79,48 +59,6 @@ vi:
   new_comment_item:
     context_menu:
       delete_comment: 'Xóa bình luận'
-  help_page:
-    coordinating: 'Hợp tác cùng nhóm Loomio của bạn'
-    coordinating_details: |
-      Với vai trò là người hợp tác, bạn sẽ chịu trách nhiệm với việc khởi tạo nhóm Loomio của mình và việc mời
-      mọi người tham gia. Cũng như việc nghiên cứu về các mảng phần mềm mới, nhóm của bạn sẽ
-      trả qua các tiến trình tham gia về cách hoạt động nhóm theo cách hiệu quả nhất cũng như đưa ra các
-      quyết định cùng nhau trong nhóm. Ở đây là các gợi ý về việc hỗ trợ cho nhóm bạn nhằm hướng đến sự thành công mong muốn:
-    different_ways: 'Các cách khác nhau để sử dụng Loomio'
-    example1_html: |
-      <h3>Bạn nên để nhóm của mình thảo luận theo dạng bàn tròn và phát triển các giải pháp cùng nhau không theo hướng riêng lẻ nào</h3>
-      <p>Chiến lược: Thảo luận về một chủ điểm nào đó trước khi đưa ra các lời đề nghị.</p>
-      <p>Thảo luận có lẽ là điểm khởi thảo thuận tiện nhất khi bạn muốn chia sẻ ý tưởng
-      về cách giải quyết vấn đề theo một hướng cụ thể nào đó. Khi mọi người cùng nhau
-      tham gia vào tiến trình, kết quả nhận được sẽ tốt hơn cho nhóm của bạn.</p>
-    get_in_touch: "Giữ liên lạc"
-    getting_started: "Chuẩn bị bắt đầu"
-    getting_started_description: "Phía bên trái, là khu vực nhóm đang thảo luận về một chủ đề, trao đổi ý kiến cũng như thông tin liên quan. Khi việc quy trình thực thi các quyết định được diễn ra, phần này sẽ hiển thị phía trên bên phải."
-    getting_the_most: 'Tìm hiểu về các tính năng trên Loomio'
-    have_your_say: "Phát biểu ý kiến của bạn"
-    have_your_say_details_html: |
-      <p>Khi bạn đã sẵn sàng cho phần đưa ra ý kiến, hãy click vào một trong bốn nút thể hiện sự lựa chọn của chính bạn.</p>
-      <p>Khi bạn đã đưa ra quyết định, bạn có thể đưa vào ý kiến cua mình bằng một giải thích. Phía bên dưới biểu đồ,
-      bạn có thể quan sát được các ý kiến đã đã được đưa ra từ những người dùng khác. Điều này giúp cho bạn có thể theo dõi
-      toàn bộ cuộc thảo luận của nhóm. Đồng thời, bạn có thể thay đổi quyết định của mình
-      vào bất cứ lúc nào.</p>
-    have_a_discussion: "Có một phần thảo luận"
-    have_a_discussion_description: "Chủ đề này và các thông tin nội hàm liên quan sẽ hiển thị phía trên cùng trong trang. Sử dụng ô bình luận để thêm vào ý kiến của bạn đối với phần thảo luận."
-    help: "Trợ giúp"
-    how_it_works: "Cách hoạt động"
-    join_the_community: "Tham gia vào cộng đồng"
-    images_and_text_formatting: "Hình ảnh và định dạng văn bản"
-    keep_up_to_date: "Luôn giữ đúng hạn định"
-    make_a_decision: "Đưa ra quyết định"
-    positions_agree_description: "<span>Đồng ý</span> có nghĩ rằng bạn không phản đối lời đề nghị."
-    positions_abstain_description: "<span>Do dự</span> nghĩa rằng bạn còn chưa chắc hoặc phân vân khi tham gia nhóm."
-    positions_disagree_description: "<span>Không đồng ý</span> nghĩa rằng bạn nghĩ vẫn còn có những phần thay thế tương tự khác, nhưng bạn vẫn muốn sẵn lòng tham dự vào việc đưa ra quyết định trong nhóm."
-    positions_block_description: "<span>Chặn</span> nghĩa rằng bạn cảm thấy không hài lòng với lời đề nghị này và hoàn toàn cảm thấy không thích hợp với nhóm."
-    start_discussion: "Bắt đầu một phần thảo luận"
-    start_proposal: "Viết một lời đề nghị rõ ràng"
-    video_id: "52025402"
-    video_tutorial: "Xem video hướng dẫn"
-    video_tutorial_description: "Xem thử video minh họa về cách sử dụng Loomio."
   hint:
     context: 'Gợi ý về cách sử dụng khung điều khiển nội dung'
     discussion: 'Gợi ý về cách bắt đầu tham gia thảo luận'

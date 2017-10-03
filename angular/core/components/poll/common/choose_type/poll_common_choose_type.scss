@@ -9,7 +9,7 @@
 }
 
 .poll-common-choose-type__poll-type-link {
-  @include displayFlex;
+  display: flex;
   cursor: pointer;
   text-decoration: none;
   &:hover { text-decoration: none; }

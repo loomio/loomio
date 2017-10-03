@@ -71,8 +71,6 @@ de:
       done: Erledigt
       start: Start
       delete: Löschen
-    formatting_help:
-      title: 'Lerne die Verwendung von Markdown, um Deinen Text auf Loomio zu formatieren.'
   devise:
     failure:
       inactive: 'Diese Email-Adresse ist mit einem deaktivierten Account verknüpft. Wenn Sie den Account wieder aktivieren möchten, nehmen Sie Kontakt mit uns auf.'
@@ -80,28 +78,6 @@ de:
     forbidden: 'Sie haben nicht die notwendige Berechtigung für diese Aktion.'
     page_not_found: 'Das konnten wir nicht finden. Es wurde entweder gelöscht oder verschoben.'
     internal_server_error: 'Entschuldige bitte. Etwas lief falsch. Bitte erneut versuchen.'
-  start_proposal_card:
-    title: 'Einen Vorschlag machen'
-    helptext: Bereit, um eine Entscheidung zu trefffen?
-  proposal_outcome_panel:
-    heading: Ergebnis
-    set_outcome_hint: Benutze dieses Feld, um den TeilnehmerInnen das Ergebnis der Abstimmung mitzuteilen.
-  proposal_outcome_form:
-    set_outcome: Das Voschlagsergebnis festhalten
-    update_outcome: Vorschlagergebnis aktualisieren
-    outcome_label: Ergebnis der Abstimmung
-    outcome_placeholder: Gib das Ergebnis des Vorschlages bekannt.
-    publish_outcome: Ergebnis bekanntgeben
-    messages:
-      created: Ergebnis ist veröffentlicht
-      updated: Beschluss aktualisiert
-  previous_proposals_card:
-    heading: Vorherige Vorschläge
-  previous_proposals_page:
-    heading: Frühere Vorschläge
-  proposal_collapsed:
-    expand: Erweitern
-    outcome: 'Ergebnis: {{outcome}}'
   volume_levels:
     loud: 'Laut'
     normal: 'Normal'
@@ -151,15 +127,8 @@ de:
     unread: 'Ungelesen'
     closing_in: 'Wird geschlossen'
   sign_up_form:
-    name_label: 'Dein Name:'
-    name_placeholder: 'Jane Doe'
-    email_label: 'Email:'
-    email_placeholder: 'du@beispiel.de'
     password_label: 'Passwort:'
     password_confirmation_label: 'Nochmal:'
-    sign_in_message: 'Hast Du schon einen Account?'
-    sign_in: 'Einloggen'
-    sign_up: 'Account erstellen'
   signed_out_modal:
     aria_label: 'Sitzung beendet'
     title: "Deine Sitzung wurde beendet"
@@ -225,57 +194,11 @@ de:
     publish_outcome: "Ergebnis bekanntgeben"
   position_buttons_panel:
     heading: Komme zu Wort
-  vote_form:
-    heading: Komme zu Wort
-    no_statement: Keine Begründung.
-    i_agree: 'Ich stimme zu'
-    i_agree_details: 'Ich stimme zu und bin für die Umsetzung dieses Vorschlags.'
-    i_abstain: 'Ich enthalte mich'
-    i_abstain_details: 'Ich bin zufrieden damit, wenn die Gruppe ohne mich entscheidet.'
-    i_disagree: 'Ich lehne den Vorschlag ab'
-    i_disagree_details: 'Ich denke, wir können eine bessere Lösung finden.'
-    i_block: 'Ich lege ein Veto ein'
-    i_block_details: 'Ich habe große Probleme mit diesem Vorschlag und bin gegen die Umsetzung.'
-    submit_position: 'Meinung abschicken'
-    change_position: 'Meinung ändern'
-    select_position: 'Meinung wählen'
-    statement_placeholder: 'Teile Deine Gedanken mit der Gruppe'
-    aria_statement_label: 'Wahlweise kannst Du hier eine Stellungnahme zu Deiner Position eingeben'
-    messages:
-      created: Stimmabgabe ist erfolgt
-  proposal_positions_panel:
-    heading: Meinungen
-    no_votes_yet: Niemand hat bisher für diesen Vorschalg abgestimmt.
-    change_your_vote: Deine Meinung ändern.
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% der Mitglieder haben bereits abgestimmt ({{number}}/{{total}})'
-  close_proposal_form:
-    close_proposal: 'Vorschlag schließen'
-    helptext: 'Willst Du diesen Vorschlag wirklich jetzt schließen?'
-    messages:
-      success: Vorschlag geschlossen
   extend_proposal_form:
     aria_label: Abstimmungsende ändern
     title: 'Abstimmungsende ändern'
     success: 'Endzeit wurde aktualisiert'
     submit: 'Endzeit aktualisieren'
-  proposal_form:
-    messages:
-      created: 'Vorschlag eröffnet'
-      updated: 'Vorschlag aktualisiert'
-    start_proposal: 'Vorschlag machen'
-    start_a_proposal: 'Einen Vorschlag machen'
-    edit_proposal: 'Vorschlag bearbeiten'
-    what_does_a_proposal_do: 'Vorschläge können Dir ein Stimmungsbild der Gruppe ermöglichen.'
-    proposal_ideas: Brauchst Du Ideen, wie man einen guten Vorschlag formuliert?
-    proposal_ideas_title: 9 Möglichkeiten um einen Loomio-Vorschlag zu nutzen um reden zum Handeln werden zu lassen
-    editing_title_and_description_forbidden: 'Du kannst den Titel oder die Beschreibung eines Vorschlags nicht mehr änden, wenn bereits abgestimmt wurde. Wenn sich Details geändert haben, schließe den Vorschlag bitte und eröffne einen neuen.'
-    title_placeholder: 'z.B: Lass'' uns zum Mond fliegen'
-    title_label: 'Titel'
-    closes_at_label: 'Endet um'
-    closes: 'Endet'
-    details_label: 'Details'
-    details_placeholder: "Gib genug Informationen an, damit jeder genau versteht, was Zustimmung und Ablehnung zum Vorschlag jeweils bedeuten."
   discussion_record:
     created: 'Die Diskussion {{title}} wurde erfolgreich in {{groupName}} erstellt'
     updated: 'Änderungen für {{title}} gespeichert'
@@ -296,33 +219,6 @@ de:
     privacy_private: 'Die Diskussion wird nur für Mitglieder von {{group}} sichtbar sein.'
     privacy_organisation: 'Diese Diskussion wird nur für Mitglieder von {{parent}} und {{group}} sichtbar sein.'
     make_announcement: Ankündigung
-  proposal_expanded:
-    collapse: Kollabieren
-    current_votes: Bisherige Stimmen
-    started_by: 'Eröffnet von <strong>{{name}}</strong>'
-    only_voter_is_you: 'Keine weiteren Mitglieder haben derzeit abgestimmt.'
-    extend_proposal: 'Endzeit ändern'
-    edit_proposal: 'Vorschlag bearbeiten'
-    close_proposal: 'Vorschlag schließen'
-    closed_badge: Geschlossen
-  proposal_position_yes: 'Zustimmen'
-  proposal_position_abstain: 'Enthalten'
-  proposal_position_no: 'Ablehnen'
-  proposal_position_block: 'Veto'
-  legacy_trial_expired_modal:
-    heading: "Danke, dass Du dieses Jahr Loomio genutzt hast!"
-    body: |
-      <p>Wir schätzen Deine Unterstützung während des Jahres sehr und wir sind glücklich Loomio auch in 2016 immer besser zu machen.</p>
-      <p>Hilft Loomio in Deiner Gruppe? Wir haben gerade erst unsere Vertragsmodelle veröffentlicht und wir fragen Gruppen, welche Loomio bereits testen konnten, ein Vertragsmodell zu wählen, das zu ihnen passt.</p>
-    submit: "Zeig' mir die Modelle"
-  group_welcome_modal:
-    aria_label: "Willkommen"
-    creator_heading: "Willkommen in Deiner neuen Gruppe"
-    member_heading: "Willkommen bei Loomio"
-    creator_info: "Du bist der/die <strong>Gruppenkoordinator.in</strong>, das ist so was wie ein Gastgeber. Schau Dir das Video an und dann die Beispiel-Diskussionen."
-    member_info: "Schau Dir das Video an, um einen Überblick über die Funktion von Loomio zu erhalten. Danach versuche zu eine Diskussion zu kommentieren oder beginne eine eigene Diskussion!"
-    creator_footer: "Wenn Du fertig bist, <strong>lade Menschen</strong> ein."
-    ok_got_it: "Okay, ich hab´s!"
   logo_photo_form:
     heading: 'Neues Gruppenlogo'
     upload_link: 'Neues Gruppenlogo hochladen'
@@ -412,24 +308,6 @@ de:
     title: 'Gruppe verlassen'
     question: 'Bist Du sicher, dass Du diese Gruppe verlassen willst?'
     submit: 'Ja, diese Gruppe verlassen'
-  confirm_gift_plan_modal:
-    go_back: Upgrade
-  donation_modal:
-    body: "Loomio ist ein gemeinnütziges Unternehmen. Unsere Mission ist eine Welt zu erschaffen, in der es für jeden einfach ist an Entscheidungen teilzuhaben, die ihn betreffen."
-    contribute: Mache eine Spende
-    got_to_group: Nicht jetzt, danke.
-  gift_card:
-    heading: Geschenk-Plan
-    make_a_contribution: Mache eine Spende
-  upgrade_plan_card:
-    more: '... und noch viel mehr.'
-    upgrade: Jetzt upgraden
-    donate: Spenden
-  trial_card:
-    title: '30 Tage Probe'
-    choose_plan: 'Wähle dein Vertragsmodell'
-    in_progress_body: 'Danke für das testen von Loomio in <strong>{{name}}</strong>. Du kannst jederzeit das Vertragsmodell wählen, dass am Besten zu Deiner Gruppe passt.'
-    expired_body_html: "<strong>{{name}}</strong> hat das Ende des Loomio Probezeitraums erreicht. Um es weiterhin zu nutzen musst Du ein Vertragsmodell wählen, dass am Besten zu Deiner Gruppe passt."
   group_form:
     start_group_heading: 'Gründe eine Gruppe'
     start_subgroup_heading: 'Gründe eine Untergruppe'
@@ -478,10 +356,6 @@ de:
     heading: 'Mitgliedschaftsanfragen'
     manage_requests: Anfragen verwalten
     manage_requests_with_count: ({{count}}) Anfragen verwalten
-  group_help_card:
-    title: Hilfe
-    ten_tips_article_title: 10 Tipps, um mit Loomio großartige Entscheidungen zu herbeizuführen
-    nine_ways_to_use_proposals: 9 Wege, um mit Loomio Vorschläge von der Diskussion zur Tat werden zu lassen
   membership_requests_page:
     heading: Mitgliedschaftsanfragen
     approve: Zustimmen
@@ -504,7 +378,6 @@ de:
     copy_link: 'Kopieren'
     email_addresses: 'eMail-Adressen'
     email_addresses_placeholder: 'z.B. helperbot@loomio.org, friendlybot@loomio.org'
-    email_explanation: 'Alternativ kannst Du eMail-Adressen hier unterhalb eitragen und Loomio wird ihnen Einladungsmails senden.'
     add_custom_message: 'Mach'' Deine Einladung persönlich,'
     add_custom_message_link: 'füge eine persönliche Nachricht hinzu.'
     custom_message: 'Persönliche Nachricht'
@@ -574,7 +447,6 @@ de:
     header: eMail-Einstellungen
     all_groups: Einstellungen für alle Gruppen
     daily_summary_label: Tägliche Übersichts-eMail
-    daily_summary_description: "Jeden Morgen wirst Du eine eMail mit allen am Vortag verpassten Aktivitäten erhalten. Diese eMail enthält eine einfache Routing, mit der Du mit den Loomio-Aktivitäten aktuell bleibst."
     on_participation_label: Abonnieren aufgrund Teilnahme
     on_participation_description: "Wenn Du Dich an einer Diskussion beteiligst, wirst Du zukünftig sofort über alles per eMail informiert."
     mentioned_label: Erwähnungen
@@ -642,12 +514,6 @@ de:
     proposals: 'Vorschläge'
     previous_proposals: 'Vorherige Vorschläge'
     load_previous: 'Lade ältere Beiträge'
-    you_like_this: 'Das gefällt Dir.'
-    liked_by_you_and_someone: 'Dir und {{name}} gefällt dies.'
-    liked_by_you_and_others: 'Gefällt Dir, {{joinedNames}} und {{name}}.'
-    liked_by_someone: '{{name}} gefällt dies.'
-    liked_by_many_others: 'Gefällt {{joinedNames}} und {{name}}.'
-    liked_by_name: 'Gefällt {{name}}.'
     started_by: 'Eröffnet von <strong>{{name}}</strong>'
     edited: 'Bearbeitet'
     volume:
@@ -739,72 +605,6 @@ de:
     message_label: 'Deine Nachricht'
     message_placeholder: 'Deine Nachricht...'
     send_message: 'Nachricht abschicken'
-  help_page:
-    coordinating: 'Koordiniere deine Loomio Gruppe'
-    coordinating_details: |
-      Als Koordinator bist Du verantwortlich für die Einrichtung der Loomio Gruppe und jeden einzuladen.
-      Genauso wie man lernt ein neues Teil der Software zu nutzen wird deine Gruppe neue Prozesse zur besseren und effizienteren Zusammenarbeit
-      kennenlernen und gemeinsam gute Entscheidungen zu treffen.
-      Hier sind einige Tipps um Deiner Gruppe zum Erfolg zu verhelfen:
-    different_ways: 'Verschiedene Wege um Loomio zu benutzen'
-    example1_html: |
-      <h3>Deine Gruppe soll ein umfassendes Thema diskutieren und zusammen eine Lösung finden?</h3>
-      <p>Strategie: Diskutiert ein Thema eine Weile, bevor jemand einen Vorschlag erstellt.</p>
-      <p>Diskussionen erreichen das beste Ergebnis, wenn ihr ein geteiltes Verständnis über das Problem aufgebaut habt, bevor eine spezielle Lösung diskutiert wird.
-      Wenn die Meinungen der einzelnen auf dem Weg zur Lösungsfindung einbezogen sind, werden sie eher bereit
-      sein, das Ergebnis zu akzeptieren.</p>
-    get_in_touch: "Kontakt aufnehmen"
-    get_in_touch_description_html: "Wenn Du Fragen oder Feedback hast, <a href='%{link}'>melde Dich bei uns</a>."
-    getting_started: "Loslegen"
-    getting_started_description: "Auf der linken Seite findet die Gruppendiskussion statt, in der Ideen und Informationen zu einem Thema ausgetauscht werden. Wenn eine Entscheidung gefällt werden soll, erscheint diese auf der rechten Seite."
-    getting_the_most: 'Das meiste aus Loomio heraus bekommen'
-    have_your_say: "Komme zu Wort"
-    have_your_say_details_html: |
-      <p>Wenn Du Dich entschieden hast, klicke auf einen der vier Entscheidungsbuttons.</p>
-      <p>Wenn Du Deine Entscheidung getroffen hast, schreibe kurz warum Du Dich so entschieden hast. Unter dem Kuchendiagramm siehst Du, was die anderen denken. So kannst Du schnell in das Thema reinkommen. Du kannst jederzeit Deine Meinung ändern, wenn zum Beispiel neue Informationen dazukommen.</p>
-    have_a_discussion: "Eine Diskussion führen"
-    have_a_discussion_description: "Das Thema und relevante Hintegrundinformationen stehen oben auf der Seite. Über das Kommentarfeld kannst Du deine Meinung in die Diskussion einbringen. "
-    help: "Hilfe"
-    how_it_works: "Wie es funktioniert"
-    invitation_html: |+
-      <h2>Eine großartige Einladung schreiben</h2>
-      <p>Die erste Frage eines neuen Mitglieds wird sein: „Wozu gibt es diese Gruppe?</p>
-      <p>Denke an die einfachste Beschreibung für Deine Gruppe: Was möchtet ihr gemeinsam erreichen? Welche Entscheidungen werden hier getroffen? Wer wird involviert sein?</p>
-      <p>Es kann eine gute Idee sein, wenn Du zunächst mit Deiner Gruppe sprichst und sie erst anschließend zu Loomio einlädst.</p>
-      <p>Menschen wollen wissen, warum sie eingeladen worden sind, was von ihnen erwartet wird
-      und warum sie ihre Zeit damit verbringen sollten, ein neues Tool zu erlernen.</p>
-
-    join_the_community: "Werde Teil der Community"
-    join_the_community_description_html: "Jeder ist in der Loomio-Community willkommen. Hier diskutieren wir darüber, wie man das meiste aus dem Werkzeug heraus holt und wie es verbessert werden könnte. .<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Klicke hier, um zur Gruppe für die Loomio-Community zu kommen</a>."
-    images_and_text_formatting: "Bilder und Textformatierung"
-    images_and_text_formatting_html: |
-      <p>Loomio nutzt ‘Markdown’ zur Einbindung von Bildern und der Formatierung von Text.
-      Du kannst Markdown mit dem kleinen, grauen Icon unter der Kommentarbox anschalten.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Klicke hier</a>
-      um Informationen über die Benutzung von Markdown zu erhalten.</p>
-    keep_up_to_date: "Bleibe auf dem Laufenden"
-    keep_up_to_date_html: |
-      <p>Durch Klicken auf den Gruppennamen im oberen Teil des Bildschirms gelangst Du zur Gruppenseite, wo Du eine Liste aller Diskussionen und Entscheidungen dieser Gruppe einsehen kannst. Wenn Du in mehr als einer Gruppe bist, kannst Du alle Beiträge in all Deinen Gruppen auf der Startseite sehen.</p>
-      <p>Du erhälst eine eMail-Benachrichtigung, wenn in Deiner Gruppe wichtige Dinge geschehen. Du kannst deine eMail-Einstellungen <a href="%{link}"">hier</a> ändern.</p>
-    make_a_decision: "Eine Entscheidung treffen"
-    make_a_decision_description: "Wenn die Gruppe bereit für eine Entscheidung ist, kann jeder einen Vorschlag machen. Beschreibe im Detail, welche Vorgehensweise du vorschlägst und füge einige Hintergrundinformationen hinzu, damit jeder genau versteht, was die Zustimmung bzw. Ablehnung des Vorschlags bedeuten."
-    prompt_people_details: "Wenn Du die Aufmerksamkeit einer bestimmten Person in Deiner Gruppe erhalten möchtest, gebe '@' gefolgt vom Loomio-Namen der Person ein. Die Person wird eine eMail erhalten mit einem Hinweis darauf, dass Du sie in einem Kommentar erwähnt hast."
-    prompt_people_html: "Fordere Leute mit <span class='blue'>@mentions</span> auf"
-    positions_agree_description: "<span>Zustimmen</span> bedeutet, Du bist mit dem Vorschlag zufrieden."
-    positions_abstain_description: "<span>Enthalten</span> bedeutet, Du bist dir nicht sicher oder die Gruppe kann ohne Dich entscheiden."
-    positions_disagree_description: "<span>Ablehnen</span> bedeutet, Du denkst es könnte eine bessere Alternative geben, aber Du wirst die Entscheidung der Gruppe akzeptieren."
-    positions_block_description: "<span>Blockieren</span> bedeutet, Du hast schwere Einwände gegen diesen Vorschlag und Du bist nicht einverstanden, dass dieser Vorschlag fortgeführt wird."
-    start_discussion: "Starte eine einnehmende Diskussion"
-    start_proposal: "Schreibe einen genauen Vorschlag"
-    start_proposal_html: |
-      <p> Wenn Du den Titel kurz und klar machst, werden die Leute sofort wissen, was es bedeutet zuzustimmen oder abzulehnen.</p>
-      <p>Es ist nicht das Ende der Welt, wenn ein Vorschlag nicht sofort angenommen wird.
-      Wenn die Gruppe den ersten Vorschlag nicht super findet, kann jeder einen neuen Vorschlag erstellen, um sich der Bedenken zu widmen und den Prozess vorwärts zu bringen.</p>
-      <p>Durch diesen dynamischen Prozess kann die kollektive Erfahrung Deiner Gruppe bessere Ideen generieren als jeder einzelne von euch.</p>
-      <p>Die Frist eines Vorschlags kann jederzeit verlängert werden, wenn offensichtlich wird, dass die Entscheidung mehr Raum benötigt. Jeder erhält 24 Stunden vor Ablauf des Vorschlags eine eMail-Benachrichtigung.</p>
-    video_id: "52025402"
-    video_tutorial: "Videoanleitung"
-    video_tutorial_description: "Sieh dir das Video an um einen Einblick in die Funktionsweise von Loomio zu bekommen."
   hint:
     context: 'Hinweise für die Nutzung des Kontext-Felds'
     discussion: 'Hinweise für das Starten einer mitreißenden Diskussion'
@@ -812,43 +612,10 @@ de:
     proposal: 'Hinweise für das Schreiben eines klaren Vorschlags'
     vote: 'Du kannst Deine Meinung jederzeit ändern.'
   explore_page:
-    header: Erkunde Loomio Gruppen
-    search_placeholder: Suche nach öffentlichen Loomio-Gruppen
     multiple_search_results: "{{resultCount}} öffentliche Gruppen für <strong>{{searchTerm}}</strong> gefunden"
     no_results_found: "<strong>Kannst Du keine Gruppe finden?</strong> Wenn die Gruppe auf \"geheim\" gestellt ist, wird sie nicht angezeigt. Wenn Du eine.n Koordinator.in kennst, bitte um eine Einladung."
-  angular:
-    switch_back: 'Zum alten Loomio wechseln'
-    give_feedback: 'Feedback geben'
-    collapse: Kollabieren
-    enable:
-      invite: 'Das neue Loomio testen!'
-      title: 'Das neue Loomio testen'
-      intro: "Wir haben Loomio renoviert und wir freuen uns auf Deine Hilfe, um zu prüfen ob es toll geworden ist!"
-      body_html: |
-        <p></p>
-        <h3>Was ist der Unterschied?</h3>
-
-        <p>
-        Das neue Interface ist wie das Alte, aber neuer:
-        <ul>
-        <li>Alles wird live aktualisiert</li>
-        <li>Es wurde für alle Geräte entwickelt, für Smartphone bis zu Desktop-PC</li>
-        <li>Es ist für blinde Menschen nutzbar und es wurde und wird übersetzt in <a href="https://www.loomio.org/translation">einen Haufen Sprachen</a>
-        </ul>
-        </p>
-
-        <p>Es nutzt diesselbe Datenbank wie das alte Interface, das heißt alle Deine Gruppen und Diskussionen.</p>
-        <p>Im linken, unteren Eck gibt es einen "Give feedback"-Link. Du wirst für eine Weile auch noch den "Zum alten Loomio wechseln"-Link sehen.</p>
-        <p>Wir würden uns wirklich über Deine Kritik und Dein Lob freuen. Danke für Deine Zeit und Deine Unterstützung.</p>
-      button_text: 'Das neue Loomio einrichten'
-    disable:
-      title: 'Vielen Dank, dass Du das neue Loomio getestet hast'
-      body_html: "<p>Mmmh, haben wir etwas falsch gemacht? Wir bedauern sehr, dass Dir das neue Loomio nicht gefällt. </p>"
-      give_feedback: "Bevor Du das neue Loomio verlässt, gib uns bitte Deine Meinung damit wir uns und es verbessern können."
-      button_text: 'Zum alten Loomio wechseln'
   global:
     messages:
-      app_update: 'Eine neue Version von Loomio ist erhältlich'
       reload: 'Reload'
   emoji_picker:
     search: "Finde ein emoji..."

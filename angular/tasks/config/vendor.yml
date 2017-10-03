@@ -40,7 +40,8 @@ execjs:
   - emojione/lib/js/emojione.js
 css_includes:
   - angular-material/modules/scss/
+  - mdi/scss
 fonts:
-  - material-design-icons/iconfont/MaterialIcons*
+  - mdi/fonts/*
 emoji:
   - emojione/assets/png/*.png

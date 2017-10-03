@@ -1,13 +1,46 @@
 zh_TW:
+  reactions:
+    slight_smile: 讚
+    heart: 愛
+    laughing: 笑
+    clap: 拍手
+    hugging: 擁抱
+    sunglasses: 酷
+    wink: 眨眼
+    nerd: 聰明
+    relieved: 安心
+    worried: 擔心
+    confused: 困惑
+    confounded: 討厭
+    neutral_face: 中立
+    slight_frown: 皺眉
+    disappointed: 失望
+    angry: 生氣
+    weary: 疲倦
+    astonished: 驚訝
+    rolling_eyes: 翻白眼
+    cry: 哭
+    scream: 吶喊
+    sleeping: 無聊
+    thinking: 思考
+    raised_hands: 舉手
+    pray: 祈禱
+    fingers_crossed: 祈求好運
+    v: 和平
+    metal: 金屬
+    ok_hand: 好
+    wave: 揮手
   poll_types:
     proposal: 提案
     count: 勾選
     poll: 投票
     dot_vote: 點投票
     meeting: 時間投票
+    ranked_choice: 排序選擇
   timezones:
     local: 本地時間 ({{value}})
   common:
+    you: 您
     expand: 展開
     all_day: 全天
     ok_got_it: 好的，我知道了
@@ -49,6 +82,8 @@ zh_TW:
     copy: '複製'
     copy_text: '複製文字'
     copied: '已經複製到剪貼簿'
+    points_abbrev: 每個投票價值 {{score}} 分
+    total: 總共
     action:
       next: '下一個'
       close: '關閉'
@@ -83,10 +118,21 @@ zh_TW:
       subscribe: 訂閱
       remind: 提醒
       resend: 重新傳送
+      send: 傳送
       resent: 重新傳送邀請
     formatting_help:
       label: '格式化'
-      title: '學習如何使用 Markdown 來格式化您在 Loomio 上的文字'
+  ordinal:
+    _1: 第一名
+    _2: 第二名
+    _3: 第三名
+    _4: 第四名
+    _5: 第五名
+    _6: 第六名
+    _7: 第七名
+    _8: 第八名
+    _9: 第九名
+    _10: 第十名
   devise:
     failure:
       inactive: '與此電子郵件關聯的帳號已停用。若您想要重新啟用您的帳號，請聯絡我們。'
@@ -104,35 +150,10 @@ zh_TW:
     verify_success: 投票已驗證
     remove_success: 投票已移除
     all_done: 做得好，您已經驗證所有投票了。
-  start_proposal_card:
-    title: '啟動提案'
-    helptext: 準備好作出決策了嗎？
-  proposal_outcome_panel:
-    heading: 成果
-    set_outcome_hint: 使用這個空間讓每個人知道提案的結果。
-    set_outcome_btn: 設定成果
-    edit_outcome_link: 編輯成果
-  proposal_outcome_form:
-    aria_label: 提案成果表單
-    set_outcome: 確立提案結果
-    update_outcome: 更新提案結果
-    outcome_label: 提案成果
-    outcome_placeholder: 讓每個人都知道提案成果。
-    publish_outcome: 發表成果
-    messages:
-      created: 結果公佈
-      updated: 結果已更新
-  previous_proposals_card:
-    heading: 上一個提案
-  previous_proposals_page:
-    heading: 上一個提案
   previous_polls_page:
     heading: 在 {{name}} 中的動態
     polls_count: 顯示 {{total}} 中的 {{loaded}} 個決策
     search_activities: 搜尋決策
-  proposal_collapsed:
-    expand: 展開
-    outcome: '結果：{{outcome}}'
   volume_levels:
     loud: '大聲'
     normal: '普通'
@@ -199,21 +220,11 @@ zh_TW:
     unread: '未讀'
     closing_in: '定案'
   sign_up_form:
-    aria_label: '註冊表單'
-    title: "歡迎來到 Loomio！我們來設定一下吧"
-    name_label: '您的名字'
-    name_placeholder: 'Jane Doe'
-    email_label: '電子郵件：'
-    email_placeholder: 'you@example.com'
     password_label: '密碼：'
     password_confirmation_label: '再輸入一次密碼：'
-    sign_in_message: '已經有帳號了？'
-    sign_in: '登入'
-    sign_up: '建立帳號'
   signed_out_modal:
     aria_label: '工作階段已結束'
     title: "您的工作階段已結束"
-    message: "您已經從其他視窗登出 Loomio。請重新登入以繼續。"
     ok: "確定"
   comment_form:
     aria_label: '加入意見'
@@ -293,7 +304,7 @@ zh_TW:
     new_vote: "<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上評論"
     comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論"
-    reaction_created: "<strong>{{name}}</strong> 喜歡您在 <strong>{{title}}</strong> 的評論"
+    reaction_created: "<strong>{{name}}</strong> 對您的評論做出反應在 <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
     user_reminded: "<strong>{{name}}</strong> 正在等候您參與 <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格"
@@ -314,62 +325,11 @@ zh_TW:
     stance_created: "<strong>{{name}}</strong> 已參與：<strong>{{title}}</strong>"
   position_buttons_panel:
     heading: 擁有發言權
-  vote_form:
-    aria_label: 投票表單
-    heading: 擁有發言權
-    no_statement: 沒寫。
-    statement_over_limit: '已到達字數限制。簡短的立場聲明可以建立簡潔的結論。若您想要說更多東西，請張貼評論。'
-    i_agree: '我贊成'
-    i_agree_details: '我支持這決定，就這麼進行。'
-    i_abstain: '我棄權'
-    i_abstain_details: '我很樂意群組的決定沒有我的參與。'
-    i_disagree: '我反對'
-    i_disagree_details: '我認為我們可以做得更好。'
-    i_block: '我阻擋'
-    i_block_details: ' 我強烈反對並且不願意這個提案繼續下去。'
-    submit_position: '呈遞您的立場'
-    change_position: '變更立場'
-    select_position: '選擇立場'
-    statement_placeholder: '與群組分享您的想法。'
-    aria_statement_label: '選擇性的輸入一些與您的立場相關的聲明'
-    messages:
-      created: 已加入投票
-  proposal_positions_panel:
-    heading: 立場表態
-    no_votes_yet: 尚未有人在此提案上投票。
-    change_your_vote: 變更您的立場。
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% 的成員已經陳述他們的立場 ({{number}}/{{total}})'
-  close_proposal_form:
-    aria_label: '提議定案'
-    close_proposal: '提議定案'
-    helptext: '您確定想要現在定案此提案嗎？'
-    close_proposal_submit: '提議定案'
-    messages:
-      success: 提議已定案
   extend_proposal_form:
     aria_label: 變更定案時間
     title: '變更定案時間'
     success: '提案關閉時間已更新'
     submit: '更新定案時間'
-  proposal_form:
-    aria_label: '提案表單'
-    messages:
-      created: '提案已啟動'
-      updated: '提案已更新'
-    start_proposal: '啟動提案'
-    start_a_proposal: '啟動提案'
-    edit_proposal: '編輯提案'
-    what_does_a_proposal_do: '提案可以讓您看到每個人對於特定的行動的感受。'
-    proposal_ideas: 需要靈感來寫出好提案嗎？
-    proposal_ideas_title: 9 個使用 Loomio 提案把討論化為行動的方法
-    editing_title_and_description_forbidden: '您不可以在夥伴們投票後才變更提案的標題或描述。如果詳細資訊有變更，請關閉提案並啟動另一個新的。'
-    title_placeholder: '例如：讓我們一起去月球'
-    title_label: '標題'
-    closes_at_label: '定案在'
-    closes: '關閉'
-    details_label: '詳細內容'
-    details_placeholder: "提供足夠的詳細資訊讓每個人都能明確地知道其代表的意義，並對您的提案表示同意或反對"
   discussion_record:
     created: '討論串 {{title}} 已在 {{groupName}} 中成功的被建立'
     updated: '儲存變更到 {{title}}'
@@ -392,33 +352,24 @@ zh_TW:
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     make_announcement: 公告
     notified_count: '{{count}} 個夥伴將會收到電子郵件'
-  proposal_expanded:
-    collapse: 摺疊
-    current_votes: 目前的投票
-    started_by: '由 <strong>{{name}}</strong> 所啟動'
-    only_voter_is_you: '尚未有其他的成員投票。'
-    extend_proposal: '變更定案時間'
-    edit_proposal: '編輯提案'
-    close_proposal: '提議定案'
-    closed_badge: 已定案
-  proposal_position_yes: '贊成'
-  proposal_position_abstain: '棄權'
-  proposal_position_no: '反對'
-  proposal_position_block: '阻擋'
-  legacy_trial_expired_modal:
-    heading: "感謝您今年使用 Loomio！"
-    body: |
-      <p>我們非常感謝您過去一年來的支持，我們也很興奮，想要讓 Loomio 可以在 2016 年變得更好。</p>
-      <p>Loomio 對您的群組有用嗎？我們剛發佈我們的定價模式，且正在詢問已經使用 Loomio 的群組挑選一組適合他們的定價方案。</p>
-    submit: "給我看定價方案"
-  group_welcome_modal:
-    aria_label: "歡迎"
-    creator_heading: "歡迎來到您的新群組"
-    member_heading: "歡迎使用 Loomio"
-    creator_info: "您是群組的<strong>協調者</strong>，這就像是主人一樣。觀看影片，然後再看看範例討論串。"
-    member_info: "觀看簡介 Loomio 如何運作的影片。然後嘗試在討論串中貼出意見，或是啟動一個您自己的討論串！"
-    creator_footer: "當您準備好時，<strong>邀請伙伴們</strong>進來。"
-    ok_got_it: "好的，了解了！"
+  action_dock:
+    react: 新增反應
+    add_comment: 意見
+    edit_thread: 編輯內容
+    translate_thread: 翻譯內容
+    edit_poll: 編輯投票
+    translate_poll: 翻譯投票
+    edit_stance: 變更您的投票
+    translate_stance: 翻譯投票
+    edit_comment: 編輯意見
+    delete_comment: 刪除意見
+    reply_to_comment: 回覆
+    translate_comment: 翻譯意見
+    edit_outcome: 編輯結果
+    translate_outcome: 翻譯結果
+    show_history: 顯示編輯歷史
+    pin_thread: 釘選討論串
+    unpin_thread: 取消釘選討論串
   cover_photo_form:
     aria_label: '變更封面照片表單'
     heading: '新的封面圖片'
@@ -453,6 +404,14 @@ zh_TW:
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited_by: '由 <strong>{{name}}</strong> 所編輯'
     posted: 已貼出
+  reactions_input:
+    add_your_reaction: 新增您的反應
+  reactions_display:
+    more_reactions: "{{count}} 更多"
+    you: "您"
+    you_and_name: "您與 {{name}}"
+    you_and_name_and_count_more: "您、{{name}} 與 {{count}} 更多"
+    name_and_count_more: "{{name}} 與 {{count}} 更多"
   group_page:
     thread_list:
       empty:
@@ -531,35 +490,6 @@ zh_TW:
     title: '停用群組'
     question: '您確定您想要停用此群組嗎？'
     submit: '是的，停用此群組'
-  confirm_gift_plan_modal:
-    heading: 免費的群組是依靠捐款支援的
-    body: 捐款讓那些需要免費使用 Loomio 的群組變為可能。我們將會不定期詢問免費群組的人們是否願意捐款。
-    got_it: 保持免費
-    go_back: 升級
-  donation_modal:
-    heading: 捐款給 Loomio？
-    body: "Loomio 是一個社會企業。我們的使命是締造一個任何人都能輕鬆參與、討論決策、影響他人的世界。"
-    contribute: 作出貢獻
-    got_to_group: 不是現在，謝謝。
-  gift_card:
-    heading: 禮物方案
-    body: "<strong>{{name}}</strong> 是一個禮物支援群組。要像群組幫助您一樣支援 Loomio，點選這裡："
-    make_a_contribution: 作出貢獻
-  upgrade_plan_card:
-    heading: 升級使用進階功能
-    slack_html: "<strong>Slack 整合</strong>：Loomio 與 Slack 可以共同運作！把它們連結起來吧。"
-    domain_html: "<strong>自訂網域</strong>：您的名稱.loomio.org 讓您的 Loomio 群組更容易被找到"
-    help_html: "<strong>專家協助</strong>：Loomio 的協作顧問可以讓您的團隊更強大"
-    analytics_html: "<strong>分析報告</strong>：深入了解您的群組的參與程度"
-    donations: 您的群組成員將不會再被詢問是否要捐款。
-    more: ……以及更多。
-    upgrade: 立刻升級
-    donate: 捐款
-  trial_card:
-    title: '30天試用'
-    choose_plan: '選擇您的定價方案'
-    in_progress_body: '感謝試用 Loomio，<strong>{{name}}</strong>。您可以在任何時間挑選一個適合您的群組的定價方案。'
-    expired_body_html: "<strong>{{name}}</strong> 已經結束了 Loomio 的試用。若您想要繼續使用它，您必須挑選一個適合您的定價方案。"
   group_form:
     aria_label: '群組表單'
     start_group_heading: '啟動群組'
@@ -619,10 +549,6 @@ zh_TW:
     heading: '申請成員資格'
     manage_requests: 管理申請
     manage_requests_with_count: 管理申請 ({{count}})
-  group_help_card:
-    title: 教學文件
-    ten_tips_article_title: 10 個使用 Loomio 做出好決策的祕訣
-    nine_ways_to_use_proposals: 9 個使用 Loomio 提案把討論化為行動的方法
   membership_requests_page:
     heading: 申請成員資格
     approve: 批准
@@ -649,7 +575,6 @@ zh_TW:
     email_addresses: '電子郵件地址'
     email_addresses_placeholder: '範例：helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: '複製連結並傳送給任何您想要讓他加入群組的人。這將會給予他們存取在該群組中的所有討論串的權限。'
-    email_explanation: '或是在下面輸入電子郵件，Loomio 將會以電子郵件的方式傳送一封邀請函給他們。'
     add_custom_message: '讓您的邀請變為私人的，'
     add_custom_message_link: '加入一段自訂的訊息。'
     custom_message: '自訂訊息'
@@ -707,6 +632,16 @@ zh_TW:
     cancel: '否'
     messages:
       success: 邀請函已取消
+  user_page:
+    contact_user: '連絡 {{name}}'
+    location_field: '位置：{{value}}'
+    locale_field: '語言：{{value}}'
+    online_field: '線上：{{value}}'
+  contact_request_form:
+    modal_title: "電子郵件 {{value}}"
+    message_placeholder: 自我介紹並分享為什麼您想要加入聯絡人。
+    helptext: "{{name}} 將會寄送包含您的名字、電子郵件地址與訊息的電子郵件"
+    email_sent: "電子郵件傳送給 {{name}}"
   profile_page:
     messages:
       updated: '簡歷已更新'
@@ -724,7 +659,10 @@ zh_TW:
     email_label: '電子郵件'
     short_bio_label: '簡介'
     locale_label: '語言'
+    short_bio_placeholder: '請自我介紹，包含專業領域、有興趣的主題與其他附屬機構'
     locale_placeholder: 選取您偏好的語言
+    location_label: '位置'
+    location_placeholder: '您在哪裡？'
     update_profile: '更新簡歷'
     deactivate_account: '凍結帳號'
   change_picture_form:
@@ -748,7 +686,6 @@ zh_TW:
     introduction: '當您停用您的帳號：'
     no_longer_group_member: '您將不會再被任何群組列為成員'
     name_removed: '您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。'
-    no_emails: '您將不再收到與 Loomio 相關的電子郵件'
     contact_for_reactivation: '您將會需要聯絡我們以重新啟用您的帳號'
     submit: '是的，我想要停用'
   deactivate_user_form:
@@ -765,7 +702,7 @@ zh_TW:
     header: 電子郵件設定
     all_groups: 所有群組的設定
     daily_summary_label: 每日摘要電子郵件
-    daily_summary_description: "每天早上，您將會收到一封包含您前一天錯過的任何動態的電子郵件。這封電子郵件提供了跟上 Loomio 動態更簡單的方法。"
+    daily_summary_description: "每天早上，您都會收到一封關於您前一天錯過了哪些動態的電子郵件。這讓您可以更容易地保持最新狀態。"
     on_participation_label: 參與時訂閱
     on_participation_description: "當您參與討論串時，之後所有的動態都會即時寄給您。"
     mentioned_label: 提及
@@ -852,13 +789,6 @@ zh_TW:
     proposals: '提議'
     previous_proposals: '上一個提案'
     load_previous: '載入更早的動態'
-    you_like_this: '您對此按讚。'
-    liked_by_you_and_someone: '您與 {{name}} 對此按讚。'
-    liked_by_you_and_others: '您、{{joinedNames}} 與 {{name}} 對此按讚。'
-    liked_by_someone: '{{name}} 對此按讚。'
-    liked_by_two_others: '{{joinedNames}} 與 {{name}} 喜歡這個。'
-    liked_by_many_others: '{{joinedNames}} 與 {{name}} 對此按讚。'
-    liked_by_name: '{{name}} 對此按讚。'
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited: '已編輯'
     pin:
@@ -973,80 +903,6 @@ zh_TW:
     message_placeholder: '您的訊息...'
     send_message: '寄送訊息'
     new_contact_message: "感謝您與我們聯繫；我們很快就會回覆！"
-  help_page:
-    coordinating: '在您的 Loomio 群組中協作'
-    coordinating_details: |
-      身為協調者，您的責任是設定好您的 Loomio 群組以及邀請大家加入。在學習使用一種新的軟體的同時，您的群組也將在新的過程中學習到更有效的合作方式，一同作出更好的決策。這裡是一些幫助您的群組成功的小秘訣：
-    different_ways: '各種使用 Loomio 的方式'
-    engaging_html: |
-      <h2>激動人心的群組小技巧</h2>
-      <p>當一個吸引人的提案出現時，夥伴會很興奮地加入討論，一個開誠布公的好提案，可幫助夥伴直接知道要支持或是站在反對的立場。
-      想想看，在面對面的討論或在信件的討論串中的討論狀況，您會發現在 Loomio 參與討論或決策容易得多。</p>
-      <p>如果您的群組才剛開始經營，您可以從比較輕鬆的決策開始討論，
-      如此一來，大家都有機會使用 Loomio 工具發表意見、參與整個決策制定的過程。</p>
-      <p>另一個經營討論的方法是，在提到夥伴時，使用 @夥伴 這個功能，
-      一旦某人被提及，就會收到一封 Email，通知他們在討論串中被提到了。</p>
-    example1_html: |
-      <h3>您需要群組去討論廣泛的主題並一同發展解決方案</h3>
-      <p>策略：在建立提案之前先花點時間討論主題。</p>
-      <p>在下定解決方案之前，若您能建立起對問題的共識，通常能討論出最棒的成果。當夥伴開始參與這個過程，他們將更可能贊成此案的成果。</p>
-    example2_html: |
-      <h3>您已經想到一個提案，並且希望獲得您的群組批准來進行</h3>
-      <p>策略：針對一個特定決策來啟動討論串並立即提出提案。</p>
-      <p>如果你腦海中已經有明確的成果，但是您想要確定沒有反對聲浪，你可以使用該提案來快速達成決定。</p>
-      <p>您可以使用這樣的方法來達成類似敲定公文、允許申請，或者是核准一件工作。</p>
-    get_in_touch: "取得聯繫"
-    get_in_touch_description_html: "如果您有任何問題或反饋，<a href='%{link}'>丟封信給我們</a>就行了。"
-    getting_started: "開始入門"
-    getting_started_description: "左邊是討論主題、交換想法與資訊的地方。當群組有決策要制定時，選項會出現在右邊。"
-    getting_the_most: 'Loomio：工欲善其事必先利其器'
-    have_your_say: "擁有發言權"
-    have_your_say_details_html: |
-      <p>當您準備好要發言，點擊四個決策按鈕之一。</p>
-      <p>當您已經作出您的決定，請給出簡短的解釋。在下方的圓餅圖，您能見到其他人的想法。這會使得其他人能快速輕鬆地跟上討論。隨著新的資訊明朗化，任何時候您都能改變您的立場。</p>
-    have_a_discussion: "舉行討論"
-    have_a_discussion_description: "主題與任何相關背景資訊座落在本頁的最上方。請用意見區塊將您的想法加入討論串。"
-    help: "教學文件"
-    how_it_works: "這是怎樣辦到的"
-    invitation_html: |
-      <h2>寫下一封卓越邀請函</h2>
-      <p>每一個新成員想到的第一個問題通常是：「這個群組是作甚麼用的？」</p>
-      <p>用您所能想到最簡單的方式來描述你的群組：你們想要共同達成甚麼？你們將會作出哪種類型的決策？將會涉及到誰？</p>
-      <p>在您邀請他們加入 Loomio 前，先告訴他們這些可能會是個好主意。</p>
-      <p>夥伴會想知道為何他們會被邀請，您對他們的期望是什麼，以及為何他們花時間去學習一個新工具是值得的。</p>
-    join_the_community: "加入社群"
-    join_the_community_description_html: "人人都歡迎加入 Loomio 社群，我們可以在此談論如何充分利用以及如何改進這個工具。<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>按這裡前往 Loomio 社群</a>。"
-    images_and_text_formatting: "圖片及文字格式"
-    images_and_text_formatting_html: |
-      <p>Loomio 使用「Markdown」語法來嵌入圖片、格式化文字。
-      您可以點選意見區塊底下的小灰色圖示切換 Markdown 功能。</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>點選這裡</a>以瞭解如何使用 Markdown。</p>
-    keep_up_to_date: "持續跟進"
-    keep_up_to_date_html: |
-      <p>點擊您畫面上方的群組名稱以進入群組頁面，頁面中您可看到該群組的討論與決定清單。
-      若您加入一個以上的群組，您可在首頁看到所有您加入的群組及其所有動態。 </p>
-      <p>當您的群組有要事發生時，您將會收到通知信。您可<a href="%{link}"">於此</a>更改您的電子郵件偏好設定。</p>
-    make_a_decision: "作出決策"
-    make_a_decision_description: "當群組準備好制定決策時，任何人都可以提案。替行動方案做出概要以及提供一些背景資料，讓每個人都能明確知道贊成與否所代表的真正意義。"
-    prompt_people_details: "假如您想得到群組內特定人士的注意，先按下「@」緊接著輸入他們的大名。他們會收到一封電子郵件，提醒他們在某則討論串中被提及。"
-    prompt_people_html: "提到夥伴時請用 <span class='blue'>@夥伴</span>"
-    positions_agree_description: "<span>贊成</span>代表您滿意這個提案。"
-    positions_abstain_description: "<span>棄權</span>代表您並不是很確定，或是您很樂意群組的決定沒有您的參與。"
-    positions_disagree_description: "<span>反對</span>代表您認為可能有更好的方案，但您願意順應群組的決策。"
-    positions_block_description: "<span>阻擋</span>代表您非常反對，並且如果此提案繼續進行，這會讓您非常不愉快。"
-    start_discussion: "發起一段激動人心的討論"
-    start_discussion_html: |
-      <p>當您啟動一場討論，確保您標題傳達的主題是簡潔的。運用論述面板給出所有必要的背景資訊，讓群組是有生產力、有見地的討論。</p>
-      <p>隨著新的資訊明朗化，討論的過程當中論述面板能被更新。不但能闡明主題，還能運用這空間來分享資源，在過程中總結討論，或是概要出您的群組決策制定的協議。</p>
-    start_proposal: "寫出明確的提案"
-    start_proposal_html: |
-      <p>如果您讓標題明確扼要，夥伴將可以迅速準確理解其意，然後選擇贊成或是反對。</p>
-      <p>提案沒有馬上得到明確的共識並不是世界末日。假如群組不滿意一開始的提案，任何人都可以啟動新提案來表達您的顧慮，並讓過程順利進行。</p>
-      <p>透過這種動態的過程，您的群組解放了集體的智慧，比起獨自拿出個人所有，進而一同產生更棒的想法。</p>
-      <p>如果決策需要更多的時間，提案的截止日可以在任何時間延長。每一個人將會在提案結束的 24 小時前接到電子郵件通知。</p>
-    video_id: "52025402"
-    video_tutorial: "影片教學"
-    video_tutorial_description: "點閱一段簡單示範的影片以瞭解如何使用 Loomio。"
   hint:
     context: '使用論述控制板的小提示'
     discussion: '發起一段激動人心討論的小提示'
@@ -1054,45 +910,14 @@ zh_TW:
     proposal: '寫出明確提案的小提示'
     vote: '任何時候您都能改變您的立場'
   explore_page:
-    header: 探索 Loomio 群組
-    search_placeholder: 搜尋公開的 Loomio 群組
+    header: 探索群組
+    search_placeholder: 搜尋公開群組
     single_search_result: "1 個公開群組符合 <strong>{{searchTerm}}：</strong>"
     multiple_search_results: "{{resultCount}} 個公開群組符合 <strong>{{searchTerm}}：</strong>"
     no_results_found: "<strong>找不到您要找的群組？</strong>如果群組的隱私設定為「私密」，它將不會出現在這裡。若您知道誰協調該群組，您必須請他們邀請您。"
-  angular:
-    switch_back: '切換回舊版 Loomio'
-    give_feedback: '給予回饋'
-    collapse: 摺疊
-    enable:
-      invite: '嘗試新的 Loomio！'
-      title: '嘗試新的 Loomio'
-      intro: "我們正在重新建造 Loomio，我們需要要您的協助來讓它變得更好！"
-      body_html: |
-        <p></p>
-        <h3>有什麼不同呢？</h3>
-
-        <p>
-        新的介面就像舊的介面，但是更新了：
-        <ul>
-        <li>每樣事情都會在它發生時即時在頁面上更新</li>
-        <li>它設計給您所有的裝置使用，從智慧型手機到桌上型電腦</li>
-        <li>它可以讓盲人使用，且被翻譯為 <a href="https://www.loomio.org/translation">許多的語言</a>
-        </ul>
-        </p>
-
-        <p>它與舊版介面使用相同的資料庫，代表了它將會有您所有已存在的群組與討論。您可以在任何時間回到舊版介面。</p>
-        <p>我們將會隨著時間實現我們取得的一些回饋，所以每天都會些微的變更。一些較少使用的功能可能不會實現呢。</p>
-        <p>在新版應用程式的左下角會有一個「切換回舊版 Loomio」的連結。點擊該連結，然後您就會切換回您使用較久的 Loomio。也有一個您可以輸入回饋的回饋表單。</p>
-        <p>我們真的很想聽到您的回饋，感謝您的使用與支持。</p>
-      button_text: '啟用新的 Loomio'
-    disable:
-      title: '感謝您嘗試新的 Loomio'
-      body_html: "<p>唉呀，我們作錯什麼了呢？我們對於您對新 Loomio 有不好的印象很抱歉。</p>"
-      give_feedback: "在您離開前，請您考慮分享您的回饋，以讓我們可以改進。"
-      button_text: '切換回舊版 Loomio'
   global:
     messages:
-      app_update: '新版本的 Loomio 出了'
+      app_update: '新版的應用程式已經可用'
       reload: '重新整理'
   emoji_picker:
     search: "找到一個 emoji..."
@@ -1145,6 +970,7 @@ zh_TW:
     poll_title: 投票
     dot_vote_title: 點投票
     meeting_title: 時間投票
+    ranked_choice_title: 排序選擇
   poll_common:
     your_response: 您的回應
     change_your_response: 變更您的回應
@@ -1192,7 +1018,7 @@ zh_TW:
   poll_common_collapsed:
     by_who: "由 {{name}}"
   poll_common_select_group:
-    loomio_group: Loomio 群組
+    loomio_group: 群組
     loomio_group_placeholder: （未選取群組）
   poll_common_voter_add_options:
     add_options: 投票者可以新增選項
@@ -1227,11 +1053,13 @@ zh_TW:
     close_count: 關閉勾選
     close_dot_vote: 關閉點投票
     close_meeting: 關閉時間投票
+    close_ranked_choice: 關閉排序選擇投票
     proposal_closed: 提議已定案
     poll_closed: 投票已關閉
     count_closed: 勾選已關閉
     dot_vote_closed: 點投票已關閉
     meeting_closed: 時間投票已關閉
+    ranked_choice_closed: 排序選擇投票已關閉
   poll_common_closing_at_field:
     closing: 關閉
     closing_hour: 關閉時間
@@ -1261,6 +1089,7 @@ zh_TW:
     count: '這個勾選已關閉。<strong>分享成果</strong>以完成整個過程。'
     meeting: '此時間投票已關閉。<strong>分享成果</strong>以讓其他人知道會面何時舉行。'
     dot_vote: '此點投票已關閉。與群組<strong>分享成果</strong>。'
+    ranked_choice: '這個排序投票已關閉。與群組<strong>分享結果</strong>。'
   poll_common_outcome_form:
     new_title: 分享成果
     update_title: 更新結果
@@ -1277,7 +1106,7 @@ zh_TW:
   poll_common_unsubscribe_form:
     title: 接收更新
     label: 接收關於此決策的電子郵件更新
-    tooltip: Loomio 可以寄送電子郵件來讓您保持了解此決策的進度，如何時被編輯、何時過期或是結果已公佈等。取消勾選此勾選框可確保您不會收到與此決策相關的進一步電子郵件。
+    tooltip: 電子郵件更新讓您了解此決策，如它何時被編輯，何時過期，或是何時做出了決策。取消勾選此框可以確保您不會再收到關於此決策的電子郵件通知。
     helptext_on: 您將會收到關於此決策動態的電子郵件
     helptext_off: 您將不會收到任何關於此決策的電子郵件
     subscribed: 成功訂閱
@@ -1292,13 +1121,6 @@ zh_TW:
     start: 啟動
     update: 更新
   poll_proposal_form:
-    tool_tip_expanded: |
-      <p>提案是用來尋求關於一段陳述或是行動方針共識的工具。</p>
-      <p>參與者可以同意、放棄、反對或阻擋，來針對一段陳述表達他們的立場。</p>
-      <p>一份圓餅圖會顯示在群組中對於該議題的立場，讓每個人的聲音都能被聽到。</p>
-      <p>若您一開始沒看到同意的人，別氣餒，提案就是設計用來突顯需要解決的問題。</p>
-      <p>在有良好參與者的狀況下，一個提案就是採與行動的有利動作。</p>
-      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 尋求共識
     start_header: 啟動提案
     edit_header: 編輯提案
@@ -1308,11 +1130,6 @@ zh_TW:
     proposal_created: 提案已啟動
     proposal_updated: 提案已更新
   poll_poll_form:
-    tool_tip_expanded: |
-      <p>使用投票來衡量人氣或是提供選項。</p>
-      <p>提供一些選項來供群組成員選取。決定參與者可以選取一個或多個選項來當做他們的回應。</p>
-      <p>每個人投票，且如果他們想要的話也可以同時輸入一段陳述。結果會以長條圖呈現。</p>
-      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 測量人氣或是提供選項
     start_header: 啟動投票
     edit_header: 編輯投票
@@ -1326,13 +1143,6 @@ zh_TW:
     poll_created: 投票已建立
     poll_updated: 投票已更新
   poll_count_form:
-    tool_tip_expanded: |
-      <p><em>勾選</em>則是一個有許多可能的使用方法的工具，但其只有兩種回應方式：打勾或劃掉。</p>
-      <p>使用其來吸引人們參與，例如：「我會來參加活動」或是「我將加入工作小組」等。</p>
-      <p>或是使用其來追蹤工作的完成度：「我已經檢查過我的連絡人詳細資訊，一切都沒錯」，或是「我已經讀過文件且留下了我的意見了」。</p>
-      <p>勾選是有<em>目標</em>的，其應該是您想要有多少參與者的數量。如果某些事情需要更多的關注或是需要更多參與者訂閱，那麼目標就是向團隊表明這些事情。</p>
-      <p>在勾選關閉的前一天，它將會提醒那些還沒參與的人（也許是數位游牧者？）。</p>
-      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 追蹤參與者與找到志願者
     start_header: 啟動勾選
     edit_header: 編輯勾選
@@ -1342,11 +1152,6 @@ zh_TW:
     count_created: 勾選已啟動
     count_updated: 勾選已更新
   poll_dot_vote_form:
-    tool_tip_expanded: |
-      <p>點投票是列出選項清單順序的方法。</p>
-      <p>參與者會被給予有限的「點」，其可以被分配在他們喜歡的的選項來表示自己的偏好。</p>
-      <p>這個過程會產生一個累計的長條圖以及個別分配，讓您可以考慮各種觀點。</p>
-      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 選項排序
     start_header: 啟動點投票
     edit_header: 編輯點投票
@@ -1358,14 +1163,6 @@ zh_TW:
     dot_vote_created: 點投票已建立
     dot_vote_updated: 點投票已更新
   poll_meeting_form:
-    tool_tip_expanded: |
-      <p>使用時間投票來看看夥伴們何時可以會面。</p>
-      <p>輸入您想要舉辦會面的日期或是時間清單。</p>
-      <p>參與者勾選他們可以參與的時間，或是他們可以使用陳述欄來解釋他們的狀況，所以如果需要的話，您可以更新選項。</p>
-      <p>若您在時間投票中新增了新的時間，已經投票的夥伴將會被提醒要更新他們的回應。</p>
-      <p>您可以看到哪些人什麼時候有空，並決定何時要會面。</p>
-      <p>時間將會被自動轉換為參與者的時區。</p>
-      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>找找更多資訊。</p>
     tool_tip_collapsed: 找到會面的時間
     start_header: 啟動時間投票
     edit_header: 編輯時間投票
@@ -1378,6 +1175,26 @@ zh_TW:
     no_options: "您尚未新增任何時間欄位。"
     meeting_duration: 會面持續時間
     add_option_placeholder: 輸入新時間
+  poll_ranked_choice_form:
+    tool_tip_expanded: |
+      <p>排序選擇是一個讓每個投票者可以以他們偏好的順序回應的投票方式。</p>
+      <p>這可以用在有「投票竊取」的問題時（亦即有兩個受歡迎的選項類似
+      ，而投票會在兩個選項間共享），並可用 Condorcet 或即時投票的風格來實作。
+      </p>
+    tool_tip_collapsed: 排序選項
+    start_header: 開始排序選擇
+    edit_header: 編輯排序選擇
+    tip: 找到夥伴們可以會面的時間
+    title_placeholder: 範例：您想讓誰當市長？
+    details_placeholder: 提供任何參與的人可能需要知道的細節
+    meeting_created: 已建立排序選擇
+    meeting_updated: 已更新排序選擇
+    no_options: "您尚未加入任何選項。"
+    add_option_placeholder: 輸入新選擇
+    minimum_stance_choices: 要排序的選項
+    minimum_stance_choices_helptext: 每個投票人可以排序的選項
+    ranked_choice_created: 已建立排序選擇
+    ranked_choice_updated: 已更新排序選擇
   poll_meeting_time_field:
     new_time_slot: 新時間欄位
     closing_hour: 關閉時間
@@ -1389,6 +1206,7 @@ zh_TW:
     block_reason_placeholder: 解釋您對此提案的反對意見，以及為什麼它不應該再繼續下去
     stance_created: 已建立投票
     stance_updated: 已更新投票
+    vote: 投票
   poll_proposal_options:
     agree: 贊成
     agree_verb: "同意"
@@ -1429,6 +1247,10 @@ zh_TW:
     too_many_dots: 您使用了太多點數。
     stance_created: 已建立投票
     stance_updated: 已更新投票
+  poll_ranked_choice_vote_form:
+    helptext: 拖放偏好順序的選項（1 是您最偏好的選項）。您的頭 {{count}} 個將會被記錄。
+    stance_created: 已記錄選擇
+    stance_updated: 已更新選擇
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 在回覆 <strong>{{title}}</strong>"
     discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了討論串標題： <strong>{{title}}</strong>"
@@ -1468,8 +1290,8 @@ zh_TW:
     enter_email: "例如：guest@example.com"
     reminded: 提醒已傳送！
     send_emails: 傳送邀請函 ({{count}})
-    share_group: Loomio 群組
-    share_group_helptext: 選擇一個 Loomio 群組來分享這次的決策。該群組的成員也可以參與。
+    share_group: 群組
+    share_group_helptext: 選擇一個群組來分享此決策。群組的成員都可以參與。
     cannot_move_poll_helptext: 這個投票是 <strong>{{group}}</strong> 中的 <strong>{{discussion}}</strong> 討論的一部份，所以無法被移動。
     move_group_helptext: 小心！移動決策到群組外可能會讓一些人無法存取它。已有的投票仍將會被記錄。
     set_group: 設定群組
@@ -1486,7 +1308,7 @@ zh_TW:
   poll_common_publish_slack_preview:
     poll_published: "發佈投票："
     poll_published_with_discussion: "在 <strong>{{discussion}}</strong> 中發佈投票。"
-    view_it_on_loomio: 在 Loomio 上檢視
+    view_it_on_loomio: 在 {{site_name}} 上檢視
     timestamp: 今日 {{timestamp}}
   poll_common_participant_form:
     participant_name_placeholder: 您的大名是？
@@ -1512,9 +1334,10 @@ zh_TW:
     filter_placeholder: （所有投票）
     groups_placeholder: （所有群組）
   auth_form:
-    sign_in_to_loomio: 登入 Loomio
+    sign_in_to_loomio: 登入到 {{site_name}}
     sign_in: 登入
     choose_an_account: "透過第三方登入，或是輸入您的電子郵件地址以繼續。"
+    invitation_required: 找不到帳號。新帳號為邀請制。
     more_providers: 詳細
     email_not_present: 需要電子郵件地址
     invalid_email: "抱歉，這看起來不是有效的電子郵件地址"
@@ -1534,9 +1357,9 @@ zh_TW:
     login_link: 透過電子郵件登入
     set_password: 設定密碼
     hello: "您好，{{name}}！"
-    new_to_loomio: Loomio 新手？建立新帳號
+    new_to_loomio: 剛來到 {{site_name}}？建立新帳號
     create_account: 建立帳號
-    already_a_user: 已經有 Loomio 帳號了？輸入連結到您的帳號的電子郵件
+    already_a_user: 已經有 {{site_name}} 的帳號了？輸入您的電子郵件地址來連結此帳號到您的
     link_accounts: 連結帳號
     check_your_email: 檢查您的電子郵件
     login_link_sent: "好的，我們已經傳送一封包含可以立刻登入的連結的電子郵件到 {{email}}。待會見！"
@@ -1556,6 +1379,12 @@ zh_TW:
       installed_title: 已連線至 Slack
       installed_helptext: 這個群組已經連到 Slack 團隊 <strong><a target='_blank' href='https://{{team}}.slack.com'>{{team}}</a></strong>。此群組的動態將會在 <strong>{{channel}}</strong> 頻道中出現。
       install_slack: 連線至 Slack
+      remove_identity: 移除這個整合
+      confirm_remove_title: 移除 Slack 整合
+      confirm_remove_helptext: |
+        您的 Slack 頻道不再收到關於此群組的更新。
+        您還是可以回來並再次把它加回來。
+      identity_removed: 已移除整合
     progress:
       install: 安裝
       invite: 邀請
@@ -1569,7 +1398,6 @@ zh_TW:
       add_to_group_helptext: 選取要連結到 Slack 的群組
       create_new_group_helptext: 沒有 Loomio 群組？簡單地輸入一個名字，然後我們就會為您打造一個
       group_name: 群組名稱
-      group_name_placeholder: 您的新 Loomio 群組的名稱……
       slack_installed: Slack 已安裝
       install_slack: 現在安裝 Slack
       start_new_group: 啟動新群組
@@ -1592,7 +1420,7 @@ zh_TW:
   slack_added_modal:
     title: 成功！
     helptext: |
-      您已經成功加入 Slack 到您的 Loomio 群組 <strong>{{name}}</strong>。
-      現在，每當任何人在此群組啟動投票，他們將會有選項可以
-      在您的 Slack 團隊頻道中貼出關於投票的更新。
+      您已經成功新增 Slack 到您的群組 <strong>{{name}}</strong>。
+      現在，無論任何人在此群組中啟動投票，他們都將會有
+      選項來貼出投票的更新到您 Slack 團隊中的頻道。
     start_poll_now: 現在做決策

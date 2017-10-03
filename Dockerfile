@@ -43,9 +43,8 @@ ENV DATABASE_URL sqlite3:assets_throwaway.db
 ENV DEVISE_SECRET boopboop
 ENV SECRET_COOKIE_TOKEN beepbeep
 
-# build assets
+# build client app
 RUN bundle exec rake deploy:build[plugins.docker]
-RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 # source the config file and run puma when the container starts

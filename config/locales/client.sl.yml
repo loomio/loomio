@@ -31,11 +31,6 @@ sl:
       loading: 'Nalagam'
   error_page:
     forbidden: 'Nimaš dovoljenja za to.'
-  proposal_outcome_panel:
-    heading: Izid
-  proposal_outcome_form:
-    outcome_label: Izid predloga
-    publish_outcome: Objavi izid
   volume_levels:
     loud: 'Glasno'
     normal: 'Normalno'
@@ -61,35 +56,11 @@ sl:
     header: "Obvestila"
   position_buttons_panel:
     heading: Izrazi svoje mnenje
-  vote_form:
-    heading: Izrazi svoje mnenje
-    i_agree: 'Strinjam se'
-    i_abstain: 'Vzdržujem se'
-    i_abstain_details: 'Vesel/a bom, če se skupina odloči brez mene.'
-    i_disagree: 'Ne strinjam se'
-    i_disagree_details: 'Mislim, da znamo tudi bolje.'
-    i_block: 'Ugovarjam'
-    i_block_details: 'Močno ugovarjam temu predlogu in nisem OK z njegovim sprejetjem.'
-    submit_position: 'Oddaj svoj glas'
-  proposal_positions_panel:
-    heading: Stališča
-  close_proposal_form:
-    close_proposal: 'Zapri predlog'
-  proposal_form:
-    start_proposal: 'Ustvari predlog'
-    edit_proposal: 'Uredi predlog'
-    title_label: 'Naslov'
-    closes_at_label: 'Zaključi se ob'
-    details_label: 'Podrobnosti'
   discussion_form:
     group_label: 'Skupina'
     title_label: 'Naslov'
     context_label: 'Opis'
     privacy_label: 'Zasebnost'
-  proposal_expanded:
-    started_by: 'Začel/a <strong>{{name}}</strong>'
-    edit_proposal: 'Uredi predlog'
-    close_proposal: 'Zapri predlog'
   join_group_button:
     join_group: Pridruži se skupini
     messages:
@@ -147,12 +118,6 @@ sl:
     no_groups:
       or: ali
   discussion:
-    you_like_this: 'Ti si všečkal/a.'
-    liked_by_you_and_someone: 'Ti in {{name}} sta všečkala.'
-    liked_by_you_and_others: 'Všečkali ti, {{joinedNames}} in {{name}}.'
-    liked_by_someone: '{{name}} je všekal/a.'
-    liked_by_many_others: 'Všečkala {{joinedNames}} in {{name}}.'
-    liked_by_name: 'Všečkal/a {{name}}.'
     started_by: 'Začel/a <strong>{{name}}</strong>'
   thread_group:
     aria_label: 'Ime skupine'
@@ -169,77 +134,6 @@ sl:
     email_label: 'Tvoj email naslov'
     email_placeholder: 'Vnesi svoj email ...'
     message_label: 'Tvoje sporočilo'
-  help_page:
-    coordinating: 'Koordiniraj svojo Loomio skupino'
-    coordinating_details: |
-      Kot koordinator/ka si odgovoren/na za vzpostavitev Loomio skupine in vabljenja članov. Poleg učenja novega programa, se bo tvoja skupina učila novih načinov učinkovitejšega sodelovanja in sprejemanja dobrih skupnih odločitev. Tukaj je nekaj nasvetov kako podpreti tvojo skupino k uspehu:
-    different_ways: 'Različni načini uporabe Loomia'
-    example1_html: |
-      <h3>Skupina mora o neki temi razpravljati in skupaj razviti rešitev</h3>
-      <p>Strategija: O temi nekaj časa razpravljajte, preden ustvarite predlog.</p>
-      <p>Razprave pogosto dosežejo najboljši rezultat takrat, ko se vzpostavi skupno razumevanje problema, preden se predlaga določeno rešitev. Kadar lahko vsi sodelujejo že v procesu, bodo namreč veliko verjetneje sprejeli rezultat.</p>
-    get_in_touch: "Stopi v stik"
-    get_in_touch_description_html: "Če imaš kakšna vprašanja ali pripombe, <a href='%{link}'>nam piši</a>."
-    getting_started: "Prvi koraki"
-    getting_started_description: "Na levi strani skupina obravnava temo, izmenjuje ideje in informacije. Morebitna odločitev se prikaže na desni strani."
-    getting_the_most: 'Kako od Loomia dobiti največ'
-    have_your_say: "Izrazi svoje mnenje"
-    have_your_say_details_html: |
-      <p>Ko si pripravljen/a izraziti svoje mnenje, klikni enega od štirih gumbov za odločanje.</p>
-      <p>Ko se odločiš, to na kratko obrazloži. Pod tortnim diagramom
-      lahko vidiš, mnenja ostalih. To ti omogoča hitro in enostavno sledenje
-      razpravi. Če te nova informacija prepriča, lahko svoje
-      stališče kadarkoli spremeniš.</p>
-    have_a_discussion: "Začni razpravo"
-    have_a_discussion_description: "Tema in ostale pomembne informacije so na vrhu strani. Uporabi polje za komentiranje, da dodaš svoj glas k razpravi."
-    help: "Pomoč"
-    how_it_works: "Kako deluje"
-    invitation_html: |+
-      <h2>Pisanje super povabila</h2>
-      <p>Prvo vprašanje vsakega novega člana/ice, bo "kaj je namen te skupine?’</p>
-      <p>Skušaj napisati najenostavnejši opis skupine: Kaj bi rad/a,
-      da skupaj dosežete? O katerih odločitvah boste odločali? Kdo bo pri tem sodeloval? </p>
-      <p>Mogoče je dobro, da se najprej pogovoriš s svojo skupino, preden jih povabiš na Loomio.</p>
-      <p>Ljudje bodo želeli vedeti, zakaj so bili povabljeni, kaj se od njih pričakuje,
-      in zakaj je vredno njihovega časa, da se naučijo uporabljati novo orodje.</p>
-
-    join_the_community: "Pridruži se skupnosti"
-    images_and_text_formatting: "Urejanje slik in teksta"
-    images_and_text_formatting_html: |
-      <p>Loomio uporablja 'Markdown' za vgrajevanje slik in urejanje besedil.
-      Markdown lahko vklopiš z majhno sivo ikono pod oknom s komentarji..</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Klikni sem</a>
-      za več informacij o uporabi Markdown-a.</p>
-    keep_up_to_date: "Ostani na tekočem"
-    keep_up_to_date_html: |
-      <p>Klik na ime skupine na vrhu zaslona te popelje na Stran Skupine,
-      kjer lahko vidiš seznam vseh razprav in odločitev v tej skupini. Če
-      si včlanjen/a v več skupin, boš tu videl/a vse aktivnosti v teh skupinah.</p>
-      <p>Ko se zgodi kaj pomembnega v tvoji skupini, boš prejel/a email.
-      Email nastavitve lahko spremeniš <a href="%{link}"">tukaj</a>.</p>
-    make_a_decision: "Odloči se"
-    make_a_decision_description: "Ko je skupina pripravljena sprejeti odločitev, lahko vsak pripravi predlog. Opiši jasen postopek in navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo."
-    prompt_people_details: "Če želiš dobiti pozornost določene osebe v skupini, vtipkaj ‘@’, kateri sledi še ime te osebe. Prejeli bodo email s sporočilom, da si jih omenil/a v komentarju."
-    prompt_people_html: "Pozovi člane z <span class='blue'>@omenjanjem</span>"
-    positions_agree_description: "<span>Strinjam se</span> pomeni, da predlog podpiraš."
-    positions_abstain_description: "<span>Vzdržan/a</span> pomeni, da nisi odločen/a, oziroma, da zaupaš skupini, da se odloči brez tebe."
-    positions_disagree_description: "<span>Ne strinjam se</span> pomeni, da bi po tvojem mnenju lahko našli boljšo rešitev, a si pripravljen/a sprejeti odločitev večine."
-    positions_block_description: "<span>Ugovarjam</span> pomeni, da imaš resna nasprotovanja in boš skrajno nesrečen/na, če bo predlog sprejet."
-    start_discussion: "Kako začeti angažirano razpravo?"
-    start_proposal: "Kako napisati jasen predlog"
-    start_proposal_html: |
-      <p> Če napišeš jasen in jedrnat naslov, bodo vsi točno vedeli,
-      kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo.</p>
-      <p>Ni konec sveta, če predlog ne dobi jasnega odobravanja takoj.
-      Če skupina ni navdušena nad prvim predlogom, lahko vsak začne nov predlog, da
-      naslovi vse pomisleke in da proces vodi naprej.</p>
-      <p>S tem dinamičnim procesom lahko kolektivna modrost skupine ustvarja boljše
-      ideje, kot bi jih posamezniki. </p>
-      <p>Rok na predlog se lahko kadarkoli podaljša, če odločitev
-      potrebuje nekaj več prostora. Vsi boste dobili email obvestilo 24 ur pred zaprtjem predloga.</p>
-    video_id: "52025402"
-    video_tutorial: "Video z navodili"
-    video_tutorial_description: "Oglej si video, ki na kratko prikazuje, kako uporabljati Loomio."
   hint:
     context: 'Nasveti za uporabo polja Opis'
     discussion: 'Nasveti za začetek angažirane razprave'

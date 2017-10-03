@@ -50,27 +50,10 @@ fi:
       translated: 'Tekstin käänsi Bing-kääntäjä'
       upload: 'Lataa'
       uploading: 'Lataaminen'
-    formatting_help:
-      title: 'Opi, kuinka muotoilla tekstiäsi Loomiossa'
   error_page:
     forbidden: 'Sinulla ei ole oikeutta tehdä tätä.'
     page_not_found: 'Emme voineet löytää tätä. Se voi olla poistettu tai siirretty.'
     internal_server_error: 'Olemme pahoillamme, mutta jotain meni pieleen. Ole hyvä ja koeta uudestaan.'
-  start_proposal_card:
-    title: 'Aloita ehdotus'
-    helptext: Oletko valmis päätöksen luontiin?
-  proposal_outcome_panel:
-    heading: Tulos
-    set_outcome_hint: Käytä tätä tilaa, jotta kaikki tietää ehdotuksen tuloksen.
-  proposal_outcome_form:
-    update_outcome: Päivitä ehdotustulosta
-    outcome_label: Ehdotustulos
-    outcome_placeholder: Anna kaikkien tietää ehdotuksen tulos.
-    publish_outcome: Julkaise tulos
-    messages:
-      created: Tulos julkaistu
-  proposal_collapsed:
-    outcome: 'Tulos: {{outcome}}'
   volume_levels:
     loud: 'Äänekäs'
   inbox:
@@ -90,8 +73,6 @@ fi:
     unread_title: 'Katso lukemattomat toiminnat'
   notifications:
     header: "Ilmoitukset"
-  proposal_form:
-    start_a_proposal: 'Aloita ehdotus'
   discussion_form:
     group_label: 'Ryhmä'
     privacy_label: 'Yksityisyys'

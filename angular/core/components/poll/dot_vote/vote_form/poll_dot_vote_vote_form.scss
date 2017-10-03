@@ -5,25 +5,22 @@
 .poll-dot-vote-vote-form__input-container {
   width: 100%;
   min-height: 48px;
-  @include displayFlex;
+  display: flex;
 }
 
 .poll-dot-vote-vote-form__dot-button {
   background: none;
-  border: 1px solid $light-grey-on-white;
-  color: $light-grey-on-white;
-  border-radius: 100%;
-  width: 30px;
-  height: 30px;
-  padding: 2px 0px;
+  border: 0;
+  color: $grey-on-white;
+  width: 32px;
+  height: 32px;
   &[disabled] {
-    border: 1px solid lighten($light-grey-on-white, 20%);
-    color: lighten($light-grey-on-white, 20%);
+    opacity: 0;
   }
 }
 
 .poll-dot-vote-vote-form__dot-input-field {
-  @include displayFlex;
+  display: flex;
   justify-content: flex-end;
   text-align: center;
   min-height: 48px;

@@ -5,7 +5,7 @@ describe ManifestController do
     it 'responds with a manifest.json' do
       get :show, format: :json
       json = JSON.parse(response.body)
-      expect(json['name']).to eq 'Loomio'
+      expect(json['name']).to eq AppConfig.theme[:site_name]
       expect(json['display']).to eq 'standalone'
     end
   end
