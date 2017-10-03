@@ -455,7 +455,6 @@ ko:
   deactivate_user_form:
     aria_label: '계정 비활성화가 확인됨.'
     title: '계정 비활성화'
-    placeholder: '이 질문에 답하지 않으셔도 됩니다. 이렇게 정보를 공유해주시면 루미오를 향상시키는데 도움이 됩니다. :)'
     submit: '계정 비활성화'
   only_coordinator_modal:
     aria_label: '계정을 비활성화할 수 없습니다.'

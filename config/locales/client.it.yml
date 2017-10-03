@@ -512,7 +512,6 @@ it:
     submit: 'Sì, voglio disattivare'
   deactivate_user_form:
     title: 'Disattiva l''account'
-    placeholder: 'Rispondere a questa domanda è opzionale. Tutte le informazioni che ci dai, ci aiutano a migliorare Loomio :)'
     submit: 'Disattiva l''account'
   only_coordinator_modal:
     aria_label: 'Non riesco a disattivare l''account'

@@ -67,9 +67,6 @@ nl_NL:
     error:
       all_email_addresses_belong_to_members: "We hebben geen uitnodigingen naar de opgegeven e-mailadressen gestuurd, omdat deze bij mensen horen die al in de groep zitten."
   password_reset:
-    email_guidelines_html: |
-      <p>Voer het e-mailadres van je Loomio account in het veld hieronder in en je krijgt een link toegestuurd om je wachtwoord te herstellen.</p>
-      <p>Als je normaal gesproken met Facebook, Google, Twitter of Persona inlogt, voer het e-mailadres van dat account in.</p>
     reset_email_timeframe: Het kan tot 5 minuten duren voordat de e-mail binnenkomt. Als het niet in je postvak in verschijnt, controleer dan voor de zekerheid even je spammap.
     length_restriction: Wachtwoorden moeten minimaal 8 tekens lang zijn.
     forbidden_passwords: Veelvoorkomende wachtwoorden als "wachtwoord" zijn niet toegestaan om je account veilig te houden.
@@ -109,19 +106,6 @@ nl_NL:
       Soms werkt een groep met een **reeks van voorstellen** om samen oplossingen te bedenken. Je kunt opeenvolgende voorstellen voorleggen in deze discussie.
 
       **Probeer mee te doen! Klik op een van de vier knoppen**.
-  contact_page:
-    contact_us: Neem contact op
-    faq_prompt_html: Heb je een vraag voor het Loomio team? Voordat je contact opneemt, kun je het antwoord misschien terugvinden in onze veelgestelde vragen.
-    contact_information: Als je niet vindt wat je zoekt, kun je onze contactinformatie onder aan deze pagina vinden.
-    contact_form: Contactformulier
-    labels:
-      name: Je naam
-      email: Je e-mailadres
-      message: Je bericht
-      submit: Verstuur bericht
-    messages:
-      email_html: "Vul dit formulier in of stuur een e-mail naar <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Je kan ons ook volgen op<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>en <a href='%{twitter}' target='_blank'>twitter</a>!"
   markdown:
     intro:
       title: |

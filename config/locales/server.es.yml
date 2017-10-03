@@ -113,7 +113,7 @@ es:
       intro: "Tu solicitud para acceder al grupo %{group_name} ha sido aprobada."
       intro_html: "Tu solicitud para acceder al grupo <strong>%{group_name}</strong> ha sido aprobada."
       link_help: "Haz clic en el siguiente enlace para unirte a %{group_name} y comenzar:"
-      subject: "Tu solicitud para unirte a %{group_name} ha sido aprobada."
+      subject: "Tu solicitud para unirte a  %{group_name}  ha sido aprobada."
       join_group: "Unirte al grupo"
     membership_request:
       intro_html: ha solicitado el acceso a uno de tus grupos.
@@ -157,9 +157,6 @@ es:
     change_my_password: Cambiar la contraseña
     confirm_new_password: Confirma la contraseña
     new_password: Nueva contraseña
-    email_guidelines_html: |
-      <p>Introduce la dirección de correo electrónico de tu cuenta de Loomio en el espacio de abajo y se te enviará un enlace para restablecer tu contraseña.</p>
-      <p>Si normalmente inicias sesión mediante Facebook, Google, Twitter o Persona, introduce el correo electrónico asociado con esa cuenta.</p>
     reset_email_timeframe: Puede tardar hasta 5 minutos para que llegue el correo electrónico. si no lo recibes asegúrate de mirar en tu carpeta de correo no deseado.
     length_restriction: La contraseña debe tener al menos 8 caracteres.
     forbidden_passwords: Contraseñas comunes como "contraseña' están prohibidas para mantener tu cuenta segura.
@@ -201,19 +198,6 @@ es:
       A veces grupo trabajan con una **serie de propuestas** para construir una solución juntos. Puedes crear propuestas en secuencia en este hilo.
 
       **Prueba participar, haz clic en uno de los 4 botones**
-  contact_page:
-    contact_us: Contáctanos
-    faq_prompt_html: Tienes una pregunta para el equipo de Loomio? antes de contactarnos, quizás puedas encontrar la respuesta en nuestra sección de preguntas frecuentes.
-    contact_information: Si no encuentras lo que buscas, puedes encontrar nuestra información de contacto al final de la pagina.
-    contact_form: Formulario de contacto.
-    labels:
-      name: Tu nombre
-      email: Tu correo electrónico
-      message: Tu mensaje
-      submit: Enviar mensaje
-    messages:
-      email_html: "Rellena este formulario o envía un correo electrónico a <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "También puedes unirte a Loomio en<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, y <a href='%{twitter}' target='_blank'>twitter</a>"
   markdown:
     intro:
       title: |

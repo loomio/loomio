@@ -12,12 +12,6 @@ pl:
     public_groups: Grupy publiczne
     terms: Regulamin
     independent_install_html: 'Na %{hostname} uruchomiono niezależną kpię Loomio: <a href="http://github.com/loomio/loomio">znajdź więcej</a>.'
-  contact_page:
-    contact_us: Kontakt
-    labels:
-      name: Twoja nazwa
-      email: Twój adres email
-      message: Twoja wiadomość
   poll_mailer:
     common:
       unsubscribe: Zrezygnuj z subskrypcji

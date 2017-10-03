@@ -57,25 +57,9 @@ sr:
     error:
       all_email_addresses_belong_to_members: "Nismo poslali pozivnice na pružene eAdrese jer one pripadaju ljudima koji su već u grupi."
   password_reset:
-    email_guidelines_html: |
-      <p>Unesite adresu ePošte za svoj Loomio nalog u polje ispod i poslaćemo Vam vezu za resetovanje lozinke.</p>
-      <p>Ako se normalno prijavljujete preko Facebook, Google, Twitter ili Persona, unesite adresu ePošte koja je povezana sa tim nalogom.</p>
     reset_email_timeframe: Molim sačekajte do 5 minuta da ePoruka stigne. Ako se ne pojavi, uverite se da ste proverili i svoj spam direktorijum.
     length_restriction: Lozinke moraju biti najmanje 8 znakova duge.
     forbidden_passwords: Česte lozinke kao što je "lozinka" su zabranjene kako bi Vaš nalog bio siguran.
-  contact_page:
-    contact_us: Kontaktirajte nas
-    faq_prompt_html: Imate pitanje za Lumio tim? Pre kontaktiranja, možda moćete naći odgovor u često postavljanim pitanjima.
-    contact_information: Ako ne pronađete ono što tražite, možete videti kontakt informacije na dnu stranice.
-    contact_form: Kontakt formular
-    labels:
-      name: Tvoje ime
-      email: Tvoja adresa ePošte
-      message: Tvoja poruka
-      submit: Pošalji poruku
-    messages:
-      email_html: "Popunite ovaj obrazac, ili pošaljite ePoruku na <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Možete nam se takođe pridružiti na<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
   markdown:
     intro:
       title: |

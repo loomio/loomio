@@ -12,12 +12,6 @@ ru:
     public_groups: Oбщедоступные группы
     terms: Условия
     independent_install_html: '%{hostname} работает с независимой копией Loomio: <a href="http://github.com/loomio/loomio">разузнать побольше</a>.'
-  contact_page:
-    contact_us: Наши контакты
-    labels:
-      name: Ваше имя
-      email: Ваш электронный адрес
-      message: Ваше сообщение
   poll_mailer:
     common:
       unsubscribe: Отписаться

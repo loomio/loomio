@@ -67,9 +67,6 @@ da:
     error:
       all_email_addresses_belong_to_members: "Der blev ikke afsendt invitationer til emailadresserne der blev angivet da de tilhører personer som allerede er medlemmer af gruppen."
   password_reset:
-    email_guidelines_html: |
-      <p>Indtast emailadressen for din Loomio konto i feltet herunder, så vil du få tilsendt en nulstill adgangskode url.</p>
-      <p>Hvis du normalt benytter Facebook, Google, Twitter eller Persona, så indtast emailadressen for din konto.</p>
     reset_email_timeframe: Vent venligst i op til 5 minutter på at emailen kommer. Hvis den ikke kommer, så kontroller din spam folder.
     length_restriction: Adgangskode skal være mindst 8 tegn.
     forbidden_passwords: Almindelige adgangskoder så som "password" er forbudt for at sikre dun konto.
@@ -110,19 +107,6 @@ da:
       Nogen gange gennemarbejder grupper en **serie af forslag** for at gradvis komme tættere og tættere på den "rigtige" løsning for alle. Du kan oprette efterfølgende forslag i denne  diskusion.
 
       **Deltag! Tryk en af de 4 knapper**.
-  contact_page:
-    contact_us: Kontakt os
-    faq_prompt_html: HAr du et forslag for Loomio teamet? Inden du kontakter os så kan det være at du kan finde svaret under vores FAQ (ofte stillede spørgsmål).
-    contact_information: Hvis du ikke finder hvad du leder efter, så kan du finde vores kontakt information her i bunden af siden.
-    contact_form: Kontakt formular
-    labels:
-      name: Dit navn
-      email: Din email-adresse
-      message: Din besked
-      submit: Send besked
-    messages:
-      email_html: "Udfyld denne formular eller send en e-mail til <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Du kan også deltage i vores gruppe på <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, og <a href='%{twitter}' target='_blank'>twitter</a>!"
   markdown:
     intro:
       title: |
