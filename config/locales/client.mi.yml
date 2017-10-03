@@ -70,14 +70,8 @@ mi:
       start: Tīmatahia
     formatting_help:
       label: 'He whakanikoniko pūreta'
-      title: 'Akona te Markdown hei whakahoahoa i o tuhinga i runga o Loomio'
   error_page:
     forbidden: 'Kāhore e tukua ana tāu mahi'
-  start_proposal_card:
-    title: 'Hangā tētahi whakatakoto'
-    helptext: Kua mau tāu whakatau?
-  proposal_collapsed:
-    expand: Whakanui
   volume_levels:
     loud: 'Hoihoi'
     mute: 'Whakahāngūtia'
@@ -97,11 +91,6 @@ mi:
     unread: 'Kāhore anō kia kitea'
     closing_in: 'Kei te tata te mutu'
   sign_up_form:
-    title: "Nau mai, haere mai ki a Loomio!  Ko tēnei te wā whakatau i a koe."
-    name_label: 'Tōu ingoa:'
-    name_placeholder: 'Hēni Tia'
-    email_label: 'Wāhi īmēra:'
-    email_placeholder: 'koe@whakatauira.nz'
     password_label: 'Kupu huna:'
   comment_form:
     submit_button:
@@ -128,19 +117,10 @@ mi:
   notifications:
     header: "Ngā kōrero pūrongo"
     no_notifications: "Kāhore he kōrero pūrongo mōku"
-  vote_form:
-    submit_position: 'Tonongia tōu whakapono-ā-tuhi'
-    change_position: 'Whakahuritia tōu whakapono-ā-tuhi'
-  proposal_form:
-    start_a_proposal: 'Hangā tētahi whakatakoto'
-    title_label: 'Taitara'
-    details_label: 'Ngā Taipitopito'
   discussion_form:
     group_label: 'Rōpū'
     title_label: 'Taitara'
     privacy_label: 'Matatapu'
-  proposal_expanded:
-    closed_badge: Kua kati
   membership_request_form:
     name_label: Ingoa
     email_label: Īmēra
@@ -152,8 +132,6 @@ mi:
   group_form:
     privacy: 'Matatapu'
     submit_update: 'Whakahoungia nga ritenga'
-  group_help_card:
-    title: Awhina mai
   invitation_form:
     invite_people: 'Pōwhiri atu'
     done: 'Kua mutu'
@@ -188,8 +166,6 @@ mi:
     aria_label: 'Ingoa rōpū'
   thread_context:
     mute_thread: 'Whakahāngū'
-  help_page:
-    help: "Āwhina"
   decision_tools_card:
     proposal_title: He whakatakoto
     count_title: Whakatika

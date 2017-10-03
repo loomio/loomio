@@ -1,6 +1,5 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show, :mark_as_read, :dismiss, :move]
-  load_resource only: [:create, :update, :pin]
+  load_and_authorize_resource only: [:show]
   after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
@@ -25,17 +24,17 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def move
-    @event = service.move discussion: resource, params: params, actor: current_user
+    @event = service.move discussion: load_resource, params: params, actor: current_user
     respond_with_resource
   end
 
-  def mark_as_read
-    service.mark_as_read discussion: resource, params: params, actor: current_user
+  def mark_as_seen
+    service.mark_as_seen discussion: load_resource, actor: current_user
     respond_with_resource
   end
 
   def dismiss
-    service.dismiss discussion: resource, params: params, actor: current_user
+    service.dismiss discussion: load_resource, params: params, actor: current_user
     respond_with_resource
   end
 

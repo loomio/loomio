@@ -14,7 +14,7 @@ h1 {
 }
 
 #header {
-    background-image: url("/assets/loomio-orange.png");
+    background-image: url("/theme/large_logo.png");
     background-repeat: no-repeat;
     height: 150px;
     text-indent: -999em;

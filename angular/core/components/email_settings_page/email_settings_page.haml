@@ -27,7 +27,7 @@
         %md-list.email-settings-page__groups
           %md-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between
             .lmo-box--medium.lmo-margin-right.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center
-              %i.material-icons group_add
+              %i.mdi.mdi-account-multiple-plus
             .email-settings-page__default-description{translate: "{{emailSettingsPage.defaultSettingsDescription()}}"}
             %md-button.md-accent.email-settings-page__change-default-link{ng-click: "emailSettingsPage.changeDefaultMembershipVolume()", translate: "common.action.edit"}
           %md-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between{ng-repeat: "group in emailSettingsPage.user.groups() track by group.id"}

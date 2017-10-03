@@ -29,6 +29,15 @@ describe 'Profile', ->
       page.loadPath('setup_restricted_profile')
       page.expectNoText('.user-page__profile', 'Secret Dirty Dancing Shoes')
 
+    it 'allows you to contact other users', ->
+      browser.get('u/jennifergrey')
+      page.click '.user-page__contact-user'
+      page.fillIn '.contact-request-form__message', 'Here is a request to connect!'
+      page.click '.contact-request-form__submit'
+      page.expectFlash 'Email sent to Jennifer Grey'
+      browser.get 'u/patrickswayze'
+      page.expectNoElement '.user-page__contact-user'
+
   describe 'updating a password', ->
     it 'can set a password', ->
       page.click '.sidebar__list-item-button--profile'

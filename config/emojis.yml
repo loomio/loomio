@@ -1,11 +1,21 @@
 default:
+  - slight_smile
   - heart
-  - smiley
-  - sweat_smile
-  - star
-  - rabbit
-  - ok
-  - thumbsup
-  - nz
-  - walking
+  - laughing
   - clap
+  - hugging
+  - sunglasses
+  - nerd
+  - thinking
+  - relieved
+  - astonished
+  - slight_frown
+  - confused
+  - disappointed
+  - angry
+  - cry
+  - fingers_crossed
+  - raised_hands
+  - pray
+  - ok_hand
+  - wave

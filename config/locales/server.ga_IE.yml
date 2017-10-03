@@ -2,27 +2,12 @@ ga_IE:
   email:
     by_who: ag %{person}
     reply_to_this_discussion: Freagraigh an plé seo
-    to_join_discussion:
-      subject: "Ba mhaith le %{who} go gcuirfeá do ladar i bplé ar Loomio"
-      content: 'Tugadh cuireadh duit bheith rannpháirteach sa phlé seo: %{discussion}'
-      message_intro: "Deireann %{who}:"
-      link: Bí istigh sa phlé
-    to_start_group:
-      subject: "Cuir do bhaicle Loomio nua ar bun: %{group_name}"
-    view_discussion: Brúigh anseo chun an plé seo a fheiceáil
-    daily_activity:
-      heading: Do Ghníomhaíocht Loomio
-      intro: Ag léiriú cad a bhí ar siúil sna baiclí Loomio agatsa sa 24 uair anuas
-      subject: Loomio - Achoimre ar an 24 uair is déanaí
     missed_yesterday:
-      subject: Inné ar Loomio
       mark_as_read: Rianaigh mar léite
       thanks_for_reading: Go raibh maith agat as ucht é a léamh. Bíodh lá den scoth agat!
     membership_request:
       subject: "D'iarr %{who} cead dul isteach i %{which_group}"
       view_group: Tig leat an t-iarratas a cheadú nó diúltú dó anseo
-    thread_mailer:
-      change_preferences: 'Athraigh do shainroghanna ríomhphoist:'
   footer:
     about: Maidir linn
     blog: Blag
@@ -33,31 +18,6 @@ ga_IE:
     public_groups: Baiclí poiblí
     terms: Coinníollacha
     independent_install_html: 'Tá leagan neamhspleách de Loomio á rith ag %{hostname}: <a href="http://github.com/loomio/loomio">find out more</a>.'
-  start_group_form:
-    header: Cuir baicle nua ar bun
-    form_error: Tá cuid den bhfaisnéis ar iarraidh nó mícheart.
-    name: D'ainm
-    name_error: Tá ainm de dhíth anseo
-    email: Do sheoladh ríomhphoist
-    email_error: Ní seoladh ríomhphoist bailí é.
-    group_name: Ainm na baicle
-    group_description: Cur síos ar an mbaicle
-    group_name_error: Tá ainm na baicle de dhíth
-    success:
-      header: Tá beagnach críochnaithe agat! Féach do ríomhphoist.
-      email_delivered: Seoladh ríomhphost chuig %{email}. Lean an nasc istigh ann chun do bhaicle nua a chur ar bun.
-      email_not_arrived: Nár bhfuair tú an ríomhphost?
-    start_making_decisions: 'Chun tosú ag déanamh cinntí le chéile ar Loomio, cuir baicle ar bun saor in aisce:'
-  contact_page:
-    contact_us: Déan teagmháil linn
-    contact_form: An fhoirm teagmhála
-    labels:
-      name: D'ainm
-      email: Do sheoladh ríomhphoist
-      message: Do theachtaireacht
-      submit: Seol an teachtaireacht
-    messages:
-      email_html: "Líon an fhoirm seo, nó seol ríomhphost chuig <a href='mailto:%{email}'>%{email}</a>"
   poll_mailer:
     common:
       unsubscribe: Díliostáil

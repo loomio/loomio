@@ -1,9 +1,19 @@
-angular.module('loomioApp').directive 'navbarSearch', ($location, Records, LmoUrlService) ->
+angular.module('loomioApp').directive 'navbarSearch', ($timeout, $location, Records, LmoUrlService) ->
   scope: {}
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar_search.html'
   replace: true
   controller: ($scope) ->
+    $scope.isOpen = false
+
+    $scope.$on 'currentComponent', ->
+      $scope.isOpen = false
+
+    $scope.open = ->
+      $scope.isOpen = true
+      $timeout ->
+        document.querySelector('.navbar-search input').focus()
+
     $scope.query = ''
 
     $scope.search = (query) ->

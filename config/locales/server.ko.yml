@@ -2,27 +2,11 @@ ko:
   email:
     group_email:
       intro: "%{group} 그룹에 %{who}님이 알림글을 올렸습니다."
-    to_join_discussion:
-      subject: "%{who}님이 당신을 루미오의 토론에 참여하기를 원합니다."
-      content: '토론에 참여하기 위해서 초대를 받았습니다. %{discussion} '
-      message_intro: "%{who} 말합니다:"
-      link: 토론 참여하기
-    to_join_group:
-      subject: "%{member}님이 루미오의 %{group_name} 그룹에 당신을 초대했습니다."
-    to_start_group:
-      subject: "새로운 루미오 그룹 설정 : %{group_name}"
     unsubscribe: '구독중지 혹은 이메일 설정을 변경하세요.'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
-    view_comment: 루미오에 댓글을 보기 위해서는 여기를 클릭하세요.
-    view_discussion: 토론을 보기 위해서 여기를 선택하세요.
-    daily_activity:
-      heading: 당신의 루미오 활동
-      intro: 지난 24시간 동안 여러분의 루미오 그룹에 어떤 일이 있었는지를 보여줍니다.
-      subject: 루미오 - 지난 24시간 동안의 요약
     missed_yesterday:
       mark_as_read: 읽음으로 표시
     membership_request:
-      intro: "%{name} (%{email}) 이 당신의 루미오 그룹에 접근 요청을 했습니다."
       subject: "%{who}님이  %{which_group}에 가입을 요청했습니다. "
       view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.
   footer:
@@ -34,21 +18,3 @@ ko:
     pricing: 가격표
     public_groups: 공개 그룹
     terms: 정책
-  start_group_form:
-    header: 새로운 그룹 시작하기
-    name: 이름
-    group_name: 그룹명
-    group_description: 그룹 설명
-    group_description_placeholder: 그룹의 멤버들이 왜 여기에 모여 있는지 인식할 수 있도록 이 그룹의 목적을 설명해주세요.
-    success:
-      header: 거의 다 되었습니다. 이메일을 확인해 주세요.
-  contact_page:
-    contact_us: 연락하기
-    contact_form: 연락처양식
-    labels:
-      name: 이름
-      email: 이메일 주소
-      message: 메시지
-      submit: 메시지 보내기
-    messages:
-      email_html: "양식을 채우거나 <a href='mailto:%{email}'>%{email}</a> 로 이메일을  보내세요."

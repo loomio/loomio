@@ -1,10 +1,10 @@
 %form.delete-comment-form{ng-submit: "submit()",  ng-disabled: "comment.processing", name: "deleteCommentForm" }
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
-      %h1.lmo-h1{translate: "comment_form.delete_comment"}
+      %h1.lmo-h1{translate: "delete_comment_dialog.title"}
       %material_modal_header_cancel_button
   .md-dialog-content.md-body-1
-    %p.comment-form-delete-message{translate: "comment_form.confirm_delete_message"}
+    %p.comment-form-delete-message{translate: "delete_comment_dialog.question"}
     .lmo-md-actions
       %md-button{ng-click: "$close()", translate: "common.action.cancel"}
-      %md-button.md-raised.md-primary.delete-comment-form__delete-button{type: "submit", translate: "comment_form.confirm_delete"}
+      %md-button.md-raised.md-primary.delete-comment-form__delete-button{type: "submit", translate: "delete_comment_dialog.confirm"}

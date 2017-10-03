@@ -1,36 +1,34 @@
 .thread-preview
-  %a.thread-preview__link.lmo-flex.lmo-flex__space-between{layout: "row", lmo-href-for: "thread"}
+  %a.thread-preview__link{lmo-href-for: "thread"}
     .sr-only
       %span {{thread.authorName()}}: {{thread.title}}.
       %span{ng-if: "thread.hasUnreadActivity()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadActivityCount() }}"}
 
-    .thread-preview--left.lmo-flex
-      .thread-preview__icon
-        %user_avatar{ng-if: "!thread.activePoll()", user: "thread.author()", size: "medium"}
-        %poll_common_chart_preview{ng-if: "thread.activePoll()", poll: "thread.activePoll()"}
+    .thread-preview__icon
+      %user_avatar{ng-if: "!thread.activePoll()", user: "thread.author()", size: "medium"}
+      %poll_common_chart_preview{ng-if: "thread.activePoll()", poll: "thread.activePoll()"}
 
-      .thread-preview__screen-only.screen-only{aria-hidden: "true"}
-        .thread-preview__text-container
-          .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
-            {{thread.title}}
-          .thread-preview__unread-count{ng-if: "thread.hasUnreadActivity()"}
-            ({{thread.unreadActivityCount()}})
+    .thread-preview__details
+      .thread-preview__text-container
+        .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
+          {{thread.title}}
+        .thread-preview__unread-count{ng-if: "thread.hasUnreadActivity()"}
+          ({{thread.unreadActivityCount()}})
 
-        .thread-preview__text-container
-          .thread-preview__group-name
-            {{ thread.group().fullName }} ·
-            %smart_time{time: "thread.lastActivityAt"}>
+      .thread-preview__text-container
+        .thread-preview__group-name
+          {{ thread.group().fullName }} ·
+          %smart_time{time: "thread.lastActivityAt"}>
 
-        %outlet{name: "after-thread-preview", model: "thread"}
+      %outlet{name: "after-thread-preview", model: "thread"}
 
-    .thread-preview--right.lmo-flex{layout: "row"}
-      .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
-        %i.fa.fa-lg.fa-thumb-tack
+    .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
+      %i.mdi.mdi-24px.mdi-pin
 
   .thread-preview__actions.lmo-hide-on-xs{ng-if: "thread.discussionReaderId"}
     %md-button.md-raised.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
-      .material-icons done
+      .mdi.mdi-check
     %md-button.md-raised.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}", aria-label: "{{ 'volume_levels.mute' | translate }}" }>
-      .material-icons volume_off
+      .mdi.mdi-volume-mute
     %md-button.md-raised.thread-preview__unmute{ng-click: "unmuteThread()", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}", aria-label: "{{ 'volume_levels.unmute' | translate }}"}>
-      .material-icons volume_down
+      .mdi.mdi-volume-plus

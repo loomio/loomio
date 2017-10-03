@@ -5,13 +5,13 @@ proposal:
     - name:                "disagree"
     - name:                "block"
   chart_type:              pie
-  material_icon:           thumbs_up_down
+  material_icon:           mdi-thumbs-up-down
   has_option_icons:        true
   translate_option_name:   true
   can_remove_options:      true
   must_have_options:       true
   voters_review_responses: true
-  require_stance_choice:   true
+  require_stance_choices:  true
   single_choice:           true
   sort_options:
     - newest_first
@@ -21,15 +21,15 @@ proposal:
 
 count:
   poll_options_attributes:
-    - name:              "yes"
-    - name:              "no"
-  chart_type:            progress
-  material_icon:         check_circle
-  has_option_icons:      true
-  must_have_options:     true
-  must_have_options:     true
-  require_stance_choice: true
-  single_choice:         true
+    - name:               "yes"
+    - name:               "no"
+  chart_type:             progress
+  material_icon:          mdi-check-circle
+  has_option_icons:       true
+  must_have_options:      true
+  must_have_options:      true
+  require_stance_choices: true
+  single_choice:          true
   sort_options:
     - newest_first
     - oldest_first
@@ -39,7 +39,7 @@ count:
 poll:
   poll_options_attributes: []
   chart_type:         bar
-  material_icon:      equalizer
+  material_icon:      mdi-poll
   can_add_options:    true
   can_remove_options: true
   must_have_options:  true
@@ -51,7 +51,7 @@ poll:
 dot_vote:
   poll_options_attributes: []
   chart_type:              bar
-  material_icon:           grain
+  material_icon:           mdi-chart-bubble
   can_add_options:         true
   can_remove_options:      true
   must_have_options:       true
@@ -65,12 +65,27 @@ dot_vote:
 meeting:
   poll_options_attributes: []
   chart_type:              matrix
-  material_icon:           date_range
+  material_icon:           mdi-calendar-question
   can_add_options:         true
   can_remove_options:      true
   must_have_options:       true
   dates_as_options:        true
   author_receives_outcome: true
+  sort_options:
+    - newest_first
+    - oldest_first
+
+ranked_choice:
+  poll_options_attributes: []
+  chart_type:              bar
+  material_icon:           mdi-format-list-numbers
+  can_add_options:         true
+  can_remove_options:      true
+  must_have_options:       true
+  require_stance_choices:  true
+  has_variable_score:      true
+  required_custom_fields:
+    - minimum_stance_choices
   sort_options:
     - newest_first
     - oldest_first

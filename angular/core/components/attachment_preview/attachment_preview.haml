@@ -5,13 +5,13 @@
       .attachment-preview__image{ng-if: "attachment.isAnImage"}
         %img{ng-src: "{{location()}}", alt: "{{ 'activity_card.attachment_display.image_alt' | translate }}"}
       .attachment-preview__file.lmo-flex.lmo-flex__center.attachment-preview__file--thread{layout: "row", ng-class: "{'attachment-preview__file--image': attachment.isAnImage}"}
-        %i.material-icons attach_file
+        %i.mdi.mdi-attachment
         .attachment-preview__filename.lmo-flex__grow {{attachment.filename}}
         .attachment-preview__filesize {{attachment.formattedFilesize()}}
 
     .attachment-preview.attachment-preview--thumb{ng-if: "mode == 'thumb'", title: "{{attachment.filename}}"}
       %img.attachment-preview__image{ng-if: "attachment.isAnImage", ng-src: "{{location()}}", alt: "{{ 'activity_card.attachment_display.image_alt' | translate }}"}
       .attachment-preview__file.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center.attachment-preview__file--thumb{ng-if: "!attachment.isAnImage"}
-        %i.material-icons attach_file
+        %i.mdi.mdi-attachment
       %button.close.attachment-preview__destroy.md-attachment-form__cancel{ng-if: "!attachment.commentId", ng-click: "destroy($event)", title: "{{ 'comment_form.attachments.remove_attachment' | translate }}"}
         %span{aria-hidden: "true"}&times;

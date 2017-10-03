@@ -7,15 +7,17 @@ class Poll < ActiveRecord::Base
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
+  include Reactable
 
-  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails
+  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name
                        can_add_options can_remove_options author_receives_outcome
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
                        dates_as_options required_custom_fields
-                       require_stance_choice poll_options_attributes).freeze
+                       require_stance_choices require_all_choices
+                       poll_options_attributes experimental).freeze
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_templates.dig(self.poll_type, field) }
   end
@@ -49,7 +51,7 @@ class Poll < ActiveRecord::Base
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
-  has_many :poll_options, -> { order(priority: :asc) },  dependent: :destroy
+  has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes, dependent: :destroy
@@ -103,6 +105,7 @@ class Poll < ActiveRecord::Base
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
   validate :poll_options_are_valid
+  validate :valid_minimum_stance_choices
   validate :closes_in_future
   validate :require_custom_fields
 
@@ -153,10 +156,7 @@ class Poll < ActiveRecord::Base
         GROUP BY poll_options.name
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
 
-    update_attribute(:stance_counts,
-      poll_options.order(:priority)
-                  .pluck(:name)
-                  .map { |name| stance_data[name] })
+    update_attribute(:stance_counts, ordered_poll_options.pluck(:name).map { |name| stance_data[name] })
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
     update_attribute(:matrix_counts,
@@ -178,6 +178,11 @@ class Poll < ActiveRecord::Base
 
   def is_single_vote?
     AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
+  end
+
+  def ordered_poll_options
+    order_field = self.dates_as_options ? :name : :priority
+    self.poll_options.order(order_field => :asc)
   end
 
   def poll_option_names
@@ -202,6 +207,10 @@ class Poll < ActiveRecord::Base
 
   def discussion=(discussion)
     super.tap { self.group_id = self.discussion&.group_id }
+  end
+
+  def minimum_stance_choices
+    self.custom_fields.fetch('minimum_stance_choices', 1).to_i
   end
 
   private
@@ -238,6 +247,13 @@ class Poll < ActiveRecord::Base
   def prevent_removed_options
     if (template_poll_options - self.poll_options.map(&:name)).any?
       self.errors.add(:poll_options, I18n.t(:"poll.error.cannot_remove_options"))
+    end
+  end
+
+  def valid_minimum_stance_choices
+    return unless require_stance_choices
+    if minimum_stance_choices > poll_options.length
+      self.errors.add(:minimum_stance_choices, I18n.t(:"poll.error.minimum_too_high"))
     end
   end
 

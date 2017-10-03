@@ -28,9 +28,13 @@
           %validation_errors{subject: "profilePage.user", field: "email"}
 
         %md-input-container.md-block
-          %label{for: "user-email-field", translate: "profile_page.short_bio_label"}
+          %label{for: "user-short-bio-field", translate: "profile_page.short_bio_label"}
           %textarea.profile-page__short-bio-input#user-short-bio-field{ng-model: "profilePage.user.shortBio", placeholder: "{{'profile_page.short_bio_placeholder' | translate}}"}
           %validation_errors{subject: "profilePage.user", field: "shortBio"}
+
+        %md-input-container.md-block
+          %label{for: "user-location-field", translate: "profile_page.location_label"}
+          %input.profile-page__location-input#user-location-field{ng-model: "profilePage.user.location", placeholder: "{{'profile_page.location_placeholder' | translate}}"}
 
         %md-input-container.md-block
           %label{for: "user-locale-field", translate: "profile_page.locale_label"}
@@ -38,6 +42,9 @@
             %md-option{ng-repeat: "locale in profilePage.availableLocales()", ng-value: "locale.key"}
               {{locale.name}}
           %validation_errors{subject: "profilePage.user", field: "selectedLocale"}
+
+        %p{ng-if: "showHelpTranslate()"}
+          %a.md-caption{translate: "profile_page.help_translate", href: "https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation", target: "_blank"}
 
       .profile-page__update-account.lmo-flex.lmo-flex__space-between
         %md-button.md-accent.profile-page__change-password{ng-click: "profilePage.changePassword()", translate: "profile_page.change_password_link"}

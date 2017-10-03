@@ -30,7 +30,7 @@ describe EmailActionsController do
       DiscussionReader.for(discussion: @discussion, user: @user).set_volume! :normal
     end
 
-    it 'enables emails for the discussion' do
+    xit 'enables emails for the discussion' do
       get :follow_discussion, discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token
       expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'loud'
     end

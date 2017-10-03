@@ -1,5 +1,45 @@
 pl:
+  reactions:
+    slight_smile: Lubię
+    heart: Kocham
+    laughing: Haha
+    clap: Brawo!
+    hugging: Przytulam
+    sunglasses: Fajne
+    nerd: Sprytne
+    relieved: Co za ulga
+    worried: Martwię się
+    confused: Miesane uczucie
+    neutral_face: Obojętnie
+    disappointed: Rozczarowujące
+    angry: Złość
+    rolling_eyes: Przewracam oczami
+    cry: Płaczę
+    scream: Krzyczę
+    sleeping: Nuda
+    thinking: Myślę
+    raised_hands: Ręce do góry
+    pray: Modlę się
+    fingers_crossed: Trzymam kciuki!
+    v: Pokój
+    ok_hand: Ok
+  poll_types:
+    proposal: Propozycja
+    poll: Ankieta
+    dot_vote: Głosowanie kropkowe
+    meeting: Ankieta datowa
+  timezones:
+    local: Czas lokalny ({{value}})
   common:
+    you: Ty
+    expand: Rozwiń
+    all_day: Cały dzień
+    ok_got_it: Rozwiń
+    learn_more: Dowiedz się więcej
+    not_found: Nie znaleziono
+    time_zone: Strefa czasowa
+    local_time: Czas lokalny
+    confirm_discard_changes: Odrzucić zmiany?
     time:
       am: am
       pm: pm
@@ -9,9 +49,17 @@ pl:
     notification_volume: 'Poziom powiadamiania'
     group: 'Grupa'
     groups: 'Grupy'
+    threads: 'Wątki'
+    decisions: 'Decyzje'
+    settings: 'Ustawienia'
+    help: 'Pomoc'
     privacy:
+      privacy: 'Prywatność'
       public: 'Publiczna'
+      open: 'Otwarta'
+      closed: 'Zamknięta'
       private: 'Prywatna'
+      secret: 'Tajna'
     selected: 'Wybrane'
     date_range:
       today: 'Dzisiaj'
@@ -19,51 +67,108 @@ pl:
       thisweek: 'Ten tydzień'
       thismonth: 'Ten miesiąc'
       older: 'Starsze'
+    more_help: 'Więcej pomocy'
     models:
       proposal: 'Rekomendacja'
+    copy: 'Kopiuj'
+    copy_text: 'Kopiuj tekst'
+    copied: 'Skopiowano do schowka'
+    total: W sumie
     action:
+      next: 'Dalej'
+      close: 'Zamknij'
       save: 'Zapis'
       save_changes: 'Zapisanie zmian'
+      update_settings: 'Zaktualizuj ustawienia'
       reply: 'Odpowiedź'
       edit: 'Edycja'
+      remove: 'Usuń'
       like: 'Lubię'
+      back: 'Wstecz'
       unlike: 'Nie lubię'
+      update: 'Zaktualizuj'
       cancel: 'Anuluj'
       show_more: "Pokaż więcej"
       view_all: "Pokaż wszystko"
       new_thread: "Nowy wątek"
       add_subgroup: 'Dodanie podgrupy'
+      loading: 'Ładowanie'
+      translate: 'Tłumacz'
+      translated: 'Przetłumaczono przez Translator Bing'
+      upload: 'Załaduj'
+      uploading: 'Ładowanie'
+      load_more: 'Załaduj więcej'
+      share: Udostępnij
+      ok: Ok!
+      retry: Spróbuj ponownie
+      done: Zrobione
+      start: Rozpocznij
+      delete: Usuń
+      unsubscribe: Zrezygnuj z subskrypcji
+      subscribe: Subskrybuj
+      remind: Przypomnij
+      resend: Wyślij ponownie
+      send: Wyślij
+      resent: Zaproszenie wysłane ponownie
+    formatting_help:
+      label: 'Formatowanie'
+  ordinal:
+    _1: '1.'
+    _2: '2.'
+    _3: '3.'
+    _4: '4.'
+    _5: '5.'
+    _6: '6.'
+    _7: '7.'
+    _8: '8.'
+    _9: '9.'
+    _10: '10.'
+  devise:
+    failure:
+      inactive: 'Z tym adresem e-mail związane jest dezaktywowane konto. Jeśli chcesz aktywować swoje konto, skontaktuj się z nami.'
   error_page:
     forbidden: 'Nie masz uprawnień aby to wykonać.'
     page_not_found: 'Nie udało się znaleźć. Możliwe, że zostało usunięte lub przeniesione.'
     internal_server_error: 'Przykro nam, ale coś poszło źle. Spróbuj jeszcze raz.'
-  start_proposal_card:
-    title: 'Uruchom rekomendację'
-  proposal_outcome_panel:
-    heading: Wynik
-    set_outcome_hint: Użyj tego miejsca aby inni poznali wynik rekomendacji.
-  proposal_outcome_form:
-    set_outcome: Ustaw wynik rekomendacji
-    update_outcome: Aktualizacja wyniku rekomendacji
-    outcome_label: Wynik rekomendacji
-    outcome_placeholder: Powiadom wszystkich o wyniku rekomendacji
-    publish_outcome: Publikacja wyniku
-    messages:
-      created: Wynik opublikowany
-  previous_proposals_card:
-    heading: Poprzednie rekomendacje
-  proposal_collapsed:
-    expand: Rozwiń
+  verify_email_notice:
+    please_verify: Dziękujemy za udział! Sprawdź swoją skrzynkę e-mail w poszukiwaniu linku do weryfikacji Twojego głosowania.
+  verify_stances:
+    title: Weryfikuj głosy
+    verify: Weryfikuj
+    remove: Usuń
+    verify_success: Głos zweryfikowany
+    remove_success: Głos usunięty
+    all_done: Dobra robota, wszystkie głosy zweryfikowane.
+  previous_polls_page:
+    search_activities: Szukaj decyzji
   volume_levels:
     loud: 'Głośno'
     normal: 'Normalnie'
     quiet: 'Cicho'
     mute: 'Wyciszono'
+    unmute: 'Wyłącz wyciszenie'
+  change_volume_form:
+    loud_label: "Wszystkie aktywności"
+    normal_label: "Ogłoszenia"
+    quiet_label: "Brak wiadomości"
+    mute_label: "Wycisz"
+    discussion:
+      title: "Ustawienia poczty dla {{title}}"
+      loud_description: "Wyślemy do Ciebie e-mail przy każdej aktywności w tym wątku."
+      normal_description: "Wyślemy do Ciebie e-mail za każdym razem, gdy wysuwana jest jakaś propozycja, gdy niedługo się kończy lub gdy prezentowany jest jej rezultat."
+      quiet_description: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
+      apply_to_all: "Zapisz te ustawienia do wszystkich wątków w tej grupie"
+      messages:
+        quiet: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
+    membership:
+      title: "Ustawienia poczty dla {{title}}"
   inbox:
     clear: 'Wyczyść'
     latest: 'Ostatnie'
     unread: 'Nieprzeczytane'
     closing_in: 'Zamykane'
+  signed_out_modal:
+    ok: "Ok"
   comment_form:
     aria_label: 'Dodanie komentarza'
     attachments:
@@ -102,50 +207,10 @@ pl:
     header: "Powiadomienia"
   position_buttons_panel:
     heading: Wypowiedz się
-  vote_form:
-    heading: Wypowiedz się
-    no_statement: Brak stanowiska.
-    i_agree: 'Zgadzam się'
-    i_agree_details: 'Wspieram to i chcę pójść dalej.'
-    i_abstain: 'Wstrzymuję się'
-    i_abstain_details: 'Zgadzam się aby grupa zdecydowała beze mnie.'
-    i_disagree: 'Nie zgadzam się'
-    i_disagree_details: 'Myślę, że możemy zrobić to lepiej.'
-    i_block: 'Blokuję'
-    i_block_details: 'Mam silne obiekcje co do tej rekomendacji i nie zgadzam się na kontynuację w tym kierunku.'
-    submit_position: 'Wprowadzenie stanowiska'
-    change_position: 'Zmiana stanowiska'
-    select_position: 'Wybór stanowiska'
-    statement_placeholder: 'Podziel się swoimi poglądami  grupą.'
-    aria_statement_label: 'Opcjonalnie podaj deklarację aby została odnotowana z Twoim stanowiskiem'
-    messages:
-      created: Głos oddany
-  proposal_positions_panel:
-    heading: Stanowiska
-    no_votes_yet: Nikt jeszcze nie głosował tej rekomendacji.
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% członków, którzy określili swoje stanowisko ({{number}}/{{total}})'
-  close_proposal_form:
-    close_proposal: 'Zamknij propozycję'
-    helptext: 'Czy na pewno chcesz teraz zamknąć rekomendację?'
-    messages:
-      success: Rekomendacja zamknięta.
   extend_proposal_form:
     title: 'Zmiana terminu zamknięcia'
     success: 'Zmieniono czas zamknięcia rekomendacji'
     submit: 'Zmiana terminu zamknięcia'
-  proposal_form:
-    messages:
-      created: 'Rekomendacja rozpoczęta'
-      updated: 'Rekomendacja zmieniona'
-    start_proposal: 'Uruchomienie rekomendacji'
-    start_a_proposal: 'Uruchomienie rekomendacji'
-    edit_proposal: 'Edycja rekomendacji'
-    what_does_a_proposal_do: 'Rekomendacje pozwalają poznać opinie innych osób o wybranym kierunku działań.'
-    title_label: 'Tytuł'
-    closes_at_label: 'Zamyka się o '
-    closes: 'Zamyka się'
-    details_label: 'Szczegóły'
   discussion_record:
     created: 'Wątek {{title}} został pomyślnie utworzony w  {{groupName}}'
     updated: 'Zapisano zmiany w {{title}}'
@@ -162,20 +227,6 @@ pl:
     context_label: 'Kontekst'
     context_placeholder: 'Aby uzyskać efektywną dyskusję podaj dostateczną ilość informacji. Można aktualizować w trakcie dyskusji'
     privacy_label: 'Zasady prywatności'
-  proposal_expanded:
-    collapse: Zwiń
-    current_votes: Aktualne głosy
-    started_by: 'Rozpoczęte przez <strong>{{name}}</strong>'
-    only_voter_is_you: 'Na razie brak głosów innych członków.'
-    extend_proposal: 'Zmiana terminu zamknięcia'
-    edit_proposal: 'Edycja rekomendacji'
-    close_proposal: 'Zamknij rekomendację'
-  proposal_position_yes: 'Zgoda'
-  proposal_position_abstain: 'Wstrzymuję się'
-  proposal_position_no: 'Nie zgadzam się'
-  proposal_position_block: 'Blokuję'
-  group_welcome_modal:
-    ok_got_it: "OK, zrobione!"
   join_group_button:
     join_group: Dołączenie do grupy
     messages:
@@ -186,6 +237,8 @@ pl:
     email_label: E-mail
     messages:
       membership_requested: 'Wysłałeś/aś prośbę o dołączenie do grupy  {{group}}'
+  reactions_display:
+    you: "Ty"
   group_page:
     thread_list:
       empty:
@@ -222,6 +275,9 @@ pl:
       quiet_aria_description: Poziom powiadamianie dla tej grupy jest ustawiony na Cicho. Nie będziesz otrzymywać maili o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
       mute: Ukryj tę grupę na pulpicie i nie przesyłaj powiadomień z wyjątkiem @wzmianek
       mute_aria_description: Poziom powiadamiania dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie.
+  group_form:
+    privacy: 'Prywatność'
+    submit_update: 'Zaktualizuj ustawienia'
   membership_requests_page:
     heading: Zgłoszenia Członkostwa
     approve: Akceptacja
@@ -231,6 +287,10 @@ pl:
     messages:
       request_approved_success: Zgłoszenie członkostwa zaakceptowane
       request_ignored_success: Zgłoszenie członkostwa zignorowane
+  invitation_form:
+    copy_link: 'Kopiuj'
+    send: 'Wyślij'
+    done: 'Zrobione'
   memberships_page:
     members: 'Członkowie'
     name_label: 'Nazwa'
@@ -241,6 +301,8 @@ pl:
       remove_member_success: 'Usunięto {{name}}'
       make_admin_success: '{{name}} został/a koordynatorem'
       remove_admin_success: '{{name}} przestał/a być koordynatorem'
+  remove_membership_form:
+    submit: 'Usuń'
   profile_page:
     messages:
       updated: 'Profil zmieniony'
@@ -265,6 +327,8 @@ pl:
       updated: Ustawienia poczty zmienione
   dashboard_page:
     aria_label: 'Pulpit'
+    no_groups:
+      start: Rozpocznij
     no_threads:
       show_all: Nie masz żadnych ostatnich wątków.
       show_proposals: Brak aktywnych rekomendacji
@@ -299,6 +363,8 @@ pl:
     no_threads: Przeczytałeś/aś wszystkie wątki z Twojej skrzynki.
     unread_threads: Nieprzeczytane Wątki
     view_more: Pokaż Więcej
+    no_groups:
+      start: Rozpocznij
   groups_page:
     page_header: Twoje grupy
   discussion:
@@ -306,19 +372,14 @@ pl:
     proposals: 'Rekomendacje'
     previous_proposals: 'Poprzednie rekomendacje'
     load_previous: 'Załaduj wcześniejsze aktywności'
-    you_like_this: 'Lubisz to.'
-    liked_by_you_and_someone: 'Ty i {{name}} lubicie to.'
-    liked_by_you_and_others: 'Lubione przez Ciebie, {{joinedNames}} oraz {{name}}.'
-    liked_by_someone: '{{name}} lubi to.'
-    liked_by_two_others: '{{name_1}} i {{name_2}} lubią to.'
-    liked_by_many_others: 'Lubiane przez {{joinedNames}} oraz {{name}}.'
-    liked_by_name: 'Lubiane przez {{name}}.'
     started_by: 'Rozpoczęte przez <strong>{{name}}</strong>'
   thread_group:
     aria_label: 'Nazwa grupy'
   thread_context:
     aria_label: 'Kontekst wątku.'
     thread_options: 'Opcje wątku'
+    mute_thread: 'Wycisz'
+    delete_thread: 'Usuń'
   activity_card:
     new_activity: Nowa aktywność
     attachment_display:
@@ -342,69 +403,22 @@ pl:
     message_label: 'Twoja wiadomość'
     message_placeholder: 'Twoja wiadomość...'
     send_message: 'Wysłanie Wiadomości'
-  help_page:
-    coordinating: 'Koordynacja Twoich grup Loomio'
-    coordinating_details: |
-      Jako koordynator jesteś odpowiedzialny/a za ustawienia Twoich grup Loomio oraz zapraszanie osób. Podobnie jak nauka używania nowego kawałka oprogramowania, Twoja grupa nauczy się nowego procesu dla bardziej efektywnej współpracy oraz wspólnego podejmowania dobrych decyzji. Oto kilka wskazówek jak wspierać Twoją grupę dla uzyskania sukcesu.
-    different_ways: 'Różne sposoby używania Loomio'
-    example1_html: |
-      <h3>Potrzebujesz grupy aby przedyskutować duży temat i wypracować wspólne rozwiązanie</h3>
-      <p>Strategia: Przedyskutuj temat przez chwilę zanim utworzysz rekomendację.</p>
-      <p>Dyskusje osiągają często dobry skutek jeśli zbudujesz wspólne zrozumienie problemu zanim przeskoczysz do konkretnego rozwiązania. Kiedy ludzie wezmą udział w procesie, wówczas chętniej wejdą na pokład z rozwiązaniem.</p>
-    get_in_touch: "Skontaktujmy się"
-    get_in_touch_description_html: "Jeśli masz jakieś pytania lub feedback, <a href='%{link}'>napisz do nas</a>."
-    getting_started: "Rozpoczynanie"
-    getting_started_description: "Po lewej, grupa dyskutuje temat, wymieniając pomysły i informacje. Kiedy pojawia się decyzja do podjęcia przez grupę, przedstawiana jest po prawej stronie."
-    getting_the_most: 'Pełne wykorzystanie Loomio'
-    have_your_say: "Wypowiedz się"
-    have_your_say_details_html: |
-      <p>Kiedy będziesz gotowy/a aby się wypowiedzieć kliknij jeden z czterech przycisków</p>
-      <p>Kiedy podejmiesz swoją decyzję podaj krótkie uzasadnienie. Poniżej wykresu możesz zobaczyć co myślą pozostali.  To pozwala na szybkie wejście w dyskusję. Jeśli pojawią nowe informacje możesz zawsze zmienić swoje stanowisko.</p>
-    have_a_discussion: "Weż udział w dyskusji"
-    have_a_discussion_description: "Temat oraz każda związana z nim informacja znajduje się na górze strony. Użyj pola komentarza aby dodać Twój głos w dyskusji."
-    help: "Pomoc"
-    how_it_works: "Jak to działa"
-    invitation_html: |
-      <h2>Jak napisać dobre zaproszenie</h2>
-      <p>Pierwsze pytanie, które zada nowy członek grupy to 'po co jest ta grupa?'</p>
-      <p>Pomyśl o najprostszym sposobie  na opisanie grupy: Co chcecie wspólnie osiągnąć?</p>
-      <p>Dobrym pomysłem jest porozmawiać najpierw ze swoją grupą zanim zaprosisz ich do Loomio..</p>
-      <p>Ludzie będą chcieli wiedzieć czemu zostali zaproszeni oraz czego się od nich oczekuje, oraz dlaczego warto poświęcić czas na naukę nowego narzędzia.</p>
-    join_the_community: "Dołącz do społeczności"
-    join_the_community_description_html: "Zapraszamy wszystkich do dołączenia do Społeczności Loomio, gdzie rozmawiamy o tym jak najlepiej wykorzystać narzędzie i jak je poprawić.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Kliknij tutaj aby przejść do grupy Społecnzość Loomio</a>."
-    images_and_text_formatting: "Formatowanie zdjęć i tekstu"
-    images_and_text_formatting_html: |
-      <p>Loomio używa 'Markdown' dla zamieszczania zdjęć i formatowania tekstu.
-      Możesz włączyć Markdown za pomocą małej szarej ikony poniżej pola komentarzy</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Kliknij tutaj</a>
-      po informacje jak używać Markdown.</p>
-    keep_up_to_date: "Informują na bieżąco"
-    keep_up_to_date_html: |
-      <p>Klikając na nazwę grupy na górze ekranu przejdziesz na Stronę Grupy,
-      gdzie możesz zobaczyć listę wszystkich dyskusji i decyzji dla grupy. Jeśli jesteś w więcej niż jednej grupie, możesz zobaczyć aktywność wszystkoich Twoich grup na Stronie Domowej.</p>
-      <p>Otrzymasz powiadomienia pocztą jeśli ważne rzeczy zdarzą się w Twojej grupie.
-      Możesz zmienić ustawienia Twojej poczty <a href="%{link}"">tutaj</a>.</p>
-    make_a_decision: "Podejmij decyzję"
-    make_a_decision_description: "Kiedy ta grupa jest gotowa aby podjąć decyzję, każdy może utworzyć rekomendację. Opisz jasno kierunek działania i podaj trochę ogólnych informacji tak aby wszyscy wiedzieli co dokładnie oznacza ich zgoda lub jej brak."
-    prompt_people_details: "Jeśli chcesz zwrócić uwagę konkretnej osoby w grupie, napisz znak '@'  oraz jego nazwę. Otrzyma wiadomość z informacją, że wspomniałeś o nim/niej w komentarzy."
-    prompt_people_html: "Zwróć uwagę osób za pomocą <span class='blue'>@wspomnień</span>"
-    positions_agree_description: "<span>Zgoda</span> oznacza, że zgadzasz się z rekomendacją."
-    positions_abstain_description: "<span>Wstrzymanie się</span> oznacza że nie jesteś pewny/a lub zadowolony z wzięcia udziału w decyzji grupy."
-    positions_disagree_description: "<span>Nie zgadzam się</span> ocznacza, że myślisz, ze mogą być lepsze alternatywy ale zgadzasz się na pójście w zaproponowanym kierunku."
-    positions_block_description: "<span>Blokada</span> oznacza, że masz poważne obiekcje i nie zgadzasz się z podążaniem w zaproponowanym kierunku."
-    start_discussion: "Rozpoczęcie zaangażowanej dyskusji"
-    start_proposal: "Pisanie czytelnej rekomendacji"
-    start_proposal_html: |
-      <p> Jeśli stworzysz czytelny i zwięzły tytuł, ludzie będą wiedzieli dokładnie co oznacza zgoda lub jej brak</p>
-      <p>To nie koniec świata jeśli rekomendacja nie uzyska od razu jasnej akceptacji</p>
-      <p>Poprzez ten dynamiczny proces, mądrość grupowa może wygenerować lepsze pomysły niż ktokolwiek byłby w stanie zrobić to w pojedynkę.</p>
-      <p>Termin zamknięcia rekomendacji może być przedłużony w każdym momencie, jeśli wygląda na to, że decyzja wymaga więcej czasu. Wszyscy otrzymają powiadomienie na 24 godziny przez zamknięciem rekomendacji.</p>
-    video_id: "52025402"
-    video_tutorial: "Podręcznik Video"
-    video_tutorial_description: "Sprawdź video z prostą demonstracją jak używać Loomio."
   hint:
     context: 'Wskazówki użycia panelu kontekstu'
     discussion: 'Wskazówki uruchamiania zaangażowanych dyskusji'
     invitation: 'Wskazówki pisania dobrych zaproszeń'
     proposal: 'Wskazówki do pisania czytelnych rekomendacji'
     vote: 'W każdej chwili możesz zmienić swoje stanowisko'
+  decision_tools_card:
+    proposal_title: Propozycja
+    poll_title: Ankieta
+    meeting_title: Ankieta datowa
+  poll_common_form:
+    start: Rozpocznij
+    update: Zaktualizuj
+  poll_meeting_chart_panel:
+    total: W sumie
+  poll_common_subscribe_form:
+    subscribe: Subskrybuj
+  polls_page:
+    heading: Decyzje

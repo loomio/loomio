@@ -1,4 +1,8 @@
 namespace :loomio do
+  task :generate_test_error do
+    raise "this is a generated test error"
+  end
+
   task :version do
     puts Loomio::Version.current
   end
@@ -33,53 +37,8 @@ namespace :loomio do
     InvitationService.resend_ignored(send_count: 2, since: 3.days.ago)
   end
 
-  task refresh_likes: :environment do
-    progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Comment.count )
-
-    Comment.find_each do |c|
-      progress_bar.increment
-      c.refresh_liker_ids_and_names!
-    end
-  end
-
-  task refresh_comment_versions: :environment do
-    progress_bar = ProgressBar.create(format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Comment.count )
-
-    Comment.find_each(batch_size: 200) do |c|
-      progress_bar.increment
-      c.update_versions_count
-    end
-  end
-
-  task refresh_discussion_versions: :environment do
-    progress_bar = ProgressBar.create(format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Discussion.count )
-
-    Discussion.find_each(batch_size: 200) do |d|
-      progress_bar.increment
-      d.update_versions_count
-    end
-  end
-
-  task refresh_public_discussions_count: :environment do
-    progress_bar = ProgressBar.create(format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Group.count )
-
-    Group.find_each(batch_size: 200) do |g|
-      progress_bar.increment
-      g.update_public_discussions_count
-    end
-  end
-
-  task fix_unread: :environment do
-    puts "Recounting discussion reader counts"
-    progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: DiscussionReader.count )
-
-    DiscussionReader.find_each do |dr|
-      progress_bar.increment
-      next unless dr.valid?
-      next unless dr.discussion.present?
-      next unless dr.user.present?
-      dr.reset_counts!
-    end
+  task generate_error: :environment do
+    raise "this is an exception to test exception handling"
   end
 
   task tag_and_measure_cohorts: :environment do

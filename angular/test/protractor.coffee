@@ -8,7 +8,7 @@ reporter = new HtmlScreenshotReporter
 paths         = require('../tasks/paths')
 
 exports.config =
-  seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.5.3.jar'
+  seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.6.0.jar'
   allScriptsTimeout: 60000
   capabilities:
     browserName:     'firefox'

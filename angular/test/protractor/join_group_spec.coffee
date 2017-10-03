@@ -1,7 +1,6 @@
 describe 'Joining group', ->
 
   groupsHelper = require './helpers/groups_helper.coffee'
-  flashHelper = require './helpers/flash_helper.coffee'
   page = require './helpers/page_helper.coffee'
 
   describe 'display', ->
@@ -25,7 +24,7 @@ describe 'Joining group', ->
 
     it 'adds you to the group when button is clicked', ->
       groupsHelper.clickJoinGroupButton()
-      expect(flashHelper.flashMessage()).toContain('You are now a member of')
+      page.expectFlash 'You are now a member of'
       expect(groupsHelper.membersList().getText()).toContain('JG')
 
   describe 'membership granted upon approval', ->
@@ -35,4 +34,4 @@ describe 'Joining group', ->
     it 'requests membership when button is clicked', ->
       groupsHelper.clickAskToJoinGroupButton()
       groupsHelper.submitMembershipRequestForm()
-      expect(flashHelper.flashMessage()).toContain('You have requested membership')
+      page.expectFlash 'You have requested membership'

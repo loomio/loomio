@@ -83,7 +83,6 @@ da:
       subscribe: Abonnér
     formatting_help:
       label: 'Formatering'
-      title: 'Lær hvordan man bruger Markdown for at formattere din tekst på Loomio'
   devise:
     failure:
       inactive: 'Der er en deaktiveret konto tilknyttet til denne emailadresse. Hvis du ønsker at aktivere din konto, kontakt os.'
@@ -91,34 +90,10 @@ da:
     forbidden: 'Du har ikke adgang til at gøre dette.'
     page_not_found: 'Vi kunne ikke finde det du bad om. Måske er det blevet slettet eller flyttet,'
     internal_server_error: 'Noget gik desværre galt. Prøv igen.'
-  start_proposal_card:
-    title: 'Opret et forslag'
-    helptext: Klar til at tage stilling?
-  proposal_outcome_panel:
-    heading: Resultat
-    set_outcome_hint: Brug denne plads til at lade alle vide hvad resultatet af forslaget blev.
-    set_outcome_btn: Sæt resultat
-    edit_outcome_link: Rediger resultat
-  proposal_outcome_form:
-    set_outcome: Sæt forslagets resultat
-    update_outcome: Opdater forslagets resultat
-    outcome_label: Resultat af forslaget
-    outcome_placeholder: Informer alle om forslagets resultat
-    publish_outcome: Offentliggør resultat
-    messages:
-      created: Resultat publiseret
-      updated: Resultat opdateret
-  previous_proposals_card:
-    heading: Tidligere Forslag
-  previous_proposals_page:
-    heading: Tidligere forslag
   previous_polls_page:
     heading: Aktiviteter i {{name}}
     polls_count: Viser {{loaded}} af {{total}} aktiviteter
     search_activities: Søg aktiviteter
-  proposal_collapsed:
-    expand: Fold ud
-    outcome: 'Resultat: {{outcome}}'
   volume_levels:
     loud: 'Høj'
     normal: 'Normal'
@@ -184,21 +159,11 @@ da:
     unread: 'Ulæst'
     closing_in: 'Ved at lukke'
   sign_up_form:
-    aria_label: 'Opret brugerkonto'
-    title: "Velkommen til Loomio!"
-    name_label: 'Dit navn:'
-    name_placeholder: 'Jane Doe'
-    email_label: 'Email:'
-    email_placeholder: 'you@example.com'
     password_label: 'Adgangskode:'
     password_confirmation_label: 'Gentag adgangskode:'
-    sign_in_message: 'Har du allerede en konto?'
-    sign_in: 'Log ind'
-    sign_up: 'Opret brugerkonto'
   signed_out_modal:
     aria_label: 'Logget ud'
     title: "Du er nu logget ud"
-    message: "Du er logget ud af Loomio fra et andet vindue. Log ind igen for at fortsætte."
     ok: "Ok"
   comment_form:
     aria_label: 'Tilføj en kommentar'
@@ -276,7 +241,6 @@ da:
     new_vote: "<strong>{{name}}</strong> {{position}} på forlaget <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> kommenterede på <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> svarede på din kommentar i <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> likede din kommentar i <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> nævnte dig i <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ønsker at blive medlem af <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> godkendte dit ønske om at blive medlem <strong>{{title}}</strong>'
@@ -295,62 +259,11 @@ da:
     stance_created: "<strong>{{name}}</strong> deltog i: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Giv din mening til kende
-  vote_form:
-    aria_label: Stillingtagen
-    heading: Giv din mening til kende
-    no_statement: Ingen kommentar.
-    statement_over_limit: 'Tekst grænse nået. Korte understøttende bemærkninger giver et præcist resume. Hvis du ønsker at skrive mere så opret en kommentar.'
-    i_agree: 'Jeg er enig'
-    i_agree_details: 'Jeg er enig og støtter forslaget.'
-    i_abstain: 'Jeg stemmer blankt'
-    i_abstain_details: 'Jeg er tilfreds med at gruppen beslutter dette uden mig.'
-    i_disagree: 'Jeg er uenig'
-    i_disagree_details: 'Jeg mener vi kan gøre det bedre.'
-    i_block: 'Jeg blokerer'
-    i_block_details: 'Jeg har stærke indvendinger mod dette forslag, og er ikke OK med at lade det gå videre.'
-    submit_position: 'Gem stillingtagen'
-    change_position: 'Rediger stillingtagen'
-    select_position: 'Vælg stillingtagen'
-    statement_placeholder: 'Understøttende bemærkning.'
-    aria_statement_label: 'Indtast evt en understøttende bemærkning som kan understøtte din stillingtagen'
-    messages:
-      created: Stillingtagen gemt
-  proposal_positions_panel:
-    heading: Stillingtagen
-    no_votes_yet: Der er ingen der har taget stilling til dette forslag endnu.
-    change_your_vote: Rediger stillingtagen.
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% af medlemmerne har taget stilling ({{number}}/{{total}})'
-  close_proposal_form:
-    aria_label: 'Luk forslag'
-    close_proposal: 'Luk forslag'
-    helptext: 'Er du sikker på at du vil lukke dette forslag nu?'
-    close_proposal_submit: 'Luk forslag'
-    messages:
-      success: Forslag lukket
   extend_proposal_form:
     aria_label: Rediger sluttidspunkt
     title: 'Rediger sluttidspunkt'
     success: 'Forslags sluttidspunkt gemt'
     submit: 'Gem sluttidspunkt'
-  proposal_form:
-    aria_label: 'Forslag'
-    messages:
-      created: 'Forslag oprettet'
-      updated: 'Forslag redigeret'
-    start_proposal: 'Opret forslag'
-    start_a_proposal: 'Opret et forslag'
-    edit_proposal: 'Rediger forslag'
-    what_does_a_proposal_do: 'Forslag giver dig mulighed for at se hvad folk synes om en bestemt handling eller fremgangsmåde.'
-    proposal_ideas: Har du brug for ideer for at skrive et godt forslag?
-    proposal_ideas_title: 9 måder at bruge et Loomio forslag til at tale til handling
-    editing_title_and_description_forbidden: 'Du kan ikke ændre titlen eller beskrivelsen af et forslag efter at medlemmer har taget stilling. Hvis der er behov for dette, så luk venligst dette forslag og opret et nyt.'
-    title_placeholder: 'Eg: Lad os flyve til månen'
-    title_label: 'Titel'
-    closes_at_label: 'Lukker'
-    closes: 'Lukker'
-    details_label: 'Detaljer'
-    details_placeholder: "Beskriv klart of tydeligt med nok detaljer så at alle ved nøjagtigt hvad det betyder at være enig eller uenig med forslaget"
   discussion_record:
     created: 'Debatter {{title}} blev oprettet i {{groupName}}'
     updated: '{{title}} blev gemt'
@@ -373,33 +286,6 @@ da:
     privacy_organisation: 'Debatten kan ses af medlemmer af gruppen {{parent}} og af medlemmer af gruppen {{group}}.'
     make_announcement: Meddelelse
     notified_count: '{{count}} personer vil modtage en email'
-  proposal_expanded:
-    collapse: Fold sammen
-    current_votes: Nuværende stemmer
-    started_by: 'Started af <strong>{{name}}</strong>'
-    only_voter_is_you: 'Ingen andre medlemmer har taget stilling endnu.'
-    extend_proposal: 'Rediger luk tidspunk'
-    edit_proposal: 'Rediger forslag'
-    close_proposal: 'Luk forslag'
-    closed_badge: Lukket
-  proposal_position_yes: 'Jeg er enig'
-  proposal_position_abstain: 'Jeg stemmer blankt'
-  proposal_position_no: 'Jeg er uenig'
-  proposal_position_block: 'Jeg blokerer'
-  legacy_trial_expired_modal:
-    heading: "Tak for at du bruger Loomio i år!"
-    body: |
-      <p>Vi er meget taknemmelige over din support igennem året og vi er endnu mere spændt på at gøre Loomio endnu bedre i 2016</p>
-      <p>Er Loomio værdifuld for din gruppe? Vi har lige frigivet vores prisliste, og vi vil bede grupper der har benyttet Loomio i et stykke tid at vælge en plan som passer dem.</p>
-    submit: "Vis mig prislisten"
-  group_welcome_modal:
-    aria_label: "Velkommen"
-    creator_heading: "Velkommen til din nye gruppe"
-    member_heading: "Velkommen til Loomio"
-    creator_info: "Du er gruppe <strong>koordinatoren</strong>, hvilket er ligesom at være en form for vært. Se denne video, og så kig på eksempel debatterne."
-    member_info: "Se denne video for at se hvordan Loomio virker. Prøv også at lave en kommentar i en debat, eller start en ny debat!"
-    creator_footer: "Når du er klar, <strong>inviter folk</strong>."
-    ok_got_it: "Ok, jeg har forstået!"
   cover_photo_form:
     aria_label: 'Skift forsidefoto'
     heading: 'Nyt forsidefoto'
@@ -570,10 +456,6 @@ da:
     heading: 'Anmodninger om medlemskab'
     manage_requests: Administrer anmodninger
     manage_requests_with_count: Administrer anmodninger ({{count}})
-  group_help_card:
-    title: Hjælp
-    ten_tips_article_title: 10 tips for at træffe gode beslutninger med Loomio
-    nine_ways_to_use_proposals: 9 måder at bruge Loomio forslag til at gøre ord til handling
   membership_requests_page:
     heading: Anmodninger om medlemskab
     approve: Godkend
@@ -598,7 +480,6 @@ da:
     email_addresses: 'Emailadresser'
     email_addresses_placeholder: 'f.eks. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Kopier linket og send det til enhver som du vil ønsker skal være medlem af gruppen. Dette vil give dem adgang til alle debatter i gruppen.'
-    email_explanation: 'Alternativt, indtast emailadresser herunder og så vil Loomio sende en invitation til dem via email.'
     add_custom_message: 'Gør din invitation personlig, '
     add_custom_message_link: 'skriv en personlig besked.'
     custom_message: 'Personlig besked'
@@ -680,13 +561,11 @@ da:
     introduction: 'Når du deaktiverer din konto:'
     no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
     name_removed: 'Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem'
-    no_emails: 'Du vil ikke længere modtage emails fra Loomio'
     contact_for_reactivation: 'For at genaktivere din konto så skal du kontakte os'
     submit: 'Ja, jeg vil stadig gerne deaktivere'
   deactivate_user_form:
     aria_label: 'Bekræft deaktiver konto'
     title: 'Deaktiver konto'
-    placeholder: 'Du behøver ikke at svar poå dette spørgsmål. Al information som du deler vil hjælpe os at gøre Loomio bedre :)'
     submit: 'Deaktiver konto'
   only_coordinator_modal:
     aria_label: 'Kan ikke deaktivere konto'
@@ -696,7 +575,6 @@ da:
     header: Emailindstillinger
     all_groups: Indstillinger for alle grupper
     daily_summary_label: Send resumé email hver dag
-    daily_summary_description: "Du vil modtage en email, hver morgen, med all den aktivitet som du missede dagen før. Denne email giver en let mulighed for at følge med i hvad der sker."
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
     mentioned_label: Mentions
@@ -780,13 +658,6 @@ da:
     proposals: 'Forslag'
     previous_proposals: 'Tidligere forslag'
     load_previous: 'Hent tidligere aktivitet'
-    you_like_this: 'Du like dette.'
-    liked_by_you_and_someone: 'Du og {{name}} like dette.'
-    liked_by_you_and_others: 'Liket af dig, {{joinedNames}} og {{name}}.'
-    liked_by_someone: '{{name}} like dette.'
-    liked_by_two_others: '{{name_1}} og {{name_2}} like dette.'
-    liked_by_many_others: 'Liket af {{joinedNames}} og {{name}}.'
-    liked_by_name: 'Liket af {{name}}.'
     started_by: 'Oprettet af <strong>{{name}}</strong>'
     edited: 'Redigeret'
     volume:
@@ -888,109 +759,6 @@ da:
     message_label: 'Din besked'
     message_placeholder: 'Din besked...'
     send_message: 'Send besked'
-  help_page:
-    coordinating: 'Koordinering af din Loomio gruppe'
-    coordinating_details: |
-      Som koordinator så er det dit ansvar at administrere din gruppe, vælge indstillinger
-      og invitere folk. Samtidigt som I lærer at bruge et nyt stykke software så vil gruppen
-      lære nye processer som understøtter at samarbejde effektivt samt at træffe gode beslutninger
-      sammen. Her er nogle tips for at få succes med din gruppe:
-    different_ways: 'Forskellige måder at bruge Loomio på'
-    engaging_html: |
-      <h2>Tips for at engagere dine medlemmer</h2>
-      <p>Medlemmer vil være spændt på at deltage når der er et engagerende forslag på bordet
-      Et godt forslag indeholder en god beskrivelse få det er åbenlyst hvad det betyder at være enig
-      eller uenig. Overvej hvordan man kan identificere debatter/beslutninger som gruppen tager i dag  Think about how you
-      enten som enkelt person eller via email som ville være lættere i Loomio.</p>
-      <p>Hvis din gruppe lige er startet, start med simple forslag og beslutninger, for at give
-      alle en chance til at prøve værktøjet af og se beslutningsprocessen i aktion.</p>
-      <p>En anden simpel måde at engagere folk er at benytte @mention funktionen for at inddrage
-      bestemte medlemmer. Dette vil sende dem en email som fortæller dem at de er blevet nævnt i en
-      kommentar.</p>
-    example1_html: |
-      <h3>Du har behov for at gruppen debatterer et bredt emne og finder en løsning sammen</h3>
-      <p>Strategi: Debater et emne i et stykke tid inden der laves et forslag.</p>
-      <p>Debatter når oftest det bedste resultat hvis man bygger en delt forståelse
-      af problemet får man forsøger at løse det. Når mennesker inddrages i processen
-      så er der meget større sandsynlighed for at de har forståelse for den endelige løsning.</p>
-    example2_html: |
-      <h3>Du har allerede en løsning i tankerne, og du vil gerne have gruppens accept af løsningen for den implementeres.</h3>
-      <p>Strategi: Start en debat omkring løsningen og lav et forslag fra starten.</p>
-      <p>Hvis du har en klar ide af løsningen, men du vil sikre dig at der ikke er noget kritisk som har overset,
-      så kan forslaget være en hurtig måde at få input på for at kunne træffe en beslutning.</p>
-      <p>Det kan være meget forskellige ting så som, review af et endeligt dokument, accepttest af en applikation
-      eller godkende en opgave.</p>
-    get_in_touch: "Kontakt os"
-    get_in_touch_description_html: "Hvis du har spørgsmål eller kommentarer, <a href='%{link}'>kontakt os</a>."
-    getting_started: "Kom igang med Loomio"
-    getting_started_description: "Til venstre, debatterer men et emne, udveksler ideer og information. Når gruppen skal tage en beslutninge, så kan den ses til højre."
-    getting_the_most: 'Få det meste ud af Loomio'
-    have_your_say: "Giv din mening til kende"
-    have_your_say_details_html: |
-      <p>Når du er klar til at tage stilling, klik på en af de 4 muligheder.</p>
-      <p>When youâ€™ve made your decision, give a brief explanation. Underneath the pie,
-      you can see what everyone else thinks. This makes it quick and easy to catch up
-      with the discussion. As new information comes to light, you can change your
-      position at any time.</p>
-    have_a_discussion: "Have a discussion"
-    have_a_discussion_description: "The topic and any relevant background information sit at the top of the page. Use the comment box to add your voice to the discussion."
-    help: "Help"
-    how_it_works: "How it works"
-    invitation_html: |
-      <h2>Writing a great invitation</h2>
-      <p>The first question every new member will have is â€˜what is this group for?â€™</p>
-      <p>Think about the simplest way you can describe the group: What do you want to
-      achieve together? What types of decisions will you be making? Who will be involved?</p>
-      <p>It can be a good idea to talk to your group first before you invite them to join Loomio.</p>
-      <p>People will want to know why theyâ€™ve been invited, whatâ€™s expected of them,
-      and why itâ€™s worth their time to learn how to use a new tool.</p>
-    join_the_community: "Join the community"
-    join_the_community_description_html: "Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Click here to go the Loomio Community group</a>."
-    images_and_text_formatting: "Images and text formatting"
-    images_and_text_formatting_html: |
-      <p>Loomio uses â€˜Markdownâ€™ for image embedding and text formatting.
-      You can switch Markdown on with the small grey icon under the comment box.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Click here</a>
-      for information on how to use Markdown.</p>
-    keep_up_to_date: "Keep up to date"
-    keep_up_to_date_html: |
-      <p>Clicking your group name at the top of the screen takes you to your Group Page,
-      where you can see a list of all the discussions and decisions for that group. If
-      youâ€™re in more than one group, you can see all the activity in all of your groups
-      at once on the Home Page.</p>
-      <p>Youâ€™ll get email notifications when important things happen in your group.
-      You can change your email preferences <a href="%{link}"">here</a>.</p>
-    make_a_decision: "Make a decision"
-    make_a_decision_description: "When the group is ready to make a decision, anyone can make a proposal. Outline a clear course of action and give some background so everyone knows exactly what it means to agree or disagree."
-    prompt_people_details: "If you want to get the attention of a specific person in your group, type â€˜@â€™ followed by their name. Theyâ€™ll get an email letting them know youâ€™ve mentioned them in a comment."
-    prompt_people_html: "Prompt people with <span class='blue'>@mentions</span>"
-    positions_agree_description: "<span>Agree</span> means youâ€™re happy with the proposal."
-    positions_abstain_description: "<span>Abstain</span> means youâ€™re unsure, or youâ€™re happy for the group to decide without you."
-    positions_disagree_description: "<span>Disagree</span> means you think there might be a better alternative, but youâ€™re willing to go with the groupâ€™s decision."
-    positions_block_description: "<span>Block</span> means youâ€™ve got serious objections and youâ€™ll be extremely unhappy if this proposal goes ahead."
-    start_discussion: "Starting an engaging discussion"
-    start_discussion_html: |
-      <p>When you start a discussion, make sure the title conveys the topic succinctly.
-      Use the Context Panel to give all the background information necessary for the
-      group to have a productive and informed discussion.</p>
-      <p>During the discussion, the Context Panel can be updated as new information
-      comes to light. As well as clarifying the topic, you can use this space for
-      sharing resources, summarising the discussion as it progresses, or outlining the
-      decisionmaking protocols your group is using.</p>
-    start_proposal: "Writing a clear proposal"
-    start_proposal_html: |
-      <p> If you make the title clear and succinct, people will immediately know exactly
-      what it means to agree or disagree.</p>
-      <p>Itâ€™s not the end of the world if a proposal doesnâ€™t get clear agreement immediately.
-      If the group doesnâ€™t love the first proposal, anyone can start a new proposal to
-      address the concerns raised, and keep the process moving forward.</p>
-      <p>Through this dynamic process, the collective wisdom of your group can generate better
-      ideas than anyone would have come up with on their own.</p>
-      <p>The deadline on a proposal can be extended at any time, if it looks like the decision
-      needs some more space. Everyone will get an email notification 24 hours before a proposal closes.</p>
-    video_id: "52025402"
-    video_tutorial: "Video demonstration"
-    video_tutorial_description: "Se videoen for at få en hurtig demonstration af hvordan man kan bruge Loomio."
   hint:
     context: 'Tips for at bruge kontekst panelet'
     discussion: 'Tips for at starte en engagerende debat'
@@ -998,44 +766,11 @@ da:
     proposal: 'Tips for at skrive et tydeligt forslag'
     vote: 'Du kan skifte mening til enhver tid'
   explore_page:
-    header: Gå på opdagelse i Loomios grupper
-    search_placeholder: Søg i offentlige Loomio grupper
     single_search_result: "1 offentlig gruppe der matcher <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} offentlige grupper der matcher <strong>{{searchTerm}}:</strong>"
     no_results_found: "<strong>Kan du ikke finde den gruppe du leder efter?</strong> Hvis en gruppes privatindstillinger er sat til hemmelig, så vil du ikke kunne finde den her. Hvis du kender gruppens koodinator, så kan du anmode dem om at blive medlem."
-  angular:
-    switch_back: 'Skift til det gamle Loomio'
-    give_feedback: 'Giv en tilbagemelding'
-    collapse: Fold sammen
-    enable:
-      invite: 'Prøv et nye Loomio!'
-      title: 'Prøv det nye Loomio'
-      intro: "Vi har renoveret Loomio og har brug for din hjælp til at sikre at det er fantastisk!"
-      body_html: |
-        <p></p>
-        <h3>Hvad er nyt?</h3>
-
-        <p>
-        Den nye brugergrænseflade er som den gamle bare nyere:
-        <ul>
-        <li>Alting opdaterer live på siden mens det sker</li>
-        <li>Det er designet for alle dine devices, fra smartphones til PC</li>
-        <li>Det er bygget til svagtseende og blinde, og oversat til <a href="https://www.loomio.org/translation">mange sprog</a>
-        </ul>
-        </p>
-
-        <p>Det benytter den samme database som den gamle brugergrænseflade, hvilket mener at alle dine gamle  grupper og debatter vil være der.</p>
-        <p>Der er et link til at "Give en tilbagemelding" i bunden til venstre. Du vil også kunne finde et lnk der lader dig "Skifte til det gamle Loomio", hvilket forblive tilgængeligt i et godt stykke tid.</p>
-        <p>We really look forward to hearing your feedback, thanks for your time and support.</p>
-      button_text: 'Skift til det nye Loomio'
-    disable:
-      title: 'Tak for at du prøver det nye Loomio'
-      body_html: "<p>Ups, gjorde vi noget galt? Vi beklager hvis du har haft en dårlig oplevelse i det nye Loomio.</p>"
-      give_feedback: "Inden du går, overvej at give en tilbagemelding so vi kan forbedre os."
-      button_text: 'Skift tilbage til det gamle Loomio'
   global:
     messages:
-      app_update: 'En ny version af Loomio er tilgængelig'
       reload: 'Genopfrisk'
   emoji_picker:
     search: "Find en emoji..."
@@ -1175,13 +910,6 @@ da:
     start: Start
     update: Opdater
   poll_proposal_form:
-    tool_tip_expanded: |
-      <p>Et forslag er et værktøj til at understøtte en kollektiv beslutningsprocess der omhandler et specifikt emne.</p>
-      <p>Deltagere kan være enige, uenige, stemme blankt eller blokkere - og begrunde deres valg.</p>
-      <p>Et lagkage diagram giver overblik over stemmernes fordeling, og kommentarerne give den enkelte mulighed for at blive hørt </p>
-      <p>Lad være med at tabe modet selvom der ikke opnås enighed med det samme, forslag er netop lavet til at bringe facetter frem som har behov for at debateres.</p>
-      <p>Ved en god deltagelse så er et forslag et go måde at trykprøve en ide og et stærkt mandat til at skride til handling.</p>
-      <p><a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Læs mere</a>.</p>
     tool_tip_collapsed: Søg kollektiv enighed
     start_header: Opret forslag
     edit_header: Rediger forslag
@@ -1191,10 +919,6 @@ da:
     proposal_created: Forslag oprettet
     proposal_updated: Forslag redigeret
   poll_poll_form:
-    tool_tip_expanded: |
-      <p>Benyt en meningsmåling til at måle popularitet eller for at få feedback om hvilken valgmulighed har den største opbakning.</p>
-      <p>Tilbyd nogle valgmuligheder som der kan stemmes på. Vælg om deltagerne kun kan stemme på en enkelt mulighed eller om de må stemme på flere..</p>
-      <p>Alle stemmer, og kan også komme med en begrundelse eller kommentar. Resultater er præsenteret på en søjlegraf.</p>
     tool_tip_collapsed: Mål popularitet eller find det rigtige valg
     start_header: Opret meningsmåling
     edit_header: Rediger meningsmåling
@@ -1208,12 +932,6 @@ da:
     poll_created: Meningsmåling oprettet
     poll_updated: Meningsmpling redigeret
   poll_count_form:
-    tool_tip_expanded: |
-      <p>En <em>checkmåling</em> er et værktøj med mange mulige benyttelser men kun 2 svarmuligheder.</p>
-      <p>Man kan bruge til at indrage folk i et tilbud ala RSVP (Répondez s'il vous plaît): "Jeg deltager" or "Jeg vil gerne være medlem".</p>
-      <p>Eller bruge det til at spore om en opgave er udført så som: "Jeg har checket at mine kontakt detaljer er korrekt udfyldt", eller "Jeg har læst dokumentet og givet min tilbagemelding".</p>
-      <p>En checkmåling har et <em>mål</em>, hvilket er et antal som du definerer. En checkmåling indikerer overfor gruppen om noget har behov for mere opmærksomhed eller om der er god deltagelse.</p>
-      <p>En dag før checkmålingen, så vil systemet påminde de deltagere som endnu ikke har meldt tilbage.</p>
     tool_tip_collapsed: Track participation and find volunteers
     start_header: Opret checkmåling
     edit_header: Rediger checkmåling
@@ -1222,10 +940,6 @@ da:
     count_created: Checkmåling oprettet
     count_updated: Checkmåling redigeret
   poll_dot_vote_form:
-    tool_tip_expanded: |
-      <p>En prikafstemning er en måde at prioritere en række muligheder.</p>
-      <p>Deltagere modtager et begrænset antal points som de kan fordele på de forskellige valgmuligheder som de ønsker.</p>
-      <p>Processen resulterer i et søjlediagram som giver et godt overblik over hvad deletagerne prioriterer.</p>
     tool_tip_collapsed: Prioriter muligheder
     start_header: Opret prikafstemning
     edit_header: Rediger prikafstemning
@@ -1237,13 +951,6 @@ da:
     dot_vote_created: Prikafstemning oprettet
     dot_vote_updated: Prikafstemning redigeret
   poll_meeting_form:
-    tool_tip_expanded: |
-      <p>En "Find tidspunkt" afstemning bruges til at finde et tidspunkt hvor alle kan mødes.</p>
-      <p>Indtast en liste af datoer og tidspunkter hvor du kan afholde dit møde.</p>
-      <p>Deltagarer sætter kryds i de tidspunkter hvor de kan deltage i mødet, eller de kan benytte kommentar feltet til at beksrive hvorfor de evt ikke kan hvilket, hvis nødvendigt, giver dig mulighed for at opdatere de tilgængelige tidspunkter.</p>
-      <p>If you add new times during a time poll, people who have already voted are prompted to update their response.</p>
-      <p>Du kan herefter se hvem der kan deltage hvornår , og så tage den endelige beslutning om hvornår mødet skal afholdes.</p>
-      <p>Tidspunkter er automatisk konverteret til deltagernes egen tidszone.</p>
     tool_tip_collapsed: Find et tidspunkt hvor alle kan mødes
     start_header: Opret Fund tidspunkt
     edit_header: Rediger Find tidspunkt
@@ -1295,38 +1002,6 @@ da:
     too_many_dots: Du har brugt for mange prikker.
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
-  poll_thread_item:
-    poll:
-      poll_created: '<strong>{{author}}</strong> oprettede en ny meningsmåling: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemmer afgivet:'
-      poll_edited: '<strong>{{author}}</strong> redigerede meningsmålingen: <span>{{title}}</span>'
-      poll_expired: 'Meningsmåling lukket: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede meningsmålingen: <span>{{title}}</span>'
-    proposal:
-      poll_created: '<strong>{{author}}</strong> oprettede et forslag: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemmer afgivet:'
-      poll_edited: '<strong>{{author}}</strong> redigerede forslaget: <span>{{title}}</span>'
-      poll_expired: 'Forslag lukket: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede forslag: <span>{{title}}</span>'
-    count:
-      poll_created: '<strong>{{author}}</strong> oprettede et checkmåling: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemmer afgivet:'
-      poll_edited: '<strong>{{author}}</strong> redigerede checkmålingen: <span>{{title}}</span>'
-      poll_expired: 'Checkmåling lukket: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede checkmålingen: <span>{{title}}</span>'
-    dot_vote:
-      poll_created: '<strong>{{author}}</strong> oprettede en prikafstemning: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> stemmer afgivet:'
-      poll_edited: '<strong>{{author}}</strong> redigerede prikafstemningen: <span>{{title}}</span>'
-      poll_expired: 'Prikafstemning lukket: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede prikafstemningen: <span>{{title}}</span>'
-    meeting:
-      poll_created: '<strong>{{author}}</strong> oprettede en find et tidspunkt: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> har svaret:'
-      poll_edited: '<strong>{{author}}</strong> redigerede find et tidspunkt: <span>{{title}}</span>'
-      poll_expired: 'Find et tidspunkt: <span>{{title}}</span> er lukket'
-      poll_closed_by_user: '<strong>{{author}}</strong> lukkede find et tidspunkt: <span>{{title}}</span>'
-    outcome_created: '<strong>{{author}}</strong> delte et resultat:'
   poll_admin_page:
     title: Admin - {{title}}
   poll_common_share_form:
@@ -1359,7 +1034,6 @@ da:
   poll_common_publish_slack_preview:
     poll_published: "publicerede en måling:"
     poll_published_with_discussion: "publicerede en måling i <strong>{{discussion}}</strong>:"
-    view_it_on_loomio: Sen den på Loomio
     timestamp: I dag kl. {{timestamp}}
   poll_common_participant_form:
     participant_name_placeholder: Hvad er dit navn?

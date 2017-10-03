@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response
-    draft oauth_application group_identity reaction
+    draft oauth_application group_identity contact_request reaction
   )
 
   MODELS.each do |kind|
@@ -18,7 +18,7 @@ class PermittedParams < Struct.new(:params)
 
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
-     :remember_me, :uploaded_avatar, :username, :uses_markdown, :short_bio,
+     :remember_me, :uploaded_avatar, :username, :uses_markdown, :short_bio, :location,
      :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
      :email_missed_yesterday, :deactivation_response, :has_password, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation,
@@ -28,7 +28,7 @@ class PermittedParams < Struct.new(:params)
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
      :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
-     :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :pending_emails, {pending_emails: []}]},
+     :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
      :poll_option_names, {poll_option_names: []}]
   end
@@ -110,5 +110,9 @@ class PermittedParams < Struct.new(:params)
 
   def oauth_application_attributes
     [:name, :redirect_uri, :logo]
+  end
+
+  def contact_request_attributes
+    [:recipient_id, :message]
   end
 end

@@ -6,6 +6,8 @@ class Identities::SlackController < Identities::BaseController
   before_filter :initiate_ensure_token, only: :initiate
   before_filter :participate_ensure_token, only: :participate
 
+  rescue_from(ActionController::ParameterMissing) { head :bad_request }
+
   def authorized
     @team = params[:team]
     render template: 'slack/authorized', layout: 'application'

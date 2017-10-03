@@ -26,83 +26,33 @@ nl_NL:
       intro: "%{who} maakte een aankondiging aan %{group}:"
     by_who: door %{person}
     reply_to_this_discussion: Reageer op deze discussie
-    to_join_discussion:
-      subject: "%{who} wil dat je meedoet aan een discussie op Loomio"
-      content: 'Je bent uitgenodigd om deel te nemen aan de discussie: %{discussion}'
-      message_intro: "%{who} zegt:"
-      link: Doe mee aan de discussie
-    value_proposition: "Loomio is een plek waar groepen samen beslissingen kunnen nemen."
     view_group: Bekijk groep
     to_join_group:
-      subject: "%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio"
       invitation_text: "%{member} heeft je uitgenodigd om deel te nemen aan hun groep %{group_name}."
       invitation_text_html: "heeft je uitgenodigd om deel te nemen aan hun groep"
       link_help: "Klik op de link hieronder om de uitnodiging te accepteren:"
       accept_invitation: "Accepteren uitnodiging"
-    to_start_group:
-      subject: "Stel je nieuwe Loomio groep in: %{group_name}"
-      hi: "Hoi %{name},"
-      intro: "Klik op de link hieronder om je groep %{group_name} in te stellen:"
-      intro_html: "Klink hieronder om je groep in te stellen:"
-      start_group: "Start mijn groep"
-      closing_message: "Als je hulp nodig hebt, of je hebt een vraag, reageer dan gewoon op deze email."
-      thanks: "Dankjewel,"
-      loomio_team: "Het Loomio Team"
     user_added_to_group:
-      subject: "%{who} heeft je toegevoegd aan %{which_group} op Loomio"
       content: "%{who} heeft je toegevoegd aan %{which_group}"
       content_html: "<strong>%{who}</strong> heeft je toegevoegd aan <strong>%{which_group} </strong>."
       link_help: "Klik op de link hieronder om naar de groep te gaan:"
     unsubscribe: 'Uitschrijven of je e-mailvoorkeuren aanpassen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mailvoorkeuren aan te passen."
-    view_comment: Klik hier om de reactie op Loomio te zien
-    view_discussion: Klik hier om deze discussie te bekijken
-    create_discussion:
-      intro_html: "begon een discussie"
-      intro: "%{who} begon een discussie:"
-    daily_activity:
-      heading: Jouw Loomio Activiteit
-      intro: 'Tonen wat er in de laatste 24 uur in jouw Loomio groepen is gebeurd '
-      subject: Loomio - Samenvatting van de laatste 24 uur
     missed_yesterday:
-      subject: Gisteren op Loomio
       headlines: Nieuws
       mark_as_read: Markeer als gelezen
       thanks_for_reading: Bedankt voor het lezen, een fijne dag gewenst!
-      heres_what_happened: "Dit gebeurde er gisteren op Loomio."
       marked_as_read_success: Alles uit de e-mail is gemarkeerd als gelezen
-    comment_replied_to:
-      context_html: 'antwoordde op je opmerking in'
-      context: '%{author_name} antwoordde op je opmerking in %{discussion_title}'
-      subject: "%{who} reageerde op jouw reactie in de %{which} groep op Loomio"
-    new_comment:
-      context: 'reageerde op'
     group_membership_approved:
       intro: "Je verzoek om toegang tot groep %{group_name} is goedgekeurd."
       intro_html: "Je verzoek om toegang tot groep <strong>%{group_name}</strong> is goedgekeurd."
       link_help: "Klik op de link hieronder om deel te nemen aan %{group_name} en te beginnen:"
-      subject: "Je verzoek om toegang tot groep %{group_name} op Loomio is goedgekeurd."
       join_group: "Neem deel aan groep"
-      view_group_text: "Klik hieronder om de de groep op Loomio te bekijken:"
     membership_request:
-      intro: "%{name} (%{email}) heeft toegang gevraagd tot een van je Loomio groepen."
       intro_html: heeft toegang gevraagd tot een van jouw groepen.
       subject: "%{who} heeft aangevraagd om lid te worden van %{which_group}"
       view_group: Je kan hier de aanvraag goed- of afkeuren
       button_text: Bekijk verzoek
-    mentioned:
-      context_html: "vermeldde je in discussie"
-      context: "%{author_name} heeft je vermeld in het gesprek %{discussion_title}"
-      subject: '%{who} heeft je vermeld in een gesprek "%{which}" '
-    thread_mailer:
-      footer_text: 'Beantwoord deze e-mail direct of bekijk op %{hostname}:'
-      reply_or_view_online_html: Beantwoord deze e-mail direct of <a href='%{url}'>bekijk deze op %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Zet e-mails uit</a> voor deze discussie."
-      turn_off_notifications_text: 'Zet e-mails uit voor deze discussie: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Zet e-mails aan voor deze discussie</a> om nieuwe activiteit te ontvangen."
-      turn_on_notifications_text: 'Zet email aan om verdere activiteit in dit gesprek te ontvangen: %{url}'
-      change_email_preferences_html: Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails.
-      change_preferences: 'Verander je e-mail-voorkeuren:'
   footer:
     about: Over
     blog: Blog
@@ -113,37 +63,10 @@ nl_NL:
     public_groups: Openbare groepen
     terms: Voorwaarden
     independent_install_html: '%{hostname} draait als een onafhankelijke kopie van Loomio: <a href="http://github.com/loomio/loomio">meer informatie</a>.'
-  start_group_form:
-    enable_angular:
-      header: Nieuwe groepen starten in Loomio 1.0
-      subtitle: 'Om een nieuwe groep te starten, moet je overschakelen op de gloednieuwe versie van Loomio:'
-      switch_to_angular: Begin een groep in de nieuwe Loomio
-      helptext: We hebben Loomio volledig opnieuw opgebouwd. Je kunt hier lezen wat er nieuw is <a href="/angular"></a>.<br/>Je kunt op elk gewenst moment terug wisselen naar de oude versie.
-    header: Begin een nieuwe groep
-    form_error: Sommige informatie ontbreekt, of is incorrect.
-    name: Je naam
-    name_error: Naam is verplicht
-    email: Je e-mail
-    email_error: Geen geldig e-mailadres.
-    group_name: Groepsnaam
-    group_description: Groepsomschrijving
-    group_description_placeholder: Beschrijf het doel van je groep, zodat je groepsleden weten waarom ze hier zijn.
-    group_name_error: Groepsnaam is verplicht
-    pricing_html: Over 30 dagen vragen we je om een prijsplan te kiezen <a href='%{link}' target='_blank'></a>.
-    terms_html: Door een groep te starten, stem je in met Loomio's Algemene voorwaarden <a href='%{link}' target='_blank'></a>.
-    success:
-      header: Je bent bijna klaar! Bekijk je e-mail.
-      email_delivered: We hebben een email gestuurd naar %{email}. Volg alsjeblieft de link in de email om je nieuwe groep in te stellen.
-      email_not_arrived: E-mail niet aangekomen?
-      please_hold: Geef de e-mail 5 minuten de tijd om binnen te komen en controleer voor de zekerheid ook even je spam folder.
-    start_making_decisions: 'Om te beginnen met het gezamenlijk nemen van beslissingen via Loomio, stel een gratis groep op:'
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "We hebben geen uitnodigingen naar de opgegeven e-mailadressen gestuurd, omdat deze bij mensen horen die al in de groep zitten."
   password_reset:
-    email_guidelines_html: |
-      <p>Voer het e-mailadres van je Loomio account in het veld hieronder in en je krijgt een link toegestuurd om je wachtwoord te herstellen.</p>
-      <p>Als je normaal gesproken met Facebook, Google, Twitter of Persona inlogt, voer het e-mailadres van dat account in.</p>
     reset_email_timeframe: Het kan tot 5 minuten duren voordat de e-mail binnenkomt. Als het niet in je postvak in verschijnt, controleer dan voor de zekerheid even je spammap.
     length_restriction: Wachtwoorden moeten minimaal 8 tekens lang zijn.
     forbidden_passwords: Veelvoorkomende wachtwoorden als "wachtwoord" zijn niet toegestaan om je account veilig te houden.
@@ -183,19 +106,6 @@ nl_NL:
       Soms werkt een groep met een **reeks van voorstellen** om samen oplossingen te bedenken. Je kunt opeenvolgende voorstellen voorleggen in deze discussie.
 
       **Probeer mee te doen! Klik op een van de vier knoppen**.
-  contact_page:
-    contact_us: Neem contact op
-    faq_prompt_html: Heb je een vraag voor het Loomio team? Voordat je contact opneemt, kun je het antwoord misschien terugvinden in onze veelgestelde vragen.
-    contact_information: Als je niet vindt wat je zoekt, kun je onze contactinformatie onder aan deze pagina vinden.
-    contact_form: Contactformulier
-    labels:
-      name: Je naam
-      email: Je e-mailadres
-      message: Je bericht
-      submit: Verstuur bericht
-    messages:
-      email_html: "Vul dit formulier in of stuur een e-mail naar <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Je kan ons ook volgen op<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>en <a href='%{twitter}' target='_blank'>twitter</a>!"
   markdown:
     intro:
       title: |
@@ -244,19 +154,10 @@ nl_NL:
         Afbeeldingen zijn hetzelfde, maar voorafgegaan door een uitroepteken.
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
-  beta_banner:
-    new_loomio_html: |
-      <strong>De Nieuwe Loomio is sneller, mooie, en beter!</strong> Iedereen wordt overgezet.
-    upgrade_browser_html: |
-      We ondersteunen enkel moderne versies van Internet Explorer (10+). Je zult je browser <a href='http://outdatedbrowser.com/en' target='_blank'>moeten vernieuwen</a> om Loomio te kunnen blijven gebruiken.
-      <strong> De nieuwe Loomio is hier!</strong> het is sneller, mooier en klaar voor mobiel gebruik.
-    more_info: Meer info...
-    button_text: Stap over op de nieuwe Loomio
   poll_mailer:
     common:
       or: of
       why_send_this: Je ontvangt deze e-mail omdat %{reason}
-      view_on_loomio: Bekijk dit Loomio
       unsubscribe: Abonnement opzeggen
       results: Resultaten
       responses: Antwoorden

@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'PollsPageController', ($scope, $location, $q, $rootScope, AppConfig, Records, Session, AbilityService, LoadingService, ModalService, PollCommonStartModal, RecordLoader) ->
-  $rootScope.$broadcast('currentComponent', { page: 'pollsPage'})
+  $rootScope.$broadcast 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
 
   @statusFilters = _.map AppConfig.searchFilters.status, (filter) ->
     { name: _.capitalize(filter), value: filter }

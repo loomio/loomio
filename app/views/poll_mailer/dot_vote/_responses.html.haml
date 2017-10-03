@@ -1,7 +1,7 @@
-.poll-mailer-meeting-responses
+.poll-mailer-dot-vote-responses
   %h3= t(:"poll_mailer.common.responses")
   %table
-    - @info.poll.stances.latest.with_reason.each do |stance|
+    - @info.poll.stances.latest.each do |stance|
       %tr
         %td
           %table

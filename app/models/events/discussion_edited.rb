@@ -3,10 +3,7 @@ class Events::DiscussionEdited < Event
     create(kind: "discussion_edited",
            eventable: discussion.versions.last,
            user: editor,
-           discussion_id: discussion.id).tap { |e| EventBus.broadcast('discussion_edited_event', e) }
-  end
-
-  def communities
-    Array(eventable&.item&.group&.community)
+           discussion: discussion,
+           created_at: discussion.versions.last.created_at).tap { |e| EventBus.broadcast('discussion_edited_event', e) }
   end
 end

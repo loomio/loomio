@@ -88,6 +88,14 @@ FactoryGirl.define do
     association :identity, factory: :slack_identity
   end
 
+  factory :event do
+    discussion
+    association :eventable, factory: :comment
+    user
+    sequence_id 1
+    kind :new_comment
+  end
+
   factory :discussion do
     association :author, :factory => :user
     association :group, :factory => :formal_group
@@ -231,6 +239,16 @@ FactoryGirl.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names ['01-01-2015']
+    association :guest_group, factory: :guest_group
+  end
+
+  factory :poll_ranked_choice, class: Poll do
+    poll_type "ranked_choice"
+    title "This is a ranked choice"
+    details "with a description"
+    association :author, factory: :user
+    poll_option_names %w(apple banana orange)
+    custom_fields minimum_stance_choices: 2
     association :guest_group, factory: :guest_group
   end
 

@@ -13,58 +13,24 @@ ca:
       intro: "%{who} ha fet un anunci a %{group}:"
     by_who: per %{person}
     reply_to_this_discussion: Responeu a aquesta discussió
-    to_join_discussion:
-      subject: "%{who} vol que us uniu a la discussió a Loomio"
-      content: 'Heu estat convidats a participar en la discussió: %{discussion}'
-      message_intro: "%{who} diu:"
-      link: Uniu-vos a la discussió
-    value_proposition: "Loomio és un lloc per a grups per a prendre decisions conjuntament"
     view_group: Mostra el grup
     to_join_group:
-      subject: "%{member} us ha convidat a unir-vos a %{group_name} a Loomio"
       invitation_text: "%{member} us ha convidat a unir-vos al seu grup %{group_name}"
       invitation_text_html: "us ha convidat a unir-vos al seu grup"
       link_help: "Cliqueu a l'enllaç de sota per acceptar la invitació:"
       accept_invitation: "Accepta la invitació"
-    to_start_group:
-      subject: "Configureu el nou grup de Loomio: %{group_name}"
-      hi: "Hola %{name},"
-      intro: "Cliqueu a l'enllaç de sota per configurar el grup %{group_name}"
-      intro_html: "Cliqueu a sota per configurar el grup:"
-      start_group: "Crea un grup"
-      closing_message: "Si necessiteu ajuda o teniu algun dubte, responeu a aquest correu."
-      thanks: "Gràcies,"
-      loomio_team: "L'equip de Loomio"
     user_added_to_group:
-      subject: "%{who} us ha afegit a %{which_group} a Loomio"
       content: "%{who} us ha afegit a %{which_group}"
       content_html: "<strong>%{who}</strong> us ha afegit a <strong>%{which_group}</strong>."
       link_help: "Cliqueu a l'enllaç de sota per a anar al grup:"
     unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
-    view_comment: Feu clic aquí per veure el comentari a Loomio
-    view_discussion: Fes click aquí per veure aquesta discussió
-    create_discussion:
-      intro: "%{who} ha creat una discussió:"
-    daily_activity:
-      heading: La teva Activitat a Loomio
-      intro: Mostrant el què ha passat als teus grups de loomio les darreres 24 hores
-      subject: Loomio - Resum de les darreres 24 hores
     missed_yesterday:
-      subject: Ahir a Loomio
       headlines: Capçaleres
       mark_as_read: Marca com a llegit
-      heres_what_happened: "Això és el que ahir va passar a Loomio."
-    group_membership_approved:
-      view_group_text: "Cliqueu a sota per veure el grup a Loomio:"
     membership_request:
-      intro: "%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio."
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: Pots aprovar o denegar la sol·licitud aquí
-    mentioned:
-      context: "%{author_name} us ha mencionat en la discussió %{discussion_title}"
-    thread_mailer:
-      change_preferences: 'Canvia les preferències de correu electrònic'
   footer:
     about: Quant a
     blog: Bloc
@@ -74,28 +40,8 @@ ca:
     pricing: Preus
     public_groups: Grups públics
     terms: Condicions
-  start_group_form:
-    header: Comença un nou grup
-    name: El teu nom
-    email: El teu correu
-    email_error: Adreça de correu invàlida.
-    group_name: Nom del grup
-    group_description: Descripció del grup
-    group_description_placeholder: Descriviu el propòsit del grup per tal de que els membres coneguin perquè estan aquí.
-    success:
-      header: Ja quasi ho tens! Comprova el teu correu electrònic.
-      email_not_arrived: No us ha arribat el correu electrònic?
-    start_making_decisions: 'Per començar a prendre decisions junts a Loomio, configureu un grup gratuïtament:'
   password_reset:
     forbidden_passwords: Les contrasenyes com "password" estan prohibides per raons de seguretat.
-  contact_page:
-    contact_us: Contacteu
-    contact_form: Formulari de contacte
-    labels:
-      name: El teu nom
-      email: Adreça de correu
-      message: El teu missatge
-      submit: Envia el missatge
   markdown:
     paragraphs:
       title: |
@@ -109,6 +55,3 @@ ca:
     links:
       title: |
         ## Enllaços i imatges
-  beta_banner:
-    more_info: Més informació...
-    button_text: Canvia al nou Loomio

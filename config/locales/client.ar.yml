@@ -50,34 +50,10 @@ ar:
       translated: 'ترجم باستخدام مترجم بينغ'
       upload: 'تحميل'
       uploading: 'تحميل'
-    formatting_help:
-      title: 'تعلم كيف تستخدم الماركداون لتنسيق النص على موقع لوميو'
   error_page:
     forbidden: 'ليس لديك صلاحية للقيام بذلك.'
     page_not_found: 'لم نستطع إيجاد ذلك. من الممكن أن يكون قد جرى حذفه أو نقله.'
     internal_server_error: 'نحن آسغون، حدث خطأ ما. رجاءً حاول لاحقاً.'
-  start_proposal_card:
-    title: 'إبدأ مقترحاً'
-    helptext: جاهز لصنع القرار؟
-  proposal_outcome_panel:
-    heading: النتيجة
-    set_outcome_hint: استخدم هذه المساحة لتعرّف الجميع حول نتائج المقترح.
-  proposal_outcome_form:
-    set_outcome: تحديد نتيجة المقترح
-    update_outcome: تحديث نتيجة المقترح
-    outcome_label: نتيجة المقترح
-    outcome_placeholder: دع الجميع يعرف نتيجة المقترح.
-    publish_outcome: انشر النتيجة
-    messages:
-      created: تم نشر النتيجة
-      updated: تم تحديث النتيجة
-  previous_proposals_card:
-    heading: المقترحات السابقة
-  previous_proposals_page:
-    heading: مقترحات سابقة
-  proposal_collapsed:
-    expand: وسّع
-    outcome: 'النتيجة: {{outcome}}'
   volume_levels:
     loud: 'مرتفع'
     normal: 'متوسط'
@@ -132,51 +108,10 @@ ar:
     publish_outcome: "قم بنشر النتيجة"
   position_buttons_panel:
     heading: شارك برأيك
-  vote_form:
-    heading: شارك برأيك
-    no_statement: لا تعليق
-    i_agree: 'موافق'
-    i_agree_details: 'أنا أدعم هذا و أريد الاستمرار.'
-    i_abstain: 'أمتنع'
-    i_abstain_details: 'أنا سعيد بترك المجموعة تقرر عني.'
-    i_disagree: 'غير موافق'
-    i_disagree_details: 'أظن أنه بإمكاننا العمل على قرار أفضل.'
-    i_block: 'أعترض'
-    i_block_details: 'لدي إعتراضات قوية على هذا الإقتراح، ولست موافقا على المضي به قدماً.'
-    submit_position: 'إرسال الموقف'
-    change_position: 'تغيير الموقف'
-    select_position: 'اختيار الموقف'
-    statement_placeholder: 'شارك أفكارك مع المجموعة.'
-    aria_statement_label: 'اختر أن تدخل بياناً ليتم  تسجيله مع موقفك.'
-    messages:
-      created: تمت إضافة تصويت.
-  proposal_positions_panel:
-    heading: مواقف الأعضاء
-    no_votes_yet: لم يصوّت أحد على هذا المقترح بعد.
-    change_your_vote: قم بتغيير موقفك.
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% من الأعضاء قاموا بتقرير موقفهم ({{number}}/{{total}})'
-  close_proposal_form:
-    close_proposal: 'أغلق المقترح'
-    helptext: 'هل أنت متأكد أنك تريد إغلاق هذا المقترح الآن؟'
-    messages:
-      success: تم إغلاق المقترح.
   extend_proposal_form:
     title: 'قم بتغيير زمن الإغلاق.'
     success: 'تم تحديث زمن إغلاق المقترح.'
     submit: 'قم بتحديث زمن الإغلاق'
-  proposal_form:
-    messages:
-      created: 'تم البدء بالمقترح'
-      updated: 'تم تحديث المقترح'
-    start_proposal: 'إبدأ المقترح'
-    start_a_proposal: 'إبدأ مقترحاً'
-    edit_proposal: 'تعديل المقترح'
-    what_does_a_proposal_do: 'تتيح لك المقترحات معرفة كيف يشعر الجميع حول نشاط معين.'
-    title_label: 'العنوان'
-    closes_at_label: 'يغلق في'
-    closes: 'يغلق'
-    details_label: 'التفاصيل'
   discussion_record:
     created: 'تم بدء موضوع {{title}} في مجموعة {{groupName}} بنجاح.'
     updated: 'حفظ التغييرات في {{title}}'
@@ -196,29 +131,6 @@ ar:
     privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
-  proposal_expanded:
-    collapse: انهيار
-    current_votes: الأصوات الحالية
-    started_by: 'تم بدؤه من قبل <strong>{{name}}</strong>'
-    only_voter_is_you: 'لم يقم أي عضو بالتصويت بعد.'
-    extend_proposal: 'قم بتغيير وقت الإغلاق'
-    edit_proposal: 'تعديل المقترح'
-    close_proposal: 'أغلق المقترح'
-    closed_badge: مغلق
-  proposal_position_yes: 'أوافق'
-  proposal_position_abstain: 'أمتنع'
-  proposal_position_no: 'لا أوافق'
-  proposal_position_block: 'أعترض'
-  legacy_trial_expired_modal:
-    heading: "شكراً لاستخدامك لوميو في هذا العام!"
-    body: |+
-      <p>نحن ممتنون كثيراً لدعمكم خلال هذا العام، و متحمسون لجعل لوميو أفضل في عام 2016.</p>
-
-      <p>هل كان لوميو مفيداً لمجموعتك؟ لقد قمنا للتو بإطلاق خطة التسعير و نحن نقوم بسؤال المجموعات حول مدى استخدام لوميو لنستطيع اختيار الخطة المناسبة للمجموعة</p>
-
-    submit: "أرني الخطط"
-  group_welcome_modal:
-    ok_got_it: "حسناً، لقد فهمت!"
   join_group_button:
     join_group: انضم للمجموعة
     messages:
@@ -289,16 +201,6 @@ ar:
       parent_members: 'الخصوصية: هذه المجموعة ظاهرة لأعضاء {{parentGroupName}} و أعضاء {{groupName}}'
       public: 'الخصوصية: هذه المجموعة ظاهرة على الشبكة.'
       aria_label: 'خصوصية المجموعة: {{privacy}}'
-  donation_modal:
-    body: "لوميو هو مشروع اجتماعي. مهمتنا هي خلق عالم حيث يكون من السهل للأشخاص المشاركة في صناعة القرارات التي تؤثر عليهم."
-    contribute: قم بالمساهمة
-  gift_card:
-    heading: خطة منحة
-    make_a_contribution: قم بالمساهمة
-  trial_card:
-    choose_plan: 'قم باختيار خطة التسعير خاصتك'
-    in_progress_body: 'شكراً جزيلاً لتجربة لوميو في <strong>{{name}}</strong>. يمكنك اختيار خطة التسعير التي تناسب مجموعتك في أي وقت.'
-    expired_body_html: "لقد بلغت <strong>{{name}}</strong> نهاية المدة التجريبية للوميو. للاستمرار في استخدامه عليك اختيار خطة تسعير تناسب مجموعتك."
   group_form:
     start_group_heading: 'إبدأ مجموعة'
     start_subgroup_heading: 'إبدأ مجموعة فرعية.'
@@ -347,10 +249,6 @@ ar:
     heading: 'طلبات العضوية'
     manage_requests: إدارة الطلبات
     manage_requests_with_count: إدارة الطلبات ({{count}})
-  group_help_card:
-    title: مساعدة
-    ten_tips_article_title: 10 نصائح لمساعدتك في صناعة نقاشات رائعة مع لوميو
-    nine_ways_to_use_proposals: 9 طرق لاستخدام مقترحات لوميو لتحويل المحادثة إلى فعل
   membership_requests_page:
     heading: طلبات العضوية
     approve: موافقة
@@ -371,7 +269,6 @@ ar:
     shareable_link: 'رابط قابل للمشاركة'
     email_addresses: 'عناوين البريد الإلكتروني'
     email_addresses_placeholder: 'مثال: helperbot@loomio.org, friendlybot@loomio.org'
-    email_explanation: 'عوضاً عن ذلك، يمكنك إدخال عناوين البريد الإلكتروني في الأسفل و سيقوم لوميو بإرسال الدعوات لهم عبر البريد الإلكتروني.'
     add_custom_message: 'قم بجعل دعوتك شخصية،'
     add_custom_message_link: 'قم بإضافة رسالة مخصصة.'
     custom_message: 'تخصيص الرسالة'
@@ -484,13 +381,6 @@ ar:
     proposals: 'المقترحات '
     previous_proposals: 'المقترحات السابقة'
     load_previous: 'تحميل النشاطات السابقة'
-    you_like_this: 'أعجبك هذا.'
-    liked_by_you_and_someone: 'أنت و {{name}} أعجبتم بهذا'
-    liked_by_you_and_others: 'تم الإعجاب من قبلك، {{joinedNames}}  و {{name}}.'
-    liked_by_someone: '{{name}} أعجب بهذا.'
-    liked_by_two_others: '{{name_1}} و{{name_2}} أعجبهم هذا.'
-    liked_by_many_others: 'تم الإعجاب من قبل {{joinedNames}} و{{name}}.'
-    liked_by_name: 'تم الإعجاب من قبل {{name}}.'
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong> '
     edited: 'معدّل'
   thread_group:
@@ -574,89 +464,14 @@ ar:
     message_label: 'رسالتك'
     message_placeholder: 'ادخل رسالتك...'
     send_message: 'أرسل الرسالة'
-  help_page:
-    coordinating: 'قم بتنسيق مجموعة لوميو الخاصة بك'
-    coordinating_details: |
-      كمنسق أنت مسؤول عن إعداد مجموعة لوميو الخاصة بك و دعوة الجميع للانضمام. بالإضافة إلى تعلّم
-      كيفية استخدام البرنامج الجديد، سوف تتعلّم مجموعتك عمليات جديدة للتعاون بشكل أكثر فاعلية و
-      لصنع قرارات جيدة معاً. هنا بعض النصائح لدعم مجموعتك للنجاح:
-    different_ways: 'الطرق المختلفة لاستخدام لوميو'
-    example1_html: |
-      <h3>ستحتاج مجموعتك لأن تناقش موضوعاً عاماً و تطور حلولاً سوياً</h3>
-      <p>استراتيجية: قم بمناقشة موضوع لفترة قبل إنشاء مقترح.</p>
-      </p> غالباً ما تبلغ النقاشات أفضل النتائج عندما تقوم ببناء تفاهمات مشتركة حول المشكلة قبل القفز إلى حل معين. عندما يتشارك الأشخاص في العملية، فمن المرجح أن يتقبلوا النتائج بشكل أفضل.</p>
-    get_in_touch: "تواصل معنا"
-    get_in_touch_description_html: "إذا كان لديك أي أسئلة أو تعليقات، <'{a href='%{link>تواصل معنا<a/>."
-    getting_started: "من أجل البدء"
-    getting_started_description: "على اليسار، تناقش المجموعة موضوعاً و تتبادل الأفكار و المعلومات. عندما يكون هناك قرار يتعين على المجموعة اتخاذه، فإنه يظهر على اليمين."
-    getting_the_most: 'لإقصى استفادة من لوميو'
-    have_your_say: "شارك برأيك "
-    have_your_say_details_html: |
-      <p>عندما تكون مستعداً للمشاركة برأيك، اضغط على واحد من أزرار القرارات الأربعة.</p>
-      <p> عندما تقوم بمشاركة قرارك، قم بنشر شرح بسيط. يمكنك رؤية ما يعتقده الجميع تحت الشكل البياني. يجعل هذا من السهل أن تقوم باللحاق بالنقاشات بسرعة. يمكنك تغيير رأيك بأي وقت مع ظهور معلومات جديدة.</p>
-    have_a_discussion: "أجر نقاشاً"
-    have_a_discussion_description: "يتم وضع موضوع النقاش وأي معلومات لازمة متعلقة به في أعلى الصفحة. يمكنك استخدام مربع التعليق لإضافة صوتك في النقاش."
-    help: "مساعدة"
-    how_it_works: "كيفية عمل لوميو"
-    invitation_html: |
-      <h2>كتابة دعوة رائعة</h2>
-      <p>السؤال الأول الذي يسأله كل عضو جديد هو "ماهو هدف هذه المجموعة؟"</p>
-      <p> فكر بأبسط طريقة يمكنك من خلالها شرح المجموعة: ماذا تريد أن يحقق أعضاء المجموعة معاً؟ ما نوع القرارات التي ستقومون باتخاذها؟ من هو المعني بالأمر؟</p>
-      <p>قد تكون فكرة جيدة أن تناقش الأمر مع مجموعتك قبل أن تدعوهم للانضمام للوميو.</p>
-      <p>سيرغب الأشخاص أن يعرفوا لماذا تمت دعوتهم، و ماهو المتوقع منهم، و لماذا يستحق الأمر أن يمضوا وقتهم لتعلم كيفية استخدام الأدوات الجديدة.</p>
-    join_the_community: "إنضم للمجتمع"
-    join_the_community_description_html: "الجميع مرحب به للانضمام لمجتمع لوميو، حيث نتحدث حول كيفية الاستفادة من الأدوات، و كيفية تطويرها. <br/><br/><a href='https://www.loomio.org/g/WmPCB3IR> اضغط هنا للذهاب إلى مجموعة مجتمع لوميو.<a/>"
-    images_and_text_formatting: "تنسيق النص و الصور"
-    images_and_text_formatting_html: |
-      <p>يستخدم لوميو نظام التخفيض لتضمين الصور و تنسيق النصوص. يمكنك تفعيل نظام التخفيض عبر الأيقونة الصغيرة الرمادية تحت صندوق التعليقات.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>اضغط هنا</a> للمعلومات حول كيفية استخدام نظام التخفيض.</p>
-    keep_up_to_date: "البقاء على تواصل"
-    keep_up_to_date_html: |
-      <p>بالضغط على اسم مجموعتك في أعلى الصفحة ستنتقل إلى صفحة مجموعتك، حيث يمكنك رؤية قائمة بكل النقاشات و القرارات لهذه المجموعة. إن كنت في أكثر من مجموعة، يمكنك رؤية كل النشاطات في كل مجموعاتك مرة واحدة على الصفحة الرئيسية.</p>
-      <p>سوف تستقبل التبليغات عبر البريد الإلكتروني عندما تحدث أشياء مهمة في مجموعتك. يمكنك تغيير تفضيلات البريد الإلكتروني خاصتك <a href="%{link}"">هنا</a>.</p>
-    make_a_decision: "اتخذ قراراً"
-    make_a_decision_description: "عندما تصبح المجموعة جاهزة لاتخاذ قرار، فإنه يمكن لأي كان أن يطرح مقترحاً. ضع خطاً واضحاً لمسار العمل وأعط ما يكفي من المعلومات بحيث يدرك الجميع مالذي تعنيه الموافقة أو عدمها."
-    prompt_people_details: "إن أردت تنبيه شخص معين في مجموعتك، أكتب \"@\" متبوعة باسم الشخص. سوف يستقبل هذا الشخص رسالة الكترونية ليعرف أنك قد ذكرته في تعليق."
-    prompt_people_html: "قم بتشجيع الأشخاص عبر <span class='blue'>@ذكرهم</span>"
-    positions_agree_description: "<span>\"موافق\"</span> تعني أنك راض بالمقترح."
-    positions_abstain_description: "<span>\"امتنع\"</span> تعني أنك غير متأكد، أو أنك سعيد بترك المجموعة تقرر عنك."
-    positions_disagree_description: "<span>\"غير موافق\"</span> تعني أنك تظن أن هناك بديل أفضل، ولكنك على استعداد للمضي مع قرار المجموعة."
-    positions_block_description: "<span>\"أعترض\"</span> تعني أنه لديك اعتراضات جدية وأنك ستكون غير راضٍ إذا تم تبني المقترح."
-    start_discussion: "البدء بنقاش تشاركي"
-    start_proposal: "كتابة مقترح واضح"
-    start_proposal_html: |
-      <p>عندما تجعل العنوان واضحاً و موجزاً، فإن الأشخاص سيعلمون فوراً ماذا تعني موافقتهم أو رفضهم.</p>
-      <p> ليست نهاية العالم إن لم تحصل على موافقة فورية على المقترح.
-      إن لم تحب المجموعة المقترح الأول، يمكن لأي شخص البدء بمقترح جديد
-      للاستجابة للمخاوف التي تم طرحها، الحكمة الجمعية في مجموعتك ستولد أفكاراً أفضل
-      من أي شيء قد يأتي به شخص بمفرده.</p>
-      <p>يمكن تمديد الموعد النهائي للمقترح في أي وقت، إن كان يبدو أن القرار
-      بحاجة لبعض المساحة. سوف يستقبل الجميع رسالة الكترونية تبلغهم قبل 24 ساعة من إغلاق المقترح.
-    video_id: "52025402"
-    video_tutorial: "الفيديو التعليمي"
-    video_tutorial_description: "شاهد الفيديو لتحصل على عرض سريع حول كيفية استخدام لوميو."
   hint:
     context: 'نصائح حول استخدام منصة السياق'
     discussion: 'نصائح للبدء بنقاش تشاركي'
     invitation: 'نصائح لكتابة دعوة رائعة'
     proposal: 'نصائح لكتابة مقترح واضح'
     vote: 'يمكنك تغيير رأيك في أي وقت'
-  angular:
-    switch_back: 'استخدم النسخة القديمة من لوميو'
-    give_feedback: 'قم بإعطاء رأيك'
-    collapse: 'انهيار '
-    enable:
-      invite: 'جرب لوميو الجديد!'
-      title: 'جرب لوميو الجديد!'
-      button_text: 'قم بتفعيل لوميو الجديد'
-    disable:
-      title: 'شكراً لاستخدامك لوميو الجديد'
-      body_html: "<p>حظ سيء، هل أخطأنا في شيء؟ نحن نعتذر إن قضيت وقتاً سيئاً على لوميو الجديد.</p>"
-      give_feedback: "قبل أن تذهب نرجوك أن تأخذ بعين الاعتبار أن تزودنا بتعليقاتك لكي نستطيع التطور."
-      button_text: 'قم بالعودة إلى لوميو القديم'
   global:
     messages:
-      app_update: 'نسخة جديدة من لوميو متاحة الآن'
       reload: 'إعادة تحميل'
   emoji_picker:
     search: "إيجاد رموز تعبيرية"

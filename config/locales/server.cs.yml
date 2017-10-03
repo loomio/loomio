@@ -11,9 +11,6 @@ cs:
       <h1>Úspěch.</h1>
       <p>Vybrali jste bezplatný plán pro vaši skupinu <a href="/g/%{group_key}">%{group}</a></p>
   email:
-    login:
-      subject: Přihlásit se na Loomio
-      intro: Ahoj %{name}, zde je odkaz na přihlášení k vašemu účtu Loomio.
     reset_password:
       link_text: Obnovit heslo
     start_decision:
@@ -24,58 +21,26 @@ cs:
       intro: "%{who} oznámil(a) skupině %{group}:"
     by_who: od %{person}
     reply_to_this_discussion: Odpovědět na této diskusi
-    to_join_discussion:
-      subject: "%{who} chce, aby ses zapojil(a) do diskuze na Loomio"
-      content: 'Byl(a) jste pozván(a), abyste se zapojil(a) do diskuze: %{discussion}'
-      message_intro: "%{who} říká:"
-      link: Zapojte se do diskuze
-    value_proposition: "Loomio je místo, kde se skupiny mohou společně rozhodovat"
     view_group: Zobrazit skupinu
     to_join_group:
-      subject: "%{member} vás pozval(a) do skupiny %{group_name} na Loomio"
       accept_invitation: "Přijmout pozvání"
-    to_start_group:
-      subject: "Zřiďte si svou novou Loomio skupinu: %{group_name}"
-      start_group: "Vytvořit vlastní skupinu"
-      closing_message: "Pokud potřebujete pomoc nebo máte dotaz, stačí odpovědět na tento e-mail."
-      thanks: "Děkujkeme, "
-      loomio_team: "Tým Loomio"
     user_added_to_group:
-      subject: "%{who}vás přidal do %{which_group} na Loomio"
       content: "%{who} vás přidal do %{which_group}."
       content_html: "<strong>%{who}</strong> vás přidal do <strong>%{which_group}</strong>."
       link_help: "Kliknutím na odkaz níže přejdete do skupiny:"
     unsubscribe: 'Odhlašte se nebo si změňte nastavení emailu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, abyste se odhlásil(a) nebo změnil(a) nastavení emailu."
-    view_comment: Klikněte sem pro zobrazení komentáře na Loomio
-    view_discussion: Klikněte sem pro zobrazení této diskuze
-    daily_activity:
-      heading: Vaše aktivita na Loomiu
-      intro: Zobrazuje se, co se dělo ve vašich Loomio skupinách během posledních 24 hodin
-      subject: Loomio -- Souhrn posledních 24 hodin
     missed_yesterday:
-      subject: Včera na Loomio
       do_not_reply: Prosím neodpovídejte na tento email.
       mark_as_read: Označit jako přečtené
       thanks_for_reading: Děkujeme za přečtení a přejeme hezký den!
-      heres_what_happened: "Tady je to, co se stalo na Loomio včera."
       marked_as_read_success: Všechno z e-mailu bylo označeno jako přečtené
-    comment_replied_to:
-      context_html: 'odpověděl na váš komentář v '
-      context: '%{author_name} odpověděl na váš komentář v %{discussion_title}'
-      subject: "%{who} odpověděl na váš komentář v  %{which} skupině na Loomio"
     group_membership_approved:
       join_group: "Přidat se ke skupině"
-      view_group_text: "Klepnutím níže zobrazíte skupinu na Loomio:"
     membership_request:
-      intro: "%{name} (%{email}) zažádal(a) o přístup k jedné z vašich Loomio skupin."
       subject: "%{who} zažádal(a) o členství v %{which_group}"
       view_group: Můžete schválit či odmítnout žádost zde
       button_text: Zobrazit žádost
-    mentioned:
-      context_html: "zmínil se o vás během diskuse"
-    thread_mailer:
-      change_preferences: 'Změna nastavení e-mailu:'
   footer:
     about: O nás
     blog: Blog
@@ -85,28 +50,6 @@ cs:
     pricing: Ceník
     public_groups: Veřejné skupiny
     terms: Podmínky
-  start_group_form:
-    enable_angular:
-      header: Spuštění nových skupin v Loomio 1.0
-      subtitle: 'Chcete-li spustit novou skupinu, budete muset přepnout na zcela novou verzi Loomio:'
-      switch_to_angular: Spuštění skupiny na novém Loomio
-      helptext: Loomio je od základů přestavěno. Můžete si o tom, co je nového přečíst <a href="/angular">zde</a>.<br/>Zpět na starou verzi budete moci přepnout kdykoli budete chtít.
-    header: Vytvořit novou skupinu
-    form_error: Některé informace chybí nebo jsou nesprávné.
-    name: Vaše jméno
-    name_error: Je požadován název
-    email: Váš email
-    email_error: Neplatná e-mailová adresa.
-    group_name: Název skupiny
-    group_description: Popis skupiny
-    group_description_placeholder: Můžete popsat účel vaší skupiny, takže Vaši členové skupiny budou vědět, proč jsou tady.
-    group_name_error: Je požadován název skupiny
-    pricing_html: Za 30 dní, Vás požádáme, abyste si vybraly <a href='%{link}' target='_blank'>cenový plán</a>.
-    success:
-      header: Jste téměř u konce! Zkontrolujte si email.
-      email_delivered: Odeslali jsme e-mail na %{email}. Následujte odkaz uvnitř a nastavte novou skupinu.
-      email_not_arrived: E-mail nebyl doručen?
-    start_making_decisions: 'Abyste začali společně rozhodovat na Loomio, založte skupinu zdarma:'
   password_reset:
     reset_email_timeframe: K přijetí e-mailu může dojít až za 5 minut. Pokud se nezobrazí, nezapomeňte zkontrolovat složku spamu.
     length_restriction: Hesla musí být alespoň 8 znaků dlouhé.
@@ -117,18 +60,6 @@ cs:
     title: Jak používat Loomio
   first_proposal:
     name: Ukázkový návrh
-  contact_page:
-    contact_us: Kontaktujte nás
-    faq_prompt_html: Máte dotaz pro tým Loomio? Než nás kontaktujete, můžete zkusit najít odpověď v našich často kladených otázkách.
-    contact_information: Pokud nenajdete to, co hledáte, najdete kontaktní informace v dolní části stránky.
-    contact_form: Kontaktní formulář
-    labels:
-      name: Vaše jméno
-      email: Vaše emailová adresa
-      message: Vaše zpráva
-      submit: Odeslat zprávu
-    messages:
-      email_html: "Vyplňte tento formulář, nebo zašlete email na <a href='mailto:%{email}'>%{email}</a>"
   markdown:
     intro:
       title: |
@@ -139,14 +70,10 @@ cs:
     links:
       title: |
         ## Odkazy a obrázky
-  beta_banner:
-    more_info: Více informací...
-    button_text: Přepnout na nové Loomio
   poll_mailer:
     common:
       or: nebo
       why_send_this: Tento e-mail jste obdrželi, protože %{reason}
-      view_on_loomio: Prohlédněte si to na Loomio
       unsubscribe: Odhlásit odběr
       results: Výsledky
       responses: Odpovědi

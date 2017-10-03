@@ -11,10 +11,6 @@ uk:
       <h1>Успішно.</h1>
       <p>Ви вибрали безкоштовний план для вашої групи <a href="/g/%{group_key}">%{group}</a></p>
   email:
-    login:
-      subject: Увійти до Loomio
-      intro: Вітаємо %{name}, посилання щоб увійти в свій обліковий запис Loomio.
-      login: Увійти до Loomio як %{name}
     reset_password:
       greeting: |
         Вітаємо %{name}
@@ -38,84 +34,34 @@ uk:
       intro: "%{who} опублікував оголошення в %{group}:"
     by_who: користувачем %{person}
     reply_to_this_discussion: Відповісти в цьому обговоренні
-    to_join_discussion:
-      subject: "%{who} запрошує вас приєднатись до обговорення у Loomio"
-      content: 'Вас було запрошено до обговорення: %{discussion}'
-      message_intro: "%{who} говорить:"
-      link: Долучитись до обговорення
-    value_proposition: "Loomio це місце для спільного прийняття рішень в групах"
     view_group: Переглянути групу
     to_join_group:
-      subject: "%{member} запросив вас приєднатися до групи  %{group_name} в Loomio"
       invitation_text: "%{member} запросив(ла) вас приєднатися до своєї групи  %{group_name}."
       invitation_text_html: "запросив(ла) вас приєднатися до своєї групи"
       link_help: "Натисніть на посилання нижче щоб прийняти запрошення:"
       accept_invitation: "Прийняти запрошення"
-    to_start_group:
-      subject: "Створіть вашу нову Loomio групу: %{group_name}"
-      hi: "Вітаємо %{name},"
-      intro: "Натисніть на посилання нижче щоб створити групу %{group_name}:"
-      intro_html: "Натисніть на посилання нижче щоб створити групу:"
-      start_group: "Створити мою групу"
-      closing_message: "Якщо вам потрібна допомога або маєте запитання, просто надайте відповідь на цей лист."
-      thanks: "Дякуємо,"
-      loomio_team: "Команда Loomio"
     user_added_to_group:
-      subject: "%{who} додав вас до %{which_group} в Loomio"
       content: "%{who} додав вас до %{which_group}."
       content_html: "<strong>%{who}</strong> додав вас до <strong>%{which_group}</strong>."
       link_help: "Натисніть на посилання нижче щоб перейти до групи:"
     unsubscribe: 'Відпісатися, або змінити Ваші налаштування електронної пошти:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> аби відписатися або змінити налаштування електронної пошти"
-    view_comment: Натисніть тут щоб переглянути коментар на Loomio
-    view_discussion: Натисніть тут для перегляду обговорення
-    create_discussion:
-      intro_html: "почати тему:"
-      intro: "%{who} почав тему:"
-    daily_activity:
-      heading: Ваші дії на Loomio
-      intro: Відображає, що відбулося у твоїй Loomio групі за останні 24 років
-      subject: Loomio - Підсумки останніх 24 годин
     missed_yesterday:
-      subject: Вчора на Loomio
       do_not_reply: Будь ласка не відповідайте на цей лист
       headlines: Останні новини
       mark_as_read: Відмітити як прочитане
       thanks_for_reading: Дякуємо за читання, гарного дня!
-      heres_what_happened: "Ось що відбулося у Loomio вчора."
       marked_as_read_success: Все в листі було позначено як прочитане
-    comment_replied_to:
-      context_html: 'відповів(ла) на ваш коментар в'
-      context: '%{author_name} відповів(ла) на ваш коментар в %{discussion_title}'
-      subject: "%{who} відповів(ла) на ваш коментар в групі %{which} Loomio"
-    new_comment:
-      context: 'прокоментував в'
     group_membership_approved:
       intro: "Ваш запит на участь у групі %{group_name} було схвалено."
       intro_html: "Ваш запит на участь у групі <strong>%{group_name}</strong> було схвалено."
       link_help: "Натисніть на посилання нижче щоб долучитись до %{group_name} та розпочати:"
-      subject: "Ваш запит на участь у %{group_name} у Loomio було с.хвалено"
       join_group: "Приєднатись до групи"
-      view_group_text: "Натисніть ныжче щоб переглянути групу у Loomio"
     membership_request:
-      intro: "%{name} (%{email}) запросив доступ до однієї з Ваших груп на Loomio."
       intro_html: запросила доступ до однієї з ваших груп.
       subject: "%{who} зробив запит на приєднання до %{which_group}"
       view_group: Тут ви можете підтвердити або відхилити запит
       button_text: Переглянути запит
-    mentioned:
-      context_html: "згадав(ла) вас в обговоренні"
-      context: "%{author_name} згадав(ла) вас в обговоренні %{discussion_title}"
-      subject: '%{who} згадав(ла) вас в обговоренні "%{which}"'
-    thread_mailer:
-      footer_text: 'Безпосередньо відповісти на цей лист або переглянути його на %{hostname}:'
-      reply_or_view_online_html: Безпосередньо відповісти на цей лист або <a href='%{url}'>переглянути його на %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Вимкнути листи</a> з цього обговорення."
-      turn_off_notifications_text: 'Вимкнути листи з обговорення.: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Ввімкнути листи з цього обговорення</a> щоб отримувати сповіщення про майбутню активність."
-      turn_on_notifications_text: 'Ввімкнути листи щодо майбутньої активності в обговоренні.: %{url}'
-      change_email_preferences_html: Змінити ваші <a href='%{email_preferences_url}'>налаштування пошти</a> щоб відписатись від цих листів.
-      change_preferences: 'Змінити Ваші налаштування електронної пошти:'
   footer:
     about: Про Loomio
     blog: Блог
@@ -126,38 +72,11 @@ uk:
     public_groups: Публічні групи
     terms: Умови
     independent_install_html: '%{hostname} використовує незалежну копію Loomio: <a href="http://github.com/loomio/loomio">дізнатись більше</a>.'
-  start_group_form:
-    enable_angular:
-      header: Нові групи створені в Loomio 1.0
-      subtitle: 'Щоб почати нову групу, вам необхідно перейти до нової версії Loomio:'
-      switch_to_angular: Створити нову групу в новій Loomio
-      helptext: Ми перебудували Loomio з нуля. Ви можете прочитати про те, що нового <a href="/angular">тут</a>. <br/>Ви можете в будь-який час повернутися до старої версії.
-    header: Створити нову групу
-    form_error: Деяка інформація відсутня або не вірна.
-    name: Ваше ім'я
-    name_error: Потрібне ім'я
-    email: Ваша електронна адреса
-    email_error: Адреса електронної пошти не вірна
-    group_name: Назва групи
-    group_description: Опис групи
-    group_description_placeholder: Опишіть призначення вашої групи, щоб учасники групи розуміли, чому вони тут.
-    group_name_error: Потрібне ім'я групи
-    pricing_html: За 30 днів ми просимо вас вибрати <a href='%{link}' target='_blank'>тарифний план</a>.
-    terms_html: Починаючи групу, ви погоджуєтеся з <a href='%{link}' target='_blank'>умовами використання</a> Loomio.
-    success:
-      header: Ви майже закінчили! Перевірте Вашу електронну пошту.
-      email_delivered: 'Ми відправили лист на %{email}. Будь ласка, перейдіть за посиланням в ньому для налаштування нової групи. '
-      email_not_arrived: Лист не прийшов?
-      please_hold: Будь ласка, зачекайте надходження листа п'ять хвилин і обов'язково перевірте папку зі спамом.
-    start_making_decisions: 'Щоб почати приймати рішення разом на Loomio, створіть групу безкоштовно:'
   invitation_form:
     error:
       too_many_pending: "Ви досягли більш ніж максимально можливих %{count} запрошень в очікуванні для цієї групи"
       all_email_addresses_belong_to_members: "Ми не відправили запрошення на ці адреси електронної пошти, тому що вони належать людям що вже в групі."
   password_reset:
-    email_guidelines_html: |
-      <p>Введіть адресу електронної пошти для облікового запису Loomio в поле нижче щоб отримати посилання для скидання пароля.</p>
-      <p>Якщо ви зазвичай входили через Facebook, Google, Twitter або Persona, введіть адресу електронної пошти, пов'язану з цим обліковим записом.</p>
     reset_email_timeframe: Надходження листа може зайняти до 5 хвилин. Якщо він не відображається, обов'язково перевірте папку зі спамом.
     length_restriction: Паролі повинні бути довжиною не менше 8 символів.
     forbidden_passwords: Прості паролі, такі як "password", заборонені аби тримати ваш обліковий запис у безпеці.
@@ -198,19 +117,6 @@ uk:
       Іноді, аби збудувати спільне рішення, групи працюють через **низку пропозицій**. В такій темі ви можете послідовно висувати пропозиції.
 
       **Спробуйте долучитись! Натисніть на одну з чотирьох кнопок**.
-  contact_page:
-    contact_us: Контакти
-    faq_prompt_html: Є питання до команди Loomio? Перш ніж зв'язатися з нами, ви можливо знайдите відповідь серед поширених запитань.
-    contact_information: Якщо не можете знайти те, що шукаєте, - наша контактна інформація в нижній частині сторінки.
-    contact_form: Форма для зв'язку
-    labels:
-      name: Ваше ім'я
-      email: Ваша електронна адреса
-      message: Ваше повідомлення
-      submit: Відправити повідомлення
-    messages:
-      email_html: "Заповніть цю форму, або надішліть email до <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Ви також можете приєднатися до нас у<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, та <a href='%{twitter}' target='_blank'>twitter</a>!"
   markdown:
     intro:
       title: |
@@ -268,19 +174,10 @@ uk:
         Так само для зображень, але додавши на початку знак оклику.
 
         ![Логотип Loomio](https://i.imgur.com/Fvtworb.png)
-  beta_banner:
-    new_loomio_html: |
-      <strong>Нова Loomio швидша, красивіша та зручніша!</strong> З часом ми переведено на неї всіх.
-    upgrade_browser_html: |
-      Ми підтримуємо тільки сучасні версії Internet Explore (10+). Вам потрібно <a href='http://outdatedbrowser.com/en' target='_blank'>оновити браузер</a> щоб продовжувати використовувати Loomio.
-      <strong>Нова Loomio вже тут!</strong> Вона швидша, красивіша та оптимізована для мобільних пристроїв.
-    more_info: Більше інформації....
-    button_text: Перейти на нову Loomio
   poll_mailer:
     common:
       or: або
       why_send_this: Ви отримали цей лист, тому що %{reason}
-      view_on_loomio: Переглянути це на Loomio
       unsubscribe: Відписатись
       results: Результати
       responses: Відповіді

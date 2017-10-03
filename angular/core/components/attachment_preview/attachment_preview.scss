@@ -20,7 +20,7 @@
 .attachment-preview__file--thread {
   min-height: 32px;
 
-  .material-icons {
+  .mdi {
     font-size: 20px;
     padding: 0 4px;
   }
@@ -65,7 +65,7 @@
 .attachment-preview__file--thumb {
   width: 100px;
   height: 100px;
-  .material-icons { font-size: 30px; }
+  .mdi { font-size: 30px; }
 }
 
 .attachment-preview__file--image {

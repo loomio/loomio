@@ -2,8 +2,6 @@ pl:
   email:
     missed_yesterday:
       mark_as_read: Oznaczenie jako przeczytane
-    thread_mailer:
-      change_preferences: 'Zmiana ustawień poczty.'
   footer:
     about: O...
     blog: Blog
@@ -14,26 +12,6 @@ pl:
     public_groups: Grupy publiczne
     terms: Regulamin
     independent_install_html: 'Na %{hostname} uruchomiono niezależną kpię Loomio: <a href="http://github.com/loomio/loomio">znajdź więcej</a>.'
-  start_group_form:
-    header: Uruchomienie nowej grupy
-    form_error: Brak niektórych informacji lub są niepoprawne.
-    name: Twoja nazwa
-    name_error: Nazwa jest wymagana
-    email: Twój adres email
-    email_error: Niepoprawny adres email.
-    group_name: Nazwa grupy
-    group_description: Opis grupy
-    group_name_error: Nazwa grupy jest wymagana
-    terms_html: Uruchamiając grupę, zgadzasz się na określone przez Loomio  <a href='%{link}' target='_blank'>zasady usług</a>.
-    success:
-      header: Prawie zakończone! Odbierz pocztę.
-      email_delivered: Wysłaliśmy wiadomość na adres %{email}. Kliknij na link znajdujący się w wiadomości aby uruchomić nową grupę.
-      email_not_arrived: Czy wiadomość nie dotarła?
-      please_hold: Prosimy o oczekiwanie do 5 minut na wiadomość mail oraz sprawdzenie folderu spam.
-    start_making_decisions: 'Aby rozpocząć wspólne podejmowanie decyzji z użyciem Loomio, ustaw bezpłatną grupę:'
-  contact_page:
-    contact_us: Kontakt
-    labels:
-      name: Twoja nazwa
-      email: Twój adres email
-      message: Twoja wiadomość
+  poll_mailer:
+    common:
+      unsubscribe: Zrezygnuj z subskrypcji

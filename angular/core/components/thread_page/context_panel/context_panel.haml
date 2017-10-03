@@ -1,7 +1,8 @@
-%section.context-panel{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
+%section.context-panel.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
   .context-panel__top
     .context-panel__pin{ng-if: "discussion.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
-      %i.fa.fa-lg.fa-thumb-tack
+      %i.mdi.mdi-pin
+
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
       %h1.lmo-h1.context-panel__heading{ng-if: "!translation"}
         {{discussion.title}}
@@ -13,7 +14,7 @@
       %md-menu.lmo-dropdown-menu{ng-if: "showContextMenu()", md-position-mode: "target-right target"}
         %md-button.context-panel__dropdown-button{ng-click: "$mdMenu.open()"}
           .sr-only{translate: "thread_context.thread_options"}
-          %i.material-icons expand_more
+          %i.mdi.mdi-24px.mdi-chevron-down
         %md-menu-content
           %md-menu-item.context-panel__dropdown-options--email-settings{ng-if: "canChangeVolume()"}
             %md-button{ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}
@@ -37,16 +38,12 @@
   .context-panel__details.md-body-1
     %span{translate: "discussion.started_by", translate-value-name: "{{::discussion.authorName()}}"}
     %timeago.nowrap{timestamp: "::discussion.createdAt" }>
-    %translate_button.lmo-card-minor-action{model: "discussion", showdot: "true"}>
     %span{aria-hidden: "true"}·
-    -# %span{ng-if: "discussion.edited()"}
-    -#   %button.context-panel__edited.lmo-btn-link{ng-click: "showRevisionHistory()", translate: "discussion.edited"}>
-    -#   %span{aria-hidden: "true"}·
     %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
-      %i.material-icons> lock_outline
+      %i.mdi.mdi-lock-outline>
       %span{translate: "common.privacy.private"}
     %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
-      %i.material-icons> public
+      %i.mdi.mdi-earth>
       %span{translate: "common.privacy.public"}
     %outlet{name: "after-thread-title", model: "discussion"}
 
@@ -57,6 +54,6 @@
     .context-panel__attachment{ng-repeat: "attachment in discussion.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "context"}
 
-  .context-panel__actions
-    %md-button.md-accent.context-panel__add-comment.lmo-no-print{ng-click: "scrollToCommentForm()", translate: "thread_context.add_comment", ng-if: "canAddComment()"}
-    %md-button.md-accent.context-panel__edit.lmo-no-print{ng-click: "editThread()", translate: "thread_context.edit_thread", ng-if: "canEditThread()"}
+  .lmo-md-actions
+    %reactions_display.context-panel__actions-left{model: "discussion", load: "true"}
+    %action_dock{model: "discussion", actions: "actions"}

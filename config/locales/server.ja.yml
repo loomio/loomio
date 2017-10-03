@@ -2,25 +2,9 @@ ja:
   email:
     group_email:
       intro: "%{who} が %{group} にアナウンスメントをしました："
-    to_join_discussion:
-      subject: "%{who} があなたにLoomioのディスカッションに参加してもらいたがっています"
-      content: 'あなたはディスカッション： %{discussion} に参加するように招待されています'
-      message_intro: "%{who} が発言しました："
-      link: ディスカッションに参加する
-    to_join_group:
-      subject: "%{member} が Loomioの %{group_name} にあなたを招待しました"
-    to_start_group:
-      subject: "新しいLoomioグループを立ち上げる： %{group_name}"
     unsubscribe: '購読をやめる、またはEメール設定を変更する：'
     unsubscribe_html: "購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>"
-    view_comment: Loomioのコメントを見るにはここをクリックしてください
-    view_discussion: このディスカッションを見るにはここをクリックしてください
-    daily_activity:
-      heading: あなたのLoomioイベント
-      intro: 過去24時間にあなたのLoomioグループで起こったことを表示
-      subject: Loomio - 過去24時間の要約
     membership_request:
-      intro: "%{name}  (%{email}) はあなたのLoomioグループのうち一つのグループへのアクセスを要求しました"
       subject: " %{who}  が %{which_group} に参加するようにお願いしています"
       view_group: ここでリクエストを承認または拒否できます
   footer:
@@ -32,19 +16,3 @@ ja:
     pricing: 価格設定
     public_groups: 公開グループ
     terms: 使用条件
-  start_group_form:
-    header: 新しいグループを開始する
-    name: あなたの名前
-    group_name: グループ名
-    group_description: グループ情報
-    success:
-      header: もう少しで完了です！メールをチェックしてください
-  contact_page:
-    contact_us: 問い合わせをする
-    labels:
-      name: あなたの名前
-      email: あなたのメールアドレス
-      message: あなたのメッセージ
-      submit: メッセージを送る
-    messages:
-      email_html: "このフォームを埋めてください、もしくは <a href='mailto:%{email}'>%{email}</a> にメールを送ってください"

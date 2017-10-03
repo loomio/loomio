@@ -2,8 +2,9 @@
   @include card;
   .lmo-card-heading { margin-top: 7px; }
 }
+
 .context-panel__top {
-  @include displayFlex;
+  display: flex;
 }
 
 .context-panel__pin {
@@ -44,8 +45,9 @@
   margin-bottom: 15px;
 }
 
-.context-panel__description p:last-of-type{
-  margin-bottom: 0;
+.context-panel__description {
+  margin-bottom: 16px;
+  p:last-of-type { margin-bottom: 0; }
 }
 
 .context-panel__attachments {
@@ -54,17 +56,6 @@
 
 .context-panel__attachment {
   margin-top: 16px;
-}
-
-.context-panel__actions {
-  @include displayFlex;
-  justify-content: flex-start;
-  margin-top: 16px;
-}
-
-.context-panel__edit,
-.context-panel__add-comment {
-  margin: 16px 16px 0 0;
 }
 
 @media (min-width: $medium-max-px) {

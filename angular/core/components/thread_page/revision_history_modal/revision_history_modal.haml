@@ -1,10 +1,10 @@
 .revision-history-modal
-  %loading{ng-if: "loadExecuting"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %h1.lmo-h1.modal-title.lmo-flex__grow{translate: "{{header}}"}
       %material_modal_header_cancel_button{aria-hidden: "true"}
   .md-dialog-content.revision-history-modal__body{ng-if: "!loadExecuting"}
+    %loading{ng-if: "loadExecuting"}
     %h2.lmo-h2{ng-if: "commentRevision()"} {{model.authorName()}}
     .lmo-wrap{ng-repeat: "version in model.versions() | orderBy: '-createdAt' track by version.id", id: "version-{{version.id}}"}
       .revision-history-modal__revision

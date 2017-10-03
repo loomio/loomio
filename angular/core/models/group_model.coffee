@@ -37,6 +37,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       @hasMany 'membershipRequests'
       @hasMany 'memberships'
       @hasMany 'invitations'
+      @hasMany 'groupIdentities'
       @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
       @belongsTo 'parent', from: 'groups'
 
@@ -145,7 +146,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       else if @isSubgroup()
         @parent().logoUrl()
       else
-        '/img/default-logo-medium.png'
+        AppConfig.theme.default_group_logo_src
 
     coverUrl: (size) ->
       if @isSubgroup() && !@hasCustomCover
@@ -166,3 +167,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
 
     isSubgroupOfSecretParent: ->
       @isSubgroup() && @parent().privacyIsSecret()
+
+    groupIdentityFor: (type) ->
+      _.find @groupIdentities(), (gi) ->
+        gi.userIdentity().identityType == type

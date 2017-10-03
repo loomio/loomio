@@ -15,25 +15,16 @@ describe API::TranslationsController do
   end
 
   describe 'show' do
-    it 'responds to a language' do
-      get :show, lang: :fr
-      expect(response.status).to eq 200
+    it 'returns a translation based on lang parameter' do
+      get :show, lang: :es
       json = JSON.parse(response.body)
-      expect(json['common']['group']).to eq 'Groupe'
+      expect(json.dig('common', 'action', 'save')).to eq 'Guardar'
     end
 
-    it 'renders I18n.default by default' do
+    it 'returns english by default' do
       get :show
-      expect(response.status).to eq 200
       json = JSON.parse(response.body)
-      expect(json['common']['group']).to eq 'Group'
-    end
-
-    it 'handles fallbacks correctly' do
-      get :show, lang: :pt
-      expect(response.status).to eq 200
-      json = JSON.parse(response.body)
-      expect(json['common']['group']).to eq 'Grupo'
+      expect(json.dig('common', 'action', 'save')).to eq 'Save'
     end
   end
 

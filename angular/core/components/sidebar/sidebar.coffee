@@ -47,8 +47,10 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
       InboxService.unreadCount()
 
     $scope.showContactUs = ->
-      # TODO: use loomio_org plugin to determine official site or not
-      AppConfig.baseUrl == 'https://www.loomio.org/'
+      IntercomService.available()
+
+    $scope.showHelp = ->
+      AppConfig.features.help_link
 
     $scope.contactUs = ->
       IntercomService.contactUs()
@@ -62,6 +64,9 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
 
     $scope.currentUser = ->
       Session.user()
+
+    $scope.canStartGroup = -> AbilityService.canStartGroups()
+    $scope.canViewPublicGroups = -> AbilityService.canViewPublicGroups()
 
     $scope.startGroup = ->
       ModalService.open GroupModal, group: -> Records.groups.build()

@@ -7,6 +7,10 @@ class PollOption < ActiveRecord::Base
   has_many :stance_choices, dependent: :destroy
   has_many :stances, through: :stance_choices
 
+  def total_score
+    @total_score ||= stance_choices.sum(:score)
+  end
+
   def color
     AppConfig.colors.dig(poll.poll_type, self.priority)
   end

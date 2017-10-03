@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'contextPanel', ->
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/thread_page/context_panel/context_panel.html'
-  controller: ($scope, $rootScope, $window, $timeout, AbilityService, Session, ModalService, ChangeVolumeForm, DiscussionForm, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal, TranslationService, ScrollService) ->
+  controller: ($scope, $rootScope, $window, $timeout, AbilityService, Session, ReactionService, ModalService, ChangeVolumeForm, DiscussionForm, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal, TranslationService, ScrollService) ->
 
     $scope.showContextMenu = ->
       AbilityService.canChangeThreadVolume($scope.discussion)
@@ -19,9 +19,6 @@ angular.module('loomioApp').directive 'contextPanel', ->
 
     $scope.editThread = ->
       ModalService.open DiscussionForm, discussion: => $scope.discussion
-
-    $scope.scrollToCommentForm = ->
-      ScrollService.scrollTo('.comment-form textarea')
 
     $scope.canPinThread = ->
       AbilityService.canPinThread($scope.discussion)
@@ -64,7 +61,35 @@ angular.module('loomioApp').directive 'contextPanel', ->
     $scope.showRevisionHistory = ->
       ModalService.open RevisionHistoryModal, model: => $scope.discussion
 
-    $scope.canAddComment = ->
-      AbilityService.canAddComment($scope.discussion)
+    $scope.actions = [
+      name: 'react'
+      canPerform: -> AbilityService.canAddComment($scope.discussion)
+    ,
+      name: 'edit_thread'
+      icon: 'mdi-pencil'
+      canPerform: -> AbilityService.canEditThread($scope.discussion)
+      perform:    -> ModalService.open DiscussionForm, discussion: -> $scope.discussion
+    ,
+      name: 'translate_thread'
+      icon: 'mdi-translate'
+      canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
+      perform:    -> TranslationService.inline($scope, $scope.discussion)
+    ,
+      name: 'add_comment'
+      icon: 'mdi-reply'
+      canPerform: -> AbilityService.canAddComment($scope.discussion)
+      perform:    -> ScrollService.scrollTo('.comment-form textarea')
+    ,
+      name: 'pin_thread'
+      icon: 'mdi-pin'
+      canPerform: -> AbilityService.canPinThread($scope.discussion)
+      perform:    -> ThreadService.pin($scope.discussion)
+    ,
+      name: 'unpin_thread'
+      icon: 'mdi-pin-off'
+      canPerform: -> AbilityService.canUnpinThread($scope.discussion)
+      perform:    -> ThreadService.unpin($scope.discussion)
+    ]
 
     TranslationService.listenForTranslations($scope)
+    ReactionService.listenForReactions($scope, $scope.discussion)

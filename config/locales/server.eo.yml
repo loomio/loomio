@@ -4,34 +4,15 @@ eo:
       intro: "%{who} anoncis al %{group}"
     by_who: de %{person}
     reply_to_this_discussion: Respondi al ĉi tiu diskuto
-    to_join_discussion:
-      subject: "%{who} volas ke vi aliĝu al diskuto en Loomio"
-      content: 'Vi estas invitita por partopreni en la diskuto: %{discussion}'
-      message_intro: "%{who} diras:"
-      link: Aliĝi al la diskuto
-    to_join_group:
-      subject: "%{member} invitis vin por aliĝi al %{group_name} en Loomio"
-    to_start_group:
-      subject: "Konfiguri vian novan Loomio-grupon: %{group_name}"
     unsubscribe: 'Malaboni aŭ ŝanĝi viajn retpoŝtpreferojn:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> por malaboni aŭ ŝanĝi viajn retpoŝtpreferojn."
-    view_comment: Klaku ĉi tie por vidi vian komenton en Loomio
-    view_discussion: Klaku ĉi tie por vidi ĉi tiun diskuton
-    daily_activity:
-      heading: Via aktiveco en Loomio
-      intro: Montras al vi kio okazis en viaj Loomio-grupoj en la lastaj 24 horoj
-      subject: Loomio - Resumo de la lastaj 24 horoj
     missed_yesterday:
-      subject: Hieraŭ en Loomio
       mark_as_read: Marki kiel legita
       thanks_for_reading: Dankon por legi, havu bonegan tagon!
       marked_as_read_success: Ĉio de la retpoŝtaĵo markiĝis kiel legita
     membership_request:
-      intro: "%{name} (%{email}) petis aliron al unu el viaj Loomio-grupoj."
       subject: "%{who} petis aliĝi al %{which_group}"
       view_group: Vi povas aprobi aŭ malaprobi la peton ĉi tie
-    thread_mailer:
-      change_preferences: 'Ŝanĝi viajn retpoŝtajn preferojn:'
   footer:
     about: Pri
     blog: Blogo
@@ -41,19 +22,3 @@ eo:
     pricing: Prezo
     public_groups: Publikaj grupoj
     terms: Kondiĉoj
-  start_group_form:
-    header: Komenci novan grupon
-    name: Via nomo
-    group_name: Grupnomo
-    group_description: Grupa priskribo
-    success:
-      header: Vi preskaŭ pretas! Kontrolu vian retpoŝton.
-  contact_page:
-    contact_us: Kontakti nin
-    labels:
-      name: Via nomo
-      email: Via retpoŝtadreso
-      message: Via mesaĝo
-      submit: Sendi mesaĝon
-    messages:
-      email_html: "Plenigu ĉi tiun formularon aŭ sendu retpoŝtaĵon al <a href='mailto:%{email}'>%{email}</a>"

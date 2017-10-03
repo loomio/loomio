@@ -2,20 +2,9 @@ id:
   email:
     group_email:
       intro: "%{who} membuat pengumuman di dalam %{group}:"
-    to_join_group:
-      subject: "%{member} mengundang Anda untuk bergabung ke dalam %{group_name} di Loomio"
-    to_start_group:
-      subject: "Buat kelompok Loomio Anda yang baru: %{group_name}"
     unsubscribe: 'Tidak ingin berlanggan atau ganti alamat surel:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> untuk ubah langganan atau ganti alamat surel."
-    view_comment: Klik di sini untuk melihat komentar di Loomi
-    view_discussion: Klik di sini untuk melihat diskusi ini
-    daily_activity:
-      heading: Kegiatan Loomio Anda
-      intro: Menunjukkan apa yang terjadi pada kelompok Loomio Anda dalam 24 jam terakhir
-      subject: Loomio - Ringkasan 24 jam terakhir
     membership_request:
-      intro: "%{name} (%{email}) mengirimkan permintaan untuk mengakses salah satu kelompok Loomio Anda."
       subject: "%{who} mengirimkan permintaan untuk bergabung ke dalam %{which_group}"
       view_group: Anda dapat menerima atau menolak permintaan di sini
   footer:
@@ -27,8 +16,3 @@ id:
     pricing: Harga
     public_groups: Kelompok umum
     terms: Ketentuan
-  start_group_form:
-    group_name: Nama kelompok
-    group_description: Deskripsi kelompok
-    success:
-      header: Anda hampir selesai! Periksa surel Anda.

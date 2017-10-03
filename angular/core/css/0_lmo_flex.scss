@@ -1,13 +1,5 @@
-@mixin displayFlex {
-  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox;      /* TWEENER - IE 10 */
-  display: -webkit-flex;     /* NEW - Chrome */
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-}
-
 .lmo-flex {
-  @include displayFlex;
+  display: flex;
 }
 
 .lmo-flex__flex-end {
@@ -23,7 +15,7 @@
 }
 
 .lmo-flex__horizontal-center {
-  justify-content: center;
+  justify-content: center !important;
 }
 
 .lmo-flex__shrink {

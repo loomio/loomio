@@ -3,6 +3,7 @@ describe Stance do
   describe 'stance choice validation' do
     let(:poll) { create :poll }
     let(:proposal) { create :poll_proposal }
+    let(:ranked_choice) { create :poll_ranked_choice }
     let(:user) { create :user }
 
     before { poll.create_guest_group }
@@ -13,6 +14,10 @@ describe Stance do
 
     it 'requires a stance choice for proposals' do
       expect(Stance.new(poll: proposal, participant: user)).to_not be_valid
+    end
+
+    it 'requires a certain number of stance choices to be passed' do
+      expect(Stance.new(poll: ranked_choice, participant: user, choice: ['apple'])).to_not be_valid
     end
   end
 

@@ -4,44 +4,16 @@ ro:
       intro: "%{who} a facut un anunt in %{group}:"
     by_who: de catre %{person}
     reply_to_this_discussion: Raspunde acestei discutii
-    to_join_discussion:
-      subject: "%{who} te invită la o discuţie pe Loomio."
-      content: 'Ai primit invitatie la discutia: %{discussion}'
-      message_intro: "%{who} spune:"
-      link: Alatura-te discutiei
-    to_join_group:
-      subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"
-    to_start_group:
-      subject: "Seteaza noul tau grup Loomio:  %{group_name}"
     unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
-    view_comment: Apasa aici pentru a vedea comentariul pe Loomio
-    view_discussion: Apasa aici pentru a vedea aceasta discutie
-    daily_activity:
-      heading: Activitatea ta pe Loomio
-      intro: Iti aratam ce s-a intamplat in grupurile tale Loomio in ultimele 24 de ore
-      subject: Loomio - Sumarul ultimelor 24 de ore
     missed_yesterday:
-      subject: Ieri pe Loomio
       headlines: Titluri
       mark_as_read: Marcheaza ca citit
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
-    comment_replied_to:
-      subject: "%{who} a raspuns comentariului tau in %{which} grup Loomio"
     membership_request:
-      intro: "%{name} (%{email}) a cerut acces in unul din grupurile tale Loomio."
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
-    thread_mailer:
-      footer_text: 'Raspunde acestui email sau vezi pe %{hostname}:'
-      reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."
-      turn_off_notifications_text: 'Nu mai trimite email pentru aceasta discutie: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Trimite email pentru aceasta discutie</a> cu informatii despre activitatea acesteia."
-      turn_on_notifications_text: 'Trimite email pentru activitatea viitoare a acestei discutii: %{url}'
-      change_email_preferences_html: Schimba-ti <a href='%{email_preferences_url}'>setarile </a> pentru a te dezabona de la aceste emailuri.
-      change_preferences: 'Schimba preferintele de email:'
   footer:
     about: Despre
     blog: Blog
@@ -52,38 +24,7 @@ ro:
     public_groups: Grupuri publice
     terms: Termeni
     independent_install_html: '%{hostname} gazduieste o copie Loomio independenta: <a href="http://github.com/loomio/loomio">vezi mai mult</a>.'
-  start_group_form:
-    header: Creare grup nou
-    form_error: Unele informatii lipsesc sau sunt incorecte
-    name: Nume
-    name_error: Numele este necesar
-    email: Adresa ta de email
-    email_error: Adresa de email nu este valida
-    group_name: Numele grupului
-    group_description: Descrierea grupului
-    group_name_error: Numele grupului
-    terms_html: Lansand un grup Loomio esti de acord cu <a href='%{link}' target='_blank'>Termenii si Conditiile</a>.
-    success:
-      header: Aproape ai terminat! Verifica-ti mailul.
-      email_delivered: Am trimis un email la %{email}. Te rugam acceseaza linkul indicat pentru a lansa noul tau grup.
-      email_not_arrived: Nu ai primit emailul?
-      please_hold: Te rugam asteapta 5 minute pentru a permite acestui email sa ajunga si verifica si  recipientul spam.
   password_reset:
-    email_guidelines_html: |
-      <p>Introdu adresa ta de email in campul de mai jos si vei primi un link pentru a reseta parola.</p>
-      <p>Daca de obicei iti creezi cont via Facebook, Google, Twitter or Persona, introdu adresa de email asociata acestor conturi.</p>
     reset_email_timeframe: In aproximativ 5 minute vei primi un email. Daca nu apare verifica si recipientul spam.
     length_restriction: Parola trebuie sa contina cel putin 8 caractere.
     forbidden_passwords: Parole comune cum ar fi “parola” nu sunt permise, in vederea sigurantei contului tau.
-  contact_page:
-    contact_us: Contacteaza-ne
-    faq_prompt_html: Ai o intrebare pentru echipa Loomio? Inainte de a ne contacta, poate vei gasi raspunsul in Intrebari Frecvente.
-    contact_information: Daca nu gasesti raspunsul dorit gasesti informatiile de contact in josul paginii.
-    contact_form: Formularul de contact
-    labels:
-      name: Nume
-      email: Adresa ta de email
-      message: Mesaj
-      submit: Trimitere
-    messages:
-      email_html: "Completeaza acest formular sau trimite un email la <a href='mailto:%{email}'>%{email}</a>"

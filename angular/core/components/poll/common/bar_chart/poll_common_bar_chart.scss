@@ -1,5 +1,5 @@
 .poll-common-bar-chart {
-  @include displayFlex;
+  display: flex;
   flex-direction: column;
   width: 100%;
 }

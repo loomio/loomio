@@ -10,8 +10,11 @@
       %md-button.poll-count-vote-form__option.poll-count-vote-form__option--yes{ng-click: "submit('yes')", ng-style: "{background: yesColor}"}
         %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750", md-direction: "left"}
           %span{translate: "poll_count_options.yes_meaning"}
-        %i.material-icons done
+        %i.mdi.mdi-check
       %md-button.poll-count-vote-form__option.poll-count-vote-form__option--no{ng-click: "submit('no')", ng-style: "{'border-color': noColor}"}
         %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750", md-direction: "left"}
           %span{translate: "poll_count_options.no_meaning"}
-        %i.material-icons{ng-style: "{color: noColor}"} clear
+        %i.mdi.mdi-close{ng-style: "{color: noColor}"}
+
+  .poll-common-form-actions.lmo-flex.lmo-flex__space-between
+    %show_results_button{ng-if: "stance.isNew()"}

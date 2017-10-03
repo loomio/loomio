@@ -1,15 +1,30 @@
 ru:
+  poll_types:
+    proposal: Предложение
+    poll: Опрос
+    meeting: Голосование за время встречи
+  timezones:
+    local: местное время ({{значение}})
   common:
+    all_day: Весь день
+    ok_got_it: Ок, понятно
+    learn_more: Узнайте больше
+    not_found: Не найдено
+    time_zone: Часовой пояс
+    local_time: Местное время
     confirm_discard_changes: Отменить изменения?
     time:
-      am: дп
-      pm: пп
+      am: день
+      pm: вечер
     closing_in: 'Закрывается {{time}}'
-    closed_ago: 'Закрыто {{time}}'
+    closed_ago: 'Закрыто {{время}}'
     volume: 'Громкость'
     notification_volume: 'Громкость оповещений'
     group: 'Группа'
     groups: 'Группы'
+    threads: 'Обсуждения'
+    decisions: 'Решения'
+    settings: 'Настройки'
     help: 'Помощь'
     privacy:
       privacy: 'Конфиденциальность'
@@ -28,8 +43,11 @@ ru:
     more_help: 'Дополнительная справка'
     models:
       proposal: 'Предложение'
+    copy: 'Копировать'
+    copy_text: 'Копировать текст'
     copied: 'Скопировать в буфер'
     action:
+      next: 'Следующее'
       close: 'Закрыть'
       save: 'Сохранить'
       save_changes: 'Сохранить изменения'
@@ -51,8 +69,20 @@ ru:
       translated: 'Переведено с помощью Бинг'
       upload: 'Скачать'
       uploading: 'скачивание'
+      load_more: 'Загрузить больше'
+      share: Поделиться
+      ok: Ок!
+      retry: Повторите попытку
+      done: Сделано
+      start: Начать
+      delete: Удалить
+      unsubscribe: Отписаться
+      subscribe: Подписаться
+      remind: Напомнить
+      resend: Переслать
+      resent: Переслать приглашение
     formatting_help:
-      title: 'Узнать как использовать Пометки для форматирования вашего текста в Лумио'
+      label: 'Форматирование'
   devise:
     failure:
       inactive: 'Аккаунт, связанный с указанным адресом электронной почты, деактивирован. Если вы хотите раективировать аккаунт, свяжитесь с нами.'
@@ -60,29 +90,20 @@ ru:
     forbidden: 'У вас недостаточно прав'
     page_not_found: 'Не найдено. Возможно было удалено или перемещено.'
     internal_server_error: 'Извините, что-то не так. Попробуйте снова.'
-  start_proposal_card:
-    title: 'Создать голосование'
-    helptext: Готовы принять решение?
-  proposal_outcome_panel:
-    heading: Итог
-    set_outcome_hint: 'Используйте это поле '
-  proposal_outcome_form:
-    aria_label: Результат голосования
-    set_outcome: 'Подвести итоги голосования '
-    update_outcome: Обновить итоги голосования
-    outcome_label: Результат голосования
-    outcome_placeholder: Сообщить всем результат голосования
-    publish_outcome: Опубликовать результат
-    messages:
-      created: Результат опубликован
-      updated: Результат обновлен
-  previous_proposals_card:
-    heading: Предыдущие голосования
-  previous_proposals_page:
-    heading: Предыдущие предложения
-  proposal_collapsed:
-    expand: Расширить
-    outcome: 'Решения: {{outcome}}'
+  verify_email_notice:
+    please_verify: Спасибо за участие! Пожалуйста, проверьте почтовый ящик, мы выслали на него ссылку, чтобы верифицировать Ваше голосование
+  verify_stances:
+    title: Верифицировать голосавание
+    description: Пожалуйста просмотрите голосование внизу и подтвердите, что оно Ваше
+    verify: Подтвердить
+    remove: Удалить
+    verify_success: Голосование подтверждено
+    remove_success: Голосование удалено
+    all_done: Отличная работа, Вы подтвердили все голосование
+  previous_polls_page:
+    heading: Активности в {{имя}}
+    polls_count: Показать {{загруженное}}  {{итог}} решения
+    search_activities: Поиск решений
   volume_levels:
     loud: 'Заметный'
     normal: 'Нормальный'
@@ -90,16 +111,25 @@ ru:
     mute: 'Заглушен'
     unmute: 'Включить'
   change_volume_form:
+    aria_label: "Изменить настройки почтового ящика"
     loud_label: "Вся активность"
+    normal_label: "Объявления"
     quiet_label: "Нет "
     mute_label: "Заглушен"
     discussion:
       title: "Настройки email для {{title}}"
+      loud_description: "По каждой активности в обсуждении Вы будете уведомлены письмом на указанный почтовый адрес"
+      normal_description: "Вы получите электронное письмо всякий раз, когда предложение открыто, вот-вот закроется, или когда будут опубликованы результаты."
+      quiet_description: "Вы не будете получать письма об этой ветке."
+      messages:
+        quiet: "Вы не будете получать письма об этой ветке."
     membership:
       title: "Настройки Email {{title}}"
       apply_to_all: "Применить эти настройки для всех моих групп"
     user:
       title: Настройки почты для новых групп
+      loud_description: "Вы будете уведомлены письмом на указанный почтовый адрес по каждой активности в тех группах, к которым Вы присоединитесь"
+      normal_description: "Вы будете уведомлены письмом на указанный почтовый ящик по каждому новому объявлению в группах, к которым Вы присоединились."
       apply_to_all: "Применить эти настройки для всех моих групп"
   mute_explanation_modal:
     aria_label: Выключить уведомления
@@ -110,14 +140,8 @@ ru:
     unread: 'Непрочитанные'
     closing_in: 'Закрывается'
   sign_up_form:
-    name_label: 'Ваше имя:'
-    name_placeholder: 'Имя Фамилия'
-    email_label: 'Email:'
     password_label: 'Пароль:'
     password_confirmation_label: 'Введите пароль повторно:'
-    sign_in_message: 'Уже зарегистрированы?'
-    sign_in: 'Войти'
-    sign_up: 'Зарегистрироваться'
   comment_form:
     aria_label: 'Добавить комментарий '
     attachments:
@@ -158,45 +182,6 @@ ru:
     no_notifications: "У Вас нет уведомлений"
   position_buttons_panel:
     heading: Выразить свое мнение
-  vote_form:
-    aria_label: Форма для голосования
-    heading: Выразить свое мнение
-    i_agree: 'Я согласен'
-    i_agree_details: 'Всецело поддерживаю'
-    i_abstain: 'Я воздерживаюсь'
-    i_abstain_details: 'Я был бы рад, если группа примет решение без меня.'
-    i_disagree: 'Я не соласен'
-    i_disagree_details: 'Я думаю что есть более подходящее решение'
-    i_block: 'Я блокирую'
-    i_block_details: 'Я категорически против данного предложения'
-    submit_position: 'Высказать позицию'
-    change_position: 'Изменить позицию'
-    select_position: 'Выбрать позицию'
-    statement_placeholder: 'Поделитесь своим мнением с группой'
-    messages:
-      created: Голос добавлен
-  proposal_positions_panel:
-    heading: Позиция
-    no_votes_yet: Еще никто не проголосовал по этому предложению
-    change_your_vote: Изменить свой выбор
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% oучастников группы сделали свой выбор ({{number}}/{{total}})'
-  close_proposal_form:
-    close_proposal: 'Закрыть предложение'
-    messages:
-      success: Голосование закрыто
-  proposal_form:
-    messages:
-      created: 'Предложение размещено'
-      updated: 'Предложение изменено'
-    start_proposal: 'Разместить предложение'
-    start_a_proposal: 'Создать голосование'
-    edit_proposal: 'Изменить предложение'
-    proposal_ideas: Нужны идеи чтобы написать хорошее предложение?
-    title_label: 'Название'
-    closes_at_label: 'Закрывается в'
-    closes: 'Закрывается'
-    details_label: 'Детали'
   discussion_record:
     updated: 'Сохранить изменения для {{title}}'
   discussion_form:
@@ -205,10 +190,6 @@ ru:
     title_label: 'Название'
     context_label: 'Описание'
     privacy_label: 'Конфиденциальность'
-  proposal_expanded:
-    edit_proposal: 'Изменить предложение'
-    close_proposal: 'Закрыть предложение'
-    closed_badge: Закрыть
   cover_photo_form:
     heading: 'Новое фото обложки'
     upload_link: 'Загрузить новое фото обложки'
@@ -256,15 +237,15 @@ ru:
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     privacy: 'Конфиденциальность'
     submit_update: 'Обновить настройки'
-  group_help_card:
-    title: Помощь
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
   group_previous_proposals_card:
     heading: Предыдущие предложения
   invitation_form:
+    copy_link: 'Копировать'
     add_members: 'Добавить участников'
+    done: 'Сделано'
     messages:
       invitation_sent: 'Приглашение отправлено'
   add_members_modal:
@@ -276,6 +257,8 @@ ru:
     name_label: 'Имя'
     coordinator_label: 'Координатор'
     remove_member_label: 'Удалить'
+  remove_membership_form:
+    submit: 'Удалить'
   profile_page:
     profile: 'Профиль'
     name_label: 'Имя'
@@ -310,9 +293,6 @@ ru:
   discussion:
     proposals: 'Голосования'
     previous_proposals: 'Предыдущие голосования'
-    you_like_this: 'Вам нравится это'
-    liked_by_you_and_someone: 'Вам и {{name}} это нравится.'
-    liked_by_someone: '{{name}} это понравилось .'
   thread_group:
     aria_label: 'Название группы'
   thread_context:
@@ -346,32 +326,12 @@ ru:
     message_label: 'Ваше сообщение'
     message_placeholder: 'Ваше сообщение...'
     send_message: 'Отправить сообщение'
-  help_page:
-    coordinating: 'Координация вашей группы'
-    different_ways: 'Различные способы использовать Loomio'
-    get_in_touch: "Оставаться на связи"
-    get_in_touch_description_html: "Если у Вас есть вопросы или отзыв, <a href='%{link}'>черкните нам пару строк</a>."
-    getting_started: "С чего начать"
-    have_your_say: "Выразить свое мнение"
-    help: "Помощь"
-    how_it_works: "Как это работает"
-    join_the_community: "Присоединиться к сообществу"
-    make_a_decision: "Принять решение"
-    make_a_decision_description: "Когда группа готова принять решение, каждый может сделать предложение. Обозначьте ясный порядок действий и дайте пояснения, чтобы каждый точно знал, что означает согласиться или не согласиться."
-    positions_agree_description: "<span>Согласен(-на)</span> означает, что Вы довольны предложением."
-    start_discussion: "Начиная интересное обсуждение"
-    start_proposal: "Написание понятного предложения"
-    video_tutorial: "Видеоучебник"
-    video_tutorial_description: "Посмотрите видео, которое вкратце покажет, как использовать Loomio."
   hint:
     context: 'Подсказки для использования контекстной панели'
     discussion: 'Подсказки для начала увлекательного обсуждения'
     invitation: 'Подсказки для написания отличного приглашения'
     proposal: 'Подсказки для написания понятного предложения'
     vote: 'Вы можете изменить вашу позицию в любое время'
-  global:
-    messages:
-      app_update: 'Доступна новая версия Loomio'
   registered_apps_page:
     name: Имя
   registered_app_form:
@@ -384,3 +344,15 @@ ru:
     title: Деактивировать {{name}}
     question: "Вы действительно желаете деактивироать приложение '{{name}}'? Это действие необратимо."
     submit: Деактивировать
+  decision_tools_card:
+    proposal_title: Предложение
+    poll_title: Опрос
+    meeting_title: Голосование за время встречи
+  poll_common_form:
+    start: Начать
+  poll_common_subscribe_form:
+    subscribe: Подписаться
+  polls_page:
+    heading: Решения
+  auth_form:
+    email_placeholder: You@example.com

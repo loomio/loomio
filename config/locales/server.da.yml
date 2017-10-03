@@ -11,10 +11,6 @@ da:
       <h1>Succes.</h1>
       <p>Du har valgt den gratis abonnements ordning for din gruppe <a href="/g/%{group_key}">%{group}</a></p>
   email:
-    login:
-      subject: Log ind på Loomio
-      intro: Hej %{name}, her er et link så du kan logge ind på din Loomio konto.
-      login: Log ind på Loomio som %{name}
     reset_password:
       greeting: |+
         Hej %{name}
@@ -30,83 +26,33 @@ da:
       intro: "%{who} oprettede en bekendtgørelse til %{group}:"
     by_who: af %{person}
     reply_to_this_discussion: Svar på denne diskussion
-    to_join_discussion:
-      subject: "%{who} ønsker at du deltager i en diskussion på Loomio"
-      content: 'Du er blevet inviteret til at deltage i diskussionen: %{discussion}'
-      message_intro: "%{who} siger:"
-      link: Deltag i diskussionen
-    value_proposition: "Loomio er et sted hvor man kan tage beslutninger sammen"
     view_group: Vis gruppe
     to_join_group:
-      subject: "%{member} har inviteret dig til at blive medlem af %{group_name} på Loomio"
       invitation_text: "%{member} har inviteret dig til at deltage i deres gruppe %{group_name}."
       invitation_text_html: "har inviteret dig til at deltage i deres gruppe"
       link_help: "Klik på linket herunder for at acceptere invitationen:"
       accept_invitation: "Acceptér invitation"
-    to_start_group:
-      subject: "Indstil din nye Loomio-gruppe: %{group_name}"
-      hi: "Hej %{name},"
-      intro: "Klik på linket herunder for at navngive din gruppe %{group_name}:"
-      intro_html: "Klik herunder for at konfigurere din gruppe:"
-      start_group: "Start min gruppe"
-      closing_message: "Hvis du har brug for hjælp eller har et spørgsmål, bare besvar denne email."
-      thanks: "Tak,"
-      loomio_team: "Loomio holdet"
     user_added_to_group:
-      subject: "%{who} har tilføjet dig til %{which_group} på Loomio"
       content: "%{who} har tilføjet dig til %{which_group}."
       content_html: "<strong>%{who}</strong> har tilføjet dig til <strong>%{which_group}</strong>."
       link_help: "Klik på linket herunder for at gå til gruppen:"
     unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
-    view_comment: Klik her for at se kommentaren på Loomio
-    view_discussion: Klik her for at se denne diskussion
-    create_discussion:
-      intro_html: "startede en diskussion:"
-      intro: "%{who} startede en diskussion:"
-    daily_activity:
-      heading: Din Loomio-aktivitet
-      intro: Viser dig hvad der er sket i dine Loomio-grupper i de sidste 24 timer
-      subject: Loomio - Opsummering af de seneste 24 timer
     missed_yesterday:
-      subject: I går på Loomio
       headlines: Overskrifter
       mark_as_read: Marker som læst
       thanks_for_reading: Tak fordi du læste, hav en god dag!
-      heres_what_happened: "Her er en oversigt over hvad der skete på Loomio i går."
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
-    comment_replied_to:
-      context_html: 'svarede på din kommentar i'
-      context: '%{author_name} svarede på din kommentar i %{discussion_title}'
-      subject: "%{who} svarede på din kommentar i %{which} gruppen på Loomio"
-    new_comment:
-      context: 'kommenterede i'
     group_membership_approved:
       intro: "Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt."
       intro_html: "Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt."
       link_help: "Klik på linket herunder for at blive medlem af %{group_name}:"
-      subject: "Din anmodning om at blive medlem i %{group_name} på Loomio er blevet godkendt"
       join_group: "Bliv medlem"
-      view_group_text: "Klik herunder for at se gruppen på Loomio:"
     membership_request:
-      intro: "%{name} (%{email}) har anmodet om adgang til en af dine Loomio-grupper."
       intro_html: har anmodet om adgang til en af dine Loomio-grupper.
       subject: "%{who} har anmodet om medlemskab af %{which_group}"
       view_group: Du kan godkende eller afvise anmodningen her
       button_text: Vis anmodning
-    mentioned:
-      context_html: "omtalte dig i en diskussion"
-      context: "%{author_name} omtalte dig i en diskussion %{discussion_title}"
-      subject: '%{who}  omtalte dig i en diskussion "%{which}"'
-    thread_mailer:
-      footer_text: 'Svar på denne email eller se det på %{hostname}:'
-      reply_or_view_online_html: Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Slå email notifikationer fra</a> for denne diskussion."
-      turn_off_notifications_text: 'Slå email notifikationer fra for denne diskussion: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Slå email notifikationer til for denne diskussion</a> for at modtage notifikationer ved yderligere aktivitet."
-      turn_on_notifications_text: 'Slå email notifikationer til for at modtage notifikationer ved yderligere aktivitet i denne diskussion: %{url}'
-      change_email_preferences_html: Rediger dine <a href='%{email_preferences_url}'>e-mail-indstillinger</a> for at afmelde disse emails.
-      change_preferences: 'Rediger dine e-mail-indstillinger:'
   footer:
     about: Om
     blog: Blog
@@ -117,37 +63,10 @@ da:
     public_groups: Offentlige grupper
     terms: Betingelser
     independent_install_html: '%{hostname} kører en selvstændig kopi af Loomio: <a href="http://github.com/loomio/loomio">se mere her</a>.'
-  start_group_form:
-    enable_angular:
-      header: Nye grupper starter i Loomio 1.0
-      subtitle: 'For at oprette en ny gruppe, så skal du skifte til den helt nye udgave af Loomio:'
-      switch_to_angular: Opret en ny grupper i det nyt Loomio
-      helptext: Vi har bygget Loomio helt op fra bunden. Du kan læse om hvad der er nyt <a href="/angular">her</a>.<br/> Du kan skifte tilbage til den gamle version når som helst.
-    header: Start en ny gruppe
-    form_error: Der er noget information der mangler eller er inkorrekt.
-    name: Dit navn
-    name_error: Navn er påkrævet
-    email: Din email
-    email_error: Ikke en valid emailadresse
-    group_name: Gruppenavn
-    group_description: Gruppebeskrivelse
-    group_description_placeholder: Beskriv formålet med denne gruppe så at medlemmerne ved hvorfor de er her.
-    group_name_error: Gruppe navn er påkrævet
-    pricing_html: Om 30 days, ber vi dig om at vælge en <a href='%{link}' target='_blank'>abonnements ordning</a>.
-    terms_html: Ved at oprette en gruppe, så godkender du Loomios <a href='%{link}' target='_blank'>terms of service</a>.
-    success:
-      header: Du er næsten færdig! Tjek din email.
-      email_delivered: Vi har sendt en email til %{email}. Klik venligst på linket for at skifte indstillinger for din nye gruppe.
-      email_not_arrived: Har du ikke modtaget email?
-      please_hold: Vent venligst i op til 5 minutter på at emailen kommer og kontroller din spam folder.
-    start_making_decisions: 'For at træffe beslutninger sammen på Loomio, opret en gruppe gratis:'
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Der blev ikke afsendt invitationer til emailadresserne der blev angivet da de tilhører personer som allerede er medlemmer af gruppen."
   password_reset:
-    email_guidelines_html: |
-      <p>Indtast emailadressen for din Loomio konto i feltet herunder, så vil du få tilsendt en nulstill adgangskode url.</p>
-      <p>Hvis du normalt benytter Facebook, Google, Twitter eller Persona, så indtast emailadressen for din konto.</p>
     reset_email_timeframe: Vent venligst i op til 5 minutter på at emailen kommer. Hvis den ikke kommer, så kontroller din spam folder.
     length_restriction: Adgangskode skal være mindst 8 tegn.
     forbidden_passwords: Almindelige adgangskoder så som "password" er forbudt for at sikre dun konto.
@@ -188,19 +107,6 @@ da:
       Nogen gange gennemarbejder grupper en **serie af forslag** for at gradvis komme tættere og tættere på den "rigtige" løsning for alle. Du kan oprette efterfølgende forslag i denne  diskusion.
 
       **Deltag! Tryk en af de 4 knapper**.
-  contact_page:
-    contact_us: Kontakt os
-    faq_prompt_html: HAr du et forslag for Loomio teamet? Inden du kontakter os så kan det være at du kan finde svaret under vores FAQ (ofte stillede spørgsmål).
-    contact_information: Hvis du ikke finder hvad du leder efter, så kan du finde vores kontakt information her i bunden af siden.
-    contact_form: Kontakt formular
-    labels:
-      name: Dit navn
-      email: Din email-adresse
-      message: Din besked
-      submit: Send besked
-    messages:
-      email_html: "Udfyld denne formular eller send en e-mail til <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Du kan også deltage i vores gruppe på <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, og <a href='%{twitter}' target='_blank'>twitter</a>!"
   markdown:
     intro:
       title: |
@@ -258,19 +164,10 @@ da:
         Links til billeder er det sammen bare med et udråbstegns foranstillet.
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
-  beta_banner:
-    new_loomio_html: |
-      <strong>Den nye Loomio er hurtigere, pænere og bedre!</strong> Vi flytter alle over på den nye version.
-    upgrade_browser_html: |
-      Vi supporterer kun moderne versioner af Internet Explore (10+). Du bliver nødt til at <a href='http://outdatedbrowser.com/en' target='_blank'>opgradere din browser</a> for at fortsætte med at bruge Loomio.
-      <strong>Den nye Loomio er nu her!</strong> Den er hurtigere, pænere og mobil venlig.
-    more_info: Mere info...
-    button_text: Skift til den nye Loomio
   poll_mailer:
     common:
       or: eller
       why_send_this: Du modtager denne email fordi %{reason}
-      view_on_loomio: Vis det på Loomio
       unsubscribe: Afmeld
       results: Resultater
       responses: Svar

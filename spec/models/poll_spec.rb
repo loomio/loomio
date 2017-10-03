@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Poll do
   let(:poll_option) { create :poll_option, name: "agree" }
   let(:poll) { build :poll, poll_options: [poll_option] }
+  let(:ranked_choice) { build :poll_ranked_choice }
 
   it 'validates correctly if no poll option changes have been made' do
     expect(poll.valid?).to eq true
@@ -11,6 +12,11 @@ describe Poll do
   it 'does not allow changing poll options if the template does not allow' do
     poll.poll_options.build
     expect(poll.valid?).to eq false
+  end
+
+  it 'does not allow higher minimum stance choices than number of poll options' do
+    ranked_choice.minimum_stance_choices = ranked_choice.poll_options.length + 1
+    expect(ranked_choice).to_not be_valid
   end
 
   it 'allows closing dates in the future' do
@@ -45,6 +51,29 @@ describe Poll do
     it 'changes guest group membership_granted_upon to approval' do
       poll.update(anyone_can_participate: false)
       expect(poll.guest_group.reload.membership_granted_upon).to eq 'invitation'
+    end
+  end
+
+  describe 'ordered_poll_options' do
+    let(:poll) { create :poll }
+    let(:meeting) { create :poll_meeting }
+
+    it 'orders by priority when non-meeting poll' do
+      poll.update(poll_option_names: [
+        'Orange',
+        'Apple',
+        'Pineapple'
+      ])
+      expect(poll.ordered_poll_options.first.name).to eq 'Orange'
+    end
+
+    it 'orders by name when meeting poll' do
+      meeting.update(poll_option_names: [
+        '01-01-2018',
+        '01-01-2017',
+        '01-01-2016',
+      ])
+      expect(meeting.ordered_poll_options.first.name).to eq '01-01-2016'
     end
   end
 

@@ -1,12 +1,7 @@
 class EmailActionsController < AuthenticateByUnsubscribeTokenController
-
   def unfollow_discussion
-    set_discussion_volume volume: :quiet, flash_notice: :"notifications.email_actions.not_following_thread"
+    set_discussion_volume volume: :quiet, flash_notice: :"email_actions.unfollowed_discussion"
    end
-
-  def follow_discussion
-    set_discussion_volume volume: :loud, flash_notice: :"notifications.email_actions.following_thread"
-  end
 
   def mark_discussion_as_read
     DiscussionReader.for(discussion: discussion, user: user).viewed!(event.created_at)

@@ -34,10 +34,17 @@ EventBus.configure do |config|
   # publish to new group if group has changed
   config.listen('poll_update') do |poll, actor|
     if poll.versions.last.object_changes.dig('group_id', 1).present? # if we've moved the poll to a new group
+      poll.make_announcement = true
       Events::PollCreated.publish!(poll, actor)
     end
   end
 
+  # mark invitations with the new user's email as used
+  config.listen('user_added_to_group_event', 'user_joined_group_event') do |event|
+    event.eventable.group.invitations.pending
+         .where(recipient_email: event.eventable.user.email)
+         .update_all(accepted_at: event.created_at || Time.now)
+  end
 
   # add creator to group if one doesn't exist
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
@@ -48,6 +55,7 @@ EventBus.configure do |config|
   config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
 
   config.listen('new_comment_event',
+                'new_discussion_event',
                 'discussion_edited_event',
                 'poll_created_event',
                 'poll_edited_event',
@@ -60,21 +68,11 @@ EventBus.configure do |config|
     ) if event.discussion
   end
 
-  # :/
-  config.listen('discussion_create') do |discussion|
-    DiscussionReader.for(user: discussion.author, discussion: discussion).update_reader(
-      volume: :loud,
-      read_at: discussion.created_at
+  config.listen('discussion_reader_viewed!', 'discussion_reader_dismissed!') do |reader|
+    MessageChannelService.publish(
+      DiscussionReaderSerializer.new(reader, root: :discussions).as_json,
+      to: reader.user
     )
-  end
-
-  config.listen('discussion_reader_viewed!',
-                'discussion_reader_dismissed!') do |discussion, actor|
-
-    reader_cache = Caches::DiscussionReader.new(user: actor, parents: Array(discussion))
-    collection = ActiveModel::ArraySerializer.new([discussion], each_serializer: MarkedAsRead::DiscussionSerializer, root: 'discussions', scope: { reader_cache: reader_cache } )
-
-    MessageChannelService.publish(collection, to: actor)
   end
 
   # alert clients that notifications have been read
@@ -103,10 +101,10 @@ EventBus.configure do |config|
 
   # update discussion importance
   config.listen('discussion_pin',
-  'poll_create',
-  'poll_close',
-  'poll_destroy',
-  'poll_expire') { |model| model.discussion&.update_importance }
+                'poll_create',
+                'poll_close',
+                'poll_destroy',
+                'poll_expire') { |model| model.discussion&.update_importance }
 
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }

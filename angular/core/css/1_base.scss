@@ -10,7 +10,7 @@ header {
 }
 
 h1, h2, h3, h4 {
-  color: $primary-text-color;
+  // color: $primary-text-color;
   text-transform: none;
   @include fontMedium;
   margin: 0;

@@ -21,7 +21,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translat
 
   logout: ->
     AppConfig.loggingOut = true
-    Records.sessions.remote.destroy('').then -> $window.location.href = '/dashboard'
+    Records.sessions.remote.destroy('').then -> $window.location.href = '/'
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()

@@ -33,7 +33,7 @@ angular.module('loomioApp').directive 'invitationForm', ->
 
     $scope.submitText = ->
       if $scope.form.emails.length > 0
-        'invitation_form.send'
+        'common.action.send'
       else
         'invitation_form.done'
 

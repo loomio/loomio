@@ -1,2 +1,7 @@
 .outcome-created
-  %p {{ eventable.statement }}
+  %p.thread-item__body{ng-if: "!translation"} {{ eventable.statement }}
+  %translation.thread-item__body{ng-if: "translation", translation: "translation", field: "statement"}
+
+  .lmo-md-actions
+    %reactions_display{model: "eventable"}
+    %action_dock{model: "eventable", actions: "actions"}

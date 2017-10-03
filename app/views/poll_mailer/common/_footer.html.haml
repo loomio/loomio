@@ -2,8 +2,8 @@
   .poll-mailer-common-footer__spacer= PollMailer::REPLY_DELIMITER
   .poll-mailer-common-footer__text
     -# %div= t(:"poll_mailer.common.why_send_this", reason: @info.send_reason)
-    = link_to t(:"poll_mailer.common.view_on_loomio"), @info.links[:target]
+    = link_to t(:"poll_mailer.common.view_on_loomio", site_name: AppConfig.theme[:site_name]), @info.links[:target]
     - if @info.recipient.is_logged_in?
       %span= t(:"poll_mailer.common.or")
       = link_to t(:"poll_mailer.common.unsubscribe"), @info.links[:unsubscribe]
-  .poll-mailer-common-footer__logo= image_tag "logo-orange.png", alt: "Loomio"
+  = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"

@@ -20,5 +20,6 @@ angular.module('loomioApp', [
   'angulartics',
   'angulartics.google.tagmanager',
   'vcRecaptcha',
-  'ngAnimate'
+  'ngAnimate',
+  'angular-sortable-view'
 ])

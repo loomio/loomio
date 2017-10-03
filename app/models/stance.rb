@@ -1,5 +1,6 @@
 class Stance < ActiveRecord::Base
   include HasMentions
+  include Reactable
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
   include Translatable
@@ -60,8 +61,8 @@ class Stance < ActiveRecord::Base
   private
 
   def enough_stance_choices
-    return unless poll.require_stance_choice
-    if stance_choices.empty?
+    return unless poll.require_stance_choices
+    if stance_choices.length < poll.minimum_stance_choices
       errors.add(:stance_choices, I18n.t(:"stance.error.too_short"))
     end
   end

@@ -39,5 +39,10 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     model: ->
       @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
 
+    markAsRead: ->
+      return unless @sequenceId > @discussion().lastReadSequenceId
+      @remote.postMember @id, 'mark_as_read'
+      @discussion().update(lastReadAt: moment(), lastReadSequenceId: @sequenceId)
+
     beforeRemove: ->
       _.invoke(@notifications(), 'remove')

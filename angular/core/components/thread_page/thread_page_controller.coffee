@@ -39,12 +39,11 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
         max:      @discussion.lastSequenceId
         pageType: 'activityItems'
 
-      $rootScope.$broadcast 'viewingThread', @discussion
-      $rootScope.$broadcast 'setTitle', @discussion.title
-      $rootScope.$broadcast 'analyticsSetGroup', @discussion.group()
       $rootScope.$broadcast 'currentComponent',
+        title: @discussion.title
         page: 'threadPage'
         group: @discussion.group()
+        discussion: @discussion
         links:
           canonical:   LmoUrlService.discussion(@discussion, {}, absolute: true)
           rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private

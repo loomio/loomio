@@ -2,7 +2,7 @@
   .group-theme__cover.lmo-no-print
     .group-theme__upload-photo{ng-if: "canUploadPhotos()"}
       %button.lmo-flex.lmo-flex__center{ng-click: "openUploadCoverForm()", title: "{{ 'group_page.new_cover_photo' | translate }}"}
-        %i.material-icons camera_enhanced
+        %i.mdi.mdi-camera.mdi-24px
         %span.group-theme__upload-help-text{translate: "group_page.new_photo"}
   .group-theme__header--compact{ng-if: "compact"}
     .group-theme__logo--compact{aria-hidden: "true"}
@@ -22,7 +22,7 @@
     .group-theme__logo{ng-style: "logoStyle()", alt: "{{ 'group_page.group_logo' | translate }}"}
       .group-theme__upload-photo{ng-if: "canUploadPhotos()"}
         %button.lmo-flex.lmo-flex__center{ng-click: "openUploadLogoForm()", title: "{{ 'group_page.new_group_logo' | translate }}"}
-          %i.material-icons camera_enhanced
+          %i.mdi.mdi-camera.mdi-24px
           %span.group-theme__upload-help-text{translate: "group_page.new_photo"}
 
     .group-theme__name-and-actions

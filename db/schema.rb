@@ -803,6 +803,8 @@ ActiveRecord::Schema.define(version: 20170903235705) do
     t.string   "remember_token"
     t.string   "short_bio",                                    default: "",         null: false
     t.boolean  "email_verified",                               default: false,      null: false
+    t.string   "location",                                     default: "",         null: false
+    t.datetime "last_seen_at",                                 default: "now()",    null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

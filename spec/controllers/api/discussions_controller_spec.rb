@@ -232,60 +232,6 @@ describe API::DiscussionsController do
     end
   end
 
-  describe 'mark_as_read' do
-    let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
-
-    context 'signed out' do
-      it 'does not attempt to mark discussions as read while logged out' do
-        event = CommentService.create(comment: build(:comment, discussion: another_discussion), actor: another_discussion.author)
-        patch :mark_as_read, id: discussion.key, sequence_id: 0
-        expect(response.status).to eq 403
-      end
-    end
-
-    context 'signed in' do
-      before do
-        sign_in user
-        group.add_admin! user
-        reader.update(volume: DiscussionReader.volumes[:normal])
-        reader.reload
-      end
-
-      it "Marks context/discusion as read" do
-        patch :mark_as_read, id: discussion.key, sequence_id: 0
-        expect(reader.reload.last_read_at).to eq discussion.reload.last_activity_at
-        expect(reader.last_read_sequence_id).to eq 0
-        expect(response.status).to eq 200
-      end
-
-      it "Marks thread item as read" do
-        event = CommentService.create(comment: comment, actor: discussion.author)
-        patch :mark_as_read, id: discussion.key, sequence_id: event.reload.sequence_id
-        expect(reader.reload.last_read_at).to eq event.created_at
-        expect(reader.last_read_sequence_id).to eq 1
-        expect(response.status).to eq 200
-      end
-
-      it 'does not mark an inaccessible discussion as read' do
-        event = CommentService.create(comment: build(:comment, discussion: another_discussion), actor: another_discussion.author)
-        patch :mark_as_read, id: another_discussion.key, sequence_id: event.reload.sequence_id
-        expect(response.status).to eq 403
-        expect(reader.reload.last_read_sequence_id).to eq 0
-      end
-
-      it 'responds with reader fields' do
-        event = CommentService.create(comment: comment, actor: discussion.author)
-        patch :mark_as_read, id: discussion.key, sequence_id: event.reload.sequence_id
-        json = JSON.parse(response.body)
-        reader.reload
-
-        expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
-        expect(json['discussions'][0]['discussion_reader_volume']).to eq reader.discussion_reader_volume
-        expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
-      end
-    end
-  end
-
   describe 'move' do
     before { sign_in user }
 
@@ -536,6 +482,22 @@ describe API::DiscussionsController do
         expect(response.status).to eq 422
         expect(json['errors']['title']).to include 'can\'t be blank'
       end
+    end
+  end
+
+  describe 'mark_as_seen' do
+    it 'marks a discussion as seen' do
+      sign_in user
+      expect { post :mark_as_seen, id: discussion.id }.to change { user.discussion_readers.count }.by(1)
+      dr = DiscussionReader.last
+      expect(dr.discussion).to eq discussion
+      expect(dr.last_read_at).to be_present
+      expect(dr.last_read_sequence_id).to eq 0
+    end
+
+    it 'does not allow non-users to mark discussions as seen' do
+      post :mark_as_seen, id: discussion.id
+      expect(response.status).to eq 403
     end
   end
 

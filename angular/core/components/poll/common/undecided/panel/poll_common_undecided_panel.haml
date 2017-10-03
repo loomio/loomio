@@ -1,5 +1,5 @@
   .poll-common-undecided-panel
-    %md-button.md-accent.poll-common-undecided-panel__button{ng-if: "canShowUndecided()", ng-click: "showUndecided()", translate: "poll_common_undecided_panel.show_undecided", translate-value-count: "{{poll.undecidedCount}}", aria-label: "poll_common_undecided_panel.show_undecided"}
+    %md-button.md-accent.poll-common-undecided-panel__button{ng-if: "canShowUndecided()", ng-click: "showUndecided()", translate: "poll_common_undecided_panel.show_undecided", translate-value-count: "{{poll.undecidedCount}}"} 
     .poll-common-undecided-panel__panel.poll-common-undecided-panel__users{ng-if: "showingUndecided"}
       %h3.lmo-card-subheading{translate: "poll_common_undecided_panel.undecided_users", translate-value-count: "{{poll.undecidedCount}}"}
       %poll_common_undecided_user{user: "user", poll: "poll", ng-repeat: "user in poll.undecided()"}

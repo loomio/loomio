@@ -3,9 +3,17 @@
   @include listTransition;
   min-height: $boxMediumSize + ($thinPaddingSize * 2);
   border-bottom: 1px solid $border-color;
-  position: relative;
   &:hover .thread-preview__actions { opacity: 1; }
   &.loading-content { padding: 10px; }
+  position: relative;
+}
+
+.thread-preview__link {
+  display: flex;
+  justify-content: space-between;
+  padding: $thinPaddingSize $cardPaddingSize;
+  color: $primary-text-color;
+  text-decoration: none;
 }
 
 .thread-preview__status-icon {
@@ -24,36 +32,19 @@
   transition: opacity 0.25s ease-in-out;
   top: 0;
   opacity: 0;
-  margin: $thinPaddingSize 0;
+  margin: $thinPaddingSize $cardPaddingSize;
   .md-button {
     align-items: center;
     display: flex;
     justify-content: center;
     min-width: 40px;
-    height: 28px;
-    min-height: 28px;
-    .material-icons { font-size: 14px; }
+    .mdi { font-size: 16px; }
   }
 }
 
-.thread-preview--left {
-  width: calc(100% - 32px);
-}
-
 .thread-preview__mute,
-.thread-preview__unmute { margin-left: 5px }
+.thread-preview__unmute { margin-left: 8px }
 
-.thread-preview__screen-only {
-  overflow: hidden;
-}
-
-.thread-preview__link {
-  display: block;
-  padding: $thinPaddingSize;
-  color: $primary-text-color;
-  text-decoration: none;
-  @include displayFlex;
-}
 
 .thread-preview__link:hover {
   color: $primary-text-color;
@@ -65,8 +56,12 @@
 }
 
 .thread-preview__text-container{
-  @include displayFlex;
-  margin-right: 17px;
+  display: flex;
+}
+
+.thread-preview__details {
+  min-width: 0;
+  flex-grow: 1;
 }
 
 .thread-preview__title{

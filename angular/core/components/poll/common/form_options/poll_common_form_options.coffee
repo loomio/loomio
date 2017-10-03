@@ -8,6 +8,7 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
       return unless $scope.poll.newOptionName and !_.contains($scope.poll.pollOptionNames, $scope.poll.newOptionName)
       $scope.poll.pollOptionNames.push $scope.poll.newOptionName
       $scope.poll.makeAnnouncement = true unless $scope.poll.isNew()
+      $scope.$emit 'pollOptionsChanged', $scope.poll.newOptionName
       $scope.poll.newOptionName = ''
 
     $scope.datesAsOptions = PollService.fieldFromTemplate($scope.poll.pollType, 'dates_as_options')
@@ -16,7 +17,9 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
       $scope.addOption()
 
     $scope.removeOption = (name) ->
-      _.pull($scope.poll.pollOptionNames, name) unless $scope.isExisting(name)
+      return unless !$scope.isExisting(name)
+      _.pull($scope.poll.pollOptionNames, name)
+      $scope.$emit 'pollOptionsChanged'
 
     $scope.isExisting = (name) ->
       _.contains $scope.existingOptions, name

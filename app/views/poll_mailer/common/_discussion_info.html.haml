@@ -4,7 +4,7 @@
       - if logo = discussion.group.logo_or_parent_logo.presence
         %img.poll-mailer-common-avatar__image{src: asset_url(logo.url(:card))}
       - else
-        %img.poll-mailer-common-avatar__image{src: asset_url("img/default-logo-card.png")}
+        %img.poll-mailer-common-avatar__image{src: asset_url(AppConfig.theme[:default_group_logo_src])}
     %td
       = link_to discussion.group.full_name, group_url(discussion.group)
       %span -

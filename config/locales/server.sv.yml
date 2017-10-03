@@ -10,34 +10,15 @@ sv:
       intro: "%{who} gjorde ett upprop till  %{group}:"
     by_who: av %{person}
     reply_to_this_discussion: Svara på denna diskussion
-    to_join_discussion:
-      subject: "%{who} vill att du går med en diskussion i Loomio"
-      content: 'Du har blivit inbjuden att delta i diskussionen: %{discussion}'
-      message_intro: "%{who} säger:"
-      link: Gå med i diskussionen
-    to_join_group:
-      subject: "%{member} har bjudit in dig att gå med i  %{group_name} på Loomio"
-    to_start_group:
-      subject: "Starta din nya Loomiogrupp: %{group_name}"
     unsubscribe: 'Avregistrera dig eller ändra dina e-postinställningar:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
-    view_comment: Klicka här för att se kommentaren på Loomio
-    view_discussion: Klicka här för att se denna diskussionen
-    daily_activity:
-      heading: Dina aktiviter i Loomio
-      intro: Visar dig vad som har hänt i dina Loomiogrupper under de senaste 24 timmarna
-      subject: Loomio - Sammanställning för de senaste 24 timmarna
     missed_yesterday:
-      subject: I går på Loomio
       mark_as_read: Markera som läst
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst
     membership_request:
-      intro: "%{name} (%{email}) har begärt att få tillgång till en av dina Loomiogrupper."
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: Du kan godkänna eller avslå begäran här
-    thread_mailer:
-      change_preferences: 'Ändra dina e-postinställningar:'
   footer:
     about: Om
     blog: Blogg
@@ -47,22 +28,3 @@ sv:
     pricing: Prissättning
     public_groups: Öppna grupper
     terms: Villkor
-  start_group_form:
-    header: Starta en ny grupp
-    name: Ditt namn
-    group_name: Gruppnamn
-    group_description: Gruppbeskrivning
-    success:
-      header: Du är nästan klar! Kolla din email.
-  contact_page:
-    contact_us: Kontakta oss
-    contact_form: Kontaktformulär
-    labels:
-      name: Ditt namn
-      email: Din emailadress
-      message: Ditt meddelande
-      submit: Skicka meddelande
-    messages:
-      email_html: "Fyll i detta formulär, eller skicka ett email till <a href='mailto:%{email}'>%{email}</a>"
-  beta_banner:
-    more_info: Mer info...

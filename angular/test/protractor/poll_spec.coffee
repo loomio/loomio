@@ -12,8 +12,8 @@ describe 'Polls', ->
       page.fillIn ".poll-common-form-fields textarea", "Some details for #{poll_type}"
       optionsFn() if optionsFn?
       page.click ".poll-common-form__submit"
-      page.expectText '.poll-common-summary-panel', "A new #{poll_type}"
-      page.expectText '.poll-common-summary-panel', "Some details for #{poll_type}"
+      page.expectText '.poll-common-card', "A new #{poll_type}"
+      page.expectText '.poll-common-card', "Some details for #{poll_type}"
 
   describe 'start, vote for each poll type', ->
     it 'starts a proposal', startPollTest('proposal')
@@ -39,8 +39,8 @@ describe 'Polls', ->
     page.fillIn '.poll-common-form-fields__title', 'A new proposal'
     page.fillIn '.poll-common-form-fields textarea', 'Some details'
     page.click '.poll-common-form__submit'
-    page.expectText '.poll-common-summary-panel__title', 'A new proposal'
-    page.expectText '.poll-common-summary-panel__details', 'Some details'
+    page.expectText '.poll-common-card__title', 'A new proposal'
+    page.expectText '.poll-common-details-panel', 'Some details'
 
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'
@@ -80,8 +80,8 @@ describe 'Polls', ->
     page.click '.poll-common-form__submit'
 
     page.click '.modal-cancel'
-    page.expectText '.poll-common-summary-panel__title', 'A new proposal'
-    page.expectText '.poll-common-summary-panel__details', 'Some details'
+    page.expectText '.poll-common-card__title', 'A new proposal'
+    page.expectText '.poll-common-details-panel', 'Some details'
 
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'

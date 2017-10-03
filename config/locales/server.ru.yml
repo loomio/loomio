@@ -1,13 +1,7 @@
 ru:
   email:
-    to_join_discussion:
-      message_intro: "%{who} сказал(а):"
-      link: Присоедениться к обсуждению
     missed_yesterday:
-      subject: Вчера на Loomio
       mark_as_read: Отметить прочитанным
-    thread_mailer:
-      change_preferences: 'Измените настройки уведомлений:'
   footer:
     about: О нас
     blog: Блог
@@ -18,16 +12,6 @@ ru:
     public_groups: Oбщедоступные группы
     terms: Условия
     independent_install_html: '%{hostname} работает с независимой копией Loomio: <a href="http://github.com/loomio/loomio">разузнать побольше</a>.'
-  start_group_form:
-    header: Создайте новую группу
-    name: Ваше имя
-    group_name: Название группы
-    group_description: Описание группы
-    success:
-      header: Почти готово! Проверьте почту.
-  contact_page:
-    contact_us: Наши контакты
-    labels:
-      name: Ваше имя
-      email: Ваш электронный адрес
-      message: Ваше сообщение
+  poll_mailer:
+    common:
+      unsubscribe: Отписаться

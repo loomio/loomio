@@ -1,12 +1,5 @@
 fi:
   email:
-    to_join_discussion:
-      message_intro: "%{who} sanoo:"
-      link: Liity keskusteluun
-    to_join_group:
-      subject: "%{member} on kutsunut sinut liittymään ryhmään %{group_name} Loomiossa"
-    to_start_group:
-      subject: "Aseta uusi Loomio-ryhmä: %{group_name}"
     unsubscribe: 'Lopeta tilaus tai muuta sinun sähköpostiasetuksia:'
   footer:
     blog: Blogi
@@ -14,5 +7,3 @@ fi:
     privacy: Yksityisyys
     public_groups: Julkiset ryhmät
     terms: Termit
-  contact_page:
-    contact_us: Ota meihin yhteyttä

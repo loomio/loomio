@@ -10,7 +10,7 @@
           %span{translate: "group_page.invite_people"}
       %md-input-container.md-block.memberships-page__search-filter{md-no-float: "true"}
         %input.membership-page__search-filter{ng-model: "membershipsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "membershipsPage.fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
-        %i.material-icons search
+        %i.mdi.mdi-magnify
       %memberships_panel{memberships: "membershipsPage.memberships", group: "membershipsPage.group"}
       .lmo-flex.lmo-flex__space-between
         %outlet.lmo-flex{layout: "row", name: "after-memberships-panel", model: "membershipsPage.group"}

@@ -17,9 +17,10 @@ angular.module('loomioApp').directive 'pendingInvitationsCard', (FlashService, S
       moment(invitation.createdAt).format('DD MMM YY')
 
     $scope.resend = (invitation) ->
+      invitation.resending = true
       invitation.resend().then ->
         FlashService.success 'common.action.resent'
-    LoadingService.applyLoadingFunction $scope, 'resend'
+      .finally -> invitation.resending = false
 
     $scope.copied = ->
       FlashService.success 'common.copied'

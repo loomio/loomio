@@ -22,83 +22,33 @@ pt_BR:
       intro: "%{who} anunciou para %{group}:"
     by_who: por %{person}
     reply_to_this_discussion: Responder a esta discussão
-    to_join_discussion:
-      subject: "%{who} quer que você participe de uma discussão no Loomio"
-      content: 'Você foi convidado(a) a participar da discussão: %{discussion}'
-      message_intro: "%{who} disse:"
-      link: Participar da discussão
-    value_proposition: "Loomio é um lugar para grupos tomarem decisões em conjunto"
     view_group: Ver grupo
     to_join_group:
-      subject: "%{member} foi convidada(o) a participar do grupo %{group_name} no Loomio"
       invitation_text: "%{member} convidou você para participar do seu grupo %{group_name}."
       invitation_text_html: "convidou você para um grupo no Loomio"
       link_help: "Clique no link abaixo para aceitar o convite:"
       accept_invitation: "Aceitar convite"
-    to_start_group:
-      subject: "Configure seu novo grupo Loomio: %{group_name}"
-      hi: "Olá %{name},"
-      intro: "Clique no link abaixo para configurar o seu grupo %{group_name}:"
-      intro_html: "Clique abaixo para configurar o seu grupo:"
-      start_group: "Iniciar meu grupo"
-      closing_message: "Caso precise de ajuda ou tenha alguma dúvida, basta responder a este email."
-      thanks: "Obrigado,"
-      loomio_team: "A Equipe Loomio"
     user_added_to_group:
-      subject: "%{who} adicionou você ao %{which_group} no Loomio"
       content: "%{who} adicionou você ao %{which_group}."
       content_html: "<strong>%{who}</strong> adicionou você ao <strong>%{which_group}</strong>."
       link_help: "Clique no link abaixo para ir para o grupo:"
     unsubscribe: 'Cancelar inscrição ou modificar suas preferências de e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
-    view_comment: Clique aqui para ver o comentário no Loomio
-    view_discussion: Clique aqui para ver esta discussão
-    create_discussion:
-      intro_html: "iniciou um tópico:"
-      intro: "%{who} iniciou um tópico:"
-    daily_activity:
-      heading: Suas atividades no Loomio
-      intro: Exibindo o que tem acontecido nos seus grupos no Loomio nas últimas 24 horas
-      subject: Loomio - Resumo das últimas 24 horas
     missed_yesterday:
-      subject: Ontem no Loomio
       headlines: Em destaque
       mark_as_read: Marcar como lida
       thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
-      heres_what_happened: "Eis o que aconteceu ontem no Loomio."
       marked_as_read_success: Tudo no e-mail foi marcado como lido
-    comment_replied_to:
-      context_html: 'respondeu ao seu comentário em'
-      context: '%{author_name} respondeu ao seu comentário em %{discussion_title}'
-      subject: "%{who} respondeu ao seu comentário no grupo %{which} do Loomio"
-    new_comment:
-      context: 'comentou em'
     group_membership_approved:
       intro: "Sua solicitação para ter acesso ao grupo %{group_name} foi aprovada."
       intro_html: "Sua solicitação para ter acesso ao grupo <strong>%{group_name}</strong> foi aprovada."
       link_help: "Clique no link abaixo para unir-se ao grupo %{group_name} e começar:"
-      subject: "Sua solicitação para ter acesso ao grupo %{group_name} do Loomio foi aprovada"
       join_group: "Entrar no grupo"
-      view_group_text: "Clique abaixo para ver o grupo no Loomio:"
     membership_request:
-      intro: "%{name} (%{email}) solicitou acesso a um de seus grupos no Loomio."
       intro_html: solicitou acesso a um de seus grupos.
       subject: "%{who} solicitou entrada em %{which_group}"
       view_group: Você pode aprovar ou recusar o pedido aqui
       button_text: Ver solicitação
-    mentioned:
-      context_html: "mencionou você durante a discussão"
-      context: "%{author_name} mencionou você durante a discussão %{discussion_title}"
-      subject: '%{who} mencionou você durante a discussão "%{which}"'
-    thread_mailer:
-      footer_text: 'Responda este e-mail diretamente ou veja em %{hostname}:'
-      reply_or_view_online_html: Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>.
-      turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."
-      turn_off_notifications_text: 'Desligar e-mails para esta discussão: %{url}'
-      turn_on_notifications_html: "<a href='%{url}'>Ligar e-mails nesta discussão</a> para receber atividades."
-      turn_on_notifications_text: 'Ligar e-mail para receber atividades nesta discussão: %{url}'
-      change_email_preferences_html: Modifique suas <a href='%{email_preferences_url}'>preferências de e-mail</a> para cancelar subscrições destes e-mails.
-      change_preferences: 'Modifique suas preferências de e-mail:'
   footer:
     about: Sobre
     blog: Blog
@@ -109,37 +59,10 @@ pt_BR:
     public_groups: Grupos públicos
     terms: Termos
     independent_install_html: '%{hostname} está executando uma cópia independente do Loomio: <a href="http://github.com/loomio/loomio">saiba mais</a>.'
-  start_group_form:
-    enable_angular:
-      header: Início de novos grupos no Loomio 1.0
-      subtitle: 'Para iniciar um novo grupo, você vai precisar mudar para a nova versão do Loomio:'
-      switch_to_angular: Iniciar um grupo no novo Loomio
-      helptext: Nós reconstruímos o Loomio a partir do zero. Você pode ler sobre as novidades <a href="/angular">aqui</a>.<br/>Você pode voltar para a versão antiga quando quiser.
-    header: Iniciar um novo grupo
-    form_error: Algumas informações estão ausentes ou incorretas.
-    name: Seu nome
-    name_error: Nome é necessário
-    email: Seu e-mail
-    email_error: Não é um endereço de e-mail válido
-    group_name: Nome do grupo
-    group_description: Descrição do grupo
-    group_description_placeholder: Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.
-    group_name_error: Nome do grupo é necessário
-    pricing_html: Em 30 dias, vamos pedir-lhe para escolher um <a href='%{link}' target='_blank'>plano de preços</a>.
-    terms_html: Ao iniciar um grupo, você concorda com os <a href='%{link}' target='_blank'>termos de serviço</a> do Loomio.
-    success:
-      header: Você está quase lá! Verifique seu e-mail.
-      email_delivered: Enviamos um e-mail para %{email}. Por favor, siga o link para configurar o seu novo grupo.
-      email_not_arrived: O e-mail não chegou?
-      please_hold: Por favor, aguarde até 5 minutos para o e-mail chegar e não se esqueça de verificar sua pasta de spam.
-    start_making_decisions: 'Para começar a tomar decisões em conjunto no Loomio, crie um grupo gratuitamente:'
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo."
   password_reset:
-    email_guidelines_html: |
-      <p>Insira o endereço de e-mail da sua conta Loomio no campo abaixo e ser-lhe-à enviado um link de redefinição de senha.</p>
-      <p>Se você normalmente entra via Facebook, Google, Twitter ou Persona, digite o endereço de e-mail associado a essa conta.</p>
     reset_email_timeframe: Poderá demorar até 5 minutos para o e-mail chegar. Se não aparecer, certifique-se de verificar sua pasta de spam.
     length_restriction: Senhas devem ter pelo menos 8 caracteres.
     forbidden_passwords: Senhas comuns como, por exemplo, “senha” são proibidas para manter a sua conta segura.
@@ -180,19 +103,6 @@ pt_BR:
       Às vezes, grupos funcionam por meio de uma **série de propostas** para construir soluções conjuntas. Você pode criar propostas em série neste tópico.
 
       **Tente participar! Clique em um dos quatro botões**.
-  contact_page:
-    contact_us: Contato
-    faq_prompt_html: Tem uma pergunta para a equipe Loomio? Antes de entrar em contato conosco, talvez você encontre a resposta na nossa seção de perguntas frequentes.
-    contact_information: Se você não achar o que está procurando, você pode encontrar o nosso contato para informações na parte inferior da página.
-    contact_form: Formulário de contato
-    labels:
-      name: Seu nome
-      email: Seu endereço de e-mail
-      message: Sua mensagem
-      submit: Enviar mensagem
-    messages:
-      email_html: "Preencha esse formulário ou envie um e-mail para <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Você também pode se juntar a nós no<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, e <a href='%{twitter}' target='_blank'>twitter</a>!"
   markdown:
     intro:
       title: |
@@ -240,16 +150,7 @@ pt_BR:
         O mesmo para imagens, mas antecedidas por um ponto de exclamação.
 
         ![Logo do Loomio](https://i.imgur.com/Fvtworb.png)
-  beta_banner:
-    new_loomio_html: |
-      <strong>O novo Loomio é mais rápido, mais bonito, e melhor!</strong> Estamos mudando para todos.
-    upgrade_browser_html: |
-      Nós só suportamos versões modernas do Internet Explorer (10+). Você precisará <a href='http://outdatedbrowser.com/en' target='_blank'>atualizar o seu navegador</a> para continuar usando o Loomio.
-      <strong>O Novo Loomio está aqui!</strong> É mais rápido, mais bonito e pronto para dispositíveis móveis.
-    more_info: Mais informações...
-    button_text: Mudar para o novo Loomio
   poll_mailer:
     common:
-      view_on_loomio: Ver no Loomio
       results: Resultados
       create_outcome: Compartilhar resultado

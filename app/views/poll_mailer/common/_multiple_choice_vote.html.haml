@@ -1,0 +1,10 @@
+%h3= t(:"poll_mailer.common.your_response") if @info.recipient_stance
+
+- if @info.recipient_stance
+  = render 'poll_mailer/common/stance', stance: @info.recipient_stance
+- else
+  %p= t(:"poll_mailer.common.time_zone", zone: @info.formatted_time_zone) if @info.poll_type == 'meeting'
+  %table{class: "poll-mailer-#{@info.poll_type}__poll-options"}
+    - @info.poll_options.each do |option|
+      %tr.poll-mailer__poll-option= render 'poll_mailer/common/poll_option', poll_option: option
+  = link_to t(:"poll_mailer.common.vote_now"), poll_url(@info.poll, @info.utm_hash), class: "base-mailer__button base-mailer__button--accent"

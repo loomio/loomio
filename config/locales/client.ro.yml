@@ -43,34 +43,10 @@ ro:
       add_subgroup: 'Adauga sub-grup'
       loading: 'Se incarca'
       uploading: 'Se trimite la server'
-    formatting_help:
-      title: 'Afla cum poti folosi Markdown pentru a formata textul in Loomio'
   error_page:
     forbidden: 'Nu ai permisiune pentru aceasta actiune.'
     page_not_found: 'Nu am gasit nimic corespunzator. Este posibil sa fie sters sau mutat.'
     internal_server_error: 'Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data.'
-  start_proposal_card:
-    title: 'Initiaza o propunere'
-    helptext: Esti gata sa iei o decizie?
-  proposal_outcome_panel:
-    heading: Rezultat
-    set_outcome_hint: Explicati tuturor rezultatele acestei propuneri.
-  proposal_outcome_form:
-    set_outcome: Detaliati rezultatele acestei propuneri
-    update_outcome: Actualizati rezultatele propunerii
-    outcome_label: Rezultatele propunerii
-    outcome_placeholder: Explicati tuturor rezultatele acestei propuneri.
-    publish_outcome: Publica rezultatul
-    messages:
-      created: Rezultatul a fost publicat
-      updated: Rezultatul a fost actualizat
-  previous_proposals_card:
-    heading: Propuneri anterioare
-  previous_proposals_page:
-    heading: Propuneri anterioare
-  proposal_collapsed:
-    expand: Extindeti
-    outcome: 'Rezultate: {{outcome}}'
   volume_levels:
     loud: 'Tare'
     normal: 'Normal'
@@ -122,27 +98,6 @@ ro:
     header: "Notificari"
   position_buttons_panel:
     heading: Sa ai ceva de spus
-  vote_form:
-    heading: Sa ai ceva de spus
-    i_agree: 'Sunt de acord'
-    i_abstain: 'Ma abtin'
-    i_abstain_details: 'Sunt multumit cu ce decide grupul fara mine.'
-    i_disagree: 'Nu sunt de acord.'
-    i_disagree_details: 'Cred ca putem adopta o decizie mai buna.'
-    i_block: 'Ma opun'
-    i_block_details: 'Obiectez fata de aceasta propunere si NU sunt de acord sa fie adoptata.'
-    submit_position: 'Trimite pozitia ta'
-  proposal_positions_panel:
-    heading: Pozitii
-  close_proposal_form:
-    close_proposal: 'Inchide propunerea'
-  proposal_form:
-    start_proposal: 'Porneste propunere'
-    start_a_proposal: 'Initiaza o noua propunere'
-    edit_proposal: 'Editeaza propunerea'
-    title_label: 'Titlu'
-    closes_at_label: 'Se inchide la'
-    details_label: 'Detalii'
   discussion_record:
     created: 'Discutia {{title}} a fost creata cu succes in {{groupName}}'
   discussion_form:
@@ -158,10 +113,6 @@ ro:
     privacy_public: 'Oricine poate vedea o discutie. Doar membrii pot participa.'
     privacy_private: 'Discutia va fi vizibila doar membrilor grupului {{group}}.'
     privacy_organisation: 'Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.'
-  proposal_expanded:
-    edit_proposal: 'Editeaza propunerea'
-    close_proposal: 'Inchide propunerea'
-    closed_badge: Inchis
   join_group_button:
     join_group: Alatură-te grupului
   membership_request_form:
@@ -285,78 +236,6 @@ ro:
     name_label: 'Nume'
     email_label: 'Adresa ta de email'
     message_label: 'Mesaj'
-  help_page:
-    coordinating: 'Coordonarea grupului tau Loomio'
-    coordinating_details: |
-      Ca coordonator, esti responsabil cu formarea grupului tau pe Loomio si invitarea
-      celorlalti in el. In paralel cu invatarea acestui program grupul tau
-      va invata noi procedee de colaborare efectiva si de adoptare a deciziilor.
-      Aici sunt cateva sfaturi  care vor ajuta grupul tau sa reuseasca:
-    different_ways: 'Modalitati diferite de a folosi Loomio'
-    example1_html: |
-      <h3>Ai nevoie ca grupul sa discute o tema mai larga si sa ajunga la o solutie comuna</h3>
-      <p>Strategie: discuta o tema pentru un timp inainte sa lansezi o propunere.</p>
-      <p>Discutiile adesea ajung la cel mai bun rezultat daca dezvolta o intelegere comuna despre
-      problema inainte de a sari la o anumita solutie. Cand oamenii ajung sa participe in acest proces,
-      este mai probabil ca vor fi de acord cu rezultatul lui.</p>
-    get_in_touch: "Ia legatura"
-    get_in_touch_description_html: "Daca ai intrebari sau feedback, <a href='%{link}'>trimite-ne un mesaj</a>."
-    getting_started: "Notiuni de baza"
-    getting_started_description: "In partea stanga, grupul discuta o tema, schimband idei si informatii. Cand exista o decizie luata de grup, ea apare in partea dreapta."
-    getting_the_most: 'Obtine cat mai mult din folosirea Loomio'
-    have_your_say: "Sa ai ceva de spus"
-    have_your_say_details_html: |
-      <p>Cand esti pregatit sa-ti spui parerea, apasa pe unul dintre cele patru butoane de decizie.</p>
-      <p>Cand iti exprimi parerea, introdu o scurta explicatie. Sub graficul Pie, poti sa vezi ce cred ceilalti.
-      Aceasta face rapida si usoara intelegerea discutiei. Cand apar noi informatii, poti sa-ti schimbi in orice moment pozitia.</p>
-    have_a_discussion: "Poarta o discutie"
-    have_a_discussion_description: "Tema si informatiile relevante sunt in partea de sus a paginii. Foloseste casuta de comentarii pentru a-ti face auzita vocea in discutie."
-    help: "Ajutor"
-    how_it_works: "Cum functioneaza"
-    invitation_html: |
-      <h2>Cum sa scrii o invitatie excelenta</h2>
-      <p>Prima intrebare pe care fiecare nou membru o va avea este 'pentru ce este creat acest grup?'</p>
-      <p>Gandeste-te la cea mai simpla descriere a grupului: Ce vrei sa obtineti impreuna?
-      Ce tipuri de decizii veti lua? Cine va fi implicat?</p><p>Poate fi o idee buna sa vorbesti cu grupul tau
-      inainte de ai invita pe Loomio</p>
-      <p> Oamenii vor voi sa stie de ce au fost invitati si ce se asteapta de la ei si de ce merita sa-si investeasca
-      timpul in a invata cum sa foloseasca un nou instrument.</p>
-    join_the_community: "Alatura-te comunitatii"
-    images_and_text_formatting: "Formatarea imaginilor si a textului"
-    images_and_text_formatting_html: |
-      <p>Loomio foloseste ‘Markdown' pentru a adauga imagini si formatarea textului.
-      Poti porni Markdown prin icoana mica gri de sub casuta de comentarii</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Apasa aici</a> pentru informatii
-      despre folosirea Markdown</p>
-    keep_up_to_date: "Mentine actualizat"
-    keep_up_to_date_html: |
-      <p>Apasand pe numele grupului in partea de sus a paginii vei ajunge in Pagina Grupului,
-      unde poti vizualiza o lista a tututor discutiilor si deciziilor din acel grup.. Daca esti membru in
-      mai mult de un grup, poti sa vezi toate activitatile din grupurile tale direct din Pagina de Start.</p>
-      <p>Vei primi notificari pe email cand se intampla lucruri importante in grupul tau.
-      Poti sa schimbi preferintele de email <a href="%{link}"">aici</a>.</p>
-    make_a_decision: "Ia o decizie"
-    make_a_decision_description: "Cand un grup este pregatit sa ia o decizie, oricine poate face o propunere. Descrie clar scopul si adauga cateva informatii suplimentare astfel incat sa fie clar pentru toti ce inseamna sa fii de acord sau nu."
-    prompt_people_details: "Daca vrei sa obtii atentia unei anumite persoane din grup, scrie '@' urmat de numele lor. Ei vor primi un email care ii va anunta ca i-ai mentionat intr-un comentariu."
-    prompt_people_html: "Mentioneaza persoane cu <span class='blue'>@mentiuni</span>"
-    positions_agree_description: "<span>De acord</span> inseamna ca esti multumit de propunere."
-    positions_abstain_description: "<span>Abtinere</span> inseamna ca nu esti sigur, sau esti multumit daca grupul decide fara tine."
-    positions_disagree_description: "<span>Dezaprobare</span> inseamna ca tu crezi ca exista o alternativa mai buna, dar te supui deciziei grupului."
-    positions_block_description: "<span>Opunere</span> inseamna ca ai obiectii serioase si vei fi nemultumit daca propunerea este aprobata."
-    start_discussion: "Cum sa initiezi o discutie captivanta"
-    start_proposal: "Scrierea unei propuneri clare"
-    start_proposal_html: |
-      <p>Daca ai un titlu clar si succint, oamenii vor sti imediat ce inseamna sa fii de acord sau impotriva.</p>
-      <p>Nu este sfarsitul lumii daca o propunere nu obtine un punct de vedere comun imediat.
-      Daca grupul nu iubeste prima propunere, oricine poate incepe o noua propunere pentru
-      a adresa rezervele ridicate, si a conduce mai departe procesul.</p>
-      <p>Prin acest proces dinamic, inteligenta colectiva a grupului poate genera idei mai bune decat ar putea
-      genera oricine ar incerca sa o faca singur.</p>
-      <p>Termenul limita al unei propuneri poate fi extins oricand, daca devine clar ca o decizie
-      are nevoie de mai mult timp. Toata lumea va primi o notificare pe email cu 24 de ore inainta ca o propunere sa se inchida.</p>
-    video_id: "52025402"
-    video_tutorial: "Tutorial video"
-    video_tutorial_description: "Urmareste acest video pentru o scurta demonstratie despre cum sa folosesti Loomio."
   hint:
     context: 'Sfaturi pentru folosirea panel-ului context'
     discussion: 'Sfaturi pentru a initia o discutie captivanta'

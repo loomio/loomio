@@ -1,0 +1,253 @@
+//= depend_on "_variables.scss.erb"
+@import 'variables';
+
+.everything{width: 600px;}
+.icon { width: 50px; vertical-align: top }
+.light-discussion .icon img { width: 40px }
+.light-discussion .activity-icon img{ width: 18px; height: 18px; margin-left: 22px;}
+.light-discussion .description {margin-bottom: 1em;}
+.activity-feed {margin-top: 1em;}
+.light-proposal .icon img { width: 50px; padding-top: 10px }
+table { max-width: 600px }
+
+table.stats-table {
+  text-align: center;
+}
+table.stats-table th { font-weight: bold; color: #666; }
+
+.content { width: 550px }
+.light-discussion { width: 600px; margin-bottom: 3em;}
+.light-proposal {margin-bottom: 2em;}
+.motion-pie { float: right }
+.footer { font-size: 12px; color: #666; }
+img { max-width: 500px; }
+img.emojione { width: 25px; vertical-align: bottom; }
+body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+
+.mailer__header {
+  text-align: center;
+}
+
+.mailer__header-logo-image {
+  margin: 15px 0 10px 0;
+  height: 64px;
+}
+
+.mailer__header-logo {
+  border-bottom: 1px solid $primary-color;
+  margin: 0 10px;
+}
+
+.base-mailer__avatar-initials {
+  margin: 10px auto;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+}
+
+.base-mailer__avatar-image {
+  border-radius: 4px;
+  margin: 0 10px 10px 0;
+  width: 40px;
+  height: 40px;
+}
+
+.invite-people-mailer {
+  text-align: center;
+  background-color: #F1F1F1;
+  padding: 35px 25px;
+}
+
+.invite-people-mailer__container {
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.invite-people-mailer__context {
+  margin-bottom: 30px;
+}
+
+.invite-people-mailer__body {
+  padding: 30px 20px;
+}
+
+.invite-people-mailer__message-container {
+  padding: 30px 0;
+}
+
+.invite-people-mailer__message_body {
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 45px;
+  padding: 0 20px;
+}
+
+.base-mailer__button {
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 80px;
+  margin: 16px;
+  text-decoration: none;
+  white-space: nowrap;
+  max-width: 80px;
+  padding: 16px;
+}
+
+.base-mailer__button--primary {
+  background-color: $primary-color;
+  color: $text-on-primary-color;
+}
+
+.base-mailer__button--accent {
+  background-color: $accent-color;
+  color: $text-on-accent-color;
+}
+
+.user-mailer__start-decision-button {
+  display: inline-block;
+  padding: 12px 30px;
+  min-width: 150px;
+}
+
+.invite-people-mailer__value-proposition {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 30px 0 0;
+}
+
+.invite-people-mailer__heart-icon {
+  width: 30px;
+}
+
+.thread-mailer__list {
+  padding: 0px;
+  margin-top: 0px;
+}
+
+.thread-mailer__list-item {
+  list-style-type: none;
+  margin-left: 0px;
+}
+
+.thread-mailer__avatar-initials {
+  margin-right: 10px;
+  float: left;
+  border: 1px solid #dcdcdc;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+}
+
+.thread-mailer__avatar-image {
+  margin-right: 10px;
+  float: left;
+}
+
+.thread-mailer__vote-buttons {
+  margin-bottom: 15px;
+}
+
+.thread-mailer__vote-button {
+  text-align: center;
+  padding-right: 10px;
+}
+
+.thread-mailer__vote-button img {
+  width: 55px;
+}
+
+.thread-mailer__vote-button-link {
+  text-decoration: none;
+}
+
+.thread-mailer__vote-button-verb {
+  text-decoration: underline;
+}
+
+.thread-mailer__vote {
+  margin-bottom: 20px;
+}
+
+.thread-mailer__motion-pie-icon {
+  float:left;
+  margin: 0 10px 0 0;
+  width: 50px;
+  height: 50px;
+}
+
+.thread-mailer__vote-icon {
+  float:left;
+  margin: 0 10px 0 0;
+  width: 24px;
+}
+
+.thread-mailer__subject {
+  margin-bottom: 20px;
+  padding: 5px 0;
+}
+
+.thread-mailer__body img {
+  margin-top: 15px;
+}
+
+.thread-mailer__attachment-icon {
+  vertical-align: -30%;
+  margin-right: 5px;
+}
+
+.thread-mailer__footer {
+  clear: both;
+  color: #666;
+  font-size: small;
+}
+
+.thread-mailer__footer-logo{
+  height: 32px;
+}
+
+.user-mailer__contact-request-context {
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+}
+
+.user-mailer__contact-request {
+  text-align: left;
+  padding: 20px 0;
+}
+
+.user-mailer__message-container {
+  margin: 40px 0;
+}
+
+.user-mailer__start-decision-option {
+  list-style-type: none;
+  margin: 25px 0;
+}
+
+.user-mailer__start-decision-helptext {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.user-mailer__start-decision-logo {
+  width: 20px;
+  margin-right: 8px;
+  vertical-align: bottom;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}

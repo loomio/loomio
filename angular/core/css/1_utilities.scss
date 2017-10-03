@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+.lmo-action-dock-wrapper {
+  .action-dock { opacity: 0.5; }
+  &:hover .action-dock { opacity: 1 }
+}
+
 textarea .lmo-textarea {
   resize: none;
   min-height: 100px;
@@ -86,6 +91,9 @@ textarea .lmo-textarea {
 
 .lmo-markdown-wrapper {
   word-wrap: break-word;
+
+  a { word-break: break-all; }
+
   p { @include md-body-1; }
   img { max-width: 100%; }
   h1 {
@@ -176,6 +184,33 @@ img.emojione {
   top: 5px;
   width: 20px;
   height: 20px;
+}
+
+@media (max-width: $tiny-max-px) {
+  .md-open-menu-container {
+    left: 0     !important;
+    top: 48px   !important;
+    width: 100%;
+    .md-button { text-align: center; }
+  }
+}
+
+@media (min-width: $tiny-max-px) {
+  .md-open-menu-container {
+    z-index: 1001;
+  }
+}
+
+.lmo-number-input {
+  width: 35px !important;
+  text-align: center;
+  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
 }
 
 .sr-only {

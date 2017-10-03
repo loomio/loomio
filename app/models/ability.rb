@@ -97,6 +97,7 @@ class Ability
       # anyone can create a top level group of their own
       # otherwise, the group must be a subgroup
       # inwhich case we need to confirm membership and permission
+      (user.is_admin or AppConfig.features[:create_group]) &&
       user.email_verified? &&
       group.is_parent? ||
       ( user_is_admin_of?(group.parent_id) ||
@@ -113,6 +114,10 @@ class Ability
     can [:create], GroupIdentity do |group_identity|
       user_is_admin_of?(group_identity.group_id) &&
       user.identities.include?(group_identity.identity)
+    end
+
+    can [:destroy], GroupIdentity do |group_identity|
+      user_is_admin_of?(group_identity.group_id)
     end
 
     can [:make_admin], Membership do |membership|
@@ -192,7 +197,7 @@ class Ability
       end
     end
 
-    can :mark_as_read, Discussion do |discussion|
+    can [:mark_as_read, :mark_as_seen], Discussion do |discussion|
       @user.is_logged_in? && can?(:show, discussion)
     end
 
@@ -239,7 +244,7 @@ class Ability
       user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
     end
 
-    can :create, Reaction do |reaction|
+    can :update, Reaction do |reaction|
       user_is_member_of?(reaction.reactable.group.id)
     end
 
@@ -341,9 +346,17 @@ class Ability
       stance.participant.email == @user.email
     end
 
+    can :show, Outcome do |outcome|
+      can? :show, outcome.poll
+    end
+
     can [:create, :update], Outcome do |outcome|
       !outcome.poll.active? &&
       user.ability.can?(:update, outcome.poll)
+    end
+
+    can :create, ContactRequest do |request|
+      (@user.groups & request.recipient.groups).any?
     end
 
     add_additional_abilities

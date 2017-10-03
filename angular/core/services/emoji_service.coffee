@@ -1,8 +1,21 @@
-angular.module('loomioApp').factory 'EmojiService', ($timeout, AppConfig) ->
+angular.module('loomioApp').factory 'EmojiService', ($timeout, AppConfig, $translate) ->
   new class EmojiService
     source:   AppConfig.emojis.source
     render:   AppConfig.emojis.render
     defaults: AppConfig.emojis.defaults
+
+    imgSrcFor: (shortname) ->
+      ns = emojione
+      unicode = ns.emojioneList[shortname].unicode[ns.emojioneList[shortname].unicode.length-1];
+      ns.imagePathPNG+unicode+'.png'+ns.cacheBustParam
+
+    translate: (shortname_with_colons) ->
+      shortname = shortname_with_colons.replace(/:/g, '')
+      str = $translate.instant("reactions.#{shortname}")
+      if _.startsWith(str, "reactions.")
+        shortname
+      else
+        str
 
     listen: (scope, model, field, elem) ->
       scope.$on 'emojiSelected', (_, emoji) ->

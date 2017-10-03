@@ -3,14 +3,23 @@
 -# poll type
 %section.poll-common-card.lmo-card-padding.lmo-flex__grow.lmo-relative
   .lmo-disabled-form{ng-if: "isDisabled"}
-  .lmo-blank{ng-if: "!initExecuting"}
+  %loading{ng-if: "!poll.complete"}
+  .lmo-blank{ng-if: "poll.complete"}
     %poll_common_card_header{poll: "poll"}
     %poll_common_set_outcome_panel{poll: "poll"}
-    %poll_common_summary_panel{poll: "poll"}
-    .poll-proposal-panel
-      .poll-common-card__results-shown{ng-if: "showResults()"}
-        %poll_common_directive{poll: "poll", name: "chart_panel"}
-        %poll_common_percent_voted{poll: "poll"}
-      %poll_common_action_panel{poll: "poll"}
-      .poll-common-card__results-shown{ng-if: "showResults()"}
-        %poll_common_votes_panel{poll: "poll"}
+
+    %h1.poll-common-card__title{ng-if: "!translation"} {{poll.title}}
+    %h3.lmo-h1.poll-common-card__title{ng-if: "translation"}
+      %translation{translation: "translation", field: "title"}
+
+    %poll_common_outcome_panel{poll: "poll", ng-if: "poll.outcome()"}
+    %poll_common_details_panel{poll: "poll"}
+
+    .poll-common-card__results-shown{ng-if: "showResults()"}
+      %poll_common_directive{poll: "poll", name: "chart_panel"}
+      %poll_common_percent_voted{poll: "poll"}
+
+    %poll_common_action_panel{poll: "poll"}
+
+    .poll-common-card__results-shown{ng-if: "showResults()"}
+      %poll_common_votes_panel{poll: "poll"}

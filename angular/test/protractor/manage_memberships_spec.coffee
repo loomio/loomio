@@ -2,7 +2,6 @@ describe 'Managing memberships', ->
 
   membershipsHelper = require './helpers/memberships_helper.coffee'
   groupsHelper = require './helpers/groups_helper.coffee'
-  flashHelper = require './helpers/flash_helper.coffee'
   page = require './helpers/page_helper.coffee'
 
   beforeEach ->
@@ -17,7 +16,7 @@ describe 'Managing memberships', ->
       membershipsHelper.confirmRemoveAction()
       expect(membershipsHelper.currentMembershipRow().isPresent()).toBe(false)
       membershipsHelper.clearSearchInput()
-      expect(flashHelper.flashMessage()).toContain('Removed Jennifer Grey')
+      page.expectFlash 'Removed Jennifer Grey'
       expect(membershipsHelper.membershipsTable()).not.toContain('Jennifer Grey')
 
   describe 'promoting a member to coordinator', ->
@@ -26,7 +25,7 @@ describe 'Managing memberships', ->
       membershipsHelper.fillInSearchInput('Jennifer')
       membershipsHelper.checkCoordinatorCheckbox()
       membershipsHelper.clearSearchInput()
-      expect(flashHelper.flashMessage()).toContain('Jennifer Grey is now a coordinator')
+      page.expectFlash 'Jennifer Grey is now a coordinator'
       expect(membershipsHelper.currentCoordinatorsCount()).toEqual(2)
 
   describe 'adding someone as a non-coordinator', ->
@@ -45,7 +44,7 @@ describe 'Managing memberships', ->
       membershipsHelper.fillInSearchInput('Patrick')
       membershipsHelper.checkCoordinatorCheckbox()
       membershipsHelper.confirmRemoval()
-      expect(flashHelper.flashMessage()).toContain('Patrick Swayze is no longer a coordinator')
+      page.expectFlash 'Patrick Swayze is no longer a coordinator'
       membershipsHelper.clearSearchInput()
       expect(membershipsHelper.currentCoordinatorsCount()).toEqual(1)
 

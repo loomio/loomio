@@ -47,3 +47,7 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, R
     #   ScrollService.scrollTo('.comment-form textarea', offset: 150)
 
     AttachmentService.listenForAttachments $scope, $scope.comment
+
+    $scope.isLoggedIn = ->
+      AbilityService.isLoggedIn()
+    $scope.signIn = -> ModalService.open AuthModal

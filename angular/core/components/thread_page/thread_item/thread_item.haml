@@ -1,5 +1,5 @@
 .thread-item
-  .lmo-flex.lmo-relative{layout: "row", id: "sequence-{{event.sequenceId}}"}
+  .lmo-flex.lmo-relative.lmo-action-dock-wrapper{layout: "row", id: "sequence-{{event.sequenceId}}"}
     .thread-item__avatar.lmo-margin-right
       %user_avatar{user: "event.actor()", size: "small", ng-if: "event.actor()"}
     .thread-item__body.lmo-flex.lmo-flex__horizontal-center{layout: "column"}
@@ -7,7 +7,8 @@
         %h3.thread-item__title{id: "event-{{event.id}}"}
           -# %div
           -#   id: {{event.id}} pid: {{event.parentId}} sid: {{event.sequenceId}} pos: {{event.pos}} cc: {{event.childCount}}
-          %span{ng-bind-html: "headline()"}
+          %span{ng-bind-html: "::headline()"}
           %span{aria-hidden: "true"}>·
-          %timeago.timeago--inline{timestamp: "event.createdAt"}
+          %a.thread-item__link.lmo-pointer{href: "{{::link()}}"}
+            %timeago.timeago--inline{timestamp: "event.createdAt"}
       %thread_item_directive.thread-item__directive{event: "event"}

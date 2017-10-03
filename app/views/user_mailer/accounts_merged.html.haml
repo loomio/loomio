@@ -1,2 +1,2 @@
 %p= t :'user_mailer.accounts_merged.body_html', name: @user.name, email: @user.email
-%p= link_to t(:"email.login.login", name: @user.name || @user.email), login_token_url(@token.token, @utm_hash), class: "invite-people-mailer__button"
+%p= link_to t(:"email.login.login", name: @user.name || @user.email), login_token_url(@token.token, @utm_hash), class: "base-mailer__button base-mailer__button--accent"

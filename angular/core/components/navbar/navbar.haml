@@ -1,13 +1,12 @@
 %header.lmo-navbar
   %md_toolbar
-    .md-toolbar-tools.lmo-relative
+    .md-toolbar-tools
       .navbar__left
         %md_icon_button.navbar__sidenav-toggle{aria-hidden: "true", ng-show: "isLoggedIn()", ng-click: "toggleSidebar()", aria-label: "{{ 'navbar.toggle_sidebar' | translate }}"}
-          %i.material-icons &#xE5D2;
+          %i.mdi.mdi-menu
 
-      .navbar__middle
-        %a{lmo-static-href: "/", aria-label: "{{ 'navbar.logo_title' | translate }}"}
-          %img.navbar__logo{src: "/img/logo.png", alt: "Loomio logo"}
+      .navbar__middle.navbar__logo-bg{ng-style: "bgStyle()"}
+        &nbsp;
 
       .navbar__right
         %navbar_search{ng-show: "isLoggedIn()"}

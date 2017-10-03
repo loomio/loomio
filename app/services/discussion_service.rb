@@ -72,11 +72,10 @@ class DiscussionService
     EventBus.broadcast('discussion_update_reader', reader, params, actor)
   end
 
-  def self.mark_as_read(discussion:, params:, actor:)
-    actor.ability.authorize! :mark_as_read, discussion
-
-    target_to_read = Event.where(discussion_id: discussion.id, sequence_id: params[:sequence_id]).first || discussion
-    DiscussionReader.for(user: actor, discussion: discussion).viewed! target_to_read.created_at
+  def self.mark_as_seen(discussion:, actor:)
+    actor.ability.authorize! :mark_as_seen, discussion
+    DiscussionReader.for_model(discussion, actor).update_attribute(:last_read_at, discussion.created_at)
+    EventBus.broadcast('discussion_mark_as_seen', discussion, actor)
   end
 
   def self.dismiss(discussion:, params:, actor:)

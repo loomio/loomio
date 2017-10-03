@@ -1,7 +1,11 @@
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
-  $scope.isLoggedIn = AbilityService.isLoggedIn
-  $scope.isEmailVerified = AbilityService.isEmailVerified
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
+  $scope.isLoggedIn = ->
+    AbilityService.isLoggedIn()
+  $scope.isEmailVerified = ->
+    AbilityService.isEmailVerified()
   $scope.currentComponent = 'nothing yet'
+
+  $translate.onReady -> $scope.translationsLoaded = true
 
   # NB: $scope.refresh triggers the ng-if for the ng-outlet in the layout.
   # This means that we re-initialize the controller for the page, which is what we want
@@ -26,7 +30,12 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
     IntercomService.boot()
     MessageChannelService.subscribe()
 
+  setTitle = (title) ->
+    document.querySelector('title').text = _.trunc(title, 300) + " | #{AppConfig.theme.site_name}"
+    Session.pageTitle = title
+
   $scope.$on 'currentComponent', (event, options = {}) ->
+    setTitle(options.title or $translate.instant(options.titleKey))
     Session.currentGroup = options.group
     IntercomService.updateWithGroup(Session.currentGroup)
 
@@ -35,9 +44,6 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
     ScrollService.scrollTo(options.scrollTo or 'h1') unless options.skipScroll
     $scope.links = options.links or {}
     $scope.forceSignIn() if AbilityService.requireLoginFor(options.page) or AppConfig.pendingIdentity?
-
-  $scope.$on 'setTitle', (event, title) ->
-    document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
 
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error

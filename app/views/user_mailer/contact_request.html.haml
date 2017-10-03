@@ -1,0 +1,3 @@
+%p.user-mailer__contact-request-context= t(:"email.contact_request.intro", name: @contact_request.sender.name, email: @contact_request.sender.email)
+%div.user-mailer__contact-request= render_rich_text @contact_request.message
+%p.user-mailer__contact-request-context= t(:"email.contact_request.footer", name: @contact_request.sender.first_name)

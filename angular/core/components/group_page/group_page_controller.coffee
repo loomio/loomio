@@ -47,10 +47,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       max:      maxDiscussions
       pageType: 'groupThreads'
 
-    $rootScope.$broadcast 'viewingGroup', @group
-    $rootScope.$broadcast 'setTitle', @group.fullName
-    $rootScope.$broadcast 'analyticsSetGroup', @group
     $rootScope.$broadcast 'currentComponent',
+      title: @group.fullName
       page: 'groupPage'
       group: @group
       key: @group.key

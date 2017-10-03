@@ -14,58 +14,24 @@ tr:
       intro: "%{who} %{group} grubunda yeni bir duyuru yaptı:"
     by_who: '%{person} tarafından'
     reply_to_this_discussion: Bu müzakereyi yanıtla
-    to_join_discussion:
-      subject: "%{who} , Loomio'da senin bir müzakereye katılmanı istiyor "
-      content: 'Müzakere''de yer almanız için davet edildiniz : %{discussion}'
-      message_intro: "%{who} diyor ki:"
-      link: Müzakereye katıl
-    value_proposition: "Loomio, grupların birlikte karar vermeleri için bir yerdir"
     view_group: Grubu gör
     to_join_group:
-      subject: "%{member} , Loomio'da sizi  %{group_name} grubuna katılmaya davet etti"
       invitation_text: "%{member} sizi %{group_name} grubuna davet etti."
       invitation_text_html: "sizi gruba davet etti"
       link_help: "Davetiyeyi kabul etmek için aşağıdaki bağlantıyı tıklayın:"
       accept_invitation: "Daveti onayla"
-    to_start_group:
-      subject: "Yeni Loomio grubunu aç: %{group_name}"
-      hi: "Merhaba %{name},"
-      intro: "%{group_name} grubunuzun kurulumunu yapmak için aşağıdaki bağlantıyı tıklayın:"
-      thanks: "Teşekkürler"
     user_added_to_group:
       link_help: "Gruba gitmek için aşağıdaki bağlantıyı tıklayın:"
     unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
-    view_comment: Bu yorumu Loomio'da görüntülemek için buraya tıkla
-    view_discussion: Bu müzakereyi görüntülemek için buraya tıkla
-    daily_activity:
-      heading: Loomio Aktiviten
-      intro: Son 24 saat içinde Loomio gruplarınızda neler olduğunu gösterir
-      subject: Loomio - Son 24 saatin özeti
     missed_yesterday:
-      subject: Loomio'da dün
       headlines: Ana başlıklar
       mark_as_read: Okundu olarak işaretle
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
-    comment_replied_to:
-      context_html: 'şurada yorumunu yanıtladı '
-      subject: "%{who} Loomio'daki %{which} grubunda yorumunuzu yanıtladı"
-    new_comment:
-      context: 'şurada yorumlandı'
     membership_request:
-      intro: "%{name} (%{email}) Loomio gruplarından birine erişim hakkı istedi."
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
-    thread_mailer:
-      footer_text: 'Bu e-postayı doğrudan yanıtlayın veya %{hostname} üzerinde görüntüleyin:'
-      reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
-      turn_off_notifications_html: "Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>."
-      turn_off_notifications_text: 'Bu müzakere için e-postaları devre dışı bırakın: %{url}'
-      turn_on_notifications_html: "Bundan sonraki faaliyet bildirimlerini alabilmek için <a href='%{url}'>bu müzakerenin e-posta servisini aktive edin</a>."
-      turn_on_notifications_text: 'Bundan sonraki faaliyet bildirimlerini alabilmek için bu müzakerenin e-posta servisini aktive edin: %{url}'
-      change_email_preferences_html: Bu e-posta listesinden çıkmak için <a href='%{email_preferences_url}'>e-posta tercihlerinizi</a> değişitirin.
-      change_preferences: 'E-posta tercihlerini değiştir:'
   footer:
     about: Hakkında
     blog: Blog
@@ -76,49 +42,10 @@ tr:
     public_groups: Genel gruplar
     terms: Şartlar
     independent_install_html: '%{hostname} Loomio''nun bağımsız bir kopyasını çalışıtırıyor: <a href="http://github.com/loomio/loomio">daha fazla bilgi</a>.'
-  start_group_form:
-    enable_angular:
-      header: Yeni gruplar Loomio 1.0'da başlatılır
-      subtitle: 'Yeni bir grup başlatmak için Loomio''nun yeni sürümüne geçmeniz gerekiyor:'
-      switch_to_angular: Yeni Loomio'da bir grup başlat.
-      helptext: Biz Loomio'yu baştan aşağı yeniden inşa ettik. Nelerin yeni olduğunu <a href="/angular">buradan</a> okuyabilirsiniz.<br/>Eski sürüme istediğiniz zaman geçiş yapmanız mümkün.
-    header: Yeni bir grup başlat
-    form_error: Bazı bilgiler eksik veya yanlış.
-    name: Adın
-    name_error: Ad gereklidir
-    email: E-posta adresin
-    email_error: E-posta adresi geçerli değil.
-    group_name: Grup adı
-    group_description: Grup açıklaması
-    group_description_placeholder: Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.
-    group_name_error: Grup adı gereklidir
-    pricing_html: 30 gün içinde, bir <a href='%{link}' target='_blank'>fiyatlandırma planı</a> seçmenizi isteyeceğiz.
-    terms_html: Bir grup başlatarak, Loomio'nun <a href='%{link}' target='_blank'>Hizmet Koşullarını</a>kabul etmiş sayılırsınız.
-    success:
-      header: Neredeyse bitti! E-postanızı kontrol edin.
-      email_delivered: '%{email} adresini bir e-posta gönderdik. Lütfen yeni grubunuzun kurulumu için e-postadaki bağlantıyı takip ediniz.'
-      email_not_arrived: E-posta gelmedi mi?
-      please_hold: Lütfen e-postanın ulaşması için beş 5 dakika kadar bekleyin ve spam klasörünü kontrol ettiğinizden emin olun.
-    start_making_decisions: 'Loomio üzerinde birlikte kararlar almaya başlamak için, ücretsiz bir grup kurun:'
   invitation_form:
     error:
       all_email_addresses_belong_to_members: "Sağladığınız e-posta adresleri zaten grupta bulunan kişilere ait olduğundan dolayı bunlara davetiye göndermedik."
   password_reset:
-    email_guidelines_html: |
-      <p>Aşağıdaki alana Loomio hesabınızın e-posta adresini girin. Size bir şifre sıfırlama bağlantısı gönderilecektir.</p>
-      <p>Eğer normalde Facebook, Google, Twitter veya Persona aracılığıyla oturum açıyorsanız, o hesapla ilişkili e-posta adresini girin.</p>
     reset_email_timeframe: E-postanın ulaşması 5 dakikaya kadar sürebilir. Eğer e-posta ulaşmazsa, spam klasörünüzü kontrol ettiğinizden emin olun.
     length_restriction: Şifreler en az 8 karakter uzunluğunda olmalıdır.
     forbidden_passwords: ' "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
-  contact_page:
-    contact_us: Bize yazın
-    faq_prompt_html: Loomia takımına bir sorunuz mu var? Bize başvurmadan önce, sıkça sorulan sorular alanında cevabı bulmanız mümkün olabilir.
-    contact_information: Eğer aradığınızı bulamazsanız, sayfanın alt kısmında iletişim bilgilerimizi bulabilirsiniz.
-    contact_form: İletişim formu
-    labels:
-      name: Adın
-      email: E-posta adresin
-      message: Mesajın
-      submit: Mesaj gönder
-    messages:
-      email_html: "Bu forumu doldurun, ya da <a href='mailto:%{email}'>%{email}</a> adresine bir E-posta gönderin"

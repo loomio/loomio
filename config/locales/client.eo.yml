@@ -38,15 +38,8 @@ eo:
       add_subgroup: 'Aldoni subgrupon'
       loading: 'Ŝargiĝas'
       uploading: 'Alŝutiĝas'
-    formatting_help:
-      title: 'Lerni kiel uzi Markdown por formatigi vian tekston en Loomio'
   error_page:
     forbidden: 'Vi ne havas permeson fari ĉi tion'
-  proposal_outcome_panel:
-    heading: Rezulto
-  proposal_outcome_form:
-    outcome_label: Propona rezulto
-    publish_outcome: Publikigi rezulton
   inbox:
     unread: 'Nelegitaj'
   comment_form:
@@ -66,34 +59,11 @@ eo:
     header: "Sciigoj"
   position_buttons_panel:
     heading: Donu vian opinion
-  vote_form:
-    heading: Donu vian opinion
-    i_agree: 'Konsentite'
-    i_abstain: 'Mi sindetenas'
-    i_abstain_details: 'Mi senĝene akceptas, ke la grupo decidu sen mia partopreno.'
-    i_disagree: 'Mi malkonsentas'
-    i_disagree_details: 'Mi opinias, ke ni probable povas plibonigi tion.'
-    i_block: 'Mi blokas'
-    i_block_details: 'Mi havas fortan kontraŭstaron kontraŭ tiu ĉi propono kaj mi tue ne konsentas daŭrigi laŭ tiu vojo.'
-    submit_position: 'Submeti sintenon'
-  proposal_positions_panel:
-    heading: Sintenoj
-  close_proposal_form:
-    close_proposal: 'Fermi proponon'
-  proposal_form:
-    start_proposal: 'Starigi proponon'
-    edit_proposal: 'Redakti proponon'
-    title_label: 'Titolo'
-    closes_at_label: 'Fermiĝos je'
-    details_label: 'Detaloj'
   discussion_form:
     group_label: 'Grupo'
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
-  proposal_expanded:
-    edit_proposal: 'Redakti proponon'
-    close_proposal: 'Fermi proponon'
   join_group_button:
     join_group: Aliĝi al la grupo
   membership_request_form:
@@ -155,76 +125,6 @@ eo:
     name_label: 'Via nomo'
     email_label: 'Via retpoŝtadreso'
     message_label: 'Via mesaĝo'
-  help_page:
-    coordinating: 'Kunordigante vian Loomio-grupon'
-    coordinating_details: |
-      Kiel kunordiganto vi respondecas pri konfigurado de via Loomio-grupo kaj invito
-      de ĉiuj al ĝi. Kune kun la lernado de nova programo, via grupo ankaŭ lernos novajn
-      procesojn por kunlabori pli efike kaj fari bonajn decidojn kune. Jen kelkaj konsiloj
-      por helpi vian grupon sukcesi:
-    different_ways: 'Malsamaj manieroj por uzi Loomion'
-    example1_html: |
-      <h3>Vi bezonas ke la grupo diskutu larĝan temon kaj kune pripensu solvon</h3>
-      <p>Strategio: diskutu temon dum iom da tempo antaŭ ol krei proponon.</p>
-      <p>Diskutoj ofte atingas la plej bonan konkludon se vi konstruas komunan komprenon
-      pri la problemo antaŭ ol salti al specifa solvo. Kiam homoj partoprenas en la proceso, ili multe pli verŝajne konsentos kun la konkludo.</p>
-    get_in_touch: "Ekkontakti"
-    get_in_touch_description_html: "Se vi havas ajnajn demandojn aŭ retrokuplon, <a href='%{link}'>kontaktu nin</a>"
-    getting_started: "Ekkomenci"
-    getting_started_description: "Maldekstre, la grupo diskutas pri temo, interŝanĝas ideojn kaj informojn. Kiam la grupo devos decidi pri io, aperos dekstre."
-    getting_the_most: 'Fari kiel eble plej per Loomio'
-    have_your_say: "Donu vian opinion"
-    have_your_say_details_html: |
-      <p>Se vi pretas por montri vian opinion, alklaku unu el la kvar decidbutonojn.</p>
-      <p>Se vi faris vian decidon, mallonge klarigu. Sub la grafiko, vi povas vidi kion ĉiuj aliaj pensas.
-      Tio ebligas rapide kaj facile vidi kio okazis en la diskuto. Dum novaj informoj aperas, vi ajnamomente povas ŝanĝi vian opinion.</p>
-    have_a_discussion: "Havi diskuton"
-    have_a_discussion_description: "La temo kaj ĉiaj rilataj foninformoj estas je la supro de la paĝo. Uzu la komentkeston por aldoni vian voĉon al la diskuto."
-    help: "Helpo"
-    how_it_works: "Kiel funkcias"
-    invitation_html: |
-      <h2>Verki bonegan inviton</h2>
-      <p>La unua demando kiun ĉiu nova membro al si faros estas 'por kio uziĝas ĉi tiu grupo?'</p>
-      <p>Pensu pri la plej simpla maniero priskribi la grupon: Kion vi volas kune atingi? Kiajn decidojn vi faros? Kiuj envolviĝos?</p>
-      <p>Povas esti bona ideo unue paroli al via grupo antaŭ ol inviti ilin aliĝi al Loomio.</p>
-      <p>Oni volas scii kial ili estis invititaj, kion oni atendas de ili, kaj kial indas ilia tempo por lerni
-      kiel uzi la novan ilon.</p>
-    join_the_community: "Aliĝi al la komunumo"
-    images_and_text_formatting: "Bildoj kaj teksta formatado"
-    images_and_text_formatting_html: |
-      <p>Loomio uzas 'Markdown' por bildenmetado kaj tekstformatado.
-      Vi povas enŝalti Markdown per la malgranda griza emblemo sub la komentkesto.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Klaku ĉi tie</a>
-      por informiĝi kiel uzi Markdown.</p>
-    keep_up_to_date: "Resti ĝisdata"
-    keep_up_to_date_html: |
-      <p>Per klako sur la nomo de via grupo supre de la ekrano, vi iros al la gruppaĝo,
-      kaj tie vi povas vidi liston da ĉiuj diskutoj kaj decidoj de tiu grupo. Se vi estas en
-      pli ol unu grupo, vi povas vidi ĉiujn aktivecojn de ĉiuj viaj grupoj kune en la hejmpaĝo.</p>
-      <p>Vi ricevos retpoŝtajn sciigojn kiam gravaj aferoj okazas en via grupo.
-      Vi povas ŝanĝi viajn retpoŝtajn preferojn <a href="%{link}"">ĉi tie</a>.</p>
-    make_a_decision: "Fari decidon"
-    make_a_decision_description: "Kiam la grupo pretas por fari decidon, ĉiuj povas fari proponon. Desegnu klaran agoplanon kaj donu iom da fono por ke ĉiuj sciu ekzakte kion volas diri konsento aŭ malkonsento."
-    prompt_people_details: "Se vi volas voki la atenton de specifa persono en via grupo, tajpu '@' sekve de ties nomo. Tiu persono ricevos retpoŝtaĵon sciigante ilin ke vi menciis ilin en komento."
-    prompt_people_html: "Demandu partoprenantojn kun  <span class='blue'>@mentions</span>"
-    positions_agree_description: "<span>Konsento</span> volas diri ke vi feliĉas pri la propono."
-    positions_abstain_description: "<span>Abstino</span> volas diri ke vi ne certas, aŭ ke vi senprobleme lasos ke la grupo decidu sen vi."
-    positions_disagree_description: "<span>Malkonsento</span> volas diri ke vi pensas ke eble estas pli bona alternativo, sed vi pretas iri kun la grupa decido."
-    positions_block_description: "<span>Blokado</span> volas diri ke vi serioze obĵetas kaj ke vi tre malfeliĉos se ĉi tiu propono estos efektigata."
-    start_discussion: "Komence de egaĝiĝa diskuto"
-    start_proposal: "Verkante klaran proponon"
-    start_proposal_html: |
-      <p> Farante la titolon klara kaj mallonga, homoj tuj scios kion signifas konsenti aŭ malkonsenti.</p>
-      <p>Ne estas teruraĵo se propono ne tuj trovas klaran konsenton.
-      Se la grupo ne amas la unuan proponon, kiu ajn povas komenci novan proponon
-      responde al la duboj, kaj antaŭenigadi la proceson.</p>
-      <p>Tra ĉi tiu dinamika proceso, la kuna saĝeco de via grupo povas krei pli bonajn ideojn
-      ol iu ajn memstare povintus fari.</p>
-      <p>La limdato pri propono kiam ajn povas esti longigata, se vi bezonas iom pli da spaco
-      por la decido. Ĉiuj ricevos retpoŝtan sciigon 24 horojn antaŭ la fino de la propono.</p>
-    video_id: "52025402"
-    video_tutorial: "Video-klarigo"
-    video_tutorial_description: "Vidu la filmeton por rapida elmontro kiel uzi Loomion."
   hint:
     context: 'Konsiloj por uzo de la kunteksto-panelo'
     discussion: 'Konsiloj por komenci engaĝigan diskuton'

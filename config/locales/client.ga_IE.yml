@@ -81,38 +81,13 @@ ga_IE:
       subscribe: Liostáil
     formatting_help:
       label: 'Formáidiú'
-      title: 'Foghlaim conas feidhm a bhaint as Markdown chun do théacs ar Loomio a fhormáidiú'
   error_page:
     forbidden: 'Níl cead agat é sin a dhéanamh.'
     page_not_found: 'Theip orainn sin a aimsiú. B''fhéidir gur scriosadh é nó bogadh é.'
     internal_server_error: 'Is dona linn seo. Tá rud éigin cearr. Déan arís é le do thoil.'
-  start_proposal_card:
-    title: 'Tosaigh togra'
-    helptext: An bhfuil tú réidh chun cinneadh a dhéanamh?
-  proposal_outcome_panel:
-    heading: Toradh
-    set_outcome_hint: Bain feidhm as an áit seo chun toradh an togra a chur in iúl do chách.
-    set_outcome_btn: Socraigh an toradh
-    edit_outcome_link: Cuir an toradh in eagar
-  proposal_outcome_form:
-    set_outcome: Socraigh toradh an togra
-    update_outcome: Nuashonraigh toradh an togra
-    outcome_label: Toradh an togra
-    outcome_placeholder: Cuir toradh an togra in iúl do chách.
-    publish_outcome: Foilsigh an toradh
-    messages:
-      created: Foilsíodh an toradh
-      updated: Nuashonraíodh an toradh
-  previous_proposals_card:
-    heading: Tograí Roimhe Seo
-  previous_proposals_page:
-    heading: Tograí roimhe seo
   previous_polls_page:
     heading: Gníomhaíocht in {{ainm}}
     search_activities: Cuardaigh cinntí
-  proposal_collapsed:
-    expand: Fairsingigh
-    outcome: 'Toradh: {{outcome}}'
   volume_levels:
     loud: 'Ard'
     normal: 'Gnáth'
@@ -150,17 +125,8 @@ ga_IE:
     unread: 'Neamhléite'
     closing_in: 'Ag dúnadh'
   sign_up_form:
-    aria_label: 'Foirm le clárú'
-    title: "Fáilte go Loomio! Cuirimis tús le rudaí"
-    name_label: 'D''ainm:'
-    name_placeholder: 'Siobhán Ní Shúilleabhán'
-    email_label: 'Seoladh ríomhphoist:'
-    email_placeholder: 'tusa@suiomh.com'
     password_label: 'Focal faire:'
     password_confirmation_label: 'An focal faire arís:'
-    sign_in_message: 'An bhfuil cuntas agat cheana féin?'
-    sign_in: 'Sínigh isteach'
-    sign_up: 'Cruthaigh cuntas'
   signed_out_modal:
     aria_label: 'Críochnaigh an dreas'
     title: "Chríochnaigh do dhreas"
@@ -224,57 +190,11 @@ ga_IE:
     poll_expired: "Tá {{poll_type}} dúnta: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Abair leat
-  vote_form:
-    heading: Abair leat
-    no_statement: Gan ráiteas.
-    i_agree: 'Aontaíom'
-    i_agree_details: 'Aontaím le seo agus is mian liom go rachaidh ar aghaidh.'
-    i_abstain: 'Staonaim'
-    i_abstain_details: 'Táim sásta go ndéanfaidh an bhaicle cinneadh gan mise.'
-    i_disagree: 'Ní aontaíom'
-    i_disagree_details: 'Dar liom, tig linn rud éigin níos fearr a dhéanamh.'
-    i_block: 'Crosaim é'
-    i_block_details: 'Táim glan i gcoinne an togra seo agus ní mian liom go rachaidh sé ar aghaidh ar chor ar bith.'
-    submit_position: 'Cuir seasamh isteach'
-    change_position: 'Athraigh do sheasamh'
-    select_position: 'Roghnaigh seasamh'
-    statement_placeholder: 'Roinn do smaointe le cách.'
-    aria_statement_label: 'Nó tá rogha agat ráiteas a chur le do sheasamh'
-    messages:
-      created: Cuireadh do ghuth leis
-  proposal_positions_panel:
-    heading: Seasaimh
-    no_votes_yet: Níor chaith aon duine a ghuth i dtaobh an togra seo fós.
-    change_your_vote: Athraigh do sheasamh.
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% na gcomhaltaí a luaigh a seasamh ({{number}}/{{total}})'
-  close_proposal_form:
-    aria_label: 'Dún an togra'
-    close_proposal: 'Dún an togra'
-    helptext: 'An bhfuil tú cinnte gur mian leat an togra seo a dhúnadh anois?'
-    close_proposal_submit: 'Dún an togra'
-    messages:
-      success: Tá an togra dúnta
   extend_proposal_form:
     aria_label: Athraigh an t-am a dhúnfar é
     title: 'Athraigh an t-am a dhúnfar an togra'
     success: 'Nuashonraíodh an t-am a dhúnfar an togra'
     submit: 'Nuashonraigh an t-am a dhúnfar an togra'
-  proposal_form:
-    messages:
-      created: 'Cuireadh tús leis an togra'
-      updated: 'Nuashonraíodh an togra'
-    start_proposal: 'Tosaigh an togra'
-    start_a_proposal: 'Tosaigh togra'
-    edit_proposal: 'Leasaigh an togra'
-    what_does_a_proposal_do: 'Ligeann do thograí duit léargas a fháil ar conas mar a bhraitheann gach duine faoi ghníomhartha.'
-    proposal_ideas: An bhfuil smaointe ag teastáil uait chun togra maith a scríobh?
-    proposal_ideas_title: 9 mbealach chun feidhm a bhaint as togra de chuid Loomio chun caint a thiontú go gníomh
-    title_placeholder: 'M.sh: Rachaimis chuig an ghealach'
-    title_label: 'Teideal'
-    closes_at_label: 'Dúnann sé ag a'
-    closes: 'Dúnann sé'
-    details_label: 'Sonraí'
   discussion_record:
     created: 'Cruthaíodh an tsnáithe {{title}} go rathúil i {{groupName}}'
     updated: 'Taisc na hathruithe ar an {{title}}'
@@ -292,28 +212,6 @@ ga_IE:
     context_placeholder: 'Cuir dóthain eolas cúlra ar fáil don bhaicle le go mbeidh an plé torthúil. Is féidir seo a nuashonrú fad is atá an plé ar bun'
     privacy_label: 'Príobháideachas'
     make_announcement: Fógra
-  proposal_expanded:
-    collapse: Leacaigh
-    current_votes: Na guthanna reatha a chaitheadh
-    started_by: 'Tosaithe ag <strong>{{name}}</strong>'
-    only_voter_is_you: 'Níor chaith aon chomhalta eile a ghuth fós.'
-    extend_proposal: 'Athraigh an t-am a dhúnfar an togra'
-    edit_proposal: 'Leasaigh an togra'
-    close_proposal: 'Dún an togra'
-    closed_badge: Dúnta
-  proposal_position_yes: 'Aontaigh'
-  proposal_position_abstain: 'Staon'
-  proposal_position_no: 'Easaontaigh'
-  proposal_position_block: 'Cros'
-  legacy_trial_expired_modal:
-    heading: "Go raibh maith agat as ucht feidhm a bhaint as Loomio an bhliain seo!"
-    submit: "Taispeáin na bearta chugam"
-  group_welcome_modal:
-    aria_label: "Fáilte"
-    creator_heading: "Fáilte chuig do bhaicle nua"
-    member_heading: "Fáilte go dtí Loomio"
-    creator_footer: "Nuair atá tú réidh, <strong>tabhair cuirí do dhaoine</strong> chun teacht isteach ann."
-    ok_got_it: "Maith go leor, tuigim é!"
   cover_photo_form:
     heading: 'Grianghraf cumhdaigh nua'
     upload_link: 'Uasluchtaigh grianghraf cumhdaigh nua'
@@ -387,19 +285,6 @@ ga_IE:
     title: 'Díghníomhachtaigh an bhaicle'
     question: 'An bhfuil tú cinnte gur mian leat an bhaicle seo a dhíghníomhachtú?'
     submit: 'Táim, díghníomhachtaigh an bhaicle'
-  confirm_gift_plan_modal:
-    got_it: Fan mar shaor in aisce
-    go_back: Uasghrádaigh
-  donation_modal:
-    heading: An bhronnfá airgead ar Loomio?
-    contribute: Bronn airgead
-    got_to_group: Ní anois, go raibh maith agaibh.
-  gift_card:
-    make_a_contribution: Bronn airgead
-  upgrade_plan_card:
-    more: '... agus a lán eile.'
-    upgrade: Uasghrádaigh anois
-    donate: Bronn airgid
   group_form:
     start_group_heading: 'Cuir baicle ar bun'
     group_name: 'Ainm na baicle'
@@ -418,8 +303,6 @@ ga_IE:
   membership_requests_card:
     heading: 'Iarratais le bheith mar chomhalta'
     manage_requests: Riar na hiarratais
-  group_help_card:
-    title: Cabhair
   membership_requests_page:
     heading: Iarratais le bheith mar chomhalta
     approve: Ceadaigh
@@ -476,8 +359,6 @@ ga_IE:
     cancel: 'Ná cealaigh é'
     messages:
       success: Cuireadh curtha ar ceal
-  user_page:
-    introduction: Réamhrá
   profile_page:
     messages:
       updated: 'Nuashonraíodh an bheathaisnéisín'
@@ -570,13 +451,6 @@ ga_IE:
     proposals: 'Tograí'
     previous_proposals: 'Tograí Roimhe Seo'
     load_previous: 'Luchtaigh gníomhaíocht níos luaithe ná seo'
-    you_like_this: 'Is maith leat seo.'
-    liked_by_you_and_someone: 'Is maith leatsa agus {{name}} seo.'
-    liked_by_you_and_others: 'Léirigh tusa, {{joinedNames}} agus {{name}} gur maith libh seo.'
-    liked_by_someone: 'Is maith le {{name}} seo.'
-    liked_by_two_others: 'Is maith le {{name_1}} agus {{name_2}} seo.'
-    liked_by_many_others: 'Thaitin sé le {{joinedNames}} agus {{name}}.'
-    liked_by_name: 'Thaitin sé le {{name}}.'
     started_by: 'Tosaithe ag <strong>{{name}}</strong> '
     edited: 'Curtha in eagar'
     volume:
@@ -628,49 +502,13 @@ ga_IE:
     message_label: 'Do theachtaireacht'
     message_placeholder: 'Do theachtaireacht...'
     send_message: 'Seol an teachtaireacht'
-  help_page:
-    coordinating: 'Ag déanamh comheagar ar do bhaicle Loomio'
-    different_ways: 'Bealaí éagsúla chun feidhm a bhaint as Loomio'
-    get_in_touch: "Déan teagmháil"
-    get_in_touch_description_html: "Má tá aon cheist nó aiseolas agat dúinn, <a href='%{link}'>cuir teachtaireacht chugainn</a>."
-    getting_started: "Ag tosú ar dtús báire"
-    getting_the_most: 'Bain an leas is fearr as Loomio'
-    have_your_say: "Abair leat"
-    have_a_discussion: "Bíodh plé ann"
-    help: "Cabhair"
-    how_it_works: "Conas mar a fheidhmíonn sé"
-    join_the_community: "Bí sa phobal"
-    images_and_text_formatting: "Íomhánna agus formáidiú an téacs"
-    keep_up_to_date: "Fan ar an eolas"
-    make_a_decision: "Déan cinneadh"
-    prompt_people_html: "Spreag daoine le <span class='blue'>@tráchtanna</span>"
-    positions_agree_description: "Ciallaíonn <span>Aontaíom</span> go bhfuil tú sásta leis an dtogra."
-    positions_abstain_description: "Is éard is brí le <span>Staon</span> ná nach bhfuil tú cinnte, nó go bhfuil tú sásta go ndéanfaidh an bhaicle cinneadh gan tú."
-    positions_disagree_description: "Is éard is brí le h<span>Easaontú</span> ná go bhfuil tú den tuairim b'fhéidir go bhfuil rogha níos fearr ann, ach tá tú sásta glacadh le cinneadh na baicle."
-    positions_block_description: "Is éard is brí le <span>Cros</span> ná go bhfuil tú glan i gcoinne an togra agus beidh tú thar a bheith míshásta má leanann an togra ar aghaidh."
-    start_discussion: "Cuir tús le plé meallacach"
-    start_proposal: "Ag scríobh togra soiléir"
-    video_id: "52025402"
-    video_tutorial: "Físeán teagaisc"
-    video_tutorial_description: "Breathnaig ar an bhfíseán chun taispeántas tapa a fheiceáil conas feidhm a bhaint as Loomio"
   hint:
     discussion: 'Leideanna chun tús a chur le plé mealltach'
     invitation: 'Leideanna chun cuireadh den scoth a scríobh'
     proposal: 'Leideanna chun togra soiléir a scríobh'
     vote: 'Tig leat do sheasamh a athrú am ar bith'
-  angular:
-    give_feedback: 'Tabhair aiseolas dúinn'
-    collapse: Leacaigh
-    enable:
-      invite: 'Bain triail as an Loomio nua!'
-      title: 'Bain triail as an Loomio nua'
-      button_text: 'Cumasaigh an Loomio nua'
-    disable:
-      title: 'Go raibh maith agat as ucht triail a bhaint as an Loomio nua'
-      button_text: 'Fill ar an seanLoomio'
   global:
     messages:
-      app_update: 'Tá leagan nua de Loomio ar fáil'
       reload: 'Athluchtaigh é'
   emoji_picker:
     search: "Aimsigh emoji..."

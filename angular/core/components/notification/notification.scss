@@ -1,5 +1,5 @@
 .notification {
-  @include displayFlex;
+  display: flex;
   @include listTransition;
   padding: 13px;
 }
@@ -16,5 +16,4 @@
 
 .notification__content {
   flex-shrink: 2;
-  -webkit-flex-shrink: 2;
 }

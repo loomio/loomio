@@ -20,16 +20,22 @@ module Dev::PollsHelper
     saved(build_fake_poll_in_group)
   end
 
-  def create_fake_stances(poll: )
-    poll.poll_option_names.each do |name|
-      (0..3).to_a.sample.times do
-        u = fake_user
-        poll.group.add_member!(u) if poll.group
-        poll.stances.create!(poll: poll,
-                             choice: name,
-                             participant: u,
-                             reason: [Faker::Hipster.sentence, ""].sample)
+  def create_fake_stances(poll:)
+    (2..4).to_a.sample.times do
+      u = fake_user
+      poll.group.add_member!(u) if poll.group
+      index = 0
+      choice = if poll.minimum_stance_choices > 1
+        poll.poll_options.sample(poll.minimum_stance_choices).map do |option|
+          [option.name, index+=1]
+        end.to_h
+      else
+        poll.poll_option_names.sample
       end
+      poll.stances.create!(participant: u,
+                           poll: poll,
+                           choice: choice,
+                           reason: [Faker::Hipster.sentence, ""].sample)
     end
     poll.update_stance_data
   end

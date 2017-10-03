@@ -45,17 +45,21 @@ zh_TW:
       <p>您為您的群組 <a href="/g/%{group_key}">%{group}</a> 選擇了免費方案</p>
   user_mailer:
     accounts_merged:
-      subject: "您的 Loomio 使用者帳號已經合併。"
+      subject: "您的 %{site_name} 使用者帳號已經合併。"
       body_html: |
         %{name} 您好，
         您的兩個 Loomio 帳號已經合併為一個。
         從現在開始，要存取 Loomio，請使用 <strong>%{email}</strong> 登入。
   email:
     login:
-      subject: 登入 Loomio
-      intro: '%{name}，您好，這是用來登入您的 Loomio 帳號的連結。'
-      login: 以 %{name} 的身份登入 Loomio
+      subject: 登入到 %{site_name}
+      intro: 嗨 %{name}，這是用來登入您的 %{site_name} 帳號的連結。
+      login: 以 %{name} 的身份登入
       resend: 這個連結將會在24小時後過期且僅可使用一次。
+    contact_request:
+      subject: "%{name} 想要與您在 %{site_name} 上連線！"
+      intro: "%{name} (%{email}) 已經傳送給您一個連線的請求。"
+      footer: "您可以透過回覆此封電子郵件來直接回應到 %{name}。"
     reset_password:
       greeting: |
         嗨，%{name}
@@ -74,91 +78,66 @@ zh_TW:
       poll: 啟動投票
       dot_vote: 啟動點投票
       meeting: 排定時間
+      ranked_choice: 開始排名選擇
     custom: "%{text}"
     group_email:
       intro: "%{who} 在 %{group}裡發布了一則公告："
     by_who: '%{person}'
     reply_to_this_discussion: 回應此討論串
-    to_join_discussion:
-      subject: "%{who} 希望您加入在 Loomio 上的討論串"
-      content: '您被邀請參與討論：%{discussion}'
-      message_intro: "%{who} 說："
-      link: 加入討論串
-    value_proposition: "Loomio 是一個讓群組共同做出決策的地方"
+    value_proposition: "%{site_name} 是一個讓群組共同做出決策的地方"
     view_group: 檢視群組
     to_join_group:
-      subject: "%{member} 邀請您加入 Loomio 的 %{group_name} 群組"
+      subject: "%{member} 已邀請您加入在 %{site_name} 上的 %{group_name}"
       invitation_text: "%{member} 邀請您加入他們的 %{group_name} 群組。"
       invitation_text_html: "已經邀請您加入他們的群組"
       link_help: "點選下面的連結以接受邀請："
       accept_invitation: "接受邀請"
     resend_to_join_group:
-      subject: "%{member} 正等候您加入在 Loomio 上的 %{group_name}"
-    to_start_group:
-      subject: "設定您的新 Loomio 群組： %{group_name}"
-      hi: "%{name} 您好，"
-      intro: "點選以下連結以設定您的群組 %{group_name} ："
-      intro_html: "在下面點選以設定您的群組："
-      start_group: "建立我的群組"
-      closing_message: "若您需要協助或是有問題，請回覆本電子郵件。"
-      thanks: "謝謝，"
-      loomio_team: "Loomio 團隊"
+      subject: "%{member} 正等待您加入在 %{site_name} 上的 %{group_name}"
     user_added_to_group:
-      subject: "%{who} 將您加入至在 Loomio 上的 %{which_group}"
+      subject: "%{who} 將您加入至在 %{site_name} 上的 %{which_group}"
       content: "%{who} 將您加入至 %{which_group}。"
       content_html: "<strong>%{who}</strong> 將您加入到了 <strong>%{which_group}</strong>。"
       link_help: "點選以下的連結以前往該群組："
     unsubscribe: '取消訂閱或者變更您的電子郵件偏好設定：'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
-    view_comment: 點擊此處，您可以看到在 Loomio 上的意見。
-    view_discussion: 點擊此處，您可以看到這條討論串。
-    create_discussion:
-      intro_html: "啟動討論串："
-      intro: "%{who} 啟動了一個討論串："
-    daily_activity:
-      heading: 您的 Loomio 動態
-      intro: 顯示過去 24 小時內在您的 Loomio 群組中發生了甚麼新鮮事
-      subject: Loomio — 過去 24 小時的摘要
     missed_yesterday:
-      subject: 昨日 Loomio
+      subject: 昨日 %{site_name}
       do_not_reply: 請不要回覆此封電子郵件。
       headlines: 頭條
       mark_as_read: 設為已讀
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
-      heres_what_happened: "這裡是 Loomio 上昨天發生的事情。"
+      heres_what_happened: "這裡是 %{site_name} 上昨天發生的事情。"
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
-    comment_replied_to:
-      context_html: '回覆您的意見在'
-      context: '%{author_name} 在討論串 %{discussion_title} 回覆您的意見'
-      subject: "%{who} 在 Loomio %{which} 群組中回覆了您的意見"
-    new_comment:
-      context: '意見在'
     group_membership_approved:
       intro: "您加入「%{group_name}」群組的申請已獲批准。"
       intro_html: "您加入 <strong>%{group_name}</strong> 群組的申請已獲批准。"
       link_help: "點選以下的連結以加入 %{group_name} 並開始："
-      subject: "您加入在 Loomio 上的 %{group_name} 的請求已獲批准。"
+      subject: "您加入 %{group_name} 群組的申請已獲批准。"
       join_group: "加入群組"
-      view_group_text: "在下面點選以檢視在 Loomio 上的群組："
     membership_request:
-      intro: "%{name} (%{email}) 申請加入您的 Loomio 群組。"
       intro_html: 申請加入您的其中一個群組。
       subject: "%{who} 申請加入 %{which_group}"
       view_group: 您可點此批准或拒絕申請
       button_text: 檢視申請
-    mentioned:
-      context_html: "提及您當討論"
-      context: "%{author_name} 在討論 %{discussion_title} 時提到您"
-      subject: '%{who} 在討論「%{which}」時提到您'
-    thread_mailer:
-      footer_text: '直接回覆本電子郵件，或是到 %{hostname} 上觀看：'
-      reply_or_view_online_html: 直接回覆此 Email，或是<a href='%{url}'>在 %{hostname} 上觀看</a>。
-      turn_off_notifications_html: "為此討論<a href='%{url}'>關閉電子郵件</a>。"
-      turn_off_notifications_text: '為此討論關閉電子郵件：%{url}'
-      turn_on_notifications_html: "<a href='%{url}'>為此討論開啟電子郵件</a> 以接收所有未來的活動。"
-      turn_on_notifications_text: '為此討論開啟電子郵件以接收所有未來的活動：%{url}'
-      change_email_preferences_html: 變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱這些電子郵件。
-      change_preferences: '變更您的電子郵件偏好設定：'
+  email_actions:
+    unfollowed_discussion: 您已經關閉了討論串的電子郵件。
+  thread_mailer:
+    new_discussion:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> 啟動了討論串：%{discussion}"
+    new_comment:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> 評論在：%{discussion}"
+    comment_replied_to:
+      subject: '%{actor} 回覆您在：%{discussion}'
+      subject_html: '<strong>%{actor}</strong> 回覆您在：%{discussion}'
+    user_mentioned:
+      subject: '%{actor} 提到您在：%{discussion}'
+      subject_html: "<strong>%{actor}</strong> 提到您在 %{discussion}"
+    reply_or_view_online_html: 直接回覆這封電子郵件或<a href='%{url}'>在 %{hostname} 上檢視它</a>。
+    turn_off_notifications_html: "在這個討論<a href='%{url}'>關閉電子郵件</a>。"
+    change_email_preferences_html: "變更您的<a href='%{email_preferences_url}'>電子郵件偏好設定</a>。"
   footer:
     about: 關於
     blog: 部落格
@@ -169,30 +148,6 @@ zh_TW:
     public_groups: 公開群組
     terms: 服務條款
     independent_install_html: '%{hostname} 運作的是 Loomio 的獨立副本：<a href="http://github.com/loomio/loomio">詳細瞭解</a>。'
-  start_group_form:
-    enable_angular:
-      header: 在 Loomio 1.0 中啟動的新群組
-      subtitle: '要啟動一個新群組，您將會需要切換到全新版本的 Loomio：'
-      switch_to_angular: 在新的 Loomio 中啟動群組
-      helptext: 我們已從頭開始重建 Loomio。您可以 <a href="/angular">在這裡</a> 閱讀有什麼新東西。<br/>您可以在任何時候切換回舊版的 Loomio。
-    header: 啟動新的群組
-    form_error: 有一些資訊遺失或不正確。
-    name: 您的大名
-    name_error: 名稱必填
-    email: 您的電子郵件
-    email_error: 並非有效的電子郵件地址。
-    group_name: 群組名稱
-    group_description: 群組描述
-    group_description_placeholder: 描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
-    group_name_error: 群組名稱必填
-    pricing_html: 在 30 天內，我們將會詢問您要選取哪一個 <a href='%{link}' target='_blank'>定價方案</a>。
-    terms_html: 要開始一個群組，您即同意遵守 Loomio 的<a href='%{link}' target='_blank'>服務條款</a>。
-    success:
-      header: 您就快完成了！請確認您的電子郵件信箱。
-      email_delivered: 我們已經寄出一封電子郵件到 %{email}。請跟隨裡面的連結設定您的群組。
-      email_not_arrived: 電子郵件尚未抵達？
-      please_hold: 請允許它在五分鐘內到達，並同時也請檢查您的垃圾信資料夾。
-    start_making_decisions: '要開始在 Loomio 上共同作出決策，先免費設定一個群組：'
   invitation_form:
     error:
       too_many_pending: "您在此群組有多於最大 %{count} 個的待處理邀請"
@@ -203,8 +158,8 @@ zh_TW:
     confirm_new_password: 確認密碼
     new_password: 新密碼
     email_guidelines_html: |
-      <p>在下面的欄位中填入您 Loomio 帳號的電子郵件地址，然後您將會收到一個密碼的重置連結。</p>
-      <p>如果您是透過 Facebook、Google、Twitter 或是 Persona 登入的話，請輸入與這些帳號相關聯的電子郵件地址。</p>
+      <p>輸入您的電子郵件，然後您將會收到密碼重設連結。</p>
+      <p>若您透過 Facebook 或 Googld 登入，請輸入與帳號相關聯的電子郵件。</p>
     reset_email_timeframe: 這將會花費 5 分鐘的時間將電子郵件寄到。如果沒有出現，請務必檢查您的垃圾信資料夾。
     length_restriction: 密碼應至少 8 個字元長。
     forbidden_passwords: 常見的密碼，像是「password」將會被拒絕以保護您的帳號安全。
@@ -245,19 +200,6 @@ zh_TW:
       群組有時會透過**一系列的提案**來共同建構解決方案。您可以在此討論串提出連續的提案。
 
       **試著參與吧！點選四個按鈕的其中一個**。
-  contact_page:
-    contact_us: 聯絡我們
-    faq_prompt_html: 對 Loomio 團隊有任何問題？在聯絡我們之前，您應該先在我們的常見問題中找尋答案。
-    contact_information: 如果您找不到您想找的東西，您可以在這個頁面的底部找到我們的聯絡資訊。
-    contact_form: 聯絡表單
-    labels:
-      name: 您的大名
-      email: 您的電子郵件地址
-      message: 您的訊息
-      submit: 寄送訊息
-    messages:
-      email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "您也可以在<br/><a href='%{facebook}' target='_blank'>facebook</a>、<a href='%{google}' target='_blank'>google+</a> 與 <a href='%{twitter}' target='_blank'>twitter</a> 上加入我們！"
   markdown:
     intro:
       title: |
@@ -315,19 +257,11 @@ zh_TW:
         圖片也一樣，但要加驚嘆號前綴。
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
-  beta_banner:
-    new_loomio_html: |
-      <strong>新的 Loomio 又快又漂亮，且更好用了！</strong> 我們正在將每個人都切換過去。
-    upgrade_browser_html: |
-      我們只支援較現代的 Internet Explore (10+) 版本。您需要<a href='http://outdatedbrowser.com/en' target='_blank'>升級您的瀏覽器</a>以繼續使用 Loomio。
-      <strong>新的 Loomio 在這裡！</strong>它又快又漂亮，而且準備好給行動裝置使用了。
-    more_info: 更多資訊...
-    button_text: 切換到新的 Loomio
   poll_mailer:
     common:
       or: 或
       why_send_this: 因為 %{reason}，您收到了這封電子郵件
-      view_on_loomio: 在 Loomio 上檢視
+      view_on_loomio: 在 %{site_name} 上檢視
       unsubscribe: 取消訂閱
       results: 結果
       responses: 回應
@@ -339,6 +273,7 @@ zh_TW:
       undecided_members: 未決定的成員（%{count}）
       undecided_visitors: 未決定的來賓 (%{count})
       more_undecided: "%{count} 更多……"
+      vote_now: 現在投票
       verify_stance_for_unverified_user: "感謝您投票給 %{title}。請驗證您的電子郵件地址，這樣我們才能在準備好的時候寄結果給您。"
       verify_stance_for_verified_user: "您似乎投了 %{title}。如果這個是您的話，請點選下面的連結來確認您的投票。"
     proposal:
@@ -495,6 +430,40 @@ zh_TW:
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+    ranked_choice:
+      subject:
+        poll_created: '%{actor}啟動了排序選擇：%{title}'
+        poll_edited: '%{actor} 編輯了排序選擇：%{title}'
+        poll_closing_soon: '24小時內關閉的排序選擇：%{title}'
+        poll_closing_soon_author: '您將在24小時內關閉的排序選擇：%{title}'
+        poll_expired: "排序選擇結果：%{title}"
+        poll_expired_author: '您的排序選擇已關閉。請分享投票的成果：%{title}'
+        poll_option_added: '%{actor} 新增選項給：%{title}'
+        poll_option_added_author: '%{actor} 新增選項給：%{title}'
+        outcome_created: '%{actor} 分享了一個成果：%{title}'
+        outcome_created_author: '您分享了一個結果：%{title}'
+        invitation_created: '%{actor} 想安排時間：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：%{actor} 正在等待您的回應：%{title}'
+        stance_created: '%{actor} 已經參與：%{title}'
+        stance_created_author: "請驗證您的投票：%{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> 已啟動了一個排序選擇'
+        poll_edited: '<strong>%{actor}</strong> 編輯了排序選擇'
+        poll_closing_soon: '<strong>%{actor}</strong> 的排序選擇將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
+        poll_closing_soon_author: '您的排序選擇將於24小時內關閉，現在正是您提醒其他人關於這個排序選擇或是展延期限的絕佳時機。'
+        poll_expired: "<strong>%{actor}</strong> 的排序選擇已關閉"
+        poll_expired_author: '您的排序選擇已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        poll_option_added: '<strong>%{actor}</strong> 新增選項給：%{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> 新增選項給：%{title}'
+        outcome_created: '<strong>%{actor}</strong> 已分享了一個排序選擇的成果。'
+        outcome_created_author: '您分享了一個排序選擇結果。'
+        invitation_created: '<strong>%{actor}</strong> 想安排時間：%{title}'
+        invitation_resend: '提醒：%{actor} 正在等待您的投票 %{title}'
+        user_reminded: '提醒：<strong>%{actor}</strong> 正在等待您的回應：%{title}'
+        stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
   poll_generator:
     proposal:
       title: "給 Shelley 和 Jack 錄取通知書"
@@ -508,6 +477,9 @@ zh_TW:
     dot_vote:
       title: "我們公司下一季的戰略是什麼？"
       details: 對我們的公司而言，這是非常忙碌的一年，我們需要對我們有限的資源做戰略調配。請說明您認為下一季裡最重要的領域。
+    ranked_choice:
+      title: "我們的下一個副市長應該是誰？"
+      details: "現在是我們的半年度選舉的時候了！這是一個即時投票，將決定我們的下一個副市長。請務必在我們的網站上閱讀每個候選人的介紹！"
     meeting:
       title: "我們下次的工作會議什麼時候舉辦？"
       details: 時間又到了我們開雙月的工作會議的時候了；理想狀態下，我們應該要在下週末前會面。大家什麼時候有空呢？
@@ -522,6 +494,8 @@ zh_TW:
     poll_created: "新的 *%{poll_type}* 在 *%{group}*：*%{poll}*"
     poll_closing_soon: "提醒：*%{poll}* 將於24小時內關閉"
     poll_expired: "*%{poll}* 已關閉"
+    poll_not_found: "抱歉，找不到該投票。輸入 '/loomio <poll_type> <title>' 來開始新的？"
+    stance_not_valid: "抱歉，我們無法為 *%{poll}* 建立立場。<%{url}|點選這裡>來直接在投票上投出您的一票。"
     group_identity_created: |
       大家好，我是 Loomio 機器人。*%{author}* 把我加進來了。
       我可以協助您的團隊共同做出決策。
@@ -535,6 +509,9 @@ zh_TW:
       - 在您的 Loomio 群組中保留決策紀錄。
 
       要知道更多東西，請輸入 _/loomio help_
+
+      您必須為 Loomio 群組 *%{group}* 的成員才能參與。
+      若您尚未加入，<%{url}|點選這裡>以加入。
     request_authorization_message: "只要多一個步驟：<%{url}|點選這裡>以授權您的 Slack 帳號使用 Loomio。（您只需要做這件事情一次）"
     poll_closed: "*%{title}* 已定案！<%{url}|點選這裡>以檢視結果。"
     go_to_slack: 到 Slack

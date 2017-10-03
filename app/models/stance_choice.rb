@@ -12,4 +12,8 @@ class StanceChoice < ActiveRecord::Base
     joins(:stance).order("CASE coalesce(stances.reason, '') WHEN '' THEN 1 ELSE 0 END")
                   .order(:created_at)
   }
+
+  def rank
+    self.poll.minimum_stance_choices - self.score + 1
+  end
 end

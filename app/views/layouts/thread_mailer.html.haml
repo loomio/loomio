@@ -5,5 +5,3 @@
   %body
     = raw ThreadMailer::REPLY_DELIMITER
     = yield
-    - if @link
-      = render "footer", link: @link

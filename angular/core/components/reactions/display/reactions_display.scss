@@ -1,0 +1,55 @@
+.reactions-display {
+  .page-loading { padding: 0; }
+  .emoji-picker__menu { left: 0; }
+  .reaction__emoji > p { margin: 0; }
+  height: 36px;
+}
+
+.reaction {
+  display: inline-block;
+  position: relative;
+  transition: opacity ease-in-out 0.25s;
+  opacity: 1;
+
+  &:nth-child(0) { right: 0; }
+  &:nth-child(1) { right: 4px; }
+  &:nth-child(2) { right: 8px; }
+  &:nth-child(3) { right: 12px; }
+  &:nth-child(4) { right: 16px; }
+  &:nth-child(5) { right: 20px; }
+  &:nth-child(6) { right: 24px; }
+  &:nth-child(7) { right: 28px; }
+  &:nth-child(8) { right: 32px; }
+  &:nth-child(9) { right: 36px; }
+  &.emoji-picker { top: 3px; }
+
+  &--inactive { opacity: 0.3; }
+  .mdi { color: $grey-on-white; }
+  img.emojione { top: 1px; }
+  .lmo-helper-icon {
+    position: absolute;
+    font-size: 15px;
+    right: -4px;
+    top: -4px;
+  }
+}
+
+.reaction__emoji {
+  pointer-events: none;
+}
+
+.reactions-display__emojis {
+  // compensate for emoji squishing
+  padding-left: 4px;
+}
+.reactions-display__name {
+  line-height: 24px;
+}
+.reactions-display__names {
+  color: $grey-on-white;
+  @include md-caption;
+}
+.reactions-display__count {
+  position: relative;
+  bottom: 1px;
+}
