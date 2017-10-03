@@ -30,6 +30,7 @@ EventBus.configure do |config|
   # publish to new group if group has changed
   config.listen('poll_update') do |poll, actor|
     if poll.versions.last.object_changes.dig('group_id', 1).present? # if we've moved the poll to a new group
+      poll.make_announcement = true
       Events::PollCreated.publish!(poll, actor)
     end
   end

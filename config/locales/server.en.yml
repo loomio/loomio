@@ -66,7 +66,7 @@ en:
 
   user_mailer:
     accounts_merged:
-      subject: "Your Loomio user accounts have been merged."
+      subject: "Your %{site_name} user accounts have been merged."
       body_html: |
         Hi %{name},
         Your two loomio accounts have been merged into one account.
@@ -80,7 +80,7 @@ en:
       resend: This link will expire in 24 hours and can only be used once.
 
     contact_request:
-       subject: "%{name} would like to connect with you on Loomio!"
+       subject: "%{name} would like to connect with you on %{site_name}!"
        intro: "%{name} (%{email}) has sent you a request to connect."
        footer: "You may respond to %{name} directly by replying to this email."
 
@@ -110,7 +110,7 @@ en:
       intro: "%{who} made an announcement to %{group}:"
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    value_proposition: "Loomio is a place for groups to make decisions together"
+    value_proposition: "%{site_name} is a place for groups to make decisions together"
     view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on %{site_name}"
@@ -183,6 +183,7 @@ en:
     public_groups: Public groups
     terms: Terms
     independent_install_html: '%{hostname} is running an independent copy of Loomio: <a href="http://github.com/loomio/loomio">find out more</a>.'
+
   invitation_form:
     error:
       too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
@@ -194,8 +195,8 @@ en:
     confirm_new_password: Confirm password
     new_password: New password
     email_guidelines_html: |
-      <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>
-      <p>If you normally sign in via Facebook, Google, Twitter or Persona, enter the email address associated with that account.</p>
+      <p>Enter your email address and you will be sent a password reset link.</p>
+      <p>If you normally sign in via Facebook or Google enter the email address associated with that account.</p>
     reset_email_timeframe: It may take up to 5 minutes for the email to arrive. If it doesn't show up, be sure to check your spam folder.
     length_restriction: Passwords must be at least 8 characters long.
     forbidden_passwords: Common passwords such as “password” are forbidden to keep your account safe.
@@ -206,6 +207,7 @@ en:
       Take a moment to let the group know a bit about who you are. Post a comment below.
 
       What’s your role or approach to participation in this group? What should people know about you to understand where you’re coming from?
+
   how_it_works_thread:
     title: How to use Loomio
     description: |
@@ -238,20 +240,6 @@ en:
       Sometimes groups work through a **series of proposals** to build solutions together. You can raise sequential proposals in this thread.
 
       **Try participating! Click one of the four buttons**.
-
-  contact_page:
-    contact_us: Contact us
-    faq_prompt_html: Got a question for the Loomio team? Before contacting us, you might be able to find the answer in our frequently asked questions.
-    contact_information: If you don't find what you're looking for, you can find our contact information at the bottom of the page.
-    contact_form: Contact form
-    labels:
-      name: Your name
-      email: Your email address
-      message: Your message
-      submit: Send message
-    messages:
-      email_html: "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "You can also join us on<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
 
   markdown:
     intro:

@@ -139,10 +139,6 @@ Loomio::Application.routes.draw do
 
     resource :outcomes,     only: [:create, :update]
 
-    resources :votes,       only: [:index, :create, :update] do
-      get :my_votes, on: :collection
-    end
-
     resources :stances,     only: [:index, :create, :update, :destroy] do
       get :unverified, on: :collection
       post :verify, on: :member

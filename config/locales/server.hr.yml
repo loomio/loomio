@@ -6,9 +6,3 @@ hr:
     privacy: Privatnost
     public_groups: Javne grupe
     terms: Uvjeti
-  start_group_form:
-    header: Počni novu grupu
-    group_name: Ime grupe
-    group_description: Opis grupe
-    success:
-      header: Još malo! Provjerite email.

@@ -1,5 +1,5 @@
 .poll-proposal-chart-panel__chart-container {
-  @include displayFlex;
+  display: flex;
 }
 
 .poll-proposal-chart-panel__chart {

@@ -4,29 +4,14 @@ sr_RS:
       intro: "%{who} је направио/ла објаву за групу %{group}:"
     by_who: од стране %{person}
     reply_to_this_discussion: Одговори у овој дискусији
-    to_join_discussion:
-      subject: "%{who} жели да се придружиш дискусији на Лумију."
-      content: 'Позвани сте да учествујете у дискусији: %{discussion}'
-      message_intro: "%{who} каже:"
-      link: Придружи се дискусији
-    to_join_group:
-      subject: "%{member} Вас је позвао/ла да се придружите %{group_name} на Лумију"
-    to_start_group:
-      subject: "Подесите своју нову Лумио групу: %{group_name}"
     unsubscribe: 'Одјавите се или промените подешавања еПоште'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> за одјаву са листе за обавештења или промену подешавања Ваше еПоште."
-    daily_activity:
-      heading: Ваша Лумио активност
-      intro: Приказује Вам шта се дешавало у Вашим Лумио групама у последња 24 сата
-      subject: Лумио - Резиме последњих 24 сата
     missed_yesterday:
-      subject: Јуче на Лумију
       headlines: Наслови
       mark_as_read: Означи као прочитано
       thanks_for_reading: Хвала на читању, пријатан дан!
       marked_as_read_success: Све еПоруке су означене као прочитане
     membership_request:
-      intro: "%{name} (%{email}) је затражио приступ једној од твојих Лумио група."
       subject: "%{who} је затражио/ла да се придружи %{which_group}"
       view_group: Овде можете одобрити или одбити захтев
   footer:
@@ -39,30 +24,6 @@ sr_RS:
     public_groups: Јавне групе
     terms: Услови
     independent_install_html: '%{hostname} користи једну независну копију Лумија: <a href="http://github.com/loomio/loomio">сазнај више</a>.'
-  start_group_form:
-    enable_angular:
-      header: Нове групе се покрећу у Лумио 1.0
-      subtitle: 'Да креирате нову групу, морате се пребацити на најновију верзију Лумија:'
-      switch_to_angular: Креирајте групу у новом Лумију
-      helptext: Изградили смо изнова Лумио, од нуле. Можеш прочитати о новинама <a href="/angular">овде</a>.<br/>Имаш могућност да се вратиш на стару верзију у сваком тренутку.
-    header: Започни нову групу
-    form_error: Неке информације недостају или су неправилне.
-    name: Твоје име
-    name_error: Име је неопходно
-    email: Твоја еАдреса
-    email_error: Неисправна адреса еПоште
-    group_name: Назив групе
-    group_description: Опис групе
-    group_description_placeholder: Опиши сврху своје групе тако да чланови групе знају зашто су овде.
-    group_name_error: Назив групе је неопходан
-    pricing_html: Кроз 30 дана, питаћемо те да одабереш <a href='%{link}' target='_blank'>plan плаћања</a>.
-    terms_html: Креирањем групе, слажеш се са Лумијевим <a href='%{link}' target='_blank'>условима коришћења</a>.
-    success:
-      header: Још мало па готово! Проверите еПошту.
-      email_delivered: Послали смо једну еПоруку на %{email}. Молимо Вас пратите везу у њој да креирате своју нову групу.
-      email_not_arrived: еПорука није пристигла?
-      please_hold: Молимо допустите до 5 минута да еПорука пристигне и будите сигурни да сте проверили фасциклу са нежељеним порукама.
-    start_making_decisions: 'Да почнете доносити одлуке заједно на Лумију, креирајте групу бесплатно:'
   password_reset:
     reset_email_timeframe: Молимо допустите до 5 минута да еПорука пристигне. Ако се не појави, будите сигурни да сте проверили фасциклу са нежељеним порукама.
     length_restriction: Лозинка мора бити најмање 8 знакова дуга.

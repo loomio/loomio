@@ -1,5 +1,5 @@
 .mentio-menu {
-  @include dropsShadow;
+  box-shadow: $whiteframe-shadow-4dp;
   padding: 0;
 }
 

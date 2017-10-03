@@ -4,15 +4,15 @@ angular.module('loomioApp').directive 'pollCommonDetailsPanel', (AbilityService,
   controller: ($scope) ->
     $scope.actions = [
       name: 'react'
-      canPerform: -> AbilityService.canParticipateInPoll($scope.poll)
+      canPerform: -> AbilityService.canReactToPoll($scope.poll)
     ,
       name: 'translate_poll'
-      icon: 'translate'
+      icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.poll) && !$scope.translation
       perform:    -> TranslationService.inline($scope, $scope.poll)
     ,
       name: 'edit_poll'
-      icon: 'edit'
+      icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditPoll($scope.poll)
       perform:    -> ModalService.open PollCommonFormModal, poll: -> $scope.poll
     ]

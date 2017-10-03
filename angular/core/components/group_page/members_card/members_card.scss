@@ -3,7 +3,7 @@
 }
 
 .members-card__list {
-  @include displayFlex;
+  display: flex;
   flex-wrap: wrap;
 }
 

@@ -15,4 +15,4 @@
             %a.nowrap{lmo-href-for: "application"} {{ application.name }}
         %code.registered-apps-page__code.lmo-flex__grow{ng-repeat: "uri in application.redirectUriArray()"} {{uri}}
         %md-button.registered-apps-page__clear.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center{ng-click: "registeredAppsPage.openDestroyForm(application)"}
-          .material-icons clear
+          .mdi.mdi-close

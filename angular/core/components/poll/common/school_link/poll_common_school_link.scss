@@ -1,5 +1,5 @@
 .poll-common-school-link {
-  @include displayFlex;
+  display: flex;
   @include fontTiny;
   line-height: 18px;
   font-style: normal;

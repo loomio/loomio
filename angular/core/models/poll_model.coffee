@@ -104,7 +104,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @stancesCount + @undecidedCount
 
     percentVoted: ->
-      return 0 if @undecidedUserCount == 0
+      return 0 if @membersCount() == 0
       (100 * @stancesCount / (@membersCount())).toFixed(0)
 
     outcome: ->

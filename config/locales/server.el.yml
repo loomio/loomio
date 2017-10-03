@@ -4,29 +4,14 @@ el:
       intro: "Ο/Η %{who} έκανε μια ανακοίνωση στην ομάδα %{group}:"
     by_who: από τον/την %{person}
     reply_to_this_discussion: Απαντήστε σε αυτή την συζήτηση
-    to_join_discussion:
-      subject: "%{who} επιθυμεί να συμμετάσχετε στην συζήτηση στο Loomio"
-      content: 'Σας έχουν προσκαλέσει να συμμετάσχετε  στην συζήτηση: %{discussion}'
-      message_intro: "%{who} λέει:"
-      link: Συμμετάσχετε στην συζήτηση
-    to_join_group:
-      subject: "Ο/Η %{member} σας προσκάλεσε για να συμμετάσχετε στην ομάδα %{group_name} στο Loomio"
-    to_start_group:
-      subject: "Ρυθμίστε την νέα σας Loomio ομάδα: %{group_name}"
     unsubscribe: 'Διαγραφείτε ή αλλάξτε τις ρυθμίσεις του ηλεκτρονικού ταχυδρομείου:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> για να διαγραφείτε ή για να αλλάξετε τις ρυθμίσεις ηλεκτρονικού ταχυδρομείου."
-    daily_activity:
-      heading: Η δραστηριότητα σας στο Loomio
-      intro: Σας δείχνει τι συμβαίνει στις ομάδες σας στο Loomio τις τελευταίες 24 ώρες
-      subject: Loomio - Σύνοψη των τελευταίων 24 ωρών
     missed_yesterday:
-      subject: Χθες στο Loomio
       headlines: Επικεφαλίδες
       mark_as_read: Σημείωσε ως διαβασμένα
       thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
     membership_request:
-      intro: "Ο/Η %{name} (%{email}) έχει ζητήσει πρόσβαση σε μία από τις Loomio ομάδες σας."
       subject: "%{who} έχει αιτηθεί να συμμετάσχει στην ομάδα %{which_group}"
       view_group: Μπορείς να εγκρίνεις ή να απορρίψεις την αίτηση εδώ
   footer:
@@ -39,25 +24,6 @@ el:
     public_groups: Δημόσιες ομάδες
     terms: Όροι
     independent_install_html: '%{hostname} τρέχει ένα ανεξάρτητο αντίγραφο του Loomio: <a href="http://github.com/loomio/loomio"> μάθετε περισσότερα </a>.'
-  start_group_form:
-    enable_angular:
-      subtitle: 'Για να ξεκινήσεις μια νέα ομάδα, θα χρειαστεί να αναβαθμίσεις στην καινούργια έκδοση του Loomio:'
-      switch_to_angular: Ξεκίνησε μια ομάδα στο νέο Loomio
-    header: Ξεκινήστε μια νέα ομάδα
-    form_error: Κάποιες πληροφορίες λείπουν ή είναι λάθος.
-    name: Το όνομα σας
-    name_error: Το όνομα απαιτείται
-    email: Η Διεύθυνσή email σου
-    email_error: Μη έγκυρη διεύθυνση email.
-    group_name: Όνομα ομάδας
-    group_description: Περιγραφή ομάδας
-    group_description_placeholder: Περιέγραψε την σκοπό της ομάδας σου ώστε τα μέλη της ομάδας να ξέρουν γιατί είναι εδώ.
-    group_name_error: Το όνομα της ομάδας απαιτείται
-    success:
-      header: Σχεδόν τελειώσατε! Ελέγξτε το ηλεκτρονικό ταχυδρομείο σας.
-      email_not_arrived: Δεν σου ήρθε email;
-      please_hold: Παρακαλώ περιμέντε το πολύ 5 λεπτά μέχρι να έρθει το email και ελέγξτε την ανεπιθύμητη αλληλογραφία.
-    start_making_decisions: 'Για να αρχίσετε να λαμβάνετε συλλογικά αποφάσεις στο Loomio, φτιάξτε μια ομάδα δωρεάν:'
   password_reset:
     length_restriction: Οι κωδικοί πρέπει να είναι τουλάχιστον 8 χαρακτήρες.
     forbidden_passwords: Κοινοί κωδικοί όπως "password" απαγορεύονται για να προστατευτεί ο λογαριασμός σου.

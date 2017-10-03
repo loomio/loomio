@@ -9,7 +9,7 @@ module GroupService
     if group.is_formal_group? && group.is_parent?
       group.default_group_cover = DefaultGroupCover.sample
       group.creator             = actor if actor.is_logged_in?
-      ExampleContent.new(group).add_to_group!
+      ExampleContent.new(group).add_to_group! if AppConfig.features[:help_link]
     else
       group.save!
     end

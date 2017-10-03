@@ -20,8 +20,6 @@ gl:
       cancel: 'Cancelar'
   error_page:
     forbidden: 'Non tes permisos para facer iso.'
-  proposal_outcome_panel:
-    heading: Resultado
   inbox:
     clear: 'Eliminar'
     unread: 'Sin ler'
@@ -39,23 +37,6 @@ gl:
       discussions: 'Debates'
   notifications:
     header: "Notificacións"
-  vote_form:
-    i_agree: 'Estou de acordo'
-    i_abstain: 'Abstéñome'
-    i_abstain_details: 'Paréceme ben que o grupo decida por min'
-    i_disagree: 'Estou en desacordo'
-    i_disagree_details: 'Penso que o podemos facer mellor'
-    i_block: 'O bloqueo'
-    submit_position: 'Enviar posición'
-  proposal_positions_panel:
-    heading: Postura
-  close_proposal_form:
-    close_proposal: 'Pechar proposta'
-  proposal_form:
-    start_proposal: 'Comezar proposta'
-    edit_proposal: 'Editar proposta'
-    title_label: 'Título'
-    details_label: 'Detalles'
   discussion_form:
     group_label: 'Grupo'
     title_label: 'Título'
@@ -109,21 +90,6 @@ gl:
     name_label: 'O teu nome'
     email_label: 'A túa dirección de correo electrónico'
     message_label: 'A túa mensaxe'
-  help_page:
-    coordinating: 'Coordinando o teu grupo de Loomio'
-    different_ways: 'Formas diferentes de empregar Loomio'
-    getting_started: "Comezando"
-    have_a_discussion: "Ter un debate"
-    have_a_discussion_description: "O asunto e calquera información relevante van no alto da páxina. Usa a caixa de comentario para dicir algo no debate."
-    help: "Axuda"
-    how_it_works: "Como funciona"
-    join_the_community: "Unirse á comunidade"
-    images_and_text_formatting: "Formato de texto e imaxes"
-    keep_up_to_date: "Manter ó día"
-    make_a_decision: "Tomar unha decisión"
-    start_discussion: "Comezar un debate aberto"
-    video_id: "52025402"
-    video_tutorial: "Videotutorial"
   hint:
     discussion: 'Recomendacións para comezar un debate aberto'
     proposal: 'Trucos para escribir unha proposta clara'

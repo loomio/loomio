@@ -124,7 +124,7 @@ en:
       resent: Invitation resent
     formatting_help:
       label: 'Formatting'
-      title: 'Learn how to use Markdown to format your text on Loomio'
+      title: 'Learn how to use Markdown to format your text'
 
   ordinal:
     _1: 1st
@@ -241,7 +241,7 @@ en:
   signed_out_modal:
     aria_label: 'Session ended'
     title: "Your session has ended"
-    message: "You have been logged out of Loomio from another window. Please sign back in to continue."
+    message: "You have been logged out from another window. Please sign back in to continue."
     ok: "Ok"
 
   notify_group:
@@ -608,11 +608,6 @@ en:
     manage_requests: Manage requests
     manage_requests_with_count: Manage requests ({{count}})
 
-  group_help_card:
-    title: Help
-    ten_tips_article_title: 10 tips for making great decisions with Loomio
-    nine_ways_to_use_proposals: 9 ways to use a Loomio proposal to turn a conversation into action
-
   membership_requests_page:
     heading: Membership Requests
     approve: Approve
@@ -642,7 +637,7 @@ en:
     email_addresses: 'Email addresses'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Copy the link and send it to anyone you want to join the group. This will give them access to all threads in the group.'
-    email_explanation: 'Alternatively, enter email addresses below and Loomio will send them an invitation by email.'
+    email_explanation: 'Alternatively, enter email addresses below to send invitations by email.'
     add_custom_message: 'Make your invite personal, '
     add_custom_message_link: 'add a custom message.'
     custom_message: 'Custom message'
@@ -742,6 +737,7 @@ en:
     location_placeholder: 'Where are you based?'
     update_profile: 'Update profile'
     deactivate_account: 'Deactivate account'
+    help_translate: "Help us translate Loomio"
 
   change_picture_form:
     aria_label: 'Change picture form'
@@ -766,7 +762,7 @@ en:
     introduction: 'When you deactivate your account:'
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
-    no_emails: 'You will no longer receive Loomio related emails'
+    no_emails: 'You will no longer receive notification emails'
     contact_for_reactivation: 'You will need to contact us to reactivate your account'
     submit: 'Yes, I want to deactivate'
 
@@ -774,7 +770,7 @@ en:
     aria_label: 'Deactivate account confirm'
     title: 'Deactivate account'
     question: 'Would you tell us why you are deactivating?'
-    placeholder: 'Answering this question is optional. Any information you share will help us to improve Loomio :)'
+    placeholder: 'Answering this question is optional. Any information you share will help us to improve :)'
     submit: 'Deactivate account'
 
   only_coordinator_modal:
@@ -1265,6 +1261,8 @@ en:
     group_label: Group
     group_placeholder: Select a group (optional)
     no_group: (No group selected)
+    loomio_school_link: |
+      <p>Find out more at <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
 
   poll_proposal_form:
     tool_tip_expanded: |
@@ -1273,7 +1271,6 @@ en:
       <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
       <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
       <p>With good participation a proposal is a powerful mandate to take action.</p>
-      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Seek collective agreement
     start_header: Start proposal
     edit_header: Edit proposal
@@ -1288,7 +1285,6 @@ en:
       <p>Use a poll to measure popularity or offer a choice.</p>
       <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
       <p>Everyone votes, and can enter a statement too if they like. Results are represented in a bar graph.</p>
-      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Measure popularity or offer a choice
     start_header: Start poll
     edit_header: Edit poll
@@ -1309,7 +1305,6 @@ en:
       <p>Or use it to track completion of a task: "I've checked my contact details are correct", or "I've read the document and left my feedback".</p>
       <p>A check has a <em>goal</em>, which is the number of participants you'd like. The goal indicates to the group if something needs more attention or is well subscribed.</p>
       <p>A day before the check closes, it will remind those who have not participated to do so - like a digital cat herder.</p>
-      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Track participation and find volunteers
     start_header: Start check
     edit_header: Edit check
@@ -1324,7 +1319,6 @@ en:
       <p>Dot voting is a way to prioritise a list of options.</p>
       <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
       <p>The totals of the results are shown, as well as and the individual votes, so you can consider various points of view.</p>
-      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Prioritise options
     start_header: Start dot vote
     edit_header: Edit dot vote
@@ -1345,7 +1339,6 @@ en:
       <p>If you add new times during a time poll, people who have already voted are prompted to update their response.</p>
       <p>You can then see who’s available when, and decide when to meet.</p>
       <p>Times are automatically converted to the participant's local time zone.</p>
-      <p>Learn more on <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
     tool_tip_collapsed: Find a time to meet
     start_header: Start time poll
     edit_header: Edit time poll
@@ -1621,7 +1614,7 @@ en:
       add_to_group_helptext: Select a group to link with Slack
       create_new_group_helptext: Don't have a Loomio group? Simply enter a name and we'll make one for you
       group_name: Group name
-      group_name_placeholder: Name your new Loomio group...
+      group_name_placeholder: Name your new group...
       slack_installed: Slack installed
       install_slack: Install slack now
       start_new_group: Start a new group

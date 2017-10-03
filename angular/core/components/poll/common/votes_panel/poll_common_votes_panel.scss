@@ -5,7 +5,7 @@
 }
 
 .poll-common-votes-panel__header {
-  @include displayFlex;
+  display: flex;
   justify-content: space-between;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .poll-common-votes-panel__did-not-voter {
-  @include displayFlex;
+  display: flex;
   align-items: center;
   margin: 8px 0;
 }

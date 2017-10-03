@@ -3,7 +3,8 @@
 -# poll type
 %section.poll-common-card.lmo-card-padding.lmo-flex__grow.lmo-relative
   .lmo-disabled-form{ng-if: "isDisabled"}
-  .lmo-blank{ng-if: "!initExecuting"}
+  %loading{ng-if: "!poll.complete"}
+  .lmo-blank{ng-if: "poll.complete"}
     %poll_common_card_header{poll: "poll"}
     %poll_common_set_outcome_panel{poll: "poll"}
 

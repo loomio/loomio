@@ -31,6 +31,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       !poll.group() or
       (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
 
+    canReactToPoll: (poll) ->
+      @isEmailVerified() and @canParticipateInPoll(poll)
+
     canEditStance: (stance) ->
       Session.user() == stance.author()
 

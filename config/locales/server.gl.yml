@@ -2,11 +2,6 @@ gl:
   email:
     by_who: por %{person}
     reply_to_this_discussion: Respostar a este debate
-    to_join_discussion:
-      message_intro: "%{who} dixo:"
-      link: Unirse ó debate
-    daily_activity:
-      subject: Loomio - Resumo das últimas 24 horas
   footer:
     about: Acerca de
     blog: Blogue
@@ -16,13 +11,6 @@ gl:
     pricing: Custo
     public_groups: Grupos públicos
     terms: Acordos
-  start_group_form:
-    header: Comeza un novo grupo
-    name: O teu nome
-    group_name: Nome do grupo
-    group_description: Descripción do grupo
-    success:
-      header: Case estás! Comproba o teu correo electrónico.
   contact_page:
     contact_us: Contáctenos
     labels:
