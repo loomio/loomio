@@ -624,7 +624,6 @@ GEM
       nori (~> 2.4)
       uuid (~> 2.3.7)
       wasabi (~> 3.4)
-    scout_apm (2.1.32)
     selenium-webdriver (2.45.0)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
@@ -772,7 +771,6 @@ DEPENDENCIES
   rspec-rails
   s3_uploader
   sass-rails (>= 3.2)
-  scout_apm
   selenium-webdriver
   sequenced (~> 2.0.0)
   shoulda-matchers

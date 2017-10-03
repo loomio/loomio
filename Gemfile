@@ -99,7 +99,6 @@ group :production do
   gem 'delayed-plugins-airbrake'
   gem 'dalli'
   gem 'newrelic_rpm'
-  gem 'scout_apm'
   gem 'heroku-deflater'
 end
 
