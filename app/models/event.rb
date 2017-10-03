@@ -6,9 +6,13 @@ class Event < ActiveRecord::Base
   belongs_to :discussion, required: false
   belongs_to :user, required: false
 
+  has_many :events_groups, dependent: :destroy
+  has_many :groups, through: :events_groups
+
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :chronologically, -> { order(created_at: :asc) }
 
+  after_create :create_events_groups!
   after_create :trigger!
   after_create :call_thread_item_created
   after_destroy :call_thread_item_destroyed
@@ -23,6 +27,7 @@ class Event < ActiveRecord::Base
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
 
+
   def active_model_serializer
     "Events::#{eventable.class.to_s.split('::').last}Serializer".constantize
   rescue NameError
@@ -35,11 +40,21 @@ class Event < ActiveRecord::Base
   end
 
   private
+  def create_events_groups!
+    self.events_groups.import(
+      related_groups.map {|g| EventsGroup.new(group_id: g.id, event_id: self.id) }
+    )
+  end
 
-  # which communities should know about this event?
-  # Polls override this to look at the communities associated with the poll.
-  def communities
-    Array(eventable&.group&.community)
+  # which groups are privvy to this event?
+  def related_groups
+    [self.discussion, self.eventable].compact.map do |o|
+      if o.respond_to?(:groups)
+        o.groups
+      elsif o.respond_to?(:group)
+        o.group
+      end
+    end.flatten.uniq.compact
   end
 
   def call_thread_item_created

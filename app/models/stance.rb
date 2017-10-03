@@ -42,6 +42,7 @@ class Stance < ActiveRecord::Base
 
   delegate :locale, to: :author
   delegate :group, to: :poll, allow_nil: true
+  delegate :groups, to: :poll, allow_nil: true
   alias :author :participant
 
   def choice=(choice)

@@ -9,13 +9,24 @@ class API::EventsController < API::RestfulController
   private
 
   def accessible_records
-    load_and_authorize(:discussion).items.sequenced
+    if params[:event_id_gt]
+      Event.joins(:events_groups).
+        where("events_groups.group_id in (?)", current_user.group_ids).
+        where("events.id > ?", params[:event_id_gt]).order(:id)
+    else
+      load_and_authorize(:discussion).items.sequenced
+    end
   end
 
   def page_collection(collection)
-    collection.where('sequence_id >= ?', sequence_id_for(collection))
-              .includes(:eventable)
-              .limit(params[:per] || default_page_size)
+    if params[:event_id_gt]
+      collection.includes(:eventable)
+                .limit(params[:per] || default_page_size)
+    else
+      collection.where('sequence_id >= ?', sequence_id_for(collection))
+                .includes(:eventable)
+                .limit(params[:per] || default_page_size)
+    end
   end
 
   def default_page_size

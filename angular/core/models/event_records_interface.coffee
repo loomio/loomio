@@ -2,6 +2,15 @@ angular.module('loomioApp').factory 'EventRecordsInterface', (BaseRecordsInterfa
   class EventRecordsInterface extends BaseRecordsInterface
     model: EventModel
 
+    fetchAllNew: ->
+      @fetchNew(per: 30).then (data) =>
+        @fetchAllNew() if data.events.length >= 30
+
+    fetchNew: (options) ->
+      lastEvent = @recordStore.events.collection.chain().simplesort('id', true).limit(1).data()[0] || {id: 0}
+      @fetch
+        params: _.assign(options, {event_id_gt: lastEvent.id})
+
     fetchByDiscussion: (discussionKey, options = {}) ->
       options['discussion_key'] = discussionKey
       @fetch

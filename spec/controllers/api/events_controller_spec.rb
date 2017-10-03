@@ -7,10 +7,13 @@ describe API::EventsController do
   let(:discussion) { create :discussion, group: group, private: false }
   let(:another_discussion) { create :discussion, group: group, private: true }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
+  let(:not_my_group) { create :formal_group }
+  let(:not_my_discussion) { create :discussion, group: not_my_group, private: true }
 
   before do
     group.add_admin! user
     group.add_member! another_user
+    not_my_group.add_member! another_user
   end
 
   describe 'mark_as_read' do
@@ -66,6 +69,17 @@ describe API::EventsController do
       before do
         @event         = CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
         @another_event = CommentService.create(comment: build(:comment, discussion: another_discussion), actor: user)
+        @not_my_event  = CommentService.create(comment: build(:comment, discussion: not_my_discussion), actor: another_user)
+      end
+
+      context 'catching up' do
+        it 'returns events with id greater than event_id_gt' do
+          get :index, event_id_gt: 0
+          json = JSON.parse(response.body)
+          event_ids = json['events'].map { |d| d['id'] }
+          expect(event_ids).to include @event.id, @another_event.id
+          expect(event_ids).to_not include @not_my_event
+        end
       end
 
       context 'logged out' do
