@@ -5,3 +5,6 @@
       %a.document-list__document.lmo-pointer.lmo-relative.lmo-flex.lmo-flex__center{layout: "row", href: "{{document.url}}", target: "_blank"}
         %i.mdi.lmo-margin-right{class: "mdi-{{document.icon}}", ng-style: "{color: document.color}"}>
         .document-list__title {{ document.title }}
+        %md-tooltip{md-delay: "750"}
+          %img.document-list__tooltip{ng-src: "{{document.url}}", alt: "{{document.title}}"}
+          .lmo-hidden .

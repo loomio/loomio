@@ -1,11 +1,16 @@
-angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams, $rootScope, Records, AbilityService, ModalService, DocumentModal) ->
+angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams, $rootScope, Records, AbilityService, LoadingService, ModalService, DocumentModal, ConfirmModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'documentsPage'})
 
   @fetchDocuments = =>
-    Records.documents.fetchByNameFragment(@fragment, @group.key) if @fragment
+    Records.documents.fetchByModel(@group, @fragment)
+  LoadingService.applyLoadingFunction @, 'fetchDocuments'
 
   @documents = ->
-    @group.documents()
+    _.filter @group.documents(), (doc) =>
+      _.isEmpty(@fragment) or doc.title.match(///#{@fragment}///i)
+
+  @hasDocuments = ->
+    _.any @documents()
 
   @addDocument = ->
     ModalService.open DocumentModal, doc: =>
@@ -20,10 +25,17 @@ angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams,
     ModalService.open DocumentModal, doc: -> doc
 
   @remove = (doc) ->
-    doc.destroy()
+    ModalService.open ConfirmModal,
+      forceSubmit: -> false
+      submit:      -> doc.destroy
+      text:        ->
+        title:    'documents_page.confirm_remove_title'
+        helptext: 'documents_page.confirm_remove_helptext'
+        flash:    'documents_page.document_removed'
 
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @group = group
+    @fetchDocuments()
   , (error) ->
     $rootScope.$broadcast('pageError', error)
 

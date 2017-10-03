@@ -15,3 +15,8 @@
   color: $primary-text-color;
   font-size: 14px;
 }
+
+.document-list__tooltip {
+  padding-top: 8px;
+  img { max-width: 400px; }
+}

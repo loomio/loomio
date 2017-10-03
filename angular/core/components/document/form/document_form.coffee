@@ -11,9 +11,4 @@ angular.module('loomioApp').directive 'documentForm', (Records, FormService) ->
     $scope.submit = FormService.submit $scope, $scope.document,
       successFlash: "document.flash.success"
 
-    $scope.destroy = FormService.submit $scope, $scope.document,
-      submitFn: $scope.document.destroy
-      successCallback: -> Records.documents.find($scope.document.id).remove()
-      successFlash: "document.flash.destroyed"
-
     $scope.$close = -> $scope.$emit '$close'

@@ -13,7 +13,8 @@
         %md-input-container.md-block.documents-page__search-filter{md-no-float: "true"}
           %input.membership-page__search-filter{ng-model: "documentsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "documentsPage.fetchDocuments()", placeholder: "{{'documents_page.fragment_placeholder' | translate}}"}
           %i.mdi.mdi-magnify
-        .lmo-flex{layout: "row", ng-if: "documentsPage.group.hasDocuments()"}
+        %p.lmo-hint-text{ng-if: "!documentsPage.hasDocuments()", translate: "documents_page.no_documents_from_fragment", translate-value-fragment: "{{fragment}}"}
+        .lmo-flex{layout: "row", ng-if: "documentsPage.hasDocuments()"}
           .documents-page__icon.lmo-flex{layout: "column"}
             .documents-page__column-title
             .documents-page__column-row{ng-repeat: "document in documentsPage.documents() track by document.id"}
@@ -45,3 +46,4 @@
             .documents-page__column-row
               %md-button.md-button--tiny{ng-repeat: "document in documentsPage.documents() track by document.id", ng-click: "documentsPage.remove(document)"}
                 %i.mdi.mdi-window-close
+    %loading{ng-if: "fetchDocumentsExecuting"}

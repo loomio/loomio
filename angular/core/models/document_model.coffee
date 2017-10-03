@@ -14,5 +14,8 @@ angular.module('loomioApp').factory 'DocumentModel', (BaseModel, AppConfig) ->
     authorName: ->
       @author().name if @author()
 
+    isAnImage: ->
+      @doctype == 'image'
+
     discussionTitle: ->
       model().discussion().title unless @modelType == 'Group'
