@@ -58,8 +58,6 @@ nl_NL:
       uploading: 'Aan het uploaden'
       load_more: 'Laad meer'
       share: Delen
-    formatting_help:
-      title: 'Leer hoe je Markdown gebruikt voor de opmaak van je tekst op Loomio'
   devise:
     failure:
       inactive: 'Er is een gedeactiveerd account behorend bij dit email adres. Als je je account weer wil activeren, neem dan contact met ons op.'
@@ -67,31 +65,8 @@ nl_NL:
     forbidden: 'Je bent niet gemachtigd om dit te doen.'
     page_not_found: 'Dat konden we niet vinden.  Wellicht is het verwijderd of verplaatst.'
     internal_server_error: 'Helaas, er ging iets fout. Probeer het opnieuw.'
-  start_proposal_card:
-    title: 'Kom met een voorstel.'
-    helptext: Klaar om een beslissing te nemen?
-  proposal_outcome_panel:
-    heading: Uitkomst
-    set_outcome_hint: Laat op deze plek iedereen weten wat de uitkomst is van het voorstel.
-  proposal_outcome_form:
-    aria_label: Formulier voorsteluitkomst
-    set_outcome: Voorsteluitkomst vaststellen
-    update_outcome: Bijwerken voorsteluitkomst
-    outcome_label: Uitkomst voorstel
-    outcome_placeholder: Laat iedereen de uitkomst van het voorstel weten.
-    publish_outcome: Publiceer uitkomst
-    messages:
-      created: Uitkomst gepubliceerd
-      updated: Uitkomst bijgewerkt
-  previous_proposals_card:
-    heading: Vorige voorstellen
-  previous_proposals_page:
-    heading: Vorige voorstellen
   previous_polls_page:
     heading: Activiteiten in {{name}}
-  proposal_collapsed:
-    expand: Uitbreiden
-    outcome: 'Uitkomst: {{outcome}}'
   volume_levels:
     loud: 'Luid'
     normal: 'Normaal'
@@ -158,21 +133,11 @@ nl_NL:
     unread: 'Ongelezen'
     closing_in: 'Afsluiten'
   sign_up_form:
-    aria_label: 'Aanmeldformulier'
-    title: "Welkom bij Loomio! Laten we je op weg helpen"
-    name_label: 'Je naam:'
-    name_placeholder: 'Jan Jansen'
-    email_label: 'E-mail:'
-    email_placeholder: 'jouwnaam@voorbeeld.com'
     password_label: 'Wachtwoord:'
     password_confirmation_label: 'Herhaal je wachtwoord:'
-    sign_in_message: 'Heb je al een account?'
-    sign_in: 'Meld aan'
-    sign_up: 'Maak een account'
   signed_out_modal:
     aria_label: 'Sessie geëindigd'
     title: "Je sessie is geëindigd"
-    message: "Je bent in een ander scherm uitgelogd bij Loomio.\nLog opnieuw in om verder te gaan."
     ok: "Oké"
   comment_form:
     aria_label: 'Toevoegen reactie'
@@ -258,61 +223,11 @@ nl_NL:
     outcome_created: "<strong>{{name}}</strong> heeft een uitkomst gedeeld <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Laat je horen
-  vote_form:
-    aria_label: Stemformulier
-    heading: Laat je horen
-    no_statement: Geen uitspraak.
-    statement_over_limit: 'Limiet aantal tekens bereikt. Korte mededelingen over standpunten zorgen voor een bondige samenvatting. Als je meer te zeggen hebt, plaats dan een opmerking.'
-    i_agree: 'Eens'
-    i_agree_details: 'Ik steun dit en wil dat het doorgaat.'
-    i_abstain: 'Onthouden'
-    i_abstain_details: 'Ik vind het prima als de groep zonder mij beslist.'
-    i_disagree: 'Oneens'
-    i_disagree_details: 'Ik denk dat we dit mogelijk beter kunnen.'
-    i_block: 'Blokkeren'
-    i_block_details: 'Ik heb grote bezwaren tegen dit voorstel en wil niet dat het doorgang vindt.'
-    submit_position: 'Verstuur standpunt'
-    change_position: 'Verander standpunt'
-    select_position: 'Kies standpunt'
-    statement_placeholder: 'Deel je gedachten met de groep'
-    aria_statement_label: 'Mogelijkheid om een uitleg bij je standpunt te zetten'
-    messages:
-      created: Stem toegevoegd
-  proposal_positions_panel:
-    heading: Standpunten
-    no_votes_yet: Niemand heeft nog op dit voorstel gestemd
-    change_your_vote: Verander je standpunt
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% van de leden heeft hun standpunt gedeeld ({{number}}/{{total}})'
-  close_proposal_form:
-    aria_label: 'Sluit voorstel'
-    close_proposal: 'Sluit voorstel'
-    helptext: 'Weet je zeker dat je dit voorstel nu wil sluiten?'
-    messages:
-      success: Voorstel gesloten
   extend_proposal_form:
     aria_label: Verander sluitingstermijn
     title: 'Verander sluitingstermijn'
     success: 'Sluitingstermijn voorstel aangepast'
     submit: 'Pas sluitingstermijn aan'
-  proposal_form:
-    aria_label: 'Voorstelformulier'
-    messages:
-      created: 'Voorstel gestart'
-      updated: 'Voorstel bijgewerkt'
-    start_proposal: 'Dien een voorstel in'
-    start_a_proposal: 'Kom met een voorstel.'
-    edit_proposal: 'Bewerk voorstel'
-    what_does_a_proposal_do: 'Voorstellen laten zien hoe iedereen tegen een bepaalde aanpak aankijkt'
-    proposal_ideas: Ideeën nodig voor het schrijven van een goed voorstel?
-    proposal_ideas_title: 9 manieren om met een Loomio voorstel van praten naar actie te komen
-    editing_title_and_description_forbidden: 'Je kunt de titel en beschrijving van een voorstel niet meer aanpassen als mensen al hebben gestemd. Als er zaken zijn veranderd, sluit alstublieft het voorstel en start een nieuw'
-    title_placeholder: 'M.a.w.: op naar de top!'
-    title_label: 'Titel'
-    closes_at_label: 'Sluit om'
-    closes: 'Sluit'
-    details_label: 'Details'
-    details_placeholder: "Geef voldoende informatie zodat iedereen exact weet wat het betekent om het eens of oneens te zijn"
   discussion_record:
     created: 'De discussie {{title}} is met succes aangemaakt in {{groupName}}'
     updated: 'Wijzigingen aan {{title}} opgeslagen'
@@ -335,33 +250,6 @@ nl_NL:
     privacy_organisation: 'De discussie is zichtbaar voor leden van {{parent}} en leden van {{group}}'
     make_announcement: Aankondiging
     notified_count: '{{count}} mensen krijgen e-mail'
-  proposal_expanded:
-    collapse: Inklappen
-    current_votes: Huidige stemmen
-    started_by: 'Gestart door <strong>{{name}}</strong>'
-    only_voter_is_you: 'Geen van de leden heeft nog gestemd'
-    extend_proposal: 'Verander sluitingstermijn'
-    edit_proposal: 'Bewerk voorstel'
-    close_proposal: 'Sluit voorstel'
-    closed_badge: Gesloten
-  proposal_position_yes: 'Eens'
-  proposal_position_abstain: 'Onthouden'
-  proposal_position_no: 'Oneens'
-  proposal_position_block: 'Blokkeren'
-  legacy_trial_expired_modal:
-    heading: "Bedankt voor je gebruik van Loomio dit jaar!"
-    body: |
-      <p>We stellen je ondersteuning gedurende het jaar echt op prijs en we hebben er zin in om Loomio nog beter te maken in 2016.</p>
-      <p>Is Loomio bruikbaar voor jouw groep? We hebben net onze prijsplannen openbaar gemaakt en we vragen groepen die Loomio al gebruiken om een plan te kiezen dat bij ze past.</p>
-    submit: "Toon me de plannen"
-  group_welcome_modal:
-    aria_label: "Welkom"
-    creator_heading: "Welkom bij je nieuwe groep"
-    member_heading: "Welkom bij Loomio"
-    creator_info: "Je bent <strong>groepscoördinator</strong>, een soort gastheer. Bekijk de film en bekijk dan de voorbeelddiscussies."
-    member_info: "Bekijk deze film om te zien hoe Loomio werkt. Probeer daarna een opmerking te plaatsen in een discussie, of begin je eigen discussie!"
-    creator_footer: "Als je er klaar voor bent, <strong> nodig dan mensen uit</strong>."
-    ok_got_it: "Okee, ik snap 't!"
   cover_photo_form:
     aria_label: 'Verander omslag foto formulier'
     heading: 'Nieuwe omslag foto'
@@ -471,35 +359,6 @@ nl_NL:
     title: 'Deactiveer groep'
     question: 'Weet je zeker dat je de groep wil deactiveren?'
     submit: 'Ja, deactiveer deze groep'
-  confirm_gift_plan_modal:
-    heading: Gratis groepen worden door donaties ondersteund
-    body: Donaties bieden groepen die dit nodig hebben de mogelijkheid om Loomio gratis te gebruiken. We vragen gebruikers van gratis groepen incidenteel om een vrijwillige bijdrage.
-    got_it: Blijf bij gratis
-    go_back: Upgrade
-  donation_modal:
-    heading: Een donatie aan Loomio doen?
-    body: "Loomio is een sociale onderneming. Onze missie is om een wereld te creëren waarin het makkelijk is voor iedereen om deel te nemen aan beslissingen die op hen van invloed zijn."
-    contribute: Geef een bijdrage
-    got_to_group: Niet nu, dank u.
-  gift_card:
-    heading: Kadoplan
-    body: "<strong>{{name}}</strong> is een door giften ondersteunde groep. Om Loomio te ondersteunen om groepen, zoals de jouwe te blijven helpen, klik hier: "
-    make_a_contribution: Geef een bijdrage
-  upgrade_plan_card:
-    heading: Upgrade voor eersteklas kenmerken
-    slack_html: "<strong>Slack integratie</strong>: Loomio en Slack werken geweldig samen! Verbind ze met elkaar."
-    domain_html: "<strong>Aangepast domein</strong>: Zorg dat je groep makkelijk gevonden wordt met jouwnaam@loomio.org"
-    help_html: "<strong>Deskundige hulp</strong>: Loomio's samenwerkingsconsultants krijgen je groep aan de praat"
-    analytics_html: "<strong>Analyserapport</strong>: Krijg inzicht in de betrokkenheid van je groep"
-    donations: Je groepsleden wordt niet langer gevraagd om te doneren.
-    more: '... en nog veel meer.'
-    upgrade: Upgrade nu
-    donate: Doneer
-  trial_card:
-    title: '30dagen proef'
-    choose_plan: 'Kies je prijsplan'
-    in_progress_body: 'Bedankt dat je Loomio uitprobeert met <strong>{{name}}</strong>. Je kunt op elk moment een prijsplan kiezen dat bij jouw groep past.'
-    expired_body_html: "<strong>{{name}}</strong> heeft het einde van de Loomio proefperiode bereikt. Om het te blijven gebruiken, moet je een prijsplan kiezen dat bij je groep past."
   group_form:
     aria_label: 'Groepsformulier'
     start_group_heading: 'Begin een groep'
@@ -559,10 +418,6 @@ nl_NL:
     heading: 'Lidmaatschapsverzoeken'
     manage_requests: Beheer verzoeken
     manage_requests_with_count: Beheer verzoeken ({{count}})
-  group_help_card:
-    title: Help
-    ten_tips_article_title: 10 tips om geweldige beslissingen te nemen met Loomio
-    nine_ways_to_use_proposals: 9 manieren om Loomio te gebruiken om een voorstel in een gesprek in een actie om te zetten
   membership_requests_page:
     heading: Lidmaatschapsverzoeken
     approve: Goedkeuren
@@ -586,7 +441,6 @@ nl_NL:
     email_addresses: 'E-mailadressen'
     email_addresses_placeholder: 'bijv. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Kopieer de link en stuur die aan iedereen die je uit wil nodigen om aan de groep deel te nemen. Dit geeft hen toegang tot alle discussies in de groep.'
-    email_explanation: 'Alternatief is om het e-mailadres hieronder in te vullen. Loomio stuurt ze een uitnodiging per email.'
     add_custom_message: 'Personaliseer je uitnodiging,'
     add_custom_message_link: 'voeg een aangepast bericht toe.'
     custom_message: 'Aangepast bericht'
@@ -666,7 +520,6 @@ nl_NL:
     introduction: 'Als je je account deactiveert:'
     no_longer_group_member: 'Je staat bij geen enkele groep meer geregistreerd als lid '
     name_removed: 'Opmerkingen, voorstellen en gesprekken die je gemaakt hebt blijven bewaard, maar je naam wordt erbij verwijderd'
-    no_emails: 'Je ontvangt geen Loomiogerelateerde e-mails meer'
     contact_for_reactivation: 'Je moet contact met ons opnemen om je account te heractiveren'
     submit: 'Ja ik wil deactiveren'
   deactivate_user_form:
@@ -682,7 +535,6 @@ nl_NL:
     header: E-mailinstellingen
     all_groups: Instellingen voor alle groepen
     daily_summary_label: Dagelijkse samenvatting per e-mail
-    daily_summary_description: "Elke ochtend krijg je een email met alle activiteit die je de dag ervoor gemist hebt. Deze email biedt een makkelijke manier om up to date te blijven met Loomio activiteit."
     on_participation_label: Abonneer op deelname
     on_participation_description: "Als je deelneemt aan een discussie, wordt alle verdere activiteit direct naar je gemaild."
     mentioned_label: Vermeldingen
@@ -766,12 +618,6 @@ nl_NL:
     proposals: 'Voorstellen'
     previous_proposals: 'Vorige voorstellen'
     load_previous: 'Laad eerdere activteit'
-    you_like_this: 'Je vindt dit leuk.'
-    liked_by_you_and_someone: 'Jij en {{name}} vinden dit leuk.'
-    liked_by_you_and_others: 'Leuk gevonden door jou {{joinedNames}} en {{name}}.'
-    liked_by_someone: '{{name}} vindt dit leuk.'
-    liked_by_many_others: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
-    liked_by_name: 'Leuk gevonden door {{name}}.'
     started_by: 'Gestart door <strong>{{name}}</strong>'
     edited: 'Bewerkt'
     volume:
@@ -870,93 +716,6 @@ nl_NL:
     message_label: 'Je bericht'
     message_placeholder: 'Jouw bericht...'
     send_message: 'Stuur bericht'
-  help_page:
-    coordinating: 'Coördineer jouw Loomio groep'
-    coordinating_details: |
-      Als coördinator ben je verantwoordelijk voor het instellen van je Loomio groep en het
-      uitnodigen van leden. Evenals het leren gebruiken van een nieuw stukje software, leert je groep nieuwe processen om efficiënter samen te werken en goede beslissingen samen te nemen.
-      Hier zijn wat tips om jouw groep te laten slagen:
-    different_ways: 'Verschillende manieren waarop je Loomio kunt gebruiken'
-    engaging_html: |
-      <h2>Tips om je groep boeien</h2>
-      <p>Mensen zijn enthousiast om aan te haken en mee te doen als er een boeiend
-      voorstel op tafel ligt. Een goed voorstel bevat een actielijst voor de groep zodat
-      het direct duidelijk is wat het betekent om het er mee eens of oneens te zijn. Denk na over hoe je
-      gesprekken/besluiten kunt identificeren waar de groep nu individueel of via
-      e-mail mee bezig is die makkelijker zouden zijn als ze op Loomio zouden staan.</p>
-      <p>Als je groep net begint, kun je beginnen met een eenvoudig besluit, om iedereen
-      een kans te geven om met het instrument te spelen en het besluitvormingsproces in actie te zien.</p>
-      <p>Een andere eenvoudige manier om mensen aan te moedigen om in een gesprek deel te nemen
-      is door de @vermeld optie te gebruiken om specifieke mensen aan te spreken; ze ontvangen een e-mail om ze te laten weten dat ze vermeld zijn in een reactie.</p>
-    example1_html: |
-      <h3>Je hebt de groep nodig om een breed onderwerp te bespreken en om samen tot een oplossing te komen</h3>
-      <p>Strategie: Begin een tijdje met discussiëren voor er een voorstel wordt gemaakt.</p>
-      <p>Discussies hebben vaak de beste uitkomst als er een gedeeld begrip is met betrekking tot het probleem alvorens tot een oplossing te komen. Als mensen betrokken zijn bij het proces, zullen ze eerder geneigd zijn dit resultaat te steunen.</p>
-    example2_html: |
-      <h3>Je hebt al een voorstel in gedachten en je wil een akkoord krijgen van de groep om verder te gaan.</h3>
-      <p>Strategie: start een gesprek over een specifiek besluit en maak direct een voorstel.</p>
-      <p>Als je een duidelijke uitkomst in gedachten hebt, maar je wil zeker weten dat er geen zwaarwegende bezwaren zijn,
-      kun je het voorstel gebruiken om snelle inbreng te krijgen over een beslissing.</p>
-      <p>Je kunt dingen doen, zoals een document afronden, een toepassing goedkeuren, of instemmen met een stuk.</p>
-    get_in_touch: "Neem contact op"
-    get_in_touch_description_html: "Als je vragen of opmerkingen hebt, <a href='%{link}'>stuur ons een berichtje</a>."
-    getting_started: "Aan de slag"
-    getting_started_description: "Aan de linkerkant wordt er een onderwerp bediscussieerd. Er worden ideeën en informatie uitgewisseld. Als de groep een beslissing wil nemen, zie je dat aan de rechterkant."
-    getting_the_most: 'Het meeste uit Loomio halen'
-    have_your_say: "Laat je horen"
-    have_your_say_details_html: |
-      <p>Als je je standpunt ten opzichte van het voorstel hebt bepaald, kan je klikken op één van de vier beslis-knoppen.</p>
-      <p>Als je je beslissing hebt gemaakt, geef dan een korte uitleg. Onder het taartdiagram kan je zien wat iedereen denkt. Dat maakt het gemakkelijk om bij te blijven met de discussie. Als er nieuwe informatie aan het licht komt, kan je altijd je standpunt veranderen.</p>
-    have_a_discussion: "Discussieer"
-    have_a_discussion_description: "Het onderwerp en relevante achtergrondinformatie staan bovenaan de pagina. Gebruik het reactieveld om je stem te laten horen."
-    help: "Help"
-    how_it_works: "Hoe het werkt"
-    invitation_html: |
-      <h2>Het schrijven van een goede uitnodiging</h2>
-      <p>De eerste vraag die elk nieuw lid zich zal stellen is "Waar is deze groep voor bedoeld?"</p>
-      <p>Denk aan de makkelijkste manier om jouw groep te beschrijven. Wat wil je gezamenlijk bereiken? Wat voor beslissingen gaan jullie nemen? Wie zijn erbij betrokken?</p>
-      <p>Mogelijk is het een goed idee om eerst met je groepsleden te praten voor je ze uitnodigt op Loomio.</p>
-      <p>Mensen zullen willen weten waarom ze uitgenodigd zijn, wat er van hen verwacht wordt en waarom het 't waard is om met een nieuw instrument te leren omgaan.</p>
-    join_the_community: "Word lid van de gemeenschap"
-    join_the_community_description_html: "Iedereen is welkom bij de Loomio gemeenschap, waar we praten over hoe we het beste er uit kunnen halen en hoe het verbeterd kan worden. <br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'> Klik hier om naar de Loomio gemeenschap groep te gaan</a>."
-    images_and_text_formatting: "Afbeeldingen en tekstopmaak"
-    images_and_text_formatting_html: |
-      <p>Loomio gebruikt 'Markdown' voor tekstopmaak en om afbeeldingen in te voegen.
-      Je kan Markdown aanzetten met het kleine grijze pictogrammetje onderaan het reactieveld.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Klik hier</a>
-      voor informatie over hoe je Markdown kan gebruiken.</p>
-    keep_up_to_date: "Blijf op de hoogte"
-    keep_up_to_date_html: |
-      <p>Door te klikken op je groepsnaam bovenaan de pagina kom je terug op je groepspagina, waar je een lijst te zien krijgt met alle discussies en beslissingen van die groep. Als je in meer dan één groep zit, zie je de activiteit van al je groepen op de Thuispagina.</p>
-      <p>Je krijgt e-mailnotificaties als er belangrijke dingen gebeuren binnen je groep.
-      Je kan je e-mailinstellingen <a href="%{link}"">hier</a> wijzigen.</p>
-    make_a_decision: "Neem een beslissing"
-    make_a_decision_description: "Als een groep klaar is om een beslissing te nemen, kan iedereen een voorstel indienen. Zet in het voorstel een heldere lijn uiteen en geef achtergrondinformatie, zodat iedereen exact weet wat het betekent om het ermee eens of oneens te zijn."
-    prompt_people_details: "Als je de aandacht wilt van een bepaalde persoon in je groep, typ '@' gevolgd door zijn of haar naam. Diegene krijgt een e-mail met de boodschap dat jij hem of haar genoemd hebt in een reactie."
-    prompt_people_html: "Stel mensen op de hoogte als ze <span class='blue'>@genoemd</span>  worden"
-    positions_agree_description: "<span>Eens</span> betekent dat je blij bent met het voorstel."
-    positions_abstain_description: "<span>Onthouding</span> betekent dat je het niet zeker weet, of dat je het prima vindt dat de groep zonder jou beslist."
-    positions_disagree_description: "<span>Oneens</span> betekent dat je denkt dat er mogelijk een beter alternatief is, maar dat je mee wilt gaan met de beslissing van de groep."
-    positions_block_description: "<span>Blokkeren</span> betekent dat je serieuze bezwaren hebt en dat je het erg jammer zou vinden als het voorstel wordt aangenomen."
-    start_discussion: "Begin een boeiende discussie"
-    start_discussion_html: |
-      <p>Als je een gesprek begint, zorg dan dat de titel het onderwerp beknopt beschrijft.
-      Gebruik het Inhoud Paneel om alle achtergrondinformatie te geven die voor de groep nodig is
-      om een productief en goed geïnformeerd gesprek te voeren.</p>
-      <p>Tijdens het gesprek kan het Inhoud Paneel bijgewerkt worden als er nieuwe informatie
-      bekend wordt. Naast het verduidelijken van het onderwerp kun je deze ruimte gebruiken voor
-      het delen van hulpbronnen, het samenvatten van het gesprek terwijl het voortgaat, of het
-      besluitvormingsproces dat groep gebruikt toelichten.</p>
-    start_proposal: "Het schrijven van een helder voorstel"
-    start_proposal_html: |
-      <p> Als je de titel kort en bondig maakt, weten mensen precies wat het betekent om het eens of oneens te zijn.</p>
-      <p>Het betekent niet het einde van de wereld als niet iedereen het voorstel meteen helemaal goedkeurt.
-      Als de groep het eerste voorstel niet leuk vindt, kan een ieder een nieuw voorstel doen om de bezwaren aan te kaarten en het proces vooruit te helpen.</p>
-      <p>Door dit dynamische proces kan de collectieve wijsheid van jouw groep betere ideeën creëren dan iemand in zijn eentje had kunnen bedenken.</p>
-      <p>De deadline van een voorstel kan ieder moment uitgesteld worden als het erop lijkt dat er meer ruimte nodig is. Iedereen krijgt een e-mail notificatie 24 uur voordat een voorstel sluit.</p>
-    video_id: "52025402"
-    video_tutorial: "Video-uitleg"
-    video_tutorial_description: "Bekijk de video voor een snelle demonstratie over het gebruik van Loomio."
   hint:
     context: 'Tips voor het gebruik van het omschrijvingenveld'
     discussion: 'Tips voor het beginnen van een boeiende discussie'
@@ -964,44 +723,11 @@ nl_NL:
     proposal: 'Tips voor het schrijven van een helder voorstel'
     vote: 'Je kunt je standpunt ten alle tijde veranderen'
   explore_page:
-    header: Verken Loomio groepen
-    search_placeholder: Zoek openbare Loomio groepen
     single_search_result: "1 openbare groep die overeen komt met <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} openbare groepen die overeen komen met <strong>{{searchTerm}}:</strong>"
     no_results_found: "<strong>Kun je de groep die je zoekt, niet vinden? </strong> Als de privacy van een groep op 'geheim' staat, verschijnt die hier niet. Als je weet wie de groep coördineert, kun je hem of haar vragen om een uitnodiging."
-  angular:
-    switch_back: 'Wissel terug naar de oude Loomio'
-    give_feedback: 'Geef feedback'
-    collapse: Inklappen
-    enable:
-      invite: 'Probeer de nieuwe Loomio!'
-      title: 'Probeer de nieuwe Loomio'
-      intro: "We hebben Loomio verbouwd en hebben jouw hulp nodig om het fantastisch te maken!"
-      body_html: |
-        <p></p>
-        <h3>Wat is het verschil eigenlijk?</h3>
-
-        <p>
-        De nieuwe interface is als de oude, maar nieuwer:
-        <ul>
-        <li>Alles update live op de pagina terwijl het gebeurt</li>
-        <li>Het is ontworpen voor al je apparaten, van smartphone naar desktop</li>
-        <li>Het is toegankelijk voor mensen die blind zijn en vertaald in <a href="https://www.loomio.org/translation"> bergen talen</a>
-        </ul>
-        </p>
-
-        <p>Het gebruikt dezelfde database als bij de oude interface, dus bevat het al je bestaande groepen en gesprekken.</p>
-        <p>Er is een link naar " Geef feedback" links onder in de hoek. Je ziet ook een link naar " Wissel terug naar oude Loomio", die nog even beschikbaar blijft.</p>
-        <p>We zijn benieuwd naar je feedback, bedankt voor je tijd en steun.</p>
-      button_text: 'Gebruik de nieuwe Loomio'
-    disable:
-      title: 'Bedankt voor het proberen van de nieuwe Loomio'
-      body_html: "<p>Oei, hebben we iets verkeerd gedaan? Het spijt ons als je het niet naar je zin hebt gehad in Loomio</p>"
-      give_feedback: "Voordat je gaat, deel je feedback, zodat we dingen kunnen verbeteren."
-      button_text: 'Wissel terug naar de oude Loomio'
   global:
     messages:
-      app_update: 'Er is een nieuwe versie van Loomio beschikbaar'
       reload: 'Herladen'
   emoji_picker:
     search: "Zoek een emoji..."

@@ -15,11 +15,6 @@ id:
       cancel: 'Batal'
   error_page:
     forbidden: 'Anda tidak dapat melakukan hal ini.'
-  proposal_outcome_panel:
-    heading: Hasil
-  proposal_outcome_form:
-    outcome_label: Hasil usulan
-    publish_outcome: Tayangkan hasil
   comment_form:
     delete_comment: 'Hapus komentar'
     confirm_delete_message: 'Apakah Anda ingin menghapus komentar ini?'
@@ -34,25 +29,6 @@ id:
     header: "Notifikasi"
   position_buttons_panel:
     heading: Berikan pendapat Anda
-  vote_form:
-    heading: Berikan pendapat Anda
-    i_agree: 'Saya setuju'
-    i_abstain: 'Saya abstain'
-    i_abstain_details: 'Saya setuju kelompok membuat keputusan tanpa persetujuan saya.'
-    i_disagree: 'Saya tidak setuju'
-    i_disagree_details: 'Saya merasa ada pilihan yang lebih baik.'
-    i_block: 'Saya blokir'
-    i_block_details: 'Saya menolak keras usulan ini dan tidak setuju untuk melanjutkan.'
-    submit_position: 'Masukkan pendapat'
-  proposal_positions_panel:
-    heading: Pendapat
-  close_proposal_form:
-    close_proposal: 'Tutup usulan'
-  proposal_form:
-    start_proposal: 'Mulai usulan'
-    title_label: 'Judul'
-    closes_at_label: 'Ditutup pada'
-    details_label: 'Keterangan'
   discussion_form:
     group_label: 'Kelompok'
     title_label: 'Judul'
@@ -89,66 +65,6 @@ id:
   new_comment_item:
     context_menu:
       delete_comment: 'Hapus komentar'
-  help_page:
-    coordinating: 'Mengatur kelompok Loomio Anda'
-    coordinating_details: |
-      Sebagai koordinator, Anda bertanggung jawab atas setelan kelompok Loomio Anda dan mengundang orang lain untuk masuk. Selain mempelajari penggunaan piranti lunak baru, kelompok Anda akan mempelajari proses baru untuk berkolaborasi lebih efektif dan membuat keputusan yang baik bersama-sama. Berikut beberapa tips agar tujuan kelompok Anda tercapai:
-    different_ways: 'Cara lain menggunakan Loomio'
-    example1_html: |
-      <h3>Kelompok Anda akan mendiskusikan sebuah topik dan membuat keputusan bersama</h3>
-      <p>Strategi: Diskusikan sebuah topik selama beberapa saat sebelum membuat usulan.</p>
-      <p>Diskusi seringkali mencapai hasil terbaik jika Anda memberikan pemahaman bersama mengenai masalah yang ada sebelum membuat keputusan. Apabila setiap orang berpartisipasi dalam proses tersebut, mereka akan mendukung tercapainya hasil yang diinginkan.</p>
-    get_in_touch: "Hubungi"
-    get_in_touch_description_html: "Apabila Anda memiliki pertanyaan atau masukan, <a href='%{link}'>silakan hubungi kami</a>."
-    getting_started: "Memulai"
-    getting_started_description: "Di sebelah kiri, kelompok dapat mendiskusikan sebuah topik, bertukar pikiran dan informasi. Apabila ada keputusan yang harus diambil, keputusan akan muncul di sebelah kanan."
-    getting_the_most: 'Gunakan Loomio sebaik mungkin'
-    have_your_say: "Berikan pendapat Anda"
-    have_your_say_details_html: |
-      <p>Apabila Anda ingin memberikan pendapat, klik salah satu dari empat tombol keputusan.</p>
-      <p>Setelah Anda memberikan pendapat, berikan penjelasan singkat. Di bawah grafik, Anda dapat melihat apa yang dipikirkan anggota lainnya. Hal ini mempermudah Anda mengikuti diskusi. Apabila ada informasi baru, Anda dapat mengubah pendapat Anda kapanpun.</p>
-    have_a_discussion: "Buat diskusi"
-    have_a_discussion_description: "Topik dan informasi terkait lainnya berada di bagian atas. Gunakan kotak komentar untuk memberikan pendapat Anda."
-    help: "Bantuan"
-    how_it_works: "Cara kerja"
-    invitation_html: |
-      <h2>Menulis undangan yang baik</h2>
-      <p>Pertanyaan penting yang akan diajukan anggota baru adalah 'kelompok apakah ini?'</p>
-      <p>Pikirkan cara singkat untuk mendeskripsikan kelompok: Apa yang ingin Anda peroleh bersama? Apa jenis keputusan yang akan diambil? Siapa saja yang akan terlibat?</p>
-      <p>Anda dapat berdiskusi dengan kelompok terlebih dulu sebelum meminta mereka bergabung ke dalam Loomio.</p>
-      <p>Mereka ingin tahu mengapa mereka diundang, apa yang Anda harapkan dari mereka, dan mengapa alat ini penting untuk mereka.</p>
-    join_the_community: "Gabung ke dalam komunitas"
-    images_and_text_formatting: "Format gambar dan teks"
-    images_and_text_formatting_html: |
-      <p>Loomio menggunakan ‘Penanda’ untuk memunculkan gambar dan format teks.
-      Anda dapat mengaktifkan Penanda melalui tombol kecil abu-abu di bawah kotak komentar.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Klik di sini</a>
-      untuk informasi penggunaan Penanda.</p>
-    keep_up_to_date: "Pantau perubahan"
-    keep_up_to_date_html: |
-      <p>Klik nama kelompok Anda di atas untuk menuju ke Laman Kelompok, dan Anda dapat melihat daftar seluruh diskusi dan
-      keputusan. Apabila Anda berada di dalam lebih dari satu kelompok, Anda dapat melihat seluruh aktivitas semua kelompok pada Laman Beranda.</p>
-      <p>Anda akan mendapatkan surel notifikasi saat ada hal penting yang terjadi di dalam kelompok.
-      Anda dapat mengubah preferensi surel <a href="%{link}"">di sini</a>.</p>
-    make_a_decision: "Buat keputusan"
-    make_a_decision_description: "Saat kelompok sudah siap untuk membuat keputusan, setiap anggota dapat memberikan usulan. Jelaskan tindakan yang ingin diambil dan latar belakangnya sehingga anggota kelompok dapat segera memilih untuk setuju atau tidak setuju."
-    prompt_people_details: "Apabila Anda ingin seseorang memperhatikan tulisan Anda di dalam kelompok, ketik '@' diikuti nama mereka. Mereka akan mendapatkan surel yang mengabari bahwa Anda menyebutkan nama mereka di dalam komentar"
-    prompt_people_html: "Kabari teman dengan <span class='blue'>@sebut</span>"
-    positions_agree_description: "<span>Setuju</span> berarti Anda puas dengan usulan."
-    positions_abstain_description: "<span>Abstain</span> berarti Anda tidak yakin, atau Anda tidak ingin kelompok membuat keputusan tanpa persetujuan Anda."
-    positions_disagree_description: "<span>Tidak setuju</span> berarti Anda merasa ada alternatif yang lebih baik, namun Anda akan menyetujui keputusan kelompok."
-    positions_block_description: "<span>Blokir</span> berarti Anda menolak keras dan Anda tidak setuju usulan ini diteruskan."
-    start_discussion: "Memulai diskusi yang menarik"
-    start_proposal: "Menulis usulan yang baik"
-    start_proposal_html: |
-      <p> Apabila Anda membuat judul yang jelas dan ringkas, anggota kelompok dapat segera memilih untuk setuju atau tidak setuju.</p>
-      <p>Ada kemungkinan sebuah usulan tidak disetujui dengan segera.
-      Apabila kelompok tidak menyukai usulan pertama, setiap anggota dapat membuat usulan baru untuk mengutarakan permasalahan yang ada, dan terus melanjutkan diskusi.</p>
-      <p>Melalui proses yang dinamis ini, keinginan kolektif dari kelompok Anda dapat menghasilkan usulan yang lebih baik dari usulan individual.</p>
-      <p>Tenggat waktu sebuah usulan dapat diperpanjang kapapun, apabila dirasa perlu. Setiap anggota akan mendapatkan surel pemberitahuan 24 jam sebelum usulan ditutup.</p>
-    video_id: "52025402"
-    video_tutorial: "Video tutorial"
-    video_tutorial_description: "Simak video untuk petunjuk singkat penggunaan Loomio."
   hint:
     context: 'Tips menggunakan panel konteks'
     discussion: 'Tips memulai diskusi yang menarik'

@@ -6,8 +6,6 @@ hr:
       proposal: 'Prijedlog'
   error_page:
     forbidden: 'Nepostojeća dozvola za izvršenje.'
-  proposal_outcome_form:
-    publish_outcome: Objavi ishod
   inbox:
     clear: 'Obriši'
   comment_form:
@@ -19,18 +17,6 @@ hr:
     sign_out: 'Odjava'
   notifications:
     header: "Notifikacije"
-  vote_form:
-    i_agree: 'Slažem se'
-    i_abstain: 'Suzdržan / a sam'
-    i_abstain_details: ' Slažem se da grupa odluči bez mene.'
-    i_disagree: 'Ne slažem se'
-    i_disagree_details: 'Mislim da vjerojatno možemo bolje.'
-    i_block: 'Blokiram'
-    i_block_details: 'Imam snažne prigovore na ovaj prijedlog i nisam za to da prođe.'
-  proposal_positions_panel:
-    heading: Stavovi
-  close_proposal_form:
-    close_proposal: 'Zatvori prijedlog'
   discussion_form:
     privacy_label: 'Privatnost'
   join_group_button:
@@ -58,13 +44,3 @@ hr:
     context_menu:
       edit_comment: 'Ažuriranje komentara'
       delete_comment: 'Obriši komentar'
-  help_page:
-    coordinating: 'Koordinacije vaše Loomio grupe'
-    coordinating_details: |
-      Kao koordinator / ica, odgovorni ste za postavljanje vaše Loomio grupe i pozivanje
-      članova. Također se morate naučiti koristiti novi softver, pa će i vaša grupa učinkovitije učiti nove procese kolaboracije i zajedno donositi bolje odluke. Ovo su neke smjernice za bolji uspjeh vaše grupe:
-    different_ways: 'Različiti načini korištenja Loomia'
-    get_in_touch: "Stupite u kontakt"
-    get_in_touch_description_html: "Ako imate pitanje ili prijedlog, <a href='%{link}'>javite nam se</a>."
-    getting_started: "Početak rada"
-    getting_started_description: "S lijeve strane grupa raspravlja o temi razmjenjujući ideje i informacije. Kad grupa mora donijeti odluku, ona se pojavljuje s desne strane."

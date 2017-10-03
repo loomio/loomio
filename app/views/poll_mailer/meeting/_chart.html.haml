@@ -14,7 +14,6 @@
         %td.poll-mailer-meeting__participant-name= stance.participant.name
         - @info.poll_options.each do |option|
           - if stance.poll_options.include?(option)
-            %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--active
-              = image_tag "poll_mailer/vote-button-yes.png", alt: "yes icon", class: "poll-mailer-#{@info.poll.poll_type}__option-icon"
+            %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--active ✓
           - else
             %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--inactive

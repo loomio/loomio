@@ -51,36 +51,12 @@ ca:
       translated: 'Traducció realitzada per Bing Translator'
       upload: 'Carrega'
       uploading: 'Carregant'
-    formatting_help:
-      title: 'Aprén com utilitzar Markdown per donar format al text a Loomio'
   devise:
     failure:
       inactive: 'Hi ha un compte desactivat associat a aquesta adreça de correu. Si voleu reactivar el compte, contacteu amb nosaltres.'
   error_page:
     forbidden: 'No teniu permís per realitzar aquesta acció.'
     internal_server_error: 'Alguna cosa ha anat malament. Torneu-ho a provar.'
-  start_proposal_card:
-    title: 'Creació d''una proposta'
-    helptext: Preparat per a prendre una decisió?
-  proposal_outcome_panel:
-    heading: Resultat
-    set_outcome_hint: Utilitzeu aquest espai per donar a conèixer a tothom el resultat de la proposta.
-  proposal_outcome_form:
-    set_outcome: Estableix el resultat de la proposta
-    update_outcome: Actualització del resultat de la proposta
-    outcome_label: Resultat de la proposta
-    outcome_placeholder: Dóna a conèixer a tothom el resultat de la proposta.
-    publish_outcome: Publica el resultat
-    messages:
-      created: Resultat publicat
-      updated: Resultat actualitzat
-  previous_proposals_card:
-    heading: Propostes anteriors
-  previous_proposals_page:
-    heading: Propostes anteriors
-  proposal_collapsed:
-    expand: Desplega
-    outcome: 'Resultat: {{outcome}}'
   volume_levels:
     loud: 'Fort'
     normal: 'Normal'
@@ -130,16 +106,9 @@ ca:
     unread: 'No llegit'
     closing_in: 'Tancant'
   sign_up_form:
-    name_label: 'El vostre nom:'
-    email_label: 'Correu electrònic:'
-    email_placeholder: 'tu@exemple.com'
     password_label: 'Contrasenya:'
     password_confirmation_label: 'Introduïu la contrasenya un altre cop:'
-    sign_in_message: 'Ja teniu un compte?'
-    sign_in: 'Entra'
-    sign_up: 'Creeu un compte'
   signed_out_modal:
-    message: "La sessió s'ha finalitzat a Loomio des d'una altra finestra. Torneu a entrar per continuar."
     ok: "D'acord"
   comment_form:
     aria_label: 'Afegeix un comentari'
@@ -191,54 +160,10 @@ ca:
     publish_outcome: "Publica un resultat"
   position_buttons_panel:
     heading: Doneu la opinió
-  vote_form:
-    heading: Doneu la opinió
-    i_agree: 'Estic d''acord'
-    i_agree_details: 'Estic a favor i vull que tiri endavant.'
-    i_abstain: 'M''abstinc'
-    i_abstain_details: 'Estic d''acord amb que el grup decideixi sense mi'
-    i_disagree: 'No hi estic d''acord'
-    i_disagree_details: 'Crec que ho podríem fer millor.'
-    i_block: 'Bloquejo'
-    i_block_details: 'Tinc fortes objeccions contra aquesta proposta i no estic d''acord amb que segueixi endavant.'
-    submit_position: 'Envia decisió'
-    change_position: 'Canvia la decisió'
-    select_position: 'Selecciona la decisió'
-    statement_placeholder: 'Compartiu els vostres pensaments amb el grup'
-    messages:
-      created: Vot afegit
-  proposal_positions_panel:
-    heading: Decisions
-    no_votes_yet: Encara no ha votat ningú aquesta proposta.
-    change_your_vote: Canvia la decisió.
-  proposal_pie_chart:
-    participation_statement: '{{percentage}}% dels membres han manifestat la seva decisió ({{number}}/{{total}})'
-  close_proposal_form:
-    close_proposal: 'Tanca la proposta'
-    helptext: 'Esteu segur que voleu tancar aquesta proposta?'
-    messages:
-      success: Proposta tancada
   extend_proposal_form:
     title: 'Canvia la data de tancament'
     success: 'Data de tancament de la proposta actualitzada'
     submit: 'Actualitza la data de tancament'
-  proposal_form:
-    messages:
-      created: 'Proposta creada'
-      updated: 'Proposta actualitzada'
-    start_proposal: 'Crea la proposta'
-    start_a_proposal: 'Crea una proposta'
-    edit_proposal: 'Edita la proposta'
-    what_does_a_proposal_do: 'Les propostes ajuden a conèixer l''opinió de tothom sobre una acció determinada.'
-    proposal_ideas: Necessiteu idees per escriure una bona proposta?
-    proposal_ideas_title: 9 formes d'utilitzar les propostes de Loomio per a convertir converses en accions
-    editing_title_and_description_forbidden: 'No podeu canviar el títol o la descripció d''una proposta després d''iniciar la votació. Si els detalls han canviat, tanqueu la proposta i creeu-n''hi una altra.'
-    title_placeholder: 'Per exemple: anem a la lluna'
-    title_label: 'Títol'
-    closes_at_label: 'Es tanca en'
-    closes: 'Tanca'
-    details_label: 'Detalls'
-    details_placeholder: "Doneu els suficients detalls per a que tothom sàpiga exactament que significa estar d'acord o en desacord amb la vostra proposta"
   discussion_record:
     created: 'La discussió {{title}} s''ha creat correctament a {{groupName}}'
     updated: 'Canvis desats a {{title}}'
@@ -258,25 +183,6 @@ ca:
     privacy_public: 'Tothom pot veure la discussió. Només els membres hi poden participar.'
     privacy_private: 'La discussió només serà visible pels membres del grup {{group}}.'
     privacy_organisation: 'La discussió serà visible pels membres de {{parent}} i pels membres de {{group}}.'
-  proposal_expanded:
-    collapse: Plega
-    current_votes: Vots actuals
-    started_by: 'Destacat per <strong>{{name}}</strong>'
-    only_voter_is_you: 'Encara no ha votat cap altre membre.'
-    extend_proposal: 'Canvia data de tancament'
-    edit_proposal: 'Edita la proposta'
-    close_proposal: 'Tancar proposta'
-    closed_badge: Tancat
-  proposal_position_yes: 'D''acord'
-  proposal_position_abstain: 'Abstenció'
-  proposal_position_no: 'En desacord'
-  proposal_position_block: 'Bloqueig'
-  legacy_trial_expired_modal:
-    heading: "Gràcies per utilitzar Loomio aquest any!"
-    submit: "Mostra els plans"
-  group_welcome_modal:
-    creator_heading: "Benvingut al grup nou"
-    member_heading: "Benvingut a Loomio"
   join_group_button:
     join_group: Uneix-te al grup
     membership_requested: Sol·licitud de pertinença pendent
@@ -339,15 +245,6 @@ ca:
       parent_members: 'Privacitat: Aquest grup és visible pels membres de {{parentGroupName}} i els membres de {{groupName}}'
       public: 'Privacitat: Aquest grup és visible a internet'
       aria_label: 'Privacitat del grup: {{privacy}}'
-  donation_modal:
-    body: "Loomio és una empresa social. La nostra missió és crear un món on sigui fàcil per a tothom participar en les decisions que els afecten."
-    contribute: Feu una donació
-  gift_card:
-    heading: Pla Donació
-    make_a_contribution: Feu una donació
-  trial_card:
-    choose_plan: 'Escolliu el pla de pagament'
-    expired_body_html: "<strong>{{name}}</strong> ha arribat al final del període de prova de Loomio. Per continuar utilitzant-lo, escolliu un pla de pagament que s'ajusti al vostre grup."
   group_form:
     start_group_heading: 'Creació d''un grup'
     start_subgroup_heading: 'Creació d''un subgrup'
@@ -396,10 +293,6 @@ ca:
     heading: 'Sol·licitud de pertinença'
     manage_requests: Administració de sol·licituds
     manage_requests_with_count: Administració de sol·licituds ({{count}})
-  group_help_card:
-    title: Ajuda
-    ten_tips_article_title: 10 consells per prendre grans decisions amb Loomio
-    nine_ways_to_use_proposals: 9 formes per utilitzar les propostes de Loomio per convertir una conversa en una acció
   membership_requests_page:
     heading: Sol·licitud de pertinença
     approve: Aprova
@@ -420,7 +313,6 @@ ca:
     shareable_link: 'Enllaç per a compartir'
     email_addresses: 'Adreces de correu electrònic'
     email_addresses_placeholder: 'p. ex. marc@loomio.org, martina@loomio.org'
-    email_explanation: 'Introduïu a sota les adreces de correu electrònic i Loomio els enviarà una invitació.'
     add_custom_message: 'Creeu una invitació personal,'
     add_custom_message_link: 'afegiu un missatge personalitzat.'
     custom_message: 'Missatge personalitzat'
@@ -485,7 +377,6 @@ ca:
     header: Configuració del correu electrònic
     all_groups: Configuració per tots els grups
     daily_summary_label: Correu electrònic de resum diari
-    daily_summary_description: "Cada matí, rebreu un correu electrònic amb l'activitat que no hagueu vist el dia anterior. Aquest correu us ofereix una forma senzilla d'estar al corrent de l'activitat de Loomio."
     on_participation_label: Subscriure a la participació
     mentioned_label: Mencions
     mentioned_description: "Quan algú vulgui cridar la vostra atenció, us @mencionarà. Recomanem deixar activada aquesta opció, per a rebre un correu electrònic quan això passi."
@@ -559,11 +450,6 @@ ca:
     proposals: 'Propostes'
     previous_proposals: 'Propostes anteriors'
     load_previous: 'Carrega activitats anteriors'
-    you_like_this: 'Us agrada.'
-    liked_by_you_and_someone: 'A {{name}} i a vós us agrada.'
-    liked_by_someone: '{{name}} li agrada.'
-    liked_by_many_others: 'A  {{joinedNames}} i {{name}} els hi ha agradat.'
-    liked_by_name: 'A {{name}} li ha agradat.'
     started_by: 'Destacat per <strong>{{name}}</strong>'
     edited: 'Editat'
     volume:
@@ -655,80 +541,6 @@ ca:
     message_label: 'El vostre missatge'
     message_placeholder: 'El vostre missatge...'
     send_message: 'Envia el missatge'
-  help_page:
-    coordinating: 'Coordinant el vostre grup de Loomio'
-    coordinating_details: |
-      Com a persona coordinadora, sou responsable de configurar el grup de Loomio
-      i convidar tothom a participar. A més d'aprendre a utilitzar aquest software, el grup
-      aprèn nous processos per col·laborar més efectivament i prendre bones decisions
-      junts. Aquí teniu algunes claus per tal que el grup funcioni:
-    different_ways: 'Diferents maneres d''utilitzar Loomio'
-    example1_html: |
-      <h3> Necessiteu que el grup discuteixi un tema molt ampli i desenvolupar una solució col·lectiva </h3>
-      <p> Estratègia: Debatre un tema per un temps abans de crear una proposta </p>
-      <p> Les discussions sovint arriben als millors resultats si es construeix una comprensió compartida
-      sobre el problema abans d'abordar una solució específica. Quan la gent participa en el procés,
-      és més propensa a arribar a un acord amb el resultat.</p>
-    get_in_touch: "Poseu-vos en contacte"
-    get_in_touch_description_html: "Si teniu alguna pregunta o comentari,  <a href='%{link}'> escriu-nos </a>."
-    getting_started: "Primers passos"
-    getting_started_description: "A mà esquerra, el grup discuteix un tema, intercanviant idees i informació. Quan el grup ha de prendre una decisió, apareix a mà dreta."
-    getting_the_most: 'Treure el màxim profit de Loomio'
-    have_your_say: "Doneu la opinió"
-    have_your_say_details_html: |
-      <p> Quan estiguis preparada per donar la teva opinió, fes clic en un dels quatre botons de decisions.
-      </p>
-      <p>Quan premis la decisió, deixa una breu explicació. Sota el gràfic,
-      es pot veure el que pensa la resta. Això fa que sigui ràpid i fàcil posar-se al dia
-      de la discussió. Com que nova informació es va fent pública, pots canviar la teva
-      posició en qualsevol moment. </p>
-    have_a_discussion: "Discuteix"
-    have_a_discussion_description: "El tema, junt amb qualsevol informació o context rellevant, apareix a l'encapçalament de la pàgina. Utilitza el quadre de comentaris per afegir la teva veu a la discussió."
-    help: "Ajuda"
-    how_it_works: "Funcionament"
-    invitation_html: |
-      <h2> Escriure una bona invitació </h2>
-      <p> La primera pregunta que cada nou membre es fa és "per a què serveix aquest grup?"</p>
-      <p> Pensa en la manera més senzilla de descriure'l: Què vols aconseguir junts? Quin tipus de decisions fareu? Qui hi participarà? </p>
-      <p> Pot ser una bona idea parlar amb el seu grup abans de convidar-los a Loomio. </p>
-      <p> La gent voldrà saber per què han estat convidats, que s'espera d'ells,
-      i per què paga la pena aprendre a utilitzar una nova eina. </p>
-    join_the_community: "Unir-se a la comunitat"
-    images_and_text_formatting: "Format d'imatges i textos"
-    images_and_text_formatting_html: |
-      <p>Loomio utilitza 'Markdown' per incrustar imatges i formatar el text.
-      Pots activar i desactivar el Markdown amb la petita icona gris sota l'apartat de comentaris. </p>
-      <p><a href='https://www.loomio.org/discussions/1124'> Fes clic aquí </a>
-      per obtenir informació sobre com utilitzar Markdown. </p>
-    keep_up_to_date: "Estar al dia"
-    keep_up_to_date_html: |
-      <p>Fer clic al nom del grup a la part superior de la pantalla porta a la Pàgina del Grup,
-      on es pot veure una llista de tots els debats i decisions d'aquest grup. Si
-      ets a més d'un grup, veuràs tota l'activitat de tots els grups alhora en la pàgina principal. </p>
-      <p>Rebràs notificacions per correu electrònic quan coses importants succeeixen en el teu grup.
-      Pots canviar les preferències de correu <a href="%{link}""> aquí </a>. </p>
-    make_a_decision: "Pren una decisió"
-    make_a_decision_description: "Quan el grup està llest per prendre una decisió, qualsevol pot fer una proposta. És important redactar el pla d'acció amb cura i explicar el context perquè tothom sàpiga exactament què significa estar d'acord o en desacord."
-    prompt_people_details: "Si vols aconseguir l'atenció d'una persona específica al teu grup, escriu '@' seguit del seu nom. Rebrà un correu electrònic fent-los saber que l'has esmentat en un comentari."
-    prompt_people_html: "Crida persones amb les <span class='blue'> @mencions </span>"
-    positions_agree_description: "<span>Hi estic d'acord</span> vol dir que estàs content amb la proposta."
-    positions_abstain_description: "<span>M'abstenc</span> vols dir que no n'estàs segur o que estàs d'acord amb que el grup decideixi sense tu. "
-    positions_disagree_description: "<span>No hi estic d'acord</span> vol dir que creus que hi pot haver una millor alternativa però acceptaràs la decisió que prengui el grup."
-    positions_block_description: "<span>Blouejo</span> vol dir que tens objeccions importants i estaràs extremadament insatisfet si aquesta proposta tira endavant."
-    start_discussion: "Començar una discussió engrescadora"
-    start_proposal: "Escriure una proposta clara"
-    start_proposal_html: |
-      <p> Si fas el títol clar i concís, la gent sabrà immediatament què significa estar d'acord o en desacord. </p>
-      <p>Si una proposta no aconsegueix un acord clar immediatament, no és la fi del món.
-      Si al grup no li agrada la primera proposta, qualsevol persona pot iniciar una nova proposta per
-      abordar les inquietuds plantejades, i mantenir el procés en marxa. </p>
-      <p> A través d'aquest procés dinàmic, la intel·ligència col·lectiva del grup pot generar idees millors
-      que ningú hauria pogut tenir individualment.</p>
-      <p>El termini de la proposta es pot ampliar en qualsevol moment, si sembla que la decisió
-      necessita una mica més de temps. Tothom rebrà una notificació per correu electrònic 24 hores abans de la proposta es tanqui.</p>
-    video_id: "52025402"
-    video_tutorial: "Video tutorial"
-    video_tutorial_description: "Mira el video per a una demostració ràpida de com utilitzar Loomio."
   hint:
     context: 'Claus per utilitzar el panell contextual'
     discussion: 'Claus per començar una discussió engrescadora'
@@ -736,25 +548,11 @@ ca:
     proposal: 'Claus per escriure una proposta clara'
     vote: 'Pots canviar la teva posició en qualsevol moment'
   explore_page:
-    header: Explora els grups de Loomio
-    search_placeholder: Cerca grups de Loomio públics
     single_search_result: "Coincideix 1 grup públic <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "Coincideixen {{resultCount}} grups públics <strong>{{searchTerm}}:</strong>"
     no_results_found: "<strong>No s'ha trobat el grup que esteu buscant.</strong> Si la privacitat d'un grup està marcada com a 'secret', el grup no apareixerà aquí. Si coneixeu qui coordina el grup, podeu demanar-li una invitació."
-  angular:
-    switch_back: 'Torna a la versió anterior de Loomio'
-    give_feedback: 'Envia un comentari'
-    collapse: Plega
-    enable:
-      invite: 'Prova el nou Loomio!'
-      title: 'Prova el nou Loomio!'
-      button_text: 'Activa el nou Loomio'
-    disable:
-      title: 'Gràcies per provar el nou Loomio'
-      button_text: 'Torna a la versió anterior de Loomio'
   global:
     messages:
-      app_update: 'Està disponible una nova versió de Loomio'
       reload: 'Recarrega'
   emoji_picker:
     search: "Troba una emoticona..."

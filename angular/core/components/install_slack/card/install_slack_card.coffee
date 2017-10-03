@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'installSlackCard', (ModalService, Ability
   templateUrl: 'generated/components/install_slack/card/install_slack_card.html'
   controller: ($scope) ->
     $scope.show = ->
-      AppConfig.features.slack && AbilityService.canAdministerGroup($scope.group)
+      AppConfig.providerFor('slack') && AbilityService.canAdministerGroup($scope.group)
 
     $scope.groupIdentity = ->
       $scope.group.groupIdentityFor('slack')

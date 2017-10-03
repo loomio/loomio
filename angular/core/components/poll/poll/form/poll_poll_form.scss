@@ -6,9 +6,13 @@
 }
 
 .poll-poll-form__option-button {
-  @include displayFlex;
+  display: flex;
   min-width: 24px;
   margin: 0 16px;
+}
+
+.poll-poll-form__option-icon--add {
+  margin-top: 16px !important;
 }
 
 .poll-poll-form__option-icon {

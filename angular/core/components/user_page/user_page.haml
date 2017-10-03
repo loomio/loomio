@@ -13,7 +13,7 @@
           %p {{userPage.user.shortBio}}
 
           %div{translate: "user_page.locale_field", translate-value-value: "{{userPage.user.localeName()}}", ng-if: "userPage.user.localeName()"}
-          %div{translate: "user_page.location_field", translate-value-value: "{{userPage.user.location}}", ng-if: "userPage.user.location"}
+          %div{translate: "user_page.location_field", translate-value-value: "{{userPage.location()}}", ng-if: "userPage.location()"}
           %div{translate: "user_page.online_field", translate-value-value: "{{userPage.user.lastSeenAt | timeFromNowInWords}}", ng-if: "userPage.user.lastSeenAt"}
 
           .user-page__groups

@@ -1,7 +1,7 @@
 .poll-common-set-outcome-panel {
   margin-bottom: 16px;
   md-dialog-actions {
-    @include displayFlex;
+    display: flex;
     justify-content: flex-end;
   }
 }

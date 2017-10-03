@@ -33,11 +33,6 @@ ja:
       cancel: 'キャンセル'
   error_page:
     forbidden: 'このアクションの許可がありません'
-  proposal_outcome_panel:
-    heading: 結論
-  proposal_outcome_form:
-    outcome_label: 提案の結論
-    publish_outcome: 結論を公表する
   comment_form:
     delete_comment: 'コメントを削除します'
     confirm_delete_message: '本当にコメントを削除しますか？'
@@ -54,25 +49,6 @@ ja:
     header: "通知"
   position_buttons_panel:
     heading: 意見を言う
-  vote_form:
-    heading: 意見を言う
-    i_agree: '賛成'
-    i_abstain: '棄権'
-    i_abstain_details: '他のメンバーにお任せします'
-    i_disagree: '反対'
-    i_disagree_details: '改善の余地があります'
-    i_block: 'ブロック'
-    i_block_details: '強く反対します。絶対に支援しません'
-    submit_position: '意見を送信'
-  proposal_positions_panel:
-    heading: 意見
-  close_proposal_form:
-    close_proposal: '提案を締め切ります'
-  proposal_form:
-    start_proposal: '提案を開始します'
-    title_label: 'タイトル'
-    closes_at_label: '締め切り時間：'
-    details_label: '詳細'
   discussion_form:
     group_label: 'グルブ'
     title_label: 'タイトル'
@@ -131,74 +107,6 @@ ja:
     name_label: 'あなたの名前'
     email_label: 'あなたのメールアドレス'
     message_label: 'あなたのメッセージ'
-  help_page:
-    coordinating: 'Loomioグループをコーディネートする'
-    coordinating_details: |
-      コーディネーターとして、Loomioグループをセットアップし、メンバーを招待する責任があります。
-      ソフトウェアの使い方を学ぶのと同様に、あなたのグループはより効率的に協力して意思決定を行う新しいプロセスについても学びます。
-      これはあなたのグループが成功するためのアドバイスです：
-    different_ways: 'Loomioの様々な使い方'
-    example1_html: |
-      <h3>幅広いトピックを議論し、共により良い解決をしていくグループが必要です</h3>
-      <p>ストラテジー：提案を作成する少し前にトピックについて議論してください</p>
-      <p>特定の解決策に飛び込む前に問題に関する理解を分かち合った場合、しばしば
-      ディスカッションすることによって最高の結果にたどり着きます。
-      人はプロセスに参加するとき、結果に賛成しうるものです。</p>
-    get_in_touch: "ご連絡ください"
-    get_in_touch_description_html: "質問やフィードバックがアル場合は、<a href='%{link}'>お知らせください</a>"
-    getting_started: "始めるには"
-    getting_started_description: "左側では、グループがトピックについてディスカッションをしたり、アイディアや情報を交換したりします。グループが決定を行うとき、右側に現れます。"
-    getting_the_most: 'Loomioを使いこなそう'
-    have_your_say: "意見を言う"
-    have_your_say_details_html: |
-      <p>意見を言う準備が整ったときに、４つの意見ボタンのうち一つをクリックしてください</p>
-      <p>決定を行うとき、短い説明も追加してください。円グラフの下に皆が何を考えているのか表示されます。
-      これにより、ディスカッションの内容に追いつくことが早く簡単になります。
-      新しい情報が明るみになった場合、いつでも意見を変更することができます</p>
-    have_a_discussion: "ディスカッションをする"
-    have_a_discussion_description: "トピックやそれに関連する情報はページのトップに表示されます。ディスカッションにあなたの声を反映させるにはコメント欄を使ってください。"
-    help: "ヘルプ"
-    how_it_works: "使い方"
-    invitation_html: |
-      <h2>素晴らしい招待状を書く</h2>
-      <p>新メンバーが持つ最初の質問は"このグループは何のためにあるのだろう？"です。</p>
-      <p>最もシンプルにグループを説明できる方法を考えてみてください：何を一緒に成し遂げたいですか？
-      どのようなタイプの決定を行いたいですか？誰が参加しますか？</p>
-      <p>あなたがLoomioに参加するよう誰かを招待をする前に、始めにグループと相談するのがいいでしょう</p>
-      <p>メンバーはどうして自分たちが招待されたのか、何を期待されているのか、どうして新しいツールの使い方を学ぶ価値があるのか知りたいでしょう</p>
-    join_the_community: "コミュニティに参加する"
-    images_and_text_formatting: "画像とテキストのフォーマット"
-    images_and_text_formatting_html: |
-      <p>Loomioは画像組み込みとテキストフォーマットに"マークダウン"を使用します
-      コメントボックスの下にある灰色の小さなアイコンでマークダウンをオンにできます</p>
-      <p>マークダウンの使用法について知りたい場合は
-      <a href='https://www.loomio.org/discussions/1124'>ここをクリック</a>
-      してください</p>
-    keep_up_to_date: "最新状態を保つ"
-    keep_up_to_date_html: |
-      <p>スクリーンのトップにあるグループ名をクリックすると、グループページに飛びます。
-      グループページではそのグループに関する全てのディスカッションや決定の一覧が見ることができます。
-      もしあなたが一つ以上のグループに属しているのなら、ホームページであなたの全グループの全てのイベントを一度に見ることができます。</p>
-      <p>あなたのグループでなにか重要なことが起こったらメールで通知されます。
-      Eメール設定は <a href="%{link}"">here</a> で変更することができます。</p>
-    make_a_decision: "決定を行う"
-    make_a_decision_description: "グループが決定を行う準備が整ったら、誰でも提案をすることができます。\n皆が賛成や反対が何を意味するか正確にわかるように、提案の内容を明確にした概要とその背景となる情報を入れてください。"
-    prompt_people_details: "あなたのグループで特定の人の注意を引きたい場合は、その人の名前の後に\"@\"を入力してください。\nコメントであなたがその人をタグ付けしたことを知らせるメールが、その人に届くでしょう。"
-    prompt_people_html: "<span class='blue'>@mentions</span> で人を指定する"
-    positions_agree_description: "<span>賛成</span>は、提案に納得したことを意味します"
-    positions_abstain_description: "<span>棄権</span>は、確信がない、またはあなた抜きでグループに決定を行ってほしいことを意味します"
-    positions_disagree_description: "<span>反対</span>は、より良い代替案があると考えますがグループの決定を尊重することを意味します"
-    positions_block_description: "<span>ブロック</span>は、真剣に異議を唱え、その提案が決定されることに対して納得がいかないことを意味します"
-    start_discussion: "ディスカッションを開始する"
-    start_proposal: "はっきりした提案を書く"
-    start_proposal_html: |
-      <p>タイトルを明確で簡潔にすると、メンバーは賛成や反対が何を意味するか正確にわかります。</p>
-      <p>提案がすぐに明確な同意をされなくても、世界の終わりではありません。
-      もしグループが最初の提案を気に入らなければ、懸念が生じたことを宣言するために誰でも新しい提案を開始することができます。そしてプロセスは前に進み続けます。</p>
-      <p>この動的なプロセスを通して、あなたのグループの結集された知恵は、一人で考えつくよりもさらに良いアイディアを生み出すことができます。</p>
-      <p>決定にもう少し余裕が必要だと思われる場合は、提案の締め切りはいつでも延長できます。提案が締め切られる24時間前に、全員にメールで通知されます。</p>
-    video_tutorial: "ビデオのチュートリアル"
-    video_tutorial_description: "Loomioの使い方の手短なデモンストレーションに関してはこのビデオを見てください。"
   hint:
     context: 'ディスカッション情報を使うアドバイス'
     discussion: 'ディスカッションを開始する際のアドバイス'

@@ -47,7 +47,7 @@ install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - gem install s3_uploader
   - cd angular; yarn; cd ..
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update --versions.gecko 0.19.0
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager update --versions.standalone 3.6.0 --versions.gecko v0.19.0
   - mkdir $TRAVIS_BUILD_DIR/bin
   - ln -s $TRAVIS_BUILD_DIR/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.19.0 $TRAVIS_BUILD_DIR/bin/geckodriver
   - ln -s fetched_plugins plugins

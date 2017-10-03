@@ -10,6 +10,7 @@ class LocationService
       SELECT DISTINCT(user_id) user_id, country, city, region, started_at
       FROM visits
       WHERE started_at > (CURRENT_TIMESTAMP - interval '#{within_last}')
+        AND country is not null
       ORDER BY started_at DESC
     ) AS subquery
     WHERE users.id = subquery.user_id;"

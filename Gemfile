@@ -49,6 +49,7 @@ gem 'discriminator', '~> 0.1.1'
 gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
+gem 'rack-attack'
 
 group :development, :test do
   gem 'lograge'
@@ -64,6 +65,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'gemrat'
+  gem 'derailed'
 end
 
 group :development do
@@ -97,6 +99,7 @@ group :production do
   gem 'delayed-plugins-airbrake'
   gem 'dalli'
   gem 'newrelic_rpm'
+  gem 'scout_apm'
   gem 'heroku-deflater'
 end
 

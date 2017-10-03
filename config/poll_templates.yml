@@ -76,7 +76,6 @@ meeting:
     - oldest_first
 
 ranked_choice:
-  experimental:            true
   poll_options_attributes: []
   chart_type:              bar
   material_icon:           mdi-format-list-numbers

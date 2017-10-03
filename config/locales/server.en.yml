@@ -183,6 +183,7 @@ en:
     public_groups: Public groups
     terms: Terms
     independent_install_html: '%{hostname} is running an independent copy of Loomio: <a href="http://github.com/loomio/loomio">find out more</a>.'
+
   invitation_form:
     error:
       too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
@@ -194,8 +195,8 @@ en:
     confirm_new_password: Confirm password
     new_password: New password
     email_guidelines_html: |
-      <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>
-      <p>If you normally sign in via Facebook, Google, Twitter or Persona, enter the email address associated with that account.</p>
+      <p>Enter your email address and you will be sent a password reset link.</p>
+      <p>If you normally sign in via Facebook or Google enter the email address associated with that account.</p>
     reset_email_timeframe: It may take up to 5 minutes for the email to arrive. If it doesn't show up, be sure to check your spam folder.
     length_restriction: Passwords must be at least 8 characters long.
     forbidden_passwords: Common passwords such as “password” are forbidden to keep your account safe.
@@ -239,20 +240,6 @@ en:
       Sometimes groups work through a **series of proposals** to build solutions together. You can raise sequential proposals in this thread.
 
       **Try participating! Click one of the four buttons**.
-
-  contact_page:
-    contact_us: Contact us
-    faq_prompt_html: Got a question for the Loomio team? Before contacting us, you might be able to find the answer in our frequently asked questions.
-    contact_information: If you don't find what you're looking for, you can find our contact information at the bottom of the page.
-    contact_form: Contact form
-    labels:
-      name: Your name
-      email: Your email address
-      message: Your message
-      submit: Send message
-    messages:
-      email_html: "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "You can also join us on<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
 
   markdown:
     intro:
