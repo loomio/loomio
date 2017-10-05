@@ -50,7 +50,6 @@ gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
 gem 'rack-attack'
-gem 'skylight'
 
 group :development, :test do
   gem 'lograge'
@@ -101,6 +100,7 @@ group :production do
   gem 'dalli'
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
+  gem 'skylight'
 end
 
 Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|
