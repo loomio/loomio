@@ -184,7 +184,7 @@ class Poll < ActiveRecord::Base
     if self.dates_as_options
       self.poll_options.order(name: :asc)
     else
-      self.poll_options.order(priority: :desc)
+      self.poll_options.order(priority: :asc)
     end
   end
 
