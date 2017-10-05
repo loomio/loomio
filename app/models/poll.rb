@@ -181,8 +181,11 @@ class Poll < ActiveRecord::Base
   end
 
   def ordered_poll_options
-    order_field = self.dates_as_options ? :name : :priority
-    self.poll_options.order(order_field => :asc)
+    if self.dates_as_options
+      self.poll_options.order(name: :asc)
+    else
+      self.poll_options.order(priority: :asc)
+    end
   end
 
   def poll_option_names
