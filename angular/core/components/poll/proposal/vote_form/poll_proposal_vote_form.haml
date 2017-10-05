@@ -4,7 +4,7 @@
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
   .poll-common-vote-form__options
     %md-radio-group{ng-model: "stance.selectedOption"}
-      %md-radio-button.poll-common-vote-form__radio-button{class: "poll-common-vote-form__radio-button--{{option.name}}", ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option", aria-label: "{{option.name}}"}
+      %md-radio-button.poll-common-vote-form__radio-button{class: "poll-common-vote-form__radio-button--{{option.name}}", ng-repeat: "option in stance.poll().pollOptions() | orderBy: 'priority' track by option.id", ng-value: "option", aria-label: "{{option.name}}"}
         %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750", md-direction: "left"}
           %span{translate: "poll_proposal_options.{{option.name}}_meaning"}
         %img.poll-proposal-form__icon{ng-src: "/img/{{option.name}}.svg"}
