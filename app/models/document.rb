@@ -7,6 +7,8 @@ class Document < ActiveRecord::Base
   validates :color, presence: true
   before_validation :set_metadata
 
+  scope :search_for, ->(query) { where("title ilike :q", q: "%#{query}%") }
+
   def reset_metadata!
     update(doctype: metadata['name'], icon: metadata['icon'], color: metadata['color'])
   end

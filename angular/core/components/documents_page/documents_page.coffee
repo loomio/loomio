@@ -2,7 +2,7 @@ angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams,
   $rootScope.$broadcast('currentComponent', { page: 'documentsPage'})
 
   @fetchDocuments = =>
-    Records.documents.fetchByModel(@group, @fragment)
+    Records.documents.fetchByGroup(@group, @fragment)
   LoadingService.applyLoadingFunction @, 'fetchDocuments'
 
   @documents = ->

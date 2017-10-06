@@ -17,6 +17,7 @@ class Comment < ActiveRecord::Base
 
   has_many :events, as: :eventable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :documents, as: :model
 
   validates_presence_of :user
   validate :has_body_or_attachment
