@@ -27,6 +27,7 @@
   margin: 0 4px;
   color: $grey-on-white;
   overflow: visible;
+  transition: opacity ease-in-out 0.25s;
   &:hover { color: $primary-text-color; }
   i { font-size: 20px; }
   i.lmo-helper-icon {

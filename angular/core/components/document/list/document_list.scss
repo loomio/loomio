@@ -1,3 +1,16 @@
+.document-list {
+  .md-button--tiny { opacity: 0.5; }
+  &:hover {
+    .md-button--tiny { opacity: 1; }
+  }
+}
+
+.document-list .md-button--tiny {
+  opacity: 0.5;
+  transition: opacity ease-in-out 0.25s;
+  &:hover { opacity: 1; }
+}
+
 .document-list__heading {
   font-size: 14px;
   margin-bottom: 0;
@@ -18,5 +31,6 @@
 
 .document-list__tooltip {
   padding-top: 8px;
-  img { max-width: 400px; }
+  max-height: 600px;
+  max-width: 400px;
 }

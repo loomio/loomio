@@ -1,10 +1,14 @@
 %section.document-list
   %h3.document-list__heading.lmo-card-heading{translate: "document.list.title", ng-if: "model.documents().length > 0"}
   .document-list__documents.md-block.lmo-flex{layout: "column"}
-    .document-list__document.lmo-flex{ng-repeat: "document in model.documents() track by document.id", layout: "row"}
-      %a.document-list__document.lmo-pointer.lmo-relative.lmo-flex.lmo-flex__center{layout: "row", href: "{{document.url}}", target: "_blank"}
-        %i.mdi.lmo-margin-right{class: "mdi-{{document.icon}}", ng-style: "{color: document.color}"}>
-        .document-list__title {{ document.title }}
-        %md-tooltip{md-delay: "750"}
-          %img.document-list__tooltip{ng-src: "{{document.url}}", alt: "{{document.title}}"}
-          .lmo-hidden .
+    .document-list__document.lmo-flex.lmo-flex__center.lmo-flex__space-between{layout: "row", ng-repeat: "document in model.documents() track by document.id", layout: "row"}
+      %i.mdi.lmo-margin-right{class: "mdi-{{document.icon}}", ng-style: "{color: document.color}"}>
+      %a.lmo-pointer.lmo-relative.lmo-flex.lmo-flex__grow{href: "{{document.url}}", target: "_blank"}
+        .document-list__title.lmo-flex__grow {{ document.title }}
+          %md-tooltip{md-delay: "750"}
+            %img.document-list__tooltip{ng-src: "{{document.url}}", alt: "{{document.title}}"}
+            .lmo-hidden .
+      %md-button.md-button--tiny{ng-click: "edit(document)", ng-if: "canEditDocuments()"}
+        %i.mdi.mdi-pencil
+      %md-button.md-button--tiny{ng-click: "remove(document)", ng-if: "canEditDocuments()"}
+        %i.mdi.mdi-window-close
