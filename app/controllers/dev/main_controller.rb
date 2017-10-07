@@ -11,8 +11,8 @@ class Dev::MainController < Dev::BaseController
     end
     render layout: false
   end
-  
-  def setup_nested_comments
+
+  def prepare_nested_comments
     sign_in patrick
     group = create_group
     group.add_admin!(patrick)
@@ -20,21 +20,34 @@ class Dev::MainController < Dev::BaseController
     d    = saved fake_discussion(group: group)
     DiscussionService.create(discussion: d, actor: patrick)
 
-    c1   = fake_comment(discussion: d)
-    c11  = fake_comment(discussion: d, parent: c1)
-    c12  = fake_comment(discussion: d, parent: c1)
-    c111 = fake_comment(discussion: d, parent: c11)
+    10.times do
+      parent_author = fake_user
+      group.add_member! parent_author
+      parent = fake_comment(discussion: d)
+      CommentService.create(comment: parent, actor: parent_author)
 
-    c2 = fake_comment(discussion: d)
-    c21 = fake_comment(discussion: d, parent: c2)
-
-    [c1, c11, c12, c111, c2, c21].each do |c|
-      event = CommentService.create(comment: c, actor: patrick)
+      (0..3).to_a.sample.times do
+        reply_author = fake_user
+        group.add_member! reply_author
+        reply = fake_comment(discussion: d, parent: parent)
+        CommentService.create(comment: reply, actor: reply_author)
+      end
     end
 
-    redirect_to discussion_url(d)
+    {current_user: patrick,
+     group: group,
+     discussion: d}
   end
 
+  def setup_nested_comments
+    records = prepare_nested_comments
+    redirect_to discussion_url(records[:discussion])
+  end
+
+  def setup_unread_nested_comments
+    records = prepare_nested_comments
+
+  end
 
   def setup_thread_mailer_new_discussion_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')

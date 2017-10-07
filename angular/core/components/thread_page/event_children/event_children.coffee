@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'eventChildren', (Records, RecordLoader) ->
-  scope: {discussion: '=', parent: '=', page: '='}
+  scope: {parent: '=', renderer: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/event_children/event_children.html'
   replace: true
@@ -9,14 +9,14 @@ angular.module('loomioApp').directive 'eventChildren', (Records, RecordLoader) -
       collection: 'events'
       params:
         parent_id: $scope.parent.id
-        discussion_key: $scope.page.discussionKey
-      per: $scope.page.per
+        discussion_key: $scope.parent.discussion().key
+      per: $scope.renderer.per
 
     $scope.events = ->
       query =
         parentId: $scope.parent.id
         sequenceId:
-          $between: [$scope.page.minSequenceId, ($scope.page.maxSequenceId || Number.MAX_VALUE)]
+          $between: [$scope.renderer.minSequenceId, ($scope.renderer.maxSequenceId || Number.MAX_VALUE)]
       delete query.sequenceId if $scope.showMore
 
       Records.events.collection.find(query)

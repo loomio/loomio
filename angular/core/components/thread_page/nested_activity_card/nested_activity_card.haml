@@ -1,23 +1,23 @@
 %section.nested-activity-card.activity-card{aria-labelledby: "activity-card-title"}
-  %h2.lmo-card-heading#activity-card-title
-    %md-select.md-no-underline{ng-model: "page.viewMode", ng-change: "init()"}
-      %md-option{value: "unread"} Unread
-      %md-option{value: "newest"} Newest
-      %md-option{value: "oldest"} Oldest
-      -# %md-option{value: "-likesCount"} Popular
+  -# %h2.lmo-card-heading#activity-card-title
+  -#   %md-select.md-no-underline{ng-model: "r.startFrom", ng-change: "r.refresh()"}
+  -#     %md-option{value: "unread"} Unread
+  -#     %md-option{value: "newest"} Newest
+  -#     %md-option{value: "oldest"} Oldest
+  -#     -# %md-option{value: "-likesCount"} Popular
   %div
-    per: {{page.per}} min: {{page.minSequenceId}} max: {{page.maxSequenceId}} first: {{discussion.firstSequenceId}} last: {{discussion.lastSequenceId}} lastRead: {{discussion.lastReadSequenceId}}
+    per: {{r.per}} min: {{r.minSequenceId}} max: {{r.maxSequenceId}} first: {{discussion.firstSequenceId}} last: {{discussion.lastSequenceId}} lastRead: {{discussion.lastReadSequenceId}} loadedCount: {{r.events().length}}
 
   %loading_content{ng-if: "loader.loading", block-count: 2}
   .activity-card__content{ng-if: "!loader.loading"}
-    %a.activity-card__load-backwards.lmo-flex.lmo-flex__center.lmo-no-print{href: "", ng-show: "canPreviousPage()", ng-click: "previousPage()", tabindex: "0"}
-      %i.material-icons> autorenew
-      %span{translate: "discussion.load_previous", translate-value-count: "{{numPrevious()}}"}
+    %a.activity-card__load-backwards.lmo-flex.lmo-flex__center.lmo-no-print{href: "", ng-show: "r.canLoadPrevious()", ng-click: "r.loadPrevious()", tabindex: "0"}
+      %i.mdi.mdi-autorenew>
+      %span{translate: "discussion.load_previous", translate-value-count: "{{r.numPrevious()}}"}
     -# %loading.activity-card__loading.page-loading{ng-show: "loadEventsBackwardsExecuting"}
-    .activity-card__no-activity.lmo-placeholder.align-center{ng-if: "noEvents()", translate: "discussion.activity_placeholder"}
+    .activity-card__no-activity.lmo-placeholder.align-center{ng-if: "r.noEvents()", translate: "discussion.activity_placeholder"}
     %ul.activity-card__activity-list
-      %li.activity-card__activity-list-item{ng_repeat: "event in events() | orderBy: page.orderBy track by event.id" }
-        %thread_item{event: "event", page: "page", ng-if: "!event.deleted", root: "true"}
+      %li.activity-card__activity-list-item{ng_repeat: "event in r.events() | orderBy: r.orderBy track by event.id" }
+        %thread_item{event: "event", renderer: "r", ng-if: "!event.deleted", root: "true"}
         -# .thread-item__last-read-activity.activity-card__new-activity{ng-if: "isLastRead(event)", translate: "activity_card.new_activity"}
     -# %loading.activity-card__loading.page-loading{ng-show: "loadEventsForwardsExecuting"}
-  %md-button{ng-click: "nextPage()", ng-if: "canNextPage()"} Next Page
+  %md-button{ng-click: "r.loadNext()", ng-if: "r.canloadNext()"} Next Page
