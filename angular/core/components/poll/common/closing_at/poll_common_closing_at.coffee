@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'pollCommonClosingAt', ->
   controller: ($scope, $filter) ->
     $scope.time = ->
       key = if $scope.poll.isActive() then 'closingAt' else 'closedAt'
-      $filter('timeFromNowInWords')($scope.poll[key])
+      $scope.poll[key]
 
     $scope.translationKey = ->
       if $scope.poll.isActive()
