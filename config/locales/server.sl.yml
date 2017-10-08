@@ -24,12 +24,3 @@ sl:
     public_groups: Javne skupine
     terms: Pogoji
     independent_install_html: '%{hostname} uporablja neodvisno kopijo Loomia: <a href="http://github.com/loomio/loomio">več informacij</a>.'
-  contact_page:
-    contact_us: Kontaktiraj nas
-    labels:
-      name: Tvoje ime
-      email: Tvoj email naslov
-      message: Tvoje sporočilo
-      submit: Pošlji sporočilo
-    messages:
-      email_html: "Izpolni obrazec ali pošlji email na <a href='mailto:%{email}'>%{email}</a>"

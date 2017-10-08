@@ -22,12 +22,3 @@ eo:
     pricing: Prezo
     public_groups: Publikaj grupoj
     terms: Kondiĉoj
-  contact_page:
-    contact_us: Kontakti nin
-    labels:
-      name: Via nomo
-      email: Via retpoŝtadreso
-      message: Via mesaĝo
-      submit: Sendi mesaĝon
-    messages:
-      email_html: "Plenigu ĉi tiun formularon aŭ sendu retpoŝtaĵon al <a href='mailto:%{email}'>%{email}</a>"

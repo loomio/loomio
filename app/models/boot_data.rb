@@ -1,4 +1,6 @@
 BootData = Struct.new(:user) do
+  include Skylight::Helpers
+
   def data
     ActiveModel::ArraySerializer.new(Array(user),
       scope: serializer_scope,
@@ -6,6 +8,7 @@ BootData = Struct.new(:user) do
       root: :current_users
     ).as_json.tap { |json| add_current_user_to(json) }
   end
+  instrument_method :data
 
   private
 

@@ -66,9 +66,6 @@ fr:
   password_reset:
     change_your_password: Modifiez votre mot de passe
     change_my_password: Modifier le mot de passe
-    email_guidelines_html: |
-      <p>Entrez l’adresse email de votre compte Loomio dans le champ ci-dessous et vous recevrez un lien de réinitialisation de votre mot de passe.</p>
-      <p>Si vous vous connectez normalement via Facebook , Google , Twitter ou Persona , entrez l’adresse e-mail associée à ce compte</p>
     reset_email_timeframe: Cela peut prendre jusqu’à 5 minutes à l’e-mail pour arriver. S’il n’apparaît pas, vérifier votre dossier pourriel.
     length_restriction: Les mots de passe doivent au moins avoir 8 caractères de long.
     forbidden_passwords: Les mots de passe communs tels que "motdepasse" (password) sont interdits afin de garder votre compte sécurisé.
@@ -109,19 +106,6 @@ fr:
       Parfois des groupes fonctionnent avec une **série de propositions** pour construire des solutions ensemble. Vous pouvez proposer des séquences de propositions dans ce fil.
 
       **Essayez de participer ! Cliquez sur l'un des quatre boutons**.
-  contact_page:
-    contact_us: Contactez-nous
-    faq_prompt_html: Vous avez une question pour l’équipe de Loomio? Avant de nous contacter, vous pourriez trouver la réponse dans notre FAQ
-    contact_information: Si vous ne trouvez pas ce que vous cherchez vous pouvez notre formulaire de contact en bas de la page.
-    contact_form: Formulaire de contact
-    labels:
-      name: Votre nom
-      email: Votre adresse e-mail
-      message: Votre message
-      submit: Envoyer le message
-    messages:
-      email_html: "Remplissez ce formulaire, ou envoyez un email à  <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Vous pouvez aussi nous rejoindre sur <br/><a href='%{facebook}' target='_blank'>facebook</a>,  <a href='%{google}' target='_blank'>google+</a> et <a href='%{twitter}' target='_blank'>twitter</a> !"
   markdown:
     intro:
       title: |
