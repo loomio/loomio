@@ -17,7 +17,7 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader, $roo
         from: @minSequenceId
         then: (data) ->
           $rootScope.$broadcast 'threadPageEventsLoaded'
-      @loader.loadFrom(@minSequenceId)
+      @loader.loadMore(@minSequenceId)
 
     increaseMax: =>
       @maxSequenceId += @per
@@ -34,7 +34,7 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader, $roo
 
     loadNext: ->
       if @anyNext()
-        @loader.loadFrom(@maxSequenceId).then @increaseMax
+        @loader.loadMore(@maxSequenceId).then(@increaseMax)
 
     anyPrevious: ->
       @minSequenceId > @discussion.firstSequenceId
@@ -42,7 +42,7 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader, $roo
     loadPrevious: ->
       if @anyPrevious()
         @decreaseMin()
-        @loader.loadFrom(@minSequenceId)
+        @loader.loadPrevious(@minSequenceId)
 
     numPrevious: ->
       @minSequenceId - @discussion.firstSequenceId

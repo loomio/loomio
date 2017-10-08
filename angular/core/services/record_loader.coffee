@@ -1,6 +1,7 @@
 angular.module('loomioApp').factory 'RecordLoader', (Records) ->
   class RecordLoader
     constructor: (opts = {}) ->
+      @loadingFirst = true
       @collection = opts.collection
       @params     = opts.params or {}
       @path       = opts.path
@@ -26,16 +27,21 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
         data
       .then(@then)
       .finally =>
+        @loadingFirst = false
         @loading = false
 
-    loadFrom: (from) ->
-      @from = from
-      @fetchRecords()
+    loadMore: (from) ->
+      if from?
+        @from = from
+      else
+        @from += @per if @numLoaded > 0
+      @loadingMore = true
+      @fetchRecords().finally => @loadingMore = false
 
-    loadMore: ->
-      @from += @per if @numLoaded > 0
-      @fetchRecords()
-
-    loadPrevious: ->
-      @from -= @per if @numLoaded > 0
-      @fetchRecords()
+    loadPrevious: (from) ->
+      if from?
+        @from = from
+      else
+        @from -= @per if @numLoaded > 0
+      @loadingPrevious = true
+      @fetchRecords().finally => @loadingPrevious = false
