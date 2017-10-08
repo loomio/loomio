@@ -1,7 +1,7 @@
 %section.activity-card{aria-labelledby: "activity-card-title"}
   %h2.lmo-card-heading#activity-card-title{translate: "discussion.activity"}
   %loading_content{ng-if: "loading", block-count: 2}
-  .activity-card__content{ng-if: "!loading"}
+  .activity-card__content -# {ng-if: "!loading"}
     %a.activity-card__load-backwards.lmo-flex.lmo-flex__center.lmo-no-print{href: "", ng-show: "canLoadBackwards()", ng-click: "loadEventsBackwards()", tabindex: "0"}
       %i.mdi.mdi-autorenew>
       %span{translate: "discussion.load_previous", translate-value-count: "{{beforeCount()}}"}

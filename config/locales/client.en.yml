@@ -862,6 +862,7 @@ en:
   groups_page:
     page_header: Your groups
 
+
   discussion:
     activity: 'Activity'
     activity_placeholder: 'No activity yet!'
@@ -876,6 +877,14 @@ en:
     volume:
       mute_message: 'Thread muted.'
       unmute_message: 'Thread unmuted'
+
+  activity_card:
+    new_activity: New activity
+    attachment_display:
+      aria_label: 'File attached:'
+      image_alt: 'Attached image'
+    n_previous: '{{count}} previous'
+    n_more: '{{count}} more'
 
   thread_group:
     aria_label: 'Group name'
@@ -916,11 +925,6 @@ en:
     messages:
       success: Thread has been moved to {{name}}
 
-  activity_card:
-    new_activity: New Activity
-    attachment_display:
-      aria_label: 'File attached:'
-      image_alt: 'Attached image'
 
   print_modal:
     load_discussion: Loading entire discussion...

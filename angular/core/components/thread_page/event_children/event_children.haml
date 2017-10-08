@@ -1,13 +1,11 @@
 .event-children.event-children__indent
-  .event-children__load-previous{ng-if: "anyPrevious()", ng-click: "loadPrevious()"}
-    {{previousCount()}} previous
-  %thread-item{ng-repeat: "event in events() | orderBy: page.orderBy track by event.id", event: "event", page: "page", root: "false"}
   -# %div
   -#   parent_id: {{parent.id}}
   -#   children.length: {{events().length}}
   -#   parent.childCount: {{parent.childCount}}
   -#   lastPos: {{lastPos()}}
   -#   showMore: {{showMore}}
-  %md-button.event-children__load-next{ng-if: "anyNext()", ng-click: "loadMore()"}
-    {{nextCount()}} more
+  %md-button.event-children__load-previous{ng-if: "sw.anyPrevious()", ng-click: "sw.loadPrevious()", translate: "activity_card.n_previous", translate-value-count: "sw.previousCount()"}
+  %thread-item{ng-repeat: "event in sw.events() | orderBy: threadWindow.orderBy track by event.id", thread-window: "threadWindow", event: "event", root: "false"}
+  %md-button.event-children__load-next{ng-if: "sw.anyNext()", ng-click: "sw.loadMore()", translate: "activity_card.n_more", translate-value-count: "sw.nextCount()"}
   %add_reply_panel

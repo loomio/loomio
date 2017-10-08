@@ -1,6 +1,13 @@
-angular.module('loomioApp').factory 'ThreadRenderer', (Records, RecordLoader, $rootScope) ->
-  class ThreadRenderer
-    constructor: ({@scope, @per, @discussion}) ->
+angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader, $rootScope) ->
+  class ThreadWindow
+    reset: ->
+      @per = 30
+      @orderBy = 'createdAt'
+      @minSequenceId = @discussion.lastReadSequenceId || 1
+      @maxSequenceId = @minSequenceId - 1
+      @increaseMax()
+
+    constructor: ({@discussion}) ->
       @reset()
       @loader = new RecordLoader
         collection: 'events'
@@ -12,12 +19,6 @@ angular.module('loomioApp').factory 'ThreadRenderer', (Records, RecordLoader, $r
           $rootScope.$broadcast 'threadPageEventsLoaded'
       @loader.loadFrom(@minSequenceId)
 
-    reset: ->
-      @orderBy = 'createdAt'
-      @minSequenceId = @discussion.lastReadSequenceId || 1
-      @maxSequenceId = @minSequenceId - 1
-      @increaseMax()
-
     increaseMax: =>
       @maxSequenceId += @per
       if @maxSequenceId >= @discussion.lastSequenceId
@@ -28,18 +29,18 @@ angular.module('loomioApp').factory 'ThreadRenderer', (Records, RecordLoader, $r
       if @minSequenceId < @discussion.firstSequenceId
         @minSequenceId = @discussion.firstSequenceId
 
-    canloadNext: ->
+    anyNext: ->
       @maxSequenceId != null
 
     loadNext: ->
-      if @canloadNext()
+      if @anyNext()
         @loader.loadFrom(@maxSequenceId).then @increaseMax
 
-    canLoadPrevious: ->
+    anyPrevious: ->
       @minSequenceId > @discussion.firstSequenceId
 
     loadPrevious: ->
-      if @canLoadPrevious()
+      if @anyPrevious()
         @decreaseMin()
         @loader.loadFrom(@minSequenceId)
 
@@ -47,7 +48,7 @@ angular.module('loomioApp').factory 'ThreadRenderer', (Records, RecordLoader, $r
       @minSequenceId - @discussion.firstSequenceId
 
     pageOf: (event) ->
-      parseInt(event.sequenceId / (@per + 1))
+      parseInt(event.sequenceId / @per)
 
     rootsAndOrphans: (event) =>
       (!event.parentId? || event.parent().kind == "new_discussion") ||
