@@ -8,6 +8,9 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $translate, LmoUr
       $compile("<event-children parent=\"event\" thread-window=\"threadWindow\"></event-children>")(scope, (cloned, scope) -> element.append(cloned))
 
   controller: ($scope) ->
+    $scope.showNewActivity = (event) ->
+      $scope.threadWindow.isFirstUnread(event) && (event.sequenceId != $scope.event.discussion().firstSequenceId)
+
     $scope.headline = ->
       EventHeadlineService.headlineFor($scope.event)
 

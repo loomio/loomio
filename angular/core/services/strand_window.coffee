@@ -15,7 +15,6 @@ angular.module('loomioApp').factory 'StrandWindow', (Records, RecordLoader, $roo
           $between: [@threadWindow.minSequenceId,
                      (@threadWindow.maxSequenceId || Number.MAX_VALUE)]
       delete query.sequenceId if @showMore
-
       Records.events.collection.find(query)
 
     noneLoaded: ->
@@ -30,7 +29,7 @@ angular.module('loomioApp').factory 'StrandWindow', (Records, RecordLoader, $roo
 
     anyNext: ->
       @anyMissing() &&
-      (@noneLoaded() || (@lastPost() + 1) < @parentEvent.childCount)
+      (@noneLoaded() || (@lastPos() + 1) < @parentEvent.childCount)
 
     previousCount: ->
       if @anyPrevious()
@@ -44,13 +43,13 @@ angular.module('loomioApp').factory 'StrandWindow', (Records, RecordLoader, $roo
       else if @noneLoaded()
         @parentEvent.childCount
       else
-        @parentEvent.childCount - (@lastPost() + 1)
+        @parentEvent.childCount - (@lastPos() + 1)
 
     firstPos: ->
       if @events().length > 0
         @events()[0].pos
 
-    lastPost: ->
+    lastPos: ->
       if @events().length > 0
         _.last(@events()).pos
 

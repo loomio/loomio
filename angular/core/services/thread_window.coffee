@@ -1,33 +1,35 @@
-angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader, $rootScope) ->
+angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
   class ThreadWindow
-    reset: ->
+    reset: (initialSequenceId) ->
       @per = 10
       @orderBy = 'createdAt'
-      @minSequenceId = @discussion.lastReadSequenceId || 1
-      @maxSequenceId = @minSequenceId - 1
-      @increaseMax()
-
-    constructor: ({@discussion}) ->
-      @reset()
+      @setMin(initialSequenceId || 1)
+      @setMax(@minSequenceId - 1)
       @loader = new RecordLoader
         collection: 'events'
         params:
           discussion_key: @discussion.key
         per: @per
         from: @minSequenceId
-        then: (data) ->
-          $rootScope.$broadcast 'threadPageEventsLoaded'
-      @loader.loadMore(@minSequenceId)
 
-    increaseMax: =>
-      @maxSequenceId += @per
+    constructor: ({@discussion}) ->
+      @reset()
+
+    setMin: (val) ->
+      @minSequenceId = val
+      if @minSequenceId < @discussion.firstSequenceId
+        @minSequenceId = @discussion.firstSequenceId
+
+    setMax: (val) ->
+      @maxSequenceId = val
       if @maxSequenceId >= @discussion.lastSequenceId
         @maxSequenceId = null # allows new events to show up
 
-    decreaseMin: ->
-      @minSequenceId -= @per
-      if @minSequenceId < @discussion.firstSequenceId
-        @minSequenceId = @discussion.firstSequenceId
+    increaseMax: =>
+      @setMax(@maxSequenceId += @per)
+
+    decreaseMin: =>
+      @setMin(@minSequenceId -= @per)
 
     anyNext: ->
       @maxSequenceId != null
@@ -46,6 +48,12 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader, $roo
 
     numPrevious: ->
       @minSequenceId - @discussion.firstSequenceId
+
+    loadAll: ->
+      @loader.per = Number.MAX_SAFE_INTEGER
+      @minSequenceId = @discussion.firstSequenceId
+      @maxSequenceId = null
+      @loader.loadMore(@minSequenceId)
 
     pageOf: (event) ->
       unread = event.sequenceId > @discussion.lastReadSequenceId ? 1 : 0

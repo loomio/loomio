@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903235705) do
+ActiveRecord::Schema.define(version: 20171002062436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -276,6 +276,15 @@ ActiveRecord::Schema.define(version: 20170903235705) do
   add_index "events", ["parent_id", "pos"], name: "index_events_on_parent_id_and_pos", where: "(pos IS NOT NULL)", using: :btree
   add_index "events", ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)", using: :btree
   add_index "events", ["sequence_id"], name: "index_events_on_sequence_id", using: :btree
+
+  create_table "events_groups", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "group_id"
+  end
+
+  add_index "events_groups", ["event_id", "group_id"], name: "index_events_groups_on_event_id_and_group_id", unique: true, using: :btree
+  add_index "events_groups", ["event_id"], name: "index_events_groups_on_event_id", using: :btree
+  add_index "events_groups", ["group_id"], name: "index_events_groups_on_group_id", using: :btree
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
@@ -757,7 +766,7 @@ ActiveRecord::Schema.define(version: 20170903235705) do
   add_index "user_deactivation_responses", ["user_id"], name: "index_user_deactivation_responses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.citext   "email",                                        default: "",         null: false
+    t.citext   "email",                                        default: "",                    null: false
     t.string   "encrypted_password",               limit: 128, default: ""
     t.string   "reset_password_token",             limit: 255
     t.datetime "reset_password_sent_at"
@@ -772,39 +781,39 @@ ActiveRecord::Schema.define(version: 20170903235705) do
     t.string   "name",                             limit: 255
     t.datetime "deactivated_at"
     t.boolean  "is_admin",                                     default: false
-    t.string   "avatar_kind",                      limit: 255, default: "initials", null: false
+    t.string   "avatar_kind",                      limit: 255, default: "initials",            null: false
     t.string   "uploaded_avatar_file_name",        limit: 255
     t.string   "uploaded_avatar_content_type",     limit: 255
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials",                  limit: 255
     t.string   "username",                         limit: 255
-    t.boolean  "email_when_proposal_closing_soon",             default: false,      null: false
+    t.boolean  "email_when_proposal_closing_soon",             default: false,                 null: false
     t.string   "authentication_token",             limit: 255
     t.string   "unsubscribe_token",                limit: 255
-    t.integer  "memberships_count",                            default: 0,          null: false
-    t.boolean  "uses_markdown",                                default: false,      null: false
+    t.integer  "memberships_count",                            default: 0,                     null: false
+    t.boolean  "uses_markdown",                                default: false,                 null: false
     t.string   "selected_locale",                  limit: 255
     t.string   "time_zone",                        limit: 255
     t.string   "key",                              limit: 255
     t.string   "detected_locale",                  limit: 255
-    t.boolean  "email_missed_yesterday",                       default: true,       null: false
+    t.boolean  "email_missed_yesterday",                       default: true,                  null: false
     t.string   "email_api_key",                    limit: 255
-    t.boolean  "email_when_mentioned",                         default: true,       null: false
-    t.boolean  "angular_ui_enabled",                           default: true,       null: false
-    t.boolean  "email_on_participation",                       default: true,       null: false
-    t.integer  "default_membership_volume",                    default: 2,          null: false
+    t.boolean  "email_when_mentioned",                         default: true,                  null: false
+    t.boolean  "angular_ui_enabled",                           default: true,                  null: false
+    t.boolean  "email_on_participation",                       default: true,                  null: false
+    t.integer  "default_membership_volume",                    default: 2,                     null: false
     t.string   "country"
     t.string   "region"
     t.string   "city"
-    t.jsonb    "experiences",                                  default: {},         null: false
+    t.jsonb    "experiences",                                  default: {},                    null: false
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"
-    t.string   "short_bio",                                    default: "",         null: false
-    t.boolean  "email_verified",                               default: false,      null: false
-    t.string   "location",                                     default: "",         null: false
-    t.datetime "last_seen_at",                                 default: "now()",    null: false
+    t.string   "short_bio",                                    default: "",                    null: false
+    t.boolean  "email_verified",                               default: false,                 null: false
+    t.string   "location",                                     default: "",                    null: false
+    t.datetime "last_seen_at",                                 default: '2017-10-03 02:45:14', null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

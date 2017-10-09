@@ -39,6 +39,9 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     model: ->
       @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
 
+    isUnread: ->
+      @sequenceId > @discussion().lastReadSequenceId
+
     markAsRead: ->
       return unless @sequenceId > @discussion().lastReadSequenceId
       @remote.postMember @id, 'mark_as_read'

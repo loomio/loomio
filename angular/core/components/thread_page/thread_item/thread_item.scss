@@ -1,6 +1,9 @@
 .thread-item {
   margin-bottom: 25px;
 }
+.thread-item--unread {
+  // border-left: 1px solid orange;
+}
 
 .thread-item__title {
   /* these styles break with BEM but they keep the translations clean*/
