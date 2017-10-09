@@ -1,12 +1,33 @@
 class Identities::SlackController < Identities::BaseController
   before_filter :respond_with_ok, only: [:participate, :initiate]
-  include Identities::Slack::Install
-  include Identities::Slack::Initiate
-  include Identities::Slack::Participate
-  before_filter :initiate_ensure_token, only: :initiate
-  before_filter :participate_ensure_token, only: :participate
 
   rescue_from(ActionController::ParameterMissing) { head :bad_request }
+
+  def install
+    if current_user.identities.find_by(identity_type: :slack) || pending_identity
+      index
+    else
+      params[:back_to] = slack_install_url
+      oauth
+    end
+  end
+
+  def initiate
+    if params['token'] == ENV['SLACK_VERIFICATION_TOKEN']
+      render text: ::Slack::Initiator.new(params).initiate
+    else
+      head :bad_request
+    end
+  end
+
+  def participate
+    payload = JSON.parse(params.require(:payload))
+    if payload['token'] == ENV['SLACK_VERIFICATION_TOKEN']
+      render text: ::Slack::Participator.new(JSON.parse(params.require(:payload))).participate
+    else
+      head :bad_request
+    end
+  end
 
   def authorized
     @team = params[:team]
@@ -38,12 +59,5 @@ class Identities::SlackController < Identities::BaseController
 
   def oauth_host
     "https://slack.com/oauth/authorize"
-  end
-
-  def request_authorization_url(team = {})
-    slack_oauth_url(
-      back_to: slack_authorized_url(team: team['domain']),
-      team:    team['id']
-    )
   end
 end
