@@ -26,7 +26,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
 
     children: ->
       @recordStore.events.find(parentId: @id)
-      
+
     delete: ->
       @deleted = true
 
@@ -46,3 +46,9 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
 
     beforeRemove: ->
       _.invoke(@notifications(), 'remove')
+
+    next: ->
+      @recordStore.events.find(parentId: @parentId, pos: @pos + 1)[0]
+
+    previous: ->
+      @recordStore.events.find(parentId: @parentId, pos: @pos - 1)[0]

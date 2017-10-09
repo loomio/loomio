@@ -1,7 +1,7 @@
 angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader, $rootScope) ->
   class ThreadWindow
     reset: ->
-      @per = 30
+      @per = 10
       @orderBy = 'createdAt'
       @minSequenceId = @discussion.lastReadSequenceId || 1
       @maxSequenceId = @minSequenceId - 1
@@ -48,11 +48,17 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader, $roo
       @minSequenceId - @discussion.firstSequenceId
 
     pageOf: (event) ->
-      parseInt(event.sequenceId / @per)
+      unread = event.sequenceId > @discussion.lastReadSequenceId ? 1 : 0
+      parseInt(event.sequenceId / @per) + unread
 
     rootsAndOrphans: (event) =>
       (!event.parentId? || event.parent().kind == "new_discussion") ||
-      (@pageOf(event) != @pageOf(event.parent()))
+      !@inWindow(event.parent())
+
+    fewerDiscussionEditedEvents: (events) ->
+      _.reject events, (event) =>
+        event.kind == "discussion_edited" &&
+        (event.pos == 0 || (event.previous() || {}).kind == "discussion_edited")
 
     events: =>
       query =
@@ -61,7 +67,15 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader, $roo
         discussionId: @discussion.id
 
       events = Records.events.collection.find(query)
-      _.filter(events, @rootsAndOrphans)
+      @fewerDiscussionEditedEvents(_.filter(events, @rootsAndOrphans))
 
     noEvents: ->
         !_.any(@events())
+
+    inWindow: (event) ->
+      event.sequenceId >= @minSequenceId &&
+      ((@maxSequenceId == null) || event.sequenceId <= @maxSequenceId)
+
+    isFirstUnread: (event) ->
+      (event.sequenceId == @discussion.lastReadSequenceId + 1) &&
+      (@discussion.lastSequenceId > @discussion.lastReadSequenceId)

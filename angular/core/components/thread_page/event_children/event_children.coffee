@@ -5,3 +5,5 @@ angular.module('loomioApp').directive 'eventChildren', (StrandWindow) ->
   replace: true
   controller: ($scope) ->
     $scope.sw = new StrandWindow(parentEvent: $scope.parent, threadWindow: $scope.threadWindow)
+    $scope.$on 'showReplyForm', (e, parentComment) ->
+      $scope.sw.showMore = true

@@ -17,6 +17,5 @@
     %ul.activity-card__activity-list
       %li.activity-card__activity-list-item{ng_repeat: "event in tw.events() | orderBy: tw.orderBy track by event.id" }
         %thread_item{event: "event", thread_window: "tw", ng-if: "!event.deleted", root: "true"}
-        -# .thread-item__last-read-activity.activity-card__new-activity{ng-if: "isLastRead(event)", translate: "activity_card.new_activity"}
     %loading.activity-card__loading.page-loading{ng-show: "tw.loader.loadingNext"}
   %md-button{ng-click: "tw.loadNext()", ng-if: "tw.anyNext()"} Next Page

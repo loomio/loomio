@@ -16,6 +16,11 @@ Loomio::Application.routes.draw do
   root to: 'root#index'
 
   namespace :dev do
+    namespace :discussions do
+      get '/' => :index
+      get ':action'
+    end
+
     namespace :polls do
       get '/' => :index
       get ':action'
@@ -94,6 +99,7 @@ Loomio::Application.routes.draw do
     resources :events, only: :index do
       post  :mark_as_read, on: :member
     end
+    
     resources :drafts do
       collection do
         get    '/:draftable_type/:draftable_id', action: :show

@@ -12,43 +12,6 @@ class Dev::MainController < Dev::BaseController
     render layout: false
   end
 
-  def prepare_nested_comments
-    sign_in patrick
-    group = create_group
-    group.add_admin!(patrick)
-    EventParentMigrator.migrate_group!(group)
-    d    = saved fake_discussion(group: group)
-    DiscussionService.create(discussion: d, actor: patrick)
-
-    10.times do
-      parent_author = fake_user
-      group.add_member! parent_author
-      parent = fake_comment(discussion: d)
-      CommentService.create(comment: parent, actor: parent_author)
-
-      (0..3).to_a.sample.times do
-        reply_author = fake_user
-        group.add_member! reply_author
-        reply = fake_comment(discussion: d, parent: parent)
-        CommentService.create(comment: reply, actor: reply_author)
-      end
-    end
-
-    {current_user: patrick,
-     group: group,
-     discussion: d}
-  end
-
-  def setup_nested_comments
-    records = prepare_nested_comments
-    redirect_to discussion_url(records[:discussion])
-  end
-
-  def setup_unread_nested_comments
-    records = prepare_nested_comments
-
-  end
-
   def setup_thread_mailer_new_discussion_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!  patrick

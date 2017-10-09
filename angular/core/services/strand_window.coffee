@@ -41,7 +41,7 @@ angular.module('loomioApp').factory 'StrandWindow', (Records, RecordLoader, $roo
     nextCount: ->
       if !@anyNext()
         0
-      else if noneLoaded()
+      else if @noneLoaded()
         @parentEvent.childCount
       else
         @parentEvent.childCount - (@lastPost() + 1)
