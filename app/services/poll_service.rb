@@ -45,15 +45,15 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
+    is_new_group   = params.has_key?(:group_id) && params[:group_id] != poll.group_id
     poll.assign_attributes(params.except(:poll_type, :discussion_id))
-    is_new_group   = params[:group_id] != poll.group_id
     is_new_version = poll.is_new_version?
 
     return false unless poll.valid?
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
-    EventBus.broadcast('poll_moved_group', poll, actor)                            if is_new_group
+    EventBus.broadcast('poll_changed_group', poll, actor)                          if is_new_group
     Events::PollEdited.publish!(poll.versions.last, actor, poll.make_announcement) if is_new_version
   end
 

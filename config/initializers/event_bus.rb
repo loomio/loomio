@@ -32,9 +32,9 @@ EventBus.configure do |config|
   config.listen('poll_create') { |poll, actor| poll.guest_group.add_admin!(actor) }
 
   # publish to new group if group has changed
-  config.listen('poll_changed_group') do |poll|
+  config.listen('poll_changed_group') do |poll, actor|
     poll.make_announcement = true
-    Events::PollCreated.publish!(poll.actor)
+    Events::PollCreated.publish!(poll, actor)
   end
 
   # mark invitations with the new user's email as used
