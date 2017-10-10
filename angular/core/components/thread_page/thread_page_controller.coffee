@@ -60,17 +60,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     @comment = Records.comments.find(@requestedCommentId) unless isNaN(@requestedCommentId)
     @performScroll()
 
-  @hasClosedPolls = ->
-    _.any @discussion.closedPolls()
-
-  @canViewMemberships = ->
-    @eventsLoaded && AbilityService.canViewMemberships(@discussion.group())
-
   checkInView = ->
     angular.element(window).triggerHandler('checkInView')
-
-  @canStartPoll = ->
-    AbilityService.canStartPoll(@discussion.group())
 
   KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', checkInView
   KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', checkInView

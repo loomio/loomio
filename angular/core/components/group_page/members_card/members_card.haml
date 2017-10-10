@@ -1,4 +1,4 @@
-%section.members-card.lmo-no-print{aria-labelledby: "members-card-title"}
+%section.members-card.lmo-no-print{aria-labelledby: "members-card-title", ng-if: "canViewMemberships()"}
   %h2#members-card-title.lmo-card-heading{ translate: "group_page.members"}
   .members-card__list
     .members-card__avatar{ng-if: "group.memberships().length > 1", ng-repeat: "membership in group.memberships() | orderBy: '-admin' | limitTo:10"}
