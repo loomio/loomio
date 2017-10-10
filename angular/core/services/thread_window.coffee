@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
     reset: (initialSequenceId) ->
       @per = 10
       @orderBy = 'createdAt'
+      @firstUnreadSequenceId = @discussion.lastReadSequenceId + 1
       @setMin(initialSequenceId || 1)
       @setMax(@minSequenceId - 1)
       @loader = new RecordLoader
@@ -69,6 +70,7 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
         (event.pos == 0 || (event.previous() || {}).kind == "discussion_edited")
 
     events: =>
+      # i think we want to memoize this method eventually
       query =
         sequenceId:
           $between: [@minSequenceId, (@maxSequenceId || Number.MAX_VALUE)]
@@ -84,6 +86,8 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
       event.sequenceId >= @minSequenceId &&
       ((@maxSequenceId == null) || event.sequenceId <= @maxSequenceId)
 
+    isLastInWindow: (event) ->
+      _.last(@events()) == event
+
     isFirstUnread: (event) ->
-      (event.sequenceId == @discussion.lastReadSequenceId + 1) &&
-      (@discussion.lastSequenceId > @discussion.lastReadSequenceId)
+      event.sequenceId == @firstUnreadSequenceId
