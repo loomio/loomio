@@ -91,13 +91,19 @@ textarea .lmo-textarea {
 
 .lmo-markdown-wrapper {
   word-wrap: break-word;
+
+  a { word-break: break-all; }
+
   p { @include md-body-1; }
   img { max-width: 100%; }
   h1 {
     @include fontLarge;
     margin: 20px 0 10px 0;
   }
-  h2 { @include fontMedLarge; }
+  h2 {
+    @include fontMedLarge;
+    font-weight: bold;
+  }
   ul{ padding: 0 0 10px 24px; }
   ul li{ list-style: disc; }
   pre {

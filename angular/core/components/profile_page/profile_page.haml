@@ -43,6 +43,9 @@
               {{locale.name}}
           %validation_errors{subject: "profilePage.user", field: "selectedLocale"}
 
+        %p{ng-if: "showHelpTranslate()"}
+          %a.md-caption{translate: "profile_page.help_translate", href: "https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation", target: "_blank"}
+
       .profile-page__update-account.lmo-flex.lmo-flex__space-between
         %md-button.md-accent.profile-page__change-password{ng-click: "profilePage.changePassword()", translate: "profile_page.change_password_link"}
         %md-button.md-primary.md-raised.profile-page__update-button{ng-click: "profilePage.submit()", ng-disabled: "isDisabled", translate: "profile_page.update_profile"}

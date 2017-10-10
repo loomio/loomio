@@ -18,6 +18,16 @@ class FormalGroup < Group
 
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
+  scope :by_slack_team, ->(team_id) {
+     joins(:identities)
+    .where("(omniauth_identities.custom_fields->'slack_team_id')::jsonb ? :team_id", team_id: team_id)
+  }
+
+  scope :by_slack_channel, ->(channel_id) {
+     joins(:group_identities)
+    .where("(group_identities.custom_fields->'slack_channel_id')::jsonb ? :channel_id", channel_id: channel_id)
+  }
+
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :comments, through: :discussions
   has_many :motions, through: :discussions

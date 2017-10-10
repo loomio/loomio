@@ -19,9 +19,11 @@ PollGenerator = Struct.new(:poll_type) do
       author:                  User.helper_bot,
       title:                   I18n.t(:"poll_generator.#{poll_type}.title"),
       details:                 I18n.t(:"poll_generator.#{poll_type}.details"),
-      poll_options_attributes: AppConfig.poll_templates.dig(poll_type, 'poll_options_attributes'),
       closing_at:              1.day.from_now,
-      example:                 true
+      example:                 true,
+      poll_option_names:       AppConfig.poll_templates.dig(poll_type, 'poll_options_attributes').map do |attr|
+        attr['name']
+      end
     }.merge(send(:"#{poll_type}_params"))
   end
 
@@ -69,7 +71,7 @@ PollGenerator = Struct.new(:poll_type) do
 
   def dot_vote_params
     {
-      poll_option_names: ["Samantha Walker"],
+      poll_option_names: ["Product Development", "Invest in our team", "Marketing", "Growing our Consulting Business", "Community / Customer Engagement"],
       custom_fields: { dots_per_person: 8 }
     }
   end

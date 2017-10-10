@@ -1,24 +1,46 @@
-# Rack::Attack.cache.store = Rails.cache
-# Rack::Attack.throttled_response = ->(env) { [429, {}, [ActionView::Base.new.render(file: 'public/429.html')]] }
-#
-# ActiveSupport::Notifications.subscribe('rack.attack') do |name, start, finish, request_id, req|
-#   Airbrake.notify Exception.new(message: "rate limiting: #{req.ip} url #{req.url}", data: [req.params, name, start, finish, request_id, req])
-# end
-#
-# @config = YAML.load_file("#{Rails.root}/config/rack_attack.yml").with_indifferent_access
-#
-# def from_config(key, field)
-#    @config[key][field] || @config[:default][field]
-# end
-#
-# def throttle_request?(key, req)
-#   ENV['RATE_LIMITING_ENABLED'] &&
-#   from_config(key, :method) == req.env['REQUEST_METHOD'] &&
-#   /#{from_config(key, :path)}/.match(req.path.to_s)
-# end
-#
-# @config.keys.each do |key|
-#   Rack::Attack.throttle key, limit: from_config(key, :limit), period: from_config(key, :period) do |req|
-#     req.ip if throttle_request? key, req
-#   end unless key == 'default'
-# end
+class Rack::Attack
+  heavy =  ['/api/v1/groups', '/api/v1/invitations/bulk_create']
+
+  # considerations
+  # multiple users could be using same ip address (eg coworking space)
+  # does not distinguish between valid and invalid requests (eg: form validation)
+  # - so we need to allow for errors and resubmits without interruption.
+  # our attackers seem to create a group every 1 or 2 minutes, each with max invitations.
+  # so we're mostly interested in the hour and day limits
+
+  # group creation and invitation sending is the most common attack we see
+  # usually we get a few new groups per hour, globally.
+  # when attacks happen we see a few groups per minute, usually with the same name
+  # each trying to invite max_invitations with bulk create.
+
+  {10 => 1.hour,
+   20 => 1.day}.each_pair do |limit, period|
+    Rack::Attack.throttle("groups#create", :limit => limit, :period => period) do |req|
+      req.ip if heavy.any? {|route| req.path.starts_with?(route)} && req.post?
+    end
+  end
+
+  medium = ['login_tokens',
+            'invitations',
+            'discussions',
+            'polls',
+            'stances',
+            'comments',
+            'reactions',
+            'attachments',
+            'registrations',
+            'contact_messages']
+
+  # throttles all posts to the above endponts
+  # so we're looking at a record creation attack.
+  # the objective of these rules is not to guess what normal behaviour looks like
+  # and pitch abouve that.. but to identify what abusive behaviour certainly is,
+  # and ensure it cannot get really really bad.
+  {100     => 5.minutes,
+   1000    => 1.hour,
+   10000   => 1.day}.each_pair do |limit, period|
+    Rack::Attack.throttle("record#create", :limit => limit, :period => period) do |req|
+      req.ip if medium.any? {|route| req.path.starts_with?("/api/v1/#{route}")} && req.post?
+    end
+  end
+end

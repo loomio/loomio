@@ -525,7 +525,6 @@ nl_NL:
   deactivate_user_form:
     aria_label: 'Bevestig deactivatie account'
     title: 'Deactiveer account'
-    placeholder: 'Het beantwoorden van deze vraag is optioneel. Alle informatie die je deelt, helpt ons om Loomio te verbeteren :)'
     submit: 'Deactiveer account'
   only_coordinator_modal:
     aria_label: 'Kan account niet deactiveren'

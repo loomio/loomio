@@ -18,16 +18,6 @@ ga_IE:
     public_groups: Baiclí poiblí
     terms: Coinníollacha
     independent_install_html: 'Tá leagan neamhspleách de Loomio á rith ag %{hostname}: <a href="http://github.com/loomio/loomio">find out more</a>.'
-  contact_page:
-    contact_us: Déan teagmháil linn
-    contact_form: An fhoirm teagmhála
-    labels:
-      name: D'ainm
-      email: Do sheoladh ríomhphoist
-      message: Do theachtaireacht
-      submit: Seol an teachtaireacht
-    messages:
-      email_html: "Líon an fhoirm seo, nó seol ríomhphost chuig <a href='mailto:%{email}'>%{email}</a>"
   poll_mailer:
     common:
       unsubscribe: Díliostáil

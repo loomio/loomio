@@ -22,12 +22,3 @@ sk:
     pricing: Cenník
     public_groups: Verejné skupiny
     terms: Podmienky
-  contact_page:
-    contact_us: Kontaktujte nás
-    labels:
-      name: Vaše meno
-      email: Vaša emailová adresa
-      message: Vaša správa
-      submit: Odoslať správu
-    messages:
-      email_html: "Vyplňte tento formulár, alebo zašlite email na <a href='mailto:%{email}'>%{email}</a>"

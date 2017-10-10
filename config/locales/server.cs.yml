@@ -60,18 +60,6 @@ cs:
     title: Jak používat Loomio
   first_proposal:
     name: Ukázkový návrh
-  contact_page:
-    contact_us: Kontaktujte nás
-    faq_prompt_html: Máte dotaz pro tým Loomio? Než nás kontaktujete, můžete zkusit najít odpověď v našich často kladených otázkách.
-    contact_information: Pokud nenajdete to, co hledáte, najdete kontaktní informace v dolní části stránky.
-    contact_form: Kontaktní formulář
-    labels:
-      name: Vaše jméno
-      email: Vaše emailová adresa
-      message: Vaše zpráva
-      submit: Odeslat zprávu
-    messages:
-      email_html: "Vyplňte tento formulář, nebo zašlete email na <a href='mailto:%{email}'>%{email}</a>"
   markdown:
     intro:
       title: |

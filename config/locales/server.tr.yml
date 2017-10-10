@@ -46,21 +46,6 @@ tr:
     error:
       all_email_addresses_belong_to_members: "Sağladığınız e-posta adresleri zaten grupta bulunan kişilere ait olduğundan dolayı bunlara davetiye göndermedik."
   password_reset:
-    email_guidelines_html: |
-      <p>Aşağıdaki alana Loomio hesabınızın e-posta adresini girin. Size bir şifre sıfırlama bağlantısı gönderilecektir.</p>
-      <p>Eğer normalde Facebook, Google, Twitter veya Persona aracılığıyla oturum açıyorsanız, o hesapla ilişkili e-posta adresini girin.</p>
     reset_email_timeframe: E-postanın ulaşması 5 dakikaya kadar sürebilir. Eğer e-posta ulaşmazsa, spam klasörünüzü kontrol ettiğinizden emin olun.
     length_restriction: Şifreler en az 8 karakter uzunluğunda olmalıdır.
     forbidden_passwords: ' "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
-  contact_page:
-    contact_us: Bize yazın
-    faq_prompt_html: Loomia takımına bir sorunuz mu var? Bize başvurmadan önce, sıkça sorulan sorular alanında cevabı bulmanız mümkün olabilir.
-    contact_information: Eğer aradığınızı bulamazsanız, sayfanın alt kısmında iletişim bilgilerimizi bulabilirsiniz.
-    contact_form: İletişim formu
-    labels:
-      name: Adın
-      email: E-posta adresin
-      message: Mesajın
-      submit: Mesaj gönder
-    messages:
-      email_html: "Bu forumu doldurun, ya da <a href='mailto:%{email}'>%{email}</a> adresine bir E-posta gönderin"

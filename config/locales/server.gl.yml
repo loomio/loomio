@@ -11,10 +11,3 @@ gl:
     pricing: Custo
     public_groups: Grupos públicos
     terms: Acordos
-  contact_page:
-    contact_us: Contáctenos
-    labels:
-      name: O teu nome
-      email: A túa dirección de correo electrónico
-      message: A túa mensaxe
-      submit: Enviar mensaxe

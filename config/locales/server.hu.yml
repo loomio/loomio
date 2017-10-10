@@ -24,12 +24,3 @@ hu:
     public_groups: Nyilvános csoportok
     terms: Feltételek
     independent_install_html: '%{hostname} a Loomio egy független másolatát futtatja:<a href="http://github.com/loomio/loomio">bővebben</a>.'
-  contact_page:
-    contact_us: Értesíts minket
-    labels:
-      name: Neved
-      email: E-mail címed
-      message: Üzeneted
-      submit: Üzenet küldése
-    messages:
-      email_html: "Töltsd ki ezt az űrlapot vagy írj egy e-mailt ide <a href='mailto:%{email}'>%{email}</a>"

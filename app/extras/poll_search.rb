@@ -2,6 +2,7 @@ PollSearch = Struct.new(:user) do
   include LoadAndAuthorize
   STATUS_FILTERS = %w(active closed).freeze
   USER_FILTERS   = %w(authored_by participation_by).freeze
+  include Skylight::Helpers
 
   def perform(filters = {})
     results = searchable_records.with_includes
@@ -12,6 +13,7 @@ PollSearch = Struct.new(:user) do
     results = results.search_for(filters[:query]) if filters[:query].present?
     results.order(closed_at: :desc, closing_at: :asc)
   end
+  instrument_method :perform
 
   private
 
