@@ -6,6 +6,10 @@ class UserSerializer < ActiveModel::Serializer
              :locale, :location, :city, :region, :country, :created_at, :email_verified, :has_password,
              :last_seen_at
 
+  def name
+    object.name || object.username
+  end
+
   def label
     username
   end

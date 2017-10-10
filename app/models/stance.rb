@@ -75,6 +75,7 @@ class Stance < ActiveRecord::Base
   end
 
   def participant_is_complete
+    return if participant.email_verified
     if participant&.name.blank?
       errors.add(:participant_name, I18n.t(:"activerecord.errors.messages.blank"))
       participant.errors.add(:name, I18n.t(:"activerecord.errors.messages.blank"))

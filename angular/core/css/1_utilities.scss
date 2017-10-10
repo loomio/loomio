@@ -100,7 +100,10 @@ textarea .lmo-textarea {
     @include fontLarge;
     margin: 20px 0 10px 0;
   }
-  h2 { @include fontMedLarge; }
+  h2 {
+    @include fontMedLarge;
+    font-weight: bold;
+  }
   ul{ padding: 0 0 10px 24px; }
   ul li{ list-style: disc; }
   pre {
