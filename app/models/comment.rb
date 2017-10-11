@@ -35,6 +35,7 @@ class Comment < ActiveRecord::Base
   delegate :email, to: :user, prefix: :user
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :participants, to: :discussion, prefix: :discussion
+  delegate :group_id, to: :discussion, allow_nil: true
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
