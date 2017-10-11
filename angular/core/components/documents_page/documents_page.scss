@@ -7,29 +7,9 @@
   }
 }
 
-.documents-page__documents .mdi {
-  font-size: 24px;
-}
 
 .documents-page__actions {
   display: flex;
   flex-direction: row;
   @media(max-width: $tiny-max-px) { flex-direction: column; }
-}
-
-.documents-page__column-title {
-  font-weight: bold;
-  min-height: 32px;
-  align-items: center;
-}
-
-.documents-page__column-row {
-  min-height: 36px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.documents-page__row {
-  width: 100%;
 }

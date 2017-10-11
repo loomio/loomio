@@ -5,7 +5,8 @@
     .description-card__text.lmo-markdown-wrapper{marked: "group.description"}
     %document_list{model: "group"}
     %a.description-card__documents-link{lmo-href-for: "group", lmo-href-action: "documents", ng-if: "group.hasDocuments()"}
-      %span{translate: "description_card.view_documents", translate-value-count: "{{group.documents().length}}"}
+      %span{translate: "description_card.manage_documents", ng-if: "canAdministerGroup()"}
+      %span{translate: "description_card.view_documents", ng-if: "!canAdministerGroup()"}
 
     .lmo-md-action
       %action_dock{model: "group", actions: "actions"}

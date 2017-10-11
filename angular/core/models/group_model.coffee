@@ -38,6 +38,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       @hasMany 'memberships'
       @hasMany 'invitations'
       @hasMany 'groupIdentities'
+      @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
       @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
       @belongsTo 'parent', from: 'groups'
 

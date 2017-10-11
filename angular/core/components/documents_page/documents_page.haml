@@ -14,36 +14,6 @@
           %input.membership-page__search-filter{ng-model: "documentsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "documentsPage.fetchDocuments()", placeholder: "{{'documents_page.fragment_placeholder' | translate}}"}
           %i.mdi.mdi-magnify
         %p.lmo-hint-text{ng-if: "!documentsPage.hasDocuments()", translate: "documents_page.no_documents_from_fragment", translate-value-fragment: "{{fragment}}"}
-        .lmo-flex{layout: "row", ng-if: "documentsPage.hasDocuments()"}
-          .documents-page__icon.lmo-flex{layout: "column"}
-            .documents-page__column-title
-            .documents-page__column-row{ng-repeat: "document in documentsPage.documents() track by document.id"}
-              %i.mdi.lmo-margin-right{class: "mdi-{{document.icon}}", ng-style: "{color: document.color}"}
-          .documents-page__name.lmo-flex{layout: "column"}
-            .documents-page__column-title{translate: "documents_page.column_titles.title"}
-            .documents-page__column-row{ng-repeat: "document in documentsPage.documents() track by document.id"}
-              %a{ng-href: "{{document.url}}", target: "_blank"} {{ document.title }}
-          .documents-page__discussion.lmo-flex__grow.lmo-flex{layout: "column"}
-            .documents-page__column-title{translate: "documents_page.column_titles.discussion"}
-            .documents-page__column-row{ng-repeat: "document in documentsPage.documents() track by document.id"}
-                %span{ng-if: "document.model().constructor.singular == 'Discussion'"}
-                  {{ document.discussionTitle() }}
-          .documents-page__author.lmo-flex__grow.lmo-flex{layout: "column"}
-            .documents-page__column-title{translate: "documents_page.column_titles.author"}
-            .documents-page__column-row{ng-repeat: "document in documentsPage.documents() track by document.id"}
-              {{ document.authorName() }}
-          .documents-page__discussion.lmo-flex__grow.lmo-flex{layout: "column"}
-            .documents-page__column-title{translate: "documents_page.column_titles.created_at"}
-            .documents-page__column-row{ng-repeat: "document in documentsPage.documents() track by document.id"}
-              %timeago{timestamp: "document.createdAt"}
-          .documents-page__edit.lmo-flex{layout: "column"}
-            .documents-page__column-title
-            .documents-page__column-row
-              %md-button.md-button--tiny{ng-repeat: "document in documentsPage.documents() track by document.id", ng-click: "documentsPage.edit(document)"}
-                %i.mdi.mdi-pencil
-          .documents-page__remove.lmo-flex{layout: "column"}
-            .documents-page__column-title
-            .documents-page__column-row
-              %md-button.md-button--tiny{ng-repeat: "document in documentsPage.documents() track by document.id", ng-click: "documentsPage.remove(document)"}
-                %i.mdi.mdi-window-close
+        %document_management{group: "documentsPage.group", fragment: "documentsPage.fragment", filter: "group"}
+        %document_management{group: "documentsPage.group", fragment: "documentsPage.fragment", filter: "discussion"}
     %loading{ng-if: "fetchDocumentsExecuting"}

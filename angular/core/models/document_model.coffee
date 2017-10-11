@@ -7,6 +7,7 @@ angular.module('loomioApp').factory 'DocumentModel', (BaseModel, AppConfig) ->
 
     relationships: ->
       @belongsTo 'author', from: 'users', by: 'authorId'
+      @belongsTo 'group'
 
     model: ->
       @recordStore["#{@modelType.toLowerCase()}s"].find(@modelId)
@@ -15,7 +16,10 @@ angular.module('loomioApp').factory 'DocumentModel', (BaseModel, AppConfig) ->
       @author().name if @author()
 
     isAnImage: ->
-      @doctype == 'image'
+      @icon == 'image'
+
+    discussion: ->
+      @model().discussion() unless @modelType == 'Group'
 
     discussionTitle: ->
-      model().discussion().title unless @modelType == 'Group'
+      @discussion().title if @discussion()

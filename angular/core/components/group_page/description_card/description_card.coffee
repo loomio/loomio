@@ -6,6 +6,9 @@ angular.module('loomioApp').directive 'descriptionCard', (Records, ModalService,
   controller: ($scope) ->
     $scope.disableEditor = -> $scope.editorEnabled = false
 
+    $scope.canAdministerGroup = ->
+      AbilityService.canAdministerGroup($scope.group)
+
     $scope.save = FormService.submit $scope, $scope.group,
       drafts: true
       prepareFn: -> $scope.group.description = $scope.buh.editableDescription

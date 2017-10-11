@@ -515,7 +515,8 @@ en:
   description_card:
     title: 'Group description'
     placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
-    view_documents: 'See all: ({{count}}) resources'
+    view_documents: 'View resources'
+    manage_documents: 'Manage resources'
     messages:
       description_updated: 'Description updated'
 
@@ -608,11 +609,6 @@ en:
     add_document: Add resource
     no_documents: No resources found for this group. Click 'Add Resource' above to add one.
     no_documents_from_fragment: No resources found named '{{fragment}}'
-    column_titles:
-      title: Title
-      discussion: Thread
-      author: Author
-      created_at: Added
     confirm_remove_title: Remove resource
     confirm_remove_helptext: Are you sure you want to remove this resource?
     document_removed: Resource removed
@@ -620,6 +616,11 @@ en:
   document:
     list:
       title: Resources
+    management:
+      group_header: Attached to context
+      discussion_header: Uploaded as content
+      added_by: uploaded by {{name}}
+      uploaded_to: in
     modal:
       title: Add a resource
     form:
