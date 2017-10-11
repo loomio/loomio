@@ -71,9 +71,9 @@ angular-gravatar@~0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/angular-gravatar/-/angular-gravatar-0.2.4.tgz#c13c6dffe86afe3ca0d1e54cb65b65c3617ef232"
 
-"angular-inview@~> 1.5.0":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/angular-inview/-/angular-inview-1.5.7.tgz#0eb72cc70a47a44766ca4424852b2957c82b4ef7"
+angular-inview@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/angular-inview/-/angular-inview-2.1.0.tgz#9e8615b89f26f80565aaef706a04a9c667c7d785"
 
 angular-material@1.1.4:
   version "1.1.4"
