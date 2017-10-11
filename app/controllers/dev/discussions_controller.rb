@@ -31,4 +31,10 @@ class Dev::DiscussionsController < Dev::BaseController
     EventService.mark_as_read(event: event, actor: discussion.author)
     redirect_to discussion_url(discussion)
   end
+
+  def test_sampled_comments
+    discussion = create_discussion_with_sampled_comments
+    sign_in discussion.author
+    redirect_to discussion_url(discussion)
+  end
 end
