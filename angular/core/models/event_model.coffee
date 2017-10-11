@@ -18,7 +18,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
 
     relationships: ->
       @belongsTo 'parent', from: 'events'
-      # @hasMany   'children', from: 'events', with: 'parentId'
       @belongsTo 'actor', from: 'users'
       @belongsTo 'discussion'
       @belongsTo 'version'
@@ -51,7 +50,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       _.invoke(@notifications(), 'remove')
 
     next: ->
-      @recordStore.events.find(parentId: @parentId, pos: @pos + 1)[0]
+      @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]
 
     previous: ->
-      @recordStore.events.find(parentId: @parentId, pos: @pos - 1)[0]
+      @recordStore.events.find(parentId: @parentId, position: @position - 1)[0]

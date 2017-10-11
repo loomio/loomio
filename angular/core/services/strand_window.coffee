@@ -25,15 +25,15 @@ angular.module('loomioApp').factory 'StrandWindow', (Records, RecordLoader, $roo
       @events().length < @parentEvent.childCount
 
     anyPrevious: ->
-      @anyMissing() && !@noneLoaded() && @firstPos() > 0
+      @anyMissing() && !@noneLoaded() && @firstPosition() > 0
 
     anyNext: ->
       @anyMissing() &&
-      (@noneLoaded() || (@lastPos() + 1) < @parentEvent.childCount)
+      (@noneLoaded() || (@lastPosition() + 1) < @parentEvent.childCount)
 
     previousCount: ->
       if @anyPrevious()
-        @firstPos()
+        @firstPosition()
       else
         0
 
@@ -43,13 +43,13 @@ angular.module('loomioApp').factory 'StrandWindow', (Records, RecordLoader, $roo
       else if @noneLoaded()
         @parentEvent.childCount
       else
-        @parentEvent.childCount - (@lastPos() + 1)
+        @parentEvent.childCount - (@lastPosition() + 1)
 
-    firstPos: ->
-      (_.first(@events()) || {}).pos
+    firstPosition: ->
+      (_.first(@events()) || {}).position
 
-    lastPos: ->
-      (_.last(@events()) || {}).pos
+    lastPosition: ->
+      (_.last(@events()) || {}).position
 
     loadMore:  ->
       @showMore = true

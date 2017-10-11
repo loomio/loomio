@@ -67,7 +67,7 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
     fewerDiscussionEditedEvents: (events) ->
       _.reject events, (event) =>
         event.kind == "discussion_edited" &&
-        (event.pos == 0 || (event.previous() || {}).kind == "discussion_edited")
+        (event.position == 0 || (event.previous() || {}).kind == "discussion_edited")
 
     events: =>
       # i think we want to memoize this method eventually

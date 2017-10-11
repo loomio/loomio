@@ -12,7 +12,7 @@ module NumericOrderSupport
 
   private
   def refresh_order_value
-    self.pos = self.class.select(order_column).find(self.id).send(order_column)
+    self.position = self.class.select(order_column).find(self.id).send(order_column)
   end
 
   def reorder
@@ -27,7 +27,7 @@ module NumericOrderSupport
   end
 
   def order_column
-    "pos"
+    "position"
   end
 
   def id_column_name
