@@ -147,7 +147,7 @@ describe API::EventsController do
         json = JSON.parse(response.body)
         event_ids = json['events'].map { |v| v['id'] }
         expect(event_ids).to include @child_event.id
-        expect(event_ids).to_not include @parent_event.id
+        expect(event_ids).to include @parent_event.id
         expect(event_ids).to_not include @unrelated_event.id
       end
     end

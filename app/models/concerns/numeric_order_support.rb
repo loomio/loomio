@@ -18,7 +18,7 @@ module NumericOrderSupport
   def reorder
     if parent_id
       reorder_with_parent_id(parent_id)
-      refresh_order_value
+      refresh_order_value if self.persisted?
     end
   end
 

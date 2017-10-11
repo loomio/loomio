@@ -45,8 +45,8 @@ describe StanceService do
 
     it 'sets event parent to the poll created event' do
       poll_created_event
-      StanceService.create(stance: stance_created, actor: user)
-      expect(stance_created.event.parent).to eq poll_created_event
+      event = StanceService.create(stance: stance_created, actor: user)
+      expect(event.parent.id).to eq poll_created_event.id
     end
 
     it 'does not create a stance for a logged out user' do
