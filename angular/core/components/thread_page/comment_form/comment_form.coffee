@@ -37,14 +37,8 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, R
 
         successCallback: $scope.init
       KeyEventService.submitOnEnter $scope
-      #NOTE: listen for emoji events
       $scope.$broadcast 'reinitializeForm', $scope.comment
     $scope.init()
-
-    # $scope.$on 'replyToCommentClicked', (event, parentComment) ->
-    #   $scope.comment.parentId = parentComment.id
-    #   $scope.comment.parentAuthorName = parentComment.authorName()
-    #   ScrollService.scrollTo('.comment-form textarea', offset: 150)
 
     AttachmentService.listenForAttachments $scope, $scope.comment
 

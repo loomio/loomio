@@ -1,5 +1,5 @@
 .comment-form
-  %form{ng-paste: "handlePaste($event)", ng_submit: "submit()"}
+  %form{ng_submit: "submit()"}
     .lmo-disabled-form{ng-show: "isDisabled"}
     %lmo_textarea{model: "comment", field: "body", placeholder: "commentPlaceholder()", helptext: "commentHelptext()"}
     .lmo-md-actions

@@ -46,12 +46,10 @@ angular.module('loomioApp').factory 'StrandWindow', (Records, RecordLoader, $roo
         @parentEvent.childCount - (@lastPos() + 1)
 
     firstPos: ->
-      if @events().length > 0
-        @events()[0].pos
+      (_.first(@events()) || {}).pos
 
     lastPos: ->
-      if @events().length > 0
-        _.last(@events()).pos
+      (_.last(@events()) || {}).pos
 
     loadMore:  ->
       @showMore = true
