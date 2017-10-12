@@ -50,14 +50,6 @@
   p:last-of-type { margin-bottom: 0; }
 }
 
-.context-panel__attachments {
-  margin: 16px 0;
-}
-
-.context-panel__attachment {
-  margin-top: 16px;
-}
-
 @media (min-width: $medium-max-px) {
   .context-panel__before-thread-actions {
     order: 0;
