@@ -10,7 +10,7 @@ class API::EventsController < API::RestfulController
 
   def accessible_records
     records = load_and_authorize(:discussion).items.sequenced
-    records = records.includes(:user, :eventable, parent: [:user, :eventable])
+    records = records.includes(:user, :discussion, :eventable, parent: [:user, :eventable])
     records = records.where(parent_id: params[:parent_id]) if params[:parent_id]
     records
   end
