@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928050526) do
+ActiveRecord::Schema.define(version: 20171011223227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20170928050526) do
     t.datetime "file_updated_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.boolean  "migrated_to_document",             default: false, null: false
   end
 
   add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type", using: :btree
@@ -103,7 +104,6 @@ ActiveRecord::Schema.define(version: 20170928050526) do
 
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "tag_desc_idx", using: :btree
-
 
   create_table "comments", force: :cascade do |t|
     t.integer  "discussion_id",       default: 0
