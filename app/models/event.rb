@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   include HasTimeframe
-  include NumericOrderSupport
+  include Events::Position
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true

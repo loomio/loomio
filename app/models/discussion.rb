@@ -3,6 +3,7 @@ class Discussion < ActiveRecord::Base
                           stance_created
                           outcome_created
                           poll_created
+                          poll_edited
                         ]
 
   THREAD_ITEM_KINDS = %w[new_comment
@@ -93,6 +94,10 @@ class Discussion < ActiveRecord::Base
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
   update_counter_cache :group, :closed_polls_count
+
+  def created_event
+    events.find_by(kind: 'new_discussion')
+  end
 
   def update_sequence_info!
     first_item = discussion.salient_items.order({sequence_id: :asc}).first

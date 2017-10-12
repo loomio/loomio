@@ -28,7 +28,7 @@ angular.module('loomioApp').directive 'nestedActivityCard', (ThreadWindow, $mdDi
 
 
     $scope.visible = (event) ->
-      $scope.tw.isLastInWindow(event) && $scope.tw.loadNext()
+      $scope.tw.isLastInWindow(event) && $scope.tw.anyNext() && $scope.tw.loadNext()
 
     $scope.tw = new ThreadWindow(discussion: $scope.discussion)
     $scope.tw.reset($scope.initialSequenceId())

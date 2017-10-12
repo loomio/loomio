@@ -16,8 +16,7 @@ class API::EventsController < API::RestfulController
 
   def page_collection(collection)
     if params[:parent_id]
-      collection.where('position >= ?', params.fetch(:from, 0))
-                .where(parent_id: params[:parent_id])
+      collection.where('position >= ?', params[:from].to_i)
                 .includes(:eventable, :parent)
                 .limit(params[:per] || default_page_size)
     else

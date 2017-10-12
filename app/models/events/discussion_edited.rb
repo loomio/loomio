@@ -3,7 +3,7 @@ class Events::DiscussionEdited < Event
     create(kind: "discussion_edited",
            eventable: discussion.versions.last,
            user: editor,
-           parent: discussion.events.find_by(kind: 'new_discussion'),
+           parent: discussion.created_event,
            discussion: discussion,
            created_at: discussion.versions.last.created_at).tap { |e| EventBus.broadcast('discussion_edited_event', e) }
   end

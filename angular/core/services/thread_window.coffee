@@ -36,16 +36,14 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
       @maxSequenceId != null
 
     loadNext: ->
-      if @anyNext()
-        @loader.loadMore(@maxSequenceId).then(@increaseMax)
+      @loader.loadMore(@maxSequenceId).then(@increaseMax)
 
     anyPrevious: ->
       @minSequenceId > @discussion.firstSequenceId
 
     loadPrevious: ->
-      if @anyPrevious()
-        @decreaseMin()
-        @loader.loadPrevious(@minSequenceId)
+      @decreaseMin()
+      @loader.loadPrevious(@minSequenceId)
 
     numPrevious: ->
       @minSequenceId - @discussion.firstSequenceId
