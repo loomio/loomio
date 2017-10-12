@@ -5,7 +5,7 @@
   -#     %md-option{value: "newest"} Newest
   -#     %md-option{value: "oldest"} Oldest
   -#     -# %md-option{value: "-likesCount"} Popular
-  %div per: {{tw.per}} min: {{tw.minSequenceId}} max: {{tw.maxSequenceId}} first: {{discussion.firstSequenceId}} last: {{discussion.lastSequenceId}} lastRead: {{discussion.lastReadSequenceId}} firstUnread: {{tw.firstUnreadSequenceId}} loadedCount: {{tw.events().length}}
+  -# %div per: {{tw.per}} min: {{tw.minSequenceId}} max: {{tw.maxSequenceId}} first: {{discussion.firstSequenceId}} last: {{discussion.lastSequenceId}} lastRead: {{discussion.lastReadSequenceId}} firstUnread: {{tw.firstUnreadSequenceId}} loadedCount: {{tw.events().length}}
 
   %loading_content.lmo-card-left-right-padding{ng-if: "tw.loader.loadingFirst", block-count: 2}
   .activity-card__content{ng-if: "!tw.loader.loadingFirst"}
