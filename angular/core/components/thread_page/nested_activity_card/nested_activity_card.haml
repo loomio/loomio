@@ -5,16 +5,17 @@
   -#     %md-option{value: "newest"} Newest
   -#     %md-option{value: "oldest"} Oldest
   -#     -# %md-option{value: "-likesCount"} Popular
-  -# %div per: {{tw.per}} min: {{tw.minSequenceId}} max: {{tw.maxSequenceId}} first: {{discussion.firstSequenceId}} last: {{discussion.lastSequenceId}} lastRead: {{discussion.lastReadSequenceId}} loadedCount: {{tw.events().length}}
+  %div per: {{tw.per}} min: {{tw.minSequenceId}} max: {{tw.maxSequenceId}} first: {{discussion.firstSequenceId}} last: {{discussion.lastSequenceId}} lastRead: {{discussion.lastReadSequenceId}} firstUnread: {{tw.firstUnreadSequenceId}} loadedCount: {{tw.events().length}}
 
-  %loading_content{ng-if: "tw.loader.loadingFirst", block-count: 2}
+  %loading_content.lmo-card-left-right-padding{ng-if: "tw.loader.loadingFirst", block-count: 2}
   .activity-card__content{ng-if: "!tw.loader.loadingFirst"}
-    %a.activity-card__load-backwards.lmo-flex.lmo-flex__center.lmo-no-print{href: "", ng-show: "tw.anyPrevious()", ng-click: "tw.loadPrevious()", tabindex: "0"}
+    %a.activity-card__load-backwards.lmo-flex.lmo-flex__center.lmo-no-print{href: "", ng-show: "tw.anyPrevious() && !tw.loader.loadingPrevious", ng-click: "tw.loadPrevious()", tabindex: "0"}
       %i.mdi.mdi-autorenew>
       %span{translate: "discussion.load_previous", translate-value-count: "{{tw.numPrevious()}}"}
     %loading.activity-card__loading.page-loading{ng-show: "tw.loader.loadingPrevious"}
     .activity-card__no-activity.lmo-placeholder.align-center{ng-if: "tw.noEvents()", translate: "discussion.activity_placeholder"}
     %ul.activity-card__activity-list
       %li.activity-card__activity-list-item{ng_repeat: "event in tw.events() | orderBy: tw.orderBy track by event.id", in-view: "$inview&&visible(event)", in-view-options: "{throttle: 100}"}
-        %thread_item{event: "event", thread_window: "tw", ng-if: "!event.deleted", root: "true"}
+        -# %div lastInWindow {{tw.isLastInWindow(event) }} anyNext: {{tw.anyNext()}} lastSid: {{event.discussion().lastSequenceId}}
+        %thread_item{event: "event", thread_window: "tw", ng-if: "!event.deleted", root: "true", use-nesting: "true"}
     %loading.activity-card__loading.page-loading{ng-show: "tw.loader.loadingMore"}

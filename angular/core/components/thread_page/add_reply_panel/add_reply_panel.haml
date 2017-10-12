@@ -1,4 +1,4 @@
-.add-reply-panel{ng-if: "show"}
+.add-reply-panel.thread-item--indent{ng-if: "show"}
   .lmo-flex.lmo-relative{layout: "row"}
     .thread-item__avatar.lmo-margin-right
       %user_avatar{user: "actor", size: "small"}
@@ -14,6 +14,3 @@
             %i.mdi.mdi-close.mdi-18px
 
       %comment_form{discussion: "discussion", parent_comment: "parentComment"}
-  -# .lmo-flex.lmo-flex__center
-  -#   .add-reply-panel__title.lmo-flex__grow
-  -#     Reply to {{parentComment.authorName()}}

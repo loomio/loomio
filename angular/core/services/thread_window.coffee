@@ -58,14 +58,20 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
       unread = event.sequenceId > @discussion.lastReadSequenceId ? 1 : 0
       parseInt(event.sequenceId / @per) + unread
 
-    rootsAndOrphans: (event) =>
-      (!event.parentId? || event.parent().kind == "new_discussion") ||
-      !@inWindow(event.parent())
+    rootsAndOrphans: (events) =>
+      _.filter events, (event) => !event.parentId? || !@inWindow(event.parent())
 
     fewerDiscussionEditedEvents: (events) ->
       _.reject events, (event) =>
         event.kind == "discussion_edited" &&
         (event.position == 0 || (event.previous() || {}).kind == "discussion_edited")
+
+    replaceOrphansWithParents: (events) =>
+      _.map events, (event) =>
+        if event.parentId? && event.parent().kind != "new_discussion" &&!@inWindow(event.parent())
+          event.parent()
+        else
+          event
 
     events: =>
       # i think we want to memoize this method eventually
@@ -75,7 +81,7 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
         discussionId: @discussion.id
 
       events = Records.events.collection.find(query)
-      @fewerDiscussionEditedEvents(_.filter(events, @rootsAndOrphans))
+      _.uniq( @replaceOrphansWithParents( @rootsAndOrphans( @fewerDiscussionEditedEvents( events))))
 
     noEvents: ->
         !_.any(@events())

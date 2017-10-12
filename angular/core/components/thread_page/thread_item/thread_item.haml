@@ -1,5 +1,4 @@
-.activity-card__new-activity#new-activity{ng-class: "{'event-children__un-indent': !root}", ng-if: "showNewActivityLine(event)", translate: "activity_card.new_activity"}
-.thread-item{in-view: "$inview&&event.markAsRead()", in-view-options: "{throttle: 100}"}
+.thread-item{md-colors: "{'border-color': 'primary-500'}", ng-class: "{'thread-item--indent': !root, 'thread-item--unread': isUnread()}", in-view: "$inview&&event.markAsRead()", in-view-options: "{throttle: 100}"}
   .lmo-flex.lmo-relative.lmo-action-dock-wrapper{layout: "row", id: "sequence-{{event.sequenceId}}"}
     .thread-item__avatar.lmo-margin-right
       %user_avatar{user: "event.actor()", size: "small", ng-if: "event.actor()"}
