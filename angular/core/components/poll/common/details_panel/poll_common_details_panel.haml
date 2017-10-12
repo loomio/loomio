@@ -8,10 +8,7 @@
     .poll-common-details-panel__details.lmo-markdown-wrapper{ng-if: "!translation", marked: "poll.cookedDetails()"}
     .poll-common-details-panel__details{ng-if: "translation"}
       %translation.lmo-markdown-wrapper{translation: "translation", field: "details"}
-
-    .poll-common-details-panel__attachments{ng-if: "poll.hasAttachments()"}
-      .poll-common-details-panel__attachment{ng-repeat: "attachment in poll.attachments() | orderBy:'createdAt' track by attachment.id"}
-        %attachment_preview{attachment: "attachment", mode: "context"}
+    %attachment_collection{model: "poll"}
 
     .lmo-md-actions
       %reactions_display{model: "poll", load: "true"}
