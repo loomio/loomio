@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'documentForm', (Records, FormService) ->
+angular.module('loomioApp').directive 'documentForm', (Records, FormService, KeyEventService) ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/form/document_form.html'
   controller: ($scope) ->
@@ -12,3 +12,5 @@ angular.module('loomioApp').directive 'documentForm', (Records, FormService) ->
       successFlash: "document.flash.success"
 
     $scope.$close = -> $scope.$emit '$close'
+
+    KeyEventService.submitOnEnter($scope, anyEnter: true)
