@@ -1,5 +1,6 @@
-.activity-card{
-  @include card;
+.activity-card {
+  @include cardNoPadding;
+  padding: $cardPaddingSize 0;
 }
 
 .activity-card__load-backwards{
@@ -8,8 +9,9 @@
   line-height: 30px;
   padding: 0 10px;
   background-color: $background-color;
-  width: 100%;
   margin-bottom: 20px;
+  margin-left: $cardPaddingSize;
+  margin-right: $cardPaddingSize;
   cursor: pointer;
   i {
     margin-right: 4px;

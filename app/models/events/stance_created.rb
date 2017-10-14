@@ -8,6 +8,7 @@ class Events::StanceCreated < Event
            user: stance.participant,
            eventable: stance,
            discussion: stance.poll.discussion,
+           parent: stance.parent_event,
            created_at: stance.created_at).tap { |e| EventBus.broadcast('stance_created_event', e) }
   end
 

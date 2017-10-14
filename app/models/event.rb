@@ -1,10 +1,12 @@
 class Event < ActiveRecord::Base
   include HasTimeframe
+  include Events::Position
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
   belongs_to :discussion, required: false
   belongs_to :user, required: false
+
 
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :chronologically, -> { order(created_at: :asc) }
@@ -23,6 +25,10 @@ class Event < ActiveRecord::Base
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
 
+  def child_count
+    self[:child_count] || 0
+  end
+
   def active_model_serializer
     "Events::#{eventable.class.to_s.split('::').last}Serializer".constantize
   rescue NameError
@@ -35,12 +41,6 @@ class Event < ActiveRecord::Base
   end
 
   private
-
-  # which communities should know about this event?
-  # Polls override this to look at the communities associated with the poll.
-  def communities
-    Array(eventable&.group&.community)
-  end
 
   def call_thread_item_created
     discussion.thread_item_created! if discussion_id.present?

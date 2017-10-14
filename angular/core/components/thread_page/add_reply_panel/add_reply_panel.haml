@@ -1,0 +1,16 @@
+.add-reply-panel.thread-item--indent{ng-if: "show"}
+  .lmo-flex.lmo-relative{layout: "row"}
+    .thread-item__avatar.lmo-margin-right
+      %user_avatar{user: "actor", size: "small"}
+    .thread-item__body.lmo-flex.lmo-flex__horizontal-center{layout: "column"}
+      .thread-item__headline.lmo-flex.lmo-flex__grow.lmo-flex__center{layout: "row"}
+        %h3.thread-item__title.lmo-flex__grow{translate: "comment_form.in_reply_to", translate-values: "{name: parentComment.authorName()}"}
+          -# %span{ng-bind-html: "headline()"}
+          -# %span{aria-hidden: "true"}>·
+          -# %timeago.timeago--inline{timestamp: "event.createdAt"}
+        .new-comment__menu.lmo-dropdown-menu
+          %md-button.thread-item__dropdown-button{ng-click: "close()"}
+            .sr-only{translate: "comment_form.cancel_reply"}
+            %i.mdi.mdi-close.mdi-18px
+
+      %comment_form{discussion: "discussion", parent_comment: "parentComment"}

@@ -15,17 +15,21 @@ $z-high: 1000;
 $z-extreme: 10000;
 
 @mixin card{
-  @include md-body-1;
   @include cardNoPadding;
   @include cardPadding;
 }
 
 @mixin cardNoPadding {
+  @include md-body-1;
   @include roundedCorners;
   box-shadow: $whiteframe-shadow-1dp;
   background: #fff;
   margin-bottom: 12px;
   max-width: 100%;
+}
+
+@mixin cardHeadingPadding {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
 }
 
 $thinPaddingSize: 8px;

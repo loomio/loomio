@@ -11,7 +11,9 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Record
       name: 'reply_to_comment'
       icon: 'mdi-reply'
       canPerform: -> AbilityService.canRespondToComment($scope.eventable)
-      perform:    -> $rootScope.$broadcast 'replyToCommentClicked', $scope.eventable
+      perform: ->
+        $rootScope.$broadcast 'closeReplyForms'
+        $scope.$emit 'replyToCommentClicked', $scope.eventable
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'

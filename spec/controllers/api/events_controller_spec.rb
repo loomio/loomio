@@ -133,6 +133,25 @@ describe API::EventsController do
       end
     end
 
+    context 'with parent_id' do
+      before do
+        @discussion_event = DiscussionService.create(discussion: discussion, actor: user)
+        @parent_comment =  build(:comment, discussion: discussion)
+        @parent_event = CommentService.create(comment: @parent_comment, actor: user)
+        @child_event = CommentService.create(comment: build(:comment, discussion: discussion, parent: @parent_comment), actor: user)
+        @unrelated_event = CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
+      end
+
+      it 'returns events with given parent_id' do
+        get :index, discussion_id: discussion.id, parent_id: @parent_event.id
+        json = JSON.parse(response.body)
+        event_ids = json['events'].map { |v| v['id'] }
+        expect(event_ids).to include @child_event.id
+        expect(event_ids).to include @parent_event.id
+        expect(event_ids).to_not include @unrelated_event.id
+      end
+    end
+
     context 'paging' do
 
       before do

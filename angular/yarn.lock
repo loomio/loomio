@@ -71,9 +71,9 @@ angular-gravatar@~0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/angular-gravatar/-/angular-gravatar-0.2.4.tgz#c13c6dffe86afe3ca0d1e54cb65b65c3617ef232"
 
-"angular-inview@~> 1.5.0":
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/angular-inview/-/angular-inview-1.5.7.tgz#0eb72cc70a47a44766ca4424852b2957c82b4ef7"
+angular-inview@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/angular-inview/-/angular-inview-2.1.0.tgz#9e8615b89f26f80565aaef706a04a9c667c7d785"
 
 angular-material@1.1.4:
   version "1.1.4"
@@ -2117,9 +2117,9 @@ lodash@~4.16.4:
   version "4.16.6"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.6.tgz#d22c9ac660288f3843e16ba7d2b5d06cca27d777"
 
-lokijs@1.3.19:
-  version "1.3.19"
-  resolved "https://registry.yarnpkg.com/lokijs/-/lokijs-1.3.19.tgz#33002c87594ad190df9da2ac66888e1a85b3ca2b"
+lokijs@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/lokijs/-/lokijs-1.5.0.tgz#99e403d6a89e47e11ed0c5d499fb55a0603d5efc"
 
 longest@^1.0.1:
   version "1.0.1"

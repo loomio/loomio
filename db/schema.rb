@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20170903235705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
-  enable_extension "citext"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -264,12 +264,17 @@ ActiveRecord::Schema.define(version: 20170903235705) do
     t.integer  "sequence_id"
     t.boolean  "announcement",               default: false, null: false
     t.jsonb    "custom_fields",              default: {},    null: false
+    t.integer  "parent_id"
+    t.integer  "position",                   default: 0,     null: false
+    t.integer  "child_count",                default: 0,     null: false
   end
 
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
   add_index "events", ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true, using: :btree
   add_index "events", ["discussion_id"], name: "index_events_on_discussion_id", using: :btree
   add_index "events", ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id", using: :btree
+  add_index "events", ["parent_id", "position"], name: "index_events_on_parent_id_and_position", where: "(parent_id IS NOT NULL)", using: :btree
+  add_index "events", ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)", using: :btree
   add_index "events", ["sequence_id"], name: "index_events_on_sequence_id", using: :btree
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|

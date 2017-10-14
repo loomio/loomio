@@ -39,7 +39,7 @@
 }
 
 .lmo-card-heading-padding {
-  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+  @include cardHeadingPadding;
 }
 
 .lmo-card-left-right-padding {
