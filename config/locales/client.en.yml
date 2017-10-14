@@ -624,7 +624,7 @@ en:
     modal:
       title: Add a resource
     form:
-      helptext: Enter a url for this resource, or click the icon to the right to upload a file from your computer.
+      helptext: Share documents, files and links with your group.
       url_label: Resource Url
       url_placeholder: E.g. https://www.example.com/resource.txt
       title_label: Title
