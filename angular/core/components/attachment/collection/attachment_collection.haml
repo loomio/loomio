@@ -1,0 +1,2 @@
+.attachment-collection{ng-if: "model.hasAttachments()"}
+  %attachment_preview{attachment: "attachment", mode: "context", ng-repeat: "attachment in model.attachments() | orderBy:'createdAt' track by attachment.id"}
