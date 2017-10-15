@@ -11,7 +11,7 @@
         .subgroups-card__list-item-description {{ subgroup.description | truncate }}
 
     .lmo-flex.lmo-flex__space-between
-    .lmo-actions
+    .lmo-md-actions
       %outlet{name: "subgroup-card-footer"}
       %md-button.md-primary.md-raised.subgroups-card__start{ng-click: "startSubgroup()", ng-if: "canCreateSubgroups()"}
         %span{ translate: "common.action.add_subgroup" }
