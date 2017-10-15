@@ -8,7 +8,8 @@
       %div{ng-if: "submitIsDisabled"}
       .lmo-flex{ng-if: "!submitIsDisabled"}
         %validation_errors{ng-if: "model.errors[field]", subject: "model", field: "{{field}}"}
-        .lmo-textarea__helptext{ng-if: "!model.errors[field]"} {{helptext}}
+        %validation_errors{ng-if: "model.errors.file", subject: "model", field: "file"}
+        .lmo-textarea__helptext{ng-if: "!(model.errors[field] || model.errors.file)"} {{helptext}}
       .lmo-flex
         %md_attachment_form{model: "model"}
         %emoji_picker{target-selector: "bodySelector"}
