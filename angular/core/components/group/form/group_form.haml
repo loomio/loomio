@@ -19,7 +19,7 @@
           %strong{translate: "common.privacy.{{privacy}}"}
         .group-form__privacy-subtitle {{ privacyStringFor(privacy) }}
 
-  .group-form__advanced{ng-show: "expanded"}
+  .group-form__advanced{ng-show: "group.expanded"}
     %section.group-form__section.group-form__joining.lmo-form-group{ng-if: "group.privacyIsOpen()"}
       %h3.lmo-h3{translate: "group_form.how_do_people_join"}
       %md-radio-group{ng-model: "group.membershipGrantedUpon"}
@@ -38,10 +38,4 @@
       %group_setting_checkbox.group-form__members-can-raise-motions{group: "group", setting: "membersCanRaiseMotions"}
       %group_setting_checkbox.group-form__members-can-vote{group: "group", setting: "membersCanVote"}
 
-  .lmo-md-actions
-    %div{ng-if: "expanded"}
-    %md-button.md-accent.group-form__advanced-link{type: "button", ng-if: "!expanded", ng-click: "expandForm()", translate: "group_form.advanced_settings"}
-    %md-button.md-primary.md-raised.group-form__submit-button{ng-click: "submit()"}
-      %span{ng-if: "group.isNew() && group.isParent()", translate: "group_form.submit_start_group"}
-      %span{ng-if: "group.isNew() && !group.isParent()", translate: "group_form.submit_start_subgroup"}
-      %span{ng-if: "!group.isNew()", translate: "common.action.update_settings"}
+  %group_from_actions{group: "group", ng-if: "!modal"}

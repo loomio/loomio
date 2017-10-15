@@ -26,6 +26,3 @@
   %p{ng-if: "form.group().isSubgroup()"}
     %button.invitation-form__add-members.lmo-btn-link--blue{translate: "invitation_form.add_members", ng-click: "addMembers()"}>
     %span{translate: "invitation_form.from_parent_group", translate-values: "{name: form.group().parentName()}"}
-
-  .md-dialog-actions.lmo-md-action
-    %md-button.invitation-form__submit.md-raised.md-primary{ng-click: "submit()", translate: "{{submitText()}}", translate-value-count: "{{invitationsCount()}}", ng-disabled: "invalidEmail()"}

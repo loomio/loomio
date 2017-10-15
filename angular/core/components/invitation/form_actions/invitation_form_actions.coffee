@@ -1,10 +1,7 @@
-angular.module('loomioApp').factory 'InvitationModal', ->
-  templateUrl: 'generated/components/invitation/modal/invitation_modal.html'
-  controller: ($scope, group, Records, LoadingService, FormService) ->
-    $scope.group = group.clone()
-    LoadingService.listenForLoading($scope)
-    $scope.$on 'inviteComplete', $scope.$close
-
+angular.module('loomioApp').directive 'invitationFormActions', ->
+  scope: {group: '='}
+  templateUrl: 'generated/components/invitation/form_actions/invitation_form_actions.html'
+  controller: ($scope, Records, LoadingService, FormService) ->
     $scope.submit = ->
       if $scope.invitees().length == 0
         $scope.$emit 'inviteComplete'
