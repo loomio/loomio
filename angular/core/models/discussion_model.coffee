@@ -86,8 +86,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasDescription: ->
       !!@description
 
-    unreadActivityCount: ->
-      @salientItemsCount - @readSalientItemsCount
 
     requireReloadFor: (event) ->
       return false if !event or event.discussionId != @id or event.sequenceId
@@ -132,6 +130,22 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       return unless @discussionReaderId and !@lastReadAt
       @remote.patchMember @keyOrId(), 'mark_as_seen'
       @update(lastReadAt: moment(), lastReadSequenceId: 0)
+
+    unreadActivityCount: ->
+      @salientItemsCount - @readSalientItemsCount
+
+    hasReadSequenceId: (id) ->
+      _.any @readRanges(), (range) ->
+        _.inRange(id, range[0], range[1]+1)
+
+    # we get this from the server, but I liked the method
+    # readItemsCount: ->
+    #   _.sum _.map(@readRanges(), (r)-> r[1] - r[0] + 1)
+
+    # should work out how to just send array of arrays
+    readRanges: ->
+      _.map String(@readSequenceIds).split(' '), (pair) ->
+        _.map pair.split(','), (num) -> parseInt(num)
 
     dismiss: ->
       @remote.patchMember @keyOrId(), 'dismiss'

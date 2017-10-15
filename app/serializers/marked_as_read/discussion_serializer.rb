@@ -21,8 +21,6 @@ class MarkedAsRead::DiscussionSerializer < ActiveModel::Serializer
 
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
-                         :read_salient_items_count,
-                         :last_read_sequence_id,
                          :last_read_at,
                          :dismissed_at
 

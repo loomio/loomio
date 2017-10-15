@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903235705) do
+ActiveRecord::Schema.define(version: 20171015005524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,17 +174,16 @@ ActiveRecord::Schema.define(version: 20170903235705) do
   add_index "delayed_jobs", ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready", using: :btree
 
   create_table "discussion_readers", force: :cascade do |t|
-    t.integer  "user_id",                                  null: false
+    t.integer  "user_id",                                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "discussion_id",                            null: false
+    t.integer  "discussion_id",                           null: false
     t.datetime "last_read_at"
-    t.integer  "read_items_count",         default: 0,     null: false
-    t.integer  "last_read_sequence_id",    default: 0,     null: false
-    t.integer  "read_salient_items_count", default: 0,     null: false
+    t.integer  "read_items_count",        default: 0,     null: false
     t.integer  "volume"
-    t.boolean  "participating",            default: false, null: false
+    t.boolean  "participating",           default: false, null: false
     t.datetime "dismissed_at"
+    t.string   "read_sequence_id_ranges"
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree

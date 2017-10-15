@@ -7,7 +7,6 @@ class Event < ActiveRecord::Base
   belongs_to :discussion, required: false
   belongs_to :user, required: false
 
-
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :chronologically, -> { order(created_at: :asc) }
 
@@ -16,7 +15,6 @@ class Event < ActiveRecord::Base
   after_destroy :call_thread_item_destroyed
 
   update_counter_cache :discussion, :items_count
-  update_counter_cache :discussion, :salient_items_count
 
   validates :kind, presence: true
   validates :eventable, presence: true

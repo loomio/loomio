@@ -42,9 +42,8 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @sequenceId > @discussion().lastReadSequenceId
 
     markAsRead: ->
-      return unless @sequenceId > @discussion().lastReadSequenceId
+      return if @discussion().hasReadSequenceId(@sequenceId)
       @remote.postMember @id, 'mark_as_read'
-      @discussion().update(lastReadAt: moment(), lastReadSequenceId: @sequenceId)
 
     beforeRemove: ->
       _.invoke(@notifications(), 'remove')
