@@ -13,7 +13,7 @@
         %md-input-container.md-block.documents-page__search-filter{md-no-float: "true"}
           %input.membership-page__search-filter{ng-model: "documentsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "documentsPage.fetchDocuments()", placeholder: "{{'documents_page.fragment_placeholder' | translate}}"}
           %i.mdi.mdi-magnify
-        %p.lmo-hint-text{ng-if: "!documentsPage.hasDocuments()", translate: "documents_page.no_documents_from_fragment", translate-value-fragment: "{{fragment}}"}
+        %p.lmo-hint-text{ng-if: "!documentsPage.hasDocuments()", translate: "documents_page.no_documents_from_fragment", translate-value-fragment: "{{documentsPage.fragment}}"}
         %document_management{group: "documentsPage.group", fragment: "documentsPage.fragment", filter: "group"}
         %document_management{group: "documentsPage.group", fragment: "documentsPage.fragment", filter: "discussion"}
     %loading{ng-if: "fetchDocumentsExecuting"}
