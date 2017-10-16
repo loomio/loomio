@@ -5,3 +5,6 @@ angular.module('loomioApp').factory 'InvitationModal', ->
     $scope.$on 'inviteComplete', $scope.$close
     $scope.invitationForm = Records.invitationForms.build
       groupId: (group or {}).id
+
+    $scope.groupName = ->
+      (Records.groups.find($scope.invitationForm.groupId) or {}).name

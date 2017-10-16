@@ -1,5 +1,5 @@
 .invitation-form
-  %md-input-container.md-block{ng-if: "selectGroup"}
+  %md-input-container.md-block{ng-if: "!invitationForm.groupId"}
     %label{for: "group-select", translate: "invitation_form.group"}
     %md-select#group-select{ng-model: "invitationForm.groupId", ng-required: true, ng-change: "restoreRemoteDraft(); fetchShareableInvitation()"}
       %md-option{value: "undefined", translate: "invitation_form.group_placeholder"}
