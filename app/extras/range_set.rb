@@ -3,8 +3,8 @@ class RangeSet
     @ranges = klass.to_ranges(something)
   end
 
-  def merge!(something)
-    @ranges = klass.merge(@ranges.concat(klass.to_ranges(ranges)))
+  def merge(something)
+    @ranges = klass.reduce(@ranges.concat(klass.to_ranges(ranges)))
     self
   end
 
