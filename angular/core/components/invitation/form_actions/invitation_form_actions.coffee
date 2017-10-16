@@ -1,15 +1,14 @@
 angular.module('loomioApp').directive 'invitationFormActions', ->
-  scope: {group: '='}
+  scope: {invitationForm: '='}
   templateUrl: 'generated/components/invitation/form_actions/invitation_form_actions.html'
   controller: ($scope, Records, LoadingService, FormService) ->
     $scope.submit = ->
-      if $scope.invitees().length == 0
-        $scope.$emit 'inviteComplete'
-      else
+      if $scope.invitationForm.hasInvitees()
         submitForm()
+      else
+        $scope.$emit 'inviteComplete'
 
-    submitForm = FormService.submit $scope, $scope.form,
-      drafts: true
+    submitForm = FormService.submit $scope, $scope.invitationForm,
       submitFn: Records.invitations.sendByEmail
       successCallback: (response) =>
         $scope.$emit 'inviteComplete'
@@ -20,7 +19,11 @@ angular.module('loomioApp').directive 'invitationFormActions', ->
           else        FlashService.success 'invitation_form.messages.invitations_sent', count: invitationCount
 
     $scope.submitText = ->
-      if $scope.form.emails.length > 0
+      if $scope.invitationForm.hasEmails()
         'common.action.send'
       else
         'invitation_form.done'
+
+    $scope.canSubmit = ->
+      $scope.invitationForm.invitees().length > 0
+      $scope.invitationForm.invitees().length < 100

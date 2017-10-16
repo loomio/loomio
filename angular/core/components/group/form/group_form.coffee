@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'groupForm', ->
   scope: {group: '=', modal: '=?'}
   templateUrl: 'generated/components/group/form/group_form.html'
-  controller: ($scope, $q, $window, $location, KeyEventService, LmoUrlService, FormService, Records, PrivacyString) ->
+  controller: ($scope, $q, $window, $location, KeyEventService, LmoUrlService, FormService, PrivacyString) ->
 
     $scope.titleLabel = ->
       if $scope.group.isParent()

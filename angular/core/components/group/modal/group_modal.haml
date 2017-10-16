@@ -12,7 +12,7 @@
       %material_modal_header_cancel_button
   %md-dialog-content.md-body-1.lmo-slide-animation{ng-switch: "currentStep"}
     %group_form.animated{ng-switch-when: "create", group: "group", modal: "true"}
-    %invitation_form.animated{ng-switch-when: "invite", group: "group", modal: "true"}
+    %invitation_form.animated{ng-switch-when: "invite", invitation-form: "invitationForm"}
   %md-dialog-actions{ng-switch: "currentStep"}
     %group_form_actions{ng-switch-when: "create", group: "group"}
-    %invitation_form_actions{ng-switch-when: "invite", group: "group"}
+    %invitation_form_actions{ng-switch-when: "invite", invitation-form: "invitationForm"}
