@@ -7,5 +7,6 @@
     %validation_errors{subject: "document", field: "title"}
 
   .lmo-md-actions
-    %md-button.md-accent{ng-click: "$emit('backFromTitle')", translate: "common.action.back"}
+    %div{ng-if: "!document.isNew()"}
+    %md-button.md-accent{ng-if: "document.isNew()", ng-click: "$emit('backFromTitle')", translate: "common.action.back"}
     %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.save"}
