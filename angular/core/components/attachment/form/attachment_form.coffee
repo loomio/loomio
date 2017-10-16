@@ -4,7 +4,12 @@ angular.module('loomioApp').directive 'attachmentForm', (Records) ->
   templateUrl: 'generated/components/attachment/form/attachment_form.html'
   replace: true
   controller: ($scope, $element) ->
+
+    $scope.$watch 'files', ->
+      $scope.upload($scope.files)
+
     $scope.upload = ->
+      return unless $scope.files
       $scope.model.setErrors({})
       for file in $scope.files
         $scope.$emit 'disableAttachmentForm'
