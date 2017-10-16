@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'invitationFormActions', ->
   scope: {invitationForm: '='}
   templateUrl: 'generated/components/invitation/form_actions/invitation_form_actions.html'
-  controller: ($scope, Records, LoadingService, FormService) ->
+  controller: ($scope, Records, LoadingService, FormService, FlashService) ->
     $scope.submit = ->
       if $scope.invitationForm.hasInvitees()
         submitForm()
@@ -25,5 +25,7 @@ angular.module('loomioApp').directive 'invitationFormActions', ->
         'invitation_form.done'
 
     $scope.canSubmit = ->
-      $scope.invitationForm.invitees().length > 0
+      return true unless $scope.invitationForm.hasEmails()
+      !$scope.isDisabled and
+      $scope.invitationForm.invitees().length > 0 and
       $scope.invitationForm.invitees().length < 100
