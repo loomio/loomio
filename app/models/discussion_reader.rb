@@ -7,8 +7,6 @@ class DiscussionReader < ActiveRecord::Base
   delegate :update_importance, to: :discussion
   delegate :importance, to: :discussion
 
-  define_counter_cache(:read_items_count) { |reader| reader.read_ranges.map(&:count).sum }
-
   def self.for(user:, discussion:)
     if user&.is_logged_in?
       find_or_create_by(user: user, discussion: discussion)
@@ -28,18 +26,20 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def viewed!(ranges = [], persist: true)
-    mark_as_read(ranges) if has_read?(ranges)
-    assign_attributes(last_read_at: Time.now, read_items_count: compute_read_items_count)
+    mark_as_read(ranges) unless has_read?(ranges)
+    assign_attributes(last_read_at: Time.now)
     EventBus.broadcast('discussion_reader_viewed!', self)
     save if persist
   end
 
   def has_read?(ranges = [])
-    read_ranges.include? ranges
+    RangeSet.includes?(read_ranges, ranges)
   end
 
   def mark_as_read(ranges)
-    self.read_ranges = read_ranges.merge!(ranges)
+    ranges = RangeSet.to_ranges(ranges)
+    return if ranges.empty?
+    self.read_ranges = read_ranges.concat(ranges)
   end
 
   def dismiss!(persist: true)
@@ -68,7 +68,9 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def read_ranges=(ranges)
-    self.read_ranges_string = RangeSet.new(ranges).to_s
+    ranges = RangeSet.reduce(ranges)
+    self.read_ranges_string = RangeSet.serialize(ranges)
+    self.read_items_count = ranges.map(&:count).sum
   end
 
   def membership

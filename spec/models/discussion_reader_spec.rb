@@ -50,8 +50,8 @@ describe DiscussionReader do
 
     it 'updates the existing counts correctly' do
       reader.viewed!(newer_item.sequence_id)
-      expect(reader.has_read_sequence_id?(older_item.sequence_id)).to be false
-      expect(reader.has_read_sequence_id?(newer_item.sequence_id)).to be true
+      expect(reader.has_read?(older_item.sequence_id)).to be false
+      expect(reader.has_read?(newer_item.sequence_id)).to be true
       expect(reader.read_items_count).to eq 1
     end
 

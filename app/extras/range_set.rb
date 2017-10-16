@@ -1,24 +1,28 @@
 class RangeSet
-  def initialize(something)
-    @ranges = klass.to_ranges(something)
-  end
-
-  def merge(something)
-    @ranges = klass.reduce(@ranges.concat(klass.to_ranges(ranges)))
-    self
-  end
-
-  def includes?(something)
-    klass.includes?(@ranges, something)
-  end
-
-  def to_s
-    self.class.serialize(@ranges)
-  end
-
-  def klass
-    self.class
-  end
+  # def initialize(ranges)
+  #   @ranges = klass.to_ranges(ranges)
+  # end
+  #
+  # def merge(ranges)
+  #   @ranges = klass.reduce(@ranges.concat(klass.to_ranges(ranges)))
+  #   self
+  # end
+  #
+  # def includes?(ranges)
+  #   klass.includes?(@ranges, ranges)
+  # end
+  #
+  # def to_s
+  #   self.class.serialize(@ranges)
+  # end
+  #
+  # def klass
+  #   self.class
+  # end
+  #
+  # def empty?
+  #   @ranges.empty?
+  # end
 
   # class methods
   def self.includes?(haystack, needle)
@@ -31,6 +35,7 @@ class RangeSet
     # ranges is supposed to be an array of ranges.
     # but it's useful to support
     # range set
+    return []                        if ranges.nil?
     return ranges.ranges             if ranges.is_a? RangeSet
     # single id
     return [ranges..ranges]          if ranges.is_a? Numeric
@@ -51,11 +56,11 @@ class RangeSet
   end
 
   def self.serialize(ranges)
-    merge(ranges).map{|r| [r.first,r.last].join(',')}.join(' ')
+    ranges.map{|r| [r.first,r.last].join(',')}.join(' ')
   end
 
   def self.reduce(ranges)
-    return [] if ranges.is_empty?
+    # return [] if ranges.length == 0
     ranges = ranges.sort_by {|r| r.first }
     *reduced = ranges.shift
     ranges.each do |r|
