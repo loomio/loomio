@@ -22,7 +22,6 @@ class DiscussionSerializer < ActiveModel::Serializer
              :title,
              :description,
              :items_count,
-             :salient_items_count,
              :first_sequence_id,
              :last_sequence_id,
              :last_comment_at,
@@ -37,7 +36,7 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
-                         :read_sequence_id_ranges,
+                         :read_ranges_string,
                          :discussion_reader_volume,
                          :last_read_at,
                          :dismissed_at

@@ -4,7 +4,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
    end
 
   def mark_discussion_as_read
-    DiscussionReader.for(discussion: discussion, user: user).viewed!(event.created_at)
+    DiscussionReader.for(discussion: discussion, user: user).viewed!
     respond_with_pixel
   rescue ActiveRecord::RecordNotFound
     respond_with_pixel

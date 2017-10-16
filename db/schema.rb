@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171015005524) do
+ActiveRecord::Schema.define(version: 20171015213401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,7 +183,7 @@ ActiveRecord::Schema.define(version: 20171015005524) do
     t.integer  "volume"
     t.boolean  "participating",           default: false, null: false
     t.datetime "dismissed_at"
-    t.string   "read_sequence_id_ranges"
+    t.string   "read_ranges_string"
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
@@ -213,24 +213,23 @@ ActiveRecord::Schema.define(version: 20171015005524) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",               limit: 255
+    t.string   "title",              limit: 255
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",                   default: false, null: false
-    t.boolean  "is_deleted",                      default: false, null: false
-    t.integer  "items_count",                     default: 0,     null: false
+    t.boolean  "uses_markdown",                  default: false, null: false
+    t.boolean  "is_deleted",                     default: false, null: false
+    t.integer  "items_count",                    default: 0,     null: false
     t.datetime "archived_at"
     t.boolean  "private"
-    t.string   "key",                 limit: 255
-    t.string   "iframe_src",          limit: 255
+    t.string   "key",                limit: 255
+    t.string   "iframe_src",         limit: 255
     t.datetime "last_activity_at"
-    t.integer  "last_sequence_id",                default: 0,     null: false
-    t.integer  "first_sequence_id",               default: 0,     null: false
-    t.integer  "salient_items_count",             default: 0,     null: false
-    t.integer  "versions_count",                  default: 0
-    t.integer  "closed_polls_count",              default: 0,     null: false
-    t.boolean  "pinned",                          default: false, null: false
-    t.integer  "importance",                      default: 0,     null: false
+    t.integer  "last_sequence_id",               default: 0,     null: false
+    t.integer  "first_sequence_id",              default: 0,     null: false
+    t.integer  "versions_count",                 default: 0
+    t.integer  "closed_polls_count",             default: 0,     null: false
+    t.boolean  "pinned",                         default: false, null: false
+    t.integer  "importance",                     default: 0,     null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree

@@ -15,7 +15,6 @@ class MarkedAsRead::DiscussionSerializer < ActiveModel::Serializer
   attributes :id,
              :key,
              :items_count,
-             :salient_items_count,
              :first_sequence_id,
              :last_sequence_id
 

@@ -86,11 +86,7 @@ angular.module('loomioApp').directive 'activityCard', ->
       item.sequenceId == $scope.lastLoadedSequenceId and
       item.sequenceId < $scope.discussion.lastSequenceId
 
-    $scope.safeEvent = (kind) ->
-      _.contains AppConfig.safeThreadItemKinds, kind
-
-    $scope.events = ->
-      _.filter $scope.discussion.events(), (event) -> $scope.safeEvent(event.kind)
+    $scope.events = -> $scope.discussion.events()
 
     $scope.noEvents = ->
       !$scope.loadEventsForwardsExecuting and !_.any($scope.events())

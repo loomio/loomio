@@ -121,18 +121,13 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     isMuted: ->
       @volume() == 'mute'
 
-    update: (attrs) ->
-      delete attrs.lastReadSequenceId    if attrs.lastReadSequenceId < @lastReadSequenceId
-      delete attrs.readSalientItemsCount if attrs.readSalientItemsCount < @readSalientItemsCount
-      @baseUpdate(attrs)
-
     markAsSeen: ->
       return unless @discussionReaderId and !@lastReadAt
       @remote.patchMember @keyOrId(), 'mark_as_seen'
-      @update(lastReadAt: moment(), lastReadSequenceId: 0)
+      @update(lastReadAt: moment())
 
     unreadActivityCount: ->
-      @salientItemsCount - @readSalientItemsCount
+      @itemsCount - @readItemsCount
 
     hasReadSequenceId: (id) ->
       _.any @readRanges(), (range) ->

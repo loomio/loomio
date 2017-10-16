@@ -23,7 +23,7 @@ describe DiscussionReader do
   describe 'viewed!' do
     it 'publishes a simple serialized discussion' do
       expect(MessageChannelService).to receive(:publish)
-      reader.viewed!(1)
+      reader.viewed!
     end
   end
 
@@ -50,8 +50,8 @@ describe DiscussionReader do
 
     it 'updates the existing counts correctly' do
       reader.viewed!(newer_item.sequence_id)
-      expect(reader.has_read?(older_item.sequence_id)).to be false
-      expect(reader.has_read?(newer_item.sequence_id)).to be true
+      expect(reader.has_read_sequence_id?(older_item.sequence_id)).to be false
+      expect(reader.has_read_sequence_id?(newer_item.sequence_id)).to be true
       expect(reader.read_items_count).to eq 1
     end
 
@@ -63,34 +63,51 @@ describe DiscussionReader do
     end
   end
 
+  describe "has_read?" do
+    it 'nothing read yet returns false' do
+      reader.read_ranges_string = ''
+      expect(reader.has_read?([(1..1)])).to be false
+    end
+
+    it 'has been read returns true' do
+      reader.read_ranges_string = '1,1'
+      expect(reader.has_read?([(1..1)])).to be true
+    end
+
+    it 'has not been read returns false' do
+      reader.read_ranges_string = '1,1'
+      expect(reader.has_read?([(1..2)])).to be false
+    end
+
+    it 'complex' do
+      reader.read_ranges_string = '1,5 7,9'
+      expect(reader.has_read?([(7..8)])).to be true
+      expect(reader.has_read?([(1..3), (7..10)])).to be false
+    end
+  end
+
   describe "mark_as_read" do
     it 'creates a range' do
-      reader.mark_as_read(1)
-      expect(reader.read_sequence_id_ranges).to eq "1,1"
+      reader.mark_as_read [1..1]
+      expect(reader.read_ranges_string).to eq "1,1"
     end
 
     it 'extends a range' do
-      reader.mark_as_read(1)
-      reader.mark_as_read(2)
-      expect(reader.read_sequence_id_ranges).to eq "1,2"
+      reader.mark_as_read [1..1]
+      reader.mark_as_read [2..2]
+      expect(reader.read_ranges_string).to eq "1,2"
     end
 
     it 'extends a range' do
-      reader.mark_as_read(1)
-      reader.mark_as_read(2)
-      reader.mark_as_read(3)
-      expect(reader.read_sequence_id_ranges).to eq "1,3"
+      reader.mark_as_read [1..1]
+      reader.mark_as_read [2..2]
+      reader.mark_as_read [3..3]
+      expect(reader.read_ranges_string).to eq "1,3"
     end
 
     it 'handles complex' do
-      reader.mark_as_read([1,1,2,3,6,7,8,10])
-      expect(reader.read_sequence_id_ranges).to eq "1,3 6,8 10,10"
-    end
-
-    it 'ignores already marked as read' do
-      reader.mark_as_read(1)
-      reader.mark_as_read(1)
-      expect(reader.read_sequence_id_ranges).to eq "1,1"
+      reader.mark_as_read [1..1, 2..2, 3..3, 1..3, 6..8, 6..7, 10..10]
+      expect(reader.read_ranges_string).to eq "1,3 6,8 10,10"
     end
   end
 end

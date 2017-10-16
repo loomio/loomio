@@ -66,7 +66,7 @@ describe API::DiscussionsController do
     context 'logged in' do
       before do
         sign_in user
-        reader.viewed!(reader.discussion.last_activity_at)
+        reader.viewed!
         group.add_member! another_user
       end
 

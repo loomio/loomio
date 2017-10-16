@@ -1,22 +1,4 @@
 class Discussion < ActiveRecord::Base
-  SALIENT_ITEM_KINDS = %w[new_comment
-                          stance_created
-                          outcome_created
-                          poll_created
-                          poll_edited
-                        ]
-
-  THREAD_ITEM_KINDS = %w[new_comment
-                         discussion_edited
-                         discussion_moved
-                         poll_created
-                         poll_edited
-                         stance_created
-                         outcome_created
-                         poll_expired
-                         poll_closed_by_user
-                       ]
-
   include ReadableUnguessableUrls
   include Translatable
   include Reactable
@@ -61,8 +43,7 @@ class Discussion < ActiveRecord::Base
 
   has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
 
-  has_many :items, -> { includes(:user).where(kind: THREAD_ITEM_KINDS).order('created_at ASC') }, class_name: 'Event'
-  has_many :salient_items, -> { includes(:user).where(kind: SALIENT_ITEM_KINDS).order('created_at ASC') }, class_name: 'Event'
+  has_many :items, -> { includes(:user).order('created_at ASC') }, class_name: 'Event'
 
   has_many :discussion_readers
 
@@ -89,7 +70,6 @@ class Discussion < ActiveRecord::Base
   define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
   define_counter_cache(:versions_count)       { |discussion| discussion.versions.where(event: :update).count }
   define_counter_cache(:items_count)          { |discussion| discussion.items.count }
-  define_counter_cache(:salient_items_count)  { |discussion| discussion.salient_items.count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
@@ -100,8 +80,8 @@ class Discussion < ActiveRecord::Base
   end
 
   def update_sequence_info!
-    first_item = discussion.salient_items.order({sequence_id: :asc}).first
-    last_item =  discussion.salient_items.order({sequence_id: :asc}).last
+    first_item = discussion.items.order({sequence_id: :asc}).first
+    last_item =  discussion.items.order({sequence_id: :asc}).last
     discussion.first_sequence_id = first_item&.sequence_id || 0
     discussion.last_sequence_id  = last_item&.sequence_id || 0
     discussion.last_activity_at = last_item&.created_at || created_at
@@ -114,13 +94,8 @@ class Discussion < ActiveRecord::Base
 
   def thread_item_destroyed!(item)
     update_sequence_info!
-    discussion_readers.
-      where('last_read_at <= ?', item.created_at).
-      map { |dr| dr.viewed!(dr.last_read_at) }
-
     true
   end
-
 
   def public?
     !private

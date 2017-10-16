@@ -92,7 +92,6 @@ describe Discussion do
     describe "new discussion" do
       it "has the right values to begin with" do
         expect(discussion.items_count).to be 0
-        expect(discussion.salient_items_count).to be 0
         expect(discussion.last_activity_at).to eq discussion.created_at
         expect(discussion.first_sequence_id).to be 0
         expect(discussion.last_sequence_id).to be 0
@@ -113,7 +112,6 @@ describe Discussion do
 
       it "increments corrently" do
         expect(discussion.items_count).to be 1
-        expect(discussion.salient_items_count).to be 1
         expect(discussion.last_activity_at).to eq @comment.created_at
         expect(discussion.first_sequence_id).to be @event.sequence_id
         expect(discussion.last_sequence_id).to be @event.sequence_id
@@ -133,7 +131,6 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 0
-        expect(discussion.salient_items_count).to be 0
         expect(discussion.last_activity_at).to eq discussion.created_at
         expect(discussion.last_sequence_id).to be 0
         expect(discussion.first_sequence_id).to be 0
@@ -161,7 +158,6 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 1
-        expect(discussion.salient_items_count).to be 1
         expect(discussion.last_activity_at).to eq @comment2.created_at
         expect(discussion.first_sequence_id).to be @event2.sequence_id
         expect(discussion.last_sequence_id).to be @event2.sequence_id
@@ -193,18 +189,10 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 1
-        expect(discussion.salient_items_count).to be 1
         expect(discussion.last_activity_at).to eq @comment1.created_at
         expect(discussion.first_sequence_id).to be @event1.sequence_id
         expect(discussion.last_sequence_id).to be @event1.sequence_id
       end
-    end
-
-    it "does not increment when creating a non thread-kind item" do
-      stub_const("Discussion::THREAD_ITEM_KINDS", ['new_motion', 'new_discussion']) # not new_comment
-      old_items_count = discussion.items_count
-      CommentService.create(comment: build(:comment, discussion: discussion), actor: discussion.author)
-      expect(discussion.reload.items_count).to eq old_items_count
     end
   end
 
