@@ -1,4 +1,5 @@
 %md-dialog.poll-common-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %i.mdi.mdi-thumbs-up-down
@@ -7,5 +8,4 @@
       %material_modal_header_cancel_button
 
   %md-dialog-content
-    .md-dialog-content
-      %poll_common_directive{name: "outcome_form", outcome: "outcome"}
+    %poll_common_directive{name: "outcome_form", outcome: "outcome"}

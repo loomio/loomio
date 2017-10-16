@@ -7,5 +7,4 @@ angular.module('loomioApp').factory 'PollCommonFormModal', (PollService, Loading
     $scope.icon = ->
       PollService.iconFor($scope.poll)
 
-    LoadingService.listenForLoading $scope
     $scope.$on 'saveComplete',      $scope.$close
