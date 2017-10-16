@@ -1,0 +1,24 @@
+.document-title-form
+  .document-title-form__attachment{ng-if: "!enteringUrl"}
+    .lmo-flex.lmo-flex__center.lmo-relative.document-form__attachment-form{layout: "column"}
+      %i.mdi.mdi-cloud-upload.mdi-36px
+      .lmo-hint-text.document-form__helptext{translate: "document.form.helptext"}
+      %validation_errors{subject: "model", field: "file"}
+      %attachment_form{model: "model"}
+
+    %p.lmo-hint-text.lmo-md-action.md-caption>
+      %span{translate: "document.form.uploaded_already"}>
+      %a.lmo-pointer{href: "", ng-click: "toggleForm()", translate: "document.form.enter_url"}>
+
+  .document-title-form__url{ng-if: "enteringUrl"}
+    .lmo-flex.lmo-flex__center{layout: "row"}
+      %md-input-container.md-block.lmo-flex__grow.md-no-errors
+        %label{translate: "document.form.url_label"}
+        %input.lmo-primary-form-input.lmo-flex__grow{ng-model: "newUrl", ng-disabled: "disabled", placeholder: "{{'document.form.url_placeholder' | translate }}"}
+        %validation_errors{subject: "document", field: "url"}
+
+    .lmo-md-actions
+      %p.lmo-hint-text.lmo-md-action.md-caption>
+        %span{translate: "document.form.upload_from_local"}>
+        %a.lmo-pointer{href: "", ng-click: "toggleForm()", translate: "document.form.upload_file"}>
+      %md-button.md-primary.md-raised{ng-click: "next()", translate: "common.action.next"}

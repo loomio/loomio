@@ -1,17 +1,3 @@
-.document-form
-  .lmo-hint-text.document-form__helptext{translate: "document.form.helptext"}
-
-  %md-input-container.md-block.md-no-errors
-    %label{translate: "document.form.title_label"}
-    %input.lmo-primary-form-input{ng-model: "document.title", placeholder: "{{'document.form.title_placeholder' | translate }}"}
-    %validation_errors{subject: "document", field: "title"}
-
-  .lmo-flex.lmo-flex__center{layout: "row"}
-    %md-input-container.md-block.lmo-flex__grow.md-no-errors
-      %label{translate: "document.form.url_label"}
-      %input.lmo-primary-form-input.lmo-flex__grow{ng-model: "document.url", ng-disabled: "disabled", placeholder: "{{'document.form.url_placeholder' | translate }}"}
-      %validation_errors{subject: "document", field: "url"}
-    %attachment_form.document-form__attachment-form{model: "model"}
-
-  .lmo-md-action
-    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.save"}
+.document-form.lmo-slide-animation{ng-switch: "currentStep"}
+  %document_url_form.animated{ng-if: "!document.url", document: "document"}
+  %document_title_form.animated{ng-if: "document.url", document: "document"}

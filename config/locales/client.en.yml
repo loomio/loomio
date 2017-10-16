@@ -624,10 +624,16 @@ en:
     modal:
       title: Add a resource
     form:
-      helptext: Share documents, files and links with your group.
-      url_label: Resource Url
+      helptext: Click, paste, or drop files here to share them with your group.
+      file_upload: Upload a file from your computer
+      uploaded_already: Already uploaded somewhere else?
+      upload_from_local: Have a file locally?
+      upload_file: Upload from your computer
+      enter_url: Enter a URL
+      url_label: Resource URL
       url_placeholder: E.g. https://www.example.com/resource.txt
-      title_label: Title
+      title_helptext: What should we call this resource?
+      title_label: Name
       title_placeholder: E.g. 'Community Guidelines'
     flash:
       success: Resource saved
