@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollCommonActionsDropdown', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/actions_dropdown/poll_common_actions_dropdown.html'
-  controller: ($scope, AbilityService, ModalService, PollCommonShareModal, PollCommonFormModal, PollCommonCloseForm, PollCommonDeleteModal, PollCommonUnsubscribeModal) ->
+  controller: ($scope, AbilityService, ModalService, PollCommonShareModal, PollCommonEditModal, PollCommonCloseForm, PollCommonDeleteModal, PollCommonUnsubscribeModal) ->
     $scope.canSharePoll = ->
       AbilityService.canSharePoll($scope.poll)
 
@@ -18,7 +18,7 @@ angular.module('loomioApp').directive 'pollCommonActionsDropdown', ->
       ModalService.open PollCommonShareModal, poll: -> $scope.poll
 
     $scope.editPoll = ->
-      ModalService.open PollCommonFormModal, poll: -> $scope.poll
+      ModalService.open PollCommonEditModal, poll: -> $scope.poll
 
     $scope.closePoll = ->
       ModalService.open PollCommonCloseForm, poll: -> $scope.poll
