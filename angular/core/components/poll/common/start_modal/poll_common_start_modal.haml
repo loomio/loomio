@@ -1,9 +1,14 @@
 %md-dialog.poll-common-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %i.mdi{class: "{{icon()}}"}
       %h1.lmo-h1{translate: "poll_common.start_poll"}
       %material_modal_header_cancel_button
-  .md-dialog-content
-    .lmo-disabled-form{ng-show: "isDisabled"}
-    %poll_common_start_poll.lmo-slide-animation{poll: "poll"}
+  %md-dialog-content.lmo-slide-animation{ng-switch: "currentStep"}
+    %poll_common_choose_type.animated{ng-switch-when: "choose", poll: "poll"}
+    %poll_common_directive.animated{ng-switch-when: "save", poll: "poll", name: "form" modal: "true"}
+    %poll_common_share_form.animated{ng-switch-when: "share", poll: "poll", modal: "true"}
+  %md-dialog-actions{ng-switch: "currentStep"}
+    %poll_common_form_actions{ng-switch-when: "save", poll: "poll"}
+    %poll_common_share_actions{ng-switch-when: "share", poll: "poll"}

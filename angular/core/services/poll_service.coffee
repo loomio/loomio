@@ -61,7 +61,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
           ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
           poll = Records.polls.find(data.polls[0].key)
-          scope.$emit 'saveComplete', poll
+          scope.$emit 'nextStep', poll
           if actionName == 'created'
             $location.path(LmoUrlService.poll(poll))
           else

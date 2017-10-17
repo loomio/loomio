@@ -1,16 +1,14 @@
-angular.module('loomioApp').directive 'pollCommonStartPoll', ($window, Records, PollService, LmoUrlService) ->
+angular.module('loomioApp').directive 'pollCommonStartPoll', ($window, Records, SequenceService, PollService, LmoUrlService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/start_poll/poll_common_start_poll.html'
   controller: ($scope) ->
-    $scope.currentStep = if $scope.poll.pollType then 'save' else 'choose'
-    $scope.$on 'chooseComplete',  -> $scope.currentStep = 'save';   $scope.isDisabled = false
-    $scope.$on 'saveBack',        -> $scope.currentStep = 'choose'; $scope.isDisabled = false
-    $scope.poll.makeAnnouncement = $scope.poll.isNew()
 
-    $scope.$on 'saveComplete', (event, poll) ->
-      if poll.group()
+    $scope.poll.makeAnnouncement = $scope.poll.isNew()
+    SequenceService.applySequence $scope, ['choose', 'save', 'share'],
+      initialStep: if $scope.poll.pollType then 'save' else 'choose'
+      chooseComplete: (_, pollType) ->
+        $scope.poll.pollType = pollType
+      saveComplete: (_, poll) ->
+        if poll.group() then $scope.$emit '$close' else $scope.poll = poll
+      shareComplete: ->
         $scope.$emit '$close'
-      else
-        $scope.poll = poll
-        $scope.currentStep = 'share'
-      $scope.isDisabled = false

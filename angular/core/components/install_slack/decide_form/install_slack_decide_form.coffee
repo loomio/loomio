@@ -3,6 +3,3 @@ angular.module('loomioApp').directive 'installSlackDecideForm', (Session, Record
   controller: ($scope) ->
     $scope.poll = Records.polls.build
       groupId: Session.currentGroupId()
-
-    $scope.$on 'saveComplete', ->
-      $scope.$emit 'decideComplete'

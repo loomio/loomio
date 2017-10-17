@@ -6,12 +6,12 @@ angular.module('loomioApp').directive 'invitationFormActions', ->
       if $scope.invitationForm.hasInvitees()
         submitForm()
       else
-        $scope.$emit 'inviteComplete'
+        $scope.$emit 'nextStep'
 
     submitForm = FormService.submit $scope, $scope.invitationForm,
       submitFn: Records.invitations.sendByEmail
       successCallback: (response) =>
-        $scope.$emit 'inviteComplete'
+        $scope.$emit 'nextStep'
         invitationCount = response.invitations.length
         switch invitationCount
           when 0 then $scope.noInvitations = true

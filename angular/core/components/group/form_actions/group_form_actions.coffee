@@ -23,8 +23,7 @@ angular.module('loomioApp').directive 'groupFormActions', ->
       flashSuccess: -> "group_form.messages.group_#{actionName}"
       successCallback: (response) ->
         group = Records.groups.find(response.groups[0].key)
-        $scope.$emit 'createComplete', group
-        $location.path LmoUrlService.group(group)
+        $scope.$emit 'nextStep', group
 
     $scope.expandForm = ->
       $scope.group.expanded = true
