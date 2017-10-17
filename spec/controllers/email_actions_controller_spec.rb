@@ -55,6 +55,14 @@ describe EmailActionsController do
       get :mark_discussion_as_read, discussion_id: :notathing, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token
       expect(response.status).to eq 200
     end
+
+    it 'marks a comment as read' do
+      @comment_event = CommentService.create(comment: Comment.new(discussion: @discussion, body: "hello"), actor: @user)
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).has_read?(@comment_event.sequence_id)).to be false
+      get :mark_discussion_as_read, discussion_id: @discussion.id, event_id: @comment_event.id, unsubscribe_token: @user.unsubscribe_token
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).last_read_at).to be_within(1.second).of Time.now
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).has_read?(@comment_event.sequence_id)).to be true
+    end
   end
 
   describe 'mark_summary_email_as_read' do

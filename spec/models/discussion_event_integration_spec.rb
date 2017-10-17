@@ -43,7 +43,7 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
         discussion_reader.viewed!
       end
 
-      def view_sequence_id(id)
+      def view_item(id)
         discussion_reader.viewed!(id)
       end
 

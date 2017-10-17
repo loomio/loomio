@@ -43,7 +43,7 @@ class Discussion < ActiveRecord::Base
 
   has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
 
-  has_many :items, -> { includes(:user).order('created_at ASC') }, class_name: 'Event'
+  has_many :items, -> { includes(:user).order('events.id ASC') }, class_name: 'Event'
 
   has_many :discussion_readers
 
@@ -94,6 +94,7 @@ class Discussion < ActiveRecord::Base
 
   def thread_item_destroyed!(item)
     update_sequence_info!
+    RecalculateReadItemsCountsJob.perform_later(discussion)
     true
   end
 

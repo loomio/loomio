@@ -65,6 +65,11 @@ class DiscussionService
     EventBus.broadcast('discussion_mark_as_seen', discussion, actor)
   end
 
+  def self.mark_as_read(discussion:, params:, actor:)
+    actor.ability.authorize! :mark_as_read, discussion
+    DiscussionReader.for_model(discussion, actor).viewed!(params[:ranges])
+  end
+
   def self.dismiss(discussion:, params:, actor:)
     actor.ability.authorize! :dismiss, discussion
     DiscussionReader.for(user: actor, discussion: discussion).dismiss!

@@ -1,11 +1,6 @@
 class API::EventsController < API::RestfulController
   include UsesDiscussionReaders
-
-  def mark_as_read
-    service.mark_as_read(event: load_resource, actor: current_user)
-    respond_with_reader
-  end
-
+  
   private
 
   def accessible_records
@@ -37,13 +32,6 @@ class API::EventsController < API::RestfulController
 
   # we always want to serialize out events in the events controller
   alias :events_to_serialize :resources_to_serialize
-
-  def respond_with_reader(scope: default_scope, serializer: DiscussionReaderSerializer, root: :discussions)
-    render json: Array(DiscussionReader.for_model(resource.discussion, current_user)),
-           each_serializer: serializer,
-           scope: scope,
-           root: root
-  end
 
   # events will define their own serializer through the `active_model_serializer` method
   def resource_serializer

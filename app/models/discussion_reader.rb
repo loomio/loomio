@@ -61,6 +61,11 @@ class DiscussionReader < ActiveRecord::Base
     self.class.volumes.invert[self[:volume]]
   end
 
+  # because items can be deleted, we need to count the number of items in each range against the db
+  def calculate_read_items_count
+    read_ranges.sum {|r| discussion.items.where(sequence_id: r).count }
+  end
+
   private
 
   def read_ranges
@@ -70,7 +75,7 @@ class DiscussionReader < ActiveRecord::Base
   def read_ranges=(ranges)
     ranges = RangeSet.reduce(ranges)
     self.read_ranges_string = RangeSet.serialize(ranges)
-    self.read_items_count = ranges.map(&:count).sum
+    self.read_items_count = calculate_read_items_count
   end
 
   def membership

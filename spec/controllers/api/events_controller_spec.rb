@@ -13,50 +13,6 @@ describe API::EventsController do
     group.add_member! another_user
   end
 
-  describe 'mark_as_read' do
-    let!(:event) { create :event, sequence_id: 2, discussion: discussion, user: another_user }
-    let!(:another_event) { create :event, sequence_id: 3 }
-
-    context 'signed out' do
-      it 'does not attempt to mark discussions as read while logged out' do
-        patch :mark_as_read, id: event.id
-        expect(response.status).to eq 403
-      end
-    end
-
-    context 'signed in' do
-      before do
-        sign_in user
-        group.add_admin! user
-        reader.update(volume: DiscussionReader.volumes[:normal])
-        reader.reload
-      end
-
-      it "Marks thread item as read" do
-        patch :mark_as_read, id: event.id
-        expect(reader.reload.last_read_at).to be_within(1.second).of event.created_at
-        expect(reader.last_read_sequence_id).to eq 2
-        expect(response.status).to eq 200
-      end
-
-      it 'does not mark an inaccessible discussion as read' do
-        patch :mark_as_read, id: another_event.id
-        expect(response.status).to eq 403
-        expect(reader.reload.last_read_sequence_id).to eq 0
-      end
-
-      it 'responds with reader fields' do
-        patch :mark_as_read, id: event.id
-        json = JSON.parse(response.body)
-        reader.reload
-
-        expect(json['discussions'][0]['id']).to eq discussion.id
-        expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
-        expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
-      end
-    end
-  end
-
   describe 'index' do
 
     before { sign_in user }

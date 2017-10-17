@@ -87,6 +87,16 @@ describe DiscussionReader do
   end
 
   describe "mark_as_read" do
+    it 'accepts single sequence_ids' do
+      reader.mark_as_read 1
+      expect(reader.read_ranges_string).to eq "1,1"
+    end
+
+    it 'accepts arrays of sequence_ids' do
+      reader.mark_as_read [1,2,3]
+      expect(reader.read_ranges_string).to eq "1,3"
+    end
+
     it 'creates a range' do
       reader.mark_as_read [1..1]
       expect(reader.read_ranges_string).to eq "1,1"

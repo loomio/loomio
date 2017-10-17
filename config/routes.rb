@@ -95,11 +95,11 @@ Loomio::Application.routes.draw do
     end
 
     resources :login_tokens, only: [:create]
-
+    
     resources :events, only: :index do
       post  :mark_as_read, on: :member
     end
-    
+
     resources :drafts do
       collection do
         get    '/:draftable_type/:draftable_id', action: :show
@@ -118,13 +118,13 @@ Loomio::Application.routes.draw do
       patch :pin_reader, on: :member
       patch :unpin_reader, on: :member
       patch :move, on: :member
-      put :mark_as_read, on: :member
-      put :set_volume, on: :member
-      put :pin, on: :member
-      put :unpin, on: :member
-      put :pin_reader, on: :member
-      put :unpin_reader, on: :member
-      put :move, on: :member
+      patch :mark_as_read, on: :member
+      patch :set_volume, on: :member
+      patch :pin, on: :member
+      patch :unpin, on: :member
+      patch :pin_reader, on: :member
+      patch :unpin_reader, on: :member
+      patch :move, on: :member
       get :dashboard, on: :collection
       get :inbox, on: :collection
     end

@@ -33,6 +33,11 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def mark_as_read
+    service.mark_as_read(discussion: load_resource, params: params, actor: current_user)
+    respond_with_resource
+  end
+
   def dismiss
     service.dismiss discussion: load_resource, params: params, actor: current_user
     respond_with_resource
