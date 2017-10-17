@@ -6,5 +6,3 @@ angular.module('loomioApp').directive 'documentForm', (Records, FormService, Key
     $scope.$on 'backFromTitle', ->
       $scope.document.title = $scope.document.url = ''
       $scope.currentStep    = 'url'
-
-    $scope.$on '$close', $scope.$close

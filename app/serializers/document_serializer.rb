@@ -9,14 +9,10 @@ class DocumentSerializer < ActiveModel::Serializer
   end
 
   def group_id
-    Hash(scope)[:group_id]
+    object.model.group.id
   end
 
   def include_discussion?
     object.model.respond_to?(:discussion)
-  end
-
-  def include_group_id?
-    Hash(scope).has_key?(:group_id)
   end
 end

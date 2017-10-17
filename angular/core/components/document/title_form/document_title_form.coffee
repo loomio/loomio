@@ -4,5 +4,6 @@ angular.module('loomioApp').directive 'documentTitleForm', (Records, FormService
   controller: ($scope) ->
     $scope.submit = FormService.submit $scope, $scope.document,
       successFlash: "document.flash.success"
+      successCallback: -> $scope.$emit '$close'
 
     KeyEventService.submitOnEnter($scope, anyEnter: true)
