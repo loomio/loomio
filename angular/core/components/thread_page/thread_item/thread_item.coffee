@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $translate, LmoUr
   controller: ($scope) ->
     $scope.isUnread = ->
       return false unless $scope.threadWindow?
-      $scope.event.sequenceId > $scope.threadWindow.firstUnreadSequenceId
+      $scope.threadWindow.isUnread($scope.event)
 
     $scope.headline = ->
       EventHeadlineService.headlineFor($scope.event)

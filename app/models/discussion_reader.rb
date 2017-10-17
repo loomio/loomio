@@ -66,6 +66,10 @@ class DiscussionReader < ActiveRecord::Base
     read_ranges.sum {|r| discussion.items.where(sequence_id: r).count }
   end
 
+  def read_ranges_arrays
+    read_ranges.map {|r| [r.first, r.last] }
+  end
+
   private
 
   def read_ranges

@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
     reset: (initialSequenceId) ->
       @per = 10
       @orderBy = 'createdAt'
-      @firstUnreadSequenceId = @discussion.lastReadSequenceId + 1
+      @readRanges = _.clone(@discussion.readRanges)
       @setMin(initialSequenceId || 1)
       @setMax(@minSequenceId - 1)
       @loader = new RecordLoader
@@ -54,10 +54,6 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
       @maxSequenceId = null
       @loader.loadMore(@minSequenceId)
 
-    pageOf: (event) ->
-      unread = event.sequenceId > @discussion.lastReadSequenceId ? 1 : 0
-      parseInt(event.sequenceId / @per) + unread
-
     rootsAndOrphans: (events) =>
       _.filter events, (event) => !event.parentId? || !@inWindow(event.parent())
 
@@ -82,6 +78,10 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
 
       events = Records.events.collection.find(query)
       _.uniq( @replaceOrphansWithParents( @rootsAndOrphans( @fewerDiscussionEditedEvents( events))))
+
+    isUnread: (event) =>
+      !_.any @readRanges, (range) ->
+        _.inRange(event.sequenceId, range[0], range[1]+1)
 
     noEvents: ->
         !_.any(@events())

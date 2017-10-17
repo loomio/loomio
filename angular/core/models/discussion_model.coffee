@@ -86,7 +86,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasDescription: ->
       !!@description
 
-
     requireReloadFor: (event) ->
       return false if !event or event.discussionId != @id or event.sequenceId
       _.find @events(), (e) -> e.kind == 'new_comment' and e.eventable.id == event.eventable.id
@@ -126,21 +125,22 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @remote.patchMember @keyOrId(), 'mark_as_seen'
       @update(lastReadAt: moment())
 
+    markAsRead: (id) ->
+      return if @hasRead(id)
+      @readRanges.push([id,id])
+      @updateReadRanges()
+
+    updateReadRanges: _.throttle ->
+      @remote.patchMember @keyOrId(), 'mark_as_read', {ranges: _.map(@readRanges, (pair) -> pair.join(',')).join(' ')}
+    ,
+      2000
+
     unreadActivityCount: ->
       @itemsCount - @readItemsCount
 
-    hasReadSequenceId: (id) ->
-      _.any @readRanges(), (range) ->
+    hasRead: (id) ->
+      _.any @readRanges, (range) ->
         _.inRange(id, range[0], range[1]+1)
-
-    # we get this from the server, but I liked the method
-    # readItemsCount: ->
-    #   _.sum _.map(@readRanges(), (r)-> r[1] - r[0] + 1)
-
-    # should work out how to just send array of arrays
-    readRanges: ->
-      _.map String(@readSequenceIds).split(' '), (pair) ->
-        _.map pair.split(','), (num) -> parseInt(num)
 
     dismiss: ->
       @remote.patchMember @keyOrId(), 'dismiss'

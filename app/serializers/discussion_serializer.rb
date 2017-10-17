@@ -32,11 +32,11 @@ class DiscussionSerializer < ActiveModel::Serializer
              :private,
              :versions_count,
              :importance,
-             :pinned
+             :pinned,
+             :read_ranges
 
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
-                         :read_ranges_string,
                          :discussion_reader_volume,
                          :last_read_at,
                          :dismissed_at
@@ -44,6 +44,10 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :author, serializer: UserSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
+
+  def read_ranges
+    reader.read_ranges_arrays
+  end
 
   def active_polls
     scope[:poll_cache].get_for(object)
