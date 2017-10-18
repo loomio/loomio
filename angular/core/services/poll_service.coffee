@@ -40,17 +40,18 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       _.find poll.pollOptions(), (option) -> option.name == name
 
     applyPollStartSequence: (scope, options = {}) ->
-      emitter = options.emitter or scope
-      steps   = if scope.poll.group()
-        ['choose', 'save']
-      else
-        ['choose', 'save', 'share']
-      SequenceService.applySequence scope, steps,
+      SequenceService.applySequence scope,
+        steps: ->
+          if scope.poll.group()
+            ['choose', 'save']
+          else
+            ['choose', 'save', 'share']
         initialStep: if scope.poll.pollType then 'save' else 'choose'
-        emitter: emitter
+        emitter: options.emitter or scope
         chooseComplete: (_, pollType) ->
           scope.poll.pollType = pollType
         saveComplete: (_, poll) ->
+          scope.poll = poll
           $location.path LmoUrlService.poll(poll)
           options.afterSaveComplete(poll) if typeof options.afterSaveComplete is 'function'
 

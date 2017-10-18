@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'SequenceService', ->
   new class SequenceService
-    applySequence: (scope, steps, options = {}) ->
+    applySequence: (scope, options = {}) ->
 
       changeStep = (incr, name) ->
         (args...) ->
@@ -11,8 +11,8 @@ angular.module('loomioApp').factory 'SequenceService', ->
           # emit a close event if we've run out of steps
           emitter.$emit '$close' if !scope.currentStep
 
-      scope.steps       = steps or []
-      scope.currentStep = options.initialStep or _.first(steps)
+      scope.steps = if typeof options.steps is 'function' then options.steps() else options.steps
+      scope.currentStep = options.initialStep or _.first(scope.steps)
 
       scope.currentStepIndex = ->
         _.indexOf scope.steps, scope.currentStep

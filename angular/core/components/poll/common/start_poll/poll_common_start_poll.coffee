@@ -4,11 +4,4 @@ angular.module('loomioApp').directive 'pollCommonStartPoll', ($window, Records, 
   controller: ($scope) ->
 
     $scope.poll.makeAnnouncement = $scope.poll.isNew()
-    SequenceService.applySequence $scope, ['choose', 'save', 'share'],
-      initialStep: if $scope.poll.pollType then 'save' else 'choose'
-      chooseComplete: (_, pollType) ->
-        $scope.poll.pollType = pollType
-      saveComplete: (_, poll) ->
-        if poll.group() then $scope.$emit '$close' else $scope.poll = poll
-      shareComplete: ->
-        $scope.$emit '$close'
+    PollService.applyPollStartSequence $scope
