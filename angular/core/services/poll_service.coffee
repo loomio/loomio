@@ -41,15 +41,18 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
 
     applyPollStartSequence: (scope, options = {}) ->
       emitter = options.emitter or scope
-      SequenceService.applySequence emitter, ['choose', 'save', 'share'],
+      steps   = if scope.poll.group()
+        ['choose', 'save']
+      else
+        ['choose', 'save', 'share']
+      SequenceService.applySequence scope, steps,
         initialStep: if scope.poll.pollType then 'save' else 'choose'
         emitter: emitter
         chooseComplete: (_, pollType) ->
           scope.poll.pollType = pollType
         saveComplete: (_, poll) ->
-          if poll.group() then emitter.$emit '$close' else scope.poll = poll
-        shareComplete: ->
-          emitter.$emit '$close'
+          $location.path LmoUrlService.poll(poll)
+          options.afterSaveComplete(poll) if typeof options.afterSaveComplete is 'function'
 
     submitOutcome: (scope, model, options = {}) ->
       actionName = if scope.outcome.isNew() then 'created' else 'updated'
@@ -71,7 +74,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
           scope.$emit 'processing'
           switch model.pollType
             # for polls with default poll options (proposal, check)
-            when 'proposal', 'check'
+            when 'proposal', 'count'
               model.pollOptionNames = _.pluck @fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
             # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
             else
@@ -80,11 +83,8 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
           ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
           poll = Records.polls.find(data.polls[0].key)
+          AttachmentService.cleanupAfterUpdate(poll, 'poll')
           scope.$emit 'nextStep', poll
-          if actionName == 'created'
-            $location.path(LmoUrlService.poll(poll))
-          else
-            AttachmentService.cleanupAfterUpdate(poll, 'poll')
         cleanupFn: ->
           scope.$emit 'doneProcessing'
       , options))

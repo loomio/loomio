@@ -11,6 +11,9 @@ angular.module('loomioApp').controller 'StartPollPageController', ($scope, $loca
     PollService.iconFor(@poll)
 
   LoadingService.listenForLoading $scope
-  PollService.applyPollStartSequence @, emitter: $scope
+  PollService.applyPollStartSequence @,
+    emitter: $scope
+    afterSaveComplete: (poll) ->
+      ModalService.open PollCommonShareModal, poll: -> poll
 
   return
