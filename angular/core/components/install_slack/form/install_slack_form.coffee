@@ -4,9 +4,8 @@ angular.module('loomioApp').directive 'installSlackForm', (FormService, Sequence
   controller: ($scope) ->
 
     SequenceService.applySequence $scope,
-      steps:           ['invite', 'install', 'decide']
+      steps:           ['install', 'invite', 'decide']
       initialStep:     if $scope.group then 'invite' else 'install'
       installComplete: (_, group) -> $scope.group = group
-      decideComplete:             -> $scope.$emit '$close'
 
     LoadingService.listenForLoading $scope

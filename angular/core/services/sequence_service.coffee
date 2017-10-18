@@ -8,6 +8,8 @@ angular.module('loomioApp').factory 'SequenceService', ->
           # perform a callback if its specified
           (options["#{scope.currentStep}#{name}"] or ->)(args...)
           scope.currentStep = scope.steps[scope.currentStepIndex() + incr]
+          # don't bubble the event
+          args[0].stopPropagation() if typeof (args[0] or {}).stopPropagation is 'function'
           # emit a close event if we've run out of steps
           emitter.$emit '$close' if !scope.currentStep
 
