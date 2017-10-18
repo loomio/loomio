@@ -2,7 +2,7 @@ angular.module('loomioApp').directive 'groupFormActions', ->
   scope: {group: '='}
   replace: true
   templateUrl: 'generated/components/group/form_actions/group_form_actions.html'
-  controller: ($scope, $location, Records, FormService, ScrollService, PrivacyString, LmoUrlService, KeyEventService, AttachmentService) ->
+  controller: ($scope, Records, FormService, ScrollService, PrivacyString, KeyEventService) ->
     actionName = if $scope.group.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.group,
@@ -30,4 +30,3 @@ angular.module('loomioApp').directive 'groupFormActions', ->
       ScrollService.scrollTo '.group-form__permissions', container: '.group-modal md-dialog-content'
 
     KeyEventService.submitOnEnter $scope
-    AttachmentService.listenForAttachments $scope, $scope.group

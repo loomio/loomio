@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'groupForm', ->
   scope: {group: '=', modal: '=?'}
   templateUrl: 'generated/components/group/form/group_form.html'
-  controller: ($scope, $q, $window, $location, KeyEventService, LmoUrlService, FormService, PrivacyString) ->
+  controller: ($scope, PrivacyString) ->
 
     $scope.titleLabel = ->
       if $scope.group.isParent()
@@ -20,5 +20,3 @@ angular.module('loomioApp').directive 'groupForm', ->
 
     $scope.privacyStringFor = (privacy) ->
       PrivacyString.group($scope.group, privacy)
-
-    KeyEventService.submitOnEnter $scope
