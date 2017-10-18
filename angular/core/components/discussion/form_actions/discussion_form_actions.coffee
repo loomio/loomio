@@ -11,10 +11,7 @@ angular.module('loomioApp').directive 'discussionFormActions', ->
       successCallback: (response) =>
         $scope.$emit '$close'
         discussion = response.discussions[0]
-        Records.attachments.find(attachableId: discussion.id, attachableType: 'Discussion')
-                           .filter (attachment) -> !_.contains(discussion.attachment_ids, attachment.id)
-                           .map    (attachment) -> attachment.remove()
+        AttachmentService.cleanupAfterUpdate(discussion, 'discussion')
         $location.path LmoUrlService.discussion(discussion) if actionName == 'created'
 
     KeyEventService.submitOnEnter $scope
-    AttachmentService.listenForAttachments $scope, $scope.discussion

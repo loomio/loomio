@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'discussionForm', ->
   scope: {discussion: '=', modal: '=?'}
   templateUrl: 'generated/components/discussion/form/discussion_form.html'
-  controller: ($scope, $location, Session, AbilityService, PrivacyString) ->
+  controller: ($scope, $location, Session, AbilityService, AttachmentService, PrivacyString) ->
     if $scope.discussion.isNew()
       $scope.showGroupSelect = true
       $scope.discussion.makeAnnouncement = true
@@ -25,3 +25,5 @@ angular.module('loomioApp').directive 'discussionForm', ->
     $scope.showPrivacyForm = ->
       return unless $scope.discussion.group()
       $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
+
+    AttachmentService.listenForAttachments $scope, $scope.discussion
