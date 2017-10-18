@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfig, Records, Session, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfig, Records, Session, SequenceService, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -39,6 +39,18 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
     optionByName: (poll, name) ->
       _.find poll.pollOptions(), (option) -> option.name == name
 
+    applyPollStartSequence: (scope, options = {}) ->
+      emitter = options.emitter or scope
+      SequenceService.applySequence emitter, ['choose', 'save', 'share'],
+        initialStep: if scope.poll.pollType then 'save' else 'choose'
+        emitter: emitter
+        chooseComplete: (_, pollType) ->
+          scope.poll.pollType = pollType
+        saveComplete: (_, poll) ->
+          if poll.group() then emitter.$emit '$close' else scope.poll = poll
+        shareComplete: ->
+          emitter.$emit '$close'
+
     submitOutcome: (scope, model, options = {}) ->
       actionName = if scope.outcome.isNew() then 'created' else 'updated'
       FormService.submit(scope, model, _.merge(
@@ -55,8 +67,15 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName}"
         drafts: true
-        prepareFn: ->
+        prepareFn: =>
           scope.$emit 'processing'
+          switch model.pollType
+            # for polls with default poll options (proposal, check)
+            when 'proposal', 'check'
+              model.pollOptionNames = _.pluck @fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
+            # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
+            else
+              scope.$broadcast 'addPollOption'
         failureCallback: ->
           ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->

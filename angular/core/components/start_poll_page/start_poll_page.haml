@@ -7,4 +7,7 @@
       .poll-common-start-poll__header.lmo-flex{ng-if: "startPollPage.poll.pollType"}
         %i.mdi{class: "{{ startPollPage.icon() }}"}
         %h2.lmo-card-heading.poll-common-card-header__poll-type{translate: "poll_types.{{startPollPage.poll.pollType}}"}
-      %poll_common_start_poll.lmo-flex__grow{poll: "startPollPage.poll"}
+      .poll-common-start-poll{ng-switch: "currentStep"}
+        %poll_common_choose_type.animated{ng-switch-when: "choose", poll: "poll"}
+        %poll_common_directive.animated{ng-switch-when: "save", poll: "poll", name: "form"}
+        %poll_common_share_form.animated{ng-switch-when: "share", poll: "poll"}

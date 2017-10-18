@@ -1,6 +1,9 @@
 .install-slack-decide-form
   %h2.lmo-h2{translate: "install_slack.decide.heading"}
   %p.lmo-hint-text{translate: "install_slack.decide.helptext", ng-if: "!poll.pollType"}
-  %poll_common_start_poll{poll: "poll"}
+  .poll-common-start-poll{ng-switch: "currentStep"}
+    %poll_common_choose_type.animated{ng-switch-when: "choose", poll: "poll"}
+    %poll_common_directive.animated{ng-switch-when: "save", poll: "poll", name: "form"}
+    %poll_common_share_form.animated{ng-switch-when: "share", poll: "poll"}
   .lmo-flex.install-slack-form__actions
-    %md-button{ng-if: "!poll.pollType", ng-click: "$emit('decideComplete')", translate: "install_slack.common.do_it_later"}
+    %md-button{ng-if: "!poll.pollType", ng-click: "$emit('nextStep')", translate: "install_slack.common.do_it_later"}

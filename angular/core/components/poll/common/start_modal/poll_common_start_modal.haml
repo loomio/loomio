@@ -7,8 +7,7 @@
       %material_modal_header_cancel_button
   %md-dialog-content.lmo-slide-animation{ng-switch: "currentStep"}
     %poll_common_choose_type.animated{ng-switch-when: "choose", poll: "poll"}
-    %poll_common_directive.animated{ng-switch-when: "save", poll: "poll", name: "form" modal: "true"}
+    %poll_common_directive.animated{ng-switch-when: "save", poll: "poll", name: "form", modal: "true"}
     %poll_common_share_form.animated{ng-switch-when: "share", poll: "poll", modal: "true"}
-  %md-dialog-actions{ng-switch: "currentStep"}
-    %poll_common_form_actions{ng-switch-when: "save", poll: "poll"}
-    %poll_common_share_actions{ng-switch-when: "share", poll: "poll"}
+  %md-dialog-actions{ng-if: "currentStep == 'save'"}
+    %poll_common_form_actions{poll: "poll"}

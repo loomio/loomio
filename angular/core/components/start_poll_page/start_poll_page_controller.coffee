@@ -10,9 +10,7 @@ angular.module('loomioApp').controller 'StartPollPageController', ($scope, $loca
   @icon = ->
     PollService.iconFor(@poll)
 
-  $scope.$on 'nextStep', (event, poll) ->
-    ModalService.open PollCommonShareModal, poll: -> poll
-
   LoadingService.listenForLoading $scope
+  PollService.applyPollStartSequence @, emitter: $scope
 
   return
