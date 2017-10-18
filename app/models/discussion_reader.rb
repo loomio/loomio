@@ -28,7 +28,6 @@ class DiscussionReader < ActiveRecord::Base
   def viewed!(ranges = [], persist: true)
     mark_as_read(ranges) unless has_read?(ranges)
     assign_attributes(last_read_at: Time.now)
-    EventBus.broadcast('discussion_reader_viewed!', self)
     save if persist
   end
 
@@ -44,7 +43,6 @@ class DiscussionReader < ActiveRecord::Base
 
   def dismiss!(persist: true)
     self.dismissed_at = Time.zone.now
-    EventBus.broadcast('discussion_reader_dismissed!', self)
     save if persist
   end
 

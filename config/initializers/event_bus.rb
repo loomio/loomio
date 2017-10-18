@@ -64,7 +64,9 @@ EventBus.configure do |config|
                      update_reader(volume: :loud) if event.discussion
   end
 
-  config.listen('discussion_reader_viewed!', 'discussion_reader_dismissed!') do |reader|
+  config.listen('discussion_mark_as_read',
+                'discussion_dismiss',
+                'discussion_mark_as_seen') do |reader|
     MessageChannelService.publish(
       DiscussionReaderSerializer.new(reader, root: :discussions).as_json,
       to: reader.user
