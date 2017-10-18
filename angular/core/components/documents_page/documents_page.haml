@@ -8,8 +8,8 @@
         %h2.lmo-h2.md-title{translate: "documents_page.title"}
         %md-button.md-primary.md-raised.documents-page__invite{ng-click: "documentsPage.addDocument()", ng-if: "documentsPage.canAdministerGroup()"}
           %span{translate: "documents_page.add_document"}
-      %p.lmo-hint-text{ng-if: "!documentsPage.group.hasDocuments()", translate: "documents_page.no_documents"}
-      .documents-page__documents{ng-if: "documentsPage.group.hasDocuments()"}
+      %p.lmo-hint-text{ng-if: "!documentsPage.group.hasDocuments(true)", translate: "documents_page.no_documents"}
+      .documents-page__documents{ng-if: "documentsPage.group.hasDocuments(true)"}
         %md-input-container.md-block.documents-page__search-filter{md-no-float: "true"}
           %input.membership-page__search-filter{ng-model: "documentsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "documentsPage.fetchDocuments()", placeholder: "{{'documents_page.fragment_placeholder' | translate}}"}
           %i.mdi.mdi-magnify

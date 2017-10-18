@@ -72,7 +72,7 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $window, $tim
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'
-      canPerform: -> AbilityService.canAdministerGroup($scope.discussion.group())
+      canPerform: -> AbilityService.canAdministerDiscussion($scope.discussion)
       perform:    -> ModalService.open DocumentModal, doc: ->
         Records.documents.build
           modelId:   $scope.discussion.id

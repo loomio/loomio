@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, For
     $scope.model.url = $scope.document.url or ''
 
     $scope.$on 'attachmentUploaded', (_, attachment) ->
-      $scope.document.url   = attachment.context
+      $scope.document.url   = attachment.original
       $scope.document.title = $scope.document.title || attachment.filename
 
     $scope.toggleForm = ->
