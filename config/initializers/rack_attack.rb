@@ -1,9 +1,4 @@
 class Rack::Attack
-  Rack::Attack.safelist('allow from localhost') do |req|
-    # Requests are allowed if the return value is truthy
-    '127.0.0.1' == req.ip || '::1' == req.ip
-  end
-
   Rack::Attack.throttled_response = lambda do |env|
     # NB: you have access to the name and other data about the matched throttle
     #  env['rack.attack.matched'],
@@ -32,6 +27,7 @@ class Rack::Attack
   {10 => 1.hour,
    20 => 1.day}.each_pair do |limit, period|
     Rack::Attack.throttle("groups#create", :limit => limit, :period => period) do |req|
+      puts "testing #{req}"
       req.ip if heavy.any? {|route| req.path.starts_with?(route)} && req.post?
     end
   end
