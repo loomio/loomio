@@ -7,6 +7,6 @@
       %p.install-slack-card__helptext.lmo-hint-text{translate: "install_slack.card.installed_helptext", translate-value-channel: "{{groupIdentity().slackChannelName()}}", translate-value-team: "{{groupIdentity().slackTeamName()}}"}
       %a.lmo-pointer{ng-if: "canRemoveIdentity()", ng-click: "remove()", translate: "install_slack.card.remove_identity"}
     %p.install-slack-card__helptext.lmo-hint-text{ng-if: "!groupIdentity()", translate: "install_slack.card.install_helptext"}
-  .lmo-actions
+  .lmo-md-actions
     %outlet{name: "install-slack-card-footer"}
     %md-button.md-primary.md-raised{translate: "install_slack.card.install_slack", ng-click: "install()", ng-if: "!groupIdentity()"}

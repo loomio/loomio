@@ -12,14 +12,14 @@
       %input.lmo-primary-form-input#password{name: "password", type: "password", md-autofocus: "true", ng-required: true, ng-model: "user.password"}
       %validation_errors{subject: "user", field: "password"}
 
-    .lmo-actions
+    .lmo-md-actions
       %md-button.auth-signin-form__login-link{ng-click: "sendLoginLink()", ng-class: "{'md-primary': !user.password}"}
         %span{translate: "auth_form.login_link"}
       %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "submit()", ng-disabled: "!user.password", ng-if: "user.hasPassword"}
         %span{translate: "auth_form.sign_in"}
 
   .auth-signin-form__no-password{ng-if: "!user.hasPassword"}
-    .lmo-actions
+    .lmo-md-actions
       %div
       %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "sendLoginLink()"}
         %span{translate: "auth_form.login_link"}
