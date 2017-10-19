@@ -1,4 +1,20 @@
 class Rack::Attack
+  Rack::Attack.safelist('allow from localhost') do |req|
+    # Requests are allowed if the return value is truthy
+    '127.0.0.1' == req.ip || '::1' == req.ip
+  end
+
+  Rack::Attack.throttled_response = lambda do |env|
+    # NB: you have access to the name and other data about the matched throttle
+    #  env['rack.attack.matched'],
+    #  env['rack.attack.match_type'],
+    #  env['rack.attack.match_data']
+
+    # Using 503 because it may make attacker think that they have successfully
+    # DOSed the site. Rack::Attack returns 429 for throttling by default
+    [ 429, {}, ["Throttled #{env['rack.attack.matched']} #{env['rack.attack.match_type']} #{env['rack.attack.match_data']}\n"]]
+  end
+
   heavy =  ['/api/v1/groups', '/api/v1/invitations/bulk_create']
 
   # considerations
