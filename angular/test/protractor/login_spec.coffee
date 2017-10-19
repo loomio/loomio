@@ -1,6 +1,22 @@
 describe 'Login', ->
   page = require './helpers/page_helper.coffee'
 
+  describe 'via token', ->
+    it 'can login via token', ->
+      page.loadPath 'setup_login_token'
+      page.click '.auth-signin-form__submit'
+      page.waitForReload()
+      page.expectFlash 'Signed in successfully'
+
+    it 'does not log in an invalid token', ->
+      page.loadPath 'setup_used_login_token'
+      page.click '.auth-signin-form__submit'
+      page.expectText '.lmo-validation-error__message', 'Click below to send another one'
+      page.click '.auth-signin-form__submit'
+      page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
+      page.expectFlash 'Signed in successfully'
+
   describe 'via password', ->
     it 'does not log in when password is incorrect', ->
       page.loadPath 'setup_explore_as_visitor'
@@ -86,6 +102,7 @@ describe 'Login', ->
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
       page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.dashboard-page', 'Recent Threads'
 
@@ -97,6 +114,7 @@ describe 'Login', ->
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
       page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.dashboard-page', 'Recent Threads'
 
@@ -109,6 +127,7 @@ describe 'Login', ->
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
       page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.explore-page', 'Explore groups'
 
@@ -119,6 +138,7 @@ describe 'Login', ->
       page.click '.auth-email-form__submit'
       page.click '.auth-signin-form__submit'
       page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectElement '.comment-form__submit-button'
 
@@ -127,6 +147,7 @@ describe 'Login', ->
       page.click '.auth-email-form__submit'
       page.click '.auth-signin-form__submit'
       page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
 
@@ -140,6 +161,7 @@ describe 'Login', ->
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
       page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.dashboard-page', 'Recent Threads'
 
@@ -151,6 +173,7 @@ describe 'Login', ->
       page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
       page.click '.auth-signup-form__submit'
       page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.context-panel__heading', 'I carried a watermelon'
       page.click '.comment-form__join-actions button'
@@ -166,6 +189,7 @@ describe 'Login', ->
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
       page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
 
@@ -175,6 +199,7 @@ describe 'Login', ->
       page.expectText '.auth-form', 'Nice to meet you, Max Von Sydow'
       page.click '.auth-signup-form__submit'
       page.loadPath 'use_last_login_token'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
 

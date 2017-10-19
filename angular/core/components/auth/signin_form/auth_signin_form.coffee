@@ -6,7 +6,10 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate, $window, Se
     $scope.signIn = ->
       $scope.$emit 'processing'
       AuthService.signIn($scope.user).then (->), ->
-        $scope.user.errors = {password: [$translate.instant('auth_form.invalid_password')] }
+        $scope.user.errors = if $scope.user.hasToken
+          { token:    [$translate.instant('auth_form.invalid_token')] }
+        else
+          { password: [$translate.instant('auth_form.invalid_password')] }
         $scope.$emit 'doneProcessing'
 
     $scope.sendLoginLink = ->
@@ -14,7 +17,7 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate, $window, Se
       AuthService.sendLoginLink($scope.user).finally -> $scope.$emit 'doneProcessing'
 
     $scope.submit = ->
-      if $scope.user.hasPassword
+      if $scope.user.hasPassword or $scope.user.hasToken
         $scope.signIn()
       else
         $scope.sendLoginLink()
