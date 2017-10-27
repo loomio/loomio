@@ -19,7 +19,7 @@ end
 
 module Loomio
   class Application < Rails::Application
-    config.middleware.use Rack::Attack if ENV['USE_RACK_ATTACK']
+    config.middleware.use Rack::Attack if ENV.fetch['USE_RACK_ATTACK']
     config.active_job.queue_adapter = :delayed_job
 
     config.generators do |g|
@@ -114,7 +114,7 @@ module Loomio
     config.action_mailer.default_url_options = config.action_controller.default_url_options = {
       host:     ENV['CANONICAL_HOST'],
       port:     ENV['CANONICAL_PORT'],
-      protocol: (ENV['FORCE_SSL'] || ENV['PREFER_SSL']) ? 'https' : 'http'
+      protocol: ENV['FORCE_SSL'] ? 'https' : 'http'
     }.compact
 
     config.action_mailer.asset_host = lmo_asset_host
