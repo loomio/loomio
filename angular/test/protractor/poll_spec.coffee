@@ -53,7 +53,7 @@ describe 'Polls', ->
     page.loadPath 'polls/test_proposal_poll_closed'
     page.click '.poll-common-set-outcome-panel__submit'
 
-    page.fillIn '.poll-common-outcome-form__statement', 'This is an outcome'
+    page.fillIn '.poll-common-outcome-form__statement textarea', 'This is an outcome'
     page.click  '.poll-common-outcome-form__submit'
 
     page.expectText '.poll-common-outcome-panel', 'This is an outcome'
@@ -62,7 +62,7 @@ describe 'Polls', ->
     page.loadPath 'polls/test_meeting_poll_closed'
     page.click '.poll-common-set-outcome-panel__submit'
 
-    page.fillIn '.poll-common-outcome-form__statement', 'Here is a statement'
+    page.fillIn '.poll-common-outcome-form__statement textarea', 'Here is a statement'
     page.fillIn '.poll-common-calendar-invite__summary', 'This is a meeting title'
     page.fillIn '.poll-common-calendar-invite__location', '123 Any St, USA'
     page.fillIn '.poll-common-calendar-invite__description', 'Here is a meeting agenda'
@@ -96,7 +96,7 @@ describe 'Polls', ->
 
     page.click '.poll-common-set-outcome-panel__submit'
 
-    page.fillIn '.poll-common-outcome-form__statement', 'This is an outcome'
+    page.fillIn '.poll-common-outcome-form__statement textarea', 'This is an outcome'
     page.click  '.poll-common-outcome-form__submit'
 
     page.expectText '.poll-common-outcome-panel', 'This is an outcome'

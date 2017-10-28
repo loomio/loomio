@@ -23,7 +23,7 @@ class API::EventsController < API::RestfulController
   end
 
   def sequence_id_for(collection)
-    sequence_id_for_comment(collection) || params[:from] || 0
+    sequence_id_for_comment(collection) || params[:from].to_i
   end
 
   def sequence_id_for_comment(collection)

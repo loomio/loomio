@@ -22,6 +22,7 @@ describe 'Verify Stances', ->
 
       page.expectText('.sidebar__user-name', 'Verified User')
       page.click ".verify-stances-page__verify"
+      page.click '.auth-signin-form__submit'
       page.expectFlash "Vote verified"
 
   describe 'private poll vote as logged out new user, then verify vote', ->
@@ -41,5 +42,6 @@ describe 'Verify Stances', ->
       page.clickFirst("a")
       page.sleep(3000)
 
+      page.click '.auth-signin-form__submit'
       page.expectText('.sidebar__user-name', 'Jimmy New Person')
       page.expectNoElement ".verify-email-notice"
