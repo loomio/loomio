@@ -2,7 +2,13 @@ de:
   poll_types:
     proposal: Vorschlag
     poll: Umfrage
+    dot_vote: Punktabstimmung
+    meeting: Terminvereinbarung
+    ranked_choice: Gewichtete Auswahl
   common:
+    you: Du
+    expand: Erweitern
+    all_day: ganztägig
     ok_got_it: Ok, verstanden
     learn_more: Mehr erfahren
     not_found: Nicht gefunden
@@ -14,7 +20,7 @@ de:
     closing_in: 'Endet um {{time}}'
     closed_ago: 'Endete um {{time}}'
     volume: 'Lautstärke'
-    notification_volume: 'Benachritigungslautstärke'
+    notification_volume: 'Benachrichtigungslautstärke'
     group: 'Gruppe'
     groups: 'Gruppen'
     threads: 'Diskussionsbeiträge'
@@ -41,6 +47,8 @@ de:
     copy: 'Kopieren'
     copy_text: 'Text kopieren'
     copied: 'In die Zwischenablage kopiert'
+    points_abbrev: 'Jede Stimme ist {{score}} Punkte wert'
+    total: Gesamt
     action:
       next: 'Nächstes'
       close: 'Schließen'
@@ -71,6 +79,27 @@ de:
       done: Erledigt
       start: Start
       delete: Löschen
+      unsubscribe: Abmelden
+      subscribe: Beitreten
+      remind: Erinnern
+      resend: Neu senden
+      send: Senden
+      resent: Einladung erneut versendet
+    formatting_help:
+      label: 'Formatierung'
+      title: 'Lerne, wie Du deinen Text mit Markdown formatieren kannst.'
+
+  ordinal:
+    _1: 1.
+    _2: 2.
+    _3: 3.
+    _4: 4.
+    _5: 5.
+    _6: 6.
+    _7: 7.
+    _8: 8.
+    _9: 9.
+    _10: 10.
   devise:
     failure:
       inactive: 'Diese Email-Adresse ist mit einem deaktivierten Account verknüpft. Wenn Sie den Account wieder aktivieren möchten, nehmen Sie Kontakt mit uns auf.'
@@ -102,22 +131,27 @@ de:
     membership:
       title: "eMail-Einstellungen für {{title}}"
       loud_description: "Du wirst benachrichtigt, sobald in dieser Gruppe etwas passiert."
+      normal_description: "Du wirst nur über Ankündigungen in dieser Gruppe benachrichtigt."
       quiet_description: "Du wirst über keine Meldungen in dieser Gruppe benachrichtigt."
       apply_to_all: "Diese Einstellungen für alle meine Gruppen übernehmen."
       messages:
         loud: "Du wirst über alles per eMail benachrichtigt, sobald in dieser Gruppe etwas passiert."
+        normal: "Du wirst nur über Ankündigungen in dieser Gruppe benachrichtigt."
         quiet: "Du wirst über nichts in dieser Gruppe benachrichtigt."
     all_groups:
       messages:
         loud: "Du wirst über alles per eMail benachrichtigt, sobald in einer Deiner Gruppen etwas passiert."
+        normal: "Du wirst nur über Ankündigungen in allen deinen Gruppen benachrichtigt."
         quiet: "Du wirst über nichts in Deinen Gruppen benachrichtigt."
     user:
       title: E-Mail-Einstellungen für neue Gruppen
       loud_description: "Du wirst benachrichtigt, sobald in Gruppen, denen Du beitrittst, etwas passiert."
+      normal_description: "Du wirst über Ankündigungen in allen Gruppen benachrichtigt, denen du beitrittst."
       quiet_description: "Du wirst über nichts in Gruppen benachrichtigt, denen Du beitrittst."
       apply_to_all: "Diese Einstellungen für alle meine Gruppen übernehmen."
       messages:
         loud: "Du wirst per eMail über alle Aktivitäten in Deinen neuen Gruppen benachrichtigt."
+        normal: "Du wirst über Ankündigungen in deinen neuen Gruppen benachrichtigt."
         quiet: "Du wirst über nichts aus Deinen neuen Gruppen benachrichtigt."
   mute_explanation_modal:
     mute_thread: Diskussion stumm schalten
@@ -132,6 +166,7 @@ de:
   signed_out_modal:
     aria_label: 'Sitzung beendet'
     title: "Deine Sitzung wurde beendet"
+    message: "Deine Sitzung wurde in einem anderen Fenster beendet. Bitte melde dich neu an um fortzufahren."
     ok: "Ok"
   comment_form:
     aria_label: 'Kommentar hinzufügen'
@@ -153,6 +188,9 @@ de:
     public_privacy_notice: 'Dein Kommentar wird für alle im Web sichtbar sein.'
     sign_in: "Melde Dich an, um an der Diskussion teilzunehmen"
   sidebar:
+    recent_threads: 'Aktuelle Themen'
+    unread_threads: 'Ungelesene Themen ({{count}})'
+    muted_threads: 'Stumm geschaltete Themen'
     start_group: 'Neue Gruppe'
     explore: 'Öffentliche Gruppen'
     edit_profile: 'Profil bearbeiten'
@@ -191,7 +229,34 @@ de:
   notifications:
     header: "Benachrichtigungen"
     no_notifications: "Du hast keine Benachrichtigungen"
+    new_discussion: "<strong>{{name}}</strong> hat die Diskussion <strong>{{title}}</strong> begonnen."
+    new_motion: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{title}}</strong> erstellt"
+    motion_closed: "Vorschlag geschlossen: <strong>{{title}}</strong>"
     publish_outcome: "Ergebnis bekanntgeben"
+    motion_closed_by_user: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{title}}</strong> geschlossen"
+    motion_closed_by_expiry: "Der Vorschlag <strong>{{title}}</strong> wurde geschlossen"
+    new_vote: "<strong>{{name}}</strong> {{position}} zum Vorschlag <strong>{{title}}</strong>"
+    new_comment: "<strong>{{name}}</strong> an <strong>{{title}}</strong> kommentiert"
+    comment_replied_to: "<strong>{{name}}</strong> hat auf deinen Kommmentar in <strong>{{title}}</strong> geantwortet"
+    reaction_created: "<strong>{{name}}</strong> reagierte mit <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> auf deinen Kommentar in <strong>{{title}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> hat dich in <strong>{{title}}</strong> erwähnt"
+    user_reminded: "<strong>{{name}}</strong> wartet darauf, dass du an <strong>{{title}}</strong> teilnimmst"
+    membership_requested: "<strong>{{name}}</strong> hat die Mitliedschaft in <strong>{{title}}</strong> beantragt"
+    membership_request_approved: '<strong>{{name}}</strong> hat deine Mitgliedsanfrage in <strong>{{title}}</strong> angenommen'
+    user_added_to_group: "<strong>{{name}}</strong> hat dich zur Gruppe <strong>{{title}}</strong> hinzugefügt"
+    user_added_to_group_no_inviter: "Du wurdest zur Gruppe <strong>{{title}}</strong> hinzugefügt"
+    motion_closing_soon: "Der Vorschlag wird bald beendet: <strong>{{title}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong> hat ein Ergebnis für den Vorschlag <strong>{{title}}</strong> veröffentlicht"
+    motion_outcome_updated: "<strong>{{name}}</strong> hat das Ergebnis für den Vorschlag <strong>{{title}}</strong> bearbeitet"
+    invitation_accepted: "<strong>{{name}}</strong> hat deine Einladung zur Gruppe <strong>{{title}}</strong> angenommen"
+    new_coordinator: "<strong>{{name}}</strong> hat dich zum Koordinator von <strong>{{title}}</strong> gemacht"
+    poll_created: "<strong>{{name}}</strong> hat einen {{poll_type}} angelegt: <strong>{{title}}</strong>"
+    poll_edited: "<strong>{{name}}</strong> hat einen {{poll_type}} bearbeitet: <strong>{{title}}</strong>"
+    poll_closing_soon: "{{poll_type}} wird bald beendet: <strong>{{title}}</strong>"
+    poll_expired: "{{poll_type}} geschlossen: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> hat eine Option zu {{poll_type}} hinzugefügt: <strong>{{title}}</strong>"
+    outcome_created: "<strong>{{name}}</strong> hat ein Ergebnis geteilt: <strong>{{title}}</strong>"
+    stance_created: "<strong>{{name}}</strong> hat an <strong>{{title}}</strong> teilgenommen"
   position_buttons_panel:
     heading: Komme zu Wort
   extend_proposal_form:
