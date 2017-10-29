@@ -42,14 +42,6 @@ ca:
     terms: Condicions
   password_reset:
     forbidden_passwords: Les contrasenyes com "password" estan prohibides per raons de seguretat.
-  contact_page:
-    contact_us: Contacteu
-    contact_form: Formulari de contacte
-    labels:
-      name: El teu nom
-      email: Adreça de correu
-      message: El teu missatge
-      submit: Envia el missatge
   markdown:
     paragraphs:
       title: |

@@ -22,12 +22,3 @@ an:
     pricing: Pres
     public_groups: Grupos Publicos
     terms: Termens
-  contact_page:
-    contact_us: Contacta con nusatros
-    labels:
-      name: O tuyo nombre
-      email: O tuyo correu electronico
-      message: O tuyo mensache
-      submit: Ninviar mensache
-    messages:
-      email_html: "Replena iste formulario u ninvia un correu electronico a <a href='mailto:%{email}'>%{email}</a>"

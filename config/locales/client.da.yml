@@ -566,7 +566,6 @@ da:
   deactivate_user_form:
     aria_label: 'Bekræft deaktiver konto'
     title: 'Deaktiver konto'
-    placeholder: 'Du behøver ikke at svar poå dette spørgsmål. Al information som du deler vil hjælpe os at gøre Loomio bedre :)'
     submit: 'Deaktiver konto'
   only_coordinator_modal:
     aria_label: 'Kan ikke deaktivere konto'

@@ -30,18 +30,6 @@ it:
   password_reset:
     length_restriction: Le password devono essere lunghe almeno 8 caratteri.
     forbidden_passwords: Le password banali come "password" sono vietate per tenere al sicuro il vostro account.
-  contact_page:
-    contact_us: Contattaci
-    faq_prompt_html: Hai una domanda per il team di Loomio? Prima di contattarci, potresti trovare la risposta tra le domande frequenti (FAQ)
-    contact_information: Se non trovi quello che stai cercando, puoi trovare le informazioni di contatto in fondo alla pagina.
-    contact_form: Modulo di contatto
-    labels:
-      name: Nominativo
-      email: Indirizzo email
-      message: Messaggio
-      submit: Invia messaggio
-    messages:
-      email_html: "Riempi questo modulo, o manda un'email a <a href='mailto:%{email}'>%{email}</a>"
   poll_mailer:
     common:
       results: Risultati

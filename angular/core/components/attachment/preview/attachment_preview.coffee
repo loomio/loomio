@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'attachmentPreview', ->
   scope: { attachment: '=', mode: '@'}
   restrict: 'E'
-  templateUrl: 'generated/components/attachment_preview/attachment_preview.html'
+  templateUrl: 'generated/components/attachment/preview/attachment_preview.html'
   replace: true
   controller: ($scope, $rootScope) ->
     $scope.destroy = (event) ->

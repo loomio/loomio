@@ -103,6 +103,12 @@ describe PollService do
         }.to_not change { Event.where(kind: :poll_created).count }
       end
 
+      it 'does not create a poll_created event for trivial updates' do
+        expect {
+          PollService.update(poll: poll_created, params: { anyone_can_participate: true }, actor: user)
+        }.to_not change { Event.where(kind: :poll_created).count }
+      end
+
       it 'makes an announcement to participants if make_announcement is true' do
         stance
         expect {

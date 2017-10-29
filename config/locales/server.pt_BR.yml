@@ -63,9 +63,6 @@ pt_BR:
     error:
       all_email_addresses_belong_to_members: "Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo."
   password_reset:
-    email_guidelines_html: |
-      <p>Insira o endereço de e-mail da sua conta Loomio no campo abaixo e ser-lhe-à enviado um link de redefinição de senha.</p>
-      <p>Se você normalmente entra via Facebook, Google, Twitter ou Persona, digite o endereço de e-mail associado a essa conta.</p>
     reset_email_timeframe: Poderá demorar até 5 minutos para o e-mail chegar. Se não aparecer, certifique-se de verificar sua pasta de spam.
     length_restriction: Senhas devem ter pelo menos 8 caracteres.
     forbidden_passwords: Senhas comuns como, por exemplo, “senha” são proibidas para manter a sua conta segura.
@@ -106,19 +103,6 @@ pt_BR:
       Às vezes, grupos funcionam por meio de uma **série de propostas** para construir soluções conjuntas. Você pode criar propostas em série neste tópico.
 
       **Tente participar! Clique em um dos quatro botões**.
-  contact_page:
-    contact_us: Contato
-    faq_prompt_html: Tem uma pergunta para a equipe Loomio? Antes de entrar em contato conosco, talvez você encontre a resposta na nossa seção de perguntas frequentes.
-    contact_information: Se você não achar o que está procurando, você pode encontrar o nosso contato para informações na parte inferior da página.
-    contact_form: Formulário de contato
-    labels:
-      name: Seu nome
-      email: Seu endereço de e-mail
-      message: Sua mensagem
-      submit: Enviar mensagem
-    messages:
-      email_html: "Preencha esse formulário ou envie um e-mail para <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Você também pode se juntar a nós no<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, e <a href='%{twitter}' target='_blank'>twitter</a>!"
   markdown:
     intro:
       title: |

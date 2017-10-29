@@ -579,6 +579,10 @@ en:
     poll_closing_soon: "Reminder: *%{poll}* is closing in 24 hours"
     poll_expired: "*%{poll}* has closed"
     poll_not_found: "Sorry, that poll was not found. Type '/loomio <poll_type> <title>' to start another one?"
+    unknown_channel: |
+      Sorry, it looks like there's not a loomio group associated with this channel.
+      Try running '/loomio' in one of the following channels instead?
+      %{integrations}
     stance_not_valid: "Sorry, we weren't able to create a stance for *%{poll}*. <%{url}|Click here> to vote on the poll directly."
     group_identity_created: |
       Hello, I'm Loomio Bot! *%{author}* added me.
