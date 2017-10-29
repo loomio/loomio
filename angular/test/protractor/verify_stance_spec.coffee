@@ -1,6 +1,6 @@
 _ = require('lodash')
 
-describe 'Verify Stances', ->
+xdescribe 'Verify Stances', ->
   page = require './helpers/page_helper.coffee'
 
   describe 'private poll vote as logged out existing user, then verify vote', ->
