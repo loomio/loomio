@@ -36,7 +36,7 @@ describe API::SessionsController do
       it 'does not sign in a user with an invalid token id' do
         session[:pending_token] = 'notatoken'
         post :create
-        expect(response.status).to eq 404
+        expect(response.status).to eq 401
       end
 
       it 'finds a verified user to sign in' do
