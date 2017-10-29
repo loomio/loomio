@@ -17,12 +17,3 @@ mk:
     pricing: Ценовник
     public_groups: Јавни групи
     terms: Услови
-  contact_page:
-    contact_us: Контактирајте не
-    labels:
-      name: Твоето име
-      email: Твојата електронска пошта
-      message: Твојата порака
-      submit: Испрати порака
-    messages:
-      email_html: "Пополни ја формава, или испрати email до <a href='mailto:%{email}'>%{email}</a>"

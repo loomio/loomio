@@ -45,6 +45,7 @@ zh_TW:
       <p>您為您的群組 <a href="/g/%{group_key}">%{group}</a> 選擇了免費方案</p>
   user_mailer:
     accounts_merged:
+      subject: "您的 %{site_name} 使用者帳號已經合併。"
       body_html: |
         %{name} 您好，
         您的兩個 Loomio 帳號已經合併為一個。
@@ -56,6 +57,7 @@ zh_TW:
       login: 以 %{name} 的身份登入
       resend: 這個連結將會在24小時後過期且僅可使用一次。
     contact_request:
+      subject: "%{name} 想要與您在 %{site_name} 上連線！"
       intro: "%{name} (%{email}) 已經傳送給您一個連線的請求。"
       footer: "您可以透過回覆此封電子郵件來直接回應到 %{name}。"
     reset_password:
@@ -82,6 +84,7 @@ zh_TW:
       intro: "%{who} 在 %{group}裡發布了一則公告："
     by_who: '%{person}'
     reply_to_this_discussion: 回應此討論串
+    value_proposition: "%{site_name} 是一個讓群組共同做出決策的地方"
     view_group: 檢視群組
     to_join_group:
       subject: "%{member} 已邀請您加入在 %{site_name} 上的 %{group_name}"
@@ -155,8 +158,8 @@ zh_TW:
     confirm_new_password: 確認密碼
     new_password: 新密碼
     email_guidelines_html: |
-      <p>在下面的欄位中填入您 Loomio 帳號的電子郵件地址，然後您將會收到一個密碼的重置連結。</p>
-      <p>如果您是透過 Facebook、Google、Twitter 或是 Persona 登入的話，請輸入與這些帳號相關聯的電子郵件地址。</p>
+      <p>輸入您的電子郵件，然後您將會收到密碼重設連結。</p>
+      <p>若您透過 Facebook 或 Googld 登入，請輸入與帳號相關聯的電子郵件。</p>
     reset_email_timeframe: 這將會花費 5 分鐘的時間將電子郵件寄到。如果沒有出現，請務必檢查您的垃圾信資料夾。
     length_restriction: 密碼應至少 8 個字元長。
     forbidden_passwords: 常見的密碼，像是「password」將會被拒絕以保護您的帳號安全。
@@ -197,19 +200,6 @@ zh_TW:
       群組有時會透過**一系列的提案**來共同建構解決方案。您可以在此討論串提出連續的提案。
 
       **試著參與吧！點選四個按鈕的其中一個**。
-  contact_page:
-    contact_us: 聯絡我們
-    faq_prompt_html: 對 Loomio 團隊有任何問題？在聯絡我們之前，您應該先在我們的常見問題中找尋答案。
-    contact_information: 如果您找不到您想找的東西，您可以在這個頁面的底部找到我們的聯絡資訊。
-    contact_form: 聯絡表單
-    labels:
-      name: 您的大名
-      email: 您的電子郵件地址
-      message: 您的訊息
-      submit: 寄送訊息
-    messages:
-      email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "您也可以在<br/><a href='%{facebook}' target='_blank'>facebook</a>、<a href='%{google}' target='_blank'>google+</a> 與 <a href='%{twitter}' target='_blank'>twitter</a> 上加入我們！"
   markdown:
     intro:
       title: |

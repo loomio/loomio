@@ -307,7 +307,6 @@ es:
     new_vote: "<strong>{{name}}</strong> {{position}} a la propuesta <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> ha comentado en <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha contestado a tu comentario en <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> ha reaccionado a tu comentario en <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> te ha mencionado en <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> esta esperando que participes en <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ha solicitado unirse a <strong>{{title}}</strong>"

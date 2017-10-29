@@ -18,13 +18,3 @@ ko:
     pricing: 가격표
     public_groups: 공개 그룹
     terms: 정책
-  contact_page:
-    contact_us: 연락하기
-    contact_form: 연락처양식
-    labels:
-      name: 이름
-      email: 이메일 주소
-      message: 메시지
-      submit: 메시지 보내기
-    messages:
-      email_html: "양식을 채우거나 <a href='mailto:%{email}'>%{email}</a> 로 이메일을  보내세요."

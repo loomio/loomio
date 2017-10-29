@@ -27,16 +27,6 @@ el:
   password_reset:
     length_restriction: Οι κωδικοί πρέπει να είναι τουλάχιστον 8 χαρακτήρες.
     forbidden_passwords: Κοινοί κωδικοί όπως "password" απαγορεύονται για να προστατευτεί ο λογαριασμός σου.
-  contact_page:
-    contact_us: Επικοινωνήστε με μας
-    contact_form: Φόρμα επικοινωνίας
-    labels:
-      name: Το όνομα σας
-      email: Η Ηλεκτρονική Διεύθυνση σας
-      message: Το μήνυμα σας
-      submit: Αποστολή μηνύματος
-    messages:
-      email_html: "Συμπληρώστε αυτή την φόρμα, ή στείλτε ηλεκτρονικό μήνυμα στο <a href='mailto:%{email}'>%{email}</a>"
   poll_mailer:
     common:
       unsubscribe: Κατάργηση εγγραφής

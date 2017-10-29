@@ -5,6 +5,6 @@
   .current-polls-card__polls{ng-if: "!fetchRecordsExecuting"}
     .current-polls-card__no-polls.lmo-hint-text{ng-if: "!polls().length", translate: "current_polls_card.no_polls"}
     %poll_common_preview{poll: "poll", ng-repeat: "poll in polls() track by poll.id"}
-  .lmo-actions
+  .lmo-md-actions
     .buh
     %md-button.md-primary.md-raised.current-polls-card__start-poll{ng-click: "startPoll()", ng-if: "canStartPoll()", translate: "current_polls_card.start_poll"}

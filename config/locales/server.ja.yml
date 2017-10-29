@@ -16,12 +16,3 @@ ja:
     pricing: 価格設定
     public_groups: 公開グループ
     terms: 使用条件
-  contact_page:
-    contact_us: 問い合わせをする
-    labels:
-      name: あなたの名前
-      email: あなたのメールアドレス
-      message: あなたのメッセージ
-      submit: メッセージを送る
-    messages:
-      email_html: "このフォームを埋めてください、もしくは <a href='mailto:%{email}'>%{email}</a> にメールを送ってください"

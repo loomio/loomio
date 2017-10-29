@@ -10,8 +10,3 @@ te:
     pricing: ధర
     public_groups: బహిరంగ సమూహాలు
     terms: షరతులు
-  contact_page:
-    labels:
-      name: మీ పేరు
-      email: మీ ఈమెయిలు చిరునామా
-      message: మీ సందేశం

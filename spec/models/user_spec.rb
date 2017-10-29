@@ -98,6 +98,22 @@ describe User do
     user.should have(0).errors_on(:email)
   end
 
+  it "email can be duplicated for non-email verified accounts" do
+    create(:user, email: 'example@example.com', email_verified: false)
+    user = build(:user, email: 'example@example.com', email_verified: false)
+    expect(user).to be_valid
+    user.email_verified = true
+    expect(user).to be_valid
+  end
+
+  it "email cannot be duplicated for email verified accounts" do
+    create(:user, email: 'example@example.com', email_verified: true)
+    user = build(:user, email: 'example@example.com', email_verified: false)
+    expect(user).to be_valid
+    user.email_verified = true
+    expect(user).to_not be_valid
+  end
+
   it "has many groups" do
     group.add_member!(user)
     user.groups.should include(group)

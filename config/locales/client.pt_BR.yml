@@ -503,7 +503,6 @@ pt_BR:
   deactivate_user_form:
     aria_label: 'Confirmação de desativação da conta'
     title: 'Desativar conta'
-    placeholder: 'Responder esta pergunta é opcional. Qualquer informação que você compartilhar nos ajudará a melhorar o Loomio :)'
     submit: 'Desativar conta'
   only_coordinator_modal:
     aria_label: 'Não foi possível desativar a conta'

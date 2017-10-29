@@ -47,9 +47,6 @@
               -# .discussion-form__make-announcement-subtitle{translate: "discussion_form.notified_count", ng-if: "discussion.makeAnnouncement", translate-values: "{count: discussion.group().announcementRecipientsCount}"}
 
         .lmo-md-actions
-          %div
-          .lmo-actions
-            %outlet{name: "before-discussion-submit", model: "discussion"}
-            %md-button.md-primary.md-raised.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "common.action.start", ng-if: "discussion.isNew()" }
-            %md-button.md-primary.md-raised.discussion-form__update{type: "submit", ng-disabled: "submitIsDisabled", translate: "common.action.save", ng-if: "!discussion.isNew()" }
-        %validation_errors.discussion-form__attachment-errors{subject: "discussion", field: "file"}
+          %outlet{name: "before-discussion-submit", model: "discussion"}
+          %md-button.md-primary.md-raised.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "common.action.start", ng-if: "discussion.isNew()" }
+          %md-button.md-primary.md-raised.discussion-form__update{type: "submit", ng-disabled: "submitIsDisabled", translate: "common.action.save", ng-if: "!discussion.isNew()" }

@@ -28,13 +28,3 @@ sv:
     pricing: Prissättning
     public_groups: Öppna grupper
     terms: Villkor
-  contact_page:
-    contact_us: Kontakta oss
-    contact_form: Kontaktformulär
-    labels:
-      name: Ditt namn
-      email: Din emailadress
-      message: Ditt meddelande
-      submit: Skicka meddelande
-    messages:
-      email_html: "Fyll i detta formulär, eller skicka ett email till <a href='mailto:%{email}'>%{email}</a>"

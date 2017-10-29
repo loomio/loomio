@@ -67,9 +67,6 @@ de:
     error:
       all_email_addresses_belong_to_members: "Wir haben keine Einladungen an die angegebenen E-Mail-Adressen versandt, da sie Personen gehören, die bereits an der Gruppe teilnehmen."
   password_reset:
-    email_guidelines_html: |
-      <p>Gib die eMail-Adresse Deines Loomio-Konto's in das untenstehende Feld ein und Du bekommst einen Link zugesandt, um dein Passwort zurückzusetzen.</p>
-      <p>Falls du dich üblicherweise mit Facebook, Google, Twitter oder Persona einloggst, gib die entsprechende eMail-Adresse ein.</p>
     reset_email_timeframe: Es wird bis zu 5 Minuten dauern, bis die eMail Dich erreicht. Bitte prüfe gegebenenfalls auch Deinen Spam-Ordner.
     length_restriction: Passwörter müssen mindestens 8 Zeichen enthalten.
     forbidden_passwords: Um Dein Konto sicher zu gestalten, sind einfache Passwörter, wie "passwort" und ähnliches verboten.
@@ -111,19 +108,6 @@ de:
       Manchmal arbeitet sich eine Gruppe durch eine **Reihe von Vorschlägen**, um zu einer gemeinsamen Lösung zu kommen. Zu einem Thema kannst du eine Reihe von Vorschlägen einreichen.
 
       **Versuche teilzunehmen! Klicke einen der vier Knöpfe**.
-  contact_page:
-    contact_us: Kontaktiere uns
-    faq_prompt_html: 'Du hast eine Frage an das Loomio Team? Bevor Du uns kontaktierst, prüfe, ob Du die Antwort in unseren meistgestellten Fragen (faq''s) findest. '
-    contact_information: Wenn Du nichts gefunden hast, findest Du unsere Kontaktinformationen am Ende dieser Seite
-    contact_form: Kontaktformular
-    labels:
-      name: Dein Name
-      email: Deine eMail-Adresse
-      message: Deine Nachricht
-      submit: Nachricht abschicken
-    messages:
-      email_html: "Fülle dieses Formular aus oder schicke eine eMail an <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Du findest uns auch auf <br/><a href='%{facebook}' target='_blank'>Facebook</a>, <a href='%{google}' target='_blank'>Google+</a> und <a href='%{twitter}' target='_blank'>Twitter</a>!"
   markdown:
     intro:
       title: |+
