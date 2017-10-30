@@ -1,10 +1,10 @@
 _ = require('lodash')
 
-describe 'Verify Stances', ->
+xdescribe 'Verify Stances', ->
   page = require './helpers/page_helper.coffee'
 
   describe 'private poll vote as logged out existing user, then verify vote', ->
-    it "creates unverified stance then assigns it to verified user", ->
+    xit "creates unverified stance then assigns it to verified user", ->
       page.loadPath('polls/test_invitation_to_vote_in_poll')
 
       page.click('.poll-mailer__poll-title')
@@ -26,7 +26,7 @@ describe 'Verify Stances', ->
       page.expectFlash "Vote verified"
 
   describe 'private poll vote as logged out new user, then verify vote', ->
-    it "creates unverified stance then verifies the user", ->
+    xit "creates unverified stance then verifies the user", ->
       page.loadPath('polls/test_invitation_to_vote_in_poll')
       page.click('.poll-mailer__poll-title')
       page.sleep(3000)

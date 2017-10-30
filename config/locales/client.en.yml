@@ -787,6 +787,7 @@ en:
     edit: Edit
     messages:
       updated: Email settings updated
+    learn_more: Learn more about email settings...
 
   dashboard_page:
     aria_label: 'Dashboard'

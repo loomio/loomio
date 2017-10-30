@@ -25,7 +25,7 @@ module PendingActionsHelper
   end
 
   def pending_token
-    @pending_token_user ||= LoginToken.find_by!(token: session[:pending_token]) if session[:pending_token]
+    @pending_token_user ||= LoginToken.where.not(user_id: current_user.id).find_by!(token: session[:pending_token]) if session[:pending_token]
   end
 
   def pending_invitation

@@ -7,9 +7,9 @@ class API::SessionsController < Devise::SessionsController
       flash[:notice] = t(:'devise.sessions.signed_in')
       render json: BootData.new(user).data
     else
-      session.delete(:pending_token)
       render json: { errors: { password: [t(:"devise.failure.invalid")] } }, status: 401
     end
+    session.delete(:pending_token)
   end
 
   def destroy

@@ -1,25 +1,186 @@
 fa_IR:
+  reactions:
+    slight_smile: دوست داشتن
+    heart: عشق
+    laughing: خنده
+    clap: دست زدن
+    hugging: بغل کردن
+    sunglasses: باحال
+    nerd: باهوش
+    worried: نگران
+    confused: حیران
+    neutral_face: طبیعی
+    disappointed: نا امید
+    angry: عصبانی
+    cry: گریه
+    scream: جیغ
+    sleeping: یک نواختی
+    thinking: در حال تفکر
+    pray: عبادت
+    v: صلح
+    ok_hand: باشه!
+    wave: دست تکان دادن
+  poll_types:
+    poll: نظرسنجی
   common:
+    you: شما
+    ok_got_it: باشه، فهمیدم!
+    learn_more: اطلاعات بیشتر
+    not_found: پیدا نشد
+    time_zone: بازه زمانی
+    local_time: زمان محلی
+    confirm_discard_changes: حذف کردن تغییرات اعمال شده؟
     volume: 'مقدار'
+    notification_volume: 'مقدار صدای اطلاعیه'
+    group: 'گروه'
+    groups: 'گروه ها'
+    threads: 'موضوعات'
+    decisions: 'تصمیمات'
+    settings: 'تنظیمات'
+    help: 'کمک'
+    privacy:
+      privacy: 'حریم شخصی'
+      public: 'عمومی'
+      open: 'باز'
+      closed: 'بسته'
+      private: 'خصوصی'
+      secret: 'مخفی'
+    selected: 'انتخاب شده'
+    date_range:
+      today: 'امروز'
+      yesterday: 'دیروز'
+      thisweek: 'این هفته'
+      thismonth: 'این ماه'
+      older: 'قدیمی تر'
+    more_help: 'کمک بیشتر'
+    copy: 'کپی'
+    copy_text: 'کپی کردن متن'
+    copied: 'در کلیپ برد ذخیره شد'
+    total: مقدار کلی
+    action:
+      next: 'بعدی'
+      close: 'بستن'
+      save: 'ذخیره'
+      save_changes: 'ذخیره کردن تغییرات'
+      update_settings: 'به روز رسانی تنطیمات'
+      reply: 'پاسخ دادن'
+      edit: 'ویرایش'
+      remove: 'حذف کردن'
+      like: 'دوست داشتن'
+      back: 'برگشت'
+      unlike: 'دوست نداشتن'
+      update: 'به روز رسانی'
+      cancel: 'لغو'
+      show_more: "نمایش بیشتر"
+      view_all: "نمایش همه"
+      new_thread: "موضوع جدید"
+      add_subgroup: 'اضافه کردن زیر گروه'
+      loading: 'در حال بارگذاری'
+      translate: 'ترجمه'
+      translated: 'ترجمه از موتور ترجمه Bing'
+      upload: 'بارگذاری'
+      uploading: 'در حال بارگذاری'
+      load_more: 'بارگذاری بیشتر'
+      share: اشتراک
+      ok: باشه!
+      retry: دوباره
+      done: انجام شده
+      start: شروع
+      delete: پاک کردن
+      unsubscribe: لغو دنبال کردن
+      subscribe: دنبال کردن
+      remind: یادآوری
+      resend: ارسال دوباره
+      send: ارسال
+      resent: ارسال دوباره دعوت نامه
+  ordinal:
+    _1: اول
+    _2: دوم
+    _3: سوم
+    _4: چهارم
+    _5: پنجم
+    _6: ششم
+    _7: هفتم
+    _8: هشتم
+    _9: نهم
+    _10: دهم
   error_page:
     forbidden: 'شما اجازه انجام این کار را ندارید.'
+  verify_stances:
+    verify: تایید کردن
+    remove: حذف کردن
+  signed_out_modal:
+    ok: "باشه!"
   sidebar:
     email_settings: 'تنظیمات رایانامه'
+    help: 'کمک'
     sign_out: 'برون رفت'
+    start_thread: موضوع جدید
+    aria_labels:
+      groups_list: 'گروه ها'
   navbar:
+    start_thread: 'موضوع جدید'
     search:
+      discussions: 'موضوعات'
       proposals: 'پیشنهاد‌ها'
       comments: 'نظرات'
   notifications:
     header: "اطلاعیه ها"
   discussion_form:
+    group_label: 'گروه'
     privacy_label: 'محرمانگی'
+  action_dock:
+    reply_to_comment: پاسخ دادن
+  reactions_display:
+    you: "شما"
+  group_page:
+    discussions: 'موضوعات'
+  group_form:
+    privacy: 'حریم شخصی'
+    submit_update: 'به روز رسانی تنطیمات'
+  invitation_form:
+    group: 'گروه'
+    copy_link: 'کپی'
+    send: 'ارسال'
+    done: 'انجام شده'
   memberships_page:
     members: 'اعضا'
+    remove_member_label: 'حذف کردن'
+  remove_membership_form:
+    submit: 'حذف کردن'
   email_settings_page:
     header: تنظیمات رایانامه
+    update_settings: ذخیره کردن تغییرات
+    edit: ویرایش
   dashboard_page:
+    no_groups:
+      start: شروع
     filtering:
       proposals: پیشنهاد‌ها
+    threads_from:
+      today: 'امروز'
+      yesterday: 'دیروز'
+  inbox_page:
+    no_groups:
+      start: شروع
   discussion:
     proposals: 'پیشنهاد‌ها'
+  thread_context:
+    edit: 'ویرایش'
+    edit_thread: 'ویرایش'
+    delete_thread: 'پاک کردن'
+  decision_tools_card:
+    poll_title: نظرسنجی
+  poll_common_select_group:
+    loomio_group: گروه
+  poll_common_form:
+    start: شروع
+    update: به روز رسانی
+  poll_meeting_chart_panel:
+    total: مقدار کلی
+  poll_common_share_form:
+    share_group: گروه
+  poll_common_subscribe_form:
+    subscribe: دنبال کردن
+  polls_page:
+    heading: تصمیمات
