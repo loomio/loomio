@@ -18,7 +18,7 @@ describe 'Group Page', ->
         page.signInViaEmail('new@account.com')
         page.click '.join-group-button__join-group'
         page.expectElement '.sidebar__content'
-        page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
+        page.expectText '.group-theme__name', 'Open Dirty Dancing Shoes'
 
       it 'does not allow mark as read or mute', ->
         page.loadPath('view_open_group_as_visitor')
