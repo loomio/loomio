@@ -20,7 +20,8 @@ angular.module('loomioApp').factory 'SequenceService', ->
         _.indexOf scope.steps, scope.currentStep
 
       scope.progress = ->
-        parseFloat(scope.currentStepIndex()) / scope.steps.length
+        return unless scope.steps.length > 1
+        100 * parseFloat(scope.currentStepIndex()) / (scope.steps.length - 1)
 
       emitter = options.emitter or scope
       emitter.$on 'previousStep', changeStep(-1, 'Back')
