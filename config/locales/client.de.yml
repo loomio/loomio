@@ -13,6 +13,7 @@ de:
     learn_more: Mehr erfahren
     not_found: Nicht gefunden
     time_zone: Zeitzone
+    local_time: Lokale Zeit
     confirm_discard_changes: Deine Änderungen verwerfen?
     time:
       am: am
@@ -50,6 +51,7 @@ de:
     points_abbrev: 'Jede Stimme ist {{score}} Punkte wert'
     total: Gesamt
     action:
+      back: 'Zurück'
       next: 'Nächstes'
       close: 'Schließen'
       save: 'Speichern'
@@ -284,7 +286,15 @@ de:
     privacy_private: 'Die Diskussion wird nur für Mitglieder von {{group}} sichtbar sein.'
     privacy_organisation: 'Diese Diskussion wird nur für Mitglieder von {{parent}} und {{group}} sichtbar sein.'
     make_announcement: Ankündigung
+  cover_photo_form:
+    aria_label: 'Titelfoto Änderungsformumlar'
+    heading: 'Neues Titelfoto'
+    upload_link: 'Neues Titelfoto hochladen'
+    image_size_helptext: 'Die ideale Bildgröße ist 1400×320px'
+    upload_success: 'Das Titelfoto wurde erfolgreich hochgeladen'
+
   logo_photo_form:
+    aria_label: 'Gruppenlogo Änderungsformumlar'
     heading: 'Neues Gruppenlogo'
     upload_link: 'Neues Gruppenlogo hochladen'
     image_size_helptext: 'Die ideale Bildgröße ist 100x100px'
@@ -295,10 +305,13 @@ de:
     messages:
       joined_group: 'Du bist nun Mitglied von {{group}}.'
   membership_request_form:
+    aria_label: Anfrageformular zum Gruppenbeitritt
     heading: Gruppenbeitritt anfragen
     name_label: Name
     email_label: eMail
     introduction_label: Warum willst Du beitreten?
+    submit_button: Beitritt anfragen
+    introduction_over_limit: Die Antwort hat zu lange gedauert
     messages:
       membership_requested: 'Du hast die Mitgliedschaft für {{group}} angefragt'
   revision_history_modal:
@@ -307,6 +320,17 @@ de:
     started_by: 'Eröffnet von <strong>{{name}}</strong>'
     edited_by: 'Bearbeitet von <strong>{{name}}</strong>'
     posted: Veröffentlicht
+
+  reactions_input:
+    add_your_reaction: Füge deine Reaktion hinzu
+
+  reactions_display:
+    more_reactions: "{{count}} weitere"
+    you: "Du"
+    you_and_name: "Du und {{name}}"
+    you_and_name_and_count_more: "Du, {{name}} und {{count}} weitere"
+    name_and_count_more: "{{name}} und {{count}} weitere"
+
   group_page:
     thread_list:
       empty:
@@ -373,6 +397,14 @@ de:
     title: 'Gruppe verlassen'
     question: 'Bist Du sicher, dass Du diese Gruppe verlassen willst?'
     submit: 'Ja, diese Gruppe verlassen'
+    cannot_leave_group: 'Du kannst diese Gruppe nicht verlassen, weil du der letzte Koordinator bist. Du musst einen anderen Koordinator bestimmen oder die Gruppe deaktivieren.'
+    add_coordinator: 'Koordinator hinzufügen'
+
+  archive_group_form:
+    aria_label: 'Gruppe deaktivieren'
+    title: 'Gruppe deaktivieren'
+    question: 'Bist du sicher, dass du diese Gruppe deaktivieren willst?'
+    submit: 'Ja, diese Gruppe deaktivieren'
   group_form:
     start_group_heading: 'Gründe eine Gruppe'
     start_subgroup_heading: 'Gründe eine Untergruppe'
@@ -475,6 +507,11 @@ de:
       remove_admin_success: '{{name}} ist nun kein Koordinator mehr'
     remove_admin_from_self:
       question: 'Bist Du sicher, dass Du nicht mehr Koordinator bleiben willst?'
+
+  memberships_panel:
+    add_coordinator: Zum Koordinator machen
+    remove_coordinator: Koordinatorrechte entfernen
+
   remove_membership_form:
     aria_label: 'Mitglied entfernen'
     title: 'Mitglied entfernen'
@@ -484,6 +521,10 @@ de:
     email: eMail
     invitation_link: Link zur Einladung
     sent: Senden
+    sent_at: Gesendet am {{date}}
+    copy_url: URL kopieren
+    revoke_invitation: Zurückziehen
+
   cancel_invitation_form:
     heading: Einladung abbrechen
     question: Sicher, dass Du diese Einladung löschen willst?
@@ -491,6 +532,19 @@ de:
     cancel: 'Nein'
     messages:
       success: Einladung gelöscht
+
+  user_page:
+    contact_user: 'Kontakt {{name}}'
+    location_field: 'Ort: {{value}}'
+    locale_field: 'Sprache: {{value}}'
+    online_field: 'Online: {{value}}'
+
+  contact_request_form:
+    modal_title: "Email {{name}}"
+    message_placeholder: Stell dich vor und beschreibe, warum du Kontakt aufnehmen willst.
+    helptext: "{{name}} wird dein Name, deine Email Adresse und die Nachricht gesendet"
+    email_sent: "Email an {{name}} gesendet"
+
   profile_page:
     messages:
       updated: 'Profil aktualisiert'
@@ -569,8 +623,9 @@ de:
     unread_threads: Ungelesene Diskussionen
     view_more: Mehr anzeigen
     no_groups:
-      start: Start
+      start: Starte
       or: oder
+      join_group: <a href="/explore">tritt einer Gruppe bei</a> um Diskussionen zu sehen.
   groups_page:
     page_header: Deine Gruppen
   discussion:
@@ -588,13 +643,18 @@ de:
   thread_context:
     aria_label: 'Diskussionsbeschreibung'
     thread_options: 'Diskussionsoptionen'
+    email_settings: 'Email Einstellungen'
+    edit: 'Bearbeiten'
+    edit_thread: 'Bearbeiten'
     email_settings: 'eMail-Einstellungen'
     move_thread: 'Verschieben'
     print_thread: 'Drucken'
     delete_thread: 'Löschen'
+    add_comment: 'Kommentieren'
   delete_thread_form:
     title: Diskussion löschen
     body: Sicher, dass Du diese Diskussion löschen willst?
+    confirm: Diskussion löschen
     messages:
       success: Diskussion gelöscht
   move_thread_form:
