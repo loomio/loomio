@@ -788,6 +788,7 @@ en:
     edit: Edit
     messages:
       updated: Email settings updated
+    learn_more: Learn more about email settings...
 
   dashboard_page:
     aria_label: 'Dashboard'
@@ -1525,6 +1526,7 @@ en:
   auth_form:
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in: Sign in
+    sign_in_as: Sign in as {{name}}
     invitation_required: You need an invitation to create an account.
     choose_an_account: "Sign in via a third party, or enter your email address to continue."
     invitation_required: Account not found. New accounts are by invitation only.
@@ -1532,8 +1534,10 @@ en:
     email_not_present: An email address is required
     invalid_email: "Sorry, that doesn't look like a valid email address"
     invalid_password: "Sorry, that password doesn't match the one we have on file"
+    invalid_token: "Sorry, we weren't able to use that token to log you in. Click below to send another one."
     email_not_found: "Sorry, we couldn't find an account with that email address"
     email_placeholder: you@example.com
+    login_with_token: You're all set! Click the link below to log in.
     login_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.
       If you'd like to use a password to log in in the future, you can set one from your profile page.
