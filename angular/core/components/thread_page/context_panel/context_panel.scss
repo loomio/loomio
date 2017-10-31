@@ -8,7 +8,7 @@
 }
 
 .context-panel__pin {
-  font-size: 1.2em;
+  font-size: 20px;
   line-height: 34px;
   margin-right: 8px;
 }
@@ -48,14 +48,6 @@
 .context-panel__description {
   margin-bottom: 16px;
   p:last-of-type { margin-bottom: 0; }
-}
-
-.context-panel__attachments {
-  margin: 16px 0;
-}
-
-.context-panel__attachment {
-  margin-top: 16px;
 }
 
 @media (min-width: $medium-max-px) {

@@ -145,6 +145,45 @@ describe Identities::SlackController do
     end
   end
 
+  describe 'initiate' do
+    let(:initiate_params) { {
+      text: "proposal let's get started",
+      channel: group_identity.slack_channel_id,
+      team_id: identity.slack_team_id,
+      team_domain: "example"
+    } }
+    let(:group) { create :formal_group }
+    let(:identity) { create :slack_identity, custom_fields: { slack_team_id: "T123" } }
+    let(:group_identity) { create(:group_identity, group: group, identity: identity, custom_fields: {
+      slack_channel_id: "C123",
+      slack_channel_name: "channel"
+    }) }
+
+    it 'responds with a poll creation url when an associated group is found' do
+      post :initiate, initiate_params
+      expect(response.body).to match /Okay, let's do this/
+    end
+
+    it 'responds with help for a bad poll type' do
+      initiate_params[:text] = "wark let's get started"
+      post :initiate, initiate_params
+      expect(response.body).to match /You can choose from the following/
+    end
+
+    it 'responds with an unknown channel message if a group is found in the slack team' do
+      initiate_params[:channel] = "notachannel"
+      post :initiate, initiate_params
+      expect(response.body).to match /it looks like there's not a loomio group associated/
+    end
+
+    it 'responds with an unauthorized message if no integration is found' do
+      initiate_params[:team_id] = "notateam"
+      post :initiate, initiate_params
+      expect(response.body).to match /Just one more step/
+      expect(response.body).to match slack_oauth_url
+    end
+  end
+
   describe 'create' do
     let(:user) { create :user }
     let(:invalid_oauth) { controller.stub(identity_params: {}) }

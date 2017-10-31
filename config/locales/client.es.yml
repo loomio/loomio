@@ -696,7 +696,6 @@ es:
     aria_label: 'Confirmar la desactivación de la cuenta '
     title: 'Desactiva cuenta '
     question: '¿Nos contarías por qué estás desactivando tu cuenta?'
-    placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar Loomio :)'
     submit: 'Desactiva cuenta '
   only_coordinator_modal:
     aria_label: 'No hemos podido desactivar la cuenta'

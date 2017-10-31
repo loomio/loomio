@@ -8,7 +8,7 @@ class BaseMailer < ActionMailer::Base
   add_template_helper(PrettyUrlHelper)
 
   NOTIFICATIONS_EMAIL_ADDRESS = "notifications@#{ENV['SMTP_DOMAIN']}"
-  default :from => "#{AppConfig.theme[:site_name]} <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
+  default :from => "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   before_action :utm_hash
 
   protected

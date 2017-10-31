@@ -10,6 +10,7 @@ class Identities::Base < ActiveRecord::Base
   PROVIDERS = YAML.load_file(Rails.root.join("config", "providers.yml"))['identity']
   discriminate Identities, on: :identity_type
   scope :with_user, -> { where.not(user: nil) }
+  scope :slack, -> { where(identity_type: :slack) }
 
   def self.set_identity_type(type)
     after_initialize { self.identity_type = type }

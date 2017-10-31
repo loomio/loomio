@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
+  validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
   validates_uniqueness_of :username
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 500
