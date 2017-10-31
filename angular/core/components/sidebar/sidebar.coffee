@@ -6,6 +6,7 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
   controller: ($scope) ->
     $scope.currentState = ""
     $scope.showSidebar = true
+    InboxService.load()
 
     $scope.hasAnyGroups = ->
       Session.user().hasAnyGroups()
@@ -17,7 +18,6 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
     $scope.currentGroup = ->
       return _.first(availableGroups()) if availableGroups().length == 1
       _.find(availableGroups(), (g) -> g.id == Session.currentGroupId()) || Records.groups.build()
-
 
     $scope.$on 'toggleSidebar', (event, show) ->
       if !_.isUndefined(show)

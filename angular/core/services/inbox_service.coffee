@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'InboxService', (Session, ThreadQueryService) ->
+angular.module('loomioApp').factory 'InboxService', (Records, Session, ThreadQueryService) ->
   new class InboxService
 
     filters: [
@@ -9,8 +9,14 @@ angular.module('loomioApp').factory 'InboxService', (Session, ThreadQueryService
       'hide_dismissed'
     ],
 
+    load: (options = {}) ->
+      Records.discussions.fetchInbox(options).then => @loaded = true
+
     unreadCount: ->
-      @query().length()
+      if @loaded
+        @query().length()
+      else
+        "..."
 
     query: ->
       ThreadQueryService.queryFor(name: "inbox", filters: @filters)
