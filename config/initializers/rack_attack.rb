@@ -16,7 +16,6 @@ class Rack::Attack
   {10 => 1.hour,
    20 => 1.day}.each_pair do |limit, period|
     Rack::Attack.throttle("groups#create", :limit => limit, :period => period) do |req|
-      puts "testing #{req}"
       req.ip if heavy.any? {|route| req.path.starts_with?(route)} && req.post?
     end
   end
