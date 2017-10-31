@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include ProtectedFromForgery
   include ErrorRescueHelper
   include CurrentUserHelper
+  include ForceSslHelper
 
   around_filter :process_time_zone
   around_filter :process_locale         # LocalesHelper
