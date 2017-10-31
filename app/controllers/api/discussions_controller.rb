@@ -73,7 +73,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def collection_for_inbox(collection)
-    collection.not_muted.unread.sorted_by_latest_activity
+    collection.recent.not_muted.unread.sorted_by_latest_activity.includes(:group, :author)
   end
 
 end

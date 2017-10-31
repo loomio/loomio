@@ -27,7 +27,7 @@ task :deploy do
   puts "Deploying branch #{branch} to #{remote}..."
   run_commands [
     "git checkout #{branch}",                                                         # move to specified deploy branch
-    "git checkout --orphan #{temp_branch}",                                                 # cut a new deploy branch based on specified branch
+    "git checkout -b #{temp_branch}",                                                 # cut a new deploy branch based on specified branch
     "bundle exec rake deploy:bump_version[#{temp_branch},#{is_production_push}]",     # bump version if this is a production deploy
     "bundle exec rake deploy:build",                                                  # build assets
     "bundle exec rake deploy:commit",                                                 # add deploy commit
