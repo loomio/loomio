@@ -8,7 +8,8 @@ describe 'Profile', ->
 
   describe 'updating a profile name', ->
     it 'successfully updates a profile', ->
-      page.click '.sidebar__list-item-button--profile'
+      page.click '.user-dropdown__dropdown-button'
+      page.click '.user-dropdown__list-item-button--profile'
       profileHelper.updateProfile('Ferris Bueller', 'ferrisbueller', 'ferris@loomio.org')
       expect(profileHelper.nameInput().getAttribute('value')).toContain('Ferris Bueller')
       expect(profileHelper.usernameInput().getAttribute('value')).toContain('ferrisbueller')
@@ -40,7 +41,8 @@ describe 'Profile', ->
 
   describe 'updating a password', ->
     it 'can set a password', ->
-      page.click '.sidebar__list-item-button--profile'
+      page.click '.user-dropdown__dropdown-button'
+      page.click '.user-dropdown__list-item-button--profile'
       page.click '.profile-page__change-password'
       page.fillIn '.change-password-form__password', 'Smush'
       page.fillIn '.change-password-form__password-confirmation', 'Smush'
@@ -61,7 +63,8 @@ describe 'Profile', ->
 
     describe 'as the sole coordinator of a group', ->
       it 'successfully deactivates the account', ->
-        page.click '.sidebar__list-item-button--profile'
+        page.click '.user-dropdown__dropdown-button'
+        page.click '.user-dropdown__list-item-button--profile'
         page.click '.profile-page__deactivate'
         page.expectText '.deactivation-modal', 'When you deactivate your account:'
         page.click '.deactivation-modal__confirm'
@@ -71,7 +74,8 @@ describe 'Profile', ->
     describe 'as one of several coordinators of a group', ->
       it 'prevents you from deactivating the account', ->
         page.loadPath 'setup_group_with_multiple_coordinators'
-        page.click '.sidebar__list-item-button--profile'
+        page.click '.user-dropdown__dropdown-button'
+        page.click '.user-dropdown__list-item-button--profile'
         page.click '.profile-page__deactivate'
         page.click '.deactivation-modal__confirm'
         page.click '.deactivate-user-form__submit'

@@ -130,10 +130,6 @@ tr:
   sidebar:
     start_group: 'Yeni grup'
     explore: 'Genel gruplar'
-    edit_profile: 'Profili düzenle'
-    email_settings: 'E-posta ayarları'
-    help: 'Yardım'
-    sign_out: 'Oturumu kapat'
     start_thread: Yeni konu
     aria_labels:
       groups_list: 'Gruplar'

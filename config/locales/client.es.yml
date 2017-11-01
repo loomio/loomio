@@ -257,11 +257,6 @@ es:
     muted_threads: 'Hilos silenciados '
     start_group: 'Nuevo grupo'
     explore: 'Grupos públicos'
-    edit_profile: 'Editar perfil '
-    email_settings: 'Ajustes de correo  '
-    help: 'Ayuda  '
-    contact: 'Contactar a Loomio '
-    sign_out: 'Salir '
     start_thread: Nuevo hilo
     start_decision: 'Nueva decisión  '
     aria_labels:

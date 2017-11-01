@@ -65,10 +65,6 @@ lt:
     submit_button:
       label: 'Išsiųsti'
     private_privacy_notice: 'Jūsų komentaras bus matomas tik {{groupName}} grupės nariams.'
-  sidebar:
-    email_settings: 'El. pašto nustatymai'
-    help: 'Pagalba'
-    sign_out: 'Atsijungti'
   navbar:
     recent_title: 'Pereiti į skydelį'
     unread_title: 'Žiūrėti neskaitytas veiklas'
