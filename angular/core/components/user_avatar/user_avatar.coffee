@@ -19,6 +19,7 @@ angular.module('loomioApp').directive 'userAvatar', ($window) ->
 
     $scope.uploadedAvatarUrl = ->
       return unless $scope.user.avatarKind == 'uploaded'
+      return $scope.user.avatarUrl if typeof $scope.user.avatarUrl is 'string'
       size = switch $scope.size
         when 'small'
           if _2x() then 'medium' else 'small'
