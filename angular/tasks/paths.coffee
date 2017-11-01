@@ -24,7 +24,7 @@ module.exports =
     fonts:          '../public/client/fonts'
     assets:         '../public/client/development'
     emojis:         '../public/img/emojis'
-    moment_locales: '../public/client/moment_locales'
+    moment_locales: '../public/client/development/moment_locales'
 
   fonts:
     vendor:       include(vendor, 'fonts')
