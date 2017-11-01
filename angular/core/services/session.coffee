@@ -21,7 +21,10 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translat
 
   setLocale: (locale) ->
     $translate.use(locale)
-    moment.locale(locale)
+    lc_locale = locale.toLowerCase()
+    fetch("/client/moment_locales/#{lc_locale}.js").then((resp) -> resp.text()).then (data) ->
+      eval(data)
+      moment.locale(lc_locale)
 
   logout: ->
     AppConfig.loggingOut = true

@@ -2,7 +2,7 @@
 path: node_modules
 js:
   - bowser/bowser.js
-  - moment/min/moment-with-locales.min.js
+  - moment/min/moment.min.js
   - lodash/index.js
   - ng-file-upload/dist/angular-file-upload-shim.js
   - angular/angular.js
@@ -35,6 +35,8 @@ js:
   - angulartics/src/angulartics-gtm.js
   - angular-recaptcha/release/angular-recaptcha.js
   - angular-sortable-view/src/angular-sortable-view.js
+  - whatwg-fetch/fetch.js
+  - promise-polyfill/promise.min.js
 execjs:
   - lodash/index.js
   - emojione/lib/js/emojione.js
@@ -45,3 +47,5 @@ fonts:
   - mdi/fonts/*
 emoji:
   - emojione/assets/png/*.png
+moment_locales:
+  - moment/locale/*.js
