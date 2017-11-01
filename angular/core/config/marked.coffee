@@ -15,7 +15,9 @@ angular.module('loomioApp').config (markedProvider) ->
       _super.heading(emojione.shortnameToImage(text), level, text)
 
     renderer.link      = (href, title, text) ->
-      _super.link(href, title, text).replace('<a ', '<a rel="noopener noreferrer" target="_blank" ')
+      string = _super.link(href, title, text).replace('<a ', '<a rel="noopener noreferrer" target="_blank" ')
+      string = string.replace('href="www', 'href="//www')
+      string
 
     renderer
 
@@ -24,5 +26,15 @@ angular.module('loomioApp').config (markedProvider) ->
     src = src.replace(/<img[^>]+\>/ig, "")
     src = src.replace(/<script[^>]+\>/ig, "")
     return _parse(src, opt, callback)
+
+  marked.Parser::parse = (src) ->
+    @inline = new (marked.InlineLexer)(src.links, @options, @renderer)
+    @inline.rules.url = /^((https?:\/\/|www)[^\s<]+[^<.,:;"')\]\s])/
+    @inline.rules.text = /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/|www\.| {2,}\n|$)/
+    @tokens = src.reverse()
+    out = ''
+    while @next()
+      out += @tok()
+    out
 
   markedProvider.setRenderer customRenderer(gfm: true, sanitize: true, breaks: true)
