@@ -9,11 +9,11 @@
           .user-dropdown__user-username @{{user.username}}
         %user_avatar{user: "user", size: "medium-circular"}
     %md-menu-item
-      %md_button.user_dropdown__list-item-button--profile{href: "", lmo-href: "/profile", aria-label: "{{ 'user_dropdown.edit_profile' | translate }}", ng-class: "{'user_dropdown__list-item--selected': onPage('profilePage')}"}
+      %md_button.user-dropdown__list-item-button--profile{href: "", lmo-href: "/profile", aria-label: "{{ 'user_dropdown.edit_profile' | translate }}", ng-class: "{'user_dropdown__list-item--selected': onPage('profilePage')}"}
         %i.mdi.mdi-18px.lmo-margin-right.mdi-account
         %span{translate: "user_dropdown.edit_profile"}
     %md-menu-item
-      %md_button.user_dropdown__list-item-button--email-settings{href:  "", lmo-href: "/email_preferences", aria-label: "{{ 'user_dropdown.email_settings' | translate }}", ng-class: "{'user_dropdown__list-item--selected': onPage('emailSettingsPage')}"}
+      %md_button.user-dropdown__list-item-button--email-settings{href:  "", lmo-href: "/email_preferences", aria-label: "{{ 'user_dropdown.email_settings' | translate }}", ng-class: "{'user_dropdown__list-item--selected': onPage('emailSettingsPage')}"}
         %i.mdi.mdi-18px.lmo-margin-right.mdi-email-outline
         %span{translate: "user_dropdown.email_settings"}
     %md-menu-item{ng-if: "showHelp()"}
