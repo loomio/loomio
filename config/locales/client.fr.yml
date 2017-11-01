@@ -256,11 +256,6 @@ fr:
     muted_threads: 'Discussions désactivées'
     start_group: 'Nouveau groupe'
     explore: 'Groupes publics'
-    edit_profile: 'Modifier mon profil'
-    email_settings: 'Paramètres e-mail'
-    help: 'Aide'
-    contact: 'Contacter Loomio'
-    sign_out: 'Se déconnecter'
     start_thread: Nouvelle discussion
     start_decision: Nouvelle décision
     aria_labels:
@@ -286,6 +281,12 @@ fr:
     sign_in: 'Se connecter'
     toggle_sidebar: 'Activer/désactiver la barre latérale'
     logo_title: 'Accueil'
+  user_dropdown:
+    edit_profile: 'Modifier mon profil'
+    email_settings: 'Paramètres e-mail'
+    help: 'Aide'
+    contact: 'Contacter Loomio'
+    sign_out: 'Se déconnecter'
   start_menu:
     label: 'Actions utilisateur'
     title: 'Action'
