@@ -12,7 +12,7 @@ de:
       am: am
       pm: pm
     closing_in: 'Endet um {{time}}'
-    closed_ago: 'Endete um {{time}}'
+    closed_ago: 'Beendet um {{time}}'
     volume: 'Lautstärke'
     notification_volume: 'Benachritigungslautstärke'
     group: 'Gruppe'
@@ -71,6 +71,7 @@ de:
       done: Erledigt
       start: Start
       delete: Löschen
+      unsubscribe: Benachrichtigungen abbestellen
   devise:
     failure:
       inactive: 'Diese Email-Adresse ist mit einem deaktivierten Account verknüpft. Wenn Sie den Account wieder aktivieren möchten, nehmen Sie Kontakt mit uns auf.'
@@ -192,6 +193,7 @@ de:
     header: "Benachrichtigungen"
     no_notifications: "Du hast keine Benachrichtigungen"
     publish_outcome: "Ergebnis bekanntgeben"
+    new_comment: "<strong>{{name}}</strong> hat einen Kommentar verfasst in <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Komme zu Wort
   extend_proposal_form:
@@ -443,6 +445,8 @@ de:
     email_label: 'eMail'
     locale_label: 'Sprache'
     update_profile: 'Profil aktualisieren'
+  change_password_form:
+    change_password_title: Passwort ändern
   email_settings_page:
     header: eMail-Einstellungen
     all_groups: Einstellungen für alle Gruppen
@@ -469,7 +473,7 @@ de:
       show_proposals: Momentan sind keine Vorschläge am Laufen.
       show_muted: Du hast keine Diskussionen auf stumm gesetzt.
     view_recent: Alle neuen Diskussionen anzeigen?
-    load_more: Mehr Diskussionen laden
+    load_more: Mehr Diskussionen anzeigen
     mark_as_read: Als gelesen markieren
     filtering:
       filter_threads: Themen filtern
@@ -582,7 +586,7 @@ de:
   proposal_outcome_created_item:
     proposal_outcome_created: 'veröffentlichte ein Vorschlagsbeschluss:'
   proposal_outcome_updated_item:
-    proposal_outcome_updated: 'aktualisierte den Vorschlagsbeschluss:'
+    proposal_outcome_updated: 'hat das Abstimmungsergebnis aktualisiert:'
   discussion_edited_item:
     attachment_ids: 'aktualisierte die Diskussionsbeschreibung'
     title: 'aktualisierte den Diskussionstitel: <span>{{title}}</span>'
@@ -666,6 +670,9 @@ de:
     your_response: Deine Antworte
     results: Ergebnisse
     votes: Stimmen
+    update_outcome: Abstimmungsergebnis aktualisieren
+    outcome: Abstimmungsergebnis
+    load_more: Mehr anzeigen
     start_poll: Entscheidung vorbereiten
   poll_common_index_card:
     title: Bisherige Entscheidungen
@@ -681,8 +688,9 @@ de:
   poll_common_close_form:
     title: Umfrage früher beenden
   poll_common_set_outcome_panel:
-    share_outcome: Ergebnis teilen
+    share_outcome: Abstimmungsergebnis bekanntgeben
   poll_common_outcome_form:
+    update_title: Abstimmungsergebnis aktualisieren
     submit: Ergebnis teilen
   poll_common_form:
     start: Start
@@ -694,9 +702,18 @@ de:
     tool_tip_collapsed: Unterschiedliche Handlungsoptionen priorisieren
   poll_meeting_form:
     tool_tip_collapsed: Gemeinsam passende Zeiten für Meetings finden
+  poll_proposal_options:
+    agree: Dafür
+    abstain: Enthaltung
+    disagree: Dagegen
+    block: Veto
   polls_page:
     heading: Entscheidungen
+    search_placeholder: Abstimmungen durchsuchen...
+    polls_count: '{{count}} von {{total}} Abstimmungen werden angezeigt'
     start_new_poll: Neue Entscheidung
+    filter_placeholder: (Alle Abstimmungen)
+    groups_placeholder: (Alle Gruppen)
   auth_form:
     email_placeholder: du@beispiel.de
   install_slack:

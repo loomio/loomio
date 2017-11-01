@@ -99,3 +99,4 @@ module.exports = new class PageHelper
     @fillIn '.md-input', 'New Account'
     @click '.auth-signup-form__submit'
     @loadPath 'use_last_login_token'
+    @click '.auth-signin-form__submit'
