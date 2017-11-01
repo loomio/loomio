@@ -46,11 +46,6 @@ eo:
     edit_comment: 'Redakti komenton'
     delete_comment: 'Forigi komenton'
     confirm_delete_message: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
-  sidebar:
-    edit_profile: 'Redakti profilon'
-    email_settings: 'Retpoŝtaj agordoj'
-    help: 'Helpo'
-    sign_out: 'Eliri'
   navbar:
     search:
       placeholder: 'Serĉi'

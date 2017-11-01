@@ -27,11 +27,6 @@ sk:
     edit_comment: 'Upraviť komentár'
     delete_comment: 'Odstrániť komentár'
     confirm_delete_message: 'Naozaj chcete odstrániť tento komentár?'
-  sidebar:
-    edit_profile: 'Upraviť profil'
-    email_settings: 'Nastavenia emailu'
-    help: 'Pomocník'
-    sign_out: 'Odhlásiť sa'
   navbar:
     search:
       placeholder: 'Vyhľadávať'

@@ -256,11 +256,6 @@ zh_TW:
     muted_threads: '已靜音的討論串'
     start_group: '新增群組'
     explore: '公開群組'
-    edit_profile: '編輯簡歷'
-    email_settings: '電子郵件設定'
-    help: '教學文件'
-    contact: '聯絡 Loomio'
-    sign_out: '登出'
     start_thread: 新討論串
     start_decision: 新決策
     aria_labels:
@@ -721,6 +716,7 @@ zh_TW:
     edit: 編輯
     messages:
       updated: 電子郵件設定已更新
+    learn_more: 取得更多關於電子郵件設定的詳細資訊……
   dashboard_page:
     aria_label: '儀表板'
     no_groups:

@@ -172,11 +172,6 @@ el:
     muted_threads: 'Θέματα σε σίγαση'
     start_group: 'Νέα ομάδα'
     explore: 'Δημόσιες ομάδες'
-    edit_profile: 'Επεξεργασία προφίλ'
-    email_settings: 'Ρυθμίσεις ηλεκτρονικού ταχυδρομείου'
-    help: 'Βοήθεια'
-    contact: 'Επικοινωνήστε με το Loomio'
-    sign_out: 'Αποσύνδεση'
     start_thread: Νέο θέμα
     start_decision: Νέα απόφαση
     aria_labels:

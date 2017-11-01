@@ -127,11 +127,6 @@ sr:
     sign_in: "Prijavite se za priključivanje konverzaciji"
   sidebar:
     explore: 'Javne grupe'
-    edit_profile: 'Izmeni profil'
-    email_settings: 'ePoruke'
-    help: 'Pomoć'
-    contact: 'Kontaktiraj Lumio'
-    sign_out: 'Odjava'
     aria_labels:
       heading: 'Traka'
       threads_list: 'Opcije niti'

@@ -27,11 +27,6 @@ an:
     edit_comment: 'Editar comentario'
     delete_comment: 'Borrar comentario'
     confirm_delete_message: 'Yes seguro que quiers borrar iste comentario?'
-  sidebar:
-    edit_profile: 'Editar perfil'
-    email_settings: 'Configuración d''o correu electronico'
-    help: 'Aduya'
-    sign_out: 'Salir'
   navbar:
     search:
       placeholder: 'Buscar'
