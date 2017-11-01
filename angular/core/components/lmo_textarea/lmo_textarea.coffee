@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'lmoTextarea', (EmojiService, AttachmentService, MentionService) ->
-  scope: {model: '=', field: '@', label: '=?', placeholder: '=?', helptext: '=?'}
+  scope: {model: '=', field: '@', noAttachments: '=?', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/lmo_textarea/lmo_textarea.html'
   replace: true
@@ -11,4 +11,12 @@ angular.module('loomioApp').directive 'lmoTextarea', (EmojiService, AttachmentSe
       AttachmentService.listenForAttachments $scope, $scope.model
       AttachmentService.listenForPaste $scope
     $scope.init($scope.model)
-    $scope.$on 'reinitializeForm', (_, model) -> $scope.init(model)
+
+    $scope.$on 'reinitializeForm', (_, model) ->
+      $scope.init(model)
+
+    $scope.modelLength = ->
+      $element.find('textarea').val().length
+
+    $scope.$on 'attachmentUploaded', (_, attachment) ->
+      $scope.model.newAttachmentIds.push(attachment.id)
