@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'userAvatar', ($window) ->
-  scope: {user: '=', coordinator: '=?', size: '@?'}
+  scope: {user: '=', coordinator: '=?', size: '@?', noLink: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/user_avatar/user_avatar.html'
   replace: true
