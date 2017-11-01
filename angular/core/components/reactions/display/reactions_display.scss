@@ -10,17 +10,10 @@
   position: relative;
   transition: opacity ease-in-out 0.25s;
   opacity: 1;
+  margin-left: -3px;
 
-  &:nth-child(0) { right: 0; }
-  &:nth-child(1) { right: 4px; }
-  &:nth-child(2) { right: 8px; }
-  &:nth-child(3) { right: 12px; }
-  &:nth-child(4) { right: 16px; }
-  &:nth-child(5) { right: 20px; }
-  &:nth-child(6) { right: 24px; }
-  &:nth-child(7) { right: 28px; }
-  &:nth-child(8) { right: 32px; }
-  &:nth-child(9) { right: 36px; }
+  &:nth-child(0) { margin-left: 0; }
+
   &.emoji-picker { top: 3px; }
 
   &--inactive { opacity: 0.3; }
@@ -46,6 +39,7 @@
   line-height: 24px;
 }
 .reactions-display__names {
+  margin-left: 4px;
   color: $grey-on-white;
   @include md-caption;
 }
