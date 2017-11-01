@@ -2,7 +2,7 @@
 path: node_modules
 js:
   - bowser/bowser.js
-  - moment/moment.js
+  - moment/min/moment-with-locales.min.js
   - lodash/index.js
   - ng-file-upload/dist/angular-file-upload-shim.js
   - angular/angular.js

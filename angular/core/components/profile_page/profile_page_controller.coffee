@@ -2,15 +2,16 @@ angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootSc
   $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
 
   @showHelpTranslate = => AppConfig.features.help_link
-  
+
   @init = =>
     return unless AbilityService.isLoggedIn()
     @user = Session.user().clone()
-    $translate.use(@user.locale)
+    Session.setLocale(@user.locale)
     @submit = FormService.submit @, @user,
       flashSuccess: 'profile_page.messages.updated'
       submitFn: Records.users.updateProfile
       successCallback: @init
+      
   @init()
   $scope.$on 'updateProfile', => @init()
 
