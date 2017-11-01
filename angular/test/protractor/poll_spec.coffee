@@ -104,7 +104,7 @@ describe 'Polls', ->
   it 'can vote as a visitor', ->
     page.loadPath 'polls/test_proposal_poll_created_as_visitor'
     page.click '.poll-common-vote-form__radio-button--agree'
-    page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
+    page.fillIn '.poll-common-vote-form__reason', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
     page.click '.poll-common-vote-form__submit'
 
@@ -114,7 +114,7 @@ describe 'Polls', ->
   it 'can vote as a logged out user', ->
     page.loadPath 'polls/test_proposal_poll_created_as_logged_out'
     page.click '.poll-common-vote-form__radio-button--agree'
-    page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
+    page.fillIn '.poll-common-vote-form__reason', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
     page.fillIn '.poll-common-participant-form__email', 'big@baloo.ninja'
     page.click '.poll-common-vote-form__submit'
