@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, Session, AppConfig, DeactivationModal) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, Session, AppConfig, DeactivationModal) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
 
   @showHelpTranslate = => AppConfig.features.help_link
@@ -11,7 +11,7 @@ angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootSc
       flashSuccess: 'profile_page.messages.updated'
       submitFn: Records.users.updateProfile
       successCallback: @init
-      
+
   @init()
   $scope.$on 'updateProfile', => @init()
 
