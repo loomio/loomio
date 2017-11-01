@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'userAvatar', ($window) ->
 
     $scope.gravatarSize = ->
       size = switch $scope.size
-        when 'small'                     then 30
+        when 'small', 'small-circular'   then 30
         when 'medium', 'medium-circular' then 50
         when 'large', 'large-circular'   then 80
         when 'featured'                  then 175
