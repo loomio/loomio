@@ -5,8 +5,8 @@
     %md-menu-item.user-dropdown__user-details
       .lmo-flex.lmo-flex__center
         .user-dropdown__name
-          .user-dropdown__user-name {{user.name}}
-          .user-dropdown__user-username @{{user.username}}
+          .user-dropdown__user-name.lmo-truncate {{user.name}}
+          .user-dropdown__user-username.lmo-truncate @{{user.username}}
         %user_avatar{user: "user", size: "medium-circular"}
     %md-menu-item
       %md_button.user-dropdown__list-item-button--profile{href: "", lmo-href: "/profile", aria-label: "{{ 'user_dropdown.edit_profile' | translate }}", ng-class: "{'user_dropdown__list-item--selected': onPage('profilePage')}"}
