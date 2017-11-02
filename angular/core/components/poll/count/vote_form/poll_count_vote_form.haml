@@ -1,20 +1,17 @@
 %form.poll-count-vote-form
   %poll_common_participant_form{stance: "stance"}
 
-  .poll-common-vote-form__reason
-    %md-input-container.md-block
-      %input.lmo-primary-form-input{type: "text", placeholder: "{{'poll_count_vote_form.reason_placeholder' | translate}}", ng-model: "stance.reason", md-maxlength: "250"}
-      %validation_errors{subject: "stance", field: "reason"}
+  %lmo_textarea.poll-common-vote-form__reason{model: "stance", field: "reason", no-attachments: "true", label: "'poll_common.reason' | translate", placeholder: "'poll_common.reason_placeholder' | translate", maxlength: "250"}
 
-    .poll-count-vote-form__options
-      %md-button.poll-count-vote-form__option.poll-count-vote-form__option--yes{ng-click: "submit('yes')", ng-style: "{background: yesColor}"}
-        %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750", md-direction: "left"}
-          %span{translate: "poll_count_options.yes_meaning"}
-        %i.mdi.mdi-check
-      %md-button.poll-count-vote-form__option.poll-count-vote-form__option--no{ng-click: "submit('no')", ng-style: "{'border-color': noColor}"}
-        %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750", md-direction: "left"}
-          %span{translate: "poll_count_options.no_meaning"}
-        %i.mdi.mdi-close{ng-style: "{color: noColor}"}
+  .poll-count-vote-form__options
+    %md-button.poll-count-vote-form__option.poll-count-vote-form__option--yes{ng-click: "submit('yes')", ng-style: "{background: yesColor}"}
+      %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750", md-direction: "left"}
+        %span{translate: "poll_count_options.yes_meaning"}
+      %i.mdi.mdi-check
+    %md-button.poll-count-vote-form__option.poll-count-vote-form__option--no{ng-click: "submit('no')", ng-style: "{'border-color': noColor}"}
+      %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750", md-direction: "left"}
+        %span{translate: "poll_count_options.no_meaning"}
+      %i.mdi.mdi-close{ng-style: "{color: noColor}"}
 
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     %show_results_button{ng-if: "stance.isNew()"}

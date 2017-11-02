@@ -273,11 +273,6 @@ en:
     muted_threads: 'Muted threads'
     start_group: 'New group'
     explore: 'Public groups'
-    edit_profile: 'Edit profile'
-    email_settings: 'Email settings'
-    help: 'Help'
-    contact: 'Contact Loomio'
-    sign_out: 'Sign out'
     start_thread: New thread
     start_decision: New decision
     aria_labels:
@@ -304,6 +299,13 @@ en:
     sign_in: 'Log In'
     toggle_sidebar: 'Toggle sidebar'
     logo_title: 'Home page'
+
+  user_dropdown:
+    edit_profile: 'Edit profile'
+    email_settings: 'Email settings'
+    help: 'Help'
+    contact: 'Contact Loomio'
+    sign_out: 'Sign out'
 
   start_menu:
     label: 'User actions'

@@ -1,4 +1,5 @@
 class API::RestfulController < ActionController::Base
+  include ::ForceSslHelper
   include ::LocalesHelper
   include ::ProtectedFromForgery
   include ::LoadAndAuthorize
