@@ -1,0 +1,6 @@
+supported_locales: [ en, zh_TW, es, fr, uk, da, nl_NL, de]
+fallbacks:
+  an: es
+  ca: es
+  pt: es
+  zh: zh_TW

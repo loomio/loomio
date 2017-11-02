@@ -13,46 +13,41 @@ describe LocalesHelper do
     helper.stub(:current_user).and_return(user)
   end
 
-  describe 'set_application_locale' do
+  describe 'preferred_locale' do
     it 'can set via query parameter' do
-      helper.stub(:params).and_return(locale: :fr)
-      helper.set_application_locale
-      expect(I18n.locale).to eq :fr
+      helper.stub(:params).and_return(locale: 'fr')
+      expect(helper.preferred_locale).to eq 'fr'
     end
 
     it 'does not set a bad locale via query param' do
       helper.stub(:params).and_return(lang: 'notagoodone')
-      helper.set_application_locale
-      expect(I18n.locale).to eq I18n.default_locale
+      expect(helper.preferred_locale).to eq I18n.default_locale
     end
 
     it 'can set via user preference' do
-      user.update(selected_locale: :fr)
-      helper.set_application_locale
-      expect(I18n.locale).to eq :fr
+      user.update(selected_locale: 'fr')
+      expect(helper.preferred_locale).to eq 'fr'
     end
 
     it 'can set via browser http header' do
+      # given pt-BR we return the fallback: es
       helper.stub(:request).and_return(OpenStruct.new(env: http_accept_lang))
-      helper.set_application_locale
-      expect(I18n.locale).to eq :'pt-BR'
+      expect(helper.preferred_locale).to eq 'es'
     end
 
     it 'has robust fallbacks from browser http headers' do
+      # given fr-fr we return the generalised 'fr'
       helper.stub(:request).and_return(OpenStruct.new(env: http_accept_lang_fallback))
-      helper.set_application_locale
-      expect(I18n.locale).to eq :fr
+      expect(helper.preferred_locale).to eq 'fr'
     end
 
     it 'does not set a bad locale via http header' do
       helper.stub(:request).and_return(OpenStruct.new(env: http_accept_lang_bad))
-      helper.set_application_locale
-      expect(I18n.locale).to eq I18n.default_locale
+      expect(helper.preferred_locale).to eq I18n.default_locale
     end
 
     it 'uses default_locale by default' do
-      helper.set_application_locale
-      expect(I18n.locale).to eq I18n.default_locale
+      expect(helper.preferred_locale).to eq I18n.default_locale
     end
   end
 end
