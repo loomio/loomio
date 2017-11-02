@@ -6,15 +6,16 @@ module LocalesHelper
   end
 
   def preferred_locale
-    strict_filter(params[:locale]) ||
-    fuzzy_filter(user_selected_locale) ||
-    fuzzy_filter(browser_detected_locales) ||
-    fuzzy_filter(user_detected_locale) ||
-    I18n.default_locale
+    # allow unsupported locales via params
+    normalize(params[:locale]) ||
+    first_supported_locale([user_selected_locale,
+                            browser_detected_locales,
+                            user_detected_locale,
+                            I18n.default_locale].flatten)
   end
 
   def supported_locales
-    YAML.load_file(Rails.root.join('config', 'locales.yml'))["supported_locales"]
+    AppConfig.locales['supported']
   end
 
   def angular_locales
@@ -32,16 +33,11 @@ module LocalesHelper
   private
 
   def normalize(locale)
+    return nil if locale.nil?
     locale.to_s.sub('-','_')
   end
 
-  def strict_filter(locales)
-    Array(locales).compact.select do |locale|
-      supported_locales.select{|supported_locale| supported_locale == normalize(locale)}.first
-    end.first
-  end
-
-  def fuzzy_filter(locales)
+  def first_supported_locale(locales)
     Array(locales).compact.map do |locale|
       [normalize(locale),
        strip_dialect(locale),
@@ -52,7 +48,7 @@ module LocalesHelper
   end
 
   def strip_dialect(locale)
-    locale.split('_').first
+    locale.to_s.split('_').first
   end
 
   def fallback_for(locale)
@@ -60,7 +56,7 @@ module LocalesHelper
   end
 
   def fallbacks
-    YAML.load_file(Rails.root.join('config', 'locales.yml'))["fallbacks"]
+    AppConfig.locales['fallbacks']
   end
 
   def user_selected_locale
