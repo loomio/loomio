@@ -21,7 +21,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translat
 
   setLocale: (locale) ->
     $translate.use(locale)
-    lc_locale = locale.toLowerCase().gsub('_','-')
+    lc_locale = locale.toLowerCase().replace('_','-')
     return if lc_locale == "en"
     fetch("#{Loomio.assetRoot}/moment_locales/#{lc_locale}.js").then((resp) -> resp.text()).then (data) ->
       eval(data)
