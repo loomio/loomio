@@ -1,0 +1,4 @@
+supported: [ en, zh_TW, es, fr, uk, da, nl_NL, de]
+fallbacks:
+  zh: zh_TW
+  nl: nl_NL

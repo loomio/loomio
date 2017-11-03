@@ -1,14 +1,15 @@
 class LoggedOutUser
   include Null::User
   include AvatarInitials
-  attr_accessor :name, :email, :token, :avatar_initials
+  attr_accessor :name, :email, :token, :avatar_initials, :locale
 
   alias :read_attribute_for_serialization :send
 
-  def initialize(name: nil, email: nil, token: nil)
+  def initialize(name: nil, email: nil, token: nil, locale: I18n.locale)
     @name = name
     @email = email
     @token = token
+    @locale = locale
     set_avatar_initials if (@name || @email)
     apply_null_methods!
   end
@@ -23,10 +24,6 @@ class LoggedOutUser
 
   def false_methods
     super + [:save, :persisted?]
-  end
-
-  def locale
-    I18n.locale
   end
 
   def errors

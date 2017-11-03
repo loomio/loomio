@@ -1,7 +1,8 @@
 angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, Session, AppConfig, DeactivationModal) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
 
-  @showHelpTranslate = => AppConfig.features.help_link
+  @showHelpTranslate = ->
+    AppConfig.features.help_link
 
   @init = =>
     return unless AbilityService.isLoggedIn()

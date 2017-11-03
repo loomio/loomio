@@ -1,8 +1,9 @@
 class ClientTranslationService
+  include LocalesHelper
   attr_reader :locale
 
   def initialize(locale = nil)
-    @locale = (Loomio::I18n::FALLBACKS[locale] || I18n.default_locale).to_s
+    @locale = first_supported_locale([locale, I18n.default_locale]).to_s
   end
 
   def as_json
