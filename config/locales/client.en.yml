@@ -301,6 +301,7 @@ en:
     logo_title: 'Home page'
 
   user_dropdown:
+    button_label: 'User menu'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
     help: 'Help'
