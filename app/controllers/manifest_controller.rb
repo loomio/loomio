@@ -9,10 +9,30 @@ class ManifestController < ApplicationController
       orientation: 'portrait',
       start_url: '/dashboard',
       background_color: '#ffffff',
-      theme_color: '#ffffff',
+      theme_color: '#AED9EB',
       icons: [{
-        src:   [root_url.chomp('/'), AppConfig.theme[:icon_src]].join(''),
+        src:   '/img/loomiologo32.png',
+        sizes: '32x32',
+        type:  'image/png'
+        }, {
+        src:   '/img/loomiologo48.png',
+        sizes: '48x48',
+        type:  'image/png'
+        }, {
+        src:   '/img/loomiologo128.png',
+        sizes: '128x128',
+        type:  'image/png'
+        }, {
+        src:   '/img/loomiologo144.png',
         sizes: '144x144',
+        type:  'image/png'
+        }, {
+        src:   '/img/loomiologo192.png',
+        sizes: '192x192',
+        type:  'image/png'
+        }, {
+        src:   '/img/loomiologo512.png',
+        sizes: '512x512',
         type:  'image/png'
       }]
     }
