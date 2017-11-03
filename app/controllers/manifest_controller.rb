@@ -9,29 +9,29 @@ class ManifestController < ApplicationController
       orientation: 'portrait',
       start_url: '/dashboard',
       background_color: '#ffffff',
-      theme_color: '#AED9EB',
+      theme_color: AppConfig.theme[:accent_color],
       icons: [{
-        src:   '/img/loomiologo32.png',
+        src:   [root_url.chomp('/'), AppConfig.theme[:icon32_src]].join(''),
         sizes: '32x32',
         type:  'image/png'
         }, {
-        src:   '/img/loomiologo48.png',
+        src:   [root_url.chomp('/'), AppConfig.theme[:icon48_src]].join(''),
         sizes: '48x48',
         type:  'image/png'
         }, {
-        src:   '/img/loomiologo128.png',
+        src:   [root_url.chomp('/'), AppConfig.theme[:icon128_src]].join(''),
         sizes: '128x128',
         type:  'image/png'
         }, {
-        src:   '/img/loomiologo144.png',
+        src:   [root_url.chomp('/'), AppConfig.theme[:icon144_src]].join(''),
         sizes: '144x144',
         type:  'image/png'
         }, {
-        src:   '/img/loomiologo192.png',
+        src:   [root_url.chomp('/'), AppConfig.theme[:icon192_src]].join(''),
         sizes: '192x192',
         type:  'image/png'
         }, {
-        src:   '/img/loomiologo512.png',
+        src:   [root_url.chomp('/'), AppConfig.theme[:icon512_src]].join(''),
         sizes: '512x512',
         type:  'image/png'
       }]
