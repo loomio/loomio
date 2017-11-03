@@ -7,6 +7,7 @@ class Reaction < ActiveRecord::Base
   validates_presence_of :user, :reactable
 
   delegate :group, to: :reactable, allow_nil: true
+  delegate :groups, to: :reactable, allow_nil: true
 
   alias :author :user
 

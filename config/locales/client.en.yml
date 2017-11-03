@@ -1632,3 +1632,7 @@ en:
       Now, whenever anyone starts a poll in this group, they'll have the option to
       post updates about that poll into a channel in your slack team.
     start_poll_now: Make a decision now
+
+  connection_service:
+    disconnected: Offline! Server connection lost.
+    reconnected: Online! Reconnected to server.

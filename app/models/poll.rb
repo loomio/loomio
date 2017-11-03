@@ -126,6 +126,10 @@ class Poll < ActiveRecord::Base
     super || NullFormalGroup.new
   end
 
+  def groups
+    Group.where(id: [self.group_id, self.guest_group_id])
+  end
+
   def group_members
     User.joins(:memberships)
         .joins(:groups)
