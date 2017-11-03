@@ -7,6 +7,13 @@ class BaseMailer < ActionMailer::Base
 
   add_template_helper(PrettyUrlHelper)
 
+  cattr_accessor :disabled
+  def self.skip
+    self.disabled = true
+    yield
+    self.disabled = false
+  end
+
   NOTIFICATIONS_EMAIL_ADDRESS = "notifications@#{ENV['SMTP_DOMAIN']}"
   default :from => "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   before_action :utm_hash
@@ -27,16 +34,12 @@ class BaseMailer < ActionMailer::Base
   def send_single_mail(locale: , to:, subject_key:, subject_params: {}, **options)
     I18n.with_locale(locale) do
       mail options.merge(to: to, subject: I18n.t(subject_key, subject_params))
-    end
+    end unless self.class.disabled
   rescue Net::SMTPSyntaxError, Net::SMTPFatalError => e
     raise "SMTP error to: '#{to}' from: '#{options[:from]}' action: #{action_name} mailer: #{mailer_name} error: #{e}"
   end
 
   def locale_for(*user)
     [*user, I18n].compact.first.locale
-  end
-
-  def self.send_bulk_mail(to:)
-    to.each { |user| yield user if block_given? }
   end
 end
