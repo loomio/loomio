@@ -891,6 +891,7 @@ en:
     print_thread: 'Print'
     delete_thread: 'Delete'
     add_comment: 'Comment'
+    seen_by_count: 'Seen by {{count}}'
 
   pin_thread_modal:
     title: Pin thread
