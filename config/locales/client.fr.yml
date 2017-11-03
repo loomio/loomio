@@ -311,7 +311,7 @@ fr:
     user_mentioned: "<strong>{{name}}</strong> vous a mentionné dans <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> attend que vous participiez à <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> a demandé à être membre de <strong>{{title}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> a approuvé votre demande de rejoindre <strong>{{title}}</strong>'
+    membership_request_approved: '<strong>{{name}}</strong> vous a ajouté à <strong>{{title}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> vous a ajouté au groupe <strong>{{title}}</strong>"
     user_added_to_group_no_inviter: "Vous avez été ajouté au groupe <strong>{{title}}</strong>"
     motion_closing_soon: "Cette proposition se termine bientôt : <strong>{{title}}</strong>"
@@ -359,17 +359,17 @@ fr:
     react: Ajouter votre réaction
     add_comment: Ajouter un commentaire
     edit_thread: Modifier le contexte
-    translate_thread: Traduire le contexte
+    translate_thread: Afficher une traduction automatique du contexte
     edit_poll: Modifier le sondage
-    translate_poll: Traduire le sondage
+    translate_poll: Afficher une traduction automatique du sondage
     edit_stance: Changer votre vote
-    translate_stance: Traduire le vote
+    translate_stance: Afficher une traduction automatique du vote
     edit_comment: Modifier le commentaire
     delete_comment: Supprimer le commentaire
     reply_to_comment: Répondre
-    translate_comment: Traduire le commentaire
+    translate_comment: Afficher une traduction automatique du commentaire
     edit_outcome: Modifier le résultat
-    translate_outcome: Traduire le résultat
+    translate_outcome: Afficher une traduction automatique du résultat
     show_history: Montrer l'historique des modifications
     pin_thread: Mettre en avant la discussion
     unpin_thread: Ne plus mettre en avant la discussion
@@ -394,7 +394,7 @@ fr:
     aria_label: Formulaire de demande d'adhésion
     heading: Demander à rejoindre le groupe
     name_label: Nom
-    email_label: E-mail
+    email_label: Adresse e-mail
     introduction_label: Pourquoi voulez-vous rejoindre?
     submit_button: Demander à rejoindre
     introduction_over_limit: Réponse trop longue
@@ -500,7 +500,7 @@ fr:
     edit_group_heading: 'Modifier les paramètres du groupe'
     edit_subgroup_heading: 'Modifier les paramètres du sous-groupe'
     group_name: 'Nom du groupe'
-    group_name_placeholder: 'Comment voulez-vous appeler votre groupe ?'
+    group_name_placeholder: 'Comment voulez-vous nommer votre groupe ?'
     subgroup_name: 'Nom du sous-groupe'
     description: 'Description'
     description_placeholder: 'Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.'
@@ -525,7 +525,7 @@ fr:
     advanced_settings: "Paramètres avancés"
     how_do_people_join: "Comment les personnes peuvent-elles rejoindre le groupe ?"
     membership_granted_upon_request: 'N''importe qui peut rejoindre le groupe'
-    membership_granted_upon_approval: 'N''importe qui peut demander de rejoindre le groupe, mais la demande doit être approuvée.'
+    membership_granted_upon_approval: 'N''importe qui peut demander à rejoindre le groupe, mais la demande doit être approuvée.'
     membership_granted_upon_approval_secret_parent: '<strong>Sur proposition,</strong> n''importe qui de {{parent}} peut demander à rejoindre le groupe.'
     thread_privacy: 'Confidentialité de la discussion'
     public_threads: 'Discussions publiques seulement'
@@ -578,7 +578,7 @@ fr:
     email_addresses: 'Adresses e-mail'
     email_addresses_placeholder: 'ex. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Copiez le lien et envoyez-le à tout ceux que vous voulez ajouter au groupe. Cela leur donnera accès à toutes les discussions du groupe.'
-    email_explanation: 'Ou alors saisissez les adresses email ci-dessous pour envoyer les invitations.'
+    email_explanation: 'Ou alors saisissez les adresses e-mail ci-dessous pour envoyer les invitations.'
     add_custom_message: 'Personnalisez votre invitation'
     add_custom_message_link: 'ajouter un message personnalisé'
     custom_message: 'Message personnalisé'
@@ -593,7 +593,7 @@ fr:
       invitation_sent: 'Invitation envoyée.'
       invitations_sent: '{{count}} invitation(s) envoyée(s).'
       no_invitations: 'Oh-oh ! Merci de vérifier l''adresse mail puis de réessayer.'
-      max_invitations: 'Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d''équipe.'
+      max_invitations: 'Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d''invitation.'
   add_members_modal:
     aria_label: 'Ajoutez des membres du groupe parent'
     heading: 'Ajouter des personnes de {{name}}'
@@ -656,11 +656,11 @@ fr:
     change_password_link: 'Réinitialiser mon mot de passe'
     deactivate_user_link: 'Désactiver mon compte...'
     profile: 'Profil'
-    edit_profile: 'Modifier mon Profil'
+    edit_profile: 'Modifier mon profil'
     picture_label: 'Image'
     name_label: 'Nom'
     username_label: 'Identifiant utilisateur'
-    email_label: 'E-mail'
+    email_label: 'Adresse e-mail'
     short_bio_label: 'Introduction'
     locale_label: 'Langue'
     short_bio_placeholder: 'Merci de vous présenter en indiquant vos domaines de compétence, vos centres d''intérêts et les organisations auxquelles vous appartenez'
@@ -722,6 +722,7 @@ fr:
     edit: Modifier
     messages:
       updated: Réglages de courriel mis à jour
+    learn_more: En savoir plus sur les paramètres d'e-mail...
   dashboard_page:
     aria_label: 'Tableau de bord'
     no_groups:
@@ -826,7 +827,7 @@ fr:
   delete_thread_form:
     aria_label: 'Supprimer la discussion'
     title: Supprimer la discussion
-    body: Êtes vous sûr de vouloir supprimer cette discussion ?
+    body: Êtes-vous sûr de vouloir supprimer cette discussion ?
     confirm: 'Supprimer la discussion'
     messages:
       success: Discussion supprimée
@@ -847,7 +848,7 @@ fr:
     load_discussion: Chargement de la discussion intégrale
   delete_comment_dialog:
     title: 'Effacer le commentaire'
-    question: 'Êtes-vous sûr de vouloir effacer ce commentaire ?'
+    question: 'Êtes-vous sûr de vouloir effacer ce commentaire ?'
     confirm: 'Effacer le commentaire'
   new_comment_item:
     aria_label: 'Commenté par {{author}}'
@@ -898,7 +899,7 @@ fr:
   discussion_moved_item:
     discussion_moved: 'a déplacé la discussion depuis <span>{{group}}</span>'
   contact_message_form:
-    helptext: "Envie de nous contacter? Écrivez votre message ci-dessous et nous vous répondrons rapidement."
+    helptext: "Envie de nous contacter ? Écrivez votre message ci-dessous et nous vous répondrons rapidement."
     contact_us_email: "(Vous pouvez toujours nous contacter sur <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
     contact_us: 'Contactez-nous'
     name_label: 'Votre nom'
@@ -1042,7 +1043,7 @@ fr:
     helptext_off: Aucune invitation à la réunion ne sera envoyée
     event_duration: Durée
     event_summary: Résumé
-    event_summary_placeholder: ' Vers où voudriez-vous déplacer cette discussion ? '
+    event_summary_placeholder: ' Vers où voudriez-vous déplacer cette discussion ? '
     event_description: Description de la réunion
     event_description_placeholder: Quel agenda pour cette réunion
     location: Lieu
@@ -1219,7 +1220,7 @@ fr:
     start_header: Démarrer un classement par préférence
     edit_header: Modifier le classement par préférence
     tip: Trouvez quand les personnes sont disponibles pour se réunir
-    title_placeholder: Par exemple, qui aimeriez vous avoir comme maire?
+    title_placeholder: Par exemple, qui aimeriez-vous avoir comme maire?
     details_placeholder: Donnez toutes les détails qui permettront aux personnes de participer
     meeting_created: Classement par préférence créé
     meeting_updated: Classement par préférence mis à jour
@@ -1235,7 +1236,7 @@ fr:
   poll_proposal_vote_form:
     default_reason_placeholder: Veuillez expliquer votre raisonnement
     abstain_reason_placeholder: Expliquez aux gens pourquoi vous vous abstenez
-    agree_reason_placeholder: Qu'aimez vous dans cette proposition et comment va-t-elle bénéficier au groupe ?
+    agree_reason_placeholder: Qu'aimez-vous dans cette proposition et comment va-t-elle bénéficier au groupe ?
     disagree_reason_placeholder: Comment cette proposition pourrait être améliorée pour que vous puissiez la soutenir ?
     block_reason_placeholder: Expliquez vos objections et pourquoi cette proposition ne devrait pas être soutenue
     stance_created: Vote créé
@@ -1348,7 +1349,7 @@ fr:
     participant_name_placeholder: Quel est votre nom ?
   poll_common_subscribe_form:
     receive_updates_title: Votre vote a bien été enregistré
-    receive_updates_helptext: Pour recevoir le résultat de ce sondage par mail, merci de renseigner votre adresse mail ci-dessous
+    receive_updates_helptext: Pour recevoir le résultat de ce sondage par courriel, merci de renseigner votre adresse e-mail ci-dessous
     email_saved: Vous recevrez un mail à propos du résultat de ce sondage
     subscribe: Souscrire
     no_thanks: Non merci
@@ -1371,7 +1372,7 @@ fr:
     sign_in_to_loomio: Identifiez-vous sur {{site_name}}
     sign_in: Se connecter
     sign_in_as: Se connecter comme  {{name}}
-    choose_an_account: "Connectez vous via un site tiers, ou entrez une adresse email pour continuer."
+    choose_an_account: "Connectez-vous via un site tiers, ou entrez une adresse e-mail pour continuer."
     invitation_required: Compte utilisateur introuvable. Une invitation est nécessaire pour créer un nouveau compte utilisateur.
     more_providers: Plus
     email_not_present: Une adresse e-mail est nécessaire
@@ -1384,14 +1385,14 @@ fr:
     login_link_helptext: |
       Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
       Si vous préférez utiliser un mot de passe pour vous connecter à l'avenir, vous pouvez le définir sur votre page de profil.
-    login_link_helptext_with_password: "Entrez votre mot de passe, ou enregistrez vous par email."
+    login_link_helptext_with_password: "Entrez votre mot de passe, ou connectez-vous par courriel."
     sign_up_helptext: "Entrez simplement le surnom que vous voulez avoir, et nous vous enverrons un lien de connexion."
     oauth_confirm_helptext: "Confirmez les informations ci-dessous et nous vous enverrons un lien de connexion."
     name_required: Entrez un nom
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé! Merci de nous contacter pour réactiver votre compte utilisateur.
     welcome: Enchanté, {{email}}!
     welcome_back: Content de vous revoir, {{name}}!
-    login_link: Se connecter via son e-mail
+    login_link: Recevoir un lien de connexion par courriel
     set_password: Définir un mot de passe
     hello: "Bonjour, {{name}}!"
     new_to_loomio: Nouveau sur {{site_name}}? Créez un compte!
@@ -1404,7 +1405,7 @@ fr:
     signed_in: Connexion réussit
     email_verified: La vérification par email a réussi
     name: Nom
-    email: E-mail
+    email: Adresse e-mail
     password: Mot de passe
   install_slack:
     modal_title: Installer Slack

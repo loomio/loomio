@@ -157,6 +157,9 @@ es:
     change_my_password: Cambiar la contraseña
     confirm_new_password: Confirma la contraseña
     new_password: Nueva contraseña
+    email_guidelines_html: |
+      <p>Introduce la dirección de email y se te enviará un enlace para restablecer tu contraseña.</p>
+      <p>Si normalmente inicias sesión mediante Facebook o Google, introduce el email asociado con esa cuenta.</p>
     reset_email_timeframe: Puede tardar hasta 5 minutos para que llegue el correo electrónico. si no lo recibes asegúrate de mirar en tu carpeta de correo no deseado.
     length_restriction: La contraseña debe tener al menos 8 caracteres.
     forbidden_passwords: Contraseñas comunes como "contraseña' están prohibidas para mantener tu cuenta segura.
@@ -493,6 +496,10 @@ es:
     poll_closing_soon: "Recordatorio: *%{poll}* cierra en 24hr"
     poll_expired: "*%{poll}* ha cerrado"
     poll_not_found: "Perdón pero esa encuesta no fue encontrada. Escribe '/loomio<poll_type><title>' para iniciar otra?"
+    unknown_channel: |
+      Perdón pero al parecer no hay un grupo de Loomio asociado con este canal.
+      ¿Haz intentado correr '/loomio' en uno de los siguientes canales?
+      %{integrations}
     stance_not_valid: "Perdón pero no pudimos crear el voto en *%{poll}*. <%{url} |Haz clic aquí> para votar directamente. "
     group_identity_created: |
       Hola, soy Loomio Bot. *%{author}* me ha añadido.
