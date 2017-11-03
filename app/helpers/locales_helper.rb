@@ -14,6 +14,12 @@ module LocalesHelper
                             I18n.default_locale].flatten)
   end
 
+  def logged_out_preferred_locale
+    normalize(params[:locale]) ||
+    first_supported_locale([browser_detected_locales,
+                            I18n.default_locale].flatten)
+  end
+
   def supported_locales
     AppConfig.locales['supported']
   end
