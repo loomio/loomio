@@ -34,6 +34,6 @@ class Dev::BaseController < ApplicationController
   end
 
   def dont_send_emails
-    BaseMailer.disable { yield }
+    BaseMailer.skip { yield }
   end
 end

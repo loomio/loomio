@@ -8,7 +8,7 @@ class BaseMailer < ActionMailer::Base
   add_template_helper(PrettyUrlHelper)
 
   cattr_accessor :disabled
-  def self.disable
+  def self.skip
     self.disabled = true
     yield
     self.disabled = false
