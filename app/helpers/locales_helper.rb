@@ -24,17 +24,10 @@ module LocalesHelper
     end
   end
 
-  def save_detected_locale
-    if current_user.is_logged_in? && browser_detected_locales.any?
-      current_user.update_detected_locale(browser_detected_locales.first)
+  def save_detected_locale(user = current_user)
+    if user.is_logged_in? && browser_detected_locales.any?
+      user.update_detected_locale(browser_detected_locales.first)
     end
-  end
-
-  private
-
-  def normalize(locale)
-    return nil if locale.nil?
-    locale.to_s.sub('-','_')
   end
 
   def first_supported_locale(locales)
@@ -46,6 +39,14 @@ module LocalesHelper
       end
     end.compact.first
   end
+
+  private
+
+  def normalize(locale)
+    return nil if locale.nil?
+    locale.to_s.sub('-','_')
+  end
+
 
   def strip_dialect(locale)
     locale.to_s.split('_').first
