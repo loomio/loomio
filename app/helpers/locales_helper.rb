@@ -41,9 +41,9 @@ module LocalesHelper
     Array(locales).compact.map do |locale|
       [normalize(locale),
        strip_dialect(locale),
-       fallback_for(locale)].select do |version|
+       fallback_for(locale)].detect do |version|
         supported_locales.include? version
-      end.first
+      end
     end.compact.first
   end
 
