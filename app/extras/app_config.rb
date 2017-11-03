@@ -34,10 +34,10 @@ class AppConfig
       # used in emails
       email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   '/theme/logo_128h.png'),
       email_footer_logo_src:             ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC',   '/theme/logo_64h.png'),
-      primary_color:                     ENV.fetch('THEME_PRIMARY_COLOR',           'rgb(255,167,38)'),
-      accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            'rgb(0,188,212)'),
-      text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   'rgb(255,255,255)'),
-      text_on_accent_color:              ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR',    'rgb(255,255,255)'),
+      primary_color:                     ENV.fetch('THEME_PRIMARY_COLOR',           '#ffa726'),
+      accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            '#00bcd4'),
+      text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   '#ffffff'),
+      text_on_accent_color:              ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR',    '#ffffff'),
 
       # used in app
       primary_palette:                   ENV.fetch('THEME_PRIMARY_PALETTE',         'orange'),
