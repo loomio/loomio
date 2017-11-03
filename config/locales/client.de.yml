@@ -23,7 +23,7 @@ de:
     wave: Winken
   poll_types:
     proposal: Vorschlag
-    count: Bestätigt
+    count: Bestätigung
     poll: Umfrage
     dot_vote: Dot-Voting
     meeting: Terminfindung
@@ -44,7 +44,7 @@ de:
       am: am
       pm: pm
     closing_in: 'Endet {{time}}'
-    closed_ago: 'Beendet um {{time}}'
+    closed_ago: 'Beendet {{time}}'
     volume: 'Lautstärke'
     notification_volume: 'Benachrichtigungslautstärke'
     group: 'Gruppe'
@@ -57,7 +57,7 @@ de:
       privacy: 'Privatsphäre'
       public: 'Öffentlich'
       open: 'Offen'
-      closed: 'Geschlossen'
+      closed: 'Beendet'
       private: 'Privat'
       secret: 'Geheim'
     selected: 'Ausgewählt'
@@ -296,6 +296,7 @@ de:
     notified_count: '{{count}} Mitglieder werden per E-Mail benachrichtigt'
   action_dock:
     add_comment: Kommentieren
+    edit_poll: Umfrage bearbeiten
     edit_stance: Abstimmungsentscheidung ändern
   cover_photo_form:
     aria_label: 'Titelfoto Änderungsformumlar'
@@ -331,7 +332,7 @@ de:
     edited_by: 'Bearbeitet von <strong>{{name}}</strong>'
     posted: Veröffentlicht
   reactions_input:
-    add_your_reaction: Füge deine Reaktion hinzu
+    add_your_reaction: Reaktion hinzufügen
   reactions_display:
     more_reactions: "{{count}} weitere"
     you: "Du"
@@ -400,7 +401,7 @@ de:
       aria_label: 'Gruppen-Privatsphäre: {{privacy}}'
   description_card:
     title: 'Gruppenbeschreibung'
-    placeholder: 'Gruppen-Koordinatoren können dieses Feld nutzen, um den Zweck der Gruppe zu beschreiben, damit die Teilnehmer wissen, warum sie hier sind.'
+    placeholder: 'Gruppen-Koordinatoren können dieses Feld benutzen, um die Zielsetzung der Gruppe zu beschreiben, damit alle Teilnehmer wissen, warum sie hier sind.'
   leave_group_form:
     aria_label: 'Gruppe verlassen'
     title: 'Gruppe verlassen'
@@ -422,12 +423,13 @@ de:
     group_name_placeholder: 'Wie willst Du Deine Gruppe nennen?'
     subgroup_name: 'Untergruppenname'
     description: 'Beschreibung'
-    description_placeholder: 'Beschreibe den Zweck Deiner Gruppe, damit Mitglieder wissen, warum sie mitmachen sollten.'
+    description_placeholder: 'Beschreiben Sie die Zielsetzung Ihrer Gruppe, damit die Mitglieder wissen, warum sie hier sind.'
     privacy_statement:
       public_on_web: 'Name und Beschreibung wird im Web veröffentlicht'
       private_to_group: 'Name und Beschreibung sind nur Mitgliedern sichtbar'
       private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
     privacy: 'Privatsphäre'
+    group_privacy_is_secret_description: "Nur eingeladene Mitglieder können die Gruppe finden und die Teilnehmer und Diskussionsbeiträge der Gruppe sehen."
     confirm_change_to_secret: "Wenn Du fortfährst werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat."
     confirm_change_to_secret_subgroup: 'Wenn Du fortfährst werden alle Diskussionen privat.'
     confirm_change_to_public: 'Wenn Du fortfährst werden alle Diskussionen in der Gruppe öffentlich sichtbar im Web.'
@@ -568,6 +570,8 @@ de:
     update_profile: 'Profil aktualisieren'
   change_password_form:
     change_password_title: Passwort ändern
+  deactivation_modal:
+    submit: 'Ja, deaktiveren'
   email_settings_page:
     header: E-Mail-Einstellungen
     all_groups: Einstellungen für alle Gruppen
@@ -807,6 +811,7 @@ de:
     votes: Abstimmungsbeiträge
     update_outcome: Abstimmungsergebnis aktualisieren
     outcome: Abstimmungsergebnis
+    statement: Einschätzung
     change_your_stance: Abstimmungsentscheidung ändern
     load_more: Mehr anzeigen
     start_poll: Entscheidung vorbereiten
@@ -818,6 +823,7 @@ de:
   current_polls_card:
     title: Aktuelle Abstimmungen
     start_poll: Neue Entscheidung
+    no_polls: Momentan gibt es keine aktiven Abstimmungen.
   poll_common_collapsed:
     by_who: "von {{name}}"
   poll_common_notify_group:
@@ -828,6 +834,9 @@ de:
     helptext_on: Sie werden jedes Mal benachrichtigt, wenn jemand an der Abstimmung teilnimmt.
   poll_common_close_form:
     title: Umfrage früher beenden
+    count_closed: Bestätigung beendet
+  poll_card:
+    started_by: Erstellt von {{name}}
   poll_common_votes_panel:
     newest_first: Neueste zuerst
     no_votes_yet: Es gibt noch keine Abstimmungsbeiträge.
@@ -838,7 +847,10 @@ de:
     share_outcome: Abstimmungsergebnis bekanntgeben
   poll_common_outcome_form:
     update_title: Abstimmungsergebnis aktualisieren
+    statement_placeholder: Fassen Sie das Abstimmungsergebnis zusammen und geben Sie bekannt, was als nächstes passieren wird.
     submit: Ergebnis teilen
+  poll_common_outcome_panel:
+    authored_by: 'Von {{name}}'
   poll_common_form:
     start: Start
   poll_proposal_form:
@@ -876,6 +888,7 @@ de:
     groups_placeholder: (Alle Gruppen)
   auth_form:
     email_placeholder: du@beispiel.de
+    check_your_email: Überprüfen Sie Ihren E-Mail-Posteingang
   install_slack:
     progress:
       invite: Einladen
