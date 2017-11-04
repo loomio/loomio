@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include ForceSslHelper
 
   around_filter :process_time_zone
-  around_filter :process_locale         # LocalesHelper
+  around_filter :use_preferred_locale   # LocalesHelper
   before_filter :set_invitation_token   # CurrentUserHelper
   before_filter :set_last_seen_at       # CurrentUserHelper
 
