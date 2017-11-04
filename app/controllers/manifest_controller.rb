@@ -1,8 +1,10 @@
 class ManifestController < ApplicationController
   respond_to :json
 
-  ICON_SIZES = %w(32 48 128 144 192 512).freeze
+  def service_worker
+  end
 
+  ICON_SIZES = %w(32 48 128 144 192 512).freeze
   def show
     render json: {
       name:             AppConfig.theme[:site_name],
