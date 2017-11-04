@@ -7,4 +7,4 @@
   .poll-common-votes-panel__has-votes{ng-if: "hasSomeVotes()"}
     %poll_common_directive{stance: "stance", name: "votes_panel_stance", ng-repeat: "stance in stances() track by stance.id"}
     %md-button{ng-if: "moreToLoad()", translate: "common.action.load_more", ng-click: "loader.loadMore()"}
-  %poll_common_undecided_panel{poll: "poll"}
+  %poll_common_undecided_panel{poll: "poll", ng-if: "!poll.anonymous"}

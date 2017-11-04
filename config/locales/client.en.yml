@@ -63,6 +63,7 @@ en:
     decisions: 'Decisions'
     settings: 'Settings'
     help: 'Help'
+    anonymous: Anonymous
     privacy:
       privacy: 'Privacy'
       public: 'Public'
@@ -1165,6 +1166,11 @@ en:
     notify_on_participate: Notify me when people participate
     helptext_on: You will be notified whenever someone participates
     helptext_off: You will receive results when this activity closes
+
+  poll_common_anonymous:
+    anonymous: Anonymous Participants
+    helptext_on: Participant info will not be shown with each response
+    helptext_off: Participants will be shown with their responses
 
   poll_common_close_form:
     title: Close a poll early

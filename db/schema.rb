@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903235705) do
+ActiveRecord::Schema.define(version: 20171104000157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -637,6 +637,7 @@ ActiveRecord::Schema.define(version: 20170903235705) do
     t.integer  "undecided_user_count",  default: 0,     null: false
     t.boolean  "voter_can_add_options", default: false, null: false
     t.integer  "guest_group_id"
+    t.boolean  "anonymous",             default: false, null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
