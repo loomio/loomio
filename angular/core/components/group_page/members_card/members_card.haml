@@ -3,7 +3,7 @@
   .members-card__list
     .members-card__avatar{ng-if: "group.memberships().length > 1", ng-repeat: "membership in group.memberships() | orderBy: '-admin' | limitTo:10"}
       %a.members-card__avatar-link{lmo-href-for: "membership.user()"}
-        %user_avatar{user: "membership.user()", coordinator: "membership.admin", size: "medium"}
+        %user_avatar{user: "membership.user()", coordinator: "membership.admin", size: "medium", alt: "{{membership.user().username}}"}
     .lmo-placeholder{translate: "group_page.members_placeholder", ng-if: "showMembersPlaceholder()" }
   .lmo-md-actions
     %a.members-card__manage-members{lmo-href-for: "group", lmo-href-action: "memberships"}
