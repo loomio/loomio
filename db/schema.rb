@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 20171103062701) do
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
+  add_index "discussion_readers", ["last_read_at"], name: "index_discussion_readers_on_last_read_at", using: :btree
   add_index "discussion_readers", ["participating"], name: "index_discussion_readers_on_participating", using: :btree
   add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true, using: :btree
   add_index "discussion_readers", ["user_id", "volume"], name: "index_discussion_readers_on_user_id_and_volume", using: :btree
@@ -214,25 +215,25 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",                    limit: 255
+    t.string   "title",               limit: 255
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",                        default: false, null: false
-    t.boolean  "is_deleted",                           default: false, null: false
-    t.integer  "items_count",                          default: 0,     null: false
+    t.boolean  "uses_markdown",                   default: false, null: false
+    t.boolean  "is_deleted",                      default: false, null: false
+    t.integer  "items_count",                     default: 0,     null: false
     t.datetime "archived_at"
     t.boolean  "private"
-    t.string   "key",                      limit: 255
-    t.string   "iframe_src",               limit: 255
+    t.string   "key",                 limit: 255
+    t.string   "iframe_src",          limit: 255
     t.datetime "last_activity_at"
-    t.integer  "last_sequence_id",                     default: 0,     null: false
-    t.integer  "first_sequence_id",                    default: 0,     null: false
-    t.integer  "salient_items_count",                  default: 0,     null: false
-    t.integer  "versions_count",                       default: 0
-    t.integer  "closed_polls_count",                   default: 0,     null: false
-    t.boolean  "pinned",                               default: false, null: false
-    t.integer  "importance",                           default: 0,     null: false
-    t.integer  "discussion_readers_count",             default: 0,     null: false
+    t.integer  "last_sequence_id",                default: 0,     null: false
+    t.integer  "first_sequence_id",               default: 0,     null: false
+    t.integer  "salient_items_count",             default: 0,     null: false
+    t.integer  "versions_count",                  default: 0
+    t.integer  "closed_polls_count",              default: 0,     null: false
+    t.boolean  "pinned",                          default: false, null: false
+    t.integer  "importance",                      default: 0,     null: false
+    t.integer  "seen_by_count",                   default: 0,     null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree

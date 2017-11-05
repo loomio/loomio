@@ -7,7 +7,7 @@ class DiscussionReader < ActiveRecord::Base
   delegate :update_importance, to: :discussion
   delegate :importance, to: :discussion
 
-  update_counter_cache :discussion, :discussion_readers_count
+  update_counter_cache :discussion, :seen_by_count
 
   def self.for(user:, discussion:)
     if user&.is_logged_in?
