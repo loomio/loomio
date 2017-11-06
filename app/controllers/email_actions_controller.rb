@@ -4,7 +4,9 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
    end
 
   def mark_discussion_as_read
-    DiscussionReader.for(discussion: discussion, user: user).viewed!(event.sequence_id)
+    DiscussionService.mark_as_read(discussion: discussion,
+                                   params: {ranges: event.sequence_id},
+                                   actor: user)
     respond_with_pixel
   rescue ActiveRecord::RecordNotFound
     respond_with_pixel

@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20171103062701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
+  enable_extension "citext"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -174,14 +174,14 @@ ActiveRecord::Schema.define(version: 20171103062701) do
   add_index "delayed_jobs", ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready", using: :btree
 
   create_table "discussion_readers", force: :cascade do |t|
-    t.integer  "user_id",                                 null: false
+    t.integer  "user_id",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "discussion_id",                           null: false
+    t.integer  "discussion_id",                      null: false
     t.datetime "last_read_at"
-    t.integer  "read_items_count",        default: 0,     null: false
+    t.integer  "read_items_count",   default: 0,     null: false
     t.integer  "volume"
-    t.boolean  "participating",           default: false, null: false
+    t.boolean  "participating",      default: false, null: false
     t.datetime "dismissed_at"
     t.string   "read_ranges_string"
   end

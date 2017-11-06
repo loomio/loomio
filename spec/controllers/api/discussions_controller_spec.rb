@@ -558,7 +558,7 @@ describe API::DiscussionsController do
         expect(json['discussions'][0]['id']).to eq discussion.id
         expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
         expect(json['discussions'][0]['read_items_count']).to eq 2
-        expect(json['discussions'][0]['read_ranges_string']).to eq "2,3"
+        expect(json['discussions'][0]['read_ranges']).to eq [[2,3]]
       end
 
       # TODO need to reject ranges for sequence_ids that dont exist
