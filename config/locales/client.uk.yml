@@ -818,7 +818,7 @@ uk:
       success: "'{{name}}' не буде далі використовувати ваш обліковий запис."
   decision_tools_card:
     title: Інструмент прийняття рішень
-    help_text: <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Допомога</a>
+    help_text: <a href="https://www.loomio.school/en/beginner/decision_tools.html" target="_blank">Допомога</a>
     proposal_title: Пропозиція
     count_title: Контрольний список
     poll_title: Опитування
@@ -962,7 +962,7 @@ uk:
     tool_tip_collapsed: Шукайте колективної згоди
     start_header: Внести пропозицію
     edit_header: Редагувати пропозицію
-    tip: Шукайте колективної згоди за процедурою, що дозволяє почути всі голоси. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Дізнатись більше</a>
+    tip: Шукайте колективної згоди за процедурою, що дозволяє почути всі голоси. <a href="https://www.loomio.school/en/beginner/proposals.html" target="_blank">Дізнатись більше</a>
     title_placeholder: Наприклад давайте організуємо подорож на Місяць!
     details_placeholder: Надайте достатно інформації, аби кожен розумів що означає погодитись або не погодитись
     proposal_created: Пропозицію внесено

@@ -655,7 +655,7 @@ it:
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
-    tip: Cerca un accordo collettivo tramite un processo che permette a ciascuna voce di essere ascoltata. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Per saperne di più</a>
+    tip: Cerca un accordo collettivo tramite un processo che permette a ciascuna voce di essere ascoltata. <a href="https://www.loomio.school/en/beginner/proposals.html" target="_blank">Per saperne di più</a>
     title_placeholder: Ad esempio, andiamo sulla Luna!
     details_placeholder: Dai informazioni sufficienti affinché tutti sappiano cosa significa essere d'accordo o in disaccordo
     proposal_created: Proposta lanciata
