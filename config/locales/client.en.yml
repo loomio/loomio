@@ -626,9 +626,9 @@ en:
     modal:
       title: Add a resource
     choose_form:
-      helptext: Make files and external resources easy to find
-      url_helptext: Link to an existing online resource (like a trello board or a google doc)
-      file_helptext: Upload a file to Loomio from your computer
+      helptext: Keep track of all your tools and files, so that they’re easy to find.
+      url_helptext: Link to websites and tools such as Tello boards and Google docs
+      file_helptext: Upload documents and files from your computer
     form:
       helptext: Click, paste, or drop files here to share them with your group.
       file_upload: Upload a file from your computer
