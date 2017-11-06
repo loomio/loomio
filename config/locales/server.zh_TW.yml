@@ -495,6 +495,10 @@ zh_TW:
     poll_closing_soon: "提醒：*%{poll}* 將於24小時內關閉"
     poll_expired: "*%{poll}* 已關閉"
     poll_not_found: "抱歉，找不到該投票。輸入 '/loomio <poll_type> <title>' 來開始新的？"
+    unknown_channel: |
+      抱歉，看起來沒有與此頻道關聯的 Loomio 群組。
+      嘗試在下列的其中一個頻道中執行 '/loomio'？
+      %{integrations}
     stance_not_valid: "抱歉，我們無法為 *%{poll}* 建立立場。<%{url}|點選這裡>來直接在投票上投出您的一票。"
     group_identity_created: |
       大家好，我是 Loomio 機器人。*%{author}* 把我加進來了。

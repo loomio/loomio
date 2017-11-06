@@ -4,6 +4,6 @@
     %input.lmo-primary-form-input#email{name: "email", type: "email", md-autofocus: "true", placeholder: "{{ 'auth_form.email_placeholder' | translate}}", ng-model: "email"}
     %validation_errors{subject: "user", field: "email"}
 
-  .lmo-actions
+  .lmo-md-actions
     %div
     %md-button.md-primary.md-raised.auth-email-form__submit{ng-click: "submit()", ng-disabled: "!email", translate: "auth_form.sign_in", aria-label: "{{ 'auth_form.sign_in' | translate }}"}

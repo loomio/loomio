@@ -122,6 +122,7 @@ zh_TW:
       resent: 重新傳送邀請
     formatting_help:
       label: '格式化'
+      title: '學習如何使用 Markdown 來格式化您的文字'
   ordinal:
     _1: 第一名
     _2: 第二名
@@ -225,6 +226,7 @@ zh_TW:
   signed_out_modal:
     aria_label: '工作階段已結束'
     title: "您的工作階段已結束"
+    message: "您已經從其他視窗登出。請重新登入以繼續。"
     ok: "確定"
   comment_form:
     aria_label: '加入意見'
@@ -254,11 +256,6 @@ zh_TW:
     muted_threads: '已靜音的討論串'
     start_group: '新增群組'
     explore: '公開群組'
-    edit_profile: '編輯簡歷'
-    email_settings: '電子郵件設定'
-    help: '教學文件'
-    contact: '聯絡 Loomio'
-    sign_out: '登出'
     start_thread: 新討論串
     start_decision: 新決策
     aria_labels:
@@ -304,6 +301,7 @@ zh_TW:
     new_vote: "<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上評論"
     comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論"
+    reaction_created: "<strong>{{name}}</strong> 反應了 <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> 到您在 <strong>{{title}}</strong> 上的評論"
     user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
     user_reminded: "<strong>{{name}}</strong> 正在等候您參與 <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格"
@@ -574,6 +572,7 @@ zh_TW:
     email_addresses: '電子郵件地址'
     email_addresses_placeholder: '範例：helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: '複製連結並傳送給任何您想要讓他加入群組的人。這將會給予他們存取在該群組中的所有討論串的權限。'
+    email_explanation: '替代方案是，在下面輸入電子郵件地址來以電子郵件傳送邀請。'
     add_custom_message: '讓您的邀請變為私人的，'
     add_custom_message_link: '加入一段自訂的訊息。'
     custom_message: '自訂訊息'
@@ -664,6 +663,7 @@ zh_TW:
     location_placeholder: '您在哪裡？'
     update_profile: '更新簡歷'
     deactivate_account: '凍結帳號'
+    help_translate: "協助我們翻譯 Loomio"
   change_picture_form:
     aria_label: '變更照片表單'
     title: '變更照片'
@@ -685,13 +685,14 @@ zh_TW:
     introduction: '當您停用您的帳號：'
     no_longer_group_member: '您將不會再被任何群組列為成員'
     name_removed: '您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。'
+    no_emails: '您將不會再收到電子郵件通知'
     contact_for_reactivation: '您將會需要聯絡我們以重新啟用您的帳號'
     submit: '是的，我想要停用'
   deactivate_user_form:
     aria_label: '確認凍結帳號'
     title: '凍結帳號'
     question: '您可以告訴我們為何您要凍結您的帳號嗎？'
-    placeholder: '回答這個問題是選擇性的。您所分享的任何資訊將會幫助我們改進 Loomio :)'
+    placeholder: '回答這個問題是選擇性的。您分享的任何資訊都可以協助我們改善服務 :)'
     submit: '凍結帳號'
   only_coordinator_modal:
     aria_label: '無法凍結帳號'
@@ -715,6 +716,7 @@ zh_TW:
     edit: 編輯
     messages:
       updated: 電子郵件設定已更新
+    learn_more: 取得更多關於電子郵件設定的詳細資訊……
   dashboard_page:
     aria_label: '儀表板'
     no_groups:
@@ -1119,7 +1121,15 @@ zh_TW:
     closing: 定案
     start: 啟動
     update: 更新
+    loomio_school_link: |
+      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>查詢更多資訊。</p>
   poll_proposal_form:
+    tool_tip_expanded: |
+      <p>提案是用來尋求關於一段陳述或是行動方針共識的工具。</p>
+      <p>參與者可以同意、放棄、反對或阻擋，來針對一段陳述表達他們的立場。</p>
+      <p>一份圓餅圖會顯示在群組中對於該議題的立場，讓每個人的聲音都能被聽到。</p>
+      <p>若您一開始沒看到同意的人，別氣餒，提案就是設計用來突顯需要解決的問題。</p>
+      <p>在有良好參與者的狀況下，一個提案就是採與行動的有利動作。</p>
     tool_tip_collapsed: 尋求共識
     start_header: 啟動提案
     edit_header: 編輯提案
@@ -1129,6 +1139,10 @@ zh_TW:
     proposal_created: 提案已啟動
     proposal_updated: 提案已更新
   poll_poll_form:
+    tool_tip_expanded: |
+      <p>使用投票來衡量人氣或是提供選項。</p>
+      <p>提供一些選項來供群組成員選取。決定參與者可以選取一個或多個選項來當做他們的回應。</p>
+      <p>每個人投票，且如果他們想要的話也可以同時輸入一段陳述。結果會以長條圖呈現。</p>
     tool_tip_collapsed: 測量人氣或是提供選項
     start_header: 啟動投票
     edit_header: 編輯投票
@@ -1142,6 +1156,12 @@ zh_TW:
     poll_created: 投票已建立
     poll_updated: 投票已更新
   poll_count_form:
+    tool_tip_expanded: |
+      <p><em>勾選</em>則是一個有許多可能的使用方法的工具，但其只有兩種回應方式：打勾或劃掉。</p>
+      <p>使用其來吸引人們參與，例如：「我會來參加活動」或是「我將加入工作小組」等。</p>
+      <p>或是使用其來追蹤工作的完成度：「我已經檢查過我的連絡人詳細資訊，一切都沒錯」，或是「我已經讀過文件且留下了我的意見了」。</p>
+      <p>勾選是有<em>目標</em>的，其應該是您想要有多少參與者的數量。如果某些事情需要更多的關注或是需要更多參與者訂閱，那麼目標就是向團隊表明這些事情。</p>
+      <p>在勾選關閉的前一天，它將會提醒那些還沒參與的人（也許是數位游牧者？）。</p>
     tool_tip_collapsed: 追蹤參與者與找到志願者
     start_header: 啟動勾選
     edit_header: 編輯勾選
@@ -1151,6 +1171,10 @@ zh_TW:
     count_created: 勾選已啟動
     count_updated: 勾選已更新
   poll_dot_vote_form:
+    tool_tip_expanded: |
+      <p>點投票是列出選項清單順序的方法。</p>
+      <p>參與者會被給予有限的「點」，其可以被分配在他們喜歡的的選項來表示自己的偏好。</p>
+      <p>這個過程會產生一個累計的長條圖以及個別分配，讓您可以考慮各種觀點。</p>
     tool_tip_collapsed: 選項排序
     start_header: 啟動點投票
     edit_header: 編輯點投票
@@ -1162,6 +1186,13 @@ zh_TW:
     dot_vote_created: 點投票已建立
     dot_vote_updated: 點投票已更新
   poll_meeting_form:
+    tool_tip_expanded: |
+      <p>使用時間投票來看看夥伴們何時可以會面。</p>
+      <p>輸入您想要舉辦會面的日期或是時間清單。</p>
+      <p>參與者勾選他們可以參與的時間，或是他們可以使用陳述欄來解釋他們的狀況，所以如果需要的話，您可以更新選項。</p>
+      <p>若您在時間投票中新增了新的時間，已經投票的夥伴將會被提醒要更新他們的回應。</p>
+      <p>您可以看到哪些人什麼時候有空，並決定何時要會面。</p>
+      <p>時間將會被自動轉換為參與者的時區。</p>
     tool_tip_collapsed: 找到會面的時間
     start_header: 啟動時間投票
     edit_header: 編輯時間投票
@@ -1335,14 +1366,17 @@ zh_TW:
   auth_form:
     sign_in_to_loomio: 登入到 {{site_name}}
     sign_in: 登入
+    sign_in_as: 登入為 {{name}}
     choose_an_account: "透過第三方登入，或是輸入您的電子郵件地址以繼續。"
     invitation_required: 找不到帳號。新帳號為邀請制。
     more_providers: 詳細
     email_not_present: 需要電子郵件地址
     invalid_email: "抱歉，這看起來不是有效的電子郵件地址"
     invalid_password: "抱歉，這個密碼與我們的檔案上的不一樣"
+    invalid_token: "抱歉，我們無法使用那個憑證來讓您登入。點選下方來傳送另一個。"
     email_not_found: "抱歉，我們找不到與此電子郵件地址相關的帳號"
     email_placeholder: you@example.com
+    login_with_token: 您已經設定好了！點選下方的連結來登入。
     login_link_helptext: |
       點選下面的按鈕，然後我們就會傳送立刻登入的連結給您。
       若您未來想要使用密碼登入，您可以從您的簡歷頁面設定一個。
@@ -1397,6 +1431,7 @@ zh_TW:
       add_to_group_helptext: 選取要連結到 Slack 的群組
       create_new_group_helptext: 沒有 Loomio 群組？簡單地輸入一個名字，然後我們就會為您打造一個
       group_name: 群組名稱
+      group_name_placeholder: 為您的新群組命名……
       slack_installed: Slack 已安裝
       install_slack: 現在安裝 Slack
       start_new_group: 啟動新群組

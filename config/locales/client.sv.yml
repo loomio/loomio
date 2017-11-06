@@ -76,11 +76,6 @@ sv:
     edit_comment: 'Edit kommentar'
     delete_comment: 'Ta bort kommentaren'
     confirm_delete_message: 'Är du säker på att du vill ta bort denna kommentaren?'
-  sidebar:
-    edit_profile: 'Ändra profilen'
-    email_settings: 'Emailinställningar'
-    help: 'Hjälp'
-    sign_out: 'Logga ut'
   navbar:
     search:
       placeholder: 'Sök'

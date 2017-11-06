@@ -1,11 +1,13 @@
 InitialPayload = Struct.new(:user) do
   include LocalesHelper
   include Routing
+  include AngularHelper
 
   def payload
     @payload ||= {
       bootData:            BootData.new(user).data,
       version:             Loomio::Version.current,
+      assetRoot:           angular_asset_folder,
       environment:         Rails.env,
       loadVideos:          ENV['LOOMIO_LOAD_VIDEOS'],
       currentUserLocale:   user.locale,

@@ -53,7 +53,7 @@ describe 'Polls', ->
     page.loadPath 'polls/test_proposal_poll_closed'
     page.click '.poll-common-set-outcome-panel__submit'
 
-    page.fillIn '.poll-common-outcome-form__statement', 'This is an outcome'
+    page.fillIn '.poll-common-outcome-form__statement textarea', 'This is an outcome'
     page.click  '.poll-common-outcome-form__submit'
 
     page.expectText '.poll-common-outcome-panel', 'This is an outcome'
@@ -62,7 +62,7 @@ describe 'Polls', ->
     page.loadPath 'polls/test_meeting_poll_closed'
     page.click '.poll-common-set-outcome-panel__submit'
 
-    page.fillIn '.poll-common-outcome-form__statement', 'Here is a statement'
+    page.fillIn '.poll-common-outcome-form__statement textarea', 'Here is a statement'
     page.fillIn '.poll-common-calendar-invite__summary', 'This is a meeting title'
     page.fillIn '.poll-common-calendar-invite__location', '123 Any St, USA'
     page.fillIn '.poll-common-calendar-invite__description', 'Here is a meeting agenda'
@@ -96,7 +96,7 @@ describe 'Polls', ->
 
     page.click '.poll-common-set-outcome-panel__submit'
 
-    page.fillIn '.poll-common-outcome-form__statement', 'This is an outcome'
+    page.fillIn '.poll-common-outcome-form__statement textarea', 'This is an outcome'
     page.click  '.poll-common-outcome-form__submit'
 
     page.expectText '.poll-common-outcome-panel', 'This is an outcome'
@@ -104,7 +104,7 @@ describe 'Polls', ->
   it 'can vote as a visitor', ->
     page.loadPath 'polls/test_proposal_poll_created_as_visitor'
     page.click '.poll-common-vote-form__radio-button--agree'
-    page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
+    page.fillIn '.poll-common-vote-form__reason textarea', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
     page.click '.poll-common-vote-form__submit'
 
@@ -114,7 +114,7 @@ describe 'Polls', ->
   it 'can vote as a logged out user', ->
     page.loadPath 'polls/test_proposal_poll_created_as_logged_out'
     page.click '.poll-common-vote-form__radio-button--agree'
-    page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
+    page.fillIn '.poll-common-vote-form__reason textarea', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
     page.fillIn '.poll-common-participant-form__email', 'big@baloo.ninja'
     page.click '.poll-common-vote-form__submit'

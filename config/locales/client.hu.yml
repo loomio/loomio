@@ -125,12 +125,6 @@ hu:
     private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'
     public_privacy_notice: 'A hozzászólás mindenki számára nyilvános lesz.'
     sign_in: "Lépj be, hogy hozzászolhass a témakörhöz."
-  sidebar:
-    edit_profile: 'Profil szerkesztése'
-    email_settings: 'Email beállítások'
-    help: 'Segítség'
-    contact: 'Kapcsolatfelvétel'
-    sign_out: 'Kijelentkezés'
   navbar:
     recent_title: 'Irány az eszközökhöz'
     unread_title: 'Olvasatlan tevékenységek megtekintése'

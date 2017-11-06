@@ -5,7 +5,7 @@
       %a.members-card__avatar-link{lmo-href-for: "membership.user()"}
         %user_avatar{user: "membership.user()", coordinator: "membership.admin", size: "medium"}
     .lmo-placeholder{translate: "group_page.members_placeholder", ng-if: "showMembersPlaceholder()" }
-  .lmo-actions
+  .lmo-md-actions
     %a.members-card__manage-members{lmo-href-for: "group", lmo-href-action: "memberships"}
       %span{translate: "group_page.see_all_members", translate-value-count: "{{group.membershipsCount}}"}>
       %span{ng-if: "group.pendingInvitationsCount", translate: "group_page.pending_invitations", translate-value-count: "{{group.pendingInvitationsCount}}"}

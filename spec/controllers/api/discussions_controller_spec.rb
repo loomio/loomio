@@ -72,10 +72,13 @@ describe API::DiscussionsController do
 
       it 'returns unread threads' do
         CommentService.create(comment: new_comment, actor: another_user)
+        reader
         get :inbox
         json = JSON.parse(response.body)
         discussion_ids = json['discussions'].map { |d| d['id'] }
+        reader_ids     = json['discussions'].map { |d| d['discussion_reader_id'] }
         expect(discussion_ids).to include discussion.id
+        expect(reader_ids).to include reader.id
       end
 
       it 'does not return read threads' do
@@ -106,6 +109,15 @@ describe API::DiscussionsController do
         get :inbox
         json = JSON.parse(response.body)
         expect(json['discussions']).to be_blank
+      end
+
+      it 'includes active polls' do
+        poll
+        CommentService.create(comment: new_comment, actor: another_user)
+        get :inbox
+        json = JSON.parse(response.body)
+        poll_ids = json['polls'].map { |p| p['id'] }
+        expect(poll_ids).to include poll.id
       end
     end
   end

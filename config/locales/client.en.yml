@@ -277,11 +277,6 @@ en:
     muted_threads: 'Muted threads'
     start_group: 'New group'
     explore: 'Public groups'
-    edit_profile: 'Edit profile'
-    email_settings: 'Email settings'
-    help: 'Help'
-    contact: 'Contact Loomio'
-    sign_out: 'Sign out'
     start_thread: New thread
     start_decision: New decision
     aria_labels:
@@ -308,6 +303,13 @@ en:
     sign_in: 'Log In'
     toggle_sidebar: 'Toggle sidebar'
     logo_title: 'Home page'
+
+  user_dropdown:
+    edit_profile: 'Edit profile'
+    email_settings: 'Email settings'
+    help: 'Help'
+    contact: 'Contact Loomio'
+    sign_out: 'Sign out'
 
   start_menu:
     label: 'User actions'
@@ -791,6 +793,7 @@ en:
     edit: Edit
     messages:
       updated: Email settings updated
+    learn_more: Learn more about email settings...
 
   dashboard_page:
     aria_label: 'Dashboard'
@@ -901,6 +904,7 @@ en:
     print_thread: 'Print'
     delete_thread: 'Delete'
     add_comment: 'Comment'
+    seen_by_count: 'Seen by {{count}}'
 
   pin_thread_modal:
     title: Pin thread
@@ -1296,7 +1300,7 @@ en:
 
   poll_count_form:
     tool_tip_expanded: |
-      <p>A <em>check</em> is a tool with many possible uses but only 2 responses: Tick or Dash.</p>
+      <p>A <em>check</em> is a tool with many possible uses but only 2 responses: a tick (✔) or an x mark (✘). Participants will use the tick (✔) to say yes and the x mark (✘) to say no or unsure.</p>
       <p>Use it to engage people with an offer, like an RSVP: "I'm coming to the event" or "I'll join the working group".</p>
       <p>Or use it to track completion of a task: "I've checked my contact details are correct", or "I've read the document and left my feedback".</p>
       <p>A check has a <em>goal</em>, which is the number of participants you'd like. The goal indicates to the group if something needs more attention or is well subscribed.</p>
@@ -1532,6 +1536,7 @@ en:
   auth_form:
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in: Sign in
+    sign_in_as: Sign in as {{name}}
     invitation_required: You need an invitation to create an account.
     choose_an_account: "Sign in via a third party, or enter your email address to continue."
     invitation_required: Account not found. New accounts are by invitation only.
@@ -1539,8 +1544,10 @@ en:
     email_not_present: An email address is required
     invalid_email: "Sorry, that doesn't look like a valid email address"
     invalid_password: "Sorry, that password doesn't match the one we have on file"
+    invalid_token: "Sorry, we weren't able to use that token to log you in. Click below to send another one."
     email_not_found: "Sorry, we couldn't find an account with that email address"
     email_placeholder: you@example.com
+    login_with_token: You're all set! Click the link below to log in.
     login_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.
       If you'd like to use a password to log in in the future, you can set one from your profile page.

@@ -7,9 +7,9 @@ require 'rails_helper'
     let!(:membership) { group.add_member! user }
     let(:subject) { BootData.new(user) }
     let(:notification) { create(:notification, user: user) }
-    let(:unread) { create(:discussion, group: group) }
     let(:comment) { create(:comment, parent: create(:comment, discussion: discussion, author: user), discussion: discussion) }
     let(:event) { Events::CommentRepliedTo.create(kind: 'comment_replied_to', eventable: comment) }
+    let(:identity) { create :slack_identity, user: user }
 
     describe 'data' do
       it 'returns the current users memberships' do
@@ -21,14 +21,9 @@ require 'rails_helper'
         expect(subject.data[:notifications].map { |n| n[:id] }).to include Notification.last.id
       end
 
-      it 'returns the current users unread threads' do
-        unread
-        expect(subject.data[:discussions].map { |d| d[:id] }).to include unread.id
-      end
-
-      it 'does not return old unread threads' do
-        unread.update(last_activity_at: 10.weeks.ago)
-        expect(subject.data[:discussions]).to_not be_present
+      it 'returns the current users identities' do
+        identity
+        expect(subject.data[:identities].map { |i| i[:id] }).to include identity.id
       end
     end
  end

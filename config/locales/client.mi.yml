@@ -98,7 +98,6 @@ mi:
     sign_in: "Me takiuru mai, he whakamana mō te whakawhiti kōrero"
   sidebar:
     muted_threads: 'Ngā miro kāhore e kōrero ana'
-    help: 'Āwhina'
   navbar:
     search:
       placeholder: 'Rapu'

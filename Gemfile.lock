@@ -640,8 +640,6 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    skylight (1.4.0)
-      activesupport (>= 3.0.0)
     snorlax (0.1.6)
       rails (> 4.1)
     socksify (1.7.1)
@@ -776,7 +774,6 @@ DEPENDENCIES
   selenium-webdriver
   sequenced (~> 2.0.0)
   shoulda-matchers
-  skylight
   snorlax
   spring
   spring-commands-rspec
@@ -790,7 +787,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.3.4p301
+   ruby 2.3.5p376
 
 BUNDLED WITH
    1.15.4

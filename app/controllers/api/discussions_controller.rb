@@ -20,7 +20,10 @@ class API::DiscussionsController < API::RestfulController
   def inbox
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     instantiate_collection { |collection| collection_for_inbox collection }
-    respond_with_collection
+    respond_with_collection scope: default_scope.merge(
+      poll_cache:   Caches::Poll.new(parents: collection),
+      reader_cache: Caches::DiscussionReader.new(user: current_user, parents: collection)
+    )
   end
 
   def move
@@ -75,7 +78,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def collection_for_inbox(collection)
-    collection.not_muted.unread.sorted_by_latest_activity
+    collection.recent.not_muted.unread.sorted_by_latest_activity.includes(:group, :author)
   end
 
 end
