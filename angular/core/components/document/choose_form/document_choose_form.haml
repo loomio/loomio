@@ -1,0 +1,9 @@
+.document-choose-form
+  %p.lmo-hint-text{translate: "document.choose_form.helptext"}
+  .document-choose-form__buttons.lmo-flex{layout: "row"}
+    %md-button.document-choose-form__button{ng-click: "document.method = 'url'"}
+      %i.mdi.mdi-link.mdi-24px
+      %p.lmo-hint-text{translate: "document.choose_form.url_helptext"}
+    %md-button.document-choose-form__button{ng-click: "document.method = 'file'"}
+      %i.mdi.mdi-file.mdi-24px
+      %p.lmo-hint-text{translate: "document.choose_form.file_helptext"}

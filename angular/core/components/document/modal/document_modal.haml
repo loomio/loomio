@@ -2,7 +2,8 @@
   .lmo-disabled-form{ng-show: "isDisabled"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
-      %i.mdi.mdi-file-document
+      %i.mdi.mdi-file-document{ng-if: "!document.method || document.url"}
+      %i.mdi.mdi-arrow-left{ng-if: "document.method && !document.url", ng-click: "document.method = null"}
       %h1.lmo-h1{translate: "document.modal.title"}
       %material_modal_header_cancel_button
   .md-dialog-content
