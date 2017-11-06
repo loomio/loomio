@@ -12,11 +12,6 @@ class DiscussionSerializer < ActiveModel::Serializer
     attributes *attrs
   end
 
-
-  def reader
-    @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]
-  end
-
   attributes :id,
              :key,
              :title,
@@ -33,14 +28,14 @@ class DiscussionSerializer < ActiveModel::Serializer
              :private,
              :versions_count,
              :importance,
-             :pinned,
-             :read_ranges
+             :pinned
 
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
                          :discussion_reader_volume,
                          :last_read_at,
-                         :dismissed_at
+                         :dismissed_at,
+                         :read_ranges
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups

@@ -61,20 +61,22 @@ class DiscussionService
 
   def self.mark_as_seen(discussion:, actor:)
     actor.ability.authorize! :mark_as_seen, discussion
-    DiscussionReader.for_model(discussion, actor).update_attribute(:last_read_at, discussion.created_at)
-    EventBus.broadcast('discussion_mark_as_seen', discussion.reload, actor)
-
+    reader = DiscussionReader.for_model(discussion, actor)
+    reader.viewed!
+    EventBus.broadcast('discussion_mark_as_seen', reader, actor)
   end
 
   def self.mark_as_read(discussion:, params:, actor:)
     actor.ability.authorize! :mark_as_read, discussion
-    reader = DiscussionReader.for_model(discussion, actor).viewed!(params[:ranges])
+    reader = DiscussionReader.for_model(discussion, actor)
+    reader.viewed!(params[:ranges])
     EventBus.broadcast('discussion_mark_as_read', reader, actor)
   end
 
   def self.dismiss(discussion:, params:, actor:)
     actor.ability.authorize! :dismiss, discussion
-    reader = DiscussionReader.for(user: actor, discussion: discussion).dismiss!
+    reader = DiscussionReader.for(user: actor, discussion: discussion)
+    reader.dismiss!
     EventBus.broadcast('discussion_dismiss', reader, actor)
   end
 
