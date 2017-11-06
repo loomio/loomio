@@ -159,14 +159,14 @@ fr:
     loud: 'Élevé'
     normal: 'Normal'
     quiet: 'Bas'
-    mute: 'Désactivé'
-    unmute: 'Réactiver'
+    mute: 'Ignorer'
+    unmute: 'Suivre de nouveau'
   change_volume_form:
     aria_label: "Formulaire des paramètres de notification"
     loud_label: "Toute l'activité"
     normal_label: "Annonces"
     quiet_label: "Aucun courriel"
-    mute_label: "Désactivé"
+    mute_label: "Ignorer"
     discussion:
       title: "Paramètres courriel pour {{title}}"
       loud_description: "Vous recevrez un courriel à chaque fois qu'il y aura une activité dans cette discussion."
@@ -203,18 +203,17 @@ fr:
         normal: "Vous recevrez un courriel pour toute annonce dans un nouveau groupe."
         quiet: "Vous ne recevrez aucun courriel concernant les nouveaux groupes."
   mute_explanation_modal:
-    aria_label: Désactiver la discussion
-    mute_thread: Désactiver la discussion
+    aria_label: Ignorer la discussion
+    mute_thread: Ignorer la discussion
     body_html: |
-      <p>Désactiver la discussion signifie que vous <strong>ne recevrez aucune notification concernant les propositions</strong>, ni sur aucune activité de ce fil de discussion, sauf si quelqu'un vous <strong>@mentionnne.</strong></p>
-      <p>Les fils de discussion désactivés sont également invisibles dans les pages <strong>Récents</strong> et <strong>Non lus</strong>. Pour retrouver vos fils désactivés, sélectionnez l'option <strong>Désactivés</strong> de la barre latérale :</p>
-    image_alt: Option discussions désactivées dans la barre latérale
+      <p>Ignorer la discussion signifie que vous <strong>ne recevrez aucune notification concernant les décisions</strong>, ni sur aucune activité de ce fil de discussion, sauf si quelqu'un vous <strong>@mentionnne.</strong></p>
+      <p>Les fils de discussion ignorés sont également invisibles dans les pages <strong>Récents</strong> et <strong>Non lus</strong>. Pour retrouver vos discussion ignorées, sélectionnez l'option <strong>Discussions ignorées</strong> de la barre latérale :</p>
+    image_alt: Option discussions ignorées dans la barre latérale
   dismiss_explanation_modal:
-    aria_label: Passer la discussion
-    dismiss_thread: Passer la discussion
+    aria_label: Marquer la discussion comme lue
+    dismiss_thread: Marquer la discussion comme lue
     body_html: |
-      <p>Passer une discussion la retire de vos non-lus. S'il y a une nouvelle
-      activité dans la discussion, elle sera affichée de nouveau en non-lu.</p>
+      <p>Marquer comme lue une discussion la retire de vos discussions non-lues. S'il y a une nouvelle activité dans la discussion, elle sera affichée de nouveau comme non-lue.</p>
   inbox:
     clear: 'Vider'
     latest: 'Dernier'
@@ -253,7 +252,7 @@ fr:
   sidebar:
     recent_threads: 'Discussions récentes'
     unread_threads: 'Discussions non lues ({{count}})'
-    muted_threads: 'Discussions désactivées'
+    muted_threads: 'Discussions ignorées'
     start_group: 'Nouveau groupe'
     explore: 'Groupes publics'
     start_thread: Nouvelle discussion
@@ -387,7 +386,7 @@ fr:
     upload_success: 'Le logo a été mis à jour avec succès'
   join_group_button:
     join_group: Rejoindre le groupe
-    membership_requested: Demandes d'adhésion en attente
+    membership_requested: Demandes d'ajout en attente
     messages:
       joined_group: 'Vous êtes désormais membre de {{group}}'
   membership_request_form:
@@ -469,7 +468,7 @@ fr:
       quiet_aria_description: Votre volume de notification pour ce groupe est réglé sur Léger. Vous ne recevrez aucun courriel pour vous informer des actualités de ce groupe. Vous pourrez les voir sur votre Tableau de Bord.
       quiet_message: 'Vous ne recevrez aucun courriel concernant les activités dans "{{name}}".'
       mute: Masque ce groupe dans le tableau de bord et n'envoyer aucune notification sauf si l'on est @mentionné.
-      mute_aria_description: Votre volume de notification pour ce groupe est réglé sur Désactivé. Vous ne recevrez aucun courriel sauf si quelqu'un vous @mentionne, et l'actualité du groupe ne sera pas non plus affichée sur votre Tableau de Bord.
+      mute_aria_description: Votre volume de notification pour ce groupe est réglé sur Ignoré. Vous ne recevrez aucun courriel sauf si quelqu'un vous @mentionne, et l'actualité du groupe ne sera pas non plus affichée sur votre Tableau de Bord.
       mute_message: '"{{name}}" a été retiré de votre Tableau de Bord.'
     privacy:
       private: 'Confidentialité: Ce groupe est seulement visible pour ses membres.'
@@ -532,7 +531,7 @@ fr:
     public_discussions_subgroup: 'N''importe qui de {{parentGroupName}} peut voir les discussions'
     public_or_private_threads: 'Autoriser les discussions privées et publiques'
     private_threads: 'Seuls les membres peuvent voir les discussions'
-    permissions: 'Autorisations'
+    permissions: 'Permissions'
     allow_public_threads: 'Autoriser les discussions publiques dans ce groupe.'
     parent_members_can_see_discussions: 'Les membres de {{parent}} peuvent voir les discussions privées.'
     members_can_add_members: 'Les membres peuvent inviter des personnes et approuver les demandes d''adhésion.'
@@ -540,7 +539,7 @@ fr:
     members_can_edit_discussions: 'Les membres peuvent modifier le titre et la description de n''importe quelle discussion.'
     members_can_edit_comments: 'Les membres peuvent modifier leurs propres commentaires à n''importe quel moment.'
     members_can_start_discussions: 'Les membres peuvent créer une nouvelle discussion.'
-    members_can_vote: 'Les membres peuvent voter sur les propositions.'
+    members_can_vote: 'Les membres peuvent voter sur les décisions.'
     members_can_raise_motions: 'Les membres peuvent créer une nouvelle proposition.'
     submit_start_group: 'Créer un groupe'
     submit_start_subgroup: 'Créer un sous-groupe'
@@ -564,7 +563,7 @@ fr:
       request_approved_success: Demande d'ajout acceptée
       request_ignored_success: Demande d'ajout ignorée
   group_previous_proposals_card:
-    heading: Propositions précédentes
+    heading: Décisions précédentes
     see_more: Voir plus
   group_decisions_card:
     see_more: "See all: ({{count}}) decisions"
@@ -642,10 +641,10 @@ fr:
     locale_field: 'Langue: {{value}}'
     online_field: 'En ligne: {{value}}'
   contact_request_form:
-    modal_title: "Envoyer un email à {{name}}"
+    modal_title: "Envoyer un courriel à {{name}}"
     message_placeholder: Présentez-vous et dites-nous pourquoi vous voulez entrer en relation.
-    helptext: "Votre nom, adresse email et message seront envoyés à {{name}}"
-    email_sent: "Email envoyé à {{name}}"
+    helptext: "Votre nom, adresse e-mail et message seront envoyés à {{name}}"
+    email_sent: "Courriel envoyé à {{name}}"
   profile_page:
     messages:
       updated: 'Profil mis à jour'
@@ -690,7 +689,7 @@ fr:
     aria_label: 'Désactiver mon compte'
     introduction: 'Quand vous désactivez votre compte:'
     no_longer_group_member: 'Vous ne serez plus enregistré comme membre d''aucun groupe'
-    name_removed: 'Les commentaires, les propositions et les discussions que vous avez fait resteront mais votre nom en sera retiré'
+    name_removed: 'Les commentaires, les décisions et les discussions que vous avez fait resteront mais votre nom en sera retiré'
     no_emails: 'Vous ne recevrez plus de courriels de notification'
     contact_for_reactivation: 'Vous aurez besoin de nous recontacter pour réactiver votre compte'
     submit: 'Oui, je veux désactiver'
@@ -708,7 +707,7 @@ fr:
     header: Réglages de courriel
     all_groups: Paramètres pour tous les groupes
     daily_summary_label: Résumé quotidien
-    daily_summary_description: "Tous les matins, vous recevrez un email avec toutes les activités que vous avez raté la veille. Cela vous permet de rester au courant de l'activité de vos groupes."
+    daily_summary_description: "Tous les matins, vous recevrez un courriel avec toutes les activités que vous avez raté la veille. Cela vous permet de rester au courant de l'activité de vos groupes."
     on_participation_label: Notification sur les discussions auxquelles je participe
     on_participation_description: "Lorsque vous participez à une discussion, toute activité ultérieure vous sera immédiatement envoyée par courriel."
     mentioned_label: Mentions
@@ -717,7 +716,7 @@ fr:
     specific_groups: Paramètres pour certains groupes
     default_settings:
       loud_description: "Quand vous rejoignez un nouveau groupe, vous recevrez un courriel <strong>à chaque fois qu'il y aura une activité</strong>."
-      normal_description: "Quand vous rejoignez un nouveau groupe, vous recevrez un courriel pour chaque <strong>nouveaux fils et propositions</strong>."
+      normal_description: "Quand vous rejoignez un nouveau groupe, vous recevrez un courriel pour chaque <strong>nouvelle discussion ou décision</strong>."
       quiet_description: "Quand vous rejoignez un nouveau groupe, <strong>Vous ne recevrez pas de courriel pour les activités</strong>."
     edit: Modifier
     messages:
@@ -727,27 +726,27 @@ fr:
     aria_label: 'Tableau de bord'
     no_groups:
       show_all: Aucune discussion à afficher car vous n'êtes membre d'aucun groupe.
-      show_muted: Aucune discussion désactivée car vous n'êtes membre d'aucun groupe.
+      show_muted: Aucune discussion ignorée car vous n'êtes membre d'aucun groupe.
       start: Démarrer
       or: ou
       join_group: <a href="/explore">rejoindre</a> un groupe pour voir des discussions.
     no_threads:
       show_all: Vous n'avez aucune discussion récente.
       show_proposals: Il n'y a aucune proposition active actuellement.
-      show_muted: Vous n'avez pas de discussion désactivée.
+      show_muted: Vous n'avez pas de discussion ignorée.
     view_recent: Voir toutes les discussions récentes ?
     load_more: Charger plus de discussions
     mark_as_read: Marquer comme lu
-    dismiss: Laisser.
-    thread_dismissed: Discussion laissée.
+    dismiss: Marquer comme lue
+    thread_dismissed: Discussion marquée comme lue.
     explain_mute:
-      title: Vous n'avez pas encore désactivé de discussion.
+      title: Vous n'avez pas encore ignoré de discussion.
       explanation_html: |
         Désactiver une discussion est un moyen de la cacher si elle ne vous intéresse pas.
-        La désactiver signifie que vous ne la verrez pas dans  <strong>Récent</strong> ou <strong>Non-lu</strong>, et vous ne serez pas tenu au courant de l'activité dans cette discussion, comme les propositions.
+        La désactiver signifie que vous ne la verrez pas dans  <strong>Récent</strong> ou <strong>Non-lu</strong>, et vous ne serez pas tenu au courant de l'activité dans cette discussion, comme les décisions.
         Vous serez seulement alertés si quelqu'un <strong>@mentionne</strong> votre nom.
-      instructions: 'Pour désactiver la discussion, passez la souris dessus et cliquez sur l''icône de désactivation.'
-      see_muted_html: 'Pour voir vos discussion désactivées, cliquez sur <strong>"Désactivé"</strong>. Vous pouvez la réactiver en cliquant sur la même icône.'
+      instructions: 'Pour ignorer la discussion, passez la souris dessus et cliquez sur l''icône Ignorer.'
+      see_muted_html: 'Pour voir vos discussion ignorées, cliquez sur <strong>"Ignoré"</strong>. Vous pouvez la suivre de nouveau en cliquant sur la même icône.'
     filtering:
       filter_threads: Filtrer les discussions
       filter_threads_aria_label: Filtrer les discussions
@@ -755,12 +754,12 @@ fr:
       all: Discussions récentes
       all_aria_label: Voici les discussions récentes
       all_description: Voir les discussions récentes
-      proposals: Propositions
-      proposals_aria_label: Voici les discussions avec des propositions en cours
-      proposals_description: Voir uniquement les discussions avec des propositions en cours
-      muted: Désactivé
+      proposals: Décisions
+      proposals_aria_label: Voici les discussions avec des décisions en cours
+      proposals_description: Voir uniquement les discussions avec des décisions à prendre
+      muted: Ignoré
       muted_aria_label: Voici les discussions mises en sourdine
-      muted_description: Voir uniquement les discussions qui ont été mise en sourdine
+      muted_description: Voir uniquement les discussions qui ont été ignorées
     aria_thread:
       unread: '{{count}} élément(s) non lu(s).'
       current_proposal: 'Proposition actuelle : {{name}}.'
@@ -793,8 +792,8 @@ fr:
   discussion:
     activity: 'Activité'
     activity_placeholder: 'Aucune activité pour l''instant !'
-    proposals: 'Propositions'
-    previous_proposals: 'Propositions précédentes'
+    proposals: 'Décisions'
+    previous_proposals: 'Décisions précédentes'
     load_previous: 'Charger l''activité récente'
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited: 'Modifié'
@@ -802,8 +801,8 @@ fr:
       pinned: 'Discussion épinglée'
       unpinned: 'Discussion plus épinglée'
     volume:
-      mute_message: 'Discussion désactivée.'
-      unmute_message: 'Discussion réactivée'
+      mute_message: 'Discussion ignorée.'
+      unmute_message: 'Discussion suivie'
   thread_group:
     aria_label: 'Nom du groupe'
   thread_context:
@@ -814,11 +813,12 @@ fr:
     edit_thread: 'Modifier'
     pin_thread: 'Épingler'
     unpin_thread: 'Ne plus épingler'
-    mute_thread: 'Désactiver'
+    mute_thread: 'Ignorer'
     move_thread: 'Déplacer'
     print_thread: 'Imprimer'
     delete_thread: 'Supprimer'
     add_comment: 'Commentaire'
+    seen_by_count: 'Vu par {{count}}'
   pin_thread_modal:
     title: Épingler la discussion
     helptext: "Les discussions mises en avant apparaîtront toujours en tête des discussions de leur groupe. Elles permettent d'informer les membres des annonces importantes ou de partager un code de conduite ou des règles de communauté."
@@ -1028,7 +1028,7 @@ fr:
     loomio_group: Groupe
     loomio_group_placeholder: (aucun groupe sélectionné)
   poll_common_voter_add_options:
-    add_options: Les votants peuvent ajouter des options
+    add_options: Permettre aux participants d'ajouter des options
     helptext_on: Les participants peuvent ajouter leurs propres options en votant
     helptext_off: Les participants choisiront parmi les options proposées
   poll_common_notify_group:
@@ -1084,8 +1084,8 @@ fr:
     show_undecided: "Afficher les {{count}} indécis"
     show_invitations: Montrer les invitations en attente
     undecided_users: "Indécis ({{count}})"
-    invitation_count_singular: "1 autre personne a été invitée à participer par email"
-    invitation_count_plural: "{{count}} autres personnes ont été invitées à participer par email"
+    invitation_count_singular: "1 autre personne a été invitée à participer par courriel"
+    invitation_count_plural: "{{count}} autres personnes ont été invitées à participer par courriel"
   poll_common_undecided_user:
     reminded: Rappel envoyé !
     reminder_sent: Notification de rappel envoyée
@@ -1113,9 +1113,9 @@ fr:
   poll_common_unsubscribe_form:
     title: Recevoir les mises à jour
     label: Recevoir des courriels quand cette décision est mise à jour
-    tooltip: Les notifications par email vous tiennent informé⋅e à propos de cette décision, comme par exemple quand elle est modifiée, quand elle se termine, ou quand un résultat a été atteint. En décochant cette case, vous ne recevrez plus de nouveaux emails de notification pour cette décision.
+    tooltip: Les notifications par courriel vous tiennent informé⋅e à propos de cette décision, comme par exemple quand elle est modifiée, quand elle se termine, ou quand un résultat a été atteint. En décochant cette case, vous ne recevrez plus de nouveaux courriels de notification pour cette décision.
     helptext_on: Vous recevrez un courriel lorsqu'il y aura une activité dans cette décision
-    helptext_off: Vous ne recevrez aucun email concernant cette décision
+    helptext_off: Vous ne recevrez aucun courriel concernant cette décision
     subscribed: Vous vous êtes abonné avec succès
     unsubscribed: Vous vous êtes désabonné avec succès
   poll_common_form:
@@ -1136,7 +1136,7 @@ fr:
       <p>Un diagramme circulaire donne un aperçu des avis dans le groupe, tandis que les explications permettent aux voix individuelles d'être entendues. </p>
       <p>Ne soyez pas découragé⋅e si vous ne voyez pas d'accord au début, les propositions sont faites pour faire émerger les problèmes qui ont besoin d'être résolus.</p>
       <p>Avec une bonne participation, une proposition est un mandat puissant pour passer à l'action.
-    tool_tip_collapsed: Chercher l'accord collectif
+    tool_tip_collapsed: Cherchez l'accord collectif
     start_header: Faire une proposition
     edit_header: Editer la proposition
     tip: Rechercher l'accord collectif à travers un processus qui permet à toutes les voix d'être entendues. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Apprenez-en plus</a>
@@ -1163,10 +1163,10 @@ fr:
     poll_updated: Sondage mis à jour
   poll_count_form:
     tool_tip_expanded: |
-      <p>Une <em>vérification</em> est un outil qui peut être utilisé dans différents cas, mais qui propose seulement 2 réponses: coche ou tiret.</p>
+      <p>Une <em>vérification</em> est un outil qui peut être utilisé dans différents cas, mais qui propose seulement 2 réponses: une coche (✔) ou une croix (✘). Les participants choisiront la coche (✔) pour dire oui et la croix (✘) pour dire non ou « je ne suis pas sûr » </p>
       <p>Utilisez-le pour obtenir une participation sur votre proposition, par exemple en la formulant comme: « Je viendrai à cet événement » ou « Je rejoins le groupe de travail »</p>
       <p>Ou utilisez-le pour suivre la progression d'une tâche: « J'ai vérifié mes coordonnées » ou « J'ai lu le document et ai fait mes retours »</p>
-      <p>Une vérification a un <em>objectif</em>, qui est le nombre de participants souhaité. L'objectif indique au groupe si un point nécessite leur attention ou s'il est déjà bien suivi.</p>
+      <p>Une vérification a pour <em>objectif</em> le nombre de participants souhaité. L'objectif indique au groupe si un point nécessite leur attention ou s'il est déjà bien suivi.</p>
       <p>Un jour avant la fin de la vérification, une notification sera envoyée à ceux qui n'ont pas répondu, pour obtenir la plus grande participation sans que vous n'ayez à relancer les membres.</p>
     tool_tip_collapsed: Suivez la participation et trouvez des volontaires
     start_header: Démarrer la vérification
@@ -1181,7 +1181,7 @@ fr:
       <p>Le vote à points est une manière de prioriser une liste d'options.</p>
       <p>Les participants disposent d'un nombre limité de « points » qu'ils peuvent allouer comme ils le veulent aux différentes options pour refléter leurs préférences.</p>
       <p>Le total des résultats est affiché, tout comme les votes individuels, pour vous permettre de connaître différents points de vue.</p>
-    tool_tip_collapsed: Prioriser des options
+    tool_tip_collapsed: Priorisez des options
     start_header: Démarrer un vote à points
     edit_header: Editer le vote à points
     tip: Allouer des ressources collectivement
@@ -1199,7 +1199,7 @@ fr:
       <p>Si vous ajoutez de nouvelles options pendant un sondage réunion, ceux qui ont déjà voté sont sollicités pour mettre à jour leur réponse.</p>
       <p>Vous pouvez voir qui est disponible à quel moment et décider quand aura lieu la rencontre.</p>
       <p>Les horaires sont automatiquement convertis dans le fuseau horaires des participants.</p>
-    tool_tip_collapsed: Trouver un moment pour se réunir
+    tool_tip_collapsed: Trouvez un moment pour vous réunir
     start_header: Commencer un sondage réunion
     edit_header: Editer le sondage réunion
     tip: Trouvez quand les personnes sont disponibles pour se réunir
@@ -1314,7 +1314,7 @@ fr:
     get_link: Copier le lien
     invite_visitor: Inviter des personnes
     invite_visitor_helptext: Inviter des individus à cette décision par adresse électronique. Les invités ne pourront participer qu'à cette décision.
-    send_email: Envoyez un email
+    send_email: Envoyez un courriel
     shareable_link_created: Tout le monde peut maintenant participer à cette décision
     shareable_link_revoked: Cette décision est maintenant sur invitation seulement
     shareable_link: Lien partageable
@@ -1392,18 +1392,18 @@ fr:
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé! Merci de nous contacter pour réactiver votre compte utilisateur.
     welcome: Enchanté, {{email}}!
     welcome_back: Content de vous revoir, {{name}}!
-    login_link: Recevoir un lien de connexion par courriel
+    login_link: Recevoir un courriel de connexion
     set_password: Définir un mot de passe
     hello: "Bonjour, {{name}}!"
     new_to_loomio: Nouveau sur {{site_name}}? Créez un compte!
     create_account: Créez un compte
-    already_a_user: Vous avez déjà un compte {{site_name}}? Entrez votre email pour connecter à ce compte au vôtre
+    already_a_user: Vous avez déjà un compte {{site_name}}? Entrez votre adresse e-mail pour connecter à ce compte au vôtre
     link_accounts: Comptes associés
     check_your_email: Vérifier votre e-mail !
     login_link_sent: "Ok, nous avons envoyé un courriel à {{email}} avec un lien de connexion immédiate. A bientôt!"
     password_link_sent: "Nous avons envoyé un courriel à {{email}} avec les instructions pour définir votre mot de passe."
     signed_in: Connexion réussit
-    email_verified: La vérification par email a réussi
+    email_verified: La vérification par courriel a réussi
     name: Nom
     email: Adresse e-mail
     password: Mot de passe
