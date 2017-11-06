@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'loading', ->
-  scope: {diameter: '='}
+  scope: {diameter: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/loading/loading.html'
   replace: true
