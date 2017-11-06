@@ -281,6 +281,12 @@ zh_TW:
     sign_in: '登入'
     toggle_sidebar: '切換側邊欄'
     logo_title: '首頁'
+  user_dropdown:
+    edit_profile: '編輯簡歷'
+    email_settings: '電子郵件設定'
+    help: '教學文件'
+    contact: '聯絡 Loomio'
+    sign_out: '登出'
   start_menu:
     label: '使用者動作'
     title: '動作'
@@ -813,6 +819,7 @@ zh_TW:
     print_thread: '列印'
     delete_thread: '刪除'
     add_comment: '意見'
+    seen_by_count: '被 {{count}} 個人看過'
   pin_thread_modal:
     title: 釘選討論串
     helptext: "已釘選的討論串總是會顯示在它們群組討論串清單的頂部。它們可以被用於提醒成員重要的公告，或是推廣一些一般的文章，如行為規範或社群指南等等。"
@@ -1157,7 +1164,7 @@ zh_TW:
     poll_updated: 投票已更新
   poll_count_form:
     tool_tip_expanded: |
-      <p><em>勾選</em>則是一個有許多可能的使用方法的工具，但其只有兩種回應方式：打勾或劃掉。</p>
+      <p><em>勾選</em>則是一個有許多可能的使用方法的工具，但其只有兩種回應方式：打勾 (✔) 或打叉 (✘)。參與者可以使用打勾 (✔) 來表示同意，或是使用打叉 (✘) 來說不或表示不確定。</p>
       <p>使用其來吸引人們參與，例如：「我會來參加活動」或是「我將加入工作小組」等。</p>
       <p>或是使用其來追蹤工作的完成度：「我已經檢查過我的連絡人詳細資訊，一切都沒錯」，或是「我已經讀過文件且留下了我的意見了」。</p>
       <p>勾選是有<em>目標</em>的，其應該是您想要有多少參與者的數量。如果某些事情需要更多的關注或是需要更多參與者訂閱，那麼目標就是向團隊表明這些事情。</p>
