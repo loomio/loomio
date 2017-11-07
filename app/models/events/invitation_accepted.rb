@@ -19,6 +19,9 @@ class Events::InvitationAccepted < Event
   end
 
   def notification_url
-    group_memberships_username_url(eventable.group, eventable.user.username) if eventable
+    case eventable.group
+    when FormalGroup then group_memberships_username_url(eventable.group, eventable.user.username)
+    when GuestGroup  then polymorphic_url(eventable.group.invitation_target)
+    end
   end
 end
