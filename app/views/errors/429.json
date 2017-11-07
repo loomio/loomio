@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": 429,
+    "message": "Sorry, you have exceeded the maximum allowed requests per minute for this action. Please wait a little while and try again."
+  }
+}

@@ -3,6 +3,8 @@ angular.module('loomioApp').directive 'userDropdown', (AppConfig, Session, UserH
   templateUrl: 'generated/components/user_dropdown/user_dropdown.html'
   replace: true
   controller: ($scope) ->
+    $scope.siteName = AppConfig.theme.site_name
+    
     $scope.user = Session.user()
 
     $scope.signOut = ->

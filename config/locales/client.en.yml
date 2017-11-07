@@ -304,7 +304,7 @@ en:
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
     help: 'Help'
-    contact: 'Contact Loomio'
+    contact_site_name: 'Contact {{site_name}}'
     sign_out: 'Sign out'
 
   start_menu:

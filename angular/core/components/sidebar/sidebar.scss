@@ -22,7 +22,7 @@
   border-radius: 4px;
   text-transform: none;
   @include md-body-1;
-  @include truncateText;
+  white-space: normal;
 }
 .sidebar__list-item-button--group{
   font-weight: 500;
