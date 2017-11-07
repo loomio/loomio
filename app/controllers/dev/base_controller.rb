@@ -1,6 +1,7 @@
 class Dev::BaseController < ApplicationController
   before_filter :ensure_not_production
   before_filter :cleanup_database
+  around_filter :dont_send_emails
 
   def index
     @routes = self.class.action_methods.select do |action|
@@ -30,5 +31,9 @@ class Dev::BaseController < ApplicationController
     Membership.delete_all
     Poll.delete_all
     ActionMailer::Base.deliveries = []
+  end
+
+  def dont_send_emails
+    BaseMailer.skip { yield }
   end
 end

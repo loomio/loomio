@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907184652) do
+ActiveRecord::Schema.define(version: 20171103062701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,6 +208,7 @@ ActiveRecord::Schema.define(version: 20170907184652) do
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
+  add_index "discussion_readers", ["last_read_at"], name: "index_discussion_readers_on_last_read_at", using: :btree
   add_index "discussion_readers", ["participating"], name: "index_discussion_readers_on_participating", using: :btree
   add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true, using: :btree
   add_index "discussion_readers", ["user_id", "volume"], name: "index_discussion_readers_on_user_id_and_volume", using: :btree
@@ -826,10 +827,10 @@ ActiveRecord::Schema.define(version: 20170907184652) do
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"
-    t.string   "short_bio",                                    default: "",         null: false
-    t.boolean  "email_verified",                               default: false,      null: false
-    t.string   "location",                                     default: "",         null: false
-    t.datetime "last_seen_at",                                 default: "now()",    null: false
+    t.string   "short_bio",                                    default: "",                    null: false
+    t.boolean  "email_verified",                               default: false,                 null: false
+    t.string   "location",                                     default: "",                    null: false
+    t.datetime "last_seen_at",                                 default: '2017-10-18 21:05:12', null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

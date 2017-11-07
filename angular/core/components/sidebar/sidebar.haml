@@ -1,16 +1,6 @@
 %md-sidenav.md-sidenav-left.lmo-no-print{role: "navigation", md-component-id: "left", md-is-open: "showSidebar", md-is-locked-open: "$mdMedia('gt-md') && showSidebar", md-whiteframe: "4", aria-label: "{{ 'sidebar.aria_labels.heading' | translate }}", aria-hidden: "{{!showSidebar}}"}
-  .sidebar__user-panel.lmo-no-print
-    %a.sidebar__user-avatar-container{lmo-href: "/profile"}
-      %user_avatar{user: "currentUser()", size: "medium-circular", ng-if: "currentUser().avatarKind != 'initials'"}
-      .sidebar__user-icon-container{ng-if: "currentUser().avatarKind == 'initials'"}
-        %i.sidebar__user-icon.mdi.mdi-account
-    .sidebar__user-details
-      .sidebar__user-name
-        {{currentUser().name}}
-      .sidebar__user-username
-        @{{currentUser().username}}
-  %outlet{name: "after-user-username", model: "currentUser()"}
   %md_content.sidebar__content.lmo-no-print{flex: "", layout: "column", ng-click: "sidebarItemSelected()", role: "navigation"}
+    .sidebar__divider
     %md_list.sidebar__list.sidebar__threads{layout: "column", aria-label: "{{ 'sidebar.aria_labels.threads_list' | translate }}"}
       %md_list_item
         %md_button.sidebar__list-item-button.sidebar__list-item-button--decisions{href: "", lmo-href: "/polls", ng-click: "isActive()", aria-label: "{{ 'sidebar.my_decisions' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('pollsPage')}"}
@@ -50,26 +40,3 @@
         %md_button.sidebar__list-item-button.sidebar__list-item-button--start-group{href: "", ng-click: "startGroup()", aria-label: "{{ 'sidebar.start_group' | translate }}"}
           %i.sidebar__list-item-icon.mdi.mdi-plus
           %span{translate: "sidebar.start_group"}
-    .sidebar__divider
-    %md_list_item.sidebar__list-subhead{translate: "common.settings"}
-    %md_list.sidebar__list.sidebar__users{aria-label: "{{ 'sidebar.aria_labels.user_list' | translate }}"}
-      %md_list_item
-        %md_button.sidebar__list-item-button.sidebar__list-item-button--profile{href: "", lmo-href: "/profile", aria-label: "{{ 'sidebar.edit_profile' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('profilePage')}"}
-          %i.sidebar__list-item-icon.mdi.mdi-account
-          %span{translate: "sidebar.edit_profile"}
-      %md_list_item
-        %md_button.sidebar__list-item-button.sidebar__list-item-button--email-settings{href:  "", lmo-href: "/email_preferences", aria-label: "{{ 'sidebar.email_settings' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('emailSettingsPage')}"}
-          %i.sidebar__list-item-icon.mdi.mdi-email-outline
-          %span{translate: "sidebar.email_settings"}
-      %md_list_item{ng-if: "showHelp()"}
-        %md_button.sidebar__list-item-button{href: "{{helpLink()}}", target: "_blank", aria-label: "{{ 'sidebar.help' | translate }}"}
-          %i.sidebar__list-item-icon.mdi.mdi-help-circle-outline
-          %span{translate: "sidebar.help"}
-      %md_list_item{ng-if: "showContactUs()"}
-        %md_button.sidebar__list-item-button{href: "", ng-click: "contactUs()", aria-label: "{{ 'sidebar.contact' | translate }}"}
-          %i.sidebar__list-item-icon.mdi.mdi-face
-          %span{translate: "sidebar.contact"}
-      %md_list_item
-        %md_button.sidebar__list-item-button{href: "", ng-click: "signOut()", aria-label: "{{ 'sidebar.sign_out' | translate }}"}
-          %i.sidebar__list-item-icon.mdi.mdi-exit-to-app
-          %span{translate: "sidebar.sign_out"}

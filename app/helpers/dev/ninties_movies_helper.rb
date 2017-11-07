@@ -300,6 +300,14 @@ module Dev::NintiesMoviesHelper
     comment = Comment.new(discussion: create_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
     CommentService.create(comment: comment, actor: jennifer)
 
+    # lots of reactions to the comment.
+    [max, emilio, judd].each {|u| comment.group.add_member! u}
+    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':slight_smile:'}, actor: jennifer)
+    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':heart:'}, actor: patrick)
+    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':laughing:'}, actor: max)
+    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':cry:'}, actor: emilio)
+    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':wave:'}, actor: judd)
+
     #'membership_requested',
     membership_request = MembershipRequest.new(name: 'The Ghost', email: 'boooooo@invisible.co', group: create_group)
     event = MembershipRequestService.create(membership_request: membership_request, actor: LoggedOutUser.new)

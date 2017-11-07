@@ -29,4 +29,8 @@ Loomio::Application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.middleware.use RackSessionAccess::Middleware
+
+  # Turns off logging for test environment, 6% speed up for testsuit
+  config.logger = Logger.new(nil)
+  config.log_level = :fatal
 end

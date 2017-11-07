@@ -27,6 +27,7 @@ class DiscussionSerializer < ActiveModel::Serializer
              :last_sequence_id,
              :last_comment_at,
              :last_activity_at,
+             :seen_by_count,
              :created_at,
              :updated_at,
              :archived_at,

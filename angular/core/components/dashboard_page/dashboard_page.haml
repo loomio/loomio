@@ -18,7 +18,7 @@
           %span{ng-show: "dashboardPage.filter == 'show_muted' && dashboardPage.userHasMuted()", translate: "dashboard_page.no_threads.show_muted"}>
           %a{lmo-href: "/dashboard", ng-show: "dashboardPage.filter != 'show_all' && dashboardPage.userHasMuted()"}
             %span{translate: "dashboard_page.view_recent"}>
-        .dashboard-page__explain-mute{ng-show: "dashboardPage.filter == 'show_muted' && !dashboardPage.userHasMuted()"}
+        .dashboard-page__explain-mute{ng-if: "dashboardPage.filter == 'show_muted' && !dashboardPage.userHasMuted()"}
           %p
             %strong{translate: "dashboard_page.explain_mute.title"}
           %p{translate: "dashboard_page.explain_mute.explanation_html"}

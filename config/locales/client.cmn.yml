@@ -11,8 +11,6 @@ cmn:
   comment_form:
     delete_comment: '删掉评论'
     confirm_delete_message: '你确定你想要删掉这条评论吗？'
-  sidebar:
-    sign_out: '推出'
   navbar:
     search:
       discussions: '讨论'

@@ -141,9 +141,9 @@ angular@*, angular@1.4.1, angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
 
-angular_record_store@2.8.2:
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-2.8.2.tgz#bd2a1a764e0c866ff9a7a6a04cc0dc550ec9c5ee"
+angular_record_store@2.8.3:
+  version "2.8.3"
+  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-2.8.3.tgz#e6e6cf36634cc2d68e7dd4af88f849e5d661da58"
   dependencies:
     coffeeify "^1.1.0"
     lodash "^3.10.1"
@@ -2117,9 +2117,9 @@ lodash@~4.16.4:
   version "4.16.6"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.6.tgz#d22c9ac660288f3843e16ba7d2b5d06cca27d777"
 
-lokijs@1.3.19:
-  version "1.3.19"
-  resolved "https://registry.yarnpkg.com/lokijs/-/lokijs-1.3.19.tgz#33002c87594ad190df9da2ac66888e1a85b3ca2b"
+lokijs@1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/lokijs/-/lokijs-1.5.1.tgz#7e1b20217142ec2a68ecc5476cbb6c80fc3ffa56"
 
 longest@^1.0.1:
   version "1.0.1"
@@ -2647,6 +2647,10 @@ private_pub@latest:
 process-nextick-args@^1.0.6, process-nextick-args@~1.0.6:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-1.0.7.tgz#150e20b756590ad3f91093f25a4f2ad8bff30ba3"
+
+promise-polyfill@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-6.0.2.tgz#d9c86d3dc4dc2df9016e88946defd69b49b41162"
 
 protractor-jasmine2-screenshot-reporter@^0.4.1:
   version "0.4.1"
@@ -3550,6 +3554,10 @@ websocket-driver@>=0.5.1:
 websocket-extensions@>=0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.1.tgz#76899499c184b6ef754377c2dbb0cd6cb55d29e7"
+
+whatwg-fetch@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
 
 which-module@^1.0.0:
   version "1.0.0"

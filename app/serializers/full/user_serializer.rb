@@ -5,7 +5,6 @@ class Full::UserSerializer < UserSerializer
 
   has_many :formal_memberships, serializer: MembershipSerializer, root: :memberships
   has_many :guest_memberships,  serializer: Simple::MembershipSerializer, root: :memberships
-  has_many :unread_threads,     serializer: DiscussionSerializer, root: :discussions
   has_many :notifications,      serializer: NotificationSerializer, root: :notifications
   has_many :identities,         serializer: IdentitySerializer, root: :identities
 
@@ -15,10 +14,6 @@ class Full::UserSerializer < UserSerializer
 
   def formal_memberships
     from_scope :formal_memberships
-  end
-
-  def unread_threads
-    from_scope :unread
   end
 
   def notifications

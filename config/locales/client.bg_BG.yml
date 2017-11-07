@@ -15,9 +15,6 @@ bg_BG:
   comment_form:
     delete_comment: 'Изтрий коментар'
     confirm_delete_message: 'Сигурни ли сте, че искате да изтриете този коментар?'
-  sidebar:
-    help: 'Помощ'
-    sign_out: 'Изход'
   navbar:
     search:
       discussions: 'Дискусии'

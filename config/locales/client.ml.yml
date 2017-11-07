@@ -18,10 +18,6 @@ ml:
   comment_form:
     delete_comment: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
     confirm_delete_message: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
-  sidebar:
-    email_settings: 'ഈമെയിൽ  ക്രമീകരണങ്ങള്‍'
-    help: 'സഹായം'
-    sign_out: 'പുറത്തു കടക്കുക'
   navbar:
     search:
       placeholder: 'തിരയുക'

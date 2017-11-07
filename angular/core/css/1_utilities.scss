@@ -135,8 +135,6 @@ textarea .lmo-textarea {
 }
 
 .timeago{
-  @include fontTiny();
-  color: $grey-on-white;
   white-space: nowrap;
 }
 

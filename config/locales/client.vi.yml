@@ -15,9 +15,6 @@ vi:
   comment_form:
     delete_comment: 'Xóa bình luận'
     confirm_delete_message: 'Bạn có chắc muốn xóa bình luận này?'
-  sidebar:
-    help: 'Trợ giúp'
-    sign_out: 'Đăng xuất'
   navbar:
     search:
       placeholder: 'Tìm kiếm'

@@ -6,6 +6,7 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
   controller: ($scope) ->
     $scope.currentState = ""
     $scope.showSidebar = true
+    InboxService.load()
 
     $scope.$on 'toggleSidebar', (event, show) ->
       if !_.isUndefined(show)
@@ -25,23 +26,8 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
     $scope.groupUrl = (group) ->
       LmoUrlService.group(group)
 
-    $scope.signOut = ->
-      Session.logout()
-
-    $scope.helpLink = ->
-      UserHelpService.helpLink()
-
     $scope.unreadThreadCount = ->
       InboxService.unreadCount()
-
-    $scope.showContactUs = ->
-      IntercomService.available()
-
-    $scope.showHelp = ->
-      AppConfig.features.help_link
-
-    $scope.contactUs = ->
-      IntercomService.contactUs()
 
     $scope.sidebarItemSelected = ->
       if !$mdMedia("gt-md")

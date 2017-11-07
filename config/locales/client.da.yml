@@ -191,11 +191,6 @@ da:
     muted_threads: 'Uden notifikationer'
     start_group: 'Opret gruppe'
     explore: 'Offentlige grupper'
-    edit_profile: 'Rediger profil'
-    email_settings: 'Emailndstillinger'
-    help: 'Hjælp'
-    contact: 'Kontakt Loomio'
-    sign_out: 'Log ud'
     start_thread: Opret debat
     start_decision: Opret stillingtagen
     aria_labels:

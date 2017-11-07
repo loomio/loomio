@@ -70,7 +70,7 @@ namespace :deploy do
     puts "Committing assets to deployment branch..."
     run_commands [
       "find fetched_plugins -name '*.*' | xargs git add -f",                          # add plugins folder to commit
-      "find public/img/emojis -name '*.png' | xargs git add -f",                      # add emojis to commit    
+      "find public/img/emojis -name '*.png' | xargs git add -f",                      # add emojis to commit
       "rm plugins; ln -s fetched_plugins plugins",                                    # add plugins symlink
       "git add -f plugins",                                                           # add symlink to repo
       "git add public/client/#{Loomio::Version.current} public/client/fonts -f",      # add assets to commit
