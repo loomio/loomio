@@ -156,7 +156,7 @@ de:
       messages:
         loud: "Du wirst über alles per eMail benachrichtigt, sobald in einer Deiner Gruppen etwas passiert."
         normal: "Du wirst nur über Ankündigungen in allen deinen Gruppen benachrichtigt."
-        quiet: "Du wirst über nichts in Deinen Gruppen benachrichtigt."
+        quiet: "Sie erhalten keine E-Mail-Benachrichtigungen zu Ihren Gruppen."
     user:
       title: E-Mail-Einstellungen für neue Gruppen
       loud_description: "Du wirst benachrichtigt, sobald in Gruppen, denen Du beitrittst, etwas passiert."
@@ -191,6 +191,7 @@ de:
       replied: '{{name}} wurde über die Antwort benachrichtigt'
       updated: 'Kommentar aktualisiert'
       destroyed: 'Kommenar gelöscht'
+    say_something: Tragen Sie etwas bei...
     edit_comment: 'Kommentar bearbeiten'
     delete_comment: 'Kommentar löschen'
     cancel_reply: 'Antwort abbrechen'
@@ -228,6 +229,8 @@ de:
       proposals: 'Vorschläge'
       comments: 'Kommentare'
     sign_in: 'Anmelden'
+  user_dropdown:
+    email_settings: 'E-Mail-Einstellungen'
   start_menu:
     label: 'Benutzer-Aktionen'
     start_group: 'Gruppe gründen'
@@ -240,10 +243,10 @@ de:
     no_notifications: "Es liegen keine Benachrichtigungen vor"
     new_discussion: "<strong>{{name}}</strong> hat die Diskussion <strong>{{title}}</strong> begonnen."
     new_motion: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{title}}</strong> erstellt"
-    motion_closed: "Vorschlag geschlossen: <strong>{{title}}</strong>"
+    motion_closed: "Vorschlag ist beendet: <strong>{{title}}</strong>"
     publish_outcome: "Ergebnis bekanntgeben"
-    motion_closed_by_user: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{title}}</strong> geschlossen"
-    motion_closed_by_expiry: "Der Vorschlag <strong>{{title}}</strong> wurde geschlossen"
+    motion_closed_by_user: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{title}}</strong> beendet"
+    motion_closed_by_expiry: "Der Vorschlag <strong>{{title}}</strong> wurde beendet"
     new_vote: "<strong>{{name}}</strong> {{position}} zum Vorschlag <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> hat einen Kommentar verfasst in <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> hat auf deinen Kommmentar in <strong>{{title}}</strong> geantwortet"
@@ -262,12 +265,12 @@ de:
     poll_created: "<strong>{{name}}</strong> hat einen {{poll_type}} angelegt: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> hat einen {{poll_type}} bearbeitet: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} wird bald beendet: <strong>{{title}}</strong>"
-    poll_expired: "{{poll_type}} geschlossen: <strong>{{title}}</strong>"
+    poll_expired: "{{poll_type}} ist beendet: <strong>{{title}}</strong>"
     poll_option_added: "<strong>{{name}}</strong> hat eine Option zu {{poll_type}} hinzugefügt: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> hat ein Ergebnis geteilt: <strong>{{title}}</strong>"
-    stance_created: "<strong>{{name}}</strong> hat an <strong>{{title}}</strong> teilgenommen"
+    stance_created: "<strong>{{name}}</strong> hat teilgenommen: <strong>{{title}}</strong>"
   position_buttons_panel:
-    heading: Komme zu Wort
+    heading: Vertreten Sie Ihre Meinung
   extend_proposal_form:
     aria_label: Abstimmungsende ändern
     title: 'Abstimmungsende ändern'
@@ -298,6 +301,10 @@ de:
     add_comment: Kommentieren
     edit_poll: Umfrage bearbeiten
     edit_stance: Abstimmungsentscheidung ändern
+    edit_comment: Kommentar bearbeiten
+    delete_comment: Kommentar löschen
+    reply_to_comment: Antworten
+    translate_comment: Kommentar übersetzen
   cover_photo_form:
     aria_label: 'Titelfoto Änderungsformumlar'
     heading: 'Neues Titelfoto'
@@ -363,7 +370,7 @@ de:
     new_group_logo: 'Neues Gruppenlogo hochladen'
     discussions: 'Themen'
     discussions_placeholder: 'An einer Diskussion können sich alle Mitglieder beteiligen und gemeinsam Entscheidungen treffen.'
-    members: 'Mitglieder ({{count}})'
+    members: 'Mitglieder'
     members_placeholder: 'Du bist allein hier: lade einige Leute ein!'
     member_options: Mitgliedseinstellungen
     see_all_members: 'Alle anzeigen: ({{count}}) Mitglieder'
@@ -617,9 +624,9 @@ de:
     aria_thread:
       unread: '{{count}} ungelesene Einträge'
       current_proposal: 'Aktueller Vorschlag: {{name}}.'
-      you_voted: 'Du hast folgendermaßen abgestimmt: {{position}}.'
+      you_voted: 'Sie haben folgendermaßen abgestimmt: {{position}}.'
     thread_preview:
-      you_voted: 'Du hast so abgestimmt: {{position}}'
+      you_voted: 'Sie haben folgendermaßen abgestimmt: {{position}}'
       undecided: 'Du bist unentschlossen'
     threads_from:
       group: 'Diskussionen von'
@@ -704,7 +711,7 @@ de:
   new_proposal_item:
     author_created_proposal: 'hat einen Vorschlag erstellt: <span>{{title}}</span>'
   proposal_closed_item:
-    proposal_closed: 'Der Vorschlag ist geschlossen: <span>{{title}}</span>'
+    proposal_closed: 'Der Vorschlag ist beendet: <span>{{title}}</span>'
   proposal_closed_by_user_item:
     proposal_closed_by_user: 'schloss den Vorschlag: <span>{{title}}</span>'
   proposal_edited_item:
@@ -818,7 +825,7 @@ de:
   poll_common_card:
     show_results: Ergebnis anzeigen
   poll_common_index_card:
-    title: Bisherige Entscheidungen
+    title: Bisherige Abstimmungen
     no_polls: Bislang sind keine Entscheidungen getroffen worden.
   current_polls_card:
     title: Aktuelle Abstimmungen
@@ -839,6 +846,9 @@ de:
     started_by: Erstellt von {{name}}
   poll_common_votes_panel:
     newest_first: Neueste zuerst
+    oldest_first: Älteste zuerst
+    priority_first: Zustimmende zuerst
+    priority_last: Ablehnende zuerst
     no_votes_yet: Es gibt noch keine Abstimmungsbeiträge.
   poll_common_undecided_panel:
     show_undecided: "{{count}} unentschlossene(n) Teilnehmer anzeigen"
@@ -848,21 +858,32 @@ de:
   poll_common_outcome_form:
     update_title: Abstimmungsergebnis aktualisieren
     statement_placeholder: Fassen Sie das Abstimmungsergebnis zusammen und geben Sie bekannt, was als nächstes passieren wird.
-    submit: Ergebnis teilen
+    submit: Ergebnis bekanntgeben
   poll_common_outcome_panel:
     authored_by: 'Von {{name}}'
+  poll_common_delete_modal:
+    question: Wirklich löschen?
+    title: Entscheidung löschen
+    success: Erfolgreich gelöscht
   poll_common_form:
     start: Start
   poll_proposal_form:
     tool_tip_collapsed: Gemeinschaftlich abstimmen
   poll_poll_form:
     tool_tip_collapsed: Beliebtheit eines Vorschlags messen oder Handlungsoptionen anbieten
+    edit_header: Umfrage bearbeiten
   poll_count_form:
     tool_tip_collapsed: Teilnahmebestätigung einholen oder Freiwillige finden
+    edit_header: Bestätigungsanfrage bearbeiten
+    count_created: Bestätigunganfrage gestartet
+    count_updated: Bestätigungsanfrage wurde aktualisiert
   poll_dot_vote_form:
     tool_tip_collapsed: Verschiedene Handlungsoptionen priorisieren
+    dots_per_person: Klebepunkte pro Person
   poll_meeting_form:
     tool_tip_collapsed: Gemeinsam passende Zeiten für Meetings finden
+  poll_ranked_choice_form:
+    tool_tip_collapsed: Handlungsoptionen in einer Reihenfolge gewichten
   poll_proposal_options:
     agree: Dafür
     abstain: Enthaltung
@@ -873,10 +894,15 @@ de:
     no_meaning: Ich kann leider keinen Beitrag zu dieser Diskussion leisten bzw. nicht daran teilnehmen
   poll_common_percent_voted:
     sentence: "{{percent}}% der Mitglieder haben ihre Abstimmungsposition mitgeteilt ({{numerator}}/{{denominator}})"
+  poll_count_chart_panel:
+    out_of: von {{goal}}
   poll_meeting_chart_panel:
     total: Gesamt
   poll_dot_vote_vote_form:
+    dots_remaining: "{{count}} Klebepunkt(e) übrig."
     too_many_dots: Sie haben zu viele Klebepunkte verwendet.
+  thread_item:
+    stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat abgestimmt: <strong>{{title}}</strong>"
   poll_common_subscribe_form:
     subscribe: Beitreten
   polls_page:
@@ -889,6 +915,7 @@ de:
   auth_form:
     email_placeholder: du@beispiel.de
     check_your_email: Überprüfen Sie Ihren E-Mail-Posteingang
+    email: E-Mail
   install_slack:
     progress:
       invite: Einladen
