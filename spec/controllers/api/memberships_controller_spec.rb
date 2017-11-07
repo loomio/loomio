@@ -291,7 +291,7 @@ describe API::MembershipsController do
   describe 'undecided' do
     let(:poll) { create :poll, discussion: discussion }
     let(:another_poll) { create :poll }
-    let(:stance) { create :stance, poll: poll, participant: user, stance_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }] }
+    let(:stance) { create :stance, poll: poll, participant: another_user, stance_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }] }
 
     it 'fetches an undecided membership' do
       get :undecided, poll_id: poll.id
@@ -320,9 +320,11 @@ describe API::MembershipsController do
       expect(response.status).to eq 200
 
       json = JSON.parse(response.body)
+      membership_user_ids = json['memberships'].map { |m| m['user_id'] }
       user_ids = json['users'].map { |u| u['id'] }
 
-      expect(user_ids).to_not include user.id
+      expect(membership_user_ids).to_not include stance.participant_id
+      expect(user_ids).to_not include stance.participant_id
     end
 
     it 'does not fetch memberships for polls you dont have access to' do
