@@ -218,3 +218,15 @@ img.emojione {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+.lmo-number-input {
+  width: 35px !important;
+  text-align: center;
+  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+}

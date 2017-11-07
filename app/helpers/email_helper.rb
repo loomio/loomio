@@ -31,16 +31,19 @@ module EmailHelper
     Redcarpet::Render::SmartyPants.render(output).html_safe
   end
 
-  def reply_to_address(discussion: , user: )
-    pairs = []
-    {d: discussion.id, u: user.id, k: user.email_api_key}.each do |key, value|
-      pairs << "#{key}=#{value}"
-    end
-    pairs.join('&')+"@#{ENV['REPLY_HOSTNAME']}"
+  def mailbox(discussion: , user: )
+    {
+      d: discussion.id,
+      u: user.id,
+      k: user.email_api_key
+    }.map { |key, value| "#{key}=#{value}" }.join('&')
   end
 
-  def reply_to_address_with_group_name(discussion: , user: )
-    "\"#{discussion.group.full_name}\" <#{reply_to_address(discussion: discussion, user: user)}>"
+  def reply_to_address(discussion: , user: )
+    [
+      ("\"#{discussion.group.full_name}\"" if discussion.group),
+      "<#{mailbox(discussion: discussion, user: user)}@#{ENV['REPLY_TO_HOST']}>"
+    ].compact.join(' ')
   end
 
   def render_email_plaintext(text)

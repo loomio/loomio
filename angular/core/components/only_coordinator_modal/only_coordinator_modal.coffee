@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'OnlyCoordinatorModal', ->
   controller: ($scope, $location, Session, LmoUrlService) ->
 
     $scope.groups = ->
-      _.filter Session.user().groups(), (group) ->
+      _.filter Session.user().formalGroups(), (group) ->
         _.contains(group.adminIds(), Session.user().id) and
         !group.hasMultipleAdmins
 

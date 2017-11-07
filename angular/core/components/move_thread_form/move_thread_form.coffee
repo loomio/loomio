@@ -4,7 +4,7 @@ angular.module('loomioApp').factory 'MoveThreadForm', ->
     $scope.discussion = discussion.clone()
 
     $scope.availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
+      _.filter Session.user().formalGroups(), (group) ->
         group.id != discussion.groupId
 
     $scope.submit = FormService.submit $scope, $scope.discussion,

@@ -9,7 +9,7 @@ class Full::UserSerializer < UserSerializer
   has_many :identities,         serializer: IdentitySerializer, root: :identities
 
   def guest_memberships
-    from_scope :memberships
+    from_scope :guest_memberships
   end
 
   def formal_memberships

@@ -243,8 +243,6 @@ describe "User abilities" do
     it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:create, subgroup_for_another_group) }
     it { should     be_able_to(:create, comment) }
-    it { should     be_able_to(:show_description_history, discussion) }
-    it { should     be_able_to(:preview_version, discussion) }
     it { should_not be_able_to(:update_version, discussion) }
     it { should     be_able_to(:update_version, user_discussion) }
     it { should_not be_able_to(:move, discussion) }

@@ -30,7 +30,8 @@ class PermittedParams < Struct.new(:params)
      :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
      :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
-     :poll_option_names, {poll_option_names: []}]
+     :poll_option_names, {poll_option_names: []},
+     :notified, {notified: [:editing, :id, :type, :title, :subtitle, :icon_url, :notified_ids, {notified_ids: []}]}]
   end
 
   def stance_attributes

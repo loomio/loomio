@@ -32,6 +32,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       closingAt: moment().add(3, 'days').startOf('hour')
       pollOptionNames: []
       pollOptionIds: []
+      notified: []
       customFields: {}
 
     serialize: ->
@@ -61,7 +62,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       _.some @attachments()
 
     announcementSize: (action) ->
-      return @group().announcementRecipientsCount if @isNew()
+      # return @group().announcementRecipientsCount if @isNew()
       switch action or @notifyAction()
         when 'publish' then @stancesCount + @undecidedUserCount
         when 'edit'    then @stancesCount

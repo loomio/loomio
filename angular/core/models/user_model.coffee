@@ -36,6 +36,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       groups = _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
       _.sortBy groups, 'fullName'
 
+    formalGroups: ->
+      _.filter @groups(), (group) -> group.type == 'FormalGroup'
+
     adminGroups: ->
       _.invoke @adminMemberships(), 'group'
 
@@ -70,10 +73,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @id == object.authorId
 
     isAdminOf: (group) ->
-      _.contains(group.adminIds(), @id)
+      _.contains(group.adminIds(), @id) if group
 
     isMemberOf: (group) ->
-      _.contains(group.memberIds(), @id)
+      _.contains(group.memberIds(), @id) if group
 
     firstName: ->
       _.first @name.split(' ') if @name

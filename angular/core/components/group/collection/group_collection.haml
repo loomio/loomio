@@ -1,0 +1,15 @@
+.group-collection
+  %a.explore-page__group{ng-repeat: "group in model.groups() | orderBy: '-recentActivityCount' track by group.id", lmo-href-for: "group"}
+  .explore-page__group-cover{ng-style: "groupCover(group)"}
+  .explore-page__group-details
+    %h2.lmo-h2 {{group.name}}
+    .explore-page__group-description {{groupDescription(group)}}
+    .explore-page__group-stats.lmo-flex.lmo-flex__start.lmo-flex__center
+      %i.mdi.lmo-margin-right.mdi-group
+      %span.lmo-margin-right {{group.membershipsCount}}
+      %i.mdi.lmo-margin-right.mdi-comment-text-outline
+      %span.lmo-margin-right {{group.discussionsCount}}
+      %i.mdi.lmo-margin-right.mdi-thumbs-up-down
+      %span.lmo-margin-right {{group.pollsCount}}
+      %i
+      %span

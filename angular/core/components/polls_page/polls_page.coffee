@@ -4,7 +4,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $location
   @statusFilters = _.map AppConfig.searchFilters.status, (filter) ->
     { name: _.capitalize(filter), value: filter }
 
-  @groupFilters = _.map Session.user().groups(), (group) ->
+  @groupFilters = _.map Session.user().formalGroups(), (group) ->
     { name: group.fullName, value: group.key }
 
   @statusFilter = $location.search().status

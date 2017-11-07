@@ -174,7 +174,7 @@ en:
   change_volume_form:
     aria_label: "Change email settings form"
     loud_label: "All activity"
-    normal_label: "Announcements"
+    normal_label: "Notifications"
     quiet_label: "No emails"
     mute_label: "Mute"
     discussion:
@@ -190,7 +190,7 @@ en:
     membership:
       title: "Email settings for {{title}}"
       loud_description: "You will be emailed whenever there is activity in this group."
-      normal_description: "You will only be emailed announcements in this group."
+      normal_description: "You'll only get emails when people want your attention."
       quiet_description: "You won't be emailed about activity in this group."
       apply_to_all: "Apply these settings to all my groups."
       messages:
@@ -205,7 +205,7 @@ en:
     user:
       title: Email settings for new groups
       loud_description: "You will be emailed whenever there is activity in any new groups you join."
-      normal_description: "You will be emailed about announcements in any new groups you join."
+      normal_description: "You will only be emailed when people want your attention in any new groups you join."
       quiet_description: "You won't be emailed about activity in any new groups you join."
       apply_to_all: "Apply these settings to all my groups."
       messages:
@@ -244,6 +244,15 @@ en:
     message: "You have been logged out from another window. Please sign back in to continue."
     ok: "Ok"
 
+  notify_group:
+    modal_title: People to notify
+    modal_error: Sorry, we couldn't find that group. Please try again!
+    search_placeholder: Search
+    members_count: "{{count}} people selected"
+    group_subtitle: ({{count}} people)
+    user_is_muted: This person has requested to not receive updates from this group. They will still be able to see and participate in decisions.
+    user_is_loud: This person has requested to receive updates about all decisions in this group.
+
   comment_form:
     aria_label: 'Add a comment'
     attachments:
@@ -264,14 +273,18 @@ en:
     submit_button:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
+    private_privacy_notice_no_group: 'Your comment will only be visible to people invited to this thread.'
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
     sign_in: "Log in to join the conversation"
 
   sidebar:
-    recent_threads: 'Recent threads'
-    unread_threads: 'Unread threads ({{count}})'
-    muted_threads: 'Muted threads'
-    start_group: 'New group'
+    unread: Inbox ({{count}})
+    decisions: Decisions
+    new_decision: Start a new decision
+    threads: Threads
+    new_thread: Start a new thread
+    groups: Groups
+    new_group: Start a new group
     explore: 'Public groups'
     start_thread: New thread
     start_decision: New decision
@@ -376,7 +389,9 @@ en:
     context_placeholder: 'Give enough background information for the group to have a productive discussion. This can be updated as the discussion progresses'
     privacy_label: 'Privacy'
     privacy_public: 'Anyone can see the thread. Only members can participate.'
+    privacy_public_no_group: 'Anyone can see and participate in this thread'
     privacy_private: 'The thread will only be visible to members of {{group}}.'
+    privacy_private_no_group: 'Only those you invite will be able to view and participate'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     make_announcement: Announcement
     notified_count: '{{count}} people will be emailed'
@@ -1253,6 +1268,9 @@ en:
     closing: Closing
     start: Start
     update: Update
+    group_label: Group
+    group_placeholder: Select a group (optional)
+    no_group: (No group selected)
     loomio_school_link: |
       <p>Find out more at <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
 
@@ -1319,6 +1337,7 @@ en:
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option
     dots_per_person: Dots per person
+    dots_per_person_helptext: Number of votes to allocate to each participant
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
 
@@ -1524,6 +1543,12 @@ en:
     start_new_poll: New decision
     filter_placeholder: (All polls)
     groups_placeholder: (All groups)
+
+  notify_input:
+    label: People to notify
+    placeholder: Enter groups, usernames, or email addresses
+    notified_count: "{{count}} people will be notified of this"
+    notified_count_singular: "1 person will be notified of this"
 
   auth_form:
     sign_in_to_loomio: Sign into {{site_name}}

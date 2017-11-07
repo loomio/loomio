@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, Session, InboxService, RestfulClient, UserHelpService, AppConfig, IntercomService, LmoUrlService, Records, ModalService, GroupModal, DiscussionForm, AbilityService)->
+angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, Session, InboxService, RestfulClient, UserHelpService, AppConfig, IntercomService, LmoUrlService, Records, ModalService, PollCommonStartModal, GroupModal, DiscussionModal, AbilityService)->
   scope: false
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
@@ -7,17 +7,6 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
     $scope.currentState = ""
     $scope.showSidebar = true
     InboxService.load()
-
-    $scope.hasAnyGroups = ->
-      Session.user().hasAnyGroups()
-
-    availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
-        AbilityService.canAddMembers(group)
-
-    $scope.currentGroup = ->
-      return _.first(availableGroups()) if availableGroups().length == 1
-      _.find(availableGroups(), (g) -> g.id == Session.currentGroupId()) || Records.groups.build()
 
     $scope.$on 'toggleSidebar', (event, show) ->
       if !_.isUndefined(show)
@@ -45,7 +34,7 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
         $mdSidenav('left').close()
 
     $scope.groups = ->
-      Session.user().groups().concat(Session.user().orphanParents())
+      Session.user().formalGroups().concat(Session.user().orphanParents())
 
     $scope.currentUser = ->
       Session.user()
@@ -57,4 +46,7 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
       ModalService.open GroupModal, group: -> Records.groups.build()
 
     $scope.startThread = ->
-      ModalService.open DiscussionForm, discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)
+      ModalService.open DiscussionModal, discussion: -> Records.discussions.build(groupId: (Session.currentGroup or {}).id)
+
+    $scope.startPoll = ->
+      ModalService.open PollCommonStartModal, poll: -> Records.polls.build(groupId: (Session.currentGroup or {}).id)

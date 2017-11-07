@@ -27,13 +27,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       data
 
     privateDefaultValue: =>
-      if @group()
-        switch @group().discussionPrivacyOptions
-          when 'private_only' then true
-          when 'public_or_private' then true
-          when 'public_only' then false
-      else
-        null
+      return true unless @group()
+      @group().discussionPrivacyOptions != 'public_only'
 
     relationships: ->
       @hasMany 'comments', sortBy: 'createdAt'
@@ -41,6 +36,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @hasMany 'polls', sortBy: 'createdAt', sortDesc: true
       @hasMany 'versions', sortBy: 'createdAt'
       @belongsTo 'group'
+      @belongsTo 'guestGroup', from: 'groups'
       @belongsTo 'author', from: 'users'
 
     reactions: ->

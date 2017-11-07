@@ -1,0 +1,25 @@
+.notify-group-form {
+  min-width: 400px;
+}
+
+.notify-group-form__content {
+  padding: 8px;
+}
+
+.notify-group-form__members {
+  height: 320px;
+  overflow: auto;
+}
+
+.notify-group-form__member .md-list-item-inner {
+  padding: 0;
+}
+
+.notify-group-form__name {
+  margin: 4px 0;
+}
+
+.notify-group-form__checkbox {
+  pointer-events: auto !important;
+  md-checkbox { margin: 16px 0 !important; }
+}

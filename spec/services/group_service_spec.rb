@@ -13,8 +13,8 @@ describe 'GroupService' do
       expect(group.reload.creator).to eq user
     end
 
-    it 'creates a new guest group' do
-      expect { GroupService.create(group: group, actor: user) }.to change { GuestGroup.count }.by(1)
+    it 'creates a new guest group for example poll and discussion' do
+      expect { GroupService.create(group: group, actor: user) }.to change { GuestGroup.count }.by(2)
       expect(Group.last.default_group_cover_id).to be_nil
     end
 

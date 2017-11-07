@@ -22,6 +22,7 @@ class Discussion < ActiveRecord::Base
   include HasTimeframe
   include HasMentions
   include HasImportance
+  include HasGuestGroup
   include MessageChannel
   include MakesAnnouncements
   include SelfReferencing
@@ -37,7 +38,7 @@ class Discussion < ActiveRecord::Base
   scope :not_visible_to_public, -> { where(private: true) }
   scope :chronologically, -> { order('created_at asc') }
 
-  validates_presence_of :title, :group, :author
+  validates_presence_of :title, :author
   validate :private_is_not_nil
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
@@ -48,7 +49,7 @@ class Discussion < ActiveRecord::Base
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail only: [:title, :description, :private, :group_id]
 
-  belongs_to :group, class_name: 'FormalGroup'
+  belongs_to :group, class_name: 'FormalGroup', required: false
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :polls, dependent: :destroy
@@ -75,10 +76,10 @@ class Discussion < ActiveRecord::Base
     .order('rank DESC, last_activity_at DESC')
   end
 
-  delegate :name, to: :group, prefix: :group
+  delegate :name, to: :group, prefix: :group, allow_nil: true
   delegate :name, to: :author, prefix: :author
-  delegate :users, to: :group, prefix: :group
-  delegate :full_name, to: :group, prefix: :group
+  delegate :users, to: :group, prefix: :group, allow_nil: true
+  delegate :full_name, to: :group, prefix: :group, allow_nil: true
   delegate :email, to: :author, prefix: :author
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
@@ -117,15 +118,8 @@ class Discussion < ActiveRecord::Base
     true
   end
 
-
-  def public?
-    !private
-  end
-
   def inherit_group_privacy!
-    if self[:private].nil? and group.present?
-      self[:private] = group.discussion_private_default
-    end
+    self[:private] ||= group&.discussion_private_default
   end
 
   def discussion
@@ -150,12 +144,12 @@ class Discussion < ActiveRecord::Base
   end
 
   def privacy_is_permitted_by_group
-    return unless group.present?
-    if self.public? and group.private_discussions_only?
+    return unless group.presence
+    if group.private_discussions_only? && !private?
       errors.add(:private, "must be private in this group")
     end
 
-    if self.private? and group.public_discussions_only?
+    if group.public_discussions_only? && private?
       errors.add(:private, "must be public in this group")
     end
   end

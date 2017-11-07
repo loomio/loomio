@@ -67,7 +67,7 @@ describe GroupService::PrivacyChange do
       end
 
       it "makes discussions in the group public" do
-        expect(group.discussions.all?(&:public?)).to be true
+        expect(group.discussions.all?(&:private?)).to be false
       end
     end
   end

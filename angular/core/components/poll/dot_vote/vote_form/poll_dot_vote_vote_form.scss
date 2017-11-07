@@ -8,18 +8,6 @@
   display: flex;
 }
 
-.poll-dot-vote-vote-form__dot-input {
-  width: 35px !important;
-  text-align: center;
-  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  &[type=number] {
-    -moz-appearance: textfield;
-  }
-}
-
 .poll-dot-vote-vote-form__dot-button {
   background: none;
   border: 0;

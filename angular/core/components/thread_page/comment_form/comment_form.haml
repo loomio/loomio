@@ -14,5 +14,5 @@
         %outlet{name: "before-comment-submit", model: "comment"}
         %md-button.md-primary.md-raised.comment-form__submit-button{type: "submit", ng-disabled: "submitIsDisabled", translate: "comment_form.submit_button.label"}
   .comment-form__join-actions{ng-if: "!showCommentForm()"}
-    %join_group_button{group: "comment.discussion().group()", ng-if: "isLoggedIn()", block: "true"}
+    %join_group_button{discussion: "comment.discussion()", ng-if: "isLoggedIn()", block: "true"}
     %md-button.md-primary.md-raised.comment-form__sign-in-btn{translate: "comment_form.sign_in", ng-click: "signIn()", ng-if: "!isLoggedIn()"}

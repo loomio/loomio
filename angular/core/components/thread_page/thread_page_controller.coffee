@@ -67,7 +67,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     angular.element(window).triggerHandler('checkInView')
 
   @canStartPoll = ->
-    AbilityService.canStartPoll(@discussion.group())
+    AbilityService.canStartPoll(@discussion.group()) or
+    AbilityService.canStartPoll(@discussion.guestGroup())
 
   KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', checkInView
   KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', checkInView

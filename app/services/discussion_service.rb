@@ -15,7 +15,7 @@ class DiscussionService
   def self.create(discussion:, actor:)
     actor.ability.authorize! :create, discussion
     discussion.author = actor
-    discussion.inherit_group_privacy!
+    discussion.inherit_group_privacy! if discussion.group.presence
     return false unless discussion.valid?
 
     discussion.save!

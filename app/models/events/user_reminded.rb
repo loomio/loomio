@@ -3,14 +3,9 @@ class Events::UserReminded < Event
   include Events::Notify::Users
 
   def self.publish!(model, actor, reminded_user)
-    create(kind: 'user_reminded',
-           eventable: model,
-           custom_fields: { reminded_user_id: reminded_user.id },
-           user: actor).tap { |e| EventBus.broadcast('user_reminded_event', e) }
-  end
-
-  def poll
-    eventable.poll
+    super model,
+          user: actor,
+          custom_fields: { reminded_user_id: reminded_user.id }
   end
 
   private

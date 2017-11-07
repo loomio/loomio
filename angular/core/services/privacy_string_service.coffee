@@ -34,14 +34,20 @@ angular.module('loomioApp').factory 'PrivacyString', ($translate) ->
         false
 
     discussion: (discussion, is_private = null) ->
-      key = if is_private == false
-        'privacy_public'
-      else if discussion.group().parentMembersCanSeeDiscussions
-        'privacy_organisation'
+      if discussion.group()
+        key = if is_private == false
+          'privacy_public'
+        else if discussion.group().parentMembersCanSeeDiscussions
+          'privacy_organisation'
+        else
+          'privacy_private'
+        $translate.instant("discussion_form.#{key}", group: discussion.group().name, parent: discussion.group().parentName())
       else
-        'privacy_private'
-
-      $translate.instant("discussion_form.#{key}", group: discussion.group().name, parent: discussion.group().parentName())
+        key = if is_private == false
+          'privacy_public'
+        else
+          'privacy_private'
+        $translate.instant("discussion_form.#{key}_no_group")
 
     group: (group, privacy) ->
       privacy = privacy || group.groupPrivacy

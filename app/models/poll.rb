@@ -4,6 +4,7 @@ class Poll < ActiveRecord::Base
   include HasMentions
   include HasGuestGroup
   include MakesAnnouncements
+  include MakesNotifications
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
@@ -122,27 +123,8 @@ class Poll < ActiveRecord::Base
                                               .group_by(&:poll_option)
   end
 
-  def group
-    super || NullFormalGroup.new
-  end
-
-  def group_members
-    User.joins(:memberships)
-        .joins(:groups)
-        .where("memberships.group_id": group_id)
-        .where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
-  end
-
-  def members
-    User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
-  end
-
   def undecided
     reload.members.without(participants)
-  end
-
-  def invitations
-    Invitation.where(group_id: [group_id, guest_group_id].compact)
   end
 
   def update_stance_data

@@ -1,8 +1,7 @@
-angular.module('loomioApp').factory 'DiscussionForm', ->
-  templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, Session, Records, AbilityService, FormService, MentionService, AttachmentService, KeyEventService, PrivacyString) ->
-    $scope.discussion = discussion.clone()
-
+angular.module('loomioApp').directive 'discussionForm', ->
+  scope: {discussion: '='}
+  templateUrl: 'generated/components/discussion/form/discussion_form.html'
+  controller: ($scope, $controller, $location, Session, Records, AbilityService, FormService, MentionService, AttachmentService, KeyEventService, PrivacyString) ->
     if $scope.discussion.isNew()
       $scope.discussion.makeAnnouncement = true
       $scope.showGroupSelect = true
@@ -13,6 +12,7 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
       flashSuccess: "discussion_form.messages.#{actionName}"
       drafts: true
       successCallback: (response) =>
+        $scope.$emit 'discussionSaved'
         discussion = response.discussions[0]
         Records.attachments.find(attachableId: discussion.id, attachableType: 'Discussion')
                            .filter (attachment) -> !_.contains(discussion.attachment_ids, attachment.id)
@@ -20,7 +20,7 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
         $location.path "/d/#{discussion.key}" if actionName == 'created'
 
     $scope.availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
+      _.filter Session.user().formalGroups(), (group) ->
         AbilityService.canStartThread(group)
 
     # NB; this overrides the restoreDraft() function applied in draft_service
@@ -36,7 +36,7 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
       $scope.discussion.private = $scope.discussion.privateDefaultValue()
 
     $scope.showPrivacyForm = ->
-      return unless $scope.discussion.group()
+      return true unless $scope.discussion.group()
       $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
 
     AttachmentService.listenForAttachments $scope, $scope.discussion

@@ -84,6 +84,9 @@ en:
        intro: "%{name} (%{email}) has sent you a request to connect."
        footer: "You may respond to %{name} directly by replying to this email."
 
+    mentioned:
+      subject: "%{name} mentioned you in %{title}"
+
     reset_password:
       greeting: |
         Hi %{name}
@@ -565,6 +568,9 @@ en:
     helptext: You will no longer receive emails about this decision.
     visit_poll: View poll
     go_to_dashboad: Go to dashboard
+
+  notified:
+    group_users: "(%{count} people)"
 
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"

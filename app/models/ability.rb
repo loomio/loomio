@@ -5,8 +5,18 @@ class Ability
     @user.group_ids.include?(group_id)
   end
 
+  def user_is_member_of_discussion?(discussion)
+    user_is_member_of?(discussion.group_id) ||
+    user_is_member_of?(discussion.guest_group_id)
+  end
+
   def user_is_admin_of?(group_id)
     @user.adminable_group_ids.include?(group_id)
+  end
+
+  def user_is_admin_of_discussion?(discussion)
+    user_is_admin_of?(discussion.group_id) ||
+    user_is_admin_of?(discussion.guest_group_id)
   end
 
   def user_is_author_of?(object)
@@ -186,15 +196,16 @@ class Ability
          :print,
          :dismiss,
          :subscribe_to], Discussion do |discussion|
-      if discussion.archived_at.present?
-        false
-      elsif discussion.group.archived_at.present?
-        false
-      else
-        discussion.public? or
-        user_is_member_of?(discussion.group_id) or
-        (discussion.group.parent_members_can_see_discussions? and user_is_member_of?(discussion.group.parent_id))
-      end
+      !discussion.archived_at &&
+      !discussion.group&.archived_at &&
+      (
+        !discussion.private ||
+        user_is_member_of_discussion?(discussion) ||
+        (
+          discussion.group&.parent_members_can_see_discussions? &&
+          user_is_member_of?(discussion.group.parent_id)
+        )
+      )
     end
 
     can [:mark_as_read, :mark_as_seen], Discussion do |discussion|
@@ -202,16 +213,15 @@ class Ability
     end
 
     can :update_version, Discussion do |discussion|
-      user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
+      user_is_admin_of_discussion?(discussion)
     end
 
     can :update, Discussion do |discussion|
-      user.email_verified? &&
-      if discussion.group.members_can_edit_discussions?
-        user_is_member_of?(discussion.group_id)
+      if discussion.group&.members_can_edit_discussions?
+        user_is_member_of_discussion?(discussion)
       else
-        user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
-      end
+        user_is_admin_of_discussion?(discussion)
+      end && user.email_verified?
     end
 
     can :pin, Discussion do |discussion|
@@ -219,45 +229,43 @@ class Ability
     end
 
     can [:destroy, :move], Discussion do |discussion|
-      user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
+      user_is_admin_of_discussion?(discussion)
     end
 
     can :create, Discussion do |discussion|
-      (user.email_verified? &&
-       discussion.group.present? &&
-       discussion.group.members_can_start_discussions? &&
-       user_is_member_of?(discussion.group_id)) ||
-      user_is_admin_of?(discussion.group_id)
-    end
-
-    can [:set_volume,
-         :show_description_history,
-         :preview_version], Discussion do |discussion|
-      user_is_member_of?(discussion.group_id)
+      (!discussion.group.presence && user.email_verified?) ||
+      user_is_admin_of_discussion?(discussion) ||
+      (
+        discussion.group&.members_can_start_discussions &&
+        user_is_member_of_discussion?(discussion)
+      )
     end
 
     can [:create], Comment do |comment|
-      comment.discussion && user_is_member_of?(comment.group.id)
+      can? :add_comment, comment.discussion
     end
 
     can [:update], Comment do |comment|
-      user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
+      can?(:add_comment, comment.discussion) &&
+      user_is_author_of?(comment) &&
+      comment.can_be_edited?
     end
 
     can :update, Reaction do |reaction|
-      user_is_member_of?(reaction.reactable.group.id)
+      reaction.reactable.members.include?(@user)
     end
 
     can :destroy, Reaction do |reaction|
       user_is_author_of?(reaction)
     end
 
-    can [:add_comment, :make_draft], Discussion do |discussion|
-      user_is_member_of?(discussion.group_id)
+    can [:add_comment, :make_draft, :set_volume], Discussion do |discussion|
+      user_is_member_of_discussion?(discussion)
     end
 
     can [:destroy], Comment do |comment|
-      user_is_author_of?(comment) or user_is_admin_of?(comment.discussion.group_id)
+      user_is_author_of?(comment) ||
+      user_is_admin_of_discussion?(comment.discussion)
     end
 
     can [:create], Attachment do
@@ -342,7 +350,7 @@ class Ability
 
     can [:verify, :destroy], Stance do |stance|
       @user.email_verified? &&
-      stance.participant.email_verified == false &&
+      !stance.participant.email_verified &&
       stance.participant.email == @user.email
     end
 

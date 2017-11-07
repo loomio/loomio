@@ -4,10 +4,7 @@ class Events::CommentRepliedTo < Event
   include Events::LiveUpdate
 
   def self.publish!(comment)
-    return unless comment.parent && comment.parent.author != comment.author
-    create(kind: 'comment_replied_to',
-           eventable: comment,
-           created_at: comment.created_at).tap { |e| EventBus.broadcast('comment_replied_to_event', e) }
+    super if comment.parent && comment.parent.author != comment.author
   end
 
   private
@@ -18,5 +15,9 @@ class Events::CommentRepliedTo < Event
 
   def notification_recipients
     User.where(id: eventable.parent.author_id)
+  end
+
+  def mailer
+    ThreadMailer
   end
 end

@@ -104,6 +104,17 @@ ActiveRecord::Schema.define(version: 20171103062701) do
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "tag_desc_idx", using: :btree
 
+  create_table "comment_votes", force: :cascade do |t|
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comment_votes", ["comment_id"], name: "index_comment_votes_on_comment_id", using: :btree
+  add_index "comment_votes", ["created_at"], name: "index_comment_votes_on_created_at", using: :btree
+  add_index "comment_votes", ["user_id"], name: "index_comment_votes_on_user_id", using: :btree
+
   create_table "comments", force: :cascade do |t|
     t.integer  "discussion_id",       default: 0
     t.text     "body",                default: ""
@@ -145,6 +156,15 @@ ActiveRecord::Schema.define(version: 20171103062701) do
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "decision_emails", force: :cascade do |t|
+    t.string   "subject",    null: false
+    t.string   "body"
+    t.string   "to",         null: false
+    t.string   "cc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"
@@ -233,12 +253,13 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.integer  "closed_polls_count",              default: 0,     null: false
     t.boolean  "pinned",                          default: false, null: false
     t.integer  "importance",                      default: 0,     null: false
-    t.integer  "seen_by_count",                   default: 0,     null: false
+    t.integer  "guest_group_id"
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
   add_index "discussions", ["created_at"], name: "index_discussions_on_created_at", using: :btree
   add_index "discussions", ["group_id"], name: "index_discussions_on_group_id", using: :btree
+  add_index "discussions", ["guest_group_id"], name: "index_discussions_on_guest_group_id", unique: true, using: :btree
   add_index "discussions", ["is_deleted", "archived_at", "private"], name: "index_discussions_visible", using: :btree
   add_index "discussions", ["is_deleted", "archived_at"], name: "index_discussions_on_is_deleted_and_archived_at", using: :btree
   add_index "discussions", ["is_deleted"], name: "index_discussions_on_is_deleted", using: :btree
@@ -658,6 +679,14 @@ ActiveRecord::Schema.define(version: 20171103062701) do
   add_index "reactions", ["created_at"], name: "index_reactions_on_created_at", using: :btree
   add_index "reactions", ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type", using: :btree
   add_index "reactions", ["user_id"], name: "index_reactions_on_user_id", using: :btree
+
+  create_table "received_emails", force: :cascade do |t|
+    t.text     "headers"
+    t.text     "body"
+    t.string   "sender_email", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"

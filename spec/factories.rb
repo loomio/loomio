@@ -109,6 +109,7 @@ FactoryGirl.define do
     end
     after(:create) do |discussion|
       discussion.group.save
+      discussion.guest_group.add_admin! discussion.author
     end
   end
 
@@ -222,6 +223,9 @@ FactoryGirl.define do
     association :author, factory: :user
     association :guest_group, factory: :guest_group
     poll_option_names ["engage"]
+    after(:build) do |poll|
+      poll.notified ||= [build(:notified_group, model: poll.group)] if poll.group
+    end
   end
 
   factory :poll_proposal, class: Poll do
@@ -270,6 +274,24 @@ FactoryGirl.define do
   factory :received_email do
     sender_email "John Doe <john@doe.com>"
     body "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah"
+  end
+
+  factory :notified_user, class: Notified::User do
+    skip_create
+    association :model, factory: :user
+    initialize_with { new(model) }
+  end
+
+  factory :notified_group, class: Notified::Group do
+    skip_create
+    association :model, factory: :formal_group
+    initialize_with { new(model, nil) }
+  end
+
+  factory :notified_invitation, class: Notified::Invitation do
+    skip_create
+    model "bill@dog.ninja"
+    initialize_with { new(model) }
   end
 
 end

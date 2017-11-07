@@ -6,41 +6,44 @@ class ThreadMailer < BaseMailer
   end
 
   private
+
   def send_thread_email(recipient, event, action)
     return if recipient == User.helper_bot
 
-    @recipient = recipient
-    @event = event
-    @eventable = event.eventable
+    @recipient  = recipient
+    @event      = event
+    @eventable  = event.eventable
     @discussion = @eventable.discussion
-    @author = @eventable.author
-    @text = @eventable.body
-    @link = polymorphic_url(@eventable)
+    @author     = @eventable.author
+    @text       = @eventable.body
+    @following  = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
+    @link       = polymorphic_url(@eventable)
+    @text       = polymorphic_description(@eventable)
+    @utm_hash   = utm_hash
 
-
-    @following = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
-    @utm_hash = utm_hash
-
-    headers[message_id_header] = message_id
-    headers['Precedence'] = 'bulk'
+    message_id_header                   = action_name == 'new_discussion' ? 'Message-ID' : 'In-Reply-To'
+    headers[message_id_header]          = "<#{@discussion.id}@#{ENV['SMTP_DOMAIN']}>"
+    headers['Precedence']               = 'bulk'
     headers['X-Auto-Response-Suppress'] = 'OOF'
-    headers['Auto-Submitted'] = 'auto-generated'
+    headers['Auto-Submitted']           = 'auto-generated'
 
-    send_single_mail  to: @recipient.email,
-                      from: from_user_via_loomio(@author),
-                      reply_to: reply_to_address_with_group_name(discussion: @discussion, user: @recipient),
-                      subject_key: "thread_mailer.#{action_name}.subject",
-                      subject_params: { actor: @author.name,
-                                        group: @discussion.group.full_name,
-                                        discussion: @discussion.title },
-                      locale: @recipient.locale
-  end
+    if @following
+      subject_key = 'email.mentioned.subject'
+      subject_params = { name: @author.name, title: @discussion.title }
+    else
+      subject_key = 'email.custom'
+      subject_params = if @discussion.group
+        { text: "[#{@discussion.group.full_name}] #{@discussion.title}" }
+      else
+        { text: "[#{@discussion.title}]" }
+      end
+    end
 
-  def message_id_header
-    action_name == 'new_discussion' ? 'Message-ID' : 'In-Reply-To'
-  end
-
-  def message_id
-    "<#{@discussion.id}@#{ENV['SMTP_DOMAIN']}>"
+    send_single_mail to: @recipient.email,
+                     from: from_user_via_loomio(@author),
+                     reply_to: reply_to_address(discussion: @discussion, user: @recipient),
+                     subject_key: subject_key,
+                     subject_params: default_subject_params,
+                     locale: @recipient.locale
   end
 end

@@ -16,6 +16,7 @@ class FormalGroup < Group
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
   scope :in_organisation, ->(group) { where(id: group.id_and_subgroup_ids) }
 
+  scope :search_for,     ->(query) { where("name ilike :q", q: "%#{query}%") }
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
   scope :by_slack_team, ->(team_id) {

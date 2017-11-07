@@ -15,13 +15,13 @@ describe ReactionService do
 
   describe 'update' do
     it 'creates a like for the current user on a comment' do
-      expect { ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: user) }.to change { Reaction.count }.by(1)
+      expect { ReactionService.update(reaction: reaction, params: {reaction: ':heart:'}, actor: user) }.to change { Reaction.count }.by(1)
     end
 
     it 'does not notify if the user is no longer in the group' do
       comment
       group.memberships.find_by(user: user).destroy
-      expect { ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: another_user) }.to_not change { user.notifications.count }
+      expect { ReactionService.update(reaction: reaction, params: {reaction: ':heart:'}, actor: another_user) }.to_not change { user.notifications.count }
     end
   end
 

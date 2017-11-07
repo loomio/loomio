@@ -5,8 +5,6 @@ EventBus.configure do |config|
   # Purge drafts after model creation
   config.listen('discussion_create') { |discussion| Draft.purge(user: discussion.author, draftable: discussion.group, field: :discussion) }
   config.listen('comment_create')    { |comment|    Draft.purge_without_delay(user: comment.user, draftable: comment.discussion, field: :comment) }
-  config.listen('motion_create')     { |motion|     Draft.purge(user: motion.author, draftable: motion.discussion, field: :motion) }
-  config.listen('vote_create')       { |vote|       Draft.purge(user: vote.user, draftable: vote.motion, field: :vote) }
   config.listen('poll_create')       { |poll|       Draft.purge(user: poll.author, draftable: poll.discussion, field: :poll) }
 
   # Add creator to group on group creation
@@ -21,15 +19,15 @@ EventBus.configure do |config|
   # Index search vectors after model creation
   config.listen('discussion_create',
                 'discussion_update',
-                'motion_create',
-                'motion_update',
                 'comment_create',
                 'comment_update',
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # add poll creator as admin of guest group
-  config.listen('poll_create') { |poll, actor| poll.guest_group.add_admin!(actor) }
+  # add creator as admin of guest group
+  config.listen('poll_create', 'discussion_create') do |model, actor|
+    model.guest_group.add_admin!(actor)
+  end
 
   # publish to new group if group has changed
   config.listen('poll_changed_group') do |poll, actor|
@@ -94,22 +92,21 @@ EventBus.configure do |config|
   # publish reply event after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
 
-  # publish mention events after model create / update
-  config.listen('comment_create',
-                'comment_update',
-                'motion_create',
-                'motion_update',
-                'discussion_create',
-                'discussion_update') do |model, actor|
-    Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
-  end
-
   # update discussion importance
   config.listen('discussion_pin',
                 'poll_create',
                 'poll_close',
                 'poll_destroy',
                 'poll_expire') { |model| model.discussion&.update_importance }
+
+  # add notified users to guest group
+  config.listen('poll_create') do |model, actor|
+    MembershipService.add_users_to_group(
+      group: model.guest_group,
+      users: model.notified_users.without(model.group&.members),
+      inviter: actor
+    )
+  end
 
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }

@@ -45,6 +45,7 @@ class DiscussionSerializer < ActiveModel::Serializer
                          :dismissed_at
 
   has_one :author, serializer: UserSerializer, root: :users
+  has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_one :group, serializer: GroupSerializer, root: :groups
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
 

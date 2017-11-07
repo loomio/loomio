@@ -45,14 +45,16 @@ module Dev::PollsHelper
     options = {poll: %w[apple turnip peach],
                count: %w[yes no],
                proposal: %w[agree disagree abstain block],
-               dot_vote: %w[birds bees trees]}
+               dot_vote: %w[birds bees trees],
+               meeting: %w[2009-1-1]}
+    custom_fields = { dot_vote: { dots_per_person: 8 } }
 
     AppConfig.poll_templates.keys.each do |poll_type|
-      poll = Poll.new(poll_type: poll_type,
-                      title: poll_type,
-                      details: 'fine print',
-                      poll_option_names: options[poll_type.to_sym],
-                      discussion: discussion)
+      poll = Poll.new({poll_type: poll_type,
+                       title: poll_type,
+                       details: 'fine print',
+                       poll_option_names: options[poll_type.to_sym],
+                       discussion: discussion}.merge(Hash(custom_fields[poll_type.to_sym])))
       PollService.create(poll: poll, actor: actor)
 
       # edit the poll
@@ -72,11 +74,11 @@ module Dev::PollsHelper
       OutcomeService.create(outcome: outcome, actor: actor)
 
       # create poll
-      poll = Poll.new(poll_type: poll_type,
+      poll = Poll.new({poll_type: poll_type,
                       title: 'Which one?',
                       details: 'fine print',
                       poll_option_names: options[poll_type.to_sym],
-                      discussion: discussion)
+                      discussion: discussion}.merge(Hash(custom_fields[poll_type.to_sym])))
       PollService.create(poll: poll, actor: actor)
       poll.update_attribute(:closing_at, 1.day.ago)
 

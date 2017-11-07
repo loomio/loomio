@@ -16,7 +16,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       _.intersection(Session.user().groupIds(), user.groupIds()).length
 
     canAddComment: (thread) ->
-      Session.user().isMemberOf(thread.group())
+      @canParticipateInDiscussion(thread)
 
     canRespondToComment: (comment) ->
       Session.user().isMemberOf(comment.group())
@@ -31,6 +31,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       !poll.group() or
       (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
 
+    canParticipateInDiscussion: (thread) ->
+      Session.user().isMemberOf(thread.group()) or
+      Session.user().isMemberOf(thread.guestGroup())
+
     canReactToPoll: (poll) ->
       @isEmailVerified() and @canParticipateInPoll(poll)
 
@@ -39,8 +43,13 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
 
     canEditThread: (thread) ->
       @canAdministerGroup(thread.group()) or
-      Session.user().isMemberOf(thread.group()) and
-      (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
+      @canAdministerGroup(thread.guestGroup()) or
+      (Session.user().isMemberOf(thread.group()) and
+        (
+          Session.user().isAuthorOf(thread) or
+          thread.group().membersCanEditDiscussions
+        )
+      )
 
     canPinThread: (thread) ->
       !thread.pinned && @canAdministerGroup(thread.group())
@@ -57,13 +66,17 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       Session.user().isAuthorOf(thread)
 
     canChangeThreadVolume: (thread) ->
-      Session.user().isMemberOf(thread.group())
+      @canParticipateInDiscussion(thread)
 
     canChangeGroupVolume: (group) ->
       Session.user().isMemberOf(group)
 
     canAdministerGroup: (group) ->
       Session.user().isAdminOf(group)
+
+    canAdministerThread: (thread) ->
+      Session.user().isMemberOf(thread.group()) or
+      Session.user().isAdminOf(thread.guestGroup())
 
     canManageGroupSubscription: (group) ->
       group.isParent() and

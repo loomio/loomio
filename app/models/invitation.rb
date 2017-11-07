@@ -31,6 +31,7 @@ class Invitation < ActiveRecord::Base
   after_initialize :apply_null_methods!
 
   delegate :name, to: :inviter, prefix: true, allow_nil: true
+  delegate :invitation_target, to: :group, allow_nil: true
 
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
   scope :useable, -> { not_cancelled.where(accepted_at: nil) }
@@ -51,6 +52,12 @@ class Invitation < ActiveRecord::Base
     when 'join_group' then GroupMailer
     when 'join_poll' then PollMailer
     end
+  end
+
+  # PollMailer requires that eventables respond to 'poll'
+  # TODO make this suck less
+  def poll
+    invitation_target if intent == 'join_poll'
   end
 
   def locale
