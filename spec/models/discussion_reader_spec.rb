@@ -20,13 +20,6 @@ describe DiscussionReader do
     end
   end
 
-  describe 'viewed!' do
-    it 'publishes a simple serialized discussion' do
-      expect(MessageChannelService).to receive(:publish)
-      reader.viewed!
-    end
-  end
-
   describe 'viewed' do
     let(:older_item) { CommentService.create(comment: build(:comment, discussion: discussion, created_at: 5.days.ago), actor: user) }
     let(:newer_item) { CommentService.create(comment: build(:comment, discussion: discussion, created_at: 2.days.ago), actor: user) }
