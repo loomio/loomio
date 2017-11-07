@@ -20,10 +20,10 @@
       %md_button.user-dropdown__list-item-button{href: "{{helpLink()}}", target: "_blank", aria-label: "{{ 'user_dropdown.help' | translate }}"}
         %i.mdi.mdi-18px.lmo-margin-right.mdi-help-circle-outline
         %span{translate: "user_dropdown.help"}
-    %md-menu-item{ng-if: "showContactUs()"}
+    %md-menu-item
       %md_button.user-dropdown__list-item-button{href: "", ng-click: "contactUs()", aria-label: "{{ 'user_dropdown.contact' | translate }}"}
         %i.mdi.mdi-18px.lmo-margin-right.mdi-face
-        %span{translate: "user_dropdown.contact"}
+        %span{translate: "user_dropdown.contact_site_name", translate-values: "{site_name: siteName}"}
     %md-menu-item
       %md_button.user-dropdown__list-item-button{href: "", ng-click: "signOut()", aria-label: "{{ 'user_dropdown.sign_out' | translate }}"}
         %i.mdi.mdi-18px.lmo-margin-right.mdi-exit-to-app

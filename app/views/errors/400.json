@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": 400,
+    "message": "Sorry, we weren't able to understand that request. This may be because of bad user input. Please check and try again."
+  }
+}
