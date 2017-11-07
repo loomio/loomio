@@ -23,8 +23,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def join_group
-    @group = Group.find(params[:group_id])
-    event = MembershipService.join_group group: @group, actor: current_user
+    event = service.join_group group: load_and_authorize(:group), actor: current_user
     @membership = event.eventable
     respond_with_resource
   end
@@ -51,14 +50,12 @@ class API::MembershipsController < API::RestfulController
   end
 
   def make_admin
-    load_resource
-    MembershipService.make_admin(membership: @membership, actor: current_user)
+    service.make_admin(membership: load_resource, actor: current_user)
     respond_with_resource
   end
 
   def remove_admin
-    load_resource
-    MembershipService.remove_admin(membership: @membership, actor: current_user)
+    service.remove_admin(membership: load_resource, actor: current_user)
     respond_with_resource
   end
 

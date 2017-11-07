@@ -126,13 +126,6 @@ describe API::MembershipsController do
         expect(groups).to include group.id
       end
 
-      it 'returns users ordered by name' do
-        get :index, group_id: group.id, format: :json
-        json = JSON.parse(response.body)
-        usernames = json['users'].map { |c| c['name'] }
-        expect(usernames.sort).to eq usernames
-      end
-
       context 'logged out' do
         before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
         let(:private_group) { create(:formal_group, is_visible_to_public: false) }

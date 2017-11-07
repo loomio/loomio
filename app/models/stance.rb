@@ -58,11 +58,11 @@ class Stance < ActiveRecord::Base
     end
   end
 
-  def participant_for_client
-    @participant_for_client ||= if self.poll.anonymous
-      LoggedOutUser.new(name: I18n.t(:"common.anonymous"))
-    else
+  def participant_for_client(user: nil)
+    if !self.poll.anonymous || (user&.id == self.participant_id)
       self.participant
+    else
+      LoggedOutUser.new(name: I18n.t(:"common.anonymous"))
     end
   end
 
