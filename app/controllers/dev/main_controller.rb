@@ -85,6 +85,16 @@ class Dev::MainController < Dev::BaseController
     redirect_to(group_url(invitation.group))
   end
 
+  def setup_login_token
+    login_token = FactoryGirl.create(:login_token, user: patrick)
+    redirect_to(login_token_url(login_token.token))
+  end
+
+  def setup_used_login_token
+    login_token = FactoryGirl.create(:login_token, user: patrick, used: true)
+    redirect_to(login_token_url(login_token.token))
+  end
+
   def use_last_login_token
     redirect_to(login_token_url(LoginToken.last.token))
   end

@@ -22,7 +22,6 @@
   border-radius: 4px;
   text-transform: none;
   @include md-body-1;
-  @include truncateText;
 }
 .sidebar__list-item-button--group{
   font-weight: 500;
@@ -61,36 +60,6 @@
 
 .sidebar__list-item--selected {
   color: black;
-}
-
-.sidebar__user-panel {
-  display: flex;
-  align-items: center;
-  margin: 16px;
-}
-
-.sidebar__user-icon-container {
-  height: 48px;
-  width: 48px;
-  background-color: #AAA;
-  border-radius: 50%;
-  color: $primary-text-color;
-  cursor: pointer;
-}
-
-.sidebar__user-icon {
-  font-size: 32px;
-  position: absolute;
-  left: 24px;
-  top: 24px;
-}
-
-.sidebar__user-details {
-  margin-left: 16px;
-}
-
-.sidebar__user-name {
-  font-weight: 600;
 }
 
 @media (min-width: $tiny-max-px) {

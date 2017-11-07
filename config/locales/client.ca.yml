@@ -129,11 +129,6 @@ ca:
     sign_in: "Inicieu la sessió per unir-vos a la conversa"
   sidebar:
     explore: 'Grups públics'
-    edit_profile: 'Edita el perfil'
-    email_settings: 'Configuració de correu'
-    help: 'Ajuda'
-    contact: 'Contacta amb Loomio'
-    sign_out: 'Tanca la sessió'
     aria_labels:
       heading: 'Barra lateral'
       groups_list: 'Grups'

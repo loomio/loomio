@@ -245,6 +245,7 @@ Loomio::Application.routes.draw do
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
   get 'vote/:key(/:slug)'                  => 'polls#show'
+  get 'u/undefined'                        => redirect('404.html')
   get 'u/:username/'                       => 'users#show',                  as: :user
 
   get '/donate'                            => redirect('410.html')

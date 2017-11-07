@@ -75,11 +75,6 @@ ro:
       label: 'Postare'
     private_privacy_notice: 'Comentariul tau va fi vizibile doar membrilor grupului {{groupName}}.'
     public_privacy_notice: 'Comentariul tau va fi vizibil tuturor pe web.'
-  sidebar:
-    edit_profile: 'Modificare profil'
-    email_settings: 'Setari email'
-    help: 'Ajutor'
-    sign_out: 'Delogare'
   navbar:
     recent_title: 'Mergi la tablou de bord'
     unread_title: 'Vezi activitatea necitita'

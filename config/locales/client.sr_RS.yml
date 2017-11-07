@@ -73,11 +73,6 @@ sr_RS:
     edit_comment: 'Измени коментар'
     delete_comment: 'Обриши коментар'
     confirm_delete_message: 'Да ли сте сигурни да желите обрисати овај коментар?'
-  sidebar:
-    edit_profile: 'Уреди профил'
-    email_settings: 'Подешавања еПорука'
-    help: 'Помоћ'
-    sign_out: 'Одјави се'
   navbar:
     search:
       placeholder: 'Тражи'

@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'userAvatar', ($window) ->
-  scope: {user: '=', coordinator: '=?', size: '@?'}
+  scope: {user: '=', coordinator: '=?', size: '@?', noLink: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/user_avatar/user_avatar.html'
   replace: true
@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'userAvatar', ($window) ->
 
     $scope.gravatarSize = ->
       size = switch $scope.size
-        when 'small'                     then 30
+        when 'small', 'small-circular'   then 30
         when 'medium', 'medium-circular' then 50
         when 'large', 'large-circular'   then 80
         when 'featured'                  then 175
@@ -19,6 +19,7 @@ angular.module('loomioApp').directive 'userAvatar', ($window) ->
 
     $scope.uploadedAvatarUrl = ->
       return unless $scope.user.avatarKind == 'uploaded'
+      return $scope.user.avatarUrl if typeof $scope.user.avatarUrl is 'string'
       size = switch $scope.size
         when 'small'
           if _2x() then 'medium' else 'small'

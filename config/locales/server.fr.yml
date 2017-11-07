@@ -1,14 +1,66 @@
 fr:
+  explore:
+    header: Explorer les groupes publics
+  activerecord:
+    errors:
+      messages:
+        blank: ne peut pas être vide
+        invalid: n'est pas une valeur valable
+  errors:
+    messages:
+      email: Ceci n'est pas une adresse e-mail correcte
+      spoofed_media_type: Les contenus de ce fichier ne correspondent pas à son nom
+  attachment:
+    error:
+      too_large: Le fichier que vous essayez de joindre fait plus de 100 Mo, merci de choisir un fichier plus petit.
+  poll:
+    error:
+      cannot_add_options: Impossible d'ajouter des options à ce sondage
+      cannot_remove_options: Impossible de supprimer des options de ce sondage
+      must_have_options: Il faut au moins une option de sondage
+  stance:
+    error:
+      too_short: Merci de faire une sélection
+  user:
+    error:
+      username_must_be_alphanumeric: Le nom d'utilisateur doit contenir seulement des lettres en minuscules et des chiffres.
+  invitation:
+    invitation_cancelled: Désolé, cette invitation a été annulée. Merci de demander une autre invitation à ce groupe.
+    invitation_already_used: Cette invitation a déjà été utilisée. Merci de vous connecter pour accéder à votre groupe.
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
   validate:
     motion:
-      must_close_in_future: Cette proposition sera close à l'avenir
-      one_at_a_time: Il n'existe pas d'autre proposition active.
+      must_close_in_future: Une proposition ne peut se terminer dans le passé
+      one_at_a_time: Il y a une autre proposition active.
   subscriptions:
     gift_plan_selected_for_group_html: |+
-      <h1>Réussite.</h1>
-      <p>Vous avez sélectionné le plan libre pour votre groupe <a href="/g/%{group_key}">%{group}</a></p>
+      <h1>Bravo.</h1>
+      <p>Vous avez choisi l'offre gratuite pour votre groupe <a href="/g/%{group_key}">%{group}</a></p>
 
+  user_mailer:
+    accounts_merged:
+      subject: "Vos comptes utilisateurs sur %{site_name} ont été fusionnés."
+      body_html: |
+        Bonjour %{name},
+        Vos deux comptes utilisateurs Loomio ont été fusionnés en un compte.
+        Pour accéder à Loomio, vous devrez maintenant utiliser <strong>%{email}</strong> comme identifiant.
   email:
+    login:
+      subject: Identifiez-vous sur {{site_name}}
+      intro: Bonjour %{name},  voici votre lien de connexion à votre compte sur %{site_name}.
+      login: Se connecter comme %{name}
+      resend: Ce lien expirera dans 24 heures et ne peut être utilisé qu'une seule fois.
+    contact_request:
+      subject: "%{name} voudrait se mettre en relation avec vous sur %{site_name}!"
+      intro: "%{name} (%{email}) vous a envoyé une demande de mise en relation."
+      footer: "Vous pouvez répondre à %{name} en répondant directement à ce courriel."
     reset_password:
       greeting: |
         Bonjour %{name}
@@ -18,38 +70,75 @@ fr:
         Vous recevez ce courriel parce que votre adresse a été saisie dans le formulaire de « mot de passe oublié » sur %{hostname}.
         Notez bien : votre mot de passe ne sera modifié qu’une fois avoir cliqué sur le lien ci-dessus et complété le formulaire.
         Après quoi, si vous ne parvenez toujours pas à vous connecter, répondez à ce courriel pour contacter une personne de notre équipe support.
+    start_decision:
+      subject: Prendre une décision sur Loomio
+      intro: Bonjour, <strong>%{name}</strong>!
+      action: Que voulez-vous faire?
+      proposal: Créer une proposition
+      count: Démarrer une Vérification
+      poll: Démarrer un sondage
+      dot_vote: Démarrer un vote à points
+      meeting: Trouver un créneau horaire
+      ranked_choice: Démarrer un classement par préférence
     custom: "%{text}"
     group_email:
       intro: "%{who} a fait une annonce pour %{group} :"
     by_who: par %{person}
     reply_to_this_discussion: Répondre à cette discussion
+    value_proposition: "%{site_name} est un espace où les groupes peuvent prendre des décisions collectivement"
     view_group: Voir le groupe
     to_join_group:
+      subject: "%{member} vous a invité à rejoindre le groupe %{group_name} sur %{site_name}"
       invitation_text: "%{member} vous a invité à rejoindre son groupe %{group_name}."
       invitation_text_html: "vous a invité à rejoindre son groupe"
       link_help: "Cliquez sur le lien ci-dessous pour accepter l'invitation:"
       accept_invitation: "Accepter l'invitation"
+    resend_to_join_group:
+      subject: "%{member} attend que vous rejoignez %{group_name} sur %{site_name}"
     user_added_to_group:
+      subject: "%{who} vous a ajouté à %{which_group} sur%{site_name}"
       content: "%{who} vous a ajouté à %{which_group}."
       content_html: "<strong>%{who}</strong> vous a ajouté à <strong>%{which_group}</strong>."
       link_help: "Cliquez sur le lien ci-dessous pour aller au groupe:"
-    unsubscribe: 'Désabonnement ou changement d’e-mail :'
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou changer votre e-mail."
+    unsubscribe: 'Se désabonner ou modifier vos préférences de notification par courriel :'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou modifier vos préférences de notification par courriel."
     missed_yesterday:
+      subject: Hier sur %{site_name}
+      do_not_reply: Merci de ne pas répondre à ce courriel.
       headlines: Les gros titres
       mark_as_read: Marquer comme lu
       thanks_for_reading: Merci pour votre lecture, passez une bonne journée !
-      marked_as_read_success: Tout le contenu de cet email a été marqué comme lu
+      heres_what_happened: "Voici ce qui s’est passé hier sur %{site_name}."
+      marked_as_read_success: Tout le contenu de ce courriel a été marqué comme lu
     group_membership_approved:
       intro: "Votre demande d'accès au groupe %{group_name} a été acceptée."
       intro_html: "Votre demande d'accès au groupe <strong>%{group_name}</strong>  a été acceptée."
       link_help: "Cliquez sur le lien ci-dessous pour rejoindre %{group_name} et démarrer:"
+      subject: "Votre demande d'ajout à %{group_name} a été acceptée."
       join_group: "Rejoindre le groupe"
     membership_request:
       intro_html: a demandé l'accès à l'un de vos groupes.
       subject: "%{who} a demandé à rejoindre %{which_group}"
       view_group: Vous pouvez accepter ou rejeter cette demande
       button_text: Voir la demande
+  email_actions:
+    unfollowed_discussion: Vous avez désactivé les notifications pour cette discussion.
+  thread_mailer:
+    new_discussion:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> a démarré une discussion: %{discussion}"
+    new_comment:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> a ajouté un commentaire sur: %{discussion}"
+    comment_replied_to:
+      subject: '%{actor} vous a répondu dans : %{discussion}'
+      subject_html: '<strong>%{actor}</strong> vous a répondu dans : %{discussion}'
+    user_mentioned:
+      subject: '%{actor} vous a mentionné dans : %{discussion}'
+      subject_html: "<strong>%{actor}</strong> vous a mentionné dans : %{discussion}"
+    reply_or_view_online_html: Répondez à ce message directement ou <a href='%{url}'>visualisez-le sur %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>Ne plus recevoir de courriels</a> pour cette discussion."
+    change_email_preferences_html: "Modifiez vos <a href='%{email_preferences_url}'>préférences de notification par courriel</a>."
   footer:
     about: À propos
     blog: Blog
@@ -62,11 +151,17 @@ fr:
     independent_install_html: '%{hostname} est une installation indépendante de Loomio : <a href="http://github.com/loomio/loomio">en savoir plus</a>.'
   invitation_form:
     error:
+      too_many_pending: "Vous dépassez le maximum de %{count}invitations en attente pour ce groupe"
       all_email_addresses_belong_to_members: "Nous n’avons pas envoyé d’invitation aux adresses de courriel fournies, car elles appartiennent à des personnes qui sont déjà dans le groupe."
   password_reset:
     change_your_password: Modifiez votre mot de passe
     change_my_password: Modifier le mot de passe
-    reset_email_timeframe: Cela peut prendre jusqu’à 5 minutes à l’e-mail pour arriver. S’il n’apparaît pas, vérifier votre dossier pourriel.
+    confirm_new_password: Confirmer le mot de passe
+    new_password: Nouveau mot de passe
+    email_guidelines_html: |
+      <p>Entrez votre adresse e-mail et vous recevrez un lien de réinitialisation de votre mot de passe.</p>
+      <p>Si vous vous connectez habituellement via Facebook ou Google, entrez l'adresse e-mail associée à ce compte.</p>
+    reset_email_timeframe: Un courriel peut prendre jusqu’à 5 minutes pour arriver. S’il n’apparaît pas, vérifier votre dossier de spams.
     length_restriction: Les mots de passe doivent au moins avoir 8 caractères de long.
     forbidden_passwords: Les mots de passe communs tels que "motdepasse" (password) sont interdits afin de garder votre compte sécurisé.
   introduction_thread:
@@ -115,6 +210,15 @@ fr:
         de telle sorte qu’il puisse être converti en texte riche (à droite).
 
         Cette page est écrite en Markdown pour vous montrer comment ça marche.
+    headers:
+      body: |
+        ## Titres
+
+        Utilisez des signes dièses pour marquer un texte comme titre.
+
+        # Ceci est un h1
+        ## Ceci est un h2
+        #### Ceci est un h4
     paragraphs:
       title: |
         ## Paragraphes
@@ -157,16 +261,208 @@ fr:
   poll_mailer:
     common:
       or: ou
+      why_send_this: Vous recevez ce courriel parce que %{reason}
+      view_on_loomio: Voir sur %{site_name}
       unsubscribe: Se désinscrire
       results: Résultats
       responses: Réponses
       change_your_stance: Modifier
       create_outcome: Partager le résultat
+      your_response: "Vous avez voté:"
       please_respond: Merci de répondre
+      time_zone: (Horaires affiché en %{zone})
+      undecided_members: Membres indécis (%{count})
+      undecided_visitors: Invités indécis (%{count})
+      more_undecided: "%{count} de plus..."
+      vote_now: Votez maintenant
+      verify_stance_for_unverified_user: "Merci d'avoir voté pour %{title}. Merci de vérifier votre adresse e-mail, pour que l'on puisse vous envoyer les résultats quand ils seront prêts."
+      verify_stance_for_verified_user: "On dirait que vous avez voté sur %{title}. Si c'était bien vous, merci de cliquer sur le lien ci-dessous pour confirmer votre vote."
     proposal:
       subject:
         poll_created: '%{actor} a lancé une proposition : %{title}'
+        poll_edited: '%{actor} a modifié la proposition : %{title}'
         poll_closing_soon: 'Proposition clôturée dans 24 heures : %{title}'
-        poll_closing_soon_author: 'Votre proposition se clôture dans 24 heures : %{title}'
+        poll_closing_soon_author: 'Votre proposition se termine dans 24 heures : %{title}'
+        poll_expired: "Proposition clôturée: %{title}"
+        poll_expired_author: 'Votre proposition est terminée. Partagez le résultat pour : %{title}'
+        outcome_created: '%{actor} a partagé le résultat de la discussion :%{title}'
+        invitation_created: '%{actor} souhaite avoir votre opinion: %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: %{actor} attend votre vote sur : %{title}'
+        stance_created: "%{actor} a voté sur : %{title}"
+        stance_created_author: "Merci de vérifier votre vote sur :%{title}"
       header:
         poll_created: '<strong>%{actor}</strong> a démarré une proposition'
+        poll_edited: '<strong>%{actor}</strong> a édité la proposition'
+        poll_closing_soon: 'La proposition de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
+        poll_closing_soon_author: 'Votre proposition se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
+        poll_expired: "La proposition de <strong>%{actor}</strong> est clôturée: %{title}"
+        poll_expired_author: 'Cette proposition est <strong>terminée</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        outcome_created: '<strong>%{actor}</strong> a partagé un résultat de décision.'
+        invitation_created: '<strong>%{actor}</strong> aimerait connaître votre opinion : %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: <strong>%{actor}</strong> attend votre vote sur : %{title}'
+        stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    poll:
+      subject:
+        poll_created: '%{actor} a démarré un sondage: %{title}'
+        poll_edited: '%{actor} a modifié un sondage : %{title}'
+        poll_closing_soon: 'Le sondage se termine dans 24 heures: %{title}'
+        poll_closing_soon_author: 'Votre sondage se termine dans 24 heures : %{title}'
+        poll_expired: "Résultats du sondage : %{title}"
+        poll_expired_author: 'Votre sondage est terminé. Partagez le résultat pour : %{title}'
+        poll_option_added: '%{actor} a ajouté des options à: %{title}'
+        poll_option_added_author: '%{actor} a ajouté des options à: %{title}'
+        outcome_created: '%{actor} a partagé un résultat de sondage : %{title}'
+        invitation_created: '%{actor} vous demande de voter sur : %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: %{actor} attend votre vote sur : %{title}'
+        stance_created: "%{actor} a voté sur : %{title}"
+        stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+      header:
+        poll_created: ' <strong>%{actor}</strong> a démarré un sondage'
+        poll_edited: '<strong>%{actor}</strong> a modifié un sondage'
+        poll_closing_soon: 'Le sondage de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
+        poll_closing_soon_author: 'Votre sondage se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
+        poll_expired: "Le sondage de <strong>%{actor}</strong> est clôturé: %{title}"
+        poll_expired_author: 'Votre sondage est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        poll_option_added: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
+        outcome_created: '<strong>%{actor}</strong> a partagé un résultat de sondage.'
+        invitation_created: '<strong>%{actor}</strong> vous a invité à participer à un sondage : %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: <strong>%{actor}</strong> attend votre vote sur : %{title}'
+        stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    count:
+      subject:
+        poll_closing_soon_author: 'Votre vérification se termine dans 24 heures : %{title}'
+        outcome_created: '%{actor} a partagé un résultat: %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: %{actor} attend que vous répondiez sur : %{title}'
+        stance_created: "%{actor} a participé à: %{title}"
+        stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+      header:
+        poll_closing_soon_author: 'Votre vérification se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
+        outcome_created: '<strong>%{actor}</strong> a partagé un résultat.'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: <strong>%{actor}</strong> attend que vous répondiez sur : %{title}'
+        stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    dot_vote:
+      subject:
+        poll_created: '%{actor} a démarré un vote à points : %{title}'
+        poll_edited: '%{actor} a modifié un vote à points : %{title}'
+        poll_closing_soon: 'Le vote à points se termine dans 24 heures: %{title}'
+        poll_closing_soon_author: 'Votre vote à points se termine dans 24 heures : %{title}'
+        poll_expired: "Résultats du vote à points : %{title}"
+        poll_expired_author: 'Votre vote à points est terminé. Partagez le résultat pour : %{title}'
+        poll_option_added: '%{actor} a ajouté des options à: %{title}'
+        poll_option_added_author: '%{actor} a ajouté des options à: %{title}'
+        outcome_created: '%{actor} a partagé un résultat: %{title}'
+        invitation_created: '%{actor} vous a invité à participer à un vote à points : %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: %{actor} attend votre vote sur : %{title}'
+        stance_created: "%{actor} a voté sur : %{title}"
+        stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> a démarré un vote à points'
+        poll_edited: '<strong>%{actor}</strong> a modifié un vote à points'
+        poll_closing_soon: 'Le vote à points de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
+        poll_closing_soon_author: 'Votre vote à points se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
+        poll_expired: "Résultats du vote à points de <strong>%{actor}</strong> : %{title}"
+        poll_expired_author: 'Votre vote à points est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        poll_option_added: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
+        outcome_created: '<strong>%{actor}</strong> a partagé un résultat de vote à points.'
+        invitation_created: '<strong>%{actor}</strong> vous a invité à participer à un vote à points : %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: <strong>%{actor}</strong> attend votre vote sur : %{title}'
+        stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    meeting:
+      subject:
+        poll_created: '%{actor} a démarré un sondage horaire: %{title}'
+        poll_edited: '%{actor} a modifié un sondage horaire : %{title}'
+        poll_closing_soon: 'Le sondage horaire se termine dans 24 heures: %{title}'
+        poll_closing_soon_author: 'Votre sondage horaire se termine dans 24 heures : %{title}'
+        poll_expired: "Résultats du sondage horaire : %{title}"
+        poll_expired_author: 'Votre sondage horaire est terminé. Partagez le résultat pour : %{title}'
+        poll_option_added: '%{actor} a ajouté des options à: %{title}'
+        poll_option_added_author: '%{actor} a ajouté des options à: %{title}'
+        outcome_created: '%{actor} a partagé un résultat: %{title}'
+        outcome_created_author: 'Vous avez partagé un résultat: %{title}'
+        invitation_created: '%{actor} veut trouver un créneau horaire : %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: %{actor} attend votre réponse sur : %{title}'
+        stance_created: '%{actor} a participé à: %{title}'
+        stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+      header:
+        poll_created: ' <strong>%{actor}</strong> a démarré un sondage horaire'
+        poll_edited: '<strong>%{actor}</strong> a modifié le sondage horaire'
+        poll_closing_soon: 'Le sondage horaire de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
+        poll_closing_soon_author: 'Votre sondage horaire se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
+        poll_expired: "Le sondage horaire de <strong>%{actor}</strong> est clôturé : %{title}"
+        poll_expired_author: 'Votre sondage horaire est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        poll_option_added: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
+        outcome_created: '<strong>%{actor}</strong> a partagé un résultat de sondage horaire.'
+        outcome_created_author: 'Vous avez partagé un résultat de sondage horaire : %{title}'
+        invitation_created: '<strong>%{actor}</strong> veut trouver un créneau horaire : %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: <strong>%{actor}</strong> attend votre réponse sur : %{title}'
+        stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    ranked_choice:
+      subject:
+        poll_created: '%{actor} a démarré un classement par préférence : %{title}'
+        poll_edited: '%{actor} a modifié un classement par préférence : %{title}'
+        poll_closing_soon: 'Le classement par préférence se termine dans 24 heures : %{title}'
+        poll_closing_soon_author: 'Votre classement par préférence se termine dans 24 heures : %{title}'
+        poll_expired: "Résultats du classement par préférence : %{title}"
+        poll_expired_author: 'Votre classement par préférence est terminé. Partagez le résultat pour : %{title}'
+        poll_option_added: '%{actor} a ajouté des options à: %{title}'
+        poll_option_added_author: '%{actor} a ajouté des options à: %{title}'
+        outcome_created: '%{actor} a partagé un résultat: %{title}'
+        outcome_created_author: 'Vous avez partagé un résultat: %{title}'
+        invitation_created: '%{actor} veut trouver un créneau horaire : %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: %{actor} attend votre réponse sur : %{title}'
+        stance_created: '%{actor} a participé à: %{title}'
+        stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> a démarré un classement par préférence'
+        poll_edited: '<strong>%{actor}</strong> a modifié un classement par préférence'
+        poll_closing_soon: 'Le classement par préférence de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
+        poll_closing_soon_author: 'Votre classement par préférence se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
+        poll_expired: "Le classement par préférence de <strong>%{actor}</strong> est clôturé : %{title}"
+        poll_expired_author: 'Votre classement par préférence est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        poll_option_added: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
+        outcome_created: '<strong>%{actor}</strong> a partagé un résultat de classement par préférence.'
+        outcome_created_author: 'Vous avez partagé un résultat de classement par préférence : %{title}'
+        invitation_created: '<strong>%{actor}</strong> veut trouver un créneau horaire : %{title}'
+        invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
+        user_reminded: 'RAPPEL: <strong>%{actor}</strong> attend votre réponse sur : %{title}'
+        stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+  poll_unsubscribe:
+    title: Vous êtes désinscrit⋅e de %{title}
+    helptext: Vous ne recevrez plus de courriel concernant cette décision
+    visit_poll: Voir le sondage
+    go_to_dashboad: Aller au tableau de bord
+  slack:
+    new_discussion: "Nouvelle discussion dans *%{group}*: *%{discussion}*"
+    outcome_created: "Résultat partagé dans *%{group}*: *%{poll}*"
+    poll_created: "Nouveau *%{poll_type}* dans *%{group}*: *%{poll}*"
+    poll_closing_soon: "Rappel: *%{poll}* se termine dans 24 heures"
+    poll_expired: "*%{poll}* est clotûré"
+    click_to_vote: "Choisissez une option ci-dessous pour voter :"
+    time_zone_message: (tous les horaires valent pour le fuseau horaire %{zone})

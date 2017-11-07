@@ -159,11 +159,6 @@ nl_NL:
     sign_in: "Log in om mee te praten"
   sidebar:
     explore: 'Openbare groepen'
-    edit_profile: 'Bewerk profiel'
-    email_settings: 'E-mailinstellingen'
-    help: 'Help'
-    contact: 'Neem contact op met Loomio'
-    sign_out: 'Uitloggen'
     aria_labels:
       heading: 'Zijbalk'
       threads_list: 'Discussie acties'
