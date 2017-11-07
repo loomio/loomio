@@ -31,6 +31,7 @@ angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $tim
       $timeout(->
         elementToFocus = document.querySelector('md-dialog [md-autofocus]') || document.querySelector('md-dialog h1')
         elementToFocus.focus()
+        angular.element(window).triggerHandler('checkInView')
       , 400)
 
     ariaLabel = (modal) ->
