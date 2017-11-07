@@ -11,7 +11,11 @@ class DiscussionReader < ActiveRecord::Base
 
   def self.for(user:, discussion:)
     if user&.is_logged_in?
-      find_or_create_by(user: user, discussion: discussion)
+      begin
+        find_or_create_by(user: user, discussion: discussion)
+      rescue ActiveRecord::RecordNotUnique
+        retry
+      end
     else
       new(discussion: discussion)
     end
