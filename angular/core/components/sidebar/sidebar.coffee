@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, Session, InboxService, RestfulClient, UserHelpService, AppConfig, IntercomService, LmoUrlService, Records, ModalService, GroupModal, DiscussionForm, AbilityService)->
+angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, Session, InboxService, RestfulClient, UserHelpService, AppConfig, IntercomService, LmoUrlService, Records, ModalService, GroupModal, DiscussionModal, AbilityService)->
   scope: false
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
@@ -57,4 +57,4 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
       ModalService.open GroupModal, group: -> Records.groups.build()
 
     $scope.startThread = ->
-      ModalService.open DiscussionForm, discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)
+      ModalService.open DiscussionModal, discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)

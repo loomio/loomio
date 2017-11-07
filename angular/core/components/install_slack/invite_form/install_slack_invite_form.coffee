@@ -21,10 +21,8 @@ angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, Sessi
         $scope.groupIdentity.customFields.slack_channel_name = '#' + _.find($scope.channels, (c) ->
           c.id == $scope.groupIdentity.customFields.slack_channel_id
         ).name
-      successCallback: ->
-        $scope.$emit 'inviteComplete'
-      cleanupFn: ->
-        $scope.$emit 'doneProcessing'
+      successCallback: -> $scope.$emit 'nextStep'
+      cleanupFn:       -> $scope.$emit 'doneProcessing'
 
     KeyEventService.submitOnEnter $scope, anyEnter: true
     $scope.$emit 'focus'
