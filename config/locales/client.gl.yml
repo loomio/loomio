@@ -26,11 +26,6 @@ gl:
   comment_form:
     edit_comment: 'Editar commentario'
     delete_comment: 'Borrar comentario'
-  sidebar:
-    edit_profile: 'Editar perfíl'
-    email_settings: 'Opcións do correo'
-    help: 'Axuda'
-    sign_out: 'Pechar sesión'
   navbar:
     search:
       placeholder: 'Buscar'

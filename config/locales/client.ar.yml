@@ -82,10 +82,6 @@ ar:
       label: 'نشر'
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
     public_privacy_notice: 'تعليقك سيظهر للجميع'
-  sidebar:
-    email_settings: 'إرسال الإعدادات برسالة الكترونية'
-    help: 'مساعدة'
-    sign_out: 'الخروج'
   navbar:
     recent_title: 'اذهب إلى لوحة التحكم'
     unread_title: 'أظهر النشاطات الغير مقروءة'

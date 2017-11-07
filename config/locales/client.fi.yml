@@ -66,8 +66,6 @@ fi:
     delete_comment: 'Poista kommentti'
     private_privacy_notice: 'Sinun kommenttisi tulee olemaan vain näkyvillä {{groupName}}-ryhmän jäsenille.'
     public_privacy_notice: 'Sinun kommenttisi tulee olemaan näkyvillä kaikille webissä.'
-  sidebar:
-    sign_out: 'Kirjaudu ulos'
   navbar:
     recent_title: 'Mene kojelaudalle'
     unread_title: 'Katso lukemattomat toiminnat'

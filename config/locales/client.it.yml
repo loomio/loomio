@@ -180,11 +180,6 @@ it:
     muted_threads: 'Discussioni silenziate'
     start_group: 'Nuovo gruppo'
     explore: 'Gruppi pubblici'
-    edit_profile: 'Modifica profilo'
-    email_settings: 'Impostazioni Email'
-    help: 'Aiuto'
-    contact: 'Contatta Loomio'
-    sign_out: 'Esci'
     start_thread: Nuova discussione
     start_decision: Nuova decisione
     aria_labels:

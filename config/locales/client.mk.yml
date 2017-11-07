@@ -20,10 +20,6 @@ mk:
     edit_comment: 'Измени го коментарот'
     delete_comment: 'Избриши го коментарот'
     confirm_delete_message: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
-  sidebar:
-    edit_profile: 'Измени го профилот'
-    help: 'Помош'
-    sign_out: 'Одјави се'
   navbar:
     search:
       placeholder: 'Пребарувај'

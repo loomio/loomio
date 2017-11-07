@@ -18,12 +18,7 @@
   %validation_errors{subject: "stance", field: "stanceChoices"}
 
   %poll_common_add_option_button{ng-if: "stance.isNew() && stance.poll().voterCanAddOptions", poll: "stance.poll()"}
-
-  .poll-common-vote-form__reason
-    %md-input-container.md-block
-      %label{translate: "poll_common.reason"}
-      %input.lmo-primary-form-input{type: "text", placeholder: "{{'poll_common.reason_placeholder' | translate}}", ng-model: "stance.reason", md-maxlength: "250"}
-      %validation_errors{subject: "stance", field: "reason"}
+  %lmo_textarea.poll-common-vote-form__reason{model: "stance", field: "reason", no-attachments: "true", label: "'poll_common.reason' | translate", placeholder: "'poll_common.reason_placeholder' | translate", maxlength: "250"}
 
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     %show_results_button{ng-if: "stance.isNew()"}

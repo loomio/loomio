@@ -17,11 +17,15 @@ module.exports =
     scss:         _.flatten([include(vendor, 'css'), 'core/css/main.scss', 'core/components/**/*.scss', include(plugins, 'scss')])
     scss_include: _.flatten([include(vendor, 'css_includes'), 'core/css'])
     scss_watch:   _.flatten([include(vendor, 'css'), 'core/css/*.scss', 'core/components/**/*.scss', include(plugins, 'scss')])
-    emojis:       include(vendor, 'emoji')
+    emojis:         include(vendor, 'emoji')
+    moment_locales: include(vendor, 'moment_locales')
+
   dist:
-    fonts:        '../public/client/fonts'
-    assets:       '../public/client/development'
-    emojis:       '../public/img/emojis'
+    fonts:          '../public/client/fonts'
+    assets:         '../public/client/development'
+    emojis:         '../public/img/emojis'
+    moment_locales: '../public/client/development/moment_locales'
+
   fonts:
     vendor:       include(vendor, 'fonts')
   html:

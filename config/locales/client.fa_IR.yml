@@ -112,9 +112,6 @@ fa_IR:
   signed_out_modal:
     ok: "باشه!"
   sidebar:
-    email_settings: 'تنظیمات رایانامه'
-    help: 'کمک'
-    sign_out: 'برون رفت'
     start_thread: موضوع جدید
     aria_labels:
       groups_list: 'گروه ها'

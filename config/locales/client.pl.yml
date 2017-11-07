@@ -183,10 +183,6 @@ pl:
     confirm_delete_message: 'Czy na pewno chcesz usunąć ten komentarz?'
     submit_button:
       label: 'Wysłanie'
-  sidebar:
-    email_settings: 'Ustawienia poczty'
-    help: 'Pomoc'
-    sign_out: 'Wyloguj się'
   navbar:
     recent_title: 'Idź do pulpitu'
     unread_title: 'Zobacz nieprzeczytaną aktywność'

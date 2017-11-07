@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $timeout, $translate, AppConfig) ->
+angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $timeout, $translate, AppConfig, LoadingService) ->
   new class ModalService
 
     open: (modal, resolve) ->
@@ -13,6 +13,7 @@ angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $tim
       $scope.$close      = $mdDialog.cancel
       $scope.$on '$close', $mdDialog.cancel
       $scope.$on 'focus',  focusElement
+      LoadingService.listenForLoading $scope
 
       $mdDialog.alert
         role:           'dialog'

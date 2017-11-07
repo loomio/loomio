@@ -44,11 +44,6 @@ be_BY:
     edit_comment: 'Рэдагаваць каментар'
     delete_comment: 'Выдаліць каментар'
     confirm_delete_message: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'
-  sidebar:
-    edit_profile: 'Рэдагаваць профіль'
-    email_settings: 'Налады email'
-    help: 'Дапамога'
-    sign_out: 'Выйсці'
   navbar:
     search:
       placeholder: 'Пошук'

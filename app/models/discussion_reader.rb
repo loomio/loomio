@@ -7,9 +7,15 @@ class DiscussionReader < ActiveRecord::Base
   delegate :update_importance, to: :discussion
   delegate :importance, to: :discussion
 
+  update_counter_cache :discussion, :seen_by_count
+
   def self.for(user:, discussion:)
     if user&.is_logged_in?
-      find_or_create_by(user: user, discussion: discussion)
+      begin
+        find_or_create_by(user: user, discussion: discussion)
+      rescue ActiveRecord::RecordNotUnique
+        retry
+      end
     else
       new(discussion: discussion)
     end

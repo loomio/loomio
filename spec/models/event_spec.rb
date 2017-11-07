@@ -483,6 +483,24 @@ describe Event do
     end
   end
 
+  describe 'invitation_accepted' do
+    let(:poll) { create :poll }
+    let(:guest_membership) { create :membership, group: poll.guest_group }
+    let(:formal_membership) { create :membership, group: create(:formal_group) }
+
+    it 'links to a group for a formal group invitation' do
+      event = Events::InvitationAccepted.publish!(guest_membership)
+      expect(event.send(:notification_url)).to match "p/#{poll.key}"
+      expect(event.send(:notification_translation_title)).to eq poll.title
+    end
+
+    it 'links to an invitation target for a guest group invitation' do
+      event = Events::InvitationAccepted.publish!(formal_membership)
+      expect(event.send(:notification_url)).to match "g/#{formal_membership.group.key}"
+      expect(event.send(:notification_translation_title)).to eq formal_membership.group.full_name
+    end
+  end
+
   describe 'stance_created' do
     let(:stance) { build :stance, poll: poll }
 

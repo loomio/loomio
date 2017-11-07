@@ -9,6 +9,7 @@ class AppConfig
     timezones
     notifications
     doctypes
+    locales
   )
 
   CONFIG_FILES.each do |config|
@@ -22,6 +23,12 @@ class AppConfig
     {
       site_name:                         ENV.fetch('SITE_NAME',                     'Loomio'),
       icon_src:                          ENV.fetch('THEME_ICON_SRC',                '/theme/icon.png'),
+      icon32_src:                        ENV.fetch('THEME_ICON32_SRC',              '/theme/icon32.png'),
+      icon48_src:                        ENV.fetch('THEME_ICON48_SRC',              '/theme/icon48.png'),
+      icon128_src:                       ENV.fetch('THEME_ICON128_SRC',             '/theme/icon128.png'),
+      icon144_src:                       ENV.fetch('THEME_ICON144_SRC',             '/theme/icon144.png'),
+      icon192_src:                       ENV.fetch('THEME_ICON192_SRC',             '/theme/icon192.png'),
+      icon512_src:                       ENV.fetch('THEME_ICON512_SRC',             '/theme/icon512.png'),
       app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            '/theme/logo.svg'),
       default_group_logo_src:            ENV.fetch('THEME_DEFAULT_GROUP_LOGO_SRC',  '/theme/default_group_logo.png'),
       default_group_cover_src:           ENV.fetch('THEME_DEFAULT_GROUP_COVER_SRC', '/theme/default_group_cover.png'),
@@ -29,10 +36,10 @@ class AppConfig
       # used in emails
       email_header_logo_src:             ENV.fetch('THEME_EMAIL_HEADER_LOGO_SRC',   '/theme/logo_128h.png'),
       email_footer_logo_src:             ENV.fetch('THEME_EMAIL_FOOTER_LOGO_SRC',   '/theme/logo_64h.png'),
-      primary_color:                     ENV.fetch('THEME_PRIMARY_COLOR',           'rgb(255,167,38)'),
-      accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            'rgb(0,188,212)'),
-      text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   'rgb(255,255,255)'),
-      text_on_accent_color:              ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR',    'rgb(255,255,255)'),
+      primary_color:                     ENV.fetch('THEME_PRIMARY_COLOR',           '#ffa726'),
+      accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            '#00bcd4'),
+      text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   '#ffffff'),
+      text_on_accent_color:              ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR',    '#ffffff'),
 
       # used in app
       primary_palette:                   ENV.fetch('THEME_PRIMARY_PALETTE',         'orange'),

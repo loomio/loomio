@@ -43,11 +43,6 @@ sl:
     edit_comment: 'Uredi komentar'
     delete_comment: 'Izbriši komentar'
     confirm_delete_message: 'Si prepričan/a, da želiš izbrisati ta komentar?'
-  sidebar:
-    edit_profile: 'Urejanje profila'
-    email_settings: 'Email nastavitve'
-    help: 'Pomoč'
-    sign_out: 'Odjavi se'
   navbar:
     search:
       placeholder: 'Išči'
