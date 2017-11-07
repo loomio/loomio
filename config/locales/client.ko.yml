@@ -138,11 +138,6 @@ ko:
     sign_in: "대화에 참여하려면 로그인 하세요"
   sidebar:
     explore: '공개 그룹'
-    edit_profile: '프로필 편집'
-    email_settings: '이메일 설정'
-    help: '도움말'
-    contact: '루미오에 연락하기'
-    sign_out: '로그아웃'
     aria_labels:
       heading: '사이드 바'
       threads_list: '쓰레드 액션'

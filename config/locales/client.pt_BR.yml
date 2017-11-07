@@ -163,11 +163,6 @@ pt_BR:
     muted_threads: 'Tópicos silenciados'
     start_group: 'Novo grupo'
     explore: 'Grupos públicos'
-    edit_profile: 'Editar perfil'
-    email_settings: 'Configurações de e-mail'
-    help: 'Ajuda'
-    contact: 'Contate Loomio'
-    sign_out: 'Sair'
     start_thread: Novo tópico
     start_decision: Nova decisão
     aria_labels:

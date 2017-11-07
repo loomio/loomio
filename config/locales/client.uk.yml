@@ -192,11 +192,6 @@ uk:
     muted_threads: 'Вимкнуті теми'
     start_group: 'Нова група'
     explore: 'Відкриті групи'
-    edit_profile: 'Редагувати профіль'
-    email_settings: 'Налаштування електронної пошти'
-    help: 'Допомога'
-    contact: 'Зв''язатись з Loomio'
-    sign_out: 'Вийти'
     start_thread: Нова тема
     start_decision: Нове рішення
     aria_labels:

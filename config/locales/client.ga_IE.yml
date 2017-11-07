@@ -150,11 +150,6 @@ ga_IE:
   sidebar:
     start_group: 'Baicle nua'
     explore: 'Baiclí poiblí'
-    edit_profile: 'Cuir do bheathaisnéisín in eagar'
-    email_settings: 'Socruithe ríomhphoist'
-    help: 'Cabhair'
-    contact: 'Déan teagmháil le Loomio'
-    sign_out: 'Scoir'
     start_thread: Snáith nua
     start_decision: Cinneadh nua
     aria_labels:

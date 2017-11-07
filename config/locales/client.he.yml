@@ -26,11 +26,6 @@ he:
   comment_form:
     delete_comment: 'מחקו תגובה'
     confirm_delete_message: 'למחוק את התגובה? בטוחים?'
-  sidebar:
-    edit_profile: 'עריכת פרופיל'
-    email_settings: 'הגדרות דוא״ל'
-    help: 'עזרה'
-    sign_out: 'התנתקות'
   navbar:
     search:
       placeholder: 'חיפוש'

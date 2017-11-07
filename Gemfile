@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.3.4'
+ruby '2.3.5'
 gem 'rails', '~> 4.2.5.2'
 gem 'rake', '11.3.0'
 gem 'pg', '~> 0.18.4'
@@ -50,7 +50,6 @@ gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
 gem 'rack-attack'
-gem 'skylight'
 
 group :development, :test do
   gem 'lograge'

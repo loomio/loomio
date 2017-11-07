@@ -29,6 +29,15 @@ $boxFeaturedSize: 175px;
   min-height: $boxSmallSize;
 }
 
+.lmo-box--small-circular {
+  border-radius: 50% !important;
+  line-height: $boxSmallSize;
+  width: $boxSmallSize;
+  height: $boxSmallSize;
+  min-width: $boxSmallSize;
+  min-height: $boxSmallSize;
+}
+
 .lmo-box--medium {
   text-align: center;
   width: $boxMediumSize;
@@ -39,6 +48,7 @@ $boxFeaturedSize: 175px;
 
 .lmo-box--medium-circular {
   border-radius: 50% !important;
+  line-height: $boxMediumCircularSize;
   width: $boxMediumCircularSize;
   height: $boxMediumCircularSize;
   min-width: $boxMediumCircularSize;
