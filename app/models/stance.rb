@@ -58,6 +58,14 @@ class Stance < ActiveRecord::Base
     end
   end
 
+  def participant_for_client
+    @participant_for_client ||= if self.poll.anonymous
+      LoggedOutUser.new(name: I18n.t(:"common.anonymous"))
+    else
+      self.participant
+    end
+  end
+
   private
 
   def enough_stance_choices

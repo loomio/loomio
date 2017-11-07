@@ -21,15 +21,11 @@ class PollEmailInfo
   end
 
   def actor
-    @actor ||= if @event.user && !anonymous_actor?
-      @event.user
+    @actor ||= if @eventable.is_a?(Stance)
+      @eventable.participant_for_client
     else
-      LoggedOutUser.new(name: I18n.t(:"common.anonymous"))
+      @event.user || LoggedOutUser.new
     end
-  end
-
-  def anonymous_actor?
-    @poll.anonymous && @eventable.is_a?(Stance)
   end
 
   def recipient_stance

@@ -11,7 +11,7 @@ module PrettyUrlHelper
 
   def polymorphic_url(model, opts = {})
     case model
-    when NilClass                      then nil
+    when NilClass, LoggedOutUser       then nil
     when FormalGroup, GroupIdentity    then group_url(model.group, opts)
     when PaperTrail::Version           then polymorphic_url(model.item, opts)
     when Membership, MembershipRequest then group_url(model.group, opts)
