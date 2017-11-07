@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonFormFields', ($translate, EmojiService) ->
+angular.module('loomioApp').directive 'pollCommonFormFields', ($translate) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/form_fields/poll_common_form_fields.html'
   controller: ($scope) ->
