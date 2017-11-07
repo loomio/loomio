@@ -54,6 +54,11 @@ md-dialog-content {
   padding: 24px 16px !important;
 }
 
+_:-ms-lang(x), md-dialog-content {
+  min-height: 500px;
+  flex-basis: 100%;
+}
+
 md-dialog-actions {
   z-index: $z-medium;
 }
