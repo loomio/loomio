@@ -1,18 +1,14 @@
-%section.comment-form{aria-labelledby: "comment-form-title"}
-  %h2.lmo-card-heading#comment-form-title{translate: "comment_form.aria_label"}>
-  %form{ng-if: "showCommentForm()", ng-paste: "handlePaste($event)", ng_submit: "submit()"}
+.comment-form
+  %form{ng_submit: "submit()"}
     .lmo-disabled-form{ng-show: "isDisabled"}
     %lmo_textarea{model: "comment", field: "body", placeholder: "commentPlaceholder()", helptext: "commentHelptext()"}
     .lmo-md-actions
       %div{ng-if: "submitIsDisabled"}
       .comment-form__actions--left.lmo-flex{layout: "row", ng-if: "!submitIsDisabled"}
-        %md-button.comment-form-button{translate: "comment_form.cancel_reply", ng-show: "comment.parentId", ng-click: "comment.parentId = null", tabindex: "-1"}
         %md-button#post-comment-cancel{translate: "common.action.cancel", ng-click: "cancel($event)", ng-if: "!comment.isNew()"}
         %a.comment-form__formatting.md-button.md-accent.lmo-hide-on-xs{lmo-href: "/markdown", ng-if: "!comment.parentId", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
           %span{translate: "common.formatting_help.label"}
       .comment-form__actions--right.lmo-flex{layout: "row"}
         %outlet{name: "before-comment-submit", model: "comment"}
         %md-button.md-primary.md-raised.comment-form__submit-button{type: "submit", ng-disabled: "submitIsDisabled", translate: "comment_form.submit_button.label"}
-  .comment-form__join-actions{ng-if: "!showCommentForm()"}
-    %join_group_button{group: "comment.discussion().group()", ng-if: "isLoggedIn()", block: "true"}
-    %md-button.md-primary.md-raised.comment-form__sign-in-btn{translate: "comment_form.sign_in", ng-click: "signIn()", ng-if: "!isLoggedIn()"}
+    %validation_errors{subject: "comment", field: "file"}

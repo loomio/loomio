@@ -17,10 +17,14 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       membership_request: 'membershipRequests'
 
     relationships: ->
+      @belongsTo 'parent', from: 'events'
       @belongsTo 'actor', from: 'users'
       @belongsTo 'discussion'
       @belongsTo 'version'
       @hasMany  'notifications'
+
+    children: ->
+      @recordStore.events.find(parentId: @id)
 
     delete: ->
       @deleted = true
@@ -34,10 +38,17 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     model: ->
       @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
 
+    isUnread: ->
+      !@discussion().hasRead(@sequenceId)
+
     markAsRead: ->
-      return unless @sequenceId > @discussion().lastReadSequenceId
-      @remote.postMember @id, 'mark_as_read'
-      @discussion().update(lastReadAt: moment(), lastReadSequenceId: @sequenceId)
+      @discussion().markAsRead(@sequenceId)
 
     beforeRemove: ->
       _.invoke(@notifications(), 'remove')
+
+    next: ->
+      @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]
+
+    previous: ->
+      @recordStore.events.find(parentId: @parentId, position: @position - 1)[0]

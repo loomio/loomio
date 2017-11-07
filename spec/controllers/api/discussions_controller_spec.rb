@@ -66,7 +66,7 @@ describe API::DiscussionsController do
     context 'logged in' do
       before do
         sign_in user
-        reader.viewed!(reader.discussion.last_activity_at)
+        reader.viewed!
         group.add_member! another_user
       end
 
@@ -504,7 +504,7 @@ describe API::DiscussionsController do
       dr = DiscussionReader.last
       expect(dr.discussion).to eq discussion
       expect(dr.last_read_at).to be_present
-      expect(dr.last_read_sequence_id).to eq 0
+      expect(dr.read_items_count).to eq 0
     end
 
     it 'does not allow non-users to mark discussions as seen' do
@@ -512,6 +512,60 @@ describe API::DiscussionsController do
       expect(response.status).to eq 403
     end
   end
+
+  describe 'mark_as_read' do
+    let!(:event) { create :event, sequence_id: 2, discussion: discussion, user: another_user }
+    let!(:another_event) { create :event, sequence_id: 3 }
+
+    context 'signed out' do
+      it 'does not attempt to mark discussions as read while logged out' do
+        patch :mark_as_read, id: discussion.id, ranges: "2,2"
+        expect(response.status).to eq 403
+      end
+    end
+
+    context 'signed in' do
+      before do
+        sign_in user
+        group.add_admin! user
+        reader.update(volume: DiscussionReader.volumes[:normal])
+        reader.reload
+      end
+
+      it "Marks thread item as read" do
+        patch :mark_as_read, id: discussion.id, ranges: "2,2"
+        expect(reader.reload.last_read_at).to be_within(2.seconds).of Time.now
+        expect(reader.read_items_count).to eq 1
+        expect(reader.has_read?(2)).to be true
+        expect(response.status).to eq 200
+      end
+      #
+      # it 'does not mark an inaccessible discussion as read' do
+      #   patch :mark_as_read, id: another_event.sequence_id
+      #   expect(response.status).to eq 403
+      #   expect(reader.reload.read_items_count).to eq 0
+      # end
+
+      it 'responds with reader fields' do
+        # also testing accumulation
+        new_comment.discussion = discussion
+        CommentService.create(comment: new_comment, actor: user)
+        patch :mark_as_read, id: discussion.id, ranges: "2,2"
+        patch :mark_as_read, id: discussion.id, ranges: "3,3"
+        json = JSON.parse(response.body)
+        reader.reload
+
+        expect(json['discussions'][0]['id']).to eq discussion.id
+        expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
+        expect(json['discussions'][0]['read_items_count']).to eq 2
+        expect(json['discussions'][0]['read_ranges']).to eq [[2,3]]
+      end
+
+      # TODO need to reject ranges for sequence_ids that dont exist
+      # by making a rangeset from plucked sequenceids then only allowing ids from the intersection of ranges.
+    end
+  end
+
 
   describe 'pin' do
     it 'allows admins to pin a thread' do

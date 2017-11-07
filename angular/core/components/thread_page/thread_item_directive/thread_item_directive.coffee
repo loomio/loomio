@@ -3,4 +3,4 @@ angular.module('loomioApp').directive 'threadItemDirective', ($compile, $injecto
   link: ($scope, element) ->
     kind = $scope.event.kind
     if $injector.has("#{_.camelCase(kind)}Directive")
-      element.append $compile("<#{kind} eventable='event.model()' />")($scope)
+      $compile("<#{kind} eventable='event.model()' />")($scope, (cloned, scope) -> element.append(cloned))

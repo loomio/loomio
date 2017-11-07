@@ -12,17 +12,11 @@ class DiscussionSerializer < ActiveModel::Serializer
     attributes *attrs
   end
 
-
-  def reader
-    @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]
-  end
-
   attributes :id,
              :key,
              :title,
              :description,
              :items_count,
-             :salient_items_count,
              :first_sequence_id,
              :last_sequence_id,
              :last_comment_at,
@@ -38,15 +32,18 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
-                         :read_salient_items_count,
-                         :last_read_sequence_id,
                          :discussion_reader_volume,
                          :last_read_at,
-                         :dismissed_at
+                         :dismissed_at,
+                         :read_ranges
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
+
+  def read_ranges
+    reader.read_ranges_arrays
+  end
 
   def active_polls
     scope[:poll_cache].get_for(object)

@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103062701) do
+ActiveRecord::Schema.define(version: 20171106234823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
-  enable_extension "citext"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -174,17 +174,16 @@ ActiveRecord::Schema.define(version: 20171103062701) do
   add_index "delayed_jobs", ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready", using: :btree
 
   create_table "discussion_readers", force: :cascade do |t|
-    t.integer  "user_id",                                  null: false
+    t.integer  "user_id",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "discussion_id",                            null: false
+    t.integer  "discussion_id",                      null: false
     t.datetime "last_read_at"
-    t.integer  "read_items_count",         default: 0,     null: false
-    t.integer  "last_read_sequence_id",    default: 0,     null: false
-    t.integer  "read_salient_items_count", default: 0,     null: false
+    t.integer  "read_items_count",   default: 0,     null: false
     t.integer  "volume"
-    t.boolean  "participating",            default: false, null: false
+    t.boolean  "participating",      default: false, null: false
     t.datetime "dismissed_at"
+    t.string   "read_ranges_string"
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
@@ -215,25 +214,24 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",               limit: 255
+    t.string   "title",              limit: 255
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",                   default: false, null: false
-    t.boolean  "is_deleted",                      default: false, null: false
-    t.integer  "items_count",                     default: 0,     null: false
+    t.boolean  "uses_markdown",                  default: false, null: false
+    t.boolean  "is_deleted",                     default: false, null: false
+    t.integer  "items_count",                    default: 0,     null: false
     t.datetime "archived_at"
     t.boolean  "private"
-    t.string   "key",                 limit: 255
-    t.string   "iframe_src",          limit: 255
+    t.string   "key",                limit: 255
+    t.string   "iframe_src",         limit: 255
     t.datetime "last_activity_at"
-    t.integer  "last_sequence_id",                default: 0,     null: false
-    t.integer  "first_sequence_id",               default: 0,     null: false
-    t.integer  "salient_items_count",             default: 0,     null: false
-    t.integer  "versions_count",                  default: 0
-    t.integer  "closed_polls_count",              default: 0,     null: false
-    t.boolean  "pinned",                          default: false, null: false
-    t.integer  "importance",                      default: 0,     null: false
-    t.integer  "seen_by_count",                   default: 0,     null: false
+    t.integer  "last_sequence_id",               default: 0,     null: false
+    t.integer  "first_sequence_id",              default: 0,     null: false
+    t.integer  "versions_count",                 default: 0
+    t.integer  "closed_polls_count",             default: 0,     null: false
+    t.boolean  "pinned",                         default: false, null: false
+    t.integer  "importance",                     default: 0,     null: false
+    t.integer  "seen_by_count",                  default: 0,     null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -266,12 +264,18 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.integer  "sequence_id"
     t.boolean  "announcement",               default: false, null: false
     t.jsonb    "custom_fields",              default: {},    null: false
+    t.integer  "parent_id"
+    t.integer  "position",                   default: 0,     null: false
+    t.integer  "child_count",                default: 0,     null: false
+    t.integer  "depth",                      default: 0,     null: false
   end
 
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
   add_index "events", ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true, using: :btree
   add_index "events", ["discussion_id"], name: "index_events_on_discussion_id", using: :btree
   add_index "events", ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id", using: :btree
+  add_index "events", ["parent_id", "position"], name: "index_events_on_parent_id_and_position", where: "(parent_id IS NOT NULL)", using: :btree
+  add_index "events", ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)", using: :btree
   add_index "events", ["sequence_id"], name: "index_events_on_sequence_id", using: :btree
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|

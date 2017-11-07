@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   include HasTimeframe
+  include Events::Position
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
@@ -14,7 +15,6 @@ class Event < ActiveRecord::Base
   after_destroy :call_thread_item_destroyed
 
   update_counter_cache :discussion, :items_count
-  update_counter_cache :discussion, :salient_items_count
 
   validates :kind, presence: true
   validates :eventable, presence: true
@@ -22,6 +22,10 @@ class Event < ActiveRecord::Base
   delegate :group, to: :eventable, allow_nil: true
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
+
+  def child_count
+    self[:child_count] || 0
+  end
 
   def active_model_serializer
     "Events::#{eventable.class.to_s.split('::').last}Serializer".constantize
@@ -35,12 +39,6 @@ class Event < ActiveRecord::Base
   end
 
   private
-
-  # which communities should know about this event?
-  # Polls override this to look at the communities associated with the poll.
-  def communities
-    Array(eventable&.group&.community)
-  end
 
   def call_thread_item_created
     discussion.thread_item_created! if discussion_id.present?

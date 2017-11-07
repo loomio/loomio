@@ -60,23 +60,16 @@ EventBus.configure do |config|
                 'stance_created_event',
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
-    DiscussionReader.for_model(event.discussion, event.user).update_reader(
-      volume: :loud,
-      read_at: event.created_at
-    ) if event.discussion
+    DiscussionReader.for_model(event.discussion, event.user).
+                     update_reader(volume: :loud) if event.discussion
   end
 
-  config.listen('discussion_reader_viewed!', 'discussion_reader_dismissed!') do |reader|
+  config.listen('discussion_mark_as_read',
+                'discussion_dismiss',
+                'discussion_mark_as_seen') do |reader|
     MessageChannelService.publish(
       ActiveModel::ArraySerializer.new([reader], each_serializer: DiscussionReaderSerializer, root: :discussions).as_json,
       to: reader.user
-    )
-  end
-
-  config.listen('discussion_mark_as_seen') do |discussion, actor|
-    MessageChannelService.publish(
-      ActiveModel::ArraySerializer.new([discussion], each_serializer: MarkAsSeen::DiscussionSerializer, root: :discussions).as_json,
-      to: discussion.group
     )
   end
 

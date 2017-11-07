@@ -8,6 +8,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $location.search().comment = match[1]
       $location.hash('')
 
+  @nested = ->
+    @discussion.group().features.nested_comments
+
   @performScroll = ->
     ScrollService.scrollTo @elementToFocus(), offset: 150
     $location.url($location.path())
@@ -57,17 +60,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     @comment = Records.comments.find(@requestedCommentId) unless isNaN(@requestedCommentId)
     @performScroll()
 
-  @hasClosedPolls = ->
-    _.any @discussion.closedPolls()
-
-  @canViewMemberships = ->
-    @eventsLoaded && AbilityService.canViewMemberships(@discussion.group())
-
   checkInView = ->
     angular.element(window).triggerHandler('checkInView')
-
-  @canStartPoll = ->
-    AbilityService.canStartPoll(@discussion.group())
 
   KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', checkInView
   KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', checkInView
