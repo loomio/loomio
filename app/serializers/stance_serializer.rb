@@ -7,6 +7,6 @@ class StanceSerializer < ActiveModel::Serializer
   has_many :stance_choices, serializer: StanceChoiceSerializer, root: :stance_choices
 
   def include_participant?
-    !object.poll.anonymous || scope[:current_user_id] == object.participant_id
+    !object.poll.anonymous || scope[:current_user] == object.participant
   end
 end

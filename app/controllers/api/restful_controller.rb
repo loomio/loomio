@@ -61,7 +61,7 @@ class API::RestfulController < ActionController::Base
   end
 
   def default_scope
-    { current_user_id: current_user.id }
+    { current_user: current_user }
   end
 
 end
