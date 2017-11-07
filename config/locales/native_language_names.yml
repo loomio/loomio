@@ -1,11 +1,11 @@
 en:
   native_language_name:
     an: aragonés
-    'be-BY': беларуская мова
-    'bg-BG': български
+    'be_BY': беларуская мова
+    'bg_BG': български
     ca: Català
     cs: čeština
-    'zh-TW': 正體中文
+    'zh_TW': 正體中文
     da: Dansk
     de: Deutsch
     en: English
@@ -20,13 +20,13 @@ en:
     ja: 日本語
     ko: 한국어
     ml: മലയാളം
-    'nl-NL': Nederlands
+    'nl_NL': Nederlands
     pl: język polski
-    'pt-BR': Português (Brasil)
+    'pt_BR': Português (Brasil)
     ro: Română
     sk: slovenčina
     sr: Srpski - Latinica
-    'sr-RS': Srpski - Ćirilica
+    'sr_RS': Srpski - Ćirilica
     sv: Svenska
     vi: Tiếng Việt
     tr: Türkçe
@@ -36,26 +36,26 @@ en:
     be: беларуская мова
     zh: 正體中文
     pt: Português (Brasil)
-    'zh-HK': 正體中文
+    'zh_HK': 正體中文
 
     # experimental
 
     ar: العربية/عربي
     cmn: 官話
     hr: hrvatski
-    it-CH: Italiano (Switzerland)
+    it_CH: Italiano (Switzerland)
     fi: Suomen kieli
     gl: galego
-    'ga-IE': Gaeilge
+    'ga_IE': Gaeilge
     hi: हिन्दी
     km: ភាសាខ្មែរ
     lv: latviešu valoda
     mk: Македонски јазик
     mi: Maori
-    'fa-IR': پارسی
-    'pt-PT': Português
+    'fa_IR': پارسی
+    'pt_PT': Português
     ru: русский язык
     sl: slovenski jezik
     te: తెలుగు
     ur: اُردُو
-    'ur-PK': اُردُو (Pakistan)
+    'ur_PK': اُردُو (Pakistan)

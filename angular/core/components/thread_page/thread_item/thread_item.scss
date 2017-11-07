@@ -46,6 +46,11 @@
   text-decoration: underline;
 }
 
+.thread-item__link abbr span {
+  font-weight: normal;
+  color: $grey-on-white;
+}
+
 .thread-item__action {
   @include lmoBtnLink;
   color: $link-color;

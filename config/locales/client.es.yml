@@ -257,11 +257,6 @@ es:
     muted_threads: 'Hilos silenciados '
     start_group: 'Nuevo grupo'
     explore: 'Grupos públicos'
-    edit_profile: 'Editar perfil '
-    email_settings: 'Ajustes de correo  '
-    help: 'Ayuda  '
-    contact: 'Contactar a Loomio '
-    sign_out: 'Salir '
     start_thread: Nuevo hilo
     start_decision: 'Nueva decisión  '
     aria_labels:
@@ -287,6 +282,12 @@ es:
     sign_in: 'Iniciar sesión'
     toggle_sidebar: 'Alternar barra lateral'
     logo_title: 'Página principal'
+  user_dropdown:
+    edit_profile: 'Editar perfil '
+    email_settings: 'Configuración de email'
+    help: 'Ayuda'
+    contact: 'Contactar a Loomio '
+    sign_out: 'Salir'
   start_menu:
     label: 'Acciones de usuario '
     title: 'Acción '
@@ -307,6 +308,7 @@ es:
     new_vote: "<strong>{{name}}</strong> {{position}} a la propuesta <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> ha comentado en <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha contestado a tu comentario en <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> reaccionó <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> a tu comentario en <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> te ha mencionado en <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> esta esperando que participes en <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ha solicitado unirse a <strong>{{title}}</strong>"
@@ -668,6 +670,7 @@ es:
     location_placeholder: '¿Dónde estas basado?'
     update_profile: 'Actualizar perfil'
     deactivate_account: 'Desactiva cuenta'
+    help_translate: "Ayúdanos a traducir Loomio"
   change_picture_form:
     aria_label: 'Formulario de cambio de imagen'
     title: 'Cambiar imagen'
@@ -696,6 +699,7 @@ es:
     aria_label: 'Confirmar la desactivación de la cuenta '
     title: 'Desactiva cuenta '
     question: '¿Nos contarías por qué estás desactivando tu cuenta?'
+    placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar :)'
     submit: 'Desactiva cuenta '
   only_coordinator_modal:
     aria_label: 'No hemos podido desactivar la cuenta'
@@ -719,6 +723,7 @@ es:
     edit: Editar
     messages:
       updated: Configuración de correo electrónico actualizadas
+    learn_more: Aprende más sobre la configuración de email...
   dashboard_page:
     aria_label: 'Escritorio'
     no_groups:
@@ -1158,12 +1163,6 @@ es:
     poll_created: Encuesta creada
     poll_updated: Encuesta actualizada
   poll_count_form:
-    tool_tip_expanded: |
-      <p>Una <em>comprobación</em> es una herramienta que tiene muchos usos posibles pero solo 2 respuestas: visto o raya.</p>
-      <p>Úsalo para comprometer a la gente, como al pedir confirmación: "asistiré al evento" o "me apuntaré al grupo de trabajo".</p>
-      <p>O úsalo para hacer seguimiento a una tarea: "confirmé que mis datos de contacto están correctos", o "leí el documento y dejé mis comentarios".</p>
-      <p>Una comprobación tiene un <em>objetivo</em>, que es el número de participantes que quisieras. La meta indica al grupo que algo requiere más atención o cuenta con amplio acuerdo.</p>
-      <p>Un día antes de que se cierre la comprobación, se le recordará a quienes no han participado todavía.</p>
     tool_tip_collapsed: Comprobar la participación y encontrar voluntarios
     start_header: 'Iniciar Comprobación '
     edit_header: 'Editar Comprobación '
@@ -1368,14 +1367,17 @@ es:
   auth_form:
     sign_in_to_loomio: Entrar a {{site_name}}
     sign_in: Entrar
+    sign_in_as: Ingresa como {{name}}
     choose_an_account: "Entra a través de un tercero, o ingresa una dirección de correo electrónico para continuar."
     invitation_required: Cuenta de usuario no encontrada. Nuevas cuentas de usuario son solo por invitación
     more_providers: Más
     email_not_present: Se necesita una dirección de correo
     invalid_email: "Lo lamentamos, eso no parece una dirección de correo electrónico válida"
     invalid_password: "Lo lamentamos, esa contraseña no coincide con la que tenemos archivada"
+    invalid_token: "Perdón pero no pudimos usar ese enlace para que ingreses. Haz clic debajo para que te enviemos uno nuevo"
     email_not_found: "Lo lamentamos, no pudimos encontrar una cuenta con esa dirección de correo electrónico"
     email_placeholder: tu@ejemplo.com
+    login_with_token: Estas listo! haz clic en el enlace debajo para ingresar.
     login_link_helptext: |
       Haz clic en el botón debajo y te enviaremos un enlace para ingresar instantáneamente.
       Si deseas usar una contraseña para ingresar en el futuro, puedes ingresar una en tu página de perfil.

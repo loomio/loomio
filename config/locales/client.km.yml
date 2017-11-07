@@ -17,9 +17,6 @@ km:
   comment_form:
     delete_comment: 'លុបមតិយោបល់ '
     confirm_delete_message: 'តើអ្នកប្រាកដថាអ្នកចង់លុបមតិយោបល់នេះ?'
-  sidebar:
-    help: 'ជួយ'
-    sign_out: 'ចេញក្រៅ'
   navbar:
     search:
       placeholder: 'ស្វែងរក'

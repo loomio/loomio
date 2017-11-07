@@ -177,11 +177,6 @@ cs:
     muted_threads: 'Ztlumená vlákna'
     start_group: 'Nová skupina'
     explore: 'Veřejné skupiny'
-    edit_profile: 'Upravit profil'
-    email_settings: 'Nastavení emailu'
-    help: 'Nápověda'
-    contact: 'Kontaktovat Loomio'
-    sign_out: 'Odhlásit se'
     start_thread: Nové vlákno
     start_decision: Nové rozhodnutí
     aria_labels:

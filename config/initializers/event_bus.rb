@@ -68,8 +68,15 @@ EventBus.configure do |config|
 
   config.listen('discussion_reader_viewed!', 'discussion_reader_dismissed!') do |reader|
     MessageChannelService.publish(
-      DiscussionReaderSerializer.new(reader, root: :discussions).as_json,
+      ActiveModel::ArraySerializer.new([reader], each_serializer: DiscussionReaderSerializer, root: :discussions).as_json,
       to: reader.user
+    )
+  end
+
+  config.listen('discussion_mark_as_seen') do |discussion, actor|
+    MessageChannelService.publish(
+      ActiveModel::ArraySerializer.new([discussion], each_serializer: MarkAsSeen::DiscussionSerializer, root: :discussions).as_json,
+      to: discussion.group
     )
   end
 

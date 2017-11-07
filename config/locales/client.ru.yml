@@ -158,10 +158,6 @@ ru:
     public_privacy_notice: 'Ваш комментарий будет виден всем пользователям сети'
   sidebar:
     explore: 'Публичная группа'
-    edit_profile: 'Редактировать профиль'
-    email_settings: 'Настройки email'
-    help: 'Помощь'
-    sign_out: 'Выйти'
     aria_labels:
       groups_list: 'Группы'
   navbar:

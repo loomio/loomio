@@ -892,6 +892,7 @@ en:
     print_thread: 'Print'
     delete_thread: 'Delete'
     add_comment: 'Comment'
+    seen_by_count: 'Seen by {{count}}'
 
   pin_thread_modal:
     title: Pin thread
@@ -1292,7 +1293,7 @@ en:
 
   poll_count_form:
     tool_tip_expanded: |
-      <p>A <em>check</em> is a tool with many possible uses but only 2 responses: Tick or Dash.</p>
+      <p>A <em>check</em> is a tool with many possible uses but only 2 responses: a tick (✔) or an x mark (✘). Participants will use the tick (✔) to say yes and the x mark (✘) to say no or unsure.</p>
       <p>Use it to engage people with an offer, like an RSVP: "I'm coming to the event" or "I'll join the working group".</p>
       <p>Or use it to track completion of a task: "I've checked my contact details are correct", or "I've read the document and left my feedback".</p>
       <p>A check has a <em>goal</em>, which is the number of participants you'd like. The goal indicates to the group if something needs more attention or is well subscribed.</p>

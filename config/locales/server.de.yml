@@ -221,7 +221,7 @@ de:
         poll_created: '%{actor} möchte eine Bestätigung: %{title}'
         poll_closing_soon_author: 'Dein Check läuft in 24 Stunden ab: %{title}'
         poll_expired: "Bestätigung abgeschlossen: %{title}"
-        poll_expired_author: 'Die von Ihnen angeforderte Bestätigung ist abgeschlossen. Geben Sie das Ergebnis bekannt für: %{title}'
+        poll_expired_author: 'Einholen der Bestätigung abgeschlossen. Geben Sie das Ergebnis bekannt für: %{title}'
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         invitation_created: '%{actor} möchte eine Bestätigung: %{title}'
         user_reminded: 'ERINNERUNG: %{actor} wartet auf Ihre Abstimmungsbeteiligung: %{title}'

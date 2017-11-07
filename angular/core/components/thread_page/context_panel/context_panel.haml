@@ -41,10 +41,13 @@
     %span{aria-hidden: "true"}·
     %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
       %i.mdi.mdi-lock-outline>
-      %span{translate: "common.privacy.private"}
+      %span{translate: "common.privacy.private"}>
     %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
       %i.mdi.mdi-earth>
-      %span{translate: "common.privacy.public"}
+      %span{translate: "common.privacy.public"}>
+    %span{ng-show: "discussion.seenByCount > 0"}>
+      %span{aria-hidden: "true"}>·
+      %span.context-panel__seen_by_count{ translate: "thread_context.seen_by_count", translate-value-count: "{{discussion.seenByCount}}"}
     %outlet{name: "after-thread-title", model: "discussion"}
 
   .context-panel__description.lmo-markdown-wrapper{ng-if: "!translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }

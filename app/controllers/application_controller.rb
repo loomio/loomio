@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
   include ForceSslHelper
 
   around_filter :process_time_zone
-  around_filter :process_locale         # LocalesHelper
+  around_filter :use_preferred_locale   # LocalesHelper
   before_filter :set_invitation_token   # CurrentUserHelper
   before_filter :set_last_seen_at       # CurrentUserHelper
 
   helper_method :current_user
   helper_method :client_asset_path
-  helper_method :detectable_locales
+  helper_method :supported_locales
 
   # this boots the angular app
   def index
