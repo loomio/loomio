@@ -1,13 +1,16 @@
 .thread-item {
   padding-left: $cardPaddingSize;
   padding-right: $cardPaddingSize;
-  margin-bottom: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .thread-item--unread {
-  border-left: 1px solid;
+  padding-left: $cardPaddingSize - 2px;
+  border-left: 2px solid;
   &.thread-item--indent {
-    padding-left: $cardPaddingSize + 41px;
+    padding-left: $cardPaddingSize + 40px;
+    // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding))
   }
 }
 

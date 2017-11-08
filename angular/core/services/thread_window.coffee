@@ -10,6 +10,7 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
         collection: 'events'
         params:
           discussion_key: @discussion.key
+          max_depth: 1
         per: @per
         from: @minSequenceId
 

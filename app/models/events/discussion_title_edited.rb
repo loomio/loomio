@@ -1,3 +1,4 @@
+# confirm: we don't use this?
 class Events::DiscussionTitleEdited < Event
   def self.publish!(discussion, editor)
     create(kind: "discussion_title_edited",

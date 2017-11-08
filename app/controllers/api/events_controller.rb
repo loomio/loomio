@@ -1,12 +1,13 @@
 class API::EventsController < API::RestfulController
   include UsesDiscussionReaders
-  
+
   private
 
   def accessible_records
     records = load_and_authorize(:discussion).items.sequenced
     records = records.includes(:user, :discussion, :eventable, parent: [:user, :eventable])
     records = records.where(parent_id: params[:parent_id]) if params[:parent_id]
+    records = records.where("depth <= ?", params[:max_depth]) if params[:max_depth]
     records
   end
 

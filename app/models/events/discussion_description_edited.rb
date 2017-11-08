@@ -1,3 +1,4 @@
+# confirm this is no longer used
 class Events::DiscussionDescriptionEdited < Event
   def self.publish!(discussion, editor)
     create(kind: "discussion_description_edited",

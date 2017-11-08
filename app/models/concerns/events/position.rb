@@ -2,16 +2,20 @@ module Events::Position
   extend ActiveSupport::Concern
 
   included do
+    before_save :set_depth
     after_destroy :reorder
     after_save :reorder, if: :parent_id_changed?
     belongs_to :parent, class_name: "Event", required: false
     has_many :children, class_name: "Event", foreign_key: :parent_id
     define_counter_cache(:child_count) { |e| e.children.count  }
-    define_counter_cache(:depth) { |e| e.parent_id ? (e.parent.depth + 1) : 0  }
     update_counter_cache :parent, :child_count
   end
 
   private
+  def set_depth
+    self.depth = parent ? (parent.depth + 1) : 0
+  end
+  
   def refresh_order_value
     self.position = self.class.select(:position).find(self.id).send(:position)
   end

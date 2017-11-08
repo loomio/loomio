@@ -5,7 +5,7 @@
     .thread-item__body.lmo-flex.lmo-flex__horizontal-center{layout: "column"}
       .thread-item__headline.lmo-flex.lmo-flex__center.lmo-flex__grow{layout: "row"}
         %h3.thread-item__title{id: "event-{{event.id}}"}
-          -# %div id: {{event.id}} pid: {{event.parentId}} sid: {{event.sequenceId}} position: {{event.position}} cc: {{event.childCount}} page: {{threadWindow.pageOf(event)}}
+          -# %div id: {{event.id}} pid: {{event.parentId}} sid: {{event.sequenceId}} position: {{event.position}} depth: {{event.depth}} unread: {{isUnread()}} cc: {{event.childCount}} page: {{threadWindow.pageOf(event)}}
           %span{ng-bind-html: "::headline()"}
           %span{aria-hidden: "true"}>·
           %a.thread-item__link.lmo-pointer{href: "{{::link()}}"}

@@ -25,7 +25,8 @@ class DiscussionReader < ActiveRecord::Base
     self.for(user: actor || model.author, discussion: model.discussion)
   end
 
-  def update_reader(volume: nil, participate: false, dismiss: false)
+  def update_reader(ranges: nil, volume: nil, participate: false, dismiss: false)
+    viewed!(ranges, persist: false)     if ranges
     set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
     dismiss!(persist: false)            if dismiss
     save!                               if changed?

@@ -111,6 +111,14 @@ class Poll < ActiveRecord::Base
 
   alias_method :user, :author
 
+  def parent_event
+    if discussion
+      discussion.created_event
+    else
+      nil
+    end
+  end
+
   def created_event
     events.find_by(kind: "poll_created")
   end
