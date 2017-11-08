@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootScope, $timeout, AppConfig, LoadingService) ->
-  $rootScope.$broadcast('currentComponent', { page: 'explorePage'})
+  $rootScope.$broadcast('currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'})
 
   @groupIds = []
   @resultsCount = 0
