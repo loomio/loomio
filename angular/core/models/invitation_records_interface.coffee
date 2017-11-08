@@ -10,5 +10,6 @@ angular.module('loomioApp').factory 'InvitationRecordsInterface', (BaseRecordsIn
       @remote.get('/pending', options)
 
     fetchShareableInvitationByGroupId: (groupId, options = {}) ->
+      return unless groupId
       options['group_id'] = groupId
       @remote.get('/shareable', options)

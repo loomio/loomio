@@ -12,9 +12,13 @@ class Events::InvitationAccepted < Event
   end
 
   def notification_params
-    super.merge(
-      actor: eventable.user,
-      url:  group_memberships_username_url(eventable.group, eventable.user.username)
-    )
+    super.merge(actor: eventable.user, url: notification_url)
+  end
+
+  def notification_url
+    case eventable.group
+    when FormalGroup then group_memberships_username_url(eventable.group, eventable.user.username)
+    when GuestGroup  then polymorphic_url(eventable.group.invitation_target)
+    end
   end
 end

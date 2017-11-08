@@ -6,8 +6,8 @@
       %material_modal_header_cancel_button
 
   %md-dialog-content
-    .md-dialog-content
-      %span{translate: "poll_common_close_form.helptext"}
+    %span{translate: "poll_common_close_form.helptext"}
+    %dialog_scroll_indicator
 
   %md-dialog-actions
     %md-button.md-raised.md-primary.poll-common-close-form__submit{ng-click: "submit()", translate: "poll_common_close_form.close_{{poll.pollType}}"}

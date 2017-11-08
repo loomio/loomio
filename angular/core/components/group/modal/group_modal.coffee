@@ -1,15 +1,14 @@
-angular.module('loomioApp').factory 'GroupModal', ->
+angular.module('loomioApp').factory 'GroupModal', ($location, Records, SequenceService, LmoUrlService) ->
   templateUrl: 'generated/components/group/modal/group_modal.html'
   controller: ($scope, group) ->
     $scope.group = group.clone()
 
-    $scope.currentStep = 'create'
-
-    $scope.$on 'createComplete', (event, group) ->
-      if !$scope.group.isNew() or $scope.group.parentId
-        $scope.$close()
-      else
-        $scope.group = group
-        $scope.currentStep = 'invite'
-
-    $scope.$on 'inviteComplete', $scope.$close
+    SequenceService.applySequence $scope,
+      steps: ->
+        if $scope.group.isNew() or $scope.group.parentId
+          ['create', 'invite']
+        else
+          ['create']
+      createComplete: (_, g) ->
+        $scope.invitationForm = Records.invitationForms.build(groupId: g.id)
+        $location.path LmoUrlService.group(g)

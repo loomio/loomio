@@ -16,6 +16,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $window, FlashSe
     prepare = (scope, model, options, prepareArgs) ->
       FlashService.loading(options.loadingMessage)
       options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
+      scope.$emit 'processing'       if typeof scope.$emit       is 'function'
       scope.isDisabled = true
       model.setErrors()
 
@@ -45,6 +46,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $window, FlashSe
     cleanup = (scope, model, options = {}) ->
       ->
         options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
+        scope.$emit 'doneProcessing'
         scope.isDisabled = false
 
     submit: (scope, model, options = {}) ->
