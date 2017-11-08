@@ -1,17 +1,18 @@
 .poll-common-ranked-choice-chart {
   width: 100%;
-  text-align: right;
+  text-align: left;
   position: relative;
 }
 
 .poll-common-ranked-choice-chart__cell {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  min-height: 48px;
+  justify-content: flex-start;
+  min-height: 72px;
   padding: 4px;
   &.poll-common-ranked-choice-chart__cell--name {
     justify-content: flex-start;
+    background-repeat:no-repeat;
   }
 }
 
