@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfig, Records, Session, SequenceService, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, AppConfig, Records, Session, SequenceService, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -79,7 +79,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
               model.pollOptionNames = _.pluck @fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
             # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
             else
-              scope.$broadcast 'addPollOption'
+              $rootScope.$broadcast 'addPollOption'
         failureCallback: ->
           ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
