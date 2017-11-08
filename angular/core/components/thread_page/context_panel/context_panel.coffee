@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'contextPanel', ($rootScope, $window, $timeout, Records, AbilityService, Session, ReactionService, ModalService, DocumentModal, ChangeVolumeForm, DiscussionForm, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal, TranslationService, ScrollService) ->
+angular.module('loomioApp').directive 'contextPanel', ($rootScope, $window, $timeout, Records, AbilityService, Session, ReactionService, ModalService, DocumentModal, ChangeVolumeForm, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal, TranslationService, ScrollService) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
