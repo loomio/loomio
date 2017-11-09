@@ -6,16 +6,8 @@ angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, For
     $scope.model.url = $scope.document.url or ''
 
     $scope.$on 'attachmentUploaded', (_, attachment) ->
-      $scope.document.url   = attachment.original
       $scope.document.title = $scope.document.title || attachment.filename
-
-    $scope.toggleForm = ->
-      $scope.document.method = switch $scope.document.method
-        when 'url'  then 'file'
-        when 'file' then 'url'
-
-    $scope.next = ->
-      $scope.document.url = $scope.model.url
+      $scope.$emit 'nextStep', attachment.original
 
     KeyEventService.submitOnEnter $scope, anyEnter: true
     AttachmentService.listenForPaste $scope

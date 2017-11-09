@@ -628,7 +628,7 @@ en:
       uploaded_to: in
     modal:
       title: Add a resource
-    choose_form:
+    method_form:
       helptext: Keep track of all your tools and files, so that they’re easy to find.
       url_helptext: Link to websites and tools such as Tello boards and Google docs
       file_helptext: Upload documents and files from your computer

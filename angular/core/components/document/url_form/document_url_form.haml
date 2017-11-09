@@ -13,5 +13,5 @@
         %input.lmo-primary-form-input.lmo-flex__grow{ng-model: "model.url", ng-disabled: "disabled", placeholder: "{{'document.form.url_placeholder' | translate }}"}
         %validation_errors{subject: "document", field: "url"}
 
-    .lmo-md-actions
-      %md-button.md-primary.md-raised{ng-click: "next()", translate: "common.action.next"}
+    .lmo-md-action
+      %md-button.md-primary.md-raised{ng-click: "$emit('nextStep', model.url)", translate: "common.action.next"}

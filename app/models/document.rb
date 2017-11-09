@@ -13,6 +13,10 @@ class Document < ActiveRecord::Base
     update(doctype: metadata['name'], icon: metadata['icon'], color: metadata['color'])
   end
 
+  [:group, :discussion, :poll].map do |model_type|
+    define_method model_type, -> { self.model.send(model_type) if self.model.respond_to?(model_type) }
+  end
+
   private
 
   def set_metadata

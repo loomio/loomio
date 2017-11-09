@@ -1,8 +1,10 @@
-angular.module('loomioApp').directive 'documentForm', (Records, FormService, KeyEventService) ->
+angular.module('loomioApp').directive 'documentForm', (Records, SequenceService, FormService, KeyEventService) ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/form/document_form.html'
   controller: ($scope) ->
 
-    $scope.$on 'backFromTitle', ->
-      $scope.document.title = $scope.document.url = ''
-      $scope.currentStep    = 'url'
+    SequenceService.applySequence $scope,
+      steps: ['method', 'url', 'title']
+      initialStep: if $scope.document.isNew() then 'method' else 'title'
+      methodComplete: (_, method) -> $scope.document.method = method
+      urlComplete:    (_, url)    -> $scope.document.url    = url
