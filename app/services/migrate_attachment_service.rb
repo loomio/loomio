@@ -4,10 +4,11 @@ class MigrateAttachmentService
       case att.attachable_type
       when "Discussion"
         Document.find_or_create_by(
-          author: att.user,
-          model:  att.attachable,
-          url:    att.url,
-          title:  att.filename
+          author:     att.user,
+          model:      att.attachable,
+          url:        att.url,
+          title:      att.filename,
+          created_at: att.created_at
         )
       end
       att.update_attribute :migrated_to_document, true
