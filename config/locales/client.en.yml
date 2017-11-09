@@ -619,7 +619,7 @@ en:
     list:
       title: Resources
       no_poll_documents: No resources have been uploaded to this decision yet.
-      no_discussion_documents: No documents have been uploaded to this thread yet.
+      no_discussion_documents: No resources have been uploaded to this thread yet.
       no_group_documents: No resources have been uploaded to the group context yet. Click the link below to see all resources uploaded to threads within this group.
     management:
       group_header: Attached to context
