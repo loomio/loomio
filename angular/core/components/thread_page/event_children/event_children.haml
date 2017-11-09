@@ -1,5 +1,5 @@
 .event-children
-  %md-button.event-children__load-previous.thread-item--indent-margin{ng-if: "sw.anyPrevious()", ng-click: "sw.loadPrevious()", translate: "activity_card.n_previous", translate-values: "{count: sw.previousCount()}"}
-  %thread-item{ng-repeat: "event in sw.events() | orderBy: threadWindow.orderBy track by event.id", thread-window: "threadWindow", event: "event", root: "false"}
-  %md-button.event-children__load-next.thread-item--indent-margin{ng-if: "sw.anyNext()", ng-click: "sw.loadMore()", translate: "activity_card.n_more", translate-values: "{count: sw.nextCount()}"}
+  %md-button.event-children__load-previous.thread-item--indent-margin{ng-if: "eventWindow.anyPrevious()", ng-click: "eventWindow.loadPrevious()", translate: "activity_card.n_previous", translate-values: "{count: eventWindow.previousCount()}"}
+  %thread-item{ng-repeat: "event in eventWindow.events() | orderBy: threadWindow.orderBy track by event.id", event-window: "eventWindow", event: "event"}
+  %md-button.event-children__load-next.thread-item--indent-margin{ng-if: "eventWindow.anyNext()", ng-click: "eventWindow.loadMore()", translate: "activity_card.n_more", translate-values: "{count: eventWindow.nextCount()}"}
   %add_reply_panel

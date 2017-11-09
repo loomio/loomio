@@ -882,6 +882,11 @@ en:
       unmute_message: 'Thread unmuted'
 
   activity_card:
+    unread: Unread
+    newest: Newest
+    oldest: Oldest
+    chronological: Chronological
+    nested: Nested
     new_activity: New activity
     attachment_display:
       aria_label: 'File attached:'

@@ -3,6 +3,16 @@
   padding: $cardPaddingSize 0;
 }
 
+.activity-card__settings {
+  md-select {
+    margin: 0;
+  }
+  padding: $cardPaddingSize;
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
 .activity-card__load-backwards{
   @include fontSmall;
   color: $grey-on-grey;

@@ -1,21 +1,15 @@
-angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
-  class ThreadWindow
-    reset: (initialSequenceId) ->
-      @per = 10
-      @orderBy = 'createdAt'
-      @readRanges = _.clone(@discussion.readRanges)
-      @setMin(initialSequenceId || 1)
+angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow, Records, RecordLoader) ->
+  class ChronologicalEventWindow extends BaseEventWindow
+    constructor: ({@discussion, @settings}) ->
+      super(discussion: @discussion, settings: @settings)
+      @setMin(@settings.initialSequenceId || 1)
       @setMax(@minSequenceId - 1)
       @loader = new RecordLoader
         collection: 'events'
         params:
           discussion_key: @discussion.key
-          max_depth: 1
-        per: @per
+        per: @settings.per
         from: @minSequenceId
-
-    constructor: ({@discussion}) ->
-      @reset()
 
     setMin: (val) ->
       @minSequenceId = val
@@ -79,13 +73,6 @@ angular.module('loomioApp').factory 'ThreadWindow', (Records, RecordLoader) ->
 
       events = Records.events.collection.find(query)
       _.uniq( @replaceOrphansWithParents( @rootsAndOrphans( @fewerDiscussionEditedEvents( events))))
-
-    isUnread: (event) =>
-      !_.any @readRanges, (range) ->
-        _.inRange(event.sequenceId, range[0], range[1]+1)
-
-    noEvents: ->
-        !_.any(@events())
 
     inWindow: (event) ->
       event.sequenceId >= @minSequenceId &&

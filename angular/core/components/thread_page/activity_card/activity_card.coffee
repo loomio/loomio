@@ -1,99 +1,46 @@
-angular.module('loomioApp').directive 'activityCard', ->
+angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow, NestedEventWindow, $mdDialog, $timeout, $window, $location, AbilityService)->
   scope: {discussion: '=', loading: '=', activeCommentId: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   replace: true
-  controller: ($scope, $location, $mdDialog, $rootScope, $window, $timeout, Records, AppConfig, AbilityService, PaginationService, LoadingService, ModalService) ->
+  controller: ($scope) ->
 
     $scope.$on 'fetchRecordsForPrint', (event, options = {}) ->
-      $scope.loadEvents(per: Number.MAX_SAFE_INTEGER).then ->
+      $scope.tw.loadAll().then ->
         $mdDialog.cancel()
         $timeout -> $window.print()
 
-    $scope.firstLoadedSequenceId = 0
-    $scope.lastLoadedSequenceId = 0
-    $scope.lastReadSequenceId = $scope.discussion.lastReadSequenceId
-    $scope.hasNewActivity = $scope.lastReadSequenceId < $scope.discussion.lastSequenceId
-    $scope.pagination = (current) ->
-      PaginationService.windowFor
-        current:  current
-        min:      $scope.discussion.firstSequenceId
-        max:      $scope.discussion.lastSequenceId
-        pageType: 'activityItems'
-    visibleSequenceIds = []
+    $scope.discussion.markAsSeen()
+
+    initialSequenceId = ->
+      #load from: from, scrollTo: from
+      return $location.search().from                  if $location.search().from      # respond to ?from parameter
+
+      # load from 1, scroll to nothing
+      return $scope.discussion.firstSequenceId        if !AbilityService.isLoggedIn() # show beginning of discussion for logged out users
+
+      # load from 2 back, sroll to latestActivity
+      return $scope.discussion.lastReadSequenceId - 2 if $scope.discussion.isUnread() # show newest unread content for logged in users
+
+      # load last page, scroll to end
+      return $scope.discussion.lastSequenceId - $scope.settings.per + 2                     # show latest content if the discussion has been read
+
+    $scope.settings =
+      mode: "chronological"
+      position: "oldest"
+      orderBy: 'createdAt'
+      per: 10
+
+    $scope.settings.initialSequenceId = initialSequenceId()
 
     $scope.init = ->
-      $scope.discussion.markAsSeen()
-
-      $scope.loadEventsForwards(
-        commentId: $scope.activeCommentId
-        sequenceId: $scope.initialLoadSequenceId()).then ->
-        $rootScope.$broadcast 'threadPageEventsLoaded'
-
-    $scope.initialLoadSequenceId = ->
-      return $location.search().from       if $location.search().from      # respond to ?from parameter
-      return 0                             if !AbilityService.isLoggedIn() # show beginning of discussion for logged out users
-      return $scope.lastReadSequenceId - 5 if $scope.discussion.isUnread() # show newest unread content for logged in users
-      return $scope.pagination($scope.discussion.lastSequenceId).prev      # show latest content if the discussion has been read
-
-    $scope.beforeCount = ->
-      $scope.firstLoadedSequenceId - $scope.discussion.firstSequenceId
-
-    updateLastSequenceId = ->
-      visibleSequenceIds = _.uniq(visibleSequenceIds)
-      $rootScope.$broadcast('threadPosition', $scope.discussion, _.max(visibleSequenceIds))
-
-    addSequenceId = (id) ->
-      visibleSequenceIds.push(id)
-      updateLastSequenceId()
-
-    removeSequenceId = (id) ->
-      visibleSequenceIds = _.without(visibleSequenceIds, id)
-      updateLastSequenceId()
-
-    $scope.threadItemHidden = (item) ->
-      removeSequenceId(item.sequenceId)
-
-    $scope.threadItemVisible = (item) ->
-      addSequenceId(item.sequenceId)
-      item.markAsRead()
-      $scope.loadEventsForwards(sequenceId: $scope.lastLoadedSequenceId) if $scope.loadMoreAfterReading(item)
-
-    $scope.loadEvents = ({from, per, commentId}) ->
-      from = 0 unless from?
-      per  = per or $scope.pagination().pageSize
-
-      Records.events.fetchByDiscussion($scope.discussion.key,
-        from: from
-        per: per
-        comment_id: commentId).then ->
-        $scope.firstLoadedSequenceId = $scope.discussion.minLoadedSequenceId()
-        $scope.lastLoadedSequenceId  = $scope.discussion.maxLoadedSequenceId()
-
-    $scope.loadEventsForwards = ({commentId, sequenceId}) ->
-      $scope.loadEvents(commentId: commentId, from: sequenceId)
-    LoadingService.applyLoadingFunction $scope, 'loadEventsForwards'
-
-    $scope.loadEventsBackwards = ->
-      $scope.loadEvents(from: $scope.pagination($scope.firstLoadedSequenceId).prev)
-    LoadingService.applyLoadingFunction $scope, 'loadEventsBackwards'
-
-    $scope.canLoadBackwards = ->
-      $scope.firstLoadedSequenceId > $scope.discussion.firstSequenceId and
-      !($scope.loadEventsForwardsExecuting or $scope.loadEventsBackwardsExecuting)
-
-    $scope.loadMoreAfterReading = (item) ->
-      item.sequenceId == $scope.lastLoadedSequenceId and
-      item.sequenceId < $scope.discussion.lastSequenceId
-
-    $scope.events = -> $scope.discussion.events()
-
-    $scope.noEvents = ->
-      !$scope.loadEventsForwardsExecuting and !_.any($scope.events())
-
-    $scope.isLastRead = (event) ->
-      $scope.lastReadSequenceId == event.sequenceId &&
-      $scope.lastLoadedSequenceId > event.sequenceId
+      if $scope.settings.mode == "chronological"
+        console.log $scope.settings
+        $scope.eventWindow = new ChronologicalEventWindow(discussion: $scope.discussion, settings: $scope.settings)
+      else
+        $scope.eventWindow = new NestedEventWindow(discussion: $scope.discussion, parentEvent: $scope.discussion.createdEvent(), settings: $scope.settings)
+      $scope.eventWindow.loadNext().then -> $scope.$emit('threadPageEventsLoaded')
 
     $scope.init()
+
     return
