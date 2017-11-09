@@ -30,7 +30,7 @@ describe 'Discussion Page', ->
 
     it 'lets you edit title, context and privacy', ->
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--edit'
+                 '.context-panel-dropdown__option--edit'
       page.fillIn('.discussion-form__title-input', 'better title')
       page.fillIn('.discussion-form textarea', 'improved description')
       page.click('.discussion-form__private')
@@ -42,26 +42,26 @@ describe 'Discussion Page', ->
 
     xit 'does not store cancelled thread info', ->
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--edit'
+                 '.context-panel-dropdown__option--edit'
 
       page.fillIn('.discussion-form__title-input', 'dumb title')
       page.fillIn('.discussion-form textarea', 'rubbish description')
 
       page.click('.modal-cancel')
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--edit'
+                 '.context-panel-dropdown__option--edit'
 
       page.expectNoText('.discussion-form__title-input', 'dumb title')
       page.expectNoText('.discussion-form textarea', 'rubbish description')
 
     xit 'lets you view thread revision history', ->
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--edit'
+                 '.context-panel-dropdown__option--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
       page.fillIn '.discussion-form textarea', 'Revised description'
       page.click '.discussion-form__update'
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--edit'
+                 '.context-panel-dropdown__option--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
       page.fillIn '.discussion-form textarea', 'Revised description'
       page.click '.discussion-form__update'
@@ -81,18 +81,18 @@ describe 'Discussion Page', ->
     it 'lets you mute and unmute', ->
       page.loadPath 'setup_multiple_discussions'
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--mute'
+                 '.context-panel-dropdown__option--mute'
       page.click '.mute-explanation-modal__mute-thread'
       page.expectFlash 'Thread muted'
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--unmute'
+                 '.context-panel-dropdown__option--unmute'
       page.expectFlash 'Thread unmuted'
 
   describe 'move thread', ->
     it 'lets you move a thread', ->
       page.loadPath 'setup_multiple_discussions'
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--move'
+                 '.context-panel-dropdown__option--move'
       page.selectOption '.move-thread-form__group-dropdown', 'Point Break'
       page.click '.move-thread-form__submit'
       page.sleep()
@@ -103,7 +103,7 @@ describe 'Discussion Page', ->
     it 'lets coordinators and thread authors delete threads', ->
       page.loadPath 'setup_discussion'
       page.click '.context-panel__dropdown-button'
-      page.click '.context-panel__dropdown-options--delete button'
+      page.click '.context-panel-dropdown__option--delete button'
       page.click '.delete-thread-form__submit'
 
       page.expectFlash 'Thread deleted'
@@ -114,7 +114,7 @@ describe 'Discussion Page', ->
     it 'can pin from the discussion page', ->
       page.loadPath 'setup_discussion'
       page.click '.context-panel__dropdown-button'
-      page.click '.context-panel__dropdown-options--pin button'
+      page.click '.context-panel-dropdown__option--pin button'
 
       page.expectText '.pin-thread-modal', 'Pinned threads always appear'
       page.click '.pin-thread-modal__submit'
@@ -130,14 +130,14 @@ describe 'Discussion Page', ->
       page.loadPath('setup_discussion')
     it 'lets you change thread volume', ->
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--email-settings',
+                 '.context-panel-dropdown__option--email-settings',
                  '#volume-loud',
                  '.change-volume-form__submit'
       page.expectFlash 'You will be emailed activity in this thread.'
 
     it 'lets you change the volume for all threads in the group', ->
       page.click '.context-panel__dropdown-button',
-                 '.context-panel__dropdown-options--email-settings',
+                 '.context-panel-dropdown__option--email-settings',
                  '#volume-loud',
                  '.change-volume-form__apply-to-all',
                  '.change-volume-form__submit'

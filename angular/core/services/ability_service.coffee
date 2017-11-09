@@ -69,6 +69,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       Session.user().isAuthorOf(discussion) or
       @canAdministerGroup(discussion.group())
 
+    canChangeVolume: (discussion) ->
+      Session.user().isMemberOf(discussion.group())
+
     canManageGroupSubscription: (group) ->
       group.isParent() and
       @canAdministerGroup(group) and
