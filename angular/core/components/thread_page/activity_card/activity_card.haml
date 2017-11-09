@@ -1,13 +1,19 @@
 %section.activity-card{aria-labelledby: "activity-card-title"}
   .activity-card__settings
-    %md-select.md-no-underline{ng-model: "settings.position", ng-change: "init()"}
+    -# %md-select.md-no-underline{ng-model: "settings.position", ng-change: "init()"}
+      %md-option{value: "beginning", translate: "activity_card.beginning"}
       %md-option{value: "unread", translate: "activity_card.unread"}
-      %md-option{value: "newest", translate: "activity_card.newest"}
-      %md-option{value: "oldest", translate: "activity_card.oldest"}
-    %md-select.md-no-underline{ng-model: "settings.mode", ng-change: "init()"}
+      %md-option{value: "end", translate: "activity_card.end"}
+    %md-select.md-no-underline{ng-model: "settings.renderMode", ng-change: "init()"}
       %md-option{value: "chronological", translate: "activity_card.chronological"}
       %md-option{value: "nested", translate: "activity_card.nested"}
-  %div per: {{settings.per}} min: {{eventWindow.minSequenceId}} max: {{eventWindow.maxSequenceId}} first: {{discussion.firstSequenceId}} last: {{discussion.lastSequenceId}} loadedCount: {{eventWindow.events().length}}
+  %div
+    per: {{settings.per}}
+    min: {{eventWindow.min}}
+    max: {{eventWindow.max}}
+    first: {{discussion.firstSequenceId}}
+    last: {{discussion.lastSequenceId}}
+    loadedCount: {{eventWindow.events().length}}
 
   %loading_content.lmo-card-left-right-padding{ng-if: "eventWindow.loader.loadingFirst", block-count: 2}
   .activity-card__content{ng-if: "!eventWindow.loader.loadingFirst"}

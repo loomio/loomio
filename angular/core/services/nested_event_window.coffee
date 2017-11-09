@@ -10,6 +10,9 @@ angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Recor
           max_depth: @parentEvent.depth + 1
         per: @settings.per
         from: @settings.initialSequenceId
+      if @settings.position == "unread"
+        @loader.params.exclude_sequence_ids =
+          _.map(@discussion.readRanges, (range) -> range.join(',')).join(' ')
 
     useNesting: true
 

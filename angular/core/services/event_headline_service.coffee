@@ -1,20 +1,21 @@
 angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records) ->
   new class EventHeadlineService
 
-    headlineFor: (event) ->
-      $translate.instant "thread_item.#{@headlineKeyFor(event)}",
+    headlineFor: (event, isNested = false) ->
+      $translate.instant "thread_item.#{@headlineKeyFor(event, isNested)}",
         author:   event.actorName()
         username: event.actorUsername()
         title:    @titleFor(event)
         polltype: @pollTypeFor(event)
 
-    headlineKeyFor: (event) ->
+    headlineKeyFor: (event, isNested) ->
       switch event.kind
-        when 'new_comment'       then @newCommentKey(event)
+        when 'new_comment'       then @newCommentKey(event, isNested)
         when 'discussion_edited' then @discussionEditedKey(event)
         else event.kind
 
-    newCommentKey: (event) ->
+    newCommentKey: (event, isNested) ->
+      return 'new_comment' if isNested
       if event.model().parentId?
         'comment_replied_to'
       else

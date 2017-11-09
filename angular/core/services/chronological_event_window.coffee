@@ -3,51 +3,52 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
     constructor: ({@discussion, @settings}) ->
       super(discussion: @discussion, settings: @settings)
       @setMin(@settings.initialSequenceId || 1)
-      @setMax(@minSequenceId - 1)
+      @setMax(@min - 1)
       @loader = new RecordLoader
         collection: 'events'
         params:
           discussion_key: @discussion.key
         per: @settings.per
-        from: @minSequenceId
+        from: @min
 
     setMin: (val) ->
-      @minSequenceId = val
-      if @minSequenceId < @discussion.firstSequenceId
-        @minSequenceId = @discussion.firstSequenceId
+      @min = val
+      if @min < @discussion.firstSequenceId
+        @min = @discussion.firstSequenceId
 
     setMax: (val) ->
-      @maxSequenceId = val
-      if @maxSequenceId >= @discussion.lastSequenceId
-        @maxSequenceId = null # allows new events to show up
+      @max = val
+      if @max >= @discussion.lastSequenceId
+        @max = null # allows new events to show up
 
     increaseMax: =>
-      @setMax(@maxSequenceId += @per)
+      @setMax(@max += @per)
 
     decreaseMin: =>
-      @setMin(@minSequenceId -= @per)
+      @setMin(@min -= @per)
 
     anyNext: ->
-      @maxSequenceId != null
+      @max != null
 
     loadNext: ->
-      @loader.loadMore(@maxSequenceId).then(@increaseMax)
+      @loader.loadMore(@max).then(@increaseMax)
 
     anyPrevious: ->
-      @minSequenceId > @discussion.firstSequenceId
+      @min > @discussion.firstSequenceId
 
     loadPrevious: ->
       @decreaseMin()
-      @loader.loadPrevious(@minSequenceId)
+      @loader.loadPrevious(@min)
 
     numPrevious: ->
-      @minSequenceId - @discussion.firstSequenceId
+      # possibly inaccurate. might remove
+      @min - @discussion.firstSequenceId
 
     loadAll: ->
       @loader.per = Number.MAX_SAFE_INTEGER
-      @minSequenceId = @discussion.firstSequenceId
-      @maxSequenceId = null
-      @loader.loadMore(@minSequenceId)
+      @min = @discussion.firstSequenceId
+      @max = null
+      @loader.loadMore(@min)
 
     rootsAndOrphans: (events) =>
       _.filter events, (event) => !event.parentId? || !@inWindow(event.parent())
@@ -68,18 +69,14 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
       # i think we want to memoize this method eventually
       query =
         sequenceId:
-          $between: [@minSequenceId, (@maxSequenceId || Number.MAX_VALUE)]
+          $between: [@min, (@max || Number.MAX_VALUE)]
         discussionId: @discussion.id
 
       events = Records.events.collection.find(query)
       _.uniq( @replaceOrphansWithParents( @rootsAndOrphans( @fewerDiscussionEditedEvents( events))))
 
     inWindow: (event) ->
-      event.sequenceId >= @minSequenceId &&
-      ((@maxSequenceId == null) || event.sequenceId <= @maxSequenceId)
+      event.sequenceId >= @min && ((@max == null) || event.sequenceId <= @max)
 
     isLastInWindow: (event) ->
       _.last(@events()) == event
-
-    isFirstUnread: (event) ->
-      event.sequenceId == @firstUnreadSequenceId

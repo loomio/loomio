@@ -33,6 +33,7 @@ class DiscussionSerializer < ActiveModel::Serializer
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
                          :discussion_reader_volume,
+                         :first_unread_sequence_id,
                          :last_read_at,
                          :dismissed_at,
                          :read_ranges

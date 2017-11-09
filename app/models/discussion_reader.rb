@@ -75,6 +75,10 @@ class DiscussionReader < ActiveRecord::Base
     read_ranges.map {|r| [r.first, r.last] }
   end
 
+  def first_unread_sequence_id
+    discussion.items.excluding_sequence_ids(read_ranges).order(sequence_id: :asc).pluck(:sequence_id).first
+  end
+
   private
 
   def read_ranges

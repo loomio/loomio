@@ -50,6 +50,14 @@ describe API::EventsController do
         expect(event_ids).to_not include @another_event.id
       end
 
+      it 'excludes specific sequence ids given ranges' do
+        ranges_str = RangeSet.serialize RangeSet.to_ranges(@event.sequence_id)
+        get :index, discussion_id: discussion.id, exclude_sequence_ids: ranges_str
+        json = JSON.parse(response.body)
+        event_ids = json['events'].map { |v| v['id'] }
+        expect(event_ids).to_not include @event.id
+      end
+
       it 'responds with a discussion with a reader' do
         get :index, discussion_id: discussion.id, format: :json
         json = JSON.parse(response.body)

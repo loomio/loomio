@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
 
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :chronologically, -> { order(created_at: :asc) }
+  scope :excluding_sequence_ids, -> (ranges) { where RangeSet.to_ranges(ranges).map {|r| "(sequence_id NOT BETWEEN #{r.first} AND #{r.last})"}.join(' AND ') }
 
   after_create :trigger!
   after_create :call_thread_item_created

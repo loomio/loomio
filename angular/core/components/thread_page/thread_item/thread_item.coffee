@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $translate, LmoUr
       $scope.eventWindow.isUnread($scope.event)
 
     $scope.headline = ->
-      EventHeadlineService.headlineFor($scope.event)
+      EventHeadlineService.headlineFor($scope.event, $scope.eventWindow.useNesting)
 
     $scope.link = ->
       LmoUrlService.discussion $scope.eventWindow.discussion, from: $scope.event.sequenceId

@@ -40,6 +40,7 @@ en:
     ranked_choice: Ranked choice
   timezones:
     local: Local time ({{value}})
+
   common:
     you: You
     expand: Expand
@@ -882,9 +883,9 @@ en:
       unmute_message: 'Thread unmuted'
 
   activity_card:
+    beginning: Beginning
     unread: Unread
-    newest: Newest
-    oldest: Oldest
+    end: End
     chronological: Chronological
     nested: Nested
     new_activity: New activity

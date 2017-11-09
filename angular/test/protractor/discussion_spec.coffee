@@ -71,7 +71,7 @@ describe 'Discussion Page', ->
       page.expectText '.revision-history-modal__body', 'What star sign are you?'
 
   describe 'reading a thread', ->
-    it 'can display an unread content line', ->
+    fit 'can display an unread content line', ->
       page.loadPath 'setup_unread_discussion'
       page.expectText '.activity-card', 'New Activity'
       browser.refresh()
@@ -144,7 +144,7 @@ describe 'Discussion Page', ->
       page.expectFlash 'You will be emailed all activity in this group.'
 
   describe 'joining the group', ->
-    it 'allows logged in users to join a group and comment', ->
+    fit 'allows logged in users to join a group and comment', ->
       page.loadPath 'view_open_group_as_non_member'
       page.click '.thread-preview__link'
       page.click '.join-group-button__join-group'
@@ -154,7 +154,7 @@ describe 'Discussion Page', ->
       page.click '.comment-form__submit-button'
       page.expectFlash 'Comment added'
 
-    it 'allows logged in users to request to join a closed group', ->
+    fit 'allows logged in users to request to join a closed group', ->
       page.loadPath 'view_closed_group_as_non_member'
       page.click '.thread-preview__link'
       page.click '.join-group-button__ask-to-join-group'
@@ -180,7 +180,7 @@ describe 'Discussion Page', ->
       page.expectText '.thread-item__body','Here is a dragon!'
       page.expectElement '.thread-item__body img'
 
-    it 'replies to a comment', ->
+    fit 'replies to a comment', ->
       page.fillIn '.comment-form textarea', 'original comment right heerrr'
       page.click '.comment-form__submit-button'
       page.click '.action-dock__button--reply_to_comment'
