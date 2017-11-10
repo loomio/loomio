@@ -27,8 +27,19 @@ class RangeSet
   # class methods
   def self.includes?(haystack, needle)
     to_ranges(needle).all? do |a|
-      to_ranges(haystack).any? { |b| b.include?(a) }
+      to_ranges(haystack).any? { |b| overlaps?(a, b) }
     end
+  end
+
+  # do 2 ranges overlap?
+  def self.overlaps?(a,b)
+    if a.first > b.first
+      new_a = b
+      b = a
+      a = new_a
+    end
+    # a.first is less than or equal to b.first
+    a.first == b.first || a.last >= b.first
   end
 
   def self.to_ranges(ranges)
@@ -37,11 +48,11 @@ class RangeSet
     # range set
     return []                        if ranges.nil?
     # single id
-    return [ranges..ranges]          if ranges.is_a? Numeric
+    return [[ranges, ranges]]          if ranges.is_a? Numeric
     # single range
     return [ranges]                  if ranges.is_a? Range
     # array of ids
-    return ranges.map {|id| id..id } if ranges.is_a?(Array) && ranges.first.is_a?(Numeric)
+    return ranges.map {|id| [id,id] } if ranges.is_a?(Array) && ranges.first.is_a?(Numeric)
     # serialized array of range pairs
     return parse(ranges)             if ranges.is_a? String
     # as well as a well formatted array of ranges
@@ -50,9 +61,8 @@ class RangeSet
 
   def self.subtract_range(whole, part)
     # examples
-
     # read nothing
-    return [[whole.first, whole.last]] if (part.first > whole.last) || (part.last < whole.first)
+    return [whole] if part.empty? || (part.first > whole.last) || (part.last < whole.first)
 
     # read the whole thing
     # range [2,3]
@@ -63,7 +73,7 @@ class RangeSet
     # read the middle
     # range [1,3]
     # read_range [2,2]
-    # unread_ranges [[1,1],[2,2]]
+    # unread_ranges [[1,1],[3,3]]
     return [[whole.first, part.first - 1], [part.last + 1, whole.last]] if (part.first > whole.first) && (part.last < whole.last)
 
     # read the first part
@@ -81,15 +91,28 @@ class RangeSet
   end
 
   # all ranges: [[1,2]] , some ranges: [[1,1]]
-  def self.subtract_ranges(whole_ranges, part_ranges)
-    remaining = []
-    whole_ranges.each do |whole_range|
-      some_ranges.each do |part_range|
-        subtract_range(whole_range, part_range).each do |remainder|
-          remaining << remainder
+  def self.subtract_ranges(wholes, parts)
+    output = wholes
+    while (subtract_ranges_loop(output, parts) != output) do
+      output = subtract_ranges_loop(output, parts)
+    end
+    reduce output
+  end
+
+  def self.subtract_ranges_loop(input, parts)
+    output = []
+    input.each do |whole|
+      if parts.any?{|part| overlaps?(whole, part)}
+        parts.select {|part| overlaps?(whole, part) }.each do |part|
+          subtract_range(whole, part).each do |remainder|
+            output << remainder
+          end
         end
+      else
+        output << whole
       end
     end
+    output
   end
 
   # for turning an array of likely sequential ids into ranges
@@ -127,13 +150,13 @@ class RangeSet
   end
 
   def self.reduce(ranges)
-    # return [] if ranges.length == 0
+    return [] if ranges.length == 0
     ranges = ranges.sort_by {|r| r.first }
-    *reduced = ranges.shift
+    reduced = [ranges.shift]
     ranges.each do |r|
       lastr = reduced[-1]
       if lastr.last >= r.first - 1
-        reduced[-1] = lastr.first..[r.last, lastr.last].max
+        reduced[-1] = [lastr.first,[r.last, lastr.last].max]
       else
         reduced.push(r)
       end
