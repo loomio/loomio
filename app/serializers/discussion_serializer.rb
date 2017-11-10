@@ -44,7 +44,11 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
 
   def read_ranges
-    reader.read_ranges_arrays
+    RangeSet.to_arrays reader.read_ranges
+  end
+
+  def ranges
+    RangeSet.to_arrays object.ranges
   end
 
   def active_polls

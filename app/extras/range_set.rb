@@ -36,7 +36,6 @@ class RangeSet
     # but it's useful to support
     # range set
     return []                        if ranges.nil?
-    return ranges.ranges             if ranges.is_a? RangeSet
     # single id
     return [ranges..ranges]          if ranges.is_a? Numeric
     # single range
@@ -47,6 +46,74 @@ class RangeSet
     return parse(ranges)             if ranges.is_a? String
     # as well as a well formatted array of ranges
     ranges
+  end
+
+  def self.subtract_range(whole, part)
+    # examples
+
+    # read nothing
+    return [[whole.first, whole.last]] if (part.first > whole.last) || (part.last < whole.first)
+
+    # read the whole thing
+    # range [2,3]
+    # read_range [2,3] or [1,4]
+    # unread_ranges []
+    return [] if (part.first <= whole.first) && (part.last >= whole.last)
+
+    # read the middle
+    # range [1,3]
+    # read_range [2,2]
+    # unread_ranges [[1,1],[2,2]]
+    return [[whole.first, part.first - 1], [part.last + 1, whole.last]] if (part.first > whole.first) && (part.last < whole.last)
+
+    # read the first part
+    # range      [1,3]
+    # read_range [1,2]
+    # unread_ranges [[3,3]]
+    return [[part.last + 1, whole.last]]   if (part.first == whole.first) && (part.last < whole.last)
+
+    # read the last part
+    # range      [1,3]
+    # read_range [2,3]
+    # unread_ranges [[1,1]]
+    # start of unread_range is either same as range.first or read_range.last
+    return [[whole.first, part.first - 1]] if (part.first > whole.first) && (part.last == whole.last)
+  end
+
+  # all ranges: [[1,2]] , some ranges: [[1,1]]
+  def self.subtract_ranges(whole_ranges, part_ranges)
+    remaining = []
+    whole_ranges.each do |whole_range|
+      some_ranges.each do |part_range|
+        subtract_range(whole_range, part_range).each do |remainder|
+          remaining << remainder
+        end
+      end
+    end
+  end
+
+  # for turning an array of likely sequential ids into ranges
+  def self.ranges_from_list(ids)
+    return [] if ids.empty?
+
+    first_id = 1
+    last_id = 1
+
+    ranges = []
+    ids.each do |id|
+      if id == last_id + 1
+        last_id = id
+      else
+        ranges << first_id..last_id
+        first_id = id
+      end
+    end
+    ranges << first_id..last_id
+    ranges
+  end
+
+  def self.to_arrays(ranges)
+    ranges.map {|r| [r.first, r.last] }
   end
 
   def self.parse(string)

@@ -71,12 +71,15 @@ class DiscussionReader < ActiveRecord::Base
     read_ranges.sum {|r| discussion.items.where(sequence_id: r).count }
   end
 
-  def read_ranges_arrays
-    read_ranges.map {|r| [r.first, r.last] }
+  def unread_ranges
+    RangeSet.subtract_ranges(ranges, read_ranges)
   end
 
   def first_unread_sequence_id
-    discussion.items.excluding_sequence_ids(read_ranges).order(sequence_id: :asc).pluck(:sequence_id).first
+
+    read_ranges.detect{|read_range| ranges.any?{|range| range.contains? read_range.last + 1}}
+
+    (discussion.ranges.first&.last || 0) + 1
   end
 
   private

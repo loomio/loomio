@@ -70,7 +70,7 @@ class Discussion < ActiveRecord::Base
   define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
   define_counter_cache(:versions_count)       { |discussion| discussion.versions.where(event: :update).count }
   define_counter_cache(:items_count)          { |discussion| discussion.items.count }
-  define_counter_cache(:seen_by_count)            { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
+  define_counter_cache(:seen_by_count)        { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
@@ -81,13 +81,20 @@ class Discussion < ActiveRecord::Base
   end
 
   def update_sequence_info!
-    first_item = discussion.items.order({sequence_id: :asc}).first
-    last_item =  discussion.items.order({sequence_id: :asc}).last
-    discussion.first_sequence_id = first_item&.sequence_id || 0
-    discussion.last_sequence_id  = last_item&.sequence_id || 0
+    discussion.ranges_string =
+     RangeSet.serialize RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
     discussion.last_activity_at = last_item&.created_at || created_at
     save!(validate: false)
   end
+
+  # maybe yagni
+  # def first_sequence_id
+  #   ranges.first&.first || 0
+  # end
+  #
+  # def last_sequence_id
+  #   ranges.last&.last || 0
+  # end
 
   def thread_item_created!
     update_sequence_info!
@@ -115,6 +122,10 @@ class Discussion < ActiveRecord::Base
 
   def body
     self.description
+  end
+
+  def ranges
+    RangeSet.parse(self.ranges_string)
   end
 
   private
