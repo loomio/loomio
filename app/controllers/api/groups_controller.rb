@@ -8,7 +8,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def index
-    instantiate_collection { |collection| collection.search_for(params[:q]).order(recent_activity_count: :desc) }
+    instantiate_collection { |collection| collection.search_for(params[:q]) }
     respond_with_collection
   end
 

@@ -28,6 +28,7 @@ namespace :loomio do
     LocateUsersAndGroupsJob.perform_later
     if (Time.now.hour == 0)
       # daily tasks
+      UpdateGroupsRecentActivityCount.perform_later
       UsageReportService.send
     end
   end
