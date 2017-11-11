@@ -128,24 +128,11 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     markAsRead: (id) ->
       return if @hasRead(id)
-      @readRanges.push([id,id])
-      @reduceReadRanges()
+      @readRanges = RangeSet.reduce(@readRanges.push([id,id]))
       @updateReadRanges()
 
-    reduceReadRanges: =>
-      ranges = _.sortBy @readRanges, (r) -> r[0]
-      reduced = [ranges.shift()]
-      _.each ranges, (r) ->
-        lastr = _.last(reduced)
-        if lastr[1] >= (r[0] - 1)
-          reduced.pop()
-          reduced.push [lastr[0], _.max([r[1], lastr[1]])]
-        else
-          reduced.push r
-      @readRanges = reduced
-
     updateReadRanges: _.throttle ->
-      @remote.patchMember @keyOrId(), 'mark_as_read', {ranges: _.map(@readRanges, (pair) -> pair.join('-')).join(',')}
+      @remote.patchMember @keyOrId(), 'mark_as_read', {ranges: RangeSet.serialize(@readRanges)}
     ,
       2000
 
@@ -153,8 +140,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @itemsCount - @readItemsCount
 
     hasRead: (id) ->
-      _.any @readRanges, (range) ->
-        _.inRange(id, range[0], range[1]+1)
+      RangeSet.includesValue(@readRanges, id)
 
     dismiss: ->
       @remote.patchMember @keyOrId(), 'dismiss'
