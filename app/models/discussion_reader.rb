@@ -75,15 +75,6 @@ class DiscussionReader < ActiveRecord::Base
     RangeSet.subtract_ranges(ranges, read_ranges)
   end
 
-  def first_unread_sequence_id
-
-    read_ranges.detect{|read_range| ranges.any?{|range| range.contains? read_range.last + 1}}
-
-    (discussion.ranges.first&.last || 0) + 1
-  end
-
-  private
-
   def read_ranges
     RangeSet.parse(self.read_ranges_string)
   end
@@ -93,6 +84,8 @@ class DiscussionReader < ActiveRecord::Base
     self.read_ranges_string = RangeSet.serialize(ranges)
     self.read_items_count = calculate_read_items_count
   end
+
+  private
 
   def membership
     @membership ||= discussion.group.membership_for(user)

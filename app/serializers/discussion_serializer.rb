@@ -33,7 +33,6 @@ class DiscussionSerializer < ActiveModel::Serializer
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
                          :discussion_reader_volume,
-                         :first_unread_sequence_id,
                          :last_read_at,
                          :dismissed_at,
                          :read_ranges
@@ -42,14 +41,6 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :group, serializer: GroupSerializer, root: :groups
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
-
-  def read_ranges
-    RangeSet.to_arrays reader.read_ranges
-  end
-
-  def ranges
-    RangeSet.to_arrays object.ranges
-  end
 
   def active_polls
     scope[:poll_cache].get_for(object)

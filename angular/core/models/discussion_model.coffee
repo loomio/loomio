@@ -145,7 +145,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @readRanges = reduced
 
     updateReadRanges: _.throttle ->
-      @remote.patchMember @keyOrId(), 'mark_as_read', {ranges: _.map(@readRanges, (pair) -> pair.join(',')).join(' ')}
+      @remote.patchMember @keyOrId(), 'mark_as_read', {ranges: _.map(@readRanges, (pair) -> pair.join('-')).join(',')}
     ,
       2000
 

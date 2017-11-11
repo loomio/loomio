@@ -46,15 +46,15 @@ class RangeSet
     # ranges is supposed to be an array of ranges.
     # but it's useful to support
     # range set
-    return []                        if ranges.nil?
+    return []                            if ranges.nil?
     # single id
-    return [[ranges, ranges]]          if ranges.is_a? Numeric
+    return [[ranges, ranges]]            if ranges.is_a? Numeric
     # single range
-    return [ranges]                  if ranges.is_a? Range
+    return [[ranges.first, ranges.last]] if ranges.is_a? Range
     # array of ids
-    return ranges.map {|id| [id,id] } if ranges.is_a?(Array) && ranges.first.is_a?(Numeric)
+    return ranges.map {|id| [id,id] }    if ranges.is_a?(Array) && ranges.first.is_a?(Numeric)
     # serialized array of range pairs
-    return parse(ranges)             if ranges.is_a? String
+    return parse(ranges)                 if ranges.is_a? String
     # as well as a well formatted array of ranges
     ranges
   end
@@ -127,11 +127,11 @@ class RangeSet
       if id == last_id + 1
         last_id = id
       else
-        ranges << first_id..last_id
+        ranges << [first_id,last_id]
         first_id = id
       end
     end
-    ranges << first_id..last_id
+    ranges << [first_id,last_id]
     ranges
   end
 
@@ -140,13 +140,14 @@ class RangeSet
   end
 
   def self.parse(string)
-    string.to_s.split(' ').map do |pair|
-      Range.new *pair.split(',').map(&:to_i)
+    # ranges string format [[1,2], [4,5]] == 1-2,4-5
+    string.to_s.split(',').map do |pair|
+      pair.split('-').map(&:to_i)
     end
   end
 
   def self.serialize(ranges)
-    ranges.map{|r| [r.first,r.last].join(',')}.join(' ')
+    ranges.map{|r| [r.first,r.last].join('-')}.join(',')
   end
 
   def self.reduce(ranges)
