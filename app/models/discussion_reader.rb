@@ -71,10 +71,6 @@ class DiscussionReader < ActiveRecord::Base
     read_ranges.sum {|r| discussion.items.where(sequence_id: r).count }
   end
 
-  def unread_ranges
-    RangeSet.subtract_ranges(ranges, read_ranges)
-  end
-
   def read_ranges
     RangeSet.parse(self.read_ranges_string)
   end
@@ -83,6 +79,11 @@ class DiscussionReader < ActiveRecord::Base
     ranges = RangeSet.reduce(ranges)
     self.read_ranges_string = RangeSet.serialize(ranges)
     self.read_items_count = calculate_read_items_count
+  end
+
+  # maybe yagni, because the client should do this locally
+  def unread_ranges
+    RangeSet.subtract_ranges(discussion.ranges, read_ranges)
   end
 
   private

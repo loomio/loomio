@@ -142,6 +142,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasRead: (id) ->
       RangeSet.includesValue(@readRanges, id)
 
+    unreadRanges: ->
+      RangeSet.subtractRanges(@ranges, @readRanges)
+
     dismiss: ->
       @remote.patchMember @keyOrId(), 'dismiss'
       @update(dismissedAt: moment())

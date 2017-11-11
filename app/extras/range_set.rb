@@ -115,7 +115,7 @@ class RangeSet
     output
   end
 
-  # for turning an array of likely sequential ids into ranges
+  # for turning an array of likely to be sequential ids into ranges (eg: pluck -> ranges)
   def self.ranges_from_list(ids)
     return [] if ids.empty?
 
@@ -133,10 +133,6 @@ class RangeSet
     end
     ranges << [first_id,last_id]
     ranges
-  end
-
-  def self.to_arrays(ranges)
-    ranges.map {|r| [r.first, r.last] }
   end
 
   def self.parse(string)

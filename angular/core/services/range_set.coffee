@@ -21,3 +21,41 @@ angular.module('loomioApp').factory 'RangeSet', ->
     includesValue: (ranges, value) ->
       _.any ranges, (range) ->
         _.inRange(value, range[0], range[1]+1)
+
+    subtractRange: (whole, part) ->
+      return [whole]                                        if (part.length == 0) || (part[0] > whole[1]) || (part[1] < whole[0])
+      return []                                             if (part[0] <= whole[0]) && (part[1] >= whole[1])
+      return [[whole[0], part[0]-1], [part[1]+1, whole[1]]] if (part[0] >  whole[0]) && (part[1] <  whole[1])
+      return [[part[1] + 1, whole[1] ]]                     if (part[0] == whole[0]) && (part[1] <  whole[1])
+      return [[whole[0], part[0]-1]]                        if (part[0] >  whole[0]) && (part[1] == whole[1])
+
+    subtractRanges: (wholes, parts) ->
+      output = wholes
+      while subtractRangesLoop(output, parts) != output
+        output = subtractRangesLoop(output, parts)
+      @reduce output
+
+    subtractRangesLoop: (wholes, parts) ->
+      output = []
+      _.each wholes, (whole) ->
+        if _.any(parts, (part) -> overlaps(whole, part))
+          _.each _.select(parts, (part) -> overlaps(whole, part)), (part) ->
+            _.each @subtractRange(whole, part), (remainder) ->
+              output.push remainder
+        else
+          output << whole
+      output
+    #
+    # selfTest: ->
+    #   @serialize([[1,2], [4,5]]) == "1-2,4-5"
+    #   @parse("1-2,4-5") == [[1,2],[4,5]]
+    #   @reduce([[1,2],[3,4]]) == [[1,4]]
+    #   @subtractRange([1,1], [1,1])      == []
+    #   @subtractRange([1,1], [2,2])      == [[1,1]]
+    #   @subtractRange([1,2], [1,1])      == [[2,2]]
+    #   @subtractRange([1,2], [2,2])      == [[1,1]]
+    #   @subtractRange([1,3], [2,2])      == [[1,1], [3,3]]
+    #   @subtractRanges([[1,1]], [[1,1]]) == []
+    #   @subtractRanges([[1,2]], [[1,1]]) == [[2,2]]
+    #   @subtractRanges([[1,2], [4,6]], [[1,1], [5,5]]) == [[2,2], [4,4], [6,6]]
+    #   @subtractRanges([[1,2], [4,8]], [[5,6], [7,8]]) == [[1,2], [4,4]]

@@ -35,6 +35,7 @@ class DiscussionSerializer < ActiveModel::Serializer
                          :discussion_reader_volume,
                          :last_read_at,
                          :dismissed_at,
+                         :unread_ranges,
                          :read_ranges
 
   has_one :author, serializer: UserSerializer, root: :users
