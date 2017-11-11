@@ -560,9 +560,6 @@ describe API::DiscussionsController do
         expect(json['discussions'][0]['read_items_count']).to eq 2
         expect(json['discussions'][0]['read_ranges']).to eq [[2,3]]
       end
-
-      # TODO need to reject ranges for sequence_ids that dont exist
-      # by making a rangeset from plucked sequenceids then only allowing ids from the intersection of ranges.
     end
   end
 

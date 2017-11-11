@@ -50,6 +50,7 @@ angular.module('loomioApp').factory 'RangeSet', ->
           output.push whole
       output
 
+    # err need to exrtact this to an npm module
     selfTest: ->
       serialize:                 @serialize([[1,2], [4,5]]) == "1-2,4-5"
       parse:           _.isEqual @parse("1-2,4-5"),                 [[1,2],[4,5]]

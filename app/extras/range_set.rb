@@ -33,13 +33,9 @@ class RangeSet
 
   # do 2 ranges overlap?
   def self.overlaps?(a,b)
-    if a.first > b.first
-      new_a = b
-      b = a
-      a = new_a
-    end
+    sorted = [a,b].sort_by{|r| r[0] }
     # a.first is less than or equal to b.first
-    a.first == b.first || a.last >= b.first
+    sorted[0][0] == sorted[1][0] || sorted[0][1] >= sorted[1][0]
   end
 
   def self.to_ranges(ranges)
