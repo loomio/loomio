@@ -27,15 +27,18 @@ class RangeSet
   # class methods
   def self.includes?(haystack, needle)
     to_ranges(needle).all? do |a|
-      to_ranges(haystack).any? { |b| overlaps?(a, b) }
+      to_ranges(haystack).any? { |b| range_includes?(b, a) }
     end
+  end
+
+  def self.range_includes?(a, b)
+    a[0] <= b[0] && a[1] >= b[1]
   end
 
   # do 2 ranges overlap?
   def self.overlaps?(a,b)
     sorted = [a,b].sort_by{|r| r[0] }
-    # a.first is less than or equal to b.first
-    sorted[0][0] == sorted[1][0] || sorted[0][1] >= sorted[1][0]
+    sorted[0][1] >= sorted[1][0]
   end
 
   def self.to_ranges(ranges)

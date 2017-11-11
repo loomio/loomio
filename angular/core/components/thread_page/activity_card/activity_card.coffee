@@ -14,28 +14,27 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
 
     $scope.settings =
       renderMode: "chronological"
-      position: "beginning"
       orderBy: 'createdAt'
       per: 10
 
     initialSequenceId = ->
       #load from: from, scrollTo: from
-      return $location.search().from                  if $location.search().from      # respond to ?from parameter
+      return $location.search().from                   if $location.search().from      # respond to ?from parameter
 
       # load from 1, scroll to nothing
-      return $scope.discussion.firstSequenceId        if !AbilityService.isLoggedIn() # show beginning of discussion for logged out users
+      return $scope.discussion.firstSequenceId()       if !AbilityService.isLoggedIn() # show beginning of discussion for logged out users
 
       # load from 2 back, sroll to latestActivity
-      return $scope.discussion.firstUnreadSequenceId  if $scope.discussion.isUnread() # show newest unread content for logged in users
+      return $scope.discussion.firstUnreadSequenceId() if $scope.discussion.isUnread() # show newest unread content for logged in users
 
       # load last page, scroll to end
-      return $scope.discussion.lastSequenceId - $scope.settings.per + 2               # show latest content if the discussion has been read
+      return $scope.discussion.lastSequenceId() - $scope.settings.per + 2               # show latest content if the discussion has been read
 
 
     $scope.settings.initialSequenceId = initialSequenceId()
 
     $scope.init = ->
-      if $scope.settings.mode == "chronological"
+      if $scope.settings.renderMode == "chronological"
         $scope.eventWindow = new ChronologicalEventWindow
           discussion: $scope.discussion
           settings: $scope.settings

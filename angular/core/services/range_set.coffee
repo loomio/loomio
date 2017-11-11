@@ -54,6 +54,7 @@ angular.module('loomioApp').factory 'RangeSet', ->
     selfTest: ->
       serialize:                 @serialize([[1,2], [4,5]]) == "1-2,4-5"
       parse:           _.isEqual @parse("1-2,4-5"),                 [[1,2],[4,5]]
+      reduceSimple:    _.isEqual @reduce([[1,1]]), [[1,1]]
       reduceMerge:     _.isEqual @reduce([[1,2],[3,4]]),            [[1,4]]
       reduceEmpty:     _.isEqual @reduce([]), []
       subtractWhole:   _.isEqual @subtractRange([1,1], [1,1]),      []

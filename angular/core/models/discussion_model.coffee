@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfig) ->
+angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel, AppConfig) ->
   class DiscussionModel extends DraftableModel
     @singular: 'discussion'
     @plural: 'discussions'
@@ -15,8 +15,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     defaultValues: =>
       private: null
       usesMarkdown: true
-      lastSequenceId: 0
-      firstSequenceId: 0
       lastItemAt: null
       title: ''
       description: ''
@@ -128,7 +126,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     markAsRead: (id) ->
       return if @hasRead(id)
-      @readRanges = RangeSet.reduce(@readRanges.push([id,id]))
+      @readRanges.push([id,id])
+      @readRanges = RangeSet.reduce(@readRanges)
       @updateReadRanges()
 
     updateReadRanges: _.throttle ->
@@ -144,6 +143,18 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     unreadRanges: ->
       RangeSet.subtractRanges(@ranges, @readRanges)
+
+    firstSequenceId: ->
+      return 0 if @ranges.length == 0
+      _.first(@ranges)[0]
+
+    lastSequenceId: ->
+      return 0 if @ranges.length == 0
+      _.last(@ranges)[1]
+
+    firstUnreadSequenceId: ->
+      return 0 if @unreadRanges().length == 0
+      _.first(@unreadRanges())[0]
 
     dismiss: ->
       @remote.patchMember @keyOrId(), 'dismiss'
