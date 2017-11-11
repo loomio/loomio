@@ -47,6 +47,7 @@ class FormalGroup < Group
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
   define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
+  define_counter_cache(:recent_activity_count)     { |group| group.discussions.where("last_activity_at > ?", 30.days.ago).count }
 
   delegate :include?, to: :users, prefix: true
   delegate :members, to: :parent, prefix: true
