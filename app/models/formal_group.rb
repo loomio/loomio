@@ -137,10 +137,6 @@ class FormalGroup < Group
     admins.first.email
   end
 
-  def membership_for(user)
-    memberships.find_by(user_id: user.id)
-  end
-
   def update_full_name_if_name_changed
     if changes.include?('name')
       update_full_name
