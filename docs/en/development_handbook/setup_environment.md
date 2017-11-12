@@ -30,7 +30,7 @@ You will need PostgreSQL 9.4+ for the `jsonb` data type.
 $ sudo apt-get update
 $ sudo apt-get install git-core postgresql-9.6 postgresql-contrib-9.6 build-essential \
                        libssl-dev libpq-dev libffi-dev libmagickwand-dev \
-                       libreadline-gplv2-dev nodejs imagemagick wget libsqlite3-dev
+                       libreadline-gplv2-dev nodejs npm imagemagick wget libsqlite3-dev
 ```
 
 ## Install Ruby with rbenv
