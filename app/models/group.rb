@@ -55,6 +55,10 @@ class Group < ActiveRecord::Base
     retry
   end
 
+  def membership_for(user)
+    memberships.find_by(user_id: user.id)
+  end
+
   def add_members!(users, inviter: nil)
     users.map { |user| add_member!(user, inviter: inviter) }
   end
