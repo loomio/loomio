@@ -136,7 +136,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
       2000
 
     unreadActivityCount: ->
-      @itemsCount - @readItemsCount
+      @itemsCount - @readItemsCount()
 
     hasRead: (id) ->
       RangeSet.includesValue(@readRanges, id)
@@ -144,17 +144,21 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
     unreadRanges: ->
       RangeSet.subtractRanges(@ranges, @readRanges)
 
+    unreadItemsCount: ->
+      @itemsCount - @readItemsCount()
+
+    readItemsCount: ->
+      RangeSet.length(@readRanges)
+
     firstSequenceId: ->
-      return 0 if @ranges.length == 0
-      _.first(@ranges)[0]
+      (_.first(@ranges) || [])[0]
 
     lastSequenceId: ->
-      return 0 if @ranges.length == 0
-      _.last(@ranges)[1]
+      # return 0 if @ranges.length == 0
+      (_.last(@ranges) || [])[1]
 
     firstUnreadSequenceId: ->
-      return 0 if @unreadRanges().length == 0
-      _.first(@unreadRanges())[0]
+      (_.first(@unreadRanges()) || [])[0]
 
     dismiss: ->
       @remote.patchMember @keyOrId(), 'dismiss'

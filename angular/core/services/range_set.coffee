@@ -18,6 +18,9 @@ angular.module('loomioApp').factory 'RangeSet', ->
           reduced.push r
       reduced
 
+    length: (ranges) ->
+      _.sum _.map(ranges, (range) -> range[1] - range[0])
+
     overlaps: (a, b) ->
       ab = _.sortBy [a, b], (r) -> r[0]
       ab[0][1] >= ab[1][0]

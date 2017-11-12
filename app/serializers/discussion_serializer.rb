@@ -16,6 +16,7 @@ class DiscussionSerializer < ActiveModel::Serializer
              :key,
              :title,
              :description,
+             :ranges,
              :items_count,
              :last_comment_at,
              :last_activity_at,
@@ -29,7 +30,6 @@ class DiscussionSerializer < ActiveModel::Serializer
              :pinned
 
   attributes_from_reader :discussion_reader_id,
-                         :read_items_count,
                          :discussion_reader_volume,
                          :last_read_at,
                          :dismissed_at,

@@ -82,19 +82,10 @@ class Discussion < ActiveRecord::Base
 
   def update_sequence_info!
     discussion.ranges_string =
-     RangeSet.serialize RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
+     RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
     discussion.last_activity_at = discussion.items.order(:sequence_id).last&.created_at || created_at
     save!(validate: false)
   end
-
-  # maybe yagni
-  # def first_sequence_id
-  #   ranges.first&.first || 0
-  # end
-  #
-  # def last_sequence_id
-  #   ranges.last&.last || 0
-  # end
 
   def thread_item_created!
     update_sequence_info!

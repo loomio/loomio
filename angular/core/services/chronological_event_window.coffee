@@ -13,22 +13,21 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
 
     setMin: (val) ->
       @min = val
-      if @min < @discussion.firstSequenceId
+      if @min < @discussion.firstSequenceId()
         @min = @discussion.firstSequenceId
 
     setMax: (val) ->
       @max = val
-      if @max >= @discussion.lastSequenceId
-        @max = null # allows new events to show up
+      if @max >= @discussion.lastSequenceId()
+        @max = false # allows new events to show up
 
     increaseMax: =>
-      @setMax(@max += @per)
+      @setMax((@max || 0) + @settings.per)
 
     decreaseMin: =>
       @setMin(@min -= @per)
 
-    anyNext: ->
-      @max != null
+    anyNext: -> @max
 
     loadNext: ->
       @loader.loadMore(@max).then(@increaseMax)
@@ -47,7 +46,7 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
     loadAll: ->
       @loader.per = Number.MAX_SAFE_INTEGER
       @min = @discussion.firstSequenceId
-      @max = null
+      @max = false
       @loader.loadMore(@min)
 
     rootsAndOrphans: (events) =>
@@ -72,11 +71,12 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
           $between: [@min, (@max || Number.MAX_VALUE)]
         discussionId: @discussion.id
 
-      events = Records.events.collection.find(query)
-      _.uniq( @replaceOrphansWithParents( @rootsAndOrphans( @fewerDiscussionEditedEvents( events))))
+      events = Records.events.collection.chain().find(query).simplesort('id').data()
+      # _.uniq( @replaceOrphansWithParents( @rootsAndOrphans( @fewerDiscussionEditedEvents( events))))
+      _.uniq(@fewerDiscussionEditedEvents( events))
 
     inWindow: (event) ->
-      event.sequenceId >= @min && ((@max == null) || event.sequenceId <= @max)
+      event.sequenceId >= @min && ((@max == false) || event.sequenceId <= @max)
 
     isLastInWindow: (event) ->
       _.last(@events()) == event

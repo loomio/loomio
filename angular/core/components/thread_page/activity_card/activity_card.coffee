@@ -43,7 +43,8 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
           discussion: $scope.discussion
           parentEvent: $scope.discussion.createdEvent()
           settings: $scope.settings
-      $scope.eventWindow.loadNext().then -> $scope.$emit('threadPageEventsLoaded')
+      $scope.eventWindow.loadNext().then ->
+        $scope.$emit('threadPageEventsLoaded')
 
     $scope.init()
 

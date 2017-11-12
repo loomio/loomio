@@ -11,8 +11,12 @@
     per: {{settings.per}}
     min: {{eventWindow.min}}
     max: {{eventWindow.max}}
-    first: {{discussion.firstSequenceId}}
-    last: {{discussion.lastSequenceId}}
+    total: {{discussion.itemsCount}}
+    read: {{discussion.readItemsCount()}}
+    unread: {{discussion.unreadItemsCount()}}
+    firstUnread {{discussion.firstUnreadSequenceId()}}
+    initialSequeneId: {{settings.initialSequenceId}}
+
     loadedCount: {{eventWindow.events().length}}
 
   %loading_content.lmo-card-left-right-padding{ng-if: "eventWindow.loader.loadingFirst", block-count: 2}
@@ -23,7 +27,7 @@
     %loading.activity-card__loading.page-loading{ng-show: "eventWindow.loader.loadingPrevious"}
     .activity-card__no-activity.lmo-placeholder.align-center{ng-if: "eventWindow.noEvents()", translate: "discussion.activity_placeholder"}
     %ul.activity-card__activity-list
-      %li.activity-card__activity-list-item{ng_repeat: "event in eventWindow.events() | orderBy: eventWindow.orderBy track by event.id"}
+      %li.activity-card__activity-list-item{ng_repeat: "event in eventWindow.events() track by event.id"}
         -# %div lastInWindow {{eventWindow.isLastInWindow(event) }} anyNext: {{eventWindow.anyNext()}} lastSid: {{event.discussion().lastSequenceId}}
         %thread_item{event: "event", event_window: "eventWindow"}
       %li.activity-card__load-more-sensor{in-view: "!eventWindow.loader.loadingMore && $inview && eventWindow.anyNext() && eventWindow.loadNext()", in-view-options: "{throttle: 300}"}

@@ -131,7 +131,7 @@ class RangeSet
       end
     end
     ranges << [first_id,last_id]
-    ranges
+    reduce ranges
   end
 
   def self.parse(string)
