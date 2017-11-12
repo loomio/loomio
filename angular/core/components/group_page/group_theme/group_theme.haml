@@ -9,13 +9,13 @@
       %a{lmo-href-for: "group"}
         %img{ng-src: "{{group.logoUrl()}}"}
     .group-theme__name--compact{aria-label: "breadcrumb", role: "navigation"}
-      %a{ng-if: "group.isSubgroup()", lmo-href-for: "group.parent()", aria-level: "1"}>
+      %a{ng-if: "group.isSubgroup()", lmo-href-for: "group.parent()"}>
         {{group.parentName()}}
       %span{ng-if: "group.isSubgroup()"}> \-
-      %a{lmo-href-for: "group", aria-level: "2"}>
+      %a{lmo-href-for: "group", aria-current: "page"}>
         {{group.name}}
       %span{ng-if: "discussion"}> \-
-      %a{ng-if: "discussion", lmo-href-for: "discussion", aria-level: "3"}
+      %a{ng-if: "discussion", lmo-href-for: "discussion", aria-current: "page"}
         {{discussion.title}}
 
   .group-theme__header{ng-if: "!compact"}
