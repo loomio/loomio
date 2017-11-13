@@ -76,11 +76,11 @@ $ git pull
 
 ### Build and Install Ruby and dependencies
 
-At the time of writing 2.3.0 is the latest version.
-
+At the time of writing 2.3.5 is the latest version. Check the required version and use it in the commands below:
 ```
-$ rbenv install 2.3.0
-$ rbenv global 2.3.0
+$ cat .ruby-version
+$ rbenv install 2.3.5
+$ rbenv global 2.3.5
 $ gem install bundler
 $ bundle install
 ```
@@ -89,7 +89,7 @@ $ bundle install
 
 You'll need Node.js and it's best if you use `nvm` to install it. From [https://github.com/creationix/nvm](https://github.com/creationix/nvm) You'll find that you need to run:
 ```
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 ```
 
 Now build and install node
@@ -101,5 +101,8 @@ npm install -g gulp
 ```
 
 Ensure your node version matches with the version specified in the `engines` field of `angular/package.json`
+```
+$ grep angular/package.json -e 'engines' -A 3
+```
 
 Ok that's it, you're now ready to [install Loomio](quickstart.md) (or any other ruby or node app)

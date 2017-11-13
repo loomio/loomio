@@ -4,7 +4,7 @@ class PollSerializer < ActiveModel::Serializer
              :stance_data, :stance_counts, :matrix_counts, :anyone_can_participate, :voter_can_add_options,
              :closed_at, :closing_at, :stances_count, :undecided_user_count, :undecided_count,
              :created_at, :multiple_choice, :custom_fields, :poll_option_names,
-             :notify_on_participate, :subscribed, :example
+             :notify_on_participate, :subscribed, :example, :anonymous
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :current_outcome, serializer: Full::OutcomeSerializer, root: :outcomes

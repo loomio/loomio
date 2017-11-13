@@ -20,7 +20,7 @@ module PrettyUrlHelper
     when Stance                        then poll_url(model.poll, opts.merge(change_vote: true))
     when Comment                       then comment_url(model.discussion, model, opts)
     when FormalGroup                   then group_url(model, opts)
-    when NilClass                      then nil
+    when NilClass, LoggedOutUser       then nil
     else super
     end
   end

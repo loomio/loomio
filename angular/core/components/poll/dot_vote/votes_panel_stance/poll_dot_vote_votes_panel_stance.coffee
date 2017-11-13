@@ -1,9 +1,15 @@
-angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', (PollService, RecordLoader) ->
+angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ($translate, PollService, RecordLoader) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/dot_vote/votes_panel_stance/poll_dot_vote_votes_panel_stance.html'
   controller: ($scope) ->
     $scope.barTextFor = (choice) ->
       "#{choice.score} - #{choice.pollOption().name}".replace(/\s/g, '\u00a0')
+
+    $scope.participantName = ->
+      if $scope.stance.participant()
+        $scope.stance.participant().name
+      else
+        $translate.instant('common.anonymous')
 
     percentageFor = (choice) ->
       # max = _.max(_.map($scope.stance.stanceChoices(), (choice) -> choice.score))
