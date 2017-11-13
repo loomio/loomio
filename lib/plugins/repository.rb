@@ -31,7 +31,7 @@ module Plugins
 
     def self.to_config
       {
-        installed:    active_plugins,
+        installed:    ActiveModel::ArraySerializer.new(active_plugins, each_serializer: PluginSerializer, root: false).as_json,
         outlets:      active_outlets,
         routes:       active_routes
       }
