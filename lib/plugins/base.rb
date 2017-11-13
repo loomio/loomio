@@ -9,7 +9,8 @@ module Plugins
 
   class Base
     attr_accessor :name, :installed
-    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :extensions, :enabled
+    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :extensions, :enabled, :config
+    alias :read_attribute_for_serialization :send
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
