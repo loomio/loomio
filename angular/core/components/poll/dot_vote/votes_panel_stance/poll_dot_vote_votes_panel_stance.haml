@@ -2,7 +2,7 @@
   .poll-dot-vote-votes-panel-stance__head
     %user_avatar.lmo-flex__no-shrink{user: "stance.participant()", size: "small"}
     .poll-dot-vote-votes-panel-stance__name
-      %strong> {{stance.participant().name}}
+      %strong> {{ participantName() }}
       %span.lmo-hint-text{translate: "poll_common_votes_panel.none_of_the_above", ng-if: "!stance.stanceChoices().length"}>
   .poll-dot-vote-votes-panel-stance__body
     .poll-common-votes-panel__stance-reason.lmo-markdown-wrapper{ng-if: "stance.reason", marked: "stance.reason"}

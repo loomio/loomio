@@ -654,6 +654,7 @@ ActiveRecord::Schema.define(version: 20171109001725) do
     t.integer  "undecided_user_count",  default: 0,     null: false
     t.boolean  "voter_can_add_options", default: false, null: false
     t.integer  "guest_group_id"
+    t.boolean  "anonymous",             default: false, null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree

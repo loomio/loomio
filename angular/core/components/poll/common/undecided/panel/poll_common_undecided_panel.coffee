@@ -5,6 +5,7 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Re
 
     $scope.canShowUndecided = ->
       !$scope.showingUndecided and
+      !$scope.poll.anonymous and
       ($scope.poll.undecidedUserCount > 0 or
       ($scope.poll.guestGroup() || {}).pendingInvitationsCount > 0)
 

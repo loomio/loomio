@@ -60,4 +60,8 @@ class API::RestfulController < ActionController::Base
     Array(resource || collection)
   end
 
+  def default_scope
+    { current_user: current_user }
+  end
+
 end

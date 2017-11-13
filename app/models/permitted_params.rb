@@ -26,7 +26,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def poll_attributes
-    [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
+    [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at, :anonymous,
      :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
      :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
