@@ -103,6 +103,7 @@ describe 'Login', ->
       page.expectText '.auth-form', 'instantly log in'
       page.loadPath 'use_last_login_token'
       page.click '.auth-signin-form__submit'
+      page.waitForReload()
       page.expectFlash 'Signed in successfully'
       page.expectText '.dashboard-page', 'Recent Threads'
 
