@@ -31,9 +31,10 @@ module Plugins
 
     def self.to_config
       {
+        installed:    active_plugins,
         outlets:      active_outlets,
         routes:       active_routes
-      }.tap { |c| c.merge!(installed: active_plugins) if Rails.env.development? }
+      }
     end
 
     def self.static_assets
