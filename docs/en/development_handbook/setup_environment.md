@@ -95,9 +95,12 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | b
 Now build and install node
 
 ```
-nvm install 8.4.0
-nvm alias default 8.4.0
-npm install -g gulp
+$ nvm install 8.4.0
+$ nvm alias default 8.4.0
+$ bundle install
+$ npm install -g yarn gulp
+$ cd angular
+$ yarn
 ```
 
 Ensure your node version matches with the version specified in the `engines` field of `angular/package.json`
