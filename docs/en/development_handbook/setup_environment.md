@@ -30,7 +30,7 @@ You will need PostgreSQL 9.4+ for the `jsonb` data type.
 $ sudo apt-get update
 $ sudo apt-get install git-core postgresql-9.6 postgresql-contrib-9.6 build-essential \
                        libssl-dev libpq-dev libffi-dev libmagickwand-dev \
-                       libreadline-gplv2-dev nodejs npm imagemagick wget libsqlite3-dev
+                       libreadline-gplv2-dev nodejs imagemagick wget libsqlite3-dev
 ```
 
 ## Install Ruby with rbenv
@@ -95,9 +95,12 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | b
 Now build and install node
 
 ```
-nvm install 8.4.0
-nvm alias default 8.4.0
-npm install -g gulp
+$ nvm install 8.4.0
+$ nvm alias default 8.4.0
+$ bundle install
+$ npm install -g yarn gulp
+$ cd angular
+$ yarn
 ```
 
 Ensure your node version matches with the version specified in the `engines` field of `angular/package.json`
