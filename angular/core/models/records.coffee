@@ -29,6 +29,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 ContactMessageRecordsInterface,
                                                 GroupIdentityRecordsInterface,
                                                 ReactionRecordsInterface,
+                                                NotifiedRecordsInterface,
                                                 ContactRequestRecordsInterface) ->
   db = new loki(RecordStoreDatabaseName)
   recordStore = new RecordStore(db)
@@ -61,5 +62,6 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
   recordStore.addRecordsInterface(ContactMessageRecordsInterface)
   recordStore.addRecordsInterface(GroupIdentityRecordsInterface)
   recordStore.addRecordsInterface(ReactionRecordsInterface)
+  recordStore.addRecordsInterface(NotifiedRecordsInterface)
   recordStore.addRecordsInterface(ContactRequestRecordsInterface)
   recordStore

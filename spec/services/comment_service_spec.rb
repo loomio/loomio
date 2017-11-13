@@ -98,7 +98,7 @@ describe 'CommentService' do
         comment.body = "A mention for @#{another_user.username}!"
 
         expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.where(kind: 'user_mentioned').count }
-        expect(comment.mentioned_group_members).to include comment.parent.author
+        expect(comment.mentioned_group_members).to_not include comment.parent.author
       end
     end
 

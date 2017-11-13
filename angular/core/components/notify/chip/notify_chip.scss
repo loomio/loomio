@@ -1,0 +1,25 @@
+.notify-chip {
+  align-items: center;
+  min-height: 32px;
+  height: 100%;
+}
+
+.notify-chip__content {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.notify-chip__placeholder .material-icons {
+  border-radius: 100%;
+  font-size: 28px;
+  padding: 2px;
+  background: $light-grey-on-white;
+  color: $primary-text-color;
+}
+
+.notify-chip__avatar, .notify-chip__placeholder {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  i { margin-top: 6px; }
+}

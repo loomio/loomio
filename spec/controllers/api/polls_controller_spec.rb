@@ -194,6 +194,67 @@ describe API::PollsController do
       expect(poll.guest_group.admins).to include user
     end
 
+    describe 'notified' do
+      let(:notified_group) { {
+        id:           group.key,
+        type:         group.class.to_s,
+        notified_ids: group.member_ids
+      } }
+
+      let(:notified_another_group) { {
+        id:           another_group.key,
+        type:         another_group.class.to_s,
+        notified_ids: another_group.member_ids
+      } }
+
+      let(:notified_user) { {
+        id:           another_user.id,
+        type:         another_user.class.to_s,
+        notified_ids: [another_user.id]
+      } }
+
+      let(:notified_invitation) { {
+        id:           'test@test.com',
+        type:         'Invitation'
+      } }
+
+      before { sign_in user }
+
+      it 'adds notified users to the guest group' do
+        poll_params[:notified] = [notified_user]
+        expect { post :create, poll: poll_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        poll = Poll.last
+        expect(poll.guest_group.members).to include another_user
+      end
+
+      it 'adds notified members of other groups to the guest group' do
+        another_group.add_member! another_user
+        poll_params[:notified] = [notified_another_group]
+        expect { post :create, poll: poll_params }.to change { ActionMailer::Base.deliveries.count }.by(another_group.members.count)
+
+        poll = Poll.last
+        another_group.members.each do |member|
+          expect(poll.guest_group.members).to include member
+        end
+      end
+
+      it 'does not add the polls group members to the guest group' do
+        group.add_member! user
+        poll_params[:group_id] = group.id
+        poll_params[:notified] = [notified_group]
+        expect { post :create, poll: poll_params }.to change { ActionMailer::Base.deliveries.count }.by(group.members.without(user).count)
+        poll = Poll.last
+        expect(poll.guest_group.member_ids).to eq [user.id]
+      end
+
+      it 'sends invitations to notified email addresses' do
+        poll_params[:notified] = [notified_invitation]
+        post :create, poll: poll_params
+        poll = Poll.last
+        expect(poll.guest_group.invitations.map(&:recipient_email)).to include 'test@test.com'
+      end
+    end
+
     it 'does not allow visitors to create polls' do
       expect { post :create, poll: poll_params }.to_not change { Poll.count }
       expect(response.status).to eq 403

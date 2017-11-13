@@ -216,6 +216,15 @@ class Dev::MainController < Dev::BaseController
     redirect_to group_url(create_discussion.group)
   end
 
+  def setup_group_with_volumes
+    sign_in patrick
+    create_group.add_member!(jennifer).set_volume!(:loud)
+    create_group.add_member!(max).set_volume!(:normal)
+    create_group.add_member!(emilio).set_volume!(:quiet)
+    create_group.add_member!(judd).set_volume!(:mute)
+    redirect_to group_url(create_group)
+  end
+
   def setup_group_with_restrictive_settings
     sign_in jennifer
     create_stance

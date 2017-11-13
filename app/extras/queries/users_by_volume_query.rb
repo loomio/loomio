@@ -1,12 +1,22 @@
 class Queries::UsersByVolumeQuery
   def self.normal_or_loud(*models)
-    base_query(models.compact, mode: :greater_than, volume: DiscussionReader.volumes[:normal])
+    range_query models, :greater_than, :quiet
+  end
+  
+  def self.not_muted(*models)
+    range_query models, :greater_than, :mute
+  end
+
+  def self.mute_or_quiet(*models)
+    range_query models, :less_than, :normal
   end
 
   %w(mute quiet normal loud).map(&:to_sym).each do |volume|
-    define_singleton_method volume, ->(*models) {
-      base_query(models.compact, mode: :equal_to, volume: DiscussionReader.volumes[volume])
-    }
+    define_singleton_method volume, ->(*models) { range_query(models, :equal_to, volume) }
+  end
+
+  def self.range_query(models, mode, volume)
+    base_query(models.compact, mode: mode, volume: DiscussionReader.volumes[volume])
   end
 
   private
@@ -28,7 +38,11 @@ class Queries::UsersByVolumeQuery
   end
 
   def self.volume_where(mode: :equal_to)
-    operator = mode == :equal_to ? '=' : '>='
+    return unless operator = case mode
+    when :equal_to     then '='
+    when :less_than    then '<'
+    when :greater_than then '>'
+    end
     "dr.volume #{operator} :volume OR (dr.volume IS NULL AND m.volume #{operator} :volume)"
   end
 

@@ -566,6 +566,9 @@ en:
     visit_poll: View poll
     go_to_dashboad: Go to dashboard
 
+  notified:
+    group_users: "(%{count} people)"
+
   slack:
     new_discussion: "New thread in *%{group}*: *%{discussion}*"
     outcome_created: "Outcome posted in *%{group}*: *%{poll}*"

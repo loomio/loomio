@@ -10,7 +10,10 @@
         %p.md-caption{translate: "poll_poll_form.multiple_choice_explained"}
       %md-checkbox{ng-model: "poll.multipleChoice", aria-label: "{{ 'poll_poll_form.multiple_choice' | translate }}"}
 
-  %poll_common_notify_group{model: "poll", notify-action: "{{poll.notifyAction()}}"}
+  -# %poll_common_notify_group{model: "poll", notify-action: "{{poll.notifyAction()}}"}
   %poll_common_voter_add_options{poll: "poll"}
   %poll_common_notify_on_participate{poll: "poll"}
+  %notify_input{model: "poll"}
+
+  %poll_common_form_actions{poll: "poll", submit: "submit", back: "back"}
   %poll_common_anonymous{poll: "poll"}

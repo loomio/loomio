@@ -3,12 +3,15 @@ loomio_org_plugin:
 
 loomio_tags:
   repo:         https://github.com/loomio/loomio_tags.git
+  branch:       icon-jiggery
 
 loomio_truncate_comment:
   repo:         https://github.com/loomio/loomio_truncate_comment.git
 
 loomio_content_preview:
   repo:         https://github.com/loomio/loomio_content_preview.git
+  branch:       bootstrap-tearout
 
 loomio_onboarding:
   repo:         https://github.com/loomio/loomio_onboarding.git
+  branch:       bootstrap-tearout

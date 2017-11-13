@@ -4,11 +4,7 @@ class Events::StanceCreated < Event
   include Events::Notify::Author
 
   def self.publish!(stance)
-    create(kind: "stance_created",
-           user: stance.participant,
-           eventable: stance,
-           discussion: stance.poll.discussion,
-           created_at: stance.created_at).tap { |e| EventBus.broadcast('stance_created_event', e) }
+    super(stance, user: stance.participant, discussion: stance.poll.discussion)
   end
 
   def notify_author?
@@ -18,14 +14,6 @@ class Events::StanceCreated < Event
   private
   def author
     User.verified.find_by(email: eventable.author.email) || eventable.author
-  end
-
-  def notification_url
-    @notification_url ||= polymorphic_url(eventable.poll)
-  end
-
-  def notification_translation_title
-    eventable.poll.title
   end
 
   def notification_recipients

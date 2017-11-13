@@ -336,7 +336,11 @@ module Dev::NintiesMoviesHelper
     InvitationService.redeem(invitation.first, emilio)
 
     #'poll_created'
-    poll = FactoryGirl.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
+    poll = FactoryGirl.build(:poll,
+      discussion: create_discussion,
+      notified: [FactoryGirl.build(:notified_user, model: patrick).as_json],
+      closing_at: 24.hours.from_now
+    )
     PollService.create(poll: poll, actor: jennifer)
 
     #'poll_closing_soon'

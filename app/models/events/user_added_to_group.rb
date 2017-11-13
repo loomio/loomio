@@ -32,8 +32,8 @@ class Events::UserAddedToGroup < Event
     User.where(id: eventable.user_id)
   end
 
-  def notification_actor
-    eventable.inviter
+  def notification_params
+    super.merge(actor: eventable.inviter)
   end
 
   def mailer

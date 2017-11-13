@@ -29,6 +29,20 @@ class Event < ActiveRecord::Base
     Events::BaseSerializer
   end
 
+  def self.publish!(eventable, **args)
+    create({
+      kind:          name.demodulize.underscore,
+      eventable:     eventable,
+      created_at:    eventable.created_at
+    }.merge(args.slice(
+      :user,
+      :discussion,
+      :announcement,
+      :custom_fields,
+      :created_at))
+    ).tap { |e| EventBus.broadcast("#{e.kind}_event", e) }
+  end
+
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
@@ -48,5 +62,13 @@ class Event < ActiveRecord::Base
 
   def call_thread_item_destroyed
     discussion.thread_item_destroyed!(self) if discussion_id.present?
+  end
+
+  # TODO: find a better place for this
+  def users_in_any(*relations)
+    User.from "(#{relations.map(&:to_sql)
+                           .map(&:presence)
+                           .compact
+                           .join(" UNION ")}) as users"
   end
 end

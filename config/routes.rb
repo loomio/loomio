@@ -124,6 +124,9 @@ Loomio::Application.routes.draw do
     end
 
     resources :search, only: :index
+    resources :notified, only: :index, path: :notified do
+      get :poll, on: :collection
+    end
 
     resources :polls,       only: [:show, :index, :create, :update, :destroy] do
       post :close, on: :member

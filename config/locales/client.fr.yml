@@ -696,6 +696,7 @@ fr:
   deactivate_user_form:
     aria_label: 'Désactivation du compte'
     title: 'Compte désactivé'
+    submit: 'Désactiver le compte'
     question: 'Pouvez-vous nous dire pourquoi vous désactivez votre compte?'
     placeholder: 'Vous n''êtes pas obligé de répondre à cette question. Toute information que vous nous partagerez nous aidera à nous améliorer :)'
     submit: 'Désactiver mon compte'
