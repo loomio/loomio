@@ -1,6 +1,6 @@
 class Events::UserAddedToGroup < Event
   include Events::Notify::InApp
-  include Events::Notify::Users
+  include Events::Notify::ByEmail
 
   def self.publish!(membership, inviter)
     bulk_publish!(Array(membership), inviter).first

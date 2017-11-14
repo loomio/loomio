@@ -34,13 +34,21 @@ class Event < ActiveRecord::Base
   def trigger!
   end
 
-  private
-
-  # which communities should know about this event?
-  # Polls override this to look at the communities associated with the poll.
-  def communities
-    Array(eventable&.group&.community)
+  def self.publish!(eventable, **args)
+    create({
+      kind:          name.demodulize.underscore,
+      eventable:     eventable,
+      created_at:    eventable.created_at
+    }.merge(args.slice(
+      :user,
+      :discussion,
+      :announcement,
+      :custom_fields,
+      :created_at))
+    ).tap { |e| EventBus.broadcast("#{e.kind}_event", e) }
   end
+
+  private
 
   def call_thread_item_created
     discussion.thread_item_created! if discussion_id.present?

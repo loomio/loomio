@@ -1,4 +1,4 @@
-module Events::Notify::Users
+module Events::Notify::ByEmail
   def trigger!
     super
     email_users!

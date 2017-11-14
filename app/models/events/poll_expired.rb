@@ -4,11 +4,10 @@ class Events::PollExpired < Event
   include Events::Notify::ThirdParty
 
   def self.publish!(poll)
-    create(kind: "poll_expired",
-           eventable: poll,
-           discussion: poll.discussion,
-           announcement: !!poll.events.find_by(kind: :poll_created)&.announcement,
-           created_at: poll.closed_at).tap { |e| EventBus.broadcast('poll_expired_event', e) }
+    super poll,
+          discussion: poll.discussion,
+          announcement: !!poll.events.find_by(kind: :poll_created)&.announcement
+          created_at: poll.closed_at
   end
 
   def notify_users!

@@ -1,11 +1,9 @@
 class Events::MembershipRequestApproved < Event
   include Events::Notify::InApp
-  include Events::Notify::Users
+  include Events::Notify::ByEmail
 
   def self.publish!(membership, approver)
-    create(kind: "membership_request_approved",
-           user: approver,
-           eventable: membership).tap { |e| EventBus.broadcast('membership_request_approved_event', e) }
+    super membership, user: approver
   end
 
   private

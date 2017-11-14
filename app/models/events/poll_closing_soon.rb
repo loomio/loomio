@@ -4,10 +4,9 @@ class Events::PollClosingSoon < Event
   include Events::Notify::ThirdParty
 
   def self.publish!(poll)
-    create(kind: "poll_closing_soon",
-           user: poll.author,
-           announcement: !!poll.events.find_by(kind: :poll_created)&.announcement,
-           eventable: poll).tap { |e| EventBus.broadcast('poll_closing_soon_event', e) }
+    super poll,
+          user: poll.author,
+          announcement: !!poll.events.find_by(kind: :poll_created)&.announcement
   end
 
   private

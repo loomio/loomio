@@ -4,10 +4,7 @@ class Events::ReactionCreated < Event
   include PrettyUrlHelper
 
   def self.publish!(reaction)
-    return unless reaction.reactable.is_a?(Comment)
-    create(kind: "reaction_created",
-           eventable: reaction,
-           created_at: reaction.created_at).tap { |e| EventBus.broadcast('reaction_created_event', e) }
+    super reaction if reaction.reactable.is_a?(Comment)
   end
 
   private
