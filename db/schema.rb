@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104000157) do
+ActiveRecord::Schema.define(version: 20171114224912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,17 @@ ActiveRecord::Schema.define(version: 20171104000157) do
   add_index "ahoy_messages", ["to"], name: "index_ahoy_messages_on_to", using: :btree
   add_index "ahoy_messages", ["token"], name: "index_ahoy_messages_on_token", using: :btree
   add_index "ahoy_messages", ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type", using: :btree
+
+  create_table "announcements", force: :cascade do |t|
+    t.integer  "announceable_id"
+    t.string   "announceable_type"
+    t.jsonb    "invitation_ids",    default: [], null: false
+    t.jsonb    "user_ids",          default: [], null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "announcements", ["announceable_type", "announceable_id"], name: "index_announcements_on_announceable_type_and_announceable_id", using: :btree
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "user_id"

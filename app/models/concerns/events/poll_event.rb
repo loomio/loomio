@@ -12,10 +12,6 @@ module Events::PollEvent
 
   private
 
-  def communities
-    @communities ||= poll.communities
-  end
-
   def notification_recipients
     return User.none unless poll.group
     if announcement

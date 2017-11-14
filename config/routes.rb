@@ -160,6 +160,8 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
+    resources :announcements, only: :create
+
     resources :contact_messages, only: :create
     resources :contact_requests, only: :create
 
