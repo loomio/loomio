@@ -4,23 +4,23 @@
       %md-option{value: "beginning", translate: "activity_card.beginning"}
       %md-option{value: "unread", translate: "activity_card.unread"}
       %md-option{value: "end", translate: "activity_card.end"}
-    %md-select.md-no-underline{ng-model: "settings.renderMode", ng-change: "init()"}
+    %md-select.md-no-underline{ng-model: "renderMode", ng-change: "init()"}
       %md-option{value: "chronological", translate: "activity_card.chronological"}
       %md-option{value: "nested", translate: "activity_card.nested"}
   %div
-    per: {{settings.per}}
+    per: {{per}}
     min: {{eventWindow.min}}
     max: {{eventWindow.max}}
     total: {{discussion.itemsCount}}
     read: {{discussion.readItemsCount()}}
     unread: {{discussion.unreadItemsCount()}}
     firstUnread {{discussion.firstUnreadSequenceId()}}
-    initialSequeneId: {{settings.initialSequenceId}}
+    initialSequenceId: {{initialSequenceId}}
 
     loadedCount: {{eventWindow.events().length}}
 
-  %loading_content.lmo-card-left-right-padding{ng-if: "eventWindow.loader.loadingFirst", block-count: 2}
-  .activity-card__content{ng-if: "!eventWindow.loader.loadingFirst"}
+  %loading_content.lmo-card-left-right-padding{ng-if: "loader.loading", block-count: 2}
+  .activity-card__content{ng-if: "!loader.loading"}
     %a.activity-card__load-backwards.lmo-flex.lmo-flex__center.lmo-no-print{href: "", ng-show: "eventWindow.anyPrevious() && !eventWindow.loader.loadingPrevious", ng-click: "eventWindow.loadPrevious()", tabindex: "0"}
       %i.mdi.mdi-autorenew>
       %span{translate: "discussion.load_previous", translate-value-count: "{{eventWindow.numPrevious()}}"}

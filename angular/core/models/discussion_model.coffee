@@ -154,8 +154,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
       (_.first(@ranges) || [])[0]
 
     lastSequenceId: ->
-      # return 0 if @ranges.length == 0
       (_.last(@ranges) || [])[1]
+
+    lastReadSequenceId: ->
+      (_.last(@readRanges) || [])[1]
 
     firstUnreadSequenceId: ->
       (_.first(@unreadRanges()) || [])[0]

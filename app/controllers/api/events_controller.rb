@@ -3,21 +3,31 @@ class API::EventsController < API::RestfulController
 
   private
 
+  def order
+    %w(sequence_id position id created_at).detect {|col| col == params[:order] } || "sequence_id"
+  end
+
   def accessible_records
-    records = load_and_authorize(:discussion).items.sequenced
-    records = records.includes(:user, :discussion, :eventable, parent: [:user, :eventable])
-    records = records.where(parent_id: params[:parent_id]) if params[:parent_id]
-    records = records.where("depth <= ?", params[:max_depth]) if params[:max_depth]
-    records = records.excluding_sequence_ids(params[:exclude_sequence_ids]) if params[:exclude_sequence_ids]
+    records = load_and_authorize(:discussion).items.
+              includes(:user, :discussion,
+                       eventable: [:reactions, :attachments],
+                       parent: [:user, {eventable: [:reactions, :attachments]}]).uniq
+
+    # using :from and :comment_id is deprecated
+    # use :min_sequence_id instead of :from, and don't use :comment_id
+    records = records.where('sequence_id >= ?', sequence_id_for(records)) if (params[:comment_id] || params[:from])
+
+    %w(parent_id depth sequence_id position).each do |name|
+      records = records.where(name => params[name]) if params[name]
+      records = records.where("#{name} >= ?", params["min_#{name}"]) if params["min_#{name}"]
+      records = records.where("#{name} <= ?", params["max_#{name}"]) if params["max_#{name}"]
+      # in future, could add support for "exclude_#{name}s" with ranges or arrays
+    end
     records
   end
 
   def page_collection(collection)
-    if params[:parent_id]
-      collection.where('position >= ?', params[:from].to_i)
-    else
-      collection.where('sequence_id >= ?', sequence_id_for(collection))
-    end.limit(params[:per] || default_page_size)
+    collection.order(order).limit(params[:per] || default_page_size)
   end
 
   def default_page_size

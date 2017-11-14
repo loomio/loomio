@@ -30,12 +30,12 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     if discussion and !@discussion?
       @discussion = discussion
 
-      @sequenceIdToFocus = parseInt($location.search().from or @discussion.lastReadSequenceId)
+      @sequenceIdToFocus = parseInt($location.search().from or @discussion.lastReadSequenceId())
 
       @pageWindow = PaginationService.windowFor
         current:  @sequenceIdToFocus
-        min:      @discussion.firstSequenceId
-        max:      @discussion.lastSequenceId
+        min:      @discussion.firstSequenceId()
+        max:      @discussion.lastSequenceId()
         pageType: 'activityItems'
 
       $rootScope.$broadcast 'currentComponent',

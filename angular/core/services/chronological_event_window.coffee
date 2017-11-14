@@ -1,20 +1,20 @@
 angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow, Records, RecordLoader) ->
   class ChronologicalEventWindow extends BaseEventWindow
-    constructor: ({@discussion, @settings}) ->
-      super(discussion: @discussion, settings: @settings)
-      @setMin(@settings.initialSequenceId || 1)
-      @setMax(@min - 1)
+    constructor: ({@discussion, @initialSequenceId, @per}) ->
+      super(discussion: @discussion, per: @per)
+      @setMin(@initialSequenceId)
+      @setMax(@min + @per)
       @loader = new RecordLoader
         collection: 'events'
         params:
-          discussion_key: @discussion.key
-        per: @settings.per
-        from: @min
+          discussion_id: @discussion.id
+          order: 'sequence_id'
+          per: @per
 
     setMin: (val) ->
       @min = val
       if @min < @discussion.firstSequenceId()
-        @min = @discussion.firstSequenceId
+        @min = @discussion.firstSequenceId()
 
     setMax: (val) ->
       @max = val
@@ -22,10 +22,10 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
         @max = false # allows new events to show up
 
     increaseMax: =>
-      @setMax((@max || 0) + @settings.per)
+      @setMax((@max || 0) + @per)
 
     decreaseMin: =>
-      @setMin(@min -= @per)
+      @setMin(@min - @per)
 
     anyNext: -> @max
 
@@ -33,19 +33,19 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
       @loader.loadMore(@max).then(@increaseMax)
 
     anyPrevious: ->
-      @min > @discussion.firstSequenceId
+      @min > @discussion.firstSequenceId()
 
     loadPrevious: ->
       @decreaseMin()
       @loader.loadPrevious(@min)
 
-    numPrevious: ->
-      # possibly inaccurate. might remove
-      @min - @discussion.firstSequenceId
+    previousCount: ->
+      # need to think about what the real answer is.
+      @min - @discussion.firstSequenceId()
 
     loadAll: ->
       @loader.per = Number.MAX_SAFE_INTEGER
-      @min = @discussion.firstSequenceId
+      @min = @discussion.firstSequenceId()
       @max = false
       @loader.loadMore(@min)
 

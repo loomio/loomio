@@ -1,5 +1,18 @@
 .event-children
-  %md-button.event-children__load-previous.thread-item--indent-margin{ng-if: "eventWindow.anyPrevious()", ng-click: "eventWindow.loadPrevious()", translate: "activity_card.n_previous", translate-values: "{count: eventWindow.previousCount()}"}
+  %span
+    event-children
+    parentId: {{eventWindow.parentEvent.id}}
+    cc: {{eventWindow.parentEvent.childCount}}
+    min: {{eventWindow.min}}
+    max: {{eventWindow.max}}
+    first: {{eventWindow.firstLoaded()}}
+    last: {{eventWindow.lastLoaded()}}
+    anyPrevious: {{eventWindow.anyPrevious()}}
+    anyNext: {{eventWindow.anyNext()}}
+
+    -# params: {{eventWindow.loader.params}}
+
+  %md-button.event-children__load-previous.thread-item--indent-margin{ng-if: "eventWindow.anyPrevious()", ng-click: "eventWindow.loadPrevious()", translate: "activity_card.n_previous", translate-values: "{count: eventWindow.numPrevious()}"}
   %thread-item{ng-repeat: "event in eventWindow.events() | orderBy: threadWindow.orderBy track by event.id", event-window: "eventWindow", event: "event"}
-  %md-button.event-children__load-next.thread-item--indent-margin{ng-if: "eventWindow.anyNext()", ng-click: "eventWindow.loadNext()", translate: "activity_card.n_more", translate-values: "{count: eventWindow.nextCount()}"}
+  %md-button.event-children__load-next.thread-item--indent-margin{ng-if: "eventWindow.anyNext()", ng-click: "eventWindow.loadNext()", translate: "activity_card.n_more", translate-values: "{count: eventWindow.numNext()}"}
   %add_reply_panel

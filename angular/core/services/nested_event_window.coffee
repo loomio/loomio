@@ -1,67 +1,73 @@
 angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Records, RecordLoader) ->
   class NestedEventWindow extends BaseEventWindow
-    constructor: ({@discussion, @parentEvent, @settings}) ->
-      super(discussion: @discussion, settings: @settings)
+    constructor: ({@discussion, @parentEvent, @initialSequenceId, @per}) ->
+      super(discussion: @discussion, per: @per)
+      @setMin(@positionFromSequenceId(@initialSequenceId) || @firstLoaded())
+      @setMax(@lastLoaded() || false)
       @loader = new RecordLoader
         collection: 'events'
         params:
+          discussion_id: @discussion.id
           parent_id: @parentEvent.id
-          discussion_key: @discussion.key
-          max_depth: @parentEvent.depth + 1
-        per: @settings.per
-        from: @settings.initialSequenceId
-      if @settings.position == "unread"
-        @loader.params.exclude_sequence_ids = RangeSet.serialize(@discussion.readRanges)
+          order: 'position'
+          per: @per
+
+    positionFromSequenceId: ->
+      initialEvent = Records.events.find(discussionId: @discussion.id, sequenceId: @initialSequenceId)[0]
+      # ensure that we set the min position of the window to bring the initialSequenceId to the top
+      # if this is the outside window, then the initialEvent might be nested, in which case, position to the parent of initialEvent
+      # if the initialEvent is not child of our parentEvent
+
+      # if the initialEvent is a child of the parentEvent then min = initialEvent.position
+      # if the initialEvent is a grandchild of the parentEvent then min = initialEvent.parent().position
+      # if the initialEvent is not a child or grandchild, then min = 0
+      if initialEvent.parentId == @parentEvent.id
+        initialEvent.position
+      else if initialEvent.parent().parentId == @parentEvent.id
+        initialEvent.parent().position
+      else
+        0
 
     useNesting: true
+
+    # min and max are the minimum and maximum values permitted in the window
+    setMin: (val) ->
+      @min = val
+      @min = 1 if @min < 1
+
+    setMax: (val) ->
+      @max = val
+      @max = false if @max > @parentEvent.childCount
+
+    # first, last, total are the values we actually have - within the window
+    firstLoaded: -> (_.first(@events()) || {}).position || 0
+    lastLoaded:  -> (_.last(@events())  || {}).position || 0
+    totalLoaded: -> @events().length
+    anyLoaded:   -> @totalLoaded() > 0
+
+    # do any previous events exist outside of what is loaded?
+    anyPrevious: -> @parentEvent.childCount > 0 && @firstLoaded() > 1
+    numPrevious: -> @parentEvent.childCount > 0 && @firstLoaded() - 1
+    anyNext:     -> @parentEvent.childCount > @lastLoaded()
+    numNext:     -> @parentEvent.childCount - @lastLoaded()
+    anyMissing:  -> @parentEvent.childCount > @totalLoaded()
+    numMissing:  -> @parentEvent.childCount - @totalLoaded()
+
+    allEvents: ->
+      Records.events.collection.chain().find(parentId: @parentEvent.id).simplesort('position').data()
 
     events: ->
       query =
         parentId: @parentEvent.id
-        sequenceId:
-          $between: [@settings.minSequenceId,
-                     (@settings.maxSequenceId || Number.MAX_VALUE)]
-      delete query.sequenceId if @showMore
-      Records.events.collection.find(query)
+        position:
+          $between: [@min, (@max || Number.MAX_VALUE)]
 
-    anyMissing: ->
-      @parentEvent.childCount > 0 &&
-      @events().length < @parentEvent.childCount
-
-    anyPrevious: ->
-      @anyMissing() && !@noEvents() && @firstPosition() > 0
-
-    anyNext: ->
-      @anyMissing() &&
-      (@noEvents() || (@lastPosition() + 1) < @parentEvent.childCount)
-
-    previousCount: ->
-      if @anyPrevious()
-        @firstPosition()
-      else
-        0
-
-    nextCount: ->
-      if !@anyNext()
-        0
-      else if @noEvents()
-        @parentEvent.childCount
-      else
-        @parentEvent.childCount - (@lastPosition() + 1)
-
-    firstPosition: ->
-      (_.first(@events()) || {}).position
-
-    lastPosition: ->
-      (_.last(@events()) || {}).position
+      Records.events.collection.chain().find(query).simplesort('position').data()
 
     loadNext:  ->
-      @showMore = true
-      @loader.loadMore()
+      @setMax(@max + @per)
+      @loader.loadMore(@lastLoaded()+1)
 
     loadPrevious: ->
-      @showMore = true
-      @loader.loadPrevious()
-
-    showLess: ->
-      @showMore = false
+      @setMin(@firstLoaded() - @per)
+      @loader.loadPrevious(@min)

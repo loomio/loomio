@@ -1,6 +1,6 @@
-angular.module('loomioApp').factory 'BaseEventWindow', (Records, RecordLoader) ->
+angular.module('loomioApp').factory 'BaseEventWindow', ->
   class BaseEventWindow
-    constructor: ({@discussion, @settings}) ->
+    constructor: ({@discussion, @per}) ->
       @readRanges = _.clone(@discussion.readRanges)
 
     isUnread: (event) =>
@@ -9,3 +9,10 @@ angular.module('loomioApp').factory 'BaseEventWindow', (Records, RecordLoader) -
 
     noEvents: ->
       @events().length == 0
+
+    increaseMax: =>
+      return false unless @max
+      @setMax(@max + @per)
+
+    decreaseMin: =>
+      @setMin(@min - @per)

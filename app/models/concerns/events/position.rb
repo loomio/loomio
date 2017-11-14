@@ -15,7 +15,7 @@ module Events::Position
   def set_depth
     self.depth = parent ? (parent.depth + 1) : 0
   end
-  
+
   def refresh_order_value
     self.position = self.class.select(:position).find(self.id).send(:position)
   end
@@ -31,14 +31,14 @@ module Events::Position
     return if parent_id.nil? # we don't order outside of a parent
     ActiveRecord::Base.connection.execute <<-SQL.strip_heredoc
       UPDATE events
-      SET position = t.seq + -1
+      SET position = t.seq
       FROM (
         SELECT id AS id, row_number() OVER(ORDER BY id) AS seq
         FROM events
         WHERE parent_id = #{parent_id}
       ) AS t
       WHERE events.id = t.id and
-            events.position is distinct from t.seq + -1
+            events.position is distinct from t.seq
     SQL
   end
 end

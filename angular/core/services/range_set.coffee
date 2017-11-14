@@ -19,7 +19,7 @@ angular.module('loomioApp').factory 'RangeSet', ->
       reduced
 
     length: (ranges) ->
-      _.sum _.map(ranges, (range) -> range[1] - range[0])
+      _.sum _.map(ranges, (range) -> range[1] - range[0] + 1)
 
     overlaps: (a, b) ->
       ab = _.sortBy [a, b], (r) -> r[0]
@@ -55,6 +55,8 @@ angular.module('loomioApp').factory 'RangeSet', ->
 
     # err need to exrtact this to an npm module
     selfTest: ->
+      length1:                    @length([1,1]) == 1
+      length2:                    @length([1,2]) == 2
       serialize:                 @serialize([[1,2], [4,5]]) == "1-2,4-5"
       parse:           _.isEqual @parse("1-2,4-5"),                 [[1,2],[4,5]]
       reduceSimple:    _.isEqual @reduce([[1,1]]), [[1,1]]

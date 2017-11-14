@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $translate, LmoUr
 
   link: (scope, element, attrs) ->
     if scope.event.depth == 1 && scope.eventWindow.useNesting
-      $compile("<event-children discussion=\"eventWindow.discussion\" parent_event=\"event\" settings=\"eventWindow.settings\"></event-children>")(scope, (cloned, scope) -> element.append(cloned))
+      $compile("<event-children discussion=\"eventWindow.discussion\" parent_event=\"event\" parent_event_window=\"eventWindow\"></event-children>")(scope, (cloned, scope) -> element.append(cloned))
 
   controller: ($scope) ->
     $scope.indent = ->

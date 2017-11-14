@@ -23,6 +23,12 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @belongsTo 'version'
       @hasMany  'notifications'
 
+    parentOrSelf: ->
+      if @parentId
+        @parent()
+      else
+        @
+
     children: ->
       @recordStore.events.find(parentId: @id)
 
