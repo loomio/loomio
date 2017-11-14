@@ -1,6 +1,7 @@
 angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow, Records, RecordLoader) ->
   class ChronologicalEventWindow extends BaseEventWindow
     constructor: ({@discussion, @initialSequenceId, @per}) ->
+      @columnName = 'sequenceId'
       super(discussion: @discussion, per: @per)
       @setMin(@initialSequenceId)
       @setMax(@min + @per)
@@ -11,37 +12,9 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
           order: 'sequence_id'
           per: @per
 
-    setMin: (val) ->
-      @min = val
-      if @min < @discussion.firstSequenceId()
-        @min = @discussion.firstSequenceId()
-
-    setMax: (val) ->
-      @max = val
-      if @max >= @discussion.lastSequenceId()
-        @max = false # allows new events to show up
-
-    increaseMax: =>
-      @setMax((@max || 0) + @per)
-
-    decreaseMin: =>
-      @setMin(@min - @per)
-
-    anyNext: -> @max
-
-    loadNext: ->
-      @loader.loadMore(@max).then(@increaseMax)
-
-    anyPrevious: ->
-      @min > @discussion.firstSequenceId()
-
-    loadPrevious: ->
-      @decreaseMin()
-      @loader.loadPrevious(@min)
-
-    previousCount: ->
-      # need to think about what the real answer is.
-      @min - @discussion.firstSequenceId()
+    numTotal:        -> @discussion.itemsCount
+    firstInSequence: -> @discussion.firstSequenceId()
+    lastInSequence:  -> @discussion.lastSequenceId()
 
     loadAll: ->
       @loader.per = Number.MAX_SAFE_INTEGER

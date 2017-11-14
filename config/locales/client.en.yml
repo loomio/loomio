@@ -863,18 +863,11 @@ en:
       or: or
       join_group: <a href="/explore">join</a> a group to see threads.
 
-  groups_page:
-    page_header: Your groups
-
-
   discussion:
     activity: 'Activity'
     activity_placeholder: 'No activity yet!'
-    proposals: 'Proposals'
-    previous_proposals: 'Previous Proposals'
     load_previous: 'Load earlier activity'
     started_by: 'Started by <strong>{{name}}</strong>'
-    edited: 'Edited'
     pin:
       pinned: 'Thread pinned'
       unpinned: 'Thread unpinned'
@@ -883,12 +876,8 @@ en:
       unmute_message: 'Thread unmuted'
 
   activity_card:
-    beginning: Beginning
-    unread: Unread
-    end: End
     chronological: Chronological
     nested: Nested
-    new_activity: New activity
     attachment_display:
       aria_label: 'File attached:'
       image_alt: 'Attached image'

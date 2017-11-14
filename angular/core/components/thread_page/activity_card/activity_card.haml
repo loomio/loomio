@@ -1,13 +1,10 @@
 %section.activity-card{aria-labelledby: "activity-card-title"}
   .activity-card__settings
-    -# %md-select.md-no-underline{ng-model: "settings.position", ng-change: "init()"}
-      %md-option{value: "beginning", translate: "activity_card.beginning"}
-      %md-option{value: "unread", translate: "activity_card.unread"}
-      %md-option{value: "end", translate: "activity_card.end"}
+    %h2#activity-card-title.lmo-card-heading{translate: "discussion.activity"}
     %md-select.md-no-underline{ng-model: "renderMode", ng-change: "init()"}
       %md-option{value: "chronological", translate: "activity_card.chronological"}
       %md-option{value: "nested", translate: "activity_card.nested"}
-  %div
+  -# %div
     per: {{per}}
     min: {{eventWindow.min}}
     max: {{eventWindow.max}}

@@ -2,6 +2,7 @@ angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Recor
   class NestedEventWindow extends BaseEventWindow
     constructor: ({@discussion, @parentEvent, @initialSequenceId, @per}) ->
       super(discussion: @discussion, per: @per)
+      @columnName = "position"
       @setMin(@positionFromSequenceId(@initialSequenceId) || @firstLoaded())
       @setMax(@lastLoaded() || false)
       @loader = new RecordLoader
@@ -30,28 +31,11 @@ angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Recor
 
     useNesting: true
 
-    # min and max are the minimum and maximum values permitted in the window
-    setMin: (val) ->
-      @min = val
-      @min = 1 if @min < 1
-
-    setMax: (val) ->
-      @max = val
-      @max = false if @max > @parentEvent.childCount
-
     # first, last, total are the values we actually have - within the window
-    firstLoaded: -> (_.first(@events()) || {}).position || 0
-    lastLoaded:  -> (_.last(@events())  || {}).position || 0
-    totalLoaded: -> @events().length
-    anyLoaded:   -> @totalLoaded() > 0
+    numTotal:        -> @parentEvent.childCount
+    firstInSequence: -> 1
+    lastInSequence:  -> @parentEvent.childCount
 
-    # do any previous events exist outside of what is loaded?
-    anyPrevious: -> @parentEvent.childCount > 0 && @firstLoaded() > 1
-    numPrevious: -> @parentEvent.childCount > 0 && @firstLoaded() - 1
-    anyNext:     -> @parentEvent.childCount > @lastLoaded()
-    numNext:     -> @parentEvent.childCount - @lastLoaded()
-    anyMissing:  -> @parentEvent.childCount > @totalLoaded()
-    numMissing:  -> @parentEvent.childCount - @totalLoaded()
 
     allEvents: ->
       Records.events.collection.chain().find(parentId: @parentEvent.id).simplesort('position').data()
@@ -63,11 +47,3 @@ angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Recor
           $between: [@min, (@max || Number.MAX_VALUE)]
 
       Records.events.collection.chain().find(query).simplesort('position').data()
-
-    loadNext:  ->
-      @setMax(@max + @per)
-      @loader.loadMore(@lastLoaded()+1)
-
-    loadPrevious: ->
-      @setMin(@firstLoaded() - @per)
-      @loader.loadPrevious(@min)

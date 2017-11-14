@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
     $scope.discussion.markAsSeen()
 
     $scope.per = 10
-    $scope.renderMode = "nested"
+    $scope.renderMode = "chronological"
 
     $scope.initialSequenceId = do ->
       #load from: from, scrollTo: from
