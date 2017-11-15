@@ -5,6 +5,9 @@ angular.module('loomioApp').factory 'AnnouncementModel', (BaseModel, AppConfig) 
     @indices: ['id', 'userId']
     @serializableAttributes: AppConfig.permittedParams.announcement
 
+    defaultValues: ->
+      notified: []
+
     relationships: ->
       @belongsTo 'user'
 

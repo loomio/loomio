@@ -3,9 +3,9 @@
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %i.mdi.mdi-bullhorn
-      %h1.lmo-h1 WARK
+      %h1.lmo-h1{translate: "announcement.form.modal_title"}
       %material_modal_header_cancel_button
   %md-dialog-content
-    %announcement_form{model: "model"}
+    %announcement_form{announcement: "announcement"}
   %md-dialog-actions
-    %announcement_form_actions{model: "model"}
+    %announcement_form_actions{announcement: "announcement"}

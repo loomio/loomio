@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, AnnouncementModal, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
   $scope.isLoggedIn = ->
     AbilityService.isLoggedIn()
   $scope.isEmailVerified = ->
@@ -6,6 +6,10 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
   $scope.currentComponent = 'nothing yet'
 
   $translate.onReady -> $scope.translationsLoaded = true
+
+  $timeout ->
+    ModalService.open AnnouncementModal, model: -> Records.discussions.collection.data[0]
+  , 2000
 
   # NB: $scope.refresh triggers the ng-if for the ng-outlet in the layout.
   # This means that we re-initialize the controller for the page, which is what we want

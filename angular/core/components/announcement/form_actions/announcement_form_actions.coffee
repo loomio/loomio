@@ -1,6 +1,7 @@
-angular.module('loomioApp').directive 'announcementFormActions', ->
-  scope: {model: '='}
+angular.module('loomioApp').directive 'announcementFormActions', (FormService) ->
+  scope: {announcement: '='}
   replace: true
   templateUrl: 'generated/components/announcement/form_actions/announcement_form_actions.html'
-  controller: ($scope, KeyEventService) ->
-    KeyEventService.submitOnEnter $scope
+  controller: ($scope) ->
+    $scope.submit = FormService.submit $scope, $scope.announcement,
+      flashSuccess: 'announcement.flash.success'

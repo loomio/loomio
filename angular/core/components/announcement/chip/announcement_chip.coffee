@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'notifyChip', (AppConfig) ->
+angular.module('loomioApp').directive 'announcementChip', (AppConfig) ->
   scope: {chip: '='}
   restrict: 'E'
   templateUrl: 'generated/components/announcement/chip/announcement_chip.html'
