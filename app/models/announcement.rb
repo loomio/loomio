@@ -29,7 +29,7 @@ class Announcement < ActiveRecord::Base
       recipient_emails: invitation_emails,
       group:            announceable.guest_group,
       inviter:          user
-    ).pluck(:id)) unless invitation_emails.empty?
+    ).map(&:id)) if invitation_emails.present?
   end
   handle_asynchronously :create_invitations!
 end

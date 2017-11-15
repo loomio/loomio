@@ -8,7 +8,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
   $translate.onReady -> $scope.translationsLoaded = true
 
   $timeout ->
-    ModalService.open AnnouncementModal, model: -> Records.discussions.collection.data[0]
+    ModalService.open AnnouncementModal, model: -> Records.polls.collection.data[0]
   , 2000
 
   # NB: $scope.refresh triggers the ng-if for the ng-outlet in the layout.
