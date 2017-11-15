@@ -1,0 +1,9 @@
+.announcement-chip.lmo-flex{layout: "row", data-id: "{{chip.id}}"}
+  %img.announcement-chip__avatar{ng-if: "chip.logo_url", ng-src: "{{chip.logo_url}}"}
+  .announcement-chip__placeholder.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center{ng-if: "!chip.logo_url", ng-switch: "chip.type"}
+    %img.announcement-chip__avatar{ng-switch-when: "FormalGroup", src: "/img/default-logo-medium.png"}
+    %i.mdi.mdi-24px.mdi-account{ng-switch-when: "User"}
+    %i.mdi.mdi-24px.mdi-email-outline{ng-switch-when: "Invitation"}
+  .announcement-chip__content.lmo-flex{layout: "column"}
+    %strong {{chip.title}}
+    %span{ng-if: "chip.subtitle"} {{chip.subtitle}}
