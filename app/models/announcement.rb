@@ -1,9 +1,26 @@
 class Announcement < ActiveRecord::Base
   belongs_to :announceable, polymorphic: true
-  belongs_to :user
-  before_create :create_invitations!, if: :invitation_emails
+  belongs_to :author, class_name: "User", required: true
+  after_create :create_invitations!, if: :invitation_emails
 
-  attr_writer :invitation_emails
+  alias :user :author
+  attr_accessor :invitation_emails
+
+  def notified=(notified)
+    self.user_ids = self.invitation_emails = []
+    notified.each do |n|
+      case n['type']
+      when 'Group', 'User' then self.user_ids          += Array(n['notified_ids'])
+      when 'Invitation'    then self.invitation_emails += Array(n['id'])
+      end
+    end
+  end
+
+  # has_many :users_to_notify, class_name: "User", -> { where(id: self.user_ids) }
+
+  def users_to_notify
+    User.where(id: user_ids)
+  end
 
   private
 

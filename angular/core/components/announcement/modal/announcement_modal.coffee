@@ -3,4 +3,4 @@ angular.module('loomioApp').factory 'AnnouncementModal', (Records) ->
   controller: ($scope, model) ->
     $scope.announcement = Records.announcements.build
       announceableId:   model.id
-      announcebaleType: _.capitalize(model.constructor.singular)
+      announceableType: _.capitalize(model.constructor.singular)

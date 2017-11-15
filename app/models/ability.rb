@@ -315,6 +315,10 @@ class Ability
       poll.invitations.useable.pluck(:token).include?(@user.token)
     end
 
+    can :create, Announcement do |announcement|
+      user_is_author_of?(announcement.announceable) || user_is_admin_of?(announcement.announceable.group_id)
+    end
+
     can :create, Poll do |poll|
       @user.email_verified? &&
       (!poll.group.presence || poll.group.members.include?(@user))

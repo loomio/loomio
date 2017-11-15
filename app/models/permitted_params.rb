@@ -78,7 +78,8 @@ class PermittedParams < Struct.new(:params)
   end
 
   def announcement_attributes
-    [:user_ids, :invitation_emails, :announceable_id, :announceable_type, {user_ids: []}]
+    [:user_ids, :notified, :announceable_id, :announceable_type,
+     :notified, {notified: [:id, :icon_url, :notified_ids, :title, :subtitle, :type]}]
   end
 
   def group_identity_attributes

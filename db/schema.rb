@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114224912) do
+ActiveRecord::Schema.define(version: 20171115232754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20171114224912) do
     t.jsonb    "user_ids",          default: [], null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "author_id",         default: 0
   end
 
   add_index "announcements", ["announceable_type", "announceable_id"], name: "index_announcements_on_announceable_type_and_announceable_id", using: :btree
@@ -814,6 +815,7 @@ ActiveRecord::Schema.define(version: 20171114224912) do
     t.boolean  "email_verified",                               default: false,                 null: false
     t.string   "location",                                     default: "",                    null: false
     t.datetime "last_seen_at",                                 default: '2017-10-18 21:05:12', null: false
+    t.boolean  "email_announcements",                          default: true,                  null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree
@@ -863,6 +865,7 @@ ActiveRecord::Schema.define(version: 20171114224912) do
   end
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+
 
   create_table "webhooks", force: :cascade do |t|
     t.integer "hookable_id"
