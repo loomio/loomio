@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'announcementInput', (Records) ->
+angular.module('loomioApp').directive 'announcementForm', (Records) ->
   scope: {model: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/announcement/input/announcement_input.html'
+  templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ($scope) ->
     $scope.announcement = Records.announcements.build
       announceableId:   $scope.model.id

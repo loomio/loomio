@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'AttachmentModel', (BaseModel) ->
+angular.module('loomioApp').factory 'AnnouncementModel', (BaseModel, AppConfig) ->
   class AnnouncementModel extends BaseModel
     @singular: 'announcement'
     @plural: 'announcements'
