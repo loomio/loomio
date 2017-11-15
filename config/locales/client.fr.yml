@@ -757,7 +757,7 @@ fr:
       proposals: Décisions
       proposals_aria_label: Voici les discussions avec des décisions en cours
       proposals_description: Voir uniquement les discussions avec des décisions à prendre
-      muted: Ignoré
+      muted: Discussions ignorées
       muted_aria_label: Voici les discussions mises en sourdine
       muted_description: Voir uniquement les discussions qui ont été ignorées
     aria_thread:

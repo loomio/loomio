@@ -829,7 +829,7 @@ en:
       proposals: Proposals
       proposals_aria_label: Currently showing threads with active proposals
       proposals_description: View only threads with active proposals
-      muted: Muted
+      muted: Muted Threads
       muted_aria_label: Current showing muted threads
       muted_description: View only threads which have been muted
     aria_thread:
