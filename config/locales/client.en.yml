@@ -382,6 +382,12 @@ en:
     make_announcement: Announcement
     notified_count: '{{count}} people will be emailed'
 
+  announcement:
+    form:
+      label: People to notify
+      placeholder: Enter groups, names, or email addresses of the people you'd like to notify
+      notified_count: '{{count}} people will be notified'
+
   action_dock:
     react: Add reaction
     add_comment: Comment

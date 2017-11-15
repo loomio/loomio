@@ -1,4 +1,4 @@
-def Notified::Invitation < Notified::Base
+class Notified::Invitation < Notified::Base
   def id
     model
   end

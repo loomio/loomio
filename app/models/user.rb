@@ -124,6 +124,7 @@ class User < ActiveRecord::Base
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
   scope :verified_first, -> { order(email_verified: :desc) }
+  scope :search_for, ->(query) { where("name ilike :q OR username ilike :q", q: "%#{query}%") }
 
   # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }

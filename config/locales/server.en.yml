@@ -560,6 +560,9 @@ en:
       title: "When should we have our next staff meeting?"
       details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
 
+  notified:
+    group_users: "(%{count} people)"
+
   poll_unsubscribe:
     title: You have been unsubscribed from %{title}
     helptext: You will no longer receive emails about this decision.

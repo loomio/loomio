@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'announcementForm', (Records) ->
       announcebaleType: _.capitalize($scope.model.constructor.singular)
 
     $scope.search = (query) ->
-      Records.notified.fetchByFragment(query)
+      Records.announcements.fetchNotified(query)
 
     $scope.totalNotified = ->
       _.sum $scope.model.notified, (notified) ->
