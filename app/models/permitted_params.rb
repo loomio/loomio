@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
-    attachment contact_message user_deactivation_response
+    attachment contact_message user_deactivation_response announcement
     draft oauth_application group_identity contact_request reaction
   )
 
@@ -75,6 +75,10 @@ class PermittedParams < Struct.new(:params)
      :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :make_announcement,
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
+  end
+
+  def announcement_attributes
+    [:user_ids, :invitation_emails, :announceable_id, :announceable_type, {user_ids: []}]
   end
 
   def group_identity_attributes
