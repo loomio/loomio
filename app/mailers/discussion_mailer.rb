@@ -1,5 +1,5 @@
-class ThreadMailer < BaseMailer
-  layout 'thread_mailer'
+class DiscussionMailer < BaseMailer
+  layout 'discussion_mailer'
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
   %w(new_discussion new_comment user_mentioned comment_replied_to).each do |action|
     define_method action, ->(recipient, event) { send_thread_email(recipient, event, action) }
@@ -29,7 +29,7 @@ class ThreadMailer < BaseMailer
     send_single_mail  to: @recipient.email,
                       from: from_user_via_loomio(@author),
                       reply_to: reply_to_address_with_group_name(discussion: @discussion, user: @recipient),
-                      subject_key: "thread_mailer.#{action_name}.subject",
+                      subject_key: "discussion_mailer.#{action_name}.subject",
                       subject_params: { actor: @author.name,
                                         group: @discussion.group.full_name,
                                         discussion: @discussion.title },

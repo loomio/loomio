@@ -17,4 +17,4 @@
       - else
         = render_email_plaintext comment.body
       - if comment.attachments.any?
-        = render "thread_mailer/attachments", resource: comment
+        = render "discussion_mailer/attachments", resource: comment

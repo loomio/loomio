@@ -1,0 +1,4 @@
+%table.thread-mailer__subject
+  %tr
+    %td= render 'avatar', user: @author
+    %td= t(:"discussion_mailer.#{action_name}.subject_html", actor: @author.name, discussion: link_to(@discussion.title, discussion_url(@discussion)))

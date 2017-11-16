@@ -4,7 +4,7 @@ Griddler.configure do |config|
   config.reply_delimiter = ['-- REPLY ABOVE THIS LINE OR DIE --']
   config.custom_regex_split_points = [
     /^.+\(Loomio\).+#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}.+:$/i,
-    /#{ThreadMailer::REPLY_DELIMITER}/,
+    /#{DiscussionMailer::REPLY_DELIMITER}/,
   ]
   config.email_service = :mailin # :cloudmailin, :postmark, :mandrill, :mailgun
 end

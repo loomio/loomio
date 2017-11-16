@@ -123,7 +123,7 @@ fr:
       button_text: Voir la demande
   email_actions:
     unfollowed_discussion: Vous avez désactivé les notifications pour cette discussion.
-  thread_mailer:
+  discussion_mailer:
     new_discussion:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> a démarré une discussion: %{discussion}"
