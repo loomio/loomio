@@ -11,5 +11,5 @@
         %md-menu-content.announcement-form__menu-content
           %announcement_group_form{notified: "$chip"}
   .lmo-md-action
-    %p.md-caption{ng-if: "totalNotified() == 1", translate: "announcement.form.notified_count_singular"}
-    %p.md-caption{ng-if: "totalNotified() != 1", translate: "announcement.form.notified_count", translate-value-count: "{{totalNotified()}}"}
+    %p.md-caption{ng-if: "announcement.totalNotified() == 1", translate: "announcement.form.notified_count_singular"}
+    %p.md-caption{ng-if: "announcement.totalNotified() != 1", translate: "announcement.form.notified_count", translate-value-count: "{{announcement.totalNotified()}}"}

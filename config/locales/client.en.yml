@@ -393,6 +393,8 @@ en:
       search_placeholder: Search for people...
       modal_title: Select group members
       members_count: '{{count}} people will be notified'
+    flash:
+      success: '{{count}} notifications sent'
 
   action_dock:
     react: Add reaction
