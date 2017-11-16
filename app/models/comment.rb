@@ -17,6 +17,7 @@ class Comment < ActiveRecord::Base
 
   has_many :events, as: :eventable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :documents, as: :model
 
   validates_presence_of :user
   validate :has_body_or_attachment
@@ -34,6 +35,7 @@ class Comment < ActiveRecord::Base
   delegate :email, to: :user, prefix: :user
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :participants, to: :discussion, prefix: :discussion
+  delegate :group_id, to: :discussion, allow_nil: true
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user

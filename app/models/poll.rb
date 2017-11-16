@@ -57,6 +57,8 @@ class Poll < ActiveRecord::Base
   has_many :poll_did_not_votes, dependent: :destroy
   has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
+  has_many :documents, as: :model
+
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
   define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }

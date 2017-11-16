@@ -5,6 +5,8 @@ class Attachment < ActiveRecord::Base
   has_attached_file :file, styles: lambda { |file| file.instance.is_an_image? ? { thumb: '100x100#', thread: '600x>' } : {} }
   do_not_validate_attachment_file_type :file
 
+  scope :unmigrated, -> { where(migrated_to_document: false) }
+
   validates :user_id, presence: true
 
   alias_method :author, :user

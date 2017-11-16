@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
-    attachment contact_message user_deactivation_response
+    attachment contact_message user_deactivation_response document
     draft oauth_application group_identity contact_request reaction
   )
 
@@ -115,5 +115,9 @@ class PermittedParams < Struct.new(:params)
 
   def contact_request_attributes
     [:recipient_id, :message]
+  end
+
+  def document_attributes
+    [:url, :title, :model_id, :model_type]
   end
 end

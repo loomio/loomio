@@ -15,6 +15,12 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     poll: -> @
 
+    documents: ->
+      @recordStore.documents.find(modelId: @id, modelType: "Poll")
+
+    hasDocuments: ->
+      @documents().length > 0
+
     # the polls which haven't closed have the highest importance
     # (and so have the lowest value here)
     # Both are sorted by distance from the current time
