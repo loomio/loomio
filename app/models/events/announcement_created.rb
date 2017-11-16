@@ -1,7 +1,7 @@
 class Events::AnnouncementCreated < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
-  # include Events::ByPush
+  include Events::RespondToModel
 
   def self.publish!(announcement)
     super announcement

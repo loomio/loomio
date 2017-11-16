@@ -19,6 +19,7 @@ module PrettyUrlHelper
     when Stance                        then poll_url(model.poll, opts.merge(change_vote: true))
     when Comment                       then comment_url(model.discussion, model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
+    when Announcement                  then polymorphic_url(model.announceable, opts)
     else super
     end
   end
