@@ -23,9 +23,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     else
       '.context-panel'
 
-  @threadElementsLoaded = ->
-    @eventsLoaded
-
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
@@ -55,9 +52,11 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $rootScope.$broadcast('pageError', error)
 
   $scope.$on 'threadPageEventsLoaded', (e, event) =>
-    $window.location.reload() if @discussion.requireReloadFor(event)
-    @eventsLoaded = true
-    @comment = Records.comments.find(@requestedCommentId) unless isNaN(@requestedCommentId)
+    # $window.location.reload() if @discussion.requireReloadFor(event)
+    # @eventsLoaded = true
+    # @comment = Records.comments.find(@requestedCommentId) unless isNaN(@requestedCommentId)
+    # move scrolling to the activity card?
+    
     @performScroll()
 
   checkInView = ->

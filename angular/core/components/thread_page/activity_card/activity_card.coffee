@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow, NestedEventWindow, RecordLoader, $mdDialog, $timeout, $window, $location, AbilityService)->
-  scope: {discussion: '=', loading: '=', activeCommentId: '=?'}
+  scope: {discussion: '=', loading: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   controller: ($scope) ->
