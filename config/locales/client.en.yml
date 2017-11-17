@@ -876,6 +876,9 @@ en:
       unmute_message: 'Thread unmuted'
 
   activity_card:
+    beginning: Beginning
+    unread: Unread
+    latest: Latest
     chronological: Chronological
     nested: Nested
     attachment_display:

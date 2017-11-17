@@ -9,5 +9,3 @@ angular.module('loomioApp').directive 'eventChildren', (NestedEventWindow) ->
       discussion:        $scope.parentEventWindow.discussion
       initialSequenceId: $scope.parentEventWindow.initialSequenceId
       per:               $scope.parentEventWindow.per
-    $scope.$on 'showReplyForm', (e, parentComment) ->
-      $scope.eventWindow.showMore = true

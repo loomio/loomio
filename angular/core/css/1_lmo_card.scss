@@ -1,3 +1,40 @@
+@mixin card{
+  @include cardNoPadding;
+  @include cardPadding;
+}
+
+@mixin cardNoPadding {
+  @include md-body-1;
+  @include roundedCorners;
+  box-shadow: $whiteframe-shadow-1dp;
+  background: #fff;
+  margin-bottom: 12px;
+  max-width: 100%;
+}
+
+@mixin cardHeadingPadding {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+@mixin cardPadding {
+  padding: $cardPaddingSize;
+}
+
+@mixin listTransition {
+  transition: 0.25s background-color ease-in-out;
+  color: $primary-text-color;
+  &:hover {
+    background: $background-color;
+    text-decoration: none;
+  }
+}
+
+@mixin cardButton {
+  position: relative;
+  top: -7px;
+  right: -9px;
+  float: right;
+}
+
 @mixin cardMinorAction {
   color: $grey-on-white;
   margin: 20px 0 0 0;

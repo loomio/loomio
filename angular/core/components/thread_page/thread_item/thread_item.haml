@@ -13,7 +13,6 @@
             depth: {{event.depth}}
             unread: {{isUnread()}}
             cc: {{event.childCount}}
-            useNesting: {{eventWindow.useNesting}}
           %span{ng-bind-html: "::headline()"}
           %span{aria-hidden: "true"}>·
           %a.thread-item__link.lmo-pointer{href: "{{::link()}}"}

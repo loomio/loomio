@@ -36,7 +36,6 @@ angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Recor
     firstInSequence: -> 1
     lastInSequence:  -> @parentEvent.childCount
 
-
     allEvents: ->
       Records.events.collection.chain().find(parentId: @parentEvent.id).simplesort('position').data()
 

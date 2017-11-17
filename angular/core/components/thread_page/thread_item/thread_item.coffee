@@ -5,11 +5,17 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $translate, LmoUr
 
   link: (scope, element, attrs) ->
     if scope.event.depth == 1 && scope.eventWindow.useNesting
-      $compile("<event-children discussion=\"eventWindow.discussion\" parent_event=\"event\" parent_event_window=\"eventWindow\"></event-children>")(scope, (cloned, scope) -> element.append(cloned))
+      $compile("<event-children discussion=\"eventWindow.discussion\" parent_event=\"event\" parent_event_window=\"eventWindow\"></event-children><add-comment-panel parent_event=\"event\" event_window=\"eventWindow\"></add-comment-panel>")(scope, (cloned, scope) -> element.append(cloned))
 
   controller: ($scope) ->
+    if $scope.event.depth == 1 && $scope.eventWindow.useNesting
+      $scope.$on 'replyButtonClicked', (e, parentEvent, comment) ->
+        if $scope.event.id == parentEvent.id
+          $scope.eventWindow.max = false
+          $scope.$broadcast 'showReplyForm', comment
+
     $scope.indent = ->
-      $scope.eventWindow.useNesting && $scope.event.depth > 1
+      $scope.event.depth == 2 && $scope.eventWindow.useNesting
 
     $scope.isUnread = ->
       $scope.eventWindow.isUnread($scope.event)
@@ -19,7 +25,3 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $translate, LmoUr
 
     $scope.link = ->
       LmoUrlService.discussion $scope.eventWindow.discussion, from: $scope.event.sequenceId
-
-    if $scope.root
-      $scope.$on 'replyToCommentClicked', (e, parentComment) ->
-        $scope.$broadcast 'showReplyForm', parentComment

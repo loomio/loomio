@@ -3,8 +3,19 @@ angular.module('loomioApp').factory 'BaseEventWindow', ->
     constructor: ({@discussion, @per}) ->
       @readRanges = _.clone(@discussion.readRanges)
 
+    # firstInSequence
+    # lastInSequence
+    # numTotal        are implemented by the inheriting class
     firstLoaded: -> (_.first(@events()) || {})[@columnName] || 0
     lastLoaded:  -> (_.last(@events())  || {})[@columnName] || 0
+    numLoaded:   -> @events().length
+    anyLoaded:   -> @numLoaded() > 0
+    anyPrevious: -> @numTotal() > 0 && @firstLoaded() > 1
+    numPrevious: -> @numTotal() > 0 && @firstLoaded() - 1
+    anyNext:     -> @numTotal() > @lastLoaded()
+    numNext:     -> @numTotal() - @lastLoaded()
+    anyMissing:  -> @numTotal() > @numLoaded()
+    numMissing:  -> @numTotal() - @numLoaded()
 
     # min and max are the minimum and maximum values permitted in the window
     setMin: (val) ->
@@ -15,24 +26,9 @@ angular.module('loomioApp').factory 'BaseEventWindow', ->
       @max = val
       @max = false if @max > @lastInSequence()
 
-    totalLoaded: -> @events().length
-    anyLoaded:   -> @totalLoaded() > 0
-
-    # do any previous events exist outside of what is loaded?
-    anyPrevious: -> @numTotal() > 0 && @firstLoaded() > 1
-    numPrevious: -> @numTotal() > 0 && @firstLoaded() - 1
-    anyNext:     -> @numTotal() > @lastLoaded()
-    numNext:     -> @numTotal() - @lastLoaded()
-    anyMissing:  -> @numTotal() > @totalLoaded()
-    numMissing:  -> @numTotal() - @totalLoaded()
-
     isUnread: (event) =>
       !_.any @readRanges, (range) ->
         _.inRange(event.sequenceId, range[0], range[1]+1)
-
-    # change to noneLoaded()
-    noEvents: ->
-      @events().length == 0
 
     increaseMax: =>
       return false unless @max
