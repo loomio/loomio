@@ -1,9 +1,3 @@
-.add-members-modal__list {
-  @include roundedCorners;
-  border: 1px solid $border-color;
-  margin: 12px 0;
-}
-
 .add-members-modal__list-item .md-label {
   display: block !important;
   white-space: nowrap;
