@@ -10,8 +10,8 @@ class API::EventsController < API::RestfulController
   def accessible_records
     records = load_and_authorize(:discussion).items.
               includes(:user, :discussion,
-                       eventable: [:reactions, :attachments],
-                       parent: [:user, {eventable: [:reactions, :attachments]}]).uniq
+                       eventable: [:reactions],
+                       parent: [:user, {eventable: [:reactions]}]).uniq
 
     # using :from and :comment_id is deprecated
     # use :min_sequence_id instead of :from, and don't use :comment_id
