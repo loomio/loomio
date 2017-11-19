@@ -413,6 +413,13 @@ nl_NL:
     heading: 'Lidmaatschapsverzoeken'
     manage_requests: Beheer verzoeken
     manage_requests_with_count: Beheer verzoeken ({{count}})
+  documents_page:
+    title: Bronnen
+  document:
+    list:
+      title: Bronnen
+    form:
+      title_label: Naam
   membership_requests_page:
     heading: Lidmaatschapsverzoeken
     approve: Goedkeuren

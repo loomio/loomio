@@ -300,6 +300,13 @@ sr:
     heading: 'Zahtevi'
     manage_requests: Upravljanje zahtevima
     manage_requests_with_count: Upravljanje zahtevima ({{count}})
+  documents_page:
+    title: Resursi
+  document:
+    list:
+      title: Resursi
+    form:
+      title_label: Ime
   membership_requests_page:
     heading: Zahtevi
     approve: Odobri

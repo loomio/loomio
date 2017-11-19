@@ -361,6 +361,9 @@ el:
     heading: 'Αιτήσεις εγγραφής μελών'
     manage_requests: Διαχείριση αιτήσεων
     manage_requests_with_count: Διαχείριση αιτήσεων ({{count}})
+  document:
+    form:
+      title_label: Όνομα
   membership_requests_page:
     heading: Αιτήσεις εγγραφής μελών
     approve: Έγκριση

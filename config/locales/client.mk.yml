@@ -48,6 +48,9 @@ mk:
     options_label: 'Опции'
     options:
       label: 'Опции'
+  document:
+    form:
+      title_label: Име
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај

@@ -40,6 +40,9 @@ id:
     options_label: 'Pilihan'
     options:
       label: 'Pilihan'
+  document:
+    form:
+      title_label: Nama
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan

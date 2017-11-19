@@ -109,6 +109,13 @@ sv:
     privacy: 'Integritet'
     submit_start_group: 'Startgrupp'
     submit_update: 'Uppdatera inställningar'
+  documents_page:
+    title: Resurser
+  document:
+    list:
+      title: Resurser
+    form:
+      title_label: Namn
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera

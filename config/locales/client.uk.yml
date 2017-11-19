@@ -453,6 +453,13 @@ uk:
     heading: 'Запити на приєднання'
     manage_requests: Керування запитами
     manage_requests_with_count: Керування ({{count}}) запитами
+  documents_page:
+    title: Ресурси
+  document:
+    list:
+      title: Ресурси
+    form:
+      title_label: Ім’я
   membership_requests_page:
     heading: Запити на приєднання
     approve: Підтримую

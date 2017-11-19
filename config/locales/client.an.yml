@@ -55,6 +55,9 @@ an:
     options_label: 'Opcions'
     options:
       label: 'Opcions'
+  document:
+    form:
+      title_label: Nombre
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar

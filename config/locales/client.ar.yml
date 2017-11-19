@@ -245,6 +245,9 @@ ar:
     heading: 'طلبات العضوية'
     manage_requests: إدارة الطلبات
     manage_requests_with_count: إدارة الطلبات ({{count}})
+  document:
+    form:
+      title_label: 'الاسم '
   membership_requests_page:
     heading: طلبات العضوية
     approve: موافقة

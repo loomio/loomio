@@ -1,4 +1,8 @@
 de:
+  activerecord:
+    errors:
+      messages:
+        blank: Darf nicht leer sein.
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
@@ -22,6 +26,8 @@ de:
         Du hast diese Mail erhalten, weil Deine eMail-Adresse in das "Passwort vergessen"-Formular auf %{hostname} eingegeben wurd.
         Dein Passwort wird nicht verändert, solange Du nicht diesem Link folgst und das entsprechende Formular vervollständigst.
         Solltest Du weiterhin Probleme beim Einloggen haben, dann antworte auf diese eMail um mit jemandem vom Support Kontakt aufzunehmen - in Englisch.
+    start_decision:
+      count: Bestätigung starten
     custom: "%{text}"
     group_email:
       intro: "%{who} hat eine Ankündigung zu %{group}:"
@@ -60,7 +66,7 @@ de:
   email_actions:
     unfollowed_discussion: Sie haben die E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
   thread_mailer:
-    reply_or_view_online_html: Antworten Sie entweder direkt auf diese E-Mail oder <a href='%{url}'>beantworten Sie die E-Mail auf %{hostname}</a>.
+    reply_or_view_online_html: Entweder direkt auf diese E-Mail antworten oder <a href='%{url}'>auf %{hostname}antworten</a>.
     turn_off_notifications_html: "<a href='%{url}'>E-Mail-Benachrichtigungen</a> für diese Diskussion deaktivieren."
     change_email_preferences_html: "<a href='%{email_preferences_url}'>E-Mail-Einstellungen</a> ändern."
   footer:
@@ -188,6 +194,7 @@ de:
       please_respond: Bitte beteiligen Sie sich an der Abstimmung
       time_zone: (Zeitangaben in %{zone})
       verify_stance_for_unverified_user: "Danke für deine Abstimmungsbeteiligung bei %{title}. Bitte verifiziere deine E-Mail-Adresse, damit wir dir die Ergebnisse der Abstimmung zusenden können."
+      verify_stance_for_verified_user: "Es sieht so aus, als ob du hier abgestimmt hättest: %{title}. Wenn du diese Abstimmung tatsächlich vorgenommen hast, klicke bitte den unten angegebenen Link zur Bestätigung."
     proposal:
       subject:
         poll_created: '%{actor} hat einen Vorschlag erstellt: %{title}'
@@ -195,12 +202,14 @@ de:
         poll_closing_soon_author: 'Dein Vorschlag endet in 24 Stunden: %{title}'
         poll_expired: "Vorschlag wurde beendet: %{title}"
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
+        stance_created: "%{actor} hat abgestimmt: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> hat einen Vorschlag erstellt'
         poll_closing_soon: 'Der Vorschlag von <strong>%{actor}</strong> endet in 24 Stunden. Jetzt ist ein guter Zeitpunkt, um an der Abstimmung teilzunehmen, deine Meinung noch einmal zu überdenken oder auch, um andere noch zum Mitmachen zu bewegen.'
         poll_closing_soon_author: 'Dein Vorschlag endet in 24 Stunden - jetzt ist ein guter Zeitpunkt, um andere an den Vorschlag zu erinnern oder um gegebenenfalls die Frist zu verlängern.'
         poll_expired: "Der Vorschlag von <strong>%{actor}</strong> wurde beendet: %{title}"
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
+        stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
@@ -208,18 +217,27 @@ de:
         poll_created: '%{actor} hat eine Abstimmung eröffnet: %{title}'
         poll_closing_soon: 'In 24 Stunden endet die Abstimmungsfrist für: %{title}'
         poll_closing_soon_author: 'Deine Abstimmung zu %{title} endet in 24 Stunden'
+        poll_expired_author: 'Ihre Umfrage wurde beendet. Teilen Sie das Abstimmungsergebnis mit: %{title}'
+        poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
         outcome_created: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
+        stance_created: "%{actor} hat abgestimmt: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> hat eine Abstimmung eröffnet'
         poll_closing_soon: '<strong>%{actor}</strong>''s Abstimmung läuft in 24 Std. ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder andere zum Mitmachen zu aufzufordern.'
         poll_closing_soon_author: 'Deine Abstimmung läuft in 24 Stunden ab - jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
+        poll_expired_author: 'Ihre Umfrage ist <strong>beendet</strong>. Bitte nehmen Sie sich ein wenig Zeit, um die Abstimmungsbeiträge zu analysieren. Anschließend sollten Sie <strong>der Gruppe das Ergebnis bekanntgeben</strong>, damit alle Mitglieder über die nächsten Schritte informiert sind.'
+        poll_option_added: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
+        stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
         poll_created: '%{actor} möchte eine Bestätigung: %{title}'
-        poll_closing_soon_author: 'Dein Check läuft in 24 Stunden ab: %{title}'
+        poll_edited: '%{actor} hat die Bestätigung bearbeitet: %{title}'
+        poll_closing_soon_author: 'Deine Bestätigung endet in 24 Stunden: %{title}'
         poll_expired: "Bestätigung abgeschlossen: %{title}"
         poll_expired_author: 'Einholen der Bestätigung abgeschlossen. Geben Sie das Ergebnis bekannt für: %{title}'
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
@@ -229,7 +247,8 @@ de:
         poll_created: '<strong>%{actor}</strong> möchte eine Bestätigung'
         poll_closing_soon: '<strong>%{actor}</strong>''s Check läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Dein Check läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
-        poll_expired: "Die von <strong>%{actor}'s</strong> angeforderte Bestätigung ist abgeschlossen: %{title}"
+        poll_expired: "Die von <strong>%{actor}</strong> angeforderte Bestätigung ist abgeschlossen: %{title}"
+        poll_expired_author: 'Hier ist das Abstimmungsergebnis für die angeforderte Bestätigung. Sofern erforderlich, kannst du das <strong>Ergebnis bekanntgeben</strong>, damit die Gruppenmitglieder wissen, was als nächstes passiert.'
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
         invitation_created: '<strong>%{actor}</strong> möchte eine Bestätigung: %{title}'
         user_reminded: 'ERINNERUNG: <strong>%{actor}</strong> wartet auf Ihre Abstimmungsbeteiligung: %{title}'
@@ -240,23 +259,42 @@ de:
         poll_created: '%{actor} hat eine neue Priorisierung erstellt: %{title}'
         poll_closing_soon: 'Die Priorisierung %{title} läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Deine Priorisierung %{title} läuft in 24 Stunden ab'
+        poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
         outcome_created: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
+        stance_created: "%{actor} hat abgestimmt: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> startete eine Priorisierung'
         poll_closing_soon: '<strong>%{actor}</strong>''s Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, abzustimmen, deine Stimmverteilung zu ändern oder andere zum Mitmachen einzuladen.'
         poll_closing_soon_author: 'Deine Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
+        poll_option_added: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat ein Priorisierungergebnis bekanntgegeben.'
+        stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
+        poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         outcome_created_author: 'Sie haben ein Abstimmungsergebnis bekanntgegeben: %{title}'
+      header:
+        poll_option_added: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     ranked_choice:
       subject:
+        poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
         outcome_created: '%{actor} hat das Ergebnis für %{title} bekanntgegeben'
         outcome_created_author: 'Sie haben ein Abstimmungsergebnis bekanntgegeben: %{title}'
+      header:
+        poll_option_added: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
+  poll_generator:
+    poll:
+      title: "Liegen ggf. Lebensmittelunverträglichkeiten vor, die wir bei unserer Geschäftsfeier am Donnerstag berücksichtigen müssen?"
   poll_unsubscribe:
     title: Die Benachrichtigungen für %{title} wurden deaktiviert

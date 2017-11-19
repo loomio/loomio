@@ -321,6 +321,9 @@ tr:
     heading: 'Üyelik talepleri'
     manage_requests: Talepleri yönet
     manage_requests_with_count: Talepleri yönet ({{count}})
+  document:
+    form:
+      title_label: İsim
   membership_requests_page:
     heading: Üyelik talepleri
     approve: Onayla
