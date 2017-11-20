@@ -33,6 +33,8 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def viewed!(ranges = [], persist: true)
+    # byebug
+    # ranges = RangeSet.to_ranges(ranges)
     mark_as_read(ranges) unless has_read?(ranges)
     assign_attributes(last_read_at: Time.now)
     save if persist
@@ -68,7 +70,7 @@ class DiscussionReader < ActiveRecord::Base
 
   # because items can be deleted, we need to count the number of items in each range against the db
   def calculate_read_items_count
-    read_ranges.sum {|r| discussion.items.where(sequence_id: r).count }
+    read_ranges.sum {|r| discussion.items.where(sequence_id: Range.new(*r)).count }
   end
 
   def read_ranges
@@ -86,15 +88,20 @@ class DiscussionReader < ActiveRecord::Base
     RangeSet.subtract_ranges(discussion.ranges, read_ranges)
   end
 
-  private
   def read_ranges_string
-    if self[:read_ranges_string] == null
-      "#{discussion.first_sequence_id}-#{self.last_read_sequence_id}"
+    if self[:read_ranges_string] == nil
+      if last_read_sequence_id == 0
+        ""
+      else
+        first = (discussion.first_sequence_id == 0) ? 1 : discussion.first_sequence_id
+        "#{first}-#{self.last_read_sequence_id}"
+      end
     else
       self[:read_ranges_string]
     end
   end
 
+  private
   def membership
     @membership ||= discussion.group.membership_for(user)
   end

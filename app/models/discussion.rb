@@ -119,6 +119,14 @@ class Discussion < ActiveRecord::Base
     RangeSet.parse(self.ranges_string)
   end
 
+  def first_sequence_id
+    (ranges.first || []).first || 0
+  end
+
+  def last_sequence_id
+    (ranges.last || []).last || 0
+  end
+
   private
   def set_last_activity_at_to_created_at
     update_attribute(:last_activity_at, created_at)

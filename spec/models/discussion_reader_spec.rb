@@ -52,58 +52,58 @@ describe DiscussionReader do
   describe "has_read?" do
     it 'nothing read yet returns false' do
       reader.read_ranges_string = ''
-      expect(reader.has_read?([(1..1)])).to be false
+      expect(reader.has_read?([[1,1]])).to be false
     end
 
     it 'has been read returns true' do
-      reader.read_ranges_string = '1,1'
-      expect(reader.has_read?([(1..1)])).to be true
+      reader.read_ranges_string = '1-1'
+      expect(reader.has_read?([[1,1]])).to be true
     end
 
     it 'has not been read returns false' do
-      reader.read_ranges_string = '1,1'
-      expect(reader.has_read?([(1..2)])).to be false
+      reader.read_ranges_string = '1-1'
+      expect(reader.has_read?([[1,2]])).to be false
     end
 
     it 'complex' do
-      reader.read_ranges_string = '1,5 7,9'
-      expect(reader.has_read?([(7..8)])).to be true
-      expect(reader.has_read?([(1..3), (7..10)])).to be false
+      reader.read_ranges_string = '1-5,7-9'
+      expect(reader.has_read?([[7,8]])).to be true
+      expect(reader.has_read?([[1,3], [7,10]])).to be false
     end
   end
 
   describe "mark_as_read" do
     it 'accepts single sequence_ids' do
       reader.mark_as_read 1
-      expect(reader.read_ranges_string).to eq "1,1"
+      expect(reader.read_ranges_string).to eq "1-1"
     end
 
     it 'accepts arrays of sequence_ids' do
       reader.mark_as_read [1,2,3]
-      expect(reader.read_ranges_string).to eq "1,3"
+      expect(reader.read_ranges_string).to eq "1-3"
     end
 
     it 'creates a range' do
-      reader.mark_as_read [1..1]
-      expect(reader.read_ranges_string).to eq "1,1"
+      reader.mark_as_read [1,1]
+      expect(reader.read_ranges_string).to eq "1-1"
     end
 
     it 'extends a range' do
-      reader.mark_as_read [1..1]
-      reader.mark_as_read [2..2]
-      expect(reader.read_ranges_string).to eq "1,2"
+      reader.mark_as_read [1,1]
+      reader.mark_as_read [2,2]
+      expect(reader.read_ranges_string).to eq "1-2"
     end
 
     it 'extends a range' do
-      reader.mark_as_read [1..1]
-      reader.mark_as_read [2..2]
-      reader.mark_as_read [3..3]
-      expect(reader.read_ranges_string).to eq "1,3"
+      reader.mark_as_read [1,1]
+      reader.mark_as_read [2,2]
+      reader.mark_as_read [3,3]
+      expect(reader.read_ranges_string).to eq "1-3"
     end
 
     it 'handles complex' do
-      reader.mark_as_read [1..1, 2..2, 3..3, 1..3, 6..8, 6..7, 10..10]
-      expect(reader.read_ranges_string).to eq "1,3 6,8 10,10"
+      reader.mark_as_read [[1,1], [2,2], [3,3], [1,3], [6,8], [6,7], [10,10]]
+      expect(reader.read_ranges_string).to eq "1-3,6-8,10-10"
     end
   end
 end

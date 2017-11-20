@@ -42,4 +42,12 @@ describe RangeSet do
     expect(RangeSet.reduce([[1,2], [4,5]])).to eq [[1,2],[4,5]]
     expect(RangeSet.reduce([[1,2], [3,4], [5,6]])).to eq [[1,6]]
   end
+
+  it 'creates_ranges_from_list' do
+    expect(RangeSet.ranges_from_list([1])).to eq [[1,1]]
+    expect(RangeSet.ranges_from_list([2])).to eq [[2,2]]
+    expect(RangeSet.ranges_from_list([1,2])).to eq [[1,2]]
+    expect(RangeSet.ranges_from_list([1,3])).to eq [[1,1], [3,3]]
+    expect(RangeSet.ranges_from_list([1,2,3,5,6,7])).to eq [[1,3], [5,7]]
+  end
 end

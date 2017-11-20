@@ -174,14 +174,16 @@ ActiveRecord::Schema.define(version: 20171111234938) do
   add_index "delayed_jobs", ["run_at", "locked_at", "locked_by", "failed_at"], name: "index_delayed_jobs_on_ready", using: :btree
 
   create_table "discussion_readers", force: :cascade do |t|
-    t.integer  "user_id",                            null: false
+    t.integer  "user_id",                                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "discussion_id",                      null: false
+    t.integer  "discussion_id",                            null: false
     t.datetime "last_read_at"
-    t.integer  "read_items_count",   default: 0,     null: false
+    t.integer  "read_items_count",         default: 0,     null: false
+    t.integer  "last_read_sequence_id",    default: 0,     null: false
+    t.integer  "read_salient_items_count", default: 0,     null: false
     t.integer  "volume"
-    t.boolean  "participating",      default: false, null: false
+    t.boolean  "participating",            default: false, null: false
     t.datetime "dismissed_at"
     t.string   "read_ranges_string"
   end
@@ -214,24 +216,25 @@ ActiveRecord::Schema.define(version: 20171111234938) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",              limit: 255
+    t.string   "title",               limit: 255
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",                  default: false, null: false
-    t.boolean  "is_deleted",                     default: false, null: false
-    t.integer  "items_count",                    default: 0,     null: false
+    t.boolean  "uses_markdown",                   default: false, null: false
+    t.boolean  "is_deleted",                      default: false, null: false
+    t.integer  "items_count",                     default: 0,     null: false
     t.datetime "archived_at"
     t.boolean  "private"
-    t.string   "key",                limit: 255
-    t.string   "iframe_src",         limit: 255
+    t.string   "key",                 limit: 255
+    t.string   "iframe_src",          limit: 255
     t.datetime "last_activity_at"
-    t.integer  "last_sequence_id",               default: 0,     null: false
-    t.integer  "first_sequence_id",              default: 0,     null: false
-    t.integer  "versions_count",                 default: 0
-    t.integer  "closed_polls_count",             default: 0,     null: false
-    t.boolean  "pinned",                         default: false, null: false
-    t.integer  "importance",                     default: 0,     null: false
-    t.integer  "seen_by_count",                  default: 0,     null: false
+    t.integer  "last_sequence_id",                default: 0,     null: false
+    t.integer  "first_sequence_id",               default: 0,     null: false
+    t.integer  "salient_items_count",             default: 0,     null: false
+    t.integer  "versions_count",                  default: 0
+    t.integer  "closed_polls_count",              default: 0,     null: false
+    t.boolean  "pinned",                          default: false, null: false
+    t.integer  "importance",                      default: 0,     null: false
+    t.integer  "seen_by_count",                   default: 0,     null: false
     t.string   "ranges_string"
   end
 
@@ -758,7 +761,7 @@ ActiveRecord::Schema.define(version: 20171111234938) do
   add_index "user_deactivation_responses", ["user_id"], name: "index_user_deactivation_responses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.citext   "email",                                        default: "",                    null: false
+    t.citext   "email",                                        default: "",         null: false
     t.string   "encrypted_password",               limit: 128, default: ""
     t.string   "reset_password_token",             limit: 255
     t.datetime "reset_password_sent_at"
@@ -773,39 +776,39 @@ ActiveRecord::Schema.define(version: 20171111234938) do
     t.string   "name",                             limit: 255
     t.datetime "deactivated_at"
     t.boolean  "is_admin",                                     default: false
-    t.string   "avatar_kind",                      limit: 255, default: "initials",            null: false
+    t.string   "avatar_kind",                      limit: 255, default: "initials", null: false
     t.string   "uploaded_avatar_file_name",        limit: 255
     t.string   "uploaded_avatar_content_type",     limit: 255
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials",                  limit: 255
     t.string   "username",                         limit: 255
-    t.boolean  "email_when_proposal_closing_soon",             default: false,                 null: false
+    t.boolean  "email_when_proposal_closing_soon",             default: false,      null: false
     t.string   "authentication_token",             limit: 255
     t.string   "unsubscribe_token",                limit: 255
-    t.integer  "memberships_count",                            default: 0,                     null: false
-    t.boolean  "uses_markdown",                                default: false,                 null: false
+    t.integer  "memberships_count",                            default: 0,          null: false
+    t.boolean  "uses_markdown",                                default: false,      null: false
     t.string   "selected_locale",                  limit: 255
     t.string   "time_zone",                        limit: 255
     t.string   "key",                              limit: 255
     t.string   "detected_locale",                  limit: 255
-    t.boolean  "email_missed_yesterday",                       default: true,                  null: false
+    t.boolean  "email_missed_yesterday",                       default: true,       null: false
     t.string   "email_api_key",                    limit: 255
-    t.boolean  "email_when_mentioned",                         default: true,                  null: false
-    t.boolean  "angular_ui_enabled",                           default: true,                  null: false
-    t.boolean  "email_on_participation",                       default: true,                  null: false
-    t.integer  "default_membership_volume",                    default: 2,                     null: false
+    t.boolean  "email_when_mentioned",                         default: true,       null: false
+    t.boolean  "angular_ui_enabled",                           default: true,       null: false
+    t.boolean  "email_on_participation",                       default: true,       null: false
+    t.integer  "default_membership_volume",                    default: 2,          null: false
     t.string   "country"
     t.string   "region"
     t.string   "city"
-    t.jsonb    "experiences",                                  default: {},                    null: false
+    t.jsonb    "experiences",                                  default: {},         null: false
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"
-    t.string   "short_bio",                                    default: "",                    null: false
-    t.boolean  "email_verified",                               default: false,                 null: false
-    t.string   "location",                                     default: "",                    null: false
-    t.datetime "last_seen_at",                                 default: '2017-10-18 21:05:12', null: false
+    t.string   "short_bio",                                    default: "",         null: false
+    t.boolean  "email_verified",                               default: false,      null: false
+    t.string   "location",                                     default: "",         null: false
+    t.datetime "last_seen_at",                                 default: "now()",    null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

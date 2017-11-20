@@ -32,6 +32,7 @@ class RangeSet
   end
 
   def self.range_includes?(a, b)
+    return false if (a.length == 0 || b.length == 0)
     a[0] <= b[0] && a[1] >= b[1]
   end
 
@@ -117,17 +118,18 @@ class RangeSet
   # for turning an array of likely to be sequential ids into ranges (eg: pluck -> ranges)
   def self.ranges_from_list(ids)
     return [] if ids.empty?
-
-    first_id = 1
-    last_id = 1
-
     ranges = []
+
+    last_id = ids.first
+    first_id = ids.first
+
     ids.each do |id|
       if id == last_id + 1
         last_id = id
       else
         ranges << [first_id,last_id]
         first_id = id
+        last_id = id
       end
     end
     ranges << [first_id,last_id]
