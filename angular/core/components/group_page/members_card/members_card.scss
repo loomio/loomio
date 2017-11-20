@@ -1,5 +1,7 @@
+members_card {
+  order: 60;
+}
 .members-card{
-  order: 2;
   @include card;
 }
 

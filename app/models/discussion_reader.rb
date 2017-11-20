@@ -87,6 +87,13 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   private
+  def read_ranges_string
+    if self[:read_ranges_string] == null
+      "#{discussion.first_sequence_id}-#{self.last_read_sequence_id}"
+    else
+      self[:read_ranges_string]
+    end
+  end
 
   def membership
     @membership ||= discussion.group.membership_for(user)
