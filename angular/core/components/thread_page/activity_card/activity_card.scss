@@ -13,8 +13,10 @@
   align-items: baseline;
 }
 
-.activity-card__load-backwards{
+.activity-card__load-more{
   @include fontSmall;
+  display: flex;
+  align-items: center;
   color: $grey-on-grey;
   line-height: 30px;
   padding: 0 10px;

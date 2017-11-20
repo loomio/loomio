@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Recor
     constructor: ({@discussion, @parentEvent, @initialSequenceId, @per}) ->
       super(discussion: @discussion, per: @per)
       @columnName = "position"
-      @setMin(@positionFromSequenceId(@initialSequenceId) || @firstLoaded())
+      @setMin(@positionFromSequenceId() || @firstLoaded())
       @setMax(@lastLoaded() || false)
       @loader = new RecordLoader
         collection: 'events'
@@ -22,6 +22,7 @@ angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Recor
       # if the initialEvent is a child of the parentEvent then min = initialEvent.position
       # if the initialEvent is a grandchild of the parentEvent then min = initialEvent.parent().position
       # if the initialEvent is not a child or grandchild, then min = 0
+      return 0 if initialEvent == undefined
       if initialEvent.parentId == @parentEvent.id
         initialEvent.position
       else if initialEvent.parent().parentId == @parentEvent.id

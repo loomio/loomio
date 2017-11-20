@@ -1,6 +1,15 @@
 .user-avatar--coordinator {
   border: 2px solid $loomio-orange !important;
 }
+.user-avatar-media {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar-media__name {
+  margin-left: 8px;
+  font-weight: bold;
+}
 
 .user-avatar__profile-link {
   cursor: pointer;
@@ -13,8 +22,7 @@
 }
 
 .user-avatar{
-  @include roundedCorners;
-  background-color: $background-color;
+  border-radius: 100%;
   box-sizing: border-box;
   text-align: center;
   overflow: hidden;
@@ -23,6 +31,7 @@
 }
 
 .user-avatar__initials {
+  border-radius: 100%;
   color: $primary-text-color;
   text-decoration: none !important;
 }

@@ -884,8 +884,8 @@ en:
     attachment_display:
       aria_label: 'File attached:'
       image_alt: 'Attached image'
-    n_previous: '{{count}} previous'
-    n_more: '{{count}} more'
+    n_previous: 'Load {{count}} previous responses'
+    n_more: 'Load {{count}} responses'
 
   thread_group:
     aria_label: 'Group name'

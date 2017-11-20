@@ -9,13 +9,13 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
         polltype: @pollTypeFor(event)
 
     headlineKeyFor: (event, isNested) ->
+      return 'new_comment' if event.depth == 2 && isNested && _.includes(["new_comment", "stance_created"], event.kind)
       switch event.kind
-        when 'new_comment'       then @newCommentKey(event, isNested)
+        when 'new_comment'       then @newCommentKey(event)
         when 'discussion_edited' then @discussionEditedKey(event)
         else event.kind
 
-    newCommentKey: (event, isNested) ->
-      return 'new_comment' if isNested
+    newCommentKey: (event) ->
       if event.model().parentId?
         'comment_replied_to'
       else

@@ -1,5 +1,5 @@
 .event-children
-  -# %span
+  %span
     event-children
     parentId: {{eventWindow.parentEvent.id}}
     cc: {{eventWindow.parentEvent.childCount}}
@@ -9,7 +9,12 @@
     last: {{eventWindow.lastLoaded()}}
     anyPrevious: {{eventWindow.anyPrevious()}}
     anyNext: {{eventWindow.anyNext()}}
-
-  %md-button.event-children__load-previous.thread-item--indent-margin{ng-if: "eventWindow.anyPrevious()", ng-click: "eventWindow.loadPrevious()", translate: "activity_card.n_previous", translate-values: "{count: eventWindow.numPrevious()}"}
+  %a.activity-card__load-more.lmo-no-print.thread-item--indent-margin{href: "", ng-show: "eventWindow.anyPrevious() && !eventWindow.loader.loadingPrevious", ng-click: "eventWindow.loadPrevious()"}
+    %i.mdi.mdi-autorenew>
+    %span{translate: "activity_card.n_previous", translate-value-count: "{{eventWindow.numPrevious()}}"}
+  %loading.activity-card__loading.page-loading{ng-show: "eventWindow.loader.loadingPrevious"}
   %thread-item{ng-repeat: "event in eventWindow.events() | orderBy: threadWindow.orderBy track by event.id", event-window: "eventWindow", event: "event"}
-  %md-button.event-children__load-next.thread-item--indent-margin{ng-if: "eventWindow.anyNext()", ng-click: "eventWindow.loadNext()", translate: "activity_card.n_more", translate-values: "{count: eventWindow.numNext()}"}
+  %a.activity-card__load-more.lmo-no-print.thread-item--indent-margin{href: "", ng-show: "eventWindow.anyNext() && !eventWindow.loader.loadingMore", ng-click: "eventWindow.loadNext()"}
+    %i.mdi.mdi-autorenew>
+    %span{translate: "activity_card.n_more", translate-value-count: "{{eventWindow.numNext()}}"}
+  %loading.activity-card__loading.page-loading{ng-show: "eventWindow.loader.loadingMore"}
