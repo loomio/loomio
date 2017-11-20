@@ -1,10 +1,20 @@
 class Announcement < ActiveRecord::Base
   belongs_to :announceable, polymorphic: true
   belongs_to :author, class_name: "User", required: true
-  after_create :create_invitations!, if: :invitation_emails
+
+  delegate :guest_group, to: :announceable
+  delegate :group, to: :announceable
 
   alias :user :author
   attr_accessor :invitation_emails
+
+  def users
+    User.where(id: self.user_ids)
+  end
+
+  def invitations
+    Invitation.where(id: self.invitation_ids)
+  end
 
   def notified=(notified)
     self.user_ids = self.invitation_emails = []
@@ -15,15 +25,4 @@ class Announcement < ActiveRecord::Base
       end
     end
   end
-
-  private
-
-  def create_invitations!
-    update(invitation_ids: InvitationService.invite_to_group(
-      recipient_emails: invitation_emails,
-      group:            announceable.guest_group,
-      inviter:          user
-    ).map(&:id)) if invitation_emails.present?
-  end
-  handle_asynchronously :create_invitations!
 end

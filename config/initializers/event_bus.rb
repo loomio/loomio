@@ -116,4 +116,14 @@ EventBus.configure do |config|
 
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
+
+  # add guests to guest group of announceable
+  config.listen('announcement_create') do |announcement|
+    MembershipService.add_users_to_group(
+      users:   announcement.users.without(announcement.group&.members),
+      group:   announcement.guest_group,
+      inviter: announcement.user
+    )
+    Events::InvitationCreated.bulk_publish!(announcement.invitations)
+  end
 end

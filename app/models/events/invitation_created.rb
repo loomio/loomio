@@ -1,6 +1,7 @@
 class Events::InvitationCreated < Event
-  def self.publish!(invitation, actor)
-    super invitation, user: actor, announcement: true
+
+  def self.bulk_publish!(invitations, inviter)
+    super invitations, user: inviter, announcement: true
   end
 
   def poll

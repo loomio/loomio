@@ -197,10 +197,10 @@ module Dev::NintiesMoviesHelper
 
   def pending_invitation
     unless @pending_invitation
-      @pending_invitation = InvitationService.invite_to_group(recipient_emails: ['judd@example.com'],
-                                                              message: 'Come and join the group!',
-                                                              group: create_group,
-                                                              inviter: patrick).last
+      @pending_invitation = InvitationService.bulk_create(recipient_emails: ['judd@example.com'],
+                                                          message: 'Come and join the group!',
+                                                          group: create_group,
+                                                          inviter: patrick).last
     end
     @pending_invitation
   end
@@ -332,7 +332,7 @@ module Dev::NintiesMoviesHelper
 
     #'invitation_accepted',
     #notify patrick that his invitation to emilio has been accepted
-    invitation = InvitationService.invite_to_group(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
+    invitation = InvitationService.bulk_create(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
     InvitationService.redeem(invitation.first, emilio)
 
     #'poll_created'

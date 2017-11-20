@@ -267,6 +267,11 @@ FactoryGirl.define do
     poll_option
   end
 
+  factory :announcement do
+    association :author, factory: :user
+    association :annouceable, factory: :discussion
+  end
+
   factory :received_email do
     sender_email "John Doe <john@doe.com>"
     body "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah"

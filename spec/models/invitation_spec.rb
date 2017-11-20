@@ -65,10 +65,7 @@ describe Invitation do
   context 'to_join_group' do
 
     before do
-      @invitation = InvitationService.create_invite_to_join_group(
-        inviter: admin_user,
-        recipient_email: 'jon@lemmon.com',
-        group: group)
+      @invitation = create(:invitation, inviter: admin_user, recipient_email: 'jon@lemmon.com', group: group, intent: :join_group)
     end
     it 'has a unique token' do
       @invitation.token.length.should > 10

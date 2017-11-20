@@ -14,7 +14,7 @@ module Events::Notify::ByEmail
 
   # which mailer should be used to send emails about this event?
   def mailer
-    DiscussionMailer
+    "#{eventable.class}Mailer".constantize
   end
 
   private

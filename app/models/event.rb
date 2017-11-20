@@ -9,7 +9,6 @@ class Event < ActiveRecord::Base
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :chronologically, -> { order(created_at: :asc) }
 
-  after_create :trigger!
   after_create :call_thread_item_created
   after_destroy :call_thread_item_destroyed
 
@@ -20,6 +19,7 @@ class Event < ActiveRecord::Base
   validates :eventable, presence: true
 
   delegate :group, to: :eventable, allow_nil: true
+  delegate :poll, to: :eventable, allow_nil: true
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
 
@@ -32,20 +32,31 @@ class Event < ActiveRecord::Base
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
+    EventBus.broadcast("#{kind}_event", self)
   end
 
   def self.publish!(eventable, **args)
-    create({
-      kind:          name.demodulize.underscore,
-      eventable:     eventable,
-      created_at:    eventable.created_at
+    build(eventable, **args).tap(&:save!).tap(&:trigger!)
+  end
+
+  def self.bulk_publish!(eventables, **args)
+    Array(eventables).map { |eventable| build(eventable, **args) }
+                     .tap { |events| import(events) }
+                     .map(&:trigger)
+  end
+
+  def self.build(eventable, **args)
+    new({
+      kind:       name.demodulize.underscore,
+      eventable:  eventable,
+      created_at: eventable.created_at
     }.merge(args.slice(
       :user,
       :discussion,
       :announcement,
       :custom_fields,
-      :created_at))
-    ).tap { |e| EventBus.broadcast("#{e.kind}_event", e) }
+      :created_at
+    )))
   end
 
   private

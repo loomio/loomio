@@ -3,23 +3,7 @@ class Events::UserAddedToGroup < Event
   include Events::Notify::ByEmail
 
   def self.publish!(membership, inviter)
-    bulk_publish!(Array(membership), inviter).first
-  end
-
-  def self.bulk_publish!(memberships, inviter)
-    memberships.map do |membership|
-      new(
-        kind: 'user_added_to_group',
-        user: inviter,
-        eventable: membership
-      )
-    end.tap do |events|
-      import(events)
-      events.map do |event|
-        event.trigger!
-        EventBus.broadcast('user_added_to_group_event', event)
-      end
-    end
+    super membership, user: inviter
   end
 
   def email_users!

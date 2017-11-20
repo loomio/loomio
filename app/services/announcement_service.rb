@@ -5,6 +5,12 @@ class AnnouncementService
     announcement.author = actor
     return false unless announcement.valid?
 
+    announcement.invitation_ids = InvitationService.bulk_create(
+      recipient_emails: announcement.recipient_emails
+      group:            announcement.guest_group,
+      inviter:          announcement.author,
+      send_emails:      false
+    ).map(&:id)
     announcement.save!
 
     EventBus.broadcast 'announcement_create', announcement

@@ -344,6 +344,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
@@ -357,6 +358,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -377,6 +379,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -392,6 +395,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -410,6 +414,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for you to respond: %{title}'
         stance_created: "%{actor} participated in: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
@@ -423,6 +428,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to respond: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -443,6 +449,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a dot vote'
@@ -458,6 +465,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -479,6 +487,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a time poll'
@@ -495,6 +504,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -516,6 +526,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a ranked choice'
@@ -532,6 +543,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'

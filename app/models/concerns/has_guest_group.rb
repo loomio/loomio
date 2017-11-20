@@ -12,7 +12,7 @@ module HasGuestGroup
   def invite_guest!(name: nil, email:, inviter: self.author)
     self.guest_group.invitations.find_or_create_by(
       recipient_email: email,
-      intent: :join_poll
+      intent: :"join_#{self.class.to_s.downcase}"
     ).update(
       recipient_name: name,
       inviter: inviter

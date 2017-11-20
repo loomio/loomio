@@ -6,7 +6,7 @@ class Events::PollExpired < Event
   def self.publish!(poll)
     super poll,
           discussion: poll.discussion,
-          announcement: !!poll.events.find_by(kind: :poll_created)&.announcement
+          announcement: !!poll.events.find_by(kind: :poll_created)&.announcement,
           created_at: poll.closed_at
   end
 
