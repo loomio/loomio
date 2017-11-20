@@ -151,6 +151,7 @@ zh_TW:
   invitation_form:
     error:
       too_many_pending: "您在此群組有多於最大 %{count} 個的待處理邀請"
+      too_many_cancelled: "您在此群組有多於最大值 %{count} 個的已取消邀請"
       all_email_addresses_belong_to_members: "我們不會將邀請函寄送給提供的電子郵件地址，因為它們是屬於已經在群組中的人們的。"
   password_reset:
     change_your_password: 變更您的密碼

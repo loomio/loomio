@@ -393,6 +393,13 @@ pt_BR:
     heading: 'Pedidos para inclusão de membros'
     manage_requests: Gerenciar solicitações
     manage_requests_with_count: Gerenciar solicitações ({{count}})
+  documents_page:
+    title: Recursos
+  document:
+    list:
+      title: Recursos
+    form:
+      title_label: Nome
   membership_requests_page:
     heading: Solicitações para inclusão de membros
     approve: Aprovar

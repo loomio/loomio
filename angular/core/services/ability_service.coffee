@@ -65,6 +65,13 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     canAdministerGroup: (group) ->
       Session.user().isAdminOf(group)
 
+    canAdministerDiscussion: (discussion) ->
+      Session.user().isAuthorOf(discussion) or
+      @canAdministerGroup(discussion.group())
+
+    canChangeVolume: (discussion) ->
+      Session.user().isMemberOf(discussion.group())
+
     canManageGroupSubscription: (group) ->
       group.isParent() and
       @canAdministerGroup(group) and
@@ -82,6 +89,12 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     canAddMembers: (group) ->
       @canAdministerGroup(group) or
       (Session.user().isMemberOf(group) and group.membersCanAddMembers)
+
+    canAddDocuments: (group) ->
+      @canAdministerGroup(group)
+
+    canEditDocument: (group) ->
+      @canAdministerGroup(group)
 
     canCreateSubgroups: (group) ->
       group.isParent() and

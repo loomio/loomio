@@ -298,6 +298,9 @@ ga_IE:
   membership_requests_card:
     heading: 'Iarratais le bheith mar chomhalta'
     manage_requests: Riar na hiarratais
+  document:
+    form:
+      title_label: Ainm
   membership_requests_page:
     heading: Iarratais le bheith mar chomhalta
     approve: Ceadaigh

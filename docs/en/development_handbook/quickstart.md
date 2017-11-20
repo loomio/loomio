@@ -23,10 +23,6 @@ postgres=# CREATE USER <youruseraccount> WITH SUPERUSER;
 \q
 $ logout
 ```
-and then
-```
-$ bundle install
-```
 
 ## Run the bootstrap task
 ```
@@ -46,10 +42,12 @@ rails s
 
 ### Other things to know
 - There are several other gulp commands you can run to make your development go. These can be run from the `angular` folder.
-  - `gulp dev`: Automatically rebuild the javascript app as you make changes
+  - `gulp dev`: Automatically rebuild the javascript app as you make changes. If you feel like your changes aren't being picked up, try restarting this process.
   - `gulp protractor`: Run the automated frontend tests
   - `gulp protractor:now`: Rebuild the javascript app, then run the automated frontend tests
-  - `PRIVATE_PUB_SECRET_TOKEN=abc123 bundle exec rackup private_pub.ru -E production` is how your start faye in development
+  - `PRIVATE_PUB_SECRET_TOKEN=abc123 bundle exec rackup private_pub.ru -E production` is how to start faye (live updating) in development
+  - `npm rebuild node-sass` has been known to be very useful
+  - if you ever get into problems, then `rm -rf node_modules && yarn`
 
 ### Having trouble?
 

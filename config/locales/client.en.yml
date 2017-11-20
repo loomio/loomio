@@ -398,6 +398,8 @@ en:
 
   action_dock:
     react: Add reaction
+    add_resource: Add a resource
+    edit_group: Edit group context
     add_comment: Comment
     edit_thread: Edit context
     translate_thread: Translate context
@@ -530,6 +532,8 @@ en:
   description_card:
     title: 'Group description'
     placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
+    view_documents: 'View resources'
+    manage_documents: 'Manage resources'
     messages:
       description_updated: 'Description updated'
 
@@ -615,6 +619,49 @@ en:
     heading: 'Membership Requests'
     manage_requests: Manage requests
     manage_requests_with_count: Manage requests ({{count}})
+
+  documents_page:
+    title: Resources
+    fragment_placeholder: Search for resources...
+    add_document: Add resource
+    no_documents: No resources found for this group. Click 'Add Resource' above to add one.
+    no_documents_from_fragment: No resources found named '{{fragment}}'
+    confirm_remove_title: Remove resource
+    confirm_remove_helptext: Are you sure you want to remove this resource?
+    document_removed: Resource removed
+
+  document:
+    list:
+      title: Resources
+      no_poll_documents: No resources have been uploaded to this decision yet.
+      no_discussion_documents: No resources have been uploaded to this thread yet.
+      no_group_documents: No resources have been uploaded to the group context yet. Click the link below to see all resources uploaded to threads within this group.
+    management:
+      group_header: Attached to context
+      discussion_header: Uploaded as content
+      added_by: uploaded by {{name}}
+      uploaded_to: in
+    modal:
+      title: Add a resource
+    method_form:
+      helptext: Keep track of all your tools and files, so that they’re easy to find.
+      url_helptext: Link to websites and tools such as Tello boards and Google docs
+      file_helptext: Upload documents and files from your computer
+    form:
+      helptext: Click, paste, or drop files here to share them with your group.
+      file_upload: Upload a file from your computer
+      uploaded_already: Already uploaded somewhere else?
+      upload_from_local: Have a file locally?
+      upload_file: Upload from your computer
+      enter_url: Enter a URL
+      url_label: Resource URL
+      url_placeholder: E.g. https://www.example.com/resource.txt
+      title_helptext: What should we call this resource?
+      title_label: Name
+      title_placeholder: E.g. 'Community Guidelines'
+    flash:
+      success: Resource saved
+      destroyed: Resource removed
 
   membership_requests_page:
     heading: Membership Requests

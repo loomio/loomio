@@ -48,6 +48,9 @@ he:
     options_label: 'אפשרויות'
     options:
       label: 'אפשרויות'
+  document:
+    form:
+      title_label: שם
   membership_requests_page:
     approve: אישור
     ignore: התעלמ/י

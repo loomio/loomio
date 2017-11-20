@@ -288,6 +288,13 @@ ca:
     heading: 'Sol·licitud de pertinença'
     manage_requests: Administració de sol·licituds
     manage_requests_with_count: Administració de sol·licituds ({{count}})
+  documents_page:
+    title: Recursos
+  document:
+    list:
+      title: Recursos
+    form:
+      title_label: Nom
   membership_requests_page:
     heading: Sol·licitud de pertinença
     approve: Aprova

@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'lmoTextarea', (EmojiService, AttachmentService, MentionService) ->
-  scope: {model: '=', field: '@', noAttachments: '=?', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}
+  scope: {model: '=', field: '@', noAttachments: '@', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/lmo_textarea/lmo_textarea.html'
   replace: true

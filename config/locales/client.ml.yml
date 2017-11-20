@@ -40,6 +40,9 @@ ml:
     options_label: 'ഐച്ഛികങ്ങള്‍'
     options:
       label: 'ഐച്ഛികങ്ങള്‍'
+  document:
+    form:
+      title_label: പേരു്
   membership_requests_page:
     approve: സ്ഥിരീകരിക്കുക
     ignore: നിരസ്സിക്കുക

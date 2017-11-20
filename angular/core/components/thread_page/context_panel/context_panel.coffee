@@ -1,59 +1,9 @@
-angular.module('loomioApp').directive 'contextPanel', ->
+angular.module('loomioApp').directive 'contextPanel', ($rootScope, Records, AbilityService, ReactionService, ModalService, DocumentModal, DiscussionEditModal, ThreadService, RevisionHistoryModal, TranslationService, ScrollService) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/thread_page/context_panel/context_panel.html'
-  controller: ($scope, $rootScope, $window, $timeout, AbilityService, Session, ReactionService, ModalService, ChangeVolumeForm, DiscussionEditModal, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal, TranslationService, ScrollService) ->
-
-    $scope.showContextMenu = ->
-      AbilityService.canChangeThreadVolume($scope.discussion)
-
-    $scope.canChangeVolume = ->
-      Session.user().isMemberOf($scope.discussion.group())
-
-    $scope.openChangeVolumeForm = ->
-      ModalService.open ChangeVolumeForm, model: => $scope.discussion
-
-    $scope.canEditThread = ->
-      AbilityService.canEditThread($scope.discussion)
-
-    $scope.editThread = ->
-      ModalService.open DiscussionEditModal, discussion: => $scope.discussion
-
-    $scope.canPinThread = ->
-      AbilityService.canPinThread($scope.discussion)
-
-    $scope.pinThread = ->
-      ThreadService.pin($scope.discussion)
-
-    $scope.unpinThread = ->
-      ThreadService.unpin($scope.discussion)
-
-    $scope.muteThread = ->
-      ThreadService.mute($scope.discussion)
-
-    $scope.unmuteThread = ->
-      ThreadService.unmute($scope.discussion)
-
-    $scope.canMoveThread = ->
-      AbilityService.canMoveThread($scope.discussion)
-
-    $scope.moveThread = ->
-      ModalService.open MoveThreadForm, discussion: => $scope.discussion
-
-    $scope.requestPagePrinted = ->
-      $rootScope.$broadcast('toggleSidebar', false)
-      if $scope.discussion.allEventsLoaded()
-        $timeout -> $window.print()
-      else
-        ModalService.open PrintModal, preventClose: -> true
-        $rootScope.$broadcast 'fetchRecordsForPrint'
-
-    $scope.canDeleteThread = ->
-      AbilityService.canDeleteThread($scope.discussion)
-
-    $scope.deleteThread = ->
-      ModalService.open DeleteThreadForm, discussion: => $scope.discussion
+  controller: ($scope) ->
 
     $scope.showLintel = (bool) ->
       $rootScope.$broadcast('showThreadLintel', bool)
@@ -69,6 +19,14 @@ angular.module('loomioApp').directive 'contextPanel', ->
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread($scope.discussion)
       perform:    -> ModalService.open DiscussionEditModal, discussion: -> $scope.discussion
+    ,
+      name: 'add_resource'
+      icon: 'mdi-attachment'
+      canPerform: -> AbilityService.canAdministerDiscussion($scope.discussion)
+      perform:    -> ModalService.open DocumentModal, doc: ->
+        Records.documents.build
+          modelId:   $scope.discussion.id
+          modelType: 'Discussion'
     ,
       name: 'translate_thread'
       icon: 'mdi-translate'

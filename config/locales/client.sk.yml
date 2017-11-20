@@ -55,6 +55,9 @@ sk:
     options_label: 'Nastavenia'
     options:
       label: 'Nastavenia'
+  document:
+    form:
+      title_label: Meno
   membership_requests_page:
     approve: Schváliť
     ignore: Ignorovať

@@ -274,6 +274,9 @@ pl:
   group_form:
     privacy: 'Prywatność'
     submit_update: 'Zaktualizuj ustawienia'
+  document:
+    form:
+      title_label: Nazwa
   membership_requests_page:
     heading: Zgłoszenia Członkostwa
     approve: Akceptacja

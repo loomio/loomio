@@ -130,6 +130,11 @@ lt:
     members_can_create_subgroups: 'Nariai gali kurti pogrupius.'
     members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
+  documents_page:
+    title: Ištekliai
+  document:
+    list:
+      title: Ištekliai
   group_previous_proposals_card:
     heading: Ankstesni pasiūlymai
   invitation_form:

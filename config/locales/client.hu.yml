@@ -180,6 +180,9 @@ hu:
     privacy: 'Adatvédelem'
     members_can_start_discussions: 'A tagok felvethetnek új támékat.'
     submit_update: 'Beállítások frissítése'
+  document:
+    form:
+      title_label: Név
   membership_requests_page:
     approve: Érvényesítés
     ignore: Figyelmen kívül hagyás

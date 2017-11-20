@@ -286,7 +286,6 @@ es:
     edit_profile: 'Editar perfil '
     email_settings: 'Configuración de email'
     help: 'Ayuda'
-    contact: 'Contactar a Loomio '
     sign_out: 'Salir'
   start_menu:
     label: 'Acciones de usuario '
@@ -553,6 +552,13 @@ es:
     heading: 'Pedidos de membresía '
     manage_requests: 'Gestionar peticiones '
     manage_requests_with_count: Gestionar peticiones ({{count}})
+  documents_page:
+    title: 'Recursos '
+  document:
+    list:
+      title: 'Recursos '
+    form:
+      title_label: Nombre
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: 'Aprobar '

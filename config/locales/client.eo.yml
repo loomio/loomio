@@ -102,6 +102,9 @@ eo:
     options_label: 'Opcioj'
     options:
       label: 'Opcioj'
+  document:
+    form:
+      title_label: Nomo
   membership_requests_page:
     approve: Aprobi
     ignore: Ignori

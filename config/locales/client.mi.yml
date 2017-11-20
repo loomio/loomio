@@ -131,6 +131,9 @@ mi:
   group_form:
     privacy: 'Matatapu'
     submit_update: 'Whakahoungia nga ritenga'
+  document:
+    form:
+      title_label: Ingoa
   invitation_form:
     invite_people: 'Pōwhiri atu'
     done: 'Kua mutu'
