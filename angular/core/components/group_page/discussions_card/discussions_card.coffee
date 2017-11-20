@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
-  controller: ($scope, $location, Records, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
+  controller: ($scope, $location, Records, ModalService, DiscussionStartModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
     $scope.threadLimit = $scope.pageWindow.current
     $scope.init = ->
       $scope.pinned      = ThreadQueryService.queryFor
@@ -32,9 +32,9 @@ angular.module('loomioApp').directive 'discussionsCard', ->
     $scope.canLoadMoreDiscussions = ->
       $scope.pageWindow.current < $scope.pageWindow.max
 
-    $scope.openDiscussionModal = ->
-      ModalService.open DiscussionModal,
-                        discussion: -> Records.discussions.build(groupId: $scope.group.id)
+    $scope.startDiscussion = ->
+      ModalService.open DiscussionStartModal, discussion: ->
+        Records.discussions.build(groupId: $scope.group.id)
 
     $scope.showThreadsPlaceholder = ->
       AbilityService.canStartThread($scope.group) and

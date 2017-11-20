@@ -9,8 +9,8 @@ angular.module('loomioApp').directive 'discussionFormActions', ->
       flashSuccess: "discussion_form.messages.#{actionName}"
       drafts: true
       successCallback: (response) =>
-        $scope.$emit '$close'
         discussion = response.discussions[0]
+        $scope.$emit 'nextStep', discussion
         AttachmentService.cleanupAfterUpdate(discussion, 'discussion')
         $location.path LmoUrlService.discussion(discussion) if actionName == 'created'
 

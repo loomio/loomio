@@ -16,5 +16,6 @@ module Events::Notify::Mentions
     eventable.mentioned_group_members
              .without(eventable.group.members.mentioned_in(eventable)) # avoid re-mentioning users when editing
              .without(eventable.users_to_not_mention)
+             .without(user)
   end
 end

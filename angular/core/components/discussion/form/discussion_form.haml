@@ -36,5 +36,3 @@
           .discussion-form__make-announcement-title
             %strong{translate: "discussion_form.make_announcement"}>
           .discussion-form__make-announcement-subtitle{translate: "discussion_form.notified_count", ng-if: "discussion.makeAnnouncement", translate-values: "{count: discussion.group().announcementRecipientsCount}"}
-
-    %discussion_form_actions{ng-if: "!modal", discussion: "discussion"}

@@ -1,0 +1,12 @@
+%md-dialog.discussion-edit-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %i.mdi.mdi-forum
+      %h1.lmo-h1{translate: "discussion_edit_form.modal_title"}
+      %material_modal_header_cancel_button
+  %md-dialog-content
+    %discussion_form{discussion: "discussion", modal: "true"}
+    %dialog_scroll_indicator
+  %md-dialog-actions
+    %discussion_form_actions{discussion: "discussion"}

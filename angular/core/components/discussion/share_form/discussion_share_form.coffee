@@ -1,6 +1,6 @@
-angular.module('loomioApp').directive 'discussionForm', ->
+angular.module('loomioApp').directive 'discussionShareForm', ->
   scope: {discussion: '='}
-  templateUrl: 'generated/components/discussion/form/discussion_form.html'
+  templateUrl: 'generated/components/discussion/share_form/discussion_share_form.html'
   controller: ($scope, $location, Session, AbilityService, PrivacyString) ->
     if $scope.discussion.isNew()
       $scope.showGroupSelect = true

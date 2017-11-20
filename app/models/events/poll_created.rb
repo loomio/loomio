@@ -8,8 +8,4 @@ class Events::PollCreated < Event
           user: actor,
           discussion: poll.discussion
   end
-
-  def mention_recipients
-    
-  end
 end

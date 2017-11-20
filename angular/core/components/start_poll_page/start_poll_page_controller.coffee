@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'StartPollPageController', ($scope, $location, $rootScope, $routeParams, Records, LoadingService, PollService, ModalService, PollCommonShareModal) ->
+angular.module('loomioApp').controller 'StartPollPageController', ($scope, $location, $rootScope, $routeParams, Records, LoadingService, PollService, ModalService, AnnouncementModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'startPollPage', skipScroll: true })
   @poll = Records.polls.build
     title:       $location.search().title
@@ -14,6 +14,9 @@ angular.module('loomioApp').controller 'StartPollPageController', ($scope, $loca
   PollService.applyPollStartSequence @,
     emitter: $scope
     afterSaveComplete: (poll) ->
-      ModalService.open PollCommonShareModal, poll: -> poll
+      ModalService.open AnnouncementModal, model: ->
+        Records.announcements.build
+          announceableId:   poll.id
+          announceableType: 'Poll'
 
   return
