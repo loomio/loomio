@@ -16,12 +16,6 @@ class Announcement < ActiveRecord::Base
     end
   end
 
-  # has_many :users_to_notify, class_name: "User", -> { where(id: self.user_ids) }
-
-  def users_to_notify
-    User.where(id: user_ids)
-  end
-
   private
 
   def create_invitations!

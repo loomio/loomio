@@ -10,11 +10,11 @@ class Events::AnnouncementCreated < Event
   private
 
   def notification_recipients
-    eventable.users_to_notify
+    User.where(id: eventable.user_ids)
   end
 
   def email_recipients
-    eventable.users_to_notify.where(email_announcements: true)
+    notification_recipients.where(email_announcements: true)
   end
 
   def mailer
