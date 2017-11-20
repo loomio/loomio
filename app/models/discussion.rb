@@ -21,6 +21,7 @@ class Discussion < ActiveRecord::Base
   include Reactable
   include HasTimeframe
   include HasMentions
+  include HasGuestGroup
   include HasImportance
   include MessageChannel
   include MakesAnnouncements
