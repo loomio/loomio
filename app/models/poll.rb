@@ -7,6 +7,7 @@ class Poll < ActiveRecord::Base
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
   include Reactable
 
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices

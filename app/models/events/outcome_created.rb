@@ -11,10 +11,6 @@ class Events::OutcomeCreated < Event
           discussion: outcome.poll.discussion
   end
 
-  def mailer
-    PollMailer
-  end
-
   private
 
   def notify_author?

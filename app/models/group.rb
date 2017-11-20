@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
   include SelfReferencing
   include MessageChannel
   include GroupPrivacy
+  include HasMailer
 
   belongs_to :creator, class_name: 'User'
   belongs_to :parent, class_name: 'Group'

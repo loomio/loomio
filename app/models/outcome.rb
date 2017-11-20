@@ -20,6 +20,7 @@ class Outcome < ActiveRecord::Base
   delegate :discussion, to: :poll
   delegate :discussion_id, to: :poll
   delegate :locale, to: :poll
+  delegate :mailer, to: :poll
 
   is_mentionable on: :statement
   is_translatable on: :statement

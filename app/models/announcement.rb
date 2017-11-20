@@ -3,6 +3,7 @@ class Announcement < ActiveRecord::Base
   belongs_to :author, class_name: "User", required: true
 
   delegate :guest_group, to: :announceable
+  delegate :mailer, to: :announceable
   delegate :group, to: :announceable
 
   alias :user :author

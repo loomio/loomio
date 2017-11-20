@@ -7,15 +7,10 @@ module Events::Notify::ByEmail
   # send event emails
   def email_users!
     email_recipients.active.without(user).uniq.each do |recipient|
-      mailer.delay.send(kind, recipient, self)
+      eventable.send(:mailer).delay.send(kind, recipient, self)
     end
   end
   handle_asynchronously :email_users!
-
-  # which mailer should be used to send emails about this event?
-  def mailer
-    "#{eventable.class}Mailer".constantize
-  end
 
   private
 

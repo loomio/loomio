@@ -19,8 +19,4 @@ class Events::UserAddedToGroup < Event
   def notification_actor
     eventable.inviter
   end
-
-  def mailer
-    UserMailer
-  end
 end

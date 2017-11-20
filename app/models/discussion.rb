@@ -27,6 +27,7 @@ class Discussion < ActiveRecord::Base
   include MakesAnnouncements
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }

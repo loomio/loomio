@@ -14,10 +14,6 @@ class Events::UserReminded < Event
 
   private
 
-  def mailer
-    "#{eventable.class}Mailer".constantize
-  end
-
   def email_recipients
     notification_recipients.where(email_when_mentioned: true)
   end

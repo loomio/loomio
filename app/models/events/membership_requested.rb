@@ -23,8 +23,4 @@ class Events::MembershipRequested < Event
   def notification_translation_values
     { name: eventable.requestor&.name || eventable.name, title: eventable.group.full_name }
   end
-
-  def mailer
-    GroupMailer
-  end
 end

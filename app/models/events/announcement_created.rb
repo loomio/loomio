@@ -16,8 +16,4 @@ class Events::AnnouncementCreated < Event
   def email_recipients
     notification_recipients.where(email_announcements: true)
   end
-
-  def mailer
-    "#{eventable.announceable.class}Mailer".constantize
-  end
 end
