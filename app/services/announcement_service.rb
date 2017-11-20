@@ -6,7 +6,7 @@ class AnnouncementService
     return false unless announcement.valid?
 
     announcement.invitation_ids = InvitationService.bulk_create(
-      recipient_emails: announcement.recipient_emails
+      recipient_emails: announcement.invitation_emails,
       group:            announcement.guest_group,
       inviter:          announcement.author,
       send_emails:      false

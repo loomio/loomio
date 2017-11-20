@@ -12,6 +12,7 @@ class InvitationService
   end
 
   def self.bulk_create(recipient_emails: nil, message: nil, group: nil, inviter: nil, send_emails: true)
+    return [] unless recipient_emails.present?
 
     emails = (recipient_emails - group.members.pluck(:email)).take(100)
     raise Invitation::AllInvitesAreMembers.new if emails.empty?

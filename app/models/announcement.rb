@@ -5,9 +5,16 @@ class Announcement < ActiveRecord::Base
   delegate :guest_group, to: :announceable
   delegate :mailer, to: :announceable
   delegate :group, to: :announceable
+  delegate :discussion, to: :announceable
+  delegate :poll, to: :announceable
+  delegate :body, to: :announceable
 
   alias :user :author
   attr_accessor :invitation_emails
+
+  def guest_users
+    users.without(group&.members)
+  end
 
   def users
     User.where(id: self.user_ids)
@@ -19,7 +26,7 @@ class Announcement < ActiveRecord::Base
 
   def notified=(notified)
     self.user_ids = self.invitation_emails = []
-    notified.each do |n|
+    notified.uniq.each do |n|
       case n['type']
       when 'Group', 'User' then self.user_ids          += Array(n['notified_ids'])
       when 'Invitation'    then self.invitation_emails += Array(n['id'])

@@ -77,7 +77,7 @@ describe API::AnnouncementsController do
         announcement_params[:notified] = [email_notified]
         expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
-        expect(poll.guest_group.invitations).to eq a.invitations
+        expect(poll.guest_group.invitation_ids).to eq a.invitation_ids
         expect(a.users).to be_empty
         expect(a.invitations.pluck(:recipient_email)).to eq [email_notified[:id]]
       end
@@ -144,7 +144,7 @@ describe API::AnnouncementsController do
         announcement_params[:notified] = [email_notified]
         expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
-        expect(discussion.guest_group.invitations).to eq a.invitations
+        expect(discussion.guest_group.invitation_ids).to eq a.invitation_ids
         expect(a.users).to be_empty
         expect(a.invitations.pluck(:recipient_email)).to eq [email_notified[:id]]
       end
