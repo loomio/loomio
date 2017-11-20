@@ -3,6 +3,7 @@ module HasGuestGroup
   included do
     belongs_to :guest_group, class_name: "GuestGroup"
     has_many :guests, through: :guest_group, source: :members
+    has_many :guest_invitations, through: :guest_group, source: :invitations
   end
 
   def guest_group

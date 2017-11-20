@@ -99,6 +99,7 @@ FactoryGirl.define do
   factory :discussion do
     association :author, :factory => :user
     association :group, :factory => :formal_group
+    association :guest_group, factory: :guest_group
     title { Faker::Name.name }
     description 'A description for this discussion. Should this be *rich*?'
     uses_markdown false

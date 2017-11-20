@@ -48,8 +48,6 @@ class Poll < ActiveRecord::Base
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
-  has_many :guest_invitations, through: :guest_group, source: :invitations
-
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
   has_many :poll_options, dependent: :destroy
