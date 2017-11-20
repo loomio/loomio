@@ -108,72 +108,23 @@ describe Event do
   describe 'new_discussion' do
     it 'notifies mentioned users' do
       expect { Events::NewDiscussion.publish!(discussion) }.to change { emails_sent }.by(1) # (the mentioned user)
-      email_users = Events::NewDiscussion.last.send(:mention_recipients)
-      expect(email_users.length).to eq 1
-      expect(email_users).to include user_mentioned
-
-      notification_users = Events::NewDiscussion.last.send(:notification_recipients)
-      expect(notification_users.length).to eq 1
-      expect(notification_users).to include user_mentioned
+      expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_mentioned.id
     end
   end
 
   describe 'poll_created' do
     it 'notifies mentioned users' do
       expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }.by(1) # (the mentioned user)
-      email_users = Events::PollCreated.last.send(:mention_recipients)
-      expect(email_users.length).to eq 1
-      expect(email_users).to include user_mentioned
-
-      notification_users = Events::PollCreated.last.send(:notification_recipients)
-      expect(notification_users.length).to eq 1
-      expect(notification_users).to include user_mentioned
+      expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_mentioned.id
     end
   end
 
   describe 'poll_edited' do
-    it 'makes an announcement to participants' do
-      FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-      expect { Events::PollEdited.publish!(poll.versions.last, poll.author, true) }.to change { emails_sent }
-      email_users = Events::PollEdited.last.send(:email_recipients)
-      email_users.should      include user_thread_loud
-      email_users.should_not  include user_membership_loud
-
-      email_users.should_not  include user_membership_normal
-      email_users.should_not  include user_thread_normal
-
-      email_users.should_not include user_membership_quiet
-      email_users.should_not include user_thread_quiet
-
-      email_users.should_not include user_membership_mute
-      email_users.should_not include user_thread_mute
-      email_users.should_not include user_unsubscribed
-      email_users.should_not include poll.author
-
-      notification_users = Events::PollEdited.last.send(:notification_recipients)
-      notification_users.should     include user_thread_loud
-      notification_users.should_not include user_membership_loud
-
-      notification_users.should_not include user_membership_normal
-      notification_users.should_not include user_thread_normal
-
-      notification_users.should_not include user_membership_quiet
-      notification_users.should_not include user_thread_quiet
-
-      notification_users.should_not include user_membership_mute
-      notification_users.should_not include user_thread_mute
-      notification_users.should_not include poll.author
-    end
-
     it 'notifies mentioned users' do
-      expect { Events::PollEdited.publish!(poll.versions.last, poll.author) }.to change { emails_sent }
-      email_users = Events::PollEdited.last.send(:email_recipients)
-      expect(email_users.length).to eq 1
-      expect(email_users).to include user_mentioned
-
-      notification_users = Events::PollEdited.last.send(:notification_recipients)
-      expect(notification_users.length).to eq 1
-      expect(notification_users).to include user_mentioned
+      Events::PollCreated.publish!(poll, poll.author)
+      poll.update(details: "#{poll.details} and @#{user_thread_loud.username}")
+      expect { Events::PollEdited.publish!(poll.versions.last, poll.author) }.to change { Events::UserMentioned.where(kind: :user_mentioned).count }.by(1) # (the newly mentioned user)
+      expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_thread_loud.id
     end
   end
 
@@ -375,53 +326,9 @@ describe Event do
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
     end
 
-    it 'makes an announcement' do
-      outcome.make_announcement = true
-      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }.by(1) # (the mentioned user)
-      # email_users = Events::OutcomeCreated.last.send(:email_recipients)
-      # email_users.should     include user_thread_loud
-      # email_users.should     include user_membership_loud
-      #
-      # email_users.should     include user_membership_normal
-      # email_users.should     include user_thread_normal
-      #
-      # email_users.should_not include user_membership_quiet
-      # email_users.should_not include user_thread_quiet
-      #
-      # email_users.should_not include user_membership_mute
-      # email_users.should_not include user_thread_mute
-      # email_users.should_not include user_unsubscribed
-      # email_users.should_not include poll.author
-      #
-      # email_users.should     include guest_user
-
-      notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
-      notification_users.should     include user_thread_loud
-      notification_users.should     include user_membership_loud
-
-      notification_users.should     include user_membership_normal
-      notification_users.should     include user_thread_normal
-
-      notification_users.should     include user_membership_quiet
-      notification_users.should     include user_thread_quiet
-
-      notification_users.should     include user_membership_mute
-      notification_users.should     include user_thread_mute
-      notification_users.should_not include poll.author
-
-      notification_users.should     include guest_user
-
-    end
-
     it 'notifies mentioned users' do
-      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
-      email_users = Events::OutcomeCreated.last.send(:mention_recipients)
-      expect(email_users.length).to eq 1
-      expect(email_users).to include user_mentioned
-
-      notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
-      expect(notification_users.length).to eq 1
-      expect(notification_users).to include user_mentioned
+      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }.by(1)
+      expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_mentioned.id
     end
 
     it 'can send an ical attachment' do

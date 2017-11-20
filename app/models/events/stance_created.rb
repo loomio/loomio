@@ -1,5 +1,6 @@
 class Events::StanceCreated < Event
   include Events::LiveUpdate
+  include Events::Notify::ByEmail
   include Events::Notify::InApp
   include Events::Notify::Mentions
   include Events::Notify::Author
@@ -16,15 +17,11 @@ class Events::StanceCreated < Event
 
   private
   def author
-    User.verified.find_by(email: eventable.author.email) || eventable.author
+    User.active.verified_first.find_by(email: eventable.author.email)
   end
 
   def notification_url
     @notification_url ||= polymorphic_url(eventable.poll)
-  end
-
-  def notification_translation_title
-    eventable.poll.title
   end
 
   def notification_recipients

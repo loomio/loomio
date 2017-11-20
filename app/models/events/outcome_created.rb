@@ -7,7 +7,6 @@ class Events::OutcomeCreated < Event
   def self.publish!(outcome)
     super outcome,
           user: outcome.author,
-          announcement: outcome.make_announcement,
           discussion: outcome.poll.discussion
   end
 

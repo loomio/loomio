@@ -1,27 +1,17 @@
 class Events::PollEdited < Event
-  include Events::PollEvent
+  include Events::Notify::InApp
+  include Events::Notify::ByEmail
+  include Events::Notify::Mentions
 
-  def self.publish!(version, actor, announcement = false)
+  def self.publish!(version, actor)
     super version,
           user: actor,
-          discussion: version.item.discussion,
-          announcement: announcement
+          discussion: version.item.discussion
   end
 
   def poll
     eventable.item
   end
-
-  private
-
-  # notify those who have already participated in the poll of the change
-  def announcement_notification_recipients
-    poll.participants
-  end
-  alias :announcement_email_recipients :announcement_notification_recipients
-
-  def specified_notification_recipients
-    Queries::UsersToMentionQuery.for(poll)
-  end
-  alias :specified_email_recipients :specified_notification_recipients
+   # so that Events::Notify::Mentions looks at the poll rather than the PaperTrail::Version
+  alias :mentionable :poll
 end

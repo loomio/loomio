@@ -12,10 +12,18 @@ module Events::Notify::Mentions
 
   private
 
+  def mentionable
+    eventable
+  end
+
+  def email_recipients
+    super.without(mention_recipients)
+  end
+
   def mention_recipients
-    eventable.mentioned_group_members
-             .without(eventable.group.members.mentioned_in(eventable)) # avoid re-mentioning users when editing
-             .without(eventable.users_to_not_mention)
-             .without(user)
+    mentionable.mentioned_group_members
+               .without(mentionable.group.members.mentioned_in(mentionable)) # avoid re-mentioning users when editing
+               .without(mentionable.users_to_not_mention)
+               .without(user)
   end
 end

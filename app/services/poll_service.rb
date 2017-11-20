@@ -53,8 +53,8 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
-    EventBus.broadcast('poll_changed_group', poll, actor)                          if is_new_group
-    Events::PollEdited.publish!(poll.versions.last, actor, poll.make_announcement) if is_new_version
+    EventBus.broadcast('poll_changed_group', poll, actor)  if is_new_group
+    Events::PollEdited.publish!(poll.versions.last, actor) if is_new_version
   end
 
   def self.add_options(poll:, params:, actor:)
