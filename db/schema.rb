@@ -65,11 +65,11 @@ ActiveRecord::Schema.define(version: 20171111234938) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "filename",          limit: 255
+    t.string   "filename",             limit: 255
     t.text     "location"
     t.integer  "comment_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "filesize"
     t.string   "file_file_name"
     t.string   "file_content_type"
@@ -250,17 +250,16 @@ ActiveRecord::Schema.define(version: 20171111234938) do
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
 
   create_table "documents", force: :cascade do |t|
-    t.integer  "model_id",      null: false
-    t.string   "model_type",    null: false
-    t.integer  "attachment_id"
+    t.integer  "model_id",   null: false
+    t.string   "model_type", null: false
     t.string   "title"
     t.string   "url"
-    t.string   "doctype",       null: false
-    t.string   "color",         null: false
+    t.string   "doctype",    null: false
+    t.string   "color",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "icon"
-    t.integer  "author_id",     null: false
+    t.integer  "author_id",  null: false
   end
 
   create_table "drafts", force: :cascade do |t|
