@@ -7,7 +7,7 @@ class Dev::MainController < Dev::BaseController
 
   def index
     @routes = self.class.action_methods.select do |action|
-      action.starts_with? 'setup' || action.starts_with? 'view'
+      action.starts_with?('setup') || action.starts_with?('view')
     end
     render layout: false
   end
