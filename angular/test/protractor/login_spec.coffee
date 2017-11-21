@@ -177,7 +177,7 @@ describe 'Login', ->
       page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.context-panel__heading', 'I carried a watermelon'
-      page.click '.comment-form__join-actions button'
+      page.click '.add-comment-panel__join-actions button'
       page.expectFlash 'You are now a member of Open Dirty Dancing Shoes'
       page.expectElement '.comment-form__submit-button'
 
