@@ -31,4 +31,4 @@ angular.module('loomioApp').directive 'pollCommonRankedChoiceChart', (AppConfig,
 
     $scope.styleData = (option) ->
       'background-image': backgroundImageFor(option)
-      'width': percentageFor(option)
+      'background-size': percentageFor(option)

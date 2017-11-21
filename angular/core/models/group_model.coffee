@@ -38,6 +38,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       @hasMany 'memberships'
       @hasMany 'invitations'
       @hasMany 'groupIdentities'
+      @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
       @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
       @belongsTo 'parent', from: 'groups'
 
@@ -45,6 +46,15 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       if @isParent() then @ else @parent()
 
     group: -> @
+
+    documents: ->
+      @recordStore.documents.find(modelType: 'Group', modelId: @id)
+
+    hasDocuments: (inThreads) ->
+      if (inThreads)
+        @allDocuments().length > 0
+      else
+        @documents().length > 0
 
     shareableInvitation: ->
       @recordStore.invitations.find(singleUse:false, groupId: @id)[0]

@@ -451,6 +451,9 @@ da:
     heading: 'Anmodninger om medlemskab'
     manage_requests: Administrer anmodninger
     manage_requests_with_count: Administrer anmodninger ({{count}})
+  document:
+    form:
+      title_label: Navn
   membership_requests_page:
     heading: Anmodninger om medlemskab
     approve: Godkend

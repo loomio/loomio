@@ -1,30 +1,4 @@
 class RangeSet
-  # def initialize(ranges)
-  #   @ranges = klass.to_ranges(ranges)
-  # end
-  #
-  # def merge(ranges)
-  #   @ranges = klass.reduce(@ranges.concat(klass.to_ranges(ranges)))
-  #   self
-  # end
-  #
-  # def includes?(ranges)
-  #   klass.includes?(@ranges, ranges)
-  # end
-  #
-  # def to_s
-  #   self.class.serialize(@ranges)
-  # end
-  #
-  # def klass
-  #   self.class
-  # end
-  #
-  # def empty?
-  #   @ranges.empty?
-  # end
-
-  # class methods
   def self.includes?(haystack, needle)
     to_ranges(needle).all? do |a|
       to_ranges(haystack).any? { |b| range_includes?(b, a) }

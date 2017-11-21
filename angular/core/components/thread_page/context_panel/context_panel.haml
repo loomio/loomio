@@ -9,31 +9,7 @@
       %h1.lmo-h1{ng-if: "translation"}
         %translation{translation: "translation", field: "title"}
 
-    .context-panel__thread-actions.pull-right.lmo-no-print
-      %outlet.context-panel__before-thread-actions{name: "before-thread-actions", model: "discussion"}
-      %md-menu.lmo-dropdown-menu{ng-if: "showContextMenu()", md-position-mode: "target-right target"}
-        %md-button.context-panel__dropdown-button{ng-click: "$mdMenu.open()"}
-          .sr-only{translate: "thread_context.thread_options"}
-          %i.mdi.mdi-24px.mdi-chevron-down
-        %md-menu-content
-          %md-menu-item.context-panel__dropdown-options--email-settings{ng-if: "canChangeVolume()"}
-            %md-button{ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}
-          %md-menu-item.context-panel__dropdown-options--edit{ng-if: "canEditThread()"}
-            %md-button{ng-click: "editThread()", translate: "thread_context.edit"}
-          %md-menu-item.context-panel__dropdown-options--pin{ng-show: "!discussion.pinned && canPinThread()"}
-            %md-button{ng-click: "pinThread()", translate: "thread_context.pin_thread"}
-          %md-menu-item.context-panel__dropdown-options--pin{ng-show: "discussion.pinned && canPinThread()"}
-            %md-button{ng-click: "unpinThread()", translate: "thread_context.unpin_thread"}
-          %md-menu-item.context-panel__dropdown-options--mute{ng-show: "!discussion.isMuted()"}
-            %md-button{ng-click: "muteThread()", translate: "volume_levels.mute"}
-          %md-menu-item.context-panel__dropdown-options--unmute{ng-show: "discussion.isMuted()"}
-            %md-button{ng-click: "unmuteThread()", translate: "volume_levels.unmute"}
-          %md-menu-item.context-panel__dropdown-options--move{ng-if: "canMoveThread()"}
-            %md-button{ng-click: "moveThread()", translate: "thread_context.move_thread"}
-          %md-menu-item
-            %md-button{ng-click: "requestPagePrinted()", translate: "thread_context.print_thread"}
-          %md-menu-item.context-panel__dropdown-options--delete{ng-if: "canDeleteThread()"}
-            %md-button{ng-click: "deleteThread()", translate: "thread_context.delete_thread"}
+    %context_panel_dropdown{discussion: "discussion"}
 
   .context-panel__details.md-body-1.lmo-flex.lmo-flex__center
     .user-avatar-media
@@ -60,7 +36,7 @@
   .context-panel__description.lmo-markdown-wrapper{ng-if: "!translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
   %translation.lmo-markdown-wrapper{ng-if: "translation", translation: "translation", field: "description"}
 
-  %attachment_collection{model: "discussion"}
+  %document_list{model: "discussion"}
 
   .lmo-md-actions
     %reactions_display.context-panel__actions-left{model: "discussion", load: "true"}

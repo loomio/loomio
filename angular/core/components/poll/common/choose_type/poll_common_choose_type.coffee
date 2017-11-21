@@ -4,8 +4,7 @@ angular.module('loomioApp').directive 'pollCommonChooseType', (PollService) ->
   controller: ($scope) ->
 
     $scope.choose = (type) ->
-      $scope.poll.pollType = type
-      $scope.$emit 'chooseComplete'
+      $scope.$emit 'nextStep', type
 
     $scope.pollTypes = ->
       _.keys PollService.activePollTemplates()

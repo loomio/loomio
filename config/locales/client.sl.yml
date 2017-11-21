@@ -79,6 +79,9 @@ sl:
       loud: Pošlji email ob vsaki aktivnosti.
       quiet: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
       mute: Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a.
+  document:
+    form:
+      title_label: Ime
   membership_requests_page:
     approve: Potrdi
     ignore: Prezri

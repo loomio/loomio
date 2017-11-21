@@ -3,6 +3,7 @@ class Invitation < ActiveRecord::Base
 
   class InvitationCancelled < StandardError; end
   class TooManyPending < StandardError; end
+  class TooManyCancelled < StandardError; end
   class AllInvitesAreMembers < StandardError; end
   class InvitationAlreadyUsed < StandardError
     attr_accessor :invitation
@@ -33,6 +34,7 @@ class Invitation < ActiveRecord::Base
   delegate :name, to: :inviter, prefix: true, allow_nil: true
 
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
+  scope :cancelled, -> { where.not(cancelled_at: nil) }
   scope :useable, -> { not_cancelled.where(accepted_at: nil) }
   scope :pending, -> { useable.single_use }
   scope :shareable, -> { not_cancelled.where(single_use: false) }

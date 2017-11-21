@@ -1,4 +1,5 @@
-%md-dialog.group-form.lmo-modal__narrow
+%md-dialog.group-modal.lmo-modal__narrow
+  .lmo-disabled-form{ng-show: "isDisabled"}
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %i.mdi.mdi-account-multiple
@@ -10,6 +11,10 @@
         .group-form__invitation-title{ng-switch-when: "invite"}
           %h1.lmo-h1{translate: "invitation_form.invite_people"}
       %material_modal_header_cancel_button
-  .md-dialog-content.md-body-1.lmo-slide-animation{ng-switch: "currentStep"}
-    %group_form.animated{ng-switch-when: "create", group: "group"}
-    %invitation_form.animated{ng-switch-when: "invite", group: "group"}
+  %md-dialog-content.md-body-1.lmo-slide-animation{ng-switch: "currentStep"}
+    %group_form.animated{ng-switch-when: "create", group: "group", modal: "true"}
+    %invitation_form.animated{ng-switch-when: "invite", invitation-form: "invitationForm"}
+    %dialog_scroll_indicator
+  %md-dialog-actions{ng-switch: "currentStep"}
+    %group_form_actions{ng-switch-when: "create", group: "group"}
+    %invitation_form_actions{ng-switch-when: "invite", invitation-form: "invitationForm"}

@@ -415,6 +415,9 @@ it:
     heading: 'Richieste di partecipazione'
     manage_requests: Gestisci richieste
     manage_requests_with_count: Gestisci richieste ({{count}})
+  document:
+    form:
+      title_label: Nome
   membership_requests_page:
     heading: Richieste di partecipazione
     approve: Approva

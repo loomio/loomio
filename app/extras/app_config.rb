@@ -8,6 +8,7 @@ class AppConfig
     providers
     timezones
     notifications
+    doctypes
     locales
   )
 

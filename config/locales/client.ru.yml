@@ -233,6 +233,9 @@ ru:
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     privacy: 'Конфиденциальность'
     submit_update: 'Обновить настройки'
+  document:
+    form:
+      title_label: Имя
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать

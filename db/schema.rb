@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20171111234938) do
     t.datetime "file_updated_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.boolean  "migrated_to_document",             default: false, null: false
   end
 
   add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type", using: :btree
@@ -247,6 +248,20 @@ ActiveRecord::Schema.define(version: 20171111234938) do
   add_index "discussions", ["key"], name: "index_discussions_on_key", unique: true, using: :btree
   add_index "discussions", ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: {"last_activity_at"=>:desc}, using: :btree
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
+
+  create_table "documents", force: :cascade do |t|
+    t.integer  "model_id",      null: false
+    t.string   "model_type",    null: false
+    t.integer  "attachment_id"
+    t.string   "title"
+    t.string   "url"
+    t.string   "doctype",       null: false
+    t.string   "color",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "icon"
+    t.integer  "author_id",     null: false
+  end
 
   create_table "drafts", force: :cascade do |t|
     t.integer "user_id"
@@ -646,6 +661,7 @@ ActiveRecord::Schema.define(version: 20171111234938) do
     t.integer  "undecided_user_count",  default: 0,     null: false
     t.boolean  "voter_can_add_options", default: false, null: false
     t.integer  "guest_group_id"
+    t.boolean  "anonymous",             default: false, null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree

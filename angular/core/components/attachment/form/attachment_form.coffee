@@ -1,6 +1,15 @@
-angular.module('loomioApp').factory 'MdAttachmentFormController', ->
-  ($scope, $element, Records) ->
+angular.module('loomioApp').directive 'attachmentForm', (Records) ->
+  scope: {model: '=', showLabel: '=?'}
+  restrict: 'E'
+  templateUrl: 'generated/components/attachment/form/attachment_form.html'
+  replace: true
+  controller: ($scope, $element) ->
+
+    $scope.$watch 'files', ->
+      $scope.upload($scope.files)
+
     $scope.upload = ->
+      return unless $scope.files
       $scope.model.setErrors({})
       for file in $scope.files
         $scope.$emit 'disableAttachmentForm'
@@ -19,7 +28,7 @@ angular.module('loomioApp').factory 'MdAttachmentFormController', ->
     $scope.success = (response) ->
       data = response.data || response
       _.each data.attachments, (attachment) ->
-        $scope.model.newAttachmentIds.push(attachment.id)
+        $scope.$emit 'attachmentUploaded', attachment
 
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)

@@ -26,6 +26,9 @@ cmn:
     options_label: '选项'
     options:
       label: '选项'
+  document:
+    form:
+      title_label: 名字
   membership_requests_page:
     approve: 批准
   memberships_page:

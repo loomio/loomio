@@ -118,6 +118,9 @@ sr_RS:
     description: 'Опис'
     advanced_settings: "Напредне опције"
     submit_update: 'Ажурирај опције'
+  document:
+    form:
+      title_label: Име
   membership_requests_page:
     approve: Одобри
     ignore: Игнориши

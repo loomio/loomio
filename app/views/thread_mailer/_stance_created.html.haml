@@ -1,12 +1,13 @@
 - stance = item.eventable
+- participant = stance.participant_for_client
 
 %table
   %tr
     %td.icon
-      = link_to user_url(stance.participant) do
-        %div{class: "medium-user-avatar #{stance.participant.avatar_kind}-user-avatar avatar-canvas"}
-          = render "avatar", user: stance.participant
-    %td= raw t(:"poll_mailer.#{stance.poll.poll_type}.body.voted", participant: stance.participant.name)
+      = link_to user_url(participant) do
+        %div{class: "medium-user-avatar #{participant.avatar_kind}-user-avatar avatar-canvas"}
+          = render "avatar", user: participant
+    %td= raw t(:"poll_mailer.#{stance.poll.poll_type}.body.voted", participant: participant.name)
     %td
       %table
         - stance.stance_choices.each do |choice|
