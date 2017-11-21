@@ -1,5 +1,11 @@
-angular.module('loomioApp').factory 'PollCommonOutcomeModal', ->
+angular.module('loomioApp').factory 'PollCommonOutcomeModal', (Records, SequenceService) ->
   templateUrl: 'generated/components/poll/common/outcome_modal/poll_common_outcome_modal.html'
   controller: ($scope, outcome) ->
     $scope.outcome = outcome.clone()
-    $scope.$on 'outcomeSaved', $scope.$close
+
+    SequenceService.applySequence $scope,
+      steps: ['save', 'announce']
+      saveComplete: (_, outcome) ->
+        $scope.announcement = Records.announcements.build
+          announceableId:   outcome.id
+          announceableType: 'Outcome'
