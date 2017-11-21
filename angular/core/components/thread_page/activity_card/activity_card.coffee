@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   controller: ($scope) ->
     $scope.$on 'fetchRecordsForPrint', (event, options = {}) ->
-      $scope.tw.loadAll().then ->
+      $scope.eventWindow.loadAll().then ->
         $mdDialog.cancel()
         $timeout -> $window.print()
 

@@ -16,11 +16,6 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
     firstInSequence: -> @discussion.firstSequenceId()
     lastInSequence:  -> @discussion.lastSequenceId()
 
-    loadAll: ->
-      @loader.per = Number.MAX_SAFE_INTEGER
-      @min = @discussion.firstSequenceId()
-      @max = false
-      @loader.loadMore(@min)
 
     fewerDiscussionEditedEvents: (events) ->
       _.reject events, (event) =>

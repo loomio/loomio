@@ -5,6 +5,7 @@
     .lmo-md-actions
       %div{ng-if: "submitIsDisabled"}
       .comment-form__actions--left.lmo-flex{layout: "row", ng-if: "!submitIsDisabled"}
+        %md-button.comment-form-button{translate: "comment_form.cancel_reply", ng-show: "comment.parentId && !eventWindow.useNesting", ng-click: "comment.parentId = null", tabindex: "-1"}
         %md-button#post-comment-cancel{translate: "common.action.cancel", ng-click: "cancel($event)", ng-if: "!comment.isNew()"}
         %a.comment-form__formatting.md-button.md-accent.lmo-hide-on-xs{lmo-href: "/markdown", ng-if: "!comment.parentId", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
           %span{translate: "common.formatting_help.label"}

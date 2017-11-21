@@ -6,7 +6,7 @@ module Events::Position
     after_destroy :reorder
     after_save :reorder, if: :parent_id_changed?
     belongs_to :parent, class_name: "Event", required: false
-    has_many :children, class_name: "Event", foreign_key: :parent_id
+    has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
     define_counter_cache(:child_count) { |e| e.children.count  }
     update_counter_cache :parent, :child_count
   end

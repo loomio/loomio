@@ -1,9 +1,10 @@
 angular.module('loomioApp').directive 'commentForm', ($translate, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService) ->
-  scope: {discussion: '='}
+  scope: {eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
   controller: ($scope, $rootScope) ->
+    $scope.discussion = $scope.eventWindow.discussion
     $scope.commentHelptext = ->
       helptext = if $scope.discussion.private
         $translate.instant 'comment_form.private_privacy_notice', groupName: $scope.comment.group().fullName
@@ -14,7 +15,10 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, R
               .replace('&gt;', '>')
 
     $scope.commentPlaceholder = ->
-      $translate.instant('comment_form.write_a_comment')
+      if $scope.comment.parentId
+        $translate.instant('comment_form.in_reply_to', name: $scope.comment.parent().author().name)
+      else
+        $translate.instant('comment_form.aria_label')
 
     $scope.$on 'setParentComment', (e, parentComment) ->
       $scope.comment.parentId = parentComment.id

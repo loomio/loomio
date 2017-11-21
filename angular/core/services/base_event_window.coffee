@@ -44,3 +44,9 @@ angular.module('loomioApp').factory 'BaseEventWindow', ->
     loadPrevious: ->
       @setMin(@firstLoaded() - @per)
       @loader.loadPrevious(@min)
+
+    loadAll: ->
+      @loader.per = Number.MAX_SAFE_INTEGER
+      @setMin(@firstInSequence())
+      @setMax(Number.MAX_SAFE_INTEGER)
+      @loader.loadMore(@min)
