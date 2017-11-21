@@ -1,10 +1,10 @@
 angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Session) ->
   new class AbilityService
 
-    isLoggedIn: ->
+    isLoggedIn: =>
       @isUser() and !Session.user().restricted?
 
-    isEmailVerified: ->
+    isEmailVerified: =>
       @isLoggedIn() && Session.user().emailVerified
 
     isUser: ->

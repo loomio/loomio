@@ -22,7 +22,8 @@ angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Recor
       # if the initialEvent is a child of the parentEvent then min = initialEvent.position
       # if the initialEvent is a grandchild of the parentEvent then min = initialEvent.parent().position
       # if the initialEvent is not a child or grandchild, then min = 0
-      return 0 if initialEvent == undefined
+      return 0 if ((initialEvent == undefined) || (@parentEvent == undefined))
+
       if initialEvent.parentId == @parentEvent.id
         initialEvent.position
       else if initialEvent.parent().parentId == @parentEvent.id

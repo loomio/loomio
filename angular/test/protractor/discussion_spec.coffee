@@ -73,9 +73,7 @@ describe 'Discussion Page', ->
   describe 'reading a thread', ->
     it 'can display an unread content line', ->
       page.loadPath 'setup_unread_discussion'
-      page.expectText '.activity-card', 'New Activity'
-      browser.refresh()
-      page.expectNoText '.activity-card', 'New Activity'
+      page.expectElement '.thread-item--unread'
 
   describe 'muting and unmuting a thread', ->
     it 'lets you mute and unmute', ->
