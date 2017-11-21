@@ -270,7 +270,7 @@ FactoryGirl.define do
 
   factory :announcement do
     association :author, factory: :user
-    association :annouceable, factory: :discussion
+    association :announceable, factory: :discussion
   end
 
   factory :received_email do

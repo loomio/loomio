@@ -120,6 +120,5 @@ EventBus.configure do |config|
   # add guests to guest group of announceable
   config.listen('announcement_create') do |announcement|
     announcement.guest_group.add_members!(announcement.guest_users, inviter: announcement.user)
-    Events::InvitationCreated.bulk_publish!(announcement.invitations, announcement.author)
   end
 end

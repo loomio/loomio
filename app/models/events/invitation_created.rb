@@ -1,7 +1,7 @@
 class Events::InvitationCreated < Event
 
   def self.bulk_publish!(invitations, inviter)
-    super invitations, user: inviter, announcement: true
+    super invitations, user: inviter
   end
 
   def poll

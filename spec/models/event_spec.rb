@@ -404,4 +404,27 @@ describe Event do
       expect(email_users).to be_empty
     end
   end
+
+  describe 'announcement_created' do
+    let(:poll) { create :poll, discussion: discussion }
+    let(:poll_meeting) { create :poll_meeting, discussion: discussion }
+    let(:outcome) { create :outcome, poll: poll_meeting }
+    let(:announcement) { create :announcement, announceable: poll }
+    let(:invitation) { create :invitation, group: poll.guest_group }
+
+    it 'creates an announcement' do
+      announcement.update(user_ids: [user_thread_loud, user_thread_normal].map(&:id))
+      expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(2) # the two notified_ids
+    end
+
+    it 'sends invitations' do
+      announcement.update(invitation_ids: [invitation.id])
+      expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(1)
+    end
+
+    it 'notifies the author if the eventable is an appropriate outcome' do
+      announcement.update(announceable: outcome)
+      expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(1) # the two notified_ids, plus the author
+    end
+  end
 end
