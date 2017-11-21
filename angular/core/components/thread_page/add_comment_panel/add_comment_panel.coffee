@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'addCommentPanel', (AbilityService, ModalService, AuthModal, Session, ScrollService) ->
+angular.module('loomioApp').directive 'addCommentPanel', (AbilityService, ModalService, AuthModal, Session, ScrollService, $timeout) ->
   scope: {eventWindow: '=', parentEvent: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/add_comment_panel/add_comment_panel.html'
@@ -11,14 +11,17 @@ angular.module('loomioApp').directive 'addCommentPanel', (AbilityService, ModalS
 
     $scope.show = ($scope.parentEvent == $scope.discussion.createdEvent())
     $scope.close = -> $scope.show = false
+    $scope.isReply = false
 
-    $scope.indent = -> $scope.eventWindow.useNesting && $scope.parentComment
+    $scope.indent = -> $scope.eventWindow.useNesting && $scope.isReply
 
     $scope.$on 'replyToEvent', (e, event) ->
       # if we're in nesting and we're the correct reply OR we're in chronoglogical, always accept parentComment
       if (!$scope.eventWindow.useNesting) || ($scope.parentEvent.id == event.id)
-        $scope.parentComment = event.model()
         $scope.show = true
+        $timeout ->
+          $scope.isReply = true
+          $scope.$broadcast 'setParentComment', event.model()
 
       ScrollService.scrollTo('.add-comment-panel textarea', {bottom: true, offset: 200})
 

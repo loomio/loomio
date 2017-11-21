@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
 
     setDefaults = ->
       $scope.per = 10
-      $scope.renderMode = "nested"
+      $scope.renderMode = "chronological"
 
       if AbilityService.isLoggedIn()
         switch

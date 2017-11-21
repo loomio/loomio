@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'commentForm', ($translate, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService) ->
-  scope: {discussion: '=', parentComment: '='}
+  scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
@@ -16,11 +16,13 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, R
     $scope.commentPlaceholder = ->
       $translate.instant('comment_form.write_a_comment')
 
+    $scope.$on 'setParentComment', (e, parentComment) ->
+      $scope.comment.parentId = parentComment.id
+
     $scope.init = ->
       $scope.comment = Records.comments.build
         discussionId: $scope.discussion.id
         authorId: Session.user().id
-        parentId: ($scope.parentComment || {}).id
 
       $scope.submit = FormService.submit $scope, $scope.comment,
         drafts: true
