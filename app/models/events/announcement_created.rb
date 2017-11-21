@@ -3,7 +3,6 @@ class Events::AnnouncementCreated < Event
   include Events::Notify::ByEmail
   include Events::Notify::ByInvitation
   include Events::Notify::Author
-  include Events::RespondToModel
 
   private
 
