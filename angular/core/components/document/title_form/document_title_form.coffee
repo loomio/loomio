@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'documentTitleForm', (Records, FormService
     $scope.remove = ->
       ModalService.open ConfirmModal,
         forceSubmit: -> false
-        submit:      -> $scope.document.destroy
+        submit:      -> Records.documents.find($scope.document.id).destroy
         text:        ->
           title:    'documents_page.confirm_remove_title'
           helptext: 'documents_page.confirm_remove_helptext'
