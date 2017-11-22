@@ -128,7 +128,14 @@ class Discussion < ActiveRecord::Base
     Array(ranges.last).last.to_i
   end
 
+  # this is insted of a big slow migration
+  def ranges_string
+    update_sequence_info! if self[:ranges_string].nil?
+    self[:ranges_string]
+  end
+
   private
+
   def set_last_activity_at_to_created_at
     update_attribute(:last_activity_at, created_at)
   end

@@ -9,9 +9,7 @@ class API::EventsController < API::RestfulController
 
   def accessible_records
     records = load_and_authorize(:discussion).items.
-              includes(:user, :discussion,
-                       eventable: [:reactions],
-                       parent: [:user, {eventable: [:reactions]}]).uniq
+              includes(:user, :discussion, :eventable, parent: [:user, :eventable]).uniq
 
     records = records.where('sequence_id >= ?', sequence_id_for(records)) if (params[:comment_id] || params[:from])
 
