@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'threadItem', ($compile, $translate, LmoUrlService, EventHeadlineService) ->
+angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $translate, LmoUrlService, EventHeadlineService) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
@@ -13,6 +13,18 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $translate, LmoUr
         if $scope.event.id == parentEvent.id
           $scope.eventWindow.max = false
           $scope.$broadcast 'showReplyForm', comment
+
+    $scope.mdColors = ->
+      obj = {'border-color': 'primary-500'}
+      obj['background-color'] = 'accent-50' if $scope.isFocused
+      obj
+
+    $scope.isFocused = $scope.eventWindow.discussion.requestedSequenceId == $scope.event.sequenceId
+
+    # $timeout ->
+    #   $scope.isFocused = false
+    # , 2000
+
 
     $scope.indent = ->
       $scope.event.depth == 2 && $scope.eventWindow.useNesting

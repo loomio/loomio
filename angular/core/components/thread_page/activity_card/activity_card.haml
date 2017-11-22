@@ -2,9 +2,9 @@
   .activity-card__settings{ng-show: "eventWindow.anyLoaded()"}
     -# %h2#activity-card-title.lmo-card-heading{translate: "discussion.activity"}
     -# %div.lmo-flex--row
-    %md-select.md-no-underline{ng-model: "position", ng-change: "init()"}
+    %md-select.md-no-underline{ng-model: "position", ng-change: "init(position)"}
       %md-option{value: "beginning", translate: "activity_card.beginning"}
-      %md-option{value: "unread",    translate: "activity_card.unread", ng-disabled: "discussion.unreadActivityCount() == 0"}
+      %md-option{value: "unread",    translate: "activity_card.unread"}
       %md-option{value: "latest",    translate: "activity_card.latest"}
     %md-select.md-no-underline{ng-model: "renderMode", ng-change: "init()"}
       %md-option{value: "chronological", translate: "activity_card.chronological"}
@@ -18,6 +18,7 @@
     unread: {{discussion.unreadItemsCount()}}
     firstUnread {{discussion.firstUnreadSequenceId()}}
     initialSequenceId: {{initialSequenceId}}
+    requestedSequenceId:  {{discussion.requestedSequenceId}}
 
     loadedCount: {{eventWindow.events().length}}
 
