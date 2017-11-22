@@ -1,6 +1,6 @@
 .document-management{ng-if: "hasDocuments()"}
   %h3.lmo-h3{translate: "document.management.{{filter}}_header"}
-  .document-management__document.lmo-flex.lmo-flex__space-between{ng-repeat: "document in documents() track by document.id", layout: "row"}
+  .document-management__document.lmo-flex.lmo-flex__space-between{ng-repeat: "document in documents() | orderBy: '-createdAt' track by document.id", layout: "row"}
     .document-management__column-row
       %i.mdi.lmo-margin-right.document-management__icon{class: "mdi-{{document.icon}}", ng-style: "{color: document.color}"}
     .document-management__column-row.lmo-flex.lmo-flex__grow{layout: "column"}

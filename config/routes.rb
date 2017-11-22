@@ -195,7 +195,6 @@ Loomio::Application.routes.draw do
   devise_for :users
 
   namespace(:subscriptions) do
-    get :select_gift_plan
     post :webhook
   end
 
