@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'BaseEventWindow', ->
+angular.module('loomioApp').factory 'BaseEventWindow', (RangeSet) ->
   class BaseEventWindow
     constructor: ({@discussion, @per}) ->
       @readRanges = _.clone(@discussion.readRanges)
@@ -10,12 +10,15 @@ angular.module('loomioApp').factory 'BaseEventWindow', ->
     lastLoaded:  -> (_.last(@events())  || {})[@columnName] || 0
     numLoaded:   -> @events().length
     anyLoaded:   -> @numLoaded() > 0
-    anyPrevious: -> @numTotal() > 0 && @firstLoaded() > 1
-    numPrevious: -> @numTotal() > 0 && @firstLoaded() - 1
+    anyPrevious: -> @numTotal() > 0 && @firstLoaded() > @firstInSequence()
+    numPrevious: -> @numTotal() > 0 && @firstLoaded() - @firstInSequence()
     anyNext:     -> @numTotal() > @lastLoaded()
     numNext:     -> @numTotal() - @lastLoaded()
     anyMissing:  -> @numTotal() > @numLoaded()
     numMissing:  -> @numTotal() - @numLoaded()
+    numRead:     -> RangeSet.length(@readRanges)
+    numUnread:   -> @numTotal() - @numRead()
+    anyUnread:   -> @numUnread() > 0
 
     # min and max are the minimum and maximum values permitted in the window
     setMin: (val) -> @min = _.max([val, @firstInSequence()])
