@@ -7,7 +7,6 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
     $scope.addOption = ->
       return unless $scope.poll.newOptionName and !_.contains($scope.poll.pollOptionNames, $scope.poll.newOptionName)
       $scope.poll.pollOptionNames.push $scope.poll.newOptionName
-      $scope.poll.makeAnnouncement = true unless $scope.poll.isNew()
       $scope.$emit 'pollOptionsChanged', $scope.poll.newOptionName
       $scope.poll.newOptionName = ''
 

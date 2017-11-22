@@ -2,7 +2,6 @@ angular.module('loomioApp').factory 'PollCommonEditModal', (PollService, Loading
   templateUrl: 'generated/components/poll/common/edit_modal/poll_common_edit_modal.html'
   controller: ($scope, poll) ->
     $scope.poll = poll.clone()
-    $scope.poll.makeAnnouncement = $scope.poll.isNew()
 
     $scope.icon = ->
       PollService.iconFor($scope.poll)

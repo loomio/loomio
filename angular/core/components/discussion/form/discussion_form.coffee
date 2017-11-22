@@ -2,9 +2,7 @@ angular.module('loomioApp').directive 'discussionForm', ->
   scope: {discussion: '='}
   templateUrl: 'generated/components/discussion/form/discussion_form.html'
   controller: ($scope, $location, Session, AbilityService, PrivacyString) ->
-    if $scope.discussion.isNew()
-      $scope.showGroupSelect = true
-      $scope.discussion.makeAnnouncement = true
+    $scope.showGroupSelect = $scope.discussion.isNew()
 
     $scope.availableGroups = ->
       _.filter Session.user().groups(), (group) ->
