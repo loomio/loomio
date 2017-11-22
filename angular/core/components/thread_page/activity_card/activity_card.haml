@@ -13,12 +13,16 @@
     per: {{per}}
     min: {{eventWindow.min}}
     max: {{eventWindow.max}}
+    first: {{discussion.firstSequenceId()}}
+    last: {{discussion.lastSequenceId()}}
+    per: {{per}}
     total: {{discussion.itemsCount}}
     read: {{discussion.readItemsCount()}}
     unread: {{discussion.unreadItemsCount()}}
     firstUnread {{discussion.firstUnreadSequenceId()}}
-    initialSequenceId: {{initialSequenceId}}
+    initialSequenceId: {{initialSequenceId(initialPosition())}}
     requestedSequenceId:  {{discussion.requestedSequenceId}}
+    position: {{initialPosition()}}
 
     loadedCount: {{eventWindow.events().length}}
 
