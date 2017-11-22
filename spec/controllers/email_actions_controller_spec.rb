@@ -39,11 +39,13 @@ describe EmailActionsController do
   describe "mark_discussion_as_read" do
     before do
       @user = FactoryGirl.create(:user)
+      @author = FactoryGirl.create(:user)
       @group = FactoryGirl.create(:formal_group)
       @group.add_member!(@user)
+      @group.add_member!(@author)
 
       @discussion = FactoryGirl.build(:discussion, group: @group)
-      @event = DiscussionService.create(discussion: @discussion, actor: @user)
+      @event = DiscussionService.create(discussion: @discussion, actor: @author)
     end
 
     it 'marks the discussion as read at event created_at' do
@@ -57,7 +59,7 @@ describe EmailActionsController do
     end
 
     it 'marks a comment as read' do
-      @comment_event = CommentService.create(comment: Comment.new(discussion: @discussion, body: "hello"), actor: @user)
+      @comment_event = CommentService.create(comment: Comment.new(discussion: @discussion, body: "hello"), actor: @author)
       expect(DiscussionReader.for(discussion: @discussion, user: @user).has_read?(@comment_event.sequence_id)).to be false
       get :mark_discussion_as_read, discussion_id: @discussion.id, event_id: @comment_event.id, unsubscribe_token: @user.unsubscribe_token
       expect(DiscussionReader.for(discussion: @discussion, user: @user).last_read_at).to be_within(1.second).of Time.now

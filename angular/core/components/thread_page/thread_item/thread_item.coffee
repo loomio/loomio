@@ -4,11 +4,11 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $transl
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
 
   link: (scope, element, attrs) ->
-    if scope.event.depth == 1 && scope.eventWindow.useNesting
+    if scope.event.isSurface() && scope.eventWindow.useNesting
       $compile("<event-children discussion=\"eventWindow.discussion\" parent_event=\"event\" parent_event_window=\"eventWindow\"></event-children><add-comment-panel parent_event=\"event\" event_window=\"eventWindow\"></add-comment-panel>")(scope, (cloned, scope) -> element.append(cloned))
 
   controller: ($scope) ->
-    if $scope.event.depth == 1 && $scope.eventWindow.useNesting
+    if $scope.event.isSurface() && $scope.eventWindow.useNesting
       $scope.$on 'replyButtonClicked', (e, parentEvent, comment) ->
         if $scope.event.id == parentEvent.id
           $scope.eventWindow.max = false
@@ -22,7 +22,7 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $transl
     $scope.isFocused = $scope.eventWindow.discussion.requestedSequenceId == $scope.event.sequenceId
 
     $scope.indent = ->
-      $scope.event.depth == 2 && $scope.eventWindow.useNesting
+      $scope.event.isNested() && $scope.eventWindow.useNesting
 
     $scope.isUnread = ->
       (Session.user().id != $scope.event.actorId) && $scope.eventWindow.isUnread($scope.event)

@@ -18,14 +18,9 @@ angular.module('loomioApp').factory 'BaseEventWindow', ->
     numMissing:  -> @numTotal() - @numLoaded()
 
     # min and max are the minimum and maximum values permitted in the window
-    setMin: (val) ->
-      @min = val
-      @min = @firstInSequence() if @min < @firstInSequence()
-
-    setMax: (val) ->
-      @max = val
-      @max = false if @max > @lastInSequence()
-
+    setMin: (val) -> _.max([val, @firstInSequence()])
+    setMax: (val) -> if val <= @lastInSequence() then val else false
+    
     isUnread: (event) =>
       !_.any @readRanges, (range) ->
         _.inRange(event.sequenceId, range[0], range[1]+1)

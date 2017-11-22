@@ -140,9 +140,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
       @updateReadRanges()
 
     updateReadRanges: _.throttle ->
-      @remote.patchMember @keyOrId(), 'mark_as_read', {ranges: RangeSet.serialize(@readRanges)}
-    ,
-      2000
+      @remote.patchMember @keyOrId(), 'mark_as_read', ranges: RangeSet.serialize(@readRanges)
+    , 2000
 
     unreadActivityCount: ->
       @itemsCount - @readItemsCount()

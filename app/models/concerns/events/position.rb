@@ -17,7 +17,7 @@ module Events::Position
   end
 
   def refresh_order_value
-    self.position = self.class.select(:position).find(self.id).send(:position)
+    self.position = self.class.select(:position).find(self.id).position
   end
 
   def reorder

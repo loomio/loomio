@@ -11,15 +11,11 @@
 
     %context_panel_dropdown{discussion: "discussion"}
 
-  .context-panel__details.md-body-1.lmo-flex.lmo-flex__center
-    .user-avatar-media
-      .user-avatar-media__photo
-        %user_avatar{user: "discussion.author()", size: "small"}
-      .user-avatar-media__name
-        {{::discussion.authorName()}}
+  .context-panel__details.md-body-1.lmo-flex--row.lmo-flex__center
+    %user_avatar.lmo-margin-right{user: "discussion.author()", size: "small"}
     %span
-      %span &nbsp;
-
+      %strong> {{::discussion.authorName()}}
+      %span{aria-hidden: "true"}·
       %timeago.nowrap{timestamp: "::discussion.createdAt" }>
       %span{aria-hidden: "true"}·
       %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>

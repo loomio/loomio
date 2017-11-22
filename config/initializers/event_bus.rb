@@ -72,6 +72,12 @@ EventBus.configure do |config|
       to: reader.user
     )
   end
+  config.listen('discussion_mark_as_seen') do |reader|
+    MessageChannelService.publish(
+      ActiveModel::ArraySerializer.new([reader.discussion], each_serializer: DiscussionSerializer, root: :discussions).as_json,
+      to: reader.discussion.group
+    )
+  end
 
   # alert clients that notifications have been read
   config.listen('notification_viewed') do |actor|

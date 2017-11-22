@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   include HasTimeframe
   include Events::Position
+  BLACKLISTED_KINDS = ["motion_closed", "motion_outcome_updated", "motion_outcome_created", "poll_expired", "new_vote", "new_motion", "motion_closed_by_user", "motion_edited"].freeze
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
@@ -9,7 +10,9 @@ class Event < ActiveRecord::Base
 
   scope :sequenced, -> { where.not(sequence_id: nil).order(sequence_id: :asc) }
   scope :chronologically, -> { order(created_at: :asc) }
-  scope :excluding_sequence_ids, -> (ranges) { where RangeSet.to_ranges(ranges).map {|r| "(sequence_id NOT BETWEEN #{r.first} AND #{r.last})"}.join(' AND ') }
+  scope :thread_events, -> { where.not(kind: BLACKLISTED_KINDS) }
+  # we don't use this but I think it's cool so lets see if we use it anytime soon else delete
+  # scope :excluding_sequence_ids, -> (ranges) { where RangeSet.to_ranges(ranges).map {|r| "(sequence_id NOT BETWEEN #{r.first} AND #{r.last})"}.join(' AND ') }
 
   after_create :trigger!
   after_create :call_thread_item_created

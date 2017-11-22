@@ -4,7 +4,7 @@ class Events::BaseSerializer < ActiveModel::Serializer
 
   has_one :actor, serializer: UserSerializer, root: :users
   has_one :eventable, polymorphic: true
-  has_one :parent, serializer: Events::ParentEventSerializer, root: :events
+  has_one :parent, serializer: Events::BaseSerializer, root: :events
 
   def actor
     object.user || object.eventable&.user

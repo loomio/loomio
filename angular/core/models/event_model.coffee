@@ -29,6 +29,10 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       else
         @
 
+    isNested: -> @depth > 1
+    isSurface: -> @depth == 1
+    surfaceOrSelf: -> if @isNested() then @parent() else @
+
     children: ->
       @recordStore.events.find(parentId: @id)
 

@@ -1,16 +1,8 @@
 .user-avatar--coordinator  {
   .user-avatar__initials {
+    // remove soon: cant use theme colours in client scss
     border: 2px solid $loomio-orange;
   }
-}
-.user-avatar-media {
-  display: flex;
-  align-items: center;
-}
-
-.user-avatar-media__name {
-  margin-left: 8px;
-  font-weight: bold;
 }
 
 .user-avatar__profile-link {

@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'addCommentPanel', (AbilityService, ModalS
   controller: ($scope) ->
     $scope.discussion = $scope.eventWindow.discussion
     $scope.actor = Session.user()
-    $scope.isLoggedIn = AbilityService.isLoggedIn
+    $scope.isLoggedIn = -> AbilityService.isLoggedIn()
     $scope.signIn = -> ModalService.open AuthModal
     $scope.canAddComment = -> AbilityService.canAddComment($scope.discussion)
 

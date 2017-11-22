@@ -61,7 +61,7 @@ class Comment < ActiveRecord::Base
   end
 
   def created_event
-    events.find_by(kind: "new_comment")
+    events.find_by(kind: :new_comment)
   end
 
   def is_most_recent?

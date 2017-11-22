@@ -13,8 +13,6 @@ class API::EventsController < API::RestfulController
                        eventable: [:reactions],
                        parent: [:user, {eventable: [:reactions]}]).uniq
 
-    # using :from and :comment_id is deprecated
-    # use :min_sequence_id instead of :from, and don't use :comment_id
     records = records.where('sequence_id >= ?', sequence_id_for(records)) if (params[:comment_id] || params[:from])
 
     %w(parent_id depth sequence_id position).each do |name|

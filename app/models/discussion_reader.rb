@@ -33,8 +33,6 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def viewed!(ranges = [], persist: true)
-    # byebug
-    # ranges = RangeSet.to_ranges(ranges)
     mark_as_read(ranges) unless has_read?(ranges)
     assign_attributes(last_read_at: Time.now)
     save if persist

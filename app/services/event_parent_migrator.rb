@@ -23,7 +23,7 @@ class EventParentMigrator
     total_polls = group.polls.count
     group.polls.find_each do |poll|
       puts "#{poll.id} of #{total_polls} polls"
-      next unless parent_event = poll.events.find_by(kind: "poll_created")
+      next unless parent_event = poll.created_event
       Event.where(kind: "stance_created",
                   eventable_type: "Stance",
                   eventable_id: poll.stance_ids)

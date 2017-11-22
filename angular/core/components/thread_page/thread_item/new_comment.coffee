@@ -11,12 +11,7 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, AbilityService,
       name: 'reply_to_comment'
       icon: 'mdi-reply'
       canPerform: -> AbilityService.canRespondToComment($scope.eventable)
-      perform: ->
-        event = if $scope.event.depth == 2
-                  $scope.event.parent()
-                else
-                  $scope.event
-        $rootScope.$broadcast 'replyToEvent', event
+      perform:    -> $rootScope.$broadcast 'replyToEvent', $scope.event.surfaceOrSelf()
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'

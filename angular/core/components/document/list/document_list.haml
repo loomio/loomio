@@ -1,4 +1,4 @@
-%section.document-list{ng-if: "model.hasDocuments()"}
+%section.document-list
   %h3.document-list__heading.lmo-card-heading{translate: "document.list.title"}
   .document-list__documents.md-block.lmo-flex{layout: "column"}
     .document-list__document.lmo-flex.lmo-flex__center.lmo-flex__space-between{layout: "row", ng-repeat: "document in model.documents() track by document.id", layout: "row"}

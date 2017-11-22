@@ -6,7 +6,6 @@ class ThreadMailer < BaseMailer
   end
 
   def new_comment(recipient, event)
-    return if Rails.env.development? # TODO: remove before deploy. This makes testing this soooo much faster.
     send_thread_email(recipient, event, :new_comment)
   end
 

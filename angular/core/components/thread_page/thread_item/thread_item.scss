@@ -1,8 +1,5 @@
 .thread-item {
-  padding-left: $cardPaddingSize;
-  padding-right: $cardPaddingSize;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding: 4px $cardPaddingSize;
 }
 
 .thread-item--unread {

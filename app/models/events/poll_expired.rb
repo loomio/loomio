@@ -7,7 +7,6 @@ class Events::PollExpired < Event
     create(kind: "poll_expired",
            eventable: poll,
            parent: poll.created_event,
-           discussion: poll.discussion,
            announcement: !!poll.events.find_by(kind: :poll_created)&.announcement,
            created_at: poll.closed_at).tap { |e| EventBus.broadcast('poll_expired_event', e) }
   end

@@ -44,7 +44,7 @@ class Discussion < ActiveRecord::Base
 
   has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
 
-  has_many :items, -> { includes(:user).order('events.id ASC') }, class_name: 'Event'
+  has_many :items, -> { includes(:user).thread_events.order('events.id ASC') }, class_name: 'Event'
 
   has_many :discussion_readers
 
@@ -78,7 +78,7 @@ class Discussion < ActiveRecord::Base
   update_counter_cache :group, :closed_polls_count
 
   def created_event
-    events.find_by(kind: 'new_discussion')
+    events.find_by(kind: :new_discussion)
   end
 
   def update_sequence_info!
@@ -121,11 +121,11 @@ class Discussion < ActiveRecord::Base
   end
 
   def first_sequence_id
-    (ranges.first || []).first || 0
+    Array(ranges.first).first.to_i
   end
 
   def last_sequence_id
-    (ranges.last || []).last || 0
+    Array(ranges.last).last.to_i
   end
 
   private
