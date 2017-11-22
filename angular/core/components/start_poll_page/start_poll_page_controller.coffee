@@ -15,6 +15,6 @@ angular.module('loomioApp').controller 'StartPollPageController', ($scope, $loca
     emitter: $scope
     afterSaveComplete: (poll) ->
       ModalService.open AnnouncementModal, announcement: ->
-        Records.announcements.buildFromModel(poll)
+        Records.announcements.buildFromModel(poll, 'poll_created')
 
   return

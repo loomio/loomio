@@ -1,4 +1,4 @@
-Queries::NotifiedSearch = Struct.new(:query, :user) do
+Queries::Notified::Search = Struct.new(:query, :user) do
 
   def results
     @results ||= visible_users + visible_groups + visible_invitations

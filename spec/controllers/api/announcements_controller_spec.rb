@@ -167,5 +167,70 @@ describe API::AnnouncementsController do
         expect(response.status).to eq 403
       end
     end
+
+    describe 'notified' do
+
+    end
+
+    describe 'notified_default' do
+      let(:discussion) { create :discussion, group: group }
+      let(:poll) { create :poll, discussion: discussion }
+
+      it 'gives back the group members for a poll_created event' do
+        get :notified_default, kind: :poll_created, poll_id: poll.id
+        json = JSON.parse(response.body)
+        expect(json['notified_ids']).to include another_user.id
+        expect(json['notified_ids']).to_not include a_fourth_user.id
+        expect(json['notified_ids']).to_not include user.id
+      end
+
+      it 'gives back the poll participants for a poll_edited event' do
+        poll.stances.create(participant: user, choice: :agree)
+        poll.stances.create(participant: a_fourth_user, choice: :agree)
+        get :notified_default, kind: :poll_edited, poll_id: poll.id
+        json = JSON.parse(response.body)
+        expect(json['notified_ids']).to_not include another_user.id
+        expect(json['notified_ids']).to include a_fourth_user.id
+        expect(json['notified_ids']).to_not include user.id
+      end
+
+      it 'gives back the group members for a new_discussion event' do
+        get :notified_default, kind: :new_discussion, discussion_id: discussion.id
+        json = JSON.parse(response.body)
+        expect(json['notified_ids']).to include another_user.id
+        expect(json['notified_ids']).to_not include a_fourth_user.id
+        expect(json['notified_ids']).to_not include user.id
+      end
+
+      it 'gives back the group members for a discussion_edited event' do
+      end
+
+      it 'gives back the group members for a outcome_created event' do
+
+      end
+
+      it 'returns nothing when a model is not part of a group' do
+      end
+
+      it 'does not allow mismatches of model to kind' do
+        get :notified_default, kind: :poll_created, discussion_id: discussion.id
+        expect(response.status).to eq 403
+      end
+
+      it 'does not allow wrong kinds' do
+        get :notified_default, kind: :discussion_moved, discussion_id: discussion.id
+        expect(response.status).to eq 404
+      end
+
+      it 'does not allow unauthorized users access' do
+        get :notified_default, kind: :poll_created, poll_id: create(:poll).id
+        expect(response.status).to eq 403
+      end
+
+      it '404s on unfound models' do
+        get :notified_default, kind: :poll_created, poll_id: -1
+        expect(response.status).to eq 404
+      end
+    end
   end
 end
