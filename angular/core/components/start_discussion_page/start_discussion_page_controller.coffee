@@ -7,7 +7,7 @@ angular.module('loomioApp').controller 'StartDiscussionPageController', ($scope,
   LoadingService.listenForLoading $scope
 
   $scope.$on 'nextStep', (_, discussion) ->
-    ModalService.open AnnouncementModal, model: ->
+    ModalService.open AnnouncementModal, announcement: ->
       Records.announcements.build
         announceableId:   discussion.id
         announceableType: 'Discussion'

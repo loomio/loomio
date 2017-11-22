@@ -14,7 +14,7 @@ angular.module('loomioApp').controller 'StartPollPageController', ($scope, $loca
   PollService.applyPollStartSequence @,
     emitter: $scope
     afterSaveComplete: (poll) ->
-      ModalService.open AnnouncementModal, model: ->
+      ModalService.open AnnouncementModal, announcement: ->
         Records.announcements.build
           announceableId:   poll.id
           announceableType: 'Poll'
