@@ -61,7 +61,7 @@ EventBus.configure do |config|
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
     DiscussionReader.for_model(event.discussion, event.user).
-                     update_reader(volume: :loud) if event.discussion
+                     update_reader(ranges: event.sequence_id, volume: :loud) if event.discussion
   end
 
   config.listen('discussion_mark_as_read',

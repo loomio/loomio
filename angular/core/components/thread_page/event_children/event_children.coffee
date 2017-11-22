@@ -9,3 +9,7 @@ angular.module('loomioApp').directive 'eventChildren', (NestedEventWindow) ->
       discussion:        $scope.parentEventWindow.discussion
       initialSequenceId: $scope.parentEventWindow.initialSequenceId
       per:               $scope.parentEventWindow.per
+
+    $scope.$on 'replyToEvent', (e, event) ->
+      if event.id == $scope.parentEvent.id
+        $scope.eventWindow.max = false

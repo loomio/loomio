@@ -25,7 +25,7 @@ InitialPayload = Struct.new(:user) do
       pageSize: {
         default:         ENV.fetch('DEFAULT_PAGE_SIZE', 30),
         groupThreads:    ENV.fetch('GROUP_PAGE_SIZE',   30),
-        threadItems:     ENV.fetch('THREAD_PAGE_SIZE',  30),
+        threadItems:     ENV.fetch('THREAD_PAGE_SIZE',  10),
         exploreGroups:   ENV.fetch('EXPLORE_PAGE_SIZE', 10)
       },
       flashTimeout: {

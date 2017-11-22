@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $translate, LmoUrlService, EventHeadlineService) ->
+angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $translate, LmoUrlService, EventHeadlineService, Session) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
@@ -21,16 +21,11 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $transl
 
     $scope.isFocused = $scope.eventWindow.discussion.requestedSequenceId == $scope.event.sequenceId
 
-    # $timeout ->
-    #   $scope.isFocused = false
-    # , 2000
-
-
     $scope.indent = ->
       $scope.event.depth == 2 && $scope.eventWindow.useNesting
 
     $scope.isUnread = ->
-      $scope.eventWindow.isUnread($scope.event)
+      (Session.user().id != $scope.event.actorId) && $scope.eventWindow.isUnread($scope.event)
 
     $scope.headline = ->
       EventHeadlineService.headlineFor($scope.event, $scope.eventWindow.useNesting)
