@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'documentList', (Records, AbilityService, 
     Records.documents.fetchByModel($scope.model)
 
     $scope.canEditDocuments = ->
-      $scope.model.constructor.singular == 'Discussion' and
+      $scope.model.constructor.singular == 'discussion' and
       AbilityService.canEditDocument($scope.model.group())
 
     $scope.edit = (doc) ->
