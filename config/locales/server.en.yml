@@ -574,7 +574,7 @@ en:
       details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
 
   notified:
-    group_users: "(%{count} people)"
+    group_users: "(%{count} people - click to edit)"
 
   poll_unsubscribe:
     title: You have been unsubscribed from %{title}

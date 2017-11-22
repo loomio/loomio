@@ -389,6 +389,7 @@ en:
       placeholder: Enter groups, names, or email addresses
       notified_count: '{{count}} people will be notified'
       notified_count_singular: 1 person will be notified
+      group_count: '({{count}} people - click to edit)'
     group_form:
       search_placeholder: Search for people...
       modal_title: Select group members
@@ -402,8 +403,10 @@ en:
     edit_group: Edit group context
     add_comment: Comment
     edit_thread: Edit context
+    announce_thread: Let people know about this thread
     translate_thread: Translate context
     edit_poll: Edit poll
+    announce_poll: Let people know about this poll
     translate_poll: Translate poll
     edit_stance: Change your vote
     translate_stance: Translate vote
@@ -412,6 +415,7 @@ en:
     reply_to_comment: Reply
     translate_comment: Translate comment
     edit_outcome: Edit outcome
+    announce_thread: Let people know about this outcome
     translate_outcome: Translate outcome
     show_history: Show edit history
     pin_thread: Pin thread

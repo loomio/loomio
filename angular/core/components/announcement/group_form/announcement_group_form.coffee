@@ -34,5 +34,5 @@ angular.module('loomioApp').directive 'announcementGroupForm', ($translate, Reco
 
     $scope.submit = ->
       $scope.notified.notified_ids = $scope.selectedUserIds()
-      $scope.notified.subtitle     = $translate.instant "notify_group.group_subtitle", count: $scope.notified.notified_ids.length
-      $scope.notified.editing      = false
+      $scope.notified.subtitle     = $translate.instant "announcement.form.group_count", count: $scope.notified.notified_ids.length
+      delete $scope.notified.editing
