@@ -39,10 +39,6 @@ class Ability
       end
     end
 
-    can [:choose_subscription_plan], Group do |group|
-      user.email_verified? && group.is_parent? && user_is_admin_of?(group.id)
-    end
-
     can [:update,
          :email_members,
          :hide_next_steps,
