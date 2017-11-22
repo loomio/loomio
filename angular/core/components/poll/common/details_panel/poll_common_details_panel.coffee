@@ -1,10 +1,15 @@
-angular.module('loomioApp').directive 'pollCommonDetailsPanel', (Records, AbilityService, DocumentModal, ModalService, PollCommonEditModal, TranslationService, ReactionService) ->
+angular.module('loomioApp').directive 'pollCommonDetailsPanel', (Records, AbilityService, DocumentModal, ModalService, AnnouncementModal, PollCommonEditModal, TranslationService, ReactionService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/details_panel/poll_common_details_panel.html'
   controller: ($scope) ->
     $scope.actions = [
       name: 'react'
       canPerform: -> AbilityService.canReactToPoll($scope.poll)
+    ,
+      name: 'announce_poll'
+      icon: 'mdi-bullhorn'
+      canPerform: -> $scope.poll.isActive() && AbilityService.canAdministerPoll($scope.poll)
+      perform:    -> ModalService.open AnnouncementModal, announcement: -> Records.announcements.buildFromModel($scope.poll)
     ,
       name: 'translate_poll'
       icon: 'mdi-translate'

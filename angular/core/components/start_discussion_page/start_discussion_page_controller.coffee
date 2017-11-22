@@ -8,8 +8,6 @@ angular.module('loomioApp').controller 'StartDiscussionPageController', ($scope,
 
   $scope.$on 'nextStep', (_, discussion) ->
     ModalService.open AnnouncementModal, announcement: ->
-      Records.announcements.build
-        announceableId:   discussion.id
-        announceableType: 'Discussion'
+      Records.announcements.buildFromModel(discussion)
 
   return

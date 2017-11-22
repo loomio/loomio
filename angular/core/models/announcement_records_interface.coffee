@@ -8,3 +8,8 @@ angular.module('loomioApp').factory 'AnnouncementRecordsInterface', (BaseRecords
         params:
           q: fragment
           per: 5
+
+    buildFromModel: (model) ->
+      @build
+        announceableId:   model.id
+        announceableType: _.capitalize model.constructor.singular

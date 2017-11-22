@@ -8,7 +8,7 @@
       %material_modal_header_cancel_button{aria-hidden: "true"}
   %md-dialog-content.md-body-1.lmo-slide-animation{ng-switch: "currentStep"}
     %discussion_form.animated{discussion: "discussion", modal: "true", ng-switch-when: "save"}
-    %announcement_form{model: "discussion", ng-switch-when: "announce"}
+    %announcement_form{announcement: "announcement", ng-switch-when: "announce"}
     %dialog_scroll_indicator
   %md-dialog-actions{ng-switch: "currentStep"}
     %discussion_form_actions{discussion: "discussion", ng-switch-when: "save"}

@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'contextPanel', ($rootScope, Records, AbilityService, ReactionService, ModalService, DocumentModal, DiscussionEditModal, ThreadService, RevisionHistoryModal, TranslationService, ScrollService) ->
+angular.module('loomioApp').directive 'contextPanel', ($rootScope, Records, AbilityService, ReactionService, ModalService, AnnouncementModal, DocumentModal, DiscussionEditModal, ThreadService, RevisionHistoryModal, TranslationService, ScrollService) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
@@ -14,6 +14,11 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, Records, Abil
     $scope.actions = [
       name: 'react'
       canPerform: -> AbilityService.canAddComment($scope.discussion)
+    ,
+      name: 'announce_thread'
+      icon: 'mdi-bullhorn'
+      canPerform: -> AbilityService.canAdministerDiscussion($scope.discussion)
+      perform:    -> ModalService.open AnnouncementModal, announcement: -> Records.announcements.buildFromModel($scope.discussion)
     ,
       name: 'edit_thread'
       icon: 'mdi-pencil'

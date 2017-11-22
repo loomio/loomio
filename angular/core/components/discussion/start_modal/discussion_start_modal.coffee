@@ -6,6 +6,4 @@ angular.module('loomioApp').factory 'DiscussionStartModal', (Records, SequenceSe
     SequenceService.applySequence $scope,
       steps: ['save', 'announce']
       saveComplete: (_, discussion) ->
-        $scope.announcement = Records.announcements.build
-          announceableId:   discussion.id
-          announceableType: 'Discussion'
+        $scope.announcement = Records.announcements.buildFromModel(discussion)
