@@ -415,7 +415,7 @@ en:
     reply_to_comment: Reply
     translate_comment: Translate comment
     edit_outcome: Edit outcome
-    announce_thread: Let people know about this outcome
+    announce_outcome: Let people know about this outcome
     translate_outcome: Translate outcome
     show_history: Show edit history
     pin_thread: Pin thread
