@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'BaseEventWindow', (RangeSet) ->
 
     # min and max are the minimum and maximum values permitted in the window
     setMin: (val) -> @min = _.max([val, @firstInSequence()])
-    setMax: (val) -> @max = if val <= @lastInSequence() then val else false
+    setMax: (val) -> @max = if val < @lastInSequence() then val else false
 
     isUnread: (event) =>
       !_.any @readRanges, (range) ->
