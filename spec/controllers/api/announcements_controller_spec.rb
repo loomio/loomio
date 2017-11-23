@@ -174,47 +174,67 @@ describe API::AnnouncementsController do
 
     describe 'notified_default' do
       let(:discussion) { create :discussion, group: group }
-      let(:poll) { create :poll, discussion: discussion }
+      let(:poll) { create :poll_proposal, discussion: discussion }
+      let(:outcome) { create :outcome, poll: poll }
 
       it 'gives back the group members for a poll_created event' do
         get :notified_default, kind: :poll_created, poll_id: poll.id
         json = JSON.parse(response.body)
-        expect(json['notified_ids']).to include another_user.id
-        expect(json['notified_ids']).to_not include a_fourth_user.id
-        expect(json['notified_ids']).to_not include user.id
+        expect(json.length).to eq 1
+        expect(json[0]['notified_ids']).to include another_user.id
+        expect(json[0]['notified_ids']).to_not include a_fourth_user.id
+        expect(json[0]['notified_ids']).to_not include user.id
       end
 
       it 'gives back the poll participants for a poll_edited event' do
-        poll.stances.create(participant: user, choice: :agree)
-        poll.stances.create(participant: a_fourth_user, choice: :agree)
+        Stance.create!(poll: poll, participant: user, choice: :agree)
+        Stance.create!(poll: poll, participant: a_fourth_user, choice: :agree)
+
         get :notified_default, kind: :poll_edited, poll_id: poll.id
         json = JSON.parse(response.body)
-        expect(json['notified_ids']).to_not include another_user.id
-        expect(json['notified_ids']).to include a_fourth_user.id
-        expect(json['notified_ids']).to_not include user.id
+        expect(json.length).to eq 1
+        expect(json[0]['notified_ids']).to_not include another_user.id
+        expect(json[0]['notified_ids']).to include a_fourth_user.id
+        expect(json[0]['notified_ids']).to_not include user.id
       end
 
       it 'gives back the group members for a new_discussion event' do
         get :notified_default, kind: :new_discussion, discussion_id: discussion.id
         json = JSON.parse(response.body)
-        expect(json['notified_ids']).to include another_user.id
-        expect(json['notified_ids']).to_not include a_fourth_user.id
-        expect(json['notified_ids']).to_not include user.id
+        expect(json.length).to eq 1
+        expect(json[0]['notified_ids']).to include another_user.id
+        expect(json[0]['notified_ids']).to_not include a_fourth_user.id
+        expect(json[0]['notified_ids']).to_not include user.id
       end
 
       it 'gives back the group members for a discussion_edited event' do
+        get :notified_default, kind: :discussion_edited, discussion_id: discussion.id
+        json = JSON.parse(response.body)
+        expect(json.length).to eq 1
+        expect(json[0]['notified_ids']).to include another_user.id
+        expect(json[0]['notified_ids']).to_not include a_fourth_user.id
+        expect(json[0]['notified_ids']).to_not include user.id
       end
 
       it 'gives back the group members for a outcome_created event' do
-
+        get :notified_default, kind: :outcome_created, outcome_id: outcome.id
+        json = JSON.parse(response.body)
+        expect(json.length).to eq 1
+        expect(json[0]['notified_ids']).to include another_user.id
+        expect(json[0]['notified_ids']).to_not include a_fourth_user.id
+        expect(json[0]['notified_ids']).to_not include user.id
       end
 
       it 'returns nothing when a model is not part of a group' do
+        poll.update(discussion: nil, group: nil, anyone_can_participate: true)
+        get :notified_default, kind: :poll_created, poll_id: poll.id
+        json = JSON.parse(response.body)
+        expect(json.length).to eq 0
       end
 
       it 'does not allow mismatches of model to kind' do
         get :notified_default, kind: :poll_created, discussion_id: discussion.id
-        expect(response.status).to eq 403
+        expect(response.status).to eq 404
       end
 
       it 'does not allow wrong kinds' do
