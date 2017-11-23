@@ -27,7 +27,7 @@ class PermittedParams < Struct.new(:params)
 
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at, :anonymous,
-     :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
+     :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
      :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :attachment_ids, {attachment_ids: []},
      :poll_option_names, {poll_option_names: []}]
@@ -44,7 +44,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def outcome_attributes
-    [:statement, :poll_id, :poll_option_id, :make_announcement,
+    [:statement, :poll_id, :poll_option_id,
      :attachment_ids, {attachment_ids: []},
      :custom_fields, custom_fields: [:event_location, :event_summary, :event_description]]
   end
@@ -73,7 +73,7 @@ class PermittedParams < Struct.new(:params)
     [:parent_id, :name, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
      :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
-     :membership_granted_upon, :cover_photo, :logo, :category_id, :make_announcement,
+     :membership_granted_upon, :cover_photo, :logo, :category_id,
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
   end
 
@@ -87,7 +87,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_attributes
-    [:title, :attachment_ids, :description, :uses_markdown, :group_id, :private, :iframe_src, :make_announcement, {attachment_ids: []}]
+    [:title, :attachment_ids, :description, :uses_markdown, :group_id, :private, :iframe_src, {attachment_ids: []}]
   end
 
   def comment_attributes

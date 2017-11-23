@@ -1,13 +1,11 @@
 class Events::PollOptionAdded < Event
-  include Events::PollEvent
   include Events::Notify::Author
 
   def self.publish!(poll, actor, poll_option_names = [])
     return unless Array(poll_option_names).any?
     super poll,
           user: (actor if actor.is_logged_in?),
-          custom_fields: { poll_option_names: poll_option_names },
-          announcement: poll.make_announcement
+          custom_fields: { poll_option_names: poll_option_names }
   end
 
   private

@@ -20,7 +20,6 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.create(title: 'What star sign are you?',
                                      group: @group,
                                      description: "Wow, what a __great__ day.",
-                                     make_announcement: true,
                                      author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     last_email
@@ -34,7 +33,6 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "Wow, what a __great__ day.",
-                                 make_announcement: false,
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @comment = Comment.new(author: jennifer, body: "hello _patrick_.", discussion: @discussion)
@@ -50,7 +48,6 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "hey @patrickswayze wanna dance?",
-                                 make_announcement: false,
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     last_email
@@ -64,7 +61,6 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "Wow, what a __great__ day.",
-                                 make_announcement: false,
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @comment = Comment.new(body: "hello _patrick.", discussion: @discussion)
