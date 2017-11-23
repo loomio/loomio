@@ -1,6 +1,11 @@
 class API::EventsController < API::RestfulController
   include UsesDiscussionReaders
 
+  def remove_from_thread
+    service.remove_from_thread(event: load_resource, actor: current_user)
+    respond_with_resource
+  end
+
   private
 
   def order

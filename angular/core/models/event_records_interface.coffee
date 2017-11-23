@@ -2,6 +2,9 @@ angular.module('loomioApp').factory 'EventRecordsInterface', (BaseRecordsInterfa
   class EventRecordsInterface extends BaseRecordsInterface
     model: EventModel
 
+    removeFromThread: (event) ->
+      @remote.patchMember event.id, 'remove_from_thread'
+
     fetchByDiscussion: (discussionKey, options = {}) ->
       options['discussion_key'] = discussionKey
       @fetch

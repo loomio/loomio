@@ -3,7 +3,7 @@
     .thread-item__avatar.lmo-margin-right
       %user_avatar{user: "event.actor()", size: "small", ng-if: "event.actor()"}
     .thread-item__body.lmo-flex.lmo-flex__horizontal-center{layout: "column"}
-      .thread-item__headline.lmo-flex.lmo-flex__center.lmo-flex__grow{layout: "row"}
+      .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
         %h3.thread-item__title{id: "event-{{event.id}}"}
           -# %div
             id: {{event.id}}
@@ -17,4 +17,6 @@
           %span{aria-hidden: "true"}>·
           %a.thread-item__link.lmo-pointer{href: "{{::link()}}"}
             %timeago.timeago--inline{timestamp: "event.createdAt"}
+        %md-button.md-button--tiny{ng-if: "canRemove(event)", ng-click: "remove(event)"}
+          %i.mdi.mdi-delete
       %thread_item_directive.thread-item__directive{event: "event"}

@@ -92,7 +92,7 @@ class Discussion < ActiveRecord::Base
     update_sequence_info!
   end
 
-  def thread_item_destroyed!(item)
+  def thread_item_destroyed!
     update_sequence_info!
     RecalculateReadItemsCountsJob.perform_later(discussion)
     true

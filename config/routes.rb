@@ -95,8 +95,10 @@ Loomio::Application.routes.draw do
     end
 
     resources :login_tokens, only: [:create]
-    
-    resources :events, only: :index
+
+    resources :events, only: :index do
+      patch :remove_from_thread, on: :member
+    end
 
     resources :drafts do
       collection do

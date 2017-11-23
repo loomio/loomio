@@ -1,9 +1,9 @@
 class EventService
-  def self.mark_as_read(event:, actor:)
-    actor.ability.authorize! :mark_as_read, event.discussion
-
-    DiscussionReader.for_model(event.discussion, actor).viewed!(event.sequence_id)
-
-    EventBus.broadcast('event_mark_as_read', event, actor)
+  def self.remove_from_thread(event:, actor:)
+    actor.ability.authorize! :remove_from_thread, event
+    discussion = event.discussion
+    event.update(discussion_id: nil)
+    discussion.thread_item_destroyed!
+    event
   end
 end

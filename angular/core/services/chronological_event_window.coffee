@@ -16,17 +16,9 @@ angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow
     firstInSequence: -> @discussion.firstSequenceId()
     lastInSequence:  -> @discussion.lastSequenceId()
 
-
-    fewerDiscussionEditedEvents: (events) ->
-      _.reject events, (event) =>
-        event.kind == "discussion_edited" &&
-        (event.position == 0 || (event.previous() || {}).kind == "discussion_edited")
-
     events: =>
       query =
         sequenceId:
           $between: [@min, (@max || Number.MAX_VALUE)]
         discussionId: @discussion.id
-
-      events = Records.events.collection.chain().find(query).simplesort('id').data()
-      _.uniq(@fewerDiscussionEditedEvents( events))
+      Records.events.collection.chain().find(query).simplesort('id').data()
