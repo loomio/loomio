@@ -92,7 +92,7 @@ EventBus.configure do |config|
   config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
 
   # publish reply event after comment creation
-  config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
+  config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }
 
   # publish mention events after model create / update
   config.listen('comment_create',

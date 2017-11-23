@@ -6,15 +6,12 @@ class Events::UserAddedToGroup < Event
     super membership, user: inviter
   end
 
-  def email_users!
-    mailer.send(kind, eventable.user, self).deliver_now
-  end
-
   private
 
   def notification_recipients
     User.where(id: eventable.user_id)
   end
+  alias :email_recipients :notification_recipients
 
   def notification_actor
     eventable.inviter
