@@ -7,6 +7,7 @@
         %h3.thread-item__title{id: "event-{{event.id}}"}
           -# %div
             id: {{event.id}}
+            cpid: {{event.comment().parentId}}
             pid: {{event.parentId}}
             sid: {{event.sequenceId}}
             position: {{event.position}}

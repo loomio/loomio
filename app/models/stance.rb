@@ -44,6 +44,10 @@ class Stance < ActiveRecord::Base
   delegate :group, to: :poll, allow_nil: true
   alias :author :participant
 
+  def created_event
+    events.where(kind: "stance_created").first
+  end
+
   def parent_event
     poll.created_event
   end

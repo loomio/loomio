@@ -4,7 +4,7 @@
       %md-option{value: "beginning", translate: "activity_card.beginning"}
       %md-option{value: "unread",    translate: "activity_card.unread", ng-disabled: "!eventWindow.anyUnread()"}
       %md-option{value: "latest",    translate: "activity_card.latest"}
-    %md-select.md-no-underline{ng-model: "renderMode", ng-change: "init()", ng-if: "discussion.group.features.nested_comments"}
+    %md-select.md-no-underline{ng-model: "renderMode", ng-change: "init()", ng-show: "allowNested()"}
       %md-option{value: "chronological", translate: "activity_card.chronological"}
       %md-option{value: "nested", translate: "activity_card.nested"}
   -# %div
@@ -21,8 +21,8 @@
     initialSequenceId: {{initialSequenceId(initialPosition())}}
     requestedSequenceId:  {{discussion.requestedSequenceId}}
     position: {{initialPosition()}}
-
     loadedCount: {{eventWindow.events().length}}
+    renderMode: {{renderMode}}
 
   %loading_content.lmo-card-left-right-padding{ng-if: "loader.loading", block-count: 2}
   .activity-card__content{ng-if: "!loader.loading"}
