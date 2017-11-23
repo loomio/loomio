@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'EventRecordsInterface', (BaseRecordsInterfa
     model: EventModel
 
     removeFromThread: (event) ->
-      @remote.patchMember event.id, 'remove_from_thread'
+      @remote.patchMember(event.id, 'remove_from_thread').then -> event.remove()
 
     fetchByDiscussion: (discussionKey, options = {}) ->
       options['discussion_key'] = discussionKey
