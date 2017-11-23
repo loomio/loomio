@@ -2,8 +2,7 @@ describe 'Joining group', ->
 
   page = require './helpers/page_helper.coffee'
 
-  # new_discussion
-  describe 'create', ->
+  describe 'new_discussion', ->
     page.loadPath 'setup_group'
     page.click '.discussions-card__new-thread-button'
     page.fillIn '.discussion-form__title-input', 'Immannounce dis'
@@ -14,6 +13,26 @@ describe 'Joining group', ->
     page.click '.announcement-form__submit'
     page.expectFlash '2 notifications sent'
 
+  describe 'discussion_edited', ->
+    page.loadPath 'setup_discussion'
+    page.click '.action-dock__button--edit_thread'
+    page.fillIn '.discussion-form__title-input', 'Yo reliability, whatsup? Its me, ya boi, testing'
+    page.click '.discussion-form__submit'
+    page.expectElement '.announcement-form'
+    page.expectText '.announcement-form__chips', 'Dirty Dancing Shoes'
+    page.click '.announcement-form__submit'
+    page.expectFlash '2 notifications sent'
+
+  describe 'announcement_created', ->
+    page.loadPath 'setup_discussion'
+    page.click '.action-dock__button--announce_thread'
+    page.expectElement '.announcement-form'
+    page.fillIn 'md-autocomplete input', 'jenn'
+    page.click '.announcement-chip'
+    page.expectText '.announcement-form__chips', 'Jennifer Grey'
+    page.click '.announcement-form__submit'
+    page.expectFlash '1 notifications sent'
+
   describe 'poll_created', ->
     page.loadPath 'setup_discussion'
     page.clickFirst '.decision-tools-card__poll-type'
@@ -22,11 +41,18 @@ describe 'Joining group', ->
     page.expectFlash 'Proposal started'
     page.expectElement '.announcement-form'
     page.expectText '.announcement-form__chips', 'Dirty Dancing Shoes'
-    page.fillIn 'md-autocomplete input', 'jenn'
-    page.click '.announcement-chip'
-    page.expectText '.announcement-form__chips', 'Jennifer Grey'
     page.click '.announcement-form__submit'
-    page.expectFlash '3 notifications sent'
+    page.expectFlash '2 notifications sent'
+
+  describe 'poll_edited', ->
+    page.loadPath 'polls/test_poll_in_discussion'
+    page.click '.action-dock__button--edit_poll'
+    page.fillIn '.poll-common-form-fields__title', 'Yo reliability, whatsup? Its me, ya boi, testing'
+    page.click '.poll-common-form__submit'
+    page.expectElement '.announcement-form'
+    page.expectText '.announcement-form__chips', 'Dirty Dancing Shoes'
+    page.click '.announcement-form__submit'
+    page.expectFlash '2 notifications sent'
 
   describe 'outcome_created', ->
     page.loadPath 'polls/test_proposal_poll_closed'
