@@ -557,17 +557,17 @@ fr:
     manage_requests: Gérer les demandes
     manage_requests_with_count: Gérer les demandes ({{count}})
   documents_page:
-    title: Ressources
+    title: Pièces jointes
     fragment_placeholder: Rechercher dans les documents…
     add_document: Ajouter un document
     no_documents: Aucun document trouvé pour ce groupe. Utilisez « Ajouter un document » ci-dessus.
     no_documents_from_fragment: Aucun document trouvé pour « {{fragment}} »
-    confirm_remove_title: Supprimer le document
+    confirm_remove_title: Enlever la pièce jointe
     confirm_remove_helptext: Êtes-vous sûr⋅e de vouloir supprimer ce document?
     document_removed: Document supprimé
   document:
     list:
-      title: Ressources
+      title: Pièces jointes
       no_poll_documents: Aucun document n'a été ajouté à cette décision pour le moment.
       no_discussion_documents: Aucun document n'a été ajouté à cette discussion pour le moment.
       no_group_documents: Aucun document n'a été ajouté à la description du groupe pour le moment. Utilisez le lien ci-dessous pour voir tous les documents ajoutés à des discussions dans ce groupe.
@@ -865,7 +865,7 @@ fr:
     print_thread: 'Imprimer'
     delete_thread: 'Supprimer'
     add_comment: 'Commentaire'
-    seen_by_count: 'Vu par {{count}}'
+    seen_by_count: 'Vu par {{count}} personnes'
   pin_thread_modal:
     title: Épingler la discussion
     helptext: "Les discussions mises en avant apparaîtront toujours en tête des discussions de leur groupe. Elles permettent d’informer les membres des annonces importantes ou de partager un code de conduite ou des règles de communauté."

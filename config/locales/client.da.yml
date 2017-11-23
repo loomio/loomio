@@ -451,7 +451,12 @@ da:
     heading: 'Anmodninger om medlemskab'
     manage_requests: Administrer anmodninger
     manage_requests_with_count: Administrer anmodninger ({{count}})
+  documents_page:
+    title: Vedhæftede filer
+    confirm_remove_title: Slet vedhæftning
   document:
+    list:
+      title: Vedhæftede filer
     form:
       title_label: Navn
   membership_requests_page:

@@ -150,6 +150,8 @@ ro:
     members_can_edit_discussions: 'Membrii pot actualiza contextul si titlul discutiei.'
     members_can_start_discussions: 'Membrii pot creare o discutie noua.'
     submit_update: 'Actualizeaza setarile'
+  documents_page:
+    confirm_remove_title: Elimina fisierul
   document:
     form:
       title_label: Nume

@@ -553,10 +553,11 @@ es:
     manage_requests: 'Gestionar peticiones '
     manage_requests_with_count: Gestionar peticiones ({{count}})
   documents_page:
-    title: 'Recursos '
+    title: Adjuntos
+    confirm_remove_title: Quitar archivo adjunto
   document:
     list:
-      title: 'Recursos '
+      title: Adjuntos
     form:
       title_label: Nombre
   membership_requests_page:
