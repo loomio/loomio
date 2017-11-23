@@ -45,8 +45,9 @@
 }
 
 .explore-page__group-cover {
-  height: 100px;
-  background-size: cover;
+  height: 85px;
+  background-size: contain;
+  background-repeat: no-repeat
 }
 
 .explore-page__group-details {
