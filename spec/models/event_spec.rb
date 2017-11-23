@@ -341,13 +341,6 @@ describe Event do
       expect(mail.attachments.first.content_type).to match /text\/calendar/
       expect(mail.attachments.first.filename).to eq 'meeting.ics'
     end
-
-    it 'sends an email to the author if author_receives_outcome is true' do
-      outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
-      outcome.make_announcement = true
-      Events::OutcomeCreated.publish!(outcome)
-      expect(ActionMailer::Base.deliveries.map(&:to).flatten).to include outcome.author.email
-    end
   end
 
   describe 'invitation_accepted' do

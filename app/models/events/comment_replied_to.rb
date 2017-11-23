@@ -3,6 +3,10 @@ class Events::CommentRepliedTo < Event
   include Events::Notify::ByEmail
   include Events::LiveUpdate
 
+  def self.publish!(comment)
+    super comment, user: comment.author
+  end
+
   private
 
   def email_recipients

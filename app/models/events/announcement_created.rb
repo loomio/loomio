@@ -18,6 +18,11 @@ class Events::AnnouncementCreated < Event
     eventable.invitations
   end
 
+  # send outcome_created to author if announcing an appropriate outcome
+  def email_author!
+    eventable.send(:mailer).send(:outcome_created_author, author, self).deliver_now if notify_author?
+  end
+
   def notify_author?
     eventable.announceable.is_a?(Outcome) &&
     eventable.announceable.poll.author_receives_outcome
