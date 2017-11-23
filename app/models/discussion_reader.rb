@@ -1,4 +1,5 @@
 class DiscussionReader < ActiveRecord::Base
+  include CustomCounterCache::Model
   include HasVolume
 
   belongs_to :user

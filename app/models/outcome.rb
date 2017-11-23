@@ -1,6 +1,6 @@
 class Outcome < ActiveRecord::Base
   extend  HasCustomFields
-  include MakesAnnouncements
+  include HasAnnouncements
   include HasMentions
   include Reactable
   include Translatable

@@ -1,4 +1,5 @@
 class Membership < ActiveRecord::Base
+  include CustomCounterCache::Model
   include HasVolume
   include HasTimeframe
   include HasExperiences

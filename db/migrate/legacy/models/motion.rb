@@ -6,8 +6,6 @@ class Motion < ActiveRecord::Base
 
   belongs_to :discussion
   has_one :group, through: :discussion
-  update_counter_cache :discussion, :motions_count
-  update_counter_cache :discussion, :closed_motions_count
 
   has_many :votes,         -> { includes(:user) },  dependent: :destroy
   has_many :unique_votes,  -> { includes(:user).where(age: 0) }, class_name: 'Vote'

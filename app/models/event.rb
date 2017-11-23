@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  include CustomCounterCache::Model
   include HasTimeframe
 
   has_many :notifications, dependent: :destroy

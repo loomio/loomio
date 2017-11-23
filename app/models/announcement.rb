@@ -1,4 +1,6 @@
 class Announcement < ActiveRecord::Base
+  include CustomCounterCache::Model
+
   belongs_to :announceable, polymorphic: true
   belongs_to :author, class_name: "User", required: true
 

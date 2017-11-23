@@ -1,9 +1,10 @@
 class Poll < ActiveRecord::Base
   extend  HasCustomFields
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
+  include HasAnnouncements
   include HasMentions
   include HasGuestGroup
-  include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope

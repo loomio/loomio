@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include SelfReferencing
   include MessageChannel

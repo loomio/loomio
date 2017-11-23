@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   include SelfReferencing
   include NoForbiddenEmails
   include HasMailer
+  include CustomCounterCache::Model
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
