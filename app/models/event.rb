@@ -45,6 +45,6 @@ class Event < ActiveRecord::Base
   end
 
   def call_thread_item_destroyed
-    discussion.thread_item_destroyed!(self) if discussion_id.present?
+    discussion.thread_item_destroyed! if discussion_id.present?
   end
 end
