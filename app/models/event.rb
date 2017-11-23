@@ -42,7 +42,7 @@ class Event < ActiveRecord::Base
   def self.bulk_publish!(eventables, **args)
     Array(eventables).map { |eventable| build(eventable, **args) }
                      .tap { |events| import(events) }
-                     .map(&:trigger!)
+                     .tap { |events| events.map(&:trigger!) }
   end
 
   def self.build(eventable, **args)

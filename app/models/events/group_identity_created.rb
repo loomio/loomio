@@ -3,8 +3,8 @@ class Events::GroupIdentityCreated < Event
 
   def self.publish!(group_identity, actor)
     super group_identity,
-          user: actor
-          announcement: group_identity.make_announcement,
+          user: actor,
+          announcement: group_identity.make_announcement
   end
 
   def identities
