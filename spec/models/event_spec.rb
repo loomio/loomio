@@ -410,6 +410,12 @@ describe Event do
       expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(2) # the two notified_ids
     end
 
+    it 'does not email people with email_announcements off' do
+      announcement.update(user_ids: [user_thread_loud])
+      user_thread_loud.update(email_announcements: false)
+      expect { Events::AnnouncementCreated.publish!(announcement) }.to_not change { emails_sent }
+    end
+
     it 'sends invitations' do
       announcement.update(invitation_ids: [invitation.id])
       expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(1)
