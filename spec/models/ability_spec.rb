@@ -14,7 +14,7 @@ describe "User abilities" do
     create :invitation, recipient_email: "h@h.com", group: group, inviter: user, intent: :join_group)
   }
   let(:other_members_invitation) {
-    create :invitation, recipient_email: "h@h.com", group: group, inviter: other_user, intent: :join_group) }
+    create :invitation, recipient_email: "h@h.com", group: group, inviter: other_user, intent: :join_group)
   }
   it { should be_able_to(:create, group) }
 
