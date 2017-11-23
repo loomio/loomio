@@ -356,12 +356,7 @@ class Ability
     end
 
     can [:create, :update], Document do |document|
-      case document.model
-      when Group      then user_is_admin_of?(document.model.id)
-      when Discussion then user_is_admin_of?(document.model.group_id)
-      when Poll       then user_is_admin_of?(document.model.group_id) ||
-                           user_is_admin_of?(document.model.guest_group_id)
-      end
+      user.ability.can?(:update, document.model)
     end
 
     can :destroy, Document do |document|
