@@ -2,7 +2,7 @@ describe 'announcements', ->
 
   page = require './helpers/page_helper.coffee'
 
-  describe 'announcement form'
+  describe 'announcement form', ->
     it 'new_discussion', ->
       page.loadPath 'setup_group'
       page.click '.discussions-card__new-thread-button'
