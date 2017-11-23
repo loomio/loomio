@@ -4,7 +4,6 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
   attributes :id,
              :discussion_reader_id,
              :read_ranges_string,
-             :read_items_count,
              :last_read_at,
              :seen_by_count
 
