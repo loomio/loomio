@@ -1,11 +1,11 @@
 class API::AnnouncementsController < API::RestfulController
   def notified
-    self.collection = Queries::Notified::Search.new(params[:q], current_user).results
+    self.collection = Queries::Notified::Search.new(params.require(:q), current_user).results
     respond_with_collection serializer: NotifiedSerializer, root: false
   end
 
   def notified_default
-    self.collection = Queries::Notified::Default.new(model_to_notify, params[:kind], current_user).results
+    self.collection = Queries::Notified::Default.new(params.require(:kind), model_to_notify, current_user).results
     respond_with_collection serializer: NotifiedSerializer, root: false
   end
 

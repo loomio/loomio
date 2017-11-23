@@ -16,7 +16,7 @@ angular.module('loomioApp').factory 'AnnouncementRecordsInterface', (BaseRecords
           kind: kind
           "#{model.constructor.singular}_id": model.id
 
-    buildFromModel: (model) ->
+    buildFromModel: (model, kind) ->
       @build
         kind: kind
         announceableId:   model.id

@@ -8,4 +8,4 @@ angular.module('loomioApp').factory 'PollCommonStartModal', ($location, Records,
 
     PollService.applyPollStartSequence $scope,
       afterSaveComplete: (poll) ->
-        $scope.announcement = Records.announcements.buildFromModel(poll)
+        $scope.announcement = Records.announcements.buildFromModel(poll, 'poll_created')

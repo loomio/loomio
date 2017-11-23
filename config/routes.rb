@@ -165,6 +165,7 @@ Loomio::Application.routes.draw do
 
     resources :announcements, only: :create do
       get :notified, on: :collection
+      get :notified_default, on: :collection
     end
 
     resources :contact_messages, only: :create
