@@ -298,6 +298,8 @@ ga_IE:
   membership_requests_card:
     heading: 'Iarratais le bheith mar chomhalta'
     manage_requests: Riar na hiarratais
+  documents_page:
+    confirm_remove_title: Bain ceangaltán
   document:
     form:
       title_label: Ainm

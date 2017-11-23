@@ -233,6 +233,8 @@ ru:
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     privacy: 'Конфиденциальность'
     submit_update: 'Обновить настройки'
+  documents_page:
+    confirm_remove_title: Удалить вложение
   document:
     form:
       title_label: Имя

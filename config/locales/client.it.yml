@@ -1,12 +1,45 @@
 it:
+  reactions:
+    slight_smile: Mi piace
+    heart: Amore
+    laughing: Risata
+    clap: Applauso
+    hugging: Abbraccio
+    sunglasses: Fico
+    wink: Occhiolino
+    nerd: Intelligente
+    relieved: Sollevato
+    worried: Preoccupato
+    confused: Confuso
+    confounded: Sconcertato
+    neutral_face: Neutrale
+    slight_frown: Accigliato
+    disappointed: Deluso
+    angry: Arrabbiato
+    weary: Stanco
+    astonished: Stupito
+    rolling_eyes: Occhi roteanti
+    cry: Piangente
+    scream: Urlante
+    sleeping: Annoiato
+    thinking: Pensieroso
+    ok_hand: Ok
+    wave: Onda
   poll_types:
     proposal: Proposta
     count: Controlla
     poll: Sondaggio
     dot_vote: Voto a punti
+    meeting: Sondaggio per incontro
+    ranked_choice: Scelta di preferenze
   timezones:
     local: Ora locale ({{value}})
   common:
+    you: Tu
+    expand: Espandi
+    all_day: Tutto il giorno
+    ok_got_it: Ok, capito
+    learn_more: Per saperne di più
     not_found: Non trovato
     time_zone: Fuso orario
     local_time: Ora locale
@@ -24,6 +57,7 @@ it:
     decisions: 'Decisioni'
     settings: 'Configurazione'
     help: 'Aiuto'
+    anonymous: Anonimo
     privacy:
       privacy: 'Privacy'
       public: 'Pubblico'
@@ -44,7 +78,10 @@ it:
     copy: 'Copia'
     copy_text: 'Copia testo'
     copied: 'Copiato negli appunti'
+    points_abbrev: Ogni voto vale {{score}} punti
+    total: Totale
     action:
+      next: 'Prossimo'
       close: 'Chiudi'
       save: 'Salva'
       save_changes: 'Salva'
@@ -68,8 +105,11 @@ it:
       uploading: 'Caricamento in corso'
       load_more: 'Carica ancora'
       share: Condividi
+      ok: Ok!
+      retry: Riprova
       done: Fatto
       start: Avvio
+      delete: Cancella
     formatting_help:
       label: 'Formattazione'
   devise:
@@ -132,8 +172,8 @@ it:
     aria_label: Silenzia discussione
     mute_thread: Silenzia discussione
     body_html: |
-      <p>Muting significa che <strong>non riceverai notifiche riguardanti le proposte</strong>, o altre attività in questa discussione a meno che qualcuno non ti  <strong>@mentions</strong>.</p>
-      <p>Inoltre, le discussioni silenziate non vengono visualizzate all'interno delle pagine <strong>Recent</strong> e <strong>Unread</strong>. Per trovare le tue discussioni silenziate seleziona l'opzione <strong>Muted</strong>nella sidebar:</p>
+      <p>Silenziare significa che <strong>non riceverai notifiche riguardanti le proposte</strong>, o altre attività in questa discussione a meno che qualcuno non ti  <strong>@menzioni</strong>.</p>
+      <p>Inoltre, le discussioni silenziate non vengono visualizzate all'interno delle pagine <strong>Recenti</strong> e <strong>Non Lette</strong>. Per trovare le tue discussioni silenziate seleziona l'opzione <strong>Silenziate</strong>nella sidebar:</p>
     image_alt: Opzione discussioni silenziate nella colonna laterale
   dismiss_explanation_modal:
     aria_label: Ignora discussione
@@ -164,13 +204,15 @@ it:
       replied: '{{name}} è stato notificato della risposta'
       updated: 'Commento aggiornato'
       destroyed: 'Commento cancellato.'
+    say_something: Scrivi qualcosa...
     edit_comment: 'Modifica commento'
     delete_comment: 'Cancella il commento'
     cancel_reply: 'Annulla risposta'
     confirm_delete_message: 'Sei sicuro che vuoi cancellare questo commento?'
     confirm_delete: 'Cancella commento'
+    in_reply_to: "In risposta a {{name}}:"
     submit_button:
-      label: 'Post'
+      label: 'Messaggio'
     private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
     public_privacy_notice: 'Il tuo commento sarà visibile a qualsiasi persona sul web.'
     sign_in: "Entra per partecipare alla discussione"
@@ -301,6 +343,8 @@ it:
     started_by: 'Iniziato da <strong>{{name}}</strong>'
     edited_by: 'Modificato da <strong>{{name}}</strong>'
     posted: Pubblicato
+  reactions_display:
+    you: "Tu"
   group_page:
     thread_list:
       empty:
@@ -415,6 +459,8 @@ it:
     heading: 'Richieste di partecipazione'
     manage_requests: Gestisci richieste
     manage_requests_with_count: Gestisci richieste ({{count}})
+  documents_page:
+    confirm_remove_title: Rimuovi l'allegato
   document:
     form:
       title_label: Nome
@@ -630,11 +676,17 @@ it:
     invitation: 'Consigli per scrivere un bell''invito '
     proposal: 'Consigli per scrivere una proposta chiara'
     vote: 'Puoi cambiare la tua posizione in ogni momento'
+  registered_apps_page:
+    name: Nome
+  registered_app_form:
+    name_label: Nome
   decision_tools_card:
     proposal_title: Proposta
     count_title: Controlla
     poll_title: Sondaggio
     dot_vote_title: Voto a punti
+    meeting_title: Sondaggio per incontro
+    ranked_choice_title: Scelta di preferenze
   poll_common:
     your_response: La tua risposta
     change_your_response: Cambia la tua risposta
@@ -647,6 +699,7 @@ it:
     statement: Dichiarazione
     change_your_stance: Cambia il tuo voto
     load_more: Caricane altri
+    start_poll: Inizia una decisione
   poll_common_notify_group:
     notify_group: Annuncio
   poll_common_close_form:
@@ -674,6 +727,8 @@ it:
   poll_count_vote_form:
     stance_created: Voto creato
     stance_updated: Voto aggiornato
+  poll_meeting_chart_panel:
+    total: Totale
   poll_poll_vote_form:
     stance_created: Voto creato
     stance_updated: Voto aggiornato
@@ -696,3 +751,5 @@ it:
   polls_page:
     heading: Decisioni
     start_new_poll: Nuova decisione
+  auth_form:
+    name: Nome

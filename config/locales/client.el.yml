@@ -361,6 +361,8 @@ el:
     heading: 'Αιτήσεις εγγραφής μελών'
     manage_requests: Διαχείριση αιτήσεων
     manage_requests_with_count: Διαχείριση αιτήσεων ({{count}})
+  documents_page:
+    confirm_remove_title: Αφαίρεσε συννημένο
   document:
     form:
       title_label: Όνομα

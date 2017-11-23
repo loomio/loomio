@@ -1,4 +1,22 @@
 it:
+  explore:
+    header: Esplora i gruppi pubblici
+  activerecord:
+    errors:
+      messages:
+        blank: non può essere vuoto
+        invalid: non è un valore valido
+  errors:
+    messages:
+      email: Non è un indirizzo email valido
+      spoofed_media_type: I contenuti di questo file non corrispondono al suo nome file
+  attachment:
+    error:
+      too_large: Il file che hai tentato di allegare è più ampio di 100 Megabytes, scegli un file più piccolo.
+  poll:
+    error:
+      cannot_add_options: Impossibile aggiungere opzioni a questo sondaggio
+      cannot_remove_options: Impossibile rimuovere opzioni da questo sondaggio
   email:
     custom: "%{text}"
     group_email:
