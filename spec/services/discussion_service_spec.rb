@@ -38,7 +38,6 @@ describe 'DiscussionService' do
     end
 
     it 'does not email people' do
-      discussion.make_announcement = false
       expect { DiscussionService.create(discussion: discussion, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
 

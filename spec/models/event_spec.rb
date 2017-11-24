@@ -131,7 +131,7 @@ describe Event do
   describe 'poll_closing_soon' do
     describe 'voters_review_responses', focus: true do
       it 'true' do
-        poll = FactoryGirl.build(:poll_proposal, discussion: discussion, make_announcement: true)
+        poll = FactoryGirl.build(:poll_proposal, discussion: discussion)
         PollService.create(poll: poll, actor: discussion.group.admins.first)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
@@ -210,9 +210,7 @@ describe Event do
 
   describe 'poll_expired' do
     it 'notifies the author' do
-      expect { Events::PollExpired.publish!(poll) }.to change { emails_sent }
-      email_users = Events::PollExpired.last.send(:email_recipients)
-      expect(email_users).to be_empty # the author is notified via a separate email
+      expect { Events::PollExpired.publish!(poll) }.to change { emails_sent } # sends an email to the author
 
       notification_users = Events::PollExpired.last.send(:notification_recipients)
       expect(notification_users).to be_empty
@@ -226,43 +224,6 @@ describe Event do
       poll.author = User.helper_bot
       expect { Events::PollExpired.publish!(poll) }.to_not change { ActionMailer::Base.deliveries.count }
     end
-
-    it 'notifies everyone if announcement' do
-      poll.make_announcement = true
-      Events::PollCreated.publish!(poll, poll.author)
-      Events::PollExpired.publish!(poll)
-      event = Events::PollExpired.last
-
-      expect(event.announcement).to eq true
-      email_users = event.send(:email_recipients)
-      email_users.should     include user_thread_loud
-      email_users.should     include user_membership_loud
-
-      email_users.should     include user_membership_normal
-      email_users.should     include user_thread_normal
-
-      email_users.should_not include user_membership_quiet
-      email_users.should_not include user_thread_quiet
-
-      email_users.should_not include user_membership_mute
-      email_users.should_not include user_thread_mute
-      email_users.should_not include user_unsubscribed
-      email_users.should_not include poll.author
-
-      notification_users = event.send(:notification_recipients)
-      notification_users.should     include user_thread_loud
-      notification_users.should     include user_membership_loud
-
-      notification_users.should     include user_membership_normal
-      notification_users.should     include user_thread_normal
-
-      notification_users.should     include user_membership_quiet
-      notification_users.should     include user_thread_quiet
-
-      notification_users.should     include user_membership_mute
-      notification_users.should     include user_thread_mute
-      notification_users.should_not include poll.author
-    end
   end
 
   describe 'poll_option_added' do
@@ -273,7 +234,6 @@ describe Event do
 
     it 'makes an announcement to participants' do
       FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-      poll.make_announcement = true
       guest_stance = create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: guest_user)
       expect { Events::PollOptionAdded.publish!(poll, poll.author, ["new_option"]) }.to change { emails_sent }
       email_users = Events::PollOptionAdded.last.send(:email_recipients)
@@ -329,17 +289,6 @@ describe Event do
     it 'notifies mentioned users' do
       expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }.by(1)
       expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_mentioned.id
-    end
-
-    it 'can send an ical attachment' do
-      outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
-      outcome.make_announcement = true
-      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
-      mail = ActionMailer::Base.deliveries.last
-      expect(mail.attachments).to have(1).attachment
-      expect(mail.attachments.first).to be_a Mail::Part
-      expect(mail.attachments.first.content_type).to match /text\/calendar/
-      expect(mail.attachments.first.filename).to eq 'meeting.ics'
     end
   end
 
@@ -424,6 +373,17 @@ describe Event do
     it 'notifies the author if the eventable is an appropriate outcome' do
       announcement.update(announceable: outcome)
       expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(1) # the two notified_ids, plus the author
+    end
+
+    it 'can send an ical attachment with an outcome' do
+      outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
+      announcement.update(announceable: outcome)
+      expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }
+      mail = ActionMailer::Base.deliveries.last
+      expect(mail.attachments).to have(1).attachment
+      expect(mail.attachments.first).to be_a Mail::Part
+      expect(mail.attachments.first.content_type).to match /text\/calendar/
+      expect(mail.attachments.first.filename).to eq 'meeting.ics'
     end
   end
 end

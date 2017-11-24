@@ -10,8 +10,9 @@ class Events::PollOptionAdded < Event
 
   private
 
+  # TODO: make poll options added an announcement as well
   def notification_recipients
-    if announcement then poll.participants else User.none end
+    poll.participants
   end
   alias :email_recipients :notification_recipients
 end

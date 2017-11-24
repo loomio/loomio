@@ -1,5 +1,6 @@
 class Events::PollExpired < Event
   include Events::Notify::Author
+  include Events::Notify::InApp
   include Events::Notify::ThirdParty
 
   def self.publish!(poll)
