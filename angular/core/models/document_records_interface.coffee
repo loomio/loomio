@@ -13,3 +13,8 @@ angular.module('loomioApp').factory 'DocumentRecordsInterface', (BaseRecordsInte
         params:
           group_key: group.key
           q:         query
+
+    buildFromModel: (model) ->
+      @build
+        modelId:   model.id
+        modelType: _.capitalize model.constructor.singular
