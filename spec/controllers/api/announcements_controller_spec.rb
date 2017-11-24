@@ -46,7 +46,7 @@ describe API::AnnouncementsController do
         expect { post :create, announcement: announcement_params }.to change { Announcement.count }.by(1)
         expect(response.status).to eq 200
         a = Announcement.last
-        expect(poll.reload.announcement_count).to eq 1
+        expect(poll.reload.announcements_count).to eq 1
         expect(a.users).to include another_user
         expect(a.users).to include a_third_user
         expect(a.users).to include a_fourth_user
@@ -103,10 +103,10 @@ describe API::AnnouncementsController do
     end
 
     describe 'outcome' do
-      let(:outcome) { create :outcome, poll: poll }
-      let(:poll) { create :poll }
+      let(:outcome) { create :outcome, poll: poll, author: user }
+      let(:poll) { create :poll, author: user }
       let(:announcement_params) {{
-        anounceable_type: "Outcome",
+        announceable_type: "Outcome",
         announceable_id:  outcome.id
       }}
 
@@ -115,7 +115,7 @@ describe API::AnnouncementsController do
         expect { post :create, announcement: announcement_params }.to change { Announcement.count }.by(1)
         expect(response.status).to eq 200
         a = Announcement.last
-        expect(outcome.reload.announcement_count).to eq 1
+        expect(outcome.reload.announcements_count).to eq 1
         expect(a.users).to include another_user
         expect(a.users).to include a_third_user
         expect(a.users).to include a_fourth_user

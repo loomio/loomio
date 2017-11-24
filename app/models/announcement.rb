@@ -11,7 +11,7 @@ class Announcement < ActiveRecord::Base
   delegate :poll, to: :announceable
   delegate :body, to: :announceable
 
-  update_counter_cache :announceable, only: [:create, :destroy]
+  update_counter_cache :announceable, :announcements_count, only: [:create, :destroy]
 
   alias :user :author
   attr_accessor :invitation_emails
