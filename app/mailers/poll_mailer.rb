@@ -27,7 +27,7 @@ class PollMailer < BaseMailer
       action_name: action_name
     )
 
-    if event.eventable.respond_to?(:calendar_invite) && invite = event.eventable.calendar_invite
+    if invite = event.calendar_invite
       attachments['meeting.ics'] = {
         content_type:              'text/calendar',
         content_transfer_encoding: 'base64',

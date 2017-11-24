@@ -36,6 +36,10 @@ class Event < ActiveRecord::Base
     EventBus.broadcast("#{kind}_event", self)
   end
 
+  def calendar_invite
+    nil # only for announcement_created events for outcomes
+  end
+
   def self.publish!(eventable, **args)
     build(eventable, **args).tap(&:save!).tap(&:trigger!)
   end

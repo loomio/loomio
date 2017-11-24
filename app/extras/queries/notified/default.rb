@@ -18,6 +18,7 @@ Queries::Notified::Default = Struct.new(:kind, :model, :user) do
   alias :discussion_edited :notified_group
   alias :poll_created      :notified_group
   alias :poll_edited       :notified_participants
+  alias :poll_option_added :notified_participants
   alias :outcome_created   :notified_group
 
 end

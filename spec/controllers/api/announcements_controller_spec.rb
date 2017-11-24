@@ -218,6 +218,18 @@ describe API::AnnouncementsController do
       expect(json[0]['notified_ids']).to_not include user.id
     end
 
+    it 'gives back the poll participants for a poll_option_added event' do
+      Stance.create!(poll: poll, participant: user, choice: :agree)
+      Stance.create!(poll: poll, participant: a_fourth_user, choice: :agree)
+
+      get :notified_default, kind: :poll_option_added, poll_id: poll.id
+      json = JSON.parse(response.body)
+      expect(json.length).to eq 1
+      expect(json[0]['notified_ids']).to_not include another_user.id
+      expect(json[0]['notified_ids']).to include a_fourth_user.id
+      expect(json[0]['notified_ids']).to_not include user.id
+    end
+
     it 'gives back the group members for a new_discussion event' do
       get :notified_default, kind: :new_discussion, discussion_id: discussion.id
       json = JSON.parse(response.body)

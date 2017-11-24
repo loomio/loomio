@@ -10,7 +10,6 @@ class Announcement < ActiveRecord::Base
   delegate :discussion, to: :announceable
   delegate :poll, to: :announceable
   delegate :body, to: :announceable
-  delegate :calendar_invite, to: :announceable
 
   update_counter_cache :announceable, :announcements_count, only: [:create, :destroy]
 
