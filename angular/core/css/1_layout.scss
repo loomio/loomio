@@ -19,6 +19,7 @@
 
 .lmo-two-column-layout{
   max-width: $max-container-size;
+  padding-top: 48px;
 }
 
 .lmo-row{
@@ -37,14 +38,10 @@
 .lmo-main-background {
   position: absolute;
   width: 100%;
-}
-
-.lmo-group-background {
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
-  height: 0;
-  padding-top: 22.85%;
+  height: 320px;
 }
 
 @media(max-width: $tiny-max-px) {
@@ -100,9 +97,6 @@
   }
   .lmo-thread-column-left {
     width: percentage(1 - $large-right-col-ratio);
-  }
-  .lmo-two-column-layout{
-    margin-top: -54px;
   }
 }
 
