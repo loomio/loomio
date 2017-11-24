@@ -7,7 +7,6 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 320px;
   z-index: $z-zero;
   &:hover .group-theme__upload-photo {
     button { background: $background-transparent-color; }
@@ -16,9 +15,10 @@
 }
 
 .group-theme__header{
+  display:flex;
   width: 100%;
   position: relative;
-  min-height: 335px;
+  margin: 0 0 15px;
 }
 
 .group-theme__member-actions button{
@@ -27,7 +27,7 @@
 
 .group-theme__header--compact {
   position: relative;
-  margin: 215px 0 15px;
+  margin: 15px 0 15px;
 }
 
 .group-theme__header--compact img {
@@ -36,8 +36,6 @@
 }
 
 .group-theme__logo{
-  position: relative;
-  top: 215px;
   width: 108px;
   height: 108px;
   background: url('http://placehold.it/100x100') no-repeat top center white;
@@ -55,9 +53,9 @@
 
 .group-theme__name-and-actions{
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 175px;
+  align-items: flex-end;
 }
 
 @media (max-width: $small-max-px){
@@ -70,7 +68,6 @@
 
 .group-theme__actions {
   display: flex;
-  margin-left: auto;
 }
 
 .group-theme__member-actions{
@@ -78,7 +75,7 @@
 }
 
 .group-theme__name {
-  margin-left: 108px + 15px;
+  margin-left: 15px;
   margin-right: 10px;
   a {
     color: $primary-text-color;
@@ -126,3 +123,4 @@
   @include fontTiny;
   color: $primary-text-color;
 }
+
