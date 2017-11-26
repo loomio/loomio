@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'OutcomeModel', (BaseModel, HasDrafts, AppConfig, MentionLinkService) ->
+angular.module('loomioApp').factory 'OutcomeModel', (BaseModel, HasDrafts, HasDocuments, AppConfig, MentionLinkService) ->
   class OutcomeModel extends BaseModel
     @singular: 'outcome'
     @plural: 'outcomes'
@@ -9,26 +9,11 @@ angular.module('loomioApp').factory 'OutcomeModel', (BaseModel, HasDrafts, AppCo
 
     defaultValues: ->
       statement: ''
-      newAttachmentIds: []
       customFields: {}
 
     afterConstruction: ->
-      @newAttachmentIds = _.clone(@attachmentIds) or []
       HasDrafts.apply @
-
-    serialize: ->
-      data = @baseSerialize()
-      data.outcome.attachment_ids = @newAttachmentIds
-      data
-
-    newAttachments: ->
-      @recordStore.attachments.find(@newAttachmentIds)
-
-    attachments: ->
-      @recordStore.attachments.find(attachableId: @id, attachableType: 'Outcome')
-
-    hasAttachments: ->
-      _.some @attachments()
+      HasDocuments.apply @
 
     relationships: ->
       @belongsTo 'author', from: 'users'

@@ -31,15 +31,9 @@ angular.module('loomioApp').factory 'PollModel', (BaseModel, HasDocuments, HasDr
       title: ''
       details: ''
       closingAt: moment().add(3, 'days').startOf('hour')
-      newDocumentIds: []
       pollOptionNames: []
       pollOptionIds: []
       customFields: {}
-
-    serialize: ->
-      data = @baseSerialize()
-      data.poll.document_ids = @newDocumentIds
-      data
 
     relationships: ->
       @belongsTo 'author', from: 'users'
