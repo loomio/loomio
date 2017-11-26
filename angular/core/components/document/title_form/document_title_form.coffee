@@ -4,7 +4,8 @@ angular.module('loomioApp').directive 'documentTitleForm', (Records, FormService
   controller: ($scope) ->
     $scope.submit = FormService.submit $scope, $scope.document,
       flashSuccess: "document.flash.success"
-      successCallback: -> $scope.$emit 'nextStep'
+      successCallback: (data) ->
+        $scope.$emit 'nextStep', Records.documents.find(data.documents[0].id)
 
     $scope.remove = ->
       ModalService.open ConfirmModal,

@@ -10,16 +10,19 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     draftParent: ->
       @discussion() or @author()
 
-    afterConstruction: ->
-      @newAttachmentIds = _.clone(@attachmentIds) or []
-
     poll: -> @
 
     documents: ->
       @recordStore.documents.find(modelId: @id, modelType: "Poll")
 
+    newDocuments: ->
+      @recordStore.documents.find(@newDocumentIds)
+
+    newAndPersistedDocuments: ->
+      @documents().concat @newDocuments()
+
     hasDocuments: ->
-      @documents().length > 0
+      @newAndPersistedDocuments().length > 0
 
     # the polls which haven't closed have the highest importance
     # (and so have the lowest value here)
@@ -36,13 +39,14 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       title: ''
       details: ''
       closingAt: moment().add(3, 'days').startOf('hour')
+      newDocumentIds: []
       pollOptionNames: []
       pollOptionIds: []
       customFields: {}
 
     serialize: ->
       data = @baseSerialize()
-      data.poll.attachment_ids = @newAttachmentIds
+      data.poll.document_ids = @newDocumentIds
       data
 
     relationships: ->
@@ -56,15 +60,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     reactions: ->
       @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
-
-    newAttachments: ->
-      @recordStore.attachments.find(@newAttachmentIds)
-
-    attachments: ->
-      @recordStore.attachments.find(attachableId: @id, attachableType: 'Poll')
-
-    hasAttachments: ->
-      _.some @attachments()
 
     announcementSize: (action) ->
       return @group().announcementRecipientsCount if @group() and @isNew()

@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-  belongs_to :model, polymorphic: true, required: true
+  belongs_to :model, polymorphic: true, required: false
   belongs_to :author, class_name: 'User', required: true
   validates :url, presence: true
   validates :title, presence: true

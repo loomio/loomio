@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'SequenceService', ->
           # don't bubble the event
           args[0].stopPropagation() if typeof (args[0] or {}).stopPropagation is 'function'
           # emit a close event if we've run out of steps
-          emitter.$emit '$close' if !scope.currentStep
+          emitter.$emit '$close' if !scope.currentStep and !options.skipClose
 
       scope.steps = if typeof options.steps is 'function' then options.steps() else options.steps
       scope.currentStep = options.initialStep or _.first(scope.steps)

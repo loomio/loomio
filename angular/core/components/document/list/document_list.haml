@@ -2,7 +2,7 @@
   %h3.document-list__heading.lmo-card-heading{translate: "document.list.title"}
   %p.lmo-hint-text.md-caption{ng-if: "!model.hasDocuments()", translate: "document.list.no_{{model.constructor.singular}}_documents"}
   .document-list__documents.md-block.lmo-flex{layout: "column"}
-    .document-list__document.lmo-flex{layout: "column", ng-repeat: "document in model.documents() track by document.id"}
+    .document-list__document.lmo-flex{layout: "column", ng-repeat: "document in model.newAndPersistedDocuments() track by document.id"}
       .document-list__entry.lmo-flex.lmo-flex__center{layout: "row"}
         %i.mdi.lmo-margin-right{class: "mdi-{{document.icon}}", ng-style: "{color: document.color}"}>
         %a.lmo-pointer.lmo-relative.lmo-truncate.lmo-flex{href: "{{document.url}}", target: "_blank"}
