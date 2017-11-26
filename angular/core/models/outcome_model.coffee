@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, MentionLinkService) ->
-  class OutcomeModel extends DraftableModel
+angular.module('loomioApp').factory 'OutcomeModel', (BaseModel, HasDrafts, AppConfig, MentionLinkService) ->
+  class OutcomeModel extends BaseModel
     @singular: 'outcome'
     @plural: 'outcomes'
     @indices: ['pollId', 'authorId']
@@ -14,6 +14,7 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []
+      HasDrafts.apply @
 
     serialize: ->
       data = @baseSerialize()

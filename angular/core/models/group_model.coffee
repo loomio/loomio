@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
-  class GroupModel extends DraftableModel
+angular.module('loomioApp').factory 'GroupModel', (BaseModel, HasDrafts, AppConfig) ->
+  class GroupModel extends BaseModel
     @singular: 'group'
     @plural: 'groups'
     @uniqueIndices: ['id', 'key']
@@ -30,6 +30,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     afterConstruction: ->
       if @privacyIsClosed()
         @allowPublicThreads = @discussionPrivacyOptions == 'public_or_private'
+      HasDrafts.apply @
 
     relationships: ->
       @hasMany 'discussions'

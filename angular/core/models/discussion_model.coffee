@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfig) ->
-  class DiscussionModel extends DraftableModel
+angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments, HasDrafts, AppConfig) ->
+  class DiscussionModel extends BaseModel
     @singular: 'discussion'
     @plural: 'discussions'
     @uniqueIndices: ['id', 'key']
@@ -10,7 +10,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     afterConstruction: ->
       @private = @privateDefaultValue() if @isNew()
-      @newAttachmentIds = _.clone(@attachmentIds) or []
+      HasDocuments.apply @
+      HasDrafts.apply @
 
     defaultValues: =>
       private: null
@@ -23,7 +24,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     serialize: ->
       data = @baseSerialize()
-      data.discussion.attachment_ids = @newAttachmentIds
+      data.discussion.document_ids = @newDocumentIds
       data
 
     privateDefaultValue: =>
@@ -154,15 +155,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     edited: ->
       @versionsCount > 1
-
-    newAttachments: ->
-      @recordStore.attachments.find(@newAttachmentIds)
-
-    attachments: ->
-      @recordStore.attachments.find(attachableId: @id, attachableType: 'Discussion')
-
-    hasAttachments: ->
-      _.some @attachments()
 
     attributeForVersion: (attr, version) ->
       return '' unless version

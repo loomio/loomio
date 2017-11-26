@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, MentionLinkService) ->
-  class PollModel extends DraftableModel
+angular.module('loomioApp').factory 'PollModel', (BaseModel, HasDocuments, HasDrafts, AppConfig, MentionLinkService) ->
+  class PollModel extends BaseModel
     @singular: 'poll'
     @plural: 'polls'
     @indices: ['discussionId', 'authorId']
@@ -7,22 +7,14 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     @draftParent: 'draftParent'
     @draftPayloadAttributes: ['title', 'details']
 
+    afterConstruction: ->
+      HasDocuments.apply @
+      HasDrafts.apply @
+
     draftParent: ->
       @discussion() or @author()
 
     poll: -> @
-
-    documents: ->
-      @recordStore.documents.find(modelId: @id, modelType: "Poll")
-
-    newDocuments: ->
-      @recordStore.documents.find(@newDocumentIds)
-
-    newAndPersistedDocuments: ->
-      @documents().concat @newDocuments()
-
-    hasDocuments: ->
-      @newAndPersistedDocuments().length > 0
 
     # the polls which haven't closed have the highest importance
     # (and so have the lowest value here)

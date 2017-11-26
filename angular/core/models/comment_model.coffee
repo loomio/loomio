@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) ->
-  class CommentModel extends DraftableModel
+angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, AppConfig) ->
+  class CommentModel extends BaseModel
     @singular: 'comment'
     @plural: 'comments'
     @indices: ['discussionId', 'authorId']
@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []
+      HasDrafts.apply @
 
     defaultValues: ->
       usesMarkdown: true
