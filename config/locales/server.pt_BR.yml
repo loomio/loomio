@@ -63,6 +63,8 @@ pt_BR:
     error:
       all_email_addresses_belong_to_members: "Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo."
   password_reset:
+    change_your_password: Mude sua senha
+    change_my_password: Mudar senha
     reset_email_timeframe: Poderá demorar até 5 minutos para o e-mail chegar. Se não aparecer, certifique-se de verificar sua pasta de spam.
     length_restriction: Senhas devem ter pelo menos 8 caracteres.
     forbidden_passwords: Senhas comuns como, por exemplo, “senha” são proibidas para manter a sua conta segura.

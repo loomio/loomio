@@ -17,6 +17,10 @@ it:
     error:
       cannot_add_options: Impossibile aggiungere opzioni a questo sondaggio
       cannot_remove_options: Impossibile rimuovere opzioni da questo sondaggio
+      must_have_options: Ci deve essere almeno una opzione di sondaggio
+  stance:
+    error:
+      too_short: Fai una selezione
   email:
     custom: "%{text}"
     group_email:
@@ -50,4 +54,5 @@ it:
     forbidden_passwords: Le password banali come "password" sono vietate per tenere al sicuro il vostro account.
   poll_mailer:
     common:
+      unsubscribe: Discriviti
       results: Risultati

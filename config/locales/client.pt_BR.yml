@@ -48,6 +48,7 @@ pt_BR:
     more_help: 'Mais ajuda'
     models:
       proposal: 'Proposta'
+    copy: 'Copia'
     copy_text: 'Copiar texto'
     copied: 'Copiado para o clipboard'
     total: Total
@@ -220,6 +221,9 @@ pt_BR:
     logo_title: 'Início'
   user_dropdown:
     edit_profile: 'Editar perfil'
+    email_settings: 'Configurações de email'
+    help: 'Ajuda'
+    contact_site_name: 'Contato {{site_name}}'
   start_menu:
     label: 'Ações do usuário'
     title: 'Ação'
@@ -258,6 +262,18 @@ pt_BR:
     privacy_public: 'Qualquer um pode ver o tópico. Apenas membros podem participar.'
     privacy_private: 'A discussão será visível apenas para os membros de {{group}}.'
     privacy_organisation: 'A discussão será visível para os membros de {{parent}} e membros de {{group}}.'
+    make_announcement: Anúncio
+  action_dock:
+    add_resource: Adicionar como anexo
+    add_comment: 'Comentario '
+    edit_thread: Editar contexto
+    translate_thread: Traduzir contexto
+    edit_stance: Mudar seu voto
+    translate_stance: Traduzir voto
+    edit_comment: 'Editar comentário '
+    delete_comment: Deletar comentário 
+    reply_to_comment: Responder
+    translate_comment: 'Traduzir comentario '
   cover_photo_form:
     aria_label: 'Formulário de modificação da foto de capa'
     heading: 'Nova foto da capa'
@@ -429,12 +445,21 @@ pt_BR:
     manage_requests_with_count: Gerenciar solicitações ({{count}})
   documents_page:
     title: Anexos
+    fragment_placeholder: Procurar anexos
+    add_document: Adicionar anexo
     confirm_remove_title: Remover anexo
+    document_removed: Anexo removido
   document:
     list:
       title: Anexos
+    modal:
+      title: Adicionar como anexo
     form:
+      enter_url: Entre uma URL
       title_label: Nome
+    flash:
+      success: Anexo salvo
+      destroyed: Anexo removido
   membership_requests_page:
     heading: Solicitações para inclusão de membros
     approve: Aprovar
@@ -455,6 +480,7 @@ pt_BR:
     group: 'Grupo'
     group_placeholder: 'Selecionar um grupo'
     shareable_link: 'Link compartilhável'
+    copy_link: 'Copia'
     email_addresses: 'Endereço de e-mail'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Copie o link e envie para todos que queiram participar do grupo. Isso permitirá que eles tenham acesso a todos os tópicos do grupo.'
@@ -494,6 +520,7 @@ pt_BR:
   remove_membership_form:
     aria_label: 'Remover membro'
     title: 'Remover membro'
+    question: 'Você tem certeza que quer remover {{name}} de {{group}}?'
     submit: 'Remover'
   pending_invitations_card:
     heading: Convites pendentes
@@ -507,6 +534,15 @@ pt_BR:
     cancel: 'Não'
     messages:
       success: Convite cancelado
+  user_page:
+    contact_user: 'Contato {{name}}'
+    location_field: 'Local: {{value}}'
+    online_field: 'Online: {{value}}'
+  contact_request_form:
+    modal_title: "Email {{name}}"
+    message_placeholder: Se apresente e compartilhe porquê você gostaria de entrar em contato.
+    helptext: "{{name}} receberá um email com seu nome, endereço de email e mensagem "
+    email_sent: "Email enviado a {{name}}"
   profile_page:
     messages:
       updated: 'Perfil atualizado'
@@ -521,25 +557,34 @@ pt_BR:
     name_label: 'Nome'
     username_label: 'Nome de usuário'
     email_label: 'E-mail'
+    short_bio_label: 'Apresentação'
     locale_label: 'Idioma'
     update_profile: 'Atualizar perfil'
     deactivate_account: 'Desativar conta'
+    help_translate: "Nos ajude a traduzir a Loomio"
   change_picture_form:
     aria_label: 'Formulário para mudar foto'
     title: 'Mudar foto'
     use_initials: 'Usar iniciais'
     use_gravatar: 'Usar gravatar'
     use_uploaded: 'Enviar uma nova foto'
+  change_password_form:
+    change_password_title: Mude sua senha
+    change_password: Mudar senha
+    password_changed: Sua senha foi atualizada
   deactivation_modal:
     aria_label: 'Desativar conta'
     introduction: 'Quando você desativa sua conta:'
     no_longer_group_member: 'Você deixará de ser listado como membro de todos os grupos'
     name_removed: 'Comentários, propostas e discussões feitas por você permanecerão, mas seu nome será removido dos mesmos'
+    no_emails: 'Você não receberá mais notificações por email'
     contact_for_reactivation: 'Você precisará entrar em contato conosco para reativar sua conta'
     submit: 'Sim, eu quero desativar'
   deactivate_user_form:
     aria_label: 'Confirmação de desativação da conta'
     title: 'Desativar conta'
+    question: 'Você pode nos contar porque está desativando?'
+    placeholder: 'Responder a essa pergunta é opcional. Qualquer informação que você possa compartilhar irá nos ajudar a melhorar :) '
     submit: 'Desativar conta'
   only_coordinator_modal:
     aria_label: 'Não foi possível desativar a conta'
@@ -549,6 +594,7 @@ pt_BR:
     header: Configurações de e-mail
     all_groups: Configurações para todos os grupos
     daily_summary_label: E-mail de resumo diário
+    daily_summary_description: "Toda manhã você receberá um email com qualquer atividade que você não viu no dia anterior. Isso facilita com que você fique atualizado(a) com as atividades que estão rolando."
     on_participation_label: Inscrever-se na participação
     on_participation_description: "Quando você participar de uma discussão, todas as atividades serão enviadas por e-mail para você imediatamente."
     mentioned_label: Menções
@@ -649,6 +695,7 @@ pt_BR:
     move_thread: 'Mover'
     print_thread: 'Imprimir'
     delete_thread: 'Apagar'
+    add_comment: 'Comentario '
   delete_thread_form:
     aria_label: 'Apagar tópico'
     title: Apagar tópico
@@ -803,11 +850,13 @@ pt_BR:
     participant_name: Seu nome
     participant_email: Endereço de e-mail
     share_proposal: Compartilhar proposta
+    start_poll: Inicie uma decisão
   poll_common_attachment_form:
     label: Anexos
   poll_common_card:
     show_results: Mostrar resultados
   poll_common_notify_group:
+    notify_group: Anúncio
     members_helptext: Seu grupo não será notificado
     members_count: "{{count}} pessoas serão notificadas"
   poll_common_close_form:
