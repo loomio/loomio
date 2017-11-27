@@ -27,8 +27,6 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiSe
       ).save().then (data) ->
         $scope.model.newDocumentIds.push data.documents[0].id
 
-      console.log(file)
-
     $scope.$on 'documentAdded', (_, doc) ->
       $scope.model.newDocumentIds.push doc.id
 

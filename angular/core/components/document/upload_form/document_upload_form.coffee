@@ -38,6 +38,3 @@ angular.module('loomioApp').directive 'documentUploadForm', (Records) ->
       $scope.files = $scope.currentUpload = null
       $scope.percentComplete = 0
     $scope.reset()
-
-    $scope.$on 'filePasted', (event, file) ->
-      $scope.files = [file]
