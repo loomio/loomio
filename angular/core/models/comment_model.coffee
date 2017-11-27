@@ -1,21 +1,20 @@
-angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, AppConfig) ->
+angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, HasDocuments, AppConfig) ->
   class CommentModel extends BaseModel
     @singular: 'comment'
     @plural: 'comments'
     @indices: ['discussionId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.comment
     @draftParent: 'discussion'
-    @draftPayloadAttributes: ['body', 'attachment_ids']
+    @draftPayloadAttributes: ['body', 'document_ids']
 
     afterConstruction: ->
-      @newAttachmentIds = _.clone(@attachmentIds) or []
       HasDrafts.apply @
+      HasDocuments.apply @
 
     defaultValues: ->
       usesMarkdown: true
       discussionId: null
       body: ''
-      attachmentIds:      []
       mentionedUsernames: []
 
     relationships: ->
@@ -23,11 +22,6 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, AppCo
       @belongsTo 'discussion'
       @belongsTo 'parent', from: 'comments', by: 'parentId'
       @hasMany  'versions', sortBy: 'createdAt'
-
-    serialize: ->
-      data = @baseSerialize()
-      data.comment.attachment_ids = @newAttachmentIds
-      data
 
     reactions: ->
       @recordStore.reactions.find
@@ -51,12 +45,6 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, AppCo
 
     reactors: ->
       @recordStore.users.find(_.pluck(@reactions(), 'userId'))
-
-    newAttachments: ->
-      @recordStore.attachments.find(@newAttachmentIds)
-
-    attachments: ->
-      @recordStore.attachments.find(attachableId: @id, attachableType: _.capitalize(@constructor.singular))
 
     authorName: ->
       @author().name

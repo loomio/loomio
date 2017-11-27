@@ -5,13 +5,5 @@ angular.module('loomioApp').directive 'documentList', (Records, AbilityService, 
   controller: ($scope) ->
     Records.documents.fetchByModel($scope.model) unless $scope.model.isNew()
 
-    $scope.canEditDocuments = ->
-      !$scope.model.isNew()
-      $scope.model.constructor.singular == 'discussion' and
-      AbilityService.canEditDocument($scope.model.group())
-
     $scope.edit = (doc, $mdMenu) ->
       $scope.$broadcast 'initializeDocument', doc, $mdMenu
-
-    $scope.remove = (doc) ->
-      $scope.$emit 'removeDocument', doc

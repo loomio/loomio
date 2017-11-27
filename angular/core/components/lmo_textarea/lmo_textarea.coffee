@@ -20,9 +20,8 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiSe
     $scope.addDocument = ($mdMenu) ->
       $scope.$broadcast 'initializeDocument', Records.documents.buildFromModel($scope.model), $mdMenu
 
-    $scope.$on 'documentUploaded', (_, doc) ->
+    $scope.$on 'documentAdded', (_, doc) ->
       $scope.model.newDocumentIds.push doc.id
 
-    $scope.$on 'removeDocument', (_, doc) ->
-      $scope.removedDocumentIds.push doc.id
-      $scope.model.newDocumentIds.splice ids.indexOf(doc.id), 1
+    $scope.$on 'documentRemoved', (_, doc) ->
+      $scope.model.removedDocumentIds.push doc.id
