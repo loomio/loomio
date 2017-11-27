@@ -18,7 +18,7 @@ class PermittedParams < Struct.new(:params)
 
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
-     :remember_me, :uploaded_avatar, :username, :uses_markdown, :short_bio, :location,
+     :remember_me, :uploaded_avatar, :username, :short_bio, :location,
      :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
      :email_missed_yesterday, :deactivation_response, :has_password, :has_token, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation,
@@ -45,7 +45,7 @@ class PermittedParams < Struct.new(:params)
 
   def outcome_attributes
     [:statement, :poll_id, :poll_option_id, :make_announcement,
-     :attachment_ids, {attachment_ids: []},
+     :document_ids, {document_ids: []},
      :custom_fields, custom_fields: [:event_location, :event_summary, :event_description]]
   end
 
@@ -82,12 +82,11 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_attributes
-    [:title, :description, :uses_markdown, :group_id, :private, :iframe_src, :make_announcement,
-     :document_ids, {document_ids: []}]
+    [:title, :description, :group_id, :private, :make_announcement, :document_ids, {document_ids: []}]
   end
 
   def comment_attributes
-    [:body, :attachment_ids, :uses_markdown, :discussion_id, :parent_id, {attachment_ids: []}]
+    [:body, :attachment_ids, :discussion_id, :parent_id, :document_ids, {document_ids: []}]
   end
 
   def reaction_attributes
