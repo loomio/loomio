@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'GroupModel', (BaseModel, HasDrafts, AppConfig) ->
+angular.module('loomioApp').factory 'GroupModel', (BaseModel, HasDrafts, HasDocuments, AppConfig) ->
   class GroupModel extends BaseModel
     @singular: 'group'
     @plural: 'groups'
@@ -31,6 +31,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, HasDrafts, AppConf
       if @privacyIsClosed()
         @allowPublicThreads = @discussionPrivacyOptions == 'public_or_private'
       HasDrafts.apply @
+      HasDocuments.apply @
 
     relationships: ->
       @hasMany 'discussions'
@@ -47,15 +48,6 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, HasDrafts, AppConf
       if @isParent() then @ else @parent()
 
     group: -> @
-
-    documents: ->
-      @recordStore.documents.find(modelType: 'Group', modelId: @id)
-
-    hasDocuments: (inThreads) ->
-      if (inThreads)
-        @allDocuments().length > 0
-      else
-        @documents().length > 0
 
     shareableInvitation: ->
       @recordStore.invitations.find(singleUse:false, groupId: @id)[0]
