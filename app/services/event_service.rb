@@ -10,13 +10,16 @@ class EventService
   def self.readd_to_thread(kind:)
     Event.where(kind: kind, discussion_id: nil).where("sequence_id is not null").find_each do |event|
       next unless event.eventable
-      bumped_event_count = Event.where(discussion_id: event.eventable.discussion_id)
-           .where("sequence_id >= ?", event.sequence_id)
-           .update_all("sequence_id = sequence_id+1")
-      if bumped_event_count > 0
-        event.update_attribute(:discussion_id, event.eventable.discussion_id)
-        event.reload.discussion.update_sequence_info!
+
+      if Event.exists?(sequence_id: event.sequence_id, discussion_id: event.eventable.discussion_id)
+        Event.where(discussion_id: event.eventable.discussion_id)
+             .where("sequence_id >= ?", event.sequence_id)
+             .order(sequence_id: :desc)
+             .each { |event| event.increment!(:sequence_id) }
       end
+
+      event.update_attribute(:discussion_id, event.eventable.discussion_id)
+      event.reload.discussion.update_sequence_info!
     end
   end
 end
