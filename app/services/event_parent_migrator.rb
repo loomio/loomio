@@ -29,7 +29,7 @@ class EventParentMigrator
       if created_event = comment.created_event
         next if created_event.parent_id
         next unless comment.discussion.author
-        unless created_event.parent = comment.discussion.created_event
+        if created_event.parent = comment.discussion.created_event
           created_event.save
         end
       end
