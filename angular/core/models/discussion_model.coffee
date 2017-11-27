@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments, HasDrafts, AppConfig) ->
+angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments, HasDrafts, AppConfig, RangeSet) ->
   class DiscussionModel extends BaseModel
     @singular: 'discussion'
     @plural: 'discussions'
@@ -16,8 +16,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments,
     defaultValues: =>
       private: null
       usesMarkdown: true
-      lastSequenceId: 0
-      firstSequenceId: 0
       lastItemAt: null
       title: ''
       description: ''
@@ -38,6 +36,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments,
       @hasMany 'versions', sortBy: 'createdAt'
       @belongsTo 'group'
       @belongsTo 'author', from: 'users'
+      @belongsTo 'createdEvent', from: 'events'
 
     discussion: ->
       @
@@ -85,9 +84,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments,
     hasDescription: ->
       !!@description
 
-    unreadActivityCount: ->
-      @salientItemsCount - @readSalientItemsCount
-
     requireReloadFor: (event) ->
       return false if !event or event.discussionId != @id or event.sequenceId
       _.find @events(), (e) -> e.kind == 'new_comment' and e.eventable.id == event.eventable.id
@@ -122,15 +118,47 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments,
     isMuted: ->
       @volume() == 'mute'
 
-    update: (attrs) ->
-      delete attrs.lastReadSequenceId    if attrs.lastReadSequenceId < @lastReadSequenceId
-      delete attrs.readSalientItemsCount if attrs.readSalientItemsCount < @readSalientItemsCount
-      @baseUpdate(attrs)
-
     markAsSeen: ->
       return unless @discussionReaderId and !@lastReadAt
       @remote.patchMember @keyOrId(), 'mark_as_seen'
-      @update(lastReadAt: moment(), lastReadSequenceId: 0)
+      @update(lastReadAt: moment())
+
+    markAsRead: (id) ->
+      return if @hasRead(id)
+      @readRanges.push([id,id])
+      @readRanges = RangeSet.reduce(@readRanges)
+      @updateReadRanges()
+
+    updateReadRanges: _.throttle ->
+      @remote.patchMember @keyOrId(), 'mark_as_read', ranges: RangeSet.serialize(@readRanges)
+    , 2000
+
+    unreadActivityCount: ->
+      @itemsCount - @readItemsCount()
+
+    hasRead: (id) ->
+      RangeSet.includesValue(@readRanges, id)
+
+    unreadRanges: ->
+      RangeSet.subtractRanges(@ranges, @readRanges)
+
+    unreadItemsCount: ->
+      @itemsCount - @readItemsCount()
+
+    readItemsCount: ->
+      RangeSet.length(@readRanges)
+
+    firstSequenceId: ->
+      (_.first(@ranges) || [])[0]
+
+    lastSequenceId: ->
+      (_.last(@ranges) || [])[1]
+
+    lastReadSequenceId: ->
+      (_.last(@readRanges) || [])[1]
+
+    firstUnreadSequenceId: ->
+      (_.first(@unreadRanges()) || [])[0]
 
     dismiss: ->
       @remote.patchMember @keyOrId(), 'dismiss'

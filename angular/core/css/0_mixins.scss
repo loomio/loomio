@@ -14,38 +14,5 @@ $z-medium: 100;
 $z-high: 1000;
 $z-extreme: 10000;
 
-@mixin card{
-  @include md-body-1;
-  @include cardNoPadding;
-  @include cardPadding;
-}
-
-@mixin cardNoPadding {
-  @include roundedCorners;
-  box-shadow: $whiteframe-shadow-1dp;
-  background: #fff;
-  margin-bottom: 12px;
-  max-width: 100%;
-}
-
 $thinPaddingSize: 8px;
 $cardPaddingSize: 16px;
-@mixin cardPadding {
-  padding: $cardPaddingSize;
-}
-
-@mixin listTransition {
-  transition: 0.25s background-color ease-in-out;
-  color: $primary-text-color;
-  &:hover {
-    background: $background-color;
-    text-decoration: none;
-  }
-}
-
-@mixin cardButton {
-  position: relative;
-  top: -7px;
-  right: -9px;
-  float: right;
-}

@@ -40,6 +40,7 @@ en:
     ranked_choice: Ranked choice
   timezones:
     local: Local time ({{value}})
+
   common:
     you: You
     expand: Expand
@@ -245,6 +246,9 @@ en:
     message: "You have been logged out from another window. Please sign back in to continue."
     ok: "Ok"
 
+  comment_reply_form:
+    aria_label: 'Add a reply'
+
   comment_form:
     aria_label: 'Add a comment'
     attachments:
@@ -261,7 +265,8 @@ en:
     cancel_reply: 'Cancel Reply'
     confirm_delete_message: 'Are you sure you want to delete this comment?'
     confirm_delete: 'Delete comment'
-    in_reply_to: "In reply to {{name}}:"
+    in_reply_to: "Reply to {{name}}"
+    write_a_comment: "Write a comment..."
     submit_button:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
@@ -905,23 +910,29 @@ en:
       or: or
       join_group: <a href="/explore">join</a> a group to see threads.
 
-  groups_page:
-    page_header: Your groups
-
   discussion:
     activity: 'Activity'
     activity_placeholder: 'No activity yet!'
-    proposals: 'Proposals'
-    previous_proposals: 'Previous Proposals'
     load_previous: 'Load earlier activity'
     started_by: 'Started by <strong>{{name}}</strong>'
-    edited: 'Edited'
     pin:
       pinned: 'Thread pinned'
       unpinned: 'Thread unpinned'
     volume:
       mute_message: 'Thread muted.'
       unmute_message: 'Thread unmuted'
+
+  activity_card:
+    beginning: Beginning
+    unread: Unread
+    latest: Latest
+    chronological: Chronological
+    nested: Nested
+    attachment_display:
+      aria_label: 'File attached:'
+      image_alt: 'Attached image'
+    n_previous: 'Load {{count}} previous responses'
+    n_more: 'Load {{count}} responses'
 
   thread_group:
     aria_label: 'Group name'
@@ -963,11 +974,6 @@ en:
     messages:
       success: Thread has been moved to {{name}}
 
-  activity_card:
-    new_activity: New Activity
-    attachment_display:
-      aria_label: 'File attached:'
-      image_alt: 'Attached image'
 
   print_modal:
     load_discussion: Loading entire discussion...

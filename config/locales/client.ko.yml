@@ -347,10 +347,8 @@ ko:
     manage_requests: 요청 관리
     manage_requests_with_count: 요청 관리 ({{count}})
   documents_page:
-    title: 자료
+    confirm_remove_title: 첨부파일 삭제
   document:
-    list:
-      title: 자료
     form:
       title_label: 이름
   membership_requests_page:

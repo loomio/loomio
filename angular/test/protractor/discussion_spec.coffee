@@ -73,9 +73,7 @@ describe 'Discussion Page', ->
   describe 'reading a thread', ->
     it 'can display an unread content line', ->
       page.loadPath 'setup_unread_discussion'
-      page.expectText '.activity-card', 'New Activity'
-      browser.refresh()
-      page.expectNoText '.activity-card', 'New Activity'
+      page.expectElement '.thread-item--unread'
 
   describe 'muting and unmuting a thread', ->
     it 'lets you mute and unmute', ->
@@ -186,7 +184,7 @@ describe 'Discussion Page', ->
       page.click '.action-dock__button--reply_to_comment'
       page.fillIn '.comment-form textarea', 'hi this is my comment'
       page.click '.comment-form__submit-button'
-      page.expectText '.activity-card__activity-list-item:last-child', 'in reply to'
+      page.expectText '.activity-card', 'in reply to'
       page.expectFlash 'Patrick Swayze notified of reply'
 
     it 'can react to a comment', ->

@@ -414,10 +414,8 @@ nl_NL:
     manage_requests: Beheer verzoeken
     manage_requests_with_count: Beheer verzoeken ({{count}})
   documents_page:
-    title: Bronnen
+    confirm_remove_title: Verwijderen bijlage
   document:
-    list:
-      title: Bronnen
     form:
       title_label: Naam
   membership_requests_page:

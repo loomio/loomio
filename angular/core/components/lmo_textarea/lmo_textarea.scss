@@ -3,6 +3,7 @@
 }
 
 .lmo-textarea__helptext {
+  margin-left: 5px;
   @include md-caption;
   color: $grey-on-white;
 }

@@ -289,10 +289,8 @@ ca:
     manage_requests: Administració de sol·licituds
     manage_requests_with_count: Administració de sol·licituds ({{count}})
   documents_page:
-    title: Recursos
+    confirm_remove_title: Elimina un fitxer adjunt
   document:
-    list:
-      title: Recursos
     form:
       title_label: Nom
   membership_requests_page:

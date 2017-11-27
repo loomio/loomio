@@ -131,10 +131,7 @@ lt:
     members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
   documents_page:
-    title: Ištekliai
-  document:
-    list:
-      title: Ištekliai
+    confirm_remove_title: Šalinti priedą
   group_previous_proposals_card:
     heading: Ankstesni pasiūlymai
   invitation_form:

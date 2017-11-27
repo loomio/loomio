@@ -39,11 +39,13 @@ describe EmailActionsController do
   describe "mark_discussion_as_read" do
     before do
       @user = FactoryGirl.create(:user)
+      @author = FactoryGirl.create(:user)
       @group = FactoryGirl.create(:formal_group)
       @group.add_member!(@user)
+      @group.add_member!(@author)
 
       @discussion = FactoryGirl.build(:discussion, group: @group)
-      @event = DiscussionService.create(discussion: @discussion, actor: @user)
+      @event = DiscussionService.create(discussion: @discussion, actor: @author)
     end
 
     it 'marks the discussion as read at event created_at' do
@@ -53,8 +55,15 @@ describe EmailActionsController do
 
     it 'does not error when discussion is not found' do
       get :mark_discussion_as_read, discussion_id: :notathing, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).last_read_sequence_id).to eq 0
       expect(response.status).to eq 200
+    end
+
+    it 'marks a comment as read' do
+      @comment_event = CommentService.create(comment: Comment.new(discussion: @discussion, body: "hello"), actor: @author)
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).has_read?(@comment_event.sequence_id)).to be false
+      get :mark_discussion_as_read, discussion_id: @discussion.id, event_id: @comment_event.id, unsubscribe_token: @user.unsubscribe_token
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).last_read_at).to be_within(1.second).of Time.now
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).has_read?(@comment_event.sequence_id)).to be true
     end
   end
 
@@ -84,7 +93,7 @@ describe EmailActionsController do
 
       reader = DiscussionReader.for(user: @user, discussion: @discussion)
       @discussion.reload
-      expect(@discussion.salient_items_count - reader.read_salient_items_count).to eq 4
+      expect(@discussion.items_count - reader.read_items_count).to eq 4
 
       get :mark_summary_email_as_read, {
         time_start: @time_start.to_i,
@@ -94,8 +103,8 @@ describe EmailActionsController do
       }
 
       expect(
-        @discussion.reload.salient_items_count -
-        reader.reload.read_salient_items_count
+        @discussion.reload.items_count -
+        reader.reload.read_items_count
       ).to eq 1
     end
   end

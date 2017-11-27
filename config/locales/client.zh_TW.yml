@@ -358,7 +358,7 @@ zh_TW:
     notified_count: '{{count}} 個夥伴將會收到電子郵件'
   action_dock:
     react: 新增反應
-    add_resource: 新增資源
+    add_resource: 新增附件
     edit_group: 編輯群組內容
     add_comment: 意見
     edit_thread: 編輯內容
@@ -482,8 +482,8 @@ zh_TW:
   description_card:
     title: '群組描述'
     placeholder: '群組協調者可以使用這個區域來描述群組的目的，這樣才能讓每個人都知道為什麼他們會在這裡。'
-    view_documents: '檢視資源'
-    manage_documents: '管理資源'
+    view_documents: '檢視附件'
+    manage_documents: '管理附件'
     messages:
       description_updated: '描述已更新'
   leave_group_form:
@@ -558,27 +558,27 @@ zh_TW:
     manage_requests: 管理申請
     manage_requests_with_count: 管理申請 ({{count}})
   documents_page:
-    title: 資源
-    fragment_placeholder: 搜尋資源……
-    add_document: 新增資源
-    no_documents: 未在此群組中找到資源。點選上面的「新增資源」來新增一個。
-    no_documents_from_fragment: 沒有名為「{{fragment}}」的資源
-    confirm_remove_title: 移除資源
-    confirm_remove_helptext: 您確定您想要移除此資源嗎？
-    document_removed: 已移除資源
+    title: 附件
+    fragment_placeholder: 搜尋附件……
+    add_document: 新增附件
+    no_documents: 在此群組中找不到附件。點選「新增附件」來新增一個。
+    no_documents_from_fragment: 找不到名為「{{fragment}}」的附件
+    confirm_remove_title: 移除附件
+    confirm_remove_helptext: 您確定您想要移除附件嗎？
+    document_removed: 附件已移除
   document:
     list:
-      title: 資源
-      no_poll_documents: 尚未有資源被上傳至此決策。
-      no_discussion_documents: 尚未有資源被上傳至此討論串。
-      no_group_documents: 尚未有資源被上傳至群組內容。點選下面的連結來看看所有在此群組中已上傳至討論串的資源。
+      title: 附件
+      no_poll_documents: 尚未有附件被上傳至此決策。
+      no_discussion_documents: 尚未有附件被上傳至此討論串。
+      no_group_documents: 尚未有附件被上傳至群組內容。點選下面的連結來看看所有在此群組中已上傳至討論串的附件。
     management:
       group_header: 附加到內容
       discussion_header: 上傳為內容
       added_by: 由 {{name}} 上傳
       uploaded_to: 在
     modal:
-      title: 新增資源
+      title: 新增附件
     method_form:
       helptext: 追蹤您所有的工具與檔案，這樣它們就可以比較好找到。
       url_helptext: 到網頁與工具的連結，如 Trello 或是 Google 文件等
@@ -590,14 +590,14 @@ zh_TW:
       upload_from_local: 本機有檔案嗎？
       upload_file: 從您的電腦中上傳
       enter_url: 輸入 URL
-      url_label: 資源 URL
-      url_placeholder: 例如：https://www.example.com/resource.txt
-      title_helptext: 我們應該叫這個資源什麼名字？
+      url_label: 附件 URL
+      url_placeholder: 例如：https://www.example.com/attachment.txt
+      title_helptext: 我們應該叫這個附件什麼名字？
       title_label: 名稱
       title_placeholder: 例如：「社群指南」
     flash:
-      success: 已儲存資源
-      destroyed: 已移除資源
+      success: 附件已儲存
+      destroyed: 附件已移除
   membership_requests_page:
     heading: 申請成員資格
     approve: 批准

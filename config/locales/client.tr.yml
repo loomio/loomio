@@ -321,6 +321,8 @@ tr:
     heading: 'Üyelik talepleri'
     manage_requests: Talepleri yönet
     manage_requests_with_count: Talepleri yönet ({{count}})
+  documents_page:
+    confirm_remove_title: Eki kaldır
   document:
     form:
       title_label: İsim
