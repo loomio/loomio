@@ -13,5 +13,5 @@ angular.module('loomioApp').directive 'documentList', (Records, AbilityService, 
     $scope.edit = (doc, $mdMenu) ->
       $scope.$broadcast 'initializeDocument', doc, $mdMenu
 
-    $scope.remove = (doc, $mdMenu) ->
-      $scope.$broadcast 'initializeRemoveDocument', doc, $mdMenu
+    $scope.remove = (doc) ->
+      $scope.$emit 'removeDocument', doc

@@ -23,5 +23,6 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiSe
     $scope.$on 'documentUploaded', (_, doc) ->
       $scope.model.newDocumentIds.push doc.id
 
-    $scope.$on 'documentRemoved', (_, doc) ->
+    $scope.$on 'removeDocument', (_, doc) ->
+      $scope.removedDocumentIds.push doc.id
       $scope.model.newDocumentIds.splice ids.indexOf(doc.id), 1
