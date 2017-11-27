@@ -11,8 +11,8 @@ angular.module('loomioApp').directive 'documentUploadForm', (Records) ->
     $scope.upload = ->
       return unless $scope.files
       $scope.model.setErrors({})
+      $scope.$emit 'processing'
       for file in $scope.files
-        $scope.$emit 'disableAttachmentForm'
         $scope.currentUpload = Records.attachments.upload(file, $scope.progress)
         $scope.currentUpload.then($scope.success, $scope.failure).finally($scope.reset)
 
@@ -28,17 +28,16 @@ angular.module('loomioApp').directive 'documentUploadForm', (Records) ->
     $scope.success = (response) ->
       data = response.data || response
       _.each data.attachments, (attachment) ->
-        $scope.$emit 'attachmentUploaded', attachment
+        $scope.$emit 'documentUploaded', attachment
 
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)
 
     $scope.reset = ->
+      $scope.$emit 'doneProcessing'
       $scope.files = $scope.currentUpload = null
       $scope.percentComplete = 0
-      $scope.$emit 'enableAttachmentForm'
     $scope.reset()
 
-    $scope.$on 'attachmentPasted', (event, file) ->
+    $scope.$on 'filePasted', (event, file) ->
       $scope.files = [file]
-      $scope.upload()

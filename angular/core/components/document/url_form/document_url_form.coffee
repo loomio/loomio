@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, FormService, AttachmentService, KeyEventService) ->
+angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, FormService, DocumentService, KeyEventService) ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/url_form/document_url_form.html'
   controller: ($scope) ->
@@ -8,9 +8,10 @@ angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, For
     $scope.submit = ->
       $scope.$emit('nextStep', $scope.model.url)
 
-    $scope.$on 'attachmentUploaded', (_, attachment) ->
+    $scope.$on 'documentUploaded', (event, attachment) ->
+      event.stopPropogation()
       $scope.document.title = $scope.document.title || attachment.filename
       $scope.$emit 'nextStep', attachment.original
 
     KeyEventService.submitOnEnter $scope, anyEnter: true
-    AttachmentService.listenForPaste $scope
+    DocumentService.listenForPaste $scope

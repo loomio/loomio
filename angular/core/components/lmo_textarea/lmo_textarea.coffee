@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiService, ModalService, DocumentModal, AttachmentService, MentionService) ->
+angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiService, ModalService, DocumentModal, DocumentService, MentionService) ->
   scope: {model: '=', field: '@', noAttachments: '@', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/lmo_textarea/lmo_textarea.html'
@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiSe
       $scope.model = model
       EmojiService.listen $scope, $scope.model, $scope.field, $element
       MentionService.applyMentions $scope, $scope.model
-      AttachmentService.listenForPaste $scope
+      DocumentService.listenForPaste $scope
     $scope.init($scope.model)
 
     $scope.$on 'reinitializeForm', (_, model) ->
