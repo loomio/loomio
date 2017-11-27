@@ -62,6 +62,12 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     canChangeGroupVolume: (group) ->
       Session.user().isMemberOf(group)
 
+    canAdminister: (model) ->
+      switch model.constructor.singular
+        when 'group'                     then @canAdministerGroup(model.group())
+        when 'discussion', 'comment'     then @canAdministerDiscussion(model.discussion())
+        when 'outcome', 'stance', 'poll' then @canAdministerPoll(model.poll())
+
     canAdministerGroup: (group) ->
       Session.user().isAdminOf(group)
 

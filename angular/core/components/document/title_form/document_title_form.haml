@@ -12,6 +12,6 @@
     %validation_errors{subject: "document", field: "title"}
 
   .lmo-md-actions
-    %md-button.md-warn{ng-if: "!document.isNew()", ng-click: "remove()", translate: "common.action.remove", md-prevent-menu-close: "true"}
+    %div{ng-if: "!document.isNew()"}
     %md-button.md-accent{ng-if: "document.isNew()", ng-click: "$emit('previousStep')", translate: "common.action.back", md-prevent-menu-close: "true"}
     %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.save", md-prevent-menu-close: "true"}

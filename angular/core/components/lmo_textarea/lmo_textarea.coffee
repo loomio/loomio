@@ -8,7 +8,6 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiSe
       $scope.model = model
       EmojiService.listen $scope, $scope.model, $scope.field, $element
       MentionService.applyMentions $scope, $scope.model
-      AttachmentService.listenForAttachments $scope, $scope.model
       AttachmentService.listenForPaste $scope
     $scope.init($scope.model)
 
@@ -21,9 +20,8 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiSe
     $scope.addDocument = ($mdMenu) ->
       $scope.$broadcast 'initializeDocument', Records.documents.buildFromModel($scope.model), $mdMenu
 
-    $scope.$on 'documentUploaded', (_, doc, $mdMenu) ->
+    $scope.$on 'documentUploaded', (_, doc) ->
       $scope.model.newDocumentIds.push doc.id
-      $mdMenu.close()
 
-    $scope.$on 'attachmentUploaded', (_, attachment) ->
-      $scope.model.newAttachmentIds.push(attachment.id)
+    $scope.$on 'documentRemoved', (_, doc) ->
+      $scope.model.newDocumentIds.splice ids.indexOf(doc.id), 1

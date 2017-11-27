@@ -24,5 +24,10 @@ angular.module('loomioApp').factory 'SequenceService', ->
         100 * parseFloat(scope.currentStepIndex()) / (scope.steps.length - 1)
 
       emitter = options.emitter or scope
-      emitter.$on 'previousStep', changeStep(-1, 'Back')
-      emitter.$on 'nextStep',     changeStep(1, 'Complete')
+
+      # deregister old listeners if they're present
+      emitter.unlistenPrevious() if typeof emitter.unlistenPrevious is 'function'
+      emitter.unlistenNext()     if typeof emitter.unlistenNext     is 'function'
+
+      emitter.unlistenPrevious = emitter.$on 'previousStep', changeStep(-1, 'Back')
+      emitter.unlistenNext     = emitter.$on 'nextStep',     changeStep(1, 'Complete')

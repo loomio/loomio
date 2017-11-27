@@ -19,5 +19,5 @@
         .md-char-counter{ng-if: "maxlength"}
           {{ modelLength() }} / {{ maxlength }}
   %outlet{name: "after-lmo-textarea", model: "model"}
-  %document_list{model: "model", ng-if: "model.documentsApplied"}
+  %document_list{model: "model", show-edit: "true", ng-if: "model.documentsApplied"}
   .lmo-textarea__footer

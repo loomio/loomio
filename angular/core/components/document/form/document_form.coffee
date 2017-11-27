@@ -12,7 +12,8 @@ angular.module('loomioApp').directive 'documentForm', ($timeout, Records, Sequen
         titleComplete:  (_, doc)    ->
           if $scope.menu
             $scope.menu.close()
-            $scope.$emit 'documentUploaded', doc, $scope.menu
+            $scope.$emit 'documentUploaded', doc
+            $scope.document = Records.documents.build()
 
     $scope.$on 'initializeDocument', (_, doc, $mdMenu) ->
       $scope.document = doc
