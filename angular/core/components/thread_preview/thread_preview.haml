@@ -1,5 +1,5 @@
 .thread-preview
-  %a.thread-preview__link{lmo-href-for: "thread"}
+  %a.thread-preview__link{lmo-href-for: "thread", md-colors: "{'border-color': 'primary-500'}", ng-class: "{'thread-preview__link--unread': thread.isUnread()}"}
     .sr-only
       %span {{thread.authorName()}}: {{thread.title}}.
       %span{ng-if: "thread.hasUnreadActivity()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadActivityCount() }}"}

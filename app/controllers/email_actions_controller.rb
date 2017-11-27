@@ -4,7 +4,9 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
    end
 
   def mark_discussion_as_read
-    DiscussionReader.for(discussion: discussion, user: user).viewed!(event.created_at)
+    DiscussionService.mark_as_read(discussion: discussion,
+                                   params: {ranges: event.sequence_id},
+                                   actor: user)
     respond_with_pixel
   rescue ActiveRecord::RecordNotFound
     respond_with_pixel
@@ -13,11 +15,13 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   def mark_summary_email_as_read
     time_start  = Time.at(params[:time_start].to_i).utc
     time_finish = Time.at(params[:time_finish].to_i).utc
+    time_range = time_start..time_finish
 
     Queries::VisibleDiscussions.new(user: user).
                                     unread.
                                     last_activity_after(time_start).each do |discussion|
-      DiscussionReader.for(user: user, discussion: discussion).viewed!(time_finish)
+      sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
+      DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
     end
 
     respond_to do |format|

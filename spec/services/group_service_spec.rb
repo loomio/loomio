@@ -13,11 +13,6 @@ describe 'GroupService' do
       expect(group.reload.creator).to eq user
     end
 
-    it 'creates a new guest group' do
-      expect { GroupService.create(group: group, actor: user) }.to change { GuestGroup.count }.by(1)
-      expect(Group.last.default_group_cover_id).to be_nil
-    end
-
     it 'assigns a default group cover' do
       default = create(:default_group_cover)
       GroupService.create(group: group, actor: user)

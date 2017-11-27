@@ -226,6 +226,12 @@ class Ability
       user_is_admin_of?(discussion.group_id)
     end
 
+    can :remove_from_thread, Event do |event|
+      (user_is_author_of?(event.discussion) or
+       user_is_admin_of?(event.discussion.group_id)) &&
+      ['discussion_edited'].include?(event.kind)
+    end
+
     can [:set_volume,
          :show_description_history,
          :preview_version], Discussion do |discussion|

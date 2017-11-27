@@ -56,10 +56,12 @@ class AppConfig
 
    def self.features
      {
-       create_user:   !ENV['FEATURES_DISABLE_CREATE_USER'],
-       create_group:  !ENV['FEATURES_DISABLE_CREATE_GROUP'],
-       public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
-       help_link:     !ENV['FEATURES_DISABLE_HELP_LINK']
+       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
+       create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],
+       public_groups:              !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
+       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
+       nested_comments_for_all:    ENV.fetch('FEATURES_NESTED_COMMENTS_FOR_ALL',    false),
+       default_thread_render_mode: ENV.fetch('FEATURES_DEFAULT_THREAD_RENDER_MODE', 'chronological')
      }
    end
 

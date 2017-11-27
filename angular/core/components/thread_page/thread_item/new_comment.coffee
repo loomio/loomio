@@ -1,5 +1,5 @@
-angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Records, AbilityService, ReactionService, TranslationService, ModalService, DeleteCommentForm, EditCommentForm, RevisionHistoryModal) ->
-  scope: {eventable: '='}
+angular.module('loomioApp').directive 'newComment', ($rootScope, AbilityService, ReactionService, TranslationService, ModalService, DeleteCommentForm, EditCommentForm, RevisionHistoryModal) ->
+  scope: {event: '=', eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'
   replace: true
@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, Session, Record
       name: 'reply_to_comment'
       icon: 'mdi-reply'
       canPerform: -> AbilityService.canRespondToComment($scope.eventable)
-      perform:    -> $rootScope.$broadcast 'replyToCommentClicked', $scope.eventable
+      perform:    -> $rootScope.$broadcast 'replyToEvent', $scope.event.surfaceOrSelf()
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'

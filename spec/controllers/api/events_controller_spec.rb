@@ -13,50 +13,6 @@ describe API::EventsController do
     group.add_member! another_user
   end
 
-  describe 'mark_as_read' do
-    let!(:event) { create :event, sequence_id: 2, discussion: discussion, user: another_user }
-    let!(:another_event) { create :event, sequence_id: 3 }
-
-    context 'signed out' do
-      it 'does not attempt to mark discussions as read while logged out' do
-        patch :mark_as_read, id: event.id
-        expect(response.status).to eq 403
-      end
-    end
-
-    context 'signed in' do
-      before do
-        sign_in user
-        group.add_admin! user
-        reader.update(volume: DiscussionReader.volumes[:normal])
-        reader.reload
-      end
-
-      it "Marks thread item as read" do
-        patch :mark_as_read, id: event.id
-        expect(reader.reload.last_read_at).to be_within(1.second).of event.created_at
-        expect(reader.last_read_sequence_id).to eq 2
-        expect(response.status).to eq 200
-      end
-
-      it 'does not mark an inaccessible discussion as read' do
-        patch :mark_as_read, id: another_event.id
-        expect(response.status).to eq 403
-        expect(reader.reload.last_read_sequence_id).to eq 0
-      end
-
-      it 'responds with reader fields' do
-        patch :mark_as_read, id: event.id
-        json = JSON.parse(response.body)
-        reader.reload
-
-        expect(json['discussions'][0]['id']).to eq discussion.id
-        expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
-        expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
-      end
-    end
-  end
-
   describe 'index' do
 
     before { sign_in user }
@@ -85,6 +41,24 @@ describe API::EventsController do
         end
       end
 
+      context "remove from thread" do
+        it 'removes discussion_id if permitted' do
+          @edited_event = Events::DiscussionEdited.publish!(discussion, user)
+          expect(@edited_event.discussion_id).to be discussion.id
+          patch :remove_from_thread, id: @edited_event.id
+          json = JSON.parse(response.body)
+          expect(json.keys).to include *(%w[events])
+          result_event = json['events'].first
+          expect(result_event['discussion_id']).to be nil
+          expect(result_event['id']).to be @edited_event.id
+        end
+
+        it 'denys if not permitted' do
+          patch :remove_from_thread, id: @event.id
+          expect(response.status).to eq 403
+        end
+      end
+
       it 'returns events filtered by discussion' do
         get :index, discussion_id: discussion.id, format: :json
         json = JSON.parse(response.body)
@@ -93,6 +67,15 @@ describe API::EventsController do
         expect(event_ids).to include @event.id
         expect(event_ids).to_not include @another_event.id
       end
+
+      # later on, not now
+      # it 'excludes specific sequence ids given ranges' do
+      #   ranges_str = RangeSet.serialize RangeSet.to_ranges(@event.sequence_id)
+      #   get :index, discussion_id: discussion.id, exclude_sequence_ids: ranges_str
+      #   json = JSON.parse(response.body)
+      #   event_ids = json['events'].map { |v| v['id'] }
+      #   expect(event_ids).to_not include @event.id
+      # end
 
       it 'responds with a discussion with a reader' do
         get :index, discussion_id: discussion.id, format: :json
@@ -130,6 +113,25 @@ describe API::EventsController do
         event_ids = json['events'].map { |v| v['id'] }
         expect(event_ids).to include @later_event.id
         expect(event_ids).to include @early_event.id
+      end
+    end
+
+    context 'with parent_id' do
+      before do
+        @discussion_event = DiscussionService.create(discussion: discussion, actor: user)
+        @parent_comment =  build(:comment, discussion: discussion)
+        @parent_event = CommentService.create(comment: @parent_comment, actor: user)
+        @child_event = CommentService.create(comment: build(:comment, discussion: discussion, parent: @parent_comment), actor: user)
+        @unrelated_event = CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
+      end
+
+      it 'returns events with given parent_id' do
+        get :index, discussion_id: discussion.id, parent_id: @parent_event.id
+        json = JSON.parse(response.body)
+        event_ids = json['events'].map { |v| v['id'] }
+        expect(event_ids).to include @child_event.id
+        expect(event_ids).to include @parent_event.id
+        expect(event_ids).to_not include @unrelated_event.id
       end
     end
 
