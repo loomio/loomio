@@ -10,8 +10,8 @@ angular.module('loomioApp').directive 'discussionFormActions', ->
       drafts: true
       successCallback: (response) =>
         $scope.$emit '$close'
+        _.invoke Records.documents.find($scope.discussion.removedDocumentIds), 'remove'
         discussion = Records.discussions.find(response.discussions[0].id)
-        discussion.cleanupDocuments()
         $location.path LmoUrlService.discussion(discussion) if actionName == 'created'
 
     KeyEventService.submitOnEnter $scope

@@ -82,7 +82,7 @@ class Comment < ActiveRecord::Base
 
   private
   def attachments_owned_by_author
-    return if documents.pluck(:user_id).select { |user_id| user_id != user.id }.empty?
+    return if documents.pluck(:author_id).select { |user_id| user_id != user.id }.empty?
     errors.add(:documents, "Attachments must be owned by author")
   end
 
