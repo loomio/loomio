@@ -3,9 +3,11 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   controller: ($scope) ->
+    $scope.debug = -> window.Loomio.debug
+
     $scope.setDefaults = ->
       $scope.per = AppConfig.pageSize.threadItems
-      $scope.renderMode = AppConfig.features.default_thread_render_mode
+      $scope.renderMode = if $scope.allowNested() then 'nested' else 'chronological'
       $scope.position = $scope.positionForSelect()
 
     $scope.allowNested = ->

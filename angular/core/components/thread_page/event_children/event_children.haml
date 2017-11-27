@@ -1,5 +1,5 @@
 .event-children
-  -# %span
+  %div{ng-if: "debug()"}
     event-children
     parentId: {{eventWindow.parentEvent.id}}
     cc: {{eventWindow.parentEvent.childCount}}

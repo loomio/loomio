@@ -3,7 +3,7 @@ class Dev::MainController < Dev::BaseController
   include Dev::NintiesMoviesHelper
   include PrettyUrlHelper
 
-  before_filter :cleanup_database, except: [:last_email, :use_last_login_token, :index, :accept_last_invitation]
+  # before_filter :cleanup_database, except: [:last_email, :use_last_login_token, :index, :accept_last_invitation]
 
   def index
     @routes = self.class.action_methods.select do |action|
@@ -170,7 +170,7 @@ class Dev::MainController < Dev::BaseController
     pinned_discussion
     poll_discussion
     recent_discussion
-    old_discussion
+    # old_discussion
     muted_discussion
     muted_group_discussion
     redirect_to dashboard_url

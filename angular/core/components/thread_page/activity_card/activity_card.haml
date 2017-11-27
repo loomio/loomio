@@ -7,7 +7,8 @@
     %md-select.md-no-underline{ng-model: "renderMode", ng-change: "init()", ng-show: "allowNested()"}
       %md-option{value: "chronological", translate: "activity_card.chronological"}
       %md-option{value: "nested", translate: "activity_card.nested"}
-  -# %div
+      
+  %div{ng-if: "debug()"}
     per: {{per}}
     min: {{eventWindow.min}}
     max: {{eventWindow.max}}

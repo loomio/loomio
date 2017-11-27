@@ -8,6 +8,7 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $transl
       $compile("<event-children discussion=\"eventWindow.discussion\" parent_event=\"event\" parent_event_window=\"eventWindow\"></event-children><add-comment-panel parent_event=\"event\" event_window=\"eventWindow\"></add-comment-panel>")(scope, (cloned, scope) -> element.append(cloned))
 
   controller: ($scope) ->
+    $scope.debug = -> window.Loomio.debug
     if $scope.event.isSurface() && $scope.eventWindow.useNesting
       $scope.$on 'replyButtonClicked', (e, parentEvent, comment) ->
         if $scope.event.id == parentEvent.id

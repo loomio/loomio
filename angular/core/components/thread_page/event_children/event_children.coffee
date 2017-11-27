@@ -4,6 +4,7 @@ angular.module('loomioApp').directive 'eventChildren', (NestedEventWindow) ->
   templateUrl: 'generated/components/thread_page/event_children/event_children.html'
   replace: true
   controller: ($scope) ->
+    $scope.debug = -> window.Loomio.debug
     $scope.eventWindow = new NestedEventWindow
       parentEvent:       $scope.parentEvent
       discussion:        $scope.parentEventWindow.discussion
