@@ -20,7 +20,7 @@ class EventParentMigrator
     group.comments.where("parent_id is null").each do |comment|
       # dont care if no event exists
       if created_event = comment.created_event
-        next unless created_event.parent_id
+        next if created_event.parent_id
         next unless comment.discussion.author
         created_event.parent = comment.discussion.created_event ||
           Events::NewDiscussion.create!(
@@ -40,7 +40,7 @@ class EventParentMigrator
     group.comments.where("parent_id IS NOT NULL").each do |comment|
       # dont care if no event exists
       if created_event = comment.created_event
-        next unless created_event.parent_id
+        next if created_event.parent_id
         parent_event = comment.first_ancestor.created_event
         comment.created_event.update(parent: comment.first_ancestor.created_event)
       end
@@ -50,7 +50,6 @@ class EventParentMigrator
   def self.assign_edit_parents(group)
     group.discussions.each do |discussion|
       discussion.items.where(kind: "discussion_edited").each do |event|
-        next unless event.parent_id
         event.update(parent: discussion.created_event)
       end
     end
@@ -66,7 +65,7 @@ class EventParentMigrator
                                     announcement: false,
                                     discussion: poll.discussion,
                                     created_at: poll.created_at)
-      next unless poll_created_event.parent_id
+      next if poll_created_event.parent_id
       poll_created_event.update(parent: poll.discussion.created_event)
       poll.stances.each do |stance|
         next unless stance_created_event = stance.created_event

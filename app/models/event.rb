@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   include HasTimeframe
   include Events::Position
-  BLACKLISTED_KINDS = ["motion_closed", "motion_outcome_updated", "motion_outcome_created", "poll_expired", "new_vote", "new_motion", "motion_closed_by_user", "motion_edited"].freeze
+  BLACKLISTED_KINDS = ["motion_closed", "motion_outcome_updated", "motion_outcome_created", "new_vote", "new_motion", "motion_closed_by_user", "motion_edited"].freeze
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
