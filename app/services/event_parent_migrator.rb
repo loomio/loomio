@@ -50,11 +50,11 @@ class EventParentMigrator
 
   def self.assign_edit_parents(group)
     group.discussions.find_each do |discussion|
-      discussion.items.where(kind: ["discussion_edited", "poll_expired"])
+      discussion.items.where(kind: ["poll_expired"])
                       .where(parent_id: nil).find_each do |event|
         event.update(parent: event.eventable.created_event)
       end
-      discussion.items.where(kind: ["poll_edited"])
+      discussion.items.where(kind: ["discussion_edited", "poll_edited"])
                       .where(parent_id: nil).find_each do |event|
         event.update(parent: event.eventable.item.created_event)
       end
