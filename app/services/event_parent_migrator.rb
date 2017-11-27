@@ -1,6 +1,13 @@
 class EventParentMigrator
   def self.migrate_all_groups
-    FormalGroup.find_each do |group|
+    FormalGroup.where("not(features ? 'nested_comments')").find_each do |group|
+      next if group.features['nested_comments']
+      EventParentMigrator.delay(priority: 1000).migrate_group!(group)
+    end
+  end
+
+  def self.migrate_some_groups(num)
+    FormalGroup.where("not(features ? 'nested_comments')").order("discussions_count DESC").limit(num) do |group|
       next if group.features['nested_comments']
       EventParentMigrator.delay(priority: 1000).migrate_group!(group)
     end
