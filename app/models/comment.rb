@@ -82,8 +82,8 @@ class Comment < ActiveRecord::Base
 
   private
   def attachments_owned_by_author
-    return if attachments.pluck(:user_id).select { |user_id| user_id != user.id }.empty?
-    errors.add(:attachments, "Attachments must be owned by author")
+    return if documents.pluck(:user_id).select { |user_id| user_id != user.id }.empty?
+    errors.add(:documents, "Attachments must be owned by author")
   end
 
   def parent_comment_belongs_to_same_discussion
@@ -95,7 +95,7 @@ class Comment < ActiveRecord::Base
   end
 
   def has_body_or_attachment
-    if body.blank? && attachments.blank?
+    if body.blank? && documents.blank?
       errors.add(:body, "Comment cannot be empty")
     end
   end

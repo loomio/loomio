@@ -28,7 +28,7 @@ angular.module('loomioApp').directive 'documentUploadForm', (Records) ->
     $scope.success = (response) ->
       data = response.data || response
       _.each data.attachments, (attachment) ->
-        $scope.$emit 'documentUploaded', attachment
+        $scope.$emit 'fileUploaded', attachment
 
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)

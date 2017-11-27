@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, For
     $scope.submit = ->
       $scope.$emit('nextStep', $scope.model.url)
 
-    $scope.$on 'documentUploaded', (event, attachment) ->
+    $scope.$on 'fileUploaded', (event, file) ->
       event.stopPropogation()
       $scope.document.title = $scope.document.title || attachment.filename
       $scope.$emit 'nextStep', attachment.original

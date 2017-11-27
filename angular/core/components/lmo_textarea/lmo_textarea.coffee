@@ -20,6 +20,15 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiSe
     $scope.addDocument = ($mdMenu) ->
       $scope.$broadcast 'initializeDocument', Records.documents.buildFromModel($scope.model), $mdMenu
 
+    $scope.$on 'fileUploaded', (_, file) ->
+      Records.documents.build(
+        url:   file.original,
+        title: "#{file.filename}.#{file.filetype}"
+      ).save().then (data) ->
+        $scope.model.newDocumentIds.push data.documents[0].id
+
+      console.log(file)
+
     $scope.$on 'documentAdded', (_, doc) ->
       $scope.model.newDocumentIds.push doc.id
 
