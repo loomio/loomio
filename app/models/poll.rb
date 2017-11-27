@@ -57,7 +57,7 @@ class Poll < ActiveRecord::Base
   has_many :poll_did_not_votes, dependent: :destroy
   has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
-  has_many :documents, as: :model
+  has_many :documents, as: :model, dependent: :destroy
 
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 

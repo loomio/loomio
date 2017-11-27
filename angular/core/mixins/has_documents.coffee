@@ -10,7 +10,7 @@ angular.module('loomioApp').factory 'HasDocuments', ->
         model.recordStore.documents.find(model.newDocumentIds)
 
       model.newAndPersistedDocuments = ->
-        model.documents().concat model.newDocuments()
+        _.uniq model.documents().concat(model.newDocuments())
 
       model.hasDocuments = ->
         model.newAndPersistedDocuments().length > 0
@@ -19,3 +19,5 @@ angular.module('loomioApp').factory 'HasDocuments', ->
         data = @baseSerialize()
         data[model.serializationRoot or model.constructor.singular].attachment_ids = @newDocumentIds
         data
+
+      model.documentsApplied = true

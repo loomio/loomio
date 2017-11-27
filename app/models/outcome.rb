@@ -12,6 +12,7 @@ class Outcome < ActiveRecord::Base
   has_many :stances, through: :poll
   has_many :events, as: :eventable
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :documents, as: :model, dependent: :destroy
 
   delegate :title, to: :poll
   delegate :dates_as_options, to: :poll
