@@ -10,7 +10,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments,
 
     afterConstruction: ->
       @private = @privateDefaultValue() if @isNew()
-      HasDocuments.apply @
+      HasDocuments.apply @, showTitle: true
       HasDrafts.apply @
 
     defaultValues: =>

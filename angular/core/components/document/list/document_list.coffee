@@ -5,5 +5,9 @@ angular.module('loomioApp').directive 'documentList', (Records, AbilityService, 
   controller: ($scope) ->
     Records.documents.fetchByModel($scope.model) unless $scope.model.isNew()
 
+    $scope.showTitle = ->
+      ($scope.model.showDocumentTitle or $scope.showEdit) and
+      ($scope.model.hasDocuments() or $scope.placeholder)
+
     $scope.edit = (doc, $mdMenu) ->
       $scope.$broadcast 'initializeDocument', doc, $mdMenu

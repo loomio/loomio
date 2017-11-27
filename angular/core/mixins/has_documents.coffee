@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'HasDocuments', ->
   new class HasDocuments
-    apply: (model) ->
+    apply: (model, opts = {}) ->
       model.newDocumentIds     = model.newDocumentIds or []
       model.removedDocumentIds = model.removedDocumentIds or []
 
@@ -30,4 +30,5 @@ angular.module('loomioApp').factory 'HasDocuments', ->
              .filter (doc) -> !_.contains(model.document_ids, doc.id)
              .map    (doc) -> doc.remove()
 
+      model.showDocumentTitle = opts.showTitle
       model.documentsApplied = true

@@ -8,7 +8,7 @@ angular.module('loomioApp').factory 'PollModel', (BaseModel, HasDocuments, HasDr
     @draftPayloadAttributes: ['title', 'details']
 
     afterConstruction: ->
-      HasDocuments.apply @
+      HasDocuments.apply @, showTitle: true
       HasDrafts.apply @
 
     draftParent: ->

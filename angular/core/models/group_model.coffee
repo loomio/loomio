@@ -31,7 +31,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, HasDrafts, HasDocu
       if @privacyIsClosed()
         @allowPublicThreads = @discussionPrivacyOptions == 'public_or_private'
       HasDrafts.apply @
-      HasDocuments.apply @
+      HasDocuments.apply @, showTitle: true
 
     relationships: ->
       @hasMany 'discussions'

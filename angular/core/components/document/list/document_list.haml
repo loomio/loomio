@@ -1,5 +1,5 @@
 %section.document-list
-  %h3.document-list__heading.lmo-card-heading{ng-if: "model.hasDocuments() || placeholder", translate: "document.list.title"}
+  %h3.document-list__heading.lmo-card-heading{ng-if: "showTitle()", translate: "document.list.title"}
   %p.lmo-hint-text.md-caption{ng-if: "!model.hasDocuments() && placeholder", translate: "{{placeholder}}"}
   .document-list__documents.md-block.lmo-flex{layout: "column"}
     .document-list__document.lmo-flex{layout: "column", ng-repeat: "document in model.newAndPersistedDocuments() track by document.id"}

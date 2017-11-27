@@ -5,7 +5,7 @@
     %timeago{timestamp: "::poll.outcome().createdAt" }>
   %p.lmo-markdown-wrapper{marked: "poll.outcome().statement", ng-if: "!translation"}
   %translation{translation: "translation", field: "statement", ng-if: "translation"}
-  %attachment_collection{model: "poll.outcome()"}
+  %document_list{model: "poll.outcome()"}
   .lmo-md-actions
     %reactions_display{model: "poll.outcome()", load: "true"}
     %action_dock{model: "poll.outcome()", actions: "actions"}
