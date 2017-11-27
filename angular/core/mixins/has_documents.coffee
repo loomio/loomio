@@ -25,4 +25,9 @@ angular.module('loomioApp').factory 'HasDocuments', ->
         data[root].document_ids = _.difference(@newDocumentIds, @removedDocumentIds)
         data
 
+      model.cleanupDocuments = ->
+        model.documents()
+             .filter (doc) -> !_.contains(model.document_ids, doc.id)
+             .map    (doc) -> doc.remove()
+
       model.documentsApplied = true

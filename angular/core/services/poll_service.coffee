@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, AppConfig, Records, Session, SequenceService, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, AppConfig, Records, Session, SequenceService, FormService, LmoUrlService, ScrollService, AbilityService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -84,7 +84,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
           ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
           poll = Records.polls.find(data.polls[0].key)
-          AttachmentService.cleanupAfterUpdate(poll, 'poll')
+          poll.cleanupDocuments()
           scope.$emit 'nextStep', poll
         cleanupFn: ->
           scope.$emit 'doneProcessing'
