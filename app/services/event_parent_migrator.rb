@@ -29,15 +29,9 @@ class EventParentMigrator
       if created_event = comment.created_event
         next if created_event.parent_id
         next unless comment.discussion.author
-        created_event.parent = comment.discussion.created_event ||
-          Events::NewDiscussion.create!(
-            kind: 'new_discussion',
-            user: comment.discussion.author,
-            announcement: false,
-            eventable: comment.discussion,
-            created_at: comment.discussion.created_at
-          )
-        created_event.save
+        unless created_event.parent = comment.discussion.created_event
+          created_event.save
+        end
       end
     end
   end
@@ -64,14 +58,7 @@ class EventParentMigrator
 
   def self.assign_poll_parents(group)
     group.polls.where("discussion_id is not null").each do |poll|
-      poll_created_event = poll.created_event ||
-        Events::PollCreated.create!(kind: "poll_created",
-                                    user: poll.author,
-                                    eventable: poll,
-                                    parent: poll.parent_event,
-                                    announcement: false,
-                                    discussion: poll.discussion,
-                                    created_at: poll.created_at)
+      next unless poll_created_event = poll.created_event
       next if poll_created_event.parent_id
       poll_created_event.update(parent: poll.discussion.created_event)
       poll.stances.each do |stance|
