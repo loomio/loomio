@@ -374,10 +374,8 @@ cs:
     messages:
       group_updated: 'Skupina aktualizována'
   documents_page:
-    title: Zdroje
+    confirm_remove_title: Odebrat přílohu
   document:
-    list:
-      title: Zdroje
     form:
       title_label: Jméno
   membership_requests_page:

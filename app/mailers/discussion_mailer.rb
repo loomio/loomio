@@ -5,6 +5,10 @@ class DiscussionMailer < BaseMailer
     define_method action, ->(recipient, event) { send_thread_email(recipient, event, action) }
   end
 
+  def new_comment(recipient, event)
+    send_thread_email(recipient, event, :new_comment)
+  end
+
   private
   def send_thread_email(recipient, event, action)
     return if recipient == User.helper_bot

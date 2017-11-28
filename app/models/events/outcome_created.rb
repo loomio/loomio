@@ -7,6 +7,7 @@ class Events::OutcomeCreated < Event
   def self.publish!(outcome)
     super outcome,
           user: outcome.author,
+          parent: outcome.poll.created_event,
           discussion: outcome.poll.discussion
   end
 

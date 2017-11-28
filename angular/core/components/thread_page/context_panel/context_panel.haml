@@ -1,4 +1,4 @@
-%section.context-panel.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
+%section.context-panel.lmo-card-padding.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
   .context-panel__top
     .context-panel__pin{ng-if: "discussion.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
       %i.mdi.mdi-pin
@@ -11,25 +11,28 @@
 
     %context_panel_dropdown{discussion: "discussion"}
 
-  .context-panel__details.md-body-1
-    %span{translate: "discussion.started_by", translate-value-name: "{{::discussion.authorName()}}"}
-    %timeago.nowrap{timestamp: "::discussion.createdAt" }>
-    %span{aria-hidden: "true"}·
-    %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
-      %i.mdi.mdi-lock-outline>
-      %span{translate: "common.privacy.private"}>
-    %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
-      %i.mdi.mdi-earth>
-      %span{translate: "common.privacy.public"}>
-    %span{ng-show: "discussion.seenByCount > 0"}>
-      %span{aria-hidden: "true"}>·
-      %span.context-panel__seen_by_count{ translate: "thread_context.seen_by_count", translate-value-count: "{{discussion.seenByCount}}"}
-    %outlet{name: "after-thread-title", model: "discussion"}
+  .context-panel__details.md-body-1.lmo-flex--row.lmo-flex__center
+    %user_avatar.lmo-margin-right{user: "discussion.author()", size: "small"}
+    %span
+      %strong> {{::discussion.authorName()}}
+      %span{aria-hidden: "true"}·
+      %timeago.nowrap{timestamp: "::discussion.createdAt" }>
+      %span{aria-hidden: "true"}·
+      %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
+        %i.mdi.mdi-lock-outline>
+        %span{translate: "common.privacy.private"}>
+      %span.nowrap.context-panel__discussion-privacy.context-panel__discussion-privacy--public{ng-show: "!discussion.private"}>
+        %i.mdi.mdi-earth>
+        %span{translate: "common.privacy.public"}>
+      %span{ng-show: "discussion.seenByCount > 0"}>
+        %span{aria-hidden: "true"}>·
+        %span.context-panel__seen_by_count{ translate: "thread_context.seen_by_count", translate-value-count: "{{discussion.seenByCount}}"}
+  %outlet{name: "after-thread-title", model: "discussion"}
 
   .context-panel__description.lmo-markdown-wrapper{ng-if: "!translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
   %translation.lmo-markdown-wrapper{ng-if: "translation", translation: "translation", field: "description"}
 
-  %document_list{model: "discussion"}
+  %document_list{model: "discussion", ng-show: "discussion.documents().length > 0"}
 
   .lmo-md-actions
     %reactions_display.context-panel__actions-left{model: "discussion", load: "true"}

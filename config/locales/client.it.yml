@@ -1,12 +1,50 @@
 it:
+  reactions:
+    slight_smile: Mi piace
+    heart: Amore
+    laughing: Risata
+    clap: Applauso
+    hugging: Abbraccio
+    sunglasses: Fico
+    wink: Occhiolino
+    nerd: Intelligente
+    relieved: Sollevato
+    worried: Preoccupato
+    confused: Confuso
+    confounded: Sconcertato
+    neutral_face: Neutrale
+    slight_frown: Accigliato
+    disappointed: Deluso
+    angry: Arrabbiato
+    weary: Stanco
+    astonished: Stupito
+    rolling_eyes: Occhi roteanti
+    cry: Piangente
+    scream: Urlante
+    sleeping: Annoiato
+    thinking: Pensieroso
+    raised_hands: A mani alzate
+    pray: Implorante
+    fingers_crossed: A dita incrociate
+    v: Pace
+    metal: Metal
+    ok_hand: Ok
+    wave: Onda
   poll_types:
     proposal: Proposta
     count: Controlla
     poll: Sondaggio
     dot_vote: Voto a punti
+    meeting: Sondaggio per incontro
+    ranked_choice: Scelta di preferenze
   timezones:
     local: Ora locale ({{value}})
   common:
+    you: Tu
+    expand: Espandi
+    all_day: Tutto il giorno
+    ok_got_it: Ok, capito
+    learn_more: Per saperne di più
     not_found: Non trovato
     time_zone: Fuso orario
     local_time: Ora locale
@@ -24,6 +62,7 @@ it:
     decisions: 'Decisioni'
     settings: 'Configurazione'
     help: 'Aiuto'
+    anonymous: Anonimo
     privacy:
       privacy: 'Privacy'
       public: 'Pubblico'
@@ -44,7 +83,10 @@ it:
     copy: 'Copia'
     copy_text: 'Copia testo'
     copied: 'Copiato negli appunti'
+    points_abbrev: Ogni voto vale {{score}} punti
+    total: Totale
     action:
+      next: 'Prossimo'
       close: 'Chiudi'
       save: 'Salva'
       save_changes: 'Salva'
@@ -68,10 +110,31 @@ it:
       uploading: 'Caricamento in corso'
       load_more: 'Carica ancora'
       share: Condividi
+      ok: Ok!
+      retry: Riprova
       done: Fatto
       start: Avvio
+      delete: Cancella
+      unsubscribe: Discriviti
+      subscribe: Iscriviti
+      remind: Ricorda
+      resend: Reinvia
+      send: Invia
+      resent: Invito reinviato
     formatting_help:
       label: 'Formattazione'
+      title: 'Impara come usare il Markdown per formattare il tuo testo'
+  ordinal:
+    _1: 1*
+    _2: 2°
+    _3: 3°
+    _4: 4°
+    _5: 5°
+    _6: 6°
+    _7: 7°
+    _8: 8°
+    _9: 9°
+    _10: 10°
   devise:
     failure:
       inactive: 'Questo indirizzo email è associato a un account disattivato. Se vuoi riattivare il tuo account, faccelo sapere.'
@@ -79,8 +142,20 @@ it:
     forbidden: 'Non hai l''autorizzazione per farlo.'
     page_not_found: 'Oggetto non trovato. Potrebbe essere stato rimosso o cancellato.'
     internal_server_error: 'Spiacenti, ma qualcosa è andato storto. Riprova più tardi '
+  verify_email_notice:
+    please_verify: Grazie della partecipazione! Cerca nella tua email un link e cliccaci per verificare il tuo voto.
+  verify_stances:
+    title: Verifica voti
+    description: Controlla i voti qui sotto e verifica che siano i tuoi.
+    verify: Verifica
+    remove: Rimuovi
+    verify_success: Voto verificato
+    remove_success: Voto rimosso
+    all_done: Ottimo lavoro, hai verificato tutti i voti.
   previous_polls_page:
     heading: Attività in {{nome}}
+    polls_count: Mostra {{loaded}} su un totale di {{total}} decisioni
+    search_activities: Cerca decisioni
   volume_levels:
     loud: 'Alto'
     normal: 'Normale'
@@ -132,8 +207,8 @@ it:
     aria_label: Silenzia discussione
     mute_thread: Silenzia discussione
     body_html: |
-      <p>Muting significa che <strong>non riceverai notifiche riguardanti le proposte</strong>, o altre attività in questa discussione a meno che qualcuno non ti  <strong>@mentions</strong>.</p>
-      <p>Inoltre, le discussioni silenziate non vengono visualizzate all'interno delle pagine <strong>Recent</strong> e <strong>Unread</strong>. Per trovare le tue discussioni silenziate seleziona l'opzione <strong>Muted</strong>nella sidebar:</p>
+      <p>Silenziare significa che <strong>non riceverai notifiche riguardanti le proposte</strong>, o altre attività in questa discussione a meno che qualcuno non ti  <strong>@menzioni</strong>.</p>
+      <p>Inoltre, le discussioni silenziate non vengono visualizzate all'interno delle pagine <strong>Recenti</strong> e <strong>Non Lette</strong>. Per trovare le tue discussioni silenziate seleziona l'opzione <strong>Silenziate</strong>nella barra laterale:</p>
     image_alt: Opzione discussioni silenziate nella colonna laterale
   dismiss_explanation_modal:
     aria_label: Ignora discussione
@@ -153,6 +228,7 @@ it:
   signed_out_modal:
     aria_label: 'Sessione finita'
     title: "La tua sessione è finita"
+    message: "Sei uscito dall'autenticazione da un altra finestra. Autenticati di nuovo per continuare."
     ok: "Ok"
   comment_form:
     aria_label: 'Aggiungi un commento'
@@ -164,13 +240,15 @@ it:
       replied: '{{name}} è stato notificato della risposta'
       updated: 'Commento aggiornato'
       destroyed: 'Commento cancellato.'
+    say_something: Scrivi qualcosa...
     edit_comment: 'Modifica commento'
     delete_comment: 'Cancella il commento'
     cancel_reply: 'Annulla risposta'
     confirm_delete_message: 'Sei sicuro che vuoi cancellare questo commento?'
     confirm_delete: 'Cancella commento'
+    in_reply_to: "In risposta a {{name}}:"
     submit_button:
-      label: 'Post'
+      label: 'Messaggio'
     private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
     public_privacy_notice: 'Il tuo commento sarà visibile a qualsiasi persona sul web.'
     sign_in: "Entra per partecipare alla discussione"
@@ -203,7 +281,14 @@ it:
       proposals: 'Proposte'
       comments: 'Commenti'
     sign_in: 'Entra'
+    toggle_sidebar: 'Attiva la barra laterale'
     logo_title: 'Home page'
+  user_dropdown:
+    edit_profile: 'Modifica profilo'
+    email_settings: 'Impostazioni email'
+    help: 'Aiuto'
+    contact_site_name: 'Contatto {{site_name}}'
+    sign_out: 'Esci'
   start_menu:
     label: 'Azioni utente'
     title: 'Azioni'
@@ -224,7 +309,9 @@ it:
     new_vote: "<strong>{{name}}</strong> {{position}} sulla proposta <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> ha commentato su <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha risposto al tuo commento in <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> ha reagito <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> al tuo commento  in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> ti ha menzionato in <strong>{{title}}</strong>"
+    user_reminded: "<strong>{{name}}</strong>sta aspettando di partecipare a <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ha chiesto di iscriversi a <strong>{{title}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> ha approvato la tua richiesta di iscriverti a <strong>{{title}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> ti ha iscritto al gruppo <strong>{{title}}</strong>"
@@ -238,7 +325,9 @@ it:
     poll_edited: "<strong>{{name}}</strong> ha modificato {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} si chiude tra poco: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} si è chiuso: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> ha aggiunto delle opzioni al {{poll_type}}: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
+    stance_created: "<strong>{{name}}</strong>ha partecipato a:<strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Dite la vostra
   extend_proposal_form:
@@ -268,6 +357,9 @@ it:
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     make_announcement: Annuncio
     notified_count: '{{count}} persone riceveranno un''email'
+  action_dock:
+    react: Aggiungi reazione
+    add_resource: Aggiungi allegato
   cover_photo_form:
     aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'
@@ -301,6 +393,8 @@ it:
     started_by: 'Iniziato da <strong>{{name}}</strong>'
     edited_by: 'Modificato da <strong>{{name}}</strong>'
     posted: Pubblicato
+  reactions_display:
+    you: "Tu"
   group_page:
     thread_list:
       empty:
@@ -406,6 +500,7 @@ it:
     membership_granted_upon_approval_secret_parent: '<strong>Su richiesta</strong> chiunque da {{parent}} può chiedere di unirsi al gruppo.'
     thread_privacy: 'Pricacy della discussione'
     allow_public_threads: 'Permetti discussioni pubbliche in questo gruppo.'
+    submit_start_group: 'Crea un gruppo'
     submit_start_subgroup: 'Avvia sottogruppo'
     submit_update: 'Aggiorna impostazioni'
     messages:
@@ -415,7 +510,11 @@ it:
     heading: 'Richieste di partecipazione'
     manage_requests: Gestisci richieste
     manage_requests_with_count: Gestisci richieste ({{count}})
+  documents_page:
+    confirm_remove_title: Rimuovi l'allegato
   document:
+    modal:
+      title: Aggiungi allegato
     form:
       title_label: Nome
   membership_requests_page:
@@ -630,11 +729,17 @@ it:
     invitation: 'Consigli per scrivere un bell''invito '
     proposal: 'Consigli per scrivere una proposta chiara'
     vote: 'Puoi cambiare la tua posizione in ogni momento'
+  registered_apps_page:
+    name: Nome
+  registered_app_form:
+    name_label: Nome
   decision_tools_card:
     proposal_title: Proposta
     count_title: Controlla
     poll_title: Sondaggio
     dot_vote_title: Voto a punti
+    meeting_title: Sondaggio per incontro
+    ranked_choice_title: Scelta di preferenze
   poll_common:
     your_response: La tua risposta
     change_your_response: Cambia la tua risposta
@@ -647,6 +752,7 @@ it:
     statement: Dichiarazione
     change_your_stance: Cambia il tuo voto
     load_more: Caricane altri
+    start_poll: Inizia una decisione
   poll_common_notify_group:
     notify_group: Annuncio
   poll_common_close_form:
@@ -674,6 +780,8 @@ it:
   poll_count_vote_form:
     stance_created: Voto creato
     stance_updated: Voto aggiornato
+  poll_meeting_chart_panel:
+    total: Totale
   poll_poll_vote_form:
     stance_created: Voto creato
     stance_updated: Voto aggiornato
@@ -693,6 +801,9 @@ it:
   poll_common_subscribe_form:
     receive_updates_title: Il tuo voto è stato acquisito
     receive_updates_helptext: Se vuoi ricevere un'email sul risultato del sondaggio, inserisci la tua email qui sotto
+    subscribe: Iscriviti
   polls_page:
     heading: Decisioni
     start_new_poll: Nuova decisione
+  auth_form:
+    name: Nome

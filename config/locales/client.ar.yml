@@ -245,6 +245,8 @@ ar:
     heading: 'طلبات العضوية'
     manage_requests: إدارة الطلبات
     manage_requests_with_count: إدارة الطلبات ({{count}})
+  documents_page:
+    confirm_remove_title: حذف المرفق
   document:
     form:
       title_label: 'الاسم '

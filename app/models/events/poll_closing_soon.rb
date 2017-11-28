@@ -6,6 +6,7 @@ class Events::PollClosingSoon < Event
   def self.publish!(poll)
     super poll,
           user: poll.author,
+          parent: poll.created_event,
           announcement: !!poll.events.find_by(kind: :poll_created)&.announcement
   end
 

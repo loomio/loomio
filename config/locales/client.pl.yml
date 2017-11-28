@@ -274,6 +274,8 @@ pl:
   group_form:
     privacy: 'Prywatność'
     submit_update: 'Zaktualizuj ustawienia'
+  documents_page:
+    confirm_remove_title: Usunięcie załącznika
   document:
     form:
       title_label: Nazwa

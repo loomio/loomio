@@ -10,7 +10,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
   end
 
-  actions :index, :show, :edit, :update
+  actions :index, :show, :new, :edit, :update, :create
 
   filter :name
   filter :description
@@ -200,9 +200,12 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
 
   form do |f|
     f.inputs "Details" do
-      f.input :id, :input_html => { :disabled => true }
-      f.input :name, :input_html => { :disabled => true }
+      if f.object.persisted?
+        f.input :id, :input_html => { :disabled => true }
+      end
+      f.input :name, :input_html => { :disabled => f.object.persisted? }
       f.input :description
+      f.input :parent_id, label: "Parent Id"
       f.input :subdomain, as: :string
       f.input :analytics_enabled
       f.input :enable_experiments
@@ -213,7 +216,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   member_action :move, method: :post do
     group = Group.friendly.find(params[:id])
     if parent = Group.find_by(key: params[:parent_id]) || Group.find_by(id: params[:parent_id].to_i)
-      group.subscription&.destroy if Plugins.const_defined?("LoomioBuyerExperience")
+      group.subscription&.destroy if Plugins.const_defined?("LoomioOrgPlugin")
       group.update(parent: parent)
     end
     redirect_to admin_group_path(group)

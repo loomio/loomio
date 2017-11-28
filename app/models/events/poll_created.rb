@@ -6,6 +6,7 @@ class Events::PollCreated < Event
   def self.publish!(poll, actor)
     super poll,
           user: actor,
+          parent: poll.parent_event,
           announcement: true,
           discussion: poll.discussion
   end

@@ -4,7 +4,10 @@ class Events::PollExpired < Event
   include Events::Notify::ThirdParty
 
   def self.publish!(poll)
-    super poll, discussion: poll.discussion, created_at: poll.closed_at
+    super poll,
+          discussion: poll.discussion,
+          parent: poll.created_event,
+          created_at: poll.closed_at
   end
 
   private

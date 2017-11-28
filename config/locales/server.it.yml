@@ -1,4 +1,26 @@
 it:
+  explore:
+    header: Esplora i gruppi pubblici
+  activerecord:
+    errors:
+      messages:
+        blank: non può essere vuoto
+        invalid: non è un valore valido
+  errors:
+    messages:
+      email: Non è un indirizzo email valido
+      spoofed_media_type: I contenuti di questo file non corrispondono al suo nome file
+  attachment:
+    error:
+      too_large: Il file che hai tentato di allegare è più ampio di 100 Megabytes, scegli un file più piccolo.
+  poll:
+    error:
+      cannot_add_options: Impossibile aggiungere opzioni a questo sondaggio
+      cannot_remove_options: Impossibile rimuovere opzioni da questo sondaggio
+      must_have_options: Ci deve essere almeno una opzione di sondaggio
+  stance:
+    error:
+      too_short: Fai una selezione
   email:
     custom: "%{text}"
     group_email:
@@ -32,4 +54,5 @@ it:
     forbidden_passwords: Le password banali come "password" sono vietate per tenere al sicuro il vostro account.
   poll_mailer:
     common:
+      unsubscribe: Discriviti
       results: Risultati

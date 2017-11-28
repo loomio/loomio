@@ -15,14 +15,10 @@ class MarkedAsRead::DiscussionSerializer < ActiveModel::Serializer
   attributes :id,
              :key,
              :items_count,
-             :salient_items_count,
-             :first_sequence_id,
-             :last_sequence_id
+             :ranges
 
   attributes_from_reader :discussion_reader_id,
-                         :read_items_count,
-                         :read_salient_items_count,
-                         :last_read_sequence_id,
+                         :read_ranges,
                          :last_read_at,
                          :dismissed_at
 

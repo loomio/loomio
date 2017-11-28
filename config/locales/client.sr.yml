@@ -301,10 +301,8 @@ sr:
     manage_requests: Upravljanje zahtevima
     manage_requests_with_count: Upravljanje zahtevima ({{count}})
   documents_page:
-    title: Resursi
+    confirm_remove_title: Ukloni dodatak
   document:
-    list:
-      title: Resursi
     form:
       title_label: Ime
   membership_requests_page:

@@ -26,23 +26,31 @@ class DiscussionReader < ActiveRecord::Base
     self.for(user: actor || model.author, discussion: model.discussion)
   end
 
-  def update_reader(read_at: nil, volume: nil, participate: false, dismiss: false)
-    viewed!(read_at, persist: false)    if read_at
+  def update_reader(ranges: nil, volume: nil, participate: false, dismiss: false)
+    viewed!(ranges, persist: false)     if ranges
     set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
     dismiss!(persist: false)            if dismiss
-    save(validate: false)               if changed?
+    save!                               if changed?
   end
 
-  def viewed!(read_at, persist: true)
-    return if self.last_read_at && self.last_read_at > read_at
-    assign_attributes(read_attributes(read_at))
-    EventBus.broadcast('discussion_reader_viewed!', self)
+  def viewed!(ranges = [], persist: true)
+    mark_as_read(ranges) unless has_read?(ranges)
+    assign_attributes(last_read_at: Time.now)
     save if persist
+  end
+
+  def has_read?(ranges = [])
+    RangeSet.includes?(read_ranges, ranges)
+  end
+
+  def mark_as_read(ranges)
+    ranges = RangeSet.to_ranges(ranges)
+    return if ranges.empty?
+    self.read_ranges = read_ranges.concat(ranges)
   end
 
   def dismiss!(persist: true)
     self.dismissed_at = Time.zone.now
-    EventBus.broadcast('discussion_reader_dismissed!', self)
     save if persist
   end
 
@@ -59,21 +67,40 @@ class DiscussionReader < ActiveRecord::Base
     self.class.volumes.invert[self[:volume]]
   end
 
-  private
+  # because items can be deleted, we need to count the number of items in each range against the db
+  def calculate_read_items_count
+    read_ranges.sum {|r| discussion.items.where(sequence_id: Range.new(*r)).count }
+  end
 
-  def read_attributes(read_at)
-    @read_attributes ||= begin
-      read_items         = discussion.items.where('events.created_at <= ?', read_at)
-      read_salient_items = discussion.salient_items.where('events.created_at <= ?', read_at)
-      {
-        last_read_at:             read_at,
-        last_read_sequence_id:    read_items.maximum(:sequence_id).to_i,
-        read_items_count:         read_items.count,
-        read_salient_items_count: read_salient_items.count
-      }
+  def read_ranges
+    RangeSet.parse(self.read_ranges_string)
+  end
+
+  def read_ranges=(ranges)
+    ranges = RangeSet.reduce(ranges)
+    self.read_ranges_string = RangeSet.serialize(ranges)
+    self.read_items_count = calculate_read_items_count
+  end
+
+  # maybe yagni, because the client should do this locally
+  def unread_ranges
+    RangeSet.subtract_ranges(discussion.ranges, read_ranges)
+  end
+
+  def read_ranges_string
+    if self[:read_ranges_string] == nil
+      if last_read_sequence_id == 0
+        ""
+      else
+        first = (discussion.first_sequence_id == 0) ? 1 : discussion.first_sequence_id
+        "#{first}-#{self.last_read_sequence_id}"
+      end
+    else
+      self[:read_ranges_string]
     end
   end
 
+  private
   def membership
     @membership ||= discussion.group.membership_for(user)
   end

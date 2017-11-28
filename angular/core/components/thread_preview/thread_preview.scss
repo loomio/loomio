@@ -14,6 +14,11 @@
   padding: $thinPaddingSize $cardPaddingSize;
   color: $primary-text-color;
   text-decoration: none;
+
+  &.thread-preview__link--unread {
+    border-left: 2px solid;
+    padding-left: $cardPaddingSize - 2px;
+  }
 }
 
 .thread-preview__status-icon {

@@ -57,7 +57,7 @@ de:
       privacy: 'Privatsphäre'
       public: 'Öffentlich'
       open: 'Offen'
-      closed: 'Beendet'
+      closed: 'Geschlossen'
       private: 'Privat'
       secret: 'Geheim'
     selected: 'Ausgewählt'
@@ -131,7 +131,7 @@ de:
     unmute: 'Laut'
   change_volume_form:
     loud_label: "Über alle Aktivitäten benachrichtigen"
-    normal_label: "Ankündigungen"
+    normal_label: "Nur Ankündigungen"
     quiet_label: "Keine E-Mails"
     mute_label: "Stummschalten"
     discussion:
@@ -148,7 +148,7 @@ de:
       title: "E-Mail-Einstellungen für {{title}}"
       loud_description: "Du wirst benachrichtigt, sobald in dieser Gruppe etwas passiert."
       normal_description: "Du wirst nur über Ankündigungen in dieser Gruppe benachrichtigt."
-      quiet_description: "Du wirst über keine Meldungen in dieser Gruppe benachrichtigt."
+      quiet_description: "Du wirst nicht über Aktivitäten in dieser Gruppe benachrichtigt."
       apply_to_all: "Diese Einstellungen für alle meine Gruppen übernehmen."
       messages:
         loud: "Du wirst über alles per eMail benachrichtigt, sobald in dieser Gruppe etwas passiert."
@@ -172,6 +172,11 @@ de:
   mute_explanation_modal:
     aria_label: Diskussion stummschalten
     mute_thread: Diskussion stummschalten
+  dismiss_explanation_modal:
+    aria_label: Diskussion ausblenden
+    dismiss_thread: Diskussion ausblenden
+    body_html: |
+      <p>Wird eine Diskussion ausgeblendet, wird sie aus der Übersicht der ungelesenen Diskussionen entfernt. Erst bei neuen Aktivitäten wird die Diskussion wieder als ungelesen angezeigt.</p>
   inbox:
     clear: 'Leeren'
     latest: 'Letzte'
@@ -206,12 +211,12 @@ de:
     public_privacy_notice: 'Dein Kommentar wird für alle im Web sichtbar sein.'
     sign_in: "Melde Dich an, um an der Diskussion teilzunehmen"
   sidebar:
-    recent_threads: 'Aktuelle Themen'
+    recent_threads: 'Aktuelle Diskussionen'
     unread_threads: 'Ungelesene Diskussionen ({{count}})'
     muted_threads: 'Stummgeschaltete Diskussionen'
     start_group: 'Neue Gruppe'
     explore: 'Öffentliche Gruppen'
-    start_thread: Neues Thema
+    start_thread: Neue Diskussion
     start_decision: Neue Abstimmung
     aria_labels:
       heading: 'Sidebar'
@@ -220,7 +225,7 @@ de:
   navbar:
     recent_title: 'Aktuelle Diskussionen sehen'
     unread_title: 'Diskussionen mit ungelesenen Beiträgen anzeigen'
-    start_thread: 'Neues Thema'
+    start_thread: 'Neue Diskussion'
     notifications: 'Benachrichtigungspanel'
     search:
       results_aria_label: 'Suchergebnisse'
@@ -228,7 +233,7 @@ de:
       close: 'Suchabfrage schließen'
       placeholder: 'Suchen'
       loading: 'Lade Ergebnisse...'
-      discussions: 'Themen'
+      discussions: 'Diskussionen'
       proposals: 'Vorschläge'
       comments: 'Kommentare'
     sign_in: 'Anmelden'
@@ -240,8 +245,8 @@ de:
     sign_out: 'Abmelden'
   start_menu:
     label: 'Benutzer-Aktionen'
-    start_group: 'Gruppe gründen'
-    start_subgroup: 'Untergruppe gründen'
+    start_group: 'Gruppe erstellen'
+    start_subgroup: 'Untergruppe erstellen'
     start_thread: 'Diskussion eröffnen'
     start_poll: 'Umfrage starten'
     invite_people: 'Teilnehmer einladen'
@@ -357,7 +362,7 @@ de:
     thread_list:
       empty:
         no_discussions_in_group: "In dieser Gruppe sind noch keine Diskussionen vorhanden."
-        no_discussions_matching_filters_html: "Es gibt keine Themen, die den Filterkriterien entsprechen. <a href='%{link}'>Filter zurücksetzen</a>."
+        no_discussions_matching_filters_html: "Es gibt keine Diskussionen, die den Filterkriterien entsprechen. <a href='%{link}'>Filter zurücksetzen</a>."
         no_public_discussions: "Es gibt keine öffentlichen Diskussionen in dieser Gruppe."
         discussions_are_private: "Alle Diskussionen dieser Gruppe sind nichtöffentlich."
         join_group: "Um nichtöffentliche Diskussionen lesen zu können, musst Du der Gruppe beitreten"
@@ -375,10 +380,10 @@ de:
     new_photo: 'Neues Foto'
     new_cover_photo: 'Neues Titelfoto hochladen'
     new_group_logo: 'Neues Gruppenlogo hochladen'
-    discussions: 'Themen'
+    discussions: 'Diskussionen'
     discussions_placeholder: 'An einer Diskussion können sich alle Mitglieder beteiligen und gemeinsam Abstimmungen durchführen.'
     members: 'Mitglieder'
-    members_placeholder: 'Du bist bislang alleine hier: Lade weitere Teilnehmer ein!'
+    members_placeholder: 'Du bist bislang alleine hier: Lade mehr Leute ein!'
     member_options: Mitgliedseinstellungen
     see_all_members: 'Alle anzeigen: ({{count}}) Mitglieder'
     subgroups: 'Untergruppen'
@@ -391,7 +396,7 @@ de:
       edit_group: 'Gruppeneinstellungen bearbeiten'
       manage_members: 'Mitglieder organisieren'
       add_subgroup: 'Untergruppe anlegen'
-      manage_subscription: 'Gruppenabonnement verwalten'
+      manage_subscription: 'Gruppenbenachrichtigungen verwalten'
       email_settings: 'E-Mail-Einstellungen'
       leave_group: 'Gruppe verlassen'
       deactivate_group: 'Gruppe deaktivieren'
@@ -402,8 +407,8 @@ de:
       normal: 'Nur wichtige Neuigkeiten per E-Mail senden: neue Diskussionen, neue Vorschläge, neue Ergebnisse etc.'
       normal_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe stehen derzeit auf "Normal". Du wirst per E-Mail über wichtige Meldungen informiert, z. B. wenn jemand eine neue Diskussion beginnt, eine Abstimmung eröffnet oder ein Abstimmungsergebnis bekanntgibt.
       normal_message: 'Du wirst in "{{name}}" nur über wichtige Geschehnisse per eMail benachrichtigt.'
-      quiet: Keine E-Mail über diese Gruppe. Meldungen werden auf dem Statusleiste angezeigt.
-      quiet_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe steht auf "Leise". Du erhältst keine eMail bezüglich Meldungen in dieser Gruppe. Meldungen werden auf der Startseite angezeigt.
+      quiet: Keine E-Mail-Benachrichtungen für diese Gruppe senden. Aktivitäten werden auf dem Dashboard angezeigt.
+      quiet_aria_description: Deine Benachrichtigungseinstellung für diese Gruppe ist auf "Leise" gestellt. Du erhältst keine Benachrichtigungen über Aktivitäten in dieser Gruppe. Aktivitäten werden aber auf dem Dashboard angezeigt.
       quiet_message: 'Du wirst über nichts in "{{name}}" per eMail benachrichtigt.'
       mute: Diese Gruppe auf dem Dashboard verbergen und nur benachrichtigen, wenn ich @erwähnt werde.
       mute_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe steht auf "Stumm". Du wirst nur per eMail informiert, wenn Du @angesprochen wirst. Meldungen aus dieser Gruppe werden in der Statusleiste nicht angezeigt.
@@ -429,20 +434,21 @@ de:
     question: 'Bist du sicher, dass du diese Gruppe deaktivieren möchtest?'
     submit: 'Ja, diese Gruppe deaktivieren'
   group_form:
-    start_group_heading: 'Gründe eine Gruppe'
-    start_subgroup_heading: 'Gründe eine Untergruppe'
+    start_group_heading: 'Gruppe erstellen'
+    start_subgroup_heading: 'Untergruppe erstellen'
     edit_group_heading: 'Gruppeneinstellungen bearbeiten'
     edit_subgroup_heading: 'Untergruppeneinstellungen bearbeiten'
-    group_name: 'Gruppenname'
+    group_name: 'Gruppen-Name'
     group_name_placeholder: 'Wie willst Du Deine Gruppe nennen?'
-    subgroup_name: 'Untergruppenname'
+    subgroup_name: 'Untergruppen-Name'
     description: 'Beschreibung'
     description_placeholder: 'Beschreibe die Zielsetzung deiner Gruppe, damit die Mitglieder wissen, warum sie hier sind.'
     privacy_statement:
-      public_on_web: 'Name und Beschreibung wird im Web veröffentlicht'
+      public_on_web: 'Name und Beschreibung werden im Web veröffentlicht'
       private_to_group: 'Name und Beschreibung sind nur Mitgliedern sichtbar'
       private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
     privacy: 'Privatsphäre'
+    group_privacy_is_open_description: "Die Gruppe ist für alle sichtbar und kann von allen betreten werden. Nur Gruppenmitglieder können sehen, wer Mitglied in dieser Gruppe ist. Alle Diskussionen sind öffentlich."
     group_privacy_is_secret_description: "Nur eingeladene Mitglieder können die Gruppe finden und die Teilnehmer und Diskussionsbeiträge der Gruppe sehen."
     confirm_change_to_secret: "Wenn Du fortfährst werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat."
     confirm_change_to_secret_subgroup: 'Wenn Du fortfährst werden alle Diskussionen privat.'
@@ -465,21 +471,24 @@ de:
     members_can_edit_discussions: 'Mitglieder können die Beschreibung und den Titel aller Diskussionen bearbeiten.'
     members_can_edit_comments: 'Mitglieder können jederzeit ihre eigenen Kommentare bearbeiten.'
     members_can_start_discussions: 'Mitglieder können Diskussionen eröffnen.'
-    members_can_vote: 'Mitglieder können über Vorschläge abstimmen.'
-    members_can_raise_motions: 'Mitglieder können Vorschläge eröffnen.'
-    submit_start_group: 'Gruppe gründen'
-    submit_start_subgroup: 'Untergruppe gründen'
+    members_can_vote: 'Mitglieder können an Abstimmungen teilnehmen.'
+    members_can_raise_motions: 'Mitglieder können Abstimmungen erstellen.'
+    submit_start_group: 'Gruppe erstellen'
+    submit_start_subgroup: 'Untergruppe erstellen'
     submit_update: 'Einstellungen aktualisieren'
     messages:
-      group_created: 'Gruppe gegründet'
+      group_created: 'Gruppe wurde erstellt'
       group_updated: 'Gruppe aktualisiert'
   membership_requests_card:
     heading: 'Mitgliedschaftsanfragen'
     manage_requests: Anfragen verwalten
     manage_requests_with_count: ({{count}}) Anfragen verwalten
+  documents_page:
+    confirm_remove_title: Anhang entfernen
   document:
-    list:
-      no_poll_documents: Für diese Diskussion wurden noch keine Arbeitsmaterialien hochgeladen.
+    management:
+      discussion_header: Hochgeladene Inhalte
+      added_by: hochgeladen von {{name}}
     form:
       title_label: Name
   membership_requests_page:
@@ -632,13 +641,15 @@ de:
     no_threads:
       show_all: Du hast keine aktuellen Diskussionen.
       show_proposals: Momentan sind keine Vorschläge am Laufen.
-      show_muted: Du hast keine Diskussionen auf stumm gesetzt.
+      show_muted: Du hast keine Diskussionen stummgeschaltet.
     view_recent: Alle neuen Diskussionen anzeigen?
     load_more: Mehr Diskussionen anzeigen
     mark_as_read: Als gelesen markieren
+    dismiss: Ausblenden
+    thread_dismissed: Diskussion ausgeblendet.
     filtering:
-      filter_threads: Themen filtern
-      filter_threads_aria_label: Themen filtern
+      filter_threads: Diskussionen filtern
+      filter_threads_aria_label: Diskussionen filtern
       dropdown_heading: Aktuelles filtern
       all: Aktuelle Diskussionen
       all_aria_label: Momentan werden alle aktuellen Diskussionen angezeigt
@@ -658,6 +669,7 @@ de:
       undecided: 'Du bist unentschlossen'
     threads_from:
       group: 'Diskussionen von'
+      proposals: 'Diskussionen mit aktuell laufenden Abstimmungen'
       starred: 'Favorisierte Diskussionen'
       today: 'Heute'
       yesterday: 'Gestern'
@@ -686,7 +698,7 @@ de:
       mute_message: 'Diskussion stummgeschaltet.'
       unmute_message: 'Stummschalten deaktiviert'
   thread_group:
-    aria_label: 'Gruppenname'
+    aria_label: 'Gruppen-Name'
   thread_context:
     aria_label: 'Diskussionsbeschreibung'
     thread_options: 'Diskussionsoptionen'
@@ -698,7 +710,7 @@ de:
     print_thread: 'Drucken'
     delete_thread: 'Löschen'
     add_comment: 'Kommentieren'
-    seen_by_count: 'Gesehen von {{count}} Person(en)'
+    seen_by_count: '{{count}}-mal gesehen'
   delete_thread_form:
     aria_label: 'Diskussion löschen'
     title: Diskussion löschen
@@ -804,7 +816,7 @@ de:
     revoke: Widerrufen
   registered_apps_page:
     title: Registrierte Anwendungen
-    no_applications: "Du hast bisher keine OAuth-Anwendungen! Klicke hier unterhalb, um eine zu erstellen."
+    no_applications: "Du hast bislang keine OAuth-Anwendungen! Unten klicken, um eine einzurichten."
     name: Name
     redirect_uris: Umleitungs-URLs
     create_new_application: Neue Anwendung
@@ -846,7 +858,7 @@ de:
     meeting_title: Terminfindung
     ranked_choice_title: Gewichtete Auswahl
   poll_common:
-    your_response: Deine Antwort
+    your_response: Deine Abstimmungsentscheidung
     change_your_response: Abstimmungsentscheidung ändern
     reason: Begründung
     reason_placeholder: Ergänzender Kommentar?
@@ -865,12 +877,12 @@ de:
     publish_poll: Abstimmung teilen
   poll_common_add_option:
     button:
-      add_option: Weitere Option hinzufügen
+      add_option: Abstimmungsoptionen hinzufügen
   poll_common_card:
     show_results: Ergebnis anzeigen
   poll_common_index_card:
     title: Bisherige Abstimmungen
-    no_polls: Bislang sind keine Abstimmungen durchgeführt worden.
+    no_polls: Bislang sind noch keine Abstimmungen vorhanden.
   current_polls_card:
     title: Aktuelle Abstimmungen
     start_poll: Neue Abstimmung
@@ -897,7 +909,9 @@ de:
     helptext: Bist du sicher, dass du die Abstimmung vorzeitig beenden möchtest?
     close_poll: Abstimmung vorzeitig beenden
     close_count: Bestätigung vorzeitig beenden
+    close_meeting: Terminfindung beenden
     count_closed: Bestätigung beendet
+    meeting_closed: Terminfindung beendet
   poll_card:
     started_by: Erstellt von {{name}}
   poll_common_votes_panel:
@@ -906,6 +920,7 @@ de:
     priority_first: Zustimmende zuerst
     priority_last: Ablehnende zuerst
     no_votes_yet: Es gibt noch keine Abstimmungsbeiträge.
+    none_of_the_above: (Keine der genannten)
   poll_common_undecided_panel:
     show_undecided: "{{count}} unentschlossene(n) Teilnehmer anzeigen"
     undecided_users: "Unentschlossene Teilnehmer ({{count}})"
@@ -982,6 +997,8 @@ de:
     out_of: von {{goal}}
   poll_meeting_chart_panel:
     total: Gesamt
+  poll_meeting_vote_form:
+    your_response: Wann kannst du teilnehmen?
   poll_dot_vote_vote_form:
     dots_remaining: "{{count}} Klebepunkt(e) übrig."
     too_many_dots: Du hast zu viele Klebepunkte verwendet.

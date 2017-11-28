@@ -5,6 +5,9 @@ angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, For
     $scope.model = Records.discussions.build()
     $scope.model.url = $scope.document.url or ''
 
+    $scope.submit = ->
+      $scope.$emit('nextStep', $scope.model.url)
+
     $scope.$on 'attachmentUploaded', (_, attachment) ->
       $scope.document.title = $scope.document.title || attachment.filename
       $scope.$emit 'nextStep', attachment.original

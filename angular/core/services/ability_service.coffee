@@ -42,6 +42,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       Session.user().isMemberOf(thread.group()) and
       (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
 
+    canRemoveEventFromThread: (event) ->
+      event.kind == 'discussion_edited' && @canAdministerDiscussion(event.discussion())
+
     canPinThread: (thread) ->
       !thread.pinned && @canAdministerGroup(thread.group())
 

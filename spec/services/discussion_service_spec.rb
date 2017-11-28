@@ -25,12 +25,6 @@ describe 'DiscussionService' do
                                actor: user)
     end
 
-    it 'saves the discussion' do
-      discussion.should_receive(:save!).and_return(true)
-      DiscussionService.create(discussion: discussion,
-                               actor: user)
-    end
-
     it 'clears out the draft' do
       draft = create(:draft, user: user, draftable: discussion.group, payload: { discussion: { name: 'name draft' } })
       DiscussionService.create(discussion: discussion, actor: user)

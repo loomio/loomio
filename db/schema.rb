@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20171123224852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
-  enable_extension "citext"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -77,11 +77,11 @@ ActiveRecord::Schema.define(version: 20171123224852) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "filename",          limit: 255
+    t.string   "filename",             limit: 255
     t.text     "location"
     t.integer  "comment_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "filesize"
     t.string   "file_file_name"
     t.string   "file_content_type"
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 20171123224852) do
     t.integer  "volume"
     t.boolean  "participating",            default: false, null: false
     t.datetime "dismissed_at"
+    t.string   "read_ranges_string"
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
@@ -249,6 +250,7 @@ ActiveRecord::Schema.define(version: 20171123224852) do
     t.integer  "seen_by_count",                   default: 0,     null: false
     t.integer  "guest_group_id"
     t.integer  "announcements_count",             default: 0,     null: false
+    t.string   "ranges_string"
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -262,17 +264,16 @@ ActiveRecord::Schema.define(version: 20171123224852) do
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
 
   create_table "documents", force: :cascade do |t|
-    t.integer  "model_id",      null: false
-    t.string   "model_type",    null: false
-    t.integer  "attachment_id"
+    t.integer  "model_id",   null: false
+    t.string   "model_type", null: false
     t.string   "title"
     t.string   "url"
-    t.string   "doctype",       null: false
-    t.string   "color",         null: false
+    t.string   "doctype",    null: false
+    t.string   "color",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "icon"
-    t.integer  "author_id",     null: false
+    t.integer  "author_id",  null: false
   end
 
   create_table "drafts", force: :cascade do |t|
@@ -295,13 +296,18 @@ ActiveRecord::Schema.define(version: 20171123224852) do
     t.integer  "sequence_id"
     t.boolean  "announcement",               default: false, null: false
     t.jsonb    "custom_fields",              default: {},    null: false
+    t.integer  "parent_id"
+    t.integer  "position",                   default: 0,     null: false
+    t.integer  "child_count",                default: 0,     null: false
+    t.integer  "depth",                      default: 0,     null: false
   end
 
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
   add_index "events", ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true, using: :btree
   add_index "events", ["discussion_id"], name: "index_events_on_discussion_id", using: :btree
   add_index "events", ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id", using: :btree
-  add_index "events", ["sequence_id"], name: "index_events_on_sequence_id", using: :btree
+  add_index "events", ["parent_id", "position"], name: "index_events_on_parent_id_and_position", where: "(parent_id IS NOT NULL)", using: :btree
+  add_index "events", ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)", using: :btree
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
@@ -786,7 +792,7 @@ ActiveRecord::Schema.define(version: 20171123224852) do
   add_index "user_deactivation_responses", ["user_id"], name: "index_user_deactivation_responses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.citext   "email",                                        default: "",                    null: false
+    t.citext   "email",                                        default: "",         null: false
     t.string   "encrypted_password",               limit: 128, default: ""
     t.string   "reset_password_token",             limit: 255
     t.datetime "reset_password_sent_at"
@@ -801,32 +807,32 @@ ActiveRecord::Schema.define(version: 20171123224852) do
     t.string   "name",                             limit: 255
     t.datetime "deactivated_at"
     t.boolean  "is_admin",                                     default: false
-    t.string   "avatar_kind",                      limit: 255, default: "initials",            null: false
+    t.string   "avatar_kind",                      limit: 255, default: "initials", null: false
     t.string   "uploaded_avatar_file_name",        limit: 255
     t.string   "uploaded_avatar_content_type",     limit: 255
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials",                  limit: 255
     t.string   "username",                         limit: 255
-    t.boolean  "email_when_proposal_closing_soon",             default: false,                 null: false
+    t.boolean  "email_when_proposal_closing_soon",             default: false,      null: false
     t.string   "authentication_token",             limit: 255
     t.string   "unsubscribe_token",                limit: 255
-    t.integer  "memberships_count",                            default: 0,                     null: false
-    t.boolean  "uses_markdown",                                default: false,                 null: false
+    t.integer  "memberships_count",                            default: 0,          null: false
+    t.boolean  "uses_markdown",                                default: false,      null: false
     t.string   "selected_locale",                  limit: 255
     t.string   "time_zone",                        limit: 255
     t.string   "key",                              limit: 255
     t.string   "detected_locale",                  limit: 255
-    t.boolean  "email_missed_yesterday",                       default: true,                  null: false
+    t.boolean  "email_missed_yesterday",                       default: true,       null: false
     t.string   "email_api_key",                    limit: 255
-    t.boolean  "email_when_mentioned",                         default: true,                  null: false
-    t.boolean  "angular_ui_enabled",                           default: true,                  null: false
-    t.boolean  "email_on_participation",                       default: true,                  null: false
-    t.integer  "default_membership_volume",                    default: 2,                     null: false
+    t.boolean  "email_when_mentioned",                         default: true,       null: false
+    t.boolean  "angular_ui_enabled",                           default: true,       null: false
+    t.boolean  "email_on_participation",                       default: true,       null: false
+    t.integer  "default_membership_volume",                    default: 2,          null: false
     t.string   "country"
     t.string   "region"
     t.string   "city"
-    t.jsonb    "experiences",                                  default: {},                    null: false
+    t.jsonb    "experiences",                                  default: {},         null: false
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"

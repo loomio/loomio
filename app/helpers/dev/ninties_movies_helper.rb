@@ -343,7 +343,8 @@ module Dev::NintiesMoviesHelper
     PollService.publish_closing_soon
 
     #'outcome_created'
-    poll = FactoryGirl.create(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
+    poll = FactoryGirl.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
+    PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryGirl.build(:outcome, poll: poll, make_announcement: true)
     OutcomeService.create(outcome: outcome, actor: jennifer)
 

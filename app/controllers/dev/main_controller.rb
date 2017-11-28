@@ -3,11 +3,11 @@ class Dev::MainController < Dev::BaseController
   include Dev::NintiesMoviesHelper
   include PrettyUrlHelper
 
-  before_filter :cleanup_database, except: [:last_email, :use_last_login_token, :index, :accept_last_invitation]
+  # before_filter :cleanup_database, except: [:last_email, :use_last_login_token, :index, :accept_last_invitation]
 
   def index
     @routes = self.class.action_methods.select do |action|
-      action.starts_with? 'setup'
+      action.starts_with?('setup') || action.starts_with?('view')
     end
     render layout: false
   end
@@ -166,7 +166,7 @@ class Dev::MainController < Dev::BaseController
     pinned_discussion
     poll_discussion
     recent_discussion
-    old_discussion
+    # old_discussion
     muted_discussion
     muted_group_discussion
     redirect_to dashboard_url
@@ -374,11 +374,10 @@ class Dev::MainController < Dev::BaseController
 
   def view_open_group_as_non_member
     sign_in patrick
-    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes',
-    membership_granted_upon: 'request',
-    group_privacy: 'open')
+    @group = FormalGroup.create!(name: 'Open Dirty Dancing Shoes', membership_granted_upon: 'request', group_privacy: 'open')
     @group.add_admin! jennifer
-    @discussion = Discussion.create!(title: "I carried a watermelon", private: false, author: patrick, group: @group)
+    @discussion = Discussion.new(title: "I carried a watermelon", private: false, author: jennifer, group: @group)
+    DiscussionService.create(discussion: @discussion, actor: jennifer)
     CommentService.create(comment: Comment.new(body: "It was real seedy", discussion: @discussion), actor: jennifer)
     redirect_to group_url(create_group)
   end

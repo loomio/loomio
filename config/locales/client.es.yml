@@ -62,6 +62,7 @@ es:
     decisions: 'Decisiones '
     settings: 'Configuración '
     help: 'Ayuda'
+    anonymous: Anónimo
     privacy:
       privacy: 'Privacidad'
       public: 'Público'
@@ -286,6 +287,7 @@ es:
     edit_profile: 'Editar perfil '
     email_settings: 'Configuración de email'
     help: 'Ayuda'
+    contact_site_name: 'Contacto {{site_name}}'
     sign_out: 'Salir'
   start_menu:
     label: 'Acciones de usuario '
@@ -357,6 +359,8 @@ es:
     notified_count: '{{count}} personas recibirán un correo electrónico'
   action_dock:
     react: 'Añadir reacción '
+    add_resource: Agregar archivo adjunto
+    edit_group: Editar contexto de grupo
     add_comment: Comentario
     edit_thread: Editar contexto
     translate_thread: Traducir contexto
@@ -479,6 +483,8 @@ es:
   description_card:
     title: 'Descripción del Grupo '
     placeholder: 'Los coordinadores del grupo pueden usar esta área para describir el propósito del grupo para que todos sepan porque están aquí.  '
+    view_documents: 'Ver archivos adjuntos'
+    manage_documents: 'Administrar archivos adjuntos'
     messages:
       description_updated: 'Descripción actualizada'
   leave_group_form:
@@ -553,12 +559,25 @@ es:
     manage_requests: 'Gestionar peticiones '
     manage_requests_with_count: Gestionar peticiones ({{count}})
   documents_page:
-    title: 'Recursos '
+    title: Adjuntos
+    fragment_placeholder: Buscar archivos adjuntos ...
+    add_document: Añadir archivo adjunto
+    no_documents: No se encontraron archivos adjuntos para este grupo. Haga click en 'Agregar archivo adjunto' arriba para agregar uno.
+    no_documents_from_fragment: No se encontraron archivos adjuntos con nombre '{{fragment}}'
+    confirm_remove_title: Quitar archivo adjunto
+    confirm_remove_helptext: ¿Seguro que quieres eliminar este archivo adjunto?
+    document_removed: Archivo adjunto eliminado
   document:
     list:
-      title: 'Recursos '
+      title: Adjuntos
+      no_poll_documents: Aún no se han cargado archivos adjuntos a esta decisión.
+      no_discussion_documents: Aún no se han cargado archivos adjuntos a este hilo.
+    modal:
+      title: Agregar archivo adjunto
     form:
       title_label: Nombre
+    flash:
+      destroyed: Archivo adjunto eliminado
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: 'Aprobar '

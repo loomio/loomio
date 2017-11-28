@@ -39,10 +39,6 @@ class Ability
       end
     end
 
-    can [:choose_subscription_plan], Group do |group|
-      user.email_verified? && group.is_parent? && user_is_admin_of?(group.id)
-    end
-
     can [:update,
          :email_members,
          :hide_next_steps,
@@ -230,6 +226,12 @@ class Ability
       user_is_admin_of?(discussion.group_id)
     end
 
+    can :remove_from_thread, Event do |event|
+      (user_is_author_of?(event.discussion) or
+       user_is_admin_of?(event.discussion.group_id)) &&
+      ['discussion_edited'].include?(event.kind)
+    end
+
     can [:set_volume,
          :show_description_history,
          :preview_version], Discussion do |discussion|
@@ -365,12 +367,7 @@ class Ability
     end
 
     can [:create, :update], Document do |document|
-      case document.model
-      when Group      then user_is_admin_of?(document.model.id)
-      when Discussion then user_is_admin_of?(document.model.group_id)
-      when Poll       then user_is_admin_of?(document.model.group_id) ||
-                           user_is_admin_of?(document.model.guest_group_id)
-      end
+      user.ability.can?(:update, document.model)
     end
 
     can :destroy, Document do |document|

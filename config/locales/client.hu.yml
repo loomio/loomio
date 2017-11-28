@@ -180,6 +180,8 @@ hu:
     privacy: 'Adatvédelem'
     members_can_start_discussions: 'A tagok felvethetnek új támékat.'
     submit_update: 'Beállítások frissítése'
+  documents_page:
+    confirm_remove_title: Csatolmány eltávolítása
   document:
     form:
       title_label: Név

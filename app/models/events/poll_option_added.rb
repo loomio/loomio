@@ -5,6 +5,7 @@ class Events::PollOptionAdded < Event
     return unless Array(poll_option_names).any?
     super poll,
           user: (actor if actor.is_logged_in?),
+          parent: poll.created_event,
           custom_fields: { poll_option_names: poll_option_names }
   end
 
