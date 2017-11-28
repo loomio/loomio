@@ -368,7 +368,7 @@ describe API::DiscussionsController do
 
   describe 'update' do
     before { sign_in user }
-    let(:attachment) { create(:attachment) }
+    let(:document) { create(:document) }
 
     context 'success' do
       it "updates a discussion" do
@@ -377,23 +377,23 @@ describe API::DiscussionsController do
         expect(discussion.reload.title).to eq discussion_params[:title]
       end
 
-      it 'adds attachments' do
-        discussion_params[:attachment_ids] = attachment.id
+      it 'adds documents' do
+        discussion_params[:document_ids] = document.id
         post :update, id: discussion.id, discussion: discussion_params, format: :json
-        expect(discussion.reload.attachments).to include attachment
+        expect(discussion.reload.documents).to include document
         json = JSON.parse(response.body)
-        attachment_ids = json['attachments'].map { |a| a['id'] }
-        expect(attachment_ids).to include attachment.id
+        document_ids = json['documents'].map { |a| a['id'] }
+        expect(document_ids).to include document.id
       end
 
       it 'removes attachments' do
-        attachment.update(attachable: discussion)
-        discussion_params[:attachment_ids] = []
+        document.update(model: discussion)
+        discussion_params[:document_ids] = []
         post :update, id: discussion.id, discussion: discussion_params, format: :json
-        expect(discussion.reload.attachments).to be_empty
+        expect(discussion.reload.documents).to be_empty
         json = JSON.parse(response.body)
-        attachment_ids = json['attachments'].map { |a| a['id'] }
-        expect(attachment_ids).to_not include attachment.id
+        document_ids = json['documents'].map { |a| a['id'] }
+        expect(document_ids).to_not include document.id
       end
     end
 
