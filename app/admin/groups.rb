@@ -10,7 +10,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
   end
 
-  actions :index, :show, :edit, :update
+  actions :index, :show, :new, :edit, :update, :create
 
   filter :name
   filter :description
@@ -200,9 +200,12 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
 
   form do |f|
     f.inputs "Details" do
-      f.input :id, :input_html => { :disabled => true }
-      f.input :name, :input_html => { :disabled => true }
+      if f.object.persisted?
+        f.input :id, :input_html => { :disabled => true }
+      end
+      f.input :name, :input_html => { :disabled => f.object.persisted? }
       f.input :description
+      f.input :parent_id, label: "Parent Id"
       f.input :subdomain, as: :string
       f.input :analytics_enabled
       f.input :enable_experiments
