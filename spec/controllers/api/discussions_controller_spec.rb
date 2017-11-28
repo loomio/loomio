@@ -381,19 +381,17 @@ describe API::DiscussionsController do
         discussion_params[:document_ids] = document.id
         post :update, id: discussion.id, discussion: discussion_params, format: :json
         expect(discussion.reload.documents).to include document
-        json = JSON.parse(response.body)
-        document_ids = json['documents'].map { |a| a['id'] }
-        expect(document_ids).to include document.id
+        expect(response.status).to eq 200
+        expect(discussion.reload.document_ids).to include document.id
       end
 
-      it 'removes attachments' do
+      it 'removes documents' do
         document.update(model: discussion)
         discussion_params[:document_ids] = []
-        post :update, id: discussion.id, discussion: discussion_params, format: :json
+        expect { post :update, id: discussion.id, discussion: discussion_params, format: :json }.to change { Document.count }.by(-1)
         expect(discussion.reload.documents).to be_empty
-        json = JSON.parse(response.body)
-        document_ids = json['documents'].map { |a| a['id'] }
-        expect(document_ids).to_not include document.id
+        expect(response.status).to eq 200
+        expect(document.reload.document_ids).to_not include document.id
       end
     end
 
