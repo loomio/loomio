@@ -6,8 +6,6 @@ class Motion < ActiveRecord::Base
 
   belongs_to :discussion
   has_one :group, through: :discussion
-  update_counter_cache :discussion, :motions_count
-  update_counter_cache :discussion, :closed_motions_count
 
   has_many :votes,         -> { includes(:user) },  dependent: :destroy
   has_many :unique_votes,  -> { includes(:user).where(age: 0) }, class_name: 'Vote'
@@ -32,10 +30,6 @@ class Motion < ActiveRecord::Base
   has_paper_trail only: [:name, :description, :closing_at, :outcome]
 
   after_initialize :set_default_closing_at
-
-  define_counter_cache :voters_count do |motion|
-    motion.unique_votes.count
-  end
 
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
   scope :lapsed,                   -> { where('closing_at < ?', Time.now) }
