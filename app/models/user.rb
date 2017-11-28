@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include MessageChannel
   include HasExperiences
