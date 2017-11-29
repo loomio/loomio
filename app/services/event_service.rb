@@ -39,6 +39,28 @@ class EventService
     (time - 1.second)..(time + 1.second)
   end
 
+  def self.restore_missing_new_discussion_events
+    # SELECT * FROM discussions outer join events ON events.kind = "new_discussion" and events.eventable_id = discussions.id where events.id is null
+    #
+    # each of these insert new discussion event
+    # set parent_id on all new_comment events with discussion_id in above ids
+    # reorder position on items in each discussion
+  end
+
+  def self.restore_missing_new_comment_events
+    # find all the missing new comment events
+    # update all the new_comment events so the parent is their new_discussion event
+    # rails update the last comment in each discussion so position is correct.
+    #
+    # record all discussion ids concerned
+    # recalc child_count and position for it's items
+  end
+
+  def self.reset_new_comment_depth
+    # all non reply comments are depth 1
+    # others need to be calculated
+  end
+
   def self.migrate_new_motion_events
     # 1 second per record
     # takes hours.
@@ -57,10 +79,36 @@ class EventService
                         created_at: around_about(event.created_at)).first
       next unless poll
       hit += 1
-      event.update_attributes(user: poll.author,
-                              kind: "poll_created",
-                              parent: poll.discussion.created_event,
-                              eventable: poll)
+
+      # the following is what we would do if it were not so slow
+      # event.update_attributes(user: poll.author,
+      #                         kind: "poll_created",
+      #                         parent: poll.discussion.created_event,
+      #                         eventable: poll)
+
+      parent_event = poll.discussion.created_event || begin
+        e = Events::NewDiscussion.new kind: 'new_discussion',
+                                 user_id: poll.discussion.author.id,
+                                 announcement: false,
+                                 eventable_id: poll.discussion.id,
+                                 eventable_type: "Discussion",
+                                 depth: 0,
+                                 created_at: poll.discussion.created_at
+        Events::NewDiscussion.import [e] # so we dont trigger emails etc
+        Event.where(kind: "new_comment",
+                    discussion_id: poll.discussion.id).each do |new_comment_event|
+          new_comment_event.update(parent: e)
+        end
+        e
+      end
+
+      Event.where(id: event.id).update_all(user_id: poll.author_id,
+                                           kind: "poll_created",
+                                           parent_id: poll.discussion.created_event,
+                                           eventable_id: poll.id,
+                                           eventable_type: "Poll",
+                                           depth: 1)
+      parent_event.update_child_count
     end
   end
 
@@ -80,11 +128,23 @@ class EventService
                                                      created_at:         around_about(event.created_at)).first
       next unless stance
       hit += 1
-      event.update_attributes(user: stance.author,
-                              eventable: stance,
-                              parent: stance.poll.created_event,
-                              kind: "stance_created")
+      Event.where(id: event.id).update_all(user_id: stance.participant_id,
+                                           eventable_type: "Stance",
+                                           eventable_id: stance.id,
+                                           parent_id: stance.poll.created_event,
+                                           kind: "stance_created",
+                                           depth: 2,
+                                           child_count: 0)
+      event.parent.update_chlid_count
+      # event.update_attributes(user: stance.author,
+      #                         eventable: stance,
+      #                         parent: stance.poll.created_event,
+      #                         kind: "stance_created")
     end
   end
 
+  # migrate motion_outcome_created_events
+  # create missing outcome created events.
+  # migrate motion_closed -> poll_expired
+  # migrate motion_closed_by_user to poll_closed_by_user
 end

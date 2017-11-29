@@ -32,6 +32,7 @@ describe EventService do
       expect(new_motion_event.kind).to eq "poll_created"
       expect(new_motion_event.eventable).to eq(poll)
       expect(new_motion_event.user).to eq poll.author
+      # test that parent child_count is correct, depth is correct
     end
 
     it "migrates new_vote events" do
@@ -42,6 +43,7 @@ describe EventService do
       expect(new_vote_event.kind).to eq "stance_created"
       expect(new_vote_event.user).to eq stance.author
       expect(new_vote_event.eventable).to eq stance
+      # test that parents child count is correct, depth is correct
     end
   end
 
