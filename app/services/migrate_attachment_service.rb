@@ -1,10 +1,12 @@
 class MigrateAttachmentService
   def self.migrate!(attachments: Attachment.none)
     attachments.unmigrated.find_each(batch_size: 100) do |att|
-      Document.find_or_create_by(
+      Document.create(
         author:     att.user,
         model:      att.attachable,
         url:        att.url,
+        thumb_url:  (att.url(:thumb)  if att.is_an_image?)
+        web_url:    (att.url(:thread) if att.is_an_image?)
         title:      att.filename,
         created_at: att.created_at
       )
