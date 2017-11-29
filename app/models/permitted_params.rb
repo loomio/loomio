@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
-    attachment contact_message user_deactivation_response document
+    contact_message user_deactivation_response document
     draft oauth_application group_identity contact_request reaction
   )
 
@@ -95,10 +95,6 @@ class PermittedParams < Struct.new(:params)
     [:reaction, :reactable_id, :reactable_type]
   end
 
-  def attachment_attributes
-    [:file, :filename, :location, :filesize, :redirect]
-  end
-
   def contact_message_attributes
     [:email, :message, :name]
   end
@@ -120,6 +116,6 @@ class PermittedParams < Struct.new(:params)
   end
 
   def document_attributes
-    [:url, :title, :model_id, :model_type]
+    [:url, :title, :model_id, :model_type, :file, :filename]
   end
 end

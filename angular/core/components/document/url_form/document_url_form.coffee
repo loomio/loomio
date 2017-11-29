@@ -2,16 +2,16 @@ angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, For
   scope: {document: '='}
   templateUrl: 'generated/components/document/url_form/document_url_form.html'
   controller: ($scope) ->
-    $scope.model = Records.discussions.build()
-    $scope.model.url = $scope.document.url or ''
+    $scope.model =
+      url: $scope.document.url or ''
 
     $scope.submit = ->
-      $scope.$emit('nextStep', $scope.model.url)
+      $scope.document.url = $scope.model.url
+      $scope.$emit('nextStep', $scope.document)
 
-    $scope.$on 'fileUploaded', (event, file) ->
-      event.stopPropogation()
-      $scope.document.title = $scope.document.title || attachment.filename
-      $scope.$emit 'nextStep', attachment.original
+    $scope.$on 'documentAdded', (event, doc) ->
+      event.stopPropagation()
+      $scope.$emit 'nextStep', doc
 
     KeyEventService.submitOnEnter $scope, anyEnter: true
     DocumentService.listenForPaste $scope

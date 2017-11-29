@@ -18,3 +18,10 @@ angular.module('loomioApp').factory 'DocumentRecordsInterface', (BaseRecordsInte
       @build
         modelId:   model.id
         modelType: _.capitalize model.constructor.singular
+
+    upload: (file, progress) ->
+      @remote.upload '', file,
+        data:
+          'document[filename]': file.name.replace(/[^a-z0-9_\-\.]/gi, '_')
+        fileFormDataName: 'document[file]'
+      , progress

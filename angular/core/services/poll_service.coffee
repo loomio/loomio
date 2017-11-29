@@ -85,7 +85,6 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
         successCallback: (data) ->
           _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
           poll = Records.polls.find(data.polls[0].key)
-          poll.cleanupDocuments()
           scope.$emit 'nextStep', poll
         cleanupFn: ->
           scope.$emit 'doneProcessing'

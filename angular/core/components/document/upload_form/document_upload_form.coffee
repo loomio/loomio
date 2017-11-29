@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'documentUploadForm', (Records) ->
       $scope.model.setErrors({})
       $scope.$emit 'processing'
       for file in $scope.files
-        $scope.currentUpload = Records.attachments.upload(file, $scope.progress)
+        $scope.currentUpload = Records.documents.upload(file, $scope.progress)
         $scope.currentUpload.then($scope.success, $scope.failure).finally($scope.reset)
 
     $scope.selectFile = ->
@@ -26,9 +26,7 @@ angular.module('loomioApp').directive 'documentUploadForm', (Records) ->
       $scope.currentUpload.abort() if $scope.currentUpload
 
     $scope.success = (response) ->
-      data = response.data || response
-      _.each data.attachments, (attachment) ->
-        $scope.$emit 'fileUploaded', attachment
+      $scope.$emit 'documentAdded', Records.documents.find((response.data || response).documents[0].id)
 
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)

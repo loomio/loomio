@@ -8,12 +8,11 @@ angular.module('loomioApp').directive 'documentForm', ($timeout, Records, Sequen
         skipClose: $scope.menu? # don't emit $close if we are in an md-menu
         initialStep: if $scope.document.isNew() then 'method' else 'title'
         methodComplete: (_, method) -> $scope.document.method = method
-        urlComplete:    (_, url)    -> $scope.document.url    = url
+        urlComplete:    (_, doc)    -> $scope.document = doc
         titleComplete:  (_, doc)    ->
           if $scope.menu
             $scope.menu.close()
             $scope.$emit 'documentAdded', doc
-            # $scope.document = Records.documents.build()
 
     $scope.$on 'initializeDocument', (_, doc, $mdMenu) ->
       $scope.document = doc

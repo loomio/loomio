@@ -34,6 +34,7 @@ class Document < ActiveRecord::Base
   private
 
   def set_urls
+    self.title     ||= file.instance.file_file_name
     self.url       = file.url(:original)
     self.web_url   = file.url(:web)
     self.thumb_url = file.url(:thumb)
