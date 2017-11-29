@@ -35,6 +35,6 @@ class GroupMailer < BaseMailer
                       reply_to: "#{@membership_request.name} <#{@membership_request.email}>",
                       subject_key: "email.membership_request.subject",
                       subject_params: {who: @membership_request.name, which_group: @group.full_name, site_name: AppConfig.theme[:site_name]},
-                      locale: locale_for(recipient)
+                      locale: first_supported_locale(recipient.locale)
   end
 end

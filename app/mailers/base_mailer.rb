@@ -2,6 +2,7 @@ class BaseMailer < ActionMailer::Base
   include ERB::Util
   include ActionView::Helpers::TextHelper
   include EmailHelper
+  include LocalesHelper
 
   helper :email
 
@@ -37,9 +38,5 @@ class BaseMailer < ActionMailer::Base
     end unless self.class.disabled
   rescue Net::SMTPSyntaxError, Net::SMTPFatalError => e
     raise "SMTP error to: '#{to}' from: '#{options[:from]}' action: #{action_name} mailer: #{mailer_name} error: #{e}"
-  end
-
-  def locale_for(*user)
-    [*user, I18n].compact.first.locale
   end
 end

@@ -1,14 +1,11 @@
 class Clients::Google < Clients::Base
 
   def fetch_access_token(code, uri)
-    post "token",
-      params: { code: code, redirect_uri: uri, grant_type: :authorization_code },
-      options: { host: :"https://www.googleapis.com/oauth2/v4" }
+    post "token", params: { code: code, redirect_uri: uri, grant_type: :authorization_code }
   end
 
   def fetch_user_info
-    get "people/me",
-      params: { "requestMask.includeField" => "person.metadata,person.names,person.photos,person.emailAddresses" }
+    get "userinfo", options: { host: :"https://www.googleapis.com/oauth2/v2" }
   end
 
   def scope
@@ -26,6 +23,6 @@ class Clients::Google < Clients::Base
   end
 
   def default_host
-    "https://people.googleapis.com/v1".freeze
+    "https://www.googleapis.com/oauth2/v4".freeze
   end
 end
