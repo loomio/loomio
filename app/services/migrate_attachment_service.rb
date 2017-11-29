@@ -5,8 +5,8 @@ class MigrateAttachmentService
         author:     att.user,
         model:      att.attachable,
         url:        att.url,
-        thumb_url:  (att.url(:thumb)  if att.is_an_image?)
-        web_url:    (att.url(:thread) if att.is_an_image?)
+        thumb_url:  (att.file.url(:thumb)  if att.is_an_image?),
+        web_url:    (att.file.url(:thread) if att.is_an_image?),
         title:      att.filename,
         created_at: att.created_at
       )
