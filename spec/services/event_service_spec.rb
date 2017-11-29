@@ -11,6 +11,40 @@ describe EventService do
 
   before { group.add_admin! user }
 
+  describe "migrate motion events" do
+    let(:discussion) { create :discussion }
+    let(:poll)             { create :poll, discussion: discussion, created_at: DateTime.parse("2000-01-01") }
+    let(:stance)           { create :stance, poll: poll, created_at: DateTime.parse("2000-01-02") }
+    let(:new_motion_event) { Event.new(kind: "new_motion",
+                                       discussion_id: discussion.id,
+                                       sequence_id: 1,
+                                       created_at: poll.created_at).tap{|e|e.save(validate:false)} }
+    let(:new_vote_event) { Event.new(kind: "new_vote",
+                                     discussion_id: discussion.id,
+                                     sequence_id: 1,
+                                     created_at: stance.created_at).tap{|e| e.save(validate:false)} }
+
+    it "migrates new_motion events" do
+      new_motion_event
+      EventService.migrate_new_motion_events
+      new_motion_event.reload
+      expect(poll.created_event.id).to eq(new_motion_event.id)
+      expect(new_motion_event.kind).to eq "poll_created"
+      expect(new_motion_event.eventable).to eq(poll)
+      expect(new_motion_event.user).to eq poll.author
+    end
+
+    it "migrates new_vote events" do
+      new_vote_event
+      EventService.migrate_new_vote_events
+      new_vote_event.reload
+      expect(stance.created_event.id).to eq(new_vote_event.id)
+      expect(new_vote_event.kind).to eq "stance_created"
+      expect(new_vote_event.user).to eq stance.author
+      expect(new_vote_event.eventable).to eq stance
+    end
+  end
+
   describe "readd_to_thread" do
     it "increments if spot is taken" do
       @event1 = Event.create(kind: "new_comment",

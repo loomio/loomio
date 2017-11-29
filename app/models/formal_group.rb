@@ -9,8 +9,6 @@ class FormalGroup < Group
 
   before_save :update_full_name_if_name_changed
 
-  default_scope { includes(:default_group_cover) }
-
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
