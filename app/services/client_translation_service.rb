@@ -3,7 +3,7 @@ class ClientTranslationService
   attr_reader :locale
 
   def initialize(locale = nil)
-    @locale = first_supported_locale([locale, I18n.default_locale]).to_s
+    @locale = first_supported_locale(locale).to_s
   end
 
   def as_json
