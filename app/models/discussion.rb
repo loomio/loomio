@@ -95,9 +95,13 @@ class Discussion < ActiveRecord::Base
 
   def thread_item_destroyed!
     update_sequence_info!
-    RecalculateReadItemsCountsJob.perform_later(discussion)
-    true
+    update_reader_items_count!
   end
+
+  def update_reader_items_count!
+    discussion_readers.map(&:sync_read_items_count!)
+  end
+  handle_asynchronously :update_reader_items_count!, priority: 0
 
   def public?
     !private

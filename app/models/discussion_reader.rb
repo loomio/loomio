@@ -67,6 +67,10 @@ class DiscussionReader < ActiveRecord::Base
     self.class.volumes.invert[self[:volume]]
   end
 
+  def sync_read_items_count!
+    update_attribute(:read_items_count, calculate_read_items_count)
+  end
+
   # because items can be deleted, we need to count the number of items in each range against the db
   def calculate_read_items_count
     read_ranges.sum {|r| discussion.items.where(sequence_id: Range.new(*r)).count }
@@ -88,15 +92,12 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def read_ranges_string
-    if self[:read_ranges_string] == nil
+    self[:read_ranges_string] ||= begin
       if last_read_sequence_id == 0
         ""
       else
-        first = (discussion.first_sequence_id == 0) ? 1 : discussion.first_sequence_id
-        "#{first}-#{self.last_read_sequence_id}"
+        "#{[discussion.first_sequence_id, 1].max}-#{last_read_sequence_id}"
       end
-    else
-      self[:read_ranges_string]
     end
   end
 
