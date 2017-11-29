@@ -1,4 +1,5 @@
 class Invitation < ActiveRecord::Base
+  include CustomCounterCache::Model
   include Null::User
 
   class InvitationCancelled < StandardError; end

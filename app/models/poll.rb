@@ -1,4 +1,5 @@
 class Poll < ActiveRecord::Base
+  include CustomCounterCache::Model
   extend  HasCustomFields
   include ReadableUnguessableUrls
   include HasMentions

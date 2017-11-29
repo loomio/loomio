@@ -1,4 +1,5 @@
 class Discussion < ActiveRecord::Base
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include Translatable
   include Reactable

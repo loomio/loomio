@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  include CustomCounterCache::Model
   include Translatable
   include Reactable
   include HasMentions

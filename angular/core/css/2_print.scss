@@ -1,5 +1,8 @@
 @media print {
-  header, .lmo-no-print, .sr-only { display: none !important; }
+  header,
+  .lmo-no-print,
+  .md-sidenav-left.lmo-no-print,
+  .sr-only { display: none !important; }
 
   .lmo-one-column-layout,
   .lmo-two-column-layout {
