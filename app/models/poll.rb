@@ -43,7 +43,6 @@ class Poll < ActiveRecord::Base
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant
-  has_many :attachments, as: :attachable, dependent: :destroy
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
@@ -86,7 +85,7 @@ class Poll < ActiveRecord::Base
   scope :authored_by, ->(user) { where(author: user) }
   scope :chronologically, -> { order('created_at asc') }
   scope :with_includes, -> { includes(
-    :attachments,
+    :documents,
     :poll_options,
     :outcomes,
     {stances: [:stance_choices]})

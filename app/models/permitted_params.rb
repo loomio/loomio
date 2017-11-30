@@ -88,7 +88,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def comment_attributes
-    [:body, :attachment_ids, :discussion_id, :parent_id, :document_ids, {document_ids: []}]
+    [:body, :discussion_id, :parent_id, :document_ids, {document_ids: []}]
   end
 
   def reaction_attributes
