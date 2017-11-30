@@ -40,7 +40,7 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
 
   def active_polls
-    scope[:poll_cache].get_for(object)
+    scope[:poll_cache].get_for(object, hydrate_on_miss: false)
   end
 
   def include_active_polls?
