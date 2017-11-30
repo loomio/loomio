@@ -75,15 +75,6 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
         reload_everything
         expect(discussion.items_count - discussion_reader.read_items_count).to eq 1
       end
-
-      it "user sees discussion before second comment" do
-        e = create_first_comment
-        view_item(e.sequence_id)
-        create_second_comment
-        delete_first_comment
-        reload_everything
-        expect(discussion.items_count - discussion_reader.read_items_count).to eq 1
-      end
     end
   end
 end
