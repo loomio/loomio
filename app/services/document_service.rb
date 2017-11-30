@@ -14,7 +14,7 @@ class DocumentService
   def self.update(document:, params:, actor:)
     actor.ability.authorize! :update, document
 
-    document.assign_attributes(params.slice(:url, :title))
+    document.assign_attributes(params.slice(:url, :title, :model_id, :model_type))
 
     return unless document.valid?
     document.save!
