@@ -1,4 +1,4 @@
-.thread-item{md-colors: "mdColors()", ng-class: "{'thread-item--indent': indent(), 'thread-item--unread': isUnread()}", in-view: "$inview&&event.markAsRead()", in-view-options: "{throttle: 100}"}
+.thread-item{md-colors: "mdColors()", ng-class: "{'thread-item--indent': indent(), 'thread-item--unread': isUnread()}", in-view: "$inview&&event.markAsRead()", in-view-options: "{throttle: 200}"}
   .lmo-flex.lmo-relative.lmo-action-dock-wrapper{layout: "row", id: "sequence-{{event.sequenceId}}"}
     .thread-item__avatar.lmo-margin-right
       %user_avatar{user: "event.actor()", size: "small", ng-if: "event.actor()"}
