@@ -67,10 +67,6 @@ class DiscussionReader < ActiveRecord::Base
     self.class.volumes.invert[self[:volume]]
   end
 
-  def sync_read_items_count!
-    update_attribute(:read_items_count, calculate_read_items_count)
-  end
-
   # because items can be deleted, we need to count the number of items in each range against the db
   def calculate_read_items_count
     read_ranges.sum {|r| discussion.items.where(sequence_id: Range.new(*r)).count }
