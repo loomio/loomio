@@ -33,7 +33,7 @@ class BaseMailer < ActionMailer::Base
   end
 
   def send_single_mail(locale: , to:, subject_key:, subject_params: {}, **options)
-    I18n.with_locale(locale) do
+    I18n.with_locale(first_supported_locale(locale)) do
       mail options.merge(to: to, subject: I18n.t(subject_key, subject_params))
     end unless self.class.disabled
   rescue Net::SMTPSyntaxError, Net::SMTPFatalError => e
