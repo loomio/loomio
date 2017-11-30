@@ -37,7 +37,6 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
-  has_one :created_event, serializer: Events::SimpleSerializer, root: :events
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
 
   def active_polls
