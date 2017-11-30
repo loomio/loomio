@@ -140,7 +140,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
       @updateReadRanges()
 
     update: (attributes) ->
-      if _.isArray(@readRanges) && !_.isEqual(attributes.readRanges, @readRanges)
+      if _.isArray(@readRanges) && _.isArray(attributes.readRanges) && !_.isEqual(attributes.readRanges, @readRanges)
         attributes.readRanges = RangeSet.reduce(@readRanges.concat(attributes.readRanges))
       @baseUpdate(attributes)
 
