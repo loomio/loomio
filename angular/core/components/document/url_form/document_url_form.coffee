@@ -1,9 +1,8 @@
-angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, FormService, DocumentService, KeyEventService) ->
+angular.module('loomioApp').directive 'documentUrlForm', (Records, DocumentService, KeyEventService) ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/url_form/document_url_form.html'
   controller: ($scope) ->
-    $scope.model =
-      url: $scope.document.url or ''
+    $scope.model = Records.discussions.build()
 
     $scope.submit = ->
       $scope.document.url = $scope.model.url

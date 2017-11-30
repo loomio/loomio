@@ -19,6 +19,10 @@ class AppConfig
     end
   end
 
+  def self.image_regex
+    doctypes.detect { |type| type['name'] == 'image' }['regex']
+  end
+
   def self.theme
     {
       site_name:                         ENV.fetch('SITE_NAME',                     'Loomio'),

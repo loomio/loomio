@@ -2,7 +2,9 @@
   %h3.document-list__heading.lmo-card-heading{ng-if: "showTitle()", translate: "document.list.title"}
   %p.lmo-hint-text.md-caption{ng-if: "!model.hasDocuments() && placeholder", translate: "{{placeholder}}"}
   .document-list__documents.md-block.lmo-flex{layout: "column"}
-    .document-list__document.lmo-flex{layout: "column", ng-repeat: "document in model.newAndPersistedDocuments() track by document.id"}
+    .document-list__document.lmo-flex{layout: "column", ng-class: "{'document-list__document--image': document.isAnImage()}", ng-repeat: "document in model.newAndPersistedDocuments() track by document.id"}
+      .document-list__image{ng-if: "document.isAnImage()"}
+        %img{ng-src: "{{document.webUrl}}", alt: "{{document.title}}"}
       .document-list__entry.lmo-flex.lmo-flex__center{layout: "row"}
         %i.mdi.lmo-margin-right{class: "mdi-{{document.icon}}", ng-style: "{color: document.color}"}>
         %a.lmo-pointer.lmo-relative.lmo-truncate.lmo-flex.lmo-flex__grow{href: "{{document.url}}", target: "_blank"}
@@ -16,5 +18,3 @@
 
         %md-button.md-button--tiny{ng-if: "showEdit", ng-click: "$emit('documentRemoved', document)", md-prevent-menu-close: "true"}
           %i.mdi.mdi-close
-
-      %img.document-list__tooltip{ng-if: "document.isAnImage()", ng-src: "{{document.url}}", alt: "{{document.title}}"}

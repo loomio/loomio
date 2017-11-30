@@ -7,15 +7,15 @@ class Document < ActiveRecord::Base
   validates :color, presence: true
   before_validation :set_metadata
 
-  has_attached_file :file, styles: lambda { |file|
-    if file.instance.is_an_image?
+  has_attached_file :file, styles: lambda { |f|
+    if f.instance.file_file_name.match(AppConfig.image_regex)
       { thumb: '100x100#', web: '600x>' }
     else
       {}
     end
   }
   do_not_validate_attachment_file_type :file
-  after_post_process :set_urls
+  after_post_process :set_initial_url
 
   scope :search_for, ->(query) { where("title ilike :q", q: "%#{query}%") }
 
@@ -23,21 +23,24 @@ class Document < ActiveRecord::Base
     update(doctype: metadata['name'], icon: metadata['icon'], color: metadata['color'])
   end
 
-  def is_an_image?
-    self.doctype == 'image'
-  end
-
   [:group, :discussion, :poll].map do |model_type|
     define_method model_type, -> { self.model.send(model_type) if self.model.respond_to?(model_type) }
   end
 
+  def sync_urls!
+    update_columns(
+      url: file.url(:original),
+      web_url: file.url(:web),
+      thumb_url: file.url(:thumb)
+    ) if file.present?
+  end
+
   private
 
-  def set_urls
-    self.title     ||= file.instance.file_file_name
-    self.url       = file.url(:original)
-    self.web_url   = file.url(:web)
-    self.thumb_url = file.url(:thumb)
+  # need this to save model with upload correctly and get metadata,
+  # we'll set the finalized path later in set_final_urls
+  def set_initial_url
+    self.url ||= file&.url(:original)
   end
 
   def set_metadata

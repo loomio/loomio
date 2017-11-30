@@ -10,7 +10,7 @@ class DocumentSerializer < ActiveModel::Serializer
   end
 
   def is_an_image?
-    object.is_an_image?
+    object.doctype == 'image'
   end
   alias :include_web_url? :is_an_image?
   alias :include_thumb_url? :is_an_image?
