@@ -95,8 +95,6 @@ class Discussion < ActiveRecord::Base
 
   def thread_item_destroyed!
     update_sequence_info!
-    RecalculateReadItemsCountsJob.perform_later(discussion)
-    true
   end
 
   def public?
