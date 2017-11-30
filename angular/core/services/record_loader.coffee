@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
     constructor: (opts = {}) ->
       @loadingFirst = true
       @collection = opts.collection
-      @params     = opts.params or {from: 0, per: 25, order: 'id'}
+      @params     = _.merge({from: 0, per: 25, order: 'id'}, opts.params)
       @path       = opts.path
       @numLoaded  = opts.numLoaded or 0
       @then       = opts.then or (data) -> data
