@@ -457,16 +457,17 @@ tr:
     no_groups:
       start: Başla
       or: veya
-  groups_page:
-    page_header: Grupların
   discussion:
     activity: 'Etkinlik'
     activity_placeholder: 'Henüz etkinlik yok!'
-    proposals: 'Öneriler'
-    previous_proposals: 'Önceki Öneriler'
     load_previous: 'Daha önceki aktiviteyi yükle'
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
-    edited: 'Düzenlendi'
+  activity_card:
+    unread: Okunmamış
+    latest: En yeniler
+    attachment_display:
+      aria_label: 'Dosya eklendi:'
+      image_alt: 'Resim eklendi'
   thread_group:
     aria_label: 'Grup adı'
   thread_context:
@@ -489,11 +490,6 @@ tr:
     confirm_change_to_private_thread: '{{groupName}} açık bir gruptur. Eğer devam ederseniz, konu herkese açılacaktır.'
     messages:
       success: 'Konu {{name}} grubuna taşındı '
-  activity_card:
-    new_activity: Yeni aktivite
-    attachment_display:
-      aria_label: 'Dosya eklendi:'
-      image_alt: 'Resim eklendi'
   delete_comment_dialog:
     title: 'Yorumu sil'
     question: 'Bu yorumu silmek istediğinden emin misin?'

@@ -684,19 +684,20 @@ de:
       start: Starte
       or: oder
       join_group: <a href="/explore">tritt einer Gruppe bei</a> um Diskussionen zu sehen.
-  groups_page:
-    page_header: Deine Gruppen
   discussion:
     activity: 'Beiträge'
     activity_placeholder: 'Noch keine Beiträge vorhanden!'
-    proposals: 'Vorschläge'
-    previous_proposals: 'Vorherige Vorschläge'
     load_previous: 'Lade ältere Beiträge'
     started_by: 'Erstellt von <strong>{{name}}</strong>'
-    edited: 'Bearbeitet'
     volume:
       mute_message: 'Diskussion stummgeschaltet.'
       unmute_message: 'Stummschalten deaktiviert'
+  activity_card:
+    unread: Ungelesen
+    latest: Letzte
+    attachment_display:
+      aria_label: 'Datei angehängt:'
+      image_alt: 'Angehängtes Bild'
   thread_group:
     aria_label: 'Gruppen-Name'
   thread_context:
@@ -725,11 +726,6 @@ de:
     confirm_change_to_private_thread: '{{groupName}} ist eine öffentliche Gruppe. Wenn Du fortfährst, wird diese Diskussion öffentlich sein.'
     messages:
       success: Diskussion wurde nach {{name}} verschoben
-  activity_card:
-    new_activity: Neue Beiträge
-    attachment_display:
-      aria_label: 'Datei angehängt:'
-      image_alt: 'Angehängtes Bild'
   print_modal:
     load_discussion: Gesamte Diskussion wird geladen...
   delete_comment_dialog:

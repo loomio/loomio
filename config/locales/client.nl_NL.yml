@@ -609,19 +609,20 @@ nl_NL:
       start: Start
       or: of
       join_group: <a href="/explore">wordt lid</a> van een groep om discussies te zien.
-  groups_page:
-    page_header: Jouw groepen
   discussion:
     activity: 'Activiteit'
     activity_placeholder: 'Nog geen activiteit!'
-    proposals: 'Voorstellen'
-    previous_proposals: 'Vorige voorstellen'
     load_previous: 'Laad eerdere activteit'
     started_by: 'Gestart door <strong>{{name}}</strong>'
-    edited: 'Bewerkt'
     volume:
       mute_message: 'Discussie gedempt.'
       unmute_message: 'Discussie demping uit'
+  activity_card:
+    unread: Ongelezen
+    latest: Laatste
+    attachment_display:
+      aria_label: 'Bestand toegevoegd:'
+      image_alt: 'Toegevoegde afbeelding'
   thread_group:
     aria_label: 'Groepsnaam'
   thread_context:
@@ -647,11 +648,6 @@ nl_NL:
     confirm_change_to_private_thread: '{{groupName}} is een open groep. Als je doorgaat, wordt deze discussie openbaar.'
     messages:
       success: Discussie is verplaatst naar {{name}}
-  activity_card:
-    new_activity: Nieuwe activiteit
-    attachment_display:
-      aria_label: 'Bestand toegevoegd:'
-      image_alt: 'Toegevoegde afbeelding'
   print_modal:
     load_discussion: Laad heel gesprek...
   delete_comment_dialog:

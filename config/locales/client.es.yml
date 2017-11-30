@@ -246,7 +246,6 @@ es:
     cancel_reply: 'Cancelar respuesta'
     confirm_delete_message: '¿Estás seguro de que quieres borrar este comentario?'
     confirm_delete: 'Eliminar comentario '
-    in_reply_to: "En respuesta a {{name}}:"
     submit_button:
       label: 'Enviar'
     private_privacy_notice: 'Tu comentario solo será visible para miembros de {{groupName}}.'
@@ -814,22 +813,23 @@ es:
       start: 'Empezar  '
       or: 'o '
       join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.   '
-  groups_page:
-    page_header: Tus grupos
   discussion:
     activity: 'Actividad'
     activity_placeholder: 'No hay actividad todavía'
-    proposals: 'Propuestas'
-    previous_proposals: 'Propuestas anteriores'
     load_previous: 'Cargar actividad más reciente'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
-    edited: 'Editado'
     pin:
       pinned: 'Hilo fijado'
       unpinned: 'Hilo liberado'
     volume:
       mute_message: 'Hilo silenciado. '
       unmute_message: 'Hilo silenciado '
+  activity_card:
+    unread: 'No leído '
+    latest: Últimos
+    attachment_display:
+      aria_label: 'Archivo adjunto:'
+      image_alt: 'Imagen adjunta'
   thread_group:
     aria_label: 'Nombre del grupo'
   thread_context:
@@ -865,11 +865,6 @@ es:
     confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
       success: El hilo ha sido movido a {{name}}
-  activity_card:
-    new_activity: Actividad nueva
-    attachment_display:
-      aria_label: 'Archivo adjunto:'
-      image_alt: 'Imagen adjunta'
   print_modal:
     load_discussion: 'Cargando la discusión... '
   delete_comment_dialog:

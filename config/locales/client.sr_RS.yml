@@ -158,9 +158,9 @@ sr_RS:
     no_groups:
       or: или
   discussion:
-    proposals: 'Предлози'
-    previous_proposals: 'Претходни Предлози'
     started_by: 'Креирао/ла <strong>{{name}}</strong>'
+  activity_card:
+    unread: Непрочитано
   thread_group:
     aria_label: 'Назив групе'
   thread_context:

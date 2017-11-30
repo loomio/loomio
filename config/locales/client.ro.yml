@@ -206,9 +206,9 @@ ro:
     unread_threads: Discutii necitite
     no_groups:
       or: sau
-  discussion:
-    proposals: 'Propuneri'
-    previous_proposals: 'Propuneri anterioare'
+  activity_card:
+    unread: Necitit
+    latest: Cel mai nou
   thread_group:
     aria_label: 'Numele grupului'
   thread_context:

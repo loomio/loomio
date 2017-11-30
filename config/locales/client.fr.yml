@@ -228,6 +228,8 @@ fr:
     title: "Votre session est terminée"
     message: "Vous avez été déconnecté dans une autre fenêtre. Merci de vous reconnecter pour continuer."
     ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Ajouter une réponse'
   comment_form:
     aria_label: 'Ajouter un commentaire'
     attachments:
@@ -244,7 +246,8 @@ fr:
     cancel_reply: 'Annuler la réponse'
     confirm_delete_message: 'Êtes-vous certain de vouloir effacer ce commentaire ?'
     confirm_delete: 'Effacer le commentaire'
-    in_reply_to: "En réponse à {{name}}:"
+    in_reply_to: "Répondre à {{name}}"
+    write_a_comment: "Écrire un commentaire..."
     submit_button:
       label: 'Publier'
     private_privacy_notice: 'Votre commentaire sera visible seulement des membres de {{groupName}}.'
@@ -834,22 +837,28 @@ fr:
       start: Démarrer
       or: ou
       join_group: <a href="/explore">rejoindre</a> un groupe pour voir des discussions.
-  groups_page:
-    page_header: Vos groupes
   discussion:
     activity: 'Activité'
     activity_placeholder: 'Aucune activité pour l’instant !'
-    proposals: 'Décisions'
-    previous_proposals: 'Décisions précédentes'
     load_previous: 'Charger l’activité récente'
     started_by: 'Démarrée par <strong>{{name}}</strong>'
-    edited: 'Modifié'
     pin:
       pinned: 'Discussion épinglée'
       unpinned: 'Discussion plus épinglée'
     volume:
       mute_message: 'Discussion ignorée.'
       unmute_message: 'Discussion suivie'
+  activity_card:
+    beginning: Début
+    unread: Non lu
+    latest: Dernier
+    chronological: Chronologique
+    nested: Imbriqué
+    attachment_display:
+      aria_label: 'Pièce jointe :'
+      image_alt: 'Image jointe'
+    n_previous: 'Afficher {{count}} réponses précédentes'
+    n_more: 'Afficher {{count}} réponses'
   thread_group:
     aria_label: 'Nom du groupe'
   thread_context:
@@ -886,11 +895,6 @@ fr:
     confirm_change_to_private_thread: '{{groupName}}  est un groupe ouvert. Si vous confirmez, cette discussion sera rendue publique.'
     messages:
       success: La discussion a été déplacée vers {{name}}
-  activity_card:
-    new_activity: Nouvelle Activité
-    attachment_display:
-      aria_label: 'Pièce jointe :'
-      image_alt: 'Image jointe'
   print_modal:
     load_discussion: Chargement de la discussion intégrale
   delete_comment_dialog:

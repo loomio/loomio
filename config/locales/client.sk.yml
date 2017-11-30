@@ -83,6 +83,8 @@ sk:
   inbox_page:
     no_groups:
       or: alebo
+  activity_card:
+    unread: Neprečítané
   thread_group:
     aria_label: 'Názov skupiny'
   delete_comment_dialog:

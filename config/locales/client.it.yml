@@ -230,6 +230,8 @@ it:
     title: "La tua sessione è finita"
     message: "Sei uscito dall'autenticazione da un altra finestra. Autenticati di nuovo per continuare."
     ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Rispondi'
   comment_form:
     aria_label: 'Aggiungi un commento'
     attachments:
@@ -246,7 +248,8 @@ it:
     cancel_reply: 'Annulla risposta'
     confirm_delete_message: 'Sei sicuro che vuoi cancellare questo commento?'
     confirm_delete: 'Cancella commento'
-    in_reply_to: "In risposta a {{name}}:"
+    in_reply_to: "Rispondi a {{name}}"
+    write_a_comment: "Scrivi un commento..."
     submit_button:
       label: 'Messaggio'
     private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
@@ -360,6 +363,16 @@ it:
   action_dock:
     react: Aggiungi reazione
     add_resource: Aggiungi allegato
+    edit_group: Modifica il contesto del gruppo
+    add_comment: Commenta
+    edit_thread: Modifica il contesto
+    edit_poll: Modifica sondaggio
+    translate_poll: Traduci sondaggio
+    edit_stance: Cambia il tuo voto
+    edit_comment: Modifica il commento
+    delete_comment: Cancella il commento
+    reply_to_comment: Rispondi
+    edit_outcome: Modifica il risultato
   cover_photo_form:
     aria_label: 'Cambia modulo dell''immagine di copertina'
     heading: 'Nuova immagine di copertina'
@@ -393,7 +406,10 @@ it:
     started_by: 'Iniziato da <strong>{{name}}</strong>'
     edited_by: 'Modificato da <strong>{{name}}</strong>'
     posted: Pubblicato
+  reactions_input:
+    add_your_reaction: Aggiungi la tua reazione
   reactions_display:
+    more_reactions: "altri {{count}}"
     you: "Tu"
   group_page:
     thread_list:
@@ -670,13 +686,15 @@ it:
       explanation: Non hai discussioni non lette perché non sei iscritto/a ad alcun gruppo.
       start: Avvia
       or: o
-  groups_page:
-    page_header: I tuoi gruppi
   discussion:
     activity: 'Attività'
-    proposals: 'Proposte'
-    previous_proposals: 'Proposte precedenti'
     started_by: 'Iniziato da <strong>{{name}}</strong>'
+  activity_card:
+    unread: Non letto
+    latest: Più recente
+    attachment_display:
+      aria_label: 'File allegato:'
+      image_alt: 'Immagine allegata'
   thread_group:
     aria_label: 'Nome gruppo'
   thread_context:
@@ -695,11 +713,6 @@ it:
     title: Cancella discussione
     body: Sei sicuro/a di voler cancellare questa discussione?
     confirm: 'Cancella discussione'
-  activity_card:
-    new_activity: Nuova attività
-    attachment_display:
-      aria_label: 'File allegato:'
-      image_alt: 'Immagine allegata'
   delete_comment_dialog:
     title: 'Cancella il commento'
     question: 'Sei sicuro che vuoi cancellare questo commento?'
