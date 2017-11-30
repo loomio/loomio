@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
       @params     = opts.params or {from: 0, per: 25, order: 'id'}
       @path       = opts.path
       @numLoaded  = opts.numLoaded or 0
-      @then       = opts.then or ->
+      @then       = opts.then or (data) -> data
 
     reset: ->
       @params['from'] = 0
