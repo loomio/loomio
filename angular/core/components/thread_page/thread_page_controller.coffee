@@ -27,6 +27,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
+      @discussion.markAsSeen()
       @discussion.requestedSequenceId = chompRequestedSequenceId()
 
       @pageWindow = PaginationService.windowFor
