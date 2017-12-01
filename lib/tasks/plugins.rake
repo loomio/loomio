@@ -7,9 +7,6 @@ namespace :plugins do
     plugin_set = args[:plugin_set] || 'plugins'
     return unless yaml = YAML.load_file(Rails.root.join(*['config', plugin_set + '.yml']))
     yaml.each_pair { |name, config| Plugins::Fetcher.new(name, config).execute! }
-    Dir.chdir Rails.root do
-      `rm plugins; ln -s fetched_plugins plugins`
-    end
   end
 
   task :install => :environment do

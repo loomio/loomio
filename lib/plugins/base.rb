@@ -33,7 +33,7 @@ module Plugins
 
     def use_class(path = nil, &block)
       raise NoCodeSpecifiedError.new unless block_given? || path
-      proc = block_given? ? block.to_proc : Proc.new { require [Rails.root, :plugins, @name, path].join('/') }
+      proc = block_given? ? block.to_proc : Proc.new { require with_root path }
       @actions.add proc
     end
 
@@ -59,20 +59,25 @@ module Plugins
       use_directory(glob) { |path| use_asset(path) }
     end
 
+    def with_root(path = nil)
+      byebug
+      [__dir__, path].compact.join('/')
+    end
+
     def use_static_asset(path, filename, standalone: false)
-      @static_assets.add StaticAsset.new([@name, path].join('/'), filename, standalone)
+      @static_assets.add StaticAsset.new(with_root(path), filename, standalone)
     end
 
     def use_static_asset_directory(path, standalone: false)
-      Dir.entries([@name.to_s, path].join('/'))
+      Dir.entries(with_root(path))
          .reject { |p| ['.', '..'].include?(p) }
          .each { |filename| use_static_asset(path, filename, standalone: standalone) }
     end
 
     def use_translations(path, filename = :client)
       raise NoCodeSpecifiedError.new unless path
-      Rails.application.config.i18n.load_path += Dir[Rails.root.join('plugins', @name.to_s, "#{path}/#{filename}.*.yml")]
-      Dir.chdir(@name.to_s) { Dir.glob("#{path}/#{filename}.*.yml").each { |path| use_translation(path) } }
+      Rails.application.config.i18n.load_path += Dir[with_root "#{path}/#{filename}.*.yml"]
+      Dir.chdir(with_root) { Dir.glob("#{path}/#{filename}.*.yml").each { |path| use_translation(path) } }
     end
 
     def use_events(&block)
@@ -134,13 +139,13 @@ module Plugins
 
     def use_asset(path)
       raise InvalidAssetType.new unless VALID_ASSET_TYPES.include? path.split('.').last.to_sym
-      @assets.add [@name, path].join('/')
+      @assets.add with_root path
     end
 
     private
 
     def config_file_path
-      [@name, 'config.yml'].join('/')
+      with_root 'config.yml'
     end
 
     def use_translation(path)
@@ -148,7 +153,7 @@ module Plugins
     end
 
     def use_directory(glob)
-      Dir.chdir(@name.to_s) { Dir.glob("#{glob}/*").each { |path| yield path } }
+      Dir.chdir(with_root) { Dir.glob("#{glob}/*").each { |path| yield path } }
     end
 
   end
