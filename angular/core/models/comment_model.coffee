@@ -61,6 +61,9 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, HasDo
         cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
       cooked
 
+    beforeDestroy: ->
+      _.invoke @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'
+
     edited: ->
       @versionsCount > 1
 
