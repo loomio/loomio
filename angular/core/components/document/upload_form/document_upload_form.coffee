@@ -5,8 +5,8 @@ angular.module('loomioApp').directive 'documentUploadForm', (Records) ->
   replace: true
   controller: ($scope, $element) ->
 
-    $scope.$watch 'files', ->
-      $scope.upload($scope.files)
+    $scope.$on 'filesPasted', (_, files) -> $scope.files = files
+    $scope.$watch 'files',               -> $scope.upload($scope.files)
 
     $scope.upload = ->
       return unless $scope.files

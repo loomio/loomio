@@ -9,4 +9,4 @@ angular.module('loomioApp').factory 'DocumentService', (Records) ->
         file = new File [item.getAsFile()], data.getData('text/plain') || Date.now(),
           lastModified: moment()
           type:         item.type
-        scope.files = [file]
+        scope.$broadcast 'filesPasted', [file]

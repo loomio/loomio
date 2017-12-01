@@ -18,7 +18,7 @@ angular.module('loomioApp').factory 'VersionModel', (BaseModel) ->
        _.include(_.keys(@changes), name)
 
     model: ->
-      @discussion() or @poll() or @comment()
+      @recordStore["#{@itemType.toLowerCase()}s"].find(@itemId)
 
     isCurrent: ->
       @id == _.last(@model().versions())['id']
