@@ -627,7 +627,7 @@ en:
       no_group_documents: No attachments have been uploaded to the group context yet. Click the link below to see all attachments uploaded to threads within this group.
     management:
       group_header: Attached to context
-      discussion_header: Uploaded as content
+      content_header: Uploaded as content
       added_by: uploaded by {{name}}
       uploaded_to: in
     modal:
