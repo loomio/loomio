@@ -9,8 +9,7 @@ module Plugins
       ::Module.prepend Plugins::ModuleConstMissing
       return unless Dir.exists?('plugins')
       Dir['plugins/*/*/plugin.rb'].each do |file|
-        Dir.chdir File.dirname file
-        load file
+        Dir.chdir(File.dirname(file)) { load File.basename(file) }
       end
       
       repository.values.each do |plugin|

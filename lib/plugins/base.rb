@@ -17,6 +17,7 @@ module Plugins
     end
 
     def initialize(name)
+      @root = Dir.pwd
       @name = name
       @translations = {}
       @assets, @static_assets, @actions, @events, @outlets, @routes, @extensions = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
@@ -60,8 +61,7 @@ module Plugins
     end
 
     def with_root(path = nil)
-      byebug
-      [__dir__, path].compact.join('/')
+      [@root, path].compact.join('/')
     end
 
     def use_static_asset(path, filename, standalone: false)
