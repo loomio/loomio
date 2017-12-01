@@ -7,8 +7,8 @@ class Caches::Base
     store_in_cache(collection_from(parents))
   end
 
-  def get_for(parent)
-    set = cache.fetch(parent.id) { store_in_cache(default_values_for(parent)) }
+  def get_for(parent, hydrate_on_miss: true)
+    set = cache.fetch(parent.id) { store_in_cache(default_values_for(parent)) if hydrate_on_miss }
     if user.present? then set.first else set.to_a end
   end
 

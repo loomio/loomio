@@ -23,6 +23,10 @@ class AppConfig
     doctypes.detect { |type| type['name'] == 'image' }['regex']
   end
 
+  def self.poll_types
+    poll_templates.keys - ENV['FEATURES_DISABLE_POLL_TYPES'].to_s.split(' ')
+  end
+
   def self.theme
     {
       site_name:                         ENV.fetch('SITE_NAME',                     'Loomio'),

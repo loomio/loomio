@@ -9,13 +9,6 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
     # and add this poll type to the yml data', at the same time.
     # This will also make it easier to switch poll types on and off per instance, and per group.
 
-    activePollTemplates: ->
-      # this could have group-specific logic later.
-      # (LATER...) gasp now it does!
-      _.pickBy AppConfig.pollTemplates, (template) ->
-        !template.experimental or
-        (Session.currentGroup or {}).enableExperiments
-
     fieldFromTemplate: (pollType, field) ->
       return unless template = @templateFor(pollType)
       template[field]

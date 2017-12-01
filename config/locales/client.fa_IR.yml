@@ -160,8 +160,6 @@ fa_IR:
   inbox_page:
     no_groups:
       start: شروع
-  discussion:
-    proposals: 'پیشنهاد‌ها'
   thread_context:
     edit: 'ویرایش'
     edit_thread: 'ویرایش'

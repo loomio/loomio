@@ -117,6 +117,8 @@ sl:
       or: ali
   discussion:
     started_by: 'Začel/a <strong>{{name}}</strong>'
+  activity_card:
+    unread: Neprebrano
   thread_group:
     aria_label: 'Ime skupine'
   delete_comment_dialog:

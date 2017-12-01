@@ -3,22 +3,28 @@ angular.module('loomioApp').factory 'BaseEventWindow', (RangeSet) ->
     constructor: ({@discussion, @per}) ->
       @readRanges = _.clone(@discussion.readRanges)
 
+    # to be implemented by the super class
     # firstInSequence
     # lastInSequence
-    # numTotal        are implemented by the inheriting class
-    firstLoaded: -> (_.first(@events()) || {})[@columnName] || 0
-    lastLoaded:  -> (_.last(@events())  || {})[@columnName] || 0
-    numLoaded:   -> @events().length
-    anyLoaded:   -> @numLoaded() > 0
-    anyPrevious: -> @numTotal() > 0 && @firstLoaded() > @firstInSequence()
-    numPrevious: -> @numTotal() > 0 && @firstLoaded() - @firstInSequence()
-    anyNext:     -> @numTotal() > @lastLoaded()
-    numNext:     -> @numTotal() - @lastLoaded()
-    anyMissing:  -> @numTotal() > @numLoaded()
-    numMissing:  -> @numTotal() - @numLoaded()
-    numRead:     -> RangeSet.length(@readRanges)
-    numUnread:   -> @numTotal() - @numRead()
-    anyUnread:   -> @numUnread() > 0
+    # numTotal
+
+    # methods about what the client has loaded
+    firstLoaded:       -> (_.first(@loadedEvents()) || {})[@columnName] || 0
+    lastLoaded:        -> (_.last(@loadedEvents())  || {})[@columnName] || 0
+    numLoaded:         -> @loadedEvents().length
+    anyLoaded:         -> @numLoaded() > 0
+    # these are correct, but unused
+    # canLoadPrevious:   -> @numTotal() > 0 && @firstLoaded() > @firstInSequence()
+    # canLoadNext:       -> @numTotal() > 0 && @lastInSequence() > @lastLoaded()
+    # numToLoadPrevious: -> @firstLoaded() - @firstInSequence()
+    # numToLoadNext:     -> @lastInSequence() - @lastLoaded()
+    # anyMissing:        -> @numTotal() > @numLoaded()
+    # numMissing:        -> @numTotal() - @numLoaded()
+
+    # methods about what is read
+    numRead:           -> RangeSet.length(@readRanges)
+    numUnread:         -> @numTotal() - @numRead()
+    anyUnread:         -> @numUnread() > 0
 
     # min and max are the minimum and maximum values permitted in the window
     setMin: (val) -> @min = _.max([val, @firstInSequence()])
@@ -29,21 +35,30 @@ angular.module('loomioApp').factory 'BaseEventWindow', (RangeSet) ->
         _.inRange(event.sequenceId, range[0], range[1]+1)
 
     increaseMax: =>
-      return false unless @max
+      return false if @max == false
       @setMax(@max + @per)
 
     decreaseMin: =>
+      retutrn false unless @min > @firstInSequence()
       @setMin(@min - @per)
 
-    loadNext:  ->
-      @setMax(@max + @per)
-      @loader.loadMore(@lastLoaded()+1)
+    # these talk about the window over the events
+    windowNumNext:   -> if @max == false then 0 else @lastInSequence() - @max
+    numPrevious:     -> _.max([@min - @firstInSequence(), @firstLoaded() - @firstInSequence()])
+    numNext:         -> _.max([@windowNumNext(), @lastInSequence() - @lastLoaded()])
+    anyPrevious:     -> @numPrevious() > 0
+    anyNext:         -> @numNext() > 0
 
-    loadPrevious: ->
-      @setMin(@firstLoaded() - @per)
-      @loader.loadPrevious(@min)
+    showNext:  ->
+      @increaseMax()
+      if (@max > @lastLoaded()) || ((@max == false) && (@lastLoaded() < @numTotal()))
+        @loader.loadMore(@lastLoaded()+1)
 
-    loadAll: ->
+    showPrevious: ->
+      @decreaseMin()
+      @loader.loadPrevious(@min) if @min < @firstLoaded()
+
+    showAll: ->
       @loader.per = Number.MAX_SAFE_INTEGER
       @setMin(@firstInSequence())
       @setMax(Number.MAX_SAFE_INTEGER)

@@ -229,6 +229,8 @@ zh_TW:
     title: "您的工作階段已結束"
     message: "您已經從其他視窗登出。請重新登入以繼續。"
     ok: "確定"
+  comment_reply_form:
+    aria_label: '新增回覆'
   comment_form:
     aria_label: '加入意見'
     attachments:
@@ -245,7 +247,8 @@ zh_TW:
     cancel_reply: '取消回覆'
     confirm_delete_message: '您確定要刪除這個意見嗎？'
     confirm_delete: '刪除意見'
-    in_reply_to: "回覆給 {{name}}："
+    in_reply_to: "回覆給 {{name}}"
+    write_a_comment: "撰寫評論……"
     submit_button:
       label: '貼文'
     private_privacy_notice: '您的意見只會被 {{groupName}} 群組的成員看到。'
@@ -835,22 +838,28 @@ zh_TW:
       start: 啟動
       or: 或者
       join_group: <a href="/explore">加入</a>群組以觀看討論串。
-  groups_page:
-    page_header: 您的群組
   discussion:
     activity: '動態'
     activity_placeholder: '尚無動態！'
-    proposals: '提議'
-    previous_proposals: '上一個提案'
     load_previous: '載入更早的動態'
     started_by: '由 <strong>{{name}}</strong> 所啟動'
-    edited: '已編輯'
     pin:
       pinned: '討論串已釘選'
       unpinned: '討論串已取消釘選'
     volume:
       mute_message: '討論串已靜音。'
       unmute_message: '討論串靜音'
+  activity_card:
+    beginning: 開始
+    unread: 未讀
+    latest: 最新
+    chronological: 年代
+    nested: 巢狀
+    attachment_display:
+      aria_label: '已附加檔案'
+      image_alt: '已附加的圖片'
+    n_previous: '載入 {{count}} 個先前的回應'
+    n_more: '載入 {{count}} 個回應'
   thread_group:
     aria_label: '群組名稱'
   thread_context:
@@ -887,11 +896,6 @@ zh_TW:
     confirm_change_to_private_thread: '{{groupName}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
     messages:
       success: 討論串已被移動到 {{name}}
-  activity_card:
-    new_activity: 新動態
-    attachment_display:
-      aria_label: '已附加檔案'
-      image_alt: '已附加的圖片'
   print_modal:
     load_discussion: 正在載入全部的討論...
   delete_comment_dialog:

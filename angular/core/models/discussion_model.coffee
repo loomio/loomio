@@ -129,6 +129,11 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments,
       @readRanges = RangeSet.reduce(@readRanges)
       @updateReadRanges()
 
+    update: (attributes) ->
+      if _.isArray(@readRanges) && _.isArray(attributes.readRanges) && !_.isEqual(attributes.readRanges, @readRanges)
+        attributes.readRanges = RangeSet.reduce(@readRanges.concat(attributes.readRanges))
+      @baseUpdate(attributes)
+
     updateReadRanges: _.throttle ->
       @remote.patchMember @keyOrId(), 'mark_as_read', ranges: RangeSet.serialize(@readRanges)
     , 2000

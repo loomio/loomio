@@ -37,11 +37,10 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
-  has_one :created_event, serializer: Events::BaseSerializer, root: :events
   has_many :active_polls, serializer: Simple::PollSerializer, root: :polls
 
   def active_polls
-    scope[:poll_cache].get_for(object)
+    scope[:poll_cache].get_for(object, hydrate_on_miss: false)
   end
 
   def include_active_polls?

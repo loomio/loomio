@@ -527,15 +527,17 @@ ko:
       start: 시작
       or: 혹은
       join_group: '주제를 보기 위해 그룹에 <a href="/explore">참여합니다</a> '
-  groups_page:
-    page_header: 내가 속한 그룹
   discussion:
     activity: '최근 활동'
     activity_placeholder: '아직 활동내역 없음'
-    proposals: '제안'
-    previous_proposals: '이전 제안'
     load_previous: '이전 활동내역 보기'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
+  activity_card:
+    unread: 읽지않음
+    latest: 최신
+    attachment_display:
+      aria_label: '첨부파일:'
+      image_alt: '첨부이미지'
   thread_group:
     aria_label: '그룹명'
   thread_context:
@@ -558,11 +560,6 @@ ko:
     confirm_change_to_private_thread: '{{groupName}}은 공개 그룹입니다. 이 주제도 공개됩니다. 계속 하시겠습니까?'
     messages:
       success: 쓰레드가 {{name}} 으로 이동되었습니다.
-  activity_card:
-    new_activity: 새로운 활동
-    attachment_display:
-      aria_label: '첨부파일:'
-      image_alt: '첨부이미지'
   delete_comment_dialog:
     title: '댓글삭제'
     question: '댓글을 지우시겠습니까?'

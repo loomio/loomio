@@ -408,9 +408,10 @@ el:
       start: Εκίνηση
       or: ή
   discussion:
-    proposals: 'Προτάσεις'
-    previous_proposals: 'Προηγούμενες Προτάσεις'
     started_by: 'Ξεκίνησε από τον/την <strong>{{name}}</strong>'
+  activity_card:
+    unread: Αδιάβαστα
+    latest: Τελευταία
   thread_group:
     aria_label: 'Όνομα ομάδας'
   thread_context:
