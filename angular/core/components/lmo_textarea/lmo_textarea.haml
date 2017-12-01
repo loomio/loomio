@@ -15,7 +15,7 @@
           %md-button.md-button--tiny{md-menu-origin: "true", ng-click: "addDocument($mdMenu)", md-prevent-menu-close: "true"}
             %i.mdi.mdi-attachment
           %md-menu-content
-            %document_form.lmo-textarea__document-form{skip-close: "true"}
+            %document_form.lmo-textarea__document-form
         %emoji_picker
         .md-char-counter{ng-if: "maxlength"}
           {{ modelLength() }} / {{ maxlength }}
