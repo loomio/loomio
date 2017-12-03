@@ -5,10 +5,10 @@
       %tr
         %td
           %table
-            %td= render 'avatar', user: stance.participant
+            %td= render 'avatar', user: stance.participant_for_client(user: @info.recipient)
             %td.poll-mailer-common-responses__reason
               %strong
-                #{stance.participant.name}:
+                #{stance.participant_for_client(user: @info.recipient).name}:
       %tr
         %td= render_rich_text stance.reason
       %tr
