@@ -22,11 +22,29 @@ it:
     error:
       too_short: Fai una selezione
   email:
+    start_decision:
+      subject: Inizia una decisione su Loomio
+      intro: Ciao, <strong>%{name}</strong>!
+      action: Che cosa vuoi fare?
+      proposal: Solleva una proposta
+      count: Inizia una verifica
+      poll: Inizia un sondaggio
+      dot_vote: Inizia un voto a punti
+      meeting: Inizia un sondaggio per evento
+      ranked_choice: Inizia una scelta di preferenze
     custom: "%{text}"
     group_email:
       intro: "%{who} ha fatto un annuncio a %{group}:"
     by_who: da %{person}
     reply_to_this_discussion: Rispondi a questa discussione
+    value_proposition: "%{site_name}è un luogo  in cui i gruppi possono prendere decisioni insieme"
+    view_group: Vedi gruppo
+    to_join_group:
+      subject: "%{member}ti ha invitato ad unirti al gruppo %{group_name}sul sito %{site_name}"
+      invitation_text: "%{member} ti ha invito ad unirti al loro gruppo %{group_name}."
+      invitation_text_html: "ti ha invitato ad unirti al loro gruppo"
+      link_help: "Clicca sul link qui sotto per accettare l'invito:"
+      accept_invitation: "Accetta l'invito"
     unsubscribe: 'Disiscriviti o cambia le preferenze email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
     missed_yesterday:

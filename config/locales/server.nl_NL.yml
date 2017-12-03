@@ -1,7 +1,40 @@
 nl_NL:
+  explore:
+    header: Verken openbare groepen
+  activerecord:
+    errors:
+      messages:
+        blank: Mag niet leeg gelaten worden
+        invalid: Dit is geen geldige waarde
+  errors:
+    messages:
+      email: Dit is geen geldig emailadres
+      spoofed_media_type: De inhoud van het bestand komt niet overeen met de bestandsnaam
+  attachment:
+    error:
+      too_large: Het bestand dat je probeerde bij te voegen is groter dan 100 Megabyte, kies gelieve een kleiner bestand.
+  poll:
+    error:
+      cannot_add_options: Er kunnen geen opties aan deze peiling toegevoegd worden
+      cannot_remove_options: Er kunnen geen opties van deze peiling verwijderd worden
+      must_have_options: Er moet op zijn minst één peilingoptie zijn
+  stance:
+    error:
+      too_short: Gelieve een selectie te maken
+  user:
+    error:
+      username_must_be_alphanumeric: De gebruikersnaam mag enkel kleine letters en nummers bevatten
+  invitation:
+    invitation_cancelled: Sorry, deze uitnodiging is door de groepscoördinator terug ingetrokken. Gelieve bij je groep opnieuw een uitnoding aan te vragen.
+    invitation_already_used: Deze uitnodiging is al gebruikt geweest. Gelieve rechtstreek in te loggen bij loomio en ga verder naar je groep.
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
   validate:
     motion:
       must_close_in_future: Voorstel moet in de toekomst sluiten.
@@ -11,7 +44,19 @@ nl_NL:
       <h1>Succes.</h1>
       <p>Je hebt het gratis plan voor jouw groep geselecteerd <a href="/g/%{group_key}">%{group}</a></p>
 
+  user_mailer:
+    accounts_merged:
+      subject: "Je %{site_name}gebruikersaccounten werden samengevoed."
+      body_html: |
+        Hallo %{name},
+        Je twee loomio accounts zijn samengevoegd tot een account.
+        Gebruik vanaf nu aub <strong>%{email}</strong> om op loomio in te loggen.
   email:
+    login:
+      subject: Schrijf je in op %{site_name}
+      intro: Hallo %{name}, hier is een link om in te loggen op je%{site_name} account.
+      login: Meld je aan als %{name}
+      resend: Deze link vervalt in 24 uur en kan slechts eenmalig gebruikt worden.
     reset_password:
       greeting: |
         Hoi %{name}
@@ -21,6 +66,13 @@ nl_NL:
         Je hebt deze mail ontvangen omdat je emailadres ingevoerd is in het "Wachtwoord vergeten" formulier op %{hostname}.
         Je wachtwoord wordt echter niet veranderd totdat je de link hierboven volgt en het formulier invult.
         Als je problemen blijft houden met inloggen, reageer dan op deze email om contact te krijgen met iemand van de helpdesk.
+    start_decision:
+      subject: Start een beslissing op Loomio
+      intro: Hallo, <strong>%{name}</strong>!
+      action: Wat wil jij graag doen?
+      proposal: Doe een voorstel
+      count: Start een check
+      poll: Start een peiling
     custom: "%{text}"
     group_email:
       intro: "%{who} maakte een aankondiging aan %{group}:"
@@ -39,20 +91,25 @@ nl_NL:
     unsubscribe: 'Uitschrijven of je e-mailvoorkeuren aanpassen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mailvoorkeuren aan te passen."
     missed_yesterday:
+      do_not_reply: Gelieve niet antwoorden op deze e-mail.
       headlines: Nieuws
       mark_as_read: Markeer als gelezen
       thanks_for_reading: Bedankt voor het lezen, een fijne dag gewenst!
+      heres_what_happened: "Dit gebeurde er gisteren op %{site_name}."
       marked_as_read_success: Alles uit de e-mail is gemarkeerd als gelezen
     group_membership_approved:
       intro: "Je verzoek om toegang tot groep %{group_name} is goedgekeurd."
       intro_html: "Je verzoek om toegang tot groep <strong>%{group_name}</strong> is goedgekeurd."
       link_help: "Klik op de link hieronder om deel te nemen aan %{group_name} en te beginnen:"
+      subject: "Je aanvraag om lid te worden van %{group_name} is goedgekeurd"
       join_group: "Neem deel aan groep"
     membership_request:
       intro_html: heeft toegang gevraagd tot een van jouw groepen.
       subject: "%{who} heeft aangevraagd om lid te worden van %{which_group}"
       view_group: Je kan hier de aanvraag goed- of afkeuren
       button_text: Bekijk verzoek
+  email_actions:
+    unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.
   footer:
     about: Over
     blog: Blog
@@ -67,6 +124,10 @@ nl_NL:
     error:
       all_email_addresses_belong_to_members: "We hebben geen uitnodigingen naar de opgegeven e-mailadressen gestuurd, omdat deze bij mensen horen die al in de groep zitten."
   password_reset:
+    change_your_password: Verander je wachtwoord
+    change_my_password: Verander wachtwoord
+    confirm_new_password: Bevestig wachtwoord
+    new_password: Nieuw wachtwoord
     reset_email_timeframe: Het kan tot 5 minuten duren voordat de e-mail binnenkomt. Als het niet in je postvak in verschijnt, controleer dan voor de zekerheid even je spammap.
     length_restriction: Wachtwoorden moeten minimaal 8 tekens lang zijn.
     forbidden_passwords: Veelvoorkomende wachtwoorden als "wachtwoord" zijn niet toegestaan om je account veilig te houden.
@@ -158,12 +219,15 @@ nl_NL:
     common:
       or: of
       why_send_this: Je ontvangt deze e-mail omdat %{reason}
+      view_on_loomio: Bekijk het op %{site_name}
       unsubscribe: Abonnement opzeggen
       results: Resultaten
       responses: Antwoorden
       change_your_stance: Veranderen
       create_outcome: Deel uitkomst
+      your_response: "Jij stemde:"
       please_respond: Graag antwoorden
+      vote_now: Stem nu
     proposal:
       subject:
         poll_created: '%{actor} startte een voorstel: %{title}'
@@ -215,3 +279,8 @@ nl_NL:
         outcome_created: '%{actor} heeft een uitkomst gedeeld: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
+  poll_unsubscribe:
+    visit_poll: Peiling bekijken
+    go_to_dashboad: Ga naar het dashboard
+  slack:
+    go_to_slack: Ga naar Slack
