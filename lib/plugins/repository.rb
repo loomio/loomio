@@ -58,9 +58,8 @@ module Plugins
 
     def self.save_static_asset(asset)
       assets = Rails.application.config.assets
-      path   = Rails.root.join('plugins', asset.path).to_s
       assets.precompile << asset.filename if asset.standalone && !assets.precompile.include?(asset.filename)
-      assets.paths      << path           unless assets.paths.include?(path)
+      assets.paths      << asset.path     unless assets.paths.include?(asset.path)
     end
     private_class_method :save_static_asset
 

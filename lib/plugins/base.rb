@@ -116,6 +116,12 @@ module Plugins
       }.to_proc
     end
 
+    def use_view_path(path)
+      @actions.add Proc.new {
+        ApplicationController.append_view_path(with_root(path).gsub("#{Rails.root.to_s}/", ''))
+      }.to_proc
+    end
+
     def use_page(route, path, redirect: false)
       @actions.add Proc.new {
         # prepending rather than appending so we can override application root route
