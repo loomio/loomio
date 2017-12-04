@@ -77,6 +77,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
           ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
           poll = Records.polls.find(data.polls[0].key)
+          poll.removeOrphanOptions()
           AttachmentService.cleanupAfterUpdate(poll, 'poll')
           scope.$emit 'nextStep', poll
         cleanupFn: ->
