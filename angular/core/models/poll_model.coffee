@@ -166,5 +166,4 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     removeOrphanOptions: ->
       _.each @pollOptions(), (option) =>
-        unless _.includes @pollOptionNames, option.name
-          option.remove()
+        option.remove() unless _.includes(@pollOptionNames, option.name)

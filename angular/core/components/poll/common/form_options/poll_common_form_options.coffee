@@ -20,11 +20,8 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService, Abi
       _.pull($scope.poll.pollOptionNames, name)
       $scope.$emit 'pollOptionsChanged'
 
-    $scope.isExisting = (name) ->
-      _.contains $scope.existingOptions, name
-
     $scope.canRemoveOption = (name) ->
-      !$scope.isExisting(name) || AbilityService.canRemovePollOptions($scope.poll)
+      _.contains($scope.existingOptions, name) || AbilityService.canRemovePollOptions($scope.poll)
 
     KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.addOption, (active) ->
       active.classList.contains('poll-poll-form__add-option-input')
