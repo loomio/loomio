@@ -74,13 +74,6 @@ namespace :deploy do
     ]
   end
 
-  task :build_client do
-    run_commands [
-      "cd angular && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",           # build the app via gulp
-      "cp -r public/client/development public/client/#{Loomio::Version.current}"         # version assets
-    ]
-  end
-
   desc "Commits built assets to deployment branch"
   task :commit do
     puts "Committing assets to deployment branch..."
