@@ -163,3 +163,8 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
         'publish'
       else
         'edit'
+
+    removeOrphanOptions: ->
+      _.each @pollOptions(), (option) =>
+        unless _.includes @pollOptionNames, option.name
+          option.remove()
