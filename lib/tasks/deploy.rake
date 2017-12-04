@@ -56,7 +56,7 @@ namespace :deploy do
   desc "Builds assets for docker"
   task :build_client do |t, args|
     run_commands [
-      "rake 'plugins:fetch[plugins.docker]'",                                            # install plugins specified in plugins/plugins.yml
+      "rake 'plugins:fetch[plugins.docker]' plugins:install",                            # install plugins specified in plugins/plugins.yml
       "cd angular && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",           # build the app via gulp
       "cp -r public/client/development public/client/#{Loomio::Version.current}"         # version assets
     ]
