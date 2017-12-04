@@ -148,7 +148,7 @@ nl_NL:
     pricing: Prijzen
     public_groups: Openbare groepen
     terms: Voorwaarden
-    independent_install_html: '%{hostname} draait als een onafhankelijke kopie van Loomio: <a href="http://github.com/loomio/loomio">meer informatie</a>.'
+    independent_install_html: '%{hostname} voert een onafhankelijke kopie van Loomio uit: <a href="http://github.com/loomio/loomio">meer uitleg</a>.'
   invitation_form:
     error:
       too_many_pending: "Je hebt meer dan het toegelaten maximum aantal uitnodigingen in afwachting voor deze groep, zijnde %{count}"

@@ -913,6 +913,7 @@ it:
     vote: 'Puoi cambiare la tua posizione in ogni momento'
   explore_page:
     header: Esplora gruppi
+    search_placeholder: Cerca tra i gruppi pubblici
   emoji_picker:
     search: "Cerca una faccina"
   authorized_apps_page:
@@ -958,11 +959,14 @@ it:
     title: Decisioni in corso
     start_poll: Nuova decisione
     no_polls: Non ci sono decisioni attive al momento.
+  poll_common_collapsed:
+    by_who: "di {{name}}"
   poll_common_select_group:
     loomio_group: Gruppo
   poll_common_notify_group:
     notify_group: Annuncio
     members_helptext: Il tuo gruppo non riceverà una notifica
+    members_count: "{{count}} persone saranno notificate"
   poll_common_calendar_invite:
     poll_option_id: Ora dell'incontro
     event_duration: Durata
@@ -985,11 +989,15 @@ it:
     show_undecided: "Mostra i {{count}} che non hanno votato"
     show_invitations: Mostra inviti pendenti
   poll_common_set_outcome_panel:
+    share_outcome: Condividi risultati
     count: 'Questa verifica è chiusa. <strong>Condividi il risultato</strong> per completare il processo.'
     meeting: 'Questo sondaggio per incontro è chiuso. <strong>Condividi il risultato </strong> per far sapere ai partecipanti quando l''incontro avverrà.'
     dot_vote: 'Questo voto a punti è chiuso. <storng>Condividi il risultato </strong> con il gruppo.'
   poll_common_outcome_form:
     update_title: Aggiorna risultato
+    submit: Condividi risultati
+  poll_common_outcome_panel:
+    authored_by: 'Di {{name}}'
   poll_common_form:
     title: Titolo
     details: Dettagli
@@ -1034,6 +1042,7 @@ it:
       <p>Ai partecipanti viene dato un numero limitato di 'punti' che possono  assegnare a loro piacimento alle opzioni fornite per rappresentare le proprie preferenze.</p>
       <p>I risultati sono mostrati come totale dei voti per gruppo e come voti individuali, così è possibile considerare i diversi punti di vista.</p>
     tool_tip_collapsed: Assegnare priorità
+    dots_per_person: punti a testa
   poll_meeting_form:
     tool_tip_expanded: |
       <p>Usa un Sondaggio per incontro per sapere quando le persone sono disponibili ad incontrarsi.</p>
@@ -1055,7 +1064,11 @@ it:
     stance_created: Voto creato
     stance_updated: Voto aggiornato
   poll_proposal_options:
+    agree: Favorevole
+    abstain: Astenuto
     abstain_verb: "astenuto"
+    disagree: Contrario
+    block: Blocco
     block_verb: "bloccato"
   poll_count_vote_form:
     reason_label: Messaggio
@@ -1102,3 +1115,6 @@ it:
     check_your_email: Guarda nella tua casella di posta!
     login_link_sent: "Abbiamo inviato una email a {{email}}  con un link che ti permetterà di autenticarti immediatamente. A presto! "
     name: Nome
+  install_slack:
+    card:
+      install_slack: Connetti Slack
