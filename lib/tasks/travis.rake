@@ -13,6 +13,10 @@ namespace :travis do
 
   task :protractor => :environment do
     puts "Starting to run protractor..."
+    # warming up the server
+    system("sleep 10")
+    system("wget http://localhost:3000/")
+    # ok now start running the tests
     system("cd angular && gulp protractor:core")
     raise "protractor:core failed!" unless $?.exitstatus == 0
   end

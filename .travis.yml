@@ -57,7 +57,7 @@ before_script:
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
   - bundle exec rake travis:prepare
-  - bundle exec rails server > /dev/null &
+  - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:
   - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
