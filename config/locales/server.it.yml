@@ -21,7 +21,42 @@ it:
   stance:
     error:
       too_short: Fai una selezione
+  user:
+    error:
+      username_must_be_alphanumeric: Il Nome utente deve contenere solo lettere in minuscolo e numeri.
+  invitation:
+    invitation_cancelled: 'Questo invito è stato revocato dal coordinatore del gruppo. Chiedi un altro invito al tuo gruppo. '
+    invitation_already_used: L'invito è già stato usato. Iscriviti a Loomio per andare al tuo gruppo.
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
+  validate:
+    motion:
+      must_close_in_future: La proposta sarà presto chiusa.
+      one_at_a_time: C'è un altra proposta attiva.
+  subscriptions:
+    gift_plan_selected_for_group_html: |
+      <h1>Azione eseguita con successo.</h1>
+      <p> Hai selezionato il piano Free per il tuo gruppo <a href="/g/%{group_key}">%{group}</a></p>
+  user_mailer:
+    accounts_merged:
+      subject: "Gli accounts del tuo sito %{site_name} sono stati fusi."
+      body_html: |
+        Ciao, %{name}
+        I tuoi due accounts su Loomio sono stati fusi in un solo account.
+        Per accedere a Loomio da ora, usa l'indirizzo email <strong>%{email}</strong> quando ti autentichi.
   email:
+    login:
+      subject: Autenticati al sito %{site_name}
+      intro: Ciao %{name}, qui c'è il link per autenticarti all'account del sito %{site_name}.
+      login: Autenticato come %{name}
+    reset_password:
+      link_text: Cambia password
     start_decision:
       subject: Inizia una decisione su Loomio
       intro: Ciao, <strong>%{name}</strong>!
@@ -68,6 +103,8 @@ it:
     terms: Termini
     independent_install_html: '%{hostname} ha una copia indipendente di Loomio: <a href="http://github.com/loomio/loomio"> scopri di più</a>.'
   password_reset:
+    change_your_password: Cambia password
+    change_my_password: Cambia password
     length_restriction: Le password devono essere lunghe almeno 8 caratteri.
     forbidden_passwords: Le password banali come "password" sono vietate per tenere al sicuro il vostro account.
   poll_mailer:

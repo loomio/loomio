@@ -3,7 +3,7 @@ nl_NL:
     slight_smile: Vind ik leuk
     heart: Liefde
     laughing: Lach
-    clap: Handgeklap
+    clap: Klappen
     hugging: Knuffel
     sunglasses: Cool
     wink: Knipoog
@@ -34,14 +34,14 @@ nl_NL:
     proposal: Voorstel
     count: Check
     poll: Peiling
-    dot_vote: Stip stemming
-    meeting: Timing bevragen
+    dot_vote: Dotmocracy
+    meeting: Moment bevragen
     ranked_choice: Keuzes rangschikken
   timezones:
     local: Plaatselijke tijd ({{value}})
   common:
     you: Jij
-    expand: Uitbreiden
+    expand: Meer
     all_day: Hele dag
     ok_got_it: Ok, begrepen
     learn_more: Leer meer
@@ -101,7 +101,7 @@ nl_NL:
       cancel: 'Annuleren'
       show_more: "Laat meer zien"
       view_all: "Bekijk alles"
-      new_thread: "Nieuwe discussie"
+      new_thread: "Nieuw bord"
       add_subgroup: 'Toevoegen subgroep'
       loading: 'Aan het laden'
       translate: 'Vertalen'
@@ -118,8 +118,8 @@ nl_NL:
       unsubscribe: Uitschrijven
       subscribe: Inschrijven
       remind: Herinneren
-      resend: Verstuur opnieuw
-      send: Verstuur
+      resend: Opnieuw versturen
+      send: Versturen
       resent: Uitnodiging opniew verstuurd
     formatting_help:
       label: 'Aan het formatteren'
@@ -137,7 +137,7 @@ nl_NL:
     _10: 10e
   devise:
     failure:
-      inactive: 'Er is een gedeactiveerd account behorend bij dit email adres. Als je je account weer wil activeren, neem dan contact met ons op.'
+      inactive: 'Er is een gedeactiveerd account gekoppeld aan dit e-mailadres. Neem contact met ons op als je je account weer wilt activeren.'
   error_page:
     forbidden: 'Je bent niet gemachtigd om dit te doen.'
     page_not_found: 'Dat konden we niet vinden.  Wellicht is het verwijderd of verplaatst.'
@@ -170,48 +170,48 @@ nl_NL:
     mute_label: "Dempen"
     discussion:
       title: "E-mail-instellingen voor {{title}}"
-      loud_description: "Je ontvangt e-mail wanneer er activiteit is in deze discussie"
-      normal_description: "Je ontvangt e-mail wanneer een voorstel gestart is, op het punt staat te sluiten, of wanneer er een resultaat is geplaatst"
-      quiet_description: "Je ontvangt geen e-mail over deze discussie"
+      loud_description: "Je ontvangt een e-mail wanneer dit bord activiteit vertoond."
+      normal_description: "Je ontvangt een e-mail wanneer er een voorstel gestart is, op het punt staat te sluiten, of als er een uitkomst bekend is."
+      quiet_description: "Je ontvangt geen e-mails over dit bord."
       apply_to_all: "Pas deze instellingen toe op alle discussies in deze groep"
       messages:
-        loud: "Je krijgt activiteit via de mail in deze discussie"
-        normal: "Je krijgt e-mails over voorstellen in deze discussie"
-        quiet: "Je ontvangt geen e-mail over deze discussie"
+        loud: "Activiteit op dit bord zal je per mail gemeld worden."
+        normal: "Je zal ge-e-maild worden over voorstellen op dit bord."
+        quiet: "Je ontvangt geen e-mails over dit bord. "
     membership:
       title: "E-mail-instellingen voor {{title}}"
       loud_description: "Je onvangt een e-mail zodra er activiteit is in deze groep"
-      normal_description: "Je krijgt via e-mail alleen aankondigingen in deze groep"
-      quiet_description: "Je krijgt geen e-mail over activiteit in deze groep"
+      normal_description: "Enkel de aankondigingen in deze groep zullen je ge-e-mailed worden."
+      quiet_description: "Je krijgt geen e-mails over activiteit in deze groep."
       apply_to_all: "Pas deze instellingen toe op al mijn groepen"
       messages:
-        loud: "Je krijgt e-mail over alle activiteit in deze groep"
-        normal: "Je krijgt via e-mail alleen aankondigingen in deze groep"
+        loud: "Je zal e-mails krijgen over alle activiteiten in deze groep."
+        normal: "Enkel de aankondigingen in deze groep zullen je ge-e-mailed worden. "
         quiet: "Je krijgt geen e-mails over deze groep"
     all_groups:
       messages:
-        loud: "Je krijgt e-mail over alle activiteit in al je groepen"
-        normal: "Je krijgt via e-mail alleen aankondigingen in al je groepen."
-        quiet: "Je krijgt over geen van je groepen e-mail"
+        loud: "Je zal e-mails krijgen over alle activiteiten in al je groepen."
+        normal: "Enkel de aankondigingen in al je groepen zullen je ge-e-mailed worden. "
+        quiet: "Je zal over geen enkel van je groepen e-mails toegestuurd krijgen."
     user:
       title: E-mail-instellingen voor nieuwe groepen
-      loud_description: "Je krijgt e-mail wanneer er activiteit is in elke nieuwe groep waar je je bij aansluit"
-      normal_description: "Je krijgt via e-mail aankondigingen in elke nieuwe groep waar je je bij aansluit."
+      loud_description: "Je zal ge-e-mailed worden vanzodra er activiteit is in eender welke groep waar je lid van zal worden."
+      normal_description: "Je zal ge-e-mailed worden over alle aankondigingen in iedere groep waar je lid van zal worden. "
       quiet_description: "Je krijgt over geen enkele nieuwe groep waar je je bij aansluit e-mail over activiteit "
       apply_to_all: "Pas deze instellingen toe op al mijn groepen"
       messages:
-        loud: "Je krijgt e-mail van alle activiteit in nieuwe groepen"
-        normal: "Je krijgt via e-mail aankondigingen in nieuwe groepen"
-        quiet: "Je krijgt geen e-mail over nieuwe groepen"
+        loud: "Je krijgt e-mails van alle activiteiten in nieuwe groepen."
+        normal: "Je zal e-mails krijgen over aankondigingen in nieuwe groepen."
+        quiet: "Je zal geen e-mails krijgen over nieuwe groepen."
   mute_explanation_modal:
-    aria_label: Demp discussie
-    mute_thread: 'Demp discussie '
+    aria_label: Bord dempen
+    mute_thread: Bord dempen
     body_html: |
       <p>Dempen betekent dat je <strong>geen meldingen ontvangt over voorstellen</strong> , of elke andere activiteit op dit bord, tenzij iemand<strong>je @vermeld</strong>.</p>.
       <p>Gedempte borden zijn ook niet zichtbaar op <strong>Recente</strong> en <strong>Ongelezen </strong>pagina's. Om je gedempte borden te vinden selecteer je de <strong>Gedempte </strong> optie in de zijbalk:</p>
-    image_alt: Gedempte discussies in de zijbalk
+    image_alt: '''Gedempte borden'' optie is terug te vinden in de zijbalk'
   dismiss_explanation_modal:
-    aria_label: Negeer discussie
+    aria_label: Bord afwijzen
     dismiss_thread: Negeer discussie
     body_html: |
       <p>Het negeren van een bord verwijdert deze uit je ongelezen items. Als er nieuwe
@@ -228,7 +228,7 @@ nl_NL:
     aria_label: 'Sessie geëindigd'
     title: "Je sessie is geëindigd"
     message: "Je bent uit een ander venster uitgelogd geraakt. Gelieve opnieuw in te loggen om verder te kunnen werken."
-    ok: "Oké"
+    ok: "Ok"
   comment_reply_form:
     aria_label: 'Antwoord toevoegen'
   comment_form:
@@ -297,7 +297,7 @@ nl_NL:
     start_group: 'Begin groep!'
     start_subgroup: 'Start Subgroep'
     start_thread: 'Start discussie'
-    start_poll: 'Start Peiling'
+    start_poll: '''Peiling'' starten'
     invite_people: 'Nodig mensen uit'
   notifications:
     header: "Meldingen"
@@ -366,8 +366,8 @@ nl_NL:
     add_comment: Becommentarieer
     edit_thread: Beschrijving bijwerken
     translate_thread: Beschrijving vertalen
-    edit_poll: Peiling bewerken
-    translate_poll: Peiling vertalen
+    edit_poll: '''Peiling'' bewerken'
+    translate_poll: '''Peiling'' vertalen'
     edit_stance: Verander je stem
     translate_stance: Stem vertalen
     edit_comment: Commentaar bewerken
@@ -694,7 +694,7 @@ nl_NL:
   contact_request_form:
     modal_title: "E-mail {{name}}"
     message_placeholder: Stel jezelf voor en vertel waarom je graag contact zou maken.
-    helptext: "{{name}} zal jouw naam, e-mailadres en boodschap door ge-e-mailed krijgen."
+    helptext: "{{name}} zal jouw naam, e-mailadres en bericht door ge-e-mailed krijgen."
     email_sent: "E-mail verzonden naar {{name}}"
   profile_page:
     messages:
@@ -920,13 +920,13 @@ nl_NL:
     disagree_with_statement: 'oneens: <span>{{statement}}</span>'
     block_with_statement: 'geblokkeerd: <span>{{statement}}</span>'
   new_proposal_item:
-    author_created_proposal: 'start een voorstel: <span>{{title}}</span>'
+    author_created_proposal: 'voorstel gestart: <span>{{title}}</span>'
   proposal_closed_item:
-    proposal_closed: 'Dit voorstel is gesloten:<span>{{title}}</span>'
+    proposal_closed: 'Dit voorstel werd gesloten:<span>{{title}}</span>'
   proposal_closed_by_user_item:
     proposal_closed_by_user: 'voorstel gesloten: <span>{{title}}</span>'
   proposal_edited_item:
-    name: 'voorstel titel bijgewerkt: <span>{{title}}</span>'
+    name: 'voorstel titel geactualiseerd: <span>{{title}}</span>'
     description: 'voorstel omschrijving bijgewerkt'
     closing_at: 'voorstel bijgewerkt om te sluiten op <span>{{time}}</span>'
     description_name: 'voorstel titel en omschrijving bijgewerkt'
@@ -939,7 +939,7 @@ nl_NL:
     proposal_outcome_updated: 'uitkomst voorstel bijgewerkt:'
   discussion_edited_item:
     attachment_ids: 'de discussie bijlagen bijgewerkt'
-    title: 'de discussie titel bijgewerkt: <span>{{title}}</span>'
+    title: 'bordtitel werd geactualiseerd: <span>{{title}}</span>'
     description: 'discussie context bijgewerkt'
     description_title: 'discussie titel en context bijgewerkt'
     private: 'discussie privacy bijgewerkt naar '
@@ -951,7 +951,7 @@ nl_NL:
   discussion_moved_item:
     discussion_moved: 'de discussie verplaatst van <span>{{group}}</span>'
   contact_message_form:
-    helptext: "Wil je contact met ons opnemen? Vul hierond dan gewoon een boodschap in en je zal kortelings van ons horen."
+    helptext: "Wil je contact met ons opnemen? Vul hieronder dan gewoon een bericht in en je zal kortelings van ons horen."
     contact_us_email: "(Je kan ons ook altijd bereiken via <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
     contact_us: 'Neem contact met ons op'
     name_label: 'Je naam'
@@ -973,7 +973,7 @@ nl_NL:
     search_placeholder: Zoek naar openbare groepen
     single_search_result: "1 openbare groep die overeen komt met <strong>{{searchTerm}}:</strong>"
     multiple_search_results: "{{resultCount}} openbare groepen die overeen komen met <strong>{{searchTerm}}:</strong>"
-    no_results_found: "<strong>Kun je de groep die je zoekt, niet vinden? </strong> Als de privacy van een groep op 'geheim' staat, verschijnt die hier niet. Als je weet wie de groep coördineert, kun je hem of haar vragen om een uitnodiging."
+    no_results_found: "<strong>Kun je de groep die je zoekt niet vinden? </strong> Als de privacy van een groep op 'geheim' staat, verschijnt die hier niet. Als je weet wie de groep coördineert, kun je hem of haar vragen om een uitnodiging."
   global:
     messages:
       app_update: 'Er is een nieuwe versie van de app beschikbaar'
@@ -1027,13 +1027,15 @@ nl_NL:
     proposal_title: Voorstel
     count_title: Check
     poll_title: Peiling
-    dot_vote_title: Stip stemmen
-    meeting_title: Ranschikking van keuzes
-    ranked_choice_title: Ranglijst van keuzes
+    dot_vote_title: Dotmocracy
+    meeting_title: Moment bevragen
+    ranked_choice_title: Keuzes rangschikken
   poll_common:
     your_response: Je antwoord
     change_your_response: Verander je reactie
     reason: Reden
+    reason_placeholder: Nog bijkomend commentaar?
+    message: Bericht
     results: Resultaten
     vote: Stem
     votes: Stemmen
@@ -1045,9 +1047,11 @@ nl_NL:
     details: Details
     participant_name: Je naam
     participant_email: E-mail adres
-    share_poll: Deel peiling
-    share_proposal: Deel voorstel
+    share_poll: '''Peiling'' delen'
+    share_proposal: '''Voorstel'' delen'
+    share_count: '''Check'' delen'
     start_poll: Start een beslissing
+    publish_poll: '''Peiling'' delen'
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -1067,28 +1071,58 @@ nl_NL:
   poll_common_action_panel:
     unable_to_vote: Je hebt geen toestemming om een stem uit te brengen voor deze beslissing.
   current_polls_card:
-    title: Huidige beslissingen
-    start_poll: Nieuwe discussie
+    title: Lopende beslissingen
+    start_poll: Nieuwe beslissing
     no_polls: Er zijn momenteel geen actieve beslissingen.
   poll_common_collapsed:
     by_who: "door {{name}}"
   poll_common_select_group:
     loomio_group: Groep
+    loomio_group_placeholder: (geen groep geselecteerd)
   poll_common_voter_add_options:
     add_options: Kiezers mogen opties toevoegen
+    helptext_on: Deelnemers mogen hun eigen opties toevoegen wanneer ze stemmen
+    helptext_off: Deelnemers kunnen kiezen uit jouw aangeboden opties
   poll_common_notify_group:
     notify_group: Aankondiging
+    members_helptext: Je groep zal op de hoogte gebracht worden
     members_count: "{{count}} mensen worden gewaarschuwd"
+    participants_count: "De{{count}} mensen die gestemd hebben zullen op de hoogte gebracht worden"
   poll_common_calendar_invite:
+    calendar_invite: Voeg een kalenderuitnodiging toe met deze uitkomst
+    poll_option_id: Tijd van de vergadering
+    helptext_on: Gebruikers zullen deze vergadering kunnen toevoegen aan hun kalender
+    helptext_off: Er zal geen vergaderverzoek verstuurd worden
+    event_duration: Duur
+    event_summary: Samenvatting
+    event_summary_placeholder: Hoe zou je de vergadering willen benoemen?
+    event_description: Vergadering omschrijving
+    event_description_placeholder: Wat staat er op de agenda bij deze vergadering?
     location: Locatie
+    location_placeholder: Waar zal deze vergadering plaats vinden?
+  poll_common_notify_on_participate:
+    notify_on_participate: Meld me wanneer er mensen deelnemen
+    helptext_on: Je zal verwittigd worden telkens wanneer er iemand deelneemt
+    helptext_off: Je zal de resultaten ontvangen wanneer deze activiteit sluit
+  poll_common_anonymous:
+    anonymous: Anonieme deelnemers
+    helptext_on: De gegevens van de deelnemer zal niet bij ieder antwoord getoond worden
+    helptext_off: Deelnemers zullen getoond worden met hun antwoorden
   poll_common_close_form:
     title: Sluit een peiling voortijdig
+    helptext: Ben je er zeker van dat je vroeger wilt sluiten?
     close_proposal: Sluit voorstel
     close_poll: Sluit peiling
-    close_dot_vote: Sluit stippen stemming
+    close_count: '''Check'' sluiten'
+    close_dot_vote: '''Dotmocracy'' sluiten'
+    close_meeting: '''Moment bevragen'' sluiten'
+    close_ranked_choice: Sluit de peiling 'Keuzes rangschikken'
     proposal_closed: Voorstel gesloten
     poll_closed: Peiling gesloten
-    dot_vote_closed: Stippen stemming gesloten
+    count_closed: '''Check'' gesloten'
+    dot_vote_closed: '''Dotmocracy'' gesloten'
+    meeting_closed: '''Moment bevragen'' gesloten'
+    ranked_choice_closed: De peiling 'Keuzes rangschikken' is gesloten
   poll_common_closing_at_field:
     closing: Sluit
     closing_hour: Sluitingstijd
@@ -1101,12 +1135,24 @@ nl_NL:
     priority_last: Geblokkeerd eerst
     no_votes_yet: Er zijn nog geen stemmen uitgebracht.
     change_results_order: Verander volgorde resultaten
+    none_of_the_above: (Geen van bovenstaande)
+  poll_common_undecided_panel:
+    show_undecided: "Toon {{count}} onbeslist "
+    show_invitations: Toon uitnodigingen in afwachting
+    undecided_users: "Onbeslist ({{count}})"
+    invitation_count_singular: "1 extra persoon werd uigenodigd om deel te nemen via e-mail"
+    invitation_count_plural: "{{count}} extra mensen werden uitgenodigd om deel te nemen via e-mail"
   poll_common_undecided_user:
     reminded: Herinnering gestuurd!
+    reminder_sent: Herinneringsmelding verstuurd
   poll_common_set_outcome_panel:
     share_outcome: Deel uitkomst
     poll: 'Deze peiling is gesloten. <strong>Deel de uitkomst</strong> met de groep.'
     proposal: 'Dit voorstel is gesloten. Denk na over wat er gezegd is en <strong>deel een uitkomst</strong>, zodat mensen weten wat er daarna gebeurt.'
+    count: 'Deze ''Check'' werd gesloten. <strong>Deel de uitkomst </strong> om het proces af te sluiten.'
+    meeting: 'Dit ''Moment bevragen'' is gesloten. <strong>Deel een uitkomst </strong> om anderen op te laten weten wanneer de vergadering plaats zal vinden.'
+    dot_vote: 'Deze ''Dotmocracy'' werd gesloten. <storng>Deel een uitkomst</strong> met je groep.'
+    ranked_choice: 'Deze ''Keuzes rangschikken'' peiling werd gesloten<strong> Deel een uitkomst </strong> met de groep.'
   poll_common_outcome_form:
     new_title: Deel een uitkomst
     update_title: Actualiseer uitkomst
@@ -1116,52 +1162,133 @@ nl_NL:
     submit: Deel uitkomst
   poll_common_outcome_panel:
     authored_by: 'Door {{name}}'
+  poll_common_delete_modal:
+    question: Ben je zeker dat je dit wilt verwijderen?
+    title: Beslissing verwijderen
+    success: Succesvol verwijderd
+  poll_common_unsubscribe_form:
+    title: Ontvang updates
+    label: Ontvang e-mails updates over deze beslissing
+    tooltip: E-mail updates houden je op de hoogte van deze beslissing, zoals wanneer het bewerkt is, wanneer het vervalt, of wanneer een uikomst bepaald werd. Dit vak ontvinken zorgt ervoor dat je geen e-mail meldingen meer over beslissingen zult ontvangen.
+    helptext_on: Je zal e-mails ontvangen over activiteit in deze beslissing
+    helptext_off: Je zal geen e-mails ontvangen over deze beslissing
+    subscribed: Inschrijven voltooid
+    unsubscribed: Uitschrijven voltooid
   poll_common_form:
+    title: Titel
+    details: Details
+    options: Opties
+    options_placeholder: Typ een nieuwe optie...
     no_options: Je hebt nog geen opties toegevoegd.
-    start: Start
+    closing: Sluiten
+    start: Starten
+    update: Updaten
+    loomio_school_link: |
+      <p>Verruim je kennis op de <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
   poll_proposal_form:
-    edit_header: Pas voorstel aan
+    tool_tip_expanded: |
+      <p>Een 'Voorstel' is een instrument om een gemeenschappelijk akkoord te bekomen over een stelling of verloop.</p>
+      <p>Deelneemers kunnen het eens zijn, zich onthouden, oneens zijn of blokkeren - en een verklaring geven waarom ze dit standpunt kiezen.</p>
+      <p>Een taartgrafiek geeft het overzicht van de standpunten in de groep, terwijl de opmerkingen de individuele stemmen een platform geeft. </p>
+      <p>Laat je niet ontmoedigen als er in het begin geen akkoord zichtbaar is, voorstellen zijn ontworpen om problemen aan de oppervlakte te brengen.</p>
+      <p>Als er goed deelgenomen word is een 'Voorstel' een krachtig instrument om actie te ondernemen.</p>
+    tool_tip_collapsed: Beoog een gemeenschappelijk akkoord
+    start_header: '''Voorstel'' starten'
+    edit_header: '''Voorstel'' bewerken'
+    tip: Beoog een gemeenschappelijk akkoord aan de hand van een proces dat stemmen aan het woord laat. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank"> Leer meer </a>
     title_placeholder: M.a.w. Laten we naar de maan gaan!
     details_placeholder: Geef genoeg informatie, zodat iedereen weet wat het inhoudt om het eens of oneens te zijn
+    proposal_created: '''Voorstel'' aangemaakt'
     proposal_updated: Voorstel bijgewerkt
   poll_poll_form:
+    tool_tip_expanded: |
+      <p>Gebruik een 'Peiling' om populariteit te meten of een een keuze aan te bieden.</p>
+      <p>Voorzie enkele opties om uit te kiezen. Beslis of de deelnemers een of meerdere opties mogen antwoorden. Decide if participants choose single or multiple options as their response.</p>
+      <p>Iedereen stemt mee en kan indien gewenst een opmerking meegeven. Resultaten worden voorgesteld in een balkgrafiek.</p>
+    tool_tip_collapsed: Meet de populariteit van de verschillende opties
+    start_header: '''Peiling'' starten'
     edit_header: Pas peiling aan
+    tip: Meet de populariteit van de verschillende opties
+    title_placeholder: bijv. Waar wil je je verlof doorbrengen?
     details_placeholder: Geef verhelderende details die mensen mogelijk nodig hebben om de vraag te beantwoorden.
     add_option_placeholder: Voeg optie toe
     remove_option: Verwijder optie
     multiple_choice: Multiple choice
+    multiple_choice_explained: Sta kiezers toe om zoveel opties als ze willen te selecteren .
     poll_created: Peiling gemaakt
     poll_updated: Peiling geactualiseerd
   poll_count_form:
-    start_header: Start check
-    edit_header: Bewerk check
+    tool_tip_expanded: |
+      <p>Een<em>'Check' </em> is een instrument met veel toepassingsmogelijkheden maar met slechts 2 antwoorden: een vink (✔) of een kruis (✘). Deelnemers zullen de vik (✔) gebruiken om ja te zeggen en het kruis (✘) gebruiken als ze nee bedoelen of niet zeker zijn.</p>
+      <p>Gebruik dit om mensen te betrekken met een voorstel, zoals een A.A.U.B.: "Ik zal naar de bijeenkomst komen" of "Ik zal lid worden van de werkgroep".</p>
+      <p>Of gebruik het om een stand van zaken te weten te komen: "Ik heb mijn contactgegevens nagezien", of "Ik heb het document gelezen en mijn feedback gegeven".</p>
+      <p>Een 'Check' heeft een<em>doel</em>, zijnde het aantal deelnemers dat je zou willen hebben. Dit doel geeft aan de groep weer of er iets meer aandacht vraagt of genoeg mensen bereikt heeft .</p>
+      <p>De dag voordat de 'Check' sluit zal het de deelnemers die nog moeten antwoorden herinneren dit te doen - en deze digitale harde noot kraken.</p>
+    tool_tip_collapsed: Traceer medewerking en vind vrijwilligers
+    start_header: '''Check'' starten'
+    edit_header: '''Check'' bewerken'
     tip: Betrek mensen met een aanbod of vraag
     title_placeholder: M.a.w. Wie wil deelnemen aan de werkgroep?
-    count_created: Check gestart
-    count_updated: Check geüpdatet
+    details_placeholder: Verduidelijk welk engagement erbij komt kijken, of geef details over hoe ze kunnen deelnemen.
+    count_created: '''Check'' aangemaakt'
+    count_updated: '''Check'' geactualiseerd'
   poll_dot_vote_form:
-    edit_header: Pas stippen stemming aan
+    tool_tip_expanded: |
+      <p>'Dotmocracy' is een manier om een lijst met opties prioriteiten toe te kennen.</p>
+      <p>Deelnemers krijgen een beperkt aantal dots, zijnde stippen, die ze zelf kunnen verdelen over de voorgestelde opties.</p>
+      <p>De totalen van de resultaten worden getoond, alsook de individuele stemmen, zo kan je verschillende invalshoeken evalueren.</p>
+    tool_tip_collapsed: Opties prioriteiten toekennen
+    start_header: '''Dotmocracy'' starten'
+    edit_header: '''Dotmocracy'' bewerken'
+    tip: Middelen gemeenschappelijk toebedelen
+    title_placeholder: bijv. Hoe zouden we ons budget toebedelen?
     details_placeholder: Geef verhelderende details die mensen nodig kunnen hebben om mee te kunnen doen
-    add_option_placeholder: Voeg optie toe
+    add_option_placeholder: Optie toevoegen
     dots_per_person: Stippen per persoon
-    dot_vote_created: Stippen stemming gemaakt
-    dot_vote_updated: Stippen stemming aangepast
+    dot_vote_created: '''Dotmocracy'' aangemaakt'
+    dot_vote_updated: '''Dotmocracy'' geactualiseerd'
   poll_meeting_form:
+    tool_tip_expanded: |
+      <p>Gebruik 'Moment bevragen' om uit te zoeken wanneer mensen beschikbaar zijn om af te spreken. </p>
+      <p>Typ een lijst met datums of tijden wanneer je je vergadering kan organieseren.</p>
+      <p>Deelnemers vinken deze aan waarbij ze aanwezig kunnen zijn, of ze kunnen het uitlegveld invullen om hun omstandigheden te omschrijven, zodat jij de opties kunt bijsturen indien nodig.</p>
+      <p>Wanneer je nieuwe tijden tijdens een 'Moment afspreken' toevoegt worden de mensen die al gekozen hadden gevraagd hun keuze te actualiseren.</p>
+      <p>Zo krijg je een overzicht van wie het wanneer past en kan je kiezen wanneer je de vergadering wilt houden.</p>
+      <p>Tijden worden automatisch aangepast aan de tijdzone van de deelnemers.</p>
+    tool_tip_collapsed: Zoek een moment om af te spreken
+    start_header: '''Moment bevragen'' starten'
+    edit_header: '''Moment bevragen'' bewerken'
+    tip: Ontdek wanneer mensen beschikbaar zijn om af te spreken
     title_placeholder: M.a.w. Wanneer moeten we weer bij elkaar komen?
     details_placeholder: Geef verhelderende details die mensen nodig kunnen hebben om mee te kunnen doen
+    meeting_created: '''Moment bevragen'' aangemaakt'
+    meeting_updated: '''Moment bevragen'' geactualiseerd'
+    timeslots: Tijdvensters
+    no_options: "Je hebt nog geen tijdvensters opgegeven."
+    meeting_duration: Duur van de vergadering
+    add_option_placeholder: Geef een nieuwe tijd op
   poll_ranked_choice_form:
+    tool_tip_expanded: |
+      <p>'Keuzes rangschikken' is een kiesmethode die toelaat om iedere kiezer zijn voorkeuren te laten rangschikken.</p>
+      <p>Het is aan te raden wanneer 'het stelen van stemmen' kan optreden (bijv, twee populaire opties die
+      bijna hetzelfde zijn en bijgevolg de stemmen tussen elkaar verdeeld zien worden), en het kan gebruikt worden om een Condorcet te implementeren of een Instant Runoff stijl van verkiezing.
+      </p>
+    tool_tip_collapsed: Opties rangschikken
+    start_header: '''Keuzes rangschikken'' starten'
+    edit_header: '''Keuzes rangschikken'' bewerken'
+    tip: Ontdek wanneer mensen beschikbaar zijn om af te spreken
     title_placeholder: bijv. Wie zou je graag als burgemeester zien?
     details_placeholder: Verschaf de nodige uitleg die mensen zouden nodig hebben om te participeren
-    meeting_created: Gerangschikte keuzes gemaakt
-    meeting_updated: Gerangschikte keuzes geactualiseerd
+    meeting_created: '''Keuzes rangschikken'' aangemaakt'
+    meeting_updated: '''Keuzes rangschikken'' geactualiseerd'
     no_options: "Je hebt nog geen opties toegevoegd."
     add_option_placeholder: Typ een nieuwe keuze
     minimum_stance_choices: Opties te rangschikken
     minimum_stance_choices_helptext: Aantal opties dat elke kiezer mag rangschikken
-    ranked_choice_created: Gerangschikte keuzes gemaakt
-    ranked_choice_updated: Gerangschikte keuzes geactualiseerd
+    ranked_choice_created: '''Keuzes rangschikken'' aangemaakt'
+    ranked_choice_updated: '''Keuzes rangschikken'' geactualiseerd'
   poll_meeting_time_field:
-    new_time_slot: Nieuw tijdslot
+    new_time_slot: Nieuw tijdvenster
     closing_hour: Sluitingsuur
   poll_proposal_vote_form:
     default_reason_placeholder: Licht je gedachtengang toe alsjeblieft
@@ -1190,7 +1317,7 @@ nl_NL:
     no_meaning: Ik ben niet in staat om deel te nemen aan de beslissing
   poll_count_vote_form:
     reason_label: Bericht
-    reason_placeholder: Laat een boodschap achter als je wil
+    reason_placeholder: Laat een bericht achter als je wil
     stance_created: Stemming gemaakt
     stance_updated: Stemming geactualiseerd
   poll_common_percent_voted:
@@ -1374,10 +1501,10 @@ nl_NL:
       helptext: |
         Succes! Nu, kies een kanaal dat je graag zou gebruiken om updates op te posten.
       select_a_channel: Kies een kanaal
-      publish_group: Post een welkomstboodschap
-      publish_group_helptext_on: We zullen de boodschap op dit kanaal posten om mensen te instrueren hoe ze LoomioBot kunnen gebruiken.
+      publish_group: Post een welkomstbericht
+      publish_group_helptext_on: We zullen het bericht op dit kanaal posten om mensen te instrueren hoe ze LoomioBot kunnen gebruiken.
       publish_group_helptext_off: We zullen niets posten totdat je een peiling hebt opgesteld.
-      custom_message: Persoonlijke boodschap
+      custom_message: Persoonlijk bericht
       set_channel: Stel het kanaal in
     decide:
       heading: 'Stap 3: Maak samen een beslissing'
