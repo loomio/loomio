@@ -8,10 +8,10 @@ module Plugins
     def self.install_plugins!
       ::Module.prepend Plugins::ModuleConstMissing
       return unless Dir.exists?('plugins')
-      Dir['plugins/*/*/plugin.rb'].each do |file|
+      Dir["plugins/*/*/plugin.rb"].each do |file|
         Dir.chdir(File.dirname(file)) { load File.basename(file) }
       end
-      
+
       repository.values.each do |plugin|
         next unless plugin.enabled
 
@@ -75,7 +75,7 @@ module Plugins
     private_class_method :active_plugins
 
     def self.plugin_yaml
-      @@plugin_yaml ||= { 'path' => '../plugins' }
+      @@plugin_yaml ||= { 'path' => '..' }
     end
     private_class_method :plugin_yaml
 

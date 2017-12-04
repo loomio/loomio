@@ -34,7 +34,7 @@ module Plugins
 
     def use_class(path = nil, &block)
       raise NoCodeSpecifiedError.new unless block_given? || path
-      proc = block_given? ? block.to_proc : Proc.new { require with_root path }
+      proc = block_given? ? block.to_proc : Proc.new { require path_prefix path }
       @actions.add proc
     end
 
@@ -60,24 +60,20 @@ module Plugins
       use_directory(glob) { |path| use_asset(path) }
     end
 
-    def with_root(path = nil)
-      [@root, path].compact.join('/')
-    end
-
     def use_static_asset(path, filename, standalone: false)
-      @static_assets.add StaticAsset.new(with_root(path), filename, standalone)
+      @static_assets.add StaticAsset.new(path_prefix(path), filename, standalone)
     end
 
     def use_static_asset_directory(path, standalone: false)
-      Dir.entries(with_root(path))
+      Dir.entries(path_prefix(path))
          .reject { |p| ['.', '..'].include?(p) }
          .each { |filename| use_static_asset(path, filename, standalone: standalone) }
     end
 
     def use_translations(path, filename = :client)
       raise NoCodeSpecifiedError.new unless path
-      Rails.application.config.i18n.load_path += Dir[with_root "#{path}/#{filename}.*.yml"]
-      Dir.chdir(with_root) { Dir.glob("#{path}/#{filename}.*.yml").each { |path| use_translation(path) } }
+      Rails.application.config.i18n.load_path += Dir[path_prefix "#{path}/#{filename}.*.yml"]
+      Dir.chdir(path_prefix) { Dir.glob("#{path}/#{filename}.*.yml").each { |path| use_translation(path) } }
     end
 
     def use_events(&block)
@@ -118,7 +114,7 @@ module Plugins
 
     def use_view_path(path)
       @actions.add Proc.new {
-        ApplicationController.append_view_path(with_root(path).gsub("#{Rails.root.to_s}/", ''))
+        ApplicationController.append_view_path(path_prefix(path, rails_root: false))
       }.to_proc
     end
 
@@ -145,13 +141,19 @@ module Plugins
 
     def use_asset(path)
       raise InvalidAssetType.new unless VALID_ASSET_TYPES.include? path.split('.').last.to_sym
-      @assets.add with_root path
+      @assets.add path_prefix(path, rails_root: false)
     end
 
     private
 
+    def path_prefix(path = nil, rails_root: true)
+      path = [@root, path].compact.join('/')
+      path = path.sub("#{Rails.root}/", '') unless rails_root
+      path
+    end
+
     def config_file_path
-      with_root 'config.yml'
+      path_prefix 'config.yml'
     end
 
     def use_translation(path)
@@ -159,7 +161,7 @@ module Plugins
     end
 
     def use_directory(glob)
-      Dir.chdir(with_root) { Dir.glob("#{glob}/*").each { |path| yield path } }
+      Dir.chdir(path_prefix) { Dir.glob("#{glob}/*").each { |path| yield path } }
     end
 
   end
