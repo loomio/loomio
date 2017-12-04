@@ -25,7 +25,7 @@ namespace :travis do
     puts "Starting to run plugin rspec..."
     system("bundle exec rspec plugins")
     rspec_passed = $?.exitstatus == 0
-
+    system("wget http://localhost:3000/")
     puts "Starting to run plugin protractor..."
     system("cd angular && gulp protractor:plugins")
     protractor_passed = $?.exitstatus == 0
