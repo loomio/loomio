@@ -27,13 +27,13 @@ namespace :deploy do
     run_commands(
       "git checkout master",
       "git checkout -b deploy-#{Time.now.to_i}",
-      "bundle exec rake
-        plugins:fetch[loomio_org]
-        plugins:install[#{heroku_plugin_set}]
-        plugins:merge_repo
-        deploy:build
-        deploy:commit
-        deploy:cleanup")
+      "bundle exec rake #{[
+        "plugins:fetch[loomio_org]",
+        "plugins:install[#{heroku_plugin_set}]",
+        "deploy:build",
+        "deploy:commit",
+        "deploy:cleanup"
+      ].join(' ')}")
     at_exit do
       run_commands("git checkout master", "git branch -D #{deploy_branch_name}")
     end
