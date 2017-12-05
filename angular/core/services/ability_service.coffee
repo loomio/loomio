@@ -184,6 +184,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     canSharePoll: (poll) ->
       @canEditPoll(poll)
 
+    canRemovePollOptions: (poll) ->
+      poll.isNew() || (poll.isActive() && poll.stancesCount == 0)
+
     canEditPoll: (poll) ->
       poll.isActive() and @canAdministerPoll(poll)
 

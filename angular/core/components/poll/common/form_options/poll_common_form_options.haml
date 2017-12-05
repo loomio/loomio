@@ -11,7 +11,7 @@
     %md-list-item.poll-common-form__list-item{ng-repeat: "name in poll.pollOptionNames"}
       %span.poll-poll-form__option-text{ng-if: "!datesAsOptions"} {{name}}
       %poll_meeting_time.poll-meeting-form__option-text.lmo-flex__grow{ng-if: "datesAsOptions", name: "name", zone: "zone"}
-      %md-button.poll-poll-form__option-button{ng-if: "!isExisting(name)", ng-click: "removeOption(name)", aria-label: "{{ 'poll_poll_form.remove_option' | translate }}"}
+      %md-button.poll-poll-form__option-button{ng-if: "canRemoveOption(name)", ng-click: "removeOption(name)", aria-label: "{{ 'poll_poll_form.remove_option' | translate }}"}
         %i.mdi.mdi-close.mdi-24px.poll-poll-form__option-icon
     %poll_meeting_time_field{ng-if: "datesAsOptions", poll: "poll"}
     %md-list-item.poll-common-form__add-option{ng-if: "!datesAsOptions", flex: "true", layout: "row"}

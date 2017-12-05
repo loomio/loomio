@@ -144,3 +144,7 @@ angular.module('loomioApp').factory 'PollModel', (BaseModel, HasDocuments, HasDr
         'publish'
       else
         'edit'
+
+    removeOrphanOptions: ->
+      _.each @pollOptions(), (option) =>
+        option.remove() unless _.includes(@pollOptionNames, option.name)

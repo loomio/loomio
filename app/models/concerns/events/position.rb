@@ -4,7 +4,7 @@ module Events::Position
   included do
     before_save :set_depth
     after_destroy :reorder
-    after_save :reorder, if: :parent_id_changed?
+    after_save :reorder, if: :parent_or_discussion_id_changed?
     belongs_to :parent, class_name: "Event", required: false
     has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
     define_counter_cache(:child_count) { |e| e.children.count  }
@@ -12,6 +12,10 @@ module Events::Position
   end
 
   private
+  def parent_or_discussion_id_changed?
+    parent_id_changed? || discussion_id_changed?
+  end
+
   def set_depth
     self.depth = parent ? (parent.depth + 1) : 0
   end
@@ -28,7 +32,6 @@ module Events::Position
   end
 
   def reorder_with_parent_id(parent_id)
-    return if parent_id.nil? # we don't order outside of a parent
     ActiveRecord::Base.connection.execute <<-SQL.strip_heredoc
       UPDATE events
       SET position = t.seq
@@ -36,6 +39,7 @@ module Events::Position
         SELECT id AS id, row_number() OVER(ORDER BY id) AS seq
         FROM events
         WHERE parent_id = #{parent_id}
+        AND   discussion_id IS NOT NULL
       ) AS t
       WHERE events.id = t.id and
             events.position is distinct from t.seq
