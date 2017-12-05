@@ -319,8 +319,7 @@ describe Event do
     it 'notifies everyone if announcement' do
       poll.make_announcement = true
       Events::PollCreated.publish!(poll, poll.author)
-      Events::PollExpired.publish!(poll)
-      event = Events::PollExpired.last
+      event = Events::PollExpired.publish!(poll)
 
       expect(event.announcement).to eq true
       email_users = event.send(:email_recipients)

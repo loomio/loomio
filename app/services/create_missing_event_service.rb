@@ -1,4 +1,14 @@
 module CreateMissingEventService
+  def self.new_comment(comment)
+    # res = Event.import [Event.new(kind: 'new_discussion',
+    #                         user_id: discussion.author_id,
+    #                         eventable_id: discussion.id,
+    #                         eventable_type: "Discussion",
+    #                         created_at: discussion.created_at)]
+    #
+    # event = Events::NewDiscussion.find(res.ids.first.to_i)
+  end
+
   def self.new_discussion(discussion)
     res = Event.import [Event.new(kind: 'new_discussion',
                             user_id: discussion.author_id,
@@ -31,35 +41,36 @@ module CreateMissingEventService
   def self.poll_created(poll)
     Event.where(kind: "new_motion", discussion_id: poll.discussion_id).destroy_all
 
+    parent_id = poll.discussion ? poll.discussion.created_event.id : nil
     res = Event.import [Event.new(kind: 'poll_created',
                                   user_id: poll.author_id,
                                   eventable_id: poll.id,
                                   eventable_type: "Poll",
-                                  parent_id: poll.discussion.created_event.id,
+                                  parent_id: parent_id,
                                   depth: 1,
-                                  discussion_id: poll.discussion.id,
+                                  discussion_id: poll.discussion&.id,
                                   sequence_id: sequence_id_for(poll.discussion, poll.created_at),
-                                  created_at: poll.discussion.created_at)]
+                                  created_at: poll.discussion&.created_at)]
 
     poll.stances.order(:created_at).each(&:created_event)
     # ensure there is a poll closed event?
     poll.outcomes.order(:created_at).each(&:created_event)
 
-    poll.discussion.items.last.send(:reorder)
+    poll.discussion.items.last.send(:reorder) if parent_id
 
-    # TODO ensure poll closed and expired events are sorted
+    # TODO (or not TODO) ensure poll closed and expired events are sorted
 
     Events::PollCreated.find(res.ids.first.to_i)
   end
 
   def self.stance_created(stance)
     discussion = stance.poll.discussion
-    Event.where(kind: "new_vote", discussion_id: discussion.id).destroy_all
+    Event.where(kind: "new_vote", discussion_id: discussion.id).destroy_all if discussion
     res = Event.import [Event.new(kind: 'stance_created',
                                   user_id: stance.participant_id,
                                   eventable_id: stance.id,
                                   eventable_type: "Stance",
-                                  discussion_id: discussion.id,
+                                  discussion_id: discussion&.id,
                                   depth: 2,
                                   parent_id: stance.poll.created_event.id,
                                   sequence_id: sequence_id_for(discussion, stance.created_at),
@@ -83,6 +94,7 @@ module CreateMissingEventService
 
 
   def self.sequence_id_for(discussion, time)
+    return nil if discussion.nil?
     id = (discussion.items.where("created_at < ?", time).order("created_at asc").last&.sequence_id || 0) + 1
     if Event.where(discussion_id: discussion.id, sequence_id: id).exists?
       Event.where(discussion_id: discussion.id).
