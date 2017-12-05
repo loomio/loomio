@@ -54,7 +54,7 @@ module CreateMissingEventService
                                   depth: 1,
                                   discussion_id: poll.discussion&.id,
                                   sequence_id: sequence_id_for(poll.discussion, poll.created_at),
-                                  created_at: poll.discussion&.created_at)]
+                                  created_at: poll.created_at)]
 
     poll.stances.order(:created_at).each(&:created_event)
     # ensure there is a poll closed event?
