@@ -8,7 +8,7 @@ namespace :plugins do
     yaml.each_pair { |name, config| Plugins::Fetcher.new(name, config).execute! }
   end
 
-  task :install, [:plugin_set] do |t, args|
+  task :install, [:plugin_set] => :environment do |t, args|
     plugin_set = args[:plugin_set] || '*'
     Plugins::Repository.install_plugins!(plugin_set)
   end
