@@ -1,12 +1,16 @@
 module CreateMissingEventService
   def self.new_comment(comment)
-    # res = Event.import [Event.new(kind: 'new_discussion',
-    #                         user_id: discussion.author_id,
-    #                         eventable_id: discussion.id,
-    #                         eventable_type: "Discussion",
-    #                         created_at: discussion.created_at)]
+    # we can't actually do this easily, and don't need to
+    # res = Event.import [Event.new(kind: 'new_comment',
+    #                               user_id: comment.author_id,
+    #                               discussion_id: comment.discussion_id,
+    #                               parent_id: comment.parent_event,
+    #                               depth: 1,
+    #                               eventable_id: comment.id,
+    #                               eventable_type: "Comment",
+    #                               created_at: comment.created_at)]
     #
-    # event = Events::NewDiscussion.find(res.ids.first.to_i)
+    # event = Events::NewComment.find(res.ids.first.to_i)
   end
 
   def self.new_discussion(discussion)
