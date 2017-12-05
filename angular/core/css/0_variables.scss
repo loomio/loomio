@@ -1,5 +1,22 @@
-/* let's only use semantic names for our colours */
-/* you should not need to use these now we're materialized */
+$navbar-height: 48px;
+$tiny-max:      480;
+$small-max:     767;
+$medium-max:    992;
+$tiny-max-px:   $tiny-max   + px;
+$small-max-px:  $small-max  + px;
+$medium-max-px: $medium-max + px;
+$max-container-size: 1120px;
+
+$z-negative: -10;
+$z-zero: 0;
+$z-low: 10;
+$z-medium: 100;
+$z-high: 1000;
+$z-extreme: 10000;
+
+$thinPaddingSize: 8px;
+$cardPaddingSize: 16px;
+
 $grey-on-grey:  #666;
 $grey-on-white: #767676;
 $light-grey-on-white: #999999;
@@ -22,7 +39,3 @@ $agree-color: #00d374;
 $abstain-color: #F6A82B;
 $disagree-color: #F96168;
 $block-color: #CE261B;
-
-.lmo-grey-on-white {
-  color: $grey-on-white;
-}

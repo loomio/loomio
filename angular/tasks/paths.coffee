@@ -11,12 +11,19 @@ include = (file, key) ->
   _.map(file[key], (path) -> [file.path, path].join('/'))
 
 module.exports =
-  core:
-    coffee:       _.flatten(['boot/**/*.coffee', 'core/**/*.coffee', include(plugins, 'coffee')])
-    haml:         _.flatten(['core/components/**/*.haml', include(plugins, 'haml')])
-    scss:         _.flatten([include(vendor, 'css'), 'core/css/main.scss', 'core/components/**/*.scss', include(plugins, 'scss')])
+  app:
+    coffee:       _.flatten(['boot/**/*.coffee', 'core/**/*.coffee'])
+    haml:         _.flatten(['core/components/**/*.haml'])
+    scss:         _.flatten([include(vendor, 'css'), 'core/css/main.scss', 'core/components/**/*.scss'])
     scss_include: _.flatten([include(vendor, 'css_includes'), 'core/css'])
-    scss_watch:   _.flatten([include(vendor, 'css'), 'core/css/*.scss', 'core/components/**/*.scss', include(plugins, 'scss')])
+
+  plugin:
+    coffee: include plugins, 'coffee'
+    haml:   include plugins, 'haml'
+    scss:   include plugins, 'scss'
+    scss_include: ['core/css/0_variables.scss']
+
+  extra:
     emojis:         include(vendor, 'emoji')
     moment_locales: include(vendor, 'moment_locales')
 
