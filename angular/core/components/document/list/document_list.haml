@@ -1,5 +1,5 @@
 %section.document-list
-  %h3.document-list__heading.lmo-card-heading{translate: "document.list.title"}
+  %h3.document-list__heading.lmo-card-heading{translate: "document.list.title", ng-if: "model.hasDocuments()"}
   .document-list__documents.md-block.lmo-flex{layout: "column"}
     .document-list__document.lmo-flex{layout: "column", ng-repeat: "document in model.documents() track by document.id"}
       .document-list__entry.lmo-flex.lmo-flex__center{layout: "row"}

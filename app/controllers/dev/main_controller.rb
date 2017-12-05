@@ -517,6 +517,11 @@ class Dev::MainController < Dev::BaseController
     redirect_to discussion_url(create_discussion)
   end
 
+  def setup_discussion_for_jennifer
+    sign_in jennifer
+    redirect_to discussion_url(create_discussion)
+  end
+
   def setup_unread_discussion
     read = Comment.new(discussion: create_discussion, body: "Here is some read content")
     unread = Comment.new(discussion: create_discussion, body: "Here is some unread content")

@@ -137,6 +137,8 @@ eo:
   inbox_page:
     no_groups:
       or: aŭ
+  activity_card:
+    unread: Nelegitaj
   thread_group:
     aria_label: 'Grupnomo'
   delete_comment_dialog:

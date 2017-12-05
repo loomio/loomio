@@ -1,7 +1,8 @@
 .user-avatar--coordinator  {
-  .user-avatar__initials {
+  .user-avatar__initials, img {
     // remove soon: cant use theme colours in client scss
     border: 2px solid $loomio-orange;
+    border-radius: 100%;
   }
 }
 

@@ -117,8 +117,8 @@ be_BY:
   inbox_page:
     no_groups:
       or: альбо
-  discussion:
-    proposals: 'Прапановы'
+  activity_card:
+    unread: Непрачытаныя
   thread_group:
     aria_label: 'Назва групы'
   delete_comment_dialog:

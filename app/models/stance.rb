@@ -1,4 +1,5 @@
 class Stance < ActiveRecord::Base
+  include CustomCounterCache::Model
   include HasMentions
   include Reactable
   include HasCreatedEvent

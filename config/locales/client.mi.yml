@@ -160,10 +160,12 @@ mi:
     no_groups:
       start: Tīmatatia
   discussion:
-    proposals: 'Ngā whakatakoto'
     volume:
       mute_message: 'Kua whakahāngūtia te miro'
       unmute_message: 'Kua whakahoitia'
+  activity_card:
+    unread: Kāhore anō kia kitea
+    latest: Hou ake
   thread_group:
     aria_label: 'Ingoa rōpū'
   thread_context:

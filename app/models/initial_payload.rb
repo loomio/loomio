@@ -46,6 +46,7 @@ InitialPayload = Struct.new(:user) do
       },
       durations:         AppConfig.durations.fetch('durations', []),
       pollTemplates:     AppConfig.poll_templates,
+      pollTypes:         AppConfig.poll_types,
       pollColors:        AppConfig.colors,
       timeZones:         AppConfig.timezones,
       identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|

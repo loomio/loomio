@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  include CustomCounterCache::Model
   include HasTimeframe
   include Events::Position
   BLACKLISTED_KINDS = ["motion_closed", "motion_outcome_updated", "motion_outcome_created", "new_vote", "new_motion", "motion_closed_by_user", "motion_edited"].freeze

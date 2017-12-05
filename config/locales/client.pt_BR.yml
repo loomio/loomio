@@ -1,21 +1,42 @@
 pt_BR:
   reactions:
+    heart: Amor
+    laughing: Gargalhada
+    clap: Bater palma
     hugging: Abraço
     sunglasses: Legal
+    wink: Piscar
+    nerd: Inteligente
+    relieved: Alivio
+    worried: Preocupado
+    confused: Confuso
+    neutral_face: Neutra
+    disappointed: Desapontada
+    angry: Bravo
     cry: Chorando
     scream: Gritando
+    sleeping: Entediada
     thinking: Pensando
+    raised_hands: Levanta a mão
     pray: Rezando
     fingers_crossed: Dedos Cruzados
+    v: Paz
+    metal: Metal
+    ok_hand: Ok
+    wave: Dar tchauzinho
   poll_types:
     proposal: Proposta
+    count: Checar
     poll: Votação
   common:
     you: Você
+    expand: Expandir
     all_day: O dia todo
     ok_got_it: OK, entendi
     learn_more: Saiba mais
+    not_found: Não encontrado
     time_zone: Fuso Horário
+    local_time: Hora local
     confirm_discard_changes: Descartar suas alterações?
     time:
       am: am
@@ -51,6 +72,7 @@ pt_BR:
     copy: 'Copia'
     copy_text: 'Copiar texto'
     copied: 'Copiado para o clipboard'
+    points_abbrev: Cada voto vale {{score}} pontos
     total: Total
     action:
       next: 'Próximo'
@@ -75,11 +97,19 @@ pt_BR:
       translated: 'Tradução do Bing Tradutor'
       upload: 'Carregar'
       uploading: 'Carregando'
+      load_more: 'Carregar mais'
       share: Compartilhar
       ok: OK!
       retry: Tentar de novo
       done: Pronto
+      start: Começo
+      delete: Deletar
+      unsubscribe: Cancelar subscrição
+      subscribe: Se inscrever
+      remind: Lembrar
+      resend: 'Reenviar '
       send: Enviar
+      resent: Convide reenviado
     formatting_help:
       label: 'Formatação'
   devise:
@@ -89,12 +119,19 @@ pt_BR:
     forbidden: 'Você não tem permissão para fazer isso.'
     page_not_found: 'Não fomos capazes de encontrar. Pode ter sido excluído ou movido.'
     internal_server_error: 'Lamentamos, mas algo deu errado. Por favor, tente novamente.'
+  verify_email_notice:
+    please_verify: Obrigada por participar! Por favor cheque seu email para um link que verificará seu voto.
   verify_stances:
+    title: Verificar votos
+    description: Por favor reveja os votos abaixo e verifique que são seus.
+    verify: Verificar
+    remove: Remover
     verify_success: Voto verificado
     remove_success: Voto removido
     all_done: Parabéns, você verificou todos os votos.
   previous_polls_page:
     heading: Atividades em {{name}}
+    polls_count: Mostrando {{loaded}} de {{total}} decisoões
     search_activities: Buscar decisões
   volume_levels:
     loud: 'Alto'
@@ -167,6 +204,8 @@ pt_BR:
     aria_label: 'Sessão encerrada'
     title: "Sua sessão foi encerrada"
     ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Adicionar resposta'
   comment_form:
     aria_label: 'Adicionar um comentário'
     attachments:
@@ -183,7 +222,8 @@ pt_BR:
     cancel_reply: 'Cancelar Resposta'
     confirm_delete_message: 'Você tem certeza que deseja apagar este comentário?'
     confirm_delete: 'Apagar comentário'
-    in_reply_to: "Em resposta a {{name}}:"
+    in_reply_to: "Responder a(o) {{name}}"
+    write_a_comment: "Escreva um comentario..."
     submit_button:
       label: 'Postagem'
     private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{groupName}}.'
@@ -264,7 +304,9 @@ pt_BR:
     privacy_organisation: 'A discussão será visível para os membros de {{parent}} e membros de {{group}}.'
     make_announcement: Anúncio
   action_dock:
+    react: Adicionar uma reação
     add_resource: Adicionar como anexo
+    edit_group: Editar contexto do grupo
     add_comment: 'Comentario '
     edit_thread: Editar contexto
     translate_thread: Traduzir contexto
@@ -274,6 +316,7 @@ pt_BR:
     delete_comment: Deletar comentário 
     reply_to_comment: Responder
     translate_comment: 'Traduzir comentario '
+    show_history: Mostrar histórico de edições
   cover_photo_form:
     aria_label: 'Formulário de modificação da foto de capa'
     heading: 'Nova foto da capa'
@@ -297,6 +340,7 @@ pt_BR:
     name_label: Nome
     email_label: E-mail
     introduction_label: Por que você gostaria de entrar?
+    submit_button: Pedir para fazer parte
     introduction_over_limit: Resposta muito longa
     messages:
       membership_requested: 'Você solicitou adesão ao(à) {{group}}'
@@ -307,8 +351,14 @@ pt_BR:
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
     posted: Postado
+  reactions_input:
+    add_your_reaction: Adicione sua reação
   reactions_display:
+    more_reactions: "{{count}} mais"
     you: "Você"
+    you_and_name: "Você e {{name}}"
+    you_and_name_and_count_more: "Você, {{name}} e {{count}} mais"
+    name_and_count_more: "{{name}} e {{count}} mais"
   group_page:
     thread_list:
       empty:
@@ -339,6 +389,7 @@ pt_BR:
     see_all_members: 'Veja todos: ({{count}}) membros'
     pending_invitations: '+ ({{count}}) pendentes'
     subgroups: 'Subgrupos'
+    invite_people: 'Convidar'
     visibility_label: 'Visibilidade'
     options_label: 'Opções'
     options:
@@ -371,6 +422,8 @@ pt_BR:
   description_card:
     title: 'Descrição do grupo'
     placeholder: 'Coordenadores de grupo podem usar esta área para descrever a finalidade do grupo, para que assim todos saibam porque estão aqui.'
+    view_documents: 'Ver anexos'
+    manage_documents: 'Gerenciar anexos'
     messages:
       description_updated: 'Descrição atualizada'
   leave_group_form:
@@ -670,19 +723,20 @@ pt_BR:
       start: Comece
       or: ou
       join_group: <a href="/explore">participe</a> de um grupo para ver os tópicos.
-  groups_page:
-    page_header: Seus grupos
   discussion:
     activity: 'Atividade'
     activity_placeholder: 'Ainda sem atividade!'
-    proposals: 'Propostas'
-    previous_proposals: 'Propostas anteriores'
     load_previous: 'Carregar atividade anterior'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
-    edited: 'Editado'
     volume:
       mute_message: 'Tópico mudo'
       unmute_message: 'Ativado o som do tópico'
+  activity_card:
+    unread: Não lida
+    latest: Último
+    attachment_display:
+      aria_label: 'Arquivo anexo:'
+      image_alt: 'Imagem anexa'
   thread_group:
     aria_label: 'Nome do grupo'
   thread_context:
@@ -711,11 +765,6 @@ pt_BR:
     confirm_change_to_private_thread: '{{groupName}} é um grupo aberto. Se você continuar, este tópico será público.'
     messages:
       success: Tópico foi movido para {{name}}
-  activity_card:
-    new_activity: Nova Atividade
-    attachment_display:
-      aria_label: 'Arquivo anexo:'
-      image_alt: 'Imagem anexa'
   print_modal:
     load_discussion: Carregando a discussão completa...
   delete_comment_dialog:
@@ -837,6 +886,7 @@ pt_BR:
   decision_tools_card:
     title: Ferramentas de decisão
     proposal_title: Proposta
+    count_title: Checar
     poll_title: Votação
   poll_common:
     your_response: Sua resposta
@@ -879,6 +929,7 @@ pt_BR:
     details: Detalhes
     options: Opções
     closing: Encerrando
+    start: Começo
     update: Atualizar
   poll_proposal_form:
     tool_tip_collapsed: Busque um acordo coletivo
@@ -931,7 +982,13 @@ pt_BR:
   poll_common_participant_form:
     participant_name_placeholder: Qual o seu nome?
   poll_common_subscribe_form:
+    subscribe: Se inscrever
     no_thanks: Não, obrigado
   polls_page:
     heading: Decisões
     start_new_poll: Nova decisão
+  auth_form:
+    name: Nome
+  install_slack:
+    progress:
+      invite: Convidar

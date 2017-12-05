@@ -85,6 +85,8 @@ fi:
     threads_from:
       today: 'Tänään'
       yesterday: 'Eilen'
+  activity_card:
+    unread: Lukematon
   delete_comment_dialog:
     title: 'Poista kommentti'
     confirm: 'Poista kommentti'

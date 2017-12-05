@@ -75,6 +75,8 @@ gl:
   inbox_page:
     no_groups:
       or: ou
+  activity_card:
+    unread: Sin ler
   thread_group:
     aria_label: 'Nome do grupo'
   delete_comment_dialog:

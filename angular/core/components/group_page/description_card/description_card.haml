@@ -4,7 +4,7 @@
     .description-card__placeholder.lmo-hint-text{translate: "description_card.placeholder", ng-if: "!group.description"}
     .description-card__text.lmo-markdown-wrapper{marked: "group.description"}
     %document_list{model: "group"}
-    %a.description-card__documents-link{ng-if: "group.hasDocuments()"}, lmo-href-for: "group", lmo-href-action: "documents"}
+    %a.description-card__documents-link{ng-if: "group.hasDocuments()", lmo-href-for: "group", lmo-href-action: "documents"}
       %span{translate: "description_card.manage_documents", ng-if: "canAdministerGroup()"}
       %span{translate: "description_card.view_documents", ng-if: "!canAdministerGroup()"}
 

@@ -1,4 +1,5 @@
 class DiscussionReader < ActiveRecord::Base
+  include CustomCounterCache::Model
   include HasVolume
 
   belongs_to :user
@@ -87,15 +88,12 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def read_ranges_string
-    if self[:read_ranges_string] == nil
+    self[:read_ranges_string] ||= begin
       if last_read_sequence_id == 0
         ""
       else
-        first = (discussion.first_sequence_id == 0) ? 1 : discussion.first_sequence_id
-        "#{first}-#{self.last_read_sequence_id}"
+        "#{[discussion.first_sequence_id, 1].max}-#{last_read_sequence_id}"
       end
-    else
-      self[:read_ranges_string]
     end
   end
 

@@ -1,4 +1,5 @@
 class Poll < ActiveRecord::Base
+  include CustomCounterCache::Model
   extend  HasCustomFields
   include ReadableUnguessableUrls
   include HasMentions
@@ -268,7 +269,7 @@ class Poll < ActiveRecord::Base
   end
 
   def prevent_empty_options
-    if self.poll_options.empty?
+    if (self.poll_options.map(&:name) - Array(@poll_option_removed_names)).empty?
       self.errors.add(:poll_options, I18n.t(:"poll.error.must_have_options"))
     end
   end

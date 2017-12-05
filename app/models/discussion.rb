@@ -1,4 +1,5 @@
 class Discussion < ActiveRecord::Base
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include Translatable
   include Reactable
@@ -95,8 +96,6 @@ class Discussion < ActiveRecord::Base
 
   def thread_item_destroyed!
     update_sequence_info!
-    RecalculateReadItemsCountsJob.perform_later(discussion)
-    true
   end
 
   def public?

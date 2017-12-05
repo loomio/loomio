@@ -180,7 +180,6 @@ cs:
     cancel_reply: 'Zrušit odpověď'
     confirm_delete_message: 'Opravdu chcete odstranit tento komentář?'
     confirm_delete: 'Odstranit komentář'
-    in_reply_to: "V odpovědi na {{name}}:"
     submit_button:
       label: 'Odeslat'
     private_privacy_notice: 'Váš komentář bude viditelný pouze pro členy {{groupName}}.'
@@ -518,18 +517,19 @@ cs:
       explanation: Nemáte žádné nepřečtené vlákna, protože nejste členem žádných skupin.
       start: Zahájit
       or: nebo
-  groups_page:
-    page_header: Vaše skupiny
   discussion:
     activity: 'Aktivita'
     activity_placeholder: 'Zatím žádná aktivita!'
-    proposals: 'Návrhy'
-    previous_proposals: 'Předchozí návrhy'
     load_previous: 'Načíst dřívější aktivity'
     started_by: 'Vytvořeno <strong>{{name}}</strong>'
-    edited: 'Upraveno'
     volume:
       mute_message: 'Vlákno ztlumeno'
+  activity_card:
+    unread: Nepřečteno
+    latest: Nejnovější
+    attachment_display:
+      aria_label: 'Přiložený soubor:'
+      image_alt: 'Přiložený obrázek'
   thread_group:
     aria_label: 'Název skupiny'
   thread_context:
@@ -557,11 +557,6 @@ cs:
     confirm: Přesunout téma
     messages:
       success: Téma bylo přesunuto {{name}}
-  activity_card:
-    new_activity: Nová aktivita
-    attachment_display:
-      aria_label: 'Přiložený soubor:'
-      image_alt: 'Přiložený obrázek'
   delete_comment_dialog:
     title: 'Odstranit komentář'
     question: 'Opravdu chcete odstranit tento komentář?'
