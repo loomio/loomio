@@ -130,6 +130,10 @@ textarea .lmo-textarea {
   }
 }
 
+.lmo-font--small {
+  @include fontSmall;
+}
+
 .lmo-user-mention {
   color: $link-color;
 }

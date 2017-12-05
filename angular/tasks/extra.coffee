@@ -5,7 +5,7 @@ pipe     = require 'gulp-pipe'
 
 module.exports =
   fonts: ->
-    pipe gulp.src(paths.fonts.vendor), [
+    pipe gulp.src(paths.extra.fonts), [
       gulp.dest(paths.dist.fonts) # write public/fonts/*
     ]
 
