@@ -32,6 +32,10 @@ namespace :loomio do
     end
   end
 
+  task migrate_attachments: :environment do
+    MigrateAttachmentService.migrate!(attachments: Attachment.all)
+  end
+
   task resend_ignored_invitations: :environment do
     InvitationService.resend_ignored(send_count: 1, since: 1.day.ago)
     InvitationService.resend_ignored(send_count: 2, since: 3.days.ago)

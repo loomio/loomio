@@ -29,16 +29,16 @@ task :deploy do
     "git checkout #{branch}",                                                         # move to specified deploy branch
     "git checkout -b #{temp_branch}",                                                 # cut a new deploy branch based on specified branch
     "bundle exec rake deploy:bump_version[#{temp_branch},#{is_production_push}]",     # bump version if this is a production deploy
+    "bundle exec rake plugins:fetch[loomio_org] plugins:install[fetched]",            # fetch and install plugins from plugins.yml
+    "rm -rf plugins/fetched/**/.git",                                                 # allow cloned plugins to be added to this repo
     "bundle exec rake deploy:build",                                                  # build assets
     "bundle exec rake deploy:commit",                                                 # add deploy commit
     "bundle exec rake deploy:push[#{remote},#{branch},#{id}]",                        # deploy to heroku
     "bundle exec rake deploy:heroku_reset[#{remote}]"                                 # clean up heroku deploy
   ]
-  at_exit     { cleanup(remote, branch, id) }
-end
-
-def cleanup(remote, branch, id)
-  run_commands ["git checkout #{branch}; git branch -D #{build_branch(remote, branch, id)}"]
+  at_exit do
+    run_commands ["git checkout #{branch}; git branch -D #{temp_branch}"]
+  end
 end
 
 namespace :deploy do
@@ -53,24 +53,13 @@ namespace :deploy do
     ]
   end
 
-  desc "Builds assets for docker"
-  task :build_client do |t, args|
-    run_commands [
-      "rake 'plugins:fetch[plugins.docker]' plugins:install",                            # install plugins specified in plugins/plugins.yml
-      "cd angular && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",           # build the app via gulp
-      "cp -r public/client/development public/client/#{Loomio::Version.current}"         # version assets
-    ]
-  end
-
   desc "Builds assets for production push"
-  task :build, [:plugin_set] do |t, args|
-    plugin_set = args[:plugin_set] || :plugins
-    puts "Building clientside assets, using plugin set #{plugin_set}..."
+  task :build do
+    puts "Building clientside assets for heroku..."
     run_commands [
-      "rake 'plugins:fetch[#{plugin_set}]' plugins:install",                             # install plugins specified in plugins/plugins.yml
-      "rm -rf plugins/**/.git",                                                          # allow cloned plugins to be added to this repo
-      "cd angular && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",           # build the app via gulp
-      "cp -r public/client/development public/client/#{Loomio::Version.current}"         # version assets
+      "cd angular && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",      # build the app via gulp
+      "mkdir -p public/client/#{Loomio::Version.current}",                          # ensure new version folder
+      "cp -r public/client/development/* public/client/#{Loomio::Version.current}"  # version assets
     ]
   end
 
@@ -80,7 +69,6 @@ namespace :deploy do
     run_commands [
       "find fetched_plugins -name '*.*' | xargs git add -f",                          # add plugins folder to commit
       "find public/img/emojis -name '*.png' | xargs git add -f",                      # add emojis to commit
-      "rm plugins; ln -s fetched_plugins plugins",                                    # add plugins symlink
       "git add -f plugins",                                                           # add symlink to repo
       "git add public/client/#{Loomio::Version.current} public/client/fonts -f",      # add assets to commit
       "git commit -m 'Add compiled assets / plugin code'"                             # commit assets
