@@ -38,7 +38,7 @@ namespace :loomio do
       "Poll",
       "Comment",
       "Outcome"
-    ])
+    ]))
   end
 
   task resend_ignored_invitations: :environment do
