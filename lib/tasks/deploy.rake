@@ -29,7 +29,7 @@ task :deploy do
     "git checkout #{branch}",                                                         # move to specified deploy branch
     "git checkout -b #{temp_branch}",                                                 # cut a new deploy branch based on specified branch
     "bundle exec rake deploy:bump_version[#{temp_branch},#{is_production_push}]",     # bump version if this is a production deploy
-    "bundle exec rake plugins:fetch plugins:install",                                 # fetch and install plugins from plugins.yml
+    "bundle exec rake plugins:fetch[loomio_org] plugins:install[fetched]",            # fetch and install plugins from plugins.yml
     "rm -rf plugins/fetched/**/.git",                                                 # allow cloned plugins to be added to this repo
     "bundle exec rake deploy:build",                                                  # build assets
     "bundle exec rake deploy:commit",                                                 # add deploy commit

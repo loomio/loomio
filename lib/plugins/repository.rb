@@ -5,10 +5,10 @@ module Plugins
       repository[plugin.name] = plugin
     end
 
-    def self.install_plugins!
+    def self.install_plugins!(plugin_set = '*')
       ::Module.prepend Plugins::ModuleConstMissing
       return unless Dir.exists?('plugins')
-      Dir["plugins/*/*/plugin.rb"].each do |file|
+      Dir["plugins/#{plugin_set}/*/plugin.rb"].each do |file|
         Dir.chdir(File.dirname(file)) { load File.basename(file) }
       end
 
