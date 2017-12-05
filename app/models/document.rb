@@ -17,13 +17,13 @@ class Document < ActiveRecord::Base
     define_method model_type, -> { self.model.send(model_type) if self.model.respond_to?(model_type) }
   end
 
-  private
-
   def set_metadata
     self.doctype ||= metadata['name']
     self.icon    ||= metadata['icon']
     self.color   ||= metadata['color']
   end
+
+  private
 
   def metadata
     @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(url) })

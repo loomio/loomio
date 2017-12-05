@@ -33,7 +33,12 @@ namespace :loomio do
   end
 
   task migrate_attachments: :environment do
-    MigrateAttachmentService.migrate!(attachments: Attachment.all)
+    MigrateAttachmentService.migrate!(attachments: Attachment.where(attachable_type: [
+      "Discussion",
+      "Poll",
+      "Comment",
+      "Outcome"
+    ])
   end
 
   task resend_ignored_invitations: :environment do
