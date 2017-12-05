@@ -49,7 +49,7 @@ module CreateMissingEventService
 
     # TODO ensure poll closed and expired events are sorted
 
-    Events::StanceCreated.find(res.ids.first.to_i)
+    Events::PollCreated.find(res.ids.first.to_i)
   end
 
   def self.stance_created(stance)
