@@ -15,7 +15,6 @@ InitialPayload = Struct.new(:user) do
       locales:             angular_locales,
       recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
       baseUrl:             root_url,
-      safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       theme:               AppConfig.theme,
       features:            AppConfig.features,
@@ -26,7 +25,7 @@ InitialPayload = Struct.new(:user) do
       pageSize: {
         default:         ENV.fetch('DEFAULT_PAGE_SIZE', 30),
         groupThreads:    ENV.fetch('GROUP_PAGE_SIZE',   30),
-        threadItems:     ENV.fetch('THREAD_PAGE_SIZE',  30),
+        threadItems:     ENV.fetch('THREAD_PAGE_SIZE',  10),
         exploreGroups:   ENV.fetch('EXPLORE_PAGE_SIZE', 10)
       },
       flashTimeout: {
@@ -47,6 +46,7 @@ InitialPayload = Struct.new(:user) do
       },
       durations:         AppConfig.durations.fetch('durations', []),
       pollTemplates:     AppConfig.poll_templates,
+      pollTypes:         AppConfig.poll_types,
       pollColors:        AppConfig.colors,
       timeZones:         AppConfig.timezones,
       identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|

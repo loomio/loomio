@@ -42,6 +42,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       Session.user().isMemberOf(thread.group()) and
       (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
 
+    canRemoveEventFromThread: (event) ->
+      event.kind == 'discussion_edited' && @canAdministerDiscussion(event.discussion())
+
     canPinThread: (thread) ->
       !thread.pinned && @canAdministerGroup(thread.group())
 
@@ -65,6 +68,13 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     canAdministerGroup: (group) ->
       Session.user().isAdminOf(group)
 
+    canAdministerDiscussion: (discussion) ->
+      Session.user().isAuthorOf(discussion) or
+      @canAdministerGroup(discussion.group())
+
+    canChangeVolume: (discussion) ->
+      Session.user().isMemberOf(discussion.group())
+
     canManageGroupSubscription: (group) ->
       group.isParent() and
       @canAdministerGroup(group) and
@@ -82,6 +92,12 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     canAddMembers: (group) ->
       @canAdministerGroup(group) or
       (Session.user().isMemberOf(group) and group.membersCanAddMembers)
+
+    canAddDocuments: (group) ->
+      @canAdministerGroup(group)
+
+    canEditDocument: (group) ->
+      @canAdministerGroup(group)
 
     canCreateSubgroups: (group) ->
       group.isParent() and
@@ -161,6 +177,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
 
     canSharePoll: (poll) ->
       @canEditPoll(poll)
+
+    canRemovePollOptions: (poll) ->
+      poll.isNew() || (poll.isActive() && poll.stancesCount == 0)
 
     canEditPoll: (poll) ->
       poll.isActive() and @canAdministerPoll(poll)

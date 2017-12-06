@@ -1,8 +1,7 @@
-angular.module('loomioApp').factory 'InvitationFormModel', (DraftableModel, AppConfig) ->
-  class InvitationFormModel extends DraftableModel
+angular.module('loomioApp').factory 'InvitationFormModel', (BaseModel, AppConfig) ->
+  class InvitationFormModel extends BaseModel
     @singular: 'invitationForm'
     @plural: 'invitationForms'
-    @draftParent: 'group'
     @serializableFields: ['emails', 'message']
 
     defaultValues: ->
@@ -11,3 +10,13 @@ angular.module('loomioApp').factory 'InvitationFormModel', (DraftableModel, AppC
 
     relationships: ->
       @belongsTo 'group'
+
+    invitees: ->
+      # something@something.something where something does not include ; or , or < or >
+      @emails.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g) or []
+
+    hasInvitees: ->
+      @invitees().length > 0
+
+    hasEmails: ->
+      @emails.length > 0

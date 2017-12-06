@@ -62,6 +62,7 @@ zh_TW:
     decisions: '決策'
     settings: '設定'
     help: '教學文件'
+    anonymous: 匿名
     privacy:
       privacy: '隱私權'
       public: '公開'
@@ -228,6 +229,8 @@ zh_TW:
     title: "您的工作階段已結束"
     message: "您已經從其他視窗登出。請重新登入以繼續。"
     ok: "確定"
+  comment_reply_form:
+    aria_label: '新增回覆'
   comment_form:
     aria_label: '加入意見'
     attachments:
@@ -244,7 +247,8 @@ zh_TW:
     cancel_reply: '取消回覆'
     confirm_delete_message: '您確定要刪除這個意見嗎？'
     confirm_delete: '刪除意見'
-    in_reply_to: "回覆給 {{name}}："
+    in_reply_to: "回覆給 {{name}}"
+    write_a_comment: "撰寫評論……"
     submit_button:
       label: '貼文'
     private_privacy_notice: '您的意見只會被 {{groupName}} 群組的成員看到。'
@@ -285,7 +289,7 @@ zh_TW:
     edit_profile: '編輯簡歷'
     email_settings: '電子郵件設定'
     help: '教學文件'
-    contact: '聯絡 Loomio'
+    contact_site_name: '聯絡 {{site_name}}'
     sign_out: '登出'
   start_menu:
     label: '使用者動作'
@@ -357,6 +361,8 @@ zh_TW:
     notified_count: '{{count}} 個夥伴將會收到電子郵件'
   action_dock:
     react: 新增反應
+    add_resource: 新增附件
+    edit_group: 編輯群組內容
     add_comment: 意見
     edit_thread: 編輯內容
     translate_thread: 翻譯內容
@@ -479,6 +485,8 @@ zh_TW:
   description_card:
     title: '群組描述'
     placeholder: '群組協調者可以使用這個區域來描述群組的目的，這樣才能讓每個人都知道為什麼他們會在這裡。'
+    view_documents: '檢視附件'
+    manage_documents: '管理附件'
     messages:
       description_updated: '描述已更新'
   leave_group_form:
@@ -552,6 +560,47 @@ zh_TW:
     heading: '申請成員資格'
     manage_requests: 管理申請
     manage_requests_with_count: 管理申請 ({{count}})
+  documents_page:
+    title: 附件
+    fragment_placeholder: 搜尋附件……
+    add_document: 新增附件
+    no_documents: 在此群組中找不到附件。點選「新增附件」來新增一個。
+    no_documents_from_fragment: 找不到名為「{{fragment}}」的附件
+    confirm_remove_title: 移除附件
+    confirm_remove_helptext: 您確定您想要移除附件嗎？
+    document_removed: 附件已移除
+  document:
+    list:
+      title: 附件
+      no_poll_documents: 尚未有附件被上傳至此決策。
+      no_discussion_documents: 尚未有附件被上傳至此討論串。
+      no_group_documents: 尚未有附件被上傳至群組內容。點選下面的連結來看看所有在此群組中已上傳至討論串的附件。
+    management:
+      group_header: 附加到內容
+      discussion_header: 上傳為內容
+      added_by: 由 {{name}} 上傳
+      uploaded_to: 在
+    modal:
+      title: 新增附件
+    method_form:
+      helptext: 追蹤您所有的工具與檔案，這樣它們就可以比較好找到。
+      url_helptext: 到網頁與工具的連結，如 Trello 或是 Google 文件等
+      file_helptext: 從您的電腦上傳文件與檔案
+    form:
+      helptext: 點選、貼上或是拖曳檔案到這裡以分享它們給您的群組。
+      file_upload: 從您的電腦中上傳檔案
+      uploaded_already: 已經上傳了其他東西？
+      upload_from_local: 本機有檔案嗎？
+      upload_file: 從您的電腦中上傳
+      enter_url: 輸入 URL
+      url_label: 附件 URL
+      url_placeholder: 例如：https://www.example.com/attachment.txt
+      title_helptext: 我們應該叫這個附件什麼名字？
+      title_label: 名稱
+      title_placeholder: 例如：「社群指南」
+    flash:
+      success: 附件已儲存
+      destroyed: 附件已移除
   membership_requests_page:
     heading: 申請成員資格
     approve: 批准
@@ -571,6 +620,7 @@ zh_TW:
   invitation_form:
     aria_label: '邀請表單'
     invite_people: '邀請夥伴'
+    invite_people_to_group: '邀請到 {{name}}'
     group: '群組'
     group_placeholder: '選擇一個群組'
     shareable_link: '可分享的連結'
@@ -788,22 +838,28 @@ zh_TW:
       start: 啟動
       or: 或者
       join_group: <a href="/explore">加入</a>群組以觀看討論串。
-  groups_page:
-    page_header: 您的群組
   discussion:
     activity: '動態'
     activity_placeholder: '尚無動態！'
-    proposals: '提議'
-    previous_proposals: '上一個提案'
     load_previous: '載入更早的動態'
     started_by: '由 <strong>{{name}}</strong> 所啟動'
-    edited: '已編輯'
     pin:
       pinned: '討論串已釘選'
       unpinned: '討論串已取消釘選'
     volume:
       mute_message: '討論串已靜音。'
       unmute_message: '討論串靜音'
+  activity_card:
+    beginning: 開始
+    unread: 未讀
+    latest: 最新
+    chronological: 年代
+    nested: 巢狀
+    attachment_display:
+      aria_label: '已附加檔案'
+      image_alt: '已附加的圖片'
+    n_previous: '載入 {{count}} 個先前的回應'
+    n_more: '載入 {{count}} 個回應'
   thread_group:
     aria_label: '群組名稱'
   thread_context:
@@ -840,11 +896,6 @@ zh_TW:
     confirm_change_to_private_thread: '{{groupName}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
     messages:
       success: 討論串已被移動到 {{name}}
-  activity_card:
-    new_activity: 新動態
-    attachment_display:
-      aria_label: '已附加檔案'
-      image_alt: '已附加的圖片'
   print_modal:
     load_discussion: 正在載入全部的討論...
   delete_comment_dialog:
@@ -1053,6 +1104,10 @@ zh_TW:
     notify_on_participate: 當夥伴參與時通知我
     helptext_on: 您將會在其他人參與時被通知
     helptext_off: 您將會在此動態關閉時收到結果
+  poll_common_anonymous:
+    anonymous: 匿名參與者
+    helptext_on: 參與者資訊將不會在每個回應中顯示
+    helptext_off: 參與者將會與他們的回應一起顯示
   poll_common_close_form:
     title: 提前關閉投票
     helptext: 您確定您要提早關閉嗎？

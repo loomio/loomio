@@ -62,6 +62,7 @@ es:
     decisions: 'Decisiones '
     settings: 'Configuración '
     help: 'Ayuda'
+    anonymous: Anónimo
     privacy:
       privacy: 'Privacidad'
       public: 'Público'
@@ -229,6 +230,8 @@ es:
     title: "Tu sesión ha terminado "
     message: "Tu sesión ha sido terminada desde otra pestaña del navegador. Por favor vuelve a entrar para continuar. "
     ok: "listo"
+  comment_reply_form:
+    aria_label: 'Añade una respuesta'
   comment_form:
     aria_label: 'Añade un comentario'
     attachments:
@@ -245,7 +248,8 @@ es:
     cancel_reply: 'Cancelar respuesta'
     confirm_delete_message: '¿Estás seguro de que quieres borrar este comentario?'
     confirm_delete: 'Eliminar comentario '
-    in_reply_to: "En respuesta a {{name}}:"
+    in_reply_to: "Responder a {{name}}"
+    write_a_comment: "Añade un comentario..."
     submit_button:
       label: 'Enviar'
     private_privacy_notice: 'Tu comentario solo será visible para miembros de {{groupName}}.'
@@ -286,7 +290,7 @@ es:
     edit_profile: 'Editar perfil '
     email_settings: 'Configuración de email'
     help: 'Ayuda'
-    contact: 'Contactar a Loomio '
+    contact_site_name: 'Contacto {{site_name}}'
     sign_out: 'Salir'
   start_menu:
     label: 'Acciones de usuario '
@@ -358,6 +362,8 @@ es:
     notified_count: '{{count}} personas recibirán un correo electrónico'
   action_dock:
     react: 'Añadir reacción '
+    add_resource: Agregar archivo adjunto
+    edit_group: Editar contexto de grupo
     add_comment: Comentario
     edit_thread: Editar contexto
     translate_thread: Traducir contexto
@@ -480,6 +486,8 @@ es:
   description_card:
     title: 'Descripción del Grupo '
     placeholder: 'Los coordinadores del grupo pueden usar esta área para describir el propósito del grupo para que todos sepan porque están aquí.  '
+    view_documents: 'Ver archivos adjuntos'
+    manage_documents: 'Administrar archivos adjuntos'
     messages:
       description_updated: 'Descripción actualizada'
   leave_group_form:
@@ -553,6 +561,47 @@ es:
     heading: 'Pedidos de membresía '
     manage_requests: 'Gestionar peticiones '
     manage_requests_with_count: Gestionar peticiones ({{count}})
+  documents_page:
+    title: Adjuntos
+    fragment_placeholder: Buscar archivos adjuntos ...
+    add_document: Añadir archivo adjunto
+    no_documents: No se encontraron archivos adjuntos para este grupo. Haga click en 'Agregar archivo adjunto' arriba para agregar uno.
+    no_documents_from_fragment: No se encontraron archivos adjuntos con nombre '{{fragment}}'
+    confirm_remove_title: Quitar archivo adjunto
+    confirm_remove_helptext: ¿Seguro que quieres eliminar este archivo adjunto?
+    document_removed: Archivo adjunto eliminado
+  document:
+    list:
+      title: Adjuntos
+      no_poll_documents: Aún no se han cargado archivos adjuntos a esta decisión.
+      no_discussion_documents: Aún no se han cargado archivos adjuntos a este hilo.
+      no_group_documents: 'Ningún archivo adjunto ha sido añadido en el contexto. Clic en el enlace debajo para ver todos los adjuntos añadidos a hilos dentro de este grupo. '
+    management:
+      group_header: Añadido al contexto
+      discussion_header: Subido como contenido
+      added_by: Subido por {{name}}
+      uploaded_to: en
+    modal:
+      title: Agregar archivo adjunto
+    method_form:
+      helptext: Mantén ordenados todas tus herramientas y archivos para que sean fácil de encontrar
+      url_helptext: Enlaza con páginas web y herramientas como Trello y documentos de Google
+      file_helptext: Sube documentos y archivos desde tu ordenador
+    form:
+      helptext: Clic, pega, o arrastra tus archivos aquí para compartirlos con tu grupo.
+      file_upload: Sube un archivo desde tu ordenador
+      uploaded_already: ¿Ya lo has subido en otro lado?
+      upload_from_local: '¿Tienes un archivo local? '
+      upload_file: Sube desde tu ordenador
+      enter_url: Ingresa un URL
+      url_label: Adjunto URL
+      url_placeholder: E.j. https://www.example.com/attachment.txt
+      title_helptext: ¿Cómo llamamos este adjunto?
+      title_label: Nombre
+      title_placeholder: 'E.j. ''Guías Comunitarias'' '
+    flash:
+      success: Adjunto guardado
+      destroyed: Archivo adjunto eliminado
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: 'Aprobar '
@@ -572,6 +621,7 @@ es:
   invitation_form:
     aria_label: 'Formulario de invitación'
     invite_people: 'Invita gente'
+    invite_people_to_group: 'Invitar a {{name}}'
     group: 'Grupo'
     group_placeholder: 'Selecciona un grupo'
     shareable_link: 'Enlace para compartir'
@@ -789,22 +839,28 @@ es:
       start: 'Empezar  '
       or: 'o '
       join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.   '
-  groups_page:
-    page_header: Tus grupos
   discussion:
     activity: 'Actividad'
     activity_placeholder: 'No hay actividad todavía'
-    proposals: 'Propuestas'
-    previous_proposals: 'Propuestas anteriores'
     load_previous: 'Cargar actividad más reciente'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
-    edited: 'Editado'
     pin:
       pinned: 'Hilo fijado'
       unpinned: 'Hilo liberado'
     volume:
       mute_message: 'Hilo silenciado. '
       unmute_message: 'Hilo silenciado '
+  activity_card:
+    beginning: 'Inicio '
+    unread: 'No leído '
+    latest: Últimos
+    chronological: 'Cronológico '
+    nested: 'Agrupado '
+    attachment_display:
+      aria_label: 'Archivo adjunto:'
+      image_alt: 'Imagen adjunta'
+    n_previous: 'Mostrar {{count}} respuestas previas'
+    n_more: 'Mostrar {{count}} respuestas'
   thread_group:
     aria_label: 'Nombre del grupo'
   thread_context:
@@ -820,6 +876,7 @@ es:
     print_thread: 'Imprimir '
     delete_thread: 'Eliminar'
     add_comment: 'Comentar '
+    seen_by_count: 'Visto por {{count}} '
   pin_thread_modal:
     title: Fijar hilo
     helptext: "Los hilos fijados siempre aparecen en la parte superior del listado de hilos del grupo. Se pueden usar para informar a los miembros sobre anuncios importantes, o promover material grupal como el código de conducta u otras guías comunitarias. "
@@ -840,11 +897,6 @@ es:
     confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
       success: El hilo ha sido movido a {{name}}
-  activity_card:
-    new_activity: Actividad nueva
-    attachment_display:
-      aria_label: 'Archivo adjunto:'
-      image_alt: 'Imagen adjunta'
   print_modal:
     load_discussion: 'Cargando la discusión... '
   delete_comment_dialog:
@@ -1053,6 +1105,10 @@ es:
     notify_on_participate: Notificarme cuando participe gente
     helptext_on: Se te notificará cuando alguien participe
     helptext_off: 'Recibirás los resultados cuando esta actividad cierre '
+  poll_common_anonymous:
+    anonymous: 'Participante Anónimo '
+    helptext_on: La información del participante no será mostrada con cada respuesta
+    helptext_off: Los participantes serán mostrados con sus respuestas
   poll_common_close_form:
     title: Cerrar una encuesta temprano
     helptext: ¿Estás seguro de que estás listo para cerrar tan pronto?
@@ -1163,6 +1219,12 @@ es:
     poll_created: Encuesta creada
     poll_updated: Encuesta actualizada
   poll_count_form:
+    tool_tip_expanded: |
+      <p>Una <em>comprobación</em> es una herramienta que tiene muchos usos posibles pero solo 2 respuestas: visto (✔) o anulación (✘). Los participantes usarán el visto (✔) para decir sí y la anulación (✘) para decir no o inseguro. </p>
+      <p>Úsalo para comprometer a la gente, como al pedir confirmación: "asistiré al evento" o "me apuntaré al grupo de trabajo".</p>
+      <p>O úsalo para hacer seguimiento a una tarea: "confirmé que mis datos de contacto están correctos", o "leí el documento y dejé mis comentarios".</p>
+      <p>Una comprobación tiene un <em>objetivo</em>, que es el número de participantes que quisieras. La meta indica al grupo que algo requiere más atención o cuenta con amplio acuerdo.</p>
+      <p>Un día antes de que se cierre la comprobación, se le recordará a quienes no han participado todavía.</p>
     tool_tip_collapsed: Comprobar la participación y encontrar voluntarios
     start_header: 'Iniciar Comprobación '
     edit_header: 'Editar Comprobación '

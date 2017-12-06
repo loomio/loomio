@@ -13,7 +13,6 @@ Loomio::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
-  # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = true
 
   # config.assets.css_compressor = :sass
@@ -26,15 +25,16 @@ Loomio::Application.configure do
 
   config.action_dispatch.x_sendfile_header = nil
 
-
-  config.cache_store = :dalli_store,
-                    (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                    {:username => ENV["MEMCACHIER_USERNAME"],
-                     :password => ENV["MEMCACHIER_PASSWORD"],
-                     :failover => true,
-                     :socket_timeout => 1.5,
-                     :socket_failure_delay => 0.2
-                    }
+  if ENV['USE_DALLI_CACHE_STORE']
+    config.cache_store = :dalli_store,
+                      (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                      {:username => ENV["MEMCACHIER_USERNAME"],
+                       :password => ENV["MEMCACHIER_PASSWORD"],
+                       :failover => true,
+                       :socket_timeout => 1.5,
+                       :socket_failure_delay => 0.2
+                      }
+  end
 
   config.active_support.deprecation = :notify
 

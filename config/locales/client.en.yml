@@ -40,6 +40,7 @@ en:
     ranked_choice: Ranked choice
   timezones:
     local: Local time ({{value}})
+
   common:
     you: You
     expand: Expand
@@ -63,6 +64,7 @@ en:
     decisions: 'Decisions'
     settings: 'Settings'
     help: 'Help'
+    anonymous: Anonymous
     privacy:
       privacy: 'Privacy'
       public: 'Public'
@@ -244,6 +246,9 @@ en:
     message: "You have been logged out from another window. Please sign back in to continue."
     ok: "Ok"
 
+  comment_reply_form:
+    aria_label: 'Add a reply'
+
   comment_form:
     aria_label: 'Add a comment'
     attachments:
@@ -260,7 +265,8 @@ en:
     cancel_reply: 'Cancel Reply'
     confirm_delete_message: 'Are you sure you want to delete this comment?'
     confirm_delete: 'Delete comment'
-    in_reply_to: "In reply to {{name}}:"
+    in_reply_to: "Reply to {{name}}"
+    write_a_comment: "Write a comment..."
     submit_button:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
@@ -383,6 +389,8 @@ en:
 
   action_dock:
     react: Add reaction
+    add_resource: Add an attachment
+    edit_group: Edit group context
     add_comment: Comment
     edit_thread: Edit context
     translate_thread: Translate context
@@ -515,6 +523,8 @@ en:
   description_card:
     title: 'Group description'
     placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
+    view_documents: 'View attachments'
+    manage_documents: 'Manage attachments'
     messages:
       description_updated: 'Description updated'
 
@@ -601,6 +611,49 @@ en:
     manage_requests: Manage requests
     manage_requests_with_count: Manage requests ({{count}})
 
+  documents_page:
+    title: Attachments
+    fragment_placeholder: Search for attachments...
+    add_document: Add attachment
+    no_documents: No attachments found for this group. Click 'Add Attachment' above to add one.
+    no_documents_from_fragment: No attachments found named '{{fragment}}'
+    confirm_remove_title: Remove attachment
+    confirm_remove_helptext: Are you sure you want to remove this attachment?
+    document_removed: Attachment removed
+
+  document:
+    list:
+      title: Attachments
+      no_poll_documents: No attachments have been uploaded to this decision yet.
+      no_discussion_documents: No attachments have been uploaded to this thread yet.
+      no_group_documents: No attachments have been uploaded to the group context yet. Click the link below to see all attachments uploaded to threads within this group.
+    management:
+      group_header: Attached to context
+      discussion_header: Uploaded as content
+      added_by: uploaded by {{name}}
+      uploaded_to: in
+    modal:
+      title: Add an attachment
+    method_form:
+      helptext: Keep track of all your tools and files, so that they’re easy to find.
+      url_helptext: Link to websites and tools such as Tello boards and Google docs
+      file_helptext: Upload documents and files from your computer
+    form:
+      helptext: Click, paste, or drop files here to share them with your group.
+      file_upload: Upload a file from your computer
+      uploaded_already: Already uploaded somewhere else?
+      upload_from_local: Have a file locally?
+      upload_file: Upload from your computer
+      enter_url: Enter a URL
+      url_label: Attachment URL
+      url_placeholder: E.g. https://www.example.com/attachment.txt
+      title_helptext: What should we call this attachment?
+      title_label: Name
+      title_placeholder: E.g. 'Community Guidelines'
+    flash:
+      success: Attachment saved
+      destroyed: Attachment removed
+
   membership_requests_page:
     heading: Membership Requests
     approve: Approve
@@ -623,6 +676,7 @@ en:
   invitation_form:
     aria_label: 'Invitation form'
     invite_people: 'Invite People'
+    invite_people_to_group: 'Invite to {{name}}'
     group: 'Group'
     group_placeholder: 'Select a group'
     shareable_link: 'Shareable link'
@@ -858,23 +912,29 @@ en:
       or: or
       join_group: <a href="/explore">join</a> a group to see threads.
 
-  groups_page:
-    page_header: Your groups
-
   discussion:
     activity: 'Activity'
     activity_placeholder: 'No activity yet!'
-    proposals: 'Proposals'
-    previous_proposals: 'Previous Proposals'
     load_previous: 'Load earlier activity'
     started_by: 'Started by <strong>{{name}}</strong>'
-    edited: 'Edited'
     pin:
       pinned: 'Thread pinned'
       unpinned: 'Thread unpinned'
     volume:
       mute_message: 'Thread muted.'
       unmute_message: 'Thread unmuted'
+
+  activity_card:
+    beginning: Beginning
+    unread: Unread
+    latest: Latest
+    chronological: Chronological
+    nested: Nested
+    attachment_display:
+      aria_label: 'File attached:'
+      image_alt: 'Attached image'
+    n_previous: 'Load {{count}} previous responses'
+    n_more: 'Load {{count}} responses'
 
   thread_group:
     aria_label: 'Group name'
@@ -916,11 +976,6 @@ en:
     messages:
       success: Thread has been moved to {{name}}
 
-  activity_card:
-    new_activity: New Activity
-    attachment_display:
-      aria_label: 'File attached:'
-      image_alt: 'Attached image'
 
   print_modal:
     load_discussion: Loading entire discussion...
@@ -1166,6 +1221,11 @@ en:
     notify_on_participate: Notify me when people participate
     helptext_on: You will be notified whenever someone participates
     helptext_off: You will receive results when this activity closes
+
+  poll_common_anonymous:
+    anonymous: Anonymous Participants
+    helptext_on: Participant info will not be shown with each response
+    helptext_off: Participants will be shown with their responses
 
   poll_common_close_form:
     title: Close a poll early

@@ -102,6 +102,9 @@ eo:
     options_label: 'Opcioj'
     options:
       label: 'Opcioj'
+  document:
+    form:
+      title_label: Nomo
   membership_requests_page:
     approve: Aprobi
     ignore: Ignori
@@ -134,6 +137,8 @@ eo:
   inbox_page:
     no_groups:
       or: aŭ
+  activity_card:
+    unread: Nelegitaj
   thread_group:
     aria_label: 'Grupnomo'
   delete_comment_dialog:

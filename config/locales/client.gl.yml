@@ -48,6 +48,9 @@ gl:
     options_label: 'Opcións'
     options:
       label: 'Opcións'
+  document:
+    form:
+      title_label: Nome
   membership_requests_page:
     approve: Dar o visto bo
     ignore: ignorar
@@ -72,6 +75,8 @@ gl:
   inbox_page:
     no_groups:
       or: ou
+  activity_card:
+    unread: Sin ler
   thread_group:
     aria_label: 'Nome do grupo'
   delete_comment_dialog:

@@ -10,8 +10,8 @@ class LoggedOutUser
     @email = email
     @token = token
     @locale = locale
-    set_avatar_initials if (@name || @email)
     apply_null_methods!
+    set_avatar_initials if (@name || @email)
   end
 
   def create_user

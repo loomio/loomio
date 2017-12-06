@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103062701) do
+ActiveRecord::Schema.define(version: 20171205204615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
-  enable_extension "citext"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -65,11 +65,11 @@ ActiveRecord::Schema.define(version: 20171103062701) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "filename",          limit: 255
+    t.string   "filename",             limit: 255
     t.text     "location"
     t.integer  "comment_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "filesize"
     t.string   "file_file_name"
     t.string   "file_content_type"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.datetime "file_updated_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.boolean  "migrated_to_document",             default: false, null: false
   end
 
   add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type", using: :btree
@@ -185,6 +186,7 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.integer  "volume"
     t.boolean  "participating",            default: false, null: false
     t.datetime "dismissed_at"
+    t.string   "read_ranges_string"
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
@@ -234,6 +236,7 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.boolean  "pinned",                          default: false, null: false
     t.integer  "importance",                      default: 0,     null: false
     t.integer  "seen_by_count",                   default: 0,     null: false
+    t.string   "ranges_string"
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -245,6 +248,22 @@ ActiveRecord::Schema.define(version: 20171103062701) do
   add_index "discussions", ["key"], name: "index_discussions_on_key", unique: true, using: :btree
   add_index "discussions", ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: {"last_activity_at"=>:desc}, using: :btree
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
+
+  create_table "documents", force: :cascade do |t|
+    t.integer  "model_id",   null: false
+    t.string   "model_type", null: false
+    t.string   "title"
+    t.string   "url"
+    t.string   "doctype",    null: false
+    t.string   "color",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "icon"
+    t.integer  "author_id",      null: false
+    t.string   "web_url"
+    t.string   "thumb_url"
+    t.string   "file_file_name"
+  end
 
   create_table "drafts", force: :cascade do |t|
     t.integer "user_id"
@@ -266,13 +285,18 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.integer  "sequence_id"
     t.boolean  "announcement",               default: false, null: false
     t.jsonb    "custom_fields",              default: {},    null: false
+    t.integer  "parent_id"
+    t.integer  "position",                   default: 0,     null: false
+    t.integer  "child_count",                default: 0,     null: false
+    t.integer  "depth",                      default: 0,     null: false
   end
 
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
   add_index "events", ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true, using: :btree
   add_index "events", ["discussion_id"], name: "index_events_on_discussion_id", using: :btree
   add_index "events", ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id", using: :btree
-  add_index "events", ["sequence_id"], name: "index_events_on_sequence_id", using: :btree
+  add_index "events", ["parent_id", "position"], name: "index_events_on_parent_id_and_position", where: "(parent_id IS NOT NULL)", using: :btree
+  add_index "events", ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)", using: :btree
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
@@ -404,6 +428,7 @@ ActiveRecord::Schema.define(version: 20171103062701) do
   add_index "invitations", ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)", using: :btree
   add_index "invitations", ["cancelled_at"], name: "index_invitations_on_cancelled_at", using: :btree
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
+  add_index "invitations", ["group_id"], name: "index_invitations_on_group_id", using: :btree
   add_index "invitations", ["recipient_email"], name: "index_invitations_on_recipient_email", using: :btree
   add_index "invitations", ["single_use"], name: "index_invitations_on_single_use", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
@@ -639,6 +664,7 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.integer  "undecided_user_count",  default: 0,     null: false
     t.boolean  "voter_can_add_options", default: false, null: false
     t.integer  "guest_group_id"
+    t.boolean  "anonymous",             default: false, null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
@@ -754,7 +780,7 @@ ActiveRecord::Schema.define(version: 20171103062701) do
   add_index "user_deactivation_responses", ["user_id"], name: "index_user_deactivation_responses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.citext   "email",                                        default: "",                    null: false
+    t.citext   "email",                                        default: "",         null: false
     t.string   "encrypted_password",               limit: 128, default: ""
     t.string   "reset_password_token",             limit: 255
     t.datetime "reset_password_sent_at"
@@ -769,39 +795,39 @@ ActiveRecord::Schema.define(version: 20171103062701) do
     t.string   "name",                             limit: 255
     t.datetime "deactivated_at"
     t.boolean  "is_admin",                                     default: false
-    t.string   "avatar_kind",                      limit: 255, default: "initials",            null: false
+    t.string   "avatar_kind",                      limit: 255, default: "initials", null: false
     t.string   "uploaded_avatar_file_name",        limit: 255
     t.string   "uploaded_avatar_content_type",     limit: 255
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials",                  limit: 255
     t.string   "username",                         limit: 255
-    t.boolean  "email_when_proposal_closing_soon",             default: false,                 null: false
+    t.boolean  "email_when_proposal_closing_soon",             default: false,      null: false
     t.string   "authentication_token",             limit: 255
     t.string   "unsubscribe_token",                limit: 255
-    t.integer  "memberships_count",                            default: 0,                     null: false
-    t.boolean  "uses_markdown",                                default: false,                 null: false
+    t.integer  "memberships_count",                            default: 0,          null: false
+    t.boolean  "uses_markdown",                                default: false,      null: false
     t.string   "selected_locale",                  limit: 255
     t.string   "time_zone",                        limit: 255
     t.string   "key",                              limit: 255
     t.string   "detected_locale",                  limit: 255
-    t.boolean  "email_missed_yesterday",                       default: true,                  null: false
+    t.boolean  "email_missed_yesterday",                       default: true,       null: false
     t.string   "email_api_key",                    limit: 255
-    t.boolean  "email_when_mentioned",                         default: true,                  null: false
-    t.boolean  "angular_ui_enabled",                           default: true,                  null: false
-    t.boolean  "email_on_participation",                       default: true,                  null: false
-    t.integer  "default_membership_volume",                    default: 2,                     null: false
+    t.boolean  "email_when_mentioned",                         default: true,       null: false
+    t.boolean  "angular_ui_enabled",                           default: true,       null: false
+    t.boolean  "email_on_participation",                       default: true,       null: false
+    t.integer  "default_membership_volume",                    default: 2,          null: false
     t.string   "country"
     t.string   "region"
     t.string   "city"
-    t.jsonb    "experiences",                                  default: {},                    null: false
+    t.jsonb    "experiences",                                  default: {},         null: false
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"
-    t.string   "short_bio",                                    default: "",                    null: false
-    t.boolean  "email_verified",                               default: false,                 null: false
-    t.string   "location",                                     default: "",                    null: false
-    t.datetime "last_seen_at",                                 default: '2017-10-18 21:05:12', null: false
+    t.string   "short_bio",                                    default: "",         null: false
+    t.boolean  "email_verified",                               default: false,      null: false
+    t.string   "location",                                     default: "",         null: false
+    t.datetime "last_seen_at",                                 default: "now()",    null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

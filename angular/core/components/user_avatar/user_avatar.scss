@@ -1,5 +1,9 @@
-.user-avatar--coordinator {
-  border: 2px solid $loomio-orange !important;
+.user-avatar--coordinator  {
+  .user-avatar__initials, img {
+    // remove soon: cant use theme colours in client scss
+    border: 2px solid $loomio-orange;
+    border-radius: 100%;
+  }
 }
 
 .user-avatar__profile-link {
@@ -13,8 +17,7 @@
 }
 
 .user-avatar{
-  @include roundedCorners;
-  background-color: $background-color;
+  border-radius: 50%;
   box-sizing: border-box;
   text-align: center;
   overflow: hidden;
@@ -23,31 +26,28 @@
 }
 
 .user-avatar__initials {
+  border-radius: 50%;
+  border: 1px solid $border-color;
   color: $primary-text-color;
   text-decoration: none !important;
 }
 
 .user-avatar__initials--small{
-  border: 1px solid $border-color;
   font-size: 12px;
   line-height: 30px;
 }
 
 .user-avatar__initials--medium{
-  border: 1px solid $border-color;
   font-size: 20px;
   line-height: 50px;
 }
 
-.user-avatar__initials--large,
-.user-avatar__initials--large-circular {
-  border: 1px solid $border-color;
+.user-avatar__initials--large {
   font-size: 32px;
   line-height: 80px;
 }
 
 .user-avatar__initials--featured {
-  border: 1px solid $border-color;
   font-size: 50px;
   line-height: 175px;
 }

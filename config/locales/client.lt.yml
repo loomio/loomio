@@ -130,6 +130,8 @@ lt:
     members_can_create_subgroups: 'Nariai gali kurti pogrupius.'
     members_can_edit_comments: 'Nariai gali bet kuriuo metu redaguoti savo komentarus.'
     submit_update: 'Atnaujinti nustatymus'
+  documents_page:
+    confirm_remove_title: Šalinti priedą
   group_previous_proposals_card:
     heading: Ankstesni pasiūlymai
   invitation_form:
@@ -191,12 +193,8 @@ lt:
       yesterday: 'Vakar'
   inbox_page:
     unread_threads: Neskaitytos gijos
-  groups_page:
-    page_header: Jūsų grupės
   discussion:
     activity: 'Veikla'
-    proposals: 'Pasiūlymai'
-    previous_proposals: 'Ankstesni pasiūlymai'
     load_previous: 'Įkelti ankstesnę veiklą'
   thread_group:
     aria_label: 'Grupės pavadinimas'
@@ -208,8 +206,6 @@ lt:
     body: Ar tikrai norite ištrinti šią giją?
     messages:
       success: Gija ištrinta
-  activity_card:
-    new_activity: Nauja veikla
   delete_comment_dialog:
     title: 'Ištrinti komentarą'
     question: 'Jūs tikrai norite ištrinti šį komentarą?'

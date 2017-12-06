@@ -21,8 +21,8 @@ class PollEmailInfo
   end
 
   def actor
-    @actor ||= if @event.eventable.is_a?(Stance)
-      @event.eventable.participant
+    @actor ||= if @eventable.is_a?(Stance)
+      @eventable.participant_for_client
     else
       @event.user || LoggedOutUser.new
     end

@@ -274,6 +274,11 @@ pl:
   group_form:
     privacy: 'Prywatność'
     submit_update: 'Zaktualizuj ustawienia'
+  documents_page:
+    confirm_remove_title: Usunięcie załącznika
+  document:
+    form:
+      title_label: Nazwa
   membership_requests_page:
     heading: Zgłoszenia Członkostwa
     approve: Akceptacja
@@ -361,14 +366,16 @@ pl:
     view_more: Pokaż Więcej
     no_groups:
       start: Rozpocznij
-  groups_page:
-    page_header: Twoje grupy
   discussion:
     activity: 'Aktywność'
-    proposals: 'Rekomendacje'
-    previous_proposals: 'Poprzednie rekomendacje'
     load_previous: 'Załaduj wcześniejsze aktywności'
     started_by: 'Rozpoczęte przez <strong>{{name}}</strong>'
+  activity_card:
+    unread: Nieprzeczytane
+    latest: Ostatnie
+    attachment_display:
+      aria_label: 'Dołączony plik:'
+      image_alt: 'Dołączone zdjęcie'
   thread_group:
     aria_label: 'Nazwa grupy'
   thread_context:
@@ -376,11 +383,6 @@ pl:
     thread_options: 'Opcje wątku'
     mute_thread: 'Wycisz'
     delete_thread: 'Usuń'
-  activity_card:
-    new_activity: Nowa aktywność
-    attachment_display:
-      aria_label: 'Dołączony plik:'
-      image_alt: 'Dołączone zdjęcie'
   delete_comment_dialog:
     title: 'Usuń komentarz'
     question: 'Czy na pewno chcesz usunąć ten komentarz?'

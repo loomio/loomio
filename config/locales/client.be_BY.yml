@@ -79,6 +79,9 @@ be_BY:
       mute: Прыбраць гэту групу з галоўнай старонкі і нагадваць толькі калі @mentioned.
   group_form:
     description_placeholder: 'Апішыце мэты вашай групы, каб чальцы групы ведалі, навошта яны тут.'
+  document:
+    form:
+      title_label: Імя
   membership_requests_page:
     approve: Пацвердзіць
     ignore: Ігнараваць
@@ -114,8 +117,8 @@ be_BY:
   inbox_page:
     no_groups:
       or: альбо
-  discussion:
-    proposals: 'Прапановы'
+  activity_card:
+    unread: Непрачытаныя
   thread_group:
     aria_label: 'Назва групы'
   delete_comment_dialog:

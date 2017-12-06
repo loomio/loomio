@@ -109,6 +109,9 @@ sv:
     privacy: 'Integritet'
     submit_start_group: 'Startgrupp'
     submit_update: 'Uppdatera inställningar'
+  document:
+    form:
+      title_label: Namn
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera
@@ -137,6 +140,9 @@ sv:
   inbox_page:
     no_groups:
       or: eller
+  activity_card:
+    unread: Olästa
+    latest: Senaste
   thread_group:
     aria_label: 'Gruppnamn'
   thread_context:

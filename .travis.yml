@@ -15,8 +15,8 @@ cache:
     - angular/node_modules
 
 addons:
-  firefox: "55.0"
-  postgresql: "9.5"
+  firefox: "57.0"
+  postgresql: "9.6"
   apt:
     sources:
       - heroku
@@ -47,9 +47,9 @@ install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - gem install s3_uploader
   - cd angular; yarn; cd ..
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update --versions.standalone 3.6.0 --versions.gecko v0.19.0
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager update --versions.standalone 3.7.1 --versions.gecko v0.19.1
   - mkdir $TRAVIS_BUILD_DIR/bin
-  - ln -s $TRAVIS_BUILD_DIR/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.19.0 $TRAVIS_BUILD_DIR/bin/geckodriver
+  - ln -s $TRAVIS_BUILD_DIR/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.19.1 $TRAVIS_BUILD_DIR/bin/geckodriver
   - ln -s fetched_plugins plugins
 
 before_script:
@@ -57,7 +57,7 @@ before_script:
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
   - bundle exec rake travis:prepare
-  - bundle exec rails server > /dev/null &
+  - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:
   - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi

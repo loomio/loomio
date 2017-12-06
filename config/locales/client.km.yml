@@ -39,6 +39,9 @@ km:
     options_label: 'ជម្រើស '
     options:
       label: 'ជម្រើស '
+  document:
+    form:
+      title_label: ឈ្មោះ
   membership_requests_page:
     approve: 'អនុម័ត '
     ignore: មិនអើពើ

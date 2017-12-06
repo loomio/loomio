@@ -1,5 +1,22 @@
 .thread-item {
-  margin-bottom: 25px;
+  padding: 4px $cardPaddingSize;
+}
+
+.thread-item--unread {
+  padding-left: $cardPaddingSize - 2px;
+  border-left: 2px solid;
+  &.thread-item--indent {
+    padding-left: $cardPaddingSize + 40px;
+    // padding-left: 56px; // (42 (indent) - 2 (unread border) + 16 (card padding))
+  }
+}
+
+.thread-item--indent {
+  padding-left: $cardPaddingSize + 42px;
+}
+
+.thread-item--indent-margin {
+  margin-left: $cardPaddingSize + 42px;
 }
 
 .thread-item__title {
@@ -18,7 +35,6 @@
 
 .thread-item__headline {
   min-height: 28px;
-  margin-right: 40px;
 }
 
 .thread-item__body {

@@ -361,6 +361,11 @@ el:
     heading: 'Αιτήσεις εγγραφής μελών'
     manage_requests: Διαχείριση αιτήσεων
     manage_requests_with_count: Διαχείριση αιτήσεων ({{count}})
+  documents_page:
+    confirm_remove_title: Αφαίρεσε συννημένο
+  document:
+    form:
+      title_label: Όνομα
   membership_requests_page:
     heading: Αιτήσεις εγγραφής μελών
     approve: Έγκριση
@@ -403,9 +408,10 @@ el:
       start: Εκίνηση
       or: ή
   discussion:
-    proposals: 'Προτάσεις'
-    previous_proposals: 'Προηγούμενες Προτάσεις'
     started_by: 'Ξεκίνησε από τον/την <strong>{{name}}</strong>'
+  activity_card:
+    unread: Αδιάβαστα
+    latest: Τελευταία
   thread_group:
     aria_label: 'Όνομα ομάδας'
   thread_context:

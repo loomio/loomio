@@ -9,8 +9,6 @@ class FormalGroup < Group
 
   before_save :update_full_name_if_name_changed
 
-  default_scope { includes(:default_group_cover) }
-
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
@@ -34,6 +32,10 @@ class FormalGroup < Group
   has_many :votes, through: :motions
   has_many :group_identities, dependent: :destroy, foreign_key: :group_id
   has_many :identities, through: :group_identities
+  has_many :documents, as: :model
+  has_many :discussion_documents, through: :discussions, source: :documents
+  has_many :poll_documents,       through: :polls,       source: :documents
+  has_many :comment_documents,    through: :comments,    source: :documents
 
   belongs_to :cohort
   belongs_to :default_group_cover
@@ -135,10 +137,6 @@ class FormalGroup < Group
 
   def admin_email
     admins.first.email
-  end
-
-  def membership_for(user)
-    memberships.find_by(user_id: user.id)
   end
 
   def update_full_name_if_name_changed

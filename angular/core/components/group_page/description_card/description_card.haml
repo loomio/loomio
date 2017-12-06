@@ -1,9 +1,15 @@
 %section.description-card.lmo-card{aria-labelledby: "description-card-title"}
   %h2#description-card-title.lmo-card-heading{translate: "description_card.title"}
   %div{ng-if: "!editorEnabled"}
-    .description-card__placeholder.lmo-placeholder.md-caption{translate: "description_card.placeholder", ng-if: "!group.description"}
+    .description-card__placeholder.lmo-hint-text{translate: "description_card.placeholder", ng-if: "!group.description"}
     .description-card__text.lmo-markdown-wrapper{marked: "group.description"}
-    %md-button.md-button--no-h-margin.md-accent.description-card__edit{ng-if: "canEditGroup()", ng-click: "enableEditor()", translate: "common.action.edit"}
+    %document_list{model: "group"}
+    %a.description-card__documents-link{ng-if: "group.hasDocuments()", lmo-href-for: "group", lmo-href-action: "documents"}
+      %span{translate: "description_card.manage_documents", ng-if: "canAdministerGroup()"}
+      %span{translate: "description_card.view_documents", ng-if: "!canAdministerGroup()"}
+
+    .lmo-md-action
+      %action_dock{model: "group", actions: "actions"}
   %md-input-container.md-block{ng-if: "editorEnabled"}
     %textarea.lmo-textarea.description-card__textarea.lmo-primary-form-input{ng-model: "buh.editableDescription", ng-model-options: "{debounce: 150}"}
     .lmo-md-actions

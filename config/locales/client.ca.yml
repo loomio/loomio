@@ -288,6 +288,11 @@ ca:
     heading: 'Sol·licitud de pertinença'
     manage_requests: Administració de sol·licituds
     manage_requests_with_count: Administració de sol·licituds ({{count}})
+  documents_page:
+    confirm_remove_title: Elimina un fitxer adjunt
+  document:
+    form:
+      title_label: Nom
   membership_requests_page:
     heading: Sol·licitud de pertinença
     approve: Aprova
@@ -437,18 +442,19 @@ ca:
       start: Crea
       or: o
       join_group: <a href="/explore">uniu-vos</a> a un grup per veure les discussions.
-  groups_page:
-    page_header: Els vostres grups
   discussion:
     activity: 'Activitat'
     activity_placeholder: 'Encara no hi ha cap activitat.'
-    proposals: 'Propostes'
-    previous_proposals: 'Propostes anteriors'
     load_previous: 'Carrega activitats anteriors'
     started_by: 'Destacat per <strong>{{name}}</strong>'
-    edited: 'Editat'
     volume:
       mute_message: 'Discussió silenciada.'
+  activity_card:
+    unread: No llegit
+    latest: Últim
+    attachment_display:
+      aria_label: 'Fitxer adjunt:'
+      image_alt: 'Imatge adjunta'
   thread_group:
     aria_label: 'Nom del grup'
   thread_context:
@@ -470,11 +476,6 @@ ca:
     confirm_change_to_private_thread: '{{groupName}} és un grup obert. Si continueu, aquesta discussió serà pública.'
     messages:
       success: S'ha mogut la discussió a {{name}}
-  activity_card:
-    new_activity: Activitat nova
-    attachment_display:
-      aria_label: 'Fitxer adjunt:'
-      image_alt: 'Imatge adjunta'
   delete_comment_dialog:
     title: 'Eliminar comentari'
     question: 'Esteu segur d''eliminar aquest comentari?'

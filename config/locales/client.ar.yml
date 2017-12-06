@@ -245,6 +245,11 @@ ar:
     heading: 'طلبات العضوية'
     manage_requests: إدارة الطلبات
     manage_requests_with_count: إدارة الطلبات ({{count}})
+  documents_page:
+    confirm_remove_title: حذف المرفق
+  document:
+    form:
+      title_label: 'الاسم '
   membership_requests_page:
     heading: طلبات العضوية
     approve: موافقة
@@ -369,16 +374,17 @@ ar:
     no_threads: مبروك! لقد قمت بقراءة كل المواضيع في بريدك.
     unread_threads: المواضيع الغير مقروءة
     view_more: إظهار المزيد
-  groups_page:
-    page_header: مجموعاتك
   discussion:
     activity: 'نشاط'
     activity_placeholder: 'لا يوجد نشاط بعد!'
-    proposals: 'المقترحات '
-    previous_proposals: 'المقترحات السابقة'
     load_previous: 'تحميل النشاطات السابقة'
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong> '
-    edited: 'معدّل'
+  activity_card:
+    unread: غير مقروءة
+    latest: الأحدث
+    attachment_display:
+      aria_label: 'الملف المرفق: '
+      image_alt: 'صورة مرفقة'
   thread_group:
     aria_label: 'اسم المجموعة'
   thread_context:
@@ -399,11 +405,6 @@ ar:
     confirm_change_to_private_thread: '{{groupName}} هي مجموعة مفتوحة. إن اخترت الاستمرار، سيتم تحويل هذا الموضوع إلى عام.'
     messages:
       success: تم نقل الموضوع إلى {{name}}
-  activity_card:
-    new_activity: نشاط جديد
-    attachment_display:
-      aria_label: 'الملف المرفق: '
-      image_alt: 'صورة مرفقة'
   delete_comment_dialog:
     title: 'احذف التعليق'
     question: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'

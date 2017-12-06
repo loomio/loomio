@@ -66,6 +66,9 @@ ja:
   group_form:
     privacy: 'プライバシー'
     submit_update: '設定更新'
+  document:
+    form:
+      title_label: 氏名
   membership_requests_page:
     approve: 承認
     ignore: 拒否

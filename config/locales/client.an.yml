@@ -55,6 +55,9 @@ an:
     options_label: 'Opcions'
     options:
       label: 'Opcions'
+  document:
+    form:
+      title_label: Nombre
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar
@@ -80,6 +83,8 @@ an:
   inbox_page:
     no_groups:
       or: u
+  activity_card:
+    unread: No leyiu
   thread_group:
     aria_label: 'Nombre d''o grupo'
   delete_comment_dialog:

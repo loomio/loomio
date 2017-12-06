@@ -451,6 +451,14 @@ da:
     heading: 'Anmodninger om medlemskab'
     manage_requests: Administrer anmodninger
     manage_requests_with_count: Administrer anmodninger ({{count}})
+  documents_page:
+    title: Vedhæftede filer
+    confirm_remove_title: Slet vedhæftning
+  document:
+    list:
+      title: Vedhæftede filer
+    form:
+      title_label: Navn
   membership_requests_page:
     heading: Anmodninger om medlemskab
     approve: Godkend
@@ -645,19 +653,20 @@ da:
       start: Opret
       or: eller
       join_group: <a href="/explore">bliv medlem</a> af en gruppe for at se debatter.
-  groups_page:
-    page_header: Dine grupper
   discussion:
     activity: 'Aktivitet'
     activity_placeholder: 'Ingen aktivitet endnu!'
-    proposals: 'Forslag'
-    previous_proposals: 'Tidligere forslag'
     load_previous: 'Hent tidligere aktivitet'
     started_by: 'Oprettet af <strong>{{name}}</strong>'
-    edited: 'Redigeret'
     volume:
       mute_message: 'Notifikationer slået fra.'
       unmute_message: 'Notifikationer slået til.'
+  activity_card:
+    unread: Ulæst
+    latest: Seneste
+    attachment_display:
+      aria_label: 'Fil vedhæftet:'
+      image_alt: 'Vedhæftet billede'
   thread_group:
     aria_label: 'Gruppenavn'
   thread_context:
@@ -686,11 +695,6 @@ da:
     confirm_change_to_private_thread: '{{groupName}} er ern offentlig gruppe. Hvis du fortsætter, så vil denne debat bliver gjort offentlig.'
     messages:
       success: Debatten er flyttet til {{name}}
-  activity_card:
-    new_activity: Ny aktivitet
-    attachment_display:
-      aria_label: 'Fil vedhæftet:'
-      image_alt: 'Vedhæftet billede'
   print_modal:
     load_discussion: Henter hele debatten...
   delete_comment_dialog:

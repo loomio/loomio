@@ -48,6 +48,9 @@ he:
     options_label: 'אפשרויות'
     options:
       label: 'אפשרויות'
+  document:
+    form:
+      title_label: שם
   membership_requests_page:
     approve: אישור
     ignore: התעלמ/י
@@ -67,6 +70,8 @@ he:
     mark_as_read: סמן כנקרא
     threads_from:
       today: 'היום'
+  activity_card:
+    unread: לא-נקרא
   thread_group:
     aria_label: 'שם הקבוצה'
   delete_comment_dialog:

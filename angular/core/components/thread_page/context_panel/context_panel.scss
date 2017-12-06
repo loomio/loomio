@@ -1,6 +1,6 @@
 .context-panel {
-  @include card;
   .lmo-card-heading { margin-top: 7px; }
+  border-bottom: 1px solid $border-color;
 }
 
 .context-panel__top {
@@ -27,17 +27,6 @@
   position: relative;
   font-size: 14px;
   top: 2px;
-}
-
-.context-panel__thread-actions .star-toggle {
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  width: 30px;
-  a {
-    min-width: 30px;
-    text-align: center;
-  }
 }
 
 .context-panel__details {

@@ -1,7 +1,9 @@
 class Comment < ActiveRecord::Base
+  include CustomCounterCache::Model
   include Translatable
   include Reactable
   include HasMentions
+  include HasCreatedEvent
 
   has_paper_trail only: [:body]
   is_translatable on: :body
@@ -17,6 +19,7 @@ class Comment < ActiveRecord::Base
 
   has_many :events, as: :eventable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :documents, as: :model
 
   validates_presence_of :user
   validate :has_body_or_attachment
@@ -34,12 +37,38 @@ class Comment < ActiveRecord::Base
   delegate :email, to: :user, prefix: :user
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :participants, to: :discussion, prefix: :discussion
+  delegate :group_id, to: :discussion, allow_nil: true
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
   delegate :id, to: :group, prefix: :group
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
+
+  def created_event_kind
+    :new_comment
+  end
+
+  def parent_event
+    if parent_id # comment is a reply
+      first_ancestor.created_event
+    else
+      discussion.created_event
+    end
+  end
+
+  def first_ancestor
+    return nil unless parent
+    next_parent = parent
+    while (next_parent.parent) do
+      next_parent = next_parent.parent
+    end
+    next_parent
+  end
+
+  def created_event_kind
+    :new_comment
+  end
 
   def is_most_recent?
     discussion.comments.last == self

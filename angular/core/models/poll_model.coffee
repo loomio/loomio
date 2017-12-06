@@ -15,6 +15,12 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     poll: -> @
 
+    documents: ->
+      @recordStore.documents.find(modelId: @id, modelType: "Poll")
+
+    hasDocuments: ->
+      @documents().length > 0
+
     # the polls which haven't closed have the highest importance
     # (and so have the lowest value here)
     # Both are sorted by distance from the current time
@@ -61,7 +67,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       _.some @attachments()
 
     announcementSize: (action) ->
-      return @group().announcementRecipientsCount if @isNew()
+      return @group().announcementRecipientsCount if @group() and @isNew()
       switch action or @notifyAction()
         when 'publish' then @stancesCount + @undecidedUserCount
         when 'edit'    then @stancesCount
@@ -157,3 +163,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
         'publish'
       else
         'edit'
+
+    removeOrphanOptions: ->
+      _.each @pollOptions(), (option) =>
+        option.remove() unless _.includes(@pollOptionNames, option.name)

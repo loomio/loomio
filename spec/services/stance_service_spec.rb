@@ -17,6 +17,7 @@ describe StanceService do
   let(:stance_created) { build :stance, poll: poll, stance_choices: [agree_choice], participant: nil }
   let(:agree_choice) { build(:stance_choice, poll_option: agree) }
   let(:disagree_choice) { build(:stance_choice, poll_option: disagree) }
+  let(:poll_created_event) { PollService.create(poll: poll, actor: user) }
 
   before do
     group.add_member! user
@@ -40,6 +41,12 @@ describe StanceService do
       expect(stance.reload.latest).to eq false
       expect(another_stance.reload.latest).to eq true
       expect(stance_created.reload.latest).to eq true
+    end
+
+    it 'sets event parent to the poll created event' do
+      poll_created_event
+      event = StanceService.create(stance: stance_created, actor: user)
+      expect(event.parent.id).to eq poll_created_event.id
     end
 
     it 'does not create a stance for a logged out user' do

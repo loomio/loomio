@@ -54,6 +54,23 @@ describe API::StancesController do
       expect(json['stances'][1]['id']).to eq recent_stance.id
     end
 
+    it 'does not reveal participant for other peoples votes' do
+      my_stance    = create(:stance, participant: user, poll: poll)
+      other_stance = create(:stance, poll: poll)
+      poll.update(anonymous: true)
+      sign_in user
+      get :index, poll_id: poll.id
+
+      json = JSON.parse(response.body)
+      stance_ids = json['stances'].map { |s| s['id'] }
+      user_ids   = json['users'].map   { |u| u['id'] }
+
+      expect(stance_ids).to include my_stance.id
+      expect(stance_ids).to include other_stance.id
+      expect(user_ids).to include my_stance.participant_id
+      expect(user_ids).to_not include other_stance.participant_id
+    end
+
     it 'can order by priority asc' do
       sign_in user
       high_priority_stance; low_priority_stance
@@ -164,6 +181,16 @@ describe API::StancesController do
         expect { post :create, stance: stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
         expect(invitation.reload.accepted?).to be true
         expect(user.reload.groups).to include group
+      end
+
+      it 'includes the participant of the stance for anonymous polls' do
+        poll.update(anonymous: true)
+        sign_in user
+        poll.guest_group.add_member! user
+        post :create, stance: stance_params
+        json = JSON.parse(response.body)
+        expect(json['stances'][0]['participant_id']).to eq user.id
+        expect(json['users']).to be_present
       end
 
       describe 'logged out' do

@@ -34,6 +34,9 @@ te:
     options_label: 'ఐచ్ఛికాలు'
     options:
       label: 'ఐచ్ఛికాలు'
+  document:
+    form:
+      title_label: పేరు
   membership_requests_page:
     approve: ఆమోదించండి
     ignore: విస్మరించు

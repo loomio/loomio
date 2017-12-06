@@ -1,7 +1,7 @@
-%section.members-card.lmo-no-print{aria-labelledby: "members-card-title"}
+%section.members-card.lmo-no-print{aria-labelledby: "members-card-title", ng-if: "canViewMemberships()"}
   %h2#members-card-title.lmo-card-heading{ translate: "group_page.members"}
   .members-card__list
-    .members-card__avatar{ng-if: "group.memberships().length > 1", ng-repeat: "membership in group.memberships() | orderBy: '-admin' | limitTo:10"}
+    .members-card__avatar{ng-if: "group.memberships().length > 0", ng-repeat: "membership in group.memberships() | orderBy: '-admin' | limitTo:10"}
       %a.members-card__avatar-link{lmo-href-for: "membership.user()"}
         %user_avatar{user: "membership.user()", coordinator: "membership.admin", size: "medium"}
     .lmo-placeholder{translate: "group_page.members_placeholder", ng-if: "showMembersPlaceholder()" }
