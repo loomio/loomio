@@ -158,6 +158,12 @@ FactoryGirl.define do
     association :group, factory: :formal_group
   end
 
+  factory :attachment do
+    user
+    filename { Faker::Name.name }
+    location { Faker::Company.logo }
+  end
+
   factory :document do
     association :author, factory: :user
     association :model, factory: :discussion

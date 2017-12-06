@@ -1,3 +1,3 @@
 = render_rich_text(@text, true)
-- if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
+- if @eventable.respond_to?(:documents) && @eventable.documents.any?
   = render "attachments", resource: @eventable
