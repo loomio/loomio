@@ -391,7 +391,7 @@ describe API::DiscussionsController do
         expect { post :update, id: discussion.id, discussion: discussion_params, format: :json }.to change { Document.count }.by(-1)
         expect(discussion.reload.documents).to be_empty
         expect(response.status).to eq 200
-        expect(document.reload.document_ids).to_not include document.id
+        expect(discussion.reload.document_ids).to_not include document.id
       end
     end
 
