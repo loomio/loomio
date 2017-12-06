@@ -1,6 +1,6 @@
 class EventParentMigrator
   def self.migrate_some_groups(num = 100)
-    FormalGroup.where("not(features ? 'nested_comments')").order("id DESC").limit(num) do |group|
+    FormalGroup.where("not(features ? 'nested_comments')").order("id DESC").limit(num).each do |group|
       EventParentMigrator.delay(priority: 1000).migrate_group_id!(group.id)
     end
   end
