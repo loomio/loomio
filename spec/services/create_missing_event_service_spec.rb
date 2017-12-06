@@ -16,7 +16,7 @@ describe CreateMissingEventService do
     expect(Event.where(kind: "new_discussion", eventable: discussion).exists?).to be false
     event = discussion.created_event
     expect(event.eventable).to eq discussion
-    expect(event.created_at).to eq discussion.created_at
+    # expect(event.created_at).to eq discussion.created_at
     expect(event.user).to eq discussion.author
     expect(event.parent_id).to be nil
     expect(event.depth).to be 0
