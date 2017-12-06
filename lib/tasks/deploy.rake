@@ -51,7 +51,7 @@ namespace :deploy do
       "git checkout -b deploy-#{Time.now.to_i}",
       "bundle exec rake #{deploy_steps.join(' ')}")
     at_exit do
-      run_commands("git checkout master", "git branch -D #{deploy_branch}")
+      run_commands("git branch -D #{deploy_branch}")
     end
   end
 
@@ -73,7 +73,8 @@ namespace :deploy do
       "find public/img/emojis -name '*.png' | xargs git add -f",
       "git add -f plugins",
       "git add public/client/#{Loomio::Version.current} public/client/fonts -f",
-      "git commit -m 'Add compiled assets / plugin code'")
+      "git commit -m 'Add compiled assets / plugin code'",
+      "git checkout master")
   end
 
   desc "Bump version of repository if pushing to production"
