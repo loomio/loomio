@@ -181,7 +181,7 @@ describe 'Login', ->
       page.expectFlash 'You are now a member of Open Dirty Dancing Shoes'
       page.expectElement '.comment-form__submit-button'
 
-    it 'can use a shareable link', ->
+    xit 'can use a shareable link', ->
       page.loadPath 'view_closed_group_with_shareable_link'
       page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
       page.click '.auth-email-form__submit'
