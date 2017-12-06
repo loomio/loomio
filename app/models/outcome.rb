@@ -4,6 +4,8 @@ class Outcome < ActiveRecord::Base
   include HasMentions
   include Reactable
   include Translatable
+  include HasCreatedEvent
+  
   set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location
 
   belongs_to :poll, required: true
