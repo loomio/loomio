@@ -19,6 +19,7 @@ class EventParentMigrator
 
   def self.assign_surface_comment_parents(group)
     group.comments.where("parent_id is null").find_each do |comment|
+      created_event = comment.created_event
       next if created_event.parent_id
       next unless created_event = comment.created_event
       next if comment.discussion.author.nil?
@@ -29,9 +30,10 @@ class EventParentMigrator
   def self.assign_reply_comment_parents(group)
     total_comments = group.comments.where("parent_id is not null").count
     group.comments.where("parent_id IS NOT NULL").find_each do |comment|
+      created_event = comment.created_event
       next if created_event.parent_id
       next unless created_event = comment.created_event
-      comment.created_event.update(parent: comment.parent_event)
+      created_event.update(parent: comment.parent_event)
     end
   end
 
