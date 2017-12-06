@@ -1,7 +1,7 @@
 class Document < ActiveRecord::Base
   belongs_to :model, polymorphic: true, required: false
   belongs_to :author, class_name: 'User', required: true
-  validates :url, presence: true
+  validates :url, format: { with: AppConfig::URL_REGEX, message: I18n.t(:"document.error.invalid_format") }
   validates :title, presence: true
   validates :doctype, presence: true
   validates :color, presence: true

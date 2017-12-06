@@ -23,6 +23,10 @@ en:
     error:
       too_large: The file you tried to attach is larger than 100 Megabytes, please choose a smaller file.
 
+  document:
+    error:
+      invalid_format: Oops! Your URL is invalid. Ensure it begins with http:// or https://
+
   poll:
     error:
       cannot_add_options: Cannot add options to this poll

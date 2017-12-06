@@ -12,6 +12,10 @@ class AppConfig
     locales
   )
 
+  BANNED_CHARS = %(\\s:,;'"`<>)
+  EMAIL_REGEX  = /[^#{BANNED_CHARS}]+?@[^#{BANNED_CHARS}]+\.[^#{BANNED_CHARS}]+/
+  URL_REGEX    = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/
+
   CONFIG_FILES.each do |config|
     define_singleton_method(config) do
       instance_variable_get(:"@#{config}") ||
