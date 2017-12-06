@@ -33,6 +33,7 @@ describe Event do
   before do
     ActionMailer::Base.deliveries = []
     parent_comment
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
     discussion.group.add_member!(mentioned_user)
     discussion.group.add_member!(parent_comment.author)
 
