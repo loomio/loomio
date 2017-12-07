@@ -41,12 +41,10 @@ class EventParentMigrator
     group.discussions.find_each do |discussion|
       discussion.items.where(kind: ["discussion_edited", "poll_edited", "poll_expired"])
                       .where(parent_id: nil).find_each do |event|
-        if event.eventable
-          if event.eventable&.created_event
-            event.update(parent: event.eventable.created_event)
-          elsif event.eventable&.item && event.eventable.item&.created_event
-            event.update(parent: event.eventable.item.created_event)
-          end
+        if event.eventable && event.eventable.respond_to?(:created_event)
+          event.update(parent: event.eventable.created_event)
+        elsif event.eventable.respond_to?(:item) && event.eventable.item.respond_to?(:created_event)
+          event.update(parent: event.eventable.item.created_event)
         end
       end
     end
