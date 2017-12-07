@@ -7,10 +7,7 @@ describe TranslationService do
   let(:fr_user) { create :user, selected_locale: :fr }
   let(:fr_FR_user) { create :user, selected_locale: :fr_FR }
   let(:wark_user) { create :user, selected_locale: :wark }
-  before do
-    TranslationService.class_variable_set("@@supported_languages", nil)
-    TranslationService.stub(:translator).and_return(StubTranslator.new)
-  end
+  before { TranslationService.stub(:translator).and_return(StubTranslator.new) }
 
   it 'translates a valid language code' do
     expect { TranslationService.create(model: fr_discussion, to: :en) }.to change { fr_discussion.translations.count }.by(1)
