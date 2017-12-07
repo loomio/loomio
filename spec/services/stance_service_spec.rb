@@ -20,6 +20,7 @@ describe StanceService do
   let(:poll_created_event) { PollService.create(poll: poll, actor: user) }
 
   before do
+    discussion.created_event
     group.add_member! user
     group.add_member! another_group_member
   end
