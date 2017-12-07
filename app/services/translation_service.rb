@@ -4,14 +4,13 @@ class TranslationService
   def self.create(model:, to:)
     from = supported_language_for(model.locale_field.to_s)
     to   = supported_language_for(to)
-    return unless from && to
 
     translation = model.translations.find_by(language: to) ||
                   Translation.new(translatable: model, language: to, fields: {})
 
     model.class.translatable_fields.each do |field|
       translation.fields[field.to_s] ||= translator.translate(model.send(field), from: from, to: to)
-    end if translation.valid?
+    end if from && translation.valid?
 
     translation.tap(&:save)
   end
