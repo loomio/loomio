@@ -10,7 +10,7 @@ class TranslationService
 
     model.class.translatable_fields.each do |field|
       translation.fields[field.to_s] ||= translator.translate(model.send(field), from: from, to: to)
-    end if from && translation.valid?
+    end if from && to
 
     translation.tap(&:save)
   end
