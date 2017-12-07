@@ -14,7 +14,7 @@ class EventParentMigrator
     assign_poll_parents(group)
     group.features['nested_comments'] = true
     group.save
-    group.subgroups.find_each { |g| migrate_group!(g) }
+    group.subgroups.find_each { |g| migrate_group_id!(g.id) }
   end
 
   def self.assign_surface_comment_parents(group)
@@ -54,7 +54,7 @@ class EventParentMigrator
     group.polls.where("discussion_id is not null").find_each do |poll|
       poll_created_event = poll.created_event
       next if poll_created_event.parent_id
-      poll_created_event.update(parent: poll.discussion.created_event)
+      poll_created_event.update(parent: poll.discussion.created_event) if poll.discussion
       poll.stances.find_each do |stance|
         stance.created_event.update(parent: poll_created_event)
       end
