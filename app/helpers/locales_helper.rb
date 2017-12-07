@@ -22,12 +22,6 @@ module LocalesHelper
     AppConfig.locales['supported']
   end
 
-  def angular_locales
-    supported_locales.map do |locale|
-      { key: locale, name: I18n.t(locale.to_sym, scope: :native_language_name) }
-    end
-  end
-
   def save_detected_locale(user = current_user)
     if user.is_logged_in? && browser_detected_locales.any?
       user.update_detected_locale(browser_detected_locales.first)
