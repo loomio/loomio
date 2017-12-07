@@ -23,6 +23,9 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       @belongsTo 'parent', from: 'comments', by: 'parentId'
       @hasMany  'versions', sortBy: 'createdAt'
 
+    createdEvent: ->
+      @recordStore.events.find(kind: "new_comment", eventableId: @id)[0]
+
     serialize: ->
       data = @baseSerialize()
       data.comment.attachment_ids = @newAttachmentIds
