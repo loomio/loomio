@@ -1,14 +1,14 @@
 class Document < ActiveRecord::Base
   belongs_to :model, polymorphic: true, required: false
   belongs_to :author, class_name: 'User', required: true
-  validates :url, format: { with: AppConfig::URL_REGEX, message: I18n.t(:"document.error.invalid_format") }
+  validates :url, format: { with: AppConfig::URL_REGEX, message: I18n.t(:"document.error.invalid_format") }, if: :manual_url?
   validates :title, presence: true
   validates :doctype, presence: true
   validates :color, presence: true
   before_validation :set_metadata
 
   has_attached_file :file, styles: lambda { |f|
-    if f.instance.file_file_name.match(AppConfig.image_regex)
+    if f.instance.is_an_image?
       { thumb: '100x100#', web: '600x>' }
     else
       {}
@@ -28,19 +28,27 @@ class Document < ActiveRecord::Base
   end
 
   def sync_urls!
-    update_columns(
-      url: file.url(:original),
-      web_url: file.url(:web),
-      thumb_url: file.url(:thumb)
-    ) if file.present?
+    update(
+      url:       file.url,
+      web_url:   (file.url(:web) if is_an_image?),
+      thumb_url: (file.url(:thumb) if is_an_image?)
+    )
+  end
+  
+  def is_an_image?
+    file_file_name.match(AppConfig.image_regex)
   end
 
   private
 
+  def manual_url?
+    self.file.blank?
+  end
+
   # need this to save model with upload correctly and get metadata,
   # we'll set the finalized path later in set_final_urls
   def set_initial_url
-    self.url ||= file&.url(:original)
+    self.url = file.url unless manual_url?
   end
 
   def set_metadata
