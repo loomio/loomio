@@ -19,7 +19,7 @@ InitialPayload = Struct.new(:user) do
       theme:               AppConfig.theme,
       features:            AppConfig.features,
       inlineTranslation: {
-        isAvailable:       TranslationService.app_key.present?,
+        isAvailable:       TranslationService.supported_languages.any?,
         supportedLangs:    TranslationService.supported_languages
       },
       pageSize: {
