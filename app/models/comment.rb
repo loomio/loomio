@@ -50,7 +50,7 @@ class Comment < ActiveRecord::Base
   end
 
   def parent_event
-    if parent_id # comment is a reply
+    if parent_id && first_ancestor
       first_ancestor.created_event
     else
       discussion.created_event
