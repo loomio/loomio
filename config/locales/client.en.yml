@@ -1399,7 +1399,7 @@ en:
     meeting_created: Time poll created
     meeting_updated: Time poll updated
     timeslots: Time slots
-    no_options: "You haven't added any time slots yet."
+    no_options: Enter times in your current time zone ({{zone}}). Participants see times translated to their local time zone.
     meeting_duration: Meeting duration
     add_option_placeholder: Enter a new time
 
