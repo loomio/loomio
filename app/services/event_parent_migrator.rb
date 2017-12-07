@@ -45,7 +45,7 @@ class EventParentMigrator
       end
       discussion.items.where(kind: ["discussion_edited", "poll_edited"])
                       .where(parent_id: nil).find_each do |event|
-        event.update(parent: event.eventable.item.created_event)
+        event.update(parent: event.eventable&.created_event || event.eventable.item&.created_event)
       end
     end
   end
