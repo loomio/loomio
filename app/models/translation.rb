@@ -4,6 +4,7 @@ class Translation < ActiveRecord::Base
 
   validates_presence_of :translatable, :language
   validates_inclusion_of :language, in: TranslationService.supported_languages
+  validates :fields, presence: true
 
   # TODO: Should probably move to a serializer
   def as_json

@@ -17,11 +17,5 @@ describe GroupsController do
       get :show, key: :notakey, format: :xml
       expect(response.status).to eq 404
     end
-
-    it 'responds unauthorized for guest groups' do
-      guest_group.add_admin! user
-      get :show, key: guest_group.key
-      expect(response.status).to eq 404
-    end
   end
 end
