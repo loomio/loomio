@@ -7,7 +7,7 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
              :read_ranges_string,
              :last_read_at,
              :seen_by_count,
-             :volume,
+             :discussion_reader_volume,
              :dismissed_at
 
   has_one :created_event, serializer: Events::BaseSerializer, root: :events
@@ -26,6 +26,10 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
 
   def discussion_reader_id
     object.id
+  end
+
+  def discussion_reader_volume
+    object.volume
   end
 
   def seen_by_count
