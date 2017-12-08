@@ -210,7 +210,7 @@ describe 'Discussion Page', ->
       page.click '.comment-form__submit-button'
       page.click '.action-dock__button--edit_comment'
       page.fillIn '.edit-comment-form textarea', 'edited comment right thur'
-      page.click '.comment-form__submit-button'
+      page.click '.edit-comment-form .comment-form__submit-button'
       page.expectText '.new-comment', 'edited comment right thur'
 
     it 'lets you view comment revision history', ->
@@ -218,7 +218,7 @@ describe 'Discussion Page', ->
       page.click '.comment-form__submit-button'
       page.click '.action-dock__button--edit_comment'
       page.fillIn '.edit-comment-form textarea', 'Revised comment!'
-      page.click  '.comment-form__submit-button'
+      page.click  '.edit-comment-form .comment-form__submit-button'
       page.click '.action-dock__button--show_history'
       page.expectText '.revision-history-modal__body', 'Revised comment!'
       page.expectText '.revision-history-modal__body', 'Comment!'
