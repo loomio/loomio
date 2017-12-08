@@ -14,7 +14,7 @@
             .membership-requests-page__pending-request-email
               {{request.email}}
             .membership-requests-page__pending-request-date
-              %timeago{timestamp: "request.createdAt"}
+              %vue-timeago.nowrap{vprops-timestamp: "::request.createdAt"}
             .membership-requests-page__pending-request-introduction
               {{request.introduction}}
             .membership-requests-page__actions
@@ -33,7 +33,7 @@
               {{request.email}}
             .membership-requests-page__previous-request-response
               %span{translate: "membership_requests_page.previous_request_response", translate-value-response: "{{request.formattedResponse()}}", translate-value-responder: "{{request.responder().name}}"}
-              %timeago{timestamp: "request.respondedAt"}
+              %vue-timeago.nowrap{vprops-timestamp: "::request.respondedAt"}
             .membership-requests-page__previous-request-introduction
               {{request.introduction}}
       .membership-requests-page__no-previous-requests{ng-if: "!membershipRequestsPage.group.hasPreviousMembershipRequests()", translate: "membership_requests_page.no_previous_requests"}

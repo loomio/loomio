@@ -17,7 +17,7 @@
           %span{ng-bind-html: "::headline()"}
           %span{aria-hidden: "true"}>·
           %a.thread-item__link.lmo-pointer{href: "{{::link()}}"}
-            %timeago.timeago--inline{timestamp: "event.createdAt"}
+            %vue-timeago.nowrap{vprops-timestamp: "::event.createdAt"}
         %md-button.md-button--tiny{ng-if: "canRemove(event)", ng-click: "remove(event)"}
           %i.mdi.mdi-delete
       %thread_item_directive.thread-item__directive{event: "event"}

@@ -37,6 +37,8 @@ js:
   - angular-sortable-view/src/angular-sortable-view.js
   - whatwg-fetch/fetch.js
   - promise-polyfill/promise.min.js
+  - vue/dist/vue.js
+  - ngVue/build/index.js
 execjs:
   - lodash/index.js
   - emojione/lib/js/emojione.js

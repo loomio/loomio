@@ -161,6 +161,10 @@ angular@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
 
+angular@^1.6.1:
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.7.tgz#0f89837dae1776b01ccb1fa2096db0d9373d9897"
+
 angular_record_store@2.8.3:
   version "2.8.3"
   resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-2.8.3.tgz#e6e6cf36634cc2d68e7dd4af88f849e5d661da58"
@@ -2508,6 +2512,13 @@ ng-file-upload@~3.2.4:
   dependencies:
     grunt-contrib-concat "~0.5.0"
 
+ngVue@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/ngVue/-/ngVue-0.4.2.tgz#6be7da291543480e7b021d0a0b94a56d0fa4217e"
+  dependencies:
+    angular "^1.6.1"
+    vue "^2.1.8"
+
 node-gyp@^3.3.1:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-3.6.2.tgz#9bfbe54562286284838e750eac05295853fa1c60"
@@ -3839,6 +3850,10 @@ vinyl@^2.0.0:
     cloneable-readable "^1.0.0"
     remove-trailing-separator "^1.0.1"
     replace-ext "^1.0.0"
+
+vue@^2.1.8:
+  version "2.5.9"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.9.tgz#b2380cd040915dca69881dafd121d760952e65f7"
 
 webdriver-js-extender@^1.0.0:
   version "1.0.0"

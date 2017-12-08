@@ -14,7 +14,7 @@
       .document-management__caption.md-caption
         %span{translate: "document.management.added_by", translate-value-name: "{{document.authorName()}}"}>
         %span> ·
-        %timeago{timestamp: "document.createdAt"}>
+        %vue-timeago.nowrap{vprops-timestamp: "::document.createdAt"}
     .document-management__column-row{ng-if: "canAdministerGroup()"}
       %md-button.md-accent{ng-click: "edit(document)", translate: "common.action.edit"}
     .document-management__column-row{ng-if: "canAdministerGroup()"}

@@ -59,6 +59,7 @@
     "moment": "latest",
     "moment-timezone": "latest",
     "ng-file-upload": "~3.2.4",
+    "ngVue": "^0.4.2",
     "private_pub": "latest",
     "promise-polyfill": "^6.0.2",
     "svg.js": "latest",

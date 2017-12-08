@@ -2,7 +2,7 @@
   %h3.lmo-card-subheading{translate: "poll_common.outcome"}
   .poll-common-outcome-panel__authored-by
     %span{translate: "poll_common_outcome_panel.authored_by", translate-value-name: "{{poll.outcome().author().name}}"}
-    %timeago{timestamp: "::poll.outcome().createdAt" }>
+    %vue-timeago.nowrap{vprops-timestamp: "::poll.outcome().createdAt"}
   %p.lmo-markdown-wrapper{marked: "poll.outcome().statement", ng-if: "!translation"}
   %translation{translation: "translation", field: "statement", ng-if: "translation"}
   %attachment_collection{model: "poll.outcome()"}
