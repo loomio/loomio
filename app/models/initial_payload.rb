@@ -19,8 +19,8 @@ InitialPayload = Struct.new(:user) do
       theme:               AppConfig.theme,
       features:            AppConfig.features,
       regex: {
-        url: JsRegex.new(AppConfig::URL_REGEX),
-        email: JsRegex.new(AppConfig::EMAIL_REGEX)
+        url:               JsRegex.new(AppConfig::URL_REGEX),
+        email:             JsRegex.new(AppConfig::EMAIL_REGEX)
       },
       inlineTranslation: {
         isAvailable:       TranslationService.app_key.present?,
