@@ -32,11 +32,11 @@ class Document < ActiveRecord::Base
       url:       file.url,
       web_url:   (file.url(:web) if is_an_image?),
       thumb_url: (file.url(:thumb) if is_an_image?)
-    )
+    ) unless manual_url?
   end
-  
+
   def is_an_image?
-    file_file_name.match(AppConfig.image_regex)
+    file_file_name.to_s.match(AppConfig.image_regex)
   end
 
   private
