@@ -2,13 +2,14 @@ class Events::StanceCreated < Event
   include Events::LiveUpdate
   include Events::PollEvent
   include Events::Notify::Author
+  include Events::PollParent
 
   def self.publish!(stance)
     create(kind: "stance_created",
            user: stance.participant,
            eventable: stance,
            discussion: stance.poll.discussion,
-           parent: stance.parent_event,
+           parent: lookup_parent(stance),
            created_at: stance.created_at).tap { |e| EventBus.broadcast('stance_created_event', e) }
   end
 

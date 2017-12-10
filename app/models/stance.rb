@@ -46,10 +46,6 @@ class Stance < ActiveRecord::Base
   delegate :group, to: :poll, allow_nil: true
   alias :author :participant
 
-  def parent_event
-    poll.created_event
-  end
-
   def choice=(choice)
     if choice.kind_of?(Hash)
       self.stance_choices_attributes = poll.poll_options.where(name: choice.keys).map do |option|

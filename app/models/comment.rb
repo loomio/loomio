@@ -49,14 +49,6 @@ class Comment < ActiveRecord::Base
     :new_comment
   end
 
-  def parent_event
-    if parent_id && first_ancestor
-      first_ancestor.created_event
-    else
-      discussion.created_event
-    end
-  end
-
   def first_ancestor
     return nil unless parent
     next_parent = parent
