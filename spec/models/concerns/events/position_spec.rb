@@ -24,14 +24,6 @@ describe "Events::Position" do
     expect(e2.reload.position).to be 2
   end
 
-  it "recounts child_count if parent changes" do
-    e1 = Event.create(kind: "new_comment", parent_id: nil, discussion: discussion, eventable: comment1, discussion_id: discussion.id)
-    e2 = Event.create(kind: "new_comment", parent_id: nil, discussion: discussion, eventable: comment2, discussion_id: discussion.id)
-    expect(e1.reload.position).to be 0
-    e2.update(parent_id: e1.id)
-    expect(e1.reload.child_count).to be 1
-  end
-
   it "removes position if discussion_id is dropped" do
     e1 = Event.create(kind: "new_comment", parent_id: 1, discussion: discussion, eventable: comment1)
     e2 = Event.create(kind: "new_comment", parent_id: 1, discussion: discussion, eventable: comment2)

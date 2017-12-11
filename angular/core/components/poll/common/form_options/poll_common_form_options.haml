@@ -2,11 +2,10 @@
   %label.poll-common-form__options-label.md-caption{ng-if: "!datesAsOptions", translate: "poll_common_form.options"}
   .poll-meeting-form__label-and-timezone{ng-if: "datesAsOptions"}
     %label.nowrap.poll-common-form__options-label.md-caption.lmo-flex__grow{translate: "poll_meeting_form.timeslots"}
-    %time_zone_select.lmo-flex__shrink{zone: "poll.customFields.time_zone"}
   %md-list.md-block.poll-common-form__options
     %validation_errors{subject: "poll", field: "pollOptions"}
     %md-list-item{ng-if: "!poll.pollOptionNames.length"}
-      %p.lmo-hint-text{ng-if: "datesAsOptions", translate: "poll_meeting_form.no_options"}
+      %p.lmo-hint-text{ng-if: "datesAsOptions", translate: "poll_meeting_form.no_options", translate-values: "{zone: currentZone()}"}
       %p.lmo-hint-text{ng-if: "!datesAsOptions", translate: "poll_common_form.no_options"}
     %md-list-item.poll-common-form__list-item{ng-repeat: "name in poll.pollOptionNames"}
       %span.poll-poll-form__option-text{ng-if: "!datesAsOptions"} {{name}}
