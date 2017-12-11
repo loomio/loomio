@@ -25,7 +25,7 @@ class ::Slack::Initiator
 
   def channel_unknown
     I18n.t(:"slack.unknown_channel", integrations: target_groups.map do |group|
-      "#{group.full_name} - ##{group.group_identities.first.slack_channel_name}"
+      "#{group.full_name} - #{group.group_identities.first.slack_channel_name}"
     end.join("\n"))
   end
 
