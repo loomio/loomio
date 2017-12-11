@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService, Abi
   templateUrl: 'generated/components/poll/common/form_options/poll_common_form_options.html'
   controller: ($scope, KeyEventService) ->
     $scope.currentZone = ->
-      TimeService.nameForZone(Session.user().timeZone)
+      Session.user().timeZone
 
     $scope.existingOptions = _.clone $scope.poll.pollOptionNames
 
