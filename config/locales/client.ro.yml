@@ -1,5 +1,40 @@
 ro:
+  reactions:
+    slight_smile: Imi place
+    heart: Apreciaza
+    laughing: Zambet
+    clap: Aplauda
+    hugging: Imbratisare
+    sunglasses: Interesant
+    nerd: Inteligent
+    relieved: Impacat
+    worried: Ingrijorat
+    confused: Confuz
+    neutral_face: Neutru
+    slight_frown: Incruntat
+    disappointed: Dezamagit
+    angry: Suparat
+    weary: Satul
+    cry: Plans
+    scream: Striga
+    sleeping: Plictisit
+    thinking: Gandind
+    fingers_crossed: Degete incrucisate
+    v: Pace
+    ok_hand: Ok
+    wave: Val
+  poll_types:
+    proposal: Propunere
+    count: Verifica
+    poll: Sondaj
+  timezones:
+    local: Ora locala ({{value}})
   common:
+    you: Tu
+    all_day: Toata ziua
+    ok_got_it: Ok, am inteles
+    learn_more: Afla mai multe
+    local_time: Ora locala
     confirm_discard_changes: Renunti la modificari?
     time:
       am: am
@@ -10,6 +45,10 @@ ro:
     notification_volume: 'Volum Notificari'
     group: 'Grup'
     groups: 'Grupuri'
+    decisions: 'Decizii'
+    settings: 'Setari'
+    help: 'Ajutor'
+    anonymous: Anonim
     privacy:
       privacy: 'Confidentialitate'
       public: 'Public'
@@ -27,13 +66,20 @@ ro:
     more_help: 'Ajutor in plus'
     models:
       proposal: 'Propunere'
+    copy: 'Copiaza'
+    copy_text: 'Copiaza text'
+    total: Total
     action:
+      next: 'Urmatorul'
+      close: 'Inchide'
       save: 'Salvare'
       save_changes: 'Salvare modificari'
       update_settings: 'Actualizeaza setarile'
       reply: 'Raspunde'
       edit: 'Editeaza'
+      remove: 'Sterge'
       like: 'Apreciez'
+      back: 'Inapoi'
       unlike: 'Nu apreciez'
       update: 'Actualizeaza'
       cancel: 'Anuleaza'
@@ -42,44 +88,127 @@ ro:
       new_thread: "Discutie noua"
       add_subgroup: 'Adauga sub-grup'
       loading: 'Se incarca'
+      translate: 'Traducere'
+      upload: 'Incarca'
       uploading: 'Se trimite la server'
+      load_more: 'Incarca mai mult'
+      share: Distribuie
+      ok: Ok!
+      retry: Reincearca
+      done: Gata
+      start: Incepe
+      delete: Sterge
+      unsubscribe: Dezabonare
+      subscribe: Subscrie
+      remind: Reamintire
+      resend: Retrimitere
+      send: Trimite
+      resent: Invitatie retrimisa
+    formatting_help:
+      label: 'Formatare'
+  ordinal:
+    _1: 1st
+    _2: 2nd
+    _3: 3rd
+    _4: 4th
+    _5: 5th
+    _6: 6th
+    _7: 7th
+    _8: 8th
+    _9: 9th
+    _10: 10th
   error_page:
     forbidden: 'Nu ai permisiune pentru aceasta actiune.'
     page_not_found: 'Nu am gasit nimic corespunzator. Este posibil sa fie sters sau mutat.'
     internal_server_error: 'Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data.'
+  verify_stances:
+    title: Verifica voturi
+    verify: Verifica
+    remove: Sterge
+    verify_success: Vot verificat
+    remove_success: Vot sters
+  previous_polls_page:
+    heading: Activitati in {{name}}
+    search_activities: Cauta decizii
   volume_levels:
     loud: 'Tare'
     normal: 'Normal'
     quiet: 'Incet'
     mute: 'Dezactivat'
     unmute: 'Activare'
+  change_volume_form:
+    loud_label: "Toate activitatile"
+    normal_label: "Anunturi"
+    quiet_label: "Nici un email"
+    mute_label: "Ascunde notificari"
+    discussion:
+      title: "Setari de email pentru {{title}}"
+      quiet_description: "Nu vei primi emailuri legate de aceasta discutie"
+      messages:
+        quiet: "Nu vei primi emailuri legate de aceasta discutie"
+    membership:
+      title: "Setari de email pentru {{title}}"
+      apply_to_all: "Aplica aceste setari pentru toate grupurile mele"
+    user:
+      title: Setari de email pentru grupurile noi
+      apply_to_all: "Aplica aceste setari pentru toate grupurile mele"
+  mute_explanation_modal:
+    aria_label: Ascunde notificari
+    mute_thread: Ascunde notificari
   inbox:
     clear: 'Curata'
     latest: 'Cel mai nou'
     unread: 'Necitit'
     closing_in: 'Inchidere'
+  sign_up_form:
+    password_label: 'Parola:'
+    password_confirmation_label: 'Introduceti parola inca o data:'
+  signed_out_modal:
+    aria_label: 'Sesiune terminata'
+    title: "Sesiunea ta s-a terminat"
+    ok: "Ok"
+  comment_reply_form:
+    aria_label: 'Adauga raspuns'
   comment_form:
     aria_label: 'Adauga un comentariu'
     attachments:
+      add_attachment: 'Ataseaza fisier'
       remove_attachment: 'Elimina fisierul'
     messages:
       created: 'Comentariu adaugat.'
       replied: '{{name}} a fost notificat despre replica'
       updated: 'Comentariu actualizat.'
       destroyed: 'Comentariu sters.'
+    say_something: Spune ceva..
     edit_comment: 'Editeaza comentariul'
     delete_comment: 'Sterge comentariu'
     cancel_reply: 'Anuleaza replica'
     confirm_delete_message: 'Esti sigur ca vrei sa stergi acest comentariu?'
+    confirm_delete: 'Sterge comentariu'
+    in_reply_to: "Raspunde lui {{name}}"
+    write_a_comment: "Scrie un comentariu"
     submit_button:
       label: 'Postare'
     private_privacy_notice: 'Comentariul tau va fi vizibile doar membrilor grupului {{groupName}}.'
     public_privacy_notice: 'Comentariul tau va fi vizibil tuturor pe web.'
+    sign_in: "Intra in cont pentru a te alatura conversatiei"
+  sidebar:
+    recent_threads: 'Conversatii recente'
+    unread_threads: 'Conversatii necitite ({{count}})'
+    start_group: 'Grup nou'
+    explore: 'Grupuri publice'
+    start_thread: Conversatie noua
+    start_decision: Decizie noua
+    aria_labels:
+      groups_list: 'Grupuri'
+      user_list: 'Actiuni utilizator'
   navbar:
     recent_title: 'Mergi la tablou de bord'
     unread_title: 'Vezi activitatea necitita'
+    start_thread: 'Conversatie noua'
     notifications: 'Panoul notificarilor'
     search:
+      results_aria_label: 'Rezultate cautare'
       no_results: 'Nu s-a gasit nici o discutie'
       close: 'Inchide cautarea'
       placeholder: 'Cauta'
@@ -87,12 +216,30 @@ ro:
       discussions: 'Discutii'
       proposals: 'Propuneri'
       comments: 'Comentarii'
+    sign_in: 'Intrare in cont'
+    logo_title: 'Pagina de start'
+  user_dropdown:
+    edit_profile: 'Editare profil'
+    email_settings: 'Setari email'
+    help: 'Ajutor'
+    contact_site_name: 'Contacteaza {{site_name}}'
+    sign_out: 'Iesire din cont'
   start_menu:
+    label: 'Actiuni utilizator'
+    title: 'Actiune'
+    start_group: 'Incepere grup'
+    start_subgroup: 'Incepere sub-grup'
     start_thread: 'Creaza o discutie'
+    start_poll: 'Creare sondaj'
+    invite_people: 'Invitare membri'
   notifications:
     header: "Notificari"
+    no_notifications: "Nu ai nici o notificare"
   position_buttons_panel:
     heading: Sa ai ceva de spus
+  extend_proposal_form:
+    aria_label: Schimba data inchidere
+    title: 'Schimba data inchidere'
   discussion_record:
     created: 'Discutia {{title}} a fost creata cu succes in {{groupName}}'
   discussion_form:
@@ -108,12 +255,53 @@ ro:
     privacy_public: 'Oricine poate vedea o discutie. Doar membrii pot participa.'
     privacy_private: 'Discutia va fi vizibila doar membrilor grupului {{group}}.'
     privacy_organisation: 'Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.'
+    make_announcement: Anunt
+    notified_count: '{{count}} membri vor fi notificati'
+  action_dock:
+    react: Adauga reactie
+    add_resource: Adauga atasament
+    add_comment: Comenteaza
+    edit_thread: Editare context
+    translate_thread: Traduce context
+    edit_poll: Editare sondaj
+    translate_poll: Traducere sondaj
+    edit_stance: Modifica votul
+    translate_stance: Traducere vot
+    edit_comment: Editare comentariu
+    delete_comment: Sterge comentariu
+    reply_to_comment: Raspunde
+    translate_comment: Traducere comentariu
+    edit_outcome: Editare rezultat
+    translate_outcome: Traducere rezultat
+    show_history: Arata istorie editari
+    pin_thread: Marcheaza conversatie
+    unpin_thread: De-marcheaza conversatie
+  cover_photo_form:
+    aria_label: 'Modificare poza fundal'
+    heading: 'Poza noua de fundal'
+    upload_link: 'Uploadeaza o noua poza de fundal'
+  logo_photo_form:
+    heading: 'Logo de grup nou'
+    upload_link: 'Incarcare nou logo de grup'
   join_group_button:
     join_group: Alatură-te grupului
   membership_request_form:
     heading: Cere sa fi inclus in grup
     name_label: Nume
     email_label: Email
+    introduction_label: De ce doresti sa te alaturi?
+    introduction_over_limit: Raspuns prea lung
+  revision_history_modal:
+    aria_label: Istoric revizii
+    started_by: 'Inceput de <strong>{{name}}</strong>'
+    edited_by: 'Editat de <strong>{{name}}</strong>'
+    posted: Adaugat
+  reactions_input:
+    add_your_reaction: Adauga reactie
+  reactions_display:
+    more_reactions: "{{count}} mai multe"
+    you: "Tu"
+    you_and_name: "Tu si {{name}}"
   group_page:
     thread_list:
       empty:
@@ -125,11 +313,18 @@ ro:
         request_membership: "Pentru a vedea discutiile private, cere sa intri in grup."
         membership_is_invitation_only: "Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui membru."
         membership_is_invitation_by_admin_only: "Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui coordonator. "
+    messages:
+      privacy:
+        public: 'Acest grup este acum vizibil public'
+      leave_group_success: 'Ai parasit acest grup'
+    new_cover_photo: 'Uploadeaza o noua poza de fundal'
+    new_group_logo: 'Incarcare nou logo de grup'
     discussions: 'Discutii'
     discussions_placeholder: 'O discutie este locul unde oricine poate deschide un subiect care să duca la luarea unei decizii..'
     options_label: 'Optiuni'
     options:
       label: 'Optiuni'
+      email_settings: 'Setari email'
     volume:
       loud: Trimite email ori de cate ori exista activitate.
       normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'
@@ -153,6 +348,8 @@ ro:
   documents_page:
     confirm_remove_title: Elimina fisierul
   document:
+    modal:
+      title: Adauga atasament
     form:
       title_label: Nume
   membership_requests_page:
@@ -160,11 +357,18 @@ ro:
     ignore: 'Ignora '
   group_previous_proposals_card:
     heading: Propuneri anterioare
+  invitation_form:
+    invite_people: 'Invitare membri'
+    copy_link: 'Copiaza'
+    send: 'Trimite'
+    done: 'Gata'
   memberships_page:
     members: 'Membri'
     name_label: 'Nume'
     coordinator_label: 'Coordonator'
     remove_member_label: 'Elimina'
+  remove_membership_form:
+    submit: 'Sterge'
   profile_page:
     profile: 'Profil'
     picture_label: 'Fotografie'
@@ -177,6 +381,7 @@ ro:
   dashboard_page:
     aria_label: 'Tablou de bord'
     no_groups:
+      start: Incepe
       or: sau
     no_threads:
       show_all: Nu ai nici o discutie recenta.
@@ -184,6 +389,7 @@ ro:
     view_recent: Vezi toate discuțiile recente?
     load_more: Incarca mai multe discutii
     mark_as_read: Marcheaza ca citit
+    dismiss: Ignora
     filtering:
       filter_threads: Filtreaza discutiile
       filter_threads_aria_label: Filtreaza discutiile
@@ -205,15 +411,25 @@ ro:
     no_threads: Woohoo! Ai citit toate discutiile din inbox.
     unread_threads: Discutii necitite
     no_groups:
+      start: Incepe
       or: sau
   discussion:
-    proposals: 'Propuneri'
-    previous_proposals: 'Propuneri anterioare'
+    started_by: 'Inceput de <strong>{{name}}</strong>'
+  activity_card:
+    unread: Necitit
+    latest: Cel mai nou
   thread_group:
     aria_label: 'Numele grupului'
   thread_context:
     aria_label: 'Contextul discutiei'
     thread_options: 'Optiunile discutiei'
+    email_settings: 'Setari email'
+    mute_thread: 'Ascunde notificari'
+    delete_thread: 'Sterge'
+    add_comment: 'Comenteaza'
+  pin_thread_modal:
+    title: Marcheaza conversatie
+    pin_thread: Marcheaza conversatie
   delete_thread_form:
     title: Sterge discutia
     body: Esti sigur ca doresti sa stergi aceasta discutie?
@@ -242,3 +458,31 @@ ro:
     invitation: 'Sfaturi pentru a scrie o invitatie'
     proposal: 'Sfaturi pentru a scrie o propunere clara'
     vote: 'Poti sa-ti modifici pozitia oricand doresti'
+  registered_apps_page:
+    name: Nume
+  registered_app_form:
+    name_label: Nume
+  decision_tools_card:
+    proposal_title: Propunere
+    count_title: Verifica
+    poll_title: Sondaj
+  poll_common:
+    change_your_stance: Modifica votul
+    start_poll: Creeaza o decizie
+  current_polls_card:
+    start_poll: Decizie noua
+  poll_common_notify_group:
+    notify_group: Anunt
+  poll_common_form:
+    start: Incepe
+  poll_poll_form:
+    edit_header: Editare sondaj
+  poll_meeting_chart_panel:
+    total: Total
+  poll_common_subscribe_form:
+    subscribe: Subscrie
+  polls_page:
+    heading: Decizii
+    start_new_poll: Decizie noua
+  auth_form:
+    name: Nume

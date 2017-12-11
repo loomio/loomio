@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123224852) do
+ActiveRecord::Schema.define(version: 20171205204615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -273,7 +273,10 @@ ActiveRecord::Schema.define(version: 20171123224852) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "icon"
-    t.integer  "author_id",  null: false
+    t.integer  "author_id",      null: false
+    t.string   "web_url"
+    t.string   "thumb_url"
+    t.string   "file_file_name"
   end
 
   create_table "drafts", force: :cascade do |t|
@@ -439,6 +442,7 @@ ActiveRecord::Schema.define(version: 20171123224852) do
   add_index "invitations", ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)", using: :btree
   add_index "invitations", ["cancelled_at"], name: "index_invitations_on_cancelled_at", using: :btree
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
+  add_index "invitations", ["group_id"], name: "index_invitations_on_group_id", using: :btree
   add_index "invitations", ["recipient_email"], name: "index_invitations_on_recipient_email", using: :btree
   add_index "invitations", ["single_use"], name: "index_invitations_on_single_use", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree

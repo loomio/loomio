@@ -12,14 +12,14 @@ InitialPayload = Struct.new(:user) do
       loadVideos:          ENV['LOOMIO_LOAD_VIDEOS'],
       currentUserLocale:   user.locale,
       permittedParams:     PermittedParamsSerializer.new({}),
-      locales:             angular_locales,
+      locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
       recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
       baseUrl:             root_url,
       plugins:             Plugins::Repository.to_config,
       theme:               AppConfig.theme,
       features:            AppConfig.features,
       inlineTranslation: {
-        isAvailable:       TranslationService.app_key.present?,
+        isAvailable:       TranslationService.supported_languages.any?,
         supportedLangs:    TranslationService.supported_languages
       },
       pageSize: {
@@ -46,6 +46,7 @@ InitialPayload = Struct.new(:user) do
       },
       durations:         AppConfig.durations.fetch('durations', []),
       pollTemplates:     AppConfig.poll_templates,
+      pollTypes:         AppConfig.poll_types,
       pollColors:        AppConfig.colors,
       timeZones:         AppConfig.timezones,
       identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|

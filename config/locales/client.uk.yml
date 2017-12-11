@@ -222,7 +222,6 @@ uk:
     cancel_reply: 'Відмінити відповідь'
     confirm_delete_message: 'Ви впевнені, що хочете видалити цей коментар?'
     confirm_delete: 'Видалити коментар'
-    in_reply_to: "У відповідь на {{name}}:"
     submit_button:
       label: 'Опублікувати'
     private_privacy_notice: 'Ваш коментар зможуть бачити тільки учасники {{groupName}}.'
@@ -812,22 +811,23 @@ uk:
       start: Почати
       or: або
       join_group: <a href="/explore">долучіться</a> до групи аби бачити теми.
-  groups_page:
-    page_header: Ваші групи
   discussion:
     activity: 'Оновлення'
     activity_placeholder: 'Поки що жодних оновлень!'
-    proposals: 'Пропозиції'
-    previous_proposals: 'Попередні Пропозиції'
     load_previous: 'Завантажити попередні оновлення'
     started_by: 'Створено <strong>{{name}}</strong>'
-    edited: 'Відредаговано'
     pin:
       pinned: 'Тему закріплено'
       unpinned: 'Тему відкріплено'
     volume:
       mute_message: 'Тему вимкнуто.'
       unmute_message: 'Тему увімкнено'
+  activity_card:
+    unread: Непрочитані
+    latest: Останній
+    attachment_display:
+      aria_label: 'Прикріпити файл:'
+      image_alt: 'Прикріплене зображення'
   thread_group:
     aria_label: 'Назва групи'
   thread_context:
@@ -864,11 +864,6 @@ uk:
     confirm_change_to_private_thread: 'Група {{groupName}} є відкритою. Якщо ви продовжите, ця тема стане загальнодоступною.'
     messages:
       success: Тема була переміщена до {{name}}
-  activity_card:
-    new_activity: Нові оновлення
-    attachment_display:
-      aria_label: 'Прикріпити файл:'
-      image_alt: 'Прикріплене зображення'
   print_modal:
     load_discussion: Завантаження всіх обговорень...
   delete_comment_dialog:

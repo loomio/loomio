@@ -1,5 +1,6 @@
-.thread-item{md-colors: "mdColors()", ng-class: "{'thread-item--indent': indent(), 'thread-item--unread': isUnread()}", in-view: "$inview&&event.markAsRead()", in-view-options: "{throttle: 100}"}
+.thread-item{md-colors: "mdColors()", ng-class: "{'thread-item--indent': indent(), 'thread-item--unread': isUnread()}", in-view: "$inview&&event.markAsRead()", in-view-options: "{throttle: 200}"}
   .lmo-flex.lmo-relative.lmo-action-dock-wrapper{layout: "row", id: "sequence-{{event.sequenceId}}"}
+    .lmo-disabled-form{ng-show: "isDisabled"}
     .thread-item__avatar.lmo-margin-right
       %user_avatar{user: "event.actor()", size: "small", ng-if: "event.actor()"}
     .thread-item__body.lmo-flex.lmo-flex__horizontal-center{layout: "column"}
@@ -18,6 +19,6 @@
           %span{aria-hidden: "true"}>·
           %a.thread-item__link.lmo-pointer{href: "{{::link()}}"}
             %timeago.timeago--inline{timestamp: "event.createdAt"}
-        %md-button.md-button--tiny{ng-if: "canRemove(event)", ng-click: "remove(event)"}
+        %md-button.md-button--tiny{ng-if: "canRemoveEvent()", ng-click: "removeEvent()"}
           %i.mdi.mdi-delete
       %thread_item_directive.thread-item__directive{event: "event"}

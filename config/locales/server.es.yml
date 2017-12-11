@@ -151,6 +151,7 @@ es:
   invitation_form:
     error:
       too_many_pending: "Tienes más del máximo de %{count} de invitaciones pendientes para este grupo"
+      too_many_cancelled: "Tienes más del máximo de %{count} de invitaciones canceladas para este grupo"
       all_email_addresses_belong_to_members: "No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo."
   password_reset:
     change_your_password: Cambia tu contraseña

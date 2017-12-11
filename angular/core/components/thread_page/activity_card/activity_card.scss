@@ -13,6 +13,9 @@
   align-items: baseline;
 }
 
+.activity-card__load-more-sensor {
+  height: 1px;
+}
 .activity-card__load-more{
   @include fontSmall;
   display: flex;

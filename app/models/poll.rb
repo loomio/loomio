@@ -1,4 +1,5 @@
 class Poll < ActiveRecord::Base
+  include CustomCounterCache::Model
   extend  HasCustomFields
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
@@ -10,6 +11,7 @@ class Poll < ActiveRecord::Base
   include UsesOrganisationScope
   include HasMailer
   include Reactable
+  include HasCreatedEvent
 
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
 
@@ -115,10 +117,6 @@ class Poll < ActiveRecord::Base
 
   def parent_event
     discussion&.created_event
-  end
-
-  def created_event
-    events.find_by(kind: :poll_created)
   end
 
   # creates a hash which has a PollOption as a key, and a list of stance
@@ -271,7 +269,7 @@ class Poll < ActiveRecord::Base
   end
 
   def prevent_empty_options
-    if self.poll_options.empty?
+    if (self.poll_options.map(&:name) - Array(@poll_option_removed_names)).empty?
       self.errors.add(:poll_options, I18n.t(:"poll.error.must_have_options"))
     end
   end

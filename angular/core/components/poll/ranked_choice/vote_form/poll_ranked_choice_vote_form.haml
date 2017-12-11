@@ -9,7 +9,7 @@
         %span{ng-if: "$index < numChoices"} {{$index+1}}
 
     %md-list.lmo-flex.lmo-flex__grow{layout: "column", sv-part: "pollOptions"}
-      %md-list-item.poll-common-vote-form__option.lmo-flex.lmo-pointer.lmo-flex__space-between{sv-element: "true", layout: "row", ng-repeat: "option in pollOptions track by option.id"}
+      %md-list-item.poll-common-vote-form__option.lmo-flex.lmo-pointer.lmo-flex__space-between{ng-click: "setSelected(option)", sv-element: "true", layout: "row", ng-class: "{'poll-common-vote-form__option--selected': isSelected(option)}", ng-repeat: "option in pollOptions track by option.id"}
         .poll-common-vote-form__option-name.poll-common-vote-form__border-chip.lmo-flex__grow{ng-style: "{'border-color': option.color}"}
           {{option.name}}
         %i.mdi.mdi-drag.poll-ranked-choice-vote-form__drag-handle

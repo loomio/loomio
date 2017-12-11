@@ -78,5 +78,6 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
 
     $scope.setDefaults()
     $scope.init()
+    $scope.$on 'initActivityCard', -> $scope.init()
 
     return

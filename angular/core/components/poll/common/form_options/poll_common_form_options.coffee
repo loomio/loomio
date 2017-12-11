@@ -1,7 +1,10 @@
-angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
+angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService, AbilityService, Session, TimeService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/form_options/poll_common_form_options.html'
   controller: ($scope, KeyEventService) ->
+    $scope.currentZone = ->
+      Session.user().timeZone
+
     $scope.existingOptions = _.clone $scope.poll.pollOptionNames
 
     $scope.addOption = ->
@@ -16,12 +19,11 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
       $scope.addOption()
 
     $scope.removeOption = (name) ->
-      return unless !$scope.isExisting(name)
       _.pull($scope.poll.pollOptionNames, name)
       $scope.$emit 'pollOptionsChanged'
 
-    $scope.isExisting = (name) ->
-      _.contains $scope.existingOptions, name
+    $scope.canRemoveOption = (name) ->
+      _.contains($scope.existingOptions, name) || AbilityService.canRemovePollOptions($scope.poll)
 
     KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.addOption, (active) ->
       active.classList.contains('poll-poll-form__add-option-input')

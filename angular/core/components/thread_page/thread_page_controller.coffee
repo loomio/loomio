@@ -12,9 +12,11 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
         discussion_id: $routeParams.key
         comment_id: requestedCommentId()
         per: 1
-    .then ->
-      event = Records.events.find(kind: "new_comment", eventableId: requestedCommentId())[0]
-      $window.location.href = "/d/#{$routeParams.key}/?from=#{event.sequenceId}";
+    .then =>
+      comment = Records.comments.find(requestedCommentId())
+      @discussion = comment.discussion()
+      @discussion.requestedSequenceId = comment.createdEvent().sequenceId
+      $scope.$broadcast 'initActivityCard'
 
   chompRequestedSequenceId = ->
     requestedSequenceId = parseInt($location.search().from)
@@ -27,6 +29,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
+      @discussion.markAsSeen()
       @discussion.requestedSequenceId = chompRequestedSequenceId()
 
       @pageWindow = PaginationService.windowFor

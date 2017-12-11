@@ -3,6 +3,7 @@ class Comment < ActiveRecord::Base
   include Translatable
   include Reactable
   include HasMentions
+  include HasCreatedEvent
 
   has_paper_trail only: [:body]
   is_translatable on: :body
@@ -45,8 +46,12 @@ class Comment < ActiveRecord::Base
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
+  def created_event_kind
+    :new_comment
+  end
+
   def parent_event
-    if parent_id # comment is a reply
+    if parent_id && first_ancestor
       first_ancestor.created_event
     else
       discussion.created_event
@@ -62,8 +67,8 @@ class Comment < ActiveRecord::Base
     next_parent
   end
 
-  def created_event
-    events.find_by(kind: :new_comment)
+  def created_event_kind
+    :new_comment
   end
 
   def is_most_recent?

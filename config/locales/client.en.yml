@@ -1419,7 +1419,7 @@ en:
     meeting_created: Time poll created
     meeting_updated: Time poll updated
     timeslots: Time slots
-    no_options: "You haven't added any time slots yet."
+    no_options: Enter times in your current time zone ({{zone}}). Participants see times translated to their local time zone.
     meeting_duration: Meeting duration
     add_option_placeholder: Enter a new time
 
@@ -1528,7 +1528,7 @@ en:
     poll_edited:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the {{polltype}}: <strong>{{title}}</strong>"
     poll_expired:                  "{{polltype}} closed: <strong>{{title}}</strong>"
     stance_created:                "<strong><a href='u/{{username}}'>{{author}}</a></strong> voted on: <strong>{{title}}</strong>"
-
+    event_removed:                 "Removed from thread"
 
   poll_admin_page:
     title: Admin - {{title}}

@@ -2,6 +2,7 @@ class Stance < ActiveRecord::Base
   include CustomCounterCache::Model
   include HasMentions
   include Reactable
+  include HasCreatedEvent
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
   include Translatable
@@ -45,10 +46,6 @@ class Stance < ActiveRecord::Base
   delegate :group, to: :poll, allow_nil: true
   delegate :mailer, to: :poll, allow_nil: true
   alias :author :participant
-
-  def created_event
-    events.where(kind: "stance_created").first
-  end
 
   def parent_event
     poll.created_event

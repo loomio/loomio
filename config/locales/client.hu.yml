@@ -219,9 +219,10 @@ hu:
     no_groups:
       or: vagy
   discussion:
-    proposals: 'Javaslatok'
-    previous_proposals: 'Előző javaslatok'
     started_by: '<strong>{{name}}</strong> indította'
+  activity_card:
+    unread: Olvasatlan
+    latest: Legutóbbi
   thread_group:
     aria_label: 'Csoport neve'
   delete_comment_dialog:

@@ -97,6 +97,11 @@ describe 'Discussion Page', ->
       page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'
       page.expectText '.group-theme__name--compact','Point Break'
 
+  describe 'mark as seen', ->
+    it 'marks a discussion as seen', ->
+      page.loadPath 'setup_discussion_for_jennifer'
+      page.expectText '.md-sidenav-left', 'Unread threads (0)'
+
   describe 'delete thread', ->
     it 'lets coordinators and thread authors delete threads', ->
       page.loadPath 'setup_discussion'

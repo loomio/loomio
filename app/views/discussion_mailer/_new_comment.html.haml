@@ -5,10 +5,7 @@
     %td.icon
       = link_to user_url(user) do
         %div{class: "medium-user-avatar #{user.avatar_kind}-user-avatar avatar-canvas"}
-          - if user.avatar_kind == 'initials'
-            = user.avatar_initials
-          - else
-            = image_tag user.avatar_url(:medium), alt: "#{user.name}"
+          = render "avatar", user: user
     %td.content
       %b= comment.author.name
       %br

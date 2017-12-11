@@ -21,15 +21,74 @@ it:
   stance:
     error:
       too_short: Fai una selezione
+  user:
+    error:
+      username_must_be_alphanumeric: Il Nome utente deve contenere solo lettere in minuscolo e numeri.
+  invitation:
+    invitation_cancelled: 'Questo invito è stato revocato dal coordinatore del gruppo. Chiedi un altro invito al tuo gruppo. '
+    invitation_already_used: L'invito è già stato usato. Iscriviti a Loomio per andare al tuo gruppo.
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
+  validate:
+    motion:
+      must_close_in_future: La proposta sarà presto chiusa.
+      one_at_a_time: C'è un altra proposta attiva.
+  subscriptions:
+    gift_plan_selected_for_group_html: |
+      <h1>Azione eseguita con successo.</h1>
+      <p> Hai selezionato il piano Free per il tuo gruppo <a href="/g/%{group_key}">%{group}</a></p>
+  user_mailer:
+    accounts_merged:
+      subject: "Gli accounts del tuo sito %{site_name} sono stati fusi."
+      body_html: |
+        Ciao, %{name}
+        I tuoi due accounts su Loomio sono stati fusi in un solo account.
+        Per accedere a Loomio da ora, usa l'indirizzo email <strong>%{email}</strong> quando ti autentichi.
   email:
+    login:
+      subject: Autenticati al sito %{site_name}
+      intro: Ciao %{name}, qui c'è il link per autenticarti all'account del sito %{site_name}.
+      login: Autenticato come %{name}
+    contact_request:
+      subject: "%{name}vorrebbe connettersi con te su%{site_name}!"
+      intro: "%{name} (%{email}) ti ha inviato una richiesta di connessione."
+      footer: "Puoi rispondere a %{name}direttamente, rispondendo a questa emai."
+    reset_password:
+      link_text: Cambia password
+    start_decision:
+      subject: Inizia una decisione su Loomio
+      intro: Ciao, <strong>%{name}</strong>!
+      action: Che cosa vuoi fare?
+      proposal: Solleva una proposta
+      count: Inizia una verifica
+      poll: Inizia un sondaggio
+      dot_vote: Inizia un voto a punti
+      meeting: Inizia un sondaggio per evento
+      ranked_choice: Inizia una scelta di preferenze
     custom: "%{text}"
     group_email:
       intro: "%{who} ha fatto un annuncio a %{group}:"
     by_who: da %{person}
     reply_to_this_discussion: Rispondi a questa discussione
+    value_proposition: "%{site_name}è un luogo  in cui i gruppi possono prendere decisioni insieme"
+    view_group: Vedi gruppo
+    to_join_group:
+      subject: "%{member}ti ha invitato ad unirti al gruppo %{group_name}sul sito %{site_name}"
+      invitation_text: "%{member} ti ha invito ad unirti al loro gruppo %{group_name}."
+      invitation_text_html: "ti ha invitato ad unirti al loro gruppo"
+      link_help: "Clicca sul link qui sotto per accettare l'invito:"
+      accept_invitation: "Accetta l'invito"
     unsubscribe: 'Disiscriviti o cambia le preferenze email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
     missed_yesterday:
+      subject: Ieri su%{site_name}
+      do_not_reply: Non rispondere a questa email
       headlines: I Titoli
       mark_as_read: Contrassegnato come letto
       thanks_for_reading: Grazie per aver letto, buona giornata!
@@ -39,6 +98,22 @@ it:
     membership_request:
       subject: "%{who} ha richiesto di entrare in %{which_group}"
       view_group: Puoi approvare o rifiutare la richiesta qui
+  thread_mailer:
+    new_discussion:
+      subject: "[%{group}]%{discussion}"
+      subject_html: "<strong>%{actor}</strong> ha iniziato una discussione: %{discussion}"
+    new_comment:
+      subject: "[%{group}]%{discussion}"
+      subject_html: "<strong>%{actor}</strong> ha commentato in: %{discussion}"
+    comment_replied_to:
+      subject: '%{actor} ti ha risposto in: %{discussion}'
+      subject_html: '<strong>%{actor}</strong>  ti hai risposto in: %{discussion}'
+    user_mentioned:
+      subject: '%{actor} ti ha menzionato in: %{discussion}'
+      subject_html: "<strong>%{actor}</strong> ti ha menzionato in %{discussion}"
+    reply_or_view_online_html: Rispondi a questa email direttamente o <a href='%{url}'> leggila su %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'> Escludi le email di notifica</a> per questa discussione."
+    change_email_preferences_html: "Cambia le tue<a href='%{email_preferences_url}'>preferenze email</a>."
   footer:
     about: About
     blog: Blog
@@ -50,9 +125,47 @@ it:
     terms: Termini
     independent_install_html: '%{hostname} ha una copia indipendente di Loomio: <a href="http://github.com/loomio/loomio"> scopri di più</a>.'
   password_reset:
+    change_your_password: Cambia password
+    change_my_password: Cambia password
+    confirm_new_password: Conferma la password
+    new_password: Nuova password
     length_restriction: Le password devono essere lunghe almeno 8 caratteri.
     forbidden_passwords: Le password banali come "password" sono vietate per tenere al sicuro il vostro account.
+  introduction_thread:
+    title: Benvenuto/a! Presentati
+    description: |
+      Questo è un messaggio automatico di Loomio.
+
+      Prenditi un momento per far conoscere al gruppo qualcosa di te. Pubblica un commento qui sotto.
+      Qual'è il tuo approccio per partecipare a questo gruppo? Illustra agli altri partecipanti chi sei e qual'è la tua storia.
+  how_it_works_thread:
+    title: Come usare Loomio
+    description: |
+      Questo è un messaggio automatico di Loomio
+
+      Benvenuti/e su Loomio, un posto online per prendere decisioni insieme.
+
+      Questo è un esempio di **discussione**.  Puoi aggiungere commenti qui sotto. Una discussione è una conversazione su un dato argomento. Questa specifica discussione è su come funziona Loomio, quindi puoi rispondere inserendo domande qui sotto.
+
+      Stai leggendo il **contesto** della discussione, una parte in cui viene esplicitato il tema della discussione.  Puoi aggiornare il contesto successivamente, con il progredire della discussione.
+
+      Per iniziare ad usare Loomio:
+      1. Carica una [profile picture](/profile)
+      2. Presentati nel  [Welcome thread](%{thread_url})
+      3. Scrivi in discussioni esistenti, o creane una nuova
+
+      Suggerimenti per scrivere su Loomio:
+      * Per notificare una specifica persona, digita il simbolo @ seguito dal suo nome.
+      * Cliccca sull'icona della graffetta per aggiungere allegati.
+
+      Se hai domande, guarda il [Loomio help manual](http://help.loomio.org).
+  first_proposal:
+    name: Proposta dimostrativa
   poll_mailer:
     common:
       unsubscribe: Discriviti
       results: Risultati
+      responses: Risposte
+      create_outcome: Condividi risultati
+      more_undecided: "%{count}ancora.."
+      vote_now: Vota ora

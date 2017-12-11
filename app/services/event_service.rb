@@ -4,6 +4,7 @@ class EventService
     discussion = event.discussion
     event.update(discussion_id: nil)
     discussion.thread_item_destroyed!
+    EventBus.broadcast('event_remove_from_thread', event)
     event
   end
 

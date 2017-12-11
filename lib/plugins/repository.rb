@@ -5,10 +5,13 @@ module Plugins
       repository[plugin.name] = plugin
     end
 
-    def self.install_plugins!
+    def self.install_plugins!(plugin_set = '*')
       ::Module.prepend Plugins::ModuleConstMissing
       return unless Dir.exists?('plugins')
-      Dir.chdir('plugins') { Dir['*/plugin.rb'].each { |file| load file } }
+      Dir["plugins/#{plugin_set}/*/plugin.rb"].each do |file|
+        Dir.chdir(File.dirname(file)) { load File.basename(file) }
+      end
+
       repository.values.each do |plugin|
         next unless plugin.enabled
 
@@ -55,9 +58,8 @@ module Plugins
 
     def self.save_static_asset(asset)
       assets = Rails.application.config.assets
-      path   = Rails.root.join('plugins', asset.path).to_s
       assets.precompile << asset.filename if asset.standalone && !assets.precompile.include?(asset.filename)
-      assets.paths      << path           unless assets.paths.include?(path)
+      assets.paths      << asset.path     unless assets.paths.include?(asset.path)
     end
     private_class_method :save_static_asset
 
@@ -73,7 +75,7 @@ module Plugins
     private_class_method :active_plugins
 
     def self.plugin_yaml
-      @@plugin_yaml ||= { 'path' => '../plugins' }
+      @@plugin_yaml ||= { 'path' => '..' }
     end
     private_class_method :plugin_yaml
 

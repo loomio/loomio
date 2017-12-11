@@ -443,18 +443,19 @@ ga_IE:
     no_groups:
       start: 'Tosaigh '
       or: nó
-  groups_page:
-    page_header: Do bhaiclí
   discussion:
     activity: 'Gníomhaíocht'
     activity_placeholder: 'Níl aon ghníomhaíocht ann go fóill!'
-    proposals: 'Tograí'
-    previous_proposals: 'Tograí Roimhe Seo'
     load_previous: 'Luchtaigh gníomhaíocht níos luaithe ná seo'
     started_by: 'Tosaithe ag <strong>{{name}}</strong> '
-    edited: 'Curtha in eagar'
     volume:
       mute_message: 'Balbhaíodh an snáithe.'
+  activity_card:
+    unread: Neamhléite
+    latest: Is déanaí
+    attachment_display:
+      aria_label: 'Tá comhad ceangailte:'
+      image_alt: 'An íomhá cheangailte'
   thread_group:
     aria_label: 'Ainm na baicle'
   thread_context:
@@ -473,11 +474,6 @@ ga_IE:
   move_thread_form:
     title: Bog an snáithe
     confirm: Bog an snáithe
-  activity_card:
-    new_activity: Gníomhaíocht Nua
-    attachment_display:
-      aria_label: 'Tá comhad ceangailte:'
-      image_alt: 'An íomhá cheangailte'
   delete_comment_dialog:
     title: 'Scrios an trácht'
     question: 'An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?'

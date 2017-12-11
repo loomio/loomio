@@ -41,4 +41,3 @@ angular.module('loomioApp').directive 'attachmentForm', (Records) ->
 
     $scope.$on 'attachmentPasted', (event, file) ->
       $scope.files = [file]
-      $scope.upload()

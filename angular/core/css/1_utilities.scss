@@ -130,6 +130,10 @@ textarea .lmo-textarea {
   }
 }
 
+.lmo-font--small {
+  @include fontSmall;
+}
+
 .lmo-user-mention {
   color: $link-color;
 }
@@ -172,6 +176,10 @@ textarea .lmo-textarea {
 
 .lmo-modal__narrow {
   max-width: $tiny-max-px;
+}
+
+.lmo-grey-on-white {
+  color: $grey-on-white;
 }
 
 img.emojione {
