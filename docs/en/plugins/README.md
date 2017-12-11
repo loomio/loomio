@@ -139,7 +139,7 @@ end
 
 ```
 # plugins/loomio_tags/models/tag.rb
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   belongs_to :group, dependent: :destroy
   has_many :discussion_tags, dependent: :destroy
   has_many :discussions, through: :discussion_tags
@@ -151,7 +151,7 @@ end
 ```
 ```
 # plugins/loomio_tags/models/discussion_tag.rb
-class DiscussionTag < ActiveRecord::Base
+class DiscussionTag < ApplicationRecord
   belongs_to :discussion
   belongs_to :tag
 

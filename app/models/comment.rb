@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   include CustomCounterCache::Model
   include Translatable
   include Reactable

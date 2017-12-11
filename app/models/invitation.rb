@@ -1,4 +1,4 @@
-class Invitation < ActiveRecord::Base
+class Invitation < ApplicationRecord
   include CustomCounterCache::Model
   include Null::User
 

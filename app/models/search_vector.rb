@@ -1,4 +1,4 @@
-class SearchVector < ActiveRecord::Base
+class SearchVector < ApplicationRecord
 
   WEIGHT_VALUES = [
     ENV.fetch('SEARCH_WEIGHT_A', 1.0),

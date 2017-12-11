@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include MessageChannel

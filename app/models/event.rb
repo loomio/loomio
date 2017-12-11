@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   include CustomCounterCache::Model
   include HasTimeframe
   include Events::Position

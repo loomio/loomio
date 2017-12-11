@@ -1,4 +1,4 @@
-class Stance < ActiveRecord::Base
+class Stance < ApplicationRecord
   include CustomCounterCache::Model
   include HasMentions
   include Reactable

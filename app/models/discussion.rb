@@ -1,4 +1,4 @@
-class Discussion < ActiveRecord::Base
+class Discussion < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include Translatable

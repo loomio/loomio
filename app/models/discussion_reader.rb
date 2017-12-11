@@ -1,4 +1,4 @@
-class DiscussionReader < ActiveRecord::Base
+class DiscussionReader < ApplicationRecord
   include CustomCounterCache::Model
   include HasVolume
 

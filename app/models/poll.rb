@@ -1,4 +1,4 @@
-class Poll < ActiveRecord::Base
+class Poll < ApplicationRecord
   include CustomCounterCache::Model
   extend  HasCustomFields
   include ReadableUnguessableUrls

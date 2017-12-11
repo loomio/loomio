@@ -1,4 +1,4 @@
-class MembershipRequest < ActiveRecord::Base
+class MembershipRequest < ApplicationRecord
   validates :name,  presence: true, :if => 'requestor.blank?'
   validates :email, presence: true, email: true, :if => 'requestor.blank?' #this uses the gem 'valid_email'
 

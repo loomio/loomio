@@ -1,4 +1,4 @@
-class Outcome < ActiveRecord::Base
+class Outcome < ApplicationRecord
   extend  HasCustomFields
   include MakesAnnouncements
   include HasMentions

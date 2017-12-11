@@ -1,4 +1,4 @@
-class Document < ActiveRecord::Base
+class Document < ApplicationRecord
   belongs_to :model, polymorphic: true, required: true
   belongs_to :author, class_name: 'User', required: true
   validates :url, presence: true

@@ -1,4 +1,4 @@
-class Cohort < ActiveRecord::Base
+class Cohort < ApplicationRecord
   has_many :groups
 
   def organisations

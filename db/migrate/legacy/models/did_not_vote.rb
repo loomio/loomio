@@ -1,4 +1,4 @@
-class DidNotVote < ActiveRecord::Base
+class DidNotVote < ApplicationRecord
   belongs_to :user
   belongs_to :motion
   validates_uniqueness_of :user_id, :scope => :motion_id
