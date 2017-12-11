@@ -10,7 +10,8 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
       $scope.renderMode = if $scope.allowNested() then 'nested' else 'chronological'
       $scope.position = $scope.positionForSelect()
 
-    $scope.allowNested = -> true
+    $scope.allowNested = ->
+      AppConfig.features.app.nested_comments || $scope.discussion.group().features.nested_comments
 
     $scope.positionForSelect = ->
       if _.include(['requested', 'context'], $scope.initialPosition())
