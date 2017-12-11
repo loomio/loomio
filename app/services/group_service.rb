@@ -20,7 +20,7 @@ module GroupService
   def self.update(group:, params:, actor:)
     actor.ability.authorize! :update, group
 
-    group.assign_attributes(params)
+    group.assign_attributes(params.except(:features))
     group.group_privacy = params[:group_privacy] if params.has_key?(:group_privacy)
     privacy_change = PrivacyChange.new(group)
 
@@ -29,6 +29,16 @@ module GroupService
     privacy_change.commit!
 
     EventBus.broadcast('group_update', group, params, actor)
+  end
+
+  def self.update_features(group:, params:, actor:)
+    actor.ability.authorize! :update_features, group
+    group.assign_attributes(params.slice(:features))
+
+    return false unless group.valid?
+    group.save!
+
+    EventBus.broadcast('group_update_features', group, params, actor)
   end
 
   def self.archive(group:, actor:)
