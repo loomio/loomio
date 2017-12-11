@@ -12,6 +12,14 @@ angular.module('loomioApp').factory 'DocumentModel', (BaseModel, AppConfig) ->
     model: ->
       @recordStore["#{@modelType.toLowerCase()}s"].find(@modelId)
 
+    modelTitle: ->
+      switch @modelType
+        when 'Group'      then @model().name
+        when 'Discussion' then @model().title
+        when 'Outcome'    then @model().poll().title
+        when 'Comment'    then @model().discussion().title
+        when 'Poll'       then @model().title
+
     authorName: ->
       @author().name if @author()
 
@@ -22,4 +30,3 @@ angular.module('loomioApp').factory 'DocumentModel', (BaseModel, AppConfig) ->
       @model().discussion() unless @modelType == 'Group'
 
     discussionTitle: ->
-      @discussion().title if @discussion()

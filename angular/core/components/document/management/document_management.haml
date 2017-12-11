@@ -1,5 +1,5 @@
 .document-management{ng-if: "hasDocuments()"}
-  %h3.lmo-h3{translate: "document.management.{{filter}}_header"}
+  %h3.lmo-h3{translate: "document.management.{{filter}}_header", ng-if: "filter"}
   .document-management__document.lmo-flex.lmo-flex__space-between{ng-repeat: "document in documents() | orderBy: '-createdAt' track by document.id", layout: "row"}
     .document-management__column-row
       %i.mdi.lmo-margin-right.document-management__icon{class: "mdi-{{document.icon}}", ng-style: "{color: document.color}"}
@@ -7,12 +7,11 @@
       %strong.lmo-truncate
         %a{ng-href: "{{document.url}}", target: "_blank"}
           {{ document.title | truncate:50 }}
-      .document-management__caption.md-caption{ng-if: "document.discussion()"}
-        %span{translate: "document.management.uploaded_to"}>
-        %a.lmo-truncate{lmo-href-for: "document.model()"}>
-          {{ document.discussionTitle() | truncate:50 }}
       .document-management__caption.md-caption
-        %span{translate: "document.management.added_by", translate-value-name: "{{document.authorName()}}"}>
+        %a.lmo-truncate{lmo-href-for: "document.model()"}>
+          {{ document.modelTitle() | truncate: 30 }}
+        %span> ·
+        %span {{document.authorName()}}
         %span> ·
         %timeago{timestamp: "document.createdAt"}>
     .document-management__column-row{ng-if: "canAdministerGroup()"}
