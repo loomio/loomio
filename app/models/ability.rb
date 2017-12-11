@@ -21,7 +21,9 @@ class Ability
     cannot :sign_up, User
 
     can :show, Group do |group|
-      if group.archived_at || group.is_guest_group?
+      if user.is_admin?
+        true
+      elsif group.archived_at || group.is_guest_group?
         false
       else
         group.is_visible_to_public? or
