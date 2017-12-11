@@ -39,11 +39,11 @@ class Document < ActiveRecord::Base
     file_file_name.to_s.match(AppConfig.image_regex)
   end
 
-  private
-
   def manual_url?
     self.file.blank?
   end
+
+  private
 
   # need this to save model with upload correctly and get metadata,
   # we'll set the finalized path later in set_final_urls

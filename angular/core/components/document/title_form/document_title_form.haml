@@ -1,6 +1,6 @@
 .document-title-form
 
-  %md-input-container.md-block.md-no-errors{ng-if: "!document.isNew()"}
+  %md-input-container.md-block.md-no-errors{ng-if: "!document.isNew() && document.manualUrl"}
     %label{translate: "document.form.url_label"}
     %input.lmo-primary-form-input#document_title{ng-model: "document.url", placeholder: "{{'document.form.url_placeholder' | translate }}"}
     %validation_errors{subject: "document", field: "url"}
