@@ -1,12 +1,11 @@
 class Events::PollEdited < Event
   include Events::PollEvent
-  include Events::VersionParent
 
   def self.publish!(version, actor, announcement = false)
     create(kind: "poll_edited",
            user: actor,
            eventable: version,
-           parent: lookup_parent(version),
+           parent: lookup_parent_event(version),
            announcement: announcement,
            discussion: version.item.discussion,
            created_at: version.created_at).tap { |e| EventBus.broadcast('poll_edited_event', e) }

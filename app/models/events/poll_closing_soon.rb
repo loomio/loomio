@@ -2,12 +2,11 @@ class Events::PollClosingSoon < Event
   include Events::PollEvent
   include Events::Notify::Author
   include Events::Notify::ThirdParty
-  include Events::PollParent
 
   def self.publish!(poll)
     create(kind: "poll_closing_soon",
            user: poll.author,
-           parent: lookup_parent(poll),
+           parent: lookup_parent_event(poll),
            announcement: !!poll.events.find_by(kind: :poll_created)&.announcement,
            eventable: poll).tap { |e| EventBus.broadcast('poll_closing_soon_event', e) }
   end

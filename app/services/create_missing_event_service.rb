@@ -34,7 +34,7 @@ module CreateMissingEventService
     reply_comments = discussion.comments.where.not(parent_id: nil)
     discussion.items.where(kind: "new_comment",
                            eventable_id: reply_comments.pluck(:id)).each do |event|
-      event.update(parent: event.eventable.parent_event, depth: 2)
+      event.find_and_update_parent!
     end
 
     # ensure all poll_created, stance_created events exist

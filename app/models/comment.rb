@@ -50,7 +50,7 @@ class Comment < ActiveRecord::Base
   end
 
   def first_ancestor
-    return nil unless parent
+    return discussion unless parent
     next_parent = parent
     while (next_parent.parent) do
       next_parent = next_parent.parent

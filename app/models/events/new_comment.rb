@@ -1,12 +1,11 @@
 class Events::NewComment < Event
   include Events::Notify::Users
   include Events::LiveUpdate
-  include Events::CommentParent
 
   def self.publish!(comment)
     create(kind: 'new_comment',
            eventable: comment,
-           parent: lookup_parent(comment),
+           parent: lookup_parent_event(comment),
            user:   comment.author,
            discussion: comment.discussion,
            created_at: comment.created_at).tap { |e| EventBus.broadcast('new_comment_event', e) }
