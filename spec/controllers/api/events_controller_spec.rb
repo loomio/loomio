@@ -48,7 +48,7 @@ describe API::EventsController do
           patch :remove_from_thread, id: @edited_event.id
           json = JSON.parse(response.body)
           expect(json.keys).to include *(%w[events])
-          result_event = json['events'].first
+          result_event = json['events'].last
           expect(result_event['discussion_id']).to be nil
           expect(result_event['id']).to be @edited_event.id
         end
@@ -146,14 +146,14 @@ describe API::EventsController do
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[events])
         event_ids = json['events'].map { |v| v['id'] }
-        expect(event_ids.count).to eq 3
+        expect(event_ids.count).to eq 4 # one more for the parent event
       end
 
       it 'responds to a from parameter' do
         get :index, discussion_id: discussion.id, from: 3
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[events])
-        sequence_ids = json['events'].map { |v| v['sequence_id'] }
+        sequence_ids = json['events'].map { |v| v['sequence_id'] }.compact
         expect(sequence_ids.sort).to eq [3,4,5]
       end
 
@@ -163,12 +163,10 @@ describe API::EventsController do
           get :index, discussion_id: discussion.id, from: 0, per: 3
           json = JSON.parse(response.body)
           expect(json.keys).to include *(%w[events])
-          sequence_ids = json['events'].map { |v| v['sequence_id'] }
+          sequence_ids = json['events'].map { |v| v['sequence_id'] }.compact
           expect(sequence_ids.sort).to eq [1,2,4]
         end
-
       end
     end
   end
-
 end

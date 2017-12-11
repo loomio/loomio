@@ -33,6 +33,7 @@ describe Event do
   before do
     ActionMailer::Base.deliveries = []
     parent_comment
+    DiscussionService.create(discussion: discussion, actor: discussion.author)
     discussion.group.add_member!(mentioned_user)
     discussion.group.add_member!(parent_comment.author)
 
@@ -319,8 +320,7 @@ describe Event do
     it 'notifies everyone if announcement' do
       poll.make_announcement = true
       Events::PollCreated.publish!(poll, poll.author)
-      Events::PollExpired.publish!(poll)
-      event = Events::PollExpired.last
+      event = Events::PollExpired.publish!(poll)
 
       expect(event.announcement).to eq true
       email_users = event.send(:email_recipients)

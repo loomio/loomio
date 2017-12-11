@@ -16,7 +16,7 @@ cache:
 
 addons:
   firefox: "57.0"
-  postgresql: "9.5"
+  postgresql: "9.6"
   apt:
     sources:
       - heroku

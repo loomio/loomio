@@ -9,6 +9,7 @@ class Poll < ActiveRecord::Base
   include SelfReferencing
   include UsesOrganisationScope
   include Reactable
+  include HasCreatedEvent
 
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
 
@@ -115,10 +116,6 @@ class Poll < ActiveRecord::Base
 
   def parent_event
     discussion&.created_event
-  end
-
-  def created_event
-    events.find_by(kind: :poll_created)
   end
 
   # creates a hash which has a PollOption as a key, and a list of stance

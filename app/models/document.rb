@@ -57,6 +57,8 @@ class Document < ActiveRecord::Base
     self.color   ||= metadata['color']
   end
 
+  private
+
   def metadata
     @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(url) })
   end

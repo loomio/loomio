@@ -12,7 +12,7 @@ InitialPayload = Struct.new(:user) do
       loadVideos:          ENV['LOOMIO_LOAD_VIDEOS'],
       currentUserLocale:   user.locale,
       permittedParams:     PermittedParamsSerializer.new({}),
-      locales:             angular_locales,
+      locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
       recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
       baseUrl:             root_url,
       plugins:             Plugins::Repository.to_config,
@@ -23,7 +23,7 @@ InitialPayload = Struct.new(:user) do
         email:             JsRegex.new(AppConfig::EMAIL_REGEX)
       },
       inlineTranslation: {
-        isAvailable:       TranslationService.app_key.present?,
+        isAvailable:       TranslationService.supported_languages.any?,
         supportedLangs:    TranslationService.supported_languages
       },
       pageSize: {

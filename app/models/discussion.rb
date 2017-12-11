@@ -10,6 +10,7 @@ class Discussion < ActiveRecord::Base
   include MakesAnnouncements
   include SelfReferencing
   include UsesOrganisationScope
+  include HasCreatedEvent
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
@@ -77,8 +78,8 @@ class Discussion < ActiveRecord::Base
   update_counter_cache :group, :public_discussions_count
   update_counter_cache :group, :closed_polls_count
 
-  def created_event
-    events.find_by(kind: :new_discussion)
+  def created_event_kind
+    :new_discussion
   end
 
   def update_sequence_info!

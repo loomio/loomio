@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $translate, LmoUrlService, EventHeadlineService, Session, AbilityService, Records) ->
+angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $translate, FormService, LmoUrlService, EventHeadlineService, Session, AbilityService, Records) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
@@ -15,8 +15,10 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $transl
           $scope.eventWindow.max = false
           $scope.$broadcast 'showReplyForm', comment
 
-    $scope.canRemove = (event) -> AbilityService.canRemoveEventFromThread(event)
-    $scope.remove    = (event) -> Records.events.removeFromThread(event)
+    $scope.canRemoveEvent = -> AbilityService.canRemoveEventFromThread($scope.event)
+    $scope.removeEvent = FormService.submit $scope, $scope.event,
+      submitFn: $scope.event.removeFromThread
+      flashSuccess: 'thread_item.event_removed'
 
     $scope.mdColors = ->
       obj = {'border-color': 'primary-500'}

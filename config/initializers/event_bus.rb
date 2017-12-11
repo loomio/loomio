@@ -64,6 +64,12 @@ EventBus.configure do |config|
                      update_reader(ranges: event.sequence_id, volume: :loud) if event.discussion
   end
 
+  config.listen('event_remove_from_thread') do |event|
+    MessageChannelService.publish(
+      ActiveModel::ArraySerializer.new([event], each_serializer: Events::BaseSerializer, root: :events).as_json,
+      to: event.eventable.group
+    )
+  end
   config.listen('discussion_mark_as_read',
                 'discussion_dismiss',
                 'discussion_mark_as_seen') do |reader|

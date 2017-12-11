@@ -23,6 +23,9 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, HasDo
       @belongsTo 'parent', from: 'comments', by: 'parentId'
       @hasMany  'versions', sortBy: 'createdAt'
 
+    createdEvent: ->
+      @recordStore.events.find(kind: "new_comment", eventableId: @id)[0]
+
     reactions: ->
       @recordStore.reactions.find
         reactableId: @id
