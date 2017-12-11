@@ -164,9 +164,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       else
         @coverUrls[size] || @coverUrls.small
 
-    updateFeatures: =>
-      @remote.patchMember(@key, 'update_features', { features: @features })
-
     archive: =>
       @remote.patchMember(@key, 'archive').then =>
         @remove()

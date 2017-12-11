@@ -235,18 +235,4 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     flash[:notice] = "Unarchived #{group.name}"
     redirect_to [:admin, :groups]
   end
-
-  member_action :toggle_export, :method => :post do
-    group = Group.friendly.find(params[:id])
-    export_enabled = group.features.fetch 'dataExport', false
-    if export_enabled
-      group.features['dataExport'] = false
-      flash[:notice] = "data export disabled for #{group.name}"
-    else
-      group.features['dataExport'] = true
-      flash[:notice] = "data export enabled for #{group.name}"
-    end
-    group.save
-    redirect_to [:admin, :groups]
-  end
 end

@@ -22,7 +22,6 @@ window.Loomio.routes = [
   {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
   {path: '/g/:key/documents', component: 'documentsPage'},
   {path: '/g/:key/previous_polls', component: 'previousPollsPage'},
-  {path: '/g/:key/features', component: 'groupFeaturesPage'},
   {path: '/g/new', component: 'startGroupPage'},
   {path: '/g/:key', component: 'groupPage' },
   {path: '/g/:key/:stub', component: 'groupPage' },
