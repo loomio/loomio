@@ -25,8 +25,3 @@ angular.module('loomioApp').factory 'DocumentModel', (BaseModel, AppConfig) ->
 
     isAnImage: ->
       @icon == 'image'
-
-    discussion: ->
-      @model().discussion() unless @modelType == 'Group'
-
-    discussionTitle: ->

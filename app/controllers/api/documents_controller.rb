@@ -8,7 +8,7 @@ class API::DocumentsController < API::RestfulController
       @group.poll_documents,
       @group.comment_documents
     ).search_for(params[:q])
-    respond_with_collection scope: { group_id: @group.id }
+    respond_with_collection scope: { group_id: @group.id }, serializer: Full::DocumentSerializer
   end
 
   private

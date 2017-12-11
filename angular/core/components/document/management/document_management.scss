@@ -11,8 +11,9 @@
 }
 
 .document-management__column-row {
-  min-height: 36px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  margin: 8px 0;
+  i { padding: 4px; }
 }
