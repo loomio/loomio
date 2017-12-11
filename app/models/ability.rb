@@ -45,11 +45,7 @@ class Ability
          :archive,
          :publish,
          :view_pending_invitations], Group do |group|
-      user_is_admin_of?(group.id)
-    end
-
-    can :update_features, Group do |group|
-      user.is_admin?
+      user.is_admin? || user_is_admin_of?(group.id)
     end
 
     can :view_pending_invitations, Poll do |poll|

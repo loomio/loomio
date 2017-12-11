@@ -75,7 +75,7 @@ class PermittedParams < Struct.new(:params)
      :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :make_announcement,
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups,
-     :features, features: {}]
+     :features, features: AppConfig.group_features]
   end
 
   def group_identity_attributes
