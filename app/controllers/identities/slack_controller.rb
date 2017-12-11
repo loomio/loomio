@@ -1,5 +1,5 @@
 class Identities::SlackController < Identities::BaseController
-  before_filter :respond_with_ok, only: [:participate, :initiate]
+  before_action :respond_with_ok, only: [:participate, :initiate]
 
   rescue_from(ActionController::ParameterMissing) { head :bad_request }
 

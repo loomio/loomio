@@ -32,10 +32,4 @@ Loomio::Application.configure do
   config.eager_load = false
 
   config.action_controller.action_on_unpermitted_parameters = :raise
-
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.bullet_logger = true
-    Bullet.add_whitelist type: :unused_eager_loading, class_name: 'group', association: :default_group_cover
-  end
 end
