@@ -2,11 +2,11 @@ class Events::PollExpired < Event
   include Events::PollEvent
   include Events::Notify::Author
   include Events::Notify::ThirdParty
-  
+
   def self.publish!(poll)
     create(kind: "poll_expired",
            eventable: poll,
-           parent: lookup_parent_event(poll),
+           parent: poll.created_event,
            announcement: !!poll.events.find_by(kind: :poll_created)&.announcement,
            created_at: poll.closed_at).tap { |e| EventBus.broadcast('poll_expired_event', e) }
   end

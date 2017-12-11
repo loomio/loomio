@@ -115,6 +115,14 @@ class Poll < ActiveRecord::Base
 
   alias_method :user, :author
 
+  def parent_event
+    if discussion
+      discussion.created_event
+    else
+      created_event
+    end
+  end
+
   # creates a hash which has a PollOption as a key, and a list of stance
   # choices associated with that PollOption as a value
   def grouped_stance_choices(since: nil)

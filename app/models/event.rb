@@ -58,20 +58,10 @@ class Event < ActiveRecord::Base
     super || should_have_parent? && find_and_update_parent!
   end
 
-  def self.lookup_parent_event(eventable)
-    case eventable
-    when Comment               then eventable.first_ancestor.created_event
-    when Discussion            then eventable.discussion&.created_event
-    when Poll, Stance, Outcome then eventable.poll.created_event
-    when PaperTrail::Version   then lookup_parent_event(eventable.item)
-    else raise "don't know how to find parent event for #{eventable.class}"
-    end
-  end
-
   def find_and_update_parent!
-    parent_event = self.class.lookup_parent_event(eventable)
-    self.update(parent: parent_event)
-    parent_event
+    event = eventable.parent_event
+    self.update(parent: event) if event
+    event
   end
 
   private

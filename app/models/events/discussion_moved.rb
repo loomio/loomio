@@ -5,7 +5,7 @@ class Events::DiscussionMoved < Event
     create(kind: "discussion_moved",
            eventable: discussion,
            discussion: discussion,
-           parent: lookup_parent_event(discussion),
+           parent: discussion.created_event,
            custom_fields: {source_group_id: source_group.id},
            user: actor).tap { |e| EventBus.broadcast('discussion_moved_event', e) }
   end
