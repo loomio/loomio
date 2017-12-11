@@ -2,7 +2,7 @@ class ::Slack::Initiator
   include Routing
 
   def initialize(params)
-    @channel_id  = params[:channel]
+    @channel_id  = params[:channel_id]
     @team_id     = params[:team_id]
     @team_domain = params[:team_domain]
     @poll_type   = /^\S*/.match(params[:text]).to_s.strip # use first word as poll type
