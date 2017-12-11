@@ -100,7 +100,7 @@ describe EmailActionsController do
           time_start: @time_start.to_i,
           time_finish: 30.minutes.ago.to_i,
           unsubscribe_token: @user.unsubscribe_token
-        }
+        },
         format: :gif
       }
 
