@@ -27,11 +27,9 @@ gem 'httparty', '~> 0.15.6'
 gem 'airbrake'
 gem 'browser', '~> 2.3.0'
 gem 'fog'
-gem 'thin'
 gem 'sequenced', '~> 2.0.0'
 gem 'bing_translator', '~> 5.0.0'
 gem 'http_accept_language'
-# gem 'mail', github: 'mikel/mail'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'uglifier', '~> 3.0.0'
 gem 'sass-rails', '>= 3.2'
@@ -51,24 +49,17 @@ gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
 gem 'rack-attack'
 
 group :development, :test do
-  gem 'minitest'
-  gem 'timecop'
   gem 'byebug'
-  gem 'rb-readline'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'dotenv-rails', require: 'dotenv/rails-now'
-  gem 'capybara'
   gem 'database_cleaner'
-  gem 'selenium-webdriver'
   gem 'gemrat'
   gem 'derailed'
 end
 
 group :development do
-  gem 'sqlite3'
-  # gem 'derailed'
   gem "stackprof"
   gem 'spring'
   gem "spring-commands-rspec"
@@ -79,7 +70,6 @@ end
 
 group :test do
   gem 's3_uploader'
-  gem 'email_spec'
   gem 'poltergeist'
   gem 'webmock'
   gem "codeclimate-test-reporter", require: false

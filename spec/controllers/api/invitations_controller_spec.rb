@@ -1,8 +1,5 @@
 require 'rails_helper'
 describe API::InvitationsController do
-  include EmailSpec::Helpers
-  include EmailSpec::Matchers
-
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:deactivated) { create :user, deactivated_at: 2.days.ago }
@@ -33,7 +30,7 @@ describe API::InvitationsController do
         last_email = ActionMailer::Base.deliveries.last
         expect(ActionMailer::Base.deliveries.size).to eq 2
         expect(invitation['recipient_email']).to eq 'hannah@example.com'
-        expect(last_email).to deliver_to 'hannah@example.com'
+        expect(last_email.to).to include 'hannah@example.com'
       end
     end
 
