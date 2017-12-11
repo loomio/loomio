@@ -6,7 +6,7 @@ class Events::PollEdited < Event
   def self.publish!(version, actor)
     super version,
           user: actor,
-          parent: version.item.created_event,
+          parent: version.created_event,
           discussion: version.item.discussion
   end
 

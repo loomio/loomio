@@ -68,6 +68,31 @@ class Event < ActiveRecord::Base
     )))
   end
 
+
+  def should_have_parent?
+    %w[stance_created
+    poll_option_added
+    poll_expired
+    poll_edited
+    poll_closing_soon
+    poll_closed_by_user
+    outcome_created
+    new_comment
+    discussion_moved
+    discussion_edited].include?(self.kind) ||
+    (self.kind == 'poll_created' && self.discussion_id.present?)
+  end
+
+  def parent
+    super || should_have_parent? && find_and_update_parent!
+  end
+
+  def find_and_update_parent!
+    event = eventable.parent_event
+    self.update(parent: event) if event
+    event
+  end
+
   private
 
   def call_thread_item_created
