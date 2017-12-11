@@ -5,7 +5,7 @@ class Outcome < ActiveRecord::Base
   include Reactable
   include Translatable
   include HasCreatedEvent
-  
+
   set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location
 
   belongs_to :poll, required: true
@@ -28,6 +28,10 @@ class Outcome < ActiveRecord::Base
 
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option
+
+  def parent_event
+    poll.created_event
+  end
 
   def attendee_emails
      self.stances.joins(:participant).joins(:stance_choices)

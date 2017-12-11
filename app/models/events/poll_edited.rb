@@ -5,7 +5,7 @@ class Events::PollEdited < Event
     create(kind: "poll_edited",
            user: actor,
            eventable: version,
-           parent: version.item.created_event,
+           parent: version.created_event,
            announcement: announcement,
            discussion: version.item.discussion,
            created_at: version.created_at).tap { |e| EventBus.broadcast('poll_edited_event', e) }
