@@ -1,0 +1,30 @@
+.loading-wrapper.lmo-two-column-layout
+  %loading{ng-if: "!groupFeaturesPage.group"}
+  %main.group-page.lmo-row{ng-if: "groupFeaturesPage.group"}
+    %outlet{name: "before-group-page", model: "groupFeaturesPage.group"}
+    %group_theme{group: "groupFeaturesPage.group", home-page: "true"}
+    .lmo-card
+      .group-features-page.lmo-flex.lmo-flex__space-between.lmo-flex__baseline
+        %h2.md-title{translate: "group_features_page.title"}
+      .group-features-page__inputs
+        .group-features-page__input.lmo-flex.lmo-flex__center.lmo-flex__space-between.lmo-flex--row{ng-repeat: "feature in groupFeaturesPage.features track by feature.key"}
+          %label Key
+          %md-input-container.md-no-errors
+            %input{ng-model: "feature.key", disabled: "true"}
+          %label Value
+          %md-input-container.md-no-errors
+            %input{ng-model: "feature.value"}
+          %md-button.md-button--tiny{ng-click: "groupFeaturesPage.removeFeature(feature)"}
+            %i.mdi.mdi-close
+        .group-features-page__input.lmo-flex.lmo-flex__center.lmo-flex--row.lmo-flex__space-between
+          %label Key
+          %md-input-container.md-no-errors
+            %input{ng-model: "groupFeaturesPage.newFeature.key"}
+          %label Value
+          %md-input-container.md-no-errors
+            %input{ng-model: "groupFeaturesPage.newFeature.value"}
+          %md-button.md-button--tiny{ng-click: "groupFeaturesPage.addFeature()", ng-disabled: "!groupFeaturesPage.canAddFeature()"}
+            %i.mdi.mdi-plus
+
+      .group-features-page__actions.lmo-md-action
+        %md-button.md-raised.md-primary{ng-click: "groupFeaturesPage.submit()", translate: "common.action.save_changes"}

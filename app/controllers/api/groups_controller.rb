@@ -22,6 +22,11 @@ class API::GroupsController < API::RestfulController
     respond_with_resource(scope: {current_user: current_user})
   end
 
+  def update_features
+    service.update_features(group: load_resource, params: resource_params, actor: current_user)
+    respond_with_resource
+  end
+
   def archive
     service.archive(group: load_resource, actor: current_user)
     respond_with_resource

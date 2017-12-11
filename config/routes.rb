@@ -43,6 +43,8 @@ Loomio::Application.routes.draw do
       get :count_explore_results, on: :collection
       patch :archive, on: :member
       put :archive, on: :member
+      patch :update_features, on: :member
+      put :update_features, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 

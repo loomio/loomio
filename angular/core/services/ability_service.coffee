@@ -4,6 +4,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     isLoggedIn: ->
       @isUser() and !Session.user().restricted?
 
+    isSiteAdmin: ->
+      @isLoggedIn() and Session.user().isAdmin
+
     isEmailVerified: ->
       @isLoggedIn() && Session.user().emailVerified
 
