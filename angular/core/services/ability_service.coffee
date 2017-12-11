@@ -108,7 +108,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       (Session.user().isMemberOf(group) and group.membersCanCreateSubgroups))
 
     canEditGroup: (group) ->
-      @canAdministerGroup(group)
+      @canAdministerGroup(group) or @isSiteAdmin()
+
+    canLeaveGroup: (group) ->
+      Session.user().membershipFor(group)?
 
     canArchiveGroup: (group) ->
       @canAdministerGroup(group)
