@@ -5,14 +5,14 @@ describe API::LoginTokensController do
     let(:user) { create :user }
 
     it 'creates a new login token' do
-      expect { post :create, email: user.email }.to change { user.login_tokens.count }.by(1)
+      expect { post :create, params: { email: user.email } }.to change { user.login_tokens.count }.by(1)
       expect(response.status).to eq 200
     end
 
     it 'updates detected locale' do
       user.update_detected_locale('en')
       @request.headers['HTTP_ACCEPT_LANGUAGE'] = 'es'
-      post(:create, email: user.email)
+      post(:create, params: { email: user.email })
       expect(user.reload.detected_locale).to eq 'es'
       expect(response.status).to eq 200
     end
@@ -23,7 +23,7 @@ describe API::LoginTokensController do
     end
 
     it 'does not create a login token for an email we dont have' do
-      expect { post :create, email: "notathing@example.com" }.to_not change { LoginToken.count }
+      expect { post :create, params: { email: "notathing@example.com" } }.to_not change { LoginToken.count }
       expect(response.status).to eq 404
     end
   end

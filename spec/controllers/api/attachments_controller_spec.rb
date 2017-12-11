@@ -14,7 +14,7 @@ describe API::AttachmentsController do
   describe 'create' do
 
     it 'creates a new attachment' do
-      post :create, attachment: attachment_params
+      post :create, params: { attachment: attachment_params }
       attachment = Attachment.last
       expect(attachment.user).to eq user
       expect(attachment.filename).to eq filename
@@ -24,7 +24,7 @@ describe API::AttachmentsController do
       before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
 
       it 'responds with forbidden for logged out users' do
-        post :create, attachment: attachment_params
+        post :create, params: { attachment: attachment_params }
         expect(response.status).to eq 403
       end
     end

@@ -35,7 +35,7 @@ describe API::StancesController do
     it 'can order by recency asc' do
       sign_in user
       recent_stance; old_stance
-      get :index, poll_id: poll.id, order: :newest_first
+      get :index, params: { poll_id: poll.id, order: :newest_first }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
 
@@ -46,7 +46,7 @@ describe API::StancesController do
     it 'can order by recency desc' do
       sign_in user
       recent_stance; old_stance
-      get :index, poll_id: poll.id, order: :oldest_first
+      get :index, params: { poll_id: poll.id, order: :oldest_first }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
 
@@ -59,7 +59,7 @@ describe API::StancesController do
       other_stance = create(:stance, poll: poll)
       poll.update(anonymous: true)
       sign_in user
-      get :index, poll_id: poll.id
+      get :index, params: { poll_id: poll.id }
 
       json = JSON.parse(response.body)
       stance_ids = json['stances'].map { |s| s['id'] }
@@ -74,7 +74,7 @@ describe API::StancesController do
     it 'can order by priority asc' do
       sign_in user
       high_priority_stance; low_priority_stance
-      get :index, poll_id: poll.id, order: :priority_first
+      get :index, params: { poll_id: poll.id, order: :priority_first }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
 
@@ -85,7 +85,7 @@ describe API::StancesController do
     it 'can order by priority desc' do
       sign_in user
       high_priority_stance; low_priority_stance
-      get :index, poll_id: poll.id, order: :priority_last
+      get :index, params: { poll_id: poll.id, order: :priority_last }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
 
@@ -94,7 +94,7 @@ describe API::StancesController do
     end
 
     it 'does not allow unauthorized users to get stances' do
-      get :index, poll_id: poll.id
+      get :index, params: { poll_id: poll.id }
       expect(response.status).to eq 403
     end
   end
@@ -118,7 +118,7 @@ describe API::StancesController do
       it 'verifies unverified stances by verified email address' do
         sign_in user
         stance
-        expect{post :verify, id: stance.id}.to change { user.stances.count }.by 1
+        expect{post :verify, params: { id: stance.id }}.to change { user.stances.count }.by 1
         expect(response.status).to eq 200
         expect(assigns(:stance)).to eq stance
         expect(stance.reload.participant).to eq user
@@ -127,14 +127,14 @@ describe API::StancesController do
       it 'cannot verify stances by another email address' do
         sign_in user
         stance.participant.update(email: 'notme@example.com')
-        expect{post :verify, id: stance.id}.to_not change { user.stances.count }
+        expect{post :verify, params: { id: stance.id }}.to_not change { user.stances.count }
         expect(response.status).to eq 403
       end
 
       it 'cannot verify stances already verified' do
         sign_in user
         stance.update(participant: user)
-        expect{post :verify, id: stance.id}.to_not change { user.stances.count }
+        expect{post :verify, params: { id: stance.id }}.to_not change { user.stances.count }
         expect(response.status).to eq 403
       end
     end
@@ -143,14 +143,14 @@ describe API::StancesController do
       it 'destroys unverified stances' do
         sign_in user
         stance
-        expect{post :destroy, id: stance.id}.to change { unverified_user.stances.count }.by -1
+        expect{post :destroy, params: { id: stance.id }}.to change { unverified_user.stances.count }.by -1
         expect(response.status).to eq 200
       end
 
       it 'cannot destroy verified stances' do
         sign_in user
         stance.update(participant: user)
-        expect{post :destroy, id: stance.id}.to_not change { unverified_user.stances.count }
+        expect{post :destroy, params: { id: stance.id }}.to_not change { unverified_user.stances.count }
         expect(response.status).to eq 403
       end
     end
@@ -178,7 +178,7 @@ describe API::StancesController do
         # create stance and add user to group
         user.update(email_verified: true)
         sign_in user
-        expect { post :create, stance: stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
+        expect { post :create, params: { stance: stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
         expect(invitation.reload.accepted?).to be true
         expect(user.reload.groups).to include group
       end
@@ -187,7 +187,7 @@ describe API::StancesController do
         poll.update(anonymous: true)
         sign_in user
         poll.guest_group.add_member! user
-        post :create, stance: stance_params
+        post :create, params: { stance: stance_params }
         json = JSON.parse(response.body)
         expect(json['stances'][0]['participant_id']).to eq user.id
         expect(json['users']).to be_present
@@ -196,7 +196,7 @@ describe API::StancesController do
       describe 'logged out' do
         it 'enter verified email address -> please confirm vote' do
           user.update(email_verified: true)
-          expect { post :create, stance: visitor_stance_params, invitation_token: invitation.token }.to change { ActionMailer::Base.deliveries.size }.by 1
+          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { ActionMailer::Base.deliveries.size }.by 1
 
           participant = Stance.last.participant
           expect(participant.email).to eq 'user@example.com'
@@ -211,7 +211,7 @@ describe API::StancesController do
 
         it 'enter unverified email address -> please confirm address' do
           user.update(email_verified: false)
-          expect { post :create, stance: visitor_stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
           stance = poll.stances.last
           expect(invitation.reload.accepted?).to be true
           expect(stance.participant.email_verified).to eq false
@@ -224,7 +224,7 @@ describe API::StancesController do
         end
 
         it 'enter unrecognised email address -> confirm address' do
-          expect { post :create, stance: visitor_stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
           expect(invitation.reload.accepted?).to be true
           stance = poll.stances.last
           expect(stance.participant.email_verified).to eq false
@@ -249,7 +249,7 @@ describe API::StancesController do
         # add to group and create stance
         user.update(email_verified: true)
         sign_in user
-        expect { post :create, stance: stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
+        expect { post :create, params: { stance: stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
         expect(Stance.last.participant).to eq user
         expect(poll.members).to include user
       end
@@ -258,7 +258,7 @@ describe API::StancesController do
         it 'user enters verified users email' do
           user.update(email_verified: true)
           # create stance and unverified user, send claim_or_destroy (only single vote claim)
-          expect { post :create, stance: visitor_stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
           stance = Stance.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
@@ -271,7 +271,7 @@ describe API::StancesController do
         it 'user enters unverified users email' do
           # create stance and unverified user -> send verify/login email
           user.update(email_verified: false)
-          expect { post :create, stance: visitor_stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
           stance = Stance.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
@@ -283,7 +283,7 @@ describe API::StancesController do
 
         it 'user enters unrecognised email' do
           # create stance and unverified user -> send verify/login email
-          expect { post :create, stance: visitor_stance_params, invitation_token: invitation.token }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
           stance = Stance.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
@@ -298,7 +298,7 @@ describe API::StancesController do
 
   describe "create as logged out without token on public poll" do
     it 'creates a new stance' do
-      expect { post :create, stance: visitor_stance_params }.to change { Stance.count }.by(1)
+      expect { post :create, params: { stance: visitor_stance_params } }.to change { Stance.count }.by(1)
 
       stance = Stance.last
       expect(stance.poll).to eq public_poll
@@ -320,7 +320,7 @@ describe API::StancesController do
 
     it 'creates a new stance' do
       sign_in user
-      expect { post :create, stance: stance_params }.to change { Stance.count }.by(1)
+      expect { post :create, params: { stance: stance_params } }.to change { Stance.count }.by(1)
 
       stance = Stance.last
       expect(stance.poll).to eq poll
@@ -338,14 +338,14 @@ describe API::StancesController do
     it 'overwrites existing stances' do
       sign_in user
       old_stance
-      expect { post :create, stance: stance_params }.to change { Stance.count }.by(1)
+      expect { post :create, params: { stance: stance_params } }.to change { Stance.count }.by(1)
       expect(response.status).to eq 200
       expect(old_stance.reload.latest).to eq false
     end
 
     it 'does not allow non members to create stances' do
       sign_in another_user
-      expect { post :create, stance: stance_params }.to_not change { Stance.count }
+      expect { post :create, params: { stance: stance_params } }.to_not change { Stance.count }
       expect(response.status).to eq 403
     end
 
@@ -353,7 +353,7 @@ describe API::StancesController do
       sign_in user
       stance_params[:poll_id] = proposal.id
       stance_params[:stance_choices_attributes] = []
-      expect { post :create, stance: stance_params }.to_not change { Stance.count }
+      expect { post :create, params: { stance: stance_params } }.to_not change { Stance.count }
       expect(response.status).to eq 422
     end
   end

@@ -9,7 +9,7 @@ describe API::ProfileController do
   describe 'show' do
     before { sign_in user }
     it 'returns the user json' do
-      get :show, id: another_user.key, format: :json
+      get :show, params: { id: another_user.key }, format: :json
       json = JSON.parse(response.body)
       expect(json.keys).to include *(%w[users])
       expect(json['users'][0].keys).to include *(%w[
@@ -26,14 +26,14 @@ describe API::ProfileController do
     end
 
     it 'can fetch a user by username' do
-      get :show, id: another_user.username, format: :json
+      get :show, params: { id: another_user.username }, format: :json
       json = JSON.parse(response.body)
       expect(json['users'][0]['username']).to eq another_user.username
     end
 
     it 'does not return a deactivated user' do
       another_user.update deactivated_at: 1.day.ago
-      get :show, id: another_user.key, format: :json
+      get :show, params: { id: another_user.key }, format: :json
       expect(response.status).to eq 403
       expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
     end
@@ -59,13 +59,13 @@ describe API::ProfileController do
     context 'success' do
       it 'updates a users profile picture type' do
         user.update avatar_kind: 'gravatar'
-        post :update_profile, user: { avatar_kind: 'initials' }
+        post :update_profile, params: { user: { avatar_kind: 'initials' } }
         expect(response).to be_success
         expect(user.reload.avatar_kind).to eq 'initials'
       end
 
       it "updates a users profile" do
-        post :update_profile, user: user_params, format: :json
+        post :update_profile, params: { user: user_params }, format: :json
         expect(response).to be_success
         expect(user.reload.email).to eq user_params[:email]
         json = JSON.parse(response.body)
@@ -80,7 +80,7 @@ describe API::ProfileController do
 
     context 'success' do
       it "sets a default volume for all of a user's new memberships" do
-        post :set_volume, volume: "quiet", format: :json
+        post :set_volume, params: { volume: "quiet" }, format: :json
         group.add_member! user
         membership = group.membership_for(user)
         expect(user.default_membership_volume).to eq "quiet"
@@ -90,7 +90,7 @@ describe API::ProfileController do
       it "sets the volume for all of a user's current memberships" do
         group.add_member! user
         membership = group.membership_for(user)
-        post :set_volume, volume: "quiet", apply_to_all: true, format: :json
+        post :set_volume, params: { volume: "quiet", apply_to_all: true }, format: :json
         expect(user.default_membership_volume).to eq "quiet"
         expect(membership.reload.volume).to eq "quiet"
       end
@@ -99,7 +99,7 @@ describe API::ProfileController do
     context 'failures' do
       it "responds with an error when there are unpermitted params" do
         user_params[:dontmindme] = 'wild wooly byte virus'
-        post :update_profile, user: user_params, format: :json
+        post :update_profile, params: { user: user_params }, format: :json
         expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
       end
     end
@@ -111,7 +111,7 @@ describe API::ProfileController do
       it 'updates a users profile picture when uploaded' do
         user.update avatar_kind: 'gravatar'
         allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true)
-        post :upload_avatar, file: fixture_for('images', 'strongbad.png')
+        post :upload_avatar, params: { file: fixture_for('images', 'strongbad.png') }
         expect(response.status).to eq 200
         expect(user.reload.avatar_kind).to eq 'uploaded'
         expect(user.reload.uploaded_avatar).to be_present
@@ -121,7 +121,7 @@ describe API::ProfileController do
     context 'failure' do
       it 'does not upload an invalid file' do
         user.update avatar_kind: 'gravatar'
-        post :upload_avatar, file: fixture_for('images', 'strongbad.png', filetype: 'text/pdf')
+        post :upload_avatar, params: { file: fixture_for('images', 'strongbad.png', filetype: 'text/pdf') }
         expect(response.status).to_not eq 200
         expect(user.reload.avatar_kind).to eq 'gravatar'
         expect(user.reload.uploaded_avatar).to be_blank
@@ -133,7 +133,7 @@ describe API::ProfileController do
     before { sign_in user }
     context 'success' do
       it "deactivates the users account" do
-        post :deactivate, user: {deactivation_response: '' }, format: :json
+        post :deactivate, params: {user: {deactivation_response: '' }}, format: :json
         expect(response).to be_success
         json = JSON.parse(response.body)
         user_emails = json['users'].map { |v| v['email'] }
@@ -143,7 +143,7 @@ describe API::ProfileController do
       end
 
       it 'can record a deactivation response' do
-        post :deactivate, user: { deactivation_response: '(╯°□°)╯︵ ┻━┻'}, format: :json
+        post :deactivate, params: { user: { deactivation_response: '(╯°□°)╯︵ ┻━┻'} }, format: :json
         deactivation_response = UserDeactivationResponse.last
         expect(deactivation_response.body).to eq '(╯°□°)╯︵ ┻━┻'
         expect(deactivation_response.user).to eq user
@@ -155,14 +155,14 @@ describe API::ProfileController do
     before { sign_in user }
 
     it 'successfully saves an experience' do
-      post :save_experience, experience: :happiness
+      post :save_experience, params: { experience: :happiness }
       expect(response.status).to eq 200
       expect(user.reload.experiences['happiness']).to eq true
     end
 
     it 'responds with forbidden when user is logged out' do
       @controller.stub(:current_user).and_return(LoggedOutUser.new)
-      post :save_experience, experience: :happiness
+      post :save_experience, params: { experience: :happiness }
       expect(response.status).to eq 403
     end
 

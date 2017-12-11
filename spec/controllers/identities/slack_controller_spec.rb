@@ -67,7 +67,7 @@ describe Identities::SlackController do
     it 'creates a stance' do
       group.add_member! user
       sign_in user
-      expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
+      expect { post :participate, params: { payload: payload.to_json } }.to change { poll.stances.count }.by(1)
       stance = Stance.last
       expect(stance.participant).to eq user
       expect(stance.poll_options).to include poll.poll_options.first
@@ -75,7 +75,7 @@ describe Identities::SlackController do
 
     it 'adds the user to the group' do
       sign_in user
-      expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
+      expect { post :participate, params: { payload: payload.to_json } }.to change { poll.stances.count }.by(1)
       stance = Stance.last
       expect(stance.participant).to eq user
       expect(user.groups).to include poll.group
@@ -87,19 +87,19 @@ describe Identities::SlackController do
 
       it 'responds correctly when verification token is supplied' do
         payload[:token] = 'sometoken'
-        expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
+        expect { post :participate, params: { payload: payload.to_json } }.to change { poll.stances.count }.by(1)
         expect(response.status).to eq 200
       end
 
       it 'responds with bad request when no token is supplied' do
         payload[:token] = 'anothertoken'
-        expect { post :participate, payload: payload.to_json }.to_not change { poll.stances.count }
+        expect { post :participate, params: { payload: payload.to_json } }.to_not change { poll.stances.count }
         expect(response.status).to eq 400
       end
     end
 
     it 'responds when no poll is found' do
-      expect { post :participate, payload: payload_without_poll.to_json }.to_not change { Stance.count }
+      expect { post :participate, params: { payload: payload_without_poll.to_json } }.to_not change { Stance.count }
       expect(response.status).to eq 200
       expect(response.body).to include "poll was not found"
     end
@@ -107,13 +107,13 @@ describe Identities::SlackController do
     it 'does not create an invalid stance' do
       group.add_member! user
       sign_in user
-      expect { post :participate, payload: bad_payload.to_json }.to_not change { poll.stances.count }
+      expect { post :participate, params: { payload: bad_payload.to_json } }.to_not change { poll.stances.count }
       expect(response.status).to eq 200 # we still render out a message to slack, so this response must be 'OK'
     end
 
     it 'responds with a stance if poll is part of a group' do
       sign_in user
-      expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
+      expect { post :participate, params: { payload: payload.to_json } }.to change { poll.stances.count }.by(1)
       expect(user.reload.groups).to include poll.group
       expect(response.status).to eq 200
     end
@@ -121,26 +121,26 @@ describe Identities::SlackController do
     xit 'responds with an auth link if poll is not part of a group' do
       poll.update(discussion: nil, group: nil)
       sign_in user
-      expect { post :participate, payload: payload.to_json }.to_not change { poll.stances.count }
+      expect { post :participate, params: { payload: payload.to_json } }.to_not change { poll.stances.count }
       expect(response.status).to eq 200
     end
 
     it 'finds the identity associated with a user if it exists' do
       identity
       dangling_identity
-      expect { post :participate, payload: payload.to_json }.to change { poll.stances.count }.by(1)
+      expect { post :participate, params: { payload: payload.to_json } }.to change { poll.stances.count }.by(1)
       expect(response.status).to eq 200
     end
 
     it 'responds with unauthorized message if no user is found' do
-      expect { post :participate, payload: payload_without_user.to_json }.to_not change { poll.stances.count }
+      expect { post :participate, params: { payload: payload_without_user.to_json } }.to_not change { poll.stances.count }
       expect(response.status).to eq 200
       expect(response.body).to include "authorize your slack account"
     end
 
     it 'responds with a message if the poll is closed' do
       poll.update(closed_at: 1.day.ago)
-      expect { post :participate, payload: payload.to_json }.to_not change { poll.stances.count }
+      expect { post :participate, params: { payload: payload.to_json } }.to_not change { poll.stances.count }
       expect(response.status).to eq 200
     end
   end
@@ -160,25 +160,25 @@ describe Identities::SlackController do
     }) }
 
     it 'responds with a poll creation url when an associated group is found' do
-      post :initiate, initiate_params
+      post :initiate, params: initiate_params
       expect(response.body).to match /Okay, let's do this/
     end
 
     it 'responds with help for a bad poll type' do
       initiate_params[:text] = "wark let's get started"
-      post :initiate, initiate_params
+      post :initiate, params: initiate_params
       expect(response.body).to match /You can choose from the following/
     end
 
     it 'responds with an unknown channel message if a group is found in the slack team' do
       initiate_params[:channel] = "notachannel"
-      post :initiate, initiate_params
+      post :initiate, params: initiate_params
       expect(response.body).to match /it looks like there's not a loomio group associated/
     end
 
     it 'responds with an unauthorized message if no integration is found' do
       initiate_params[:team_id] = "notateam"
-      post :initiate, initiate_params
+      post :initiate, params: initiate_params
       expect(response.body).to match /Just one more step/
       expect(response.body).to match slack_oauth_url
     end
@@ -199,20 +199,20 @@ describe Identities::SlackController do
     it 'creates a new identity' do
       sign_in user
       valid_oauth
-      expect { post :create, code: 'code' }.to change { user.identities.count }.by(1)
+      expect { post :create, params: { code: 'code' } }.to change { user.identities.count }.by(1)
       expect(response).to redirect_to dashboard_path
     end
 
     it 'redirects to the session back_to if present' do
       valid_oauth
       session[:back_to] = 'http://example.com'
-      post :create, code: 'code'
+      post :create, params: { code: 'code' }
       expect(response).to redirect_to 'http://example.com'
     end
 
     it 'assigns a new identity to the session if an existing user cannot be found' do
       valid_oauth
-      expect { post :create, code: 'code' }.to change { Identities::Base.count }.by(1)
+      expect { post :create, params: { code: 'code' } }.to change { Identities::Base.count }.by(1)
       i = Identities::Base.last
       expect(i.name).to include identity_params[:name]
       expect(i.email).to include identity_params[:email]
@@ -222,7 +222,7 @@ describe Identities::SlackController do
     it 'associates the current user if already logged in' do
       sign_in user
       valid_oauth
-      expect { post :create, code: 'code' }.to_not change { User.count }
+      expect { post :create, params: { code: 'code' } }.to_not change { User.count }
       expect(controller.current_user).to eq user
       expect(Identities::Base.last.user).to eq user
       expect(response.status).to redirect_to dashboard_path
@@ -232,20 +232,20 @@ describe Identities::SlackController do
       valid_oauth
       existing = create(:user, email: identity_params[:email])
       expect(controller).to receive(:sign_in).with(existing)
-      expect { post :create, code: 'code' }.to_not change { User.count }
+      expect { post :create, params: { code: 'code' } }.to_not change { User.count }
       expect(response.status).to redirect_to dashboard_path
     end
 
     it 'does not create an invalid identity for an existing user' do
       sign_in user
       invalid_oauth
-      expect { post :create, code: 'code' }.to_not change { user.identities.count }
+      expect { post :create, params: { code: 'code' } }.to_not change { user.identities.count }
       expect(response.status).to eq 400
     end
 
     it 'does not create a new user if the identity is invalid' do
       invalid_oauth
-      expect { post :create, code: 'code' }.to_not change { User.count }
+      expect { post :create, params: { code: 'code' } }.to_not change { User.count }
       expect(response.status).to eq 400
     end
   end

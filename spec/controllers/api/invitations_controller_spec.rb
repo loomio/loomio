@@ -24,7 +24,7 @@ describe API::InvitationsController do
     context 'success' do
       it 'creates invitations' do
         ActionMailer::Base.deliveries = []
-        post :bulk_create, invitation_form: invitation_params, group_id: group.id
+        post :bulk_create, params: { invitation_form: invitation_params, group_id: group.id }
         json = JSON.parse(response.body)
         invitation = json['invitations'].last
         last_email = ActionMailer::Base.deliveries.last
@@ -37,19 +37,19 @@ describe API::InvitationsController do
     context 'failure' do
       it 'responds with unauthorized for non logged in users' do
         @controller.stub(:current_user).and_return(LoggedOutUser.new)
-        post :bulk_create, invitation_form: invitation_params, group_id: group.id
+        post :bulk_create, params: { invitation_form: invitation_params, group_id: group.id }
         expect(response.status).to eq 403
       end
 
       it 'responds with bad request if no emails are provided' do
-        post :bulk_create, invitation_form: {}, group_id: group.id
+        post :bulk_create, params: {invitation_form: {}, group_id: group.id}
         expect(response.status).to eq 400
       end
 
       it 'responds with validation error if max pending invites have been reached' do
         ENV['MAX_PENDING_INVITATIONS'] = "5"
         5.times { group.invitations.create!(intent: :join_group, recipient_email: Faker::Internet.email) }
-        post :bulk_create, invitation_form: invitation_params, group_id: group.id
+        post :bulk_create, params: { invitation_form: invitation_params, group_id: group.id }
         expect(response.status).to eq 422
         ENV['MAX_PENDING_INVITATIONS'] = nil
       end
@@ -59,7 +59,7 @@ describe API::InvitationsController do
   describe 'shareable' do
     context 'permitted' do
       it 'gives a shareable link for the group' do
-        get :shareable, group_id: group.id
+        get :shareable, params: { group_id: group.id }
         json = JSON.parse(response.body)
         expect(json['invitations'].first['single_use']).to eq false
       end
@@ -68,7 +68,7 @@ describe API::InvitationsController do
     context 'not permitted' do
       it 'gives access denied' do
         sign_in another_user
-        get :shareable, group_id: group.id
+        get :shareable, params: { group_id: group.id }
         expect(response.status).to eq 403
       end
     end
@@ -77,7 +77,7 @@ describe API::InvitationsController do
   describe 'pending' do
     context 'permitted' do
       it 'returns invitations filtered by group' do
-        get :pending, group_id: group.id
+        get :pending, params: { group_id: group.id }
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[invitations])
         expect(json['invitations'].first['id']).to eq pending_invitation.id
@@ -87,7 +87,7 @@ describe API::InvitationsController do
     context 'not permitted' do
       it 'returns AccessDenied' do
         sign_in another_user
-        get :pending, group_id: group.id
+        get :pending, params: { group_id: group.id }
         expect(response.status).to eq 403
       end
     end
