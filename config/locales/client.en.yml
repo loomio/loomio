@@ -626,27 +626,20 @@ en:
       invalid_format: Oops! Your URL is invalid. Ensurer it begins with http:// or https://
     list:
       title: Attachments
-      no_group_documents: No attachments have been uploaded to the group context yet. Click the link below to see all attachments uploaded to threads within this group.
+      no_group_documents: No attachments have been uploaded to the group description yet
     management:
-      group_header: Attached to context
-      content_header: Uploaded as content
-      added_by: uploaded by {{name}}
+      content_header: All attachments
       uploaded_to: in
     modal:
       title: Add an attachment
     method_form:
-      helptext: Keep track of all your tools and files, so that they’re easy to find.
-      url_helptext: Link to websites and tools such as Tello boards and Google docs
-      file_helptext: Upload documents and files from your computer
+      helptext: Attach files or links to share them with the group.
+      url_helptext: Link to websites and online resources
+      file_helptext: Upload files from your computer
     form:
-      helptext: Click, paste, or drop files here to share them with your group.
-      file_upload: Upload a file from your computer
-      uploaded_already: Already uploaded somewhere else?
-      upload_from_local: Have a file locally?
-      upload_file: Upload from your computer
-      enter_url: Enter a URL
-      url_label: Attachment URL
-      url_placeholder: E.g. https://www.example.com/attachment.txt
+      url_label: URL
+      helptext: Click here, paste, or drop files to upload
+      url_placeholder: E.g. https://www.example.com/attachment.zip
       title_helptext: What should we call this attachment?
       title_label: Name
       title_placeholder: E.g. 'Community Guidelines'
