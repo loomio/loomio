@@ -24,6 +24,8 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, Session) ->
           when 'hide_unread'    then view.applyWhere (thread) -> !thread.isUnread()
           when 'show_dismissed' then view.applyWhere (thread) -> thread.isDismissed()
           when 'hide_dismissed' then view.applyWhere (thread) -> !thread.isDismissed()
+          when 'show_closed'    then view.applyFind(closed: true)
+          when 'show_opened'    then view.applyFind(closed: false)
           when 'show_pinned'    then view.applyFind(pinned: true)
           when 'hide_pinned'    then view.applyFind(pinned: false)
           when 'show_muted'     then view.applyWhere (thread) -> thread.volume() == 'mute'

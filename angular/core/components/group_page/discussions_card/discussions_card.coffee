@@ -5,29 +5,33 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   replace: true
   controller: ($scope, $location, Records, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
     $scope.threadLimit = $scope.pageWindow.current
-    $scope.init = ->
+
+    $scope.init = (filter) ->
+      $scope.filter = filter or 'show_open'
       $scope.pinned      = ThreadQueryService.queryFor
         name: "group_#{$scope.group.key}_pinned"
         group: $scope.group
-        filters: ['show_pinned']
+        filters: ['show_pinned', filter]
         overwrite: true
       $scope.discussions = ThreadQueryService.queryFor
         name: "group_#{$scope.group.key}_unpinned"
         group: $scope.group
-        filters: ['hide_pinned']
+        filters: ['hide_pinned', filter]
         overwrite: true
-
-    $scope.init()
-    $scope.$on 'subgroupsLoaded', $scope.init
+      $scope.loadMore()
 
     $scope.loadMore = ->
       current = $scope.pageWindow.current
       $scope.pageWindow.current += $scope.pageWindow.pageSize
       $scope.threadLimit        += $scope.pageWindow.pageSize
-      Records.discussions.fetchByGroup($scope.group.key, from: current, per: $scope.pageWindow.pageSize)
+      Records.discussions.fetchByGroup $scope.group.key,
+        from:   current
+        per:    $scope.pageWindow.pageSize
+        filter: $scope.filter
 
     LoadingService.applyLoadingFunction $scope, 'loadMore'
-    $scope.loadMore()
+    $scope.init($location.search().filter)
+    $scope.$on 'subgroupsLoaded', -> $scope.init()
 
     $scope.canLoadMoreDiscussions = ->
       $scope.pageWindow.current < $scope.pageWindow.max

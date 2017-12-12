@@ -17,6 +17,7 @@ class DiscussionSerializer < ActiveModel::Serializer
              :title,
              :description,
              :ranges,
+             :closed,
              :items_count,
              :last_comment_at,
              :last_activity_at,

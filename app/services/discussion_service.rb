@@ -31,6 +31,22 @@ class DiscussionService
     Events::DiscussionEdited.publish!(discussion, actor)
   end
 
+  def self.close(discussion:, actor:)
+    actor.ability.authorize! :update, discussion
+    discussion.update(closed: true)
+
+    EventBus.broadcast('discussion_close', discussion, actor)
+    Events::DiscussionClosed.publish!(discussion, actor)
+  end
+
+  def self.reopen(discussion:, actor:)
+    actor.ability.authorize! :update, discussion
+    discussion.update(closed: false)
+
+    EventBus.broadcast('discussion_reopen', discussion, actor)
+    Events::DiscussionReopened.publish!(discussion, actor)
+  end
+
   def self.move(discussion:, params:, actor:)
     source = discussion.group
     destination = ModelLocator.new(:group, params).locate

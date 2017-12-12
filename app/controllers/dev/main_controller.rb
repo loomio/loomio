@@ -518,6 +518,13 @@ class Dev::MainController < Dev::BaseController
     redirect_to discussion_url(create_discussion)
   end
 
+  def setup_open_and_closed_discussions
+    create_discussion
+    create_closed_discussion
+    sign_in patrick
+    redirect_to group_url(create_group)
+  end
+
   def setup_discussion_for_jennifer
     sign_in jennifer
     redirect_to discussion_url(create_discussion)

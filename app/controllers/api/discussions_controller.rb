@@ -7,7 +7,7 @@ class API::DiscussionsController < API::RestfulController
 
   def index
     load_and_authorize(:group, optional: true)
-    instantiate_collection { |collection| collection.sorted_by_importance }
+    instantiate_collection { |collection| collection_for_index collection }
     respond_with_collection
   end
 
@@ -51,6 +51,16 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def close
+    service.close dicussion: load_resource, actor: current_user
+    respond_with_resource
+  end
+
+  def reopen
+    service.reopen discussion: load_resource, actor: current_user
+    respond_with_resource
+  end
+
   def set_volume
     update_reader volume: params[:volume]
   end
@@ -70,10 +80,17 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def collection_for_index(collection, filter: params[:filter])
+    case filter
+    when 'show_closed' then collection.sorted_by_importance.is_closed
+    else                    collection.sorted_by_importance.is_open
+    end
+  end
+
   def collection_for_dashboard(collection, filter: params[:filter])
     case filter
-    when 'show_muted'         then collection.muted.sorted_by_latest_activity
-    else                           collection.not_muted.sorted_by_importance
+    when 'show_muted'  then collection.muted.sorted_by_latest_activity
+    else                    collection.not_muted.sorted_by_importance
     end
   end
 

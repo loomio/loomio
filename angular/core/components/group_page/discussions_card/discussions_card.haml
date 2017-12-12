@@ -3,6 +3,9 @@
     %h2#threads-card-title.lmo-card-heading{ translate: "group_page.discussions"}
     %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "openDiscussionModal()", title: "{{ 'navbar.start_thread' | translate }}"}
       %span{translate: "navbar.start_thread"}
+    %md-select.md-no-underline{ng-model: "filter", ng-change: "init(filter)"}
+      %md-option{value: "show_open",   translate: "common.privacy.open"}
+      %md-option{value: "show_closed", translate: "common.privacy.closed"}
 
   .discussions-card__placeholder
     .lmo-placeholder{translate: "group_page.discussions_placeholder", ng-if: "showThreadsPlaceholder()" }
@@ -17,5 +20,5 @@
       %thread_preview_collection.thread-previews-container--pinned{ng-if: "pinned.any()", query: "pinned", limit: "threadLimit"}
       %thread_preview_collection.thread-previews-container--unpinned{ng-if: "discussions.any()", query: "discussions", limit: "threadLimit"}
     .lmo-show-more{ng-if: "canLoadMoreDiscussions()"}
-      %button.discussions-card__show-more{ng-hide: "loadMoreExecuting", ng-click: "loadMore()", translate: "common.action.show_more"}
+      %button.discussions-card__show-more{ng-hide: "loadMoreExecuting", ng-click: "discussions.loadMore()", translate: "common.action.show_more"}
     %loading{ng-show: "loadMoreExecuting"}

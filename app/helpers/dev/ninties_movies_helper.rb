@@ -132,6 +132,18 @@ module Dev::NintiesMoviesHelper
     @discussion
   end
 
+  def create_closed_discussion
+    unless @closed_discussion
+      @closed_discussion = Discussion.create(title: 'What star sign are you? (closed)',
+                                             private: false,
+                                             closed: true,
+                                             group: create_group,
+                                             author: jennifer)
+      DiscussionService.create(discussion: @closed_discussion, actor: @closed_discussion.author)
+    end
+    @closed_discussion
+  end
+
   def create_public_discussion
     unless @another_discussion
       @another_discussion = Discussion.create!(title: "The name's Johnny Utah!",

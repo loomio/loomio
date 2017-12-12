@@ -121,6 +121,8 @@ Loomio::Application.routes.draw do
       patch :mark_as_read, on: :member
       patch :set_volume, on: :member
       patch :pin, on: :member
+      patch :close, on: :member
+      patch :reopen, on: :member
       patch :unpin, on: :member
       patch :pin_reader, on: :member
       patch :unpin_reader, on: :member

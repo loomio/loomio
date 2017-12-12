@@ -1045,9 +1045,6 @@ en:
     description_private: 'updated the thread context and privacy'
     description_private_title: 'updated the thread title, context and privacy'
 
-  discussion_moved_item:
-    discussion_moved: 'moved the thread from <span>{{group}}</span>'
-
   contact_message_form:
     helptext: "Want to get in touch? Just enter a message below and you'll hear from us shortly."
     contact_us_email: "(You can also always reach us at <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
@@ -1506,6 +1503,8 @@ en:
     discussion_made_private:       "<strong><a href='u/{{username}}'>{{author}}</a></strong> made the thread private"
     discussion_edited:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread"
     discussion_moved:              "<strong><a href='u/{{username}}'>{{author}}</a></strong> moved the thread from <strong>{{title}}</strong>"
+    discussion_closed:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the thread"
+    discussion_reopened:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> reopened the thread"
     new_comment:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created:               "<strong><a href='u/{{username}}'>{{author}}</a></strong> shared an outcome for <strong>{{title}}</strong>"
     poll_closed_by_user:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the {{polltype}}: <strong>{{title}}</strong>"
