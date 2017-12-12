@@ -80,7 +80,7 @@ class AppConfig
 
    def self.errbit
      {
-       key: ENV['ERRBIT_KEY'],
+       key: ENV['ERRBIT_JS_KEY'],
        url: "https://#{ENV['ERRBIT_HOST']}"
      }
    end
