@@ -4,7 +4,7 @@
       %md-option{value: "beginning", translate: "activity_card.beginning"}
       %md-option{value: "unread",    translate: "activity_card.unread", ng-disabled: "!eventWindow.anyUnread()"}
       %md-option{value: "latest",    translate: "activity_card.latest"}
-    %md-select.md-no-underline{ng-model: "renderMode", ng-change: "init()", ng-show: "allowNested()"}
+    %md-select.md-no-underline{ng-model: "renderMode", ng-change: "init()"}
       %md-option{value: "chronological", translate: "activity_card.chronological"}
       %md-option{value: "nested", translate: "activity_card.nested"}
 
