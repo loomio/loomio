@@ -18,7 +18,7 @@ class Events::StanceCreated < Event
 
   private
   def author
-    User.active.verified_first.find_by(email: eventable.author.email)
+    User.active.verified.find_by(email: eventable.participant.email) || eventable.participant
   end
 
   def notification_url
