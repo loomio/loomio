@@ -27,12 +27,7 @@ angular.module('loomioApp').directive 'discussionsCard', ($location, Records, Re
     $scope.init($location.search().filter)
 
     $scope.openDiscussionModal = ->
-      ModalService.open DiscussionModal,
-                        discussion: -> Records.discussions.build(groupId: $scope.group.id)
-
-    $scope.showThreadsPlaceholder = ->
-      AbilityService.canStartThread($scope.group) and
-      $scope.group.discussions().length < 4
+      ModalService.open DiscussionModal, discussion: -> Records.discussions.build(groupId: $scope.group.id)
 
     $scope.whyImEmpty = ->
       if !AbilityService.canViewGroup($scope.group)

@@ -1,15 +1,14 @@
-%section.discussions-card{aria-labelledby: "threads-card-title"}
+%section.discussions-card.lmo-card--no-padding{aria-labelledby: "threads-card-title"}
   .discussions-card__header
     %h2#threads-card-title.lmo-card-heading{ translate: "group_page.discussions"}
     %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "openDiscussionModal()", title: "{{ 'navbar.start_thread' | translate }}"}
       %span{translate: "navbar.start_thread"}
 
-  .lmo-md-actions.lmo-row
-    %div{ng-if: "!showThreadsPlaceholder()"}
-    .lmo-placeholder{translate: "group_page.discussions_placeholder", ng-if: "showThreadsPlaceholder()" }
-    %md-select.md-no-underline{ng-model: "filter", ng-change: "init(filter)"}
+  .discussions-card__filters.lmo-row.lmo-flex.lmo-flex__start
+    %md-select.discussions-card__dropdown.md-no-underline{ng-model: "filter", ng-change: "init(filter)"}
       %md-option{value: "show_opened",   translate: "common.privacy.open"}
       %md-option{value: "show_closed", translate: "common.privacy.closed"}
+
 
   .discussions-card__list--empty{ng-if: "!loader.loading && !(discussions.any() || pinned.any())"}
     .discussions-card__list-empty-reason{translate: "group_page.thread_list.empty.{{whyImEmpty()}}"}
