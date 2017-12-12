@@ -1,7 +1,8 @@
 class EventService
   def self.remove_from_thread(event:, actor:)
-    actor.ability.authorize! :remove_from_thread, event
     discussion = event.discussion
+    actor.ability.authorize! :remove_events, discussion
+
     event.update(discussion_id: nil)
     discussion.thread_item_destroyed!
     EventBus.broadcast('event_remove_from_thread', event)

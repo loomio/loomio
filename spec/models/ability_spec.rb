@@ -7,7 +7,7 @@ describe "User abilities" do
   let(:non_member) { create(:user) }
   let(:group) { create(:formal_group) }
 
-  let(:ability) { Ability.new(user) }
+  let(:ability) { Ability::Base.new(user) }
   subject { ability }
 
   let(:own_invitation) { InvitationService.create_invite_to_join_group(recipient_email: "h@h.com",
