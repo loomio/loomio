@@ -52,7 +52,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       !@discussion().hasRead(@sequenceId)
 
     markAsRead: ->
-      @discussion().markAsRead(@sequenceId)
+      @discussion().markAsRead(@sequenceId) if @discussion()
 
     beforeRemove: ->
       _.invoke(@notifications(), 'remove')

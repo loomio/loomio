@@ -37,6 +37,10 @@ agent-base@2:
     extend "~3.0.0"
     semver "~5.0.1"
 
+airbrake-js@^0.9.9:
+  version "0.9.9"
+  resolved "https://registry.yarnpkg.com/airbrake-js/-/airbrake-js-0.9.9.tgz#05eafb32715a52ad1a0f765bf35e084c3aef2067"
+
 ajv@^4.9.1:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-4.11.8.tgz#82ffb02b29e662ae53bdc20af15947706739c536"
