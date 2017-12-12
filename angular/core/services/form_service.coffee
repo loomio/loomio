@@ -1,8 +1,8 @@
-angular.module('loomioApp').factory 'FormService', ($rootScope, $window, FlashService, DraftService, AbilityService, AttachmentService, $filter) ->
+angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $window, FlashService, DraftService, AbilityService) ->
   new class FormService
 
     confirmDiscardChanges: (event, record) ->
-      if record.isModified() && !confirm($filter('translate')('common.confirm_discard_changes'))
+      if record.isModified() && !confirm($translate.instant('common.confirm_discard_changes'))
           return event.preventDefault()
 
     errorTypes =

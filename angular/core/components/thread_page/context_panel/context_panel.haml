@@ -32,7 +32,7 @@
   .context-panel__description.lmo-markdown-wrapper{ng-if: "!translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
   %translation.lmo-markdown-wrapper{ng-if: "translation", translation: "translation", field: "description"}
 
-  %document_list{model: "discussion", ng-show: "discussion.documents().length > 0"}
+  %document_list{model: "discussion"}
 
   .lmo-md-actions
     %reactions_display.context-panel__actions-left{model: "discussion", load: "true"}

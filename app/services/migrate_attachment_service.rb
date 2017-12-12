@@ -15,7 +15,7 @@ class MigrateAttachmentService
           file_file_name: att.filename,
           title:          att.filename,
           created_at:     att.created_at
-        ).tap(&:set_metadata)
+        ).tap { |d| d.send :set_metadata }
 
         if new_docs.length >= 1000
           Document.import new_docs

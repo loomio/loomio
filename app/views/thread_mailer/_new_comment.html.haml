@@ -13,5 +13,5 @@
         = render_rich_text(comment.body)
       - else
         = render_email_plaintext comment.body
-      - if comment.attachments.any?
+      - if comment.documents.any?
         = render "thread_mailer/attachments", resource: comment

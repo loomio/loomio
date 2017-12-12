@@ -5,6 +5,27 @@
   }
 }
 
+.document-list__document {
+  margin: 8px 0;
+  line-height: 32px;
+  background: $modal-background-color;
+  @include roundedCorners;
+  &--image { padding-top: 8px; }
+}
+
+.document-list__entry {
+  padding-left: 8px;
+}
+
+.document-list__image {
+  margin: auto;
+  max-width: 100%;
+  img {
+    max-width: 100%;
+    max-height: 240px;
+  }
+}
+
 .document-list .md-button--tiny {
   opacity: 0.5;
   transition: opacity ease-in-out 0.25s;
@@ -22,10 +43,6 @@
 
 .document-list .mdi.mdi-pencil {
   font-size: 20px;
-}
-
-.document-list__document {
-  line-height: 32px;
 }
 
 .document-list__title {

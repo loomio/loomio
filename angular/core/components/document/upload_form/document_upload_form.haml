@@ -1,5 +1,5 @@
 .md-attachment-form
-  %button.md-button--nude.md-attachment-form__button{type: "button", ng-file-drop: "true", ng-model: "files", md-icon-button: "", ng-click: "selectFile()", ng-hide: "files", aria-label: "{{ 'comment_form.attachments.add_attachment' | translate }}"}
+  %button.md-button--nude.md-attachment-form__button{type: "button", md-prevent-menu-close: "true", ng-file-drop: "true", ng-model: "files", md-icon-button: "", ng-click: "selectFile()", ng-hide: "files", aria-label: "{{ 'comment_form.attachments.add_attachment' | translate }}"}
     %i.mdi.mdi-attachment.md-attachment-form__icon
     %span{translate: "comment_form.attachments.add_attachment", ng-if: "showLabel"}
 

@@ -30,7 +30,7 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
         if version.changes.private[1] then 'discussion_made_private' else 'discussion_made_public'
       else if _.contains(changes, 'description')
         'discussion_context_edited'
-      else if _.contains(changes, 'attachment_ids')
+      else if _.contains(changes, 'document_ids')
         'discussion_attachments_edited'
       else
         'discussion_edited'

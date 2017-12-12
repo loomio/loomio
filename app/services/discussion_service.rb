@@ -21,7 +21,7 @@ class DiscussionService
 
     discussion.assign_attributes(params.slice(:private, :title, :description, :pinned))
     version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
-    discussion.attachment_ids = params[:attachment_ids]
+    discussion.assign_attributes(params.slice(:document_ids))
 
     return false unless discussion.valid?
     discussion.save!

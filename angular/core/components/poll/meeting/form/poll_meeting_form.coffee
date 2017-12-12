@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollMeetingForm', ->
   scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/meeting/form/poll_meeting_form.html'
-  controller: ($scope, AppConfig, PollService, AttachmentService, KeyEventService, TimeService) ->
+  controller: ($scope, AppConfig) ->
 
     $scope.removeOption = (name) ->
       _.pull $scope.poll.pollOptionNames, name

@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
 
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :attachments, dependent: :destroy
+  has_many :documents, foreign_key: :author_id, dependent: :destroy
   has_many :drafts, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
 

@@ -264,14 +264,6 @@ class Ability
       user_is_author_of?(comment) or user_is_admin_of?(comment.discussion.group_id)
     end
 
-    can [:create], Attachment do
-      user.email_verified?
-    end
-
-    can [:destroy], Attachment do |attachment|
-      attachment.user_id == user.id
-    end
-
     can [:show], Comment do |comment|
       can?(:show, comment.discussion)
     end
@@ -364,7 +356,11 @@ class Ability
     end
 
     can [:create, :update], Document do |document|
-      user.ability.can?(:update, document.model)
+      if document.model.presence
+        @user.can? :update, document.model
+      else
+        @user.email_verified?
+      end
     end
 
     can :destroy, Document do |document|

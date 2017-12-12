@@ -250,8 +250,9 @@ ActiveRecord::Schema.define(version: 20171205204615) do
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
 
   create_table "documents", force: :cascade do |t|
-    t.integer  "model_id",   null: false
-    t.string   "model_type", null: false
+    t.integer  "model_id"
+    t.string   "model_type"
+    t.integer  "attachment_id"
     t.string   "title"
     t.string   "url"
     t.string   "doctype",    null: false
@@ -877,6 +878,7 @@ ActiveRecord::Schema.define(version: 20171205204615) do
   end
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+
 
   create_table "webhooks", force: :cascade do |t|
     t.integer "hookable_id"

@@ -3,8 +3,10 @@ class DocumentService
     actor.ability.authorize! :create, document
 
     document.assign_attributes(author: actor)
+    document.title ||= document.file_file_name
     return unless document.valid?
     document.save!
+    document.sync_urls!
 
     EventBus.broadcast 'document_create', document, actor
   end
@@ -12,10 +14,11 @@ class DocumentService
   def self.update(document:, params:, actor:)
     actor.ability.authorize! :update, document
 
-    document.assign_attributes(params.slice(:url, :title))
+    document.assign_attributes(params.slice(:url, :title, :model_id, :model_type))
 
     return unless document.valid?
     document.save!
+    document.sync_urls!
 
     EventBus.broadcast 'document_update', document, params, actor
   end
