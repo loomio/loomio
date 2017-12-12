@@ -15,9 +15,6 @@ class Discussion < ActiveRecord::Base
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
-  scope :is_open, -> { where(closed: false) }
-  scope :is_closed, -> { where(closed: true) }
-
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
 

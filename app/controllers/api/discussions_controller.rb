@@ -1,5 +1,5 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show]
+  load_and_authorize_resource only: :show
   after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
@@ -51,16 +51,6 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
-  def close
-    service.close dicussion: load_resource, actor: current_user
-    respond_with_resource
-  end
-
-  def reopen
-    service.reopen discussion: load_resource, actor: current_user
-    respond_with_resource
-  end
-
   def set_volume
     update_reader volume: params[:volume]
   end
@@ -82,9 +72,9 @@ class API::DiscussionsController < API::RestfulController
 
   def collection_for_index(collection, filter: params[:filter])
     case filter
-    when 'show_closed' then collection.sorted_by_importance.is_closed
-    else                    collection.sorted_by_importance.is_open
-    end
+    when 'show_closed' then collection.is_closed
+    else                    collection.is_open
+    end.sorted_by_importance
   end
 
   def collection_for_dashboard(collection, filter: params[:filter])

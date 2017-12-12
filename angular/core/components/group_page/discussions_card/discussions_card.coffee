@@ -1,40 +1,30 @@
-angular.module('loomioApp').directive 'discussionsCard', ->
-  scope: {group: '=', pageWindow: '='}
+angular.module('loomioApp').directive 'discussionsCard', ($location, Records, RecordLoader, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
+  scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
-  controller: ($scope, $location, Records, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
-    $scope.threadLimit = $scope.pageWindow.current
+  controller: ($scope) ->
 
     $scope.init = (filter) ->
-      $scope.filter = filter or 'show_open'
-      $scope.pinned      = ThreadQueryService.queryFor
+      $scope.filter = filter or 'show_opened'
+      $scope.pinned = ThreadQueryService.queryFor
         name: "group_#{$scope.group.key}_pinned"
         group: $scope.group
-        filters: ['show_pinned', filter]
+        filters: ['show_pinned', $scope.filter]
         overwrite: true
       $scope.discussions = ThreadQueryService.queryFor
         name: "group_#{$scope.group.key}_unpinned"
         group: $scope.group
-        filters: ['hide_pinned', filter]
+        filters: ['hide_pinned', $scope.filter]
         overwrite: true
-      $scope.loadMore()
+      $scope.loader = new RecordLoader
+        collection: 'discussions'
+        params:
+          group_id: $scope.group.id
+          filter:   $scope.filter
+      $scope.loader.fetchRecords()
 
-    $scope.loadMore = ->
-      current = $scope.pageWindow.current
-      $scope.pageWindow.current += $scope.pageWindow.pageSize
-      $scope.threadLimit        += $scope.pageWindow.pageSize
-      Records.discussions.fetchByGroup $scope.group.key,
-        from:   current
-        per:    $scope.pageWindow.pageSize
-        filter: $scope.filter
-
-    LoadingService.applyLoadingFunction $scope, 'loadMore'
     $scope.init($location.search().filter)
-    $scope.$on 'subgroupsLoaded', -> $scope.init()
-
-    $scope.canLoadMoreDiscussions = ->
-      $scope.pageWindow.current < $scope.pageWindow.max
 
     $scope.openDiscussionModal = ->
       ModalService.open DiscussionModal,

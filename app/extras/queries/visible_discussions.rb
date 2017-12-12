@@ -66,6 +66,16 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
+  def is_open
+    @relation = @relation.where(closed: false)
+    self
+  end
+
+  def is_closed
+    @relation = @relation.where(closed: true)
+    self
+  end
+
   def sorted_by_latest_activity
     @relation = @relation.order(last_activity_at: :desc)
     self
