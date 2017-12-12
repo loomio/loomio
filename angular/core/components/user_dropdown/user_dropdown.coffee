@@ -17,7 +17,7 @@ angular.module('loomioApp').directive 'userDropdown', (AppConfig, Session, UserH
       IntercomService.available()
 
     $scope.showHelp = ->
-      AppConfig.features.help_link
+      AppConfig.features.app.help_link
 
     $scope.contactUs = ->
       IntercomService.contactUs()

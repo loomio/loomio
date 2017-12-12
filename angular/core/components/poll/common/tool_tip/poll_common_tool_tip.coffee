@@ -2,7 +2,7 @@ angular.module('loomioApp').directive 'pollCommonToolTip', (Session, AppConfig, 
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/tool_tip/poll_common_tool_tip.html'
   controller: ($scope) ->
-    $scope.showHelpLink = AppConfig.features.help_link
+    $scope.showHelpLink = AppConfig.features.app.help_link
     experienceKey = $scope.poll.pollType+"_tool_tip"
     $scope.collapsed = Session.user().hasExperienced(experienceKey)
 
