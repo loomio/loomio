@@ -18,6 +18,7 @@ InitialPayload = Struct.new(:user) do
       plugins:             Plugins::Repository.to_config,
       theme:               AppConfig.theme,
       features:            AppConfig.features,
+      errbit:              AppConfig.errbit,
       inlineTranslation: {
         isAvailable:       TranslationService.supported_languages.any?,
         supportedLangs:    TranslationService.supported_languages

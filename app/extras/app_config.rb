@@ -69,6 +69,13 @@ class AppConfig
      }
    end
 
+   def self.errbit
+     {
+       key: ENV['ERRBIT_KEY'],
+       url: "https://#{ENV['ERRBIT_HOST']}"
+     }
+   end
+
    def self.json_parse_or_false(name)
      if ENV[name]
        JSON.parse(ENV[name])
