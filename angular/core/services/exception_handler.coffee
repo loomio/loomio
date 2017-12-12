@@ -9,7 +9,7 @@ angular.module('loomioApp').factory '$exceptionHandler', ($log, AppConfig) ->
     host:       AppConfig.errbit.url
 
   client.addFilter( (notice) ->
-    notice.context.environment = 'production'
+    return null if notice.errors[0].type == ""
     notice
   )
 
