@@ -23,9 +23,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $location.search('from', null)
     requestedSequenceId
 
-  @nested = ->
-    @discussion.group().features.nested_comments
-
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
