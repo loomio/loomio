@@ -155,7 +155,6 @@ Loomio::Application.routes.draw do
     resources :comments,    only: [:create, :update, :destroy]
     resources :reactions,   only: [:create, :update, :index, :destroy]
 
-    resources :attachments, only: [:create, :destroy]
     resources :documents, only: [:create, :update, :destroy, :index] do
       get :for_group, on: :collection
     end

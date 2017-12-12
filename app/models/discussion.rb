@@ -43,8 +43,7 @@ class Discussion < ActiveRecord::Base
   has_one :search_vector
   has_many :comments, dependent: :destroy
   has_many :commenters, -> { uniq }, through: :comments, source: :user
-  has_many :attachments, as: :attachable, dependent: :destroy
-  has_many :documents, as: :model
+  has_many :documents, as: :model, dependent: :destroy
 
   has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
 

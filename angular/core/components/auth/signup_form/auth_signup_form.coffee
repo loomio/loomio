@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'authSignupForm', ($translate, AppConfig, 
     $scope.recaptchaKey = AppConfig.recaptchaKey
     $scope.name         = $scope.user.name
     $scope.allow        = ->
-      AppConfig.features.create_user or AppConfig.pendingIdentity
+      AppConfig.features.app.create_user or AppConfig.pendingIdentity
 
     $scope.submit = ->
       if $scope.vars.name

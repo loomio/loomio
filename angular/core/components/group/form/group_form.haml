@@ -5,9 +5,7 @@
     %input.lmo-primary-form-input#group-name{type: "text", placeholder: "{{'group_form.group_name_placeholder' | translate}}", ng-required: true, ng-model: "group.name", md-maxlength: "255"}
     %validation_errors{subject: "group", field: "name"}
 
-  %md-input-container.md-block
-    %label{translate: "group_form.description"}
-    %textarea.lmo-primary-form-input#group-description{ng-model: "group.description", placeholder: "{{'group_form.description_placeholder' | translate }}"}
+  %lmo_textarea{model: "group", field: "description", placeholder: "'group_form.description_placeholder' | translate", label: "'group_form.description' | translate"}
 
   .group-form__privacy-statement.lmo-hint-text {{privacyStatement()}}
 
@@ -37,5 +35,11 @@
       %group_setting_checkbox.group-form__members-can-edit-comments{group: "group", setting: "membersCanEditComments"}
       %group_setting_checkbox.group-form__members-can-raise-motions{group: "group", setting: "membersCanRaiseMotions"}
       %group_setting_checkbox.group-form__members-can-vote{group: "group", setting: "membersCanVote"}
+
+    %section.group-form__section.group-form__features{ng-if: "isSiteAdmin()"}
+      %h3.lmo-h3{translate: "group_form.features"}
+      .group-form__feature{ng-repeat: "name in featureNames"}
+        %md-checkbox.md-checkbox--with-summary{id: "{{name}}", ng-model: "group.features[name]"}
+          %span{for: "{{name}}", translate: "group_features.{{name}}"}
 
   %group_form_actions{group: "group", ng-if: "!modal"}

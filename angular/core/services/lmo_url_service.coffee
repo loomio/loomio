@@ -21,6 +21,9 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     poll: (p, params = {}, options = {}) ->
       @buildModelRoute('p', p.key, options.action or p.title, params, options)
 
+    outcome: (o, params = {}, options = {}) ->
+      @poll(o.poll(), params, options)
+
     pollSearch: (params = {}, options = {}) ->
       @buildModelRoute('polls', '', options.action, params, options)
 

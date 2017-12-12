@@ -50,6 +50,7 @@ gem 'has_secure_token'
 gem "autoprefixer-rails"
 gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
 gem 'rack-attack'
+gem 'js_regex'
 
 group :development, :test do
   gem 'lograge'

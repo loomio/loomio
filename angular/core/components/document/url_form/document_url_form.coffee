@@ -1,16 +1,20 @@
-angular.module('loomioApp').directive 'documentUrlForm', ($timeout, Records, FormService, AttachmentService, KeyEventService) ->
+angular.module('loomioApp').directive 'documentUrlForm', ($translate, AppConfig, Records, DocumentService, KeyEventService) ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/url_form/document_url_form.html'
   controller: ($scope) ->
     $scope.model = Records.discussions.build()
-    $scope.model.url = $scope.document.url or ''
 
     $scope.submit = ->
-      $scope.$emit('nextStep', $scope.model.url)
+      $scope.model.setErrors({})
+      if $scope.model.url.toString().match(AppConfig.regex.url.source)
+        $scope.document.url = $scope.model.url
+        $scope.$emit('nextStep', $scope.document)
+      else
+        $scope.model.setErrors(url: [$translate.instant('document.error.invalid_format')])
 
-    $scope.$on 'attachmentUploaded', (_, attachment) ->
-      $scope.document.title = $scope.document.title || attachment.filename
-      $scope.$emit 'nextStep', attachment.original
+    $scope.$on 'documentAdded', (event, doc) ->
+      event.stopPropagation()
+      $scope.$emit 'nextStep', doc
 
     KeyEventService.submitOnEnter $scope, anyEnter: true
-    AttachmentService.listenForPaste $scope
+    DocumentService.listenForPaste $scope

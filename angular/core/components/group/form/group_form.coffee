@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'groupForm', ->
+angular.module('loomioApp').directive 'groupForm', (AppConfig, PrivacyString, AbilityService) ->
   scope: {group: '=', modal: '=?'}
   templateUrl: 'generated/components/group/form/group_form.html'
-  controller: ($scope, PrivacyString) ->
+  controller: ($scope) ->
 
     $scope.titleLabel = ->
       if $scope.group.isParent()
@@ -20,3 +20,8 @@ angular.module('loomioApp').directive 'groupForm', ->
 
     $scope.privacyStringFor = (privacy) ->
       PrivacyString.group($scope.group, privacy)
+
+    $scope.isSiteAdmin = ->
+      AbilityService.isSiteAdmin()
+
+    $scope.featureNames = AppConfig.features.group

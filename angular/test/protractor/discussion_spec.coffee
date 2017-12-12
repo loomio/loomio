@@ -38,7 +38,7 @@ describe 'Discussion Page', ->
       page.expectText('.context-panel', 'better title')
       page.expectText('.context-panel', 'improved description')
       page.expectText('.context-panel', 'Private')
-      page.expectText('.thread-item__title', 'edited the thread title')
+      page.expectText('.thread-item__title', 'edited the thread')
 
     xit 'does not store cancelled thread info', ->
       page.click '.context-panel-dropdown__button',
@@ -189,7 +189,7 @@ describe 'Discussion Page', ->
       page.click '.action-dock__button--reply_to_comment'
       page.fillIn '.comment-form textarea', 'hi this is my comment'
       page.click '.comment-form__submit-button'
-      page.expectText '.activity-card', 'in reply to'
+      page.expectText '.activity-card__activity-list', 'hi this is my comment'
       page.expectFlash 'Patrick Swayze notified of reply'
 
     it 'can react to a comment', ->
@@ -210,7 +210,7 @@ describe 'Discussion Page', ->
       page.click '.comment-form__submit-button'
       page.click '.action-dock__button--edit_comment'
       page.fillIn '.edit-comment-form textarea', 'edited comment right thur'
-      page.click '.comment-form__submit-btn'
+      page.click '.edit-comment-form .comment-form__submit-button'
       page.expectText '.new-comment', 'edited comment right thur'
 
     it 'lets you view comment revision history', ->
@@ -218,7 +218,7 @@ describe 'Discussion Page', ->
       page.click '.comment-form__submit-button'
       page.click '.action-dock__button--edit_comment'
       page.fillIn '.edit-comment-form textarea', 'Revised comment!'
-      page.click  '.comment-form__submit-btn'
+      page.click  '.edit-comment-form .comment-form__submit-button'
       page.click '.action-dock__button--show_history'
       page.expectText '.revision-history-modal__body', 'Revised comment!'
       page.expectText '.revision-history-modal__body', 'Comment!'

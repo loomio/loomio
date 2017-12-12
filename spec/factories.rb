@@ -165,6 +165,13 @@ FactoryGirl.define do
     location { Faker::Company.logo }
   end
 
+  factory :document do
+    association :author, factory: :user
+    association :model, factory: :discussion
+    title { Faker::Name.name }
+    url { Faker::Internet.url }
+  end
+
   factory :translation do
     language 'en'
     fields {{ body: 'Successful translation' }}

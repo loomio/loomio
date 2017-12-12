@@ -4,11 +4,12 @@ class VersionSerializer < ActiveModel::Serializer
              :changes,
              :whodunnit,
              :previous_id,
-             :created_at
+             :created_at,
+             :item_id,
+             :item_type
 
   has_one :discussion
   has_one :comment
-  has_one :proposal
   has_one :poll
 
   def changes
@@ -28,10 +29,6 @@ class VersionSerializer < ActiveModel::Serializer
   end
 
   def comment
-    object.item
-  end
-
-  def proposal
     object.item
   end
 

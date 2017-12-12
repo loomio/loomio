@@ -10,13 +10,22 @@ class AppConfig
     notifications
     doctypes
     locales
+    group_features
   )
+
+  BANNED_CHARS = %(\\s:,;'"`<>)
+  EMAIL_REGEX  = /[^#{BANNED_CHARS}]+?@[^#{BANNED_CHARS}]+\.[^#{BANNED_CHARS}]+/
+  URL_REGEX    = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/
 
   CONFIG_FILES.each do |config|
     define_singleton_method(config) do
       instance_variable_get(:"@#{config}") ||
       instance_variable_set(:"@#{config}", YAML.load_file(Rails.root.join("config", "#{config}.yml")))
     end
+  end
+
+  def self.image_regex
+    doctypes.detect { |type| type['name'] == 'image' }['regex']
   end
 
   def self.poll_types
@@ -58,14 +67,21 @@ class AppConfig
     }
    end
 
-   def self.features
+   def self.app_features
      {
        create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
        create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],
        public_groups:              !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
        help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
-       nested_comments_for_all:    ENV.fetch('FEATURES_NESTED_COMMENTS_FOR_ALL',    false),
+       nested_comments:            ENV.fetch('FEATURES_NESTED_COMMENTS_FOR_ALL',    false),
        default_thread_render_mode: ENV.fetch('FEATURES_DEFAULT_THREAD_RENDER_MODE', 'chronological')
+     }
+   end
+
+   def self.errbit
+     {
+       key: ENV['ERRBIT_KEY'],
+       url: "https://#{ENV['ERRBIT_HOST']}"
      }
    end
 

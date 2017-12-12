@@ -393,6 +393,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_secret_group_as_non_member
+    patrick.update(is_admin: false)
     sign_in patrick
     @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')

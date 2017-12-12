@@ -16,7 +16,7 @@ class EventCollection
   private
 
   def default_scope
-    { cache: { reactions: reaction_cache, attachments: attachments, mentions: mentions } }
+    { cache: { reactions: reaction_cache, documents: documents, mentions: mentions } }
   end
 
   def reaction_cache
@@ -27,11 +27,11 @@ class EventCollection
     @mentions ||= Comment.find(event_comment_ids).map { |c| [c.id, c.mentioned_usernames] }.to_h
   end
 
-  def attachments
-    @attachments ||= Attachment.where(
-      attachable_type: "Comment",
-      attachable_id: event_comment_ids
-    ).group_by(&:attachable_id)
+  def documents
+    @documents ||= Document.where(
+      model_type: "Comment",
+      model_id: event_comment_ids
+    ).group_by(&:model_id)
   end
 
   def eventables

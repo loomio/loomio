@@ -46,7 +46,6 @@ class Poll < ActiveRecord::Base
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant
-  has_many :attachments, as: :attachable, dependent: :destroy
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
@@ -59,7 +58,7 @@ class Poll < ActiveRecord::Base
   has_many :poll_did_not_votes, dependent: :destroy
   has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
-  has_many :documents, as: :model
+  has_many :documents, as: :model, dependent: :destroy
 
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
@@ -87,7 +86,7 @@ class Poll < ActiveRecord::Base
   scope :authored_by, ->(user) { where(author: user) }
   scope :chronologically, -> { order('created_at asc') }
   scope :with_includes, -> { includes(
-    :attachments,
+    :documents,
     :poll_options,
     :outcomes,
     {stances: [:stance_choices]})

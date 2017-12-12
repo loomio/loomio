@@ -1,5 +1,5 @@
 class Full::DiscussionSerializer < ::DiscussionSerializer
   attributes :mentioned_usernames
-  has_many :attachments, serializer: AttachmentSerializer, root: :attachments
+  has_many :documents, serializer: DocumentSerializer, root: :documents
   has_one :created_event, serializer: Events::SimpleSerializer, root: :events
 end

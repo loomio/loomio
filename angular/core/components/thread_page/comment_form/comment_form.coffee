@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'commentForm', ($translate, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService) ->
+angular.module('loomioApp').directive 'commentForm', ($translate, FormService, Records, Session, KeyEventService, AbilityService, ScrollService, EmojiService) ->
   scope: {eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
@@ -45,8 +45,6 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, R
       KeyEventService.submitOnEnter $scope
       $scope.$broadcast 'reinitializeForm', $scope.comment
     $scope.init()
-
-    AttachmentService.listenForAttachments $scope, $scope.comment
 
     $scope.isLoggedIn = ->
       AbilityService.isLoggedIn()

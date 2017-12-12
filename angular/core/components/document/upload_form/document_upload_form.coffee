@@ -1,19 +1,19 @@
-angular.module('loomioApp').directive 'attachmentForm', (Records) ->
-  scope: {model: '=', showLabel: '=?'}
+angular.module('loomioApp').directive 'documentUploadForm', (Records) ->
+  scope: {model: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/attachment/form/attachment_form.html'
+  templateUrl: 'generated/components/document/upload_form/document_upload_form.html'
   replace: true
   controller: ($scope, $element) ->
 
-    $scope.$watch 'files', ->
-      $scope.upload($scope.files)
+    $scope.$on 'filesPasted', (_, files) -> $scope.files = files
+    $scope.$watch 'files',               -> $scope.upload($scope.files)
 
     $scope.upload = ->
       return unless $scope.files
       $scope.model.setErrors({})
+      $scope.$emit 'processing'
       for file in $scope.files
-        $scope.$emit 'disableAttachmentForm'
-        $scope.currentUpload = Records.attachments.upload(file, $scope.progress)
+        $scope.currentUpload = Records.documents.upload(file, $scope.progress)
         $scope.currentUpload.then($scope.success, $scope.failure).finally($scope.reset)
 
     $scope.selectFile = ->
@@ -26,18 +26,13 @@ angular.module('loomioApp').directive 'attachmentForm', (Records) ->
       $scope.currentUpload.abort() if $scope.currentUpload
 
     $scope.success = (response) ->
-      data = response.data || response
-      _.each data.attachments, (attachment) ->
-        $scope.$emit 'attachmentUploaded', attachment
+      $scope.$emit 'documentAdded', Records.documents.find((response.data || response).documents[0].id)
 
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)
 
     $scope.reset = ->
+      $scope.$emit 'doneProcessing'
       $scope.files = $scope.currentUpload = null
       $scope.percentComplete = 0
-      $scope.$emit 'enableAttachmentForm'
     $scope.reset()
-
-    $scope.$on 'attachmentPasted', (event, file) ->
-      $scope.files = [file]
