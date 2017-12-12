@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
 
     $scope.setDefaults = ->
       $scope.per = AppConfig.pageSize.threadItems
-      $scope.renderMode = 'chronological'
+      $scope.renderMode = 'nested'
       $scope.position = $scope.positionForSelect()
 
     $scope.positionForSelect = ->
