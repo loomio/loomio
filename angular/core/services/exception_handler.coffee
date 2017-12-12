@@ -10,7 +10,10 @@ angular.module('loomioApp').factory '$exceptionHandler', ($log, AppConfig) ->
 
   client.addFilter (notice) ->
     notice.context.environment = AppConfig.environment
-    notice unless notice.errors[0].type == ""
+    if notice.errors[0].type == ""
+      null
+    else
+      notice
 
   (exception, cause) ->
     $log.error(exception)
