@@ -4,6 +4,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     isLoggedIn: ->
       @isUser() and !Session.user().restricted?
 
+    isSiteAdmin: ->
+      @isLoggedIn() and Session.user().isAdmin
+
     isEmailVerified: ->
       @isLoggedIn() && Session.user().emailVerified
 
@@ -111,7 +114,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       (Session.user().isMemberOf(group) and group.membersCanCreateSubgroups))
 
     canEditGroup: (group) ->
-      @canAdministerGroup(group)
+      @canAdministerGroup(group) or @isSiteAdmin()
+
+    canLeaveGroup: (group) ->
+      Session.user().membershipFor(group)?
 
     canArchiveGroup: (group) ->
       @canAdministerGroup(group)
@@ -139,10 +145,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
       (group.membersCanAddMembers and Session.user().isMemberOf(group)) or @canAdministerGroup(group)
 
     canViewPublicGroups: ->
-      AppConfig.features.public_groups
+      AppConfig.features.app.public_groups
 
     canStartGroups: ->
-      AppConfig.features.create_group || Session.user().isAdmin
+      AppConfig.features.app.create_group || Session.user().isAdmin
 
     canViewGroup: (group) ->
       !group.privacyIsSecret() or

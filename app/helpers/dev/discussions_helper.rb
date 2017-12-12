@@ -4,9 +4,6 @@ module Dev::DiscussionsHelper
   def create_discussion_with_nested_comments
     group = create_group_with_members
     group.reload
-
-    EventParentMigrator.migrate_group!(group)
-
     discussion    = saved fake_discussion(group: group)
     DiscussionService.create(discussion: discussion, actor: group.admins.first)
 

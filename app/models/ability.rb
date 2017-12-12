@@ -21,7 +21,9 @@ class Ability
     cannot :sign_up, User
 
     can :show, Group do |group|
-      if group.archived_at || group.is_guest_group?
+      if user.is_admin?
+        true
+      elsif group.archived_at || group.is_guest_group?
         false
       else
         group.is_visible_to_public? or
@@ -45,7 +47,7 @@ class Ability
          :archive,
          :publish,
          :view_pending_invitations], Group do |group|
-      user_is_admin_of?(group.id)
+      user.is_admin? || user_is_admin_of?(group.id)
     end
 
     can :view_pending_invitations, Poll do |poll|
@@ -93,7 +95,7 @@ class Ability
       # anyone can create a top level group of their own
       # otherwise, the group must be a subgroup
       # inwhich case we need to confirm membership and permission
-      (user.is_admin or AppConfig.features[:create_group]) &&
+      (user.is_admin or AppConfig.app_features[:create_group]) &&
       user.email_verified? &&
       group.is_parent? ||
       ( user_is_admin_of?(group.parent_id) ||

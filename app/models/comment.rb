@@ -49,21 +49,14 @@ class Comment < ActiveRecord::Base
   end
 
   def parent_event
-    if parent_id && first_ancestor
-      first_ancestor.created_event
-    else
-      discussion.created_event
-    end
-  end
-
-  def first_ancestor
-    return nil unless parent
+    return discussion.created_event unless parent
     next_parent = parent
     while (next_parent.parent) do
       next_parent = next_parent.parent
     end
-    next_parent
+    next_parent.created_event
   end
+
 
   def created_event_kind
     :new_comment

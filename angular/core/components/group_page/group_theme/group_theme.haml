@@ -35,7 +35,7 @@
       .group-theme__actions{ng-if: "homePage"}
         %join_group_button{group: "group"}
         %outlet{name: "group-theme-actions", model: "group"}
-        .group-theme__member-actions{ng-if: "isMember()"}
+        .group-theme__member-actions{ng-if: "canPerformActions()"}
           %outlet{name: "group-theme-member-actions", model: "group"}
           %group_privacy_button{group: "group"}
           %group_actions_dropdown{group: "group"}

@@ -581,6 +581,7 @@ en:
     membership_granted_upon_approval_secret_parent: '<strong>By request</strong>  anyone from {{parent}} can ask to join the group.'
 
     permissions: 'Permissions'
+    features: 'Group-specific features'
     thread_privacy: 'Thread privacy'
     public_threads: 'Public threads only'
     public_discussions_subgroup: 'Anyone in {{parentGroupName}} can see discussions'
@@ -605,6 +606,10 @@ en:
     messages:
       group_created: 'Group started'
       group_updated: 'Group updated'
+
+  group_features:
+    useAnonymous: Enable anonymous polling
+    nested_comments: Enable nested comment view
 
   membership_requests_card:
     heading: 'Membership Requests'
