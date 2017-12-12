@@ -1,5 +1,5 @@
 angular.module('loomioApp').factory '$exceptionHandler', ($log, AppConfig) ->
-  unless AppConfig.errbit.key?
+  if !AppConfig.errbit.key?
     return ->
 
   client = new airbrakeJs.Client
@@ -8,10 +8,8 @@ angular.module('loomioApp').factory '$exceptionHandler', ($log, AppConfig) ->
     reporter:   'xhr'
     host:       AppConfig.errbit.url
 
-  client.addFilter( (notice) ->
-    return null if notice.errors[0].type == ""
-    notice
-  )
+  client.addFilter (notice) ->
+    notice unless notice.errors[0].type == ""
 
   (exception, cause) ->
     $log.error(exception)
