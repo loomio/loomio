@@ -2,7 +2,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
   lastGroup = {}
 
   mapGroup = (group) ->
-    return null unless group?
+    return null unless group? && group.createdAt?
     id: group.id
     company_id: group.id
     key: group.key
