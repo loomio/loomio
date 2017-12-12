@@ -134,7 +134,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
       @update(lastReadAt: moment())
 
     markAsRead: (id) ->
-      return if @hasRead(id)
+      return if !@discussionReaderId or @hasRead(id)
       @readRanges.push([id,id])
       @readRanges = RangeSet.reduce(@readRanges)
       @updateReadRanges()
