@@ -1,6 +1,7 @@
 class EventService
   def self.remove_from_thread(event:, actor:)
     discussion = event.discussion
+    raise CanCan::AccessDenied.new unless event.kind == 'discussion_edited'
     actor.ability.authorize! :remove_events, discussion
 
     event.update(discussion_id: nil)

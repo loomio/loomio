@@ -305,7 +305,6 @@ describe "User abilities" do
 
     it { should     be_able_to(:update, group) }
     it { should     be_able_to(:email_members, group) }
-    it { should     be_able_to(:hide_next_steps, group) }
     it { should     be_able_to(:destroy, discussion) }
     it { should     be_able_to(:move, discussion) }
     it { should     be_able_to(:update, discussion) }
