@@ -1,9 +1,13 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show]
   after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
   include UsesFullSerializer
+
+  def show
+    load_and_authorize(:discussion)
+    respond_with_resource
+  end
 
   def index
     load_and_authorize(:group, optional: true)
