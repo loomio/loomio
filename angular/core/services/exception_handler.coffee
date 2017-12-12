@@ -17,4 +17,5 @@ angular.module('loomioApp').factory '$exceptionHandler', ($log, AppConfig) ->
     client.notify
       error: exception,
       params:
+        current_user_id: AppConfig.currentUserId
         angular_cause: cause
