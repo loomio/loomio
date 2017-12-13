@@ -74,7 +74,7 @@ namespace :deploy do
   task :commit do
     puts "Committing assets to deployment branch..."
     run_commands(
-      "git checkout #{deploy_branch}",
+      "git checkout -b #{deploy_branch}",
       "rm -rf plugins/fetched/**/.git",
       "find plugins/fetched -name '*.*' | xargs git add -f",
       "find public/img/emojis -name '*.png' | xargs git add -f",
