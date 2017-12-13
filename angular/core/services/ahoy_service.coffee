@@ -2,7 +2,6 @@ angular.module('loomioApp').factory 'AhoyService', ($rootScope, $window, AppConf
   new class AhoyService
     init: ->
       return unless ahoy?
-      return if AppConfig.environment == 'development'
 
       ahoy.trackClicks()
       ahoy.trackSubmits()
