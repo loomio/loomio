@@ -52,7 +52,7 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
-    Events::PollEdited.publish!(poll.versions.last, actor) if is_new_version
+    Events::PollEdited.publish!(poll, actor) if is_new_version
   end
 
   def self.add_options(poll:, params:, actor:)

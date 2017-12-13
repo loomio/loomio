@@ -161,7 +161,7 @@ module Plugins
     end
 
     def use_directory(glob)
-      Dir.chdir(path_prefix) { Dir.glob("#{glob}/*").each { |path| yield path } }
+      Dir.chdir(path_prefix) { Dir.glob("#{glob}/*.*").each { |path| yield path } }
     end
 
   end

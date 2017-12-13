@@ -545,29 +545,11 @@ uk:
   document:
     list:
       title: Вкладення
-      no_poll_documents: До цього рішення ще не були додані вкладення.
-      no_discussion_documents: До цієї теми ще не були додані вкладення.
-      no_group_documents: До контексту цієї групи ще не були додані вкладення.. Клацніть за посиланням нижче, щоб переглянути всі вкладення, які було завантажено до тем в цій групі.
     management:
-      group_header: Прикріплено до контексту
-      discussion_header: Завантажено як вміст
-      added_by: завантажено {{name}}
       uploaded_to: в
     modal:
       title: Додати вкладення
-    method_form:
-      helptext: Слідкуйте за всіма вашими інструментами та файлами, щоб їх було легко знайти.
-      url_helptext: Посилання на веб-сайти та інструменти, такі як дошки Tello та документи Google
-      file_helptext: Завантажте документи та файли з комп'ютера
     form:
-      helptext: Натисніть, вставте або перетягніть файли сюди, щоб поділитися ними з вашою групою.
-      file_upload: Завантажте файл з комп'ютера
-      uploaded_already: Вже завантажили десь в інше місце?
-      upload_from_local: Маєте файл локально?
-      upload_file: Завантажте файл з комп'ютера
-      enter_url: Введіть URL
-      url_label: Посилання на вкладення
-      url_placeholder: Наприклад https://www.example.com/attachment.txt
       title_helptext: Як назвати це вкладення?
       title_label: Ім’я
       title_placeholder: Наприклад "Правила спільноти"
@@ -1232,7 +1214,6 @@ uk:
     meeting_created: Опитування щодо часу створено
     meeting_updated: Опитування щодо часу оновлено
     timeslots: Проміжки часу
-    no_options: "Ви ще не додали жодних проміжків часу."
     meeting_duration: Тривалість зустрічі
     add_option_placeholder: Введіть новий час
   poll_ranked_choice_form:

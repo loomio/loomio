@@ -1512,11 +1512,10 @@ en:
 
   thread_item:
     comment_replied_to:            "<strong><a href='u/{{username}}'>{{author}}</a></strong> in reply to <strong>{{title}}</strong>"
-    discussion_title_edited:       "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread title: <strong>{{title}}</strong>"
+    discussion_title_edited:       "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread title"
     discussion_context_edited:     "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread context"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread's attachments"
-    discussion_made_public:        "<strong><a href='u/{{username}}'>{{author}}</a></strong> made the thread public"
-    discussion_made_private:       "<strong><a href='u/{{username}}'>{{author}}</a></strong> made the thread private"
+    discussion_privacy_edited:     "<strong><a href='u/{{username}}'>{{author}}</a></strong> changed the thread privacy"
     discussion_edited:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread"
     discussion_moved:              "<strong><a href='u/{{username}}'>{{author}}</a></strong> moved the thread from <strong>{{title}}</strong>"
     new_comment:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong>"

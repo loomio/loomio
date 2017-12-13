@@ -3,6 +3,7 @@ class EventCollection
 
   def initialize(events)
     @events = Array(events)
+    ensure_event_parents
   end
 
   def any?
@@ -11,6 +12,10 @@ class EventCollection
 
   def serialize!(scope = {})
     Events::ArraySerializer.new(self, scope: default_scope.merge(scope)).as_json
+  end
+
+  def ensure_event_parents
+    @events.each(&:ensure_parent_present!)
   end
 
   private

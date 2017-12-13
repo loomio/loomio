@@ -7,7 +7,7 @@ describe "User abilities" do
   let(:non_member) { create(:user) }
   let(:group) { create(:formal_group) }
 
-  let(:ability) { Ability.new(user) }
+  let(:ability) { Ability::Base.new(user) }
   subject { ability }
 
   let(:own_invitation) {
@@ -305,7 +305,6 @@ describe "User abilities" do
 
     it { should     be_able_to(:update, group) }
     it { should     be_able_to(:email_members, group) }
-    it { should     be_able_to(:hide_next_steps, group) }
     it { should     be_able_to(:destroy, discussion) }
     it { should     be_able_to(:move, discussion) }
     it { should     be_able_to(:update, discussion) }

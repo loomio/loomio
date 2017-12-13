@@ -3,16 +3,13 @@ class Events::PollEdited < Event
   include Events::Notify::ByEmail
   include Events::Notify::Mentions
 
-  def self.publish!(version, actor)
+  def self.publish!(poll, actor)
+    version = poll.versions.last
     super version,
           user: actor,
           parent: version.created_event,
-          discussion: version.item.discussion
+          discussion: poll.discussion,
+          custom_fields: {version_id: version.id, changed_keys: version.object_changes.keys},
+          created_at: version.created_at
   end
-
-  def poll
-    eventable.item
-  end
-   # so that Events::Notify::Mentions looks at the poll rather than the PaperTrail::Version
-  alias :mentionable :poll
 end

@@ -9,7 +9,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       discussion:         'discussions'
       poll:               'polls'
       outcome:            'outcomes'
-      version:            'versions'
       stance:             'stances'
       comment:            'comments'
       comment_vote:       'comments'
@@ -20,7 +19,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @belongsTo 'parent', from: 'events'
       @belongsTo 'actor', from: 'users'
       @belongsTo 'discussion'
-      @belongsTo 'version'
       @hasMany  'notifications'
 
     parentOrSelf: ->

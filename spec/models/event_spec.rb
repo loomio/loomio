@@ -124,7 +124,7 @@ describe Event do
     it 'notifies mentioned users' do
       Events::PollCreated.publish!(poll, poll.author)
       poll.update(details: "#{poll.details} and @#{user_thread_loud.username}")
-      expect { Events::PollEdited.publish!(poll.versions.last, poll.author) }.to change { Events::UserMentioned.where(kind: :user_mentioned).count }.by(1) # (the newly mentioned user)
+      expect { Events::PollEdited.publish!(poll, poll.author) }.to change { Events::UserMentioned.where(kind: :user_mentioned).count }.by(1) # (the newly mentioned user)
       expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_thread_loud.id
     end
   end
