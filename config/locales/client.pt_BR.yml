@@ -508,7 +508,6 @@ pt_BR:
     modal:
       title: Adicionar como anexo
     form:
-      enter_url: Entre uma URL
       title_label: Nome
     flash:
       success: Anexo salvo

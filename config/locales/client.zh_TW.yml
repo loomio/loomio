@@ -535,6 +535,7 @@ zh_TW:
     membership_granted_upon_request: '任何人都能加入此群組。'
     membership_granted_upon_approval: '任何人都可以要求加入，但必須經過審核。'
     membership_granted_upon_approval_secret_parent: '<strong>根據要求</strong>：任何在 {{parent}} 群組的人都可以要求加入群組。'
+    features: '特定群組功能'
     thread_privacy: '討論串隱私權'
     public_threads: '僅限公開討論串'
     public_discussions_subgroup: '任何在 {{parentGroupName}} 群組的人都能看到這則討論串'
@@ -556,6 +557,9 @@ zh_TW:
     messages:
       group_created: '群組已啟動'
       group_updated: '群組已更新'
+  group_features:
+    useAnonymous: 啟用匿名投票
+    nested_comments: 啟用巢狀評論檢視
   membership_requests_card:
     heading: '申請成員資格'
     manage_requests: 管理申請
@@ -570,31 +574,24 @@ zh_TW:
     confirm_remove_helptext: 您確定您想要移除附件嗎？
     document_removed: 附件已移除
   document:
+    error:
+      invalid_format: 喔喔！您的 URL 無效。請確定其是以 http:// 或 https:// 開始
     list:
       title: 附件
-      no_poll_documents: 尚未有附件被上傳至此決策。
-      no_discussion_documents: 尚未有附件被上傳至此討論串。
-      no_group_documents: 尚未有附件被上傳至群組內容。點選下面的連結來看看所有在此群組中已上傳至討論串的附件。
+      no_group_documents: 仍無附件被上傳至群組描述
     management:
-      group_header: 附加到內容
-      discussion_header: 上傳為內容
-      added_by: 由 {{name}} 上傳
+      content_header: 所有附件
       uploaded_to: 在
     modal:
       title: 新增附件
     method_form:
-      helptext: 追蹤您所有的工具與檔案，這樣它們就可以比較好找到。
-      url_helptext: 到網頁與工具的連結，如 Trello 或是 Google 文件等
-      file_helptext: 從您的電腦上傳文件與檔案
+      helptext: 附加檔案或連結以將它們與群組分享。
+      url_helptext: 到網頁與線上資源的連結
+      file_helptext: 從您的電腦上傳檔案
     form:
-      helptext: 點選、貼上或是拖曳檔案到這裡以分享它們給您的群組。
-      file_upload: 從您的電腦中上傳檔案
-      uploaded_already: 已經上傳了其他東西？
-      upload_from_local: 本機有檔案嗎？
-      upload_file: 從您的電腦中上傳
-      enter_url: 輸入 URL
-      url_label: 附件 URL
-      url_placeholder: 例如：https://www.example.com/attachment.txt
+      url_label: URL
+      helptext: 點選此處，貼上或拖曳檔案以上傳
+      url_placeholder: 例如：https://www.example.com/attachment.zip
       title_helptext: 我們應該叫這個附件什麼名字？
       title_label: 名稱
       title_placeholder: 例如：「社群指南」
@@ -1264,7 +1261,7 @@ zh_TW:
     meeting_created: 時間投票已建立
     meeting_updated: 時間投票已更新
     timeslots: 時間欄位
-    no_options: "您尚未新增任何時間欄位。"
+    no_options: 輸入您目前時區 ({{zone}}) 的時間。參與者可以看到翻譯成他們本地時區的時間。
     meeting_duration: 會面持續時間
     add_option_placeholder: 輸入新時間
   poll_ranked_choice_form:
@@ -1359,6 +1356,7 @@ zh_TW:
     poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了 {{polltype}}：<strong>{{title}}</strong>"
     poll_expired: "{{polltype}} 已關閉：<strong>{{title}}</strong>"
     stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong>投票給：<strong>{{title}}</strong>"
+    event_removed: "從討論串中移除"
   poll_admin_page:
     title: 管理 - {{title}}
   poll_common_share_form:

@@ -486,9 +486,6 @@ de:
   documents_page:
     confirm_remove_title: Anhang entfernen
   document:
-    management:
-      discussion_header: Hochgeladene Inhalte
-      added_by: hochgeladen von {{name}}
     form:
       title_label: Name
   membership_requests_page:
@@ -969,7 +966,6 @@ de:
   poll_meeting_form:
     tool_tip_collapsed: Gemeinsam geeignete Zeiten für Meetings finden
     title_placeholder: z. B. Wann sollen wir unser nächstes Meeting ansetzen?
-    no_options: "Du hast noch keine Zeitvorschläge hinzugefügt."
     meeting_duration: Dauer des Meetings
   poll_ranked_choice_form:
     tool_tip_collapsed: Handlungsoptionen in einer Reihenfolge gewichten
