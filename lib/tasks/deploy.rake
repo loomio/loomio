@@ -23,16 +23,15 @@ def deploy_steps
   [
     "deploy:bump_version",
     "plugins:fetch[#{heroku_plugin_set}]",
-    "plugins:install[#{heroku_plugin_set}]",
+    "plugins:install[fetched]",
     "deploy:build",
     "deploy:commit",
     "deploy:push",
     "deploy:cleanup"
-  ]
+  ].join(' ')
 end
 
 namespace :deploy do
-
   desc "Setup heroku and github for deployment"
   task :setup do
     puts "Logging into heroku and setting up remote..."
@@ -46,13 +45,20 @@ namespace :deploy do
   desc "Deploy to heroku"
   task :heroku do
     puts "Deploying to #{heroku_remote}..."
+    run_commands("bundle exec rake #{deploy_steps}")
+    at_exit { run_commands("git branch -D #{deploy_branch}") }
+  end
+
+  desc "Bump version of repository if pushing to production"
+  task :bump_version do
+    puts "Bumping version from #{loomio_version}..."
     run_commands(
       "git checkout master",
-      "git checkout -b deploy-#{Time.now.to_i}",
-      "bundle exec rake #{deploy_steps.join(' ')}")
-    at_exit do
-      run_commands("git branch -D #{deploy_branch}")
-    end
+      "git reset --hard",
+      "ruby script/bump_version.rb patch",
+      "git add lib/version",
+      "git commit -m 'bump version to #{loomio_version}'",
+      "git push origin master")
   end
 
   desc "Builds assets for production push"
@@ -60,32 +66,22 @@ namespace :deploy do
     puts "Building clientside assets..."
     run_commands(
       "cd angular && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",
-      "mkdir -p public/client/#{Loomio::Version.current}",
-      "cp -r public/client/development/* public/client/#{Loomio::Version.current}")
+      "mkdir -p public/client/#{loomio_version}",
+      "cp -r public/client/development/* public/client/#{loomio_version}")
   end
 
   desc "Commits built assets to deployment branch"
   task :commit do
     puts "Committing assets to deployment branch..."
     run_commands(
+      "git checkout #{deploy_branch}",
       "rm -rf plugins/fetched/**/.git",
       "find plugins/fetched -name '*.*' | xargs git add -f",
       "find public/img/emojis -name '*.png' | xargs git add -f",
       "git add -f plugins",
-      "git add public/client/#{Loomio::Version.current} public/client/fonts -f",
+      "git add public/client/#{loomio_version} public/client/fonts -f",
       "git commit -m 'Add compiled assets / plugin code'",
       "git checkout master")
-  end
-
-  desc "Bump version of repository if pushing to production"
-  task :bump_version do
-    puts "Bumping version from #{Loomio::Version.current}..."
-    run_commands(
-      "git checkout master",
-      "ruby script/bump_version.rb patch",
-      "git add lib/version",
-      "git commit -m 'bump version to #{Loomio::Version.current}'",
-      "git push origin #{deploy_branch}:master")
   end
 
   desc "Push to heroku!"
@@ -97,14 +93,20 @@ namespace :deploy do
   desc "Migrate heroku database and restart dynos"
   task :cleanup do
     puts "Migrating heroku..."
-    run_commands("#{heroku_cli} run rake db:migrate -a #{heroku_remote}")
+    run_commands(
+      "#{heroku_cli} run rake db:migrate -a #{heroku_remote}",
+      "#{heroku_clu} run rester -a #{heroku_remote}")
   end
 end
 
 task :deploy => :"deploy:heroku"
 
+def loomio_version
+  Loomio::Version.current
+end
+
 def deploy_branch
-  @deploy_branch ||= `git rev-parse --abbrev-ref HEAD`.chomp
+  @deploy_branch ||= "deploy-#{Time.now.to_i}"
 end
 
 def heroku_cli
