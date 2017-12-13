@@ -81,6 +81,7 @@ namespace :deploy do
   task :bump_version do
     puts "Bumping version from #{Loomio::Version.current}..."
     run_commands(
+      "git checkout master",
       "ruby script/bump_version.rb patch",
       "git add lib/version",
       "git commit -m 'bump version to #{Loomio::Version.current}'",
@@ -95,10 +96,8 @@ namespace :deploy do
 
   desc "Migrate heroku database and restart dynos"
   task :cleanup do
-    puts "Migrating & resetting heroku..."
-    run_commands(
-      "#{heroku_cli} run rake db:migrate -a #{heroku_remote}",
-      "#{heroku_cli} restart -a #{heroku_remote}")
+    puts "Migrating heroku..."
+    run_commands("#{heroku_cli} run rake db:migrate -a #{heroku_remote}")
   end
 end
 
