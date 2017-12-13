@@ -9,7 +9,7 @@
           {{ document.title | truncate:50 }}
       .document-management__caption.md-caption
         %a.lmo-truncate{lmo-href-for: "document.model()"}>
-          {{ document.modelTitle() }}
+          {{ document.modelTitle() | truncate:50 }}
       .document-management__caption.md-caption
         %span {{document.authorName()}}
         %span> ·
