@@ -215,6 +215,15 @@ en:
         normal: "You will be emailed about announcements in new groups."
         quiet: "You won't be emailed about new groups."
 
+  close_explanation_modal:
+    aria_label: Close thread
+    close_thread: Close thread
+    body_header: |
+      <p>Closing a thread allows you to reduce the visibility of conversations which are old or no longer relevant.</p>
+    body_footer: |
+      <p>Anyone may still comment or start a poll in a closed thread, but it will not appear in the group's thread list or on the dashboard.</p>
+    image_alt: Closing threads all
+
   mute_explanation_modal:
     aria_label: Mute thread
     mute_thread: Mute thread
@@ -457,7 +466,14 @@ en:
     you_and_name_and_count_more: "You, {{name}} and {{count}} more"
     name_and_count_more: "{{name}} and {{count}} more"
 
+  context_panel:
+    thread_status:
+      pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
+      closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
+
   group_page:
+    show_opened: Open ({{count}})
+    show_closed: Closed ({{count}})
     thread_list:
       empty:
         no_discussions_in_group: "This group does not have any threads yet."
@@ -888,7 +904,6 @@ en:
     thread_preview:
       you_voted: 'You voted {{position}}'
       undecided: 'You are undecided'
-      pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
     threads_from:
       group: 'Threads from'
       pinned: 'Pinned threads'
@@ -919,8 +934,11 @@ en:
       pinned: 'Thread pinned'
       unpinned: 'Thread unpinned'
     volume:
-      mute_message: 'Thread muted.'
+      mute_message: 'Thread muted'
       unmute_message: 'Thread unmuted'
+    closed:
+      reopened: 'Thread reopened'
+      closed: 'Thread closed'
 
   activity_card:
     beginning: Beginning
@@ -942,6 +960,8 @@ en:
     email_settings: 'Email settings'
     edit: 'Edit'
     edit_thread: 'Edit'
+    close_thread: 'Close'
+    reopen_thread: 'Reopen'
     pin_thread: 'Pin'
     unpin_thread: 'Unpin'
     mute_thread: 'Mute'

@@ -134,9 +134,9 @@ module Dev::NintiesMoviesHelper
 
   def create_closed_discussion
     unless @closed_discussion
-      @closed_discussion = Discussion.create(title: 'What star sign are you? (closed)',
+      @closed_discussion = Discussion.create(title: 'This thread is old and closed',
                                              private: false,
-                                             closed: true,
+                                             closed_at: Time.now,
                                              group: create_group,
                                              author: jennifer)
       DiscussionService.create(discussion: @closed_discussion, actor: @closed_discussion.author)

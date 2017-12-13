@@ -6,7 +6,6 @@ class Queries::VisibleDiscussions < Delegator
     @relation = Discussion.
                   joins(:group).
                   where('groups.archived_at IS NULL').
-                  published.
                   includes(:author, :polls, {group: [:parent]})
     @relation = self.class.apply_privacy_sql(user: @user, group_ids: @group_ids, relation: @relation)
     super(@relation)
@@ -67,12 +66,12 @@ class Queries::VisibleDiscussions < Delegator
   end
 
   def is_open
-    @relation = @relation.where(closed: false)
+    @relation = @relation.is_open
     self
   end
 
   def is_closed
-    @relation = @relation.where(closed: true)
+    @relation = @relation.is_closed
     self
   end
 

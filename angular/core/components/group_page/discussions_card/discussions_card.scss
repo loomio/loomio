@@ -4,6 +4,12 @@
   justify-content: space-between;
 }
 
+.discussions-card__filter {
+  text-decoration: none;
+  line-height: 24px;
+  &--selected { font-weight: bold; }
+}
+
 .discussions-card__dropdown {
   margin: 0 0 10px 0;
 }

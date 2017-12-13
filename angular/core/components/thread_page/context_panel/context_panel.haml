@@ -1,7 +1,8 @@
 %section.context-panel.lmo-card-padding.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
   .context-panel__top
-    .context-panel__pin{ng-if: "discussion.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
-      %i.mdi.mdi-pin
+    .context-panel__status{ng-if: "status()", ng-attr-title: "{{statusTitle()}}", ng-switch: "status()"}
+      %i.mdi.mdi-door-closed{ng-switch-when: "closed"}
+      %i.mdi.mdi-pin{ng-switch-when: "pinned"}
 
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
       %h1.lmo-h1.context-panel__heading{ng-if: "!translation"}

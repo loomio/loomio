@@ -24,6 +24,33 @@ describe 'Discussion Page', ->
       page.click('.thread-preview__link')
       page.expectElement('.timeago')
 
+  describe 'close thread', ->
+    it 'can close and reopen a thread', ->
+      page.loadPath 'setup_open_and_closed_discussions'
+      page.expectText '.discussions-card__header', 'Open (1)'
+      page.expectText '.discussions-card__header', 'Closed (1)'
+      page.expectNoText '.discussions-card', 'This thread is old and closed'
+      page.expectText '.discussions-card', 'What star sign are you?'
+
+      page.clickFirst '.thread-preview'
+      page.click '.context-panel-dropdown__button'
+      page.click '.context-panel-dropdown__option--close'
+      page.expectElement '.close-explanation-modal'
+      page.click '.close-explanation-modal__close-thread'
+      page.expectFlash 'Thread closed'
+      page.click '.group-theme__name--compact'
+
+      page.expectNoText '.discussions-card', 'What star sign are you?'
+      page.click '.discussions-card__filter--closed'
+      page.expectText '.discussions-card', 'What star sign are you?'
+      page.clickFirst '.thread-preview'
+      page.click '.context-panel-dropdown__button'
+      page.click '.context-panel-dropdown__option--reopen'
+      page.expectFlash 'Thread reopened'
+
+      page.click '.group-theme__name--compact'
+      page.expectText '.discussions-card', 'What star sign are you?'
+
   describe 'edit thread', ->
     beforeEach ->
       page.loadPath('setup_discussion')

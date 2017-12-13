@@ -4,6 +4,7 @@ class Events::DiscussionClosed < Event
            eventable: discussion,
            user: actor,
            parent: discussion.created_event,
-           discussion: discussion).tap { |e| EventBus.broadcast('discussion_closed', e) }
+           discussion: discussion,
+           created_at: discussion.closed_at).tap { |e| EventBus.broadcast('discussion_closed', e) }
   end
 end

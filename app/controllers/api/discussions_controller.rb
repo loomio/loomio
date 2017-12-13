@@ -50,6 +50,16 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def close
+    service.close discussion: load_resource, actor: current_user
+    respond_with_resource
+  end
+
+  def reopen
+    service.reopen discussion: load_resource, actor: current_user
+    respond_with_resource
+  end
+
   def pin
     service.pin discussion: load_resource, actor: current_user
     respond_with_resource
@@ -83,8 +93,8 @@ class API::DiscussionsController < API::RestfulController
 
   def collection_for_dashboard(collection, filter: params[:filter])
     case filter
-    when 'show_muted'  then collection.muted.sorted_by_latest_activity
-    else                    collection.not_muted.sorted_by_importance
+    when 'show_muted'  then collection.is_open.muted.sorted_by_latest_activity
+    else                    collection.is_open.not_muted.sorted_by_importance
     end
   end
 

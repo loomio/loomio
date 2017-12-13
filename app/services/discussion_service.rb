@@ -33,7 +33,7 @@ class DiscussionService
 
   def self.close(discussion:, actor:)
     actor.ability.authorize! :update, discussion
-    discussion.update(closed: true)
+    discussion.update(closed_at: Time.now)
 
     EventBus.broadcast('discussion_close', discussion, actor)
     Events::DiscussionClosed.publish!(discussion, actor)
@@ -41,7 +41,7 @@ class DiscussionService
 
   def self.reopen(discussion:, actor:)
     actor.ability.authorize! :update, discussion
-    discussion.update(closed: false)
+    discussion.update(closed_at: nil)
 
     EventBus.broadcast('discussion_reopen', discussion, actor)
     Events::DiscussionReopened.publish!(discussion, actor)
