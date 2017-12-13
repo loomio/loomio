@@ -95,7 +95,7 @@ namespace :deploy do
     puts "Migrating heroku..."
     run_commands(
       "#{heroku_cli} run rake db:migrate -a #{heroku_remote}",
-      "#{heroku_clu} run rester -a #{heroku_remote}")
+      "#{heroku_cli} run rester -a #{heroku_remote}")
   end
 end
 
