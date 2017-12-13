@@ -279,7 +279,7 @@ module Dev::NintiesMoviesHelper
 
     # poll_edited
     create_poll.update(title: "Another poll title")
-    Events::PollEdited.publish!(create_poll.versions.last, patrick)
+    Events::PollEdited.publish!(create_poll, patrick)
 
     # stance_created
     Events::StanceCreated.publish!(create_stance)

@@ -627,31 +627,24 @@ en:
     document_removed: Attachment removed
 
   document:
+    error:
+      invalid_format: Oops! Your URL is invalid. Ensurer it begins with http:// or https://
     list:
       title: Attachments
-      no_poll_documents: No attachments have been uploaded to this decision yet.
-      no_discussion_documents: No attachments have been uploaded to this thread yet.
-      no_group_documents: No attachments have been uploaded to the group context yet. Click the link below to see all attachments uploaded to threads within this group.
+      no_group_documents: No attachments have been uploaded to the group description yet
     management:
-      group_header: Attached to context
-      discussion_header: Uploaded as content
-      added_by: uploaded by {{name}}
+      content_header: All attachments
       uploaded_to: in
     modal:
       title: Add an attachment
     method_form:
-      helptext: Keep track of all your tools and files, so that they’re easy to find.
-      url_helptext: Link to websites and tools such as Tello boards and Google docs
-      file_helptext: Upload documents and files from your computer
+      helptext: Attach files or links to share them with the group.
+      url_helptext: Link to websites and online resources
+      file_helptext: Upload files from your computer
     form:
-      helptext: Click, paste, or drop files here to share them with your group.
-      file_upload: Upload a file from your computer
-      uploaded_already: Already uploaded somewhere else?
-      upload_from_local: Have a file locally?
-      upload_file: Upload from your computer
-      enter_url: Enter a URL
-      url_label: Attachment URL
-      url_placeholder: E.g. https://www.example.com/attachment.txt
+      url_label: URL
+      helptext: Click here, paste, or drop files to upload
+      url_placeholder: E.g. https://www.example.com/attachment.zip
       title_helptext: What should we call this attachment?
       title_label: Name
       title_placeholder: E.g. 'Community Guidelines'
@@ -1496,11 +1489,10 @@ en:
 
   thread_item:
     comment_replied_to:            "<strong><a href='u/{{username}}'>{{author}}</a></strong> in reply to <strong>{{title}}</strong>"
-    discussion_title_edited:       "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread title: <strong>{{title}}</strong>"
+    discussion_title_edited:       "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread title"
     discussion_context_edited:     "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread context"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread's attachments"
-    discussion_made_public:        "<strong><a href='u/{{username}}'>{{author}}</a></strong> made the thread public"
-    discussion_made_private:       "<strong><a href='u/{{username}}'>{{author}}</a></strong> made the thread private"
+    discussion_privacy_edited:     "<strong><a href='u/{{username}}'>{{author}}</a></strong> changed the thread privacy"
     discussion_edited:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread"
     discussion_moved:              "<strong><a href='u/{{username}}'>{{author}}</a></strong> moved the thread from <strong>{{title}}</strong>"
     discussion_closed:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the thread"

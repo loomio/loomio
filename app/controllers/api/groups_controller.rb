@@ -28,7 +28,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def subgroups
-    self.collection = load_and_authorize(:group).subgroups.select { |g| can? :show, g }
+    self.collection = load_and_authorize(:group).subgroups.select { |g| current_user.can? :show, g }
     respond_with_collection
   end
 

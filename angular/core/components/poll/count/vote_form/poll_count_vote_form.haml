@@ -1,7 +1,6 @@
 %form.poll-count-vote-form
   %poll_common_participant_form{stance: "stance"}
-
-  %lmo_textarea.poll-common-vote-form__reason{model: "stance", field: "reason", no-attachments: "true", label: "'poll_common.reason' | translate", placeholder: "'poll_common.reason_placeholder' | translate", maxlength: "250"}
+  %poll_common_stance_reason{stance: "stance"}
 
   .poll-count-vote-form__options
     %md-button.poll-count-vote-form__option.poll-count-vote-form__option--yes{ng-click: "submit('yes')", ng-style: "{background: yesColor}"}

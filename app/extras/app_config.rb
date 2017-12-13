@@ -13,11 +13,19 @@ class AppConfig
     group_features
   )
 
+  BANNED_CHARS = %(\\s:,;'"`<>)
+  EMAIL_REGEX  = /[^#{BANNED_CHARS}]+?@[^#{BANNED_CHARS}]+\.[^#{BANNED_CHARS}]+/
+  URL_REGEX    = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/
+
   CONFIG_FILES.each do |config|
     define_singleton_method(config) do
       instance_variable_get(:"@#{config}") ||
       instance_variable_set(:"@#{config}", YAML.load_file(Rails.root.join("config", "#{config}.yml")))
     end
+  end
+
+  def self.image_regex
+    doctypes.detect { |type| type['name'] == 'image' }['regex']
   end
 
   def self.poll_types
@@ -72,7 +80,7 @@ class AppConfig
 
    def self.errbit
      {
-       key: ENV['ERRBIT_KEY'],
+       key: ENV['ERRBIT_JS_KEY'],
        url: "https://#{ENV['ERRBIT_HOST']}"
      }
    end

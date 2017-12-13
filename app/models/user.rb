@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
 
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :attachments, dependent: :destroy
+  has_many :documents, foreign_key: :author_id, dependent: :destroy
   has_many :drafts, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
 
@@ -184,7 +184,7 @@ class User < ActiveRecord::Base
 
   # Provide can? and cannot? as methods for checking permissions
   def ability
-    @ability ||= Ability.new(self)
+    @ability ||= Ability::Base.new(self)
   end
 
   delegate :can?, :cannot?, :to => :ability

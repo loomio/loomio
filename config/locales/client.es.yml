@@ -573,29 +573,11 @@ es:
   document:
     list:
       title: Adjuntos
-      no_poll_documents: Aún no se han cargado archivos adjuntos a esta decisión.
-      no_discussion_documents: Aún no se han cargado archivos adjuntos a este hilo.
-      no_group_documents: 'Ningún archivo adjunto ha sido añadido en el contexto. Clic en el enlace debajo para ver todos los adjuntos añadidos a hilos dentro de este grupo. '
     management:
-      group_header: Añadido al contexto
-      discussion_header: Subido como contenido
-      added_by: Subido por {{name}}
       uploaded_to: en
     modal:
       title: Agregar archivo adjunto
-    method_form:
-      helptext: Mantén ordenados todas tus herramientas y archivos para que sean fácil de encontrar
-      url_helptext: Enlaza con páginas web y herramientas como Trello y documentos de Google
-      file_helptext: Sube documentos y archivos desde tu ordenador
     form:
-      helptext: Clic, pega, o arrastra tus archivos aquí para compartirlos con tu grupo.
-      file_upload: Sube un archivo desde tu ordenador
-      uploaded_already: ¿Ya lo has subido en otro lado?
-      upload_from_local: '¿Tienes un archivo local? '
-      upload_file: Sube desde tu ordenador
-      enter_url: Ingresa un URL
-      url_label: Adjunto URL
-      url_placeholder: E.j. https://www.example.com/attachment.txt
       title_helptext: ¿Cómo llamamos este adjunto?
       title_label: Nombre
       title_placeholder: 'E.j. ''Guías Comunitarias'' '
@@ -1265,7 +1247,6 @@ es:
     meeting_created: Coordinación horaria iniciada
     meeting_updated: Coordinación horaria editada
     timeslots: Horarios
-    no_options: "No has agregado ningún horario todavía."
     meeting_duration: Duración de reunión
     add_option_placeholder: Ingrese una nueva hora
   poll_ranked_choice_form:

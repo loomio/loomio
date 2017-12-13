@@ -47,7 +47,7 @@ class API::InvitationsController < API::RestfulController
   end
 
   def email_addresses
-    params.require(:invitation_form)[:emails].scan(ReceivedEmail::EMAIL_REGEX)
+    params.require(:invitation_form)[:emails].scan(AppConfig::EMAIL_REGEX)
   end
 
   def respond_with_errors(message, translation_values = {})

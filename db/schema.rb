@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212054333) do
+ActiveRecord::Schema.define(version: 20171213023743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -251,12 +251,12 @@ ActiveRecord::Schema.define(version: 20171212054333) do
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
 
   create_table "documents", force: :cascade do |t|
-    t.integer  "model_id",   null: false
-    t.string   "model_type", null: false
+    t.integer  "model_id"
+    t.string   "model_type"
     t.string   "title"
     t.string   "url"
-    t.string   "doctype",    null: false
-    t.string   "color",      null: false
+    t.string   "doctype",        null: false
+    t.string   "color",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "icon"

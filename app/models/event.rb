@@ -39,7 +39,6 @@ class Event < ActiveRecord::Base
   def trigger!
   end
 
-
   def should_have_parent?
     %w[stance_created
     poll_option_added
@@ -54,23 +53,18 @@ class Event < ActiveRecord::Base
     (self.kind == 'poll_created' && self.discussion_id.present?)
   end
 
-  def parent
-    super || should_have_parent? && find_and_update_parent!
-  end
-
-  def find_and_update_parent!
-    event = eventable.parent_event
-    self.update(parent: event) if event
-    event
+  def ensure_parent_present!
+    return if self.parent_id || !should_have_parent?
+    self.update(parent: eventable.parent_event)
   end
 
   private
 
   def call_thread_item_created
-    discussion.thread_item_created! if discussion_id.present?
+    discussion.thread_item_created! if discussion.present?
   end
 
   def call_thread_item_destroyed
-    discussion.thread_item_destroyed! if discussion_id.present?
+    discussion.thread_item_destroyed! if discussion.present?
   end
 end

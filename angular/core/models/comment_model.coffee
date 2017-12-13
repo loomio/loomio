@@ -1,20 +1,20 @@
-angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) ->
-  class CommentModel extends DraftableModel
+angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, HasDocuments, AppConfig) ->
+  class CommentModel extends BaseModel
     @singular: 'comment'
     @plural: 'comments'
     @indices: ['discussionId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.comment
     @draftParent: 'discussion'
-    @draftPayloadAttributes: ['body', 'attachment_ids']
+    @draftPayloadAttributes: ['body', 'document_ids']
 
     afterConstruction: ->
-      @newAttachmentIds = _.clone(@attachmentIds) or []
+      HasDrafts.apply @
+      HasDocuments.apply @
 
     defaultValues: ->
       usesMarkdown: true
       discussionId: null
       body: ''
-      attachmentIds:      []
       mentionedUsernames: []
 
     relationships: ->
@@ -25,11 +25,6 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
 
     createdEvent: ->
       @recordStore.events.find(kind: "new_comment", eventableId: @id)[0]
-
-    serialize: ->
-      data = @baseSerialize()
-      data.comment.attachment_ids = @newAttachmentIds
-      data
 
     reactions: ->
       @recordStore.reactions.find
@@ -54,12 +49,6 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
     reactors: ->
       @recordStore.users.find(_.pluck(@reactions(), 'userId'))
 
-    newAttachments: ->
-      @recordStore.attachments.find(@newAttachmentIds)
-
-    attachments: ->
-      @recordStore.attachments.find(attachableId: @id, attachableType: _.capitalize(@constructor.singular))
-
     authorName: ->
       @author().name
 
@@ -74,6 +63,9 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       _.each @mentionedUsernames, (username) ->
         cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
       cooked
+
+    beforeDestroy: ->
+      _.invoke @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'
 
     edited: ->
       @versionsCount > 1

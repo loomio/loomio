@@ -11,7 +11,7 @@
         %span.poll-proposal-vote-form__chosen-option--name{translate: "poll_proposal_options.{{option.name}}"}
   %validation_errors{subject: "stance", field: "stanceChoices"}
 
-  %lmo_textarea.poll-common-vote-form__reason{model: "stance", field: "reason", no-attachments: "true", label: "'poll_common.reason' | translate", placeholder: "'poll_common.reason_placeholder' | translate", maxlength: "250"}
+  %poll_common_stance_reason{stance: "stance"}
 
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     %show_results_button{ng-if: "stance.isNew()"}

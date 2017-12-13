@@ -12,13 +12,13 @@ angular.module('loomioApp').factory 'VersionModel', (BaseModel) ->
 
     editedAttributeNames: ->
       _.filter _.keys(@changes).sort(), (key) ->
-        _.include ['title', 'name', 'description', 'closing_at', 'private', 'attachment_ids'], key
+        _.include ['title', 'name', 'description', 'closing_at', 'private', 'document_ids'], key
 
     attributeEdited: (name) ->
        _.include(_.keys(@changes), name)
 
     model: ->
-      @discussion() or @poll() or @comment()
+      @recordStore["#{@itemType.toLowerCase()}s"].find(@itemId)
 
     isCurrent: ->
       @id == _.last(@model().versions())['id']

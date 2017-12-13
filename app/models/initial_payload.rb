@@ -18,6 +18,10 @@ InitialPayload = Struct.new(:user) do
       plugins:             Plugins::Repository.to_config,
       theme:               AppConfig.theme,
       errbit:              AppConfig.errbit,
+      regex: {
+        url:               JsRegex.new(AppConfig::URL_REGEX),
+        email:             JsRegex.new(AppConfig::EMAIL_REGEX)
+      },
       features: {
         group:             AppConfig.group_features,
         app:               AppConfig.app_features

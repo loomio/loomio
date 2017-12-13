@@ -573,29 +573,11 @@ it:
   document:
     list:
       title: Allegati
-      no_poll_documents: Nessun allegato è stato caricato in questa decisione finora.
-      no_discussion_documents: Nessun allegato è stato caricato in questa discussione finora.
-      no_group_documents: Nessun allegato è stato caricato nel contesto di questo gruppo finora. Clicca sul link qui sotto per vedere tutti gli allegati caricati nelle discussioni di questo gruppo.
     management:
-      group_header: Allegato al contesto
-      discussion_header: Caricato come contenuto
-      added_by: caricato da  {{name}}
       uploaded_to: in
     modal:
       title: Aggiungi allegato
-    method_form:
-      helptext: Tieni traccia di tutti i tuoi strumenti e file, in modo che siano facili da trovare.
-      url_helptext: Link a siti web e strumenti come schede Trello e documenti Google
-      file_helptext: Carica documenti e files dal tuo computer
     form:
-      helptext: 'Clicca, incolla o rilascia qui i file per condividerli con il tuo gruppo. '
-      file_upload: Carica un file dal tuo computer
-      uploaded_already: Hai già caricato qualcosa?
-      upload_from_local: Hai un file locale?
-      upload_file: Caricato dal tuo computer
-      enter_url: Inserisci un URL
-      url_label: URL dell'allegato
-      url_placeholder: 'Esempio: https://www.example.com/attachment.txt'
       title_helptext: Come vuoi nominare questo allegato?
       title_label: Nome
       title_placeholder: 'Esempio: ''Linee Guida della Comunità'''

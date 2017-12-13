@@ -571,29 +571,11 @@ fr:
   document:
     list:
       title: Pièces jointes
-      no_poll_documents: Aucun document n'a été ajouté à cette décision pour le moment.
-      no_discussion_documents: Aucun document n'a été ajouté à cette discussion pour le moment.
-      no_group_documents: Aucun document n'a été ajouté à la description du groupe pour le moment. Utilisez le lien ci-dessous pour voir tous les documents ajoutés à des discussions dans ce groupe.
     management:
-      group_header: Ajouté à la description
-      discussion_header: Téléchargé comme contenu
-      added_by: téléchargé par {{name}}
       uploaded_to: dans
     modal:
       title: Ajouter un document
-    method_form:
-      helptext: Organisez vos outils et fichiers pour qu'ils soient faciles à retrouver.
-      url_helptext: Liens vers des sites et des outils comme des tableaux Trello ou des Google docs
-      file_helptext: Ajoutez des fichiers depuis votre ordinateur ou votre mobile
     form:
-      helptext: Cliquez, collez ou déposez des fichiers ici pour les partager avec votre groupe.
-      file_upload: Ajoutez un fichier depuis votre ordinateur ou votre mobile
-      uploaded_already: Déjà téléchargé ailleurs?
-      upload_from_local: Vous avez un fichier sur votre ordinateur ou mobile?
-      upload_file: Télécharger depuis votre ordinateur ou votre mobile
-      enter_url: Saisir une adresse URL
-      url_label: URL du document
-      url_placeholder: par exemple « https://www.exemple.com/ressource.txt »
       title_helptext: Comment nommer ce document?
       title_label: Nom
       title_placeholder: Par exemple « Règles du groupe »
@@ -840,7 +822,7 @@ fr:
   discussion:
     activity: 'Activité'
     activity_placeholder: 'Aucune activité pour l’instant !'
-    load_previous: 'Charger l’activité récente'
+    load_previous: 'Afficher les activités précédentes'
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     pin:
       pinned: 'Discussion épinglée'
@@ -1263,7 +1245,6 @@ fr:
     meeting_created: Sondage réunion créé
     meeting_updated: Sondage réunion mis à jour
     timeslots: Créneaux horaires
-    no_options: "Vous n’avez encore pas ajouté de créneaux horaires."
     meeting_duration: Durée de la réunion
     add_option_placeholder: Entrer un nouvel horaire
   poll_ranked_choice_form:
@@ -1357,6 +1338,7 @@ fr:
     poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a modifié le {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} fermé: <strong>{{title}}</strong>"
     stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a voté sur: <strong>{{title}}</strong>"
+    event_removed: "retiré de la discussion"
   poll_admin_page:
     title: Administration - {{title}}
   poll_common_share_form:
@@ -1441,7 +1423,7 @@ fr:
       Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
       Si vous préférez utiliser un mot de passe pour vous connecter à l’avenir, vous pouvez le définir sur votre page de profil.
     login_link_helptext_with_password: "Entrez votre mot de passe, ou connectez-vous par courriel."
-    sign_up_helptext: "Entrez simplement le surnom que vous voulez avoir, et nous vous enverrons un lien de connexion."
+    sign_up_helptext: "Saisissez le nom sous lequel vous voulez intervenir, et nous vous enverrons un lien de connexion."
     oauth_confirm_helptext: "Confirmez les informations ci-dessous et nous vous enverrons un lien de connexion."
     name_required: Entrez un nom
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé! Merci de nous contacter pour réactiver votre compte utilisateur.
