@@ -7,8 +7,6 @@ class FormalGroup < Group
 
   validate :limit_inheritance
 
-  before_save :update_full_name_if_name_changed
-
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
@@ -139,18 +137,12 @@ class FormalGroup < Group
     admins.first.email
   end
 
-  def update_full_name_if_name_changed
-    if changes.include?('name')
-      update_full_name
-      subgroups.each do |subgroup|
-        subgroup.full_name = name + " - " + subgroup.name
-        subgroup.save(validate: false)
-      end
+  def full_name
+    if is_subgroup?
+      [parent.name, name].join(' - ')
+    else
+      name
     end
-  end
-
-  def update_full_name
-    self.full_name = calculate_full_name
   end
 
   def id_and_subgroup_ids
@@ -174,10 +166,6 @@ class FormalGroup < Group
   end
 
   private
-
-  def calculate_full_name
-    [parent&.name, name].compact.join(" - ")
-  end
 
   def limit_inheritance
     if parent_id.present?
