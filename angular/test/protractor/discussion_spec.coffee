@@ -152,9 +152,6 @@ describe 'Discussion Page', ->
       page.expectFlash 'Thread pinned'
       page.expectElement '.context-panel__pin'
 
-      page.click '.sidebar__list-item-button--recent'
-      page.expectElement '.thread-preview__pin'
-
   describe 'changing thread email settings', ->
     beforeEach ->
       page.loadPath('setup_discussion')

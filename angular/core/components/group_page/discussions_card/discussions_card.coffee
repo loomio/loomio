@@ -25,6 +25,7 @@ angular.module('loomioApp').directive 'discussionsCard', ($location, Records, Re
       $scope.loader.fetchRecords()
 
     $scope.init($location.search().filter)
+    $scope.$on 'subgroupsLoaded', -> $scope.init($scope.filter)
 
     $scope.openDiscussionModal = ->
       ModalService.open DiscussionModal, discussion: -> Records.discussions.build(groupId: $scope.group.id)
