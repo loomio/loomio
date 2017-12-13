@@ -61,10 +61,10 @@ class Event < ActiveRecord::Base
   private
 
   def call_thread_item_created
-    discussion.thread_item_created! if discussion_id.present?
+    discussion.thread_item_created! if discussion.present?
   end
 
   def call_thread_item_destroyed
-    discussion.thread_item_destroyed! if discussion_id.present?
+    discussion.thread_item_destroyed! if discussion.present?
   end
 end
