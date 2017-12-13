@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'HasDocuments', ->
       model.serialize = ->
         data = @baseSerialize()
         root = model.constructor.serializationRoot or model.constructor.singular
-        data[root].document_ids = _.difference(@newDocumentIds, @removedDocumentIds)
+        data[root].document_ids = _.pluck model.newAndPersistedDocuments(), 'id'
         data
 
       model.showDocumentTitle = opts.showTitle
