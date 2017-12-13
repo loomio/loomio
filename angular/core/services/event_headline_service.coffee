@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
         'new_comment'
 
     discussionEditedKey: (event) ->
-      changes = _.keys(event.customFields.changed_keys)
+      changes = event.customFields.changed_keys
       if _.contains(changes, 'title')
         'discussion_title_edited'
       else if _.contains(changes, 'private')
