@@ -387,6 +387,8 @@ ActiveRecord::Schema.define(version: 20171213050734) do
     t.integer  "polls_count",                                    default: 0,              null: false
     t.integer  "subgroups_count",                                default: 0,              null: false
     t.string   "type",                                           default: "FormalGroup",  null: false
+    t.integer  "open_discussions_count",                         default: 0,              null: false
+    t.integer  "closed_discussions_count",                       default: 0,              null: false
   end
 
   add_index "groups", ["archived_at"], name: "index_groups_on_archived_at", using: :btree
