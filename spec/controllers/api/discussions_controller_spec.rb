@@ -561,6 +561,47 @@ describe API::DiscussionsController do
     end
   end
 
+  describe 'close' do
+    it 'allows admins to close a thread' do
+      sign_in user
+      discussion.group.add_admin! user
+      post :close, id: discussion.id
+      expect(discussion.reload.closed_at).to be_present
+    end
+
+    it 'does not allow non-admins to close a thread' do
+      sign_in another_user
+      post :close, id: discussion.id
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow logged out users to close a thread' do
+      post :close, id: discussion.id
+      expect(response.status).to eq 403
+    end
+  end
+
+  describe 'reopen' do
+    before { discussion.update(closed_at: 1.day.ago) }
+
+    it 'allows admins to reopen a thread' do
+      sign_in user
+      discussion.group.add_admin! user
+      post :reopen, id: discussion.id
+      expect(discussion.reload.closed_at).to be_blank
+    end
+
+    it 'does not allow non-admins to reopen a thread' do
+      sign_in another_user
+      post :reopen, id: discussion.id
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow logged out users to reopen a thread' do
+      post :reopen, id: discussion.id
+      expect(response.status).to eq 403
+    end
+  end
 
   describe 'pin' do
     it 'allows admins to pin a thread' do
