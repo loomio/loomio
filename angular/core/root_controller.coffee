@@ -51,7 +51,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
 
   $scope.$on 'setBackgroundImageUrl', (event, group) ->
     url = group.coverUrl(ViewportService.viewportSize())
-    angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})")
+    angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})").addClass('lmo-group-background')
 
   $scope.$on 'clearBackgroundImageUrl', (event) ->
     angular.element(document.querySelector('.lmo-main-background')).removeAttr('style')
