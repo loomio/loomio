@@ -25,7 +25,6 @@ angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
     $scope.isSelected = (option) ->
       $scope.selectedOption == option
 
-    MentionService.applyMentions($scope, $scope.stance)
     KeyEventService.submitOnEnter($scope)
     KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', ->
       swap($scope.selectedOptionIndex(), $scope.selectedOptionIndex() - 1)

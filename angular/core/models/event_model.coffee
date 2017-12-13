@@ -56,7 +56,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       _.invoke(@notifications(), 'remove')
 
     removeFromThread: =>
-      @remote.patchMember(@id, 'remove_from_thread')
+      @remote.patchMember(@id, 'remove_from_thread').then => @remove()
 
     next: ->
       @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]
