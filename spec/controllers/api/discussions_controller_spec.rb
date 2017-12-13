@@ -567,6 +567,8 @@ describe API::DiscussionsController do
       discussion.group.add_admin! user
       post :close, id: discussion.id
       expect(discussion.reload.closed_at).to be_present
+      json = JSON.parse(response.body)
+      expect(json.keys).to include 'events'
     end
 
     it 'does not allow non-admins to close a thread' do
@@ -589,6 +591,8 @@ describe API::DiscussionsController do
       discussion.group.add_admin! user
       post :reopen, id: discussion.id
       expect(discussion.reload.closed_at).to be_blank
+      json = JSON.parse response.body
+      expect(json.keys).to include 'events'
     end
 
     it 'does not allow non-admins to reopen a thread' do

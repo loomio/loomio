@@ -22,7 +22,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
       "dashboard#{_.capitalize(name)}"
 
   filters = (filters) =>
-    ['only_threads_in_my_groups', 'hide_closed', @filter].concat(filters)
+    ['only_threads_in_my_groups', 'show_opened', @filter].concat(filters)
 
   @views =
     proposals: ThreadQueryService.queryFor

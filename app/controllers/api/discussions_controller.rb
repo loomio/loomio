@@ -51,12 +51,12 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def close
-    service.close discussion: load_resource, actor: current_user
+    @event = service.close discussion: load_resource, actor: current_user
     respond_with_resource
   end
 
   def reopen
-    service.reopen discussion: load_resource, actor: current_user
+    @event = service.reopen discussion: load_resource, actor: current_user
     respond_with_resource
   end
 

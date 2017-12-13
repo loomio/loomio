@@ -1,4 +1,6 @@
 class Events::DiscussionClosed < Event
+  include Events::LiveUpdate
+
   def self.publish!(discussion, actor)
     create(kind: "discussion_closed",
            eventable: discussion,

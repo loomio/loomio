@@ -1,4 +1,6 @@
 class Events::DiscussionReopened < Event
+  include Events::LiveUpdate
+
   def self.publish!(discussion, actor)
     create(kind: "discussion_reopened",
            eventable: discussion,
