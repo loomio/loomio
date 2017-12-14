@@ -18,6 +18,13 @@ textarea .lmo-textarea {
   @include fontSmall;
 }
 
+.lmo-badge {
+  border: 1px solid;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin: 0 4px;
+}
+
 .lmo-inline-action {
   min-width: 40px;
   margin: 0;

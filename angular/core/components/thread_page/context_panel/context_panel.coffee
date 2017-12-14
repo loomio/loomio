@@ -6,7 +6,6 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, R
   controller: ($scope) ->
 
     $scope.status = ->
-      return 'closed' if $scope.discussion.closedAt
       return 'pinned' if $scope.discussion.pinned
 
     $scope.statusTitle = ->
