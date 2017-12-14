@@ -27,7 +27,7 @@ describe 'Discussion Page', ->
   describe 'close thread', ->
     it 'can close and reopen a thread', ->
       page.loadPath 'setup_open_and_closed_discussions'
-      page.expectText '.discussions-card__header', 'Open Threads'
+      page.expectText '.discussions-card__header', 'Open threads'
       page.expectText '.discussions-card__header', '1 Closed'
       page.expectNoText '.discussions-card', 'This thread is old and closed'
       page.expectText '.discussions-card', 'What star sign are you?'
