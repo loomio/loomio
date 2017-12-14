@@ -7,12 +7,12 @@ angular.module('loomioApp').factory 'DocumentRecordsInterface', (BaseRecordsInte
         params:
           "#{model.constructor.singular}_id": model.id
 
-    fetchByGroup: (group, query) ->
+    fetchByGroup: (group, query, options) ->
+      options.q = query
+      options.group_key = group.key
       @fetch
         path: 'for_group'
-        params:
-          group_key: group.key
-          q:         query
+        params: options
 
     buildFromModel: (model) ->
       @build

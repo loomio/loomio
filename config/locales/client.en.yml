@@ -523,8 +523,6 @@ en:
   description_card:
     title: 'Group description'
     placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
-    view_documents: 'View attachments'
-    manage_documents: 'Manage attachments'
     messages:
       description_updated: 'Description updated'
 
@@ -629,6 +627,9 @@ en:
   document:
     error:
       invalid_format: Oops! Your URL is invalid. Ensurer it begins with http:// or https://
+    card:
+      no_documents: No attachments have been uploaded into this group yet
+      view_documents: View all
     list:
       title: Attachments
       no_group_documents: No attachments have been uploaded to the group description yet

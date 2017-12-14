@@ -1,0 +1,10 @@
+%section.document-card.lmo-card.lmo-no-print
+  %h2#document-card-title.lmo-card-heading{translate: "document.list.title"}
+    %loading{ng-if: "initExecuting"}
+  .document-card__content
+    .lmo-hint-text{translate: "document.card.no_documents", ng-if: "!group.hasDocuments()"}
+    %document_list{model: "group"}
+  .lmo-md-actions
+    %a.lmo-card-minor-action{lmo-href-for: "group", lmo-href-action: "documents", translate: "document.card.view_documents"}
+    %md-button.md-primary.md-raised{ng-click: "addDocument()"}
+      %span{translate: "document.card.view_documents"}
