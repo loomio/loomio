@@ -472,19 +472,10 @@ en:
       closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
   group_page:
-    show_opened: Open ({{count}})
-    show_closed: Closed ({{count}})
-    thread_list:
-      empty:
-        no_discussions_in_group: "This group does not have any threads yet."
-        no_discussions_matching_filters_html: "There are no threads matching these filters. <a href='%{link}'>Clear filters</a>."
-        no_public_discussions: "There are no public threads in this group."
-        discussions_are_private: "All threads in this group are private."
-        join_group: "To see private threads, you'll need to join the group."
-        request_membership: "To see private threads, request to join the group"
-        membership_is_invitation_only: "To join this group you need to be invited by a member."
-        membership_is_invitation_by_admin_only: "To join this group you need to be invited by a coordinator."
-
+    show_opened: '{{count}} Open'
+    show_closed: '{{count}} Closed'
+    no_threads_here: No threads to see here!
+    private_threads: You'll need to be a member to view private threads in this group
     messages:
       privacy:
         members: 'This group is now visible only to members'
@@ -496,7 +487,8 @@ en:
     new_photo: 'new photo'
     new_cover_photo: 'Upload new cover photo'
     new_group_logo: 'Upload new group logo'
-    discussions: 'Threads'
+    open_discussions: 'Open threads'
+    closed_discussions: 'Closed threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
     members: 'Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'

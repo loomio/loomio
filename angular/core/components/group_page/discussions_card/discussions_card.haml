@@ -1,16 +1,15 @@
 %section.discussions-card.lmo-card--no-padding{aria-labelledby: "threads-card-title"}
   .discussions-card__header
-    %h2#threads-card-title.lmo-card-heading.lmo-margin-right{ translate: "group_page.discussions"}
-    .discussions-card__filter.discussions-card__filter--open.lmo-link.lmo-pointer.lmo-margin-right{ng-click: "init('show_opened')", ng-class: "{'discussions-card__filter--selected': filter == 'show_opened'}", translate: "group_page.show_opened", translate-value-count: "{{group.openDiscussionsCount}}"}
-    .discussions-card__filter.discussions-card__filter--closed.lmo-link.lmo-pointer.lmo-margin-right{ng-click: "init('show_closed')", ng-class: "{'discussions-card__filter--selected': filter == 'show_closed'}", translate: "group_page.show_closed", translate-value-count: "{{group.closedDiscussionsCount}}"}
+    %h2#threads-card-title.lmo-card-heading.lmo-margin-right{ng-if: "filter == 'show_opened'", translate: "group_page.open_discussions"}
+    %h2#threads-card-title.lmo-card-heading.lmo-margin-right{ng-if: "filter == 'show_closed'", translate: "group_page.closed_discussions"}
     .lmo-flex__grow
+    .discussions-card__filter.discussions-card__filter--open.lmo-link.lmo-pointer.lmo-margin-right{ng-click: "init('show_opened')", ng-if: "filter == 'show_closed'", translate: "group_page.show_opened", translate-value-count: "{{group.openDiscussionsCount}}"}
+    .discussions-card__filter.discussions-card__filter--closed.lmo-link.lmo-pointer.lmo-margin-right{ng-click: "init('show_closed')", ng-if: "filter == 'show_opened'", translate: "group_page.show_closed", translate-value-count: "{{group.closedDiscussionsCount}}"}
     %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "openDiscussionModal()", title: "{{ 'navbar.start_thread' | translate }}"}
       %span{translate: "navbar.start_thread"}
 
-  .discussions-card__list--empty{ng-if: "!loader.loading && !(discussions.any() || pinned.any())"}
-    .discussions-card__list-empty-reason{translate: "group_page.thread_list.empty.{{whyImEmpty()}}"}
-    .discussions-card__how-to-gain-access{ng-if: "howToGainAccess()"}
-      %span{translate: "group_page.thread_list.empty.{{howToGainAccess()}}"}
+  %p.lmo-hint-text.discussions-card__list--empty{ng-if: "isEmpty()", translate: "group_page.no_threads_here"}
+  %p.lmo-hint-text.discussions-card__list--maybe-more{ng-if: "isEmpty() && !canViewPrivateContent()", translate: "group_page.private_threads"}
 
   .discussions-card__list
     %section.thread-preview-collection__container{ng-if: "discussions.any() || pinned.any()"}

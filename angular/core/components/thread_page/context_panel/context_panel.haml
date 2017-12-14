@@ -27,7 +27,8 @@
       %span{ng-show: "discussion.seenByCount > 0"}>
         %span{aria-hidden: "true"}>·
         %span.context-panel__seen_by_count{ translate: "thread_context.seen_by_count", translate-value-count: "{{discussion.seenByCount}}"}
-    .lmo-badge.lmo-pointer{ng-if: "discussion.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}", translate: "common.privacy.closed"}
+    .lmo-badge.lmo-pointer{translate: "common.privacy.closed", ng-if: "discussion.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}"}
+      %md-tooltip {{ discussion.closedAt | exactDateWithTime }}
     %outlet.lmo-flex{name: "after-thread-title", model: "discussion"}
 
   .context-panel__description.lmo-markdown-wrapper{ng-if: "!translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }

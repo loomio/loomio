@@ -30,6 +30,12 @@ angular.module('loomioApp').directive 'discussionsCard', ($location, Records, Re
     $scope.openDiscussionModal = ->
       ModalService.open DiscussionModal, discussion: -> Records.discussions.build(groupId: $scope.group.id)
 
+    $scope.isEmpty = ->
+      !$scope.loader.loading && !($scope.discussions.any() || $scope.pinned.any())
+
+    $scope.canViewPrivateContent = ->
+      AbilityService.canViewPrivateContent($scope.group)
+
     $scope.whyImEmpty = ->
       if !AbilityService.canViewGroup($scope.group)
         'discussions_are_private'
