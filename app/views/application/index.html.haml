@@ -42,4 +42,4 @@
     %script{src: client_asset_path(:"app.js")}
     %script{src: client_asset_path(:"plugin.js")}
 
-    = javascript_include_tag 'angular_ahoy'
+    = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]
