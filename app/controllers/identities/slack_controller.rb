@@ -14,7 +14,7 @@ class Identities::SlackController < Identities::BaseController
 
   def initiate
     if params['token'] == ENV['SLACK_VERIFICATION_TOKEN']
-      Airbrake.notify Exception.new("INFO: slack#initiate called", session: params)
+      Airbrake.notify Exception.new("INFO: slack#initiate called") session: params
       render text: ::Slack::Initiator.new(params).initiate
     else
       head :bad_request
