@@ -219,7 +219,7 @@ en:
     aria_label: Close thread
     close_thread: Close thread
     body_header: |
-      <p>Closing a thread allows you to reduce the visibility of conversations which are old or no longer relevant.</p>
+      <p>Close old or irrelevant threads to remove them from view and indicate the discussion has closed.</p>
     body_footer: |
       <p>Anyone may still comment or start a poll in a closed thread, but it will not appear in the group's thread list or on the dashboard.</p>
     image_alt: Closing threads all
