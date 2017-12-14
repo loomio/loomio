@@ -38,9 +38,8 @@
 }
 
 .discussions-card__list--empty {
-  margin: 0 17px 10px 17px;
-  padding: 20px 0;
   text-align: center;
+  padding: 0 $cardPaddingSize $cardPaddingSize $cardPaddingSize;
 }
 
 .discussions-card__show-more {

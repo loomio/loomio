@@ -14,8 +14,9 @@
     %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "openDiscussionModal()", title: "{{ 'navbar.start_thread' | translate }}"}
       %span{translate: "navbar.start_thread"}
 
-  %p.lmo-hint-text.discussions-card__list--empty{ng-if: "isEmpty()", translate: "group_page.no_threads_here"}
-  %p.lmo-hint-text.discussions-card__list--maybe-more{ng-if: "isEmpty() && !canViewPrivateContent()", translate: "group_page.private_threads"}
+  .discussions-card__list--empty{ng-if: "isEmpty()"}
+    %p.lmo-hint-text{translate: "group_page.no_threads_here"}
+    %p.lmo-hint-text{ng-if: "!canViewPrivateContent()", translate: "group_page.private_threads"}
 
   .discussions-card__list{ng-if: "!fragment"}
     %section.thread-preview-collection__container{ng-if: "discussions.any() || pinned.any()"}
