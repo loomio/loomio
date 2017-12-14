@@ -57,7 +57,7 @@ class AppConfig
       # used in app
       primary_palette:                   ENV.fetch('THEME_PRIMARY_PALETTE',         'orange'),
       accent_palette:                    ENV.fetch('THEME_ACCENT_PALETTE',          'cyan'),
-      warn_palette:                      ENV.fetch('THEME_WARN_PALETTE',            'cyan'),
+      warn_palette:                      ENV.fetch('THEME_WARN_PALETTE',            'red'),
       primary_palette_config: JSON.parse(ENV.fetch('THEME_PRIMARY_PALETTE_CONFIG',  '{"default": "400"}')),
       accent_palette_config:  JSON.parse(ENV.fetch('THEME_ACCENT_PALETTE_CONFIG',   '{"default": "500"}')),
       warn_palette_config:    JSON.parse(ENV.fetch('THEME_WARN_PALETTE_CONFIG',     '{}')),
