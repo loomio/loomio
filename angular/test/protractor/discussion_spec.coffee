@@ -150,7 +150,7 @@ describe 'Discussion Page', ->
       page.click '.pin-thread-modal__submit'
 
       page.expectFlash 'Thread pinned'
-      page.expectElement '.context-panel__pin'
+      page.expectElement '.context-panel__status .mdi-pin'
 
   describe 'changing thread email settings', ->
     beforeEach ->
