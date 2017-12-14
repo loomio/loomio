@@ -475,6 +475,7 @@ en:
     show_opened: '{{count}} Open'
     show_closed: '{{count}} Closed'
     no_threads_here: No threads to see here!
+    search_threads: Search for threads...
     private_threads: You'll need to be a member to view private threads in this group
     messages:
       privacy:

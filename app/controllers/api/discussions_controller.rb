@@ -30,6 +30,12 @@ class API::DiscussionsController < API::RestfulController
     )
   end
 
+  def search
+    load_and_authorize(:group)
+    instantiate_collection { |collection| collection.search_for(params.require(:q)) }
+    respond_with_collection
+  end
+
   def move
     @event = service.move discussion: load_resource, params: params, actor: current_user
     respond_with_resource

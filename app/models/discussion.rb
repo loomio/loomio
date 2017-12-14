@@ -51,7 +51,12 @@ class Discussion < ActiveRecord::Base
 
   has_many :discussion_readers
 
-  scope :search_for, ->(query, user, opts = {}) do
+  scope :search_for, ->(fragment) do
+     joins("INNER JOIN users ON users.id = discussions.author_id")
+    .where("discussions.title ilike :fragment OR users.name ilike :fragment", fragment: "%#{fragment}%")
+  end
+
+  scope :weighted_search_for, ->(query, user, opts = {}) do
     query = sanitize(query)
      select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query}::text as query")
     .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")

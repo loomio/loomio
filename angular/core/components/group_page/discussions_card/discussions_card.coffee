@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'discussionsCard', ($location, Records, RecordLoader, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
+angular.module('loomioApp').directive 'discussionsCard', ($location, $timeout, Records, RecordLoader, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
@@ -27,36 +27,38 @@ angular.module('loomioApp').directive 'discussionsCard', ($location, Records, Re
     $scope.init($location.search().filter)
     $scope.$on 'subgroupsLoaded', -> $scope.init($scope.filter)
 
+    $scope.searchThreads = ->
+      return unless $scope.fragment
+      Records.discussions.search($scope.group.key, $scope.fragment, per: 10).then (data) ->
+        $scope.searched = ThreadQueryService.queryFor
+          name: "group_#{$scope.group.key}_searched"
+          group: $scope.group
+          ids: _.pluck(data.discussions, 'id')
+          overwrite: true
+    LoadingService.applyLoadingFunction @, 'searchThreads'
+
     $scope.openDiscussionModal = ->
       ModalService.open DiscussionModal, discussion: -> Records.discussions.build(groupId: $scope.group.id)
 
+    $scope.loading = ->
+      $scope.loader.loading || $scope.searchThreadsExecuting
+
     $scope.isEmpty = ->
-      !$scope.loader.loading && !($scope.discussions.any() || $scope.pinned.any())
+      return if $scope.loading()
+      if $scope.fragment
+        !$scope.searched || !$scope.searched.any()
+      else
+        !$scope.discussions.any() && !$scope.pinned.any()
 
     $scope.canViewPrivateContent = ->
       AbilityService.canViewPrivateContent($scope.group)
 
-    $scope.whyImEmpty = ->
-      if !AbilityService.canViewGroup($scope.group)
-        'discussions_are_private'
-      else if !$scope.group.hasDiscussions
-        'no_discussions_in_group'
-      else if $scope.group.discussionPrivacyOptions == 'private_only'
-        'discussions_are_private'
-      else
-        'no_public_discussions'
+    $scope.openSearch = ->
+      $scope.searchOpen = true
+      $timeout -> document.querySelector('.discussions-card__search input').focus()
 
-    $scope.howToGainAccess = ->
-      if !$scope.group.hasDiscussions
-        null
-      else if $scope.group.membershipGrantedUpon == 'request'
-        'join_group'
-      else if $scope.group.membershipGrantedUpon == 'approval'
-        'request_membership'
-      else if $scope.group.membersCanAddMembers
-        'membership_is_invitation_only'
-      else
-        'membership_is_invitation_by_admin_only'
+    $scope.closeSearch = ->
+      $scope.searchOpen = false
 
     $scope.canStartThread = ->
       AbilityService.canStartThread($scope.group)

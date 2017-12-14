@@ -3,6 +3,11 @@
     %h2#threads-card-title.lmo-card-heading.lmo-margin-right{ng-if: "filter == 'show_opened'", translate: "group_page.open_discussions"}
     %h2#threads-card-title.lmo-card-heading.lmo-margin-right{ng-if: "filter == 'show_closed'", translate: "group_page.closed_discussions"}
     .lmo-flex__grow
+    %md-input-container.discussions-card__search.md-block.md-no-errors{ng-class: "{'discussions-card__search--open': searchOpen}", md-no-float: "true"}
+      %i.mdi.mdi-close.md-button--tiny.lmo-pointer{ng-click: "closeSearch()", ng-if: "searchOpen"}
+      %input{ng-model: "fragment", placeholder: "{{'group_page.search_threads' | translate}}", ng-change: "searchThreads()", ng-model-options: "{debounce: 250}"}
+    %md-button.md-button--tiny{ng-if: "!searchOpen", ng-click: "openSearch()"}
+      %i.mdi.mdi-magnify
     .discussions-card__filter.discussions-card__filter--open.lmo-link.lmo-pointer.lmo-margin-right{ng-click: "init('show_opened')", ng-if: "filter == 'show_closed'", translate: "group_page.show_opened", translate-value-count: "{{group.openDiscussionsCount}}"}
     .discussions-card__filter.discussions-card__filter--closed.lmo-link.lmo-pointer.lmo-margin-right{ng-click: "init('show_closed')", ng-if: "filter == 'show_opened'", translate: "group_page.show_closed", translate-value-count: "{{group.closedDiscussionsCount}}"}
     %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "openDiscussionModal()", title: "{{ 'navbar.start_thread' | translate }}"}
@@ -11,10 +16,13 @@
   %p.lmo-hint-text.discussions-card__list--empty{ng-if: "isEmpty()", translate: "group_page.no_threads_here"}
   %p.lmo-hint-text.discussions-card__list--maybe-more{ng-if: "isEmpty() && !canViewPrivateContent()", translate: "group_page.private_threads"}
 
-  .discussions-card__list
+  .discussions-card__list{ng-if: "!fragment"}
     %section.thread-preview-collection__container{ng-if: "discussions.any() || pinned.any()"}
       %thread_preview_collection.thread-previews-container--pinned{ng-if: "pinned.any()", query: "pinned", limit: "threadLimit"}
       %thread_preview_collection.thread-previews-container--unpinned{ng-if: "discussions.any()", query: "discussions", limit: "threadLimit"}
     .lmo-show-more{ng-if: "canLoadMoreDiscussions()"}
-      %button.discussions-card__show-more{ng-hide: "loader.loading", ng-click: "loader.loadMore()", translate: "common.action.show_more"}
-    %loading{ng-show: "loader.loading"}
+      %button.discussions-card__show-more{ng-hide: "loading()", ng-click: "loader.loadMore()", translate: "common.action.show_more"}
+  .discussions-card__list{ng-if: "fragment"}
+    %section.thread-preview-collection__container{ng-if: "searched.any()"}
+      %thread_preview_collection.thread-previews-container--searched{query: "searched"}
+  %loading{ng-show: "loading()"}

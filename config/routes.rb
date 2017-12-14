@@ -127,6 +127,7 @@ Loomio::Application.routes.draw do
       patch :pin_reader, on: :member
       patch :unpin_reader, on: :member
       patch :move, on: :member
+      get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
     end

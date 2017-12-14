@@ -17,23 +17,26 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, Session) ->
       view.applyFind(lastActivityAt: { $gt: parseTimeOption(options.from) }) if options.from
       view.applyFind(lastActivityAt: { $lt: parseTimeOption(options.to) })   if options.to
 
-      _.each [].concat(options.filters), (filter) ->
-        switch filter
-          when 'show_recent'    then view.applyFind(lastActivityAt: { $gt: moment().startOf('day').subtract(6, 'week').toDate() })
-          when 'show_unread'    then view.applyWhere (thread) -> thread.isUnread()
-          when 'hide_unread'    then view.applyWhere (thread) -> !thread.isUnread()
-          when 'show_dismissed' then view.applyWhere (thread) -> thread.isDismissed()
-          when 'hide_dismissed' then view.applyWhere (thread) -> !thread.isDismissed()
-          when 'show_closed'    then view.applyWhere (thread) -> thread.closedAt?
-          when 'show_opened'    then view.applyFind(closedAt: null)
-          when 'show_pinned'    then view.applyFind(pinned: true)
-          when 'hide_pinned'    then view.applyFind(pinned: false)
-          when 'show_muted'     then view.applyWhere (thread) -> thread.volume() == 'mute'
-          when 'hide_muted'     then view.applyWhere (thread) -> thread.volume() != 'mute'
-          when 'show_proposals' then view.applyWhere (thread) -> thread.hasDecision()
-          when 'hide_proposals' then view.applyWhere (thread) -> !thread.hasDecision()
-          when 'only_threads_in_my_groups'
-            view.applyFind(groupId: {$in: Session.user().groupIds()})
+      if options.ids
+        view.applyFind(id: {$in: options.ids})
+      else
+        _.each [].concat(options.filters), (filter) ->
+          switch filter
+            when 'show_recent'    then view.applyFind(lastActivityAt: { $gt: moment().startOf('day').subtract(6, 'week').toDate() })
+            when 'show_unread'    then view.applyWhere (thread) -> thread.isUnread()
+            when 'hide_unread'    then view.applyWhere (thread) -> !thread.isUnread()
+            when 'show_dismissed' then view.applyWhere (thread) -> thread.isDismissed()
+            when 'hide_dismissed' then view.applyWhere (thread) -> !thread.isDismissed()
+            when 'show_closed'    then view.applyWhere (thread) -> thread.closedAt?
+            when 'show_opened'    then view.applyFind(closedAt: null)
+            when 'show_pinned'    then view.applyFind(pinned: true)
+            when 'hide_pinned'    then view.applyFind(pinned: false)
+            when 'show_muted'     then view.applyWhere (thread) -> thread.volume() == 'mute'
+            when 'hide_muted'     then view.applyWhere (thread) -> thread.volume() != 'mute'
+            when 'show_proposals' then view.applyWhere (thread) -> thread.hasDecision()
+            when 'hide_proposals' then view.applyWhere (thread) -> !thread.hasDecision()
+            when 'only_threads_in_my_groups'
+              view.applyFind(groupId: {$in: Session.user().groupIds()})
 
       view
 

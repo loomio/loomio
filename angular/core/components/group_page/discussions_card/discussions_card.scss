@@ -10,6 +10,21 @@
   &--selected { font-weight: bold; }
 }
 
+.discussions-card__search {
+  margin: 0;
+  display: flex;
+  width: 0;
+  flex-shrink: $z-extreme;
+  transition: width 0.35s ease-in-out;
+  &--open { width: 100%; }
+  i {
+    position: absolute;
+    font-size: 20px;
+    top: 0;
+    right: 0;
+  }
+}
+
 .discussions-card__dropdown {
   margin: 0 0 10px 0;
 }
