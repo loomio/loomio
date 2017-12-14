@@ -1,9 +1,7 @@
 angular.module('loomioApp').config ($provide) ->
-  # polyfill for closest for ie11
-  # from https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
-  if !Element::matches
-    Element::matches = Element::msMatchesSelector or Element::webkitMatchesSelector
-    
+  if (!Element::matches)
+    Element::matches = Element::msMatchesSelector;
+
   if !Element::closest
     Element::closest = (s) ->
       el = this
