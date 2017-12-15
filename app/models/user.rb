@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
            source: :group
 
   has_many :adminable_groups,
-           -> { where( archived_at: nil) },
+           -> { where(archived_at: nil, type: "FormalGroup") },
            through: :admin_memberships,
            class_name: 'Group',
            source: :group
