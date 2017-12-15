@@ -3,7 +3,7 @@
   %p.lmo-hint-text.md-caption{ng-if: "!model.hasDocuments() && placeholder", translate: "{{placeholder}}"}
   .document-list__documents.md-block.lmo-flex{layout: "column"}
     .document-list__document.lmo-flex{layout: "column", ng-class: "{'document-list__document--image': document.isAnImage()}", ng-repeat: "document in model.newAndPersistedDocuments() | orderBy: 'createdAt' track by document.id"}
-      .document-list__image{ng-if: "document.isAnImage()"}
+      .document-list__image{ng-if: "document.isAnImage() && !hidePreview"}
         %img{ng-src: "{{document.webUrl}}", alt: "{{document.title}}"}
       .document-list__entry.lmo-flex.lmo-flex__center{layout: "row"}
         %i.mdi.lmo-margin-right{class: "mdi-{{document.icon}}", ng-style: "{color: document.color}"}>

@@ -17,7 +17,13 @@ class Document < ActiveRecord::Base
   do_not_validate_attachment_file_type :file
   after_post_process :set_initial_url
 
-  scope :search_for, ->(query) { where("title ilike :q", q: "%#{query}%") }
+  scope :search_for, ->(query) {
+    if query.present?
+      where("title ilike :q", q: "%#{query}%")
+    else
+      all
+    end
+  }
 
   def reset_metadata!
     update(doctype: metadata['name'], icon: metadata['icon'], color: metadata['color'])

@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'documentList', (Records, AbilityService, ModalService, DocumentModal, ConfirmModal) ->
-  scope: {model: '=', showEdit: '=?'}
+  scope: {model: '=', showEdit: '=?', hidePreview: '=?'}
   replace: true
   templateUrl: 'generated/components/document/list/document_list.html'
   controller: ($scope) ->
