@@ -75,7 +75,7 @@ class PermittedParams < Struct.new(:params)
      :description, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :make_announcement,
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups,
-     :document_ids, {document_ids: []}, :features, features: Array(AppConfig.group_features)
+     :document_ids, {document_ids: []}, :features, {features: AppConfig.group_features.presence || {}}
    ]
   end
 
