@@ -267,6 +267,12 @@ Loomio::Application.routes.draw do
     end
   end
 
+  scope :facebook do
+    get :webhook,                         to: 'identities/facebook#verify',   as: :facebook_verify
+    post :webhook,                        to: 'identities/facebook#webhook',  as: :facebook_webhook
+    get :webview,                         to: 'identities/facebook#webview',  as: :facebook_webview
+  end
+
   scope :slack do
     get  :install,                        to: 'identities/slack#install',     as: :slack_install
     get  :authorized,                     to: 'identities/slack#authorized',  as: :slack_authorized
