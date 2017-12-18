@@ -215,6 +215,15 @@ en:
         normal: "You will be emailed about announcements in new groups."
         quiet: "You won't be emailed about new groups."
 
+  close_explanation_modal:
+    aria_label: Close thread
+    close_thread: Close thread
+    body_header: |
+      <p>Close old or irrelevant threads to remove them from view and indicate the discussion has closed.</p>
+    body_footer: |
+      <p>Anyone may still comment or start a poll in a closed thread, but it will not appear in the group's thread list or on the dashboard.</p>
+    image_alt: Closing threads all
+
   mute_explanation_modal:
     aria_label: Mute thread
     mute_thread: Mute thread
@@ -392,6 +401,7 @@ en:
     add_resource: Add an attachment
     edit_group: Edit group context
     add_comment: Comment
+    copy_url_comment: Copy URL
     edit_thread: Edit context
     translate_thread: Translate context
     edit_poll: Edit poll
@@ -407,6 +417,7 @@ en:
     show_history: Show edit history
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
+    comment_copied: Comment URL copied to clipboard
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -457,18 +468,17 @@ en:
     you_and_name_and_count_more: "You, {{name}} and {{count}} more"
     name_and_count_more: "{{name}} and {{count}} more"
 
-  group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "This group does not have any threads yet."
-        no_discussions_matching_filters_html: "There are no threads matching these filters. <a href='%{link}'>Clear filters</a>."
-        no_public_discussions: "There are no public threads in this group."
-        discussions_are_private: "All threads in this group are private."
-        join_group: "To see private threads, you'll need to join the group."
-        request_membership: "To see private threads, request to join the group"
-        membership_is_invitation_only: "To join this group you need to be invited by a member."
-        membership_is_invitation_by_admin_only: "To join this group you need to be invited by a coordinator."
+  context_panel:
+    thread_status:
+      pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
+      closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
 
+  group_page:
+    show_opened: '{{count}} Open'
+    show_closed: '{{count}} Closed'
+    no_threads_here: No threads to see here!
+    search_threads: Search for threads...
+    private_threads: You'll need to be a member to view private threads in this group
     messages:
       privacy:
         members: 'This group is now visible only to members'
@@ -480,7 +490,8 @@ en:
     new_photo: 'new photo'
     new_cover_photo: 'Upload new cover photo'
     new_group_logo: 'Upload new group logo'
-    discussions: 'Threads'
+    open_discussions: 'Open threads'
+    closed_discussions: 'Closed threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
     members: 'Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
@@ -523,6 +534,8 @@ en:
   description_card:
     title: 'Group description'
     placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
+    view_documents: 'View attachments'
+    manage_documents: 'Manage attachments'
     messages:
       description_updated: 'Description updated'
 
@@ -627,9 +640,6 @@ en:
   document:
     error:
       invalid_format: Oops! Your URL is invalid. Ensurer it begins with http:// or https://
-    card:
-      no_documents: No attachments have been uploaded into this group yet
-      view_documents: View all
     list:
       title: Attachments
       no_group_documents: No attachments have been uploaded to the group description yet
@@ -889,7 +899,6 @@ en:
     thread_preview:
       you_voted: 'You voted {{position}}'
       undecided: 'You are undecided'
-      pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
     threads_from:
       group: 'Threads from'
       pinned: 'Pinned threads'
@@ -920,8 +929,11 @@ en:
       pinned: 'Thread pinned'
       unpinned: 'Thread unpinned'
     volume:
-      mute_message: 'Thread muted.'
+      mute_message: 'Thread muted'
       unmute_message: 'Thread unmuted'
+    closed:
+      reopened: 'Thread reopened'
+      closed: 'Thread closed'
 
   activity_card:
     beginning: Beginning
@@ -943,6 +955,8 @@ en:
     email_settings: 'Email settings'
     edit: 'Edit'
     edit_thread: 'Edit'
+    close_thread: 'Close'
+    reopen_thread: 'Reopen'
     pin_thread: 'Pin'
     unpin_thread: 'Unpin'
     mute_thread: 'Mute'
@@ -1038,9 +1052,6 @@ en:
     private_title: 'updated the thread title and privacy'
     description_private: 'updated the thread context and privacy'
     description_private_title: 'updated the thread title, context and privacy'
-
-  discussion_moved_item:
-    discussion_moved: 'moved the thread from <span>{{group}}</span>'
 
   contact_message_form:
     helptext: "Want to get in touch? Just enter a message below and you'll hear from us shortly."
@@ -1499,6 +1510,8 @@ en:
     discussion_privacy_edited:     "<strong><a href='u/{{username}}'>{{author}}</a></strong> changed the thread privacy"
     discussion_edited:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the thread"
     discussion_moved:              "<strong><a href='u/{{username}}'>{{author}}</a></strong> moved the thread from <strong>{{title}}</strong>"
+    discussion_closed:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the thread"
+    discussion_reopened:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> reopened the thread"
     new_comment:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created:               "<strong><a href='u/{{username}}'>{{author}}</a></strong> shared an outcome for <strong>{{title}}</strong>"
     poll_closed_by_user:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the {{polltype}}: <strong>{{title}}</strong>"
