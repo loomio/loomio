@@ -10,6 +10,7 @@
 
 .discussions-card__filter {
   text-decoration: none;
+  font-size: 16px;
   line-height: 36px;
   &--selected { font-weight: bold; }
 }
@@ -19,7 +20,7 @@
   display: flex;
   width: 0;
   flex-shrink: $z-extreme;
-  transition: width 0.35s ease-in-out;
+  transition: width 0.25s ease-in-out;
   &--open { width: 100%; }
   i {
     position: absolute;
