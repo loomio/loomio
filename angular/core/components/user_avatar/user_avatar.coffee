@@ -25,10 +25,8 @@ angular.module('loomioApp').directive 'userAvatar', ($window) ->
           if _2x() then 'medium' else 'small'
         when 'medium'
           if _2x() then 'large' else 'medium'
-        when 'large'
+        when 'large', 'featured'
           'large'
-        when 'featured'
-          'original'
       $scope.user.avatarUrl[size]
 
     return

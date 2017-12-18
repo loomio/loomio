@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213023743) do
+ActiveRecord::Schema.define(version: 20171213050734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -233,9 +233,7 @@ ActiveRecord::Schema.define(version: 20171213023743) do
     t.datetime "last_comment_at"
     t.text     "description"
     t.boolean  "uses_markdown",                   default: false, null: false
-    t.boolean  "is_deleted",                      default: false, null: false
     t.integer  "items_count",                     default: 0,     null: false
-    t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key",                 limit: 255
     t.string   "iframe_src",          limit: 255
@@ -251,14 +249,12 @@ ActiveRecord::Schema.define(version: 20171213023743) do
     t.integer  "guest_group_id"
     t.integer  "announcements_count",             default: 0,     null: false
     t.string   "ranges_string"
+    t.datetime "closed_at"
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
   add_index "discussions", ["created_at"], name: "index_discussions_on_created_at", using: :btree
   add_index "discussions", ["group_id"], name: "index_discussions_on_group_id", using: :btree
-  add_index "discussions", ["is_deleted", "archived_at", "private"], name: "index_discussions_visible", using: :btree
-  add_index "discussions", ["is_deleted", "archived_at"], name: "index_discussions_on_is_deleted_and_archived_at", using: :btree
-  add_index "discussions", ["is_deleted"], name: "index_discussions_on_is_deleted", using: :btree
   add_index "discussions", ["key"], name: "index_discussions_on_key", unique: true, using: :btree
   add_index "discussions", ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: {"last_activity_at"=>:desc}, using: :btree
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
@@ -405,6 +401,8 @@ ActiveRecord::Schema.define(version: 20171213023743) do
     t.integer  "polls_count",                                    default: 0,              null: false
     t.integer  "subgroups_count",                                default: 0,              null: false
     t.string   "type",                                           default: "FormalGroup",  null: false
+    t.integer  "open_discussions_count",                         default: 0,              null: false
+    t.integer  "closed_discussions_count",                       default: 0,              null: false
   end
 
   add_index "groups", ["archived_at"], name: "index_groups_on_archived_at", using: :btree

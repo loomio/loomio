@@ -36,7 +36,7 @@
       %group_setting_checkbox.group-form__members-can-raise-motions{group: "group", setting: "membersCanRaiseMotions"}
       %group_setting_checkbox.group-form__members-can-vote{group: "group", setting: "membersCanVote"}
 
-    %section.group-form__section.group-form__features{ng-if: "isSiteAdmin()"}
+    %section.group-form__section.group-form__features{ng-if: "showGroupFeatures()"}
       %h3.lmo-h3{translate: "group_form.features"}
       .group-form__feature{ng-repeat: "name in featureNames"}
         %md-checkbox.md-checkbox--with-summary{id: "{{name}}", ng-model: "group.features[name]"}

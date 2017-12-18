@@ -18,6 +18,15 @@ textarea .lmo-textarea {
   @include fontSmall;
 }
 
+.lmo-badge {
+  border: 1px solid;
+  padding: 0 4px;
+  border-radius: 4px;
+  margin: 0 4px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
 .lmo-inline-action {
   min-width: 40px;
   margin: 0;
@@ -60,7 +69,7 @@ textarea .lmo-textarea {
   bottom: 0;
   background-color: white;
   border-radius: 6px;
-  z-index: $z-high;
+  z-index: $z-medium;
   opacity: 0.5;
 }
 

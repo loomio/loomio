@@ -1,66 +1,66 @@
-angular.module('loomioApp').directive 'discussionsCard', ->
-  scope: {group: '=', pageWindow: '='}
+angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, Records, RecordLoader, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
+  scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
-  controller: ($scope, $location, Records, ModalService, DiscussionStartModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
-    $scope.threadLimit = $scope.pageWindow.current
-    $scope.init = ->
-      $scope.pinned      = ThreadQueryService.queryFor
+  controller: ($scope) ->
+
+    $scope.init = (filter) ->
+      $scope.filter = filter or 'show_opened'
+      $scope.pinned = ThreadQueryService.queryFor
         name: "group_#{$scope.group.key}_pinned"
         group: $scope.group
-        filters: ['show_pinned']
+        filters: ['show_pinned', $scope.filter]
         overwrite: true
       $scope.discussions = ThreadQueryService.queryFor
         name: "group_#{$scope.group.key}_unpinned"
         group: $scope.group
-        filters: ['hide_pinned']
+        filters: ['hide_pinned', $scope.filter]
         overwrite: true
+      $scope.loader = new RecordLoader
+        collection: 'discussions'
+        params:
+          group_id: $scope.group.id
+          filter:   $scope.filter
+      $scope.loader.fetchRecords()
 
-    $scope.init()
-    $scope.$on 'subgroupsLoaded', $scope.init
+    $scope.init($location.search().filter)
+    $scope.$on 'subgroupsLoaded', -> $scope.init($scope.filter)
 
-    $scope.loadMore = ->
-      current = $scope.pageWindow.current
-      $scope.pageWindow.current += $scope.pageWindow.pageSize
-      $scope.threadLimit        += $scope.pageWindow.pageSize
-      Records.discussions.fetchByGroup($scope.group.key, from: current, per: $scope.pageWindow.pageSize)
-
-    LoadingService.applyLoadingFunction $scope, 'loadMore'
-    $scope.loadMore()
-
-    $scope.canLoadMoreDiscussions = ->
-      $scope.pageWindow.current < $scope.pageWindow.max
+    $scope.searchThreads = ->
+      return $q.when() unless $scope.fragment
+      Records.discussions.search($scope.group.key, $scope.fragment, per: 10).then (data) ->
+        $scope.searched = ThreadQueryService.queryFor
+          name: "group_#{$scope.group.key}_searched"
+          group: $scope.group
+          ids: _.pluck(data.discussions, 'id')
+          overwrite: true
+    LoadingService.applyLoadingFunction $scope, 'searchThreads'
 
     $scope.startDiscussion = ->
       ModalService.open DiscussionStartModal, discussion: ->
         Records.discussions.build(groupId: $scope.group.id)
 
-    $scope.showThreadsPlaceholder = ->
-      AbilityService.canStartThread($scope.group) and
-      $scope.group.discussions().length < 4
+    $scope.loading = ->
+      $scope.loader.loading || $scope.searchThreadsExecuting
 
-    $scope.whyImEmpty = ->
-      if !AbilityService.canViewGroup($scope.group)
-        'discussions_are_private'
-      else if !$scope.group.hasDiscussions
-        'no_discussions_in_group'
-      else if $scope.group.discussionPrivacyOptions == 'private_only'
-        'discussions_are_private'
+    $scope.isEmpty = ->
+      return if $scope.loading()
+      if $scope.fragment
+        !$scope.searched || !$scope.searched.any()
       else
-        'no_public_discussions'
+        !$scope.discussions.any() && !$scope.pinned.any()
 
-    $scope.howToGainAccess = ->
-      if !$scope.group.hasDiscussions
-        null
-      else if $scope.group.membershipGrantedUpon == 'request'
-        'join_group'
-      else if $scope.group.membershipGrantedUpon == 'approval'
-        'request_membership'
-      else if $scope.group.membersCanAddMembers
-        'membership_is_invitation_only'
-      else
-        'membership_is_invitation_by_admin_only'
+    $scope.canViewPrivateContent = ->
+      AbilityService.canViewPrivateContent($scope.group)
+
+    $scope.openSearch = ->
+      $scope.searchOpen = true
+      $timeout -> document.querySelector('.discussions-card__search input').focus()
+
+    $scope.closeSearch = ->
+      $scope.fragment = null
+      $scope.searchOpen = false
 
     $scope.canStartThread = ->
       AbilityService.canStartThread($scope.group)

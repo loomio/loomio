@@ -7,7 +7,7 @@ module Ability::User
     end
 
     can :deactivate, ::User do |u|
-      not u.adminable_groups.published.any? { |g| g.admins.count == 1 }
+      u.adminable_groups.all? { |g| g.admins.count > 1 }
     end
 
     can [:update,

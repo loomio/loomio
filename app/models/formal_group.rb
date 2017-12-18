@@ -46,7 +46,10 @@ class FormalGroup < Group
   has_many :all_subgroups, class_name: 'Group', foreign_key: :parent_id
 
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
-  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.count }
+  define_counter_cache(:open_discussions_count)    { |group| group.discussions.is_open.count }
+  define_counter_cache(:closed_discussions_count)  { |group| group.discussions.is_closed.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.count }
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
 
   delegate :include?, to: :users, prefix: true
