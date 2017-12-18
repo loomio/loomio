@@ -33,3 +33,5 @@ public/img/emojis
 
 angular/node_modules
 angular/tasks/config/plugins.yml
+
+webviews/node_modules
