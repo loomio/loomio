@@ -5,9 +5,9 @@ class Events::PollEdited < Event
 
   def self.publish!(poll, actor)
     version = poll.versions.last
-    super version,
+    super poll,
           user: actor,
-          parent: version.created_event,
+          parent: poll.created_event,
           discussion: poll.discussion,
           custom_fields: {version_id: version.id, changed_keys: version.object_changes.keys},
           created_at: version.created_at
