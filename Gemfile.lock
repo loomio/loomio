@@ -42,15 +42,6 @@ GIT
     icalendar (2.4.1)
 
 GIT
-  remote: git://github.com/loomio/bing_translator-gem.git
-  revision: 841965f781e879584b7216faff0d420e94ee9be7
-  specs:
-    bing_translator (5.0.0)
-      json (~> 1.8.0)
-      nokogiri (~> 1.8.1)
-      savon (~> 2.10.0)
-
-GIT
   remote: git://github.com/loomio/griddler-mailin.git
   revision: 82df9ea881c70b94a346fecac11c523a166394f4
   specs:
@@ -144,6 +135,10 @@ GEM
     awesome_print (1.6.1)
     bcrypt (3.1.11)
     benchmark-ips (2.7.2)
+    bing_translator (5.1.0)
+      json (~> 1.8.0)
+      nokogiri (~> 1.8.1)
+      savon (~> 2.10.0)
     bourbon (4.3.3)
       sass (~> 3.4)
       thor (~> 0.19)
@@ -719,7 +714,7 @@ DEPENDENCIES
   airbrake
   autoprefixer-rails
   awesome_print
-  bing_translator (~> 5.0.0)!
+  bing_translator (~> 5.1.0)
   browser (~> 2.3.0)
   bullet
   byebug

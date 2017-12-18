@@ -29,7 +29,7 @@ gem 'browser', '~> 2.3.0'
 gem 'fog'
 gem 'thin'
 gem 'sequenced', '~> 2.0.0'
-gem 'bing_translator', '~> 5.0.0', github: "loomio/bing_translator-gem"
+gem 'bing_translator', '~> 5.1.0'
 gem 'http_accept_language'
 # gem 'mail', github: 'mikel/mail'
 gem 'sprockets-rails', require: 'sprockets/railtie'
