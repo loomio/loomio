@@ -6,15 +6,11 @@ module Ability::Discussion
          :print,
          :dismiss,
          :subscribe_to], ::Discussion do |discussion|
-      if discussion.archived_at.present?
-        false
-      elsif discussion.group.archived_at.present?
-        false
-      else
-        discussion.public? or
-        user_is_member_of?(discussion.group_id) or
-        (discussion.group.parent_members_can_see_discussions? and user_is_member_of?(discussion.group.parent_id))
-      end
+      !discussion.group.archived_at && (
+        discussion.public? ||
+        user_is_member_of?(discussion.group_id) ||
+        (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id))
+      )
     end
 
     can [:mark_as_read, :mark_as_seen], ::Discussion do |discussion|

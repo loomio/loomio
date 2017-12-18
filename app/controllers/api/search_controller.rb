@@ -1,7 +1,7 @@
 class API::SearchController < API::RestfulController
 
   def index
-    @search = resource_class.search_for(params[:q], current_user, search_params)
+    @search = resource_class.weighted_search_for(params[:q], current_user, search_params)
     respond_with_collection
   end
 

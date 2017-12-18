@@ -7,7 +7,7 @@
   display: flex;
 }
 
-.context-panel__pin {
+.context-panel__status {
   font-size: 20px;
   line-height: 34px;
   margin-right: 8px;
@@ -31,7 +31,8 @@
 
 .context-panel__details {
   color: $grey-on-white;
-  margin-bottom: 15px;
+  align-items: baseline;
+  margin-bottom: 16px;
 }
 
 .context-panel__description {

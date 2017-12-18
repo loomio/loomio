@@ -48,11 +48,17 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     canRemoveEventFromThread: (event) ->
       event.kind == 'discussion_edited' && @canAdministerDiscussion(event.discussion())
 
+    canCloseThread: (thread) ->
+      @canAdministerDiscussion(thread)
+
+    canReopenThread: (thread) ->
+      @canAdministerDiscussion(thread)
+
     canPinThread: (thread) ->
-      !thread.pinned && @canAdministerGroup(thread.group())
+      !thread.closedAt && !thread.pinned && @canAdministerGroup(thread.group())
 
     canUnpinThread: (thread) ->
-      thread.pinned && @canAdministerGroup(thread.group())
+      !thread.closedAt && thread.pinned && @canAdministerGroup(thread.group())
 
     canMoveThread: (thread) ->
       @canAdministerGroup(thread.group()) or

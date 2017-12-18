@@ -1,0 +1,13 @@
+.close-explanation-modal.lmo-modal__narrow
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1.close-explanation-modal__title{translate: "close_explanation_modal.close_thread"}
+      %material_modal_header_cancel_button
+  .md-dialog-content.md-body-1
+    .close-explanation-modal__explanation.lmo-hint-text{translate: "close_explanation_modal.body_header"}
+    .close-explanation-modal__image
+      %img{src: "/img/closing-threads.png", alt: "{{ 'close_explanation_modal.image_alt' | translate }}"}
+    .close-explanation-modal__explanation.lmo-hint-text{translate: "close_explanation_modal.body_footer"}
+    .lmo-md-actions
+      %md-button.close-explanation-modal__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
+      %md-button.md-raised.md-primary.close-explanation-modal__close-thread{type: "button", ng-click: "closeThread()", translate: "close_explanation_modal.close_thread"}
