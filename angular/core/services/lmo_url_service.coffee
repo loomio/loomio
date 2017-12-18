@@ -2,6 +2,7 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
   new class LmoUrlService
 
     route: ({model, action, params, options}) ->
+      options = options or {}
       if model? and action?
         @[model.constructor.singular](model, {}, _.merge(options, noStub: true)) + @routePath(action)
       else if model?
