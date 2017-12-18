@@ -30,6 +30,11 @@
   }
 }
 
+.discussions-card__no-more-threads {
+  padding: $cardPaddingSize;
+  text-align: center;
+}
+
 .discussions-card__dropdown {
   margin: 0 0 10px 0;
 }

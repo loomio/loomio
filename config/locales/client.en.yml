@@ -479,6 +479,7 @@ en:
     no_threads_here: No threads to see here!
     search_threads: Search for threads...
     private_threads: You'll need to be a member to view private threads in this group
+    no_more_threads: That's all the threads in this group!
     messages:
       privacy:
         members: 'This group is now visible only to members'

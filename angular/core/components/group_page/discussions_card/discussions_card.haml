@@ -22,10 +22,12 @@
 
     .discussions-card__list{ng-if: "!fragment"}
       %section.thread-preview-collection__container{ng-if: "discussions.any() || pinned.any()"}
-        %thread_preview_collection.thread-previews-container--pinned{ng-if: "pinned.any()", query: "pinned", limit: "threadLimit"}
-        %thread_preview_collection.thread-previews-container--unpinned{ng-if: "discussions.any()", query: "discussions", limit: "threadLimit"}
-      .lmo-show-more{ng-if: "canLoadMoreDiscussions()"}
+        %thread_preview_collection.thread-previews-container--pinned{ng-if: "pinned.any()", query: "pinned", limit: "loader.numLoaded"}
+        %thread_preview_collection.thread-previews-container--unpinned{ng-if: "discussions.any()", query: "discussions", limit: "loader.numLoaded"}
+      .lmo-show-more{ng-if: "!loader.exhausted && !loader.loadingMore"}
         %button.discussions-card__show-more{ng-hide: "loading()", ng-click: "loader.loadMore()", translate: "common.action.show_more"}
+      .lmo-hint-text.discussions-card__no-more-threads{translate: "group_page.no_more_threads", ng-if: "loader.exhausted"}
+      %loading{ng-if: "loader.loadingMore"}
     .discussions-card__list{ng-if: "fragment"}
       %section.thread-preview-collection__container{ng-if: "searched.any()"}
         %thread_preview_collection.thread-previews-container--searched{query: "searched"}
