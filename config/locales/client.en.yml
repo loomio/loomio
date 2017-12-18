@@ -401,6 +401,7 @@ en:
     add_resource: Add an attachment
     edit_group: Edit group context
     add_comment: Comment
+    copy_url_comment: Copy URL
     edit_thread: Edit context
     translate_thread: Translate context
     edit_poll: Edit poll
@@ -416,6 +417,7 @@ en:
     show_history: Show edit history
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
+    comment_copied: Comment URL copied to clipboard
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -532,6 +534,8 @@ en:
   description_card:
     title: 'Group description'
     placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
+    view_documents: 'View attachments'
+    manage_documents: 'Manage attachments'
     messages:
       description_updated: 'Description updated'
 
@@ -636,9 +640,6 @@ en:
   document:
     error:
       invalid_format: Oops! Your URL is invalid. Ensurer it begins with http:// or https://
-    card:
-      no_documents: No attachments have been uploaded into this group yet
-      view_documents: View all
     list:
       title: Attachments
       no_group_documents: No attachments have been uploaded to the group description yet
