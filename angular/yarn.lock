@@ -2365,9 +2365,9 @@ marked@^0.3.3:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
 
-mdi@2.0.46:
-  version "2.0.46"
-  resolved "https://registry.yarnpkg.com/mdi/-/mdi-2.0.46.tgz#65e07a7c622eda06e871cd6a336c60db8393e27a"
+mdi@2.1.19:
+  version "2.1.19"
+  resolved "https://registry.yarnpkg.com/mdi/-/mdi-2.1.19.tgz#492bfc0c4fd0c510ebd55301cc76eb03a7a2f34b"
 
 ment.io@~0.9.15:
   version "0.9.23"

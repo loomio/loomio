@@ -13,14 +13,16 @@ class Discussion < ActiveRecord::Base
   include HasCreatedEvent
 
   scope :archived, -> { where('archived_at is not null') }
-  scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
 
-  scope :visible_to_public, -> { published.where(private: false) }
+  scope :visible_to_public, -> { where(private: false) }
   scope :not_visible_to_public, -> { where(private: true) }
   scope :chronologically, -> { order('created_at asc') }
+
+  scope :is_open, -> { where(closed_at: nil) }
+  scope :is_closed, -> { where.not(closed_at: nil) }
 
   validates_presence_of :title, :group, :author
   validate :private_is_not_nil
@@ -49,7 +51,12 @@ class Discussion < ActiveRecord::Base
 
   has_many :discussion_readers
 
-  scope :search_for, ->(query, user, opts = {}) do
+  scope :search_for, ->(fragment) do
+     joins("INNER JOIN users ON users.id = discussions.author_id")
+    .where("discussions.title ilike :fragment OR users.name ilike :fragment", fragment: "%#{fragment}%")
+  end
+
+  scope :weighted_search_for, ->(query, user, opts = {}) do
     query = sanitize(query)
      select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query}::text as query")
     .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
@@ -76,6 +83,8 @@ class Discussion < ActiveRecord::Base
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
+  update_counter_cache :group, :open_discussions_count
+  update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
   def created_event_kind
