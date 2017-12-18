@@ -1,4 +1,5 @@
-.document-title-form
+.document-title-form.lmo-relative
+  .lmo-disabled-form{ng-show: "isDisabled"}
 
   %md-input-container.md-block.md-no-errors{ng-if: "!document.isNew() && document.manualUrl"}
     %label{translate: "document.form.url_label"}
