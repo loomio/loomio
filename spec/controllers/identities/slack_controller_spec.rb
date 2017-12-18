@@ -63,6 +63,7 @@ describe Identities::SlackController do
     } }
     let(:user) { create :user }
     let(:another_user) { create :user }
+    before { payload[:token] = ENV['SLACK_VERIFICATION_TOKEN'] }
 
     it 'creates a stance' do
       group.add_member! user
