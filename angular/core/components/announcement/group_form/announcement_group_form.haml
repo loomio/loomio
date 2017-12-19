@@ -9,7 +9,7 @@
     .announcement-group-form__content{ng-if: "group"}
       .announcement-group-form__filter.lmo-flex
         %md-input-container.polls-page__search.md-block{md-no-float: "true"}
-          %i.material-icons search
+          %i.mdi.mdi-magnify.mdi-24px
           %input{ng-model: "search.fragment", ng-change: "updateVisible()", ng-model-options: "{debounce: 300}", placeholder: "{{'announcement.group_form.search_placeholder' | translate}}"}
 
       %md-list.announcement-group-form__members

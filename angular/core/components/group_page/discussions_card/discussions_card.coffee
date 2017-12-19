@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, Records, RecordLoader, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
+angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, Records, RecordLoader, ModalService, DiscussionStartModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'

@@ -1,6 +1,6 @@
 .announcement-chip.lmo-flex{layout: "row", data-id: "{{chip.id}}"}
   %img.announcement-chip__avatar{ng-if: "chip.logo_url", ng-src: "{{chip.logo_url}}"}
-  .announcement-chip__placeholder.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center{ng-if: "!chip.logo_url", ng-switch: "chip.type"}
+  .announcement-chip__placeholder.lmo-flex.lmo-flex__center{ng-if: "!chip.logo_url", ng-switch: "chip.type"}
     %img.announcement-chip__avatar{ng-switch-when: "FormalGroup", ng-src: "{{defaultLogo()}}"}
     %i.mdi.mdi-24px.mdi-account{ng-switch-when: "User"}
     %i.mdi.mdi-24px.mdi-email-outline{ng-switch-when: "Invitation"}
