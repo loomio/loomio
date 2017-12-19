@@ -40,30 +40,33 @@ describe Identities::SlackController do
     let(:payload) { {
       user: { id: identity.uid },
       callback_id: poll.id,
+      token: ENV['SLACK_VERIFICATION_TOKEN'],
       actions: [{ name: poll.poll_options.first.name }],
       team: { id: 'T123', name: 'billsbarbies' }
     } }
     let(:payload_without_poll) { {
       user: { id: identity.uid },
       callback_id: 'notapoll',
+      token: ENV['SLACK_VERIFICATION_TOKEN'],
       actions: [{ name: poll.poll_options.first.name }],
       team: { id: 'T123', name: 'billsbarbies' }
     } }
     let(:payload_without_user) { {
       user: { id: 'notauser' },
       callback_id: poll.id,
+      token: ENV['SLACK_VERIFICATION_TOKEN'],
       actions: [{ name: poll.poll_options.first.name }],
       team: { id: 'T123', name: 'billsbarbies' }
     } }
     let(:bad_payload) { {
       user: { id: identity.uid },
       callback_id: poll.id,
+      token: ENV['SLACK_VERIFICATION_TOKEN'],
       actions: [],
       team: {}
     } }
     let(:user) { create :user }
     let(:another_user) { create :user }
-    before { payload[:token] = ENV['SLACK_VERIFICATION_TOKEN'] }
 
     it 'creates a stance' do
       group.add_member! user
