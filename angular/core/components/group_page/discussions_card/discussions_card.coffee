@@ -42,7 +42,7 @@ angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeou
         Records.discussions.build(groupId: $scope.group.id)
 
     $scope.loading = ->
-      $scope.loader.loading || $scope.searchThreadsExecuting
+      $scope.loader.loadingFirst || $scope.searchThreadsExecuting
 
     $scope.isEmpty = ->
       return if $scope.loading()
