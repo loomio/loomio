@@ -21,7 +21,7 @@ Queries::Notified::Search = Struct.new(:query, :user) do
   end
 
   def visible_invitations
-    Array(query.scan(ReceivedEmail::EMAIL_REGEX)).map { |email| Notified::Invitation.new(email) }
+    Array(query.scan(AppConfig::EMAIL_REGEX)).map { |email| Notified::Invitation.new(email) }
   end
 
 end
