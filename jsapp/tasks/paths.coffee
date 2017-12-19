@@ -12,16 +12,16 @@ include = (file, key) ->
 
 module.exports =
   app:
-    coffee:       _.flatten(['angular/boot/**/*.coffee', 'angular/core/**/*.coffee'])
-    haml:         _.flatten(['angular/core/components/**/*.haml'])
-    scss:         _.flatten([include(vendor, 'css'), 'angular/core/css/app.scss', 'angular/core/components/**/*.scss'])
-    scss_include: _.flatten([include(vendor, 'css_includes'), 'angular/core/css'])
+    coffee:       _.flatten(['angular/boot/**/*.coffee', 'angular/**/*.coffee'])
+    haml:         _.flatten(['angular/components/**/*.haml'])
+    scss:         _.flatten([include(vendor, 'css'), 'angular/css/app.scss', 'angular/components/**/*.scss'])
+    scss_include: _.flatten([include(vendor, 'css_includes'), 'angular/css'])
 
   plugin:
     coffee: include plugins, 'coffee'
     haml:   include plugins, 'haml'
-    scss:   _.flatten(['angular/core/css/plugin.scss', include(plugins, 'scss')])
-    scss_include: ['angular/core/css']
+    scss:   _.flatten(['angular/css/plugin.scss', include(plugins, 'scss')])
+    scss_include: ['angular/css']
 
   extra:
     emojis:         include(vendor, 'emoji')
@@ -35,12 +35,12 @@ module.exports =
     moment_locales: '../public/client/development/moment_locales'
 
   js:
-    execcoffee:   'angular/core/initializers/**/*.coffee'
+    execcoffee:   'angular/initializers/**/*.coffee'
     execjs:       _.flatten(include(vendor, 'execjs'), include(vendor, 'lodash'))
     vendor:       include(vendor, 'js')
 
   vue:
-    coffee:         'vue/core/entry.coffee'
+    coffee:         'vue/core/root_controller.coffee'
     vue:            'vue/core/components/*.vue'
 
   protractor:
