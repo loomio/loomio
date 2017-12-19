@@ -31,7 +31,5 @@ public/img/emojis
 /fetched_plugins/
 /plugins
 
-angular/node_modules
-angular/tasks/config/plugins.yml
-
-webviews/node_modules
+jsapp/node_modules
+jsapp/tasks/config/plugins.yml

@@ -22,6 +22,9 @@
   "browserslist": [
     "defaults"
   ],
+  "browser": {
+    "vue": "vue/dist/vue.common.js"
+  },
   "homepage": "https://github.com/loomio/loomio#readme",
   "dependencies": {
     "airbrake-js": "^0.9.9",
@@ -63,14 +66,20 @@
     "private_pub": "latest",
     "promise-polyfill": "^6.0.2",
     "svg.js": "latest",
+    "vinyl-source-stream": "^1.1.0",
+    "vue": "^2.5.11",
+    "vue-loader": "^13.6.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "add-stream": "^1.0.0",
-    "coffee-script": "^1.10.0",
+    "browserify": "^14.5.0",
+    "coffee-loader": "^0.9.0",
+    "coffeeify": "^3.0.1",
+    "coffeescript": "^2.1.0",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^1.8.0",
-    "gulp-autoprefixer": "latest",
+    "gulp-autoprefixer": "^4.0.0",
     "gulp-coffee": "^2.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",
@@ -87,8 +96,14 @@
     "gulp-sass": "3.1.0",
     "gulp-uglify": "^1.5.1",
     "gulp-watch": "^4.3.5",
+    "haml-loader": "^0.1.0",
+    "hamljs": "^0.6.2",
+    "node-sass": "^4.7.2",
     "node-yaml-config": "0.0.3",
     "protractor": "5.1.2",
-    "protractor-jasmine2-screenshot-reporter": "^0.4.1"
+    "protractor-jasmine2-screenshot-reporter": "^0.4.1",
+    "sass-loader": "^6.0.6",
+    "vueify": "^9.4.1",
+    "vueify-extract-css": "^0.2.0"
   }
 }

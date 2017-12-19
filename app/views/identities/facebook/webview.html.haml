@@ -1,6 +1,10 @@
 %html
   %head
     %title A test title
+    %link{href: client_asset_path(:"vue.min.css"), rel: 'stylesheet'}
   %body
+    #vue-app
+      %root_component
+
+    %script{src: client_asset_path(:"vue.min.js")}
     = render partial: 'messenger_sdk'
-    %div= "Hello, you can start a #{params[:poll_type]} now."

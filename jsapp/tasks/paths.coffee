@@ -12,16 +12,16 @@ include = (file, key) ->
 
 module.exports =
   app:
-    coffee:       _.flatten(['boot/**/*.coffee', 'core/**/*.coffee'])
-    haml:         _.flatten(['core/components/**/*.haml'])
-    scss:         _.flatten([include(vendor, 'css'), 'core/css/app.scss', 'core/components/**/*.scss'])
-    scss_include: _.flatten([include(vendor, 'css_includes'), 'core/css'])
+    coffee:       _.flatten(['angular/boot/**/*.coffee', 'angular/core/**/*.coffee'])
+    haml:         _.flatten(['angular/core/components/**/*.haml'])
+    scss:         _.flatten([include(vendor, 'css'), 'angular/core/css/app.scss', 'angular/core/components/**/*.scss'])
+    scss_include: _.flatten([include(vendor, 'css_includes'), 'angular/core/css'])
 
   plugin:
     coffee: include plugins, 'coffee'
     haml:   include plugins, 'haml'
-    scss:   _.flatten(['core/css/plugin.scss', include(plugins, 'scss')])
-    scss_include: ['core/css']
+    scss:   _.flatten(['angular/core/css/plugin.scss', include(plugins, 'scss')])
+    scss_include: ['angular/core/css']
 
   extra:
     emojis:         include(vendor, 'emoji')
@@ -35,13 +35,17 @@ module.exports =
     moment_locales: '../public/client/development/moment_locales'
 
   js:
-    execcoffee:   'core/initializers/**/*.coffee'
+    execcoffee:   'angular/core/initializers/**/*.coffee'
     execjs:       _.flatten(include(vendor, 'execjs'), include(vendor, 'lodash'))
     vendor:       include(vendor, 'js')
 
+  vue:
+    coffee:         'vue/core/entry.coffee'
+    vue:            'vue/core/components/*.vue'
+
   protractor:
-    config:       'test/protractor.coffee'
-    screenshots:  'test/protractor/screenshots'
+    config:       'angular/test/protractor.coffee'
+    screenshots:  'angular/test/protractor/screenshots'
     specs:
-      core:        'test/protractor/*_spec.coffee'
-      plugins:     ['../plugins/**/*_spec.coffee', 'test/protractor/testing_spec.coffee']
+      core:        'angular/test/protractor/*_spec.coffee'
+      plugins:     ['../plugins/**/*_spec.coffee', 'angular/test/protractor/testing_spec.coffee']

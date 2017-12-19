@@ -1,7 +1,5 @@
 <template>
-  <div class="test-vue">
-    Hello {{target}}!
-  </div>
+  <div class="test-vue">Hello {{target}}!</div>
 </template>
 
 <script lang="coffee">
@@ -10,7 +8,7 @@
       target: "World"
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .test-vue {
     border: 1px solid red;
   }
