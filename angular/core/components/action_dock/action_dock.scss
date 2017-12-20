@@ -1,7 +1,8 @@
 .action-dock {
   transition: opacity ease-in-out 0.25s;
-}
-
-.action-dock__action--active {
   
+  .md-button--tiny > i.mdi-alert-circle-outline {
+    line-height: initial;
+    font-size: 13px;
+  }
 }
