@@ -61,7 +61,7 @@ describe 'Discussion Page', ->
       page.fillIn('.discussion-form__title-input', 'better title')
       page.fillIn('.discussion-form textarea', 'improved description')
       page.click('.discussion-form__private')
-      page.click('.discussion-form__update')
+      page.click('.discussion-form__submit')
       page.expectText('.context-panel', 'better title')
       page.expectText('.context-panel', 'improved description')
       page.expectText('.context-panel', 'Private')
@@ -86,12 +86,12 @@ describe 'Discussion Page', ->
                  '.context-panel-dropdown__option--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
       page.fillIn '.discussion-form textarea', 'Revised description'
-      page.click '.discussion-form__update'
+      page.click '.discussion-form__submit'
       page.click '.context-panel-dropdown__button',
                  '.context-panel-dropdown__option--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
       page.fillIn '.discussion-form textarea', 'Revised description'
-      page.click '.discussion-form__update'
+      page.click '.discussion-form__submit'
       page.click '.context-panel__edited'
       page.expectText '.revision-history-modal__body', 'Revised title'
       page.expectText '.revision-history-modal__body', 'Revised description'
