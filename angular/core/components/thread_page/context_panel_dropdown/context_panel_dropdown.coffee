@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, $window, $timeout, AbilityService, ModalService, DiscussionModal, ChangeVolumeForm, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal) ->
+angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, AbilityService, ModalService, DiscussionModal, ChangeVolumeForm, ThreadService, MoveThreadForm, DeleteThreadForm, RevisionHistoryModal) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
@@ -49,11 +49,7 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, $wind
 
     $scope.requestPagePrinted = ->
       $rootScope.$broadcast('toggleSidebar', false)
-      if $scope.discussion.allEventsLoaded()
-        $timeout -> $window.print()
-      else
-        ModalService.open PrintModal, preventClose: -> true
-        $rootScope.$broadcast 'fetchRecordsForPrint'
+      $rootScope.$broadcast 'fetchRecordsForPrint'
 
     $scope.canDeleteThread = ->
       AbilityService.canDeleteThread($scope.discussion)

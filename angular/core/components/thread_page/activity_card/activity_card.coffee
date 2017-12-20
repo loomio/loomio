@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow, NestedEventWindow, RecordLoader, $mdDialog, $timeout, $window, AppConfig)->
+angular.module('loomioApp').directive 'activityCard', ($mdDialog, ChronologicalEventWindow, NestedEventWindow, RecordLoader, $window, AppConfig, ModalService, PrintModal)->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
@@ -44,10 +44,14 @@ angular.module('loomioApp').directive 'activityCard', (ChronologicalEventWindow,
         when "unread"    then "#sequence-#{$scope.discussion.firstUnreadSequenceId()}"
         when "latest"    then "#sequence-#{$scope.discussion.lastSequenceId()}"
 
-    $scope.$on 'fetchRecordsForPrint', (event, options = {}) ->
-      $scope.eventWindow.loadAll().then ->
-        $mdDialog.cancel()
-        $timeout -> $window.print()
+    $scope.$on 'fetchRecordsForPrint', ->
+      if $scope.discussion.allEventsLoaded()
+        $window.print()
+      else
+        ModalService.open PrintModal, preventClose: -> true
+        $scope.eventWindow.showAll().then ->
+          $mdDialog.cancel()
+          $window.print()
 
     $scope.init = (position = $scope.initialPosition()) ->
       $scope.loader = new RecordLoader

@@ -993,7 +993,8 @@ en:
 
 
   print_modal:
-    load_discussion: Loading entire discussion...
+    load_discussion: Loading entire discussion
+    helptext: Just a second, we're fetching all of the events in this thread for printing...
 
   delete_comment_dialog:
     title: 'Delete comment'
