@@ -4,12 +4,14 @@ class Discussion < ActiveRecord::Base
   include Translatable
   include Reactable
   include HasTimeframe
+  include HasAnnouncements
   include HasMentions
+  include HasGuestGroup
   include HasImportance
   include MessageChannel
-  include MakesAnnouncements
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
   include HasCreatedEvent
 
   scope :archived, -> { where('archived_at is not null') }

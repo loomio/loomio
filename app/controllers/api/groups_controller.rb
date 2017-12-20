@@ -16,12 +16,6 @@ class API::GroupsController < API::RestfulController
     render json: { count: Queries::ExploreGroups.new.search_for(params[:q]).count }
   end
 
-  def create
-    instantiate_resource
-    create_action
-    respond_with_resource(scope: {current_user: current_user})
-  end
-
   def archive
     service.archive(group: load_resource, actor: current_user)
     respond_with_resource
@@ -54,15 +48,6 @@ class API::GroupsController < API::RestfulController
 
   def resource_class
     FormalGroup
-  end
-
-  def publish_params
-    {
-      make_announcement: !!params[:make_announcement],
-      identifier:        params.require(:identifier),
-      channel:           params[:channel],
-      identity_type:     :slack
-    }
   end
 
   # serialize out the parent with the group

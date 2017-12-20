@@ -42,6 +42,7 @@ class Membership < ActiveRecord::Base
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
   delegate :token, to: :invitation, allow_nil: true
+  delegate :mailer, to: :user
 
   update_counter_cache :group, :memberships_count
   update_counter_cache :group, :admin_memberships_count

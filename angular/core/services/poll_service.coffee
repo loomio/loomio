@@ -34,11 +34,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
 
     applyPollStartSequence: (scope, options = {}) ->
       SequenceService.applySequence scope,
-        steps: ->
-          if scope.poll.group()
-            ['choose', 'save']
-          else
-            ['choose', 'save', 'share']
+        steps: ['choose', 'save', 'announce']
         initialStep: if scope.poll.pollType then 'save' else 'choose'
         emitter: options.emitter or scope
         chooseComplete: (_, pollType) ->
@@ -56,7 +52,8 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
         failureCallback: ->
           ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
-          scope.$emit 'outcomeSaved', data.outcomes[0].id
+          outcome = Records.outcomes.find(data.outcomes[0].id)
+          scope.$emit 'nextStep', outcome
       , options))
 
     submitPoll: (scope, model, options = {}) ->

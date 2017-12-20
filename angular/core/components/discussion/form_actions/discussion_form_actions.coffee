@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'discussionFormActions', ->
+angular.module('loomioApp').directive 'discussionFormActions', (Records) ->
   scope: {discussion: '='}
   replace: true
   templateUrl: 'generated/components/discussion/form_actions/discussion_form_actions.html'
@@ -8,10 +8,10 @@ angular.module('loomioApp').directive 'discussionFormActions', ->
     $scope.submit = FormService.submit $scope, $scope.discussion,
       flashSuccess: "discussion_form.messages.#{actionName}"
       drafts: true
-      successCallback: (response) =>
-        $scope.$emit '$close'
+      successCallback: (data) =>
+        discussion = Records.discussions.find(data.discussions[0].id)
+        $scope.$emit 'nextStep', discussion
         _.invoke Records.documents.find($scope.discussion.removedDocumentIds), 'remove'
-        discussion = Records.discussions.find(response.discussions[0].id)
         $location.path LmoUrlService.discussion(discussion) if actionName == 'created'
 
     KeyEventService.submitOnEnter $scope

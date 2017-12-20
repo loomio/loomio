@@ -1,0 +1,15 @@
+%md-dialog.discussion-edit-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %i.mdi.mdi-forum
+      %h1.lmo-h1{translate: "discussion_form.edit_discussion_title"}
+      %material_modal_header_cancel_button
+  %md-dialog-content.lmo-slide-animation
+    %div{ng-switch: "currentStep"}
+      %discussion_form.animated{discussion: "discussion", ng-switch-when: "save"}
+      %announcement_form.animated{announcement: "announcement", ng-switch-when: "announce"}
+    %dialog_scroll_indicator
+  %md-dialog-actions.lmo-slide-animation{ng-switch: "currentStep"}
+    %discussion_form_actions.animated{discussion: "discussion", ng-switch-when: "save"}
+    %announcement_form_actions.animated{announcement: "announcement", ng-switch-when: "announce"}

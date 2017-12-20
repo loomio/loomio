@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   include UsesWithoutScope
   include SelfReferencing
   include NoForbiddenEmails
+  include HasMailer
+  include CustomCounterCache::Model
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
@@ -125,8 +127,8 @@ class User < ActiveRecord::Base
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
   scope :verified_first, -> { order(email_verified: :desc) }
+  scope :search_for, ->(query) { where("name ilike :q OR username ilike :q", q: "%#{query}%") }
 
-  # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
   scope :email_proposal_closing_soon_for, -> (group) {

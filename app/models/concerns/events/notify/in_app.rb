@@ -51,18 +51,6 @@ module Events::Notify::InApp
   end
 
   def notification_translation_title
-    case eventable
-    when PaperTrail::Version then eventable.item.title
-    when Comment, Discussion then eventable.discussion.title
-    when Poll, Outcome       then eventable.poll.title
-    # TODO: deal with polymorphic reactions here
-    when Reaction            then eventable.reactable.discussion.title
-    when Group, Membership
-      if eventable.group.is_a?(FormalGroup)
-        eventable.group.full_name
-      else
-        eventable.group.invitation_target.title
-      end
-    end
+    @notification_translation_title ||= polymorphic_title(eventable)
   end
 end

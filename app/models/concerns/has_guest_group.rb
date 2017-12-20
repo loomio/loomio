@@ -3,6 +3,7 @@ module HasGuestGroup
   included do
     belongs_to :guest_group, class_name: "GuestGroup"
     has_many :guests, through: :guest_group, source: :members
+    has_many :guest_invitations, through: :guest_group, source: :invitations
   end
 
   def guest_group
@@ -12,7 +13,7 @@ module HasGuestGroup
   def invite_guest!(name: nil, email:, inviter: self.author)
     self.guest_group.invitations.find_or_create_by(
       recipient_email: email,
-      intent: :join_poll
+      intent: :"join_#{self.class.to_s.downcase}"
     ).update(
       recipient_name: name,
       inviter: inviter

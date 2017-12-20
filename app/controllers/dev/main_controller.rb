@@ -12,7 +12,7 @@ class Dev::MainController < Dev::BaseController
     render layout: false
   end
 
-  def setup_thread_mailer_new_discussion_email
+  def setup_discussion_mailer_new_discussion_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!  patrick
     @group.add_member! jennifer
@@ -20,13 +20,12 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.create(title: 'What star sign are you?',
                                      group: @group,
                                      description: "Wow, what a __great__ day.",
-                                     make_announcement: true,
                                      author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     last_email
   end
 
-  def setup_thread_mailer_new_comment_email
+  def setup_discussion_mailer_new_comment_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick).set_volume!(:loud)
     @group.add_member! jennifer
@@ -34,7 +33,6 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "Wow, what a __great__ day.",
-                                 make_announcement: false,
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @comment = Comment.new(author: jennifer, body: "hello _patrick_.", discussion: @discussion)
@@ -42,7 +40,7 @@ class Dev::MainController < Dev::BaseController
     last_email
   end
 
-  def setup_thread_mailer_user_mentioned_email
+  def setup_discussion_mailer_user_mentioned_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)
     @group.add_member! jennifer
@@ -50,13 +48,12 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "hey @patrickswayze wanna dance?",
-                                 make_announcement: false,
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     last_email
   end
 
-  def setup_thread_mailer_comment_replied_to_email
+  def setup_discussion_mailer_comment_replied_to_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)
     @group.add_member! jennifer
@@ -64,7 +61,6 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "Wow, what a __great__ day.",
-                                 make_announcement: false,
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @comment = Comment.new(body: "hello _patrick.", discussion: @discussion)

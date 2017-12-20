@@ -2,10 +2,7 @@ class Events::InvitationAccepted < Event
   include Events::Notify::InApp
 
   def self.publish!(membership)
-    create(kind: "invitation_accepted",
-           user_id: membership.user_id,
-           eventable: membership,
-           created_at: membership.created_at).tap { |e| EventBus.broadcast('invitation_accepted_event', e) }
+    super membership, user: membership.user
   end
 
   private

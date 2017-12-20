@@ -30,11 +30,3 @@
           %i.mdi.mdi-24px.mdi-lock-outline.lmo-margin-right{ng-if: "discussion.private"}
           %i.mdi.mdi-24px.mdi-earth.lmo-margin-right{ng-if: "!discussion.private"}
           %discussion_privacy_icon{discussion: "discussion"}
-
-      %md-list-item.discussion-form__announcement-size{ng-if: "discussion.isNew()"}
-        %md-checkbox.md-checkbox--with-summary.discussion-form__make-announcement{ng-model: "discussion.makeAnnouncement"}
-          .discussion-form__make-announcement-title
-            %strong{translate: "discussion_form.make_announcement"}>
-          .discussion-form__make-announcement-subtitle{translate: "discussion_form.notified_count", ng-if: "discussion.makeAnnouncement", translate-values: "{count: discussion.group().announcementRecipientsCount}"}
-
-    %discussion_form_actions{ng-if: "!modal", discussion: "discussion"}

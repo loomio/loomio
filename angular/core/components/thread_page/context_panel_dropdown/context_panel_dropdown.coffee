@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, $window, $timeout, AbilityService, ModalService, DiscussionModal, ChangeVolumeForm, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal) ->
+angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, $window, $timeout, AbilityService, ModalService, DiscussionEditModal, ChangeVolumeForm, ThreadService, MoveThreadForm, PrintModal, DeleteThreadForm, RevisionHistoryModal) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
@@ -15,7 +15,7 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, $wind
       AbilityService.canEditThread($scope.discussion)
 
     $scope.editThread = ->
-      ModalService.open DiscussionModal, discussion: => $scope.discussion
+      ModalService.open DiscussionEditModal, discussion: => $scope.discussion
 
     $scope.canPinThread = ->
       AbilityService.canPinThread($scope.discussion)

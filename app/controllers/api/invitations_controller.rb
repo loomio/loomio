@@ -9,9 +9,9 @@ class API::InvitationsController < API::RestfulController
 
 
   def bulk_create
-    self.resource = service.invite_to_group(recipient_emails: email_addresses,
-                                            group: authorize_group(:invite_people),
-                                            inviter: current_user)
+    self.resource = service.bulk_create(recipient_emails: email_addresses,
+                                        group: authorize_group(:invite_people),
+                                        inviter: current_user)
     respond_with_collection
   end
 

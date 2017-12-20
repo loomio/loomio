@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, Records, RecordLoader, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
+angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, Records, RecordLoader, ModalService, DiscussionStartModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
@@ -37,8 +37,9 @@ angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeou
           overwrite: true
     LoadingService.applyLoadingFunction $scope, 'searchThreads'
 
-    $scope.openDiscussionModal = ->
-      ModalService.open DiscussionModal, discussion: -> Records.discussions.build(groupId: $scope.group.id)
+    $scope.startDiscussion = ->
+      ModalService.open DiscussionStartModal, discussion: ->
+        Records.discussions.build(groupId: $scope.group.id)
 
     $scope.loading = ->
       $scope.loader.loadingFirst || $scope.searchThreadsExecuting
