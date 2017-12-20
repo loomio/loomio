@@ -1,7 +1,7 @@
 .announcement-chip.lmo-flex{layout: "row", data-id: "{{chip.id}}"}
   .announcement-chip__avatar{ng-switch: "chip.type"}
     %img.announcement-chip__avatar--group{ng-switch-when: "FormalGroup", ng-src: "{{chip.icon_url}}"}
-    %user_avatar.announcement-chip__avatar--user{ng-switch-when: "User", user: "userForAvatar", size: "small"}
+    %user_avatar.announcement-chip__avatar--user{ng-switch-when: "User", user: "userForAvatar", size: "small", no-link: "true"}
     .announcement-chip__avatar--invitation{ng-switch-when: "Invitation"}
       %i.mdi.mdi-24px.mdi-email-outline
   .announcement-chip__content.lmo-flex{layout: "column"}
