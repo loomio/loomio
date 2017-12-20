@@ -18,4 +18,8 @@ class Notified::User < Notified::Base
   def notified_ids
     Array(model.id)
   end
+
+  def avatar_initials
+    model.avatar_initials
+  end
 end

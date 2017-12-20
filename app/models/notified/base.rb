@@ -26,6 +26,10 @@ class Notified::Base
     nil
   end
 
+  def avatar_initials
+    nil
+  end
+
   def notified_ids
     []
   end

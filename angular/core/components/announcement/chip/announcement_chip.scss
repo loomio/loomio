@@ -2,6 +2,10 @@
   align-items: center;
   min-height: 32px;
   height: 100%;
+  img {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .announcement-chip__content {
@@ -17,9 +21,14 @@
   color: $primary-text-color;
 }
 
-.announcement-chip__avatar, .announcement-chip__placeholder {
+.announcement-chip__avatar {
   width: 32px;
   height: 32px;
   margin-right: 8px;
-  i { margin-top: 6px; }
+  &--invitation {
+    max-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

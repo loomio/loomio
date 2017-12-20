@@ -1,6 +1,5 @@
 angular.module('loomioApp').factory '$exceptionHandler', ($log, AppConfig) ->
-  if !AppConfig.errbit.key?
-    return ->
+  return $log.error unless AppConfig.errbit.key?
 
   client = new airbrakeJs.Client
     projectId:  AppConfig.errbit.key
