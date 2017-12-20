@@ -419,9 +419,11 @@ en:
     copy_url_comment: Copy URL
     edit_thread: Edit context
     announce_thread: Let people know about this thread
+    announce_thread_active: (No one has been notified of this thread yet)
     translate_thread: Translate context
     edit_poll: Edit poll
-    announce_poll: Let people know about this poll
+    announce_poll: Let people know about this decision
+    announce_poll_active: (No one has been notified of this decision yet)
     translate_poll: Translate poll
     edit_stance: Change your vote
     translate_stance: Translate vote
@@ -431,6 +433,7 @@ en:
     translate_comment: Translate comment
     edit_outcome: Edit outcome
     announce_outcome: Let people know about this outcome
+    announce_outcome_active: (No one has been notified of this outcome yet)
     translate_outcome: Translate outcome
     show_history: Show edit history
     pin_thread: Pin thread

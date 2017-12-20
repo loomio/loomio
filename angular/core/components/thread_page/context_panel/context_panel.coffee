@@ -23,6 +23,7 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, R
     ,
       name: 'announce_thread'
       icon: 'mdi-bullhorn'
+      active:     -> $scope.discussion.announcementsCount == 0
       canPerform: -> AbilityService.canAdministerDiscussion($scope.discussion)
       perform:    -> ModalService.open AnnouncementModal, announcement: -> Records.announcements.buildFromModel($scope.discussion)
     ,

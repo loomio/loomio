@@ -8,6 +8,7 @@ angular.module('loomioApp').directive 'pollCommonDetailsPanel', (Records, Abilit
     ,
       name: 'announce_poll'
       icon: 'mdi-bullhorn'
+      active:     -> $scope.poll.announcementsCount == 0
       canPerform: -> $scope.poll.isActive() && AbilityService.canAdministerPoll($scope.poll)
       perform:    -> ModalService.open AnnouncementModal, announcement: -> Records.announcements.buildFromModel($scope.poll)
     ,
