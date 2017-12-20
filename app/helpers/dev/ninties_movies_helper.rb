@@ -348,7 +348,7 @@ module Dev::NintiesMoviesHelper
     InvitationService.redeem(invitation.first, emilio)
 
     #'poll_created'
-    poll = FactoryGirl.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
+    poll = FactoryGirl.build(:poll, discussion: create_discussion, closing_at: 24.hours.from_now)
     PollService.create(poll: poll, actor: jennifer)
 
     #'poll_closing_soon'
@@ -357,7 +357,7 @@ module Dev::NintiesMoviesHelper
     #'outcome_created'
     poll = FactoryGirl.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
     PollService.create(poll: poll, actor: jennifer)
-    outcome = FactoryGirl.build(:outcome, poll: poll, make_announcement: true)
+    outcome = FactoryGirl.build(:outcome, poll: poll)
     OutcomeService.create(outcome: outcome, actor: jennifer)
 
     #'stance_created'
@@ -369,7 +369,6 @@ module Dev::NintiesMoviesHelper
 
     #'poll_option_added'
     poll.tap(&:save).reload
-    poll.make_announcement = true
     patrick_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: patrick_stance, actor: patrick)
     PollService.add_options(poll: poll, actor: jennifer, params: {poll_option_names: ['new_option']})

@@ -131,76 +131,58 @@ describe Event do
 
   describe 'poll_closing_soon' do
     describe 'voters_review_responses', focus: true do
-      it 'true' do
-        poll = FactoryGirl.build(:poll_proposal, discussion: discussion)
-        PollService.create(poll: poll, actor: discussion.group.admins.first)
+      let(:group_notified) {{
+        id: discussion.group_id,
+        type: "Group",
+        notified_ids: [user_thread_loud.id, user_thread_normal.id]
+      }.with_indifferent_access}
+
+      it 'should notify participants when voters_review_responses is true' do
+        poll = FactoryGirl.create(:poll_proposal, discussion: discussion)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        FactoryGirl.create(:announcement, announceable: poll, notified: [group_notified])
+
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         notified_users.should include user_thread_loud
         notified_users.should include user_thread_normal
+        notified_users.should_not include user_thread_quiet
+        notified_users.should_not include user_membership_quiet
+        notified_users.should_not include user_thread_quiet
+        notified_users.should_not include user_membership_mute
+        notified_users.should_not include user_thread_mute
+        notified_users.should_not include user_unsubscribed
+        notified_users.should_not include poll.author
 
         emailed_users = Events::PollClosingSoon.last.send(:email_recipients)
         emailed_users.should include user_thread_loud
         emailed_users.should include user_thread_normal
+        emailed_users.should_not include user_membership_quiet
+        emailed_users.should_not include user_thread_quiet
+        emailed_users.should_not include user_membership_mute
+        emailed_users.should_not include user_thread_mute
+        emailed_users.should_not include user_unsubscribed
+        emailed_users.should_not include poll.author
       end
 
-      it 'false' do
-        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
+      it 'should notify announcees who have not participated when voters_review_responses is false' do
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        # quiet user who has been announced to before
+        FactoryGirl.create(:announcement, announceable: poll, notified: [group_notified])
+
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         notified_users.should_not include user_thread_loud
         notified_users.should include user_thread_normal
+        notified_users.should_not include user_thread_quiet
 
         emailed_users = Events::PollClosingSoon.last.send(:email_recipients)
         emailed_users.should_not include user_thread_loud
         emailed_users.should include user_thread_normal
+        emailed_users.should_not include user_thread_quiet
       end
-    end
-
-    it 'makes an announcement' do
-      Event.create(kind: 'poll_created', announcement: true, eventable: poll)
-      expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
-      email_users = Events::PollClosingSoon.last.send(:email_recipients)
-      email_users.should     include user_thread_loud
-      email_users.should     include user_membership_loud
-
-      email_users.should     include user_membership_normal
-      email_users.should     include user_thread_normal
-
-      email_users.should_not include user_membership_quiet
-      email_users.should_not include user_thread_quiet
-
-      email_users.should_not include user_membership_mute
-      email_users.should_not include user_thread_mute
-      email_users.should_not include user_unsubscribed
-      email_users.should_not include poll.author
-
-      notification_users = Events::PollClosingSoon.last.send(:notification_recipients)
-      notification_users.should     include user_thread_loud
-      notification_users.should     include user_membership_loud
-
-      notification_users.should     include user_membership_normal
-      notification_users.should     include user_thread_normal
-
-      notification_users.should     include user_membership_quiet
-      notification_users.should     include user_thread_quiet
-
-      notification_users.should     include user_membership_mute
-      notification_users.should     include user_thread_mute
-      notification_users.should_not include poll.author
-    end
-
-    it 'does not notify when not an announcement' do
-      Events::PollClosingSoon.publish!(poll)
-      email_users = Events::PollClosingSoon.last.send(:email_recipients)
-      expect(email_users).to be_empty
-
-      notification_users = Events::PollClosingSoon.last.send(:notification_recipients)
-      expect(notification_users).to be_empty
     end
 
     it 'does not email helper bot' do
