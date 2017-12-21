@@ -67,11 +67,6 @@ sl:
     messages:
       membership_requested: 'Zaprosil/a si za članstvo v {{group}}'
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Za pridružitev tej skupini moraš biti povabljen/a s strani člana."
-        membership_is_invitation_by_admin_only: "Za pridružitev tej skupini moraš biti povabljen/a s strani koordinatorja."
-    discussions: 'Razprave'
     options_label: 'Možnosti'
     options:
       label: 'Možnosti'
@@ -121,6 +116,8 @@ sl:
     unread: Neprebrano
   thread_group:
     aria_label: 'Ime skupine'
+  thread_context:
+    close_thread: 'Zapri'
   delete_comment_dialog:
     title: 'Izbriši komentar'
     question: 'Si prepričan/a, da želiš izbrisati ta komentar?'

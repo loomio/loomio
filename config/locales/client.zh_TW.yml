@@ -203,6 +203,14 @@ zh_TW:
         loud: "您將會收到關於您新加入的群組中所有動態的電子郵件。"
         normal: "您將會收到在新群組中關於公告的電子郵件。"
         quiet: "您將不會收到任何關於新群組的電子郵件。"
+  close_explanation_modal:
+    aria_label: 關閉討論串
+    close_thread: 關閉討論串
+    body_header: |
+      <p>關閉舊的或無關的討論串以將它們從檢視中移除，並指示它們已經被關閉。</p>
+    body_footer: |
+      <p>所有人還是可以在已關閉的討論串中評論或開啟投票，但其將不會出現在群組的討論串清單或儀表板上。</p>
+    image_alt: 關閉討論串所有
   mute_explanation_modal:
     aria_label: 討論串設為靜音
     mute_thread: 討論串設為靜音
@@ -364,6 +372,7 @@ zh_TW:
     add_resource: 新增附件
     edit_group: 編輯群組內容
     add_comment: 意見
+    copy_url_comment: 複製 URL
     edit_thread: 編輯內容
     translate_thread: 翻譯內容
     edit_poll: 編輯投票
@@ -379,6 +388,7 @@ zh_TW:
     show_history: 顯示編輯歷史
     pin_thread: 釘選討論串
     unpin_thread: 取消釘選討論串
+    comment_copied: 評論的 URL 已複製到剪貼簿
   cover_photo_form:
     aria_label: '變更封面照片表單'
     heading: '新的封面圖片'
@@ -421,17 +431,16 @@ zh_TW:
     you_and_name: "您與 {{name}}"
     you_and_name_and_count_more: "您、{{name}} 與 {{count}} 更多"
     name_and_count_more: "{{name}} 與 {{count}} 更多"
+  context_panel:
+    thread_status:
+      pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
+      closed: "這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。"
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "這個群組尚未有任何的討論串。"
-        no_discussions_matching_filters_html: "沒有討論串符合這些過濾條件。 <a href='%{link}'>清除過濾條件</a>。"
-        no_public_discussions: "這個群組中沒有公開的討論串。"
-        discussions_are_private: "在此群組中所有的討論串都是非公開的。"
-        join_group: "要觀看非公開的討論串，您將需要加入此群組。"
-        request_membership: "要觀看非公開的討論串，申請加入此群組。"
-        membership_is_invitation_only: "您需要有這個群組的成員邀請才能加入。"
-        membership_is_invitation_by_admin_only: "您需要被協調者邀請才能加入這個群組。"
+    show_opened: '{{count}} 開啟'
+    show_closed: '{{count}} 已關閉'
+    no_threads_here: 這裡沒有討論串可以檢視！
+    search_threads: 搜尋討論串……
+    private_threads: 您需要是成員才能檢視群組中的私密討論串
     messages:
       privacy:
         members: '這個群組現在只對成員可見'
@@ -443,7 +452,8 @@ zh_TW:
     new_photo: '新圖片'
     new_cover_photo: '上傳新的封面圖片'
     new_group_logo: '上傳新的群組圖示'
-    discussions: '討論'
+    open_discussions: '開啟討論串'
+    closed_discussions: '已關閉的討論串'
     discussions_placeholder: '討論串是供每個人討論主題並共同作出決策的地方。'
     members: '成員 ({{count}})'
     members_placeholder: '不能只有你 ── 邀請一些夥伴來加入吧！'
@@ -485,8 +495,6 @@ zh_TW:
   description_card:
     title: '群組描述'
     placeholder: '群組協調者可以使用這個區域來描述群組的目的，這樣才能讓每個人都知道為什麼他們會在這裡。'
-    view_documents: '檢視附件'
-    manage_documents: '管理附件'
     messages:
       description_updated: '描述已更新'
   leave_group_form:
@@ -576,6 +584,9 @@ zh_TW:
   document:
     error:
       invalid_format: 喔喔！您的 URL 無效。請確定其是以 http:// 或 https:// 開始
+    card:
+      no_documents: 未有已被上傳至此群組的附件
+      view_documents: 檢視全部
     list:
       title: 附件
       no_group_documents: 仍無附件被上傳至群組描述
@@ -815,7 +826,6 @@ zh_TW:
     thread_preview:
       you_voted: '您已經投了 {{position}}.'
       undecided: '您尚未決定'
-      pinned: "這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。"
     threads_from:
       group: '討論串從'
       pinned: '已釘選的討論串'
@@ -844,8 +854,11 @@ zh_TW:
       pinned: '討論串已釘選'
       unpinned: '討論串已取消釘選'
     volume:
-      mute_message: '討論串已靜音。'
+      mute_message: '已靜音的討論串'
       unmute_message: '討論串靜音'
+    closed:
+      reopened: '討論串已重新開啟'
+      closed: '討論串已關閉'
   activity_card:
     beginning: 開始
     unread: 未讀
@@ -865,6 +878,8 @@ zh_TW:
     email_settings: '電子郵件設定'
     edit: '編輯'
     edit_thread: '編輯'
+    close_thread: '關閉'
+    reopen_thread: '重新開啟'
     pin_thread: '釘選'
     unpin_thread: '取消釘選'
     mute_thread: '靜音'
@@ -893,8 +908,6 @@ zh_TW:
     confirm_change_to_private_thread: '{{groupName}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
     messages:
       success: 討論串已被移動到 {{name}}
-  print_modal:
-    load_discussion: 正在載入全部的討論...
   delete_comment_dialog:
     title: '刪除意見'
     question: '您確定要刪除這個意見嗎？'
@@ -945,8 +958,6 @@ zh_TW:
     private_title: '更新討論串標題與隱私設定'
     description_private: '更新討論串內容與隱私設定'
     description_private_title: '更新討論串標題、內容與隱私設定'
-  discussion_moved_item:
-    discussion_moved: '已從 <span>{{group}}</span> 移動討論串'
   contact_message_form:
     helptext: "想要取得聯繫？只要在下面輸入訊息，您將會很快就收到我們的消息。"
     contact_us_email: "（您也可以透過 <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a> 隨時與我們聯繫）"
@@ -1342,13 +1353,14 @@ zh_TW:
     stance_updated: 已更新選擇
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 在回覆 <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了討論串標題： <strong>{{title}}</strong>"
+    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 已編輯討論串標題"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了討論內容"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了討論串的附件"
-    discussion_made_public: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 讓討論串變為公開"
-    discussion_made_private: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 讓討論串變為私密"
+    discussion_privacy_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 變更討論串隱私設定"
     discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了討論串"
     discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 從 <strong>{{title}}</strong> 移動了討論串"
+    discussion_closed: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 關閉了討論串"
+    discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 重新開啟了討論串"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 分享了 <strong>{{title}}</strong> 的結果"
     poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 關閉了 {{polltype}}：<strong>{{title}}</strong>"

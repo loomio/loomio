@@ -364,6 +364,7 @@ nl_NL:
     add_resource: Bijlage toevoegen
     edit_group: Groepsbeschrijving bijwerken
     add_comment: Becommentarieer
+    copy_url_comment: Kopieer URL
     edit_thread: Beschrijving bijwerken
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
@@ -421,17 +422,10 @@ nl_NL:
     you_and_name: "Jij en {{name}}"
     you_and_name_and_count_more: "Jij, {{name}} en {{count}} meer"
     name_and_count_more: "{{name}} en {{count}} meer"
+  context_panel:
+    thread_status:
+      pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Deze groep heeft nog geen borden."
-        no_discussions_matching_filters_html: "Er zijn geen borden die overeenkomen met met deze filters. <a href='%{link}'>Wis filters</a>."
-        no_public_discussions: "Er zijn openbare discussies in deze groep"
-        discussions_are_private: "Alle discussies in deze groep zijn privé."
-        join_group: "Om privéborden te kunnen zien moet je lid worden van de groep."
-        request_membership: "Om privéborden te kunnen zien moet je vragen om lid te worden van de groep"
-        membership_is_invitation_only: "Om lid te worden van deze groep moet je uitgenodigd zijn door een lid."
-        membership_is_invitation_by_admin_only: "Om lid te worden van deze groep moet je uitgenodigd zijn door een coördinator."
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'
@@ -443,7 +437,6 @@ nl_NL:
     new_photo: 'nieuwe foto'
     new_cover_photo: 'Nieuwe groepsfoto uploaden'
     new_group_logo: 'Upload een nieuw groepslogo'
-    discussions: 'Borden'
     discussions_placeholder: 'Op een bord kan iedereen over een onderwerp discussiëren en gezamenlijk beslissingen nemen.'
     members: 'Leden'
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
@@ -485,8 +478,6 @@ nl_NL:
   description_card:
     title: 'Groepsbeschrijving'
     placeholder: 'Groepscoördinatoren kunnen deze zone gebruiken om het doel van de groep te omschrijven, zodat iedereen weet waarom ze hier zijn.'
-    view_documents: 'Bijlagen bekijken'
-    manage_documents: 'Bijlagen beheren'
     messages:
       description_updated: 'Beschrijving vernieuwd'
   leave_group_form:
@@ -800,7 +791,6 @@ nl_NL:
     thread_preview:
       you_voted: 'Je hebt {{position}} gestemd'
       undecided: 'Je bent onbeslist'
-      pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
     threads_from:
       group: 'Borden van'
       pinned: 'Vastgeprikte borden'
@@ -829,7 +819,6 @@ nl_NL:
       pinned: 'Bord vastgeprikt'
       unpinned: 'Bord ontprikt'
     volume:
-      mute_message: 'Bord gedempt.'
       unmute_message: 'Discussie demping uit'
   activity_card:
     beginning: Eerste
@@ -850,6 +839,7 @@ nl_NL:
     email_settings: 'E-mailinstellingen'
     edit: 'Bewerk'
     edit_thread: 'Bewerken'
+    close_thread: 'Sluiten'
     pin_thread: 'Vastprikken'
     unpin_thread: 'Ontprikken'
     mute_thread: 'Dempen'
@@ -878,8 +868,6 @@ nl_NL:
     confirm_change_to_private_thread: '{{groupName}} is een open groep. Als je verder gaat zal dit bord openbaar gemaakt worden.'
     messages:
       success: Discussie is verplaatst naar {{name}}
-  print_modal:
-    load_discussion: Laad heel gesprek...
   delete_comment_dialog:
     title: 'Verwijder reactie'
     question: 'Weet je zeker dat je deze reactie wilt verwijderen?'
@@ -930,8 +918,6 @@ nl_NL:
     private_title: 'de discussie titel en privacy bijgewerkt'
     description_private: 'de discussie context en privacy bijgewerkt'
     description_private_title: 'de discussie titel, context en privacy bijgewerkt'
-  discussion_moved_item:
-    discussion_moved: 'de discussie verplaatst van <span>{{group}}</span>'
   contact_message_form:
     helptext: "Wil je contact met ons opnemen? Vul hieronder dan gewoon een bericht in en je zal kortelings van ons horen."
     contact_us_email: "(Je kan ons ook altijd bereiken via <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
@@ -1326,11 +1312,8 @@ nl_NL:
     stance_updated: Keuze upgedatet
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> als antwoord op <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> bewerkte het bordtitel: <strong>{{title}}</strong>"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> bewerkte de bordomschrijving"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> bewerkte de bijlagen van het bord"
-    discussion_made_public: "<strong><a href='u/{{username}}'>{{author}}</a></strong> maakte het bord openbaar"
-    discussion_made_private: "<strong><a href='u/{{username}}'>{{author}}</a></strong> maakte het bord privé"
     discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> bewerkte het bord"
     discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> verplaatste het bord van <strong>{{title}}</strong>"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"

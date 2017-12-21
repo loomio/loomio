@@ -203,6 +203,14 @@ fr:
         loud: "Vous recevrez un courriel à chaque fois qu’il y a une activité dans les nouveaux groupes."
         normal: "Vous recevrez un courriel pour toute nouvelle discussion ou décision dans un nouveau groupe."
         quiet: "Vous ne recevrez aucun courriel concernant les nouveaux groupes."
+  close_explanation_modal:
+    aria_label: Clore la discussion
+    close_thread: Clore la discussion
+    body_header: |
+      <p>Clore des discussions anciennes ou hors-sujet pour les retirer des listes et indiquer que la discussion est close.</p>
+    body_footer: |
+      N'importe qui peut toujours ajouter un commentaire ou démarrer un sondage sur une discussion close, mais elle n'apparaitra pas dans la liste des discussions et sur les tableaux de bord des membres.<p>
+    image_alt: Clore toutes les discussions
   mute_explanation_modal:
     aria_label: Ignorer la discussion
     mute_thread: Ignorer la discussion
@@ -363,6 +371,7 @@ fr:
     add_resource: Ajouter un document
     edit_group: Modifier la description du groupe
     add_comment: Ajouter un commentaire
+    copy_url_comment: Copier l’URL
     edit_thread: Modifier le contexte
     translate_thread: Afficher une traduction automatique du contexte
     edit_poll: Modifier le sondage
@@ -378,6 +387,7 @@ fr:
     show_history: Montrer l’historique des modifications
     pin_thread: Mettre en avant la discussion
     unpin_thread: Ne plus mettre en avant la discussion
+    comment_copied: URL du commentaire copiée
   cover_photo_form:
     aria_label: 'Changer la forme de la photo de couverture'
     heading: 'Nouvelle photo de couverture'
@@ -420,17 +430,17 @@ fr:
     you_and_name: "Vous et {{name}}"
     you_and_name_and_count_more: "Vous, {{name}} et {{count}} de plus"
     name_and_count_more: "{{name}} et {{count}} de plus"
+  context_panel:
+    thread_status:
+      pinned: "Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l’ensemble des utilisateurs."
+      closed: "Cette discussion a été close. Elle ne sera plus affichée sur le tableau de bord, et sera affichée dans les discussions closes sur la page du groupe"
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Ce groupe n’a pas encore de discussion."
-        no_discussions_matching_filters_html: "Aucune discussion ne correspond à ces filtres. <a href='%{link}'>Annuler les filtres</a>."
-        no_public_discussions: "Il n’y a pas de discussion publique dans ce groupe."
-        discussions_are_private: "Toutes les discussions de ce groupe sont privées."
-        join_group: "Pour voir les discussions privées, vous devez rejoindre le groupe."
-        request_membership: "Pour voir les discussions privées, demandez à rejoindre le groupe"
-        membership_is_invitation_only: "Pour rejoindre ce groupe vous devez être invité par un membre."
-        membership_is_invitation_by_admin_only: "Pour rejoindre ce groupe, vous devez être invité par un coordinateur."
+    show_opened: '{{count}} ouvertes'
+    show_closed: '{{count}} closes'
+    no_threads_here: Pas de discussions à afficher ici !
+    search_threads: Rechercher des discussions
+    private_threads: Vous devez être membre du groupe pour voir des discussions privées de ce groupe
+    no_more_threads: Voici toutes les discussions dans ce groupe!
     messages:
       privacy:
         members: 'Ce groupe est désormais visible uniquement aux membres'
@@ -442,7 +452,8 @@ fr:
     new_photo: 'Nouvelle photo'
     new_cover_photo: 'Charger une nouvelle photo de couverture'
     new_group_logo: 'Charger un nouveau logo de groupe'
-    discussions: 'Discussions'
+    open_discussions: 'Discussions en cours'
+    closed_discussions: 'Discussions closes'
     discussions_placeholder: 'Une discussion est l’endroit où tout le monde peut discuter d’un sujet et prendre des décisions collectives.'
     members: 'Les membres'
     members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
@@ -484,8 +495,6 @@ fr:
   description_card:
     title: 'Description du groupe'
     placeholder: 'Les coordinateurs de groupes peuvent utiliser cet espace pour décrire le but du groupe, afin que tout le monde puisse savoir pourquoi ils sont là.'
-    view_documents: 'Voir les documents'
-    manage_documents: 'Gérer les documents'
     messages:
       description_updated: 'Description mise à jour'
   leave_group_form:
@@ -534,6 +543,7 @@ fr:
     membership_granted_upon_request: 'N’importe qui peut rejoindre le groupe'
     membership_granted_upon_approval: 'N’importe qui peut demander à rejoindre le groupe, mais la demande doit être approuvée.'
     membership_granted_upon_approval_secret_parent: '<strong>Sur proposition,</strong> n’importe qui de {{parent}} peut demander à rejoindre le groupe.'
+    features: 'Fonctionnalités pour le groupe'
     thread_privacy: 'Confidentialité de la discussion'
     public_threads: 'Discussions publiques seulement'
     public_discussions_subgroup: 'N’importe qui de {{parentGroupName}} peut voir les discussions'
@@ -555,6 +565,9 @@ fr:
     messages:
       group_created: 'Groupe créé'
       group_updated: 'Groupe mis à jour'
+  group_features:
+    useAnonymous: Ne pas afficher les votes des membres
+    nested_comments: Afficher les commentaires en mode discussion
   membership_requests_card:
     heading: 'Demandes d’ajout'
     manage_requests: Gérer les demandes
@@ -569,13 +582,27 @@ fr:
     confirm_remove_helptext: Êtes-vous sûr⋅e de vouloir supprimer ce document?
     document_removed: Document supprimé
   document:
+    error:
+      invalid_format: Oups, cette URL n'est pas correcte. Elle doit commencer par http:// ou https://
+    card:
+      no_documents: Aucun document n'a été ajouté à ce groupe pour le moment.
+      view_documents: Tout voir
     list:
       title: Pièces jointes
+      no_group_documents: Il n'y a pas encore de document joint à la description du groupe
     management:
+      content_header: Tous les documents
       uploaded_to: dans
     modal:
       title: Ajouter un document
+    method_form:
+      helptext: Ajoutez des fichiers ou des liens pour les partager avec votre groupe.
+      url_helptext: Lien vers des sites ou des outils en ligne
+      file_helptext: Ajoutez des fichiers depuis votre ordinateur ou votre mobile
     form:
+      url_label: URL
+      helptext: Cliquez, collez ou déposez des fichiers ici pour les partager avec votre groupe.
+      url_placeholder: par exemple « https://www.exemple.com/piecejointe.zip »
       title_helptext: Comment nommer ce document?
       title_label: Nom
       title_placeholder: Par exemple « Règles du groupe »
@@ -794,12 +821,11 @@ fr:
       muted_description: Voir uniquement les discussions qui ont été ignorées
     aria_thread:
       unread: '{{count}} élément(s) non lu(s).'
-      current_proposal: 'Proposition actuelle : {{name}}.'
+      current_proposal: 'Proposition en cours : {{name}}.'
       you_voted: 'Votre vote : {{position}}.'
     thread_preview:
       you_voted: 'Vous avez voté {{position}}'
       undecided: 'Vous n’avez pas pris de décision'
-      pinned: "Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l’ensemble des utilisateurs."
     threads_from:
       group: 'Discussions depuis'
       pinned: 'Discussions épinglées'
@@ -828,8 +854,11 @@ fr:
       pinned: 'Discussion épinglée'
       unpinned: 'Discussion plus épinglée'
     volume:
-      mute_message: 'Discussion ignorée.'
+      mute_message: 'Discussion ignorée'
       unmute_message: 'Discussion suivie'
+    closed:
+      reopened: 'Discussion relancée'
+      closed: 'Discussion close'
   activity_card:
     beginning: Début
     unread: Non lu
@@ -849,6 +878,8 @@ fr:
     email_settings: 'Paramètres e-mail'
     edit: 'Modifier'
     edit_thread: 'Modifier'
+    close_thread: 'Fermer'
+    reopen_thread: 'Relancer'
     pin_thread: 'Épingler'
     unpin_thread: 'Ne plus épingler'
     mute_thread: 'Ignorer'
@@ -877,8 +908,6 @@ fr:
     confirm_change_to_private_thread: '{{groupName}}  est un groupe ouvert. Si vous confirmez, cette discussion sera rendue publique.'
     messages:
       success: La discussion a été déplacée vers {{name}}
-  print_modal:
-    load_discussion: Chargement de la discussion intégrale
   delete_comment_dialog:
     title: 'Effacer le commentaire'
     question: 'Êtes-vous sûr de vouloir effacer ce commentaire ?'
@@ -929,8 +958,6 @@ fr:
     private_title: 'a modifié titre et confidentialité de la discussion'
     description_private: 'a modifié contexte et confidentialité de la discussion'
     description_private_title: 'a modifié titre, contexte et confidentialité de la discussion'
-  discussion_moved_item:
-    discussion_moved: 'a déplacé la discussion depuis <span>{{group}}</span>'
   contact_message_form:
     helptext: "Envie de nous contacter ? Écrivez votre message ci-dessous et nous vous répondrons rapidement."
     contact_us_email: "(Vous pouvez toujours nous contacter sur <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
@@ -1052,9 +1079,9 @@ fr:
   poll_common_action_panel:
     unable_to_vote: Vous n’êtes pas autorisé à voter dans cette décision.
   current_polls_card:
-    title: Décision actuelle
+    title: Décisions en cours
     start_poll: Nouvelle décision
-    no_polls: Il n’y a pas de décisions actives en ce moment.
+    no_polls: Il n’y a pas de décisions en cours en ce moment.
   poll_common_collapsed:
     by_who: "par {{name}}"
   poll_common_select_group:
@@ -1245,6 +1272,7 @@ fr:
     meeting_created: Sondage réunion créé
     meeting_updated: Sondage réunion mis à jour
     timeslots: Créneaux horaires
+    no_options: Saisissez les horaires dans votre fuseau horaire ({{zone}}). Les participants verront ces horaires traduits dans leur fuseau horaire.
     meeting_duration: Durée de la réunion
     add_option_placeholder: Entrer un nouvel horaire
   poll_ranked_choice_form:
@@ -1324,13 +1352,14 @@ fr:
     stance_updated: Choix mis à jour
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> en réponse à <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a modifié le titre de la discussion: <strong>{{title}}</strong>"
+    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a modifié le titre de la discussion"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a modifié le contexte de la discussion"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a modifié la pièce-jointe de la discussion"
-    discussion_made_public: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a rendu la discussion publique"
-    discussion_made_private: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a rendu la discussion privée"
+    discussion_privacy_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a modifié la visibilité de cette discussion"
     discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a modifié la discussion"
     discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a déplacé la discussion de <strong>{{title}}</strong>"
+    discussion_closed: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a clos la discussion"
+    discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a relancé la discussion"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a partagé un résultat pour <strong>{{title}}</strong>"
     poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a fermé le {{polltype}}: <strong>{{title}}</strong>"

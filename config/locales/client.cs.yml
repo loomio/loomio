@@ -271,6 +271,7 @@ cs:
   action_dock:
     react: Přidat reakci
     add_comment: Komentář
+    copy_url_comment: Kopírovat URL
     edit_thread: Upravit kontext
     translate_thread: Přeložit kontext
   cover_photo_form:
@@ -302,19 +303,12 @@ cs:
     you_and_name: "Vy a {{name}}"
     you_and_name_and_count_more: "Vy, {{name}} a {{count}} dalších"
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Tato skupina zatím nemá žádná vlákna."
-        no_discussions_matching_filters_html: "Žádná vlákna neodpovídají těmto filtrům. <a href='%{link}'>Odstranit filtry</a>."
-        no_public_discussions: "V této skupině nejsou žádná veřejná vlákna."
-        discussions_are_private: "Všechna vlákna v této skupině jsou soukromá."
     messages:
       leave_group_success: 'Tuto skupinu jste opustil(a)'
       archive_group_success: 'Tato skupina byla deaktivována'
     group_logo: 'Logo skupiny'
     new_photo: 'nová fotografie'
     new_group_logo: 'Nahrát nové logo skupiny'
-    discussions: 'Diskuze'
     discussions_placeholder: 'Vlákno je místem, kde každý může diskutovat o tématu a tvořit společně rozhodnutí.'
     members: 'Členové'
     members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
@@ -522,8 +516,6 @@ cs:
     activity_placeholder: 'Zatím žádná aktivita!'
     load_previous: 'Načíst dřívější aktivity'
     started_by: 'Vytvořeno <strong>{{name}}</strong>'
-    volume:
-      mute_message: 'Vlákno ztlumeno'
   activity_card:
     unread: Nepřečteno
     latest: Nejnovější
@@ -538,6 +530,7 @@ cs:
     email_settings: 'Nastavení emailu'
     edit: 'Upravit'
     edit_thread: 'Upravit'
+    close_thread: 'Zavřít'
     mute_thread: 'Ztlumit'
     move_thread: 'Přesunout'
     print_thread: 'Tisk'

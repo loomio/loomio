@@ -44,7 +44,6 @@ he:
     name_label: שם
     email_label: דואל
   group_page:
-    discussions: 'דיונים'
     options_label: 'אפשרויות'
     options:
       label: 'אפשרויות'
@@ -74,6 +73,8 @@ he:
     unread: לא-נקרא
   thread_group:
     aria_label: 'שם הקבוצה'
+  thread_context:
+    close_thread: 'סגירה'
   delete_comment_dialog:
     title: 'מחקו תגובה'
     question: 'למחוק את התגובה? בטוחים?'

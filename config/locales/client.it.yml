@@ -365,6 +365,7 @@ it:
     add_resource: Aggiungi allegato
     edit_group: Modifica il contesto del gruppo
     add_comment: Commenta
+    copy_url_comment: Copia URL
     edit_thread: Modifica il contesto
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio
@@ -423,16 +424,6 @@ it:
     you_and_name_and_count_more: "Tu, {{name}} e altri {{count}} "
     name_and_count_more: "{{name}} e altri {{count}}"
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Questo gruppo non è ancora impegnato in alcuna discussione."
-        no_discussions_matching_filters_html: "Non ci sono discussioni che corrispondono a questi filtri. <a href='%{link}'>Togli i filtri</a>."
-        no_public_discussions: "In questo gruppo non sono presenti discussioni pubbliche."
-        discussions_are_private: "Tutte le discussioni in questo gruppo sono private."
-        join_group: "Per vedere le discussioni private è necessario aderire al gruppo."
-        request_membership: "Per vedere le discussioni private richiedi di aderire al gruppo."
-        membership_is_invitation_only: "Per iscriverti a questo gruppo devi essere invitato/a da un membro."
-        membership_is_invitation_by_admin_only: "Per iscriverti a questo gruppo devi essere invitato/a da un coordinatore."
     messages:
       privacy:
         members: 'Ora il gruppo è visibile solo alle persone che ne fanno parte.'
@@ -444,7 +435,6 @@ it:
     new_photo: 'nuova immagine'
     new_cover_photo: 'Carica nuova immagine di copertina'
     new_group_logo: 'Carica logo nuovo gruppo'
-    discussions: 'Discussioni'
     discussions_placeholder: 'La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni.'
     members: 'Membri'
     members_placeholder: 'Sei da solo qui: invita altre persone!'
@@ -486,8 +476,6 @@ it:
   description_card:
     title: 'Descrizione del gruppo'
     placeholder: 'I coordinatori del gruppo possono utilizzare quest''area per descrivere lo scopo del gruppo, in modo tale che tutti sappiano perché sono qui.'
-    view_documents: 'Vedi allegati'
-    manage_documents: 'Gestisci allegati'
     messages:
       description_updated: 'Descrizione aggiornata'
   leave_group_form:
@@ -831,6 +819,7 @@ it:
     email_settings: 'Configurazione email'
     edit: 'Modifica'
     edit_thread: 'Modifica'
+    close_thread: 'Chiudi'
     mute_thread: 'Silenzia'
     move_thread: 'Sposta'
     print_thread: 'Stampa'

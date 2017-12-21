@@ -224,16 +224,6 @@ ga_IE:
   revision_history_modal:
     posted: Foilsithe
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Níl aon snáithe ag an mbaicle seo fós."
-        no_discussions_matching_filters_html: "Níl aon snáithe atá i gcomhoiriúint leis na scagairí seo. <a href='%{link}'>Glan na scagairí</a>."
-        no_public_discussions: "Níl aon snáithe phoiblí sa bhaicle seo."
-        discussions_are_private: "Tá gach snáithe sa bhaicle seo príobháideach."
-        join_group: "Chun snáitheanna príobháideacha a fheiceáil, beidh ort clárú leis an mbaicle."
-        request_membership: "Chun snáitheanna príobháideacha a fheiceáil, iarr cead clárú leis an mbaicle"
-        membership_is_invitation_only: "Le gur féidir leat clárú leis an mbaicle seo, ní mór do chomhalta cuireadh a thabhairt duit."
-        membership_is_invitation_by_admin_only: "Le gur féidir leat clárú leis an mbaicle seo, ní mór do chomhordaitheoir cuireadh a thabhairt duit."
     messages:
       privacy:
         members: 'Is iad na comhaltaí amháin ar féidir leo an bhaicle seo a fheiceáil'
@@ -244,7 +234,6 @@ ga_IE:
     group_logo: 'Lógó na baicle'
     new_photo: 'grianghraf nua'
     new_cover_photo: 'Uasluchtaigh grianghraf cumhdaigh nua'
-    discussions: 'Pléití'
     discussions_placeholder: 'Is áit í snáithe inar féidir le gach duine ábhar a phlé agus cinntí a dhéanamh le chéile.'
     members: 'Comhaltaí'
     members_placeholder: 'Is tusa an t-aon duine anseo: tabhair cuirí do dhaoine bheith leat!'
@@ -448,8 +437,6 @@ ga_IE:
     activity_placeholder: 'Níl aon ghníomhaíocht ann go fóill!'
     load_previous: 'Luchtaigh gníomhaíocht níos luaithe ná seo'
     started_by: 'Tosaithe ag <strong>{{name}}</strong> '
-    volume:
-      mute_message: 'Balbhaíodh an snáithe.'
   activity_card:
     unread: Neamhléite
     latest: Is déanaí
@@ -463,6 +450,7 @@ ga_IE:
     thread_options: 'Roghanna na snáithe'
     email_settings: 'Socruithe ríomhphoist'
     edit: 'Eagar'
+    close_thread: 'Dún'
     move_thread: 'Bog é'
     print_thread: 'Clóbhuail'
     delete_thread: 'Scrios'
