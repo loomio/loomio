@@ -39,7 +39,7 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  collection_action :export_deactivated do
+  collection_action :export_emails_deactivated do
     emails = User.inactive.pluck :email
     render text: emails.join("\n")
   end
