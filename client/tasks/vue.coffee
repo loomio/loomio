@@ -7,7 +7,7 @@ source     = require 'vinyl-source-stream'
 paths      = require './paths'
 
 module.exports = ->
-  browserify(entries: [paths.vue.coffee])
+  browserify(entries: [paths.vue.coffee], paths: ['./node_modules', './'])
     .transform(coffeeify)
     .transform(vueify)
     .plugin('vueify-extract-css', { out: "#{paths.dist.assets}/vue.css" })

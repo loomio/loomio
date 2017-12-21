@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'BaseEventWindow', (RangeSet) ->
+RangeSet = require 'shared/services/range_set'
+
+angular.module('loomioApp').factory 'BaseEventWindow', ->
   class BaseEventWindow
     constructor: ({@discussion, @per}) ->
       @readRanges = _.clone(@discussion.readRanges)

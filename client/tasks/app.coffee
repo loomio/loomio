@@ -14,6 +14,10 @@ template = require 'gulp-angular-templatecache'
 concat   = require 'gulp-concat'
 rename   = require 'gulp-rename'
 
+browserify = require 'browserify'
+source     = require 'vinyl-source-stream'
+
+
 module.exports =
   coffee: ->
     pipe gulp.src(paths.app.coffee), [
@@ -34,6 +38,10 @@ module.exports =
       concat('app.js'),                           # concatenate app files
       gulp.dest(paths.dist.assets)                # write assets/app.js
     ]
+    browserify(entries: ["#{paths.dist.assets}/app.js"], paths: ['./node_modules', './'])
+      .bundle()
+      .pipe(source('app.bundle.js'))
+      .pipe(gulp.dest(paths.dist.assets))
 
   scss: ->
     pipe gulp.src(paths.app.scss), [

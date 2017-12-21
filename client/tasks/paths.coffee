@@ -40,8 +40,8 @@ module.exports =
     vendor:       include(vendor, 'js')
 
   vue:
-    coffee:         'vue/core/root_controller.coffee'
-    vue:            'vue/core/components/*.vue'
+    coffee:         './vue/root_controller.coffee'
+    vue:            './vue/components/*.vue'
 
   protractor:
     config:       'angular/test/protractor.coffee'

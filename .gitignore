@@ -31,5 +31,5 @@ public/img/emojis
 /fetched_plugins/
 /plugins
 
-jsapp/node_modules
-jsapp/tasks/config/plugins.yml
+client/node_modules
+client/tasks/config/plugins.yml
