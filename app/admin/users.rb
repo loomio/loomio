@@ -39,7 +39,10 @@ ActiveAdmin.register User do
     f.actions
   end
 
-
+  collection_action :export_deactivated do
+    emails = User.inactive.pluck :email
+    render text: emails.join("\n")
+  end
 
   collection_action :export_emails_fr do
     emails = User.active.where("detected_locale ilike 'fr%'").pluck(:email)

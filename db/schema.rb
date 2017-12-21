@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213050734) do
+ActiveRecord::Schema.define(version: 20171221225240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(version: 20171213050734) do
     t.text     "description"
     t.boolean  "uses_markdown",                   default: false, null: false
     t.integer  "items_count",                     default: 0,     null: false
+    t.datetime "closed_at"
     t.boolean  "private"
     t.string   "key",                 limit: 255
     t.string   "iframe_src",          limit: 255
@@ -235,7 +236,6 @@ ActiveRecord::Schema.define(version: 20171213050734) do
     t.integer  "importance",                      default: 0,     null: false
     t.integer  "seen_by_count",                   default: 0,     null: false
     t.string   "ranges_string"
-    t.datetime "closed_at"
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
