@@ -3,7 +3,7 @@
 
   %md-input-container.md-block{ng-show: "showGroupSelect"}
     %label{for: "discussion-group-field", translate: "discussion_form.group_label"}
-    %md-select.discussion-form__group-select#discussion-group-field{ng-model: "discussion.groupId", placeholder: "{{'discussion_form.group_placeholder' | translate}}", ng-required: "true", ng-change: "restoreRemoteDraft(); updatePrivacy()"}
+    %md-select.discussion-form__group-select#discussion-group-field{ng-model: "discussion.groupId", placeholder: "{{'discussion_form.group_placeholder' | translate}}", ng-required: "true", ng-change: "discussion.fetchAndRestoreDraft(); updatePrivacy()"}
       %md-option{ng-value: "group.id", ng-repeat: "group in availableGroups() | orderBy: 'fullName' track by group.id"}
         {{group.fullName}}
     .md-errors-spacer
