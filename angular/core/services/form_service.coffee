@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $window, FlashService, DraftService, AbilityService) ->
+angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $window, FlashService, AbilityService) ->
   new class FormService
 
     confirmDiscardChanges: (event, record) ->
@@ -26,11 +26,11 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $win
     success = (scope, model, options) ->
       (response) ->
         FlashService.dismiss()
-        model.resetDraft() if options.drafts and AbilityService.isLoggedIn()
         if options.flashSuccess?
           flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
           FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
         scope.$close()                                          if !options.skipClose? and typeof scope.$close is 'function'
+        model.cancelDraftFetch()                                if typeof model.cancelDraftFetch is 'function'
         options.successCallback(response)                       if typeof options.successCallback is 'function'
         $rootScope.$broadcast options.successEvent              if options.successEvent
 
@@ -50,7 +50,11 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $win
         scope.isDisabled = false
 
     submit: (scope, model, options = {}) ->
-      DraftService.applyDrafting(scope, model) if options.drafts and AbilityService.isLoggedIn()
+      # fetch draft from server and listen for changes to it
+      if options.drafts and model.isNew() and AbilityService.isLoggedIn()
+        model.fetchAndRestoreDraft()
+        scope.$watch model.draftFields, model.planDraftFetch, true
+
       submitFn  = options.submitFn  or model.save
       confirmFn = options.confirmFn or (-> false)
       (prepareArgs) ->
