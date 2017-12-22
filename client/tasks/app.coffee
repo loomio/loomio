@@ -18,35 +18,42 @@ browserify = require 'browserify'
 coffeeify  = require 'coffeeify'
 glob       = require 'globby'
 source     = require 'vinyl-source-stream'
+fs         = require 'fs'
+_          = require 'lodash'
+gutil      = require 'gulp-util'
 
 module.exports =
-  coffee: ->
-    glob(paths.app.coffee).then((entries) ->
-      browserify(
-        entries: entries
-        debug: true
-        transform: [coffeeify]
-        paths: ['./', './node_modules']
-      ).bundle().pipe(
-        pipe(gulp.src(paths.app.coffee), [
-          plumber(errorHandler: onError),              # handle errors gracefully
-          append.obj(pipe gulp.src(paths.app.haml), [  # build html template cache
-            haml(),                                    # convert haml to html
-            htmlmin(),                                 # minify html
-            template(                                  # store html templates in angular cache
-              module: 'loomioApp',
-              transformUrl: (url) ->
-                if url.match /.+\/.+/
-                  "generated/components/#{url}"
-                else
-                  "generated/components/#{url.split('.')[0]}/#{url}"
-            )
-          ]),
-          concat('app.js'),                           # concatenate app files
-          gulp.dest(paths.dist.assets)                # write assets/app.js
-        ])
+  require: ->
+    fs.writeFile(paths.app.main, _.flatten(_.map paths.app.folders, (folder) ->
+      _.map glob.sync("angular/#{folder}/**/*.coffee"), (file) ->
+        "require '#{file}'"
+    ).join("\n"))
+
+  browserify: ->
+    pipe browserify(
+      entries: [paths.app.main]
+      transform: [coffeeify]
+      paths: ['./', './node_modules']
+    ).bundle(), [
+      source('app.js'),
+      gulp.dest(paths.dist.assets)
+    ]
+
+  haml: ->
+    pipe gulp.src(paths.app.haml), [
+      haml(),
+      htmlmin(),
+      template(
+        module: 'loomioApp',
+        transformUrl: (url) ->
+          if url.match /.+\/.+/
+            "generated/components/#{url}"
+          else
+            "generated/components/#{url.split('.')[0]}/#{url}"
       )
-    )
+      concat('templates.js')
+      gulp.dest(paths.dist.assets)
+    ]
 
   scss: ->
     pipe gulp.src(paths.app.scss), [

@@ -12,8 +12,9 @@ include = (file, key) ->
 
 module.exports =
   app:
-    coffee:       _.flatten(['angular/boot/**/*.coffee', 'angular/**/*.coffee'])
-    haml:         _.flatten(['angular/components/**/*.haml'])
+    main:         './angular/main.coffee'
+    folders:     ['initializers', 'config', 'filters', 'mixins', 'models', 'services', 'components']
+    haml:         './angular/components/**/*.haml'
     scss:         _.flatten([include(vendor, 'css'), 'angular/css/app.scss', 'angular/components/**/*.scss'])
     scss_include: _.flatten([include(vendor, 'css_includes'), 'angular/css'])
 
@@ -21,7 +22,7 @@ module.exports =
     coffee: include plugins, 'coffee'
     haml:   include plugins, 'haml'
     scss:   _.flatten(['angular/css/plugin.scss', include(plugins, 'scss')])
-    scss_include: ['angular/css']
+    scss_include: './angular/css'
 
   extra:
     emojis:         include(vendor, 'emoji')
@@ -35,12 +36,12 @@ module.exports =
     moment_locales: '../public/client/development/moment_locales'
 
   js:
-    execcoffee:   'angular/initializers/**/*.coffee'
+    execcoffee:   './angular/initializers/**/*.coffee'
     execjs:       _.flatten(include(vendor, 'execjs'), include(vendor, 'lodash'))
     vendor:       include(vendor, 'js')
 
   vue:
-    coffee:         './vue/root_controller.coffee'
+    coffee:         './vue/main.coffee'
     vue:            './vue/components/*.vue'
 
   protractor:

@@ -33,3 +33,4 @@ public/img/emojis
 
 client/node_modules
 client/tasks/config/plugins.yml
+client/angular/main.coffee
