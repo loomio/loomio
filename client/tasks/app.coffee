@@ -15,33 +15,38 @@ concat   = require 'gulp-concat'
 rename   = require 'gulp-rename'
 
 browserify = require 'browserify'
+coffeeify  = require 'coffeeify'
+glob       = require 'globby'
 source     = require 'vinyl-source-stream'
-
 
 module.exports =
   coffee: ->
-    pipe gulp.src(paths.app.coffee), [
-      plumber(errorHandler: onError),              # handle errors gracefully
-      coffee(bare: true),                          # convert from coffeescript to js
-      append.obj(pipe gulp.src(paths.app.haml), [  # build html template cache
-        haml(),                                    # convert haml to html
-        htmlmin(),                                 # minify html
-        template(                                  # store html templates in angular cache
-          module: 'loomioApp',
-          transformUrl: (url) ->
-            if url.match /.+\/.+/
-              "generated/components/#{url}"
-            else
-              "generated/components/#{url.split('.')[0]}/#{url}"
-        ),
-      ]),
-      concat('app.js'),                           # concatenate app files
-      gulp.dest(paths.dist.assets)                # write assets/app.js
-    ]
-    browserify(entries: ["#{paths.dist.assets}/app.js"], paths: ['./node_modules', './'])
-      .bundle()
-      .pipe(source('app.bundle.js'))
-      .pipe(gulp.dest(paths.dist.assets))
+    glob(paths.app.coffee).then((entries) ->
+      browserify(
+        entries: entries
+        debug: true
+        transform: [coffeeify]
+        paths: ['./', './node_modules']
+      ).bundle().pipe(
+        pipe(gulp.src(paths.app.coffee), [
+          plumber(errorHandler: onError),              # handle errors gracefully
+          append.obj(pipe gulp.src(paths.app.haml), [  # build html template cache
+            haml(),                                    # convert haml to html
+            htmlmin(),                                 # minify html
+            template(                                  # store html templates in angular cache
+              module: 'loomioApp',
+              transformUrl: (url) ->
+                if url.match /.+\/.+/
+                  "generated/components/#{url}"
+                else
+                  "generated/components/#{url.split('.')[0]}/#{url}"
+            )
+          ]),
+          concat('app.js'),                           # concatenate app files
+          gulp.dest(paths.dist.assets)                # write assets/app.js
+        ])
+      )
+    )
 
   scss: ->
     pipe gulp.src(paths.app.scss), [

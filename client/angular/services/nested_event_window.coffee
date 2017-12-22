@@ -1,8 +1,10 @@
 angular.module('loomioApp').factory 'NestedEventWindow', (BaseEventWindow, Records, RecordLoader) ->
   class NestedEventWindow extends BaseEventWindow
-    constructor: ({@discussion, @parentEvent, @initialSequenceId, @per}) ->
-      super(discussion: @discussion, per: @per)
+    constructor: ({discussion, parentEvent, initialSequenceId, per}) ->
+      super(discussion: discussion, per: per)
       @columnName = "position"
+      @parentEvent = parentEvent
+      @initialSequenceId = initialSequenceId
       @setMin(@positionFromSequenceId() || @firstLoaded())
       @setMax(@lastLoaded() || false)
       @loader = new RecordLoader

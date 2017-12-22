@@ -7,9 +7,3 @@ _.fromPairs = (pairs) ->
     pair = pairs[index]
     result[pair[0]] = pair[1]
   result
-
-_.pickBy = (object, fn) ->
-  result = {}
-  for key in _.keys(object)
-    result[key] = object[key] if fn(object[key])
-  result

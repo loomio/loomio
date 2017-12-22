@@ -1,9 +1,9 @@
 angular.module('loomioApp').factory 'ChronologicalEventWindow', (BaseEventWindow, Records, RecordLoader) ->
   class ChronologicalEventWindow extends BaseEventWindow
-    constructor: ({@discussion, @initialSequenceId, @per}) ->
+    constructor: ({discussion, initialSequenceId, per}) ->
+      super(discussion: discussion, per: per)
       @columnName = 'sequenceId'
-      super(discussion: @discussion, per: @per)
-      @setMin(@initialSequenceId)
+      @setMin(initialSequenceId)
       @setMax(@min + @per)
       @loader = new RecordLoader
         collection: 'events'
