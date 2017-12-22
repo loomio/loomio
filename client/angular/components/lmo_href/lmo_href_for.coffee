@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'lmoHrefFor', (LmoUrlService) ->
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+
+angular.module('loomioApp').directive 'lmoHrefFor', ->
   restrict: 'A'
   scope:
     model: '=lmoHrefFor'

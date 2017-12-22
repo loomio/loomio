@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Session) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').factory 'AbilityService', (Records, Session) ->
   new class AbilityService
 
     isLoggedIn: ->

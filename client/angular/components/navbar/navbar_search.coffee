@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'navbarSearch', ($timeout, $location, Records, LmoUrlService) ->
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+
+angular.module('loomioApp').directive 'navbarSearch', ($timeout, $location, Records) ->
   scope: {}
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar_search.html'

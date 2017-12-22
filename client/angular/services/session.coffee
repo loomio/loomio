@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translate, $window, Records, AppConfig) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translate, $window, Records) ->
 
   login: (data) ->
     Records.import(data)

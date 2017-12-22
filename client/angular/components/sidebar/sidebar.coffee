@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, Session, InboxService, RestfulClient, UserHelpService, AppConfig, IntercomService, LmoUrlService, Records, ModalService, GroupModal, DiscussionModal, AbilityService)->
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+
+angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, Session, InboxService, RestfulClient, UserHelpService, AppConfig, IntercomService, Records, ModalService, GroupModal, DiscussionModal, AbilityService)->
   scope: false
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'

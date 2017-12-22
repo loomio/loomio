@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $translate, FormService, LmoUrlService, EventHeadlineService, Session, AbilityService, Records) ->
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+
+angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $translate, FormService, EventHeadlineService, Session, AbilityService, Records) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'

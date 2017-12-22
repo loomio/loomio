@@ -1,6 +1,8 @@
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+
 angular.module('loomioApp').factory 'OnlyCoordinatorModal', ->
   templateUrl: 'generated/components/only_coordinator_modal/only_coordinator_modal.html'
-  controller: ($scope, $location, Session, LmoUrlService) ->
+  controller: ($scope, $location, Session) ->
 
     $scope.groups = ->
       _.filter Session.user().groups(), (group) ->

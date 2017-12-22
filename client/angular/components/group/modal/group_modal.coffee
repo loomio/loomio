@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'GroupModal', ($location, Records, SequenceService, LmoUrlService) ->
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+
+angular.module('loomioApp').factory 'GroupModal', ($location, Records, SequenceService) ->
   templateUrl: 'generated/components/group/modal/group_modal.html'
   controller: ($scope, group) ->
     $scope.group = group.clone()
