@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'MembershipModel', (BaseModel, AppConfig) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').factory 'MembershipModel', (BaseModel) ->
   class MembershipModel extends BaseModel
     @singular: 'membership'
     @plural: 'memberships'

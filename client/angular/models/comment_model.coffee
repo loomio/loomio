@@ -1,4 +1,9 @@
-angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, HasDocuments, AppConfig) ->
+AppConfig    = require 'shared/services/app_config.coffee'
+HasDrafts    = require 'shared/mixins/has_drafts.coffee'
+HasDocuments = require 'shared/mixins/has_documents.coffee'
+HasMentions  = require 'shared/mixins/has_mentions.coffee'
+
+angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
   class CommentModel extends BaseModel
     @singular: 'comment'
     @plural: 'comments'
@@ -10,6 +15,7 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, HasDo
     afterConstruction: ->
       HasDrafts.apply @
       HasDocuments.apply @
+      HasMentions.apply @, 'body'
 
     defaultValues: ->
       usesMarkdown: true
@@ -57,12 +63,6 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, HasDrafts, HasDo
 
     authorAvatar: ->
       @author().avatarOrInitials()
-
-    cookedBody: ->
-      cooked = @body
-      _.each @mentionedUsernames, (username) ->
-        cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
-      cooked
 
     beforeDestroy: ->
       _.invoke @recordStore.events.find(kind: 'new_comment', eventableId: @id), 'remove'

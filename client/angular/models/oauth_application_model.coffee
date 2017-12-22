@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'OauthApplicationModel', (BaseModel, AppConfig) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').factory 'OauthApplicationModel', (BaseModel) ->
   class OauthApplicationModel extends BaseModel
     @singular: 'oauthApplication'
     @plural: 'oauthApplications'

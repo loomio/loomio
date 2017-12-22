@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'ReactionModel', (BaseModel, AppConfig) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').factory 'ReactionModel', (BaseModel) ->
   class ReactionModel extends BaseModel
     @singular: 'reaction'
     @plural: 'reactions'

@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'notification', ->
+angular.module('loomioApp').directive 'notification', ($translate) ->
   scope: {notification: '='}
   restrict: 'E'
   templateUrl: 'generated/components/notification/notification.html'
@@ -6,6 +6,9 @@ angular.module('loomioApp').directive 'notification', ->
   controller: ($scope, Records) ->
     $scope.actor = ->
       $scope.membershipRequestActor || $scope.notification.actor()
+
+    $scope.contentFor = (notification) ->
+      $translate.instant("notifications.#{$scope.notification.kind}", $scope.notification.translationValues)
 
     if $scope.notification.kind == 'membership_requested'
       $scope.membershipRequestActor = Records.users.build

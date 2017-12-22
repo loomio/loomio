@@ -1,4 +1,10 @@
-angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments, HasDrafts, AppConfig, RangeSet) ->
+AppConfig    = require 'shared/services/app_config.coffee'
+RangeSet     = require 'shared/services/range_set.coffee'
+HasDrafts    = require 'shared/mixins/has_drafts.coffee'
+HasDocuments = require 'shared/mixins/has_documents.coffee'
+HasMentions  = require 'shared/mixins/has_mentions.coffee'
+
+angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
   class DiscussionModel extends BaseModel
     @singular: 'discussion'
     @plural: 'discussions'
@@ -12,6 +18,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments,
       @private = @privateDefaultValue() if @isNew()
       HasDocuments.apply @, showTitle: true
       HasDrafts.apply @
+      HasMentions.apply @, 'description'
 
     defaultValues: =>
       private: null
@@ -181,9 +188,3 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments,
         version.changes[attr][1]
       else
         @attributeForVersion(attr, @recordStore.versions.find(version.previousId))
-
-    cookedDescription: ->
-      cooked = @description
-      _.each @mentionedUsernames, (username) ->
-        cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
-      cooked

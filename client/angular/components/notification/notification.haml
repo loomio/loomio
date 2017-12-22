@@ -4,6 +4,6 @@
       %user_avatar{ng-if: "actor()", user: "actor()", size: "small"}
       .thread-item__proposal-icon{ng-if: "!actor()"}
     .notification__content
-      %span{ng-bind-html: "notification.content()"}>
+      %span{ng-bind-html: "contentFor(notification)"}>
       %timeago{timestamp: "notification.createdAt" }>
       .notifications__publish-outcome{ng-if: "notification.translationValues.publish_outcome", translate: "notifications.publish_outcome"}

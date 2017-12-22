@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'DraftModel', (BaseModel, AppConfig) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').factory 'DraftModel', (BaseModel) ->
   class DraftModel extends BaseModel
     @singular: 'draft'
     @plural: 'drafts'

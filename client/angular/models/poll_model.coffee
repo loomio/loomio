@@ -1,4 +1,9 @@
-angular.module('loomioApp').factory 'PollModel', (BaseModel, HasDocuments, HasDrafts, AppConfig, MentionLinkService) ->
+AppConfig    = require 'shared/services/app_config.coffee'
+HasMentions  = require 'shared/services/mention_link_service.coffee'
+HasDrafts    = require 'shared/mixins/has_drafts.coffee'
+HasDocuments = require 'shared/mixins/has_documents.coffee'
+
+angular.module('loomioApp').factory 'PollModel', (BaseModel) ->
   class PollModel extends BaseModel
     @singular: 'poll'
     @plural: 'polls'
@@ -10,6 +15,7 @@ angular.module('loomioApp').factory 'PollModel', (BaseModel, HasDocuments, HasDr
     afterConstruction: ->
       HasDocuments.apply @, showTitle: true
       HasDrafts.apply @
+      HasMentions.apply @, 'details'
 
     draftParent: ->
       @discussion() or @author()
@@ -106,12 +112,6 @@ angular.module('loomioApp').factory 'PollModel', (BaseModel, HasDocuments, HasDr
 
     latestStances: (order, limit) ->
       _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
-
-    cookedDetails: ->
-      MentionLinkService.cook(@mentionedUsernames, @details)
-
-    cookedDescription: ->
-      @cookedDetails()
 
     hasDescription: ->
       !!@details

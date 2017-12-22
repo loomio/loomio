@@ -13,7 +13,7 @@ include = (file, key) ->
 module.exports =
   app:
     main:         './angular/main.coffee'
-    folders:     ['initializers', 'config', 'filters', 'mixins', 'models', 'services', 'components']
+    folders:     ['initializers', 'config', 'filters', 'models', 'services', 'components']
     haml:         './angular/components/**/*.haml'
     scss:         _.flatten([include(vendor, 'css'), 'angular/css/app.scss', 'angular/components/**/*.scss'])
     scss_include: _.flatten([include(vendor, 'css_includes'), 'angular/css'])
