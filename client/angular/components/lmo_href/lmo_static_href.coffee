@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'lmoStaticHref', ($window) ->
     scope.$watch 'route', ->
       elem.attr 'href', scope.route
     elem.bind 'click', ($event) ->
-      if $event.trlKey or $event.metaKey
+      if $event.ctrlKey or $event.metaKey
         $window.open(scope.route)
       else
         $window.location.href = scope.route

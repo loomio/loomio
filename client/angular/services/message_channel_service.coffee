@@ -2,7 +2,9 @@ AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, ModalService, FlashService) ->
+{ hardReload } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, ModalService, FlashService) ->
   new class MessageChannelService
 
     subscribe: (options = {}) ->
@@ -26,7 +28,7 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
 
           if data.version?
             FlashService.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', ->
-              $window.location.reload()
+              hardReload()
 
           if data.memo?
             switch data.memo.kind

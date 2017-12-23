@@ -1,6 +1,8 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
-angular.module('loomioApp').directive 'authIdentityForm', ($window, $translate) ->
+{ hardReload } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').directive 'authIdentityForm', ($translate) ->
   scope: {user: '=', identity: '='}
   templateUrl: 'generated/components/auth/identity_form/auth_identity_form.html'
   controller: ($scope, AuthService, KeyEventService) ->
@@ -8,7 +10,7 @@ angular.module('loomioApp').directive 'authIdentityForm', ($window, $translate) 
     $scope.createAccount = ->
       $scope.$emit 'processing'
       AuthService.confirmOauth().then ->
-        $window.location.reload()
+        hardReload()
       , ->
         $scope.$emit 'doneProcessing'
 

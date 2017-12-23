@@ -13,6 +13,12 @@ module.exports =
     else
       window.location.reload()
 
+  print: ->
+    window.print()
+
+  is2x: ->
+    window.devicePixelRatio >= 2
+
   scrollTo: (target, options = {}) ->
     setTimeout ->
       elem      = document.querySelector(target)

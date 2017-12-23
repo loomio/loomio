@@ -6,7 +6,7 @@ PaginationService = require 'shared/services/pagination_service.coffee'
 
 { scrollTo } = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, KeyEventService, ModalService, PollService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $timeout, KeyEventService, ModalService, PollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
   # if we get given a comment id, then hard refresh after seeking it's sequenceId

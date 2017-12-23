@@ -3,7 +3,9 @@ RecordLoader             = require 'shared/services/record_loader.coffee'
 ChronologicalEventWindow = require 'shared/services/chronological_event_window.coffee'
 NestedEventWindow        = require 'shared/services/nested_event_window.coffee'
 
-angular.module('loomioApp').directive 'activityCard', ($mdDialog, $window, ModalService) ->
+{ print } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').directive 'activityCard', ($mdDialog, ModalService) ->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
@@ -51,12 +53,12 @@ angular.module('loomioApp').directive 'activityCard', ($mdDialog, $window, Modal
 
     $scope.$on 'fetchRecordsForPrint', ->
       if $scope.discussion.allEventsLoaded()
-        $window.print()
+        print()
       else
         ModalService.open 'PrintModal', preventClose: -> true
         $scope.eventWindow.showAll().then ->
           $mdDialog.cancel()
-          $window.print()
+          print()
 
     $scope.init = (position = $scope.initialPosition()) ->
       $scope.loader = new RecordLoader

@@ -1,6 +1,8 @@
 AuthService = require 'shared/services/auth_service.coffee'
 
-angular.module('loomioApp').directive 'authSigninForm', ($translate, $window, KeyEventService) ->
+{ hardReload } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').directive 'authSigninForm', ($translate, KeyEventService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ($scope) ->
@@ -8,7 +10,7 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate, $window, Ke
     $scope.signIn = ->
       $scope.$emit 'processing'
       AuthService.signIn($scope.user).then ->
-        $window.location.reload()
+        hardReload()
       , ->
         $scope.user.errors = if $scope.user.hasToken
           { token:    [$translate.instant('auth_form.invalid_token')] }

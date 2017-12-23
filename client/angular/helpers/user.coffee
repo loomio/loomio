@@ -1,6 +1,8 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Session   = require 'shared/services/session.coffee'
 
+{ hardReload } = require 'angular/helpers/window.coffee'
+
 module.exports =
   signIn: (data, $location, $rootScope, $translate) =>
     Session.signIn(data, $location.search().invitation_token)
@@ -8,8 +10,7 @@ module.exports =
 
   signOut: ->
     AppConfig.loggingOut = true
-    Records.sessions.remote.destroy('').then ->
-      window.location.href = '/'
+    Records.sessions.remote.destroy('').then -> hardReload('/')
 
   setLocale: ($translate) ->
     locale = Session.user().locale.toLowerCase().replace('_','-')

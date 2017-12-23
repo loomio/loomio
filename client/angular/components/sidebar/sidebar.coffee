@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 InboxService   = require 'shared/services/inbox_service.coffee'
 
-angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, IntercomService, ModalService) ->
+angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, IntercomService, ModalService) ->
   scope: false
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
