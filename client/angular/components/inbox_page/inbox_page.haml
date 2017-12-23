@@ -2,7 +2,10 @@
   %main.inbox-page
     .thread-preview-collection__container
       %h1.lmo-h1-medium.inbox-page__heading{translate: "inbox_page.unread_threads"}
-      .inbox-page__threads
+      %section.dashboard-page__loading{ng-if: "inboxPage.loading()", aria-hidden: "true"}
+        .thread-previews-container
+          %loading_content.thread-preview{line-count: 2, ng-repeat: "i in [1,2,3,4,5,6,7,8,9,10] track by $index"}
+      %section.inbox-page__threads{ng-if: "!inboxPage.loading()"}
         .inbox-page__no-threads{ng-show: "!inboxPage.hasThreads() && !inboxPage.noGroups()"}
           %span{translate: "inbox_page.no_threads"}>
           %span

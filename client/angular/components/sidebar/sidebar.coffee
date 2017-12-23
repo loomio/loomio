@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
   controller: ($scope) ->
     $scope.currentState = ""
     $scope.showSidebar = true
-    InboxService.load()
+    InboxService.load().then -> $scope.$digest()
 
     $scope.hasAnyGroups = ->
       Session.user().hasAnyGroups()

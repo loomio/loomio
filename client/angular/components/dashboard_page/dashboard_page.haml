@@ -2,11 +2,11 @@
   %main.dashboard-page.lmo-row
     %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.all", ng-show: "dashboardPage.filter == 'hide_muted'"}
     %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.muted", ng-show: "dashboardPage.filter == 'show_muted'"}
-    %section.dashboard-page__loading{ng-if: "!dashboardPage.dashboardLoaded()", ng-repeat: "viewName in dashboardPage.loadingViewNames track by $index", class: "dashboard-page__{{viewName}}", aria-hidden: "true"}
+    %section.dashboard-page__loading{ng-if: "!dashboardPage.dashboardLoaded", ng-repeat: "viewName in dashboardPage.loadingViewNames track by $index", class: "dashboard-page__{{viewName}}", aria-hidden: "true"}
       %h2.dashboard-page__date-range{translate: "dashboard_page.threads_from.{{viewName}}"}
       .thread-previews-container
         %loading_content.thread-preview{line-count: 2, ng-repeat: "i in [1,2] track by $index"}
-    %section.dashboard-page__loaded{ng-if: "dashboardPage.dashboardLoaded()"}
+    %section.dashboard-page__loaded{ng-if: "dashboardPage.dashboardLoaded"}
       .dashboard-page__empty{ng-if: "dashboardPage.noThreads()"}
         .dashboard-page__no-groups{ng-if: "dashboardPage.noGroups()"}
           %p{translate: "dashboard_page.no_groups.show_all"}>

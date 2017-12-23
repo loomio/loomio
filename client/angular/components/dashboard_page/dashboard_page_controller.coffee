@@ -69,9 +69,8 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     params:
       filter: @filter
       per: 50
-  @loader.fetchRecords().then => AppConfig.dashboardLoaded = true
+  @loader.fetchRecords().then => @dashboardLoaded = true
 
-  @dashboardLoaded = -> AppConfig.dashboardLoaded
   @noGroups        = -> !Session.user().hasAnyGroups()
   @noThreads       = -> _.all @views, (view) -> !view.any()
   @startGroup      = -> ModalService.open 'GroupModal', group: -> Records.groups.build()

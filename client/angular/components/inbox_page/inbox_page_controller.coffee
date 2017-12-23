@@ -7,10 +7,13 @@ angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScop
   $rootScope.$broadcast('currentComponent', {titleKey: 'inbox_page.unread_threads' ,page: 'inboxPage'})
   $rootScope.$broadcast('setTitle', 'Inbox')
   $rootScope.$broadcast('analyticsClearGroup')
-  InboxService.load()
+  InboxService.load().then -> $scope.$digest()
 
   @threadLimit = 50
   @views = InboxService.queryByGroup()
+
+  @loading = ->
+    !InboxService.loaded
 
   @groups = ->
     Records.groups.find(_.keys(@views))
