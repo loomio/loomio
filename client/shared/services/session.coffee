@@ -1,11 +1,11 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 
-module.exports = ->
+module.exports = new class Session
   login: (data, invitationToken) ->
     Records.import(data)
 
-    defaultParams = _.pick {invitation_token: invtationToken}, _.identity
+    defaultParams = _.pick {invitation_token: invitationToken}, _.identity
     Records.stances.remote.defaultParams = defaultParams
     Records.polls.remote.defaultParams   = defaultParams
 
