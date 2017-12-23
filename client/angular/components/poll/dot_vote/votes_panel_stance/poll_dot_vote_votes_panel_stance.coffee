@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ($translate, PollService, RecordLoader) ->
+RecordLoader = require 'shared/services/record_loader.coffee'
+
+angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ($translate, PollService) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/dot_vote/votes_panel_stance/poll_dot_vote_votes_panel_stance.html'
   controller: ($scope) ->

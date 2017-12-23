@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'pollCommonShareGroupForm', (Session, AbilityService, PollService) ->
+Session        = require 'shared/services/session.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'pollCommonShareGroupForm', (PollService) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/group_form/poll_common_share_group_form.html'

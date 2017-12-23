@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'pollPollVoteForm', ->
+angular.module('loomioApp').directive 'pollPollVoteForm', (PollService, KeyEventService) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/poll/vote_form/poll_poll_vote_form.html'
-  controller: ($scope, PollService, KeyEventService) ->
+  controller: ($scope) ->
     $scope.vars = {}
     $scope.pollOptionIdsChecked = {}
 

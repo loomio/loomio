@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pollCommonVotesPanel', (PollService, RecordLoader) ->
+RecordLoader = require 'shared/services/record_loader.coffee'
+
+angular.module('loomioApp').directive 'pollCommonVotesPanel', (PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/votes_panel/poll_common_votes_panel.html'
   controller: ($scope) ->

@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'pollCommonDetailsPanel', (Records, AbilityService, DocumentModal, ModalService, PollCommonEditModal, TranslationService, ReactionService) ->
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'pollCommonDetailsPanel', (DocumentModal, ModalService, PollCommonEditModal, TranslationService, ReactionService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/details_panel/poll_common_details_panel.html'
   controller: ($scope) ->

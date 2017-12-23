@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'pollProposalVoteForm', ->
+angular.module('loomioApp').directive 'pollProposalVoteForm', (PollService, KeyEventService) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/proposal/vote_form/poll_proposal_vote_form.html'
-  controller: ($scope, PollService, KeyEventService) ->
+  controller: ($scope) ->
     $scope.stance.selectedOption = $scope.stance.pollOption()
 
     $scope.submit = PollService.submitStance $scope, $scope.stance,

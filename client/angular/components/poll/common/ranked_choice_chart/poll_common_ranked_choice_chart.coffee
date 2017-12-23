@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'pollCommonRankedChoiceChart', (AppConfig, Records) ->
+AppConfig = require 'shared/services/app_config.coffee'
+Records   = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'pollCommonRankedChoiceChart', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/ranked_choice_chart/poll_common_ranked_choice_chart.html'
   controller: ($scope) ->

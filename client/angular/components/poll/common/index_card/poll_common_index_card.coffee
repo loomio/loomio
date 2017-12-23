@@ -1,6 +1,7 @@
+Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonIndexCard', ($location, Records, LoadingService) ->
+angular.module('loomioApp').directive 'pollCommonIndexCard', ($location, LoadingService) ->
   scope: {model: '=', limit: '@?', viewMoreLink: '=?'}
   templateUrl: 'generated/components/poll/common/index_card/poll_common_index_card.html'
   replace: true

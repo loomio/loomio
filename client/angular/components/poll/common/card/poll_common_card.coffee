@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'pollCommonCard', (Session, Records, LoadingService, PollService) ->
+Session = require 'shared/services/session.coffee'
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'pollCommonCard', (LoadingService, PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/card/poll_common_card.html'
   replace: true

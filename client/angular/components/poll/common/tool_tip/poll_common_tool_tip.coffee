@@ -1,4 +1,8 @@
-angular.module('loomioApp').directive 'pollCommonToolTip', (Session, AppConfig, Records) ->
+AppConfig = require 'shared/services/app_config.coffee'
+Session   = require 'shared/services/session.coffee'
+Records   = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'pollCommonToolTip', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/tool_tip/poll_common_tool_tip.html'
   controller: ($scope) ->

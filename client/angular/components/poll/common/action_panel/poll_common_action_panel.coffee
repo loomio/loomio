@@ -1,4 +1,9 @@
-angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, AppConfig, ModalService, AbilityService, PollService, Session, Records, PollCommonEditVoteModal) ->
+AppConfig      = require 'shared/services/app_config.coffee'
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, ModalService, PollService, PollCommonEditVoteModal) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/action_panel/poll_common_action_panel.html'
   controller: ($scope, Records, Session) ->

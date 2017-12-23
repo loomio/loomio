@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pollCommonShareLinkForm', (LmoUrlService, FlashService) ->
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+
+angular.module('loomioApp').directive 'pollCommonShareLinkForm', (FlashService) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/link_form/poll_common_share_link_form.html'

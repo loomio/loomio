@@ -1,4 +1,8 @@
-angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, Records, RecordLoader, AbilityService, PollService) ->
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+RecordLoader   = require 'shared/services/record_loader.coffee'
+
+angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location, PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/undecided/panel/poll_common_undecided_panel.html'
   controller: ($scope) ->

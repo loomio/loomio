@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'pollCountVoteForm', (AppConfig, Records, PollService, KeyEventService) ->
+AppConfig = require 'shared/services/app_config.coffee'
+Records   = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'pollCountVoteForm', (PollService, KeyEventService) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/count/vote_form/poll_count_vote_form.html'
   controller: ($scope) ->

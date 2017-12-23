@@ -1,6 +1,6 @@
 angular.module('loomioApp').directive 'pollCommonDirective', ($compile, $injector) ->
   scope: {poll: '=?', stance: '=?', outcome: '=?', stanceChoice: '=?', back: '=?', name: '@'}
-  link: ($scope, element) ->
+  link: ($scope, $element) ->
     model = $scope.stance or $scope.outcome or $scope.stanceChoice or (poll: ->)
     $scope.poll = $scope.poll or model.poll()
 
@@ -9,4 +9,4 @@ angular.module('loomioApp').directive 'pollCommonDirective', ($compile, $injecto
     else
       "poll_common_#{$scope.name}"
 
-    $compile("<#{directiveName} poll='poll' stance='stance' stance-choice='stanceChoice', outcome='outcome' back='back' />")($scope, (cloned) -> element.append(cloned))
+    $compile("<#{directiveName} poll='poll' stance='stance' stance-choice='stanceChoice', outcome='outcome' back='back' />")($scope, (cloned) -> $element.append(cloned))

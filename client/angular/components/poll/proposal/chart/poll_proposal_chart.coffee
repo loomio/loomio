@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pollProposalChart', (AppConfig) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').directive 'pollProposalChart', ->
   template: '<div class="poll-proposal-chart"></div>'
   replace: true
   scope:

@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pollProposalChartPanel', (Records) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'pollProposalChartPanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/proposal/chart_panel/poll_proposal_chart_panel.html'
   controller: ($scope, $translate) ->

@@ -1,7 +1,11 @@
-angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService, AbilityService, Session, TimeService) ->
+Session        = require 'shared/services/session.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+TimeService    = require 'shared/services/time_service.coffee'
+
+angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService, KeyEventService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/form_options/poll_common_form_options.html'
-  controller: ($scope, KeyEventService) ->
+  controller: ($scope) ->
     $scope.currentZone = ->
       Session.user().timeZone
 

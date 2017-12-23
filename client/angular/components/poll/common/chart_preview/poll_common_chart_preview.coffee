@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pollCommonChartPreview', (PollService, Session) ->
+Session = require 'shared/services/session.coffee'
+
+angular.module('loomioApp').directive 'pollCommonChartPreview', (PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/chart_preview/poll_common_chart_preview.html'
   controller: ($scope) ->

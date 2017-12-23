@@ -1,6 +1,8 @@
+AbilityService = require 'shared/services/ability_service.coffee'
+
 angular.module('loomioApp').directive 'pollCommonParticipantForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/common/participant_form/poll_common_participant_form.html'
-  controller: ($scope, $location, AbilityService) ->
+  controller: ($scope, $location) ->
     $scope.showParticipantForm = ->
       !AbilityService.isLoggedIn() && $scope.stance.isNew()

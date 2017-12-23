@@ -1,7 +1,9 @@
+AppConfig = require 'shared/services/app_config.coffee'
+
 angular.module('loomioApp').directive 'pollMeetingForm', ->
   scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/meeting/form/poll_meeting_form.html'
-  controller: ($scope, AppConfig) ->
+  controller: ($scope) ->
 
     $scope.removeOption = (name) ->
       _.pull $scope.poll.pollOptionNames, name
