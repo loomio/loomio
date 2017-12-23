@@ -47,7 +47,7 @@
     "angular-sortable-view": "0.0.15",
     "angular-translate": "~2.15.1",
     "angular-translate-loader-url": "latest",
-    "angular_record_store": "3.0.0",
+    "angular_record_store": "3.0.9",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
     "bowser": "latest",

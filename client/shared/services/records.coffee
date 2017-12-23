@@ -1,7 +1,6 @@
 RecordStore = require 'shared/interfaces/record_store.coffee'
-AppConfig   = require 'shared/services/app_config.coffee'
 
-db      = new loki(AppConfig.databaseName || 'default.db')
+db      = new loki('default.db')
 records = new RecordStore(db)
 
 records.addRecordsInterface require('shared/interfaces/comment_records_interface.coffee')
@@ -34,5 +33,6 @@ records.addRecordsInterface require('shared/interfaces/group_identity_records_in
 records.addRecordsInterface require('shared/interfaces/reaction_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/contact_request_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/document_records_interface.coffee')
+records.addRecordsInterface require('shared/interfaces/login_token_records_interface.coffee')
 
 module.exports = records

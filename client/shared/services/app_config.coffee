@@ -1,3 +1,5 @@
+Records = require 'shared/services/records.coffee'
+
 module.exports = do ->
   configData = if window? and window.Loomio?
                  window.Loomio
@@ -11,4 +13,5 @@ module.exports = do ->
     _.find configData.identityProviders, (provider) -> provider.name == name
 
   configData.timeZone = moment.tz.guess()
+  configData.records = Records
   configData

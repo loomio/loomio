@@ -1,5 +1,4 @@
-Records       = require 'shared/services/records.coffee'
-RestfulClient = require 'shared/interfaces/restful_client.coffee'
+Records = require 'shared/services/records.coffee'
 
 module.exports = new class AuthService
 
@@ -22,5 +21,5 @@ module.exports = new class AuthService
     Records.registrations.remote.post('oauth')
 
   sendLoginLink: (user) ->
-    new RestfulClient('login_tokens').post('', email: user.email).then ->
+    Records.loginTokens.fetchToken(user.email).then ->
       user.sentLoginLink = true
