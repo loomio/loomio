@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'EventHeadlineService', ($translate) ->
   new class EventHeadlineService
 
     headlineFor: (event, useNesting = false) ->

@@ -1,6 +1,10 @@
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+AppConfig      = require 'shared/services/app_config.coffee'
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, AppConfig, Records, Session, SequenceService, FormService, ScrollService, AbilityService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, SequenceService, FormService, ScrollService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.

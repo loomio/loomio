@@ -1,5 +1,3 @@
-Records = require 'shared/services/records.coffee'
-
 angular.module('loomioApp').factory 'DocumentService', ->
   new class DocumentService
 

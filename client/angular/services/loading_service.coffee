@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-module.exports = new class LoadingService
+angular.module('loomioApp').factory 'LoadingService', ->
   applyLoadingFunction: (controller, functionName) ->
     executing = "#{functionName}Executing"
     loadingFunction = controller[functionName]

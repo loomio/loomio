@@ -1,4 +1,8 @@
-angular.module('loomioApp').factory 'HotkeyService', (AppConfig, ModalService, KeyEventService, Records, Session, InvitationModal, GroupModal, DiscussionModal, PollCommonStartModal) ->
+AppConfig = require 'shared/services/app_config.coffee'
+Session   = require 'shared/services/session.coffee'
+Records   = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'HotkeyService', (ModalService, KeyEventService, InvitationModal, GroupModal, DiscussionModal, PollCommonStartModal) ->
   new class HotkeyService
 
     keyboardShortcuts:
