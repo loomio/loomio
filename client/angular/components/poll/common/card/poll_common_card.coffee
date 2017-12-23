@@ -1,7 +1,9 @@
 Session = require 'shared/services/session.coffee'
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'pollCommonCard', (LoadingService, PollService) ->
+{ listenForLoading } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').directive 'pollCommonCard', (PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/card/poll_common_card.html'
   replace: true
@@ -12,10 +14,10 @@ angular.module('loomioApp').directive 'pollCommonCard', (LoadingService, PollSer
     $scope.$on 'showResults', ->
       $scope.buttonPressed = true
 
-    LoadingService.listenForLoading $scope
-
     $scope.showResults = ->
       $scope.buttonPressed || PollService.hasVoted(Session.user(), $scope.poll) || $scope.poll.isClosed()
 
     $scope.$on 'stanceSaved', ->
       $scope.$broadcast 'refreshStance'
+
+    listenForLoading $scope

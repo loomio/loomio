@@ -37,8 +37,6 @@
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
       window.Loomio = #{@payload.to_json.html_safe}
-      window.Loomio.emojis.source = (emojione.shortnames || "").split("|")
-      window.Loomio.emojis.render = emojione.shortnameToImage
     %script{src: client_asset_path(:"app.js")}
     %script{src: client_asset_path(:"templates.js")}
     %script{src: client_asset_path(:"plugin.js")}

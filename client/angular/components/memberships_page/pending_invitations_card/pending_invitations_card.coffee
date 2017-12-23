@@ -1,7 +1,7 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'pendingInvitationsCard', (FlashService, ModalService, LoadingService)->
+angular.module('loomioApp').directive 'pendingInvitationsCard', (FlashService, ModalService)->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/memberships_page/pending_invitations_card/pending_invitations_card.html'

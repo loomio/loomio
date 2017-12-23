@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pollCommonOutcomeForm', ($translate, PollService, LoadingService, KeyEventService) ->
+{ listenForLoading } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').directive 'pollCommonOutcomeForm', ($translate, PollService, KeyEventService) ->
   scope: {outcome: '='}
   templateUrl: 'generated/components/poll/common/outcome_form/poll_common_outcome_form.html'
   controller: ($scope) ->
@@ -10,4 +12,5 @@ angular.module('loomioApp').directive 'pollCommonOutcomeForm', ($translate, Poll
       PollService.fieldFromTemplate $scope.outcome.poll().pollType, 'dates_as_options'
 
     KeyEventService.submitOnEnter($scope)
-    LoadingService.listenForLoading($scope)
+
+    listenForLoading($scope)

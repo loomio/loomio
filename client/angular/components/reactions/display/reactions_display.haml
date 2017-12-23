@@ -1,9 +1,6 @@
 .reactions-display.lmo-flex.lmo-flex__center{layout: "row"}
   %loading{ng-if: "!loaded", diameter: "diameter"}
   .lmo-flex.lmo-flex__center{ng-if: "loaded", layout: "row"}
-    -# james I took out the current thing because it made it feel very slow to me
-    -# feel free to put it back if you feel strongly, or remove these comments
-    -# .reaction.lmo-pointer{ng-if: "loaded", ng-click: "removeMine(reaction)", ng-class: "{'reaction--inactive': isInactive(reaction)}", ng-mouseover: "setCurrent(reaction)", ng-mouseleave: "setCurrent()", ng-repeat: "reaction in reactionTypes() track by $index"}
     .reactions-display__emojis
       .reaction.lmo-pointer{ng-if: "loaded", ng-click: "removeMine(reaction)", ng-repeat: "reaction in reactionTypes() track by $index"}
         .reaction__emoji{marked: "reaction"}

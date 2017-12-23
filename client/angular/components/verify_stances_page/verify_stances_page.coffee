@@ -2,7 +2,9 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
 
-angular.module('loomioApp').controller 'VerifyStancesPageController', ($scope, $rootScope, LoadingService, FlashService) ->
+{ listenForLoading } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').controller 'VerifyStancesPageController', ($scope, $rootScope, FlashService) ->
   $rootScope.$broadcast('currentComponent', { page: 'verifyStancesPage', skipScroll: true })
 
   $scope.loader = new RecordLoader
@@ -22,6 +24,6 @@ angular.module('loomioApp').controller 'VerifyStancesPageController', ($scope, $
     stance.destroy().then ->
       FlashService.success('verify_stances.remove_success')
 
-  LoadingService.listenForLoading $scope
+  listenForLoading $scope
 
   return

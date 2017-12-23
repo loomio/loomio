@@ -1,6 +1,10 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'lmoTextarea', ($compile, EmojiService, ModalService, DocumentModal, DocumentService, MentionService) ->
+{ listenForMentions } = require 'angular/listeners/listen_for_mentions.coffee'
+{ listenForEmoji }    = require 'angular/listeners/listen_for_emoji.coffee'
+{ listenForPaste }    = require 'angular/listeners/listen_for_paste.coffee'
+
+angular.module('loomioApp').directive 'lmoTextarea', ($compile, ModalService) ->
   scope: {model: '=', field: '@', noAttachments: '@', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/lmo_textarea/lmo_textarea.html'
@@ -8,9 +12,9 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile, EmojiService, Mo
   controller: ($scope, $element) ->
     $scope.init = (model) ->
       $scope.model = model
-      EmojiService.listen $scope, $scope.model, $scope.field, $element
-      MentionService.applyMentions $scope, $scope.model
-      DocumentService.listenForPaste $scope
+      listenForMentions $scope
+      listenForEmoji $scope, $scope.model, $scope.field, $element
+      listenForPaste $scope
     $scope.init($scope.model)
 
     $scope.$on 'reinitializeForm', (_, model) ->

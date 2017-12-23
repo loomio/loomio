@@ -1,7 +1,7 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, LoadingService, ModalService, FlashService, ScrollService) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, ModalService, FlashService, ScrollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
   @init = (group) =>

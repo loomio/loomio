@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').factory 'InvitationModal', (LoadingService, FormService) ->
+angular.module('loomioApp').factory 'InvitationModal', (FormService) ->
   templateUrl: 'generated/components/invitation/modal/invitation_modal.html'
   controller: ($scope, group) ->
     $scope.$on 'nextStep', $scope.$close

@@ -1,7 +1,9 @@
-angular.module('loomioApp').factory 'DocumentModal', ($timeout, LoadingService) ->
+{ listenForLoading } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').factory 'DocumentModal', ($timeout) ->
   templateUrl: 'generated/components/document/modal/document_modal.html'
   controller: ($scope, doc) ->
     $scope.document = doc.clone()
-    LoadingService.listenForLoading $scope
+    listenForLoading $scope
 
     $timeout -> $scope.$emit 'initializeDocument', $scope.document

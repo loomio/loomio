@@ -1,18 +1,27 @@
-angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout, EmojiService, KeyEventService)->
+# TODO: emojione = require 'emojione' here
+AppConfig = require 'shared/services/app_config.coffee'
+
+{ translateEmoji } = require 'angular/helpers/emoji.coffee'
+
+angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout, KeyEventService)->
   scope: {reaction: '='}
   restrict: 'E'
   templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
   controller: ($scope) ->
-    $scope.translate = EmojiService.translate
-    $scope.render = EmojiService.render
-    $scope.imgSrcFor = EmojiService.imgSrcFor
+    $scope.render = emojione.shortnameToImage
+
+    $scope.translate = translateEmoji
+
+    $scope.imgSrcFor = ->
+      unicode = emojione.emojioneList[shortname].unicode[emojione.emojioneList[shortname].unicode.length-1];
+      "#{emojione.imagePathPNG}#{unicode}.png#{emojione.cacheBustParam}"
 
     $scope.search = (term) ->
       $scope.hovered = {}
       $scope.source = if term
-        _.take _.filter(EmojiService.source, (emoji) -> emoji.match(///^:#{term}///i)), 20
+        _.take _.filter(emojione.shortnames.split("|"), (emoji) -> emoji.match(///^:#{term}///i)), 20
       else
-        EmojiService.defaults
+        AppConfig.emojis.defaults
     $scope.search()
 
     $scope.toggleMenu = ($mdMenu, $event)->

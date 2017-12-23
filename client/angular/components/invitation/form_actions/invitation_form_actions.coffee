@@ -3,7 +3,7 @@ Records = require 'shared/services/records.coffee'
 angular.module('loomioApp').directive 'invitationFormActions', ->
   scope: {invitationForm: '='}
   templateUrl: 'generated/components/invitation/form_actions/invitation_form_actions.html'
-  controller: ($scope, LoadingService, FormService, FlashService) ->
+  controller: ($scope, FormService, FlashService) ->
     $scope.submit = ->
       if $scope.invitationForm.hasInvitees()
         submitForm()

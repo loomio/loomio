@@ -1,7 +1,9 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'documentUrlForm', ($translate, DocumentService, KeyEventService) ->
+{ listenForPaste } = require 'angular/helpers/document.coffee'
+
+angular.module('loomioApp').directive 'documentUrlForm', ($translate, KeyEventService) ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/url_form/document_url_form.html'
   controller: ($scope) ->
@@ -20,4 +22,4 @@ angular.module('loomioApp').directive 'documentUrlForm', ($translate, DocumentSe
       $scope.$emit 'nextStep', doc
 
     KeyEventService.submitOnEnter $scope, anyEnter: true
-    DocumentService.listenForPaste $scope
+    listenForPaste($scope)
