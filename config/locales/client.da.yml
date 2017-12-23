@@ -316,16 +316,6 @@ da:
     edited_by: 'Redigeret af <strong>{{name}}</strong>'
     posted: Gemt
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Denne gruppe har ikke nogen debatter endnu."
-        no_discussions_matching_filters_html: "Der er ikke nogen debatter der matcher disse filtre. <a href='%{link}'>Nulstil filtre</a>."
-        no_public_discussions: "Der er ikke nogen offentlige debatter i denne gruppe."
-        discussions_are_private: "Alle debatter i denne gruppe er private."
-        join_group: "For at se private debatter så skal du være medlem af gruppen."
-        request_membership: "For at se private debatter, anmod om at blive medlem af gruppen"
-        membership_is_invitation_only: "For at blive medlem så skal du inviteres af et medlem."
-        membership_is_invitation_by_admin_only: "For at blive medlem af denne gruppe der skal du inviteres af en koordinator."
     messages:
       privacy:
         members: 'Denne gruppe er nu kun synlig for medlemmer'
@@ -337,7 +327,6 @@ da:
     new_photo: 'Nyt photo'
     new_cover_photo: 'Upload nyt forsidebillede'
     new_group_logo: 'Upload nyt gruppelogo'
-    discussions: 'Debatter'
     discussions_placeholder: 'En debat er et sted hvor alle kan give deres mening til kende omkring et specifikt emne og tage beslutninger sammen.'
     members: 'Medlemmer'
     members_placeholder: 'Du er det eneste medlem her, inviter nogle mennesker til at være med!'
@@ -659,7 +648,6 @@ da:
     load_previous: 'Hent tidligere aktivitet'
     started_by: 'Oprettet af <strong>{{name}}</strong>'
     volume:
-      mute_message: 'Notifikationer slået fra.'
       unmute_message: 'Notifikationer slået til.'
   activity_card:
     unread: Ulæst
@@ -675,6 +663,7 @@ da:
     email_settings: 'Emailindstillinger '
     edit: 'Rediger'
     edit_thread: 'Rediger'
+    close_thread: 'Luk'
     mute_thread: 'Slå notifikationer fra'
     move_thread: 'Flyt'
     print_thread: 'Print'
@@ -695,8 +684,6 @@ da:
     confirm_change_to_private_thread: '{{groupName}} er ern offentlig gruppe. Hvis du fortsætter, så vil denne debat bliver gjort offentlig.'
     messages:
       success: Debatten er flyttet til {{name}}
-  print_modal:
-    load_discussion: Henter hele debatten...
   delete_comment_dialog:
     title: 'Slet kommentar'
     question: 'Er du sikker på at du vil slette denne kommentar?'
@@ -747,8 +734,6 @@ da:
     private_title: 'redigerede debattens titel og privatindstillinger'
     description_private: 'redigerede debattens beskrivelse og privatindstillinger'
     description_private_title: 'redigerede debattens titel, beskrivelse og privatindstillinger'
-  discussion_moved_item:
-    discussion_moved: 'flyttede debatten fra <span>{{group}}</span>'
   contact_message_form:
     contact_us: 'Kontakt os'
     name_label: 'Dit navn'

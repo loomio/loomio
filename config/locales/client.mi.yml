@@ -124,7 +124,6 @@ mi:
     name_label: Ingoa
     email_label: Īmēra
   group_page:
-    discussions: 'Ngā miro'
     options_label: 'Ngā Kōwhiringa'
     options:
       label: 'Ngā Kōwhiringa'
@@ -161,7 +160,6 @@ mi:
       start: Tīmatatia
   discussion:
     volume:
-      mute_message: 'Kua whakahāngūtia te miro'
       unmute_message: 'Kua whakahoitia'
   activity_card:
     unread: Kāhore anō kia kitea
@@ -169,6 +167,7 @@ mi:
   thread_group:
     aria_label: 'Ingoa rōpū'
   thread_context:
+    close_thread: 'Katia'
     mute_thread: 'Whakahāngū'
   decision_tools_card:
     proposal_title: He whakatakoto

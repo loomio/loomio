@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'descriptionCard', (Records, ModalService, FormService, AbilityService, DocumentModal)->
+angular.module('loomioApp').directive 'descriptionCard', (Records, ModalService, FormService, AbilityService, GroupModal, DocumentModal)->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/description_card/description_card.html'
@@ -19,9 +19,7 @@ angular.module('loomioApp').directive 'descriptionCard', (Records, ModalService,
       name: 'edit_group'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditGroup($scope.group)
-      perform:    ->
-        $scope.editorEnabled = true
-        $scope.buh = {editableDescription: $scope.group.description}
+      perform:    -> ModalService.open GroupModal, group: -> $scope.group
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'

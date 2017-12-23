@@ -360,16 +360,6 @@ pt_BR:
     you_and_name_and_count_more: "Você, {{name}} e {{count}} mais"
     name_and_count_more: "{{name}} e {{count}} mais"
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Este grupo ainda não tem nenhum tópico."
-        no_discussions_matching_filters_html: "Não há tópicos correspondentes a esses filtros. <a href='%{link}'>Limpar filtros</a>."
-        no_public_discussions: "Não há tópicos públicos neste grupo."
-        discussions_are_private: "Todos tópicos neste grupo são privados."
-        join_group: "Para ver tópicos privados você precisará se juntar ao grupo."
-        request_membership: "Para ver tópicos privados, peça para se juntar ao grupo."
-        membership_is_invitation_only: "Para se juntar a este grupo você precisa ser convidado por um membro."
-        membership_is_invitation_by_admin_only: "Para se juntar a este grupo você precisa ser convidado por um(a) coordenador(a)."
     messages:
       privacy:
         members: 'Este grupo agora está visível apenas para membros'
@@ -381,7 +371,6 @@ pt_BR:
     new_photo: 'nova foto'
     new_cover_photo: 'Carregar nova foto da capa'
     new_group_logo: 'Carregar nova logo do grupo'
-    discussions: 'Tópicos'
     discussions_placeholder: 'Um tópico é o lugar onde todos podem discutir um tema e tomar decisões juntos.'
     members: 'Membros ({{count}})'
     members_placeholder: 'Você é a única pessoa aqui: convide outras para se juntar a você!'
@@ -422,8 +411,6 @@ pt_BR:
   description_card:
     title: 'Descrição do grupo'
     placeholder: 'Coordenadores de grupo podem usar esta área para descrever a finalidade do grupo, para que assim todos saibam porque estão aqui.'
-    view_documents: 'Ver anexos'
-    manage_documents: 'Gerenciar anexos'
     messages:
       description_updated: 'Descrição atualizada'
   leave_group_form:
@@ -728,7 +715,6 @@ pt_BR:
     load_previous: 'Carregar atividade anterior'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     volume:
-      mute_message: 'Tópico mudo'
       unmute_message: 'Ativado o som do tópico'
   activity_card:
     unread: Não lida
@@ -744,6 +730,7 @@ pt_BR:
     email_settings: 'Configurações de e-mail'
     edit: 'Editar'
     edit_thread: 'Editar'
+    close_thread: 'Encerrar'
     mute_thread: 'Silenciar'
     move_thread: 'Mover'
     print_thread: 'Imprimir'
@@ -764,8 +751,6 @@ pt_BR:
     confirm_change_to_private_thread: '{{groupName}} é um grupo aberto. Se você continuar, este tópico será público.'
     messages:
       success: Tópico foi movido para {{name}}
-  print_modal:
-    load_discussion: Carregando a discussão completa...
   delete_comment_dialog:
     title: 'Apagar comentário'
     question: 'Você tem certeza que deseja apagar este comentário?'
@@ -816,8 +801,6 @@ pt_BR:
     private_title: 'atualizou título e privacidade do tópico'
     description_private: 'atualizou contexto e privacidade do tópico'
     description_private_title: 'atualizou título, contexto e privacidade do tópico'
-  discussion_moved_item:
-    discussion_moved: 'moveu o tópico de <span>{{group}}</span>'
   contact_message_form:
     contact_us: 'Contato'
     name_label: 'Seu nome'

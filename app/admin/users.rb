@@ -39,6 +39,34 @@ ActiveAdmin.register User do
     f.actions
   end
 
+  collection_action :export_emails_deactivated do
+    emails = User.inactive.pluck :email
+    render text: emails.join("\n")
+  end
+
+  collection_action :export_emails_fr do
+    emails = User.active.where("detected_locale ilike 'fr%'").pluck(:email)
+    render text: emails.join("\n")
+  end
+
+  collection_action :export_emails_es do
+    query = %w[es ca an].map do |prefix|
+      "detected_locale ilike '#{prefix}%'"
+    end.join ' or '
+
+    emails = User.active.where(query).pluck(:email)
+    render text: emails.join("\n")
+  end
+
+  collection_action :export_emails_other do
+    query = %w[fr es ca an].map do |prefix|
+      "detected_locale ilike '#{prefix}%'"
+    end.join ' or '
+
+    emails = User.active.where.not(query).pluck(:email)
+    render text: emails.join("\n")
+  end
+
   member_action :delete_spam, method: :post do
     user = User.friendly.find(params[:id])
     UserService.delete_spam(user)

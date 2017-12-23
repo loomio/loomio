@@ -1,9 +1,15 @@
-angular.module('loomioApp').directive 'contextPanel', ($rootScope, Records, AbilityService, ReactionService, ModalService, DocumentModal, DiscussionModal, ThreadService, RevisionHistoryModal, TranslationService, ScrollService) ->
+angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, Records, AbilityService, ReactionService, ModalService, DocumentModal, DiscussionModal, ThreadService, RevisionHistoryModal, TranslationService, ScrollService) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/thread_page/context_panel/context_panel.html'
   controller: ($scope) ->
+
+    $scope.status = ->
+      return 'pinned' if $scope.discussion.pinned
+
+    $scope.statusTitle = ->
+      $translate.instant "context_panel.thread_status.#{$scope.status()}"
 
     $scope.showLintel = (bool) ->
       $rootScope.$broadcast('showThreadLintel', bool)

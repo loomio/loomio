@@ -21,7 +21,7 @@ angular.module('loomioApp').directive 'groupForm', (AppConfig, PrivacyString, Ab
     $scope.privacyStringFor = (privacy) ->
       PrivacyString.group($scope.group, privacy)
 
-    $scope.isSiteAdmin = ->
-      AbilityService.isSiteAdmin()
+    $scope.showGroupFeatures = ->
+      AbilityService.isSiteAdmin() and _.any($scope.featureNames)
 
     $scope.featureNames = AppConfig.features.group

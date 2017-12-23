@@ -228,16 +228,6 @@ ko:
     comment_header: 코멘트 편집 이력 보기
     posted: 저장됨
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "이 그룹엔 쓰레드가 아직 없습니다"
-        no_discussions_matching_filters_html: "이 필터에 맞는 주제가 없습니다. <a href='%{link}'>필터 초기화</a>."
-        no_public_discussions: "이 그룹에는 공개된 게시글이 없습니다."
-        discussions_are_private: "이 그룹에 모든 게시글은 비공개입니다."
-        join_group: "그룹에 가입하면, 비공개 쓰레드를 볼 수 있습니다."
-        request_membership: "비공개 쓰레드를 보려면 그룹에 가입 신청을 하세요."
-        membership_is_invitation_only: "멤버의 초대를 받아야 가입할 수 있는 그룹입니다."
-        membership_is_invitation_by_admin_only: "코디네이터의 초대를 받아야 가입할 수 있는 그룹입니다."
     messages:
       privacy:
         members: '이 그룹은 회원들에게만 보입니다.'
@@ -249,7 +239,6 @@ ko:
     new_photo: '새로운 사진'
     new_cover_photo: '새로운 커버 사진 올리기'
     new_group_logo: '새로운 그룹 로고 올리기'
-    discussions: '토론'
     discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
     members: '멤버'
     members_placeholder: '이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.'
@@ -545,6 +534,7 @@ ko:
     thread_options: '쓰레드 옵션'
     email_settings: '이메일 설정'
     edit: '편집'
+    close_thread: '닫기'
     move_thread: '이동'
     print_thread: '인쇄'
     delete_thread: '삭제'

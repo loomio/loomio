@@ -77,6 +77,10 @@ class Poll < ActiveRecord::Base
     undecided_user_count + guest_group.pending_invitations_count
   end
 
+  def time_zone
+    custom_fields.fetch('time_zone', author.time_zone)
+  end
+
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }

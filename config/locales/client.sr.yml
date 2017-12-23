@@ -198,16 +198,6 @@ sr:
     edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
     posted: Postavljeno
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Ova grupa nema niti još uvek."
-        no_discussions_matching_filters_html: "Nema niti koje se poklapaju sa filterom. <a href='%{link}'>Ukloni filtere</a>."
-        no_public_discussions: "Nema javnih niti u ovoj grupi."
-        discussions_are_private: "Sve niti u ovoj grupi su privatne."
-        join_group: "Da vidite privatne niti, morate se pridružiti grupi."
-        request_membership: "Da vidite privatne niti, zahtevajte da se priključite grupi."
-        membership_is_invitation_only: "Da biste se priključili ovoj grupi morate biti pozvani od strane nekog člana."
-        membership_is_invitation_by_admin_only: "Da biste se pridružili ovoj grupi morate biti pozvani od strane koordinatora."
     messages:
       privacy:
         members: 'Ova grupa je sada vidljiva samo za članove'
@@ -217,7 +207,6 @@ sr:
       archive_group_success: 'Ova grupa je bila deaktivirana'
     group_logo: 'Logo grupe'
     new_photo: 'nova fotografija'
-    discussions: 'Niti'
     discussions_placeholder: 'Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.'
     members: 'Članovi'
     members_placeholder: 'Samo si ti ovde: pozovi neke ljude da ti se pridruže!'
@@ -459,8 +448,6 @@ sr:
     activity_placeholder: 'Još uvek bez aktivnosti!'
     load_previous: 'Učitaj ranije aktivnosti'
     started_by: 'Kreirano od strane <strong>{{name}}</strong> '
-    volume:
-      mute_message: 'Nit je utišana.'
   activity_card:
     unread: Nepročitano
     latest: Poslednje
@@ -473,6 +460,7 @@ sr:
     aria_label: 'Kontekst niti'
     thread_options: 'Opcije niti'
     email_settings: 'Opcije ePoruka'
+    close_thread: 'Zatvori'
     move_thread: 'Premesti'
     print_thread: 'Štampa'
     delete_thread: 'Obriši'
@@ -538,8 +526,6 @@ sr:
     private_title: 'ažurirao/la  naslov i privatnost niti'
     description_private: 'ažurirao/la kontekst i privatnost niti'
     description_private_title: 'ažurirao/la  naslov niti, kontekst i privatnost'
-  discussion_moved_item:
-    discussion_moved: 'pomerio/la nit iz <span>{{group}}</span>'
   contact_message_form:
     contact_us: 'Kontakiraj nas'
     name_label: 'Tvoje ime'

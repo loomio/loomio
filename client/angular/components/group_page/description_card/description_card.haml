@@ -1,14 +1,8 @@
 %section.description-card.lmo-card{aria-labelledby: "description-card-title"}
   %h2#description-card-title.lmo-card-heading{translate: "description_card.title"}
-  %div{ng-if: "!editorEnabled"}
-    .description-card__placeholder.lmo-hint-text{translate: "description_card.placeholder", ng-if: "!group.description"}
-    .description-card__text.lmo-markdown-wrapper{marked: "group.description"}
-    %document_list{model: "group", placeholder: "document.list.no_group_documents"}
+  .description-card__placeholder.lmo-hint-text{translate: "description_card.placeholder", ng-if: "!group.description"}
+  .description-card__text.lmo-markdown-wrapper{marked: "group.description"}
+  %document_list{model: "group", placeholder: "document.list.no_group_documents"}
 
-    .lmo-md-action
-      %action_dock{model: "group", actions: "actions"}
-  %md-input-container.md-block{ng-if: "editorEnabled"}
-    %textarea.lmo-textarea.description-card__textarea.lmo-primary-form-input{ng-model: "buh.editableDescription", ng-model-options: "{debounce: 150}"}
-    .lmo-md-actions
-      %md-button.md-button--no-h-margin.description-card__cancel{ng-click: "disableEditor()", translate: "common.action.cancel"}
-      %md-button.md-button--no-h-margin.md-primary.md-raised.description-card__save{ng-click: "save()", translate: "common.action.save"}
+  .lmo-md-action
+    %action_dock{model: "group", actions: "actions"}
