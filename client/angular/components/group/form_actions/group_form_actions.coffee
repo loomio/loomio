@@ -1,9 +1,10 @@
 Records = require 'shared/services/records.coffee'
 
-{ scrollTo }   = require 'angular/helpers/window.coffee'
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ scrollTo }           = require 'angular/helpers/window.coffee'
+{ submitForm }         = require 'angular/helpers/form.coffee'
+{ groupPrivacyChange } = require 'angular/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'groupFormActions', (PrivacyString, KeyEventService) ->
+angular.module('loomioApp').directive 'groupFormActions', ($translate, KeyEventService) ->
   scope: {group: '='}
   replace: true
   templateUrl: 'generated/components/group/form_actions/group_form_actions.html'
@@ -24,8 +25,8 @@ angular.module('loomioApp').directive 'groupFormActions', (PrivacyString, KeyEve
           when 'open'   then true
           when 'closed' then $scope.group.parentMembersCanSeeDiscussions
           when 'secret' then false
-      confirmFn: (model) -> PrivacyString.confirmGroupPrivacyChange(model)
-      flashSuccess: -> "group_form.messages.group_#{actionName}"
+      confirmFn: (model)          -> $translate.instant groupPrivacyChange(model)
+      flashSuccess:               -> "group_form.messages.group_#{actionName}"
       successCallback: (response) ->
         group = Records.groups.find(response.groups[0].key)
         $scope.$emit 'nextStep', group

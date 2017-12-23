@@ -4,9 +4,9 @@ AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { submitForm } = require 'angular/helpers/form.coffee'
-{ headlineFor } = require 'angular/helpers/event.coffee'
+{ eventHeadline, eventTitle, eventPollType } = require 'angular/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'threadItem', ($compile) ->
+angular.module('loomioApp').directive 'threadItem', ($compile, $translate) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
@@ -42,7 +42,11 @@ angular.module('loomioApp').directive 'threadItem', ($compile) ->
       (Session.user().id != $scope.event.actorId) && $scope.eventWindow.isUnread($scope.event)
 
     $scope.headline = ->
-      headlineFor($scope.event, $scope.eventWindow.useNesting)
+      $translate.instant eventHeadline($scope.event, $scope.eventWindow.useNesting),
+        author:   $scope.event.actorName() || $translate.instant('common.anonymous')
+        username: $scope.event.actorUsername()
+        title:    eventTitle($scope.event)
+        polltype: $translate.instant(eventPollType($scope.event)).toLowerCase()
 
     $scope.link = ->
       LmoUrlService.discussion $scope.eventWindow.discussion, from: $scope.event.sequenceId
