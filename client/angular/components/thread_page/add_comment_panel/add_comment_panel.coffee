@@ -1,7 +1,9 @@
 Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'addCommentPanel', ($timeout, ModalService, AuthModal, ScrollService) ->
+{ scrollTo } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').directive 'addCommentPanel', ($timeout, ModalService, AuthModal) ->
   scope: {eventWindow: '=', parentEvent: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/add_comment_panel/add_comment_panel.html'
@@ -26,7 +28,7 @@ angular.module('loomioApp').directive 'addCommentPanel', ($timeout, ModalService
           $scope.isReply = true
           $scope.$broadcast 'setParentComment', event.model()
 
-      ScrollService.scrollTo('.add-comment-panel textarea', {bottom: true, offset: 200})
+      scrollTo('.add-comment-panel textarea', {bottom: true, offset: 200})
 
     $scope.$on 'commentSaved', ->
       if $scope.parentEvent == $scope.discussion.createdEvent()

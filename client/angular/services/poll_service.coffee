@@ -5,8 +5,9 @@ AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { applySequence } = require 'angular/helpers/sequence.coffee'
+{ scrollTo }      = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, FormService, ScrollService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, FormService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -62,7 +63,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
         flashSuccess: "poll_common_outcome_form.outcome_#{actionName}"
         drafts: true
         failureCallback: ->
-          ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+          scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
           scope.$emit 'outcomeSaved', data.outcomes[0].id
       , options))
@@ -82,7 +83,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
             else
               $rootScope.$broadcast 'addPollOption'
         failureCallback: ->
-          ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+          scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
           _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
           poll = Records.polls.find(data.polls[0].key)
@@ -102,7 +103,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
           scope.$emit 'processing'
         successCallback: (data) ->
           model.poll().clearStaleStances()
-          ScrollService.scrollTo '.poll-common-card__results-shown'
+          scrollTo '.poll-common-card__results-shown'
           scope.$emit 'stanceSaved', data.stances[0].key
           if !Session.user().emailVerified
             if user = Session.login(current_user_id: data.stances[0].participant_id, $location.search().invitation_token)

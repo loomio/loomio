@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'threadLintel', (ScrollService) ->
+{ scrollTo } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').directive 'threadLintel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_lintel/thread_lintel.html'
   replace: true
@@ -7,7 +9,7 @@ angular.module('loomioApp').directive 'threadLintel', (ScrollService) ->
       $scope.showLintel && $scope.discussion
 
     $scope.scrollToThread = ->
-      ScrollService.scrollTo 'h1'
+      scrollTo 'h1'
 
     $scope.$on 'currentComponent', (event, options) ->
       $scope.currentComponent = options['page']

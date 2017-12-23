@@ -4,7 +4,9 @@ Records           = require 'shared/services/records.coffee'
 AbilityService    = require 'shared/services/ability_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
 
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, KeyEventService, ModalService, ScrollService, PollService) ->
+{ scrollTo } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, KeyEventService, ModalService, PollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
   # if we get given a comment id, then hard refresh after seeking it's sequenceId
@@ -58,7 +60,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $rootScope.$broadcast('pageError', error)
 
   $scope.$on 'threadPageScrollToSelector', (e, selector) =>
-    ScrollService.scrollTo selector, offset: 150
+    scrollTo selector, offset: 150
 
   checkInView = ->
     angular.element(window).triggerHandler('checkInView')

@@ -4,9 +4,9 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-{ viewportSize } = require 'angular/helpers/window.coffee'
+{ viewportSize, scrollTo, trackEvents } = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ScrollService, ModalService, AhoyService, HotkeyService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ModalService, HotkeyService) ->
   $scope.isLoggedIn = ->
     AbilityService.isLoggedIn()
   $scope.isEmailVerified = ->
@@ -49,7 +49,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
 
     $scope.pageError = null
     $scope.$broadcast('clearBackgroundImageUrl')
-    ScrollService.scrollTo(options.scrollTo or 'h1') unless options.skipScroll
+    scrollTo(options.scrollTo or 'h1') unless options.skipScroll
     $scope.links = options.links or {}
     $scope.forceSignIn() if AbilityService.requireLoginFor(options.page) or AppConfig.pendingIdentity?
 
@@ -73,8 +73,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
 
   $router.config(Routes.concat(AppConfig.plugins.routes))
 
-  AppConfig.records = Records
-  AhoyService.init()
+  trackEvents($scope)
   if user = Session.login(AppConfig.bootData, $location.search().invitation_token)
     $rootScope.$broadcast 'loggedIn', user
 

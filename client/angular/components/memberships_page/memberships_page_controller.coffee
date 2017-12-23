@@ -1,7 +1,9 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, ModalService, FlashService, ScrollService) ->
+{ scrollTo } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, ModalService, FlashService) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
   @init = (group) =>
@@ -9,7 +11,7 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
     if AbilityService.canViewMemberships(group)
       @group = group
       Records.memberships.fetchByGroup(@group.key, per: @group.membershipsCount).then ->
-        ScrollService.scrollTo("[data-username=#{$routeParams.username}]") if $routeParams.username?
+        scrollTo("[data-username=#{$routeParams.username}]") if $routeParams.username?
     else
       $rootScope.$broadcast 'pageError', { status: 403 }, group
 
