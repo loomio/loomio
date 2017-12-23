@@ -12,8 +12,8 @@ angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout, KeyE
 
     $scope.translate = translateEmoji
 
-    $scope.imgSrcFor = ->
-      unicode = emojione.emojioneList[shortname].unicode[emojione.emojioneList[shortname].unicode.length-1];
+    $scope.imgSrcFor = (emoji) ->
+      unicode = emojione.emojioneList[emoji].unicode[emojione.emojioneList[emoji].unicode.length-1];
       "#{emojione.imagePathPNG}#{unicode}.png#{emojione.cacheBustParam}"
 
     $scope.search = (term) ->

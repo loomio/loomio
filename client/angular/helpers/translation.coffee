@@ -1,7 +1,7 @@
 Records = require 'shared/services/records.coffee'
 Session = require 'shared/services/session.coffee'
 
-module.exports = ->
+module.exports =
   listenForTranslations: ($scope) ->
     $scope.$on 'translationComplete', (e, translatedFields) =>
       return if e.defaultPrevented

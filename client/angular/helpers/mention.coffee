@@ -1,4 +1,5 @@
 Records = require 'shared/services/records.coffee'
+Session = require 'shared/services/session.coffee'
 
 module.exports =
   listenForMentions: ($scope, model) ->

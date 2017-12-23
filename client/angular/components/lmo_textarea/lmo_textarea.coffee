@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile, ModalService) ->
   controller: ($scope, $element) ->
     $scope.init = (model) ->
       $scope.model = model
-      listenForMentions $scope
+      listenForMentions $scope, $scope.model
       listenForEmoji $scope, $scope.model, $scope.field, $element
       listenForPaste $scope
     $scope.init($scope.model)

@@ -1,3 +1,5 @@
+AppConfig = require 'shared/services/app_config.coffee'
+
 module.exports = new class HasDrafts
   apply: (model) ->
     model.draftParent = model.draftParent or ->
@@ -31,8 +33,8 @@ module.exports = new class HasDrafts
       draft.updateFrom(model)
 
     model.cancelDraftFetch = ->
-      $timeout.cancel(model.draftFetch) if model.draftFetch
+      clearTimeout(model.draftFetch) if model.draftFetch
 
     model.planDraftFetch = ->
       model.cancelDraftFetch()
-      model.draftFetch = $timeout model.updateDraft, AppConfig.drafts.debounce
+      model.draftFetch = setTimeout(model.updateDraft, AppConfig.drafts.debounce)
