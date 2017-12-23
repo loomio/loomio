@@ -2,18 +2,18 @@ AppConfig = require 'shared/services/app_config.coffee'
 Session   = require 'shared/services/session.coffee'
 Records   = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').factory 'HotkeyService', (ModalService, KeyEventService, InvitationModal, GroupModal, DiscussionModal, PollCommonStartModal) ->
+angular.module('loomioApp').factory 'HotkeyService', (ModalService, KeyEventService) ->
   new class HotkeyService
 
     keyboardShortcuts:
       pressedI:
-        execute: -> ModalService.open InvitationModal, group: -> Session.currentGroup or Records.groups.build()
+        execute: -> ModalService.open 'InvitationModal', group: -> Session.currentGroup or Records.groups.build()
       pressedG:
-        execute: -> ModalService.open GroupModal, group: -> Records.groups.build()
+        execute: -> ModalService.open 'GroupModal', group: -> Records.groups.build()
       pressedT:
-        execute: -> ModalService.open DiscussionModal, discussion: -> Records.discussions.build(groupId: (Session.currentGroup or {}).id)
+        execute: -> ModalService.open 'DiscussionModal', discussion: -> Records.discussions.build(groupId: (Session.currentGroup or {}).id)
       pressedP:
-        execute: -> ModalService.open PollCommonStartModal, poll: -> Records.polls.build(authorId: Session.user().id)
+        execute: -> ModalService.open 'PollCommonStartModal', poll: -> Records.polls.build(authorId: Session.user().id)
 
     init: (scope) ->
       _.each @keyboardShortcuts, (args, key) =>

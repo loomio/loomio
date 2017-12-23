@@ -5,7 +5,7 @@ AbilityService    = require 'shared/services/ability_service.coffee'
 LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
 
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, MessageChannelService, PollService, ModalService, InstallSlackModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, MessageChannelService, PollService, ModalService) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
   @launchers = []
@@ -17,7 +17,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       allowContinue:  opts.allowContinue
 
   @addLauncher =>
-    ModalService.open InstallSlackModal,
+    ModalService.open 'InstallSlackModal',
       group: => @group
       requirePaidPlan: -> true
   , ->
@@ -66,23 +66,5 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
         next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
 
     @performLaunch()
-
-  @canManageMembershipRequests = ->
-    AbilityService.canManageMembershipRequests(@group)
-
-  @canUploadPhotos = ->
-    AbilityService.canAdministerGroup(@group)
-
-  @openUploadCoverForm = ->
-    @openModal.open CoverPhotoForm, group: => @group
-
-  @openUploadLogoForm = ->
-    @openModal LogoPhotoForm, group: => @group
-
-  @openModal = (modal, resolve)->
-    ModalService.open modal, resolve
-
-  @showPreviousPolls = ->
-    AbilityService.canViewPreviousPolls(@group)
 
   return

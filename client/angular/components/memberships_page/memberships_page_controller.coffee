@@ -1,7 +1,7 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, LoadingService, ModalService, InvitationModal, RemoveMembershipForm, FlashService, ScrollService) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, LoadingService, ModalService, FlashService, ScrollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
   @init = (group) =>
@@ -35,10 +35,10 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
       FlashService.success "memberships_page.messages.#{_.snakeCase method}_success", name: membership.userName()
 
   @openRemoveForm = (membership) ->
-    ModalService.open RemoveMembershipForm, membership: -> membership
+    ModalService.open 'RemoveMembershipForm', membership: -> membership
 
   @invitePeople = ->
-    ModalService.open InvitationModal, group: => @group
+    ModalService.open 'InvitationModal', group: => @group
 
   filteredMemberships = =>
     if @fragment

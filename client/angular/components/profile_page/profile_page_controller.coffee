@@ -3,7 +3,7 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'ProfilePageController', ($scope, $location, $translate, $rootScope, FormService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, DeactivationModal) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($scope, $location, $translate, $rootScope, FormService, ModalService) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
 
   @showHelpTranslate = ->
@@ -33,12 +33,12 @@ angular.module('loomioApp').controller 'ProfilePageController', ($scope, $locati
     AppConfig.locales
 
   @changePicture = ->
-    ModalService.open ChangePictureForm
+    ModalService.open 'ChangePictureForm'
 
   @changePassword = ->
-    ModalService.open ChangePasswordForm
+    ModalService.open 'ChangePasswordForm'
 
   @deactivateUser = ->
-    ModalService.open DeactivationModal
+    ModalService.open 'DeactivationModal'
 
   return

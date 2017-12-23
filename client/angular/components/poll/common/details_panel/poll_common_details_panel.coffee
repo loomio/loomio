@@ -1,7 +1,7 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonDetailsPanel', (DocumentModal, ModalService, PollCommonEditModal, TranslationService, ReactionService) ->
+angular.module('loomioApp').directive 'pollCommonDetailsPanel', (ModalService, TranslationService, ReactionService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/details_panel/poll_common_details_panel.html'
   controller: ($scope) ->
@@ -17,7 +17,7 @@ angular.module('loomioApp').directive 'pollCommonDetailsPanel', (DocumentModal, 
       name: 'add_resource'
       icon: 'mdi-attachment'
       canPerform: -> AbilityService.canAdministerPoll($scope.poll)
-      perform:    -> ModalService.open DocumentModal, doc: ->
+      perform:    -> ModalService.open 'DocumentModal', doc: ->
         Records.documents.build
           modelId:   $scope.poll.id
           modelType: 'Poll'
@@ -25,7 +25,7 @@ angular.module('loomioApp').directive 'pollCommonDetailsPanel', (DocumentModal, 
       name: 'edit_poll'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditPoll($scope.poll)
-      perform:    -> ModalService.open PollCommonEditModal, poll: -> $scope.poll
+      perform:    -> ModalService.open 'PollCommonEditModal', poll: -> $scope.poll
     ]
 
     TranslationService.listenForTranslations($scope)

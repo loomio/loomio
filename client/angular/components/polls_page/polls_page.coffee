@@ -4,7 +4,7 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
 
-angular.module('loomioApp').controller 'PollsPageController', ($scope, $location, $q, $rootScope, LoadingService, ModalService, PollCommonStartModal) ->
+angular.module('loomioApp').controller 'PollsPageController', ($scope, $location, $q, $rootScope, LoadingService, ModalService) ->
   $rootScope.$broadcast 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
 
   @statusFilters = _.map AppConfig.searchFilters.status, (filter) ->
@@ -54,7 +54,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $location
     !@fragment && @loadedCount() < @pollsCount
 
   @startNewPoll = ->
-    ModalService.open PollCommonStartModal, poll: -> Records.polls.build(authorId: Session.user().id)
+    ModalService.open 'PollCommonStartModal', poll: -> Records.polls.build(authorId: Session.user().id)
 
   @searchPolls = =>
     if @fragment

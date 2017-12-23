@@ -1,7 +1,7 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'UserPageController', ($rootScope, $routeParams, LoadingService, ModalService, ContactRequestModal) ->
+angular.module('loomioApp').controller 'UserPageController', ($rootScope, $routeParams, LoadingService, ModalService) ->
 
   @init = =>
     return if @user
@@ -16,7 +16,7 @@ angular.module('loomioApp').controller 'UserPageController', ($rootScope, $route
     AbilityService.canContactUser(@user)
 
   @contactUser = ->
-    ModalService.open ContactRequestModal, user: => @user
+    ModalService.open 'ContactRequestModal', user: => @user
 
   @loadGroupsFor = (user) ->
     Records.memberships.fetchByUser(user)

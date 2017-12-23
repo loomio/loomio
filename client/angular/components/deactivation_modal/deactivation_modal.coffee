@@ -1,11 +1,11 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').factory 'DeactivationModal', ->
+angular.module('loomioApp').factory 'DeactivationModal', (ModalService) ->
   templateUrl: 'generated/components/deactivation_modal/deactivation_modal.html'
-  controller: ($scope, ModalService, DeactivateUserForm, OnlyCoordinatorModal) ->
+  controller: ($scope) ->
 
     $scope.submit = ->
       if AbilityService.canDeactivateUser()
-        ModalService.open DeactivateUserForm
+        ModalService.open 'DeactivateUserForm'
       else
-        ModalService.open OnlyCoordinatorModal
+        ModalService.open 'OnlyCoordinatorModal'

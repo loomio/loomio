@@ -1,7 +1,7 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams, $rootScope, LoadingService, ModalService, DocumentModal, ConfirmModal) ->
+angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams, $rootScope, LoadingService, ModalService) ->
   $rootScope.$broadcast('currentComponent', { page: 'documentsPage'})
 
   @fetchDocuments = =>
@@ -16,7 +16,7 @@ angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams,
     _.any @documents()
 
   @addDocument = ->
-    ModalService.open DocumentModal, doc: =>
+    ModalService.open 'DocumentModal', doc: =>
       Records.documents.build
         modelId:   @group.id
         modelType: 'Group'

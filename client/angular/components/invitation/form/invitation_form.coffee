@@ -2,7 +2,7 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'invitationForm', (FlashService, ModalService, AddMembersModal) ->
+angular.module('loomioApp').directive 'invitationForm', (FlashService, ModalService) ->
   scope: {invitationForm: '='}
   restrict: 'E'
   templateUrl: 'generated/components/invitation/form/invitation_form.html'
@@ -18,7 +18,7 @@ angular.module('loomioApp').directive 'invitationForm', (FlashService, ModalServ
     $scope.fetchShareableInvitation()
 
     $scope.addMembers = ->
-      ModalService.open AddMembersModal, group: -> $scope.group()
+      ModalService.open 'AddMembersModal', group: -> $scope.group()
 
     $scope.maxInvitations = ->
       $scope.invitationForm.invitees().length > 100

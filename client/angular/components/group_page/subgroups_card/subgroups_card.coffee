@@ -1,7 +1,7 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'subgroupsCard', ($rootScope, ModalService, GroupModal) ->
+angular.module('loomioApp').directive 'subgroupsCard', ($rootScope, ModalService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/subgroups_card/subgroups_card.html'
@@ -17,4 +17,4 @@ angular.module('loomioApp').directive 'subgroupsCard', ($rootScope, ModalService
       AbilityService.canCreateSubgroups($scope.group)
 
     $scope.startSubgroup = ->
-       ModalService.open GroupModal, group: -> Records.groups.build(parentId: $scope.group.id)
+       ModalService.open 'GroupModal', group: -> Records.groups.build(parentId: $scope.group.id)

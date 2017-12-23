@@ -3,7 +3,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 angular.module('loomioApp').directive 'pollCommonActionsDropdown', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/actions_dropdown/poll_common_actions_dropdown.html'
-  controller: ($scope, ModalService, PollCommonShareModal, PollCommonEditModal, PollCommonCloseForm, PollCommonDeleteModal, PollCommonUnsubscribeModal) ->
+  controller: ($scope, ModalService) ->
     $scope.canSharePoll = ->
       AbilityService.canSharePoll($scope.poll)
 
@@ -17,16 +17,16 @@ angular.module('loomioApp').directive 'pollCommonActionsDropdown', ->
       AbilityService.canDeletePoll($scope.poll)
 
     $scope.sharePoll = ->
-      ModalService.open PollCommonShareModal, poll: -> $scope.poll
+      ModalService.open 'PollCommonShareModal', poll: -> $scope.poll
 
     $scope.editPoll = ->
-      ModalService.open PollCommonEditModal, poll: -> $scope.poll
+      ModalService.open 'PollCommonEditModal', poll: -> $scope.poll
 
     $scope.closePoll = ->
-      ModalService.open PollCommonCloseForm, poll: -> $scope.poll
+      ModalService.open 'PollCommonCloseForm', poll: -> $scope.poll
 
     $scope.deletePoll = ->
-      ModalService.open PollCommonDeleteModal, poll: -> $scope.poll
+      ModalService.open 'PollCommonDeleteModal', poll: -> $scope.poll
 
     $scope.toggleSubscription = ->
-      ModalService.open PollCommonUnsubscribeModal, poll: -> $scope.poll
+      ModalService.open 'PollCommonUnsubscribeModal', poll: -> $scope.poll

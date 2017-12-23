@@ -49,7 +49,3 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, K
       KeyEventService.submitOnEnter $scope
       $scope.$broadcast 'reinitializeForm', $scope.comment
     $scope.init()
-
-    $scope.isLoggedIn = ->
-      AbilityService.isLoggedIn()
-    $scope.signIn = -> ModalService.open AuthModal

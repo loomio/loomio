@@ -3,7 +3,7 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'groupActionsDropdown', ($window, ChangeVolumeForm, ModalService, GroupModal, LeaveGroupForm, ArchiveGroupForm) ->
+angular.module('loomioApp').directive 'groupActionsDropdown', ($window, ModalService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_actions_dropdown/group_actions_dropdown.html'
@@ -29,18 +29,18 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ($window, ChangeVo
       AbilityService.canChangeGroupVolume($scope.group)
 
     $scope.openChangeVolumeForm = ->
-      ModalService.open ChangeVolumeForm, model: -> $scope.group.membershipFor(Session.user())
+      ModalService.open 'ChangeVolumeForm', model: -> $scope.group.membershipFor(Session.user())
 
     $scope.editGroup = ->
-      ModalService.open GroupModal, group: -> $scope.group
+      ModalService.open 'GroupModal', group: -> $scope.group
 
     $scope.addSubgroup = ->
-      ModalService.open GroupModal, group: -> Records.groups.build(parentId: $scope.group.id)
+      ModalService.open 'GroupModal', group: -> Records.groups.build(parentId: $scope.group.id)
 
     $scope.leaveGroup = ->
-      ModalService.open LeaveGroupForm, group: -> $scope.group
+      ModalService.open 'LeaveGroupForm', group: -> $scope.group
 
     $scope.archiveGroup = ->
-      ModalService.open ArchiveGroupForm, group: -> $scope.group
+      ModalService.open 'ArchiveGroupForm', group: -> $scope.group
 
     return

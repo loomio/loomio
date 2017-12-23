@@ -4,7 +4,7 @@ Session            = require 'shared/services/session.coffee'
 RecordLoader       = require 'shared/services/record_loader.coffee'
 ThreadQueryService = require 'shared/services/thread_query_service.coffee'
 
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $routeParams, $mdMedia, ModalService, GroupModal) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $routeParams, $mdMedia, ModalService) ->
 
   @filter = $routeParams.filter || 'hide_muted'
 
@@ -74,7 +74,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   @dashboardLoaded = -> AppConfig.dashboardLoaded
   @noGroups        = -> !Session.user().hasAnyGroups()
   @noThreads       = -> _.all @views, (view) -> !view.any()
-  @startGroup      = -> ModalService.open GroupModal, group: -> Records.groups.build()
+  @startGroup      = -> ModalService.open 'GroupModal', group: -> Records.groups.build()
   @userHasMuted    = -> Session.user().hasExperienced("mutingThread")
   @showLargeImage  = -> $mdMedia("gt-sm")
 

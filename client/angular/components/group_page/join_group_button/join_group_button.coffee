@@ -2,7 +2,7 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'joinGroupButton', ($rootScope, ModalService, AuthModal, FlashService, MembershipRequestForm) ->
+angular.module('loomioApp').directive 'joinGroupButton', ($rootScope, ModalService, FlashService) ->
   scope: {group: '=', block: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/join_group_button/join_group_button.html'
@@ -34,13 +34,13 @@ angular.module('loomioApp').directive 'joinGroupButton', ($rootScope, ModalServi
           $rootScope.$broadcast('joinedGroup')
           FlashService.success('join_group_button.messages.joined_group', group: $scope.group.fullName)
       else
-        ModalService.open AuthModal
+        ModalService.open 'AuthModal'
 
     $scope.requestToJoinGroup = ->
       if AbilityService.isLoggedIn()
-        ModalService.open MembershipRequestForm, group: -> $scope.group
+        ModalService.open 'MembershipRequestForm', group: -> $scope.group
       else
-        ModalService.open AuthModal
+        ModalService.open 'AuthModal'
 
     $scope.isLoggedIn = ->
       AbilityService.isLoggedIn()

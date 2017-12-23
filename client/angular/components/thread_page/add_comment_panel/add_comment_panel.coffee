@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'addCommentPanel', ($timeout, ModalService
     $scope.discussion = $scope.eventWindow.discussion
     $scope.actor = Session.user()
     $scope.isLoggedIn = -> AbilityService.isLoggedIn()
-    $scope.signIn = -> ModalService.open AuthModal
+    $scope.signIn = -> ModalService.open 'AuthModal'
     $scope.canAddComment = -> AbilityService.canAddComment($scope.discussion)
 
     $scope.show = ($scope.parentEvent == $scope.discussion.createdEvent())

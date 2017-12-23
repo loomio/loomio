@@ -1,6 +1,6 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'documentManagement', (ModalService, ConfirmModal, DocumentModal) ->
+angular.module('loomioApp').directive 'documentManagement', (ModalService) ->
   scope: {group: '=', fragment: '=', filter: '@', header: '@'}
   templateUrl: 'generated/components/document/management/document_management.html'
   controller: ($scope) ->
@@ -18,10 +18,10 @@ angular.module('loomioApp').directive 'documentManagement', (ModalService, Confi
       AbilityService.canAdministerGroup(@group)
 
     $scope.edit = (doc) ->
-      ModalService.open DocumentModal, doc: -> doc
+      ModalService.open 'DocumentModal', doc: -> doc
 
     $scope.remove = (doc) ->
-      ModalService.open ConfirmModal,
+      ModalService.open 'ConfirmModal',
         forceSubmit: -> false
         submit:      -> doc.destroy
         text:        ->

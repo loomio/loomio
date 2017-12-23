@@ -1,7 +1,7 @@
 Session = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'groupTheme', ($rootScope, ModalService, CoverPhotoForm, LogoPhotoForm) ->
+angular.module('loomioApp').directive 'groupTheme', ($rootScope, ModalService) ->
   scope: {group: '=', homePage: '=', compact: '=', discussion: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_theme/group_theme.html'
@@ -20,7 +20,7 @@ angular.module('loomioApp').directive 'groupTheme', ($rootScope, ModalService, C
       $scope.homePage and AbilityService.canAdministerGroup($scope.group)
 
     $scope.openUploadCoverForm = ->
-      ModalService.open CoverPhotoForm, group: => $scope.group
+      ModalService.open 'CoverPhotoForm', group: => $scope.group
 
     $scope.openUploadLogoForm = ->
-      ModalService.open LogoPhotoForm, group: => $scope.group
+      ModalService.open 'LogoPhotoForm', group: => $scope.group

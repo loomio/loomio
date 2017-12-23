@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 InboxService   = require 'shared/services/inbox_service.coffee'
 
-angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, IntercomService, ModalService, GroupModal, DiscussionModal) ->
+angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, IntercomService, ModalService) ->
   scope: false
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
@@ -61,7 +61,7 @@ angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSiden
     $scope.canViewPublicGroups = -> AbilityService.canViewPublicGroups()
 
     $scope.startGroup = ->
-      ModalService.open GroupModal, group: -> Records.groups.build()
+      ModalService.open 'GroupModal', group: -> Records.groups.build()
 
     $scope.startThread = ->
-      ModalService.open DiscussionModal, discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)
+      ModalService.open 'DiscussionModal', discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)

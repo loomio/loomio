@@ -1,7 +1,7 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard, ReactionService, FlashService, TranslationService, ModalService, DeleteCommentForm, EditCommentForm, RevisionHistoryModal) ->
+angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard, ReactionService, FlashService, TranslationService, ModalService) ->
   scope: {event: '=', eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'
@@ -19,7 +19,7 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard, Reac
       name: 'edit_comment'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditComment($scope.eventable)
-      perform:    -> ModalService.open EditCommentForm, comment: -> $scope.eventable
+      perform:    -> ModalService.open 'EditCommentForm', comment: -> $scope.eventable
     ,
       name: 'translate_comment'
       icon: 'mdi-translate'
@@ -36,12 +36,12 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard, Reac
       name: 'show_history'
       icon: 'mdi-history'
       canPerform: -> $scope.eventable.edited()
-      perform:    -> ModalService.open RevisionHistoryModal, model: -> $scope.eventable
+      perform:    -> ModalService.open 'RevisionHistoryModal', model: -> $scope.eventable
     ,
       name: 'delete_comment'
       icon: 'mdi-delete'
       canPerform: -> AbilityService.canDeleteComment($scope.eventable)
-      perform:    -> ModalService.open DeleteCommentForm, comment: -> $scope.eventable
+      perform:    -> ModalService.open 'DeleteCommentForm', comment: -> $scope.eventable
     ]
 
     ReactionService.listenForReactions($scope, $scope.eventable)

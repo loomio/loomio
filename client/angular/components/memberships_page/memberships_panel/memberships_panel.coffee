@@ -2,7 +2,7 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'membershipsPanel', ($translate, ModalService, FlashService, RemoveMembershipForm, InvitationModal) ->
+angular.module('loomioApp').directive 'membershipsPanel', ($translate, ModalService, FlashService) ->
   scope: {memberships: '=', group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/memberships_page/memberships_panel/memberships_panel.html'
@@ -26,10 +26,10 @@ angular.module('loomioApp').directive 'membershipsPanel', ($translate, ModalServ
         FlashService.success "memberships_page.messages.#{_.snakeCase method}_success", name: membership.userName()
 
     $scope.openRemoveForm = (membership) ->
-      ModalService.open RemoveMembershipForm, membership: -> membership
+      ModalService.open 'RemoveMembershipForm', membership: -> membership
 
     $scope.canAddMembers = ->
       AbilityService.canAddMembers($scope.group)
 
     $scope.invitePeople = ->
-      ModalService.open InvitationModal, group: => $scope.group
+      ModalService.open 'InvitationModal', group: => $scope.group

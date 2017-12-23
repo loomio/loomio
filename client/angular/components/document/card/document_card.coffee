@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'documentCard', (LoadingService, ModalService, DocumentModal) ->
+angular.module('loomioApp').directive 'documentCard', (LoadingService, ModalService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/document/card/document_card.html'
@@ -19,7 +19,7 @@ angular.module('loomioApp').directive 'documentCard', (LoadingService, ModalServ
     $scope.init()
 
     $scope.addDocument = ->
-      ModalService.open DocumentModal, doc: =>
+      ModalService.open 'DocumentModal', doc: =>
         Records.documents.build
           modelId:   $scope.group.id
           modelType: 'Group'

@@ -2,7 +2,7 @@ AppConfig     = require 'shared/services/app_config.coffee'
 Session       = require 'shared/services/session.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, ModalService, ContactModal) ->
+angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, ModalService) ->
   lastGroup = {}
 
   mapGroup = (group) ->
@@ -72,7 +72,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, Mod
       if @available()
         $window.Intercom('showNewMessage')
       else
-        ModalService.open ContactModal
+        ModalService.open 'ContactModal'
 
     $rootScope.$on 'logout', (event, group) ->
       service.shutdown()

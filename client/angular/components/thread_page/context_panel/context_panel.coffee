@@ -1,7 +1,7 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, ReactionService, ModalService, DocumentModal, DiscussionModal, ThreadService, RevisionHistoryModal, TranslationService, ScrollService) ->
+angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, ReactionService, ModalService, ThreadService, TranslationService, ScrollService) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
@@ -18,7 +18,7 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, R
       $rootScope.$broadcast('showThreadLintel', bool)
 
     $scope.showRevisionHistory = ->
-      ModalService.open RevisionHistoryModal, model: => $scope.discussion
+      ModalService.open 'RevisionHistoryModal', model: => $scope.discussion
 
     $scope.actions = [
       name: 'react'
@@ -27,12 +27,12 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, R
       name: 'edit_thread'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread($scope.discussion)
-      perform:    -> ModalService.open DiscussionModal, discussion: -> $scope.discussion
+      perform:    -> ModalService.open 'DiscussionModal', discussion: -> $scope.discussion
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'
       canPerform: -> AbilityService.canAdministerDiscussion($scope.discussion)
-      perform:    -> ModalService.open DocumentModal, doc: ->
+      perform:    -> ModalService.open 'DocumentModal', doc: ->
         Records.documents.build
           modelId:   $scope.discussion.id
           modelType: 'Discussion'

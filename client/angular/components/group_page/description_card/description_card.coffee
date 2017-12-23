@@ -1,7 +1,7 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'descriptionCard', (ModalService, FormService, GroupModal, DocumentModal)->
+angular.module('loomioApp').directive 'descriptionCard', (ModalService, FormService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/description_card/description_card.html'
@@ -22,12 +22,12 @@ angular.module('loomioApp').directive 'descriptionCard', (ModalService, FormServ
       name: 'edit_group'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditGroup($scope.group)
-      perform:    -> ModalService.open GroupModal, group: -> $scope.group
+      perform:    -> ModalService.open 'GroupModal', group: -> $scope.group
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'
       canPerform: -> AbilityService.canAdministerGroup($scope.group)
-      perform:    -> ModalService.open DocumentModal, doc: ->
+      perform:    -> ModalService.open 'DocumentModal', doc: ->
         Records.documents.build
           modelId:   $scope.group.id
           modelType: 'Group'

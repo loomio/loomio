@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').controller 'RegisteredAppsPageController', ($scope, $rootScope, ModalService, RegisteredAppForm, RemoveAppForm) ->
+angular.module('loomioApp').controller 'RegisteredAppsPageController', ($scope, $rootScope, ModalService) ->
   $rootScope.$broadcast('currentComponent', {page: 'registeredAppsPage'})
   $rootScope.$broadcast('setTitle', 'OAuth Application Dashboard')
 
@@ -10,9 +10,9 @@ angular.module('loomioApp').controller 'RegisteredAppsPageController', ($scope, 
   Records.oauthApplications.fetchOwned().then => @loading = false
 
   @openApplicationForm = (application) ->
-    ModalService.open RegisteredAppForm, application: -> Records.oauthApplications.build()
+    ModalService.open 'RegisteredAppForm', application: -> Records.oauthApplications.build()
 
   @openDestroyForm = (application) ->
-    ModalService.open RemoveAppForm, application: -> application
+    ModalService.open 'RemoveAppForm', application: -> application
 
   return

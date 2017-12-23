@@ -1,7 +1,7 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'pendingInvitationsCard', (FlashService, ModalService, LoadingService, CancelInvitationForm)->
+angular.module('loomioApp').directive 'pendingInvitationsCard', (FlashService, ModalService, LoadingService)->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/memberships_page/pending_invitations_card/pending_invitations_card.html'
@@ -14,7 +14,7 @@ angular.module('loomioApp').directive 'pendingInvitationsCard', (FlashService, M
       Records.invitations.fetchPendingByGroup($scope.group.key, per: 1000)
 
     $scope.openCancelForm = (invitation) ->
-      ModalService.open CancelInvitationForm, invitation: -> invitation
+      ModalService.open 'CancelInvitationForm', invitation: -> invitation
 
     $scope.invitationCreatedAt = (invitation) ->
       moment(invitation.createdAt).format('DD MMM YY')

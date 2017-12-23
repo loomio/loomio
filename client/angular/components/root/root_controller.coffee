@@ -4,7 +4,7 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, ModalService, GroupModal, AhoyService, ViewportService, HotkeyService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ScrollService, ModalService, AhoyService, ViewportService, HotkeyService) ->
   $scope.isLoggedIn = ->
     AbilityService.isLoggedIn()
   $scope.isEmailVerified = ->
@@ -29,7 +29,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
   $scope.$on 'loggedIn', (event, user) ->
     $scope.refresh()
     if $location.search().start_group?
-      ModalService.open GroupModal, group: ->
+      ModalService.open 'GroupModal', group: ->
         Records.groups.build
           customFields:
             pending_emails: $location.search().pending_emails
@@ -65,7 +65,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
   $scope.forceSignIn = ->
     return if $scope.forcedSignIn
     $scope.forcedSignIn = true
-    ModalService.open AuthModal, preventClose: -> true
+    ModalService.open 'AuthModal', preventClose: -> true
 
   $scope.keyDown = (event) -> KeyEventService.broadcast(event)
 

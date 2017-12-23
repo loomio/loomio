@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').controller 'AuthorizedAppsPageController', ($scope, $rootScope, ModalService, RevokeAppForm) ->
+angular.module('loomioApp').controller 'AuthorizedAppsPageController', ($scope, $rootScope, ModalService) ->
   $rootScope.$broadcast('currentComponent', {page: 'authorizedAppsPage'})
   $rootScope.$broadcast('setTitle', 'Apps')
 
@@ -10,6 +10,6 @@ angular.module('loomioApp').controller 'AuthorizedAppsPageController', ($scope, 
   Records.oauthApplications.fetchAuthorized().then => @loading = false
 
   @openRevokeForm = (application) ->
-    ModalService.open RevokeAppForm, application: -> application
+    ModalService.open 'RevokeAppForm', application: -> application
 
   return

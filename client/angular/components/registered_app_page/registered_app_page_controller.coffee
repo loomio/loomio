@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').controller 'RegisteredAppPageController', ($scope, $rootScope, $routeParams, FlashService, ModalService, RegisteredAppForm, RemoveAppForm) ->
+angular.module('loomioApp').controller 'RegisteredAppPageController', ($scope, $rootScope, $routeParams, FlashService, ModalService) ->
 
   @init = (application) =>
     if application and !@application?
@@ -16,9 +16,9 @@ angular.module('loomioApp').controller 'RegisteredAppPageController', ($scope, $
     FlashService.success('common.copied')
 
   @openRemoveForm = ->
-    ModalService.open RemoveAppForm, application: => @application
+    ModalService.open 'RemoveAppForm', application: => @application
 
   @openEditForm = ->
-    ModalService.open RegisteredAppForm, application: => @application
+    ModalService.open 'RegisteredAppForm', application: => @application
 
   return

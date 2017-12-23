@@ -11,13 +11,13 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, Modal
       AbilityService.canChangeVolume($scope.discussion)
 
     $scope.openChangeVolumeForm = ->
-      ModalService.open ChangeVolumeForm, model: => $scope.discussion
+      ModalService.open 'ChangeVolumeForm', model: => $scope.discussion
 
     $scope.canEditThread = ->
       AbilityService.canEditThread($scope.discussion)
 
     $scope.editThread = ->
-      ModalService.open DiscussionModal, discussion: => $scope.discussion
+      ModalService.open 'DiscussionModal', discussion: => $scope.discussion
 
     $scope.canPinThread = ->
       AbilityService.canPinThread($scope.discussion)
@@ -47,7 +47,7 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, Modal
       AbilityService.canCloseThread($scope.discussion)
 
     $scope.moveThread = ->
-      ModalService.open MoveThreadForm, discussion: => $scope.discussion
+      ModalService.open 'MoveThreadForm', discussion: => $scope.discussion
 
     $scope.requestPagePrinted = ->
       $rootScope.$broadcast('toggleSidebar', false)
@@ -57,4 +57,4 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, Modal
       AbilityService.canDeleteThread($scope.discussion)
 
     $scope.deleteThread = ->
-      ModalService.open DeleteThreadForm, discussion: => $scope.discussion
+      ModalService.open 'DeleteThreadForm', discussion: => $scope.discussion

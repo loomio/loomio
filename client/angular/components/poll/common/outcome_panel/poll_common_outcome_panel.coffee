@@ -1,6 +1,6 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonOutcomePanel', (TranslationService, ReactionService, ModalService, PollCommonOutcomeModal) ->
+angular.module('loomioApp').directive 'pollCommonOutcomePanel', (TranslationService, ReactionService, ModalService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/outcome_panel/poll_common_outcome_panel.html'
   controller: ($scope) ->
@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'pollCommonOutcomePanel', (TranslationServ
       name: 'edit_outcome'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canSetPollOutcome($scope.poll)
-      perform:    -> ModalService.open PollCommonOutcomeModal, outcome: -> $scope.poll.outcome()
+      perform:    -> ModalService.open 'PollCommonOutcomeModal', outcome: -> $scope.poll.outcome()
     ,
       name: 'translate_outcome'
       icon: 'mdi-translate'

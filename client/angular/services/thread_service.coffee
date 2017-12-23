@@ -1,14 +1,14 @@
 Session = require 'shared/services/session.coffee'
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').factory 'ThreadService', (ModalService, PinThreadModal, CloseExplanationModal, MuteExplanationModal, FlashService) ->
+angular.module('loomioApp').factory 'ThreadService', (ModalService, FlashService) ->
   new class ThreadService
 
     mute: (thread) ->
       if !Session.user().hasExperienced("mutingThread")
         Records.users.saveExperience("mutingThread")
         Records.users.updateProfile(Session.user()).then ->
-          ModalService.open MuteExplanationModal, thread: -> thread
+          ModalService.open 'MuteExplanationModal', thread: -> thread
       else
         previousVolume = thread.volume()
         thread.saveVolume('mute').then =>
@@ -26,7 +26,7 @@ angular.module('loomioApp').factory 'ThreadService', (ModalService, PinThreadMod
       if !Session.user().hasExperienced("closingThread")
         Records.users.saveExperience("closingThread")
         Records.users.updateProfile(Session.user()).then ->
-          ModalService.open CloseExplanationModal, thread: -> thread
+          ModalService.open 'CloseExplanationModal', thread: -> thread
       else
         thread.close().then =>
           FlashService.success "discussion.closed.closed",
@@ -40,7 +40,7 @@ angular.module('loomioApp').factory 'ThreadService', (ModalService, PinThreadMod
     pin: (thread) ->
       if !Session.user().hasExperienced("pinningThread")
         Records.users.saveExperience("pinningThread").then ->
-          ModalService.open PinThreadModal, thread: -> thread
+          ModalService.open 'PinThreadModal', thread: -> thread
       else
         thread.savePin().then =>
           FlashService.success "discussion.pin.pinned", 'undo', => @unpin(thread)

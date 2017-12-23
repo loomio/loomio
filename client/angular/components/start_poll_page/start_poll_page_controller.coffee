@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').controller 'StartPollPageController', ($scope, $location, $rootScope, $routeParams, LoadingService, PollService, ModalService, PollCommonShareModal) ->
+angular.module('loomioApp').controller 'StartPollPageController', ($scope, $location, $rootScope, $routeParams, LoadingService, PollService, ModalService) ->
   $rootScope.$broadcast('currentComponent', { page: 'startPollPage', skipScroll: true })
   @poll = Records.polls.build
     title:       $location.search().title
@@ -16,6 +16,6 @@ angular.module('loomioApp').controller 'StartPollPageController', ($scope, $loca
   PollService.applyPollStartSequence @,
     emitter: $scope
     afterSaveComplete: (poll) ->
-      ModalService.open PollCommonShareModal, poll: -> poll
+      ModalService.open 'PollCommonShareModal', poll: -> poll
 
   return

@@ -1,7 +1,7 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'membersCard', (ModalService, InvitationModal) ->
+angular.module('loomioApp').directive 'membersCard', (ModalService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/members_card/members_card.html'
@@ -22,7 +22,7 @@ angular.module('loomioApp').directive 'membersCard', (ModalService, InvitationMo
       AbilityService.canAdministerGroup($scope.group) and $scope.group.memberships().length <= 1
 
     $scope.invitePeople = ->
-      ModalService.open InvitationModal, group: -> $scope.group
+      ModalService.open 'InvitationModal', group: -> $scope.group
 
     if $scope.canViewMemberships()
       Records.memberships.fetchByGroup $scope.group.key, per: 10

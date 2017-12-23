@@ -2,7 +2,7 @@ AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, ModalService, SignedOutModal, FlashService) ->
+angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, ModalService, FlashService) ->
   new class MessageChannelService
 
     subscribe: (options = {}) ->
@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
           if data.action?
             switch data.action
               when 'logged_out'
-                ModalService.open(SignedOutModal, -> preventClose: true) unless AppConfig.loggingOut
+                ModalService.open('SignedOutModal', -> preventClose: true) unless AppConfig.loggingOut
 
           if data.version?
             FlashService.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', ->
