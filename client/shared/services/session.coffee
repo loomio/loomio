@@ -1,7 +1,7 @@
 AppConfig = require 'shared/services/app_config.coffee'
+Records   = require 'shared/interfaces/records'
 
-angular.module('loomioApp').factory 'Session', (Records) ->
-
+module.exports = ->
   login: (data, invitationToken) ->
     Records.import(data)
 
