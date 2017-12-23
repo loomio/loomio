@@ -2,7 +2,9 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope, $translate, $location, FormService, ModalService) ->
+{ submitForm } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope, $translate, $location, ModalService) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'})
 
   @init = =>
@@ -23,7 +25,7 @@ angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScop
   @editSpecificGroupVolume = (group) ->
     ModalService.open 'ChangeVolumeForm', model: => group.membershipFor(Session.user())
 
-  @submit = FormService.submit @, @user,
+  @submit = submitForm @, @user,
     submitFn: Records.users.updateProfile
     flashSuccess: 'email_settings_page.messages.updated'
     successCallback: -> $location.path '/dashboard' if AbilityService.isLoggedIn()

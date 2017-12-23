@@ -1,16 +1,18 @@
 Records = require 'shared/services/records.coffee'
 
+{ submitForm } = require 'angular/helpers/form.coffee'
+
 angular.module('loomioApp').directive 'invitationFormActions', ->
   scope: {invitationForm: '='}
   templateUrl: 'generated/components/invitation/form_actions/invitation_form_actions.html'
-  controller: ($scope, FormService, FlashService) ->
+  controller: ($scope, FlashService) ->
     $scope.submit = ->
       if $scope.invitationForm.hasInvitees()
         submitForm()
       else
         $scope.$emit 'nextStep'
 
-    submitForm = FormService.submit $scope, $scope.invitationForm,
+    submitForm = submitForm $scope, $scope.invitationForm,
       submitFn: Records.invitations.sendByEmail
       successCallback: (response) =>
         $scope.$emit 'nextStep'

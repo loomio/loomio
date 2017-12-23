@@ -2,7 +2,9 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'commentForm', ($translate, FormService, KeyEventService) ->
+{ submitForm } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').directive 'commentForm', ($translate, KeyEventService) ->
   scope: {eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
@@ -32,7 +34,7 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, K
         discussionId: $scope.discussion.id
         authorId: Session.user().id
 
-      $scope.submit = FormService.submit $scope, $scope.comment,
+      $scope.submit = submitForm $scope, $scope.comment,
         drafts: true
         submitFn: $scope.comment.save
         flashSuccess: ->

@@ -7,8 +7,9 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 { signIn, setLocale } = require 'angular/helpers/user.coffee'
 { applySequence }     = require 'angular/helpers/sequence.coffee'
 { scrollTo }          = require 'angular/helpers/window.coffee'
+{ submitForm }        = require 'angular/helpers/form.coffee'
 
-angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $translate, $location, FormService) ->
+angular.module('loomioApp').factory 'PollService', ($rootScope, $translate, $location) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -60,7 +61,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $transl
 
     submitOutcome: (scope, model, options = {}) ->
       actionName = if scope.outcome.isNew() then 'created' else 'updated'
-      FormService.submit(scope, model, _.merge(
+      submitForm(scope, model, _.merge(
         flashSuccess: "poll_common_outcome_form.outcome_#{actionName}"
         drafts: true
         failureCallback: ->
@@ -71,7 +72,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $transl
 
     submitPoll: (scope, model, options = {}) ->
       actionName = if scope.poll.isNew() then 'created' else 'updated'
-      FormService.submit(scope, model, _.merge(
+      submitForm(scope, model, _.merge(
         flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName}"
         drafts: true
         prepareFn: =>
@@ -97,7 +98,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $transl
     submitStance: (scope, model, options = {}) ->
       actionName = if scope.stance.isNew() then 'created' else 'updated'
       pollType   = model.poll().pollType
-      FormService.submit(scope, model, _.merge(
+      submitForm(scope, model, _.merge(
         flashSuccess: "poll_#{pollType}_vote_form.stance_#{actionName}"
         drafts: true
         prepareFn: ->

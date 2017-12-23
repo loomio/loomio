@@ -7,6 +7,12 @@ module.exports =
     else
       'large'
 
+  hardReload: (path) ->
+    if path
+      window.location.href = path
+    else
+      window.location.reload()
+
   scrollTo: (target, options = {}) ->
     setTimeout ->
       elem      = document.querySelector(target)

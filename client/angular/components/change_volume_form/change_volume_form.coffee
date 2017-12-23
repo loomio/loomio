@@ -1,8 +1,10 @@
 Session = require 'shared/services/session.coffee'
 
+{ submitForm } = require 'angular/helpers/form.coffee'
+
 angular.module('loomioApp').factory 'ChangeVolumeForm', ->
   templateUrl: 'generated/components/change_volume_form/change_volume_form.html'
-  controller: ($scope, model, FormService, FlashService) ->
+  controller: ($scope, model) ->
     $scope.model = model.clone()
     $scope.volumeLevels = ["loud", "normal", "quiet"]
 
@@ -29,7 +31,7 @@ angular.module('loomioApp').factory 'ChangeVolumeForm', ->
           $scope.model.constructor.singular
       "#{$scope.translateKey(key)}.messages.#{$scope.buh.volume}"
 
-    $scope.submit = FormService.submit $scope, $scope.model,
+    $scope.submit = submitForm $scope, $scope.model,
       submitFn: (model) ->
         model.saveVolume($scope.buh.volume, $scope.applyToAll, $scope.setDefault)
       flashSuccess: $scope.flashTranslation

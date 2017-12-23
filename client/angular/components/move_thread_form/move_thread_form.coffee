@@ -1,7 +1,9 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').factory 'MoveThreadForm', ($location, $translate, FormService) ->
+{ submitForm } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').factory 'MoveThreadForm', ($translate) ->
   templateUrl: 'generated/components/move_thread_form/move_thread_form.html'
   controller: ($scope, discussion) ->
     $scope.discussion = discussion.clone()
@@ -10,7 +12,7 @@ angular.module('loomioApp').factory 'MoveThreadForm', ($location, $translate, Fo
       _.filter Session.user().groups(), (group) ->
         group.id != discussion.groupId
 
-    $scope.submit = FormService.submit $scope, $scope.discussion,
+    $scope.submit = submitForm $scope, $scope.discussion,
       submitFn: $scope.discussion.move
       flashSuccess: 'move_thread_form.messages.success'
       flashOptions:

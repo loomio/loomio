@@ -2,7 +2,9 @@ Session       = require 'shared/services/session.coffee'
 Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').directive 'installSlackInstallForm', ($location, KeyEventService, FormService) ->
+{ submitForm } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').directive 'installSlackInstallForm', ($location, KeyEventService) ->
   templateUrl: 'generated/components/install_slack/install_form/install_slack_install_form.html'
   controller: ($scope) ->
     $scope.groups = ->
@@ -15,7 +17,7 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ($location, Key
 
     $scope.setSubmit = (group) ->
       $scope.group = group
-      $scope.submit = FormService.submit $scope, $scope.group,
+      $scope.submit = submitForm $scope, $scope.group,
         prepareFn: ->
           $scope.$emit 'processing'
           $scope.group.identityId = Session.user().identityFor('slack').id

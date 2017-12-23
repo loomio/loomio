@@ -3,9 +3,10 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-{ setLocale } = require 'angular/helpers/user.coffee'
+{ setLocale }  = require 'angular/helpers/user.coffee'
+{ submitForm } = require 'angular/helpers/form.coffee'
 
-angular.module('loomioApp').controller 'ProfilePageController', ($scope, $location, $translate, $rootScope, FormService, ModalService) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($scope, $location, $translate, $rootScope, ModalService) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
 
   @showHelpTranslate = ->
@@ -15,7 +16,7 @@ angular.module('loomioApp').controller 'ProfilePageController', ($scope, $locati
     return unless AbilityService.isLoggedIn()
     @user = Session.user().clone()
     setLocale($translate)
-    @submit = FormService.submit @, @user,
+    @submit = submitForm @, @user,
       flashSuccess: 'profile_page.messages.updated'
       submitFn: Records.users.updateProfile
       successCallback: @init

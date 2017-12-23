@@ -1,6 +1,8 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').factory 'LogoPhotoForm', ($timeout, FormService) ->
+{ upload } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').factory 'LogoPhotoForm', ($timeout) ->
   scope: {group: '='}
   templateUrl: 'generated/components/group_page/logo_photo_form/logo_photo_form.html'
   controller: ($scope, group) ->
@@ -8,7 +10,7 @@ angular.module('loomioApp').factory 'LogoPhotoForm', ($timeout, FormService) ->
     $scope.selectFile = ->
       $timeout -> document.querySelector('.logo-photo-form__file-input').click()
 
-    $scope.upload = FormService.upload $scope, group,
+    $scope.upload = upload $scope, group,
       uploadKind:     'logo'
       submitFn:       group.uploadPhoto
       loadingMessage: 'common.action.uploading'

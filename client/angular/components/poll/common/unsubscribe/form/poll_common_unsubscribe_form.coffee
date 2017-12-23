@@ -1,8 +1,10 @@
-angular.module('loomioApp').directive 'pollCommonUnsubscribeForm', (FormService) ->
+{ submitForm } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').directive 'pollCommonUnsubscribeForm', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/unsubscribe/form/poll_common_unsubscribe_form.html'
   controller: ($scope) ->
-    $scope.toggle = FormService.submit $scope, $scope.poll,
+    $scope.toggle = submitForm $scope, $scope.poll,
       submitFn: $scope.poll.toggleSubscription
       flashSuccess: ->
         if $scope.poll.subscribed

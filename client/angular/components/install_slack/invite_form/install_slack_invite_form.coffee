@@ -1,7 +1,9 @@
 Session = require 'shared/services/session.coffee'
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, FormService, KeyEventService) ->
+{ submitForm } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').directive 'installSlackInviteForm', (KeyEventService) ->
   scope: {group: '='}
   templateUrl: 'generated/components/install_slack/invite_form/install_slack_invite_form.html'
   controller: ($scope) ->
@@ -18,7 +20,7 @@ angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, FormS
       , (response) ->
         $scope.error = response.data.error
 
-    $scope.submit = FormService.submit $scope, $scope.groupIdentity,
+    $scope.submit = submitForm $scope, $scope.groupIdentity,
       prepareFn: ->
         $scope.$emit 'processing'
         $scope.groupIdentity.customFields.slack_channel_name = '#' + _.find($scope.channels, (c) ->

@@ -1,15 +1,16 @@
 Records = require 'shared/services/records.coffee'
 
-{ scrollTo } = require 'angular/helpers/window.coffee'
+{ scrollTo }   = require 'angular/helpers/window.coffee'
+{ submitForm } = require 'angular/helpers/form.coffee'
 
-angular.module('loomioApp').directive 'groupFormActions', (FormService, PrivacyString, KeyEventService) ->
+angular.module('loomioApp').directive 'groupFormActions', (PrivacyString, KeyEventService) ->
   scope: {group: '='}
   replace: true
   templateUrl: 'generated/components/group/form_actions/group_form_actions.html'
   controller: ($scope) ->
     actionName = if $scope.group.isNew() then 'created' else 'updated'
 
-    $scope.submit = FormService.submit $scope, $scope.group,
+    $scope.submit = submitForm $scope, $scope.group,
       drafts: true
       skipClose: true
       prepareFn: ->

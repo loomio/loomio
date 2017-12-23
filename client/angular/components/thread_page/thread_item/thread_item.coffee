@@ -3,7 +3,9 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $translate, FormService, EventHeadlineService) ->
+{ submitForm } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').directive 'threadItem', ($compile, EventHeadlineService) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
@@ -21,7 +23,7 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $timeout, $transl
           $scope.$broadcast 'showReplyForm', comment
 
     $scope.canRemoveEvent = -> AbilityService.canRemoveEventFromThread($scope.event)
-    $scope.removeEvent = FormService.submit $scope, $scope.event,
+    $scope.removeEvent = submitForm $scope, $scope.event,
       submitFn: $scope.event.removeFromThread
       flashSuccess: 'thread_item.event_removed'
 

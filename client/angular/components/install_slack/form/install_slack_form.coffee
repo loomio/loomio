@@ -3,7 +3,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 { listenForLoading } = require 'angular/helpers/loading.coffee'
 { applySequence }    = require 'angular/helpers/sequence.coffee'
 
-angular.module('loomioApp').directive 'installSlackForm', (FormService) ->
+angular.module('loomioApp').directive 'installSlackForm', ->
   scope: {group: '='}
   templateUrl: 'generated/components/install_slack/form/install_slack_form.html'
   controller: ($scope) ->

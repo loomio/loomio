@@ -1,7 +1,9 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'descriptionCard', (ModalService, FormService) ->
+{ submitForm } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').directive 'descriptionCard', (ModalService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/description_card/description_card.html'
@@ -12,7 +14,7 @@ angular.module('loomioApp').directive 'descriptionCard', (ModalService, FormServ
     $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup($scope.group)
 
-    $scope.save = FormService.submit $scope, $scope.group,
+    $scope.save = submitForm $scope, $scope.group,
       drafts: true
       prepareFn: -> $scope.group.description = $scope.buh.editableDescription
       flashSuccess: 'description_card.messages.description_updated'
