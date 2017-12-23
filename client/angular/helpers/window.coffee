@@ -1,5 +1,11 @@
-angular.module('loomioApp').factory 'ScrollService', ($timeout) ->
-  new class ScrollService
+module.exports =
+  viewportSize: ->
+    if window.innerWidth < 480
+      'small'
+    else if window.innerWidth < 992
+      'medium'
+    else
+      'large'
 
   scrollTo: (target, options = {}) ->
     setTimeout ->

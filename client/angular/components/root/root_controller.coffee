@@ -4,7 +4,9 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ScrollService, ModalService, AhoyService, ViewportService, HotkeyService) ->
+{ viewportSize } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ScrollService, ModalService, AhoyService, HotkeyService) ->
   $scope.isLoggedIn = ->
     AbilityService.isLoggedIn()
   $scope.isEmailVerified = ->
@@ -56,7 +58,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
     $scope.forceSignIn() if !AbilityService.isLoggedIn() and error.status == 403
 
   $scope.$on 'setBackgroundImageUrl', (event, group) ->
-    url = group.coverUrl(ViewportService.viewportSize())
+    url = group.coverUrl(viewportSize())
     angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})")
 
   $scope.$on 'clearBackgroundImageUrl', (event) ->

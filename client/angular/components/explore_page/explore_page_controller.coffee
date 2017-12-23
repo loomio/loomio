@@ -1,7 +1,9 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').controller 'ExplorePageController', ($rootScope, $timeout, LoadingService) ->
+{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').controller 'ExplorePageController', ($rootScope, $timeout) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'})
 
   @groupIds = []
@@ -24,13 +26,13 @@ angular.module('loomioApp').controller 'ExplorePageController', ($rootScope, $ti
   @search = =>
     @groupIds = []
     Records.groups.fetchExploreGroups(@query, per: @perPage).then(@handleSearchResults)
+  applyLoadingFunction(@, 'search')
+  @search()
 
   # clicking 'show more'
   @loadMore = =>
     Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage).then(@handleSearchResults)
 
-  LoadingService.applyLoadingFunction @, 'search'
-  @search()
 
   @groupCover = (group) ->
     { 'background-image': "url(#{group.coverUrl('small')})" }

@@ -1,6 +1,8 @@
-Records        = require 'shared/services/records.coffee'
+Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').factory 'RevisionHistoryModal', (LoadingService) ->
+{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').factory 'RevisionHistoryModal', ->
   templateUrl: 'generated/components/thread_page/revision_history_modal/revision_history_modal.html'
   controller: ($scope, model) ->
     $scope.model = model
@@ -39,7 +41,7 @@ angular.module('loomioApp').factory 'RevisionHistoryModal', (LoadingService) ->
     $scope.versionCreatedAt = (version) ->
       moment(version).format('Do MMMM YYYY, h:mma')
 
-    LoadingService.applyLoadingFunction($scope, 'load')
+    applyLoadingFunction($scope, 'load')
     $scope.load()
 
     return

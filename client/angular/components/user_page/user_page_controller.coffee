@@ -1,7 +1,9 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'UserPageController', ($rootScope, $routeParams, LoadingService, ModalService) ->
+{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').controller 'UserPageController', ($rootScope, $routeParams, ModalService) ->
 
   @init = =>
     return if @user
@@ -20,7 +22,7 @@ angular.module('loomioApp').controller 'UserPageController', ($rootScope, $route
 
   @loadGroupsFor = (user) ->
     Records.memberships.fetchByUser(user)
-  LoadingService.applyLoadingFunction @, 'loadGroupsFor'
+  applyLoadingFunction(@, 'loadGroupsFor')
 
   @init()
   Records.users.findOrFetchById($routeParams.key).then @init, (error) ->

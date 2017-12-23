@@ -1,7 +1,9 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').factory 'AddMembersModal', (LoadingService, FlashService, ModalService) ->
+{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').factory 'AddMembersModal', (FlashService, ModalService) ->
   templateUrl: 'generated/components/invitation/add_members_modal/add_members_modal.html'
   controller: ($scope, group) ->
     $scope.isDisabled = false
@@ -11,6 +13,8 @@ angular.module('loomioApp').factory 'AddMembersModal', (LoadingService, FlashSer
 
     $scope.load = ->
       Records.memberships.fetchByGroup(group.parent().key, {per: group.parent().membershipsCount})
+    applyLoadingFunction($scope, 'load')
+    $scope.load()
 
     $scope.members = ->
       _.filter group.parent().members(), (user)->
@@ -27,9 +31,6 @@ angular.module('loomioApp').factory 'AddMembersModal', (LoadingService, FlashSer
 
     $scope.canAddMembers = ->
       $scope.members().length > 0
-
-    LoadingService.applyLoadingFunction($scope, 'load')
-    $scope.load()
 
     $scope.reopenInvitationsForm = ->
        ModalService.open 'InvitationModal', group: -> $scope.group

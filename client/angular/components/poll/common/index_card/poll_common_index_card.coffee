@@ -1,14 +1,16 @@
 Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonIndexCard', ($location, LoadingService) ->
+{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').directive 'pollCommonIndexCard', ($location) ->
   scope: {model: '=', limit: '@?', viewMoreLink: '=?'}
   templateUrl: 'generated/components/poll/common/index_card/poll_common_index_card.html'
   replace: true
   controller: ($scope) ->
     $scope.fetchRecords = ->
       Records.polls.fetchFor($scope.model, limit: $scope.limit, status: 'closed')
-    LoadingService.applyLoadingFunction $scope, 'fetchRecords'
+    applyLoadingFunction($scope, 'fetchRecords')
     $scope.fetchRecords()
 
     $scope.displayViewMore = ->

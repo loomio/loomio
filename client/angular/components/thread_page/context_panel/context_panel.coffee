@@ -1,7 +1,10 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, ReactionService, ModalService, ThreadService, TranslationService, ScrollService) ->
+{ listenForReactions } = require 'angular/helpers/emoji.coffee'
+{ listenForTranslations, performTranslation } = require 'angular/helpers/translation.coffee'
+
+angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, ModalService, ThreadService, ScrollService) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
@@ -40,7 +43,7 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, R
       name: 'translate_thread'
       icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
-      perform:    -> TranslationService.inline($scope, $scope.discussion)
+      perform:    -> performTranslation($scope, $scope.discussion)
     ,
       name: 'add_comment'
       icon: 'mdi-reply'
@@ -58,5 +61,5 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, R
       perform:    -> ThreadService.unpin($scope.discussion)
     ]
 
-    TranslationService.listenForTranslations($scope)
-    ReactionService.listenForReactions($scope, $scope.discussion)
+    listenForTranslations($scope)
+    listenForReactions($scope, $scope.discussion)

@@ -1,8 +1,10 @@
-angular.module('loomioApp').directive 'pollCommonVotesPanelStance', ($translate, TranslationService) ->
+{ listenForTranslations } = require 'angular/helpers/translation.coffee'
+
+angular.module('loomioApp').directive 'pollCommonVotesPanelStance', ($translate) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/common/votes_panel_stance/poll_common_votes_panel_stance.html'
   controller: ($scope) ->
-    TranslationService.listenForTranslations $scope
+    listenForTranslations $scope
 
     $scope.participantName = ->
       if $scope.stance.participant()

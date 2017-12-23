@@ -4,7 +4,9 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
 
-angular.module('loomioApp').controller 'PollsPageController', ($scope, $location, $q, $rootScope, LoadingService, ModalService) ->
+{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').controller 'PollsPageController', ($scope, $location, $q, $rootScope, ModalService) ->
   $rootScope.$broadcast 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
 
   @statusFilters = _.map AppConfig.searchFilters.status, (filter) ->
@@ -22,7 +24,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $location
   @loadMore = =>
     @loader.loadMore().then (response) =>
       @pollIds = @pollIds.concat _.pluck(response.polls, 'id')
-  LoadingService.applyLoadingFunction @, 'loadMore'
+  applyLoadingFunction @, 'loadMore'
 
   @fetchRecords = =>
     $location.search 'group_key', @groupFilter
@@ -44,7 +46,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $location
     , (error) ->
       $rootScope.$broadcast('pageError', error)
 
-  LoadingService.applyLoadingFunction @, 'fetchRecords'
+  applyLoadingFunction @, 'fetchRecords'
   @fetchRecords()
 
   @loadedCount = ->
@@ -61,7 +63,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $location
       Records.polls.search(query: @fragment, per: 10)
     else
       $q.when()
-  LoadingService.applyLoadingFunction @, 'searchPolls'
+  applyLoadingFunction @, 'searchPolls'
 
   @fetching = ->
     @fetchRecordsExecuting || @loadMoreExecuting

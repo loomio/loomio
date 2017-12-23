@@ -3,7 +3,9 @@ AbilityService     = require 'shared/services/ability_service.coffee'
 RecordLoader       = require 'shared/services/record_loader.coffee'
 ThreadQueryService = require 'shared/services/thread_query_service.coffee'
 
-angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, ModalService, KeyEventService, LoadingService) ->
+{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, ModalService, KeyEventService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
@@ -40,7 +42,7 @@ angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeou
           group: $scope.group
           ids: _.pluck(data.discussions, 'id')
           overwrite: true
-    LoadingService.applyLoadingFunction $scope, 'searchThreads'
+    applyLoadingFunction($scope, 'searchThreads')
 
     $scope.openDiscussionModal = ->
       ModalService.open 'DiscussionModal', discussion: -> Records.discussions.build(groupId: $scope.group.id)

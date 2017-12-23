@@ -1,12 +1,15 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'documentForm', ($timeout, SequenceService) ->
+{ applySequence } = require 'angular/helpers/sequence.coffee'
+
+angular.module('loomioApp').directive 'documentForm', ($timeout) ->
   templateUrl: 'generated/components/document/form/document_form.html'
   controller: ($scope) ->
     $scope.$on 'initializeDocument', (_, doc, $mdMenu) ->
       $timeout -> $mdMenu.open() if $mdMenu
       $scope.document = doc.clone()
-      SequenceService.applySequence $scope,
+
+      applySequence $scope,
         steps: ['method', 'url', 'title']
         skipClose: $mdMenu? # don't emit $close if we are in an md-menu
         initialStep: if $scope.document.isNew() then 'method' else 'title'

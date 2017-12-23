@@ -1,12 +1,14 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams, $rootScope, LoadingService, ModalService) ->
+{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+
+angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams, $rootScope, ModalService) ->
   $rootScope.$broadcast('currentComponent', { page: 'documentsPage'})
 
   @fetchDocuments = =>
     Records.documents.fetchByGroup(@group, @fragment)
-  LoadingService.applyLoadingFunction @, 'fetchDocuments'
+  applyLoadingFunction @, 'fetchDocuments'
 
   @documents = (filter) ->
     _.filter @group.allDocuments(), (doc) =>

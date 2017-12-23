@@ -1,3 +1,6 @@
+Records = require 'shared/services/records.coffee'
+Session = require 'shared/services/session.coffee'
+
 module.exports =
   listenForEmoji: ($scope, model, field, $element) ->
     $scope.$on 'emojiSelected', (_, emoji) ->
@@ -7,5 +10,16 @@ module.exports =
       setTimeout ->
         $textarea.selectionEnd = $textarea.selectionStart = caretPosition + emoji.length + 2
         $textarea.focus()
+
+  listenForReactions: ($scope. model) ->
+    $scope.$on 'emojiSelected', (_event, emoji) ->
+      params =
+        reactableType: _.capitalize(model.constructor.singular)
+        reactableId:   model.id
+        userId:        Session.user().id
+
+      reaction = Records.reactions.find(params)[0] || Records.reactions.build(params)
+      reaction.reaction = emoji
+      reaction.save()
 
   translateEmoji: () ->

@@ -4,7 +4,9 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, SequenceService, FormService, ScrollService) ->
+{ applySequence } = require 'angular/helpers/sequence.coffee'
+
+angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, FormService, ScrollService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -39,7 +41,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
       _.find poll.pollOptions(), (option) -> option.name == name
 
     applyPollStartSequence: (scope, options = {}) ->
-      SequenceService.applySequence scope,
+      applySequence scope,
         steps: ->
           if scope.poll.group()
             ['choose', 'save']
