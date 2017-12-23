@@ -12,4 +12,4 @@ angular.module('loomioApp').directive 'discussionPrivacyIcon', ($translate) ->
     $scope.privacyDescription = ->
       $translate.instant discussionPrivacy($scope.discussion, $scope.private),
         group:  $scope.discussion.group().name
-        parent: $scope.discussion.group().parentName())
+        parent: $scope.discussion.group().parentName()

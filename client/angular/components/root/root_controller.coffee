@@ -6,8 +6,9 @@ AbilityService = require 'shared/services/ability_service.coffee'
 
 { viewportSize, scrollTo, trackEvents } = require 'angular/helpers/window.coffee'
 { signIn, setLocale } = require 'angular/helpers/user.coffee'
+{ broadcastKeydown }  = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ModalService, HotkeyService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, MessageChannelService, IntercomService, ModalService, HotkeyService) ->
   $scope.isLoggedIn = ->
     AbilityService.isLoggedIn()
   $scope.isEmailVerified = ->
@@ -70,7 +71,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
     $scope.forcedSignIn = true
     ModalService.open 'AuthModal', preventClose: -> true
 
-  $scope.keyDown = (event) -> KeyEventService.broadcast(event)
+  $scope.keyDown = (event) -> broadcastKeyEvent(event, $scope)
 
   $router.config(Routes.concat(AppConfig.plugins.routes))
 

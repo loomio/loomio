@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
+angular.module('loomioApp').factory 'KeyEventService', ->
   new class KeyEventService
 
     keyboardShortcuts:
@@ -12,10 +12,10 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
       38:  'pressedUpArrow'
       40:  'pressedDownArrow'
 
-    broadcast: (event) ->
+    broadcast: (event, $scope) ->
       key = @keyboardShortcuts[event.which]
       if key == 'pressedEnter' or (key and !event.ctrlKey and !event.metaKey)
-        $rootScope.$broadcast key, event, angular.element(document.activeElement)[0]
+        $scope.$broadcast key, event, angular.element(document.activeElement)[0]
 
     registerKeyEvent: (scope, eventCode, execute, shouldExecute) ->
       shouldExecute = shouldExecute or @defaultShouldExecute

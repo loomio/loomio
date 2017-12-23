@@ -21,12 +21,12 @@ angular.module('loomioApp').directive 'groupForm', ($translate) ->
         ['open', 'closed', 'secret']
 
     $scope.privacyStatement = ->
-      $translate.instant(groupPrivacyStatement($scope.group),
-        parent: $scope.group.parentName())
+      $translate.instant groupPrivacyStatement($scope.group),
+        parent: $scope.group.parentName()
 
     $scope.privacyStringFor = (privacy) ->
       $translate.instant groupPrivacy($scope.group, privacy),
-        parent: $scope.group.parentName())
+        parent: $scope.group.parentName()
 
     $scope.showGroupFeatures = ->
       AbilityService.isSiteAdmin() and _.any($scope.featureNames)
