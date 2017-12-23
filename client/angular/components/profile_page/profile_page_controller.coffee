@@ -3,6 +3,8 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
+{ setLocale } = require 'angular/helpers/user.coffee'
+
 angular.module('loomioApp').controller 'ProfilePageController', ($scope, $location, $translate, $rootScope, FormService, ModalService) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
 
@@ -12,7 +14,7 @@ angular.module('loomioApp').controller 'ProfilePageController', ($scope, $locati
   @init = =>
     return unless AbilityService.isLoggedIn()
     @user = Session.user().clone()
-    @setLocale()
+    setLocale($translate)
     @submit = FormService.submit @, @user,
       flashSuccess: 'profile_page.messages.updated'
       submitFn: Records.users.updateProfile
@@ -20,14 +22,6 @@ angular.module('loomioApp').controller 'ProfilePageController', ($scope, $locati
 
   @init()
   $scope.$on 'updateProfile', => @init()
-
-  @setLocale = ->
-    $translate.use(@user.locale)
-    lc_locale = @user.locale.toLowerCase().replace('_','-')
-    return if lc_locale == "en"
-    fetch("#{AppConfig.assetRoot}/moment_locales/#{lc_locale}.js").then((resp) -> resp.text()).then (data) ->
-      eval(data)
-      moment.locale(lc_locale)
 
   @availableLocales = ->
     AppConfig.locales

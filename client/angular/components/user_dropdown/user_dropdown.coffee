@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'userDropdown', (IntercomService) ->
     $scope.user = Session.user()
 
     $scope.signOut = ->
-      Session.logout()
+      Session.signOut()
 
     $scope.helpLink = ->
       UserHelpService.helpLink()

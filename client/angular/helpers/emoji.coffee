@@ -11,7 +11,7 @@ module.exports =
         $textarea.selectionEnd = $textarea.selectionStart = caretPosition + emoji.length + 2
         $textarea.focus()
 
-  listenForReactions: ($scope. model) ->
+  listenForReactions: ($scope, model) ->
     $scope.$on 'emojiSelected', (_event, emoji) ->
       params =
         reactableType: _.capitalize(model.constructor.singular)
@@ -22,4 +22,4 @@ module.exports =
       reaction.reaction = emoji
       reaction.save()
 
-  translateEmoji: () ->
+  translateEmoji: ->

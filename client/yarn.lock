@@ -188,14 +188,15 @@ angular@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
 
-angular_record_store@2.8.3:
-  version "2.8.3"
-  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-2.8.3.tgz#e6e6cf36634cc2d68e7dd4af88f849e5d661da58"
+angular_record_store@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-3.0.0.tgz#a059abdb87c44f2e5e661c73c9d6cc6abfd8da99"
   dependencies:
     coffeeify "^1.1.0"
     lodash "^3.10.1"
     moment "^2.10.6"
-    ng-file-upload "6.1.0"
+    promise-polyfill "^7.0.0"
+    whatwg-fetch "^2.0.3"
 
 angulartics-google-tag-manager@0.0.1:
   version "0.0.1"
@@ -3719,10 +3720,6 @@ ncname@1.0.x:
   dependencies:
     xml-char-classes "^1.0.0"
 
-ng-file-upload@6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-6.1.0.tgz#f4cc25de9f4840f8719e5a21cd2cda5e68ffbd40"
-
 ng-file-upload@~3.2.4:
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-3.2.5.tgz#90c8021f09507bddf4f45a99b5cde9ca9a8262f5"
@@ -4427,9 +4424,9 @@ process@~0.11.0:
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
 
-promise-polyfill@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-6.1.0.tgz#dfa96943ea9c121fca4de9b5868cb39d3472e057"
+promise-polyfill@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-7.0.0.tgz#c665b6da1f97e21c3f2f7aa0543c90209127cb15"
 
 protractor-jasmine2-screenshot-reporter@^0.4.1:
   version "0.4.1"

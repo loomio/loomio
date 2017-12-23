@@ -4,10 +4,11 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-{ applySequence } = require 'angular/helpers/sequence.coffee'
-{ scrollTo }      = require 'angular/helpers/window.coffee'
+{ signIn, setLocale } = require 'angular/helpers/user.coffee'
+{ applySequence }     = require 'angular/helpers/sequence.coffee'
+{ scrollTo }          = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, FormService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $translate, $location, FormService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -106,8 +107,8 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
           scrollTo '.poll-common-card__results-shown'
           scope.$emit 'stanceSaved', data.stances[0].key
           if !Session.user().emailVerified
-            if user = Session.login(current_user_id: data.stances[0].participant_id, $location.search().invitation_token)
-              $rootScope.$broadcast 'loggedIn', user
+            signIn(data, $location, $rootScope)
+            setLocale($translate)
         cleanupFn: ->
           scope.$emit 'doneProcessing'
       , options))

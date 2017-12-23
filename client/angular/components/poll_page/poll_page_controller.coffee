@@ -21,7 +21,7 @@ angular.module('loomioApp').controller 'PollPageController', ($scope, $location,
         ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)
 
       if $location.search().change_vote
-        ModalService.open 'PollCommonEditVoteModal, stance: => PollService.lastStanceBy(Session.user()', @poll)
+        ModalService.open 'PollCommonEditVoteModal', stance: => PollService.lastStanceBy(Session.user(), @poll)
 
   Records.polls.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)

@@ -5,6 +5,7 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
 { viewportSize, scrollTo, trackEvents } = require 'angular/helpers/window.coffee'
+{ signIn, setLocale } = require 'angular/helpers/user.coffee'
 
 angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ModalService, HotkeyService) ->
   $scope.isLoggedIn = ->
@@ -74,8 +75,8 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
   $router.config(Routes.concat(AppConfig.plugins.routes))
 
   trackEvents($scope)
-  if user = Session.login(AppConfig.bootData, $location.search().invitation_token)
-    $rootScope.$broadcast 'loggedIn', user
+  signIn(AppConfig.bootData, $location, $scope)
+  setLocale($translate)
 
   HotkeyService.init($scope) if AbilityService.isLoggedIn()
 
