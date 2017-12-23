@@ -1,11 +1,11 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
-angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translate, $window, Records) ->
+angular.module('loomioApp').factory 'Session', ($rootScope, $translate, Records) ->
 
-  login: (data) ->
+  login: (data, invitationToken) ->
     Records.import(data)
 
-    defaultParams = _.pick {invitation_token: $location.search().invitation_token}, _.identity
+    defaultParams = _.pick {invitation_token: invtationToken}, _.identity
     Records.stances.remote.defaultParams = defaultParams
     Records.polls.remote.defaultParams   = defaultParams
 
@@ -31,7 +31,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $location, $translat
 
   logout: ->
     AppConfig.loggingOut = true
-    Records.sessions.remote.destroy('').then -> $window.location.href = '/'
+    Records.sessions.remote.destroy('').then -> window.location.href = '/'
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()

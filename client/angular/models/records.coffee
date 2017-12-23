@@ -1,5 +1,6 @@
+AppConfig = require 'shared/services/app_config.coffee'
+
 angular.module('loomioApp').factory 'Records', (RecordStore,
-                                                RecordStoreDatabaseName,
                                                 CommentRecordsInterface,
                                                 DiscussionRecordsInterface,
                                                 EventRecordsInterface,
@@ -30,8 +31,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 ReactionRecordsInterface,
                                                 ContactRequestRecordsInterface,
                                                 DocumentRecordsInterface) ->
-  db = new loki(RecordStoreDatabaseName)
-  recordStore = new RecordStore(db)
+  recordStore = new RecordStore(AppConfig.databaseName)
   recordStore.addRecordsInterface(CommentRecordsInterface)
   recordStore.addRecordsInterface(DiscussionRecordsInterface)
   recordStore.addRecordsInterface(EventRecordsInterface)

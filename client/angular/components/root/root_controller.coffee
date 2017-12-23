@@ -1,3 +1,5 @@
+Routes = require 'angular/routes.coffee'
+
 angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
   $scope.isLoggedIn = ->
     AbilityService.isLoggedIn()
@@ -63,11 +65,11 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
 
   $scope.keyDown = (event) -> KeyEventService.broadcast(event)
 
-  $router.config AppConfig.routes.concat AppConfig.plugins.routes
+  $router.config(Routes.concat(AppConfig.plugins.routes))
 
   AppConfig.records = Records
   AhoyService.init()
-  Session.login(AppConfig.bootData)
+  Session.login(AppConfig.bootData, $location.search().invitation_token)
   HotkeyService.init($scope) if AbilityService.isLoggedIn()
 
   return

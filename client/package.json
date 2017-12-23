@@ -64,12 +64,10 @@
     "moment-timezone": "latest",
     "ng-file-upload": "~3.2.4",
     "private_pub": "latest",
-    "promise-polyfill": "^6.0.2",
     "svg.js": "latest",
     "vinyl-source-stream": "^1.1.0",
     "vue": "^2.5.11",
-    "vue-loader": "^13.6.0",
-    "whatwg-fetch": "^2.0.3"
+    "vue-loader": "^13.6.0"
   },
   "devDependencies": {
     "add-stream": "^1.0.0",
