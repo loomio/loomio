@@ -1,6 +1,8 @@
 RecordStore = require 'shared/interfaces/record_store.coffee'
+AppConfig   = require 'shared/services/app_config.coffee'
 
-records = new RecordStore()
+db      = new loki(AppConfig.databaseName || 'default.db')
+records = new RecordStore(db)
 
 records.addRecordsInterface require('shared/interfaces/comment_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/discussion_records_interface.coffee')

@@ -1,4 +1,4 @@
-module.exports = ->
+module.exports = do ->
   configData = if window? and window.Loomio?
                  window.Loomio
                else
