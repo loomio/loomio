@@ -1,4 +1,10 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $routeParams, RecordLoader, Records, Session, ThreadQueryService, AppConfig, $mdMedia, ModalService, GroupModal) ->
+AppConfig          = require 'shared/services/app_config.coffee'
+Records            = require 'shared/services/records.coffee'
+Session            = require 'shared/services/session.coffee'
+RecordLoader       = require 'shared/services/record_loader.coffee'
+ThreadQueryService = require 'shared/services/thread_query_service.coffee'
+
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $routeParams, $mdMedia, ModalService, GroupModal) ->
 
   @filter = $routeParams.filter || 'hide_muted'
 

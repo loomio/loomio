@@ -1,4 +1,7 @@
-angular.module('loomioApp').factory 'MentionService', (Records, Session) ->
+Session = require 'shared/services/session.coffee'
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'MentionService', ->
   new class MentionService
     applyMentions: (scope, model) ->
       scope.unmentionableIds = [model.authorId, Session.user().id]

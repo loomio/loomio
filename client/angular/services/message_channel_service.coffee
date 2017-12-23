@@ -1,4 +1,8 @@
-angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, AppConfig, Records, AbilityService, ModalService, SignedOutModal, FlashService) ->
+AppConfig      = require 'shared/services/app_config.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, ModalService, SignedOutModal, FlashService) ->
   new class MessageChannelService
 
     subscribe: (options = {}) ->

@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'AhoyService', ($rootScope, $window, AppConfig) ->
+angular.module('loomioApp').factory 'AhoyService', ($rootScope, $window) ->
   new class AhoyService
     init: ->
       return unless ahoy?

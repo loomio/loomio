@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'TimeService', (AppConfig, $translate) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').factory 'TimeService', ($translate) ->
   new class TimeService
     nameForZone: (zone) ->
       if AppConfig.timeZone == zone

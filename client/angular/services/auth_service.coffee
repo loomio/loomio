@@ -1,4 +1,7 @@
-angular.module('loomioApp').factory 'AuthService', ($window, Records, RestfulClient) ->
+Records       = require 'shared/services/records.coffee'
+RestfulClient = require 'shared/interfaces/restful_client.coffee'
+
+angular.module('loomioApp').factory 'AuthService', ($window) ->
   new class AuthService
 
     emailStatus: (user) ->

@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'EmojiService', ($timeout, AppConfig, $translate) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').factory 'EmojiService', ($timeout, $translate) ->
   new class EmojiService
     source:   AppConfig.emojis.source
     render:   AppConfig.emojis.render

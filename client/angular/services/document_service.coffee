@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'DocumentService', (Records) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'DocumentService', ->
   new class DocumentService
 
     listenForPaste: (scope) ->

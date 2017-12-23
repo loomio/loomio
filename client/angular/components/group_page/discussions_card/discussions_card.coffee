@@ -1,4 +1,9 @@
-angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, Records, RecordLoader, ModalService, DiscussionModal, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
+Records            = require 'shared/services/records.coffee'
+AbilityService     = require 'shared/services/ability_service.coffee'
+RecordLoader       = require 'shared/services/record_loader.coffee'
+ThreadQueryService = require 'shared/services/thread_query_service.coffee'
+
+angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, ModalService, DiscussionModal, KeyEventService, LoadingService) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'

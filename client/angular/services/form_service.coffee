@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $window, FlashService, AbilityService) ->
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $window, FlashService) ->
   new class FormService
 
     confirmDiscardChanges: (event, record) ->
