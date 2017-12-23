@@ -6,7 +6,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, ModalService, PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/action_panel/poll_common_action_panel.html'
-  controller: ($scope, Records, Session) ->
+  controller: ($scope) ->
 
     $scope.init = ->
       token      = $location.search().invitation_token
