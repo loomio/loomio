@@ -1,6 +1,7 @@
+BaseModel = require 'shared/models/base_model'
 AppConfig = require 'shared/services/app_config.coffee'
 
-angular.module('loomioApp').factory 'StanceChoiceModel', (BaseModel) ->
+angular.module('loomioApp').factory 'StanceChoiceModel', ->
   class StanceChoiceModel extends BaseModel
     @singular: 'stanceChoice'
     @plural: 'stanceChoices'

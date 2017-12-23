@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'PollOptionModel', (BaseModel) ->
+BaseModel    = require 'shared/models/base_model'
+
+angular.module('loomioApp').factory 'PollOptionModel', ->
   class PollOptionModel extends BaseModel
     @singular: 'pollOption'
     @plural: 'pollOptions'

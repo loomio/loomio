@@ -1,6 +1,7 @@
+BaseModel = require 'shared/models/base_model'
 AppConfig = require 'shared/services/app_config.coffee'
 
-angular.module('loomioApp').factory 'GroupIdentityModel', (BaseModel) ->
+angular.module('loomioApp').factory 'GroupIdentityModel', ->
   class GroupIdentityModel extends BaseModel
     @singular: 'groupIdentity'
     @plural: 'groupIdentities'

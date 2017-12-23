@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
+BaseModel    = require 'shared/models/base_model'
+
+angular.module('loomioApp').factory 'EventModel', ->
   class EventModel extends BaseModel
     @singular: 'event'
     @plural: 'events'

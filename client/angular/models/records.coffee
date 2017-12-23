@@ -1,7 +1,7 @@
 AppConfig = require 'shared/services/app_config.coffee'
+RecordStore = require 'shared/interfaces/record_store.coffee'
 
-angular.module('loomioApp').factory 'Records', (RecordStore,
-                                                CommentRecordsInterface,
+angular.module('loomioApp').factory 'Records', (CommentRecordsInterface,
                                                 DiscussionRecordsInterface,
                                                 EventRecordsInterface,
                                                 GroupRecordsInterface,
@@ -31,7 +31,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 ReactionRecordsInterface,
                                                 ContactRequestRecordsInterface,
                                                 DocumentRecordsInterface) ->
-  recordStore = new RecordStore(AppConfig.databaseName)
+  recordStore = new RecordStore()
   recordStore.addRecordsInterface(CommentRecordsInterface)
   recordStore.addRecordsInterface(DiscussionRecordsInterface)
   recordStore.addRecordsInterface(EventRecordsInterface)

@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'NotificationModel', (BaseModel, $translate) ->
+BaseModel    = require 'shared/models/base_model'
+
+angular.module('loomioApp').factory 'NotificationModel', ->
   class NotificationModel extends BaseModel
     @singular: 'notification'
     @plural: 'notifications'
@@ -10,4 +12,4 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel, $translate)
 
     actionPath: ->
       switch @kind()
-        when 'invitation_accepted'                    then @actor().username
+        when 'invitation_accepted' then @actor().username

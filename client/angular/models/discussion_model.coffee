@@ -1,10 +1,11 @@
+BaseModel    = require 'shared/models/base_model'
 AppConfig    = require 'shared/services/app_config.coffee'
 RangeSet     = require 'shared/services/range_set.coffee'
 HasDrafts    = require 'shared/mixins/has_drafts.coffee'
 HasDocuments = require 'shared/mixins/has_documents.coffee'
 HasMentions  = require 'shared/mixins/has_mentions.coffee'
 
-angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
+angular.module('loomioApp').factory 'DiscussionModel', ->
   class DiscussionModel extends BaseModel
     @singular: 'discussion'
     @plural: 'discussions'

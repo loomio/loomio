@@ -1,7 +1,8 @@
-AppConfig    = require 'shared/services/app_config.coffee'
-HasDrafts    = require 'shared/mixins/has_drafts.coffee'
+BaseModel = require 'shared/models/base_model'
+AppConfig = require 'shared/services/app_config.coffee'
+HasDrafts = require 'shared/mixins/has_drafts.coffee'
 
-angular.module('loomioApp').factory 'StanceModel', (BaseModel) ->
+angular.module('loomioApp').factory 'StanceModel', ->
   class StanceModel extends BaseModel
     @singular: 'stance'
     @plural: 'stances'

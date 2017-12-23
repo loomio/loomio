@@ -1,6 +1,7 @@
+BaseModel = require 'shared/models/base_model'
 AppConfig = require 'shared/services/app_config.coffee'
 
-angular.module('loomioApp').factory 'PollDidNotVoteModel', (BaseModel) ->
+angular.module('loomioApp').factory 'PollDidNotVoteModel', ->
   class PollDidNotVoteModel extends BaseModel
     @singular: 'poll_did_not_vote'
     @plural: 'poll_did_not_votes'

@@ -1,9 +1,10 @@
+BaseModel    = require 'shared/models/base_model'
 AppConfig    = require 'shared/services/app_config.coffee'
 HasMentions  = require 'shared/services/mention_link_service.coffee'
 HasDrafts    = require 'shared/mixins/has_drafts.coffee'
 HasDocuments = require 'shared/mixins/has_documents.coffee'
 
-angular.module('loomioApp').factory 'PollModel', (BaseModel) ->
+angular.module('loomioApp').factory 'PollModel', ->
   class PollModel extends BaseModel
     @singular: 'poll'
     @plural: 'polls'

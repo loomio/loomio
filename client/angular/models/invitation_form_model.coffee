@@ -1,6 +1,7 @@
+BaseModel    = require 'shared/models/base_model'
 AppConfig = require 'shared/services/app_config.coffee'
 
-angular.module('loomioApp').factory 'InvitationFormModel', (BaseModel) ->
+angular.module('loomioApp').factory 'InvitationFormModel', ->
   class InvitationFormModel extends BaseModel
     @singular: 'invitationForm'
     @plural: 'invitationForms'

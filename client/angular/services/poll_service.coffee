@@ -98,7 +98,9 @@ angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $locati
           model.poll().clearStaleStances()
           ScrollService.scrollTo '.poll-common-card__results-shown'
           scope.$emit 'stanceSaved', data.stances[0].key
-          Session.login(current_user_id: data.stances[0].participant_id) unless Session.user().emailVerified
+          if !Session.user().emailVerified
+            if user = Session.login(current_user_id: data.stances[0].participant_id, $location.search().invitation_token)
+              $rootScope.$broadcast 'loggedIn', user
         cleanupFn: ->
           scope.$emit 'doneProcessing'
       , options))

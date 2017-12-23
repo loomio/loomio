@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'RegistrationModel', (BaseModel) ->
+BaseModel = require 'shared/models/base_model'
+
+angular.module('loomioApp').factory 'RegistrationModel', ->
   class RegistrationModel extends BaseModel
     @singular: 'registration'
     @plural: 'registrations'

@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'VersionModel', (BaseModel) ->
+BaseModel = require 'shared/models/base_model'
+
+angular.module('loomioApp').factory 'VersionModel', ->
   class VersionModel extends BaseModel
     @singular: 'version'
     @plural: 'versions'

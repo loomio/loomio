@@ -1,6 +1,6 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
-angular.module('loomioApp').factory 'Session', ($rootScope, $translate, Records) ->
+angular.module('loomioApp').factory 'Session', (Records) ->
 
   login: (data, invitationToken) ->
     Records.import(data)
@@ -13,21 +13,12 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, Records)
     user = @user()
 
     @setLocale(user.locale)
-    $rootScope.$broadcast 'loggedIn', user
 
     if user.timeZone != AppConfig.timeZone
       user.timeZone = AppConfig.timeZone
       Records.users.updateProfile(user)
 
     user
-
-  setLocale: (locale) ->
-    $translate.use(locale)
-    lc_locale = locale.toLowerCase().replace('_','-')
-    return if lc_locale == "en"
-    fetch("#{Loomio.assetRoot}/moment_locales/#{lc_locale}.js").then((resp) -> resp.text()).then (data) ->
-      eval(data)
-      moment.locale(lc_locale)
 
   logout: ->
     AppConfig.loggingOut = true
