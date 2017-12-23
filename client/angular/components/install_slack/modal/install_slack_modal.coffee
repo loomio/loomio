@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'InstallSlackModal', ($location, $timeout, $window, Session) ->
+Session = require 'shared/services/session.coffee'
+
+angular.module('loomioApp').factory 'InstallSlackModal', ($location, $timeout, $window) ->
   templateUrl: 'generated/components/install_slack/modal/install_slack_modal.html'
   controller: ($scope, group, preventClose) ->
 

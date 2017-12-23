@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'reactionsDisplay', (Session, Records, EmojiService) ->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'reactionsDisplay', (EmojiService) ->
   scope: {model: '=', load: '@'}
   restrict: 'E'
   templateUrl: 'generated/components/reactions/display/reactions_display.html'

@@ -1,6 +1,8 @@
-angular.module('loomioApp').factory 'DeleteCommentForm', ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'DeleteCommentForm', ($rootScope)->
   templateUrl: 'generated/components/thread_page/comment_form/delete_comment_form.html'
-  controller: ($scope, $rootScope, Records, comment) ->
+  controller: ($scope, comment) ->
     $scope.comment = comment
 
     $scope.submit = ->

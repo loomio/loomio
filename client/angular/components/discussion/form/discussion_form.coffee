@@ -1,7 +1,10 @@
-angular.module('loomioApp').directive 'discussionForm', ->
+Session        = require 'shared/services/session.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'discussionForm', ($location, PrivacyString) ->
   scope: {discussion: '=', modal: '=?'}
   templateUrl: 'generated/components/discussion/form/discussion_form.html'
-  controller: ($scope, $location, Session, AbilityService, PrivacyString) ->
+  controller: ($scope) ->
     if $scope.discussion.isNew()
       $scope.showGroupSelect = true
       $scope.discussion.makeAnnouncement = true

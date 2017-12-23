@@ -1,6 +1,10 @@
-angular.module('loomioApp').factory 'MembershipRequestForm', ->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').factory 'MembershipRequestForm', (FormService) ->
   templateUrl: 'generated/components/group_page/membership_request_form/membership_request_form.html'
-  controller: ($scope, FormService, Records, group, AbilityService, Session) ->
+  controller: ($scope, group) ->
     $scope.membershipRequest = Records.membershipRequests.build
       groupId: group.id
       name:    Session.user().name

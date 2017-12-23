@@ -1,4 +1,7 @@
-angular.module('loomioApp').factory 'TranslationService', (Session, Records) ->
+Session = require 'shared/services/session.coffee'
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'TranslationService', ->
   new class TranslationService
 
     listenForTranslations: (scope) ->

@@ -1,4 +1,7 @@
-angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams, MessageChannelService, Records, $location, ModalService, PollService, PollCommonOutcomeModal, PollCommonEditVoteModal, PollCommonShareModal, Session) ->
+Session = require 'shared/services/session.coffee'
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams, MessageChannelService, $location, ModalService, PollService, PollCommonOutcomeModal, PollCommonEditVoteModal, PollCommonShareModal) ->
   @init = (poll) =>
     if poll and !@poll?
       @poll = poll

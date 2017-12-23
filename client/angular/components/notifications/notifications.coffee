@@ -1,9 +1,12 @@
-angular.module('loomioApp').directive 'notifications', ->
+AppConfig      = require 'shared/services/app_config.coffee'
+Records        = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'notifications', ($rootScope) ->
   scope: {}
   restrict: 'E'
   templateUrl: 'generated/components/notifications/notifications.html'
   replace: true
-  controller: ($scope, $rootScope, Records, AppConfig) ->
+  controller: ($scope) ->
 
     $scope.toggle = (menu) ->
       if document.querySelector '.md-open-menu-container.md-active .notifications__menu-content'

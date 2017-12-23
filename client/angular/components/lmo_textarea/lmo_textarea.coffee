@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'lmoTextarea', ($compile, Records, EmojiService, ModalService, DocumentModal, DocumentService, MentionService) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'lmoTextarea', ($compile, EmojiService, ModalService, DocumentModal, DocumentService, MentionService) ->
   scope: {model: '=', field: '@', noAttachments: '@', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/lmo_textarea/lmo_textarea.html'

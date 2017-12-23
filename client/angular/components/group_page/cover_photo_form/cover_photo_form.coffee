@@ -1,6 +1,8 @@
-angular.module('loomioApp').factory 'CoverPhotoForm', ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'CoverPhotoForm', ($timeout, FormService) ->
   templateUrl: 'generated/components/group_page/cover_photo_form/cover_photo_form.html'
-  controller: ($scope, $timeout, $rootScope, group, Records, FormService) ->
+  controller: ($scope, $rootScope, group) ->
 
     $scope.selectFile = ->
       $timeout -> document.querySelector('.cover-photo-form__file-input').click()

@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'documentForm', ($timeout, Records, SequenceService) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'documentForm', ($timeout, SequenceService) ->
   templateUrl: 'generated/components/document/form/document_form.html'
   controller: ($scope) ->
     $scope.$on 'initializeDocument', (_, doc, $mdMenu) ->

@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'groupForm', (AppConfig, PrivacyString, AbilityService) ->
+AppConfig      = require 'shared/services/app_config.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'groupForm', (PrivacyString) ->
   scope: {group: '=', modal: '=?'}
   templateUrl: 'generated/components/group/form/group_form.html'
   controller: ($scope) ->

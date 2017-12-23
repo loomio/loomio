@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'documentList', (Records, AbilityService, ModalService, DocumentModal, ConfirmModal) ->
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'documentList', (ModalService, DocumentModal, ConfirmModal) ->
   scope: {model: '=', showEdit: '=?', hidePreview: '=?'}
   replace: true
   templateUrl: 'generated/components/document/list/document_list.html'

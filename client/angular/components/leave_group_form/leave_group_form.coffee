@@ -1,6 +1,9 @@
-angular.module('loomioApp').factory 'LeaveGroupForm', ->
+Session        = require 'shared/services/session.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').factory 'LeaveGroupForm', ($rootScope, $location, FormService) ->
   templateUrl: 'generated/components/leave_group_form/leave_group_form.html'
-  controller: ($scope, $location, $rootScope, group, FormService, Session, AbilityService) ->
+  controller: ($scope, group) ->
     $scope.group = group
     $scope.membership = $scope.group.membershipFor(Session.user())
 

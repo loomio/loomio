@@ -1,4 +1,8 @@
-angular.module('loomioApp').controller 'VerifyStancesPageController', ($scope, $rootScope, Session, Records, LoadingService, RecordLoader, FlashService)->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+RecordLoader   = require 'shared/services/record_loader.coffee'
+
+angular.module('loomioApp').controller 'VerifyStancesPageController', ($scope, $rootScope, LoadingService, FlashService) ->
   $rootScope.$broadcast('currentComponent', { page: 'verifyStancesPage', skipScroll: true })
 
   $scope.loader = new RecordLoader

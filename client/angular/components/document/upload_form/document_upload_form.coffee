@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'documentUploadForm', (Records) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'documentUploadForm', ->
   scope: {model: '='}
   restrict: 'E'
   templateUrl: 'generated/components/document/upload_form/document_upload_form.html'

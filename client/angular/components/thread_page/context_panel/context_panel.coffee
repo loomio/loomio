@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, Records, AbilityService, ReactionService, ModalService, DocumentModal, DiscussionModal, ThreadService, RevisionHistoryModal, TranslationService, ScrollService) ->
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, ReactionService, ModalService, DocumentModal, DiscussionModal, ThreadService, RevisionHistoryModal, TranslationService, ScrollService) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true

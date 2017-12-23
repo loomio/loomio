@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'descriptionCard', (Records, ModalService, FormService, AbilityService, GroupModal, DocumentModal)->
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'descriptionCard', (ModalService, FormService, GroupModal, DocumentModal)->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/description_card/description_card.html'

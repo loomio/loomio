@@ -1,9 +1,13 @@
-angular.module('loomioApp').directive 'joinGroupButton', ->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'joinGroupButton', ($rootScope, ModalService, AuthModal, FlashService, MembershipRequestForm) ->
   scope: {group: '=', block: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/join_group_button/join_group_button.html'
   replace: true
-  controller: ($rootScope, $scope, AbilityService, ModalService, AuthModal, Session, Records, FlashService, MembershipRequestForm) ->
+  controller: ($scope) ->
     Records.membershipRequests.fetchMyPendingByGroup($scope.group.key)
 
     $scope.isMember = ->

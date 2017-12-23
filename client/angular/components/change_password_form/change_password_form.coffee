@@ -1,4 +1,7 @@
-angular.module('loomioApp').factory 'ChangePasswordForm', (Session, Records, FormService) ->
+Session = require 'shared/services/session.coffee'
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'ChangePasswordForm', (FormService) ->
   templateUrl: 'generated/components/change_password_form/change_password_form.html'
   controller: ($scope) ->
     $scope.user = Session.user().clone()

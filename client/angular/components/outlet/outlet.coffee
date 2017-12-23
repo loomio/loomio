@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'outlet', ($compile, AppConfig) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').directive 'outlet', ($compile) ->
   scope: {model: '=?'}
   restrict: 'E'
   replace: true

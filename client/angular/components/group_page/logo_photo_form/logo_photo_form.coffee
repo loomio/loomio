@@ -1,7 +1,9 @@
-angular.module('loomioApp').factory 'LogoPhotoForm', ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'LogoPhotoForm', ($timeout, FormService) ->
   scope: {group: '='}
   templateUrl: 'generated/components/group_page/logo_photo_form/logo_photo_form.html'
-  controller: ($scope, $timeout, group, Records, FormService) ->
+  controller: ($scope, group) ->
 
     $scope.selectFile = ->
       $timeout -> document.querySelector('.logo-photo-form__file-input').click()

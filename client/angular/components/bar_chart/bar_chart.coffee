@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'barChart', (AppConfig) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').directive 'barChart', ->
   template: '<div class="bar-chart"></div>'
   replace: true
   scope:

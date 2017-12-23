@@ -1,8 +1,10 @@
-angular.module('loomioApp').directive 'groupFormActions', ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'groupFormActions', (FormService, ScrollService, PrivacyString, KeyEventService) ->
   scope: {group: '='}
   replace: true
   templateUrl: 'generated/components/group/form_actions/group_form_actions.html'
-  controller: ($scope, Records, FormService, ScrollService, PrivacyString, KeyEventService) ->
+  controller: ($scope) ->
     actionName = if $scope.group.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.group,

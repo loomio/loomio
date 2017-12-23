@@ -1,10 +1,12 @@
+Session       = require 'shared/services/session.coffee'
+Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 angular.module('loomioApp').directive 'threadPreview', ->
   scope: {thread: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_preview/thread_preview.html'
-  controller: ($scope, Records, Session, FlashService, ModalService, DismissExplanationModal, ThreadService, PollService) ->
+  controller: ($scope, FlashService, ModalService, DismissExplanationModal, ThreadService, PollService) ->
     $scope.dismiss = ->
       if !Session.user().hasExperienced("dismissThread")
         Records.users.saveExperience("dismissThread")

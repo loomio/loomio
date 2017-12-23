@@ -1,6 +1,8 @@
-angular.module('loomioApp').factory 'DismissExplanationModal', ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'DismissExplanationModal', (FlashService) ->
   templateUrl: 'generated/components/dismiss_explanation_modal/dismiss_explanation_modal.html'
-  controller: ($scope, thread, Records, FlashService) ->
+  controller: ($scope, thread) ->
     $scope.thread = thread
 
     $scope.dismiss = ->

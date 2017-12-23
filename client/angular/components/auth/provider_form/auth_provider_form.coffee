@@ -1,7 +1,9 @@
-angular.module('loomioApp').directive 'authProviderForm', ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').directive 'authProviderForm', ($window) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/provider_form/auth_provider_form.html'
-  controller: ($scope, $window, AppConfig) ->
+  controller: ($scope) ->
     $scope.providers = AppConfig.identityProviders
 
     $scope.select = (provider) ->

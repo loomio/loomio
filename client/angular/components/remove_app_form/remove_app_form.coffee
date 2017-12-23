@@ -1,6 +1,6 @@
-angular.module('loomioApp').factory 'RemoveAppForm', ->
+angular.module('loomioApp').factory 'RemoveAppForm', ($rootScope, FlashService) ->
   templateUrl: 'generated/components/remove_app_form/remove_app_form.html'
-  controller: ($scope, $rootScope, application, FlashService) ->
+  controller: ($scope, application) ->
     $scope.application = application
 
     $scope.submit = ->

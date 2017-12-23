@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'stanceCreated', (ModalService, TranslationService, PollCommonEditVoteModal, AbilityService) ->
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'stanceCreated', (ModalService, TranslationService, PollCommonEditVoteModal) ->
   scope: {eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/stance_created.html'

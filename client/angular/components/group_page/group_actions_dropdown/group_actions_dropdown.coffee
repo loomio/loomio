@@ -1,9 +1,14 @@
-angular.module('loomioApp').directive 'groupActionsDropdown', ->
+AppConfig      = require 'shared/services/app_config.coffee'
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'groupActionsDropdown', ($window, ChangeVolumeForm, ModalService, GroupModal, LeaveGroupForm, ArchiveGroupForm) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_actions_dropdown/group_actions_dropdown.html'
   replace: true
-  controller: ($scope, $window, AppConfig, AbilityService, Session, ChangeVolumeForm, ModalService, GroupModal, LeaveGroupForm, ArchiveGroupForm, Records) ->
+  controller: ($scope) ->
 
     $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup($scope.group)

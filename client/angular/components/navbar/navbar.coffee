@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'navbar', ($rootScope, ModalService, AuthModal, AbilityService, AppConfig) ->
+AppConfig      = require 'shared/services/app_config.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'navbar', ($rootScope, ModalService, AuthModal) ->
   scope: {}
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar.html'

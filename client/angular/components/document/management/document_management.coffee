@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'documentManagement', (AbilityService, ModalService, ConfirmModal, DocumentModal) ->
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'documentManagement', (ModalService, ConfirmModal, DocumentModal) ->
   scope: {group: '=', fragment: '=', filter: '@', header: '@'}
   templateUrl: 'generated/components/document/management/document_management.html'
   controller: ($scope) ->

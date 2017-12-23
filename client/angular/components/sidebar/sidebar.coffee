@@ -1,6 +1,11 @@
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+AppConfig      = require 'shared/services/app_config.coffee'
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+InboxService   = require 'shared/services/inbox_service.coffee'
 
-angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, Session, InboxService, RestfulClient, UserHelpService, AppConfig, IntercomService, Records, ModalService, GroupModal, DiscussionModal, AbilityService)->
+angular.module('loomioApp').directive 'sidebar', ($rootScope, $mdMedia, $mdSidenav, $window, IntercomService, ModalService, GroupModal, DiscussionModal) ->
   scope: false
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'

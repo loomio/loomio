@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'progressChart', (AppConfig) ->
+AppConfig      = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').directive 'progressChart', ->
   template: '<div class="progress-chart"></div>'
   replace: true
   scope:

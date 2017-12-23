@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard, AbilityService, ReactionService, LmoUrlService, FlashService, TranslationService, ModalService, DeleteCommentForm, EditCommentForm, RevisionHistoryModal) ->
+AbilityService = require 'shared/services/ability_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+
+angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard, ReactionService, FlashService, TranslationService, ModalService, DeleteCommentForm, EditCommentForm, RevisionHistoryModal) ->
   scope: {event: '=', eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'

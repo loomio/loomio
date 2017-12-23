@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, Session, FormService, KeyEventService, Records) ->
+Session = require 'shared/services/session.coffee'
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'installSlackInviteForm', ($timeout, FormService, KeyEventService) ->
   scope: {group: '='}
   templateUrl: 'generated/components/install_slack/invite_form/install_slack_invite_form.html'
   controller: ($scope) ->

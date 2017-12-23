@@ -1,9 +1,12 @@
-angular.module('loomioApp').directive 'groupTheme', ->
+Session = require 'shared/services/session.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'groupTheme', ($rootScope, ModalService, CoverPhotoForm, LogoPhotoForm) ->
   scope: {group: '=', homePage: '=', compact: '=', discussion: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_theme/group_theme.html'
   replace: true
-  controller: ($scope, $rootScope, Session, AbilityService, ModalService, CoverPhotoForm, LogoPhotoForm) ->
+  controller: ($scope) ->
 
     $rootScope.$broadcast('setBackgroundImageUrl', $scope.group)
 

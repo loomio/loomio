@@ -1,6 +1,9 @@
-angular.module('loomioApp').factory 'AddMembersModal', ->
+AppConfig      = require 'shared/services/app_config.coffee'
+Records        = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'AddMembersModal', (LoadingService, FlashService, ModalService, InvitationModal) ->
   templateUrl: 'generated/components/invitation/add_members_modal/add_members_modal.html'
-  controller: ($scope, Records, LoadingService, group, AppConfig, FlashService, ModalService, InvitationModal) ->
+  controller: ($scope, group) ->
     $scope.isDisabled = false
     $scope.group = group
     $scope.loading = true

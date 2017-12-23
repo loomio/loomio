@@ -1,6 +1,8 @@
+Records = require 'shared/services/records.coffee'
+
 angular.module('loomioApp').factory 'ArchiveGroupForm', ->
   templateUrl: 'generated/components/archive_group_form/archive_group_form.html'
-  controller: ($scope, $rootScope, $location, group, FormService, Records) ->
+  controller: ($scope, $location, group, FormService) ->
     $scope.group = group
 
     $scope.submit = FormService.submit $scope, $scope.group,

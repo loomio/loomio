@@ -1,4 +1,8 @@
-angular.module('loomioApp').directive 'contactForm', (Session, Records, AbilityService, FormService) ->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'contactForm', (FormService) ->
   templateUrl: 'generated/components/contact/form/contact_form.html'
   controller: ($scope) ->
 

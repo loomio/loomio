@@ -1,10 +1,11 @@
+Records = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').directive 'discussionFormActions', ->
+angular.module('loomioApp').directive 'discussionFormActions', ($location, FormService, KeyEventService) ->
   scope: {discussion: '='}
   replace: true
   templateUrl: 'generated/components/discussion/form_actions/discussion_form_actions.html'
-  controller: ($scope, $location, Records, FormService, KeyEventService) ->
+  controller: ($scope) ->
     actionName = if $scope.discussion.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.discussion,

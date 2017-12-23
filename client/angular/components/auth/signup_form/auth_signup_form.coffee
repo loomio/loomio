@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'authSignupForm', ($translate, AppConfig, AuthService, KeyEventService) ->
+AppConfig   = require 'shared/services/app_config.coffee'
+AuthService = require 'shared/services/auth_service.coffee'
+
+angular.module('loomioApp').directive 'authSignupForm', ($translate, KeyEventService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signup_form/auth_signup_form.html'
   controller: ($scope) ->

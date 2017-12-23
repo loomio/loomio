@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, AbilityService, ModalService, DiscussionModal, ChangeVolumeForm, ThreadService, MoveThreadForm, DeleteThreadForm, RevisionHistoryModal) ->
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope, ModalService, DiscussionModal, ChangeVolumeForm, ThreadService, MoveThreadForm, DeleteThreadForm, RevisionHistoryModal) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true

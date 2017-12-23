@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'installSlackDecideForm', (Session, Records, PollService) ->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'installSlackDecideForm', (PollService) ->
   templateUrl: 'generated/components/install_slack/decide_form/install_slack_decide_form.html'
   controller: ($scope) ->
     $scope.poll = Records.polls.build groupId: Session.currentGroupId()

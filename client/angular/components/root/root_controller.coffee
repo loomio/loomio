@@ -1,6 +1,10 @@
-Routes = require 'angular/routes.coffee'
+Routes         = require 'angular/routes.coffee'
+AppConfig      = require 'shared/services/app_config.coffee'
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, GroupModal, AbilityService, AhoyService, ViewportService, HotkeyService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, ModalService, GroupModal, AhoyService, ViewportService, HotkeyService) ->
   $scope.isLoggedIn = ->
     AbilityService.isLoggedIn()
   $scope.isEmailVerified = ->

@@ -1,8 +1,9 @@
+Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').factory 'RegisteredAppForm', ->
+angular.module('loomioApp').factory 'RegisteredAppForm', ($location, FormService, KeyEventService) ->
   templateUrl: 'generated/components/registered_app_form/registered_app_form.html'
-  controller: ($scope, $location, application, Records, FormService, KeyEventService) ->
+  controller: ($scope, application) ->
     $scope.application = application.clone()
 
     actionName = if $scope.application.isNew() then 'created' else 'updated'

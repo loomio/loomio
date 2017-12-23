@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'matrixChart', (AppConfig) ->
+AppConfig = require 'shared/services/app_config.coffee'
+
+angular.module('loomioApp').directive 'matrixChart', ->
   template: '<div class="matrix-chart"></div>'
   replace: true
   scope:

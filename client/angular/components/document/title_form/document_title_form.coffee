@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'documentTitleForm', (Records, FormService, ModalService, KeyEventService, ConfirmModal) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'documentTitleForm', (FormService, ModalService, KeyEventService, ConfirmModal) ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/title_form/document_title_form.html'
   controller: ($scope) ->

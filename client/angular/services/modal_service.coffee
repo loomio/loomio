@@ -1,7 +1,7 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 LoadingService = require 'shared/services/loading_service.coffee'
 
-angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $timeout, $translate) ->
+angular.module('loomioApp').factory 'ModalService', ($mdDialog, $injector, $rootScope, $timeout, $translate) ->
   new class ModalService
 
     open: (modal, resolve) ->
@@ -11,6 +11,7 @@ angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $tim
         .finally -> delete AppConfig.currentModal
 
     buildModal = (modal, resolve = {}) ->
+      modal = $injector.get(modal) if typeof modal == 'string'
       resolve = _.merge (preventClose: -> false), resolve
       $scope = $rootScope.$new(true)
       $scope.$close      = $mdDialog.cancel

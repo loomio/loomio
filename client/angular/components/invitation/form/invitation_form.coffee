@@ -1,8 +1,12 @@
-angular.module('loomioApp').directive 'invitationForm', ->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'invitationForm', (FlashService, ModalService, AddMembersModal) ->
   scope: {invitationForm: '='}
   restrict: 'E'
   templateUrl: 'generated/components/invitation/form/invitation_form.html'
-  controller: ($scope, Records, Session, AbilityService, FlashService, ModalService, AddMembersModal) ->
+  controller: ($scope) ->
     $scope.selectGroup = _.isNumber $scope.invitationForm.groupId
 
     $scope.availableGroups = ->

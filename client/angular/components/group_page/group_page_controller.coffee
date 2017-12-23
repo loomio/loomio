@@ -1,7 +1,11 @@
-AppConfig     = require 'shared/services/app_config.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+AppConfig         = require 'shared/services/app_config.coffee'
+Session           = require 'shared/services/session.coffee'
+Records           = require 'shared/services/records.coffee'
+AbilityService    = require 'shared/services/ability_service.coffee'
+LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
+PaginationService = require 'shared/services/pagination_service.coffee'
 
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, PaginationService, PollService, ModalService, InstallSlackModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, MessageChannelService, PollService, ModalService, InstallSlackModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
   @launchers = []

@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'currentPollsCard', (Records, LoadingService, AbilityService, ModalService, PollCommonStartModal) ->
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'currentPollsCard', (LoadingService, ModalService, PollCommonStartModal) ->
   scope: {model: '='}
   templateUrl: 'generated/components/current_polls_card/current_polls_card.html'
   controller: ($scope) ->

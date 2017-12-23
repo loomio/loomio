@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'documentCard', (Records, LoadingService, ModalService, DocumentModal) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'documentCard', (LoadingService, ModalService, DocumentModal) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/document/card/document_card.html'

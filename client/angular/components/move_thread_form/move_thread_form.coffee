@@ -1,6 +1,9 @@
-angular.module('loomioApp').factory 'MoveThreadForm', ->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'MoveThreadForm', ($location, $translate, FormService) ->
   templateUrl: 'generated/components/move_thread_form/move_thread_form.html'
-  controller: ($scope, $location, discussion, Session, FormService, Records, $translate) ->
+  controller: ($scope, discussion) ->
     $scope.discussion = discussion.clone()
 
     $scope.availableGroups = ->

@@ -1,6 +1,10 @@
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
+Session           = require 'shared/services/session.coffee'
+Records           = require 'shared/services/records.coffee'
+AbilityService    = require 'shared/services/ability_service.coffee'
+PaginationService = require 'shared/services/pagination_service.coffee'
 
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService,  PollService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, KeyEventService, ModalService, ScrollService, PollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
   # if we get given a comment id, then hard refresh after seeking it's sequenceId

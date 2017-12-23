@@ -1,9 +1,11 @@
+Records = require 'shared/services/records.coffee'
+
 angular.module('loomioApp').directive 'notification', ($translate) ->
   scope: {notification: '='}
   restrict: 'E'
   templateUrl: 'generated/components/notification/notification.html'
   replace: true
-  controller: ($scope, Records) ->
+  controller: ($scope) ->
     $scope.actor = ->
       $scope.membershipRequestActor || $scope.notification.actor()
 

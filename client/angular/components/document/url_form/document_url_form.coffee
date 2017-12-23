@@ -1,4 +1,7 @@
-angular.module('loomioApp').directive 'documentUrlForm', ($translate, AppConfig, Records, DocumentService, KeyEventService) ->
+AppConfig = require 'shared/services/app_config.coffee'
+Records   = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'documentUrlForm', ($translate, DocumentService, KeyEventService) ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/url_form/document_url_form.html'
   controller: ($scope) ->

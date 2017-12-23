@@ -1,8 +1,8 @@
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').factory 'DeleteThreadForm', ->
+angular.module('loomioApp').factory 'DeleteThreadForm', ($location, FormService) ->
   templateUrl: 'generated/components/delete_thread_form/delete_thread_form.html'
-  controller: ($scope, $location, discussion, FormService) ->
+  controller: ($scope, discussion) ->
     $scope.discussion = discussion
     $scope.group = discussion.group()
 

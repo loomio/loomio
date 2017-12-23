@@ -1,4 +1,6 @@
-angular.module('loomioApp').controller 'StartPollPageController', ($scope, $location, $rootScope, $routeParams, Records, LoadingService, PollService, ModalService, PollCommonShareModal) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').controller 'StartPollPageController', ($scope, $location, $rootScope, $routeParams, LoadingService, PollService, ModalService, PollCommonShareModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'startPollPage', skipScroll: true })
   @poll = Records.polls.build
     title:       $location.search().title

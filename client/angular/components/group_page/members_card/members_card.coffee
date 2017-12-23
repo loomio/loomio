@@ -1,8 +1,11 @@
-angular.module('loomioApp').directive 'membersCard', ->
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'membersCard', (ModalService, InvitationModal) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/members_card/members_card.html'
-  controller: ($scope, Records, AbilityService, ModalService, InvitationModal) ->
+  controller: ($scope) ->
     $scope.canViewMemberships = ->
       AbilityService.canViewMemberships($scope.group)
 

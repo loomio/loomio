@@ -1,8 +1,8 @@
-angular.module('loomioApp').directive 'threadLintel', ->
+angular.module('loomioApp').directive 'threadLintel', (ScrollService) ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_lintel/thread_lintel.html'
   replace: true
-  controller: ($scope, ScrollService) ->
+  controller: ($scope) ->
     $scope.show = ->
       $scope.showLintel && $scope.discussion
 

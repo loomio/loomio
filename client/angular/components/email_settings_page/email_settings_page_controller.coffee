@@ -1,4 +1,8 @@
-angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope, $translate, Records, AbilityService, FormService, Session, $location, ModalService, ChangeVolumeForm) ->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope, $translate, FormService, $location, ModalService, ChangeVolumeForm) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'})
 
   @init = =>

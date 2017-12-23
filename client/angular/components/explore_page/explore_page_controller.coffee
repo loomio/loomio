@@ -1,4 +1,7 @@
-angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootScope, $timeout, AppConfig, LoadingService) ->
+AppConfig = require 'shared/services/app_config.coffee'
+Records   = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').controller 'ExplorePageController', ($rootScope, $timeout, LoadingService) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'})
 
   @groupIds = []

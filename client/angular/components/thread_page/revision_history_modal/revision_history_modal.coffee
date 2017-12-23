@@ -1,6 +1,8 @@
-angular.module('loomioApp').factory 'RevisionHistoryModal', ->
+Records        = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'RevisionHistoryModal', (LoadingService) ->
   templateUrl: 'generated/components/thread_page/revision_history_modal/revision_history_modal.html'
-  controller: ($scope, model, Records, LoadingService) ->
+  controller: ($scope, model) ->
     $scope.model = model
     $scope.loading = true
 

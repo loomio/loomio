@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'contactRequestForm', (Records, FormService, KeyEventService) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').directive 'contactRequestForm', (FormService, KeyEventService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/contact_request/form/contact_request_form.html'
   controller: ($scope) ->

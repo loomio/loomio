@@ -1,10 +1,13 @@
-angular.module('loomioApp').directive 'eventChildren', (NestedEventWindow) ->
+AppConfig         = require 'shared/services/app_config.coffee'
+NestedEventWindow = require 'shared/services/nested_event_window.coffee'
+
+angular.module('loomioApp').directive 'eventChildren', ->
   scope: {parentEvent: '=', parentEventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/event_children/event_children.html'
   replace: true
   controller: ($scope) ->
-    $scope.debug = -> window.Loomio.debug
+    $scope.debug = -> AppConfig.debug
     $scope.eventWindow = new NestedEventWindow
       parentEvent:       $scope.parentEvent
       discussion:        $scope.parentEventWindow.discussion

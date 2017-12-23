@@ -1,4 +1,7 @@
-angular.module('loomioApp').controller 'UserPageController', ($rootScope, $routeParams, AbilityService, Records, LoadingService, ModalService, ContactRequestModal) ->
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').controller 'UserPageController', ($rootScope, $routeParams, LoadingService, ModalService, ContactRequestModal) ->
 
   @init = =>
     return if @user

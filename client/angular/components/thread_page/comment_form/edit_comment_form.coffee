@@ -1,6 +1,8 @@
-angular.module('loomioApp').factory 'EditCommentForm', ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'EditCommentForm', (FormService) ->
   templateUrl: 'generated/components/thread_page/comment_form/edit_comment_form.html'
-  controller: ($scope, comment, Records, FormService) ->
+  controller: ($scope, comment) ->
     $scope.comment = comment.clone()
 
     $scope.submit = FormService.submit $scope, $scope.comment,

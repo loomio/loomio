@@ -68,6 +68,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, Mod
         company: lastGroup
 
     contactUs: ->
+
       if @available()
         $window.Intercom('showNewMessage')
       else

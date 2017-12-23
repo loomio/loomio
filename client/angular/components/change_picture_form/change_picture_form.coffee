@@ -1,6 +1,9 @@
-angular.module('loomioApp').factory 'ChangePictureForm', ->
+Session = require 'shared/services/session.coffee'
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'ChangePictureForm', ($timeout, FormService) ->
   templateUrl: 'generated/components/change_picture_form/change_picture_form.html'
-  controller: ($scope, $rootScope, $timeout, Session, Records, FormService) ->
+  controller: ($scope, $rootScope) ->
     $scope.user = Session.user().clone()
 
     $scope.selectFile = ->

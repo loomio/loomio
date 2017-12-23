@@ -1,4 +1,7 @@
-angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams, $rootScope, Records, AbilityService, LoadingService, ModalService, DocumentModal, ConfirmModal) ->
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').controller 'DocumentsPageController', ($routeParams, $rootScope, LoadingService, ModalService, DocumentModal, ConfirmModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'documentsPage'})
 
   @fetchDocuments = =>

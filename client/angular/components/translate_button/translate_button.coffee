@@ -1,9 +1,13 @@
-angular.module('loomioApp').directive 'translateButton', ->
+Session        = require 'shared/services/session.coffee'
+Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'translateButton', (LoadingService) ->
   scope: {model: '=', showdot: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/translate_button/translate_button.html'
   replace: true
-  controller: ($scope, Records, AbilityService, Session, LoadingService) ->
+  controller: ($scope) ->
     $scope.canTranslate = ->
       AbilityService.canTranslate($scope.model) and !$scope.translateExecuting and !$scope.translated
 

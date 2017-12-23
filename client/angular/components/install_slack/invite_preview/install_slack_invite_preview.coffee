@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'installSlackInvitePreview', (Session, $timeout) ->
+Session = require 'shared/services/session.coffee'
+
+angular.module('loomioApp').directive 'installSlackInvitePreview', ($timeout) ->
   templateUrl: 'generated/components/install_slack/invite_preview/install_slack_invite_preview.html'
   controller: ($scope) ->
     $timeout ->

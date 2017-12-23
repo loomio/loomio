@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'outcomeCreated', (TranslationService, ReactionService, AbilityService, ModalService, PollCommonOutcomeModal) ->
+AbilityService = require 'shared/services/ability_service.coffee'
+
+angular.module('loomioApp').directive 'outcomeCreated', (TranslationService, ReactionService, ModalService, PollCommonOutcomeModal) ->
   scope: {eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/outcome_created.html'

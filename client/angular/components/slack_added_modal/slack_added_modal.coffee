@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'SlackAddedModal', (Records, ModalService, PollCommonStartModal) ->
+Records = require 'shared/services/records.coffee'
+
+angular.module('loomioApp').factory 'SlackAddedModal', (ModalService, PollCommonStartModal) ->
   templateUrl: 'generated/components/slack_added_modal/slack_added_modal.html'
   controller: ($scope, group) ->
     $scope.group = group

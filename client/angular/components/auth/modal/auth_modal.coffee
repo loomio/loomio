@@ -1,4 +1,8 @@
-angular.module('loomioApp').factory 'AuthModal', (AuthService, Records, AppConfig) ->
+AppConfig   = require 'shared/services/app_config.coffee'
+Records     = require 'shared/services/records.coffee'
+AuthService = require 'shared/services/auth_service.coffee'
+
+angular.module('loomioApp').factory 'AuthModal', ->
   templateUrl: 'generated/components/auth/modal/auth_modal.html'
   controller: ($scope, preventClose) ->
     $scope.siteName = AppConfig.theme.site_name

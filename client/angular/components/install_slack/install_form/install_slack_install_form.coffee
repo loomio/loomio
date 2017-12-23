@@ -1,6 +1,8 @@
+Session       = require 'shared/services/session.coffee'
+Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').directive 'installSlackInstallForm', ($location, KeyEventService, FormService, Session, Records) ->
+angular.module('loomioApp').directive 'installSlackInstallForm', ($location, KeyEventService, FormService) ->
   templateUrl: 'generated/components/install_slack/install_form/install_slack_install_form.html'
   controller: ($scope) ->
     $scope.groups = ->

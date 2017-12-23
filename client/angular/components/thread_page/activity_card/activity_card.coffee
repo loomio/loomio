@@ -1,4 +1,9 @@
-angular.module('loomioApp').directive 'activityCard', ($mdDialog, ChronologicalEventWindow, NestedEventWindow, RecordLoader, $window, AppConfig, ModalService, PrintModal)->
+AppConfig                = require 'shared/services/app_config.coffee'
+RecordLoader             = require 'shared/services/record_loader.coffee'
+ChronologicalEventWindow = require 'shared/services/chronological_event_window.coffee'
+NestedEventWindow        = require 'shared/services/nested_event_window.coffee'
+
+angular.module('loomioApp').directive 'activityCard', ($mdDialog, $window, ModalService, PrintModal) ->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'

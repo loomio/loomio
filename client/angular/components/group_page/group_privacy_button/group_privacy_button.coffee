@@ -1,9 +1,9 @@
-angular.module('loomioApp').directive 'groupPrivacyButton', ->
+angular.module('loomioApp').directive 'groupPrivacyButton', (PrivacyString) ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_privacy_button/group_privacy_button.html'
   replace: true
   scope: {group: '='}
-  controller: ($scope, PrivacyString) ->
+  controller: ($scope) ->
 
     $scope.iconClass = ->
       switch $scope.group.groupPrivacy
