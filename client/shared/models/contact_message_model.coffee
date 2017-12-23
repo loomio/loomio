@@ -1,4 +1,4 @@
-BaseModel = require 'shared/models/base_model'
+BaseModel = require 'shared/models/base_model.coffee'
 AppConfig = require 'shared/services/app_config.coffee'
 
 module.exports = class ContactMessageModel extends BaseModel

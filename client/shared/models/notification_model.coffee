@@ -1,4 +1,4 @@
-BaseModel    = require 'shared/models/base_model'
+BaseModel    = require 'shared/models/base_model.coffee'
 
 module.exports = class NotificationModel extends BaseModel
   @singular: 'notification'

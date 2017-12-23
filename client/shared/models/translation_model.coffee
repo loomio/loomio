@@ -1,4 +1,4 @@
-BaseModel = require 'shared/models/base_model'
+BaseModel = require 'shared/models/base_model.coffee'
 
 module.exports = class TranslationModel extends BaseModel
   @singular: 'translation'

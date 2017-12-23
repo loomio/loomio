@@ -1,5 +1,5 @@
 AppConfig = require 'shared/services/app_config.coffee'
-Records   = require 'shared/interfaces/records.coffee'
+Records   = require 'shared/services/records.coffee'
 
 module.exports = ->
   login: (data, invitationToken) ->

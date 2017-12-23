@@ -1,7 +1,6 @@
 AppConfig      = require 'shared/services/app_config.coffee'
-LoadingService = require 'shared/services/loading_service.coffee'
 
-angular.module('loomioApp').factory 'ModalService', ($mdDialog, $injector, $rootScope, $timeout, $translate) ->
+angular.module('loomioApp').factory 'ModalService', ($mdDialog, $injector, $rootScope, $timeout, $translate, LoadingService) ->
   new class ModalService
 
     open: (modal, resolve) ->
