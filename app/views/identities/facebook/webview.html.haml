@@ -6,5 +6,7 @@
     #vue-app
       %root_component
 
+    %script{src: client_asset_path(:"vue.vendor.js")}
     %script{src: client_asset_path(:"vue.min.js")}
+
     = render partial: 'messenger_sdk'

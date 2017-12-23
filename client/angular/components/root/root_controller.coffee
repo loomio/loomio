@@ -79,5 +79,6 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
   setLocale($translate)
 
   HotkeyService.init($scope) if AbilityService.isLoggedIn()
+  Records.afterImport = -> $scope.$apply()
 
   return

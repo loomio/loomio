@@ -1,1 +1,1 @@
-module.exports = AngularRecordStore.RecordStoreFn()
+module.exports = require('angular_record_store').RecordStoreFn()

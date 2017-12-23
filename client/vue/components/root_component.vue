@@ -3,9 +3,14 @@
 </template>
 
 <script lang="coffee">
+  Records = require 'shared/services/records.coffee'
+
   module.exports =
+    created: ->
+      this.poll = Records.polls.build(title: "Loading...")
+      Records.polls.findOrFetchById("JUPYVnBD").then (poll) => this.poll = poll
     data: ->
-      target: "World"
+      target: this.poll.title
 </script>
 
 <style scoped lang="scss">

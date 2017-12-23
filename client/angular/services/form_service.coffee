@@ -1,12 +1,7 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 
-angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $window, FlashService) ->
+angular.module('loomioApp').factory 'FormService', ($rootScope, window, FlashService) ->
   new class FormService
-
-    confirmDiscardChanges: (event, record) ->
-      if record.isModified() && !confirm($translate.instant('common.confirm_discard_changes'))
-          return event.preventDefault()
-
     errorTypes =
       400: 'badRequest'
       401: 'unauthorizedRequest'
@@ -23,7 +18,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $win
       model.setErrors()
 
     confirm = (confirmMessage) ->
-      if confirmMessage then $window.confirm(confirmMessage) else true
+      if confirmMessage then window.confirm(confirmMessage) else true
 
     success = (scope, model, options) ->
       (response) ->

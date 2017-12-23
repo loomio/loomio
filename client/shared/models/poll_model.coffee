@@ -3,6 +3,7 @@ AppConfig    = require 'shared/services/app_config.coffee'
 HasMentions  = require 'shared/mixins/has_mentions.coffee'
 HasDrafts    = require 'shared/mixins/has_drafts.coffee'
 HasDocuments = require 'shared/mixins/has_documents.coffee'
+moment       = require 'moment'
 
 module.exports = class PollModel extends BaseModel
   @singular: 'poll'

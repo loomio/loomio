@@ -1,4 +1,5 @@
 RecordStore = require 'shared/interfaces/record_store.coffee'
+loki        = require 'lokijs'
 
 db      = new loki('default.db')
 records = new RecordStore(db)

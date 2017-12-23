@@ -1,1 +1,1 @@
-module.exports = AngularRecordStore.RestfulClientFn()
+module.exports = require('angular_record_store').RestfulClientFn()

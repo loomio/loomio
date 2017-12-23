@@ -38,6 +38,10 @@ js:
   - whatwg-fetch/fetch.js
   - promise-polyfill/dist/promise.min.js
   - airbrake-js/dist/client.js
+vue:
+  - lodash/index.js
+  - whatwg-fetch/fetch.js
+  - promise-polyfill/dist/promise.min.js
 execjs:
   - lodash/index.js
   - emojione/lib/js/emojione.js
