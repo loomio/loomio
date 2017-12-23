@@ -4,8 +4,9 @@ AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { submitForm } = require 'angular/helpers/form.coffee'
+{ headlineFor } = require 'angular/helpers/event.coffee'
 
-angular.module('loomioApp').directive 'threadItem', ($compile, EventHeadlineService) ->
+angular.module('loomioApp').directive 'threadItem', ($compile) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
@@ -41,7 +42,7 @@ angular.module('loomioApp').directive 'threadItem', ($compile, EventHeadlineServ
       (Session.user().id != $scope.event.actorId) && $scope.eventWindow.isUnread($scope.event)
 
     $scope.headline = ->
-      EventHeadlineService.headlineFor($scope.event, $scope.eventWindow.useNesting)
+      headlineFor($scope.event, $scope.eventWindow.useNesting)
 
     $scope.link = ->
       LmoUrlService.discussion $scope.eventWindow.discussion, from: $scope.event.sequenceId
