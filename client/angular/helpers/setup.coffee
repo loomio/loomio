@@ -6,24 +6,30 @@ FlashService = require 'shared/services/flash_service.coffee'
 
 module.exports =
   setupAngularModal: ($rootScope, $injector, $translate, $mdDialog) ->
-    ModalService.setOpenMethod (name, resolve) ->
-      modal = $injector.get(name)
-      $mdDialog.alert
+    ModalService.setOpenMethod (name, resolve = {}) ->
+      modal                  = $injector.get(name)
+      resolve.preventClose   = resolve.preventClose or (-> false)
+      AppConfig.currentModal = $mdDialog.alert
         role:           'dialog'
         backdrop:       'static'
-        scope:          buildScope($rootScope)
+        scope:          buildScope($rootScope, $mdDialog)
         templateUrl:    modal.templateUrl
         controller:     modal.controller
         size:           modal.size or ''
-        resolve:        (_.merge (preventClose: -> false), resolve)
+        resolve:        resolve
         escapeToClose:  !resolve.preventClose()
         ariaLabel:      $translate.instant(ariaFor(modal))
         onComplete:     focusElement
 
-  setupAngularFlash: ($rootScope) ->
-    FlashService.setBroadcastMethod $rootScope.$broadcast
+      $mdDialog.show(AppConfig.currentModal)
+        .then    -> $rootScope.$broadcast 'modalOpened', modal
+        .finally -> delete AppConfig.currentModal
 
-buildScope = ($rootScope) ->
+  setupAngularFlash: ($rootScope) ->
+    FlashService.setBroadcastMethod (flashOptions) ->
+      $rootScope.$broadcast 'flashMessage', flashOptions
+
+buildScope = ($rootScope, $mdDialog) ->
   $scope = $rootScope.$new(true)
   $scope.$close = $mdDialog.cancel
   $scope.$on '$close', $scope.$close
@@ -31,7 +37,7 @@ buildScope = ($rootScope) ->
   listenForLoading $scope
   $scope
 
-ariaFor = (modal, $translate) ->
+ariaFor = (modal) ->
   "#{modal.templateUrl.split('/').pop().replace('.html', '')}.aria_label"
 
 focusElement = ->

@@ -2,11 +2,12 @@ Records = require 'shared/services/records.coffee'
 
 module.exports =
   eventHeadline: (event, useNesting = false) ->
-    return 'thread_item.new_comment' if  useNesting && event.isNested() && _.includes(["new_comment", "stance_created"], event.kind)
-    switch event.kind
-      when 'new_comment'       then "thread_item.#{newCommentKey(event)}"
-      when 'discussion_edited' then "thread_item.#{discussionEditedKey(event)}"
-      else "thread_item.#{event.kind}"
+    key = switch event.kind
+      when 'new_comment'       then newCommentKey(event, useNesting)
+      when 'stance_created'    then stanceCreatedKey(event, useNesting)
+      when 'discussion_edited' then discussionEditedKey(event)
+      else event.kind
+    "thread_item.#{key}"
 
   eventTitle: (event) ->
     switch event.eventable.type
@@ -83,21 +84,27 @@ module.exports =
     else
       'discussion_form.privacy_private'
 
-newCommentKey = (event) ->
-  if event.model().parentId?
-    'thread_item.comment_replied_to'
+newCommentKey = (event, useNesting) ->
+  if event.isNested() && !useNesting
+    'comment_replied_to'
   else
-    'thread_item.new_comment'
+    'new_comment'
+
+stanceCreatedKey = (event, useNesting) ->
+  if event.isNested() && useNesting
+    'new_comment'
+  else
+    'stance_created'
 
 discussionEditedKey = (event) ->
   changes = event.customFields.changed_keys
   if _.contains(changes, 'title')
-    'thread_item.discussion_title_edited'
+    'discussion_title_edited'
   else if _.contains(changes, 'private')
-    'thread_item.discussion_privacy_edited'
+    'discussion_privacy_edited'
   else if _.contains(changes, 'description')
-    'thread_item.discussion_context_edited'
+    'discussion_context_edited'
   else if _.contains(changes, 'document_ids')
-    'thread_item.discussion_attachments_edited'
+    'discussion_attachments_edited'
   else
-    'thread_iteam.discussion_edited'
+    'discussion_edited'

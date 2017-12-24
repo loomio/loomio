@@ -42,7 +42,7 @@ module.exports = class BaseEventWindow
     @setMax(@max + @per)
 
   decreaseMin: =>
-    retutrn false unless @min > @firstInSequence()
+    return false unless @min > @firstInSequence()
     @setMin(@min - @per)
 
   # these talk about the window over the events

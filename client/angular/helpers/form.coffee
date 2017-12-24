@@ -72,6 +72,11 @@ cleanup = (scope, model, options = {}) ->
     scope.$emit 'doneProcessing'    if typeof scope.$emit       is 'function'
     scope.isDisabled = false
 
+calculateFlashOptions = (options) ->
+  _.each _.keys(options), (key) ->
+    options[key] = options[key]() if typeof options[key] is 'function'
+  options
+
 errorTypes =
   400: 'badRequest'
   401: 'unauthorizedRequest'

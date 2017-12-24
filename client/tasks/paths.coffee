@@ -19,6 +19,9 @@ module.exports =
     scss:         _.flatten([include(vendor, 'css'), 'angular/css/app.scss', 'angular/components/**/*.scss'])
     scss_include: _.flatten([include(vendor, 'css_includes'), 'angular/css'])
 
+  shared:
+    coffee:       ['./shared/**/*.coffee']
+
   plugin:
     coffee: include plugins, 'coffee'
     haml:   include plugins, 'haml'

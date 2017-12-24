@@ -6,6 +6,7 @@ pipe     = require 'gulp-pipe'
 module.exports = ->
   gulp.watch paths.js.vendor,     ['angular:vendor']
   gulp.watch paths.app.coffee,    ['angular:app_coffee']
+  gulp.watch paths.shared.coffee, ['angular:app_coffee']
   gulp.watch paths.app.haml,      ['angular:app_haml']
   gulp.watch paths.app.scss,      ['angular:app_scss']
   gulp.watch paths.plugin.coffee, ['angular:plugin_coffee']
@@ -13,3 +14,4 @@ module.exports = ->
   gulp.watch paths.plugin.scss,   ['angular:plugin_scss']
   gulp.watch paths.vue.vue,       ['vue:compile-fast']
   gulp.watch paths.vue.coffee,    ['vue:compile-fast']
+  gulp.watch paths.shared.coffee, ['vue:compile-fast']
