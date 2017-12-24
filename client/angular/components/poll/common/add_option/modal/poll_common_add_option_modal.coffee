@@ -1,4 +1,4 @@
-{ listenForLoading } = require 'angular/helpers/loading.coffee'
+{ listenForLoading } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').factory 'PollCommonAddOptionModal', ->
   templateUrl: 'generated/components/poll/common/add_option/modal/poll_common_add_option_modal.html'

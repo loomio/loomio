@@ -6,7 +6,9 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 ModalService      = require 'shared/services/modal_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
 
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, MessageChannelService, PollService) ->
+{ subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
+
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, PollService) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
   @launchers = []
@@ -41,7 +43,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @init = (group) =>
     @group = group
-    MessageChannelService.subscribeToGroup(@group)
+    subscribeToLiveUpdate(group_key: @group.key)
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 

@@ -1,7 +1,7 @@
 Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
 
 angular.module('loomioApp').directive 'pollCommonIndexCard', ($location) ->
   scope: {model: '=', limit: '@?', viewMoreLink: '=?'}

@@ -1,7 +1,7 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 
-{ listenForPaste } = require 'angular/helpers/document.coffee'
+{ listenForPaste } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'documentUrlForm', ($translate, KeyEventService) ->
   scope: {document: '='}

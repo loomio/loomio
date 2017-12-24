@@ -2,8 +2,7 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ listenForTranslations, performTranslation } = require 'angular/helpers/translation.coffee'
-{ listenForReactions }    = require 'angular/helpers/emoji.coffee'
+{ listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'pollCommonDetailsPanel', ->
   scope: {poll: '='}
@@ -16,7 +15,7 @@ angular.module('loomioApp').directive 'pollCommonDetailsPanel', ->
       name: 'translate_poll'
       icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.poll) && !$scope.translation
-      perform:    -> performTranslation($scope, $scope.poll)
+      perform:    -> $scope.poll.translate()
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'

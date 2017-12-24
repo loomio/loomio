@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-{ applySequence } = require 'angular/helpers/sequence.coffee'
+{ applySequence } = require 'angular/helpers/apply.coffee'
 
 angular.module('loomioApp').directive 'documentForm', ($timeout) ->
   templateUrl: 'generated/components/document/form/document_form.html'

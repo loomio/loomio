@@ -1,9 +1,10 @@
-BaseModel    = require 'shared/models/base_model.coffee'
-AppConfig    = require 'shared/services/app_config.coffee'
-RangeSet     = require 'shared/services/range_set.coffee'
-HasDrafts    = require 'shared/mixins/has_drafts.coffee'
-HasDocuments = require 'shared/mixins/has_documents.coffee'
-HasMentions  = require 'shared/mixins/has_mentions.coffee'
+BaseModel       = require 'shared/models/base_model.coffee'
+AppConfig       = require 'shared/services/app_config.coffee'
+RangeSet        = require 'shared/services/range_set.coffee'
+HasDrafts       = require 'shared/mixins/has_drafts.coffee'
+HasDocuments    = require 'shared/mixins/has_documents.coffee'
+HasMentions     = require 'shared/mixins/has_mentions.coffee'
+HasTranslations = require 'shared/mixins/has_translations.coffee'
 
 module.exports = class DiscussionModel extends BaseModel
   @singular: 'discussion'
@@ -19,6 +20,7 @@ module.exports = class DiscussionModel extends BaseModel
     HasDocuments.apply @, showTitle: true
     HasDrafts.apply @
     HasMentions.apply @, 'description'
+    HasTranslations.apply @
 
   defaultValues: =>
     private: null

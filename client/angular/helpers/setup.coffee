@@ -2,8 +2,10 @@ AppConfig    = require 'shared/services/app_config.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
 
-{ listenForLoading } = require 'angular/helpers/loading.coffee'
+{ listenForLoading } = require 'angular/helpers/listen.coffee'
 
+# a series of helpers to apply angular-specific implementations to the vanilla Loomio app,
+# such as how to open modals or display a flash message
 module.exports =
   setupAngularModal: ($rootScope, $injector, $translate, $mdDialog) ->
     ModalService.setOpenMethod (name, resolve = {}) ->

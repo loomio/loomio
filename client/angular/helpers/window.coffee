@@ -1,3 +1,6 @@
+# a series of helpers related to the current browser window, such as the viewport size
+# or printing. Hopefully we can pool all window-related functionality here, and
+# then allow for an alternate implementation for when 'window' may not exist
 module.exports =
   viewportSize: ->
     if window.innerWidth < 480

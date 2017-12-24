@@ -6,8 +6,8 @@
       %poll_common_closing_at{poll: "poll"}
 
     .poll-common-details-panel__details.lmo-markdown-wrapper{ng-if: "!translation", marked: "poll.cookedDetails()"}
-    .poll-common-details-panel__details{ng-if: "translation"}
-      %translation.lmo-markdown-wrapper{translation: "translation", field: "details"}
+    .poll-common-details-panel__details{ng-if: "poll.translation"}
+      %translation.lmo-markdown-wrapper{model: "poll", field: "details"}
     %document_list{model: "poll"}
 
     .lmo-md-actions

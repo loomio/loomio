@@ -1,5 +1,7 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
+# a series of method related to the user entering input through the keyboard,
+# such as hotkeys or submit on enter
 module.exports =
   broadcastKeyEvent: ($scope, event) ->
     key = keyboardShortcuts[event.which]

@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
 
 angular.module('loomioApp').controller 'PollsPageController', ($scope, $location, $q, $rootScope) ->
   $rootScope.$broadcast 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}

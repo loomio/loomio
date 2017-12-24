@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'translation', ->
-  scope: {translation: '=', field: '@'}
+  scope: {model: '=', field: '@'}
   restrict: 'E'
   templateUrl: 'generated/components/translation/translation.html'
   replace: true

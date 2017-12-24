@@ -1,7 +1,7 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
 
 angular.module('loomioApp').controller 'ExplorePageController', ($rootScope, $timeout) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'})

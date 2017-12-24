@@ -3,7 +3,7 @@ Records        = require 'shared/services/records.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/loading.coffee'
+{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
 
 angular.module('loomioApp').factory 'AddMembersModal', ->
   templateUrl: 'generated/components/invitation/add_members_modal/add_members_modal.html'

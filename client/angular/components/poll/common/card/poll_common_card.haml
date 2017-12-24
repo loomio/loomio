@@ -9,8 +9,8 @@
     %poll_common_set_outcome_panel{poll: "poll"}
 
     %h1.poll-common-card__title{ng-if: "!translation"} {{poll.title}}
-    %h3.lmo-h1.poll-common-card__title{ng-if: "translation"}
-      %translation{translation: "translation", field: "title"}
+    %h3.lmo-h1.poll-common-card__title{ng-if: "poll.translation"}
+      %translation{model: "poll", field: "title"}
 
     %poll_common_outcome_panel{poll: "poll", ng-if: "poll.outcome()"}
     %poll_common_details_panel{poll: "poll"}

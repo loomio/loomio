@@ -5,12 +5,12 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ viewportSize, scrollTo, trackEvents }  = require 'angular/helpers/window.coffee'
-{ signIn, setLocale }                    = require 'angular/helpers/user.coffee'
-{ broadcastKeyEvent, registerHotkeys }   = require 'angular/helpers/keyboard.coffee'
-{ setupAngularModal, setupAngularFlash } = require 'angular/helpers/setup.coffee'
+{ viewportSize, scrollTo, trackEvents }      = require 'angular/helpers/window.coffee'
+{ signIn, setLocale, subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
+{ broadcastKeyEvent, registerHotkeys }       = require 'angular/helpers/keyboard.coffee'
+{ setupAngularModal, setupAngularFlash }     = require 'angular/helpers/setup.coffee'
 
-angular.module('loomioApp').controller 'RootController', ($scope, $injector, $timeout, $translate, $mdDialog, $location, $router, MessageChannelService, IntercomService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $injector, $timeout, $translate, $mdDialog, $location, $router, IntercomService) ->
 
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
@@ -34,7 +34,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $injector, $ti
     $scope.refreshing = true
     $timeout -> $scope.refreshing = false
     # IntercomService.boot()
-    # MessageChannelService.subscribe()
+    subscribeToLiveUpdate()
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     title = options.title or $translate.instant(options.titleKey)

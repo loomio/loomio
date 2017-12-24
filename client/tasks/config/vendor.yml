@@ -16,7 +16,6 @@ js:
   - ment.io/dist/mentio.js
   - angular-moment/angular-moment.js
   - moment-timezone/builds/moment-timezone-with-data.js
-  - private_pub/app/assets/javascripts/private_pub.js
   - angular-animate/angular-animate.js
   - lokijs/src/lokijs.js
   - angular-inview/angular-inview.js
@@ -24,9 +23,7 @@ js:
   - angular-gravatar/build/md5.js
   - angular-scroll/angular-scroll.js
   - svg.js/dist/svg.js
-  - angular_record_store/dist/standalone.js
   - angular-clipboard/angular-clipboard.js
-  - private_pub/app/assets/javascripts/private_pub.js
   - emojione/lib/js/emojione.js
   - angular-off-click/offClick.js
   - angular-material/angular-material.js

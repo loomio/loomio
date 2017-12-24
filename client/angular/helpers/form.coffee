@@ -1,6 +1,7 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 
+# a helper to aid submitting forms throughout the app
 module.exports =
   submitForm: (scope, model, options = {}) ->
     # fetch draft from server and listen for changes to it

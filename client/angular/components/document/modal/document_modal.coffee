@@ -1,4 +1,4 @@
-{ listenForLoading } = require 'angular/helpers/loading.coffee'
+{ listenForLoading } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').factory 'DocumentModal', ($timeout) ->
   templateUrl: 'generated/components/document/modal/document_modal.html'

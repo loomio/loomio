@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { signIn, setLocale } = require 'angular/helpers/user.coffee'
-{ applySequence }     = require 'angular/helpers/sequence.coffee'
+{ applySequence }     = require 'angular/helpers/apply.coffee'
 { scrollTo }          = require 'angular/helpers/window.coffee'
 { submitForm }        = require 'angular/helpers/form.coffee'
 

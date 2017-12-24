@@ -3,8 +3,8 @@
   .poll-common-outcome-panel__authored-by
     %span{translate: "poll_common_outcome_panel.authored_by", translate-value-name: "{{poll.outcome().author().name}}"}
     %timeago{timestamp: "::poll.outcome().createdAt" }>
-  %p.lmo-markdown-wrapper{marked: "poll.outcome().statement", ng-if: "!translation"}
-  %translation{translation: "translation", field: "statement", ng-if: "translation"}
+  %p.lmo-markdown-wrapper{marked: "poll.outcome().statement", ng-if: "!poll.outcome().translation"}
+  %translation{model: "poll.outcome()", field: "statement", ng-if: "poll.outcome().translation"}
   %document_list{model: "poll.outcome()"}
   .lmo-md-actions
     %reactions_display{model: "poll.outcome()", load: "true"}

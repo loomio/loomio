@@ -1,8 +1,9 @@
-BaseModel    = require 'shared/models/base_model.coffee'
-AppConfig    = require 'shared/services/app_config.coffee'
-HasDrafts    = require 'shared/mixins/has_drafts.coffee'
-HasDocuments = require 'shared/mixins/has_documents.coffee'
-HasMentions  = require 'shared/mixins/has_mentions.coffee'
+BaseModel       = require 'shared/models/base_model.coffee'
+AppConfig       = require 'shared/services/app_config.coffee'
+HasDrafts       = require 'shared/mixins/has_drafts.coffee'
+HasDocuments    = require 'shared/mixins/has_documents.coffee'
+HasMentions     = require 'shared/mixins/has_mentions.coffee'
+HasTranslations = require 'shared/mixins/has_translations.coffee'
 
 module.exports = class CommentModel extends BaseModel
   @singular: 'comment'
@@ -16,6 +17,7 @@ module.exports = class CommentModel extends BaseModel
     HasDrafts.apply @
     HasDocuments.apply @
     HasMentions.apply @, 'body'
+    HasTranslations.apply @
 
   defaultValues: ->
     usesMarkdown: true

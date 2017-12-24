@@ -2,7 +2,9 @@ Session      = require 'shared/services/session.coffee'
 Records      = require 'shared/services/records.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').controller 'PollPageController', ($scope, $location, $rootScope, $routeParams, MessageChannelService, PollService) ->
+{ subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
+
+angular.module('loomioApp').controller 'PollPageController', ($scope, $location, $rootScope, $routeParams, PollService) ->
   @init = (poll) =>
     if poll and !@poll?
       @poll = poll
@@ -13,7 +15,7 @@ angular.module('loomioApp').controller 'PollPageController', ($scope, $location,
         page: 'pollPage'
         skipScroll: true
 
-      MessageChannelService.subscribeToPoll(@poll)
+      subscribeToLiveUpdate(poll_key: @poll.key)
 
       if $location.search().share
         ModalService.open 'PollCommonShareModal', poll: => @poll

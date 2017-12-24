@@ -1,6 +1,7 @@
-BaseModel = require 'shared/models/base_model.coffee'
-AppConfig = require 'shared/services/app_config.coffee'
-HasDrafts = require 'shared/mixins/has_drafts.coffee'
+BaseModel       = require 'shared/models/base_model.coffee'
+AppConfig       = require 'shared/services/app_config.coffee'
+HasDrafts       = require 'shared/mixins/has_drafts.coffee'
+HasTranslations = require 'shared/mixins/has_translations.coffee'
 
 module.exports = class StanceModel extends BaseModel
   @singular: 'stance'
@@ -12,6 +13,7 @@ module.exports = class StanceModel extends BaseModel
 
   afterConstruction: ->
     HasDrafts.apply @
+    HasTranslations.apply @
 
   defaultValues: ->
     reason: ''

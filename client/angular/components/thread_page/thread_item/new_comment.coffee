@@ -3,8 +3,7 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ listenForTranslations, performTranslation } = require 'angular/helpers/translation.coffee'
-{ listenForReactions } = require 'angular/helpers/emoji.coffee'
+{ listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard) ->
   scope: {event: '=', eventable: '='}
@@ -29,7 +28,7 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard) ->
       name: 'translate_comment'
       icon: 'mdi-translate'
       canPerform: -> $scope.eventable.body && AbilityService.canTranslate($scope.eventable) && !$scope.translation
-      perform:    -> performTranslation($scope, $scope.eventable)
+      perform:    -> $scope.eventable.translate()
     ,
       name: 'copy_url_comment'
       icon: 'mdi-link'

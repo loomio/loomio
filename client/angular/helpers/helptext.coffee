@@ -1,5 +1,7 @@
 Records = require 'shared/services/records.coffee'
 
+# a series of helpers related to getting a translation string to translate, such
+# as the headline of an event or the helptext strings on the discussion or group forms
 module.exports =
   eventHeadline: (event, useNesting = false) ->
     key = switch event.kind

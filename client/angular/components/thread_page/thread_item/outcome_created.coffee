@@ -1,8 +1,7 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ listenForTranslations, performTranslation } = require 'angular/helpers/translation.coffee'
-{ listenForReactions } = require 'angular/helpers/emoji.coffee'
+{ listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'outcomeCreated', ->
   scope: {eventable: '='}
@@ -22,7 +21,7 @@ angular.module('loomioApp').directive 'outcomeCreated', ->
       name: 'translate_outcome'
       icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.eventable)
-      perform:    -> performTranslation($scope, $scope.eventable)
+      perform:    -> $scope.eventable.translate()
     ]
 
     listenForReactions $scope, $scope.eventable

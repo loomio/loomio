@@ -1,7 +1,7 @@
 Session = require 'shared/services/session.coffee'
 Records = require 'shared/services/records.coffee'
 
-{ listenForLoading } = require 'angular/helpers/loading.coffee'
+{ listenForLoading } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'pollCommonCard', (PollService) ->
   scope: {poll: '='}

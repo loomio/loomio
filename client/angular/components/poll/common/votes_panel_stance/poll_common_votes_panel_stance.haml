@@ -7,5 +7,5 @@
       %poll_common_directive{name: "stance_choice", stance_choice: "choice", ng-if: "choice.score > 0", ng-repeat: "choice in stance.stanceChoices() | orderBy: 'rank'"}
       %translate_button.lmo-card-minor-action{ng-if: "stance.reason", model: "stance", showdot: "true"}>
     .poll-common-votes-panel__stance-reason{ng-if: "stance.reason"}
-      %span.lmo-markdown-wrapper{ng-if: "!translation", marked: "stance.reason"}
-      %translation{ng-if: "translation", translation: "translation", field: "reason"}
+      %span.lmo-markdown-wrapper{ng-if: "!stance.translation", marked: "stance.reason"}
+      %translation{ng-if: "stance.translation", model: "stance", field: "reason"}

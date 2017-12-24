@@ -4,10 +4,10 @@
       %i.mdi.mdi-pin{ng-switch-when: "pinned"}
 
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
-      %h1.lmo-h1.context-panel__heading{ng-if: "!translation"}
+      %h1.lmo-h1.context-panel__heading{ng-if: "!discussion.translation"}
         {{discussion.title}}
-      %h1.lmo-h1{ng-if: "translation"}
-        %translation{translation: "translation", field: "title"}
+      %h1.lmo-h1{ng-if: "discussion.translation"}
+        %translation{model: "discussion", field: "title"}
 
     %context_panel_dropdown{discussion: "discussion"}
 
@@ -31,8 +31,8 @@
       %md-tooltip {{ discussion.closedAt | exactDateWithTime }}
     %outlet.lmo-flex{name: "after-thread-title", model: "discussion"}
 
-  .context-panel__description.lmo-markdown-wrapper{ng-if: "!translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
-  %translation.lmo-markdown-wrapper{ng-if: "translation", translation: "translation", field: "description"}
+  .context-panel__description.lmo-markdown-wrapper{ng-if: "!discussion.translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
+  %translation.lmo-markdown-wrapper{ng-if: "discussion.translation", model: "discussion", field: "description"}
 
   %document_list{model: "discussion"}
 
