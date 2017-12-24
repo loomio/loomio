@@ -1,7 +1,7 @@
 AppConfig             = require 'shared/services/app_config.coffee'
 ImplementationService = require 'shared/services/implementation_service.coffee'
 
-module.exports = new class FlashService
+module.exports = class FlashService
 
   ImplementationService.requireMethod(@, 'broadcast', 'setBroadcastMethod')
 

@@ -20,8 +20,8 @@ module.exports =
         ariaLabel:      $translate.instant(ariaFor(modal))
         onComplete:     focusElement
 
-    setupAngularFlash: ($rootScope) ->
-      FlashService.setBroadcastMethod $rootScope.$broadcast
+  setupAngularFlash: ($rootScope) ->
+    FlashService.setBroadcastMethod $rootScope.$broadcast
 
 buildScope = ($rootScope) ->
   $scope = $rootScope.$new(true)
