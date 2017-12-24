@@ -1,7 +1,8 @@
-AppConfig = require 'shared/services/app_config.coffee'
-Records   = require 'shared/services/records.coffee'
+AppConfig    = require 'shared/services/app_config.coffee'
+Records      = require 'shared/services/records.coffee'
+ModalService = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonStartForm', (ModalService, PollService) ->
+angular.module('loomioApp').directive 'pollCommonStartForm', (PollService) ->
   scope: {discussion: '=?', group: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/start_form/poll_common_start_form.html'

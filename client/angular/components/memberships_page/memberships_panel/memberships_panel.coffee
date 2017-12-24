@@ -2,8 +2,9 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'membershipsPanel', ($translate, ModalService) ->
+angular.module('loomioApp').directive 'membershipsPanel', ($translate) ->
   scope: {memberships: '=', group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/memberships_page/memberships_panel/memberships_panel.html'

@@ -1,9 +1,10 @@
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
 angular.module('loomioApp').directive 'pollCommonActionsDropdown', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/actions_dropdown/poll_common_actions_dropdown.html'
-  controller: ($scope, ModalService) ->
+  controller: ($scope) ->
     $scope.canSharePoll = ->
       AbilityService.canSharePoll($scope.poll)
 

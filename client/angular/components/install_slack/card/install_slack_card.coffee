@@ -1,7 +1,8 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'installSlackCard', (ModalService) ->
+angular.module('loomioApp').directive 'installSlackCard', ->
   scope: {group: '='}
   templateUrl: 'generated/components/install_slack/card/install_slack_card.html'
   controller: ($scope) ->

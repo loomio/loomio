@@ -1,13 +1,9 @@
-AppConfig = require 'shared/services/app_config.coffee'
+AppConfig             = require 'shared/services/app_config.coffee'
+ImplementationService = require 'shared/services/implementation_service.coffee'
 
 module.exports = new class FlashService
 
-  setBroadcastMethod: (broadcast) ->
-    @broadcast = broadcast
-
-  broadcast: (args = {}) ->
-    console.error "NotImplementedError: No broadcast method passed to FlashService",
-                  "Please call 'FlashService.setBroadcastMethod(fn) to set one'"
+  ImplementationService.requireMethod(@, 'broadcast', 'setBroadcastMethod')
 
   createFlashLevel = (level, duration) =>
     (translateKey, translateValues, actionKey, actionFn) =>

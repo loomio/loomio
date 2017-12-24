@@ -1,6 +1,7 @@
-Records = require 'shared/services/records.coffee'
+Records      = require 'shared/services/records.coffee'
+ModalService = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').controller 'AuthorizedAppsPageController', ($scope, $rootScope, ModalService) ->
+angular.module('loomioApp').controller 'AuthorizedAppsPageController', ($scope, $rootScope) ->
   $rootScope.$broadcast('currentComponent', {page: 'authorizedAppsPage'})
   $rootScope.$broadcast('setTitle', 'Apps')
 

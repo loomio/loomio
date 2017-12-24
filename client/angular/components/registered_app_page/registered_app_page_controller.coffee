@@ -1,7 +1,8 @@
 Records      = require 'shared/services/records.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
+ModalService = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').controller 'RegisteredAppPageController', ($scope, $rootScope, $routeParams, ModalService) ->
+angular.module('loomioApp').controller 'RegisteredAppPageController', ($scope, $rootScope, $routeParams) ->
 
   @init = (application) =>
     if application and !@application?

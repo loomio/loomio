@@ -1,4 +1,5 @@
 AbilityService = require 'shared/services/ability_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 
 module.exports =
   submitForm: (scope, model, options = {}) ->

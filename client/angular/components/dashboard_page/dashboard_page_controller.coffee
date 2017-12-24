@@ -3,8 +3,9 @@ Records            = require 'shared/services/records.coffee'
 Session            = require 'shared/services/session.coffee'
 RecordLoader       = require 'shared/services/record_loader.coffee'
 ThreadQueryService = require 'shared/services/thread_query_service.coffee'
+ModalService       = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $routeParams, $mdMedia, ModalService) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $routeParams, $mdMedia) ->
 
   @filter = $routeParams.filter || 'hide_muted'
 

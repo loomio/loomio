@@ -1,7 +1,8 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonSetOutcomePanel', (ModalService) ->
+angular.module('loomioApp').directive 'pollCommonSetOutcomePanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/set_outcome_panel/poll_common_set_outcome_panel.html'
   controller: ($scope) ->

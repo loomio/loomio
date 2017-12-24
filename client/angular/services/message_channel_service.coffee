@@ -2,10 +2,11 @@ AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
 { hardReload } = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, ModalService) ->
+angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope) ->
   new class MessageChannelService
 
     subscribe: (options = {}) ->

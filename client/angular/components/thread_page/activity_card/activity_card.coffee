@@ -2,10 +2,11 @@ AppConfig                = require 'shared/services/app_config.coffee'
 RecordLoader             = require 'shared/services/record_loader.coffee'
 ChronologicalEventWindow = require 'shared/services/chronological_event_window.coffee'
 NestedEventWindow        = require 'shared/services/nested_event_window.coffee'
+ModalService             = require 'shared/services/modal_service.coffee'
 
 { print } = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').directive 'activityCard', ($mdDialog, ModalService) ->
+angular.module('loomioApp').directive 'activityCard', ($mdDialog) ->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'

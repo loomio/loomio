@@ -1,9 +1,10 @@
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
 { listenForTranslations, performTranslation } = require 'angular/helpers/translation.coffee'
 { listenForReactions } = require 'angular/helpers/emoji.coffee'
 
-angular.module('loomioApp').directive 'pollCommonOutcomePanel', (ModalService) ->
+angular.module('loomioApp').directive 'pollCommonOutcomePanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/outcome_panel/poll_common_outcome_panel.html'
   controller: ($scope) ->

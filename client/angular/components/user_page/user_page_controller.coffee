@@ -1,9 +1,10 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
 { applyLoadingFunction } = require 'angular/helpers/loading.coffee'
 
-angular.module('loomioApp').controller 'UserPageController', ($rootScope, $routeParams, ModalService) ->
+angular.module('loomioApp').controller 'UserPageController', ($rootScope, $routeParams) ->
 
   @init = =>
     return if @user

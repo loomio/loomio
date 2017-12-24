@@ -1,9 +1,10 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
 { applyLoadingFunction } = require 'angular/helpers/loading.coffee'
 
-angular.module('loomioApp').directive 'currentPollsCard', (ModalService) ->
+angular.module('loomioApp').directive 'currentPollsCard', ->
   scope: {model: '='}
   templateUrl: 'generated/components/current_polls_card/current_polls_card.html'
   controller: ($scope) ->

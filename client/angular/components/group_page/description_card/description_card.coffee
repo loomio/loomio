@@ -1,9 +1,10 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
 { submitForm } = require 'angular/helpers/form.coffee'
 
-angular.module('loomioApp').directive 'descriptionCard', (ModalService) ->
+angular.module('loomioApp').directive 'descriptionCard', ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/description_card/description_card.html'

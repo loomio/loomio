@@ -4,8 +4,10 @@ module.exports =
       'small'
     else if window.innerWidth < 992
       'medium'
-    else
+    else if window.innerWidth < 1280
       'large'
+    else
+      'extralarge'
 
   hardReload: (path) ->
     if path

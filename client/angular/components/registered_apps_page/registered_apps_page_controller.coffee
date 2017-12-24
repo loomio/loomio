@@ -1,6 +1,7 @@
-Records = require 'shared/services/records.coffee'
+Records      = require 'shared/services/records.coffee'
+ModalService = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').controller 'RegisteredAppsPageController', ($scope, $rootScope, ModalService) ->
+angular.module('loomioApp').controller 'RegisteredAppsPageController', ($scope, $rootScope) ->
   $rootScope.$broadcast('currentComponent', {page: 'registeredAppsPage'})
   $rootScope.$broadcast('setTitle', 'OAuth Application Dashboard')
 

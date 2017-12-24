@@ -1,7 +1,8 @@
 Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+ModalService  = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').controller 'StartGroupPageController', ($scope, $location, $rootScope, ModalService) ->
+angular.module('loomioApp').controller 'StartGroupPageController', ($scope, $location, $rootScope) ->
   $rootScope.$broadcast('currentComponent', { page: 'startGroupPage', skipScroll: true })
 
   @group = Records.groups.build

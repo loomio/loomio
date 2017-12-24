@@ -1,7 +1,8 @@
-Session = require 'shared/services/session.coffee'
+Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'groupTheme', ($rootScope, ModalService) ->
+angular.module('loomioApp').directive 'groupTheme', ($rootScope) ->
   scope: {group: '=', homePage: '=', compact: '=', discussion: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_theme/group_theme.html'

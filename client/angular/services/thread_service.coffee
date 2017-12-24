@@ -1,8 +1,9 @@
 Session      = require 'shared/services/session.coffee'
 Records      = require 'shared/services/records.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
+ModalService = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').factory 'ThreadService', (ModalService) ->
+angular.module('loomioApp').factory 'ThreadService', ->
   new class ThreadService
 
     mute: (thread) ->

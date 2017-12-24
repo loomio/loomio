@@ -2,11 +2,12 @@ AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
 { setLocale }  = require 'angular/helpers/user.coffee'
 { submitForm } = require 'angular/helpers/form.coffee'
 
-angular.module('loomioApp').controller 'ProfilePageController', ($scope, $location, $translate, $rootScope, ModalService) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($scope, $location, $translate, $rootScope) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
 
   @showHelpTranslate = ->

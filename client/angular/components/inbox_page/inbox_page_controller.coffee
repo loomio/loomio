@@ -2,8 +2,9 @@ AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 InboxService   = require 'shared/services/inbox_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScope, ModalService) ->
+angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScope) ->
   $rootScope.$broadcast('currentComponent', {titleKey: 'inbox_page.unread_threads' ,page: 'inboxPage'})
   $rootScope.$broadcast('setTitle', 'Inbox')
   $rootScope.$broadcast('analyticsClearGroup')

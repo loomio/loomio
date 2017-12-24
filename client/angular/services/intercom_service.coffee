@@ -1,8 +1,9 @@
 AppConfig     = require 'shared/services/app_config.coffee'
 Session       = require 'shared/services/session.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+ModalService  = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, ModalService) ->
+angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window) ->
   lastGroup = {}
 
   mapGroup = (group) ->

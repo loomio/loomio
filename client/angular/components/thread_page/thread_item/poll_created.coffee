@@ -1,9 +1,10 @@
 AbilityService = require 'shared/services/ability_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 
 { listenForTranslations, performTranslation } = require 'angular/helpers/translation.coffee'
 { listenForReactions } = require 'angular/helpers/emoji.coffee'
 
-angular.module('loomioApp').directive 'pollCreated', (ModalService) ->
+angular.module('loomioApp').directive 'pollCreated', ->
   scope: {eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/outcome_created.html'
