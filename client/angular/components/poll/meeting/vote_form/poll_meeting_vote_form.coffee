@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pollMeetingVoteForm', (PollService, KeyEventService) ->
+{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
+
+angular.module('loomioApp').directive 'pollMeetingVoteForm', (PollService) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/meeting/vote_form/poll_meeting_vote_form.html'
   controller: ($scope) ->
@@ -17,4 +19,4 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', (PollService, KeyEv
     $scope.$on 'timeZoneSelected', (e, zone) ->
       $scope.zone = zone
 
-    KeyEventService.submitOnEnter($scope)
+    submitOnEnter($scope)

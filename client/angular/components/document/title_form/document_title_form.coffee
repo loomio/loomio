@@ -1,8 +1,9 @@
 Records = require 'shared/services/records.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm }    = require 'angular/helpers/form.coffee'
+{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'documentTitleForm', (KeyEventService) ->
+angular.module('loomioApp').directive 'documentTitleForm', ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/title_form/document_title_form.html'
   controller: ($scope) ->
@@ -11,4 +12,4 @@ angular.module('loomioApp').directive 'documentTitleForm', (KeyEventService) ->
       successCallback: (data) ->
         $scope.$emit 'nextStep', Records.documents.find(data.documents[0].id)
 
-    KeyEventService.submitOnEnter($scope, anyEnter: true)
+    submitOnEnter($scope, anyEnter: true)

@@ -3,8 +3,9 @@ Records = require 'shared/services/records.coffee'
 { scrollTo }           = require 'angular/helpers/window.coffee'
 { submitForm }         = require 'angular/helpers/form.coffee'
 { groupPrivacyChange } = require 'angular/helpers/helptext.coffee'
+{ submitOnEnter }      = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'groupFormActions', ($translate, KeyEventService) ->
+angular.module('loomioApp').directive 'groupFormActions', ($translate) ->
   scope: {group: '='}
   replace: true
   templateUrl: 'generated/components/group/form_actions/group_form_actions.html'
@@ -35,4 +36,4 @@ angular.module('loomioApp').directive 'groupFormActions', ($translate, KeyEventS
       $scope.group.expanded = true
       scrollTo '.group-form__permissions', container: '.group-modal md-dialog-content'
 
-    KeyEventService.submitOnEnter $scope
+    submitOnEnter $scope

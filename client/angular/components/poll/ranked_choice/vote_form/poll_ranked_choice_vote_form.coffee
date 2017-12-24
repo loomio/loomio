@@ -1,7 +1,9 @@
+{ submitOnEnter, registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+
 angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/ranked_choice/vote_form/poll_ranked_choice_vote_form.html'
-  controller: ($scope, PollService, KeyEventService) ->
+  controller: ($scope, PollService)  ->
     initForm = do ->
       $scope.numChoices  = $scope.stance.poll().customFields.minimum_stance_choices
       $scope.pollOptions = _.sortBy $scope.stance.poll().pollOptions(), (option) ->
@@ -25,14 +27,14 @@ angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
     $scope.isSelected = (option) ->
       $scope.selectedOption == option
 
-    KeyEventService.submitOnEnter($scope)
-    KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', ->
+    submitOnEnter($scope)
+    registerKeyEvent $scope, 'pressedUpArrow', ->
       swap($scope.selectedOptionIndex(), $scope.selectedOptionIndex() - 1)
 
-    KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', ->
+    registerKeyEvent $scope, 'pressedDownArrow', ->
       swap($scope.selectedOptionIndex(), $scope.selectedOptionIndex() + 1)
 
-    KeyEventService.registerKeyEvent $scope, 'pressedEsc', ->
+    registerKeyEvent $scope, 'pressedEsc', ->
       $scope.selectedOption = null
 
     swap = (fromIndex, toIndex) ->

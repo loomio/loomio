@@ -1,7 +1,9 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'pollCountVoteForm', (PollService, KeyEventService) ->
+{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
+
+angular.module('loomioApp').directive 'pollCountVoteForm', (PollService) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/count/vote_form/poll_count_vote_form.html'
   controller: ($scope) ->
@@ -14,4 +16,4 @@ angular.module('loomioApp').directive 'pollCountVoteForm', (PollService, KeyEven
     $scope.yesColor = AppConfig.pollColors.count[0]
     $scope.noColor  = AppConfig.pollColors.count[1]
 
-    KeyEventService.submitOnEnter($scope)
+    submitOnEnter($scope)

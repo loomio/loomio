@@ -1,7 +1,9 @@
 AppConfig   = require 'shared/services/app_config.coffee'
 AuthService = require 'shared/services/auth_service.coffee'
 
-angular.module('loomioApp').directive 'authSignupForm', ($translate, KeyEventService) ->
+{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
+
+angular.module('loomioApp').directive 'authSignupForm', ($translate) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signup_form/auth_signup_form.html'
   controller: ($scope) ->
@@ -21,5 +23,5 @@ angular.module('loomioApp').directive 'authSignupForm', ($translate, KeyEventSer
         $scope.user.errors =
           name: [$translate.instant('auth_form.name_required')]
 
-    KeyEventService.submitOnEnter($scope, anyEnter: true)
+    submitOnEnter($scope, anyEnter: true)
     $scope.$emit 'focus'

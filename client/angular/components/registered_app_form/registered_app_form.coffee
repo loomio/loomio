@@ -2,8 +2,9 @@ Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 { submitForm, upload } = require 'angular/helpers/form.coffee'
+{ submitOnEnter }      = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').factory 'RegisteredAppForm', ($location, KeyEventService) ->
+angular.module('loomioApp').factory 'RegisteredAppForm', ($location) ->
   templateUrl: 'generated/components/registered_app_form/registered_app_form.html'
   controller: ($scope, application) ->
     $scope.application = application.clone()
@@ -28,4 +29,4 @@ angular.module('loomioApp').factory 'RegisteredAppForm', ($location, KeyEventSer
     $scope.clickFileUpload = ->
       document.querySelector('.registered-app-form__logo-input').click()
 
-    KeyEventService.submitOnEnter $scope
+    submitOnEnter $scope

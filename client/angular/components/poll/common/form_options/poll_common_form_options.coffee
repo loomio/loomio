@@ -2,7 +2,9 @@ Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 TimeService    = require 'shared/services/time_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService, KeyEventService) ->
+{ registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+
+angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/form_options/poll_common_form_options.html'
   controller: ($scope) ->
@@ -30,5 +32,5 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService, Key
     $scope.canRemoveOption = (name) ->
       _.contains($scope.existingOptions, name) || AbilityService.canRemovePollOptions($scope.poll)
 
-    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.addOption, (active) ->
+    registerKeyEvent $scope, 'pressedEnter', $scope.addOption, (active) ->
       active.classList.contains('poll-poll-form__add-option-input')

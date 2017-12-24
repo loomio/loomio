@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pollProposalVoteForm', (PollService, KeyEventService) ->
+{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
+
+angular.module('loomioApp').directive 'pollProposalVoteForm', (PollService) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/proposal/vote_form/poll_proposal_vote_form.html'
   controller: ($scope) ->
@@ -16,4 +18,4 @@ angular.module('loomioApp').directive 'pollProposalVoteForm', (PollService, KeyE
       pollOptionName = ($scope.stance.selectedOption or {name: 'default'}).name
       "poll_proposal_vote_form.#{pollOptionName}_reason_placeholder"
 
-    KeyEventService.submitOnEnter($scope)
+    submitOnEnter($scope)

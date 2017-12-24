@@ -1,8 +1,9 @@
 AuthService = require 'shared/services/auth_service.coffee'
 
-{ hardReload } = require 'angular/helpers/window.coffee'
+{ hardReload }    = require 'angular/helpers/window.coffee'
+{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'authSigninForm', ($translate, KeyEventService) ->
+angular.module('loomioApp').directive 'authSigninForm', ($translate) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ($scope) ->
@@ -28,5 +29,5 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate, KeyEventSer
       else
         $scope.sendLoginLink()
 
-    KeyEventService.submitOnEnter($scope, anyEnter: true)
+    submitOnEnter($scope, anyEnter: true)
     $scope.$emit 'focus'

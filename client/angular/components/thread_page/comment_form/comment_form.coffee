@@ -2,9 +2,10 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm }    = require 'angular/helpers/form.coffee'
+{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'commentForm', ($translate, KeyEventService) ->
+angular.module('loomioApp').directive 'commentForm', ($translate) ->
   scope: {eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
@@ -48,6 +49,6 @@ angular.module('loomioApp').directive 'commentForm', ($translate, KeyEventServic
             $scope.comment.parent().authorName() if $scope.comment.isReply()
 
         successCallback: $scope.init
-      KeyEventService.submitOnEnter $scope
+      submitOnEnter $scope
       $scope.$broadcast 'reinitializeForm', $scope.comment
     $scope.init()

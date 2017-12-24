@@ -2,9 +2,10 @@ Session       = require 'shared/services/session.coffee'
 Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm }    = require 'angular/helpers/form.coffee'
+{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'installSlackInstallForm', ($location, KeyEventService) ->
+angular.module('loomioApp').directive 'installSlackInstallForm', ($location) ->
   templateUrl: 'generated/components/install_slack/install_form/install_slack_install_form.html'
   controller: ($scope) ->
     $scope.groups = ->
@@ -29,7 +30,7 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ($location, Key
           $scope.$emit 'nextStep', g
     $scope.setSubmit(_.first($scope.groups()) or newGroup)
 
-    KeyEventService.submitOnEnter $scope, anyEnter: true
+    submitOnEnter $scope, anyEnter: true
     $scope.$on 'focus',  $scope.focus
 
     return

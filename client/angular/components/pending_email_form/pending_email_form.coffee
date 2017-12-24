@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'pendingEmailForm', ($translate, KeyEventService) ->
+{ registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+
+angular.module('loomioApp').directive 'pendingEmailForm', ($translate) ->
   scope: {emails: '='}
   restrict: 'E'
   templateUrl: 'generated/components/pending_email_form/pending_email_form.html'
@@ -42,5 +44,5 @@ angular.module('loomioApp').directive 'pendingEmailForm', ($translate, KeyEventS
     $scope.remove = (email) ->
       _.pull($scope.emails, email)
 
-    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.add, (active) ->
+    registerKeyEvent $scope, 'pressedEnter', $scope.add, (active) ->
       active.classList.contains('poll-common-share-form__add-option-input')

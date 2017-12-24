@@ -1,9 +1,10 @@
 Records = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm }    = require 'angular/helpers/form.coffee'
+{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'discussionFormActions', ($location, KeyEventService) ->
+angular.module('loomioApp').directive 'discussionFormActions', ($location) ->
   scope: {discussion: '='}
   replace: true
   templateUrl: 'generated/components/discussion/form_actions/discussion_form_actions.html'
@@ -19,4 +20,4 @@ angular.module('loomioApp').directive 'discussionFormActions', ($location, KeyEv
         discussion = Records.discussions.find(response.discussions[0].id)
         $location.path LmoUrlService.discussion(discussion) if actionName == 'created'
 
-    KeyEventService.submitOnEnter $scope
+    submitOnEnter $scope

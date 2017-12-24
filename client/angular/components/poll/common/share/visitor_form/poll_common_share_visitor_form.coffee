@@ -1,7 +1,9 @@
 Records      = require 'shared/services/records.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ($translate, KeyEventService) ->
+{ registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+
+angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ($translate) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/visitor_form/poll_common_share_visitor_form.html'
@@ -40,5 +42,5 @@ angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ($translate,
         visitor.reminded = true
         FlashService.success 'poll_common_share_form.email_invited', email: visitor.email
 
-    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.submit, (active) ->
+    registerKeyEvent $scope, 'pressedEnter', $scope.submit, (active) ->
       active.classList.contains('poll-common-share-form__add-option-input')

@@ -6,7 +6,7 @@ ModalService       = require 'shared/services/modal_service.coffee'
 
 { applyLoadingFunction } = require 'angular/helpers/apply.coffee'
 
-angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout, KeyEventService) ->
+angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'

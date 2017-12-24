@@ -3,7 +3,7 @@ AppConfig = require 'shared/services/app_config.coffee'
 
 { emojiTitle } = require 'angular/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout, KeyEventService)->
+angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout)->
   scope: {reaction: '='}
   restrict: 'E'
   templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
