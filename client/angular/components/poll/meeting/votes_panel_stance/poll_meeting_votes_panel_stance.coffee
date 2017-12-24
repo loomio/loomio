@@ -1,4 +1,4 @@
-{ listenForTranslations } = require 'angular/helpers/translation.coffee'
+{ listenForTranslations } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'pollMeetingVotesPanelStance', ($translate) ->
   scope: {stance: '='}

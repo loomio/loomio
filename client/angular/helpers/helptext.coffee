@@ -27,6 +27,9 @@ module.exports =
     return "" unless _.contains ['poll', 'stance', 'outcome'], event.eventable.type
     "poll_types.#{event.model().poll().pollType}"
 
+  emojiTitle: (shortname) ->
+    "reactions.#{shortname.replace(/:/g, '')}"
+
   groupPrivacy: (group, privacy) ->
     privacy = privacy || group.groupPrivacy
 

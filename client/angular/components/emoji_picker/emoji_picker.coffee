@@ -1,7 +1,7 @@
 # TODO: emojione = require 'emojione' here
 AppConfig = require 'shared/services/app_config.coffee'
 
-{ translateEmoji } = require 'angular/helpers/emoji.coffee'
+{ emojiTitle } = require 'angular/helpers/helptext.coffee'
 
 angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout, KeyEventService)->
   scope: {reaction: '='}
@@ -10,7 +10,9 @@ angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout, KeyE
   controller: ($scope) ->
     $scope.render = emojione.shortnameToImage
 
-    $scope.translate = translateEmoji
+    $scope.translate = (shortname) ->
+      title = emojiTitle(emoji)
+      if _.startsWith(title, "reactions.") then shortname else title
 
     $scope.imgSrcFor = (emoji) ->
       unicode = emojione.emojioneList[emoji].unicode[emojione.emojioneList[emoji].unicode.length-1];

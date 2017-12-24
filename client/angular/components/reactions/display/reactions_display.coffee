@@ -1,7 +1,7 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 
-{ translateEmoji } = require 'angular/helpers/emoji.coffee'
+{ emojiTitle } = require 'angular/helpers/helptext.coffee'
 
 angular.module('loomioApp').directive 'reactionsDisplay', ->
   scope: {model: '=', load: '@'}
@@ -42,8 +42,9 @@ angular.module('loomioApp').directive 'reactionsDisplay', ->
     , 250
     , {leading: true}
 
-
-    $scope.translate = translateEmoji
+    $scope.translate = (shortname) ->
+      title = emojiTitle(emoji)
+      if _.startsWith(title, "reactions.") then shortname else title
 
     $scope.reactionTypes = ->
       _.difference _.keys($scope.reactionHash()), ['all']

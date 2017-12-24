@@ -1,4 +1,4 @@
-{ listenForLoading } = require 'angular/helpers/loading.coffee'
+{ listenForLoading } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'pollCommonOutcomeForm', ($translate, PollService, KeyEventService) ->
   scope: {outcome: '='}
