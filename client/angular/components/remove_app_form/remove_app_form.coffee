@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'RemoveAppForm', ($rootScope, FlashService) ->
+FlashService = require 'shared/services/flash_service.coffee'
+
+angular.module('loomioApp').factory 'RemoveAppForm', ($rootScope) ->
   templateUrl: 'generated/components/remove_app_form/remove_app_form.html'
   controller: ($scope, application) ->
     $scope.application = application

@@ -1,6 +1,7 @@
-Session = require 'shared/services/session.coffee'
+Session      = require 'shared/services/session.coffee'
+FlashService = require 'shared/services/flash_service.coffee'
 
-angular.module('loomioApp').factory 'RemoveMembershipForm', ($rootScope, $location, FlashService) ->
+angular.module('loomioApp').factory 'RemoveMembershipForm', ($rootScope, $location) ->
   templateUrl: 'generated/components/remove_membership_form/remove_membership_form.html'
   controller: ($scope, membership) ->
     $scope.membership = membership

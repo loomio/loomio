@@ -1,3 +1,5 @@
+AbilityService = require 'shared/services/ability_service.coffee'
+
 module.exports =
   submitForm: (scope, model, options = {}) ->
     # fetch draft from server and listen for changes to it

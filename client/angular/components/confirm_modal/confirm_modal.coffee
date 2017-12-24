@@ -1,4 +1,6 @@
-angular.module('loomioApp').factory 'ConfirmModal', (FlashService) ->
+FlashService = require 'shared/services/flash_service.coffee'
+
+angular.module('loomioApp').factory 'ConfirmModal', ->
   templateUrl: 'generated/components/confirm_modal/confirm_modal.html'
   controller: ($scope, submit, text, forceSubmit) ->
     $scope.submit      = submit

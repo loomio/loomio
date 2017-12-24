@@ -34,7 +34,7 @@ module.exports =
       entries: [paths.app.main]
       transform: [coffeeify]
       paths: ['./', './node_modules']
-    ).bundle(), [
+    ).bundle().on('error', (err) -> console.log(err)), [
       source('app.js'),
       gulp.dest(paths.dist.assets)
     ]

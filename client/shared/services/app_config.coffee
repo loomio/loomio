@@ -1,4 +1,3 @@
-Records = require 'shared/services/records.coffee'
 moment  = require 'moment'
 
 module.exports = do ->
@@ -14,5 +13,4 @@ module.exports = do ->
     _.find configData.identityProviders, (provider) -> provider.name == name
 
   configData.timeZone = moment.tz.guess() if moment.tz
-  configData.records = Records
   configData

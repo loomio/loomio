@@ -1,6 +1,8 @@
+FlashService = require 'shared/services/flash_service.coffee'
+
 { applyLoadingFunction } = require 'angular/helpers/loading.coffee'
 
-angular.module('loomioApp').directive 'pollCommonUndecidedUser', (FlashService) ->
+angular.module('loomioApp').directive 'pollCommonUndecidedUser', ->
   scope: {user: '=', poll: '='}
   templateUrl: 'generated/components/poll/common/undecided/user/poll_common_undecided_user.html'
   controller: ($scope) ->

@@ -1,3 +1,5 @@
+AppConfig = require 'shared/services/app_config.coffee'
+
 module.exports =
   broadcastKeyEvent: ($scope, event) ->
     key = keyboardShortcuts[event.which]
@@ -5,6 +7,11 @@ module.exports =
       $scope.$broadcast key, event, angular.element(document.activeElement)[0]
 
   registerKeyEvent: registerKeyEvent
+
+  registerHotkeys: ($scope, hotkeys) ->
+    _.each hotkeys, (execute, key) =>
+      registerKeyEvent $scope, key, execute, (event) ->
+        defaultShouldExecute(event) and !AppConfig.currentModal
 
   submitOnEnter: ($scope, opts = {}) ->
     previousScope.$$listeners['pressedEnter'] = null if @previousScope?
@@ -27,12 +34,13 @@ keyboardShortcuts =
   40:  'pressedDownArrow'
 
 previousScope = null
+defaultShouldExecute = (active = {}, event = {}) ->
+  !event.ctrlKey and !event.altKey and !_.contains(['INPUT', 'TEXTAREA', 'SELECT'], active.nodeName)
 
 registerKeyEvent = ($scope, eventCode, execute, shouldExecute) ->
-  shouldExecute = shouldExecute or (active = {}, event = {}) ->
-    !event.ctrlKey and !event.altKey and !_.contains(['INPUT', 'TEXTAREA', 'SELECT'], active.nodeName)
-  scope.$$listeners[eventCode] = null
-  scope.$on eventCode, (angularEvent, originalEvent, active) ->
+  shouldExecute = shouldExecute or defaultShouldExecute
+  $scope.$$listeners[eventCode] = null
+  $scope.$on eventCode, (angularEvent, originalEvent, active) ->
     if shouldExecute(active, originalEvent)
       angularEvent.preventDefault() and originalEvent.preventDefault()
       execute(active, originalEvent)

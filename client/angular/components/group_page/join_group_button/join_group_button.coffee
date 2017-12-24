@@ -1,8 +1,9 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 
-angular.module('loomioApp').directive 'joinGroupButton', ($rootScope, ModalService, FlashService) ->
+angular.module('loomioApp').directive 'joinGroupButton', ($rootScope, ModalService) ->
   scope: {group: '=', block: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/join_group_button/join_group_button.html'

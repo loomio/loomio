@@ -55,12 +55,10 @@ module.exports =
       else
         'group_form.privacy_statement.private_to_group'
     else
-      key = switch group.groupPrivacy
-            when 'open' then 'public_on_web'
-            when 'closed' then 'public_on_web'
-            when 'secret' then 'private_to_group'
-      "group_form.privacy_statement.#{key}"
-
+      switch group.groupPrivacy
+        when 'open'   then 'group_form.privacy_statement.public_on_web'
+        when 'closed' then 'group_form.privacy_statement.public_on_web'
+        when 'secret' then 'group_form.privacy_statement.private_to_group'
 
   groupPrivacyConfirm: (group) ->
     return "" if group.isNew()

@@ -1,11 +1,12 @@
-Records = require 'shared/services/records.coffee'
+Records      = require 'shared/services/records.coffee'
+FlashService = require 'shared/services/flash_service.coffee'
 
 { submitForm } = require 'angular/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'invitationFormActions', ->
   scope: {invitationForm: '='}
   templateUrl: 'generated/components/invitation/form_actions/invitation_form_actions.html'
-  controller: ($scope, FlashService) ->
+  controller: ($scope) ->
     $scope.submit = ->
       if $scope.invitationForm.hasInvitees()
         submitForm()

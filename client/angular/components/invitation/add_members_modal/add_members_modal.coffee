@@ -1,9 +1,10 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 
 { applyLoadingFunction } = require 'angular/helpers/loading.coffee'
 
-angular.module('loomioApp').factory 'AddMembersModal', (FlashService, ModalService) ->
+angular.module('loomioApp').factory 'AddMembersModal', (ModalService) ->
   templateUrl: 'generated/components/invitation/add_members_modal/add_members_modal.html'
   controller: ($scope, group) ->
     $scope.isDisabled = false

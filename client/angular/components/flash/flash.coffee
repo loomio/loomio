@@ -1,6 +1,7 @@
-AppConfig = require 'shared/services/app_config.coffee'
+AppConfig    = require 'shared/services/app_config.coffee'
+FlashService = require 'shared/services/flash_service.coffee'
 
-angular.module('loomioApp').directive 'flash', ($interval, FlashService) ->
+angular.module('loomioApp').directive 'flash', ($interval) ->
   restrict: 'E'
   templateUrl: 'generated/components/flash/flash.html'
   replace: true

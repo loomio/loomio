@@ -1,6 +1,7 @@
-Records = require 'shared/services/records.coffee'
+Records      = require 'shared/services/records.coffee'
+FlashService = require 'shared/services/flash_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ($translate, KeyEventService, FlashService) ->
+angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ($translate, KeyEventService) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/visitor_form/poll_common_share_visitor_form.html'

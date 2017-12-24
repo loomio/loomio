@@ -3,12 +3,13 @@ AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 
 { viewportSize, scrollTo, trackEvents } = require 'angular/helpers/window.coffee'
-{ signIn, setLocale } = require 'angular/helpers/user.coffee'
-{ broadcastKeydown }  = require 'angular/helpers/keyboard.coffee'
+{ signIn, setLocale }  = require 'angular/helpers/user.coffee'
+{ broadcastKeyEvent, registerHotkeys }  = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, MessageChannelService, IntercomService, ModalService, HotkeyService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $translate, $location, $router, $mdMedia, MessageChannelService, IntercomService, ModalService) ->
   $scope.isLoggedIn = ->
     AbilityService.isLoggedIn()
   $scope.isEmailVerified = ->
@@ -71,15 +72,21 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $tra
     $scope.forcedSignIn = true
     ModalService.open 'AuthModal', preventClose: -> true
 
-  $scope.keyDown = (event) -> broadcastKeyEvent(event, $scope)
+  $scope.keyDown = (event) -> broadcastKeyEvent($scope, event)
 
   $router.config(Routes.concat(AppConfig.plugins.routes))
 
   trackEvents($scope)
   signIn(AppConfig.bootData, $location, $scope)
   setLocale($translate)
+  registerHotkeys($scope,
+    pressedI: -> ModalService.open 'InvitationModal',      group:      -> Session.currentGroup or Records.groups.build()
+    pressedG: -> ModalService.open 'GroupModal',           group:      -> Records.groups.build()
+    pressedT: -> ModalService.open 'DiscussionModal',      discussion: -> Records.discussions.build(groupId: (Session.currentGroup or {}).id)
+    pressedP: -> ModalService.open 'PollCommonStartModal', poll:       -> Records.polls.build(authorId: Session.user().id)
+  ) if AbilityService.isLoggedIn()
 
-  HotkeyService.init($scope) if AbilityService.isLoggedIn()
   Records.afterImport = -> $scope.$apply()
+  FlashService.setBroadcastMethod $scope.$broadcast
 
   return

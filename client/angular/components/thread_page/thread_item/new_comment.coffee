@@ -1,10 +1,11 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 
 { listenForTranslations, performTranslation } = require 'angular/helpers/translation.coffee'
 { listenForReactions } = require 'angular/helpers/emoji.coffee'
 
-angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard, FlashService, ModalService) ->
+angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard, ModalService) ->
   scope: {event: '=', eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'

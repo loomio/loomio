@@ -1,8 +1,9 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 
-angular.module('loomioApp').controller 'MembershipRequestsPageController', ($routeParams, $rootScope, FlashService) ->
+angular.module('loomioApp').controller 'MembershipRequestsPageController', ($routeParams, $rootScope) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipRequestsPage'})
 
   @init = =>
