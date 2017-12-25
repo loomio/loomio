@@ -20,7 +20,7 @@ module.exports =
   setLocale: ($translate) ->
     locale = Session.user().locale.toLowerCase().replace('_','-')
     $translate.use(locale)
-    # return if locale == "en"
+    return if locale == "en"
     Records.momentLocales.fetch(path: "#{locale}.js").then((response) -> response.text()).then (data) ->
       eval(data)
       moment.locale(locale)
