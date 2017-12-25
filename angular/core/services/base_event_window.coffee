@@ -56,7 +56,7 @@ angular.module('loomioApp').factory 'BaseEventWindow', (RangeSet) ->
 
     showPrevious: ->
       @decreaseMin()
-      @loader.loadPrevious(@min) if @min < @firstLoaded()
+      @loader.loadPrevious(@min) # if @min < @firstLoaded() # if we don't already have all the records.
 
     showAll: ->
       @loader.params.per = Number.MAX_SAFE_INTEGER
