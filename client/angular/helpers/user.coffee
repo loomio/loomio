@@ -20,14 +20,14 @@ module.exports =
   setLocale: ($translate) ->
     locale = Session.user().locale.toLowerCase().replace('_','-')
     $translate.use(locale)
-    return if locale == "en"
-    fetch("#{AppConfig.assetRoot}/moment_locales/#{locale}.js").then((resp) -> resp.text()).then (data) ->
+    # return if locale == "en"
+    Records.momentLocales.fetch(path: "#{locale}.js").then((response) -> response.text()).then (data) ->
       eval(data)
       moment.locale(locale)
 
   subscribeToLiveUpdate: (options = {}) ->
     return unless AbilityService.isLoggedIn()
-    Records.messageChannel.subscribe(options).then (subscriptions) ->
+    Records.messageChannel.remote.post('subscribe', options).then (subscriptions) ->
       _.each subscriptions.data, (subscription) ->
         PrivatePub.sign(subscription)
         PrivatePub.subscribe subscription.channel, (data) ->

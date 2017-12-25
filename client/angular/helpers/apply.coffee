@@ -25,16 +25,16 @@ module.exports =
     emitter.unlistenPrevious() if typeof emitter.unlistenPrevious is 'function'
     emitter.unlistenNext()     if typeof emitter.unlistenNext     is 'function'
 
-    emitter.unlistenPrevious = emitter.$on 'previousStep', changeStep(-1, 'Back')
-    emitter.unlistenNext     = emitter.$on 'nextStep',     changeStep(1, 'Complete')
+    changeStep = (incr, name) ->
+      (args...) ->
+        $scope.isDisabled = false unless options.keepDisabled
+        # perform a callback if its specified
+        (options["#{$scope.currentStep}#{name}"] or ->)(args...)
+        $scope.currentStep = $scope.steps[$scope.currentStepIndex() + incr]
+        # don't bubble the event
+        args[0].stopPropagation() if typeof (args[0] or {}).stopPropagation is 'function'
+        # emit a close event if we've run out of steps
+        emitter.$emit '$close' if !$scope.currentStep and !options.skipClose
 
-changeStep = (incr, name) ->
-  (args...) ->
-    $scope.isDisabled = false unless options.keepDisabled
-    # perform a callback if its specified
-    (options["#{$scope.currentStep}#{name}"] or ->)(args...)
-    $scope.currentStep = $scope.steps[$scope.currentStepIndex() + incr]
-    # don't bubble the event
-    args[0].stopPropagation() if typeof (args[0] or {}).stopPropagation is 'function'
-    # emit a close event if we've run out of steps
-    emitter.$emit '$close' if !$scope.currentStep and !options.skipClose
+    emitter.unlistenPrevious = emitter.$on 'previousStep', changeStep(-1, 'Back', options, emitter)
+    emitter.unlistenNext     = emitter.$on 'nextStep',     changeStep(1, 'Complete', options, emitter)

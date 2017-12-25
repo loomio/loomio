@@ -8,7 +8,8 @@ module.exports =
     if key == 'pressedEnter' or (key and !event.ctrlKey and !event.metaKey)
       $scope.$broadcast key, event, angular.element(document.activeElement)[0]
 
-  registerKeyEvent: registerKeyEvent
+  registerKeyEvent: ($scope, eventCode, execute, shouldExecute) ->
+    registerKeyEvent($scope, eventCode, execute, shouldExecute)
 
   registerHotkeys: ($scope, hotkeys) ->
     _.each hotkeys, (execute, key) =>

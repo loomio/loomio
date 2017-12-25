@@ -27,3 +27,6 @@ module.exports = class DocumentRecordsInterface extends BaseRecordsInterface
         'document[filename]': file.name.replace(/[^a-z0-9_\-\.]/gi, '_')
       fileFormDataName: 'document[file]'
     , progress
+
+  abort: ->
+    @remote.abort()

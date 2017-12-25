@@ -37,7 +37,6 @@ module.exports =
       reaction.reaction = emoji
       reaction.save()
 
-
   listenForPaste: ($scope) ->
     $scope.handlePaste = (event) ->
       data = event.clipboardData
@@ -51,6 +50,3 @@ module.exports =
   listenForLoading: ($scope) ->
     $scope.$on 'processing',     -> $scope.isDisabled = true
     $scope.$on 'doneProcessing', -> $scope.isDisabled = false
-
-####
-  translateEmoji: ->

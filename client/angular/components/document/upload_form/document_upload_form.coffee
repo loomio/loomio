@@ -15,17 +15,19 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
       $scope.model.setErrors({})
       $scope.$emit 'processing'
       for file in $scope.files
-        $scope.currentUpload = Records.documents.upload(file, $scope.progress)
-        $scope.currentUpload.then($scope.success, $scope.failure).finally($scope.reset)
+        Records.documents.upload(file, $scope.progress)
+                         .then($scope.success, $scope.failure)
+                         .finally($scope.reset)
 
     $scope.selectFile = ->
       $element.find('input')[0].click()
 
     $scope.progress = (progress) ->
+      return unless progress.total > 0
       $scope.percentComplete = Math.floor(100 * progress.loaded / progress.total)
 
     $scope.abort = ->
-      $scope.currentUpload.abort() if $scope.currentUpload
+      Records.documents.abort()
 
     $scope.success = (response) ->
       $scope.$emit 'documentAdded', Records.documents.find((response.data || response).documents[0].id)
@@ -35,6 +37,6 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
 
     $scope.reset = ->
       $scope.$emit 'doneProcessing'
-      $scope.files = $scope.currentUpload = null
+      $scope.files = null
       $scope.percentComplete = 0
     $scope.reset()

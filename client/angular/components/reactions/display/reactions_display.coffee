@@ -43,7 +43,7 @@ angular.module('loomioApp').directive 'reactionsDisplay', ->
     , {leading: true}
 
     $scope.translate = (shortname) ->
-      title = emojiTitle(emoji)
+      title = emojiTitle(shortname)
       if _.startsWith(title, "reactions.") then shortname else title
 
     $scope.reactionTypes = ->

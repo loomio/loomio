@@ -49,20 +49,20 @@ confirm = (confirmMessage) ->
     true
 
 success = (scope, model, options) ->
-  (response) ->
+  (data) ->
     FlashService.dismiss()
     if options.flashSuccess?
       flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
       FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
-    scope.$close()                                          if !options.skipClose? and typeof scope.$close is 'function'
-    model.cancelDraftFetch()                                if typeof model.cancelDraftFetch is 'function'
-    options.successCallback(response)                       if typeof options.successCallback is 'function'
+    scope.$close()                if !options.skipClose? and typeof scope.$close is 'function'
+    model.cancelDraftFetch()      if typeof model.cancelDraftFetch is 'function'
+    options.successCallback(data) if typeof options.successCallback is 'function'
 
 failure = (scope, model, options) ->
   (response) ->
     FlashService.dismiss()
     options.failureCallback(response)                       if typeof options.failureCallback is 'function'
-    model.setErrors response.data.errors                    if _.contains([401,422], response.status)
+    response.json().then(model.setErrors)                   if _.contains([401,422], response.status)
     scope.$emit errorTypes[response.status] or 'unknownError',
       model: model
       response: response

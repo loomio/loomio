@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout)->
     $scope.render = emojione.shortnameToImage
 
     $scope.translate = (shortname) ->
-      title = emojiTitle(emoji)
+      title = emojiTitle(shortname)
       if _.startsWith(title, "reactions.") then shortname else title
 
     $scope.imgSrcFor = (emoji) ->

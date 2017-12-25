@@ -5,9 +5,3 @@ module.exports = class MessageChannelRecordsInterface extends BaseRecordsInterfa
     singular:    'message_channel'
     plural:      'message_channel'
     apiEndpoint: 'message_channel'
-
-
-  subscribe: (options = {}) ->
-    @fetch
-      action: 'subscribe'
-      params: options
