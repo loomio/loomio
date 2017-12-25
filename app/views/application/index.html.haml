@@ -14,6 +14,7 @@
     %link{rel: 'next', 'ng-if' => 'links.next', 'ng-href' => '{{links.next}}'}
     %link{rel: 'manifest', href: '/manifest.json'}
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
+    %link{rel: "apple-touch-icon", href: AppConfig.theme[:icon_src]}
 
     %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet'}
     %link{href: client_asset_path(:"plugin.min.css"), rel: 'stylesheet'}

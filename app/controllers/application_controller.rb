@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     render 'application/index', layout: false
   end
 
+  def ok
+    head :ok
+  end
+
   protected
 
   def initial_payload
