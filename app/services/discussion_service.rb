@@ -21,7 +21,7 @@ class DiscussionService
 
     discussion.assign_attributes(params.slice(:private, :title, :description, :pinned))
     version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
-    discussion.attachment_ids = params[:attachment_ids]
+    discussion.assign_attributes(params.slice(:document_ids))
 
     return false unless discussion.valid?
     discussion.save!
@@ -29,6 +29,22 @@ class DiscussionService
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)
     Events::DiscussionEdited.publish!(discussion, actor)
+  end
+
+  def self.close(discussion:, actor:)
+    actor.ability.authorize! :update, discussion
+    discussion.update(closed_at: Time.now)
+
+    EventBus.broadcast('discussion_close', discussion, actor)
+    Events::DiscussionClosed.publish!(discussion, actor)
+  end
+
+  def self.reopen(discussion:, actor:)
+    actor.ability.authorize! :update, discussion
+    discussion.update(closed_at: nil)
+
+    EventBus.broadcast('discussion_reopen', discussion, actor)
+    Events::DiscussionReopened.publish!(discussion, actor)
   end
 
   def self.move(discussion:, params:, actor:)

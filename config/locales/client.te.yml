@@ -30,7 +30,6 @@ te:
     name_label: పేరు
     email_label: ఈమెయిలు
   group_page:
-    discussions: 'చర్చలు'
     options_label: 'ఐచ్ఛికాలు'
     options:
       label: 'ఐచ్ఛికాలు'
@@ -52,6 +51,8 @@ te:
     locale_label: 'భాష'
   thread_group:
     aria_label: 'సమూహం పేరు'
+  thread_context:
+    close_thread: 'మూసివేయి'
   delete_comment_dialog:
     title: 'వ్యాఖ్యను తొలగించు'
     confirm: 'వ్యాఖ్యను తొలగించు'

@@ -59,7 +59,7 @@ nl_NL:
     group: 'Groep'
     groups: 'Groepen'
     threads: 'Borden'
-    decisions: 'Discussies'
+    decisions: 'Beslissingen'
     settings: 'Instellingen'
     help: 'Help'
     anonymous: Anoniem
@@ -80,7 +80,7 @@ nl_NL:
     more_help: 'Meer hulp'
     models:
       proposal: 'Voorstel'
-    copy: 'Kopieer'
+    copy: 'Kopiëren'
     copy_text: 'Kopieer tekst'
     copied: 'Gekopieerd naar klembord'
     points_abbrev: Ieder stem is {{score}} punten waard
@@ -143,19 +143,19 @@ nl_NL:
     page_not_found: 'Dat konden we niet vinden.  Wellicht is het verwijderd of verplaatst.'
     internal_server_error: 'Helaas, er ging iets fout. Probeer het opnieuw.'
   verify_email_notice:
-    please_verify: Bedankt voor de medewerking! Gelieve je e-mail te checken of er een link toegekomen is ter bevestiging van je stemming.
+    please_verify: Bedankt voor de medewerking! Gelieve je e-mail te controleren op een toegekomen link ter bevestiging van je stemming.
   verify_stances:
-    title: Bevestig de stemmen
+    title: Stemmen bevestigen
     description: Gelieve de onderstaande stemmen te controleren en te bevestigen dat deze de jouwe zijn.
     verify: Bevestigen
-    remove: Verwijder
+    remove: Verwijderen
     verify_success: Stem bevestigd
-    remove_success: Stemming verwijderd
+    remove_success: Stem verwijderd
     all_done: Goed gedaan, je hebt alle stemmen bevestigd.
   previous_polls_page:
     heading: Activiteiten in {{name}}
     polls_count: Toont {{loaded}} van de {{total}} beslissingen
-    search_activities: Zoek in beslissingen
+    search_activities: Beslissingen zoeken
   volume_levels:
     loud: 'Luid'
     normal: 'Normaal'
@@ -230,7 +230,7 @@ nl_NL:
     message: "Je bent uit een ander venster uitgelogd geraakt. Gelieve opnieuw in te loggen om verder te kunnen werken."
     ok: "Ok"
   comment_reply_form:
-    aria_label: 'Antwoord toevoegen'
+    aria_label: 'Een atwoord toevoegen'
   comment_form:
     aria_label: 'Commentaar toevoegen'
     attachments:
@@ -246,7 +246,7 @@ nl_NL:
     delete_comment: 'Commentaar verwijderen'
     cancel_reply: 'Antwoord annuleren'
     confirm_delete_message: 'Weet je zeker dat je deze reactie wilt verwijderen?'
-    confirm_delete: 'Verwijder commentaar'
+    confirm_delete: 'Commentaar verwijderen'
     in_reply_to: "Antwoord aan {{name}}"
     write_a_comment: "Schrijf commentaar..."
     submit_button:
@@ -261,7 +261,7 @@ nl_NL:
     start_group: 'Nieuwe groep'
     explore: 'Openbare groepen'
     start_thread: Nieuw bord
-    start_decision: Nieuwe discussie
+    start_decision: Nieuwe beslissing
     aria_labels:
       heading: 'Zijbalk'
       threads_list: 'Bord acties'
@@ -364,6 +364,7 @@ nl_NL:
     add_resource: Bijlage toevoegen
     edit_group: Groepsbeschrijving bijwerken
     add_comment: Becommentarieer
+    copy_url_comment: Kopieer URL
     edit_thread: Beschrijving bijwerken
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
@@ -421,17 +422,10 @@ nl_NL:
     you_and_name: "Jij en {{name}}"
     you_and_name_and_count_more: "Jij, {{name}} en {{count}} meer"
     name_and_count_more: "{{name}} en {{count}} meer"
+  context_panel:
+    thread_status:
+      pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Deze groep heeft nog geen borden."
-        no_discussions_matching_filters_html: "Er zijn geen borden die overeenkomen met met deze filters. <a href='%{link}'>Wis filters</a>."
-        no_public_discussions: "Er zijn openbare discussies in deze groep"
-        discussions_are_private: "Alle discussies in deze groep zijn privé."
-        join_group: "Om privéborden te kunnen zien moet je lid worden van de groep."
-        request_membership: "Om privéborden te kunnen zien moet je vragen om lid te worden van de groep"
-        membership_is_invitation_only: "Om lid te worden van deze groep moet je uitgenodigd zijn door een lid."
-        membership_is_invitation_by_admin_only: "Om lid te worden van deze groep moet je uitgenodigd zijn door een coördinator."
     messages:
       privacy:
         members: 'Deze groep is nu uitsluitend zichtbaar voor leden'
@@ -443,7 +437,6 @@ nl_NL:
     new_photo: 'nieuwe foto'
     new_cover_photo: 'Nieuwe groepsfoto uploaden'
     new_group_logo: 'Upload een nieuw groepslogo'
-    discussions: 'Borden'
     discussions_placeholder: 'Op een bord kan iedereen over een onderwerp discussiëren en gezamenlijk beslissingen nemen.'
     members: 'Leden'
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
@@ -485,8 +478,6 @@ nl_NL:
   description_card:
     title: 'Groepsbeschrijving'
     placeholder: 'Groepscoördinatoren kunnen deze zone gebruiken om het doel van de groep te omschrijven, zodat iedereen weet waarom ze hier zijn.'
-    view_documents: 'Bijlagen bekijken'
-    manage_documents: 'Bijlagen beheren'
     messages:
       description_updated: 'Beschrijving vernieuwd'
   leave_group_form:
@@ -525,7 +516,7 @@ nl_NL:
     confirm_change_to_secret_subgroup: 'Als je verder gaat worden alle borden privé gemaakt.'
     confirm_change_to_public: 'Als je verder gaat worden alle borden in deze groep openbaar gemaakt op het internet.'
     confirm_change_to_private_discussions_only: 'Als je verder gaat worden alle openbare borden in deze groep privé gemaakt.'
-    subgroup_privacy_is_open_description: "Idereen kan deze subgroep vinden en vragen om mee te mogen doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn openbaar."
+    subgroup_privacy_is_open_description: "Iedereen kan deze subgroep vinden en vragen om mee te mogen doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn openbaar."
     subgroup_privacy_is_closed_description: "Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Alle discussies zijn privé."
     subgroup_privacy_is_closed_public_threads_description: "Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Discussies kunnen openbaar of privé zijn."
     subgroup_privacy_is_closed_secret_parent_description: "Leden van {{parent}} kunnen deze subgroep vinden en vragen om mee te doen. Alle discussies zijn privé. Alleen leden kunnen zien wie er in de groep zit."
@@ -562,39 +553,21 @@ nl_NL:
     manage_requests_with_count: Beheer verzoeken ({{count}})
   documents_page:
     title: Bijlagen
-    fragment_placeholder: Zoek voor bijlagen
+    fragment_placeholder: Zoek naar bijlagen
     add_document: Bijlage toevoegen
     no_documents: Geen bijlagen gevonden voor deze groep. Klik hierboven op 'Bijlage toevoegen' om er een toe te voegen.
-    no_documents_from_fragment: Geen bijlagen gevonden genaamd '{{fragment}}'
+    no_documents_from_fragment: 'Geen bijlagen genaamd ''{{fragment}}'' gevonden '
     confirm_remove_title: Bijlage verwijderen
-    confirm_remove_helptext: Ben je zeker dat je de bijlage wilt verwijderen?
+    confirm_remove_helptext: Ben je zeker dat je deze bijlage wilt verwijderen?
     document_removed: Bijlage verwijderd
   document:
     list:
       title: Bijlagen
-      no_poll_documents: Er zijn momenteel nog geen bijlagen toegevoegd aan deze beslissing.
-      no_discussion_documents: Er zijn nog momenteel nog geen bijlagen toegevoegd aan dit bord.
-      no_group_documents: Er zijn momenteel nog geen bijlagen toegevoegd aan de groepsbeschrijving. Klik op onderstaande link om te zien welke bijlagen reeds geüpload zijn naar borden binnen deze groep.
     management:
-      group_header: Toegevoegd aan de beschrijving
-      discussion_header: Geüpload als inhoud
-      added_by: geüpload door {{name}}
       uploaded_to: in
     modal:
-      title: Bijlage toevoegen
-    method_form:
-      helptext: Hou al je instrumenten en bestanden in het oog, zodat ze gemakkelijk te vinden zijn.
-      url_helptext: Link naar websites en instrumenten zoals Trello borden en Google documenten
-      file_helptext: Upload documenten en bestanden van je computer
+      title: Een bijlage toevoegen
     form:
-      helptext: Klik, plak of sleep bestanden naar hier om ze te delen met je groep.
-      file_upload: Upload een bestand van je computer
-      uploaded_already: Al ergens anders geüpload?
-      upload_from_local: Heb je lokaal een bestand staan?
-      upload_file: Upload van je computer
-      enter_url: Typ een URL
-      url_label: URL bijlage
-      url_placeholder: Bijv. https://www.example.com/attachment.txt
       title_helptext: Hou zouden we deze bijlage noemen?
       title_label: Naam
       title_placeholder: Bijv. 'Community Guidelines'
@@ -782,21 +755,21 @@ nl_NL:
       or: of
       join_group: <a href="/explore">wordt lid</a> van een groep om discussies te zien.
     no_threads:
-      show_all: Je hebt geen recente discussies.
+      show_all: Je hebt geen recente borden.
       show_proposals: Er zijn geen voorstellen actief op dit moment.
-      show_muted: Je hebt geen gedempte discussies.
+      show_muted: Je hebt geen gedempte borden.
     view_recent: Alle recente borden bekijken?
     load_more: Laad meer borden
     mark_as_read: Markeer als gelezen
     dismiss: Afwijzen
     thread_dismissed: Bord afgewezen.
     explain_mute:
-      title: Je hebt nog geen gedempte discussies.
+      title: Je hebt nog geen borden gedempt.
       explanation_html: |
         Dempen is een manier om discussies te verbergen of stil te maken waar je geen interesse in hebt.
         Dempen betekent dat je het de discussie niet ziet in <strong>Recent</strong> of <strong>Ongelezen</strong> en dat je geen melding krijgt over activiteit in die discussies, zoals voorstellen.
         Je wordt alleen geïnformeerd als iemand je naam <strong>@vermeldt</strong>.
-      instructions: 'Om een discussie te dempen, zoek deze op en klik op het dempen icoon'
+      instructions: 'Om een bord te dempen zoek je deze op en klik je op het icoon dempen.'
       see_muted_html: 'Om je gedempte discussies te zien, klik je op <strong>"Gedempt"</strong>. Je kunt dempen opheffen door op het bijbehorende pictogram te klikken.'
     filtering:
       filter_threads: Borden filteren
@@ -809,7 +782,7 @@ nl_NL:
       proposals_aria_label: Toont momentel discussies met actieve voorstellen
       proposals_description: Bekijk alleen discussies met actieve voorstellen
       muted: Gedempt
-      muted_aria_label: Toont momenteel gedempte discussies
+      muted_aria_label: Toont de momenteel gedempte borden
       muted_description: Bekijk alleen discussies die gedempt zijn
     aria_thread:
       unread: '{{count}} ongelezen items.'
@@ -818,7 +791,6 @@ nl_NL:
     thread_preview:
       you_voted: 'Je hebt {{position}} gestemd'
       undecided: 'Je bent onbeslist'
-      pinned: "Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan."
     threads_from:
       group: 'Borden van'
       pinned: 'Vastgeprikte borden'
@@ -837,7 +809,7 @@ nl_NL:
       explanation: Je hebt geen ongelezen discussies, omdat je geen lid bent van een groep.
       start: Start
       or: of
-      join_group: <a href="/explore">wordt lid</a> van een groep om discussies te zien.
+      join_group: <a href="/explore">word lid</a> van een groep om borden te zien.
   discussion:
     activity: 'Activiteit'
     activity_placeholder: 'Nog geen activiteit!'
@@ -847,7 +819,6 @@ nl_NL:
       pinned: 'Bord vastgeprikt'
       unpinned: 'Bord ontprikt'
     volume:
-      mute_message: 'Bord gedempt.'
       unmute_message: 'Discussie demping uit'
   activity_card:
     beginning: Eerste
@@ -868,6 +839,7 @@ nl_NL:
     email_settings: 'E-mailinstellingen'
     edit: 'Bewerk'
     edit_thread: 'Bewerken'
+    close_thread: 'Sluiten'
     pin_thread: 'Vastprikken'
     unpin_thread: 'Ontprikken'
     mute_thread: 'Dempen'
@@ -896,8 +868,6 @@ nl_NL:
     confirm_change_to_private_thread: '{{groupName}} is een open groep. Als je verder gaat zal dit bord openbaar gemaakt worden.'
     messages:
       success: Discussie is verplaatst naar {{name}}
-  print_modal:
-    load_discussion: Laad heel gesprek...
   delete_comment_dialog:
     title: 'Verwijder reactie'
     question: 'Weet je zeker dat je deze reactie wilt verwijderen?'
@@ -948,8 +918,6 @@ nl_NL:
     private_title: 'de discussie titel en privacy bijgewerkt'
     description_private: 'de discussie context en privacy bijgewerkt'
     description_private_title: 'de discussie titel, context en privacy bijgewerkt'
-  discussion_moved_item:
-    discussion_moved: 'de discussie verplaatst van <span>{{group}}</span>'
   contact_message_form:
     helptext: "Wil je contact met ons opnemen? Vul hieronder dan gewoon een bericht in en je zal kortelings van ons horen."
     contact_us_email: "(Je kan ons ook altijd bereiken via <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
@@ -1264,7 +1232,6 @@ nl_NL:
     meeting_created: '''Moment bevragen'' aangemaakt'
     meeting_updated: '''Moment bevragen'' geactualiseerd'
     timeslots: Tijdvensters
-    no_options: "Je hebt nog geen tijdvensters opgegeven."
     meeting_duration: Duur van de vergadering
     add_option_placeholder: Geef een nieuwe tijd op
   poll_ranked_choice_form:
@@ -1298,7 +1265,7 @@ nl_NL:
     block_reason_placeholder: Verklaar je bezwaar tegen dit voorstel en waarom het niet door zou moeten gaan
     stance_created: Stemming gemaakt
     stance_updated: Stemming geactualiseerd
-    vote: Stem
+    vote: Stemmen
   poll_proposal_options:
     agree: Eens
     agree_verb: "ingestemd"
@@ -1332,24 +1299,21 @@ nl_NL:
   poll_meeting_vote_form:
     your_response: Wanneer kan je aanwezig zijn?
     stance_created: Beschikbaarheid opgeslagen
-    stance_updated: Beschikbaarheid upgedatet
+    stance_updated: Beschikbaarheid geactualiseerd
     reason_placeholder: Leg uit wanneer je vrij (of bezet) bent, voor het geval de auteur opties wil toevoegen.
   poll_dot_vote_vote_form:
     dots_remaining: "{{count}} stippen over."
     too_many_dots: Je hebt teveel stippen gebruikt.
-    stance_created: Stemming gemaakt
-    stance_updated: Stemming aangepast
+    stance_created: Stemming aangemaakt
+    stance_updated: Stemming geactualiseerd
   poll_ranked_choice_vote_form:
     helptext: Sleep en drop opties in de volgorde van voorkeur (waarbij 1 de meest geprefereerde optie is). Je {{count}}  beste keuzes zullen worden opgenomen.
     stance_created: Keuze opgenomen
     stance_updated: Keuze upgedatet
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> als antwoord op <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> bewerkte het bordtitel: <strong>{{title}}</strong>"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> bewerkte de bordomschrijving"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> bewerkte de bijlagen van het bord"
-    discussion_made_public: "<strong><a href='u/{{username}}'>{{author}}</a></strong> maakte het bord openbaar"
-    discussion_made_private: "<strong><a href='u/{{username}}'>{{author}}</a></strong> maakte het bord privé"
     discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> bewerkte het bord"
     discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> verplaatste het bord van <strong>{{title}}</strong>"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
@@ -1360,19 +1324,19 @@ nl_NL:
     poll_expired: "{{polltype}} is gesloten: <strong>{{title}}</strong>"
     stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> stemde op: <strong>{{title}}</strong>"
   poll_admin_page:
-    title: Admin - {{title}}
+    title: Administrator - {{title}}
   poll_common_share_form:
     no_group_selected: Geen groep geselecteerd
     share_a_link: Link delen
     share_a_link_helptext: Maak een link om te verspreiden. Iedereen die toegang heeft tot de link zal kunnen deelnemen.
-    anyone_can_participate: Iedereen met een link kan participeren
+    anyone_can_participate: Iedereen met een link kan deelnemen
     anyone_can_participate_true: Deelbare koppeling gemaakt
     anyone_can_participate_false: Deelbare koppeling ingetrokken
     get_link: Link kopieren
     invite_visitor: Gasten e-mailen
     invite_visitor_helptext: Personen uitnodigen voor deze beslissing per e-mail. Gasten zullen enkel in deze discussie kunnen meewerken.
     send_email: Verstuur e-mail
-    shareable_link_created: Iederen kan nu pariciperen in deze beslissing
+    shareable_link_created: Iederen kan nu deelnemen aan deze beslissing
     shareable_link_revoked: Deze beslissing is nu enkel op uitnodiging
     shareable_link: Deelbare koppeling
     guests_invited: Verstuurd naar {{count}} mensen
@@ -1380,14 +1344,14 @@ nl_NL:
     existing_guests: Bestaande gasten
     new_guests: Nieuwe e-mails om uit te nodigen
     enter_email: "M.a.w. guest@example.com"
-    reminded: Herinnering gestuurd!
+    reminded: Herinnering verstuurd!
     send_emails: Stuur ({{count}}) uitnodigingen
     share_group: Groep
     share_group_helptext: Selecteer een groep om deze beslissing aan mede te delen. Leden van de groep zullen kunnen meewerken.
     cannot_move_poll_helptext: Deze peiling maakt onderdeel uit van de discussie <strong>{{discussion}}</strong> in <strong>{{group}}</strong>, en kan dus niet verzet worden.
     move_group_helptext: Wees voorzichtig! Het verplaatsten van een beslissing uit een groep kan ertoe leiden dat sommige mensen er geen toegang meer toe krijgen. Bestaande peilingen zullen steeds geregistreerd zijn.
     set_group: Groep instellen
-    group_set: Groep upgedatet
+    group_set: Groep geactualiseerd
     view_poll: Bekijk peiling
     email_invited: 'Uitnodiging per e-mail verstuurd naar {{email}}'
     email_exists: '{{email}} is al uitgenodigd'
@@ -1408,11 +1372,11 @@ nl_NL:
     receive_updates_title: Je stem is opgenomen
     receive_updates_helptext: Als je een e-mail wil krijgen over de uitkomst van deze peiling, voer dan je e-mail adres hieronder in.
     email_saved: Je krijgt een e-mail over de uitkomst van deze peiling
-    subscribe: Abonneer
+    subscribe: Schrijf in
     no_thanks: Nee dankjewel
   poll_common_example_card:
     what_is_this: "Dit is een live voorbeeld van een {{type}}. Je ben een deelnemer - doe eens een poging!"
-    helptext_before: "Als je klaar bent,"
+    helptext_before: "Als je er klaar voor bent,"
     helptext_link: "start dan een {{type}}"
     helptext_after: "van jezelf en nodig een paar mensen uit om het uit te proberen"
   share_poll_page:
@@ -1420,7 +1384,7 @@ nl_NL:
   polls_page:
     heading: Beslissingen
     heading_with_group: Beslissingen in {{name}}
-    search_placeholder: Zoek naar peilingen
+    search_placeholder: Zoek naar peilingen...
     polls_count: '{{count}} van de {{total}} peilingen worden getoond'
     start_new_poll: Nieuwe beslissing
     filter_placeholder: (Alle peilingen)
@@ -1438,10 +1402,10 @@ nl_NL:
     invalid_token: "Het spijt me da het niet gelukt is in te loggen met die token. Klink hieronder om nog een te versturen."
     email_not_found: "Helaas konden we geen account vinden met dat e-mailadres"
     email_placeholder: you@example.com
-    login_with_token: Je bent helemaal klaar! Klik onderstaande link aan om in te loggen.
+    login_with_token: Je bent klaar! Klik onderstaande link aan om in te loggen.
     login_link_helptext: |
       Klik op de knop onderaan en we sturen je een link om onmiddelijk in te loggen. Als je in de toekomst graag een wachtwoord gebruik om in te loggen, je kan er een instellen op je profielpagina.
-    login_link_helptext_with_password: "Typ je wachtwoord of log in via e-mail."
+    login_link_helptext_with_password: "Typ je wachtwoord in of log in via e-mail."
     sign_up_helptext: "Laat ons weten hoe je wilt dat we je noemen, dan sturen we een link om in te loggen."
     oauth_confirm_helptext: "Bevestig gewoon je gegevens hieronder en dan sturen we een link om in te loggen."
     name_required: Geef aub een naam in
@@ -1452,9 +1416,9 @@ nl_NL:
     set_password: Wachtwoord instellen
     hello: "Hallo, {{name}}!"
     new_to_loomio: Nieuw bij {{site_name}}? Maak een nieuw account aan
-    create_account: Maak account aan
+    create_account: Account aanmaken
     already_a_user: Heb je al een account bij {{site_name}} ? Typ je e-mailadres om dit account te link naar de jouwe
-    link_accounts: Link de accounts
+    link_accounts: Accounts linken
     check_your_email: Check je e-mails!
     login_link_sent: "Ok, we hebben je een e-mail gestuurd naar {{email}} met een link om onmiddelijk in te loggen. Tot binnenkort!"
     password_link_sent: "We hebben je een e-mail gestuurd naar {{email}} met instructies om je wachtwoord in te stellen."
@@ -1464,7 +1428,7 @@ nl_NL:
     email: E-mail
     password: Wachtwoord
   install_slack:
-    modal_title: Installeer Slack
+    modal_title: Slack installeren
     modal_helptext: Om te beginnen zal je moeten inloggen op slack. We gaan je daar zometeen automatisch naar doorverbinden, of je kan op knop hieronder drukken om verder te gaan.
     login_to_slack: Log in op Slack
     card:
@@ -1479,18 +1443,18 @@ nl_NL:
         Je slack kanaal zal niet langer updates ontvangen over deze groep. Je kan altijd nog terug en het opnieuw toevoegen.
       identity_removed: Verbinding beëindigd
     progress:
-      install: Installeer
-      invite: Nodig uit
-      decide: Beslis
+      install: Installeren
+      invite: Uitnodigen
+      decide: Beslissen
     install:
       heading: 'Stap 1: Selecteer een Loomio groep om te integreren'
-      tooltip_heading: Loomio en Slack werken uitstekend samen
+      tooltip_heading: Loomio en Slack werken geweldig samen
       it_does_this: Betrek gebruikers waar ze zijn
       and_also_this: Start peilingen onmiddelijk en krijg feedback in real time
       and_also_also_this: Breng de mensen op de hoogte van de uitkomst en herhaal vlug je gedachtengang
       add_to_group_helptext: Selecteer een groep om te linken met Slack
       create_new_group_helptext: Heb je geen Loomio groep? Geef dan een naam in en we maken er een voor je.
-      group_name: Groep naam
+      group_name: Groepsnaam
       group_name_placeholder: Geef je nieuwe groep een naam...
       slack_installed: Slack geinstalleerd
       install_slack: Installeer nu slack

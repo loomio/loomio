@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel, AppConfig) ->
-  class DiscussionModel extends DraftableModel
+angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments, HasDrafts, AppConfig, RangeSet) ->
+  class DiscussionModel extends BaseModel
     @singular: 'discussion'
     @plural: 'discussions'
     @uniqueIndices: ['id', 'key']
@@ -10,7 +10,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
 
     afterConstruction: ->
       @private = @privateDefaultValue() if @isNew()
-      @newAttachmentIds = _.clone(@attachmentIds) or []
+      HasDocuments.apply @, showTitle: true
+      HasDrafts.apply @
 
     defaultValues: =>
       private: null
@@ -18,11 +19,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
       lastItemAt: null
       title: ''
       description: ''
-
-    serialize: ->
-      data = @baseSerialize()
-      data.discussion.attachment_ids = @newAttachmentIds
-      data
 
     privateDefaultValue: =>
       if @group()
@@ -44,12 +40,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
 
     discussion: ->
       @
-
-    documents: ->
-      @recordStore.documents.find(modelId: @id, modelType: "Discussion")
-
-    hasDocuments: ->
-      @documents().length > 0
 
     reactions: ->
       @recordStore.reactions.find(reactableId: @id, reactableType: "Discussion")
@@ -134,7 +124,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
       @update(lastReadAt: moment())
 
     markAsRead: (id) ->
-      return if @hasRead(id)
+      return if !@discussionReaderId or @hasRead(id)
       @readRanges.push([id,id])
       @readRanges = RangeSet.reduce(@readRanges)
       @updateReadRanges()
@@ -182,17 +172,14 @@ angular.module('loomioApp').factory 'DiscussionModel', (RangeSet, DraftableModel
     savePin: =>
       @remote.patchMember @keyOrId(), 'pin'
 
+    close: =>
+      @remote.patchMember @keyOrId(), 'close'
+
+    reopen: =>
+      @remote.patchMember @keyOrId(), 'reopen'
+
     edited: ->
       @versionsCount > 1
-
-    newAttachments: ->
-      @recordStore.attachments.find(@newAttachmentIds)
-
-    attachments: ->
-      @recordStore.attachments.find(attachableId: @id, attachableType: 'Discussion')
-
-    hasAttachments: ->
-      _.some @attachments()
 
     attributeForVersion: (attr, version) ->
       return '' unless version

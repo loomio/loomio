@@ -18,12 +18,11 @@ class CommentService
 
   def self.update(comment:, params:, actor:)
     comment.edited_at = Time.zone.now
-    comment.assign_attributes(params.slice(:body, :attachment_ids))
+    comment.assign_attributes(params.slice(:body, :document_ids))
 
     return false unless comment.valid?
     actor.ability.authorize! :update, comment
     comment.save!
-    comment.attachments.where('id NOT IN (?)', params[:attachment_ids]).destroy_all
 
     EventBus.broadcast('comment_update', comment, actor)
   end

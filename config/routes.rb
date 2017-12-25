@@ -121,10 +121,13 @@ Loomio::Application.routes.draw do
       patch :mark_as_read, on: :member
       patch :set_volume, on: :member
       patch :pin, on: :member
+      patch :close, on: :member
+      patch :reopen, on: :member
       patch :unpin, on: :member
       patch :pin_reader, on: :member
       patch :unpin_reader, on: :member
       patch :move, on: :member
+      get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
     end
@@ -155,7 +158,6 @@ Loomio::Application.routes.draw do
     resources :comments,    only: [:create, :update, :destroy]
     resources :reactions,   only: [:create, :update, :index, :destroy]
 
-    resources :attachments, only: [:create, :destroy]
     resources :documents, only: [:create, :update, :destroy, :index] do
       get :for_group, on: :collection
     end

@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/meeting/vote_form/poll_meeting_vote_form.html'
-  controller: ($scope, PollService, MentionService, KeyEventService) ->
+  controller: ($scope, PollService, KeyEventService) ->
     $scope.vars = {}
 
     initForm = do ->
@@ -17,5 +17,4 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
     $scope.$on 'timeZoneSelected', (e, zone) ->
       $scope.zone = zone
 
-    MentionService.applyMentions($scope, $scope.stance)
     KeyEventService.submitOnEnter($scope)

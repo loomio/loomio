@@ -163,4 +163,13 @@ describe Poll do
       expect { create(:stance, poll: poll, participant: user) }.to change { poll.participants.count }.by(1)
     end
   end
+
+  describe 'time_zone' do
+    let(:poll) { create :poll, group: create(:formal_group), author: user }
+    let(:user) { create :user, time_zone: "Asia/Seoul" }
+
+    it 'defaults to the authors time zone' do
+      expect(poll.time_zone).to eq user.time_zone
+    end
+  end
 end

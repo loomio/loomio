@@ -39,11 +39,8 @@ class API::MembershipsController < API::RestfulController
   end
 
   def autocomplete
-    load_and_authorize :group
-    authorize! :members_autocomplete, @group
-
     @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
-                                                     group: @group,
+                                                     group: load_and_authorize(:group, :members_autocomplete),
                                                      current_user: current_user,
                                                      limit: 10)
     respond_with_collection

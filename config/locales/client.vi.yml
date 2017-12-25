@@ -32,7 +32,6 @@ vi:
     name_label: Tên
     email_label: Email
   group_page:
-    discussions: 'Các phần thảo luận'
     options_label: 'Tùy chọn'
     options:
       label: 'Tùy chọn'
@@ -52,6 +51,8 @@ vi:
     name_label: 'Tên'
     email_label: 'Email'
     locale_label: 'Ngôn ngữ'
+  thread_context:
+    close_thread: 'Đóng lại'
   delete_comment_dialog:
     title: 'Xóa bình luận'
     question: 'Bạn có chắc muốn xóa bình luận này?'

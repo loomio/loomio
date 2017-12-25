@@ -18,10 +18,9 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
         path:   @path
         params: @params
       .then (data) =>
-        if data[@collection].length > 0
-          @numLoaded += data[@collection].length
-        else
-          @exhausted = true
+        records = data[@collection] || []
+        @numLoaded += records.length
+        @exhausted = true if records.length < @params.per
         data
       .then(@then)
       .finally =>

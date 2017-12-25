@@ -303,23 +303,12 @@ ro:
     you: "Tu"
     you_and_name: "Tu si {{name}}"
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Acest grup nu are inca nici o discutie."
-        no_discussions_matching_filters_html: "Nici o discutie de aici nu se potriveste acestor filtre. <a href='%{link}'>Clear filters</a>."
-        no_public_discussions: "Nu sunt discutii publice in acest grup."
-        discussions_are_private: "Toate discutiile din acest grup sunt private."
-        join_group: "Pentru a vedea discutiile private, e necesar sa intri in grup."
-        request_membership: "Pentru a vedea discutiile private, cere sa intri in grup."
-        membership_is_invitation_only: "Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui membru."
-        membership_is_invitation_by_admin_only: "Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui coordonator. "
     messages:
       privacy:
         public: 'Acest grup este acum vizibil public'
       leave_group_success: 'Ai parasit acest grup'
     new_cover_photo: 'Uploadeaza o noua poza de fundal'
     new_group_logo: 'Incarcare nou logo de grup'
-    discussions: 'Discutii'
     discussions_placeholder: 'O discutie este locul unde oricine poate deschide un subiect care să duca la luarea unei decizii..'
     options_label: 'Optiuni'
     options:
@@ -424,6 +413,7 @@ ro:
     aria_label: 'Contextul discutiei'
     thread_options: 'Optiunile discutiei'
     email_settings: 'Setari email'
+    close_thread: 'Inchide'
     mute_thread: 'Ascunde notificari'
     delete_thread: 'Sterge'
     add_comment: 'Comenteaza'

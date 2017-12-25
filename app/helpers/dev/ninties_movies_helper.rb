@@ -132,6 +132,18 @@ module Dev::NintiesMoviesHelper
     @discussion
   end
 
+  def create_closed_discussion
+    unless @closed_discussion
+      @closed_discussion = Discussion.create(title: 'This thread is old and closed',
+                                             private: false,
+                                             closed_at: Time.now,
+                                             group: create_group,
+                                             author: jennifer)
+      DiscussionService.create(discussion: @closed_discussion, actor: @closed_discussion.author)
+    end
+    @closed_discussion
+  end
+
   def create_public_discussion
     unless @another_discussion
       @another_discussion = Discussion.create!(title: "The name's Johnny Utah!",
@@ -267,7 +279,7 @@ module Dev::NintiesMoviesHelper
 
     # poll_edited
     create_poll.update(title: "Another poll title")
-    Events::PollEdited.publish!(create_poll.versions.last, patrick)
+    Events::PollEdited.publish!(create_poll, patrick)
 
     # stance_created
     Events::StanceCreated.publish!(create_stance)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205204615) do
+ActiveRecord::Schema.define(version: 20171224040056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,9 +221,8 @@ ActiveRecord::Schema.define(version: 20171205204615) do
     t.datetime "last_comment_at"
     t.text     "description"
     t.boolean  "uses_markdown",                   default: false, null: false
-    t.boolean  "is_deleted",                      default: false, null: false
     t.integer  "items_count",                     default: 0,     null: false
-    t.datetime "archived_at"
+    t.datetime "closed_at"
     t.boolean  "private"
     t.string   "key",                 limit: 255
     t.string   "iframe_src",          limit: 255
@@ -242,20 +241,17 @@ ActiveRecord::Schema.define(version: 20171205204615) do
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
   add_index "discussions", ["created_at"], name: "index_discussions_on_created_at", using: :btree
   add_index "discussions", ["group_id"], name: "index_discussions_on_group_id", using: :btree
-  add_index "discussions", ["is_deleted", "archived_at", "private"], name: "index_discussions_visible", using: :btree
-  add_index "discussions", ["is_deleted", "archived_at"], name: "index_discussions_on_is_deleted_and_archived_at", using: :btree
-  add_index "discussions", ["is_deleted"], name: "index_discussions_on_is_deleted", using: :btree
   add_index "discussions", ["key"], name: "index_discussions_on_key", unique: true, using: :btree
   add_index "discussions", ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: {"last_activity_at"=>:desc}, using: :btree
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
 
   create_table "documents", force: :cascade do |t|
-    t.integer  "model_id",   null: false
-    t.string   "model_type", null: false
+    t.integer  "model_id"
+    t.string   "model_type"
     t.string   "title"
     t.string   "url"
-    t.string   "doctype",    null: false
-    t.string   "color",      null: false
+    t.string   "doctype",        null: false
+    t.string   "color",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "icon"
@@ -264,6 +260,9 @@ ActiveRecord::Schema.define(version: 20171205204615) do
     t.string   "thumb_url"
     t.string   "file_file_name"
   end
+
+  add_index "documents", ["model_id"], name: "index_documents_on_model_id", using: :btree
+  add_index "documents", ["model_type"], name: "index_documents_on_model_type", using: :btree
 
   create_table "drafts", force: :cascade do |t|
     t.integer "user_id"
@@ -391,6 +390,8 @@ ActiveRecord::Schema.define(version: 20171205204615) do
     t.integer  "polls_count",                                    default: 0,              null: false
     t.integer  "subgroups_count",                                default: 0,              null: false
     t.string   "type",                                           default: "FormalGroup",  null: false
+    t.integer  "open_discussions_count",                         default: 0,              null: false
+    t.integer  "closed_discussions_count",                       default: 0,              null: false
   end
 
   add_index "groups", ["archived_at"], name: "index_groups_on_archived_at", using: :btree

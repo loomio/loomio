@@ -24,6 +24,33 @@ describe 'Discussion Page', ->
       page.click('.thread-preview__link')
       page.expectElement('.timeago')
 
+  describe 'close thread', ->
+    it 'can close and reopen a thread', ->
+      page.loadPath 'setup_open_and_closed_discussions'
+      page.expectText '.discussions-card__header', 'Open threads'
+      page.expectText '.discussions-card__header', '1 Closed'
+      page.expectNoText '.discussions-card', 'This thread is old and closed'
+      page.expectText '.discussions-card', 'What star sign are you?'
+
+      page.clickFirst '.thread-preview'
+      page.click '.context-panel-dropdown__button'
+      page.click '.context-panel-dropdown__option--close'
+      page.expectElement '.close-explanation-modal'
+      page.click '.close-explanation-modal__close-thread'
+      page.expectFlash 'Thread closed'
+      page.click '.group-theme__name--compact'
+
+      page.expectNoText '.discussions-card', 'What star sign are you?'
+      page.click '.discussions-card__filter--closed'
+      page.expectText '.discussions-card', 'What star sign are you?'
+      page.clickFirst '.thread-preview'
+      page.click '.context-panel-dropdown__button'
+      page.click '.context-panel-dropdown__option--reopen'
+      page.expectFlash 'Thread reopened'
+
+      page.click '.group-theme__name--compact'
+      page.expectText '.discussions-card', 'What star sign are you?'
+
   describe 'edit thread', ->
     beforeEach ->
       page.loadPath('setup_discussion')
@@ -38,7 +65,7 @@ describe 'Discussion Page', ->
       page.expectText('.context-panel', 'better title')
       page.expectText('.context-panel', 'improved description')
       page.expectText('.context-panel', 'Private')
-      page.expectText('.thread-item__title', 'edited the thread title')
+      page.expectText('.thread-item__title', 'edited the thread')
 
     xit 'does not store cancelled thread info', ->
       page.click '.context-panel-dropdown__button',
@@ -123,10 +150,7 @@ describe 'Discussion Page', ->
       page.click '.pin-thread-modal__submit'
 
       page.expectFlash 'Thread pinned'
-      page.expectElement '.context-panel__pin'
-
-      page.click '.sidebar__list-item-button--recent'
-      page.expectElement '.thread-preview__pin'
+      page.expectElement '.context-panel__status .mdi-pin'
 
   describe 'changing thread email settings', ->
     beforeEach ->
@@ -189,7 +213,7 @@ describe 'Discussion Page', ->
       page.click '.action-dock__button--reply_to_comment'
       page.fillIn '.comment-form textarea', 'hi this is my comment'
       page.click '.comment-form__submit-button'
-      page.expectText '.activity-card', 'in reply to'
+      page.expectText '.activity-card__activity-list', 'hi this is my comment'
       page.expectFlash 'Patrick Swayze notified of reply'
 
     it 'can react to a comment', ->
@@ -210,7 +234,7 @@ describe 'Discussion Page', ->
       page.click '.comment-form__submit-button'
       page.click '.action-dock__button--edit_comment'
       page.fillIn '.edit-comment-form textarea', 'edited comment right thur'
-      page.click '.comment-form__submit-btn'
+      page.click '.edit-comment-form .comment-form__submit-button'
       page.expectText '.new-comment', 'edited comment right thur'
 
     it 'lets you view comment revision history', ->
@@ -218,7 +242,7 @@ describe 'Discussion Page', ->
       page.click '.comment-form__submit-button'
       page.click '.action-dock__button--edit_comment'
       page.fillIn '.edit-comment-form textarea', 'Revised comment!'
-      page.click  '.comment-form__submit-btn'
+      page.click  '.edit-comment-form .comment-form__submit-button'
       page.click '.action-dock__button--show_history'
       page.expectText '.revision-history-modal__body', 'Revised comment!'
       page.expectText '.revision-history-modal__body', 'Comment!'

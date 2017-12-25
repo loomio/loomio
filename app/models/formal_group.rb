@@ -7,8 +7,6 @@ class FormalGroup < Group
 
   validate :limit_inheritance
 
-  before_save :update_full_name_if_name_changed
-
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
@@ -32,7 +30,7 @@ class FormalGroup < Group
   has_many :votes, through: :motions
   has_many :group_identities, dependent: :destroy, foreign_key: :group_id
   has_many :identities, through: :group_identities
-  has_many :documents, as: :model
+  has_many :documents, as: :model, dependent: :destroy
   has_many :discussion_documents, through: :discussions, source: :documents
   has_many :poll_documents,       through: :polls,       source: :documents
   has_many :comment_documents,    through: :comments,    source: :documents
@@ -47,7 +45,10 @@ class FormalGroup < Group
   has_many :all_subgroups, class_name: 'Group', foreign_key: :parent_id
 
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
-  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.count }
+  define_counter_cache(:open_discussions_count)    { |group| group.discussions.is_open.count }
+  define_counter_cache(:closed_discussions_count)  { |group| group.discussions.is_closed.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.count }
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
 
   delegate :include?, to: :users, prefix: true
@@ -139,18 +140,12 @@ class FormalGroup < Group
     admins.first.email
   end
 
-  def update_full_name_if_name_changed
-    if changes.include?('name')
-      update_full_name
-      subgroups.each do |subgroup|
-        subgroup.full_name = name + " - " + subgroup.name
-        subgroup.save(validate: false)
-      end
+  def full_name
+    if is_subgroup?
+      [parent.name, name].join(' - ')
+    else
+      name
     end
-  end
-
-  def update_full_name
-    self.full_name = calculate_full_name
   end
 
   def id_and_subgroup_ids
@@ -174,10 +169,6 @@ class FormalGroup < Group
   end
 
   private
-
-  def calculate_full_name
-    [parent&.name, name].compact.join(" - ")
-  end
 
   def limit_inheritance
     if parent_id.present?

@@ -2,7 +2,7 @@ angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootSc
   $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
 
   @showHelpTranslate = ->
-    AppConfig.features.help_link
+    AppConfig.features.app.help_link
 
   @init = =>
     return unless AbilityService.isLoggedIn()

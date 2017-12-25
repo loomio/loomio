@@ -198,7 +198,7 @@ describe 'Group Page', ->
 
     it 'successfully edits group name and description', ->
       page.fillIn('#group-name', 'Clean Dancing Shoes')
-      page.fillIn('#group-description', 'Dusty sandles')
+      page.fillIn('.group-form .lmo-textarea textarea', 'Dusty sandles')
       page.click('.group-form__submit-button')
       page.expectText('.group-theme__name', 'Clean Dancing Shoes')
       page.expectText('.description-card__text', 'Dusty sandles')

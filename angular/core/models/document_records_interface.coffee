@@ -7,9 +7,21 @@ angular.module('loomioApp').factory 'DocumentRecordsInterface', (BaseRecordsInte
         params:
           "#{model.constructor.singular}_id": model.id
 
-    fetchByGroup: (group, query) ->
+    fetchByGroup: (group, query, options = {}) ->
+      options.q = query if query?
+      options.group_key = group.key
       @fetch
         path: 'for_group'
-        params:
-          group_key: group.key
-          q:         query
+        params: options
+
+    buildFromModel: (model) ->
+      @build
+        modelId:   model.id
+        modelType: _.capitalize model.constructor.singular
+
+    upload: (file, progress) ->
+      @remote.upload '', file,
+        data:
+          'document[filename]': file.name.replace(/[^a-z0-9_\-\.]/gi, '_')
+        fileFormDataName: 'document[file]'
+      , progress

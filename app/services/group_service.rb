@@ -9,7 +9,7 @@ module GroupService
     if group.is_formal_group? && group.is_parent?
       group.default_group_cover = DefaultGroupCover.sample
       group.creator             = actor if actor.is_logged_in?
-      ExampleContent.new(group).add_to_group! if AppConfig.features[:help_link]
+      ExampleContent.new(group).add_to_group! if AppConfig.app_features[:help_link]
     else
       group.save!
     end
@@ -20,6 +20,7 @@ module GroupService
   def self.update(group:, params:, actor:)
     actor.ability.authorize! :update, group
 
+    params[:features].reject! { |_,v| v.blank? } if params.has_key?(:features)
     group.assign_attributes(params)
     group.group_privacy = params[:group_privacy] if params.has_key?(:group_privacy)
     privacy_change = PrivacyChange.new(group)

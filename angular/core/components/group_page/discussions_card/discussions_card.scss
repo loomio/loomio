@@ -1,15 +1,42 @@
-.discussions-card{
-  @include cardNoPadding;
-}
-
 .discussions-card__header{
   padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
   display: flex;
   justify-content: space-between;
 }
 
-.discussions-card__placeholder {
-  margin: 0 $cardPaddingSize;
+.discussions-card__title {
+  line-height: 36px;
+}
+
+.discussions-card__filter {
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 36px;
+  &--selected { font-weight: bold; }
+}
+
+.discussions-card__search {
+  margin: 0;
+  display: flex;
+  width: 0;
+  flex-shrink: $z-extreme;
+  transition: width 0.25s ease-in-out;
+  &--open { width: 100%; }
+  i {
+    position: absolute;
+    font-size: 20px;
+    top: 0;
+    right: 0;
+  }
+}
+
+.discussions-card__no-more-threads {
+  padding: $cardPaddingSize;
+  text-align: center;
+}
+
+.discussions-card__dropdown {
+  margin: 0 0 10px 0;
 }
 
 .discussions-card__new-thread-button{
@@ -17,13 +44,8 @@
 }
 
 .discussions-card__list--empty {
-  margin: 0 17px 10px 17px;
-  padding: 20px 0;
   text-align: center;
-}
-
-.discussions-card__list{
-  clear: both;
+  padding: 0 $cardPaddingSize $cardPaddingSize $cardPaddingSize;
 }
 
 .discussions-card__show-more {

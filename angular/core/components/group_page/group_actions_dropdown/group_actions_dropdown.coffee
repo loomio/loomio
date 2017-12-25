@@ -17,6 +17,9 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
     $scope.canArchiveGroup = =>
       AbilityService.canArchiveGroup($scope.group)
 
+    $scope.canLeaveGroup = =>
+      AbilityService.canLeaveGroup($scope.group)
+
     $scope.canChangeVolume = ->
       AbilityService.canChangeGroupVolume($scope.group)
 

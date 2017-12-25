@@ -6,7 +6,7 @@ module Null::User
   end
 
   def ability
-    @ability ||= Ability.new(self)
+    @ability ||= Ability::Base.new(self)
   end
 
   def nil_methods

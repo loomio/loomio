@@ -144,16 +144,6 @@ ar:
     edited_by: 'تم تعديله من قبل <strong>{{name}}</strong>'
     posted: تم النشر
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "هذه المجموعة لا تحتوي أي مواضيع بعد"
-        no_discussions_matching_filters_html: "ليس هناك أي مواضيع توافق هذه الخيارات. <a href='%{link}'>Clear filters</a>."
-        no_public_discussions: "ليس هناك أي مواضيع عامة في هذه المجموعة."
-        discussions_are_private: "كل المواضيع في هذه المجموعة خاصة."
-        join_group: "لرؤية المواضيع الخاصة، عليك الانضمام للمجموعة."
-        request_membership: "لرؤية المواضيع الخاصة قم بطلب الانضمام للمجموعة."
-        membership_is_invitation_only: "للانضمام لهذه المجموعة يجب أن تكون مدعوّاً من قبل أحد الأعضاء."
-        membership_is_invitation_by_admin_only: "للانضمام لهذه المجموعة يجب أن تكون مدعوّاً من قبل منسق المجموعة."
     messages:
       privacy:
         members: 'هذه المجموعة ظاهرة الآن للأعضاء فقط.'
@@ -163,7 +153,6 @@ ar:
       archive_group_success: 'تم إلغاء المجموعة.'
     group_logo: 'شعار المجموعة'
     new_photo: 'صورة جديدة'
-    discussions: 'المواضيع'
     discussions_placeholder: 'الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.'
     members: 'أعضاء'
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
@@ -390,6 +379,7 @@ ar:
   thread_context:
     aria_label: 'سياق الموضوع'
     thread_options: 'خيارات الموضوع'
+    close_thread: 'مغلق'
     move_thread: 'نقل'
     print_thread: 'طباعة'
     delete_thread: 'حذف'

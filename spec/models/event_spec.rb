@@ -175,7 +175,7 @@ describe Event do
   describe 'poll_edited' do
     it 'makes an announcement to participants' do
       FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-      expect { Events::PollEdited.publish!(poll.versions.last, poll.author, true) }.to change { emails_sent }
+      expect { Events::PollEdited.publish!(poll, poll.author, true) }.to change { emails_sent }
       email_users = Events::PollEdited.last.send(:email_recipients)
       email_users.should      include user_thread_loud
       email_users.should_not  include user_membership_loud
@@ -207,7 +207,7 @@ describe Event do
     end
 
     it 'notifies mentioned users' do
-      expect { Events::PollEdited.publish!(poll.versions.last, poll.author) }.to change { emails_sent }
+      expect { Events::PollEdited.publish!(poll, poll.author) }.to change { emails_sent }
       email_users = Events::PollEdited.last.send(:email_recipients)
       expect(email_users.length).to eq 1
       expect(email_users).to include user_mentioned

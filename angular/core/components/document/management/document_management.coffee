@@ -5,8 +5,8 @@ angular.module('loomioApp').directive 'documentManagement', (AbilityService, Mod
 
     $scope.documents = ->
       _.filter $scope.group.allDocuments(), (doc) ->
-        return false  if $scope.filter == 'group'      and doc.model() != $scope.group
-        return false  if $scope.filter == 'discussion' and doc.model() == $scope.group
+        return false  if $scope.filter == 'group'   and doc.model() != $scope.group
+        return false  if $scope.filter == 'content' and doc.model() == $scope.group
         _.isEmpty($scope.fragment) or doc.title.match(///#{$scope.fragment}///i)
 
     $scope.hasDocuments = ->

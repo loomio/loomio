@@ -1,13 +1,13 @@
-angular.module('loomioApp').directive 'documentList', (Records, AbilityService, ModalService, DocumentModal) ->
-  scope: {model: '='}
+angular.module('loomioApp').directive 'documentList', (Records, AbilityService, ModalService, DocumentModal, ConfirmModal) ->
+  scope: {model: '=', showEdit: '=?', hidePreview: '=?'}
   replace: true
   templateUrl: 'generated/components/document/list/document_list.html'
   controller: ($scope) ->
-    Records.documents.fetchByModel($scope.model)
+    Records.documents.fetchByModel($scope.model) unless $scope.model.isNew()
 
-    $scope.canEditDocuments = ->
-      $scope.model.constructor.singular == 'discussion' and
-      AbilityService.canEditDocument($scope.model.group())
+    $scope.showTitle = ->
+      ($scope.model.showDocumentTitle or $scope.showEdit) and
+      ($scope.model.hasDocuments() or $scope.placeholder)
 
-    $scope.edit = (doc) ->
-      ModalService.open DocumentModal, doc: -> doc
+    $scope.edit = (doc, $mdMenu) ->
+      $scope.$broadcast 'initializeDocument', doc, $mdMenu
