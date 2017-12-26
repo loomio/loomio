@@ -45,7 +45,7 @@
     "angular-sortable-view": "0.0.15",
     "angular-translate": "~2.15.1",
     "angular-translate-loader-url": "latest",
-    "angular_record_store": "3.0.13",
+    "angular_record_store": "3.0.14",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
     "bowser": "latest",
@@ -71,6 +71,7 @@
   "devDependencies": {
     "add-stream": "^1.0.0",
     "browserify": "^14.5.0",
+    "browserify-ngannotate": "^2.0.0",
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.1.0",
     "globby": "^7.1.1",

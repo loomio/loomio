@@ -37,6 +37,10 @@ acorn@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.2.1.tgz#317ac7821826c22c702d66189ab8359675f135d7"
 
+acorn@~2.6.4:
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-2.6.4.tgz#eb1f45b4a43fa31d03701a5ec46f3b52673e90ee"
+
 add-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
@@ -88,6 +92,12 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
 
+alter@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/alter/-/alter-0.2.0.tgz#c7588808617572034aae62480af26b1d4d1cb3cd"
+  dependencies:
+    stable "~0.1.3"
+
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
@@ -132,12 +142,6 @@ angular-mocks@^1.5.5:
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.6.7.tgz#85bf45a2537eac59fc6f4cf319846102e8000e65"
 
-angular-off-click@0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/angular-off-click/-/angular-off-click-0.0.9.tgz#ee79f8a115083015af50facb57edfb7d1e44acfa"
-  dependencies:
-    angular "*"
-
 angular-recaptcha@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/angular-recaptcha/-/angular-recaptcha-4.1.0.tgz#ca5de30a8f020e73d517b9097059ad8851a29847"
@@ -176,21 +180,21 @@ angular-translate@~2.16.0:
   dependencies:
     angular ">=1.2.26 <=1.6"
 
-angular@*, angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.7.tgz#0f89837dae1776b01ccb1fa2096db0d9373d9897"
-
 angular@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
+
+angular@>=1.0.6, "angular@>=1.2.26 <=1.6":
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.7.tgz#0f89837dae1776b01ccb1fa2096db0d9373d9897"
 
 angular@^1.2.5:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"
 
-angular_record_store@3.0.13:
-  version "3.0.13"
-  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-3.0.13.tgz#a573154d005047ecc347c0851aa570dfa90f0479"
+angular_record_store@3.0.14:
+  version "3.0.14"
+  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-3.0.14.tgz#92240a88aafa7a822b3a9f9fafc5dede8bde151c"
   dependencies:
     coffeeify "^1.1.0"
     lodash "^3.10.1"
@@ -614,6 +618,15 @@ browserify-des@^1.0.0:
     cipher-base "^1.0.1"
     des.js "^1.0.0"
     inherits "^2.0.1"
+
+browserify-ngannotate@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/browserify-ngannotate/-/browserify-ngannotate-2.0.0.tgz#a67619f07597f1a3eb47484fd87e84bb035d956e"
+  dependencies:
+    clone "^1.0.2"
+    defaults "^1.0.3"
+    ng-annotate "^1.0.2"
+    through2 "^2.0.0"
 
 browserify-rsa@^4.0.0:
   version "4.0.1"
@@ -1119,7 +1132,7 @@ convert-source-map@^1.1.2, convert-source-map@^1.2.0, convert-source-map@^1.3.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.1.tgz#b8278097b9bc229365de5c62cf5fcaed8b5599e5"
 
-convert-source-map@~1.1.0:
+convert-source-map@~1.1.0, convert-source-map@~1.1.2:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.1.3.tgz#4829c877e9fe49b3161f3bf3673888e204699860"
 
@@ -1308,7 +1321,7 @@ deep-extend@~0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
 
-defaults@^1.0.0:
+defaults@^1.0.0, defaults@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/defaults/-/defaults-1.0.3.tgz#c656051e9817d9ff08ed881477f3fe4019f3ef7d"
   dependencies:
@@ -3646,6 +3659,23 @@ ncname@1.0.x:
   dependencies:
     xml-char-classes "^1.0.0"
 
+ng-annotate@^1.0.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/ng-annotate/-/ng-annotate-1.2.2.tgz#dc3fc51ba0b2f8b385dbe047f4da06f580a1fd61"
+  dependencies:
+    acorn "~2.6.4"
+    alter "~0.2.0"
+    convert-source-map "~1.1.2"
+    optimist "~0.6.1"
+    ordered-ast-traverse "~1.1.1"
+    simple-fmt "~0.1.0"
+    simple-is "~0.2.0"
+    source-map "~0.5.3"
+    stable "~0.1.5"
+    stringmap "~0.2.2"
+    stringset "~0.2.1"
+    tryor "~0.1.2"
+
 ng-file-upload@~3.2.4:
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-3.2.5.tgz#90c8021f09507bddf4f45a99b5cde9ca9a8262f5"
@@ -3852,7 +3882,7 @@ once@~1.3.0:
   dependencies:
     wrappy "1"
 
-optimist@~0.6.0:
+optimist@~0.6.0, optimist@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
   dependencies:
@@ -3870,6 +3900,16 @@ orchestrator@^0.3.0:
     end-of-stream "~0.1.5"
     sequencify "~0.0.7"
     stream-consume "~0.1.0"
+
+ordered-ast-traverse@~1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ordered-ast-traverse/-/ordered-ast-traverse-1.1.1.tgz#6843a170bc0eee8b520cc8ddc1ddd3aa30fa057c"
+  dependencies:
+    ordered-esprima-props "~1.1.0"
+
+ordered-esprima-props@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ordered-esprima-props/-/ordered-esprima-props-1.1.0.tgz#a9827086df5f010aa60e9bd02b6e0335cea2ffcb"
 
 ordered-read-streams@^0.1.0:
   version "0.1.0"
@@ -4952,6 +4992,14 @@ signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
+simple-fmt@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/simple-fmt/-/simple-fmt-0.1.0.tgz#191bf566a59e6530482cb25ab53b4a8dc85c3a6b"
+
+simple-is@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/simple-is/-/simple-is-0.2.0.tgz#2abb75aade39deb5cc815ce10e6191164850baf0"
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
@@ -5101,6 +5149,10 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
+stable@~0.1.3, stable@~0.1.5:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/stable/-/stable-0.1.6.tgz#910f5d2aed7b520c6e777499c1f32e139fdecb10"
+
 static-extend@^0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/static-extend/-/static-extend-0.1.2.tgz#60809c39cbff55337226fd5e0b520f341f1fb5c6"
@@ -5187,6 +5239,14 @@ stringify-object@^2.3.0:
   dependencies:
     is-plain-obj "^1.0.0"
     is-regexp "^1.0.0"
+
+stringmap@~0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/stringmap/-/stringmap-0.2.2.tgz#556c137b258f942b8776f5b2ef582aa069d7d1b1"
+
+stringset@~0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/stringset/-/stringset-0.2.1.tgz#ef259c4e349344377fcd1c913dd2e848c9c042b5"
 
 stringstream@~0.0.4, stringstream@~0.0.5:
   version "0.0.5"
@@ -5446,6 +5506,10 @@ trim-newlines@^1.0.0:
 tryit@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tryit/-/tryit-1.0.3.tgz#393be730a9446fd1ead6da59a014308f36c289cb"
+
+tryor@~0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/tryor/-/tryor-0.1.2.tgz#8145e4ca7caff40acde3ccf946e8b8bb75b4172b"
 
 tty-browserify@~0.0.0:
   version "0.0.0"

@@ -10,7 +10,6 @@ angular.module('loomioApp', [
   'ui.gravatar',
   'duScroll',
   'angular-clipboard',
-  'offClick',
   'ngMaterial',
   'angulartics',
   'angulartics.google.tagmanager',

@@ -16,6 +16,7 @@ rename   = require 'gulp-rename'
 
 browserify = require 'browserify'
 coffeeify  = require 'coffeeify'
+annotate   = require 'browserify-ngannotate' # to allow for minification of angular
 glob       = require 'globby'
 source     = require 'vinyl-source-stream'
 fs         = require 'fs'
@@ -32,7 +33,7 @@ module.exports =
   browserify: ->
     pipe browserify(
       entries: [paths.app.main]
-      transform: [coffeeify]
+      transform: [coffeeify, annotate]
       paths: ['./', './node_modules']
     ).bundle().on('error', (err) -> console.log(err)), [
       source('app.js'),
