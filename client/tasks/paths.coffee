@@ -12,21 +12,21 @@ include = (file, key) ->
 
 module.exports =
   app:
-    main:         './angular/main.coffee'
-    folders:     ['initializers', 'config', 'components']
-    coffee:       './angular/**/*.coffee'
-    haml:         './angular/components/**/*.haml'
+    main:         'angular/main.coffee'
+    coffee:       'angular/**/*.coffee'
+    haml:         'angular/components/**/*.haml'
     scss:         _.flatten([include(vendor, 'css'), 'angular/css/app.scss', 'angular/components/**/*.scss'])
     scss_include: _.flatten([include(vendor, 'css_includes'), 'angular/css'])
+    folders:      ['initializers', 'config', 'components']
 
   shared:
-    coffee:       ['./shared/**/*.coffee']
+    coffee:       'shared/**/*.coffee'
 
   plugin:
     coffee: include plugins, 'coffee'
     haml:   include plugins, 'haml'
     scss:   _.flatten(['angular/css/plugin.scss', include(plugins, 'scss')])
-    scss_include: './angular/css'
+    scss_include: 'angular/css'
 
   extra:
     emojis:         include(vendor, 'emoji')
@@ -40,13 +40,13 @@ module.exports =
     moment_locales: '../public/client/development/moment_locales'
 
   js:
-    execcoffee:   './angular/initializers/**/*.coffee'
+    execcoffee:   'angular/initializers/**/*.coffee'
     execjs:       _.flatten(include(vendor, 'execjs'), include(vendor, 'lodash'))
     vendor:       include(vendor, 'js')
 
   vue:
-    coffee:         './vue/main.coffee'
-    vue:            './vue/components/*.vue'
+    main:           'vue/main.coffee'
+    vue:            'vue/components/*.vue'
 
   protractor:
     config:       'angular/test/protractor.coffee'

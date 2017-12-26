@@ -13,5 +13,5 @@ module.exports = ->
   gulp.watch paths.plugin.haml,   ['angular:plugin_coffee']
   gulp.watch paths.plugin.scss,   ['angular:plugin_scss']
   gulp.watch paths.vue.vue,       ['vue:compile-fast']
-  gulp.watch paths.vue.coffee,    ['vue:compile-fast']
+  gulp.watch paths.vue.main,      ['vue:compile-fast']
   gulp.watch paths.shared.coffee, ['vue:compile-fast']
