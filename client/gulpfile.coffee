@@ -22,12 +22,9 @@ gulp.task 'angular:plugin_scss',     plugin.scss
 gulp.task 'angular:fonts',           extra.fonts
 gulp.task 'angular:emoji',           extra.emoji
 gulp.task 'angular:moment_locales',  extra.moment_locales
-gulp.task 'angular:minify-js',       minify.js
-gulp.task 'angular:minify-css',      minify.css
-gulp.task 'angular:minify', ['minify-js', 'minify-css']
-
-gulp.task 'vue:vueify',               vue.vue
-
+gulp.task 'angular:minify-js',       minify.app.js
+gulp.task 'angular:minify-css',      minify.app.css
+gulp.task 'angular:minify', ['angular:minify-js', 'angular:minify-css']
 gulp.task 'angular:compile-fast', [
   'angular:fonts',
   'angular:app_coffee',
@@ -41,9 +38,14 @@ gulp.task 'angular:compile-fast', [
   'angular:moment_locales'
 ]
 
+gulp.task 'vue:vueify',               minify.app.vue
+gulp.task 'vue:minify-js',            minify.vue.js
+gulp.task 'vue:minify-css',           minify.vue.css
+gulp.task 'vue:minify', ['vue:minify-js', 'vue:minify-css']
 gulp.task 'vue:compile-fast', ['vue:vueify']
 
 gulp.task 'compile-fast', ['angular:compile-fast', 'vue:compile-fast']
+gulp.task 'minify', ['vue:minify', 'angular-minify']
 gulp.task 'compile', (done) -> sequence('compile-fast', 'minify', -> done())
 gulp.task 'dev',            -> sequence('compile-fast', require('./tasks/watch'))
 

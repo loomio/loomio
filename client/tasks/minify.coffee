@@ -10,6 +10,7 @@ uglify   = require 'gulp-uglify'
 rename   = require 'gulp-rename'
 cssmin   = require 'gulp-cssmin'
 prefix   = require 'gulp-autoprefixer'
+_        = require 'lodash'
 
 minifyJs = (filenames...) ->
   _.each filenames, (filename) ->
@@ -30,5 +31,9 @@ minifyCss = (filenames...) ->
     ]
 
 module.exports =
-  js:  -> minifyJs 'app', 'plugin', 'vendor', 'execjs', 'vue'
-  css: -> minifyCss 'app', 'plugin', 'vue'
+  app:
+    js:  -> minifyJs 'app', 'plugin', 'vendor', 'execjs'
+    css: -> minifyCss 'app', 'plugin'
+  vue:
+    js:  -> minifyJs 'vue'
+    css: -> minifyCss 'vue'
