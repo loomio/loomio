@@ -1,4 +1,5 @@
 AppConfig = require 'shared/services/app_config.coffee'
+svg       = require 'svg.js'
 
 angular.module('loomioApp').directive 'pollProposalChart', ->
   template: '<div class="poll-proposal-chart"></div>'
@@ -8,7 +9,7 @@ angular.module('loomioApp').directive 'pollProposalChart', ->
     diameter: '@'
   restrict: 'E'
   controller: ($scope, $element) ->
-    draw = SVG($element[0]).size('100%', '100%')
+    draw = svg($element[0]).size('100%', '100%')
     half = $scope.diameter / 2.0
     radius = half
     shapes = []

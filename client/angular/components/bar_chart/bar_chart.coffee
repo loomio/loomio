@@ -1,4 +1,5 @@
 AppConfig = require 'shared/services/app_config.coffee'
+svg       = require 'svg.js'
 
 angular.module('loomioApp').directive 'barChart', ->
   template: '<div class="bar-chart"></div>'
@@ -8,7 +9,7 @@ angular.module('loomioApp').directive 'barChart', ->
     size: '@'
   restrict: 'E'
   controller: ($scope, $element) ->
-    draw = SVG($element[0]).size('100%', '100%')
+    draw = svg($element[0]).size('100%', '100%')
     shapes = []
 
     scoreData = ->
