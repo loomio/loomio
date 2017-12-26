@@ -1,5 +1,7 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
+_ = require 'lodash'
+
 module.exports = new class HasDrafts
   apply: (model) ->
     model.draftParent = model.draftParent or ->

@@ -1,6 +1,8 @@
 BaseModel = require 'shared/models/base_model.coffee'
 AppConfig = require 'shared/services/app_config.coffee'
 
+_ = require 'lodash'
+
 module.exports = class MembershipModel extends BaseModel
   @singular: 'membership'
   @plural: 'memberships'

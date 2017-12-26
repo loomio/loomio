@@ -1,5 +1,7 @@
 BaseModel = require 'shared/models/base_model.coffee'
 
+_ = require 'lodash'
+
 module.exports = class VersionModel extends BaseModel
   @singular: 'version'
   @plural: 'versions'

@@ -1,4 +1,5 @@
 moment  = require 'moment-timezone'
+_       = require 'lodash'
 
 module.exports = do ->
   configData = if window? and window.Loomio?

@@ -1,6 +1,8 @@
 Records = require 'shared/services/records.coffee'
 Session = require 'shared/services/session.coffee'
+
 moment  = require 'moment'
+_       = require 'lodash'
 
 module.exports = new class ThreadQueryService
 

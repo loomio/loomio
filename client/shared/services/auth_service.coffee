@@ -1,5 +1,7 @@
 Records = require 'shared/services/records.coffee'
 
+_ = require 'lodash'
+
 module.exports = new class AuthService
 
   emailStatus: (user) ->

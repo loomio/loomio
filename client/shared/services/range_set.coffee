@@ -1,3 +1,5 @@
+_ = require 'lodash'
+
 module.exports = new class RangeSet
   parse: (outer) ->
     _.map(outer.split(','), (pair) -> _.map(pair.split('-'), (s) -> parseInt(s)))

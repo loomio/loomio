@@ -1,5 +1,7 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
+_ = require 'lodash'
+
 module.exports = new class PaginationService
   windowFor: ({current, min, max, pageType}) ->
     pageSize = parseInt(AppConfig.pageSize[pageType]) or AppConfig.pageSize.default

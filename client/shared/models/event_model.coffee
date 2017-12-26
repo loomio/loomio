@@ -1,5 +1,7 @@
 BaseModel = require 'shared/models/base_model.coffee'
 
+_ = require 'lodash'
+
 module.exports = class EventModel extends BaseModel
   @singular: 'event'
   @plural: 'events'

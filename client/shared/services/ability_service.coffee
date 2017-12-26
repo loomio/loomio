@@ -2,6 +2,8 @@ AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 Session   = require 'shared/services/session.coffee'
 
+_ = require 'lodash'
+
 module.exports = new class AbilityService
 
   isLoggedIn: ->

@@ -5,7 +5,9 @@ HasDrafts       = require 'shared/mixins/has_drafts.coffee'
 HasDocuments    = require 'shared/mixins/has_documents.coffee'
 HasMentions     = require 'shared/mixins/has_mentions.coffee'
 HasTranslations = require 'shared/mixins/has_translations.coffee'
-moment          = require 'moment'
+
+moment = require 'moment'
+_      = require 'lodash'
 
 module.exports = class DiscussionModel extends BaseModel
   @singular: 'discussion'

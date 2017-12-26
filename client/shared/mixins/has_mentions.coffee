@@ -1,3 +1,5 @@
+_ = require 'lodash'
+
 module.exports = new class HasMentions
   apply: (model, field) ->
     model["cooked#{_.capitalize(field)}"] = ->

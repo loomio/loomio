@@ -1,6 +1,8 @@
 BaseRecordsInterface = require 'shared/interfaces/base_records_interface.coffee'
 PollModel            = require 'shared/models/poll_model.coffee'
 
+_ = require 'lodash'
+
 module.exports = class PollRecordsInterface extends BaseRecordsInterface
   model: PollModel
 

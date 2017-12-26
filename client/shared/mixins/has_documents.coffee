@@ -1,3 +1,5 @@
+_ = require 'lodash'
+
 module.exports = new class HasDocuments
   apply: (model, opts = {}) ->
     model.newDocumentIds     = model.newDocumentIds or []

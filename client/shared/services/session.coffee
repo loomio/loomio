@@ -1,6 +1,8 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 
+_ = require 'lodash'
+
 module.exports = new class Session
   signIn: (data, invitationToken) ->
     Records.import(data)
