@@ -9,9 +9,9 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 # A series of actions relating to updating the current user, such as signing in
 # or changing the app's locale
 module.exports =
-  signIn: (data, $rootScope) =>
+  signIn: (data, callback) =>
     Session.signIn(data, LmoUrlService.params().invitation_token)
-    $rootScope.$broadcast 'loggedIn', Session.user()
+    callback() if typeof callback == 'function'
 
   signOut: ->
     AppConfig.loggingOut = true

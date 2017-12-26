@@ -22,19 +22,19 @@ module.exports =
 
   applyPollStartSequence: ($scope, options = {}) ->
     applySequence $scope,
-    steps: ->
-      if $scope.poll.group()
-        ['choose', 'save']
-      else
-        ['choose', 'save', 'share']
-        initialStep: if $scope.poll.pollType then 'save' else 'choose'
-        emitter: options.emitter or $scope
-        chooseComplete: (_, pollType) ->
-          $scope.poll.pollType = pollType
-          saveComplete: (_, poll) ->
-            $scope.poll = poll
-            LmoUrlService.goTo LmoUrlService.poll(poll)
-            options.afterSaveComplete(poll) if typeof options.afterSaveComplete is 'function'
+      steps: ->
+        if $scope.poll.group()
+          ['choose', 'save']
+        else
+          ['choose', 'save', 'share']
+      initialStep: if $scope.poll.pollType then 'save' else 'choose'
+      emitter: options.emitter or $scope
+      chooseComplete: (_, pollType) ->
+        $scope.poll.pollType = pollType
+      saveComplete: (_, poll) ->
+        $scope.poll = poll
+        LmoUrlService.goTo LmoUrlService.poll(poll)
+        options.afterSaveComplete(poll) if typeof options.afterSaveComplete is 'function'
 
 fieldFromTemplate = (pollType, field) ->
   (AppConfig.pollTemplates[pollType] or {})[field]

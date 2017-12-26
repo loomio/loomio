@@ -1,7 +1,10 @@
 AbilityService = require 'shared/services/ability_service.coffee'
+Records        = require 'shared/services/records.coffee'
+Session        = require 'shared/services/session.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 
-{ signIn, setLocale } = require 'angular/helpers/user.coffee'
+{ signIn }            = require 'angular/helpers/user.coffee'
+{ fieldFromTemplate } = require 'angular/helpers/poll.coffee'
 { scrollTo }          = require 'angular/helpers/window.coffee'
 
 # a helper to aid submitting forms throughout the app
@@ -27,9 +30,7 @@ module.exports =
         model.poll().clearStaleStances()
         scrollTo '.poll-common-card__results-shown'
         scope.$emit 'stanceSaved', data.stances[0].key
-        if !Session.user().emailVerified
-          signIn(data, $rootScope)
-          setLocale($translate)
+        signIn(data, -> scope.$emit 'loggedIn') unless Session.user().emailVerified
       cleanupFn: ->
         scope.$emit 'doneProcessing'
     , options))
@@ -42,9 +43,10 @@ module.exports =
         switch model.pollType
           # for polls with default poll options (proposal, check)
           when 'proposal', 'count'
-            model.pollOptionNames = _.pluck @fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
+            model.pollOptionNames = _.pluck fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
           # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
           else
+            # TODO: fix this
             $rootScope.$broadcast 'addPollOption'
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'

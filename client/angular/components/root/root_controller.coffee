@@ -23,6 +23,14 @@ angular.module('loomioApp').controller 'RootController', ($scope, $injector, $ti
     return if $scope.forcedSignIn
     $scope.forcedSignIn = true
     ModalService.open 'AuthModal', preventClose: -> true
+  $scope.loggedIn = ->
+    $scope.pageError = null
+    $scope.refreshing = true
+    $timeout -> $scope.refreshing = false
+    IntercomService.boot()
+    setLocale($translate)
+    subscribeToLiveUpdate()
+
 
   $translate.onReady -> $scope.translationsLoaded = true
 
@@ -30,15 +38,8 @@ angular.module('loomioApp').controller 'RootController', ($scope, $injector, $ti
     return if show == false
     $scope.renderSidebar = true
 
-  $scope.$on 'loggedIn', (event, user) ->
-    $scope.pageError = null
-    $scope.refreshing = true
-    $timeout -> $scope.refreshing = false
-    IntercomService.boot()
-    subscribeToLiveUpdate()
-
-  $scope.$on 'logout', ->
-    IntercomService.shutdown()
+  $scope.$on 'loggedIn', $scope.loggedIn
+  $scope.$on 'logout', -> IntercomService.shutdown()
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     title = options.title or $translate.instant(options.titleKey)
@@ -70,8 +71,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $injector, $ti
   setupAngularFlash($scope)
   setupAngularNavigate($location)
   trackEvents($scope)
-  signIn(AppConfig.bootData, $scope)
-  setLocale($translate)
+  signIn(AppConfig.bootData, $scope.loggedIn)
   registerHotkeys($scope,
     pressedI: -> ModalService.open 'InvitationModal',      group:      -> Session.currentGroup or Records.groups.build()
     pressedG: -> ModalService.open 'GroupModal',           group:      -> Records.groups.build()
