@@ -6,7 +6,7 @@
     .poll-dot-vote-vote-form__too-many-dots{ng-if: "tooManyDots()", translate: "poll_dot_vote_vote_form.too_many_dots"}
     .poll-dot-vote-vote-form__dots-remaining{ng-if: "!tooManyDots()", translate: "poll_dot_vote_vote_form.dots_remaining", translate-value-count: "{{dotsRemaining()}}"}
   %md-list.poll-common-vote-form__options
-    %md-list-item.poll-dot-vote-vote-form__option.poll-common-vote-form__option{ng-repeat: "choice in stanceChoices"}
+    %md-list-item.poll-dot-vote-vote-form__option.poll-common-vote-form__option{ng-repeat: "choice in stanceChoices track by choice.poll_option_id"}
       %md-input-container.poll-dot-vote-vote-form__input-container
         %p.poll-dot-vote-vote-form__chosen-option--name.poll-common-vote-form__border-chip.poll-common-bar-chart__bar{ng-style: "styleData(choice)"} {{ optionFor(choice).name }}
         .poll-dot-vote-vote-form__dot-input-field
