@@ -1,11 +1,12 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
+ThreadService  = require 'shared/services/thread_service.coffee'
 
 { listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
 { scrollTo }           = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate, ThreadService) ->
+angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true

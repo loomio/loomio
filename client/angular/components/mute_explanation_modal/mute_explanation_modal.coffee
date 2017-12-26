@@ -1,7 +1,8 @@
-Records      = require 'shared/services/records.coffee'
-FlashService = require 'shared/services/flash_service.coffee'
+Records       = require 'shared/services/records.coffee'
+FlashService  = require 'shared/services/flash_service.coffee'
+ThreadService = require 'shared/services/thread_service.coffee'
 
-angular.module('loomioApp').factory 'MuteExplanationModal', (ThreadService) ->
+angular.module('loomioApp').factory 'MuteExplanationModal', ->
   templateUrl: 'generated/components/mute_explanation_modal/mute_explanation_modal.html'
   controller: ($scope, thread) ->
     $scope.thread = thread
