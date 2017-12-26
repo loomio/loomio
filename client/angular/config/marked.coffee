@@ -1,3 +1,5 @@
+emojione = require 'emojione'
+
 angular.module('loomioApp').config (markedProvider) ->
   customRenderer = (opts) ->
     _super   = new marked.Renderer(opts)

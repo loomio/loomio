@@ -1,5 +1,5 @@
-# TODO: emojione = require 'emojione' here
 AppConfig = require 'shared/services/app_config.coffee'
+emojione  = require 'emojione'
 
 { emojiTitle } = require 'angular/helpers/helptext.coffee'
 

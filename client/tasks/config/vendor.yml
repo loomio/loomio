@@ -1,8 +1,6 @@
 ---
 path: node_modules
 js:
-  - bowser/bowser.js
-  - moment/min/moment.min.js
   - lodash/index.js
   - private_pub/app/assets/javascripts/private_pub.js
   - angular/angular.js
@@ -14,7 +12,6 @@ js:
   - loomio-angular-marked/dist/angular-marked.js
   - ng-file-upload/dist/angular-file-upload.js
   - ment.io/dist/mentio.js
-  - moment-timezone/builds/moment-timezone-with-data.js
   - angular-animate/angular-animate.js
   - lokijs/src/lokijs.js
   - angular-inview/angular-inview.js
@@ -22,7 +19,6 @@ js:
   - angular-scroll/angular-scroll.js
   - svg.js/dist/svg.js
   - angular-clipboard/angular-clipboard.js
-  - emojione/lib/js/emojione.js
   - angular-off-click/offClick.js
   - angular-material/angular-material.js
   - angular-aria/angular-aria.js

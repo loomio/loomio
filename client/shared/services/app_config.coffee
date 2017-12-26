@@ -1,4 +1,4 @@
-moment  = require 'moment'
+moment  = require 'moment-timezone'
 
 module.exports = do ->
   configData = if window? and window.Loomio?

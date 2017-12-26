@@ -17,9 +17,6 @@ angular.module('loomioApp').directive 'timeZoneSelect', ($translate) ->
     $scope.zoneFromName = (name) ->
       AppConfig.timeZones[name]
 
-    $scope.offsetFromName = (name) ->
-      moment().tz(zoneFromName(name)).format('Z')
-
     $scope.open = ->
       $scope.q = ""
       $scope.isOpen = true
