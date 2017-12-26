@@ -1,5 +1,6 @@
 Records = require 'shared/services/records.coffee'
 Session = require 'shared/services/session.coffee'
+moment  = require 'moment'
 
 # A series of helpers for applying listeners to scope for events, such as an
 # emoji being added or a translation being completed

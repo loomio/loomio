@@ -3,6 +3,7 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+moment         = require 'moment'
 
 { hardReload } = require 'angular/helpers/window.coffee'
 

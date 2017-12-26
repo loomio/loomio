@@ -1,5 +1,6 @@
 AppConfig   = require 'shared/services/app_config.coffee'
 TimeService = require 'shared/services/time_service.coffee'
+moment      = require 'moment'
 
 angular.module('loomioApp').directive 'timeZoneSelect', ($translate) ->
   scope: {zone: '='}

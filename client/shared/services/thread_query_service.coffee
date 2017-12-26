@@ -1,5 +1,6 @@
 Records = require 'shared/services/records.coffee'
 Session = require 'shared/services/session.coffee'
+moment  = require 'moment'
 
 module.exports = new class ThreadQueryService
 

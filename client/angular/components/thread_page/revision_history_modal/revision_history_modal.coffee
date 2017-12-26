@@ -38,9 +38,6 @@ angular.module('loomioApp').factory 'RevisionHistoryModal', ->
       else
         'revision_history_modal.edited_by'
 
-    $scope.versionCreatedAt = (version) ->
-      moment(version).format('Do MMMM YYYY, h:mma')
-
     applyLoadingFunction($scope, 'load')
     $scope.load()
 

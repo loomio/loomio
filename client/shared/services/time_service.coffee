@@ -1,4 +1,5 @@
 AppConfig = require 'shared/services/app_config.coffee'
+moment    = require 'moment'
 
 module.exports = new class TimeService
   nameForZone: (zone, nameForLocal) ->
@@ -8,6 +9,7 @@ module.exports = new class TimeService
       _.invert(AppConfig.timeZones)[zone]
 
   displayDate: (m, zone) =>
+    m = moment(m) if typeof m is 'string'
     if m._f == 'YYYY-MM-DD'
       m.format("D MMMM#{@sameYear(m)}")
     else

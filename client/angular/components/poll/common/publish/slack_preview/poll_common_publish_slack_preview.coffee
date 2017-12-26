@@ -1,5 +1,6 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Session   = require 'shared/services/session.coffee'
+moment    = require 'moment'
 
 angular.module('loomioApp').directive 'pollCommonPublishSlackPreview', ($translate) ->
   scope: {community: '=', poll: '=', message: '='}
