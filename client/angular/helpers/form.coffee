@@ -19,9 +19,8 @@ module.exports =
     , options))
 
   submitStance: (scope, model, options = {}) ->
-    pollType = model.poll().pollType
-    submitForm(scope, model, _.merge(
-      flashSuccess: "poll_#{pollType}_vote_form.stance_#{actionName(model)}"
+    submit(scope, model, _.merge(
+      flashSuccess: "poll_#{model.poll().pollType}_vote_form.stance_#{actionName(model)}"
       prepareFn: ->
         scope.$emit 'processing'
       successCallback: (data) ->
@@ -36,7 +35,7 @@ module.exports =
     , options))
 
   submitPoll: (scope, model, options = {}) ->
-    submitForm(scope, model, _.merge(
+    submit(scope, model, _.merge(
       flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
       prepareFn: =>
         scope.$emit 'processing'
