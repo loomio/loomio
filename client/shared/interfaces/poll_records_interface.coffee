@@ -4,6 +4,13 @@ PollModel            = require 'shared/models/poll_model.coffee'
 module.exports = class PollRecordsInterface extends BaseRecordsInterface
   model: PollModel
 
+  fetchComplete: (pollKey) ->
+    poll = @find(pollKey) or @build()
+    if poll.complete
+      Promise.resolve(poll)
+    else
+      @remote.fetchById(pollKey).then => @find(pollKey)
+
   fetchFor: (model, options = {}) ->
     options["#{model.constructor.singular}_key"] = model.key
     @search options

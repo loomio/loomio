@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'pollCountVoteForm', ->
   controller: ($scope) ->
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: (optionName) ->
-        _.find $scope.stance.pollOptions(), (option) -> option.name == name
+        option = _.find $scope.stance.poll().pollOptions(), (option) -> option.name == optionName
         $scope.$emit 'processing'
         $scope.stance.stanceChoicesAttributes = [poll_option_id: option.id]
 

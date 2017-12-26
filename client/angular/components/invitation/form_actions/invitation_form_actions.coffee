@@ -9,19 +9,19 @@ angular.module('loomioApp').directive 'invitationFormActions', ->
   controller: ($scope) ->
     $scope.submit = ->
       if $scope.invitationForm.hasInvitees()
-        submitForm()
+        submitForm($scope, $scope.invitationForm,
+          submitFn: Records.invitations.sendByEmail
+          successCallback: (response) =>
+            $scope.$emit 'nextStep'
+            invitationCount = response.invitations.length
+            switch invitationCount
+              when 0 then $scope.noInvitations = true
+              when 1 then FlashService.success 'invitation_form.messages.invitation_sent'
+              else        FlashService.success 'invitation_form.messages.invitations_sent', count: invitationCount
+        )()
       else
         $scope.$emit 'nextStep'
 
-    submitForm = submitForm $scope, $scope.invitationForm,
-      submitFn: Records.invitations.sendByEmail
-      successCallback: (response) =>
-        $scope.$emit 'nextStep'
-        invitationCount = response.invitations.length
-        switch invitationCount
-          when 0 then $scope.noInvitations = true
-          when 1 then FlashService.success 'invitation_form.messages.invitation_sent'
-          else        FlashService.success 'invitation_form.messages.invitations_sent', count: invitationCount
 
     $scope.submitText = ->
       if $scope.invitationForm.hasEmails()

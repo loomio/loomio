@@ -6,6 +6,6 @@ module.exports = class SearchResultRecordsInterface extends BaseRecordsInterface
 
   fetchByFragment: (fragment) ->
     @fetch
-    params:
-      q: fragment
-      per: 5
+      params:
+        q: fragment
+        per: 5
