@@ -13,7 +13,6 @@ js:
   - ng-file-upload/dist/angular-file-upload.js
   - ment.io/dist/mentio.js
   - angular-animate/angular-animate.js
-  - lokijs/src/lokijs.js
   - angular-inview/angular-inview.js
   - angular-gravatar/build/angular-gravatar.js
   - angular-scroll/angular-scroll.js
@@ -24,8 +23,6 @@ js:
   - angulartics/src/angulartics-gtm.js
   - angular-recaptcha/release/angular-recaptcha.js
   - angular-sortable-view/src/angular-sortable-view.js
-  - whatwg-fetch/fetch.js
-  - promise-polyfill/dist/promise.min.js
 vue:
   - lodash/index.js
   - whatwg-fetch/fetch.js
