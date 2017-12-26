@@ -182,6 +182,12 @@ module.exports = class DiscussionModel extends BaseModel
   savePin: =>
     @remote.patchMember @keyOrId(), 'pin'
 
+  close: =>
+    @remote.patchMember @keyOrId(), 'close'
+
+  reopen: =>
+    @remote.patchMember @keyOrId(), 'reopen'
+
   edited: ->
     @versionsCount > 1
 
