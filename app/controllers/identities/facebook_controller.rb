@@ -21,7 +21,7 @@ class Identities::FacebookController < Identities::BaseController
   end
 
   def allow_facebook_domains
-    response.headers['X-FRAME-OPTIONS'] = 'ALLOW_FROM https://www.messenger.com'
+    response.headers['X-FRAME-OPTIONS'] = 'ALLOW_FROM *'
   end
 
   def complete_identity(identity)

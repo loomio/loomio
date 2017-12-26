@@ -41,7 +41,7 @@ gulp.task 'angular:compile-fast', [
   'angular:moment_locales'
 ]
 
-gulp.task 'vue:compile-fast', 'vue:vueify'
+gulp.task 'vue:compile-fast', ['vue:vueify']
 
 gulp.task 'compile-fast', ['angular:compile-fast', 'vue:compile-fast']
 gulp.task 'compile', (done) -> sequence('compile-fast', 'minify', -> done())

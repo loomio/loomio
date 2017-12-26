@@ -192,9 +192,9 @@ angular@^1.2.5:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"
 
-angular_record_store@3.0.15:
-  version "3.0.15"
-  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-3.0.15.tgz#75a7c38415058bb254291f4cd7caeabeba8a24bf"
+angular_record_store@3.0.16:
+  version "3.0.16"
+  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-3.0.16.tgz#630ceb94d903981a9ebee36f5ff7bfecabbff36a"
   dependencies:
     lodash "^3.10.1"
     moment "^2.10.6"

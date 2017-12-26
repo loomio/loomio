@@ -8,7 +8,7 @@
   module.exports =
     created: ->
       this.poll = Records.polls.build(title: "Loading...")
-      Records.polls.findOrFetchById("JUPYVnBD").then (poll) => this.poll = poll
+      Records.polls.findOrFetchById("ofsKRbUV").then (poll) => this.poll = poll
     data: ->
       target: this.poll.title
 </script>
