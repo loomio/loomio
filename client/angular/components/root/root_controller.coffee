@@ -11,7 +11,7 @@ IntercomService = require 'shared/services/intercom_service.coffee'
 { broadcastKeyEvent, registerHotkeys }       = require 'angular/helpers/keyboard.coffee'
 { setupAngularModal, setupAngularFlash, setupAngularNavigate } = require 'angular/helpers/setup.coffee'
 
-angular.module('loomioApp').controller 'RootController', ($scope, $injector, $timeout, $translate, $mdDialog, $location, $router) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $location, $router) ->
 
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
@@ -79,6 +79,6 @@ angular.module('loomioApp').controller 'RootController', ($scope, $injector, $ti
     pressedP: -> ModalService.open 'PollCommonStartModal', poll:       -> Records.polls.build(authorId: Session.user().id)
   ) if AbilityService.isLoggedIn()
 
-  Records.afterImport = -> $scope.$apply()
+  Records.afterImport = -> $timeout -> $rootScope.$apply()
 
   return
