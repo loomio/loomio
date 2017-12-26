@@ -192,11 +192,10 @@ angular@^1.2.5:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"
 
-angular_record_store@3.0.14:
-  version "3.0.14"
-  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-3.0.14.tgz#92240a88aafa7a822b3a9f9fafc5dede8bde151c"
+angular_record_store@3.0.15:
+  version "3.0.15"
+  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-3.0.15.tgz#75a7c38415058bb254291f4cd7caeabeba8a24bf"
   dependencies:
-    coffeeify "^1.1.0"
     lodash "^3.10.1"
     moment "^2.10.6"
     promise-polyfill "^7.0.0"
@@ -980,17 +979,9 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-coffee-script@^1.10.0:
+coffee-script@^1.12.7:
   version "1.12.7"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
-
-coffeeify@^1.1.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/coffeeify/-/coffeeify-1.2.0.tgz#df2a2facdb18b874327ad753330171c000728239"
-  dependencies:
-    coffee-script "^1.10.0"
-    convert-source-map "^1.1.2"
-    through "^2.3.8"
 
 coffeeify@^3.0.1:
   version "3.0.1"
@@ -1128,7 +1119,7 @@ constants-browserify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
 
-convert-source-map@^1.1.2, convert-source-map@^1.2.0, convert-source-map@^1.3.0:
+convert-source-map@^1.2.0, convert-source-map@^1.3.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.1.tgz#b8278097b9bc229365de5c62cf5fcaed8b5599e5"
 
@@ -5415,7 +5406,7 @@ through2@^2, through2@^2.0.0, through2@^2.0.1:
     readable-stream "^2.1.5"
     xtend "~4.0.1"
 
-through@2, "through@>=2.2.7 <3", through@^2.3.6, through@^2.3.8, through@~2.3, through@~2.3.1:
+through@2, "through@>=2.2.7 <3", through@^2.3.6, through@~2.3, through@~2.3.1:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
