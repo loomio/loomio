@@ -28,7 +28,7 @@ module.exports =
     (files) ->
       if _.any files
         prepare(scope, model, options)
-        submitFn(files[0], options.uploadKind).then(
+        options.submitFn(files[0], options.uploadKind).then(
           success(scope, model, options),
           failure(scope, model, options)
         ).finally(
