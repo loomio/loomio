@@ -1,2 +1,3 @@
 %abbr.timeago>
-  %span{am-time-ago: "timestamp", data-toggle: "tooltip", ng-attr-title: "{{timestamp | exactDateWithTime}}"}
+  %span{data-toggle: "tooltip", ng-attr-title: "{{timestamp | exactDateWithTime}}"}
+    {{ timestamp | timeFromNowInWords }}
