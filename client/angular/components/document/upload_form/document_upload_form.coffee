@@ -25,6 +25,7 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
     $scope.progress = (progress) ->
       return unless progress.total > 0
       $scope.percentComplete = Math.floor(100 * progress.loaded / progress.total)
+      $scope.$apply()
 
     $scope.abort = ->
       Records.documents.abort()

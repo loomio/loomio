@@ -1,3 +1,6 @@
+IntercomService = require 'shared/services/intercom_service.coffee'
+ModalService    = require 'shared/services/modal_service.coffee'
+
 # a series of helpers related to the current browser window, such as the viewport size
 # or printing. Hopefully we can pool all window-related functionality here, and
 # then allow for an alternate implementation for when 'window' may not exist
@@ -20,6 +23,12 @@ module.exports =
 
   print: ->
     window.print()
+
+  contactUs: ->
+    if IntercomService.available()
+      IntercomService.open()
+    else
+      ModalService.open('ContactModal')
 
   is2x: ->
     window.devicePixelRatio >= 2

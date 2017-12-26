@@ -2,7 +2,9 @@ AppConfig       = require 'shared/services/app_config.coffee'
 Session         = require 'shared/services/session.coffee'
 UserHelpService = require 'shared/services/user_help_service.coffee'
 
-angular.module('loomioApp').directive 'userDropdown', (IntercomService) ->
+{ contactUs } = require 'angular/helpers/window.coffee'
+
+angular.module('loomioApp').directive 'userDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/user_dropdown/user_dropdown.html'
   replace: true
@@ -17,11 +19,8 @@ angular.module('loomioApp').directive 'userDropdown', (IntercomService) ->
     $scope.helpLink = ->
       UserHelpService.helpLink()
 
-    $scope.showContactUs = ->
-      IntercomService.available()
-
     $scope.showHelp = ->
       AppConfig.features.app.help_link
 
     $scope.contactUs = ->
-      IntercomService.contactUs()
+      contactUs()

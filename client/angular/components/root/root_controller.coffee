@@ -1,16 +1,17 @@
-Routes         = require 'angular/routes.coffee'
-AppConfig      = require 'shared/services/app_config.coffee'
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+Routes          = require 'angular/routes.coffee'
+AppConfig       = require 'shared/services/app_config.coffee'
+Session         = require 'shared/services/session.coffee'
+Records         = require 'shared/services/records.coffee'
+AbilityService  = require 'shared/services/ability_service.coffee'
+ModalService    = require 'shared/services/modal_service.coffee'
+IntercomService = require 'shared/services/intercom_service.coffee'
 
 { viewportSize, scrollTo, trackEvents }      = require 'angular/helpers/window.coffee'
 { signIn, setLocale, subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
 { broadcastKeyEvent, registerHotkeys }       = require 'angular/helpers/keyboard.coffee'
 { setupAngularModal, setupAngularFlash }     = require 'angular/helpers/setup.coffee'
 
-angular.module('loomioApp').controller 'RootController', ($scope, $injector, $timeout, $translate, $mdDialog, $location, $router, IntercomService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $injector, $timeout, $translate, $mdDialog, $location, $router) ->
 
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
@@ -33,8 +34,11 @@ angular.module('loomioApp').controller 'RootController', ($scope, $injector, $ti
     $scope.pageError = null
     $scope.refreshing = true
     $timeout -> $scope.refreshing = false
-    # IntercomService.boot()
+    IntercomService.boot()
     subscribeToLiveUpdate()
+
+  $scope.$on 'logout', ->
+    IntercomService.shutdown()
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     title = options.title or $translate.instant(options.titleKey)
@@ -42,7 +46,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $injector, $ti
     scrollTo(options.scrollTo or 'h1') unless options.skipScroll
 
     Session.currentGroup = options.group
-    # IntercomService.updateWithGroup(Session.currentGroup)
+    IntercomService.updateWithGroup(Session.currentGroup)
 
     $scope.pageError = null
     $scope.$broadcast('clearBackgroundImageUrl')
