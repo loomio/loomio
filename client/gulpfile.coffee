@@ -26,7 +26,6 @@ gulp.task 'angular:minify-js',       minify.js
 gulp.task 'angular:minify-css',      minify.css
 gulp.task 'angular:minify', ['minify-js', 'minify-css']
 
-gulp.task 'vue:vendor',               vue.vendor
 gulp.task 'vue:vueify',               vue.vue
 
 gulp.task 'angular:compile-fast', [
@@ -42,10 +41,7 @@ gulp.task 'angular:compile-fast', [
   'angular:moment_locales'
 ]
 
-gulp.task 'vue:compile-fast', [
-  'vue:vueify',
-  'vue:vendor'
-]
+gulp.task 'vue:compile-fast', 'vue:vueify'
 
 gulp.task 'compile-fast', ['angular:compile-fast', 'vue:compile-fast']
 gulp.task 'compile', (done) -> sequence('compile-fast', 'minify', -> done())

@@ -47,7 +47,6 @@ module.exports =
   vue:
     coffee:         './vue/main.coffee'
     vue:            './vue/components/*.vue'
-    vendor:         include(vendor, 'vue')
 
   protractor:
     config:       'angular/test/protractor.coffee'

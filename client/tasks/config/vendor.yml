@@ -23,10 +23,6 @@ js:
   - angulartics/src/angulartics-gtm.js
   - angular-recaptcha/release/angular-recaptcha.js
   - angular-sortable-view/src/angular-sortable-view.js
-vue:
-  - lodash/index.js
-  - whatwg-fetch/fetch.js
-  - promise-polyfill/dist/promise.min.js
 execjs:
   - lodash/index.js
   - emojione/lib/js/emojione.js
