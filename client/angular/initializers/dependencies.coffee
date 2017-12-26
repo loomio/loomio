@@ -2,6 +2,7 @@ angular.module('loomioApp', [
   'ngNewRouter',
   'pascalprecht.translate',
   'ngSanitize',
+  'ngFileUpload',
   'hc.marked',
   'mentio',
   'ngAnimate',

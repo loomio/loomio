@@ -30,7 +30,7 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
       Records.documents.abort()
 
     $scope.success = (response) ->
-      $scope.$emit 'documentAdded', Records.documents.find((response.data || response).documents[0].id)
+      $scope.$emit 'documentAdded', Records.documents.find(response.documents[0].id)
 
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)

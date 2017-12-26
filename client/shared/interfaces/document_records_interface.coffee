@@ -23,9 +23,8 @@ module.exports = class DocumentRecordsInterface extends BaseRecordsInterface
 
   upload: (file, progress) ->
     @remote.upload '', file,
-      data:
-        'document[filename]': file.name.replace(/[^a-z0-9_\-\.]/gi, '_')
-      fileFormDataName: 'document[file]'
+      fileField:     'document[file]'
+      filenameField: 'document[title]'
     , progress
 
   abort: ->
