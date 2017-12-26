@@ -1,9 +1,8 @@
 Records      = require 'shared/services/records.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
-{ listenForLoading }       = require 'angular/helpers/listen.coffee'
-{ applyPollStartSequence } = require 'angular/helpers/apply.coffee'
-{ iconFor }                = require 'angular/helpers/poll.coffee'
+{ listenForLoading }                = require 'angular/helpers/listen.coffee'
+{ iconFor, applyPollStartSequence } = require 'angular/helpers/poll.coffee'
 
 angular.module('loomioApp').controller 'StartPollPageController', ($scope, $location, $rootScope, $routeParams) ->
   $rootScope.$broadcast('currentComponent', { page: 'startPollPage', skipScroll: true })

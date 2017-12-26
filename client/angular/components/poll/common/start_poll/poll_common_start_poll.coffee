@@ -1,7 +1,4 @@
-Records        = require 'shared/services/records.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
-
-{ applyPollStartSequence } = require 'angular/helpers/apply.coffee'
+{ applyPollStartSequence } = require 'angular/helpers/poll.coffee'
 
 angular.module('loomioApp').directive 'pollCommonStartPoll', ->
   scope: {poll: '='}
