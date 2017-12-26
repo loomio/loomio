@@ -18,7 +18,6 @@ js:
   - angular-gravatar/build/angular-gravatar.js
   - angular-scroll/angular-scroll.js
   - angular-clipboard/angular-clipboard.js
-  - angular-off-click/offClick.js
   - angular-material/angular-material.js
   - angular-aria/angular-aria.js
   - angulartics/src/angulartics.js
@@ -27,7 +26,6 @@ js:
   - angular-sortable-view/src/angular-sortable-view.js
   - whatwg-fetch/fetch.js
   - promise-polyfill/dist/promise.min.js
-  - airbrake-js/dist/client.js
 vue:
   - lodash/index.js
   - whatwg-fetch/fetch.js

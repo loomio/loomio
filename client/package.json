@@ -38,7 +38,6 @@
     "angular-material": "1.1.4",
     "angular-messages": "^1.5.5",
     "angular-mocks": "^1.5.5",
-    "angular-off-click": "0.0.9",
     "angular-recaptcha": "4.1.0",
     "angular-route": "^1.5.5",
     "angular-sanitize": "~> 1.4.1",
