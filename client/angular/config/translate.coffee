@@ -1,4 +1,6 @@
+AppConfig = require 'shared/services/app_config.coffee'
+
 angular.module('loomioApp').config ($translateProvider) ->
   $translateProvider.useUrlLoader('/api/v1/translations')
                     .useSanitizeValueStrategy('escapeParameters')
-                    .preferredLanguage(window.Loomio.currentUserLocale || 'en')
+                    .preferredLanguage(AppConfig.currentUserLocale || 'en')
