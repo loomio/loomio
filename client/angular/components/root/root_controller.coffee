@@ -9,7 +9,7 @@ IntercomService = require 'shared/services/intercom_service.coffee'
 { viewportSize, scrollTo, trackEvents }      = require 'angular/helpers/window.coffee'
 { signIn, setLocale, subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
 { broadcastKeyEvent, registerHotkeys }       = require 'angular/helpers/keyboard.coffee'
-{ setupAngularModal, setupAngularFlash }     = require 'angular/helpers/setup.coffee'
+{ setupAngularModal, setupAngularFlash, setupAngularNavigate } = require 'angular/helpers/setup.coffee'
 
 angular.module('loomioApp').controller 'RootController', ($scope, $injector, $timeout, $translate, $mdDialog, $location, $router) ->
 
@@ -68,8 +68,9 @@ angular.module('loomioApp').controller 'RootController', ($scope, $injector, $ti
 
   setupAngularModal($scope, $injector, $translate, $mdDialog)
   setupAngularFlash($scope)
+  setupAngularNavigate($location)
   trackEvents($scope)
-  signIn(AppConfig.bootData, $location, $scope)
+  signIn(AppConfig.bootData, $scope)
   setLocale($translate)
   registerHotkeys($scope,
     pressedI: -> ModalService.open 'InvitationModal',      group:      -> Session.currentGroup or Records.groups.build()

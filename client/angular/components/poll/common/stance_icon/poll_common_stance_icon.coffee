@@ -1,6 +1,8 @@
-angular.module('loomioApp').directive 'pollCommonStanceIcon', (PollService) ->
+{ fieldFromTemplate } = require 'angular/helpers/poll.coffee'
+
+angular.module('loomioApp').directive 'pollCommonStanceIcon', ->
   scope: {stanceChoice: '='}
   templateUrl: 'generated/components/poll/common/stance_icon/poll_common_stance_icon.html'
   controller: ($scope) ->
     $scope.useOptionIcon = ->
-      PollService.fieldFromTemplate($scope.stanceChoice.poll().pollType, 'has_option_icons')
+      fieldFromTemplate($scope.stanceChoice.poll().pollType, 'has_option_icons')

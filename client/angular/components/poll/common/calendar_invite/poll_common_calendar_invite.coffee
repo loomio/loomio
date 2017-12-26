@@ -1,7 +1,7 @@
 Records     = require 'shared/services/records.coffee'
 TimeService = require 'shared/services/time_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonCalendarInvite', (PollService) ->
+angular.module('loomioApp').directive 'pollCommonCalendarInvite', ->
   scope: {outcome: '='}
   templateUrl: 'generated/components/poll/common/calendar_invite/poll_common_calendar_invite.html'
   controller: ($scope) ->

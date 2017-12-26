@@ -1,28 +1,62 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 
+{ signIn, setLocale } = require 'angular/helpers/user.coffee'
+{ scrollTo }          = require 'angular/helpers/window.coffee'
+
 # a helper to aid submitting forms throughout the app
 module.exports =
   submitForm: (scope, model, options = {}) ->
-    # fetch draft from server and listen for changes to it
-    if options.drafts and model.isNew() and AbilityService.isLoggedIn()
-      model.fetchAndRestoreDraft()
-      scope.$watch model.draftFields, model.planDraftFetch, true
+    submit(scope, model, options)
 
-    submitFn  = options.submitFn  or model.save
-    confirmFn = options.confirmFn or (-> false)
-    (prepareArgs) ->
-      return if scope.isDisabled
-      prepare(scope, model, options, prepareArgs)
-      if confirm(confirmFn(model))
-        submitFn(model).then(
-          success(scope, model, options),
-          failure(scope, model, options),
-        ).finally(
-          cleanup(scope, model, options)
-        )
-      else
-        cleanup(scope, model, options)
+  submitOutcome: (scope, model, options = {}) ->
+    submit(scope, model, _.merge(
+      flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
+      failureCallback: ->
+        scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+      successCallback: (data) ->
+        scope.$emit 'outcomeSaved', data.outcomes[0].id
+    , options))
+
+  submitStance: (scope, model, options = {}) ->
+    pollType = model.poll().pollType
+    submitForm(scope, model, _.merge(
+      flashSuccess: "poll_#{pollType}_vote_form.stance_#{actionName(model)}"
+      prepareFn: ->
+        scope.$emit 'processing'
+      successCallback: (data) ->
+        model.poll().clearStaleStances()
+        scrollTo '.poll-common-card__results-shown'
+        scope.$emit 'stanceSaved', data.stances[0].key
+        if !Session.user().emailVerified
+          signIn(data, $rootScope)
+          setLocale($translate)
+      cleanupFn: ->
+        scope.$emit 'doneProcessing'
+    , options))
+
+  submitPoll: (scope, model, options = {}) ->
+    submitForm(scope, model, _.merge(
+      flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
+      prepareFn: =>
+        scope.$emit 'processing'
+        switch model.pollType
+          # for polls with default poll options (proposal, check)
+          when 'proposal', 'count'
+            model.pollOptionNames = _.pluck @fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
+          # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
+          else
+            $rootScope.$broadcast 'addPollOption'
+      failureCallback: ->
+        scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
+      successCallback: (data) ->
+        _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
+        poll = Records.polls.find(data.polls[0].key)
+        poll.removeOrphanOptions()
+        scope.$emit 'nextStep', poll
+      cleanupFn: ->
+        scope.$emit 'doneProcessing'
+    , options))
 
   upload: (scope, model, options = {}) ->
     (files) ->
@@ -34,6 +68,27 @@ module.exports =
         ).finally(
           cleanup(scope, model, options)
         )
+
+submit = (scope, model, options = {}) ->
+  # fetch draft from server and listen for changes to it
+  if model.hasDrafts and model.isNew() and AbilityService.isLoggedIn()
+    model.fetchAndRestoreDraft()
+    scope.$watch model.draftFields, model.planDraftFetch, true
+
+  submitFn  = options.submitFn  or model.save
+  confirmFn = options.confirmFn or (-> false)
+  (prepareArgs) ->
+    return if scope.isDisabled
+    prepare(scope, model, options, prepareArgs)
+    if confirm(confirmFn(model))
+      submitFn(model).then(
+        success(scope, model, options),
+        failure(scope, model, options),
+      ).finally(
+        cleanup(scope, model, options)
+      )
+    else
+      cleanup(scope, model, options)
 
 prepare = (scope, model, options, prepareArgs) ->
   FlashService.loading(options.loadingMessage)
@@ -77,6 +132,9 @@ calculateFlashOptions = (options) ->
   _.each _.keys(options), (key) ->
     options[key] = options[key]() if typeof options[key] is 'function'
   options
+
+actionName = (model) ->
+  if model.isNew() then 'created' else 'updated'
 
 errorTypes =
   400: 'badRequest'

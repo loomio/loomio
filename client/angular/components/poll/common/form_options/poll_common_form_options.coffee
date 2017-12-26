@@ -2,9 +2,10 @@ Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 TimeService    = require 'shared/services/time_service.coffee'
 
-{ registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+{ registerKeyEvent }  = require 'angular/helpers/keyboard.coffee'
+{ fieldFromTemplate } = require 'angular/helpers/poll.coffee'
 
-angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
+angular.module('loomioApp').directive 'pollCommonFormOptions', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/form_options/poll_common_form_options.html'
   controller: ($scope) ->
@@ -20,7 +21,7 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', (PollService) ->
       $scope.$emit 'pollOptionsChanged', $scope.poll.newOptionName
       $scope.poll.newOptionName = ''
 
-    $scope.datesAsOptions = PollService.fieldFromTemplate($scope.poll.pollType, 'dates_as_options')
+    $scope.datesAsOptions = fieldFromTemplate($scope.poll.pollType, 'dates_as_options')
 
     $scope.$on 'addPollOption', ->
       $scope.addOption()

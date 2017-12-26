@@ -1,6 +1,8 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'pollDotVoteVoteForm', (PollService) ->
+{ submitStance } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/dot_vote/vote_form/poll_dot_vote_vote_form.html'
   controller: ($scope) ->
@@ -44,7 +46,7 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', (PollService) ->
     $scope.setStanceChoices()
     $scope.$on 'pollOptionsAdded', $scope.setStanceChoices
 
-    $scope.submit = PollService.submitStance $scope, $scope.stance,
+    $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
         $scope.$emit 'processing'
         return unless _.sum(_.pluck($scope.stanceChoices, 'score')) > 0

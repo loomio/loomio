@@ -38,3 +38,5 @@ module.exports = new class HasDrafts
     model.planDraftFetch = ->
       model.cancelDraftFetch()
       model.draftFetch = setTimeout(model.updateDraft, AppConfig.drafts.debounce)
+
+    model.hasDrafts = true

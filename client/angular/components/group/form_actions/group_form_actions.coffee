@@ -13,7 +13,6 @@ angular.module('loomioApp').directive 'groupFormActions', ($translate) ->
     actionName = if $scope.group.isNew() then 'created' else 'updated'
 
     $scope.submit = submitForm $scope, $scope.group,
-      drafts: true
       skipClose: true
       prepareFn: ->
         allowPublic = $scope.group.allowPublicThreads

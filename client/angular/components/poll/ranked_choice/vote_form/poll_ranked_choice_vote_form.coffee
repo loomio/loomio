@@ -1,16 +1,17 @@
 { submitOnEnter, registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+{ submitStance }                    = require 'angular/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/ranked_choice/vote_form/poll_ranked_choice_vote_form.html'
-  controller: ($scope, PollService)  ->
+  controller: ($scope)  ->
     initForm = do ->
       $scope.numChoices  = $scope.stance.poll().customFields.minimum_stance_choices
       $scope.pollOptions = _.sortBy $scope.stance.poll().pollOptions(), (option) ->
         choice = _.find($scope.stance.stanceChoices(), _.matchesProperty('pollOptionId', option.id))
         -(choice or {}).score
 
-    $scope.submit = PollService.submitStance $scope, $scope.stance,
+    $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
         $scope.$emit 'processing'
         selected = _.take $scope.pollOptions, $scope.numChoices

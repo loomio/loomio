@@ -2,7 +2,9 @@ AppConfig    = require 'shared/services/app_config.coffee'
 Records      = require 'shared/services/records.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonStartForm', (PollService) ->
+{ fieldFromTemplate } = require 'angular/helpers/poll.coffee'
+
+angular.module('loomioApp').directive 'pollCommonStartForm', ->
   scope: {discussion: '=?', group: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/start_form/poll_common_start_form.html'
@@ -22,4 +24,4 @@ angular.module('loomioApp').directive 'pollCommonStartForm', (PollService) ->
           pollOptionNames:       _.pluck $scope.fieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
 
     $scope.fieldFromTemplate = (pollType, field) ->
-      PollService.fieldFromTemplate(pollType, field)
+      fieldFromTemplate(pollType, field)

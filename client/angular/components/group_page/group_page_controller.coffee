@@ -8,7 +8,7 @@ PaginationService = require 'shared/services/pagination_service.coffee'
 
 { subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
 
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, PollService) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
   @launchers = []

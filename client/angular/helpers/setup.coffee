@@ -1,6 +1,7 @@
-AppConfig    = require 'shared/services/app_config.coffee'
-ModalService = require 'shared/services/modal_service.coffee'
-FlashService = require 'shared/services/flash_service.coffee'
+AppConfig     = require 'shared/services/app_config.coffee'
+ModalService  = require 'shared/services/modal_service.coffee'
+FlashService  = require 'shared/services/flash_service.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 { listenForLoading } = require 'angular/helpers/listen.coffee'
 
@@ -30,6 +31,10 @@ module.exports =
   setupAngularFlash: ($rootScope) ->
     FlashService.setBroadcastMethod (flashOptions) ->
       $rootScope.$broadcast 'flashMessage', flashOptions
+
+  setupAngularNavigate: ($location) ->
+    LmoUrlService.setGoToMethod   (path)       -> $location.path(path)
+    LmoUrlService.setParamsMethod (key, value) -> $location.search(key, value)
 
 buildScope = ($rootScope, $mdDialog) ->
   $scope = $rootScope.$new(true)

@@ -36,7 +36,6 @@ angular.module('loomioApp').directive 'commentForm', ($translate) ->
         authorId: Session.user().id
 
       $scope.submit = submitForm $scope, $scope.comment,
-        drafts: true
         submitFn: $scope.comment.save
         flashSuccess: ->
           $scope.$emit 'commentSaved'

@@ -4,7 +4,9 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, PollService) ->
+{ myLastStanceFor } = require 'angular/helpers/poll.coffee'
+
+angular.module('loomioApp').directive 'pollCommonActionPanel', ($location) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/action_panel/poll_common_action_panel.html'
   controller: ($scope) ->
@@ -12,7 +14,7 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, PollS
     $scope.init = ->
       token      = $location.search().invitation_token
       invitation = _.first(Records.invitations.find(token: token)) unless $scope.poll.example
-      $scope.stance = PollService.lastStanceBy(Session.user(), $scope.poll) or
+      $scope.stance = myLastStanceFor($scope.poll) or
                       Records.stances.build(
                         pollId:    $scope.poll.id,
                         userId:    AppConfig.currentUserId,
@@ -25,7 +27,7 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, PollS
     $scope.init()
 
     $scope.userHasVoted = ->
-      PollService.hasVoted(Session.user(), $scope.poll)
+      myLastStanceFor($scope.poll)?
 
     $scope.userCanParticipate = ->
       AbilityService.canParticipateInPoll($scope.poll)

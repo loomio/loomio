@@ -13,7 +13,6 @@ angular.module('loomioApp').directive 'discussionFormActions', ($location) ->
 
     $scope.submit = submitForm $scope, $scope.discussion,
       flashSuccess: "discussion_form.messages.#{actionName}"
-      drafts: true
       successCallback: (response) =>
         $scope.$emit '$close'
         _.invoke Records.documents.find($scope.discussion.removedDocumentIds), 'remove'

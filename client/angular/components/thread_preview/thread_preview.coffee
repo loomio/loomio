@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'threadPreview', ->
   scope: {thread: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_preview/thread_preview.html'
-  controller: ($scope, PollService) ->
+  controller: ($scope) ->
     $scope.dismiss = ->
       if !Session.user().hasExperienced("dismissThread")
         Records.users.saveExperience("dismissThread")

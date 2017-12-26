@@ -3,9 +3,7 @@ AppConfig = require 'shared/services/app_config.coffee'
 angular.module('loomioApp').factory '$exceptionHandler', ($log) ->
   if !AppConfig.errbit.key?
     (exception, cause) -> $log.error(exception, cause)
-
   else
-
     client = new airbrakeJs.Client
       projectId:  AppConfig.errbit.key
       projectKey: AppConfig.errbit.key

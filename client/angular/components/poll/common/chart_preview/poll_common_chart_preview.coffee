@@ -1,11 +1,13 @@
 Session = require 'shared/services/session.coffee'
 
-angular.module('loomioApp').directive 'pollCommonChartPreview', (PollService) ->
+{ fieldFromTemplate, myLastStanceFor } = require 'angular/helpers/poll.coffee'
+
+angular.module('loomioApp').directive 'pollCommonChartPreview', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/chart_preview/poll_common_chart_preview.html'
   controller: ($scope) ->
     $scope.chartType = ->
-      PollService.fieldFromTemplate($scope.poll.pollType, 'chart_type')
+      fieldFromTemplate($scope.poll.pollType, 'chart_type')
 
     $scope.myStance = ->
-      PollService.lastStanceBy(Session.user(), $scope.poll)
+      myLastStanceFor($scope.poll)

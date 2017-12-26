@@ -2,15 +2,15 @@ AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
-PrivatePub     = require 'private_pub'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { hardReload } = require 'angular/helpers/window.coffee'
 
 # A series of actions relating to updating the current user, such as signing in
 # or changing the app's locale
 module.exports =
-  signIn: (data, $location, $rootScope, $translate) =>
-    Session.signIn(data, $location.search().invitation_token)
+  signIn: (data, $rootScope) =>
+    Session.signIn(data, LmoUrlService.params().invitation_token)
     $rootScope.$broadcast 'loggedIn', Session.user()
 
   signOut: ->
@@ -28,7 +28,7 @@ module.exports =
   subscribeToLiveUpdate: (options = {}) ->
     return unless AbilityService.isLoggedIn()
     Records.messageChannel.remote.post('subscribe', options).then (subscriptions) ->
-      _.each subscriptions.data, (subscription) ->
+      _.each subscriptions, (subscription) ->
         PrivatePub.sign(subscription)
         PrivatePub.subscribe subscription.channel, (data) ->
           liveUpdateAction(data)       if data.action?

@@ -4,6 +4,7 @@ js:
   - bowser/bowser.js
   - moment/min/moment.min.js
   - lodash/index.js
+  - private_pub/app/assets/javascripts/private_pub.js
   - angular/angular.js
   - angular-sanitize/angular-sanitize.js
   - loomio-angular-router/dist/router.es5.js

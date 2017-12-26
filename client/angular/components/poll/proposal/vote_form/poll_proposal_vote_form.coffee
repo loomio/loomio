@@ -1,12 +1,13 @@
 { submitOnEnter } = require 'angular/helpers/keyboard.coffee'
+{ submitStance }  = require 'angular/helpers/form.coffee'
 
-angular.module('loomioApp').directive 'pollProposalVoteForm', (PollService) ->
+angular.module('loomioApp').directive 'pollProposalVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/proposal/vote_form/poll_proposal_vote_form.html'
   controller: ($scope) ->
     $scope.stance.selectedOption = $scope.stance.pollOption()
 
-    $scope.submit = PollService.submitStance $scope, $scope.stance,
+    $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
         $scope.$emit 'processing'
         return unless $scope.stance.selectedOption

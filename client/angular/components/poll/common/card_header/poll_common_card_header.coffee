@@ -1,9 +1,11 @@
 AbilityService = require 'shared/services/ability_service.coffee'
 
+{ iconFor } = require 'angular/helpers/poll.coffee'
+
 angular.module('loomioApp').directive 'pollCommonCardHeader', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/card_header/poll_common_card_header.html'
-  controller: ($scope, PollService) ->
+  controller: ($scope) ->
     $scope.pollHasActions = ->
       AbilityService.canSharePoll($scope.poll) ||
       AbilityService.canEditPoll($scope.poll)  ||
@@ -11,4 +13,4 @@ angular.module('loomioApp').directive 'pollCommonCardHeader', ->
       AbilityService.canDeletePoll($scope.poll)
 
     $scope.icon = ->
-      PollService.iconFor($scope.poll)
+      iconFor($scope.poll)

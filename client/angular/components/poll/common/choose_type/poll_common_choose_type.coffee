@@ -1,6 +1,8 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
-angular.module('loomioApp').directive 'pollCommonChooseType', (PollService) ->
+{ iconFor } = require 'angular/helpers/poll.coffee'
+
+angular.module('loomioApp').directive 'pollCommonChooseType', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/choose_type/poll_common_choose_type.html'
   controller: ($scope) ->
@@ -11,4 +13,4 @@ angular.module('loomioApp').directive 'pollCommonChooseType', (PollService) ->
     $scope.pollTypes = -> AppConfig.pollTypes
 
     $scope.iconFor = (pollType) ->
-      PollService.fieldFromTemplate(pollType, 'material_icon')
+      iconFor { pollType: pollType } # :/

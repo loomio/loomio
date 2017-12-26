@@ -3,8 +3,9 @@ Records      = require 'shared/services/records.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
 { subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
+{ myLastStanceFor }       = require 'angular/helpers/poll.coffee'
 
-angular.module('loomioApp').controller 'PollPageController', ($scope, $location, $rootScope, $routeParams, PollService) ->
+angular.module('loomioApp').controller 'PollPageController', ($scope, $location, $rootScope, $routeParams) ->
   @init = (poll) =>
     if poll and !@poll?
       @poll = poll
@@ -24,7 +25,7 @@ angular.module('loomioApp').controller 'PollPageController', ($scope, $location,
         ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)
 
       if $location.search().change_vote
-        ModalService.open 'PollCommonEditVoteModal', stance: => PollService.lastStanceBy(Session.user(), @poll)
+        ModalService.open 'PollCommonEditVoteModal', stance: => myLastStanceFor(@poll)
 
   Records.polls.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
