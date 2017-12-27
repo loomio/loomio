@@ -28,7 +28,7 @@ module.exports =
     core    = _.flatten _.map paths.app.folders, (folder) -> _.map glob.sync("angular/#{folder}/**/*.coffee")
     plugins = _.map paths.plugin.coffee, (file) -> "../#{file}"
 
-    fs.writeFile paths.app.main, _.map(core, (file) -> "require '#{file}'").join("\n")
+    fs.writeFile paths.app.main,  _.map(core, (file) -> "require '#{file}'").join("\n")
     fs.appendFile(paths.app.main, "\n")
     fs.appendFile paths.app.main, _.map(plugins, (file) -> "require '#{file}'").join("\n")
 
