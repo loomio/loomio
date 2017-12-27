@@ -37,7 +37,7 @@ module.exports =
         .bundle()
         .pipe(source('vue.bundle.min.js'))
         .pipe(buffer())
-        .pipe(uglify())
+        .pipe(uglify(mangle: false))
         .pipe(gulp.dest(paths.dist.assets))
       pipe gulp.src("#{paths.dist.assets}/vue.bundle.css"), [
         prefix(browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 9'], cascade: false),

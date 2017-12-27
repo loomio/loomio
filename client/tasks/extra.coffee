@@ -25,12 +25,20 @@ module.exports =
       gulp.dest(paths.dist.moment_locales) # write public/client/moment_locales
     ]
 
-  execjs: ->
-    pipe gulp.src(paths.js.execjs), [
-      expect({errorOnFailure: true}, paths.js.execjs), # ensure all execjs files are present
-      append.obj(pipe gulp.src(paths.js.execcoffee), [
-        coffee({bare: true})                    # convert initializers to js
-      ])
-      concat('execjs.js'),                      # concatenate execjs files
-      gulp.dest(paths.dist.assets)             # write assets/execjs.js
-    ]
+  execjs:
+    development: ->
+      pipe gulp.src(paths.js.execjs), [
+        expect({errorOnFailure: true}, paths.js.execjs),
+        append.obj(pipe gulp.src(paths.js.execcoffee), [coffee(bare: true)])
+        concat('execjs.js'),
+        gulp.dest(paths.dist.assets)
+      ]
+
+    production: ->
+      pipe gulp.src(paths.js.execjs), [
+        expect({errorOnFailure: true}, paths.js.execjs),
+        append.obj(pipe gulp.src(paths.js.execcoffee), [coffee(bare: true)])
+        concat('execjs.min.js'),
+        uglify(mangle: false),
+        gulp.dest(paths.dist.assets)
+      ]

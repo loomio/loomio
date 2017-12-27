@@ -2,11 +2,8 @@ gulp     = require 'gulp'
 paths    = require './tasks/paths'
 sequence = require 'gulp-run-sequence'
 
-execjs   = require './tasks/execjs'
 angular  = require './tasks/angular'
 vue      = require './tasks/vue'
-
-minify   = require './tasks/minify'
 extra    = require './tasks/extra'
 
 gulp.task 'angular:vendor',          angular.vendor
@@ -20,9 +17,9 @@ gulp.task 'angular:plugin:scss',     angular.plugin.scss
 gulp.task 'angular:fonts',           extra.fonts
 gulp.task 'angular:emoji',           extra.emoji
 gulp.task 'angular:moment_locales',  extra.moment_locales
-gulp.task 'angular:minify:js',       minify.app.js
-gulp.task 'angular:minify:css',      minify.app.css
-gulp.task 'angular:minify:bundle',   minify.app.bundle
+gulp.task 'angular:minify:js',       angular.minify.js
+gulp.task 'angular:minify:css',      angular.minify.css
+gulp.task 'angular:minify:bundle',   angular.minify.bundle
 gulp.task 'angular:minify', ['angular:minify:js', 'angular:minify:bundle', 'angular:minify:css']
 
 gulp.task 'angular:bundle:dev', [

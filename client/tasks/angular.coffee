@@ -1,20 +1,22 @@
 # writes dist/javascripts/app(.min).js
-paths    = require './paths'
-onError  = require './onerror'
-gulp     = require 'gulp'
-pipe     = require 'gulp-pipe'
-plumber  = require 'gulp-plumber'
-coffee   = require 'gulp-coffee'
-append   = require 'add-stream'
-sass     = require 'gulp-sass'
-haml     = require 'gulp-haml'
-replace  = require 'gulp-replace'
-htmlmin  = require 'gulp-htmlmin'
-template = require 'gulp-angular-templatecache'
-concat   = require 'gulp-concat'
-rename   = require 'gulp-rename'
-expect   = require 'gulp-expect-file'
-
+paths      = require './paths'
+onError    = require './onerror'
+gulp       = require 'gulp'
+pipe       = require 'gulp-pipe'
+plumber    = require 'gulp-plumber'
+coffee     = require 'gulp-coffee'
+append     = require 'add-stream'
+sass       = require 'gulp-sass'
+haml       = require 'gulp-haml'
+replace    = require 'gulp-replace'
+htmlmin    = require 'gulp-htmlmin'
+template   = require 'gulp-angular-templatecache'
+concat     = require 'gulp-concat'
+rename     = require 'gulp-rename'
+expect     = require 'gulp-expect-file'
+uglify     = require 'gulp-uglify'
+prefix     = require 'gulp-autoprefixer'
+cssmin     = require 'gulp-cssmin'
 browserify = require 'browserify'
 coffeeify  = require 'coffeeify'
 annotate   = require 'browserify-ngannotate' # to allow for minification of angular
@@ -22,7 +24,6 @@ glob       = require 'globby'
 source     = require 'vinyl-source-stream'
 fs         = require 'fs'
 _          = require 'lodash'
-gutil      = require 'gulp-util'
 
 module.exports =
   require: ->
@@ -57,6 +58,11 @@ module.exports =
     haml: -> buildHaml('plugin')
     scss: -> buildScss('plugin')
 
+  minify:
+    bundle: -> minifyBundle 'angular.bundle'
+    js:     -> minifyJs     'angular.vendor', 'execjs'
+    css:    -> minifyCss    'angular.core', 'angular.plugin'
+
 buildHaml = (prefix) ->
   pipe gulp.src(paths[prefix].haml), [
     haml(),
@@ -81,3 +87,31 @@ buildScss = (prefix) ->
     sass(includePaths: paths[prefix].scss_include),
     gulp.dest(paths.dist.assets)
   ]
+
+minifyJs = (filenames...) ->
+  _.each filenames, (filename) ->
+    pipe gulp.src("#{paths.dist.assets}/#{filename}.js"), [
+      uglify(mangle: false),
+      rename(suffix: '.min'),
+      gulp.dest(paths.dist.assets)
+    ]
+
+minifyBundle = (filenames...) ->
+  _.each filenames, (filename) ->
+    browserify("#{paths.dist.assets}/#{filename}.js")
+      .transform('uglifyify')
+      .bundle()
+      .pipe(source("#{filename}.min.js"))
+      .pipe(uglify(mangle: false))
+      .pipe(gulp.dest(paths.dist.assets))
+
+
+minifyCss = (filenames...) ->
+  _.each filenames, (filename) ->
+    pipe gulp.src("#{paths.dist.assets}/#{filename}.css"), [
+      plumber(errorHandler: onError),
+      prefix(browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 9'], cascade: false),
+      cssmin(),
+      rename(suffix: '.min'),
+      gulp.dest(paths.dist.assets)
+    ]
