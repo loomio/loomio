@@ -69,6 +69,7 @@
   "devDependencies": {
     "add-stream": "^1.0.0",
     "browserify": "^14.5.0",
+    "browserify-debug-tools": "^2.3.0",
     "browserify-ngannotate": "^2.0.0",
     "coffee-script": "^1.12.7",
     "coffeeify": "^3.0.1",
@@ -98,6 +99,7 @@
     "node-yaml-config": "0.0.3",
     "protractor": "5.1.2",
     "protractor-jasmine2-screenshot-reporter": "^0.4.1",
+    "uglifyify": "^4.0.5",
     "vueify": "^9.4.1",
     "vueify-extract-css": "^0.2.0"
   }

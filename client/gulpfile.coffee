@@ -24,7 +24,8 @@ gulp.task 'angular:emoji',           extra.emoji
 gulp.task 'angular:moment_locales',  extra.moment_locales
 gulp.task 'angular:minify-js',       minify.app.js
 gulp.task 'angular:minify-css',      minify.app.css
-gulp.task 'angular:minify', ['angular:minify-js', 'angular:minify-css']
+gulp.task 'angular:minify-bundle',   minify.app.bundle
+gulp.task 'angular:minify', ['angular:minify-js', 'angular:minify-bundle', 'angular:minify-css']
 gulp.task 'angular:compile-fast', [
   'angular:fonts',
   'angular:bundle',
@@ -38,11 +39,11 @@ gulp.task 'angular:compile-fast', [
   'angular:moment_locales'
 ]
 
-gulp.task 'vue:vueify',               minify.app.vue
+gulp.task 'vue:bundle',               vue.browserify
 gulp.task 'vue:minify-js',            minify.vue.js
 gulp.task 'vue:minify-css',           minify.vue.css
 gulp.task 'vue:minify', ['vue:minify-js', 'vue:minify-css']
-gulp.task 'vue:compile-fast', ['vue:vueify']
+gulp.task 'vue:compile-fast', ['vue:bundle']
 
 gulp.task 'compile-fast', ['angular:compile-fast', 'vue:compile-fast']
 gulp.task 'minify', ['vue:minify', 'angular-minify']
