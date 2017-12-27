@@ -15,8 +15,8 @@
     %link{rel: 'manifest', href: '/manifest.json'}
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
 
-    %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet'}
-    %link{href: client_asset_path(:"plugin.min.css"), rel: 'stylesheet'}
+    %link{href: client_asset_path(:"angular.core.min.css"), rel: 'stylesheet'}
+    %link{href: client_asset_path(:"angular.plugin.min.css"), rel: 'stylesheet'}
 
     = render 'angular/metadata'
     = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
@@ -34,11 +34,11 @@
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
           %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
 
-    %script{src: client_asset_path(:"vendor.min.js")}
+    %script{src: client_asset_path(:"angular.vendor.min.js")}
     :javascript
       window.Loomio = #{@payload.to_json.html_safe}
-    %script{src: client_asset_path(:"bundle.js")}
-    %script{src: client_asset_path(:"app.templates.js")}
-    %script{src: client_asset_path(:"plugin.templates.js")}
+    %script{src: client_asset_path(:"angular.bundle.min.js")}
+    %script{src: client_asset_path(:"angular.core-templates.min.js")}
+    %script{src: client_asset_path(:"angular.plugin-templates.min.js")}
 
     = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]

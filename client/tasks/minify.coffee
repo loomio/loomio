@@ -42,9 +42,6 @@ minifyCss = (filenames...) ->
 
 module.exports =
   app:
-    js:     -> minifyJs 'vendor', 'execjs'
-    bundle: -> minifyBundle 'bundle'
-    css:    -> minifyCss 'app', 'plugin'
-  vue:
-    js:     -> minifyBundle 'vue'
-    css:    -> minifyCss 'vue'
+    js:     -> minifyJs     'angular.vendor', 'execjs'
+    bundle: -> minifyBundle 'angular.bundle'
+    css:    -> minifyCss    'angular.core', 'angular.plugin'

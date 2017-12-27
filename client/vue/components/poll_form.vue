@@ -34,7 +34,7 @@
         this.$forceUpdate()
 </script>
 
-<style scoped lang="scss">
+<style scoped>
   .poll-form {
     border: 1px solid red;
   }

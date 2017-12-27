@@ -11,7 +11,7 @@ include = (file, key) ->
   _.map(file[key], (path) -> [file.path, path].join('/'))
 
 module.exports =
-  app:
+  core:
     main:         'angular/main.coffee'
     coffee:       'angular/**/*.coffee'
     haml:         'angular/components/**/*.haml'
