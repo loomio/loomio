@@ -45,7 +45,7 @@
     "angular-sortable-view": "0.0.15",
     "angular-translate": "~2.15.1",
     "angular-translate-loader-url": "latest",
-    "angular_record_store": "3.0.18",
+    "angular_record_store": "3.0.19",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
     "bowser": "latest",
@@ -61,13 +61,10 @@
     "moment-timezone": "latest",
     "ng-file-upload": "~3.2.4",
     "private_pub": "latest",
-    "promise-polyfill": "^7.0.0",
-    "promise.prototype.finally": "^3.1.0",
     "svg.js": "latest",
     "vinyl-source-stream": "^1.1.0",
     "vue": "^2.5.11",
-    "vue-material": "^0.8.1",
-    "whatwg-fetch": "^2.0.3"
+    "vue-material": "^0.8.1"
   },
   "devDependencies": {
     "add-stream": "^1.0.0",
