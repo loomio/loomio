@@ -19,7 +19,7 @@ module.exports =
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
   setLocale: ($translate) ->
-    locale = Session.user().locale.toLowerCase().replace('_','-')
+    locale = (Session.user().locale || "en").toLowerCase().replace('_','-')
     $translate.use(locale)
     return if locale == "en"
     Records.momentLocales.fetch(path: "#{locale}.js").then((response) -> response.text()).then (data) ->

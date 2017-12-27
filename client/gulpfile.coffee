@@ -12,12 +12,12 @@ vue      = require './tasks/vue'
 
 gulp.task 'angular:vendor',          vendor
 gulp.task 'angular:execjs',          execjs
-gulp.task 'angular:app_require',     app.require
-gulp.task 'angular:app_browserify',  app.browserify
-gulp.task 'angular:app_coffee',      (done) -> sequence('angular:app_require', 'angular:app_browserify', -> done())
+gulp.task 'angular:require',         app.require
+gulp.task 'angular:browserify',      app.browserify
+gulp.task 'angular:bundle',          (done) -> sequence('angular:require', 'angular:browserify', -> done())
 gulp.task 'angular:app_haml',        app.haml
 gulp.task 'angular:app_scss',        app.scss
-gulp.task 'angular:plugin_coffee',   plugin.coffee
+gulp.task 'angular:plugin_haml',     plugin.haml
 gulp.task 'angular:plugin_scss',     plugin.scss
 gulp.task 'angular:fonts',           extra.fonts
 gulp.task 'angular:emoji',           extra.emoji
@@ -27,10 +27,10 @@ gulp.task 'angular:minify-css',      minify.app.css
 gulp.task 'angular:minify', ['angular:minify-js', 'angular:minify-css']
 gulp.task 'angular:compile-fast', [
   'angular:fonts',
-  'angular:app_coffee',
+  'angular:bundle',
   'angular:app_haml',
   'angular:app_scss',
-  'angular:plugin_coffee',
+  'angular:plugin_haml',
   'angular:plugin_scss',
   'angular:vendor',
   'angular:emoji',

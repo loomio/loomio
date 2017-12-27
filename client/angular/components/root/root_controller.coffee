@@ -31,7 +31,6 @@ angular.module('loomioApp').controller 'RootController', ($scope, $rootScope, $i
     setLocale($translate)
     subscribeToLiveUpdate()
 
-
   $translate.onReady -> $scope.translationsLoaded = true
 
   $scope.$on 'toggleSidebar', (event, show) ->

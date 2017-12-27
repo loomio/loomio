@@ -37,8 +37,8 @@
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
       window.Loomio = #{@payload.to_json.html_safe}
-    %script{src: client_asset_path(:"app.js")}
-    %script{src: client_asset_path(:"templates.js")}
-    %script{src: client_asset_path(:"plugin.js")}
+    %script{src: client_asset_path(:"bundle.js")}
+    %script{src: client_asset_path(:"app.templates.js")}
+    %script{src: client_asset_path(:"plugin.templates.js")}
 
     = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]

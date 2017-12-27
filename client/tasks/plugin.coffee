@@ -15,24 +15,20 @@ concat   = require 'gulp-concat'
 rename   = require 'gulp-rename'
 
 module.exports =
-  coffee: ->
-    pipe gulp.src(paths.plugin.coffee), [
-      plumber(errorHandler: onError),                 # handle errors gracefully
-      coffee(bare: true),                             # convert from coffeescript to js
-      append.obj(pipe gulp.src(paths.plugin.haml), [  # build html template cache
-        haml(),                                       # convert haml to html
-        htmlmin(),                                    # minify html
-        template(                                     # store html templates in angular cache
-          module: 'loomioApp',
-          transformUrl: (url) ->
-            if url.match /.+\/.+/
-              "generated/components/#{url}"
-            else
-              "generated/components/#{url.split('.')[0]}/#{url}"
-        ),
-      ]),
-      concat('plugin.js'),                        # concatenate app files
-      gulp.dest(paths.dist.assets)                # write assets/plugin.js
+  haml: ->
+    pipe gulp.src(paths.plugin.haml), [
+      haml(),
+      htmlmin(),
+      template(
+        module: 'loomioApp',
+        transformUrl: (url) ->
+          if url.match /.+\/.+/
+            "generated/components/#{url}"
+          else
+            "generated/components/#{url.split('.')[0]}/#{url}"
+      )
+      concat('plugin.templates.js')
+      gulp.dest(paths.dist.assets)
     ]
 
   scss: ->
