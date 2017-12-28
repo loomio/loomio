@@ -3,7 +3,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 { applyLoadingFunction } = require 'angular/helpers/apply.coffee'
 
-angular.module('loomioApp').directive 'pollCommonIndexCard', ($location) ->
+angular.module('loomioApp').directive 'pollCommonIndexCard', ->
   scope: {model: '=', limit: '@?', viewMoreLink: '=?'}
   templateUrl: 'generated/components/poll/common/index_card/poll_common_index_card.html'
   replace: true
@@ -18,10 +18,9 @@ angular.module('loomioApp').directive 'pollCommonIndexCard', ($location) ->
       $scope.model.closedPollsCount > $scope.polls().length
 
     $scope.viewMore = ->
-      opts = {}
-      opts["#{$scope.model.constructor.singular}_key"] = $scope.model.key
-      opts["status"] = "closed"
-      $location.path('polls').search(opts)
+      LmoUrlService.goTo('polls')
+      LmoUrlService.params("#{$scope.model.constructor.singular}_key", $scope.model.key)
+      LmoUrlService.params('status', 'closed')
 
     $scope.polls = ->
       _.take $scope.model.closedPolls(), ($scope.limit or 50)

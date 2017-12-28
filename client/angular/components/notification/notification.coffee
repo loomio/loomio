@@ -1,6 +1,7 @@
 Records = require 'shared/services/records.coffee'
+I18n    = require 'shared/services/i18n.coffee'
 
-angular.module('loomioApp').directive 'notification', ($translate) ->
+angular.module('loomioApp').directive 'notification', ->
   scope: {notification: '='}
   restrict: 'E'
   templateUrl: 'generated/components/notification/notification.html'
@@ -10,7 +11,7 @@ angular.module('loomioApp').directive 'notification', ($translate) ->
       $scope.membershipRequestActor || $scope.notification.actor()
 
     $scope.contentFor = (notification) ->
-      $translate.instant("notifications.#{$scope.notification.kind}", $scope.notification.translationValues)
+      I18n.t("notifications.#{$scope.notification.kind}", $scope.notification.translationValues)
 
     if $scope.notification.kind == 'membership_requested'
       $scope.membershipRequestActor = Records.users.build

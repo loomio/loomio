@@ -1,6 +1,7 @@
 RecordLoader = require 'shared/services/record_loader.coffee'
+I18n         = require 'shared/services/i18n.coffee'
 
-angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ($translate) ->
+angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/dot_vote/votes_panel_stance/poll_dot_vote_votes_panel_stance.html'
   controller: ($scope) ->
@@ -11,7 +12,7 @@ angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ($translate
       if $scope.stance.participant()
         $scope.stance.participant().name
       else
-        $translate.instant('common.anonymous')
+        I18n.t('common.anonymous')
 
     percentageFor = (choice) ->
       # max = _.max(_.map($scope.stance.stanceChoices(), (choice) -> choice.score))

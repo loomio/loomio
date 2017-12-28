@@ -1,9 +1,10 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+I18n           = require 'shared/services/i18n.coffee'
 
 { submitForm } = require 'angular/helpers/form.coffee'
 
-angular.module('loomioApp').factory 'MoveThreadForm', ($translate) ->
+angular.module('loomioApp').factory 'MoveThreadForm', ->
   templateUrl: 'generated/components/move_thread_form/move_thread_form.html'
   controller: ($scope, discussion) ->
     $scope.discussion = discussion.clone()
@@ -24,6 +25,6 @@ angular.module('loomioApp').factory 'MoveThreadForm', ($translate) ->
 
     $scope.moveThread = ->
       if $scope.discussion.private and $scope.targetGroup.privacyIsOpen()
-        $scope.submit() if confirm($translate.instant('move_thread_form.confirm_change_to_private_thread', groupName: $scope.targetGroup.name))
+        $scope.submit() if confirm(I18n.t('move_thread_form.confirm_change_to_private_thread', groupName: $scope.targetGroup.name))
       else
         $scope.submit()

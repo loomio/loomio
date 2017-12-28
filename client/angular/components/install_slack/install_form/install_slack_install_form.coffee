@@ -5,7 +5,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 { submitForm }    = require 'angular/helpers/form.coffee'
 { submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'installSlackInstallForm', ($location) ->
+angular.module('loomioApp').directive 'installSlackInstallForm', ->
   templateUrl: 'generated/components/install_slack/install_form/install_slack_install_form.html'
   controller: ($scope) ->
     $scope.groups = ->
@@ -26,7 +26,7 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ($location) ->
         skipClose: true
         successCallback: (response) ->
           g = Records.groups.find(response.groups[0].key)
-          $location.path LmoUrlService.group(g)
+          LmoUrlService.goTo LmoUrlService.group(g)
           $scope.$emit 'nextStep', g
     $scope.setSubmit(_.first($scope.groups()) or newGroup)
 

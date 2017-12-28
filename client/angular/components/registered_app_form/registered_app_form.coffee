@@ -4,7 +4,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 { submitForm, upload } = require 'angular/helpers/form.coffee'
 { submitOnEnter }      = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').factory 'RegisteredAppForm', ($location) ->
+angular.module('loomioApp').factory 'RegisteredAppForm', ->
   templateUrl: 'generated/components/registered_app_form/registered_app_form.html'
   controller: ($scope, application) ->
     $scope.application = application.clone()
@@ -16,7 +16,7 @@ angular.module('loomioApp').factory 'RegisteredAppForm', ($location) ->
         name: -> $scope.application.name
       successCallback: (response) ->
         if $scope.application.isNew()
-          $location.path LmoUrlService.oauthApplication(response.oauth_applications[0])
+          LmoUrlService.goTo LmoUrlService.oauthApplication(response.oauth_applications[0])
 
     $scope.upload = upload $scope, $scope.application,
       flashSuccess:   'registered_app_form.messages.logo_changed'

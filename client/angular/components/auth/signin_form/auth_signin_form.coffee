@@ -1,9 +1,10 @@
 AuthService = require 'shared/services/auth_service.coffee'
+I18n        = require 'shared/services/i18n.coffee'
 
 { hardReload }    = require 'angular/helpers/window.coffee'
 { submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'authSigninForm', ($translate) ->
+angular.module('loomioApp').directive 'authSigninForm', ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ($scope) ->
@@ -14,9 +15,9 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate) ->
         hardReload()
       , ->
         $scope.user.errors = if $scope.user.hasToken
-          { token:    [$translate.instant('auth_form.invalid_token')] }
+          { token:    [I18n.t('auth_form.invalid_token')] }
         else
-          { password: [$translate.instant('auth_form.invalid_password')] }
+          { password: [I18n.t('auth_form.invalid_password')] }
         $scope.$emit 'doneProcessing'
 
     $scope.sendLoginLink = ->

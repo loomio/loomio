@@ -1,9 +1,10 @@
 AppConfig = require 'shared/services/app_config.coffee'
+I18n      = require 'shared/services/i18n.coffee'
 emojione  = require 'emojione'
 
 { emojiTitle } = require 'angular/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout)->
+angular.module('loomioApp').directive 'emojiPicker', ($timeout)->
   scope: {reaction: '='}
   restrict: 'E'
   templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
@@ -11,7 +12,7 @@ angular.module('loomioApp').directive 'emojiPicker', ($translate, $timeout)->
     $scope.render = emojione.shortnameToImage
 
     $scope.translate = (shortname) ->
-      title = emojiTitle(shortname)
+      title = I18n.t emojiTitle(shortname)
       if _.startsWith(title, "reactions.") then shortname else title
 
     $scope.imgSrcFor = (emoji) ->

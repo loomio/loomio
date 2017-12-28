@@ -1,9 +1,10 @@
 Records      = require 'shared/services/records.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
+I18n         = require 'shared/services/i18n.coffee'
 
 { registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'pollCommonShareEmailForm', ($translate) ->
+angular.module('loomioApp').directive 'pollCommonShareEmailForm', ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/email_form/poll_common_share_email_form.html'
@@ -35,15 +36,15 @@ angular.module('loomioApp').directive 'pollCommonShareEmailForm', ($translate) -
 
     $scope.checkEmailNotEmpty = ->
       if $scope.newEmail.length <= 0
-        $scope.emailValidationError = $translate.instant('poll_common_share_form.email_empty')
+        $scope.emailValidationError = I18n.t('poll_common_share_form.email_empty')
 
     $scope.checkEmailValid = ->
       if $scope.newEmail.length > 0 && !$scope.newEmail.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)
-        $scope.emailValidationError = $translate.instant('poll_common_share_form.email_invalid')
+        $scope.emailValidationError = I18n.t('poll_common_share_form.email_invalid')
 
     $scope.checkEmailAvailable = ->
       if _.contains($scope.poll.customFields.pending_emails, $scope.newEmail)
-        $scope.emailValidationError = $translate.instant('poll_common_share_form.email_exists', email: $scope.newEmail)
+        $scope.emailValidationError = I18n.t('poll_common_share_form.email_exists', email: $scope.newEmail)
 
     $scope.remove = (email) ->
       _.pull($scope.poll.customFields.pending_emails, email)

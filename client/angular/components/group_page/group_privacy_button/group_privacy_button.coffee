@@ -1,6 +1,8 @@
+I18n = require 'shared/services/i18n.coffee'
+
 { groupPrivacy } = require 'angular/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'groupPrivacyButton', ($translate) ->
+angular.module('loomioApp').directive 'groupPrivacyButton', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_privacy_button/group_privacy_button.html'
   replace: true
@@ -14,4 +16,4 @@ angular.module('loomioApp').directive 'groupPrivacyButton', ($translate) ->
         when 'secret' then 'mdi-lock-outline'
 
     $scope.privacyDescription = ->
-      $translate.instant groupPrivacy($scope.group)
+      I18n.t groupPrivacy($scope.group)

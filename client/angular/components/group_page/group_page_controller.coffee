@@ -8,7 +8,7 @@ PaginationService = require 'shared/services/pagination_service.coffee'
 
 { subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
 
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $routeParams) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
   @launchers = []
@@ -24,7 +24,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       group: => @group
       requirePaidPlan: -> true
   , ->
-    $location.search().install_slack
+    LmoUrlService.params().install_slack
 
   @performLaunch = ->
     @launchers.sort((a, b) -> a.priority - b.priority).map (launcher) =>
@@ -52,7 +52,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     else
       @group.publicDiscussionsCount
     @pageWindow = PaginationService.windowFor
-      current:  parseInt($location.search().from or 0)
+      current:  parseInt(LmoUrlService.params().from or 0)
       min:      0
       max:      maxDiscussions
       pageType: 'groupThreads'

@@ -21,7 +21,6 @@ babelify   = require 'babelify'
 uglifyify  = require 'uglifyify'
 buffer     = require 'vinyl-buffer'
 coffeeify  = require 'coffeeify'
-annotate   = require 'browserify-ngannotate'
 glob       = require 'globby'
 source     = require 'vinyl-source-stream'
 fs         = require 'fs'
@@ -82,10 +81,7 @@ requireForBundle = ->
 browserifyOpts = ->
   entries: paths.core.main,
   paths: ['./', './node_modules']
-  transform: [
-    coffeeify,
-    babelify.configure(presets: ['es2015'], plugins: ['angularjs-annotate'])
-  ]
+  transform: [coffeeify]
 
 buildHaml = (prefix) ->
   pipe gulp.src(paths[prefix].haml), [

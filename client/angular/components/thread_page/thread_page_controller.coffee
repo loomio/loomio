@@ -3,17 +3,18 @@ Session           = require 'shared/services/session.coffee'
 Records           = require 'shared/services/records.coffee'
 AbilityService    = require 'shared/services/ability_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
+LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 
 { scrollTo }         = require 'angular/helpers/window.coffee'
 { registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $timeout) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $rootScope, $timeout) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
   # if we get given a comment id, then hard refresh after seeking it's sequenceId
   # sorry everyone, we'll stop using hardcoded notification.urls some day soon
   requestedCommentId = ->
-    parseInt($routeParams.comment or $location.search().comment)
+    parseInt($routeParams.comment or LmoUrlService.params().comment)
 
   if requestedCommentId()
     Records.events.fetch
@@ -28,8 +29,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $scope.$broadcast 'initActivityCard'
 
   chompRequestedSequenceId = ->
-    requestedSequenceId = parseInt($location.search().from)
-    $location.search('from', null)
+    requestedSequenceId = parseInt(LmoUrlService.params().from)
+    LmoUrlService.params('from', null)
     requestedSequenceId
 
   @init = (discussion) =>

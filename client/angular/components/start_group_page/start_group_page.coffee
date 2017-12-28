@@ -2,16 +2,16 @@ Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').controller 'StartGroupPageController', ($scope, $location, $rootScope) ->
+angular.module('loomioApp').controller 'StartGroupPageController', ($scope, $rootScope) ->
   $rootScope.$broadcast('currentComponent', { page: 'startGroupPage', skipScroll: true })
 
   @group = Records.groups.build
-    name: $location.search().name
+    name: LmoUrlService.params().name
     customFields:
-      pending_emails: _.compact(($location.search().pending_emails || "").split(','))
+      pending_emails: _.compact((LmoUrlService.params().pending_emails || "").split(','))
 
   $scope.$on 'nextStep', (_, group) ->
-    $location.path LmoUrlService.group(group)
+    LmoUrlService.goTo LmoUrlService.group(group)
     ModalService.open 'InvitationModal', group: -> group
 
   return

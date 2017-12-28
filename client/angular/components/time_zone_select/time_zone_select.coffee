@@ -1,8 +1,10 @@
 AppConfig   = require 'shared/services/app_config.coffee'
 TimeService = require 'shared/services/time_service.coffee'
+I18n        = require 'shared/services/i18n.coffee'
 moment      = require 'moment'
 
-angular.module('loomioApp').directive 'timeZoneSelect', ($translate) ->
+
+angular.module('loomioApp').directive 'timeZoneSelect', ->
   scope: {zone: '='}
   restrict: 'E'
   templateUrl: 'generated/components/time_zone_select/time_zone_select.html'
@@ -12,7 +14,7 @@ angular.module('loomioApp').directive 'timeZoneSelect', ($translate) ->
     $scope.isOpen = false
     $scope.zone = $scope.zone || AppConfig.timeZone
     $scope.currentZone = ->
-      TimeService.nameForZone($scope.zone, $translate.instant('common.local_time'))
+      TimeService.nameForZone($scope.zone, I18n.t('common.local_time'))
 
     $scope.zoneFromName = (name) ->
       AppConfig.timeZones[name]

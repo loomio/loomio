@@ -3,16 +3,17 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { myLastStanceFor } = require 'angular/helpers/poll.coffee'
 
-angular.module('loomioApp').directive 'pollCommonActionPanel', ($location) ->
+angular.module('loomioApp').directive 'pollCommonActionPanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/action_panel/poll_common_action_panel.html'
   controller: ($scope) ->
 
     $scope.init = ->
-      token      = $location.search().invitation_token
+      token      = LmoUrlService.params().invitation_token
       invitation = _.first(Records.invitations.find(token: token)) unless $scope.poll.example
       $scope.stance = myLastStanceFor($scope.poll) or
                       Records.stances.build(
@@ -21,7 +22,7 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ($location) ->
                         token:     token
                         visitorAttributes:
                           email: (invitation or {}).recipientEmail
-                      ).choose($location.search().poll_option_id)
+                      ).choose(LmoUrlService.params().poll_option_id)
 
     $scope.$on 'refreshStance', $scope.init
     $scope.init()

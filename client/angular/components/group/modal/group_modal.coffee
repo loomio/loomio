@@ -3,7 +3,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 { applySequence } = require 'angular/helpers/apply.coffee'
 
-angular.module('loomioApp').factory 'GroupModal', ($location) ->
+angular.module('loomioApp').factory 'GroupModal', ->
   templateUrl: 'generated/components/group/modal/group_modal.html'
   controller: ($scope, group) ->
     $scope.group = group.clone()
@@ -16,4 +16,4 @@ angular.module('loomioApp').factory 'GroupModal', ($location) ->
           ['create']
       createComplete: (_, g) ->
         $scope.invitationForm = Records.invitationForms.build(groupId: g.id)
-        $location.path LmoUrlService.group(g)
+        LmoUrlService.goTo LmoUrlService.group(g)

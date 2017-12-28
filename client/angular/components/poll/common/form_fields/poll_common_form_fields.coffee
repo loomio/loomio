@@ -1,9 +1,11 @@
-angular.module('loomioApp').directive 'pollCommonFormFields', ($translate) ->
+I18n = require 'shared/services/i18n.coffee'
+
+angular.module('loomioApp').directive 'pollCommonFormFields', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/form_fields/poll_common_form_fields.html'
   controller: ($scope) ->
     $scope.titlePlaceholder = ->
-      $translate.instant("poll_#{$scope.poll.pollType}_form.title_placeholder")
+      I18n.t("poll_#{$scope.poll.pollType}_form.title_placeholder")
 
     $scope.detailsPlaceholder = ->
-      $translate.instant("poll_#{$scope.poll.pollType}_form.details_placeholder")
+      I18n.t("poll_#{$scope.poll.pollType}_form.details_placeholder")

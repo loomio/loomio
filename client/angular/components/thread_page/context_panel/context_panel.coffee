@@ -2,11 +2,12 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 ThreadService  = require 'shared/services/thread_service.coffee'
+I18n           = require 'shared/services/i18n.coffee'
 
 { listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
-{ scrollTo }           = require 'angular/helpers/window.coffee'
+{ scrollTo }                                  = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate) ->
+angular.module('loomioApp').directive 'contextPanel', ($rootScope) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
@@ -17,7 +18,7 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope, $translate) -
       return 'pinned' if $scope.discussion.pinned
 
     $scope.statusTitle = ->
-      $translate.instant "context_panel.thread_status.#{$scope.status()}"
+      translate "context_panel.thread_status.#{$scope.status()}"
 
     $scope.showLintel = (bool) ->
       $rootScope.$broadcast('showThreadLintel', bool)

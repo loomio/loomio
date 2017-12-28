@@ -1,9 +1,10 @@
 Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+I18n           = require 'shared/services/i18n.coffee'
 
 { discussionPrivacy } = require 'angular/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'discussionForm', ($location, $translate) ->
+angular.module('loomioApp').directive 'discussionForm', ->
   scope: {discussion: '=', modal: '=?'}
   templateUrl: 'generated/components/discussion/form/discussion_form.html'
   controller: ($scope) ->
@@ -22,7 +23,7 @@ angular.module('loomioApp').directive 'discussionForm', ($location, $translate) 
       $scope.updatePrivacy()
 
     $scope.privacyPrivateDescription = ->
-      $translate.instant discussionPrivacy($scope.discussion, true),
+      I18n.t discussionPrivacy($scope.discussion, true),
         group:  $scope.discussion.group().name,
         parent: $scope.discussion.group().parentName()
 

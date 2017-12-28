@@ -1,6 +1,8 @@
+I18n = require 'shared/services/i18n.coffee'
+
 { discussionPrivacy } = require 'angular/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'discussionPrivacyIcon', ($translate) ->
+angular.module('loomioApp').directive 'discussionPrivacyIcon', ->
   scope: {discussion: '=', private: '=?'}
   templateUrl: 'generated/components/discussion/privacy_icon/discussion_privacy_icon.html'
   controller: ($scope) ->
@@ -10,6 +12,6 @@ angular.module('loomioApp').directive 'discussionPrivacyIcon', ($translate) ->
       if $scope.private then 'private' else 'public'
 
     $scope.privacyDescription = ->
-      $translate.instant discussionPrivacy($scope.discussion, $scope.private),
+      I18n.t discussionPrivacy($scope.discussion, $scope.private),
         group:  $scope.discussion.group().name
         parent: $scope.discussion.group().parentName()

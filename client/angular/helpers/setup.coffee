@@ -2,13 +2,14 @@ AppConfig     = require 'shared/services/app_config.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 FlashService  = require 'shared/services/flash_service.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+I18n          = require 'shared/services/i18n.coffee'
 
 { listenForLoading } = require 'angular/helpers/listen.coffee'
 
 # a series of helpers to apply angular-specific implementations to the vanilla Loomio app,
 # such as how to open modals or display a flash message
 module.exports =
-  setupAngularModal: ($rootScope, $injector, $translate, $mdDialog) ->
+  setupAngularModal: ($rootScope, $injector, $mdDialog) ->
     ModalService.setOpenMethod (name, resolve = {}) ->
       modal                  = $injector.get(name)
       resolve.preventClose   = resolve.preventClose or (-> false)
@@ -21,7 +22,7 @@ module.exports =
         size:           modal.size or ''
         resolve:        resolve
         escapeToClose:  !resolve.preventClose()
-        ariaLabel:      $translate.instant(ariaFor(modal))
+        ariaLabel:      I18n.t(ariaFor(modal))
         onComplete:     focusElement
 
       $mdDialog.show(AppConfig.currentModal)
@@ -35,6 +36,11 @@ module.exports =
   setupAngularNavigate: ($location) ->
     LmoUrlService.setGoToMethod   (path)       -> $location.path(path)
     LmoUrlService.setParamsMethod (key, value) -> $location.search(key, value)
+
+  setupAngularTranslate: ($rootScope, $translate) ->
+    $translate.onReady -> $rootScope.translationsLoaded = true
+    I18n.setUseLocaleMethod (locale) -> $translate.use(locale)
+    I18n.setTranslateMethod (key, opts = {}) -> $translate.instant(key, opts)
 
 buildScope = ($rootScope, $mdDialog) ->
   $scope = $rootScope.$new(true)

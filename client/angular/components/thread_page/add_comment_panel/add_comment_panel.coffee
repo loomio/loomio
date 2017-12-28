@@ -4,7 +4,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 
 { scrollTo } = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').directive 'addCommentPanel', ($timeout, AuthModal) ->
+angular.module('loomioApp').directive 'addCommentPanel', ($timeout) ->
   scope: {eventWindow: '=', parentEvent: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/add_comment_panel/add_comment_panel.html'

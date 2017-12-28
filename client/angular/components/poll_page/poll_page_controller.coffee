@@ -1,11 +1,12 @@
-Session      = require 'shared/services/session.coffee'
-Records      = require 'shared/services/records.coffee'
-ModalService = require 'shared/services/modal_service.coffee'
+Session       = require 'shared/services/session.coffee'
+Records       = require 'shared/services/records.coffee'
+ModalService  = require 'shared/services/modal_service.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 { subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
 { myLastStanceFor }       = require 'angular/helpers/poll.coffee'
 
-angular.module('loomioApp').controller 'PollPageController', ($scope, $location, $rootScope, $routeParams) ->
+angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams) ->
   @init = (poll) =>
     if poll and !@poll?
       @poll = poll
@@ -18,13 +19,13 @@ angular.module('loomioApp').controller 'PollPageController', ($scope, $location,
 
       subscribeToLiveUpdate(poll_key: @poll.key)
 
-      if $location.search().share
+      if LmoUrlService.params().share
         ModalService.open 'PollCommonShareModal', poll: => @poll
 
-      if $location.search().set_outcome
+      if LmoUrlService.params().set_outcome
         ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)
 
-      if $location.search().change_vote
+      if LmoUrlService.params().change_vote
         ModalService.open 'PollCommonEditVoteModal', stance: => myLastStanceFor(@poll)
 
   Records.polls.fetchComplete($routeParams.key).then @init, (error) ->

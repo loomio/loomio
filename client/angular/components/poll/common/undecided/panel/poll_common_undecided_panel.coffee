@@ -1,8 +1,9 @@
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location) ->
+angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/undecided/panel/poll_common_undecided_panel.html'
   controller: ($scope) ->
@@ -15,7 +16,7 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ($location) ->
 
     params =
       poll_id:          $scope.poll.key
-      invitation_token: $location.search().invitation_token
+      invitation_token: LmoUrlService.params().invitation_token
 
     $scope.loaders =
       memberships: new RecordLoader

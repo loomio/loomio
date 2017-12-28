@@ -1,9 +1,10 @@
 Records = require 'shared/services/records.coffee'
+I18n    = require 'shared/services/i18n.coffee'
 
 angular.module('loomioApp').directive 'pollProposalChartPanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/proposal/chart_panel/poll_proposal_chart_panel.html'
-  controller: ($scope, $translate) ->
+  controller: ($scope) ->
 
     $scope.pollOptionNames = ->
       ['agree', 'abstain', 'disagree', 'block']
@@ -12,4 +13,4 @@ angular.module('loomioApp').directive 'pollProposalChartPanel', ->
       $scope.poll.stanceData[name] or 0
 
     $scope.translationFor = (name) ->
-      $translate.instant("poll_proposal_options.#{name}")
+      I18n.t("poll_proposal_options.#{name}")

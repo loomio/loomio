@@ -1,9 +1,10 @@
 Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { submitForm } = require 'angular/helpers/form.coffee'
 
-angular.module('loomioApp').factory 'LeaveGroupForm', ($rootScope, $location) ->
+angular.module('loomioApp').factory 'LeaveGroupForm', ($rootScope) ->
   templateUrl: 'generated/components/leave_group_form/leave_group_form.html'
   controller: ($scope, group) ->
     $scope.group = group
@@ -14,7 +15,7 @@ angular.module('loomioApp').factory 'LeaveGroupForm', ($rootScope, $location) ->
       flashSuccess: 'group_page.messages.leave_group_success'
       successCallback: ->
         $rootScope.$broadcast 'currentUserMembershipsLoaded'
-        $location.path '/dashboard'
+        LmoUrlService.goTo '/dashboard'
 
     $scope.canLeaveGroup = ->
       AbilityService.canRemoveMembership($scope.membership)

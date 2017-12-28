@@ -6,10 +6,15 @@ AbilityService  = require 'shared/services/ability_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 
-{ viewportSize, scrollTo, trackEvents }      = require 'angular/helpers/window.coffee'
-{ signIn, setLocale, subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
-{ broadcastKeyEvent, registerHotkeys }       = require 'angular/helpers/keyboard.coffee'
-{ setupAngularModal, setupAngularFlash, setupAngularNavigate } = require 'angular/helpers/setup.coffee'
+{ viewportSize, scrollTo, trackEvents }         = require 'angular/helpers/window.coffee'
+{ signIn, updateLocale, subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
+{ broadcastKeyEvent, registerHotkeys }          = require 'angular/helpers/keyboard.coffee'
+{
+  setupAngularModal,
+  setupAngularFlash,
+  setupAngularNavigate,
+  setupAngularTranslate
+} = require 'angular/helpers/setup.coffee'
 
 angular.module('loomioApp').controller 'RootController', ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $location, $router) ->
 
@@ -28,10 +33,8 @@ angular.module('loomioApp').controller 'RootController', ($scope, $rootScope, $i
     $scope.refreshing = true
     $timeout -> $scope.refreshing = false
     IntercomService.boot()
-    setLocale($translate)
+    updateLocale()
     subscribeToLiveUpdate()
-
-  $translate.onReady -> $scope.translationsLoaded = true
 
   $scope.$on 'toggleSidebar', (event, show) ->
     return if show == false
@@ -66,7 +69,8 @@ angular.module('loomioApp').controller 'RootController', ($scope, $rootScope, $i
 
   $router.config(Routes.concat(AppConfig.plugins.routes))
 
-  setupAngularModal($scope, $injector, $translate, $mdDialog)
+  setupAngularTranslate($scope, $translate)
+  setupAngularModal($scope, $injector, $mdDialog)
   setupAngularFlash($scope)
   setupAngularNavigate($location)
   trackEvents($scope)

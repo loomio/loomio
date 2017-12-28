@@ -1,11 +1,12 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+I18n           = require 'shared/services/i18n.coffee'
 
 { submitForm }    = require 'angular/helpers/form.coffee'
 { submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'commentForm', ($translate) ->
+angular.module('loomioApp').directive 'commentForm', ->
   scope: {eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
@@ -14,18 +15,18 @@ angular.module('loomioApp').directive 'commentForm', ($translate) ->
     $scope.discussion = $scope.eventWindow.discussion
     $scope.commentHelptext = ->
       helptext = if $scope.discussion.private
-        $translate.instant 'comment_form.private_privacy_notice', groupName: $scope.comment.group().fullName
+        I18n.t 'comment_form.private_privacy_notice', groupName: $scope.comment.group().fullName
       else
-        $translate.instant 'comment_form.public_privacy_notice'
+        I18n.t 'comment_form.public_privacy_notice'
       helptext.replace('&amp;', '&')
               .replace('&lt;', '<')
               .replace('&gt;', '>')
 
     $scope.commentPlaceholder = ->
       if $scope.comment.parentId
-        $translate.instant('comment_form.in_reply_to', name: $scope.comment.parent().author().name)
+        I18n.t('comment_form.in_reply_to', name: $scope.comment.parent().author().name)
       else
-        $translate.instant('comment_form.aria_label')
+        I18n.t('comment_form.aria_label')
 
     $scope.$on 'setParentComment', (e, parentComment) ->
       $scope.comment.parentId = parentComment.id

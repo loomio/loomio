@@ -2,16 +2,18 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm }   = require 'angular/helpers/form.coffee'
+{ updateLocale } = require 'angular/helpers/user.coffee'
 
-angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope, $translate, $location) ->
+angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'})
 
   @init = =>
     return unless AbilityService.isLoggedIn() or Session.user().restricted?
     @user = Session.user().clone()
-    $translate.use(@user.locale)
+    updateLocale()
   @init()
 
   @groupVolume = (group) ->
@@ -29,6 +31,6 @@ angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScop
   @submit = submitForm @, @user,
     submitFn: Records.users.updateProfile
     flashSuccess: 'email_settings_page.messages.updated'
-    successCallback: -> $location.path '/dashboard' if AbilityService.isLoggedIn()
+    successCallback: -> LmoUrlService.goTo '/dashboard' if AbilityService.isLoggedIn()
 
   return

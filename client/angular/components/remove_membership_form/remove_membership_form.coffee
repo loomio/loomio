@@ -1,7 +1,8 @@
-Session      = require 'shared/services/session.coffee'
-FlashService = require 'shared/services/flash_service.coffee'
+Session       = require 'shared/services/session.coffee'
+FlashService  = require 'shared/services/flash_service.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').factory 'RemoveMembershipForm', ($rootScope, $location) ->
+angular.module('loomioApp').factory 'RemoveMembershipForm', ($rootScope) ->
   templateUrl: 'generated/components/remove_membership_form/remove_membership_form.html'
   controller: ($scope, membership) ->
     $scope.membership = membership
@@ -11,7 +12,7 @@ angular.module('loomioApp').factory 'RemoveMembershipForm', ($rootScope, $locati
         FlashService.success 'memberships_page.messages.remove_member_success', name: $scope.membership.userName()
         $scope.$close()
         if $scope.membership.user() == Session.user()
-          $location.path "/dashboard"
+          LmoUrlService.goTo "/dashboard"
       , ->
         $rootScope.$broadcast 'pageError', 'cantDestroyMembership', $scope.membership
         $scope.$close()

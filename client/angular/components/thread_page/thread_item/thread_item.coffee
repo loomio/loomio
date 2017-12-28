@@ -2,11 +2,12 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+I18n           = require 'shared/services/i18n.coffee'
 
 { submitForm } = require 'angular/helpers/form.coffee'
 { eventHeadline, eventTitle, eventPollType } = require 'angular/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'threadItem', ($compile, $translate) ->
+angular.module('loomioApp').directive 'threadItem', ($compile) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
@@ -42,11 +43,11 @@ angular.module('loomioApp').directive 'threadItem', ($compile, $translate) ->
       (Session.user().id != $scope.event.actorId) && $scope.eventWindow.isUnread($scope.event)
 
     $scope.headline = ->
-      $translate.instant eventHeadline($scope.event, $scope.eventWindow.useNesting),
-        author:   $scope.event.actorName() || $translate.instant('common.anonymous')
+      I18n.t eventHeadline($scope.event, $scope.eventWindow.useNesting),
+        author:   $scope.event.actorName() || I18n.t('common.anonymous')
         username: $scope.event.actorUsername()
         title:    eventTitle($scope.event)
-        polltype: $translate.instant(eventPollType($scope.event)).toLowerCase()
+        polltype: I18n.t(eventPollType($scope.event)).toLowerCase()
 
     $scope.link = ->
       LmoUrlService.discussion $scope.eventWindow.discussion, from: $scope.event.sequenceId

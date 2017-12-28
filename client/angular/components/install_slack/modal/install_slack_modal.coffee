@@ -1,14 +1,15 @@
-Session = require 'shared/services/session.coffee'
+Session       = require 'shared/services/session.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 { hardReload } = require 'angular/helpers/window.coffee'
 
-angular.module('loomioApp').factory 'InstallSlackModal', ($location, $timeout) ->
+angular.module('loomioApp').factory 'InstallSlackModal', ($timeout) ->
   templateUrl: 'generated/components/install_slack/modal/install_slack_modal.html'
   controller: ($scope, group, preventClose) ->
 
     $scope.hasIdentity = Session.user().identityFor('slack')
     $scope.redirect = ->
-      $location.search('install_slack', true)
+      LmoUrlService.params('install_slack', true)
       hardReload('/slack/oauth')
     $timeout $scope.redirect, 500 unless $scope.hasIdentity
 

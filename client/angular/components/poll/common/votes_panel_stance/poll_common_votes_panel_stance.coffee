@@ -1,6 +1,8 @@
+I18n = require 'shared/services/i18n.coffee'
+
 { listenForTranslations } = require 'angular/helpers/listen.coffee'
 
-angular.module('loomioApp').directive 'pollCommonVotesPanelStance', ($translate) ->
+angular.module('loomioApp').directive 'pollCommonVotesPanelStance', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/common/votes_panel_stance/poll_common_votes_panel_stance.html'
   controller: ($scope) ->
@@ -10,4 +12,4 @@ angular.module('loomioApp').directive 'pollCommonVotesPanelStance', ($translate)
       if $scope.stance.participant()
         $scope.stance.participant().name
       else
-        $translate.instant('common.anonymous')
+        I18n.t('common.anonymous')

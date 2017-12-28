@@ -1,6 +1,8 @@
+I18n = require 'shared/services/i18n.coffee'
+
 { registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
 
-angular.module('loomioApp').directive 'pendingEmailForm', ($translate) ->
+angular.module('loomioApp').directive 'pendingEmailForm', ->
   scope: {emails: '='}
   restrict: 'E'
   templateUrl: 'generated/components/pending_email_form/pending_email_form.html'
@@ -31,15 +33,15 @@ angular.module('loomioApp').directive 'pendingEmailForm', ($translate) ->
 
     $scope.checkEmailNotEmpty = ->
       if $scope.newEmail.length <= 0
-        $scope.emailValidationError = $translate.instant('pending_email_form.email_empty')
+        $scope.emailValidationError = I18n.t('pending_email_form.email_empty')
 
     $scope.checkEmailValid = ->
       if $scope.newEmail.length > 0 && !$scope.newEmail.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)
-        $scope.emailValidationError = $translate.instant('pending_email_form.email_invalid')
+        $scope.emailValidationError = I18n.t('pending_email_form.email_invalid')
 
     $scope.checkEmailAvailable = ->
       if _.contains($scope.emails, $scope.newEmail)
-        $scope.emailValidationError = $translate.instant('pending_email_form.email_exists', email: $scope.newEmail)
+        $scope.emailValidationError = I18n.t('pending_email_form.email_exists', email: $scope.newEmail)
 
     $scope.remove = (email) ->
       _.pull($scope.emails, email)

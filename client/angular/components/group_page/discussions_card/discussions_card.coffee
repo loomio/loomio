@@ -3,10 +3,11 @@ AbilityService     = require 'shared/services/ability_service.coffee'
 RecordLoader       = require 'shared/services/record_loader.coffee'
 ThreadQueryService = require 'shared/services/thread_query_service.coffee'
 ModalService       = require 'shared/services/modal_service.coffee'
+LmoUrlService      = require 'shared/services/lmo_url_service.coffee'
 
 { applyLoadingFunction } = require 'angular/helpers/apply.coffee'
 
-angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeout) ->
+angular.module('loomioApp').directive 'discussionsCard', ($timeout) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
@@ -32,11 +33,11 @@ angular.module('loomioApp').directive 'discussionsCard', ($q, $location, $timeou
           filter:   $scope.filter
       $scope.loader.fetchRecords()
 
-    $scope.init($location.search().filter)
+    $scope.init(LmoUrlService.params().filter)
     $scope.$on 'subgroupsLoaded', -> $scope.init($scope.filter)
 
     $scope.searchThreads = ->
-      return $q.when() unless $scope.fragment
+      return Promise.resolve(true) unless $scope.fragment
       Records.discussions.search($scope.group.key, $scope.fragment, per: 10).then (data) ->
         $scope.searched = ThreadQueryService.queryFor
           name: "group_#{$scope.group.key}_searched"

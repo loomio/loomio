@@ -1,9 +1,10 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+I18n           = require 'shared/services/i18n.coffee'
 
 { groupPrivacy, groupPrivacyStatement } = require 'angular/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'groupForm', ($translate) ->
+angular.module('loomioApp').directive 'groupForm', ->
   scope: {group: '=', modal: '=?'}
   templateUrl: 'generated/components/group/form/group_form.html'
   controller: ($scope) ->
@@ -21,11 +22,11 @@ angular.module('loomioApp').directive 'groupForm', ($translate) ->
         ['open', 'closed', 'secret']
 
     $scope.privacyStatement = ->
-      $translate.instant groupPrivacyStatement($scope.group),
+      I18n.t groupPrivacyStatement($scope.group),
         parent: $scope.group.parentName()
 
     $scope.privacyStringFor = (privacy) ->
-      $translate.instant groupPrivacy($scope.group, privacy),
+      I18n.t groupPrivacy($scope.group, privacy),
         parent: $scope.group.parentName()
 
     $scope.showGroupFeatures = ->

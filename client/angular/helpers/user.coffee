@@ -3,7 +3,9 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
-moment         = require 'moment'
+I18n           = require 'shared/services/i18n.coffee'
+
+moment = require 'moment'
 
 { hardReload } = require 'angular/helpers/window.coffee'
 
@@ -18,9 +20,9 @@ module.exports =
     AppConfig.loggingOut = true
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
-  setLocale: ($translate) ->
+  updateLocale: ->
     locale = (Session.user().locale || "en").toLowerCase().replace('_','-')
-    $translate.use(locale)
+    I18n.useLocale(locale)
     return if locale == "en"
     Records.momentLocales.fetch(path: "#{locale}.js").then((response) -> response.text()).then (data) ->
       eval(data)
