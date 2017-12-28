@@ -39,7 +39,7 @@ gulp.task 'angular:external:prod', (done) -> sequence('angular:external:dev', ['
 gulp.task 'vue:bundle:dev',  vue.bundle.development
 gulp.task 'vue:bundle:prod', vue.bundle.production
 
-gulp.task 'bundle:dev',  ['angular:bundle:dev', 'vue:bundle:dev', 'execjs:dev']
+gulp.task 'bundle:dev',  ['angular:external:dev', 'angular:bundle:dev', 'vue:bundle:dev', 'execjs:dev']
 gulp.task 'bundle:prod', ['angular:bundle:prod', 'angular:external:prod', 'vue:bundle:prod', 'execjs:prod']
 
 gulp.task 'dev',                    (done) -> sequence('bundle:dev', watch)

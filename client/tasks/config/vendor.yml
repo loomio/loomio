@@ -3,26 +3,26 @@ path: node_modules
 js:
   - lodash/index.js
   - private_pub/app/assets/javascripts/private_pub.js
-  # - angular/angular.js
-  # - angular-sanitize/angular-sanitize.js
-  # - loomio-angular-router/dist/router.es5.js
-  # - angular-translate/dist/angular-translate.js
-  # - angular-translate-loader-url/angular-translate-loader-url.js
-  # - marked/lib/marked.js
-  # - loomio-angular-marked/dist/angular-marked.js
+  - angular/angular.js
+  - angular-sanitize/angular-sanitize.js
+  - loomio-angular-router/dist/router.es5.js
+  - angular-translate/dist/angular-translate.js
+  - angular-translate-loader-url/angular-translate-loader-url.js
+  - marked/lib/marked.js
+  - loomio-angular-marked/dist/angular-marked.js
   - ng-file-upload/dist/angular-file-upload.js
-  # - ment.io/dist/mentio.js
-  # - angular-animate/angular-animate.js
-  # - angular-inview/angular-inview.js
-  # - angular-gravatar/build/angular-gravatar.js
-  # - angular-scroll/angular-scroll.js
-  # - angular-clipboard/angular-clipboard.js
-  # - angular-material/angular-material.js
-  # - angular-aria/angular-aria.js
-  # - angulartics/src/angulartics.js
-  # - angulartics/src/angulartics-gtm.js
-  # - angular-recaptcha/release/angular-recaptcha.js
-  # - angular-sortable-view/src/angular-sortable-view.js
+  - ment.io/dist/mentio.js
+  - angular-animate/angular-animate.js
+  - angular-inview/angular-inview.js
+  - angular-gravatar/build/angular-gravatar.js
+  - angular-scroll/angular-scroll.js
+  - angular-clipboard/angular-clipboard.js
+  - angular-material/angular-material.js
+  - angular-aria/angular-aria.js
+  - angulartics/src/angulartics.js
+  - angulartics/src/angulartics-gtm.js
+  - angular-recaptcha/release/angular-recaptcha.js
+  - angular-sortable-view/src/angular-sortable-view.js
 execjs:
   - lodash/index.js
   - emojione/lib/js/emojione.js

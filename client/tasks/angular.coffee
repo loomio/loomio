@@ -32,6 +32,7 @@ budo       = require 'budo'
 module.exports =
   bundle:
     development: ->
+      requireForBundle()
       budo paths.core.main,
         serve: "client/development/angular.bundle.js"
         stream: process.stdout
