@@ -12,7 +12,7 @@ cache:
   yarn: true
   directories:
     - vendor/bundle
-    - angular/node_modules
+    - client/node_modules
 
 addons:
   firefox: "57.0"
@@ -47,9 +47,9 @@ install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - gem install s3_uploader
   - cd angular; yarn; cd ..
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update --versions.standalone 3.8.1 --versions.gecko v0.19.1
+  - client/node_modules/webdriver-manager/bin/webdriver-manager update --versions.standalone 3.8.1 --versions.gecko v0.19.1
   - mkdir $TRAVIS_BUILD_DIR/bin
-  - ln -s $TRAVIS_BUILD_DIR/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.19.1 $TRAVIS_BUILD_DIR/bin/geckodriver
+  - ln -s $TRAVIS_BUILD_DIR/client/node_modules/webdriver-manager/selenium/geckodriver-v0.19.1 $TRAVIS_BUILD_DIR/bin/geckodriver
   - ln -s fetched_plugins plugins
 
 before_script:
