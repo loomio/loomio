@@ -39,21 +39,16 @@ module.exports =
         stream: process.stdout
         live: true
         port: 4002
-        browserify:
-          paths: ['./', './node_modules']
-          transform: [coffeeify, babelify.configure(presets: ['es2015']), annotate]
+        browserify: browserifyOpts()
 
     production: ->
       requireForBundle()
-      browserify(entries: paths.core.main, paths: ['./', './node_modules'])
-        .transform(coffeeify)
-        .transform(babelify, presets: ['es2105'])
-        .transform(annotate)
-        .transform(uglifyify, global: true)
-        .external('angular')
+      browserify(browserifyOpts())
         .bundle()
         .pipe(source('angular.bundle.min.js'))
         .pipe(buffer())
+        .pipe(gulp.dest(paths.dist.assets))
+        .pipe(uglify())
         .on('error', (err) -> gutil.log(gutil.colors.red('[Error]'), err.toString()))
         .pipe(gulp.dest(paths.dist.assets))
 
@@ -82,6 +77,11 @@ requireForBundle = ->
   fs.writeFile paths.core.main,  _.map(core, (file) -> "require '#{file}'").join("\n")
   fs.appendFile(paths.core.main, "\n")
   fs.appendFile paths.core.main, _.map(plugins, (file) -> "require '#{file}'").join("\n")
+
+browserifyOpts = ->
+  entries: paths.core.main,
+  paths: ['./', './node_modules']
+  transform: [coffeeify, annotate]
 
 buildHaml = (prefix) ->
   pipe gulp.src(paths[prefix].haml), [
