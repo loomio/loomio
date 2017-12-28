@@ -58,6 +58,7 @@
     "loomio-angular-router": "git://github.com/loomio/router#v0.5.3.2",
     "mdi": "2.1.19",
     "ment.io": "~0.9.15",
+    "moment": "latest",
     "moment-timezone": "latest",
     "ng-file-upload": "~3.2.4",
     "private_pub": "latest",

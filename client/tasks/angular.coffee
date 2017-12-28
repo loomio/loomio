@@ -23,26 +23,33 @@ annotate   = require 'browserify-ngannotate' # to allow for minification of angu
 glob       = require 'globby'
 source     = require 'vinyl-source-stream'
 fs         = require 'fs'
+gutil      = require 'gulp-util'
 _          = require 'lodash'
 
 module.exports =
-  require: ->
-    core    = _.flatten _.map paths.core.folders, (folder) -> _.map glob.sync("angular/#{folder}/**/*.coffee")
-    plugins = _.map paths.plugin.coffee, (file) -> "../#{file}"
+  bundle:
+    development: ->
+      browserify(entries: paths.core.main, paths: ['./', './node_modules'])
+        .transform(coffeeify)
+        .transform(babelify, presets: ['es2105'])
+        .bundle()
+        .pipe(source('angular.bundle.min.js'))
+        .pipe(buffer())
+        .on('error', (err) -> gutil.log(gutil.colors.red('[Error]'), err.toString()))
+        .pipe(gulp.dest(paths.dist.assets))
 
-    fs.writeFile paths.core.main,  _.map(core, (file) -> "require '#{file}'").join("\n")
-    fs.appendFile(paths.core.main, "\n")
-    fs.appendFile paths.core.main, _.map(plugins, (file) -> "require '#{file}'").join("\n")
-
-  browserify: ->
-    pipe browserify(
-      entries: [paths.core.main]
-      transform: [coffeeify, annotate]
-      paths: ['./', './node_modules']
-    ).bundle().on('error', (err) -> console.log(err)), [
-      source('angular.bundle.js'),
-      gulp.dest(paths.dist.assets)
-    ]
+    production: ->
+      browserify(entries: paths.core.main, paths: ['./', './node_modules'])
+        .transform(coffeeify)
+        .transform(babelify, presets: ['es2105'])
+        .transform(annotate)
+        .transform(uglifyify, global: true)
+        .external('angular')
+        .bundle()
+        .pipe(source('angular.bundle.min.js'))
+        .pipe(buffer())
+        .on('error', (err) -> gutil.log(gutil.colors.red('[Error]'), err.toString()))
+        .pipe(gulp.dest(paths.dist.assets))
 
   vendor: ->
     pipe gulp.src(paths.js.vendor), [
@@ -59,9 +66,16 @@ module.exports =
     scss: -> buildScss('plugin')
 
   minify:
-    bundle: -> minifyBundle 'angular.bundle'
     js:     -> minifyJs     'angular.vendor', 'execjs'
     css:    -> minifyCss    'angular.core', 'angular.plugin'
+
+requireForBundle = ->
+  core    = _.flatten _.map paths.core.folders, (folder) -> _.map glob.sync("angular/#{folder}/**/*.coffee")
+  plugins = _.map paths.plugin.coffee, (file) -> "../#{file}"
+
+  fs.writeFile paths.core.main,  _.map(core, (file) -> "require '#{file}'").join("\n")
+  fs.appendFile(paths.core.main, "\n")
+  fs.appendFile paths.core.main, _.map(plugins, (file) -> "require '#{file}'").join("\n")
 
 buildHaml = (prefix) ->
   pipe gulp.src(paths[prefix].haml), [
@@ -95,16 +109,6 @@ minifyJs = (filenames...) ->
       rename(suffix: '.min'),
       gulp.dest(paths.dist.assets)
     ]
-
-minifyBundle = (filenames...) ->
-  _.each filenames, (filename) ->
-    browserify("#{paths.dist.assets}/#{filename}.js")
-      .transform('uglifyify')
-      .bundle()
-      .pipe(source("#{filename}.min.js"))
-      .pipe(uglify(mangle: false))
-      .pipe(gulp.dest(paths.dist.assets))
-
 
 minifyCss = (filenames...) ->
   _.each filenames, (filename) ->
