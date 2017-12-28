@@ -13,6 +13,10 @@ angular.module('loomioApp').config (markedProvider) ->
     renderer.listitem  = (text) -> _super.listitem  cook(text)
     renderer.tablecell = (text, flags) -> _super.tablecell cook(text), flags
 
+    emojione.unicodeAlt = false
+    emojione.imagePathPNG = "/img/emojis/"
+    emojione.ascii = true
+
     renderer.heading   = (text, level) ->
       _super.heading(emojione.shortnameToImage(text), level, text)
 

@@ -1,5 +1,8 @@
 { checkBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
 
+checkBrowser()
+initServiceWorker()
+
 angular.module('loomioApp', [
   'ngNewRouter',
   'pascalprecht.translate',
@@ -19,6 +22,3 @@ angular.module('loomioApp', [
   'ngAnimate',
   'angular-sortable-view'
 ])
-
-checkBrowser()
-initServiceWorker()
