@@ -1,3 +1,5 @@
+bowser = require 'bowser'
+
 IntercomService = require 'shared/services/intercom_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 ScrollService   = require 'shared/services/scroll_service.coffee'
@@ -16,11 +18,16 @@ module.exports =
     else
       'extralarge'
 
+  initServiceWorker: ->
+    if document.location.protocol.match(/https/) && navigator.serviceWorker?
+      navigator.serviceWorker.register(document.location.origin + '/service-worker.js', scope: './')
+
+  checkBrowser: ->
+    if (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 10)
+      hardReload('/417.html')
+
   hardReload: (path) ->
-    if path
-      window.location.href = path
-    else
-      window.location.reload()
+    hardReload(path)
 
   print: ->
     window.print()
@@ -41,3 +48,9 @@ module.exports =
         document.querySelector(options.container or '.lmo-main-content'),
         options
       )
+
+hardReload = (path) ->
+  if path
+    window.location.href = path
+  else
+    window.location.reload()
