@@ -24,26 +24,27 @@ gulp.task 'angular:moment_locales',  extra.moment_locales
 gulp.task 'execjs:dev',              extra.execjs.development
 gulp.task 'execjs:prod',             extra.execjs.production
 
-gulp.task 'angular:external:dev', [
+gulp.task 'angular:external:extra', [
   'angular:fonts',
-  'angular:core:haml',
-  'angular:core:scss',
-  'angular:plugin:haml',
-  'angular:plugin:scss',
   'angular:vendor',
   'angular:emoji',
   'angular:moment_locales'
 ]
-gulp.task 'angular:external:prod', (done) -> sequence('angular:external:dev', ['angular:minify:js', 'angular:minify:css'], -> done())
+gulp.task 'angular:external:dev', [
+  'angular:core:haml',
+  'angular:core:scss',
+  'angular:plugin:haml',
+  'angular:plugin:scss'
+]
+gulp.task 'angular:external:prod', (done) -> sequence(['angular:external:extra', 'angular:external:dev'], ['angular:minify:js', 'angular:minify:css'], -> done())
 
 gulp.task 'vue:bundle:dev',  vue.bundle.development
 gulp.task 'vue:bundle:prod', vue.bundle.production
 
 gulp.task 'bundle:dev',  ['angular:external:dev', 'angular:bundle:dev', 'vue:bundle:dev', 'execjs:dev']
-gulp.task 'bundle:prod', ['angular:bundle:prod', 'angular:external:prod', 'vue:bundle:prod', 'execjs:prod']
 
-gulp.task 'dev',                    (done) -> sequence('bundle:dev', watch)
-gulp.task 'compile',                (done) -> sequence('bundle:prod')
+gulp.task 'dev',         (done) -> sequence('bundle:dev', watch)
+gulp.task 'compile',     ['angular:external:prod', 'angular:bundle:prod', 'vue:bundle:prod', 'execjs:prod']
 
 gulp.task 'protractor:core',    require('./tasks/protractor/core')
 gulp.task 'protractor:plugins', require('./tasks/protractor/plugins')
