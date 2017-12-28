@@ -4,7 +4,6 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ updateLocale } = require 'shared/helpers/user.coffee'
 { submitForm }   = require 'angular/helpers/form.coffee'
 
 angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootScope) ->
@@ -16,7 +15,7 @@ angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootSc
   @init = =>
     return unless AbilityService.isLoggedIn()
     @user = Session.user().clone()
-    updateLocale()
+    Session.updateLocale(@user.locale)
     @submit = submitForm @, @user,
       flashSuccess: 'profile_page.messages.updated'
       submitFn: Records.users.updateProfile

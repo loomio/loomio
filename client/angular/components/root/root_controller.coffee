@@ -6,10 +6,10 @@ AbilityService  = require 'shared/services/ability_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 
-{ viewportSize, scrollTo, trackEvents }         = require 'shared/helpers/window.coffee'
-{ signIn, updateLocale, subscribeToLiveUpdate } = require 'shared/helpers/user.coffee'
-{ broadcastKeyEvent, registerHotkeys }          = require 'angular/helpers/keyboard.coffee'
-{ listenForEvents }                             = require 'angular/helpers/listen.coffee'
+{ viewportSize, scrollTo, trackEvents } = require 'shared/helpers/window.coffee'
+{ signIn, subscribeToLiveUpdate }       = require 'shared/helpers/user.coffee'
+{ broadcastKeyEvent, registerHotkeys }  = require 'angular/helpers/keyboard.coffee'
+{ listenForEvents }                     = require 'angular/helpers/listen.coffee'
 {
   setupAngularModal,
   setupAngularFlash,
@@ -35,7 +35,6 @@ angular.module('loomioApp').controller 'RootController', ($scope, $rootScope, $i
     $scope.refreshing = true
     $timeout -> $scope.refreshing = false
     IntercomService.boot()
-    updateLocale()
     subscribeToLiveUpdate()
 
   $scope.$on 'toggleSidebar', (event, show) ->

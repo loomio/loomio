@@ -5,7 +5,6 @@ ModalService   = require 'shared/services/modal_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { submitForm }   = require 'angular/helpers/form.coffee'
-{ updateLocale } = require 'shared/helpers/user.coffee'
 
 angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope) ->
   $rootScope.$broadcast('currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'})
@@ -13,7 +12,6 @@ angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScop
   @init = =>
     return unless AbilityService.isLoggedIn() or Session.user().restricted?
     @user = Session.user().clone()
-    updateLocale()
   @init()
 
   @groupVolume = (group) ->

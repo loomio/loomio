@@ -20,14 +20,6 @@ module.exports =
     AppConfig.loggingOut = true
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
-  updateLocale: ->
-    locale = (Session.user().locale || "en").toLowerCase().replace('_','-')
-    I18n.useLocale(locale)
-    return if locale == "en"
-    Records.momentLocales.fetch(path: "#{locale}.js").then((response) -> response.text()).then (data) ->
-      eval(data)
-      moment.locale(locale)
-
   subscribeToLiveUpdate: (options = {}) ->
     return unless AbilityService.isLoggedIn()
     Records.messageChannel.remote.post('subscribe', options).then (subscriptions) ->

@@ -1,5 +1,6 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
+I18n      = require 'shared/services/i18n.coffee'
 
 _ = require 'lodash'
 
@@ -13,6 +14,7 @@ module.exports = new class Session
 
     return unless AppConfig.currentUserId = data.current_user_id
     user = @user()
+    @updateLocale()
 
     if user.timeZone != AppConfig.timeZone
       user.timeZone = AppConfig.timeZone
@@ -29,3 +31,11 @@ module.exports = new class Session
 
   currentGroupId: ->
     @currentGroup? && @currentGroup.id
+
+  updateLocale: () ->
+    locale = (@user().locale || "en").toLowerCase().replace('_','-')
+    I18n.useLocale(locale)
+    return if locale == "en"
+    Records.momentLocales.fetch(path: "#{locale}.js").then((response) -> response.text()).then (data) ->
+      eval(data)
+      moment.locale(locale)
