@@ -19,6 +19,7 @@ prefix     = require 'gulp-autoprefixer'
 cssmin     = require 'gulp-cssmin'
 browserify = require 'browserify'
 babelify   = require 'babelify'
+uglifyify  = require 'uglifyify'
 buffer     = require 'vinyl-buffer'
 coffeeify  = require 'coffeeify'
 annotate   = require 'browserify-ngannotate' # to allow for minification of angular
@@ -43,6 +44,7 @@ module.exports =
           transform: [coffeeify, babelify.configure(presets: ['es2015']), annotate]
 
     production: ->
+      requireForBundle()
       browserify(entries: paths.core.main, paths: ['./', './node_modules'])
         .transform(coffeeify)
         .transform(babelify, presets: ['es2105'])
