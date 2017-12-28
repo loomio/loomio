@@ -43,11 +43,12 @@ gulp.task 'vue:bundle:prod', vue.bundle.production
 
 gulp.task 'bundle:dev',  ['angular:external:dev', 'angular:bundle:dev', 'vue:bundle:dev', 'execjs:dev']
 
-gulp.task 'dev',         (done) -> sequence('bundle:dev', watch, -> done())
+gulp.task 'watch',       watch
+gulp.task 'dev',         (done) -> sequence('bundle:dev', 'watch', -> done())
 gulp.task 'compile',     ['angular:external:prod', 'angular:bundle:prod', 'vue:bundle:prod', 'execjs:prod']
 
 gulp.task 'protractor:core',    require('./tasks/protractor/core')
 gulp.task 'protractor:plugins', require('./tasks/protractor/plugins')
 
 gulp.task 'protractor',     (done) -> sequence('angular:bundle:dev', 'protractor:now', -> done())
-gulp.task 'protractor:now', (done) -> sequence('protractor:core', 'protractor:plugins', -> done())
+gulp.task 'protractor:now', (done) -> sequence('protractor:core', 'protractor:plugins', -> done() )

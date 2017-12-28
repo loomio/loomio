@@ -44,6 +44,7 @@ module.exports =
     production: ->
       requireForBundle()
       browserify(browserifyOpts())
+        .transform(uglifyify())
         .bundle()
         .pipe(source('angular.bundle.min.js'))
         .pipe(buffer())
@@ -81,7 +82,10 @@ requireForBundle = ->
 browserifyOpts = ->
   entries: paths.core.main,
   paths: ['./', './node_modules']
-  transform: [coffeeify, annotate, uglifyify]
+  transform: [
+    coffeeify,
+    babelify.configure(presets: ['es2015'], plugins: ['angularjs-annotate'])
+  ]
 
 buildHaml = (prefix) ->
   pipe gulp.src(paths[prefix].haml), [

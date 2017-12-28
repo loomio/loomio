@@ -72,6 +72,7 @@
   "devDependencies": {
     "add-stream": "^1.0.0",
     "babel-core": "^6.26.0",
+    "babel-plugin-angularjs-annotate": "^0.8.2",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
     "browserify-debug-tools": "^2.3.0",
