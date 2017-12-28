@@ -2,7 +2,7 @@ class API::NotificationsController < API::RestfulController
 
   def viewed
     service.viewed(user: current_user)
-    head :ok
+    render json: { success: :ok }
   end
 
   private
