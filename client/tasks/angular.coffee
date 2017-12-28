@@ -23,6 +23,7 @@ coffeeify  = require 'coffeeify'
 glob       = require 'globby'
 source     = require 'vinyl-source-stream'
 fs         = require 'fs'
+collapse   = require 'bundle-collapser/plugin'
 gutil      = require 'gulp-util'
 _          = require 'lodash'
 budo       = require 'budo'
@@ -43,6 +44,7 @@ module.exports =
       requireForBundle()
       browserify(browserifyOpts())
         .transform('uglifyify', global: true)
+        .plugin(collapse)
         .bundle()
         .pipe(source('angular.bundle.min.js'))
         .pipe(buffer())
