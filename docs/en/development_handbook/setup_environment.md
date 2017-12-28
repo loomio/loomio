@@ -99,7 +99,7 @@ $ nvm install 8.4.0
 $ nvm alias default 8.4.0
 $ bundle install
 $ npm install -g yarn gulp
-$ cd angular
+$ cd client
 $ yarn
 ```
 

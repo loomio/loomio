@@ -1,7 +1,7 @@
 namespace :travis do
   task :prepare do
     puts "Creating test assets for v#{Loomio::Version.current}..."
-    system("cd angular && npm rebuild node-sass && gulp compile")
+    system("cd client && npm rebuild node-sass && gulp compile")
     raise "Asset creation failed!" unless $?.exitstatus == 0
   end
 
@@ -17,7 +17,7 @@ namespace :travis do
     system("sleep 10")
     system("wget http://localhost:3000/")
     # ok now start running the tests
-    system("cd angular && gulp protractor:core")
+    system("cd client && gulp protractor:core")
     raise "protractor:core failed!" unless $?.exitstatus == 0
   end
 
@@ -27,7 +27,7 @@ namespace :travis do
     rspec_passed = $?.exitstatus == 0
     system("wget http://localhost:3000/")
     puts "Starting to run plugin protractor..."
-    system("cd angular && gulp protractor:plugins")
+    system("cd client && gulp protractor:plugins")
     protractor_passed = $?.exitstatus == 0
     raise "rspec:plugins failed!" unless rspec_passed
     raise "protractor:plugins failed!" unless protractor_passed
