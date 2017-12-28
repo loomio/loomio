@@ -18,7 +18,6 @@ prefix     = require 'gulp-autoprefixer'
 cssmin     = require 'gulp-cssmin'
 browserify = require 'browserify'
 babelify   = require 'babelify'
-uglifyify  = require 'uglifyify'
 buffer     = require 'vinyl-buffer'
 coffeeify  = require 'coffeeify'
 glob       = require 'globby'
@@ -43,7 +42,7 @@ module.exports =
     production: ->
       requireForBundle()
       browserify(browserifyOpts())
-        .transform(uglifyify())
+        .transform('uglifyify', global: true)
         .bundle()
         .pipe(source('angular.bundle.min.js'))
         .pipe(buffer())
