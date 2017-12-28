@@ -98,6 +98,8 @@ buildHaml = (prefix) ->
           "generated/components/#{url.split('.')[0]}/#{url}"
     )
     concat("angular.#{prefix}-templates.js")
+    gulp.dest(paths.dist.assets),
+    rename(suffix: '.min'),
     gulp.dest(paths.dist.assets)
   ]
 

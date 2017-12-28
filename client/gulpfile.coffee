@@ -36,7 +36,8 @@ gulp.task 'angular:external:dev', [
   'angular:plugin:haml',
   'angular:plugin:scss'
 ]
-gulp.task 'angular:external:prod', (done) -> sequence(['angular:external:extra', 'angular:external:dev'], ['angular:minify:js', 'angular:minify:css'], -> done())
+gulp.task 'angular:external', ['angular:external:extra', 'angular:external:dev']
+gulp.task 'angular:external:prod', (done) -> sequence('angular:external', ['angular:minify:js', 'angular:minify:css'], -> done())
 
 gulp.task 'vue:bundle:dev',  vue.bundle.development
 gulp.task 'vue:bundle:prod', vue.bundle.production
