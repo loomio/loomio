@@ -85,6 +85,7 @@ browserifyOpts = ->
 
 buildHaml = (prefix) ->
   pipe gulp.src(paths[prefix].haml), [
+    plumber(errorHandler: onError),
     haml(),
     htmlmin(),
     template(
@@ -111,7 +112,8 @@ buildScss = (prefix) ->
 minifyJs = (filenames...) ->
   _.each filenames, (filename) ->
     pipe gulp.src("#{paths.dist.assets}/#{filename}.js"), [
-      uglify(mangle: false),
+      plumber(errorHandler: onError),
+      uglify(),
       rename(suffix: '.min'),
       gulp.dest(paths.dist.assets)
     ]

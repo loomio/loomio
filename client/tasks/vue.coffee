@@ -1,6 +1,7 @@
 gulp       = require 'gulp'
 pipe       = require 'gulp-pipe'
 browserify = require 'browserify'
+plumber    = require 'gulp-plumber'
 buffer     = require 'vinyl-buffer'
 vueify     = require 'vueify'
 coffeeify  = require 'coffeeify'
@@ -36,6 +37,7 @@ module.exports =
         .pipe(uglify())
         .pipe(gulp.dest(paths.dist.assets))
       pipe gulp.src("#{paths.dist.assets}/vue.bundle.css"), [
+        plumber(errorHandler: onError),
         prefix(browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 9'], cascade: false),
         cssmin(),
         rename(suffix: '.min'),
