@@ -7,7 +7,7 @@ I18n           = require 'shared/services/i18n.coffee'
 
 moment = require 'moment'
 
-{ hardReload } = require 'angular/helpers/window.coffee'
+{ hardReload } = require 'shared/helpers/window.coffee'
 
 # A series of actions relating to updating the current user, such as signing in
 # or changing the app's locale

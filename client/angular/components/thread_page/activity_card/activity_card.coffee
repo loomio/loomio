@@ -4,7 +4,7 @@ ChronologicalEventWindow = require 'shared/services/chronological_event_window.c
 NestedEventWindow        = require 'shared/services/nested_event_window.coffee'
 ModalService             = require 'shared/services/modal_service.coffee'
 
-{ print } = require 'angular/helpers/window.coffee'
+{ print } = require 'shared/helpers/window.coffee'
 
 angular.module('loomioApp').directive 'activityCard', ($mdDialog) ->
   scope: {discussion: '='}

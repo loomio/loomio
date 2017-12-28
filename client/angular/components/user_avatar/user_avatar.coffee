@@ -1,5 +1,5 @@
 
-{ is2x } = require 'angular/helpers/window.coffee'
+{ is2x } = require 'shared/helpers/window.coffee'
 
 angular.module('loomioApp').directive 'userAvatar', ->
   scope: {user: '=', coordinator: '=?', size: '@?', noLink: '=?'}

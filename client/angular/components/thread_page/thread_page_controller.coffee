@@ -5,7 +5,7 @@ AbilityService    = require 'shared/services/ability_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
 LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 
-{ scrollTo }         = require 'angular/helpers/window.coffee'
+{ scrollTo }         = require 'shared/helpers/window.coffee'
 { registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
 
 angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $rootScope, $timeout) ->

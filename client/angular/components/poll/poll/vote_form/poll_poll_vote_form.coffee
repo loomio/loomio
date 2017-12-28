@@ -1,6 +1,6 @@
 { submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 { submitStance }  = require 'angular/helpers/form.coffee'
-{ fromPairs }     = require 'shared/services/util.coffee'
+{ fromPairs }     = require 'shared/helpers/lodash_ext.coffee'
 
 angular.module('loomioApp').directive 'pollPollVoteForm', ->
   scope: {stance: '='}

@@ -1,4 +1,4 @@
-{ scrollTo } = require 'angular/helpers/window.coffee'
+{ scrollTo } = require 'shared/helpers/window.coffee'
 
 angular.module('loomioApp').directive 'threadLintel', ->
   restrict: 'E'

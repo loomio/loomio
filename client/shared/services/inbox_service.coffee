@@ -3,7 +3,7 @@ Session            = require 'shared/services/session.coffee'
 ThreadQueryService = require 'shared/services/thread_query_service.coffee'
 
 _ = require 'lodash'
-{ fromPairs } = require 'shared/services/util.coffee'
+{ fromPairs } = require 'shared/helpers/lodash_ext.coffee'
 
 module.exports = new class InboxService
 

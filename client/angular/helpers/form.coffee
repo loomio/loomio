@@ -5,7 +5,7 @@ FlashService   = require 'shared/services/flash_service.coffee'
 
 { signIn }            = require 'shared/helpers/user.coffee'
 { fieldFromTemplate } = require 'shared/helpers/poll.coffee'
-{ scrollTo }          = require 'angular/helpers/window.coffee'
+{ scrollTo }          = require 'shared/helpers/window.coffee'
 
 # a helper to aid submitting forms throughout the app
 module.exports =

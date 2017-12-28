@@ -2,7 +2,7 @@ AppConfig       = require 'shared/services/app_config.coffee'
 Session         = require 'shared/services/session.coffee'
 UserHelpService = require 'shared/services/user_help_service.coffee'
 
-{ contactUs } = require 'angular/helpers/window.coffee'
+{ contactUs } = require 'shared/helpers/window.coffee'
 
 angular.module('loomioApp').directive 'userDropdown', ->
   restrict: 'E'

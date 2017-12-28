@@ -2,6 +2,7 @@ AppConfig     = require 'shared/services/app_config.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 FlashService  = require 'shared/services/flash_service.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+ScrollService = require 'shared/services/scroll_service.coffee'
 I18n          = require 'shared/services/i18n.coffee'
 
 { listenForLoading } = require 'angular/helpers/listen.coffee'
@@ -41,6 +42,14 @@ module.exports =
     $translate.onReady -> $rootScope.translationsLoaded = true
     I18n.setUseLocaleMethod (locale) -> $translate.use(locale)
     I18n.setTranslateMethod (key, opts = {}) -> $translate.instant(key, opts)
+
+  setupAngularScroll: ->
+    ScrollService.setScrollMethod (elem, container, options = {}) ->
+      return unless elem and container
+      options.offset = document.documentElement.clientHeight - (options.offset or 100) if options.bottom
+      angular.element(container).scrollToElement(elem, options.offset or 50, options.speed or 100).then ->
+        angular.element(window).triggerHandler('checkInView')
+        elem.focus()
 
 buildScope = ($rootScope, $mdDialog) ->
   $scope = $rootScope.$new(true)

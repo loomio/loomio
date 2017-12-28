@@ -1,5 +1,6 @@
 IntercomService = require 'shared/services/intercom_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
+ScrollService   = require 'shared/services/scroll_service.coffee'
 
 # a series of helpers related to the current browser window, such as the viewport size
 # or printing. Hopefully we can pool all window-related functionality here, and
@@ -35,30 +36,8 @@ module.exports =
 
   scrollTo: (target, options = {}) ->
     setTimeout ->
-      elem      = document.querySelector(target)
-      container = document.querySelector(options.container or '.lmo-main-content')
-      if options.bottom
-          options.offset = document.documentElement.clientHeight - (options.offset or 100)
-      if elem && container
-        angular.element(container).scrollToElement(elem, options.offset or 50, options.speed or 100).then ->
-          angular.element(window).triggerHandler('checkInView')
-        elem.focus()
-
-  trackEvents: ($scope) ->
-    return unless ahoy?
-
-    ahoy.trackClicks()
-    ahoy.trackSubmits()
-    ahoy.trackChanges()
-
-    # track page views
-    $scope.$on 'currentComponent', =>
-      ahoy.track '$view',
-        page:  window.location.pathname
-        url:   window.location.href
-        title: document.title
-
-    # track modal views
-    $scope.$on 'modalOpened', (_, modal) =>
-      ahoy.track 'modalOpened',
-        name: modal.templateUrl.match(/(\w+)\.html$/)[1]
+      ScrollService.scrollTo(
+        document.querySelector(target),
+        document.querySelector(options.container or '.lmo-main-content'),
+        options
+      )

@@ -1,7 +1,7 @@
 Session       = require 'shared/services/session.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ hardReload } = require 'angular/helpers/window.coffee'
+{ hardReload } = require 'shared/helpers/window.coffee'
 
 angular.module('loomioApp').factory 'InstallSlackModal', ($timeout) ->
   templateUrl: 'generated/components/install_slack/modal/install_slack_modal.html'

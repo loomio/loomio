@@ -2,7 +2,7 @@ AppConfig   = require 'shared/services/app_config.coffee'
 AuthService = require 'shared/services/auth_service.coffee'
 I18n        = require 'shared/services/i18n.coffee'
 
-{ hardReload }    = require 'angular/helpers/window.coffee'
+{ hardReload }    = require 'shared/helpers/window.coffee'
 { submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'authIdentityForm', ->

@@ -51,3 +51,22 @@ module.exports =
   listenForLoading: ($scope) ->
     $scope.$on 'processing',     -> $scope.isDisabled = true
     $scope.$on 'doneProcessing', -> $scope.isDisabled = false
+
+  listenForEvents: ($scope) ->
+    return unless ahoy?
+
+    ahoy.trackClicks()
+    ahoy.trackSubmits()
+    ahoy.trackChanges()
+
+    # track page views
+    $scope.$on 'currentComponent', =>
+      ahoy.track '$view',
+        page:  window.location.pathname
+        url:   window.location.href
+        title: document.title
+
+    # track modal views
+    $scope.$on 'modalOpened', (_, modal) =>
+      ahoy.track 'modalOpened',
+        name: modal.templateUrl.match(/(\w+)\.html$/)[1]

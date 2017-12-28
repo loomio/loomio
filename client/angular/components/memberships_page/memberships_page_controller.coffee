@@ -3,7 +3,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ scrollTo } = require 'angular/helpers/window.coffee'
+{ scrollTo } = require 'shared/helpers/window.coffee'
 
 angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
