@@ -4,6 +4,7 @@ sequence = require 'gulp-run-sequence'
 
 angular  = require './tasks/angular'
 vue      = require './tasks/vue'
+execjs   = require './tasks/execjs'
 extra    = require './tasks/extra'
 watch    = require './tasks/watch'
 
@@ -21,8 +22,8 @@ gulp.task 'angular:fonts',           extra.fonts
 gulp.task 'angular:emoji',           extra.emoji
 gulp.task 'angular:moment_locales',  extra.moment_locales
 
-gulp.task 'execjs:dev',              extra.execjs.development
-gulp.task 'execjs:prod',             extra.execjs.production
+gulp.task 'execjs:bundle:dev',       execjs.development
+gulp.task 'execjs:bundle:prod',      execjs.production
 
 gulp.task 'angular:external:extra', [
   'angular:fonts',
@@ -42,7 +43,7 @@ gulp.task 'angular:external:prod', (done) -> sequence('angular:external', ['angu
 gulp.task 'vue:bundle:dev',  vue.bundle.development
 gulp.task 'vue:bundle:prod', vue.bundle.production
 
-gulp.task 'bundle:dev',  ['angular:external:dev', 'angular:bundle:dev', 'vue:bundle:dev', 'execjs:dev']
+gulp.task 'bundle:dev',  ['angular:external:dev', 'angular:bundle:dev', 'vue:bundle:dev', 'execjs:bundle:dev']
 
 gulp.task 'watch',       watch
 gulp.task 'dev',         (done) -> sequence('bundle:dev', 'watch', -> done())

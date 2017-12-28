@@ -24,21 +24,3 @@ module.exports =
     pipe gulp.src(paths.extra.moment_locales), [
       gulp.dest(paths.dist.moment_locales) # write public/client/moment_locales
     ]
-
-  execjs:
-    development: ->
-      pipe gulp.src(paths.js.execjs), [
-        expect({errorOnFailure: true}, paths.js.execjs),
-        append.obj(pipe gulp.src(paths.js.execcoffee), [coffee(bare: true)])
-        concat('execjs.js'),
-        gulp.dest(paths.dist.assets)
-      ]
-
-    production: ->
-      pipe gulp.src(paths.js.execjs), [
-        expect({errorOnFailure: true}, paths.js.execjs),
-        append.obj(pipe gulp.src(paths.js.execcoffee), [coffee(bare: true)])
-        concat('execjs.min.js'),
-        uglify(mangle: false),
-        gulp.dest(paths.dist.assets)
-      ]

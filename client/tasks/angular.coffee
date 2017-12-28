@@ -48,7 +48,6 @@ module.exports =
         .bundle()
         .pipe(source('angular.bundle.min.js'))
         .pipe(buffer())
-        .pipe(gulp.dest(paths.dist.assets))
         .pipe(uglify())
         .on('error', onError)
         .pipe(gulp.dest(paths.dist.assets))

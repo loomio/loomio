@@ -1,4 +1,3 @@
-plumber = require 'gulp-plumber'
 gutil   = require 'gulp-util'
 
 module.exports = (err) ->

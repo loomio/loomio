@@ -28,6 +28,9 @@ module.exports =
     scss:   _.flatten(['angular/css/plugin.scss', include(plugins, 'scss')])
     scss_include: 'angular/css'
 
+  execjs:
+    main:           'execjs/main.coffee'
+
   extra:
     emojis:         include(vendor, 'emoji')
     moment_locales: include(vendor, 'moment_locales')
@@ -41,7 +44,6 @@ module.exports =
 
   js:
     execcoffee:   'angular/initializers/**/*.coffee'
-    execjs:       _.flatten(include(vendor, 'execjs'), include(vendor, 'lodash'))
     vendor:       include(vendor, 'js')
 
   vue:
