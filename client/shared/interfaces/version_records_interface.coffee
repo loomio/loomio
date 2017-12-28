@@ -1,4 +1,4 @@
-BaseRecordsInterface = require 'shared/interfaces/base_records_interface.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
 VersionModel         = require 'shared/models/version_model.coffee'
 
 module.exports = class VersionRecordsInterface extends BaseRecordsInterface

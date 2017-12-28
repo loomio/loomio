@@ -1,4 +1,4 @@
-RecordStore = require 'shared/interfaces/record_store.coffee'
+RecordStore = require 'shared/record_store/record_store.coffee'
 loki        = require 'lokijs'
 
 db      = new loki('default.db')

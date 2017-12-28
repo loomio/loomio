@@ -1,4 +1,4 @@
-BaseRecordsInterface = require 'shared/interfaces/base_records_interface.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
 EventModel           = require 'shared/models/event_model.coffee'
 
 module.exports = class EventRecordsInterface extends BaseRecordsInterface

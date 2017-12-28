@@ -1,4 +1,4 @@
-BaseModel = require 'shared/models/base_model.coffee'
+BaseModel = require 'shared/record_store/base_model.coffee'
 AppConfig = require 'shared/services/app_config.coffee'
 
 module.exports = class ReactionModel extends BaseModel

@@ -1,4 +1,4 @@
-BaseRecordsInterface = require 'shared/interfaces/base_records_interface.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
 DraftModel           = require 'shared/models/draft_model.coffee'
 _ = require 'lodash'
 
