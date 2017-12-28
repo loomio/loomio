@@ -5,7 +5,7 @@ buffer     = require 'vinyl-buffer'
 vueify     = require 'vueify'
 coffeeify  = require 'coffeeify'
 babelify   = require 'babelify'
-uglifyify  = require 'uglifyify'
+uglify     = require('gulp-uglify/composer')(require('uglify-es', console))
 source     = require 'vinyl-source-stream'
 rename     = require 'gulp-rename'
 cssmin     = require 'gulp-cssmin'
@@ -13,6 +13,7 @@ prefix     = require 'gulp-autoprefixer'
 paths      = require './paths'
 gutil      = require 'gulp-util'
 budo       = require 'budo'
+onError    = require './onerror'
 
 module.exports =
   bundle:
@@ -22,22 +23,17 @@ module.exports =
         stream: process.stdout
         live: true
         port: 4001
-        browserify:
-          paths: ['./', './node_modules']
-          transform: [coffeeify, vueify]
+        browserify: browserifyOpts()
 
     production: ->
-      browserify(entries: paths.vue.main, paths: ['./', './node_module'])
-        .transform(coffeeify)
-        .transform(vueify)
+      browserify(browserifyOpts())
         .plugin('vueify-extract-css', out: "#{paths.dist.assets}/vue.bundle.css")
-        .transform(babelify, presets: ['es2105'])
-        .transform(uglifyify, global: true)
         .external('vue')
         .bundle()
         .pipe(source('vue.bundle.min.js'))
         .pipe(buffer())
-        .on('error', (err) -> gutil.log(gutil.colors.red('[Error]'), err.toString()))
+        .on('error', onError)
+        .pipe(uglify())
         .pipe(gulp.dest(paths.dist.assets))
       pipe gulp.src("#{paths.dist.assets}/vue.bundle.css"), [
         prefix(browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 9'], cascade: false),
@@ -45,3 +41,8 @@ module.exports =
         rename(suffix: '.min'),
         gulp.dest(paths.dist.assets)
       ]
+
+browserifyOpts = ->
+  entries: paths.vue.main
+  paths: ['./', './node_modules']
+  transform: [coffeeify, vueify]

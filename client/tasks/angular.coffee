@@ -14,7 +14,6 @@ template   = require 'gulp-angular-templatecache'
 concat     = require 'gulp-concat'
 rename     = require 'gulp-rename'
 expect     = require 'gulp-expect-file'
-uglify     = require 'gulp-uglify'
 prefix     = require 'gulp-autoprefixer'
 cssmin     = require 'gulp-cssmin'
 browserify = require 'browserify'
@@ -22,13 +21,14 @@ babelify   = require 'babelify'
 uglifyify  = require 'uglifyify'
 buffer     = require 'vinyl-buffer'
 coffeeify  = require 'coffeeify'
-annotate   = require 'browserify-ngannotate' # to allow for minification of angular
+annotate   = require 'browserify-ngannotate'
 glob       = require 'globby'
 source     = require 'vinyl-source-stream'
 fs         = require 'fs'
 gutil      = require 'gulp-util'
 _          = require 'lodash'
 budo       = require 'budo'
+uglify     = require('gulp-uglify/composer')(require('uglify-es', console))
 
 module.exports =
   bundle:
@@ -49,7 +49,7 @@ module.exports =
         .pipe(buffer())
         .pipe(gulp.dest(paths.dist.assets))
         .pipe(uglify())
-        .on('error', (err) -> gutil.log(gutil.colors.red('[Error]'), err.toString()))
+        .on('error', onError)
         .pipe(gulp.dest(paths.dist.assets))
 
   vendor: ->
@@ -81,7 +81,7 @@ requireForBundle = ->
 browserifyOpts = ->
   entries: paths.core.main,
   paths: ['./', './node_modules']
-  transform: [coffeeify, annotate]
+  transform: [coffeeify, annotate, uglifyify]
 
 buildHaml = (prefix) ->
   pipe gulp.src(paths[prefix].haml), [

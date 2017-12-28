@@ -192,16 +192,6 @@ angular@^1.2.5:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"
 
-angular_record_store@3.0.19:
-  version "3.0.19"
-  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-3.0.19.tgz#795d7748a52a61190558a5eac860e515d28c636c"
-  dependencies:
-    lodash "^3.10.1"
-    moment "^2.10.6"
-    promise-polyfill "^7.0.0"
-    promise.prototype.finally "^3.1.0"
-    whatwg-fetch "^2.0.3"
-
 angulartics-google-tag-manager@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/angulartics-google-tag-manager/-/angulartics-google-tag-manager-0.0.1.tgz#59e8e4a9db5d85693b7cdec81a215136b04118e9"
@@ -3967,7 +3957,7 @@ moment-timezone@latest:
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0", moment@^2.10.6, moment@latest:
+"moment@>= 2.9.0", moment@latest:
   version "2.20.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
 
@@ -6051,7 +6041,7 @@ typedarray@^0.0.6, typedarray@~0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-uglify-es@^3.0.15:
+uglify-es@^3.0.15, uglify-es@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.3.2.tgz#2401df8be2a433314523753f28810793a40c5462"
   dependencies:

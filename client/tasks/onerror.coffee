@@ -1,2 +1,5 @@
+plumber = require 'gulp-plumber'
+util    = require 'gulp-util'
+
 module.exports = (err) ->
-  console.log(err) || @emit('end')
+  gutil.log(gutil.colors.red('[Error]'), err.toString())
