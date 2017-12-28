@@ -1,4 +1,4 @@
-{ iconFor } = require 'angular/helpers/poll.coffee'
+{ iconFor } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').factory 'PollCommonEditModal', ->
   templateUrl: 'generated/components/poll/common/edit_modal/poll_common_edit_modal.html'

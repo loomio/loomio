@@ -3,8 +3,8 @@ Records        = require 'shared/services/records.coffee'
 Session        = require 'shared/services/session.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 
-{ signIn }            = require 'angular/helpers/user.coffee'
-{ fieldFromTemplate } = require 'angular/helpers/poll.coffee'
+{ signIn }            = require 'shared/helpers/user.coffee'
+{ fieldFromTemplate } = require 'shared/helpers/poll.coffee'
 { scrollTo }          = require 'angular/helpers/window.coffee'
 
 # a helper to aid submitting forms throughout the app

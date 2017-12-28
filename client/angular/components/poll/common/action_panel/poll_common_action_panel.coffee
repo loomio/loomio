@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-{ myLastStanceFor } = require 'angular/helpers/poll.coffee'
+{ myLastStanceFor } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').directive 'pollCommonActionPanel', ->
   scope: {poll: '='}

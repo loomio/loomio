@@ -1,3 +1,5 @@
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+
 # a series of helpers which attaches functionality to a scope, such as performing
 # a sequence of steps, or loading for a particular function
 module.exports =
@@ -11,6 +13,22 @@ module.exports =
 
   applySequence: ($scope, options = {}) ->
     applySequence($scope, options)
+
+  applyPollStartSequence: ($scope, options = {}) ->
+    applySequence $scope,
+      steps: ->
+        if $scope.poll.group()
+          ['choose', 'save']
+        else
+          ['choose', 'save', 'share']
+      initialStep: if $scope.poll.pollType then 'save' else 'choose'
+      emitter: options.emitter or $scope
+      chooseComplete: (_, pollType) ->
+        $scope.poll.pollType = pollType
+      saveComplete: (_, poll) ->
+        $scope.poll = poll
+        LmoUrlService.goTo LmoUrlService.poll(poll)
+        options.afterSaveComplete(poll) if typeof options.afterSaveComplete is 'function'
 
 applySequence = ($scope, options) ->
   $scope.steps = if typeof options.steps is 'function' then options.steps() else options.steps

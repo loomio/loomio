@@ -1,6 +1,6 @@
 Session = require 'shared/services/session.coffee'
 
-{ fieldFromTemplate, myLastStanceFor } = require 'angular/helpers/poll.coffee'
+{ fieldFromTemplate, myLastStanceFor } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').directive 'pollCommonChartPreview', ->
   scope: {poll: '='}

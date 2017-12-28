@@ -2,7 +2,7 @@ Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
-{ discussionPrivacy } = require 'angular/helpers/helptext.coffee'
+{ discussionPrivacy } = require 'shared/helpers/helptext.coffee'
 
 angular.module('loomioApp').directive 'discussionForm', ->
   scope: {discussion: '=', modal: '=?'}

@@ -1,4 +1,4 @@
-{ applyPollStartSequence } = require 'angular/helpers/poll.coffee'
+{ applyPollStartSequence } = require 'angular/helpers/apply.coffee'
 
 angular.module('loomioApp').directive 'pollCommonStartPoll', ->
   scope: {poll: '='}

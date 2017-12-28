@@ -1,7 +1,7 @@
 { listenForLoading }  = require 'angular/helpers/listen.coffee'
 { submitOnEnter }     = require 'angular/helpers/keyboard.coffee'
 { submitOutcome }     = require 'angular/helpers/form.coffee'
-{ fieldFromTemplate } = require 'angular/helpers/poll.coffee'
+{ fieldFromTemplate } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').directive 'pollCommonOutcomeForm', ->
   scope: {outcome: '='}

@@ -1,6 +1,6 @@
 I18n = require 'shared/services/i18n.coffee'
 
-{ groupPrivacy } = require 'angular/helpers/helptext.coffee'
+{ groupPrivacy } = require 'shared/helpers/helptext.coffee'
 
 angular.module('loomioApp').directive 'groupPrivacyButton', ->
   restrict: 'E'

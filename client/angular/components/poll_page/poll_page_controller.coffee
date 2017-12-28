@@ -3,8 +3,8 @@ Records       = require 'shared/services/records.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
-{ myLastStanceFor }       = require 'angular/helpers/poll.coffee'
+{ subscribeToLiveUpdate } = require 'shared/helpers/user.coffee'
+{ myLastStanceFor }       = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams) ->
   @init = (poll) =>

@@ -1,6 +1,6 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
-{ iconFor } = require 'angular/helpers/poll.coffee'
+{ iconFor } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').directive 'pollCommonChooseType', ->
   scope: {poll: '='}

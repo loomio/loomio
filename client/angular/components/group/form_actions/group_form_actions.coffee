@@ -3,7 +3,7 @@ I18n    = require 'shared/services/i18n.coffee'
 
 { scrollTo }            = require 'angular/helpers/window.coffee'
 { submitForm }          = require 'angular/helpers/form.coffee'
-{ groupPrivacyConfirm } = require 'angular/helpers/helptext.coffee'
+{ groupPrivacyConfirm } = require 'shared/helpers/helptext.coffee'
 { submitOnEnter }       = require 'angular/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'groupFormActions', ->

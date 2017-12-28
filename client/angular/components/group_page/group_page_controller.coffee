@@ -6,7 +6,7 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 ModalService      = require 'shared/services/modal_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
 
-{ subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
+{ subscribeToLiveUpdate } = require 'shared/helpers/user.coffee'
 
 angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $routeParams) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }

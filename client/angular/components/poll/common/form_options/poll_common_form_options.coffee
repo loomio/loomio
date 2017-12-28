@@ -3,7 +3,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 TimeService    = require 'shared/services/time_service.coffee'
 
 { registerKeyEvent }  = require 'angular/helpers/keyboard.coffee'
-{ fieldFromTemplate } = require 'angular/helpers/poll.coffee'
+{ fieldFromTemplate } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').directive 'pollCommonFormOptions', ->
   scope: {poll: '='}

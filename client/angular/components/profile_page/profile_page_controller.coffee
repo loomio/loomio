@@ -4,7 +4,7 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ updateLocale } = require 'angular/helpers/user.coffee'
+{ updateLocale } = require 'shared/helpers/user.coffee'
 { submitForm }   = require 'angular/helpers/form.coffee'
 
 angular.module('loomioApp').controller 'ProfilePageController', ($scope, $rootScope) ->

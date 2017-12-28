@@ -2,7 +2,7 @@ AppConfig    = require 'shared/services/app_config.coffee'
 Records      = require 'shared/services/records.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
-{ fieldFromTemplate } = require 'angular/helpers/poll.coffee'
+{ fieldFromTemplate } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').directive 'pollCommonStartForm', ->
   scope: {discussion: '=?', group: '=?'}

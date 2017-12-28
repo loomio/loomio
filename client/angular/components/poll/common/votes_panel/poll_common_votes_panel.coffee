@@ -1,6 +1,6 @@
 RecordLoader = require 'shared/services/record_loader.coffee'
 
-{ fieldFromTemplate } = require 'angular/helpers/poll.coffee'
+{ fieldFromTemplate } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').directive 'pollCommonVotesPanel', ->
   scope: {poll: '='}

@@ -1,4 +1,4 @@
-{ iconFor } = require 'angular/helpers/poll.coffee'
+{ iconFor } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').factory 'PollCommonShareModal', ->
   templateUrl: 'generated/components/poll/common/share_modal/poll_common_share_modal.html'

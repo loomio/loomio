@@ -1,4 +1,5 @@
-{ iconFor, applyPollStartSequence } = require 'angular/helpers/poll.coffee'
+{ iconFor }                = require 'shared/helpers/poll.coffee'
+{ applyPollStartSequence } = require 'angular/helpers/apply.coffee'
 
 angular.module('loomioApp').factory 'PollCommonStartModal', ->
   templateUrl: 'generated/components/poll/common/start_modal/poll_common_start_modal.html'

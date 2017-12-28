@@ -7,7 +7,7 @@ ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 
 { viewportSize, scrollTo, trackEvents }         = require 'angular/helpers/window.coffee'
-{ signIn, updateLocale, subscribeToLiveUpdate } = require 'angular/helpers/user.coffee'
+{ signIn, updateLocale, subscribeToLiveUpdate } = require 'shared/helpers/user.coffee'
 { broadcastKeyEvent, registerHotkeys }          = require 'angular/helpers/keyboard.coffee'
 {
   setupAngularModal,
