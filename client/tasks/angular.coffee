@@ -27,18 +27,19 @@ source     = require 'vinyl-source-stream'
 fs         = require 'fs'
 gutil      = require 'gulp-util'
 _          = require 'lodash'
+budo       = require 'budo'
 
 module.exports =
   bundle:
     development: ->
-      browserify(entries: paths.core.main, paths: ['./', './node_modules'])
-        .transform(coffeeify)
-        .transform(babelify, presets: ['es2105'])
-        .bundle()
-        .pipe(source('angular.bundle.min.js'))
-        .pipe(buffer())
-        .on('error', (err) -> gutil.log(gutil.colors.red('[Error]'), err.toString()))
-        .pipe(gulp.dest(paths.dist.assets))
+      budo paths.core.main,
+        serve: "client/development/angular.bundle.js"
+        stream: process.stdout
+        live: true
+        port: 4002
+        browserify:
+          paths: ['./', './node_modules']
+          transform: [coffeeify, babelify.configure(presets: ['es2015']), annotate]
 
     production: ->
       browserify(entries: paths.core.main, paths: ['./', './node_modules'])

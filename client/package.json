@@ -73,6 +73,7 @@
     "browserify": "^14.5.0",
     "browserify-debug-tools": "^2.3.0",
     "browserify-ngannotate": "^2.0.0",
+    "budo": "^10.0.4",
     "coffee-script": "^1.12.7",
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.1.0",

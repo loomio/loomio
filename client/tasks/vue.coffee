@@ -12,19 +12,19 @@ cssmin     = require 'gulp-cssmin'
 prefix     = require 'gulp-autoprefixer'
 paths      = require './paths'
 gutil      = require 'gulp-util'
+budo       = require 'budo'
 
 module.exports =
   bundle:
     development: ->
-      browserify(entries: paths.vue.main, paths: ['./', './node_modules'])
-        .transform(coffeeify)
-        .transform(vueify)
-        .plugin('vueify-extract-css', out: "#{paths.dist.assets}/vue.bundle.css")
-        .transform(babelify, presets: ['es2015'])
-        .external('vue')
-        .bundle()
-        .pipe(source('vue.bundle.js'))
-        .pipe(gulp.dest(paths.dist.assets))
+      budo paths.vue.main,
+        serve: "client/development/vue.bundle.js"
+        stream: process.stdout
+        live: true
+        port: 4001
+        browserify:
+          paths: ['./', './node_modules']
+          transform: [coffeeify, vueify]
 
     production: ->
       browserify(entries: paths.vue.main, paths: ['./', './node_module'])
