@@ -37,7 +37,7 @@
     %script{src: client_asset_path(:"angular.vendor.min.js")}
     :javascript
       window.Loomio = #{@payload.to_json.html_safe}
-    %script{src: client_asset_path(:"angular.bundle.min.js")}
+    %script{src: bundle_asset_path(:"angular.bundle.min.js")}
     %script{src: client_asset_path(:"angular.core-templates.min.js")}
     %script{src: client_asset_path(:"angular.plugin-templates.min.js")}
 
