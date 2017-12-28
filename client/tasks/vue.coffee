@@ -6,12 +6,12 @@ vueify     = require 'vueify'
 coffeeify  = require 'coffeeify'
 babelify   = require 'babelify'
 uglifyify  = require 'uglifyify'
-uglify     = require 'gulp-uglify'
 source     = require 'vinyl-source-stream'
 rename     = require 'gulp-rename'
 cssmin     = require 'gulp-cssmin'
 prefix     = require 'gulp-autoprefixer'
 paths      = require './paths'
+gutil      = require 'gulp-util'
 
 module.exports =
   bundle:
@@ -37,7 +37,7 @@ module.exports =
         .bundle()
         .pipe(source('vue.bundle.min.js'))
         .pipe(buffer())
-        .pipe(uglify(mangle: false))
+        .on('error', (err) -> gutil.log(gutil.colors.red('[Error]'), err.toString()))
         .pipe(gulp.dest(paths.dist.assets))
       pipe gulp.src("#{paths.dist.assets}/vue.bundle.css"), [
         prefix(browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 9'], cascade: false),
