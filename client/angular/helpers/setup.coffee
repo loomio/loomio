@@ -34,8 +34,8 @@ module.exports =
       $rootScope.$broadcast 'flashMessage', flashOptions
 
   setupAngularNavigate: ($location) ->
-    LmoUrlService.setGoToMethod   (path)       -> $location.path(path)
-    LmoUrlService.setParamsMethod (key, value) -> $location.search(key, value)
+    LmoUrlService.setGoToMethod   (path)    -> $location.path(path)
+    LmoUrlService.setParamsMethod (args...) -> $location.search(args...)
 
   setupAngularTranslate: ($rootScope, $translate) ->
     $translate.onReady -> $rootScope.translationsLoaded = true
