@@ -1,14 +1,12 @@
-HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
+HtmlScreenshotReporter = require 'protractor-jasmine2-screenshot-reporter'
 
 reporter = new HtmlScreenshotReporter
   dest: 'screenshots'
   captureOnlyFailedSpecs: true
   filename: 'my-report.html'
 
-paths         = require('../tasks/paths')
-
 exports.config =
-  seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.8.1.jar'
+  seleniumServerJar: '../../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.8.1.jar'
   allScriptsTimeout: 60000
   capabilities:
     browserName:     'firefox'
