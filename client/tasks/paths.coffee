@@ -13,6 +13,7 @@ include = (file, key) ->
 module.exports =
   core:
     main:         'angular/main.coffee'
+    vendor:       include(vendor, 'angular')
     coffee:       'angular/**/*.coffee'
     haml:         ['angular/components/**/*.haml', 'angular/pages/**/*.haml']
     scss:         _.flatten([include(vendor, 'css'), 'angular/css/app.scss', 'angular/components/**/*.scss', 'angular/pages/**/*.scss'])

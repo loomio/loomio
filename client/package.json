@@ -59,7 +59,7 @@
     "ment.io": "~0.9.15",
     "moment": "latest",
     "moment-timezone": "latest",
-    "ng-file-upload": "~3.2.4",
+    "ng-file-upload": "3.3.4",
     "private_pub": "latest",
     "promise-polyfill": "^7.0.0",
     "promise.prototype.finally": "^3.1.0",

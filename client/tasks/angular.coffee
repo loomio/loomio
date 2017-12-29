@@ -71,12 +71,15 @@ module.exports =
     css:    -> minifyCss    'angular.core', 'angular.plugin'
 
 requireForBundle = ->
+  vendor  = _.flatten _.map paths.core.vendor
   core    = _.flatten _.map paths.core.folders, (folder) -> _.map glob.sync("angular/#{folder}/**/*.coffee")
   plugins = _.map paths.plugin.coffee, (file) -> "../#{file}"
 
-  fs.writeFile paths.core.main,  _.map(core, (file) -> "require '#{file}'").join("\n")
-  fs.appendFile(paths.core.main, "\n")
-  fs.appendFile paths.core.main, _.map(plugins, (file) -> "require '#{file}'").join("\n")
+  fs.writeFileSync  paths.core.main, _.map(vendor, (file) -> "require '#{file}'").join("\n")
+  fs.appendFileSync paths.core.main, "\n"
+  fs.appendFileSync paths.core.main, _.map(core, (file) -> "require '#{file}'").join("\n")
+  fs.appendFileSync paths.core.main, "\n"
+  fs.appendFileSync paths.core.main, _.map(plugins, (file) -> "require '#{file}'").join("\n")
 
 browserifyOpts = ->
   entries: paths.core.main,

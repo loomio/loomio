@@ -6,7 +6,7 @@ require('promise.prototype.finally').shim() # polyfill for .finally on Promises
 module.exports =
   class RestfulClient
     defaultParams: {}
-    upload: null
+    currentUpload: null
     apiPrefix: "/api/v1"
 
     # override these to set default actions

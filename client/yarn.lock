@@ -4084,9 +4084,9 @@ ng-annotate@^1.0.2:
     stringset "~0.2.1"
     tryor "~0.1.2"
 
-ng-file-upload@~3.2.4:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-3.2.5.tgz#90c8021f09507bddf4f45a99b5cde9ca9a8262f5"
+ng-file-upload@3.3.4:
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-3.3.4.tgz#fe96f22217ca09d03a313a322464425836350b48"
   dependencies:
     grunt-contrib-concat "~0.5.0"
 
