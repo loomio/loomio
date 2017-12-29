@@ -2,7 +2,13 @@ _ = require 'lodash'
 
 module.exports = new class HasMentions
   apply: (model, field) ->
-    model["cooked#{_.capitalize(field)}"] = ->
+    methodName = "cooked#{_.capitalize(field)}"
+    fieldName  = "#{methodName}Value"
+    model[methodName] = ->
+      if @[fieldName]
+        @[fieldName]
+      else
+      cooked = model[field]
       _.each model.mentionedUsernames, (username) ->
-        model[field] = model[field].replace(///@#{username}///g, "[[@#{username}]]")
-      model[field]
+        cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
+      @[fieldName] = cooked
