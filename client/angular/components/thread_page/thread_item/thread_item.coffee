@@ -7,7 +7,7 @@ I18n           = require 'shared/services/i18n.coffee'
 { submitForm } = require 'angular/helpers/form.coffee'
 { eventHeadline, eventTitle, eventPollType } = require 'shared/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'threadItem', ($compile) ->
+angular.module('loomioApp').directive 'threadItem', ['$compile', ($compile) ->
   scope: {event: '=', eventWindow: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/thread_item.html'
@@ -16,7 +16,7 @@ angular.module('loomioApp').directive 'threadItem', ($compile) ->
     if scope.event.isSurface() && scope.eventWindow.useNesting
       $compile("<event-children discussion=\"eventWindow.discussion\" parent_event=\"event\" parent_event_window=\"eventWindow\"></event-children><add-comment-panel parent_event=\"event\" event_window=\"eventWindow\"></add-comment-panel>")(scope, (cloned, scope) -> element.append(cloned))
 
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.debug = -> window.Loomio.debug
     if $scope.event.isSurface() && $scope.eventWindow.useNesting
       $scope.$on 'replyButtonClicked', (e, parentEvent, comment) ->
@@ -51,3 +51,5 @@ angular.module('loomioApp').directive 'threadItem', ($compile) ->
 
     $scope.link = ->
       LmoUrlService.discussion $scope.eventWindow.discussion, from: $scope.event.sequenceId
+  ]
+]

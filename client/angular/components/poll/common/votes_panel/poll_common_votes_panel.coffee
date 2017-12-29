@@ -5,7 +5,7 @@ RecordLoader = require 'shared/services/record_loader.coffee'
 angular.module('loomioApp').directive 'pollCommonVotesPanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/votes_panel/poll_common_votes_panel.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     # sorry. ng-if and md-select break. github.com/angular/material/issues/3940
     $scope.fix = {}
     $scope.sortOptions = fieldFromTemplate($scope.poll.pollType, 'sort_options')
@@ -45,3 +45,4 @@ angular.module('loomioApp').directive 'pollCommonVotesPanel', ->
 
     $scope.$on 'refreshStance', ->
       $scope.loader.fetchRecords()
+  ]

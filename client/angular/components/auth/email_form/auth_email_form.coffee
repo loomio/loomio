@@ -7,7 +7,7 @@ I18n        = require 'shared/services/i18n.coffee'
 angular.module('loomioApp').directive 'authEmailForm', ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/email_form/auth_email_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.email = $scope.user.email
 
     $scope.submit = ->
@@ -26,3 +26,4 @@ angular.module('loomioApp').directive 'authEmailForm', ->
 
     submitOnEnter($scope, anyEnter: true)
     $scope.$emit 'focus'
+  ]

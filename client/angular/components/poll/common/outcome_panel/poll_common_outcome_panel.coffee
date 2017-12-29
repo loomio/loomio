@@ -6,7 +6,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 angular.module('loomioApp').directive 'pollCommonOutcomePanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/outcome_panel/poll_common_outcome_panel.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.actions = [
       name: 'react'
@@ -25,3 +25,4 @@ angular.module('loomioApp').directive 'pollCommonOutcomePanel', ->
 
     listenForTranslations $scope
     listenForReactions $scope, $scope.poll.outcome()
+  ]

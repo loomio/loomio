@@ -5,7 +5,7 @@ AppConfig = require 'shared/services/app_config.coffee'
 angular.module('loomioApp').directive 'authForm', ->
   scope: {preventClose: '=', user: '='}
   templateUrl: 'generated/components/auth/form/auth_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.loginComplete = ->
       $scope.user.sentLoginLink or $scope.user.sentPasswordLink
 
@@ -13,3 +13,4 @@ angular.module('loomioApp').directive 'authForm', ->
       $scope.pendingProviderIdentity = AppConfig.pendingIdentity
 
     listenForLoading $scope
+  ]

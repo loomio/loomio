@@ -2,9 +2,9 @@ Records = require 'shared/services/records.coffee'
 
 { applySequence } = require 'angular/helpers/apply.coffee'
 
-angular.module('loomioApp').directive 'documentForm', ($timeout) ->
+angular.module('loomioApp').directive 'documentForm', ['$timeout', ($timeout) ->
   templateUrl: 'generated/components/document/form/document_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.$on 'initializeDocument', (_, doc, $mdMenu) ->
       $timeout -> $mdMenu.open() if $mdMenu
       $scope.document = doc.clone()
@@ -23,3 +23,5 @@ angular.module('loomioApp').directive 'documentForm', ($timeout) ->
           event.stopPropagation()
           $mdMenu.close()
           $scope.$emit 'documentAdded', doc
+   ]
+ ]

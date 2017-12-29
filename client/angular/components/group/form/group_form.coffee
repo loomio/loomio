@@ -7,7 +7,7 @@ I18n           = require 'shared/services/i18n.coffee'
 angular.module('loomioApp').directive 'groupForm', ->
   scope: {group: '=', modal: '=?'}
   templateUrl: 'generated/components/group/form/group_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.titleLabel = ->
       if $scope.group.isParent()
@@ -33,3 +33,4 @@ angular.module('loomioApp').directive 'groupForm', ->
       AbilityService.isSiteAdmin() and _.any($scope.featureNames)
 
     $scope.featureNames = AppConfig.features.group
+  ]

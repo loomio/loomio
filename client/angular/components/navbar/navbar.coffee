@@ -2,12 +2,12 @@ AppConfig      = require 'shared/services/app_config.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'navbar', ($rootScope) ->
+angular.module('loomioApp').directive 'navbar', ['$rootScope', ($rootScope) ->
   scope: {}
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.logo = ->
       AppConfig.theme.app_logo_src
 
@@ -17,3 +17,5 @@ angular.module('loomioApp').directive 'navbar', ($rootScope) ->
 
     $scope.signIn = ->
       ModalService.open 'AuthModal'
+  ]
+]

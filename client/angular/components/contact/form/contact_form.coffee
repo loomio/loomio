@@ -6,7 +6,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 
 angular.module('loomioApp').directive 'contactForm', ->
   templateUrl: 'generated/components/contact/form/contact_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.isLoggedIn = ->
       AbilityService.isLoggedIn()
@@ -18,3 +18,4 @@ angular.module('loomioApp').directive 'contactForm', ->
 
     $scope.submit = submitForm $scope, $scope.message,
       flashSuccess: "contact_message_form.new_contact_message"
+  ]

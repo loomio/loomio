@@ -1,12 +1,12 @@
 AppConfig    = require 'shared/services/app_config.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
 
-angular.module('loomioApp').directive 'flash', ($interval) ->
+angular.module('loomioApp').directive 'flash', ['$interval', ($interval) ->
   restrict: 'E'
   templateUrl: 'generated/components/flash/flash.html'
   replace: true
   controllerAs: 'flash'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.pendingDismiss = null
 
     $scope.$on 'flashMessage', (event, flash) =>
@@ -33,3 +33,5 @@ angular.module('loomioApp').directive 'flash', ($interval) ->
     FlashService.error   AppConfig.flash.error   if AppConfig.flash.error?
 
     return
+  ]
+]

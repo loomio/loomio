@@ -7,7 +7,7 @@ I18n        = require 'shared/services/i18n.coffee'
 angular.module('loomioApp').directive 'authSigninForm', ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.signIn = ->
       $scope.$emit 'processing'
@@ -32,3 +32,4 @@ angular.module('loomioApp').directive 'authSigninForm', ->
 
     submitOnEnter($scope, anyEnter: true)
     $scope.$emit 'focus'
+  ]

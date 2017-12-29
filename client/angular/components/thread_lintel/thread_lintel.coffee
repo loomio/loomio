@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'threadLintel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_lintel/thread_lintel.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.show = ->
       $scope.showLintel && $scope.discussion
 
@@ -22,3 +22,4 @@ angular.module('loomioApp').directive 'threadLintel', ->
       $scope.position = position
       $scope.discussion = discussion
       $scope.positionPercent = (position / discussion.lastSequenceId) *100
+  ]

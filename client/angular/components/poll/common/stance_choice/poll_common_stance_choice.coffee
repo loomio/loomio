@@ -3,7 +3,7 @@
 angular.module('loomioApp').directive 'pollCommonStanceChoice', ->
   scope: {stanceChoice: '='}
   templateUrl: 'generated/components/poll/common/stance_choice/poll_common_stance_choice.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.translateOptionName = ->
       return unless $scope.stanceChoice.poll()
       fieldFromTemplate($scope.stanceChoice.poll().pollType, 'translate_option_name')
@@ -15,3 +15,4 @@ angular.module('loomioApp').directive 'pollCommonStanceChoice', ->
     $scope.datesAsOptions = ->
       return unless $scope.stanceChoice.poll()
       fieldFromTemplate($scope.stanceChoice.poll().pollType, 'dates_as_options')
+  ]

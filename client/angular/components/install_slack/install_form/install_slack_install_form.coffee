@@ -7,7 +7,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 angular.module('loomioApp').directive 'installSlackInstallForm', ->
   templateUrl: 'generated/components/install_slack/install_form/install_slack_install_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.groups = ->
       _.filter _.sortBy(Session.user().adminGroups(), 'fullName')
 
@@ -34,3 +34,4 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ->
     $scope.$on 'focus',  $scope.focus
 
     return
+  ]

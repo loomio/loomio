@@ -1,6 +1,6 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
-angular.module('loomioApp').directive 'outlet', ($compile) ->
+angular.module('loomioApp').directive 'outlet', ['$compile', ($compile) ->
   scope: {model: '=?'}
   restrict: 'E'
   replace: true
@@ -30,3 +30,4 @@ angular.module('loomioApp').directive 'outlet', ($compile) ->
 
     _.map AppConfig.plugins.outlets[_.snakeCase(attrs.name)], (outlet) ->
       elem.append(compileHtml(scope.model, outlet.component)(scope)) if shouldCompile(outlet)
+]

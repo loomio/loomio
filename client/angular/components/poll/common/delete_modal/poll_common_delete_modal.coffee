@@ -4,7 +4,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 angular.module('loomioApp').factory 'PollCommonDeleteModal', ->
   templateUrl: 'generated/components/poll/common/delete_modal/poll_common_delete_modal.html'
-  controller: ($scope, poll) ->
+  controller: ['$scope', 'poll', ($scope, poll) ->
     $scope.poll = poll
 
     $scope.submit = submitForm $scope, $scope.poll,
@@ -19,3 +19,4 @@ angular.module('loomioApp').factory 'PollCommonDeleteModal', ->
           '/dashboard'
 
         LmoUrlService.goTo path
+  ]

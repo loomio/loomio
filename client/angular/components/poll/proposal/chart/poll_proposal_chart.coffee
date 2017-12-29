@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pollProposalChart', ->
     stanceCounts: '='
     diameter: '@'
   restrict: 'E'
-  controller: ($scope, $element) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     draw = svg($element[0]).size('100%', '100%')
     half = $scope.diameter / 2.0
     radius = half
@@ -46,3 +46,4 @@ angular.module('loomioApp').directive 'pollProposalChart', ->
               'stroke-width': 0
               fill: AppConfig.pollColors.proposal[index]
             start += angle
+  ]

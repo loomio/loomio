@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'pendingEmailForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/pending_email_form/pending_email_form.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.newEmail = ''
 
     $scope.addIfValid = ->
@@ -48,3 +48,4 @@ angular.module('loomioApp').directive 'pendingEmailForm', ->
 
     registerKeyEvent $scope, 'pressedEnter', $scope.add, (active) ->
       active.classList.contains('poll-common-share-form__add-option-input')
+  ]

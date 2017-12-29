@@ -1,4 +1,4 @@
-angular.module('loomioApp').config ($provide) ->
+angular.module('loomioApp').config ['$provide', ($provide) ->
   if (!Element::matches)
     Element::matches = Element::msMatchesSelector;
 
@@ -24,3 +24,4 @@ angular.module('loomioApp').config ($provide) ->
         if modal = scope.parentMentio.targetElement[0].closest('.modal')
           modal.appendChild(elem[0])
     $delegate
+]

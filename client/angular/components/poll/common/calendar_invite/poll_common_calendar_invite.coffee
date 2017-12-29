@@ -4,7 +4,7 @@ TimeService = require 'shared/services/time_service.coffee'
 angular.module('loomioApp').directive 'pollCommonCalendarInvite', ->
   scope: {outcome: '='}
   templateUrl: 'generated/components/poll/common/calendar_invite/poll_common_calendar_invite.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.options = _.map $scope.outcome.poll().pollOptions(), (option) ->
       id:        option.id
@@ -17,3 +17,4 @@ angular.module('loomioApp').directive 'pollCommonCalendarInvite', ->
     $scope.outcome.calendarInvite = true
     $scope.outcome.pollOptionId = $scope.outcome.pollOptionId or bestOption.id
     $scope.outcome.customFields.event_summary = $scope.outcome.customFields.event_summary or $scope.outcome.poll().title
+  ]

@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'timeZoneSelect', ->
   restrict: 'E'
   templateUrl: 'generated/components/time_zone_select/time_zone_select.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.q = ""
     $scope.isOpen = false
     $scope.zone = $scope.zone || AppConfig.timeZone
@@ -35,3 +35,4 @@ angular.module('loomioApp').directive 'timeZoneSelect', ->
         $scope.zone = AppConfig.timeZones[$scope.q]
         $scope.$emit 'timeZoneSelected', AppConfig.timeZones[$scope.q]
         $scope.close()
+  ]

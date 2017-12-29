@@ -6,9 +6,10 @@ angular.module('loomioApp').directive 'membershipRequestsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/membership_requests_card/membership_requests_card.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.canManageMembershipRequests = ->
       AbilityService.canManageMembershipRequests($scope.group)
 
     if $scope.canManageMembershipRequests()
       Records.membershipRequests.fetchPendingByGroup($scope.group.key)
+  ]

@@ -4,7 +4,7 @@ moment      = require 'moment'
 angular.module('loomioApp').directive 'pollMeetingTimeField', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/meeting/time_field/poll_meeting_time_field.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.dateToday = moment().format('YYYY-MM-DD')
     $scope.option = {}
     $scope.times = TimeService.timesOfDay()
@@ -24,3 +24,4 @@ angular.module('loomioApp').directive 'pollMeetingTimeField', ->
       if $scope.hasTime()
         optionName = moment("#{optionName} #{$scope.option.time}", 'YYYY-MM-DD h:mma').toISOString()
       optionName
+  ]

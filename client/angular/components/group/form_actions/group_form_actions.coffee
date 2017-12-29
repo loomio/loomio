@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'groupFormActions', ->
   scope: {group: '='}
   replace: true
   templateUrl: 'generated/components/group/form_actions/group_form_actions.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     actionName = if $scope.group.isNew() then 'created' else 'updated'
 
     $scope.submit = submitForm $scope, $scope.group,
@@ -37,3 +37,4 @@ angular.module('loomioApp').directive 'groupFormActions', ->
       scrollTo '.group-form__permissions', container: '.group-modal md-dialog-content'
 
     submitOnEnter $scope
+  ]

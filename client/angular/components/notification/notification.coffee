@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'notification', ->
   restrict: 'E'
   templateUrl: 'generated/components/notification/notification.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.actor = ->
       $scope.membershipRequestActor || $scope.notification.actor()
 
@@ -20,3 +20,4 @@ angular.module('loomioApp').directive 'notification', ->
         avatarKind:     'initials'
 
     return
+  ]

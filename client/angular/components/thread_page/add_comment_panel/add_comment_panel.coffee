@@ -4,11 +4,11 @@ ModalService   = require 'shared/services/modal_service.coffee'
 
 { scrollTo } = require 'shared/helpers/window.coffee'
 
-angular.module('loomioApp').directive 'addCommentPanel', ($timeout) ->
+angular.module('loomioApp').directive 'addCommentPanel', ['$timeout', ($timeout) ->
   scope: {eventWindow: '=', parentEvent: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/add_comment_panel/add_comment_panel.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.discussion = $scope.eventWindow.discussion
     $scope.actor = Session.user()
     $scope.isLoggedIn = -> AbilityService.isLoggedIn()
@@ -36,3 +36,5 @@ angular.module('loomioApp').directive 'addCommentPanel', ($timeout) ->
         $scope.parentComment = null
       else
         $scope.close()
+  ]
+]

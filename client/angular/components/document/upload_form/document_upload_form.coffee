@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/document/upload_form/document_upload_form.html'
   replace: true
-  controller: ($scope, $element) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
 
     $scope.$on 'filesPasted', (_, files) -> $scope.files = files
     $scope.$watch 'files',               -> $scope.upload($scope.files)
@@ -41,3 +41,4 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
       $scope.files = null
       $scope.percentComplete = 0
     $scope.reset()
+  ]

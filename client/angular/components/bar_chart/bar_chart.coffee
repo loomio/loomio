@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'barChart', ->
     stanceCounts: '='
     size: '@'
   restrict: 'E'
-  controller: ($scope, $element) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     draw = svg($element[0]).size('100%', '100%')
     shapes = []
 
@@ -43,3 +43,4 @@ angular.module('loomioApp').directive 'barChart', ->
             .fill(scoreData.color)
             .x(0)
             .y(scoreData.index * barHeight)
+  ]

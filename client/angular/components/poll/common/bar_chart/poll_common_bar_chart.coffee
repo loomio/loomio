@@ -4,7 +4,7 @@ Records   = require 'shared/services/records.coffee'
 angular.module('loomioApp').directive 'pollCommonBarChart', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/bar_chart/poll_common_bar_chart.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.countFor = (option) ->
       $scope.poll.stanceData[option.name] or 0
 
@@ -22,3 +22,4 @@ angular.module('loomioApp').directive 'pollCommonBarChart', ->
     $scope.styleData = (option) ->
       'background-image': backgroundImageFor(option)
       'background-size': percentageFor(option)
+  ]

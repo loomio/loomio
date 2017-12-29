@@ -2,7 +2,7 @@ AppConfig = require 'shared/services/app_config.coffee'
 Airbrake  = require 'airbrake-js'
 
 if AppConfig.errbit.key?
-  angular.module('loomioApp').factory '$exceptionHandler', ($log) ->
+  angular.module('loomioApp').factory '$exceptionHandler', ['$log', ($log) ->
     client = new Airbrake
       projectId:  AppConfig.errbit.key
       projectKey: AppConfig.errbit.key
@@ -24,3 +24,4 @@ if AppConfig.errbit.key?
           version:         AppConfig.version
           current_user_id: AppConfig.currentUserId
           angular_cause: cause
+]

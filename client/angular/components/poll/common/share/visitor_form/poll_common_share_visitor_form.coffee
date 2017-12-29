@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/visitor_form/poll_common_share_visitor_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.invitations = ->
       Records.invitations.find(groupId: $scope.poll.guestGroupId)
@@ -45,3 +45,4 @@ angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ->
 
     registerKeyEvent $scope, 'pressedEnter', $scope.submit, (active) ->
       active.classList.contains('poll-common-share-form__add-option-input')
+  ]

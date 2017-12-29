@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'invitationForm', ->
   scope: {invitationForm: '='}
   restrict: 'E'
   templateUrl: 'generated/components/invitation/form/invitation_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.selectGroup = _.isNumber $scope.invitationForm.groupId
 
     $scope.availableGroups = ->
@@ -39,3 +39,4 @@ angular.module('loomioApp').directive 'invitationForm', ->
       $scope.group().shareableInvitation().url
 
     return
+  ]

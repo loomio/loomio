@@ -8,7 +8,7 @@ TimeService    = require 'shared/services/time_service.coffee'
 angular.module('loomioApp').directive 'pollCommonFormOptions', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/form_options/poll_common_form_options.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.currentZone = ->
       Session.user().timeZone
 
@@ -35,3 +35,4 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', ->
 
     registerKeyEvent $scope, 'pressedEnter', $scope.addOption, (active) ->
       active.classList.contains('poll-poll-form__add-option-input')
+  ]

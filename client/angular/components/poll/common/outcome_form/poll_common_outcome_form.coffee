@@ -6,7 +6,7 @@
 angular.module('loomioApp').directive 'pollCommonOutcomeForm', ->
   scope: {outcome: '='}
   templateUrl: 'generated/components/poll/common/outcome_form/poll_common_outcome_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.outcome.makeAnnouncement = $scope.outcome.isNew()
 
     $scope.submit = submitOutcome $scope, $scope.outcome
@@ -16,3 +16,4 @@ angular.module('loomioApp').directive 'pollCommonOutcomeForm', ->
 
     submitOnEnter($scope)
     listenForLoading($scope)
+  ]

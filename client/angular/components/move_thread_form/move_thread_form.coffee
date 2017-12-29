@@ -6,7 +6,7 @@ I18n           = require 'shared/services/i18n.coffee'
 
 angular.module('loomioApp').factory 'MoveThreadForm', ->
   templateUrl: 'generated/components/move_thread_form/move_thread_form.html'
-  controller: ($scope, discussion) ->
+  controller: ['$scope', 'discussion', ($scope, discussion) ->
     $scope.discussion = discussion.clone()
 
     $scope.availableGroups = ->
@@ -28,3 +28,4 @@ angular.module('loomioApp').factory 'MoveThreadForm', ->
         $scope.submit() if confirm(I18n.t('move_thread_form.confirm_change_to_private_thread', groupName: $scope.targetGroup.name))
       else
         $scope.submit()
+  ]

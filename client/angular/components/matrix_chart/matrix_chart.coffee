@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'matrixChart', ->
     matrixCounts: '='
     size: '@'
   restrict: 'E'
-  controller: ($scope, $element) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     draw = svg($element[0]).size('100%', '100%')
     shapes = []
 
@@ -32,3 +32,4 @@ angular.module('loomioApp').directive 'matrixChart', ->
       _.each $scope.matrixCounts, (values, row) ->
         _.each values, (value, col) ->
           drawShape(row, col, width, value)
+  ]

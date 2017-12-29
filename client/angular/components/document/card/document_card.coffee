@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'documentCard', ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/document/card/document_card.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.init = ->
       Records.documents.fetchByGroup($scope.group, null, per: 3).then (data) ->
         # we have to create a slightly wonky model to trick %document_list into
@@ -24,3 +24,4 @@ angular.module('loomioApp').directive 'documentCard', ->
         Records.documents.build
           modelId:   $scope.group.id
           modelType: 'Group'
+  ]

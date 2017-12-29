@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_actions_dropdown/group_actions_dropdown.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup($scope.group)
@@ -45,3 +45,4 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
       ModalService.open 'ArchiveGroupForm', group: -> $scope.group
 
     return
+  ]

@@ -1,4 +1,3 @@
-
 { is2x } = require 'shared/helpers/window.coffee'
 
 angular.module('loomioApp').directive 'userAvatar', ->
@@ -6,7 +5,7 @@ angular.module('loomioApp').directive 'userAvatar', ->
   restrict: 'E'
   templateUrl: 'generated/components/user_avatar/user_avatar.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     unless _.contains(['small', 'medium', 'large', 'featured'], $scope.size)
       $scope.size = 'medium'
 
@@ -31,3 +30,4 @@ angular.module('loomioApp').directive 'userAvatar', ->
       $scope.user.avatarUrl[size]
 
     return
+  ]

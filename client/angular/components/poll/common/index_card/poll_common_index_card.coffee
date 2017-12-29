@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'pollCommonIndexCard', ->
   scope: {model: '=', limit: '@?', viewMoreLink: '=?'}
   templateUrl: 'generated/components/poll/common/index_card/poll_common_index_card.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.fetchRecords = ->
       Records.polls.fetchFor($scope.model, limit: $scope.limit, status: 'closed')
     applyLoadingFunction($scope, 'fetchRecords')
@@ -24,3 +24,4 @@ angular.module('loomioApp').directive 'pollCommonIndexCard', ->
 
     $scope.polls = ->
       _.take $scope.model.closedPolls(), ($scope.limit or 50)
+  ]

@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'membersCard', ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/members_card/members_card.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.canViewMemberships = ->
       AbilityService.canViewMemberships($scope.group)
 
@@ -27,3 +27,4 @@ angular.module('loomioApp').directive 'membersCard', ->
 
     if $scope.canViewMemberships()
       Records.memberships.fetchByGroup $scope.group.key, per: 10
+  ]

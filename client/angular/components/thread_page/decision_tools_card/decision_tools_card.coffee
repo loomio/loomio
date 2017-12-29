@@ -5,6 +5,7 @@ angular.module('loomioApp').directive 'decisionToolsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/decision_tools_card/decision_tools_card.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.canStartPoll = ->
       AbilityService.canStartPoll(@discussion.group())
+  ]

@@ -6,12 +6,12 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 InboxService   = require 'shared/services/inbox_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'sidebar', ($mdMedia, $mdSidenav) ->
+angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($mdMedia, $mdSidenav) ->
   scope: false
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.currentState = ""
     $scope.showSidebar = true
     InboxService.load()
@@ -66,3 +66,5 @@ angular.module('loomioApp').directive 'sidebar', ($mdMedia, $mdSidenav) ->
 
     $scope.startThread = ->
       ModalService.open 'DiscussionModal', discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)
+  ]
+]

@@ -4,7 +4,7 @@ Session = require 'shared/services/session.coffee'
 
 angular.module('loomioApp').factory 'ChangeVolumeForm', ->
   templateUrl: 'generated/components/change_volume_form/change_volume_form.html'
-  controller: ($scope, model) ->
+  controller: ['$scope', 'model', ($scope, model) ->
     $scope.model = model.clone()
     $scope.volumeLevels = ["loud", "normal", "quiet"]
 
@@ -37,3 +37,4 @@ angular.module('loomioApp').factory 'ChangeVolumeForm', ->
       flashSuccess: $scope.flashTranslation
 
     return
+  ]

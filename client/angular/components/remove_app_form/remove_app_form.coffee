@@ -1,8 +1,8 @@
 FlashService = require 'shared/services/flash_service.coffee'
 
-angular.module('loomioApp').factory 'RemoveAppForm', ($rootScope) ->
+angular.module('loomioApp').factory 'RemoveAppForm', ['$rootScope', ($rootScope) ->
   templateUrl: 'generated/components/remove_app_form/remove_app_form.html'
-  controller: ($scope, application) ->
+  controller: ['$scope', 'applcation', ($scope, application) ->
     $scope.application = application
 
     $scope.submit = ->
@@ -12,3 +12,5 @@ angular.module('loomioApp').factory 'RemoveAppForm', ($rootScope) ->
       , ->
         $rootScope.$broadcast 'pageError', 'cantDestroyApplication', $scope.application
         $scope.$close()
+  ]
+]

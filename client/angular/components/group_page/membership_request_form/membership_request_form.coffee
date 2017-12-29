@@ -6,7 +6,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 
 angular.module('loomioApp').factory 'MembershipRequestForm', ->
   templateUrl: 'generated/components/group_page/membership_request_form/membership_request_form.html'
-  controller: ($scope, group) ->
+  controller: ['$scope', 'group', ($scope, group) ->
     $scope.membershipRequest = Records.membershipRequests.build
       groupId: group.id
       name:    Session.user().name
@@ -21,3 +21,4 @@ angular.module('loomioApp').factory 'MembershipRequestForm', ->
       AbilityService.isLoggedIn()
 
     return
+  ]

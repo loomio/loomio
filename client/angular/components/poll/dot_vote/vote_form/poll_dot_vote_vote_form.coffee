@@ -6,7 +6,7 @@ Records = require 'shared/services/records.coffee'
 angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/dot_vote/vote_form/poll_dot_vote_vote_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.vars = {}
 
     percentageFor = (choice) ->
@@ -54,3 +54,4 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
         $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
 
     submitOnEnter($scope)
+  ]

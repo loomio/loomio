@@ -4,7 +4,7 @@ AuthService = require 'shared/services/auth_service.coffee'
 
 angular.module('loomioApp').factory 'AuthModal', ->
   templateUrl: 'generated/components/auth/modal/auth_modal.html'
-  controller: ($scope, preventClose) ->
+  controller: ['$scope', 'preventClose', ($scope, preventClose) ->
     $scope.siteName = AppConfig.theme.site_name
     $scope.user = AuthService.applyEmailStatus Records.users.build(), AppConfig.pendingIdentity
     $scope.preventClose = preventClose
@@ -16,3 +16,4 @@ angular.module('loomioApp').factory 'AuthModal', ->
       $scope.user.emailStatus and
       !$scope.user.sentLoginLink and
       !$scope.user.sentPasswordLink
+  ]

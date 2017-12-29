@@ -3,5 +3,6 @@ angular.module('loomioApp').directive 'loading', ->
   restrict: 'E'
   templateUrl: 'generated/components/loading/loading.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.diameter = $scope.diameter or 30
+  ]

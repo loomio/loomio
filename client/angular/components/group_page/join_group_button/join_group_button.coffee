@@ -4,12 +4,12 @@ AbilityService = require 'shared/services/ability_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-angular.module('loomioApp').directive 'joinGroupButton', ($rootScope) ->
+angular.module('loomioApp').directive 'joinGroupButton', ['$rootScope', ($rootScope) ->
   scope: {group: '=', block: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/join_group_button/join_group_button.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     Records.membershipRequests.fetchMyPendingByGroup($scope.group.key)
 
     $scope.isMember = ->
@@ -46,3 +46,5 @@ angular.module('loomioApp').directive 'joinGroupButton', ($rootScope) ->
 
     $scope.isLoggedIn = ->
       AbilityService.isLoggedIn()
+  ]
+]

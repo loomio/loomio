@@ -7,12 +7,12 @@ I18n           = require 'shared/services/i18n.coffee'
 { listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
 { scrollTo }                                  = require 'shared/helpers/window.coffee'
 
-angular.module('loomioApp').directive 'contextPanel', ($rootScope) ->
+angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/thread_page/context_panel/context_panel.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.status = ->
       return 'pinned' if $scope.discussion.pinned
@@ -66,3 +66,5 @@ angular.module('loomioApp').directive 'contextPanel', ($rootScope) ->
 
     listenForTranslations($scope)
     listenForReactions($scope, $scope.discussion)
+  ]
+]

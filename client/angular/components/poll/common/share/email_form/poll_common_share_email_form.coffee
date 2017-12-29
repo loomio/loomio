@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pollCommonShareEmailForm', ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/email_form/poll_common_share_email_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.newEmail = ''
 
     $scope.addIfValid = ->
@@ -51,3 +51,4 @@ angular.module('loomioApp').directive 'pollCommonShareEmailForm', ->
 
     registerKeyEvent $scope, 'pressedEnter', $scope.add, (active) ->
       active.classList.contains('poll-common-share-form__add-option-input')
+  ]

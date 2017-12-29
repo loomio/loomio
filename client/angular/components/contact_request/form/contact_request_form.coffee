@@ -6,7 +6,7 @@ Records = require 'shared/services/records.coffee'
 angular.module('loomioApp').directive 'contactRequestForm', ->
   scope: {user: '='}
   templateUrl: 'generated/components/contact_request/form/contact_request_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.contactRequest = Records.contactRequests.build(recipientId: $scope.user.id)
 
@@ -16,3 +16,4 @@ angular.module('loomioApp').directive 'contactRequestForm', ->
       successCallback: -> $scope.$emit '$close'
 
     submitOnEnter $scope
+  ]

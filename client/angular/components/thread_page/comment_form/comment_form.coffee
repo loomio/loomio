@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, $rootScope) ->
+  controller: ['$scope', ($scope) ->
     $scope.discussion = $scope.eventWindow.discussion
     $scope.commentHelptext = ->
       helptext = if $scope.discussion.private
@@ -52,3 +52,4 @@ angular.module('loomioApp').directive 'commentForm', ->
       submitOnEnter $scope
       $scope.$broadcast 'reinitializeForm', $scope.comment
     $scope.init()
+  ]

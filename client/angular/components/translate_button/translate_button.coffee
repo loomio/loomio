@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'translateButton', ->
   restrict: 'E'
   templateUrl: 'generated/components/translate_button/translate_button.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.canTranslate = ->
       AbilityService.canTranslate($scope.model) and !$scope.translateExecuting and !$scope.translated
 
@@ -18,3 +18,4 @@ angular.module('loomioApp').directive 'translateButton', ->
         $scope.translated = true
         $scope.$emit 'translationComplete', data.translations[0].fields
     applyLoadingFunction($scope, 'translate')
+  ]

@@ -4,11 +4,11 @@ emojione  = require 'emojione'
 
 { emojiTitle } = require 'shared/helpers/helptext.coffee'
 
-angular.module('loomioApp').directive 'emojiPicker', ($timeout)->
+angular.module('loomioApp').directive 'emojiPicker', ['$timeout', ($timeout)->
   scope: {reaction: '='}
   restrict: 'E'
   templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.render = emojione.shortnameToImage
 
     $scope.translate = (shortname) ->
@@ -38,3 +38,5 @@ angular.module('loomioApp').directive 'emojiPicker', ($timeout)->
 
     $scope.noEmojisFound = ->
       $scope.source.length == 0
+  ]
+]

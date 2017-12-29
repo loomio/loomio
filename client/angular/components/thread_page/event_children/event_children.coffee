@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'eventChildren', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/event_children/event_children.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.debug = -> AppConfig.debug
     $scope.eventWindow = new NestedEventWindow
       parentEvent:       $scope.parentEvent
@@ -17,3 +17,4 @@ angular.module('loomioApp').directive 'eventChildren', ->
     $scope.$on 'replyToEvent', (e, event) ->
       if event.id == $scope.parentEvent.id
         $scope.eventWindow.max = false
+  ]

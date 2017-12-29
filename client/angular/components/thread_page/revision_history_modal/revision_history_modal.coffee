@@ -4,7 +4,7 @@ Records = require 'shared/services/records.coffee'
 
 angular.module('loomioApp').factory 'RevisionHistoryModal', ->
   templateUrl: 'generated/components/thread_page/revision_history_modal/revision_history_modal.html'
-  controller: ($scope, model) ->
+  controller: ['$scope', 'model', ($scope, model) ->
     $scope.model = model
     $scope.loading = true
 
@@ -42,3 +42,4 @@ angular.module('loomioApp').factory 'RevisionHistoryModal', ->
     $scope.load()
 
     return
+  ]

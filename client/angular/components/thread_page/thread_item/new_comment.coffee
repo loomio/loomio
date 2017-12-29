@@ -5,12 +5,12 @@ ModalService   = require 'shared/services/modal_service.coffee'
 
 { listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
 
-angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard) ->
+angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', ($rootScope, clipboard) ->
   scope: {event: '=', eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.actions = [
       name: 'react'
       canPerform: -> AbilityService.canAddComment($scope.eventable.discussion())
@@ -50,3 +50,5 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard) ->
 
     listenForReactions($scope, $scope.eventable)
     listenForTranslations($scope)
+  ]
+]

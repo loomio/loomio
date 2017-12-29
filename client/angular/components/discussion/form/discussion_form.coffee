@@ -7,7 +7,7 @@ I18n           = require 'shared/services/i18n.coffee'
 angular.module('loomioApp').directive 'discussionForm', ->
   scope: {discussion: '=', modal: '=?'}
   templateUrl: 'generated/components/discussion/form/discussion_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     if $scope.discussion.isNew()
       $scope.showGroupSelect = true
       $scope.discussion.makeAnnouncement = true
@@ -33,3 +33,4 @@ angular.module('loomioApp').directive 'discussionForm', ->
     $scope.showPrivacyForm = ->
       return unless $scope.discussion.group()
       $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
+  ]

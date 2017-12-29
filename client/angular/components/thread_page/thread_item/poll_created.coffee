@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pollCreated', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/outcome_created.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.actions = [
       name: 'react'
       canPerform: -> AbilityService.canReactToPoll($scope.eventable.poll())
@@ -26,3 +26,4 @@ angular.module('loomioApp').directive 'pollCreated', ->
 
     listenForReactions $scope, $scope.eventable
     listenForTranslations $scope
+  ]

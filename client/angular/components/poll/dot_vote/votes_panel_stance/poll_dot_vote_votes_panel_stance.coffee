@@ -4,7 +4,7 @@ I18n         = require 'shared/services/i18n.coffee'
 angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/dot_vote/votes_panel_stance/poll_dot_vote_votes_panel_stance.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.barTextFor = (choice) ->
       "#{choice.score} - #{choice.pollOption().name}".replace(/\s/g, '\u00a0')
 
@@ -29,3 +29,4 @@ angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ->
 
     $scope.stanceChoices = ->
       _.sortBy($scope.stance.stanceChoices(), 'score').reverse()
+  ]

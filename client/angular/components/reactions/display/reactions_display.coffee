@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'reactionsDisplay', ->
   restrict: 'E'
   templateUrl: 'generated/components/reactions/display/reactions_display.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.diameter = 16
 
     reactionParams = ->
@@ -62,3 +62,4 @@ angular.module('loomioApp').directive 'reactionsDisplay', ->
         $scope.loaded = true
     else
       $scope.loaded = true
+  ]

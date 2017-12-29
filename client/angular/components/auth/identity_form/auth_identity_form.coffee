@@ -8,7 +8,7 @@ I18n        = require 'shared/services/i18n.coffee'
 angular.module('loomioApp').directive 'authIdentityForm', ->
   scope: {user: '=', identity: '='}
   templateUrl: 'generated/components/auth/identity_form/auth_identity_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.siteName = AppConfig.theme.site_name
     $scope.createAccount = ->
       $scope.$emit 'processing'
@@ -26,3 +26,4 @@ angular.module('loomioApp').directive 'authIdentityForm', ->
         $scope.$emit 'doneProcessing'
 
     submitOnEnter $scope, anyEnter: true
+  ]

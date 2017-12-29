@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'userDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/user_dropdown/user_dropdown.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.siteName = AppConfig.theme.site_name
 
     $scope.user = Session.user()
@@ -24,3 +24,4 @@ angular.module('loomioApp').directive 'userDropdown', ->
 
     $scope.contactUs = ->
       contactUs()
+  ]

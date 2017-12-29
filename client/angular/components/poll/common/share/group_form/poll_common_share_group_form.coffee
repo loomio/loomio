@@ -3,11 +3,11 @@ AbilityService = require 'shared/services/ability_service.coffee'
 
 { submitPoll } = require 'angular/helpers/form.coffee'
 
-angular.module('loomioApp').directive 'pollCommonShareGroupForm', ($rootScope) ->
+angular.module('loomioApp').directive 'pollCommonShareGroupForm', ['$rootScope', ($rootScope) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/group_form/poll_common_share_group_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.groupId = $scope.poll.groupId
 
     $scope.submit = submitPoll $scope, $scope.poll,
@@ -18,3 +18,5 @@ angular.module('loomioApp').directive 'pollCommonShareGroupForm', ($rootScope) -
     $scope.groups = ->
       _.filter Session.user().groups(), (group) ->
         AbilityService.canStartPoll(group)
+  ]
+]

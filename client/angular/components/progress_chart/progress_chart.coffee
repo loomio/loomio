@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'progressChart', ->
     goal: '='
     size: '@'
   restrict: 'E'
-  controller: ($scope, $element) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     draw = svg($element[0]).size('100%', '100%')
 
     $scope.$watchCollection 'stanceCounts', ->
@@ -31,3 +31,4 @@ angular.module('loomioApp').directive 'progressChart', ->
           .font(size: 16, anchor: 'middle')
           .x($scope.size / 2)
           .y(($scope.size / 4) + 3)
+  ]

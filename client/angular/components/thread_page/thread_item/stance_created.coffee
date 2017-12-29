@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'stanceCreated', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/stance_created.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.actions = [
       name: 'translate_stance'
       icon: 'mdi-translate'
@@ -22,3 +22,4 @@ angular.module('loomioApp').directive 'stanceCreated', ->
     ]
 
     listenForTranslations($scope)
+  ]

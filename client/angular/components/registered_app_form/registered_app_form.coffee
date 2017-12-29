@@ -6,7 +6,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 angular.module('loomioApp').factory 'RegisteredAppForm', ->
   templateUrl: 'generated/components/registered_app_form/registered_app_form.html'
-  controller: ($scope, application) ->
+  controller: ['$scope', 'application', ($scope, application) ->
     $scope.application = application.clone()
 
     actionName = if $scope.application.isNew() then 'created' else 'updated'
@@ -30,3 +30,4 @@ angular.module('loomioApp').factory 'RegisteredAppForm', ->
       document.querySelector('.registered-app-form__logo-input').click()
 
     submitOnEnter $scope
+  ]

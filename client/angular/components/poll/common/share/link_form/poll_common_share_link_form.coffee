@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'pollCommonShareLinkForm', ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/link_form/poll_common_share_link_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.shareableLink = LmoUrlService.poll($scope.poll, {}, absolute: true)
 
     $scope.setAnyoneCanParticipate = ->
@@ -15,3 +15,4 @@ angular.module('loomioApp').directive 'pollCommonShareLinkForm', ->
             .finally -> $scope.settingAnyoneCanParticipate = false
 
     $scope.copied = -> FlashService.success('common.copied')
+  ]

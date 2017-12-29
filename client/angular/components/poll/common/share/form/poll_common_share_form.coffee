@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/form/poll_common_share_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.hasGroups = ->
       _.any _.filter Session.user().groups(), (group) ->
@@ -15,3 +15,4 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ->
     $scope.hasPendingEmails = ->
       _.has($scope.poll, 'customFields.pending_emails.length') and
       $scope.poll.customFields.pending_emails.length > 0
+  ]

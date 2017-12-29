@@ -5,7 +5,7 @@ FlashService = require 'shared/services/flash_service.coffee'
 angular.module('loomioApp').directive 'pollCommonUndecidedUser', ->
   scope: {user: '=', poll: '='}
   templateUrl: 'generated/components/poll/common/undecided/user/poll_common_undecided_user.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.resend = ->
       $scope.user.resend().then ->
         FlashService.success 'common.action.resent'
@@ -15,3 +15,4 @@ angular.module('loomioApp').directive 'pollCommonUndecidedUser', ->
       $scope.user.remind($scope.poll).then ->
         FlashService.success 'poll_common_undecided_user.reminder_sent'
     applyLoadingFunction $scope, 'remind'
+  ]

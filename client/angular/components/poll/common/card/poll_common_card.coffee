@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pollCommonCard', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/card/poll_common_card.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     Records.polls.fetchComplete($scope.poll.key)
 
     $scope.buttonPressed = false
@@ -22,3 +22,4 @@ angular.module('loomioApp').directive 'pollCommonCard', ->
       $scope.$broadcast 'refreshStance'
 
     listenForLoading $scope
+  ]

@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'membershipsPanel', ->
   restrict: 'E'
   templateUrl: 'generated/components/memberships_page/memberships_panel/memberships_panel.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup($scope.group)
@@ -36,3 +36,4 @@ angular.module('loomioApp').directive 'membershipsPanel', ->
 
     $scope.invitePeople = ->
       ModalService.open 'InvitationModal', group: => $scope.group
+  ]

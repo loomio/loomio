@@ -6,7 +6,7 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/undecided/panel/poll_common_undecided_panel.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.canShowUndecided = ->
       !$scope.showingUndecided and
@@ -50,3 +50,4 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ->
 
     $scope.loadInvitations = ->
       $scope.loaders.invitations.loadMore()
+  ]

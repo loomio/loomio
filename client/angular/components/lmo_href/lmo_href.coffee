@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'lmoHref', ($window, $router) ->
+angular.module('loomioApp').directive 'lmoHref', ['$window', '$router', ($window, $router) ->
   restrict: 'A'
   scope:
     route: '@lmoHref'
@@ -10,3 +10,4 @@ angular.module('loomioApp').directive 'lmoHref', ($window, $router) ->
         $window.open(scope.route, '_blank')
       else
         $router.navigate(scope.route)
+]

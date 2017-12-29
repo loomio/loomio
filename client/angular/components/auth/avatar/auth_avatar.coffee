@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'authAvatar', ->
   scope: {user: '=?'}
   templateUrl: 'generated/components/auth/avatar/auth_avatar.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.user = $scope.user or {avatarKind: 'initials'}
     if !$scope.user.id and $scope.user.avatarKind == 'initials'
       $scope.avatarUser =
@@ -13,3 +13,4 @@ angular.module('loomioApp').directive 'authAvatar', ->
           large:  '/img/mascot.png'
     else
       $scope.avatarUser = $scope.user
+  ]

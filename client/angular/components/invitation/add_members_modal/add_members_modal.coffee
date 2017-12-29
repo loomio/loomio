@@ -7,7 +7,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 
 angular.module('loomioApp').factory 'AddMembersModal', ->
   templateUrl: 'generated/components/invitation/add_members_modal/add_members_modal.html'
-  controller: ($scope, group) ->
+  controller: ['$scope', 'group', ($scope, group) ->
     $scope.isDisabled = false
     $scope.group = group
     $scope.loading = true
@@ -51,3 +51,4 @@ angular.module('loomioApp').factory 'AddMembersModal', ->
         $scope.$close()
       .finally ->
         $scope.isDisabled = false
+  ]

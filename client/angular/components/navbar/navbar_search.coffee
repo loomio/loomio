@@ -1,12 +1,12 @@
 Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-angular.module('loomioApp').directive 'navbarSearch', ($timeout) ->
+angular.module('loomioApp').directive 'navbarSearch', ['$timeout', ($timeout) ->
   scope: {}
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar_search.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.isOpen = false
 
     $scope.$on 'currentComponent', ->
@@ -28,3 +28,5 @@ angular.module('loomioApp').directive 'navbarSearch', ($timeout) ->
       return unless result
       LmoUrlService.goTo LmoUrlService.searchResult(result)
       $scope.query = ''
+  ]
+]

@@ -6,9 +6,10 @@ Records = require 'shared/services/records.coffee'
 
 angular.module('loomioApp').factory 'DeactivateUserForm', ->
   templateUrl: 'generated/components/deactivate_user_form/deactivate_user_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.user = Session.user().clone()
 
     $scope.submit = submitForm $scope, $scope.user,
       submitFn: Records.users.deactivate
       successCallback: -> hardReload()
+  ]

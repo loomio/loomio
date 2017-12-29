@@ -14,10 +14,10 @@ module.exports =
   core:
     main:         'angular/main.coffee'
     coffee:       'angular/**/*.coffee'
-    haml:         'angular/components/**/*.haml'
-    scss:         _.flatten([include(vendor, 'css'), 'angular/css/app.scss', 'angular/components/**/*.scss'])
+    haml:         ['angular/components/**/*.haml', 'angular/pages/**/*.haml']
+    scss:         _.flatten([include(vendor, 'css'), 'angular/css/app.scss', 'angular/components/**/*.scss', 'angular/pages/**/*.scss'])
     scss_include: _.flatten([include(vendor, 'css_includes'), 'angular/css'])
-    folders:      ['initializers', 'config', 'components']
+    folders:      ['initializers', 'config', 'pages', 'components']
 
   shared:
     coffee:       'shared/**/*.coffee'

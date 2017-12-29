@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'discussionFormActions', ->
   scope: {discussion: '='}
   replace: true
   templateUrl: 'generated/components/discussion/form_actions/discussion_form_actions.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     actionName = if $scope.discussion.isNew() then 'created' else 'updated'
 
     $scope.submit = submitForm $scope, $scope.discussion,
@@ -20,3 +20,4 @@ angular.module('loomioApp').directive 'discussionFormActions', ->
         LmoUrlService.goTo LmoUrlService.discussion(discussion) if actionName == 'created'
 
     submitOnEnter $scope
+  ]

@@ -6,7 +6,7 @@ FlashService = require 'shared/services/flash_service.coffee'
 angular.module('loomioApp').directive 'invitationFormActions', ->
   scope: {invitationForm: '='}
   templateUrl: 'generated/components/invitation/form_actions/invitation_form_actions.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.submit = ->
       if $scope.invitationForm.hasInvitees()
         submitForm($scope, $scope.invitationForm,
@@ -34,3 +34,4 @@ angular.module('loomioApp').directive 'invitationFormActions', ->
       !$scope.isDisabled and
       $scope.invitationForm.invitees().length > 0 and
       $scope.invitationForm.invitees().length < 100
+  ]

@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'pendingInvitationsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/memberships_page/pending_invitations_card/pending_invitations_card.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.canSeeInvitations = ->
       Session.user().isAdminOf($scope.group)
 
@@ -30,3 +30,4 @@ angular.module('loomioApp').directive 'pendingInvitationsCard', ->
 
     $scope.copied = ->
       FlashService.success 'common.copied'
+  ]

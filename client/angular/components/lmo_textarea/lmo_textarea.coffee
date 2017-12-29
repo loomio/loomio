@@ -3,12 +3,12 @@ ModalService = require 'shared/services/modal_service.coffee'
 
 { listenForMentions, listenForEmoji, listenForPaste } = require 'angular/helpers/listen.coffee'
 
-angular.module('loomioApp').directive 'lmoTextarea', ($compile) ->
+angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
   scope: {model: '=', field: '@', noAttachments: '@', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/lmo_textarea/lmo_textarea.html'
   replace: true
-  controller: ($scope, $element) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     $scope.init = (model) ->
       $scope.model = model
       listenForMentions $scope, $scope.model
@@ -33,3 +33,5 @@ angular.module('loomioApp').directive 'lmoTextarea', ($compile) ->
 
     $scope.$on 'documentRemoved', (_, doc) ->
       $scope.model.removedDocumentIds.push doc.id
+  ]
+]

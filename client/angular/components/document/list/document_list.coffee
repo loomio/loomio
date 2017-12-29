@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'documentList', ->
   scope: {model: '=', showEdit: '=?', hidePreview: '=?'}
   replace: true
   templateUrl: 'generated/components/document/list/document_list.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     Records.documents.fetchByModel($scope.model) unless $scope.model.isNew()
 
     $scope.showTitle = ->
@@ -14,3 +14,4 @@ angular.module('loomioApp').directive 'documentList', ->
 
     $scope.edit = (doc, $mdMenu) ->
       $scope.$broadcast 'initializeDocument', doc, $mdMenu
+  ]

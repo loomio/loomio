@@ -5,7 +5,7 @@
 angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/meeting/vote_form/poll_meeting_vote_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.vars = {}
 
     initForm = do ->
@@ -22,3 +22,4 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
       $scope.zone = zone
 
     submitOnEnter($scope)
+  ]

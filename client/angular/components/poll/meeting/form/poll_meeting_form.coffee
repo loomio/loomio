@@ -4,7 +4,7 @@ moment    = require 'moment'
 angular.module('loomioApp').directive 'pollMeetingForm', ->
   scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/meeting/form/poll_meeting_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.removeOption = (name) ->
       _.pull $scope.poll.pollOptionNames, name
@@ -19,3 +19,4 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
 
     $scope.$on 'timeZoneSelected', (e, zone) ->
       $scope.poll.customFields.time_zone = zone
+  ]

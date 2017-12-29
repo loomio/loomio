@@ -8,7 +8,7 @@ I18n      = require 'shared/services/i18n.coffee'
 angular.module('loomioApp').directive 'documentUrlForm', ->
   scope: {document: '='}
   templateUrl: 'generated/components/document/url_form/document_url_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.model = Records.discussions.build()
 
     $scope.submit = ->
@@ -25,3 +25,4 @@ angular.module('loomioApp').directive 'documentUrlForm', ->
 
     submitOnEnter $scope, anyEnter: true
     listenForPaste($scope)
+  ]

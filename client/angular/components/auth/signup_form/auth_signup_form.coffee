@@ -7,7 +7,7 @@ I18n        = require 'shared/services/i18n.coffee'
 angular.module('loomioApp').directive 'authSignupForm', ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signup_form/auth_signup_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.vars         = {}
     $scope.recaptchaKey = AppConfig.recaptchaKey
     $scope.name         = $scope.user.name
@@ -26,3 +26,4 @@ angular.module('loomioApp').directive 'authSignupForm', ->
 
     submitOnEnter($scope, anyEnter: true)
     $scope.$emit 'focus'
+  ]

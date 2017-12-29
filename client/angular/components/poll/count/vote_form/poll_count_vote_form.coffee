@@ -7,7 +7,7 @@ Records   = require 'shared/services/records.coffee'
 angular.module('loomioApp').directive 'pollCountVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/count/vote_form/poll_count_vote_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: (optionName) ->
         option = _.find $scope.stance.poll().pollOptions(), (option) -> option.name == optionName
@@ -18,3 +18,4 @@ angular.module('loomioApp').directive 'pollCountVoteForm', ->
     $scope.noColor  = AppConfig.pollColors.count[1]
 
     submitOnEnter($scope)
+  ]

@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'pollCommonStartForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/start_form/poll_common_start_form.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.discussion = $scope.discussion or {}
     $scope.group      = $scope.group or {}
 
@@ -25,3 +25,4 @@ angular.module('loomioApp').directive 'pollCommonStartForm', ->
 
     $scope.fieldFromTemplate = (pollType, field) ->
       fieldFromTemplate(pollType, field)
+  ]

@@ -4,7 +4,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 angular.module('loomioApp').factory 'DeleteThreadForm', ->
   templateUrl: 'generated/components/delete_thread_form/delete_thread_form.html'
-  controller: ($scope, discussion) ->
+  controller: ['$scope', 'discussion', ($scope, discussion) ->
     $scope.discussion = discussion
     $scope.group = discussion.group()
 
@@ -13,3 +13,4 @@ angular.module('loomioApp').factory 'DeleteThreadForm', ->
       flashSuccess: 'delete_thread_form.messages.success'
       successCallback: ->
         LmoUrlService.goTo LmoUrlService.group($scope.group)
+  ]

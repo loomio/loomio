@@ -2,12 +2,12 @@ AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 ThreadService  = require 'shared/services/thread_service.coffee'
 
-angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope) ->
+angular.module('loomioApp').directive 'contextPanelDropdown', ['$rootScope', ($rootScope) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/thread_page/context_panel_dropdown/context_panel_dropdown.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.canChangeVolume = ->
       AbilityService.canChangeVolume($scope.discussion)
@@ -60,3 +60,5 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ($rootScope) ->
 
     $scope.deleteThread = ->
       ModalService.open 'DeleteThreadForm', discussion: => $scope.discussion
+  ]
+]

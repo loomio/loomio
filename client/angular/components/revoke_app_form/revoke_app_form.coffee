@@ -1,8 +1,8 @@
 FlashService = require 'shared/services/flash_service.coffee'
 
-angular.module('loomioApp').factory 'RevokeAppForm', ($rootScope) ->
+angular.module('loomioApp').factory 'RevokeAppForm', ['$rootScope', ($rootScope) ->
   templateUrl: 'generated/components/revoke_app_form/revoke_app_form.html'
-  controller: ($scope, application) ->
+  controller: ['$scope', 'application', ($scope, application) ->
     $scope.application = application
 
     $scope.submit = ->
@@ -12,3 +12,5 @@ angular.module('loomioApp').factory 'RevokeAppForm', ($rootScope) ->
       , ->
         $rootScope.$broadcast 'pageError', 'cantRevokeApplication', $scope.application
         $scope.$close()
+  ]
+]

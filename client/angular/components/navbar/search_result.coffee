@@ -1,11 +1,11 @@
 Records = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'searchResult', ($rootScope) ->
+angular.module('loomioApp').directive 'searchResult', ->
   scope: {result: '='}
   restrict: 'E'
   templateUrl: 'generated/components/navbar/search_result.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     # removes all characters which will muck up a regex match
     escapeForRegex = (str) ->
@@ -21,3 +21,4 @@ angular.module('loomioApp').directive 'searchResult', ($rootScope) ->
       !escapeForRegex($scope.result.description).match ///#{$scope.rawDiscussionBlurb()}$///
 
     return
+  ]

@@ -10,7 +10,7 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 angular.module('loomioApp').directive 'pollCommonActionPanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/action_panel/poll_common_action_panel.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.init = ->
       token      = LmoUrlService.params().invitation_token
@@ -35,3 +35,4 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ->
 
     $scope.openStanceForm = ->
       ModalService.open 'PollCommonEditVoteModal', stance: -> $scope.init()
+  ]

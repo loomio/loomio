@@ -6,11 +6,11 @@ ModalService             = require 'shared/services/modal_service.coffee'
 
 { print } = require 'shared/helpers/window.coffee'
 
-angular.module('loomioApp').directive 'activityCard', ($mdDialog) ->
+angular.module('loomioApp').directive 'activityCard', ['$mdDialog', ($mdDialog) ->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.debug = -> window.Loomio.debug
 
     $scope.setDefaults = ->
@@ -90,3 +90,5 @@ angular.module('loomioApp').directive 'activityCard', ($mdDialog) ->
     $scope.$on 'initActivityCard', -> $scope.init()
 
     return
+  ]
+]

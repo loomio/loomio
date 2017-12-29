@@ -1,12 +1,12 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
 
-angular.module('loomioApp').directive 'notifications', ($rootScope) ->
+angular.module('loomioApp').directive 'notifications', ->
   scope: {}
   restrict: 'E'
   templateUrl: 'generated/components/notifications/notifications.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.toggle = (menu) ->
       if document.querySelector '.md-open-menu-container.md-active .notifications__menu-content'
@@ -17,11 +17,9 @@ angular.module('loomioApp').directive 'notifications', ($rootScope) ->
     $scope.open = (menu) ->
       menu.open()
       Records.notifications.viewed()
-      $rootScope.$broadcast 'notificationsOpen'
 
     $scope.close = (menu) ->
       menu.close()
-      $rootScope.$broadcast 'notificationsClosed'
 
     notificationsView = Records.notifications.collection.addDynamicView("notifications")
                                .applyFind(kind: { $in: AppConfig.notifications.kinds })
@@ -39,3 +37,4 @@ angular.module('loomioApp').directive 'notifications', ($rootScope) ->
       $scope.unreadCount() > 0
 
     return
+  ]

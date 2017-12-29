@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'descriptionCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/description_card/description_card.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.disableEditor = -> $scope.editorEnabled = false
 
     $scope.canAdministerGroup = ->
@@ -34,3 +34,4 @@ angular.module('loomioApp').directive 'descriptionCard', ->
           modelId:   $scope.group.id
           modelType: 'Group'
     ]
+  ]

@@ -5,7 +5,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 angular.module('loomioApp').directive 'installSlackCard', ->
   scope: {group: '='}
   templateUrl: 'generated/components/install_slack/card/install_slack_card.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.show = ->
       AppConfig.providerFor('slack') && AbilityService.canAdministerGroup($scope.group)
 
@@ -26,3 +26,4 @@ angular.module('loomioApp').directive 'installSlackCard', ->
           title:    'install_slack.card.confirm_remove_title'
           helptext: 'install_slack.card.confirm_remove_helptext'
           flash:    'install_slack.card.identity_removed'
+  ]

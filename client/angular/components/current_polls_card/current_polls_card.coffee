@@ -7,7 +7,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 angular.module('loomioApp').directive 'currentPollsCard', ->
   scope: {model: '='}
   templateUrl: 'generated/components/current_polls_card/current_polls_card.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.fetchRecords = ->
       Records.polls.fetchFor($scope.model, status: 'active')
     applyLoadingFunction $scope, 'fetchRecords'
@@ -21,3 +21,4 @@ angular.module('loomioApp').directive 'currentPollsCard', ->
 
     $scope.canStartPoll = ->
       AbilityService.canStartPoll($scope.model.group())
+  ]

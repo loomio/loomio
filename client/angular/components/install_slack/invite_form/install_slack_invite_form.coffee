@@ -7,7 +7,7 @@ Records = require 'shared/services/records.coffee'
 angular.module('loomioApp').directive 'installSlackInviteForm', ->
   scope: {group: '='}
   templateUrl: 'generated/components/install_slack/invite_form/install_slack_invite_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.groupIdentity = Records.groupIdentities.build(
       groupId: $scope.group.id
       identityType: 'slack'
@@ -32,3 +32,4 @@ angular.module('loomioApp').directive 'installSlackInviteForm', ->
 
     submitOnEnter $scope, anyEnter: true
     $scope.$emit 'focus'
+  ]

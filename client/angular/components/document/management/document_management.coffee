@@ -4,7 +4,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 angular.module('loomioApp').directive 'documentManagement', ->
   scope: {group: '=', fragment: '=', filter: '@', header: '@'}
   templateUrl: 'generated/components/document/management/document_management.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.documents = ->
       _.filter $scope.group.allDocuments(), (doc) ->
@@ -29,3 +29,4 @@ angular.module('loomioApp').directive 'documentManagement', ->
           title:    'documents_page.confirm_remove_title'
           helptext: 'documents_page.confirm_remove_helptext'
           flash:    'documents_page.document_removed'
+  ]

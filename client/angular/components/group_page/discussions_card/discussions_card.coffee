@@ -7,12 +7,12 @@ LmoUrlService      = require 'shared/services/lmo_url_service.coffee'
 
 { applyLoadingFunction } = require 'angular/helpers/apply.coffee'
 
-angular.module('loomioApp').directive 'discussionsCard', ($timeout) ->
+angular.module('loomioApp').directive 'discussionsCard', ['$timeout', ($timeout) ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.init = (filter) ->
       $scope.filter = filter or 'show_opened'
@@ -72,3 +72,5 @@ angular.module('loomioApp').directive 'discussionsCard', ($timeout) ->
 
     $scope.canStartThread = ->
       AbilityService.canStartThread($scope.group)
+  ]
+]
