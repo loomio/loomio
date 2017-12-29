@@ -87,7 +87,7 @@ ActiveAdmin.register User do
   show do |user|
     if user.deactivated_at.nil?
       panel("Deactivate") do
-        if user.can? :deactivate, user
+        if user.ability.can? :deactivate, user
           button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
         else
           div "This user can't be deactivated because they are the only coordinator of the following groups:"
