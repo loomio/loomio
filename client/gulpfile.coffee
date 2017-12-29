@@ -47,7 +47,7 @@ gulp.task 'bundle:dev',  ['angular:external', 'angular:bundle:dev', 'vue:bundle:
 
 gulp.task 'watch',       watch
 gulp.task 'dev',         (done) -> sequence('bundle:dev', 'watch', -> done())
-gulp.task 'compile',     ['angular:external:prod', 'angular:bundle:prod', 'execjs:prod'] # TODO: add vue:bundle:prod back in here
+gulp.task 'compile',     ['angular:external:prod', 'angular:bundle:prod', 'execjs:bundle:prod', 'vue:bundle:prod']
 
 gulp.task 'protractor:core',    require('./tasks/protractor/core')
 gulp.task 'protractor:plugins', require('./tasks/protractor/plugins')
