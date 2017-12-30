@@ -11,31 +11,38 @@ include = (file, key) ->
   _.map(file[key], (path) -> [file.path, path].join('/'))
 
 module.exports =
-  core:
-    main:         'angular/main.coffee'
-    vendor:       include(vendor, 'angular')
-    coffee:       'angular/**/*.coffee'
-    haml:         ['angular/components/**/*.haml', 'angular/pages/**/*.haml']
-    scss:         _.flatten([include(vendor, 'css'), 'angular/css/app.scss', 'angular/components/**/*.scss', 'angular/pages/**/*.scss'])
-    scss_include: _.flatten([include(vendor, 'css_includes'), 'angular/css'])
-    folders:      ['initializers', 'config', 'pages', 'components']
+  angular:
+    root:      'angular'
+    main:      'angular/main.coffee'
+    templates: 'angular/templates.coffee'
+    vendor:    include(vendor, 'angular')
+    plugin:    include plugins, 'coffee'
+    folders:   ['initializers', 'config', 'pages', 'components']
+    haml: _.flatten([
+      'angular/components/**/*.haml',
+      'angular/pages/**/*.haml',
+      include(plugins, 'haml')
+    ])
+    scss: _.flatten([
+      include(vendor, 'css'),
+      'angular/css/app.scss',
+      'angular/components/**/*.scss',
+      'angular/pages/**/*.scss',
+      include(plugins, 'scss')
+    ])
+    scss_include: _.flatten([
+      include(vendor, 'css_includes'),
+      'angular/css'
+    ])
 
   shared:
     coffee:       'shared/**/*.coffee'
-
-  plugin:
-    coffee: include plugins, 'coffee'
-    haml:   include plugins, 'haml'
-    scss:   _.flatten(['angular/css/plugin.scss', include(plugins, 'scss')])
-    scss_include: 'angular/css'
-
-  execjs:
-    main:           'execjs/main.coffee'
-
-  extra:
     emojis:         include(vendor, 'emoji')
     moment_locales: include(vendor, 'moment_locales')
     fonts:          include(vendor, 'fonts')
+
+  execjs:
+    main:           'execjs/main.coffee'
 
   dist:
     fonts:          '../public/client/fonts'
