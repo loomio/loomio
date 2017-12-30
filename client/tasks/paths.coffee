@@ -1,5 +1,6 @@
 yaml    = require('node-yaml-config')
 vendor  = yaml.reload('tasks/config/vendor.yml')
+glob    = require 'globby'
 _       = require 'lodash'
 
 plugins = try
@@ -7,22 +8,31 @@ plugins = try
 catch
   {}
 
-include = (file, key) ->
-  _.map(file[key], (path) -> [file.path, path].join('/'))
+include = (file, key, p = file.path) ->
+  _.map(file[key], (path) -> _.compact([p, path]).join('/'))
 
 module.exports =
   angular:
     root:      'angular'
     main:      'angular/main.coffee'
-    templates: 'angular/templates.coffee'
-    vendor:    include(vendor, 'angular')
+    folders:
+      vendor:     include(vendor, 'angular', '')
+      config:     glob.sync('angular/config/*.coffee')
+      pages:      glob.sync('angular/pages/**/*.coffee')
+      components: glob.sync('angular/components/**/*.coffee')
+      templates:   _.flatten([
+        'angular/components/**/*.haml',
+        'angular/pages/**/*.haml',
+        include(plugins, 'haml')
+      ])
+    dependencies:
+      folder:     'angular/dependencies'
+      vendor:     'angular/dependencies/vendor.coffee'
+      config:     'angular/dependencies/config.coffee'
+      pages:      'angular/dependencies/pages.coffee'
+      components: 'angular/dependencies/components.coffee'
+    vendor:    include(vendor, 'angular', '') # don't force a prefix, since these will be required into the bundle
     plugin:    include plugins, 'coffee'
-    folders:   ['initializers', 'config', 'pages', 'components']
-    haml: _.flatten([
-      'angular/components/**/*.haml',
-      'angular/pages/**/*.haml',
-      include(plugins, 'haml')
-    ])
     scss: _.flatten([
       include(vendor, 'css'),
       'angular/css/app.scss',
@@ -49,10 +59,6 @@ module.exports =
     assets:         '../public/client/development'
     emojis:         '../public/img/emojis'
     moment_locales: '../public/client/development/moment_locales'
-
-  js:
-    execcoffee:   'angular/initializers/**/*.coffee'
-    vendor:       include(vendor, 'js')
 
   vue:
     main:           'vue/main.coffee'

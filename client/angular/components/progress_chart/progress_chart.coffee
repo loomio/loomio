@@ -1,5 +1,7 @@
+
+svg = require 'svg.js'
+
 AppConfig      = require 'shared/services/app_config.coffee'
-svg            = require 'svg.js'
 
 angular.module('loomioApp').directive 'progressChart', ->
   template: '<div class="progress-chart"></div>'

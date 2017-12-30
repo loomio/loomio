@@ -3,8 +3,6 @@ AppConfig    = require 'shared/services/app_config.coffee'
 HasDrafts    = require 'shared/mixins/has_drafts.coffee'
 HasDocuments = require 'shared/mixins/has_documents.coffee'
 
-_ = require 'lodash'
-
 module.exports = class GroupModel extends BaseModel
   @singular: 'group'
   @plural: 'groups'

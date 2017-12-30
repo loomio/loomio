@@ -1,7 +1,5 @@
-_      = require 'lodash'
 moment = require 'moment'
-
-utils = require('./utils.coffee')
+utils  = require './utils.coffee'
 
 module.exports =
   class BaseModel

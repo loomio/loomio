@@ -3,8 +3,6 @@ AppConfig       = require 'shared/services/app_config.coffee'
 HasDrafts       = require 'shared/mixins/has_drafts.coffee'
 HasTranslations = require 'shared/mixins/has_translations.coffee'
 
-_ = require 'lodash'
-
 module.exports = class StanceModel extends BaseModel
   @singular: 'stance'
   @plural: 'stances'

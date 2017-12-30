@@ -1,3 +1,4 @@
+Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
@@ -28,7 +29,7 @@ angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', 
       name: 'translate_comment'
       icon: 'mdi-translate'
       canPerform: -> $scope.eventable.body && AbilityService.canTranslate($scope.eventable) && !$scope.translation
-      perform:    -> $scope.eventable.translate()
+      perform:    -> $scope.eventable.translate(Session.user().locale)
     ,
       name: 'copy_url_comment'
       icon: 'mdi-link'

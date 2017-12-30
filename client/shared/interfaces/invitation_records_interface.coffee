@@ -1,8 +1,6 @@
 BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
 InvitationModel      = require 'shared/models/invitation_model.coffee'
 
-_ = require 'lodash'
-
 module.exports = class InvitationRecordsInterface extends BaseRecordsInterface
   model: InvitationModel
 

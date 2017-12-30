@@ -1,3 +1,4 @@
+Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
@@ -20,7 +21,7 @@ angular.module('loomioApp').directive 'pollCommonOutcomePanel', ->
       name: 'translate_outcome'
       icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.poll.outcome())
-      perform:    -> $scope.poll.outcome().translate()
+      perform:    -> $scope.poll.outcome().translate(Session.user().locale)
     ]
 
     listenForTranslations $scope

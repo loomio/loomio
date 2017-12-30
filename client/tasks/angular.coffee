@@ -18,10 +18,8 @@ expect     = require 'gulp-expect-file'
 prefix     = require 'gulp-autoprefixer'
 cssmin     = require 'gulp-cssmin'
 browserify = require 'browserify'
-babelify   = require 'babelify'
 buffer     = require 'vinyl-buffer'
 coffeeify  = require 'coffeeify'
-glob       = require 'globby'
 source     = require 'vinyl-source-stream'
 fs         = require 'fs'
 collapse   = require 'bundle-collapser/plugin'
@@ -51,15 +49,8 @@ module.exports =
       .on('error', onError)
       .pipe(gulp.dest(paths.dist.assets))
 
-  vendor: ->
-    pipe gulp.src(paths.js.vendor), [
-      expect({errorOnFailure: true}, paths.js.vendor),
-      concat('angular.vendor.js'),
-      gulp.dest(paths.dist.assets)
-    ]
-
   haml: ->
-    pipe gulp.src(paths.angular.haml), [
+    pipe gulp.src(paths.angular.folders.templates), [
       plumber(errorHandler: onError),
       haml(),
       htmlmin(),
@@ -73,7 +64,7 @@ module.exports =
       )
       toCoffee().on('error', gutil.log)
       concat("templates.coffee"),
-      gulp.dest(paths.angular.root)
+      gulp.dest(paths.angular.dependencies.folder)
     ]
 
   scss: ->
@@ -90,13 +81,10 @@ module.exports =
     ]
 
 requireForBundle = ->
-  vendor    = _.flatten _.map paths.angular.vendor
-  core      = _.flatten _.map paths.angular.folders, (folder) -> _.map glob.sync("angular/#{folder}/**/*.coffee")
-  templates = paths.angular.templates
-  plugins   = _.map paths.angular.plugin, (file) -> "../#{file}"
-  requires  = vendor.concat(core).concat(templates).concat(plugins)
-
-  fs.writeFileSync paths.angular.main, _.map(requires, (file) -> "require '#{file}'").join("\n")
+  _.each ['vendor', 'config', 'pages', 'components'], (name) ->
+    fs.writeFileSync paths.angular.dependencies[name], _.map(paths.angular.folders[name], (file) ->
+      "require '#{file}'"
+    ).join("\n")
 
 browserifyOpts = ->
   entries: paths.angular.main,

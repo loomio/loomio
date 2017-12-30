@@ -3,6 +3,5 @@ paths    = require './paths'
 gulp     = require 'gulp'
 
 module.exports = ->
-  gulp.watch paths.js.vendor,      ['angular:vendor']
   gulp.watch paths.angular.haml,   ['angular:core:haml']
   gulp.watch paths.angular.scss,   ['angular:core:scss']

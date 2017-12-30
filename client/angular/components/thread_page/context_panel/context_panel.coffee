@@ -1,4 +1,5 @@
 Records        = require 'shared/services/records.coffee'
+Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 ThreadService  = require 'shared/services/thread_service.coffee'
@@ -46,7 +47,7 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
       name: 'translate_thread'
       icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
-      perform:    -> $scope.discussion.translate()
+      perform:    -> $scope.discussion.translate(Session.user().locale)
     ,
       name: 'add_comment'
       icon: 'mdi-reply'

@@ -1,8 +1,6 @@
 AppConfig             = require 'shared/services/app_config.coffee'
 ImplementationService = require 'shared/services/implementation_service.coffee'
 
-_ = require 'lodash'
-
 module.exports = class LmoUrlService
   ImplementationService.requireMethod @, 'goTo',   'setGoToMethod'
   ImplementationService.requireMethod @, 'params', 'setParamsMethod'

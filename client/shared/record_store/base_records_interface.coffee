@@ -1,5 +1,4 @@
 RestfulClient = require './restful_client.coffee'
-_     = require 'lodash'
 utils = require './utils.coffee'
 
 module.exports =

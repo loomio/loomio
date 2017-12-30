@@ -33,7 +33,6 @@
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
           %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
 
-    %script{src: client_asset_path(:"angular.vendor.min.js")}
     :javascript
       window.Loomio = #{@payload.to_json.html_safe}
     %script{src: bundle_asset_path(:"angular.bundle.min.js")}

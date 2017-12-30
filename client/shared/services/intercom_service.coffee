@@ -3,8 +3,6 @@ Session       = require 'shared/services/session.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 
-_ = require 'lodash'
-
 Intercom = window.Intercom
 lastGroup = {}
 

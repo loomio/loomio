@@ -3,6 +3,7 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+IntercomService = require 'shared/services/intercom_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
 moment = require 'moment'
@@ -20,6 +21,12 @@ module.exports =
   signOut: ->
     AppConfig.loggingOut = true
     Records.sessions.remote.destroy('').then -> hardReload('/')
+
+  contactUs: ->
+    if IntercomService.available()
+      IntercomService.open()
+    else
+      ModalService.open('ContactModal')
 
   subscribeToLiveUpdate: (options = {}) ->
     return unless AbilityService.isLoggedIn()

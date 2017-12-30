@@ -1,8 +1,6 @@
 BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
 UserModel            = require 'shared/models/user_model.coffee'
 
-_ = require 'lodash'
-
 module.exports = class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
 

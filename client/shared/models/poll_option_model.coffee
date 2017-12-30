@@ -1,7 +1,5 @@
 BaseModel    = require 'shared/record_store/base_model.coffee'
 
-_ = require 'lodash'
-
 module.exports = class PollOptionModel extends BaseModel
   @singular: 'pollOption'
   @plural: 'pollOptions'

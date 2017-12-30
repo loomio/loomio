@@ -1,5 +1,4 @@
 moment = require 'moment'
-_      = require 'lodash'
 
 module.exports =
   timeFromNowInWords: (date, excludeAgo) ->

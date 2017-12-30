@@ -1,6 +1,5 @@
 bowser = require 'bowser'
 
-IntercomService = require 'shared/services/intercom_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 ScrollService   = require 'shared/services/scroll_service.coffee'
 
@@ -8,6 +7,10 @@ ScrollService   = require 'shared/services/scroll_service.coffee'
 # or printing. Hopefully we can pool all window-related functionality here, and
 # then allow for an alternate implementation for when 'window' may not exist
 module.exports =
+
+  exportGlobals: ->
+    window._ = require 'lodash'
+
   viewportSize: ->
     if window.innerWidth < 480
       'small'
@@ -31,12 +34,6 @@ module.exports =
 
   print: ->
     window.print()
-
-  contactUs: ->
-    if IntercomService.available()
-      IntercomService.open()
-    else
-      ModalService.open('ContactModal')
 
   is2x: ->
     window.devicePixelRatio >= 2

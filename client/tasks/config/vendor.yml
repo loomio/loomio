@@ -1,7 +1,5 @@
 ---
 path: node_modules
-js:
-  - lodash/index.js
 css_includes:
   - angular-material/modules/scss/
   - mdi/scss
@@ -12,7 +10,6 @@ emoji:
 moment_locales:
   - moment/locale/*.js
 angular:
-  - angular
   - angular-clipboard
   - angular-inview
   - angular-gravatar

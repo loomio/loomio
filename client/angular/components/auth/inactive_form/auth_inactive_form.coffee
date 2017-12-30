@@ -1,4 +1,4 @@
-{ contactUs } = require 'shared/helpers/window.coffee'
+{ contactUs } = require 'shared/helpers/user.coffee'
 
 angular.module('loomioApp').directive 'authInactiveForm', ->
   scope: {user: '='}

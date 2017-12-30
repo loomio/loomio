@@ -1,4 +1,3 @@
-_ = require 'lodash'
 require 'whatwg-fetch'                      # polyfill for Fetch API
 require 'promise-polyfill'                  # polyfill for Promise object
 require('promise.prototype.finally').shim() # polyfill for .finally on Promises

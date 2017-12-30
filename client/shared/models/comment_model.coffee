@@ -5,8 +5,6 @@ HasDocuments    = require 'shared/mixins/has_documents.coffee'
 HasMentions     = require 'shared/mixins/has_mentions.coffee'
 HasTranslations = require 'shared/mixins/has_translations.coffee'
 
-_ = require 'lodash'
-
 module.exports = class CommentModel extends BaseModel
   @singular: 'comment'
   @plural: 'comments'

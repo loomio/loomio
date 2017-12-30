@@ -1,8 +1,6 @@
 AppConfig = require 'shared/services/app_config.coffee'
 moment    = require 'moment'
 
-_ = require 'lodash'
-
 module.exports = new class TimeService
   nameForZone: (zone, nameForLocal) ->
     if AppConfig.timeZone == zone

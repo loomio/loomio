@@ -1,4 +1,3 @@
-_      = require 'lodash'
 moment = require 'moment'
 
 module.exports =

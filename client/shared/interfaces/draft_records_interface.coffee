@@ -1,6 +1,5 @@
 BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
 DraftModel           = require 'shared/models/draft_model.coffee'
-_ = require 'lodash'
 
 module.exports = class DraftRecordsInterface extends BaseRecordsInterface
   model: DraftModel

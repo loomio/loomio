@@ -1,7 +1,5 @@
 RangeSet = require 'shared/services/range_set.coffee'
 
-_ = require 'lodash'
-
 module.exports = class BaseEventWindow
   constructor: ({discussion, per}) ->
     @discussion = discussion

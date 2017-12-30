@@ -1,3 +1,4 @@
+Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
@@ -13,7 +14,7 @@ angular.module('loomioApp').directive 'stanceCreated', ->
       name: 'translate_stance'
       icon: 'mdi-translate'
       canPerform: -> $scope.eventable.reason && AbilityService.canTranslate($scope.eventable)  && !$scope.translation
-      perform:    -> $scope.eventable.translate()
+      perform:    -> $scope.eventable.translate(Session.user().locale)
     ,
       name: 'edit_stance'
       icon: 'mdi-pencil'

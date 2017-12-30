@@ -1,12 +1,11 @@
+moment = require 'moment'
+
 BaseModel       = require 'shared/record_store/base_model.coffee'
 AppConfig       = require 'shared/services/app_config.coffee'
 HasMentions     = require 'shared/mixins/has_mentions.coffee'
 HasDrafts       = require 'shared/mixins/has_drafts.coffee'
 HasDocuments    = require 'shared/mixins/has_documents.coffee'
 HasTranslations = require 'shared/mixins/has_translations.coffee'
-
-moment = require 'moment'
-_      = require 'lodash'
 
 module.exports = class PollModel extends BaseModel
   @singular: 'poll'

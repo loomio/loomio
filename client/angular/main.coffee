@@ -1,8 +1,10 @@
-{ checkBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
+{ exportGlobals, checkBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
 
+exportGlobals()
 checkBrowser()
 initServiceWorker()
 
+require './dependencies/vendor.coffee'
 angular.module('loomioApp', [
   'ngNewRouter',
   'pascalprecht.translate',
@@ -19,6 +21,11 @@ angular.module('loomioApp', [
   'angulartics',
   'angulartics.google.tagmanager',
   'vcRecaptcha',
-  'ngAnimate',
   'angular-sortable-view'
 ])
+
+
+require './dependencies/config.coffee'
+require './dependencies/templates.coffee'
+require './dependencies/pages.coffee'
+require './dependencies/components.coffee'

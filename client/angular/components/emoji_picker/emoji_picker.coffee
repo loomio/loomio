@@ -1,6 +1,7 @@
+emojione = require 'emojione'
+
 AppConfig = require 'shared/services/app_config.coffee'
 I18n      = require 'shared/services/i18n.coffee'
-emojione  = require 'emojione'
 
 { emojiTitle } = require 'shared/helpers/helptext.coffee'
 
