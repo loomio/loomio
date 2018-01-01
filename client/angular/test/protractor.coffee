@@ -1,7 +1,7 @@
 HtmlScreenshotReporter = require 'protractor-jasmine2-screenshot-reporter'
 
 reporter = new HtmlScreenshotReporter
-  dest: 'screenshots'
+  dest: './angular/test/screenshots'
   captureOnlyFailedSpecs: true
   filename: 'my-report.html'
 
