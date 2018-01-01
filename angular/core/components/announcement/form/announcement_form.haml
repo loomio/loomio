@@ -1,0 +1,15 @@
+.announcement-form
+  %label.announcement-form__label{translate: "announcement.form.label"}
+  %md-chips.announcement-form__chips{ng-model: "announcement.notified", md-require-match: "true"}
+    %md-autocomplete{md-items: "$chip in search(query)", md-no-cache: "true", md-search-text: "query", placeholder: "{{'announcement.form.placeholder' | translate}}", md-min-length: "3", md-delay: "300"}
+      %md-item-template
+        %announcement_chip{chip: "$chip"}
+    %md-chip-template
+      %announcement_chip{chip: "$chip", ng-if: "$chip.type != 'FormalGroup'"}
+      %md-menu.lmo-pointer{ng-if: "$chip.type == 'FormalGroup'"}
+        %announcement_chip{md-menu-origin: "true", ng-click: "$mdMenu.open($event)", chip: "$chip"}
+        %md-menu-content.announcement-form__menu-content
+          %announcement_group_form{notified: "$chip"}
+  .lmo-md-action
+    %p.md-caption{ng-if: "announcement.totalNotified() == 1", translate: "announcement.form.notified_count_singular"}
+    %p.md-caption{ng-if: "announcement.totalNotified() != 1", translate: "announcement.form.notified_count", translate-value-count: "{{announcement.totalNotified()}}"}

@@ -1,13 +1,16 @@
-{ iconFor } = require 'shared/helpers/poll.coffee'
+{ iconFor }       = require 'shared/helpers/poll.coffee'
+{ applySequence } = require 'angular/shared/apply.coffee'
 
 angular.module('loomioApp').factory 'PollCommonEditModal', ->
   templateUrl: 'generated/components/poll/common/edit_modal/poll_common_edit_modal.html'
   controller: ['$scope', 'poll', ($scope, poll) ->
     $scope.poll = poll.clone()
-    $scope.poll.makeAnnouncement = $scope.poll.isNew()
 
     $scope.icon = ->
       iconFor($scope.poll)
 
-    $scope.$on 'nextStep', $scope.$close
+    applySequence $scope,
+      steps: ['save', 'announce']
+      saveComplete: (_, poll) ->
+        $scope.announcement = Records.announcements.buildFromModel(poll, 'poll_edited')
   ]

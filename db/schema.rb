@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(version: 20171224040056) do
   add_index "ahoy_messages", ["token"], name: "index_ahoy_messages_on_token", using: :btree
   add_index "ahoy_messages", ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type", using: :btree
 
+  create_table "announcements", force: :cascade do |t|
+    t.integer  "announceable_id"
+    t.string   "announceable_type"
+    t.jsonb    "invitation_ids",    default: [], null: false
+    t.jsonb    "user_ids",          default: [], null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "author_id",         default: 0
+  end
+
+  add_index "announcements", ["announceable_type", "announceable_id"], name: "index_announcements_on_announceable_type_and_announceable_id", using: :btree
+
   create_table "attachments", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "filename",             limit: 255
@@ -235,6 +247,8 @@ ActiveRecord::Schema.define(version: 20171224040056) do
     t.boolean  "pinned",                          default: false, null: false
     t.integer  "importance",                      default: 0,     null: false
     t.integer  "seen_by_count",                   default: 0,     null: false
+    t.integer  "guest_group_id"
+    t.integer  "announcements_count",             default: 0,     null: false
     t.string   "ranges_string"
   end
 
@@ -592,6 +606,7 @@ ActiveRecord::Schema.define(version: 20171224040056) do
     t.boolean  "latest",         default: true, null: false
     t.integer  "poll_option_id"
     t.jsonb    "custom_fields",  default: {},   null: false
+    t.integer  "announcements_count",   default: 0,     null: false
   end
 
   add_index "outcomes", ["poll_id"], name: "index_outcomes_on_poll_id", using: :btree
@@ -666,6 +681,7 @@ ActiveRecord::Schema.define(version: 20171224040056) do
     t.boolean  "voter_can_add_options", default: false, null: false
     t.integer  "guest_group_id"
     t.boolean  "anonymous",             default: false, null: false
+    t.integer  "announcements_count",   default: 0,     null: false
   end
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
@@ -825,10 +841,11 @@ ActiveRecord::Schema.define(version: 20171224040056) do
     t.integer  "facebook_community_id"
     t.integer  "slack_community_id"
     t.string   "remember_token"
-    t.string   "short_bio",                                    default: "",         null: false
-    t.boolean  "email_verified",                               default: false,      null: false
-    t.string   "location",                                     default: "",         null: false
-    t.datetime "last_seen_at",                                 default: "now()",    null: false
+    t.string   "short_bio",                                    default: "",                    null: false
+    t.boolean  "email_verified",                               default: false,                 null: false
+    t.string   "location",                                     default: "",                    null: false
+    t.datetime "last_seen_at",                                 default: '2017-10-18 21:05:12', null: false
+    t.boolean  "email_announcements",                          default: true,                  null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

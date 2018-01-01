@@ -14,9 +14,9 @@ angular.module('loomioApp').directive 'discussionFormActions', ->
     $scope.submit = submitForm $scope, $scope.discussion,
       flashSuccess: "discussion_form.messages.#{actionName}"
       successCallback: (response) =>
-        $scope.$emit '$close'
+        discussion = Records.discussions.find(data.discussions[0].id)
+        $scope.$emit 'nextStep', discussion
         _.invoke Records.documents.find($scope.discussion.removedDocumentIds), 'remove'
-        discussion = Records.discussions.find(response.discussions[0].id)
         LmoUrlService.goTo LmoUrlService.discussion(discussion) if actionName == 'created'
 
     submitOnEnter $scope

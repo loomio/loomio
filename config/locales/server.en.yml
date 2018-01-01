@@ -152,10 +152,10 @@ en:
   email_actions:
     unfollowed_discussion: You have turned off emails for the thread.
 
-  thread_mailer:
-    new_discussion:
+  discussion_mailer:
+    announcement_created:
       subject: "[%{group}] %{discussion}"
-      subject_html: "<strong>%{actor}</strong> started a thread: %{discussion}"
+      subject_html: "<strong>%{actor}</strong> announced a thread: %{discussion}"
 
     new_comment:
       subject: "[%{group}] %{discussion}"
@@ -344,6 +344,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
@@ -357,6 +358,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -377,6 +379,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -392,6 +395,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -410,6 +414,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for you to respond: %{title}'
         stance_created: "%{actor} participated in: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
@@ -423,6 +428,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to respond: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -443,6 +449,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a dot vote'
@@ -458,6 +465,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -479,6 +487,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a time poll'
@@ -495,6 +504,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -516,6 +526,7 @@ en:
         user_reminded: 'REMINDER: %{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
+        user_mentioned: '%{actor} mentioned you in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a ranked choice'
@@ -532,6 +543,7 @@ en:
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -560,6 +572,9 @@ en:
     meeting:
       title: "When should we have our next staff meeting?"
       details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
+
+  notified:
+    group_users: "(%{count} people - click to edit)"
 
   poll_unsubscribe:
     title: You have been unsubscribed from %{title}

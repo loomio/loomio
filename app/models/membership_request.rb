@@ -27,6 +27,7 @@ class MembershipRequest < ActiveRecord::Base
   delegate :membership_requests,  to: :group, prefix: true
   delegate :members_can_add_members, to: :group, prefix: true
   delegate :name,                 to: :group, prefix: true
+  delegate :mailer,               to: :group
 
   def name
     if requestor.present?

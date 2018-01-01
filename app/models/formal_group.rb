@@ -1,6 +1,5 @@
 class FormalGroup < Group
   include HasTimeframe
-  include MakesAnnouncements
 
   validates_presence_of :name
   validates :name, length: { maximum: 250 }
@@ -23,6 +22,8 @@ class FormalGroup < Group
      joins(:group_identities)
     .where("(group_identities.custom_fields->'slack_channel_id')::jsonb ? :channel_id", channel_id: channel_id)
   }
+
+  scope :search_for, ->(query) { where("name ilike :q", q: "%#{query}%") }
 
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :comments, through: :discussions

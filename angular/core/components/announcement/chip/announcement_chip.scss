@@ -1,0 +1,34 @@
+.announcement-chip {
+  align-items: center;
+  min-height: 32px;
+  height: 100%;
+  img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.announcement-chip__content {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.announcement-chip__placeholder .material-icons {
+  border-radius: 100%;
+  font-size: 28px;
+  padding: 2px;
+  background: $light-grey-on-white;
+  color: $primary-text-color;
+}
+
+.announcement-chip__avatar {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  &--invitation {
+    max-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

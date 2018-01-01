@@ -15,7 +15,6 @@ class Event < ActiveRecord::Base
   # we don't use this but I think it's cool so lets see if we use it anytime soon else delete
   # scope :excluding_sequence_ids, -> (ranges) { where RangeSet.to_ranges(ranges).map {|r| "(sequence_id NOT BETWEEN #{r.first} AND #{r.last})"}.join(' AND ') }
 
-  after_create :trigger!
   after_create :call_thread_item_created
   after_destroy :call_thread_item_destroyed
 
@@ -25,6 +24,7 @@ class Event < ActiveRecord::Base
   validates :eventable, presence: true
 
   delegate :group, to: :eventable, allow_nil: true
+  delegate :poll, to: :eventable, allow_nil: true
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
 
@@ -37,6 +37,35 @@ class Event < ActiveRecord::Base
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
   def trigger!
+    EventBus.broadcast("#{kind}_event", self)
+  end
+
+  def calendar_invite
+    nil # only for announcement_created events for outcomes
+  end
+
+  def self.publish!(eventable, **args)
+    build(eventable, **args).tap(&:save!).tap(&:trigger!)
+  end
+
+  def self.bulk_publish!(eventables, **args)
+    Array(eventables).map { |eventable| build(eventable, **args) }
+                     .tap { |events| import(events) }
+                     .tap { |events| events.map(&:trigger!) }
+  end
+
+  def self.build(eventable, **args)
+    new({
+      kind:       name.demodulize.underscore,
+      eventable:  eventable,
+      created_at: eventable.created_at
+    }.merge(args.slice(
+      :user,
+      :discussion,
+      :announcement,
+      :custom_fields,
+      :created_at
+    )))
   end
 
   def should_have_parent?

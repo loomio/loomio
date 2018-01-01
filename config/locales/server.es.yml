@@ -122,7 +122,7 @@ es:
       button_text: Ver solicitudes
   email_actions:
     unfollowed_discussion: 'Has desactivado los emails para este hilo '
-  thread_mailer:
+  discussion_mailer:
     new_discussion:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> inició un hilo: %{discussion}"

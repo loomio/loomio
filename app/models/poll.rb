@@ -1,13 +1,15 @@
 class Poll < ActiveRecord::Base
   include CustomCounterCache::Model
   extend  HasCustomFields
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
+  include HasAnnouncements
   include HasMentions
   include HasGuestGroup
-  include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
   include Reactable
   include HasCreatedEvent
 
@@ -47,8 +49,6 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
-
-  has_many :guest_invitations, through: :guest_group, source: :invitations
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 

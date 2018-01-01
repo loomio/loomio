@@ -12,7 +12,6 @@
           {{ group.fullName }}
     %md-button.md-primary.md-raised.poll-common-share-form__button.poll-common-share-form__option-button{ng-disabled: "poll.groupId == groupId", ng-click: "submit()", aria-label: "{{ 'poll_common_share_form.set_group' | translate }}"}
       %span{translate: "poll_common_share_form.set_group"}
-  %poll_common_notify_group{model: "poll", notify-action: "publish", ng-if: "poll.groupId != groupId"}
 
   %p.lmo-hint-text{ng-if: "groupId && groupId != poll.groupId", translate: "poll_common_share_form.move_group_helptext"}
   %p.lmo-hint-text{ng-if: "poll.discussionId", translate: "poll_common_share_form.cannot_move_poll_helptext", translate-value-discussion: "{{poll.discussion().title}}", translate-value-group: "{{poll.group().name}}"}

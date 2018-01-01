@@ -50,10 +50,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def mailer
-    case intent
-    when 'join_group' then GroupMailer
-    when 'join_poll' then PollMailer
-    end
+    "#{intent.to_s.split('_').last.classify}Mailer".constantize
   end
 
   def locale

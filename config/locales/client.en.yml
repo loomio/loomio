@@ -396,6 +396,21 @@ en:
     make_announcement: Announcement
     notified_count: '{{count}} people will be emailed'
 
+  announcement:
+    form:
+      modal_title: Notify people
+      label: People to notify
+      placeholder: Enter groups, names, or email addresses
+      notified_count: '{{count}} people will be notified'
+      notified_count_singular: 1 person will be notified
+      group_count: '({{count}} people - click to edit)'
+    group_form:
+      search_placeholder: Search for people...
+      modal_title: Select group members
+      members_count: '{{count}} people will be notified'
+    flash:
+      success: '{{count}} notifications sent'
+
   action_dock:
     react: Add reaction
     add_resource: Add an attachment
@@ -403,8 +418,12 @@ en:
     add_comment: Comment
     copy_url_comment: Copy URL
     edit_thread: Edit context
+    announce_thread: Let people know about this thread
+    announce_thread_active: (No one has been notified of this thread yet)
     translate_thread: Translate context
     edit_poll: Edit poll
+    announce_poll: Let people know about this decision
+    announce_poll_active: (No one has been notified of this decision yet)
     translate_poll: Translate poll
     edit_stance: Change your vote
     translate_stance: Translate vote
@@ -413,6 +432,8 @@ en:
     reply_to_comment: Reply
     translate_comment: Translate comment
     edit_outcome: Edit outcome
+    announce_outcome: Let people know about this outcome
+    announce_outcome_active: (No one has been notified of this outcome yet)
     translate_outcome: Translate outcome
     show_history: Show edit history
     pin_thread: Pin thread
@@ -843,6 +864,8 @@ en:
     daily_summary_description: "Each morning, you will get an email with any activity that you missed the day before. This makes it easy to stay up to date with activity."
     on_participation_label: Subscribe on participation
     on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
+    announcement_label: Announcements
+    announcement_description: "You will receive an email about all content that has been announced by people in your groups"
     mentioned_label: Mentions
     mentioned_description: "When someone wants to get you're attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
     update_settings: Save changes

@@ -99,6 +99,7 @@ FactoryGirl.define do
   factory :discussion do
     association :author, :factory => :user
     association :group, :factory => :formal_group
+    association :guest_group, factory: :guest_group
     title { Faker::Name.name }
     description 'A description for this discussion. Should this be *rich*?'
     uses_markdown false
@@ -272,6 +273,11 @@ FactoryGirl.define do
 
   factory :stance_choice do
     poll_option
+  end
+
+  factory :announcement do
+    association :author, factory: :user
+    association :announceable, factory: :discussion
   end
 
   factory :received_email do

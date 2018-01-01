@@ -31,12 +31,6 @@ EventBus.configure do |config|
   # add poll creator as admin of guest group
   config.listen('poll_create') { |poll, actor| poll.guest_group.add_admin!(actor) }
 
-  # publish to new group if group has changed
-  config.listen('poll_changed_group') do |poll, actor|
-    poll.make_announcement = true
-    Events::PollCreated.publish!(poll, actor)
-  end
-
   # mark invitations with the new user's email as used
   config.listen('user_added_to_group_event', 'user_joined_group_event') do |event|
     event.eventable.group.invitations.pending
@@ -97,7 +91,7 @@ EventBus.configure do |config|
   config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
 
   # publish reply event after comment creation
-  config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
+  config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }
 
   # publish mention events after model create / update
   config.listen('comment_create',
@@ -121,4 +115,9 @@ EventBus.configure do |config|
 
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
+
+  # add guests to guest group of announceable
+  config.listen('announcement_create') do |announcement|
+    announcement.guest_group.add_members!(announcement.guest_users, inviter: announcement.user)
+  end
 end

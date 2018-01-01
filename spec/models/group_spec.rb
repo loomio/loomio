@@ -53,9 +53,9 @@ describe Group do
       end
 
       it 'increments when a new invitation is created' do
-        InvitationService.invite_to_group(recipient_emails: [@user.email],
-                                          group: @group,
-                                          inviter: @group.creator)
+        InvitationService.bulk_create(recipient_emails: [@user.email],
+                                      group: @group,
+                                      inviter: @group.creator)
         expect(@group.invitations_count).to eq 1
       end
     end

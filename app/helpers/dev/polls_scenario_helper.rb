@@ -5,7 +5,7 @@ module Dev::PollsScenarioHelper
     actor = discussion.group.admins.first
     user  = saved(fake_user(time_zone: "America/New_York"))
     discussion.group.add_member! user
-    poll = fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type)
+    poll = fake_poll(discussion: discussion, poll_type: poll_type)
     event = PollService.create(poll: poll, actor: actor)
 
     {discussion: discussion,
@@ -34,7 +34,6 @@ module Dev::PollsScenarioHelper
 
   def poll_options_added_scenario(poll_type:)
     scenario = poll_stance_created_scenario(poll_type: poll_type)
-    scenario[:poll].make_announcement = true
     PollService.add_options(poll: scenario[:poll],
                             actor: scenario[:actor],
                             params: {poll_option_names: option_names[poll_type]})
@@ -58,7 +57,7 @@ module Dev::PollsScenarioHelper
   def poll_created_as_visitor_scenario(poll_type:)
     # TODO: fix me
     actor = saved fake_user
-    poll = fake_poll(poll_type: poll_type, discussion: nil, make_announcement: true)
+    poll = fake_poll(poll_type: poll_type, discussion: nil)
     event = PollService.create(poll: poll, actor: actor)
     invitation = poll.guest_group.invitations.create(recipient_email: "hello@test.com", intent: :join_poll)
 
@@ -70,13 +69,13 @@ module Dev::PollsScenarioHelper
   def poll_edited_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     actor      = discussion.group.admins.first
-    poll       = saved fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type)
+    poll       = saved fake_poll(discussion: discussion, poll_type: poll_type)
     observer   = saved(fake_user)
     discussion.group.add_admin! actor
     discussion.group.add_member! observer
 
     StanceService.create(stance: fake_stance(poll: poll), actor: observer)
-    PollService.update(poll: poll, params: { make_announcement: true, title: "New title" }, actor: actor)
+    PollService.update(poll: poll, params: { title: "New title" }, actor: actor)
 
     {discussion: discussion,
      observer: observer,
@@ -110,8 +109,7 @@ module Dev::PollsScenarioHelper
     non_voter  = saved(fake_user)
     discussion.group.add_member! non_voter
     actor      = discussion.group.admins.first
-    poll       = saved(create_fake_poll_with_stances(make_announcement: true,
-                                                     author: actor,
+    poll       = saved(create_fake_poll_with_stances(author: actor,
                                                      poll_type: poll_type,
                                                      discussion: discussion,
                                                      closing_at: 1.day.from_now))
@@ -134,8 +132,7 @@ module Dev::PollsScenarioHelper
   def poll_closing_soon_with_vote_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     actor      = discussion.group.admins.first
-    poll       = saved(create_fake_poll_with_stances(make_announcement: true,
-                                                     author: actor,
+    poll       = saved(create_fake_poll_with_stances(author: actor,
                                                      poll_type: poll_type,
                                                      discussion: discussion,
                                                      closing_at: 1.day.from_now))
@@ -160,7 +157,6 @@ module Dev::PollsScenarioHelper
     actor      = discussion.group.admins.first
     poll       = create_fake_poll_with_stances(discussion: discussion, poll_type: poll_type)
     poll.update_attribute(:closing_at, 1.day.ago)
-    poll.make_announcement = true
     poll.discussion.group.add_member! poll.author
     Events::PollCreated.publish!(poll, poll.author)
     PollService.expire_lapsed_polls
@@ -179,7 +175,7 @@ module Dev::PollsScenarioHelper
                                                discussion: discussion,
                                                closed_at: 1.day.ago,
                                                closing_at: 1.day.ago)
-    outcome    = fake_outcome(poll: poll, make_announcement: true)
+    outcome    = fake_outcome(poll: poll)
 
     OutcomeService.create(outcome: outcome, actor: actor)
     { discussion: discussion,
@@ -210,8 +206,8 @@ module Dev::PollsScenarioHelper
     admin      = saved fake_user
     discussion.group.add_member! observer
     discussion.group.add_admin! admin
-    admin_poll = fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type, closing_at: 24.hours.from_now)
-    observer_poll = saved fake_poll(discussion: discussion, author: observer, make_announcement: true, poll_type: poll_type)
+    admin_poll = fake_poll(discussion: discussion, poll_type: poll_type, closing_at: 24.hours.from_now)
+    observer_poll = saved fake_poll(discussion: discussion, author: observer, poll_type: poll_type)
 
     # poll_created
     PollService.create(poll: admin_poll, actor: admin)
@@ -221,7 +217,7 @@ module Dev::PollsScenarioHelper
 
     # poll_edited
     StanceService.create(stance: fake_stance(poll: admin_poll), actor: observer)
-    PollService.update(poll: admin_poll, params: { make_announcement: true, title: "New title" }, actor: admin)
+    PollService.update(poll: admin_poll, params: { title: "New title" }, actor: admin)
 
     # poll expired
     observer_poll.update_attribute(:closing_at, 1.day.ago)
@@ -229,7 +225,7 @@ module Dev::PollsScenarioHelper
     PollService.expire_lapsed_polls # (closes observer_poll)
 
     # outcome_created
-    OutcomeService.create(outcome: fake_outcome(poll: admin_poll.reload, make_announcement: true), actor: admin)
+    OutcomeService.create(outcome: fake_outcome(poll: admin_poll.reload), actor: admin)
 
     {discussion: discussion,
      observer:   observer,
