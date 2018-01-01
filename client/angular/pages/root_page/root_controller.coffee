@@ -15,7 +15,8 @@ IntercomService = require 'shared/services/intercom_service.coffee'
   setupAngularFlash,
   setupAngularNavigate,
   setupAngularTranslate,
-  setupAngularScroll
+  setupAngularScroll,
+  setupAngularTestability
 } = require 'angular/helpers/setup.coffee'
 
 $controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $location, $router) ->
@@ -74,6 +75,7 @@ $controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $
   setupAngularFlash($scope)
   setupAngularNavigate($location)
   setupAngularScroll()
+  setupAngularTestability() # if AppConfig.environment == 'test'
   listenForEvents($scope)
   signIn(AppConfig.bootData, $scope.loggedIn)
   registerHotkeys($scope,
