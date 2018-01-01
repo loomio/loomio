@@ -1,9 +1,11 @@
-angular.module('loomioApp').directive 'announcementFormActions', (FormService) ->
+{ submitForm } = require 'angular/helpers/form.coffee'
+
+angular.module('loomioApp').directive 'announcementFormActions', ->
   scope: {announcement: '='}
   replace: true
   templateUrl: 'generated/components/announcement/form_actions/announcement_form_actions.html'
-  controller: ($scope) ->
-    $scope.submit = FormService.submit $scope, $scope.announcement,
+  controller: ['$scope', ($scope) ->
+    $scope.submit = submitForm $scope, $scope.announcement,
       successCallback: ->
         model = $scope.announcement.model()
         model.update(announcementsCount: model.announcementsCount+1)
@@ -11,3 +13,4 @@ angular.module('loomioApp').directive 'announcementFormActions', (FormService) -
       flashSuccess: 'announcement.flash.success'
       flashOptions:
         count: -> $scope.announcement.totalNotified()
+  ]

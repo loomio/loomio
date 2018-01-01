@@ -79,7 +79,7 @@ $controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $
   registerHotkeys($scope,
     pressedI: -> ModalService.open 'InvitationModal',      group:      -> Session.currentGroup or Records.groups.build()
     pressedG: -> ModalService.open 'GroupModal',           group:      -> Records.groups.build()
-    pressedT: -> ModalService.open 'DiscussionModal',      discussion: -> Records.discussions.build(groupId: (Session.currentGroup or {}).id)
+    pressedT: -> ModalService.open 'DiscussionStartModal', discussion: -> Records.discussions.build(groupId: (Session.currentGroup or {}).id)
     pressedP: -> ModalService.open 'PollCommonStartModal', poll:       -> Records.polls.build(authorId: Session.user().id)
   ) if AbilityService.isLoggedIn()
 

@@ -21,7 +21,9 @@ $controller = ($scope, $rootScope, $routeParams) ->
   applyPollStartSequence(@,
     emitter: $scope
     afterSaveComplete: (poll) ->
-      ModalService.open 'PollCommonShareModal', poll: -> poll)
+      ModalService.open 'AnnouncementModal', announcement: ->
+        Records.announcements.buildFromMOdal(poll, 'poll_created')
+  )
 
   listenForLoading $scope
 

@@ -1,8 +1,15 @@
-angular.module('loomioApp').directive 'announcementGroupForm', ($translate, Records, Session, LoadingService) ->
+Records = require 'shared/services/records.coffee'
+Session = require 'shared/services/session.coffee'
+I18n    = require 'shared/services/i18n.coffee'
+
+{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
+
+
+angular.module('loomioApp').directive 'announcementGroupForm', ->
   scope: {notified: '='}
   restrict: 'E'
   templateUrl: 'generated/components/announcement/group_form/announcement_group_form.html'
-  controller: ($scope) ->
+  controller: ['$scope', ($scope) ->
     $scope.search =
       fragment: ""
 
@@ -11,7 +18,7 @@ angular.module('loomioApp').directive 'announcementGroupForm', ($translate, Reco
         Records.groups.findOrFetchById($scope.notified.id).then (group) ->
           $scope.group = group
           $scope.updateVisible()
-    LoadingService.applyLoadingFunction $scope, 'init'
+    applyLoadingFunction $scope, 'init'
     $scope.init()
 
     $scope.updateVisible = ->
@@ -34,5 +41,6 @@ angular.module('loomioApp').directive 'announcementGroupForm', ($translate, Reco
 
     $scope.submit = ->
       $scope.notified.notified_ids = $scope.selectedUserIds()
-      $scope.notified.subtitle     = $translate.instant "announcement.form.group_count", count: $scope.notified.notified_ids.length
+      $scope.notified.subtitle     = I18n.t "announcement.form.group_count", count: $scope.notified.notified_ids.length
       delete $scope.notified.editing
+  ]
