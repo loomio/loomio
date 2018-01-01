@@ -18,7 +18,8 @@
       .thread-preview__text-container
         .thread-preview__group-name
           {{ thread.group().fullName }} ·
-          %smart_time{time: "thread.lastActivityAt"}>
+
+          %timeago{timestamp: "thread.lastActivityAt"}>
         .lmo-badge.lmo-pointer{ng-if: "thread.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}", translate: "common.privacy.closed"}
         %outlet{name: "after-thread-preview", model: "thread"}
 
