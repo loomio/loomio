@@ -8,6 +8,7 @@ reporter = new HtmlScreenshotReporter
 exports.config =
   seleniumServerJar: '../../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.8.1.jar'
   allScriptsTimeout: 60000
+  plugins: [{package: 'protractor-testability-plugin'}]
   capabilities:
     browserName:     'firefox'
   baseUrl:           'http://localhost:3000'
