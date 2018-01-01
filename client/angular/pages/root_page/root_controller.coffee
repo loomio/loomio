@@ -75,7 +75,7 @@ $controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $
   setupAngularNavigate($location)
   setupAngularScroll()
   listenForEvents($scope)
-  signIn(AppConfig.bootData, $scope.loggedIn)
+  signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
   registerHotkeys($scope,
     pressedI: -> ModalService.open 'InvitationModal',      group:      -> Session.currentGroup or Records.groups.build()
     pressedG: -> ModalService.open 'GroupModal',           group:      -> Records.groups.build()

@@ -79,4 +79,5 @@ describe 'Profile', ->
         page.click '.profile-page__deactivate'
         page.click '.deactivation-modal__confirm'
         page.click '.deactivate-user-form__submit'
+        page.waitForReload()
         page.expectText '.auth-modal', 'Sign into Loomio'

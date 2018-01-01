@@ -29,8 +29,8 @@ module.exports =
       successCallback: (data) ->
         model.poll().clearStaleStances()
         scrollTo '.poll-common-card__results-shown'
-        scope.$emit 'stanceSaved', data.stances[0].key
-        signIn(data, -> scope.$emit 'loggedIn') unless Session.user().emailVerified
+        scope.$emit 'stanceSaved'
+        signIn(data, data.stances[0].participant_id, -> scope.$emit 'loggedIn') unless Session.user().emailVerified
       cleanupFn: ->
         scope.$emit 'doneProcessing'
     , options))

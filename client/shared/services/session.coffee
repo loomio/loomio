@@ -3,14 +3,12 @@ Records   = require 'shared/services/records.coffee'
 I18n      = require 'shared/services/i18n.coffee'
 
 module.exports = new class Session
-  signIn: (data, invitationToken) ->
-    Records.import(data)
-
+  signIn: (userId, invitationToken) ->
     defaultParams = _.pick {invitation_token: invitationToken}, _.identity
     Records.stances.remote.defaultParams = defaultParams
     Records.polls.remote.defaultParams   = defaultParams
 
-    return unless AppConfig.currentUserId = data.current_user_id
+    return unless AppConfig.currentUserId = userId
     user = @user()
     @updateLocale()
 

@@ -14,9 +14,10 @@ require 'private_pub' # this sets window.PrivatePub, because private_pub is too 
 # A series of actions relating to updating the current user, such as signing in
 # or changing the app's locale
 module.exports =
-  signIn: (data, callback) =>
-    Session.signIn(data, LmoUrlService.params().invitation_token)
-    callback() if typeof callback == 'function'
+  signIn: (data, userId, afterSignIn = ->) =>
+    Records.import(data)
+    Session.signIn(userId, LmoUrlService.params().invitation_token)
+    afterSignIn()
 
   signOut: ->
     AppConfig.loggingOut = true
