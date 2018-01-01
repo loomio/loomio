@@ -57,8 +57,7 @@ $controller = ($scope, $routeParams, $rootScope, $timeout) ->
           next:        LmoUrlService.discussion(@discussion, from: @pageWindow.next) if @pageWindow.next?
         skipScroll: true
 
-  @init Records.discussions.find $routeParams.key
-  Records.discussions.findOrFetchById($routeParams.key).then @init, (error) ->
+  Records.discussions.findOrFetchById($routeParams.key, {}, true).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
 
   $scope.$on 'threadPageScrollToSelector', (e, selector) =>

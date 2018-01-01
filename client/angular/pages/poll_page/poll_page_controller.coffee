@@ -28,7 +28,7 @@ $controller = ($rootScope, $routeParams) ->
       if LmoUrlService.params().change_vote
         ModalService.open 'PollCommonEditVoteModal', stance: => myLastStanceFor(@poll)
 
-  Records.polls.fetchComplete($routeParams.key).then @init, (error) ->
+  Records.polls.findOrFetchById($routeParams.key, {}, true).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
 
   return
