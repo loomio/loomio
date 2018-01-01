@@ -15,7 +15,6 @@ Session.vim
 *.sql
 *.dump
 *.log
-screenshots/
 .idea
 .env
 bin/
