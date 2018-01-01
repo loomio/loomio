@@ -4,7 +4,7 @@ require 'date'
 destination_dir = "#{DateTime.now.strftime('%Y%m%d_%H%M')}-#{ENV['TRAVIS_PULL_REQUEST']}"
 p ENV['ARTIFACTS_BUCKET'], ENV['ARTIFACTS_KEY'],ENV['ARTIFACTS_SECRET']
 
-S3Uploader.upload_directory('angular/screenshots/', ENV['ARTIFACTS_BUCKET'],
+S3Uploader.upload_directory('client/angular/screenshots/', ENV['ARTIFACTS_BUCKET'],
   { :s3_key => ENV['ARTIFACTS_KEY'],
     :s3_secret => ENV['ARTIFACTS_SECRET'],
     :destination_dir => destination_dir,
