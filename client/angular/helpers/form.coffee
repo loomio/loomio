@@ -117,7 +117,7 @@ failure = (scope, model, options) ->
   (response) ->
     FlashService.dismiss()
     options.failureCallback(response)                       if typeof options.failureCallback is 'function'
-    response.json().then(model.setErrors)                   if _.contains([401,422], response.status)
+    response.json().then (r) -> model.setErrors(r.errors)   if _.contains([401,422], response.status)
     scope.$emit errorTypes[response.status] or 'unknownError',
       model: model
       response: response
