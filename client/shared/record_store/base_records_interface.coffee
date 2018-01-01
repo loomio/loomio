@@ -1,4 +1,3 @@
-AppConfig     = require 'shared/services/app_config.coffee'
 RestfulClient = require './restful_client.coffee'
 utils         = require './utils.coffee'
 
@@ -17,22 +16,19 @@ module.exports =
 
       @remote = new RestfulClient(@model.apiEndPoint or @model.plural)
 
-      @remote.onPrepare = (request) =>
-        AppConfig.pendingFetch = request
+      @setRemoteCallbacks
+        onSuccess: (response) =>
+          response.json().then (data) =>
+            @recordStore.import(data) if response.ok
+            data
+        onFailure: (response) =>
+          console.log('request failure!', response)
+          throw response
+        onUploadSuccess: (data) =>
+          @recordStore.import(data)
 
-      @remote.onSuccess = (response) =>
-        AppConfig.pendingFetch = null
-        response.json().then (data) =>
-          @recordStore.import(data) if response.ok
-          data
-
-      @remote.onUploadSuccess = (data) =>
-        @recordStore.import(data)
-
-      @remote.onFailure = (response) ->
-        AppConfig.pendingFetch = null
-        console.log('request failure!', response)
-        throw response
+    setRemoteCallbacks: (callbacks) ->
+      _.merge @remote, _.pick(callbacks, ['onPrepare', 'onSuccess', 'onFailure', 'onCleanup'])
 
     all: ->
       @collection.data

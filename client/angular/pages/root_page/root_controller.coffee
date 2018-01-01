@@ -15,11 +15,10 @@ IntercomService = require 'shared/services/intercom_service.coffee'
   setupAngularFlash,
   setupAngularNavigate,
   setupAngularTranslate,
-  setupAngularScroll,
-  setupAngularTestability
+  setupAngularScroll
 } = require 'angular/helpers/setup.coffee'
 
-$controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $location, $router) ->
+$controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $location, $router, $browser) ->
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
 
@@ -75,7 +74,6 @@ $controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $
   setupAngularFlash($scope)
   setupAngularNavigate($location)
   setupAngularScroll()
-  setupAngularTestability() # if AppConfig.environment == 'test'
   listenForEvents($scope)
   signIn(AppConfig.bootData, $scope.loggedIn)
   registerHotkeys($scope,
@@ -86,8 +84,11 @@ $controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $
   ) if AbilityService.isLoggedIn()
 
   Records.afterImport = -> $timeout -> $rootScope.$apply()
+  Records.setRemoteCallbacks
+    onPrepare: -> $browser.$$incOutstandingRequestCount()
+    onCleanup: -> $browser.$$completeOutstandingRequest(->)
 
   return
 
-$controller.$inject = ['$scope', '$rootScope', '$injector', '$timeout', '$translate', '$mdDialog', '$location', '$router']
+$controller.$inject = ['$scope', '$rootScope', '$injector', '$timeout', '$translate', '$mdDialog', '$location', '$router', '$browser']
 angular.module('loomioApp').controller 'RootController', $controller

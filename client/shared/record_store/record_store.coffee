@@ -24,6 +24,9 @@ module.exports =
 
     afterImport: (data) ->
 
+    setRemoteCallbacks: (callbacks) ->
+      _.each @collectionNames, (name) => @[_.camelCase(name)].setRemoteCallbacks(callbacks)
+
     bumpVersion: ->
       @_version = (@_version || 0) + 1
 

@@ -51,15 +51,6 @@ module.exports =
         angular.element(window).triggerHandler('checkInView')
         elem.focus()
 
-  setupAngularTestability: ->
-    testability = angular.getTestability(document.querySelector('html'))
-    _superWhenStable = testability.whenStable
-    testability.whenStable = (callback) ->
-      if AppConfig.pendingFetch
-        AppConfig.pendingFetch.then -> _superWhenStable(callback)
-      else
-        _superWhenStable(callback)
-
 buildScope = ($rootScope, $mdDialog) ->
   $scope = $rootScope.$new(true)
   $scope.$close = $mdDialog.cancel

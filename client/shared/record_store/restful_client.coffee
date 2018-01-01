@@ -10,6 +10,7 @@ module.exports =
 
     # override these to set default actions
     onPrepare: (request)  -> request
+    onCleanup: (response) -> response
     onSuccess: (response) -> response
     onFailure: (response) -> throw response
     onUploadSuccess: (response) -> response
@@ -59,7 +60,7 @@ module.exports =
         headers:     { 'Content-Type': 'application/json' }
         body:        JSON.stringify(body)
       delete opts.body if method == 'GET'
-      @onPrepare(fetch(path, opts)).then(@onSuccess, @onFailure)
+      @onPrepare(fetch(path, opts)).then(@onSuccess, @onFailure).finally(@onCleanup)
 
     postMember: (keyOrId, action, params) ->
       @post(@memberPath(keyOrId, action), params)
