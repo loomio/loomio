@@ -60,7 +60,8 @@ module.exports =
         headers:     { 'Content-Type': 'application/json' }
         body:        JSON.stringify(body)
       delete opts.body if method == 'GET'
-      @onPrepare(fetch(path, opts)).then(@onSuccess, @onFailure).finally(@onCleanup)
+      @onPrepare()
+      fetch(path, opts).then(@onSuccess, @onFailure).finally(@onCleanup)
 
     postMember: (keyOrId, action, params) ->
       @post(@memberPath(keyOrId, action), params)
