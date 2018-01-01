@@ -1,5 +1,6 @@
+AppConfig     = require 'shared/services/app_config.coffee'
 RestfulClient = require './restful_client.coffee'
-utils = require './utils.coffee'
+utils         = require './utils.coffee'
 
 module.exports =
   class BaseRecordsInterface
@@ -16,7 +17,11 @@ module.exports =
 
       @remote = new RestfulClient(@model.apiEndPoint or @model.plural)
 
+      @remote.onPrepare = (request) =>
+        AppConfig.pendingFetch = request
+
       @remote.onSuccess = (response) =>
+        AppConfig.pendingFetch = null
         response.json().then (data) =>
           @recordStore.import(data) if response.ok
           data
@@ -25,6 +30,7 @@ module.exports =
         @recordStore.import(data)
 
       @remote.onFailure = (response) ->
+        AppConfig.pendingFetch = null
         console.log('request failure!', response)
         throw response
 

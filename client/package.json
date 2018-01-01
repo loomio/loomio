@@ -108,7 +108,6 @@
     "node-yaml-config": "0.0.3",
     "protractor": "5.1.2",
     "protractor-jasmine2-screenshot-reporter": "^0.4.1",
-    "protractor-testability-plugin": "^1.2.0",
     "uglify-es": "^3.3.4",
     "uglifyify": "^4.0.5",
     "vinyl-buffer": "^1.0.1",

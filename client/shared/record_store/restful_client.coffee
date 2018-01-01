@@ -9,6 +9,7 @@ module.exports =
     apiPrefix: "/api/v1"
 
     # override these to set default actions
+    onPrepare: (request)  -> request
     onSuccess: (response) -> response
     onFailure: (response) -> throw response
     onUploadSuccess: (response) -> response
@@ -58,7 +59,7 @@ module.exports =
         headers:     { 'Content-Type': 'application/json' }
         body:        JSON.stringify(body)
       delete opts.body if method == 'GET'
-      fetch(path, opts).then(@onSuccess, @onFailure)
+      @onPrepare(fetch(path, opts)).then(@onSuccess, @onFailure)
 
     postMember: (keyOrId, action, params) ->
       @post(@memberPath(keyOrId, action), params)
