@@ -57,8 +57,8 @@ module.exports =
       record
 
     findOrFetchById: (id, params = {}, ensureComplete = false) ->
-      record = @find(id) or @build()
-      if !ensureComplete || record.complete
+      record = @find(id)
+      if record and (!ensureComplete || record.complete)
         Promise.resolve(record)
       else
         @remote.fetchById(id, params).then => @find(id)

@@ -42,6 +42,7 @@ module.exports =
     requireForBundle()
     browserify(browserifyOpts())
       .plugin(collapse)
+      .transform('uglifyify')
       .bundle()
       .pipe(source('angular.bundle.min.js'))
       .pipe(buffer())
@@ -89,4 +90,4 @@ requireForBundle = ->
 browserifyOpts = ->
   entries: paths.angular.main,
   paths: ['./', './node_modules']
-  transform: [coffeeify, 'uglifyify']
+  transform: [coffeeify]
