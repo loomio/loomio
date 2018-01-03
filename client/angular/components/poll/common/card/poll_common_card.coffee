@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'pollCommonCard', ->
   templateUrl: 'generated/components/poll/common/card/poll_common_card.html'
   replace: true
   controller: ['$scope', ($scope) ->
-    Records.polls.fetchComplete($scope.poll.key)
+    Records.polls.findOrFetchById($scope.poll.key)
 
     $scope.buttonPressed = false
     $scope.$on 'showResults', ->
