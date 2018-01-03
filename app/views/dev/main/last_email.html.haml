@@ -5,7 +5,7 @@
     = stylesheet_link_tag 'email'
     = stylesheet_link_tag 'poll_mailer'
     %title=action_name
-    %script{src: client_asset_path(:"angular.min.js")}
+    %script{type: 'text/javascript', src: "//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"}
     :javascript
       angular.module('lastEmail', []).controller('ctrl', function(){})
 
