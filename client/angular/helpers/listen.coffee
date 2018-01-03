@@ -50,7 +50,9 @@ module.exports =
 
   listenForLoading: ($scope) ->
     $scope.$on 'processing',     -> $scope.isDisabled = true
-    $scope.$on 'doneProcessing', -> $scope.isDisabled = false
+    $scope.$on 'doneProcessing', ->
+      $scope.isDisabled = false
+      $scope.$apply()
 
   listenForEvents: ($scope) ->
     return unless ahoy?
