@@ -12,7 +12,7 @@ module AngularHelper
 
   def angular_asset_folder
     version = Rails.env.production? ? Loomio::Version.current : :development
-    [:client, version].join('/')
+    ['', :client, version].join('/')
   end
 
   def angular_bundle_host

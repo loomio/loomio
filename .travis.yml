@@ -50,6 +50,7 @@ install:
   - client/node_modules/webdriver-manager/bin/webdriver-manager update --versions.standalone 3.8.1 --versions.gecko v0.19.1
   - mkdir $TRAVIS_BUILD_DIR/bin
   - ln -s $TRAVIS_BUILD_DIR/client/node_modules/webdriver-manager/selenium/geckodriver-v0.19.1 $TRAVIS_BUILD_DIR/bin/geckodriver
+  - cd public/client/development; ln -s ../../../client/node_modules/angular/angular.js angular.js; ln -s ../../../client/node_modules/angular/angular.min.js angular.min.js; cd ..
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
