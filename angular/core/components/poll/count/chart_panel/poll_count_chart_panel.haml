@@ -6,5 +6,5 @@
       .poll-count-chart-panel__no{ng-style: "{'flex-basis': percentComplete(1), 'background-color': colors[1]}"}
       .poll-count-chart-panel__yes{ng-style: "{'flex-basis': percentComplete(0), 'background-color': colors[0]}"}
     .poll-count-chart-panel__data
-      .poll-count-chart-panel__numerator {{poll.stanceCounts[0]}}
+      .poll-count-chart-panel__numerator {{poll.stanceCounts[0] + poll.stanceCounts[1]}}
       .poll-count-chart-panel__denominator{translate: "poll_count_chart_panel.out_of", translate-value-goal: "{{poll.goal()}}"}
