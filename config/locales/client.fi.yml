@@ -64,7 +64,7 @@ fi:
       destroyed: 'Kommentti poistettiin'
     edit_comment: 'Muokkaa kommenttia'
     delete_comment: 'Poista kommentti'
-    private_privacy_notice: 'Sinun kommenttisi tulee olemaan vain näkyvillä {{groupName}}-ryhmän jäsenille.'
+    private_privacy_notice: 'Sinun kommenttisi tulee olemaan vain näkyvillä {{group}}-ryhmän jäsenille.'
     public_privacy_notice: 'Sinun kommenttisi tulee olemaan näkyvillä kaikille webissä.'
   navbar:
     recent_title: 'Mene kojelaudalle'

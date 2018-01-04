@@ -163,7 +163,7 @@ el:
     confirm_delete: 'Διαγραφή σχολίου'
     submit_button:
       label: 'Δημοσίευση'
-    private_privacy_notice: 'Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{groupName}}.'
+    private_privacy_notice: 'Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{group}}.'
     public_privacy_notice: 'Το σχόλιο σας θα είναι ορατό σε όλους στο διαδίκτυο.'
     sign_in: "Εισέλθετε για να συμμετάσχετε στην συζήτηση"
   sidebar:
@@ -216,7 +216,7 @@ el:
     success: 'Η ώρα κλεισίματος της πρότασης ανανεώθηκε'
     submit: 'Ανανέωση ώρα κλεισίματος'
   discussion_record:
-    created: 'Το θέμα {{title}} δημιουργήθηκε επιτυχώς στην ομάδα {{groupName}}'
+    created: 'Το θέμα {{title}} δημιουργήθηκε επιτυχώς στην ομάδα {{group}}'
     updated: 'Οι αλλαγές αποθηκεύτηκαν στον τίτλο {{title}}'
   discussion_form:
     aria_label: 'Φόρμα θέματος'
@@ -332,7 +332,7 @@ el:
     privacy: 'Ιδιωτικότητα'
     thread_privacy: 'Ιδιωτικότητα του θέματος'
     public_threads: 'Μόνο δημόσια θέματα'
-    public_discussions_subgroup: 'Οποιοσδήποτε στο {{parentGroupName}} μπορεί να δει τις συζητήσεις'
+    public_discussions_subgroup: 'Οποιοσδήποτε στο {{parentGroup}} μπορεί να δει τις συζητήσεις'
     public_or_private_threads: 'Επιτρέπονται δημόσια και ιδιωτικά θέματα'
     private_threads: 'Μόνο τα μέλη μπορούν να δεις τις συζητήσεις'
     permissions: 'Δικαιώματα'

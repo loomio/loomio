@@ -182,7 +182,7 @@ cs:
     confirm_delete: 'Odstranit komentář'
     submit_button:
       label: 'Odeslat'
-    private_privacy_notice: 'Váš komentář bude viditelný pouze pro členy {{groupName}}.'
+    private_privacy_notice: 'Váš komentář bude viditelný pouze pro členy {{group}}.'
     public_privacy_notice: 'Váš komentář bude viditelný všem na webu.'
     sign_in: "Přihlaste se a připojte se ke konverzaci"
   sidebar:
@@ -249,7 +249,7 @@ cs:
     success: 'Čas uzavření aktualizován'
     submit: 'Aktualizovat čas uzavření'
   discussion_record:
-    created: 'Vlákno {{title}} bylo úspěšně vytvořeno v {{groupName}}'
+    created: 'Vlákno {{title}} bylo úspěšně vytvořeno v {{group}}'
     updated: 'Změny k {{title}} uloženy'
   discussion_form:
     messages:

@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'commentForm', ($translate, FormService, R
     $scope.discussion = $scope.eventWindow.discussion
     $scope.commentHelptext = ->
       helptext = if $scope.discussion.private
-        $translate.instant 'comment_form.private_privacy_notice', groupName: $scope.comment.group().fullName
+        $translate.instant 'comment_form.private_privacy_notice', group: $scope.comment.group().fullName
       else
         $translate.instant 'comment_form.public_privacy_notice'
       helptext.replace('&amp;', '&')

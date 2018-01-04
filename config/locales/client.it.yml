@@ -252,7 +252,7 @@ it:
     write_a_comment: "Scrivi un commento..."
     submit_button:
       label: 'Messaggio'
-    private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
+    private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{group}}.'
     public_privacy_notice: 'Il tuo commento sarà visibile a qualsiasi persona sul web.'
     sign_in: "Entra per partecipare alla discussione"
   sidebar:
@@ -339,7 +339,7 @@ it:
     success: 'Scadenza della proposta aggiornata'
     submit: 'Modifica la scadenza'
   discussion_record:
-    created: 'La discussione {{title}} è stata creata con successo nel gruppo {{groupName}}.'
+    created: 'La discussione {{title}} è stata creata con successo nel gruppo {{group}}.'
     updated: 'Salva i cambiamenti a {{title}}'
   discussion_form:
     aria_label: 'Modulo discussione'
@@ -470,7 +470,7 @@ it:
       mute_message: '"{{name}}" è stata rimossa dalla tua dashboard.'
     privacy:
       private: 'Privacy: questo gruppo è visibile solo ai suoi membri.'
-      parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}'
+      parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroup}}  e  {{group}}'
       public: 'Privacy: Questo gruppo è visibile sul web'
       aria_label: 'Privacy del gruppo: {{privacy}}'
   description_card:
@@ -526,7 +526,7 @@ it:
     membership_granted_upon_approval_secret_parent: '<strong>Su richiesta</strong> chiunque da {{parent}} può chiedere di unirsi al gruppo.'
     thread_privacy: 'Pricacy della discussione'
     public_threads: 'Solo discussioni pubbliche'
-    public_discussions_subgroup: 'Chiunque nel gruppo {{parentGroupName}} può vedere le discussioni'
+    public_discussions_subgroup: 'Chiunque nel gruppo {{parentGroup}} può vedere le discussioni'
     public_or_private_threads: 'Permetti discussioni pubbliche e private'
     private_threads: 'Solo i membri possono vedere le discussioni'
     permissions: 'Permessi'

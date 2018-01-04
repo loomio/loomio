@@ -125,7 +125,7 @@ tr:
     confirm_delete: 'Yorumu sil'
     submit_button:
       label: 'Gönder'
-    private_privacy_notice: 'Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.'
+    private_privacy_notice: 'Yorumunuz sadece {{group}} grubunun üyelerine görünür olacak.'
     public_privacy_notice: 'Yorumunuz web üzerindeki herkese görünür olacak.'
   sidebar:
     start_group: 'Yeni grup'
@@ -168,7 +168,7 @@ tr:
     success: 'Öneri kapanış süresi güncellendi'
     submit: 'Kapanış saatini güncelle'
   discussion_record:
-    created: '{{title}} konusu {{groupName}} grubunda başarıyla oluşturuldu '
+    created: '{{title}} konusu {{group}} grubunda başarıyla oluşturuldu '
     updated: 'Değişiklikleri {{title}} konusuna kaydet'
   discussion_form:
     messages:
@@ -257,7 +257,7 @@ tr:
       mute_message: '"{{name}}" sizin panonuzdan kaldırıldı.'
     privacy:
       private: 'Gizlilik: Bu grubu sadece grup üyeleri görebilir'
-      parent_members: 'Gizlilik: Bu grup sadece {{parentGroupName}} ve {{groupName}} gruplarının üyelerine görünür.'
+      parent_members: 'Gizlilik: Bu grup sadece {{parentGroup}} ve {{group}} gruplarının üyelerine görünür.'
       public: 'Gizlilik: Bu grup web üzerinde görülebilir'
       aria_label: 'Grup gizliliği: {{privacy}}'
   description_card:
@@ -287,7 +287,7 @@ tr:
     membership_granted_upon_approval: 'Herkes katılım talebinde bulunabilir, ancak onaylanması gerekir.'
     thread_privacy: 'Konu gizliliği'
     public_threads: 'Sadece kamuya açık konular'
-    public_discussions_subgroup: '{{parentGroupName}} grubunda bulunan herkes müzakereleri görebilir'
+    public_discussions_subgroup: '{{parentGroup}} grubunda bulunan herkes müzakereleri görebilir'
     public_or_private_threads: 'Kamuya açık ve gizli konulara izin ver'
     private_threads: 'Sadece üyeler müzakereleri görebilir'
     permissions: 'İzinler'
@@ -477,7 +477,7 @@ tr:
     title: Konuyu taşı
     body: 'Hedef grup:'
     confirm: Konuyu taşı
-    confirm_change_to_private_thread: '{{groupName}} açık bir gruptur. Eğer devam ederseniz, konu herkese açılacaktır.'
+    confirm_change_to_private_thread: '{{group}} açık bir gruptur. Eğer devam ederseniz, konu herkese açılacaktır.'
     messages:
       success: 'Konu {{name}} grubuna taşındı '
   delete_comment_dialog:

@@ -208,7 +208,7 @@ pl:
     success: 'Zmieniono czas zamknięcia rekomendacji'
     submit: 'Zmiana terminu zamknięcia'
   discussion_record:
-    created: 'Wątek {{title}} został pomyślnie utworzony w  {{groupName}}'
+    created: 'Wątek {{title}} został pomyślnie utworzony w  {{group}}'
     updated: 'Zapisano zmiany w {{title}}'
   discussion_form:
     messages:

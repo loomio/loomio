@@ -278,7 +278,7 @@ en:
     write_a_comment: "Write a comment..."
     submit_button:
       label: 'Post'
-    private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
+    private_privacy_notice: 'Your comment will only be visible to members of {{group}}.'
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
     sign_in: "Log in to join the conversation"
 
@@ -373,7 +373,7 @@ en:
     submit: 'Update closing time'
 
   discussion_record:
-    created: 'The thread {{title}} was successfully created in {{groupName}}'
+    created: 'The thread {{title}} was successfully created in {{group}}'
     updated: 'Saved changes to {{title}}'
 
   discussion_form:
@@ -528,7 +528,7 @@ en:
       mute_message: '"{{name}}" has been removed from your dashboard.'
     privacy:
       private: 'Privacy: This group is only visible to members'
-      parent_members: 'Privacy: This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
+      parent_members: 'Privacy: This group is visible to members of {{parentGroup}} and members of {{group}}'
       public: 'Privacy: This group is visible on the web'
       aria_label: 'Group privacy: {{privacy}}'
 
@@ -594,12 +594,12 @@ en:
     features: 'Group-specific features'
     thread_privacy: 'Thread privacy'
     public_threads: 'Public threads only'
-    public_discussions_subgroup: 'Anyone in {{parentGroupName}} can see discussions'
+    public_discussions_subgroup: 'Anyone in {{parentGroup}} can see discussions'
     public_or_private_threads: 'Allow public and private threads'
     private_threads: 'Only members can see discussions'
     permissions: 'Permissions'
     allow_public_threads: 'Allow public threads in this group.'
-    #is_visible_to_parent_members: 'Content is visible to members of {{parentGroupName}}.'
+    #is_visible_to_parent_members: 'Content is visible to members of {{parentGroup}}.'
     parent_members_can_see_discussions: 'Members of {{parent}} can see private threads.'
     members_can_add_members: 'Members can invite people and approve requests to join.'
     members_can_create_subgroups: 'Members can create subgroups.'
@@ -987,7 +987,7 @@ en:
     title: Move thread
     body: 'Destination group:'
     confirm: Move thread
-    confirm_change_to_private_thread: '{{groupName}} is an open group. If you proceed, this thread will be made public.'
+    confirm_change_to_private_thread: '{{group}} is an open group. If you proceed, this thread will be made public.'
     messages:
       success: Thread has been moved to {{name}}
 

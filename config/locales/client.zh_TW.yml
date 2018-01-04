@@ -259,7 +259,7 @@ zh_TW:
     write_a_comment: "撰寫評論……"
     submit_button:
       label: '貼文'
-    private_privacy_notice: '您的意見只會被 {{groupName}} 群組的成員看到。'
+    private_privacy_notice: '您的意見只會被 {{group}} 群組的成員看到。'
     public_privacy_notice: '您的意見將會讓任何在網路上的人看到。'
     sign_in: "登入以加入對話"
   sidebar:
@@ -346,7 +346,7 @@ zh_TW:
     success: '提案關閉時間已更新'
     submit: '更新定案時間'
   discussion_record:
-    created: '討論串 {{title}} 已在 {{groupName}} 中成功的被建立'
+    created: '討論串 {{title}} 已在 {{group}} 中成功的被建立'
     updated: '儲存變更到 {{title}}'
   discussion_form:
     aria_label: '討論串表單'
@@ -489,7 +489,7 @@ zh_TW:
       mute_message: '「{{name}}」已從您的儀表板中移除。'
     privacy:
       private: '隱私權：此群組現在只會被成員看到'
-      parent_members: '隱私權：討論串只會被 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員看到。'
+      parent_members: '隱私權：討論串只會被 {{parentGroup}} 群組的成員以及 {{group}} 群組的成員看到。'
       public: '隱私權：此群組現在能在網路上被看到'
       aria_label: '群組隱私：{{privacy}}'
   description_card:
@@ -546,7 +546,7 @@ zh_TW:
     features: '特定群組功能'
     thread_privacy: '討論串隱私權'
     public_threads: '僅限公開討論串'
-    public_discussions_subgroup: '任何在 {{parentGroupName}} 群組的人都能看到這則討論串'
+    public_discussions_subgroup: '任何在 {{parentGroup}} 群組的人都能看到這則討論串'
     public_or_private_threads: '允許公開與非公開討論串'
     private_threads: '只有成員才能看到討論串'
     permissions: '權限'
@@ -905,7 +905,7 @@ zh_TW:
     title: 移動討論串
     body: '目標群組：'
     confirm: 移動討論串
-    confirm_change_to_private_thread: '{{groupName}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
+    confirm_change_to_private_thread: '{{group}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
     messages:
       success: 討論串已被移動到 {{name}}
   delete_comment_dialog:

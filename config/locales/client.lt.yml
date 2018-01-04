@@ -64,7 +64,7 @@ lt:
     confirm_delete_message: 'Ar jūs tikrai norite ištrinti šį komentarą?'
     submit_button:
       label: 'Išsiųsti'
-    private_privacy_notice: 'Jūsų komentaras bus matomas tik {{groupName}} grupės nariams.'
+    private_privacy_notice: 'Jūsų komentaras bus matomas tik {{group}} grupės nariams.'
   navbar:
     recent_title: 'Pereiti į skydelį'
     unread_title: 'Žiūrėti neskaitytas veiklas'

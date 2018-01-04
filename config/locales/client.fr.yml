@@ -258,7 +258,7 @@ fr:
     write_a_comment: "Écrire un commentaire..."
     submit_button:
       label: 'Publier'
-    private_privacy_notice: 'Votre commentaire sera visible seulement des membres de {{groupName}}.'
+    private_privacy_notice: 'Votre commentaire sera visible seulement des membres de {{group}}.'
     public_privacy_notice: 'Votre commentaire sera visible par tout le monde sur internet.'
     sign_in: "Connectez-vous pour rejoindre la discussion"
   sidebar:
@@ -345,7 +345,7 @@ fr:
     success: 'L’heure de fermeture de la proposition a été modifiée'
     submit: 'Modifier l’heure de fermeture'
   discussion_record:
-    created: 'La discussion {{title}} a bien été créée dans  {{groupName}}'
+    created: 'La discussion {{title}} a bien été créée dans  {{group}}'
     updated: 'Modifications de {{title}} enregistrées'
   discussion_form:
     aria_label: 'Forme de la discussion'
@@ -361,7 +361,7 @@ fr:
     context_label: 'Contexte'
     context_placeholder: 'Donnez assez d’informations préalables pour que le groupe ait une discussion productive. Ça pourra être mis à jour durant la discussion'
     privacy_label: 'Privé'
-    privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
+    privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{group}} peuvent participer.'
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
     make_announcement: Notification
@@ -489,7 +489,7 @@ fr:
       mute_message: '« {{name}} » a été retiré de votre tableau de bord.'
     privacy:
       private: 'Confidentialité: Ce groupe est seulement visible pour ses membres.'
-      parent_members: 'Confidentialité: Ce groupe est visible pour les membres de {{parentGroupName}} et les membres de {{groupName}}'
+      parent_members: 'Confidentialité: Ce groupe est visible pour les membres de {{parentGroup}} et les membres de {{group}}'
       public: 'Confidentialité: Ce groupe est visible par tous sur internet'
       aria_label: 'Groupe privé : {{privacy}}'
   description_card:
@@ -546,7 +546,7 @@ fr:
     features: 'Fonctionnalités pour le groupe'
     thread_privacy: 'Confidentialité de la discussion'
     public_threads: 'Discussions publiques seulement'
-    public_discussions_subgroup: 'N’importe qui de {{parentGroupName}} peut voir les discussions'
+    public_discussions_subgroup: 'N’importe qui de {{parentGroup}} peut voir les discussions'
     public_or_private_threads: 'Autoriser les discussions privées et publiques'
     private_threads: 'Seuls les membres peuvent voir les discussions'
     permissions: 'Permissions'
@@ -905,7 +905,7 @@ fr:
     title: Déplacer la discussion
     body: 'Groupe de destination :'
     confirm: Déplacer la discussion
-    confirm_change_to_private_thread: '{{groupName}}  est un groupe ouvert. Si vous confirmez, cette discussion sera rendue publique.'
+    confirm_change_to_private_thread: '{{group}}  est un groupe ouvert. Si vous confirmez, cette discussion sera rendue publique.'
     messages:
       success: La discussion a été déplacée vers {{name}}
   delete_comment_dialog:

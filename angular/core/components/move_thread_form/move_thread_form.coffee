@@ -19,6 +19,6 @@ angular.module('loomioApp').factory 'MoveThreadForm', ->
 
     $scope.moveThread = ->
       if $scope.discussion.private and $scope.targetGroup.privacyIsOpen()
-        $scope.submit() if confirm($translate.instant('move_thread_form.confirm_change_to_private_thread', groupName: $scope.targetGroup.name))
+        $scope.submit() if confirm($translate.instant('move_thread_form.confirm_change_to_private_thread', group: $scope.targetGroup.name))
       else
         $scope.submit()

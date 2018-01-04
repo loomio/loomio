@@ -226,7 +226,7 @@ pt_BR:
     write_a_comment: "Escreva um comentario..."
     submit_button:
       label: 'Postagem'
-    private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{groupName}}.'
+    private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{group}}.'
     public_privacy_notice: 'Seu comentário será visível para qualquer pessoa na web'
     sign_in: "Entre para se juntar à conversa"
   sidebar:
@@ -283,7 +283,7 @@ pt_BR:
     success: 'Hora de encerramento da proposta atualizada'
     submit: 'Atualizar hora de encerramento'
   discussion_record:
-    created: 'O tópico {{title}} foi criado com sucesso em {{groupName}}'
+    created: 'O tópico {{title}} foi criado com sucesso em {{group}}'
     updated: 'Mudanças salvas para {{title}}'
   discussion_form:
     aria_label: 'Formulário de tópico'
@@ -405,7 +405,7 @@ pt_BR:
       mute_message: '"{{name}}" foi removido do seu painel.'
     privacy:
       private: 'Privacidade: Este grupo é visível apenas para membros'
-      parent_members: 'Privacidade: Este grupo é visível para os membros de {{parentGroupName}} e os membros de {{groupName}}'
+      parent_members: 'Privacidade: Este grupo é visível para os membros de {{parentGroup}} e os membros de {{group}}'
       public: 'Privacidade: Este grupo é visível na web'
       aria_label: 'Privacidade do grupo: {{privacy}}'
   description_card:
@@ -460,7 +460,7 @@ pt_BR:
     membership_granted_upon_approval: 'Qualquer pessoa pode pedir para participar, mas deve ser aprovada.'
     thread_privacy: 'Privacidade do tópico'
     public_threads: 'Somente tópicos públicos'
-    public_discussions_subgroup: 'Qualquer pessoa em {{parentGroupName}} pode ver as discussões'
+    public_discussions_subgroup: 'Qualquer pessoa em {{parentGroup}} pode ver as discussões'
     public_or_private_threads: 'Permitir tópicos públicos e privados'
     private_threads: 'Apenas os membros podem ver discussões'
     permissions: 'Permissões'
@@ -748,7 +748,7 @@ pt_BR:
     title: Mover tópico
     body: 'Grupo de destino:'
     confirm: Mover tópico
-    confirm_change_to_private_thread: '{{groupName}} é um grupo aberto. Se você continuar, este tópico será público.'
+    confirm_change_to_private_thread: '{{group}} é um grupo aberto. Se você continuar, este tópico será público.'
     messages:
       success: Tópico foi movido para {{name}}
   delete_comment_dialog:

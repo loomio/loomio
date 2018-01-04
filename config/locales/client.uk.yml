@@ -224,7 +224,7 @@ uk:
     confirm_delete: 'Видалити коментар'
     submit_button:
       label: 'Опублікувати'
-    private_privacy_notice: 'Ваш коментар зможуть бачити тільки учасники {{groupName}}.'
+    private_privacy_notice: 'Ваш коментар зможуть бачити тільки учасники {{group}}.'
     public_privacy_notice: 'Ваш коментар зможе бачити будь-хто в мережі'
     sign_in: "Авторизуйтесь, щоб приєднатися до розмови"
   sidebar:
@@ -311,7 +311,7 @@ uk:
     success: 'Термін закриття пропозиції оновлено'
     submit: 'Оновити термін закриття'
   discussion_record:
-    created: 'Тему {{title}} було успішно створено у {{groupName}}'
+    created: 'Тему {{title}} було успішно створено у {{group}}'
     updated: 'Зберегти зміни у {{title}}'
   discussion_form:
     aria_label: 'Форма для теми'
@@ -445,7 +445,7 @@ uk:
       mute_message: '"{{name}}" був(ла) видалена з вашої інформаційної панелі.'
     privacy:
       private: 'Конфіденційність: Ця група відображається тільки для учасників'
-      parent_members: 'Конфіденційність: Ця група відображається для учасників {{parentGroupName}} та учасників {{groupName}}'
+      parent_members: 'Конфіденційність: Ця група відображається для учасників {{parentGroup}} та учасників {{group}}'
       public: 'Конфіденційність: Ця група відображається для всіх у мережі'
       aria_label: 'Конфіденційність групи: {{privacy}}'
   description_card:
@@ -501,7 +501,7 @@ uk:
     membership_granted_upon_approval_secret_parent: '<strong>За запитом</strong> будь-хто з {{parent}} може попросити долучитись до групи.'
     thread_privacy: 'Конфіденційність тем'
     public_threads: 'Тільки загальнодоступні теми'
-    public_discussions_subgroup: 'Будь-хто з {{parentGroupName}} може бачити обговорення'
+    public_discussions_subgroup: 'Будь-хто з {{parentGroup}} може бачити обговорення'
     public_or_private_threads: 'Дозволити загальнодоступні та закриті теми'
     private_threads: 'Тільки учасники можуть бачити обговорення'
     permissions: 'Дозволи'
@@ -833,7 +833,7 @@ uk:
     title: Перемістити тему
     body: 'Група до якої перемістити:'
     confirm: Перемістити тему
-    confirm_change_to_private_thread: 'Група {{groupName}} є відкритою. Якщо ви продовжите, ця тема стане загальнодоступною.'
+    confirm_change_to_private_thread: 'Група {{group}} є відкритою. Якщо ви продовжите, ця тема стане загальнодоступною.'
     messages:
       success: Тема була переміщена до {{name}}
   delete_comment_dialog:

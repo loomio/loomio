@@ -80,7 +80,7 @@ ar:
     confirm_delete_message: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
     submit_button:
       label: 'نشر'
-    private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
+    private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{group}} '
     public_privacy_notice: 'تعليقك سيظهر للجميع'
   navbar:
     recent_title: 'اذهب إلى لوحة التحكم'
@@ -109,7 +109,7 @@ ar:
     success: 'تم تحديث زمن إغلاق المقترح.'
     submit: 'قم بتحديث زمن الإغلاق'
   discussion_record:
-    created: 'تم بدء موضوع {{title}} في مجموعة {{groupName}} بنجاح.'
+    created: 'تم بدء موضوع {{title}} في مجموعة {{group}} بنجاح.'
     updated: 'حفظ التغييرات في {{title}}'
   discussion_form:
     messages:
@@ -183,7 +183,7 @@ ar:
       mute_message: 'تمت إزالة "{{name}}" من لوحة التحكم الخاصة بك.'
     privacy:
       private: 'الخصوصية: هذه المجموعة ظاهرة فقط للأعضاء.'
-      parent_members: 'الخصوصية: هذه المجموعة ظاهرة لأعضاء {{parentGroupName}} و أعضاء {{groupName}}'
+      parent_members: 'الخصوصية: هذه المجموعة ظاهرة لأعضاء {{parentGroup}} و أعضاء {{group}}'
       public: 'الخصوصية: هذه المجموعة ظاهرة على الشبكة.'
       aria_label: 'خصوصية المجموعة: {{privacy}}'
   group_form:
@@ -211,7 +211,7 @@ ar:
     membership_granted_upon_approval: 'يمكن لأي شخص طلب الانضمام و لكن يجب الموافقة على طلب الانضمام.'
     thread_privacy: 'خصوصية المواضيع'
     public_threads: 'المواضيع العامة فقط'
-    public_discussions_subgroup: 'يمكن لأي شخص من {{parentGroupName}} رؤية النقاش'
+    public_discussions_subgroup: 'يمكن لأي شخص من {{parentGroup}} رؤية النقاش'
     public_or_private_threads: 'السماح بموضوعات خاصة و عامة'
     private_threads: 'يمكن للأعضاء فقط رؤية النقاشات'
     permissions: 'السماح'
@@ -392,7 +392,7 @@ ar:
     title: نقل الموضوع
     body: 'المجموعة المقصودة:'
     confirm: 'نقل الموضوع '
-    confirm_change_to_private_thread: '{{groupName}} هي مجموعة مفتوحة. إن اخترت الاستمرار، سيتم تحويل هذا الموضوع إلى عام.'
+    confirm_change_to_private_thread: '{{group}} هي مجموعة مفتوحة. إن اخترت الاستمرار، سيتم تحويل هذا الموضوع إلى عام.'
     messages:
       success: تم نقل الموضوع إلى {{name}}
   delete_comment_dialog:
