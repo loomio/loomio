@@ -31,7 +31,7 @@ describe 'Invitations', ->
     page.click '.members-card__invite-members-btn'
     page.fillIn '.invitation-form__email-addresses', 'patrick_swayze@example.com'
     page.click '.invitation-form__submit'
-    page.expectText '.invitation-form', "We didn't send invitations to the email addresses provided because they belong to people already in the group."
+    page.expectText '.invitation-form', "These people are already members of the group."
 
   it 'lets you add members from the parent to a subgroup', ->
     page.loadPath 'setup_group'
