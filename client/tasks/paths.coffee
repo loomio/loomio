@@ -19,7 +19,10 @@ module.exports =
       vendor:     include(vendor, 'angular', '')
       config:     glob.sync('angular/config/*.coffee')
       pages:      glob.sync('angular/pages/**/*.coffee')
-      components: glob.sync('angular/components/**/*.coffee')
+      components: _.flatten([
+        glob.sync('angular/components/**/*.coffee'),
+        _.map(include(plugins, 'coffee'), (path) -> "../../#{path}")
+      ])
       templates:   _.flatten([
         'angular/components/**/*.haml',
         'angular/pages/**/*.haml',
@@ -31,8 +34,6 @@ module.exports =
       config:     'angular/dependencies/config.coffee'
       pages:      'angular/dependencies/pages.coffee'
       components: 'angular/dependencies/components.coffee'
-    vendor:    include(vendor, 'angular', '') # don't force a prefix, since these will be required into the bundle
-    plugin:    include plugins, 'coffee'
     scss: _.flatten([
       include(vendor, 'css'),
       'angular/css/app.scss',

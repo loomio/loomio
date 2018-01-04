@@ -24,7 +24,6 @@ angular.module('loomioApp', [
   'angular-sortable-view'
 ])
 
-
 require './dependencies/config.coffee'
 require './dependencies/templates.coffee'
 require './dependencies/pages.coffee'
