@@ -2,7 +2,7 @@
   .lmo-disabled-form{ng-show: "isDisabled"}
   %md-input-container.md-block
     %label{translate: "{{titleLabel()}}"}
-    %input.lmo-primary-form-input#group-name{type: "text", placeholder: "{{'group_form.group_name_placeholder' | translate}}", ng-required: true, ng-model: "group.name", md-maxlength: "255"}
+    %input.lmo-primary-form-input#group-name{type: "text", placeholder: "{{'group_form.group_name_placeholder' | translate}}", ng-required: "true", ng-model: "group.name", ng-model-options: "{ allowInvalid: true }", md-maxlength: "255"}
     %validation_errors{subject: "group", field: "name"}
 
   %lmo_textarea{model: "group", field: "description", placeholder: "'group_form.description_placeholder' | translate", label: "'group_form.description' | translate"}
