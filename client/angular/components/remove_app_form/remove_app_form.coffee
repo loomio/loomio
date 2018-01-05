@@ -1,3 +1,4 @@
+EventBus     = require 'shared/services/event_bus.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
 
 angular.module('loomioApp').factory 'RemoveAppForm', ['$rootScope', ($rootScope) ->
@@ -10,7 +11,7 @@ angular.module('loomioApp').factory 'RemoveAppForm', ['$rootScope', ($rootScope)
         FlashService.success 'remove_app_form.messages.success', name: $scope.application.name
         $scope.$close()
       , ->
-        $rootScope.$broadcast 'pageError', 'cantDestroyApplication', $scope.application
+        EventBus.broadcast $rootScope, 'pageError', 'cantDestroyApplication', $scope.application
         $scope.$close()
   ]
 ]

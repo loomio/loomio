@@ -1,4 +1,5 @@
-Records = require 'shared/services/records.coffee'
+Records  = require 'shared/services/records.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
 { upload } = require 'angular/helpers/form.coffee'
 
@@ -14,7 +15,7 @@ angular.module('loomioApp').factory 'CoverPhotoForm', ['$timeout', '$rootScope',
       submitFn:       group.uploadPhoto
       loadingMessage: 'common.action.uploading'
       successCallback: (data) ->
-        $rootScope.$broadcast('setBackgroundImageUrl', group)
+        EventBus.broadcast $rootScope, 'setBackgroundImageUrl', group
       flashSuccess:   'cover_photo_form.upload_success'
   ]
 ]

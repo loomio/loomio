@@ -1,5 +1,7 @@
+moment = require 'moment'
+
+EventBus    = require 'shared/services/event_bus.coffee'
 TimeService = require 'shared/services/time_service.coffee'
-moment      = require 'moment'
 
 angular.module('loomioApp').directive 'pollMeetingTimeField', ->
   scope: {poll: '='}
@@ -14,7 +16,7 @@ angular.module('loomioApp').directive 'pollMeetingTimeField', ->
       optionName = determineOptionName()
       return unless $scope.option.date && !_.contains($scope.poll.pollOptionNames, optionName)
       $scope.poll.pollOptionNames.push optionName
-    $scope.$on 'addPollOption', $scope.addOption
+    EventBus.listen $scope, 'addPollOption', $scope.addOption
 
     $scope.hasTime = ->
       ($scope.option.time or "").length > 0

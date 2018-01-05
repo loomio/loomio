@@ -1,13 +1,14 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 InboxService   = require 'shared/services/inbox_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
 $controller = ($scope, $rootScope) ->
-  $rootScope.$broadcast('currentComponent', {titleKey: 'inbox_page.unread_threads' ,page: 'inboxPage'})
-  $rootScope.$broadcast('setTitle', 'Inbox')
-  $rootScope.$broadcast('analyticsClearGroup')
+  EventBus.broadcast $rootScope, 'currentComponent', {titleKey: 'inbox_page.unread_threads' ,page: 'inboxPage'}
+  EventBus.broadcast $rootScope, 'setTitle', 'Inbox'
+  EventBus.broadcast $rootScope, 'analyticsClearGroup'
   InboxService.load()
 
   @threadLimit = 50

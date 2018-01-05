@@ -1,5 +1,7 @@
-AppConfig = require 'shared/services/app_config.coffee'
 moment    = require 'moment'
+
+AppConfig = require 'shared/services/app_config.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 
 angular.module('loomioApp').directive 'pollMeetingForm', ->
   scope: {poll: '=', back: '=?'}
@@ -17,6 +19,6 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
       $scope.poll.notifyOnParticipate = true
       $scope.poll.makeAnnouncement = true if $scope.poll.group()
 
-    $scope.$on 'timeZoneSelected', (e, zone) ->
+    EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
       $scope.poll.customFields.time_zone = zone
   ]

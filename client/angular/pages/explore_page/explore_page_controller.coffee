@@ -1,10 +1,11 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 
 { applyLoadingFunction } = require 'angular/helpers/apply.coffee'
 
 $controller = ($rootScope, $timeout) ->
-  $rootScope.$broadcast('currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'})
+  EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
 
   @groupIds = []
   @resultsCount = 0

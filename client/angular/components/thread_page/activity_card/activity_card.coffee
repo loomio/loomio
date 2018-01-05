@@ -1,4 +1,5 @@
 AppConfig                = require 'shared/services/app_config.coffee'
+EventBus                 = require 'shared/services/event_bus.coffee'
 RecordLoader             = require 'shared/services/record_loader.coffee'
 ChronologicalEventWindow = require 'shared/services/chronological_event_window.coffee'
 NestedEventWindow        = require 'shared/services/nested_event_window.coffee'
@@ -52,7 +53,7 @@ angular.module('loomioApp').directive 'activityCard', ['$mdDialog', ($mdDialog) 
         when "unread"    then "#sequence-#{$scope.discussion.firstUnreadSequenceId()}"
         when "latest"    then "#sequence-#{$scope.discussion.lastSequenceId()}"
 
-    $scope.$on 'fetchRecordsForPrint', ->
+    EventBus.listen $scope, 'fetchRecordsForPrint', ->
       if $scope.discussion.allEventsLoaded()
         print()
       else
@@ -83,11 +84,11 @@ angular.module('loomioApp').directive 'activityCard', ['$mdDialog', ($mdDialog) 
             initialSequenceId: $scope.initialSequenceId(position)
             per: $scope.per
 
-        $scope.$emit('threadPageScrollToSelector', $scope.elementToFocus(position))
+        EventBus.emit $scope, 'threadPageScrollToSelector', $scope.elementToFocus(position)
 
     $scope.setDefaults()
     $scope.init()
-    $scope.$on 'initActivityCard', -> $scope.init()
+    EventBus.listen $scope, 'initActivityCard', -> $scope.init()
 
     return
   ]

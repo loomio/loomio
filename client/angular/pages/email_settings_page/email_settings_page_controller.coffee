@@ -1,5 +1,6 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
@@ -7,7 +8,7 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 { submitForm }   = require 'angular/helpers/form.coffee'
 
 $controller = ($rootScope) ->
-  $rootScope.$broadcast('currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'})
+  EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}
 
   @init = =>
     return unless AbilityService.isLoggedIn() or Session.user().restricted?

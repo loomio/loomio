@@ -1,4 +1,5 @@
 AppConfig = require 'shared/services/app_config.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 
 { iconFor } = require 'shared/helpers/poll.coffee'
 
@@ -8,7 +9,7 @@ angular.module('loomioApp').directive 'pollCommonChooseType', ->
   controller: ['$scope', ($scope) ->
 
     $scope.choose = (type) ->
-      $scope.$emit 'nextStep', type
+      EventBus.emit $scope, 'nextStep', type
 
     $scope.pollTypes = -> AppConfig.pollTypes
 

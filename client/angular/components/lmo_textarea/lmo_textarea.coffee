@@ -1,4 +1,5 @@
 Records      = require 'shared/services/records.coffee'
+EventBus     = require 'shared/services/event_bus.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
 { listenForMentions, listenForEmoji, listenForPaste } = require 'angular/helpers/listen.coffee'
@@ -16,22 +17,22 @@ angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
       listenForPaste $scope
     $scope.init($scope.model)
 
-    $scope.$on 'reinitializeForm', (_, model) ->
+    EventBus.listen $scope, 'reinitializeForm', (_, model) ->
       $scope.init(model)
 
     $scope.modelLength = ->
       $element.find('textarea').val().length
 
     $scope.addDocument = ($mdMenu) ->
-      $scope.$broadcast 'initializeDocument', Records.documents.buildFromModel($scope.model), $mdMenu
+      EventBus.broadcast $scope, 'initializeDocument', Records.documents.buildFromModel($scope.model), $mdMenu
 
-    $scope.$on 'nextStep', (_, doc) ->
+    EventBus.listen $scope, 'nextStep', (_, doc) ->
       $scope.model.newDocumentIds.push doc.id
 
-    $scope.$on 'documentAdded', (_, doc) ->
+    EventBus.listen $scope, 'documentAdded', (_, doc) ->
       $scope.model.newDocumentIds.push doc.id
 
-    $scope.$on 'documentRemoved', (_, doc) ->
+    EventBus.listen $scope, 'documentRemoved', (_, doc) ->
       $scope.model.removedDocumentIds.push doc.id
   ]
 ]

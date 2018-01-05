@@ -1,5 +1,6 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 I18n      = require 'shared/services/i18n.coffee'
 
 { listenForPaste } = require 'angular/helpers/listen.coffee'
@@ -15,13 +16,13 @@ angular.module('loomioApp').directive 'documentUrlForm', ->
       $scope.model.setErrors({})
       if $scope.model.url.toString().match(AppConfig.regex.url.source)
         $scope.document.url = $scope.model.url
-        $scope.$emit('nextStep', $scope.document)
+        EventBus.emit $scope, 'nextStep', $scope.document
       else
         $scope.model.setErrors(url: [I18n.t('document.error.invalid_format')])
 
-    $scope.$on 'documentAdded', (event, doc) ->
+    EventBus.listen $scope, 'documentAdded', (event, doc) ->
       event.stopPropagation()
-      $scope.$emit 'nextStep', doc
+      EventBus.emit $scope, 'nextStep', doc
 
     submitOnEnter $scope, anyEnter: true
     listenForPaste($scope)

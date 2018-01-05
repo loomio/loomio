@@ -1,4 +1,5 @@
 Session        = require 'shared/services/session.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 TimeService    = require 'shared/services/time_service.coffee'
 
@@ -18,17 +19,17 @@ angular.module('loomioApp').directive 'pollCommonFormOptions', ->
       return unless $scope.poll.newOptionName and !_.contains($scope.poll.pollOptionNames, $scope.poll.newOptionName)
       $scope.poll.pollOptionNames.push $scope.poll.newOptionName
       $scope.poll.makeAnnouncement = true unless $scope.poll.isNew()
-      $scope.$emit 'pollOptionsChanged', $scope.poll.newOptionName
+      EventBus.emit $scope, 'pollOptionsChanged', $scope.poll.newOptionName
       $scope.poll.newOptionName = ''
 
     $scope.datesAsOptions = fieldFromTemplate($scope.poll.pollType, 'dates_as_options')
 
-    $scope.$on 'addPollOption', ->
+    EventBus.listen $scope, 'addPollOption', ->
       $scope.addOption()
 
     $scope.removeOption = (name) ->
       _.pull($scope.poll.pollOptionNames, name)
-      $scope.$emit 'pollOptionsChanged'
+      EventBus.emit $scope, 'pollOptionsChanged'
 
     $scope.canRemoveOption = (name) ->
       _.contains($scope.existingOptions, name) || AbilityService.canRemovePollOptions($scope.poll)

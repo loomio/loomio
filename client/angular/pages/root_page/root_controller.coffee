@@ -2,23 +2,19 @@ Routes          = require 'angular/routes.coffee'
 AppConfig       = require 'shared/services/app_config.coffee'
 Session         = require 'shared/services/session.coffee'
 Records         = require 'shared/services/records.coffee'
+EventBus        = require 'shared/services/event_bus.coffee'
 AbilityService  = require 'shared/services/ability_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
+I18n            = require 'shared/services/i18n.coffee'
 
 { viewportSize, scrollTo, trackEvents } = require 'shared/helpers/window.coffee'
 { signIn, subscribeToLiveUpdate }       = require 'shared/helpers/user.coffee'
 { broadcastKeyEvent, registerHotkeys }  = require 'angular/helpers/keyboard.coffee'
 { listenForEvents }                     = require 'angular/helpers/listen.coffee'
-{
-  setupAngularModal,
-  setupAngularFlash,
-  setupAngularNavigate,
-  setupAngularTranslate,
-  setupAngularScroll
-} = require 'angular/helpers/setup.coffee'
+{ setupAngular }                        = require 'angular/helpers/setup.coffee'
 
-$controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $location, $router, $browser) ->
+$controller = ($scope, $rootScope, $injector, $timeout, $router, $browser) ->
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
 
@@ -36,15 +32,17 @@ $controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $
     IntercomService.boot()
     subscribeToLiveUpdate()
 
-  $scope.$on 'toggleSidebar', (event, show) ->
+  setupAngular($scope, $injector)
+
+  EventBus.listen $scope, 'toggleSidebar', (event, show) ->
     return if show == false
     $scope.renderSidebar = true
 
-  $scope.$on 'loggedIn', $scope.loggedIn
-  $scope.$on 'logout', -> IntercomService.shutdown()
+  EventBus.listen $scope, 'loggedIn', $scope.loggedIn
+  EventBus.listen $scope, 'logout', -> IntercomService.shutdown()
 
-  $scope.$on 'currentComponent', (event, options = {}) ->
-    title = options.title or $translate.instant(options.titleKey)
+  EventBus.listen $scope, 'currentComponent', (event, options = {}) ->
+    title = options.title or I18n.t(options.titleKey)
     document.querySelector('title').text = _.trunc(title, 300) + " | #{AppConfig.theme.site_name}"
     scrollTo(options.scrollTo or 'h1') unless options.skipScroll
 
@@ -52,28 +50,23 @@ $controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $
     IntercomService.updateWithGroup(Session.currentGroup)
 
     $scope.pageError = null
-    $scope.$broadcast('clearBackgroundImageUrl')
+    EventBus.broadcast $scope, 'clearBackgroundImageUrl'
     $scope.links = options.links or {}
     $scope.forceSignIn() if AbilityService.requireLoginFor(options.page) or AppConfig.pendingIdentity?
 
-  $scope.$on 'pageError', (event, error) ->
+  EventBus.listen $scope, 'pageError', (event, error) ->
     $scope.pageError = error
     $scope.forceSignIn() if !AbilityService.isLoggedIn() and error.status == 403
 
-  $scope.$on 'setBackgroundImageUrl', (event, group) ->
+  EventBus.listen $scope, 'setBackgroundImageUrl', (event, group) ->
     url = group.coverUrl(viewportSize())
     angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})")
 
-  $scope.$on 'clearBackgroundImageUrl', (event) ->
+  EventBus.listen $scope, 'clearBackgroundImageUrl', (event) ->
     angular.element(document.querySelector('.lmo-main-background')).removeAttr('style')
 
   $router.config(Routes.concat(AppConfig.plugins.routes))
 
-  setupAngularTranslate($scope, $translate)
-  setupAngularModal($scope, $injector, $mdDialog)
-  setupAngularFlash($scope)
-  setupAngularNavigate($location)
-  setupAngularScroll()
   listenForEvents($scope)
   signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
   registerHotkeys($scope,
@@ -90,5 +83,5 @@ $controller = ($scope, $rootScope, $injector, $timeout, $translate, $mdDialog, $
 
   return
 
-$controller.$inject = ['$scope', '$rootScope', '$injector', '$timeout', '$translate', '$mdDialog', '$location', '$router', '$browser']
+$controller.$inject = ['$scope', '$rootScope', '$injector', '$timeout', '$router', '$browser']
 angular.module('loomioApp').controller 'RootController', $controller

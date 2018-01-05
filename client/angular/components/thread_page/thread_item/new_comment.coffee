@@ -1,4 +1,5 @@
 Session        = require 'shared/services/session.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
@@ -19,7 +20,7 @@ angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', 
       name: 'reply_to_comment'
       icon: 'mdi-reply'
       canPerform: -> AbilityService.canRespondToComment($scope.eventable)
-      perform:    -> $rootScope.$broadcast 'replyToEvent', $scope.event.surfaceOrSelf()
+      perform:    -> EventBus.broadcast $rootScope, 'replyToEvent', $scope.event.surfaceOrSelf()
     ,
       name: 'edit_comment'
       icon: 'mdi-pencil'

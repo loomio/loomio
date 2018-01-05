@@ -1,4 +1,5 @@
-Records = require 'shared/services/records.coffee'
+Records  = require 'shared/services/records.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
 { submitForm }    = require 'angular/helpers/form.coffee'
 { submitOnEnter } = require 'angular/helpers/keyboard.coffee'
@@ -13,7 +14,7 @@ angular.module('loomioApp').directive 'contactRequestForm', ->
     $scope.submit = submitForm $scope, $scope.contactRequest,
       flashSuccess: "contact_request_form.email_sent"
       flashOptions: {name: $scope.user.name}
-      successCallback: -> $scope.$emit '$close'
+      successCallback: -> EventBus.emit $scope, '$close'
 
     submitOnEnter $scope
   ]

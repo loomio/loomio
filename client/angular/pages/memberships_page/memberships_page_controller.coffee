@@ -1,4 +1,5 @@
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
@@ -6,7 +7,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 { scrollTo } = require 'shared/helpers/window.coffee'
 
 $controller = ($routeParams, $rootScope) ->
-  $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
+  EventBus.broadcast $rootScope, 'currentComponent', { page: 'membershipsPage'}
 
   @init = (group) =>
     return if @group? or !group?
@@ -15,7 +16,7 @@ $controller = ($routeParams, $rootScope) ->
       Records.memberships.fetchByGroup(@group.key, per: @group.membershipsCount).then ->
         scrollTo("[data-username=#{$routeParams.username}]") if $routeParams.username?
     else
-      $rootScope.$broadcast 'pageError', { status: 403 }, group
+      EventBus.broadcast $rootScope, 'pageError', { status: 403 }, group
 
   @fetchMemberships = =>
     Records.memberships.fetchByNameFragment(@fragment, @group.key) if @fragment
@@ -58,7 +59,7 @@ $controller = ($routeParams, $rootScope) ->
     membership.userName()
 
   Records.groups.findOrFetchById($routeParams.key).then @init, (error) ->
-    $rootScope.$broadcast('pageError', error)
+    EventBus.broadcast $rootScope, 'pageError', error
 
   return
 

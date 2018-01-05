@@ -1,10 +1,11 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 
 $controller = ($routeParams, $rootScope) ->
-  $rootScope.$broadcast('currentComponent', { page: 'membershipRequestsPage'})
+  EventBus.broadcast $rootScope, 'currentComponent', { page: 'membershipRequestsPage'}
 
   @init = =>
     Records.groups.findOrFetchById($routeParams.key).then (group) =>
@@ -13,9 +14,9 @@ $controller = ($routeParams, $rootScope) ->
         Records.membershipRequests.fetchPendingByGroup(group.key, per: 100)
         Records.membershipRequests.fetchPreviousByGroup(group.key, per: 100)
       else
-        $rootScope.$broadcast('pageError', {status: 403})
+        EventBus.broadcast $rootScope, 'pageError', {status: 403}
     , (error) ->
-        $rootScope.$broadcast('pageError', {status: 403})
+        EventBus.broadcast $rootScope, 'pageError', {status: 403}
 
   @init()
 

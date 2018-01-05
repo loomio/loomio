@@ -1,6 +1,7 @@
 AppConfig         = require 'shared/services/app_config.coffee'
 Session           = require 'shared/services/session.coffee'
 Records           = require 'shared/services/records.coffee'
+EventBus          = require 'shared/services/event_bus.coffee'
 AbilityService    = require 'shared/services/ability_service.coffee'
 LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 ModalService      = require 'shared/services/modal_service.coffee'
@@ -9,7 +10,7 @@ PaginationService = require 'shared/services/pagination_service.coffee'
 { subscribeToLiveUpdate } = require 'shared/helpers/user.coffee'
 
 $controller = ($rootScope, $routeParams) ->
-  $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
+  EventBus.broadcast $rootScope, 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
   @launchers = []
   @addLauncher = (action, condition = (-> true), opts = {}) =>
@@ -39,7 +40,7 @@ $controller = ($rootScope, $routeParams) ->
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @init(group)
   , (error) ->
-    $rootScope.$broadcast('pageError', error)
+    EventBus.broadcast $rootScope, 'pageError', error
 
   @init = (group) =>
     @group = group
@@ -57,7 +58,7 @@ $controller = ($rootScope, $routeParams) ->
       max:      maxDiscussions
       pageType: 'groupThreads'
 
-    $rootScope.$broadcast 'currentComponent',
+    EventBus.broadcast $rootScope, 'currentComponent',
       title: @group.fullName
       page: 'groupPage'
       group: @group

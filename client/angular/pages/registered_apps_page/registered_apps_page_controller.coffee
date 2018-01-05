@@ -1,9 +1,10 @@
 Records      = require 'shared/services/records.coffee'
+EventBus     = require 'shared/services/event_bus.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
 $controller = ($scope, $rootScope) ->
-  $rootScope.$broadcast('currentComponent', {page: 'registeredAppsPage'})
-  $rootScope.$broadcast('setTitle', 'OAuth Application Dashboard')
+  EventBus.broadcast $rootScope, 'currentComponent', {page: 'registeredAppsPage'}
+  EventBus.broadcast $rootScope, 'setTitle', 'OAuth Application Dashboard'
 
   @loading = true
   @applications = ->

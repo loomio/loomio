@@ -1,4 +1,5 @@
 AppConfig    = require 'shared/services/app_config.coffee'
+EventBus     = require 'shared/services/event_bus.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
 
 angular.module('loomioApp').directive 'flash', ['$interval', ($interval) ->
@@ -9,13 +10,13 @@ angular.module('loomioApp').directive 'flash', ['$interval', ($interval) ->
   controller: ['$scope', ($scope) ->
     $scope.pendingDismiss = null
 
-    $scope.$on 'flashMessage', (event, flash) =>
+    EventBus.listen $scope, 'flashMessage', (event, flash) =>
       $scope.flash = _.merge flash, { visible: true }
       $scope.flash.message = $scope.flash.message or 'common.action.loading' if $scope.loading()
       $interval.cancel $scope.pendingDismiss if $scope.pendingDismiss?
       $scope.pendingDismiss = $interval($scope.dismiss, flash.duration, 1)
 
-    $scope.$on 'dismissFlash', $scope.dismiss
+    EventBus.listen $scope, 'dismissFlash', $scope.dismiss
 
     $scope.loading = -> $scope.flash.level == 'loading'
     $scope.display = -> $scope.flash.visible

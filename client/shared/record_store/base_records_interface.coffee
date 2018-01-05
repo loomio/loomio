@@ -28,7 +28,7 @@ module.exports =
           @recordStore.import(data)
 
     setRemoteCallbacks: (callbacks) ->
-      _.merge @remote, _.pick(callbacks, ['onPrepare', 'onSuccess', 'onFailure', 'onCleanup'])
+      _.merge @remote, _.pick(callbacks, ['onPrepare', 'onSuccess', 'onUploadSuccess', 'onFailure', 'onCleanup'])
 
     all: ->
       @collection.data

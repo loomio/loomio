@@ -1,4 +1,5 @@
 AppConfig         = require 'shared/services/app_config.coffee'
+EventBus          = require 'shared/services/event_bus.coffee'
 NestedEventWindow = require 'shared/services/nested_event_window.coffee'
 
 angular.module('loomioApp').directive 'eventChildren', ->
@@ -14,7 +15,7 @@ angular.module('loomioApp').directive 'eventChildren', ->
       initialSequenceId: $scope.parentEventWindow.initialSequenceId
       per:               $scope.parentEventWindow.per
 
-    $scope.$on 'replyToEvent', (e, event) ->
+    EventBus.listen $scope, 'replyToEvent', (e, event) ->
       if event.id == $scope.parentEvent.id
         $scope.eventWindow.max = false
   ]

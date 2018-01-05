@@ -1,4 +1,5 @@
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
@@ -12,7 +13,7 @@ angular.module('loomioApp').directive 'subgroupsCard', ['$rootScope', ($rootScop
       $scope.group.isParent()
 
     Records.groups.fetchByParent($scope.group).then ->
-      $rootScope.$broadcast('subgroupsLoaded', $scope.group)
+      EventBus.broadcast $rootScope, 'subgroupsLoaded', $scope.group
 
     $scope.canCreateSubgroups = ->
       AbilityService.canCreateSubgroups($scope.group)

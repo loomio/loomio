@@ -1,6 +1,7 @@
 AppConfig          = require 'shared/services/app_config.coffee'
 Records            = require 'shared/services/records.coffee'
 Session            = require 'shared/services/session.coffee'
+EventBus           = require 'shared/services/event_bus.coffee'
 RecordLoader       = require 'shared/services/record_loader.coffee'
 ThreadQueryService = require 'shared/services/thread_query_service.coffee'
 ModalService       = require 'shared/services/modal_service.coffee'
@@ -15,12 +16,12 @@ $controller = ($rootScope, $routeParams, $mdMedia) ->
     else
       'dashboard_page.filtering.all'
 
-  $rootScope.$broadcast 'currentComponent',
+  EventBus.broadcast $rootScope, 'currentComponent',
     titleKey: titleKey()
     page: 'dashboardPage'
     filter: $routeParams.filter
 
-  $rootScope.$broadcast('analyticsClearGroup')
+  EventBus.broadcast $rootScope, 'analyticsClearGroup'
 
   viewName = (name) =>
     if @filter == 'show_muted'

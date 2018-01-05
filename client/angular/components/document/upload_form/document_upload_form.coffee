@@ -1,4 +1,5 @@
-Records = require 'shared/services/records.coffee'
+Records  = require 'shared/services/records.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
 angular.module('loomioApp').directive 'documentUploadForm', ->
   scope: {model: '='}
@@ -7,13 +8,13 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
   replace: true
   controller: ['$scope', '$element', ($scope, $element) ->
 
-    $scope.$on 'filesPasted', (_, files) -> $scope.files = files
+    EventBus.listen $scope, 'filesPasted', (_, files) -> $scope.files = files
     $scope.$watch 'files',               -> $scope.upload($scope.files)
 
     $scope.upload = ->
       return unless $scope.files
       $scope.model.setErrors({})
-      $scope.$emit 'processing'
+      EventBus.emit $scope, 'processing'
       for file in $scope.files
         Records.documents.upload(file, $scope.progress)
                          .then($scope.success, $scope.failure)
@@ -31,13 +32,13 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
       Records.documents.abort()
 
     $scope.success = (response) ->
-      $scope.$emit 'documentAdded', Records.documents.find(response.documents[0].id)
+      EventBus.emit $scope, 'documentAdded', Records.documents.find(response.documents[0].id)
 
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)
 
     $scope.reset = ->
-      $scope.$emit 'doneProcessing'
+      EventBus.emit $scope, 'doneProcessing'
       $scope.files = null
       $scope.percentComplete = 0
     $scope.reset()

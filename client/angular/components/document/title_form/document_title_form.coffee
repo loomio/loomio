@@ -1,4 +1,5 @@
-Records = require 'shared/services/records.coffee'
+Records  = require 'shared/services/records.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
 { submitForm }    = require 'angular/helpers/form.coffee'
 { submitOnEnter } = require 'angular/helpers/keyboard.coffee'
@@ -10,7 +11,7 @@ angular.module('loomioApp').directive 'documentTitleForm', ->
     $scope.submit = submitForm $scope, $scope.document,
       flashSuccess: "document.flash.success"
       successCallback: (data) ->
-        $scope.$emit 'nextStep', Records.documents.find(data.documents[0].id)
+        EventBus.emit $scope, 'nextStep', Records.documents.find(data.documents[0].id)
 
     submitOnEnter($scope, anyEnter: true)
   ]

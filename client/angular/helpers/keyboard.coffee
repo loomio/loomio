@@ -1,4 +1,5 @@
 AppConfig = require 'shared/services/app_config.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 
 # a series of method related to the user entering input through the keyboard,
 # such as hotkeys or submit on enter
@@ -6,7 +7,7 @@ module.exports =
   broadcastKeyEvent: ($scope, event) ->
     key = keyboardShortcuts[event.which]
     if key == 'pressedEnter' or (key and !event.ctrlKey and !event.metaKey)
-      $scope.$broadcast key, event, angular.element(document.activeElement)[0]
+      EventBus.broadcast $scope, key, event, angular.element(document.activeElement)[0]
 
   registerKeyEvent: ($scope, eventCode, execute, shouldExecute) ->
     registerKeyEvent($scope, eventCode, execute, shouldExecute)
@@ -43,7 +44,7 @@ defaultShouldExecute = (active = {}, event = {}) ->
 registerKeyEvent = ($scope, eventCode, execute, shouldExecute) ->
   shouldExecute = shouldExecute or defaultShouldExecute
   $scope.$$listeners[eventCode] = null
-  $scope.$on eventCode, (angularEvent, originalEvent, active) ->
+  EventBus.listen $scope, eventCode, (angularEvent, originalEvent, active) ->
     if shouldExecute(active, originalEvent)
       angularEvent.preventDefault() and originalEvent.preventDefault()
       execute(active, originalEvent)

@@ -1,5 +1,6 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
@@ -28,7 +29,7 @@ angular.module('loomioApp').directive 'commentForm', ->
       else
         I18n.t('comment_form.aria_label')
 
-    $scope.$on 'setParentComment', (e, parentComment) ->
+    EventBus.listen $scope, 'setParentComment', (e, parentComment) ->
       $scope.comment.parentId = parentComment.id
 
     $scope.init = ->
@@ -39,7 +40,7 @@ angular.module('loomioApp').directive 'commentForm', ->
       $scope.submit = submitForm $scope, $scope.comment,
         submitFn: $scope.comment.save
         flashSuccess: ->
-          $scope.$emit 'commentSaved'
+          EventBus.emit $scope, 'commentSaved'
           if $scope.comment.isReply()
             'comment_form.messages.replied'
           else
@@ -50,6 +51,6 @@ angular.module('loomioApp').directive 'commentForm', ->
 
         successCallback: $scope.init
       submitOnEnter $scope
-      $scope.$broadcast 'reinitializeForm', $scope.comment
+      EventBus.broadcast $scope, 'reinitializeForm', $scope.comment
     $scope.init()
   ]

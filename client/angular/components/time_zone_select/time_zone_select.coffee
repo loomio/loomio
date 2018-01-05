@@ -1,8 +1,9 @@
-AppConfig   = require 'shared/services/app_config.coffee'
-TimeService = require 'shared/services/time_service.coffee'
-I18n        = require 'shared/services/i18n.coffee'
 moment      = require 'moment'
 
+AppConfig   = require 'shared/services/app_config.coffee'
+EventBus    = require 'shared/services/event_bus.coffee'
+TimeService = require 'shared/services/time_service.coffee'
+I18n        = require 'shared/services/i18n.coffee'
 
 angular.module('loomioApp').directive 'timeZoneSelect', ->
   scope: {zone: '='}
@@ -33,6 +34,6 @@ angular.module('loomioApp').directive 'timeZoneSelect', ->
     $scope.change = ->
       if AppConfig.timeZones[$scope.q]
         $scope.zone = AppConfig.timeZones[$scope.q]
-        $scope.$emit 'timeZoneSelected', AppConfig.timeZones[$scope.q]
+        EventBus.emit $scope, 'timeZoneSelected', AppConfig.timeZones[$scope.q]
         $scope.close()
   ]

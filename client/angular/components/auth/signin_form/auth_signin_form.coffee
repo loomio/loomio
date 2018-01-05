@@ -1,4 +1,5 @@
 AuthService = require 'shared/services/auth_service.coffee'
+EventBus    = require 'shared/services/event_bus.coffee'
 I18n        = require 'shared/services/i18n.coffee'
 
 { hardReload }    = require 'shared/helpers/window.coffee'
@@ -10,7 +11,7 @@ angular.module('loomioApp').directive 'authSigninForm', ->
   controller: ['$scope', ($scope) ->
 
     $scope.signIn = ->
-      $scope.$emit 'processing'
+      EventBus.emit $scope, 'processing'
       AuthService.signIn($scope.user).then ->
         hardReload()
       , ->
@@ -18,11 +19,11 @@ angular.module('loomioApp').directive 'authSigninForm', ->
           { token:    [I18n.t('auth_form.invalid_token')] }
         else
           { password: [I18n.t('auth_form.invalid_password')] }
-        $scope.$emit 'doneProcessing'
+        EventBus.emit $scope, 'doneProcessing'
 
     $scope.sendLoginLink = ->
-      $scope.$emit 'processing'
-      AuthService.sendLoginLink($scope.user).finally -> $scope.$emit 'doneProcessing'
+      EventBus.emit $scope, 'processing'
+      AuthService.sendLoginLink($scope.user).finally -> EventBus.emit $scope, 'doneProcessing'
 
     $scope.submit = ->
       if $scope.user.hasPassword or $scope.user.hasToken
@@ -31,5 +32,5 @@ angular.module('loomioApp').directive 'authSigninForm', ->
         $scope.sendLoginLink()
 
     submitOnEnter($scope, anyEnter: true)
-    $scope.$emit 'focus'
+    EventBus.emit $scope, 'focus'
   ]

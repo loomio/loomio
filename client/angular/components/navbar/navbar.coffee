@@ -1,4 +1,5 @@
 AppConfig      = require 'shared/services/app_config.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
@@ -13,7 +14,7 @@ angular.module('loomioApp').directive 'navbar', ['$rootScope', ($rootScope) ->
 
     $scope.isLoggedIn = ->
       AbilityService.isLoggedIn()
-    $scope.toggleSidebar = -> $rootScope.$broadcast 'toggleSidebar'
+    $scope.toggleSidebar = -> EventBus.broadcast $rootScope, 'toggleSidebar'
 
     $scope.signIn = ->
       ModalService.open 'AuthModal'

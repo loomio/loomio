@@ -1,11 +1,12 @@
-Records = require 'shared/services/records.coffee'
+Records  = require 'shared/services/records.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
 { applySequence } = require 'angular/helpers/apply.coffee'
 
 angular.module('loomioApp').directive 'documentForm', ['$timeout', ($timeout) ->
   templateUrl: 'generated/components/document/form/document_form.html'
   controller: ['$scope', ($scope) ->
-    $scope.$on 'initializeDocument', (_, doc, $mdMenu) ->
+    EventBus.listen $scope, 'initializeDocument', (_, doc, $mdMenu) ->
       $timeout -> $mdMenu.open() if $mdMenu
       $scope.document = doc.clone()
 
@@ -22,6 +23,6 @@ angular.module('loomioApp').directive 'documentForm', ['$timeout', ($timeout) ->
           return unless $mdMenu
           event.stopPropagation()
           $mdMenu.close()
-          $scope.$emit 'documentAdded', doc
+          EventBus.emit $scope, 'documentAdded', doc
    ]
  ]

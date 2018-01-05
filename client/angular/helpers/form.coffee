@@ -1,3 +1,4 @@
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 Records        = require 'shared/services/records.coffee'
 Session        = require 'shared/services/session.coffee'
@@ -18,44 +19,44 @@ module.exports =
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
-        scope.$emit 'outcomeSaved', data.outcomes[0].id
+        EventBus.emit scope, 'outcomeSaved', data.outcomes[0].id
     , options))
 
   submitStance: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "poll_#{model.poll().pollType}_vote_form.stance_#{actionName(model)}"
       prepareFn: ->
-        scope.$emit 'processing'
+        EventBus.emit scope, 'processing'
       successCallback: (data) ->
         model.poll().clearStaleStances()
         scrollTo '.poll-common-card__results-shown'
-        scope.$emit 'stanceSaved'
-        signIn(data, data.stances[0].participant_id, -> scope.$emit 'loggedIn') unless Session.user().emailVerified
+        EventBus.emit scope, 'stanceSaved'
+        signIn(data, data.stances[0].participant_id, -> EventBus.emit scope, 'loggedIn') unless Session.user().emailVerified
       cleanupFn: ->
-        scope.$emit 'doneProcessing'
+        EventBus.emit scope, 'doneProcessing'
     , options))
 
   submitPoll: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
       prepareFn: =>
-        scope.$emit 'processing'
+        EventBus.emit scope, 'processing'
         switch model.pollType
           # for polls with default poll options (proposal, check)
           when 'proposal', 'count'
             model.pollOptionNames = _.pluck fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
           # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
           else
-            options.broadcaster.$broadcast 'addPollOption'
+            EventBus.broadcast scope, 'addPollOption'
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
         poll = Records.polls.find(data.polls[0].key)
         poll.removeOrphanOptions()
-        scope.$emit 'nextStep', poll
+        EventBus.emit scope, 'nextStep', poll
       cleanupFn: ->
-        scope.$emit 'doneProcessing'
+        EventBus.emit scope, 'doneProcessing'
     , options))
 
   upload: (scope, model, options = {}) ->
@@ -93,7 +94,7 @@ submit = (scope, model, options = {}) ->
 prepare = (scope, model, options, prepareArgs) ->
   FlashService.loading(options.loadingMessage)
   options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
-  scope.$emit 'processing'       if typeof scope.$emit       is 'function'
+  EventBus.emit scope, 'processing'
   scope.isDisabled = true
   model.setErrors()
 
@@ -118,14 +119,14 @@ failure = (scope, model, options) ->
     FlashService.dismiss()
     options.failureCallback(response)                       if typeof options.failureCallback is 'function'
     response.json().then (r) -> model.setErrors(r.errors)   if _.contains([401,422], response.status)
-    scope.$emit errorTypes[response.status] or 'unknownError',
+    EventBus.emit scope, errorTypes[response.status] or 'unknownError',
       model: model
       response: response
 
 cleanup = (scope, model, options = {}) ->
   ->
     options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
-    scope.$emit 'doneProcessing'    if typeof scope.$emit       is 'function'
+    EventBus.emit scope, 'doneProcessing'
     scope.isDisabled = false
 
 calculateFlashOptions = (options) ->

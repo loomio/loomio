@@ -1,3 +1,5 @@
+EventBus = require 'shared/services/event_bus.coffee'
+
 { listenForLoading } = require 'angular/helpers/listen.coffee'
 
 angular.module('loomioApp').factory 'PollCommonAddOptionModal', ->
@@ -5,6 +7,6 @@ angular.module('loomioApp').factory 'PollCommonAddOptionModal', ->
   controller: ['$scope', 'poll', ($scope, poll) ->
     $scope.poll = poll.clone()
 
-    $scope.$on '$close', $scope.$close
+    EventBus.listen $scope, '$close', $scope.$close
     listenForLoading $scope
   ]

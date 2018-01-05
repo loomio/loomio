@@ -1,3 +1,5 @@
+EventBus = require 'shared/services/event_bus.coffee'
+
 { submitPoll } = require 'angular/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'pollCommonAddOptionForm', ->
@@ -8,10 +10,10 @@ angular.module('loomioApp').directive 'pollCommonAddOptionForm', ->
     $scope.submit = submitPoll $scope, $scope.poll,
       submitFn: $scope.poll.addOptions
       prepareFn: ->
-        $scope.$broadcast 'addPollOption'
-        $scope.$emit 'processing'
+        EventBus.broadcast $scope, 'addPollOption'
+        EventBus.emit $scope, 'processing'
       successCallback: ->
-        $scope.$emit '$close'
-        $rootScope.$broadcast 'pollOptionsAdded', $scope.poll
+        EventBus.emit $scope, '$close'
+        EventBus.broadcast $rootScope, 'pollOptionsAdded', $scope.poll
       flashSuccess: "poll_common_add_option.form.options_added"
   ]

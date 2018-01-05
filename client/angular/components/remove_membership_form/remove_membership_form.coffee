@@ -1,4 +1,5 @@
 Session       = require 'shared/services/session.coffee'
+EventBus      = require 'shared/services/event_bus.coffee'
 FlashService  = require 'shared/services/flash_service.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
@@ -14,7 +15,7 @@ angular.module('loomioApp').factory 'RemoveMembershipForm', ['$rootScope', ($roo
         if $scope.membership.user() == Session.user()
           LmoUrlService.goTo "/dashboard"
       , ->
-        $rootScope.$broadcast 'pageError', 'cantDestroyMembership', $scope.membership
+        EventBus.broadcast $rootScope, 'pageError', 'cantDestroyMembership', $scope.membership
         $scope.$close()
   ]
 ]

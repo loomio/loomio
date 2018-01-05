@@ -1,4 +1,5 @@
 Records       = require 'shared/services/records.coffee'
+EventBus      = require 'shared/services/event_bus.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
@@ -7,7 +8,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 { applyPollStartSequence } = require 'angular/helpers/apply.coffee'
 
 $controller = ($scope, $rootScope, $routeParams) ->
-  $rootScope.$broadcast('currentComponent', { page: 'startPollPage', skipScroll: true })
+  EventBus.broadcast $rootScope, 'currentComponent', { page: 'startPollPage', skipScroll: true }
   @poll = Records.polls.build
     title:       LmoUrlService.params().title
     pollType:    $routeParams.poll_type

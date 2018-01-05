@@ -1,6 +1,7 @@
 LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 Session           = require 'shared/services/session.coffee'
 Records           = require 'shared/services/records.coffee'
+EventBus          = require 'shared/services/event_bus.coffee'
 AbilityService    = require 'shared/services/ability_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
 LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
@@ -9,7 +10,7 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 { registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
 
 $controller = ($scope, $routeParams, $rootScope, $timeout) ->
-  $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
+  EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }
 
   # if we get given a comment id, then hard refresh after seeking it's sequenceId
   # sorry everyone, we'll stop using hardcoded notification.urls some day soon
@@ -26,7 +27,7 @@ $controller = ($scope, $routeParams, $rootScope, $timeout) ->
       comment = Records.comments.find(requestedCommentId())
       @discussion = comment.discussion()
       @discussion.requestedSequenceId = comment.createdEvent().sequenceId
-      $scope.$broadcast 'initActivityCard'
+      EventBus.broadcast $scope, 'initActivityCard'
 
   chompRequestedSequenceId = ->
     requestedSequenceId = parseInt(LmoUrlService.params().from)
@@ -45,7 +46,7 @@ $controller = ($scope, $routeParams, $rootScope, $timeout) ->
         max:      @discussion.lastSequenceId()
         pageType: 'activityItems'
 
-      $rootScope.$broadcast 'currentComponent',
+      EventBus.broadcast $rootScope, 'currentComponent',
         title: @discussion.title
         page: 'threadPage'
         group: @discussion.group()
@@ -58,9 +59,9 @@ $controller = ($scope, $routeParams, $rootScope, $timeout) ->
         skipScroll: true
 
   Records.discussions.findOrFetchById($routeParams.key, {}, true).then @init, (error) ->
-    $rootScope.$broadcast('pageError', error)
+    EventBus.broadcast $rootScope, 'pageError', error
 
-  $scope.$on 'threadPageScrollToSelector', (e, selector) =>
+  EventBus.listen $scope, 'threadPageScrollToSelector', (e, selector) =>
     scrollTo selector, offset: 150
 
   checkInView = ->

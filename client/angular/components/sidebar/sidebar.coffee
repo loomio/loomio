@@ -1,6 +1,7 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 InboxService   = require 'shared/services/inbox_service.coffee'
@@ -27,13 +28,13 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
       return _.first(availableGroups()) if availableGroups().length == 1
       _.find(availableGroups(), (g) -> g.id == Session.currentGroupId()) || Records.groups.build()
 
-    $scope.$on 'toggleSidebar', (event, show) ->
+    EventBus.listen $scope, 'toggleSidebar', (event, show) ->
       if !_.isUndefined(show)
         $scope.showSidebar = show
       else
         $scope.showSidebar = !$scope.showSidebar
 
-    $scope.$on 'currentComponent', (el, component) ->
+    EventBus.listen $scope, 'currentComponent', (el, component) ->
       $scope.currentState = component
 
     $scope.onPage = (page, key, filter) ->

@@ -1,3 +1,4 @@
+EventBus      = require 'shared/services/event_bus.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 # a series of helpers which attaches functionality to a scope, such as performing
@@ -55,7 +56,7 @@ applySequence = ($scope, options) ->
       # don't bubble the event
       args[0].stopPropagation() if typeof (args[0] or {}).stopPropagation is 'function'
       # emit a close event if we've run out of steps
-      emitter.$emit '$close' if !$scope.currentStep and !options.skipClose
+      EventBus.emit emitter, '$close' if !$scope.currentStep and !options.skipClose
 
-  emitter.unlistenPrevious = emitter.$on 'previousStep', changeStep(-1, 'Back', options, emitter)
-  emitter.unlistenNext     = emitter.$on 'nextStep',     changeStep(1, 'Complete', options, emitter)
+  emitter.unlistenPrevious = EventBus.listen emitter, 'previousStep', changeStep(-1, 'Back', options, emitter)
+  emitter.unlistenNext     = EventBus.listen emitter, 'nextStep',     changeStep(1, 'Complete', options, emitter)

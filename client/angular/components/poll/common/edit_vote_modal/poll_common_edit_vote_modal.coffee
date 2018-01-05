@@ -1,3 +1,5 @@
+EventBus = require 'shared/services/event_bus.coffee'
+
 { listenForLoading } = require 'angular/helpers/listen.coffee'
 { iconFor }          = require 'shared/helpers/poll.coffee'
 
@@ -6,9 +8,9 @@ angular.module('loomioApp').factory 'PollCommonEditVoteModal', ['$rootScope', ($
   controller: ['$scope', 'stance', ($scope, stance) ->
     $scope.stance = stance.clone()
 
-    $scope.$on 'stanceSaved', ->
+    EventBus.listen $scope, 'stanceSaved', ->
       $scope.$close()
-      $rootScope.$broadcast 'refreshStance'
+      EventBus.broadcast $rootScope, 'refreshStance'
 
     $scope.icon = ->
       iconFor($scope.stance.poll())

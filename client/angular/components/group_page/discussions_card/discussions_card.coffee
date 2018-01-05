@@ -1,5 +1,6 @@
 Records            = require 'shared/services/records.coffee'
 AbilityService     = require 'shared/services/ability_service.coffee'
+EventBus           = require 'shared/services/event_bus.coffee'
 RecordLoader       = require 'shared/services/record_loader.coffee'
 ThreadQueryService = require 'shared/services/thread_query_service.coffee'
 ModalService       = require 'shared/services/modal_service.coffee'
@@ -34,7 +35,7 @@ angular.module('loomioApp').directive 'discussionsCard', ['$timeout', ($timeout)
       $scope.loader.fetchRecords()
 
     $scope.init(LmoUrlService.params().filter)
-    $scope.$on 'subgroupsLoaded', -> $scope.init($scope.filter)
+    EventBus.listen $scope, 'subgroupsLoaded', -> $scope.init($scope.filter)
 
     $scope.searchThreads = ->
       return Promise.resolve(true) unless $scope.fragment

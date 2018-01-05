@@ -1,4 +1,5 @@
 Session        = require 'shared/services/session.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
@@ -21,17 +22,17 @@ angular.module('loomioApp').directive 'addCommentPanel', ['$timeout', ($timeout)
 
     $scope.indent = -> $scope.eventWindow.useNesting && $scope.isReply
 
-    $scope.$on 'replyToEvent', (e, event) ->
+    EventBus.listen $scope, 'replyToEvent', (e, event) ->
       # if we're in nesting and we're the correct reply OR we're in chronoglogical, always accept parentComment
       if (!$scope.eventWindow.useNesting) || ($scope.parentEvent.id == event.id)
         $scope.show = true
         $timeout ->
           $scope.isReply = true
-          $scope.$broadcast 'setParentComment', event.model()
+          EventBus.broadcast $scope, 'setParentComment', event.model()
 
       scrollTo('.add-comment-panel textarea', {bottom: true, offset: 200})
 
-    $scope.$on 'commentSaved', ->
+    EventBus.listen $scope, 'commentSaved', ->
       if $scope.parentEvent == $scope.discussion.createdEvent()
         $scope.parentComment = null
       else

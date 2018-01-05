@@ -1,5 +1,6 @@
 Records        = require 'shared/services/records.coffee'
 Session        = require 'shared/services/session.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 ThreadService  = require 'shared/services/thread_service.coffee'
@@ -22,7 +23,7 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
       translate "context_panel.thread_status.#{$scope.status()}"
 
     $scope.showLintel = (bool) ->
-      $rootScope.$broadcast('showThreadLintel', bool)
+      EventBus.broadcast $rootScope, 'showThreadLintel', bool
 
     $scope.showRevisionHistory = ->
       ModalService.open 'RevisionHistoryModal', model: => $scope.discussion

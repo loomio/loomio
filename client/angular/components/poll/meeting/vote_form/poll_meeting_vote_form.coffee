@@ -1,3 +1,5 @@
+EventBus = require 'shared/services/event_bus.coffee'
+
 { submitOnEnter } = require 'angular/helpers/keyboard.coffee'
 { submitStance }  = require 'angular/helpers/form.coffee'
 { fromPairs }     = require 'shared/helpers/lodash_ext.coffee'
@@ -14,11 +16,11 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
 
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
-        $scope.$emit 'processing'
+        EventBus.emit $scope, 'processing'
         attrs = _.map _.compact(_.map($scope.pollOptionIdsChecked, (v,k) -> parseInt(k) if v)), (id) -> {poll_option_id: id}
         $scope.stance.stanceChoicesAttributes = attrs if _.any(attrs)
 
-    $scope.$on 'timeZoneSelected', (e, zone) ->
+    EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
       $scope.zone = zone
 
     submitOnEnter($scope)
