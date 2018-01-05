@@ -1,4 +1,4 @@
-{ listenForLoading }  = require 'angular/helpers/listen.coffee'
+{ listenForLoading }  = require 'shared/helpers/listen.coffee'
 { submitOnEnter }     = require 'angular/helpers/keyboard.coffee'
 { submitOutcome }     = require 'angular/helpers/form.coffee'
 { fieldFromTemplate } = require 'shared/helpers/poll.coffee'

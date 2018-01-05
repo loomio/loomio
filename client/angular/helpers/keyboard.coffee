@@ -1,6 +1,8 @@
 AppConfig = require 'shared/services/app_config.coffee'
 EventBus  = require 'shared/services/event_bus.coffee'
 
+## NB: only in angular/helpers because of $$listeners hack
+
 # a series of method related to the user entering input through the keyboard,
 # such as hotkeys or submit on enter
 module.exports =

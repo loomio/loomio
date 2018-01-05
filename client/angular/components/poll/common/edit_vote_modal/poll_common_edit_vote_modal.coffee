@@ -1,6 +1,6 @@
 EventBus = require 'shared/services/event_bus.coffee'
 
-{ listenForLoading } = require 'angular/helpers/listen.coffee'
+{ listenForLoading } = require 'shared/helpers/listen.coffee'
 { iconFor }          = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').factory 'PollCommonEditVoteModal', ['$rootScope', ($rootScope) ->

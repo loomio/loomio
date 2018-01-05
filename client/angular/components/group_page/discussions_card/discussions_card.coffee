@@ -6,7 +6,7 @@ ThreadQueryService = require 'shared/services/thread_query_service.coffee'
 ModalService       = require 'shared/services/modal_service.coffee'
 LmoUrlService      = require 'shared/services/lmo_url_service.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 
 angular.module('loomioApp').directive 'discussionsCard', ['$timeout', ($timeout) ->
   scope: {group: '='}

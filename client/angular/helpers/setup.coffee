@@ -6,7 +6,7 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 ScrollService = require 'shared/services/scroll_service.coffee'
 I18n          = require 'shared/services/i18n.coffee'
 
-{ listenForLoading } = require 'angular/helpers/listen.coffee'
+{ listenForLoading } = require 'shared/helpers/listen.coffee'
 
 # a series of helpers to apply angular-specific implementations to the vanilla Loomio app,
 # such as how to open modals or display a flash message

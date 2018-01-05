@@ -5,7 +5,7 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
+{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', ($rootScope, clipboard) ->
   scope: {event: '=', eventable: '='}

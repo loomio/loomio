@@ -3,7 +3,7 @@ Records        = require 'shared/services/records.coffee'
 EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 
 angular.module('loomioApp').directive 'translateButton', ->
   scope: {model: '=', showdot: '=?'}

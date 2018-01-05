@@ -4,7 +4,7 @@ EventBus       = require 'shared/services/event_bus.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 
-{ listenForLoading } = require 'angular/helpers/listen.coffee'
+{ listenForLoading } = require 'shared/helpers/listen.coffee'
 
 $controller = ($scope, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'verifyStancesPage', skipScroll: true }

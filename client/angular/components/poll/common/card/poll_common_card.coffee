@@ -2,7 +2,7 @@ Session  = require 'shared/services/session.coffee'
 Records  = require 'shared/services/records.coffee'
 EventBus = require 'shared/services/event_bus.coffee'
 
-{ listenForLoading } = require 'angular/helpers/listen.coffee'
+{ listenForLoading } = require 'shared/helpers/listen.coffee'
 { myLastStanceFor }  = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').directive 'pollCommonCard', ->

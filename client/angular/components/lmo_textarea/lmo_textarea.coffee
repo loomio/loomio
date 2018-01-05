@@ -2,7 +2,7 @@ Records      = require 'shared/services/records.coffee'
 EventBus     = require 'shared/services/event_bus.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
-{ listenForMentions, listenForEmoji, listenForPaste } = require 'angular/helpers/listen.coffee'
+{ listenForMentions, listenForEmoji, listenForPaste } = require 'shared/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
   scope: {model: '=', field: '@', noAttachments: '@', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}

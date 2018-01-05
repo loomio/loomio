@@ -11,7 +11,7 @@ I18n            = require 'shared/services/i18n.coffee'
 { viewportSize, scrollTo, trackEvents } = require 'shared/helpers/window.coffee'
 { signIn, subscribeToLiveUpdate }       = require 'shared/helpers/user.coffee'
 { broadcastKeyEvent, registerHotkeys }  = require 'angular/helpers/keyboard.coffee'
-{ listenForEvents }                     = require 'angular/helpers/listen.coffee'
+{ listenForEvents }                     = require 'shared/helpers/listen.coffee'
 { setupAngular }                        = require 'angular/helpers/setup.coffee'
 
 $controller = ($scope, $rootScope, $injector, $timeout, $router, $browser) ->

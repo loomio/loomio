@@ -1,6 +1,6 @@
 AppConfig = require 'shared/services/app_config.coffee'
 
-{ listenForLoading } = require 'angular/helpers/listen.coffee'
+{ listenForLoading } = require 'shared/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'authForm', ->
   scope: {preventClose: '=', user: '='}
