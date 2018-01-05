@@ -7,5 +7,5 @@
 
   module.exports = Vue.component 'root-component',
     data: ->
-      key: "ofsKRbUV"
+      key: "CjXsIEBQ"
 </script>

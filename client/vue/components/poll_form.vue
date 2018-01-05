@@ -28,7 +28,7 @@
           this.poll = poll
           this.$forceUpdate()
       else
-        this.poll = Records.polls.build(pollType)
+        this.poll = Records.polls.build(pollType: pollType)
       Records.polls.findOrFetchById(this.pollkey).then (poll) =>
         this.poll = poll
         this.$forceUpdate()
