@@ -31,9 +31,9 @@ $controller = ($scope, $injector) ->
 
   setupAngular($scope, $injector)
 
-  EventBus.listen $scope, 'toggleSidebar', (_, show) -> $scope.renderSidebar = true if show
-  EventBus.listen $scope, 'loggedIn',                -> $scope.loggedIn()
-  EventBus.listen $scope, 'updateCoverPhoto',        -> updateCover()
+  EventBus.listen $scope, 'toggleSidebar',    -> $scope.renderSidebar = true
+  EventBus.listen $scope, 'loggedIn',         -> $scope.loggedIn()
+  EventBus.listen $scope, 'updateCoverPhoto', -> updateCover()
   EventBus.listen $scope, 'pageError', (_, error) ->
     $scope.pageError = error
     ModalService.forceSignIn() if !AbilityService.isLoggedIn() and error.status == 403
