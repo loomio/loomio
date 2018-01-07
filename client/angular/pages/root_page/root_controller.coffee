@@ -10,11 +10,12 @@ I18n            = require 'shared/services/i18n.coffee'
 
 { viewportSize, scrollTo, trackEvents } = require 'shared/helpers/window.coffee'
 { signIn, subscribeToLiveUpdate }       = require 'shared/helpers/user.coffee'
-{ broadcastKeyEvent, registerHotkeys }  = require 'angular/helpers/keyboard.coffee'
-{ listenForEvents }                     = require 'shared/helpers/listen.coffee'
-{ setupAngular }                        = require 'angular/helpers/setup.coffee'
+{ broadcastKeyEvent, registerHotkeys }  = require 'shared/helpers/keyboard.coffee'
+{ setupAngular }                        = require 'angular/setup.coffee'
 
-$controller = ($scope, $rootScope, $injector, $timeout, $router, $browser) ->
+$controller = ($scope, $injector) ->
+  $injector.get('$router').config(Routes.concat(AppConfig.plugins.routes))
+
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
 
@@ -28,7 +29,7 @@ $controller = ($scope, $rootScope, $injector, $timeout, $router, $browser) ->
   $scope.loggedIn = ->
     $scope.pageError = null
     $scope.refreshing = true
-    $timeout -> $scope.refreshing = false
+    $injector.get('$timeout') -> $scope.refreshing = false
     IntercomService.boot()
     subscribeToLiveUpdate()
 
@@ -65,23 +66,9 @@ $controller = ($scope, $rootScope, $injector, $timeout, $router, $browser) ->
   EventBus.listen $scope, 'clearBackgroundImageUrl', (event) ->
     angular.element(document.querySelector('.lmo-main-background')).removeAttr('style')
 
-  $router.config(Routes.concat(AppConfig.plugins.routes))
-
-  listenForEvents($scope)
   signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
-  registerHotkeys($scope,
-    pressedI: -> ModalService.open 'InvitationModal',      group:      -> Session.currentGroup or Records.groups.build()
-    pressedG: -> ModalService.open 'GroupModal',           group:      -> Records.groups.build()
-    pressedT: -> ModalService.open 'DiscussionModal',      discussion: -> Records.discussions.build(groupId: (Session.currentGroup or {}).id)
-    pressedP: -> ModalService.open 'PollCommonStartModal', poll:       -> Records.polls.build(authorId: Session.user().id)
-  ) if AbilityService.isLoggedIn()
-
-  Records.afterImport = -> $timeout -> $rootScope.$apply()
-  Records.setRemoteCallbacks
-    onPrepare: -> $browser.$$incOutstandingRequestCount()
-    onCleanup: -> $browser.$$completeOutstandingRequest(->)
 
   return
 
-$controller.$inject = ['$scope', '$rootScope', '$injector', '$timeout', '$router', '$browser']
+$controller.$inject = ['$scope', '$injector']
 angular.module('loomioApp').controller 'RootController', $controller

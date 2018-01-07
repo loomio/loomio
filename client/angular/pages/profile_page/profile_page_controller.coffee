@@ -5,7 +5,7 @@ EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ submitForm }   = require 'angular/helpers/form.coffee'
+{ submitForm }   = require 'shared/helpers/form.coffee'
 
 $controller = ($scope, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}

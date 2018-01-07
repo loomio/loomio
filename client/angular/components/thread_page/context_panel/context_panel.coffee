@@ -20,7 +20,7 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
       return 'pinned' if $scope.discussion.pinned
 
     $scope.statusTitle = ->
-      translate "context_panel.thread_status.#{$scope.status()}"
+      I18n.t "context_panel.thread_status.#{$scope.status()}"
 
     $scope.showLintel = (bool) ->
       EventBus.broadcast $rootScope, 'showThreadLintel', bool

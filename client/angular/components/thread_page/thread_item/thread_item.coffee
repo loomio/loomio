@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 { eventHeadline, eventTitle, eventPollType } = require 'shared/helpers/helptext.coffee'
 
 angular.module('loomioApp').directive 'threadItem', ['$compile', ($compile) ->

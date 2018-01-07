@@ -8,8 +8,6 @@ FlashService   = require 'shared/services/flash_service.coffee'
 { fieldFromTemplate } = require 'shared/helpers/poll.coffee'
 { scrollTo }          = require 'shared/helpers/window.coffee'
 
-## TODO: extract $watch so that this can move to shared/helpers (v important :) )
-
 # a helper to aid submitting forms throughout the app
 module.exports =
   submitForm: (scope, model, options = {}) ->
@@ -76,7 +74,7 @@ submit = (scope, model, options = {}) ->
   # fetch draft from server and listen for changes to it
   if model.hasDrafts and model.isNew() and AbilityService.isLoggedIn()
     model.fetchAndRestoreDraft()
-    scope.$watch model.draftFields, model.planDraftFetch, true
+    EventBus.watch scope, model.draftFields, model.planDraftFetch, true
 
   submitFn  = options.submitFn  or model.save
   confirmFn = options.confirmFn or (-> false)

@@ -1,4 +1,4 @@
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'pollCommonUnsubscribeForm', ->
   scope: {poll: '='}

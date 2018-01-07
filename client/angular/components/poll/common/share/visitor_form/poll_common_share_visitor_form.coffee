@@ -2,7 +2,7 @@ Records      = require 'shared/services/records.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
 I18n         = require 'shared/services/i18n.coffee'
 
-{ registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+{ registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ->
   scope: {poll: '='}
@@ -39,7 +39,7 @@ angular.module('loomioApp').directive 'pollCommonShareVisitorForm', ->
                FlashService.success "poll_common_share_form.guest_revoked", email: visitor.email
 
     $scope.remind = (visitor) ->
-      visitor.remind($scope.poll).then ->
+      visitor.resend($scope.poll).then ->
         visitor.reminded = true
         FlashService.success 'poll_common_share_form.email_invited', email: visitor.email
 

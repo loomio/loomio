@@ -1,8 +1,8 @@
 Records  = require 'shared/services/records.coffee'
 EventBus = require 'shared/services/event_bus.coffee'
 
-{ submitForm }    = require 'angular/helpers/form.coffee'
-{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
+{ submitForm }    = require 'shared/helpers/form.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'contactRequestForm', ->
   scope: {user: '='}

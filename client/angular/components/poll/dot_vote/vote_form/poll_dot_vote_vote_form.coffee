@@ -1,8 +1,8 @@
 Records  = require 'shared/services/records.coffee'
 EventBus = require 'shared/services/event_bus.coffee'
 
-{ submitStance }  = require 'angular/helpers/form.coffee'
-{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
+{ submitStance }  = require 'shared/helpers/form.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
   scope: {stance: '='}

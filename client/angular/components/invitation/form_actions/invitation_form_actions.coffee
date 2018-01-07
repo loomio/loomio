@@ -2,7 +2,7 @@ Records      = require 'shared/services/records.coffee'
 EventBus     = require 'shared/services/event_bus.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'invitationFormActions', ->
   scope: {invitationForm: '='}

@@ -7,7 +7,7 @@ PaginationService = require 'shared/services/pagination_service.coffee'
 LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 
 { scrollTo }         = require 'shared/helpers/window.coffee'
-{ registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+{ registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
 
 $controller = ($scope, $routeParams, $rootScope, $timeout) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }

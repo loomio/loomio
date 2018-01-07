@@ -1,4 +1,4 @@
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'PinThreadModal', ->
   templateUrl: 'generated/components/pin_thread_modal/pin_thread_modal.html'

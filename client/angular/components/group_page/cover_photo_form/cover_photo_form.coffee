@@ -1,7 +1,7 @@
 Records  = require 'shared/services/records.coffee'
 EventBus = require 'shared/services/event_bus.coffee'
 
-{ upload } = require 'angular/helpers/form.coffee'
+{ upload } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'CoverPhotoForm', ['$timeout', '$rootScope', ($timeout, $rootScope) ->
   templateUrl: 'generated/components/group_page/cover_photo_form/cover_photo_form.html'

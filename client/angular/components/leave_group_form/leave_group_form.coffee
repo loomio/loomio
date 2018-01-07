@@ -3,7 +3,7 @@ EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'LeaveGroupForm', ['$rootScope', ($rootScope) ->
   templateUrl: 'generated/components/leave_group_form/leave_group_form.html'

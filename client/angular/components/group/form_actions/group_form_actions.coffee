@@ -3,9 +3,9 @@ EventBus = require 'shared/services/event_bus.coffee'
 I18n     = require 'shared/services/i18n.coffee'
 
 { scrollTo }            = require 'shared/helpers/window.coffee'
-{ submitForm }          = require 'angular/helpers/form.coffee'
+{ submitForm }          = require 'shared/helpers/form.coffee'
 { groupPrivacyConfirm } = require 'shared/helpers/helptext.coffee'
-{ submitOnEnter }       = require 'angular/helpers/keyboard.coffee'
+{ submitOnEnter }       = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'groupFormActions', ->
   scope: {group: '='}

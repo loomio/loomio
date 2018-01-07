@@ -5,7 +5,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm }   = require 'angular/helpers/form.coffee'
+{ submitForm }   = require 'shared/helpers/form.coffee'
 
 $controller = ($rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}

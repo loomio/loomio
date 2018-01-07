@@ -1,7 +1,7 @@
 EventBus = require 'shared/services/event_bus.coffee'
 
-{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
-{ submitStance }  = require 'angular/helpers/form.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitStance }  = require 'shared/helpers/form.coffee'
 { fromPairs }     = require 'shared/helpers/lodash_ext.coffee'
 
 angular.module('loomioApp').directive 'pollMeetingVoteForm', ->

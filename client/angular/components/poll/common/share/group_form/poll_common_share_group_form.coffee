@@ -1,7 +1,7 @@
 Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-{ submitPoll } = require 'angular/helpers/form.coffee'
+{ submitPoll } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'pollCommonShareGroupForm', ['$rootScope', ($rootScope) ->
   scope: {poll: '='}
