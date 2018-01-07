@@ -26,7 +26,7 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
 
     $scope.currentGroup = ->
       return _.first(availableGroups()) if availableGroups().length == 1
-      _.find(availableGroups(), (g) -> g.id == Session.currentGroupId()) || Records.groups.build()
+      _.find(availableGroups(), (g) -> g.id == (AppConfig.currentGroup or {}).id) || Records.groups.build()
 
     EventBus.listen $scope, 'toggleSidebar', (event, show) ->
       if !_.isUndefined(show)

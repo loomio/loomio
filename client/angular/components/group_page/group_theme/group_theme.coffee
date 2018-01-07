@@ -9,9 +9,6 @@ angular.module('loomioApp').directive 'groupTheme', ['$rootScope', ($rootScope) 
   templateUrl: 'generated/components/group_page/group_theme/group_theme.html'
   replace: true
   controller: ['$scope', ($scope) ->
-
-    EventBus.broadcast $rootScope, 'setBackgroundImageUrl', $scope.group
-
     $scope.logoStyle = ->
       { 'background-image': "url(#{$scope.group.logoUrl()})" }
 

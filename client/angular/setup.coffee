@@ -1,5 +1,4 @@
 AppConfig      = require 'shared/services/app_config.coffee'
-Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
@@ -46,10 +45,10 @@ setupAngularEventBus = ->
 
 setupAngularHotkeys = ($rootScope) ->
   registerHotkeys $rootScope,
-    pressedI: -> ModalService.open 'InvitationModal',      group:      -> Session.currentGroup or Records.groups.build()
+    pressedI: -> ModalService.open 'InvitationModal',      group:      -> AppConfig.currentGroup or Records.groups.build()
     pressedG: -> ModalService.open 'GroupModal',           group:      -> Records.groups.build()
-    pressedT: -> ModalService.open 'DiscussionModal',      discussion: -> Records.discussions.build(groupId: (Session.currentGroup or {}).id)
-    pressedP: -> ModalService.open 'PollCommonStartModal', poll:       -> Records.polls.build(authorId: Session.user().id)
+    pressedT: -> ModalService.open 'DiscussionModal',      discussion: -> Records.discussions.build(groupId: (AppConfig.currentGroup or {}).id)
+    pressedP: -> ModalService.open 'PollCommonStartModal', poll:       -> Records.polls.build()
 
 setupAngularFlash = ($rootScope) ->
   FlashService.setBroadcastMethod (flashOptions) ->
