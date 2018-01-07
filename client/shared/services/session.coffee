@@ -2,6 +2,8 @@ AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 I18n      = require 'shared/services/i18n.coffee'
 
+{ hardReload } = require 'shared/helpers/window.coffee'
+
 module.exports = new class Session
   signIn: (userId, invitationToken) ->
     defaultParams = _.pick {invitation_token: invitationToken}, _.identity
@@ -20,7 +22,7 @@ module.exports = new class Session
 
   signOut: ->
     AppConfig.loggingOut = true
-    Records.sessions.remote.destroy('').then -> window.location.href = '/'
+    Records.sessions.remote.destroy('').then -> hardReload('/')
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()

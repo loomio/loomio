@@ -4,7 +4,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ scrollTo } = require 'shared/helpers/window.coffee'
+{ scrollTo } = require 'shared/helpers/layout.coffee'
 
 $controller = ($routeParams, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'membershipsPage'}

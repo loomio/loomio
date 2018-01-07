@@ -6,7 +6,7 @@ AbilityService    = require 'shared/services/ability_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
 LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 
-{ scrollTo }         = require 'shared/helpers/window.coffee'
+{ scrollTo }         = require 'shared/helpers/layout.coffee'
 { registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
 
 $controller = ($scope, $routeParams, $rootScope, $timeout) ->

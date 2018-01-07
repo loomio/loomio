@@ -2,7 +2,7 @@ Records  = require 'shared/services/records.coffee'
 EventBus = require 'shared/services/event_bus.coffee'
 I18n     = require 'shared/services/i18n.coffee'
 
-{ scrollTo }            = require 'shared/helpers/window.coffee'
+{ scrollTo }            = require 'shared/helpers/layout.coffee'
 { submitForm }          = require 'shared/helpers/form.coffee'
 { groupPrivacyConfirm } = require 'shared/helpers/helptext.coffee'
 { submitOnEnter }       = require 'shared/helpers/keyboard.coffee'

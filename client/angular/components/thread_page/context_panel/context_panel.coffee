@@ -7,7 +7,7 @@ ThreadService  = require 'shared/services/thread_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
 { listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
-{ scrollTo }                                  = require 'shared/helpers/window.coffee'
+{ scrollTo }                                  = require 'shared/helpers/layout.coffee'
 
 angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope) ->
   scope: {discussion: '='}

@@ -8,7 +8,8 @@ ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 I18n            = require 'shared/services/i18n.coffee'
 
-{ viewportSize, scrollTo, trackEvents, updateCover } = require 'shared/helpers/window.coffee'
+{ scrollTo, updateCover, setCurrentComponent } = require 'shared/helpers/layout.coffee'
+{ viewportSize, trackEvents }          = require 'shared/helpers/window.coffee'
 { signIn, subscribeToLiveUpdate }      = require 'shared/helpers/user.coffee'
 { broadcastKeyEvent, registerHotkeys } = require 'shared/helpers/keyboard.coffee'
 { setupAngular }                       = require 'angular/setup.coffee'
@@ -18,14 +19,9 @@ $controller = ($scope, $injector) ->
 
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
-
   $scope.isLoggedIn       = -> AbilityService.isLoggedIn()
   $scope.isEmailVerified  = -> AbilityService.isEmailVerified()
   $scope.keyDown          = (event) -> broadcastKeyEvent($scope, event)
-  $scope.forceSignIn      = ->
-    return if $scope.forcedSignIn
-    $scope.forcedSignIn = true
-    ModalService.open 'AuthModal', preventClose: -> true
   $scope.loggedIn = ->
     $scope.pageError = null
     $scope.refreshing = true
@@ -35,33 +31,16 @@ $controller = ($scope, $injector) ->
 
   setupAngular($scope, $injector)
 
-  EventBus.listen $scope, 'toggleSidebar', (event, show) ->
-    return if show == false
-    $scope.renderSidebar = true
-
-  EventBus.listen $scope, 'loggedIn', $scope.loggedIn
-  EventBus.listen $scope, 'logout', -> IntercomService.shutdown()
-
-  EventBus.listen $scope, 'currentComponent', (event, options = {}) ->
-    title = _.trunc options.title or I18n.t(options.titleKey), 300
-    document.querySelector('title').text = [title, AppConfig.theme.site_name].join(' | ')
-
-    AppConfig.currentGroup = options.group
-
-    scrollTo(options.scrollTo or 'h1') unless options.skipScroll
-    updateCover()
-
-    IntercomService.updateWithGroup(AppConfig.currentGroup)
-
+  EventBus.listen $scope, 'toggleSidebar', (_, show) -> $scope.renderSidebar = true if show
+  EventBus.listen $scope, 'loggedIn',                -> $scope.loggedIn()
+  EventBus.listen $scope, 'updateCoverPhoto',        -> updateCover()
+  EventBus.listen $scope, 'pageError', (_, error) ->
+    $scope.pageError = error
+    ModalService.forceSignIn() if !AbilityService.isLoggedIn() and error.status == 403
+  EventBus.listen $scope, 'currentComponent', (_, options) ->
     $scope.pageError = null
     $scope.links = options.links or {}
-    $scope.forceSignIn() if AbilityService.requireLoginFor(options.page) or AppConfig.pendingIdentity?
-
-  EventBus.listen $scope, 'pageError', (event, error) ->
-    $scope.pageError = error
-    $scope.forceSignIn() if !AbilityService.isLoggedIn() and error.status == 403
-
-  EventBus.listen $scope, 'updateCoverPhoto', updateCover
+    setCurrentComponent(options)
 
   signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
 

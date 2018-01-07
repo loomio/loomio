@@ -1,6 +1,6 @@
 EventBus = require 'shared/services/event_bus.coffee'
 
-{ scrollTo } = require 'shared/helpers/window.coffee'
+{ scrollTo } = require 'shared/helpers/layout.coffee'
 
 angular.module('loomioApp').directive 'threadLintel', ->
   restrict: 'E'
