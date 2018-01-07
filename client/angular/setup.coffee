@@ -9,18 +9,18 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 ScrollService  = require 'shared/services/scroll_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
-{ listenForLoading, listenForEvents } = require 'shared/helpers/listen.coffee'
-{ registerHotkeys }                   = require 'shared/helpers/keyboard.coffee'
+{ listenForLoading } = require 'shared/helpers/listen.coffee'
+{ registerHotkeys }  = require 'shared/helpers/keyboard.coffee'
 
 # a series of helpers to apply angular-specific implementations to the vanilla Loomio app,
 # such as how to open modals or display a flash message
 module.exports =
   setupAngular: ($rootScope, $injector) ->
-    listenForEvents($rootScope)
     setupAngularScroll()
     setupAngularEventBus()
     setupAngularHotkeys($rootScope)
     setupAngularFlash($rootScope)
+    setupAngularAhoy($rootScope)
     setupAngularRoutes($injector.get('$router'))
     setupAngularNavigate($injector.get('$location'))
     setupAngularTranslate($rootScope, $injector.get('$translate'))
@@ -55,6 +55,25 @@ setupAngularHotkeys = ($rootScope) ->
 setupAngularFlash = ($rootScope) ->
   FlashService.setBroadcastMethod (flashOptions) ->
     EventBus.broadcast $rootScope, 'flashMessage', flashOptions
+
+setupAngularAhoy = ($rootScope) ->
+  return unless ahoy?
+
+  ahoy.trackClicks()
+  ahoy.trackSubmits()
+  ahoy.trackChanges()
+
+  # track page views
+  EventBus.listen $scope, 'currentComponent', =>
+    ahoy.track '$view',
+      page:  window.location.pathname
+      url:   window.location.href
+      title: document.title
+
+  # track modal views
+  EventBus.listen $scope, 'modalOpened', (_, modal) =>
+    ahoy.track 'modalOpened',
+      name: modal.templateUrl.match(/(\w+)\.html$/)[1]
 
 setupAngularRoutes = ($router) ->
   $router.config(Routes.concat(AppConfig.plugins.routes))
