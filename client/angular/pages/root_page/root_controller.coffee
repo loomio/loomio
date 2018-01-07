@@ -59,12 +59,12 @@ $controller = ($scope, $injector) ->
     $scope.pageError = error
     $scope.forceSignIn() if !AbilityService.isLoggedIn() and error.status == 403
 
-  EventBus.listen $scope, 'setBackgroundImageUrl', (event, group) ->
+  EventBus.listen $scope, 'setBackgroundImageUrl', (_, group) ->
     url = group.coverUrl(viewportSize())
-    angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})")
+    document.querySelector('.lmo-main-background').setAttribute('style', "background-image: url(#{url})")
 
-  EventBus.listen $scope, 'clearBackgroundImageUrl', (event) ->
-    angular.element(document.querySelector('.lmo-main-background')).removeAttr('style')
+  EventBus.listen $scope, 'clearBackgroundImageUrl', ->
+    document.querySelector('.lmo-main-background').removeAttribute('style')
 
   signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
 
