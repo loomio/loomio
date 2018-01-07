@@ -3,8 +3,7 @@ EventBus     = require 'shared/services/event_bus.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
 $controller = ($scope, $rootScope) ->
-  EventBus.broadcast $rootScope, 'currentComponent', {page: 'authorizedAppsPage'}
-  EventBus.broadcast $rootScope, 'setTitle', 'Apps'
+  EventBus.broadcast $rootScope, 'currentComponent', {title: 'Apps', page: 'authorizedAppsPage'}
 
   @loading = true
   @applications = ->

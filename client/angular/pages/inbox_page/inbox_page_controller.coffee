@@ -7,8 +7,6 @@ ModalService   = require 'shared/services/modal_service.coffee'
 
 $controller = ($scope, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', {titleKey: 'inbox_page.unread_threads' ,page: 'inboxPage'}
-  EventBus.broadcast $rootScope, 'setTitle', 'Inbox'
-  EventBus.broadcast $rootScope, 'analyticsClearGroup'
   InboxService.load()
 
   @threadLimit = 50

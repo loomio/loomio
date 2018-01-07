@@ -8,8 +8,7 @@ $controller = ($rootScope, $routeParams) ->
   @init = (application) =>
     if application and !@application?
       @application = application
-      EventBus.broadcast $rootScope, 'currentComponent', { page: 'oauthApplicationPage'}
-      EventBus.broadcast $rootScope, 'setTitle', @application.name
+      EventBus.broadcast $rootScope, 'currentComponent', { title: application.name, page: 'oauthApplicationPage'}
 
   @init Records.oauthApplications.find parseInt($routeParams.id)
   Records.oauthApplications.findOrFetchById(parseInt($routeParams.id)).then @init, (error) ->

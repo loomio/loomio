@@ -10,16 +10,6 @@ angular.module('loomioApp').directive 'descriptionCard', ->
   templateUrl: 'generated/components/group_page/description_card/description_card.html'
   replace: true
   controller: ['$scope', ($scope) ->
-    $scope.disableEditor = -> $scope.editorEnabled = false
-
-    $scope.canAdministerGroup = ->
-      AbilityService.canAdministerGroup($scope.group)
-
-    $scope.save = submitForm $scope, $scope.group,
-      prepareFn: -> $scope.group.description = $scope.buh.editableDescription
-      flashSuccess: 'description_card.messages.description_updated'
-      successCallback: $scope.disableEditor
-
     $scope.actions = [
       name: 'edit_group'
       icon: 'mdi-pencil'

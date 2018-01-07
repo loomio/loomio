@@ -3,8 +3,7 @@ EventBus     = require 'shared/services/event_bus.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
 $controller = ($scope, $rootScope) ->
-  EventBus.broadcast $rootScope, 'currentComponent', {page: 'registeredAppsPage'}
-  EventBus.broadcast $rootScope, 'setTitle', 'OAuth Application Dashboard'
+  EventBus.broadcast $rootScope, 'currentComponent', {title: 'OAuth Application Dashboard', page: 'registeredAppsPage'}
 
   @loading = true
   @applications = ->

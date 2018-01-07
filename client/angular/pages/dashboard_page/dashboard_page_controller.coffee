@@ -21,8 +21,6 @@ $controller = ($rootScope, $routeParams, $mdMedia) ->
     page: 'dashboardPage'
     filter: $routeParams.filter
 
-  EventBus.broadcast $rootScope, 'analyticsClearGroup'
-
   viewName = (name) =>
     if @filter == 'show_muted'
       "dashboard#{_.capitalize(name)}Muted"
