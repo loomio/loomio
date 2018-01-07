@@ -5,7 +5,6 @@ EventBus        = require 'shared/services/event_bus.coffee'
 AbilityService  = require 'shared/services/ability_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
-I18n            = require 'shared/services/i18n.coffee'
 
 { scrollTo, updateCover, setCurrentComponent } = require 'shared/helpers/layout.coffee'
 { viewportSize, trackEvents }          = require 'shared/helpers/window.coffee'

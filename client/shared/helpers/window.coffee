@@ -5,16 +5,16 @@ bowser = require 'bowser'
 # then allow for an alternate implementation for when 'window' may not exist
 module.exports =
 
+  checkBrowser: ->
+    if (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 10)
+      hardReload('/417.html')
+
   exportGlobals: ->
     window._ = require 'lodash'
 
   initServiceWorker: ->
     if document.location.protocol.match(/https/) && navigator.serviceWorker?
       navigator.serviceWorker.register(document.location.origin + '/service-worker.js', scope: './')
-
-  checkBrowser: ->
-    if (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 10)
-      hardReload('/417.html')
 
   print:             -> window.print()
   is2x:              -> window.devicePixelRatio >= 2

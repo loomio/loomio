@@ -1,7 +1,7 @@
 { exportGlobals, checkBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
 
-exportGlobals()
 checkBrowser()
+exportGlobals()
 initServiceWorker()
 
 require './dependencies/vendor.coffee'
