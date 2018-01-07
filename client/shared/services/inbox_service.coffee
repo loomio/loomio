@@ -2,8 +2,6 @@ Records            = require 'shared/services/records.coffee'
 Session            = require 'shared/services/session.coffee'
 ThreadQueryService = require 'shared/services/thread_query_service.coffee'
 
-{ fromPairs } = require 'shared/helpers/lodash_ext.coffee'
-
 module.exports = new class InboxService
 
   filters: [
@@ -27,7 +25,7 @@ module.exports = new class InboxService
     ThreadQueryService.queryFor(name: "inbox", filters: @filters)
 
   queryByGroup: ->
-    fromPairs _.map Session.user().inboxGroups(), (group) =>
+    _.fromPairs _.map Session.user().inboxGroups(), (group) =>
       [
         group.key,
         ThreadQueryService.queryFor(name: "group_#{group.key}_inbox", filters: @filters, group: group)
