@@ -123,7 +123,7 @@ angular.module('loomioApp').factory 'PollModel', (BaseModel, HasDocuments, HasDr
       @closedAt?
 
     goal: ->
-      @customFields.goal or @membersCount().length
+      @customFields.goal or @membersCount()
 
     close: =>
       @remote.postMember(@key, 'close')
