@@ -1,4 +1,3 @@
-Routes          = require 'angular/routes.coffee'
 AppConfig       = require 'shared/services/app_config.coffee'
 Session         = require 'shared/services/session.coffee'
 Records         = require 'shared/services/records.coffee'
@@ -15,7 +14,7 @@ I18n            = require 'shared/services/i18n.coffee'
 { setupAngular }                       = require 'angular/setup.coffee'
 
 $controller = ($scope, $injector) ->
-  $injector.get('$router').config(Routes.concat(AppConfig.plugins.routes))
+  setupAngular($scope, $injector)
 
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
@@ -28,8 +27,6 @@ $controller = ($scope, $injector) ->
     $injector.get('$timeout') -> $scope.refreshing = false
     IntercomService.boot()
     subscribeToLiveUpdate()
-
-  setupAngular($scope, $injector)
 
   EventBus.listen $scope, 'toggleSidebar',    -> $scope.renderSidebar = true
   EventBus.listen $scope, 'loggedIn',         -> $scope.loggedIn()

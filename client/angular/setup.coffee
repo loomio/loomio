@@ -1,3 +1,4 @@
+Routes         = require 'angular/routes.coffee'
 AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
 EventBus       = require 'shared/services/event_bus.coffee'
@@ -20,6 +21,7 @@ module.exports =
     setupAngularEventBus()
     setupAngularHotkeys($rootScope)
     setupAngularFlash($rootScope)
+    setupAngularRoutes($injector.get('$router'))
     setupAngularNavigate($injector.get('$location'))
     setupAngularTranslate($rootScope, $injector.get('$translate'))
     setupAngularDigest($rootScope, $injector)
@@ -53,6 +55,9 @@ setupAngularHotkeys = ($rootScope) ->
 setupAngularFlash = ($rootScope) ->
   FlashService.setBroadcastMethod (flashOptions) ->
     EventBus.broadcast $rootScope, 'flashMessage', flashOptions
+
+setupAngularRoutes = ($router) ->
+  $router.config(Routes.concat(AppConfig.plugins.routes))
 
 setupAngularNavigate = ($location) ->
   LmoUrlService.setGoToMethod   (path)    -> $location.path(path)
