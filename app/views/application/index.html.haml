@@ -22,7 +22,6 @@
     = render 'angular/intercom' if current_user.is_logged_in?
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
-    .lmo-app__error
     %flash
     %navbar{'ng-if' => 'translationsLoaded'}
 
