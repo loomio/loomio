@@ -2407,13 +2407,6 @@ graceful-fs@~2.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-grunt-contrib-concat@~0.5.0:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/grunt-contrib-concat/-/grunt-contrib-concat-0.5.1.tgz#953c6efdfdfd2c107ab9c85077f2d4b24d31cd49"
-  dependencies:
-    chalk "^0.5.1"
-    source-map "^0.3.0"
-
 gulp-angular-templatecache@^1.8.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/gulp-angular-templatecache/-/gulp-angular-templatecache-1.9.1.tgz#60f631e97aaaa765d942e37042e4bfbb1a5df244"
@@ -4137,12 +4130,6 @@ ng-annotate@^1.0.2:
     stringset "~0.2.1"
     tryor "~0.1.2"
 
-ng-file-upload@3.3.4:
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-3.3.4.tgz#fe96f22217ca09d03a313a322464425836350b48"
-  dependencies:
-    grunt-contrib-concat "~0.5.0"
-
 node-gyp@^3.3.1:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-3.6.2.tgz#9bfbe54562286284838e750eac05295853fa1c60"
@@ -5693,12 +5680,6 @@ source-map@0.1.32:
 source-map@0.4.x, source-map@^0.4.2, source-map@~0.4.0, source-map@~0.4.2:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
-  dependencies:
-    amdefine ">=0.0.4"
-
-source-map@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.3.0.tgz#8586fb9a5a005e5b501e21cd18b6f21b457ad1f9"
   dependencies:
     amdefine ">=0.0.4"
 

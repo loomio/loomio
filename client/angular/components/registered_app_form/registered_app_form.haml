@@ -14,7 +14,7 @@
           %img.lmo-box--large{ng-src: "{{application.logoUrl}}"}
           %md-button.md-accent.registered-app-form__upload-button{ng-if: "!application.isNew()", type: "button", ng-click: "clickFileUpload()"}>
             %span{translate: "common.action.upload"}>
-          %input.hidden.registered-app-form__logo-input{type: "file", ng-model: "file", ng-file-select: "upload(file)"}
+          %input.hidden.registered-app-form__logo-input{file-select: "upload"}
 
         .lmo-flex{layout: "column"}
           %md-input-container.md-block

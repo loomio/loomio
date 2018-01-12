@@ -24,7 +24,7 @@ angular.module('loomioApp').factory 'RegisteredAppForm', ->
       loadingMessage: 'common.action.uploading'
       skipClose:      true
       successCallback: (response) ->
-        $scope.application.logoUrl = response.data.oauth_applications[0].logo_url
+        $scope.application.logoUrl = response.oauth_applications[0].logo_url
 
     $scope.clickFileUpload = ->
       document.querySelector('.registered-app-form__logo-input').click()

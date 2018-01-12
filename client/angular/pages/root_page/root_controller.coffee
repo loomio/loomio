@@ -6,7 +6,7 @@ AbilityService  = require 'shared/services/ability_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 
-{ scrollTo, updateCover, setCurrentComponent } = require 'shared/helpers/layout.coffee'
+{ scrollTo, setCurrentComponent }      = require 'shared/helpers/layout.coffee'
 { viewportSize, trackEvents }          = require 'shared/helpers/window.coffee'
 { signIn, subscribeToLiveUpdate }      = require 'shared/helpers/user.coffee'
 { broadcastKeyEvent, registerHotkeys } = require 'shared/helpers/keyboard.coffee'
@@ -29,7 +29,6 @@ $controller = ($scope, $injector) ->
 
   EventBus.listen $scope, 'toggleSidebar',    -> $scope.renderSidebar = true
   EventBus.listen $scope, 'loggedIn',         -> $scope.loggedIn()
-  EventBus.listen $scope, 'updateCoverPhoto', -> updateCover()
   EventBus.listen $scope, 'pageError', (_, error) ->
     $scope.pageError = error
     ModalService.forceSignIn() if !AbilityService.isLoggedIn() and error.status == 403
