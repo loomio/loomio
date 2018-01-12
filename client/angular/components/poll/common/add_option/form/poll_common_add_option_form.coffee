@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'pollCommonAddOptionForm', ->
     $scope.submit = submitPoll $scope, $scope.poll,
       submitFn: $scope.poll.addOptions
       prepareFn: ->
-        EventBus.broadcast $scope, 'addPollOption'
+        $scope.poll.addOption()
         EventBus.emit $scope, 'processing'
       successCallback: ->
         EventBus.emit $scope, '$close'
