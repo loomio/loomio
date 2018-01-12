@@ -64,14 +64,14 @@ setupAngularAhoy = ($rootScope) ->
   ahoy.trackChanges()
 
   # track page views
-  EventBus.listen $scope, 'currentComponent', =>
+  EventBus.listen $rootScope, 'currentComponent', =>
     ahoy.track '$view',
       page:  window.location.pathname
       url:   window.location.href
       title: document.title
 
   # track modal views
-  EventBus.listen $scope, 'modalOpened', (_, modal) =>
+  EventBus.listen $rootScope, 'modalOpened', (_, modal) =>
     ahoy.track 'modalOpened',
       name: modal.templateUrl.match(/(\w+)\.html$/)[1]
 
