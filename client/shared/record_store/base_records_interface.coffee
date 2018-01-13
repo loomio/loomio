@@ -16,17 +16,6 @@ module.exports =
 
       @remote = new RestfulClient(@model.apiEndPoint or @model.plural)
 
-      @setRemoteCallbacks
-        onSuccess: (response) =>
-          response.json().then (data) =>
-            @recordStore.import(data) if response.ok
-            data
-        onFailure: (response) =>
-          console.log('request failure!', response)
-          throw response
-        onUploadSuccess: (data) =>
-          @recordStore.import(data)
-
     setRemoteCallbacks: (callbacks) ->
       _.merge @remote, _.pick(callbacks, ['onPrepare', 'onSuccess', 'onUploadSuccess', 'onFailure', 'onCleanup'])
 
