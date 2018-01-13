@@ -93,10 +93,7 @@ setupAngularDigest = ($rootScope, $injector) ->
   Records.afterImport = -> $timeout -> $rootScope.$apply()
   Records.setRemoteCallbacks
     onPrepare: -> $browser.$$incOutstandingRequestCount()
-    onCleanup: ->
-      $timeout ->
-        $rootScope.$apply()
-        $browser.$$completeOutstandingRequest(->)
+    onCleanup: -> $browser.$$completeOutstandingRequest(->)
 
 setupAngularModal = ($rootScope, $injector, $mdDialog) ->
   $mdDialog = $injector.get('$mdDialog')
