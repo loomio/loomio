@@ -31,6 +31,7 @@ describe 'Invitations', ->
     page.click '.members-card__invite-members-btn'
     page.fillIn '.invitation-form__email-addresses', 'patrick_swayze@example.com'
     page.click '.invitation-form__submit'
+    page.sleep(500)
     page.expectText '.invitation-form', "These people are already members of the group."
 
   it 'lets you add members from the parent to a subgroup', ->
