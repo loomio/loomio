@@ -47,11 +47,13 @@ describe 'Profile', ->
       page.fillIn '.change-password-form__password', 'Smush'
       page.fillIn '.change-password-form__password-confirmation', 'Smush'
       page.click '.change-password-form__submit'
+      page.sleep(500)
       page.expectText '.change-password-form', "is too short"
 
       page.fillIn '.change-password-form__password', 'SmushDemBerries'
       page.fillIn '.change-password-form__password-confirmation', 'SmishDemBorries'
       page.click '.change-password-form__submit'
+      page.sleep(500)
       page.expectText '.change-password-form', "doesn't match"
 
       page.fillIn '.change-password-form__password', 'SmushDemBerries'

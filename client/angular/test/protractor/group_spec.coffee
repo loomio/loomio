@@ -192,6 +192,7 @@ describe 'Group Page', ->
     it 'displays a validation error when name is blank', ->
       page.fillIn('#group-name', '')
       page.click('.group-form__submit-button')
+      page.sleep(500)
       page.expectText('.lmo-validation-error', "can't be blank")
 
     it 'can be a very open group', ->
