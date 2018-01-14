@@ -17,6 +17,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $win
       FlashService.loading(options.loadingMessage)
       options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
       scope.$emit 'processing'       if typeof scope.$emit       is 'function'
+      model.clearDrafts()            if typeof model.clearDrafts is 'function'
       scope.isDisabled = true
       model.setErrors()
 

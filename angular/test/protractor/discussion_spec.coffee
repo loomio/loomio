@@ -51,6 +51,13 @@ describe 'Discussion Page', ->
       page.click '.group-theme__name--compact'
       page.expectText '.discussions-card', 'What star sign are you?'
 
+  describe 'drafts', ->
+    it 'doesnt store drafts after submission', ->
+      page.loadPath 'setup_discussion'
+      page.fillIn '.comment-form textarea', 'This is a comment'
+      page.click '.comment-form__submit-button'
+      page.expectNoText '.comment-form textarea', 'This is a comment'
+
   describe 'edit thread', ->
     beforeEach ->
       page.loadPath('setup_discussion')
