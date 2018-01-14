@@ -31,6 +31,13 @@ angular.module('loomioApp').factory 'HasDrafts', ($timeout, AppConfig) ->
         return unless draft = model.draft()
         draft.updateFrom(model)
 
+      model.clearDrafts = ->
+        return unless parent = model.draftParent()
+        _.invoke model.recordStore.drafts.find(
+          draftableType: _.capitalize(parent.constructor.singular)
+          draftableId:   parent.id
+        ), 'remove'
+
       model.cancelDraftFetch = ->
         $timeout.cancel(model.draftFetch) if model.draftFetch
 

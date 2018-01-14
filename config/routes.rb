@@ -263,6 +263,10 @@ Loomio::Application.routes.draw do
   get '/g/:key/membership_requests/new'    => redirect('410.html')
   get '/comments/:id'                      => redirect('410.html')
 
+  # for IE / other browsers which insist on requesting things which don't exist
+  get '/favicon.ico'                       => 'application#ok'
+  get '/wp-login.php'                      => 'application#ok'
+
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do
       get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"

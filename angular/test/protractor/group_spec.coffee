@@ -176,20 +176,6 @@ describe 'Group Page', ->
         page.expectNoElement '.group-form__parent-members-can-see-discussions'
         page.expectNoElement '.group-form__allow-public-threads'
 
-  describe 'editing group description from description card', ->
-    it 'allows coordinators to edit description inline', ->
-      page.loadPath 'setup_group'
-      page.expectElement '.description-card__placeholder'
-      page.click '.action-dock__button--edit_group'
-      page.fillIn '.description-card__textarea', "Brand spankin' new group description"
-      page.click '.description-card__save'
-      page.expectNoElement '.description-card__placeholder'
-      page.expectText '.description-card__text', "Brand spankin' new group description"
-
-    it 'prevents non-coordinators from editing description inline', ->
-      page.loadPath 'setup_group_as_member'
-      page.expectNoElement '.action-dock__button--edit_group'
-
   describe 'editing group settings via group form', ->
     beforeEach ->
       page.loadPath('setup_group')
