@@ -6,17 +6,23 @@ class API::EventsController < API::RestfulController
     respond_with_resource
   end
 
+  def comment
+    discussion = load_and_authorize(:discussion)
+    self.resource = Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])
+    respond_with_resource
+  end
+
   private
 
   def order
-    %w(sequence_id position id created_at).detect {|col| col == params[:order] } || "sequence_id"
+    %w(sequence_id position).detect {|col| col == params[:order] } || "sequence_id"
   end
 
   def accessible_records
     records = load_and_authorize(:discussion).items.
               includes(:user, :discussion, :eventable, parent: [:user, :eventable]).uniq
 
-    records = records.where('sequence_id >= ?', sequence_id_for(records)) if (params[:comment_id] || params[:from])
+    records = records.where("#{order} >= ?", params[:from]) if params[:from]
 
     %w(parent_id depth sequence_id position).each do |name|
       records = records.where(name => params[name]) if params[name]
@@ -33,14 +39,6 @@ class API::EventsController < API::RestfulController
 
   def default_page_size
     30
-  end
-
-  def sequence_id_for(collection)
-    sequence_id_for_comment(collection) || params[:from].to_i
-  end
-
-  def sequence_id_for_comment(collection)
-    collection.find_by(eventable_type: "Comment", eventable_id: params[:comment_id]).try(:sequence_id)
   end
 
   # we always want to serialize out events in the events controller
