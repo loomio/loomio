@@ -15,9 +15,10 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $win
 
     prepare = (scope, model, options, prepareArgs) ->
       FlashService.loading(options.loadingMessage)
-      options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
-      scope.$emit 'processing'       if typeof scope.$emit       is 'function'
-      model.clearDrafts()            if typeof model.clearDrafts is 'function'
+      options.prepareFn(prepareArgs) if typeof options.prepareFn      is 'function'
+      scope.$emit 'processing'       if typeof scope.$emit            is 'function'
+      model.cancelDraftFetch()       if typeof model.cancelDraftFetch is 'function'
+      model.clearDrafts()            if typeof model.clearDrafts      is 'function'
       scope.isDisabled = true
       model.setErrors()
 
@@ -31,7 +32,6 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $win
           flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
           FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
         scope.$close()                                          if !options.skipClose? and typeof scope.$close is 'function'
-        model.cancelDraftFetch()                                if typeof model.cancelDraftFetch is 'function'
         options.successCallback(response)                       if typeof options.successCallback is 'function'
         $rootScope.$broadcast options.successEvent              if options.successEvent
 
