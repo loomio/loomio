@@ -95,8 +95,10 @@ prepare = (scope, model, options, prepareArgs) ->
   FlashService.loading(options.loadingMessage)
   options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
   EventBus.emit scope, 'processing'
-  scope.isDisabled = true
+  model.cancelDraftFetch()       if typeof model.cancelDraftFetch is 'function'
+  model.clearDrafts()            if typeof model.clearDrafts      is 'function'
   model.setErrors()
+  scope.isDisabled = true
 
 confirm = (confirmMessage) ->
   if confirmMessage and typeof window.confirm == 'function'
@@ -111,7 +113,6 @@ success = (scope, model, options) ->
       flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
       FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
     scope.$close()                if !options.skipClose? and typeof scope.$close is 'function'
-    model.cancelDraftFetch()      if typeof model.cancelDraftFetch is 'function'
     options.successCallback(data) if typeof options.successCallback is 'function'
 
 failure = (scope, model, options) ->
