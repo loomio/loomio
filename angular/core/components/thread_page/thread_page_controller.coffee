@@ -1,17 +1,15 @@
 angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService,  PollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
-  # if we get given a comment id, then hard refresh after seeking it's sequenceId
-  # sorry everyone, we'll stop using hardcoded notification.urls some day soon
   requestedCommentId = ->
     parseInt($routeParams.comment or $location.search().comment)
 
   if requestedCommentId()
     Records.events.fetch
+      path: 'comment'
       params:
         discussion_id: $routeParams.key
         comment_id: requestedCommentId()
-        per: 1
     .then =>
       comment = Records.comments.find(requestedCommentId())
       @discussion = comment.discussion()
@@ -19,7 +17,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $scope.$broadcast 'initActivityCard'
 
   chompRequestedSequenceId = ->
-    requestedSequenceId = parseInt($location.search().from)
+    requestedSequenceId = parseInt($location.search().from || $routeParams.sequence_id)
     $location.search('from', null)
     requestedSequenceId
 

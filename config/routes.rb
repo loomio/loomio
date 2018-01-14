@@ -97,6 +97,7 @@ Loomio::Application.routes.draw do
     resources :login_tokens, only: [:create]
 
     resources :events, only: :index do
+      get :comment, on: :collection
       patch :remove_from_thread, on: :member
     end
 
@@ -247,7 +248,7 @@ Loomio::Application.routes.draw do
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
-  get 'd/:key(/:slug)'                     => 'discussions#show',            as: :discussion
+  get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
