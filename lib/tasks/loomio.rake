@@ -1,5 +1,5 @@
 namespace :loomio do
-  task :generate_test_error do
+  task generate_test_error: :environment do
     raise "this is a generated test error"
   end
 
