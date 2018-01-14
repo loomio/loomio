@@ -17,7 +17,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $scope.$broadcast 'initActivityCard'
 
   chompRequestedSequenceId = ->
-    requestedSequenceId = parseInt($location.search().from)
+    requestedSequenceId = parseInt($location.search().from || $routeParams.sequence_id)
     $location.search('from', null)
     requestedSequenceId
 

@@ -19,6 +19,9 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     discussion: (d, params = {}, options = {}) ->
       @buildModelRoute('d', d.key, d.title, params, options)
 
+    event: (event, params = {}, options = {}) ->
+      @discussion(event.discussion(), params, options) + "/#{event.sequenceId}"
+
     poll: (p, params = {}, options = {}) ->
       @buildModelRoute('p', p.key, options.action or p.title, params, options)
 
