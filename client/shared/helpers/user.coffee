@@ -6,8 +6,8 @@ LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
-moment = require 'moment'
-require 'private_pub' # this sets window.PrivatePub, because private_pub is too old to be a module :)
+moment     = require 'moment'
+PrivatePub = require 'loomio_private_pub'
 
 { hardReload } = require 'shared/helpers/window.coffee'
 

@@ -3791,6 +3791,10 @@ longest@^1.0.1:
     route-recognizer "git://github.com/btford/route-recognizer"
     traceur "^0.0.72"
 
+loomio_private_pub@latest:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/loomio_private_pub/-/loomio_private_pub-1.0.0.tgz#f0f18fc4c2adb764e9161c3af3a7d7382aa6e7b2"
+
 loose-envify@^1.0.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
@@ -4880,10 +4884,6 @@ pretty-ms@^2.1.0:
 private@^0.1.7, private@~0.1.5:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
-
-private_pub@latest:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/private_pub/-/private_pub-1.0.0.tgz#d13007e91f2f49b482ffdc58cdc1023455505492"
 
 process-nextick-args@^1.0.6, process-nextick-args@~1.0.6:
   version "1.0.7"

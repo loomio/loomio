@@ -59,7 +59,7 @@
     "ment.io": "~0.9.15",
     "moment": "latest",
     "moment-timezone": "latest",
-    "private_pub": "latest",
+    "loomio_private_pub": "latest",
     "promise-polyfill": "^7.0.0",
     "promise.prototype.finally": "^3.1.0",
     "svg.js": "latest",
