@@ -7,7 +7,7 @@ atom_feed do |feed|
     next if event.eventable.nil?
     next unless event.eventable.valid?
 
-    item = event.eventable if event.kind == :new_comment
+    item = event.eventable if event.kind.to_sym == :new_comment
     next if item.nil?
     next if item.author.blank?
     feed.entry(event, url: discussion_url(@discussion)) do |entry|
@@ -18,7 +18,7 @@ atom_feed do |feed|
         author.name item.author_name
         author.uri  user_url(item.author)
       end
-      entry.link discussion_url(@discussion)
+      entry.link discussion_comment_url(comment: event.eventable)
     end
   end
 end if !@discussion.private
