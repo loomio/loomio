@@ -1,7 +1,7 @@
 gulp  = require 'gulp'
 paths = require './paths.coffee'
 
-module.exports = ->
+module.exports =
   fonts: ->
     gulp.src(paths.shared.fonts).pipe(gulp.dest(paths.dist.fonts))
 
