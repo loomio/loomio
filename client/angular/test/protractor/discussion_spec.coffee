@@ -223,7 +223,7 @@ describe 'Discussion Page', ->
       page.expectText '.activity-card__activity-list', 'hi this is my comment'
       page.expectFlash 'Patrick Swayze notified of reply'
 
-    it 'can react to a comment', ->
+    xit 'can react to a comment', ->
       page.expectNoElement '.reaction'
       page.click '.action-dock__button--react',
                  '.emoji-picker__selector:first-child'

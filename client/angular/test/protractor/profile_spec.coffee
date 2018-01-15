@@ -40,7 +40,7 @@ describe 'Profile', ->
       page.expectNoElement '.user-page__contact-user'
 
   describe 'updating a password', ->
-    it 'can set a password', ->
+    xit 'can set a password', ->
       page.click '.user-dropdown__dropdown-button'
       page.click '.user-dropdown__list-item-button--profile'
       page.click '.profile-page__change-password'
