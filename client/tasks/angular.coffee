@@ -43,6 +43,7 @@ module.exports =
     browserify(browserifyOpts())
       .plugin(collapse)
       .transform('uglifyify')
+      .transform('es2020')
       .bundle()
       .pipe(source('angular.bundle.min.js'))
       .pipe(buffer())
