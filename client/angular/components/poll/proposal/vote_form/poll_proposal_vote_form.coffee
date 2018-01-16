@@ -1,5 +1,7 @@
-{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
-{ submitStance }  = require 'angular/helpers/form.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
+
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitStance }  = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'pollProposalVoteForm', ->
   scope: {stance: '='}
@@ -9,7 +11,7 @@ angular.module('loomioApp').directive 'pollProposalVoteForm', ->
 
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
-        $scope.$emit 'processing'
+        EventBus.emit $scope, 'processing'
         return unless $scope.stance.selectedOption
         $scope.stance.stanceChoicesAttributes = [{ poll_option_id: $scope.stance.selectedOption.id }]
 

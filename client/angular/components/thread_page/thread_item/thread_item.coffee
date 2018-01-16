@@ -1,10 +1,11 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 { eventHeadline, eventTitle, eventPollType } = require 'shared/helpers/helptext.coffee'
 
 angular.module('loomioApp').directive 'threadItem', ['$compile', ($compile) ->
@@ -19,10 +20,10 @@ angular.module('loomioApp').directive 'threadItem', ['$compile', ($compile) ->
   controller: ['$scope', ($scope) ->
     $scope.debug = -> window.Loomio.debug
     if $scope.event.isSurface() && $scope.eventWindow.useNesting
-      $scope.$on 'replyButtonClicked', (e, parentEvent, comment) ->
+      EventBus.listen $scope, 'replyButtonClicked', (e, parentEvent, comment) ->
         if $scope.event.id == parentEvent.id
           $scope.eventWindow.max = false
-          $scope.$broadcast 'showReplyForm', comment
+          EventBus.broadcast $scope, 'showReplyForm', comment
 
     $scope.canRemoveEvent = -> AbilityService.canRemoveEventFromThread($scope.event)
     $scope.removeEvent = submitForm $scope, $scope.event,

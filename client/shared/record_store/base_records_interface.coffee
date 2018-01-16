@@ -1,5 +1,5 @@
 RestfulClient = require './restful_client.coffee'
-utils = require './utils.coffee'
+utils         = require './utils.coffee'
 
 module.exports =
   class BaseRecordsInterface
@@ -16,17 +16,8 @@ module.exports =
 
       @remote = new RestfulClient(@model.apiEndPoint or @model.plural)
 
-      @remote.onSuccess = (response) =>
-        response.json().then (data) =>
-          @recordStore.import(data) if response.ok
-          data
-
-      @remote.onUploadSuccess = (data) =>
-        @recordStore.import(data)
-
-      @remote.onFailure = (response) ->
-        console.log('request failure!', response)
-        throw response
+    setRemoteCallbacks: (callbacks) ->
+      _.merge @remote, _.pick(callbacks, ['onPrepare', 'onSuccess', 'onUploadSuccess', 'onFailure', 'onCleanup'])
 
     all: ->
       @collection.data
@@ -54,8 +45,9 @@ module.exports =
         record = @create(attributes)
       record
 
-    findOrFetchById: (id, params = {}) ->
-      if record = @find(id)
+    findOrFetchById: (id, params = {}, ensureComplete = false) ->
+      record = @find(id)
+      if record and (!ensureComplete || record.complete)
         Promise.resolve(record)
       else
         @remote.fetchById(id, params).then => @find(id)

@@ -1,15 +1,16 @@
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 
 $controller = ($rootScope, $routeParams) ->
 
   @init = =>
     return if @user
     if @user = (Records.users.find($routeParams.key) or Records.users.find(username: $routeParams.key))[0]
-      $rootScope.$broadcast 'currentComponent', {title: @user.name, page: 'userPage'}
+      EventBus.broadcast $rootScope, 'currentComponent', {title: @user.name, page: 'userPage'}
       @loadGroupsFor(@user)
 
   @location = =>
@@ -27,7 +28,7 @@ $controller = ($rootScope, $routeParams) ->
 
   @init()
   Records.users.findOrFetchById($routeParams.key).then @init, (error) ->
-    $rootScope.$broadcast('pageError', error)
+    EventBus.broadcast $rootScope, 'pageError', error
 
   return
 

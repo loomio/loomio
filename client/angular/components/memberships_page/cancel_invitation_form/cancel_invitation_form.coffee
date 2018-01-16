@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'CancelInvitationForm', ->
   templateUrl: 'generated/components/memberships_page/cancel_invitation_form/cancel_invitation_form.html'

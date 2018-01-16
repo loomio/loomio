@@ -2,15 +2,15 @@ AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 I18n      = require 'shared/services/i18n.coffee'
 
-module.exports = new class Session
-  signIn: (data, invitationToken) ->
-    Records.import(data)
+{ hardReload } = require 'shared/helpers/window.coffee'
 
+module.exports = new class Session
+  signIn: (userId, invitationToken) ->
     defaultParams = _.pick {invitation_token: invitationToken}, _.identity
     Records.stances.remote.defaultParams = defaultParams
     Records.polls.remote.defaultParams   = defaultParams
 
-    return unless AppConfig.currentUserId = data.current_user_id
+    return unless AppConfig.currentUserId = userId
     user = @user()
     @updateLocale()
 
@@ -22,7 +22,7 @@ module.exports = new class Session
 
   signOut: ->
     AppConfig.loggingOut = true
-    Records.sessions.remote.destroy('').then -> window.location.href = '/'
+    Records.sessions.remote.destroy('').then -> hardReload('/')
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()

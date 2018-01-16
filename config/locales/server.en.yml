@@ -188,7 +188,7 @@ en:
     error:
       too_many_pending: "You have more than the maximum %{count} pending invitations for this group"
       too_many_cancelled: "You have more than the maximum %{count} cancelled invitations for this group"
-      all_email_addresses_belong_to_members: "We didn't send invitations to the email addresses provided because they belong to people already in the group."
+      all_email_addresses_belong_to_members: "These people are already members of the group."
 
   password_reset:
     change_your_password: Change your password

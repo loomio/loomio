@@ -1,7 +1,7 @@
 Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'ArchiveGroupForm', ->
   templateUrl: 'generated/components/archive_group_form/archive_group_form.html'

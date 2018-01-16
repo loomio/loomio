@@ -1,6 +1,6 @@
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'DeleteThreadForm', ->
   templateUrl: 'generated/components/delete_thread_form/delete_thread_form.html'

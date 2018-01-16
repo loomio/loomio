@@ -1,4 +1,5 @@
 AppConfig = require 'shared/services/app_config.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 
 angular.module('loomioApp').directive 'authProviderForm', ['$window', ($window) ->
   scope: {user: '='}
@@ -7,7 +8,7 @@ angular.module('loomioApp').directive 'authProviderForm', ['$window', ($window) 
     $scope.providers = AppConfig.identityProviders
 
     $scope.select = (provider) ->
-      $scope.$emit 'processing'
+      EventBus.emit $scope, 'processing'
       $window.location = "#{provider.href}?back_to=#{$window.location.href}"
   ]
 ]

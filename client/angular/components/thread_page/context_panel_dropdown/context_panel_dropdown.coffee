@@ -1,3 +1,4 @@
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 ThreadService  = require 'shared/services/thread_service.coffee'
@@ -52,8 +53,8 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ['$rootScope', ($r
       ModalService.open 'MoveThreadForm', discussion: => $scope.discussion
 
     $scope.requestPagePrinted = ->
-      $rootScope.$broadcast('toggleSidebar', false)
-      $rootScope.$broadcast 'fetchRecordsForPrint'
+      EventBus.broadcast $rootScope, 'toggleSidebar', false
+      EventBus.broadcast $rootScope, 'fetchRecordsForPrint'
 
     $scope.canDeleteThread = ->
       AbilityService.canDeleteThread($scope.discussion)

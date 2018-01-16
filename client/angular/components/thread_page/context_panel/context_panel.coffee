@@ -1,12 +1,13 @@
 Records        = require 'shared/services/records.coffee'
 Session        = require 'shared/services/session.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 ThreadService  = require 'shared/services/thread_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
-{ listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
-{ scrollTo }                                  = require 'shared/helpers/window.coffee'
+{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
+{ scrollTo }                                  = require 'shared/helpers/layout.coffee'
 
 angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope) ->
   scope: {discussion: '='}
@@ -19,10 +20,10 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
       return 'pinned' if $scope.discussion.pinned
 
     $scope.statusTitle = ->
-      translate "context_panel.thread_status.#{$scope.status()}"
+      I18n.t "context_panel.thread_status.#{$scope.status()}"
 
     $scope.showLintel = (bool) ->
-      $rootScope.$broadcast('showThreadLintel', bool)
+      EventBus.broadcast $rootScope, 'showThreadLintel', bool
 
     $scope.showRevisionHistory = ->
       ModalService.open 'RevisionHistoryModal', model: => $scope.discussion

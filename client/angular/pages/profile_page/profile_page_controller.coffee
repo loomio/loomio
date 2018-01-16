@@ -1,13 +1,14 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ submitForm }   = require 'angular/helpers/form.coffee'
+{ submitForm }   = require 'shared/helpers/form.coffee'
 
 $controller = ($scope, $rootScope) ->
-  $rootScope.$broadcast('currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'})
+  EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
 
   @showHelpTranslate = ->
     AppConfig.features.app.help_link
@@ -22,7 +23,7 @@ $controller = ($scope, $rootScope) ->
       successCallback: @init
 
   @init()
-  $scope.$on 'updateProfile', => @init()
+  EventBus.listen $scope, 'updateProfile', => @init()
 
   @availableLocales = ->
     AppConfig.locales

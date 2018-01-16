@@ -149,6 +149,22 @@ module.exports = class PollModel extends BaseModel
     else
       'edit'
 
+  addOption: =>
+    return unless @newOptionName and !_.contains(@pollOptionNames, @newOptionName)
+    @pollOptionNames.push @newOptionName
+    @setMinimumStanceChoices()
+    @newOptionName = ''
+
+  setMinimumStanceChoices: =>
+    return unless @isNew() and @hasRequiredField('minimum_stance_choices')
+    @customFields.minimum_stance_choices = _.max [@pollOptionNames.length, 1]
+
+  hasRequiredField: (field) =>
+    _.contains AppConfig.pollTemplates[@pollType].required_custom_fields, field
+
+  hasPollSetting: (setting) =>
+    AppConfig.pollTemplates[@pollType][setting]?
+
   removeOrphanOptions: ->
     _.each @pollOptions(), (option) =>
       option.remove() unless _.includes(@pollOptionNames, option.name)

@@ -1,4 +1,5 @@
 RecordLoader = require 'shared/services/record_loader.coffee'
+EventBus     = require 'shared/services/event_bus.coffee'
 
 { fieldFromTemplate } = require 'shared/helpers/poll.coffee'
 
@@ -43,6 +44,6 @@ angular.module('loomioApp').directive 'pollCommonVotesPanel', ->
 
     $scope.loader.fetchRecords()
 
-    $scope.$on 'refreshStance', ->
+    EventBus.listen $scope, 'refreshStance', ->
       $scope.loader.fetchRecords()
   ]

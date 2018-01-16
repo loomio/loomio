@@ -1,8 +1,9 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 
 angular.module('loomioApp').directive 'translateButton', ->
   scope: {model: '=', showdot: '=?'}
@@ -16,6 +17,6 @@ angular.module('loomioApp').directive 'translateButton', ->
     $scope.translate = ->
       Records.translations.fetchTranslation($scope.model, Session.user().locale).then (data) ->
         $scope.translated = true
-        $scope.$emit 'translationComplete', data.translations[0].fields
+        EventBus.emit $scope, 'translationComplete', data.translations[0].fields
     applyLoadingFunction($scope, 'translate')
   ]

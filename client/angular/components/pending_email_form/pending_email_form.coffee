@@ -1,6 +1,7 @@
-I18n = require 'shared/services/i18n.coffee'
+I18n     = require 'shared/services/i18n.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
-{ registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+{ registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'pendingEmailForm', ->
   scope: {emails: '='}
@@ -29,7 +30,7 @@ angular.module('loomioApp').directive 'pendingEmailForm', ->
       $scope.checkEmailAvailable()
       if !$scope.emailValidationError
         $scope.add()
-        $scope.$emit 'emailsSubmitted'
+        EventBus.emit $scope, 'emailsSubmitted'
 
     $scope.checkEmailNotEmpty = ->
       if $scope.newEmail.length <= 0

@@ -2,7 +2,7 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'MembershipRequestForm', ->
   templateUrl: 'generated/components/group_page/membership_request_form/membership_request_form.html'

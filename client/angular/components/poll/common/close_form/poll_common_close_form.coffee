@@ -1,4 +1,4 @@
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'PollCommonCloseForm', ->
   templateUrl: 'generated/components/poll/common/close_form/poll_common_close_form.html'

@@ -1,4 +1,6 @@
-{ listenForLoading } = require 'angular/helpers/listen.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
+
+{ listenForLoading } = require 'shared/helpers/listen.coffee'
 
 angular.module('loomioApp').factory 'DocumentModal', ['$timeout', ($timeout) ->
   templateUrl: 'generated/components/document/modal/document_modal.html'
@@ -6,6 +8,6 @@ angular.module('loomioApp').factory 'DocumentModal', ['$timeout', ($timeout) ->
     $scope.document = doc.clone()
     listenForLoading $scope
 
-    $timeout -> $scope.$emit 'initializeDocument', $scope.document
+    $timeout -> EventBus.emit $scope, 'initializeDocument', $scope.document
   ]
 ]

@@ -1,4 +1,5 @@
 Session       = require 'shared/services/session.coffee'
+EventBus      = require 'shared/services/event_bus.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 { hardReload } = require 'shared/helpers/window.coffee'
@@ -13,7 +14,7 @@ angular.module('loomioApp').factory 'InstallSlackModal', ['$timeout', ($timeout)
       hardReload('/slack/oauth')
     $timeout $scope.redirect, 500 unless $scope.hasIdentity
 
-    $scope.$on '$close', $scope.$close
+    EventBus.listen $scope, '$close', $scope.$close
     $scope.group = group
     $scope.preventClose = preventClose
   ]

@@ -1,4 +1,5 @@
 Records       = require 'shared/services/records.coffee'
+EventBus      = require 'shared/services/event_bus.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 angular.module('loomioApp').directive 'navbarSearch', ['$timeout', ($timeout) ->
@@ -9,7 +10,7 @@ angular.module('loomioApp').directive 'navbarSearch', ['$timeout', ($timeout) ->
   controller: ['$scope', ($scope) ->
     $scope.isOpen = false
 
-    $scope.$on 'currentComponent', ->
+    EventBus.listen $scope, 'currentComponent', ->
       $scope.isOpen = false
 
     $scope.open = ->

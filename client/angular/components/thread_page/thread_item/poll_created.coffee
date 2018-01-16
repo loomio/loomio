@@ -2,7 +2,7 @@ Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ listenForTranslations, listenForReactions } = require 'angular/helpers/listen.coffee'
+{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'pollCreated', ->
   scope: {eventable: '='}

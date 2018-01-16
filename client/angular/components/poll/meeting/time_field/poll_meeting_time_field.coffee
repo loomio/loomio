@@ -1,5 +1,6 @@
+moment = require 'moment'
+
 TimeService = require 'shared/services/time_service.coffee'
-moment      = require 'moment'
 
 angular.module('loomioApp').directive 'pollMeetingTimeField', ->
   scope: {poll: '='}
@@ -11,17 +12,12 @@ angular.module('loomioApp').directive 'pollMeetingTimeField', ->
     $scope.minDate = new Date()
 
     $scope.addOption = ->
-      optionName = determineOptionName()
-      return unless $scope.option.date && !_.contains($scope.poll.pollOptionNames, optionName)
-      $scope.poll.pollOptionNames.push optionName
-    $scope.$on 'addPollOption', $scope.addOption
-
-    $scope.hasTime = ->
-      ($scope.option.time or "").length > 0
+      return unless $scope.option.date
+      $scope.poll.newOptionName = determineOptionName()
+      $scope.poll.addOption()
 
     determineOptionName = ->
       optionName = moment($scope.option.date).format('YYYY-MM-DD')
-      if $scope.hasTime()
-        optionName = moment("#{optionName} #{$scope.option.time}", 'YYYY-MM-DD h:mma').toISOString()
+      optionName = moment("#{optionName} #{$scope.option.time}", 'YYYY-MM-DD h:mma').toISOString() if ($scope.option.time or "").length
       optionName
   ]

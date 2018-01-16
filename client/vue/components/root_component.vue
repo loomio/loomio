@@ -1,5 +1,6 @@
 <template>
-  <poll-form :pollkey="key"></poll-form>
+
+  <start-poll></start-poll>
 </template>
 
 <script lang="coffee">
@@ -7,5 +8,5 @@
 
   module.exports = Vue.component 'root-component',
     data: ->
-      key: "ofsKRbUV"
+      workflow: "start_poll"
 </script>

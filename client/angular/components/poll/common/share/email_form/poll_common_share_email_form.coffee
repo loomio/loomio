@@ -1,8 +1,9 @@
 Records      = require 'shared/services/records.coffee'
+EventBus     = require 'shared/services/event_bus.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
 I18n         = require 'shared/services/i18n.coffee'
 
-{ registerKeyEvent } = require 'angular/helpers/keyboard.coffee'
+{ registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'pollCommonShareEmailForm', ->
   scope: {poll: '='}
@@ -32,7 +33,7 @@ angular.module('loomioApp').directive 'pollCommonShareEmailForm', ->
         $scope.add()
         $scope.poll.inviteGuests().then ->
           FlashService.success 'poll_common_share_form.guests_invited', count: $scope.poll.customFields.pending_emails.length
-          $scope.$emit '$close'
+          EventBus.emit $scope, '$close'
 
     $scope.checkEmailNotEmpty = ->
       if $scope.newEmail.length <= 0

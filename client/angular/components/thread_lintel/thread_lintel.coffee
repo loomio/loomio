@@ -1,4 +1,6 @@
-{ scrollTo } = require 'shared/helpers/window.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
+
+{ scrollTo } = require 'shared/helpers/layout.coffee'
 
 angular.module('loomioApp').directive 'threadLintel', ->
   restrict: 'E'
@@ -11,14 +13,14 @@ angular.module('loomioApp').directive 'threadLintel', ->
     $scope.scrollToThread = ->
       scrollTo 'h1'
 
-    $scope.$on 'currentComponent', (event, options) ->
+    EventBus.listen $scope, 'currentComponent', (event, options) ->
       $scope.currentComponent = options['page']
       $scope.discussion = options.discussion
 
-    $scope.$on 'showThreadLintel', (event, bool) ->
+    EventBus.listen $scope, 'showThreadLintel', (event, bool) ->
       $scope.showLintel = bool
 
-    $scope.$on 'threadPosition', (event, discussion, position) ->
+    EventBus.listen $scope, 'threadPosition', (event, discussion, position) ->
       $scope.position = position
       $scope.discussion = discussion
       $scope.positionPercent = (position / discussion.lastSequenceId) *100

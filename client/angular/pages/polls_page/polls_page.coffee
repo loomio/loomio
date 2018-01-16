@@ -1,16 +1,17 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 moment         = require 'moment'
 
-{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 
 $controller = ($rootScope) ->
-  $rootScope.$broadcast 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
+  EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'polls_page.heading', page: 'pollsPage'}
 
   @statusFilters = _.map AppConfig.searchFilters.status, (filter) ->
     { name: _.capitalize(filter), value: filter }
@@ -47,7 +48,7 @@ $controller = ($rootScope) ->
       @group   = Records.groups.find(LmoUrlService.params().group_key)
       @pollIds = _.pluck(response.polls, 'id')
     , (error) ->
-      $rootScope.$broadcast('pageError', error)
+      EventBus.broadcast $rootScope, 'pageError', error
 
   applyLoadingFunction @, 'fetchRecords'
   @fetchRecords()

@@ -1,6 +1,7 @@
 emojione = require 'emojione'
 
 AppConfig = require 'shared/services/app_config.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 I18n      = require 'shared/services/i18n.coffee'
 
 { emojiTitle } = require 'shared/helpers/helptext.coffee'
@@ -35,7 +36,7 @@ angular.module('loomioApp').directive 'emojiPicker', ['$timeout', ($timeout)->
         $timeout -> document.querySelector('.emoji-picker__search').focus()
 
     $scope.select = (emoji) ->
-      $scope.$emit 'emojiSelected', emoji
+      EventBus.emit $scope, 'emojiSelected', emoji
 
     $scope.noEmojisFound = ->
       $scope.source.length == 0

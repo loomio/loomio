@@ -1,7 +1,8 @@
 Records      = require 'shared/services/records.coffee'
+EventBus     = require 'shared/services/event_bus.coffee'
 FlashService = require 'shared/services/flash_service.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'invitationFormActions', ->
   scope: {invitationForm: '='}
@@ -12,7 +13,7 @@ angular.module('loomioApp').directive 'invitationFormActions', ->
         submitForm($scope, $scope.invitationForm,
           submitFn: Records.invitations.sendByEmail
           successCallback: (response) =>
-            $scope.$emit 'nextStep'
+            EventBus.emit $scope, 'nextStep'
             invitationCount = response.invitations.length
             switch invitationCount
               when 0 then $scope.noInvitations = true
@@ -20,7 +21,7 @@ angular.module('loomioApp').directive 'invitationFormActions', ->
               else        FlashService.success 'invitation_form.messages.invitations_sent', count: invitationCount
         )()
       else
-        $scope.$emit 'nextStep'
+        EventBus.emit $scope, 'nextStep'
 
 
     $scope.submitText = ->

@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-{ submitForm } = require 'angular/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'EditCommentForm', ->
   templateUrl: 'generated/components/thread_page/comment_form/edit_comment_form.html'

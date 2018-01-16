@@ -6,6 +6,7 @@ module.exports =
 
     addRecordsInterface: (recordsInterfaceClass) ->
       recordsInterface = new recordsInterfaceClass(@)
+      recordsInterface.setRemoteCallbacks(@defaultRemoteCallbacks())
       name = recordsInterface.model.plural
       @[_.camelCase(name)] = recordsInterface
       @collectionNames.push name
@@ -23,6 +24,19 @@ module.exports =
       data
 
     afterImport: (data) ->
+
+    setRemoteCallbacks: (callbacks) ->
+      _.each @collectionNames, (name) => @[_.camelCase(name)].setRemoteCallbacks(callbacks)
+
+    defaultRemoteCallbacks: ->
+      onUploadSuccess: (data) => @import(data)
+      onSuccess: (response) =>
+        if response.ok
+          response.json().then (data) =>
+            @import(data)
+        else
+          throw response
+      onFailure: (response) => throw response
 
     bumpVersion: ->
       @_version = (@_version || 0) + 1

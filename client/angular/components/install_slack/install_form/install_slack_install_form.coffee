@@ -1,9 +1,10 @@
 Session       = require 'shared/services/session.coffee'
 Records       = require 'shared/services/records.coffee'
+EventBus      = require 'shared/services/event_bus.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm }    = require 'angular/helpers/form.coffee'
-{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
+{ submitForm }    = require 'shared/helpers/form.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'installSlackInstallForm', ->
   templateUrl: 'generated/components/install_slack/install_form/install_slack_install_form.html'
@@ -20,18 +21,18 @@ angular.module('loomioApp').directive 'installSlackInstallForm', ->
       $scope.group = group
       $scope.submit = submitForm $scope, $scope.group,
         prepareFn: ->
-          $scope.$emit 'processing'
+          EventBus.emit $scope, 'processing'
           $scope.group.identityId = Session.user().identityFor('slack').id
         flashSuccess: 'install_slack.install.slack_installed'
         skipClose: true
         successCallback: (response) ->
           g = Records.groups.find(response.groups[0].key)
           LmoUrlService.goTo LmoUrlService.group(g)
-          $scope.$emit 'nextStep', g
+          EventBus.emit $scope, 'nextStep', g
     $scope.setSubmit(_.first($scope.groups()) or newGroup)
 
     submitOnEnter $scope, anyEnter: true
-    $scope.$on 'focus',  $scope.focus
+    EventBus.listen $scope, 'focus',  $scope.focus
 
     return
   ]

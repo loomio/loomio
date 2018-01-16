@@ -1,4 +1,5 @@
 Session        = require 'shared/services/session.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
@@ -8,9 +9,6 @@ angular.module('loomioApp').directive 'groupTheme', ['$rootScope', ($rootScope) 
   templateUrl: 'generated/components/group_page/group_theme/group_theme.html'
   replace: true
   controller: ['$scope', ($scope) ->
-
-    $rootScope.$broadcast('setBackgroundImageUrl', $scope.group)
-
     $scope.logoStyle = ->
       { 'background-image': "url(#{$scope.group.logoUrl()})" }
 

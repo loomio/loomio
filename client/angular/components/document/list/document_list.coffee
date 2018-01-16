@@ -1,4 +1,5 @@
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
 angular.module('loomioApp').directive 'documentList', ->
@@ -13,5 +14,5 @@ angular.module('loomioApp').directive 'documentList', ->
       ($scope.model.hasDocuments() or $scope.placeholder)
 
     $scope.edit = (doc, $mdMenu) ->
-      $scope.$broadcast 'initializeDocument', doc, $mdMenu
+      EventBus.broadcast $scope, 'initializeDocument', doc, $mdMenu
   ]

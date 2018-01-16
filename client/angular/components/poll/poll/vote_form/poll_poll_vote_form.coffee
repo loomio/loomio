@@ -1,6 +1,7 @@
-{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
-{ submitStance }  = require 'angular/helpers/form.coffee'
-{ fromPairs }     = require 'shared/helpers/lodash_ext.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
+
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitStance }  = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'pollPollVoteForm', ->
   scope: {stance: '='}
@@ -11,14 +12,14 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
 
     initForm = do ->
       if $scope.stance.poll().multipleChoice
-        $scope.pollOptionIdsChecked = fromPairs _.map $scope.stance.stanceChoices(), (choice) ->
+        $scope.pollOptionIdsChecked = _.fromPairs _.map $scope.stance.stanceChoices(), (choice) ->
           [choice.pollOptionId, true]
       else
         $scope.vars.pollOptionId = $scope.stance.pollOptionId()
 
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
-        $scope.$emit 'processing'
+        EventBus.emit $scope, 'processing'
         selectedOptionIds = if $scope.stance.poll().multipleChoice
           _.compact(_.map($scope.pollOptionIdsChecked, (v,k) -> parseInt(k) if v))
         else

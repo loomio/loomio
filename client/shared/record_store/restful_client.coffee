@@ -1,6 +1,6 @@
-require 'whatwg-fetch'                      # polyfill for Fetch API
-require 'promise-polyfill'                  # polyfill for Promise object
-require('promise.prototype.finally').shim() # polyfill for .finally on Promises
+window.Promise = window.Promise or require 'promise-polyfill' # polyfill for Promise object
+require('promise.prototype.finally').shim()                   # polyfill for Promise.finally
+require 'whatwg-fetch'                                        # polyfill for Fetch API
 
 module.exports =
   class RestfulClient
@@ -9,6 +9,8 @@ module.exports =
     apiPrefix: "/api/v1"
 
     # override these to set default actions
+    onPrepare: (request)  -> request
+    onCleanup: (response) -> response
     onSuccess: (response) -> response
     onFailure: (response) -> throw response
     onUploadSuccess: (response) -> response
@@ -58,7 +60,15 @@ module.exports =
         headers:     { 'Content-Type': 'application/json' }
         body:        JSON.stringify(body)
       delete opts.body if method == 'GET'
-      fetch(path, opts).then(@onSuccess, @onFailure)
+      @onPrepare()
+      fetch(path, opts).then (response) =>
+        if response.ok
+          @onSuccess(response)
+        else
+          @onFailure(response)
+      , (response) =>
+        @onFailure(response)
+      .finally(@onCleanup)
 
     postMember: (keyOrId, action, params) ->
       @post(@memberPath(keyOrId, action), params)

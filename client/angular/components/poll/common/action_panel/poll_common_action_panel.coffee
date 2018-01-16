@@ -1,6 +1,7 @@
 AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
@@ -24,7 +25,7 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ->
                           email: (invitation or {}).recipientEmail
                       ).choose(LmoUrlService.params().poll_option_id)
 
-    $scope.$on 'refreshStance', $scope.init
+    EventBus.listen $scope, 'refreshStance', $scope.init
     $scope.init()
 
     $scope.userHasVoted = ->

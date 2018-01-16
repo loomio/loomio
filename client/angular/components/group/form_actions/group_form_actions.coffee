@@ -1,10 +1,11 @@
-Records = require 'shared/services/records.coffee'
-I18n    = require 'shared/services/i18n.coffee'
+Records  = require 'shared/services/records.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
+I18n     = require 'shared/services/i18n.coffee'
 
-{ scrollTo }            = require 'shared/helpers/window.coffee'
-{ submitForm }          = require 'angular/helpers/form.coffee'
+{ scrollTo }            = require 'shared/helpers/layout.coffee'
+{ submitForm }          = require 'shared/helpers/form.coffee'
 { groupPrivacyConfirm } = require 'shared/helpers/helptext.coffee'
-{ submitOnEnter }       = require 'angular/helpers/keyboard.coffee'
+{ submitOnEnter }       = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'groupFormActions', ->
   scope: {group: '='}
@@ -30,7 +31,7 @@ angular.module('loomioApp').directive 'groupFormActions', ->
       flashSuccess:               -> "group_form.messages.group_#{actionName}"
       successCallback: (response) ->
         group = Records.groups.find(response.groups[0].key)
-        $scope.$emit 'nextStep', group
+        EventBus.emit $scope, 'nextStep', group
 
     $scope.expandForm = ->
       $scope.group.expanded = true

@@ -1,5 +1,6 @@
 Session       = require 'shared/services/session.coffee'
 Records       = require 'shared/services/records.coffee'
+EventBus      = require 'shared/services/event_bus.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
@@ -11,7 +12,7 @@ $controller = ($rootScope, $routeParams) ->
     if poll and !@poll?
       @poll = poll
 
-      $rootScope.$broadcast 'currentComponent',
+      EventBus.broadcast $rootScope, 'currentComponent',
         group: @poll.group()
         title: poll.title
         page: 'pollPage'
@@ -28,8 +29,8 @@ $controller = ($rootScope, $routeParams) ->
       if LmoUrlService.params().change_vote
         ModalService.open 'PollCommonEditVoteModal', stance: => myLastStanceFor(@poll)
 
-  Records.polls.fetchComplete($routeParams.key).then @init, (error) ->
-    $rootScope.$broadcast('pageError', error)
+  Records.polls.findOrFetchById($routeParams.key, {}, true).then @init, (error) ->
+    EventBus.broadcast $rootScope, 'pageError', error
 
   return
 

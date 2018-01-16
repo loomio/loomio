@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-{ upload } = require 'angular/helpers/form.coffee'
+{ upload } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'LogoPhotoForm', ['$timeout', ($timeout) ->
   scope: {group: '='}

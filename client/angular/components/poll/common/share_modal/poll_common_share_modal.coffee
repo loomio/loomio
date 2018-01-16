@@ -1,3 +1,5 @@
+EventBus = require 'shared/services/event_bus.coffee'
+
 { iconFor } = require 'shared/helpers/poll.coffee'
 
 angular.module('loomioApp').factory 'PollCommonShareModal', ->
@@ -8,5 +10,5 @@ angular.module('loomioApp').factory 'PollCommonShareModal', ->
     $scope.icon = ->
       iconFor($scope.poll)
 
-    $scope.$on '$close', $scope.$close
+    EventBus.listen $scope, '$close', $scope.$close
   ]

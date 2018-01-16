@@ -1,7 +1,8 @@
-Records = require 'shared/services/records.coffee'
+Records  = require 'shared/services/records.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
-{ submitStance }  = require 'angular/helpers/form.coffee'
-{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
+{ submitStance }  = require 'shared/helpers/form.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
   scope: {stance: '='}
@@ -45,11 +46,11 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
         poll_option_id: option.id
         score: $scope.stanceChoiceFor(option).score
     $scope.setStanceChoices()
-    $scope.$on 'pollOptionsAdded', $scope.setStanceChoices
+    EventBus.listen $scope, 'pollOptionsAdded', $scope.setStanceChoices
 
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
-        $scope.$emit 'processing'
+        EventBus.emit $scope, 'processing'
         return unless _.sum(_.pluck($scope.stanceChoices, 'score')) > 0
         $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
 

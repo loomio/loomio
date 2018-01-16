@@ -1,8 +1,9 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 
-{ submitOnEnter } = require 'angular/helpers/keyboard.coffee'
-{ submitStance }  = require 'angular/helpers/form.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitStance }  = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'pollCountVoteForm', ->
   scope: {stance: '='}
@@ -11,7 +12,7 @@ angular.module('loomioApp').directive 'pollCountVoteForm', ->
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: (optionName) ->
         option = _.find $scope.stance.poll().pollOptions(), (option) -> option.name == optionName
-        $scope.$emit 'processing'
+        EventBus.emit $scope, 'processing'
         $scope.stance.stanceChoicesAttributes = [poll_option_id: option.id]
 
     $scope.yesColor = AppConfig.pollColors.count[0]

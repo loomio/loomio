@@ -1,11 +1,12 @@
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 
 $controller = ($routeParams, $rootScope) ->
-  $rootScope.$broadcast('currentComponent', { page: 'documentsPage'})
+  EventBus.broadcast $rootScope, 'currentComponent', { page: 'documentsPage'}
 
   @fetchDocuments = =>
     Records.documents.fetchByGroup(@group, @fragment)
@@ -31,7 +32,7 @@ $controller = ($routeParams, $rootScope) ->
     @group = group
     @fetchDocuments()
   , (error) ->
-    $rootScope.$broadcast('pageError', error)
+    EventBus.broadcast $rootScope, 'pageError', error
 
   return
 

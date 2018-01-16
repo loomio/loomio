@@ -1,3 +1,4 @@
+EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 Records        = require 'shared/services/records.coffee'
 Session        = require 'shared/services/session.coffee'
@@ -5,7 +6,7 @@ FlashService   = require 'shared/services/flash_service.coffee'
 
 { signIn }            = require 'shared/helpers/user.coffee'
 { fieldFromTemplate } = require 'shared/helpers/poll.coffee'
-{ scrollTo }          = require 'shared/helpers/window.coffee'
+{ scrollTo }          = require 'shared/helpers/layout.coffee'
 
 # a helper to aid submitting forms throughout the app
 module.exports =
@@ -19,44 +20,44 @@ module.exports =
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
         outcome = Records.outcomes.find(data.outcomes[0].id)
-        scope.$emit 'nextStep', outcome
+        EventBus.emit scope, 'nextStep', outcome
     , options))
 
   submitStance: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "poll_#{model.poll().pollType}_vote_form.stance_#{actionName(model)}"
       prepareFn: ->
-        scope.$emit 'processing'
+        EventBus.emit scope, 'processing'
       successCallback: (data) ->
         model.poll().clearStaleStances()
         scrollTo '.poll-common-card__results-shown'
-        scope.$emit 'stanceSaved', data.stances[0].key
-        signIn(data, -> scope.$emit 'loggedIn') unless Session.user().emailVerified
+        EventBus.emit scope, 'stanceSaved'
+        signIn(data, data.stances[0].participant_id, -> EventBus.emit scope, 'loggedIn') unless Session.user().emailVerified
       cleanupFn: ->
-        scope.$emit 'doneProcessing'
+        EventBus.emit scope, 'doneProcessing'
     , options))
 
   submitPoll: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
       prepareFn: =>
-        scope.$emit 'processing'
+        EventBus.emit scope, 'processing'
         switch model.pollType
           # for polls with default poll options (proposal, check)
           when 'proposal', 'count'
             model.pollOptionNames = _.pluck fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
           # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
           else
-            options.broadcaster.$broadcast 'addPollOption'
+            model.addOption()
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
         poll = Records.polls.find(data.polls[0].key)
         poll.removeOrphanOptions()
-        scope.$emit 'nextStep', poll
+        EventBus.emit scope, 'nextStep', poll
       cleanupFn: ->
-        scope.$emit 'doneProcessing'
+        EventBus.emit scope, 'doneProcessing'
     , options))
 
   upload: (scope, model, options = {}) ->
@@ -74,7 +75,7 @@ submit = (scope, model, options = {}) ->
   # fetch draft from server and listen for changes to it
   if model.hasDrafts and model.isNew() and AbilityService.isLoggedIn()
     model.fetchAndRestoreDraft()
-    scope.$watch model.draftFields, model.planDraftFetch, true
+    EventBus.watch scope, model.draftFields, model.planDraftFetch, true
 
   submitFn  = options.submitFn  or model.save
   confirmFn = options.confirmFn or (-> false)
@@ -94,9 +95,11 @@ submit = (scope, model, options = {}) ->
 prepare = (scope, model, options, prepareArgs) ->
   FlashService.loading(options.loadingMessage)
   options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
-  scope.$emit 'processing'       if typeof scope.$emit       is 'function'
-  scope.isDisabled = true
+  EventBus.emit scope, 'processing'
+  model.cancelDraftFetch()       if typeof model.cancelDraftFetch is 'function'
+  model.clearDrafts()            if typeof model.clearDrafts      is 'function'
   model.setErrors()
+  scope.isDisabled = true
 
 confirm = (confirmMessage) ->
   if confirmMessage and typeof window.confirm == 'function'
@@ -111,22 +114,21 @@ success = (scope, model, options) ->
       flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
       FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
     scope.$close()                if !options.skipClose? and typeof scope.$close is 'function'
-    model.cancelDraftFetch()      if typeof model.cancelDraftFetch is 'function'
     options.successCallback(data) if typeof options.successCallback is 'function'
 
 failure = (scope, model, options) ->
   (response) ->
     FlashService.dismiss()
     options.failureCallback(response)                       if typeof options.failureCallback is 'function'
-    response.json().then(model.setErrors)                   if _.contains([401,422], response.status)
-    scope.$emit errorTypes[response.status] or 'unknownError',
+    response.json().then (r) -> model.setErrors(r.errors)   if _.contains([401,422], response.status)
+    EventBus.emit scope, errorTypes[response.status] or 'unknownError',
       model: model
       response: response
 
 cleanup = (scope, model, options = {}) ->
   ->
     options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
-    scope.$emit 'doneProcessing'    if typeof scope.$emit       is 'function'
+    EventBus.emit scope, 'doneProcessing'
     scope.isDisabled = false
 
 calculateFlashOptions = (options) ->

@@ -1,12 +1,13 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
 FlashService   = require 'shared/services/flash_service.coffee'
 
-{ listenForLoading } = require 'angular/helpers/listen.coffee'
+{ listenForLoading } = require 'shared/helpers/listen.coffee'
 
 $controller = ($scope, $rootScope) ->
-  $rootScope.$broadcast('currentComponent', { page: 'verifyStancesPage', skipScroll: true })
+  EventBus.broadcast $rootScope, 'currentComponent', { page: 'verifyStancesPage', skipScroll: true }
 
   $scope.loader = new RecordLoader
     collection: 'stances'

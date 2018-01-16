@@ -1,8 +1,8 @@
 Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm, upload } = require 'angular/helpers/form.coffee'
-{ submitOnEnter }      = require 'angular/helpers/keyboard.coffee'
+{ submitForm, upload } = require 'shared/helpers/form.coffee'
+{ submitOnEnter }      = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').factory 'RegisteredAppForm', ->
   templateUrl: 'generated/components/registered_app_form/registered_app_form.html'
@@ -24,7 +24,7 @@ angular.module('loomioApp').factory 'RegisteredAppForm', ->
       loadingMessage: 'common.action.uploading'
       skipClose:      true
       successCallback: (response) ->
-        $scope.application.logoUrl = response.data.oauth_applications[0].logo_url
+        $scope.application.logoUrl = response.oauth_applications[0].logo_url
 
     $scope.clickFileUpload = ->
       document.querySelector('.registered-app-form__logo-input').click()
