@@ -12,6 +12,7 @@ module.exports = [
   {path: '/verify_stances', component: 'verifyStancesPage' },
   {path: '/d/:key', component: 'threadPage' },
   {path: '/d/:key/:stub', component: 'threadPage' },
+  {path: '/d/:key/:stub/:sequence_id', component: 'threadPage' },
   {path: '/d/:key/comment/:comment', component: 'threadPage'},
   {path: '/p/new', component: 'startPollPage'},
   {path: '/p/new/:poll_type', component: 'startPollPage'},

@@ -46,6 +46,9 @@ module.exports = class LmoUrlService
   @membershipRequest: (mr, params = {}, options = {}) ->
     @route model: mr.group(), action: 'membership_requests', params: params
 
+  @event: (e, params = {}, options = {}) ->
+    @discussion(e.discussion(), params, options) + "/#{e.sequenceId}"
+
   @invitation: ->
     # NOOP for now
 

@@ -36,7 +36,7 @@ angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', 
       icon: 'mdi-link'
       canPerform: -> clipboard.supported
       perform:    ->
-        clipboard.copyText(LmoUrlService.comment($scope.eventable, {}, absolute: true))
+        clipboard.copyText(LmoUrlService.event($scope.event, {}, absolute: true))
         FlashService.success("action_dock.comment_copied")
     ,
       name: 'show_history'

@@ -536,6 +536,8 @@ en:
       body:
         voted: '<strong>%{participant}</strong>:'
 
+  comment_by: Comment by %{comment_author}
+
   poll_generator:
     proposal:
       title: "Extend offer letters to Shelley and Jack"
