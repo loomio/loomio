@@ -5,7 +5,6 @@ plumber    = require 'gulp-plumber'
 buffer     = require 'vinyl-buffer'
 vueify     = require 'vueify'
 coffeeify  = require 'coffeeify'
-babelify   = require 'babelify'
 uglify     = require('gulp-uglify/composer')(require('uglify-es', console))
 source     = require 'vinyl-source-stream'
 rename     = require 'gulp-rename'

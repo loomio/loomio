@@ -12,17 +12,15 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 $controller = ($scope, $routeParams, $rootScope, $timeout) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }
 
-  # if we get given a comment id, then hard refresh after seeking it's sequenceId
-  # sorry everyone, we'll stop using hardcoded notification.urls some day soon
   requestedCommentId = ->
     parseInt($routeParams.comment or LmoUrlService.params().comment)
 
   if requestedCommentId()
     Records.events.fetch
+      path: 'comment'
       params:
         discussion_id: $routeParams.key
         comment_id: requestedCommentId()
-        per: 1
     .then =>
       comment = Records.comments.find(requestedCommentId())
       @discussion = comment.discussion()
@@ -30,7 +28,7 @@ $controller = ($scope, $routeParams, $rootScope, $timeout) ->
       EventBus.broadcast $scope, 'initActivityCard'
 
   chompRequestedSequenceId = ->
-    requestedSequenceId = parseInt(LmoUrlService.params().from)
+    requestedSequenceId = parseInt($location.search().from || $routeParams.sequence_id)
     LmoUrlService.params('from', null)
     requestedSequenceId
 
