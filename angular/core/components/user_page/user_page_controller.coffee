@@ -7,7 +7,7 @@ angular.module('loomioApp').controller 'UserPageController', ($rootScope, $route
       @loadGroupsFor(@user)
 
   @location = =>
-    @user.location || @user.detectedLocation().join(', ')
+    @user.location
 
   @canContactUser = ->
     AbilityService.canContactUser(@user)

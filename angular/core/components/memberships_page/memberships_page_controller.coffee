@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, Records, LoadingService, ModalService, InvitationModal, RemoveMembershipForm, AbilityService, FlashService, ScrollService) ->
-  $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
+  $rootScope.$broadcast('currentComponent', { titleKey: 'memberships_page.members', page: 'membershipsPage'})
 
   @init = (group) =>
     return if @group? or !group?
