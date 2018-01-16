@@ -2,7 +2,7 @@ Records       = require 'shared/services/records.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ listenForLoading } = require 'angular/helpers/listen.coffee'
+{ listenForLoading } = require 'shared/helpers/listen.coffee'
 
 $controller = ($rootScope) ->
   $rootScope.$broadcast('currentComponent', { page: 'startDiscussionPage', skipScroll: true })

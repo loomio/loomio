@@ -1,5 +1,5 @@
-{ submitOnEnter } = require 'shared/services/keyboard.coffee'
-{ submitForm }    = require 'shared/services/form.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitForm }    = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').directive 'pollCommonOutcomeFormActions', ->
   scope: {outcome: '='}
