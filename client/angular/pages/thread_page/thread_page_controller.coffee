@@ -9,7 +9,7 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 { scrollTo }         = require 'shared/helpers/layout.coffee'
 { registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
 
-$controller = ($scope, $routeParams, $rootScope, $timeout) ->
+$controller = ($scope, $routeParams, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }
 
   requestedCommentId = ->
@@ -28,7 +28,7 @@ $controller = ($scope, $routeParams, $rootScope, $timeout) ->
       EventBus.broadcast $scope, 'initActivityCard'
 
   chompRequestedSequenceId = ->
-    requestedSequenceId = parseInt($location.search().from || $routeParams.sequence_id)
+    requestedSequenceId = parseInt(LmoUrlService.params().from || $routeParams.sequence_id)
     LmoUrlService.params('from', null)
     requestedSequenceId
 
@@ -70,5 +70,5 @@ $controller = ($scope, $routeParams, $rootScope, $timeout) ->
 
   return
 
-$controller.$inject = ['$scope', '$routeParams', '$rootScope', '$timeout']
+$controller.$inject = ['$scope', '$routeParams', '$rootScope']
 angular.module('loomioApp').controller 'ThreadPageController', $controller
