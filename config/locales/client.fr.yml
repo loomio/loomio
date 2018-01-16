@@ -458,8 +458,8 @@ fr:
     members: 'Les membres'
     members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
     member_options: Options des membres
-    see_all_members: 'Voir les ({{count}}) membres'
-    pending_invitations: '+ ({{count}}) en attente'
+    see_all_members: 'Voir les {{count}} membres'
+    pending_invitations: '+ {{count}} en attente'
     subgroups: 'Sous-groupes'
     subgroups_placeholder: 'Les sous-groupes permettent à chaque équipe de disposer de son propre espace et d’envoyer les notifications aux bonnes personnes.'
     invite_people: 'Inviter'
