@@ -37,7 +37,7 @@ gem 'ahoy_matey', github: 'gdpelican/ahoy', branch: 'user-presence'
 gem 'ahoy_email', '~> 0.3.1'
 gem 'oj'
 gem 'snorlax'
-gem 'custom_counter_cache', path: "/Users/rob/projects/custom_counter_cache"
+gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
 gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
