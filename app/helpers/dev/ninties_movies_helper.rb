@@ -335,6 +335,7 @@ module Dev::NintiesMoviesHelper
     #notify patrick that he has been added to jens group
     another_group = FormalGroup.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
+    jennifer.reload
     MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer)
 
     #'new_coordinator',
@@ -346,7 +347,6 @@ module Dev::NintiesMoviesHelper
     #notify patrick that his invitation to emilio has been accepted
     invitation = InvitationService.invite_to_group(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
     InvitationService.redeem(invitation.first, emilio)
-
     #'poll_created'
     poll = FactoryBot.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
     PollService.create(poll: poll, actor: jennifer)
