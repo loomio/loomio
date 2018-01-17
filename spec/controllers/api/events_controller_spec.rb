@@ -87,32 +87,19 @@ describe API::EventsController do
 
     context 'with comment' do
       before do
-        @early_event = CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
-        @later_event = CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
+        @event = CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
       end
 
       it 'returns events beginning with a given comment id' do
-        get :index, params: { discussion_id: discussion.id, comment_id: @later_event.eventable.id }, format: :json
+        get :comment, params: { discussion_id: discussion.id, comment_id: @event.eventable.id }
         json = JSON.parse(response.body)
         event_ids = json['events'].map { |v| v['id'] }
-        expect(event_ids).to include @later_event.id
-        expect(event_ids).to_not include @early_event.id
+        expect(event_ids).to include @event.id
       end
 
-      it 'returns events normally when no comment id is passed' do
-        get :index, params: { discussion_id: discussion.id, comment_id: nil }, format: :json
-        json = JSON.parse(response.body)
-        event_ids = json['events'].map { |v| v['id'] }
-        expect(event_ids).to include @later_event.id
-        expect(event_ids).to include @early_event.id
-      end
-
-      it 'returns events normally when a nonexistent comment id is passed' do
-        get :index, params: { discussion_id: discussion.id, comment_id: -2 }, format: :json
-        json = JSON.parse(response.body)
-        event_ids = json['events'].map { |v| v['id'] }
-        expect(event_ids).to include @later_event.id
-        expect(event_ids).to include @early_event.id
+      it 'returns 404 when comment not found' do
+        get :comment, params: { discussion_id: discussion.id, comment_id: nil }
+        expect(response.status).to eq 404
       end
     end
 

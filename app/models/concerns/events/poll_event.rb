@@ -12,10 +12,6 @@ module Events::PollEvent
 
   private
 
-  def communities
-    @communities ||= poll.communities
-  end
-
   def notification_recipients
     return User.none unless poll.group
     if announcement
@@ -39,7 +35,7 @@ module Events::PollEvent
       announcement_email_recipients
     else
       specified_email_recipients
-    end.without(poll.unsubscribers)
+    end.where.not(id: poll.unsubscribers)
   end
 
   def announcement_email_recipients

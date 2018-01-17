@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe InvitationsController do
-  let(:group) { FactoryGirl.create(:formal_group) }
-  let(:user) { FactoryGirl.create(:user) }
-  let(:another_group) { FactoryGirl.create(:formal_group) }
-  let(:another_user) { FactoryGirl.create(:user) }
+  let(:group) { FactoryBot.create(:formal_group) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:another_group) { FactoryBot.create(:formal_group) }
+  let(:another_user) { FactoryBot.create(:user) }
 
   before do
     group.add_admin!(user)
@@ -66,7 +66,7 @@ describe InvitationsController do
 
     context "user is signed in" do
       before do
-        sign_in @user = FactoryGirl.create(:user)
+        sign_in @user = FactoryBot.create(:user)
       end
 
       context 'get with invitation token in query' do

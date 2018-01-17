@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, MentionLinkService) ->
-  class PollModel extends DraftableModel
+angular.module('loomioApp').factory 'PollModel', (BaseModel, HasDocuments, HasDrafts, AppConfig, MentionLinkService) ->
+  class PollModel extends BaseModel
     @singular: 'poll'
     @plural: 'polls'
     @indices: ['discussionId', 'authorId']
@@ -7,19 +7,14 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     @draftParent: 'draftParent'
     @draftPayloadAttributes: ['title', 'details']
 
+    afterConstruction: ->
+      HasDocuments.apply @, showTitle: true
+      HasDrafts.apply @
+
     draftParent: ->
       @discussion() or @author()
 
-    afterConstruction: ->
-      @newAttachmentIds = _.clone(@attachmentIds) or []
-
     poll: -> @
-
-    documents: ->
-      @recordStore.documents.find(modelId: @id, modelType: "Poll")
-
-    hasDocuments: ->
-      @documents().length > 0
 
     # the polls which haven't closed have the highest importance
     # (and so have the lowest value here)
@@ -40,11 +35,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       pollOptionIds: []
       customFields: {}
 
-    serialize: ->
-      data = @baseSerialize()
-      data.poll.attachment_ids = @newAttachmentIds
-      data
-
     relationships: ->
       @belongsTo 'author', from: 'users'
       @belongsTo 'discussion'
@@ -56,15 +46,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     reactions: ->
       @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
-
-    newAttachments: ->
-      @recordStore.attachments.find(@newAttachmentIds)
-
-    attachments: ->
-      @recordStore.attachments.find(attachableId: @id, attachableType: 'Poll')
-
-    hasAttachments: ->
-      _.some @attachments()
 
     announcementSize: (action) ->
       return @group().announcementRecipientsCount if @group() and @isNew()
@@ -142,7 +123,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @closedAt?
 
     goal: ->
-      @customFields.goal or @membersCount().length
+      @customFields.goal or @membersCount()
 
     close: =>
       @remote.postMember(@key, 'close')

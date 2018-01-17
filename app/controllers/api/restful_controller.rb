@@ -11,6 +11,14 @@ class API::RestfulController < ActionController::Base
 
   private
 
+  def load_resource
+    if resource_class.respond_to?(:friendly)
+      self.resource = resource_class.friendly.find(params[:id])
+    else
+      self.resource = resource_class.find(params[:id])
+    end
+  end
+
   def create_action
     @event = service.create({resource_symbol => resource, actor: current_user})
   end

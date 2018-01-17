@@ -39,13 +39,32 @@ class Event < ApplicationRecord
   def trigger!
   end
 
+  def should_have_parent?
+    %w[stance_created
+    poll_option_added
+    poll_expired
+    poll_edited
+    poll_closing_soon
+    poll_closed_by_user
+    outcome_created
+    new_comment
+    discussion_moved
+    discussion_edited].include?(self.kind) ||
+    (self.kind == 'poll_created' && self.discussion_id.present?)
+  end
+
+  def ensure_parent_present!
+    return if self.parent_id || !should_have_parent?
+    self.update(parent: eventable.parent_event)
+  end
+
   private
 
   def call_thread_item_created
-    discussion.thread_item_created! if discussion_id.present?
+    discussion.thread_item_created! if discussion.present?
   end
 
   def call_thread_item_destroyed
-    discussion.thread_item_destroyed! if discussion_id.present?
+    discussion.thread_item_destroyed! if discussion.present?
   end
 end

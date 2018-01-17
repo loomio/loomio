@@ -1,6 +1,7 @@
-.document-title-form
+.document-title-form.lmo-relative
+  .lmo-disabled-form{ng-show: "isDisabled"}
 
-  %md-input-container.md-block.md-no-errors{ng-if: "!document.isNew()"}
+  %md-input-container.md-block.md-no-errors{ng-if: "!document.isNew() && document.manualUrl"}
     %label{translate: "document.form.url_label"}
     %input.lmo-primary-form-input#document_title{ng-model: "document.url", placeholder: "{{'document.form.url_placeholder' | translate }}"}
     %validation_errors{subject: "document", field: "url"}
@@ -12,6 +13,6 @@
     %validation_errors{subject: "document", field: "title"}
 
   .lmo-md-actions
-    %md-button.md-warn{ng-if: "!document.isNew()", ng-click: "remove()", translate: "common.action.remove"}
-    %md-button.md-accent{ng-if: "document.isNew()", ng-click: "$emit('previousStep')", translate: "common.action.back"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.save"}
+    %div{ng-if: "!document.isNew()"}
+    %md-button.md-accent{ng-if: "document.isNew()", ng-click: "$emit('previousStep')", translate: "common.action.back", md-prevent-menu-close: "true"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.save", md-prevent-menu-close: "true"}

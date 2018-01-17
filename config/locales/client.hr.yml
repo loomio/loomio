@@ -20,11 +20,6 @@ hr:
     join_group: 'Pridruži se grupi '
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
-  group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Za pridruživanje grupi mora vas pozvati član / ica grupe."
-        membership_is_invitation_by_admin_only: "U ovu grupu mora vas pozvati koordinator / ica."
   membership_requests_page:
     ignore: Ignoriraj
   memberships_page:

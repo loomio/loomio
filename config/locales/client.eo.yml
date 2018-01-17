@@ -94,11 +94,6 @@ eo:
     name_label: Nomo
     email_label: Retpoŝto
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Por aliĝi al ĉi tiu grupo vi devas esti invitita de membro."
-        membership_is_invitation_by_admin_only: "Por aliĝi al ĉi tiu grupo vi devas esti invitita de kunordiganto."
-    discussions: 'Diskutoj'
     options_label: 'Opcioj'
     options:
       label: 'Opcioj'
@@ -141,6 +136,8 @@ eo:
     unread: Nelegitaj
   thread_group:
     aria_label: 'Grupnomo'
+  thread_context:
+    close_thread: 'Fermi'
   delete_comment_dialog:
     title: 'Forigi komenton'
     question: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'

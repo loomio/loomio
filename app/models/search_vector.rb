@@ -37,7 +37,7 @@ class SearchVector < ApplicationRecord
   end
 
   scope :search_without_privacy!, ->(query) do
-    query = sanitize(query)
+    query = connection.quote(query)
 
     joins(discussion: :group)
    .select(:discussion_id, :search_vector, 'groups.full_name as result_group_name')

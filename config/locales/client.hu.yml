@@ -163,12 +163,7 @@ hu:
     name_label: Név
     email_label: E-mail
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "A belépéshez meghívóra van szükséged egy csoporttagtól."
-        membership_is_invitation_by_admin_only: "A belépéshez egy koordinátor meghívójára van szükséged."
     group_logo: 'Csoport logó'
-    discussions: 'Szálak'
     options_label: 'Lehetőségek'
     options:
       label: 'Lehetőségek'
@@ -225,6 +220,8 @@ hu:
     latest: Legutóbbi
   thread_group:
     aria_label: 'Csoport neve'
+  thread_context:
+    close_thread: 'Bezár'
   delete_comment_dialog:
     title: 'Hozzászólás törlése'
     question: 'Biztosan törölni akarod ezt a hozzászólást?'

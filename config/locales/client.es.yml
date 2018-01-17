@@ -365,6 +365,7 @@ es:
     add_resource: Agregar archivo adjunto
     edit_group: Editar contexto de grupo
     add_comment: Comentario
+    copy_url_comment: Copiar URL
     edit_thread: Editar contexto
     translate_thread: Traducir contexto
     edit_poll: Editar encuesta
@@ -422,17 +423,10 @@ es:
     you_and_name: "Tú y {{name}}"
     you_and_name_and_count_more: "Tú, {{name}} y {{count}} más"
     name_and_count_more: "{{name}} y {{count}} más"
+  context_panel:
+    thread_status:
+      pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos de tu grupo para todos los miembros del mismo."
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Este grupo todavía no tiene ningún hilo."
-        no_discussions_matching_filters_html: "No se han encontrado hilos que coincidan con estos filtros. <a href='%{link}'>Limpiar filtros</a>."
-        no_public_discussions: "No hay hilos públicos en este grupo."
-        discussions_are_private: "Todos los hilos en este grupo son privados."
-        join_group: "Para ver los hilos privados tendrás que unirte al grupo."
-        request_membership: "Para ver los hilos privados solicita unirte al grupo"
-        membership_is_invitation_only: "Para unirte a este grupo necesitas que te invite un miembro."
-        membership_is_invitation_by_admin_only: "Para unirte a este grupo necesitas que te invite un coordinador."
     messages:
       privacy:
         members: 'Ahora este grupo es visible sólo para miembros.'
@@ -444,7 +438,6 @@ es:
     new_photo: 'Nueva foto '
     new_cover_photo: 'Carga una nueva foto de portada '
     new_group_logo: 'Cargar nuevo logo del grupo'
-    discussions: 'Hilos'
     discussions_placeholder: 'Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.'
     members: 'Miembros '
     members_placeholder: 'Estás solo aquí: ¡invita a algunas personas para unirse a ti! '
@@ -486,8 +479,6 @@ es:
   description_card:
     title: 'Descripción del Grupo '
     placeholder: 'Los coordinadores del grupo pueden usar esta área para describir el propósito del grupo para que todos sepan porque están aquí.  '
-    view_documents: 'Ver archivos adjuntos'
-    manage_documents: 'Administrar archivos adjuntos'
     messages:
       description_updated: 'Descripción actualizada'
   leave_group_form:
@@ -573,29 +564,11 @@ es:
   document:
     list:
       title: Adjuntos
-      no_poll_documents: Aún no se han cargado archivos adjuntos a esta decisión.
-      no_discussion_documents: Aún no se han cargado archivos adjuntos a este hilo.
-      no_group_documents: 'Ningún archivo adjunto ha sido añadido en el contexto. Clic en el enlace debajo para ver todos los adjuntos añadidos a hilos dentro de este grupo. '
     management:
-      group_header: Añadido al contexto
-      discussion_header: Subido como contenido
-      added_by: Subido por {{name}}
       uploaded_to: en
     modal:
       title: Agregar archivo adjunto
-    method_form:
-      helptext: Mantén ordenados todas tus herramientas y archivos para que sean fácil de encontrar
-      url_helptext: Enlaza con páginas web y herramientas como Trello y documentos de Google
-      file_helptext: Sube documentos y archivos desde tu ordenador
     form:
-      helptext: Clic, pega, o arrastra tus archivos aquí para compartirlos con tu grupo.
-      file_upload: Sube un archivo desde tu ordenador
-      uploaded_already: ¿Ya lo has subido en otro lado?
-      upload_from_local: '¿Tienes un archivo local? '
-      upload_file: Sube desde tu ordenador
-      enter_url: Ingresa un URL
-      url_label: Adjunto URL
-      url_placeholder: E.j. https://www.example.com/attachment.txt
       title_helptext: ¿Cómo llamamos este adjunto?
       title_label: Nombre
       title_placeholder: 'E.j. ''Guías Comunitarias'' '
@@ -819,7 +792,6 @@ es:
     thread_preview:
       you_voted: 'Votaste {{position}}'
       undecided: 'Estas indeciso '
-      pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos de tu grupo para todos los miembros del mismo."
     threads_from:
       group: 'Hilos de'
       pinned: 'Hilos fijados'
@@ -848,7 +820,6 @@ es:
       pinned: 'Hilo fijado'
       unpinned: 'Hilo liberado'
     volume:
-      mute_message: 'Hilo silenciado. '
       unmute_message: 'Hilo silenciado '
   activity_card:
     beginning: 'Inicio '
@@ -869,6 +840,7 @@ es:
     email_settings: 'Ajustes de correo '
     edit: 'Editar'
     edit_thread: 'Editar'
+    close_thread: 'Cerrar'
     pin_thread: 'Fijar'
     unpin_thread: 'Liberar'
     mute_thread: 'Silenciar'
@@ -897,8 +869,6 @@ es:
     confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
       success: El hilo ha sido movido a {{name}}
-  print_modal:
-    load_discussion: 'Cargando la discusión... '
   delete_comment_dialog:
     title: 'Borrar comentario'
     question: '¿Estás seguro de que quieres borrar este comentario?'
@@ -949,8 +919,6 @@ es:
     private_title: 'actualizó el título y la privacidad del hilo '
     description_private: 'actualizó el contexto y la privacidad del hilo '
     description_private_title: 'se actualizó el título, el contexto y la privacidad del hilo '
-  discussion_moved_item:
-    discussion_moved: 'mover el hilo de <span>{{group}}</span>'
   contact_message_form:
     helptext: "¿Quieres ponerte en contacto con el equipo de Loomio? Ingresa un mensaje debajo y te responderemos a la brevedad. "
     contact_us_email: "(También siempre podrás contactarnos en <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>) "
@@ -1265,7 +1233,6 @@ es:
     meeting_created: Coordinación horaria iniciada
     meeting_updated: Coordinación horaria editada
     timeslots: Horarios
-    no_options: "No has agregado ningún horario todavía."
     meeting_duration: Duración de reunión
     add_option_placeholder: Ingrese una nueva hora
   poll_ranked_choice_form:
@@ -1346,11 +1313,8 @@ es:
     stance_updated: Opción actualizada
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> en respuesta a <strong> {{title}}</strong>"
-    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el titulo del hilo <strong>{{title}}</strong>"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el contexto del hilo"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado los anexos del hilo"
-    discussion_made_public: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha hecho el hilo publico"
-    discussion_made_private: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha hecho el hilo privado"
     discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el hilo"
     discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> movió el hilo de <strong>{{title}}</strong>"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"

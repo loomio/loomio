@@ -94,9 +94,9 @@ module.exports = new class PageHelper
     @click '.auth-signin-form__submit'
 
   signInViaEmail: (email) ->
-    @fillIn '.md-input', 'new@account.com'
+    @fillIn '.auth-email-form__email input', 'new@account.com'
     @click '.auth-email-form__submit'
-    @fillIn '.md-input', 'New Account'
+    @fillIn '.auth-form input', 'New Account'
     @click '.auth-signup-form__submit'
     @loadPath 'use_last_login_token'
     @click '.auth-signin-form__submit'

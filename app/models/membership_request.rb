@@ -1,10 +1,11 @@
 class MembershipRequest < ApplicationRecord
-  validates :name,  presence: true, :if => 'requestor.blank?'
-  validates :email, presence: true, email: true, :if => 'requestor.blank?' #this uses the gem 'valid_email'
+  include HasEvents
+  validates :name,  presence: true, if: :requestor
+  validates :email, presence: true, email: true, if: :requestor
 
   validate :validate_not_in_group_already
   validate :validate_unique_membership_request
-  validates_presence_of :responder, :if => 'response.present?'
+  validates_presence_of :responder, if: :response
 
   validates :group, presence: true
 
@@ -14,7 +15,6 @@ class MembershipRequest < ApplicationRecord
   belongs_to :requestor, class_name: 'User'
   belongs_to :user, foreign_key: 'requestor_id' # duplicate relationship for eager loading
   belongs_to :responder, class_name: 'User'
-  has_many :events, as: :eventable, dependent: :destroy
   has_many :admins, through: :group
 
   validates :introduction, length: { maximum: Rails.application.secrets.max_message_length }

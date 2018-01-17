@@ -1,8 +1,8 @@
-angular.module('loomioApp').factory 'FormService', ($rootScope, $window, FlashService, DraftService, AbilityService, AttachmentService, $filter) ->
+angular.module('loomioApp').factory 'FormService', ($rootScope, $translate, $window, FlashService, AbilityService) ->
   new class FormService
 
     confirmDiscardChanges: (event, record) ->
-      if record.isModified() && !confirm($filter('translate')('common.confirm_discard_changes'))
+      if record.isModified() && !confirm($translate.instant('common.confirm_discard_changes'))
           return event.preventDefault()
 
     errorTypes =
@@ -15,8 +15,10 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $window, FlashSe
 
     prepare = (scope, model, options, prepareArgs) ->
       FlashService.loading(options.loadingMessage)
-      options.prepareFn(prepareArgs) if typeof options.prepareFn is 'function'
-      scope.$emit 'processing'       if typeof scope.$emit       is 'function'
+      options.prepareFn(prepareArgs) if typeof options.prepareFn      is 'function'
+      scope.$emit 'processing'       if typeof scope.$emit            is 'function'
+      model.cancelDraftFetch()       if typeof model.cancelDraftFetch is 'function'
+      model.clearDrafts()            if typeof model.clearDrafts      is 'function'
       scope.isDisabled = true
       model.setErrors()
 
@@ -26,7 +28,6 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $window, FlashSe
     success = (scope, model, options) ->
       (response) ->
         FlashService.dismiss()
-        model.resetDraft() if options.drafts and AbilityService.isLoggedIn()
         if options.flashSuccess?
           flashKey     = if typeof options.flashSuccess is 'function' then options.flashSuccess() else options.flashSuccess
           FlashService.success flashKey, calculateFlashOptions(options.flashOptions)
@@ -50,7 +51,11 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $window, FlashSe
         scope.isDisabled = false
 
     submit: (scope, model, options = {}) ->
-      DraftService.applyDrafting(scope, model) if options.drafts and AbilityService.isLoggedIn()
+      # fetch draft from server and listen for changes to it
+      if options.drafts and model.isNew() and AbilityService.isLoggedIn()
+        model.fetchAndRestoreDraft()
+        scope.$watch model.draftFields, model.planDraftFetch, true
+
       submitFn  = options.submitFn  or model.save
       confirmFn = options.confirmFn or (-> false)
       (prepareArgs) ->

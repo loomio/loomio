@@ -29,7 +29,7 @@ describe API::MembershipsController do
 
   describe 'create' do
     it 'sets the membership volume' do
-      new_group = FactoryGirl.create(:formal_group)
+      new_group = FactoryBot.create(:formal_group)
       user.update_attribute(:default_membership_volume, 'quiet')
       membership = Membership.create!(user: user, group: new_group)
       expect(membership.volume).to eq 'quiet'
@@ -38,8 +38,8 @@ describe API::MembershipsController do
 
   describe 'set_volume' do
     before do
-      @discussion = FactoryGirl.create(:discussion, group: group)
-      @another_discussion = FactoryGirl.create(:discussion, group: group)
+      @discussion = FactoryBot.create(:discussion, group: group)
+      @another_discussion = FactoryBot.create(:discussion, group: group)
       @membership = group.membership_for(user)
       @membership.set_volume! 'quiet'
       @second_membership = another_group.membership_for(user)
@@ -69,7 +69,7 @@ describe API::MembershipsController do
     end
     context 'when apply to all is false' do
       it 'updates the volume for a single membership' do
-        put :set_volume, params: { id: @membership.id, volume: 'loud', apply_to_all: false }
+        put :set_volume, params: { id: @membership.id, volume: 'loud'}
         @membership.reload
         @second_membership.reload
         expect(@membership.volume).to eq 'loud'
@@ -80,8 +80,8 @@ describe API::MembershipsController do
 
   describe 'add_to_subgroup' do
     context 'permitted' do
-      let(:parent_member) { FactoryGirl.create(:user) }
-      let(:parent_group) { FactoryGirl.create(:formal_group) }
+      let(:parent_member) { FactoryBot.create(:user) }
+      let(:parent_group) { FactoryBot.create(:formal_group) }
       let(:subgroup) { create(:formal_group, parent: parent_group) }
 
       before do

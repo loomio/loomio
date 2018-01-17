@@ -311,6 +311,7 @@ de:
     notified_count: '{{count}} Mitglieder werden per E-Mail benachrichtigt'
   action_dock:
     add_comment: Kommentieren
+    copy_url_comment: URL kopieren
     edit_poll: Umfrage bearbeiten
     edit_stance: Abstimmungsentscheidung ändern
     edit_comment: Kommentar bearbeiten
@@ -359,16 +360,6 @@ de:
     you_and_name_and_count_more: "Du, {{name}} und {{count}} weitere"
     name_and_count_more: "{{name}} und {{count}} weitere"
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "In dieser Gruppe sind noch keine Diskussionen vorhanden."
-        no_discussions_matching_filters_html: "Es gibt keine Diskussionen, die den Filterkriterien entsprechen. <a href='%{link}'>Filter zurücksetzen</a>."
-        no_public_discussions: "Es gibt keine öffentlichen Diskussionen in dieser Gruppe."
-        discussions_are_private: "Alle Diskussionen dieser Gruppe sind nichtöffentlich."
-        join_group: "Um nichtöffentliche Diskussionen lesen zu können, musst Du der Gruppe beitreten"
-        request_membership: "Um nichtöffentliche Diskussionen zu lesen, bitte die Gruppe um Aufnahme"
-        membership_is_invitation_only: "Um dieser Gruppe beitreten zu können, musst Du zunächst von einem Mitglied eingeladen werden."
-        membership_is_invitation_by_admin_only: "Um dieser Gruppe beitreten zu können, musst Du zunächst von einem/r Koordinator/in eingeladen werden."
     messages:
       privacy:
         members: 'Diese Gruppe ist nun nur für Mitglieder sichtbar'
@@ -380,7 +371,6 @@ de:
     new_photo: 'Neues Foto'
     new_cover_photo: 'Neues Titelfoto hochladen'
     new_group_logo: 'Neues Gruppenlogo hochladen'
-    discussions: 'Diskussionen'
     discussions_placeholder: 'An einer Diskussion können sich alle Mitglieder beteiligen und gemeinsam Abstimmungen durchführen.'
     members: 'Mitglieder'
     members_placeholder: 'Du bist bislang alleine hier: Lade mehr Leute ein!'
@@ -486,9 +476,6 @@ de:
   documents_page:
     confirm_remove_title: Anhang entfernen
   document:
-    management:
-      discussion_header: Hochgeladene Inhalte
-      added_by: hochgeladen von {{name}}
     form:
       title_label: Name
   membership_requests_page:
@@ -690,7 +677,6 @@ de:
     load_previous: 'Lade ältere Beiträge'
     started_by: 'Erstellt von <strong>{{name}}</strong>'
     volume:
-      mute_message: 'Diskussion stummgeschaltet.'
       unmute_message: 'Stummschalten deaktiviert'
   activity_card:
     unread: Ungelesen
@@ -706,6 +692,7 @@ de:
     email_settings: 'E-Mail-Einstellungen'
     edit: 'Bearbeiten'
     edit_thread: 'Bearbeiten'
+    close_thread: 'Vorzeitig beenden'
     mute_thread: 'Stummschalten'
     move_thread: 'Verschieben'
     print_thread: 'Drucken'
@@ -726,8 +713,6 @@ de:
     confirm_change_to_private_thread: '{{groupName}} ist eine öffentliche Gruppe. Wenn Du fortfährst, wird diese Diskussion öffentlich sein.'
     messages:
       success: Diskussion wurde nach {{name}} verschoben
-  print_modal:
-    load_discussion: Gesamte Diskussion wird geladen...
   delete_comment_dialog:
     title: 'Kommentar löschen'
     question: 'Bist du sicher, dass du diesen Kommentar löschen möchtest?'
@@ -778,8 +763,6 @@ de:
     private_title: 'aktualisierte Diskussionstitel und Privatsphäre'
     description_private: 'aktualisierte die Diskussionsbeschreibung und Privatsphäre'
     description_private_title: 'aktualisierte Diskussionstitel, Diskussionsbeschreibung und Privatsphäre'
-  discussion_moved_item:
-    discussion_moved: 'verschob die Diskussion von <span>{{group}}</span>'
   contact_message_form:
     helptext: "Du möchtest mit uns Kontakt aufnehmen? Schreibe uns einfach eine Nachricht und wir melden uns umgehend bei dir."
     contact_us_email: "(Du kannst uns stets auch über <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>kontaktieren.)"
@@ -969,7 +952,6 @@ de:
   poll_meeting_form:
     tool_tip_collapsed: Gemeinsam geeignete Zeiten für Meetings finden
     title_placeholder: z. B. Wann sollen wir unser nächstes Meeting ansetzen?
-    no_options: "Du hast noch keine Zeitvorschläge hinzugefügt."
     meeting_duration: Dauer des Meetings
   poll_ranked_choice_form:
     tool_tip_collapsed: Handlungsoptionen in einer Reihenfolge gewichten

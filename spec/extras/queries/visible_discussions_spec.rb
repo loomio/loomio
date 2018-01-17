@@ -68,7 +68,7 @@ describe Queries::VisibleDiscussions do
       group.add_member! author
       group.add_member! user
       #group.add_member! uses
-      #comment = FactoryGirl.build(:comment, discussion: discussion, author: discussion.author)
+      #comment = FactoryBot.build(:comment, discussion: discussion, author: discussion.author)
       #CommentService.create(comment: comment, actor: discussion.author)
     end
 

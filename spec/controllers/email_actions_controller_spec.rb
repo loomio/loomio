@@ -3,11 +3,11 @@ require 'rails_helper'
 describe EmailActionsController do
   describe "unfollow_discussion" do
     before do
-      @user = FactoryGirl.create(:user)
-      @group = FactoryGirl.create(:formal_group)
+      @user = FactoryBot.create(:user)
+      @group = FactoryBot.create(:formal_group)
       @group.add_member!(@user)
 
-      @discussion = FactoryGirl.build(:discussion, group: @group)
+      @discussion = FactoryBot.build(:discussion, group: @group)
       DiscussionService.create(discussion: @discussion, actor: @user)
       DiscussionReader.for(discussion: @discussion, user: @user).set_volume! :loud
     end
@@ -21,11 +21,11 @@ describe EmailActionsController do
 
   describe "follow_discussion" do
     before do
-      @user = FactoryGirl.create(:user)
-      @group = FactoryGirl.create(:formal_group)
+      @user = FactoryBot.create(:user)
+      @group = FactoryBot.create(:formal_group)
       @group.add_member!(@user)
 
-      @discussion = FactoryGirl.build(:discussion, group: @group)
+      @discussion = FactoryBot.build(:discussion, group: @group)
       DiscussionService.create(discussion: @discussion, actor: @user)
       DiscussionReader.for(discussion: @discussion, user: @user).set_volume! :normal
     end
@@ -38,13 +38,13 @@ describe EmailActionsController do
 
   describe "mark_discussion_as_read" do
     before do
-      @user = FactoryGirl.create(:user)
-      @author = FactoryGirl.create(:user)
-      @group = FactoryGirl.create(:formal_group)
+      @user = FactoryBot.create(:user)
+      @author = FactoryBot.create(:user)
+      @group = FactoryBot.create(:formal_group)
       @group.add_member!(@user)
       @group.add_member!(@author)
 
-      @discussion = FactoryGirl.build(:discussion, group: @group)
+      @discussion = FactoryBot.build(:discussion, group: @group)
       @event = DiscussionService.create(discussion: @discussion, actor: @author)
     end
 

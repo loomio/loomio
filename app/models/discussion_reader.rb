@@ -63,8 +63,7 @@ class DiscussionReader < ApplicationRecord
   end
 
   def discussion_reader_volume
-    # Crazy James says: necessary in order to get a string back from the volume enum, rather than an integer
-    self.class.volumes.invert[self[:volume]]
+    self[:volume]
   end
 
   # because items can be deleted, we need to count the number of items in each range against the db

@@ -2,6 +2,7 @@ class Stance < ApplicationRecord
   include CustomCounterCache::Model
   include HasMentions
   include Reactable
+  include HasEvents
   include HasCreatedEvent
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
@@ -39,8 +40,6 @@ class Stance < ApplicationRecord
   validate :total_score_is_valid
   validate :participant_is_complete
   validates :reason, length: { maximum: 250 }
-
-  has_many :events, as: :eventable, dependent: :destroy
 
   delegate :locale, to: :author
   delegate :group, to: :poll, allow_nil: true

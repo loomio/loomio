@@ -1,12 +1,9 @@
 angular.module('loomioApp').factory 'EditCommentForm', ->
   templateUrl: 'generated/components/thread_page/comment_form/edit_comment_form.html'
-  controller: ($scope, comment, FormService, EmojiService, AttachmentService, MentionService) ->
+  controller: ($scope, comment, Records, FormService) ->
     $scope.comment = comment.clone()
 
     $scope.submit = FormService.submit $scope, $scope.comment,
       flashSuccess: 'comment_form.messages.updated'
-
-    $scope.bodySelector = '.edit-comment-form__comment-field'
-    EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector
-    MentionService.applyMentions $scope, $scope.comment
-    AttachmentService.listenForAttachments $scope, $scope.comment
+      successCallback: ->
+        _.invoke Records.documents.find($scope.comment.removedDocumentIds), 'remove'

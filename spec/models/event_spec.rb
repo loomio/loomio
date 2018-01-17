@@ -3,28 +3,28 @@ require 'rails_helper'
 # test emails and notifications being sent by events
 describe Event do
   let(:all_emails_disabled) { {email_when_proposal_closing_soon: false} }
-  let(:user_left_group) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_thread_loud) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_thread_normal) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_thread_quiet) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_thread_mute) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_membership_loud) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_membership_normal) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_membership_quiet) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_membership_mute) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_motion_closing_soon) { FactoryGirl.create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
-  let(:user_mentioned) { FactoryGirl.create :user }
+  let(:user_left_group) { FactoryBot.create :user, all_emails_disabled }
+  let(:user_thread_loud) { FactoryBot.create :user, all_emails_disabled }
+  let(:user_thread_normal) { FactoryBot.create :user, all_emails_disabled }
+  let(:user_thread_quiet) { FactoryBot.create :user, all_emails_disabled }
+  let(:user_thread_mute) { FactoryBot.create :user, all_emails_disabled }
+  let(:user_membership_loud) { FactoryBot.create :user, all_emails_disabled }
+  let(:user_membership_normal) { FactoryBot.create :user, all_emails_disabled }
+  let(:user_membership_quiet) { FactoryBot.create :user, all_emails_disabled }
+  let(:user_membership_mute) { FactoryBot.create :user, all_emails_disabled }
+  let(:user_motion_closing_soon) { FactoryBot.create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
+  let(:user_mentioned) { FactoryBot.create :user }
   let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
-  let(:user_unsubscribed) { FactoryGirl.create :user }
+  let(:user_unsubscribed) { FactoryBot.create :user }
 
-  let(:discussion) { FactoryGirl.create :discussion, description: user_mentioned_text }
-  let(:mentioned_user) {FactoryGirl.create :user, username: 'sam', email_when_mentioned: true }
-  let(:parent_comment) { FactoryGirl.create :comment, discussion: discussion}
-  let(:comment) { FactoryGirl.create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
-  let(:poll) { FactoryGirl.create :poll, discussion: discussion, details: user_mentioned_text }
-  let(:outcome) { FactoryGirl.create :outcome, poll: poll, statement: user_mentioned_text }
+  let(:discussion) { FactoryBot.create :discussion, description: user_mentioned_text }
+  let(:mentioned_user) {FactoryBot.create :user, username: 'sam', email_when_mentioned: true }
+  let(:parent_comment) { FactoryBot.create :comment, discussion: discussion}
+  let(:comment) { FactoryBot.create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
+  let(:poll) { FactoryBot.create :poll, discussion: discussion, details: user_mentioned_text }
+  let(:outcome) { FactoryBot.create :outcome, poll: poll, statement: user_mentioned_text }
 
-  let(:guest_user) { FactoryGirl.create :user }
+  let(:guest_user) { FactoryBot.create :user }
 
   def emails_sent
     ActionMailer::Base.deliveries.count
@@ -174,8 +174,8 @@ describe Event do
 
   describe 'poll_edited' do
     it 'makes an announcement to participants' do
-      FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-      expect { Events::PollEdited.publish!(poll.versions.last, poll.author, true) }.to change { emails_sent }
+      FactoryBot.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+      expect { Events::PollEdited.publish!(poll, poll.author, true) }.to change { emails_sent }
       email_users = Events::PollEdited.last.send(:email_recipients)
       email_users.should      include user_thread_loud
       email_users.should_not  include user_membership_loud
@@ -207,7 +207,7 @@ describe Event do
     end
 
     it 'notifies mentioned users' do
-      expect { Events::PollEdited.publish!(poll.versions.last, poll.author) }.to change { emails_sent }
+      expect { Events::PollEdited.publish!(poll, poll.author) }.to change { emails_sent }
       email_users = Events::PollEdited.last.send(:email_recipients)
       expect(email_users.length).to eq 1
       expect(email_users).to include user_mentioned
@@ -221,9 +221,9 @@ describe Event do
   describe 'poll_closing_soon' do
     describe 'voters_review_responses', focus: true do
       it 'true' do
-        poll = FactoryGirl.build(:poll_proposal, discussion: discussion, make_announcement: true)
+        poll = FactoryBot.build(:poll_proposal, discussion: discussion, make_announcement: true)
         PollService.create(poll: poll, actor: discussion.group.admins.first)
-        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        FactoryBot.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
@@ -237,7 +237,7 @@ describe Event do
 
       it 'false' do
         Event.create(kind: 'poll_created', announcement: true, eventable: poll)
-        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        FactoryBot.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
@@ -361,7 +361,7 @@ describe Event do
     end
 
     it 'makes an announcement to participants' do
-      FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+      FactoryBot.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
       poll.make_announcement = true
       guest_stance = create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: guest_user)
       expect { Events::PollOptionAdded.publish!(poll, poll.author, ["new_option"]) }.to change { emails_sent }

@@ -37,6 +37,7 @@ js:
   - angular-sortable-view/src/angular-sortable-view.js
   - whatwg-fetch/fetch.js
   - promise-polyfill/promise.min.js
+  - airbrake-js/dist/client.js
 execjs:
   - lodash/index.js
   - emojione/lib/js/emojione.js

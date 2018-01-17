@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'newComment', ($rootScope, AbilityService, ReactionService, TranslationService, ModalService, DeleteCommentForm, EditCommentForm, RevisionHistoryModal) ->
+angular.module('loomioApp').directive 'newComment', ($rootScope, clipboard, AbilityService, ReactionService, LmoUrlService, FlashService, TranslationService, ModalService, DeleteCommentForm, EditCommentForm, RevisionHistoryModal) ->
   scope: {event: '=', eventable: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/thread_item/new_comment.html'
@@ -22,6 +22,13 @@ angular.module('loomioApp').directive 'newComment', ($rootScope, AbilityService,
       icon: 'mdi-translate'
       canPerform: -> $scope.eventable.body && AbilityService.canTranslate($scope.eventable) && !$scope.translation
       perform:    -> TranslationService.inline($scope, $scope.eventable)
+    ,
+      name: 'copy_url_comment'
+      icon: 'mdi-link'
+      canPerform: -> clipboard.supported
+      perform:    ->
+        clipboard.copyText(LmoUrlService.event($scope.event, {}, absolute: true))
+        FlashService.success("action_dock.comment_copied")
     ,
       name: 'show_history'
       icon: 'mdi-history'

@@ -27,7 +27,7 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   private
   def permission_check
-    AppConfig.features[:create_user] || pending_invitation
+    AppConfig.app_features[:create_user] || pending_invitation
   end
 
   def configure_permitted_parameters

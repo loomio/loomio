@@ -9,7 +9,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       discussion:         'discussions'
       poll:               'polls'
       outcome:            'outcomes'
-      version:            'versions'
       stance:             'stances'
       comment:            'comments'
       comment_vote:       'comments'
@@ -20,7 +19,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @belongsTo 'parent', from: 'events'
       @belongsTo 'actor', from: 'users'
       @belongsTo 'discussion'
-      @belongsTo 'version'
       @hasMany  'notifications'
 
     parentOrSelf: ->
@@ -52,10 +50,13 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       !@discussion().hasRead(@sequenceId)
 
     markAsRead: ->
-      @discussion().markAsRead(@sequenceId)
+      @discussion().markAsRead(@sequenceId) if @discussion()
 
     beforeRemove: ->
       _.invoke(@notifications(), 'remove')
+
+    removeFromThread: =>
+      @remote.patchMember(@id, 'remove_from_thread').then => @remove()
 
     next: ->
       @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]

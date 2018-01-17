@@ -148,7 +148,7 @@ describe Identities::SlackController do
   describe 'initiate' do
     let(:initiate_params) { {
       text: "proposal let's get started",
-      channel: group_identity.slack_channel_id,
+      channel_id: group_identity.slack_channel_id,
       team_id: identity.slack_team_id,
       team_domain: "example"
     } }
@@ -171,7 +171,7 @@ describe Identities::SlackController do
     end
 
     it 'responds with an unknown channel message if a group is found in the slack team' do
-      initiate_params[:channel] = "notachannel"
+      initiate_params[:channel_id] = "notachannel"
       post :initiate, params: initiate_params
       expect(response.body).to match /it looks like there's not a loomio group associated/
     end
@@ -267,7 +267,7 @@ describe Identities::SlackController do
     it 'redirects to the referrer if present' do
       sign_in user
       identity
-      controller.request.stub referrer: referrer
+      controller.request.env['HTTP_REFERER'] = referrer
       delete :destroy
       expect(response).to redirect_to referrer
     end

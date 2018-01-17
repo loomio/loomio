@@ -337,6 +337,7 @@ uk:
     add_resource: Додати вкладення
     edit_group: Редагувати контекст групи
     add_comment: Коментар
+    copy_url_comment: Скопіювати URL
     edit_thread: Редагувати контекст
     translate_thread: Перекласти контекст
     edit_poll: Редагувати опитування
@@ -394,17 +395,10 @@ uk:
     you_and_name: "Ви та {{name}}"
     you_and_name_and_count_more: "Ви, {{name}} та ще {{count}}"
     name_and_count_more: "{{name}} та ще {{count}}"
+  context_panel:
+    thread_status:
+      pinned: "Ця тема була прикріплена. Вона залишатиметься у верхній частині списку тем групи для всіх користувачів."
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "В цій групі поки що нема жодної теми для обговорень."
-        no_discussions_matching_filters_html: "Немає тем що відповідають цим крітеріям. <a href='%{link}'>Скинути фільтр</a>."
-        no_public_discussions: "В цій групі нема загальнодоступних тем."
-        discussions_are_private: "Всі теми в цій групі є закритими."
-        join_group: "Щоб переглядати закриті теми ви маєте долучитись до групи."
-        request_membership: "Щоб переглядати закриті теми зробіть запит на приєднання до групи."
-        membership_is_invitation_only: "Щоб долучитись до цієї групи потрібне запрошення від учасника групи."
-        membership_is_invitation_by_admin_only: "Щоб долучитись до цієї групи потрібне запрошення від координатора групи."
     messages:
       privacy:
         members: 'Тепер групу можуть бачити тільки учасники'
@@ -416,7 +410,6 @@ uk:
     new_photo: 'нове фото'
     new_cover_photo: 'Завантажити нове фото обкладинки'
     new_group_logo: 'Завантажити новий логотип для групи'
-    discussions: 'Теми'
     discussions_placeholder: 'Тема це місце де всі можуть обговорити питання та прийняти рішення спільно.'
     members: 'Учасники'
     members_placeholder: 'Ви єдиний тут: запросіть когось долучитись до вас!'
@@ -458,8 +451,6 @@ uk:
   description_card:
     title: 'Опис групи'
     placeholder: 'Координатори груп можуть використовувати цей розділ для опису цілей групи, аби кожен розумів, чому вони тут зібралися.'
-    view_documents: 'Переглянути вкладення'
-    manage_documents: 'Керувати вкладеннями'
     messages:
       description_updated: 'Опис оновлено'
   leave_group_form:
@@ -545,29 +536,11 @@ uk:
   document:
     list:
       title: Вкладення
-      no_poll_documents: До цього рішення ще не були додані вкладення.
-      no_discussion_documents: До цієї теми ще не були додані вкладення.
-      no_group_documents: До контексту цієї групи ще не були додані вкладення.. Клацніть за посиланням нижче, щоб переглянути всі вкладення, які було завантажено до тем в цій групі.
     management:
-      group_header: Прикріплено до контексту
-      discussion_header: Завантажено як вміст
-      added_by: завантажено {{name}}
       uploaded_to: в
     modal:
       title: Додати вкладення
-    method_form:
-      helptext: Слідкуйте за всіма вашими інструментами та файлами, щоб їх було легко знайти.
-      url_helptext: Посилання на веб-сайти та інструменти, такі як дошки Tello та документи Google
-      file_helptext: Завантажте документи та файли з комп'ютера
     form:
-      helptext: Натисніть, вставте або перетягніть файли сюди, щоб поділитися ними з вашою групою.
-      file_upload: Завантажте файл з комп'ютера
-      uploaded_already: Вже завантажили десь в інше місце?
-      upload_from_local: Маєте файл локально?
-      upload_file: Завантажте файл з комп'ютера
-      enter_url: Введіть URL
-      url_label: Посилання на вкладення
-      url_placeholder: Наприклад https://www.example.com/attachment.txt
       title_helptext: Як назвати це вкладення?
       title_label: Ім’я
       title_placeholder: Наприклад "Правила спільноти"
@@ -791,7 +764,6 @@ uk:
     thread_preview:
       you_voted: 'Ви проголосували {{position}}'
       undecided: 'Ви не визначились з рішенням'
-      pinned: "Ця тема була прикріплена. Вона залишатиметься у верхній частині списку тем групи для всіх користувачів."
     threads_from:
       group: 'Теми від'
       pinned: 'Закріплені теми'
@@ -820,7 +792,6 @@ uk:
       pinned: 'Тему закріплено'
       unpinned: 'Тему відкріплено'
     volume:
-      mute_message: 'Тему вимкнуто.'
       unmute_message: 'Тему увімкнено'
   activity_card:
     unread: Непрочитані
@@ -836,6 +807,7 @@ uk:
     email_settings: 'Налаштування електронної пошти'
     edit: 'Редагувати'
     edit_thread: 'Редагувати'
+    close_thread: 'Закрити'
     pin_thread: 'Закріпити'
     unpin_thread: 'Відкріпити'
     mute_thread: 'Беззвучно'
@@ -864,8 +836,6 @@ uk:
     confirm_change_to_private_thread: 'Група {{groupName}} є відкритою. Якщо ви продовжите, ця тема стане загальнодоступною.'
     messages:
       success: Тема була переміщена до {{name}}
-  print_modal:
-    load_discussion: Завантаження всіх обговорень...
   delete_comment_dialog:
     title: 'Видалити коментар'
     question: 'Ви впевнені, що хочете видалити цей коментар?'
@@ -916,8 +886,6 @@ uk:
     private_title: 'оновити заголовок теми та конфіденційність'
     description_private: 'оновлено контекст теми та конфіденційність'
     description_private_title: 'оновити заголовок теми, контекст та конфіденційність'
-  discussion_moved_item:
-    discussion_moved: 'перемістити тему з <span>{{group}}</span>'
   contact_message_form:
     helptext: "Бажаєте зв'язатися? Просто введіть повідомлення нижче, і ми зв'яжемось незабаром."
     contact_us_email: "(Ви також завжди можете зв'язатися з нами за адресою <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
@@ -1232,7 +1200,6 @@ uk:
     meeting_created: Опитування щодо часу створено
     meeting_updated: Опитування щодо часу оновлено
     timeslots: Проміжки часу
-    no_options: "Ви ще не додали жодних проміжків часу."
     meeting_duration: Тривалість зустрічі
     add_option_placeholder: Введіть новий час
   poll_ranked_choice_form:
@@ -1312,11 +1279,8 @@ uk:
     stance_updated: Вибір оновлено
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> у відповідь на <strong>{{title}}</strong>"
-    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> відредагував заголовок теми: <strong>{{title}}</strong>"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> відредагував контекст теми"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> відредагував вкладення до теми"
-    discussion_made_public: "<strong><a href='u/{{username}}'>{{author}}</a></strong> зробив тему публічною"
-    discussion_made_private: "<strong><a href='u/{{username}}'>{{author}}</a></strong> зробив тему приватною"
     discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> відредагував тему"
     discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> прибрав тему з <strong>{{title}}</strong>"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"

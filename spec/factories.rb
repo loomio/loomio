@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :blacklisted_password do
     string "MyString"
@@ -162,6 +162,13 @@ FactoryGirl.define do
     user
     filename { Faker::Name.name }
     location { Faker::Company.logo }
+  end
+
+  factory :document do
+    association :author, factory: :user
+    association :model, factory: :discussion
+    title { Faker::Name.name }
+    url { Faker::Internet.url }
   end
 
   factory :translation do

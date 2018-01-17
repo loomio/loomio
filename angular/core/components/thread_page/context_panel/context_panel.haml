@@ -1,7 +1,7 @@
 %section.context-panel.lmo-card-padding.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
   .context-panel__top
-    .context-panel__pin{ng-if: "discussion.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
-      %i.mdi.mdi-pin
+    .context-panel__status{ng-if: "status()", ng-attr-title: "{{statusTitle()}}", ng-switch: "status()"}
+      %i.mdi.mdi-pin{ng-switch-when: "pinned"}
 
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
       %h1.lmo-h1.context-panel__heading{ng-if: "!translation"}
@@ -11,7 +11,7 @@
 
     %context_panel_dropdown{discussion: "discussion"}
 
-  .context-panel__details.md-body-1.lmo-flex--row.lmo-flex__center
+  .context-panel__details.md-body-1.lmo-flex--row
     %user_avatar.lmo-margin-right{user: "discussion.author()", size: "small"}
     %span
       %strong> {{::discussion.authorName()}}
@@ -27,12 +27,14 @@
       %span{ng-show: "discussion.seenByCount > 0"}>
         %span{aria-hidden: "true"}>·
         %span.context-panel__seen_by_count{ translate: "thread_context.seen_by_count", translate-value-count: "{{discussion.seenByCount}}"}
-  %outlet{name: "after-thread-title", model: "discussion"}
+    .lmo-badge.lmo-pointer{translate: "common.privacy.closed", ng-if: "discussion.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}"}
+      %md-tooltip {{ discussion.closedAt | exactDateWithTime }}
+    %outlet.lmo-flex{name: "after-thread-title", model: "discussion"}
 
   .context-panel__description.lmo-markdown-wrapper{ng-if: "!translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
   %translation.lmo-markdown-wrapper{ng-if: "translation", translation: "translation", field: "description"}
 
-  %document_list{model: "discussion", ng-show: "discussion.documents().length > 0"}
+  %document_list{model: "discussion"}
 
   .lmo-md-actions
     %reactions_display.context-panel__actions-left{model: "discussion", load: "true"}

@@ -27,7 +27,7 @@ class Rack::Attack
             'stances',
             'comments',
             'reactions',
-            'attachments',
+            'documents',
             'registrations',
             'contact_messages']
 

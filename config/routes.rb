@@ -97,6 +97,7 @@ Loomio::Application.routes.draw do
     resources :login_tokens, only: [:create]
 
     resources :events, only: :index do
+      get :comment, on: :collection
       patch :remove_from_thread, on: :member
     end
 
@@ -121,10 +122,13 @@ Loomio::Application.routes.draw do
       patch :mark_as_read, on: :member
       patch :set_volume, on: :member
       patch :pin, on: :member
+      patch :close, on: :member
+      patch :reopen, on: :member
       patch :unpin, on: :member
       patch :pin_reader, on: :member
       patch :unpin_reader, on: :member
       patch :move, on: :member
+      get :search, on: :collection
       get :dashboard, on: :collection
       get :inbox, on: :collection
     end
@@ -155,7 +159,6 @@ Loomio::Application.routes.draw do
     resources :comments,    only: [:create, :update, :destroy]
     resources :reactions,   only: [:create, :update, :index, :destroy]
 
-    resources :attachments, only: [:create, :destroy]
     resources :documents, only: [:create, :update, :destroy, :index] do
       get :for_group, on: :collection
     end
@@ -245,7 +248,7 @@ Loomio::Application.routes.draw do
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
-  get 'd/:key(/:slug)'                     => 'discussions#show',            as: :discussion
+  get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
@@ -259,6 +262,10 @@ Loomio::Application.routes.draw do
   get '/u/:key(/:stub)'                    => redirect('410.html')
   get '/g/:key/membership_requests/new'    => redirect('410.html')
   get '/comments/:id'                      => redirect('410.html')
+
+  # for IE / other browsers which insist on requesting things which don't exist
+  get '/favicon.ico'                       => 'application#ok'
+  get '/wp-login.php'                      => 'application#ok'
 
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do

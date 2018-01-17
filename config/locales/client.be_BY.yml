@@ -65,11 +65,6 @@ be_BY:
     name_label: Імя
     email_label: Email
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Каб далучыцца да групы, неабходна атрымаць запрашэнне ад яе ўдзельніка. "
-        membership_is_invitation_by_admin_only: "Каб далучыцца да групы, неабходна атрымаць запрашэнне ад яе ўдзельніка. "
-    discussions: 'Абмеркаванні'
     options_label: 'Опцыі'
     options:
       label: 'Опцыі'
@@ -121,6 +116,8 @@ be_BY:
     unread: Непрачытаныя
   thread_group:
     aria_label: 'Назва групы'
+  thread_context:
+    close_thread: 'Зачыніць'
   delete_comment_dialog:
     title: 'Выдаліць каментар'
     question: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'

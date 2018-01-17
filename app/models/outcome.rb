@@ -5,15 +5,14 @@ class Outcome < ApplicationRecord
   include Reactable
   include Translatable
   include HasCreatedEvent
-  
+
   set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location
 
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false
   belongs_to :author, class_name: 'User', required: true
   has_many :stances, through: :poll
-  has_many :events, as: :eventable
-  has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :documents, as: :model, dependent: :destroy
 
   delegate :title, to: :poll
   delegate :dates_as_options, to: :poll
@@ -28,6 +27,10 @@ class Outcome < ApplicationRecord
 
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option
+
+  def parent_event
+    poll.created_event
+  end
 
   def attendee_emails
      self.stances.joins(:participant).joins(:stance_choices)

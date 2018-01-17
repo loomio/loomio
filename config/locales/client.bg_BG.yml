@@ -30,7 +30,6 @@ bg_BG:
     name_label: Име
     email_label: E-mail
   group_page:
-    discussions: 'Дискусии'
     options_label: 'Опции'
     options:
       label: 'Опции'
@@ -50,6 +49,8 @@ bg_BG:
     name_label: 'Име'
     email_label: 'E-mail'
     locale_label: 'Език'
+  thread_context:
+    close_thread: 'Затваряне'
   delete_comment_dialog:
     title: 'Изтрий коментар'
     question: 'Сигурни ли сте, че искате да изтриете този коментар?'

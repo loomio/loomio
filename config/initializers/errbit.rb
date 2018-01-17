@@ -1,4 +1,4 @@
-if ENV['ERRBIT_KEY']
+if false #ENV['ERRBIT_KEY']
   Airbrake.configure do |config|
     config.api_key = ENV['ERRBIT_KEY']
     config.host    = ENV['ERRBIT_HOST']

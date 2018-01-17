@@ -13,11 +13,11 @@ module Events::Position
 
   private
   def parent_or_discussion_id_changed?
-    parent_id_changed? || discussion_id_changed?
+    saved_change_to_attribute?(:parent_id) || saved_change_to_attribute?(:discussion_id)
   end
 
   def set_depth
-    self.depth = parent ? (parent.depth + 1) : 0
+    self.depth = parent_id ? (parent.depth + 1) : 0
   end
 
   def refresh_order_value

@@ -86,12 +86,12 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_login_token
-    login_token = FactoryGirl.create(:login_token, user: patrick)
+    login_token = FactoryBot.create(:login_token, user: patrick)
     redirect_to(login_token_url(login_token.token))
   end
 
   def setup_used_login_token
-    login_token = FactoryGirl.create(:login_token, user: patrick, used: true)
+    login_token = FactoryBot.create(:login_token, user: patrick, used: true)
     redirect_to(login_token_url(login_token.token))
   end
 
@@ -397,6 +397,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_secret_group_as_non_member
+    patrick.update(is_admin: false)
     sign_in patrick
     @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
@@ -515,6 +516,13 @@ class Dev::MainController < Dev::BaseController
     create_discussion
     sign_in patrick
     redirect_to discussion_url(create_discussion)
+  end
+
+  def setup_open_and_closed_discussions
+    create_discussion
+    create_closed_discussion
+    sign_in patrick
+    redirect_to group_url(create_group)
   end
 
   def setup_discussion_for_jennifer

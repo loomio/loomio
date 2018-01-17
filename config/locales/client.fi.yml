@@ -87,6 +87,8 @@ fi:
       yesterday: 'Eilen'
   activity_card:
     unread: Lukematon
+  thread_context:
+    close_thread: 'Sulje'
   delete_comment_dialog:
     title: 'Poista kommentti'
     confirm: 'Poista kommentti'

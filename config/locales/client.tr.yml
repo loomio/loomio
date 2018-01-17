@@ -214,16 +214,6 @@ tr:
     edited_by: '<strong>{{name}}</strong> tarafından düzenlendi'
     posted: Gönderildi
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Bu grup henüz hiçbir konuya sahip değil."
-        no_discussions_matching_filters_html: "Bu filtrelerle eşleşen konu yok. <a href='%{link}'>Filtrelemeyi temizle</a>."
-        no_public_discussions: "Bu grupta kamuya açık tartışma bulunmamaktadır."
-        discussions_are_private: "Bu gruptaki tüm konular gizlidir."
-        join_group: "Özel konuları görebilmek için gruba katılmanız gerekmektedir."
-        request_membership: "Özel konuları görebilmek için, gruba katılım talebinde bulunun"
-        membership_is_invitation_only: "Bu gruba katılmak için bir üye tarafından davet edilmelisin."
-        membership_is_invitation_by_admin_only: "Bu gruba katılmak için koordinatör tarafından davet edilmelisin."
     messages:
       privacy:
         members: 'Bu grup şu an sadece grup üyeleri tarafından görülebilir'
@@ -235,7 +225,6 @@ tr:
     new_photo: 'yeni fotoğraf'
     new_cover_photo: 'Yeni kapak fotoğrafı yükle'
     new_group_logo: 'Yeni grup logosu yükle'
-    discussions: 'Müzakereler'
     discussions_placeholder: 'Konu, herkesin bir başlık hakkında müzakere ederek birlikte kararlar aldığı yerdir.'
     members: 'Üyeler'
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
@@ -474,6 +463,7 @@ tr:
     aria_label: 'Konu içeriği'
     thread_options: 'Konu seçenekleri'
     email_settings: 'E-posta ayarları'
+    close_thread: 'Kapat'
     mute_thread: 'Sesi kıs'
     move_thread: 'Taşı'
     print_thread: 'Yazdır'

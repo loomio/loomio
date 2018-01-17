@@ -20,7 +20,7 @@ module Plugins
 
     def fetch
       # if exists pull else clone
-      if Dir.exists? folder
+      if Dir.exists? folder + "/.git"
         Dir.chdir(folder) {`git checkout #{branch} && git pull origin #{branch}`}
       else
         `git clone -b #{branch} #{repo} #{folder}`

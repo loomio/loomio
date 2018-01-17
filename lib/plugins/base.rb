@@ -108,7 +108,7 @@ module Plugins
       return unless Rails.env.test?
       raise NoCodeSpecifiedError.new unless block_given?
       @actions.add Proc.new {
-        FactoryGirl.define { factory(name, &block) } unless FactoryGirl.factories.registered?(name)
+        FactoryBot.define { factory(name, &block) } unless FactoryGirl.factories.registered?(name)
       }.to_proc
     end
 
@@ -161,7 +161,7 @@ module Plugins
     end
 
     def use_directory(glob)
-      Dir.chdir(path_prefix) { Dir.glob("#{glob}/*").each { |path| yield path } }
+      Dir.chdir(path_prefix) { Dir.glob("#{glob}/*.*").each { |path| yield path } }
     end
 
   end

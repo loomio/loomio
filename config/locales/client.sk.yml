@@ -47,11 +47,6 @@ sk:
     name_label: Meno
     email_label: E-mail
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Na získanie členstva v tejto skupine vás musí pozvať jej člen."
-        membership_is_invitation_by_admin_only: "Na získanie členstva v tejto skupine vás musí pozvať jej koordinátor."
-    discussions: 'Diskusie'
     options_label: 'Nastavenia'
     options:
       label: 'Nastavenia'
@@ -87,6 +82,8 @@ sk:
     unread: Neprečítané
   thread_group:
     aria_label: 'Názov skupiny'
+  thread_context:
+    close_thread: 'Uzatvoriť'
   delete_comment_dialog:
     title: 'Odstrániť komentár'
     question: 'Naozaj chcete odstrániť tento komentár?'

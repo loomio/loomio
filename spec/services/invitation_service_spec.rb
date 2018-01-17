@@ -1,8 +1,8 @@
 require 'rails_helper'
 describe InvitationService do
-  let(:group) { FactoryGirl.create(:formal_group) }
-  let(:invitation) { FactoryGirl.create(:invitation, group: group) }
-  let(:user) { FactoryGirl.create(:user) }
+  let(:group) { FactoryBot.create(:formal_group) }
+  let(:invitation) { FactoryBot.create(:invitation, group: group) }
+  let(:user) { FactoryBot.create(:user) }
 
   describe 'redeem' do
     before do
@@ -17,7 +17,7 @@ describe InvitationService do
     end
 
     context 'multiple use' do
-      let(:invitation) { FactoryGirl.create(:invitation, group: group, single_use: false) }
+      let(:invitation) { FactoryBot.create(:invitation, group: group, single_use: false) }
 
       it 'does not mark as accepted' do
         expect(invitation.accepted_at).to eq nil

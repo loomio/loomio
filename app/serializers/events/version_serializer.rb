@@ -1,9 +1,9 @@
 class Events::VersionSerializer < Events::BaseSerializer
   has_one :eventable, polymorphic: true, serializer: ::VersionSerializer
-  has_many :attachments, serializer: AttachmentSerializer, root: :attachments
+  has_many :documents, serializer: DocumentSerializer, root: :documents
 
-  def attachments
-    return Attachment.none unless object.eventable.item.present?
-    object.eventable.item.attachments
+  def documents
+    return Document.none unless object.eventable.item.present?
+    object.eventable.item.documents
   end
 end

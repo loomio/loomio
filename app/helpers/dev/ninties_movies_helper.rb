@@ -132,6 +132,18 @@ module Dev::NintiesMoviesHelper
     @discussion
   end
 
+  def create_closed_discussion
+    unless @closed_discussion
+      @closed_discussion = Discussion.create(title: 'This thread is old and closed',
+                                             private: false,
+                                             closed_at: Time.now,
+                                             group: create_group,
+                                             author: jennifer)
+      DiscussionService.create(discussion: @closed_discussion, actor: @closed_discussion.author)
+    end
+    @closed_discussion
+  end
+
   def create_public_discussion
     unless @another_discussion
       @another_discussion = Discussion.create!(title: "The name's Johnny Utah!",
@@ -267,7 +279,7 @@ module Dev::NintiesMoviesHelper
 
     # poll_edited
     create_poll.update(title: "Another poll title")
-    Events::PollEdited.publish!(create_poll.versions.last, patrick)
+    Events::PollEdited.publish!(create_poll, patrick)
 
     # stance_created
     Events::StanceCreated.publish!(create_stance)
@@ -336,29 +348,29 @@ module Dev::NintiesMoviesHelper
     InvitationService.redeem(invitation.first, emilio)
 
     #'poll_created'
-    poll = FactoryGirl.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
+    poll = FactoryBot.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
     PollService.create(poll: poll, actor: jennifer)
 
     #'poll_closing_soon'
     PollService.publish_closing_soon
 
     #'outcome_created'
-    poll = FactoryGirl.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
+    poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
     PollService.create(poll: poll, actor: jennifer)
-    outcome = FactoryGirl.build(:outcome, poll: poll, make_announcement: true)
+    outcome = FactoryBot.build(:outcome, poll: poll, make_announcement: true)
     OutcomeService.create(outcome: outcome, actor: jennifer)
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
-    poll = FactoryGirl.build(:poll, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
+    poll = FactoryBot.build(:poll, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
     PollService.create(poll: poll, actor: patrick)
-    jennifer_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
+    jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
     #'poll_option_added'
     poll.tap(&:save).reload
     poll.make_announcement = true
-    patrick_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
+    patrick_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: patrick_stance, actor: patrick)
     PollService.add_options(poll: poll, actor: jennifer, params: {poll_option_names: ['new_option']})
   end
