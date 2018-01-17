@@ -21,4 +21,4 @@ atom_feed do |feed|
       entry.link discussion_comment_url(comment: event.eventable)
     end
   end
-end if !@discussion.private
+end if LoggedOutUser.new.ability.can?(:show, @discussion)

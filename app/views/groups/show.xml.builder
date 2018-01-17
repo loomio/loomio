@@ -3,7 +3,7 @@ atom_feed do |feed|
   feed.subtitle @group.description
   feed.updated(@group.discussions.maximum(:created_at))
 
-  @group.discussions.each do |discussion|
+  @group.discussions.visible_to_public.each do |discussion|
     feed.entry(discussion) do |entry|
       entry.title     discussion.title
       entry.content   discussion.description, type: :text
