@@ -33,14 +33,14 @@ describe Group do
     end
 
     it 'returns the parents logo if one does not exist' do
-      parent = create :formal_group, logo: fixture_for('images', 'strongbad.png')
+      parent = create :formal_group, logo: fixture_for('images/strongbad.png')
       group = create :formal_group, parent: parent
       expect(group.logo_or_parent_logo).to eq parent.logo
     end
 
     it 'returns the group logo if one exists' do
       parent = create :formal_group
-      group = create :formal_group, parent: parent, logo: fixture_for('images', 'strongbad.png')
+      group = create :formal_group, parent: parent, logo: fixture_for('images/strongbad.png')
       expect(group.logo_or_parent_logo).to eq group.logo
     end
   end

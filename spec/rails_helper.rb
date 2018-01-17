@@ -70,11 +70,8 @@ RSpec.configure do |config|
   end
 end
 
-def fixture_for(*path, filetype: 'image/jpeg')
-  ActionDispatch::Http::UploadedFile.new(
-    tempfile: File.open(File.join(path.unshift(Rails.root, 'spec', 'fixtures'))),
-    filename: path.last,
-    type: filetype)
+def fixture_for(path, filetype: 'image/jpeg')
+  Rack::Test::UploadedFile.new(Rails.root.join('spec','fixtures', path), filetype)
 end
 
 def described_model_name

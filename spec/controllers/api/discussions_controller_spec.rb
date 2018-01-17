@@ -378,7 +378,7 @@ describe API::DiscussionsController do
       end
 
       it 'adds documents' do
-        discussion_params[:document_ids] = document.id
+        discussion_params[:document_ids] = [document.id]
         post :update, params: { id: discussion.id, discussion: discussion_params }
         expect(discussion.reload.documents).to include document
         expect(response.status).to eq 200

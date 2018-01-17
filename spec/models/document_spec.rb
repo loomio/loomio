@@ -6,7 +6,7 @@ describe Document do
 
   describe 'sync_urls!' do
     it 'can save a image urls' do
-      document.file = fixture_for('images', 'strongbad.png')
+      document.file = fixture_for('images/strongbad.png')
       document.save
       document.sync_urls!
       expect(document.reload.url).to match /strongbad/
@@ -15,7 +15,7 @@ describe Document do
     end
 
     it 'can save non-image urls' do
-      document.file = fixture_for('images', 'strongmad.pdf')
+      document.file = fixture_for('images/strongmad.pdf')
       document.save
       document.sync_urls!
       expect(document.reload.url).to match /strongmad/

@@ -23,6 +23,14 @@ GIT
     icalendar (2.4.1)
 
 GIT
+  remote: git://github.com/loomio/custom_counter_cache.git
+  revision: 7a4ed2c70c6a00cbee468d81295bdb3d4a86f2a7
+  branch: rails5
+  specs:
+    custom_counter_cache (0.2.2)
+      rails (>= 4.0)
+
+GIT
   remote: git://github.com/loomio/griddler-mailin.git
   revision: 5a1d1ea7612308b8d3890b1c6d7a51c5b485498c
   specs:
@@ -50,12 +58,6 @@ GIT
   specs:
     twitter-text (1.14.7)
       unf (~> 0.1.0)
-
-PATH
-  remote: /Users/rob/projects/custom_counter_cache
-  specs:
-    custom_counter_cache (0.2.2)
-      rails (>= 4.0)
 
 GEM
   remote: http://rubygems.org/

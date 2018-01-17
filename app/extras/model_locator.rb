@@ -2,7 +2,7 @@ ModelLocator = Struct.new(:model, :params) do
 
   def locate
     if model.to_sym == :user
-      resource_class.find_by(username: params[:id] || params[:username]) || resource_class.friendly.find(params[:id])
+      resource_class.find_by(username: params[:id] || params[:username]) || resource_class.friendly.find(params[:id] || params[:user_id])
     elsif resource_class.respond_to?(:friendly)
       resource_class.friendly.find key_or_id
     else
