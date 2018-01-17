@@ -7,7 +7,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 { scrollTo } = require 'shared/helpers/layout.coffee'
 
 $controller = ($routeParams, $rootScope) ->
-  EventBus.broadcast $rootScope, 'currentComponent', { page: 'membershipsPage'}
+  EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'memberships_page.members', page: 'membershipsPage'}
 
   @init = (group) =>
     return if @group? or !group?
