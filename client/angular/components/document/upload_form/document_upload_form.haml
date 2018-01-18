@@ -3,7 +3,7 @@
     %i.mdi.mdi-attachment.md-attachment-form__icon
     %span{translate: "comment_form.attachments.add_attachment", ng-if: "showLabel"}
 
-  %input.md-attachment-form__file-input.hidden{type: "file", ng-model: "files", file-select: "true"}
+  %input.md-attachment-form__file-input.hidden{type: "file", ng-model: "files", file-select: "upload"}
   .lmo-flex.lmo-flex__start{ng-repeat: "file in files"}
     .progress.active.md-attachment-form-progress-field
       %strong.md-attachment-form-progress-text {{ percentComplete }} %

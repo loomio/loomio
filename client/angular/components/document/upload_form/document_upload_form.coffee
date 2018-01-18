@@ -7,17 +7,20 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
   templateUrl: 'generated/components/document/upload_form/document_upload_form.html'
   replace: true
   controller: ['$scope', '$element', ($scope, $element) ->
+    $scope.percentComplete = 0
 
     EventBus.listen $scope, 'filesPasted', (_, files) -> $scope.upload(files)
 
-    $scope.upload = ->
-      return unless $scope.files
+    $scope.upload = (files) ->
       $scope.model.setErrors({})
       EventBus.emit $scope, 'processing'
-      for file in $scope.files
+      for file in files
         Records.documents.upload(file, $scope.progress)
                          .then($scope.success, $scope.failure)
-                         .finally($scope.reset)
+                         .finally ->
+                           EventBus.emit $scope, 'doneProcessing'
+                           $scope.percentComplete = 0
+                           $scope.$apply()
 
     $scope.selectFile = ->
       $element.find('input')[0].click()
@@ -35,10 +38,4 @@ angular.module('loomioApp').directive 'documentUploadForm', ->
 
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)
-
-    $scope.reset = ->
-      EventBus.emit $scope, 'doneProcessing'
-      $scope.files = null
-      $scope.percentComplete = 0
-    $scope.reset()
   ]
