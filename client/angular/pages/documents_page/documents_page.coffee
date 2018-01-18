@@ -30,6 +30,9 @@ $controller = ($routeParams, $rootScope) ->
 
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @group = group
+    EventBus.broadcast $rootScope, 'currentComponent',
+      group: @group
+      page: 'documentsPage'
     @fetchDocuments()
   , (error) ->
     EventBus.broadcast $rootScope, 'pageError', error
