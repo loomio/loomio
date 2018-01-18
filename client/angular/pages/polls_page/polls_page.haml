@@ -11,7 +11,7 @@
     .lmo-card
       .polls-page__filters.lmo-flex
         %md-input-container.polls-page__search.md-block{md-no-float: "true"}
-          %i.mdi.mdi-magnify
+          %i.mdi.mdi-magnify.mdi-18px
           %input{ng-model: "pollsPage.fragment", placeholder: "{{'polls_page.search_placeholder' | translate}}", ng-change: "pollsPage.searchPolls()", ng-model-options: "{debounce: 250}"}
         %md-select.polls-page__status-filter{ng-model: "pollsPage.statusFilter", placeholder: "{{ 'polls_page.filter_placeholder' | translate }}", ng-change: "pollsPage.fetchRecords()"}
           %md-option{ng-value: "null"}
