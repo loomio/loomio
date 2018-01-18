@@ -40,16 +40,6 @@ module.exports =
       reaction.reaction = emoji
       reaction.save()
 
-  listenForPaste: ($scope) ->
-    $scope.handlePaste = (event) ->
-      data = event.clipboardData
-      return unless item = _.first _.filter(data.items, (item) -> item.getAsFile())
-      event.preventDefault()
-      file = new File [item.getAsFile()], data.getData('text/plain') || Date.now(),
-        lastModified: moment()
-        type:         item.type
-      EventBus.broadcast $scope, 'filesPasted', [file]
-
   listenForLoading: ($scope) ->
     EventBus.listen $scope, 'processing',     -> $scope.isDisabled = true
     EventBus.listen $scope, 'doneProcessing', -> $scope.isDisabled = false

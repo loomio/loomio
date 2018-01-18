@@ -2,7 +2,7 @@ Records      = require 'shared/services/records.coffee'
 EventBus     = require 'shared/services/event_bus.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
-{ listenForMentions, listenForEmoji, listenForPaste } = require 'shared/helpers/listen.coffee'
+{ listenForMentions, listenForEmoji } = require 'shared/helpers/listen.coffee'
 
 angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
   scope: {model: '=', field: '@', noAttachments: '@', label: '=?', placeholder: '=?', helptext: '=?', maxlength: '=?'}
@@ -14,7 +14,6 @@ angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
       $scope.model = model
       listenForMentions $scope, $scope.model
       listenForEmoji $scope, $scope.model, $scope.field, $element
-      listenForPaste $scope
     $scope.init($scope.model)
 
     EventBus.listen $scope, 'reinitializeForm', (_, model) ->
