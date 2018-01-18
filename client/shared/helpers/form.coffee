@@ -74,7 +74,8 @@ module.exports =
         )
     scope.selectFile = -> element[0].querySelector('input[type=file]').click()
     scope.drop       = (event) -> scope.upload(event.dataTransfer.files)
-    EventBus.listen scope, 'filesPasted', (_, files) -> scope.upload(files)
+    if !options.disablePaste
+      EventBus.listen scope, 'filesPasted', (_, files) -> scope.upload(files)
 
 submit = (scope, model, options = {}) ->
   # fetch draft from server and listen for changes to it
