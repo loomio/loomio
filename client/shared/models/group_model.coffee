@@ -169,8 +169,11 @@ module.exports = class GroupModel extends BaseModel
       @remove()
       _.each @memberships(), (m) -> m.remove()
 
-  uploadPhoto: (file, kind) =>
-    @remote.upload("#{@key}/upload_photo/#{kind}", file, {}, ->)
+  uploadLogo: (file) =>
+    @remote.upload("#{@key}/upload_photo/logo", file, {}, ->)
+
+  uploadCover: (file) =>
+    @remote.upload("#{@key}/upload_photo/cover_photo", file, {}, ->)
 
   hasSubscription: ->
     @subscriptionKind?

@@ -2,11 +2,11 @@ Session  = require 'shared/services/session.coffee'
 Records  = require 'shared/services/records.coffee'
 EventBus = require 'shared/services/event_bus.coffee'
 
-{ submitForm, upload } = require 'shared/helpers/form.coffee'
+{ submitForm, uploadForm } = require 'shared/helpers/form.coffee'
 
 angular.module('loomioApp').factory 'ChangePictureForm', ['$rootScope', '$timeout', ($rootScope, $timeout) ->
   templateUrl: 'generated/components/change_picture_form/change_picture_form.html'
-  controller: ['$scope', ($scope) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     $scope.user = Session.user().clone()
 
     $scope.selectFile = ->
@@ -18,10 +18,9 @@ angular.module('loomioApp').factory 'ChangePictureForm', ['$rootScope', '$timeou
       prepareFn:    (kind) -> $scope.user.avatarKind = kind
       cleanupFn:    -> EventBus.broadcast $rootScope, 'updateProfile'
 
-    $scope.upload = upload $scope, $scope.user,
+    uploadForm $scope, $element, $scope.user,
       flashSuccess:   'profile_page.messages.picture_changed'
       submitFn:       Records.users.uploadAvatar
-      loadingMessage: 'common.action.uploading'
       cleanupFn:      -> EventBus.broadcast $rootScope, 'updateProfile'
   ]
 ]
