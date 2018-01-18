@@ -19,6 +19,7 @@ module Ability::Group
         false
       else
         user_is_member_of?(group.id) or
+        group.group_privacy == 'open' or
         (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
       end
     end
