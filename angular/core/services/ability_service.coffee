@@ -31,6 +31,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Records, Sessi
     canParticipateInPoll: (poll) ->
       return false unless poll
       @canAdministerPoll(poll) or
+      !poll.group() or
       Session.user().isMemberOf(poll.guestGroup()) or
       (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
 
