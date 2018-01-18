@@ -65,7 +65,7 @@ namespace :deploy do
   task :build do
     puts "Building clientside assets..."
     run_commands(
-      "cd angular && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",
+      "cd client && yarn && node_modules/gulp/bin/gulp.js compile && cd ../",
       "mkdir -p public/client/#{loomio_version}",
       "cp -r public/client/development/* public/client/#{loomio_version}")
   end

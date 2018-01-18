@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :client_asset_path
+  helper_method :bundle_asset_path
   helper_method :supported_locales
 
   # this boots the angular app

@@ -8,7 +8,7 @@ class API::RegistrationsController < Devise::RegistrationsController
     if resource.save
       save_detected_locale(resource)
       LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
-      head :ok
+      render json: { success: :ok }
     else
       render json: { errors: resource.errors }, status: 422
     end
@@ -19,7 +19,7 @@ class API::RegistrationsController < Devise::RegistrationsController
     if resource.persisted?
       sign_in resource
       flash[:notice] = t(:'devise.sessions.signed_up')
-      head :ok
+      render json: { success: :ok }
     else
       render json: { errors: resource.errors }, status: 422
     end
