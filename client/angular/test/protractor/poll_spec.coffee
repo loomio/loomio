@@ -100,8 +100,6 @@ describe 'Polls', ->
     page.click '.poll-actions-dropdown__close'
     page.click '.poll-common-close-form__submit'
 
-    page.click '.poll-common-set-outcome-panel__submit'
-
     page.fillIn '.poll-common-outcome-form__statement textarea', 'This is an outcome'
     page.click  '.poll-common-outcome-form__submit'
 
