@@ -1,4 +1,4 @@
-class SearchVector < ActiveRecord::Base
+class SearchVector < ApplicationRecord
 
   WEIGHT_VALUES = [
     ENV.fetch('SEARCH_WEIGHT_A', 1.0),
@@ -37,7 +37,7 @@ class SearchVector < ActiveRecord::Base
   end
 
   scope :search_without_privacy!, ->(query) do
-    query = sanitize(query)
+    query = connection.quote(query)
 
     joins(discussion: :group)
    .select(:discussion_id, :search_vector, 'groups.full_name as result_group_name')

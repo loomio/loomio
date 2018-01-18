@@ -1,12 +1,8 @@
 ModelLocator = Struct.new(:model, :params) do
 
   def locate
-    if id_param = params[:"#{model}_id"]
-      resource_class.find id_param
-    elsif key_param = params[:"#{model}_key"]
-      resource_class.find_by_key key_param
-    elsif model.to_sym == :user
-      resource_class.find_by(username: params[:id] || params[:username]) || resource_class.find(params[:id])
+    if model.to_sym == :user
+      resource_class.find_by(username: params[:id] || params[:username]) || resource_class.friendly.find(params[:id] || params[:user_id])
     elsif resource_class.respond_to?(:friendly)
       resource_class.friendly.find key_or_id
     else
@@ -19,7 +15,7 @@ ModelLocator = Struct.new(:model, :params) do
   def key_or_id
     # strip overloaded id's that chargify gives us in the form of
     # key-number
-    (params[:key] || params[:id]).to_s.split('-')[0]
+    (params[:"#{model}_id"] || params[:"#{model}_key"] ||  params[:key] || params[:id]).to_s.split('-')[0]
   end
 
   def resource_class

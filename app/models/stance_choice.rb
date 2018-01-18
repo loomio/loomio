@@ -1,4 +1,4 @@
-class StanceChoice < ActiveRecord::Base
+class StanceChoice < ApplicationRecord
   belongs_to :poll_option
   belongs_to :stance, dependent: :destroy
   has_one :poll, through: :poll_option

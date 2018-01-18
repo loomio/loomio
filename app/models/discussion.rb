@@ -1,4 +1,4 @@
-class Discussion < ActiveRecord::Base
+class Discussion < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include Translatable
@@ -45,7 +45,6 @@ class Discussion < ActiveRecord::Base
   has_many :commenters, -> { uniq }, through: :comments, source: :user
   has_many :documents, as: :model, dependent: :destroy
 
-  has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
 
   has_many :items, -> { includes(:user).thread_events.order('events.id ASC') }, class_name: 'Event'
 
@@ -57,8 +56,8 @@ class Discussion < ActiveRecord::Base
   end
 
   scope :weighted_search_for, ->(query, user, opts = {}) do
-    query = sanitize(query)
-     select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query}::text as query")
+    query = connection.quote(query)
+    select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query}::text as query")
     .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
     .from(SearchVector.search_for(query, user, opts))
     .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")

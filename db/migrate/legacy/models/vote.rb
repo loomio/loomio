@@ -1,4 +1,4 @@
-class Vote < ActiveRecord::Base
+class Vote < ApplicationRecord
   POSITIONS = %w[yes abstain no block]
   default_scope { includes(:previous_vote) }
   belongs_to :motion, counter_cache: true, touch: :last_vote_at

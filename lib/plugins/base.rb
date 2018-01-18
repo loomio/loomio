@@ -108,7 +108,7 @@ module Plugins
       return unless Rails.env.test?
       raise NoCodeSpecifiedError.new unless block_given?
       @actions.add Proc.new {
-        FactoryGirl.define { factory(name, &block) } unless FactoryGirl.factories.registered?(name)
+        FactoryBot.define { factory(name, &block) } unless FactoryBot.factories.registered?(name)
       }.to_proc
     end
 

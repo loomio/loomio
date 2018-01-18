@@ -3,7 +3,7 @@ class Dev::MainController < Dev::BaseController
   include Dev::NintiesMoviesHelper
   include PrettyUrlHelper
 
-  before_filter :cleanup_database, except: [:last_email, :use_last_login_token, :index, :accept_last_invitation]
+  before_action :cleanup_database, except: [:last_email, :use_last_login_token, :index, :accept_last_invitation]
 
   def index
     @routes = self.class.action_methods.select do |action|
@@ -86,12 +86,12 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_login_token
-    login_token = FactoryGirl.create(:login_token, user: patrick)
+    login_token = FactoryBot.create(:login_token, user: patrick)
     redirect_to(login_token_url(login_token.token))
   end
 
   def setup_used_login_token
-    login_token = FactoryGirl.create(:login_token, user: patrick, used: true)
+    login_token = FactoryBot.create(:login_token, user: patrick, used: true)
     redirect_to(login_token_url(login_token.token))
   end
 

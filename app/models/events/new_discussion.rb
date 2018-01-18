@@ -22,6 +22,6 @@ class Events::NewDiscussion < Event
       Queries::UsersByVolumeQuery.normal_or_loud(eventable)
     else
       Queries::UsersByVolumeQuery.loud(eventable)
-    end.without(eventable.author).without(eventable.mentioned_group_members)
+    end.where.not(id: eventable.author).where.not(id: eventable.mentioned_group_members)
   end
 end

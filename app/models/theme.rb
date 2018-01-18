@@ -1,4 +1,4 @@
-class Theme < ActiveRecord::Base
+class Theme < ApplicationRecord
   has_attached_file :pages_logo
   has_attached_file :app_logo
   validates_attachment_content_type :pages_logo, :content_type => /\Aimage\/.*\Z/

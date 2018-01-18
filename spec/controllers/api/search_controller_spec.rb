@@ -73,7 +73,7 @@ def fields_for(json, name, field)
 end
 
 def search_for(term)
-  get :index, q: term, format: :json
+  get :index, params: { q: term }, format: :json
   JSON.parse(response.body).tap do |json|
     expect(json.keys).to include *(%w[search_results])
     @result_keys = fields_for(json, 'search_results', 'key')

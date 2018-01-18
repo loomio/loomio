@@ -41,12 +41,12 @@ ActiveAdmin.register User do
 
   collection_action :export_emails_deactivated do
     emails = User.inactive.pluck :email
-    render text: emails.join("\n")
+    render plain: emails.join("\n")
   end
 
   collection_action :export_emails_fr do
     emails = User.active.where("detected_locale ilike 'fr%'").pluck(:email)
-    render text: emails.join("\n")
+    render plain: emails.join("\n")
   end
 
   collection_action :export_emails_es do
@@ -55,7 +55,7 @@ ActiveAdmin.register User do
     end.join ' or '
 
     emails = User.active.where(query).pluck(:email)
-    render text: emails.join("\n")
+    render plain: emails.join("\n")
   end
 
   collection_action :export_emails_other do
@@ -64,7 +64,7 @@ ActiveAdmin.register User do
     end.join ' or '
 
     emails = User.active.where.not(query).pluck(:email)
-    render text: emails.join("\n")
+    render plain: emails.join("\n")
   end
 
   member_action :delete_spam, method: :post do
@@ -162,6 +162,6 @@ ActiveAdmin.register User do
     user = User.friendly.find(params[:id])
     raw = user.send(:set_reset_password_token)
 
-    render text: edit_user_password_path(reset_password_token: raw)
+    render plain: edit_user_password_path(reset_password_token: raw)
   end
 end

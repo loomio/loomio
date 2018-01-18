@@ -31,7 +31,7 @@ class Events::StanceCreated < Event
 
   def notification_recipients
     if poll.notify_on_participate?
-      User.where(id: poll.author_id).without(eventable.participant)
+      User.where(id: poll.author_id).where.not(id: eventable.participant)
     else
       User.none
     end

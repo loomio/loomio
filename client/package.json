@@ -101,7 +101,7 @@
     "hamljs": "^0.6.2",
     "node-sass": "^4.7.2",
     "node-yaml-config": "0.0.3",
-    "protractor": "5.1.2",
+    "protractor": "5.2.2",
     "protractor-jasmine2-screenshot-reporter": "^0.4.1",
     "uglify-es": "^3.3.4",
     "uglifyify": "^4.0.5",

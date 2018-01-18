@@ -1,4 +1,4 @@
-class Translation < ActiveRecord::Base
+class Translation < ApplicationRecord
   belongs_to :translatable, polymorphic: true
   scope :to_language, ->(language) { where(language: language) }
 

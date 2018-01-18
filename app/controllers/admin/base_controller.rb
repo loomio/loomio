@@ -1,6 +1,6 @@
 class Admin::BaseController < ApplicationController
-  skip_before_filter :check_browser, :check_for_invitation
-  before_filter :require_admin
+  skip_before_action :check_browser, :check_for_invitation
+  before_action :require_admin
 
   protected
 
