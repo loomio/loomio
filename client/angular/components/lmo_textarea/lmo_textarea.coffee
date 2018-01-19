@@ -22,12 +22,19 @@ angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
 
     EventBus.listen $scope, 'filesPasted', (event, files) ->
       return unless $element.find('textarea')[0] == document.activeElement
-      sc = (res) ->
+      $scope.upload(files)
+
+    $scope.drop = (event) ->
+      $scope.upload(event.dataTransfer.files)
+
+    $scope.upload = upload $scope, $scope.model,
+      successCallback: (res) ->
         $scope.model.newDocumentIds.push(res.documents[0].id)
-      upload($scope, $scope.model, {successCallback: sc})(files)
+
 
     $scope.modelLength = ->
       $element.find('textarea').val().length
+      upload($scope, $scope.model, {successCallback: sc})(files)
 
     $scope.addDocument = ($mdMenu) ->
       EventBus.broadcast $scope, 'initializeDocument', Records.documents.buildFromModel($scope.model), $mdMenu
