@@ -3,7 +3,7 @@ loomio_tags:
   branch:       browserify-rails-5
 loomio_truncate_comment:
   repo:         https://github.com/loomio/loomio_truncate_comment.git
-  branch:       browserify
+  branch:       browserify-rails-5
 
 loomio_content_preview:
   repo:         https://github.com/loomio/loomio_content_preview.git
