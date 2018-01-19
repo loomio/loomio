@@ -59,23 +59,29 @@ module.exports =
         EventBus.emit scope, 'doneProcessing'
     , options))
 
+  upload: (scope, model, options = {}) ->
+    upload(scope, model, options)
+
   uploadForm: (scope, element, model, options = {}) ->
-    submitFn = options.submitFn or Records.documents.upload
-    options.loadingMessage = options.loadingMessage or 'common.action.uploading'
-    scope.upload = (files) ->
-      scope.files = files
-      prepare(scope, model, options)
-      for file in files
-        submitFn(file, progress(scope)).then(
-          success(scope, model, options),
-          failure(scope, model, options)
-        ).finally(
-          cleanup(scope, model, options)
-        )
+    scope.upload     = upload(scope, model, options)
     scope.selectFile = -> element[0].querySelector('input[type=file]').click()
     scope.drop       = (event) -> scope.upload(event.dataTransfer.files)
     if !options.disablePaste
       EventBus.listen scope, 'filesPasted', (_, files) -> scope.upload(files)
+
+upload = (scope, model, options) ->
+  submitFn = options.submitFn or Records.documents.upload
+  options.loadingMessage = options.loadingMessage or 'common.action.uploading'
+  (files) ->
+    scope.files = files
+    prepare(scope, model, options)
+    for file in files
+      submitFn(file, progress(scope)).then(
+        success(scope, model, options),
+        failure(scope, model, options)
+      ).finally(
+        cleanup(scope, model, options)
+      )
 
 submit = (scope, model, options = {}) ->
   # fetch draft from server and listen for changes to it
