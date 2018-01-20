@@ -1282,7 +1282,7 @@ en:
 
   poll_common_reopen_form:
     title: Reopen a closed decision
-    helptext: Did a poll close before you were ready? Reopen to gather more stances from the group.
+    helptext: Did a decision close before you were ready? Reopen to gather more stances from the group.
     proposal_reopened: Proposal reopened
     poll_reopened: Poll reopened
     count_reopened: Check reopened

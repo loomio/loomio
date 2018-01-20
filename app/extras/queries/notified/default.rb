@@ -14,11 +14,16 @@ Queries::Notified::Default = Struct.new(:kind, :model, :user) do
     model.participants.where.not(id: user).map { |participant| Notified::User.new(participant) }
   end
 
+  def notified_empty
+    User.none
+  end
+
   alias :new_discussion    :notified_group
   alias :discussion_edited :notified_group
   alias :poll_created      :notified_group
   alias :poll_edited       :notified_participants
   alias :poll_option_added :notified_participants
+  alias :poll_reopened     :notified_empty
   alias :outcome_created   :notified_group
 
 end
