@@ -22,7 +22,7 @@ class Notified::Group < Notified::Base
   def notified_ids
     @notified_ids ||= Queries::UsersByVolumeQuery
                         .normal_or_loud(model)
-                        .without(@notifier)
+                        .where.not(id: @notifier)
                         .pluck(:id)
   end
 end

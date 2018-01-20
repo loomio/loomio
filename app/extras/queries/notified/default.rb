@@ -11,7 +11,7 @@ Queries::Notified::Default = Struct.new(:kind, :model, :user) do
   end
 
   def notified_participants
-    model.participants.without(user).map { |participant| Notified::User.new(participant) }
+    model.participants.where.not(id: user).map { |participant| Notified::User.new(participant) }
   end
 
   alias :new_discussion    :notified_group
