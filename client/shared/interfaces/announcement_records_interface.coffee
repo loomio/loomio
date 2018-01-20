@@ -1,7 +1,9 @@
 BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
-AnnouncementModel    = require 'shared/models/comment_model.coffee'
+AnnouncementModel    = require 'shared/models/announcement_model.coffee'
 
 module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
+  model: AnnouncementModel
+
   fetchNotified: (fragment) ->
     @fetch
       path: 'notified'
