@@ -21,7 +21,7 @@ module.exports = class DocumentRecordsInterface extends BaseRecordsInterface
       modelId:   model.id
       modelType: _.capitalize model.constructor.singular
 
-  upload: (file, progress) ->
+  upload: (file, progress) =>
     @remote.upload '', file,
       fileField:     'document[file]'
       filenameField: 'document[title]'

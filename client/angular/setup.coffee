@@ -18,6 +18,7 @@ module.exports =
   setupAngular: ($rootScope, $injector) ->
     setupAngularScroll()
     setupAngularEventBus()
+    setupAngularPaste($rootScope)
     setupAngularHotkeys($rootScope)
     setupAngularFlash($rootScope)
     setupAngularAhoy($rootScope)
@@ -44,6 +45,16 @@ setupAngularEventBus = ->
     scope.$on event, fn             if typeof scope.$on is 'function'
   EventBus.setWatchMethod (scope, fields, fn, watchObj = false) ->
     scope.$watch fields, fn, watchObj
+
+setupAngularPaste = ($rootScope) ->
+  window.addEventListener 'paste', (event) ->
+    data = event.clipboardData
+    return unless item = _.first _.filter(data.items, (item) -> item.getAsFile())
+    event.preventDefault()
+    file = new File [item.getAsFile()], data.getData('text/plain') || Date.now(),
+      lastModified: Date.now()
+      type:         item.type
+    EventBus.broadcast $rootScope, 'filesPasted', [file]
 
 setupAngularHotkeys = ($rootScope) ->
   registerHotkeys $rootScope,

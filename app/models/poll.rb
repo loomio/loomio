@@ -1,4 +1,4 @@
-class Poll < ActiveRecord::Base
+class Poll < ApplicationRecord
   include CustomCounterCache::Model
   extend  HasCustomFields
   include CustomCounterCache::Model
@@ -11,6 +11,7 @@ class Poll < ActiveRecord::Base
   include UsesOrganisationScope
   include HasMailer
   include Reactable
+  include HasEvents
   include HasCreatedEvent
 
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
@@ -50,7 +51,7 @@ class Poll < ActiveRecord::Base
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
-  has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
+  has_many :guest_invitations, through: :guest_group, source: :invitations
 
   has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
@@ -153,7 +154,7 @@ class Poll < ActiveRecord::Base
   end
 
   def undecided
-    reload.members.without(participants)
+    reload.members.where.not(id: participants)
   end
 
   def invitations

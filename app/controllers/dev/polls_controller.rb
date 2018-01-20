@@ -1,7 +1,7 @@
 class Dev::PollsController < Dev::BaseController
   include Dev::PollsHelper
   include Dev::PollsScenarioHelper
-  skip_before_filter :cleanup_database
+  skip_before_action :cleanup_database
 
   def test_invitation_to_vote_in_poll
     sign_out

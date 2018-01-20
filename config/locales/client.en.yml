@@ -518,8 +518,8 @@ en:
     members: 'Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
-    see_all_members: 'See all: ({{count}}) members'
-    pending_invitations: '+ ({{count}}) pending'
+    see_all_members: 'See all {{count}} members'
+    pending_invitations: '+ {{count}} pending'
     subgroups: 'Subgroups'
     subgroups_placeholder: 'Subgroups give teams their own space and keep notifications focused to the right people.'
     invite_people: 'Invite'
@@ -585,7 +585,7 @@ en:
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
     privacy_statement:
-      public_on_web: 'Name and description will be public on the web'
+      public_on_web: 'Name, description, and attachments to the group context will be visible to the public'
       private_to_group: 'Name and description will only be visible to members.'
       private_to_parent_members: 'Name and description will be visible to members of {{parent}}'
     privacy: 'Privacy'

@@ -1,4 +1,4 @@
-class LoginToken < ActiveRecord::Base
+class LoginToken < ApplicationRecord
   belongs_to :user, required: true
   has_secure_token :token
   EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 1440)

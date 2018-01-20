@@ -3,7 +3,6 @@ Records   = require 'shared/services/records.coffee'
 EventBus  = require 'shared/services/event_bus.coffee'
 I18n      = require 'shared/services/i18n.coffee'
 
-{ listenForPaste } = require 'shared/helpers/listen.coffee'
 { submitOnEnter }  = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'documentUrlForm', ->
@@ -25,5 +24,4 @@ angular.module('loomioApp').directive 'documentUrlForm', ->
       EventBus.emit $scope, 'nextStep', doc
 
     submitOnEnter $scope, anyEnter: true
-    listenForPaste($scope)
   ]

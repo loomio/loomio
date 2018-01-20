@@ -3,28 +3,28 @@ require 'rails_helper'
 # test emails and notifications being sent by events
 describe Event do
   let(:all_emails_disabled) { {email_when_proposal_closing_soon: false} }
-  let(:user_left_group) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_thread_loud) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_thread_normal) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_thread_quiet) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_thread_mute) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_membership_loud) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_membership_normal) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_membership_quiet) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_membership_mute) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_motion_closing_soon) { FactoryGirl.create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
-  let(:user_mentioned) { FactoryGirl.create :user }
+  let(:user_left_group) { create :user, all_emails_disabled }
+  let(:user_thread_loud) { create :user, all_emails_disabled }
+  let(:user_thread_normal) { create :user, all_emails_disabled }
+  let(:user_thread_quiet) { create :user, all_emails_disabled }
+  let(:user_thread_mute) { create :user, all_emails_disabled }
+  let(:user_membership_loud) { create :user, all_emails_disabled }
+  let(:user_membership_normal) { create :user, all_emails_disabled }
+  let(:user_membership_quiet) { create :user, all_emails_disabled }
+  let(:user_membership_mute) { create :user, all_emails_disabled }
+  let(:user_motion_closing_soon) { create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
+  let(:user_mentioned) { create :user }
   let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
-  let(:user_unsubscribed) { FactoryGirl.create :user }
+  let(:user_unsubscribed) { create :user }
 
-  let(:discussion) { FactoryGirl.create :discussion, description: user_mentioned_text }
-  let(:mentioned_user) {FactoryGirl.create :user, username: 'sam', email_when_mentioned: true }
-  let(:parent_comment) { FactoryGirl.create :comment, discussion: discussion}
-  let(:comment) { FactoryGirl.create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
-  let(:poll) { FactoryGirl.create :poll, discussion: discussion, details: user_mentioned_text }
-  let(:outcome) { FactoryGirl.create :outcome, poll: poll, statement: user_mentioned_text }
+  let(:discussion) { create :discussion, description: user_mentioned_text }
+  let(:mentioned_user) {create :user, username: 'sam', email_when_mentioned: true }
+  let(:parent_comment) { create :comment, discussion: discussion}
+  let(:comment) { create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
+  let(:poll) { create :poll, discussion: discussion, details: user_mentioned_text }
+  let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text }
 
-  let(:guest_user) { FactoryGirl.create :user }
+  let(:guest_user) { create :user }
 
   def emails_sent
     ActionMailer::Base.deliveries.count
@@ -138,9 +138,9 @@ describe Event do
       }.with_indifferent_access}
 
       it 'should notify participants when voters_review_responses is true' do
-        poll = FactoryGirl.create(:poll_proposal, discussion: discussion)
-        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        FactoryGirl.create(:announcement, announceable: poll, notified: [group_notified])
+        poll = create(:poll_proposal, discussion: discussion)
+        create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        create(:announcement, announceable: poll, notified: [group_notified])
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -167,9 +167,9 @@ describe Event do
       end
 
       it 'should notify announcees who have not participated when voters_review_responses is false' do
-        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         # quiet user who has been announced to before
-        FactoryGirl.create(:announcement, announceable: poll, notified: [group_notified])
+        create(:announcement, announceable: poll, notified: [group_notified])
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -216,7 +216,7 @@ describe Event do
     end
 
     it 'makes an announcement to participants' do
-      FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+      create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
       guest_stance = create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: guest_user)
       expect { Events::PollOptionAdded.publish!(poll, poll.author, ["new_option"]) }.to change { emails_sent }
       email_users = Events::PollOptionAdded.last.send(:email_recipients)

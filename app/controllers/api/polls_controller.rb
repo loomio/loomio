@@ -67,9 +67,9 @@ class API::PollsController < API::RestfulController
   end
 
   def accessible_records
-    Poll.where.any_of(
+    Queries::UnionQuery.for(:polls, [
       current_user.polls,
       Poll.where(id: Queries::VisiblePolls.new(user: current_user).pluck(:id))
-    )
+    ])
   end
 end

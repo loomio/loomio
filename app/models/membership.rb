@@ -1,4 +1,4 @@
-class Membership < ActiveRecord::Base
+class Membership < ApplicationRecord
   include CustomCounterCache::Model
   include HasVolume
   include HasTimeframe

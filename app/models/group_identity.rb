@@ -1,4 +1,4 @@
-class GroupIdentity < ActiveRecord::Base
+class GroupIdentity < ApplicationRecord
   extend HasCustomFields
 
   attr_writer :make_announcement

@@ -1,4 +1,4 @@
-class Attachment < ActiveRecord::Base
+class Attachment < ApplicationRecord
   belongs_to :user
   belongs_to :attachable, polymorphic: true
 

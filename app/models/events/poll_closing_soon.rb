@@ -18,7 +18,7 @@ class Events::PollClosingSoon < Event
 
   def notification_recipients
     recipients = poll.users_from_announcements
-    recipients = recipients.without(poll.participants) unless poll.voters_review_responses
+    recipients = recipients.where.not(id: poll.participants) unless poll.voters_review_responses
     recipients
   end
 end

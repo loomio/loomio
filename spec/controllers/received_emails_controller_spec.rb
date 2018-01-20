@@ -32,12 +32,12 @@ describe ReceivedEmailsController do
 
   it "creates a comment via email" do
     expect(EmailParams).to receive(:new).and_return(email_params)
-    expect { post :reply, griddler_params }.to change { Comment.count }.by(1)
+    expect { post :reply, params: griddler_params }.to change { Comment.count }.by(1)
   end
 
   it "does not create a comment when the user is not authorized" do
     griddler_params[:mailinMsg][:to] = [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{another_user.email_api_key}"}]
-    expect { post :reply, griddler_params }.to_not change { Comment.count }
+    expect { post :reply, params: griddler_params }.to_not change { Comment.count }
     expect(response.status).to eq 200
   end
 end

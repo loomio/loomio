@@ -1,5 +1,5 @@
 class API::DraftsController < API::RestfulController
-  before_filter :load_resource
+  before_action :load_resource
 
   private
 

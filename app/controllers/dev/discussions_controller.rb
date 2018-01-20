@@ -1,6 +1,6 @@
 class Dev::DiscussionsController < Dev::BaseController
   include Dev::DiscussionsHelper
-  skip_before_filter :cleanup_database
+  skip_before_action :cleanup_database
 
   def test_none_read
     discussion = create_discussion_with_nested_comments

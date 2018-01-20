@@ -13,12 +13,12 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
     # all discussion readers should be reset according to their last_read_at.
 
     describe "discussion with 2 comments, then first comment is deleted" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:commentor){ FactoryGirl.create(:user) }
-      let(:discussion) { FactoryGirl.build(:discussion) }
-      let(:group) { FactoryGirl.create(:formal_group) }
-      let(:first_comment) { FactoryGirl.build(:comment, discussion: discussion) }
-      let(:second_comment) { FactoryGirl.build(:comment, discussion: discussion) }
+      let(:user) { FactoryBot.create(:user) }
+      let(:commentor){ FactoryBot.create(:user) }
+      let(:discussion) { FactoryBot.build(:discussion) }
+      let(:group) { FactoryBot.create(:formal_group) }
+      let(:first_comment) { FactoryBot.build(:comment, discussion: discussion) }
+      let(:second_comment) { FactoryBot.build(:comment, discussion: discussion) }
 
       before do
         group.add_member!(commentor)

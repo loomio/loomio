@@ -1,5 +1,5 @@
 class API::SessionsController < Devise::SessionsController
-  before_filter :configure_permitted_parameters
+  before_action :configure_permitted_parameters
 
   def create
     if user = attempt_login

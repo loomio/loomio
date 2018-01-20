@@ -1,4 +1,4 @@
-class PollOption < ActiveRecord::Base
+class PollOption < ApplicationRecord
   include FormattedDateHelper
 
   belongs_to :poll

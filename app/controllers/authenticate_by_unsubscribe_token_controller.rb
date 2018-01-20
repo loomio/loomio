@@ -1,5 +1,5 @@
 class AuthenticateByUnsubscribeTokenController < ApplicationController
-  before_filter :authenticate_user_by_unsubscribe_token_or_fallback
+  before_action :authenticate_user_by_unsubscribe_token_or_fallback
 
   private
 

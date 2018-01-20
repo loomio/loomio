@@ -334,6 +334,7 @@ module Dev::NintiesMoviesHelper
     #notify patrick that he has been added to jens group
     another_group = FormalGroup.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
+    jennifer.reload
     MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer)
 
     #'new_coordinator',
@@ -349,31 +350,31 @@ module Dev::NintiesMoviesHelper
     #'poll_created' ??
     notified = [{type: 'Group', id: create_discussion.group_id, notified_ids: [patrick.id]}.with_indifferent_access]
 
-    poll = FactoryGirl.create(:poll, discussion: create_discussion, author: jennifer, closing_at: 24.hours.from_now)
-    poll_announcement = FactoryGirl.build(:announcement, announceable: poll, notified: notified)
+    poll = FactoryBot.create(:poll, discussion: create_discussion, author: jennifer, closing_at: 24.hours.from_now)
+    poll_announcement = FactoryBot.build(:announcement, announceable: poll, notified: notified)
     AnnouncementService.create(announcement: poll_announcement, actor: jennifer)
 
     #'poll_closing_soon'
     PollService.publish_closing_soon
 
     #'outcome_created' ??
-    poll = FactoryGirl.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
+    poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
     PollService.create(poll: poll, actor: jennifer)
-    outcome = FactoryGirl.build(:outcome, poll: poll)
+    outcome = FactoryBot.build(:outcome, poll: poll)
     OutcomeService.create(outcome: outcome, actor: jennifer)
     outcome_announcement = FactoryGirl.build(:announcement, announceable: outcome, notified: notified)
     AnnouncementService.create(announcement: outcome_announcement, actor: jennifer)
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
-    poll = FactoryGirl.build(:poll, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
+    poll = FactoryBot.build(:poll, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
     PollService.create(poll: poll, actor: patrick)
-    jennifer_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
+    jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
     #'poll_option_added' ??
     poll.tap(&:save).reload
-    patrick_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
+    patrick_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: patrick_stance, actor: patrick)
     PollService.add_options(poll: poll, actor: jennifer, params: {poll_option_names: ['new_option']})
   end

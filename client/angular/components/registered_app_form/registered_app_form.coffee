@@ -1,12 +1,12 @@
 Records       = require 'shared/services/records.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ submitForm, upload } = require 'shared/helpers/form.coffee'
+{ submitForm, uploadForm } = require 'shared/helpers/form.coffee'
 { submitOnEnter }      = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').factory 'RegisteredAppForm', ->
   templateUrl: 'generated/components/registered_app_form/registered_app_form.html'
-  controller: ['$scope', 'application', ($scope, application) ->
+  controller: ['$scope', '$element', 'application', ($scope, $element, application) ->
     $scope.application = application.clone()
 
     actionName = if $scope.application.isNew() then 'created' else 'updated'
@@ -18,16 +18,14 @@ angular.module('loomioApp').factory 'RegisteredAppForm', ->
         if $scope.application.isNew()
           LmoUrlService.goTo LmoUrlService.oauthApplication(response.oauth_applications[0])
 
-    $scope.upload = upload $scope, $scope.application,
+    uploadForm $scope, $element, $scope.application,
       flashSuccess:   'registered_app_form.messages.logo_changed'
       submitFn:       $scope.application.uploadLogo
       loadingMessage: 'common.action.uploading'
       skipClose:      true
+      disablePaste:   $scope.application.isNew()
       successCallback: (response) ->
         $scope.application.logoUrl = response.oauth_applications[0].logo_url
-
-    $scope.clickFileUpload = ->
-      document.querySelector('.registered-app-form__logo-input').click()
 
     submitOnEnter $scope
   ]

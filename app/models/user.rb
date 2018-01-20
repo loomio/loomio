@@ -1,10 +1,10 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include MessageChannel
   include HasExperiences
   include HasAvatar
-  include UsesWithoutScope
+  # include UsesWithoutScope
   include SelfReferencing
   include NoForbiddenEmails
   include HasMailer

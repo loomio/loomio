@@ -6,7 +6,7 @@ module Events::Notify::ByEmail
 
   # send event emails
   def email_users!
-    email_recipients.active.without(user).uniq.each do |recipient|
+    email_recipients.active.where.not(id: user).uniq.each do |recipient|
       eventable.send(:mailer).delay.send(kind, recipient, self)
     end
   end

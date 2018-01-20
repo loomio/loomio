@@ -12,7 +12,7 @@ describe API::RegistrationsController do
   describe 'create' do
     it 'creates a new user' do
       Clients::Recaptcha.any_instance.stub(:validate) { true }
-      expect { post :create, user: registration_params }.to change { User.count }.by(1)
+      expect { post :create, params: { user: registration_params } }.to change { User.count }.by(1)
       expect(response.status).to eq 200
       u = User.last
       expect(u.name).to eq registration_params[:name]
@@ -21,17 +21,17 @@ describe API::RegistrationsController do
 
     it 'sends a login email' do
       Clients::Recaptcha.any_instance.stub(:validate) { true }
-      expect { post :create, user: registration_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { post :create, params: { user: registration_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
     it 'does not create a new user if recaptcha is not present' do
       registration_params[:recaptcha] = ''
-      expect { post :create, user: registration_params }.to raise_error { ActionController::ParameterMissing }
+      expect { post :create, params: { user: registration_params } }.to raise_error { ActionController::ParameterMissing }
     end
 
     it 'does not create a new user if the recaptcha is invalid' do
       Clients::Recaptcha.any_instance.stub(:validate) { false }
-      expect { post :create, user: registration_params }.to_not change { User.count }
+      expect { post :create, params: { user: registration_params } }.to_not change { User.count }
       expect(response.status).to eq 422
     end
   end
