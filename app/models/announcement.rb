@@ -17,7 +17,7 @@ class Announcement < ActiveRecord::Base
   attr_accessor :invitation_emails
 
   def guest_users
-    users.without(group&.members)
+    users.where.not(id: group&.members)
   end
 
   def users

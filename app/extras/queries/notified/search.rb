@@ -7,7 +7,7 @@ Queries::Notified::Search = Struct.new(:query, :user) do
   private
 
   def visible_users
-    User.distinct.active.joins(:memberships).without(user).where(
+    User.distinct.active.joins(:memberships).where.not(id: user).where(
       "memberships.archived_at": nil,
       "memberships.group_id": user.group_ids
     ).search_for(query).map { |user| Notified::User.new(user) }
