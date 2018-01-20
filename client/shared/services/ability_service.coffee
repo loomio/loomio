@@ -221,6 +221,9 @@ module.exports = new class AbilityService
   canClosePoll: (poll) ->
     @canEditPoll(poll)
 
+  canReopenPoll: (poll) ->
+    poll.isClosed() and @canAdministerPoll(poll)
+
   requireLoginFor: (page) ->
     return false if @isLoggedIn()
     switch page
