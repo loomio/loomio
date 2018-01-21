@@ -4,7 +4,7 @@
     .pending-invitations-card__pending-invitations
       .lmo-flex.lmo-flex__center.pending-invitations-card__invitation{layout: "row", ng-repeat: "invitation in group.pendingInvitations() track by invitation.id"}
         .lmo-flex__grow.lmo-flex{layout: "column"}
-          %strong {{invitation.recipientEmail}}
+          %span {{invitation.recipientEmail.split('@')[0]}}
           .lmo-hint-text{translate: "pending_invitations_card.sent_at", translate-value-date: "{{invitationCreatedAt(invitation)}}"}
         .memberships-page__actions
           %loading{ng-if: "invitation.resending"}
