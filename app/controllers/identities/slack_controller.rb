@@ -1,5 +1,5 @@
 class Identities::SlackController < Identities::BaseController
-  before_filter :respond_with_ok, only: [:participate, :initiate]
+  before_action :respond_with_ok, only: [:participate, :initiate]
 
   rescue_from(ActionController::ParameterMissing) { head :bad_request }
 
@@ -14,7 +14,7 @@ class Identities::SlackController < Identities::BaseController
 
   def initiate
     if params['token'] == ENV['SLACK_VERIFICATION_TOKEN']
-      render text: ::Slack::Initiator.new(params).initiate
+      render plain: ::Slack::Initiator.new(params).initiate
     else
       head :bad_request
     end

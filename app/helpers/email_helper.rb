@@ -59,17 +59,6 @@ module EmailHelper
     time.in_time_zone(TimeZoneToCity.convert zone).strftime('%l:%M%P - %A %-d %b %Y')
   end
 
-  def time_formatted_relative_to_age(time)
-    current_time = Time.zone.now
-    if time.to_date == Time.zone.now.to_date
-      l(time, format: :for_today)
-    elsif time.year != current_time.year
-      l(time.to_date, format: :for_another_year)
-    else
-      l(time.to_date, format: :for_this_year)
-    end
-  end
-
   def google_pie_chart_url(poll)
     URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}")
   end

@@ -9,9 +9,6 @@ describe Comment do
     discussion.group.add_member!(user)
   end
 
-  it { should have_many(:events).dependent(:destroy) }
-  it { should respond_to(:uses_markdown) }
-
   describe "#is_most_recent?" do
     subject { comment.is_most_recent? }
     context "comment is the last one added to discussion" do

@@ -7,7 +7,7 @@ describe RedirectController do
 
   describe 'get group via subdomain' do
     it 'redirects to the group if the subdomain exists' do
-      expect(request).to receive(:subdomain).and_return(group.subdomain)
+      request.host = "#{group.subdomain}.test.host"
       get :subdomain
       expect(response).to redirect_to group_url(group)
     end
@@ -19,17 +19,17 @@ describe RedirectController do
   end
 
   it 'get group' do
-    get :group, id: group.key
+    get :group, params: { id: group.key }
     expect(response).to redirect_to group_url(group)
   end
 
   it 'get discussion' do
-    get :discussion, id: discussion.key
+    get :discussion, params: { id: discussion.key }
     expect(response).to redirect_to discussion_url(discussion)
   end
 
   it 'get poll' do
-    get :poll, id: poll.key
+    get :poll, params: { id: poll.key }
     expect(response).to redirect_to poll_url(poll)
   end
 end

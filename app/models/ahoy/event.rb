@@ -1,5 +1,5 @@
 module Ahoy
-  class Event < ActiveRecord::Base
+  class Event < ApplicationRecord
     self.table_name = "ahoy_events"
 
     belongs_to :visit

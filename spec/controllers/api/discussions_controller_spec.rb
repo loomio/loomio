@@ -29,7 +29,7 @@ describe API::DiscussionsController do
 
     it 'can fetch records' do
       discussion; another_discussion
-      get :dashboard, access_token: access_token.token
+      get :dashboard, params: { access_token: access_token.token }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
       discussion_ids = json['discussions'].map { |d| d['id'] }
@@ -38,19 +38,19 @@ describe API::DiscussionsController do
     end
 
     it 'returns forbidden if the access token is not found' do
-      get :dashboard, access_token: "blargety blarg"
+      get :dashboard, params: { access_token: "blargety blarg" }
       expect(response.status).to eq 403
     end
 
     it 'returns unauthorized if the access token has been revoked' do
       access_token.update(revoked_at: 2.days.ago)
-      get :dashboard, access_token: access_token.token
+      get :dashboard, params: { access_token: access_token.token }
       expect(response.status).to eq 401
     end
 
     it 'returns unauthorized if the access token is expired' do
       access_token.update(expires_in: 0)
-      get :dashboard, access_token: access_token.token
+      get :dashboard, params: { access_token: access_token.token }
       expect(response.status).to eq 401
     end
   end
@@ -154,7 +154,7 @@ describe API::DiscussionsController do
 
       it 'can filter by muted' do
         muted_discussion.reload
-        get :dashboard, filter: :show_muted
+        get :dashboard, params: { filter: :show_muted }
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
         expect(ids).to include muted_discussion.id
@@ -163,7 +163,7 @@ describe API::DiscussionsController do
 
       it 'can filter since a certain date' do
         old_discussion.reload
-        get :dashboard, since: 3.months.ago
+        get :dashboard, params: { since: 3.months.ago }
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
         expect(ids).to include discussion.id
@@ -172,7 +172,7 @@ describe API::DiscussionsController do
 
       it 'can filter until a certain date' do
         old_discussion.reload
-        get :dashboard, until: 3.months.ago
+        get :dashboard, params: { until: 3.months.ago }
         json = JSON.parse(response.body)
         ids = json['discussions'].map { |v| v['id'] }
         expect(ids).to_not include discussion.id
@@ -181,7 +181,7 @@ describe API::DiscussionsController do
 
       it 'can limit collection size' do
         discussion; old_discussion; muted_discussion
-        get :dashboard, limit: 2
+        get :dashboard, params: { limit: 2 }
         json = JSON.parse(response.body)
         expect(json['discussions'].count).to eq 2
       end
@@ -192,7 +192,7 @@ describe API::DiscussionsController do
     context 'logged in' do
       before { sign_in user }
       it 'returns the discussion json' do
-        get :show, id: discussion.key
+        get :show, params: { id: discussion.key }
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id ])
@@ -200,7 +200,7 @@ describe API::DiscussionsController do
 
       it 'returns the reader fields' do
         DiscussionReader.for(user: user, discussion: discussion).update(volume: :mute)
-        get :show, id: discussion.key
+        get :show, params: { id: discussion.key }
         json = JSON.parse(response.body)
         expect(json['discussions'][0]['discussion_reader_volume']).to eq "mute"
       end
@@ -211,7 +211,7 @@ describe API::DiscussionsController do
       let(:private_discussion) { create :discussion, private: true }
 
       it 'returns a public discussions' do
-        get :show, id: public_discussion.id, format: :json
+        get :show, params: { id: public_discussion.id }, format: :json
         json = JSON.parse(response.body)
         discussion_ids = json['discussions'].map { |d| d['id'] }
         expect(discussion_ids).to_not include private_discussion.id
@@ -219,7 +219,7 @@ describe API::DiscussionsController do
       end
 
       it 'returns unauthorized for a private discussion' do
-        get :show, id: private_discussion.id, format: :json
+        get :show, params: { id: private_discussion.id }, format: :json
         expect(response.status).to eq 403
       end
     end
@@ -238,7 +238,7 @@ describe API::DiscussionsController do
     end
 
     it "updates dismissed_at", focus: true do
-      patch :dismiss, id: discussion.key
+      patch :dismiss, params: { id: discussion.key }
       expect(response.status).to eq 200
       expect(reader.reload.dismissed_at).to be_present
     end
@@ -252,7 +252,7 @@ describe API::DiscussionsController do
         destination_group = create :formal_group
         destination_group.members << user
         source_group = discussion.group
-        patch :move, id: discussion.id, group_id: destination_group.id, format: :json
+        patch :move, params: { id: discussion.id, group_id: destination_group.id }, format: :json
 
         # Discussion belongs to new group
         # The eventable of the event is the old group
@@ -286,7 +286,7 @@ describe API::DiscussionsController do
 
       context 'success' do
         it 'returns discussions filtered by group' do
-          get :index, group_id: group.id, format: :json
+          get :index, params: { group_id: group.id }, format: :json
           json = JSON.parse(response.body)
           expect(json.keys).to include *(%w[discussions])
           discussions = json['discussions'].map { |v| v['id'] }
@@ -296,7 +296,7 @@ describe API::DiscussionsController do
 
         it 'does not display discussions not visible to the current user' do
           cant_see_me = create :discussion
-          get :index, group_id: group.id, format: :json
+          get :index, params: { group_id: group.id }, format: :json
           json = JSON.parse(response.body)
           discussions = json['discussions'].map { |v| v['id'] }
           expect(discussions).to_not include cant_see_me.id
@@ -305,7 +305,7 @@ describe API::DiscussionsController do
         it 'can display content from a specified public group' do
           public_group = create :formal_group, discussion_privacy_options: :public_only, is_visible_to_public: true
           can_see_me = create :discussion, group: public_group, private: false
-          get :index, group_id: public_group.id, format: :json
+          get :index, params: { group_id: public_group.id }, format: :json
           json = JSON.parse(response.body)
           discussions = json['discussions'].map { |v| v['id'] }
           expect(discussions).to include can_see_me.id
@@ -314,7 +314,7 @@ describe API::DiscussionsController do
         it 'responds to a since parameter' do
           four_months_ago = create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago
           two_months_ago = create :discussion, group: group, created_at: 2.months.ago, last_activity_at: 2.months.ago
-          get :index, group_id: group.id, format: :json, since: 3.months.ago
+          get :index, params: { group_id: group.id, since: 3.months.ago }, format: :json
           json = JSON.parse(response.body)
           discussions = json['discussions'].map { |v| v['id'] }
           expect(discussions).to include two_months_ago.id
@@ -324,7 +324,7 @@ describe API::DiscussionsController do
         it 'responds to an until parameter' do
           four_months_ago = create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago
           two_months_ago = create :discussion, group: group, created_at: 2.months.ago, last_activity_at: 2.months.ago
-          get :index, group_id: group.id, format: :json, until: 3.months.ago
+          get :index, params: { group_id: group.id, until: 3.months.ago }, format: :json
           json = JSON.parse(response.body)
           discussions = json['discussions'].map { |v| v['id'] }
           expect(discussions).to include four_months_ago.id
@@ -333,7 +333,7 @@ describe API::DiscussionsController do
 
         it 'responds with active polls' do
           poll
-          get :index, group_id: group.id, format: :json
+          get :index, params: { group_id: group.id }, format: :json
           json = JSON.parse(response.body)
           poll_ids = json['polls'].map { |p| p['id'] }
           expect(poll_ids).to include poll.id
@@ -349,7 +349,7 @@ describe API::DiscussionsController do
       it 'sets the volume of a thread' do
         reader = DiscussionReader.for(user: user, discussion: discussion)
         reader.update volume: :loud
-        put :set_volume, id: discussion.id, volume: :mute, format: :json
+        put :set_volume, params: { id: discussion.id, volume: :mute }, format: :json
         expect(response).to be_success
         expect(reader.reload.volume.to_sym).to eq :mute
       end
@@ -359,7 +359,7 @@ describe API::DiscussionsController do
       it 'does not update a reader' do
         reader = DiscussionReader.for(user: user, discussion: another_discussion)
         reader.update volume: :loud
-        put :set_volume, id: another_discussion.id, volume: :mute, format: :json
+        put :set_volume, params: { id: another_discussion.id, volume: :mute }, format: :json
         expect(response).not_to be_success
         expect(reader.reload.volume.to_sym).not_to eq :mute
       end
@@ -372,14 +372,14 @@ describe API::DiscussionsController do
 
     context 'success' do
       it "updates a discussion" do
-        post :update, id: discussion.id, discussion: discussion_params, format: :json
+        post :update, params: { id: discussion.id, discussion: discussion_params }, format: :json
         expect(response).to be_success
         expect(discussion.reload.title).to eq discussion_params[:title]
       end
 
       it 'adds documents' do
-        discussion_params[:document_ids] = document.id
-        post :update, id: discussion.id, discussion: discussion_params, format: :json
+        discussion_params[:document_ids] = [document.id]
+        post :update, params: { id: discussion.id, discussion: discussion_params }
         expect(discussion.reload.documents).to include document
         expect(response.status).to eq 200
         expect(discussion.reload.document_ids).to include document.id
@@ -388,7 +388,7 @@ describe API::DiscussionsController do
       it 'removes documents' do
         document.update(model: discussion)
         discussion_params[:document_ids] = []
-        expect { post :update, id: discussion.id, discussion: discussion_params, format: :json }.to change { Document.count }.by(-1)
+        expect { post :update, params: { id: discussion.id, discussion: discussion_params } }.to change { Document.count }.by(-1)
         expect(discussion.reload.documents).to be_empty
         expect(response.status).to eq 200
         expect(discussion.reload.document_ids).to_not include document.id
@@ -398,19 +398,19 @@ describe API::DiscussionsController do
     context 'failures' do
       it "responds with an error when there are unpermitted params" do
         discussion_params[:dontmindme] = 'wild wooly byte virus'
-        put :update, id: discussion.id, discussion: discussion_params
+        put :update, params: { id: discussion.id, discussion: discussion_params }
         expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
       end
 
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        put :update, id: discussion.id, discussion: discussion_params
+        put :update, params: { id: discussion.id, discussion: discussion_params }
         expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do
         discussion_params[:title] = ''
-        put :update, id: discussion.id, discussion: discussion_params, format: :json
+        put :update, params: { id: discussion.id, discussion: discussion_params }, format: :json
         json = JSON.parse(response.body)
         expect(response.status).to eq 422
         expect(json['errors']['title']).to include 'can\'t be blank'
@@ -423,24 +423,24 @@ describe API::DiscussionsController do
 
     context 'success' do
       it "creates a discussion" do
-        post :create, discussion: discussion_params, format: :json
+        post :create, params: { discussion: discussion_params }, format: :json
         expect(response).to be_success
         expect(Discussion.last).to be_present
       end
 
       describe 'make_announcement' do
         it 'does not email users for non-announcements' do
-          expect { post :create, discussion: discussion_params, format: :json }.to_not change { ActionMailer::Base.deliveries.count }
+          expect { post :create, params: { discussion: discussion_params }, format: :json }.to_not change { ActionMailer::Base.deliveries.count }
         end
 
         it 'makes an announcement' do
           discussion_params[:make_announcement] = true
-          expect { post :create, discussion: discussion_params, format: :json }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          expect { post :create, params: { discussion: discussion_params }, format: :json }.to change { ActionMailer::Base.deliveries.count }.by(1)
         end
       end
 
       it 'responds with json' do
-        post :create, discussion: discussion_params, format: :json
+        post :create, params: { discussion: discussion_params }, format: :json
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[
@@ -462,12 +462,12 @@ describe API::DiscussionsController do
         it 'mentions appropriate users' do
           group.add_member! another_user
           discussion_params[:description] = "Hello, @#{another_user.username}!"
-          expect { post :create, discussion: discussion_params, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
+          expect { post :create, params: { discussion: discussion_params }, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
         end
 
         it 'does not mention users not in the group' do
           discussion_params[:description] = "Hello, @#{another_user.username}!"
-          expect { post :create, discussion: discussion_params, format: :json }.to_not change { Event.where(kind: :user_mentioned).count }
+          expect { post :create, params: { discussion: discussion_params }, format: :json }.to_not change { Event.where(kind: :user_mentioned).count }
         end
       end
     end
@@ -475,19 +475,19 @@ describe API::DiscussionsController do
     context 'failures' do
       it "responds with an error when there are unpermitted params" do
         discussion_params[:dontmindme] = 'wild wooly byte virus'
-        post :create, discussion: discussion_params
+        post :create, params: { discussion: discussion_params }
         expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
       end
 
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        post :create, discussion: discussion_params
+        post :create, params: { discussion: discussion_params }
         expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do
         discussion_params[:title] = ''
-        post :create, discussion: discussion_params, format: :json
+        post :create, params: { discussion: discussion_params }, format: :json
         json = JSON.parse(response.body)
         expect(response.status).to eq 422
         expect(json['errors']['title']).to include 'can\'t be blank'
@@ -498,7 +498,7 @@ describe API::DiscussionsController do
   describe 'mark_as_seen' do
     it 'marks a discussion as seen' do
       sign_in user
-      expect { post :mark_as_seen, id: discussion.id }.to change { user.discussion_readers.count }.by(1)
+      expect { post :mark_as_seen, params: { id: discussion.id } }.to change { user.discussion_readers.count }.by(1)
       dr = DiscussionReader.last
       expect(dr.discussion).to eq discussion
       expect(dr.last_read_at).to be_present
@@ -506,7 +506,7 @@ describe API::DiscussionsController do
     end
 
     it 'does not allow non-users to mark discussions as seen' do
-      post :mark_as_seen, id: discussion.id
+      post :mark_as_seen, params: { id: discussion.id }
       expect(response.status).to eq 403
     end
   end
@@ -517,7 +517,7 @@ describe API::DiscussionsController do
 
     context 'signed out' do
       it 'does not attempt to mark discussions as read while logged out' do
-        patch :mark_as_read, id: discussion.id, ranges: "2-2"
+        patch :mark_as_read, params: { id: discussion.id, ranges: "2-2" }
         expect(response.status).to eq 403
       end
     end
@@ -531,7 +531,7 @@ describe API::DiscussionsController do
       end
 
       it "Marks thread item as read" do
-        patch :mark_as_read, id: discussion.id, ranges: "2-2"
+        patch :mark_as_read, params: { id: discussion.id, ranges: "2-2" }
         expect(reader.reload.last_read_at).to be_within(2.seconds).of Time.now
         expect(reader.read_items_count).to eq 1
         expect(reader.has_read?(2)).to be true
@@ -548,8 +548,8 @@ describe API::DiscussionsController do
         # also testing accumulation
         new_comment.discussion = discussion
         CommentService.create(comment: new_comment, actor: user)
-        patch :mark_as_read, id: discussion.id, ranges: "2-2"
-        patch :mark_as_read, id: discussion.id, ranges: "3-3"
+        patch :mark_as_read, params: { id: discussion.id, ranges: "2-2" }
+        patch :mark_as_read, params: { id: discussion.id, ranges: "3-3" }
         json = JSON.parse(response.body)
         reader.reload
 
@@ -565,7 +565,7 @@ describe API::DiscussionsController do
     it 'allows admins to close a thread' do
       sign_in user
       discussion.group.add_admin! user
-      post :close, id: discussion.id
+      post :close, params: { id: discussion.id }
       expect(discussion.reload.closed_at).to be_present
       json = JSON.parse(response.body)
       expect(json.keys).to include 'events'
@@ -573,12 +573,12 @@ describe API::DiscussionsController do
 
     it 'does not allow non-admins to close a thread' do
       sign_in another_user
-      post :close, id: discussion.id
+      post :close, params: {id: discussion.id}
       expect(response.status).to eq 403
     end
 
     it 'does not allow logged out users to close a thread' do
-      post :close, id: discussion.id
+      post :close, params: {id: discussion.id}
       expect(response.status).to eq 403
     end
   end
@@ -589,7 +589,7 @@ describe API::DiscussionsController do
     it 'allows admins to reopen a thread' do
       sign_in user
       discussion.group.add_admin! user
-      post :reopen, id: discussion.id
+      post :reopen, params: {id: discussion.id}
       expect(discussion.reload.closed_at).to be_blank
       json = JSON.parse response.body
       expect(json.keys).to include 'events'
@@ -597,12 +597,12 @@ describe API::DiscussionsController do
 
     it 'does not allow non-admins to reopen a thread' do
       sign_in another_user
-      post :reopen, id: discussion.id
+      post :reopen, params: {id: discussion.id}
       expect(response.status).to eq 403
     end
 
     it 'does not allow logged out users to reopen a thread' do
-      post :reopen, id: discussion.id
+      post :reopen, params: {id: discussion.id}
       expect(response.status).to eq 403
     end
   end
@@ -611,7 +611,7 @@ describe API::DiscussionsController do
     it 'allows admins to pin a thread' do
       sign_in user
       discussion.group.add_admin! user
-      post :pin, id: discussion.id
+      post :pin, params: { id: discussion.id }
       expect(discussion.reload.pinned).to eq true
     end
 
@@ -619,18 +619,18 @@ describe API::DiscussionsController do
       sign_in user
       discussion.group.add_admin! user
       discussion.update(pinned: true)
-      post :pin, id: discussion.id
+      post :pin, params: { id: discussion.id }
       expect(discussion.reload.pinned).to eq false
     end
 
     it 'does not allow non-admins to pin a thread' do
       sign_in another_user
-      post :pin, id: discussion.id
+      post :pin, params: { id: discussion.id }
       expect(response.status).to eq 403
     end
 
     it 'does not allow logged out users to pin a thread' do
-      post :pin, id: discussion.id
+      post :pin, params: { id: discussion.id }
       expect(response.status).to eq 403
     end
   end

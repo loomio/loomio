@@ -1,4 +1,4 @@
-class Document < ActiveRecord::Base
+class Document < ApplicationRecord
   belongs_to :model, polymorphic: true, required: false
   belongs_to :author, class_name: 'User', required: true
   validates :url, format: { with: AppConfig::URL_REGEX, message: I18n.t(:"document.error.invalid_format") }, if: :manual_url?

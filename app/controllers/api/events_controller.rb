@@ -19,8 +19,8 @@ class API::EventsController < API::RestfulController
   end
 
   def accessible_records
-    records = load_and_authorize(:discussion).items.
-              includes(:user, :discussion, :eventable, parent: [:user, :eventable]).uniq
+    records = load_and_authorize(:discussion).items.distinct.
+              includes(:user, :discussion, :eventable, parent: [:user, :eventable])
 
     records = records.where("#{order} >= ?", params[:from]) if params[:from]
 

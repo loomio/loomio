@@ -22,7 +22,7 @@ describe API::CommentsController do
 
       context 'success' do
         it "updates a comment" do
-          post :update, id: comment.id, comment: comment_params
+          post :update, params: { id: comment.id, comment: comment_params }
           expect(response).to be_success
           expect(comment.reload.body).to eq comment_params[:body]
         end
@@ -31,20 +31,20 @@ describe API::CommentsController do
       context 'failures' do
         it "responds with an error when there are unpermitted params" do
           comment_params[:dontmindme] = 'wild wooly byte virus'
-          put :update, id: comment.id, comment: comment_params
+          put :update, params: { id: comment.id, comment: comment_params }
           expect(response.status).to eq 400
           expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
         end
 
         it "responds with an error when the user is unauthorized" do
-          put :update, {id: another_comment.id, comment: comment_params}
+          put :update, params: {id: another_comment.id, comment: comment_params}
           expect(response.status).to eq 403
           expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
         end
 
         it "responds with validation errors when they exist" do
           comment_params[:body] = ''
-          put :update, id: comment.id, comment: comment_params
+          put :update, params: { id: comment.id, comment: comment_params }
           expect(response.status).to eq 422
 
           json = JSON.parse(response.body)
@@ -59,20 +59,20 @@ describe API::CommentsController do
 
       context 'success' do
         it "creates a comment" do
-          post :create, comment: comment_params
+          post :create, params: { comment: comment_params }
           expect(response).to be_success
           expect(Comment.where(body: comment_params[:body],
                                user_id: user.id)).to exist
         end
 
         it 'responds with a discussion with a reader' do
-          post :create, comment: comment_params
+          post :create, params: { comment: comment_params }
           json = JSON.parse(response.body)
           expect(json['discussions'][0]['discussion_reader_id']).to be_present
         end
 
         it 'responds with json' do
-          post :create, comment: comment_params
+          post :create, params: { comment: comment_params }
           json = JSON.parse(response.body)
           expect(json.keys).to include *(%w[users comments])
         end
@@ -81,12 +81,12 @@ describe API::CommentsController do
           it 'mentions appropriate users' do
             group.add_member! another_user
             comment_params[:body] = "Hello, @#{another_user.username}!"
-            expect { post :create, comment: comment_params, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
+            expect { post :create, params: { comment: comment_params }, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
           end
 
           it 'does not mention users not in the group' do
             comment_params[:body] = "Hello, @#{another_user.username}!"
-            expect { post :create, comment: comment_params, format: :json }.to_not change { Event.where(kind: :user_mentioned).count }
+            expect { post :create, params: { comment: comment_params }, format: :json }.to_not change { Event.where(kind: :user_mentioned).count }
           end
         end
       end
@@ -94,19 +94,19 @@ describe API::CommentsController do
       context 'failures' do
         it "responds with an error when there are unpermitted params" do
           comment_params[:dontmindme] = 'wild wooly byte virus'
-          put :update, id: comment.id, comment: comment_params
+          put :update, params: { id: comment.id, comment: comment_params }
           expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
         end
 
         it "responds with an error when the user is unauthorized" do
           sign_in another_user
-          put :update, id: comment.id, comment: comment_params
+          put :update, params: { id: comment.id, comment: comment_params }
           expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
         end
 
         it "responds with validation errors when they exist" do
           comment_params[:body] = ''
-          post :create, comment: comment_params
+          post :create, params: { comment: comment_params }
           json = JSON.parse(response.body)
           expect(response.status).to eq 422
           expect(json['errors']['body']).to include 'Comment cannot be empty'
@@ -117,7 +117,7 @@ describe API::CommentsController do
     describe 'destroy' do
       context 'allowed to delete' do
         it "destroys a comment" do
-          delete :destroy, id: comment.id
+          delete :destroy, params: { id: comment.id }
           expect(response).to be_success
           expect(Comment.where(id: comment.id).count).to be 0
         end
@@ -125,7 +125,7 @@ describe API::CommentsController do
 
       context 'not allowed to delete' do
         it "gives error of some kind" do
-          delete(:destroy, id: another_comment.id)
+          delete(:destroy, params: { id: another_comment.id })
           expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
           expect(Comment.where(id: another_comment.id)).to exist
         end

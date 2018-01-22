@@ -16,21 +16,20 @@ class API::DocumentsController < API::RestfulController
   end
 
   def private_group_documents
-    Queries::UnionQuery.for(:documents,
+    Queries::UnionQuery.for(:documents, [
       @group.documents,
       @group.discussion_documents,
       @group.poll_documents,
-      @group.comment_documents
-    )
+      @group.comment_documents ])
   end
 
   def public_group_documents
-    Queries::UnionQuery.for(:documents,
+    Queries::UnionQuery.for(:documents, [
       @group.documents,
       @group.public_discussion_documents,
       @group.public_poll_documents,
-      @group.public_comment_documents
-    )
+      @group.public_comment_documents ])
+
   end
 
   def accessible_records
