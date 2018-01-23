@@ -110,7 +110,7 @@ describe 'Discussion Page', ->
       page.expectElement '.thread-item--unread'
 
   describe 'muting and unmuting a thread', ->
-    it 'lets you mute and unmute', ->
+    xit 'lets you mute and unmute', ->
       page.loadPath 'setup_multiple_discussions'
       page.click '.context-panel-dropdown__button',
                  '.context-panel-dropdown__option--mute'
