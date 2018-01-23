@@ -252,7 +252,7 @@ es:
     write_a_comment: "Añade un comentario..."
     submit_button:
       label: 'Enviar'
-    private_privacy_notice: 'Tu comentario solo será visible para miembros de {{groupName}}.'
+    private_privacy_notice: 'Tu comentario solo será visible para miembros de {{group}}.'
     public_privacy_notice: 'Tu comentario será público en internet. '
     sign_in: "Inicia sesión para unirte a la conversación "
   sidebar:
@@ -339,7 +339,7 @@ es:
     success: 'Fecha de cierre de la propuesta actualizada'
     submit: 'Actualizar fecha de cierre'
   discussion_record:
-    created: 'El hilo {{title}} ha sido creado con éxito en {{groupName}}'
+    created: 'El hilo {{title}} ha sido creado con éxito en {{group}}'
     updated: 'Guardar cambios en {{title}}'
   discussion_form:
     aria_label: 'Formulario del hilo'
@@ -473,7 +473,7 @@ es:
       mute_message: '"{{name}}" ha sido eliminado de tu Escritorio.'
     privacy:
       private: 'Privacidad: Este grupo es solo visible para miembros'
-      parent_members: 'Privacidad: Este grupo es visible para los miembros de {{parentGroupName}} y miembros de {{groupName}} '
+      parent_members: 'Privacidad: Este grupo es visible para los miembros de {{parentGroup}} y miembros de {{group}} '
       public: 'Privacidad: Este grupo es visible en la red '
       aria_label: 'Privacidad del grupo: {{privacy}}'
   description_card:
@@ -529,7 +529,7 @@ es:
     membership_granted_upon_approval_secret_parent: 'Cualquiera en {{parent}} puede pedir apuntarse al grupo <strong>por petición</strong>.'
     thread_privacy: 'Privacidad del hilo'
     public_threads: 'Sólo hilos públicos'
-    public_discussions_subgroup: 'Cualquiera que pertenezca a {{parentGroupName}} puede ver las discusiones'
+    public_discussions_subgroup: 'Cualquiera que pertenezca a {{parentGroup}} puede ver las discusiones'
     public_or_private_threads: 'Permitir hilos públicos y privados'
     private_threads: 'Solamente los miembros pueden ver las discusiones'
     permissions: 'Permisos'
@@ -866,7 +866,7 @@ es:
     title: Mover hilo
     body: 'Grupo de destino:'
     confirm: 'Mover hilo '
-    confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
+    confirm_change_to_private_thread: '{{group}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
       success: El hilo ha sido movido a {{name}}
   delete_comment_dialog:

@@ -182,7 +182,7 @@ da:
     confirm_delete: 'Slet kommentar'
     submit_button:
       label: 'Gem'
-    private_privacy_notice: 'Din kommentar til kun være synlig for medlemmer af {{groupName}}.'
+    private_privacy_notice: 'Din kommentar til kun være synlig for medlemmer af {{group}}.'
     public_privacy_notice: 'Din kommentar til kun være synlig for all på internettet.'
     sign_in: "Log ind for at deltage i debatten"
   sidebar:
@@ -260,7 +260,7 @@ da:
     success: 'Forslags sluttidspunkt gemt'
     submit: 'Gem sluttidspunkt'
   discussion_record:
-    created: 'Debatter {{title}} blev oprettet i {{groupName}}'
+    created: 'Debatter {{title}} blev oprettet i {{group}}'
     updated: '{{title}} blev gemt'
   discussion_form:
     aria_label: 'Debat'
@@ -361,7 +361,7 @@ da:
       mute_message: '"{{name}}" er fjernet fra dit dashboard.'
     privacy:
       private: 'Privatinstillinger: Denne gruppe er kun synlig for medlemmer'
-      parent_members: 'Privatinstillinger: Denne gruppe er synlig for medlemmer af {{parentGroupName}} og medlemmer af {{groupName}}'
+      parent_members: 'Privatinstillinger: Denne gruppe er synlig for medlemmer af {{parentGroup}} og medlemmer af {{group}}'
       public: 'Privatinstillinger: Denne gruppe er synlig for alle på internettet'
       aria_label: 'Privatinstillinger: {{privacy}}'
   description_card:
@@ -417,7 +417,7 @@ da:
     membership_granted_upon_approval_secret_parent: '<strong>På anmodning</strong> så kan alle fra {{parent}} anmode om at blive medlem af gruppen.'
     thread_privacy: 'Debat privatindstillinger'
     public_threads: 'Kun offentlige debatter'
-    public_discussions_subgroup: 'Alle i {{parentGroupName}} kan læse debatter'
+    public_discussions_subgroup: 'Alle i {{parentGroup}} kan læse debatter'
     public_or_private_threads: 'Tillad både offentlige og private debatter'
     private_threads: 'Det er kun medlemmer der kan se debatter'
     permissions: 'Rettigheder'
@@ -681,7 +681,7 @@ da:
     title: Flyt debat
     body: 'Destinations gruppe:'
     confirm: Flyt debat
-    confirm_change_to_private_thread: '{{groupName}} er ern offentlig gruppe. Hvis du fortsætter, så vil denne debat bliver gjort offentlig.'
+    confirm_change_to_private_thread: '{{group}} er ern offentlig gruppe. Hvis du fortsætter, så vil denne debat bliver gjort offentlig.'
     messages:
       success: Debatten er flyttet til {{name}}
   delete_comment_dialog:

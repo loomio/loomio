@@ -124,7 +124,7 @@ ca:
     confirm_delete_message: 'Esteu segur que voleu eliminar aquest comentari?'
     submit_button:
       label: 'Publica'
-    private_privacy_notice: 'El comentari només serà visible pels membres de {{groupName}}.'
+    private_privacy_notice: 'El comentari només serà visible pels membres de {{group}}.'
     public_privacy_notice: 'El comentari serà visible per a tothom.'
     sign_in: "Inicieu la sessió per unir-vos a la conversa"
   sidebar:
@@ -160,7 +160,7 @@ ca:
     success: 'Data de tancament de la proposta actualitzada'
     submit: 'Actualitza la data de tancament'
   discussion_record:
-    created: 'La discussió {{title}} s''ha creat correctament a {{groupName}}'
+    created: 'La discussió {{title}} s''ha creat correctament a {{group}}'
     updated: 'Canvis desats a {{title}}'
   discussion_form:
     messages:
@@ -226,7 +226,7 @@ ca:
       mute_message: '"{{name}}" ha estat eliminat del vostre tauler.'
     privacy:
       private: 'Privacitat: Aquest grup només és visible pels membres'
-      parent_members: 'Privacitat: Aquest grup és visible pels membres de {{parentGroupName}} i els membres de {{groupName}}'
+      parent_members: 'Privacitat: Aquest grup és visible pels membres de {{parentGroup}} i els membres de {{group}}'
       public: 'Privacitat: Aquest grup és visible a internet'
       aria_label: 'Privacitat del grup: {{privacy}}'
   group_form:
@@ -254,7 +254,7 @@ ca:
     membership_granted_upon_approval: 'Tothom pot sol·licitar unir-se però és necessària l''aprovació.'
     thread_privacy: 'Privacitat de la discussió'
     public_threads: 'Només discussions públiques'
-    public_discussions_subgroup: 'Qualsevol en {{parentGroupName}} pot veure les discussions'
+    public_discussions_subgroup: 'Qualsevol en {{parentGroup}} pot veure les discussions'
     public_or_private_threads: 'Permet discussions públiques i privades'
     private_threads: 'Només els membres poden veure les discussions'
     permissions: 'Permisos'
@@ -461,7 +461,7 @@ ca:
     title: Mou la discussió
     body: 'Grup destí:'
     confirm: Mou la discussió
-    confirm_change_to_private_thread: '{{groupName}} és un grup obert. Si continueu, aquesta discussió serà pública.'
+    confirm_change_to_private_thread: '{{group}} és un grup obert. Si continueu, aquesta discussió serà pública.'
     messages:
       success: S'ha mogut la discussió a {{name}}
   delete_comment_dialog:

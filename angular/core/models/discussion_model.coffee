@@ -46,7 +46,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, HasDocuments,
 
     translationOptions: ->
       title:     @title
-      groupName: @groupName()
+      group: @groupName()
 
     authorName: ->
       @author().name if @author()

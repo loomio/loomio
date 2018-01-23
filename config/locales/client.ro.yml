@@ -189,7 +189,7 @@ ro:
     write_a_comment: "Scrie un comentariu"
     submit_button:
       label: 'Postare'
-    private_privacy_notice: 'Comentariul tau va fi vizibile doar membrilor grupului {{groupName}}.'
+    private_privacy_notice: 'Comentariul tau va fi vizibile doar membrilor grupului {{group}}.'
     public_privacy_notice: 'Comentariul tau va fi vizibil tuturor pe web.'
     sign_in: "Intra in cont pentru a te alatura conversatiei"
   sidebar:
@@ -241,7 +241,7 @@ ro:
     aria_label: Schimba data inchidere
     title: 'Schimba data inchidere'
   discussion_record:
-    created: 'Discutia {{title}} a fost creata cu succes in {{groupName}}'
+    created: 'Discutia {{title}} a fost creata cu succes in {{group}}'
   discussion_form:
     messages:
       created: 'Discutia a inceput'

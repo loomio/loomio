@@ -122,7 +122,7 @@ hu:
     confirm_delete_message: 'Biztosan törölni akarod ezt a hozzászólást?'
     submit_button:
       label: 'Bejegyzés'
-    private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'
+    private_privacy_notice: 'A hozzászólásod csak a {{group}} csoport tagjainak lesz látható.'
     public_privacy_notice: 'A hozzászólás mindenki számára nyilvános lesz.'
     sign_in: "Lépj be, hogy hozzászolhass a témakörhöz."
   navbar:

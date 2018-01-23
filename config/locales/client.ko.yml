@@ -133,7 +133,7 @@ ko:
     confirm_delete_message: '댓글을 지우시겠습니까?'
     submit_button:
       label: '저장하기'
-    private_privacy_notice: '작성하신 댓글은 {{groupName}} 그룹만 볼 수 있습니다.'
+    private_privacy_notice: '작성하신 댓글은 {{group}} 그룹만 볼 수 있습니다.'
     public_privacy_notice: '작성하신 댓글은 웹 상의 모두가 볼 수 있습니다.'
     sign_in: "대화에 참여하려면 로그인 하세요"
   sidebar:
@@ -178,7 +178,7 @@ ko:
     success: '제안 종료 시간 변경 완료'
     submit: '종료 시간을 수정합니다'
   discussion_record:
-    created: '해당 쓰레드 {{title}}은 {{groupName}}에 성공적으로 생성되었습니다.'
+    created: '해당 쓰레드 {{title}}은 {{group}}에 성공적으로 생성되었습니다.'
     updated: '제목을 {{title}}으로 바꾸었습니다.'
   discussion_form:
     aria_label: '쓰레드 양식'
@@ -270,7 +270,7 @@ ko:
       mute_message: '"{{name}}" 당신의 대시보드에서 삭제되었습니다.'
     privacy:
       private: '공개정책 : 이 그룹은 멤버에게만 공개됩니다.'
-      parent_members: '공개정책 : 이 그룹은 {{parentGroupName}}의 멤버와 {{groupName}}의 멤버에게 공개됩니다.'
+      parent_members: '공개정책 : 이 그룹은 {{parentGroup}}의 멤버와 {{group}}의 멤버에게 공개됩니다.'
       public: '공개정책 : 이 그룹은 인터넷에  공개됩니다.'
       aria_label: '그룹 보호: {{privacy}}'
   description_card:
@@ -313,7 +313,7 @@ ko:
     membership_granted_upon_approval: '누구나 가입 신청을 할 수 있습니다만, 가입 허가가 필요합니다.'
     thread_privacy: '쓰레드 프라이버시'
     public_threads: '공개 쓰레드만'
-    public_discussions_subgroup: '{{parentGroupName}}의 누구나 이 토론을 볼 수 있습니다.'
+    public_discussions_subgroup: '{{parentGroup}}의 누구나 이 토론을 볼 수 있습니다.'
     public_or_private_threads: '공개 및 비공개 쓰레드 허용'
     private_threads: '오직 멤버만 이 토론을 볼 수 있습니다.'
     permissions: '허용'
@@ -547,7 +547,7 @@ ko:
     title: 쓰레드 이동
     body: '이동할 그룹'
     confirm: 쓰레드 이동
-    confirm_change_to_private_thread: '{{groupName}}은 공개 그룹입니다. 이 주제도 공개됩니다. 계속 하시겠습니까?'
+    confirm_change_to_private_thread: '{{group}}은 공개 그룹입니다. 이 주제도 공개됩니다. 계속 하시겠습니까?'
     messages:
       success: 쓰레드가 {{name}} 으로 이동되었습니다.
   delete_comment_dialog:

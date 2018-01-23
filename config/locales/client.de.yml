@@ -207,7 +207,7 @@ de:
     confirm_delete: 'Kommentar löschen'
     submit_button:
       label: 'Veröffentlichen'
-    private_privacy_notice: 'Dein Kommentar wird nur für Mitglieder von {{groupName}} sichtbar sein.'
+    private_privacy_notice: 'Dein Kommentar wird nur für Mitglieder von {{group}} sichtbar sein.'
     public_privacy_notice: 'Dein Kommentar wird für alle im Web sichtbar sein.'
     sign_in: "Melde Dich an, um an der Diskussion teilzunehmen"
   sidebar:
@@ -289,7 +289,7 @@ de:
     success: 'Endzeit wurde aktualisiert'
     submit: 'Endzeit aktualisieren'
   discussion_record:
-    created: 'Die Diskussion {{title}} wurde erfolgreich in {{groupName}} erstellt'
+    created: 'Die Diskussion {{title}} wurde erfolgreich in {{group}} erstellt'
     updated: 'Änderungen für {{title}} gespeichert'
   discussion_form:
     messages:
@@ -405,7 +405,7 @@ de:
       mute_message: '"{{name}}" wurde von Deiner "Aktuell"-Liste entfernt.'
     privacy:
       private: 'Privatsphäre: Diese Gruppe ist nur für Mitglieder sichtbar'
-      parent_members: 'Privatsphäre: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar.'
+      parent_members: 'Privatsphäre: Diese Gruppe ist nur für Mitglieder von {{parentGroup}} und {{group}} sichtbar.'
       public: 'Privatsphäre: Diese Gruppe ist im Web sichtbar'
       aria_label: 'Gruppen-Privatsphäre: {{privacy}}'
   description_card:
@@ -450,7 +450,7 @@ de:
     membership_granted_upon_approval: 'Jede.r kann um Aufnahme bitten. Diese wird dann geprüft.'
     thread_privacy: 'Diskussions-Privatsphäre'
     public_threads: 'Nur öffentliche Diskussionen'
-    public_discussions_subgroup: 'Jeder in {{parentGroupName}} kann Diskussionen sehen'
+    public_discussions_subgroup: 'Jeder in {{parentGroup}} kann Diskussionen sehen'
     public_or_private_threads: 'Öffentliche und private Diskussionen erlauben'
     private_threads: 'Nur Mitglieder können Diskussionen sehen'
     permissions: 'Berechtigungen'
@@ -710,7 +710,7 @@ de:
     title: Diskussion verschieben
     body: 'Neue Zielgruppe:'
     confirm: Diskussion verschieben
-    confirm_change_to_private_thread: '{{groupName}} ist eine öffentliche Gruppe. Wenn Du fortfährst, wird diese Diskussion öffentlich sein.'
+    confirm_change_to_private_thread: '{{group}} ist eine öffentliche Gruppe. Wenn Du fortfährst, wird diese Diskussion öffentlich sein.'
     messages:
       success: Diskussion wurde nach {{name}} verschoben
   delete_comment_dialog:

@@ -251,7 +251,7 @@ nl_NL:
     write_a_comment: "Schrijf commentaar..."
     submit_button:
       label: 'Plaatsen'
-    private_privacy_notice: 'Je commentaar is alleen zichtbaar voor leden van {{groupName}}.'
+    private_privacy_notice: 'Je commentaar is alleen zichtbaar voor leden van {{group}}.'
     public_privacy_notice: 'Je commentaar is zichtbaar voor iedereen op het web.'
     sign_in: "Log in om mee te praten"
   sidebar:
@@ -338,7 +338,7 @@ nl_NL:
     success: 'Sluitingstermijn voorstel aangepast'
     submit: 'Pas sluitingstermijn aan'
   discussion_record:
-    created: 'De discussie {{title}} is met succes aangemaakt in {{groupName}}'
+    created: 'De discussie {{title}} is met succes aangemaakt in {{group}}'
     updated: 'Wijzigingen aan {{title}} opgeslagen'
   discussion_form:
     aria_label: 'Discussieformulier'
@@ -472,7 +472,7 @@ nl_NL:
       mute_message: '"{{name}}" is verwijderd van je dashboard.'
     privacy:
       private: 'Privacy: Deze groep is alleen zichtbaar voor leden.'
-      parent_members: 'Privacy: Deze groep is zichtbaar voor leden van {{parentGroupName}} en leden van {{groupName}}'
+      parent_members: 'Privacy: Deze groep is zichtbaar voor leden van {{parentGroup}} en leden van {{group}}'
       public: 'Privacy: Deze groep is zichtbaar op het web'
       aria_label: 'Groepsprivacy: {{privacy}}'
   description_card:
@@ -528,7 +528,7 @@ nl_NL:
     membership_granted_upon_approval_secret_parent: '<strong>Op verzoek</strong> kan iedereen van {{parent}} vragen om deel te nemen aan de groep.'
     thread_privacy: 'Bordprivacy'
     public_threads: 'Alleen openbare borden'
-    public_discussions_subgroup: 'Iedereen in {{parentGroupName}} kan discussies zien'
+    public_discussions_subgroup: 'Iedereen in {{parentGroup}} kan discussies zien'
     public_or_private_threads: 'Sta openbare en privéborden toe'
     private_threads: 'Enkel leden kunnen discussies zien'
     permissions: 'Toestemmingen'
@@ -865,7 +865,7 @@ nl_NL:
     title: Bord verplaatsen
     body: 'Bestemming groep:'
     confirm: Bord verplaatsen
-    confirm_change_to_private_thread: '{{groupName}} is een open groep. Als je verder gaat zal dit bord openbaar gemaakt worden.'
+    confirm_change_to_private_thread: '{{group}} is een open groep. Als je verder gaat zal dit bord openbaar gemaakt worden.'
     messages:
       success: Discussie is verplaatst naar {{name}}
   delete_comment_dialog:
