@@ -187,7 +187,7 @@ nl_NL:
 
       Als je vragen hebt, check het [Loomio hulp handboek](http://help.loomio.org).
   first_proposal:
-    name: Demonstratie voorstel
+    name: Demonstratievoorstel
     description: |
       Dit is een **voorstel**, waar je samen een beslissing kunt nemen. Je kunt een voorstel beginnen als er een gesprek op gang is gekomen.
 
@@ -264,11 +264,11 @@ nl_NL:
         poll_created: '%{actor} startte een voorstel: %{title}'
         poll_closing_soon: 'Voorstel sluit over 24 uur: %{title}'
         poll_closing_soon_author: 'Je voorstel sluit over 24 uur: %{title}'
-        poll_expired: "Voorstel gesloten; %{title}"
+        poll_expired: "Voorstel gesloten: %{title}"
         poll_expired_author: 'Je voorstel werd gesloten. Deel een uitkomst van: %{title}'
         outcome_created: '%{actor} deelde de uitkomst van een voorstel: %{title}'
         invitation_created: '%{actor} wil je mening: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op: %{title}'
+        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
         user_reminded: 'HERINNERING: %{actor}wacht op je stem op: %{title}'
         stance_created: "%{actor} stemde op: %{title}"
         stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
@@ -289,7 +289,7 @@ nl_NL:
         poll_edited: '%{actor} bewerkte de peiling: %{title}'
         poll_closing_soon: 'Peiling sluit over 24 uur: %{title}'
         poll_closing_soon_author: 'Je peiling sluit over 24 uur: %{title}'
-        poll_expired: "Peiling resultaten: %{title}"
+        poll_expired: "Peilingsresultaten: %{title}"
         poll_expired_author: 'Je peiling werd gesloten. Deel een uitkomst van: %{title}'
         poll_option_added: '%{actor} voegde opties toe aan: %{title}'
         poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
@@ -376,7 +376,7 @@ nl_NL:
         poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
         invitation_created: '%{actor} wil een moment afspreken: %{title}'
         invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING'
+        user_reminded: 'HERINNERING: %{actor} wacht op je antwoord: %{title}'
         stance_created: '%{actor} heeft deelgenomen aan: %{title}'
         stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
       header:
@@ -387,10 +387,11 @@ nl_NL:
         invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
         user_reminded: 'HERINNERING: <strong>%{actor}</strong> wacht op je antwoord: %{title}'
         stance_created: "<strong>%{actor}</strong> heeft deelgenomen aan: %{title}"
+  comment_by: Reactie door %{comment_author}
   poll_unsubscribe:
     visit_poll: Peiling bekijken
     go_to_dashboad: Ga naar het dashboard
   slack:
     poll_expired: "*%{poll}* werd gesloten"
-    poll_closed: "*%{title}* werd al gesloten! <%{url}|Klik hier> om de resultaten te zien.."
+    poll_closed: "*%{title}* werd al gesloten! <%{url}|Klik hier> om de resultaten te zien."
     go_to_slack: Ga naar Slack

@@ -28,3 +28,4 @@ sv:
     pricing: Prissättning
     public_groups: Öppna grupper
     terms: Villkor
+  comment_by: Kommentaren av %{comment_author}

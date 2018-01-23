@@ -21,3 +21,4 @@ ga_IE:
   poll_mailer:
     common:
       unsubscribe: Díliostáil
+  comment_by: Trácht ó %{comment_author}

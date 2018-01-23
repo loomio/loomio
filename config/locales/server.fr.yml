@@ -96,7 +96,7 @@ fr:
     resend_to_join_group:
       subject: "%{member} attend que vous rejoignez %{group_name} sur %{site_name}"
     user_added_to_group:
-      subject: "%{who} vous a ajouté à %{which_group} sur%{site_name}"
+      subject: "%{who} vous a ajouté à %{which_group} sur %{site_name}"
       content: "%{who} vous a ajouté à %{which_group}."
       content_html: "<strong>%{who}</strong> vous a ajouté à <strong>%{which_group}</strong>."
       link_help: "Cliquez sur le lien ci-dessous pour aller au groupe:"
@@ -466,6 +466,7 @@ fr:
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+  comment_by: Commentaire par %{comment_author}
   poll_generator:
     proposal:
       title: "Proposer une embauche à Louise et Jacques"

@@ -252,7 +252,6 @@ sr:
     description: 'Opis'
     description_placeholder: 'Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.'
     privacy_statement:
-      public_on_web: 'Naziv i opis će biti javni na mreži'
       private_to_group: 'Naziv i opis će biti vidljivi samo članovima.'
       private_to_parent_members: 'Naziv i opis će biti vidljivi samo članovima  {{parent}}'
     privacy: 'Privatnost'

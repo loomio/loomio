@@ -282,8 +282,6 @@ el:
     members: 'Μέλη'
     members_placeholder: 'Είστε ο μοναδικός εδώ: προσκαλέστε κάποια άτομα να συμμετάσχουν μαζί σας!'
     member_options: Επιλογές μέλους
-    see_all_members: 'Δείτε όλα: ({{count}}) μέλη'
-    pending_invitations: '+ ({{count}}) σε εκρεμμότητα'
     subgroups: 'Υποομάδες'
     invite_people: 'Πρόσκληση'
     visibility_label: 'Ορατότητα'
@@ -326,7 +324,6 @@ el:
     description: 'Περιγραφή'
     description_placeholder: 'Περιγράψτε τον σκοπό της ομάδας σας, ώστε τα μέλη της ομάδας σας να γνωρίζουν γιατί είναι εδώ.'
     privacy_statement:
-      public_on_web: 'Το όνομα και η περιγραφή θα είναι δημόσια στο διαδίκτυο'
       private_to_group: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη.'
       private_to_parent_members: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη του {{parent}}'
     privacy: 'Ιδιωτικότητα'
