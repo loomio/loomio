@@ -414,8 +414,6 @@ uk:
     members: 'Учасники'
     members_placeholder: 'Ви єдиний тут: запросіть когось долучитись до вас!'
     member_options: Варіанти участі
-    see_all_members: 'Переглянути усіх: ({{count}}) учасників'
-    pending_invitations: '+ ({{count}}) в очікуванні'
     subgroups: 'Підгрупи'
     subgroups_placeholder: 'Підгрупи надають командам власний простір і забезпечують сповіщення необхідних людей.'
     invite_people: 'Запросити'
@@ -477,7 +475,6 @@ uk:
     description: 'Опис'
     description_placeholder: 'Опишіть призначення вашої групи, щоб учасники групи розуміли, чому вони тут.'
     privacy_statement:
-      public_on_web: 'Назва та опис будуть загальнодоступні у мережі'
       private_to_group: 'Назву та опис будуть бачити тільки учасники.'
       private_to_parent_members: 'Назву та опис будуть бачити тільки учасники {{parent}}'
     privacy: 'Конфіденційність'

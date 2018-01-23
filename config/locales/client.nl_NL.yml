@@ -441,8 +441,6 @@ nl_NL:
     members: 'Leden'
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
     member_options: Opties voor leden
-    see_all_members: 'Zie alle: ({{count}}) leden'
-    pending_invitations: '+ ({{count}}) bezig'
     subgroups: 'Subgroepen'
     subgroups_placeholder: 'Subgroepen geven teams hun eigen ruimte en beperken meldingen tot de relevante personen.'
     invite_people: 'Uitnodigen'
@@ -504,7 +502,6 @@ nl_NL:
     description: 'Beschrijving'
     description_placeholder: 'Beschrijf het doel van je groep, zodat je groepsleden weten waarom ze hier zijn.'
     privacy_statement:
-      public_on_web: 'Naam en beschrijving zijn openbaar op het web'
       private_to_group: 'Naam en beschrijving zijn uitsluitend zichtbaar voor leden.'
       private_to_parent_members: 'Naam en beschrijving zijn zichtbaar voor leden van {{parent}}'
     privacy: 'Privacy'

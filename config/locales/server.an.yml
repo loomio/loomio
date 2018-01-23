@@ -22,3 +22,4 @@ an:
     pricing: Pres
     public_groups: Grupos Publicos
     terms: Termens
+  comment_by: Comentario de %{comment_author}

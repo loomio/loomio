@@ -189,6 +189,7 @@ pt_BR:
       your_response: "Você votou:"
       please_respond: Por favor responda
       vote_now: Vote agora
+  comment_by: Comentário por %{comment_author}
   poll_generator:
     poll:
       title: "Alguma alergia alimentar que deveríamos saber pro nosso jantar na quinta?"

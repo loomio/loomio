@@ -22,3 +22,4 @@ sk:
     pricing: Cenník
     public_groups: Verejné skupiny
     terms: Podmienky
+  comment_by: Komentár od %{comment_author}
