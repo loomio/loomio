@@ -29,10 +29,10 @@ PollSearch = Struct.new(:user) do
   end
 
   def filter_group(key)
-    @group ||= user.ability.authorize! :show, Group.find(key) if key
+    @group ||= user.ability.authorize! :show, Group.friendly.find(key) if key
   end
 
   def filter_discussion(key)
-    @discussion ||= user.ability.authorize! :show, Discussion.find(key) if key
+    @discussion ||= user.ability.authorize! :show, Discussion.friendly.find(key) if key
   end
 end

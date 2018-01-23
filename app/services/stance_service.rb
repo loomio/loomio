@@ -23,7 +23,7 @@ class StanceService
     if invitation = stance.poll.invitations.useable.find_by(token: actor.token)
       InvitationService.redeem(invitation, actor)
     end
-    
+
     stance.poll.stances.where(participant: actor).update_all(latest: false)
     stance.save!
     stance.participant.save!

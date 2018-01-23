@@ -4,8 +4,6 @@ Loomio::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  config.lograge.enabled = ENV['ENABLE_LOGRAGE']
-
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
@@ -34,10 +32,4 @@ Loomio::Application.configure do
   config.eager_load = false
 
   config.action_controller.action_on_unpermitted_parameters = :raise
-
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.bullet_logger = true
-    Bullet.add_whitelist type: :unused_eager_loading, class_name: 'group', association: :default_group_cover
-  end
 end

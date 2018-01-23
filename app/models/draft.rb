@@ -1,4 +1,4 @@
-class Draft < ActiveRecord::Base
+class Draft < ApplicationRecord
   belongs_to :user
   belongs_to :draftable, polymorphic: true
 

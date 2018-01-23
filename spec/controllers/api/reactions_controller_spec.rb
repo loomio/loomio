@@ -18,7 +18,7 @@ describe API::ReactionsController do
     context 'success' do
       it "likes the comment" do
         sign_in user
-        post :create, reaction: reaction_params
+        post :create, params: { reaction: reaction_params }
         expect(comment.reload.reactors).to include user
       end
     end
@@ -26,7 +26,7 @@ describe API::ReactionsController do
     context 'failure' do
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        post :create, reaction: reaction_params
+        post :create, params: { reaction: reaction_params }
         expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
     end

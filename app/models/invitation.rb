@@ -1,4 +1,4 @@
-class Invitation < ActiveRecord::Base
+class Invitation < ApplicationRecord
   include CustomCounterCache::Model
   include Null::User
 
@@ -18,9 +18,9 @@ class Invitation < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :token
-  belongs_to :inviter, class_name: User
+  belongs_to :inviter, class_name: 'User'
   belongs_to :group
-  belongs_to :canceller, class_name: User
+  belongs_to :canceller, class_name: 'User'
 
   update_counter_cache :group, :invitations_count
   update_counter_cache :group, :pending_invitations_count

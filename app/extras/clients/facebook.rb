@@ -1,4 +1,48 @@
 class Clients::Facebook < Clients::Base
+  include Routing
+
+  def post_poll_button(recipient_id)
+    post "me/messages?access_token=#{ENV['FACEBOOK_APP_PAGE_TOKEN']}", params: {
+      messaging_type: :RESPONSE,
+      recipient: { id: recipient_id },
+      message: button_message(
+        url: "#{https_host}/facebook/webview",
+        title: "Open webview"
+      )
+    }
+  end
+
+  def set_messenger_profile
+    post "me/messenger_profile?access_token=#{ENV['FACEBOOK_APP_PAGE_TOKEN']}", params: {
+      get_started: { payload: "test" },
+      home_url: {
+        url: "#{https_host}/facebook/webview",
+        webview_height_ratio: :tall,
+        webview_share_button: :show,
+        in_test: true
+      },
+      account_linking_url: "#{https_host}/facebook/oauth",
+      whitelisted_domains: [https_host],
+      persistent_menu: [{
+        locale: :default,
+        composer_input_disabled: true,
+        call_to_actions: [
+          {
+            title: "Start a poll",
+            type: :nested,
+            call_to_actions: AppConfig.poll_templates.keys[0..4].map do |poll_type|
+              {
+                type: :web_url,
+                url: "#{https_host}/facebook/webview?poll_type=#{poll_type}",
+                title: poll_type,
+                messenger_extensions: true
+              }
+            end
+          }
+        ]
+      }]
+    }
+  end
 
   def fetch_access_token(code, uri)
     post "oauth/access_token", params: { code: code, redirect_uri: uri }
@@ -36,7 +80,6 @@ class Clients::Facebook < Clients::Base
       success: ->(response) { response['id'] } }
   end
 
-  # NB: this switch sucks, but it's too early to extract to something else
   def scope
     %w(email).freeze
   end
@@ -47,11 +90,39 @@ class Clients::Facebook < Clients::Base
 
   private
 
+  def button_message(url:, type: :web_url, title: nil, messenger_extensions: true)
+    {
+      attachment: {
+        type: :template,
+        payload: {
+          template_type: :generic,
+          elements: [
+            title: "Open a webview",
+            buttons: [{
+              url:   url,
+              type:  type,
+              title: title,
+              messenger_extensions: messenger_extensions
+            }]
+          ]
+        }
+      }
+    }
+  end
+
+  def https_host
+    "https://d2e720c4.ngrok.io"
+  end
+
+  def require_json_payload?
+    true
+  end
+
   def token_name
     :access_token
   end
 
   def default_host
-    "https://graph.facebook.com/v2.8".freeze
+    "https://graph.facebook.com/v2.11".freeze
   end
 end

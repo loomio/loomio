@@ -1,0 +1,10 @@
+%html
+  %head
+    %title A test title
+    %link{href: client_asset_path(:"vue.min.css"), rel: 'stylesheet'}
+  %body
+    #vue-app
+      %root_component
+
+    %script{src: bundle_asset_path(:"vue.bundle.min.js")}
+    = render partial: 'messenger_sdk'

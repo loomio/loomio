@@ -1,4 +1,4 @@
-class Reaction < ActiveRecord::Base
+class Reaction < ApplicationRecord
   belongs_to :reactable, polymorphic: true
   belongs_to :user
 

@@ -2,30 +2,30 @@
 #
 # describe Queries::UsersToEmailQuery do
 #   let(:all_emails_disabled) { {email_when_proposal_closing_soon: false} }
-#   let(:user_left_group) { FactoryGirl.create :user, all_emails_disabled }
-#   let(:user_thread_loud) { FactoryGirl.create :user, all_emails_disabled }
-#   let(:user_thread_normal) { FactoryGirl.create :user, all_emails_disabled }
-#   let(:user_thread_quiet) { FactoryGirl.create :user, all_emails_disabled }
-#   let(:user_thread_mute) { FactoryGirl.create :user, all_emails_disabled }
-#   let(:user_membership_loud) { FactoryGirl.create :user, all_emails_disabled }
-#   let(:user_membership_normal) { FactoryGirl.create :user, all_emails_disabled }
-#   let(:user_membership_quiet) { FactoryGirl.create :user, all_emails_disabled }
-#   let(:user_membership_mute) { FactoryGirl.create :user, all_emails_disabled }
-#   let(:user_motion_closing_soon) { FactoryGirl.create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
-#   let(:user_mentioned) { FactoryGirl.create :user }
+#   let(:user_left_group) { FactoryBot.create :user, all_emails_disabled }
+#   let(:user_thread_loud) { FactoryBot.create :user, all_emails_disabled }
+#   let(:user_thread_normal) { FactoryBot.create :user, all_emails_disabled }
+#   let(:user_thread_quiet) { FactoryBot.create :user, all_emails_disabled }
+#   let(:user_thread_mute) { FactoryBot.create :user, all_emails_disabled }
+#   let(:user_membership_loud) { FactoryBot.create :user, all_emails_disabled }
+#   let(:user_membership_normal) { FactoryBot.create :user, all_emails_disabled }
+#   let(:user_membership_quiet) { FactoryBot.create :user, all_emails_disabled }
+#   let(:user_membership_mute) { FactoryBot.create :user, all_emails_disabled }
+#   let(:user_motion_closing_soon) { FactoryBot.create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
+#   let(:user_mentioned) { FactoryBot.create :user }
 #   let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
-#   let(:user_poll_voted) { FactoryGirl.create :user }
-#   let(:user_outcome_author) { FactoryGirl.create :user }
+#   let(:user_poll_voted) { FactoryBot.create :user }
+#   let(:user_outcome_author) { FactoryBot.create :user }
 #
-#   let(:discussion) { FactoryGirl.create :discussion, description: user_mentioned_text }
-#   let(:mentioned_user) {FactoryGirl.create :user, username: 'sam' }
-#   let(:parent_comment) { FactoryGirl.create :comment, discussion: discussion}
-#   let(:comment) { FactoryGirl.create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
-#   let(:motion) { FactoryGirl.create :motion, discussion: discussion, description: user_mentioned_text }
-#   let(:vote) { FactoryGirl.create :vote, motion: motion }
-#   let(:poll) { FactoryGirl.create :poll, discussion: discussion }
-#   let(:outcome) { FactoryGirl.create :outcome, author: user_outcome_author, poll: poll }
-#   let(:stance) { FactoryGirl.create :stance, participant: user_poll_voted, poll: poll }
+#   let(:discussion) { FactoryBot.create :discussion, description: user_mentioned_text }
+#   let(:mentioned_user) {FactoryBot.create :user, username: 'sam' }
+#   let(:parent_comment) { FactoryBot.create :comment, discussion: discussion}
+#   let(:comment) { FactoryBot.create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
+#   let(:motion) { FactoryBot.create :motion, discussion: discussion, description: user_mentioned_text }
+#   let(:vote) { FactoryBot.create :vote, motion: motion }
+#   let(:poll) { FactoryBot.create :poll, discussion: discussion }
+#   let(:outcome) { FactoryBot.create :outcome, author: user_outcome_author, poll: poll }
+#   let(:stance) { FactoryBot.create :stance, participant: user_poll_voted, poll: poll }
 #
 #   before do
 #     stance

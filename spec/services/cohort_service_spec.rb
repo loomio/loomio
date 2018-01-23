@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe CohortService do
   context "tag_groups" do
-    let(:other_group) { FactoryGirl.create :formal_group, created_at: 1.month.ago }
-    let(:group) { FactoryGirl.create :formal_group }
+    let(:other_group) { FactoryBot.create :formal_group, created_at: 1.month.ago }
+    let(:group) { FactoryBot.create :formal_group }
     let(:cohort) { Cohort.create start_on: 1.week.ago.to_date, end_on: 1.week.from_now.to_date }
 
     before do

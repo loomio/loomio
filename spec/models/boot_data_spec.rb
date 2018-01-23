@@ -17,7 +17,7 @@ require 'rails_helper'
       end
 
       it 'returns the current users notifications' do
-        expect { event.notify_users_without_delay! }.to change { Notification.count }.by(1)
+        event
         expect(subject.data[:notifications].map { |n| n[:id] }).to include Notification.last.id
       end
 

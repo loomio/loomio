@@ -1,5 +1,5 @@
 class API::SessionsController < Devise::SessionsController
-  before_filter :configure_permitted_parameters
+  before_action :configure_permitted_parameters
 
   def create
     if user = attempt_login
@@ -16,7 +16,7 @@ class API::SessionsController < Devise::SessionsController
     MessageChannelService.publish({ action: :logged_out }, to: current_user)
     sign_out resource_name
     flash[:notice] = t(:'devise.sessions.signed_out')
-    head :ok
+    render json: { success: :ok }
   end
 
   private

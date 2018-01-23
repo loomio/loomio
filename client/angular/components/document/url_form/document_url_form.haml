@@ -1,0 +1,17 @@
+.document-url-form{ng-switch: "document.method"}
+  .document-url-form__attachment{ng-switch-when: "file", md-autofocus: "true"}
+    .lmo-flex.lmo-flex__center.lmo-relative.document-form__attachment-form{layout: "column"}
+      %i.mdi.mdi-cloud-upload.mdi-36px
+      .lmo-hint-text.document-form__helptext{translate: "document.form.helptext"}
+      %validation_errors{subject: "model", field: "file"}
+      %document_upload_form{model: "model"}
+
+  .document-url-form__url{ng-switch-when: "url"}
+    .lmo-flex.lmo-flex__center{layout: "row"}
+      %md-input-container.md-block.lmo-flex__grow.md-no-errors
+        %label{translate: "document.form.url_label"}
+        %input.lmo-primary-form-input.lmo-flex__grow{ng-model: "model.url", ng-disabled: "disabled", placeholder: "{{'document.form.url_placeholder' | translate }}"}
+        %validation_errors{subject: "model", field: "url"}
+
+    .lmo-md-action
+      %md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.next", md-prevent-menu-close: "true"}

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe GroupService::PrivacyChange do
   describe 'getting private' do
-    let(:group) { FactoryGirl.create(:formal_group, group_privacy: 'open') }
+    let(:group) { FactoryBot.create(:formal_group, group_privacy: 'open') }
     let(:subgroup) { create(:formal_group, parent: group, group_privacy: 'open') }
     let(:other_subgroup) { create(:formal_group, parent: group, group_privacy: 'open') }
 
@@ -48,7 +48,7 @@ describe GroupService::PrivacyChange do
   end
 
   describe 'getting public' do
-    let(:group) { FactoryGirl.create(:formal_group, group_privacy: 'secret') }
+    let(:group) { FactoryBot.create(:formal_group, group_privacy: 'secret') }
 
     before do
       create(:discussion, group: group, private: true)
