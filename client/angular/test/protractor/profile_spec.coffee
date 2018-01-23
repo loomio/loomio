@@ -64,7 +64,7 @@ describe 'Profile', ->
   describe 'deactivating an account', ->
 
     describe 'as the sole coordinator of a group', ->
-      it 'successfully deactivates the account', ->
+      xit 'successfully deactivates the account', ->
         page.click '.user-dropdown__dropdown-button'
         page.click '.user-dropdown__list-item-button--profile'
         page.click '.profile-page__deactivate'
