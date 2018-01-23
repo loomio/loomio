@@ -139,7 +139,7 @@ end
 
 ```
 # plugins/loomio_tags/models/tag.rb
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   belongs_to :group, dependent: :destroy
   has_many :discussion_tags, dependent: :destroy
   has_many :discussions, through: :discussion_tags
@@ -151,7 +151,7 @@ end
 ```
 ```
 # plugins/loomio_tags/models/discussion_tag.rb
-class DiscussionTag < ActiveRecord::Base
+class DiscussionTag < ApplicationRecord
   belongs_to :discussion
   belongs_to :tag
 
@@ -270,7 +270,7 @@ Now that we’ve got some plumbing going, we can start displaying our hard work 
 The angular interface is comprised primarily of ‘components’. A component is a collection of a directive, a template, and a stylesheet. Then, we can slot these components into ‘outlets’ in the interface.
 
 ##### 1. Adding a client side model
-Just like on the server side, Loomio has client side models as well, which are stored in a client side data store called a 'RecordsInterface'. You can check out the existing models and RecordsInterfaces in [angular/core/models](https://github.com/loomio/loomio/tree/master/angular/core/models). We'll want to make a model and corresponding records interface for our new DiscussionTags.
+Just like on the server side, Loomio has client side models as well, which are stored in a client side data store called a 'RecordsInterface'. You can check out the existing models and RecordsInterfaces in [client/angular/models](https://github.com/loomio/loomio/tree/master/client/angular/models). We'll want to make a model and corresponding records interface for our new DiscussionTags.
 
 ```
 # plugins/components/discussion_tags/discussion_tag_model.coffee

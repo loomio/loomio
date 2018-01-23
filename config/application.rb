@@ -73,8 +73,6 @@ module Loomio
     config.quiet_assets = true
     config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
-    config.active_record.raise_in_transactional_callbacks = true
-
     if ENV['FOG_PROVIDER']
       def self.fog_credentials
         env = Rails.application.secrets

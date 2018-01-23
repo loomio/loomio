@@ -217,7 +217,7 @@ describe "User abilities" do
       context "is not most recent comment" do
         before do
           user_comment
-          FactoryGirl.create(:comment, discussion: discussion, author: other_user)
+          FactoryBot.create(:comment, discussion: discussion, author: other_user)
         end
         it { should_not be_able_to(:update, user_comment) }
       end

@@ -8,7 +8,7 @@ namespace :bootstrap do
     `npm install -g gulp`     unless gulp_installed?
     `npm install -g yarn`     unless yarn_installed?
     `bundle install`
-    `cd angular && yarn && cd ..`
+    `cd client && yarn && cd ..`
   end
 
   desc "Create database.yml file"
@@ -37,7 +37,7 @@ namespace :bootstrap do
 
   desc "Launch project"
   task :run => :environment do
-    Process.spawn 'cd angular && gulp dev'
+    Process.spawn 'cd client && gulp dev'
     sh 'bundle exec rails s'
   end
 

@@ -13,7 +13,7 @@ end
 
 commands = []
 
-Dir.glob('angular/core/**/*.{haml,scss,coffee,yml}') do |filename|
+Dir.glob('angular/**/*.{haml,scss,coffee,yml}') do |filename|
   if filename.match(/#{old_name.underscore}/)
     puts "git mv #{filename} #{filename.gsub(old_name.underscore, new_name.underscore)}"
   end

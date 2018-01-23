@@ -1,0 +1,32 @@
+%md-dialog.poll-common-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
+
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "registered_app_form.new_application_title", ng-show: "application.isNew()"}
+      %h1.lmo-h1{translate: "registered_app_form.edit_application_title", ng-hide: "application.isNew()"}
+      %modal_header_cancel_button{aria-hidden: "true"}
+
+  %md-dialog-content.registered-app-form
+    .lmo-flex{layout: "row"}
+      .lmo-flex.lmo-margin-right{layout: "column"}
+        %img.lmo-box--large{ng-src: "{{application.logoUrl}}"}
+        %md-button.md-accent.registered-app-form__upload-button{ng-if: "!application.isNew()", type: "button", ng-click: "selectFile()"}>
+          %span{translate: "common.action.upload"}>
+        %input.hidden.registered-app-form__logo-input{ng-if: "!application.isNew()", file-select: "upload"}
+
+      .lmo-flex{layout: "column"}
+        %md-input-container.md-block
+          %label{for: "application-name", translate: "registered_app_form.name_label"}
+          %input.lmo-primary-form-input{placeholder: "{{ 'registered_app_form.name_placeholder' | translate }}", ng-model: "application.name", ng-required: "true", maxlength: "255"}
+          %validation_errors{subject: "application", field: "name"}
+
+        %md-input-container.md-block
+          %label{for: "application-redirect-uri", translate: "registered_app_form.redirect_uri_label"}
+          %textarea.lmo-textarea{ng-model: "application.redirectUri", ng-required: "true", placeholder: "{{ 'registered_app_form.redirect_uri_placeholder' | translate }}"}
+          .lmo-hint-text{translate: "registered_app_form.redirect_uri_note"}
+          %validation_errors{subject: "application", field: "redirectUri"}
+  %md-dialog-actions.lmo-md-actions
+    %md-button{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "registered_app_form.new_application_submit", ng-if: "application.isNew()" }
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "registered_app_form.edit_application_submit", ng-if: "!application.isNew()" }

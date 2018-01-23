@@ -2,26 +2,26 @@ require 'rails_helper'
 describe UserService do
   describe 'verify' do
     it 'sets email_verfied true if email is unique' do
-      user = FactoryGirl.create(:user, email_verified: false, email: 'user@example.com')
+      user = FactoryBot.create(:user, email_verified: false, email: 'user@example.com')
       user = UserService.verify(user: user)
       expect(user.email_verified).to be true
     end
 
     it 'returns user if already verified' do
-      user = FactoryGirl.create(:user, email_verified: true, email: 'user@example.com')
+      user = FactoryBot.create(:user, email_verified: true, email: 'user@example.com')
       user = UserService.verify(user: user)
       expect(user.email_verified).to be true
     end
   end
 
   describe 'delete_spam' do
-    let(:spam_user) { FactoryGirl.create :user }
-    let(:spam_group) { FactoryGirl.build :formal_group }
-    let(:innocent_group) { FactoryGirl.create :formal_group }
-    let(:discussion_in_spam_group) { FactoryGirl.build :discussion, group: spam_group }
-    let(:spam_discussion_in_innocent_group) { FactoryGirl.build :discussion, group: innocent_group }
-    let(:discussion_in_innocent_group) { FactoryGirl.create :discussion, group: innocent_group }
-    let(:spam_comment) { FactoryGirl.build :comment, discussion: discussion_in_innocent_group }
+    let(:spam_user) { FactoryBot.create :user }
+    let(:spam_group) { FactoryBot.build :formal_group }
+    let(:innocent_group) { FactoryBot.create :formal_group }
+    let(:discussion_in_spam_group) { FactoryBot.build :discussion, group: spam_group }
+    let(:spam_discussion_in_innocent_group) { FactoryBot.build :discussion, group: innocent_group }
+    let(:discussion_in_innocent_group) { FactoryBot.create :discussion, group: innocent_group }
+    let(:spam_comment) { FactoryBot.build :comment, discussion: discussion_in_innocent_group }
 
     before do
       #the create the spam group

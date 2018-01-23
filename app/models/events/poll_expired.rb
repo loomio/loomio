@@ -20,11 +20,11 @@ class Events::PollExpired < Event
 
   # the author is always notified above, so don't notify them twice
   def notification_recipients
-    super.without(poll.author)
+    super.where.not(id: poll.author)
   end
 
   def email_recipients
-    super.without(poll.author)
+    super.where.not(id: poll.author)
   end
 
   # don't notify mentioned users for poll expired

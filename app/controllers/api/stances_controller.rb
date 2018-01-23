@@ -31,8 +31,8 @@ class API::StancesController < API::RestfulController
 
   def set_guest_params
     return if current_user.is_logged_in?
-    current_user.name  = guest_params[:name]
-    current_user.email = guest_params[:email]
+    current_user.name  = guest_params['name']
+    current_user.email = guest_params['email']
   end
 
   def guest_params

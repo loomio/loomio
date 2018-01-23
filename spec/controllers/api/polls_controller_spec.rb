@@ -26,7 +26,7 @@ describe API::PollsController do
   describe 'show' do
     it 'shows a poll' do
       sign_in user
-      get :show, id: poll.key
+      get :show, params: { id: poll.key }
       json = JSON.parse(response.body)
       expect(json['polls'].length).to eq 1
       expect(json['polls'][0]['key']).to eq poll.key
@@ -34,7 +34,7 @@ describe API::PollsController do
 
     it 'does not show a poll you do not have access to' do
       sign_in another_user
-      get :show, id: poll.key
+      get :show, params: { id: poll.key }
       expect(response.status).to eq 403
     end
   end
@@ -44,7 +44,7 @@ describe API::PollsController do
 
     it 'shows polls in a discussion' do
       sign_in user
-      get :index, discussion_id: discussion.key
+      get :index, params: { discussion_id: discussion.key }
       json = JSON.parse(response.body)
       poll_keys = json['polls'].map { |p| p['key'] }
       expect(poll_keys).to include poll.key
@@ -54,7 +54,7 @@ describe API::PollsController do
 
     it 'does not allow user to see polls theyre not allowed to see' do
       sign_in user
-      get :index, discussion_id: non_group_discussion.key
+      get :index, params: { discussion_id: non_group_discussion.key }
       expect(response.status).to eq 403
     end
   end
@@ -90,7 +90,7 @@ describe API::PollsController do
 
       it 'filters by status' do
         authored_poll.update(closed_at: 1.day.ago)
-        get :search, status: :closed
+        get :search, params: { status: :closed }
 
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
@@ -102,7 +102,7 @@ describe API::PollsController do
       end
 
       it 'filters by group' do
-        get :search, group_key: group.key
+        get :search, params: { group_key: group.key }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -113,7 +113,7 @@ describe API::PollsController do
       end
 
       it 'filters by discussion' do
-        get :search, discussion_key: discussion.key
+        get :search, params: { discussion_key: discussion.key }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -124,7 +124,7 @@ describe API::PollsController do
       end
 
       it 'filters by participated' do
-        get :search, user: :participation_by
+        get :search, params: { user: :participation_by }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -135,7 +135,7 @@ describe API::PollsController do
       end
 
       it 'filters by authored' do
-        get :search, user: :authored_by
+        get :search, params: { user: :authored_by }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -147,7 +147,7 @@ describe API::PollsController do
 
       it 'filters by search fragment' do
         authored_poll.update(title: "Made in Korea!")
-        get :search, query: "Korea"
+        get :search, params: { query: "Korea" }
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -167,7 +167,7 @@ describe API::PollsController do
 
     it 'creates a poll' do
       sign_in user
-      expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
+      expect { post :create, params: { poll: poll_params } }.to change { Poll.count }.by(1)
       expect(response.status).to eq 200
 
       poll = Poll.last
@@ -185,7 +185,7 @@ describe API::PollsController do
     it 'can create a standalone poll' do
       sign_in user
       poll_params[:discussion_id] = nil
-      expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
+      expect { post :create, params: { poll: poll_params } }.to change { Poll.count }.by(1)
 
       poll = Poll.last
       expect(poll.discussion).to eq nil
@@ -195,13 +195,13 @@ describe API::PollsController do
     end
 
     it 'does not allow visitors to create polls' do
-      expect { post :create, poll: poll_params }.to_not change { Poll.count }
+      expect { post :create, params: { poll: poll_params } }.to_not change { Poll.count }
       expect(response.status).to eq 403
     end
 
     it 'does not allow non-members to create polls' do
       sign_in another_user
-      expect { post :create, poll: poll_params }.to_not change { Poll.count }
+      expect { post :create, params: { poll: poll_params } }.to_not change { Poll.count }
       expect(response.status).to eq 403
     end
 
@@ -210,7 +210,7 @@ describe API::PollsController do
       poll_params[:poll_type] = 'meeting'
       poll_params[:poll_option_names] = [1.day.from_now.iso8601]
       poll_params[:custom_fields] = { meeting_duration: 90 }
-      expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
+      expect { post :create, params: { poll: poll_params } }.to change { Poll.count }.by(1)
       expect(Poll.last.meeting_duration.to_i).to eq 90
     end
   end
@@ -218,7 +218,7 @@ describe API::PollsController do
   describe 'update' do
     it 'updates a poll' do
       sign_in user
-      post :update, id: poll.key, poll: poll_params
+      post :update, params: { id: poll.key, poll: poll_params }
       expect(poll.reload.title).to eq poll_params[:title]
       expect(poll.details).to eq poll_params[:details]
       expect(poll.closing_at).to be_within(1.second).of(poll_params[:closing_at])
@@ -230,18 +230,18 @@ describe API::PollsController do
     end
 
     it 'cannot move a poll between discussions' do
-      post :update, id: poll.key, poll: { discussion_id: another_discussion.id }
+      post :update, params: { id: poll.key, poll: { discussion_id: another_discussion.id } }
       expect(poll.reload.discussion).to eq discussion
     end
 
     it 'does not allow visitors to update polls' do
-      post :update, id: poll.key, poll: poll_params
+      post :update, params: { id: poll.key, poll: poll_params }
       expect(response.status).to eq 403
     end
 
     it 'does not allow members other than the author to update polls' do
       sign_in another_user
-      post :update, id: poll.key, poll: poll_params
+      post :update, params: { id: poll.key, poll: poll_params }
       expect(response.status).to eq 403
     end
   end
@@ -251,7 +251,7 @@ describe API::PollsController do
 
     it 'adds options to a poll' do
       sign_in user
-      post :add_options, id: poll.key, poll_option_names: 'new_option'
+      post :add_options, params: { id: poll.key, poll_option_names: 'new_option' }
       expect(response.status).to eq 200
       expect(poll.reload.poll_option_names).to include 'new_option'
 
@@ -262,27 +262,27 @@ describe API::PollsController do
 
     it 'does not allow unauthorized users to add options' do
       sign_in another_user
-      post :add_options, id: poll.key, poll_option_names: 'new_option'
+      post :add_options, params: { id: poll.key, poll_option_names: 'new_option' }
       expect(response.status).to eq 403
     end
 
     it 'does nothing if no options passed' do
       sign_in user
-      expect { post :add_options, id: poll.key, poll_option_names: [] }.to_not change { poll.poll_options.count }
+      expect { post :add_options, params: { id: poll.key, poll_option_names: [] } }.to_not change { poll.poll_options.count }
       expect(response.status).to eq 200
     end
 
     it 'cannot add actions to a closed poll' do
       poll.update(closed_at: 1.day.ago)
       sign_in user
-      expect { post :add_option, id: poll.key, poll_option_names: 'new_option' }.to raise_error { CanCan::AccessDenied }
+      expect { post :add_option, params: { id: poll.key, poll_option_names: 'new_option' } }.to raise_error { CanCan::AccessDenied }
     end
   end
 
   describe 'close' do
     it 'closes a poll' do
       sign_in user
-      post :close, id: poll.key
+      post :close, params: { id: poll.key }
       expect(response.status).to eq 200
       expect(poll.reload.active?).to eq false
     end
@@ -290,19 +290,19 @@ describe API::PollsController do
     it 'does not close an already closed poll' do
       sign_in user
       poll.update(closed_at: 1.day.ago)
-      post :close, id: poll.key
+      post :close, params: { id: poll.key }
       expect(response.status).to eq 403
     end
 
     it 'does not allow visitors to close polls' do
-      post :close, id: poll.key
+      post :close, params: { id: poll.key }
       expect(response.status).to eq 403
       expect(poll.reload.active?).to eq true
     end
 
     it 'does not allow members other than the author to close polls' do
       sign_in another_user
-      post :close, id: poll.key
+      post :close, params: { id: poll.key }
       expect(response.status).to eq 403
       expect(poll.reload.active?).to eq true
     end
@@ -311,19 +311,19 @@ describe API::PollsController do
   describe 'destroy' do
     it 'destroys a poll' do
       sign_in poll.author
-      expect { delete :destroy, id: poll.key }.to change { Poll.count }.by(-1)
+      expect { delete :destroy, params: { id: poll.key } }.to change { Poll.count }.by(-1)
       expect(response.status).to eq 200
     end
 
     it 'allows group admins to destroy polls' do
       sign_in poll.group.admins.first
-      expect { delete :destroy, id: poll.key }.to change { Poll.count }.by(-1)
+      expect { delete :destroy, params: { id: poll.key } }.to change { Poll.count }.by(-1)
       expect(response.status).to eq 200
     end
 
     it 'does not allow an unauthed user to destroy a poll' do
       sign_in create(:user)
-      expect { delete :destroy, id: poll.key }.to_not change { Poll.count }
+      expect { delete :destroy, params: { id: poll.key } }.to_not change { Poll.count }
       expect(response.status).to eq 403
     end
 
@@ -332,25 +332,25 @@ describe API::PollsController do
   describe 'toggle_subscription' do
     it 'creates an unsubscription if one does not exist' do
       sign_in user
-      expect { post :toggle_subscription, id: poll.key }.to change { poll.unsubscribers.count }.by(1)
+      expect { post :toggle_subscription, params: { id: poll.key } }.to change { poll.unsubscribers.count }.by(1)
       expect(response.status).to eq 200
     end
 
     it 'deletes an unsubscription if one does exist' do
       sign_in user
       poll.poll_unsubscriptions.create(user: user)
-      expect { post :toggle_subscription, id: poll.key }.to change { poll.unsubscribers.count }.by(-1)
+      expect { post :toggle_subscription, params: { id: poll.key } }.to change { poll.unsubscribers.count }.by(-1)
       expect(response.status).to eq 200
     end
 
     it 'does not allow visitors to have an unsubscription' do
-      expect { post :toggle_subscription, id: poll.key }.to_not change { poll.unsubscribers.count }
+      expect { post :toggle_subscription, params: { id: poll.key } }.to_not change { poll.unsubscribers.count }
       expect(response.status).to eq 403
     end
 
     it 'does not allow users who cant see the poll to have unsubscriptions' do
       sign_in another_user
-      expect { post :toggle_subscription, id: poll.key }.to_not change { poll.unsubscribers.count }
+      expect { post :toggle_subscription, params: { id: poll.key } }.to_not change { poll.unsubscribers.count }
     end
   end
 end

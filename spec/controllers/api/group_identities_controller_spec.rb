@@ -29,20 +29,20 @@ describe API::GroupIdentitiesController do
 
     it 'destroys an existing group identity' do
       sign_in user
-      expect { delete :destroy, id: group_identity.id }.to change  { GroupIdentity.count }.by(-1)
+      expect { delete :destroy, params: { id: group_identity.id } }.to change  { GroupIdentity.count }.by(-1)
       expect(response.status).to eq 200
     end
 
     it 'allows other admins to destroy group identities' do
       sign_in another_user
       group.add_admin! another_user
-      expect { delete :destroy, id: group_identity.id }.to change  { GroupIdentity.count }.by(-1)
+      expect { delete :destroy, params: { id: group_identity.id } }.to change  { GroupIdentity.count }.by(-1)
       expect(response.status).to eq 200
     end
 
     it 'does not allow unauthorized users to destroy identities' do
       sign_in another_user
-      expect { delete :destroy, id: group_identity.id }.to_not change { GroupIdentity.count }
+      expect { delete :destroy, params: { id: group_identity.id } }.to_not change { GroupIdentity.count }
       expect(response.status).to eq 403
     end
   end
