@@ -114,10 +114,6 @@ class Clients::Facebook < Clients::Base
     "https://d2e720c4.ngrok.io"
   end
 
-  def require_json_payload?
-    true
-  end
-
   def token_name
     :access_token
   end
