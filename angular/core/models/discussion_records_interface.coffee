@@ -2,6 +2,13 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
   class DiscussionRecordsInterface extends BaseRecordsInterface
     model: DiscussionModel
 
+    search: (groupKey, fragment, options = {}) ->
+      options.group_id = groupKey
+      options.q = fragment
+      @fetch
+        path: 'search'
+        params: options
+
     fetchByGroup: (groupKey, options = {}) ->
       options['group_id'] = groupKey
       @fetch

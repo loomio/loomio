@@ -28,6 +28,7 @@ class MigrateUserService
     ahoy_events: :user_id,
     ahoy_messages: :user_id,
     attachments: :user_id,
+    documents: :author_id,
     comments: :user_id,
     reactions: :user_id,
     contacts: :user_id,

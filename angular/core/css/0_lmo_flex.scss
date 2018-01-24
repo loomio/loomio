@@ -2,6 +2,16 @@
   display: flex;
 }
 
+.lmo-flex--row {
+  display: flex;
+  flex-direction: row;
+}
+
+.lmo-flex--column {
+  display: flex;
+  flex-direction: column;
+}
+
 .lmo-flex__flex-end {
   justify-content: flex-end;
 }

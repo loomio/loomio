@@ -1,7 +1,5 @@
 class ReceivedEmail
   include ActiveModel::Model
-  BANNED_CHARS = %(\\s:,;'"`<>)
-  EMAIL_REGEX = /[^#{BANNED_CHARS}]+?@[^#{BANNED_CHARS}]+\.[^#{BANNED_CHARS}]+/
 
   attr_accessor :sender_email
   attr_accessor :headers
@@ -23,6 +21,6 @@ class ReceivedEmail
   end
 
   def email_addresses
-    body.scan(EMAIL_REGEX).uniq.reject { |email| email == self.sender_email.scan(EMAIL_REGEX) }
+    body.scan(AppConfig::EMAIL_REGEX).uniq.reject { |email| email == self.sender_email.scan(AppConfig::EMAIL_REGEX) }
   end
 end

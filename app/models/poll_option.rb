@@ -12,7 +12,7 @@ class PollOption < ActiveRecord::Base
   end
 
   def color
-    AppConfig.colors.dig(poll.poll_type, self.priority)
+    AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
   end
 
   def display_name(zone: nil)

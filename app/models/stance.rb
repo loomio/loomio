@@ -1,6 +1,8 @@
 class Stance < ActiveRecord::Base
+  include CustomCounterCache::Model
   include HasMentions
   include Reactable
+  include HasCreatedEvent
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
   include Translatable
@@ -44,6 +46,10 @@ class Stance < ActiveRecord::Base
   delegate :group, to: :poll, allow_nil: true
   alias :author :participant
 
+  def parent_event
+    poll.created_event
+  end
+
   def choice=(choice)
     if choice.kind_of?(Hash)
       self.stance_choices_attributes = poll.poll_options.where(name: choice.keys).map do |option|
@@ -55,6 +61,14 @@ class Stance < ActiveRecord::Base
       self.stance_choices_attributes = options.map do |option|
         {poll_option_id: option.id}
       end
+    end
+  end
+
+  def participant_for_client(user: nil)
+    if !self.poll.anonymous || (user&.id == self.participant_id)
+      self.participant
+    else
+      LoggedOutUser.new(name: I18n.t(:"common.anonymous"))
     end
   end
 

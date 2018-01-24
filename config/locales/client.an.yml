@@ -47,14 +47,12 @@ an:
     name_label: Nombre
     email_label: Correu electronico
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Ta unir-te a iste grupo amenestes estar convidau por bell miembro."
-        membership_is_invitation_by_admin_only: "Ta unir-te a iste grupo amenestes estar convidau por un coordinador."
-    discussions: 'Discusions'
     options_label: 'Opcions'
     options:
       label: 'Opcions'
+  document:
+    form:
+      title_label: Nombre
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar
@@ -80,8 +78,12 @@ an:
   inbox_page:
     no_groups:
       or: u
+  activity_card:
+    unread: No leyiu
   thread_group:
     aria_label: 'Nombre d''o grupo'
+  thread_context:
+    close_thread: 'Zarrar'
   delete_comment_dialog:
     title: 'Borrar comentario'
     question: 'Yes seguro que quiers borrar iste comentario?'

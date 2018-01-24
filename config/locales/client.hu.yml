@@ -163,12 +163,7 @@ hu:
     name_label: Név
     email_label: E-mail
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "A belépéshez meghívóra van szükséged egy csoporttagtól."
-        membership_is_invitation_by_admin_only: "A belépéshez egy koordinátor meghívójára van szükséged."
     group_logo: 'Csoport logó'
-    discussions: 'Szálak'
     options_label: 'Lehetőségek'
     options:
       label: 'Lehetőségek'
@@ -180,6 +175,11 @@ hu:
     privacy: 'Adatvédelem'
     members_can_start_discussions: 'A tagok felvethetnek új támékat.'
     submit_update: 'Beállítások frissítése'
+  documents_page:
+    confirm_remove_title: Csatolmány eltávolítása
+  document:
+    form:
+      title_label: Név
   membership_requests_page:
     approve: Érvényesítés
     ignore: Figyelmen kívül hagyás
@@ -214,11 +214,14 @@ hu:
     no_groups:
       or: vagy
   discussion:
-    proposals: 'Javaslatok'
-    previous_proposals: 'Előző javaslatok'
     started_by: '<strong>{{name}}</strong> indította'
+  activity_card:
+    unread: Olvasatlan
+    latest: Legutóbbi
   thread_group:
     aria_label: 'Csoport neve'
+  thread_context:
+    close_thread: 'Bezár'
   delete_comment_dialog:
     title: 'Hozzászólás törlése'
     question: 'Biztosan törölni akarod ezt a hozzászólást?'

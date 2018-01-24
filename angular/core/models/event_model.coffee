@@ -9,7 +9,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       discussion:         'discussions'
       poll:               'polls'
       outcome:            'outcomes'
-      version:            'versions'
       stance:             'stances'
       comment:            'comments'
       comment_vote:       'comments'
@@ -17,10 +16,23 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       membership_request: 'membershipRequests'
 
     relationships: ->
+      @belongsTo 'parent', from: 'events'
       @belongsTo 'actor', from: 'users'
       @belongsTo 'discussion'
-      @belongsTo 'version'
       @hasMany  'notifications'
+
+    parentOrSelf: ->
+      if @parentId
+        @parent()
+      else
+        @
+
+    isNested: -> @depth > 1
+    isSurface: -> @depth == 1
+    surfaceOrSelf: -> if @isNested() then @parent() else @
+
+    children: ->
+      @recordStore.events.find(parentId: @id)
 
     delete: ->
       @deleted = true
@@ -34,10 +46,20 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     model: ->
       @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
 
+    isUnread: ->
+      !@discussion().hasRead(@sequenceId)
+
     markAsRead: ->
-      return unless @sequenceId > @discussion().lastReadSequenceId
-      @remote.postMember @id, 'mark_as_read'
-      @discussion().update(lastReadAt: moment(), lastReadSequenceId: @sequenceId)
+      @discussion().markAsRead(@sequenceId) if @discussion()
 
     beforeRemove: ->
       _.invoke(@notifications(), 'remove')
+
+    removeFromThread: =>
+      @remote.patchMember(@id, 'remove_from_thread').then => @remove()
+
+    next: ->
+      @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]
+
+    previous: ->
+      @recordStore.events.find(parentId: @parentId, position: @position - 1)[0]

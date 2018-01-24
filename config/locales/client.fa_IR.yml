@@ -130,8 +130,6 @@ fa_IR:
     reply_to_comment: پاسخ دادن
   reactions_display:
     you: "شما"
-  group_page:
-    discussions: 'موضوعات'
   group_form:
     privacy: 'حریم شخصی'
     submit_update: 'به روز رسانی تنطیمات'
@@ -160,11 +158,10 @@ fa_IR:
   inbox_page:
     no_groups:
       start: شروع
-  discussion:
-    proposals: 'پیشنهاد‌ها'
   thread_context:
     edit: 'ویرایش'
     edit_thread: 'ویرایش'
+    close_thread: 'بستن'
     delete_thread: 'پاک کردن'
   decision_tools_card:
     poll_title: نظرسنجی

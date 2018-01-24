@@ -2,7 +2,7 @@ describe 'Notifications', ->
   page = require './helpers/page_helper.coffee'
 
   it 'has all the notifications', ->
-    page.loadPath 'setup_all_notifications', 60000
+    page.loadPath 'setup_all_notifications', 120000
 
     notificationTexts = [
       'accepted your invitation to join',

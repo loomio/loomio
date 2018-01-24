@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCountVoteForm', (AppConfig, Records, PollService, MentionService, KeyEventService) ->
+angular.module('loomioApp').directive 'pollCountVoteForm', (AppConfig, Records, PollService, KeyEventService) ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/count/vote_form/poll_count_vote_form.html'
   controller: ($scope) ->
@@ -11,5 +11,4 @@ angular.module('loomioApp').directive 'pollCountVoteForm', (AppConfig, Records, 
     $scope.yesColor = AppConfig.pollColors.count[0]
     $scope.noColor  = AppConfig.pollColors.count[1]
 
-    MentionService.applyMentions($scope, $scope.stance)
     KeyEventService.submitOnEnter($scope)

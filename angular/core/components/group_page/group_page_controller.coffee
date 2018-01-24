@@ -60,9 +60,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
     @performLaunch()
 
-  @canViewMemberships = ->
-    AbilityService.canViewMemberships(@group)
-
   @canManageMembershipRequests = ->
     AbilityService.canManageMembershipRequests(@group)
 

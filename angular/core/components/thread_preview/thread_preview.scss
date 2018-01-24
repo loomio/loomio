@@ -11,9 +11,14 @@
 .thread-preview__link {
   display: flex;
   justify-content: space-between;
-  padding: $thinPaddingSize $cardPaddingSize;
+  padding: $thinPaddingSize;
   color: $primary-text-color;
   text-decoration: none;
+
+  &.thread-preview__link--unread {
+    border-left: 2px solid;
+    padding-left: $thinPaddingSize - 2px;
+  }
 }
 
 .thread-preview__status-icon {

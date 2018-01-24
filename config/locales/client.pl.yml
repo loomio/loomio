@@ -236,16 +236,6 @@ pl:
   reactions_display:
     you: "Ty"
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Ta grupa nie ma jeszcze wątków."
-        no_discussions_matching_filters_html: "Brak wątków pasujących do tych filtrów. <a href='%{link}'>Wyczyść filtry</a>."
-        no_public_discussions: "Brak publicznych wątków w tej grupie."
-        discussions_are_private: "Wszystkie wątki w tej grupie są prywatne."
-        join_group: "Aby zobaczyć prywatne wątki musisz dołączyć do grupy."
-        request_membership: "Aby zobaczyć prywatne wątki wyślij prośbę o dołączenie do grupy"
-        membership_is_invitation_only: "Aby dołączyć do tej grupy musisz otrzymać zaproszenie od jej członka."
-        membership_is_invitation_by_admin_only: "Aby dołączyć do tej grupy musisz otrzymać zaproszenie od koordynatora."
     messages:
       privacy:
         members: 'Ta grupa jest teraz widoczna tylko dla członków'
@@ -253,7 +243,6 @@ pl:
         public: 'Ta grupa jest teraz publiczna'
       leave_group_success: 'Opuściłeś/aś tę grupę'
     group_logo: 'Logo grupy'
-    discussions: 'Dyskusje'
     discussions_placeholder: 'Wątek jest miejscem gdzie wszyscy mogą dyskutować temat i podejmować wspólne decyzje.'
     members_placeholder: 'Jesteś jedynym członkiem: zaproś inne osoby!'
     member_options: Opcje członka
@@ -274,6 +263,11 @@ pl:
   group_form:
     privacy: 'Prywatność'
     submit_update: 'Zaktualizuj ustawienia'
+  documents_page:
+    confirm_remove_title: Usunięcie załącznika
+  document:
+    form:
+      title_label: Nazwa
   membership_requests_page:
     heading: Zgłoszenia Członkostwa
     approve: Akceptacja
@@ -361,26 +355,24 @@ pl:
     view_more: Pokaż Więcej
     no_groups:
       start: Rozpocznij
-  groups_page:
-    page_header: Twoje grupy
   discussion:
     activity: 'Aktywność'
-    proposals: 'Rekomendacje'
-    previous_proposals: 'Poprzednie rekomendacje'
     load_previous: 'Załaduj wcześniejsze aktywności'
     started_by: 'Rozpoczęte przez <strong>{{name}}</strong>'
+  activity_card:
+    unread: Nieprzeczytane
+    latest: Ostatnie
+    attachment_display:
+      aria_label: 'Dołączony plik:'
+      image_alt: 'Dołączone zdjęcie'
   thread_group:
     aria_label: 'Nazwa grupy'
   thread_context:
     aria_label: 'Kontekst wątku.'
     thread_options: 'Opcje wątku'
+    close_thread: 'Zamknij'
     mute_thread: 'Wycisz'
     delete_thread: 'Usuń'
-  activity_card:
-    new_activity: Nowa aktywność
-    attachment_display:
-      aria_label: 'Dołączony plik:'
-      image_alt: 'Dołączone zdjęcie'
   delete_comment_dialog:
     title: 'Usuń komentarz'
     question: 'Czy na pewno chcesz usunąć ten komentarz?'

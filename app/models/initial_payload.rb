@@ -12,21 +12,28 @@ InitialPayload = Struct.new(:user) do
       loadVideos:          ENV['LOOMIO_LOAD_VIDEOS'],
       currentUserLocale:   user.locale,
       permittedParams:     PermittedParamsSerializer.new({}),
-      locales:             angular_locales,
+      locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
       recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
       baseUrl:             root_url,
-      safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       theme:               AppConfig.theme,
-      features:            AppConfig.features,
+      errbit:              AppConfig.errbit,
+      regex: {
+        url:               JsRegex.new(AppConfig::URL_REGEX),
+        email:             JsRegex.new(AppConfig::EMAIL_REGEX)
+      },
+      features: {
+        group:             AppConfig.group_features,
+        app:               AppConfig.app_features
+      },
       inlineTranslation: {
-        isAvailable:       TranslationService.app_key.present?,
+        isAvailable:       TranslationService.supported_languages.any?,
         supportedLangs:    TranslationService.supported_languages
       },
       pageSize: {
         default:         ENV.fetch('DEFAULT_PAGE_SIZE', 30),
         groupThreads:    ENV.fetch('GROUP_PAGE_SIZE',   30),
-        threadItems:     ENV.fetch('THREAD_PAGE_SIZE',  30),
+        threadItems:     ENV.fetch('THREAD_PAGE_SIZE',  10),
         exploreGroups:   ENV.fetch('EXPLORE_PAGE_SIZE', 10)
       },
       flashTimeout: {
@@ -47,6 +54,7 @@ InitialPayload = Struct.new(:user) do
       },
       durations:         AppConfig.durations.fetch('durations', []),
       pollTemplates:     AppConfig.poll_templates,
+      pollTypes:         AppConfig.poll_types,
       pollColors:        AppConfig.colors,
       timeZones:         AppConfig.timezones,
       identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|

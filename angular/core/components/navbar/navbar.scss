@@ -27,6 +27,8 @@
   .navbar__middle{
     flex-grow: 1;
     height: 100%;
+    a, img { height: 100%; }
+    img { padding: 8px; }
   }
 
   .navbar__left {

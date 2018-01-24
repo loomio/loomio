@@ -3,6 +3,10 @@ class API::InvitationsController < API::RestfulController
   rescue_from(Invitation::TooManyPending) do
     respond_with_errors('invitation_form.error.too_many_pending', count: ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i)
   end
+  rescue_from(Invitation::TooManyCancelled) do
+    respond_with_errors('invitation_form.error.too_many_cancelled', count: ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i)
+  end
+
 
   def bulk_create
     self.resource = service.invite_to_group(recipient_emails: email_addresses,
@@ -43,7 +47,7 @@ class API::InvitationsController < API::RestfulController
   end
 
   def email_addresses
-    params.require(:invitation_form)[:emails].scan(ReceivedEmail::EMAIL_REGEX)
+    params.require(:invitation_form)[:emails].scan(AppConfig::EMAIL_REGEX)
   end
 
   def respond_with_errors(message, translation_values = {})

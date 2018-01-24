@@ -1,14 +1,12 @@
-angular.module('loomioApp').directive 'pollCommonChooseType', (PollService) ->
+angular.module('loomioApp').directive 'pollCommonChooseType', (PollService, AppConfig) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/choose_type/poll_common_choose_type.html'
   controller: ($scope) ->
 
     $scope.choose = (type) ->
-      $scope.poll.pollType = type
-      $scope.$emit 'chooseComplete'
+      $scope.$emit 'nextStep', type
 
-    $scope.pollTypes = ->
-      _.keys PollService.activePollTemplates()
+    $scope.pollTypes = -> AppConfig.pollTypes
 
     $scope.iconFor = (pollType) ->
       PollService.fieldFromTemplate(pollType, 'material_icon')

@@ -1,4 +1,20 @@
 pt_BR:
+  explore:
+    header: Explore grupos publicos
+  activerecord:
+    errors:
+      messages:
+        blank: não pode deixar em branco
+        invalid: não é um valor válido
+  errors:
+    messages:
+      email: 'Não é um endereço de email válido '
+      spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
+  stance:
+    error:
+      too_short: Por favor, selecione uma opção
+  invitation:
+    invitation_already_used: Esse convite já foi usado. Por favor faça o login no Loomio diretamente para continuar no seu grupo.
   validate:
     motion:
       must_close_in_future: Proposta deve encerrar no futuro.
@@ -17,6 +33,11 @@ pt_BR:
         Você recebeu este e-mail porque o seu foi requerido no formulário "Esqueci minha senha" em %{hostname}.
         No entanto, sua senha não será alterada até que você siga o link acima e preencha o formulário.
         Se você continuar a ter problemas de login, responda a este e-mail para entrar em contato com uma pessoa do suporte técnico.
+    start_decision:
+      subject: Comece a decisão no Loomio
+      action: O que você gostaria de fazer?
+      proposal: Comece uma proposta
+      meeting: Agende o horário
     custom: "%{text}"
     group_email:
       intro: "%{who} anunciou para %{group}:"
@@ -35,6 +56,7 @@ pt_BR:
     unsubscribe: 'Cancelar inscrição ou modificar suas preferências de e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
     missed_yesterday:
+      do_not_reply: Por favor não responda a esse email.
       headlines: Em destaque
       mark_as_read: Marcar como lida
       thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
@@ -49,6 +71,8 @@ pt_BR:
       subject: "%{who} solicitou entrada em %{which_group}"
       view_group: Você pode aprovar ou recusar o pedido aqui
       button_text: Ver solicitação
+  email_actions:
+    unfollowed_discussion: Você desativou emails para esse tópico.
   footer:
     about: Sobre
     blog: Blog
@@ -63,6 +87,10 @@ pt_BR:
     error:
       all_email_addresses_belong_to_members: "Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo."
   password_reset:
+    change_your_password: Mude sua senha
+    change_my_password: Mudar senha
+    confirm_new_password: Confirmar senha
+    new_password: Nova senha
     reset_email_timeframe: Poderá demorar até 5 minutos para o e-mail chegar. Se não aparecer, certifique-se de verificar sua pasta de spam.
     length_restriction: Senhas devem ter pelo menos 8 caracteres.
     forbidden_passwords: Senhas comuns como, por exemplo, “senha” são proibidas para manter a sua conta segura.
@@ -152,5 +180,22 @@ pt_BR:
         ![Logo do Loomio](https://i.imgur.com/Fvtworb.png)
   poll_mailer:
     common:
+      or: ou
+      unsubscribe: Cancelar subscrição
       results: Resultados
+      responses: Respostas
+      change_your_stance: Mudar
       create_outcome: Compartilhar resultado
+      your_response: "Você votou:"
+      please_respond: Por favor responda
+      vote_now: Vote agora
+  poll_generator:
+    poll:
+      title: "Alguma alergia alimentar que deveríamos saber pro nosso jantar na quinta?"
+    count:
+      title: "Quem anima ajudar a organizar o picnic da empresa?"
+    meeting:
+      title: "Quando deveriamos ter nossa próxima reunião?"
+  slack:
+    go_to_slack: Ir pro Slack
+    click_to_vote: "Selecione uma opção abaixo para votar:"

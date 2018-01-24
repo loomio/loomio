@@ -1,14 +1,14 @@
-- if resource.attachments.any?
+- if resource.documents.any?
   %h4= t :attachments
   %ul.thread-mailer__list
-    - resource.attachments.each do |attachment|
+    - resource.documents.each do |document|
       %li.thread-mailer__list-item
-        - if attachment.is_an_image?
-          %a{href: attachment.url, target: '_blank'}
-            %img{src: attachment.url, alt: attachment.filename}
+        - if document.is_an_image?
+          %a{href: document.url, target: '_blank'}
+            %img{src: document.web_url, alt: document.title}
         - else
-          %a.thread-mailer__file-attachment{href: attachment.url, target: '_blank'}
+          %a.thread-mailer__file-attachment{href: document.url, target: '_blank'}
             %span
               = image_tag('thread_mailer/paperclip.png', alt: 'attachment icon', class: 'thread-mailer__attachment-icon')
             %span.thread-mailer__file-attachment-filername
-              = attachment.filename
+              = document.title

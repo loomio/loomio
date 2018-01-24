@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include SelfReferencing
   include MessageChannel
@@ -53,6 +54,10 @@ class Group < ActiveRecord::Base
     end
   rescue ActiveRecord::RecordNotUnique
     retry
+  end
+
+  def membership_for(user)
+    memberships.find_by(user_id: user.id)
   end
 
   def add_members!(users, inviter: nil)

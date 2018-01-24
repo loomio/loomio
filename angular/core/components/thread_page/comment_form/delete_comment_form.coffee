@@ -6,9 +6,5 @@ angular.module('loomioApp').factory 'DeleteCommentForm', ->
     $scope.submit = ->
       $scope.comment.destroy().then ->
         $scope.$close()
-        _.find($scope.comment.discussion().events(), (event) ->
-          event.kind == 'new_comment' and
-          event.eventable.id == $scope.comment.id
-        ).delete()
       , ->
         $rootScope.$broadcast 'pageError', 'cantDeleteComment'

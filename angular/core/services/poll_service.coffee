@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfig, Records, Session, FormService, LmoUrlService, ScrollService, AbilityService, AttachmentService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $rootScope, $location, AppConfig, Records, Session, SequenceService, FormService, LmoUrlService, ScrollService, AbilityService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -8,13 +8,6 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
     # Ideally, we write these proposal types as plugins, which say 'Hey, add these components,
     # and add this poll type to the yml data', at the same time.
     # This will also make it easier to switch poll types on and off per instance, and per group.
-
-    activePollTemplates: ->
-      # this could have group-specific logic later.
-      # (LATER...) gasp now it does!
-      _.pickBy AppConfig.pollTemplates, (template) ->
-        !template.experimental or
-        (Session.currentGroup or {}).enableExperiments
 
     fieldFromTemplate: (pollType, field) ->
       return unless template = @templateFor(pollType)
@@ -39,6 +32,22 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
     optionByName: (poll, name) ->
       _.find poll.pollOptions(), (option) -> option.name == name
 
+    applyPollStartSequence: (scope, options = {}) ->
+      SequenceService.applySequence scope,
+        steps: ->
+          if scope.poll.group()
+            ['choose', 'save']
+          else
+            ['choose', 'save', 'share']
+        initialStep: if scope.poll.pollType then 'save' else 'choose'
+        emitter: options.emitter or scope
+        chooseComplete: (_, pollType) ->
+          scope.poll.pollType = pollType
+        saveComplete: (_, poll) ->
+          scope.poll = poll
+          $location.path LmoUrlService.poll(poll)
+          options.afterSaveComplete(poll) if typeof options.afterSaveComplete is 'function'
+
     submitOutcome: (scope, model, options = {}) ->
       actionName = if scope.outcome.isNew() then 'created' else 'updated'
       FormService.submit(scope, model, _.merge(
@@ -55,17 +64,22 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName}"
         drafts: true
-        prepareFn: ->
+        prepareFn: =>
           scope.$emit 'processing'
+          switch model.pollType
+            # for polls with default poll options (proposal, check)
+            when 'proposal', 'count'
+              model.pollOptionNames = _.pluck @fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
+            # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
+            else
+              $rootScope.$broadcast 'addPollOption'
         failureCallback: ->
           ScrollService.scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
         successCallback: (data) ->
+          _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
           poll = Records.polls.find(data.polls[0].key)
-          scope.$emit 'saveComplete', poll
-          if actionName == 'created'
-            $location.path(LmoUrlService.poll(poll))
-          else
-            AttachmentService.cleanupAfterUpdate(poll, 'poll')
+          poll.removeOrphanOptions()
+          scope.$emit 'nextStep', poll
         cleanupFn: ->
           scope.$emit 'doneProcessing'
       , options))

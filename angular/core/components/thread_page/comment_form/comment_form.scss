@@ -1,13 +1,9 @@
+.comment-form .lmo-textarea md-input-container {
+  margin-top: -2px;
+}
 .comment-form-attachments input {
   display: none;
 }
-
-.comment-form {
-  @include card;
-  position: relative;
-}
-
-.comment-form__sign-in-btn { width: 100% }
 
 .comment-form-button {
   margin-left: 10px;
@@ -16,14 +12,4 @@
 
 .comment-form-container{
   width: 100%;
-}
-
-.comment-form__join-actions button {
-  width: 100%;
-}
-
-.comment-form__submit-button {
-  order: 2;
-  position: relative;
-  right: -6px;
 }

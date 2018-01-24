@@ -58,6 +58,12 @@ describe 'Polls', ->
 
     page.expectText '.poll-common-outcome-panel', 'This is an outcome'
 
+  it 'can start an anonymous poll', ->
+    page.loadPath 'polls/test_proposal_poll_anonymous'
+    page.click '.show-results-button'
+    page.expectText '.poll-common-votes-panel__stance-content', 'Anonymous'
+    page.expectNoElement '.poll-common-undecided-panel__button'
+
   it 'can send a calendar invite', ->
     page.loadPath 'polls/test_meeting_poll_closed'
     page.click '.poll-common-set-outcome-panel__submit'

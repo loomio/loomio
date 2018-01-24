@@ -1,15 +1,32 @@
-.activity-card{
-  @include card;
+.activity-card {
+  padding: $cardPaddingSize 0;
 }
 
-.activity-card__load-backwards{
+.activity-card__settings {
+  md-select {
+    margin: 0;
+  }
+  padding: $cardPaddingSize;
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.activity-card__load-more-sensor {
+  height: 1px;
+}
+.activity-card__load-more{
   @include fontSmall;
+  display: flex;
+  align-items: center;
   color: $grey-on-grey;
   line-height: 30px;
   padding: 0 10px;
   background-color: $background-color;
-  width: 100%;
   margin-bottom: 20px;
+  margin-left: $cardPaddingSize;
+  margin-right: $cardPaddingSize;
   cursor: pointer;
   i {
     margin-right: 4px;

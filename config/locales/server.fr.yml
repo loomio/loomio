@@ -53,7 +53,7 @@ fr:
         Pour accéder à Loomio, vous devrez maintenant utiliser <strong>%{email}</strong> comme identifiant.
   email:
     login:
-      subject: Identifiez-vous sur {{site_name}}
+      subject: Identifiez-vous sur %{site_name}
       intro: Bonjour %{name},  voici votre lien de connexion à votre compte sur %{site_name}.
       login: Se connecter comme %{name}
       resend: Ce lien expirera dans 24 heures et ne peut être utilisé qu'une seule fois.
@@ -152,6 +152,7 @@ fr:
   invitation_form:
     error:
       too_many_pending: "Vous dépassez le maximum de %{count}invitations en attente pour ce groupe"
+      too_many_cancelled: "Vous avez dépassé le maximum de %{count} invitations annulées pour ce groupe"
       all_email_addresses_belong_to_members: "Nous n’avons pas envoyé d’invitation aux adresses de courriel fournies, car elles appartiennent à des personnes qui sont déjà dans le groupe."
   password_reset:
     change_your_password: Modifiez votre mot de passe
@@ -270,7 +271,7 @@ fr:
       create_outcome: Partager le résultat
       your_response: "Vous avez voté:"
       please_respond: Merci de répondre
-      time_zone: (Horaires affiché en %{zone})
+      time_zone: (Horaire affiché en %{zone})
       undecided_members: Membres indécis (%{count})
       undecided_visitors: Invités indécis (%{count})
       more_undecided: "%{count} de plus..."
@@ -297,7 +298,7 @@ fr:
         poll_closing_soon: 'La proposition de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre proposition se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "La proposition de <strong>%{actor}</strong> est clôturée: %{title}"
-        poll_expired_author: 'Cette proposition est <strong>terminée</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        poll_expired_author: 'Cette proposition est <strong>terminée</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, pour que tout le monde sache ce qui va suivre.'
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de décision.'
         invitation_created: '<strong>%{actor}</strong> aimerait connaître votre opinion : %{title}'
         invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
@@ -327,7 +328,7 @@ fr:
         poll_closing_soon: 'Le sondage de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre sondage se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Le sondage de <strong>%{actor}</strong> est clôturé: %{title}"
-        poll_expired_author: 'Votre sondage est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        poll_expired_author: 'Votre sondage est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, pour que tout le monde sache ce qui va suivre.'
         poll_option_added: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de sondage.'
@@ -339,15 +340,27 @@ fr:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
+        poll_created: '%{actor} participe à une vérification : %{title}'
+        poll_edited: '%{actor} a modifié la vérification : %{title}'
+        poll_closing_soon: 'Plus que 24 heures pour participer à la vérification : %{title}'
         poll_closing_soon_author: 'Votre vérification se termine dans 24 heures : %{title}'
+        poll_expired: "Vérification terminée : %{title}"
+        poll_expired_author: 'Votre vérification est terminée. Partagez le résultat pour : %{title}'
         outcome_created: '%{actor} a partagé un résultat: %{title}'
+        invitation_created: '%{actor} participe à une vérification : %{title}'
         invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
         user_reminded: 'RAPPEL: %{actor} attend que vous répondiez sur : %{title}'
         stance_created: "%{actor} a participé à: %{title}"
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
       header:
+        poll_created: '<strong>%{actor}</strong> participe à la vérification'
+        poll_edited: '<strong>%{actor}</strong> a modifié la vérification'
+        poll_closing_soon: 'La vérification de <strong>%{actor}</strong> se termine dans 24 heures.'
         poll_closing_soon_author: 'Votre vérification se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
+        poll_expired: "La vérification de <strong>%{actor}</strong> est terminé : %{title}"
+        poll_expired_author: 'Voici le résultat de votre vérification. Si nécessaire, <strong>partagez le résultat</strong> pour que tout le monde sache ce qui va suivre.'
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat.'
+        invitation_created: '<strong>%{actor}</strong> participe à la vérification : %{title}'
         invitation_resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
         user_reminded: 'RAPPEL: <strong>%{actor}</strong> attend que vous répondiez sur : %{title}'
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
@@ -375,7 +388,7 @@ fr:
         poll_closing_soon: 'Le vote à points de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre vote à points se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Résultats du vote à points de <strong>%{actor}</strong> : %{title}"
-        poll_expired_author: 'Votre vote à points est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        poll_expired_author: 'Votre vote à points est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, pour que tout le monde sache ce qui va suivre.'
         poll_option_added: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de vote à points.'
@@ -408,7 +421,7 @@ fr:
         poll_closing_soon: 'Le sondage horaire de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre sondage horaire se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Le sondage horaire de <strong>%{actor}</strong> est clôturé : %{title}"
-        poll_expired_author: 'Votre sondage horaire est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        poll_expired_author: 'Votre sondage horaire est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, pour que tout le monde sache ce qui va suivre.'
         poll_option_added: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de sondage horaire.'
@@ -442,7 +455,7 @@ fr:
         poll_closing_soon: 'Le classement par préférence de <strong>%{actor}</strong> se termine dans 24 heures. C''est le moment de voter, de changer d''avis ou d''encourager les autres à participer.'
         poll_closing_soon_author: 'Votre classement par préférence se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "Le classement par préférence de <strong>%{actor}</strong> est clôturé : %{title}"
-        poll_expired_author: 'Votre classement par préférence est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, afin que les gens sachent ce qui va suivre.'
+        poll_expired_author: 'Votre classement par préférence est <strong>terminé</strong>. Prenez le temps de réfléchir à ce qui a été dit et <strong>partagez un résultat</strong> avec le groupe, pour que tout le monde sache ce qui va suivre.'
         poll_option_added: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> a ajouté des options à: %{title}'
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de classement par préférence.'
@@ -453,6 +466,25 @@ fr:
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+  poll_generator:
+    proposal:
+      title: "Proposer une embauche à Louise et Jacques"
+      details: Louise et Jacques ont été nos stagiaires ces 3 derniers mois, ils se sont beaucoup investis et sont clairement des ressources pour notre équipe. Doit-on leur proposer une embauche?
+    poll:
+      title: "Il y a-t-il des allergies alimentaires que nous devrons prendre en compte pour le dîner de jeudi?"
+      details: J'ai hâte de vous voir à la maison! Merci d'indiquer les restrictions alimentaires que nous devrions connaître.
+    count:
+      title: "Qui est partant pour aider à organiser le pique-nique d'entreprise?"
+      details: Marla s'est sentie dépassée la dernière fois, donc cette fois nous voudrions qu'elle ait de l'aide pour que cela soit plus simple pour tous. Merci d'indiquer si vous êtes partant⋅e!
+    dot_vote:
+      title: "Quelle est notre stratégie d'entreprise pour le trimestre prochain?"
+      details: C'est une année charnière pour notre entreprise et nous devons prioriser l'usage de nos ressources limitées. Merci d'indiquer les thèmes qui selon vous doivent concentrer nos efforts sur le prochain trimestre.
+    ranked_choice:
+      title: "Qui désigner comme maire-adjoint?"
+      details: "C'est l'heure de nos élections semestrielles. Ceci est un vote alternatif officiel, qui désignera notre prochain maire-adjoint. N'oubliez pas de vous renseigner sur les différents candidats sur notre site!"
+    meeting:
+      title: "Quand devons-nous tenir notre prochaine réunion d'équipe?"
+      details: C'est l'heure de notre réunion d'équipe bi-hebdomadaire, idéalement nous nous réunirons avant la fin de la semaine prochaine. Quel créneau arrange tout le monde?
   poll_unsubscribe:
     title: Vous êtes désinscrit⋅e de %{title}
     helptext: Vous ne recevrez plus de courriel concernant cette décision
@@ -464,5 +496,48 @@ fr:
     poll_created: "Nouveau *%{poll_type}* dans *%{group}*: *%{poll}*"
     poll_closing_soon: "Rappel: *%{poll}* se termine dans 24 heures"
     poll_expired: "*%{poll}* est clotûré"
+    poll_not_found: "Désolé, nous n'avons pas trouvé ce sondage. Tapez '/loomio<poll_type><title>' pour recommencer?"
+    unknown_channel: |
+      Désolé, on dirait qu'il n'y a pas de groupe Loomio associé à cette chaîne.
+      Essayez plutôt de taper '/loomio' dans l'une des chaînes suivantes:
+      %{integrations}
+    stance_not_valid: "Désolé, nous n'avons pas compris votre position pour *%{poll}*. <%{url}|Cliquez ici> pour participer à la décision directement."
+    group_identity_created: |
+      Salut, Je suis le Robot Loomio! *%{author}* m'a ajouté.
+      Je peux aider votre équipe à prendre des décisions ensemble.
+
+      Je peux:
+
+      - vous notifier lorsqu'une décision doit être prise
+      - vous permettre de voter directement depuis Slack
+      - montrer les points d'accord et de désaccord
+      - diffuser le résultat de vos prises de décisions
+      - garder la trace de vos décisions dans votre groupe Loomio.
+
+      Pour en savoir plus, tapez _/loomio help_
+
+      Vous devrez faire partie du groupe Loomio *%{group}* pour participer.
+      Si vous ne l'avez pas encore rejoint, <%{url}|cliquez ici> pour le faire.
+    request_authorization_message: "Une dernière étape : <%{url}|cliquez ici> pour autoriser votre compte Slack à utiliser Loomio. (vous n'aurez à donner cette autorisation qu'une seule fois)"
+    poll_closed: "*%{title}* est déjà terminé! <%{url}|cliquez ici> pour voir les résultats."
+    go_to_slack: Allez sur Slack
+    stance_created: Merci d'avoir participé! Vous avez voté *%{position}* sur le sondage<%{poll_url}|%{title}>. Si vous voulez changer de vote, ou ajouter une justification à ce vote, <%{stance_url}|cliquez ici>.
     click_to_vote: "Choisissez une option ci-dessous pour voter :"
     time_zone_message: (tous les horaires valent pour le fuseau horaire %{zone})
+    authorized_message: Bravo! Vous êtes maintenant prêts à voter sur Slack.
+    community_poll_published: "@%{username} a commencé un nouveau %{type}:"
+    initiate: |
+      Ok, allons-y! <%{url}|Cliques ici pour commencer votre %{type}>.
+      (NB: ceci sera posté sur cette chaîne, pour que tout le monde puisse participer)
+    slash_command_help: |
+      Saisissez juste un type de décision et une question, on s'occupera du reste.
+      Vous pouvez choisir entre ces types de décisions:
+      'proposal': cherchez l'accord collectif
+      'count': suivez la participation et trouvez des volontaires
+      'poll': Mesurez une opinion ou proposez un choix
+      'dot vote': Priorisez des options
+      'meeting': Trouvez un moment pour se réunir
+
+      Par exemple:
+      /loomio count Qui vient à la fête dimanche?
+      pour commencer un nouveau décompte.

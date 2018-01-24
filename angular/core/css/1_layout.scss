@@ -1,11 +1,3 @@
-@mixin lmoRow {
-  @media (min-width: $tiny-max-px){
-    /* outer padding on all but tiny screens */
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-
 .lmo-one-column-layout, .lmo-two-column-layout{
   margin: auto;
   padding-bottom: 25px;

@@ -35,17 +35,10 @@ RUN npm rebuild node-sass
 WORKDIR /loomio
 RUN bundle install
 
-# use development env to build assets with fake sqlite database (heroku blocks you from using sqlite in production)
-ENV RAILS_ENV development
-
-# fake config for building assets (yawn)
-ENV DATABASE_URL sqlite3:assets_throwaway.db
-ENV DEVISE_SECRET boopboop
-ENV SECRET_COOKIE_TOKEN beepbeep
-
 # build client app
-RUN bundle exec rake deploy:build[plugins.docker]
+RUN bundle exec rake plugins:fetch[docker]
 
 EXPOSE 3000
+
 # source the config file and run puma when the container starts
 CMD /loomio/docker_start.sh

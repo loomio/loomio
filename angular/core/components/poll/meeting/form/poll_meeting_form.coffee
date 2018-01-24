@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollMeetingForm', ->
   scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/meeting/form/poll_meeting_form.html'
-  controller: ($scope, AppConfig, PollService, AttachmentService, KeyEventService, TimeService) ->
+  controller: ($scope, AppConfig) ->
 
     $scope.removeOption = (name) ->
       _.pull $scope.poll.pollOptionNames, name
@@ -14,12 +14,5 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
       $scope.poll.notifyOnParticipate = true
       $scope.poll.makeAnnouncement = true if $scope.poll.group()
 
-    $scope.submit = PollService.submitPoll $scope, $scope.poll,
-      prepareFn: ->
-        $scope.$emit 'processing'
-        $scope.$broadcast 'addPollOption'
-
     $scope.$on 'timeZoneSelected', (e, zone) ->
       $scope.poll.customFields.time_zone = zone
-
-    KeyEventService.submitOnEnter($scope)

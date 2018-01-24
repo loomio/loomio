@@ -18,6 +18,15 @@ textarea .lmo-textarea {
   @include fontSmall;
 }
 
+.lmo-badge {
+  border: 1px solid;
+  padding: 0 4px;
+  border-radius: 4px;
+  margin: 0 4px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
 .lmo-inline-action {
   min-width: 40px;
   margin: 0;
@@ -25,7 +34,7 @@ textarea .lmo-textarea {
   line-height: 48px;
 }
 
-.lmo-inline-action .material-icons {
+.lmo-inline-action .mdi {
   line-height: 48px;
   display: block;
 }
@@ -60,7 +69,7 @@ textarea .lmo-textarea {
   bottom: 0;
   background-color: white;
   border-radius: 6px;
-  z-index: $z-low;
+  z-index: $z-medium;
   opacity: 0.5;
 }
 
@@ -130,6 +139,10 @@ textarea .lmo-textarea {
   }
 }
 
+.lmo-font--small {
+  @include fontSmall;
+}
+
 .lmo-user-mention {
   color: $link-color;
 }
@@ -172,6 +185,10 @@ textarea .lmo-textarea {
 
 .lmo-modal__narrow {
   max-width: $tiny-max-px;
+}
+
+.lmo-grey-on-white {
+  color: $grey-on-white;
 }
 
 img.emojione {

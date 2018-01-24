@@ -1,8 +1,8 @@
 .thread-preview
-  %a.thread-preview__link{lmo-href-for: "thread"}
+  %a.thread-preview__link{lmo-href-for: "thread", md-colors: "{'border-color': 'primary-500'}", ng-class: "{'thread-preview__link--unread': thread.isUnread()}"}
     .sr-only
       %span {{thread.authorName()}}: {{thread.title}}.
-      %span{ng-if: "thread.hasUnreadActivity()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadActivityCount() }}"}
+      %span{ng-if: "thread.hasUnreadActivity()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadItemsCount() }}"}
 
     .thread-preview__icon
       %user_avatar{ng-if: "!thread.activePoll()", user: "thread.author()", size: "medium"}
@@ -13,16 +13,16 @@
         .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
           {{thread.title}}
         .thread-preview__unread-count{ng-if: "thread.hasUnreadActivity()"}
-          ({{thread.unreadActivityCount()}})
+          ({{thread.unreadItemsCount()}})
 
       .thread-preview__text-container
         .thread-preview__group-name
           {{ thread.group().fullName }} ·
           %smart_time{time: "thread.lastActivityAt"}>
+        .lmo-badge.lmo-pointer{ng-if: "thread.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}", translate: "common.privacy.closed"}
+        %outlet{name: "after-thread-preview", model: "thread"}
 
-      %outlet{name: "after-thread-preview", model: "thread"}
-
-    .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'dashboard_page.thread_preview.pinned' | translate}}"}
+    .thread-preview__pin.thread-preview__status-icon{ng-if: "thread.pinned", title: "{{'context_panel.thread_status.pinned' | translate}}"}
       %i.mdi.mdi-pin
 
   .thread-preview__actions.lmo-hide-on-xs{ng-if: "thread.discussionReaderId"}

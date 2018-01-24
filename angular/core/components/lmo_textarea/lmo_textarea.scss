@@ -3,6 +3,7 @@
 }
 
 .lmo-textarea__helptext {
+  margin-left: 5px;
   @include md-caption;
   color: $grey-on-white;
 }
@@ -13,4 +14,10 @@
 
 .lmo-textarea .md-char-counter {
   font-size: 14px;
+}
+
+.lmo-textarea__document-form {
+  padding: 16px;
+  min-width: 320px;
+  max-width: 500px;
 }

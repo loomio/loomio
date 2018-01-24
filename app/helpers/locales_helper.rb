@@ -8,26 +8,18 @@ module LocalesHelper
   def preferred_locale
     # allow unsupported locales via params
     normalize(params[:locale]) ||
-    first_supported_locale([user_selected_locale,
-                            browser_detected_locales,
-                            user_detected_locale,
-                            I18n.default_locale].flatten)
+    first_supported_locale(user_selected_locale,
+                           browser_detected_locales,
+                           user_detected_locale)
   end
 
   def logged_out_preferred_locale
     normalize(params[:locale]) ||
-    first_supported_locale([browser_detected_locales,
-                            I18n.default_locale].flatten)
+    first_supported_locale(browser_detected_locales)
   end
 
   def supported_locales
     AppConfig.locales['supported']
-  end
-
-  def angular_locales
-    supported_locales.map do |locale|
-      { key: locale, name: I18n.t(locale.to_sym, scope: :native_language_name) }
-    end
   end
 
   def save_detected_locale(user = current_user)
@@ -36,21 +28,20 @@ module LocalesHelper
     end
   end
 
-  def first_supported_locale(locales)
-    Array(locales).compact.map do |locale|
+  def first_supported_locale(*locales)
+    Array(locales).flatten.compact.map do |locale|
       [normalize(locale),
        strip_dialect(locale),
        fallback_for(locale)].detect do |version|
         supported_locales.include? version
       end
-    end.compact.first
+    end.compact.first || I18n.default_locale
   end
 
   private
 
   def normalize(locale)
-    return nil if locale.nil?
-    locale.to_s.sub('-','_')
+    locale.to_s.sub('-','_') if locale
   end
 
 

@@ -1,13 +1,13 @@
 %md-menu.lmo-dropdown-menu{md-position-mode: "target-right target"}
   %md-button.user-dropdown__dropdown-button{ng-click: "$mdMenu.open()"}
-    %user_avatar{user: "user", no-link: "true", size: "small-circular"}
+    %user_avatar{user: "user", no-link: "true", size: "small"}
   %md-menu-content
     %md-menu-item.user-dropdown__user-details
       .lmo-flex.lmo-flex__center.lmo-flex__space-between
         .user-dropdown__name
           .user-dropdown__user-name.lmo-truncate {{user.name}}
           .user-dropdown__user-username.lmo-truncate @{{user.username}}
-        %user_avatar{user: "user", size: "medium-circular"}
+        %user_avatar{user: "user", size: "medium"}
     %md-menu-item
       %md_button.user-dropdown__list-item-button.user-dropdown__list-item-button--profile{href: "", lmo-href: "/profile", aria-label: "{{ 'user_dropdown.edit_profile' | translate }}", ng-class: "{'user_dropdown__list-item--selected': onPage('profilePage')}"}
         %i.mdi.mdi-18px.lmo-margin-right.mdi-account

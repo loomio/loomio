@@ -65,11 +65,6 @@ be_BY:
     name_label: Імя
     email_label: Email
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Каб далучыцца да групы, неабходна атрымаць запрашэнне ад яе ўдзельніка. "
-        membership_is_invitation_by_admin_only: "Каб далучыцца да групы, неабходна атрымаць запрашэнне ад яе ўдзельніка. "
-    discussions: 'Абмеркаванні'
     options_label: 'Опцыі'
     options:
       label: 'Опцыі'
@@ -79,6 +74,9 @@ be_BY:
       mute: Прыбраць гэту групу з галоўнай старонкі і нагадваць толькі калі @mentioned.
   group_form:
     description_placeholder: 'Апішыце мэты вашай групы, каб чальцы групы ведалі, навошта яны тут.'
+  document:
+    form:
+      title_label: Імя
   membership_requests_page:
     approve: Пацвердзіць
     ignore: Ігнараваць
@@ -114,10 +112,12 @@ be_BY:
   inbox_page:
     no_groups:
       or: альбо
-  discussion:
-    proposals: 'Прапановы'
+  activity_card:
+    unread: Непрачытаныя
   thread_group:
     aria_label: 'Назва групы'
+  thread_context:
+    close_thread: 'Зачыніць'
   delete_comment_dialog:
     title: 'Выдаліць каментар'
     question: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'

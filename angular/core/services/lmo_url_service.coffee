@@ -1,11 +1,12 @@
 angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
   new class LmoUrlService
 
-    route: ({model, action, params}) ->
+    route: ({model, action, params, options}) ->
+      options = options or {}
       if model? and action?
-        @[model.constructor.singular](model, {}, {noStub: true}) + @routePath(action)
+        @[model.constructor.singular](model, {}, _.merge(options, noStub: true)) + @routePath(action)
       else if model?
-        @[model.constructor.singular](model)
+        @[model.constructor.singular](model, {}, options)
       else
         @routePath(action)
 
@@ -21,6 +22,9 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     poll: (p, params = {}, options = {}) ->
       @buildModelRoute('p', p.key, options.action or p.title, params, options)
 
+    outcome: (o, params = {}, options = {}) ->
+      @poll(o.poll(), params, options)
+
     pollSearch: (params = {}, options = {}) ->
       @buildModelRoute('polls', '', options.action, params, options)
 
@@ -30,8 +34,8 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     user: (u, params = {}, options = {}) ->
       @buildModelRoute('u', u[options.key || 'username'], null, params, options)
 
-    comment: (c, params = {}) ->
-      @route model: c.discussion(), action: "comment/#{c.id}", params: params
+    comment: (c, params = {}, options = {}) ->
+      @route model: c.discussion(), action: "comment/#{c.id}", params: params, options: options
 
     membership: (m, params = {}, options = {}) ->
       @route model: m.group(), action: 'memberships', params: params

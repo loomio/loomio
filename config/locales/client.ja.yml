@@ -55,17 +55,15 @@ ja:
     name_label: 氏名
     email_label: Eメール
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "このグループに参加するためには、メンバーに招待される必要があります"
-        membership_is_invitation_by_admin_only: "このグループに参加するためには、コーディネーターに招待される必要があります"
-    discussions: 'ディスカッション'
     options_label: 'オプション'
     options:
       label: 'オプション'
   group_form:
     privacy: 'プライバシー'
     submit_update: '設定更新'
+  document:
+    form:
+      title_label: 氏名
   membership_requests_page:
     approve: 承認
     ignore: 拒否
@@ -91,6 +89,8 @@ ja:
       or: または
   thread_group:
     aria_label: 'グループ名'
+  thread_context:
+    close_thread: '締め切り'
   delete_comment_dialog:
     title: 'コメントを削除します'
     question: '本当にコメントを削除しますか？'

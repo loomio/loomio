@@ -1,11 +1,3 @@
-@mixin cardMinorAction {
-  color: $grey-on-white;
-  margin: 20px 0 0 0;
-  display: block;
-  text-decoration: underline;
-  clear: both;
-}
-
 .lmo-card {
   @include card;
 }
@@ -39,7 +31,7 @@
 }
 
 .lmo-card-heading-padding {
-  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+  @include cardHeadingPadding;
 }
 
 .lmo-card-left-right-padding {

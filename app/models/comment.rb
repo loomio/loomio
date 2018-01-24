@@ -1,7 +1,9 @@
 class Comment < ActiveRecord::Base
+  include CustomCounterCache::Model
   include Translatable
   include Reactable
   include HasMentions
+  include HasCreatedEvent
 
   has_paper_trail only: [:body]
   is_translatable on: :body
@@ -16,15 +18,15 @@ class Comment < ActiveRecord::Base
   alias_attribute :author_id, :user_id
 
   has_many :events, as: :eventable, dependent: :destroy
-  has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :documents, as: :model, dependent: :destroy
 
   validates_presence_of :user
-  validate :has_body_or_attachment
+  validate :has_body_or_document
   validate :parent_comment_belongs_to_same_discussion
-  validate :attachments_owned_by_author
+  validate :documents_owned_by_author
   validates :body, {length: {maximum: Rails.application.secrets.max_message_length}}
 
-  default_scope { includes(:user).includes(:attachments).includes(:discussion) }
+  default_scope { includes(:user).includes(:documents).includes(:discussion) }
 
   scope :in_organisation, ->(group) { joins(:discussion).where("discussions.group_id": group.id) }
   scope :chronologically, -> { order('created_at asc') }
@@ -34,12 +36,31 @@ class Comment < ActiveRecord::Base
   delegate :email, to: :user, prefix: :user
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :participants, to: :discussion, prefix: :discussion
+  delegate :group_id, to: :discussion, allow_nil: true
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
   delegate :id, to: :group, prefix: :group
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
+
+  def created_event_kind
+    :new_comment
+  end
+
+  def parent_event
+    return discussion.created_event unless parent
+    next_parent = parent
+    while (next_parent.parent) do
+      next_parent = next_parent.parent
+    end
+    next_parent.created_event
+  end
+
+
+  def created_event_kind
+    :new_comment
+  end
 
   def is_most_recent?
     discussion.comments.last == self
@@ -58,9 +79,9 @@ class Comment < ActiveRecord::Base
   end
 
   private
-  def attachments_owned_by_author
-    return if attachments.pluck(:user_id).select { |user_id| user_id != user.id }.empty?
-    errors.add(:attachments, "Attachments must be owned by author")
+  def documents_owned_by_author
+    return if documents.pluck(:author_id).select { |user_id| user_id != user.id }.empty?
+    errors.add(:documents, "Attachments must be owned by author")
   end
 
   def parent_comment_belongs_to_same_discussion
@@ -71,8 +92,8 @@ class Comment < ActiveRecord::Base
     end
   end
 
-  def has_body_or_attachment
-    if body.blank? && attachments.blank?
+  def has_body_or_document
+    if body.blank? && documents.blank?
       errors.add(:body, "Comment cannot be empty")
     end
   end

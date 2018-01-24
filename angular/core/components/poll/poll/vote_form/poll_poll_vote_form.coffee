@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollPollVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/poll/vote_form/poll_poll_vote_form.html'
-  controller: ($scope, PollService, MentionService, KeyEventService) ->
+  controller: ($scope, PollService, KeyEventService) ->
     $scope.vars = {}
     $scope.pollOptionIdsChecked = {}
 
@@ -24,5 +24,4 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
           $scope.stance.stanceChoicesAttributes =
             _.map selectedOptionIds, (id) -> {poll_option_id: id}
 
-    MentionService.applyMentions($scope, $scope.stance)
     KeyEventService.submitOnEnter($scope)

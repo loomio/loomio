@@ -44,10 +44,12 @@ gl:
     name_label: Nome
     email_label: Correo electrónico
   group_page:
-    discussions: 'Debates'
     options_label: 'Opcións'
     options:
       label: 'Opcións'
+  document:
+    form:
+      title_label: Nome
   membership_requests_page:
     approve: Dar o visto bo
     ignore: ignorar
@@ -72,8 +74,12 @@ gl:
   inbox_page:
     no_groups:
       or: ou
+  activity_card:
+    unread: Sin ler
   thread_group:
     aria_label: 'Nome do grupo'
+  thread_context:
+    close_thread: 'Pechar'
   delete_comment_dialog:
     title: 'Borrar comentario'
     confirm: 'Borrar comentario'

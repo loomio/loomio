@@ -1,17 +1,16 @@
 class Events::PollEdited < Event
   include Events::PollEvent
 
-  def self.publish!(version, actor, announcement = false)
+  def self.publish!(poll, actor, announcement = false)
+    version = poll.versions.last
     create(kind: "poll_edited",
            user: actor,
-           eventable: version,
+           eventable: poll,
+           parent: poll.created_event,
            announcement: announcement,
-           discussion: version.item.discussion,
+           discussion: poll.discussion,
+           custom_fields: {version_id: version.id, changed_keys: version.object_changes.keys},
            created_at: version.created_at).tap { |e| EventBus.broadcast('poll_edited_event', e) }
-  end
-
-  def poll
-    eventable.item
   end
 
   private

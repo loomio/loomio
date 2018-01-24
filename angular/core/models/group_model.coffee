@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
-  class GroupModel extends DraftableModel
+angular.module('loomioApp').factory 'GroupModel', (BaseModel, HasDrafts, HasDocuments, AppConfig) ->
+  class GroupModel extends BaseModel
     @singular: 'group'
     @plural: 'groups'
     @uniqueIndices: ['id', 'key']
@@ -30,6 +30,8 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     afterConstruction: ->
       if @privacyIsClosed()
         @allowPublicThreads = @discussionPrivacyOptions == 'public_or_private'
+      HasDrafts.apply @
+      HasDocuments.apply @, showTitle: true
 
     relationships: ->
       @hasMany 'discussions'
@@ -38,8 +40,12 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       @hasMany 'memberships'
       @hasMany 'invitations'
       @hasMany 'groupIdentities'
+      @hasMany 'allDocuments', from: 'documents', with: 'groupId', of: 'id'
       @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
       @belongsTo 'parent', from: 'groups'
+
+    hasRelatedDocuments: ->
+      @hasDocuments() or @allDocuments().length > 0
 
     parentOrSelf: ->
       if @isParent() then @ else @parent()

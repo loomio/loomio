@@ -272,18 +272,12 @@ el:
     edited_by: 'Επεξεργάστηκε από <strong>{{name}}</strong>'
     posted: Δημοσιεύθηκε
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Αυτή η ομάδα δεν έχει θέματα ακόμα."
-        membership_is_invitation_only: "Για να συμμετάσχετε σε αυτή την ομάδα πρέπει να έχετε προσκεκληθεί από ένα μέλος."
-        membership_is_invitation_by_admin_only: "Για να συμμετάσχετε σε αυτή την ομάδα πρέπει να έχετε προσκεκληθεί από έναν συντονιστή."
     messages:
       archive_group_success: 'Αυτή η ομάδα έχει απενεργοποιηθεί'
     group_logo: 'Λογότυπο ομάδας'
     new_photo: 'Νέα φωτογραφία'
     new_cover_photo: 'Ανεβάστε νέα φωτογραφία εξωφύλλου'
     new_group_logo: 'Ανεβάστε νέο λογότυπο ομάδας'
-    discussions: 'Θέματα'
     discussions_placeholder: 'Ένα νήμα είναι όπου όλοι μπορούν να συζητήσουν ένα θέμα και να πάρουν αποφάσεις μαζί.'
     members: 'Μέλη'
     members_placeholder: 'Είστε ο μοναδικός εδώ: προσκαλέστε κάποια άτομα να συμμετάσχουν μαζί σας!'
@@ -361,6 +355,11 @@ el:
     heading: 'Αιτήσεις εγγραφής μελών'
     manage_requests: Διαχείριση αιτήσεων
     manage_requests_with_count: Διαχείριση αιτήσεων ({{count}})
+  documents_page:
+    confirm_remove_title: Αφαίρεσε συννημένο
+  document:
+    form:
+      title_label: Όνομα
   membership_requests_page:
     heading: Αιτήσεις εγγραφής μελών
     approve: Έγκριση
@@ -403,12 +402,14 @@ el:
       start: Εκίνηση
       or: ή
   discussion:
-    proposals: 'Προτάσεις'
-    previous_proposals: 'Προηγούμενες Προτάσεις'
     started_by: 'Ξεκίνησε από τον/την <strong>{{name}}</strong>'
+  activity_card:
+    unread: Αδιάβαστα
+    latest: Τελευταία
   thread_group:
     aria_label: 'Όνομα ομάδας'
   thread_context:
+    close_thread: 'Κλείσε'
     mute_thread: 'Σίγαση'
     delete_thread: 'Διαγραφή'
   delete_comment_dialog:

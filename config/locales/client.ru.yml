@@ -208,7 +208,6 @@ ru:
   group_page:
     new_cover_photo: 'Загрузить новое фото обложки'
     new_group_logo: 'Загрузить новый логотип группы'
-    discussions: 'Обсуждения'
     subgroups: 'Подгруппы'
     visibility_label: 'Видимость'
     options_label: 'Опции'
@@ -233,6 +232,11 @@ ru:
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     privacy: 'Конфиденциальность'
     submit_update: 'Обновить настройки'
+  documents_page:
+    confirm_remove_title: Удалить вложение
+  document:
+    form:
+      title_label: Имя
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
@@ -286,20 +290,20 @@ ru:
     no_groups:
       start: Начать
       or: или
-  discussion:
-    proposals: 'Голосования'
-    previous_proposals: 'Предыдущие голосования'
+  activity_card:
+    unread: Непрочитанные
+    latest: Последний
+    attachment_display:
+      image_alt: 'Прикрепленное изображение'
   thread_group:
     aria_label: 'Название группы'
   thread_context:
     thread_options: 'Настройки обсуждения'
     email_settings: 'Настройки Email'
+    close_thread: 'Закрыть'
     mute_thread: 'Заглушен'
     print_thread: 'Печать'
     delete_thread: 'Удалить'
-  activity_card:
-    attachment_display:
-      image_alt: 'Прикрепленное изображение'
   delete_comment_dialog:
     title: 'Удалить комментарий'
     question: 'Вы уверены что хотите удалить комментарий?'

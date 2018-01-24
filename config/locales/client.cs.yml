@@ -7,6 +7,7 @@ cs:
   timezones:
     local: Místní čas ({{value}})
   common:
+    you: Vy
     expand: Rozbalit
     all_day: Celý den
     ok_got_it: Dobře, chápu
@@ -48,6 +49,7 @@ cs:
     copy: 'Kopírovat'
     copy_text: 'Kopírovat text'
     copied: 'Zkopírováno'
+    total: Celkem
     action:
       next: 'Další'
       close: 'Zavřít'
@@ -82,9 +84,21 @@ cs:
       subscribe: Přihlásit odběr
       remind: Připomenout
       resend: Přeposlat
+      send: Odeslat
       resent: Pozvánka přeposlána
     formatting_help:
       label: 'Formátování'
+  ordinal:
+    _1: První
+    _2: Druhý
+    _3: Třetí
+    _4: Čtvrtý
+    _5: Pátý
+    _6: Šestý
+    _7: Sedmý
+    _8: Osmý
+    _9: Devátý
+    _10: Desátý
   devise:
     failure:
       inactive: 'K této e-mailové adrese je přiřazen deaktivovaný účet. Chcete-li svůj účet znovu aktivovat, kontaktujte nás.'
@@ -202,6 +216,11 @@ cs:
     sign_in: 'Přihlásit se'
     toggle_sidebar: 'Přepnout postranní panel'
     logo_title: 'Domovská stránka'
+  user_dropdown:
+    edit_profile: 'Upravit profil'
+    email_settings: 'Nastavení e-mailu'
+    help: 'Nápověda'
+    sign_out: 'Odhlásit se'
   start_menu:
     label: 'Akce uživatele'
     title: 'Akce'
@@ -249,6 +268,12 @@ cs:
     privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
     make_announcement: Oznámení
     notified_count: '{{count}} lidí bude obesláno e-mailem'
+  action_dock:
+    react: Přidat reakci
+    add_comment: Komentář
+    copy_url_comment: Kopírovat URL
+    edit_thread: Upravit kontext
+    translate_thread: Přeložit kontext
   cover_photo_form:
     image_size_helptext: 'Ideální velikost obrázku je 1400 x 320px'
     upload_success: 'Titulní fotka byla úspěšně aktualizována'
@@ -273,20 +298,17 @@ cs:
   revision_history_modal:
     aria_label: Historie revizí
     edited_by: 'Upravil/a <strong>{{name}}</strong>'
+  reactions_display:
+    you: "Vy"
+    you_and_name: "Vy a {{name}}"
+    you_and_name_and_count_more: "Vy, {{name}} a {{count}} dalších"
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Tato skupina zatím nemá žádná vlákna."
-        no_discussions_matching_filters_html: "Žádná vlákna neodpovídají těmto filtrům. <a href='%{link}'>Odstranit filtry</a>."
-        no_public_discussions: "V této skupině nejsou žádná veřejná vlákna."
-        discussions_are_private: "Všechna vlákna v této skupině jsou soukromá."
     messages:
       leave_group_success: 'Tuto skupinu jste opustil(a)'
       archive_group_success: 'Tato skupina byla deaktivována'
     group_logo: 'Logo skupiny'
     new_photo: 'nová fotografie'
     new_group_logo: 'Nahrát nové logo skupiny'
-    discussions: 'Diskuze'
     discussions_placeholder: 'Vlákno je místem, kde každý může diskutovat o tématu a tvořit společně rozhodnutí.'
     members: 'Členové'
     members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
@@ -305,6 +327,10 @@ cs:
       deactivate_group: 'Deaktivování skupiny'
   description_card:
     title: 'Popis skupiny'
+    messages:
+      description_updated: 'Popisek aktualizován'
+  leave_group_form:
+    add_coordinator: 'Přidat koordinátora'
   archive_group_form:
     question: 'Opravdu chcete deaktivovat tuto skupinu?'
     submit: 'Ano, deaktivovat tuto skupinu'
@@ -340,6 +366,11 @@ cs:
     submit_update: 'Aktualizovat nastavení'
     messages:
       group_updated: 'Skupina aktualizována'
+  documents_page:
+    confirm_remove_title: Odebrat přílohu
+  document:
+    form:
+      title_label: Jméno
   membership_requests_page:
     heading: Žádosti o členství
     approve: Schválit
@@ -359,11 +390,14 @@ cs:
     email_addresses: 'E-mailová adresa'
     email_addresses_placeholder: 'např. helperbot@loomio.org, friendlybot@loomio.org'
     custom_message: 'Vlastní zpráva'
+    add_members: 'Přidat členy'
     send: 'Odeslat'
     done: 'Hotovo'
     messages:
       invitation_sent: 'Pozvánka odeslána.'
       invitations_sent: 'Odesláno {{count}} pozvánek.'
+  add_members_modal:
+    add_members: 'Přidat členy'
   memberships_page:
     members: 'Členové'
     name_label: 'Jméno'
@@ -373,13 +407,20 @@ cs:
       remove_member_success: 'Odebrán {{name}}'
       make_admin_success: '{{name}} je nyní koordinátorem'
       remove_admin_success: '{{name}} již není koordinátor'
+  memberships_panel:
+    add_coordinator: Vytvořit koordinátora
   remove_membership_form:
+    aria_label: 'Odebrat člena'
+    title: 'Odebrat člena'
+    question: 'Opravdu chcete odstranit {{name}} ze skupiny {{group}}?'
     submit: 'Odebrat'
   pending_invitations_card:
     heading: Nevyřízené pozvánky
     email: Email
     invitation_link: Odkaz na pozvánku
     sent: Odesláno
+    copy_url: Kopírovat URL
+    revoke_invitation: Revokovat
   cancel_invitation_form:
     heading: Stornovat pozvánku
     question: Opravdu chcete stornovat tuto pozvánku?
@@ -394,6 +435,7 @@ cs:
       password_changed: 'Heslo aktualizováno'
       deactivated: 'Účet deaktivován'
     change_picture_link: 'Změnit obrázek'
+    change_password_link: 'Reset hesla'
     deactivate_user_link: 'Deaktivovat účet...'
     profile: 'Profil'
     edit_profile: 'Upravit profil'
@@ -401,8 +443,21 @@ cs:
     name_label: 'Jméno'
     username_label: 'Uživatelské jméno'
     email_label: 'E-mail'
+    short_bio_label: 'Úvod'
     locale_label: 'Jazyk'
+    locale_placeholder: Zvolte preferovaný jazyk
     update_profile: 'Aktualizovat profil'
+    deactivate_account: 'Deaktivovat účet'
+    help_translate: "Pomozte nám překládat Loomio"
+  change_password_form:
+    set_password: Nastavení hesla
+    change_password: Změna hesla
+    password_changed: Vaše heslo bylo aktualizováno
+  deactivation_modal:
+    aria_label: 'Deaktivovat účet'
+  deactivate_user_form:
+    title: 'Deaktivovat účet'
+    submit: 'Deaktivovat účet'
   email_settings_page:
     header: Nastavení emailu
     all_groups: Nastavení pro všechny skupiny
@@ -456,18 +511,17 @@ cs:
       explanation: Nemáte žádné nepřečtené vlákna, protože nejste členem žádných skupin.
       start: Zahájit
       or: nebo
-  groups_page:
-    page_header: Vaše skupiny
   discussion:
     activity: 'Aktivita'
     activity_placeholder: 'Zatím žádná aktivita!'
-    proposals: 'Návrhy'
-    previous_proposals: 'Předchozí návrhy'
     load_previous: 'Načíst dřívější aktivity'
     started_by: 'Vytvořeno <strong>{{name}}</strong>'
-    edited: 'Upraveno'
-    volume:
-      mute_message: 'Vlákno ztlumeno'
+  activity_card:
+    unread: Nepřečteno
+    latest: Nejnovější
+    attachment_display:
+      aria_label: 'Přiložený soubor:'
+      image_alt: 'Přiložený obrázek'
   thread_group:
     aria_label: 'Název skupiny'
   thread_context:
@@ -476,6 +530,7 @@ cs:
     email_settings: 'Nastavení emailu'
     edit: 'Upravit'
     edit_thread: 'Upravit'
+    close_thread: 'Zavřít'
     mute_thread: 'Ztlumit'
     move_thread: 'Přesunout'
     print_thread: 'Tisk'
@@ -495,11 +550,6 @@ cs:
     confirm: Přesunout téma
     messages:
       success: Téma bylo přesunuto {{name}}
-  activity_card:
-    new_activity: Nová aktivita
-    attachment_display:
-      aria_label: 'Přiložený soubor:'
-      image_alt: 'Přiložený obrázek'
   delete_comment_dialog:
     title: 'Odstranit komentář'
     question: 'Opravdu chcete odstranit tento komentář?'
@@ -529,6 +579,8 @@ cs:
   global:
     messages:
       reload: 'Znovu načíst'
+  authorized_apps_page:
+    revoke: Revokovat
   registered_apps_page:
     name: Jméno
   registered_app_form:
@@ -587,6 +639,8 @@ cs:
   poll_proposal_options:
     agree: Souhlasit
     abstain: Zdržet se
+  poll_meeting_chart_panel:
+    total: Celkem
   poll_admin_page:
     title: Admin - {{title}}
   poll_common_share_form:

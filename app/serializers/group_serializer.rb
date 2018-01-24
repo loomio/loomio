@@ -46,6 +46,8 @@ class GroupSerializer < ActiveModel::Serializer
                         :experiences,
                         :enable_experiments,
                         :features,
+                        :open_discussions_count,
+                        :closed_discussions_count,
                         :recent_activity_count,
                         :is_subgroup_of_hidden_parent,
                         :is_visible_to_parent_members,

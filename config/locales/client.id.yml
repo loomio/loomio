@@ -36,10 +36,12 @@ id:
     name_label: Nama
     email_label: Surel
   group_page:
-    discussions: 'Diskusi'
     options_label: 'Pilihan'
     options:
       label: 'Pilihan'
+  document:
+    form:
+      title_label: Nama
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan
@@ -55,6 +57,8 @@ id:
     locale_label: 'Bahasa'
   thread_group:
     aria_label: 'Nama kelompok'
+  thread_context:
+    close_thread: 'Tutup'
   delete_comment_dialog:
     title: 'Hapus komentar'
     question: 'Apakah Anda ingin menghapus komentar ini?'

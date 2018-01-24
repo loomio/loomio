@@ -36,10 +36,12 @@ ml:
     name_label: പേരു്
     email_label: ഈമെയില്‍
   group_page:
-    discussions: 'ചര്‍ച്ചകള്‍'
     options_label: 'ഐച്ഛികങ്ങള്‍'
     options:
       label: 'ഐച്ഛികങ്ങള്‍'
+  document:
+    form:
+      title_label: പേരു്
   membership_requests_page:
     approve: സ്ഥിരീകരിക്കുക
     ignore: നിരസ്സിക്കുക
@@ -55,6 +57,8 @@ ml:
     locale_label: 'ഭാഷ'
   thread_group:
     aria_label: 'കൂട്ടത്തിന്റെ പേരു്'
+  thread_context:
+    close_thread: 'അടക്കുക'
   delete_comment_dialog:
     title: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
     question: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '

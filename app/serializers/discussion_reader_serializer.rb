@@ -3,22 +3,36 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
 
   attributes :id,
              :discussion_reader_id,
-             :read_items_count,
-             :read_salient_items_count,
-             :last_read_sequence_id,
+             :ranges_string,
+             :read_ranges_string,
              :last_read_at,
-             :seen_by_count
+             :seen_by_count,
+             :discussion_reader_volume,
+             :dismissed_at
 
+  has_one :created_event, serializer: Events::BaseSerializer, root: :events
+
+  def created_event
+    object.discussion.created_event
+  end
 
   def id
     object.discussion_id
   end
 
-   def discussion_reader_id
-     object.id
-   end
+  def ranges_string
+    object.discussion.ranges_string
+  end
 
-   def seen_by_count
-     object.discussion.seen_by_count
-   end
+  def discussion_reader_id
+    object.id
+  end
+
+  def discussion_reader_volume
+    object.volume
+  end
+
+  def seen_by_count
+    object.discussion.seen_by_count
+  end
 end

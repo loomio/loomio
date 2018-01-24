@@ -16,6 +16,7 @@
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
 
     %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet'}
+    %link{href: client_asset_path(:"plugin.min.css"), rel: 'stylesheet'}
 
     = render 'angular/metadata'
     = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
@@ -39,5 +40,6 @@
       window.Loomio.emojis.source = (emojione.shortnames || "").split("|")
       window.Loomio.emojis.render = emojione.shortnameToImage
     %script{src: client_asset_path(:"app.js")}
+    %script{src: client_asset_path(:"plugin.js")}
 
-    = javascript_include_tag 'angular_ahoy'
+    = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]

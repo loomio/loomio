@@ -1,14 +1,15 @@
 angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records) ->
   new class EventHeadlineService
 
-    headlineFor: (event) ->
-      $translate.instant "thread_item.#{@headlineKeyFor(event)}",
-        author:   event.actorName()
+    headlineFor: (event, useNesting = false) ->
+      $translate.instant "thread_item.#{@headlineKeyFor(event, useNesting)}",
+        author:   event.actorName() || $translate.instant('common.anonymous')
         username: event.actorUsername()
         title:    @titleFor(event)
         polltype: @pollTypeFor(event)
 
-    headlineKeyFor: (event) ->
+    headlineKeyFor: (event, useNesting) ->
+      return 'new_comment' if  useNesting && event.isNested() && _.includes(["new_comment", "stance_created"], event.kind)
       switch event.kind
         when 'new_comment'       then @newCommentKey(event)
         when 'discussion_edited' then @discussionEditedKey(event)
@@ -21,15 +22,14 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
         'new_comment'
 
     discussionEditedKey: (event) ->
-      version = Records.versions.find(event.eventable.id)
-      changes = _.keys(version.changes)
+      changes = event.customFields.changed_keys
       if _.contains(changes, 'title')
         'discussion_title_edited'
       else if _.contains(changes, 'private')
-        if version.changes.private[1] then 'discussion_made_private' else 'discussion_made_public'
+        'discussion_privacy_edited'
       else if _.contains(changes, 'description')
         'discussion_context_edited'
-      else if _.contains(changes, 'attachment_ids')
+      else if _.contains(changes, 'document_ids')
         'discussion_attachments_edited'
       else
         'discussion_edited'
@@ -39,7 +39,6 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
         when 'comment'             then event.model().parentAuthorName
         when 'poll', 'outcome'     then event.model().poll().title
         when 'group', 'membership' then event.model().group().name
-        when 'version'             then event.model().model().title
         when 'stance'              then event.model().poll().title
         when 'discussion'
           if event.kind == 'discussion_moved'
@@ -49,5 +48,5 @@ angular.module('loomioApp').factory 'EventHeadlineService', ($translate, Records
 
     pollTypeFor: (event) ->
       poll = switch event.eventable.type
-        when 'poll', 'stance', 'outcome', 'version' then event.model().poll()
+        when 'poll', 'stance', 'outcome' then event.model().poll()
       $translate.instant("poll_types.#{poll.pollType}").toLowerCase() if poll

@@ -97,11 +97,6 @@ sv:
     name_label: Namn
     email_label: Email
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "För att gå med i denna grupp måste du bli inbjuden av en medlem."
-        membership_is_invitation_by_admin_only: "För att gå med i denna grupp måste du bli inbjuden av en koordinator."
-    discussions: 'Diskussioner'
     options_label: 'Alternativ'
     options:
       label: 'Alternativ'
@@ -109,6 +104,9 @@ sv:
     privacy: 'Integritet'
     submit_start_group: 'Startgrupp'
     submit_update: 'Uppdatera inställningar'
+  document:
+    form:
+      title_label: Namn
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera
@@ -137,9 +135,13 @@ sv:
   inbox_page:
     no_groups:
       or: eller
+  activity_card:
+    unread: Olästa
+    latest: Senaste
   thread_group:
     aria_label: 'Gruppnamn'
   thread_context:
+    close_thread: 'Stäng'
     mute_thread: 'Tysta ned'
   delete_comment_dialog:
     title: 'Ta bort kommentaren'

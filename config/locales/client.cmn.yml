@@ -22,10 +22,12 @@ cmn:
     name_label: 名字
     email_label: 邮件
   group_page:
-    discussions: '讨论'
     options_label: '选项'
     options:
       label: '选项'
+  document:
+    form:
+      title_label: 名字
   membership_requests_page:
     approve: 批准
   memberships_page:
@@ -36,6 +38,8 @@ cmn:
     name_label: '名字'
     email_label: '邮件'
     locale_label: '语言'
+  thread_context:
+    close_thread: '关闭'
   delete_comment_dialog:
     title: '删掉评论'
     question: '你确定你想要删掉这条评论吗？'

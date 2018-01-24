@@ -1,19 +1,91 @@
 ro:
+  explore:
+    header: Explreaza grupuri publice
+  activerecord:
+    errors:
+      messages:
+        blank: nu poate fi necompletat
+        invalid: nu este o valoare valida
+  errors:
+    messages:
+      email: Nu este o adresa de email valida
+      spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
+  poll:
+    error:
+      cannot_add_options: Nu poti adauga optiuni la sondajul acesta
+      cannot_remove_options: Nu poti sterge optiuni din acest sondaj
+      must_have_options: Intr-un sondaj trebuie sa existe macar o optiune
+  stance:
+    error:
+      too_short: Te rog selecteaza o optiune
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
+  validate:
+    motion:
+      must_close_in_future: Propunerea trebuie sa se inchida in viitor.
+      one_at_a_time: Exista o alta propunere activa.
   email:
+    login:
+      login: Intra in contul %{name}
+      resend: Acest link expira in 24 de ore si poate fi folosit o singura data.
+    contact_request:
+      footer: "Poti sa raspunzi direct %{name} prin raspuns la acest email"
+    reset_password:
+      link_text: Reseteaza-ti parola
+    start_decision:
+      subject: Creeaza o decizie in Loomio
+      intro: Salut, <strong>%{name}</strong>!
+      action: Ce doresti sa faci?
+      proposal: Creezi o propunere
+      poll: Incepi un sondaj
+    custom: "%{text}"
     group_email:
       intro: "%{who} a facut un anunt in %{group}:"
     by_who: de catre %{person}
     reply_to_this_discussion: Raspunde acestei discutii
+    view_group: Vizualizeaza grupul
+    to_join_group:
+      subject: "%{member} te-a invitat sa intri in %{group_name} pe %{site_name}"
+      invitation_text: "%{member} te-a invitat sa te alaturi grupului lor %{group_name}."
+      invitation_text_html: "te-a invitat sa te alaturi grupului lor"
+      link_help: "Apasa pe linkul de mai jos pentru a accepta invitatia:"
+      accept_invitation: "Accepta invitatia"
+    user_added_to_group:
+      link_help: "Apasa pe linkul de mai jos pentru a intra in grup:"
     unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
     missed_yesterday:
+      subject: Ieri pe %{site_name}
+      do_not_reply: Te rugam nu raspunde acestui email.
       headlines: Titluri
       mark_as_read: Marcheaza ca citit
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
+    group_membership_approved:
+      subject: "Cererea ta de a te alatura grupului %{group_name} a fost acceptata"
+      join_group: "Alatura-te grupului"
     membership_request:
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
+      button_text: Vizualizeaza cerere
+  thread_mailer:
+    new_discussion:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> a inceput o conversatie: %{discussion}"
+    new_comment:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> a comentat in: %{discussion}"
+    comment_replied_to:
+      subject: '%{actor} ti-a raspuns in: %{discussion}'
+    user_mentioned:
+      subject: '%{actor} te-a mentionat in: %{discussion}'
+    change_email_preferences_html: "Modifica-ti <a href='%{email_preferences_url}'> preferintele de email</a>."
   footer:
     about: Despre
     blog: Blog
@@ -28,3 +100,6 @@ ro:
     reset_email_timeframe: In aproximativ 5 minute vei primi un email. Daca nu apare verifica si recipientul spam.
     length_restriction: Parola trebuie sa contina cel putin 8 caractere.
     forbidden_passwords: Parole comune cum ar fi “parola” nu sunt permise, in vederea sigurantei contului tau.
+  poll_mailer:
+    common:
+      unsubscribe: Dezabonare
