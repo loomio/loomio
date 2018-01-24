@@ -280,6 +280,13 @@ FactoryBot.define do
     association :announceable, factory: :discussion
   end
 
+  factory :notification do
+    user
+    event
+    url "https://www.example.com"
+    association :actor, factory: :user
+  end
+
   factory :received_email do
     sender_email "John Doe <john@doe.com>"
     body "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah"
