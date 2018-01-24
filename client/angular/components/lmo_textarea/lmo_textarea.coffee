@@ -31,10 +31,8 @@ angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
       successCallback: (res) ->
         $scope.model.newDocumentIds.push(res.documents[0].id)
 
-
     $scope.modelLength = ->
       $element.find('textarea').val().length
-      upload($scope, $scope.model, {successCallback: sc})(files)
 
     $scope.addDocument = ($mdMenu) ->
       EventBus.broadcast $scope, 'initializeDocument', Records.documents.buildFromModel($scope.model), $mdMenu
