@@ -17,6 +17,7 @@ module.exports =
   signIn: (data, userId, afterSignIn = ->) =>
     Records.import(data)
     Session.signIn(userId, LmoUrlService.params().invitation_token)
+    IntercomService.fetch()
     afterSignIn()
 
   signOut: ->

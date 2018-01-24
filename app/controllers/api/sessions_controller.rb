@@ -4,8 +4,7 @@ class API::SessionsController < Devise::SessionsController
   def create
     if user = attempt_login
       sign_in(user)
-      flash[:notice] = t(:'devise.sessions.signed_in')
-      render json: BootData.new(user).data
+      render json: BootData.new(user, flash: { notice: t(:"devise.sessions.signed_in") }).payload
     else
       render json: { errors: { password: [t(:"devise.failure.invalid")] } }, status: 401
     end

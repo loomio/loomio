@@ -3,6 +3,7 @@ AbilityService  = require 'shared/services/ability_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 ScrollService   = require 'shared/services/scroll_service.coffee'
+FlashService    = require 'shared/services/flash_service.coffee'
 I18n            = require 'shared/services/i18n.coffee'
 
 { viewportSize } = require 'shared/helpers/window.coffee'
@@ -12,8 +13,7 @@ module.exports =
   updateCover:                -> updateCover()
 
   setCurrentComponent: (options) ->
-    title = _.trunc options.title or I18n.t(options.titleKey), 300
-    document.querySelector('title').text = _.compact([title, AppConfig.theme.site_name]).join(' | ')
+    setTitle(options)
 
     AppConfig.currentGroup = options.group
     IntercomService.updateWithGroup(AppConfig.currentGroup)
@@ -21,6 +21,20 @@ module.exports =
 
     scrollTo(options.scrollTo or 'h1') unless options.skipScroll
     updateCover()
+
+  setTitle: (options) ->
+    setTitle(options)
+
+  performFlash: (response = {}) ->
+    return unless flash = response.flash
+    FlashService.success flash.success if flash.success?
+    FlashService.info    flash.notice  if flash.notice?
+    FlashService.warning flash.warning if flash.warning?
+    FlashService.error   flash.error   if flash.error?
+
+setTitle = (options = {}) ->
+  title = _.trunc options.title or I18n.t(options.titleKey), 300
+  document.querySelector('title').text = _.compact([title, AppConfig.theme.site_name]).join(' | ')
 
 updateCover = ->
   $cover = document.querySelector('.lmo-main-background')

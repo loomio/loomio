@@ -38,6 +38,11 @@ Loomio::Application.routes.draw do
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :usage_reports, only: [:create]
 
+    resources :boot do
+      get :site, on: :collection
+      get :user, on: :collection
+    end
+
     resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member
       get :count_explore_results, on: :collection
@@ -215,7 +220,6 @@ Loomio::Application.routes.draw do
     get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
   end
-
 
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json

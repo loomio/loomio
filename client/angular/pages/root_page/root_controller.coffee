@@ -6,14 +6,20 @@ AbilityService  = require 'shared/services/ability_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 
-{ scrollTo, setCurrentComponent }      = require 'shared/helpers/layout.coffee'
-{ viewportSize, trackEvents }          = require 'shared/helpers/window.coffee'
-{ signIn, subscribeToLiveUpdate }      = require 'shared/helpers/user.coffee'
-{ broadcastKeyEvent, registerHotkeys } = require 'shared/helpers/keyboard.coffee'
-{ setupAngular }                       = require 'angular/setup.coffee'
+{ scrollTo, setCurrentComponent, performFlash } = require 'shared/helpers/layout.coffee'
+{ viewportSize, trackEvents }                   = require 'shared/helpers/window.coffee'
+{ signIn, subscribeToLiveUpdate }               = require 'shared/helpers/user.coffee'
+{ broadcastKeyEvent, registerHotkeys }          = require 'shared/helpers/keyboard.coffee'
+{ setupAngular }                                = require 'angular/setup.coffee'
 
 $controller = ($scope, $injector) ->
+  $scope.theme  = AppConfig.theme
+  $scope.assets = AppConfig.assets
   setupAngular($scope, $injector)
+
+  Records.boot.remote.get('user').then (response) ->
+    signIn(response, response.current_user_id, $scope.loggedIn)
+    performFlash(response)
 
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
@@ -24,6 +30,7 @@ $controller = ($scope, $injector) ->
     $scope.pageError = null
     $scope.refreshing = true
     $injector.get('$timeout') -> $scope.refreshing = false
+    IntercomService.fetch()
     IntercomService.boot()
     subscribeToLiveUpdate()
 
@@ -36,8 +43,6 @@ $controller = ($scope, $injector) ->
     $scope.pageError = null
     $scope.links = options.links or {}
     setCurrentComponent(options)
-
-  signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
 
   return
 
