@@ -3,7 +3,6 @@ Session       = require 'shared/services/session.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 
-Intercom = window.Intercom
 lastGroup = {}
 
 mapGroup = (group) ->
@@ -29,14 +28,14 @@ mapGroup = (group) ->
 
 module.exports = new class IntercomService
   available: ->
-    (Intercom || {}).booted?
+    window and window.Intercom and window.Intercom.booted?
 
   boot: ->
-    return unless @available()
+    return unless window.Intercom
     user = Session.user()
     lastGroup = mapGroup(user.parentGroups()[0])
 
-    Intercom 'boot',
+    window.Intercom 'boot',
      admin_link: LmoUrlService.user(user, {}, { noStub: true, absolute: true, namespace: 'admin/users', key: 'id' })
      app_id: AppConfig.intercom.appId
      user_id: user.id
@@ -54,7 +53,7 @@ module.exports = new class IntercomService
 
   shutdown: ->
     return unless @available()
-    Intercom('shutdown')
+    window.Intercom('shutdown')
 
   updateWithGroup: (group) ->
     return unless group? and @available()
@@ -63,11 +62,11 @@ module.exports = new class IntercomService
     user = Session.user()
     return if !user.isMemberOf(group)
     lastGroup = mapGroup(group)
-    Intercom 'update',
+    window.Intercom 'update',
       email: user.email
       user_id: user.id
       company: lastGroup
 
   open: ->
     return unless @available()
-    Intercom('showNewMessage')
+    window.Intercom('showNewMessage')
