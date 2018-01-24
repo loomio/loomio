@@ -59,11 +59,6 @@ ActiveRecord::Schema.define(version: 20180119012350) do
     t.index ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type"
   end
 
-  add_index "ahoy_messages", ["sent_at"], name: "index_ahoy_messages_on_sent_at", using: :btree
-  add_index "ahoy_messages", ["to"], name: "index_ahoy_messages_on_to", using: :btree
-  add_index "ahoy_messages", ["token"], name: "index_ahoy_messages_on_token", using: :btree
-  add_index "ahoy_messages", ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type", using: :btree
-
   create_table "announcements", force: :cascade do |t|
     t.integer  "announceable_id"
     t.string   "announceable_type"
