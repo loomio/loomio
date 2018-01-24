@@ -1,7 +1,7 @@
 class Events::DiscussionEdited < Event
   def self.publish!(discussion, editor)
     version = discussion.versions.last
-    super discussion.versions.last,
+    super discussion,
           parent: discussion.created_event,
           discussion: discussion,
           user: editor,
