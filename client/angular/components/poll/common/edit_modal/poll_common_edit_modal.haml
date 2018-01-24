@@ -6,10 +6,7 @@
       %h1.lmo-h1{translate: "poll_{{poll.pollType}}_form.edit_header"}
       %material_modal_header_cancel_button
   %md-dialog-content
-    %div{ng-switch: "currentStep"}
-      %poll_common_directive{poll: "poll", name: "form", ng-switch-when: "save"}
-      %announcement_form{announcement: "announcement", name: "form", ng-switch-when: "announce"}
+    %poll_common_directive{poll: "poll", name: "form"}
     %dialog_scroll_indicator
-  %md-dialog-actions{ng-switch: "currentStep"}
-    %poll_common_form_actions{poll: "poll", ng-switch-when: "save"}
-    %announcement_form_actions{announcement: "announcement", ng-switch-when: "announce"}
+  %md-dialog-actions
+    %poll_common_form_actions{poll: "poll"}

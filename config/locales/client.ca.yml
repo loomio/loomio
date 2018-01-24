@@ -240,7 +240,6 @@ ca:
     description: 'Descripció'
     description_placeholder: 'Descriviu el propòsit del grup per tal de que els membres sàpiguen perquè estan aquí.'
     privacy_statement:
-      public_on_web: 'El nom i la descripció seran públics a internet'
       private_to_group: 'El nom i la descripció només seran visible pels membres.'
       private_to_parent_members: 'El nom i la descripció només seran visibles pels membres de {{parent}}'
     privacy: 'Privacitat'

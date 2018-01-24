@@ -30,3 +30,4 @@ el:
   poll_mailer:
     common:
       unsubscribe: Κατάργηση εγγραφής
+  comment_by: Σχόλιο από %{comment_author}

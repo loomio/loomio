@@ -169,3 +169,4 @@ it:
       create_outcome: Condividi risultati
       more_undecided: "%{count}ancora.."
       vote_now: Vota ora
+  comment_by: Commento di %{comment_author}

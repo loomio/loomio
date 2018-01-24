@@ -7,10 +7,8 @@
       %h1.lmo-h1{ng-if: "!outcome.isNew()", translate: "poll_common_outcome_form.update_title"}
       %material_modal_header_cancel_button
 
-  %md-dialog-content.lmo-slide-animation{ng-switch: "currentStep"}
-    %poll_common_outcome_form.animated{outcome: "outcome", ng-switch-when: "save"}
-    %announcement_form.animated{announcement: "announcement", ng-switch-when: "announce"}
+  %md-dialog-content
+    %poll_common_outcome_form{outcome: "outcome"}
 
-  %md-dialog-actions.lmo-slide-animation{ng-switch: "currentStep"}
-    %poll_common_outcome_form_actions.animated{outcome: "outcome", ng-switch-when: "save"}
-    %announcement_form_actions.animated{announcement: "announcement", ng-switch-when: "announce"}
+  %md-dialog-actions
+    %poll_common_outcome_form_actions{outcome: "outcome"}

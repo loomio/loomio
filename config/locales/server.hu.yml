@@ -24,3 +24,4 @@ hu:
     public_groups: Nyilvános csoportok
     terms: Feltételek
     independent_install_html: '%{hostname} a Loomio egy független másolatát futtatja:<a href="http://github.com/loomio/loomio">bővebben</a>.'
+  comment_by: '%{comment_author} bejegyzése'
