@@ -55,6 +55,7 @@ class DiscussionService
     actor.ability.authorize! :move, discussion
 
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
+    discussion.polls.each { |poll| poll.update(group: destination) }
 
     EventBus.broadcast('discussion_move', discussion, params, actor)
     Events::DiscussionMoved.publish!(discussion, actor, source)
