@@ -10,11 +10,7 @@ class MessageChannelService
 
   def self.publish(data, to:)
     return unless ensure_valid_channel(to)
-    if ENV['DELAY_FAYE']
-      PrivatePub.delay(priority: 10).publish_to(to.message_channel, data)
-    else
-      PrivatePub.publish_to(to.message_channel, data)
-    end
+    ActionCable.server.broadcast to.message_channel, data
   end
 
   def self.ensure_valid_channel(model)

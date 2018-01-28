@@ -1,5 +1,7 @@
 Loomio::Application.routes.draw do
 
+  mount ActionCable.server => '/cable'
+
   use_doorkeeper do
     skip_controllers :applications, :authorized_applications
   end
