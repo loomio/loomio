@@ -47,7 +47,7 @@ angular.module('loomioApp').directive 'discussionsCard', ['$timeout', ($timeout)
           overwrite: true
     applyLoadingFunction($scope, 'searchThreads')
 
-    $scope.openDiscussionModal = ->
+    $scope.startDiscussion = ->
       ModalService.open 'DiscussionStartModal', discussion: -> Records.discussions.build(groupId: $scope.group.id)
 
     $scope.loading = ->
