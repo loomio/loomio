@@ -42,7 +42,7 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
       name: 'edit_thread'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread($scope.discussion)
-      perform:    -> ModalService.open 'DiscussionModal', discussion: -> $scope.discussion
+      perform:    -> ModalService.open 'DiscussionEditModal', discussion: -> $scope.discussion
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'
