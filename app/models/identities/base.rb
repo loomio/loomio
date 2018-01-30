@@ -1,4 +1,4 @@
-class Identities::Base < ActiveRecord::Base
+class Identities::Base < ApplicationRecord
   extend HasCustomFields
   self.table_name = :omniauth_identities
   validates :identity_type, presence: true

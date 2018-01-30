@@ -26,14 +26,18 @@ class FormalGroup < Group
 
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :comments, through: :discussions
-  has_many :motions, through: :discussions
-  has_many :votes, through: :motions
+  has_many :public_comments, through: :public_discussions, source: :comments
+
   has_many :group_identities, dependent: :destroy, foreign_key: :group_id
   has_many :identities, through: :group_identities
+
   has_many :documents, as: :model, dependent: :destroy
-  has_many :discussion_documents, through: :discussions, source: :documents
-  has_many :poll_documents,       through: :polls,       source: :documents
-  has_many :comment_documents,    through: :comments,    source: :documents
+  has_many :discussion_documents,        through: :discussions,        source: :documents
+  has_many :poll_documents,              through: :polls,              source: :documents
+  has_many :comment_documents,           through: :comments,           source: :documents
+  has_many :public_discussion_documents, through: :public_discussions, source: :documents
+  has_many :public_poll_documents,       through: :public_polls,       source: :documents
+  has_many :public_comment_documents,    through: :public_comments,    source: :documents
 
   belongs_to :cohort
   belongs_to :default_group_cover

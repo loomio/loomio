@@ -1,4 +1,7 @@
 Clients::Request = Struct.new(:method, :url, :params) do
+  include HTTParty
+  debug_output $stdout
+
   attr_accessor :callback, :success
 
   def json
@@ -11,6 +14,6 @@ Clients::Request = Struct.new(:method, :url, :params) do
   end
 
   def response
-    @response ||= HTTParty.send(method, url, params)
+    @response ||= self.class.send(method, url, params)
   end
 end

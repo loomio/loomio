@@ -3,6 +3,7 @@ class Simple::GroupSerializer < ActiveModel::Serializer
   attributes :id,
              :key,
              :name,
+             :full_name,
              :type,
              :created_at,
              :creator_id,

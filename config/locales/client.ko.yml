@@ -299,7 +299,6 @@ ko:
     description: '설명'
     description_placeholder: '그룹의 멤버들이 왜 여기에 모여 있는지 인식할 수 있도록 이 그룹의 목적을 설명해주세요.'
     privacy_statement:
-      public_on_web: '이름과 설명이 웹에 공개됩니다.'
       private_to_group: '이름과 설명은 멤버만 볼 수 있습니다.'
       private_to_parent_members: '{{parent}}의 멤버가 이름과 설명을 볼 수 있습니다. '
     privacy: '개인정보'

@@ -465,6 +465,7 @@ zh_TW:
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+  comment_by: '%{comment_author} 的意見'
   poll_generator:
     proposal:
       title: "給 Shelley 和 Jack 錄取通知書"

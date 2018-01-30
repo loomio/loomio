@@ -97,6 +97,7 @@ Loomio::Application.routes.draw do
     resources :login_tokens, only: [:create]
 
     resources :events, only: :index do
+      get :comment, on: :collection
       patch :remove_from_thread, on: :member
     end
 
@@ -210,7 +211,6 @@ Loomio::Application.routes.draw do
 
   namespace :email_actions do
     get 'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
-    get 'follow_discussion/:discussion_id/:unsubscribe_token',   action: 'follow_discussion',   as: :follow_discussion
     get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
   end
@@ -247,7 +247,7 @@ Loomio::Application.routes.draw do
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
-  get 'd/:key(/:slug)'                     => 'discussions#show',            as: :discussion
+  get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
@@ -262,12 +262,22 @@ Loomio::Application.routes.draw do
   get '/g/:key/membership_requests/new'    => redirect('410.html')
   get '/comments/:id'                      => redirect('410.html')
 
+  # for IE / other browsers which insist on requesting things which don't exist
+  get '/favicon.ico'                       => 'application#ok'
+  get '/wp-login.php'                      => 'application#ok'
+
   Identities::Base::PROVIDERS.each do |provider|
     scope provider do
       get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
       get :authorize,                       to: "identities/#{provider}#create",      as: :"#{provider}_authorize"
       get '/',                              to: "identities/#{provider}#destroy",     as: :"#{provider}_unauthorize"
     end
+  end
+
+  scope :facebook do
+    get :webhook,                         to: 'identities/facebook#verify',   as: :facebook_verify
+    post :webhook,                        to: 'identities/facebook#webhook',  as: :facebook_webhook
+    get :webview,                         to: 'identities/facebook#webview',  as: :facebook_webview
   end
 
   scope :slack do

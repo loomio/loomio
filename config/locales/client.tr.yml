@@ -273,7 +273,6 @@ tr:
     description: 'Tanım'
     description_placeholder: 'Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.'
     privacy_statement:
-      public_on_web: 'Ad ve açıklama web üzerinde herkese açık olacaktır.'
       private_to_group: 'Ad ve açıklama sadece grup üyelerine görünür olacaktır.'
       private_to_parent_members: 'Ad ve açıklama sadece {{parent}} grubunun üyelerine görünür olacaktır.'
     privacy: 'Gizlilik'

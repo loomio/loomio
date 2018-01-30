@@ -1,3 +1,3 @@
-class Poll < ActiveRecord::Base
+class Poll < ApplicationRecord
   belongs_to :motion
 end

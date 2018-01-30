@@ -17,12 +17,12 @@ describe PollsController do
   describe 'show' do
     it 'sets metadata for public polls' do
       poll.update(anyone_can_participate: true)
-      get :show, key: poll.key
+      get :show, params: { key: poll.key }
       expect(assigns(:metadata)[:title]).to eq poll.title
     end
 
     it 'does not set metadata for private polls' do
-      get :show, key: poll.key
+      get :show, params: { key: poll.key }
       expect(assigns(:metadata)[:title]).to be_nil
     end
   end
@@ -30,17 +30,17 @@ describe PollsController do
   describe 'unsubscribe' do
     it 'unsubscribes from a poll' do
       sign_in user
-      expect { get :unsubscribe, key: poll.key }.to change { poll.unsubscribers.count }.by(1)
+      expect { get :unsubscribe, params: { key: poll.key } }.to change { poll.unsubscribers.count }.by(1)
     end
 
     it 'does not remove unsubscriptions' do
       sign_in user
       PollUnsubscription.create(user: user, poll: poll)
-      expect { get :unsubscribe, key: poll.key }.to_not change { poll.unsubscribers.count }
+      expect { get :unsubscribe, params: { key: poll.key } }.to_not change { poll.unsubscribers.count }
     end
 
     it 'can unsubscribe via unsubscribe token' do
-      expect { get :unsubscribe, key: poll.key, unsubscribe_token: user.unsubscribe_token }.to change { poll.unsubscribers.count }.by(1)
+      expect { get :unsubscribe, params: { key: poll.key, unsubscribe_token: user.unsubscribe_token } }.to change { poll.unsubscribers.count }.by(1)
     end
   end
 end

@@ -80,7 +80,7 @@ module Plugins
     private_class_method :plugin_yaml
 
     def self.save_plugin_yaml
-      File.open([Rails.root, :angular, :tasks, :config, 'plugins.yml'].join('/'), 'w') { |f| f.write plugin_yaml.to_yaml }
+      File.open([Rails.root, :client, :tasks, :config, :"plugins.yml"].join('/'), 'w') { |f| f.write plugin_yaml.to_yaml }
     end
     private_class_method :save_plugin_yaml
 

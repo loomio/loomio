@@ -27,7 +27,7 @@ describe Queries::ExploreGroups do
     end
 
     it 'only shows parent groups' do
-      subgroup = FactoryGirl.create(:formal_group, parent: group)
+      subgroup = FactoryBot.create(:formal_group, parent: group)
       subgroup.update_attribute(:is_visible_to_public, true)
       expect(Queries::ExploreGroups.new).to_not include subgroup
     end

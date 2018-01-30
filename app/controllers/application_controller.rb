@@ -6,19 +6,24 @@ class ApplicationController < ActionController::Base
   include CurrentUserHelper
   include ForceSslHelper
 
-  around_filter :process_time_zone
-  around_filter :use_preferred_locale   # LocalesHelper
-  before_filter :set_invitation_token   # CurrentUserHelper
-  before_filter :set_last_seen_at       # CurrentUserHelper
+  around_action :process_time_zone
+  around_action :use_preferred_locale   # LocalesHelper
+  before_action :set_invitation_token   # CurrentUserHelper
+  before_action :set_last_seen_at       # CurrentUserHelper
 
   helper_method :current_user
   helper_method :client_asset_path
+  helper_method :bundle_asset_path
   helper_method :supported_locales
 
   # this boots the angular app
   def index
     initial_payload
     render 'application/index', layout: false
+  end
+
+  def ok
+    head :ok
   end
 
   protected

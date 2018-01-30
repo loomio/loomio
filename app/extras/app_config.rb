@@ -80,10 +80,11 @@ class AppConfig
    end
 
    def self.errbit
-     {
-       key: ENV['ERRBIT_JS_KEY'],
-       url: "https://#{ENV['ERRBIT_HOST']}"
-     }
+     if ENV['ERRBIT_JS_KEY']
+       { key: ENV['ERRBIT_JS_KEY'], url: "https://#{ENV['ERRBIT_HOST']}" }
+     else
+       {}
+     end
    end
 
    def self.json_parse_or_false(name)

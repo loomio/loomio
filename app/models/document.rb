@@ -1,4 +1,4 @@
-class Document < ActiveRecord::Base
+class Document < ApplicationRecord
   belongs_to :model, polymorphic: true, required: false
   belongs_to :author, class_name: 'User', required: true
   validates :url, format: { with: AppConfig::URL_REGEX, message: I18n.t(:"document.error.invalid_format") }, if: :manual_url?
@@ -42,7 +42,7 @@ class Document < ActiveRecord::Base
   end
 
   def is_an_image?
-    file_file_name.to_s.match(AppConfig.image_regex)
+    metadata['icon'] == 'image'
   end
 
   def manual_url?
@@ -66,6 +66,6 @@ class Document < ActiveRecord::Base
   private
 
   def metadata
-    @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(url) })
+    @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(file_content_type || url) })
   end
 end

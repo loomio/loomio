@@ -31,9 +31,9 @@ rake bootstrap
 
 _NB: Take note of the email and password generated at the end of this task; you'll need it to log in once setup is complete_
 
-## Build the angular frontend
+## Build the frontend client
 ```
-cd angular && gulp compile
+cd client && gulp compile
 ```
 ## Launch the server
 ```

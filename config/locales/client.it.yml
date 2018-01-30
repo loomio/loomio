@@ -439,8 +439,6 @@ it:
     members: 'Membri'
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
-    see_all_members: 'Vedi tutti: ({{count}}) membri'
-    pending_invitations: '+ ({{count}}) in attesa'
     subgroups: 'Sottogruppi'
     subgroups_placeholder: 'I sottogruppi danno ai gruppi il proprio spazio e permettono di inviare notiifiche focalizzate sulle persone giuste. '
     invite_people: 'Invita'
@@ -502,7 +500,6 @@ it:
     description: 'Descrizione'
     description_placeholder: 'Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.'
     privacy_statement:
-      public_on_web: 'Il nome e la descrizione saranno pubblici sul web'
       private_to_group: 'Il nome e la descrizione saranno visibili solamente ai membri'
       private_to_parent_members: 'Nome e descrizione sarà visibile ai membri di {{parent}}'
     privacy: 'Privacy'

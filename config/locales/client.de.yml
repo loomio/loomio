@@ -375,7 +375,6 @@ de:
     members: 'Mitglieder'
     members_placeholder: 'Du bist bislang alleine hier: Lade mehr Leute ein!'
     member_options: Mitgliedseinstellungen
-    see_all_members: 'Alle anzeigen: ({{count}}) Mitglieder'
     subgroups: 'Untergruppen'
     subgroups_placeholder: 'Untergruppen bieten einen eigenen Raum für Teams und sorgen dafür, dass Benachrichtigungen zielgerichtet die richtigen Leute erreichen.'
     invite_people: 'Einladen'
@@ -434,7 +433,6 @@ de:
     description: 'Beschreibung'
     description_placeholder: 'Beschreibe die Zielsetzung deiner Gruppe, damit die Mitglieder wissen, warum sie hier sind.'
     privacy_statement:
-      public_on_web: 'Name und Beschreibung werden im Web veröffentlicht'
       private_to_group: 'Name und Beschreibung sind nur Mitgliedern sichtbar'
       private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
     privacy: 'Privatsphäre'

@@ -177,7 +177,7 @@ So now we can simply write our controller code as normal:
       kickflip_page.coffee
 ```
 
-For examples on how to write page controllers (which are subtly different from regular components), check out [thread_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/core/components/thread_page/thread_page_controller.coffee) or [group_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/core/components/group_page/group_page_controller.coffee) in the core Loomio repo.
+For examples on how to write page controllers (which are subtly different from regular components), check out [thread_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/components/thread_page/thread_page_controller.coffee) or [group_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/components/group_page/group_page_controller.coffee) in the core Loomio repo.
 
 _NB: you don't need to call `use_component` as well, calling `use_client_route` will do this for you!)_
 

@@ -1,10 +1,10 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include MessageChannel
   include HasExperiences
   include HasAvatar
-  include UsesWithoutScope
+  # include UsesWithoutScope
   include SelfReferencing
   include NoForbiddenEmails
 
@@ -51,6 +51,14 @@ class User < ActiveRecord::Base
            class_name: 'Membership',
            dependent: :destroy
 
+  has_many :memberships,
+           -> { where(is_suspended: false, archived_at: nil) },
+           dependent: :destroy
+
+  has_many :archived_memberships,
+           -> { where('archived_at IS NOT NULL') },
+           class_name: 'Membership'
+
   has_many :formal_groups,
            -> { where(type: "FormalGroup") },
            through: :memberships,
@@ -62,14 +70,6 @@ class User < ActiveRecord::Base
            through: :admin_memberships,
            class_name: 'Group',
            source: :group
-
-  has_many :memberships,
-           -> { where(is_suspended: false, archived_at: nil) },
-           dependent: :destroy
-
-  has_many :archived_memberships,
-           -> { where('archived_at IS NOT NULL') },
-           class_name: 'Membership'
 
   has_many :membership_requests,
            foreign_key: 'requestor_id',

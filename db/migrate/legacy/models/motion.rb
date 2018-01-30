@@ -1,4 +1,4 @@
-class Motion < ActiveRecord::Base
+class Motion < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   belongs_to :outcome_author, class_name: 'User'

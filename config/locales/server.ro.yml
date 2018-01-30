@@ -103,3 +103,4 @@ ro:
   poll_mailer:
     common:
       unsubscribe: Dezabonare
+  comment_by: Comentariul lui %{comment_author}

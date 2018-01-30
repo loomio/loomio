@@ -24,3 +24,4 @@ sl:
     public_groups: Javne skupine
     terms: Pogoji
     independent_install_html: '%{hostname} uporablja neodvisno kopijo Loomia: <a href="http://github.com/loomio/loomio">več informacij</a>.'
+  comment_by: Komentiral/a %{comment_author}

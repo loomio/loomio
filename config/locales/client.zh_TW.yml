@@ -441,6 +441,7 @@ zh_TW:
     no_threads_here: 這裡沒有討論串可以檢視！
     search_threads: 搜尋討論串……
     private_threads: 您需要是成員才能檢視群組中的私密討論串
+    no_more_threads: 這就是所有在此群組中的討論串了！
     messages:
       privacy:
         members: '這個群組現在只對成員可見'
@@ -458,8 +459,8 @@ zh_TW:
     members: '成員 ({{count}})'
     members_placeholder: '不能只有你 ── 邀請一些夥伴來加入吧！'
     member_options: 成員選項
-    see_all_members: '檢視全部：({{count}}) 位成員'
-    pending_invitations: '+ ({{count}}) 個擱置中'
+    see_all_members: '檢視全部 {{count}} 個成員'
+    pending_invitations: '+ {{count}} 個擱置'
     subgroups: '子群組'
     subgroups_placeholder: '子群組給團隊擁有自己的空間，並可以注重於通知對的夥伴。'
     invite_people: '邀請'
@@ -521,7 +522,7 @@ zh_TW:
     description: '描述'
     description_placeholder: '描述群組的目的讓您的夥伴們知道他們為什麼在這裡。'
     privacy_statement:
-      public_on_web: '名稱與描述都將會在網路上公開'
+      public_on_web: '群組內容的名稱、描述與附件將對公眾可見'
       private_to_group: '名稱與描述都將只會對成員可見。'
       private_to_parent_members: '名稱與描述將會對 {{parent}} 的成員可見'
     privacy: '隱私權'
@@ -908,6 +909,9 @@ zh_TW:
     confirm_change_to_private_thread: '{{groupName}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
     messages:
       success: 討論串已被移動到 {{name}}
+  print_modal:
+    load_discussion: 正在載入整個討論
+    helptext: 只要一秒，我們正在抓取所有在此討論串的動態以供印出……
   delete_comment_dialog:
     title: '刪除意見'
     question: '您確定要刪除這個意見嗎？'

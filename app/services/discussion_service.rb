@@ -22,6 +22,7 @@ class DiscussionService
     discussion.assign_attributes(params.slice(:private, :title, :description, :pinned))
     version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
     discussion.assign_attributes(params.slice(:document_ids))
+    discussion.document_ids = [] if params.slice(:document_ids).empty?
 
     return false unless discussion.valid?
     discussion.save!
@@ -54,6 +55,7 @@ class DiscussionService
     actor.ability.authorize! :move, discussion
 
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
+    discussion.polls.each { |poll| poll.update(group: destination) }
 
     EventBus.broadcast('discussion_move', discussion, params, actor)
     Events::DiscussionMoved.publish!(discussion, actor, source)

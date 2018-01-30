@@ -258,3 +258,4 @@ da:
         stance_created: "%{actor} deltog i: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+  comment_by: Kommentar fra %{comment_author}

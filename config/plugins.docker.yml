@@ -1,6 +1,5 @@
 loomio_tags:
   repo:         https://github.com/loomio/loomio_tags.git
-  branch:       close-threads
 
 loomio_truncate_comment:
   repo:         https://github.com/loomio/loomio_truncate_comment.git

@@ -1,4 +1,4 @@
-class Contact < ActiveRecord::Base
+class Contact < ApplicationRecord
   belongs_to :user
   validates_presence_of :name, :email, :source, :user_id
 

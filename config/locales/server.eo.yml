@@ -1,18 +1,40 @@
 eo:
+  date:
+    formats:
+      for_another_year: "%-d-%-m-%y"
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
   email:
+    login:
+      subject: Ensaluti al %{site_name}.
+      intro: Saluton %{name}, jen estas ligilo por ensaluti al via %{site_name} konto.
+      login: Ensaluti kiel %{name}
+    reset_password:
+      link_text: Restarigi vian pasvorton
+    start_decision:
+      intro: Saluton, <strong>%{name}</strong>!
+      poll: Startigi enketon
     group_email:
       intro: "%{who} anoncis al %{group}"
     by_who: de %{person}
     reply_to_this_discussion: Respondi al ĉi tiu diskuto
+    view_group: Vidi grupon
+    to_join_group:
+      accept_invitation: "Akcepti inviton"
     unsubscribe: 'Malaboni aŭ ŝanĝi viajn retpoŝtpreferojn:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> por malaboni aŭ ŝanĝi viajn retpoŝtpreferojn."
     missed_yesterday:
+      subject: Hieraŭ en %{site_name}
       mark_as_read: Marki kiel legita
       thanks_for_reading: Dankon por legi, havu bonegan tagon!
       marked_as_read_success: Ĉio de la retpoŝtaĵo markiĝis kiel legita
+    group_membership_approved:
+      join_group: "Aliĝi al la grupo"
     membership_request:
       subject: "%{who} petis aliĝi al %{which_group}"
       view_group: Vi povas aprobi aŭ malaprobi la peton ĉi tie
+      button_text: Vidu peton
   footer:
     about: Pri
     blog: Blogo
@@ -22,3 +44,80 @@ eo:
     pricing: Prezo
     public_groups: Publikaj grupoj
     terms: Kondiĉoj
+  password_reset:
+    change_your_password: Ŝanĝi vian pasvorton
+    change_my_password: Ŝanĝi pasvorton
+    confirm_new_password: Konfirmi vian pasvorton
+    new_password: Nova pasvorto
+  how_it_works_thread:
+    title: Kiel uzi Loomio-n
+  markdown:
+    intro:
+      title: |
+        # Kio estas markdown?
+    lists:
+      title: |
+        ## Listoj
+    links:
+      title: |
+        ## Ligiloj kaj bildoj
+  poll_mailer:
+    common:
+      or: aŭ
+      view_on_loomio: Vidi ĝin en %{site_name}
+      results: Rezultoj
+      responses: Respondoj
+      change_your_stance: Ŝanĝi
+      your_response: "Vi voĉdonis:"
+      please_respond: Bonvolu respondi
+      more_undecided: "%{count} pli…"
+      vote_now: Voĉdonu nun
+    proposal:
+      subject:
+        poll_closing_soon: 'Propozicio fermiĝis en 24 horoj: %{title}'
+        poll_closing_soon_author: 'Via propozicio fermiĝos en 24 horoj: %{title}'
+        poll_expired: "Propozicio fermita: %{title}"
+        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
+      header:
+        poll_created: '<strong>%{actor}</strong> startigis propozicion'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    poll:
+      subject:
+        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    count:
+      subject:
+        poll_closing_soon: '24 ceteraj horoj por kontroli: %{title}'
+        poll_closing_soon_author: 'Via kontrolo finiĝos en 24 horoj: %{title}'
+        poll_expired: "Kontrolo fermita: %{title}"
+        stance_created: "%{actor} partoprenis en: %{title}"
+        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    dot_vote:
+      subject:
+        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    meeting:
+      subject:
+        stance_created: '%{actor} partoprenis en: %{title}'
+        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    ranked_choice:
+      subject:
+        stance_created: '%{actor} partoprenis en: %{title}'
+        stance_created_author: "Bonvolu kontroli vian voĉdonon pri: %{title}"
+      body:
+        voted: '<strong>%{participant}</strong>:'
+  comment_by: Komentis %{comment_author}
+  poll_unsubscribe:
+    visit_poll: Vidi enketon
+  slack:
+    poll_closing_soon: "Rememoro: *%{poll}* fermiĝos en 24 horoj"
+    poll_expired: "*%{poll}* fermiĝis"
+    poll_closed: "*%{title}* jam fermiĝis! <%{url}|klaku ĉi tie> por vidi la rezultojn."
+    go_to_slack: Iri al Slack
