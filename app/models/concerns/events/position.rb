@@ -17,7 +17,7 @@ module Events::Position
   end
 
   def set_depth
-    self.depth = parent_id ? (parent.depth + 1) : 0
+    self.depth = parent ? (parent.depth + 1) : 0
   end
 
   def refresh_order_value

@@ -4,6 +4,7 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
 moment     = require 'moment'

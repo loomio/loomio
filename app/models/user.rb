@@ -57,6 +57,10 @@ class User < ApplicationRecord
            -> { where(is_suspended: false, archived_at: nil) },
            dependent: :destroy
 
+  has_many :archived_memberships,
+           -> { where('archived_at IS NOT NULL') },
+           class_name: 'Membership'
+
   has_many :formal_groups,
            -> { where(type: "FormalGroup") },
            through: :memberships,
@@ -68,11 +72,6 @@ class User < ApplicationRecord
            through: :admin_memberships,
            class_name: 'Group',
            source: :group
-
-
-  has_many :archived_memberships,
-           -> { where('archived_at IS NOT NULL') },
-           class_name: 'Membership'
 
   has_many :membership_requests,
            foreign_key: 'requestor_id',

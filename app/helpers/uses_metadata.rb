@@ -1,10 +1,10 @@
 module UsesMetadata
   def show
     metadata
-    if request.format == :xml
-      # load rss feed
-    else
-      index
+    respond_to do |format|
+      format.xml
+      format.rss  { render :"show.xml" }
+      format.html { index }
     end
   end
 

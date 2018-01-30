@@ -150,10 +150,15 @@ module.exports = class PollModel extends BaseModel
       'edit'
 
   addOption: =>
+    @handleDateOption()
     return unless @newOptionName and !_.contains(@pollOptionNames, @newOptionName)
     @pollOptionNames.push @newOptionName
     @setMinimumStanceChoices()
     @newOptionName = ''
+
+  handleDateOption: =>
+    @newOptionName = moment(@optionDate).format('YYYY-MM-DD')                                     if @optionDate
+    @newOptionName = moment("#{@newOptionName} #{@optionTime}", 'YYYY-MM-DD h:mma').toISOString() if @optionTime
 
   setMinimumStanceChoices: =>
     return unless @isNew() and @hasRequiredField('minimum_stance_choices')
