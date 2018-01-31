@@ -239,6 +239,11 @@ en:
       <p>Dismissing a thread removes it from your unread items. If any new
         activity occurs in the thread, it will show as unread again.</p>
 
+  link_explanation_form:
+    body_html: |
+      <p>You've just created a decision that anyone with the link can participate in. Click the
+      <strong>'Copy URL'</strong> button in the action dock to copy this link to your clipboard to share it.</p>
+
   inbox:
     clear: 'Clear'
     latest: 'Latest'
@@ -1557,39 +1562,6 @@ en:
 
   poll_admin_page:
     title: Admin - {{title}}
-
-  poll_common_share_form:
-    no_group_selected: No group selected
-    share_a_link: Share link
-    share_a_link_helptext: Create a shareable link to distribute. Anyone who has access to the link will be able to participate.
-    anyone_can_participate: Anyone with link can participate
-    anyone_can_participate_true: Shareable link created
-    anyone_can_participate_false: Shareable link revoked
-    get_link: Copy link
-    invite_visitor: Email guests
-    invite_visitor_helptext: Invite individuals to this decision by email address. Guests will be able to participate in this decision only.
-    send_email: Send email
-    shareable_link_created: Anyone can now participate in this decision
-    shareable_link_revoked: This decision is now invite-only
-    shareable_link: Shareable link
-    guests_invited: Sent to {{count}} people
-    guest_revoked: Revoked access for {{email}}
-    existing_guests: Existing guests
-    new_guests: New emails to invite
-    enter_email: "E.g. guest@example.com"
-    reminded: Reminder sent!
-    send_emails: Send invitations ({{count}})
-    share_group: Group
-    share_group_helptext: Select a group to share this decision with. Members of the group will be able to participate.
-    cannot_move_poll_helptext: This poll is part of the discussion <strong>{{discussion}}</strong> in <strong>{{group}}</strong>, and so cannot be moved.
-    move_group_helptext: Be careful! Moving a decision out of a group may cause some people to lose access to it. Existing votes will still be recorded.
-    set_group: Set group
-    group_set: Group updated
-    view_poll: View poll
-    email_invited: 'Invitation email sent to {{email}}'
-    email_exists: '{{email}} has already been invited'
-    email_empty: 'Please enter an email'
-    email_invalid: "That doesn't appear to be a valid email"
 
   poll_common_publish_facebook_preview:
     shared_a: shared a

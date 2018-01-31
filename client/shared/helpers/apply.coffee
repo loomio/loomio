@@ -17,7 +17,7 @@ module.exports =
 
   applyPollStartSequence: (scope, options = {}) ->
     applySequence scope,
-      steps: ['choose', 'save', 'announce']
+      steps: ['choose', 'save', 'explainShareable', 'announce']
       initialStep: if scope.poll.pollType then 'save' else 'choose'
       emitter: options.emitter or scope
       chooseComplete: (_, pollType) ->

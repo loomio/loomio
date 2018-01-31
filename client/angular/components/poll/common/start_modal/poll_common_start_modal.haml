@@ -9,8 +9,11 @@
     .lmo-slide-animation{ng-switch: "currentStep"}
       %poll_common_choose_type.animated{ng-switch-when: "choose", poll: "poll"}
       %poll_common_directive.animated{ng-switch-when: "save", poll: "poll", name: "form", modal: "true"}
+      %link_explanation_form.animated{ng-switch-when: "explainShareable", poll: "poll"}
       %announcement_form.animated{ng-switch-when: "announce", announcement: "announcement"}
     %dialog_scroll_indicator
   %md-dialog-actions.lmo-slide-animation{ng-if: "currentStep != 'choose'", ng-switch: "currentStep"}
     %poll_common_form_actions.animated{ng-switch-when: "save", poll: "poll"}
+    .lmo-md-action.animated{ng-switch-when: "explainShareable"}
+      %md-button.md-raised.md-primary{type: "button", ng-click: "$emit('nextStep')", translate: "common.ok_got_it"}
     %announcement_form_actions.animated{ng-switch-when: "announce", announcement: "announcement"}
