@@ -198,9 +198,6 @@ module.exports = new class AbilityService
     else
       @canAdministerPoll() || _.contains(@poll().voters(), Session.user())
 
-  canSharePoll: (poll) ->
-    @canEditPoll(poll)
-
   canRemovePollOptions: (poll) ->
     poll.isNew() || (poll.isActive() && poll.stancesCount == 0)
 

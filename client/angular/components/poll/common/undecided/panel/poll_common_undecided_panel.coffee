@@ -28,8 +28,8 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ->
         path: 'pending'
         params: params
 
-    $scope.canSharePoll = ->
-      AbilityService.canSharePoll($scope.poll)
+    $scope.canEditPoll = ->
+      AbilityService.canEditPoll($scope.poll)
 
     $scope.showUndecided = ->
       $scope.showingUndecided = true
@@ -42,7 +42,7 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ->
       $scope.loaders.memberships.numLoaded < $scope.poll.undecidedUserCount
 
     $scope.moreInvitationsToLoad = ->
-      $scope.canSharePoll() and
+      $scope.canEditPoll() and
       $scope.loaders.invitations.numLoaded < $scope.poll.guestGroup().pendingInvitationsCount
 
     $scope.loadMemberships = ->
