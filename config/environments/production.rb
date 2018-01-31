@@ -25,16 +25,11 @@ Loomio::Application.configure do
 
   config.action_dispatch.x_sendfile_header = nil
 
-  if ENV['USE_DALLI_CACHE_STORE']
-    config.cache_store = :dalli_store,
-                      (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                      {:username => ENV["MEMCACHIER_USERNAME"],
-                       :password => ENV["MEMCACHIER_PASSWORD"],
-                       :failover => true,
-                       :socket_timeout => 1.5,
-                       :socket_failure_delay => 0.2
-                      }
-  end
+  config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', expires_in: 90.minutes
+  config.action_dispatch.rack_cache = {
+    metastore:   'redis://localhost:6379/1/metastore',
+    entitystore: 'redis://localhost:6379/1/entitystore'
+  }
 
   config.active_support.deprecation = :notify
 
