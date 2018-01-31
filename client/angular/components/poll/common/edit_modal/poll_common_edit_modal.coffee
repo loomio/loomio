@@ -1,3 +1,5 @@
+Records = require 'shared/services/records.coffee'
+
 { iconFor }       = require 'shared/helpers/poll.coffee'
 { applySequence } = require 'shared/helpers/apply.coffee'
 

@@ -1,35 +1,7 @@
 .poll-common-settings
-  .md-block.poll-common-multiple-choice.poll-common-checkbox-option{ng-if: "multipleChoiceOption()"}
+  .md-block.poll-common-multiple-choice.poll-common-checkbox-option{ng-repeat: "setting in settings track by $index"}
     .poll-common-checkbox-option__text.md-list-item-text
-      %h3{translate: "poll_common_settings.multiple_choice.title"}
-      %p.md-caption{ng-if: "poll.multipleChoice", translate: "poll_common_settings.multiple_choice.helptext_on"}
-      %p.md-caption{ng-if: "!poll.multipleChoice", translate: "poll_common_settings.multiple_choice.helptext_off"}
-    %md-checkbox{ng-model: "poll.multipleChoice"}
-
-  .md-block.poll-common-anyone-can-participate.poll-common-checkbox-option
-    .poll-common-checkbox-option__text.md-list-item-text
-      %h3{translate: "poll_common_settings.anyone_can_participate.title"}
-      %p.md-caption{ng-if: "poll.anyoneCanParticipate", translate: "poll_common_settings.anyone_can_participate.helptext_on"}
-      %p.md-caption{ng-if: "!poll.anyoneCanParticipate", translate: "poll_common_settings.anyone_can_participate.helptext_off"}
-    %md-checkbox{ng-model: "poll.anyoneCanParticipate"}
-
-  .md-block.poll-common-notify-on-participate.poll-common-checkbox-option
-    .poll-common-checkbox-option__text.md-list-item-text
-      %h3{translate: "poll_common_settings.notify_on_participate.title"}
-      %p.md-caption{ng-if: "poll.notifyOnParticipate", translate: "poll_common_settings.notify_on_participate.helptext_on"}
-      %p.md-caption{ng-if: "!poll.notifyOnParticipate", translate: "poll_common_settings.notify_on_participate.helptext_off"}
-    %md-checkbox{ng-model: "poll.notifyOnParticipate"}
-
-  .md-block.poll-common-anonymous.poll-common-checkbox-option{ng-if: "votersCanBeAnonymous()"}
-    .poll-common-checkbox-option__text.md-list-item-text
-      %h3{translate: "poll_common_settings.anonymous.title"}
-      %p.md-caption{ng-if: "poll.anonymous", translate: "poll_common_settings.anonymous.helptext_on"}
-      %p.md-caption{ng-if: "!poll.anonymous", translate: "poll_common_settings.anonymous.helptext_off"}
-    %md-checkbox{ng-model: "poll.anonymous"}
-
-  .md-block.poll-common-notify-group.poll-common-checkbox-option{ng-if: "votersCanAddOptions()"}
-    .poll-common-checkbox-option__text.md-list-item-text
-      %h3{translate: "poll_common_settings.voters_can_add_options.title"}
-      %p.md-caption{ng-if: "poll.voterCanAddOptions", translate: "poll_common_settings.voters_can_add_options.helptext_on"}
-      %p.md-caption{ng-if: "!poll.voterCanAddOptions", translate: "poll_common_settings.voters_can_add_options.helptext_off"}
-    %md-checkbox{ng-model: "poll.voterCanAddOptions"}
+      %h3{translate: "poll_common_settings.{{snakify(setting)}}.title"}
+      %p.md-caption{ng-if: "poll[setting]", translate: "poll_common_settings.{{snakify(setting)}}.helptext_on"}
+      %p.md-caption{ng-if: "!poll[setting]", translate: "poll_common_settings.{{snakify(setting)}}.helptext_off"}
+    %md-checkbox{ng-model: "poll[setting]"}

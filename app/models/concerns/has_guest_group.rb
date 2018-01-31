@@ -4,6 +4,8 @@ module HasGuestGroup
     belongs_to :guest_group, class_name: "GuestGroup"
     has_many :guests, through: :guest_group, source: :members
     has_many :guest_invitations, through: :guest_group, source: :invitations
+    after_save :update_anyone_can_participate, if: :update_anyone_can_participate_value
+    attr_accessor :update_anyone_can_participate_value
   end
 
   def guest_group
@@ -21,12 +23,20 @@ module HasGuestGroup
   end
 
   def anyone_can_participate
-    # TODO not sure what invitation -> voter flow is.
     guest_group.membership_granted_upon_request?
   end
 
   def anyone_can_participate=(bool)
-    guest_group.update(membership_granted_upon: if bool then :request else :invitation end)
+    value = bool ? :request : :invitation
+    if new_record?
+      self.update_anyone_can_participate_value = value # delay saving until after record is persisted
+    else
+      self.update_anyone_can_participate value
+    end
+  end
+
+  def update_anyone_can_participate(value = update_anyone_can_participate_value)
+    guest_group.update(membership_granted_upon: value)
   end
 
 end

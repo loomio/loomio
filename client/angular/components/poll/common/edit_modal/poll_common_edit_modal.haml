@@ -5,8 +5,11 @@
       %i.mdi{class: "{{icon()}}"}
       %h1.lmo-h1{translate: "poll_{{poll.pollType}}_form.edit_header"}
       %material_modal_header_cancel_button
-  %md-dialog-content
-    %poll_common_directive{poll: "poll", name: "form"}
+  %md-dialog-content.lmo-slide-animation
+    %div{ng-switch: "currentStep"}
+      %poll_common_directive.animated{poll: "poll", name: "form", ng-switch-when: "save"}
+      %announcement_form.animated{announcement: "announcement", ng-switch-when: "announce"}
     %dialog_scroll_indicator
-  %md-dialog-actions
-    %poll_common_form_actions{poll: "poll"}
+  %md-dialog-actions.lmo-slide-animation{ng-switch: "currentStep"}
+    %poll_common_form_actions.animated{poll: "poll", ng-switch-when: "save"}
+    %announcement_form_actions.animated{announcement: "announcement", ng-switch-when: "announce"}
