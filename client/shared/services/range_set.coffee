@@ -28,29 +28,24 @@ module.exports = new class RangeSet
     _.any ranges, (range) ->
       _.inRange(value, range[0], range[1]+1)
 
-  subtractRange: (whole, part) ->
-    return [whole]                                        if (part.length == 0) || (part[0] > whole[1]) || (part[1] < whole[0])
-    return []                                             if (part[0] <= whole[0]) && (part[1] >= whole[1])
-    return [[whole[0], part[0]-1], [part[1]+1, whole[1]]] if (part[0] >  whole[0]) && (part[1] <  whole[1])
-    return [[part[1] + 1, whole[1]]]                      if (part[0] == whole[0]) && (part[1] <  whole[1])
-    return [[whole[0], part[0]-1]]                        if (part[0] >  whole[0]) && (part[1] == whole[1])
+  firstMissing: (superset, subset) =>
+    [supersetRange, subsetRange] = @firstMissingRange @reduce(superset), @reduce(subset)
+    return unless supersetRange and subsetRange
 
-  subtractRanges: (wholes, parts) ->
-    output = wholes
-    while !_.isEqual(@subtractRangesLoop(output, parts), output)
-      output = @subtractRangesLoop(output, parts)
-    @reduce output
+    if subsetRange[0] > supersetRange[0]
+      # return the beginning of the superset range if the subset range does not cover it
+      supersetRange[0]
+    else
+      # otherwise return the first value the subset range does not cover
+      subsetRange[1] + 1
 
-  subtractRangesLoop: (wholes, parts) ->
-    output = []
-    _.each wholes, (whole) =>
-      if _.any(parts, (part) => @overlaps(whole, part))
-        _.each _.select(parts, (part) => @overlaps(whole, part)), (part) =>
-          _.each @subtractRange(whole, part), (remainder) =>
-            output.push remainder
-      else
-        output.push whole
-    output
+  # returns the first range in the subset which does not match the superset's ranges
+  firstMissingRange: (superset, subset) ->
+    for supersetRange in superset
+      if !_.find subset, supersetRange
+        subsetRange = _.first _.filter subset, (range) -> range[0] >= supersetRange[0]
+        return [supersetRange, subsetRange]
+    []
 
   # # err need to exrtact this to an npm module
   # selfTest: ->
@@ -61,15 +56,11 @@ module.exports = new class RangeSet
   #   reduceSimple:    _.isEqual @reduce([[1,1]]), [[1,1]]
   #   reduceMerge:     _.isEqual @reduce([[1,2],[3,4]]),            [[1,4]]
   #   reduceEmpty:     _.isEqual @reduce([]), []
-  #   subtractWhole:   _.isEqual @subtractRange([1,1], [1,1]),      []
-  #   subtractNone:    _.isEqual @subtractRange([1,1], [2,2]),      [[1,1]]
-  #   subtractLeft:    _.isEqual @subtractRange([1,2], [1,1]),      [[2,2]]
-  #   subtractRight:   _.isEqual @subtractRange([1,2], [2,2]),      [[1,1]]
-  #   subtractMiddle:  _.isEqual @subtractRange([1,3], [2,2]),      [[1,1], [3,3]]
   #   overlapsNone:              @overlaps([1,2], [3,4]) == false
   #   overlapsPart:              @overlaps([1,2], [2,3]) == true
   #   overlapsWhole:             @overlaps([1,2], [1,2]) == true
-  #   subtractRanges1: _.isEqual @subtractRanges([[1,1]], [[1,1]]), []
-  #   subtractRanges2: _.isEqual @subtractRanges([[1,2]], [[1,1]]), [[2,2]]
-  #   subtractRanges3: _.isEqual @subtractRanges([[1,2], [4,6]], [[1,1], [5,5]]), [[2,2], [4,4], [6,6]]
-  #   subtractRanges4: _.isEqual @subtractRanges([[1,2], [4,8]], [[5,6], [7,8]]), [[1,2], [4,4]]
+  #   firstMissing0:   _.isEqual @firstMissing([[1,3]], [[1,3]]), undefined
+  #   firstMissing1:   _.isEqual @firstMissing([[1,3]], [[1,2]]), 3
+  #   firstMissing2:   _.isEqual @firstMissing([[1,3]], [[2,3]]), 1
+  #   firstMissing3:   _.isEqual @firstMissing([[1,2], [4,6]], [[1,2], [4,5]]), 6
+  #   firstMissing4:   _.isEqual @firstMissing([[1,2], [4,6]], [[1,2], [5,6]]), 4
