@@ -416,7 +416,7 @@ en:
     add_resource: Add an attachment
     edit_group: Edit group context
     add_comment: Comment
-    copy_url_comment: Copy URL
+    copy_url: Copy URL
     edit_thread: Edit context
     announce_thread: Let people know about this thread
     announce_thread_active: (No one has been notified of this thread yet)
@@ -439,6 +439,8 @@ en:
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
     comment_copied: Comment URL copied to clipboard
+    poll_copied: Decision URL copied to clipboard
+    discussion_copied: Thread URL copied to clipboard
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -1229,11 +1231,6 @@ en:
     loomio_group: Group
     loomio_group_placeholder: (no group selected)
 
-  poll_common_voter_add_options:
-    add_options: Voters may add options
-    helptext_on: Participants may add their own options when voting
-    helptext_off: Participants will select from the options you provide
-
   poll_common_notify_group:
     notify_group: Announcement
     members_helptext: Your group will not be notified
@@ -1253,15 +1250,27 @@ en:
     location: Location
     location_placeholder: Where will this meeting take place?
 
-  poll_common_notify_on_participate:
-    notify_on_participate: Notify me when people participate
-    helptext_on: You will be notified whenever someone participates
-    helptext_off: You will receive results when this activity closes
-
-  poll_common_anonymous:
-    anonymous: Anonymous Participants
-    helptext_on: Participant info will not be shown with each response
-    helptext_off: Participants will be shown with their responses
+  poll_common_settings:
+    multiple_choice:
+      title: Multiple choice
+      helptext_on: Participants will be able to select multiple options.
+      helptext_off: Participants must select only one option.
+    anyone_can_participate:
+      title: Anyone can participate
+      helptext_on: Anyone with the link to the poll can participate.
+      helptext_off: Only people who are invited, or part of this group can participate.
+    notify_on_participate:
+      title: Notify me when people participate
+      helptext_on: You will be notified whenever someone participates.
+      helptext_off: You will receive results when this activity closes.
+    anonymous:
+      title: Anonymous participants
+      helptext_on: Participant info will not be shown with each response.
+      helptext_off: Participants will be shown with their responses.
+    voters_can_add_options:
+      title: Voters may add options
+      helptext_on: Participants may add their own options when voting.
+      helptext_off: Participants will select from the options you provide.
 
   poll_common_close_form:
     title: Close a poll early
@@ -1381,8 +1390,6 @@ en:
     details_placeholder: Provide any clarifying details people might need to answer the question.
     add_option_placeholder: Add option
     remove_option: Remove option
-    multiple_choice: Multiple choice
-    multiple_choice_explained: Allow voters to select as many options as they like.
     poll_created: Poll created
     poll_updated: Poll updated
 
@@ -1415,6 +1422,7 @@ en:
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option
     dots_per_person: Dots per person
+    dots_per_person_helptext: The number of dots each participant will distribute
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
 
