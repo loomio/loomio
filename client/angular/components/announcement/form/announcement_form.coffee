@@ -12,6 +12,8 @@ angular.module('loomioApp').directive 'announcementForm', ->
       .finally ->
         $scope.$emit 'doneProcessing'
 
+    $scope.nuggets = [1,2,3,4].map (index) -> "announcement.form.helptext_#{index}"
+
     $scope.search = (query) ->
       Records.announcements.fetchNotified(query)
   ]

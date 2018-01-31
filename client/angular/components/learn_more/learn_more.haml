@@ -1,0 +1,19 @@
+%span.learn-more.md-accent
+  %md-menu.lmo-pointer{md-prevent-menu-close: "true"}
+    %span.lmo-pointer{md-colors: "{'color': 'default-accent'}", md-menu-origin: "true", translate: "{{text}}", ng-click: "open($mdMenu, $event)"}
+    %md-menu-content.learn-more__menu-content
+      %md-toolbar
+        .md-toolbar-tools.lmo-flex__space-between
+          %i.mdi.mdi-help-circle-outline
+          %h1.lmo-h1{translate: "{{title}}"}
+          %div
+      .learn-more__content.lmo-flex--row.lmo-flex__center
+        .lmo-pointer{ng-click: "prev()", ng-if: "hasPrev()", md-prevent-menu-close: "true"}
+          %i.mdi.mdi-chevron-left.mdi-24px
+        .lmo-slide-animation.lmo-flex__grow
+          .learn-more__nugget.animated{ng-repeat: "nugget in nuggets track by $index", ng-if: "currentNugget == nugget", translate: "{{nugget}}"}
+        .lmo-pointer{ng-click: "next()", ng-if: "hasNext()", md-prevent-menu-close: "true"}
+          %i.mdi.mdi-chevron-right.mdi-24px
+      .lmo-md-action
+        %md-button.md-primary.md-raised{type: "button"}
+          %span{translate: "common.ok_got_it"}

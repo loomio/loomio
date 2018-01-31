@@ -1,4 +1,8 @@
 .announcement-form
+  %p.announcement-form__help.md-caption
+    %span.announcement-help__collapsed-body{translate: "announcement.form.helptext"}>
+    %learn_more{title: "announcement.form.helptext_title", nuggets: "nuggets"}
+
   %label.announcement-form__label{translate: "announcement.form.label"}
   %md-chips.announcement-form__chips{ng-model: "announcement.notified", md-require-match: "true"}
     %md-autocomplete{md-items: "$chip in search(query)", md-no-cache: "true", md-search-text: "query", placeholder: "{{'announcement.form.placeholder' | translate}}", md-min-length: "3", md-delay: "300"}
