@@ -362,7 +362,7 @@ module Dev::NintiesMoviesHelper
     PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryBot.build(:outcome, poll: poll)
     OutcomeService.create(outcome: outcome, actor: jennifer)
-    outcome_announcement = FactoryGirl.build(:announcement, announceable: outcome, notified: notified)
+    outcome_announcement = FactoryBot.build(:announcement, announceable: outcome, notified: notified)
     AnnouncementService.create(announcement: outcome_announcement, actor: jennifer)
 
     #'stance_created'
