@@ -71,8 +71,6 @@ ActiveRecord::Schema.define(version: 20180201024646) do
     t.index ["announceable_type", "announceable_id"], name: "index_announcements_on_announceable_type_and_announceable_id"
   end
 
-  add_index "announcements", ["announceable_type", "announceable_id"], name: "index_announcements_on_announceable_type_and_announceable_id", using: :btree
-
   create_table "attachments", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "filename",             limit: 255
