@@ -15,6 +15,10 @@ class Events::AnnouncementCreated < Event
     User.where(id: eventable.user_ids)
   end
 
+  def email_method
+    eventable.kind
+  end
+
   def email_recipients
     notification_recipients.where(email_announcements: true)
   end

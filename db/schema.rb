@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119012350) do
+ActiveRecord::Schema.define(version: 20180201024646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,13 +60,15 @@ ActiveRecord::Schema.define(version: 20180119012350) do
   end
 
   create_table "announcements", force: :cascade do |t|
-    t.integer  "announceable_id"
-    t.string   "announceable_type"
-    t.jsonb    "invitation_ids",    default: [], null: false
-    t.jsonb    "user_ids",          default: [], null: false
+    t.integer "announceable_id"
+    t.string "announceable_type"
+    t.jsonb "invitation_ids", default: [], null: false
+    t.jsonb "user_ids", default: [], null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "author_id",         default: 0
+    t.integer "author_id", default: 0
+    t.string "kind", null: false
+    t.index ["announceable_type", "announceable_id"], name: "index_announcements_on_announceable_type_and_announceable_id"
   end
 
   add_index "announcements", ["announceable_type", "announceable_id"], name: "index_announcements_on_announceable_type_and_announceable_id", using: :btree

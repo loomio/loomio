@@ -25,7 +25,7 @@ angular.module('loomioApp').directive 'pollCommonDetailsPanel', ->
       active:     -> $scope.poll.announcementsCount == 0
       canPerform: -> AbilityService.canAdministerPoll($scope.poll)
       perform:    -> ModalService.open 'AnnouncementModal', announcement: ->
-        Records.announcements.buildFromModel($scope.poll)
+        Records.announcements.buildFromModel($scope.poll, 'poll_announced')
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'

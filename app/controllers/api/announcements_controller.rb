@@ -12,11 +12,8 @@ class API::AnnouncementsController < API::RestfulController
   private
 
   def model_to_notify
-    case params[:kind]
-    when 'discussion_edited', 'new_discussion'              then load_and_authorize(:discussion)
-    when 'poll_created', 'poll_edited', 'poll_option_added' then load_and_authorize(:poll)
-    when 'outcome_created'                                  then load_and_authorize(:outcome)
-    else raise ActiveRecord::RecordNotFound.new
-    end
+    load_and_authorize(:discussion, optional: true) ||
+    load_and_authorize(:poll, optional: true) ||
+    load_and_authorize(:outcome)
   end
 end

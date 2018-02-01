@@ -13,6 +13,8 @@ class Announcement < ActiveRecord::Base
 
   update_counter_cache :announceable, :announcements_count, only: [:create, :destroy]
 
+  validates :kind, presence: true
+
   alias :user :author
   attr_accessor :invitation_emails
 

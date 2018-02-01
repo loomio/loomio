@@ -5,9 +5,9 @@ angular.module('loomioApp').directive 'announcementForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
-    if $scope.announcement.kind
+    if !_.contains ['poll_announced', 'discussion_announced', 'outcome_announced'], $scope.announcement.kind
       $scope.$emit 'processing'
-      Records.announcements.fetchNotifiedDefault($scope.announcement.model(), $scope.announcement.kind).then (notified) ->
+      Records.announcements.fetchNotifiedDefault($scope.announcement).then (notified) ->
         $scope.announcement.notified = notified
       .finally ->
         $scope.$emit 'doneProcessing'
