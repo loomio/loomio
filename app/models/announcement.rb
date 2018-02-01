@@ -11,6 +11,8 @@ class Announcement < ActiveRecord::Base
   delegate :poll, to: :announceable
   delegate :body, to: :announceable
 
+  before_validation :ensure_kind
+
   update_counter_cache :announceable, :announcements_count, only: [:create, :destroy]
 
   validates :kind, presence: true
@@ -38,5 +40,11 @@ class Announcement < ActiveRecord::Base
       when 'Invitation'    then self.invitation_emails += Array(n['id'])
       end
     end
+  end
+
+  private
+
+  def ensure_kind
+    self.kind ||= :"#{announceable_type.downcase}_announced"
   end
 end

@@ -2,7 +2,7 @@ class AnnouncementService
   def self.create(announcement:, actor:)
     actor.ability.authorize! :create, announcement
 
-    announcement.author = actor
+    announcement.assign_attributes(author: actor)
     return false unless announcement.valid?
 
     announcement.invitation_ids = InvitationService.bulk_create(

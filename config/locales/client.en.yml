@@ -340,6 +340,7 @@ en:
     header: "Notifications"
     no_notifications: "You don't have any notifications"
     new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> shared a discussion <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{title}}</strong>"
     motion_closed: "Proposal closed: <strong>{{title}}</strong>"
     publish_outcome: "Publish an outcome"
@@ -362,10 +363,12 @@ en:
     new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> started a {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> edited a {{poll_type}}: <strong>{{title}}</strong>"
+    poll_announced: "<strong>{{name}}</strong> shared a {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
     poll_option_added: "<strong>{{name}}</strong> added options to a {{poll_type}}: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
 
   position_buttons_panel:

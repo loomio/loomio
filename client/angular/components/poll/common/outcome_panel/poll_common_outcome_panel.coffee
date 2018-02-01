@@ -19,7 +19,7 @@ angular.module('loomioApp').directive 'pollCommonOutcomePanel', ->
       active:     -> $scope.poll.outcome().announcementsCount == 0
       canPerform: -> AbilityService.canAdministerPoll($scope.poll)
       perform:    -> ModalService.open 'AnnouncementModal', announcement: ->
-        Records.announcements.buildFromModel($scope.poll.outcome(), 'outcome_announced')
+        Records.announcements.buildFromModel($scope.poll.outcome())
     ,
       name: 'edit_outcome'
       icon: 'mdi-pencil'
