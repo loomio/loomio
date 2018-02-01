@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
     if $scope.announcement.kind
       $scope.$emit 'processing'
       Records.announcements.fetchNotifiedDefault($scope.announcement).then (notified) ->
-        $scope.announcement.notified = notified
+        $scope.announcement.notified = notified if _.any(notified)
       .finally ->
         $scope.$emit 'doneProcessing'
 

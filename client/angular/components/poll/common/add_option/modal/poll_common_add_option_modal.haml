@@ -5,7 +5,9 @@
       %i.mdi.mdi-lightbulb-on-outline
       %h1.lmo-h1{translate: "poll_common_add_option.modal.title"}
       %material_modal_header_cancel_button
-  %md-dialog-content
-    %poll_common_add_option_form{poll: "poll"}
-  %md-dialog-actions
-    %poll_common_add_option_form_actions{poll: "poll"}
+  %md-dialog-content.lmo-slide-animation{ng-switch: "currentStep"}
+    %poll_common_add_option_form.animated{ng-switch-when: "save", poll: "poll"}
+    %announcement_form.animated{ng-switch-when: "announce", announcement: "announcement"}
+  %md-dialog-actions.lmo-slide-animation{ng-switch: "currentStep"}
+    %poll_common_add_option_form_actions.animated{ng-switch-when: "save", poll: "poll"}
+    %announcement_form_actions.animated{ng-switch-when: "announce", announcement: "announcement"}

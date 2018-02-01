@@ -16,7 +16,7 @@ module.exports =
       'anyoneCanParticipate',
       'notifyOnParticipate',
       ('anonymous'            if fieldFromTemplate(poll.pollType, 'can_vote_anonymously')),
-      ('votersCanAddOptions'  if fieldFromTemplate(poll.pollType, 'can_add_options'))
+      ('voterCanAddOptions'   if fieldFromTemplate(poll.pollType, 'can_add_options'))
     ]
 
   myLastStanceFor: (poll) ->
