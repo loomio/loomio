@@ -46,8 +46,6 @@ describe 'Polls', ->
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'
     page.click '.poll-common-vote-form__submit'
-
-    page.click '.announcement-form__submit'
     page.expectFlash '1 notifications sent'
 
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Agree'
