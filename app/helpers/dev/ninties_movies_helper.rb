@@ -347,22 +347,22 @@ module Dev::NintiesMoviesHelper
     invitation = InvitationService.bulk_create(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
     InvitationService.redeem(invitation.first, emilio)
 
-    #'poll_created' ??
+    #'poll_created'
     notified = [{type: 'Group', id: create_discussion.group_id, notified_ids: [patrick.id]}.with_indifferent_access]
 
     poll = FactoryBot.create(:poll, discussion: create_discussion, author: jennifer, closing_at: 24.hours.from_now)
-    poll_announcement = FactoryBot.build(:announcement, announceable: poll, notified: notified)
+    poll_announcement = FactoryBot.build(:announcement, announceable: poll, notified: notified, kind: :poll_created)
     AnnouncementService.create(announcement: poll_announcement, actor: jennifer)
 
     #'poll_closing_soon'
     PollService.publish_closing_soon
 
-    #'outcome_created' ??
+    #'outcome_created'
     poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
     PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryBot.build(:outcome, poll: poll)
     OutcomeService.create(outcome: outcome, actor: jennifer)
-    outcome_announcement = FactoryBot.build(:announcement, announceable: outcome, notified: notified)
+    outcome_announcement = FactoryBot.build(:announcement, announceable: outcome, notified: notified, kind: :outcome_created)
     AnnouncementService.create(announcement: outcome_announcement, actor: jennifer)
 
     #'stance_created'
@@ -372,10 +372,9 @@ module Dev::NintiesMoviesHelper
     jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
-    #'poll_option_added' ??
-    poll.tap(&:save).reload
-    patrick_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
-    StanceService.create(stance: patrick_stance, actor: patrick)
-    PollService.add_options(poll: poll, actor: jennifer, params: {poll_option_names: ['new_option']})
+    #'poll_option_added'
+    added_announcement = FactoryBot.build(:announcement, announceable: poll, notified: notified, kind: :poll_option_added)
+    byebug
+    AnnouncementService.create(announcement: added_announcement, actor: jennifer)
   end
 end
