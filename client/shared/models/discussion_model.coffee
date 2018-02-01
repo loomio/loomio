@@ -152,9 +152,6 @@ module.exports = class DiscussionModel extends BaseModel
   hasRead: (id) ->
     RangeSet.includesValue(@readRanges, id)
 
-  unreadRanges: ->
-    RangeSet.subtractRanges(@ranges, @readRanges)
-
   unreadItemsCount: ->
     @itemsCount - @readItemsCount()
 
@@ -171,7 +168,7 @@ module.exports = class DiscussionModel extends BaseModel
     (_.last(@readRanges) || [])[1]
 
   firstUnreadSequenceId: ->
-    (_.first(@unreadRanges()) || [])[0]
+    RangeSet.firstMissing(@ranges, @readRanges)
 
   dismiss: ->
     @remote.patchMember @keyOrId(), 'dismiss'
