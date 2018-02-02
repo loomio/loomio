@@ -120,7 +120,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       row :subdomain
       row :is_referral
       row :cohort_id
-      row :subscription_id
+      row :subscription
       row :enable_experiments
       row :analytics_enabled
       row :experiences
