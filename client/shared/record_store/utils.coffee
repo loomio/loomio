@@ -1,5 +1,3 @@
-moment = require 'moment'
-
 module.exports =
   new class Utils
 

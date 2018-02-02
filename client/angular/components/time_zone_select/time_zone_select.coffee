@@ -1,5 +1,3 @@
-moment      = require 'moment'
-
 AppConfig   = require 'shared/services/app_config.coffee'
 EventBus    = require 'shared/services/event_bus.coffee'
 TimeService = require 'shared/services/time_service.coffee'

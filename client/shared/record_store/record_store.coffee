@@ -9,6 +9,7 @@ module.exports =
       recordsInterface.setRemoteCallbacks(@defaultRemoteCallbacks())
       name = recordsInterface.model.plural
       @[_.camelCase(name)] = recordsInterface
+      recordsInterface.onInterfaceAdded()
       @collectionNames.push name
 
     import: (data) ->

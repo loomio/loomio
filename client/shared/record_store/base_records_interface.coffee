@@ -16,6 +16,8 @@ module.exports =
 
       @remote = new RestfulClient(@model.apiEndPoint or @model.plural)
 
+    onInterfaceAdded: ->
+
     setRemoteCallbacks: (callbacks) ->
       _.merge @remote, _.pick(callbacks, ['onPrepare', 'onSuccess', 'onUploadSuccess', 'onFailure', 'onCleanup'])
 
