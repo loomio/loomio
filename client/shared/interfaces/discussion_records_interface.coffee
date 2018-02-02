@@ -1,6 +1,5 @@
 BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
 DiscussionModel      = require 'shared/models/discussion_model.coffee'
-moment               = require 'moment'
 
 module.exports = class DiscussionRecordsInterface extends BaseRecordsInterface
   model: DiscussionModel

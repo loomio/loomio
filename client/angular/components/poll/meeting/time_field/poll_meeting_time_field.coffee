@@ -1,5 +1,3 @@
-moment = require 'moment'
-
 TimeService = require 'shared/services/time_service.coffee'
 
 angular.module('loomioApp').directive 'pollMeetingTimeField', ->
