@@ -27,13 +27,20 @@ eo:
     pray: Preĝe
     fingers_crossed: Bonŝancon!
     v: Pacon!
+    ok_hand: Bone!
   poll_types:
     proposal: Propozicio
     count: Kontroli
     poll: Enketo
   common:
     you: Vi
+    expand: Klarigu!
+    all_day: Tut-tage
+    ok_got_it: Bone, komprenite!
     learn_more: lerni pli
+    not_found: Ne trovebla
+    time_zone: Horzono
+    local_time: Loka tempo
     confirm_discard_changes: Ĉu tamen ne fari la ŝanĝojn?
     time:
       am: atm
@@ -45,13 +52,17 @@ eo:
     group: 'Grupo'
     groups: 'Grupoj'
     threads: 'Fadenoj'
+    decisions: 'Decidoj'
     settings: 'Agordoj'
     help: 'Helpo'
+    anonymous: Anonima
     privacy:
+      privacy: 'Privateco'
       public: 'Publika'
       open: 'Malfermita'
       closed: 'Fermita'
       private: 'Privata'
+      secret: 'Sekreto'
     selected: 'Elektita'
     date_range:
       today: 'Hodiaŭ'
@@ -64,7 +75,11 @@ eo:
       proposal: 'Propono'
     copy: 'Kopii'
     copy_text: 'Kopii tekston'
+    copied: 'Kopiite al la tondaĵ-poŝo'
+    points_abbrev: Ĉiu voĉo valoras {{score}} poentojn
+    total: Entute
     action:
+      next: 'Sekva'
       close: 'Fermigi'
       save: 'Konservi'
       save_changes: 'Konservi ŝanĝojn'
@@ -111,6 +126,8 @@ eo:
     mute_thread: Silentigi fadenon
   inbox:
     unread: 'Nelegitaj'
+  signed_out_modal:
+    ok: "Bone!"
   comment_form:
     edit_comment: 'Redakti komenton'
     delete_comment: 'Forigi komenton'
@@ -166,6 +183,8 @@ eo:
     options_label: 'Opcioj'
     options:
       label: 'Opcioj'
+  group_form:
+    privacy: 'Privateco'
   document:
     form:
       title_label: Nomo
@@ -314,6 +333,8 @@ eo:
     disagree_verb: "malkonsentita"
   poll_count_vote_form:
     reason_label: Mesaĝo
+  poll_meeting_chart_panel:
+    total: Entute
   poll_dot_vote_vote_form:
     too_many_dots: Vi uzis tro da punktoj.
   poll_common_share_form:
@@ -329,6 +350,8 @@ eo:
     timestamp: Hodiaŭ je {{timestamp}}
   poll_common_participant_form:
     participant_name_placeholder: Kio estas via nomo?
+  polls_page:
+    heading: Decidoj
   auth_form:
     sign_in: Registriĝi
     sign_in_as: Registriĝi kiel {{name}}

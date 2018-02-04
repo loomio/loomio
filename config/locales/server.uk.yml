@@ -75,7 +75,6 @@ uk:
   invitation_form:
     error:
       too_many_pending: "Ви досягли більш ніж максимально можливих %{count} запрошень в очікуванні для цієї групи"
-      all_email_addresses_belong_to_members: "Ми не відправили запрошення на ці адреси електронної пошти, тому що вони належать людям що вже в групі."
   password_reset:
     change_your_password: Змінити пароль
     change_my_password: Змінити пароль
