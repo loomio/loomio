@@ -1,5 +1,3 @@
-moment = require 'moment'
-
 BaseModel       = require 'shared/record_store/base_model.coffee'
 AppConfig       = require 'shared/services/app_config.coffee'
 HasMentions     = require 'shared/mixins/has_mentions.coffee'

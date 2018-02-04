@@ -30,10 +30,14 @@ module.exports = new class Session
   currentGroupId: ->
     @currentGroup? && @currentGroup.id
 
-  updateLocale: () ->
+  updateLocale: ->
     locale = (@user().locale || "en").toLowerCase().replace('_','-')
     I18n.useLocale(locale)
     return if locale == "en"
-    Records.momentLocales.fetch(path: "#{locale}.js").then((response) -> response.text()).then (data) ->
-      eval(data)
-      moment.locale(locale)
+    Records.momentLocales.fetch(path: "#{momentLocaleFor(locale)}.js").then -> moment.locale(locale)
+
+momentLocaleFor = (locale) ->
+  if _.contains AppConfig.momentLocales.valid, locale
+    locale
+  else
+    _.first locale.split('-')

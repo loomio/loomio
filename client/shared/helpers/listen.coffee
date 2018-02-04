@@ -1,5 +1,3 @@
-moment  = require 'moment'
-
 Records  = require 'shared/services/records.coffee'
 Session  = require 'shared/services/session.coffee'
 EventBus = require 'shared/services/event_bus.coffee'

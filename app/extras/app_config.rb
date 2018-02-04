@@ -10,6 +10,7 @@ class AppConfig
     notifications
     doctypes
     locales
+    moment_locales
     group_features
   )
 
