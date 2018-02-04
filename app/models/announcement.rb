@@ -48,8 +48,6 @@ class Announcement < ActiveRecord::Base
     self.event ||= model.events.create(kind: :"#{model_type.downcase}_announced", user: user)
   end
 
-  private
-
   def model
     @model ||= event&.eventable || model_type.classify.constantize.find(model_id) if model_type && model_id
   rescue NameError
