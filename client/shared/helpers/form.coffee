@@ -13,14 +13,23 @@ module.exports =
   submitForm: (scope, model, options = {}) ->
     submit(scope, model, options)
 
+  submitDiscussion: (scope, model, options = {}) ->
+    submit(scope, model, _.merge(
+      flashSuccess: "discussion_form.messages.#{actionName(model)}"
+      failureCallback: ->
+        scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
+      successCallback: (data) ->
+        _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
+        EventBus.emit scope, 'nextStep', createdEvent(data, 'new_discussion')
+    , options))
+
   submitOutcome: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
-        outcome = Records.outcomes.find(data.outcomes[0].id)
-        EventBus.emit scope, 'nextStep', outcome
+        EventBus.emit scope, 'nextStep', createdEvent(data, 'outcome_created')
     , options))
 
   submitStance: (scope, model, options = {}) ->
@@ -53,9 +62,8 @@ module.exports =
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
-        poll = Records.polls.find(data.polls[0].key)
-        poll.removeOrphanOptions()
-        EventBus.emit scope, 'nextStep', poll
+        model.removeOrphanOptions()
+        EventBus.emit scope, 'nextStep', createdEvent(data, 'poll_created')
       cleanupFn: ->
         EventBus.emit scope, 'doneProcessing'
     , options))
@@ -159,6 +167,10 @@ calculateFlashOptions = (options) ->
 
 actionName = (model) ->
   if model.isNew() then 'created' else 'updated'
+
+createdEvent = (data, kind) ->
+  eventData = _.first _.filter data.events, (event) -> event.kind == kind
+  Records.events.find(eventData.id) if eventData?
 
 errorTypes =
   400: 'badRequest'

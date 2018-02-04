@@ -18,8 +18,7 @@ module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
         kind: announcement.kind
         "#{announcement.announceableType.toLowerCase()}_id": announcement.announceableId
 
-  buildFromModel: (model, kind) ->
-    @build
-      kind: kind
-      announceableId:   model.id
-      announceableType: _.capitalize model.constructor.singular
+  buildFromModel: (model) ->
+    switch model.constructor.singular
+      when 'event' then @build(eventId: model.id)
+      else              @build(modelId: model.id, modelType: _.capitalize(model.constructor.singular))

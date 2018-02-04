@@ -9,6 +9,6 @@ angular.module('loomioApp').directive 'installSlackDecideForm', ->
   controller: ['$scope', ($scope) ->
     $scope.poll = Records.polls.build groupId: $scope.group.id
     applyPollStartSequence $scope,
-      afterSaveComplete: (poll) ->
-        $scope.announcement = Records.announcements.buildFromModel(poll, 'poll_created')
+      afterSaveComplete: (event) ->
+        $scope.announcement = Records.announcements.buildFromModel(event)
   ]
