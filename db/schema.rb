@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(version: 20180204211236) do
     t.datetime "updated_at"
     t.integer "discussion_id", null: false
     t.datetime "last_read_at"
+    t.integer "last_read_sequence_id", default: 0, null: false
     t.integer "volume"
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at"
