@@ -1,6 +1,7 @@
 Queries::Notified::Default = Struct.new(:kind, :model, :user) do
 
   def results
+    raise ActiveRecord::RecordNotFound unless respond_to?(kind, true)
     send(kind)
   end
 

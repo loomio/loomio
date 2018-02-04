@@ -19,7 +19,7 @@ module PrettyUrlHelper
     when Stance                        then poll_url(model.poll, opts.merge(change_vote: true))
     when Comment                       then comment_url(model.discussion, model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
-    when Announcement                  then polymorphic_url(model.announceable, opts)
+    when Announcement                  then polymorphic_url(model.eventable, opts)
     else super
     end
   end
@@ -29,7 +29,7 @@ module PrettyUrlHelper
     when PaperTrail::Version   then model.item.title
     when Comment, Discussion   then model.discussion.title
     when Poll, Outcome, Stance then model.poll.title
-    when Announcement          then polymorphic_title(model.announceable)
+    when Announcement          then polymorphic_title(model.eventable)
     # TODO: deal with polymorphic reactions here
     when Reaction              then model.reactable.discussion.title
     when Group, Membership

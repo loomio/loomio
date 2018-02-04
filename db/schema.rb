@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201024646) do
+ActiveRecord::Schema.define(version: 20180204203640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,28 +60,25 @@ ActiveRecord::Schema.define(version: 20180201024646) do
   end
 
   create_table "announcements", force: :cascade do |t|
-    t.integer "announceable_id"
-    t.string "announceable_type"
     t.jsonb "invitation_ids", default: [], null: false
     t.jsonb "user_ids", default: [], null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "author_id", default: 0
-    t.string "kind", null: false
-    t.index ["announceable_type", "announceable_id"], name: "index_announcements_on_announceable_type_and_announceable_id"
+    t.integer "event_id"
   end
 
   create_table "attachments", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "filename",             limit: 255
-    t.text     "location"
-    t.integer  "comment_id"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.integer  "filesize"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
+    t.integer "user_id"
+    t.string "filename", limit: 255
+    t.text "location"
+    t.integer "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "filesize"
+    t.string "file_file_name"
+    t.string "file_content_type"
+    t.integer "file_file_size"
     t.datetime "file_updated_at"
     t.integer "attachable_id"
     t.string "attachable_type"
@@ -227,33 +224,32 @@ ActiveRecord::Schema.define(version: 20180201024646) do
     t.string "key", limit: 255
     t.string "iframe_src", limit: 255
     t.datetime "last_activity_at"
-    t.integer  "last_sequence_id",                default: 0,     null: false
-    t.integer  "first_sequence_id",               default: 0,     null: false
-    t.integer  "salient_items_count",             default: 0,     null: false
-    t.integer  "versions_count",                  default: 0
-    t.integer  "closed_polls_count",              default: 0,     null: false
-    t.boolean  "pinned",                          default: false, null: false
-    t.integer  "importance",                      default: 0,     null: false
-    t.integer  "seen_by_count",                   default: 0,     null: false
-    t.integer  "guest_group_id"
-    t.integer  "announcements_count",             default: 0,     null: false
-    t.string   "ranges_string"
+    t.integer "last_sequence_id", default: 0, null: false
+    t.integer "first_sequence_id", default: 0, null: false
+    t.integer "salient_items_count", default: 0, null: false
+    t.integer "versions_count", default: 0
+    t.integer "closed_polls_count", default: 0, null: false
+    t.boolean "pinned", default: false, null: false
+    t.integer "importance", default: 0, null: false
+    t.integer "seen_by_count", default: 0, null: false
+    t.integer "guest_group_id"
+    t.integer "announcements_count", default: 0, null: false
+    t.string "ranges_string"
+    t.index ["author_id"], name: "index_discussions_on_author_id"
+    t.index ["created_at"], name: "index_discussions_on_created_at"
+    t.index ["group_id"], name: "index_discussions_on_group_id"
+    t.index ["key"], name: "index_discussions_on_key", unique: true
+    t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: { last_activity_at: :desc }
+    t.index ["private"], name: "index_discussions_on_private"
   end
 
-  add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
-  add_index "discussions", ["created_at"], name: "index_discussions_on_created_at", using: :btree
-  add_index "discussions", ["group_id"], name: "index_discussions_on_group_id", using: :btree
-  add_index "discussions", ["key"], name: "index_discussions_on_key", unique: true, using: :btree
-  add_index "discussions", ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: {"last_activity_at"=>:desc}, using: :btree
-  add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
-
   create_table "documents", force: :cascade do |t|
-    t.integer  "model_id"
-    t.string   "model_type"
-    t.string   "title"
-    t.string   "url"
-    t.string   "doctype",        null: false
-    t.string   "color",          null: false
+    t.integer "model_id"
+    t.string "model_type"
+    t.string "title"
+    t.string "url"
+    t.string "doctype", null: false
+    t.string "color", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "icon"
@@ -576,10 +572,10 @@ ActiveRecord::Schema.define(version: 20180201024646) do
     t.integer "author_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "latest",         default: true, null: false
-    t.integer  "poll_option_id"
-    t.jsonb    "custom_fields",  default: {},   null: false
-    t.integer  "announcements_count",   default: 0,     null: false
+    t.boolean "latest", default: true, null: false
+    t.integer "poll_option_id"
+    t.jsonb "custom_fields", default: {}, null: false
+    t.integer "announcements_count", default: 0, null: false
   end
 
   create_table "poll_communities", id: :serial, force: :cascade do |t|
@@ -631,33 +627,32 @@ ActiveRecord::Schema.define(version: 20180201024646) do
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "discussion_id"
-    t.string   "key",                                   null: false
-    t.string   "poll_type",                             null: false
-    t.jsonb    "stance_data",           default: {}
-    t.integer  "stances_count",         default: 0,     null: false
-    t.boolean  "multiple_choice",       default: false, null: false
-    t.jsonb    "custom_fields",         default: {},    null: false
-    t.jsonb    "stance_counts",         default: [],    null: false
-    t.integer  "group_id"
-    t.jsonb    "matrix_counts",         default: [],    null: false
-    t.boolean  "notify_on_participate", default: false, null: false
-    t.boolean  "example",               default: false, null: false
-    t.integer  "undecided_user_count",  default: 0,     null: false
-    t.boolean  "voter_can_add_options", default: false, null: false
-    t.integer  "guest_group_id"
-    t.boolean  "anonymous",             default: false, null: false
-    t.integer  "announcements_count",   default: 0,     null: false
+    t.integer "discussion_id"
+    t.string "key", null: false
+    t.string "poll_type", null: false
+    t.jsonb "stance_data", default: {}
+    t.integer "stances_count", default: 0, null: false
+    t.boolean "multiple_choice", default: false, null: false
+    t.jsonb "custom_fields", default: {}, null: false
+    t.jsonb "stance_counts", default: [], null: false
+    t.integer "group_id"
+    t.jsonb "matrix_counts", default: [], null: false
+    t.boolean "notify_on_participate", default: false, null: false
+    t.boolean "example", default: false, null: false
+    t.integer "undecided_user_count", default: 0, null: false
+    t.boolean "voter_can_add_options", default: false, null: false
+    t.integer "guest_group_id"
+    t.boolean "anonymous", default: false, null: false
+    t.integer "announcements_count", default: 0, null: false
+    t.index ["author_id"], name: "index_polls_on_author_id"
+    t.index ["discussion_id"], name: "index_polls_on_discussion_id"
+    t.index ["group_id"], name: "index_polls_on_group_id"
+    t.index ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true
   end
 
-  add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
-  add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
-  add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
-  add_index "polls", ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true, using: :btree
-
   create_table "reactions", force: :cascade do |t|
-    t.integer  "reactable_id"
-    t.integer  "user_id"
+    t.integer "reactable_id"
+    t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "reaction", default: "+1", null: false
@@ -776,51 +771,50 @@ ActiveRecord::Schema.define(version: 20180201024646) do
     t.string "uploaded_avatar_content_type", limit: 255
     t.integer "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
-    t.string   "avatar_initials",                  limit: 255
-    t.string   "username",                         limit: 255
-    t.boolean  "email_when_proposal_closing_soon",             default: false,      null: false
-    t.string   "authentication_token",             limit: 255
-    t.string   "unsubscribe_token",                limit: 255
-    t.integer  "memberships_count",                            default: 0,          null: false
-    t.boolean  "uses_markdown",                                default: false,      null: false
-    t.string   "selected_locale",                  limit: 255
-    t.string   "time_zone",                        limit: 255
-    t.string   "key",                              limit: 255
-    t.string   "detected_locale",                  limit: 255
-    t.boolean  "email_missed_yesterday",                       default: true,       null: false
-    t.string   "email_api_key",                    limit: 255
-    t.boolean  "email_when_mentioned",                         default: true,       null: false
-    t.boolean  "angular_ui_enabled",                           default: true,       null: false
-    t.boolean  "email_on_participation",                       default: true,       null: false
-    t.integer  "default_membership_volume",                    default: 2,          null: false
-    t.string   "country"
-    t.string   "region"
-    t.string   "city"
-    t.jsonb    "experiences",                                  default: {},         null: false
-    t.integer  "facebook_community_id"
-    t.integer  "slack_community_id"
-    t.string   "remember_token"
-    t.string   "short_bio",                                    default: "",                    null: false
-    t.boolean  "email_verified",                               default: false,                 null: false
-    t.string   "location",                                     default: "",                    null: false
-    t.datetime "last_seen_at",                                 default: '2017-10-18 21:05:12', null: false
-    t.boolean  "email_announcements",                          default: true,                  null: false
+    t.string "avatar_initials", limit: 255
+    t.string "username", limit: 255
+    t.boolean "email_when_proposal_closing_soon", default: false, null: false
+    t.string "authentication_token", limit: 255
+    t.string "unsubscribe_token", limit: 255
+    t.integer "memberships_count", default: 0, null: false
+    t.boolean "uses_markdown", default: false, null: false
+    t.string "selected_locale", limit: 255
+    t.string "time_zone", limit: 255
+    t.string "key", limit: 255
+    t.string "detected_locale", limit: 255
+    t.boolean "email_missed_yesterday", default: true, null: false
+    t.string "email_api_key", limit: 255
+    t.boolean "email_when_mentioned", default: true, null: false
+    t.boolean "angular_ui_enabled", default: true, null: false
+    t.boolean "email_on_participation", default: true, null: false
+    t.integer "default_membership_volume", default: 2, null: false
+    t.string "country"
+    t.string "region"
+    t.string "city"
+    t.jsonb "experiences", default: {}, null: false
+    t.integer "facebook_community_id"
+    t.integer "slack_community_id"
+    t.string "remember_token"
+    t.string "short_bio", default: "", null: false
+    t.boolean "email_verified", default: false, null: false
+    t.string "location", default: "", null: false
+    t.datetime "last_seen_at", default: "2017-10-18 21:05:12", null: false
+    t.boolean "email_announcements", default: true, null: false
+    t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
+    t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["key"], name: "index_users_on_key", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree
-  add_index "users", ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["key"], name: "index_users_on_key", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true, using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
-
   create_table "versions", force: :cascade do |t|
-    t.string   "item_type",      limit: 255, null: false
-    t.integer  "item_id",                    null: false
-    t.string   "event",          limit: 255, null: false
-    t.integer  "whodunnit"
-    t.text     "object"
+    t.string "item_type", limit: 255, null: false
+    t.integer "item_id", null: false
+    t.string "event", limit: 255, null: false
+    t.integer "whodunnit"
+    t.text "object"
     t.datetime "created_at"
     t.jsonb "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"

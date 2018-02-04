@@ -60,7 +60,7 @@ module Events::Notify::InApp
   def notification_poll_type
     case eventable
     when Poll         then eventable.poll_type
-    when Announcement then (eventable.announceable.poll_type if eventable.announceable.is_a?(Poll))
+    when Announcement then (eventable.eventable.poll_type if eventable.eventable.is_a?(Poll))
     end
   end
 end

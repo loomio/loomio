@@ -31,15 +31,10 @@ describe API::AnnouncementsController do
 
   describe 'create' do
     describe 'poll' do
-      let(:poll) { create :poll, group: group }
-      let(:announcement_params) {{
-        announceable_type: "Poll",
-        announceable_id:   poll.id
-      }}
-      let(:bad_announcement_params) {{
-        announceable_type: "Poll",
-        announceable_id:   create(:poll).id
-      }}
+      let(:poll) { create :poll, group: group, author: user }
+      let(:poll_created_event) { poll.created_event }
+      let(:announcement_params) {{ event_id: poll_created_event.id }}
+      let(:bad_announcement_params) {{ event_id: nil }}
 
       it 'creates an announcement to all notified types' do
         announcement_params[:notified] = [group_notified, user_notified, email_notified]
@@ -96,7 +91,7 @@ describe API::AnnouncementsController do
       end
 
       it 'does not allow announcements by unauthorized users' do
-        announcement_params[:announceable_id] = create(:poll).id
+        announcement_params[:event_id] = create(:poll).created_event.id
         expect { post :create, params: { announcement: announcement_params } }.to_not change { ActionMailer::Base.deliveries.count }
         expect(response.status).to eq 403
       end
@@ -105,10 +100,8 @@ describe API::AnnouncementsController do
     describe 'outcome' do
       let(:outcome) { create :outcome, poll: poll, author: user }
       let(:poll) { create :poll, author: user }
-      let(:announcement_params) {{
-        announceable_type: "Outcome",
-        announceable_id:  outcome.id
-      }}
+      let(:outcome_created) { outcome.created_event }
+      let(:announcement_params) {{ event_id: outcome_created.id }}
 
       it 'creates an announcement  to all notified types' do
         announcement_params[:notified] = [group_notified, user_notified, email_notified]
@@ -124,11 +117,9 @@ describe API::AnnouncementsController do
     end
 
     describe 'discussion' do
-      let(:discussion) { create :discussion, group: group }
-      let(:announcement_params) {{
-        announceable_type: "Discussion",
-        announceable_id:   discussion.id
-      }}
+      let(:discussion) { create :discussion, group: group, author: user }
+      let(:discussion_created) { discussion.created_event }
+      let(:announcement_params) {{ event_id: discussion_created.id }}
 
       it 'creates an announcement to all notified types' do
         announcement_params[:notified] = [group_notified, user_notified, email_notified]
@@ -185,7 +176,7 @@ describe API::AnnouncementsController do
       end
 
       it 'does not allow announcements by unauthorized users' do
-        announcement_params[:announceable_id] = create(:discussion).id
+        announcement_params[:event_id] = create(:discussion).created_event.id
         expect { post :create, params: { announcement: announcement_params } }.to_not change { ActionMailer::Base.deliveries.count }
         expect(response.status).to eq 403
       end
@@ -262,11 +253,6 @@ describe API::AnnouncementsController do
       get :notified_default, params: { kind: :poll_created, poll_id: poll.id }
       json = JSON.parse(response.body)
       expect(json.length).to eq 0
-    end
-
-    it 'does not allow mismatches of model to kind' do
-      get :notified_default, params: { kind: :poll_created, discussion_id: discussion.id }
-      expect(response.status).to eq 404
     end
 
     it 'does not allow wrong kinds' do

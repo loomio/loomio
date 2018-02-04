@@ -374,7 +374,6 @@ module Dev::NintiesMoviesHelper
 
     #'poll_option_added'
     added_announcement = FactoryBot.build(:announcement, announceable: poll, notified: notified, kind: :poll_option_added)
-    byebug
     AnnouncementService.create(announcement: added_announcement, actor: jennifer)
   end
 end

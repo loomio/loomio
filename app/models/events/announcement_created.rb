@@ -5,8 +5,8 @@ class Events::AnnouncementCreated < Event
   include Events::Notify::Author
 
   def calendar_invite
-    eventable.announceable.respond_to?(:calendar_invite) &&
-    eventable.announceable.calendar_invite
+    eventable.eventable.respond_to?(:calendar_invite) &&
+    eventable.eventable.calendar_invite
   end
 
   private
@@ -33,7 +33,7 @@ class Events::AnnouncementCreated < Event
   end
 
   def notify_author?
-    eventable.announceable.is_a?(Outcome) &&
-    eventable.announceable.poll.author_receives_outcome
+    eventable.eventable.is_a?(Outcome) &&
+    eventable.eventable.poll.author_receives_outcome
   end
 end

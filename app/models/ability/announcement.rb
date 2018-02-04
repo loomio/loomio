@@ -3,8 +3,11 @@ module Ability::Announcement
     super(user)
 
     can :create, ::Announcement do |announcement|
-      user_is_author_of?(announcement.announceable) ||
-      user_is_admin_of?(announcement.announceable.group_id)
+      if event = announcement.event
+        user.id == event.user_id
+      else
+        can? :update, announcement.model
+      end
     end
   end
 end
