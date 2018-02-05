@@ -90,6 +90,10 @@ class DiscussionReader < ApplicationRecord
     end
   end
 
+  def read_items_count
+    RangeSet.length(read_ranges)
+  end
+
   private
   def membership
     @membership ||= discussion.group.membership_for(user)
