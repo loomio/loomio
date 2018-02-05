@@ -12,6 +12,7 @@ module.exports = class AnnouncementModel extends BaseModel
 
   relationships: ->
     @belongsTo 'user'
+    @belongsTo 'event'
 
   totalNotified: ->
     _.sum @notified, (n) ->
@@ -21,4 +22,7 @@ module.exports = class AnnouncementModel extends BaseModel
         when 'Invitation'  then 1
 
   model: ->
-    @recordStore["#{@announceableType.toLowerCase()}s"].find(@announceableId)
+    if @event()
+      @event().model()
+    else
+      @recordStore["#{@modelType.toLowerCase()}s"].find(@modelId)
