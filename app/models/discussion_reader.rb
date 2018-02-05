@@ -66,11 +66,6 @@ class DiscussionReader < ApplicationRecord
     self[:volume]
   end
 
-  # because items can be deleted, we need to count the number of items in each range against the db
-  def calculate_read_items_count
-    read_ranges.sum {|r| discussion.items.where(sequence_id: Range.new(*r)).count }
-  end
-
   def read_ranges
     RangeSet.parse(self.read_ranges_string)
   end
@@ -78,7 +73,6 @@ class DiscussionReader < ApplicationRecord
   def read_ranges=(ranges)
     ranges = RangeSet.reduce(ranges)
     self.read_ranges_string = RangeSet.serialize(ranges)
-    self.read_items_count = calculate_read_items_count
   end
 
   # maybe yagni, because the client should do this locally
