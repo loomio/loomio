@@ -16,7 +16,7 @@ module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
       path: 'notified_default'
       params:
         kind: announcement.kind
-        "#{announcement.announceableType.toLowerCase()}_id": announcement.announceableId
+        "#{announcement.modelType.toLowerCase()}_id": announcement.modelId
 
   buildFromModel: (model) ->
     switch model.constructor.singular

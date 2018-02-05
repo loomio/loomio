@@ -350,8 +350,9 @@ module Dev::NintiesMoviesHelper
     #'poll_created'
     notified = [{type: 'Group', id: create_discussion.group_id, notified_ids: [patrick.id]}.with_indifferent_access]
 
-    poll = FactoryBot.create(:poll, discussion: create_discussion, author: jennifer, closing_at: 24.hours.from_now)
-    poll_announcement = FactoryBot.build(:announcement, announceable: poll, notified: notified, kind: :poll_created)
+    poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
+    poll_created_event = PollService.create(poll: poll, actor: jennifer)
+    poll_announcement = FactoryBot.build(:announcement, event: poll_created_event, notified: notified)
     AnnouncementService.create(announcement: poll_announcement, actor: jennifer)
 
     #'poll_closing_soon'
@@ -361,8 +362,8 @@ module Dev::NintiesMoviesHelper
     poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
     PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryBot.build(:outcome, poll: poll)
-    OutcomeService.create(outcome: outcome, actor: jennifer)
-    outcome_announcement = FactoryBot.build(:announcement, announceable: outcome, notified: notified, kind: :outcome_created)
+    outcome_created_event = OutcomeService.create(outcome: outcome, actor: jennifer)
+    outcome_announcement = FactoryBot.build(:announcement, event: outcome_created_event, notified: notified)
     AnnouncementService.create(announcement: outcome_announcement, actor: jennifer)
 
     #'stance_created'
@@ -373,7 +374,8 @@ module Dev::NintiesMoviesHelper
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
     #'poll_option_added'
-    added_announcement = FactoryBot.build(:announcement, announceable: poll, notified: notified, kind: :poll_option_added)
+    option_added_event = PollService.add_options(poll: poll, params: {poll_option_names: "wark"}, actor: jennifer)
+    added_announcement = FactoryBot.build(:announcement, event: option_added_event, notified: notified)
     AnnouncementService.create(announcement: added_announcement, actor: jennifer)
   end
 end
