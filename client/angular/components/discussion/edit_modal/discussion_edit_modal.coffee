@@ -1,6 +1,6 @@
 Records = require 'shared/services/records.coffee'
 
-{ applySequence } = require 'angular/helpers/apply.coffee'
+{ applySequence } = require 'shared/helpers/apply.coffee'
 
 angular.module('loomioApp').factory 'DiscussionEditModal', ->
   templateUrl: 'generated/components/discussion/edit_modal/discussion_edit_modal.html'

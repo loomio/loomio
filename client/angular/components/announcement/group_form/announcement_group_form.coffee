@@ -2,7 +2,7 @@ Records = require 'shared/services/records.coffee'
 Session = require 'shared/services/session.coffee'
 I18n    = require 'shared/services/i18n.coffee'
 
-{ applyLoadingFunction } = require 'angular/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 
 
 angular.module('loomioApp').directive 'announcementGroupForm', ->
