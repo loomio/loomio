@@ -22,9 +22,9 @@ class Identities::Base < ApplicationRecord
 
   def assign_logo!
     return unless user && logo
-    user.uploaded_avatar = URI.parse(logo)
+    user.uploaded_avatar = open URI.parse(logo)
     user.update(avatar_kind: :uploaded)
-  rescue OpenURI::HTTPError
+  rescue OpenURI::HTTPError, TypeError
     # Can't load logo uri as attachment; do nothing
   end
 end
