@@ -11,8 +11,8 @@ angular.module('loomioApp').factory 'PollCommonAddOptionModal', ->
 
     applySequence $scope,
       steps: ['save', 'announce']
-      saveComplete: ->
-        $scope.announcement = Records.announcements.buildFromModel($scope.poll, 'poll_option_added')
+      saveComplete: (_, event) ->
+        $scope.announcement = Records.announcements.buildFromModel(event)
 
     listenForLoading $scope
   ]

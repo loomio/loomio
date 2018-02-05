@@ -9,6 +9,6 @@ angular.module('loomioApp').factory 'PollCommonOutcomeModal', ->
 
     applySequence $scope,
       steps: ['save', 'announce']
-      saveComplete: (_, outcome) ->
-        $scope.announcement = Records.announcements.buildFromModel(outcome, 'outcome_created')
+      saveComplete: (_, event) ->
+        $scope.announcement = Records.announcements.buildFromModel(event)
   ]

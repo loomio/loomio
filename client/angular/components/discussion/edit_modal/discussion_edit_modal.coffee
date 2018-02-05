@@ -9,6 +9,6 @@ angular.module('loomioApp').factory 'DiscussionEditModal', ->
 
     applySequence $scope,
       steps: ['save', 'announce']
-      saveComplete: (_, discussion) ->
-        $scope.announcement = Records.announcements.buildFromModel(discussion, 'discussion_edited')
+      saveComplete: (_, event) ->
+        $scope.announcement = Records.announcements.buildFromModel(event)
   ]
