@@ -3,7 +3,9 @@
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %i.mdi{class: "{{icon()}}"}
-      %h1.lmo-h1{translate: "poll_{{poll.pollType}}_form.edit_header"}
+      %h1.lmo-h1{ng-switch: "currentStep"}
+        %span{translate: "poll_{{poll.pollType}}_form.edit_header", ng-switch-when: "save"}
+        %span{translate: "announcement.form.modal_title", ng-switch-when: "announce"}
       %material_modal_header_cancel_button
   %md-dialog-content.lmo-slide-animation
     %div{ng-switch: "currentStep"}
