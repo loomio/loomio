@@ -1,5 +1,5 @@
-Records      = require 'shared/services/records.coffee'
-FlashService = require 'shared/services/flash_service.coffee'
+Records       = require 'shared/services/records.coffee'
+ThreadService = require 'shared/services/thread_service.coffee'
 
 angular.module('loomioApp').factory 'DismissExplanationModal', ->
   templateUrl: 'generated/components/dismiss_explanation_modal/dismiss_explanation_modal.html'
@@ -7,7 +7,6 @@ angular.module('loomioApp').factory 'DismissExplanationModal', ->
     $scope.thread = thread
 
     $scope.dismiss = ->
-      $scope.thread.dismiss()
-      FlashService.success('dashboard_page.thread_dismissed')
+      ThreadService.dismiss($scope.thread)
       $scope.$close()
   ]

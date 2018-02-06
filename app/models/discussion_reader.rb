@@ -54,6 +54,11 @@ class DiscussionReader < ApplicationRecord
     save if persist
   end
 
+  def recall!(persist: true)
+    self.dismissed_at = nil
+    save if persist
+  end
+
   def volume
     if persisted?
       super || membership&.volume || 'normal'
