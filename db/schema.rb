@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119012350) do
+ActiveRecord::Schema.define(version: 20180207220417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -374,12 +374,14 @@ ActiveRecord::Schema.define(version: 20180119012350) do
     t.string "type", default: "FormalGroup", null: false
     t.integer "open_discussions_count", default: 0, null: false
     t.integer "closed_discussions_count", default: 0, null: false
+    t.string "handle"
     t.index ["archived_at"], name: "index_groups_on_archived_at"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["default_group_cover_id"], name: "index_groups_on_default_group_cover_id"
     t.index ["full_name"], name: "index_groups_on_full_name"
+    t.index ["handle"], name: "index_groups_on_handle", unique: true
     t.index ["is_visible_to_public"], name: "index_groups_on_is_visible_to_public"
     t.index ["key"], name: "index_groups_on_key", unique: true
     t.index ["name"], name: "index_groups_on_name"
