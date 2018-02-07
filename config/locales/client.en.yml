@@ -786,6 +786,7 @@ en:
     picture_label: 'Picture'
     name_label: 'Name'
     username_label: 'Username'
+    username_helptext: 'All lowercase letters and numbers, maximum 30 characters'
     email_label: 'Email'
     short_bio_label: 'Introduction'
     locale_label: 'Language'
