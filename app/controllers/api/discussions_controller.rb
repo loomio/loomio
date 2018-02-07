@@ -56,6 +56,11 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def recall
+    service.recall discussion: load_resource, params: params, actor: current_user
+    respond_with_resource
+  end
+
   def close
     @event = service.close discussion: load_resource, actor: current_user
     respond_with_resource
