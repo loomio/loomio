@@ -13,7 +13,7 @@ describe 'Notifications', ->
       'replied to your comment',
       'shared an outcome',
       'Poll is closing soon',
-      'started a poll',
+      'started a Poll',
       'reacted to your comment',
       'made you a coordinator',
       'participated in',
