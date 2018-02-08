@@ -4,9 +4,11 @@ class API::RestfulController < ActionController::Base
   include ::ProtectedFromForgery
   include ::LoadAndAuthorize
   include ::CurrentUserHelper
+  include ::SentryRavenHelper
   around_action :use_preferred_locale      # LocalesHelper
   before_action :set_invitation_token      # CurrentUserHelper
   before_action :set_paper_trail_whodunnit # gem 'paper_trail'
+  before_action :set_raven_context         # SentryRavenHelper
   snorlax_used_rest!                       # gem 'snorlax'
 
   private
