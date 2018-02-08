@@ -250,7 +250,7 @@ describe 'Group Page', ->
                  '.group-page-actions__leave-group',
                  '.leave-group-form__submit')
       page.expectFlash('You have left this group')
-      page.expectText('.dashboard-page__no-groups', "You don't have any recent threads because you are not a member of any groups.")
+      page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
 
     it 'prevents last coordinator from leaving the group', ->
       # click leave group from the group actions downdown
