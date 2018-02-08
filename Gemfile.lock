@@ -633,6 +633,7 @@ DEPENDENCIES
   sass-rails
   sequenced (~> 2.0.0)
   shoulda-matchers
+  simplecov
   snorlax
   spring
   spring-commands-rspec

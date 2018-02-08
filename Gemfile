@@ -82,6 +82,7 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
+  gem 'simplecov', require: false 
 end
 
 group :production do

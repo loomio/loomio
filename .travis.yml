@@ -32,6 +32,7 @@ env:
     - DISPLAY=:99.0
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
+    - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
   matrix:
     - TASK=protractor
     - TASK=rspec
@@ -64,4 +65,4 @@ script:
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
 
 after_script:
-  - bundle exec rake travis:upload_s3
+  - bundle exec rake travis:cleanup
