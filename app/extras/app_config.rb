@@ -66,33 +66,25 @@ class AppConfig
       custom_accent_palette:   json_parse_or_false('THEME_CUSTOM_ACCENT_PALETTE'),
       custom_warn_palette:     json_parse_or_false('THEME_CUSTOM_WARN_PALETTE')
     }
-   end
+  end
 
-   def self.app_features
-     {
-       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
-       create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],
-       public_groups:              !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
-       ahoy_tracking:              !ENV['FEATURES_DISABLE_AHOY_TRACKING'],
-       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
-       nested_comments:            ENV.fetch('FEATURES_NESTED_COMMENTS_FOR_ALL',    false),
-       default_thread_render_mode: ENV.fetch('FEATURES_DEFAULT_THREAD_RENDER_MODE', 'chronological')
-     }
-   end
+  def self.app_features
+    {
+      create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
+      create_group:               !ENV['FEATURES_DISABLE_CREATE_GROUP'],
+      public_groups:              !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
+      ahoy_tracking:              !ENV['FEATURES_DISABLE_AHOY_TRACKING'],
+      help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
+      nested_comments:            ENV.fetch('FEATURES_NESTED_COMMENTS_FOR_ALL',    false),
+      default_thread_render_mode: ENV.fetch('FEATURES_DEFAULT_THREAD_RENDER_MODE', 'chronological')
+    }
+  end
 
-   def self.errbit
-     if ENV['ERRBIT_JS_KEY']
-       { key: ENV['ERRBIT_JS_KEY'], url: "https://#{ENV['ERRBIT_HOST']}" }
-     else
-       {}
-     end
-   end
-
-   def self.json_parse_or_false(name)
-     if ENV[name]
-       JSON.parse(ENV[name])
-     else
-       false
-     end
-   end
+  def self.json_parse_or_false(name)
+    if ENV[name]
+      JSON.parse(ENV[name])
+    else
+      false
+    end
+  end
 end

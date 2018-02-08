@@ -14,7 +14,6 @@ class ReceivedEmailsController < Griddler::EmailsController
     if ReceivedEmail.new(received_email_params).save
       head :ok
     else
-      # airbrake here?
       head :bad_request
     end
   end
