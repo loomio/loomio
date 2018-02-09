@@ -6,8 +6,10 @@ module Events::LiveUpdate
 
   # send client live updates
   def notify_clients!
-    MessageChannelService.publish(event_collection, to: eventable.group.presence)
-    MessageChannelService.publish(event_collection, to: eventable.poll) if eventable.respond_to?(:poll)
+    puts "Broadcasting to #{eventable.group.message_channel}, #{event_collection}"
+    ActionCable.server.broadcast eventable.group.message_channel, event_collection
+    # MessageChannelService.publish(event_collection, to: eventable.group.presence)
+    # MessageChannelService.publish(event_collection, to: eventable.poll) if eventable.respond_to?(:poll)
   end
   handle_asynchronously :notify_clients!
 

@@ -1,4 +1,5 @@
 RecordStore = require 'shared/record_store/record_store.coffee'
+AppConfig   = require 'shared/services/app_config.coffee'
 loki        = require 'lokijs'
 
 db      = new loki('default.db')
@@ -37,5 +38,6 @@ records.addRecordsInterface require('shared/interfaces/document_records_interfac
 records.addRecordsInterface require('shared/interfaces/login_token_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/message_channel_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/locale_records_interface.coffee')
+AppConfig.records = records
 
 module.exports = records

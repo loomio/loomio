@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/loomio/loomio#readme",
   "dependencies": {
+    "actioncable": "^5.1.4",
     "airbrake-js": "^0.9.9",
     "angular": "1.4.1",
     "angular-animate": "1.4.1",

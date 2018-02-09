@@ -6,4 +6,6 @@ development:
   adapter: async
 
 test:
-  adapter: async
+  adapter: redis
+  url: redis://localhost:6379
+  channel_prefix: loomio_development

@@ -45,6 +45,10 @@ acorn@~2.6.4:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-2.6.4.tgz#eb1f45b4a43fa31d03701a5ec46f3b52673e90ee"
 
+actioncable@^5.1.4:
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/actioncable/-/actioncable-5.1.4.tgz#f1751f0316b3b3530ef278bf44257efe996c4f92"
+
 add-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
