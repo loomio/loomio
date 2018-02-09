@@ -10,7 +10,8 @@ module.exports =
       hardReload('/417.html')
 
   exportGlobals: ->
-    window._ = require 'lodash'
+    window.moment = require 'moment'
+    window._      = require 'lodash'
     _.extend window._, require 'shared/helpers/lodash_ext.coffee'
 
   initServiceWorker: ->

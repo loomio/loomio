@@ -1,3 +1,5 @@
+Records = require 'shared/services/records.coffee'
+
 { iconFor }       = require 'shared/helpers/poll.coffee'
 { applySequence } = require 'shared/helpers/apply.coffee'
 
@@ -11,6 +13,6 @@ angular.module('loomioApp').factory 'PollCommonEditModal', ->
 
     applySequence $scope,
       steps: ['save', 'announce']
-      saveComplete: (_, poll) ->
-        $scope.announcement = Records.announcements.buildFromModel(poll, 'poll_edited')
+      saveComplete: (_, event) ->
+        $scope.announcement = Records.announcements.buildFromModel(event)
   ]

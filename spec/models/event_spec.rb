@@ -140,7 +140,7 @@ describe Event do
       it 'should notify participants when voters_review_responses is true' do
         poll = create(:poll_proposal, discussion: discussion)
         create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        create(:announcement, announceable: poll, notified: [group_notified])
+        create(:announcement, event: poll.created_event, notified: [group_notified])
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -169,7 +169,7 @@ describe Event do
       it 'should notify announcees who have not participated when voters_review_responses is false' do
         create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         # quiet user who has been announced to before
-        create(:announcement, announceable: poll, notified: [group_notified])
+        create(:announcement, event: poll.created_event, notified: [group_notified])
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -334,7 +334,7 @@ describe Event do
     let(:poll) { create :poll, discussion: discussion }
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
     let(:outcome) { create :outcome, poll: poll_meeting }
-    let(:announcement) { create :announcement, announceable: poll }
+    let(:announcement) { create :announcement, event: poll.created_event }
     let(:invitation) { create :invitation, group: poll.guest_group }
 
     it 'creates an announcement' do
@@ -354,13 +354,13 @@ describe Event do
     end
 
     it 'notifies the author if the eventable is an appropriate outcome' do
-      announcement.update(announceable: outcome)
+      announcement.update(event: outcome.created_event)
       expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(1) # the two notified_ids, plus the author
     end
 
     it 'can send an ical attachment with an outcome' do
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
-      announcement.update(announceable: outcome)
+      announcement.update(event: outcome.created_event)
       expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }
       mail = ActionMailer::Base.deliveries.last
       expect(mail.attachments).to have(1).attachment

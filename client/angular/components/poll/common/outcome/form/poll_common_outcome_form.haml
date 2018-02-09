@@ -1,4 +1,6 @@
 .poll-common-outcome-form
+  .lmo-disabled-form{ng-if: "isDisabled"}
+
   %md-input-container.md-block
     %label{translate: "poll_common.statement"}
     %lmo_textarea.poll-common-outcome-form__statement{model: "outcome", field: "statement", placeholder: "'poll_common_outcome_form.statement_placeholder' | translate"}

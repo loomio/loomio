@@ -42,7 +42,7 @@ de:
     user_added_to_group:
       content: "%{who} hat dich zu %{which_group} hinzugefügt."
       content_html: "<strong>%{who}</strong> hat dich zu <strong>%{which_group}</strong> hinzugefügt."
-      link_help: "Klicke auf den untenstehenden Link, um zur Gruppe zu kommen:"
+      link_help: "Klicke auf den untenstehenden Link, um die Gruppe zu betreten:"
     unsubscribe: 'Benachrichtigungen deaktivieren oder E-Mail-Einstellungen ändern:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> , um Benachrichtigungen zu deaktivieren oder um deine E-Mail-Einstellungen zu ändern."
     missed_yesterday:
@@ -56,7 +56,7 @@ de:
     group_membership_approved:
       intro: "Deine Aufnahme-Anfrage für die Gruppe %{group_name} wurde angenommen."
       intro_html: "Deine Aufnahme-Anfrage für Gruppe <strong>%{group_name}</strong> wurde angenommen."
-      link_help: "Klicke auf den untenstehenden Link, um der Gruppe %{group_name} beizutreten, und loszulegen:"
+      link_help: "Klicke auf den untenstehenden Link, um der Gruppe %{group_name} beizutreten und loszulegen:"
       join_group: "Der Gruppe beitreten"
     membership_request:
       intro_html: hat um Aufnahme in eine deiner Gruppen gebeten.
@@ -218,8 +218,8 @@ de:
         poll_closing_soon: 'In 24 Stunden endet die Abstimmungsfrist für: %{title}'
         poll_closing_soon_author: 'Deine Abstimmung zu %{title} endet in 24 Stunden'
         poll_expired_author: 'Ihre Umfrage wurde beendet. Teilen Sie das Abstimmungsergebnis mit: %{title}'
-        poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
-        poll_option_added_author: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
         stance_created: "%{actor} hat abgestimmt: %{title}"
       header:
@@ -227,8 +227,8 @@ de:
         poll_closing_soon: '<strong>%{actor}</strong>''s Abstimmung läuft in 24 Std. ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder andere zum Mitmachen zu aufzufordern.'
         poll_closing_soon_author: 'Deine Abstimmung läuft in 24 Stunden ab - jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
         poll_expired_author: 'Ihre Umfrage ist <strong>beendet</strong>. Bitte nehmen Sie sich ein wenig Zeit, um die Abstimmungsbeiträge zu analysieren. Anschließend sollten Sie <strong>der Gruppe das Ergebnis bekanntgeben</strong>, damit alle Mitglieder über die nächsten Schritte informiert sind.'
-        poll_option_added: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
         stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
       body:
@@ -259,40 +259,41 @@ de:
         poll_created: '%{actor} hat eine neue Priorisierung erstellt: %{title}'
         poll_closing_soon: 'Die Priorisierung %{title} läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Deine Priorisierung %{title} läuft in 24 Stunden ab'
-        poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
-        poll_option_added_author: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
         stance_created: "%{actor} hat abgestimmt: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> startete eine Priorisierung'
         poll_closing_soon: '<strong>%{actor}</strong>''s Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, abzustimmen, deine Stimmverteilung zu ändern oder andere zum Mitmachen einzuladen.'
         poll_closing_soon_author: 'Deine Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
-        poll_option_added: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat ein Priorisierungergebnis bekanntgegeben.'
         stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
-        poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
-        poll_option_added_author: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         outcome_created_author: 'Sie haben ein Abstimmungsergebnis bekanntgegeben: %{title}'
       header:
-        poll_option_added: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     ranked_choice:
       subject:
         poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
-        poll_option_added_author: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat das Ergebnis für %{title} bekanntgegeben'
         outcome_created_author: 'Sie haben ein Abstimmungsergebnis bekanntgegeben: %{title}'
       header:
-        poll_option_added: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
-        poll_option_added_author: '<strong>%{actor}</strong> hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+  comment_by: Kommentar von %{comment_author}
   poll_generator:
     poll:
       title: "Liegen ggf. Lebensmittelunverträglichkeiten vor, die wir bei unserer Geschäftsfeier am Donnerstag berücksichtigen müssen?"

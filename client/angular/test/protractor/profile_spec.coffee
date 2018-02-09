@@ -64,7 +64,7 @@ describe 'Profile', ->
   describe 'deactivating an account', ->
 
     describe 'as the sole coordinator of a group', ->
-      it 'successfully deactivates the account', ->
+      xit 'successfully deactivates the account', ->
         page.click '.user-dropdown__dropdown-button'
         page.click '.user-dropdown__list-item-button--profile'
         page.click '.profile-page__deactivate'
@@ -74,7 +74,7 @@ describe 'Profile', ->
         page.expectText '.only-coordinator-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
 
     describe 'as one of several coordinators of a group', ->
-      it 'prevents you from deactivating the account', ->
+      xit 'prevents you from deactivating the account', ->
         page.loadPath 'setup_group_with_multiple_coordinators'
         page.click '.user-dropdown__dropdown-button'
         page.click '.user-dropdown__list-item-button--profile'

@@ -237,10 +237,29 @@ describe API::DiscussionsController do
       reader.reload
     end
 
-    it "updates dismissed_at", focus: true do
+    it "updates dismissed_at" do
       patch :dismiss, params: { id: discussion.key }
       expect(response.status).to eq 200
       expect(reader.reload.dismissed_at).to be_present
+    end
+  end
+
+  describe 'recall' do
+    before { sign_in user }
+
+    let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
+
+    before do
+      group.add_admin! user
+      sign_in user
+      reader.update(volume: DiscussionReader.volumes[:normal], dismissed_at: 1.day.ago)
+      reader.reload
+    end
+
+    it "updates dismissed_at to be nil" do
+      patch :recall, params: { id: discussion.key }
+      expect(response.status).to eq 200
+      expect(reader.reload.dismissed_at).to be_nil
     end
   end
 

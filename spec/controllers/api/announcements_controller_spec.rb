@@ -31,19 +31,15 @@ describe API::AnnouncementsController do
 
   describe 'create' do
     describe 'poll' do
-      let(:poll) { create :poll, group: group }
-      let(:announcement_params) {{
-        announceable_type: "Poll",
-        announceable_id:   poll.id
-      }}
-      let(:bad_announcement_params) {{
-        announceable_type: "Poll",
-        announceable_id:   create(:poll).id
-      }}
+      let(:poll) { create :poll, group: group, author: user }
+      let(:poll_created_event) { poll.created_event }
+      let(:announcement_params) {{ event_id: poll_created_event.id }}
+      let(:eventless_announcement_params) {{ model_id: poll.id, model_type: "Poll" }}
+      let(:bad_announcement_params) {{ event_id: nil }}
 
       it 'creates an announcement to all notified types' do
         announcement_params[:notified] = [group_notified, user_notified, email_notified]
-        expect { post :create, announcement: announcement_params }.to change { Announcement.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { Announcement.count }.by(1)
         expect(response.status).to eq 200
         a = Announcement.last
         expect(poll.reload.announcements_count).to eq 1
@@ -53,9 +49,22 @@ describe API::AnnouncementsController do
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
       end
 
+      it 'soft creates a poll_announced event if none is given' do
+        eventless_announcement_params[:notified] = [group_notified, user_notified, email_notified]
+        expect { post :create, params: { announcement: eventless_announcement_params } }.to change { Announcement.count }.by(1)
+        expect(response.status).to eq 200
+        poll_announced = Event.find_by(kind: :poll_announced)
+        expect(poll_announced).to be_present
+        expect(poll_announced.eventable).to eq poll
+
+        a = Announcement.last
+        expect(a.event).to eq poll_announced
+        expect(poll.reload.announcements_count).to eq 1
+      end
+
       it 'announces to a group' do
         announcement_params[:notified] = [group_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(2)
         a = Announcement.last
         expect(a.users).to include another_user
         expect(a.users).to include a_third_user
@@ -65,7 +74,7 @@ describe API::AnnouncementsController do
 
       it 'announces to an individual user' do
         announcement_params[:notified] = [user_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
         expect(poll.guest_group.members).to include a_fourth_user
         expect(poll.group.members).to_not include a_fourth_user
@@ -76,7 +85,7 @@ describe API::AnnouncementsController do
 
       it 'announces to an email address' do
         announcement_params[:notified] = [email_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
         expect(poll.guest_group.invitation_ids).to eq a.invitation_ids
         expect(a.users).to be_empty
@@ -85,34 +94,33 @@ describe API::AnnouncementsController do
 
       it 'does not announce the same user twice' do
         announcement_params[:notified] = [user_notified, user_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(Announcement.last.users.count).to eq 1
       end
 
       it 'does not announce the same email twice' do
         announcement_params[:notified] = [email_notified, email_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(Announcement.last.invitations.count).to eq 1
       end
 
       it 'does not allow announcements by unauthorized users' do
-        announcement_params[:announceable_id] = create(:poll).id
-        expect { post :create, announcement: announcement_params }.to_not change { ActionMailer::Base.deliveries.count }
+        announcement_params[:event_id] = create(:poll).created_event.id
+        expect { post :create, params: { announcement: announcement_params } }.to_not change { ActionMailer::Base.deliveries.count }
         expect(response.status).to eq 403
       end
     end
 
     describe 'outcome' do
       let(:outcome) { create :outcome, poll: poll, author: user }
-      let(:poll) { create :poll, author: user }
-      let(:announcement_params) {{
-        announceable_type: "Outcome",
-        announceable_id:  outcome.id
-      }}
+      let(:poll) { create :poll, author: user, closed_at: 1.day.ago }
+      let(:outcome_created) { outcome.created_event }
+      let(:eventless_announcement_params) {{ model_id: outcome.id, model_type: "Outcome" }}
+      let(:announcement_params) {{ event_id: outcome_created.id }}
 
       it 'creates an announcement  to all notified types' do
         announcement_params[:notified] = [group_notified, user_notified, email_notified]
-        expect { post :create, announcement: announcement_params }.to change { Announcement.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { Announcement.count }.by(1)
         expect(response.status).to eq 200
         a = Announcement.last
         expect(outcome.reload.announcements_count).to eq 1
@@ -121,18 +129,30 @@ describe API::AnnouncementsController do
         expect(a.users).to include a_fourth_user
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
       end
+
+      it 'soft creates an outcome_announced event if none is given' do
+        eventless_announcement_params[:notified] = [group_notified, user_notified, email_notified]
+        expect { post :create, params: { announcement: eventless_announcement_params } }.to change { Announcement.count }.by(1)
+        expect(response.status).to eq 200
+        outcome_announced = Event.find_by(kind: :outcome_announced)
+        expect(outcome_announced).to be_present
+        expect(outcome_announced.eventable).to eq outcome
+
+        a = Announcement.last
+        expect(a.event).to eq outcome_announced
+        expect(outcome.reload.announcements_count).to eq 1
+      end
     end
 
     describe 'discussion' do
-      let(:discussion) { create :discussion, group: group }
-      let(:announcement_params) {{
-        announceable_type: "Discussion",
-        announceable_id:   discussion.id
-      }}
+      let(:discussion) { create :discussion, group: group, author: user }
+      let(:discussion_created) { discussion.created_event }
+      let(:eventless_announcement_params) {{ model_id: discussion.id, model_type: "Discussion" }}
+      let(:announcement_params) {{ event_id: discussion_created.id }}
 
       it 'creates an announcement to all notified types' do
         announcement_params[:notified] = [group_notified, user_notified, email_notified]
-        expect { post :create, announcement: announcement_params }.to change { Announcement.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { Announcement.count }.by(1)
         expect(response.status).to eq 200
         a = Announcement.last
         expect(discussion.reload.announcements_count).to eq 1
@@ -142,9 +162,22 @@ describe API::AnnouncementsController do
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
       end
 
+      it 'soft creates a discussion_announced event if none is given' do
+        eventless_announcement_params[:notified] = [group_notified, user_notified, email_notified]
+        expect { post :create, params: { announcement: eventless_announcement_params } }.to change { Announcement.count }.by(1)
+        expect(response.status).to eq 200
+        discussion_announced = Event.find_by(kind: :discussion_announced)
+        expect(discussion_announced).to be_present
+        expect(discussion_announced.eventable).to eq discussion
+
+        a = Announcement.last
+        expect(a.event).to eq discussion_announced
+        expect(discussion.reload.announcements_count).to eq 1
+      end
+
       it 'announces to a group' do
         announcement_params[:notified] = [group_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(2)
         a = Announcement.last
         expect(a.users).to include another_user
         expect(a.users).to include a_third_user
@@ -154,7 +187,7 @@ describe API::AnnouncementsController do
 
       it 'announces to an individual user' do
         announcement_params[:notified] = [user_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
         expect(discussion.guest_group.members).to include a_fourth_user
         expect(discussion.group.members).to_not include a_fourth_user
@@ -165,7 +198,7 @@ describe API::AnnouncementsController do
 
       it 'announces to an email address' do
         announcement_params[:notified] = [email_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
         expect(discussion.guest_group.invitation_ids).to eq a.invitation_ids
         expect(a.users).to be_empty
@@ -174,19 +207,19 @@ describe API::AnnouncementsController do
 
       it 'does not announce the same user twice' do
         announcement_params[:notified] = [user_notified, user_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(Announcement.last.users.count).to eq 1
       end
 
       it 'does not announce the same email twice' do
         announcement_params[:notified] = [email_notified, email_notified]
-        expect { post :create, announcement: announcement_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(Announcement.last.invitations.count).to eq 1
       end
 
       it 'does not allow announcements by unauthorized users' do
-        announcement_params[:announceable_id] = create(:discussion).id
-        expect { post :create, announcement: announcement_params }.to_not change { ActionMailer::Base.deliveries.count }
+        announcement_params[:event_id] = create(:discussion).created_event.id
+        expect { post :create, params: { announcement: announcement_params } }.to_not change { ActionMailer::Base.deliveries.count }
         expect(response.status).to eq 403
       end
     end
@@ -198,7 +231,7 @@ describe API::AnnouncementsController do
     let(:outcome) { create :outcome, poll: poll }
 
     it 'gives back the group members for a poll_created event' do
-      get :notified_default, kind: :poll_created, poll_id: poll.id
+      get :notified_default, params: { kind: :poll_created, poll_id: poll.id }
       json = JSON.parse(response.body)
       expect(json.length).to eq 1
       expect(json[0]['notified_ids']).to include another_user.id
@@ -210,7 +243,7 @@ describe API::AnnouncementsController do
       Stance.create!(poll: poll, participant: user, choice: :agree)
       Stance.create!(poll: poll, participant: a_fourth_user, choice: :agree)
 
-      get :notified_default, kind: :poll_edited, poll_id: poll.id
+      get :notified_default, params: { kind: :poll_edited, poll_id: poll.id }
       json = JSON.parse(response.body)
       expect(json.length).to eq 1
       expect(json[0]['notified_ids']).to_not include another_user.id
@@ -222,7 +255,7 @@ describe API::AnnouncementsController do
       Stance.create!(poll: poll, participant: user, choice: :agree)
       Stance.create!(poll: poll, participant: a_fourth_user, choice: :agree)
 
-      get :notified_default, kind: :poll_option_added, poll_id: poll.id
+      get :notified_default, params: { kind: :poll_option_added, poll_id: poll.id }
       json = JSON.parse(response.body)
       expect(json.length).to eq 1
       expect(json[0]['notified_ids']).to_not include another_user.id
@@ -231,7 +264,7 @@ describe API::AnnouncementsController do
     end
 
     it 'gives back the group members for a new_discussion event' do
-      get :notified_default, kind: :new_discussion, discussion_id: discussion.id
+      get :notified_default, params: { kind: :new_discussion, discussion_id: discussion.id }
       json = JSON.parse(response.body)
       expect(json.length).to eq 1
       expect(json[0]['notified_ids']).to include another_user.id
@@ -240,7 +273,7 @@ describe API::AnnouncementsController do
     end
 
     it 'gives back the group members for a discussion_edited event' do
-      get :notified_default, kind: :discussion_edited, discussion_id: discussion.id
+      get :notified_default, params: { kind: :discussion_edited, discussion_id: discussion.id }
       json = JSON.parse(response.body)
       expect(json.length).to eq 1
       expect(json[0]['notified_ids']).to include another_user.id
@@ -249,7 +282,7 @@ describe API::AnnouncementsController do
     end
 
     it 'gives back the group members for a outcome_created event' do
-      get :notified_default, kind: :outcome_created, outcome_id: outcome.id
+      get :notified_default, params: { kind: :outcome_created, outcome_id: outcome.id }
       json = JSON.parse(response.body)
       expect(json.length).to eq 1
       expect(json[0]['notified_ids']).to include another_user.id
@@ -259,28 +292,23 @@ describe API::AnnouncementsController do
 
     it 'returns nothing when a model is not part of a group' do
       poll.update(discussion: nil, group: nil, anyone_can_participate: true)
-      get :notified_default, kind: :poll_created, poll_id: poll.id
+      get :notified_default, params: { kind: :poll_created, poll_id: poll.id }
       json = JSON.parse(response.body)
       expect(json.length).to eq 0
     end
 
-    it 'does not allow mismatches of model to kind' do
-      get :notified_default, kind: :poll_created, discussion_id: discussion.id
-      expect(response.status).to eq 404
-    end
-
     it 'does not allow wrong kinds' do
-      get :notified_default, kind: :discussion_moved, discussion_id: discussion.id
+      get :notified_default, params: { kind: :discussion_moved, discussion_id: discussion.id }
       expect(response.status).to eq 404
     end
 
     it 'does not allow unauthorized users access' do
-      get :notified_default, kind: :poll_created, poll_id: create(:poll).id
+      get :notified_default, params: { kind: :poll_created, poll_id: create(:poll).id }
       expect(response.status).to eq 403
     end
 
     it '404s on unfound models' do
-      get :notified_default, kind: :poll_created, poll_id: -1
+      get :notified_default, params: { kind: :poll_created, poll_id: -1 }
       expect(response.status).to eq 404
     end
   end

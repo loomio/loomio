@@ -1,5 +1,6 @@
 pt_BR:
   reactions:
+    slight_smile: Gosto
     heart: Amor
     laughing: Gargalhada
     clap: Bater palma
@@ -10,9 +11,14 @@ pt_BR:
     relieved: Alivio
     worried: Preocupado
     confused: Confuso
+    confounded: Confuso
     neutral_face: Neutra
+    slight_frown: Olhar severo
     disappointed: Desapontada
     angry: Bravo
+    weary: Cansado
+    astonished: Atônito
+    rolling_eyes: Virando os olhos
     cry: Chorando
     scream: Gritando
     sleeping: Entediada
@@ -28,6 +34,11 @@ pt_BR:
     proposal: Proposta
     count: Checar
     poll: Votação
+    dot_vote: Voto de ponto
+    meeting: Tempo de votação
+    ranked_choice: Escolha classificada
+  timezones:
+    local: Hora local ({{value}})
   common:
     you: Você
     expand: Expandir
@@ -112,6 +123,18 @@ pt_BR:
       resent: Convide reenviado
     formatting_help:
       label: 'Formatação'
+      title: 'Aprenda como usar Markdown para formatar seu texto'
+  ordinal:
+    _1: 1°
+    _2: 2°
+    _3: 3°
+    _4: 4°
+    _5: 5°
+    _6: 6°
+    _7: 7°
+    _8: 8°
+    _9: 9°
+    _10: 10°
   devise:
     failure:
       inactive: 'Há uma conta desativada associada com esse endereço de email. Caso deseje reativar sua conta, entre em contato conosco.'
@@ -180,6 +203,11 @@ pt_BR:
         loud: "Você receberá e-mail de todas as atividades em novos grupos."
         normal: "Você receberá emails sobre anúncios em novos grupos."
         quiet: "Você não receberá e-mail sobre novos grupos."
+  close_explanation_modal:
+    aria_label: Fechar discussão
+    close_thread: Fechar discussão
+    body_header: |
+      <p>Fechar discussões antigas ou irrelevantes para removê-las da visualização e indicar que a discussão foi fechada.</p>
   mute_explanation_modal:
     aria_label: Silenciar tópico
     mute_thread: Calar tópico
@@ -375,8 +403,6 @@ pt_BR:
     members: 'Membros ({{count}})'
     members_placeholder: 'Você é a única pessoa aqui: convide outras para se juntar a você!'
     member_options: Opçoes de membros
-    see_all_members: 'Veja todos: ({{count}}) membros'
-    pending_invitations: '+ ({{count}}) pendentes'
     subgroups: 'Subgrupos'
     invite_people: 'Convidar'
     visibility_label: 'Visibilidade'
@@ -437,7 +463,6 @@ pt_BR:
     description: 'Descrição'
     description_placeholder: 'Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.'
     privacy_statement:
-      public_on_web: 'Nome e descrição estarão públicos na web'
       private_to_group: 'Nome e descrição estarão visíveis apenas para membros'
       private_to_parent_members: 'Nome e descrição estarão visíveis para membros de {{parent}}'
     privacy: 'Privacidade'
@@ -870,6 +895,8 @@ pt_BR:
     proposal_title: Proposta
     count_title: Checar
     poll_title: Votação
+    meeting_title: Tempo de votação
+    ranked_choice_title: Escolha classificada
   poll_common:
     your_response: Sua resposta
     change_your_response: Modifique sua resposta

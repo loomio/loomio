@@ -33,6 +33,7 @@ module.exports = new class AbilityService
 
   canParticipateInPoll: (poll) ->
     return false unless poll
+    poll.anyoneCanParticipate or
     @canAdministerPoll(poll) or
     !poll.group() or
     Session.user().isMemberOf(poll.guestGroup()) or
@@ -196,9 +197,6 @@ module.exports = new class AbilityService
       @canViewGroup(poll.group())
     else
       @canAdministerPoll() || _.contains(@poll().voters(), Session.user())
-
-  canSharePoll: (poll) ->
-    @canEditPoll(poll)
 
   canRemovePollOptions: (poll) ->
     poll.isNew() || (poll.isActive() && poll.stancesCount == 0)

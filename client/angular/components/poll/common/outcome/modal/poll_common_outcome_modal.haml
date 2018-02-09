@@ -3,8 +3,10 @@
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %i.mdi.mdi-thumbs-up-down
-      %h1.lmo-h1{ng-if: "outcome.isNew()", translate: "poll_common_outcome_form.new_title"}
-      %h1.lmo-h1{ng-if: "!outcome.isNew()", translate: "poll_common_outcome_form.update_title"}
+      %h1.lmo-h1{ng-switch: "currentStep"}
+        %span{ng-if: "outcome.isNew()", ng-switch-when: "save", translate: "poll_common_outcome_form.new_title"}
+        %span{ng-if: "!outcome.isNew()", ng-switch-when: "save", translate: "poll_common_outcome_form.update_title"}
+        %span{ng-switch-when: "announce", translate: "announcement.form.modal_title"}
       %material_modal_header_cancel_button
 
   %md-dialog-content.lmo-slide-animation{ng-switch: "currentStep"}

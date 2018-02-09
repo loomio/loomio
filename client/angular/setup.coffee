@@ -60,7 +60,7 @@ setupAngularHotkeys = ($rootScope) ->
   registerHotkeys $rootScope,
     pressedI: -> ModalService.open 'InvitationModal',      group:      -> AppConfig.currentGroup or Records.groups.build()
     pressedG: -> ModalService.open 'GroupModal',           group:      -> Records.groups.build()
-    pressedT: -> ModalService.open 'DiscussionModal',      discussion: -> Records.discussions.build(groupId: (AppConfig.currentGroup or {}).id)
+    pressedT: -> ModalService.open 'DiscussionStartModal', discussion: -> Records.discussions.build(groupId: (AppConfig.currentGroup or {}).id)
     pressedP: -> ModalService.open 'PollCommonStartModal', poll:       -> Records.polls.build()
 
 setupAngularFlash = ($rootScope) ->

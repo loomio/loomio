@@ -2,12 +2,14 @@ class PollMailer < BaseMailer
   REPLY_DELIMITER = "--"
   layout 'invite_people_mailer', only: 'stance_created_author'
 
-  %w(announcement_created poll_edited stance_created stance_created_author
-     poll_option_added poll_option_added_author user_mentioned
-     outcome_created outcome_created_author invitation_created invitation_resend
+  %w(poll_created poll_announced poll_edited
+     stance_created stance_created_author
+     poll_option_added poll_option_added_author
+     outcome_created outcome_created_author outcome_announced
+     invitation_created invitation_resend
      poll_closing_soon poll_closing_soon_author
      poll_expired  poll_expired_author
-     user_reminded).each do |action|
+     user_mentioned user_reminded).each do |action|
     define_method action, ->(recipient, event) { send_poll_email(recipient, event, action) }
   end
 

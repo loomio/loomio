@@ -466,6 +466,7 @@ es:
         stance_created: "<strong>%{actor}</strong> participó en: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+  comment_by: Comentario de %{comment_author}
   poll_generator:
     proposal:
       title: "Ofrecer un empleo formal a Shelley y Jack"

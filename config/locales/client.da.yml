@@ -331,8 +331,6 @@ da:
     members: 'Medlemmer'
     members_placeholder: 'Du er det eneste medlem her, inviter nogle mennesker til at være med!'
     member_options: Medlemsinstaillinger
-    see_all_members: 'Se alle: ({{count}}) medlemmer'
-    pending_invitations: '+ ({{count}}) afventer'
     subgroups: 'Undergrupper'
     invite_people: 'Inviter'
     visibility_label: 'Visibility'
@@ -393,7 +391,6 @@ da:
     description: 'Beskrivelse'
     description_placeholder: 'Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.'
     privacy_statement:
-      public_on_web: 'Navn og beskrivelse vil være offentlige på internettet'
       private_to_group: 'Navn og beskrivelse er kun tilgængelige for medlemmer.'
       private_to_parent_members: 'Navn og beskrivelse er kun tilgængelige for medlemmer af {{parent}}'
     privacy: 'Privatindstillinger'

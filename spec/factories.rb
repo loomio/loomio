@@ -96,6 +96,12 @@ FactoryBot.define do
     kind :new_comment
   end
 
+  factory :discussion_event, class: Event do
+    association :eventable, factory: :discussion
+    user
+    kind :new_discussion
+  end
+
   factory :discussion do
     association :author, :factory => :user
     association :group, :factory => :formal_group
@@ -277,7 +283,14 @@ FactoryBot.define do
 
   factory :announcement do
     association :author, factory: :user
-    association :announceable, factory: :discussion
+    association :event, factory: :discussion_event
+  end
+
+  factory :notification do
+    user
+    event
+    url "https://www.example.com"
+    association :actor, factory: :user
   end
 
   factory :received_email do

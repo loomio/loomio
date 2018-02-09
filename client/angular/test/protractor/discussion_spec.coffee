@@ -25,7 +25,7 @@ describe 'Discussion Page', ->
       page.expectElement('.timeago')
 
   describe 'close thread', ->
-    it 'can close and reopen a thread', ->
+    xit 'can close and reopen a thread', ->
       page.loadPath 'setup_open_and_closed_discussions'
       page.expectText '.discussions-card__header', 'Open threads'
       page.expectText '.discussions-card__header', '1 Closed'
@@ -110,7 +110,7 @@ describe 'Discussion Page', ->
       page.expectElement '.thread-item--unread'
 
   describe 'muting and unmuting a thread', ->
-    it 'lets you mute and unmute', ->
+    xit 'lets you mute and unmute', ->
       page.loadPath 'setup_multiple_discussions'
       page.click '.context-panel-dropdown__button',
                  '.context-panel-dropdown__option--mute'

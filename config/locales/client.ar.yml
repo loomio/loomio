@@ -197,7 +197,6 @@ ar:
     description: 'وصف '
     description_placeholder: 'قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.'
     privacy_statement:
-      public_on_web: 'سيكون ظهور اسم ووصف المجموعةعامّاً على الشبكة.'
       private_to_group: 'سيكون اسم ووصف المجموعة ظاهرين لأعضاء المجموعة فقط.'
       private_to_parent_members: 'اسم ووصف المجموعة سيكونون ظاهرين لأعضاء {{parent}}'
     privacy: 'الخصوصية'

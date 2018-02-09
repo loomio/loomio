@@ -1,5 +1,4 @@
 AppConfig = require 'shared/services/app_config.coffee'
-moment    = require 'moment'
 
 angular.module('loomioApp').directive 'pollCommonClosingAtField', ->
   scope: {poll: '='}

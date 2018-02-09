@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'PollCommonCloseModal', ->
       steps: ['close', 'outcome', 'announce']
       closeComplete: ->
         $scope.outcome = Records.outcomes.build(pollId: $scope.poll.id)
-      outcomeComplete: (_, outcome) ->
-        $scope.announcement = Records.announcements.buildFromModel(outcome, 'outcome_created')
+      outcomeComplete: (_, event) ->
+        $scope.announcement = Records.announcements.buildFromModel(event)
 
   ]

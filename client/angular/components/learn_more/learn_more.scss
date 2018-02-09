@@ -1,0 +1,13 @@
+.learn-more__menu-content {
+  padding: 0;
+}
+
+.learn-more__content {
+  width: $tiny-max-px;
+  padding: $cardPaddingSize $cardPaddingSize;
+}
+
+.learn-more__content img {
+  max-width: 100%;
+  margin-top: $cardPaddingSize;
+}

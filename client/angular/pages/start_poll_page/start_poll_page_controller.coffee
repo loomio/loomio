@@ -19,12 +19,11 @@ $controller = ($scope, $rootScope, $routeParams) ->
   @icon = ->
     iconFor(@poll)
 
-  applyPollStartSequence(@,
+  applyPollStartSequence @,
     emitter: $scope
-    afterSaveComplete: (poll) ->
+    afterSaveComplete: (event) ->
       ModalService.open 'AnnouncementModal', announcement: ->
-        Records.announcements.buildFromMOdal(poll, 'poll_created')
-  )
+        Records.announcements.buildFromModel(event)
 
   listenForLoading $scope
 

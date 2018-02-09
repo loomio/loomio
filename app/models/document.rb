@@ -42,7 +42,7 @@ class Document < ApplicationRecord
   end
 
   def is_an_image?
-    file_file_name.to_s.match(AppConfig.image_regex)
+    metadata['icon'] == 'image'
   end
 
   def manual_url?
@@ -66,6 +66,6 @@ class Document < ApplicationRecord
   private
 
   def metadata
-    @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(url) })
+    @metadata ||= Hash(AppConfig.doctypes.detect { |type| /#{type['regex']}/.match(file_content_type || url) })
   end
 end

@@ -42,7 +42,11 @@ module Events::Notify::InApp
   # by default we infer the values needed from the eventable class,
   # but this method can be overridden with any translation values for a particular event
   def notification_translation_values
-    { name: notification_translation_name, title: notification_translation_title }
+    {
+      name:      notification_translation_name,
+      title:     notification_translation_title,
+      poll_type: (I18n.t(:"poll_types.#{notification_poll_type}") if notification_poll_type)
+    }.compact
   end
 
   def notification_translation_name
@@ -51,5 +55,12 @@ module Events::Notify::InApp
 
   def notification_translation_title
     @notification_translation_title ||= polymorphic_title(eventable)
+  end
+
+  def notification_poll_type
+    case eventable
+    when Poll         then eventable.poll_type
+    when Announcement then (eventable.eventable.poll_type if eventable.eventable.is_a?(Poll))
+    end
   end
 end

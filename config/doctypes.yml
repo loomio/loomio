@@ -4,37 +4,37 @@
   color: "#BB0000"
 
 - name: image
-  regex: \.(gif|jpg|jpeg|png|tiff|svg)(\?\d+)*$
+  regex: '[.\/](gif|jpg|jpeg|png|tiff|svg)(\?\d+)*$'
   icon: image
   color: "#ABCABC"
 
 - name: pdf
-  regex: \.pdf(\?\d+)*$
+  regex: '[.\/]pdf(\?\d+)*$'
   icon: file-pdf-box
   color: "#BB4444"
 
 - name: excel
-  regex: \.(xls|xlsx)(\?\d+)*$
+  regex: '[.\/](xls|xlsx)(\?\d+)*$'
   icon: file-excel-box
   color: "#44AA66"
 
 - name: document
-  regex: \.(doc|docx)(\?\d+)*$
+  regex: '[.\/](doc|docx)(\?\d+)*$'
   icon: file-word-box
   color: "#4466AA"
 
 - name: csv
-  regex: \.csv(\?\d+)*$
+  regex: '[.\/]csv(\?\d+)*$'
   icon: file-document
   color: "#44AA66"
 
 - name: video
-  regex: \.(mp4|mov|m4a)
+  regex: '[.\/](mp4|mov|m4a)'
   icon: file-video
   color: "#BB0000"
 
 - name: text
-  regex: \.(txt)
+  regex: '[.\/](txt)'
   icon: file-document
   color: "#4466AA"
 

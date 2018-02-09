@@ -1,4 +1,10 @@
 hu:
+  explore:
+    header: Keresés a nyilvános csoportok között
+  activerecord:
+    errors:
+      messages:
+        invalid: ez nem egy érvényes érték
   email:
     group_email:
       intro: "%{who} bejelentést tett a(z)  %{group} csoportban:"
@@ -24,3 +30,9 @@ hu:
     public_groups: Nyilvános csoportok
     terms: Feltételek
     independent_install_html: '%{hostname} a Loomio egy független másolatát futtatja:<a href="http://github.com/loomio/loomio">bővebben</a>.'
+  how_it_works_thread:
+    title: Hogyan használd a Loomio-t
+  poll_mailer:
+    common:
+      unsubscribe: Leiratkozás
+  comment_by: '%{comment_author} bejegyzése'

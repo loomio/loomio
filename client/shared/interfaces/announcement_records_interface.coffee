@@ -11,15 +11,14 @@ module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
         q: fragment
         per: 5
 
-  fetchNotifiedDefault: (model, kind) ->
+  fetchNotifiedDefault: (event) ->
     @fetch
       path: 'notified_default'
       params:
-        kind: kind
-        "#{model.constructor.singular}_id": model.id
+        kind: event.kind
+        "#{event.eventableType.toLowerCase()}_id": event.eventableId
 
-  buildFromModel: (model, kind) ->
-    @build
-      kind: kind
-      announceableId:   model.id
-      announceableType: _.capitalize model.constructor.singular
+  buildFromModel: (model) ->
+    switch model.constructor.singular
+      when 'event' then @build(eventId: model.id)
+      else              @build(modelId: model.id, modelType: _.capitalize(model.constructor.singular))

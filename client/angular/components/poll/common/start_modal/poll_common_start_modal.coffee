@@ -12,6 +12,6 @@ angular.module('loomioApp').factory 'PollCommonStartModal', ->
       iconFor($scope.poll)
 
     applyPollStartSequence $scope,
-      afterSaveComplete: (poll) ->
-        $scope.announcement = Records.announcements.buildFromModel(poll, 'poll_created')
+      afterSaveComplete: (event) ->
+        $scope.announcement = Records.announcements.buildFromModel(event)
   ]

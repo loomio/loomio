@@ -13,14 +13,23 @@ module.exports =
   submitForm: (scope, model, options = {}) ->
     submit(scope, model, options)
 
+  submitDiscussion: (scope, model, options = {}) ->
+    submit(scope, model, _.merge(
+      flashSuccess: "discussion_form.messages.#{actionName(model)}"
+      failureCallback: ->
+        scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
+      successCallback: (data) ->
+        _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
+        EventBus.emit scope, 'nextStep', createdEvent(data, model)
+    , options))
+
   submitOutcome: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
-        outcome = Records.outcomes.find(data.outcomes[0].id)
-        EventBus.emit scope, 'nextStep', outcome
+        EventBus.emit scope, 'nextStep', createdEvent(data, model)
     , options))
 
   submitStance: (scope, model, options = {}) ->
@@ -53,30 +62,35 @@ module.exports =
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
-        poll = Records.polls.find(data.polls[0].key)
-        poll.removeOrphanOptions()
-        EventBus.emit scope, 'nextStep', poll
+        model.removeOrphanOptions()
+        EventBus.emit scope, 'nextStep', createdEvent(data, model)
       cleanupFn: ->
         EventBus.emit scope, 'doneProcessing'
     , options))
 
+  upload: (scope, model, options = {}) ->
+    upload(scope, model, options)
+
   uploadForm: (scope, element, model, options = {}) ->
-    submitFn = options.submitFn or Records.documents.upload
-    options.loadingMessage = options.loadingMessage or 'common.action.uploading'
-    scope.upload = (files) ->
-      scope.files = files
-      prepare(scope, model, options)
-      for file in files
-        submitFn(file, progress(scope)).then(
-          success(scope, model, options),
-          failure(scope, model, options)
-        ).finally(
-          cleanup(scope, model, options)
-        )
+    scope.upload     = upload(scope, model, options)
     scope.selectFile = -> element[0].querySelector('input[type=file]').click()
     scope.drop       = (event) -> scope.upload(event.dataTransfer.files)
     if !options.disablePaste
       EventBus.listen scope, 'filesPasted', (_, files) -> scope.upload(files)
+
+upload = (scope, model, options) ->
+  submitFn = options.submitFn or Records.documents.upload
+  options.loadingMessage = options.loadingMessage or 'common.action.uploading'
+  (files) ->
+    scope.files = files
+    prepare(scope, model, options)
+    for file in files
+      submitFn(file, progress(scope)).then(
+        success(scope, model, options),
+        failure(scope, model, options)
+      ).finally(
+        cleanup(scope, model, options)
+      )
 
 submit = (scope, model, options = {}) ->
   # fetch draft from server and listen for changes to it
@@ -153,6 +167,17 @@ calculateFlashOptions = (options) ->
 
 actionName = (model) ->
   if model.isNew() then 'created' else 'updated'
+
+createdEvent = (data, model) ->
+  eventData = _.first _.filter data.events, (event) -> event.kind == eventKind(model)
+  Records.events.find(eventData.id) if eventData?
+
+eventKind = (model) ->
+  return 'new_discussion' if model.isNew() and model.constructor.singular == 'discussion'
+  if model.isNew()
+    "#{model.constructor.singular}_created"
+  else
+    "#{model.constructor.singular}_edited"
 
 errorTypes =
   400: 'badRequest'

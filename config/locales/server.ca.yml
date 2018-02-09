@@ -55,3 +55,4 @@ ca:
     links:
       title: |
         ## Enllaços i imatges
+  comment_by: Comentari per %{comment_author}

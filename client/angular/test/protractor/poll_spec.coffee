@@ -39,14 +39,13 @@ describe 'Polls', ->
     page.fillIn '.poll-common-form-fields__title', 'A new proposal'
     page.fillIn '.poll-common-form-fields textarea', 'Some details'
     page.click '.poll-common-form__submit'
+    page.click '.announcement-form__submit'
     page.expectText '.poll-common-card__title', 'A new proposal'
     page.expectText '.poll-common-details-panel', 'Some details'
 
     page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'
     page.click '.poll-common-vote-form__submit'
-
-    page.click '.announcement-form__submit'
     page.expectFlash '1 notifications sent'
 
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Agree'
@@ -128,13 +127,6 @@ describe 'Polls', ->
 
     page.expectFlash 'Vote created'
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Big Baloo'
-
-  it 'can invite users via email', ->
-    page.loadPath 'polls/test_proposal_poll_share'
-    page.fillIn '.poll-common-share-form__add-option-input', 'loo@m.io'
-    page.click '.poll-common-share-form__option-button'
-
-    page.expectFlash 'Invitation email sent to loo@m.io'
 
   it 'can show undecided users', ->
     page.loadPath 'polls/test_proposal_poll_with_guest'

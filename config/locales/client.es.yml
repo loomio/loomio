@@ -203,6 +203,14 @@ es:
         loud: "Recibirás correo electrónico sobre toda la actividad en tus nuevos grupos. "
         normal: "Recibirás por correo electrónico los anuncios de grupos nuevos."
         quiet: "No recibirás correo electrónico de los nuevos grupos."
+  close_explanation_modal:
+    aria_label: Cerrar hilo
+    close_thread: 'Cerrar hilo '
+    body_header: |
+      <p>Cierra hilos irrelevantes o viejos para removerlos de la vista e indicar que la discusión ha finalizado</p>
+    body_footer: |
+      <p>Cualquier persona podrá aún comentar o iniciar una propuesta en un hilo cerrado, pero el mismo no aparecerá en el listado de hilos del grupo o el escritorio</p>
+    image_alt: Todos los hilos cerrados
   mute_explanation_modal:
     aria_label: 'Silenciar hilo '
     mute_thread: Silenciar hilo
@@ -381,6 +389,7 @@ es:
     show_history: Ver historial de revisión
     pin_thread: Fijar hilo
     unpin_thread: Soltar hilo
+    comment_copied: URL del comentario copiado al portapapeles
   cover_photo_form:
     aria_label: 'Formulario de carga para la foto de portada '
     heading: 'Nueva foto de portada '
@@ -426,7 +435,14 @@ es:
   context_panel:
     thread_status:
       pinned: "Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos de tu grupo para todos los miembros del mismo."
+      closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
   group_page:
+    show_opened: '{{count}} Abierto'
+    show_closed: '{{count}} Cerrado '
+    no_threads_here: Ningún hilo para ver aquí!
+    search_threads: Buscar hilos ...
+    private_threads: Debes ser un miembro para ver hilos privados en este grupo
+    no_more_threads: Esos son todos los hilos en este grupo!
     messages:
       privacy:
         members: 'Ahora este grupo es visible sólo para miembros.'
@@ -438,12 +454,12 @@ es:
     new_photo: 'Nueva foto '
     new_cover_photo: 'Carga una nueva foto de portada '
     new_group_logo: 'Cargar nuevo logo del grupo'
+    open_discussions: 'Hilos abiertos'
+    closed_discussions: 'Hilos cerrados'
     discussions_placeholder: 'Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.'
     members: 'Miembros '
     members_placeholder: 'Estás solo aquí: ¡invita a algunas personas para unirse a ti! '
     member_options: Opciones de membresía
-    see_all_members: 'Ve todos los ({{count}}) miembros'
-    pending_invitations: '+ ({{count}}) pendientes'
     subgroups: 'Subgrupos'
     subgroups_placeholder: 'Los subgrupos le dan su propio espacio a los equipos y mantienen las notificaciones enfocadas en las personas indicadas.'
     invite_people: 'Invitar'
@@ -505,7 +521,6 @@ es:
     description: 'Descripción '
     description_placeholder: 'Describe el propósito de tu grupo para que los miembros sepan porque están aquí. '
     privacy_statement:
-      public_on_web: 'El nombre y la descripción serán públicos en línea. '
       private_to_group: 'El nombre y la descripción solo serán visibles para miembros. '
       private_to_parent_members: 'El nombre y la descripción serán visibles para los miembros de {{parent}}'
     privacy: 'Privacidad'
@@ -527,6 +542,7 @@ es:
     membership_granted_upon_request: 'Cualquiera puede unirse al grupo.'
     membership_granted_upon_approval: 'Cualquiera puede pedir la membresía, pero debe ser aprobada.'
     membership_granted_upon_approval_secret_parent: 'Cualquiera en {{parent}} puede pedir apuntarse al grupo <strong>por petición</strong>.'
+    features: 'Herramientas especificas de este grupo'
     thread_privacy: 'Privacidad del hilo'
     public_threads: 'Sólo hilos públicos'
     public_discussions_subgroup: 'Cualquiera que pertenezca a {{parentGroupName}} puede ver las discusiones'
@@ -548,6 +564,9 @@ es:
     messages:
       group_created: 'Grupo ha sido creado'
       group_updated: 'Grupo actualizado'
+  group_features:
+    useAnonymous: 'Activar votos anónimos '
+    nested_comments: Activar comentarios agrupados
   membership_requests_card:
     heading: 'Pedidos de membresía '
     manage_requests: 'Gestionar peticiones '
@@ -562,13 +581,27 @@ es:
     confirm_remove_helptext: ¿Seguro que quieres eliminar este archivo adjunto?
     document_removed: Archivo adjunto eliminado
   document:
+    error:
+      invalid_format: Tu URL es invalido. Asegurate que comienza con http:// o https://
+    card:
+      no_documents: Aún no se han cargado archivos adjuntos a este grupo
+      view_documents: Ver todo
     list:
       title: Adjuntos
+      no_group_documents: Aún no se han cargado archivos adjuntos a esta decisión grupal
     management:
+      content_header: Todos los adjuntos
       uploaded_to: en
     modal:
       title: Agregar archivo adjunto
+    method_form:
+      helptext: Adjunta archivos o enlaces para compartirlos con tu grupo.
+      url_helptext: Enlaces a páginas web o recursos online
+      file_helptext: Adjunta archivos desde tu ordenador
     form:
+      url_label: URL
+      helptext: Clic aquí, pega, o arrastra tus archivos para adjuntarlos
+      url_placeholder: E.j. https://www.example.com/attachment.zip
       title_helptext: ¿Cómo llamamos este adjunto?
       title_label: Nombre
       title_placeholder: 'E.j. ''Guías Comunitarias'' '
@@ -820,7 +853,11 @@ es:
       pinned: 'Hilo fijado'
       unpinned: 'Hilo liberado'
     volume:
+      mute_message: 'Hilo silenciado'
       unmute_message: 'Hilo silenciado '
+    closed:
+      reopened: 'Hilo reabierto'
+      closed: 'Hilo cerrado '
   activity_card:
     beginning: 'Inicio '
     unread: 'No leído '
@@ -841,6 +878,7 @@ es:
     edit: 'Editar'
     edit_thread: 'Editar'
     close_thread: 'Cerrar'
+    reopen_thread: 'Reabierto'
     pin_thread: 'Fijar'
     unpin_thread: 'Liberar'
     mute_thread: 'Silenciar'
@@ -869,6 +907,9 @@ es:
     confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
       success: El hilo ha sido movido a {{name}}
+  print_modal:
+    load_discussion: 'Cargando discusión entera '
+    helptext: 'Un momento, estamos cargando todos los eventos en este hilo para impresión... '
   delete_comment_dialog:
     title: 'Borrar comentario'
     question: '¿Estás seguro de que quieres borrar este comentario?'
@@ -1233,6 +1274,7 @@ es:
     meeting_created: Coordinación horaria iniciada
     meeting_updated: Coordinación horaria editada
     timeslots: Horarios
+    no_options: Ingresa horarios en tu zona horaria actual ({{zone}}). Los participantes verán los horarios traducidos a sus zonas horarias locales.
     meeting_duration: Duración de reunión
     add_option_placeholder: Ingrese una nueva hora
   poll_ranked_choice_form:
@@ -1313,10 +1355,14 @@ es:
     stance_updated: Opción actualizada
   thread_item:
     comment_replied_to: "<strong><a href='u/{{username}}'>{{author}}</a></strong> en respuesta a <strong> {{title}}</strong>"
+    discussion_title_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> editó el titulo del hilo"
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el contexto del hilo"
     discussion_attachments_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado los anexos del hilo"
+    discussion_privacy_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> cambió la privacidad del hilo"
     discussion_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha editado el hilo"
     discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> movió el hilo de <strong>{{title}}</strong>"
+    discussion_closed: "<strong><a href='u/{{username}}'>{{author}}</a></strong> cerró el hilo"
+    discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> reabrió el hilo"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> compartió un resultado para <strong>{{title}}</strong>"
     poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> ha cerrado el {{polltype}}: <strong>{{title}}</strong>"
@@ -1324,6 +1370,7 @@ es:
     poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> editó el {{polltype}}: <strong>{{title}}</strong>"
     poll_expired: "{{polltype}} ha cerrado: <strong>{{title}}</strong>"
     stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> votó en: <strong> {{title}}</strong>"
+    event_removed: "Eliminado del hilo"
   poll_admin_page:
     title: Administrador - {{title}}
   poll_common_share_form:

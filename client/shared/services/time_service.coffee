@@ -1,5 +1,4 @@
 AppConfig = require 'shared/services/app_config.coffee'
-moment    = require 'moment'
 
 module.exports = new class TimeService
   nameForZone: (zone, nameForLocal) ->

@@ -2,9 +2,10 @@ Records       = require 'shared/services/records.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ listenForLoading } = require 'shared/helpers/listen.coffee'
+{ applyDiscussionStartSequence } = require 'shared/helpers/apply.coffee'
+{ listenForLoading }             = require 'shared/helpers/listen.coffee'
 
-$controller = ($rootScope) ->
+$controller = ($scope, $rootScope) ->
   $rootScope.$broadcast('currentComponent', { page: 'startDiscussionPage', skipScroll: true })
   @discussion = Records.discussions.build
     title:       LmoUrlService.params().title
@@ -12,11 +13,13 @@ $controller = ($rootScope) ->
 
   listenForLoading $scope
 
-  $scope.$on 'nextStep', (_, discussion) ->
-    ModalService.open 'AnnouncementModal', announcement: ->
-      Records.announcements.buildFromModel(discussion, 'new_discussion')
+  applyDiscussionStartSequence @,
+    emitter: $scope
+    afterSaveComplete: (event) ->
+      ModalService.open 'AnnouncementModal', announcement: ->
+        Records.announcements.buildFromModel(event)
 
   return
 
-$controller.$inject = ['$rootScope']
+$controller.$inject = ['$scope', '$rootScope']
 angular.module('loomioApp').controller 'StartDiscussionPageController', $controller
