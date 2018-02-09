@@ -30,7 +30,7 @@ describe 'announcements', ->
       page.expectElement '.announcement-form'
       page.fillIn 'md-autocomplete input', 'jenn'
       browser.driver.sleep(1000)
-      page.click '.announcement-chip'
+      page.click '.md-autocomplete-suggestions li'
       page.expectText '.announcement-form__chips', 'Jennifer Grey'
       page.click '.announcement-form__submit'
       page.expectFlash '1 notifications sent'
@@ -65,7 +65,7 @@ describe 'announcements', ->
       page.expectElement '.announcement-form'
       page.fillIn 'md-autocomplete input', 'test@example.com'
       browser.driver.sleep(1000)
-      page.click '.announcement-chip'
+      page.click '.md-autocomplete-suggestions li'
       page.expectText '.announcement-form__chips', 'test@example.com'
       page.click '.announcement-form__submit'
       page.expectFlash '1 notifications sent'
