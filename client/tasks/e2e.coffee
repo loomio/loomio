@@ -25,6 +25,7 @@ module.exports =
 
 cliArgs = ->
   result = []
+  result.push "--retries #{args.retries || '1'}"
   result.push "--test ./angular/test/nightwatch/tests/#{args.test}.js" if args.test?
   result.push "--testcase #{args.testcase}"                            if args.testcase?
   result
