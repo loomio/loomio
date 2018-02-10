@@ -4,6 +4,7 @@ gulp       = require 'gulp'
 pipe       = require 'gulp-pipe'
 protractor = require('gulp-protractor').protractor
 nightwatch = require 'gulp-nightwatch'
+args       = require('yargs').argv
 
 module.exports =
   protractor:
@@ -18,6 +19,12 @@ module.exports =
       ]
   nightwatch:
     core: ->
-      pipe gulp.src(paths.nightwatch.specs), [
-        nightwatch(configFile: paths.nightwatch.config)
+      pipe gulp.src('./gulpfile.coffee'), [
+        nightwatch(configFile: paths.nightwatch.config, cliArgs: cliArgs())
       ]
+
+cliArgs = ->
+  result = []
+  result.push "--test ./angular/test/nightwatch/tests/#{args.test}.js" if args.test?
+  result.push "--testcase #{args.testcase}"                            if args.testcase?
+  result

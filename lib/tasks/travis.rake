@@ -24,6 +24,16 @@ namespace :travis do
     raise "protractor:core failed!" unless $?.exitstatus == 0
   end
 
+  task :nightwatch => :environment do
+    puts "Starting to run nightwatch..."
+    # warming up the server
+    system("sleep 10")
+    system("wget http://localhost:3000/")
+    # ok now start running the tests
+    system("cd client && gulp nightwatch:core")
+    raise "nightwatch:core failed!" unless $?.exitstatus == 0
+  end
+
   task :plugins => :environment do
     puts "Starting to run plugin rspec..."
     system("bundle exec rspec plugins")

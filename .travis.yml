@@ -61,7 +61,7 @@ before_script:
 
 script:
   - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
-  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi
+  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor travis:nightwatch; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
 
 after_script:

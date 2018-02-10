@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/loomio/loomio#readme",
   "dependencies": {
-    "raven-js": "latest",
     "angular": "1.4.1",
     "angular-animate": "1.4.1",
     "angular-aria": "1.4.1",
@@ -62,6 +61,7 @@
     "moment-timezone": "latest",
     "promise-polyfill": "^7.0.0",
     "promise.prototype.finally": "^3.1.0",
+    "raven-js": "latest",
     "svg.js": "latest",
     "vinyl-source-stream": "^1.1.0",
     "vue": "^2.5.11",
@@ -110,6 +110,7 @@
     "uglifyify": "^4.0.5",
     "vinyl-buffer": "^1.0.1",
     "vueify": "^9.4.1",
-    "vueify-extract-css": "^0.2.0"
+    "vueify-extract-css": "^0.2.0",
+    "yargs": "^11.0.0"
   }
 }
