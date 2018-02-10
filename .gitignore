@@ -32,5 +32,8 @@ public/img/emojis
 
 client/node_modules
 client/angular/dependencies
-client/tasks/config/plugins.yml
 client/angular/templates.coffee
+client/tasks/config/plugins.yml
+
+client/angular/test/screenshots
+client/angular/test/log
