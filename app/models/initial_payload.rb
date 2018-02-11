@@ -16,6 +16,7 @@ InitialPayload = Struct.new(:user) do
       momentLocales:       AppConfig.moment_locales,
       recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
       baseUrl:             root_url,
+      contactEmail:        ENV['SUPPORT_EMAIL'],
       plugins:             Plugins::Repository.to_config,
       theme:               AppConfig.theme,
       sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],

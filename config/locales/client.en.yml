@@ -1069,7 +1069,7 @@ en:
     message_label: 'Your message'
     message_placeholder: 'Your message...'
     send_message: 'Send Message'
-    new_contact_message: "Thanks for getting in touch; we''ll get back to you soon!"
+    new_contact_message: "Thanks for getting in touch; we'll get back to you soon!"
 
   hint:
     context: 'Tips for using the context panel'

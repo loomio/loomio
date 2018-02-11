@@ -1,0 +1,3 @@
+%div{md-colors: "mdColors()", class: "lmo-box--{{size}} user-avatar__initials user-avatar__initials--{{size}}", , aria-hidden: "true", ng-if: "user.avatarKind == 'initials'"} {{user.avatarInitials}}
+%img{md-colors: "mdColors()", class: "lmo-box--{{size}}", ng-if: "user.avatarKind == 'gravatar'", gravatar-src-once: "user.gravatarMd5", gravatar-size: "{{gravatarSize()}}", alt: "{{::user.name}}"}
+%img{md-colors: "mdColors()", class: "lmo-box--{{size}}", ng-if: "user.avatarKind == 'uploaded'", alt: "{{user.name}}", ng-src: "{{uploadedAvatarUrl()}}"}
