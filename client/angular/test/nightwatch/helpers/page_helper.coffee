@@ -24,6 +24,7 @@ module.exports = (test) ->
 
   fillIn: (selector, value, wait) ->
     @waitFor(selector, wait)
+    test.clearValue(selector)
     test.setValue(selector, value)
 
   selectOption: (selector, option) ->
