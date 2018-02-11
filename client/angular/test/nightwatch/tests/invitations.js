@@ -61,6 +61,6 @@ module.exports = {
     page.click('.invitation-form__add-members')
     page.click('.add-members-modal__list-item:first-of-type')
     page.click('.add-members-modal__submit')
-    page.expectElement('.flash-root__message', 'Emilio Estevez added to Subgroup')
+    page.expectText('.flash-root__message', 'Emilio Estevez added to Subgroup')
   }
 }
