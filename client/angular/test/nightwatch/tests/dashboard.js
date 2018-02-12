@@ -40,6 +40,7 @@ module.exports = {
     page.click('.thread-preview__mute')
     page.expectText('.mute-explanation-modal__title', 'Mute thread')
     page.click('.mute-explanation-modal__mute-thread')
+    page.pause(2000)
     page.mouseOver('.thread-preview')
     page.click('.thread-preview__mute')
     page.expectText('.flash-root__message', 'Thread muted')
