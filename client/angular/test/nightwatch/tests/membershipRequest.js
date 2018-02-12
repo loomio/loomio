@@ -19,6 +19,7 @@ module.exports = {
     page.click('.membership-requests-card__link')
     page.click('.membership-requests-page__approve')
     page.click('.membership-requests-page__approve')
+    page.ensureSidebar()
     page.click('.sidebar__list-item-button--group')
     page.expectText('.members-card', 'MVS')
   },

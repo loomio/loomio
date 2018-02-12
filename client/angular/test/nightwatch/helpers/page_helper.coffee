@@ -34,9 +34,9 @@ module.exports = (test) ->
   pause: (time = 1000) ->
     test.pause(time)
 
-  mouseOver: (selector, x, y, wait) ->
+  mouseOver: (selector, callback, wait) ->
     @waitFor(selector, wait)
-    test.moveToElement(selector, x || 0, y || 0)
+    test.moveToElement(selector, 10, 10, callback)
 
   fillIn: (selector, value, wait) ->
     @waitFor(selector, wait)
