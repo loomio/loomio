@@ -22,8 +22,8 @@
       "silent": true,
       "screenshots": {
         "enabled": true,
-        "path": "../screenshots",
-        "on_failure": true
+        "on_failure": true,
+        "path": "./angular/test/screenshots"
       },
       "desiredCapabilities": {
         "browserName": "firefox",
