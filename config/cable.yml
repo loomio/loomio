@@ -4,7 +4,7 @@ production:
   channel_prefix: loomio
 
 development:
-  adapter: async
+  adapter: postgresql
 
 test:
   adapter: async
