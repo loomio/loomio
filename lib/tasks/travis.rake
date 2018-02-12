@@ -15,19 +15,13 @@ namespace :travis do
   end
 
   task :e2e => :environment do
-    puts "Starting to run protractor..."
     # warming up the server
     system("sleep 10")
     system("wget http://localhost:3000/")
     # ok now start running the tests
-    system("cd client && gulp protractor:core")
-    protractor_pass = $?.exitstatus == 0
-
     puts "Starting to run nightwatch..."
     system("cd client && gulp nightwatch:core --retries 2")
-    nightwatch_pass = $?.exitstatus == 0
-
-    raise "e2e failed!" unless protractor_pass && nightwatch_pass
+    raise "e2e failed!" unless $?.exitstatus == 0
   end
 
   task :plugins => :environment do
