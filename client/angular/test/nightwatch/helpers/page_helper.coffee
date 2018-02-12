@@ -21,6 +21,10 @@ module.exports = (test) ->
     @waitFor(selector, wait)
     test.click(selector)
 
+  scrollTo: (selector, callback, wait) ->
+    @waitFor(selector, wait)
+    test.getLocationInView(selector, callback)
+
   ensureSidebar: ->
     test.elements 'css selector', '.md-sidenav-left', (result) =>
       if result.value.length == 0
