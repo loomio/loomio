@@ -320,7 +320,7 @@ describe 'Group Page', ->
 
   describe 'subdomains', ->
     it 'handles subdomain redirects', ->
-      page.loadPath 'setup_group_with_subdomain'
+      page.loadPath 'setup_group_with_handle'
       page.expectText '.group-theme__name', 'Ghostbusters'
 
   describe 'group settings', ->
