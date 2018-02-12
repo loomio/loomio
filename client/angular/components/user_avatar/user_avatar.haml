@@ -1,4 +1,4 @@
-.user-avatar{aria-hidden: "true", title: "{{user.name}}"}
+.user-avatar{aria-hidden: "true", title: "{{user.name}}", ng-class: "{'user-avatar--coordinator': coordinator}"}
   %a.user-avatar__profile-link{lmo-href-for: "user", ng-if: "!noLink"}
     %user_avatar_body{user: "user", coordinator: "coordinator", size: "{{size}}"}
   .user-avatar__profile-link{ng-if: "noLink"}
