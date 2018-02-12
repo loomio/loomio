@@ -56,7 +56,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'shoulda-matchers'
-  gem 'dotenv-rails', require: 'dotenv/rails-now'
+  gem 'dotenv-rails'
   gem 'database_cleaner'
   gem 'gemrat'
   gem 'derailed'
@@ -82,7 +82,7 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
-  gem 'simplecov', require: false 
+  gem 'simplecov', require: false
 end
 
 group :production do
