@@ -30,7 +30,7 @@ namespace :travis do
     system("sleep 10")
     system("wget http://localhost:3000/")
     # ok now start running the tests
-    system("cd client && gulp nightwatch:core")
+    system("cd client && gulp nightwatch:core --retries 2")
     raise "nightwatch:core failed!" unless $?.exitstatus == 0
   end
 
