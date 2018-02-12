@@ -27,13 +27,14 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__submit')
-    page.pause()
+    page.expectElement('.auth-complete')
 
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
     page.expectText('.context-panel__heading', 'I carried a watermelon')
     page.click('.add-comment-panel__join-actions button')
+    page.pause(2000)
     page.expectText('.flash-root__message', 'You are now a member of Open Dirty Dancing Shoes')
     page.expectElement('.comment-form__submit-button')
   },
@@ -205,6 +206,7 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.expectText('.auth-signup-form', 'Nice to meet you, Max Von Sydow')
     page.click('.auth-signup-form__submit')
+    page.expectElement('.auth-complete')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
