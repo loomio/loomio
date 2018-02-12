@@ -28,6 +28,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
+    page.ensureSidebar()
     page.click('.sidebar__list-item-button--muted')
     page.expectText('.dashboard-page__explain-mute', "You haven't muted any threads yet")
   },

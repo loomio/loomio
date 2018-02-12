@@ -171,6 +171,7 @@ module.exports = {
     page.expectText('.flash-root__message', 'Signed in successfully')
     page.expectText('.group-theme__name', 'Closed Dirty Dancing Shoes')
     page.expectText('.thread-preview-collection__container', 'This thread is private')
+    page.ensureSidebar()
     page.expectElement('.sidebar__content')
   },
 
@@ -184,6 +185,7 @@ module.exports = {
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
     page.expectText('.group-theme__name', 'Secret Dirty Dancing Shoes')
+    page.ensureSidebar()
     page.expectElement('.sidebar__content')
   },
 

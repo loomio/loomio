@@ -6,6 +6,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
+    page.ensureSidebar()
     page.click('.sidebar__list-item-button--decisions')
     page.click('.navbar-search__button')
     page.fillIn('.navbar-search__input input', 'what star')

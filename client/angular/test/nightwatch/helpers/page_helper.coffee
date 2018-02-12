@@ -21,6 +21,12 @@ module.exports = (test) ->
     @waitFor(selector, wait)
     test.click(selector)
 
+  ensureSidebar: ->
+    test.elements 'css selector', '.md-sidenav-left', (result) =>
+      if result.value.length == 0
+        test.click('.navbar__sidebar-toggle')
+        @waitFor('.md-sidenav-left')
+
   pause: (time = 1000) ->
     test.pause(time)
 
