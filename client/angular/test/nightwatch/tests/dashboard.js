@@ -16,8 +16,10 @@ module.exports = {
   'dismisses a thread': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_dashboard')
+    page.loadPath('setup_dashboard_with_one_thread')
+    page.expectElement('.thread-previews-container')
     page.mouseOver('.thread-preview')
+    page.pause()
     page.click('.thread-preview__dismiss')
     page.expectText('.dismiss-explanation-modal h1', 'Dismiss thread')
     page.click('.dismiss-explanation-model__submit')
@@ -36,14 +38,15 @@ module.exports = {
   'lets you mute a thread': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_dashboard')
+    page.loadPath('setup_dashboard_with_one_thread')
+    page.expectElement('.dashboard-page__collections')
     page.mouseOver('.thread-preview')
+    page.pause()
     page.click('.thread-preview__mute')
     page.expectText('.mute-explanation-modal__title', 'Mute thread')
     page.click('.mute-explanation-modal__mute-thread')
-    page.pause(2000)
-    page.mouseOver('.thread-preview')
-    page.click('.thread-preview__mute')
     page.expectText('.flash-root__message', 'Thread muted')
+    page.click('.flash-root__action a')
+    page.expectText('.flash-root__message', 'Thread unmuted')
   }
 }
