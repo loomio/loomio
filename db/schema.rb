@@ -326,7 +326,7 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.boolean "parent_members_can_see_discussions", default: false, null: false
     t.string "key", limit: 255
     t.integer "category_id"
-    t.citext "subdomain"
+    t.citext "handle"
     t.integer "theme_id"
     t.boolean "is_visible_to_public", default: true, null: false
     t.boolean "is_visible_to_parent_members", default: false, null: false
@@ -374,7 +374,6 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.string "type", default: "FormalGroup", null: false
     t.integer "open_discussions_count", default: 0, null: false
     t.integer "closed_discussions_count", default: 0, null: false
-    t.string "handle"
     t.index ["archived_at"], name: "index_groups_on_archived_at"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -388,7 +387,6 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.index ["parent_id"], name: "index_groups_on_parent_id"
     t.index ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions"
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
-    t.index ["subdomain"], name: "index_groups_on_subdomain", unique: true
   end
 
   create_table "invitations", id: :serial, force: :cascade do |t|
