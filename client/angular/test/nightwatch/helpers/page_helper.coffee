@@ -48,6 +48,10 @@ module.exports = (test) ->
     # @click selector
     # element(By.cssContainingText('md-option', option)).click()
 
+  expectValue: (selector, value, wait) ->
+    @waitFor(selector, wait)
+    test.expect.element(selector).value.to.contain(value)
+
   expectText: (selector, value, wait) ->
     @waitFor(selector, wait)
     test.expect.element(selector).text.to.contain(value)
@@ -55,6 +59,10 @@ module.exports = (test) ->
   expectNoText: (selector, value, wait) ->
     @waitFor(selector, wait)
     test.expect.element(selector).text.to.not.contain(value)
+
+  acceptConfirm: ->
+    test.acceptAlert()
+    @pause()
 
   waitFor: (selector, wait = 4000) ->
     test.waitForElementVisible(selector, wait) if selector?

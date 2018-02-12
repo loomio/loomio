@@ -11,8 +11,9 @@ module.exports = (test) ->
   signInViaEmail: (email) ->
     page = pageHelper(test)
     page.fillIn '.auth-email-form__email input', 'new@account.com'
-    page.click '.auth-email-form__submit', '.auth-form input'
-    page.fillIn '.auth-form input', 'New Account'
-    page.click '.auth-signup-form__submit', '.auth-complete'
-    page.loadPath 'use_last_login_token', '.auth-signin-form'
+    page.click '.auth-email-form__submit'
+    page.fillIn '.auth-form-signin-form input', 'New Account'
+    page.click '.auth-signup-form__submit'
+    page.expectElement '.auth-complete'
+    page.loadPath 'use_last_login_token'
     page.click '.auth-signin-form__submit'
