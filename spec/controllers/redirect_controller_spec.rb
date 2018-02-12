@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe RedirectController do
-  let(:group) { create(:formal_group, subdomain: "subdomain") }
+  let(:group) { create(:formal_group, handle: "handle") }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
 
   describe 'get group via subdomain' do
     it 'redirects to the group if the subdomain exists' do
-      request.host = "#{group.subdomain}.test.host"
+      request.host = "#{group.handle}.test.host"
       get :subdomain
       expect(response).to redirect_to group_url(group)
     end

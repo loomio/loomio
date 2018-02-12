@@ -1,11 +1,3 @@
-.user-avatar--coordinator  {
-  .user-avatar__initials, img {
-    // remove soon: cant use theme colours in client scss
-    border: 2px solid $loomio-orange;
-    border-radius: 100%;
-  }
-}
-
 .user-avatar__profile-link {
   cursor: pointer;
   &:hover,
@@ -17,15 +9,17 @@
 }
 
 .user-avatar{
-  border-radius: 50%;
   box-sizing: border-box;
   text-align: center;
-  overflow: hidden;
-  img { width: 100%; }
   i { line-height: 28px; }
+}
+.user-avatar__img {
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .user-avatar__initials {
+  overflow: hidden;
   border-radius: 50%;
   border: 1px solid $border-color;
   color: $primary-text-color;
