@@ -1,11 +1,5 @@
-.user-avatar{class: "lmo-box--{{size}}", aria-hidden: "true", ng-class: "{'user-avatar--coordinator': coordinator}", title: "{{user.name}}"}
+.user-avatar{aria-hidden: "true", title: "{{user.name}}", ng-class: "{'user-avatar--coordinator': coordinator}"}
   %a.user-avatar__profile-link{lmo-href-for: "user", ng-if: "!noLink"}
-    %div{class: "lmo-box--{{size}} user-avatar__initials user-avatar__initials--{{size}}", aria-hidden: "true", ng-if: "user.avatarKind == 'initials'"}
-      {{user.avatarInitials}}
-    %img{class: "lmo-box--{{size}}", ng-if: "user.avatarKind == 'gravatar'", gravatar-src-once: "user.gravatarMd5", gravatar-size: "{{gravatarSize()}}", alt: "{{::user.name}}"}
-    %img{class: "lmo-box--{{size}}", ng-if: "user.avatarKind == 'uploaded'", alt: "{{user.name}}", ng-src: "{{uploadedAvatarUrl()}}"}
+    %user_avatar_body{user: "user", coordinator: "coordinator", size: "{{size}}"}
   .user-avatar__profile-link{ng-if: "noLink"}
-    %div{class: "lmo-box--{{size}} user-avatar__initials user-avatar__initials--{{size}}", aria-hidden: "true", ng-if: "user.avatarKind == 'initials'"}
-      {{user.avatarInitials}}
-    %img{class: "lmo-box--{{size}}", ng-if: "user.avatarKind == 'gravatar'", gravatar-src-once: "user.gravatarMd5", gravatar-size: "{{gravatarSize()}}", alt: "{{::user.name}}"}
-    %img{class: "lmo-box--{{size}}", ng-if: "user.avatarKind == 'uploaded'", alt: "{{user.name}}", ng-src: "{{uploadedAvatarUrl()}}"}
+    %user_avatar_body{user: "user", coordinator: "coordinator", size: "{{size}}"}
