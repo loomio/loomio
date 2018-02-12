@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.4.3'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.1.5.rc1'
 gem 'actioncable'
 gem 'rake'
 gem 'pg', '~> 0.18.4'
@@ -49,6 +49,7 @@ gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
 gem 'rack-attack'
 gem 'js_regex'
 gem 'bootsnap', require: false
+gem 'redis-rails'
 
 group :development, :test do
   gem 'byebug'
@@ -87,7 +88,6 @@ group :production do
   gem 'puma'
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
-  gem 'redis-rails'
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
 end

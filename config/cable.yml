@@ -1,11 +1,10 @@
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: <%= ENV['REDIS_URL'] %>
+  channel_prefix: loomio
 
 development:
   adapter: async
 
 test:
-  adapter: redis
-  url: redis://localhost:6379
-  channel_prefix: loomio_development
+  adapter: async

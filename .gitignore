@@ -34,3 +34,4 @@ client/node_modules
 client/angular/dependencies
 client/tasks/config/plugins.yml
 client/angular/templates.coffee
+dump.rdb
