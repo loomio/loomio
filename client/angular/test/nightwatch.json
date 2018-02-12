@@ -22,7 +22,8 @@
       "silent": true,
       "screenshots": {
         "enabled": true,
-        "path": "../screenshots"
+        "path": "../screenshots",
+        "on_failure": true
       },
       "desiredCapabilities": {
         "browserName": "firefox",
