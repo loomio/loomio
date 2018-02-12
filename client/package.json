@@ -105,6 +105,7 @@
     "node-yaml-config": "0.0.3",
     "protractor": "5.2.2",
     "protractor-jasmine2-screenshot-reporter": "^0.4.1",
+    "protractor-retry": "^1.1.8",
     "selenium-server-standalone-jar": "^3.8.1",
     "uglify-es": "^3.3.4",
     "uglifyify": "^4.0.5",

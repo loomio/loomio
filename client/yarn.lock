@@ -5224,6 +5224,10 @@ protractor-jasmine2-screenshot-reporter@^0.4.1:
     string.prototype.startswith "^0.2.0"
     uuid "^2.0.0"
 
+protractor-retry@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/protractor-retry/-/protractor-retry-1.1.8.tgz#2cd658519b8bbb7834a17beb116847003b16746f"
+
 protractor@5.2.2, protractor@^5:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/protractor/-/protractor-5.2.2.tgz#80eff170761455eff6e2f111088a03c438844a41"

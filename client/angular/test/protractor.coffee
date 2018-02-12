@@ -1,4 +1,5 @@
 HtmlScreenshotReporter = require 'protractor-jasmine2-screenshot-reporter'
+retry = require 'protractor-retry'
 
 reporter = new HtmlScreenshotReporter
   dest: './angular/test/screenshots'
@@ -22,8 +23,12 @@ exports.config =
     new Promise (resolve) ->
       reporter.beforeLaunch(resolve);
   onPrepare: ->
+    retry.onPrepare()
     jasmine.getEnv().addReporter(reporter);
     browser.driver.manage().window().setSize(1680, 1624)
+  onCleanup: (results) ->
+    retry.onCleanup(results)
   afterLaunch: (exitCode) ->
+    retry.afterLaunch(1)
     new Promise (resolve) ->
       reporter.afterLaunch(resolve.bind(this, exitCode))
