@@ -14,24 +14,20 @@ namespace :travis do
     raise "rspec failed!" unless $?.exitstatus == 0
   end
 
-  task :protractor => :environment do
+  task :e2e => :environment do
     puts "Starting to run protractor..."
     # warming up the server
     system("sleep 10")
     system("wget http://localhost:3000/")
     # ok now start running the tests
     system("cd client && gulp protractor:core")
-    raise "protractor:core failed!" unless $?.exitstatus == 0
-  end
+    protractor_pass = $?.exitstatus == 0
 
-  task :nightwatch => :environment do
     puts "Starting to run nightwatch..."
-    # warming up the server
-    system("sleep 10")
-    system("wget http://localhost:3000/")
-    # ok now start running the tests
     system("cd client && gulp nightwatch:core --retries 2")
-    raise "nightwatch:core failed!" unless $?.exitstatus == 0
+    nightwatch_pass = $?.exitstatus == 0
+
+    raise "e2e failed!" unless protractor_pass && nightwatch_pass
   end
 
   task :plugins => :environment do
