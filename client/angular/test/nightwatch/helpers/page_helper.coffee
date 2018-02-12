@@ -5,6 +5,11 @@ module.exports = (test) ->
   goTo: (path) ->
     test.url "http://localhost:3000/#{path}"
 
+  expectCount: (selector, count, wait) ->
+    @waitFor(selector, wait)
+    test.elements 'css selector', selector, (result) =>
+      test.verify.equal(result.value.length, count)
+
   expectElement: (selector, wait) ->
     @waitFor(selector, wait)
     test.expect.element(selector).to.be.present
