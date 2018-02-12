@@ -8,12 +8,12 @@ module.exports = class GroupRecordsInterface extends BaseRecordsInterface
     # could be id or key or handle
     @find(id) || _.first(@find(handle: id))
 
-  findOrFetch: (id) ->
+  findOrFetch: (id, options = {}) ->
     record = @fuzzyFind(id)
     if record
       Promise.resolve(record)
     else
-      @remote.fetchById(id, params).then => @fuzzyFind(id)
+      @remote.fetchById(id, options).then => @fuzzyFind(id)
 
   fetchByParent: (parentGroup) ->
     @fetch
