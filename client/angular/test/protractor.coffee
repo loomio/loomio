@@ -1,5 +1,5 @@
 HtmlScreenshotReporter = require 'protractor-jasmine2-screenshot-reporter'
-retry = require 'protractor-retry'
+retry = require('protractor-retry').retry
 
 reporter = new HtmlScreenshotReporter
   dest: './angular/test/screenshots'
