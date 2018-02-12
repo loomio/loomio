@@ -54,9 +54,11 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
-    page.click('.poll-common-vote-form__radio-button--agree')
-    page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
-    page.click('.poll-common-vote-form__submit')
+    page.scrollTo('.poll-common-vote-form__radio-button--agree', () => {
+      page.click('.poll-common-vote-form__radio-button--agree')
+      page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+      page.click('.poll-common-vote-form__submit')
+    })
 
     page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
       page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
