@@ -269,7 +269,7 @@ describe 'Group Page', ->
                  '.group-page-actions__archive-group',
                  '.archive-group-form__submit')
       page.expectFlash('This group has been deactivated')
-      page.expectText('.dashboard-page__no-groups', "You don't have any recent threads because you are not a member of any groups.")
+      page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
 
   describe 'handling drafts', ->
     it 'handles empty draft privacy gracefully', ->
