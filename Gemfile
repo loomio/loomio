@@ -5,7 +5,7 @@ gem 'rails', '~> 5.1.4'
 gem 'rake'
 gem 'pg', '~> 0.18.4'
 gem 'haml-rails', '~> 1.0.0'
-gem 'devise', '~> 4.3.0'
+gem 'devise', '~> 4.4.1'
 gem 'devise-i18n'
 gem 'doorkeeper', '~> 4.2.0'
 gem 'doorkeeper-i18n'
@@ -82,7 +82,7 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
-  gem 'simplecov', require: false 
+  gem 'simplecov', require: false
 end
 
 group :production do
