@@ -270,7 +270,7 @@ module.exports = {
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-open')
     page.click('.group-form__membership-granted-upon-request')
-    page.click('.group-form__members-can-create-subgroups')
+    page.click('.group-form__members-can-create-subgroups md-checkbox')
     page.click('.group-form__submit-button')
 
     // confirm privacy change
@@ -296,11 +296,11 @@ module.exports = {
     page.click('.group-page-actions__edit-group-link')
     page.click('.group-form__advanced-link')
     page.click('.group-form__privacy-secret')
-    page.click('.group-form__members-can-start-discussions')
-    page.click('.group-form__members-can-edit-discussions')
-    page.click('.group-form__members-can-edit-comments')
-    page.click('.group-form__members-can-raise-motions')
-    page.click('.group-form__members-can-vote')
+    page.click('.group-form__members-can-start-discussions md-checkbox')
+    page.click('.group-form__members-can-edit-discussions md-checkbox')
+    page.click('.group-form__members-can-edit-comments md-checkbox')
+    page.click('.group-form__members-can-raise-motions md-checkbox')
+    page.click('.group-form__members-can-vote md-checkbox')
     page.click('.group-form__submit-button')
 
     // confirm privacy change
@@ -430,5 +430,4 @@ module.exports = {
     page.click('.poll-common-preview')
     page.expectNoElement('.poll-common-vote-form__submit')
   }
-
 }
