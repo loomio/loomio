@@ -287,4 +287,6 @@ Loomio::Application.routes.draw do
     post :participate,                    to: 'identities/slack#participate', as: :slack_participate
     post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
   end
+
+  get ":id", to: 'groups#show', as: :group_handle
 end
