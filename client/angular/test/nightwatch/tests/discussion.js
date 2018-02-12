@@ -6,8 +6,10 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard')
+    page.ensureSidebar()
     page.click('.sidebar__list-item-button--muted')
     page.click('.thread-preview__link')
+    page.ensureSidebar()
     page.click('.sidebar__list-item-button--start-thread')
     page.expectText('.discussion-form__group-select', 'Muted Point Blank')
   },
@@ -81,7 +83,7 @@ module.exports = {
     page.click('.discussion-form__update')
     page.pause()
     page.expectText('.context-panel__heading', 'better title')
-    page.expectText('.context-panel__details', 'improved description')
+    page.expectText('.context-panel__description', 'improved description')
     page.expectText('.context-panel', 'Private')
     page.expectText('.thread-item__title', 'edited the thread')
   },

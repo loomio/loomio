@@ -10,6 +10,7 @@ module.exports = {
     page.expectText('.group-theme__name', 'Point Break')
     page.expectElement('.join-group-button__ask-to-join-group')
     page.click('.navbar__sidenav-toggle')
+    page.ensureSidebar()
     page.expectElement('.sidebar__list-item--selected')
   },
 
@@ -21,6 +22,7 @@ module.exports = {
     page.click('.join-group-button__join-group')
     workflow.signInViaEmail('new@account.com')
     page.click('.join-group-button__join-group')
+    page.ensureSidebar()
     page.expectElement('.sidebar__content')
     page.expectText('.group-theme__name', 'Open Dirty Dancing Shoes')
   },
@@ -83,6 +85,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard')
+    page.ensureSidebar()
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-open')
     page.click('.group-form__advanced-link')
@@ -99,6 +102,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard')
+    page.ensureSidebar()
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-closed')
     page.click('.group-form__advanced-link')
@@ -115,6 +119,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard')
+    page.ensureSidebar()
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-secret')
     page.click('.group-form__advanced-link')
