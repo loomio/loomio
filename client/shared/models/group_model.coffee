@@ -98,12 +98,6 @@ module.exports = class GroupModel extends BaseModel
   organisationIds: ->
     _.pluck(@subgroups(), 'id').concat(@id)
 
-  organisationSubdomain: ->
-    if @isSubgroup()
-      @parent().subdomain
-    else
-      @subdomain
-
   memberships: ->
     @recordStore.memberships.find(groupId: @id)
 

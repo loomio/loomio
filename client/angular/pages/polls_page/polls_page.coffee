@@ -6,7 +6,6 @@ AbilityService = require 'shared/services/ability_service.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
-moment         = require 'moment'
 
 { applyLoadingFunction } = require 'shared/helpers/apply.coffee'
 
@@ -42,7 +41,7 @@ $controller = ($rootScope) ->
       per: 25
 
     Records.polls.searchResultsCount(LmoUrlService.params()).then (response) =>
-      @pollsCount = response
+      @pollsCount = response.count
 
     @loader.fetchRecords().then (response) =>
       @group   = Records.groups.find(LmoUrlService.params().group_key)

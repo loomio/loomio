@@ -28,6 +28,7 @@ module.exports = new class RangeSet
     _.any ranges, (range) ->
       _.inRange(value, range[0], range[1]+1)
 
+  # TODO: fix me for complex range sets!
   subtractRange: (whole, part) ->
     return [whole]                                        if (part.length == 0) || (part[0] > whole[1]) || (part[1] < whole[0])
     return []                                             if (part[0] <= whole[0]) && (part[1] >= whole[1])
@@ -52,6 +53,25 @@ module.exports = new class RangeSet
         output.push whole
     output
 
+  firstMissing: (superset, subset) =>
+    [supersetRange, subsetRange] = @firstMissingRange @reduce(superset), @reduce(subset)
+    return unless supersetRange and subsetRange
+
+    if subsetRange[0] > supersetRange[0]
+      # return the beginning of the superset range if the subset range does not cover it
+      supersetRange[0]
+    else
+      # otherwise return the first value the subset range does not cover
+      subsetRange[1] + 1
+
+  # returns the first range in the subset which does not match the superset's ranges
+  firstMissingRange: (superset, subset) ->
+    for supersetRange in superset
+      if !_.find subset, supersetRange
+        subsetRange = _.first _.filter subset, (range) -> range[0] >= supersetRange[0]
+        return [supersetRange, subsetRange]
+    []
+
   # # err need to exrtact this to an npm module
   # selfTest: ->
   #   length1:                    @length([1,1]) == 1
@@ -73,3 +93,8 @@ module.exports = new class RangeSet
   #   subtractRanges2: _.isEqual @subtractRanges([[1,2]], [[1,1]]), [[2,2]]
   #   subtractRanges3: _.isEqual @subtractRanges([[1,2], [4,6]], [[1,1], [5,5]]), [[2,2], [4,4], [6,6]]
   #   subtractRanges4: _.isEqual @subtractRanges([[1,2], [4,8]], [[5,6], [7,8]]), [[1,2], [4,4]]
+  #   firstMissing0:   _.isEqual @firstMissing([[1,3]], [[1,3]]), undefined
+  #   firstMissing1:   _.isEqual @firstMissing([[1,3]], [[1,2]]), 3
+  #   firstMissing2:   _.isEqual @firstMissing([[1,3]], [[2,3]]), 1
+  #   firstMissing3:   _.isEqual @firstMissing([[1,2], [4,6]], [[1,2], [4,5]]), 6
+  #   firstMissing4:   _.isEqual @firstMissing([[1,2], [4,6]], [[1,2], [5,6]]), 4

@@ -1,6 +1,8 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 I18n      = require 'shared/services/i18n.coffee'
+Raven     = require('raven-js');
+ExceptionHandler = require('shared/helpers/exception_handler.coffee')
 
 { hardReload } = require 'shared/helpers/window.coffee'
 
@@ -12,6 +14,7 @@ module.exports = new class Session
 
     return unless AppConfig.currentUserId = userId
     user = @user()
+    ExceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))
     @updateLocale()
 
     if user.timeZone != AppConfig.timeZone
@@ -30,10 +33,14 @@ module.exports = new class Session
   currentGroupId: ->
     @currentGroup? && @currentGroup.id
 
-  updateLocale: () ->
+  updateLocale: ->
     locale = (@user().locale || "en").toLowerCase().replace('_','-')
     I18n.useLocale(locale)
     return if locale == "en"
-    Records.momentLocales.fetch(path: "#{locale}.js").then((response) -> response.text()).then (data) ->
-      eval(data)
-      moment.locale(locale)
+    Records.momentLocales.fetch(path: "#{momentLocaleFor(locale)}.js").then -> moment.locale(locale)
+
+momentLocaleFor = (locale) ->
+  if _.contains AppConfig.momentLocales.valid, locale
+    locale
+  else
+    _.first locale.split('-')

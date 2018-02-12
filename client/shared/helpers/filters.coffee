@@ -1,5 +1,3 @@
-moment = require 'moment'
-
 module.exports =
   timeFromNowInWords: (date, excludeAgo) ->
     moment(date).fromNow(excludeAgo)

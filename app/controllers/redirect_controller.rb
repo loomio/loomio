@@ -1,6 +1,6 @@
 class RedirectController < ApplicationController
   def subdomain
-    redirect model: :group, to: Group.find_by!(subdomain: request.subdomain)
+    redirect model: :group, to: Group.find_by!(handle: request.subdomain)
   end
 
   def group

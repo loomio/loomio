@@ -1,5 +1,3 @@
-moment = require 'moment'
-
 BaseModel       = require 'shared/record_store/base_model.coffee'
 AppConfig       = require 'shared/services/app_config.coffee'
 RangeSet        = require 'shared/services/range_set.coffee'
@@ -152,9 +150,6 @@ module.exports = class DiscussionModel extends BaseModel
   hasRead: (id) ->
     RangeSet.includesValue(@readRanges, id)
 
-  unreadRanges: ->
-    RangeSet.subtractRanges(@ranges, @readRanges)
-
   unreadItemsCount: ->
     @itemsCount - @readItemsCount()
 
@@ -171,11 +166,15 @@ module.exports = class DiscussionModel extends BaseModel
     (_.last(@readRanges) || [])[1]
 
   firstUnreadSequenceId: ->
-    (_.first(@unreadRanges()) || [])[0]
+    RangeSet.firstMissing(@ranges, @readRanges)
 
   dismiss: ->
-    @remote.patchMember @keyOrId(), 'dismiss'
     @update(dismissedAt: moment())
+    @remote.patchMember @keyOrId(), 'dismiss'
+
+  recall: ->
+    @update(dismissedAt: null)
+    @remote.patchMember @keyOrId(), 'recall'
 
   move: =>
     @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }

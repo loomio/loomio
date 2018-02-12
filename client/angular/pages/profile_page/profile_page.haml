@@ -20,6 +20,7 @@
         %md-input-container.md-block
           %label{for: "user-username-field", translate: "profile_page.username_label"}
           %input.profile-page__username-input#user-username-field{ng-required: true, ng-model: "profilePage.user.username"}
+          .md-caption{translate: "profile_page.username_helptext"}
           %validation_errors{subject: "profilePage.user", field: "username"}
 
         %md-input-container.md-block

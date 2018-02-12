@@ -36,7 +36,7 @@ class API::PollsController < API::RestfulController
   end
 
   def search_results_count
-    render json: poll_search.perform(search_filters).count
+    render json: { count: poll_search.perform(search_filters).count }
   end
 
   def toggle_subscription

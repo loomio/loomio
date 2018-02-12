@@ -25,9 +25,6 @@ ar:
     public_groups: المجموعات العامة
     terms: شروط الخدمة
     independent_install_html: '%{hostname} يقوم بتشغيل نسخة مستقلة من لوميو:  <a href="http://github.com/loomio/loomio">قم بمعرفة المزيد</a>.'
-  invitation_form:
-    error:
-      all_email_addresses_belong_to_members: "لم نقم بإرسال دعوات لعناوين البريد الالكتروني التي زودتها لأنها تعود لأشخاص هم مسبقاً أعضاء في المجموعة."
   password_reset:
     reset_email_timeframe: 'قد يستغرق الأمر حتى 5 دقائق لكي يتم استقبال الرسالة الالكترونية. إن لم تستقبل الرسالة الالكترونية، تأكد من صندوق البريد المؤذي. '
     length_restriction: على كلمة المرور أن تتألف من 8 محارف.

@@ -786,6 +786,7 @@ en:
     picture_label: 'Picture'
     name_label: 'Name'
     username_label: 'Username'
+    username_helptext: 'All lowercase letters and numbers, maximum 30 characters'
     email_label: 'Email'
     short_bio_label: 'Introduction'
     locale_label: 'Language'
@@ -872,7 +873,8 @@ en:
     load_more: Load more threads
     mark_as_read: Mark as read
     dismiss: Dismiss
-    thread_dismissed: Thread dismissed.
+    thread_dismissed: Thread dismissed
+    thread_recalled: Thread recalled
     explain_mute:
       title: You haven't muted any threads yet.
       explanation_html: |
@@ -1058,7 +1060,7 @@ en:
 
   contact_message_form:
     helptext: "Want to get in touch? Just enter a message below and you'll hear from us shortly."
-    contact_us_email: "(You can also always reach us at <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
+    contact_us_email: "(You can also always reach us at <a href=\"mailto:{{email}}\">{{email}}</a>)"
     contact_us: 'Contact Us'
     name_label: 'Your name'
     name_placeholder: 'Enter your name...'
@@ -1067,7 +1069,7 @@ en:
     message_label: 'Your message'
     message_placeholder: 'Your message...'
     send_message: 'Send Message'
-    new_contact_message: "Thanks for getting in touch; we''ll get back to you soon!"
+    new_contact_message: "Thanks for getting in touch; we'll get back to you soon!"
 
   hint:
     context: 'Tips for using the context panel'
