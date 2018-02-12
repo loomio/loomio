@@ -159,7 +159,7 @@ module.exports = new class AbilityService
     AppConfig.features.app.public_groups
 
   canStartGroups: ->
-    AppConfig.features.app.create_group || Session.user().isAdmin
+    @isEmailVerified() and (AppConfig.features.app.create_group || Session.user().isAdmin)
 
   canViewGroup: (group) ->
     !group.privacyIsSecret() or

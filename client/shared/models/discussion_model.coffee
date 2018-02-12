@@ -169,8 +169,12 @@ module.exports = class DiscussionModel extends BaseModel
     RangeSet.firstMissing(@ranges, @readRanges)
 
   dismiss: ->
-    @remote.patchMember @keyOrId(), 'dismiss'
     @update(dismissedAt: moment())
+    @remote.patchMember @keyOrId(), 'dismiss'
+
+  recall: ->
+    @update(dismissedAt: null)
+    @remote.patchMember @keyOrId(), 'recall'
 
   move: =>
     @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }

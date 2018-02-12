@@ -98,6 +98,13 @@ class DiscussionService
     EventBus.broadcast('discussion_dismiss', reader, actor)
   end
 
+  def self.recall(discussion:, params:, actor:)
+    actor.ability.authorize! :dismiss, discussion
+    reader = DiscussionReader.for(user: actor, discussion: discussion)
+    reader.recall!
+    EventBus.broadcast('discussion_recall', reader, actor)
+  end
+
   def self.moved_discussion_privacy_for(discussion, destination)
     case destination.discussion_privacy_options
     when 'public_only'  then false

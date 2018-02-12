@@ -6,7 +6,7 @@ reporter = new HtmlScreenshotReporter
   filename: 'my-report.html'
 
 exports.config =
-  seleniumServerJar: '../../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.8.1.jar'
+  seleniumServerJar: '../../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.9.1.jar'
   allScriptsTimeout: 60000
   capabilities:
     browserName:     'firefox'

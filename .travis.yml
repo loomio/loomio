@@ -32,6 +32,7 @@ env:
     - DISPLAY=:99.0
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
+    - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
   matrix:
     - TASK=protractor
     - TASK=rspec
@@ -47,7 +48,7 @@ install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - gem install s3_uploader
   - cd client; yarn; cd ..
-  - client/node_modules/webdriver-manager/bin/webdriver-manager update --versions.standalone 3.8.1 --versions.gecko v0.19.1
+  - client/node_modules/webdriver-manager/bin/webdriver-manager update --versions.standalone 3.9.1 --versions.gecko v0.19.1
   - mkdir $TRAVIS_BUILD_DIR/bin
   - ln -s $TRAVIS_BUILD_DIR/client/node_modules/webdriver-manager/selenium/geckodriver-v0.19.1 $TRAVIS_BUILD_DIR/bin/geckodriver
 
@@ -64,4 +65,4 @@ script:
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
 
 after_script:
-  - bundle exec rake travis:upload_s3
+  - bundle exec rake travis:cleanup
