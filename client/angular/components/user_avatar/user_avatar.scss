@@ -11,12 +11,15 @@
 .user-avatar{
   box-sizing: border-box;
   text-align: center;
-  overflow: hidden;
-  img { width: 100%; }
   i { line-height: 28px; }
+}
+.user-avatar__img {
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .user-avatar__initials {
+  overflow: hidden;
   border-radius: 50%;
   border: 1px solid $border-color;
   color: $primary-text-color;
