@@ -65,14 +65,12 @@ module.exports = {
     page.fillIn('.change-password-form__password', 'Smush')
     page.fillIn('.change-password-form__password-confirmation', 'Smush')
     page.click('.change-password-form__submit')
-    page.pause()
-    page.expectText('.change-password-form', "is too short")
+    page.expectText('.change-password-form__password-container .lmo-validation-error__message', "is too short")
 
     page.fillIn('.change-password-form__password', 'SmushDemBerries')
     page.fillIn('.change-password-form__password-confirmation', 'SmishDemBorries')
     page.click('.change-password-form__submit')
-    page.pause()
-    page.expectText('.change-password-form', "doesn't match")
+    page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match")
 
     page.fillIn('.change-password-form__password', 'SmushDemBerries')
     page.fillIn('.change-password-form__password-confirmation', 'SmushDemBerries')

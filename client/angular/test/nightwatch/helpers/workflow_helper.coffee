@@ -12,7 +12,7 @@ module.exports = (test) ->
     page = pageHelper(test)
     page.fillIn '.auth-email-form__email input', 'new@account.com'
     page.click '.auth-email-form__submit'
-    page.fillIn '.auth-form-signin-form input', 'New Account'
+    page.fillIn '.auth-signup-form input', 'New Account'
     page.click '.auth-signup-form__submit'
     page.expectElement '.auth-complete'
     page.loadPath 'use_last_login_token'

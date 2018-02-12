@@ -9,7 +9,6 @@ module.exports = {
     page.loadPath('visit_group_as_subgroup_member')
     page.expectText('.group-theme__name', 'Point Break')
     page.expectElement('.join-group-button__ask-to-join-group')
-    page.click('.navbar__sidenav-toggle')
     page.ensureSidebar()
     page.expectElement('.sidebar__list-item--selected')
   },
@@ -382,7 +381,7 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.discussions-card__new-thread-button')
-    page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
+    page.fillIn('.discussion-form__title-input', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form textarea', "I've had the time of my life")
     page.click('.modal-cancel')
     page.click('.discussions-card__new-thread-button')

@@ -148,6 +148,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_for_jennifer')
+    page.ensureSidebar()
     page.expectText('.md-sidenav-left', 'Unread threads')
   },
 
@@ -257,7 +258,7 @@ module.exports = {
     page.click('.action-dock__button--reply_to_comment')
     page.fillIn('.comment-form textarea', 'hi this is my comment')
     page.click('.comment-form__submit-button')
-    page.expectText('.activity-card__activity-list', 'hi this is my comment')
+    page.expectText('.thread-item--indent .new-comment__body', 'hi this is my comment')
     page.expectText('.flash-root__message', 'Patrick Swayze notified of reply')
   },
 
