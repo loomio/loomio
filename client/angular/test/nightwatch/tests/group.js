@@ -416,7 +416,7 @@ module.exports = {
   'handles subdomain redirects': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group_with_subdomain')
+    page.loadPath('setup_group_with_handle')
     page.expectText('.group-theme__name', 'Ghostbusters')
   },
 

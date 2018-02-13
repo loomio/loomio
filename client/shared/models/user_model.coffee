@@ -16,9 +16,6 @@ module.exports = class UserModel extends BaseModel
     @hasMany 'identities'
     @hasMany 'reactions'
 
-  detectedLocation: ->
-    _.compact [@city, @region, @country]
-
   localeName: ->
     (_.find(AppConfig.locales, (h) => h.key == @locale) or {}).name
 

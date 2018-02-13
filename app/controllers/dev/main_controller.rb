@@ -267,9 +267,9 @@ class Dev::MainController < Dev::BaseController
   end
 
   # to test subdomains in development
-  def setup_group_with_subdomain
+  def setup_group_with_handle
     sign_in patrick
-    create_group.update_attributes(name: 'Ghostbusters', subdomain: 'ghostbusters')
+    create_group.update_attributes(name: 'Ghostbusters', handle: 'ghostbusters')
     redirect_to "http://ghostbusters.lvh.me:3000/"
   end
 

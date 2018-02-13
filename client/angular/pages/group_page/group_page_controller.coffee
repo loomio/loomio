@@ -36,8 +36,8 @@ $controller = ($rootScope, $routeParams) ->
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
   # we include the timestamp so chargify sees unique values
-  $routeParams.key = $routeParams.key.split('-')[0]
-  Records.groups.findOrFetchById($routeParams.key).then (group) =>
+  $routeParams.key = $routeParams.handle || $routeParams.key.split('-')[0]
+  Records.groups.findOrFetch($routeParams.key).then (group) =>
     @init(group)
   , (error) ->
     EventBus.broadcast $rootScope, 'pageError', error
