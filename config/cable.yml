@@ -7,4 +7,4 @@ development:
   adapter: postgresql
 
 test:
-  adapter: async
+  adapter: postgresql
