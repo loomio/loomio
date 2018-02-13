@@ -10,6 +10,7 @@ module.exports = {
     page.expectText('.group-theme__name', 'Point Break')
     page.expectElement('.join-group-button__ask-to-join-group')
     page.ensureSidebar()
+    page.pause()
     page.expectElement('.sidebar__list-item--selected')
   },
 
@@ -121,12 +122,12 @@ module.exports = {
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--start-group')
     page.click('.group-form__privacy-secret')
+    page.expectNoElement('.group-form__allow-public-threads', 2000)
+    page.expectNoElement('.group-form__joining')
+
     page.click('.group-form__advanced-link')
 
-    page.expectNoElement('.group-form__joining')
-    page.expectNoElement('.group-form__allow-public-threads')
-
-    page.fillIn('#group-name', 'Secret please')
+    page.fillIn('.group-form__name', 'Secret please')
     page.click('.group-form__submit-button')
     page.expectText('.group-privacy-button', 'SECRET')
   },
@@ -385,7 +386,7 @@ module.exports = {
     page.fillIn('.discussion-form textarea', "I've had the time of my life")
     page.click('.modal-cancel')
     page.click('.discussions-card__new-thread-button')
-    page.expectValue('#discussion-title', 'Nobody puts baby in a corner' )
+    page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
     page.expectValue('.discussion-form textarea', "I've had the time of my life" )
   },
 

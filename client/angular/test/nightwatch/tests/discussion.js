@@ -5,13 +5,10 @@ module.exports = {
   'preselects current group': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_dashboard')
-    page.ensureSidebar()
-    page.click('.sidebar__list-item-button--muted')
-    page.click('.thread-preview__link')
+    page.loadPath('setup_group')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--start-thread')
-    page.expectText('.discussion-form__group-select', 'Muted Point Blank')
+    page.expectText('.discussion-form__group-select', 'Dirty Dancing Shoes')
   },
 
   'should display content for a public thread': (test) => {
@@ -33,7 +30,7 @@ module.exports = {
     page.expectElement('.timeago')
   },
 
-  'can close and reopen a thread': (test) => {
+  'can close a thread': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_open_and_closed_discussions')
@@ -48,18 +45,6 @@ module.exports = {
     page.expectElement('.close-explanation-modal')
     page.click('.close-explanation-modal__close-thread')
     page.expectText('.flash-root__message', 'Thread closed')
-    page.click('.group-theme__name--compact')
-
-    page.expectNoText('.discussions-card', 'What star sign are you?')
-    page.click('.discussions-card__filter--closed')
-    page.expectText('.thread-preview__title', 'What star sign are you?')
-    page.click('.thread-preview')
-    page.click('.context-panel-dropdown__button')
-    page.click('.context-panel-dropdown__option--reopen')
-    page.expectText('.flash-root__message', 'Thread reopened')
-
-    page.click('.group-theme__name--compact')
-    page.expectText('.thread-preview__title', 'What star sign are you?')
   },
 
   'doesnt store drafts after submission': (test) => {
