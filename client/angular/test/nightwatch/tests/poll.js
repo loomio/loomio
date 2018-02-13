@@ -63,9 +63,11 @@ module.exports = {
     page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
     page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
 
-    page.click('.poll-actions-dropdown__button')
-    page.click('.poll-actions-dropdown__close')
-    page.click('.poll-common-close-form__submit')
+    page.scrollTo('.poll-actions-dropdown__button', () => {
+      page.click('.poll-actions-dropdown__button')
+      page.click('.poll-actions-dropdown__close')
+      page.click('.poll-common-close-form__submit')
+    })
 
     page.fillIn('.poll-common-outcome-form__statement textarea', 'This is an outcome')
     page.click('.poll-common-outcome-form__submit')
