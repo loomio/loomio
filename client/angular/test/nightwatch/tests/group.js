@@ -385,6 +385,7 @@ module.exports = {
     page.fillIn('.discussion-form__title-input', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form textarea', "I've had the time of my life")
     page.click('.modal-cancel')
+    page.pause()
     page.click('.discussions-card__new-thread-button')
     page.expectValue('.discussion-form__title-input', 'Nobody puts baby in a corner' )
     page.expectValue('.discussion-form textarea', "I've had the time of my life" )
