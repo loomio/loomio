@@ -1,4 +1,4 @@
-class AddDocuments < ActiveRecord::Migration
+class AddDocuments < ActiveRecord::Migration[4.2]
   def change
     create_table :documents do |t|
       t.references :model, polymorphic: true, null: false
