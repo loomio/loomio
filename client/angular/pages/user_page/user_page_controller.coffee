@@ -13,9 +13,6 @@ $controller = ($rootScope, $routeParams) ->
       EventBus.broadcast $rootScope, 'currentComponent', {title: @user.name, page: 'userPage'}
       @loadGroupsFor(@user)
 
-  @location = =>
-    @user.location || @user.detectedLocation().join(', ')
-
   @canContactUser = ->
     AbilityService.canContactUser(@user)
 
