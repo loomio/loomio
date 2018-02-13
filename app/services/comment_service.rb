@@ -25,5 +25,6 @@ class CommentService
     comment.save!
 
     EventBus.broadcast('comment_update', comment, actor)
+    Events::CommentEdited.publish!(comment, actor)
   end
 end

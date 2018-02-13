@@ -87,7 +87,7 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_polls_count
 
   def groups
-    [group]
+    Array(group)
   end
 
   def created_event_kind

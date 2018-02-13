@@ -47,13 +47,9 @@ module.exports =
     _.each Session.user().groups(), (group) ->
       AppConfig.cable.subscriptions.create { channel: "GroupChannel", group_id: group.id },
         received: (data) ->
-          console.log("received ", data)
           if data.memo?
             switch data.memo.kind
               when 'comment_destroyed'
                 if comment = Records.comments.find(memo.data.comment_id)
                   comment.destroy()
-              when 'comment_updated'
-                Records.comments.import(memo.data.comment)
-                Records.import(memo.data)
           Records.import(data)

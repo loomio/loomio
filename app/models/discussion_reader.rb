@@ -7,7 +7,8 @@ class DiscussionReader < ApplicationRecord
 
   delegate :update_importance, to: :discussion
   delegate :importance, to: :discussion
-
+  delegate :message_channel, to: :user
+  
   update_counter_cache :discussion, :seen_by_count
 
   def self.for(user:, discussion:)
