@@ -10,8 +10,7 @@ module.exports = {
     page.expectText('.group-theme__name', 'Point Break')
     page.expectElement('.join-group-button__ask-to-join-group')
     page.ensureSidebar()
-    page.pause()
-    page.expectElement('.sidebar__list-item--selected')
+    page.expectText('.sidebar__groups', 'Point Break')
   },
 
   'should allow you to join an open group': (test) => {

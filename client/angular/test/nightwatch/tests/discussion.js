@@ -42,7 +42,6 @@ module.exports = {
     page.click('.thread-preview')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--close')
-    page.expectElement('.close-explanation-modal')
     page.click('.close-explanation-modal__close-thread')
     page.expectText('.flash-root__message', 'Thread closed')
   },
