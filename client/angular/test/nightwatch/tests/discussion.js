@@ -231,7 +231,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form textarea', 'hi this is my comment')
     page.click('.comment-form__submit-button')
-    page.expectText('.new-comment', 'hi this is my comment')
+    page.expectText('.new-comment', 'hi this is my comment', 8000)
   },
 
   'can add emojis': (test) => {
@@ -240,13 +240,13 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form textarea', 'Here is a dragon!')
     page.click('.comment-form .emoji-picker__toggle')
-    page.fillIn('.emoji-picker__search input', 'dragon_face')
-    page.pause()
-    page.click('.emoji-picker__selector')
-    page.pause()
+    page.fillIn('.md-open-menu-container.md-active .emoji-picker__search input', 'dragon_face')
+    page.pause(250)
+    page.click('.md-open-menu-container.md-active .emoji-picker__link')
+    page.pause(250)
     page.click('.comment-form__submit-button')
-    page.expectText('.thread-item__body','Here is a dragon!')
-    page.expectElement('.thread-item__body img')
+    page.expectText('.new-comment .thread-item__body','Here is a dragon!')
+    page.expectElement('.new-comment .thread-item__body img')
   },
 
   'replies to a comment': (test) => {
@@ -301,9 +301,10 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form textarea', 'Comment!')
     page.click('.comment-form__submit-button')
-    page.click('.action-dock__button--edit_comment')
+    page.click('.action-dock__button--edit_comment', 8000)
     page.fillIn('.edit-comment-form textarea', 'Revised comment!')
     page.click( '.edit-comment-form .comment-form__submit-button')
+    page.pause()
     page.click('.action-dock__button--show_history')
     page.expectText('.revision-history-modal__body', 'Revised comment!')
     page.expectText('.revision-history-modal__body', 'Comment!')
