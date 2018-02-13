@@ -2,10 +2,11 @@ gulp     = require 'gulp'
 paths    = require './tasks/paths'
 sequence = require 'gulp-run-sequence'
 
-angular  = require './tasks/angular'
-vue      = require './tasks/vue'
-execjs   = require './tasks/execjs'
-shared   = require './tasks/shared'
+angular = require './tasks/angular'
+e2e     = require './tasks/e2e'
+vue     = require './tasks/vue'
+execjs  = require './tasks/execjs'
+shared  = require './tasks/shared'
 
 gulp.task 'angular:haml',          angular.haml
 gulp.task 'angular:scss',          angular.scss
@@ -30,9 +31,14 @@ gulp.task 'bundle:prod', ['angular:bundle:prod', 'execjs:bundle:prod', 'vue:bund
 gulp.task 'dev',         (done) -> sequence('angular:external', 'bundle:dev', 'watch', -> done())
 gulp.task 'compile',     (done) -> sequence('angular:external', 'bundle:prod', -> done())
 
-gulp.task 'watch',              require('./tasks/watch')
-gulp.task 'protractor:core',    require('./tasks/protractor/core')
-gulp.task 'protractor:plugins', require('./tasks/protractor/plugins')
+gulp.task 'watch', require('./tasks/watch')
 
+gulp.task 'nightwatch:core', e2e.nightwatch.core
+# nightwatch:plugins?
+gulp.task 'nightwatch:now', (done) -> sequence('nightwatch:core', -> done())
+gulp.task 'nightwatch',     (done) -> sequence('angular:bundle:dev', 'nightwatch:now', -> done())
+
+gulp.task 'protractor:core',    e2e.protractor.core
+gulp.task 'protractor:plugins', e2e.protractor.plugins
+gulp.task 'protractor:now', (done) -> sequence('protractor:core', 'protractor:plugins', -> done())
 gulp.task 'protractor',     (done) -> sequence('angular:bundle:dev', 'protractor:now', -> done())
-gulp.task 'protractor:now', (done) -> sequence('protractor:core', 'protractor:plugins', -> done() )

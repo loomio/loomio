@@ -34,12 +34,12 @@ env:
     - RAILS_ENV=test
     - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
   matrix:
-    - TASK=protractor
+    - TASK=e2e
     - TASK=rspec
     - TASK=plugins
 
 before_install:
-  - sh -e /etc/init.d/xvfb start
+  - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
   - nvm install 8.4.0
   - nvm use 8.4.0
   - npm install -g yarn gulp
@@ -60,8 +60,8 @@ before_script:
   - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:
-  - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
-  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi
+  - if [ "$TASK" = "rspec" ];   then bundle exec rake travis:rspec; fi
+  - if [ "$TASK" = "e2e" ];     then bundle exec rake travis:e2e; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
 
 after_script:
