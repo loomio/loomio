@@ -55,7 +55,7 @@ module.exports = {
     page.expectNoElement('.user-page__contact-user')
   },
 
-  'can set a password': (test) => {
+  'does not accept short passwords': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
@@ -66,16 +66,31 @@ module.exports = {
     page.fillIn('.change-password-form__password-confirmation', 'Smush')
     page.click('.change-password-form__submit')
     page.expectText('.change-password-form__password-container .lmo-validation-error__message', "is too short")
+  },
 
+  'does not accept mismatched passwords': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.click('.user-dropdown__dropdown-button')
+    page.click('.user-dropdown__list-item-button--profile')
+    page.click('.profile-page__change-password')
     page.fillIn('.change-password-form__password', 'SmushDemBerries')
     page.fillIn('.change-password-form__password-confirmation', 'SmishDemBorries')
     page.click('.change-password-form__submit')
     page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match")
+  },
 
+  'can set a password': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion')
+    page.click('.user-dropdown__dropdown-button')
+    page.click('.user-dropdown__list-item-button--profile')
+    page.click('.profile-page__change-password')
     page.fillIn('.change-password-form__password', 'SmushDemBerries')
     page.fillIn('.change-password-form__password-confirmation', 'SmushDemBerries')
     page.click('.change-password-form__submit')
-    page.expectNoElement('.flash-root__loading', 4000)
     page.expectText('.flash-root__message', 'Your password has been updated')
   },
 

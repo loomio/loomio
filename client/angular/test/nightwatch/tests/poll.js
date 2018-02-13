@@ -58,6 +58,7 @@ module.exports = {
     page.click('.poll-common-vote-form__radio-button--agree')
     page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
     page.click('.poll-common-vote-form__submit')
+    page.pause(2000)
 
     page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
     page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
