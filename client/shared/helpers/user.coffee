@@ -56,7 +56,4 @@ module.exports =
               when 'comment_updated'
                 Records.comments.import(memo.data.comment)
                 Records.import(memo.data)
-              when 'comment_unliked'
-                if comment = Records.comments.find(memo.data.comment_id)
-                  comment.removeLikerId(memo.data.user_id)
           Records.import(data)

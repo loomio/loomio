@@ -18,6 +18,7 @@ class Outcome < ApplicationRecord
   delegate :dates_as_options, to: :poll
   delegate :group, to: :poll
   delegate :group_id, to: :poll
+  delegate :groups, to: :poll
   delegate :discussion, to: :poll
   delegate :discussion_id, to: :poll
   delegate :locale, to: :poll
