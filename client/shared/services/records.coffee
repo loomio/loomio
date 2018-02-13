@@ -40,4 +40,5 @@ records.addRecordsInterface require('shared/interfaces/message_channel_records_i
 records.addRecordsInterface require('shared/interfaces/locale_records_interface.coffee')
 AppConfig.records = records
 
+AppConfig.records = records
 module.exports = records
