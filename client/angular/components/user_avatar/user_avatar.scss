@@ -7,7 +7,11 @@
     text-decoration: none !important;
   }
 }
-
+.user-avatar--coordinator {
+  .user-avatar__img {
+    border: 2px solid $border-color;
+  }
+}
 .user-avatar{
   box-sizing: border-box;
   text-align: center;
