@@ -51,19 +51,16 @@ module.exports = {
     page.click('.poll-common-form__submit')
 
     page.click('.modal-cancel')
+    page.pause(2000)
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
-    page.scrollTo('.poll-common-vote-form__radio-button--agree', () => {
-      page.click('.poll-common-vote-form__radio-button--agree')
-      page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
-      page.click('.poll-common-vote-form__submit')
-    })
+    page.click('.poll-common-vote-form__radio-button--agree')
+    page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
+    page.click('.poll-common-vote-form__submit')
 
-    page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
-      page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
-      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
-    })
+    page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
+    page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
 
     page.click('.poll-actions-dropdown__button')
     page.click('.poll-actions-dropdown__close')
