@@ -87,13 +87,13 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
     active_model_serializers (0.8.4)
       activemodel (>= 3.0)
-    activeadmin (1.1.0)
+    activeadmin (1.2.1)
       arbre (>= 1.1.1)
       coffee-rails
       formtastic (~> 3.1)
       formtastic_i18n
       inherited_resources (~> 1.7)
-      jquery-rails
+      jquery-rails (>= 4.2.0)
       kaminari (>= 0.15, < 2.0)
       railties (>= 4.2, < 5.2)
       ransack (~> 1.3)
@@ -122,9 +122,6 @@ GEM
       nokogiri
       rails
       safely_block
-    airbrake (7.2.0)
-      airbrake-ruby (~> 2.5)
-    airbrake-ruby (2.8.0)
     akami (1.3.1)
       gyoku (>= 0.4.0)
       nokogiri
@@ -234,6 +231,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.8.7)
       i18n (>= 0.7)
+    faraday (0.14.0)
+      multipart-post (>= 1.2, < 3)
     faye (1.2.4)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
@@ -355,6 +354,7 @@ GEM
     msgpack (1.2.2)
     multi_json (1.13.1)
     multi_xml (0.6.0)
+    multipart-post (2.0.0)
     newrelic_rpm (4.7.1.340)
     nio4r (2.2.0)
     nokogiri (1.8.1)
@@ -365,7 +365,7 @@ GEM
     paper_trail (8.1.2)
       activerecord (>= 4.2, < 5.2)
       request_store (~> 1.1)
-    paperclip (5.1.0)
+    paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -376,7 +376,7 @@ GEM
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
-    polyamorous (1.3.2)
+    polyamorous (1.3.3)
       activerecord (>= 3.0)
     premailer (1.11.1)
       addressable
@@ -428,12 +428,12 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.0)
-    ransack (1.8.4)
+    ransack (1.8.6)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       i18n
-      polyamorous (~> 1.3)
+      polyamorous (~> 1.3.2)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -500,6 +500,8 @@ GEM
       nori (~> 2.4)
       uuid (~> 2.3.7)
       wasabi (~> 3.4)
+    sentry-raven (2.7.2)
+      faraday (>= 0.7.6, < 1.0)
     sequenced (2.0.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
@@ -563,11 +565,10 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.8.1)
-  activeadmin (~> 1.1.0)
+  activeadmin (~> 1.2.1)
   activerecord-import
   ahoy_email (~> 0.3.1)
   ahoy_matey!
-  airbrake
   autoprefixer-rails
   awesome_print
   bing_translator (~> 5.1.0)
@@ -577,6 +578,7 @@ DEPENDENCIES
   byebug
   cancancan
   codeclimate-test-reporter
+  coffee-rails
   custom_counter_cache!
   dalli
   database_cleaner
@@ -609,7 +611,7 @@ DEPENDENCIES
   nokogiri
   oj
   paper_trail (~> 8.1.2)
-  paperclip (~> 5.1.0)
+  paperclip (~> 5.2.1)
   pg (~> 0.18.4)
   poltergeist
   premailer-rails
@@ -630,8 +632,10 @@ DEPENDENCIES
   rspec-rails (~> 3.7.2)
   s3_uploader
   sass-rails
+  sentry-raven
   sequenced (~> 2.0.0)
   shoulda-matchers
+  simplecov
   snorlax
   spring
   spring-commands-rspec

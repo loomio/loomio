@@ -1,4 +1,3 @@
-moment = require 'moment'
 utils  = require './utils.coffee'
 
 module.exports =

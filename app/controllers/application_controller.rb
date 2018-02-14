@@ -5,11 +5,13 @@ class ApplicationController < ActionController::Base
   include ErrorRescueHelper
   include CurrentUserHelper
   include ForceSslHelper
+  include SentryRavenHelper
 
   around_action :process_time_zone
   around_action :use_preferred_locale   # LocalesHelper
   before_action :set_invitation_token   # CurrentUserHelper
   before_action :set_last_seen_at       # CurrentUserHelper
+  before_action :set_raven_context
 
   helper_method :current_user
   helper_method :client_asset_path

@@ -7,4 +7,13 @@ module.exports = class LocaleRecordsInterface extends BaseRecordsInterface
 
   constructor: (recordStore) ->
     super(recordStore)
-    @remote.apiPrefix = AppConfig.assetHost
+    @remote.apiPrefix = AppConfig.assetRoot
+
+  onInterfaceAdded: ->
+    @setRemoteCallbacks
+      onSuccess: (response) ->
+        if response.ok
+          response.text().then (data) ->
+            eval(data)
+        else
+          throw response

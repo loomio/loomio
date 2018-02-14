@@ -17,7 +17,10 @@ module.exports = class LmoUrlService
     "/".concat(route).replace('//', '/')
 
   @group: (g, params = {}, options = {}) ->
-    @buildModelRoute('g', g.key, g.fullName, params, options)
+    if g.handle? && !options.noStub
+      @buildModelRoute('', g.handle, '', params, options)
+    else
+      @buildModelRoute('g', g.key, g.fullName, params, options)
 
   @discussion: (d, params = {}, options = {}) ->
     @buildModelRoute('d', d.key, d.title, params, options)
@@ -57,7 +60,8 @@ module.exports = class LmoUrlService
 
   @buildModelRoute: (path, key, name, params, options) ->
     result = if options.absolute then AppConfig.baseUrl else "/"
-    result += "#{options.namespace || path}/#{key}"
+    result += "#{options.namespace || path}/" if (options.namespace || path || "").length > 0
+    result += "#{key}"
     result += "/" + @stub(name)             unless !name? or options.noStub?
     result += "." + options.ext             if options.ext?
     result += "?" + @queryStringFor(params) if _.keys(params).length

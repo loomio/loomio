@@ -9,12 +9,14 @@ class InitialPayload
       environment:         Rails.env,
       permittedParams:     PermittedParamsSerializer.new({}),
       locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
+      momentLocales:       AppConfig.moment_locales,
       recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
       intercomAppId:       ENV['INTERCOM_APP_ID'],
       baseUrl:             root_url,
+      contactEmail:        ENV['SUPPORT_EMAIL'],
       plugins:             Plugins::Repository.to_config,
       theme:               AppConfig.theme,
-      errbit:              AppConfig.errbit,
+      sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
       regex: {
         url:               JsRegex.new(AppConfig::URL_REGEX),
         email:             JsRegex.new(AppConfig::EMAIL_REGEX)

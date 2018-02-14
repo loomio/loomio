@@ -16,7 +16,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   filter :description
   filter :memberships_count
   filter :created_at
-  filter :subdomain
+  filter :handle
   filter :analytics_enabled
 
   scope :parents_only
@@ -117,10 +117,10 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       row :members_can_vote
       row :members_can_start_discussions
       row :members_can_create_subgroups
-      row :subdomain
+      row :handle
       row :is_referral
       row :cohort_id
-      row :subscription_id
+      row :subscription
       row :enable_experiments
       row :analytics_enabled
       row :experiences
@@ -206,7 +206,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       f.input :name, :input_html => { :disabled => f.object.persisted? }
       f.input :description
       f.input :parent_id, label: "Parent Id"
-      f.input :subdomain, as: :string
+      f.input :handle, as: :string
       f.input :analytics_enabled
       f.input :enable_experiments
     end

@@ -55,6 +55,7 @@ class DiscussionService
     actor.ability.authorize! :move, discussion
 
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
+    discussion.polls.each { |poll| poll.update(group: destination) }
 
     EventBus.broadcast('discussion_move', discussion, params, actor)
     Events::DiscussionMoved.publish!(discussion, actor, source)
@@ -95,6 +96,13 @@ class DiscussionService
     reader = DiscussionReader.for(user: actor, discussion: discussion)
     reader.dismiss!
     EventBus.broadcast('discussion_dismiss', reader, actor)
+  end
+
+  def self.recall(discussion:, params:, actor:)
+    actor.ability.authorize! :dismiss, discussion
+    reader = DiscussionReader.for(user: actor, discussion: discussion)
+    reader.recall!
+    EventBus.broadcast('discussion_recall', reader, actor)
   end
 
   def self.moved_discussion_privacy_for(discussion, destination)

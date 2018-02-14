@@ -13,8 +13,9 @@ gem 'active_model_serializers', '~> 0.8.1'
 gem 'private_pub', github: 'loomio/private_pub'
 gem 'cancancan'
 gem 'gravtastic'
-gem 'paperclip', '~> 5.1.0'
-gem 'activeadmin', '~> 1.1.0'
+gem 'paperclip', '~> 5.2.1'
+gem 'coffee-rails'
+gem 'activeadmin', '~> 1.2.1'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.3.4'
@@ -24,9 +25,9 @@ gem 'delayed_job_active_record', '~> 4.1.2'
 gem 'rinku'
 gem 'friendly_id', '~> 5.1.0'
 gem 'httparty', '~> 0.15.6'
-gem 'airbrake'
 gem 'browser', '~> 2.3.0'
 gem 'fog-aws'
+gem "sentry-raven"
 gem 'sequenced', '~> 2.0.0'
 gem 'bing_translator', '~> 5.1.0'
 gem 'http_accept_language'
@@ -81,6 +82,7 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
+  gem 'simplecov', require: false 
 end
 
 group :production do

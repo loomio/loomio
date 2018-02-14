@@ -33,6 +33,7 @@ module.exports = new class AbilityService
 
   canParticipateInPoll: (poll) ->
     return false unless poll
+    poll.anyoneCanParticipate or
     @canAdministerPoll(poll) or
     !poll.group() or
     Session.user().isMemberOf(poll.guestGroup()) or
@@ -158,7 +159,7 @@ module.exports = new class AbilityService
     AppConfig.features.app.public_groups
 
   canStartGroups: ->
-    AppConfig.features.app.create_group || Session.user().isAdmin
+    @isEmailVerified() and (AppConfig.features.app.create_group || Session.user().isAdmin)
 
   canViewGroup: (group) ->
     !group.privacyIsSecret() or
