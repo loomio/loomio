@@ -5,4 +5,4 @@
     %table
       - @info.poll_options.each_with_index do |option, index|
         %tr.poll-mailer-proposal__chart-legend-option
-          %td{style: "border-color: #{option.color};"}= "#{option.name.humanize} - #{@info.poll.stance_counts[index]}"
+          %td{style: "border-color: #{option.color};"}= "#{t(:"poll_proposal_options.#{option.name}")} - #{@info.poll.stance_counts[index]}"
