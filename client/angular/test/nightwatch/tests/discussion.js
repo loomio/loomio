@@ -69,7 +69,7 @@ module.exports = {
     page.expectText('.context-panel__heading', 'better title')
     page.expectText('.context-panel__description', 'improved description')
     page.expectText('.context-panel', 'Private')
-    page.expectText('.thread-item__title', 'edited the thread')
+    // page.expectText('.thread-item__title', 'edited the thread')
   },
 
   'does not store cancelled thread info': (test) => {
