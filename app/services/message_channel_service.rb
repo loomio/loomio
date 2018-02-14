@@ -8,6 +8,6 @@ class MessageChannelService
   end
 
   def self.publish_data(data, to: message_channel)
-    ActionCable.server.broadcast to, data
+    ActionCable.server.broadcast to, data if to
   end
 end
