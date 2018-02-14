@@ -4,8 +4,8 @@ FlashService = require 'shared/services/flash_service.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
 module.exports = new class ThreadService
-  mute: (thread) ->
-    if !Session.user().hasExperienced("mutingThread")
+  mute: (thread, override = false) ->
+    if !Session.user().hasExperienced("mutingThread") and !override
       Records.users.saveExperience("mutingThread")
       Records.users.updateProfile(Session.user()).then ->
         ModalService.open 'MuteExplanationModal', thread: -> thread

@@ -33,14 +33,6 @@ en:
     error:
       too_short: Please make a selection
 
-  user:
-    error:
-      username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
-
-  user:
-    error:
-      username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
-
   invitation:
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
     invitation_already_used: This invitation has already been used. Please sign in to loomio directly to continue to your group.

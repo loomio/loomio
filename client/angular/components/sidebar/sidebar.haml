@@ -18,7 +18,7 @@
         %md_button.sidebar__list-item-button.sidebar__list-item-button--muted{href: "", lmo-href: "/dashboard/show_muted", ng-click: "isActive()", aria-label: "{{ 'sidebar.muted' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('dashboardPage', nil, 'show_muted')}"}
           %i.sidebar__list-item-icon.mdi.mdi-volume-mute
           %span{translate: "sidebar.muted_threads"}
-      %md_list_item{ng-show: "hasAnyGroups()"}
+      %md_list_item{ng-if: "canStartThreads()"}
         %md_button.sidebar__list-item-button.sidebar__list-item-button--start-thread{href: "", ng-click: "startThread()", aria-label: "{{ 'sidebar.start_thread' | translate }}"}
           %i.sidebar__list-item-icon.mdi.mdi-plus
           %span{translate: "sidebar.start_thread"}

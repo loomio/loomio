@@ -33,8 +33,7 @@ class User < ApplicationRecord
 
   validates_attachment :uploaded_avatar,
     size: { in: 0..MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
-    content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
+    content_type: { content_type: /\Aimage/ }
 
   validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
   validates_uniqueness_of :username

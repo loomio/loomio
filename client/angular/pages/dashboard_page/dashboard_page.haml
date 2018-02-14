@@ -8,8 +8,8 @@
         %loading_content.thread-preview{line-count: 2, ng-repeat: "i in [1,2] track by $index"}
     %section.dashboard-page__loaded{ng-if: "dashboardPage.dashboardLoaded"}
       .dashboard-page__empty{ng-if: "dashboardPage.noThreads()"}
-        .dashboard-page__no-groups{ng-if: "dashboardPage.noGroups()"}
-          %p{translate: "dashboard_page.no_groups.show_all"}>
+        %p{translate: "dashboard_page.no_groups.show_all", ng-if: "dashboardPage.noGroups()"}>
+        .dashboard-page__no-groups{ng-if: "dashboardPage.promptStart()"}
           %button.lmo-btn-link--blue{translate: "dashboard_page.no_groups.start", ng-click: "dashboardPage.startGroup()"}>
           %span{translate: "dashboard_page.no_groups.or"}>
           %span{translate: "dashboard_page.no_groups.join_group"}>
