@@ -64,12 +64,12 @@ module.exports = {
     page.fillIn('.discussion-form__title-input', 'better title')
     page.fillIn('.discussion-form textarea', 'improved description')
     page.click('.discussion-form__private')
-    page.click('.discussion-form__update')
+    page.click('.discussion-form__submit')
+    page.click('.material-modal-header-cancel-button')
     page.pause()
     page.expectText('.context-panel__heading', 'better title')
     page.expectText('.context-panel__description', 'improved description')
     page.expectText('.context-panel', 'Private')
-    // page.expectText('.thread-item__title', 'edited the thread')
   },
 
   'does not store cancelled thread info': (test) => {

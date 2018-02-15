@@ -60,8 +60,10 @@ module.exports = {
     page.click('.poll-common-vote-form__submit')
     page.pause(2000)
 
-    page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
-    page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
+      page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
+      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    })
 
     page.scrollTo('.poll-actions-dropdown__button', () => {
       page.click('.poll-actions-dropdown__button')
@@ -143,10 +145,11 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_proposal_poll_share')
-    page.fillIn('.poll-common-share-form__add-option-input', 'loo@m.io')
-    page.click('.poll-common-share-form__option-button')
-
-    page.expectText('.flash-root__message', 'Invitation email sent to loo@m.io')
+    page.click('.action-dock__button--announce')
+    page.selectFromAutocomplete('.md-chip-input-container input', 'test@example.com')
+    page.expectText('.announcement-chip__content', 'test@example.com')
+    page.click('.announcement-form__submit')
+    page.expectText('.flash-root__message', '1 notifications sent')
   },
 
   'can show undecided users': (test) => {
