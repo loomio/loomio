@@ -11,7 +11,7 @@ module.exports = {
     page.click('.discussion-form__submit')
     page.expectText('.flash-root__message', 'Thread started')
     page.expectElement('.announcement-form')
-    page.expectText('.announcement-form__chips', 'Dirty Dancing Shoes')
+    page.expectText('.announcement-chip__content', 'Dirty Dancing Shoes')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '2 notifications sent')
   },
@@ -24,7 +24,7 @@ module.exports = {
     page.fillIn('.discussion-form__title-input', 'Yo reliability, whatsup? Its me, ya boi, testing')
     page.click('.discussion-form__submit')
     page.expectElement('.announcement-form')
-    page.expectText('.announcement-form__chips', 'Dirty Dancing Shoes')
+    page.expectText('.announcement-chip__content', 'Dirty Dancing Shoes')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '2 notifications sent')
   },
@@ -35,9 +35,8 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.click('.action-dock__button--announce_thread')
     page.expectElement('.announcement-form')
-    page.fillIn('md-autocomplete input', 'jenn')
-    page.click('.md-autocomplete-suggestions li')
-    page.expectText('.announcement-form__chips', 'Jennifer Grey')
+    page.selectFromAutocomplete('.md-chip-input-container input', 'jenn')
+    page.expectText('.announcement-chip__content', 'Jennifer Grey')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '1 notifications sent')
   },
@@ -46,12 +45,12 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.clickFirst('.decision-tools-card__poll-type')
+    page.click('.decision-tools-card__poll-type--proposal')
     page.fillIn('.poll-common-form-fields__title', 'Immanounce dis too')
     page.click('.poll-common-form__submit')
     page.expectText('.flash-root__message', 'Proposal started')
     page.expectElement('.announcement-form')
-    page.expectText('.announcement-form__chips', 'Dirty Dancing Shoes')
+    page.expectText('.announcement-chip__content', 'Dirty Dancing Shoes')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '2 notifications sent')
   },
@@ -64,7 +63,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title', 'Yo reliability, whatsup? Its me, ya boi, testing')
     page.click('.poll-common-form__submit')
     page.expectElement('.announcement-form')
-    page.expectElement('.announcement-form__chips')
+    page.expectElement('.announcement-chip__content')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '1 notifications sent')
   },
@@ -78,9 +77,8 @@ module.exports = {
     page.click('.poll-common-outcome-form__submit')
     page.expectText('.flash-root__message', 'Outcome created')
     page.expectElement('.announcement-form')
-    page.fillIn('md-autocomplete input', 'test@example.com')
-    page.click('.md-autocomplete-suggestions li')
-    page.expectText('.announcement-form__chips', 'test@example.com')
+    page.selectFromAutocomplete('.md-chip-input-container input', 'test@example.com')
+    page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '1 notifications sent')
   }
