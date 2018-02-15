@@ -1326,6 +1326,7 @@ en:
     options_placeholder: Enter a new option...
     no_options: You haven't added any options yet.
     closing: Closing
+    closed: Closed
     start: Start
     update: Update
     loomio_school_link: |
