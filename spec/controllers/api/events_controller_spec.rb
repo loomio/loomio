@@ -41,23 +41,23 @@ describe API::EventsController do
         end
       end
 
-      context "remove from thread" do
-        it 'removes discussion_id if permitted' do
-          @edited_event = Events::DiscussionEdited.publish!(discussion, user)
-          expect(@edited_event.discussion_id).to be discussion.id
-          patch :remove_from_thread, params: { id: @edited_event.id }
-          json = JSON.parse(response.body)
-          expect(json.keys).to include *(%w[events])
-          result_event = json['events'].last
-          expect(result_event['discussion_id']).to be nil
-          expect(result_event['id']).to be @edited_event.id
-        end
-
-        it 'denys if not permitted' do
-          patch :remove_from_thread, params: { id: @event.id }
-          expect(response.status).to eq 403
-        end
-      end
+      # context "remove from thread" do
+      #   it 'removes discussion_id if permitted' do
+      #     @edited_event = Events::DiscussionEdited.publish!(discussion, user)
+      #     expect(@edited_event.discussion_id).to be discussion.id
+      #     patch :remove_from_thread, params: { id: @edited_event.id }
+      #     json = JSON.parse(response.body)
+      #     expect(json.keys).to include *(%w[events])
+      #     result_event = json['events'].last
+      #     expect(result_event['discussion_id']).to be nil
+      #     expect(result_event['id']).to be @edited_event.id
+      #   end
+      #
+      #   it 'denys if not permitted' do
+      #     patch :remove_from_thread, params: { id: @event.id }
+      #     expect(response.status).to eq 403
+      #   end
+      # end
 
       it 'returns events filtered by discussion' do
         get :index, params: { discussion_id: discussion.id }, format: :json

@@ -3,7 +3,7 @@
   %loading{ng-if: "!model"}
   .document-card__content{ng-if: "model"}
     .lmo-hint-text{translate: "document.card.no_documents", ng-if: "!model.hasDocuments()"}
-    %document_list{model: "model", hide-preview: "true"}
+    %document_list{model: "model", hide-preview: "true", hide-date:"true"}
   .lmo-md-actions
     %a.lmo-card-minor-action{lmo-href-for: "group", lmo-href-action: "documents"}
       %span{translate: "document.card.view_documents"}

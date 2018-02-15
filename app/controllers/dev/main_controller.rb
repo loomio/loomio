@@ -165,6 +165,12 @@ class Dev::MainController < Dev::BaseController
     redirect_to dashboard_url
   end
 
+  def setup_dashboard_with_one_thread
+    sign_in patrick
+    recent_discussion
+    redirect_to dashboard_url
+  end
+
   def setup_dashboard_as_visitor
     patrick; jennifer
     recent_discussion
@@ -221,6 +227,20 @@ class Dev::MainController < Dev::BaseController
     redirect_to group_url create_group
   end
 
+  def setup_group_with_documents
+    sign_in patrick
+    create_group
+
+    (params[:times]||1).to_i.times do |i|
+      FactoryBot.create :document, model: create_group, created_at: 3.days.ago, author: patrick
+      FactoryBot.create :document, model: create_group
+      FactoryBot.create :document, model: create_group, title: "a really outragously long title you wouldn't really use exept for in some really extraneous circumstances"
+    end
+
+    redirect_to   group_url(create_group)
+  end
+
+
   def setup_subgroup
     create_subgroup.add_member! jennifer
     sign_in jennifer
@@ -250,9 +270,9 @@ class Dev::MainController < Dev::BaseController
   end
 
   # to test subdomains in development
-  def setup_group_with_subdomain
+  def setup_group_with_handle
     sign_in patrick
-    create_group.update_attributes(name: 'Ghostbusters', subdomain: 'ghostbusters')
+    create_group.update_attributes(name: 'Ghostbusters', handle: 'ghostbusters')
     redirect_to "http://ghostbusters.lvh.me:3000/"
   end
 

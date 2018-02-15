@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204211236) do
+ActiveRecord::Schema.define(version: 20180207220417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -305,7 +305,7 @@ ActiveRecord::Schema.define(version: 20180204211236) do
     t.boolean "parent_members_can_see_discussions", default: false, null: false
     t.string "key", limit: 255
     t.integer "category_id"
-    t.citext "subdomain"
+    t.citext "handle"
     t.integer "theme_id"
     t.boolean "is_visible_to_public", default: true, null: false
     t.boolean "is_visible_to_parent_members", default: false, null: false
@@ -359,13 +359,13 @@ ActiveRecord::Schema.define(version: 20180204211236) do
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["default_group_cover_id"], name: "index_groups_on_default_group_cover_id"
     t.index ["full_name"], name: "index_groups_on_full_name"
+    t.index ["handle"], name: "index_groups_on_handle", unique: true
     t.index ["is_visible_to_public"], name: "index_groups_on_is_visible_to_public"
     t.index ["key"], name: "index_groups_on_key", unique: true
     t.index ["name"], name: "index_groups_on_name"
     t.index ["parent_id"], name: "index_groups_on_parent_id"
     t.index ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions"
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
-    t.index ["subdomain"], name: "index_groups_on_subdomain", unique: true
   end
 
   create_table "invitations", id: :serial, force: :cascade do |t|

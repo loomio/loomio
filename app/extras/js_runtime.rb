@@ -5,7 +5,7 @@ module JSRuntime
   def eval(command, input)
     cleanup perform build(command, input)
   rescue => e
-    Airbrake.notify e
+    Raven.capture_exception(e)
     input
   end
 

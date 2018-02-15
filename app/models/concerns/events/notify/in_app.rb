@@ -14,12 +14,14 @@ module Events::Notify::InApp
   private
 
   def notification_for(recipient)
-    notifications.build(
-      user:               recipient,
-      actor:              notification_actor,
-      url:                notification_url,
-      translation_values: notification_translation_values
-    )
+    I18n.with_locale(recipient.locale) do
+      notifications.build(
+        user:               recipient,
+        actor:              notification_actor,
+        url:                notification_url,
+        translation_values: notification_translation_values
+      )
+    end
   end
 
   # which users should receive an in-app notification about this event?

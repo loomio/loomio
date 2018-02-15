@@ -4,8 +4,8 @@ FlashService = require 'shared/services/flash_service.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
 
 module.exports = new class ThreadService
-  mute: (thread) ->
-    if !Session.user().hasExperienced("mutingThread")
+  mute: (thread, override = false) ->
+    if !Session.user().hasExperienced("mutingThread") and !override
       Records.users.saveExperience("mutingThread")
       Records.users.updateProfile(Session.user()).then ->
         ModalService.open 'MuteExplanationModal', thread: -> thread
@@ -35,7 +35,19 @@ module.exports = new class ThreadService
 
   reopen: (thread) ->
     thread.reopen().then =>
-      FlashService.success "discussion.closed.reopened", 'undo', => @close(thread)
+      FlashService.success "discussion.closed.reopened", {}, 'undo', => @close(thread)
+
+  dismiss: (thread) ->
+    if !Session.user().hasExperienced("dismissThread")
+      Records.users.saveExperience("dismissThread")
+      ModalService.open 'DismissExplanationModal', thread: -> thread
+    else
+      thread.dismiss().then =>
+        FlashService.success "dashboard_page.thread_dismissed", {}, 'undo', => @recall(thread)
+
+  recall: (thread) ->
+    thread.recall().then =>
+      FlashService.success "dashboard_page.thread_recalled", {}, 'undo', => @dismiss(thread)
 
   pin: (thread) ->
     if !Session.user().hasExperienced("pinningThread")
