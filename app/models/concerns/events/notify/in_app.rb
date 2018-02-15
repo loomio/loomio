@@ -8,24 +8,24 @@ module Events::Notify::InApp
 
   # send event notifications
   def notify_users!
-    notifications.import(notifications_to_send)
-    notifications_to_send.each do |notification|
-      MessageChannelService.publish_model(notification, to: notification.message_channel)
-    end
+    notifications.import(built_notifications)
+    built_notifications.each { |n| MessageChannelService.publish_model(n, to: n.message_channel) }
   end
 
   private
 
-  def notifications_to_send
-    @notifications_to_send ||= notification_recipients.active.where.not(id: user).map do |recipient|
-      I18n.with_locale(recipient.locale) do
-        notifications.build(
-          user:               recipient,
-          actor:              notification_actor,
-          url:                notification_url,
-          translation_values: notification_translation_values
-        )
-      end
+  def built_notifications
+    @built ||= notification_recipients.active.where.not(id: user).map { |recipient| notification_for(recipient) }
+  end
+
+  def notification_for(recipient)
+    I18n.with_locale(recipient.locale) do
+      notifications.build(
+        user:               recipient,
+        actor:              notification_actor,
+        url:                notification_url,
+        translation_values: notification_translation_values
+      )
     end
   end
 
