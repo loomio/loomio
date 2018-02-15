@@ -2,22 +2,6 @@ require('coffeescript/register')
 pageHelper = require('../helpers/page_helper.coffee')
 
 module.exports = {
-  'starts a proposal': (test) => { startPollTest(test, 'proposal') },
-  'starts a count': (test) => { startPollTest(test, 'count') },
-  'starts a poll': (test) => { startPollTest(test, 'poll', (page) => {
-    page.fillIn(".poll-poll-form__add-option-input", "bananas")
-  }) },
-  'starts a dot vote': (test) => { startPollTest(test, 'dot_vote', (page) => {
-    page.fillIn(".poll-poll-form__add-option-input", "bananas")
-  }) },
-  'starts a time poll': (test) => { startPollTest(test, 'meeting', (page) => {
-    page.fillIn(".poll-meeting-time-field__datepicker input", "2030-03-23")
-    page.pause()
-  }) },
-  'starts a ranked choice': (test) => { startPollTest(test, 'ranked_choice', (page) => {
-    page.fillIn(".poll-poll-form__add-option-input", "bananas")
-  }) },
-
   'can start a poll in a group': (test) => {
     page = pageHelper(test)
 
@@ -27,6 +11,10 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title', 'A new proposal')
     page.fillIn('.poll-common-form-fields textarea', 'Some details')
     page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.material-modal-header-cancel-button')
+    page.expectNoElement('.poll-common-modal')
+
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
@@ -49,16 +37,16 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title', 'A new proposal')
     page.fillIn('.poll-common-form-fields textarea', 'Some details')
     page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.material-modal-header-cancel-button')
+    page.expectNoElement('.poll-common-modal')
 
-    page.click('.modal-cancel')
-    page.pause(2000)
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
     page.click('.poll-common-vote-form__radio-button--agree')
     page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
     page.click('.poll-common-vote-form__submit')
-    page.pause(2000)
 
     page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
       page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
@@ -182,18 +170,4 @@ module.exports = {
     page.click('.poll-common-undecided-user__resend')
     page.expectText('.flash-root__message', 'Invitation resent')
   }
-}
-
-startPollTest = (test, poll_type, optionsFn) => {
-  page = pageHelper(test)
-
-  page.loadPath('polls/test_discussion')
-  page.click(`.decision-tools-card__poll-type--${poll_type}`)
-  page.click(".poll-common-tool-tip__collapse")
-  page.fillIn(".poll-common-form-fields__title", `A new ${poll_type}`)
-  page.fillIn(".poll-common-form-fields textarea", `Some details for ${poll_type}`)
-  if (optionsFn) { optionsFn(page) }
-  page.click(".poll-common-form__submit")
-  page.expectText('.poll-common-card__title', `A new ${poll_type}`)
-  page.expectText('.poll-common-details-panel__details', `Some details for ${poll_type}`)
 }
