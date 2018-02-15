@@ -1,6 +1,6 @@
 production:
   adapter: redis
-  url: <%= ENV['REDIS_URL'] %>
+  url:     <%= ENV.fetch('REDIS_URL', 'redis://redis:6379') %>
   channel_prefix: loomio
 
 development:
