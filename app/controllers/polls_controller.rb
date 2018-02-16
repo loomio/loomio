@@ -1,5 +1,15 @@
 class PollsController < ApplicationController
   include UsesMetadata
+  include LoadAndAuthorize
+
+  def export
+    @exporter = PollExporter.new(load_and_authorize(:poll, :export))
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @exporter.to_csv }
+    end
+  end
 
   def example
     if poll = PollGenerator.new(params[:type]).generate!
