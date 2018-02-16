@@ -40,6 +40,7 @@ module.exports = {
     page.expectElement('.announcement-form__submit')
     page.click('.material-modal-header-cancel-button')
     page.expectNoElement('.poll-common-modal')
+    page.pause()
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
