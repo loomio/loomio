@@ -656,7 +656,7 @@ en:
       file_helptext: Upload files from your computer
     form:
       url_label: URL
-      helptext: Click here, paste, or drop files to upload
+      helptext: Click here, paste, or drop file to upload
       url_placeholder: E.g. https://www.example.com/attachment.zip
       title_helptext: What should we call this attachment?
       title_label: Name
