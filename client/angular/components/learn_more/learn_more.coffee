@@ -1,3 +1,5 @@
+{ triggerResize } = require 'shared/helpers/window.coffee'
+
 angular.module('loomioApp').directive 'learnMore', ->
   scope: {title: '@', nuggets: '='}
   restrict: 'E'
@@ -15,11 +17,11 @@ angular.module('loomioApp').directive 'learnMore', ->
     $scope.hasPrev = ->
       $scope.index > 0
 
-    $scope.next = ->
-      $scope.index += 1
-      $scope.currentNugget = $scope.nuggets[$scope.index]
+    $scope.next = -> navigate(1)
+    $scope.prev = -> navigate(-1)
 
-    $scope.prev = ->
-      $scope.index -= 1
+    navigate = (diff) ->
+      $scope.index += diff
       $scope.currentNugget = $scope.nuggets[$scope.index]
+      triggerResize()
   ]
