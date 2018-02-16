@@ -133,7 +133,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_proposal_poll_share')
-    page.click('.action-dock__button--announce')
+    page.click('.action-dock__button--announce_poll')
     page.selectFromAutocomplete('.md-chip-input-container input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-form__submit')
