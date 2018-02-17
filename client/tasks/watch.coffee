@@ -5,3 +5,4 @@ gulp     = require 'gulp'
 module.exports = ->
   gulp.watch paths.angular.folders.templates, ['angular:haml']
   gulp.watch paths.angular.scss,              ['angular:scss']
+  gulp.watch paths.worker.coffee,             ['worker:bundle:dev']

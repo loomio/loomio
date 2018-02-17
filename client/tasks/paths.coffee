@@ -57,8 +57,10 @@ module.exports =
 
   worker:
     main:           'worker/main.coffee'
+    coffee:         'worker/*.coffee'
 
   dist:
+    root:           '../public/'
     fonts:          '../public/client/fonts'
     assets:         '../public/client/development'
     emojis:         '../public/img/emojis'

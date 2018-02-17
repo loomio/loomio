@@ -13,7 +13,7 @@ module.exports =
       .bundle()
       .pipe(source('service-worker.js'))
       .on('error', onError)
-      .pipe(gulp.dest(paths.dist.assets))
+      .pipe(gulp.dest(paths.dist.root))
 
   production: ->
     browserify(browserifyOpts())
@@ -22,7 +22,7 @@ module.exports =
       .pipe(source('service-worker.js'))
       .pipe(buffer())
       .on('error', onError)
-      .pipe(gulp.dest(paths.dist.assets))
+      .pipe(gulp.dest(paths.dist.root))
 
 browserifyOpts = ->
   entries: paths.worker.main

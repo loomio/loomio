@@ -1,10 +1,13 @@
 { assetEndpoints } = require './endpoints.coffee'
-{ performFetch }   = require './strategy.coffee'
+performFetch       = require './fetch.coffee'
 
 self.addEventListener 'install', (event) ->
-  caches.open('loomioApp').then (cache) ->
-    event.waitUntil cache.addAll(assetEndpoints(location.pathname.split('/')[2]))
+  version = location.search.replace('?', '')
+  event.waitUntil(
+    caches.open('loomioApp').then (cache) -> cache.addAll(assetEndpoints(version))
+  )
 
 self.addEventListener 'fetch', (event) ->
-  caches.open('loomioApp').then (cache) ->
-    event.respondWith getResponse(cache, event.request)
+  event.respondWith(
+    caches.open('loomioApp').then (cache) -> performFetch(cache, event.request)
+  )
