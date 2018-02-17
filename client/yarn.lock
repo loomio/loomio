@@ -130,9 +130,9 @@ angular-inview@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/angular-inview/-/angular-inview-2.1.0.tgz#9e8615b89f26f80565aaef706a04a9c667c7d785"
 
-angular-material@1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/angular-material/-/angular-material-1.1.4.tgz#27de35646f54ccd320080af0c708e1b438af87f6"
+angular-material@1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/angular-material/-/angular-material-1.1.7.tgz#b3ebe28bc884495285932fb9cf4f58ed6ce6f4ab"
 
 angular-messages@^1.5.5:
   version "1.6.7"
