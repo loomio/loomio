@@ -1,3 +1,4 @@
+AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 EventBus       = require 'shared/services/event_bus.coffee'

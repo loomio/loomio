@@ -55,6 +55,9 @@ module.exports =
   execjs:
     main:           'execjs/main.coffee'
 
+  worker:
+    main:           'worker/main.coffee'
+
   dist:
     fonts:          '../public/client/fonts'
     assets:         '../public/client/development'
