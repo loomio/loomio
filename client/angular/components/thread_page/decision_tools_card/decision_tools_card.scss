@@ -4,15 +4,21 @@
 }
 
 .decision-tools-card__poll-type {
-  // line-height: 24px;
   list-style-type: none;
   height: 56px;
+  .md-button.md-ink-ripple {
+    position: absolute;
+    left: 0;
+  }
+  .md-list-item-inner {
+    margin-left: 10px;
+    min-height: 56px;
+  }
 }
 
 .decision-tools-card__poll-type-link {
   display: flex;
   cursor: pointer;
-  // padding: 15px 0;
   text-decoration: none;
   &:hover { text-decoration: none; }
 }
@@ -20,10 +26,6 @@
 .decision-tools-card__poll-type-link i {
   padding: 10px 10px 10px 0;
 }
-
-// .decision-tools-card__poll-type-subtitle {
-//   line-height: 20px;
-// }
 
 .decision-tools-card__icon {
   margin-left: -16px;

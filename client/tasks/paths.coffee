@@ -71,3 +71,6 @@ module.exports =
     specs:
       core:        'angular/test/protractor/*_spec.coffee'
       plugins:     ['../plugins/**/*_spec.coffee', 'angular/test/protractor/testing_spec.coffee']
+
+  nightwatch:
+    config:       'angular/test/nightwatch.json'
