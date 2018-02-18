@@ -25,11 +25,13 @@ Loomio::Application.configure do
 
   config.action_dispatch.x_sendfile_header = nil
 
-  config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', expires_in: 90.minutes
-  config.action_dispatch.rack_cache = {
-    metastore:   'redis://localhost:6379/1/metastore',
-    entitystore: 'redis://localhost:6379/1/entitystore'
-  }
+  if ENV['REDIS_URL']
+    config.cache_store = config.cache_store = :redis_store, "#{ENV['REDIS_URL']}/0/cache", { expires_in: 90.minutes }
+    config.action_dispatch.rack_cache = {
+      metastore:   ENV['REDIS_URL']+'/1/metastore',
+      entitystore: ENV['REDIS_URL']+'/1/entitystore'
+    }
+  end
 
   config.active_support.deprecation = :notify
 
