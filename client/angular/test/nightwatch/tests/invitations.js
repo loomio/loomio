@@ -46,7 +46,7 @@ module.exports = {
     page.click('.members-card__invite-members-btn')
     page.fillIn('.invitation-form__email-addresses', 'patrick_swayze@example.com')
     page.click('.invitation-form__submit')
-    page.expectText('.invitation-form__validation-errors', "These people are already members of the group.")
+    page.expectText('.lmo-validation-error__message', "These people are already members of the group.")
   },
 
   'lets you add members from the parent to a subgroup': (test) => {
