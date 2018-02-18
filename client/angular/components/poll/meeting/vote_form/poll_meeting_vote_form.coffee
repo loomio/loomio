@@ -1,4 +1,5 @@
-EventBus = require 'shared/services/event_bus.coffee'
+AppConfig = require 'shared/services/app_config.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 
 { submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 { submitStance }  = require 'shared/helpers/form.coffee'
@@ -22,5 +23,5 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
     EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
       $scope.zone = zone
 
-    submitOnEnter($scope)
+    submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
   ]
