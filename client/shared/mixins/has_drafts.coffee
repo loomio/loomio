@@ -22,7 +22,7 @@ module.exports = new class HasDrafts
     model.restoreDraft = ->
       return unless draft = model.draft()
       payloadField = _.snakeCase(model.constructor.serializationRoot or model.constructor.singular)
-      model.update _.omit(draft.payload[payloadField], _.isNull)
+      model.update _.omit(draft.payload[payloadField], _.isEmpty)
 
     model.resetDraft = ->
       return unless draft = model.draft()
