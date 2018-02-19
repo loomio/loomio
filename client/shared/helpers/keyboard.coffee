@@ -22,7 +22,7 @@ module.exports =
     registerKeyEvent scope, 'pressedEnter', scope[opts.submitFn or 'submit'], (active, event) =>
       !scope.isDisabled and
       !scope.submitIsDisabled and
-      (opts.shouldExecute or -> true)() and
+      hasActiveElement(opts.element, active) and
       (event.ctrlKey or event.metaKey or opts.anyEnter) and
       _.contains(active.classList, 'lmo-primary-form-input')
 
@@ -36,6 +36,14 @@ keyboardShortcuts =
   191: 'pressedSlash'
   38:  'pressedUpArrow'
   40:  'pressedDownArrow'
+
+# NB: only works for textareas at the moment, since we're interested
+# in textarea-only forms (comment and vote) submitting only the active form.
+# will need to do some additional thinking if we want to support input checking here.
+# For non-textarea forms (poll, group, discussion, etc.), this simply always returns true.
+hasActiveElement = (element, active) ->
+  return true unless element
+  _.find element.find('textarea'), (input) -> active == input
 
 defaultShouldExecute = (active = {}, event = {}) ->
   !event.ctrlKey and !event.altKey and !_.contains(['INPUT', 'TEXTAREA', 'SELECT'], active.nodeName)

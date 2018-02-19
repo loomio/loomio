@@ -1,5 +1,4 @@
-AppConfig = require 'shared/services/app_config.coffee'
-EventBus  = require 'shared/services/event_bus.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
 { submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 { submitStance }  = require 'shared/helpers/form.coffee'
@@ -7,7 +6,7 @@ EventBus  = require 'shared/services/event_bus.coffee'
 angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/meeting/vote_form/poll_meeting_vote_form.html'
-  controller: ['$scope', ($scope) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     $scope.vars = {}
 
     initForm = do ->
@@ -23,5 +22,5 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
     EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
       $scope.zone = zone
 
-    submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
+    submitOnEnter $scope, element: $element
   ]

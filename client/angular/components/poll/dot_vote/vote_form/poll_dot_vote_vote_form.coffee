@@ -1,6 +1,5 @@
-AppConfig = require 'shared/services/app_config.coffee'
-Records   = require 'shared/services/records.coffee'
-EventBus  = require 'shared/services/event_bus.coffee'
+Records  = require 'shared/services/records.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
 { submitStance }  = require 'shared/helpers/form.coffee'
 { submitOnEnter } = require 'shared/helpers/keyboard.coffee'
@@ -8,7 +7,7 @@ EventBus  = require 'shared/services/event_bus.coffee'
 angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/dot_vote/vote_form/poll_dot_vote_vote_form.html'
-  controller: ['$scope', ($scope) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     $scope.vars = {}
 
     percentageFor = (choice) ->
@@ -55,5 +54,5 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
         return unless _.sum(_.pluck($scope.stanceChoices, 'score')) > 0
         $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
 
-    submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
+    submitOnEnter $scope, element: $element
   ]

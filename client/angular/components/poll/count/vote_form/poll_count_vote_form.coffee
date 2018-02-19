@@ -8,7 +8,7 @@ EventBus  = require 'shared/services/event_bus.coffee'
 angular.module('loomioApp').directive 'pollCountVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/count/vote_form/poll_count_vote_form.html'
-  controller: ['$scope', ($scope) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: (optionName) ->
         option = _.find $scope.stance.poll().pollOptions(), (option) -> option.name == optionName
@@ -18,5 +18,5 @@ angular.module('loomioApp').directive 'pollCountVoteForm', ->
     $scope.yesColor = AppConfig.pollColors.count[0]
     $scope.noColor  = AppConfig.pollColors.count[1]
 
-    submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
+    submitOnEnter $scope, element: $element
   ]

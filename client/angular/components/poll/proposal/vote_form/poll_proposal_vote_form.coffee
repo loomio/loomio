@@ -1,5 +1,4 @@
-AppConfig = require 'shared/services/app_config.coffee'
-EventBus  = require 'shared/services/event_bus.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
 { submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 { submitStance }  = require 'shared/helpers/form.coffee'
@@ -7,7 +6,7 @@ EventBus  = require 'shared/services/event_bus.coffee'
 angular.module('loomioApp').directive 'pollProposalVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/proposal/vote_form/poll_proposal_vote_form.html'
-  controller: ['$scope', ($scope) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     $scope.stance.selectedOption = $scope.stance.pollOption()
 
     $scope.submit = submitStance $scope, $scope.stance,
@@ -22,5 +21,5 @@ angular.module('loomioApp').directive 'pollProposalVoteForm', ->
       pollOptionName = ($scope.stance.selectedOption or {name: 'default'}).name
       "poll_proposal_vote_form.#{pollOptionName}_reason_placeholder"
 
-    submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
+    submitOnEnter $scope, element: $element
   ]

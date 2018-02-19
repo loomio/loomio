@@ -1,5 +1,4 @@
-AppConfig = require 'shared/services/app_config.coffee'
-EventBus  = require 'shared/services/event_bus.coffee'
+EventBus = require 'shared/services/event_bus.coffee'
 
 { submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 { submitStance }  = require 'shared/helpers/form.coffee'
@@ -7,7 +6,7 @@ EventBus  = require 'shared/services/event_bus.coffee'
 angular.module('loomioApp').directive 'pollPollVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/poll/vote_form/poll_poll_vote_form.html'
-  controller: ['$scope', ($scope) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     $scope.vars = {}
     $scope.pollOptionIdsChecked = {}
 
@@ -30,5 +29,5 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
           $scope.stance.stanceChoicesAttributes =
             _.map selectedOptionIds, (id) -> {poll_option_id: id}
 
-    submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
+    submitOnEnter $scope, element: $element
   ]

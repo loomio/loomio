@@ -1,4 +1,3 @@
-AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 EventBus       = require 'shared/services/event_bus.coffee'
@@ -13,7 +12,7 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ['$scope', ($scope) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     $scope.discussion = $scope.eventWindow.discussion
     $scope.commentHelptext = ->
       helptext = if $scope.discussion.private
@@ -51,7 +50,8 @@ angular.module('loomioApp').directive 'commentForm', ->
             $scope.comment.parent().authorName() if $scope.comment.isReply()
 
         successCallback: $scope.init
-      submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
+
+      submitOnEnter $scope, element: $element
       EventBus.broadcast $scope, 'reinitializeForm', $scope.comment
     $scope.init()
   ]
