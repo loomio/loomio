@@ -127,6 +127,7 @@ en:
       thanks_for_reading: Thanks for reading, have a great day!
       heres_what_happened: "Here’s what happened on %{site_name} yesterday."
       marked_as_read_success: Everything from the email has been marked as read
+      click_here: Click here
 
     group_membership_approved:
       intro: "Your request for access to the group %{group_name} has been approved."

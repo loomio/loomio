@@ -3,7 +3,7 @@ EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 
 angular.module('loomioApp').directive 'documentList', ->
-  scope: {model: '=', showEdit: '=?', hidePreview: '=?'}
+  scope: {model: '=', showEdit: '=?', hidePreview: '=?', hideDate: '=?'}
   replace: true
   templateUrl: 'generated/components/document/list/document_list.html'
   controller: ['$scope', ($scope) ->
