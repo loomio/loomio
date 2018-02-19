@@ -3,7 +3,11 @@
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %i.mdi{class: "{{icon()}}"}
-      %h1.lmo-h1{translate: "poll_common.start_poll"}
+      %h1.lmo-h1{ng-switch: "currentStep"}
+        %span{ng-switch-when: "choose", translate: "poll_common.start_poll"}
+        %span{ng-switch-when: "save", translate: "poll_common.start_poll"}
+        %span{ng-switch-when: "explainShareable", translate: "poll_common.start_poll"}
+        %span{ng-switch-when: "announce", translate: "announcement.form.poll_title"}
       %material_modal_header_cancel_button
   %md-dialog-content
     .lmo-slide-animation{ng-switch: "currentStep"}

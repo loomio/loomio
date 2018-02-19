@@ -32,3 +32,6 @@ module.exports = class AnnouncementModel extends BaseModel
       @event().model()
     else
       @recordStore["#{@modelType.toLowerCase()}s"].find(@modelId)
+
+  modelName: ->
+    @model().constructor.singular

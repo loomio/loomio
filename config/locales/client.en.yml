@@ -406,7 +406,10 @@ en:
 
   announcement:
     form:
-      helptext: Notify the people who matter about the content you've created
+      discussion_helptext: Add people who you'd like to join this discussion. They will gain access to this thread if they can't see it already.
+      poll_helptext: Add people who you'd like to participate in this decision. They will gain access to this poll and be able to vote.
+      outcome_helptext: Add people who you'd like to notify of the results of this decision. They will be able to view the poll results.
+      invite_to_discussion: Invite them to the thread instead?
       helptext_title: Announcing content
       helptext_1: |
         <p>
@@ -433,7 +436,9 @@ en:
           <img src="/img/announce/reminder.png" />
         </p>
 
-      modal_title: Notify people
+      discussion_title: Share thread
+      poll_title: Share poll
+      outcome_title: Share outcome
       label: People to notify
       placeholder: Enter groups, names, or email addresses
       notified_count: '{{count}} people will be notified'
