@@ -23,6 +23,7 @@ class Outcome < ApplicationRecord
   delegate :locale, to: :poll
   delegate :mailer, to: :poll
   delegate :guest_group, to: :poll
+  delegate :members, to: :poll
 
   is_mentionable on: :statement
   is_translatable on: :statement

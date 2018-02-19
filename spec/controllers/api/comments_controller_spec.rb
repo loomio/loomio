@@ -66,7 +66,8 @@ describe API::CommentsController do
         end
 
         it 'allows guest group members to comment' do
-          
+          discussion.group.memberships.find_by(user: user).destroy
+          discussion.guest_group.add_member! user
 
           post :create, params: { comment: comment_params }
           expect(response).to be_success
