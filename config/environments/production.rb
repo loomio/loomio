@@ -25,15 +25,6 @@ Loomio::Application.configure do
 
   config.action_dispatch.x_sendfile_header = nil
 
-  # in the future we could use redis for this stuff, but right now it's just for action cable
-  # if ENV['REDIS_URL']
-  #   config.cache_store = config.cache_store = :redis_store, "#{ENV['REDIS_URL']}/0/cache", { expires_in: 90.minutes }
-  #   config.action_dispatch.rack_cache = {
-  #     metastore:   ENV['REDIS_URL']+'/1/metastore',
-  #     entitystore: ENV['REDIS_URL']+'/1/entitystore'
-  #   }
-  # end
-
   config.active_support.deprecation = :notify
 
   config.action_mailer.perform_deliveries = true
