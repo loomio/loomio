@@ -1,3 +1,4 @@
+AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 EventBus       = require 'shared/services/event_bus.coffee'
@@ -50,7 +51,7 @@ angular.module('loomioApp').directive 'commentForm', ->
             $scope.comment.parent().authorName() if $scope.comment.isReply()
 
         successCallback: $scope.init
-      submitOnEnter $scope
+      submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
       EventBus.broadcast $scope, 'reinitializeForm', $scope.comment
     $scope.init()
   ]

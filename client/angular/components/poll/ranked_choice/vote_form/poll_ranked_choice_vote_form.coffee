@@ -1,4 +1,5 @@
-EventBus = require 'shared/services/event_bus.coffee'
+AppConfig = require 'shared/services/app_config.coffee'
+EventBus  = require 'shared/services/event_bus.coffee'
 
 { submitOnEnter, registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
 { submitStance }                    = require 'shared/helpers/form.coffee'
@@ -30,7 +31,7 @@ angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
     $scope.isSelected = (option) ->
       $scope.selectedOption == option
 
-    submitOnEnter($scope)
+    submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
     registerKeyEvent $scope, 'pressedUpArrow', ->
       swap($scope.selectedOptionIndex(), $scope.selectedOptionIndex() - 1)
 
