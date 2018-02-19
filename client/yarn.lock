@@ -150,9 +150,9 @@ angular-sanitize@1.6.9:
   version "1.6.9"
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.6.9.tgz#1adba33f6f513e5f93e3aca8071bef53666739ea"
 
-angular-scroll@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/angular-scroll/-/angular-scroll-1.0.2.tgz#2768ff35dbe1ce40e0c3fbedd4534888299c3e2d"
+angular-scroll@~0.6.5:
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/angular-scroll/-/angular-scroll-0.6.5.tgz#2c5bbd9e4f72315b0f73146f857fd559252f941d"
 
 angular-sortable-view@0.0.17:
   version "0.0.17"
