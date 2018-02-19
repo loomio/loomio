@@ -22,6 +22,14 @@ module HasGuestGroup
     ).tap { self.guest_group.update_pending_invitations_count }
   end
 
+  def group_members
+    User.joins(:memberships).where("memberships.group_id": group_id)
+  end
+
+  def members
+    User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
+  end
+
   def anyone_can_participate
     guest_group.membership_granted_upon_request?
   end
