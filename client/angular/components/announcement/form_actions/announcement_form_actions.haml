@@ -1,3 +1,4 @@
   .lmo-md-action
+    %learn_more{title: "announcement.form.helptext_title", nuggets: "nuggets"}
     %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "!announcement.notified.length", ng-click: "$emit('$close')", translate: "common.action.done"}
     %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "announcement.notified.length", ng-click: "submit()", translate: "common.action.send"}

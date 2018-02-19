@@ -1,7 +1,7 @@
 .announcement-form
-  %p.announcement-form__help.md-caption
-    %span.announcement-help__collapsed-body{translate: "announcement.form.helptext"}>
-    %learn_more{title: "announcement.form.helptext_title", nuggets: "nuggets"}
+  %p.announcement-form__help.lmo-hint-text
+    %span{translate: "announcement.form.{{announcement.modelName()}}_helptext"}>
+    %a.lmo-pointer{ng-click: "inviteToDiscussion()", ng-if: "relevantDiscussion()", translate: "announcement.form.invite_to_discussion"}>
 
   %label.announcement-form__label{translate: "announcement.form.label"}
   %md-chips.announcement-form__chips{ng-model: "announcement.notified", md-require-match: "true"}

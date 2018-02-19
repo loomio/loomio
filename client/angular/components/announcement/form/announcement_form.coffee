@@ -1,4 +1,5 @@
-Records = require 'shared/services/records.coffee'
+Records      = require 'shared/services/records.coffee'
+ModalService = require 'shared/services/modal_service.coffee'
 
 angular.module('loomioApp').directive 'announcementForm', ->
   scope: {announcement: '='}
@@ -11,7 +12,13 @@ angular.module('loomioApp').directive 'announcementForm', ->
     .finally ->
       $scope.$emit 'doneProcessing'
 
-    $scope.nuggets = [1,2,3,4].map (index) -> "announcement.form.helptext_#{index}"
+    $scope.inviteToDiscussion = ->
+      ModalService.open 'AnnouncementModal', announcement: ->
+        Records.announcements.buildFromModel($scope.relevantDiscussion())
+
+    $scope.relevantDiscussion = ->
+      return if $scope.announcement.modelName() == 'discussion'
+      $scope.announcement.model().discussion()
 
     $scope.search = (query) ->
       Records.announcements.fetchNotified(query).then (notified) ->
