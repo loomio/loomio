@@ -1,10 +1,14 @@
-production:
+<% if ENV['REDIS_URL'] %>
+default: &default
   adapter: redis
-  url:     <%= ENV['REDIS_URL'] %>
+  url: <%= ENV['REDIUS_URL']+"/0" %>
   channel_prefix: loomio
-
-development:
+<% else %>
+default: &default
   adapter: postgresql
+<% end %>
 
+production: *default
+development: *default
 test:
   adapter: postgresql
