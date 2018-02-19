@@ -31,5 +31,8 @@ module.exports = class OutcomeModel extends BaseModel
   announcementSize: ->
     @poll().announcementSize @notifyAction()
 
+  discussion: ->
+    @poll().discussion()
+
   notifyAction: ->
     'publish'

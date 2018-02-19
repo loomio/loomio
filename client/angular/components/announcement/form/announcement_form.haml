@@ -1,7 +1,9 @@
 .announcement-form
-  %p.announcement-form__help.lmo-hint-text
-    %span{translate: "announcement.form.{{announcement.modelName()}}_helptext"}>
-    %a.lmo-pointer{ng-click: "inviteToDiscussion()", ng-if: "relevantDiscussion()", translate: "announcement.form.invite_to_discussion"}>
+  %p.announcement-form__help.lmo-hint-text{translate: "announcement.form.{{announcement.modelName()}}_helptext"}>
+
+  %p.lmo-hint-text{ng-if: "relevantDiscussion()"}
+    %span{translate: "announcement.form.relevant_discussion_helptext", translate-value-title: "{{relevantDiscussion().title}}"}>
+    %a.lmo-pointer{ng-click: "inviteToDiscussion()", translate: "announcement.form.invite_to_discussion"}>
 
   %label.announcement-form__label{translate: "announcement.form.label"}
   %md-chips.announcement-form__chips{ng-model: "announcement.notified", md-require-match: "true"}

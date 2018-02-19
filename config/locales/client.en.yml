@@ -406,10 +406,11 @@ en:
 
   announcement:
     form:
-      discussion_helptext: Add people who you'd like to join this discussion. They will gain access to this thread if they can't see it already.
+      discussion_helptext: Add people who you'd like to join this thread. They will be able to view it and comment if they can't already.
       poll_helptext: Add people who you'd like to participate in this decision. They will gain access to this poll and be able to vote.
-      outcome_helptext: Add people who you'd like to notify of the results of this decision. They will be able to view the poll results.
-      invite_to_discussion: Invite them to the thread instead?
+      outcome_helptext: Add people who you'd like to notify of this decision. They will be able to view the poll results.
+      relevant_discussion_helptext: This decision is part of the thread <strong>{{title}}</strong>, you can also
+      invite_to_discussion: invite people to join that conversation
       helptext_title: Announcing content
       helptext_1: |
         <p>
