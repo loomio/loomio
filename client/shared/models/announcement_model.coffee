@@ -21,6 +21,12 @@ module.exports = class AnnouncementModel extends BaseModel
         when 'User'        then 1
         when 'Invitation'  then 1
 
+  eventForNotifiedDefault: ->
+    @event() or @recordStore.events.build
+      kind: "#{@modelType.toLowerCase()}_announced"
+      eventableId:   @modelId
+      eventableType: @modelType
+
   model: ->
     if @event()
       @event().model()

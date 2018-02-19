@@ -5,12 +5,11 @@ angular.module('loomioApp').directive 'announcementForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
-    if $scope.announcement.event()
-      $scope.$emit 'processing'
-      Records.announcements.fetchNotifiedDefault($scope.announcement.event()).then (notified) ->
-        $scope.announcement.notified = notified if _.any(notified)
-      .finally ->
-        $scope.$emit 'doneProcessing'
+    $scope.$emit 'processing'
+    Records.announcements.fetchNotifiedDefault($scope.announcement.eventForNotifiedDefault()).then (notified) ->
+      $scope.announcement.notified = notified if _.any(notified)
+    .finally ->
+      $scope.$emit 'doneProcessing'
 
     $scope.nuggets = [1,2,3,4].map (index) -> "announcement.form.helptext_#{index}"
 
