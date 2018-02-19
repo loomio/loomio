@@ -32,7 +32,7 @@ module.exports = {
   'announcement_created': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_discussion')
+    page.loadPath('setup_announced_discussion')
     page.click('.action-dock__button--announce_thread')
     page.expectElement('.announcement-form')
     page.selectFromAutocomplete('.md-chip-input-container input', 'jenn')
