@@ -21,10 +21,5 @@ angular.module('loomioApp').directive 'announcementForm', ->
       $scope.announcement.model().discussion()
 
     $scope.search = (query) ->
-      Records.announcements.fetchNotified(query).then (notified) ->
-        # remove this when we can invite other groups
-        _.filter notified, (n) ->
-          return true  if n.type != 'FormalGroup' # skip if this isn't a group chip
-          return false if !$scope.announcement.model().group() # don't show if there's no group
-          $scope.announcement.model().group().key == n.id
+      Records.announcements.fetchNotified(query)
   ]
