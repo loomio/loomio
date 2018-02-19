@@ -19,3 +19,5 @@
   .lmo-md-action
     %p.md-caption{ng-if: "announcement.totalNotified() == 1", translate: "announcement.form.notified_count_singular"}
     %p.md-caption{ng-if: "announcement.totalNotified() != 1", translate: "announcement.form.notified_count", translate-value-count: "{{announcement.totalNotified()}}"}
+
+  %announcement_list{model: "announcement.model()"}

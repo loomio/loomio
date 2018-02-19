@@ -4,6 +4,11 @@ AnnouncementModel    = require 'shared/models/announcement_model.coffee'
 module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
   model: AnnouncementModel
 
+  fetchByModel: (model) ->
+    @fetch
+      params: "#{model.constructor.singular}_id": model.id
+      per:    10
+
   fetchNotified: (fragment) ->
     @fetch
       path: 'notified'

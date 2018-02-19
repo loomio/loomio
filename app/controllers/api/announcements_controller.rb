@@ -11,6 +11,10 @@ class API::AnnouncementsController < API::RestfulController
 
   private
 
+  def accessible_records
+    model_to_notify.announcements
+  end
+
   def model_to_notify
     load_and_authorize(:discussion, optional: true) ||
     load_and_authorize(:poll, optional: true) ||
