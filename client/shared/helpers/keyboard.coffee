@@ -19,15 +19,13 @@ module.exports =
         defaultShouldExecute(event) and !AppConfig.currentModal and AbilityService.isLoggedIn()
 
   submitOnEnter: (scope, opts = {}) ->
-    unregisterKeyEvent(previousScope, 'pressedEnter')
-    previousScope = scope
     registerKeyEvent scope, 'pressedEnter', scope[opts.submitFn or 'submit'], (active, event) =>
       !scope.isDisabled and
       !scope.submitIsDisabled and
+      hasActiveElement(opts.element, active) and
       (event.ctrlKey or event.metaKey or opts.anyEnter) and
       _.contains(active.classList, 'lmo-primary-form-input')
 
-previousScope = null
 keyboardShortcuts =
   73:  'pressedI'
   71:  'pressedG'
@@ -39,15 +37,18 @@ keyboardShortcuts =
   38:  'pressedUpArrow'
   40:  'pressedDownArrow'
 
+# NB: only works for textareas at the moment, since we're interested
+# in textarea-only forms (comment and vote) submitting only the active form.
+# will need to do some additional thinking if we want to support input checking here.
+# For non-textarea forms (poll, group, discussion, etc.), this simply always returns true.
+hasActiveElement = (element, active) ->
+  return true unless element
+  _.find element.find('textarea'), (input) -> active == input
+
 defaultShouldExecute = (active = {}, event = {}) ->
   !event.ctrlKey and !event.altKey and !_.contains(['INPUT', 'TEXTAREA', 'SELECT'], active.nodeName)
 
-# TODO: this is angular specific and should be generalized later.
-unregisterKeyEvent = (scope, eventCode) ->
-  scope.$$listeners[eventCode] = null if (scope || {}).$$listeners?
-
 registerKeyEvent = (scope, eventCode, execute, shouldExecute) ->
-  unregisterKeyEvent(scope, eventCode)
   shouldExecute = shouldExecute or defaultShouldExecute
   # TODO: I'm a little wary of the fact that there's 2 events here,
   # (the one now called 'frameworkEvent' was 'angularEvent'.

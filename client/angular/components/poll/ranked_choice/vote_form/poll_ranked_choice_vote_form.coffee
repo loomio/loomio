@@ -6,7 +6,7 @@ EventBus = require 'shared/services/event_bus.coffee'
 angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/ranked_choice/vote_form/poll_ranked_choice_vote_form.html'
-  controller: ['$scope', ($scope) ->
+  controller: ['$scope', '$element', ($scope, $element) ->
     initForm = do ->
       $scope.numChoices  = $scope.stance.poll().customFields.minimum_stance_choices
       $scope.pollOptions = _.sortBy $scope.stance.poll().pollOptions(), (option) ->
@@ -30,7 +30,7 @@ angular.module('loomioApp').directive 'pollRankedChoiceVoteForm', ->
     $scope.isSelected = (option) ->
       $scope.selectedOption == option
 
-    submitOnEnter($scope)
+    submitOnEnter $scope, element: $element
     registerKeyEvent $scope, 'pressedUpArrow', ->
       swap($scope.selectedOptionIndex(), $scope.selectedOptionIndex() - 1)
 
