@@ -535,8 +535,8 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_announced_discussion
-    FactoryBot.create :announcement, model: create_discussion
     sign_in patrick
+    FactoryBot.create :announcement, event: create_discussion.created_event
     redirect_to discussion_url(create_discussion)
   end
 
