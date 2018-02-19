@@ -1,4 +1,4 @@
-class ChangeCvToReaction < ActiveRecord::Migration
+class ChangeCvToReaction < ActiveRecord::Migration[4.2]
   def change
     add_column :comment_votes, :reaction, :string, default: "+1", null: false
     add_column :comment_votes, :reactable_type, :string, default: "Comment", null: false
