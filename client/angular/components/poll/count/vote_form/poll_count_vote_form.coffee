@@ -18,5 +18,5 @@ angular.module('loomioApp').directive 'pollCountVoteForm', ->
     $scope.yesColor = AppConfig.pollColors.count[0]
     $scope.noColor  = AppConfig.pollColors.count[1]
 
-    submitOnEnter($scope)
+    submitOnEnter $scope, shouldExecute: -> !AppConfig.currentModal?
   ]
