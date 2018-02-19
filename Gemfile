@@ -49,7 +49,7 @@ gem "autoprefixer-rails"
 gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
 gem 'rack-attack'
 gem 'js_regex'
-# gem 'bootsnap', require: false
+gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'byebug'
