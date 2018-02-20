@@ -30,6 +30,10 @@ module HasGuestGroup
     User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
   end
 
+  def invitations
+    Invitation.where(group_id: [group_id, guest_group_id].compact)
+  end
+
   def anyone_can_participate
     guest_group.membership_granted_upon_request?
   end

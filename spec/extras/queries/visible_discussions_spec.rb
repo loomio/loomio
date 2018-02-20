@@ -7,7 +7,7 @@ describe Queries::VisibleDiscussions do
   let(:discussion) { create :discussion, group: group, author: author, private: true }
 
   subject do
-    Queries::VisibleDiscussions.new(user: user, groups: [group])
+    Queries::VisibleDiscussions.new(user: user, group_ids: [group.id])
   end
 
   describe 'sorted_by_importance' do

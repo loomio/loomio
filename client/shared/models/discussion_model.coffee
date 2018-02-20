@@ -6,6 +6,7 @@ HasDocuments     = require 'shared/mixins/has_documents.coffee'
 HasMentions      = require 'shared/mixins/has_mentions.coffee'
 HasTranslations  = require 'shared/mixins/has_translations.coffee'
 HasAnnouncements = require 'shared/mixins/has_announcements.coffee'
+HasGuestGroup    = require 'shared/mixins/has_guest_group.coffee'
 
 module.exports = class DiscussionModel extends BaseModel
   @singular: 'discussion'
@@ -23,6 +24,7 @@ module.exports = class DiscussionModel extends BaseModel
     HasMentions.apply @, 'description'
     HasTranslations.apply @
     HasAnnouncements.apply @
+    HasGuestGroup.apply @
 
   defaultValues: =>
     private: null

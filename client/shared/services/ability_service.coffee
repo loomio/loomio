@@ -22,22 +22,28 @@ module.exports = new class AbilityService
     _.intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
-    Session.user().isMemberOf(thread.group())
+    _.contains thread.members(), Session.user()
 
   canRespondToComment: (comment) ->
-    Session.user().isMemberOf(comment.group())
+    _.contains comment.discussion().members(), Session.user()
 
-  canStartPoll: (group) ->
-    group and
-    (@canAdministerGroup(group) or Session.user().isMemberOf(group) and group.membersCanRaiseMotions)
+  canStartPoll: (model) ->
+    return unless model
+    switch model.constructor.singular
+      when 'discussion' then @canStartPoll(model.group()) || @canStartPoll(model.guestGroup())
+      when 'group'      then (@canAdministerGroup(model) or Session.user().isMemberOf(model) and model.membersCanRaiseMotions)
 
   canParticipateInPoll: (poll) ->
     return false unless poll
     poll.anyoneCanParticipate or
     @canAdministerPoll(poll) or
-    !poll.group() or
-    Session.user().isMemberOf(poll.guestGroup()) or
-    (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
+    @canParticipateInGroup(poll.guestGroup()) or
+    @canParticipateInGroup(poll.group()) or
+    (poll.discussion() and @canParticipateInGroup(poll.discussion().guestGroup()))
+
+  canParticipateInGroup: (group) ->
+    Session.user().isAdminOf(group) or
+    (Session.user().isMemberOf(group) and group.membersCanRaiseMotions)
 
   canReactToPoll: (poll) ->
     @isEmailVerified() and @canParticipateInPoll(poll)
@@ -73,9 +79,6 @@ module.exports = new class AbilityService
     @canAdministerGroup(thread.group()) or
     Session.user().isAuthorOf(thread)
 
-  canChangeThreadVolume: (thread) ->
-    Session.user().isMemberOf(thread.group())
-
   canChangeGroupVolume: (group) ->
     Session.user().isMemberOf(group)
 
@@ -93,7 +96,7 @@ module.exports = new class AbilityService
     @canAdministerGroup(discussion.group())
 
   canChangeVolume: (discussion) ->
-    Session.user().isMemberOf(discussion.group())
+    _.contains discussion.members(), Session.user()
 
   canManageGroupSubscription: (group) ->
     group.isParent() and

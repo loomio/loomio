@@ -5,6 +5,7 @@ HasDrafts        = require 'shared/mixins/has_drafts.coffee'
 HasDocuments     = require 'shared/mixins/has_documents.coffee'
 HasTranslations  = require 'shared/mixins/has_translations.coffee'
 HasAnnouncements = require 'shared/mixins/has_announcements.coffee'
+HasGuestGroup    = require 'shared/mixins/has_guest_group.coffee'
 
 module.exports = class PollModel extends BaseModel
   @singular: 'poll'
@@ -20,6 +21,7 @@ module.exports = class PollModel extends BaseModel
     HasMentions.apply @, 'details'
     HasTranslations.apply @
     HasAnnouncements.apply @
+    HasGuestGroup.apply @
 
   draftParent: ->
     @discussion() or @author()
@@ -70,22 +72,11 @@ module.exports = class PollModel extends BaseModel
     else
       @participantIds().concat @undecidedIds()
 
-  formalMemberIds: ->
-    # TODO: membersCanVote
-    if @group() then @group().memberIds() else []
-
-  guestIds: ->
-    if @guestGroup() then @guestGroup().memberIds() else []
-
   participantIds: ->
     _.pluck(@latestStances(), 'participantId')
 
   undecidedIds: ->
     _.pluck(@pollDidNotVotes(), 'userId')
-
-  # who can vote?
-  members: ->
-    @recordStore.users.find(@memberIds())
 
   # who's voted?
   participants: ->
