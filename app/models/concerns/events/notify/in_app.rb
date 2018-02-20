@@ -56,13 +56,10 @@ module Events::Notify::InApp
   end
 
   def notification_translation_title
-    @notification_translation_title ||= polymorphic_title(eventable)
+    polymorphic_title(eventable)
   end
 
   def notification_poll_type
-    case eventable
-    when Poll         then eventable.poll_type
-    when Announcement then (eventable.eventable.poll_type if eventable.eventable.is_a?(Poll))
-    end
+    eventable.poll_type if eventable.respond_to?(:poll_type)
   end
 end
