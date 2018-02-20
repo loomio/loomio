@@ -38,8 +38,8 @@ class Announcement < ActiveRecord::Base
     self.user_ids = self.invitation_emails = []
     notified.uniq.each do |n|
       case n['type']
-      when 'Group', 'User' then self.user_ids          += Array(n['notified_ids'])
-      when 'Invitation'    then self.invitation_emails += Array(n['id'])
+      when 'FormalGroup', 'User' then self.user_ids          += Array(n['notified_ids'])
+      when 'Invitation'          then self.invitation_emails += Array(n['id'])
       end
     end
   end

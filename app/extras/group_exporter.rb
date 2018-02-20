@@ -1,4 +1,6 @@
 class GroupExporter
+  attr_accessor :group
+
   EXPORT_MODELS = {
     formal_groups: %w[id key name description created_at],
     memberships:   %w[group_id user_id user_name admin created_at],

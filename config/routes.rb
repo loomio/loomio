@@ -174,7 +174,7 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
-    resources :announcements, only: :create do
+    resources :announcements, only: [:index, :create] do
       get :notified, on: :collection
       get :notified_default, on: :collection
     end
@@ -294,4 +294,6 @@ Loomio::Application.routes.draw do
     post :participate,                    to: 'identities/slack#participate', as: :slack_participate
     post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
   end
+
+  get ":id", to: 'groups#show', as: :group_handle
 end

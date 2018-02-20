@@ -1,7 +1,9 @@
 .announcement-form
-  %p.announcement-form__help.md-caption
-    %span.announcement-help__collapsed-body{translate: "announcement.form.helptext"}>
-    %learn_more{title: "announcement.form.helptext_title", nuggets: "nuggets"}
+  %p.announcement-form__help.lmo-hint-text{translate: "announcement.form.{{announcement.modelName()}}_helptext"}>
+
+  %p.lmo-hint-text{ng-if: "relevantDiscussion()"}
+    %span{translate: "announcement.form.relevant_discussion_helptext", translate-value-title: "{{relevantDiscussion().title}}"}>
+    %a.lmo-pointer{ng-click: "inviteToDiscussion()", translate: "announcement.form.invite_to_discussion"}>
 
   %label.announcement-form__label{translate: "announcement.form.label"}
   %md-chips.announcement-form__chips{ng-model: "announcement.notified", md-require-match: "true"}
@@ -14,6 +16,15 @@
         %announcement_chip{md-menu-origin: "true", ng-click: "$mdMenu.open($event)", chip: "$chip"}
         %md-menu-content.announcement-form__menu-content
           %announcement_group_form{notified: "$chip"}
-  .lmo-md-action
+  .lmo-md-actions
+    %div{ng-if: "listShown || announcement.recipients().length == 0"}
+    %p.md-caption{ng-if: "!listShown && announcement.recipients().length > 0", ng-switch: "announcement.recipients().length"}
+      %span{ng-switch-when: "1", translate: "announcement.form.previously_notified_singular"}>
+      %span{ng-switch-default: "true", translate: "announcement.form.previously_notified", translate-value-count: "{{announcement.recipients().length}}"}>
+      %a.lmo-pointer{ng-click: "showList()", translate: "common.action.view_all"}
+    %p.md-caption{ng-if: "announcement.model.announcementsCount > 0", translate: "announcement.form.previously_notified"}
+    %div{ng-if: "announcement.recipients().length == 0"}
     %p.md-caption{ng-if: "announcement.totalNotified() == 1", translate: "announcement.form.notified_count_singular"}
     %p.md-caption{ng-if: "announcement.totalNotified() != 1", translate: "announcement.form.notified_count", translate-value-count: "{{announcement.totalNotified()}}"}
+
+  %announcement_list{ng-if: "listShown", model: "announcement.model()"}

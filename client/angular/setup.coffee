@@ -42,7 +42,9 @@ setupAngularEventBus = ->
   EventBus.setBroadcastMethod (scope, event, opts...) ->
     scope.$broadcast event, opts... if typeof scope.$broadcast is 'function'
   EventBus.setListenMethod (scope, event, fn) ->
-    scope.$on event, fn             if typeof scope.$on is 'function'
+    scope["#{event}Listener"] = scope.$on event, fn if typeof scope.$on is 'function'
+  EventBus.setDeafenMethod (scope, event) ->
+    scope["#{event}Listener"]()     if typeof scope["#{eventListener}"] is 'function'
   EventBus.setWatchMethod (scope, fields, fn, watchObj = false) ->
     scope.$watch fields, fn, watchObj
 

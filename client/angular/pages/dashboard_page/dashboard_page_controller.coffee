@@ -2,6 +2,7 @@ AppConfig          = require 'shared/services/app_config.coffee'
 Records            = require 'shared/services/records.coffee'
 Session            = require 'shared/services/session.coffee'
 EventBus           = require 'shared/services/event_bus.coffee'
+AbilityService     = require 'shared/services/ability_service.coffee'
 RecordLoader       = require 'shared/services/record_loader.coffee'
 ThreadQueryService = require 'shared/services/thread_query_service.coffee'
 ModalService       = require 'shared/services/modal_service.coffee'
@@ -72,6 +73,7 @@ $controller = ($rootScope, $routeParams, $mdMedia) ->
   @loader.fetchRecords().then => @dashboardLoaded = true
 
   @noGroups        = -> !Session.user().hasAnyGroups()
+  @promptStart     = -> !Session.user().hasAnyGroups() && AbilityService.canStartGroups()
   @noThreads       = -> _.all @views, (view) -> !view.any()
   @startGroup      = -> ModalService.open 'GroupModal', group: -> Records.groups.build()
   @userHasMuted    = -> Session.user().hasExperienced("mutingThread")

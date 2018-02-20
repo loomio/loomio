@@ -99,6 +99,7 @@ module.exports =
         @currentUpload.responseType = 'json'
         @currentUpload.addEventListener 'load', =>
           if (@currentUpload.status >= 200 && @currentUpload.status < 300)
+            @currentUpload.response = JSON.parse(@currentUpload.response) if _.isString(@currentUpload.response)
             @onUploadSuccess(@currentUpload.response)
             resolve(@currentUpload.response)
             @currentUpload = null

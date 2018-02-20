@@ -1,4 +1,9 @@
 class API::AnnouncementsController < API::RestfulController
+  def index
+    instantiate_collection
+    respond_with_collection scope: index_scope
+  end
+
   def notified
     self.collection = Queries::Notified::Search.new(params.require(:q), current_user).results
     respond_with_collection serializer: NotifiedSerializer, root: false
@@ -10,6 +15,17 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   private
+
+  def index_scope
+    {
+      users:       User.where(id: resources_to_serialize.map(&:user_ids).flatten),
+      invitations: Invitation.where(id: resources_to_serialize.map(&:invitation_ids).flatten)
+    }
+  end
+
+  def accessible_records
+    model_to_notify.announcements
+  end
 
   def model_to_notify
     load_and_authorize(:poll, optional: true)       ||

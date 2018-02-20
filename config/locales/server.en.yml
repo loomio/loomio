@@ -33,14 +33,6 @@ en:
     error:
       too_short: Please make a selection
 
-  user:
-    error:
-      username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
-
-  user:
-    error:
-      username_must_be_alphanumeric: Username must contain only lowercase letters and digits.
-
   invitation:
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
     invitation_already_used: This invitation has already been used. Please sign in to loomio directly to continue to your group.
@@ -135,6 +127,7 @@ en:
       thanks_for_reading: Thanks for reading, have a great day!
       heres_what_happened: "Here’s what happened on %{site_name} yesterday."
       marked_as_read_success: Everything from the email has been marked as read
+      click_here: Click here
 
     group_membership_approved:
       intro: "Your request for access to the group %{group_name} has been approved."
@@ -153,6 +146,10 @@ en:
     unfollowed_discussion: You have turned off emails for the thread.
 
   discussion_mailer:
+    discussion_edited:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> edited the thread: %{discussion}"
+
     discussion_announced:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> shared a thread: %{discussion}"

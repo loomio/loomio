@@ -29,7 +29,8 @@ describe 'announcements', ->
       page.click '.action-dock__button--announce_thread'
       page.expectElement '.announcement-form'
       page.fillIn 'md-autocomplete input', 'jenn'
-      page.click '.announcement-chip'
+      browser.driver.sleep(1000)
+      page.click '.md-autocomplete-suggestions li'
       page.expectText '.announcement-form__chips', 'Jennifer Grey'
       page.click '.announcement-form__submit'
       page.expectFlash '1 notifications sent'
@@ -51,9 +52,9 @@ describe 'announcements', ->
       page.fillIn '.poll-common-form-fields__title', 'Yo reliability, whatsup? Its me, ya boi, testing'
       page.click '.poll-common-form__submit'
       page.expectElement '.announcement-form'
-      page.expectText '.announcement-form__chips', 'Dirty Dancing Shoes'
+      page.expectElement '.announcement-form__chips'
       page.click '.announcement-form__submit'
-      page.expectFlash '2 notifications sent'
+      page.expectFlash '1 notifications sent'
 
     it 'outcome_created', ->
       page.loadPath 'polls/test_proposal_poll_closed'
@@ -63,7 +64,8 @@ describe 'announcements', ->
       page.expectFlash 'Outcome created'
       page.expectElement '.announcement-form'
       page.fillIn 'md-autocomplete input', 'test@example.com'
-      page.click '.announcement-chip'
+      browser.driver.sleep(1000)
+      page.click '.md-autocomplete-suggestions li'
       page.expectText '.announcement-form__chips', 'test@example.com'
       page.click '.announcement-form__submit'
       page.expectFlash '1 notifications sent'

@@ -143,14 +143,7 @@ class Poll < ApplicationRecord
   end
 
   def group_members
-    User.joins(:memberships)
-        .joins(:groups)
-        .where("memberships.group_id": group_id)
-        .where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
-  end
-
-  def members
-    User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
+    super.joins(:groups).where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
   end
 
   def undecided

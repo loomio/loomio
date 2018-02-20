@@ -1,7 +1,7 @@
 class DiscussionMailer < BaseMailer
   layout 'discussion_mailer'
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
-  %w(new_discussion discussion_announced new_comment user_mentioned comment_replied_to).each do |action|
+  %w(new_discussion discussion_edited discussion_announced new_comment user_mentioned comment_replied_to).each do |action|
     define_method action, ->(recipient, event) { send_thread_email(recipient, event, action) }
   end
 

@@ -47,6 +47,13 @@ describe API::AnnouncementsController do
         expect(a.users).to include a_third_user
         expect(a.users).to include a_fourth_user
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
+
+        expect(another_user.can?(:show, poll)).to eq true
+        expect(a_third_user.can?(:show, poll)).to eq true
+        expect(a_fourth_user.can?(:show, poll)).to eq true
+        expect(another_user.can?(:vote_in, poll)).to eq true
+        expect(a_third_user.can?(:vote_in, poll)).to eq true
+        expect(a_fourth_user.can?(:vote_in, poll)).to eq true
       end
 
       it 'soft creates a poll_announced event if none is given' do
@@ -128,6 +135,10 @@ describe API::AnnouncementsController do
         expect(a.users).to include a_third_user
         expect(a.users).to include a_fourth_user
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
+
+        expect(another_user.can?(:show, outcome)).to eq true
+        expect(a_third_user.can?(:show, outcome)).to eq true
+        expect(a_fourth_user.can?(:show, outcome)).to eq true
       end
 
       it 'soft creates an outcome_announced event if none is given' do
@@ -160,6 +171,10 @@ describe API::AnnouncementsController do
         expect(a.users).to include a_third_user
         expect(a.users).to include a_fourth_user
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
+
+        expect(another_user.can?(:show, discussion)).to eq true
+        expect(a_third_user.can?(:show, discussion)).to eq true
+        expect(a_fourth_user.can?(:show, discussion)).to eq true
       end
 
       it 'soft creates a discussion_announced event if none is given' do

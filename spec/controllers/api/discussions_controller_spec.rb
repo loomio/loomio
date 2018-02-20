@@ -198,6 +198,16 @@ describe API::DiscussionsController do
         expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id ])
       end
 
+      it 'displays discussion to guest group members' do
+        discussion.group.memberships.find_by(user: user).destroy
+        discussion.guest_group.add_member!(user)
+        get :show, params: { id: discussion.key }
+        json = JSON.parse(response.body)
+
+        expect(response.status).to eq 200
+        expect(json['discussions'][0]['id']).to eq discussion.id
+      end
+
       it 'returns the reader fields' do
         DiscussionReader.for(user: user, discussion: discussion).update(volume: :mute)
         get :show, params: { id: discussion.key }

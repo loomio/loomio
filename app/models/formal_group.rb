@@ -157,9 +157,9 @@ class FormalGroup < Group
     Array(id) | subgroup_ids
   end
 
-  def subdomain
+  def handle
     if is_subgroup?
-      parent.subdomain
+      parent.handle
     else
       super
     end

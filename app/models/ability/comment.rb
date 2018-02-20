@@ -3,11 +3,11 @@ module Ability::Comment
     super(user)
 
     can [:create], ::Comment do |comment|
-      comment.discussion && user_is_member_of?(comment.group.id)
+      comment.discussion.members.include?(user)
     end
 
     can [:update], ::Comment do |comment|
-      user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
+      comment.discussion.members.include?(user) && user_is_author_of?(comment) && comment.can_be_edited?
     end
 
     can [:destroy], ::Comment do |comment|

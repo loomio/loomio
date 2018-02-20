@@ -1,6 +1,8 @@
 AppConfig = require 'shared/services/app_config.coffee'
 Records   = require 'shared/services/records.coffee'
 I18n      = require 'shared/services/i18n.coffee'
+Raven     = require('raven-js');
+ExceptionHandler = require('shared/helpers/exception_handler.coffee')
 
 { hardReload } = require 'shared/helpers/window.coffee'
 
@@ -12,6 +14,7 @@ module.exports = new class Session
 
     return unless AppConfig.currentUserId = userId
     user = @user()
+    ExceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))
     @updateLocale()
 
     if user.timeZone != AppConfig.timeZone

@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-ruby '2.4.3'
-gem 'rails', '~> 5.1.4'
+ruby '2.5.0'
+gem 'rails', '~> 5.1.5'
 gem 'rake'
 gem 'pg', '~> 0.18.4'
 gem 'haml-rails', '~> 1.0.0'
-gem 'devise', '~> 4.3.0'
+gem 'devise', '~> 4.4.1'
 gem 'devise-i18n'
 gem 'doorkeeper', '~> 4.2.0'
 gem 'doorkeeper-i18n'
@@ -25,9 +25,9 @@ gem 'delayed_job_active_record', '~> 4.1.2'
 gem 'rinku'
 gem 'friendly_id', '~> 5.1.0'
 gem 'httparty', '~> 0.15.6'
-gem 'airbrake'
 gem 'browser', '~> 2.3.0'
 gem 'fog-aws'
+gem "sentry-raven"
 gem 'sequenced', '~> 2.0.0'
 gem 'bing_translator', '~> 5.1.0'
 gem 'http_accept_language'
@@ -56,7 +56,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'shoulda-matchers'
-  gem 'dotenv-rails', require: 'dotenv/rails-now'
+  gem 'dotenv-rails'
   gem 'database_cleaner'
   gem 'gemrat'
   gem 'derailed'
@@ -82,6 +82,7 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
+  gem 'simplecov', require: false
 end
 
 group :production do
