@@ -19,7 +19,7 @@ class Events::InvitationAccepted < Event
     if eventable.group.is_a?(FormalGroup)
       group_memberships_username_url(eventable.group, eventable.user.username)
     else
-      super
+      polymorphic_url(eventable.target_model)
     end
   end
 end
