@@ -17,6 +17,8 @@
     %link{rel: "apple-touch-icon", href: AppConfig.theme[:icon_src]}
     %link{href: client_asset_path(:"angular.min.css"), rel: 'stylesheet'}
 
+    = action_cable_meta_tag
+
     = render 'angular/metadata'
     = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
     = render 'angular/intercom' if current_user.is_logged_in?
