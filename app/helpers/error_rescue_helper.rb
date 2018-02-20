@@ -34,6 +34,6 @@ module ErrorRescueHelper
 
   def respond_with_error(message: "", status: 400)
     @error_description ||= t(message)
-    render "errors/#{status}", layout: 'error', status: status
+    render "errors/#{status}", layout: 'errors', status: status
   end
 end
