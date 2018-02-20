@@ -49,7 +49,6 @@ EventBus.configure do |config|
 
   # send memos to client side after comment change
   config.listen('comment_destroy')  { |comment|  Memos::CommentDestroyed.publish!(comment) }
-  config.listen('comment_update')   { |comment|  Memos::CommentUpdated.publish!(comment) }
   config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
 
   config.listen('new_comment_event',

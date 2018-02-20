@@ -7,8 +7,6 @@ IntercomService = require 'shared/services/intercom_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
-PrivatePub = require 'loomio_private_pub'
-
 { hardReload } = require 'shared/helpers/window.coffee'
 
 # A series of actions relating to updating the current user, such as signing in
@@ -50,6 +48,6 @@ module.exports =
           if data.memo?
             switch data.memo.kind
               when 'comment_destroyed'
-                if comment = Records.comments.find(memo.data.comment_id)
+                if comment = Records.comments.find(data.memo.data.comment_id)
                   comment.destroy()
           Records.import(data)
