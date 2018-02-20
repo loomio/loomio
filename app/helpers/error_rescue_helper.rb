@@ -32,8 +32,12 @@ module ErrorRescueHelper
     end
   end
 
+  def response_format
+    params[:format] == 'json' ? 'json' : 'html'
+  end
+
   def respond_with_error(message: "", status: 400)
     @error_description ||= t(message)
-    render "errors/#{status}", layout: 'errors', status: status
+    render "errors/#{status}", layout: 'errors', status: status, format: response_format
   end
 end
