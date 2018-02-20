@@ -218,9 +218,10 @@ Loomio::Application.routes.draw do
   end
 
 
-  get '/robots'     => 'robots#show'
-  get '/manifest'   => 'manifest#show', format: :json
-  get '/markdown'   => 'help#markdown'
+  get '/robots'         => 'robots#show'
+  get '/manifest'       => 'manifest#show',           format: :json
+  get '/service-worker' => 'manifest#service_worker', format: :js
+  get '/markdown'       => 'help#markdown'
 
   get '/start_group', to: redirect('/g/new')
 
