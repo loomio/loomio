@@ -37,9 +37,11 @@ module Ability::Poll
     end
 
     can :create, ::Poll do |poll|
-      return false unless user.email_verified?
-      return true if !poll.group.presence
-      can?(:start_poll, poll.discussion) || can?(:start_poll, poll.group)
+      user.email_verified? && (
+        !poll.group.presence ||
+        can?(:start_poll, poll.discussion) ||
+        can?(:start_poll, poll.group)
+      )
     end
 
     can [:update, :share, :remind, :destroy], ::Poll do |poll|

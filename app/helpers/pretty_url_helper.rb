@@ -24,6 +24,7 @@ module PrettyUrlHelper
     when Comment                       then comment_url(model.discussion, model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
     when Announcement                  then polymorphic_url(model.eventable, opts)
+    when Invitation                    then polymorphic_url(model.target_model, opts)
     else super
     end
   end
@@ -34,14 +35,8 @@ module PrettyUrlHelper
     when Comment, Discussion   then model.discussion.title
     when Poll, Outcome, Stance then model.poll.title
     when Announcement          then polymorphic_title(model.eventable)
-    # TODO: deal with polymorphic reactions here
-    when Reaction              then model.reactable.discussion.title
-    when Group, Membership
-      if model.group.is_a?(FormalGroup)
-        model.group.full_name
-      else
-        model.group.invitation_target.title
-      end
+    when Reaction              then model.reactable.discussion.title # TODO: deal with polymorphic reactions here
+    when Group, Membership     then model.group.full_name if model.group.is_a?(FormalGroup)
     end
   end
 

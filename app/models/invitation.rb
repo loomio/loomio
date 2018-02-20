@@ -26,7 +26,7 @@ class Invitation < ApplicationRecord
   update_counter_cache :group, :pending_invitations_count
 
   validates_presence_of :group, :intent
-  validates_inclusion_of :intent, :in => ['start_group', 'join_group', 'join_poll']
+  validates_inclusion_of :intent, in: ['join_group', 'join_discussion', 'join_poll']
   validates_exclusion_of :recipient_email, in: User::FORBIDDEN_EMAIL_ADDRESSES
   scope :chronologically, -> { order('id asc') }
   before_save :ensure_token_is_present
@@ -45,8 +45,20 @@ class Invitation < ApplicationRecord
   scope :to_unverified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS FALSE AND users.email = invitations.recipient_email") }
   scope :to_unrecognized_user, -> { pending.joins("LEFT OUTER JOIN users ON users.email = invitations.recipient_email").where("users.id IS NULL") }
 
+  def target_model
+    @target_model ||= case intent.to_sym
+    when :join_group      then group
+    when :join_discussion then Discussion.find_by(guest_group_id: group_id)
+    when :join_poll       then Poll.find_by(guest_group_id: group_id)
+    end
+  end
+
   def poll
-    group.invitation_target if intent.to_sym == :join_poll
+    target_model if intent.to_sym == :join_poll
+  end
+
+  def discussion
+    target_model if intent.to_sym == :join_poll
   end
 
   def unsubscribe_token

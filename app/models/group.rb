@@ -44,10 +44,6 @@ class Group < ApplicationRecord
     "/group-#{self.key}"
   end
 
-  def invitation_target
-    self
-  end
-
   def parent_or_self
     parent || self
   end

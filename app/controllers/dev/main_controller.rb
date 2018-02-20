@@ -388,17 +388,29 @@ class Dev::MainController < Dev::BaseController
     redirect_to group_url(create_group)
   end
 
-  def setup_sent_announcement_to_user
-    sign_in patrick
+  def setup_discussion_as_guest
+    group      = FactoryBot.create :formal_group, group_privacy: 'secret'
+    discussion = FactoryBot.build :discussion, group: group, title: "Dirty Dancing Shoes"
+    DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
+    discussion.create_guest_group
+    discussion.reload.guest_group.add_member! jennifer
+    sign_in jennifer
+
+    redirect_to discussion_url(discussion)
+  end
+
+  def setup_discussion_as_invited_email
     group      = FactoryBot.create :formal_group, group_privacy: 'secret'
     discussion = FactoryBot.build :discussion, group: group
     DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
     discussion.create_guest_group
+    invitation = discussion.reload.guest_group.invitations.create(
+      recipient_email: "ming@merciless.biz",
+      inviter: discussion.group.creator,
+      intent: :join_discussion
+    )
 
-    announcement = FactoryBot.build :announcement, user_ids: [patrick.id], event: discussion.reload.created_event
-    AnnouncementService.create announcement: announcement, actor: discussion.group.creator
-
-    redirect_to discussion_url(discussion)
+    redirect_to invitation_url(invitation)
   end
 
   def view_closed_group_with_shareable_link

@@ -13,7 +13,6 @@ module.exports = new class ThreadQueryService
 
   applyFilters = (options) ->
     return view if view = Records.discussions.collection.getDynamicView(options.name)
-    userGroupIds = Session.user().groupIds()
 
     view = Records.discussions.collection.addDynamicView(options.name)
     view.applyFind(groupId: { $in: options.group.organisationIds() })      if options.group
@@ -39,6 +38,7 @@ module.exports = new class ThreadQueryService
           when 'show_proposals' then view.applyWhere (thread) -> thread.hasDecision()
           when 'hide_proposals' then view.applyWhere (thread) -> !thread.hasDecision()
           when 'only_threads_in_my_groups'
+            userGroupIds = Session.user().groupIds()
             view.applyFind $or: [
               {guestGroupId: {$in: userGroupIds}}
               {groupId: {$in: userGroupIds}}

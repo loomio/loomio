@@ -199,6 +199,18 @@ module.exports = {
     page.expectText('.flash-root__message', 'Comment added')
   },
 
+  'allows guests to comment and view thread in dashboard': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_as_guest')
+    page.fillIn('.comment-form textarea', 'I am a guest!')
+    page.click('.comment-form__submit-button')
+    page.expectText('.flash-root__message', 'Comment added')
+
+    page.ensureSidebar()
+    page.expectText('.thread-preview__text-container', 'Dirty Dancing Shoes')
+  },
+
   'allows logged in users to request to join a closed group': (test) => {
     page = pageHelper(test)
 
