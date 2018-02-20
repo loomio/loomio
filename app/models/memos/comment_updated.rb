@@ -12,6 +12,6 @@ class Memos::CommentUpdated < Memo
   end
 
   def message_channel
-    "/discussion-#{@comment.discussion_id}"
+    "/group-#{@comment.group_id}"
   end
 end
