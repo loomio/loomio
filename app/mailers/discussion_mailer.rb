@@ -14,12 +14,10 @@ class DiscussionMailer < BaseMailer
     @event = event
     @eventable = event.eventable
     @discussion = @eventable.discussion
-    @author = @eventable.author
-    @text = @eventable.body
+    @author = @discussion.author
+    @text = @discussion.body
     @link = polymorphic_url(@eventable)
-
-
-    @following = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
+    @following = @recipient.is_logged_in? && reader_is_loud?
     @utm_hash = utm_hash
 
     headers[message_id_header] = message_id
@@ -43,5 +41,9 @@ class DiscussionMailer < BaseMailer
 
   def message_id
     "<#{@discussion.id}@#{ENV['SMTP_DOMAIN']}>"
+  end
+
+  def reader_is_loud?
+    DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
   end
 end

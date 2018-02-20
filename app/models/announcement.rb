@@ -12,6 +12,7 @@ class Announcement < ActiveRecord::Base
   delegate :poll, to: :eventable, allow_nil: true
   delegate :discussion, to: :eventable, allow_nil: true
   delegate :body, to: :eventable, allow_nil: true
+  delegate :invitation_intent, to: :eventable, allow_nil: true
   delegate :mailer, to: :eventable, allow_nil: true
 
   attr_accessor :model_id, :model_type

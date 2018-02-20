@@ -58,7 +58,7 @@ class Invitation < ApplicationRecord
   end
 
   def discussion
-    target_model if intent.to_sym == :join_poll
+    target_model if intent.to_sym == :join_discussion
   end
 
   def unsubscribe_token

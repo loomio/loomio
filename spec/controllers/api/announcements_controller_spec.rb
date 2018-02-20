@@ -97,6 +97,7 @@ describe API::AnnouncementsController do
         expect(poll.guest_group.invitation_ids).to eq a.invitation_ids
         expect(a.users).to be_empty
         expect(a.invitations.pluck(:recipient_email)).to eq [email_notified[:id]]
+        expect(a.invitations.pluck(:intent)).to eq ['join_poll']
       end
 
       it 'does not announce the same user twice' do
@@ -135,6 +136,7 @@ describe API::AnnouncementsController do
         expect(a.users).to include a_third_user
         expect(a.users).to include a_fourth_user
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
+        expect(a.invitations.pluck(:intent)).to eq ['join_poll']
 
         expect(another_user.can?(:show, outcome)).to eq true
         expect(a_third_user.can?(:show, outcome)).to eq true
@@ -218,6 +220,7 @@ describe API::AnnouncementsController do
         expect(discussion.guest_group.invitation_ids).to eq a.invitation_ids
         expect(a.users).to be_empty
         expect(a.invitations.pluck(:recipient_email)).to eq [email_notified[:id]]
+        expect(a.invitations.pluck(:intent)).to eq ['join_discussion']
       end
 
       it 'does not announce the same user twice' do

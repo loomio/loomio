@@ -34,6 +34,10 @@ module HasGuestGroup
     Invitation.where(group_id: [group_id, guest_group_id].compact)
   end
 
+  def invitation_intent
+    :"join_#{self.class.to_s.downcase}"
+  end
+
   def anyone_can_participate
     guest_group.membership_granted_upon_request?
   end

@@ -1,8 +1,10 @@
 .thread-mailer__footer
-  %img.thread-mailer__footer-image{src: email_actions_mark_discussion_as_read_url(discussion_id: @discussion.id,
-                                        event_id: @event.id,
-                                        unsubscribe_token: @recipient.unsubscribe_token,
-                                        format: 'gif'), alt: '', width: 1, height: 1}
+  - if @recipient.is_logged_in?
+    %img.thread-mailer__footer-image{src: email_actions_mark_discussion_as_read_url(discussion_id: @discussion.id,
+                                          event_id: @event.id,
+                                          unsubscribe_token: @recipient.unsubscribe_token,
+                                          format: 'gif'), alt: '', width: 1, height: 1}
+
   %p.thread-mailer__footer-links
     &mdash;
     %br

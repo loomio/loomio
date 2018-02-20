@@ -24,6 +24,7 @@ class Outcome < ApplicationRecord
   delegate :mailer, to: :poll
   delegate :guest_group, to: :poll
   delegate :members, to: :poll
+  delegate :invitation_intent, to: :poll
 
   is_mentionable on: :statement
   is_translatable on: :statement

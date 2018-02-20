@@ -11,6 +11,7 @@ class AnnouncementService
       recipient_emails: announcement.invitation_emails,
       group:            announcement.guest_group,
       inviter:          announcement.author,
+      intent:           announcement.invitation_intent,
       send_emails:      false
     ).map(&:id)
     announcement.save!
