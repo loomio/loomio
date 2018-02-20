@@ -8,7 +8,7 @@ describe API::AnnouncementsController do
   let(:group) { create :formal_group }
   let(:group_notified) {{
     id: group.id,
-    type: "Group",
+    type: "FormalGroup",
     notified_ids: [another_user.id, a_third_user.id]
   }}
   let(:user_notified) {{

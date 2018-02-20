@@ -49,14 +49,14 @@ describe Queries::VisibleDiscussions do
     end
 
     it 'shows specified groups if they are public' do
-      query = Queries::VisibleDiscussions.new(user: logged_out_user, groups: [public_discussion.group])
+      query = Queries::VisibleDiscussions.new(user: logged_out_user, group_ids: [public_discussion.group_id])
       expect(query).to include public_discussion
       expect(query).to_not include another_public_discussion
       expect(query).to_not include private_discussion
     end
 
     it 'shows nothing if no public groups are specified' do
-      query = Queries::VisibleDiscussions.new(user: logged_out_user, groups: [private_discussion.group])
+      query = Queries::VisibleDiscussions.new(user: logged_out_user, group_ids: [private_discussion.group_id])
       expect(query).to_not include public_discussion
       expect(query).to_not include another_public_discussion
       expect(query).to_not include private_discussion

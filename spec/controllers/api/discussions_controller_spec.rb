@@ -134,6 +134,7 @@ describe API::DiscussionsController do
       it 'displays guest threads' do
         sign_in user
         another_discussion.guest_group.add_member! user
+        DiscussionReader.for(user: user, discussion: another_discussion).set_volume! :normal
         get :dashboard
         json = JSON.parse(response.body)
         discussion_ids = json['discussions'].map { |d| d['id'] }
