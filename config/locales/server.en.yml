@@ -154,6 +154,10 @@ en:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> shared a thread: %{discussion}"
 
+    invitation_created:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> invited you to join the conversation: %{discussion}"
+
     new_comment:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> commented in: %{discussion}"
