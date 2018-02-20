@@ -12,9 +12,14 @@ angular.module('loomioApp').directive 'announcementForm', ->
     .finally ->
       $scope.$emit 'doneProcessing'
 
+    Records.announcements.fetchPreviousFor($scope.announcement.model())
+
     $scope.inviteToDiscussion = ->
       ModalService.open 'AnnouncementModal', announcement: ->
         Records.announcements.buildFromModel($scope.relevantDiscussion())
+
+    $scope.showList = ->
+      $scope.listShown = true
 
     $scope.relevantDiscussion = ->
       return if $scope.announcement.modelName() == 'discussion'

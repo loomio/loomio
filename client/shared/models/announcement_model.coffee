@@ -27,6 +27,9 @@ module.exports = class AnnouncementModel extends BaseModel
       eventableId:   @modelId
       eventableType: @modelType
 
+  recipients: ->
+    @model().announcementRecipients()
+
   model: ->
     if @event()
       @event().model()

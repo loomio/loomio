@@ -1,8 +1,9 @@
-BaseModel       = require 'shared/record_store/base_model.coffee'
-AppConfig       = require 'shared/services/app_config.coffee'
-HasDrafts       = require 'shared/mixins/has_drafts.coffee'
-HasDocuments    = require 'shared/mixins/has_documents.coffee'
-HasTranslations = require 'shared/mixins/has_translations.coffee'
+BaseModel        = require 'shared/record_store/base_model.coffee'
+AppConfig        = require 'shared/services/app_config.coffee'
+HasDrafts        = require 'shared/mixins/has_drafts.coffee'
+HasDocuments     = require 'shared/mixins/has_documents.coffee'
+HasTranslations  = require 'shared/mixins/has_translations.coffee'
+HasAnnouncements = require 'shared/mixins/has_announcements.coffee'
 
 module.exports = class OutcomeModel extends BaseModel
   @singular: 'outcome'
@@ -20,6 +21,7 @@ module.exports = class OutcomeModel extends BaseModel
     HasDrafts.apply @
     HasDocuments.apply @
     HasTranslations.apply @
+    HasAnnouncements.apply @
 
   relationships: ->
     @belongsTo 'author', from: 'users'

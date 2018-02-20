@@ -405,6 +405,9 @@ en:
     notified_count: '{{count}} people will be emailed'
 
   announcement:
+    list:
+      title: Shared with {{count}} people
+      title_singular: Shared with 1 person
     form:
       discussion_helptext: Add people who you'd like to join this thread. They will be able to view it and comment if they can't already.
       poll_helptext: Add people who you'd like to participate in this decision. They will gain access to this poll and be able to vote.
@@ -442,6 +445,8 @@ en:
       outcome_title: Share outcome
       label: People to notify
       placeholder: Enter groups, names, or email addresses
+      previously_notified: "Currently shared with {{count}} people"
+      previously_notified_singular: "Currently shared with 1 person"
       notified_count: '{{count}} people will be notified'
       notified_count_singular: 1 person will be notified
       group_count: '({{count}} people - click to edit)'
@@ -1238,6 +1243,7 @@ en:
     share_count: Share check
     start_poll: Start a decision
     publish_poll: Share poll
+    view_all: View all
 
   poll_common_attachment_form:
     label: Attachments

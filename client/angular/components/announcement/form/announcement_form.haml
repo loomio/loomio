@@ -16,8 +16,15 @@
         %announcement_chip{md-menu-origin: "true", ng-click: "$mdMenu.open($event)", chip: "$chip"}
         %md-menu-content.announcement-form__menu-content
           %announcement_group_form{notified: "$chip"}
-  .lmo-md-action
+  .lmo-md-actions
+    %div{ng-if: "listShown || announcement.recipients().length == 0"}
+    %p.md-caption{ng-if: "!listShown && announcement.recipients().length > 0", ng-switch: "announcement.recipients().length"}
+      %span{ng-switch-when: "1", translate: "announcement.form.previously_notified_singular"}>
+      %span{ng-switch-default: "true", translate: "announcement.form.previously_notified", translate-value-count: "{{announcement.recipients().length}}"}>
+      %a.lmo-pointer{ng-click: "showList()", translate: "common.action.view_all"}
+    %p.md-caption{ng-if: "announcement.model.announcementsCount > 0", translate: "announcement.form.previously_notified"}
+    %div{ng-if: "announcement.recipients().length == 0"}
     %p.md-caption{ng-if: "announcement.totalNotified() == 1", translate: "announcement.form.notified_count_singular"}
     %p.md-caption{ng-if: "announcement.totalNotified() != 1", translate: "announcement.form.notified_count", translate-value-count: "{{announcement.totalNotified()}}"}
 
-  %announcement_list{model: "announcement.model()"}
+  %announcement_list{ng-if: "listShown", model: "announcement.model()"}
