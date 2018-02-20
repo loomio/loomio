@@ -17,7 +17,6 @@ describe API::MembershipsController do
   }}
 
   before do
-    stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
     group.admins << user
     group.members  << user_named_biff
     group.members  << user_named_bang

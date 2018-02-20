@@ -40,6 +40,7 @@ class Comment < ApplicationRecord
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
   delegate :id, to: :group, prefix: :group
+  delegate :groups, to: :discussion
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
