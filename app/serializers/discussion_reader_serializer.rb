@@ -2,9 +2,10 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id,
+             :key,
              :discussion_reader_id,
-             :ranges_string,
-             :read_ranges_string,
+             :ranges,
+             :read_ranges,
              :last_read_at,
              :seen_by_count,
              :discussion_reader_volume,
@@ -16,12 +17,16 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
     object.discussion.created_event
   end
 
+  def key
+    object.discussion.key
+  end
+
   def id
     object.discussion_id
   end
 
-  def ranges_string
-    object.discussion.ranges_string
+  def ranges
+    object.discussion.ranges
   end
 
   def discussion_reader_id

@@ -60,7 +60,6 @@ RSpec.configure do |config|
 
     stub_request(:get,  /slack.com\/api/).to_return(status: 200, body: '{"ok": true}')
     stub_request(:post, /graph.facebook.com/).to_return(status: 200)
-    stub_request(:post, /localhost:9292\/faye/).to_return(status: 200)
     stub_request(:post, /api.cognitive.microsoft.com/).to_return(status: 200)
     stub_request(:get,  /api.microsofttranslator.com/).to_return(status: 200)
 

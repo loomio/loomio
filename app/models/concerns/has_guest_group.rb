@@ -5,6 +5,10 @@ module HasGuestGroup
     has_many :guests, through: :guest_group, source: :members
   end
 
+  def groups
+    [group, guest_group].compact
+  end
+
   def guest_group
     super || create_guest_group.tap { self.save(validate: false) }
   end
