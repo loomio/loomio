@@ -19,7 +19,7 @@ module.exports = {
   'discussion_edited': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_discussion')
+    page.loadPath('setup_announced_discussion')
     page.click('.action-dock__button--edit_thread')
     page.fillIn('.discussion-form__title-input', 'Yo reliability, whatsup? Its me, ya boi, testing')
     page.click('.discussion-form__submit')

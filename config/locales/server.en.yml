@@ -146,6 +146,10 @@ en:
     unfollowed_discussion: You have turned off emails for the thread.
 
   discussion_mailer:
+    discussion_edited:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> edited the thread: %{discussion}"
+
     discussion_announced:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> shared a thread: %{discussion}"
