@@ -93,6 +93,9 @@ describe Event do
 
   describe 'user_mentioned' do
     it 'notifies the mentioned user' do
+      # once for the group, once for the user notification
+      expect(MessageChannelService).to receive(:publish_model).twice
+
       CommentService.create(comment: comment, actor: comment.author)
       event = Events::UserMentioned.where(kind: :user_mentioned).last
       expect(event.eventable).to eq comment

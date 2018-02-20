@@ -7,6 +7,7 @@
 FROM ruby:2.5.0
 ENV REFRESHED_AT 2018-02-13
 
+RUN gem update --system
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
 
 # for postgres

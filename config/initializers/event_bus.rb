@@ -65,29 +65,22 @@ EventBus.configure do |config|
   end
 
   config.listen('event_remove_from_thread') do |event|
-    MessageChannelService.publish(
-      ActiveModel::ArraySerializer.new([event], each_serializer: Events::BaseSerializer, root: :events).as_json,
-      to: event.eventable.group
-    )
+    MessageChannelService.publish_model(event, serializer: Events::BaseSerializer)
   end
+
   config.listen('discussion_mark_as_read',
                 'discussion_dismiss',
                 'discussion_mark_as_seen') do |reader|
-    MessageChannelService.publish(
-      ActiveModel::ArraySerializer.new([reader], each_serializer: DiscussionReaderSerializer, root: :discussions).as_json,
-      to: reader.user
-    )
+    MessageChannelService.publish_data(ActiveModel::ArraySerializer.new([reader], each_serializer: DiscussionReaderSerializer, root: :discussions).as_json, to: reader.message_channel)
   end
+
   config.listen('discussion_mark_as_seen') do |reader|
-    MessageChannelService.publish(
-      ActiveModel::ArraySerializer.new([reader.discussion], each_serializer: DiscussionSerializer, root: :discussions).as_json,
-      to: reader.discussion.group
-    )
+    MessageChannelService.publish_model(reader.discussion)
   end
 
   # alert clients that notifications have been read
   config.listen('notification_viewed') do |actor|
-    MessageChannelService.publish(NotificationCollection.new(actor).serialize!, to: actor)
+    MessageChannelService.publish_data(NotificationCollection.new(actor).serialize!, to: actor.message_channel)
   end
 
   # update discussion or comment versions_count when title or description edited

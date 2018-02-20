@@ -30,11 +30,12 @@ public/img/emojis
 /fetched_plugins/
 /plugins
 
+dump.rdb
+
 client/node_modules
 client/angular/dependencies
 client/angular/templates.coffee
 client/tasks/config/plugins.yml
-
 client/tests_output
 client/angular/test/screenshots
 client/angular/test/log
