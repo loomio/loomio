@@ -601,7 +601,7 @@ fr:
       file_helptext: Ajoutez des fichiers depuis votre ordinateur ou votre mobile
     form:
       url_label: URL
-      helptext: Cliquez, collez ou déposez des fichiers ici pour les partager avec votre groupe.
+      helptext: Cliquez, collez ou déposez des fichiers ici pour les partager
       url_placeholder: par exemple « https://www.exemple.com/piecejointe.zip »
       title_helptext: Comment nommer ce document ?
       title_label: Nom
@@ -718,6 +718,7 @@ fr:
     picture_label: 'Image'
     name_label: 'Nom'
     username_label: 'Identifiant utilisateur'
+    username_helptext: 'Uniquement des lettres en minuscules et des chiffres, 30 caractères maximum'
     email_label: 'Adresse e-mail'
     short_bio_label: 'Introduction'
     locale_label: 'Langue'
@@ -797,7 +798,8 @@ fr:
     load_more: Charger plus de discussions
     mark_as_read: Marquer comme lu
     dismiss: Marquer comme lue
-    thread_dismissed: Discussion marquée comme lue.
+    thread_dismissed: Discussion ignorée
+    thread_recalled: Discussion suivie
     explain_mute:
       title: Vous n’avez pas encore ignoré de discussion.
       explanation_html: |
@@ -963,7 +965,7 @@ fr:
     description_private_title: 'a modifié titre, contexte et confidentialité de la discussion'
   contact_message_form:
     helptext: "Envie de nous contacter ? Écrivez votre message ci-dessous et nous vous répondrons rapidement."
-    contact_us_email: "(Vous pouvez toujours nous contacter sur <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
+    contact_us_email: "(Vous pouvez toujours nous contacter sur <a href=\"mailto:{{email}}\">{{email}}</a>)"
     contact_us: 'Contactez-nous'
     name_label: 'Votre nom'
     name_placeholder: 'Entrez votre nom…'
@@ -972,7 +974,7 @@ fr:
     message_label: 'Votre message'
     message_placeholder: 'Votre message…'
     send_message: 'Envoyer le Message'
-    new_contact_message: "Merci de nous avoir contacté, nous vous répondrons rapidement !"
+    new_contact_message: "Merci de nous avoir contacté, nous vous répondrons rapidement!"
   hint:
     context: 'Conseils pour l’utilisation de la zone de contexte'
     discussion: 'Conseils pour démarrer une discussion stimulante'
@@ -1192,6 +1194,7 @@ fr:
     options_placeholder: Saisissez une nouvelle option…
     no_options: Vous n’avez pas encore ajouté d’options
     closing: Fermeture
+    closed: Clôturée
     start: Démarrer
     update: Mettre à jour
     loomio_school_link: |

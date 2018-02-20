@@ -168,6 +168,7 @@ fa_IR:
   poll_common_select_group:
     loomio_group: گروه
   poll_common_form:
+    closed: بسته
     start: شروع
     update: به روز رسانی
   poll_meeting_chart_panel:

@@ -593,7 +593,6 @@ da:
     load_more: Hent flere debatter
     mark_as_read: Marker som læst
     dismiss: Dismiss
-    thread_dismissed: Thread dismissed.
     explain_mute:
       title: Det har ikke slået notifikationer fra på nogen debatter endnu.
       explanation_html: |
@@ -888,6 +887,7 @@ da:
     details: Beskrivelse
     options: Indstillinger
     closing: Lukker
+    closed: Lukket
     start: Start
     update: Opdater
   poll_proposal_form:

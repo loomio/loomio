@@ -11,6 +11,7 @@ sr_RS:
       mark_as_read: Означи као прочитано
       thanks_for_reading: Хвала на читању, пријатан дан!
       marked_as_read_success: Све еПоруке су означене као прочитане
+      click_here: Шкљоцни овде
     membership_request:
       subject: "%{who} је затражио/ла да се придружи %{which_group}"
       view_group: Овде можете одобрити или одбити захтев

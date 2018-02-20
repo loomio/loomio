@@ -35,6 +35,7 @@ sr:
       mark_as_read: Označi kao pročitano
       thanks_for_reading: Hvala na čitanju, prijatan dan!
       marked_as_read_success: Sve ePoruke su označene kao pročitane
+      click_here: Škljocni ovde
     group_membership_approved:
       intro: "Vaš zahtev za pristup grupi %{group_name} je odobren."
       intro_html: "Vaš zahtev za pristup grupi <strong>%{group_name}</strong> je odobren."
@@ -53,9 +54,6 @@ sr:
     public_groups: Javne grupe
     terms: Uslovi
     independent_install_html: '%{hostname} koristi jednu nezavisnu kopiju Lumija: <a href="http://github.com/loomio/loomio">saznaj više</a>.'
-  invitation_form:
-    error:
-      all_email_addresses_belong_to_members: "Nismo poslali pozivnice na pružene eAdrese jer one pripadaju ljudima koji su već u grupi."
   password_reset:
     reset_email_timeframe: Molim sačekajte do 5 minuta da ePoruka stigne. Ako se ne pojavi, uverite se da ste proverili i svoj spam direktorijum.
     length_restriction: Lozinke moraju biti najmanje 8 znakova duge.

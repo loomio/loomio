@@ -600,7 +600,6 @@ es:
       file_helptext: Adjunta archivos desde tu ordenador
     form:
       url_label: URL
-      helptext: Clic aquí, pega, o arrastra tus archivos para adjuntarlos
       url_placeholder: E.j. https://www.example.com/attachment.zip
       title_helptext: ¿Cómo llamamos este adjunto?
       title_label: Nombre
@@ -796,7 +795,6 @@ es:
     load_more: Cargar más hilos
     mark_as_read: Marcar como leído
     dismiss: Ignorar
-    thread_dismissed: 'Hilo ignorado '
     explain_mute:
       title: No tienes ningún hilo silenciado.
       explanation_html: |
@@ -962,7 +960,6 @@ es:
     description_private_title: 'se actualizó el título, el contexto y la privacidad del hilo '
   contact_message_form:
     helptext: "¿Quieres ponerte en contacto con el equipo de Loomio? Ingresa un mensaje debajo y te responderemos a la brevedad. "
-    contact_us_email: "(También siempre podrás contactarnos en <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>) "
     contact_us: 'Contáctanos'
     name_label: 'Tu nombre'
     name_placeholder: 'Introduce tu nombre...'
@@ -971,7 +968,6 @@ es:
     message_label: 'Tu mensaje'
     message_placeholder: 'Tu mensaje...'
     send_message: 'Enviar mensaje'
-    new_contact_message: "Gracias por contactarnos, te responderemos en breve"
   hint:
     context: 'Consejos para usar el panel de contexto'
     discussion: 'Consejos para empezar una discusión participativa'
@@ -1189,8 +1185,9 @@ es:
     details: Detalles
     options: Opciones
     options_placeholder: Ingresa una nueva opción...
-    no_options: No haz añadido ninguna opción aún
+    no_options: No has añadido ninguna opción aún
     closing: Cerrando
+    closed: 'Cerrado '
     start: Iniciar
     update: Actualizar
     loomio_school_link: |
@@ -1291,7 +1288,7 @@ es:
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
     meeting_created: Opción priorizada creada
     meeting_updated: Opción priorizada actualizada
-    no_options: "No haz añadido ninguna opción aún"
+    no_options: "No has añadido ninguna opción aún"
     add_option_placeholder: Ingresa una nueva opción
     minimum_stance_choices: Opciones para priorizar
     minimum_stance_choices_helptext: 'Número de opciones que cada persona puede priorizar '

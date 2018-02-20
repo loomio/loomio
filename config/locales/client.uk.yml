@@ -732,7 +732,6 @@ uk:
     load_more: Завантажити більше тем
     mark_as_read: Відмітити як прочитане
     dismiss: Відхилити
-    thread_dismissed: Тему відхилено.
     explain_mute:
       title: Ви поки що не вимкали жодну з тем.
       explanation_html: |
@@ -885,7 +884,6 @@ uk:
     description_private_title: 'оновити заголовок теми, контекст та конфіденційність'
   contact_message_form:
     helptext: "Бажаєте зв'язатися? Просто введіть повідомлення нижче, і ми зв'яжемось незабаром."
-    contact_us_email: "(Ви також завжди можете зв'язатися з нами за адресою <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
     contact_us: 'Контакти'
     name_label: 'Ваше ім''я'
     name_placeholder: 'Введіть ваше ім''я...'
@@ -894,7 +892,6 @@ uk:
     message_label: 'Ваше повідомлення'
     message_placeholder: 'Ваше повідомлення...'
     send_message: 'Надіслати повідомлення'
-    new_contact_message: "Дякуємо, що зв'язок; ми скоро повернемося до вас!"
   hint:
     context: 'Підказки з використання контекстної панелі'
     discussion: 'Підказки для створення активного обговорення'
@@ -1114,6 +1111,7 @@ uk:
     options_placeholder: Введіть новий варіант...
     no_options: Ви ще не додали жодних варіантів.
     closing: Закривається
+    closed: Закрита
     start: Почати
     update: Оновити
     loomio_school_link: |

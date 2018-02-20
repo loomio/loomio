@@ -2,6 +2,7 @@ ru:
   email:
     missed_yesterday:
       mark_as_read: Отметить прочитанным
+      click_here: Кликните здесь
   footer:
     about: О нас
     blog: Блог

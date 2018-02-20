@@ -43,6 +43,7 @@ da:
       mark_as_read: Marker som læst
       thanks_for_reading: Tak fordi du læste, hav en god dag!
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
+      click_here: Klik her
     group_membership_approved:
       intro: "Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt."
       intro_html: "Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt."
@@ -63,9 +64,6 @@ da:
     public_groups: Offentlige grupper
     terms: Betingelser
     independent_install_html: '%{hostname} kører en selvstændig kopi af Loomio: <a href="http://github.com/loomio/loomio">se mere her</a>.'
-  invitation_form:
-    error:
-      all_email_addresses_belong_to_members: "Der blev ikke afsendt invitationer til emailadresserne der blev angivet da de tilhører personer som allerede er medlemmer af gruppen."
   password_reset:
     reset_email_timeframe: Vent venligst i op til 5 minutter på at emailen kommer. Hvis den ikke kommer, så kontroller din spam folder.
     length_restriction: Adgangskode skal være mindst 8 tegn.

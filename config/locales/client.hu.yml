@@ -307,6 +307,7 @@ hu:
     messages:
       logo_changed: Logó frissítve.
   poll_common_form:
+    closed: Zárva
     start: Indítás
   poll_common_subscribe_form:
     subscribe: Feliratkozás

@@ -53,6 +53,7 @@ de:
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
       heres_what_happened: "Das ist gestern auf %{site_name} passiert."
       marked_as_read_success: Alles aus der eMail wurde als gelesen markiert
+      click_here: Klicke hier
     group_membership_approved:
       intro: "Deine Aufnahme-Anfrage für die Gruppe %{group_name} wurde angenommen."
       intro_html: "Deine Aufnahme-Anfrage für Gruppe <strong>%{group_name}</strong> wurde angenommen."
@@ -79,9 +80,6 @@ de:
     public_groups: Öffentliche Gruppen
     terms: Bedingungen
     independent_install_html: '%{hostname} benutzt eine unabhängige Kopie von Loomio: <a href="http://github.com/loomio/loomio"> Erfahre mehr</a>.'
-  invitation_form:
-    error:
-      all_email_addresses_belong_to_members: "Wir haben keine Einladungen an die angegebenen E-Mail-Adressen versandt, da sie Personen gehören, die bereits an der Gruppe teilnehmen."
   password_reset:
     change_your_password: Passwort ändern
     reset_email_timeframe: Es wird bis zu 5 Minuten dauern, bis die eMail Dich erreicht. Bitte prüfe gegebenenfalls auch Deinen Spam-Ordner.

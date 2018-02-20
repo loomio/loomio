@@ -102,3 +102,5 @@ an:
     invitation: 'Consellos ta redactar una buena invitación'
     proposal: 'Consellos ta redactar una propuesta clara'
     vote: 'Puetz cambiar a tuya posición en qualsiquier inte'
+  poll_common_form:
+    closed: Zarrau
