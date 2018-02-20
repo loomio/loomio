@@ -191,13 +191,13 @@ angular@1.6.9, angular@>=1.0.6, "angular@>=1.2.26 <=1.6", angular@^1.2.5:
   version "1.6.9"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.9.tgz#bc812932e18909038412d594a5990f4bb66c0619"
 
-angulartics-google-tag-manager@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/angulartics-google-tag-manager/-/angulartics-google-tag-manager-0.0.1.tgz#59e8e4a9db5d85693b7cdec81a215136b04118e9"
+angulartics-google-tag-manager-fork@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/angulartics-google-tag-manager-fork/-/angulartics-google-tag-manager-fork-0.1.1.tgz#2c441670b6b8d531ba20104e7a7e2d2abf08d670"
 
-angulartics@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/angulartics/-/angulartics-1.1.2.tgz#58fb242cebafd40a10111a3dacf87579d7cebbd0"
+angulartics@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/angulartics/-/angulartics-1.5.0.tgz#b2440a3e0426682015c1ab1497b267275714b53c"
 
 ansi-cyan@^0.1.1:
   version "0.1.1"
