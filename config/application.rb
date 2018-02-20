@@ -119,5 +119,8 @@ module Loomio
     config.action_dispatch.tld_length = (ENV['TLD_LENGTH'] || 1).to_i
 
     config.action_controller.include_all_helpers = false
+
+    # expecting something like wss://hostname/cable, defaults to wss://canonical_host/cable
+    config.action_cable.url = ENV['ACTION_CABLE_URL'] if ENV['ACTION_CABLE_URL']
   end
 end
