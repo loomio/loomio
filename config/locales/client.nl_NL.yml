@@ -759,7 +759,6 @@ nl_NL:
     load_more: Laad meer borden
     mark_as_read: Markeer als gelezen
     dismiss: Afwijzen
-    thread_dismissed: Bord afgewezen.
     explain_mute:
       title: Je hebt nog geen borden gedempt.
       explanation_html: |
@@ -917,7 +916,6 @@ nl_NL:
     description_private_title: 'de discussie titel, context en privacy bijgewerkt'
   contact_message_form:
     helptext: "Wil je contact met ons opnemen? Vul hieronder dan gewoon een bericht in en je zal kortelings van ons horen."
-    contact_us_email: "(Je kan ons ook altijd bereiken via <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>)"
     contact_us: 'Neem contact met ons op'
     name_label: 'Je naam'
     name_placeholder: 'Voer je naam in...'
@@ -926,7 +924,6 @@ nl_NL:
     message_label: 'Je bericht'
     message_placeholder: 'Jouw bericht...'
     send_message: 'Stuur bericht'
-    new_contact_message: "Bedankt om contact op te nemen; we nemen binnenkort snel contact met je op!"
   hint:
     context: 'Tips voor het gebruik van het omschrijvingenveld'
     discussion: 'Tips voor het beginnen van een boeiende discussie'
@@ -1146,6 +1143,7 @@ nl_NL:
     options_placeholder: Typ een nieuwe optie...
     no_options: Je hebt nog geen opties toegevoegd.
     closing: Sluiten
+    closed: Gesloten
     start: Starten
     update: Updaten
     loomio_school_link: |

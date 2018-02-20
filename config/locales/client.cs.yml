@@ -477,7 +477,6 @@ cs:
     load_more: Nahrát více vláken
     mark_as_read: Označit jako přečtené
     dismiss: Odmítnout
-    thread_dismissed: Vlákno odmítnuto.
     filtering:
       filter_threads: Filtrovat vlákna
       all: Aktuální vlákna
@@ -622,6 +621,7 @@ cs:
     submit: Sdílet výsledek
   poll_common_form:
     details: Podrobnosti
+    closed: Zavřená
     start: Zahájit
   poll_proposal_form:
     start_header: Vytvořit návrh

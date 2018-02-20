@@ -322,6 +322,7 @@ eo:
   poll_common_form:
     title: Titolo
     details: Detaloj
+    closed: Fermita
   poll_poll_form:
     edit_header: Redakti enketon
   poll_proposal_vote_form:

@@ -6,6 +6,7 @@ ko:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
     missed_yesterday:
       mark_as_read: 읽음으로 표시
+      click_here: 여기를 클릭하세요.
     membership_request:
       subject: "%{who}님이  %{which_group}에 가입을 요청했습니다. "
       view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.

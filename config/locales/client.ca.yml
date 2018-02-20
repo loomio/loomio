@@ -1,5 +1,12 @@
 ca:
+  reactions:
+    slight_smile: M'agrada
+    heart: Amor
+    cry: Plora
+    v: Pau
+    ok_hand: D'acord
   common:
+    you: Tu
     confirm_discard_changes: Descarteu els canvis?
     time:
       am: AM
@@ -28,7 +35,9 @@ ca:
     more_help: 'Més ajuda'
     models:
       proposal: 'Proposta'
+    copy: 'Copia'
     copied: 'Copiat al porta-retalls'
+    total: Total
     action:
       close: 'Tanca'
       save: 'Desa'
@@ -51,6 +60,17 @@ ca:
       translated: 'Traducció realitzada per Bing Translator'
       upload: 'Carrega'
       uploading: 'Carregant'
+  ordinal:
+    _1: 1r
+    _2: 2n
+    _3: 3r
+    _4: 4t
+    _5: 5è
+    _6: 6è
+    _7: 7è
+    _8: 8è
+    _9: 9è
+    _10: 10è
   devise:
     failure:
       inactive: 'Hi ha un compte desactivat associat a aquesta adreça de correu. Si voleu reactivar el compte, contacteu amb nosaltres.'
@@ -193,6 +213,8 @@ ca:
     started_by: 'Destacat per <strong>{{name}}</strong>'
     edited_by: 'Editat per <strong>{{name}}</strong>'
     posted: Publicat
+  reactions_display:
+    you: "Tu"
   group_page:
     messages:
       privacy:
@@ -299,6 +321,7 @@ ca:
     group: 'Grup'
     group_placeholder: 'Seleccioneu un grup'
     shareable_link: 'Enllaç per a compartir'
+    copy_link: 'Copia'
     email_addresses: 'Adreces de correu electrònic'
     email_addresses_placeholder: 'p. ex. marc@loomio.org, martina@loomio.org'
     add_custom_message: 'Creeu una invitació personal,'
@@ -391,6 +414,7 @@ ca:
     view_recent: Voleu veure totes les discussions recents?
     load_more: Carrega més discussions
     mark_as_read: Marca com a llegit
+    dismiss: Descarta
     explain_mute:
       title: Encara no teniu cap discussió silenciada.
       instructions: 'Per a silenciar una discussió, situeu-vos sobre ella i cliqueu la icona silenciar.'
@@ -570,3 +594,11 @@ ca:
     submit: Revocar accés
     messages:
       success: "'{{name}}' ja no pot utilitzar el vostre compte."
+  poll_common:
+    start_poll: Comença una decissió
+  poll_common_form:
+    closed: Tancat
+  poll_meeting_chart_panel:
+    total: Total
+  auth_form:
+    name: Nom
