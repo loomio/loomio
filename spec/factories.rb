@@ -101,7 +101,7 @@ FactoryBot.define do
     association :group, :factory => :formal_group
     title { Faker::Name.name }
     description 'A description for this discussion. Should this be *rich*?'
-    uses_markdown false
+    uses_markdown true
     private true
     after(:build) do |discussion|
       discussion.group.parent&.add_member!(discussion.author)

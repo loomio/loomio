@@ -1,34 +1,29 @@
 module EmailHelper
   include PrettyUrlHelper
 
-  def render_rich_text(text, md_boolean=true)
-    return "" if text.blank?
+  MARKDOWN_OPTIONS = [
+    no_intra_emphasis:    true,
+    tables:               true,
+    fenced_code_blocks:   true,
+    autolink:             true,
+    strikethrough:        true,
+    space_after_headers:  true,
+    superscript:          true,
+    underline:            true
+  ].freeze
 
-    if md_boolean
-      options = [
-        :no_intra_emphasis   => true,
-        :tables              => true,
-        :fenced_code_blocks  => true,
-        :autolink            => true,
-        :strikethrough       => true,
-        :space_after_headers => true,
-        :superscript         => true,
-        :underline           => true
-      ]
+  def render_rich_text(text)
+    return "" unless text
+    Redcarpet::Render::SmartyPants.render(emojify markdownify text).html_safe
+  end
 
-      renderer = Redcarpet::Render::HTML.new(
-        :filter_html         => true,
-        :hard_wrap           => true,
-        :link_attributes     => {target: '_blank'}
-        )
-      markdown = Redcarpet::Markdown.new(renderer, *options)
-      output = markdown.render(text)
-    else
-      output = Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"')
-    end
+  def emojify(text)
+    Emojifier.emojify!(text)
+  end
 
-    output = Emojifier.emojify!(output)
-    Redcarpet::Render::SmartyPants.render(output).html_safe
+  def markdownify(text)
+    renderer = Redcarpet::Render::HTML.new(filter_html: true, hard_wrap: true, link_attributes: {target: :_blank})
+    Redcarpet::Markdown.new(renderer, *MARKDOWN_OPTIONS).render(text)
   end
 
   def reply_to_address(discussion: , user: )

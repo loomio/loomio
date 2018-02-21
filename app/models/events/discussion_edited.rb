@@ -1,4 +1,5 @@
 class Events::DiscussionEdited < Event
+  include Events::LiveUpdate
   def self.publish!(discussion, editor)
     version = discussion.versions.last
     create(kind: "discussion_edited",
