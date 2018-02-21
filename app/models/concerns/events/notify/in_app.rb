@@ -65,8 +65,6 @@ module Events::Notify::InApp
   end
 
   def notification_poll_type
-    case eventable
-    when Poll, Outcome, Stance then eventable.poll.poll_type
-    end
+    eventable.poll_type if eventable.respond_to?(:poll_type)
   end
 end

@@ -10,7 +10,6 @@ class Announcement < ActiveRecord::Base
   delegate :update_announcements_count, to: :eventable, allow_nil: true
   delegate :group, to: :eventable, allow_nil: true
   delegate :poll, to: :eventable, allow_nil: true
-  delegate :poll_type, to: :poll, allow_nil: true
   delegate :discussion, to: :eventable, allow_nil: true
   delegate :body, to: :eventable, allow_nil: true
   delegate :invitation_intent, to: :eventable, allow_nil: true
@@ -23,6 +22,10 @@ class Announcement < ActiveRecord::Base
 
   alias :user :author
   attr_accessor :invitation_emails
+
+  def poll_type
+    eventable.poll&.poll_type if eventable.respond_to?(:poll)
+  end
 
   def guest_users
     users.where.not(id: group&.members)

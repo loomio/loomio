@@ -15,6 +15,7 @@ class Outcome < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
 
   delegate :title, to: :poll
+  delegate :poll_type, to: :poll
   delegate :dates_as_options, to: :poll
   delegate :group, to: :poll
   delegate :group_id, to: :poll
