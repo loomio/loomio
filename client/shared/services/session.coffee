@@ -1,8 +1,9 @@
-AppConfig = require 'shared/services/app_config.coffee'
-Records   = require 'shared/services/records.coffee'
-I18n      = require 'shared/services/i18n.coffee'
-Raven     = require('raven-js');
-ExceptionHandler = require('shared/helpers/exception_handler.coffee')
+AppConfig     = require 'shared/services/app_config.coffee'
+Records       = require 'shared/services/records.coffee'
+I18n          = require 'shared/services/i18n.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+
+exceptionHandler = require 'shared/helpers/exception_handler.coffee'
 
 { hardReload } = require 'shared/helpers/window.coffee'
 
@@ -14,7 +15,7 @@ module.exports = new class Session
 
     return unless AppConfig.currentUserId = userId
     user = @user()
-    ExceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))
+    exceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))
     @updateLocale()
 
     if user.timeZone != AppConfig.timeZone
@@ -22,6 +23,9 @@ module.exports = new class Session
       Records.users.updateProfile(user)
 
     user
+
+  invitation: ->
+    Records.invitations.find(token: LmoUrlService.params().invitation_token)[0] or Records.invitations.build()
 
   signOut: ->
     AppConfig.loggingOut = true

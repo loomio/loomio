@@ -1,6 +1,7 @@
-AppConfig = require 'shared/services/app_config.coffee'
-Records   = require 'shared/services/records.coffee'
-Session   = require 'shared/services/session.coffee'
+AppConfig     = require 'shared/services/app_config.coffee'
+Records       = require 'shared/services/records.coffee'
+Session       = require 'shared/services/session.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 module.exports = new class AbilityService
 
@@ -42,8 +43,10 @@ module.exports = new class AbilityService
     (poll.discussion() and @canParticipateInGroup(poll.discussion().guestGroup()))
 
   canParticipateInGroup: (group) ->
+    return false unless group
     Session.user().isAdminOf(group) or
-    (Session.user().isMemberOf(group) and group.membersCanRaiseMotions)
+    (Session.user().isMemberOf(group) and group.membersCanRaiseMotions) or
+    Session.invitation().group() == group
 
   canReactToPoll: (poll) ->
     @isEmailVerified() and @canParticipateInPoll(poll)
