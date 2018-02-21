@@ -10,29 +10,21 @@ class DiscussionMailer < BaseMailer
   def send_thread_email(recipient, event)
     return if recipient == User.helper_bot
 
-    @recipient = recipient
-    @event = event
-    @eventable = event.eventable
-    @discussion = @eventable.discussion
-    @author = @discussion.author
-    @text = @discussion.body
-    @link = polymorphic_url(@eventable)
-    @following = @recipient.is_logged_in? && reader_is_loud?
-    @utm_hash = utm_hash
+    @info = DiscussionEmailInfo.new(recipient: recipient, event: event, action_name: action_name)
 
     headers[message_id_header] = message_id
     headers['Precedence'] = 'bulk'
     headers['X-Auto-Response-Suppress'] = 'OOF'
     headers['Auto-Submitted'] = 'auto-generated'
 
-    send_single_mail  to: @recipient.email,
-                      from: from_user_via_loomio(@author),
-                      reply_to: reply_to_address_with_group_name(discussion: @discussion, user: @recipient),
+    send_single_mail  to: @info.recipient.email,
+                      from: from_user_via_loomio(@info.actor),
+                      reply_to: reply_to_address_with_group_name(discussion: @info.discussion, user: @info.recipient),
                       subject_key: "discussion_mailer.#{action_name}.subject",
-                      subject_params: { actor: @author.name,
-                                        group: @discussion.group.full_name,
-                                        discussion: @discussion.title },
-                      locale: @recipient.locale
+                      subject_params: { actor: @info.actor.name,
+                                        group: @info.discussion.group.full_name,
+                                        discussion: @info.discussion.title },
+                      locale: @info.recipient.locale
   end
 
   def message_id_header
@@ -40,10 +32,6 @@ class DiscussionMailer < BaseMailer
   end
 
   def message_id
-    "<#{@discussion.id}@#{ENV['SMTP_DOMAIN']}>"
-  end
-
-  def reader_is_loud?
-    DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
+    "<#{@info.discussion.id}@#{ENV['SMTP_DOMAIN']}>"
   end
 end

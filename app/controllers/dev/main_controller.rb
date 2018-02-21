@@ -11,6 +11,13 @@ class Dev::MainController < Dev::BaseController
     :sign_in_as_jennifer
   ]
 
+  skip_around_action :dont_send_emails, only: [
+    :setup_discussion_mailer_new_discussion_email,
+    :setup_discussion_mailer_new_comment_email,
+    :setup_discussion_mailer_user_mentioned_email,
+    :setup_accounts_merged_email
+  ]
+
   def index
     @routes = self.class.action_methods.select do |action|
       action.starts_with?('setup') || action.starts_with?('view')

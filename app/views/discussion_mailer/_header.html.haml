@@ -1,4 +1,4 @@
 %table.thread-mailer__subject
   %tr
-    %td= render 'avatar', user: @author
-    %td= t(:"discussion_mailer.#{action_name}.subject_html", actor: @author.name, discussion: link_to(@discussion.title, @link))
+    %td= render 'avatar', user: @info.actor
+    %td= t(:"discussion_mailer.#{@info.action_name}.subject_html", actor: @info.actor.name, discussion: link_to(@info.discussion.title, @info.links[:eventable]))
