@@ -8,6 +8,10 @@ module HasGuestGroup
     attr_accessor :update_anyone_can_participate_value
   end
 
+  def groups
+    [group, guest_group].compact
+  end
+
   def guest_group
     super || create_guest_group.tap { self.save(validate: false) }
   end

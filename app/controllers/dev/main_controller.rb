@@ -3,13 +3,24 @@ class Dev::MainController < Dev::BaseController
   include Dev::NintiesMoviesHelper
   include PrettyUrlHelper
 
-  before_action :cleanup_database, except: [:last_email, :use_last_login_token, :index, :accept_last_invitation]
+  before_action :cleanup_database, except: [
+    :last_email,
+    :use_last_login_token,
+    :index,
+    :accept_last_invitation,
+    :sign_in_as_jennifer
+  ]
 
   def index
     @routes = self.class.action_methods.select do |action|
       action.starts_with?('setup') || action.starts_with?('view')
     end
     render layout: false
+  end
+
+  def sign_in_as_jennifer
+    sign_in jennifer
+    redirect_to dashboard_path
   end
 
   def setup_discussion_mailer_new_discussion_email

@@ -602,7 +602,7 @@ zh_TW:
       file_helptext: 從您的電腦上傳檔案
     form:
       url_label: URL
-      helptext: 點選此處，貼上或拖曳檔案以上傳
+      helptext: 點選這裡、貼上或是拖曳檔案以上傳
       url_placeholder: 例如：https://www.example.com/attachment.zip
       title_helptext: 我們應該叫這個附件什麼名字？
       title_label: 名稱
@@ -719,6 +719,7 @@ zh_TW:
     picture_label: '照片'
     name_label: '名字'
     username_label: '使用者名稱'
+    username_helptext: '全部的小寫字母與數字，最多 30 個字元'
     email_label: '電子郵件'
     short_bio_label: '簡介'
     locale_label: '語言'
@@ -798,7 +799,8 @@ zh_TW:
     load_more: 載入更多討論串
     mark_as_read: 設為已讀
     dismiss: 暫時忽略
-    thread_dismissed: 討論串已暫時忽略。
+    thread_dismissed: 討論串已忽略
+    thread_recalled: 討論串已收回
     explain_mute:
       title: 您尚未靜音任何討論串。
       explanation_html: |
@@ -964,7 +966,7 @@ zh_TW:
     description_private_title: '更新討論串標題、內容與隱私設定'
   contact_message_form:
     helptext: "想要取得聯繫？只要在下面輸入訊息，您將會很快就收到我們的消息。"
-    contact_us_email: "（您也可以透過 <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a> 隨時與我們聯繫）"
+    contact_us_email: "（您也可以透過 <a href=\"mailto:{{email}}\">{{email}}</a> 隨時與我們聯繫）"
     contact_us: '聯絡我們'
     name_label: '您的大名'
     name_placeholder: '輸入您的大名...'
@@ -973,7 +975,7 @@ zh_TW:
     message_label: '您的訊息'
     message_placeholder: '您的訊息...'
     send_message: '寄送訊息'
-    new_contact_message: "感謝您與我們聯繫；我們很快就會回覆！"
+    new_contact_message: "感謝您聯絡我們；我們會盡快回覆您！"
   hint:
     context: '使用論述控制板的小提示'
     discussion: '發起一段激動人心討論的小提示'
@@ -1193,6 +1195,7 @@ zh_TW:
     options_placeholder: 輸入新選項...
     no_options: 您尚未新增任何選項。
     closing: 定案
+    closed: 封閉
     start: 啟動
     update: 更新
     loomio_school_link: |

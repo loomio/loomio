@@ -21,9 +21,6 @@ nl_NL:
   stance:
     error:
       too_short: Gelieve een selectie te maken
-  user:
-    error:
-      username_must_be_alphanumeric: De gebruikersnaam mag enkel kleine letters en nummers bevatten
   invitation:
     invitation_cancelled: Sorry, deze uitnodiging is door de groepscoördinator ingetrokken. Gelieve opnieuw een uitnoding aan te vragen bij je groep.
     invitation_already_used: Deze uitnodiging is al gebruikt geweest. Gelieve rechtstreeks in te loggen op Loomio om verder te gaan naar je groep.
@@ -110,6 +107,7 @@ nl_NL:
       thanks_for_reading: Bedankt voor het lezen, een fijne dag toegewenst!
       heres_what_happened: "Dit gebeurde er gisteren op %{site_name}."
       marked_as_read_success: Alles uit de e-mail werd gemarkeerd als gelezen
+      click_here: Klik hier
     group_membership_approved:
       intro: "Je verzoek om toegang tot de groep %{group_name} is goedgekeurd."
       intro_html: "Je verzoek om toegang tot de groep <strong>%{group_name}</strong> is goedgekeurd."
@@ -153,7 +151,6 @@ nl_NL:
     error:
       too_many_pending: "Je hebt meer dan het toegelaten maximum aantal uitnodigingen in afwachting voor deze groep, zijnde %{count}"
       too_many_cancelled: "Je hebt meer dan het toegelaten maximum aantal geweigerde uitnodigingen voor deze groep, zijnde %{count}"
-      all_email_addresses_belong_to_members: "We hebben geen uitnodigingen naar de opgegeven e-mailadressen verstuurd omdat deze bij mensen horen die al in de groep zitten."
   password_reset:
     change_your_password: Verander je wachtwoord
     change_my_password: Wachtwoord veranderen

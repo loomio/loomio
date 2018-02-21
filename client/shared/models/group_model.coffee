@@ -150,7 +150,7 @@ module.exports = class GroupModel extends BaseModel
     else if @isSubgroup()
       @parent().logoUrl()
     else
-      AppConfig.theme.default_group_logo_src
+      AppConfig.theme.icon_src
 
   coverUrl: (size) ->
     if @isSubgroup() && !@hasCustomCover

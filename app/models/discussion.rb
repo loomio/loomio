@@ -88,6 +88,10 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
+  def groups
+    Array(group)
+  end
+
   def created_event_kind
     :new_discussion
   end

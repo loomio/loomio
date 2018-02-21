@@ -72,6 +72,10 @@ class Poll < ApplicationRecord
 
   delegate :locale, to: :author
 
+  def groups
+    [group, guest_group].compact
+  end
+
   def undecided_count
     undecided_user_count + guest_group.pending_invitations_count
   end

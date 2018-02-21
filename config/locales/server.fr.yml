@@ -10,6 +10,10 @@ fr:
     messages:
       email: Ceci n'est pas une adresse e-mail correcte
       spoofed_media_type: Les contenus de ce fichier ne correspondent pas à son nom
+  user:
+    error:
+      recaptcha: "Nous n'avons pas pu confirmer que vous n'êtes pas un robot. Merci de réessayer!"
+      username_must_be_alphanumeric: "Les identifiants doivent être composés uniquement de lettre en minuscules et/ou de chiffres"
   attachment:
     error:
       too_large: Le fichier que vous essayez de joindre fait plus de 100 Mo, merci de choisir un fichier plus petit.
@@ -21,9 +25,6 @@ fr:
   stance:
     error:
       too_short: Merci de faire une sélection
-  user:
-    error:
-      username_must_be_alphanumeric: Le nom d'utilisateur doit contenir seulement des lettres en minuscules et des chiffres.
   invitation:
     invitation_cancelled: Désolé, cette invitation a été annulée. Merci de demander une autre invitation à ce groupe.
     invitation_already_used: Cette invitation a déjà été utilisée. Merci de vous connecter pour accéder à votre groupe.
@@ -110,6 +111,7 @@ fr:
       thanks_for_reading: Merci pour votre lecture, passez une bonne journée !
       heres_what_happened: "Voici ce qui s’est passé hier sur %{site_name}."
       marked_as_read_success: Tout le contenu de ce courriel a été marqué comme lu
+      click_here: Cliquer ici
     group_membership_approved:
       intro: "Votre demande d'accès au groupe %{group_name} a été acceptée."
       intro_html: "Votre demande d'accès au groupe <strong>%{group_name}</strong>  a été acceptée."
@@ -153,7 +155,7 @@ fr:
     error:
       too_many_pending: "Vous dépassez le maximum de %{count}invitations en attente pour ce groupe"
       too_many_cancelled: "Vous avez dépassé le maximum de %{count} invitations annulées pour ce groupe"
-      all_email_addresses_belong_to_members: "Nous n’avons pas envoyé d’invitation aux adresses de courriel fournies, car elles appartiennent à des personnes qui sont déjà dans le groupe."
+      all_email_addresses_belong_to_members: "Ces personnes appartiennent déjà au groupe."
   password_reset:
     change_your_password: Modifiez votre mot de passe
     change_my_password: Modifier le mot de passe
@@ -182,7 +184,7 @@ fr:
 
       Pour commencer sur Loomio :
       1. Chargez une [photo de profil](/profile)
-      2. Présentez-vous dans le [fil de bienvenue](%{thread_url})
+      2. Présentez-vous dans le [fil de bienvenue]%{thread_url})
       3. Postez sur les fils existants, ou créez-en un nouveau
 
       Conseils pour poster sur Loomio :
@@ -530,15 +532,3 @@ fr:
     initiate: |
       Ok, allons-y! <%{url}|Cliques ici pour commencer votre %{type}>.
       (NB: ceci sera posté sur cette chaîne, pour que tout le monde puisse participer)
-    slash_command_help: |
-      Saisissez juste un type de décision et une question, on s'occupera du reste.
-      Vous pouvez choisir entre ces types de décisions:
-      'proposal': cherchez l'accord collectif
-      'count': suivez la participation et trouvez des volontaires
-      'poll': Mesurez une opinion ou proposez un choix
-      'dot vote': Priorisez des options
-      'meeting': Trouvez un moment pour se réunir
-
-      Par exemple:
-      /loomio count Qui vient à la fête dimanche?
-      pour commencer un nouveau décompte.

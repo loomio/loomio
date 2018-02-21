@@ -8,7 +8,7 @@ module.exports = class OauthApplicationModel extends BaseModel
   @serializableAttributes: AppConfig.permittedParams.oauth_application
 
   defaultValues: ->
-    logoUrl: AppConfig.theme.default_group_logo_src
+    logoUrl: AppConfig.theme.icon_src
 
   redirectUriArray: ->
     @redirectUri.split("\n")

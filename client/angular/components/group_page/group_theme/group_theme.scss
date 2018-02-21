@@ -40,7 +40,8 @@
   top: 215px;
   width: 108px;
   height: 108px;
-  background: url('http://placehold.it/100x100') no-repeat top center white;
+  background-size: contain;
+  background-color: white;
   border: 4px solid #fff;
   &:hover .group-theme__upload-photo {
     button { background: $background-transparent-color; }

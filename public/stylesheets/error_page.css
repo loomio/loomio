@@ -14,10 +14,9 @@ h1 {
 }
 
 #header {
-    background-image: url("/theme/large_logo.png");
+    background-image: url("/theme/logo_128h.png");
     background-repeat: no-repeat;
-    height: 150px;
-    text-indent: -999em;
+    height: 64px;
 }
 
 .content {

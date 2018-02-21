@@ -1,3 +1,5 @@
+ActionCable = require 'actioncable'
+
 Routes         = require 'angular/routes.coffee'
 AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
@@ -18,6 +20,7 @@ module.exports =
   setupAngular: ($rootScope, $injector) ->
     setupAngularScroll()
     setupAngularEventBus()
+    setupAngularLiveUpdate()
     setupAngularPaste($rootScope)
     setupAngularHotkeys($rootScope)
     setupAngularFlash($rootScope)
@@ -47,6 +50,9 @@ setupAngularEventBus = ->
     scope["#{event}Listener"]()     if typeof scope["#{eventListener}"] is 'function'
   EventBus.setWatchMethod (scope, fields, fn, watchObj = false) ->
     scope.$watch fields, fn, watchObj
+
+setupAngularLiveUpdate = ->
+  AppConfig.cable = ActionCable.createConsumer()
 
 setupAngularPaste = ($rootScope) ->
   window.addEventListener 'paste', (event) ->
@@ -103,6 +109,7 @@ setupAngularTranslate = ($rootScope, $translate) ->
 setupAngularDigest = ($rootScope, $injector) ->
   $browser = $injector.get('$browser')
   $timeout = $injector.get('$timeout')
+  Records.afterImport = -> $timeout -> $rootScope.$apply()
   Records.setRemoteCallbacks
     onPrepare: -> $browser.$$incOutstandingRequestCount()
     onCleanup: -> $browser.$$completeOutstandingRequest -> $timeout -> $rootScope.$apply()
