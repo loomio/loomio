@@ -30,6 +30,11 @@ module PrettyUrlHelper
     end
   end
 
+  def polymorphic_path(model, opts = {})
+    # angular router throws error if you give it a whole url
+    polymorphic_url(model, opts).sub(root_url, '')
+  end
+
   def polymorphic_title(model)
     case model
     when PaperTrail::Version   then model.item.title

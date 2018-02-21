@@ -4,16 +4,16 @@ class Events::ReactionCreated < Event
   include PrettyUrlHelper
 
   def self.publish!(reaction)
-    super reaction if reaction.reactable.is_a?(Comment)
+    super reaction, user: reaction.user
   end
 
   private
 
   def notification_recipients
-    return User.none if !comment ||                # there is no comment
-                         user == comment.author || # you liked your own comment
-                         !comment.group.memberships.find_by(user: comment.author) # the author has left the group
-    User.where(id: comment.author_id)
+    return User.none if !reactable ||                             # there is no reactable
+                         eventable.author == user ||              # you liked your own reactable
+                         !reactable.group.memberships.find_by(user: user) # the author has left the group
+    User.where(id: reactable.author_id)
   end
 
   def notification_translation_values
@@ -23,7 +23,7 @@ class Events::ReactionCreated < Event
     )
   end
 
-  def comment
-    @comment ||= eventable&.reactable
+  def reactable
+    @reactable ||= eventable&.reactable
   end
 end
