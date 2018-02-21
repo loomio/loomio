@@ -9,6 +9,7 @@ class Notification < ApplicationRecord
   validates_uniqueness_of :user_id, scope: :event_id
 
   delegate :eventable, to: :event, allow_nil: true
+  delegate :kind, to: :event, allow_nil: true
   delegate :message_channel, to: :user
 
   scope :user_mentions, -> { joins(:event).where("events.kind": :user_mentioned) }
