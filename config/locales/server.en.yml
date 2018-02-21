@@ -10,6 +10,7 @@ en:
         invalid: is not a valid value
 
   errors:
+    not_found: 404 file not found.
     messages:
       email: Not a valid email address
       spoofed_media_type: The contents of that file don't match its filename

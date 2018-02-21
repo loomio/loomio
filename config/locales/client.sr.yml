@@ -589,3 +589,5 @@ sr:
     submit: Ukini pristup
     messages:
       success: "'{{name}}' ne može više koristiti Vaš nalog."
+  poll_common_form:
+    closed: Zatvoreno

@@ -542,6 +542,7 @@ class Dev::MainController < Dev::BaseController
     create_discussion
     create_closed_discussion
     sign_in patrick
+    patrick.update(experiences: { closingThread: true })
     redirect_to group_url(create_group)
   end
 

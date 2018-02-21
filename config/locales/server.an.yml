@@ -10,6 +10,7 @@ an:
       mark_as_read: Marcar como leyiu
       thanks_for_reading: Gracias por leyer, que tiengas un buen día!
       marked_as_read_success: Tot o conteniu d''o correu ha estau marcau como leyiu
+      click_here: Fe clic aquí
     membership_request:
       subject: "%{who} ha pediu acceso a %{which_group}"
       view_group: Puetz acceptar u refusar a petición aquí

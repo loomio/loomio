@@ -751,7 +751,6 @@ it:
     load_more: Carica altre discussioni
     mark_as_read: Contrassegnato come letto
     dismiss: Ignora
-    thread_dismissed: Discussione ignorata
     explain_mute:
       title: Non hai ancora silenziato nessuna discussione
       explanation_html: |
@@ -970,6 +969,7 @@ it:
     title: Titolo
     details: Dettagli
     options: Opzioni
+    closed: Chiuso
     start: Avvio
   poll_proposal_form:
     tool_tip_expanded: |

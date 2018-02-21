@@ -137,3 +137,5 @@ sl:
     invitation: 'Nasveti za pisanje prepričljivih vabil'
     proposal: 'Nasveti za pisanje jasnih predlogov'
     vote: 'Svojo odločitev lahko spremeniš kadarkoli'
+  poll_common_form:
+    closed: Zaprto

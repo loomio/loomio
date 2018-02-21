@@ -10,6 +10,7 @@ sk:
       mark_as_read: Označiť ako prečítané
       thanks_for_reading: Vďaka za čítanie a prajeme pekný deň!
       marked_as_read_success: Všetko z emailu bolo označené ako prečítané
+      click_here: Kliknite sem
     membership_request:
       subject: "%{who} požiadal(a) o členstvo v %{which_group}"
       view_group: Môžete schváliť alebo odmietnuť žiadosť tu

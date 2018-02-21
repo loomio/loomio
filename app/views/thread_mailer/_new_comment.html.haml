@@ -8,10 +8,5 @@
           = render "avatar", user: user
     %td.content
       %b= comment.author.name
-      %br
-      - if comment.uses_markdown?
-        = render_rich_text(comment.body)
-      - else
-        = render_email_plaintext comment.body
-      - if comment.documents.any?
-        = render "thread_mailer/attachments", resource: comment
+      %p= render_rich_text comment.body
+      = render "thread_mailer/attachments", resource: comment if comment.documents.any?

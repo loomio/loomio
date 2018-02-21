@@ -402,6 +402,7 @@ pl:
     poll_title: Ankieta
     meeting_title: Ankieta datowa
   poll_common_form:
+    closed: Zamknięta
     start: Rozpocznij
     update: Zaktualizuj
   poll_meeting_chart_panel:

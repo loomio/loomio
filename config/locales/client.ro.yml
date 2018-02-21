@@ -464,6 +464,7 @@ ro:
   poll_common_notify_group:
     notify_group: Anunt
   poll_common_form:
+    closed: Inchis
     start: Incepe
   poll_poll_form:
     edit_header: Editare sondaj

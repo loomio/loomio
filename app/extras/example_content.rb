@@ -13,8 +13,7 @@ ExampleContent = Struct.new(:group) do
       title:         I18n.t('introduction_thread.title', group_name: group.name),
       description:   I18n.t('introduction_thread.description'),
       author:        helper_bot,
-      private:       !!group.discussion_private_default,
-      uses_markdown: true
+      private:       !!group.discussion_private_default
     )
   end
 
@@ -23,8 +22,7 @@ ExampleContent = Struct.new(:group) do
       author:        helper_bot,
       title:         I18n.t('how_it_works_thread.title'),
       description:   I18n.t('how_it_works_thread.description', thread_url: discussion_url(introduction_thread)),
-      private:       !!group.discussion_private_default,
-      uses_markdown: true
+      private:       !!group.discussion_private_default
     )
   end
 

@@ -5,7 +5,7 @@ module ErrorRescueHelper
     end
 
     base.rescue_from(ActiveRecord::RecordNotFound) do
-      respond_with_error message: :"error.not_found", status: 404
+      respond_with_error message: :"errors.not_found", status: 404
     end
 
     base.rescue_from(Invitation::InvitationCancelled) do
@@ -38,6 +38,6 @@ module ErrorRescueHelper
 
   def respond_with_error(message: "", status: 400)
     @error_description ||= t(message)
-    render "errors/#{status}", layout: 'errors', status: status, format: response_format
+    render "errors/#{status}", layout: 'errors', status: status, formats: response_format
   end
 end

@@ -4,12 +4,11 @@
   %title= @title
   %link{rel: :stylesheet, href: "/stylesheets/error_page.css"}
 
-%body>
+%body
   #error-container
     %a{href: "/", title: "Return Home"}
-      %h1#header Loomio
+      %h1#header=AppConfig.theme[:site_name]
     .content
       = yield
-      %a{href: "/"} Return to your home page
 
   = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
