@@ -1,4 +1,4 @@
-class AddAnnouncements < ActiveRecord::Migration
+class AddAnnouncements < ActiveRecord::Migration[4.2]
   def change
     create_table :announcements do |t|
       t.references :announceable, polymorphic: true, index: true
