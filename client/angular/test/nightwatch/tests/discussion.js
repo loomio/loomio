@@ -30,7 +30,7 @@ module.exports = {
     page.expectElement('.timeago')
   },
 
-  'can close a thread': (test) => {
+  'can close and reopen a thread': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_open_and_closed_discussions')
@@ -42,8 +42,9 @@ module.exports = {
     page.click('.thread-preview')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--close')
-    page.click('.close-explanation-modal__close-thread')
     page.expectText('.flash-root__message', 'Thread closed')
+    page.click('.flash-root__action')
+    page.expectText('.flash-root__message', 'Thread reopened')
   },
 
   'doesnt store drafts after submission': (test) => {
