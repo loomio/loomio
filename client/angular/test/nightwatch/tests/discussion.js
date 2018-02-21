@@ -208,6 +208,7 @@ module.exports = {
     page.expectText('.flash-root__message', 'Comment added')
 
     page.ensureSidebar()
+    page.click('.sidebar__list-item-button--recent')
     page.expectText('.thread-preview__text-container', 'Dirty Dancing Shoes')
   },
 
