@@ -22,7 +22,7 @@ module PrettyUrlHelper
     when Outcome                       then poll_url(model.poll, opts)
     when Stance                        then poll_url(model.poll, opts.merge(change_vote: true))
     when Comment                       then comment_url(model.discussion, model, opts)
-    when Invitation                    then invitation_url(model, opts)
+    when Invitation                    then polymorphic_url(model.target_model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
     when Announcement                  then polymorphic_url(model.eventable, opts)
     when Membership                    then polymorphic_url(model.invitation || model.group, opts)
