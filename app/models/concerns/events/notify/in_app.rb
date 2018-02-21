@@ -42,7 +42,7 @@ module Events::Notify::InApp
 
   # defines the link that clicking on the notification takes you to
   def notification_url
-    @notification_url ||= polymorphic_url(eventable)
+    @notification_url ||= polymorphic_path(eventable)
   end
 
   # defines the values that are passed to the translation for notification text
