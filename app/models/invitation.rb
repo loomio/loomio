@@ -34,6 +34,7 @@ class Invitation < ApplicationRecord
 
   delegate :name, to: :inviter, prefix: true, allow_nil: true
   delegate :body, to: :discussion, allow_nil: true
+  delegate :documents, to: :discussion, allow_nil: true
 
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
   scope :cancelled, -> { where.not(cancelled_at: nil) }

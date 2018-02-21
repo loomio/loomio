@@ -11,6 +11,7 @@ class Announcement < ActiveRecord::Base
   delegate :group, to: :eventable, allow_nil: true
   delegate :poll, to: :eventable, allow_nil: true
   delegate :discussion, to: :eventable, allow_nil: true
+  delegate :documents, to: :eventable, allow_nil: true
   delegate :body, to: :eventable, allow_nil: true
   delegate :invitation_intent, to: :eventable, allow_nil: true
   delegate :mailer, to: :eventable, allow_nil: true

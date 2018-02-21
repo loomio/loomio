@@ -4,6 +4,10 @@ class Events::AnnouncementCreated < Event
   include Events::Notify::ByInvitation
   include Events::Notify::Author
 
+  def self.publish!(announcement)
+    super announcement, user: announcement.author
+  end
+
   def calendar_invite
     eventable.eventable.respond_to?(:calendar_invite) &&
     eventable.eventable.calendar_invite

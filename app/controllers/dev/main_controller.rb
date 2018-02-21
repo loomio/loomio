@@ -15,6 +15,7 @@ class Dev::MainController < Dev::BaseController
     :setup_discussion_mailer_new_discussion_email,
     :setup_discussion_mailer_new_comment_email,
     :setup_discussion_mailer_user_mentioned_email,
+    :setup_discussion_mailer_invitation_created_email,
     :setup_accounts_merged_email
   ]
 
@@ -85,6 +86,26 @@ class Dev::MainController < Dev::BaseController
     CommentService.create(comment: @comment, actor: jennifer)
     @reply_comment = Comment.new(body: "why, hello there jen", parent: @comment, discussion: @discussion)
     CommentService.create(comment: @reply_comment, actor: patrick)
+    last_email
+  end
+
+  def setup_discussion_mailer_new_discussion_email
+    group = FactoryBot.create(:formal_group, name: "Dirty Dancing Shoes", creator: patrick)
+    group.add_admin! patrick
+    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
+    event = DiscussionService.create(discussion: discussion, actor: patrick)
+    announcement = FactoryBot.build(:announcement, user_ids: [jennifer.id], event: event)
+    AnnouncementService.create(announcement: announcement, actor: patrick)
+    last_email
+  end
+
+  def setup_discussion_mailer_invitation_created_email
+    group = FactoryBot.create(:formal_group, name: "Dirty Dancing Shoes", creator: patrick)
+    group.add_admin! patrick
+    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
+    event = DiscussionService.create(discussion: discussion, actor: patrick)
+    announcement = FactoryBot.build(:announcement, invitation_emails: ["jen@example.com"], event: event)
+    AnnouncementService.create(announcement: announcement, actor: patrick)
     last_email
   end
 

@@ -43,7 +43,7 @@ class DiscussionEmailInfo
       utm_medium: 'email',
       utm_campaign: 'discussion_mailer',
       utm_source: action_name,
-      unsubscribe_token: recipient.unsubscribe_token
+      unsubscribe_token: recipient.unsubscribe_token || "none"
     }.merge(args)
   end
 
