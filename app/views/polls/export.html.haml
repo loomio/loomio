@@ -1,0 +1,24 @@
+%h1 Export for #{@poll.title}
+%p
+  Also available in
+  = link_to "CSV", poll_export_path(@poll, format: 'csv')
+
+%table
+  %tbody
+    - @exporter.meta_table.keys.each do |key|
+      %tr
+        %td= key.to_s.humanize + ': '
+        %td= @exporter.meta_table[key].to_s
+
+= render 'export_matrix', table_title:'Stance Matrix', headers:@exporter.stance_matrix[0], data:@exporter.stance_matrix[1..-1]
+- if @poll.is_single_vote?
+  %br
+  %h2 Poll Option Support
+  - @exporter.user_reasons.keys.each do |key|
+    %h3 #{key}
+    %table
+      %tbody
+        - @exporter.user_reasons[key].each do |row|
+          %tr
+          - row.each do |field|
+            %td= field

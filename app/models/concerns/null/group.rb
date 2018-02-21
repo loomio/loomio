@@ -6,7 +6,7 @@ module Null::Group
   end
 
   def nil_methods
-    [:id, :update_polls_count, :update_closed_polls_count, :presence, :group_id, :add_member!]
+    [:name, :full_name, :id, :update_polls_count, :update_closed_polls_count, :presence, :group_id, :add_member!]
   end
 
   def none_methods

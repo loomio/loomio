@@ -1,5 +1,8 @@
 ---
 en:
+  export:
+    poll:
+      percent_voted: “%{num}/%{denom} (%{percent}) members have stated their position”
   explore:
     header: Explore public groups
 
