@@ -50,7 +50,7 @@ module Ability::Poll
     end
 
     can :export, ::Poll do |poll|
-      user_is_admin_of?(poll.group_id)
+      can?(:show, poll)
     end
   end
 end

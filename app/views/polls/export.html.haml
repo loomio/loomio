@@ -1,7 +1,11 @@
-%h1 Export for #{@poll.title}
+%h1
+  Export for #{@poll.title} (
+  = link_to "Source", poll_path(@poll)
+  )
 %p
   Also available in
   = link_to "CSV", poll_export_path(@poll, format: 'csv')
+%p
 
 %table
   %tbody
@@ -11,6 +15,7 @@
         %td= @exporter.meta_table[key].to_s
 
 = render 'export_matrix', table_title:'Stance Matrix', headers:@exporter.stance_matrix[0], data:@exporter.stance_matrix[1..-1]
+= render 'export_matrix', table_title:'Stance List', headers:@exporter.stance_list[0], data:@exporter.stance_list[1..-1]
 - if @poll.is_single_vote?
   %br
   %h2 Poll Option Support
