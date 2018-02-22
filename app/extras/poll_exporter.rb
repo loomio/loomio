@@ -6,6 +6,14 @@ class PollExporter
     @poll = poll
   end
 
+  def file_name
+    "#{@poll.title.parameterize}-export.csv"
+  end
+
+  def poll_info (current_user)
+     PollEmailInfo.new(recipient: current_user, event: @poll.created_event, action_name: :export)
+  end
+
   def meta_table
     outcome = @poll.current_outcome
     engagement = nil
@@ -93,36 +101,21 @@ class PollExporter
         stance_choice = stance.stance_choices.find {|choice| choice.poll_option.id == poll_option.id}
         row << (stance_choice&.score||0).to_s
       end
-      row << stance.reason
 
       rows << row
     end
     rows
   end
 
+
   def to_csv (opts={})
     CSV.generate do |csv|
-      # [Poll]
-      #
-      # Title
-        csv << ["Export for #{@poll.title}"]
 
         meta_table.keys.each {|key|
           csv<<[key.to_s.humanize, meta_table[key]]
         }
         csv << []
         stance_matrix.each {|row|csv<<row}
-        ## Aditional for each option show the users that have chosen and their reason
-        if(@poll.is_single_vote?)
-          csv << []
-          nametable = user_reasons
-
-          ## each option has a table
-          nametable.keys.each do |key|
-            csv << [key]
-            nametable[key].each {|row|csv<<row}
-          end
-        end
     end
   end
 end

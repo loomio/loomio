@@ -1,13 +1,17 @@
 class PollsController < ApplicationController
   include UsesMetadata
   include LoadAndAuthorize
+  include EmailHelper
+
+  helper :email
 
   def export
     @exporter = PollExporter.new(load_and_authorize(:poll, :export))
+    @info = @exporter.poll_info(current_user)
 
     respond_to do |format|
       format.html
-      format.csv { send_data @exporter.to_csv }
+      format.csv { send_data @exporter.to_csv, filename:@exporter.file_name }
     end
   end
 
