@@ -38,6 +38,11 @@ class DiscussionEmailInfo
     )
   end
 
+  def can_unfollow?
+    action_name == 'new_comment' &&
+    DiscussionReader.for(discussion: discussion, user: recipient).volume_is_loud?
+  end
+
   private
 
   def utm_hash(args = {})
@@ -51,11 +56,5 @@ class DiscussionEmailInfo
 
   def unsubscribe_token
     recipient.unsubscribe_token || 'none'
-  end
-
-  def can_unfollow?
-    recipient.is_logged_in? &&
-    action_name == 'new_comment' &&
-    DiscussionReader.for(discussion: discussion, user: recipient).volume_is_loud?
   end
 end
