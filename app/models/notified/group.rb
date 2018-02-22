@@ -16,7 +16,7 @@ class Notified::Group < Notified::Base
   end
 
   def icon_url
-    model.logo.presence&.url(:card) || AppConfig.theme[:default_group_logo_src]
+    model.logo.presence&.url(:card) || AppConfig.theme[:icon_src]
   end
 
   def notified_ids

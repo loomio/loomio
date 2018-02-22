@@ -22,9 +22,16 @@
 }
 
 .announcement-chip__avatar {
-  width: 32px;
-  height: 32px;
   margin-right: 8px;
+  &--user {
+    width: 32px;
+    height: 32px;
+  }
+  &--group {
+    width: 24px;
+    height: 24px;
+    margin: 4px;
+  }
   &--invitation {
     max-height: 36px;
     display: flex;
