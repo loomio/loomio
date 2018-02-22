@@ -2,7 +2,8 @@ module.exports =
   assetEndpoints: (version) ->
     [
       "/dashboard",
-      "/api/v1/boot/site",
+      "/manifest.json",
+      "/favicon.ico",
       "/api/v1/translations?lang=en",
       "/client/fonts/materialdesignicons-webfont.woff2?v=2.1.19",
       "/theme/default_group_logo.png",
@@ -12,10 +13,14 @@ module.exports =
       ("/client/#{version}/angular.bundle.min.js"                  if version != 'development')
     ].filter(Boolean)
 
-  cachedEndpoints: [
+  staticEndpoints: [
     /img\/emoji/
   ]
 
   networkFirstEndpoints: [
-    /api\/v1\/inbox/
+    /api\/v1\/boot\/user/,
+    /api\/v1\/boot\/site/,
+    /api\/v1\/discussions\/dashboard/,
+    /api\/v1\/discussions\/inbox/,
+    /api\/v1\/polls\/search/
   ]

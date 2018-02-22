@@ -1,9 +1,10 @@
-{ cacheEndpoints } = require './endpoints.coffee'
+{ staticEndpoints, networkFirstEndpoints } = require './endpoints.coffee'
+cachedEndpoints = staticEndpoints.concat(networkFirstEndpoints)
 
 module.exports =
   network: (cache, request) ->
     fetch(request).then (response) ->
-      if cacheEndpoints.find((url) -> request.url.match(url))
+      if cachedEndpoints.find((url) -> request.url.match(url))
         cache.put(request, response.clone())
       response
 
