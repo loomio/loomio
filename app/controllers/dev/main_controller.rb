@@ -104,6 +104,8 @@ class Dev::MainController < Dev::BaseController
     group.add_admin! patrick
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
+    comment = FactoryBot.build(:comment, discussion: discussion)
+    CommentService.create(comment: comment, actor: patrick)
     announcement = FactoryBot.build(:announcement, invitation_emails: ["jen@example.com"], event: event)
     AnnouncementService.create(announcement: announcement, actor: patrick)
     last_email

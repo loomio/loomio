@@ -54,7 +54,8 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
         $mdSidenav('left').close()
 
     $scope.groups = ->
-      Session.user().groups().concat(Session.user().orphanParents())
+      _.filter Session.user().groups().concat(Session.user().orphanParents()), (group) ->
+        group.type == "FormalGroup"
 
     $scope.currentUser = ->
       Session.user()
