@@ -50,6 +50,7 @@ module Ability::Poll
     end
 
     can :export, ::Poll do |poll|
+      #TODO: review priveledges before merge 
       can?(:show, poll)
     end
   end

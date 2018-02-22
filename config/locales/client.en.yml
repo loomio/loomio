@@ -124,6 +124,7 @@ en:
       resend: Resend
       send: Send
       resent: Invitation resent
+      export: Export
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
