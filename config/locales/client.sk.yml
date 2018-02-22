@@ -102,3 +102,5 @@ sk:
     invitation: 'Rady na napísanie neodolateľnej pozvánky'
     proposal: 'Rady na napísanie jasného návrhu'
     vote: 'Môžete kdykoľvek svoj postoj zmeniť'
+  poll_common_form:
+    closed: Uzatvorené

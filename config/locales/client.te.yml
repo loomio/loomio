@@ -69,3 +69,5 @@ te:
   registered_app_form:
     new_application_title: కొత్త ఫిర్యాదు
     name_label: పేరు
+  poll_common_form:
+    closed: మూసివేయబడింది

@@ -292,6 +292,7 @@ pt_BR:
     email_settings: 'Configurações de email'
     help: 'Ajuda'
     contact_site_name: 'Contato {{site_name}}'
+    sign_out: 'Sair'
   start_menu:
     label: 'Ações do usuário'
     title: 'Ação'
@@ -336,6 +337,7 @@ pt_BR:
     add_resource: Adicionar como anexo
     edit_group: Editar contexto do grupo
     add_comment: 'Comentario '
+    copy_url_comment: Copiar URL
     edit_thread: Editar contexto
     translate_thread: Traduzir contexto
     edit_stance: Mudar seu voto
@@ -591,6 +593,7 @@ pt_BR:
     email: E-mail
     invitation_link: Link do convite
     sent: Enviar
+    copy_url: Copiar URL
   cancel_invitation_form:
     heading: Cancelar convite
     question: Você tem certeza que deseja cancelar este convite?
@@ -688,7 +691,6 @@ pt_BR:
     load_more: Carregar mais tópicos
     mark_as_read: Marcar como lida
     dismiss: Dispensar
-    thread_dismissed: Tópico dispensado.
     explain_mute:
       title: Você ainda não silenciou nenhum tópico.
       explanation_html: |
@@ -742,6 +744,7 @@ pt_BR:
     volume:
       unmute_message: 'Ativado o som do tópico'
   activity_card:
+    beginning: Início
     unread: Não lida
     latest: Último
     attachment_display:
@@ -756,6 +759,8 @@ pt_BR:
     edit: 'Editar'
     edit_thread: 'Editar'
     close_thread: 'Encerrar'
+    pin_thread: 'Fixar'
+    unpin_thread: 'Desafixar'
     mute_thread: 'Silenciar'
     move_thread: 'Mover'
     print_thread: 'Imprimir'
@@ -900,7 +905,9 @@ pt_BR:
   poll_common:
     your_response: Sua resposta
     change_your_response: Modifique sua resposta
+    message: Mensagem
     results: Resultados
+    vote: Votar
     votes: Votos
     update_outcome: Atualizar resultado
     outcome: Resultado
@@ -914,10 +921,14 @@ pt_BR:
     label: Anexos
   poll_common_card:
     show_results: Mostrar resultados
+  poll_common_select_group:
+    loomio_group: Grupo
   poll_common_notify_group:
     notify_group: Anúncio
     members_helptext: Seu grupo não será notificado
     members_count: "{{count}} pessoas serão notificadas"
+  poll_common_calendar_invite:
+    event_summary: Resumo
   poll_common_close_form:
     close_proposal: Encerrar proposta
     proposal_closed: Proposta encerrada
@@ -938,6 +949,7 @@ pt_BR:
     details: Detalhes
     options: Opções
     closing: Encerrando
+    closed: Fechado
     start: Começo
     update: Atualizar
   poll_proposal_form:
@@ -961,13 +973,20 @@ pt_BR:
     agree_reason_placeholder: O que você gosta na proposta e como ela pode beneficiar o grupo?
     block_reason_placeholder: Explique sua objeção a esta proposta e por que ela não deveria ir adiante
     stance_updated: Voto atualizado
+    vote: Votar
   poll_proposal_options:
+    agree: Concordo
     agree_verb: "concordou"
     agree_meaning: Esta proposta é suficientemente boa para ser adotada pelo grupo
+    abstain: Abstenção
     abstain_verb: "absteve"
+    disagree: Discordo
     disagree_verb: "discordou"
     disagree_meaning: Eu não apoio a proposta. Ela não deveria ir adiante.
+    block: Bloqueio
+    block_verb: "bloqueada"
   poll_count_vote_form:
+    reason_label: Mensagem
     reason_placeholder: Deixe uma mensagem caso queira
     stance_updated: Voto atualizado
   poll_meeting_chart_panel:
@@ -978,14 +997,18 @@ pt_BR:
     your_response: Quando você pode participar?
   poll_dot_vote_vote_form:
     stance_updated: Voto atualizado
+  poll_admin_page:
+    title: Administrador - {{title}}
   poll_common_share_form:
     no_group_selected: Nenhum grupo selecionado
     share_a_link: Compartilhar link
     anyone_can_participate: Qualquer pessoa com o link pode participar
     anyone_can_participate_true: Link compartilhável criado
     get_link: Copiar link
+    send_email: Enviar e-mail
     shareable_link: Link compartilhável
     reminded: Lembrete enviado!
+    share_group: Grupo
   poll_common_publish_facebook_preview:
     link: link
   poll_common_participant_form:
@@ -996,8 +1019,22 @@ pt_BR:
   polls_page:
     heading: Decisões
     start_new_poll: Nova decisão
+    groups_placeholder: (Todos os grupos)
   auth_form:
+    more_providers: Mais
+    hello: "Olá, {{name}}!"
+    create_account: Criar conta
+    check_your_email: Consulte o seu e-mail!
     name: Nome
+    email: E-mail
+    password: Senha
   install_slack:
+    modal_title: Instalar Slack
     progress:
       invite: Convidar
+    install:
+      group_name: Nome do grupo
+      install_slack: Instalar Slack agora
+      start_new_group: Criar um novo grupo
+  slack_added_modal:
+    title: Sucesso!

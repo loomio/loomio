@@ -2,6 +2,7 @@ Records  = require 'shared/services/records.coffee'
 EventBus = require 'shared/services/event_bus.coffee'
 
 { applySequence } = require 'shared/helpers/apply.coffee'
+{ triggerResize } = require 'shared/helpers/window.coffee'
 
 angular.module('loomioApp').directive 'documentForm', ['$timeout', ($timeout) ->
   templateUrl: 'generated/components/document/form/document_form.html'
@@ -14,11 +15,14 @@ angular.module('loomioApp').directive 'documentForm', ['$timeout', ($timeout) ->
         steps: ['method', 'url', 'title']
         skipClose: $mdMenu? # don't emit $close if we are in an md-menu
         initialStep: if $scope.document.isNew() then 'method' else 'title'
-        methodComplete: (_, method) -> $scope.document.method = method
+        methodComplete: (_, method) ->
+          $scope.document.method = method
+          triggerResize()
         urlComplete:    (_, doc)    ->
           $scope.document.id    = doc.id
           $scope.document.url   = doc.url
           $scope.document.title = doc.title
+          triggerResize()
         titleComplete:  (event, doc)    ->
           return unless $mdMenu
           event.stopPropagation()

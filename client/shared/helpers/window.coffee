@@ -21,6 +21,7 @@ module.exports =
 
   print:             -> window.print()
   is2x:              -> window.devicePixelRatio >= 2
+  triggerResize:     -> setTimeout -> window.dispatchEvent(new window.Event('resize')) if window.Event
   viewportSize:      -> viewportSize()
   hardReload: (path) -> hardReload(path)
 

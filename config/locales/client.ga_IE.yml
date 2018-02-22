@@ -519,6 +519,7 @@ ga_IE:
   poll_common_close_form:
     close_proposal: Dún an togra
   poll_common_form:
+    closed: Dúnta
     start: Tosaigh
   poll_common_subscribe_form:
     subscribe: Liostáil

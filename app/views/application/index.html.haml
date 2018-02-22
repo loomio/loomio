@@ -20,6 +20,8 @@
     %link{rel: "stylesheet", href: client_asset_path(:"angular.min.css")}
     %link{rel: 'manifest',   href: '/manifest.json'}
 
+    = action_cable_meta_tag
+
     = render 'angular/metadata'
     = render 'application/google_analytics'
 

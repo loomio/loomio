@@ -95,3 +95,5 @@ gl:
     discussion: 'Recomendacións para comezar un debate aberto'
     proposal: 'Trucos para escribir unha proposta clara'
     vote: 'Podes cambiar a proposta en calquera momento'
+  poll_common_form:
+    closed: Pechado

@@ -1,6 +1,8 @@
 te:
   email:
     unsubscribe: 'మీ ఈమెయిలు అభిరుచులను మార్చండి లేదా చందావిరమించుకోండి:'
+    missed_yesterday:
+      click_here: ఇక్కడ నొక్కండి
   footer:
     about: గురించి
     blog: బ్లాగు

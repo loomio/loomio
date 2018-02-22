@@ -479,7 +479,6 @@ ko:
     load_more: 주제 더보기
     mark_as_read: 읽음으로 표시
     dismiss: 기각합니다
-    thread_dismissed: 주제가 기각됐습니다.
     explain_mute:
       title: 대기중인 주제가 아직 없습니다.
     filtering:
@@ -611,3 +610,5 @@ ko:
       reload: '다시 불러오기'
   emoji_picker:
     search: "이모티콘을 찾으세요."
+  poll_common_form:
+    closed: 종료

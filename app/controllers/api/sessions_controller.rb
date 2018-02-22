@@ -12,7 +12,7 @@ class API::SessionsController < Devise::SessionsController
   end
 
   def destroy
-    MessageChannelService.publish({ action: :logged_out }, to: current_user)
+    ActionCable.server.broadcast current_user.message_channel, action: :logged_out
     sign_out resource_name
     flash[:notice] = t(:'devise.sessions.signed_out')
     render json: { success: :ok }

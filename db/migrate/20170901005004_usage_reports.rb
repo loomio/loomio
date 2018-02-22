@@ -1,4 +1,4 @@
-class UsageReports < ActiveRecord::Migration
+class UsageReports < ActiveRecord::Migration[4.2]
   def change
     create_table :usage_reports do |t|
       t.integer :groups_count

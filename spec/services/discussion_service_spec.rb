@@ -17,7 +17,7 @@ describe 'DiscussionService' do
                          destroy: true,
                          author: user) }
   let(:document) { create(:document) }
-  let(:discussion_params) { {title: "new title", description: "new description", private: true, uses_markdown: true} }
+  let(:discussion_params) { {title: "new title", description: "new description", private: true} }
 
   describe 'create' do
     it 'authorizes the user can create the discussion' do

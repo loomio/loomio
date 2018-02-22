@@ -85,3 +85,5 @@ mk:
     name_label: 'Твоето име'
     email_label: 'Твојата електронска пошта'
     message_label: 'Твојата порака'
+  poll_common_form:
+    closed: Затворено
