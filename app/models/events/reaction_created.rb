@@ -12,7 +12,7 @@ class Events::ReactionCreated < Event
   def notification_recipients
     return User.none if !reactable ||                             # there is no reactable
                          reactable.author == user ||              # you liked your own reactable
-                         !reactable.group.memberships.find_by(user: user) # the author has left the group
+                         !reactable.group.memberships.find_by(user: reactable.author) # the author has left the group
     User.where(id: reactable.author_id)
   end
 
