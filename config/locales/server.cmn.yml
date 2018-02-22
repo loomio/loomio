@@ -1,3 +1,6 @@
 cmn:
+  email:
+    missed_yesterday:
+      click_here: 点击这里
   footer:
     public_groups: 公共组团

@@ -1,5 +1,7 @@
 Loomio::Application.routes.draw do
 
+  mount ActionCable.server => '/cable'
+
   use_doorkeeper do
     skip_controllers :applications, :authorized_applications
   end
@@ -185,7 +187,6 @@ Loomio::Application.routes.draw do
       get :authorized, on: :collection
     end
 
-    namespace(:message_channel) { post :subscribe }
     namespace(:sessions)        { get :unauthorized }
     devise_scope :user do
       resource :sessions, only: [:create, :destroy]

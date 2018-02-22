@@ -49,3 +49,5 @@ cmn:
       delete_comment: '删掉评论'
   hint:
     vote: '任何时候你都可以更改位置'
+  poll_common_form:
+    closed: 关闭了

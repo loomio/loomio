@@ -556,6 +556,7 @@ tr:
   poll_common_close_form:
     close_proposal: Öneriyi kapat
   poll_common_form:
+    closed: Kapalı
     start: Başla
   polls_page:
     heading: Kararlar

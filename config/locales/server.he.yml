@@ -4,6 +4,7 @@ he:
     missed_yesterday:
       mark_as_read: סמן כנקרא
       thanks_for_reading: תודה שקראת. יום טוב!
+      click_here: הקליקו כאן
   footer:
     about: אודות
     blog: בלוג

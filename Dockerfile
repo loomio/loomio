@@ -4,9 +4,10 @@
 #
 # It is not a standalone image.
 #
-FROM ruby:2.4.3
-ENV REFRESHED_AT 2017-08-29
+FROM ruby:2.5.0
+ENV REFRESHED_AT 2018-02-13
 
+RUN gem update --system
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
 
 # for postgres

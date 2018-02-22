@@ -310,6 +310,7 @@ de:
     make_announcement: Benachrichtigung
     notified_count: '{{count}} Mitglieder werden per E-Mail benachrichtigt'
   action_dock:
+    edit_group: Gruppenbeschreibung bearbeiten
     add_comment: Kommentieren
     copy_url_comment: URL kopieren
     edit_poll: Umfrage bearbeiten
@@ -360,6 +361,7 @@ de:
     you_and_name_and_count_more: "Du, {{name}} und {{count}} weitere"
     name_and_count_more: "{{name}} und {{count}} weitere"
   group_page:
+    no_more_threads: Das sind alle bislang in dieser Gruppe vorhandenen Diskussionen.
     messages:
       privacy:
         members: 'Diese Gruppe ist nun nur für Mitglieder sichtbar'
@@ -371,10 +373,12 @@ de:
     new_photo: 'Neues Foto'
     new_cover_photo: 'Neues Titelfoto hochladen'
     new_group_logo: 'Neues Gruppenlogo hochladen'
+    open_discussions: 'Aktuelle Diskussionen'
     discussions_placeholder: 'An einer Diskussion können sich alle Mitglieder beteiligen und gemeinsam Abstimmungen durchführen.'
     members: 'Mitglieder'
     members_placeholder: 'Du bist bislang alleine hier: Lade mehr Leute ein!'
     member_options: Mitgliedseinstellungen
+    see_all_members: 'Alle {{count}} Mitglieder anzeigen'
     subgroups: 'Untergruppen'
     subgroups_placeholder: 'Untergruppen bieten einen eigenen Raum für Teams und sorgen dafür, dass Benachrichtigungen zielgerichtet die richtigen Leute erreichen.'
     invite_people: 'Einladen'
@@ -383,7 +387,7 @@ de:
     options:
       label: 'Optionen'
       edit_group: 'Gruppeneinstellungen bearbeiten'
-      manage_members: 'Mitglieder organisieren'
+      manage_members: 'Mitglieder verwalten'
       add_subgroup: 'Untergruppe anlegen'
       manage_subscription: 'Gruppenbenachrichtigungen verwalten'
       email_settings: 'E-Mail-Einstellungen'
@@ -472,8 +476,15 @@ de:
     manage_requests: Anfragen verwalten
     manage_requests_with_count: ({{count}}) Anfragen verwalten
   documents_page:
+    title: Arbeitsmaterialien
+    add_document: Hinzufügen
+    no_documents: in dieser Gruppe sind keine Arbeitsmaterialien vorhanden. Auf "Hinzufügen" klicken, um Arbeitsmaterialien hinzuzufügen.
     confirm_remove_title: Anhang entfernen
   document:
+    card:
+      no_documents: In dieser Gruppe wurden noch keine Arbeitsmaterialien hinzugefügt.
+    list:
+      title: Arbeitsmaterialien
     form:
       title_label: Name
   membership_requests_page:
@@ -631,7 +642,6 @@ de:
     load_more: Mehr Diskussionen anzeigen
     mark_as_read: Als gelesen markieren
     dismiss: Ausblenden
-    thread_dismissed: Diskussion ausgeblendet.
     filtering:
       filter_threads: Diskussionen filtern
       filter_threads_aria_label: Diskussionen filtern
@@ -763,7 +773,6 @@ de:
     description_private_title: 'aktualisierte Diskussionstitel, Diskussionsbeschreibung und Privatsphäre'
   contact_message_form:
     helptext: "Du möchtest mit uns Kontakt aufnehmen? Schreibe uns einfach eine Nachricht und wir melden uns umgehend bei dir."
-    contact_us_email: "(Du kannst uns stets auch über <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>kontaktieren.)"
     contact_us: 'Kontakt aufnehmen'
     name_label: 'Dein Name'
     name_placeholder: 'Gib Deinen Namen ein...'
@@ -852,6 +861,8 @@ de:
     share_count: Bestätigung teilen
     start_poll: Entscheidung vorbereiten
     publish_poll: Abstimmung teilen
+  poll_common_attachment_form:
+    label: Arbeitsmaterialien
   poll_common_add_option:
     button:
       add_option: Abstimmungsoptionen hinzufügen
@@ -920,6 +931,7 @@ de:
     options: Handlungsoptionen
     options_placeholder: Neue Handlungsoption hinzufügen...
     no_options: Du hast noch keine Handlungsoptionen hinzugefügt.
+    closed: Geschlossen
     start: Start
     update: Aktualisieren
   poll_proposal_form:

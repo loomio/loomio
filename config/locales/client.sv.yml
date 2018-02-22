@@ -161,3 +161,5 @@ sv:
     invitation: 'Tips för att skriva en bra inbjudan'
     proposal: 'Tips för att skriva ett tydligt förslag'
     vote: 'Du kan ändra din ståndpunkt när som helst'
+  poll_common_form:
+    closed: Stängd

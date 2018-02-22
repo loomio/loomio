@@ -11,7 +11,6 @@ describe API::InvitationsController do
   let(:invitation_params)  { { emails: 'rob@example.com, hannah@example.com' } }
 
   before do
-    stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
     group.admins << user
     another_group.members << user
     another_group.members << another_user

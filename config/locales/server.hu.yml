@@ -17,6 +17,7 @@ hu:
       mark_as_read: Olvasottként jelöl
       thanks_for_reading: Köszönjük az elolvasást, kellemes napot!
       marked_as_read_success: Minden olvasottként van jelölve
+      click_here: Kattints ide
     membership_request:
       subject: "%{who} kérte hogy csatlakozhasson a %{which_group} csoporthoz"
       view_group: Jóváhagyhatod vagy elvetheted a kérelmet itt.
