@@ -9,7 +9,8 @@ module Ability::Discussion
       !discussion.group.archived_at && (
         discussion.public? ||
         discussion.members.include?(user) ||
-        (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id))
+        (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id)) ||
+        discussion.invitations.useable.pluck(:token).include?(user.token)
       )
     end
 

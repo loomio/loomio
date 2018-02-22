@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
     if back_to_param.match(/^http[s]?:\/\/#{ENV['CANONICAL_HOST']}/)
       redirect_to back_to_param
     else
-      redirect_to polymorphic_url(invitation.target_model)
+      redirect_to polymorphic_url(invitation.target_model, invitation_token: invitation.token)
     end
   end
 

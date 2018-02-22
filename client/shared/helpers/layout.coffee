@@ -17,7 +17,7 @@ module.exports =
 
     AppConfig.currentGroup = options.group
     IntercomService.updateWithGroup(AppConfig.currentGroup)
-    ModalService.forceSignIn() if AbilityService.requireLoginFor(options.page) or AppConfig.pendingIdentity?
+    ModalService.forceSignIn() if AbilityService.requireLoginFor(options.page) or (AppConfig.pendingIdentity or {}).identity_type
 
     scrollTo(options.scrollTo or 'h1') unless options.skipScroll
     updateCover()

@@ -24,8 +24,8 @@ class DiscussionEmailInfo
   def links
     {
       eventable: polymorphic_url(eventable, utm_hash),
-      unfollow:  email_actions_unfollow_discussion_url(utm_hash(discussion_id: discussion.id)),
-      prefs:     email_preferences_url(utm_hash)
+      unfollow:  email_actions_unfollow_discussion_url(utm_hash(discussion_id: discussion.id).merge(unsubscribe_token: unsubscribe_token)),
+      prefs:     email_preferences_url(utm_hash.merge(unsubscribe_token: unsubscribe_token))
     }
   end
 
@@ -38,14 +38,19 @@ class DiscussionEmailInfo
     )
   end
 
+  private
+
   def utm_hash(args = {})
     {
       utm_medium: 'email',
       utm_campaign: 'discussion_mailer',
       utm_source: action_name,
       invitation_token: recipient.token,
-      unsubscribe_token: recipient.unsubscribe_token || "none"
     }.merge(args)
+  end
+
+  def unsubscribe_token
+    recipient.unsubscribe_token || 'none'
   end
 
   def can_unfollow?

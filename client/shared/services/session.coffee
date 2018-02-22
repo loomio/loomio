@@ -9,10 +9,7 @@ exceptionHandler = require 'shared/helpers/exception_handler.coffee'
 
 module.exports = new class Session
   signIn: (userId, invitationToken) ->
-    defaultParams = _.pick {invitation_token: invitationToken}, _.identity
-    Records.stances.remote.defaultParams = defaultParams
-    Records.polls.remote.defaultParams   = defaultParams
-
+    setDefaultParams(invitation_token: invitationToken)
     return unless AppConfig.currentUserId = userId
     user = @user()
     exceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))
@@ -42,6 +39,12 @@ module.exports = new class Session
     I18n.useLocale(locale)
     return if locale == "en"
     Records.momentLocales.fetch(path: "#{momentLocaleFor(locale)}.js").then -> moment.locale(locale)
+
+setDefaultParams = (params) ->
+  endpoints = ['stances', 'polls', 'discussions', 'events', 'reactions', 'documents']
+  defaultParams = _.pick params, _.identity
+  _.each endpoints, (endpoint) ->
+    Records[endpoint].remote.defaultParams = _.pick params, _.identity
 
 momentLocaleFor = (locale) ->
   if _.contains AppConfig.momentLocales.valid, locale
