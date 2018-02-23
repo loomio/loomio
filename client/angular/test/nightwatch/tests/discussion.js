@@ -317,5 +317,33 @@ module.exports = {
     page.click('.action-dock__button--delete_comment')
     page.click('.delete-comment-form__delete-button')
     page.expectNoText('.activity-card', 'original comment right thur')
+  },
+
+  'invites a user to a discussion': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_mailer_new_discussion_email')
+    page.click('.thread-mailer__subject a')
+    page.expectText('.context-panel__heading', 'go to the moon')
+    page.expectText('.context-panel__description', 'A description for this discussion')
+    page.fillIn('.comment-form textarea', 'Hello world!')
+    page.click('.comment-form__submit-button')
+    page.expectText('.thread-item__title', 'Jennifer Grey')
+    page.expectText('.thread-item__body', 'Hello world!')
+    page.expectText('.group-theme__name--compact', 'Girdy Dancing Shoes')
+    page.ensureSidebar()
+    page.expectNoText('.sidebar__list-item-button--group', 'Girdy Dancing Shoes')
+  },
+
+  'invites an email to a discussion': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_mailer_invitation_created_email')
+    page.click('.thread-mailer__subject a')
+    page.expectText('.context-panel__heading', 'go to the moon')
+    page.expectText('.context-panel__description', 'A description for this discussion')
+    page.expectText('.new-comment__body', 'body of the comment')
+    page.click('.add-comment-panel__sign-in-btn')
+    page.expectValue('.auth-email-form__email input', 'jen@example.com')
   }
 }

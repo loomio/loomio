@@ -77,10 +77,10 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_discussion_mailer_new_discussion_email
-    group = FactoryBot.create(:formal_group, name: "Dirty Dancing Shoes", creator: patrick)
-    group.add_admin! patrick
     sign_in jennifer
-    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
+    @group = FactoryBot.create(:formal_group, name: "Girdy Dancing Shoes", creator: patrick)
+    @group.add_admin! patrick
+    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
     announcement = FactoryBot.build(:announcement, user_ids: [jennifer.id], event: event)
     AnnouncementService.create(announcement: announcement, actor: patrick)
