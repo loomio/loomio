@@ -31,19 +31,6 @@ class Dev::MainController < Dev::BaseController
     redirect_to dashboard_path
   end
 
-  def setup_discussion_mailer_new_discussion_email
-    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
-    @group.add_admin!  patrick
-    @group.add_member! jennifer
-
-    @discussion = Discussion.create(title: 'What star sign are you?',
-                                     group: @group,
-                                     description: "Wow, what a __great__ day.",
-                                     author: jennifer)
-    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-    last_email
-  end
-
   def setup_discussion_mailer_new_comment_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick).set_volume!(:loud)
@@ -92,6 +79,7 @@ class Dev::MainController < Dev::BaseController
   def setup_discussion_mailer_new_discussion_email
     group = FactoryBot.create(:formal_group, name: "Dirty Dancing Shoes", creator: patrick)
     group.add_admin! patrick
+    sign_in jennifer
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
     announcement = FactoryBot.build(:announcement, user_ids: [jennifer.id], event: event)
