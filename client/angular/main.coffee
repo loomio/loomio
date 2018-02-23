@@ -37,5 +37,7 @@ new RestfulClient('boot').get('site').then (response) ->
       require './dependencies/templates.coffee'
       require './dependencies/pages.coffee'
       require './dependencies/components.coffee'
+
+      window.Loomio = AppConfig
   else
     console.log 'Unable to boot Loomio!', response

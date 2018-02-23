@@ -19,8 +19,5 @@ module.exports =
 
   networkFirstEndpoints: [
     /api\/v1\/boot\/user/,
-    /api\/v1\/boot\/site/,
-    /api\/v1\/discussions\/dashboard/,
-    /api\/v1\/discussions\/inbox/,
-    /api\/v1\/polls\/search/
+    /api\/v1\/boot\/site/
   ]
