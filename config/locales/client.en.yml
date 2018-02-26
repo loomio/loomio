@@ -1675,6 +1675,8 @@ en:
     welcome_back: Welcome back, {{name}}!
     login_link: Sign in via email
     set_password: Set password
+    set_password_helptext: Tired of logging in via email?
+    set_password_link: Set a password
 
     hello: "Hello, {{name}}!"
     new_to_loomio: New to {{site_name}}? Create a new account
