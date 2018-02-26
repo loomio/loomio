@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'authSignupForm', ->
     $scope.name         = $scope.user.name
     $scope.vars         = {name: $scope.name}
     $scope.allow        = ->
-      AppConfig.features.app.create_user or AppConfig.pendingIdentity.email?
+      AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
 
     $scope.submit = ->
       if $scope.vars.name

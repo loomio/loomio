@@ -240,4 +240,4 @@ module.exports = new class AbilityService
            'startPollPage',      \
            'upgradePage',        \
            'startGroupPage' then true
-      else AppConfig.pendingIdentity.email?
+      else AppConfig.pendingIdentity.identity_type?
