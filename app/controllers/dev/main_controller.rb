@@ -85,13 +85,6 @@ class Dev::MainController < Dev::BaseController
     last_email
   end
 
-  def setup_group_with_active_poll
-      sign_in patrick
-      pinned_discussion
-      poll_discussion
-      redirect_to dashboard_url
-  end
-
   def setup_accounts_merged_email
     UserMailer.accounts_merged(patrick).deliver_now
     last_email
@@ -168,6 +161,7 @@ class Dev::MainController < Dev::BaseController
   def setup_logged_out_member_of_multiple_groups
     patrick
     create_group
+    create_another_group
 
     redirect_to new_user_session_url
   end
