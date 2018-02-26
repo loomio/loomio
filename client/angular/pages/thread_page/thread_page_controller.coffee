@@ -54,6 +54,7 @@ $controller = ($scope, $routeParams, $rootScope) ->
           rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private
           prev:        LmoUrlService.discussion(@discussion, from: @pageWindow.prev) if @pageWindow.prev?
           next:        LmoUrlService.discussion(@discussion, from: @pageWindow.next) if @pageWindow.next?
+        skipForceSignIn: true
         skipScroll: true
 
   Records.discussions.findOrFetchById($routeParams.key, {}, true).then @init, (error) ->

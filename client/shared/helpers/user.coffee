@@ -28,9 +28,8 @@ module.exports =
       ModalService.open('ContactModal')
 
   getProviderIdentity: ->
-    identity       = AppConfig.pendingIdentity or {}
     validProviders = _.pluck(AppConfig.identityProviders, 'name')
-    identity if _.contains(validProviders, identity.identity_type)
+    AppConfig.pendingIdentity if _.contains(validProviders, AppConfig.pendingIdentity.identity_type)
 
   subscribeToLiveUpdate: (options = {}) ->
     return unless AbilityService.isLoggedIn()
