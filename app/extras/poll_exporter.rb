@@ -14,14 +14,16 @@ class PollExporter
      PollEmailInfo.new(recipient: current_user, event: @poll.created_event, action_name: :export)
   end
 
+  def label (key, *opts)
+    I18n.t("poll.export.#{key.downcase}".to_sym, *opts)
+  end
+
   def meta_table
     outcome = @poll.current_outcome
     engagement = nil
-    I18n.with_locale(:en) {
-      voted = @poll.stances_count
-      total = @poll.members.count
-      engagement =  I18n.t(:'export.poll.percent_voted', num:voted ,denom:total, percent:"#{(voted*100/total)}%")
-    }
+    voted = @poll.stances_count
+    total = @poll.members.count
+    engagement =  label('percent_voted', num:voted ,denom:total, percent:"#{(voted*100/total)}%")
 
     {
       title: @poll.title,
@@ -43,26 +45,25 @@ class PollExporter
 
   def stance_matrix
     rows = []
-    rows << ["Participant", @poll.poll_options.map(&:display_name), "Reason"].flatten
+    rows << [label("Participant"), @poll.poll_options.map(&:display_name), label("Reason")].flatten
 
-    totals = [0]*@poll.poll_options.size
+    totals = (1..@poll.poll_options.size).map { 0 }
 
     ## for each participant show the
     @poll.stances.latest.each do |stance|
       user = stance.participant
-      row = [user.name]
+      row = [user.name, stance.reason]
 
       @poll.poll_options.each do |poll_option|
         # find the value for this stance_choice for poll option in this stance
-        stance_choice = stance.stance_choices.find {|choice| choice.poll_option.id == poll_option.id}
+        stance_choice = stance.stance_choices.find_by(poll_option: poll_option)
         row << (stance_choice&.score||0).to_s
       end
-      row << stance.reason
 
       rows << row
     end
 
-    rows << ["total", @poll.poll_options.map(&:total_score)].flatten
+    rows << [label("total"), @poll.poll_options.map(&:total_score)].flatten
     rows
   end
 
@@ -88,8 +89,7 @@ class PollExporter
 
   def stance_list
     rows = []
-    rows << ["created_at", "author ", "is latest ", @poll.poll_options.map(&:display_name)].flatten
-    totals = [0]*@poll.poll_options.size
+    rows << ["created_at", "author ", "is_latest", @poll.poll_options.map(&:display_name)].flatten.map{ |name_label| label(name_label) }
 
     ## for each participant show the
     @poll.stances.sort_by(&:created_at).each do |stance|
@@ -98,7 +98,7 @@ class PollExporter
 
       @poll.poll_options.each do |poll_option|
         # find the value for this stance_choice for poll option in this stance
-        stance_choice = stance.stance_choices.find {|choice| choice.poll_option.id == poll_option.id}
+        stance_choice = stance.stance_choices.find_by(poll_option: poll_option)
         row << (stance_choice&.score||0).to_s
       end
 
@@ -110,12 +110,9 @@ class PollExporter
 
   def to_csv (opts={})
     CSV.generate do |csv|
-
-        meta_table.keys.each {|key|
-          csv<<[key.to_s.humanize, meta_table[key]]
-        }
+        meta_table.each {|key, value| csv << [key.to_s.humanize, value]}
         csv << []
-        stance_matrix.each {|row|csv<<row}
+        stance_matrix.each {|row| csv << row}
     end
   end
 end

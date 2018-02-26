@@ -1,8 +1,5 @@
 ---
 en:
-  export:
-    poll:
-      percent_voted: “%{num}/%{denom} (%{percent}) members have stated their position”
   explore:
     header: Explore public groups
 
@@ -32,6 +29,24 @@ en:
       cannot_add_options: Cannot add options to this poll
       cannot_remove_options: Cannot remove options from this poll
       must_have_options: Must have at least one poll option
+    export:
+      percent_voted: “%{num}/%{denom} (%{percent}) members have stated their position”
+      title: "title"
+      author: "author"
+      created_at: "created_at"
+      closing_at: "closing_at"
+      closed_at: "closed_at"
+      engagement: "engagement"
+      stances: "stances"
+      participants: "participants"
+      details: "details"
+      group_name: "group_name"
+      outcome_author: "outcome_author"
+      outcome_created_at: "outcome_created_at"
+      outcome_statement: "outcome_statement"
+      poll_url: "poll_url"
+      reason: "reason"
+      participant: "participant"
 
   stance:
     error:
