@@ -500,6 +500,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    skylight (1.5.1)
+      activesupport (>= 3.0.0)
     snorlax (0.1.6)
       rails (> 4.1)
     socksify (1.7.1)
@@ -623,6 +625,7 @@ DEPENDENCIES
   sequenced (~> 2.0.0)
   shoulda-matchers
   simplecov
+  skylight
   snorlax
   spring
   spring-commands-rspec
