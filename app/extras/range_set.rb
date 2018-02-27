@@ -10,10 +10,9 @@ class RangeSet
     a[0] <= b[0] && a[1] >= b[1]
   end
 
-  def length(ranges)
-    ranges.map {|range| range[0] - range[1] + 1}.sum
+  def self.length(ranges)
+    ranges.map {|range| range[1] - range[0] + 1}.sum
   end
-
 
   # do 2 ranges overlap?
   def self.overlaps?(a,b)
