@@ -164,6 +164,7 @@ Loomio::Application.routes.draw do
 
     resources :documents, only: [:create, :update, :destroy, :index] do
       get :for_group, on: :collection
+      get :for_discussion, on: :collection
     end
 
     resource :translations, only: [] do
