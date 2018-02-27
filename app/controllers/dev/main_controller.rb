@@ -165,17 +165,6 @@ class Dev::MainController < Dev::BaseController
     redirect_to new_user_session_url
   end
 
-  def setup_non_angular_login
-    patrick.update(angular_ui_enabled: false)
-    redirect_to new_user_session_url
-  end
-
-  def setup_non_angular_logged_in_user
-    patrick.update(angular_ui_enabled: false)
-    sign_in patrick
-    redirect_to dashboard_url
-  end
-
   def setup_dashboard
     sign_in patrick
     pinned_discussion

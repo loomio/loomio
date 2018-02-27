@@ -31,7 +31,6 @@ class MigrateUserService
     documents: :author_id,
     comments: :user_id,
     reactions: :user_id,
-    contacts: :user_id,
     discussion_readers: :user_id,
     discussions: :author_id,
     events: :user_id,

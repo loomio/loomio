@@ -12,7 +12,6 @@ FactoryBot.define do
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
-    angular_ui_enabled false
     password 'complex_password'
     time_zone "Pacific/Tarawa"
     email_verified true
