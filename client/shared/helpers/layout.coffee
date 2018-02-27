@@ -17,10 +17,28 @@ module.exports =
 
     AppConfig.currentGroup = options.group
     IntercomService.updateWithGroup(AppConfig.currentGroup)
-    ModalService.forceSignIn() if !options.skipForceSignIn and AbilityService.requireLoginFor(options.page)
+    ModalService.forceSignIn() if shouldForceSignIn(options)
 
     scrollTo(options.scrollTo or 'h1') unless options.skipScroll
     updateCover()
+
+shouldForceSignIn = (options = {}) ->
+  return false if AbilityService.isLoggedIn()
+  return true  if AppConfig.pendingIdentity.identity_type == 'loomio'
+  return false if options.skipForceSignIn
+  switch options.page
+    when 'emailSettingsPage' then !Session.user().restricted?
+    when 'groupsPage',         \
+         'dashboardPage',      \
+         'inboxPage',          \
+         'profilePage',        \
+         'authorizedAppsPage', \
+         'registeredAppsPage', \
+         'registeredAppPage',  \
+         'pollsPage',          \
+         'startPollPage',      \
+         'upgradePage',        \
+         'startGroupPage' then true
 
 updateCover = ->
   $cover = document.querySelector('.lmo-main-background')

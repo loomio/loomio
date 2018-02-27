@@ -224,20 +224,3 @@ module.exports = new class AbilityService
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)
-
-  requireLoginFor: (page) ->
-    return false if @isLoggedIn()
-    switch page
-      when 'emailSettingsPage' then !Session.user().restricted?
-      when 'groupsPage',         \
-           'dashboardPage',      \
-           'inboxPage',          \
-           'profilePage',        \
-           'authorizedAppsPage', \
-           'registeredAppsPage', \
-           'registeredAppPage',  \
-           'pollsPage',          \
-           'startPollPage',      \
-           'upgradePage',        \
-           'startGroupPage' then true
-      else AppConfig.pendingIdentity.identity_type?
