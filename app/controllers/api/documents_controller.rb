@@ -5,6 +5,16 @@ class API::DocumentsController < API::RestfulController
     respond_with_collection scope: { group_id: @group.id }, serializer: Full::DocumentSerializer
   end
 
+  def for_discussion
+    load_and_authorize(:discussion)
+    self.collection = Queries::UnionQuery.for(:documents, [
+      @discussion.documents,
+      @discussion.poll_documents,
+      @discussion.comment_documents
+    ])
+    respond_with_collection
+  end
+
   private
 
   def for_group_documents

@@ -38,6 +38,8 @@ $controller = ($scope, $routeParams, $rootScope) ->
       @discussion.markAsSeen()
       @discussion.requestedSequenceId = chompRequestedSequenceId()
 
+      Records.documents.fetchByDiscussion(@discussion)
+
       @pageWindow = PaginationService.windowFor
         current:  @discussion.requestedSequenceId || @discussion.firstSequenceId()
         min:      @discussion.firstSequenceId()
