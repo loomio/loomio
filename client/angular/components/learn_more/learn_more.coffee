@@ -18,11 +18,11 @@ angular.module('loomioApp').directive 'learnMore', ->
     $scope.hasPrev = ->
       $scope.index > 0
 
-    $scope.next = -> navigate(1)
-    $scope.prev = -> navigate(-1)
-
-    navigate = (diff) ->
+    $scope.navigate = (diff) ->
       $scope.index += diff
       $scope.currentNugget = $scope.nuggets[$scope.index]
       triggerResize()
+
+    $scope.next = -> $scope.navigate(1)
+    $scope.prev = -> $scope.navigate(-1)
   ]
