@@ -10,7 +10,7 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 { registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
 
 $controller = ($scope, $routeParams, $rootScope) ->
-  EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }
+  EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true, skipForceSignIn: true }
 
   requestedCommentId = ->
     parseInt($routeParams.comment or LmoUrlService.params().comment)
