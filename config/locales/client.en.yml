@@ -636,6 +636,12 @@ en:
     confirm_remove_helptext: Are you sure you want to remove this attachment?
     document_removed: Attachment removed
 
+  media:
+    method_form:
+      helptext: "Select how you'd like to share:"
+      audio_helptext: Record audio
+      video_helptext: Record video
+
   document:
     error:
       invalid_format: Oops! Your URL is invalid. Ensurer it begins with http:// or https://

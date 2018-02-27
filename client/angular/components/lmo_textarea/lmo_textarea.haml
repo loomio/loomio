@@ -11,6 +11,11 @@
         .lmo-textarea__helptext{ng-if: "!(model.errors[field] || model.errors.file)"} {{helptext}}
       .lmo-flex.lmo-flex__center
         %md-menu.lmo-pointer{ng-if: "model.documentsApplied"}
+          %md-button.md-button--tiny{md-menu-origin: "true", ng-click: "addMedia($mdMenu)", md-prevent-menu-close: "true"}
+            %i.mdi.mdi-microphone
+          %md-menu-content
+            %media_form.lmo-textarea__document-form{model: "model"}
+        %md-menu.lmo-pointer{ng-if: "model.documentsApplied"}
           %md-button.md-button--tiny{md-menu-origin: "true", ng-click: "addDocument($mdMenu)", md-prevent-menu-close: "true"}
             %i.mdi.mdi-attachment
           %md-menu-content

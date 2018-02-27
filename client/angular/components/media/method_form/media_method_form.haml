@@ -1,0 +1,10 @@
+.media-method-form
+  %p.lmo-hint-text{translate: "media.method_form.helptext"}
+  .media-method-form__buttons.lmo-flex.lmo-flex__space-between{layout: "row"}
+    %md-button.document-method-form__button{ng-click: "$emit('nextStep', 'audio')", md-prevent-menu-close: "true"}
+      %i.mdi.mdi-microphone.mdi-24px
+      %p.lmo-hint-text{translate: "media.method_form.audio_helptext"}
+    %md-button.document-method-form__button{ng-click: "$emit('nextStep', 'video')", md-prevent-menu-close: "true"}
+      %i.mdi.mdi-video.mdi-24px
+      %p.lmo-hint-text{translate: "media.method_form.video_helptext"}
+  .md-caption{ng-translate: "media.method_form.caption"}

@@ -37,6 +37,9 @@ angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
     $scope.addDocument = ($mdMenu) ->
       EventBus.broadcast $scope, 'initializeDocument', Records.documents.buildFromModel($scope.model), $mdMenu
 
+    $scope.addMedia = ($mdMenu) ->
+      $mdMenu.open()
+
     EventBus.listen $scope, 'nextStep', (_, doc) ->
       $scope.model.newDocumentIds.push doc.id
 
