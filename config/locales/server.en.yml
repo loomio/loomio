@@ -30,24 +30,26 @@ en:
       cannot_remove_options: Cannot remove options from this poll
       must_have_options: Must have at least one poll option
     export:
-      percent_voted: “%{num}/%{denom} (%{percent}) members have stated their position”
-      title: "title"
-      author: "author"
-      created_at: "created_at"
-      closing_at: "closing_at"
-      closed_at: "closed_at"
-      engagement: "engagement"
-      stances: "stances"
-      participants: "participants"
-      details: "details"
-      group_name: "group_name"
-      outcome_author: "outcome_author"
-      outcome_created_at: "outcome_created_at"
-      outcome_statement: "outcome_statement"
-      poll_url: "poll_url"
-      reason: "reason"
-      participant: "participant"
-
+      percent_voted: "%{num}/%{denom} (%{percent}) members have stated their position"
+      title: Title
+      author: Author
+      created_at: Created At
+      closing_at: Closing At
+      closed_at: Closed At
+      is_latest: Is Latest
+      engagement: Engagement
+      stances: Stances
+      participants: Participants
+      details: Details
+      group_name: Group Name
+      outcome_author: Outcome Author
+      outcome_created_at: Outcome Created At
+      outcome_statement: Outcome Statement
+      poll_url: Poll URL
+      reason: Reason
+      participant: Participant
+      also_available: Also vailable in
+      total: Total
   stance:
     error:
       too_short: Please make a selection
