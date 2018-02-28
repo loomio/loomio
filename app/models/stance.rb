@@ -25,7 +25,6 @@ class Stance < ApplicationRecord
   update_counter_cache :poll, :undecided_user_count
 
   scope :latest, -> { where(latest: true) }
-
   scope :newest_first,   -> { order(created_at: :desc) }
   scope :oldest_first,   -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
