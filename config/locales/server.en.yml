@@ -49,7 +49,7 @@ en:
       poll_url: Poll URL
       reason: Reason
       participant: Participant
-      also_available: Also vailable in
+      also_available: Also available in
       total: Total
   stance:
     error:
