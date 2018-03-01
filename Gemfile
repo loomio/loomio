@@ -51,6 +51,7 @@ gem 'rack-attack'
 gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
+gem 'skylight'
 
 group :development, :test do
   gem 'byebug'

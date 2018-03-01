@@ -7,9 +7,14 @@ es:
         blank: no puede estar vacío
         invalid: No es un valor válido.
   errors:
+    not_found: 404 archivo no encontrado
     messages:
       email: No es una dirección de email válida
       spoofed_media_type: El contenido de ese archivo no se asemeja al nombre del mismo
+  user:
+    error:
+      recaptcha: "No pudimos verificar que no eres un robot. Por favor intenta de nuevo"
+      username_must_be_alphanumeric: "El nombre de usuario debe contener solamente letras y dígitos en minúscula "
   attachment:
     error:
       too_large: 'El archivo que tratas de adjuntar es mayor de 100MB, escoge uno mas pequeño. '
@@ -150,6 +155,7 @@ es:
     error:
       too_many_pending: "Tienes más del máximo de %{count} de invitaciones pendientes para este grupo"
       too_many_cancelled: "Tienes más del máximo de %{count} de invitaciones canceladas para este grupo"
+      all_email_addresses_belong_to_members: "Estas personas ya son miembros de tu grupo "
   password_reset:
     change_your_password: Cambia tu contraseña
     change_my_password: Cambiar la contraseña
@@ -526,3 +532,15 @@ es:
     initiate: |
       Ok, hagámoslo! <%{url} haz clic aquí para iniciar tu %{type}>.
       (nota: publicaremos en este canal una vez que sea creada, para que todos puedan participar)
+    slash_command_help: |
+      Ingresa un estilo de decisión (escrito en Ingles como se muestra debajo) y una pregunta, y comenzaremos desde ahí.
+      Puedes elegir estos estilos de decisión:
+      'proposal': Busca el acuerdo colectivo
+      'count':      Comprueba la participación y busca voluntarios
+      'poll':          Mide la popularidad de opciones
+      'dot_vote': Prioriza una lista de opciones
+      'meeting':  Encuentra un horario para la reunion
+
+      Por ejemplo escribe:
+      /loomio count ¿Quién viene a la fiesta el Domingo?
+      Para iniciar una nueva comprobación.
