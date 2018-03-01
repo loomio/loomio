@@ -21,7 +21,7 @@ class PollExporter
     outcome = @poll.current_outcome
     voted = @poll.stances_count
     total = @poll.members.count
-    engagement =  label('percent_voted', num:voted ,denom:total, percent:"#{(voted*100/total)}%")
+    engagement =  label('percent_voted', num:voted ,denom:total, percent:"#{(voted*100/total)}%") if total > 0
 
     {
       title: @poll.title,

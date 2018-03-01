@@ -7,6 +7,7 @@ describe PollsController do
   let(:discussion) { create :discussion, private: false, group: group }
   let(:poll) { create :poll, author: user }
   let(:user) { create :user }
+  let(:another_user) { create :user }
   let(:identity) { create :facebook_identity, user: user }
   let(:community) { create :facebook_community, identity: identity, poll_id: poll.id, identifier: "fb_one" }
   let(:another_community) { create :facebook_community, identifier: "fb_two" }
@@ -24,6 +25,27 @@ describe PollsController do
     it 'does not set metadata for private polls' do
       get :show, params: { key: poll.key }
       expect(assigns(:metadata)[:title]).to be_nil
+    end
+  end
+
+  describe 'export' do
+    it 'displays an html export' do
+      sign_in user
+      get :export, params: { key: poll.key }
+      expect(response.status).to eq 200
+      expect(response).to render_template('polls/export')
+    end
+
+    it 'displays a csv export' do
+      sign_in user
+      get :export, params: { key: poll.key }, format: :csv
+      expect(response.status).to eq 200
+      expect(response.body).to include poll.title
+    end
+
+    it 'does not show export to non-coordinators' do
+      sign_in another_user
+      get :export, params: { key: poll.key }
     end
   end
 
