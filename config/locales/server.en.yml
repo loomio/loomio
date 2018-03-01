@@ -42,6 +42,7 @@ en:
       participants: Participants
       details: Details
       group_name: Group Name
+      discussion_title: Thread Title
       outcome_author: Outcome Author
       outcome_created_at: Outcome Created At
       outcome_statement: Outcome Statement

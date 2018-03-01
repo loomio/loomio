@@ -1,5 +1,5 @@
 = render "poll_mailer/common/summary"
-= render 'export_matrix', table_title:'Stances', headers:@exporter.stance_list[0], data:@exporter.stance_list[1..-1]
+= render "poll_mailer/common/stance_table", rows: @exporter.stance_list
 = render "poll_mailer/#{@info.poll_type}/chart"
 = render "poll_mailer/#{@info.poll_type}/responses"
 = render "poll_mailer/common/undecided"

@@ -1,8 +1,7 @@
 class PollExporter
-
   include Routing
 
-  def initialize (poll)
+  def initialize(poll)
     @poll = poll
   end
 
@@ -10,17 +9,16 @@ class PollExporter
     "#{@poll.title.parameterize}-#{I18n.t("common.action.export").downcase}.csv"
   end
 
-  def poll_info (current_user)
+  def poll_info(current_user)
      PollEmailInfo.new(recipient: current_user, event: @poll.created_event, action_name: :export)
   end
 
-  def label (key, *opts)
+  def label(key, *opts)
     I18n.t("poll.export.#{key}", *opts)
   end
 
   def meta_table
     outcome = @poll.current_outcome
-    engagement = nil
     voted = @poll.stances_count
     total = @poll.members.count
     engagement =  label('percent_voted', num:voted ,denom:total, percent:"#{(voted*100/total)}%")
@@ -35,7 +33,8 @@ class PollExporter
       stances: @poll.stances_count,
       participants: @poll.members.count,
       details: @poll.details,
-      group_name: @poll.group.full_name,
+      group_name: @poll.group&.full_name,
+      discussion_title: @poll.discussion&.title,
       outcome_author: outcome&.author,
       outcome_created_at: outcome&.created_at,
       outcome_statement: outcome&.statement,
@@ -49,7 +48,7 @@ class PollExporter
 
     ## for each participant show the
     @poll.stances.latest.each do |stance|
-      user = stance.participant
+      user = stance.participant_for_client
       row = [user.name]
 
       @poll.poll_options.each do |poll_option|
@@ -72,7 +71,7 @@ class PollExporter
 
     ## for each stance in chronological order
     @poll.stances.sort_by(&:created_at).each do |stance|
-      user = stance.participant
+      user = stance.participant_for_client
       row = [stance.created_at, user.name, stance.latest]
 
       @poll.poll_options.each do |poll_option|
@@ -86,12 +85,11 @@ class PollExporter
     rows
   end
 
-
-  def to_csv (opts={})
+  def to_csv(opts={})
     CSV.generate do |csv|
-        meta_table.each {|key, value| csv << [I18n.t("poll.export.#{key}"), value]}
-        csv << []
-        stance_matrix.each {|row| csv << row}
+      meta_table.each {|key, value| csv << [I18n.t("poll.export.#{key}"), value]}
+      csv << []
+      stance_matrix.each {|row| csv << row}
     end
   end
 end
