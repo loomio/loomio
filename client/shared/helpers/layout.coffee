@@ -28,7 +28,7 @@ shouldForceSignIn = (options = {}) ->
   return false if options.skipForceSignIn
   switch options.page
     when 'emailSettingsPage' then !Session.user().restricted?
-    when 'groupsPage',         \
+    when 'groupPage',          \
          'dashboardPage',      \
          'inboxPage',          \
          'profilePage',        \

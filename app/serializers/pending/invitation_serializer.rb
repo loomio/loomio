@@ -7,10 +7,6 @@ class Pending::InvitationSerializer < Pending::BaseSerializer
     nil
   end
 
-  def identity_type
-    'invitation'
-  end
-
   def avatar_initials
     name.upcase.split(' ').map(&:first).join
   end
