@@ -59,7 +59,7 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  def option_names (option_count=3)
+  def option_names(option_count)
     seed = (0..20).to_a.sample
     {
       poll: option_count.times.map{ Faker::Food.ingredient },
@@ -72,7 +72,7 @@ module Dev::FakeDataHelper
   end
 
   def fake_poll(args = {})
-    names = option_names(args.delete(:option_count))
+    names = option_names(args.delete(:option_count) || 3)
 
     options = {
       author: fake_user,
