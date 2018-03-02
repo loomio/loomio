@@ -1320,7 +1320,10 @@ en:
       title: Voters may add options
       helptext_on: Participants may add their own options when voting.
       helptext_off: Participants will select from the options you provide.
-
+    can_respond_maybe:
+      title: Voters may respond maybe
+      helptext_on:  Participants may indicate times as 'maybe'
+      helptext_off: Participant will indicate yes or no for each time
   poll_common_close_form:
     title: Close a poll early
     helptext: Are you sure you're ready to close early?
