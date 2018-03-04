@@ -162,6 +162,7 @@ class Dev::MainController < Dev::BaseController
     patrick
     create_group
     create_another_group
+
     redirect_to new_user_session_url
   end
 

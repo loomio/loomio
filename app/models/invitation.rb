@@ -56,6 +56,10 @@ class Invitation < ApplicationRecord
     end
   end
 
+  def poll
+    group.invitation_target if intent=='join_poll'
+  end
+
   def locale
     (inviter || group.creator || I18n).locale
   end

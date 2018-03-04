@@ -59,25 +59,27 @@ module Dev::FakeDataHelper
     }.merge(args))
   end
 
-  def option_names
+  def option_names(option_count)
     seed = (0..20).to_a.sample
     {
-      poll: 3.times.map{ Faker::Food.ingredient },
+      poll: option_count.times.map{ Faker::Food.ingredient },
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
-      dot_vote: 3.times.map{ Faker::Artist.name },
-      meeting: 3.times.map { |i| (seed+i).days.from_now.to_date } + 3.times.map { |i| (seed+i).days.from_now.beginning_of_hour.utc.iso8601 },
-      ranked_choice: 3.times.map { Faker::Food.ingredient }
+      dot_vote: option_count.times.map{ Faker::Artist.name },
+      meeting: option_count.times.map { |i| (seed+i).days.from_now.to_date },
+      ranked_choice: option_count.times.map { Faker::Food.ingredient }
     }.with_indifferent_access
   end
 
   def fake_poll(args = {})
+    names = option_names(args.delete(:option_count) || 3)
+
     options = {
       author: fake_user,
       discussion: fake_discussion,
       poll_type: 'poll',
       title: Faker::Superhero.name,
-      poll_option_names: option_names[args.fetch(:poll_type, :poll)],
+      poll_option_names: names[args.fetch(:poll_type, :poll)],
       closing_at: 3.days.from_now,
       multiple_choice: false,
       details: with_markdown(Faker::Hipster.paragraph),

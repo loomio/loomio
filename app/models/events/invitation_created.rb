@@ -7,10 +7,6 @@ class Events::InvitationCreated < Event
            created_at: invitation.created_at).tap { |e| EventBus.broadcast('invitation_created_event', e) }
   end
 
-  def poll
-    eventable.group.invitation_target
-  end
-
   def trigger!
     super
     eventable.mailer.delay(priority: 1).invitation_created(eventable, self)
