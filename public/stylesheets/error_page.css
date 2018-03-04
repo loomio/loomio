@@ -1,7 +1,15 @@
+html, body { height: 100%; }
+
 body {
   background-color: #F7F7ED;
   color: #666;
   font-family: arial, sans-serif;
+  display: flex;
+  -webkit-display: flex;
+  align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
 }
 
 h1 {
@@ -9,32 +17,24 @@ h1 {
   line-height: 1.5em;
 }
 
-#error-head{
-  background-color: #292929;
+.errors__return-home {
+  height: 64px;
+  display: block;
+  margin-bottom: 8px;
+  background-image: url('/theme/logo_128h.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-#header {
-    background-image: url("/theme/logo_128h.png");
-    background-repeat: no-repeat;
-    height: 64px;
-}
-
-.content {
-  margin-top: 20px;
-  margin-bottom: 30px;
+.errors__content {
   padding: 20px;
   background-color: #FFF;
+  margin-bottom: 144px;
   border-radius: 8px;
   -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
   -o-border-radius: 8px;
   -ms-border-radius: 8px;
   box-shadow: 1px 1px 4px #999999;
   -webkit-box-shadow: 1px 1px 4px #999999;
-  -moz-box-shadow: 0px 0px 4px #999999;
-}
-
-#error-container{
-  width: 960px;
-  margin:0px auto;
+  -moz-box-shadow: 1px 1px 4px #999999;
 }
