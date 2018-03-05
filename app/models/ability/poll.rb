@@ -44,12 +44,13 @@ module Ability::Poll
       )
     end
 
-    can [:update, :share, :remind, :destroy], ::Poll do |poll|
+    can [:update, :share, :remind, :destroy, :export], ::Poll do |poll|
       user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
     end
 
     can :close, ::Poll do |poll|
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
     end
+
   end
 end

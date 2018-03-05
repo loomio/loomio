@@ -257,4 +257,32 @@ module Dev::PollsScenarioHelper
     scenario = poll_with_guest_scenario(poll_type: poll_type)
     scenario.merge(observer: scenario[:poll].author)
   end
+
+  def alternative_poll_option_selection (poll_option_ids, i)
+    case i % 4
+    when 0
+      poll_option_ids.last(3)
+    when 1
+      poll_option_ids.select(&:even?)
+    when 2
+      poll_option_ids.select(&:odd?)
+    when 3
+      poll_option_ids[0...-3]
+    end.map {|id| {poll_option_id: id}}
+  end
+
+  def poll_meeting_populated_scenario(poll_type:)
+    user = saved fake_user
+
+    poll = fake_poll(poll_type: poll_type, option_count: 5)
+    PollService.create(poll: poll, actor: user)
+
+    5.times do |i|
+      choices = alternative_poll_option_selection(poll.poll_option_ids, i)
+      stance = saved fake_stance(poll:poll, participant:saved(fake_user), stance_choices_attributes: choices)
+    end
+
+    { poll: poll,
+      observer: user}
+  end
 end

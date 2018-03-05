@@ -71,6 +71,10 @@ class Invitation < ApplicationRecord
     "#{intent.to_s.split('_').last.classify}Mailer".constantize
   end
 
+  def poll
+    group.invitation_target if intent=='join_poll'
+  end
+
   def locale
     (inviter || group.creator || I18n).locale
   end

@@ -39,6 +39,7 @@
 
 .thread-item__body {
   width: 100%;
+  min-width: 0;
 }
 @media (max-width: $tiny-max-px){
   .thread-item__directive {

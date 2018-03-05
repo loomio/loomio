@@ -98,7 +98,11 @@ setupAngularRoutes = ($router) ->
   $router.config(Routes.concat(AppConfig.plugins.routes))
 
 setupAngularNavigate = ($location) ->
-  LmoUrlService.setGoToMethod   (path)    -> $location.path(path)
+  LmoUrlService.setGoToMethod   (path, newTab)    ->
+    if newTab
+      window.open(path, '_blank')
+    else
+      $location.path(path)
   LmoUrlService.setParamsMethod (args...) -> $location.search(args...)
 
 setupAngularTranslate = ($rootScope, $translate) ->

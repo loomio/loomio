@@ -7,6 +7,7 @@ zh_TW:
         blank: 不能留白
         invalid: 不是有效的值
   errors:
+    not_found: 404 檔案找不到。
     messages:
       email: 您輸入的不是有效的電子郵件地址
       spoofed_media_type: 檔案內容不符合其檔案名稱

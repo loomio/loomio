@@ -167,8 +167,8 @@ class Poll < ApplicationRecord
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
     update_attribute(:matrix_counts,
-      poll_options.limit(5).map do |option|
-        stances.latest.limit(5).map do |stance|
+      poll_options.order(:name).limit(5).map do |option|
+        stances.latest.order(:created_at).limit(5).map do |stance|
           stance.poll_options.include?(option)
         end
       end

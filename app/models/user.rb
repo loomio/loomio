@@ -46,7 +46,6 @@ class User < ApplicationRecord
   validates :password, nontrivial_password: true, allow_nil: true
   validate  :ensure_recaptcha, if: :recaptcha
 
-  has_many :contacts, dependent: :destroy
   has_many :admin_memberships,
            -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
            class_name: 'Membership',

@@ -118,7 +118,7 @@ module.exports = class PollModel extends BaseModel
     @closedAt?
 
   goal: ->
-    @customFields.goal or @membersCount().length
+    @customFields.goal or @membersCount()
 
   close: =>
     @remote.postMember(@key, 'close')

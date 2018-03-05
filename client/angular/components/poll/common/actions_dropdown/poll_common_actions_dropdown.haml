@@ -10,5 +10,7 @@
       %md-button{ng-click: "editPoll()", translate: "common.action.edit"}
     %md-menu-item.poll-actions-dropdown__close{ng-if: "canClosePoll()"}
       %md-button{ng-click: "closePoll()", translate: "common.action.close"}
+    %md-menu-item.poll-actions-dropdown__export{ng-if: "canExportPoll()"}
+      %md-button{ng-click: "exportPoll()", translate: "common.action.export"}
     %md-menu-item.poll-actions-dropdown__delete{ng-if: "canDeletePoll()"}
       %md-button{ng-click: "deletePoll()", translate: "common.action.delete"}
