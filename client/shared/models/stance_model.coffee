@@ -52,7 +52,7 @@ module.exports = class StanceModel extends BaseModel
     _.each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->
       stanceChoice.remove()
 
-    _.each _.flatten([optionIds]), (optionId) =>
+    _.each _.compact(_.flatten([optionIds])), (optionId) =>
       @recordStore.stanceChoices.create(pollOptionId: parseInt(optionId), stanceId: @id)
     @
 
