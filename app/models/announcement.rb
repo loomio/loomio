@@ -1,12 +1,19 @@
-class Announcement < ActiveRecord::Base
+class Announcement < ApplicationRecord
   include CustomCounterCache::Model
 
   belongs_to :event, required: true
   belongs_to :author, class_name: "User", required: true
 
+  has_many :announcees, dependent: :destroy
+  has_many :users,       through: :announcees, source: :announceable, source_type: 'User'
+  has_many :invitations, through: :announcees, source: :announceable, source_type: 'Invitation'
+  has_many :groups,      through: :announcees, source: :announceable, source_type: 'Group'
+  attr_accessor :notified
+
   delegate :kind, to: :event
   delegate :eventable, to: :event, allow_nil: true
   delegate :guest_group, to: :eventable, allow_nil: true
+  delegate :memberships, to: :guest_group
   delegate :update_announcements_count, to: :eventable, allow_nil: true
   delegate :group, to: :eventable, allow_nil: true
   delegate :poll, to: :eventable, allow_nil: true
@@ -28,26 +35,20 @@ class Announcement < ActiveRecord::Base
     eventable.poll&.poll_type if eventable.respond_to?(:poll)
   end
 
-  def guest_users
-    users.where.not(id: group&.members)
+  def announce_and_invite!
+    announcees.import  notified.uniq.map   { |n| build_announcee(n) }
+    memberships.import users_to_invite.map { |u| build_membership(u) }
   end
 
-  def users
-    User.where(id: self.user_ids)
+  def users_to_announce
+    @users_to_announce ||= User.where(id: announcees.pluck(&:user_ids).flatten.uniq)
   end
 
-  def invitations
-    Invitation.where(id: self.invitation_ids)
+  def create_memberships!
   end
 
-  def notified=(notified)
-    self.user_ids = self.invitation_emails = []
-    notified.uniq.each do |n|
-      case n['type']
-      when 'FormalGroup', 'User' then self.user_ids          += Array(n['notified_ids'])
-      when 'Invitation'          then self.invitation_emails += Array(n['id'])
-      end
-    end
+  def users_to_invite
+    @users_to_invite ||= users_to_announce.where.not(id: guest_group.member_ids)
   end
 
   def ensure_event
@@ -58,5 +59,29 @@ class Announcement < ActiveRecord::Base
     @model ||= event&.eventable || model_type.classify.constantize.find(model_id) if model_type && model_id
   rescue NameError
     nil
+  end
+
+  private
+
+  def build_membership(u)
+    Membership.new(user: u, inviter: author)
+  end
+
+  def build_announcee(n)
+    Announcee.new(announceable_id: munge_id(n), announceable_type: munge_type(n), user_ids: munge_user_ids(n))
+  end
+
+  def munge_id(n)
+    return n['id'].to_i unless n['type'] == 'Invitation'
+    Invitation.create!(recipient_email: n['id'], group: guest_group, inviter: author, intent: invitation_intent).id
+  end
+
+  def munge_type(n)
+    return n['type'] unless n['type'] == 'FormalGroup'
+    'Group'
+  end
+
+  def munge_user_ids(n)
+    Array(n['notified_ids']).map(&:to_i)
   end
 end

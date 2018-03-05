@@ -104,6 +104,8 @@ class User < ApplicationRecord
   has_many :drafts, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
 
+  has_many :announcees, dependent: :destroy, as: :announceable
+
   has_one :deactivation_response,
           class_name: 'UserDeactivationResponse',
           dependent: :destroy

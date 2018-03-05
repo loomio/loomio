@@ -22,6 +22,8 @@ class Invitation < ApplicationRecord
   belongs_to :group
   belongs_to :canceller, class_name: 'User'
 
+  has_many :announcees, dependent: :destroy, as: :announceable
+
   update_counter_cache :group, :invitations_count
   update_counter_cache :group, :pending_invitations_count
 
@@ -69,10 +71,6 @@ class Invitation < ApplicationRecord
 
   def mailer
     "#{intent.to_s.split('_').last.classify}Mailer".constantize
-  end
-
-  def poll
-    group.invitation_target if intent=='join_poll'
   end
 
   def locale

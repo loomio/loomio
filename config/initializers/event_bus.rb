@@ -109,7 +109,5 @@ EventBus.configure do |config|
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 
   # add guests to guest group of eventable
-  config.listen('announcement_create') do |announcement|
-    announcement.guest_group.add_members!(announcement.guest_users, inviter: announcement.user)
-  end
+  config.listen('announcement_create') { |announcement| announcement.announce_and_invite! }
 end
