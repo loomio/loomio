@@ -11,6 +11,7 @@ angular.module('loomioApp').directive 'learnMore', ->
       $scope.currentNugget = $scope.nuggets[$scope.index]
       $mdMenu.open($event)
       triggerResize(300)
+      triggerResize(600)
 
     $scope.hasNext = ->
       $scope.index < $scope.nuggets.length - 1

@@ -14,6 +14,9 @@ angular.module('loomioApp').directive 'announcementForm', ->
 
     Records.announcements.fetchPreviousFor($scope.announcement.model())
 
+    $scope.acceptChip = ($chip) ->
+      if $chip.type != 'Null' then $chip else null
+
     $scope.inviteToDiscussion = ->
       ModalService.open 'AnnouncementModal', announcement: ->
         Records.announcements.buildFromModel($scope.relevantDiscussion())
