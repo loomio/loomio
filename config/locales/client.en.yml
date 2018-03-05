@@ -1706,6 +1706,10 @@ en:
     common:
       do_it_later: I'll do this later
 
+  browser_warning:
+    message: "IMPORTANT! You are using an outdated browser ({{name}} {{version}}) which is not supported by {{site}}."
+    link: Please switch to another browser
+
   slack_added_modal:
     title: Success!
     helptext: |
