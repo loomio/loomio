@@ -1,4 +1,9 @@
 sl:
+  poll:
+    export:
+      title: Naslov
+      author: Avtor
+      details: Podrobnosti
   email:
     group_email:
       intro: "%{who} je sporočil/a skupini %{group}:"

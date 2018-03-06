@@ -1,4 +1,10 @@
 ko:
+  poll:
+    export:
+      title: 제목
+      author: 글쓴이
+      details: 세부사항
+      group_name: 그룹명
   email:
     group_email:
       intro: "%{group} 그룹에 %{who}님이 알림글을 올렸습니다."

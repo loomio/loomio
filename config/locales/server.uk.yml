@@ -1,4 +1,12 @@
 uk:
+  poll:
+    export:
+      title: Заголовок
+      author: Автор
+      details: Деталі
+      group_name: Назва групи
+      reason: Аргумент
+      total: Разом
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"

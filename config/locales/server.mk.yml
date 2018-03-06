@@ -1,4 +1,9 @@
 mk:
+  poll:
+    export:
+      title: Наслов
+      author: Автор
+      details: Детали
   email:
     group_email:
       intro: "%{who} направи најава во %{group}:"

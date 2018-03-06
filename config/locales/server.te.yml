@@ -1,4 +1,9 @@
 te:
+  poll:
+    export:
+      title: శీర్షిక
+      author: రచయిత
+      details: వివరాలు
   email:
     unsubscribe: 'మీ ఈమెయిలు అభిరుచులను మార్చండి లేదా చందావిరమించుకోండి:'
     missed_yesterday:

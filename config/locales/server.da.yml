@@ -1,4 +1,12 @@
 da:
+  poll:
+    export:
+      title: Titel
+      author: Forfatter
+      details: Beskrivelse
+      group_name: Gruppenavn
+      reason: Begrundelse
+      total: Total
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"

@@ -1,4 +1,10 @@
 sr:
+  poll:
+    export:
+      title: Naslov
+      author: Autor
+      details: Detalji
+      group_name: Naziv Grupe
   validate:
     motion:
       must_close_in_future: Predlog se mora zatvoriti u budućnosti.

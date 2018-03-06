@@ -121,6 +121,7 @@ fr:
       resend: Renvoyer
       send: Envoyer
       resent: Invitation renvoyée
+      export: Exporter
     formatting_help:
       label: 'Mise en forme'
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte'
@@ -1466,6 +1467,8 @@ fr:
     welcome_back: Content de vous revoir, {{name}} !
     login_link: Recevoir un courriel de connexion
     set_password: Définir un mot de passe
+    set_password_helptext: Marre de devoir vous authentifier par courriel?
+    set_password_link: Créer votre mot de passe
     hello: "Bonjour, {{name}} !"
     new_to_loomio: Nouveau sur {{site_name}} ? Créez un compte !
     create_account: Créez un compte
@@ -1527,6 +1530,9 @@ fr:
       helptext: "Maintenant que tout est configuré, il est temps de commencer à prendre des décisions. Sélectionnez une des options ci-dessous :"
     common:
       do_it_later: Je le ferai plus tard
+  browser_warning:
+    message: "IMPORTANT: votre navigateur ({{name}} {{version}})  est obsolète et n'est pas compatible avec {{site}}."
+    link: Merci de mettre à jour ou de changer de navigateur
   slack_added_modal:
     title: Réussite!
     helptext: |

@@ -1,4 +1,9 @@
 ar:
+  poll:
+    export:
+      title: العنوان
+      details: التفاصيل
+      group_name: اسم المجموعة
   email:
     custom: "%{text}"
     group_email:

@@ -23,6 +23,28 @@ zh_TW:
       cannot_add_options: 無法新增選項到此投票
       cannot_remove_options: 無法從此投票移除選項
       must_have_options: 必須至少有一個投票選項
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) 的成員已經表達了他們的立場"
+      title: 標題
+      author: 作者
+      created_at: 建立於
+      closing_at: 定案於
+      closed_at: 定案於
+      is_latest: 最新
+      engagement: 激勵
+      stances: 立場
+      participants: 參與者
+      details: 詳細內容
+      group_name: 群組名稱
+      discussion_title: 討論串標題
+      outcome_author: 成果作者
+      outcome_created_at: 成果建立於
+      outcome_statement: 成果陳述
+      poll_url: 投票 URL
+      reason: 理由
+      participant: 參與者
+      also_available: 也提供於
+      total: 總共
   stance:
     error:
       too_short: 請選擇

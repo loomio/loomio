@@ -1,4 +1,10 @@
 ru:
+  poll:
+    export:
+      title: Название
+      author: Автор
+      details: Детали
+      total: Всего
   email:
     missed_yesterday:
       mark_as_read: Отметить прочитанным

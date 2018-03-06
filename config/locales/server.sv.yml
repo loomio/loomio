@@ -1,4 +1,9 @@
 sv:
+  poll:
+    export:
+      title: Titel
+      author: Författare
+      details: Detaljer
   validate:
     motion:
       must_close_in_future: Förslaget måste stängas i framtiden.

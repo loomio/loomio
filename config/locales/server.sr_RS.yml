@@ -1,4 +1,9 @@
 sr_RS:
+  poll:
+    export:
+      title: Наслов
+      author: Аутор
+      details: Детаљи
   email:
     group_email:
       intro: "%{who} је направио/ла објаву за групу %{group}:"
