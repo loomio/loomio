@@ -218,6 +218,40 @@ describe User do
     end
   end
 
+  describe 'last_notified_at' do
+    let(:user) { create :user }
+    let(:discussion) { create :discussion }
+    let(:another_discussion) { create :discussion }
+    let(:announcement) { create :announcement, event: discussion.created_event, notified: [{
+      id: user.id,
+      type: "User",
+      notified_ids: [user.id]
+    }.with_indifferent_access]}
+    let(:old_announcement) { create :announcement, event: discussion.created_event, notified: [{
+      id: user.id,
+      type: "User",
+      notified_ids: [user.id]
+    }.with_indifferent_access], created_at: 3.days.ago }
+
+    before { announcement.announce_and_invite! }
+
+    it 'can populate last_notified_at' do
+      u = User.with_last_notified_for(discussion).detect { |u| u.id == user.id }
+      expect(u.last_notified_at).to be_within(2.seconds).of announcement.created_at
+    end
+
+    it 'gives the most recent announcement created date' do
+      old_announcement.announce_and_invite!
+      u = User.with_last_notified_for(discussion).detect { |u| u.id == user.id }
+      expect(u.last_notified_at).to_not be_within(2.seconds).of old_announcement.created_at
+    end
+
+    it 'does not populate if user has not been notified' do
+      u = User.with_last_notified_for(another_discussion).detect { |u| u.id == user.id }
+      expect(u.last_notified_at).to be_nil
+    end
+  end
+
   describe "usernames" do
     before do
       @user1 = User.new(name: "Test User", email: "test1@example.com", password: "passwordXYZ123")

@@ -44,9 +44,6 @@ class Announcement < ApplicationRecord
     @users_to_announce ||= User.where(id: announcees.pluck(&:user_ids).flatten.uniq)
   end
 
-  def create_memberships!
-  end
-
   def users_to_invite
     @users_to_invite ||= users_to_announce.where.not(id: guest_group.member_ids)
   end
@@ -68,11 +65,16 @@ class Announcement < ApplicationRecord
   end
 
   def build_announcee(n)
-    Announcee.new(announceable_id: munge_id(n), announceable_type: munge_type(n), user_ids: munge_user_ids(n))
+    Announcee.new(
+      announceable_id: munge_id(n),
+      announceable_type: munge_type(n),
+      user_ids: munge_user_ids(n).map(&:to_s),
+      created_at: self.created_at
+    )
   end
 
   def munge_id(n)
-    return n['id'].to_i unless n['type'] == 'Invitation'
+    return n['id'] unless n['type'] == 'Invitation'
     Invitation.create!(recipient_email: n['id'], group: guest_group, inviter: author, intent: invitation_intent).id
   end
 
