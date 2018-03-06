@@ -1,0 +1,19 @@
+.announcement-member-list {
+  overflow: auto;
+  max-height: 300px;
+}
+
+.announcement-member-list__email {
+  border: 1px solid $border-color;
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+}
+
+.announcement-member-list__user {
+  padding: 0 !important;
+}
+
+.announcement-member-list__not-notified {
+  text-align: right;
+}

@@ -4,12 +4,10 @@ AnnouncementModel    = require 'shared/models/announcement_model.coffee'
 module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
   model: AnnouncementModel
 
-  fetchPreviousFor: (model) ->
-    return Promise.resolve(true) if model.announcementsCount == 0
-    @fetch(
+  fetchMembersFor: (model) ->
+    @fetch
+      path: 'members'
       params: "#{model.constructor.singular}_id": model.id
-      per:    10
-    ).then (data) -> model.update(announcementIds: _.pluck(data.announcements, 'id'))
 
   fetchNotified: (fragment) ->
     @fetch

@@ -1,0 +1,12 @@
+.announcement-member-list
+  .announcement-member-list__headers.lmo-md-actions
+    %h3.lmo-h3{ng-switch: "members.length"}
+      %span{ng-switch-when: "1", translate: "announcement.members_list.title_singular"}
+      %span{ng-switch-default: "true", translate: "announcement.members_list.title", translate-value-count: "{{members.length}}"}
+    %h3.lmo-h3{translate: "announcement.members_list.last_notified"}
+  %md-list.announcement-member-list__users.lmo-flex--column
+    %md-list-item.announcement-member-list__user.lmo-flex__center{ng-repeat: "user in members | orderBy: 'name' track by user.id"}
+      %user_avatar.lmo-margin-right{user: "user", size: "small"}
+      .lmo-flex__grow {{ user.name || user.email }}
+      %timeago{ng-if: "showLastAnnounced(user)", timestamp: "user.lastAnnouncement.announced_at"}
+      %p.md-caption.announcement-member-list__not-notified{translate: "announcement.members_list.not_notified"}
