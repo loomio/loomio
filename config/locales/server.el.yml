@@ -1,4 +1,10 @@
 el:
+  poll:
+    export:
+      title: Τίτλος
+      author: Συγγραφέας
+      details: Λεπτομέρειες
+      group_name: Όνομα ομάδας
   email:
     group_email:
       intro: "Ο/Η %{who} έκανε μια ανακοίνωση στην ομάδα %{group}:"

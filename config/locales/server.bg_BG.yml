@@ -1,4 +1,9 @@
 bg_BG:
+  poll:
+    export:
+      title: Заглавие
+      author: Автор
+      details: Подробности
   email:
     group_email:
       intro: "%{who} направи обявление в %{group}:"

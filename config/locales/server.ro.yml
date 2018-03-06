@@ -15,6 +15,13 @@ ro:
       cannot_add_options: Nu poti adauga optiuni la sondajul acesta
       cannot_remove_options: Nu poti sterge optiuni din acest sondaj
       must_have_options: Intr-un sondaj trebuie sa existe macar o optiune
+    export:
+      title: Titlu
+      author: Autor
+      engagement: Implicat
+      details: Detalii
+      group_name: Numele Grupului
+      total: Total
   stance:
     error:
       too_short: Te rog selecteaza o optiune

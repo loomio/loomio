@@ -23,6 +23,14 @@ es:
       cannot_add_options: No puedes añadir opciones en esta encuesta
       cannot_remove_options: No puedes remover opciones de esta encuesta
       must_have_options: 'Debes tener al menos una opción '
+    export:
+      title: Título
+      author: Autor
+      engagement: Participación
+      details: Detalles
+      group_name: Nombre del Grupo
+      reason: Razón
+      total: Total
   stance:
     error:
       too_short: Por favor seleccione

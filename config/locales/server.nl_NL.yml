@@ -18,6 +18,13 @@ nl_NL:
       cannot_add_options: Er kunnen geen opties aan deze peiling toegevoegd worden
       cannot_remove_options: Er kunnen geen opties van deze peiling verwijderd worden
       must_have_options: Er moet op zijn minst één optie voor een peiling zijn
+    export:
+      title: Titel
+      author: Auteur
+      details: Details
+      group_name: Groepsnaam
+      reason: Reden
+      total: Totaal
   stance:
     error:
       too_short: Gelieve een selectie te maken

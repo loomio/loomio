@@ -121,6 +121,7 @@ zh_TW:
       resend: 重新傳送
       send: 傳送
       resent: 重新傳送邀請
+      export: 匯出
     formatting_help:
       label: '格式化'
       title: '學習如何使用 Markdown 來格式化您的文字'
@@ -1468,6 +1469,8 @@ zh_TW:
     welcome_back: 歡迎回來，{{name}}！
     login_link: 透過電子郵件登入
     set_password: 設定密碼
+    set_password_helptext: 厭倦透過電子郵件登入了嗎？
+    set_password_link: 設定密碼
     hello: "您好，{{name}}！"
     new_to_loomio: 剛來到 {{site_name}}？建立新帳號
     create_account: 建立帳號

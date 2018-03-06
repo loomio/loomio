@@ -1,4 +1,9 @@
 km:
+  poll:
+    export:
+      title: ចំណងជើង
+      author: អ្នកនិពន្ធ​
+      details: ពត៏មានលំអិត
   email:
     group_email:
       intro: "%{who}បានធ្វើការប្រកាសទៅ %{group}:  "

@@ -1,4 +1,9 @@
 ml:
+  poll:
+    export:
+      title: തലക്കെട്ട്
+      author: സൃഷ്ടാവ്
+      details: വിശദാംശങ്ങള്‍
   email:
     group_email:
       intro: "%{who}   %{group}-ല്‍ പ്രസ്താവന ഇറക്കി:"

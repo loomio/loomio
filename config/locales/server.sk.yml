@@ -1,4 +1,9 @@
 sk:
+  poll:
+    export:
+      title: Názov
+      author: Autor
+      details: Podrobnosti
   email:
     group_email:
       intro: "%{who} oznámil(a) skupine %{group}:"

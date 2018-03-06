@@ -5,6 +5,11 @@ hu:
     errors:
       messages:
         invalid: ez nem egy érvényes érték
+  poll:
+    export:
+      title: Cím
+      author: Szerző
+      details: Részletek
   email:
     group_email:
       intro: "%{who} bejelentést tett a(z)  %{group} csoportban:"
