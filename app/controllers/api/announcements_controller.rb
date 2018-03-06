@@ -10,8 +10,13 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def notified_default
-    self.collection = Queries::Notified::Default.new(params.require(:kind), model_to_notify, current_user).results
+    self.collection = Queries::Notified::Default.new(params.require(:kind), notified_model, current_user).results
     respond_with_collection serializer: NotifiedSerializer, root: false
+  end
+
+  def members
+    self.collection = notified_model.members.with_last_notified_for(notified_model)
+    respond_with_collection serializer: Simple::UserSerializer, scope: { notified_model: notified_model }, root: false
   end
 
   private
@@ -24,12 +29,13 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def accessible_records
-    model_to_notify.announcements
+    notified_model.announcements
   end
 
-  def model_to_notify
-    load_and_authorize(:discussion, optional: true) ||
-    load_and_authorize(:poll, optional: true) ||
-    load_and_authorize(:outcome)
+  def notified_model
+    @notified_model ||=
+      load_and_authorize(:discussion, optional: true) ||
+      load_and_authorize(:poll, optional: true) ||
+      load_and_authorize(:outcome)
   end
 end
