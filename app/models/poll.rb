@@ -14,7 +14,7 @@ class Poll < ApplicationRecord
   include HasEvents
   include HasCreatedEvent
 
-  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
+  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
                        can_add_options can_remove_options author_receives_outcome
@@ -279,7 +279,7 @@ class Poll < ApplicationRecord
 
   def require_custom_fields
     Array(required_custom_fields).each do |field|
-      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].blank?
+      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].nil?
     end
   end
 end

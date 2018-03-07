@@ -101,7 +101,11 @@ PollGenerator = Struct.new(:poll_type) do
         2.days.from_now.beginning_of_hour.iso8601,
         3.days.from_now.beginning_of_hour.iso8601,
         7.days.from_now.beginning_of_hour.iso8601
-      ]
+      ],
+
+      custom_fields: {
+        can_respond_maybe: false
+      }
     }
   end
 

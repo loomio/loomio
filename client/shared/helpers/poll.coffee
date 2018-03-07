@@ -15,6 +15,7 @@ module.exports =
       ('multipleChoice'       if poll.pollType == 'poll'),
       'anyoneCanParticipate',
       'notifyOnParticipate',
+      ('canRespondMaybe'      if poll.pollType == 'meeting'),
       ('anonymous'            if fieldFromTemplate(poll.pollType, 'can_vote_anonymously')),
       ('voterCanAddOptions'   if fieldFromTemplate(poll.pollType, 'can_add_options'))
     ]
