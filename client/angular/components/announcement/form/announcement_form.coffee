@@ -12,9 +12,6 @@ angular.module('loomioApp').directive 'announcementForm', ->
     .finally ->
       $scope.$emit 'doneProcessing'
 
-    Records.announcements.fetchMembersFor($scope.announcement.model()).then (data) ->
-      $scope.members = Records.users.find(_.pluck(data.users, 'id'))
-
     $scope.acceptChip = ($chip) ->
       if $chip.type != 'Null' then $chip else null
 

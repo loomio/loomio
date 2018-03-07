@@ -3,10 +3,6 @@ class Notified::Invitation < Notified::Base
     model
   end
 
-  def type
-    "Invitation".freeze
-  end
-
   def title
     model
   end

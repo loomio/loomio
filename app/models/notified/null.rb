@@ -4,10 +4,7 @@ class Notified::Null < Notified::Base
   end
 
   def id
-  end
-
-  def type
-    'Null'
+    nil
   end
 
   def title

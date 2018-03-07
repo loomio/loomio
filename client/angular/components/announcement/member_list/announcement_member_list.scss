@@ -3,6 +3,12 @@
   max-height: 300px;
 }
 
+.announcement-member-list__icon {
+  width: 32px;
+  margin: 4px;
+  color: $grey-on-white;
+}
+
 .announcement-member-list__email {
   border: 1px solid $border-color;
   border-radius: 100%;

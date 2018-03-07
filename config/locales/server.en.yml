@@ -628,6 +628,11 @@ en:
   notified:
     no_matches_found: "No valid matches for '%{query}'"
     group_users: "(%{count} people - click to edit)"
+    group_subtitle: "%{members} total members, %{invitations} pending invitations"
+    public_title: Public
+    public_discussion_subtitle: Anyone on the internet can participate in this thread
+    public_poll_subtitle: Anyone on the internet may participate in this decision
+    public_outcome_subtitle: This outcome is visible to the public
 
   poll_unsubscribe:
     title: You have been unsubscribed from %{title}

@@ -15,8 +15,8 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def members
-    self.collection = notified_model.members.with_last_notified_for(notified_model)
-    respond_with_collection serializer: Simple::UserSerializer, scope: { notified_model: notified_model }, root: false
+    self.collection = Queries::Notified::Members.new(notified_model).results
+    respond_with_collection serializer: MemberSerializer, root: :members
   end
 
   private
