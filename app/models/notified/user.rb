@@ -4,11 +4,7 @@ class Notified::User < Notified::Base
   end
 
   def title
-    model.name
-  end
-
-  def subtitle
-    model.username
+    "#{model.name} (#{model.username})"
   end
 
   def icon_url

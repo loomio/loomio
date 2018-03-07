@@ -443,15 +443,15 @@ en:
 
       placeholder: Enter groups, names, or email addresses
       discussion:
-        title: Announce thread
-        members: "{{count}} people can participate in this thread"
+        title: Share thread
+        members: "{{count}} people can participate"
         members_singular: "1 person can participate in this thread"
       poll:
-        title: Announce poll
+        title: Share decision
         members: "{{count}} people can participate in this decision"
         members_singular: "1 person can participate in this decision"
       outcome:
-        title: Announce outcome
+        title: Share outcome
         members: "{{count}} people can view this outcome"
         members_singular: "1 person can view this outcome"
       notified_and_invited: '{{notified}} people will be notified, {{invited}} people will gain access'
@@ -459,9 +459,8 @@ en:
       group_count: '({{count}} people - click to edit)'
       advanced: Advanced
     members_list:
-      title: Who has access ({{count}})
-      title_singular: Shared with 1 person
-      last_notified: Last notified
+      title: Shared with
+      last_notified: Notified
       not_notified: Not notified yet
     group_form:
       search_placeholder: Search for people...

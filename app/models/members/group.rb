@@ -8,7 +8,7 @@ class Members::Group < Members::Base
   end
 
   def title
-    group.full_name
+    "#{group.full_name} (#{group.headcount})"
   end
 
   def subtitle

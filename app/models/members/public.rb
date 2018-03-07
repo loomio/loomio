@@ -12,7 +12,7 @@ class Members::Public < Members::Base
   end
 
   def subtitle
-    I18n.t(:"notified.public_#{model.class.to_s.downcase}_subtitle")
+    I18n.t(:"notified.public_subtitle")
   end
 
   def logo_url
