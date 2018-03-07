@@ -7,8 +7,8 @@ LmoUrlService   = require 'shared/services/lmo_url_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 
+{ viewportSize, trackEvents, deprecatedBrowser } = require 'shared/helpers/window.coffee'
 { scrollTo, setCurrentComponent }      = require 'shared/helpers/layout.coffee'
-{ viewportSize, trackEvents }          = require 'shared/helpers/window.coffee'
 { signIn, subscribeToLiveUpdate }      = require 'shared/helpers/user.coffee'
 { broadcastKeyEvent, registerHotkeys } = require 'shared/helpers/keyboard.coffee'
 { setupAngular }                       = require 'angular/setup.coffee'
@@ -16,6 +16,7 @@ IntercomService = require 'shared/services/intercom_service.coffee'
 $controller = ($scope, $injector) ->
   setupAngular($scope, $injector)
 
+  $scope.warnDeprecation  = deprecatedBrowser()
   $scope.currentComponent = 'nothing yet'
   $scope.renderSidebar    = viewportSize() == 'extralarge'
   $scope.isLoggedIn       = -> AbilityService.isLoggedIn()

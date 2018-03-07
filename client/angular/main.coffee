@@ -1,6 +1,6 @@
-{ exportGlobals, checkBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
+{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
 
-checkBrowser()
+hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
 initServiceWorker()
 
