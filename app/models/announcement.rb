@@ -29,15 +29,14 @@ class Announcement < ApplicationRecord
   after_destroy :update_announcements_count
 
   alias :user :author
-  attr_accessor :invitation_emails
 
   def poll_type
     eventable.poll&.poll_type if eventable.respond_to?(:poll)
   end
 
   def announce_and_invite!
-    announcees.import  notified.uniq.map   { |n| build_announcee(n) }
-    memberships.import users_to_invite.map { |u| build_membership(u) }
+    announcees.import  Array(notified).uniq.map { |n| build_announcee(n) }
+    memberships.import users_to_invite.map      { |u| build_membership(u) }
   end
 
   def users_to_announce
