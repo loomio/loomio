@@ -7,15 +7,19 @@ class Notified::User < Notified::Base
     "#{model.name} (#{model.username})"
   end
 
-  def icon_url
-    model.avatar_url(:small)
+  def logo_type
+    model.avatar_kind
+  end
+
+  def logo_url
+    case logo_type
+    when 'uploaded' then model.avatar_url
+    when 'gravatar' then Digest::MD5.hexdigest(object.email.to_s.downcase)
+    when 'initials' then model.avatar_initials
+    end
   end
 
   def notified_ids
     Array(model.id)
-  end
-
-  def avatar_initials
-    model.avatar_initials
   end
 end

@@ -15,8 +15,12 @@ class Notified::Group < Notified::Base
     I18n.t(:"notified.group_users", count: notified_ids.length)
   end
 
-  def icon_url
+  def logo_url
     model.logo.presence&.url(:card) || AppConfig.theme[:icon_src]
+  end
+
+  def logo_type
+    :uploaded
   end
 
   def notified_ids

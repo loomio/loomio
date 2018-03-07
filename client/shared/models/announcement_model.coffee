@@ -17,9 +17,9 @@ module.exports = class AnnouncementModel extends BaseModel
   totalNotified: ->
     _.sum @notified, (n) ->
       switch n.type
-        when 'FormalGroup' then n.notified_ids.length
-        when 'User'        then 1
-        when 'Invitation'  then 1
+        when 'Group'      then n.notified_ids.length
+        when 'User'       then 1
+        when 'Invitation' then 1
 
   totalInvited: ->
     0

@@ -8,11 +8,7 @@ class Members::Group < Members::Base
   end
 
   def title
-    "#{group.full_name} (#{group.headcount})"
-  end
-
-  def subtitle
-    I18n.t(:"notified.group_subtitle", members: group.memberships_count, invitations: group.pending_invitations_count)
+    I18n.t(:"notified.group_title", name: group.full_name, count: group.headcount)
   end
 
   def logo_url

@@ -26,7 +26,11 @@ module DisplayAsChip
     nil
   end
 
-  def icon_url
+  def logo_url
+    nil
+  end
+
+  def logo_type
     nil
   end
 
