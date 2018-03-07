@@ -31,7 +31,7 @@ module HasGuestGroup
   end
 
   def guest_members
-    guest_group.members.where.not(id: group&.member_ids)
+    guest_group.members.where.not(id: group.presence&.member_ids)
   end
 
   def members

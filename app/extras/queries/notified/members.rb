@@ -15,7 +15,7 @@ Queries::Notified::Members = Struct.new(:model, :user) do
   end
 
   def group_members
-    Members::Group.new(model) if model.group
+    Members::Group.new(model) if model.group.presence
   end
 
   def guest_members

@@ -3,6 +3,7 @@
     %h3.lmo-h3{translate: "announcement.members_list.title"}
     %h3.lmo-h3{translate: "announcement.members_list.last_notified"}
   %md-list.announcement-member-list__users.lmo-flex--column
+    %p.lmo-hint-text.align-center{ng-if: "!members.length", translate: "announcement.members_list.no_members"}
     %md-list-item.announcement-member-list__user.lmo-flex__center{ng-repeat: "member in members | orderBy: '-priority' track by member.key"}
       .announcement-member-list__icon{ng-if: "member.logoType == 'icon'"}
         %i.mdi.mdi-24px{class: "mdi-{{member.logoUrl}}"}
@@ -10,5 +11,5 @@
       .lmo-flex__grow
         %div {{ member.title }}
         .md-caption{ng-if: "member.subtitle"} {{ member.subtitle }}
-      %timeago.md-caption{ng-if: "member.lastNotifiedAt", timestamp: "member.lastNotifiedAt"}
-      %p.md-caption.announcement-member-list__not-notified{ng-if: "!member.lastNotifiedAt && member.type != 'Public'", translate: "announcement.members_list.not_notified"}
+      %timeago.md-caption.nowrap{ng-if: "member.lastNotifiedAt", timestamp: "member.lastNotifiedAt"}
+      %p.md-caption.announcement-member-list__not-notified.nowrap{ng-if: "!member.lastNotifiedAt && member.type != 'Public'", translate: "announcement.members_list.not_notified"}

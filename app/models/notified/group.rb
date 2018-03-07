@@ -8,11 +8,7 @@ class Notified::Group < Notified::Base
   end
 
   def title
-    model.full_name
-  end
-
-  def subtitle
-    I18n.t(:"notified.group_users", count: notified_ids.length)
+    I18n.t(:"notified.group_title", name: model.full_name, count: notified_ids.length)
   end
 
   def logo_url

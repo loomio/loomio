@@ -462,6 +462,7 @@ en:
       title: Shared with
       last_notified: Notified
       not_notified: Not notified yet
+      no_members: "This hasn't been shared with anyone yet!"
     group_form:
       search_placeholder: Search for people...
       modal_title: Select group members

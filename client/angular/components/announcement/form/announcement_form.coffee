@@ -1,5 +1,6 @@
 Records      = require 'shared/services/records.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
+I18n         = require 'shared/services/i18n.coffee'
 
 angular.module('loomioApp').directive 'announcementForm', ->
   scope: {announcement: '='}
@@ -13,6 +14,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
       $scope.$emit 'doneProcessing'
 
     $scope.acceptChip = ($chip) ->
+      $chip.subtitle = I18n.t('announcement.form.group_count', count: $chip.notified_ids.length) if $chip.type == 'Group'
       if $chip.type != 'Null' then $chip else null
 
     $scope.inviteToDiscussion = ->
