@@ -1,4 +1,11 @@
 eo:
+  poll:
+    export:
+      title: Titolo
+      author: Aŭtoro
+      details: Detaloj
+      reason: Kialo
+      total: Entute
   date:
     formats:
       for_another_year: "%-d-%-m-%y"

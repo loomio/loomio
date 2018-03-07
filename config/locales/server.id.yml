@@ -1,4 +1,9 @@
 id:
+  poll:
+    export:
+      title: Judul
+      author: Penulis
+      details: Keterangan
   email:
     group_email:
       intro: "%{who} membuat pengumuman di dalam %{group}:"

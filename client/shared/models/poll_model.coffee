@@ -125,7 +125,7 @@ module.exports = class PollModel extends BaseModel
     @closedAt?
 
   goal: ->
-    @customFields.goal or @membersCount().length
+    @customFields.goal or @membersCount()
 
   close: =>
     @remote.postMember(@key, 'close')
@@ -152,6 +152,7 @@ module.exports = class PollModel extends BaseModel
     return unless @newOptionName and !_.contains(@pollOptionNames, @newOptionName)
     @pollOptionNames.push @newOptionName
     @makeAnnouncement = true unless @isNew()
+    @setErrors({})
     @setMinimumStanceChoices()
     @newOptionName = ''
 

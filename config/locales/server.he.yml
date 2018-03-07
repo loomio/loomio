@@ -1,4 +1,9 @@
 he:
+  poll:
+    export:
+      title: תואר
+      author: מחבר
+      details: פרטים
   email:
     reply_to_this_discussion: השיבו לדיון זה
     missed_yesterday:

@@ -74,12 +74,14 @@ describe UserMailer do
     let(:user) { create :user, email_missed_yesterday: true }
     subject { UserMailer.missed_yesterday(user).deliver_now }
     let(:discussion) { build :discussion, group: group }
+    let(:poll) { build :poll, discussion: discussion }
     let(:comment) { build :comment, discussion: discussion }
     let(:group) { create :formal_group }
     before { group.add_member! user }
 
     let(:some_content) do
       DiscussionService.create(discussion: discussion, actor: discussion.author)
+      PollService.create(poll: poll, actor: discussion.author)
       CommentService.create(comment: comment, actor: comment.author)
     end
 

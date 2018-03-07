@@ -7,10 +7,6 @@ class Events::InvitationResend < Event
            created_at: invitation.created_at).tap { |e| EventBus.broadcast('invitation_resend_event', e) }
   end
 
-  def poll
-    eventable.group.invitation_target
-  end
-
   def trigger!
     super
     resend!

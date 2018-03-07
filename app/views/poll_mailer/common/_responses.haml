@@ -13,7 +13,7 @@
       %table
         - stance_choices.each do |stance_choice|
           %tr
-            %td.poll-mailer-common__avatar= render 'avatar', user: stance_choice.stance.participant_for_client(user: @info.actor)
+            %td.poll-mailer-common__avatar= render 'base_mailer/avatar', user: stance_choice.stance.participant_for_client(user: @info.actor)
             %td.poll-mailer-common-responses__reason
               - if stance_choice.stance.reason.present?
                 %span= "#{stance_choice.stance.participant_for_client(user: @info.actor).name}:"

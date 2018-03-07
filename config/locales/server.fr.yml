@@ -7,6 +7,8 @@ fr:
         blank: ne peut pas être vide
         invalid: n'est pas une valeur valable
   errors:
+    return_home: Retourner à l'accueil
+    not_found: 404 fichier non trouvé.
     messages:
       email: Ceci n'est pas une adresse e-mail correcte
       spoofed_media_type: Les contenus de ce fichier ne correspondent pas à son nom
@@ -22,6 +24,28 @@ fr:
       cannot_add_options: Impossible d'ajouter des options à ce sondage
       cannot_remove_options: Impossible de supprimer des options de ce sondage
       must_have_options: Il faut au moins une option de sondage
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) des membres se sont exprimés"
+      title: Titre
+      author: Auteur
+      created_at: Créé à
+      closing_at: Fermera à
+      closed_at: Fermé à
+      is_latest: Est le plus récent
+      engagement: Participation
+      stances: Positions
+      participants: Participants
+      details: Détails
+      group_name: Nom du groupe
+      discussion_title: Titre de la discussion
+      outcome_author: Auteur de la synthèse du résultat
+      outcome_created_at: Résultat créé à
+      outcome_statement: Synthèse du résultat
+      poll_url: URL du sondage
+      reason: Raison
+      participant: Participant
+      also_available: Aussi disponible en
+      total: Total
   stance:
     error:
       too_short: Merci de faire une sélection
@@ -532,3 +556,15 @@ fr:
     initiate: |
       Ok, allons-y! <%{url}|Cliques ici pour commencer votre %{type}>.
       (NB: ceci sera posté sur cette chaîne, pour que tout le monde puisse participer)
+    slash_command_help: |
+      Choisissez un type de décision et une question, nous verrons le reste ensuite.
+      Vous pouvez choisir parmi:
+      'proposal': Cherchez l’accord collectif
+      'count':      Suivez la participation et trouvez des volontaires
+      'poll':         Mesurez une opinion ou proposez un choix
+      'dot_vote': Priorisez des options
+      'meeting': Trouvez un moment pour vous réunir
+
+      Par exemple:
+      /loomio count Qui vient à la soirée de dimanche?
+      pour démarrer un nouveau décompte.

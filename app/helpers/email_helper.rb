@@ -14,7 +14,7 @@ module EmailHelper
 
   def render_rich_text(text)
     return "" unless text
-    Redcarpet::Render::SmartyPants.render emojify markdownify text
+    Redcarpet::Render::SmartyPants.render(emojify markdownify text).html_safe
   end
 
   def emojify(text)

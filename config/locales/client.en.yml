@@ -124,6 +124,7 @@ en:
       resend: Resend
       send: Send
       resent: Invitation resent
+      export: Export
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
@@ -331,6 +332,12 @@ en:
     start_poll: 'Start Poll'
     invite_people: 'Invite People'
 
+  notification_models:
+    discussion: 'thread: '
+    comment: 'comment in '
+    poll: 'decision: '
+    outcome: 'outcome: '
+
   notifications:
     header: "Notifications"
     no_notifications: "You don't have any notifications"
@@ -343,7 +350,7 @@ en:
     new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> commented on <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> reacted <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> to your comment in <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> reacted <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> to your {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> is waiting on you to participate in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
@@ -1630,6 +1637,8 @@ en:
     welcome_back: Welcome back, {{name}}!
     login_link: Sign in via email
     set_password: Set password
+    set_password_helptext: Tired of logging in via email?
+    set_password_link: Set a password
 
     hello: "Hello, {{name}}!"
     new_to_loomio: New to {{site_name}}? Create a new account
@@ -1702,6 +1711,10 @@ en:
 
     common:
       do_it_later: I'll do this later
+
+  browser_warning:
+    message: "IMPORTANT! You are using an outdated browser ({{name}} {{version}}) which is not supported by {{site}}."
+    link: Please switch to another browser
 
   slack_added_modal:
     title: Success!

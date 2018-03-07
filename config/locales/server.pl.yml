@@ -1,4 +1,11 @@
 pl:
+  poll:
+    export:
+      title: Tytuł
+      author: Autor
+      details: Szczegóły
+      group_name: Nazwa Grupy
+      total: W sumie
   email:
     missed_yesterday:
       mark_as_read: Oznaczenie jako przeczytane

@@ -10,6 +10,7 @@ en:
         invalid: is not a valid value
 
   errors:
+    return_home: Return home
     not_found: 404 file not found.
     messages:
       email: Not a valid email address
@@ -29,7 +30,28 @@ en:
       cannot_add_options: Cannot add options to this poll
       cannot_remove_options: Cannot remove options from this poll
       must_have_options: Must have at least one poll option
-
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) members have stated their position"
+      title: Title
+      author: Author
+      created_at: Created At
+      closing_at: Closing At
+      closed_at: Closed At
+      is_latest: Is Latest
+      engagement: Engagement
+      stances: Stances
+      participants: Participants
+      details: Details
+      group_name: Group Name
+      discussion_title: Thread Title
+      outcome_author: Outcome Author
+      outcome_created_at: Outcome Created At
+      outcome_statement: Outcome Statement
+      poll_url: Poll URL
+      reason: Reason
+      participant: Participant
+      also_available: Also available in
+      total: Total
   stance:
     error:
       too_short: Please make a selection

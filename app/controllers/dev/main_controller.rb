@@ -162,18 +162,8 @@ class Dev::MainController < Dev::BaseController
     patrick
     create_group
     create_another_group
-    redirect_to new_user_session_url
-  end
 
-  def setup_non_angular_login
-    patrick.update(angular_ui_enabled: false)
     redirect_to new_user_session_url
-  end
-
-  def setup_non_angular_logged_in_user
-    patrick.update(angular_ui_enabled: false)
-    sign_in patrick
-    redirect_to dashboard_url
   end
 
   def setup_dashboard
@@ -553,6 +543,7 @@ class Dev::MainController < Dev::BaseController
     create_discussion
     create_closed_discussion
     sign_in patrick
+    patrick.update(experiences: { closingThread: true })
     redirect_to group_url(create_group)
   end
 

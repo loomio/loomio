@@ -16,6 +16,12 @@ module.exports = class DocumentRecordsInterface extends BaseRecordsInterface
       path: 'for_group'
       params: options
 
+  fetchByDiscussion: (discussion) ->
+    @fetch
+      path: 'for_discussion'
+      params:
+        discussion_key: discussion.key
+
   buildFromModel: (model) ->
     @build
       modelId:   model.id

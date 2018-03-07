@@ -25,7 +25,7 @@ describe DiscussionReader do
     let(:newer_item) { CommentService.create(comment: build(:comment, discussion: discussion, created_at: 2.days.ago), actor: user) }
     before do
       group.add_member! user
-      reader.update(last_read_at: 6.days.ago, read_items_count: 0)
+      reader.update(last_read_at: 6.days.ago)
     end
 
     it 'updates the counts correctly from existing last_read_at' do

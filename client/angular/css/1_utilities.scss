@@ -25,6 +25,7 @@ textarea .lmo-textarea {
   margin: 0 4px;
   font-size: 12px;
   line-height: 18px;
+  white-space: nowrap;
 }
 
 .lmo-inline-action {
@@ -95,17 +96,21 @@ textarea .lmo-textarea {
 .lmo-markdown-wrapper {
   word-wrap: break-word;
 
-  a { word-break: break-all; }
-
   p { @include md-body-1; }
   img { max-width: 100%; }
   h1 {
     @include fontLarge;
-    margin: 20px 0 10px 0;
+    margin: 1em 0 0.5em;
+    font-weight: 500;
   }
   h2 {
     @include fontMedLarge;
-    font-weight: bold;
+    margin: 1em 0 0.5em;
+    font-weight: 500;
+  }
+  h3 {
+    margin: 1em 0 0.5em;
+    font-weight: 500;
   }
   ul{ padding: 0 0 10px 24px; }
   ul li{ list-style: disc; }
