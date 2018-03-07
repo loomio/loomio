@@ -6,7 +6,7 @@
     %a.lmo-pointer{ng-click: "inviteToDiscussion()", translate: "announcement.form.invite_to_discussion"}>
 
   %md-chips.announcement-form__chips{ng-model: "announcement.notified", md-require-match: "true", md-transform-chip: "acceptChip($chip)"}
-    %md-autocomplete{md-items: "$chip in search(query)", md-no-cache: "true", md-search-text: "query", placeholder: "{{'announcement.form.placeholder' | translate}}", md-min-length: "2", md-delay: "300"}
+    %md-autocomplete{md-items: "$chip in search(query)", md-no-cache: "true", md-autoselect: "true", md-autofocus: "true", md-search-text: "query", placeholder: "{{'announcement.form.placeholder' | translate}}", md-min-length: "2", md-delay: "300"}
       %md-item-template
         %announcement_chip{chip: "$chip"}
     %md-chip-template
