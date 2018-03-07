@@ -454,10 +454,11 @@ en:
         title: Share outcome
         members: "{{count}} people can view this outcome"
         members_singular: "1 person can view this outcome"
-      notified_and_invited: '{{notified}} people will be notified, {{invited}} people will gain access'
       notified: '{{notified}} people will be notified'
-      group_count: '({{count}} people - click to edit)'
+      group_title: '{{name}} ({{count}} people)'
       advanced: Advanced
+      click_to_edit: (click to edit)
+      click_to_expand: (click to expand)
     members_list:
       title: Shared with
       last_notified: Notified

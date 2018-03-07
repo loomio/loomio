@@ -15,7 +15,7 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def members
-    self.collection = Queries::Notified::Members.new(notified_model).results
+    self.collection = Queries::Notified::Members.new(notified_model, params[:expand_group]).results
     respond_with_collection serializer: MemberSerializer, root: :members
   end
 
