@@ -19,4 +19,5 @@
     %p.md-caption{ng-if: "announcement.totalInvited() > 0", translate: "announcement.form.invited_and_notified", translate-value-notified: "{{announcement.totalNotified()}}", translate-value-invited: "{{announcement.totalInvited()}}"}
     %p.md-caption{ng-if: "announcement.totalInvited() == 0", translate: "announcement.form.notified", translate-value-notified: "{{announcement.totalNotified()}}"}
 
+  %announcement_shareable_link{model: "announcement.model()"}
   %announcement_member_list{ng-if: "announcement.expanded", model: "announcement.model()"}

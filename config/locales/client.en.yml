@@ -240,11 +240,6 @@ en:
       <p>Dismissing a thread removes it from your unread items. If any new
         activity occurs in the thread, it will show as unread again.</p>
 
-  link_explanation_form:
-    body_html: |
-      <p>You've just created a decision that anyone with the link can participate in. Click the
-      <strong>'Copy URL'</strong> button in the action dock to copy this link to your clipboard to share it.</p>
-
   inbox:
     clear: 'Clear'
     latest: 'Latest'
@@ -412,6 +407,8 @@ en:
       outcome_helptext: Add people you'd like to notify of this decision. They will be able to view the poll results.
       relevant_discussion_helptext: This decision is part of the thread <strong>{{title}}</strong>, you can also
       invite_to_discussion: invite people to join that conversation
+      get_shareable_link: Get shareable link
+      shareable_link_helptext: Anyone with this link will be able to participate
       helptext_title: Announcing content
       helptext_1: |
         <p>

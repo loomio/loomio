@@ -11,10 +11,6 @@ class Members::Public < Members::Base
     I18n.t(:"notified.public_title")
   end
 
-  def subtitle
-    I18n.t(:"notified.public_subtitle")
-  end
-
   def logo_url
     :earth
   end

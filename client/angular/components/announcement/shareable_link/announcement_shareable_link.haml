@@ -1,0 +1,11 @@
+.announcement-shareable-link{ng-if: "model.constructor.singular == 'poll'"}
+  .lmo-md-action
+    %md-button.md-accent{translate: "announcement.form.get_shareable_link", ng-click: "getShareableLink()", ng-if: "!model.anyoneCanParticipate"}
+    .announcement-shareable-link__input.lmo-flex__center.lmo-flex--row{ng-if: "model.anyoneCanParticipate"}
+      %md-input-container.lmo-flex__grow.md-no-errors
+        %label{translate: "invitation_form.shareable_link"}
+        %input{value: "{{shareableLink()}}", disabled: "true"}
+      %md-button.md-accent{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink()", on-copied: "copied()"}
+        %span{translate: "common.copy"}
+      %md-button.md-button--tiny.md-warn{translate: "authorized_apps_page.revoke", ng-click: "removeShareableLink()"}
+  .md-caption.announcement-shareable-link__helptext{ng-if: "model.anyoneCanParticipate", translate: "announcement.form.shareable_link_helptext"}
