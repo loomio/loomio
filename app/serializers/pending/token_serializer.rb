@@ -5,6 +5,10 @@ class Pending::TokenSerializer < Pending::BaseSerializer
     true
   end
 
+  def identity_type
+    'loomio'
+  end
+
   def name
     user.name
   end

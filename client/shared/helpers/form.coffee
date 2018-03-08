@@ -13,13 +13,23 @@ module.exports =
   submitForm: (scope, model, options = {}) ->
     submit(scope, model, options)
 
+  submitDiscussion: (scope, model, options = {}) ->
+    submit(scope, model, _.merge(
+      flashSuccess: "discussion_form.messages.#{actionName(model)}"
+      failureCallback: ->
+        scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
+      successCallback: (data) ->
+        _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
+        EventBus.emit scope, 'nextStep', createdEvent(data, model)
+    , options))
+
   submitOutcome: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
-        EventBus.emit scope, 'nextStep'
+        EventBus.emit scope, 'nextStep', createdEvent(data, model)
     , options))
 
   submitStance: (scope, model, options = {}) ->
@@ -52,9 +62,8 @@ module.exports =
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
-        poll = Records.polls.find(data.polls[0].key)
-        poll.removeOrphanOptions()
-        EventBus.emit scope, 'nextStep', poll
+        model.removeOrphanOptions()
+        EventBus.emit scope, 'nextStep', createdEvent(data, model)
       cleanupFn: ->
         EventBus.emit scope, 'doneProcessing'
     , options))
@@ -158,6 +167,17 @@ calculateFlashOptions = (options) ->
 
 actionName = (model) ->
   if model.isNew() then 'created' else 'updated'
+
+createdEvent = (data, model) ->
+  eventData = _.first _.filter data.events, (event) -> event.kind == eventKind(model)
+  Records.events.find(eventData.id) if eventData?
+
+eventKind = (model) ->
+  return 'new_discussion' if model.isNew() and model.constructor.singular == 'discussion'
+  if model.isNew()
+    "#{model.constructor.singular}_created"
+  else
+    "#{model.constructor.singular}_edited"
 
 errorTypes =
   400: 'badRequest'

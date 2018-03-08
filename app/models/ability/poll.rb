@@ -37,16 +37,20 @@ module Ability::Poll
     end
 
     can :create, ::Poll do |poll|
-      user.email_verified? &&
-      (!poll.group.presence || poll.group.members.include?(user))
+      user.email_verified? && (
+        !poll.group.presence ||
+        can?(:start_poll, poll.discussion) ||
+        can?(:start_poll, poll.group)
+      )
     end
 
-    can [:update, :share, :remind, :destroy], ::Poll do |poll|
+    can [:update, :share, :remind, :destroy, :export], ::Poll do |poll|
       user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
     end
 
     can :close, ::Poll do |poll|
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
     end
+
   end
 end

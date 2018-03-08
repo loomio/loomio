@@ -87,7 +87,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::VisibleDiscussions.new(user: current_user, group_ids: @group && @group.id_and_subgroup_ids)
+    Queries::VisibleDiscussions.new(user: current_user, group_ids: @group&.id_and_subgroup_ids)
   end
 
   def update_reader(params = {})

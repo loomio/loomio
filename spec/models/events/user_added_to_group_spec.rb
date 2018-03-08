@@ -23,17 +23,17 @@ describe Events::UserAddedToGroup do
 
   describe "::bulk_publish!" do
     it 'creates multiple events' do
-      expect { Events::UserAddedToGroup.bulk_publish!(memberships, inviter) }.to change { Event.where(kind: 'user_added_to_group').count }.by(memberships.length)
+      expect { Events::UserAddedToGroup.bulk_publish!(memberships, user: inviter) }.to change { Event.where(kind: 'user_added_to_group').count }.by(memberships.length)
     end
 
     it 'returns multiple events' do
-      result = Events::UserAddedToGroup.bulk_publish!(memberships, inviter)
+      result = Events::UserAddedToGroup.bulk_publish!(memberships, user: inviter)
       expect(result).to be_a Array
       expect(result[0]).to be_a Event
     end
 
     it 'sends emails' do
-      expect { Events::UserAddedToGroup.bulk_publish!(memberships, inviter) }.to change { ActionMailer::Base.deliveries.count }.by(2)
+      expect { Events::UserAddedToGroup.bulk_publish!(memberships, user: inviter) }.to change { ActionMailer::Base.deliveries.count }.by(2)
     end
   end
 end

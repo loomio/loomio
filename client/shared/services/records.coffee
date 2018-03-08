@@ -11,6 +11,7 @@ records = new RecordStore new Database 'default.db',
   autosaveInterval: 4000
 
 records.addRecordsInterface require('shared/interfaces/boot_records_interface.coffee')
+records.addRecordsInterface require('shared/interfaces/announcement_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/comment_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/discussion_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/event_records_interface.coffee')
@@ -44,6 +45,8 @@ records.addRecordsInterface require('shared/interfaces/document_records_interfac
 records.addRecordsInterface require('shared/interfaces/login_token_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/message_channel_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/locale_records_interface.coffee')
+records.addRecordsInterface require('shared/interfaces/member_records_interface.coffee')
+AppConfig.records = records
 
 AppConfig.records = records
 module.exports = records

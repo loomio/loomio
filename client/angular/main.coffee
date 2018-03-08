@@ -3,9 +3,9 @@ moment = require 'moment-timezone'
 AppConfig     = require 'shared/services/app_config.coffee'
 RestfulClient = require 'shared/record_store/restful_client.coffee'
 
-{ exportGlobals, checkBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
+{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
 
-checkBrowser()
+hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
 initServiceWorker()
 

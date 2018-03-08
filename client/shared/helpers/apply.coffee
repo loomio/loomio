@@ -17,19 +17,22 @@ module.exports =
 
   applyPollStartSequence: (scope, options = {}) ->
     applySequence scope,
-      steps: ->
-        if scope.poll.group()
-          ['choose', 'save']
-        else
-          ['choose', 'save', 'share']
+      steps: ['choose', 'save', 'announce']
       initialStep: if scope.poll.pollType then 'save' else 'choose'
       emitter: options.emitter or scope
       chooseComplete: (_, pollType) ->
         scope.poll.pollType = pollType
-      saveComplete: (_, poll) ->
-        scope.poll = poll
-        LmoUrlService.goTo LmoUrlService.poll(poll)
-        options.afterSaveComplete(poll) if typeof options.afterSaveComplete is 'function'
+      saveComplete: (_, event) ->
+        LmoUrlService.goTo LmoUrlService.poll(event.model())
+        options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
+
+  applyDiscussionStartSequence: (scope, options = {}) ->
+    applySequence scope,
+      steps: ['save', 'announce']
+      emitter: options.emitter or scope
+      saveComplete: (_, event) ->
+        LmoUrlService.goTo LmoUrlService.discussion(event.model())
+        options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
 applySequence = (scope, options) ->
   scope.steps = if typeof options.steps is 'function' then options.steps() else options.steps

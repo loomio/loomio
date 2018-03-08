@@ -11,6 +11,14 @@ class Dev::MainController < Dev::BaseController
     :sign_in_as_jennifer
   ]
 
+  skip_around_action :dont_send_emails, only: [
+    :setup_discussion_mailer_new_discussion_email,
+    :setup_discussion_mailer_new_comment_email,
+    :setup_discussion_mailer_user_mentioned_email,
+    :setup_discussion_mailer_invitation_created_email,
+    :setup_accounts_merged_email
+  ]
+
   def index
     @routes = self.class.action_methods.select do |action|
       action.starts_with?('setup') || action.starts_with?('view')
@@ -23,21 +31,7 @@ class Dev::MainController < Dev::BaseController
     redirect_to dashboard_path
   end
 
-  def setup_thread_mailer_new_discussion_email
-    @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
-    @group.add_admin!  patrick
-    @group.add_member! jennifer
-
-    @discussion = Discussion.create(title: 'What star sign are you?',
-                                     group: @group,
-                                     description: "Wow, what a __great__ day.",
-                                     make_announcement: true,
-                                     author: jennifer)
-    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-    last_email
-  end
-
-  def setup_thread_mailer_new_comment_email
+  def setup_discussion_mailer_new_comment_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick).set_volume!(:loud)
     @group.add_member! jennifer
@@ -45,7 +39,6 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "Wow, what a __great__ day.",
-                                 make_announcement: false,
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @comment = Comment.new(author: jennifer, body: "hello _patrick_.", discussion: @discussion)
@@ -53,7 +46,7 @@ class Dev::MainController < Dev::BaseController
     last_email
   end
 
-  def setup_thread_mailer_user_mentioned_email
+  def setup_discussion_mailer_user_mentioned_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)
     @group.add_member! jennifer
@@ -61,13 +54,12 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "hey @patrickswayze wanna dance?",
-                                 make_announcement: false,
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     last_email
   end
 
-  def setup_thread_mailer_comment_replied_to_email
+  def setup_discussion_mailer_comment_replied_to_email
     @group = FormalGroup.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)
     @group.add_member! jennifer
@@ -75,13 +67,35 @@ class Dev::MainController < Dev::BaseController
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "Wow, what a __great__ day.",
-                                 make_announcement: false,
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @comment = Comment.new(body: "hello _patrick.", discussion: @discussion)
     CommentService.create(comment: @comment, actor: jennifer)
     @reply_comment = Comment.new(body: "why, hello there jen", parent: @comment, discussion: @discussion)
     CommentService.create(comment: @reply_comment, actor: patrick)
+    last_email
+  end
+
+  def setup_discussion_mailer_new_discussion_email
+    sign_in jennifer
+    @group = FactoryBot.create(:formal_group, name: "Girdy Dancing Shoes", creator: patrick)
+    @group.add_admin! patrick
+    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
+    event = DiscussionService.create(discussion: discussion, actor: patrick)
+    announcement = FactoryBot.build(:announcement, user_ids: [jennifer.id], event: event)
+    AnnouncementService.create(announcement: announcement, actor: patrick)
+    last_email
+  end
+
+  def setup_discussion_mailer_invitation_created_email
+    group = FactoryBot.create(:formal_group, name: "Dirty Dancing Shoes", creator: patrick)
+    group.add_admin! patrick
+    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
+    event = DiscussionService.create(discussion: discussion, actor: patrick)
+    comment = FactoryBot.build(:comment, discussion: discussion)
+    CommentService.create(comment: comment, actor: patrick)
+    announcement = FactoryBot.build(:announcement, notified: [{id: 'jen@example.com', type: 'Invitation'}.with_indifferent_access], event: event)
+    AnnouncementService.create(announcement: announcement, actor: patrick)
     last_email
   end
 
@@ -162,18 +176,8 @@ class Dev::MainController < Dev::BaseController
     patrick
     create_group
     create_another_group
-    redirect_to new_user_session_url
-  end
 
-  def setup_non_angular_login
-    patrick.update(angular_ui_enabled: false)
     redirect_to new_user_session_url
-  end
-
-  def setup_non_angular_logged_in_user
-    patrick.update(angular_ui_enabled: false)
-    sign_in patrick
-    redirect_to dashboard_url
   end
 
   def setup_dashboard
@@ -403,6 +407,31 @@ class Dev::MainController < Dev::BaseController
     redirect_to group_url(create_group)
   end
 
+  def setup_discussion_as_guest
+    group      = FactoryBot.create :formal_group, group_privacy: 'secret'
+    discussion = FactoryBot.build :discussion, group: group, title: "Dirty Dancing Shoes"
+    DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
+    discussion.create_guest_group
+    discussion.reload.guest_group.add_member! jennifer
+    sign_in jennifer
+
+    redirect_to discussion_url(discussion)
+  end
+
+  def setup_discussion_as_invited_email
+    group      = FactoryBot.create :formal_group, group_privacy: 'secret'
+    discussion = FactoryBot.build :discussion, group: group
+    DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
+    discussion.create_guest_group
+    invitation = discussion.reload.guest_group.invitations.create(
+      recipient_email: "ming@merciless.biz",
+      inviter: discussion.group.creator,
+      intent: :join_discussion
+    )
+
+    redirect_to invitation_url(invitation)
+  end
+
   def view_closed_group_with_shareable_link
     redirect_to invitation_url(create_group.shareable_invitation)
   end
@@ -546,6 +575,12 @@ class Dev::MainController < Dev::BaseController
   def setup_discussion
     create_discussion
     sign_in patrick
+    redirect_to discussion_url(create_discussion)
+  end
+
+  def setup_announced_discussion
+    sign_in patrick
+    FactoryBot.create :announcement, event: create_discussion.created_event
     redirect_to discussion_url(create_discussion)
   end
 

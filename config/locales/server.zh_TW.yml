@@ -7,6 +7,7 @@ zh_TW:
         blank: 不能留白
         invalid: 不是有效的值
   errors:
+    not_found: 404 檔案找不到。
     messages:
       email: 您輸入的不是有效的電子郵件地址
       spoofed_media_type: 檔案內容不符合其檔案名稱
@@ -124,7 +125,7 @@ zh_TW:
       button_text: 檢視申請
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。
-  thread_mailer:
+  discussion_mailer:
     new_discussion:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> 啟動了討論串：%{discussion}"

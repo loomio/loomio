@@ -2,12 +2,14 @@ class PollMailer < BaseMailer
   REPLY_DELIMITER = "--"
   layout 'invite_people_mailer', only: 'stance_created_author'
 
-  %w(poll_created poll_edited stance_created stance_created_author
+  %w(poll_created poll_announced poll_edited
+     stance_created stance_created_author
      poll_option_added poll_option_added_author
-     outcome_created outcome_created_author invitation_created invitation_resend
+     outcome_created outcome_created_author outcome_announced
+     invitation_created invitation_resend
      poll_closing_soon poll_closing_soon_author
      poll_expired  poll_expired_author
-     user_reminded).each do |action|
+     user_mentioned user_reminded).each do |action|
     define_method action, ->(recipient, event) { send_poll_email(recipient, event, action) }
   end
 
@@ -27,7 +29,7 @@ class PollMailer < BaseMailer
       action_name: action_name
     )
 
-    if event.eventable.is_a?(Outcome) && invite = event.eventable.calendar_invite
+    if invite = event.calendar_invite
       attachments['meeting.ics'] = {
         content_type:              'text/calendar',
         content_transfer_encoding: 'base64',

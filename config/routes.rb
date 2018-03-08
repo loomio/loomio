@@ -169,6 +169,7 @@ Loomio::Application.routes.draw do
 
     resources :documents, only: [:create, :update, :destroy, :index] do
       get :for_group, on: :collection
+      get :for_discussion, on: :collection
     end
 
     resource :translations, only: [] do
@@ -178,6 +179,12 @@ Loomio::Application.routes.draw do
 
     resources :notifications, only: :index do
       post :viewed, on: :collection
+    end
+
+    resources :announcements, only: [:index, :create] do
+      get :notified, on: :collection
+      get :notified_default, on: :collection
+      get :members, on: :collection
     end
 
     resources :contact_messages, only: :create
@@ -248,10 +255,12 @@ Loomio::Application.routes.draw do
   get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#index', as: :group_memberships_username
   get 'g/new'                              => 'application#index', as: :new_group
+  get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'p/example(/:type)'                  => 'polls#example',               as: :example_poll
 
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
+  get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment

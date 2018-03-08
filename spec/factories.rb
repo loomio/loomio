@@ -12,7 +12,6 @@ FactoryBot.define do
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
-    angular_ui_enabled false
     password 'complex_password'
     time_zone "Pacific/Tarawa"
     email_verified true
@@ -96,9 +95,16 @@ FactoryBot.define do
     kind :new_comment
   end
 
+  factory :discussion_event, class: Event do
+    association :eventable, factory: :discussion
+    user
+    kind :new_discussion
+  end
+
   factory :discussion do
     association :author, :factory => :user
     association :group, :factory => :formal_group
+    association :guest_group, factory: :guest_group
     title { Faker::Name.name }
     description 'A description for this discussion. Should this be *rich*?'
     uses_markdown true
@@ -272,6 +278,18 @@ FactoryBot.define do
 
   factory :stance_choice do
     poll_option
+  end
+
+  factory :announcement do
+    association :author, factory: :user
+    association :event, factory: :discussion_event
+  end
+
+  factory :notification do
+    user
+    event
+    url "https://www.example.com"
+    association :actor, factory: :user
   end
 
   factory :received_email do

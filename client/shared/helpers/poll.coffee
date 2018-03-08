@@ -10,6 +10,14 @@ module.exports =
   iconFor: (poll) ->
     fieldFromTemplate(poll.pollType, 'material_icon')
 
+  settingsFor: (poll) ->
+    _.compact [
+      ('multipleChoice'       if poll.pollType == 'poll'),
+      'notifyOnParticipate',
+      ('anonymous'            if fieldFromTemplate(poll.pollType, 'can_vote_anonymously')),
+      ('voterCanAddOptions'   if fieldFromTemplate(poll.pollType, 'can_add_options'))
+    ]
+
   myLastStanceFor: (poll) ->
     _.first _.sortBy(Records.stances.find(
       latest: true

@@ -7,10 +7,10 @@ angular.module('loomioApp').directive 'pollCommonCardHeader', ->
   templateUrl: 'generated/components/poll/common/card_header/poll_common_card_header.html'
   controller: ['$scope', ($scope) ->
     $scope.pollHasActions = ->
-      AbilityService.canSharePoll($scope.poll) ||
       AbilityService.canEditPoll($scope.poll)  ||
       AbilityService.canClosePoll($scope.poll) ||
-      AbilityService.canDeletePoll($scope.poll)
+      AbilityService.canDeletePoll($scope.poll)||
+      AbilityService.canExportPoll($scope.poll)
 
     $scope.icon = ->
       iconFor($scope.poll)

@@ -5,9 +5,11 @@ bowser = require 'bowser'
 # then allow for an alternate implementation for when 'window' may not exist
 module.exports =
 
-  checkBrowser: ->
-    if (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 10)
-      hardReload('/417.html')
+  unsupportedBrowser: ->
+    (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 11)
+
+  deprecatedBrowser: ->
+    bowser.ie and bowser.version == 11
 
   exportGlobals: ->
     window.moment = require 'moment'
@@ -19,9 +21,13 @@ module.exports =
     if (version == 'development' || document.location.protocol.match(/https/)) && navigator.serviceWorker?
       navigator.serviceWorker.register("#{document.location.origin}/service-worker.js?#{version}", scope: "./")
 
+  triggerResize: (delay) ->
+    setTimeout ->
+      window.dispatchEvent(new window.Event('resize'))
+    , delay if window.Event?
+
   print:             -> window.print()
   is2x:              -> window.devicePixelRatio >= 2
-  triggerResize:     -> setTimeout -> window.dispatchEvent(new window.Event('resize')) if window.Event
   viewportSize:      -> viewportSize()
   hardReload: (path) -> hardReload(path)
 

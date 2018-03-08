@@ -66,8 +66,8 @@ de:
       button_text: Anfrage ansehen
   email_actions:
     unfollowed_discussion: Sie haben die E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
-  thread_mailer:
-    reply_or_view_online_html: Entweder direkt auf diese E-Mail antworten oder <a href='%{url}'>auf %{hostname} antworten</a>.
+  discussion_mailer:
+    reply_or_view_online_html: Entweder direkt auf diese E-Mail antworten oder <a href='%{url}'>auf %{hostname}antworten</a>.
     turn_off_notifications_html: "<a href='%{url}'>E-Mail-Benachrichtigungen</a> für diese Diskussion deaktivieren."
     change_email_preferences_html: "<a href='%{email_preferences_url}'>E-Mail-Einstellungen</a> ändern."
   footer:

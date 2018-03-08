@@ -15,11 +15,13 @@ class MembershipRequestService
     if membership = membership_request.convert_to_membership!
       Events::MembershipRequestApproved.publish!(membership, actor)
     else
-      invitation = InvitationService.create_invite_to_join_group(
-                        recipient_name:  membership_request.name,
-                        recipient_email: membership_request.email,
-                        inviter: actor,
-                        group: membership_request.group)
+      invitation = Invitation.create!(
+        recipient_name:  membership_request.name,
+        recipient_email: membership_request.email,
+        group:           membership_request.group,
+        inviter:         actor,
+        intent:          :join_group
+      )
       InvitePeopleMailer.delay(priority: 1).after_membership_request_approval(invitation, actor.email,'')
     end
   end

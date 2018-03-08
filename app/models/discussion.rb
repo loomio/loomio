@@ -4,12 +4,14 @@ class Discussion < ApplicationRecord
   include Translatable
   include Reactable
   include HasTimeframe
+  include HasAnnouncements
   include HasMentions
+  include HasGuestGroup
   include HasImportance
   include MessageChannel
-  include MakesAnnouncements
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
   include HasCreatedEvent
 
   scope :archived, -> { where('archived_at is not null') }
@@ -43,7 +45,8 @@ class Discussion < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :commenters, -> { uniq }, through: :comments, source: :user
   has_many :documents, as: :model, dependent: :destroy
-
+  has_many :poll_documents,    through: :polls,    source: :documents
+  has_many :comment_documents, through: :comments, source: :documents
 
   has_many :items, -> { includes(:user).thread_events.order('events.id ASC') }, class_name: 'Event'
 
