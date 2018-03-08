@@ -10,7 +10,7 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 { registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
 
 $controller = ($scope, $routeParams, $rootScope) ->
-  EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true, skipForceSignIn: true }
+  EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }
 
   requestedCommentId = ->
     parseInt($routeParams.comment or LmoUrlService.params().comment)
@@ -56,7 +56,6 @@ $controller = ($scope, $routeParams, $rootScope) ->
           rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private
           prev:        LmoUrlService.discussion(@discussion, from: @pageWindow.prev) if @pageWindow.prev?
           next:        LmoUrlService.discussion(@discussion, from: @pageWindow.next) if @pageWindow.next?
-        skipForceSignIn: true
         skipScroll: true
 
   Records.discussions.findOrFetchById($routeParams.key, {}, true).then @init, (error) ->
