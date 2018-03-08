@@ -11,7 +11,7 @@
         %md-button.md-button--tiny.lmo-pointer{ng-click: "prev()", ng-disabled: "!hasPrev()", md-prevent-menu-close: "true"}
           %i.mdi.mdi-chevron-left.mdi-24px
         .lmo-slide-animation.lmo-flex__grow
-          .learn-more__nugget.animated{ng-repeat: "nugget in nuggets track by $index", ng-if: "currentNugget == nugget", translate: "{{nugget}}"}
+          %p.lmo-hint-text.learn-more__nugget.animated{ng-repeat: "nugget in nuggets track by $index", ng-if: "currentNugget == nugget", translate: "{{nugget}}"}
         %md-button.md-button--tiny.lmo-pointer{ng-click: "next()", ng-disabled: "!hasNext()", md-prevent-menu-close: "true"}
           %i.mdi.mdi-chevron-right.mdi-24px
       .learn-more__dots.md-accent.lmo-flex{md-colors: "{'color': 'default-accent'}"}

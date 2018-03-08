@@ -29,15 +29,14 @@ class Announcement < ApplicationRecord
   after_destroy :update_announcements_count
 
   alias :user :author
-  attr_accessor :invitation_emails
 
   def poll_type
     eventable.poll&.poll_type if eventable.respond_to?(:poll)
   end
 
   def announce_and_invite!
-    announcees.import  notified.uniq.map   { |n| build_announcee(n) }
-    memberships.import users_to_invite.map { |u| build_membership(u) }
+    announcees.import  Array(notified).uniq.map { |n| build_announcee(n) }
+    memberships.import users_to_invite.map      { |u| build_membership(u) }
   end
 
   def users_to_announce
@@ -66,24 +65,15 @@ class Announcement < ApplicationRecord
 
   def build_announcee(n)
     Announcee.new(
-      announceable_id: munge_id(n),
-      announceable_type: munge_type(n),
-      user_ids: munge_user_ids(n).map(&:to_s),
-      created_at: self.created_at
+      announceable_id:   munge_id(n),
+      announceable_type: n['type'],
+      user_ids:          Array(n['notified_ids']).map(&:to_s),
+      created_at:        self.created_at
     )
   end
 
   def munge_id(n)
     return n['id'] unless n['type'] == 'Invitation'
     Invitation.create!(recipient_email: n['id'], group: guest_group, inviter: author, intent: invitation_intent).id
-  end
-
-  def munge_type(n)
-    return n['type'] unless n['type'] == 'FormalGroup'
-    'Group'
-  end
-
-  def munge_user_ids(n)
-    Array(n['notified_ids']).map(&:to_i)
   end
 end

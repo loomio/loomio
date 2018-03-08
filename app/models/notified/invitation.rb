@@ -3,11 +3,15 @@ class Notified::Invitation < Notified::Base
     model
   end
 
-  def type
-    "Invitation".freeze
-  end
-
   def title
     model
+  end
+
+  def logo_url
+    Invitation.new(recipient_email: model).get_avatar_initials
+  end
+
+  def logo_type
+    :initials
   end
 end

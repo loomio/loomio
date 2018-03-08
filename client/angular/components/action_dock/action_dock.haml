@@ -3,7 +3,8 @@
     %reactions_input{class: "action-dock__button--react", model: "model", ng-if: "action.name == 'react'"}
     %md-button.md-button--tiny{class: "action-dock__button--{{action.name}}", ng-if: "action.name != 'react'", ng-click: "action.perform()"}
       %i.mdi{class: "{{ action.icon }}"}
-      %i.mdi.mdi-alert-circle-outline.lmo-helper-icon{ng-if: "action.active()", md-colors: "{'color': 'warn'}"}
+      %i.mdi.mdi-plus.lmo-helper-icon{ng-if: "action.hasPlus && !action.active()"}
+      %i.mdi.mdi-alert-circle-outline.action-dock--active.lmo-helper-icon{ng-if: "action.active()", md-colors: "{'color': 'warn'}"}
       %md-tooltip{md-delay: "500"}
         %div{translate: "action_dock.{{ action.name }}"}
         %div{ng-if: "action.active()", md-colors: "{'color': 'warn-200'}"}

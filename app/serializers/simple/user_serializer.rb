@@ -1,4 +1,6 @@
 class Simple::UserSerializer < ActiveModel::Serializer
+  include LastNotified
+
   embed :ids, include: true
   attributes :id, :key, :name, :username, :avatar_kind, :avatar_initials, :gravatar_md5, :avatar_url
 

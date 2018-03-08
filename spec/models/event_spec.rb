@@ -143,7 +143,8 @@ describe Event do
       it 'should notify participants when voters_review_responses is true' do
         poll = create(:poll_proposal, discussion: discussion)
         create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        create(:announcement, event: poll.created_event, notified: [group_notified])
+        a = create(:announcement, event: poll.created_event)
+        a.announcees.create(user_ids: group_notified[:notified_ids], announceable: discussion.group)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -172,7 +173,8 @@ describe Event do
       it 'should notify announcees who have not participated when voters_review_responses is false' do
         create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         # quiet user who has been announced to before
-        create(:announcement, event: poll.created_event, notified: [group_notified])
+        a = create(:announcement, event: poll.created_event)
+        a.announcees.create(user_ids: group_notified[:notified_ids], announceable: discussion.group)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -347,7 +349,7 @@ describe Event do
     end
 
     it 'does not email people with email_announcements off' do
-      announcement.update(user_ids: [user_thread_loud])
+      announcement.announcees.create(announceable: user_thread_loud)
       user_thread_loud.update(email_announcements: false)
       expect { Events::AnnouncementCreated.publish!(announcement) }.to_not change { emails_sent }
     end

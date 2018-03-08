@@ -11,7 +11,7 @@ module HasAnnouncements
     has_many :announcee_invitations, through: :announcees, source_type: 'Invitation'
 
     def users_announced_to
-      @users_announced_to ||= User.where(id: announcements.pluck(:user_ids).flatten.uniq)
+      @users_announced_to ||= User.distinct.where(id: announcees.pluck(:user_ids).flatten)
     end
 
     define_counter_cache(:announcements_count) { |model| model.announcements.count }

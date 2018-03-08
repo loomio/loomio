@@ -240,11 +240,6 @@ en:
       <p>Dismissing a thread removes it from your unread items. If any new
         activity occurs in the thread, it will show as unread again.</p>
 
-  link_explanation_form:
-    body_html: |
-      <p>You've just created a decision that anyone with the link can participate in. Click the
-      <strong>'Copy URL'</strong> button in the action dock to copy this link to your clipboard to share it.</p>
-
   inbox:
     clear: 'Clear'
     latest: 'Latest'
@@ -337,6 +332,12 @@ en:
     start_poll: 'Start Poll'
     invite_people: 'Invite People'
 
+  notification_models:
+    discussion: 'thread: '
+    comment: 'comment in '
+    poll: 'decision: '
+    outcome: 'outcome: '
+
   notifications:
     header: "Notifications"
     no_notifications: "You don't have any notifications"
@@ -350,7 +351,7 @@ en:
     new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> commented on <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> reacted <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> to your comment in <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> reacted <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> to your {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> is waiting on you to participate in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
@@ -406,57 +407,66 @@ en:
     notified_count: '{{count}} people will be emailed'
 
   announcement:
-    list:
-      title: Shared with {{count}} people
-      title_singular: Shared with 1 person
     form:
-      discussion_helptext: Add people who you'd like to join this thread. They will be able to view it and comment if they can't already.
-      poll_helptext: Add people who you'd like to participate in this decision. They will gain access to this poll and be able to vote.
-      outcome_helptext: Add people who you'd like to notify of this decision. They will be able to view the poll results.
+      discussion_helptext: Add people you'd like to notify of this thread. They will be able to view it and comment if they can't already.
+      poll_helptext: Add people you'd like to participate in this decision. They will gain access to this poll and be able to vote.
+      outcome_helptext: Add people you'd like to notify of this decision. They will be able to view the poll results.
       relevant_discussion_helptext: This decision is part of the thread <strong>{{title}}</strong>, you can also
       invite_to_discussion: invite people to join that conversation
-      helptext_title: Announcing content
-      helptext_1: |
-        <p>
-          Announcements allow you to notify the people you'd like to engage, without bothering the people you don't.
-        </p>
-        <p>
-          Simply enter the name of a person or group, or the email address of someone you'd like to share with.
-          <img src="/img/announce/chip.png" />
-        </p>
-      helptext_2: |
-        <p>
-          Clicking on a group will allow you to further fine-tune who in the group will receive an email.
-          <img src="/img/announce/group.png" />
-        </p>
-      helptext_3: |
-        <p>
-          If you don't want to notify anyone right now, that's okay too! You can always announce later (or again),
-          by clicking on the <strong>Announce</strong> button in the action dock.
-          <img src="/img/announce/button.png" />
-        </p>
-      helptext_4: |
-        <p>
-          If you haven't notified anyone at all yet, you'll notice a gentle reminder to do so.
-          <img src="/img/announce/reminder.png" />
-        </p>
-
-      discussion_title: Share thread
-      poll_title: Share poll
-      outcome_title: Share outcome
-      label: People to notify
+      get_shareable_link: Get shareable link
+      shareable_link_helptext: Anyone with this link will be able to participate
+      # helptext_title: Announcing content
+      # helptext_1: |
+      #   <p>
+      #     Announcements allow you to notify the people you'd like to engage, without bothering the people you don't.
+      #   </p>
+      #   <p>
+      #     Simply enter the name of a person or group, or the email address of someone you'd like to share with.
+      #   </p>
+      #   <p>
+      #     Each person entered will receive a notification; anyone who cannot access the thread or decision will be given access.
+      #     <img src="/img/announce/chip.png" />
+      #   </p>
+      # helptext_2: |
+      #   <p>
+      #     Clicking on a group will allow you to further fine-tune who in the group will receive an email.
+      #     <img src="/img/announce/group.png" />
+      #   </p>
+      # helptext_3: |
+      #   <p>
+      #     If you don't want to notify anyone right now, that's okay too! You can always announce later (or again),
+      #     by clicking on the <strong>Announce</strong> button in the action dock.
+      #     <img src="/img/announce/button.png" />
+      #   </p>
+      # helptext_4: |
+      #   <p>
+      #     If you haven't notified anyone at all yet, you'll notice a gentle reminder to do so.
+      #     <img src="/img/announce/reminder.png" />
+      #   </p>
       placeholder: Enter groups, names, or email addresses
-      previously_notified: "Currently shared with {{count}} people"
-      previously_notified_singular: "Currently shared with 1 person"
-      notified_count: '{{count}} people will be notified'
-      notified_count_singular: 1 person will be notified
-      group_count: '({{count}} people - click to edit)'
+      discussion:
+        title: Share thread
+      poll:
+        title: Share decision
+      outcome:
+        title: Share outcome
+      notified: '{{notified}} people will be notified'
+      group_title: '{{name}} ({{count}} people)'
+      advanced: Advanced
+      click_to_edit: (click to edit)
+      click_to_expand: (click to expand)
+    members_list:
+      title: Shared with
+      last_notified: Notified
+      not_notified: Not notified yet
+      no_members: "This hasn't been shared with anyone yet!"
     group_form:
       search_placeholder: Search for people...
       modal_title: Select group members
       members_count: '{{count}} people will be notified'
     flash:
       success: '{{count}} notifications sent'
+
 
   action_dock:
     react: Add reaction
@@ -1757,6 +1767,10 @@ en:
 
     common:
       do_it_later: I'll do this later
+
+  browser_warning:
+    message: "IMPORTANT! You are using an outdated browser ({{name}} {{version}}) which is not supported by {{site}}."
+    link: Please switch to another browser
 
   slack_added_modal:
     title: Success!

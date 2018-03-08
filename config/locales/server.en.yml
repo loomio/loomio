@@ -626,8 +626,10 @@ en:
       details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
 
   notified:
-    no_matches_found: "No valid matches for '%{query}'"
-    group_users: "(%{count} people - click to edit)"
+    no_matches_found: "No results found matching '%{query}'"
+    group_users: "(%{count} people)"
+    group_title: "%{name} (%{count} people)"
+    public_title: Public (Anyone with link)
 
   poll_unsubscribe:
     title: You have been unsubscribed from %{title}

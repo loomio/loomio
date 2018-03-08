@@ -143,7 +143,7 @@ class User < ApplicationRecord
   # Join 2: Group those instances, taking the most recent instance's created_at as the last_notified_at timestamp
   #
   # then, we join that timestamp to the current user query, available in the last_notified_at column
-  scope :with_last_notified_for, ->(model) {
+  scope :with_last_notified_at, ->(model) {
     select('*, last_notified_at').joins(<<~SQL)
       -- join #2
       LEFT JOIN (
