@@ -266,8 +266,8 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.expectNoElement('.reaction')
     page.click('.action-dock__button--react')
-    page.click('.emoji-picker__selector:first-child')
-    page.expectElement('.reaction')
+    page.click('.md-active .emoji-picker__link:first-child')
+    page.expectElement('.reaction__emoji')
   },
 
   'mentions a user': (test) => {
