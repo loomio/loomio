@@ -8,59 +8,45 @@ class BootData
   end
 
   def payload
-    @payload ||= ActiveModel::ArraySerializer.new(Array(@user),
-      scope: serializer_scope,
-      each_serializer: serializer,
-      root: :current_users
-    ).as_json.tap { |json| add_current_user_to(json) }
+    @payload ||= user_payload.merge(
+      current_user_id:  user.id,
+      pending_identity: @identity,
+      flash:            @flash
+    )
   end
 
   private
 
-  def add_current_user_to(json)
-    return unless user.is_logged_in?
-    json[:current_user_id] = user.id
-    json[:users] = Array(json[:users]).reject { |u| u[:id] == user.id } + json.delete(:current_users)
-  end
-
-  def serializer
-    if user.restricted
-      Restricted::UserSerializer
-    else
-      Full::UserSerializer
-    end
+  def user_payload
+    ActiveModel::ArraySerializer.new(Array(@user),
+      scope:           serializer_scope,
+      each_serializer: (user.restricted ? Restricted::UserSerializer : Full::UserSerializer),
+      root: :users
+    ).as_json
   end
 
   def serializer_scope
     {
       formal_memberships: formal_memberships,
       guest_memberships:  guest_memberships,
-      pending_identity:   @identity,
-      flash:              @flash
-    }.merge(authed_serializer_scope)
-  end
-
-  def authed_serializer_scope
-    return {} unless user.is_logged_in? && !user.restricted
-    {
       notifications:      notifications,
       identities:         identities
-    }
-  end
-
-  def guest_memberships
-    @guest_memberships ||= user.memberships.guest.includes(:user, :inviter, {group: :parent})
+    }.compact
   end
 
   def formal_memberships
     @formal_memberships ||= user.memberships.formal.includes(:user, :group)
   end
 
+  def guest_memberships
+    @guest_memberships ||= user.memberships.guest.includes(:user, :inviter, {group: :parent})
+  end
+
   def notifications
-    @notifications ||= NotificationCollection.new(user).notifications
+    @notifications ||= NotificationCollection.new(user).notifications unless user.restricted
   end
 
   def identities
-    @identities ||= user.identities.order(created_at: :desc)
+    @identities ||= user.identities.order(created_at: :desc) unless user.restricted
   end
 end

@@ -6,7 +6,7 @@ LmoUrlService   = require 'shared/services/lmo_url_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 
-{ viewportSize, deprecatedBrowser, performFlash } = require 'shared/helpers/window.coffee'
+{ viewportSize, deprecatedBrowser }    = require 'shared/helpers/window.coffee'
 { scrollTo, setCurrentComponent }      = require 'shared/helpers/layout.coffee'
 { signIn, subscribeToLiveUpdate }      = require 'shared/helpers/user.coffee'
 { broadcastKeyEvent, registerHotkeys } = require 'shared/helpers/keyboard.coffee'
@@ -19,7 +19,6 @@ $controller = ($scope, $injector) ->
 
   Records.boot.remote.get('user').then (response) ->
     signIn(response, response.current_user_id, $scope.loggedIn)
-    performFlash(response)
 
   $scope.warnDeprecation  = deprecatedBrowser()
   $scope.currentComponent = 'nothing yet'

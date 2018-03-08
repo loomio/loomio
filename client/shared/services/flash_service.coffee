@@ -10,7 +10,7 @@ createFlashLevel = (service, level, duration) ->
       options:   translateValues
       action:    actionKey
       actionFn:  actionFn
-    )
+    ) if translateKey
 
 module.exports = class FlashService
   ImplementationService.requireMethod(@, 'broadcast', 'setBroadcastMethod')
