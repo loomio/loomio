@@ -10,7 +10,7 @@ class Members::User < Members::Base
   def logo_url
     case logo_type
     when 'uploaded' then model.avatar_url
-    when 'gravatar' then Digest::MD5.hexdigest(object.email.to_s.downcase)
+    when 'gravatar' then Digest::MD5.hexdigest(model.email.to_s.downcase)
     when 'initials' then model.avatar_initials
     end
   end
