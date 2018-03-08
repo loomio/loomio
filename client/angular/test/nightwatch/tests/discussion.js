@@ -319,7 +319,7 @@ module.exports = {
     page.expectNoText('.activity-card', 'original comment right thur')
   },
 
-  'invites a user to a discussion': (test) => {
+  'invites_a_user_to_a_discussion': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_mailer_new_discussion_email')
@@ -335,7 +335,7 @@ module.exports = {
     page.expectNoText('.sidebar__list-item-button--group', 'Girdy Dancing Shoes')
   },
 
-  'invites an email to a discussion': (test) => {
+  'invites_an_email_to_a_discussion': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_mailer_invitation_created_email')
@@ -343,7 +343,6 @@ module.exports = {
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
-    page.click('.add-comment-panel__sign-in-btn')
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
   }
 }
