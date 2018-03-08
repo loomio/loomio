@@ -169,7 +169,8 @@ class Poll < ApplicationRecord
     update_attribute(:matrix_counts,
       poll_options.order(:name).limit(5).map do |option|
         stances.latest.order(:created_at).limit(5).map do |stance|
-          stance.poll_options.include?(option)
+          # the score of the stance choice which has this poll option in this stance
+          stance.stance_choices.find_by(poll_option:option)&.score.to_i
         end
       end
     ) if chart_type == 'matrix'

@@ -20,7 +20,9 @@ angular.module('loomioApp').directive 'matrixChart', ->
           drawShape(row, col, $scope.size / 5, false)
 
     drawShape = (row, col, width, value) ->
-      color = if value then AppConfig.pollColors.meeting[0] else '#ebebeb'
+
+      color = ['#ebebeb','#d1eefd','#70C9F8'][value]
+
       shapes.push(draw.rect(width-1, width-1)
                       .fill(color)
                       .x(width * row)

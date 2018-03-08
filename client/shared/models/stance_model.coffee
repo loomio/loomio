@@ -59,5 +59,11 @@ module.exports = class StanceModel extends BaseModel
   votedFor: (option) ->
     _.contains _.pluck(@pollOptions(), 'id'), option.id
 
+  scoreFor: (option) ->
+    choiceForOption = _.find @stanceChoices(), (choice)->
+      choice.pollOptionId == option.id
+
+    if choiceForOption then choiceForOption.score else 0
+
   verify: () =>
     @remote.postMember(@id, 'verify').then => @unverified = false

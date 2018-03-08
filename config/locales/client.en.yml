@@ -1569,6 +1569,10 @@ en:
   poll_meeting_chart_panel:
     total: Total
 
+  poll_meeting_chart_legend:
+    can_attend: "Can Attend"
+    maybe_attend: "If Need Be"
+
   poll_poll_vote_form:
     stance_created: Vote created
     stance_updated: Vote updated

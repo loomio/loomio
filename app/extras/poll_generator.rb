@@ -111,25 +111,25 @@ PollGenerator = Struct.new(:poll_type) do
 
   def meeting_stances_for(poll)
     generate_stance_for(poll, index: 0, reason: "", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] },
-      { poll_option_id: poll.poll_option_ids[2] }
+      { poll_option_id: poll.poll_option_ids[0], score: 1},
+      { poll_option_id: poll.poll_option_ids[2], score: 2}
     ])
     generate_stance_for(poll, index: 1, reason: "Sorry, this week is crazy for me!", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] }
+      { poll_option_id: poll.poll_option_ids[0], score: 1}
     ])
     generate_stance_for(poll, index: 2, reason: "I'm free whenever", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] },
-      { poll_option_id: poll.poll_option_ids[1] },
-      { poll_option_id: poll.poll_option_ids[2] }
+      { poll_option_id: poll.poll_option_ids[0], score: 1},
+      { poll_option_id: poll.poll_option_ids[1], score: 2},
+      { poll_option_id: poll.poll_option_ids[2], score: 2}
     ])
     generate_stance_for(poll, index: 3, reason: "", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] },
-      { poll_option_id: poll.poll_option_ids[1] },
-      { poll_option_id: poll.poll_option_ids[2] }
+      { poll_option_id: poll.poll_option_ids[0], score: 2},
+      { poll_option_id: poll.poll_option_ids[1], score: 2},
+      { poll_option_id: poll.poll_option_ids[2], score: 2}
     ])
     generate_stance_for(poll, index: 4, reason: "", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] },
-      { poll_option_id: poll.poll_option_ids[1] }
+      { poll_option_id: poll.poll_option_ids[0], score: 2},
+      { poll_option_id: poll.poll_option_ids[1], score: 2}
     ])
   end
 
