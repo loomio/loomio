@@ -18,7 +18,7 @@ require 'rails_helper'
 
       it 'returns the current users notifications' do
         notification
-        expect(subject.data[:notifications].map { |n| n[:id] }).to include notification.id
+        expect(subject.payload[:notifications].map { |n| n[:id] }).to include notification.id
       end
 
       it 'returns the current users identities' do
