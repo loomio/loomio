@@ -18,7 +18,7 @@ class Rack::Attack
     Rack::Attack.throttle("groups#create", :limit => limit, :period => period) do |req|
       req.ip if heavy.any? {|route| req.path.starts_with?(route)} && req.post?
     end
-  end
+  end unless Rails.env.test?
 
   medium = ['login_tokens',
             'invitations',
@@ -42,5 +42,5 @@ class Rack::Attack
     Rack::Attack.throttle("record#create", :limit => limit, :period => period) do |req|
       req.ip if medium.any? {|route| req.path.starts_with?("/api/v1/#{route}")} && req.post?
     end
-  end
+  end unless Rails.env.test?
 end
