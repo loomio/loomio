@@ -16,6 +16,7 @@ sv:
       mark_as_read: Markera som läst
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst
+      click_here: Klicka här
     membership_request:
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: Du kan godkänna eller avslå begäran här

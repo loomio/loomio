@@ -14,7 +14,7 @@ namespace :loomio do
         f << "<!-- Don't make changes here; they will be overwritten. -->\n"
         f << ApplicationController.new.render_to_string(
           template: "errors/#{code}",
-          layout: "error"
+          layout: "errors"
         )
       end
     end
@@ -55,6 +55,6 @@ namespace :loomio do
   end
 
   task notify_clients_of_update: :environment do
-    MessageChannelService.publish({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
+    MessageChannelService.publish_data({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
   end
 end

@@ -7,9 +7,14 @@ zh_TW:
         blank: 不能留白
         invalid: 不是有效的值
   errors:
+    not_found: 404 檔案找不到。
     messages:
       email: 您輸入的不是有效的電子郵件地址
       spoofed_media_type: 檔案內容不符合其檔案名稱
+  user:
+    error:
+      recaptcha: "我們無法確認您是不是機器人。請再試一次！"
+      username_must_be_alphanumeric: "使用者名稱只能為小寫字母與數字"
   attachment:
     error:
       too_large: 您打算附加的檔案超過 100MB，請選擇較小的檔案。
@@ -21,9 +26,6 @@ zh_TW:
   stance:
     error:
       too_short: 請選擇
-  user:
-    error:
-      username_must_be_alphanumeric: 使用者名稱只能包含小寫字母及數字。
   invitation:
     invitation_cancelled: 抱歉，這封邀請函已被群組協調者撤銷。請從您的群組中要求另一份邀請函。
     invitation_already_used: 您已出示過此封邀請函，請直接登入到 Loomio 以進入您的群組。
@@ -109,6 +111,7 @@ zh_TW:
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
       heres_what_happened: "這裡是 %{site_name} 上昨天發生的事情。"
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
+      click_here: 點這邊
     group_membership_approved:
       intro: "您加入「%{group_name}」群組的申請已獲批准。"
       intro_html: "您加入 <strong>%{group_name}</strong> 群組的申請已獲批准。"
@@ -152,7 +155,7 @@ zh_TW:
     error:
       too_many_pending: "您在此群組有多於最大 %{count} 個的待處理邀請"
       too_many_cancelled: "您在此群組有多於最大值 %{count} 個的已取消邀請"
-      all_email_addresses_belong_to_members: "我們不會將邀請函寄送給提供的電子郵件地址，因為它們是屬於已經在群組中的人們的。"
+      all_email_addresses_belong_to_members: "這些人已經是群組成員了。"
   password_reset:
     change_your_password: 變更您的密碼
     change_my_password: 變更密碼
@@ -535,7 +538,7 @@ zh_TW:
       'proposal'：尋求集體共識
       'count'：     追蹤參與並找到志願者
       'poll'：        測量選項的人氣
-      'dot vote'： 排序一份選項清單
+      'dot_vote'： 排序一份選項清單
       'meeting'： 尋找會面時間
 
       舉例來說：

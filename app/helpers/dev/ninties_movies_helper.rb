@@ -348,7 +348,7 @@ module Dev::NintiesMoviesHelper
     InvitationService.redeem(invitation.first, emilio)
 
     #'poll_created'
-    notified = [{type: 'Group', id: create_discussion.group_id, notified_ids: [patrick.id]}.with_indifferent_access]
+    notified = [{type: 'FormalGroup', id: create_discussion.group_id, notified_ids: [patrick.id]}.with_indifferent_access]
 
     poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
     poll_created_event = PollService.create(poll: poll, actor: jennifer)

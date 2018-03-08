@@ -51,8 +51,6 @@ class Poll < ApplicationRecord
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
-  has_many :guest_invitations, through: :guest_group, source: :invitations
-
   has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
@@ -73,6 +71,10 @@ class Poll < ApplicationRecord
   end
 
   delegate :locale, to: :author
+
+  def groups
+    [group, guest_group].compact
+  end
 
   def undecided_count
     undecided_user_count + guest_group.pending_invitations_count
@@ -150,10 +152,6 @@ class Poll < ApplicationRecord
     reload.members.where.not(id: participants)
   end
 
-  def invitations
-    Invitation.where(group_id: [group_id, guest_group_id].compact)
-  end
-
   def update_stance_data
     update_attribute(:stance_data, zeroed_poll_options.merge(
       self.class.connection.select_all(%{
@@ -169,8 +167,8 @@ class Poll < ApplicationRecord
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
     update_attribute(:matrix_counts,
-      poll_options.limit(5).map do |option|
-        stances.latest.limit(5).map do |stance|
+      poll_options.order(:name).limit(5).map do |option|
+        stances.latest.order(:created_at).limit(5).map do |stance|
           stance.poll_options.include?(option)
         end
       end

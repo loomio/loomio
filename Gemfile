@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.5.0'
 gem 'rails', '~> 5.1.5'
+gem 'actioncable'
 gem 'rake'
 gem 'pg', '~> 0.18.4'
 gem 'haml-rails', '~> 1.0.0'
@@ -10,7 +11,6 @@ gem 'devise-i18n'
 gem 'doorkeeper', '~> 4.2.0'
 gem 'doorkeeper-i18n'
 gem 'active_model_serializers', '~> 0.8.1'
-gem 'private_pub', github: 'loomio/private_pub'
 gem 'cancancan'
 gem 'gravtastic'
 gem 'paperclip', '~> 5.2.1'
@@ -50,6 +50,8 @@ gem 'icalendar', github: 'icalendar/icalendar', ref: '97ed9d3'
 gem 'rack-attack'
 gem 'js_regex'
 gem 'bootsnap', require: false
+gem 'redis-rails'
+gem 'skylight'
 
 group :development, :test do
   gem 'byebug'
@@ -89,7 +91,6 @@ group :production do
   gem 'puma'
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
-  gem 'dalli'
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
 end

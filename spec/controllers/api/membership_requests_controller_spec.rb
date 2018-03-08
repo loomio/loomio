@@ -9,7 +9,6 @@ describe API::MembershipRequestsController do
   let(:approved_membership_request) { create :membership_request, group: group }
 
   before do
-    stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
     group.add_member! user
     pending_membership_request
     approved_membership_request.approve!(user)

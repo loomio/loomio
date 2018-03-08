@@ -1,0 +1,10 @@
+%h2= t(:"poll.export.stances")
+%table
+  %thead
+    - rows[0].each do |field|
+      %th= field.humanize
+  %tbody
+    - rows[1..-1].each do |row|
+      %tr
+        - row.each do |field|
+          %td= field

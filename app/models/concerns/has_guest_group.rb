@@ -8,6 +8,10 @@ module HasGuestGroup
     attr_accessor :update_anyone_can_participate_value
   end
 
+  def groups
+    [group, guest_group].compact
+  end
+
   def guest_group
     super || create_guest_group.tap { self.save(validate: false) }
   end
@@ -26,8 +30,20 @@ module HasGuestGroup
     User.joins(:memberships).where("memberships.group_id": group_id)
   end
 
+  def guest_members
+    guest_group.members.where.not(id: group.presence&.member_ids)
+  end
+
   def members
     User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
+  end
+
+  def invitations
+    Invitation.where(group_id: [group_id, guest_group_id].compact)
+  end
+
+  def invitation_intent
+    :"join_#{self.class.to_s.downcase}"
   end
 
   def anyone_can_participate

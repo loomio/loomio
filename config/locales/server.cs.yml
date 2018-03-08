@@ -16,9 +16,6 @@ cs:
   stance:
     error:
       too_short: Proveďte prosím výběr
-  user:
-    error:
-      username_must_be_alphanumeric: Uživatelské jméno musí obsahovat pouze malá písmena a číslice.
   date:
     formats:
       for_this_year: "%e %b"
@@ -64,6 +61,7 @@ cs:
       mark_as_read: Označit jako přečtené
       thanks_for_reading: Děkujeme za přečtení a přejeme hezký den!
       marked_as_read_success: Všechno z e-mailu bylo označeno jako přečtené
+      click_here: Klikněte sem
     group_membership_approved:
       join_group: "Přidat se ke skupině"
     membership_request:

@@ -52,6 +52,7 @@ uk:
       mark_as_read: Відмітити як прочитане
       thanks_for_reading: Дякуємо за читання, гарного дня!
       marked_as_read_success: Все в листі було позначено як прочитане
+      click_here: Натисніть тут
     group_membership_approved:
       intro: "Ваш запит на участь у групі %{group_name} було схвалено."
       intro_html: "Ваш запит на участь у групі <strong>%{group_name}</strong> було схвалено."

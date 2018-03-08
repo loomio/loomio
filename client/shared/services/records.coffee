@@ -39,6 +39,8 @@ records.addRecordsInterface require('shared/interfaces/document_records_interfac
 records.addRecordsInterface require('shared/interfaces/login_token_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/message_channel_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/locale_records_interface.coffee')
+records.addRecordsInterface require('shared/interfaces/member_records_interface.coffee')
+AppConfig.records = records
 
 AppConfig.records = records
 module.exports = records

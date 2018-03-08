@@ -40,6 +40,8 @@ class FormalGroup < Group
   has_many :public_poll_documents,       through: :public_polls,       source: :documents
   has_many :public_comment_documents,    through: :public_comments,    source: :documents
 
+  has_many :announcees, dependent: :destroy, as: :announceable
+
   belongs_to :cohort
   belongs_to :default_group_cover
 
@@ -71,7 +73,7 @@ class FormalGroup < Group
   has_attached_file    :logo,
                        url: "/system/groups/:attachment/:id_partition/:style/:filename",
                        styles: { card: "67x67#", medium: "100x100#" },
-                       default_url: AppConfig.theme[:default_group_logo_src]
+                       default_url: AppConfig.theme[:icon_src]
 
   validates_attachment :cover_photo,
     size: { in: 0..100.megabytes },

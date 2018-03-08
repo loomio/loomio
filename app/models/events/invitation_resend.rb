@@ -3,10 +3,6 @@ class Events::InvitationResend < Event
     super invitation, user: invitation.inviter, announcement: true
   end
 
-  def poll
-    eventable.group.invitation_target
-  end
-
   def trigger!
     super
     resend!

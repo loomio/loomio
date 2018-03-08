@@ -1,7 +1,7 @@
 Queries::Notified::Search = Struct.new(:query, :user) do
 
   def results
-    @results ||= visible_users + visible_groups + visible_invitations
+    @results ||= (visible_users + visible_groups + visible_invitations).presence || nobody_found
   end
 
   private
@@ -22,6 +22,10 @@ Queries::Notified::Search = Struct.new(:query, :user) do
 
   def visible_invitations
     Array(query.scan(AppConfig::EMAIL_REGEX)).map { |email| Notified::Invitation.new(email) }
+  end
+
+  def nobody_found
+    Array(Notified::Null.new(query))
   end
 
 end

@@ -5,9 +5,11 @@ bowser = require 'bowser'
 # then allow for an alternate implementation for when 'window' may not exist
 module.exports =
 
-  checkBrowser: ->
-    if (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 10)
-      hardReload('/417.html')
+  unsupportedBrowser: ->
+    (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 11)
+
+  deprecatedBrowser: ->
+    bowser.ie and bowser.version == 11
 
   exportGlobals: ->
     window.moment = require 'moment'

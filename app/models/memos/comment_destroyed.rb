@@ -18,6 +18,6 @@ class Memos::CommentDestroyed < Memo
   end
 
   def message_channel
-    "/discussion-#{@comment.discussion_id}"
+    @comment.group.message_channel
   end
 end

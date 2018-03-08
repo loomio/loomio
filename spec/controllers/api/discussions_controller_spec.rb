@@ -130,6 +130,18 @@ describe API::DiscussionsController do
       end
     end
 
+    describe 'guest threads' do
+      it 'displays guest threads' do
+        sign_in user
+        another_discussion.guest_group.add_member! user
+        DiscussionReader.for(user: user, discussion: another_discussion).set_volume! :normal
+        get :dashboard
+        json = JSON.parse(response.body)
+        discussion_ids = json['discussions'].map { |d| d['id'] }
+        expect(discussion_ids).to include another_discussion.id
+      end
+    end
+
     describe 'filtering' do
       let(:subgroup_discussion) { create :discussion, group: subgroup }
       let(:muted_discussion) { create :discussion, group: group }

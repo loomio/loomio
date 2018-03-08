@@ -13,7 +13,7 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.expectText('.announcement-chip__content', 'Dirty Dancing Shoes')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '2 notifications sent')
+    page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
   'discussion_edited': (test) => {
@@ -26,7 +26,7 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.expectText('.announcement-chip__content', 'Dirty Dancing Shoes')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '2 notifications sent')
+    page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
   'announcement_created': (test) => {
@@ -38,7 +38,7 @@ module.exports = {
     page.selectFromAutocomplete('.md-chip-input-container input', 'jenn')
     page.expectText('.announcement-chip__content', 'Jennifer Grey')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '1 notifications sent')
+    page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
   'poll_created': (test) => {
@@ -52,7 +52,7 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.expectText('.announcement-chip__content', 'Dirty Dancing Shoes')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '2 notifications sent')
+    page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
   'poll_edited': (test) => {
@@ -65,7 +65,7 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.expectElement('.announcement-chip__content')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '1 notifications sent')
+    page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
   'outcome_created': (test) => {
@@ -80,6 +80,6 @@ module.exports = {
     page.selectFromAutocomplete('.md-chip-input-container input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '1 notifications sent')
+    page.expectText('.flash-root__message', '1 notifications sent', 6000)
   }
 }

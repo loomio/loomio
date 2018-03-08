@@ -10,6 +10,8 @@ en:
         invalid: is not a valid value
 
   errors:
+    return_home: Return home
+    not_found: 404 file not found.
     messages:
       email: Not a valid email address
       spoofed_media_type: The contents of that file don't match its filename
@@ -28,7 +30,28 @@ en:
       cannot_add_options: Cannot add options to this poll
       cannot_remove_options: Cannot remove options from this poll
       must_have_options: Must have at least one poll option
-
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) members have stated their position"
+      title: Title
+      author: Author
+      created_at: Created At
+      closing_at: Closing At
+      closed_at: Closed At
+      is_latest: Is Latest
+      engagement: Engagement
+      stances: Stances
+      participants: Participants
+      details: Details
+      group_name: Group Name
+      discussion_title: Thread Title
+      outcome_author: Outcome Author
+      outcome_created_at: Outcome Created At
+      outcome_statement: Outcome Statement
+      poll_url: Poll URL
+      reason: Reason
+      participant: Participant
+      also_available: Also available in
+      total: Total
   stance:
     error:
       too_short: Please make a selection
@@ -146,6 +169,10 @@ en:
     unfollowed_discussion: You have turned off emails for the thread.
 
   discussion_mailer:
+    new_discussion:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> started a thread: %{discussion}"
+
     discussion_edited:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> edited the thread: %{discussion}"
@@ -153,6 +180,10 @@ en:
     discussion_announced:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> shared a thread: %{discussion}"
+
+    invitation_created:
+      subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> invited you to join the conversation: %{discussion}"
 
     new_comment:
       subject: "[%{group}] %{discussion}"
@@ -595,7 +626,10 @@ en:
       details: It's time for our bi-monthly staff meeting again; ideally we'd like meet before the end of next week. What times work for everyone?
 
   notified:
-    group_users: "(%{count} people - click to edit)"
+    no_matches_found: "No results found matching '%{query}'"
+    group_users: "(%{count} people)"
+    group_title: "%{name} (%{count} people)"
+    public_title: Public (Anyone with link)
 
   poll_unsubscribe:
     title: You have been unsubscribed from %{title}
@@ -648,7 +682,7 @@ en:
       'proposal': Seek collective agreement
       'count':      Track participation and find volunteers
       'poll':         Measure popularity of options
-      'dot vote': Prioritise a list of options
+      'dot_vote': Prioritise a list of options
       'meeting': Find a time to meet
 
       For example:

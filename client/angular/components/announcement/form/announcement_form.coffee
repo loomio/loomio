@@ -1,5 +1,6 @@
 Records      = require 'shared/services/records.coffee'
 ModalService = require 'shared/services/modal_service.coffee'
+I18n         = require 'shared/services/i18n.coffee'
 
 angular.module('loomioApp').directive 'announcementForm', ->
   scope: {announcement: '='}
@@ -12,14 +13,15 @@ angular.module('loomioApp').directive 'announcementForm', ->
     .finally ->
       $scope.$emit 'doneProcessing'
 
-    Records.announcements.fetchPreviousFor($scope.announcement.model())
+    Records.members.collection.chain().remove()
+
+    $scope.acceptChip = ($chip) ->
+      $chip.subtitle = I18n.t('announcement.form.click_to_edit') if $chip.type == 'Group'
+      if $chip.type != 'Null' then $chip else null
 
     $scope.inviteToDiscussion = ->
       ModalService.open 'AnnouncementModal', announcement: ->
         Records.announcements.buildFromModel($scope.relevantDiscussion())
-
-    $scope.showList = ->
-      $scope.listShown = true
 
     $scope.relevantDiscussion = ->
       return if $scope.announcement.modelName() == 'discussion'

@@ -29,10 +29,6 @@ module Null::User
     [:experiences]
   end
 
-  def true_methods
-    [:angular_ui_enabled, :angular_ui_enabled?]
-  end
-
   def none_methods
     {
       notifications: :notification,

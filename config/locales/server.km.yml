@@ -4,6 +4,8 @@ km:
       intro: "%{who}បានធ្វើការប្រកាសទៅ %{group}:  "
     unsubscribe: 'ផ្លាស់ប្ដូរចំណង់ចំណូលចិត្តឬអ៊ីម៉ែលរបស់លោកអ្នកជាប្រចាំ'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text} </a> ដើម្បីមិនជាវឬការផ្លាស់ប្តូរចំណង់ចំណូលចិត្តអ៊ីម៉ែលរបស់អ្នក។"
+    missed_yesterday:
+      click_here: ចុចទីនេះ
     membership_request:
       subject: "%{who}បានស្នើឲ្យចូលរួម%{which_group} "
       view_group: អ្នកអាចអនុម័ត្តឬទុកសំណើរនៅទីនេះ

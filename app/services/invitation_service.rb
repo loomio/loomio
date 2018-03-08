@@ -11,7 +11,7 @@ class InvitationService
     Events::InvitationCreated.publish!(invitation, actor)
   end
 
-  def self.bulk_create(recipient_emails: nil, message: nil, group: nil, inviter: nil, send_emails: true)
+  def self.bulk_create(recipient_emails: nil, message: nil, group: nil, intent: :join_group, inviter: nil, send_emails: true)
     return [] unless recipient_emails.present?
 
     emails = (recipient_emails - group.members.pluck(:email)).take(100)
@@ -34,7 +34,7 @@ class InvitationService
         group:           group,
         message:         message,
         inviter:         inviter,
-        intent:          :join_group
+        intent:          intent,
       ).tap { |invitation| Events::InvitationCreated.publish!(invitation) if send_emails }
     end
   end

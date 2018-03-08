@@ -46,7 +46,6 @@ class User < ApplicationRecord
   validates :password, nontrivial_password: true, allow_nil: true
   validate  :ensure_recaptcha, if: :recaptcha
 
-  has_many :contacts, dependent: :destroy
   has_many :admin_memberships,
            -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
            class_name: 'Membership',
@@ -105,6 +104,8 @@ class User < ApplicationRecord
   has_many :drafts, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
 
+  has_many :announcees, dependent: :destroy, as: :announceable
+
   has_one :deactivation_response,
           class_name: 'UserDeactivationResponse',
           dependent: :destroy
@@ -134,6 +135,29 @@ class User < ApplicationRecord
      email_when_proposal_closing_soon
     .joins(:memberships)
     .where('memberships.group_id': group.id)
+  }
+
+  # This is a double-nested join select raw sql statement, eek!
+  # But, it's not soo complicated. Here's what's going on:
+  # Join 1: Grab all instances of a user receiving an announcement from the given model, based on the model's announcement ids
+  # Join 2: Group those instances, taking the most recent instance's created_at as the last_notified_at timestamp
+  #
+  # then, we join that timestamp to the current user query, available in the last_notified_at column
+  scope :with_last_notified_at, ->(model) {
+    select('*, last_notified_at').joins(<<~SQL)
+      -- join #2
+      LEFT JOIN (
+        SELECT users.id as user_id, max(notified.created_at) as last_notified_at
+        FROM users
+        -- join #1
+        LEFT JOIN (
+          SELECT user_ids, created_at
+          FROM   announcees
+          WHERE  announcees.announcement_id IN (#{model.announcement_ids.join(',').presence || '-1'})
+        ) notified ON notified.user_ids ? users.id::varchar
+        GROUP BY users.id
+      ) announcements ON announcements.user_id = users.id
+    SQL
   }
 
   def self.email_status_for(email)

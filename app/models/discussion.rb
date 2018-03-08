@@ -30,7 +30,6 @@ class Discussion < ApplicationRecord
   validate :private_is_not_nil
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
-  validates_inclusion_of :uses_markdown, in: [true,false]
   validate :privacy_is_permitted_by_group
 
   is_mentionable on: :description
@@ -46,7 +45,8 @@ class Discussion < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :commenters, -> { uniq }, through: :comments, source: :user
   has_many :documents, as: :model, dependent: :destroy
-
+  has_many :poll_documents,    through: :polls,    source: :documents
+  has_many :comment_documents, through: :comments, source: :documents
 
   has_many :items, -> { includes(:user).thread_events.order('events.id ASC') }, class_name: 'Event'
 
@@ -87,6 +87,10 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :open_discussions_count
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
+
+  def groups
+    Array(group)
+  end
 
   def created_event_kind
     :new_discussion

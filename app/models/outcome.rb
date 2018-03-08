@@ -14,16 +14,11 @@ class Outcome < ApplicationRecord
   has_many :stances, through: :poll
   has_many :documents, as: :model, dependent: :destroy
 
-  delegate :title, to: :poll
-  delegate :dates_as_options, to: :poll
-  delegate :group, to: :poll
-  delegate :group_id, to: :poll
-  delegate :discussion, to: :poll
-  delegate :discussion_id, to: :poll
-  delegate :locale, to: :poll
-  delegate :mailer, to: :poll
-  delegate :guest_group, to: :poll
-  delegate :members, to: :poll
+  %w(
+    title poll_type dates_as_options group group_id groups discussion discussion_id
+    locale mailer guest_group guest_members guest_invitations anyone_can_participate
+    members invitation_intent
+  ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement
   is_translatable on: :statement

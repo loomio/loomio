@@ -22,6 +22,7 @@ be_BY:
       mark_as_read: Адзначыць як прачытанае
       thanks_for_reading: Дзякуем, што прачыталі! Цудоўнага вам дня!
       marked_as_read_success: Усе паведамленні з ліста былі пазначаны як прачытаныя
+      click_here: Націсніце сюды
     membership_request:
       subject: "%{who} запытаў далучэння да %{which_group}"
       view_group: Вы можаце зацвердзіць ці адмовіць запыт тут
@@ -35,9 +36,6 @@ be_BY:
     public_groups: Публічныя групы
     terms: Умовы
     independent_install_html: '%{hostname} выкарыстоўвае незалежную копію Loomio: <a href="http://github.com/loomio/loomio">даведайцеся больш</a>.'
-  invitation_form:
-    error:
-      all_email_addresses_belong_to_members: "Мы не адпраўлялі запрашэння на прадстаўленыя адрасы электроннай пошты таму, што яны належаць людзям з групы."
   password_reset:
     reset_email_timeframe: Ліст прыйдзе не пазней, чым праз 5 хвілін. Калі вы яго не бачыце, праверце, калі ласка, тэчку "Спам".
     length_restriction: Пароль павінен утрымліваць не менш за 8 сімвалаў.

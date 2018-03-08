@@ -1,25 +1,13 @@
 class MessageChannelService
-  class AccessDeniedError < StandardError; end
-  class UnknownChannelError < StandardError; end
-
-  def self.subscribe_to(user:, model:)
-    return unless ensure_valid_channel(model)
-    raise AccessDeniedError.new unless user.ability.can?(:subscribe_to, model)
-    PrivatePub.subscription(channel: model.message_channel, server: Rails.application.secrets.faye_url)
+  def self.publish_model(model, serializer: nil, root: nil, to: nil)
+    serializer ||= "#{model.class}Serializer".constantize
+    root       ||= model.class.to_s.pluralize.downcase
+    to         ||= model.groups.map(&:message_channel)
+    data       =   ActiveModel::ArraySerializer.new([model], each_serializer: serializer, root: root).as_json
+    Array(to).each { |channel| publish_data(data, to: channel) }
   end
 
-  def self.publish(data, to:)
-    return unless ensure_valid_channel(to)
-    if ENV['DELAY_FAYE']
-      PrivatePub.delay(priority: 10).publish_to(to.message_channel, data)
-    else
-      PrivatePub.publish_to(to.message_channel, data)
-    end
-  end
-
-  def self.ensure_valid_channel(model)
-    return unless model
-    raise UnknownChannelError.new unless model.respond_to?(:message_channel)
-    Rails.application.secrets.faye_url.present?
+  def self.publish_data(data, to: message_channel)
+    ActionCable.server.broadcast to, data if to
   end
 end

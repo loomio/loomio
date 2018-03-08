@@ -79,7 +79,6 @@ ActiveAdmin.register User do
     user.email = params[:user][:email]
     user.username = params[:user][:username]
     user.is_admin = params[:user][:is_admin]
-    user.angular_ui_enabled = params[:user][:angular_ui_enabled]
     user.save
     redirect_to admin_users_path, :notice => "User updated"
   end

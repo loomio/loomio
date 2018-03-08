@@ -35,7 +35,8 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard'
       canPerform: -> AbilityService.canAddComment($scope.discussion)
     ,
       name: 'announce_thread'
-      icon: 'mdi-bullhorn'
+      icon: 'mdi-account'
+      hasPlus: true
       active:     -> $scope.discussion.announcementsCount == 0
       canPerform: -> AbilityService.canAdministerDiscussion($scope.discussion)
       perform:    -> ModalService.open 'AnnouncementModal', announcement: ->

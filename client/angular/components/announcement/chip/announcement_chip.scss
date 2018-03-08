@@ -1,7 +1,6 @@
 .announcement-chip {
   align-items: center;
-  min-height: 32px;
-  height: 100%;
+  height: 32px;
   img {
     width: 32px;
     height: 32px;
@@ -22,13 +21,17 @@
 }
 
 .announcement-chip__avatar {
-  width: 32px;
-  height: 32px;
   margin-right: 8px;
-  &--invitation {
-    max-height: 36px;
+  img {
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+}
+
+.md-autocomplete-suggestions li[md-virtual-repeat] {
+  display: flex;
+  align-items: center;
 }

@@ -1,4 +1,7 @@
-  .lmo-md-action
-    %learn_more{title: "announcement.form.helptext_title", nuggets: "nuggets"}
-    %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "!announcement.notified.length", ng-click: "$emit('$close')", translate: "common.action.done"}
-    %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "announcement.notified.length", ng-click: "submit()", translate: "common.action.send"}
+  .lmo-md-actions
+    %div{ng-if: "announcement.expanded"}
+    %md-button.md-accent.announcement-form__advanced{ng-if: "!announcement.expanded", ng-click: "expandForm()", translate: "announcement.form.advanced"}
+    %div
+      -# %learn_more{title: "announcement.form.helptext_title", nuggets: "nuggets"}
+      %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "!announcement.notified.length", ng-click: "$emit('$close')", translate: "common.action.done"}
+      %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "announcement.notified.length", ng-click: "submit()", translate: "common.action.send"}

@@ -93,6 +93,9 @@ describe Event do
 
   describe 'user_mentioned' do
     it 'notifies the mentioned user' do
+      # once for the group, once for the user notification
+      expect(MessageChannelService).to receive(:publish_model).twice
+
       CommentService.create(comment: comment, actor: comment.author)
       event = Events::UserMentioned.where(kind: :user_mentioned).last
       expect(event.eventable).to eq comment
@@ -133,14 +136,15 @@ describe Event do
     describe 'voters_review_responses', focus: true do
       let(:group_notified) {{
         id: discussion.group_id,
-        type: "Group",
+        type: "FormalGroup",
         notified_ids: [user_thread_loud.id, user_thread_normal.id]
       }.with_indifferent_access}
 
       it 'should notify participants when voters_review_responses is true' do
         poll = create(:poll_proposal, discussion: discussion)
         create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        create(:announcement, event: poll.created_event, notified: [group_notified])
+        a = create(:announcement, event: poll.created_event)
+        a.announcees.create(user_ids: group_notified[:notified_ids], announceable: discussion.group)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -169,7 +173,8 @@ describe Event do
       it 'should notify announcees who have not participated when voters_review_responses is false' do
         create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
         # quiet user who has been announced to before
-        create(:announcement, event: poll.created_event, notified: [group_notified])
+        a = create(:announcement, event: poll.created_event)
+        a.announcees.create(user_ids: group_notified[:notified_ids], announceable: discussion.group)
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -277,16 +282,17 @@ describe Event do
 
   describe 'invitation_accepted' do
     let(:poll) { create :poll }
-    let(:guest_membership) { create :membership, group: poll.guest_group }
+    let(:invitation) { create :invitation, intent: :join_poll, group: poll.guest_group }
+    let(:guest_membership) { create :membership, group: poll.guest_group, invitation: invitation }
     let(:formal_membership) { create :membership, group: create(:formal_group) }
 
-    it 'links to a group for a formal group invitation' do
+    it 'links to a group for a guest group invitation' do
       event = Events::InvitationAccepted.publish!(guest_membership)
       expect(event.send(:notification_url)).to match "p/#{poll.key}"
       expect(event.send(:notification_translation_title)).to eq poll.title
     end
 
-    it 'links to an invitation target for a guest group invitation' do
+    it 'links to an invitation target for a formal group invitation' do
       event = Events::InvitationAccepted.publish!(formal_membership)
       expect(event.send(:notification_url)).to match "g/#{formal_membership.group.key}"
       expect(event.send(:notification_translation_title)).to eq formal_membership.group.full_name
@@ -343,7 +349,7 @@ describe Event do
     end
 
     it 'does not email people with email_announcements off' do
-      announcement.update(user_ids: [user_thread_loud])
+      announcement.announcees.create(announceable: user_thread_loud)
       user_thread_loud.update(email_announcements: false)
       expect { Events::AnnouncementCreated.publish!(announcement) }.to_not change { emails_sent }
     end

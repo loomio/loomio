@@ -274,7 +274,6 @@ ru:
       or: или
     mark_as_read: Отметить прочитанным
     dismiss: Отклонить
-    thread_dismissed: Обсуждение отклонено.
     filtering:
       proposals: Голосования
       muted: Заглушен
@@ -349,6 +348,7 @@ ru:
     poll_title: Опрос
     meeting_title: Голосование за время встречи
   poll_common_form:
+    closed: Закрыто
     start: Начать
   poll_common_subscribe_form:
     subscribe: Подписаться

@@ -460,6 +460,8 @@ es:
     members: 'Miembros '
     members_placeholder: 'Estás solo aquí: ¡invita a algunas personas para unirse a ti! '
     member_options: Opciones de membresía
+    see_all_members: 'Ve todos los ({{count}}) miembros'
+    pending_invitations: '+ {{count}} pendientes'
     subgroups: 'Subgrupos'
     subgroups_placeholder: 'Los subgrupos le dan su propio espacio a los equipos y mantienen las notificaciones enfocadas en las personas indicadas.'
     invite_people: 'Invitar'
@@ -521,6 +523,7 @@ es:
     description: 'Descripción '
     description_placeholder: 'Describe el propósito de tu grupo para que los miembros sepan porque están aquí. '
     privacy_statement:
+      public_on_web: 'Nombre, descripción y archivos adjuntos al contexto del grupo, serán visibles al públicos '
       private_to_group: 'El nombre y la descripción solo serán visibles para miembros. '
       private_to_parent_members: 'El nombre y la descripción serán visibles para los miembros de {{parent}}'
     privacy: 'Privacidad'
@@ -717,6 +720,7 @@ es:
     picture_label: 'Imagen'
     name_label: 'Nombre'
     username_label: 'Nombre de usuario'
+    username_helptext: 'Todo en minúscula, solo letras y números, máximo 30 caracteres. '
     email_label: 'Correo electrónico'
     short_bio_label: 'Introducción'
     locale_label: 'Idioma'
@@ -797,6 +801,7 @@ es:
     mark_as_read: Marcar como leído
     dismiss: Ignorar
     thread_dismissed: 'Hilo ignorado '
+    thread_recalled: 'Hilo recuperado '
     explain_mute:
       title: No tienes ningún hilo silenciado.
       explanation_html: |
@@ -962,7 +967,7 @@ es:
     description_private_title: 'se actualizó el título, el contexto y la privacidad del hilo '
   contact_message_form:
     helptext: "¿Quieres ponerte en contacto con el equipo de Loomio? Ingresa un mensaje debajo y te responderemos a la brevedad. "
-    contact_us_email: "(También siempre podrás contactarnos en <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>) "
+    contact_us_email: "(También siempre podrás contactarnos en <a href=\"mailto:contact@loomio.org\">{{email}}</a>) "
     contact_us: 'Contáctanos'
     name_label: 'Tu nombre'
     name_placeholder: 'Introduce tu nombre...'
@@ -1189,8 +1194,9 @@ es:
     details: Detalles
     options: Opciones
     options_placeholder: Ingresa una nueva opción...
-    no_options: No haz añadido ninguna opción aún
+    no_options: No has añadido ninguna opción aún
     closing: Cerrando
+    closed: 'Cerrado '
     start: Iniciar
     update: Actualizar
     loomio_school_link: |
@@ -1291,7 +1297,7 @@ es:
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
     meeting_created: Opción priorizada creada
     meeting_updated: Opción priorizada actualizada
-    no_options: "No haz añadido ninguna opción aún"
+    no_options: "No has añadido ninguna opción aún"
     add_option_placeholder: Ingresa una nueva opción
     minimum_stance_choices: Opciones para priorizar
     minimum_stance_choices_helptext: 'Número de opciones que cada persona puede priorizar '
@@ -1463,6 +1469,8 @@ es:
     welcome_back: Bienvenido nuevamente, {{name}}!
     login_link: Entra a través de un correo electrónico
     set_password: Configura la contraseña
+    set_password_helptext: '¿Cansado de entrar con tu email? '
+    set_password_link: Configura una contraseña
     hello: "Hola, {{name}}!"
     new_to_loomio: ¿Nuevo en {{site_name}}? Crea una nueva cuenta
     create_account: Crear una cuenta

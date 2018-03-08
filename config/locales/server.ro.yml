@@ -67,6 +67,7 @@ ro:
       mark_as_read: Marcheaza ca citit
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
+      click_here: Apasa aici
     group_membership_approved:
       subject: "Cererea ta de a te alatura grupului %{group_name} a fost acceptata"
       join_group: "Alatura-te grupului"

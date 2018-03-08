@@ -21,9 +21,6 @@ it:
   stance:
     error:
       too_short: Fai una selezione
-  user:
-    error:
-      username_must_be_alphanumeric: Il Nome utente deve contenere solo lettere in minuscolo e numeri.
   invitation:
     invitation_cancelled: 'Questo invito è stato revocato dal coordinatore del gruppo. Chiedi un altro invito al tuo gruppo. '
     invitation_already_used: L'invito è già stato usato. Iscriviti a Loomio per andare al tuo gruppo.
@@ -93,6 +90,7 @@ it:
       mark_as_read: Contrassegnato come letto
       thanks_for_reading: Grazie per aver letto, buona giornata!
       marked_as_read_success: Tutte le email sono state contrassegnate come lette
+      click_here: Clicca qui
     group_membership_approved:
       join_group: "Iscriviti al gruppo"
     membership_request:

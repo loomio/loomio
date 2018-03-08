@@ -5,26 +5,19 @@
     %span{translate: "announcement.form.relevant_discussion_helptext", translate-value-title: "{{relevantDiscussion().title}}"}>
     %a.lmo-pointer{ng-click: "inviteToDiscussion()", translate: "announcement.form.invite_to_discussion"}>
 
-  %label.announcement-form__label{translate: "announcement.form.label"}
-  %md-chips.announcement-form__chips{ng-model: "announcement.notified", md-require-match: "true"}
-    %md-autocomplete{md-items: "$chip in search(query)", md-no-cache: "true", md-search-text: "query", placeholder: "{{'announcement.form.placeholder' | translate}}", md-min-length: "3", md-delay: "300"}
+  %md-chips.announcement-form__chips{ng-model: "announcement.notified", md-require-match: "true", md-transform-chip: "acceptChip($chip)"}
+    %md-autocomplete{md-items: "$chip in search(query)", md-no-cache: "true", md-autoselect: "true", md-autofocus: "true", md-search-text: "query", placeholder: "{{'announcement.form.placeholder' | translate}}", md-min-length: "2", md-delay: "300"}
       %md-item-template
         %announcement_chip{chip: "$chip"}
     %md-chip-template
-      %announcement_chip{chip: "$chip", ng-if: "$chip.type != 'FormalGroup'"}
-      %md-menu.lmo-pointer{ng-if: "$chip.type == 'FormalGroup'"}
+      %announcement_chip{chip: "$chip", ng-if: "$chip.type != 'Group'"}
+      %md-menu.lmo-pointer{ng-if: "$chip.type == 'Group'"}
         %announcement_chip{md-menu-origin: "true", ng-click: "$mdMenu.open($event)", chip: "$chip"}
         %md-menu-content.announcement-form__menu-content
           %announcement_group_form{notified: "$chip"}
-  .lmo-md-actions
-    %div{ng-if: "listShown || announcement.recipients().length == 0"}
-    %p.md-caption{ng-if: "!listShown && announcement.recipients().length > 0", ng-switch: "announcement.recipients().length"}
-      %span{ng-switch-when: "1", translate: "announcement.form.previously_notified_singular"}>
-      %span{ng-switch-default: "true", translate: "announcement.form.previously_notified", translate-value-count: "{{announcement.recipients().length}}"}>
-      %a.lmo-pointer{ng-click: "showList()", translate: "common.action.view_all"}
-    %p.md-caption{ng-if: "announcement.model.announcementsCount > 0", translate: "announcement.form.previously_notified"}
-    %div{ng-if: "announcement.recipients().length == 0"}
-    %p.md-caption{ng-if: "announcement.totalNotified() == 1", translate: "announcement.form.notified_count_singular"}
-    %p.md-caption{ng-if: "announcement.totalNotified() != 1", translate: "announcement.form.notified_count", translate-value-count: "{{announcement.totalNotified()}}"}
+  .lmo-md-action
+    %p.md-caption{ng-if: "announcement.totalInvited() > 0", translate: "announcement.form.invited_and_notified", translate-value-notified: "{{announcement.totalNotified()}}", translate-value-invited: "{{announcement.totalInvited()}}"}
+    %p.md-caption{ng-if: "announcement.totalInvited() == 0", translate: "announcement.form.notified", translate-value-notified: "{{announcement.totalNotified()}}"}
 
-  %announcement_list{ng-if: "listShown", model: "announcement.model()"}
+  %announcement_shareable_link{model: "announcement.model()"}
+  %announcement_member_list{ng-if: "announcement.expanded", model: "announcement.model()"}

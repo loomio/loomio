@@ -8,7 +8,7 @@ describe API::AnnouncementsController do
   let(:group) { create :formal_group }
   let(:group_notified) {{
     id: group.id,
-    type: "Group",
+    type: "FormalGroup",
     notified_ids: [another_user.id, a_third_user.id]
   }}
   let(:user_notified) {{
@@ -43,9 +43,9 @@ describe API::AnnouncementsController do
         expect(response.status).to eq 200
         a = Announcement.last
         expect(poll.reload.announcements_count).to eq 1
-        expect(a.users).to include another_user
-        expect(a.users).to include a_third_user
-        expect(a.users).to include a_fourth_user
+        expect(a.users_to_announce).to include another_user
+        expect(a.users_to_announce).to include a_third_user
+        expect(a.users_to_announce).to include a_fourth_user
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
 
         expect(another_user.can?(:show, poll)).to eq true
@@ -73,9 +73,9 @@ describe API::AnnouncementsController do
         announcement_params[:notified] = [group_notified]
         expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(2)
         a = Announcement.last
-        expect(a.users).to include another_user
-        expect(a.users).to include a_third_user
-        expect(a.users).to_not include a_fourth_user
+        expect(a.users_to_announce).to include another_user
+        expect(a.users_to_announce).to include a_third_user
+        expect(a.users_to_announce).to_not include a_fourth_user
         expect(a.invitations).to be_empty
       end
 
@@ -85,8 +85,8 @@ describe API::AnnouncementsController do
         a = Announcement.last
         expect(poll.guest_group.members).to include a_fourth_user
         expect(poll.group.members).to_not include a_fourth_user
-        expect(a.users).to include a_fourth_user
-        expect(a.users).to_not include another_user
+        expect(a.users_to_announce).to include a_fourth_user
+        expect(a.users_to_announce).to_not include another_user
         expect(a.invitations).to be_empty
       end
 
@@ -95,8 +95,9 @@ describe API::AnnouncementsController do
         expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
         expect(poll.guest_group.invitation_ids).to eq a.invitation_ids
-        expect(a.users).to be_empty
+        expect(a.users_to_announce).to be_empty
         expect(a.invitations.pluck(:recipient_email)).to eq [email_notified[:id]]
+        expect(a.invitations.pluck(:intent)).to eq ['join_poll']
       end
 
       it 'does not announce the same user twice' do
@@ -131,10 +132,11 @@ describe API::AnnouncementsController do
         expect(response.status).to eq 200
         a = Announcement.last
         expect(outcome.reload.announcements_count).to eq 1
-        expect(a.users).to include another_user
-        expect(a.users).to include a_third_user
-        expect(a.users).to include a_fourth_user
+        expect(a.users_to_announce).to include another_user
+        expect(a.users_to_announce).to include a_third_user
+        expect(a.users_to_announce).to include a_fourth_user
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
+        expect(a.invitations.pluck(:intent)).to eq ['join_poll']
 
         expect(another_user.can?(:show, outcome)).to eq true
         expect(a_third_user.can?(:show, outcome)).to eq true
@@ -167,9 +169,9 @@ describe API::AnnouncementsController do
         expect(response.status).to eq 200
         a = Announcement.last
         expect(discussion.reload.announcements_count).to eq 1
-        expect(a.users).to include another_user
-        expect(a.users).to include a_third_user
-        expect(a.users).to include a_fourth_user
+        expect(a.users_to_announce).to include another_user
+        expect(a.users_to_announce).to include a_third_user
+        expect(a.users_to_announce).to include a_fourth_user
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
 
         expect(another_user.can?(:show, discussion)).to eq true
@@ -194,9 +196,9 @@ describe API::AnnouncementsController do
         announcement_params[:notified] = [group_notified]
         expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(2)
         a = Announcement.last
-        expect(a.users).to include another_user
-        expect(a.users).to include a_third_user
-        expect(a.users).to_not include a_fourth_user
+        expect(a.users_to_announce).to include another_user
+        expect(a.users_to_announce).to include a_third_user
+        expect(a.users_to_announce).to_not include a_fourth_user
         expect(a.invitations).to be_empty
       end
 
@@ -206,8 +208,8 @@ describe API::AnnouncementsController do
         a = Announcement.last
         expect(discussion.guest_group.members).to include a_fourth_user
         expect(discussion.group.members).to_not include a_fourth_user
-        expect(a.users).to include a_fourth_user
-        expect(a.users).to_not include another_user
+        expect(a.users_to_announce).to include a_fourth_user
+        expect(a.users_to_announce).to_not include another_user
         expect(a.invitations).to be_empty
       end
 
@@ -216,8 +218,9 @@ describe API::AnnouncementsController do
         expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
         expect(discussion.guest_group.invitation_ids).to eq a.invitation_ids
-        expect(a.users).to be_empty
+        expect(a.users_to_announce).to be_empty
         expect(a.invitations.pluck(:recipient_email)).to eq [email_notified[:id]]
+        expect(a.invitations.pluck(:intent)).to eq ['join_discussion']
       end
 
       it 'does not announce the same user twice' do

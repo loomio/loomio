@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207220417) do
+ActiveRecord::Schema.define(version: 20180305201407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.index ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type"
   end
 
+  create_table "announcees", force: :cascade do |t|
+    t.bigint "announcement_id"
+    t.string "announceable_type"
+    t.bigint "announceable_id"
+    t.jsonb "user_ids", default: [], null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announceable_type", "announceable_id"], name: "index_announcees_on_announceable_type_and_announceable_id"
+    t.index ["announcement_id"], name: "index_announcees_on_announcement_id"
+  end
+
   create_table "announcements", force: :cascade do |t|
     t.jsonb "invitation_ids", default: [], null: false
     t.jsonb "user_ids", default: [], null: false
@@ -99,14 +110,6 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.date "end_on"
   end
 
-  create_table "comment_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true
-    t.index ["descendant_id"], name: "tag_desc_idx"
-  end
-
   create_table "comments", id: :serial, force: :cascade do |t|
     t.integer "discussion_id", default: 0
     t.text "body", default: ""
@@ -135,16 +138,6 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "destination", limit: 255, default: "contact@loomio.org"
-  end
-
-  create_table "contacts", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name", limit: 255
-    t.string "email", limit: 255
-    t.string "source", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "default_group_covers", id: :serial, force: :cascade do |t|
@@ -179,9 +172,7 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.datetime "updated_at"
     t.integer "discussion_id", null: false
     t.datetime "last_read_at"
-    t.integer "read_items_count", default: 0, null: false
     t.integer "last_read_sequence_id", default: 0, null: false
-    t.integer "read_salient_items_count", default: 0, null: false
     t.integer "volume"
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at"
@@ -226,7 +217,6 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.datetime "last_activity_at"
     t.integer "last_sequence_id", default: 0, null: false
     t.integer "first_sequence_id", default: 0, null: false
-    t.integer "salient_items_count", default: 0, null: false
     t.integer "versions_count", default: 0
     t.integer "closed_polls_count", default: 0, null: false
     t.boolean "pinned", default: false, null: false
@@ -578,13 +568,6 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.integer "announcements_count", default: 0, null: false
   end
 
-  create_table "poll_communities", id: :serial, force: :cascade do |t|
-    t.integer "poll_id", null: false
-    t.integer "community_id", null: false
-    t.index ["community_id"], name: "index_poll_communities_on_community_id"
-    t.index ["poll_id"], name: "index_poll_communities_on_poll_id"
-  end
-
   create_table "poll_did_not_votes", id: :serial, force: :cascade do |t|
     t.integer "poll_id"
     t.integer "user_id"
@@ -703,22 +686,6 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.integer "discussion_tags_count", default: 0
   end
 
-  create_table "themes", id: :serial, force: :cascade do |t|
-    t.text "style"
-    t.string "name", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "pages_logo_file_name", limit: 255
-    t.string "pages_logo_content_type", limit: 255
-    t.integer "pages_logo_file_size"
-    t.datetime "pages_logo_updated_at"
-    t.string "app_logo_file_name", limit: 255
-    t.string "app_logo_content_type", limit: 255
-    t.integer "app_logo_file_size"
-    t.datetime "app_logo_updated_at"
-    t.text "javascript"
-  end
-
   create_table "translations", id: :serial, force: :cascade do |t|
     t.integer "translatable_id"
     t.string "translatable_type", limit: 255
@@ -785,7 +752,6 @@ ActiveRecord::Schema.define(version: 20180207220417) do
     t.boolean "email_missed_yesterday", default: true, null: false
     t.string "email_api_key", limit: 255
     t.boolean "email_when_mentioned", default: true, null: false
-    t.boolean "angular_ui_enabled", default: true, null: false
     t.boolean "email_on_participation", default: true, null: false
     t.integer "default_membership_volume", default: 2, null: false
     t.string "country"

@@ -8,10 +8,15 @@ module Events::Notify::InApp
 
   # send event notifications
   def notify_users!
-    notifications.import(notification_recipients.active.where.not(id: user).map { |recipient| notification_for(recipient) })
+    notifications.import(built_notifications)
+    built_notifications.each { |n| MessageChannelService.publish_model(n, to: n.message_channel) }
   end
 
   private
+
+  def built_notifications
+    @built ||= notification_recipients.active.where.not(id: user).map { |recipient| notification_for(recipient) }
+  end
 
   def notification_for(recipient)
     I18n.with_locale(recipient.locale) do
@@ -37,7 +42,7 @@ module Events::Notify::InApp
 
   # defines the link that clicking on the notification takes you to
   def notification_url
-    @notification_url ||= polymorphic_url(eventable)
+    @notification_url ||= polymorphic_path(eventable)
   end
 
   # defines the values that are passed to the translation for notification text
@@ -56,13 +61,10 @@ module Events::Notify::InApp
   end
 
   def notification_translation_title
-    @notification_translation_title ||= polymorphic_title(eventable)
+    polymorphic_title(eventable)
   end
 
   def notification_poll_type
-    case eventable
-    when Poll         then eventable.poll_type
-    when Announcement then (eventable.eventable.poll_type if eventable.eventable.is_a?(Poll))
-    end
+    eventable.poll_type if eventable.respond_to?(:poll_type)
   end
 end

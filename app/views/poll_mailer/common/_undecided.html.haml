@@ -3,7 +3,7 @@
   %table
     - @info.undecided.limit(@info.undecided_max).each do |user|
       %tr
-        %td= render 'avatar', user: user
+        %td= render 'base_mailer/avatar', user: user
         %td= user.name
     - if @info.undecided.count > @info.undecided_max
       %tr

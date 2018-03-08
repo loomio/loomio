@@ -28,6 +28,7 @@ ca:
     missed_yesterday:
       headlines: Capçaleres
       mark_as_read: Marca com a llegit
+      click_here: Fes click aquí
     membership_request:
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: Pots aprovar o denegar la sol·licitud aquí

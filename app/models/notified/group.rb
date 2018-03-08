@@ -4,19 +4,19 @@ class Notified::Group < Notified::Base
   end
 
   def id
-    model.key
+    model.id
   end
 
   def title
-    model.full_name
+    I18n.t(:"notified.group_title", name: model.full_name, count: notified_ids.length)
   end
 
-  def subtitle
-    I18n.t(:"notified.group_users", count: notified_ids.length)
+  def logo_url
+    model.logo.presence&.url(:card) || AppConfig.theme[:icon_src]
   end
 
-  def icon_url
-    model.logo.presence&.url(:card) || AppConfig.theme[:default_group_logo_src]
+  def logo_type
+    :uploaded
   end
 
   def notified_ids

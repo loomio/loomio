@@ -9,7 +9,8 @@ module Ability::Discussion
       !discussion.group.archived_at && (
         discussion.public? ||
         discussion.members.include?(user) ||
-        (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id))
+        (discussion.group.parent_members_can_see_discussions? && user_is_member_of?(discussion.group.parent_id)) ||
+        discussion.invitations.useable.pluck(:token).include?(user.token)
       )
     end
 
@@ -50,11 +51,15 @@ module Ability::Discussion
          :show_description_history,
          :preview_version,
          :make_draft], ::Discussion do |discussion|
-      user_is_member_of?(discussion.group_id)
+      discussion.members.include?(user)
     end
 
     can :remove_events, ::Discussion do |discussion|
       user_is_author_of?(discussion) || user_is_admin_of?(discussion.group_id)
+    end
+
+    can :start_poll, ::Discussion do |discussion|
+      can?(:start_poll, discussion.group) || can?(:start_poll, discussion.guest_group)
     end
   end
 end

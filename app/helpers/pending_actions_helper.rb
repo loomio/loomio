@@ -44,6 +44,6 @@ module PendingActionsHelper
     Pending::TokenSerializer.new(pending_token, root: false).as_json ||
     Pending::IdentitySerializer.new(pending_identity, root: false).as_json ||
     Pending::InvitationSerializer.new(pending_invitation, root: false).as_json ||
-    Pending::UserSerializer.new(pending_user, root: false).as_json
+    Pending::UserSerializer.new(pending_user, root: false).as_json || {}
   end
 end
