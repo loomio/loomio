@@ -23,10 +23,8 @@ class InvitationService
     recent_pending   = recent_pending_invitations_count + emails.length
     recent_cancelled = recent_cancelled_invitations_count + emails.length
 
-    max_allowed = ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i + group.memberships_count
-
-    raise Invitation::TooManyPending.new   if recent_pending   > max_allowed
-    raise Invitation::TooManyCancelled.new if recent_cancelled > max_allowed
+    raise Invitation::TooManyPending.new   if recent_pending   > group.pending_invitation_limit
+    raise Invitation::TooManyCancelled.new if recent_cancelled > group.pending_invitation_limit
 
     emails.map do |recipient_email|
       Invitation.create!(
