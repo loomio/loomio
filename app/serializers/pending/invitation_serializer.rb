@@ -1,6 +1,10 @@
 class Pending::InvitationSerializer < Pending::BaseSerializer
   def avatar_kind
-    'initials'
+    :initials
+  end
+
+  def identity_type
+    :loomio
   end
 
   def email_status

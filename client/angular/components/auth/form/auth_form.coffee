@@ -1,6 +1,5 @@
-AppConfig = require 'shared/services/app_config.coffee'
-
-{ listenForLoading } = require 'shared/helpers/listen.coffee'
+{ listenForLoading }    = require 'shared/helpers/listen.coffee'
+{ getProviderIdentity } = require 'shared/helpers/user.coffee'
 
 angular.module('loomioApp').directive 'authForm', ->
   scope: {preventClose: '=', user: '='}
@@ -9,8 +8,7 @@ angular.module('loomioApp').directive 'authForm', ->
     $scope.loginComplete = ->
       $scope.user.sentLoginLink or $scope.user.sentPasswordLink
 
-    if _.contains(_.pluck(AppConfig.identityProviders, 'name'), (AppConfig.pendingIdentity or {}).identity_type)
-      $scope.pendingProviderIdentity = AppConfig.pendingIdentity
+    $scope.pendingProviderIdentity = getProviderIdentity()
 
     listenForLoading $scope
   ]

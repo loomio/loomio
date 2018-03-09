@@ -26,4 +26,4 @@
       = t(:"poll_common_form.closed")
       = formatted_time_in_zone(@info.poll.closed_at, @info.time_zone)
 
-  = render "thread_mailer/attachments", resource: @info.poll
+  = render "discussion_mailer/attachments", resource: @info.poll

@@ -1,0 +1,20 @@
+.announcement-member-list {
+  padding-top: 16px;
+}
+
+.announcement-member-list md-list-item {
+  padding: 0 !important;
+}
+
+.announcement-member-list__content {
+  overflow: auto;
+  max-height: 300px;
+}
+
+.announcement-member-list__member {
+  width: 100%;
+}
+
+.announcement-member-list__helptext {
+  text-align: right;
+}

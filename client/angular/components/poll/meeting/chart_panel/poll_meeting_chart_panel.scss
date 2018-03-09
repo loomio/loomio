@@ -16,6 +16,10 @@
   background: #70C9F8;
 }
 
+.poll-meeting-chart-panel--maybe {
+  background: lighten(#70C9F8, 20%);
+}
+
 .poll-meeting-chart-panel__participant-name {
   padding-right: 16px;
 }

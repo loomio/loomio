@@ -4,12 +4,14 @@ EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 ThreadService  = require 'shared/services/thread_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
 { listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
 { scrollTo }                                  = require 'shared/helpers/layout.coffee'
 
-angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope) ->
+angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard', ($rootScope, clipboard) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
@@ -32,10 +34,18 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
       name: 'react'
       canPerform: -> AbilityService.canAddComment($scope.discussion)
     ,
+      name: 'announce_thread'
+      icon: 'mdi-account'
+      hasPlus: true
+      active:     -> $scope.discussion.announcementsCount == 0
+      canPerform: -> AbilityService.canAdministerDiscussion($scope.discussion)
+      perform:    -> ModalService.open 'AnnouncementModal', announcement: ->
+        Records.announcements.buildFromModel($scope.discussion)
+    ,
       name: 'edit_thread'
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditThread($scope.discussion)
-      perform:    -> ModalService.open 'DiscussionModal', discussion: -> $scope.discussion
+      perform:    -> ModalService.open 'DiscussionEditModal', discussion: -> $scope.discussion
     ,
       name: 'add_resource'
       icon: 'mdi-attachment'
@@ -49,6 +59,13 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
       icon: 'mdi-translate'
       canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
       perform:    -> $scope.discussion.translate(Session.user().locale)
+    ,
+      name: 'copy_url'
+      icon: 'mdi-link'
+      canPerform: -> clipboard.supported
+      perform:    ->
+        clipboard.copyText(LmoUrlService.discussion($scope.discussion, {}, absolute: true))
+        FlashService.success("action_dock.discussion_copied")
     ,
       name: 'add_comment'
       icon: 'mdi-reply'

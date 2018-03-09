@@ -17,19 +17,22 @@ module.exports =
 
   applyPollStartSequence: (scope, options = {}) ->
     applySequence scope,
-      steps: ->
-        if scope.poll.group()
-          ['choose', 'save']
-        else
-          ['choose', 'save', 'share']
+      steps: ['choose', 'save', 'announce']
       initialStep: if scope.poll.pollType then 'save' else 'choose'
       emitter: options.emitter or scope
       chooseComplete: (_, pollType) ->
         scope.poll.pollType = pollType
-      saveComplete: (_, poll) ->
-        scope.poll = poll
-        LmoUrlService.goTo LmoUrlService.poll(poll)
-        options.afterSaveComplete(poll) if typeof options.afterSaveComplete is 'function'
+      saveComplete: (_, event) ->
+        LmoUrlService.goTo LmoUrlService.poll(event.model())
+        options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
+
+  applyDiscussionStartSequence: (scope, options = {}) ->
+    applySequence scope,
+      steps: ['save', 'announce']
+      emitter: options.emitter or scope
+      saveComplete: (_, event) ->
+        LmoUrlService.goTo LmoUrlService.discussion(event.model())
+        options.afterSaveComplete(event) if typeof options.afterSaveComplete is 'function'
 
 applySequence = (scope, options) ->
   scope.steps = if typeof options.steps is 'function' then options.steps() else options.steps
@@ -46,6 +49,7 @@ applySequence = (scope, options) ->
   # deregister old listeners if they're present
   emitter.unlistenPrevious() if typeof emitter.unlistenPrevious is 'function'
   emitter.unlistenNext()     if typeof emitter.unlistenNext     is 'function'
+  emitter.unlistenSkip()     if typeof emitter.skipNext         is 'function'
 
   changeStep = (incr, name) ->
     (args...) ->
@@ -60,3 +64,4 @@ applySequence = (scope, options) ->
 
   emitter.unlistenPrevious = EventBus.listen emitter, 'previousStep', changeStep(-1, 'Back', options, emitter)
   emitter.unlistenNext     = EventBus.listen emitter, 'nextStep',     changeStep(1, 'Complete', options, emitter)
+  emitter.unlistenSkip     = EventBus.listen emitter, 'skipStep',     changeStep(2, 'Skipped', options, emitter)

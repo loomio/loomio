@@ -1,0 +1,23 @@
+%span.learn-more.md-accent
+  %md-menu.lmo-pointer{md-prevent-menu-close: "true"}
+    %md-button.md-accent.lmo-pointer{md-colors: "{'color': 'default-accent'}", md-menu-origin: "true", translate: "common.learn_more", ng-click: "open($mdMenu, $event)"}
+    %md-menu-content.learn-more__menu-content
+      %md-toolbar
+        .md-toolbar-tools.lmo-flex__space-between
+          %i.mdi.mdi-help-circle-outline
+          %h1.lmo-h1{translate: "{{title}}"}
+          %material_modal_header_cancel_button
+      .learn-more__content.lmo-flex--row.lmo-flex__center
+        %md-button.md-button--tiny.lmo-pointer{ng-click: "prev()", ng-disabled: "!hasPrev()", md-prevent-menu-close: "true"}
+          %i.mdi.mdi-chevron-left.mdi-24px
+        .lmo-slide-animation.lmo-flex__grow
+          %p.lmo-hint-text.learn-more__nugget.animated{ng-repeat: "nugget in nuggets track by $index", ng-if: "currentNugget == nugget", translate: "{{nugget}}"}
+        %md-button.md-button--tiny.lmo-pointer{ng-click: "next()", ng-disabled: "!hasNext()", md-prevent-menu-close: "true"}
+          %i.mdi.mdi-chevron-right.mdi-24px
+      .learn-more__dots.md-accent.lmo-flex{md-colors: "{'color': 'default-accent'}"}
+        .learn-more__dot{ng-repeat: "nugget in nuggets track by $index"}
+          %i.mdi.mdi-circle{ng-if: "currentNugget == nugget"}
+          %i.mdi.mdi-circle-outline{ng-if: "currentNugget != nugget"}
+      .lmo-md-action
+        %md-button.md-primary.md-raised{type: "button"}
+          %span{translate: "common.ok_got_it"}

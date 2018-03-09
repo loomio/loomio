@@ -12,6 +12,7 @@ proposal:
   must_have_options:       true
   voters_review_responses: true
   require_stance_choices:  true
+  can_vote_anonymously:    true
   single_choice:           true
   sort_options:
     - newest_first
@@ -29,6 +30,7 @@ count:
   must_have_options:      true
   must_have_options:      true
   require_stance_choices: true
+  can_vote_anonymously:    true
   single_choice:          true
   sort_options:
     - newest_first
@@ -43,6 +45,7 @@ poll:
   can_add_options:    true
   can_remove_options: true
   must_have_options:  true
+  can_vote_anonymously: true
   single_choice:      true
   sort_options:
     - newest_first
@@ -56,6 +59,7 @@ dot_vote:
   can_remove_options:      true
   must_have_options:       true
   has_variable_score:      true
+  can_vote_anonymously:    true
   required_custom_fields:
     - dots_per_person
   sort_options:
@@ -71,6 +75,9 @@ meeting:
   must_have_options:       true
   dates_as_options:        true
   author_receives_outcome: true
+  has_variable_score:      true
+  required_custom_fields:
+    - can_respond_maybe
   sort_options:
     - newest_first
     - oldest_first
@@ -84,6 +91,7 @@ ranked_choice:
   must_have_options:       true
   require_stance_choices:  true
   has_variable_score:      true
+  can_vote_anonymously:    true
   required_custom_fields:
     - minimum_stance_choices
   sort_options:

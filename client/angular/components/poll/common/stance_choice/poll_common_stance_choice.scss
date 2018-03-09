@@ -4,6 +4,12 @@
   margin-right: 8px;
 }
 
+.poll-common-stance-choice--meeting {
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+}
+
 .poll-common-stance-choice--count .poll-common-stance-choice__option-name {
   display: none;
 }

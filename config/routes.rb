@@ -176,6 +176,12 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
+    resources :announcements, only: [:index, :create] do
+      get :notified, on: :collection
+      get :notified_default, on: :collection
+      get :members, on: :collection
+    end
+
     resources :contact_messages, only: :create
     resources :contact_requests, only: :create
 
@@ -245,6 +251,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#index', as: :group_memberships_username
   get 'g/new'                              => 'application#index', as: :new_group
+  get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'p/example(/:type)'                  => 'polls#example',               as: :example_poll
 
