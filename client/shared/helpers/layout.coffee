@@ -25,11 +25,9 @@ module.exports =
 shouldForceSignIn = (options = {}) ->
   return false if AbilityService.isLoggedIn()
   return true  if AppConfig.pendingIdentity.identity_type?
-  return false if options.skipForceSignIn
   switch options.page
     when 'emailSettingsPage' then !Session.user().restricted?
-    when 'groupPage',          \
-         'dashboardPage',      \
+    when 'dashboardPage',      \
          'inboxPage',          \
          'profilePage',        \
          'authorizedAppsPage', \

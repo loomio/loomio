@@ -8,7 +8,7 @@ describe API::AnnouncementsController do
   let(:group) { create :formal_group }
   let(:group_notified) {{
     id: group.id,
-    type: "FormalGroup",
+    type: "Group",
     notified_ids: [another_user.id, a_third_user.id]
   }}
   let(:user_notified) {{
@@ -196,6 +196,8 @@ describe API::AnnouncementsController do
         announcement_params[:notified] = [group_notified]
         expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(2)
         a = Announcement.last
+        expect(discussion.reload.group.members).to include another_user
+        expect(discussion.reload.guest_group.members).to_not include another_user
         expect(a.users_to_announce).to include another_user
         expect(a.users_to_announce).to include a_third_user
         expect(a.users_to_announce).to_not include a_fourth_user
@@ -206,8 +208,8 @@ describe API::AnnouncementsController do
         announcement_params[:notified] = [user_notified]
         expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
-        expect(discussion.guest_group.members).to include a_fourth_user
-        expect(discussion.group.members).to_not include a_fourth_user
+        expect(discussion.reload.guest_group.members).to include a_fourth_user
+        expect(discussion.reload.group.members).to_not include a_fourth_user
         expect(a.users_to_announce).to include a_fourth_user
         expect(a.users_to_announce).to_not include another_user
         expect(a.invitations).to be_empty
@@ -217,7 +219,7 @@ describe API::AnnouncementsController do
         announcement_params[:notified] = [email_notified]
         expect { post :create, params: { announcement: announcement_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
         a = Announcement.last
-        expect(discussion.guest_group.invitation_ids).to eq a.invitation_ids
+        expect(discussion.reload.guest_group.invitation_ids).to eq a.invitation_ids
         expect(a.users_to_announce).to be_empty
         expect(a.invitations.pluck(:recipient_email)).to eq [email_notified[:id]]
         expect(a.invitations.pluck(:intent)).to eq ['join_discussion']

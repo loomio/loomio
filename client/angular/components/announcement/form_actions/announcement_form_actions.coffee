@@ -15,4 +15,7 @@ angular.module('loomioApp').directive 'announcementFormActions', ->
       flashSuccess: 'announcement.flash.success'
       flashOptions:
         count: -> $scope.announcement.totalNotified()
+
+    $scope.expandForm = ->
+      $scope.announcement.expanded = true
   ]

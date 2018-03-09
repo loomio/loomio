@@ -17,7 +17,7 @@ module.exports =
 
   applyPollStartSequence: (scope, options = {}) ->
     applySequence scope,
-      steps: ['choose', 'save', 'explainShareable', 'announce']
+      steps: ['choose', 'save', 'announce']
       initialStep: if scope.poll.pollType then 'save' else 'choose'
       emitter: options.emitter or scope
       chooseComplete: (_, pollType) ->
@@ -49,6 +49,7 @@ applySequence = (scope, options) ->
   # deregister old listeners if they're present
   emitter.unlistenPrevious() if typeof emitter.unlistenPrevious is 'function'
   emitter.unlistenNext()     if typeof emitter.unlistenNext     is 'function'
+  emitter.unlistenSkip()     if typeof emitter.skipNext         is 'function'
 
   changeStep = (incr, name) ->
     (args...) ->
@@ -63,3 +64,4 @@ applySequence = (scope, options) ->
 
   emitter.unlistenPrevious = EventBus.listen emitter, 'previousStep', changeStep(-1, 'Back', options, emitter)
   emitter.unlistenNext     = EventBus.listen emitter, 'nextStep',     changeStep(1, 'Complete', options, emitter)
+  emitter.unlistenSkip     = EventBus.listen emitter, 'skipStep',     changeStep(2, 'Skipped', options, emitter)

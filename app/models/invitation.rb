@@ -1,6 +1,7 @@
 class Invitation < ApplicationRecord
   include CustomCounterCache::Model
   include Null::User
+  include AvatarInitials
 
   class InvitationCancelled < StandardError; end
   class TooManyPending < StandardError; end
@@ -48,6 +49,17 @@ class Invitation < ApplicationRecord
   scope :to_verified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS TRUE AND users.email = invitations.recipient_email") }
   scope :to_unverified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS FALSE AND users.email = invitations.recipient_email") }
   scope :to_unrecognized_user, -> { pending.joins("LEFT OUTER JOIN users ON users.email = invitations.recipient_email").where("users.id IS NULL") }
+
+  scope :with_last_notified_at, -> {
+    select('invitations.*, last_notified_at').joins(<<~SQL)
+      LEFT JOIN (
+        SELECT events.eventable_id, max(events.created_at) as last_notified_at
+        FROM events
+        WHERE events.eventable_type = 'Invitation'
+        GROUP BY events.eventable_id
+      ) e ON e.eventable_id = "invitations"."id"
+    SQL
+  }
 
   def target_model
     @target_model ||= case intent.to_sym

@@ -30,6 +30,10 @@ module HasGuestGroup
     User.joins(:memberships).where("memberships.group_id": group_id)
   end
 
+  def guest_members
+    guest_group.members.where.not(id: group.presence&.member_ids)
+  end
+
   def members
     User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
   end

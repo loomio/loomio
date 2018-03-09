@@ -14,9 +14,13 @@ $chip-height: 40px;
 }
 
 .announcement-form__chips md-chip {
+  @include roundedCorners;
   height: $chip-height;
   padding: 4px;
+  margin: 12px 0;
   padding-right: 28px !important;
+  background: $modal-background-color;
+  box-shadow: 1px 1px 1px $border-color;
 }
 
 .announcement-form input {

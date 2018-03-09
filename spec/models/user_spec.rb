@@ -236,18 +236,18 @@ describe User do
     before { announcement.announce_and_invite! }
 
     it 'can populate last_notified_at' do
-      u = User.with_last_notified_for(discussion).detect { |u| u.id == user.id }
+      u = User.with_last_notified_at(discussion).detect { |u| u.id == user.id }
       expect(u.last_notified_at).to be_within(2.seconds).of announcement.created_at
     end
 
     it 'gives the most recent announcement created date' do
       old_announcement.announce_and_invite!
-      u = User.with_last_notified_for(discussion).detect { |u| u.id == user.id }
+      u = User.with_last_notified_at(discussion).detect { |u| u.id == user.id }
       expect(u.last_notified_at).to_not be_within(2.seconds).of old_announcement.created_at
     end
 
     it 'does not populate if user has not been notified' do
-      u = User.with_last_notified_for(another_discussion).detect { |u| u.id == user.id }
+      u = User.with_last_notified_at(another_discussion).detect { |u| u.id == user.id }
       expect(u.last_notified_at).to be_nil
     end
   end
