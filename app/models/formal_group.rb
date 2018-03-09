@@ -84,6 +84,10 @@ class FormalGroup < Group
 
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
 
+  def pending_invitation_limit
+    self.memberships_count + ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i
+  end
+
   def update_undecided_user_count
     # NOOP: only guest groups have an invitation target
   end
