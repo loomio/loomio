@@ -17,7 +17,7 @@ angular.module('loomioApp').directive 'matrixChart', ->
     drawPlaceholder = ->
       _.each _.times(5), (row) ->
         _.each _.times(5), (col) ->
-          drawShape(row, col, $scope.size / 5, false)
+          drawShape(row, col, $scope.size / 5, 0)
 
     drawShape = (row, col, width, value) ->
 
