@@ -1,4 +1,4 @@
-= render 'avatar', user: @recipient.inviter
+= render 'base_mailer/avatar', user: @recipient.inviter
 %strong= @recipient.inviter.name
 = t(:"email.to_join_group.invitation_text_html")
 %br

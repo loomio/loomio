@@ -188,6 +188,18 @@ class Poll < ApplicationRecord
     AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
   end
 
+  def option_score_tallies
+    tallies = poll_options.map { |option| [option.name, []] }.to_h
+
+    stances.latest.each do |stance|
+      stance.stance_choices.each do |choice|
+        tally = tallies[choice.poll_option.name]
+        tally[choice.score] = (tally[choice.score]||0) + 1
+      end
+    end
+    tallies
+  end
+
   def ordered_poll_options
     if self.dates_as_options
       self.poll_options.order(name: :asc)

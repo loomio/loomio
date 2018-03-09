@@ -19,7 +19,7 @@ module Ability::Poll
       (user.can?(:vote_in, poll) && poll.voter_can_add_options)
     end
 
-    can :vote_in, ::Poll do |poll|
+    can [:vote_in, :export], ::Poll do |poll|
       # cant have a token of a verified user, and be logged in as another user
       poll.active? && (
         poll.members.include?(user) ||
@@ -44,7 +44,7 @@ module Ability::Poll
       )
     end
 
-    can [:update, :share, :remind, :destroy, :export], ::Poll do |poll|
+    can [:update, :share, :remind, :destroy ], ::Poll do |poll|
       user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
     end
 
