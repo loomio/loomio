@@ -159,7 +159,7 @@ describe API::StancesController do
   describe 'create' do
     let(:group)      { create :guest_group }
     let(:another_user) { create :user, email: 'another_user@example.com', email_verified: false }
-    let(:invitation) { create :invitation, recipient_email: 'user@example.com', group: group }
+    let(:invitation) { create :invitation, recipient_email: 'user@example.com', group: group, intent: :join_poll }
     let(:user)       { create :user, email: 'user@example.com', email_verified: false }
     let(:poll)       { create :poll, guest_group: group }
     let(:poll_option) { create :poll_option, poll: poll }
@@ -238,7 +238,7 @@ describe API::StancesController do
     end
 
     describe 'mass invitation' do
-      let(:invitation) { create :shareable_invitation, group: poll.guest_group, inviter: poll.author }
+      let(:invitation) { create :shareable_invitation, group: poll.guest_group, inviter: poll.author, intent: :join_poll }
 
       before do
         invitation

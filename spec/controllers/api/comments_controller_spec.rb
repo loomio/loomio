@@ -65,6 +65,16 @@ describe API::CommentsController do
                                user_id: user.id)).to exist
         end
 
+        it 'allows guest group members to comment' do
+          discussion.group.memberships.find_by(user: user).destroy
+          discussion.guest_group.add_member! user
+
+          post :create, params: { comment: comment_params }
+          expect(response).to be_success
+          expect(Comment.where(body: comment_params[:body],
+                               user_id: user.id)).to exist
+        end
+
         it 'responds with a discussion with a reader' do
           post :create, params: { comment: comment_params }
           json = JSON.parse(response.body)

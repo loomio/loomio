@@ -45,7 +45,6 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    is_new_group   = params.has_key?(:group_id) && params[:group_id] != poll.group_id
     poll.assign_attributes(params.except(:poll_type, :discussion_id))
     is_new_version = poll.is_new_version?
 
@@ -53,8 +52,7 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
-    EventBus.broadcast('poll_changed_group', poll, actor)                          if is_new_group
-    Events::PollEdited.publish!(poll, actor, poll.make_announcement) if is_new_version
+    Events::PollEdited.publish!(poll, actor) if is_new_version
   end
 
   def self.add_options(poll:, params:, actor:)
@@ -65,7 +63,6 @@ class PollService
     return false unless poll.valid?
     poll.save!
 
-    poll.make_announcement = true # TODO: handle announcements (or not?) for add options
     EventBus.broadcast('poll_add_options', poll, actor, params)
     Events::PollOptionAdded.publish!(poll, actor, option_names)
   end

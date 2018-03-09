@@ -32,7 +32,7 @@ class MembershipService
   def self.add_users_to_group(users:, group:, inviter:)
     inviter.ability.authorize!(:add_members, group)
     group.add_members!(users, inviter: inviter).tap do |memberships|
-      Events::UserAddedToGroup.bulk_publish!(memberships, inviter)
+      Events::UserAddedToGroup.bulk_publish!(memberships, user: inviter)
     end
   end
 

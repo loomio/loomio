@@ -1,5 +1,5 @@
 class Full::UserSerializer < UserSerializer
-  attributes :email, :email_when_proposal_closing_soon, :email_missed_yesterday,
+  attributes :email, :email_when_proposal_closing_soon, :email_missed_yesterday, :email_announcements,
              :email_when_mentioned, :email_on_participation, :selected_locale, :locale,
              :default_membership_volume, :experiences, :is_coordinator, :is_admin
 
@@ -9,7 +9,7 @@ class Full::UserSerializer < UserSerializer
   has_many :identities,         serializer: IdentitySerializer, root: :identities
 
   def guest_memberships
-    from_scope :memberships
+    from_scope :guest_memberships
   end
 
   def formal_memberships

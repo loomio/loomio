@@ -2,10 +2,7 @@ class Events::InvitationAccepted < Event
   include Events::Notify::InApp
 
   def self.publish!(membership)
-    create(kind: "invitation_accepted",
-           user_id: membership.user_id,
-           eventable: membership,
-           created_at: membership.created_at).tap { |e| EventBus.broadcast('invitation_accepted_event', e) }
+    super membership, user: membership.user
   end
 
   private
@@ -19,9 +16,10 @@ class Events::InvitationAccepted < Event
   end
 
   def notification_url
-    case eventable.group
-    when FormalGroup then group_memberships_username_url(eventable.group, eventable.user.username)
-    when GuestGroup  then polymorphic_url(eventable.group.invitation_target)
+    if eventable.group.is_a?(FormalGroup)
+      group_memberships_username_url(eventable.group, eventable.user.username)
+    else
+      polymorphic_url(eventable.target_model)
     end
   end
 end

@@ -209,10 +209,10 @@ module Dev::NintiesMoviesHelper
 
   def pending_invitation
     unless @pending_invitation
-      @pending_invitation = InvitationService.invite_to_group(recipient_emails: ['judd@example.com'],
-                                                              message: 'Come and join the group!',
-                                                              group: create_group,
-                                                              inviter: patrick).last
+      @pending_invitation = InvitationService.bulk_create(recipient_emails: ['judd@example.com'],
+                                                          message: 'Come and join the group!',
+                                                          group: create_group,
+                                                          inviter: patrick).last
     end
     @pending_invitation
   end
@@ -312,7 +312,6 @@ module Dev::NintiesMoviesHelper
     comment = Comment.new(discussion: create_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
     CommentService.create(comment: comment, actor: jennifer)
 
-    # lots of reactions to the comment.
     [max, emilio, judd].each {|u| comment.group.add_member! u}
     ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':slight_smile:'}, actor: jennifer)
     ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':heart:'}, actor: patrick)
@@ -345,11 +344,16 @@ module Dev::NintiesMoviesHelper
 
     #'invitation_accepted',
     #notify patrick that his invitation to emilio has been accepted
-    invitation = InvitationService.invite_to_group(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
+    invitation = InvitationService.bulk_create(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
     InvitationService.redeem(invitation.first, emilio)
+
     #'poll_created'
-    poll = FactoryBot.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
-    PollService.create(poll: poll, actor: jennifer)
+    notified = [{type: 'FormalGroup', id: create_discussion.group_id, notified_ids: [patrick.id]}.with_indifferent_access]
+
+    poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
+    poll_created_event = PollService.create(poll: poll, actor: jennifer)
+    poll_announcement = FactoryBot.build(:announcement, event: poll_created_event, notified: notified)
+    AnnouncementService.create(announcement: poll_announcement, actor: jennifer)
 
     #'poll_closing_soon'
     PollService.publish_closing_soon
@@ -357,8 +361,10 @@ module Dev::NintiesMoviesHelper
     #'outcome_created'
     poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
     PollService.create(poll: poll, actor: jennifer)
-    outcome = FactoryBot.build(:outcome, poll: poll, make_announcement: true)
-    OutcomeService.create(outcome: outcome, actor: jennifer)
+    outcome = FactoryBot.build(:outcome, poll: poll)
+    outcome_created_event = OutcomeService.create(outcome: outcome, actor: jennifer)
+    outcome_announcement = FactoryBot.build(:announcement, event: outcome_created_event, notified: notified)
+    AnnouncementService.create(announcement: outcome_announcement, actor: jennifer)
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
@@ -368,10 +374,8 @@ module Dev::NintiesMoviesHelper
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
     #'poll_option_added'
-    poll.tap(&:save).reload
-    poll.make_announcement = true
-    patrick_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
-    StanceService.create(stance: patrick_stance, actor: patrick)
-    PollService.add_options(poll: poll, actor: jennifer, params: {poll_option_names: ['new_option']})
+    option_added_event = PollService.add_options(poll: poll, params: {poll_option_names: "wark"}, actor: jennifer)
+    added_announcement = FactoryBot.build(:announcement, event: option_added_event, notified: notified)
+    AnnouncementService.create(announcement: added_announcement, actor: jennifer)
   end
 end

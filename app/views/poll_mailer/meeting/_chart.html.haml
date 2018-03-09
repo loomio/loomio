@@ -5,15 +5,19 @@
       - @info.poll_options.each do |option|
         %td.poll-mailer-meeting__cell= option.display_name(zone: @info.time_zone)
   %tbody
-    %tr
-      %td= t(:"poll_mailer.meeting.total")
-      - @info.poll.stance_counts.each do |count|
-        %td.poll-mailer-meeting__cell= count
     - @info.poll.stances.latest.each do |stance|
       %tr
         %td.poll-mailer-meeting__participant-name= stance.participant.name
         - @info.poll_options.each do |option|
-          - if stance.poll_options.include?(option)
-            %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--active ✓
-          - else
+          - if stance.stance_choices.find_by(poll_option:option)&.score.to_i == 0
             %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--inactive
+          - elsif stance.stance_choices.find_by(poll_option:option)&.score.to_i == 1
+            %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--maybe -
+          - else
+            %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--active ✓
+    %tr
+      %td= t(:"poll_mailer.meeting.total")
+      - @info.poll.option_score_tallies.each do |option, tally|
+        %td.poll-mailer-meeting__cell
+          %span= "#{tally[2].to_i}"
+          %span= "(#{tally[1]})" if tally[1].to_i > 0

@@ -1,20 +1,22 @@
 class Poll < ApplicationRecord
   include CustomCounterCache::Model
   extend  HasCustomFields
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
+  include HasAnnouncements
   include HasMentions
   include HasGuestGroup
-  include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
   include Reactable
   include HasEvents
   include HasCreatedEvent
 
-  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
+  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe
 
-  TEMPLATE_FIELDS = %w(material_icon translate_option_name
+  TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
                        can_add_options can_remove_options author_receives_outcome
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
@@ -48,8 +50,6 @@ class Poll < ApplicationRecord
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
-
-  has_many :guest_invitations, through: :guest_group, source: :invitations
 
   has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
@@ -145,22 +145,11 @@ class Poll < ApplicationRecord
   end
 
   def group_members
-    User.joins(:memberships)
-        .joins(:groups)
-        .where("memberships.group_id": group_id)
-        .where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
-  end
-
-  def members
-    User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
+    super.joins(:groups).where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
   end
 
   def undecided
     reload.members.where.not(id: participants)
-  end
-
-  def invitations
-    Invitation.where(group_id: [group_id, guest_group_id].compact)
   end
 
   def update_stance_data
@@ -180,7 +169,8 @@ class Poll < ApplicationRecord
     update_attribute(:matrix_counts,
       poll_options.order(:name).limit(5).map do |option|
         stances.latest.order(:created_at).limit(5).map do |stance|
-          stance.poll_options.include?(option)
+          # the score of the stance choice which has this poll option in this stance
+          stance.stance_choices.find_by(poll_option:option)&.score.to_i
         end
       end
     ) if chart_type == 'matrix'
@@ -196,6 +186,18 @@ class Poll < ApplicationRecord
 
   def is_single_vote?
     AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
+  end
+
+  def option_score_tallies
+    tallies = poll_options.map { |option| [option.name, []] }.to_h
+
+    stances.latest.each do |stance|
+      stance.stance_choices.each do |choice|
+        tally = tallies[choice.poll_option.name]
+        tally[choice.score] = (tally[choice.score]||0) + 1
+      end
+    end
+    tallies
   end
 
   def ordered_poll_options
@@ -290,7 +292,7 @@ class Poll < ApplicationRecord
 
   def require_custom_fields
     Array(required_custom_fields).each do |field|
-      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].blank?
+      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].nil?
     end
   end
 end
