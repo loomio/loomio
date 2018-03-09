@@ -29,6 +29,15 @@ module.exports = {
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
+  'discussion_edited_without_event': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_announced_discussion')
+    page.click('.action-dock__button--edit_thread')
+    page.click('.discussion-form__submit')
+    page.expectNoElement('.announcement-form')
+  },
+
   'announcement_created': (test) => {
     page = pageHelper(test)
 

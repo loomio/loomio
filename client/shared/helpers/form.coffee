@@ -20,7 +20,7 @@ module.exports =
         scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
       successCallback: (data) ->
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
-        EventBus.emit scope, 'nextStep', createdEvent(data, model)
+        nextOrSkip(data, scope, model)
     , options))
 
   submitOutcome: (scope, model, options = {}) ->
@@ -29,7 +29,7 @@ module.exports =
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
-        EventBus.emit scope, 'nextStep', createdEvent(data, model)
+        nextOrSkip(data, scope, model)
     , options))
 
   submitStance: (scope, model, options = {}) ->
@@ -63,7 +63,7 @@ module.exports =
       successCallback: (data) ->
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
         model.removeOrphanOptions()
-        EventBus.emit scope, 'nextStep', createdEvent(data, model)
+        nextOrSkip(data, scope, model)
       cleanupFn: ->
         EventBus.emit scope, 'doneProcessing'
     , options))
@@ -165,12 +165,15 @@ calculateFlashOptions = (options) ->
     options[key] = options[key]() if typeof options[key] is 'function'
   options
 
+nextOrSkip = (data, scope, model) ->
+  eventData = _.find(data.events, (event) -> event.kind == eventKind(model)) || {}
+  if event = Records.events.find(eventData.id)
+    EventBus.emit scope, 'nextStep', event
+  else
+    EventBus.emit scope, 'skipStep'
+
 actionName = (model) ->
   if model.isNew() then 'created' else 'updated'
-
-createdEvent = (data, model) ->
-  eventData = _.first _.filter data.events, (event) -> event.kind == eventKind(model)
-  Records.events.find(eventData.id) if eventData?
 
 eventKind = (model) ->
   return 'new_discussion' if model.isNew() and model.constructor.singular == 'discussion'
