@@ -12,4 +12,3 @@ loomio_content_preview:
 
 loomio_onboarding:
   repo:         https://github.com/loomio/loomio_onboarding.git
-  branch:       announcements
