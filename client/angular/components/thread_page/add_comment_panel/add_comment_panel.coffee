@@ -22,13 +22,13 @@ angular.module('loomioApp').directive 'addCommentPanel', ['$timeout', ($timeout)
 
     $scope.indent = -> $scope.eventWindow.useNesting && $scope.isReply
 
-    EventBus.listen $scope, 'replyToEvent', (e, event) ->
+    EventBus.listen $scope, 'replyToEvent', (e, event, comment) ->
       # if we're in nesting and we're the correct reply OR we're in chronoglogical, always accept parentComment
       if (!$scope.eventWindow.useNesting) || ($scope.parentEvent.id == event.id)
         $scope.show = true
         $timeout ->
           $scope.isReply = true
-          EventBus.broadcast $scope, 'setParentComment', event.model()
+          EventBus.broadcast $scope, 'setParentComment', comment
 
       scrollTo('.add-comment-panel textarea', {bottom: true, offset: 200})
 

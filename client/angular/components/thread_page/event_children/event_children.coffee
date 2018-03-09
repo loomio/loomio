@@ -15,7 +15,7 @@ angular.module('loomioApp').directive 'eventChildren', ->
       initialSequenceId: $scope.parentEventWindow.initialSequenceId
       per:               $scope.parentEventWindow.per
 
-    EventBus.listen $scope, 'replyToEvent', (e, event) ->
+    EventBus.listen $scope, 'replyToEvent', (e, event, comment) ->
       if event.id == $scope.parentEvent.id
         $scope.eventWindow.max = false
   ]
