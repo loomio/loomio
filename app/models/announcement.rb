@@ -12,6 +12,7 @@ class Announcement < ApplicationRecord
 
   delegate :kind, to: :event
   delegate :eventable, to: :event, allow_nil: true
+  delegate :members, to: :eventable, allow_nil: true
   delegate :guest_group, to: :eventable, allow_nil: true
   delegate :memberships, to: :guest_group
   delegate :update_announcements_count, to: :eventable, allow_nil: true
@@ -44,7 +45,7 @@ class Announcement < ApplicationRecord
   end
 
   def users_to_invite
-    @users_to_invite ||= users_to_announce.where.not(id: guest_group.member_ids)
+    @users_to_invite ||= users_to_announce.where.not(id: members.pluck(:id))
   end
 
   def ensure_event
