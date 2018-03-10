@@ -8,9 +8,9 @@ module.exports = class GroupRecordsInterface extends BaseRecordsInterface
     # could be id or key or handle
     @find(id) || _.first(@find(handle: id))
 
-  findOrFetch: (id, options = {}) ->
+  findOrFetch: (id, options = {}, ensureComplete = false) ->
     record = @fuzzyFind(id)
-    if record
+    if record && (!ensureComplete || record.complete)
       Promise.resolve(record)
     else
       @remote.fetchById(id, options).then => @fuzzyFind(id)
