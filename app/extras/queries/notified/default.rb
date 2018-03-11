@@ -8,7 +8,7 @@ Queries::Notified::Default = Struct.new(:kind, :model, :user) do
   private
 
   def notified_group
-    Array((Notified::Group.new(model.group, user) if model.group.presence))
+    Array((Notified::Group.new(model.group, user) if model.group.memberships_count.to_i > 1))
   end
 
   def notified_group_optional
