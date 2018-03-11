@@ -7,6 +7,11 @@ rackup      DefaultRackup
 port        ENV['PORT']     || 3000
 environment ENV['RAILS_ENV'] || 'development'
 
+if ENV['RAILS_ENV'] == 'development'
+   puts "Running in development mode, upping worker_timeout to 7200..."
+   worker_timeout 7200
+end
+
 if ENV['LOOMIO_SSL_KEY']
   ssl_bind '0.0.0.0', '9292', {
      key: ENV['LOOMIO_SSL_KEY'],
