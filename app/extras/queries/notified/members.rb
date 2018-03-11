@@ -30,7 +30,7 @@ Queries::Notified::Members = Struct.new(:model, :expand_group) do
     if expand_group
       model.group.invitations
     else
-      model.guest_invitations
-    end.pending.with_last_notified_at.map { |invitation| Members::Invitation.new(invitation) }
+      model.guest_invitations.with_last_notified_at
+    end.pending.map { |invitation| Members::Invitation.new(invitation) }
   end
 end

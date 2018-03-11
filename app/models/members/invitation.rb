@@ -20,6 +20,6 @@ class Members::Invitation < Members::Base
   end
 
   def last_notified_at
-    model.last_notified_at
+    model.last_notified_at if model.respond_to?(:last_notified_at)
   end
 end
