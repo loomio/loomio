@@ -31,7 +31,10 @@ class Identities::SlackController < Identities::BaseController
 
   def authorized
     @team, @channel = params[:slack].to_s.split("-")
-    sign_in identity_in_session.spawn_user!(@channel) unless current_user.is_logged_in?
+    if user_to_join
+      FormalGroup.by_slack_channel(@channel).each { |g| g.add_member! user_to_join }
+      sign_in user_to_join
+    end
     render template: 'slack/authorized', layout: 'errors'
   end
 
@@ -46,8 +49,12 @@ class Identities::SlackController < Identities::BaseController
     identity.fetch_team_info
   end
 
-  def identity_in_session
-    @identity ||= Identities::Slack.find_by(id: session.delete(:pending_identity_id))
+  def user_to_join
+    @user_to_join ||= current_user.presence || identity_to_join&.user || identity_to_join&.create_user!
+  end
+
+  def identity_to_join
+    @identity_to_join ||= Identities::Slack.find_by(id: session.delete(:pending_identity_id))
   end
 
   def identity_params
