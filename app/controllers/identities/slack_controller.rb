@@ -30,8 +30,9 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def authorized
-    @team = params[:team]
-    render template: 'slack/authorized', layout: 'application'
+    @team, @channel = params[:slack].to_s.split("-")
+    sign_in identity_in_session.spawn_user!(@channel) unless current_user.is_logged_in?
+    render template: 'slack/authorized', layout: 'errors'
   end
 
   private
@@ -43,6 +44,10 @@ class Identities::SlackController < Identities::BaseController
   def complete_identity(identity)
     super
     identity.fetch_team_info
+  end
+
+  def identity_in_session
+    @identity ||= Identities::Slack.find_by(id: session.delete(:pending_identity_id))
   end
 
   def identity_params
