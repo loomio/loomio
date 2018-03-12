@@ -53,7 +53,7 @@
     "jstimezonedetect": "~1.0.5",
     "lodash": "3.10.1",
     "lokijs": "1.5.1",
-    "loomio-angular-marked": "^1.2.4",
+    "loomio-angular-marked": "^1.2.5",
     "loomio-angular-router": "git://github.com/loomio/router#v0.5.3.2",
     "mdi": "2.1.19",
     "ment.io": "~0.9.15",
