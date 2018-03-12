@@ -15,7 +15,7 @@
           %i.mdi.mdi-minus{ng-if: "stance.scoreFor(option)==1"}
       %tr.poll-meeting-chart-panel__bold
         %td{translate: "poll_meeting_chart_panel.total"}
-        %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() track by option.id"}
+        %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
           {{ totalFor(option)[2] }}
           %span{ng-if:"totalFor(option)[1] > 0"}
             ({{totalFor(option)[1]}})

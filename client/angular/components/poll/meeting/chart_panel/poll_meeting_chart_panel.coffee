@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'pollMeetingChartPanel', ->
   templateUrl: 'generated/components/poll/meeting/chart_panel/poll_meeting_chart_panel.html'
   controller: ['$scope', ($scope) ->
 
-    $scope.hasMaybeVotes = () ->
+    $scope.hasMaybeVotes = ->
       #IF ANY OF THE STANCE CHOICES HAS A SCORE OF 1 RETURN TRUE
       _.some $scope.poll.stances(), (stance) ->
         _.some stance.stanceChoices(), (choice) ->
