@@ -14,7 +14,8 @@ module HasDrafts
 
   def purge_draft!(user)
     return unless draft = user.drafts.find_by(draftable: draft_parent)
-    draft.payload.except!(self.class.to_s.downcase)
+    field = is_a?(FormalGroup) ? 'group' : self.class.to_s.downcase
+    draft.payload.except!(field)
     draft.tap(&:save)
   end
   handle_asynchronously :purge_draft!
