@@ -1,6 +1,6 @@
 module HasDrafts
   def perform_draft_purge!(user)
-    if purge_drafts_asyncronously?
+    if purge_drafts_asynchronously?
       purge_draft!(user)
     else
       purge_draft_without_delay!(user)
@@ -8,7 +8,7 @@ module HasDrafts
   end
 
   # override for models which cannot tolerate non-async draft deletion
-  def purge_drafts_asyncronously?
+  def purge_drafts_asynchronously?
     true
   end
 

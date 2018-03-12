@@ -59,7 +59,7 @@ class Comment < ApplicationRecord
     next_parent.created_event
   end
 
-  def purge_drafts_asyncronously?
+  def purge_drafts_asynchronously?
     false
   end
 
