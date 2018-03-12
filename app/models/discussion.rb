@@ -7,6 +7,7 @@ class Discussion < ApplicationRecord
   include HasAnnouncements
   include HasMentions
   include HasGuestGroup
+  include HasDrafts
   include HasImportance
   include MessageChannel
   include SelfReferencing
@@ -74,6 +75,8 @@ class Discussion < ApplicationRecord
   delegate :email, to: :author, prefix: :author
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
+
+  alias_method :draft_parent, :group
 
   after_create :set_last_activity_at_to_created_at
 

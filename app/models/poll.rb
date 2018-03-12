@@ -5,6 +5,7 @@ class Poll < ApplicationRecord
   include ReadableUnguessableUrls
   include HasAnnouncements
   include HasMentions
+  include HasDrafts
   include HasGuestGroup
   include MessageChannel
   include SelfReferencing
@@ -120,6 +121,7 @@ class Poll < ApplicationRecord
   validate :require_custom_fields
 
   alias_method :user, :author
+  alias_method :draft_parent, :discussion
 
   def parent_event
     if discussion
