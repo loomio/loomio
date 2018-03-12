@@ -188,6 +188,7 @@ en:
     reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
     change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a>."
+    discussion_closed: "%{actor} closed the discussion"
 
   footer:
     about: About
