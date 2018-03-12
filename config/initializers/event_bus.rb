@@ -3,11 +3,10 @@ require 'event_bus'
 EventBus.configure do |config|
 
   # Purge drafts after model creation
-  config.listen('discussion_create') { |discussion| Draft.purge(user: discussion.author, draftable: discussion.group, field: :discussion) }
-  config.listen('comment_create')    { |comment|    Draft.purge_without_delay(user: comment.user, draftable: comment.discussion, field: :comment) }
-  config.listen('motion_create')     { |motion|     Draft.purge(user: motion.author, draftable: motion.discussion, field: :motion) }
-  config.listen('vote_create')       { |vote|       Draft.purge(user: vote.user, draftable: vote.motion, field: :vote) }
-  config.listen('poll_create')       { |poll|       Draft.purge(user: poll.author, draftable: poll.discussion, field: :poll) }
+  config.listen('group_create',
+                'discussion_create',
+                'comment_create',
+                'poll_create') { |model| model.perform_draft_purge! }
 
   # Add creator to group on group creation
   config.listen('group_create') do |group, actor|
