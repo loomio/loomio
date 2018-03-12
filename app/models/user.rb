@@ -144,7 +144,7 @@ class User < ApplicationRecord
   #
   # then, we join that timestamp to the current user query, available in the last_notified_at column
   scope :with_last_notified_at, ->(model) {
-    select('*, last_notified_at').joins(<<~SQL)
+    select('users.*, last_notified_at').joins(<<~SQL)
       -- join #2
       LEFT JOIN (
         SELECT users.id as user_id, max(notified.created_at) as last_notified_at

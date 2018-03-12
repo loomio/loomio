@@ -5,5 +5,7 @@
   .lmo-flex__grow
     %div {{ member.title }}
     .md-caption{ng-if: "member.subtitle"} {{ member.subtitle }}
-  %timeago.md-caption.nowrap{ng-if: "member.lastNotifiedAt", timestamp: "member.lastNotifiedAt"}
-  %p.md-caption.announcement-member-list-item__not-notified.nowrap{ng-if: "!member.lastNotifiedAt && member.type != 'Public'", translate: "announcement.members_list.not_notified"}
+  .announcement-member-list-item__empty{ng-if: "!displayTimestampFor(member)"}
+  .announcement-member-list-item__last-notified-at{ng-if: "displayTimestampFor(member)"}
+    %timeago.md-caption.nowrap{ng-if: "member.lastNotifiedAt", timestamp: "member.lastNotifiedAt"}
+    %p.md-caption.announcement-member-list-item__not-notified.nowrap{ng-if: "!member.lastNotifiedAt && member.type != 'Public'", translate: "announcement.members_list.not_notified"}
