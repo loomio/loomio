@@ -83,7 +83,7 @@ class Dev::MainController < Dev::BaseController
     @group.add_admin! patrick
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
-    announcement = FactoryBot.build(:announcement, user_ids: [jennifer.id], event: event)
+    announcement = FactoryBot.build(:announcement, notified: [{id: jennifer.id, type: 'User', notified_ids: [jennifer.id]}.with_indifferent_access], event: event)
     AnnouncementService.create(announcement: announcement, actor: patrick)
     last_email
   end
