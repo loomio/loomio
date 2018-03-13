@@ -344,5 +344,13 @@ module.exports = {
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
+  },
+
+  'sends_missed_yesterday': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_thread_missed_yesterday')
+    page.expectText('.activity-feed', 'body of the comment')
+    page.expectText('.activity-feed', 'Patrick Swayze closed the discussion')
   }
 }

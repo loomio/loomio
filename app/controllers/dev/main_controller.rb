@@ -17,6 +17,7 @@ class Dev::MainController < Dev::BaseController
     :setup_discussion_mailer_user_mentioned_email,
     :setup_discussion_mailer_invitation_created_email,
     :setup_accounts_merged_email
+    :setup_thread_missed_yesterday
   ]
 
   def index
@@ -669,4 +670,11 @@ class Dev::MainController < Dev::BaseController
     redirect_to discussion_url(create_discussion)
   end
 
+  def setup_thread_missed_yesterday
+    jennifer.update(email_missed_yesterday: true)
+    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion), actor: patrick)
+    DiscussionService.close(discussion: create_discussion, actor: patrick)
+    UserMailer.missed_yesterday(jennifer, 1.hour.ago).deliver_now
+    last_email
+  end
 end
