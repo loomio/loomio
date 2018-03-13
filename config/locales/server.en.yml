@@ -183,7 +183,7 @@ en:
 
     invitation_created:
       subject: "[%{group}] %{discussion}"
-      subject_html: "<strong>%{actor}</strong> invited you to join the conversation: %{discussion}"
+      subject_html: "<strong>%{actor}</strong> invited you to join the thread: %{discussion}"
 
     new_comment:
       subject: "[%{group}] %{discussion}"
