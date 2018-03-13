@@ -344,7 +344,8 @@ describe Event do
     let(:invitation) { create :invitation, group: poll.guest_group }
 
     it 'creates an announcement' do
-      announcement.update(user_ids: [user_thread_loud, user_thread_normal].map(&:id))
+      announcement.announcees.create(announceable: user_thread_loud, user_ids: [user_thread_loud.id])
+      announcement.announcees.create(announceable: user_thread_normal, user_ids: [user_thread_normal.id])
       expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(2) # the two notified_ids
     end
 
