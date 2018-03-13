@@ -1,6 +1,5 @@
 class FormalGroup < Group
   include HasTimeframe
-  include MakesAnnouncements
   include HasDrafts
 
   validates_presence_of :name

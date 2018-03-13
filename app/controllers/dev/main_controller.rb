@@ -16,7 +16,7 @@ class Dev::MainController < Dev::BaseController
     :setup_discussion_mailer_new_comment_email,
     :setup_discussion_mailer_user_mentioned_email,
     :setup_discussion_mailer_invitation_created_email,
-    :setup_accounts_merged_email
+    :setup_accounts_merged_email,
     :setup_thread_missed_yesterday
   ]
 
