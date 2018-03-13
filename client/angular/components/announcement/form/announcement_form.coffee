@@ -23,10 +23,6 @@ angular.module('loomioApp').directive 'announcementForm', ->
       ModalService.open 'AnnouncementModal', announcement: ->
         Records.announcements.buildFromModel($scope.relevantDiscussion())
 
-    $scope.relevantDiscussion = ->
-      return if $scope.announcement.modelName() == 'discussion'
-      $scope.announcement.model().discussion()
-
     $scope.search = (query) ->
       Records.announcements.fetchNotified(query)
   ]
