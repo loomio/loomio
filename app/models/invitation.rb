@@ -63,9 +63,9 @@ class Invitation < ApplicationRecord
 
   def target_model
     @target_model ||= case intent.to_sym
-    when :join_group      then group
-    when :join_discussion then Discussion.find_by(guest_group_id: group_id)
-    when :join_poll       then Poll.find_by(guest_group_id: group_id)
+    when :join_group               then group
+    when :join_discussion          then Discussion.find_by(guest_group_id: group_id)
+    when :join_poll, :join_outcome then Poll.find_by(guest_group_id: group_id)
     end
   end
 

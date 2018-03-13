@@ -136,7 +136,7 @@ describe API::AnnouncementsController do
         expect(a.users_to_announce).to include a_third_user
         expect(a.users_to_announce).to include a_fourth_user
         expect(a.invitations.pluck(:recipient_email)).to include email_notified[:id]
-        expect(a.invitations.pluck(:intent)).to eq ['join_poll']
+        expect(a.invitations.pluck(:intent)).to eq ['join_outcome']
 
         expect(another_user.can?(:show, outcome)).to eq true
         expect(a_third_user.can?(:show, outcome)).to eq true
