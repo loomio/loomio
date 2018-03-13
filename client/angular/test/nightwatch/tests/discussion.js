@@ -267,6 +267,7 @@ module.exports = {
     page.expectNoElement('.reaction')
     page.click('.action-dock__button--react')
     page.click('.md-active .emoji-picker__link:first-child')
+    page.click('.action-dock__button--react')
     page.expectElement('.reaction__emoji')
   },
 
