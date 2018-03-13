@@ -29,7 +29,7 @@ class Invitation < ApplicationRecord
   update_counter_cache :group, :pending_invitations_count
 
   validates_presence_of :group, :intent
-  validates_inclusion_of :intent, in: ['join_group', 'join_discussion', 'join_poll']
+  validates_inclusion_of :intent, in: ['join_group', 'join_discussion', 'join_poll', 'join_outcome']
   validates_exclusion_of :recipient_email, in: User::FORBIDDEN_EMAIL_ADDRESSES
   scope :chronologically, -> { order('id asc') }
   before_save :ensure_token_is_present
@@ -70,7 +70,7 @@ class Invitation < ApplicationRecord
   end
 
   def poll
-    target_model if intent.to_sym == :join_poll
+    target_model if [:join_poll, :join_outcome].include? intent.to_sym
   end
 
   def discussion
@@ -82,7 +82,11 @@ class Invitation < ApplicationRecord
   end
 
   def mailer
-    "#{intent.to_s.split('_').last.classify}Mailer".constantize
+    case intent.to_sym
+    when :join_group               then GroupMailer
+    when :join_discussion          then DiscussionMailer
+    when :join_poll, :join_outcome then PollMailer
+    end
   end
 
   def locale

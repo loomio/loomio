@@ -181,7 +181,7 @@ en:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> shared a thread: %{discussion}"
 
-    join_discussion:
+    invitation_created:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> invited you to join the thread: %{discussion}"
 
