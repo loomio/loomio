@@ -408,41 +408,11 @@ en:
 
   announcement:
     form:
-      discussion_helptext: Add people you'd like to notify of this thread. They will be able to view it and comment if they can't already.
-      poll_helptext: Add people you'd like to participate in this decision. They will gain access to this poll and be able to vote.
-      outcome_helptext: Add people you'd like to notify of this decision. They will be able to view the poll results.
-      relevant_discussion_helptext: This decision is part of the thread <strong>{{title}}</strong>, you can also
-      invite_to_discussion: invite people to join that conversation
+      discussion_helptext: Who would you like to invite to the thread?
+      poll_helptext: Who would you like to invite to this decision?
+      outcome_helptext: Who would you like to notify of this outcome?
       get_shareable_link: Get shareable link
       shareable_link_helptext: Anyone with this link will be able to participate
-      # helptext_title: Announcing content
-      # helptext_1: |
-      #   <p>
-      #     Announcements allow you to notify the people you'd like to engage, without bothering the people you don't.
-      #   </p>
-      #   <p>
-      #     Simply enter the name of a person or group, or the email address of someone you'd like to share with.
-      #   </p>
-      #   <p>
-      #     Each person entered will receive a notification; anyone who cannot access the thread or decision will be given access.
-      #     <img src="/img/announce/chip.png" />
-      #   </p>
-      # helptext_2: |
-      #   <p>
-      #     Clicking on a group will allow you to further fine-tune who in the group will receive an email.
-      #     <img src="/img/announce/group.png" />
-      #   </p>
-      # helptext_3: |
-      #   <p>
-      #     If you don't want to notify anyone right now, that's okay too! You can always announce later (or again),
-      #     by clicking on the <strong>Announce</strong> button in the action dock.
-      #     <img src="/img/announce/button.png" />
-      #   </p>
-      # helptext_4: |
-      #   <p>
-      #     If you haven't notified anyone at all yet, you'll notice a gentle reminder to do so.
-      #     <img src="/img/announce/reminder.png" />
-      #   </p>
       placeholder: Enter groups, names, or email addresses
       discussion:
         title: Share thread
@@ -452,9 +422,7 @@ en:
         title: Share outcome
       notified: '{{notified}} people will be notified'
       group_title: '{{name}} ({{count}} people)'
-      advanced: Advanced
-      click_to_edit: (click to edit)
-      click_to_expand: (click to expand)
+      show_members: Show members
     members_list:
       title: Shared with
       last_notified: Notified
@@ -475,12 +443,12 @@ en:
     add_comment: Comment
     copy_url: Copy URL
     edit_thread: Edit context
-    announce_thread: Let people know about this thread
-    announce_thread_active: (No one has been notified of this thread yet)
+    announce_thread: Invite people to join the thread
+    announce_thread_active: (No one has been invited yet)
     translate_thread: Translate context
     edit_poll: Edit poll
-    announce_poll: Let people know about this decision
-    announce_poll_active: (No one has been notified of this decision yet)
+    announce_poll: Invite people to participate in the decision
+    announce_poll_active: (No one has been invited yet)
     translate_poll: Translate poll
     edit_stance: Change your vote
     translate_stance: Translate vote
@@ -489,7 +457,7 @@ en:
     reply_to_comment: Reply
     translate_comment: Translate comment
     edit_outcome: Edit outcome
-    announce_outcome: Let people know about this outcome
+    announce_outcome: Notify people about this outcome
     announce_outcome_active: (No one has been notified of this outcome yet)
     translate_outcome: Translate outcome
     show_history: Show edit history

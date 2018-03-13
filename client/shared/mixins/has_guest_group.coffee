@@ -14,3 +14,9 @@ module.exports = new class HasGuestGroup
 
     model.members = model.members or ->
       model.recordStore.users.find(model.memberIds())
+
+    model.adminMemberships = ->
+      model.guestGroup().adminMemberships().concat((model.group() or @recordStore.groups.build()).adminMemberships())
+
+    model.adminMembers = ->
+      _.invoke model.adminMemberships(), 'user'

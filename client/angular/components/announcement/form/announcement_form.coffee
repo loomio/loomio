@@ -16,16 +16,11 @@ angular.module('loomioApp').directive 'announcementForm', ->
     Records.members.collection.chain().remove()
 
     $scope.acceptChip = ($chip) ->
-      $chip.subtitle = I18n.t('announcement.form.click_to_edit') if $chip.type == 'Group'
       if $chip.type != 'Null' then $chip else null
 
     $scope.inviteToDiscussion = ->
       ModalService.open 'AnnouncementModal', announcement: ->
         Records.announcements.buildFromModel($scope.relevantDiscussion())
-
-    $scope.relevantDiscussion = ->
-      return if $scope.announcement.modelName() == 'discussion'
-      $scope.announcement.model().discussion()
 
     $scope.search = (query) ->
       Records.announcements.fetchNotified(query)
