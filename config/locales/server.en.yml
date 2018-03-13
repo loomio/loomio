@@ -371,7 +371,7 @@ en:
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
         outcome_announced: '%{actor} shared a proposal outcome: %{title}'
         join_poll: '%{actor} wants your opinion: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
+        join_outcome: '%{actor} shared an outcome for %{title}'
         invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
         user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
