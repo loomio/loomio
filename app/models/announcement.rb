@@ -41,7 +41,7 @@ class Announcement < ApplicationRecord
   end
 
   def users_to_announce
-    @users_to_announce ||= User.where(id: announcees.pluck(&:user_ids).flatten.uniq)
+    @users_to_announce ||= User.where(id: announcees.pluck(:user_ids).flatten.uniq)
   end
 
   def users_to_invite
