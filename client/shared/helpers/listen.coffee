@@ -36,7 +36,7 @@ module.exports =
 
       reaction = Records.reactions.find(params)[0] || Records.reactions.build(params)
       reaction.reaction = emoji
-      reaction.save()
+      reaction.save().then -> $scope.$apply()
 
   listenForLoading: ($scope) ->
     EventBus.listen $scope, 'processing',     -> $scope.isDisabled = true
