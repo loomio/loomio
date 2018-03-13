@@ -5,6 +5,7 @@ class Discussion < ApplicationRecord
   include Reactable
   include HasTimeframe
   include HasMentions
+  include HasDrafts
   include HasImportance
   include MessageChannel
   include MakesAnnouncements
@@ -72,6 +73,8 @@ class Discussion < ApplicationRecord
   delegate :email, to: :author, prefix: :author
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
+
+  alias_method :draft_parent, :group
 
   after_create :set_last_activity_at_to_created_at
 

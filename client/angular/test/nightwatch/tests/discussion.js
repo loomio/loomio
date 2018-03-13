@@ -304,5 +304,13 @@ module.exports = {
     page.click('.action-dock__button--delete_comment')
     page.click('.delete-comment-form__delete-button')
     page.expectNoText('.activity-card', 'original comment right thur')
+  },
+
+  'sends_missed_yesterday': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_thread_missed_yesterday')
+    page.expectText('.activity-feed', 'body of the comment')
+    page.expectText('.activity-feed', 'Patrick Swayze closed the discussion')
   }
 }

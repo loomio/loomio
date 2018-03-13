@@ -3,6 +3,7 @@ class Comment < ApplicationRecord
   include Translatable
   include Reactable
   include HasMentions
+  include HasDrafts
   include HasCreatedEvent
 
   has_paper_trail only: [:body]
@@ -16,6 +17,7 @@ class Comment < ApplicationRecord
 
   alias_attribute :author, :user
   alias_attribute :author_id, :user_id
+  alias_method :draft_parent, :discussion
 
   has_many :documents, as: :model, dependent: :destroy
 
@@ -57,6 +59,9 @@ class Comment < ApplicationRecord
     next_parent.created_event
   end
 
+  def purge_drafts_asynchronously?
+    false
+  end
 
   def created_event_kind
     :new_comment

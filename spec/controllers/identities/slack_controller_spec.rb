@@ -1,15 +1,34 @@
 require 'rails_helper'
 
 describe Identities::SlackController do
+  let(:user) { create :user }
+
   describe 'authorized' do
-    subject { get :authorized }
+    let!(:group) { create :formal_group }
+    let(:group_identity) { create :group_identity, group: group, identity: identity, slack_channel_id: "C123" }
+    let(:identity) { create :slack_identity, user: nil }
+
     it 'renders the slack authorized page' do
+      get :authorized
       expect(subject).to render_template('slack/authorized')
+    end
+
+    it 'spawns a user from the session' do
+      session[:pending_identity_id] = identity.id
+      expect { get :authorized, params: { slack: "test-#{group_identity.slack_channel_id}" } }.to change { User.count }.by(1)
+      u = User.last
+      expect(group.member_ids).to include u.id
+    end
+
+    it 'associates with the current user if one is already logged in' do
+      sign_in user
+      session[:pending_identity_id] = identity.id
+      expect { get :authorized, params: { slack: "test-#{group_identity.slack_channel_id}" } }.to_not change { User.count }
+      expect(group.member_ids).to include user.id
     end
   end
 
   describe 'install' do
-    let(:user) { create :user }
     let(:identity) { create :slack_identity, user: user }
 
     it 'boots the app if an identity exists' do
