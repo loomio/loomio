@@ -18,4 +18,7 @@ angular.module('loomioApp').directive 'announcementFormActions', ->
 
     $scope.expandForm = ->
       $scope.announcement.expanded = true
+
+    $scope.collapseForm = ->
+      $scope.announcement.expanded = false
   ]

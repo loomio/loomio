@@ -1,5 +1,5 @@
   .lmo-md-actions
-    %div{ng-if: "announcement.expanded"}
+    %md-button.md-accent.announcement-form__collapse{ng-if: "announcement.expanded", ng-click: "collapseForm()", translate: "announcement.form.hide_members"}
     %md-button.md-accent.announcement-form__advanced{ng-if: "!announcement.expanded", ng-click: "expandForm()", translate: "announcement.form.show_members"}
     %div
       -# %learn_more{title: "announcement.form.helptext_title", nuggets: "nuggets"}

@@ -423,6 +423,7 @@ en:
       notified: '{{notified}} people will be notified'
       group_title: '{{name}} ({{count}} people)'
       show_members: Show members
+      hide_members: Hide members
     members_list:
       title: Shared with
       last_notified: Notified
