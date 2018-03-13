@@ -16,7 +16,6 @@ angular.module('loomioApp').directive 'announcementForm', ->
     Records.members.collection.chain().remove()
 
     $scope.acceptChip = ($chip) ->
-      $chip.subtitle = I18n.t('announcement.form.click_to_edit') if $chip.type == 'Group'
       if $chip.type != 'Null' then $chip else null
 
     $scope.inviteToDiscussion = ->

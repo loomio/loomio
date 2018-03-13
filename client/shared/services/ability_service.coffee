@@ -214,16 +214,13 @@ module.exports = new class AbilityService
     @canAdministerPoll(poll)
 
   canExportPoll: (poll) ->
-    @canAdministerPoll(poll)    
+    @canAdministerPoll(poll)
 
   canSetPollOutcome: (poll) ->
     poll.isClosed() and @canAdministerPoll(poll)
 
   canAdministerPoll: (poll) ->
-    if poll.group()
-      (@canAdministerGroup(poll.group()) or (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
-    else
-      Session.user().isAuthorOf(poll)
+    _.contains(poll.adminMembers(), Session.user())
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)

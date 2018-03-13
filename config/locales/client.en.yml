@@ -423,8 +423,6 @@ en:
       notified: '{{notified}} people will be notified'
       group_title: '{{name}} ({{count}} people)'
       show_members: Show members
-      click_to_edit: (click to edit)
-      click_to_expand: (click to expand)
     members_list:
       title: Shared with
       last_notified: Notified
