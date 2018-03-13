@@ -29,6 +29,8 @@ namespace :travis do
     system("bundle exec rspec plugins")
     rspec_passed = $?.exitstatus == 0
     system("wget http://localhost:3000/")
+    puts "Contents of plugin test folder:"
+    system("ls #{Rails.root}/client/angular/test/nightwatch/plugins")
     puts "Starting to run plugins nightwatch..."
     system("cd client && gulp nightwatch:plugins --retries 2")
     nightwatch_passed = $?.exitstatus == 0
