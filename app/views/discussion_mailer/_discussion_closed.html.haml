@@ -6,4 +6,4 @@
         %div{class: "medium-user-avatar #{user.avatar_kind}-user-avatar avatar-canvas"}
           = render "avatar", user: user
     %td.content
-      %i= t(:"thread_mailer.discussion_closed", actor: user.name)
+      %i= t(:"discussion_mailer.discussion_closed", actor: user.name)
