@@ -146,7 +146,6 @@ module Plugins
 
     def use_e2e(path)
       @actions.add Proc.new {
-        puts "Copying from #{path_prefix(path)} to #{Rails.root}/client/angular/test/nightwatch/plugins/#{path.split('/').last}"
         system("cp #{path_prefix(path)} #{Rails.root}/client/angular/test/nightwatch/plugins/#{path.split('/').last}")
       }.to_proc
     end
