@@ -220,7 +220,7 @@ module.exports = new class AbilityService
     poll.isClosed() and @canAdministerPoll(poll)
 
   canAdministerPoll: (poll) ->
-    _.contains(poll.adminMembers(), Session.user())
+    _.contains(poll.adminMembers(), Session.user()) || Session.user().isAuthorOf(poll)
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)
