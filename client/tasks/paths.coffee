@@ -65,12 +65,7 @@ module.exports =
     main:           'vue/main.coffee'
     vue:            'vue/components/*.vue'
 
-  protractor:
-    config:       'angular/test/protractor.coffee'
-    screenshots:  'angular/test/protractor/screenshots'
-    specs:
-      core:        'angular/test/protractor/*_spec.coffee'
-      plugins:     ['../plugins/**/*_spec.coffee', 'angular/test/protractor/testing_spec.coffee']
-
   nightwatch:
-    config:       'angular/test/nightwatch.json'
+    config:
+      core:        'angular/test/nightwatch.core.json'
+      plugins:     'angular/test/nightwatch.plugins.json'
