@@ -19,8 +19,11 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ['$rootScope', ($r
     $scope.canEditThread = ->
       AbilityService.canEditThread($scope.discussion)
 
+    $scope.canMuteThread = ->
+      AbilityService.isLoggedIn()
+
     $scope.editThread = ->
-      ModalService.open 'DiscussionModal', discussion: => $scope.discussion
+      ModalService.open 'DiscussionEditModal', discussion: => $scope.discussion
 
     $scope.canPinThread = ->
       AbilityService.canPinThread($scope.discussion)

@@ -1,6 +1,7 @@
-AppConfig = require 'shared/services/app_config.coffee'
-Records   = require 'shared/services/records.coffee'
-Session   = require 'shared/services/session.coffee'
+AppConfig     = require 'shared/services/app_config.coffee'
+Records       = require 'shared/services/records.coffee'
+Session       = require 'shared/services/session.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 module.exports = new class AbilityService
 
@@ -22,22 +23,30 @@ module.exports = new class AbilityService
     _.intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
-    Session.user().isMemberOf(thread.group())
+    _.contains thread.members(), Session.user()
 
   canRespondToComment: (comment) ->
-    Session.user().isMemberOf(comment.group())
+    _.contains comment.discussion().members(), Session.user()
 
-  canStartPoll: (group) ->
-    group and
-    (@canAdministerGroup(group) or Session.user().isMemberOf(group) and group.membersCanRaiseMotions)
+  canStartPoll: (model) ->
+    return unless model
+    switch model.constructor.singular
+      when 'discussion' then @canStartPoll(model.group()) || @canStartPoll(model.guestGroup())
+      when 'group'      then (@canAdministerGroup(model) or Session.user().isMemberOf(model) and model.membersCanRaiseMotions)
 
   canParticipateInPoll: (poll) ->
     return false unless poll
     poll.anyoneCanParticipate or
     @canAdministerPoll(poll) or
-    !poll.group() or
-    Session.user().isMemberOf(poll.guestGroup()) or
-    (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
+    @canParticipateInGroup(poll.guestGroup()) or
+    @canParticipateInGroup(poll.group()) or
+    (poll.discussion() and @canParticipateInGroup(poll.discussion().guestGroup()))
+
+  canParticipateInGroup: (group) ->
+    return false unless group
+    Session.user().isAdminOf(group) or
+    (Session.user().isMemberOf(group) and group.membersCanRaiseMotions) or
+    Session.invitation().group() == group
 
   canReactToPoll: (poll) ->
     @isEmailVerified() and @canParticipateInPoll(poll)
@@ -73,9 +82,6 @@ module.exports = new class AbilityService
     @canAdministerGroup(thread.group()) or
     Session.user().isAuthorOf(thread)
 
-  canChangeThreadVolume: (thread) ->
-    Session.user().isMemberOf(thread.group())
-
   canChangeGroupVolume: (group) ->
     Session.user().isMemberOf(group)
 
@@ -93,7 +99,7 @@ module.exports = new class AbilityService
     @canAdministerGroup(discussion.group())
 
   canChangeVolume: (discussion) ->
-    Session.user().isMemberOf(discussion.group())
+    _.contains discussion.members(), Session.user()
 
   canManageGroupSubscription: (group) ->
     group.isParent() and
@@ -198,9 +204,6 @@ module.exports = new class AbilityService
     else
       @canAdministerPoll() || _.contains(@poll().voters(), Session.user())
 
-  canSharePoll: (poll) ->
-    @canEditPoll(poll)
-
   canRemovePollOptions: (poll) ->
     poll.isNew() || (poll.isActive() && poll.stancesCount == 0)
 
@@ -211,33 +214,13 @@ module.exports = new class AbilityService
     @canAdministerPoll(poll)
 
   canExportPoll: (poll) ->
-    @canAdministerPoll(poll)    
+    @canAdministerPoll(poll)
 
   canSetPollOutcome: (poll) ->
     poll.isClosed() and @canAdministerPoll(poll)
 
   canAdministerPoll: (poll) ->
-    if poll.group()
-      (@canAdministerGroup(poll.group()) or (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
-    else
-      Session.user().isAuthorOf(poll)
+    _.contains(poll.adminMembers(), Session.user()) || Session.user().isAuthorOf(poll)
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)
-
-  requireLoginFor: (page) ->
-    return false if @isLoggedIn()
-    switch page
-      when 'emailSettingsPage' then !Session.user().restricted?
-      when 'groupsPage',         \
-           'dashboardPage',      \
-           'inboxPage',          \
-           'profilePage',        \
-           'authorizedAppsPage', \
-           'registeredAppsPage', \
-           'registeredAppPage',  \
-           'pollsPage',          \
-           'startPollPage',      \
-           'upgradePage',        \
-           'startGroupPage' then true
-      else false

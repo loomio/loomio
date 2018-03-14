@@ -65,12 +65,12 @@ module.exports = {
     page.fillIn('.discussion-form__title-input', 'better title')
     page.fillIn('.discussion-form textarea', 'improved description')
     page.click('.discussion-form__private')
-    page.click('.discussion-form__update')
+    page.click('.discussion-form__submit')
+    page.click('.material-modal-header-cancel-button')
     page.pause()
     page.expectText('.context-panel__heading', 'better title')
     page.expectText('.context-panel__description', 'improved description')
     page.expectText('.context-panel', 'Private')
-    // page.expectText('.thread-item__title', 'edited the thread')
   },
 
   'does not store cancelled thread info': (test) => {
@@ -200,6 +200,19 @@ module.exports = {
     page.expectText('.flash-root__message', 'Comment added')
   },
 
+  'allows guests to comment and view thread in dashboard': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_as_guest')
+    page.fillIn('.comment-form textarea', 'I am a guest!')
+    page.click('.comment-form__submit-button')
+    page.expectText('.flash-root__message', 'Comment added')
+
+    page.ensureSidebar()
+    page.click('.sidebar__list-item-button--recent')
+    page.expectText('.thread-preview__text-container', 'Dirty Dancing Shoes')
+  },
+
   'allows logged in users to request to join a closed group': (test) => {
     page = pageHelper(test)
 
@@ -253,8 +266,9 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.expectNoElement('.reaction')
     page.click('.action-dock__button--react')
-    page.click('.emoji-picker__selector:first-child')
-    page.expectElement('.reaction')
+    page.click('.md-active .emoji-picker__link:first-child')
+    page.click('.action-dock__button--react')
+    page.expectElement('.reaction__emoji')
   },
 
   'mentions a user': (test) => {
@@ -304,6 +318,33 @@ module.exports = {
     page.click('.action-dock__button--delete_comment')
     page.click('.delete-comment-form__delete-button')
     page.expectNoText('.activity-card', 'original comment right thur')
+  },
+
+  'invites_a_user_to_a_discussion': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_mailer_new_discussion_email')
+    page.click('.thread-mailer__subject a')
+    page.expectText('.context-panel__heading', 'go to the moon')
+    page.expectText('.context-panel__description', 'A description for this discussion')
+    page.fillIn('.comment-form textarea', 'Hello world!')
+    page.click('.comment-form__submit-button')
+    page.expectText('.thread-item__title', 'Jennifer Grey')
+    page.expectText('.thread-item__body', 'Hello world!')
+    page.expectText('.group-theme__name--compact', 'Girdy Dancing Shoes')
+    page.ensureSidebar()
+    page.expectNoText('.sidebar__list-item-button--group', 'Girdy Dancing Shoes')
+  },
+
+  'invites_an_email_to_a_discussion': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_mailer_invitation_created_email')
+    page.click('.thread-mailer__subject a')
+    page.expectText('.context-panel__heading', 'go to the moon')
+    page.expectText('.context-panel__description', 'A description for this discussion')
+    page.expectText('.new-comment__body', 'body of the comment')
+    page.expectValue('.auth-email-form__email input', 'jen@example.com')
   },
 
   'sends_missed_yesterday': (test) => {

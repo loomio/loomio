@@ -1,21 +1,23 @@
 class Poll < ApplicationRecord
   include CustomCounterCache::Model
   extend  HasCustomFields
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
+  include HasAnnouncements
   include HasMentions
   include HasDrafts
   include HasGuestGroup
-  include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
   include Reactable
   include HasEvents
   include HasCreatedEvent
 
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
 
-  TEMPLATE_FIELDS = %w(material_icon translate_option_name
+  TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
                        can_add_options can_remove_options author_receives_outcome
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
@@ -49,8 +51,6 @@ class Poll < ApplicationRecord
 
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
-
-  has_many :guest_invitations, through: :guest_group, source: :invitations
 
   has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
@@ -147,22 +147,11 @@ class Poll < ApplicationRecord
   end
 
   def group_members
-    User.joins(:memberships)
-        .joins(:groups)
-        .where("memberships.group_id": group_id)
-        .where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
-  end
-
-  def members
-    User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
+    super.joins(:groups).where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
   end
 
   def undecided
     reload.members.where.not(id: participants)
-  end
-
-  def invitations
-    Invitation.where(group_id: [group_id, guest_group_id].compact)
   end
 
   def update_stance_data

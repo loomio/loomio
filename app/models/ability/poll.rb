@@ -37,8 +37,11 @@ module Ability::Poll
     end
 
     can :create, ::Poll do |poll|
-      user.email_verified? &&
-      (!poll.group.presence || poll.group.members.include?(user))
+      user.email_verified? && (
+        !poll.group.presence ||
+        can?(:start_poll, poll.discussion) ||
+        can?(:start_poll, poll.group)
+      )
     end
 
     can [:update, :share, :remind, :destroy, :export], ::Poll do |poll|

@@ -8,7 +8,7 @@ require 'rails_helper'
     let(:subject) { BootData.new(user) }
     let(:notification) { create(:notification, user: user) }
     let(:comment) { create(:comment, parent: create(:comment, discussion: discussion, author: user), discussion: discussion) }
-    let(:event) { Events::CommentRepliedTo.create(kind: 'comment_replied_to', eventable: comment) }
+    let(:notification) { create :notification, user: user }
     let(:identity) { create :slack_identity, user: user }
 
     describe 'data' do
@@ -17,8 +17,8 @@ require 'rails_helper'
       end
 
       it 'returns the current users notifications' do
-        event
-        expect(subject.data[:notifications].map { |n| n[:id] }).to include Notification.last.id
+        notification
+        expect(subject.data[:notifications].map { |n| n[:id] }).to include notification.id
       end
 
       it 'returns the current users identities' do

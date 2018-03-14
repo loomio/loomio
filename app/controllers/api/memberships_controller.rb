@@ -11,8 +11,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def index
-    load_and_authorize :group
-    instantiate_collection { |collection| collection.active.where(group_id: @group.id).order('users.name') }
+    instantiate_collection { |collection| collection.active.where(group: model.groups).order('users.name') }
     respond_with_collection
   end
 
@@ -73,6 +72,12 @@ class API::MembershipsController < API::RestfulController
   end
 
   private
+
+  def model
+    load_and_authorize(:group, optional: true) ||
+    load_and_authorize(:discussion, optional: true) ||
+    load_and_authorize(:poll, optional: true)
+  end
 
   def accessible_records
     visible = resource_class.joins(:group).includes(:user, :inviter, {group: [:parent]})

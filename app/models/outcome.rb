@@ -1,6 +1,6 @@
 class Outcome < ApplicationRecord
   extend  HasCustomFields
-  include MakesAnnouncements
+  include HasAnnouncements
   include HasMentions
   include Reactable
   include Translatable
@@ -14,14 +14,11 @@ class Outcome < ApplicationRecord
   has_many :stances, through: :poll
   has_many :documents, as: :model, dependent: :destroy
 
-  delegate :title, to: :poll
-  delegate :dates_as_options, to: :poll
-  delegate :group, to: :poll
-  delegate :group_id, to: :poll
-  delegate :groups, to: :poll
-  delegate :discussion, to: :poll
-  delegate :discussion_id, to: :poll
-  delegate :locale, to: :poll
+  %w(
+    title poll_type dates_as_options group group_id groups discussion discussion_id
+    locale mailer guest_group guest_members guest_invitations anyone_can_participate
+    members
+  ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement
   is_translatable on: :statement
@@ -31,6 +28,10 @@ class Outcome < ApplicationRecord
 
   def parent_event
     poll.created_event
+  end
+
+  def invitation_intent
+    :join_outcome
   end
 
   def attendee_emails

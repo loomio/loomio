@@ -1,6 +1,7 @@
 class Invitation < ApplicationRecord
   include CustomCounterCache::Model
   include Null::User
+  include AvatarInitials
 
   class InvitationCancelled < StandardError; end
   class TooManyPending < StandardError; end
@@ -22,17 +23,21 @@ class Invitation < ApplicationRecord
   belongs_to :group
   belongs_to :canceller, class_name: 'User'
 
+  has_many :announcees, dependent: :destroy, as: :announceable
+
   update_counter_cache :group, :invitations_count
   update_counter_cache :group, :pending_invitations_count
 
   validates_presence_of :group, :intent
-  validates_inclusion_of :intent, :in => ['start_group', 'join_group', 'join_poll']
+  validates_inclusion_of :intent, in: ['join_group', 'join_discussion', 'join_poll', 'join_outcome']
   validates_exclusion_of :recipient_email, in: User::FORBIDDEN_EMAIL_ADDRESSES
   scope :chronologically, -> { order('id asc') }
   before_save :ensure_token_is_present
   after_initialize :apply_null_methods!
 
   delegate :name, to: :inviter, prefix: true, allow_nil: true
+  delegate :body, to: :discussion, allow_nil: true
+  delegate :documents, to: :discussion, allow_nil: true
 
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
   scope :cancelled, -> { where.not(cancelled_at: nil) }
@@ -45,19 +50,43 @@ class Invitation < ApplicationRecord
   scope :to_unverified_user, -> { pending.joins("INNER JOIN users ON users.email_verified IS FALSE AND users.email = invitations.recipient_email") }
   scope :to_unrecognized_user, -> { pending.joins("LEFT OUTER JOIN users ON users.email = invitations.recipient_email").where("users.id IS NULL") }
 
+  scope :with_last_notified_at, -> {
+    select('invitations.*, last_notified_at').joins(<<~SQL)
+      LEFT JOIN (
+        SELECT events.eventable_id, max(events.created_at) as last_notified_at
+        FROM events
+        WHERE events.eventable_type = 'Invitation'
+        GROUP BY events.eventable_id
+      ) e ON e.eventable_id = "invitations"."id"
+    SQL
+  }
+
+  def target_model
+    @target_model ||= case intent.to_sym
+    when :join_group               then group
+    when :join_discussion          then Discussion.find_by(guest_group_id: group_id)
+    when :join_poll, :join_outcome then Poll.find_by(guest_group_id: group_id)
+    end
+  end
+
+  def poll
+    target_model if [:join_poll, :join_outcome].include? intent.to_sym
+  end
+
+  def discussion
+    target_model if intent.to_sym == :join_discussion
+  end
+
   def unsubscribe_token
     token
   end
 
   def mailer
-    case intent
-    when 'join_group' then GroupMailer
-    when 'join_poll' then PollMailer
+    case intent.to_sym
+    when :join_group               then GroupMailer
+    when :join_discussion          then DiscussionMailer
+    when :join_poll, :join_outcome then PollMailer
     end
-  end
-
-  def poll
-    group.invitation_target if intent=='join_poll'
   end
 
   def locale

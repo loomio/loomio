@@ -3,28 +3,26 @@ AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 
 angular.module('loomioApp').directive 'membersCard', ->
-  scope: {group: '='}
+  scope: {model: '='}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/members_card/members_card.html'
   controller: ['$scope', ($scope) ->
     $scope.canViewMemberships = ->
-      AbilityService.canViewMemberships($scope.group)
+      AbilityService.canViewMemberships($scope.model)
 
     $scope.canAddMembers = ->
-      AbilityService.canAddMembers($scope.group)
-
-    $scope.isAdmin = ->
-      AbilityService.canAdministerGroup($scope.group)
-
-    $scope.memberIsAdmin = (member) ->
-      $scope.group.membershipFor(member).admin
+      AbilityService.canAdminister($scope.model)
 
     $scope.showMembersPlaceholder = ->
-      AbilityService.canAdministerGroup($scope.group) and $scope.group.memberships().length <= 1
+      $scope.canAddMembers() and $scope.model.memberships().length <= 1
 
     $scope.invitePeople = ->
-      ModalService.open 'InvitationModal', group: -> $scope.group
+      if $scope.model.constructor.singular == 'group'
+        ModalService.open 'InvitationModal', group: -> $scope.model
+      else
+        ModalService.open 'AnnouncementModal', announcement: ->
+          Records.announcements.buildFromModel($scope.model)
 
-    if $scope.canViewMemberships()
-      Records.memberships.fetchByGroup $scope.group.key, per: 10
+    if $scope.canViewMemberships() and $scope.model.constructor.singular == 'group'
+      Records.memberships.fetchByGroup $scope.model.key, per: 10
   ]

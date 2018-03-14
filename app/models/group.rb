@@ -36,12 +36,20 @@ class Group < ApplicationRecord
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
   define_counter_cache(:announcement_recipients_count) { |group| group.memberships.volume_at_least(:normal).count }
 
-  def message_channel
-    "/group-#{self.key}"
+  def groups
+    Array(self)
   end
 
-  def invitation_target
-    self
+  def headcount
+    memberships_count + pending_invitations_count
+  end
+
+  def mailer
+    GroupMailer
+  end
+
+  def message_channel
+    "/group-#{self.key}"
   end
 
   def parent_or_self

@@ -1,0 +1,7 @@
+.poll-common-settings
+  .md-block.poll-common-multiple-choice.poll-common-checkbox-option{ng-repeat: "setting in settings track by $index"}
+    .poll-common-checkbox-option__text.md-list-item-text
+      %h3{translate: "poll_common_settings.{{snakify(setting)}}.title"}
+      %p.md-caption{ng-if: "poll[setting]", translate: "poll_common_settings.{{snakify(setting)}}.helptext_on"}
+      %p.md-caption{ng-if: "!poll[setting]", translate: "poll_common_settings.{{snakify(setting)}}.helptext_off"}
+    %md-checkbox{ng-model: "poll[setting]"}

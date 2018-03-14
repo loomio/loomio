@@ -16,7 +16,7 @@ class PollEmailInfo
     @recipient   = recipient
     @event       = event
     @eventable   = event.eventable
-    @poll        = @eventable.poll
+    @poll        = event.eventable.poll
     @action_name = action_name
   end
 

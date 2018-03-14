@@ -15,7 +15,6 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
     if $scope.poll.isNew()
       $scope.poll.closingAt = moment().add(2, 'day')
       $scope.poll.notifyOnParticipate = true
-      $scope.poll.makeAnnouncement = true if $scope.poll.group()
 
     EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
       $scope.poll.customFields.time_zone = zone

@@ -32,16 +32,8 @@ describe 'DiscussionService' do
       expect(draft.reload.payload['discussion']).to be_blank
     end
 
-    describe 'make_announcement' do
-      it 'notifies users when make_announcement is true' do
-        discussion.make_announcement = true
-        expect { DiscussionService.create(discussion: discussion, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(1)
-      end
-
-      it 'does not notify userse when make_announcement is false' do
-        discussion.make_announcement = false
-        expect { DiscussionService.create(discussion: discussion, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
-      end
+    it 'does not email people' do
+      expect { DiscussionService.create(discussion: discussion, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
 
     context 'the discussion is valid' do
@@ -56,8 +48,9 @@ describe 'DiscussionService' do
       it 'notifies new mentions' do
         discussion.group.add_member! another_user
         discussion.description = "A mention for @#{another_user.username}!"
-        expect(Events::UserMentioned).to receive(:publish!).with(discussion, user, another_user)
-        DiscussionService.create(discussion: discussion, actor: user)
+        expect { DiscussionService.create(discussion: discussion, actor: user) }.to change {
+          Events::UserMentioned.where(kind: :user_mentioned).count
+        }.by(1)
       end
 
       it 'does not notify users outside the group' do
