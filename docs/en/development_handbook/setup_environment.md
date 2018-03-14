@@ -88,8 +88,15 @@ $ bundle install
 ## Install Node.js
 
 You'll need Node.js and it's best if you use `nvm` to install it. From [https://github.com/creationix/nvm](https://github.com/creationix/nvm) You'll find that you need to run:
+
+### MacOS X:
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+```
+
+### Ubuntu:
+```
+wget -O - https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 ```
 
 Now build and install node
