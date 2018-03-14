@@ -144,6 +144,12 @@ module Plugins
       @assets.add path_prefix(path, rails_root: false)
     end
 
+    def use_e2e(path)
+      @actions.add Proc.new {
+        system("cp #{path_prefix(path)} #{Rails.root}/client/angular/test/nightwatch/plugins/#{path.split('/').last}")
+      }.to_proc
+    end
+
     private
 
     def path_prefix(path = nil, rails_root: true)

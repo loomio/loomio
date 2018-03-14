@@ -1,5 +1,5 @@
 {
-  "src_folders": ["angular/test/nightwatch/tests"],
+  "src_folders": ["angular/test/nightwatch/core"],
   "tests_output": "./angular/test/output",
   "globals_path": "./angular/test/nightwatch/globals.js",
   "selenium": {
