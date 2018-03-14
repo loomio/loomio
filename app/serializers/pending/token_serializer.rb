@@ -1,6 +1,4 @@
 class Pending::TokenSerializer < Pending::BaseSerializer
-  attribute :has_token
-
   def has_token
     true
   end
