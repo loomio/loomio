@@ -47,6 +47,6 @@ class API::RegistrationsController < Devise::RegistrationsController
   end
 
   def invitation_is_present?
-    pending_identity&.single_use?
+    pending_invitation&.single_use?
   end
 end
