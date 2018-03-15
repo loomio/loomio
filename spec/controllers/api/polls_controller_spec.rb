@@ -310,6 +310,43 @@ describe API::PollsController do
     end
   end
 
+  describe 'reopen' do
+    let(:poll_params) {{
+      closing_at: 1.day.from_now
+    }}
+    let!(:did_not_vote) { PollDidNotVote.create(poll: poll, user: another_user) }
+    before { poll.update(closed_at: 1.day.ago) }
+
+    it 'can reopen a poll' do
+      sign_in user
+      post :reopen, params: { id: poll.key, poll: poll_params }
+      expect(response.status).to eq 200
+
+      expect(poll.reload.active?).to eq true
+      expect(poll.closing_at).to be_within(1.second).of(poll_params[:closing_at])
+      expect(poll.poll_did_not_votes).to be_empty
+      expect(poll.undecided_user_count).to eq 3
+    end
+
+    it 'cannot reopen an active poll' do
+      poll.update(closed_at: nil)
+      sign_in user
+      post :reopen, params: { id: poll.key, poll: poll_params }
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow non-admins to reopen a poll' do
+      sign_in another_user
+      post :reopen, params: { id: poll.key, poll: poll_params }
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow visitors to reopen polls' do
+      post :reopen, params: { id: poll.key, poll: poll_params }
+      expect(response.status).to eq 403
+    end
+  end
+
   describe 'destroy' do
     it 'destroys a poll' do
       sign_in poll.author

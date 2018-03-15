@@ -224,3 +224,6 @@ module.exports = new class AbilityService
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)
+
+  canReopenPoll: (poll) ->
+    poll.isClosed() and @canAdministerPoll(poll)
