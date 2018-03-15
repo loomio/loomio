@@ -10,7 +10,7 @@ module.exports = new class AuthService
     Records.users.emailStatus(user.email, pendingToken).then (data) =>
       @applyEmailStatus(user, _.first(data.users))
 
-  applyEmailStatus: (user, data) ->
+  applyEmailStatus: (user, data = {}) ->
     keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'gravatar_md5', 'avatar_url', 'has_password', 'email_status']
     user.update _.pick(_.mapKeys(_.pick(data, keys), (v,k) -> _.camelCase(k)), _.identity)
     user.update(hasToken: data.has_token)
