@@ -130,6 +130,9 @@ module.exports = class PollModel extends BaseModel
   close: =>
     @remote.postMember(@key, 'close')
 
+  reopen: =>
+    @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt})
+
   addOptions: =>
     @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
 
