@@ -7,7 +7,7 @@ class API::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     if resource.save
       save_detected_locale(resource)
-      if pending_invitation
+      if invitation_is_present?
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
       else
@@ -37,12 +37,16 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.require(:recaptcha) if !pending_invitation && ENV['RECAPTCHA_APP_KEY']
+      u.require(:recaptcha) if !invitation_is_present? && ENV['RECAPTCHA_APP_KEY']
       u.permit(:name, :email, :recaptcha)
     end
   end
 
   def user_from_pending_identity
     User.new(name: pending_identity&.name, email: pending_identity&.email)
+  end
+
+  def invitation_is_present?
+    pending_identity&.single_use?
   end
 end
