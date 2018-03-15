@@ -11,7 +11,7 @@ class API::RegistrationsController < Devise::RegistrationsController
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
       else
-        LoginTokenService.create(actor: resource, url: URI::parse(request.referrer.to_s))
+        LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
       end
       render json: { success: :ok }
     else
@@ -37,7 +37,7 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.require(:recaptcha) if ENV['RECAPTCHA_APP_KEY'].present?
+      u.require(:recaptcha) if !pending_invitation && ENV['RECAPTCHA_APP_KEY']
       u.permit(:name, :email, :recaptcha)
     end
   end

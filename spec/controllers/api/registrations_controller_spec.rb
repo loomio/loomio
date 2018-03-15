@@ -10,6 +10,8 @@ describe API::RegistrationsController do
   before { request.env["devise.mapping"] = Devise.mappings[:user] }
 
   describe 'create' do
+    let(:pending_invitation) { create :invitation, recipient_email: registration_params[:email] }
+
     it 'creates a new user' do
       Clients::Recaptcha.any_instance.stub(:validate) { true }
       expect { post :create, params: { user: registration_params } }.to change { User.count }.by(1)
@@ -22,6 +24,14 @@ describe API::RegistrationsController do
     it 'sends a login email' do
       Clients::Recaptcha.any_instance.stub(:validate) { true }
       expect { post :create, params: { user: registration_params } }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
+    it 'logs in immediately if pending invitation is present' do
+      session[:pending_invitation_id] = pending_invitation.token
+      expect { post :create, params: { user: registration_params.except(:recaptcha) } }.to change { User.count }.by(1)
+      u = User.last
+      expect(u.name).to eq registration_params[:name]
+      expect(u.email).to eq registration_params[:email]
     end
 
     it 'does not create a new user if recaptcha is not present' do
