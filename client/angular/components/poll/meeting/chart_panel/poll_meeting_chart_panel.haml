@@ -1,5 +1,4 @@
 .poll-meeting-chart-panel
-  %poll_meeting_chart_legend{ng-if:"hasMaybeVotes()"}
   %table
     %thead
       %tr
@@ -14,8 +13,14 @@
           %i.mdi.mdi-check{ng-if: "stance.scoreFor(option)==2"}
           %i.mdi.mdi-minus{ng-if: "stance.scoreFor(option)==1"}
       %tr.poll-meeting-chart-panel__bold
-        %td{translate: "poll_meeting_chart_panel.total"}
-        %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
-          {{ totalFor(option)[2] }}
-          %span{ng-if:"totalFor(option)[1] > 0"}
-            ({{totalFor(option)[1]}})
+        %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel--active.lmo-flex--row.lmo-flex__center.lmo-flex__space-around
+          %span{translate:"poll_meeting_chart_legend.can_attend"}
+          %i.mdi.mdi-check
+        %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel--active{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
+          {{ totalFor(option)[2]}}
+     %tr.poll-meeting-chart-panel__bold{ng-if:"hasMaybeVotes()"  }
+       %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel--maybe.lmo-flex--row.lmo-flex__center.lmo-flex__space-around
+         %span{translate:"poll_meeting_chart_legend.maybe_attend"}
+         %i.mdi.mdi-minus
+       %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel--maybe{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
+         {{ totalFor(option)[1]}}

@@ -17,8 +17,12 @@
           - else
             %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--active ✓
     %tr
-      %td= t(:"poll_mailer.meeting.total")
+      %td= t(:"poll_meeting_chart_legend.can_attend")
       - @info.poll.meeting_score_tallies.each do |option, tally|
         %td.poll-mailer-meeting__cell
           %span= "#{tally[:yes].to_i}"
-          %span= "(#{tally[:maybe]})" if tally[:maybe].to_i > 0
+    %tr
+      %td= t(:"poll_meeting_chart_legend.maybe_attend")
+      - @info.poll.meeting_score_tallies.each do |option, tally|
+        %td.poll-mailer-meeting__cell
+          %span= "#{tally[:maybe].to_i}"
