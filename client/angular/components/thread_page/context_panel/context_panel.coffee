@@ -15,6 +15,8 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
   replace: true
   templateUrl: 'generated/components/thread_page/context_panel/context_panel.html'
   controller: ['$scope', ($scope) ->
+    $scope.before = "I've got a lovely bunch of coconuts"
+    $scope.after = "He's got a lovely bunch of coconuts, deedly-dee"
 
     $scope.status = ->
       return 'pinned' if $scope.discussion.pinned

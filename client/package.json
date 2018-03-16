@@ -49,6 +49,7 @@
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
     "bowser": "latest",
+    "diff-match-patch": "^1.0.0",
     "emojione": "~> 2.2.7",
     "jstimezonedetect": "~1.0.5",
     "lodash": "3.10.1",

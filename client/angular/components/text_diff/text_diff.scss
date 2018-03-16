@@ -1,0 +1,4 @@
+.text-diff {
+  ins { background: lighten($agree-color, 20%); }
+  del { background: lighten($disagree-color, 20%); }
+}

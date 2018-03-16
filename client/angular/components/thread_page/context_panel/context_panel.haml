@@ -1,4 +1,5 @@
 %section.context-panel.lmo-card-padding.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
+  %text_diff{before: "before", after: "after"}
   .context-panel__top
     .context-panel__status{ng-if: "status()", ng-attr-title: "{{statusTitle()}}", ng-switch: "status()"}
       %i.mdi.mdi-pin{ng-switch-when: "pinned"}
