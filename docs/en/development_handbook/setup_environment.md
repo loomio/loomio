@@ -74,13 +74,11 @@ $ git pull
 
 ### Build and Install Ruby and dependencies
 
-At the time of writing 2.3.5 is the latest version. Check the required version and use it in the commands below:
+At the time of writing 2.3.5 is the latest version. Check the required version in ```.ruby-version``` at the root of this repository and use it in the commands below:
 ```
-$ cat .ruby-version
 $ rbenv install 2.3.5
 $ rbenv global 2.3.5
 $ gem install bundler
-$ bundle install
 ```
 
 ## Install Node.js
@@ -102,10 +100,7 @@ Now build and install node
 ```
 $ nvm install 8.4.0
 $ nvm alias default 8.4.0
-$ bundle install
 $ npm install -g yarn gulp
-$ cd client
-$ yarn
 ```
 
 Ensure your node version matches with the version specified in the `engines` field of `angular/package.json`

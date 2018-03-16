@@ -23,6 +23,13 @@ postgres=# CREATE USER <youruseraccount> WITH SUPERUSER;
 \q
 $ logout
 ```
+## Install loomio specific dependencies
+
+```
+bundle install
+cd client
+yarn
+```
 
 ## Run the bootstrap task
 ```
@@ -33,7 +40,7 @@ _NB: Take note of the email and password generated at the end of this task; you'
 
 ## Build the frontend client
 ```
-cd client && gulp compile
+gulp compile
 ```
 ## Launch the server
 ```
