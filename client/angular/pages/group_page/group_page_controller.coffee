@@ -7,7 +7,7 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 ModalService      = require 'shared/services/modal_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
 
-{ subscribeToLiveUpdate } = require 'shared/helpers/user.coffee'
+{ subscribeTo } = require 'shared/helpers/cable.coffee'
 
 $controller = ($rootScope, $routeParams) ->
   EventBus.broadcast $rootScope, 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
@@ -44,7 +44,7 @@ $controller = ($rootScope, $routeParams) ->
 
   @init = (group) =>
     @group = group
-    subscribeToLiveUpdate(group_key: @group.key)
+    subscribeTo(@group)
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
