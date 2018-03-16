@@ -10,6 +10,7 @@ class Events::InvitationAccepted < Event
   end
 
   def notify_clients!
+    return unless eventable.invitation
     ActionCable.server.broadcast eventable.invitation.message_channel, action: :accepted
   end
 
