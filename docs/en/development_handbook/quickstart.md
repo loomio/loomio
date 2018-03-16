@@ -44,12 +44,18 @@ gulp compile
 ```
 ## Launch the server
 ```
+cd angular
+gulp dev
 rails s
 ```
 
+If you do not run ```gulp dev``` your browser will connect to (and apparently load) the page served by rails, but the page itself will be blank.
+If you feel like your changes to the application aren't being picked up, try restarting this process.
+
+The rails server may tell you that it's listening on 0.0.0.0:[port], but attempting to log in at that page will result in 403 Forbidden and a redirect. Use localhost:[port] instead.
+
 ### Other things to know
 - There are several other gulp commands you can run to make your development go. These can be run from the `angular` folder.
-  - `gulp dev`: Automatically rebuild the javascript app as you make changes. If you feel like your changes aren't being picked up, try restarting this process.
   - `gulp protractor`: Run the automated frontend tests
   - `gulp protractor:now`: Rebuild the javascript app, then run the automated frontend tests
   - `PRIVATE_PUB_SECRET_TOKEN=abc123 bundle exec rackup private_pub.ru -E production` is how to start faye (live updating) in development
