@@ -92,17 +92,12 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | b
 wget -O - https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 ```
 
-Now build and install node
+Restart your terminal, then build and install node:
 
 ```
 $ nvm install 8.4.0
 $ nvm alias default 8.4.0
 $ npm install -g yarn gulp
-```
-
-Ensure your node version matches with the version specified in the `engines` field of `angular/package.json`
-```
-$ grep angular/package.json -e 'engines' -A 3
 ```
 
 Ok that's it, you're now ready to [install Loomio](quickstart.md) (or any other ruby or node app)
