@@ -60,11 +60,7 @@ You should see:
 #=> "rbenv is a function"
 ```
 
-Now install [ruby-build](https://github.com/sstephenson/ruby-build#readme)
-
-```
-$ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-```
+Now install [ruby-build](https://github.com/sstephenson/ruby-build#readme) using the rbenv plugin instructions.
 
 When a new version of ruby is released, you can update ruby-build with
 ```
