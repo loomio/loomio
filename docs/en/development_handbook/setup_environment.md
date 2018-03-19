@@ -71,6 +71,7 @@ $ git pull
 ### Build and Install Ruby and dependencies
 
 At the time of writing 2.3.5 is the latest version. Check the required version in ```.ruby-version``` at the root of this repository and use it in the commands below:
+Note that installing ruby may take a long time.
 ```
 $ rbenv install 2.3.5
 $ rbenv global 2.3.5
