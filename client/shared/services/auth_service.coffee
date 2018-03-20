@@ -16,7 +16,7 @@ module.exports = new class AuthService
     user.update(hasToken: data.has_token)
     user
 
-  signIn: (user) ->
+  signIn: (user = {}) ->
     Records.sessions.build(email: user.email, password: user.password).save()
 
   signUp: (user) ->
