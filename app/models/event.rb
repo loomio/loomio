@@ -55,7 +55,7 @@ class Event < ApplicationRecord
   end
 
   def ensure_parent_present!
-    return if self.parent_id || !should_have_parent?
+    return if self.parent || !should_have_parent?
     self.update(parent: eventable.parent_event)
   end
 

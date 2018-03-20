@@ -1,6 +1,10 @@
-.edit-comment-form {
-  overflow: visible;
-  & > form { overflow: visible; }
+.edit-comment-form md-input-container {
+  margin: 0;
+}
+
+.edit-comment-form md-input-container textarea {
+  max-height: inherit;
+  overflow: hidden;
 }
 
 .edit-comment-form .emoji-picker__menu {
