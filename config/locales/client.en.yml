@@ -91,6 +91,7 @@ en:
       back: 'Back'
       next: 'Next'
       close: 'Close'
+      reopen: 'Reopen'
       save: 'Save'
       save_changes: 'Save changes'
       update_settings: 'Update settings'
@@ -1264,6 +1265,16 @@ en:
     dot_vote_closed: Dote vote closed
     meeting_closed: Time poll closed
     ranked_choice_closed: Ranked choice poll closed
+
+  poll_common_reopen_form:
+    title: Reopen a closed decision
+    helptext: Did a decision close before you were ready? Reopen to gather more stances from the group.
+    proposal_reopened: Proposal reopened
+    poll_reopened: Poll reopened
+    count_reopened: Check reopened
+    dot_vote_reopened: Dote vote reopened
+    meeting_reopened: Time poll reopened
+    ranked_choice_reopened: Ranked choice poll reopened
 
   poll_common_closing_at_field:
     closing: Closing
