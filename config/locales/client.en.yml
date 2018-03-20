@@ -1589,6 +1589,7 @@ en:
 
   poll_meeting_vote_form:
     your_response: When can you attend?
+    maybe_help_text: click twice for 'If need be' option
     stance_created: Availability saved
     stance_updated: Availability updated
     reason_placeholder: Explain when you're free (or busy), in case the author wants to add options.

@@ -1,6 +1,9 @@
 %form.poll-meeting-vote-form{ng-submit: "submit()"}
   %poll_common_participant_form{stance: "stance"}
   %h3.lmo-card-subheading{translate: "poll_meeting_vote_form.your_response"}
+  .lmo-flex--row.lmo-flex__center{ ng-if:"stance.poll().canRespondMaybe"}
+    %md-checkbox.md-block.poll-meeting-vote-form__checkbox--legend{md-indeterminate:"true", ng-disabled:"true"}
+    %span.lmo-hint-text{translate: "poll_meeting_vote_form.maybe_help_text"}
   .lmo-flex.lmo-flex__flex-end
     %time_zone_select
   %md-list.poll-common-vote-form__options
