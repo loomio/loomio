@@ -30,6 +30,8 @@ en:
     metal: Metal
     ok_hand: Ok
     wave: Wave
+    thumbsup: Thumb up
+    thumbsdown: Thumb down
 
   poll_types:
     proposal: Proposal

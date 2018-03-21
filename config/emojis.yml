@@ -11,11 +11,13 @@ default:
   - astonished
   - slight_frown
   - confused
-  - disappointed
-  - angry
+  # - disappointed
+  # - angry
   - cry
   - fingers_crossed
   - raised_hands
   - pray
   - ok_hand
   - wave
+  - thumbsup
+  - thumbsdown
