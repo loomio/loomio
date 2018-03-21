@@ -1,8 +1,15 @@
 default:
   - slight_smile
   - heart
-  - laughing
+  - thumbsup
+  - thumbsdown
+  - ok_hand
+  - fingers_crossed
+  - raised_hands
+  - pray
+  - wave
   - clap
+  - laughing
   - hugging
   - sunglasses
   - nerd
@@ -14,10 +21,3 @@ default:
   # - disappointed
   # - angry
   - cry
-  - fingers_crossed
-  - raised_hands
-  - pray
-  - ok_hand
-  - wave
-  - thumbsup
-  - thumbsdown
