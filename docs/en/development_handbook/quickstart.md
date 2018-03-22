@@ -80,8 +80,7 @@ The rails server may tell you that it's listening on 0.0.0.0:[port], but attempt
 
 ### Other things to know
 - There are several other gulp commands you can run to make your development go. These can be run from the `angular` folder.
-  - `gulp protractor`: Run the automated frontend tests
-  - `gulp protractor:now`: Rebuild the javascript app, then run the automated frontend tests
+  - `gulp nightwatch`: Run the automated frontend tests
   - `PRIVATE_PUB_SECRET_TOKEN=abc123 bundle exec rackup private_pub.ru -E production` is how to start faye (live updating) in development
   - `npm rebuild node-sass` has been known to be very useful
   - if you ever get into problems, then `rm -rf node_modules && yarn`

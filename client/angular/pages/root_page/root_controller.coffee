@@ -7,11 +7,12 @@ LmoUrlService   = require 'shared/services/lmo_url_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 
+{ signIn }                                       = require 'shared/helpers/user.coffee'
 { viewportSize, trackEvents, deprecatedBrowser } = require 'shared/helpers/window.coffee'
-{ scrollTo, setCurrentComponent }      = require 'shared/helpers/layout.coffee'
-{ signIn, subscribeToLiveUpdate }      = require 'shared/helpers/user.coffee'
-{ broadcastKeyEvent, registerHotkeys } = require 'shared/helpers/keyboard.coffee'
-{ setupAngular }                       = require 'angular/setup.coffee'
+{ broadcastKeyEvent, registerHotkeys }           = require 'shared/helpers/keyboard.coffee'
+{ scrollTo, setCurrentComponent }                = require 'shared/helpers/layout.coffee'
+{ initLiveUpdate }                               = require 'shared/helpers/cable.coffee'
+{ setupAngular }                                 = require 'angular/setup.coffee'
 
 $controller = ($scope, $injector) ->
   setupAngular($scope, $injector)
@@ -30,7 +31,6 @@ $controller = ($scope, $injector) ->
     if LmoUrlService.params().set_password
       delete LmoUrlService.params().set_password
       ModalService.open 'ChangePasswordForm'
-    subscribeToLiveUpdate()
 
   EventBus.listen $scope, 'toggleSidebar',    -> $scope.renderSidebar = true
   EventBus.listen $scope, 'loggedIn',         -> $scope.loggedIn()
@@ -43,6 +43,7 @@ $controller = ($scope, $injector) ->
     setCurrentComponent(options)
 
   signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
+  initLiveUpdate()
 
   return
 

@@ -24,6 +24,8 @@ class API::SessionsController < Devise::SessionsController
   def attempt_login
     if pending_token&.useable?
       pending_token.user
+    elsif pending_invitation
+      User.verified.find_by(email: pending_invitation.email)
     else
       warden.authenticate(scope: resource_name)
     end

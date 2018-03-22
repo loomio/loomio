@@ -143,6 +143,7 @@ class Dev::MainController < Dev::BaseController
       recipient_email: jennifer.email,
       recipient_name: jennifer.name
     )
+    jennifer.memberships.find_by(group: create_group).destroy
     redirect_to invitation_url(invitation.token)
   end
 

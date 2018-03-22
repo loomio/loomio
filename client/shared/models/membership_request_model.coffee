@@ -30,9 +30,3 @@ module.exports = class MembershipRequestModel extends BaseModel
 
   formattedResponse: ->
     _.capitalize(@response)
-
-  charsLeft: ->
-    250 - (@introduction or '').toString().length
-
-  overCharLimit: ->
-    @charsLeft() < 0
