@@ -5,6 +5,25 @@
 git clone git@github.com:loomio/loomio.git && cd loomio
 ```
 
+## Install the required node version
+Check the node version required by ensuring your node version matches with the version specified in the `engines` field of `client/package.json`
+```
+$ grep client/package.json -e 'engines' -A 3
+```
+
+We will now build and install that node version (at the time of writing 8.4.0):
+
+```
+$ nvm install 8.4.0
+$ nvm alias default 8.4.0
+```
+
+### Install two packages required for this project
+
+```
+$ npm install -g yarn gulp
+```
+
 ## Create database user
 
 ### On OSX

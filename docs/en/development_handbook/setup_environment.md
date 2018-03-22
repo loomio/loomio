@@ -92,12 +92,4 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | b
 wget -O - https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 ```
 
-Restart your terminal, then build and install node:
-
-```
-$ nvm install 8.4.0
-$ nvm alias default 8.4.0
-$ npm install -g yarn gulp
-```
-
-Ok that's it, you're now ready to [install Loomio](quickstart.md) (or any other ruby or node app)
+Restart your terminal and you're now ready to [install Loomio](quickstart.md) (or any other ruby or node app)
