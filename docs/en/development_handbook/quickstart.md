@@ -44,6 +44,11 @@ $ logout
 ```
 ## Install loomio specific dependencies
 
+### Setup transfer encryption with Bundler
+```bundle config github.https true```
+
+### Install dependencies
+
 ```
 bundle install
 cd client
