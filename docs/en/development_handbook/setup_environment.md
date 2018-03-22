@@ -41,16 +41,7 @@ From here onwards the instructions apply to both OSX and Linux.
 
 I recommend that you don't use managed (Homebrew, APT etc) versions of ruby, rbenv and ruby-build. They're no easier to use, and they tend to be out of date just when you need the latest version.
 
-First we install [rbenv](https://github.com/sstephenson/rbenv). (Replace ```~/.bash_profile``` with  ```~/.zshrc```, ```~/.profile```, or ```~/.bashrc``` depending on what filename you use).
-
-```
-$ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-$ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-$ source ~/.bash_profile
-```
-
-You'll might need to replace .bash_profile with the name of your shell profile file - However .bash_profile is usually right. If you're unsure have a look for .profile files in your home directory to see what is in use and if in doubt read https://github.com/sstephenson/rbenv#basic-github-checkout and google/stackoverflow your way to the solution for your system.
+First we install [rbenv](https://github.com/sstephenson/rbenv#installation).
 
 Test if rbenv is installed correctly:
 ```
