@@ -8,7 +8,7 @@ class DiscussionReader < ApplicationRecord
   delegate :update_importance, to: :discussion
   delegate :importance, to: :discussion
   delegate :message_channel, to: :user
-  
+
   update_counter_cache :discussion, :seen_by_count
 
   def self.for(user:, discussion:)
@@ -32,6 +32,7 @@ class DiscussionReader < ApplicationRecord
     set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
     dismiss!(persist: false)            if dismiss
     save!                               if changed?
+    self
   end
 
   def viewed!(ranges = [], persist: true)
