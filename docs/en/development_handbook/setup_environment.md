@@ -26,6 +26,13 @@ And that's it. You can jump to 'Install rbenv and ruby-build'
 
 You will need PostgreSQL 9.4+ for the `jsonb` data type.
 
+### Ubuntu 12.04, 14.04, 16.04
+
+```postgresql-9.6``` and ```postgresql-contrib-9.6``` is not in the repo, [ask ubuntu](https://askubuntu.com/questions/831292/how-do-i-install-postgresql-9-6-on-any-ubuntu-version) has the commands for adding the ppa and installing version 9.6.
+If you do not have wget installed, install it using ```sudo apt-get install wget```.
+
+### All Ubuntu
+
 ```
 $ sudo apt-get update
 $ sudo apt-get install git-core postgresql-9.6 postgresql-contrib-9.6 build-essential \
