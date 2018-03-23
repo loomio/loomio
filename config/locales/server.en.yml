@@ -92,6 +92,7 @@ en:
       subject: Sign in to %{site_name}
       intro: Hi %{name}, here is a link to sign in to your %{site_name} account.
       login: Sign in as %{name}
+      or_enter_code: Or, enter the code below
       resend: This link will expire in 24 hours and can only be used once.
 
     contact_request:

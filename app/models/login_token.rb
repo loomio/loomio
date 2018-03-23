@@ -18,7 +18,7 @@ class LoginToken < ApplicationRecord
 
   private
 
-  def add_code
+  def ensure_code
     self.code = Random.new.rand(999999)
   end
 end

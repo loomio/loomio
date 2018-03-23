@@ -1,3 +1,28 @@
 .auth-complete {
   text-align: center;
 }
+
+.auth-complete__code input {
+  border: 0;
+  padding: 8px;
+  margin: 0 12px 16px;
+  width: 400px;
+  font-size: 32px;
+  text-align: center;
+  outline: 0;
+  &:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 10px;
+    background: $grey-on-white;
+    box-shadow: 20px 0px 0px blue, 40px 0px 0px blue, 60px 0px 0px blue, 80px 0px 0px blue, 100px 0px 0px blue, /* top border */
+                0px 110px 0px blue, 20px 110px 0px blue, 40px 110px 0px blue, 60px 110px 0px blue, 80px 110px 0px blue, 100px 110px 0px blue; /* bottom border */
+  }
+  @media (max-width: $tiny-max-px) {
+    width: 32px;
+    margin: 0 4px 16px;
+  }
+}
