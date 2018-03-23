@@ -88,6 +88,7 @@ es:
     action:
       next: 'Siguiente'
       close: 'Cerrar'
+      reopen: 'Reabierto'
       save: 'Guardar'
       save_changes: 'Guardar cambios'
       update_settings: 'Actualizar preferencias'
@@ -207,24 +208,24 @@ es:
     aria_label: Cerrar hilo
     close_thread: 'Cerrar hilo '
     body_header: |
-      <p>Cierra hilos irrelevantes o viejos para removerlos de la vista e indicar que la discusión ha finalizado</p>
+        <p>Cierra hilos irrelevantes o viejos para removerlos de la vista e indicar que la discusión ha finalizado</p>
     body_footer: |
-      <p>Cualquier persona podrá aún comentar o iniciar una propuesta en un hilo cerrado, pero el mismo no aparecerá en el listado de hilos del grupo o el escritorio</p>
+        <p>Cualquier persona podrá aún comentar o iniciar una propuesta en un hilo cerrado, pero el mismo no aparecerá en el listado de hilos del grupo o el escritorio</p>
     image_alt: Todos los hilos cerrados
   mute_explanation_modal:
     aria_label: 'Silenciar hilo '
     mute_thread: Silenciar hilo
     body_html: |+
-      <p>Silenciar significa<strong>que no recibirás notificaciones sobre propuestas</strong>, o ninguna otra actividad en este hilo, a no ser que alguien te <strong>@mencione.</strong></p>
-      <p>Los hilos silenciados tampoco serán visibles en tus páginas <strong>Recientes</strong> y <strong>No leído</strong>. Para encontrar tus hilos silenciados, selecciona <strong>Silenciado</strong> en la barra lateral de navegación:</p>
+        <p>Silenciar significa<strong>que no recibirás notificaciones sobre propuestas</strong>, o ninguna otra actividad en este hilo, a no ser que alguien te <strong>@mencione.</strong></p>
+        <p>Los hilos silenciados tampoco serán visibles en tus páginas <strong>Recientes</strong> y <strong>No leído</strong>. Para encontrar tus hilos silenciados, selecciona <strong>Silenciado</strong> en la barra lateral de navegación:</p>
 
     image_alt: 'Opción de hilos silenciados en la barra lateral '
   dismiss_explanation_modal:
     aria_label: Ignorar hilo
     dismiss_thread: Ignorar hilo
     body_html: |
-      <p>Ignorar un hilo lo remueve de tu lista de no leídos. Si alguna nueva
-      actividad ocurre en el hilo, volverá a aparecer como no leído nuevamente.</p>
+        <p>Ignorar un hilo lo remueve de tu lista de no leídos. Si alguna nueva
+        actividad ocurre en el hilo, volverá a aparecer como no leído nuevamente.</p>
   inbox:
     clear: 'Limpiar'
     latest: 'Últimos'
@@ -320,7 +321,6 @@ es:
     new_vote: "<strong>{{name}}</strong> {{position}} a la propuesta <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> ha comentado en <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha contestado a tu comentario en <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> reaccionó <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> a tu comentario en <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> te ha mencionado en <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> esta esperando que participes en <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ha solicitado unirse a <strong>{{title}}</strong>"
@@ -805,9 +805,9 @@ es:
     explain_mute:
       title: No tienes ningún hilo silenciado.
       explanation_html: |
-        Silenciar es una forma de esconder hilos en los que no estas interesada.
-        Silenciar significa que no veras el hilo en <strong>Recientes</strong> o <strong>No leído</strong>, y no serás notificado sobre ninguna actividad en ese hilo.
-        Solo serás alertada cuando alguien te <strong>@mencione</strong>.
+          Silenciar es una forma de esconder hilos en los que no estas interesada.
+          Silenciar significa que no veras el hilo en <strong>Recientes</strong> o <strong>No leído</strong>, y no serás notificado sobre ninguna actividad en ese hilo.
+          Solo serás alertada cuando alguien te <strong>@mencione</strong>.
       instructions: 'Para silenciar un hilo, pasa el cursor por encima y selecciona el icono para silenciar.'
       see_muted_html: 'Para ver tus hilos silenciados, selecciona <strong>Silenciado</strong> en la barra lateral. Puedes des-silenciar pasando el cursor por encima y seleccionando el mismo icono.'
     filtering:
@@ -1200,14 +1200,14 @@ es:
     start: Iniciar
     update: Actualizar
     loomio_school_link: |
-      <p>Encuentra más información en <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
+        <p>Encuentra más información en <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
-      <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción</p>
-      <p>Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo o bloquear, y dar una explicación, o fundamento de su posición</p>
-      <p>Un gráfico circular, permite tener una visión general de las posiciones del grupo, mientras que las explicaciones o fundamentos, permiten que todas las voces sean escuchadas. </p>
-      <p>No te desanimes si al comienzo no ves que haya acuerdo, las propuestas están diseñadas para hacer visibles los problemas que necesitan resolución..</p>
-      <p>Si hay buena participación, una propuesta es un poderoso mandato para pasar a la acción.</p>
+        <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción</p>
+        <p>Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo o bloquear, y dar una explicación, o fundamento de su posición</p>
+        <p>Un gráfico circular, permite tener una visión general de las posiciones del grupo, mientras que las explicaciones o fundamentos, permiten que todas las voces sean escuchadas. </p>
+        <p>No te desanimes si al comienzo no ves que haya acuerdo, las propuestas están diseñadas para hacer visibles los problemas que necesitan resolución..</p>
+        <p>Si hay buena participación, una propuesta es un poderoso mandato para pasar a la acción.</p>
     tool_tip_collapsed: 'Busca el acuerdo colectivo  '
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta
@@ -1218,9 +1218,9 @@ es:
     proposal_updated: Propuesta actualizada
   poll_poll_form:
     tool_tip_expanded: |
-      <p>Usa una encuesta para medir popularidad u ofrecer alternativas.</p>
-      <p>Proporciona algunas opciones de dónde elegir. Decide si los participantes eligen opciones individuales o múltiples en su respuesta.</p>
-      <p>Todos votan y pueden incluir una fundamentación si lo desean. Los resultados se visualizan en un gráfico de barras.</p>
+        <p>Usa una encuesta para medir popularidad u ofrecer alternativas.</p>
+        <p>Proporciona algunas opciones de dónde elegir. Decide si los participantes eligen opciones individuales o múltiples en su respuesta.</p>
+        <p>Todos votan y pueden incluir una fundamentación si lo desean. Los resultados se visualizan en un gráfico de barras.</p>
     tool_tip_collapsed: 'Mida la popularidad u ofrezca una opción '
     start_header: Iniciar encuesta
     edit_header: Editar encuesta
@@ -1235,11 +1235,11 @@ es:
     poll_updated: Encuesta actualizada
   poll_count_form:
     tool_tip_expanded: |
-      <p>Una <em>comprobación</em> es una herramienta que tiene muchos usos posibles pero solo 2 respuestas: visto (✔) o anulación (✘). Los participantes usarán el visto (✔) para decir sí y la anulación (✘) para decir no o inseguro. </p>
-      <p>Úsalo para comprometer a la gente, como al pedir confirmación: "asistiré al evento" o "me apuntaré al grupo de trabajo".</p>
-      <p>O úsalo para hacer seguimiento a una tarea: "confirmé que mis datos de contacto están correctos", o "leí el documento y dejé mis comentarios".</p>
-      <p>Una comprobación tiene un <em>objetivo</em>, que es el número de participantes que quisieras. La meta indica al grupo que algo requiere más atención o cuenta con amplio acuerdo.</p>
-      <p>Un día antes de que se cierre la comprobación, se le recordará a quienes no han participado todavía.</p>
+        <p>Una <em>comprobación</em> es una herramienta que tiene muchos usos posibles pero solo 2 respuestas: visto (✔) o anulación (✘). Los participantes usarán el visto (✔) para decir sí y la anulación (✘) para decir no o inseguro. </p>
+        <p>Úsalo para comprometer a la gente, como al pedir confirmación: "asistiré al evento" o "me apuntaré al grupo de trabajo".</p>
+        <p>O úsalo para hacer seguimiento a una tarea: "confirmé que mis datos de contacto están correctos", o "leí el documento y dejé mis comentarios".</p>
+        <p>Una comprobación tiene un <em>objetivo</em>, que es el número de participantes que quisieras. La meta indica al grupo que algo requiere más atención o cuenta con amplio acuerdo.</p>
+        <p>Un día antes de que se cierre la comprobación, se le recordará a quienes no han participado todavía.</p>
     tool_tip_collapsed: Comprobar la participación y encontrar voluntarios
     start_header: 'Iniciar Comprobación '
     edit_header: 'Editar Comprobación '
@@ -1250,9 +1250,9 @@ es:
     count_updated: 'Comprobación actualizada '
   poll_dot_vote_form:
     tool_tip_expanded: |
-      <p>El voto de puntos es una manera de priorizar un listado de alternativas.</p>
-      <p>Los participantes tienen un número limitado de ‘puntos’ que pueden distribuir del modo que quieran entre las opciones que representen sus preferencias.</p>
-      <p>El proceso da como resultado un gráfico de barras acumulativas además de las asignaciones individuales, con lo que se pueden considerar los distintos puntos de vista.</p>
+        <p>El voto de puntos es una manera de priorizar un listado de alternativas.</p>
+        <p>Los participantes tienen un número limitado de ‘puntos’ que pueden distribuir del modo que quieran entre las opciones que representen sus preferencias.</p>
+        <p>El proceso da como resultado un gráfico de barras acumulativas además de las asignaciones individuales, con lo que se pueden considerar los distintos puntos de vista.</p>
     tool_tip_collapsed: Priorizar opciones
     start_header: Iniciar voto de puntos
     edit_header: Editar voto de puntos
@@ -1265,12 +1265,12 @@ es:
     dot_vote_updated: Voto de punto actualizado
   poll_meeting_form:
     tool_tip_expanded: |
-      <p>Usa una coordinación de horario para saber cuándo hay disponibilidad de la gente para reunirse.</p>
-      <p>Ingresa un listado de fechas u horas en que podrías hacer la reunión.</p>
-      <p>Los participantes marcan aquellas en que pueden asistir o pueden indicar sus circunstancias en el cuadro para que puedas actualizar las alternativas de ser necesario.</p>
-      <p>Si agregas nuevos horarios durante la coordinación de horario, se le pedirá a la gente que ya ha votado que actualice su respuesta.</p>
-      <p>Así puedes saber cuándo está disponible cada uno y decidir el momento de la reunión.</p>
-      <p>Las horas se convierten automáticamente a la zona horaria del participante.</p>
+        <p>Usa una coordinación de horario para saber cuándo hay disponibilidad de la gente para reunirse.</p>
+        <p>Ingresa un listado de fechas u horas en que podrías hacer la reunión.</p>
+        <p>Los participantes marcan aquellas en que pueden asistir o pueden indicar sus circunstancias en el cuadro para que puedas actualizar las alternativas de ser necesario.</p>
+        <p>Si agregas nuevos horarios durante la coordinación de horario, se le pedirá a la gente que ya ha votado que actualice su respuesta.</p>
+        <p>Así puedes saber cuándo está disponible cada uno y decidir el momento de la reunión.</p>
+        <p>Las horas se convierten automáticamente a la zona horaria del participante.</p>
     tool_tip_collapsed: Encuentra un tiempo para reunirse
     start_header: Iniciar coordinación horaria
     edit_header: Editar coordinación horaria
@@ -1285,10 +1285,10 @@ es:
     add_option_placeholder: Ingrese una nueva hora
   poll_ranked_choice_form:
     tool_tip_expanded: |
-      <p>La opción priorizada es un método de votación que permite a cada persona responder con un orden de preferencia.</p>
-      <p>Es preferente cuando el 'robo de votos' es una preocupación (ej. dos opciones bastante populares son tan similares
-      que los votos terminan siendo compartidos entre ambas), y pueden ser usadas para implementar un Condorcet o  una sistema de elección de segunda vuelta instantáneas (Instant Runoff Voting).
-      </p>
+        <p>La opción priorizada es un método de votación que permite a cada persona responder con un orden de preferencia.</p>
+        <p>Es preferente cuando el 'robo de votos' es una preocupación (ej. dos opciones bastante populares son tan similares
+        que los votos terminan siendo compartidos entre ambas), y pueden ser usadas para implementar un Condorcet o  una sistema de elección de segunda vuelta instantáneas (Instant Runoff Voting).
+        </p>
     tool_tip_collapsed: 'Prioriza las opciones en orden '
     start_header: 'Inicia una opción priorizada '
     edit_header: 'Editar opción priorizada '
@@ -1458,8 +1458,8 @@ es:
     email_placeholder: tu@ejemplo.com
     login_with_token: Estas listo! haz clic en el enlace debajo para ingresar.
     login_link_helptext: |
-      Haz clic en el botón debajo y te enviaremos un enlace para ingresar instantáneamente.
-      Si deseas usar una contraseña para ingresar en el futuro, puedes ingresar una en tu página de perfil.
+        Haz clic en el botón debajo y te enviaremos un enlace para ingresar instantáneamente.
+        Si deseas usar una contraseña para ingresar en el futuro, puedes ingresar una en tu página de perfil.
     login_link_helptext_with_password: "Introduce tu contraseña, o entra a través de un correo electrónico."
     sign_up_helptext: "Simplemente ingresa el nombre por el que te gustaría ser conocido, y te enviaremos un enlace para ingresar."
     oauth_confirm_helptext: "Simplemente confirma tus detalles de abajo, y te enviaremos un enlace para entrar."
@@ -1497,8 +1497,8 @@ es:
       remove_identity: Eliminar esta integración
       confirm_remove_title: Eliminar integración con Slack
       confirm_remove_helptext: |
-        Tu canal de Slack ya no recibirá actualizaciones sobre este grupo.
-        Siempre podrás volver atrás y añadirlo nuevamente.
+          Tu canal de Slack ya no recibirá actualizaciones sobre este grupo.
+          Siempre podrás volver atrás y añadirlo nuevamente.
       identity_removed: 'Integración eliminada '
     progress:
       install: Instalar
@@ -1521,7 +1521,7 @@ es:
     invite:
       heading: 'Paso 2: Crea un canal en Slack'
       helptext: |
-        Hecho! Ahora, selecciona el canal donde quieres que mandemos notificaciones.
+          Hecho! Ahora, selecciona el canal donde quieres que mandemos notificaciones.
       select_a_channel: Selecciona un canal
       publish_group: Publica un mensaje de bienvenida
       publish_group_helptext_on: Publicaremos un mensaje en ese canal para informarle a la gente como usar Loomio Bot.
@@ -1536,7 +1536,7 @@ es:
   slack_added_modal:
     title: Hecho!
     helptext: |
-      Añadiste Slack a tu grupo <strong>{{name}}</strong> satisfactoriamente.
-      Desde ahora cuando cualquier persona use una de las herramientas de decisión en este grupo, tendrán la opción de
-      publicar actualizaciones sobre la misma en un canal de tu equipo de Slack.
+        Añadiste Slack a tu grupo <strong>{{name}}</strong> satisfactoriamente.
+        Desde ahora cuando cualquier persona use una de las herramientas de decisión en este grupo, tendrán la opción de
+        publicar actualizaciones sobre la misma en un canal de tu equipo de Slack.
     start_poll_now: Toma una decisión ahora
