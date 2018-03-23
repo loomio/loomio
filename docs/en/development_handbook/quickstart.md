@@ -68,8 +68,10 @@ gulp compile
 ```
 ## Launch the server
 ```
-cd angular
 gulp dev
+```
+And then in a new terminal instance
+```
 rails s
 ```
 
