@@ -26,11 +26,18 @@ And that's it. You can jump to 'Install rbenv and ruby-build'
 
 You will need PostgreSQL 9.4+ for the `jsonb` data type.
 
+### Ubuntu 12.04, 14.04, 16.04
+
+```postgresql-9.6``` and ```postgresql-contrib-9.6``` is not in the repo, [ask ubuntu](https://askubuntu.com/questions/831292/how-do-i-install-postgresql-9-6-on-any-ubuntu-version) has the commands for adding the ppa and installing version 9.6.
+If you do not have wget installed, install it using ```sudo apt-get install wget```.
+
+### All Ubuntu
+
 ```
 $ sudo apt-get update
 $ sudo apt-get install git-core postgresql-9.6 postgresql-contrib-9.6 build-essential \
                        libssl-dev libpq-dev libffi-dev libmagickwand-dev \
-                       libreadline-gplv2-dev nodejs imagemagick wget libsqlite3-dev
+                       libreadline-gplv2-dev imagemagick wget libsqlite3-dev autoconf
 ```
 
 ## Install Ruby with rbenv
@@ -41,16 +48,7 @@ From here onwards the instructions apply to both OSX and Linux.
 
 I recommend that you don't use managed (Homebrew, APT etc) versions of ruby, rbenv and ruby-build. They're no easier to use, and they tend to be out of date just when you need the latest version.
 
-First we install [rbenv](https://github.com/sstephenson/rbenv). (Replace ```~/.bash_profile``` with  ```~/.zshrc```, ```~/.profile```, or ```~/.bashrc``` depending on what filename you use).
-
-```
-$ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-$ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-$ source ~/.bash_profile
-```
-
-You'll might need to replace .bash_profile with the name of your shell profile file - However .bash_profile is usually right. If you're unsure have a look for .profile files in your home directory to see what is in use and if in doubt read https://github.com/sstephenson/rbenv#basic-github-checkout and google/stackoverflow your way to the solution for your system.
+First we install [rbenv](https://github.com/sstephenson/rbenv#installation).
 
 Test if rbenv is installed correctly:
 ```
@@ -62,11 +60,7 @@ You should see:
 #=> "rbenv is a function"
 ```
 
-Now install [ruby-build](https://github.com/sstephenson/ruby-build#readme)
-
-```
-$ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-```
+Now install [ruby-build](https://github.com/sstephenson/ruby-build#readme) using the rbenv plugin instructions.
 
 When a new version of ruby is released, you can update ruby-build with
 ```
@@ -76,36 +70,26 @@ $ git pull
 
 ### Build and Install Ruby and dependencies
 
-At the time of writing 2.3.5 is the latest version. Check the required version and use it in the commands below:
+At the time of writing 2.3.5 is the latest version. Check the required version in ```.ruby-version``` at the root of this repository and use it in the commands below:
+Note that installing ruby may take a long time.
 ```
-$ cat .ruby-version
 $ rbenv install 2.3.5
 $ rbenv global 2.3.5
 $ gem install bundler
-$ bundle install
 ```
 
 ## Install Node.js
 
 You'll need Node.js and it's best if you use `nvm` to install it. From [https://github.com/creationix/nvm](https://github.com/creationix/nvm) You'll find that you need to run:
+
+### MacOS X:
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 ```
 
-Now build and install node
-
+### Ubuntu:
 ```
-$ nvm install 8.4.0
-$ nvm alias default 8.4.0
-$ bundle install
-$ npm install -g yarn gulp
-$ cd client
-$ yarn
+wget -O - https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 ```
 
-Ensure your node version matches with the version specified in the `engines` field of `angular/package.json`
-```
-$ grep angular/package.json -e 'engines' -A 3
-```
-
-Ok that's it, you're now ready to [install Loomio](quickstart.md) (or any other ruby or node app)
+Restart your terminal and you're now ready to [install Loomio](quickstart.md) (or any other ruby or node app)
