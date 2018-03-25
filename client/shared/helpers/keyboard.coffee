@@ -49,11 +49,12 @@ defaultShouldExecute = (active = {}, event = {}) ->
   !event.ctrlKey and !event.altKey and !_.contains(['INPUT', 'TEXTAREA', 'SELECT'], active.nodeName)
 
 registerKeyEvent = (scope, eventCode, execute, shouldExecute) ->
+  scope["#{eventCode}Event"]() if typeof scope["#{eventCode}Event"] is 'function'
   shouldExecute = shouldExecute or defaultShouldExecute
   # TODO: I'm a little wary of the fact that there's 2 events here,
   # (the one now called 'frameworkEvent' was 'angularEvent'.
   # Something to keep an eye on when using in other frameworks
-  EventBus.listen scope, eventCode, (frameworkEvent, originalEvent, active) ->
+  scope["#{eventCode}Event"] = EventBus.listen scope, eventCode, (frameworkEvent, originalEvent, active) ->
     if shouldExecute(active, originalEvent)
       frameworkEvent.preventDefault() and originalEvent.preventDefault()
       execute(active, originalEvent)

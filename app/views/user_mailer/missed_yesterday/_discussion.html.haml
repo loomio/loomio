@@ -11,7 +11,7 @@
   .activity-feed
     - reader = @reader_cache.get_for(discussion)
     - discussion.items.where('created_at > ?', reader.last_read_at || @time_start).order('created_at').each do |item|
-      - next unless ['new_comment', 'new_vote', 'stance_created'].include? item.kind
+      - next unless ['new_comment', 'new_vote', 'stance_created', 'discussion_closed'].include? item.kind
       = render "discussion_mailer/#{item.kind}", item: item
 
   %p= link_to t(:"email.reply_to_this_discussion"), discussion_url(discussion, @utm_hash)

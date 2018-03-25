@@ -3,6 +3,14 @@ de:
     errors:
       messages:
         blank: Darf nicht leer sein.
+  poll:
+    export:
+      title: Titel
+      author: Autor
+      details: Details
+      group_name: Gruppen-Name
+      reason: Begründung
+      total: Gesamt
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"

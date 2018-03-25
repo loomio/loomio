@@ -2,12 +2,30 @@ require 'event_bus'
 
 EventBus.configure do |config|
 
+  config.listen('new_comment_event',
+                'new_discussion_event',
+                'discussion_edited_event',
+                'poll_created_event',
+                'poll_edited_event',
+                'stance_created_event',
+                'outcome_created_event',
+                'poll_closed_by_user_event') do |event|
+    if event.discussion
+      reader = DiscussionReader.for_model(event.discussion, event.user)
+                               .update_reader(ranges: event.sequence_id,
+                                              volume: :loud)
+      MessageChannelService.publish_data(ActiveModel::ArraySerializer.new([reader],
+                                         each_serializer: DiscussionReaderSerializer,
+                                         root: :discussions).as_json,
+                                         to: reader.message_channel)
+    end
+  end
+
   # Purge drafts after model creation
-  config.listen('discussion_create') { |discussion| Draft.purge(user: discussion.author, draftable: discussion.group, field: :discussion) }
-  config.listen('comment_create')    { |comment|    Draft.purge_without_delay(user: comment.user, draftable: comment.discussion, field: :comment) }
-  config.listen('motion_create')     { |motion|     Draft.purge(user: motion.author, draftable: motion.discussion, field: :motion) }
-  config.listen('vote_create')       { |vote|       Draft.purge(user: vote.user, draftable: vote.motion, field: :vote) }
-  config.listen('poll_create')       { |poll|       Draft.purge(user: poll.author, draftable: poll.discussion, field: :poll) }
+  config.listen('group_create',
+                'discussion_create',
+                'comment_create',
+                'poll_create') { |model, actor| model.perform_draft_purge!(actor) }
 
   # Add creator to group on group creation
   config.listen('group_create') do |group, actor|
@@ -45,17 +63,6 @@ EventBus.configure do |config|
   config.listen('comment_destroy')  { |comment|  Memos::CommentDestroyed.publish!(comment) }
   config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
 
-  config.listen('new_comment_event',
-                'new_discussion_event',
-                'discussion_edited_event',
-                'poll_created_event',
-                'poll_edited_event',
-                'stance_created_event',
-                'outcome_created_event',
-                'poll_closed_by_user_event') do |event|
-    DiscussionReader.for_model(event.discussion, event.user).
-                     update_reader(ranges: event.sequence_id, volume: :loud) if event.discussion
-  end
 
   config.listen('event_remove_from_thread') do |event|
     MessageChannelService.publish_model(event, serializer: Events::BaseSerializer)

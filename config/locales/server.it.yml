@@ -18,6 +18,13 @@ it:
       cannot_add_options: Impossibile aggiungere opzioni a questo sondaggio
       cannot_remove_options: Impossibile rimuovere opzioni da questo sondaggio
       must_have_options: Ci deve essere almeno una opzione di sondaggio
+    export:
+      title: Titolo
+      author: Autore
+      details: Dettagli
+      group_name: Nome del gruppo
+      reason: Motivo
+      total: Totale
   stance:
     error:
       too_short: Fai una selezione

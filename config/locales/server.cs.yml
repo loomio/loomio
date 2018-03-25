@@ -13,6 +13,13 @@ cs:
   attachment:
     error:
       too_large: Soubor, který jste se pokusili přiložit, je větší než 100MB. Prosím, vyberte menší soubor.
+  poll:
+    export:
+      title: Název
+      author: Autor
+      details: Podrobnosti
+      group_name: Název skupiny
+      total: Celkem
   stance:
     error:
       too_short: Proveďte prosím výběr

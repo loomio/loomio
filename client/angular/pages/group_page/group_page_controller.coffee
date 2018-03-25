@@ -7,7 +7,7 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 ModalService      = require 'shared/services/modal_service.coffee'
 PaginationService = require 'shared/services/pagination_service.coffee'
 
-{ subscribeToLiveUpdate } = require 'shared/helpers/user.coffee'
+{ subscribeTo } = require 'shared/helpers/cable.coffee'
 
 $controller = ($rootScope, $routeParams) ->
   EventBus.broadcast $rootScope, 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
@@ -37,14 +37,14 @@ $controller = ($rootScope, $routeParams) ->
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
   # we include the timestamp so chargify sees unique values
   $routeParams.key = $routeParams.handle || $routeParams.key.split('-')[0]
-  Records.groups.findOrFetch($routeParams.key).then (group) =>
+  Records.groups.findOrFetch($routeParams.key, {}, true).then (group) =>
     @init(group)
   , (error) ->
     EventBus.broadcast $rootScope, 'pageError', error
 
   @init = (group) =>
     @group = group
-    subscribeToLiveUpdate(group_key: @group.key)
+    subscribeTo(@group)
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 

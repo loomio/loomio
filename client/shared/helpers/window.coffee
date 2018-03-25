@@ -1,4 +1,5 @@
 bowser = require 'bowser'
+window.bowser = bowser
 
 # a series of helpers related to the current browser window, such as the viewport size
 # or printing. Hopefully we can pool all window-related functionality here, and
@@ -9,7 +10,7 @@ module.exports =
     (bowser.safari and bowser.version < 9) or (bowser.ie and bowser.version < 11)
 
   deprecatedBrowser: ->
-    bowser.ie and bowser.version == 11
+    bowser.msie and parseInt(bowser.version) <= 11
 
   exportGlobals: ->
     window.moment = require 'moment'

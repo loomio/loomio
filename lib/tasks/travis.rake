@@ -29,11 +29,11 @@ namespace :travis do
     system("bundle exec rspec plugins")
     rspec_passed = $?.exitstatus == 0
     system("wget http://localhost:3000/")
-    puts "Starting to run plugin protractor..."
-    system("cd client && gulp protractor:plugins")
-    protractor_passed = $?.exitstatus == 0
+    puts "Starting to run plugins nightwatch..."
+    system("cd client && gulp nightwatch:plugins --retries 2")
+    nightwatch_passed = $?.exitstatus == 0
     raise "rspec:plugins failed!" unless rspec_passed
-    raise "protractor:plugins failed!" unless protractor_passed
+    raise "nightwatch:plugins failed!" unless nightwatch_passed
   end
 
   task :cleanup do

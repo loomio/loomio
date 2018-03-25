@@ -1,4 +1,9 @@
 vi:
+  poll:
+    export:
+      title: Tiêu đề
+      author: Tác giả
+      details: Chi tiết
   email:
     group_email:
       intro: "%{who} đã tạo một tuyên bố mới trong %{group}:"

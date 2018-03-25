@@ -1,4 +1,9 @@
 mi:
+  poll:
+    export:
+      title: Taitara
+      author: Kaituhi
+      details: Ngā Taipitopito
   footer:
     help: Āwhina
     privacy: Matatapu

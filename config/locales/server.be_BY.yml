@@ -1,4 +1,9 @@
 be_BY:
+  poll:
+    export:
+      title: Назва
+      author: Аўтар
+      details: Падрабязнасці
   email:
     reset_password:
       greeting: |

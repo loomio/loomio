@@ -5,8 +5,31 @@ uk:
     laughing: Сміх
     clap: Оплески
     hugging: Обійми
+    sunglasses: Класно
+    wink: Підморгування
     nerd: Розумно
+    relieved: Полегшення
+    worried: Стурбований
+    confused: Непорядок
+    confounded: Збентежений
+    neutral_face: Нейтральний
+    slight_frown: Похмурий
+    disappointed: Розчарований
+    angry: Злий
+    weary: Втомлений
+    astonished: Здивований
+    rolling_eyes: Закочує очі
+    cry: Плач
+    scream: Крик
+    sleeping: Нудно
+    thinking: Думаю
+    raised_hands: Здіймає руки
+    pray: Молюсь
+    fingers_crossed: Удачі
+    v: Мир
+    metal: Метал
     ok_hand: Гаразд
+    wave: Помах
   poll_types:
     proposal: Пропозиція
     count: Контрольний список
@@ -98,6 +121,7 @@ uk:
       resend: Надіслати повторно
       send: Відправити
       resent: Надіслати запрошення повторно
+      export: Експортувати
     formatting_help:
       label: 'Форматувати'
       title: 'Дізнайтесь як використовувати Markdown для форматування текту'
@@ -180,6 +204,9 @@ uk:
         loud: "Ви отримаєте поштове сповіщення про всі оновлення в нових групах."
         normal: "Вам будуть надсилатись поштові сповіщення про оголошення в нових групах."
         quiet: "Ви не будете отримувати поштові сповіщення про створення нових груп."
+  close_explanation_modal:
+    aria_label: Закрити гілку
+    close_thread: Закрити гілку
   mute_explanation_modal:
     aria_label: Вимкнути сповіщення для теми
     mute_thread: Вимкнути сповіщення для теми

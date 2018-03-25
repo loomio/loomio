@@ -4,8 +4,8 @@ EventBus      = require 'shared/services/event_bus.coffee'
 ModalService  = require 'shared/services/modal_service.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
-{ subscribeToLiveUpdate } = require 'shared/helpers/user.coffee'
-{ myLastStanceFor }       = require 'shared/helpers/poll.coffee'
+{ subscribeTo }     = require 'shared/helpers/cable.coffee'
+{ myLastStanceFor } = require 'shared/helpers/poll.coffee'
 
 $controller = ($rootScope, $routeParams) ->
   @init = (poll) =>
@@ -18,7 +18,7 @@ $controller = ($rootScope, $routeParams) ->
         page: 'pollPage'
         skipScroll: true
 
-      subscribeToLiveUpdate(poll_key: @poll.key)
+      subscribeTo(@poll)
 
       if LmoUrlService.params().set_outcome
         ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)

@@ -1,4 +1,9 @@
 lt:
+  poll:
+    export:
+      title: Antraštė
+      details: Išsamesnė Informacija
+      group_name: Grupės Pavadinimas
   email:
     missed_yesterday:
       mark_as_read: Žymėti kaip skaitytą

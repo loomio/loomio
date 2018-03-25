@@ -1,4 +1,10 @@
 tr:
+  poll:
+    export:
+      title: Başlık
+      author: Yazar
+      details: Detaylar
+      group_name: Grup adı
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"

@@ -1,5 +1,7 @@
 class FormalGroup < Group
   include HasTimeframe
+  include MakesAnnouncements
+  include HasDrafts
 
   validates_presence_of :name
   validates :name, length: { maximum: 250 }
@@ -86,6 +88,12 @@ class FormalGroup < Group
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
+
+  alias_method :draft_parent, :parent
+
+  def pending_invitation_limit
+    self.memberships_count + ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i
+  end
 
   def update_undecided_user_count
     # NOOP: only guest groups have an invitation target

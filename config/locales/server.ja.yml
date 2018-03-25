@@ -1,4 +1,9 @@
 ja:
+  poll:
+    export:
+      title: タイトル
+      author: 作成者
+      details: 詳細
   email:
     group_email:
       intro: "%{who} が %{group} にアナウンスメントをしました："

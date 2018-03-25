@@ -1,8 +1,15 @@
 class Events::InvitationAccepted < Event
   include Events::Notify::InApp
+  include Events::LiveUpdate
 
   def self.publish!(membership)
     super membership, user: membership.user
+  end
+
+  def notify_clients!
+    if eventable.invitation&.email == eventable.user.email
+      ActionCable.server.broadcast eventable.invitation.message_channel, action: :accepted
+    end
   end
 
   private

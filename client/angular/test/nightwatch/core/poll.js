@@ -78,6 +78,17 @@ module.exports = {
     page.expectText('.poll-common-outcome-panel', 'This is an outcome')
   },
 
+  'can reopen a poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_proposal_poll_closed')
+    page.scrollTo('.poll-actions-dropdown__button', () => {
+      page.click('.poll-actions-dropdown__button')
+      page.click('.poll-actions-dropdown__reopen')
+      page.click('.poll-common-reopen-form__submit')
+    })
+  },
+
   'can start an anonymous poll': (test) => {
     page = pageHelper(test)
 

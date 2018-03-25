@@ -81,6 +81,10 @@ class Invitation < ApplicationRecord
     token
   end
 
+  def message_channel
+    "invitation-#{token}"
+  end
+
   def mailer
     "#{intent.to_s.split('_').last.classify}Mailer".constantize
   end

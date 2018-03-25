@@ -1,4 +1,7 @@
 fa_IR:
+  poll:
+    export:
+      total: مقدار کلی
   footer:
     blog: بلاگ
     contact: تماس

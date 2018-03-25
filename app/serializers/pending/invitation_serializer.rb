@@ -1,10 +1,20 @@
 class Pending::InvitationSerializer < Pending::BaseSerializer
+  attribute :token
+
   def avatar_kind
     :initials
   end
 
   def identity_type
-    :loomio
+    :invitation
+  end
+
+  def has_token
+    true
+  end
+
+  def token
+    object.token
   end
 
   def email_status

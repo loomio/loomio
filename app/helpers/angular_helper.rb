@@ -19,6 +19,6 @@ module AngularHelper
   end
 
   def angular_bundle_host
-    :"http://localhost:4002" if Rails.env.development?
+    :"http://#{ENV['CANONICAL_HOST']}:4002" if Rails.env.development?
   end
 end

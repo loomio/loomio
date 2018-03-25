@@ -1,4 +1,9 @@
 an:
+  poll:
+    export:
+      title: Titol
+      author: Autor
+      details: Detalles
   email:
     group_email:
       intro: "%{who} fació un anuncio en %{group}:"

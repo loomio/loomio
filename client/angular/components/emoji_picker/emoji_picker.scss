@@ -2,12 +2,11 @@
   text-transform: capitalize;
 }
 .emoji-picker__menu {
-  width: 208px;
+  @media(min-width: $tiny-max-px) { width: 208px; }
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   padding: 4px;
-  @media (max-width: $tiny-max-px) { width: 100%; }
 }
 
 .emoji-picker__selector {

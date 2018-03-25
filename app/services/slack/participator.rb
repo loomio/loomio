@@ -4,6 +4,7 @@ class ::Slack::Participator
   def initialize(params)
     @domain   = params.dig('team', 'domain')
     @team_id  = params.dig('team', 'id')
+    @channel  = params.dig('channel', 'id')
     @poll     = Poll.find_by(id: params['callback_id'])
     @choice   = params.dig('actions', 0, 'name')
     @actor    = Identities::Base.with_user.slack.find_by(uid: params.dig('user', 'id'))&.user
@@ -29,7 +30,7 @@ class ::Slack::Participator
   end
 
   def actor_not_found
-    back_to = slack_authorized_url(team: @domain)
+    back_to = slack_authorized_url(slack: [@domain, @channel].join('-'))
     ::Slack::Ephemeral::UserNotFoundSerializer.new(slack_oauth_url(back_to: back_to, team: @team_id), root: false).as_json
   end
 

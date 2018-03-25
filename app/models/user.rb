@@ -173,6 +173,7 @@ class User < ApplicationRecord
       identities.push(identity)
       identity.assign_logo! if avatar_kind == 'initials'
     end
+    self
   end
 
   def identity_for(type)

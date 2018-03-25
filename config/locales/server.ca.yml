@@ -1,4 +1,11 @@
 ca:
+  poll:
+    export:
+      title: Títol
+      author: Autor
+      details: Detalls
+      group_name: Nom del grup
+      total: Total
   validate:
     motion:
       one_at_a_time: Hi ha una altra proposta activa.

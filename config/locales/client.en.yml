@@ -30,6 +30,8 @@ en:
     metal: Metal
     ok_hand: Ok
     wave: Wave
+    thumbsup: Thumb up
+    thumbsdown: Thumb down
 
   poll_types:
     proposal: Proposal
@@ -91,6 +93,7 @@ en:
       back: 'Back'
       next: 'Next'
       close: 'Close'
+      reopen: 'Reopen'
       save: 'Save'
       save_changes: 'Save changes'
       update_settings: 'Update settings'
@@ -1348,6 +1351,16 @@ en:
     meeting_closed: Time poll closed
     ranked_choice_closed: Ranked choice poll closed
 
+  poll_common_reopen_form:
+    title: Reopen a closed decision
+    helptext: Did a decision close before you were ready? Reopen to gather more stances from the group.
+    proposal_reopened: Proposal reopened
+    poll_reopened: Poll reopened
+    count_reopened: Check reopened
+    dot_vote_reopened: Dote vote reopened
+    meeting_reopened: Time poll reopened
+    ranked_choice_reopened: Ranked choice poll reopened
+
   poll_common_closing_at_field:
     closing: Closing
     closing_hour: Closing hour
@@ -1678,6 +1691,7 @@ en:
       If you'd like to use a password to log in in the future, you can set one from your profile page.
     login_link_helptext_with_password: "Enter your password, or sign in via email."
     sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
+    sign_up_helptext_with_token: "Just enter the name you'd like to be known by, and click Sign In to get started."
     oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
     name_required: Please enter a name
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.

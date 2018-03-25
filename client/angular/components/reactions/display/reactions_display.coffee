@@ -1,5 +1,6 @@
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
 
 { emojiTitle } = require 'shared/helpers/helptext.coffee'
 
@@ -23,6 +24,7 @@ angular.module('loomioApp').directive 'reactionsDisplay', ->
       mine.destroy() if mine
 
     $scope.myReaction = ->
+      return unless AbilityService.isLoggedIn()
       Records.reactions.find(_.merge(reactionParams(), userId: Session.user().id))[0]
 
     $scope.otherReaction = ->
