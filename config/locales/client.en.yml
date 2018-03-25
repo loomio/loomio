@@ -855,7 +855,7 @@ en:
     on_participation_label: Subscribe on participation
     on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
     mentioned_label: Mentions
-    mentioned_description: "When someone wants to get you're attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
+    mentioned_description: "When someone wants to get your attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
     update_settings: Save changes
     specific_groups: Settings for specific groups
     default_settings:
