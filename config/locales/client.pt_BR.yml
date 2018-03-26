@@ -665,7 +665,6 @@ pt_BR:
     on_participation_label: Inscrever-se na participação
     on_participation_description: "Quando você participar de uma discussão, todas as atividades serão enviadas por e-mail para você imediatamente."
     mentioned_label: Menções
-    mentioned_description: "Quando alguém quer chamar sua atenção, vai @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer."
     update_settings: Salvar mudanças
     specific_groups: Configurações para grupos específicos
     default_settings:

@@ -725,7 +725,6 @@ it:
     daily_summary_label: 'Sommario giornaliero '
     on_participation_description: "Quando partecipi ad una discussione, tutte le successive attività ti verranno notificate via email immediatamente."
     mentioned_label: Menzioni
-    mentioned_description: "Quando qualcun* vorrà attrarre la tua attenzione allora ti @menzionerà. Ti raccomandiamo di mantenere attiva questa opzione in modo da ricevere una email qualora accadesse."
     update_settings: Salva modifiche
     default_settings:
       loud_description: "Quando ti iscrivi a un nuovo gruppo, ti viene inviata un'email <strong>ogni qual volta vi sia attività</strong>."
