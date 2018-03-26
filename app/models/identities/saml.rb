@@ -1,5 +1,4 @@
 class Identities::Saml < Identities::Base
-  include Identities::WithClient
   include Routing
   set_identity_type :saml
   attr_accessor :response
