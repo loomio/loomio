@@ -52,6 +52,7 @@ gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'skylight'
+gem 'ruby-saml'
 
 group :development, :test do
   gem 'byebug'
