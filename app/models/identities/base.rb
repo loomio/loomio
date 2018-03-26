@@ -2,7 +2,7 @@ class Identities::Base < ApplicationRecord
   extend HasCustomFields
   self.table_name = :omniauth_identities
   validates :identity_type, presence: true
-  validates :access_token, presence: true
+  validates :access_token, presence: true, if: :requires_access_token?
   validates :uid, presence: true
 
   belongs_to :user, required: false
@@ -26,5 +26,9 @@ class Identities::Base < ApplicationRecord
     user.update(avatar_kind: :uploaded)
   rescue OpenURI::HTTPError, TypeError
     # Can't load logo uri as attachment; do nothing
+  end
+
+  def requires_access_token?
+    true
   end
 end

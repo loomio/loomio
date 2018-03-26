@@ -1,32 +1,31 @@
 class Identities::Saml < Identities::Base
   include Identities::WithClient
+  include Routing
   set_identity_type :saml
+  attr_accessor :response
 
-  def initialize(response:)
-    @identity = OneLogin::RubySaml::Response.new(response).tap { |i| i.settings = settings }
-  end
-
-  def valid?
-    @identity.is_valid?
+  def initialize(response: "")
+    super.tap do
+      self.response = OneLogin::RubySaml::Response.new(response, skip_recipient_check: true)
+    end
   end
 
   def fetch_user_info
-    @identity.settings = self.class.settings
+    self.response.settings = settings
+    self.uid = self.email = self.response.nameid if self.response.is_valid?
   end
 
-  def self.settings
-    host = ENV['CANONICAL_HOST'] || 'localhost:3000'
+  def settings
     OneLogin::RubySaml::Settings.new.tap do |settings|
-      settings.assertion_consumer_service_url = [host, 'saml', 'consume'].join('/')
-      settings.issuer                         = [host, 'saml', 'consume'].join('/')
-      settings.idp_sso_target_url             = "https://app.onelogin.com/saml/signon/#{ENV['SAML_APP_KEY']}"
+      settings.assertion_consumer_service_url = saml_oauth_url
+      settings.issuer                         = root_url
+      settings.idp_sso_target_url             = ENV['SAML_APP_KEY'] # NB this is a IDP url in the case of SAML
       settings.idp_cert_fingerprint           = ENV['SAML_APP_SECRET']
       settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
-      settings.attribute_consuming_service.configure do
-        service_name "Loomio"
-        service_index 5
-        add_attribute name: "Loomio", name_format: "Normal?", friendly_name: "Loomio"
-      end
     end
+  end
+
+  def requires_access_token?
+    false
   end
 end
