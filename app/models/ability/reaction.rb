@@ -3,7 +3,7 @@ module Ability::Reaction
     super(user)
 
     can :update, ::Reaction do |reaction|
-      user_is_member_of?(reaction.reactable.group.id)
+      user.is_logged_in? && can?(:show, reaction.reactable)
     end
 
     can :destroy, ::Reaction do |reaction|

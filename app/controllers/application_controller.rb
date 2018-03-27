@@ -14,13 +14,13 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context
 
   helper_method :current_user
+  helper_method :current_version
   helper_method :client_asset_path
   helper_method :bundle_asset_path
   helper_method :supported_locales
 
   # this boots the angular app
   def index
-    initial_payload
     render 'application/index', layout: false
   end
 
@@ -29,13 +29,6 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  
-  def initial_payload
-    @payload ||= InitialPayload.new(current_user).payload.merge(
-      flash:           flash.to_h,
-      pendingIdentity: serialized_pending_identity
-    )
-  end
 
   def process_time_zone(&block)
     Time.use_zone(TimeZoneToCity.convert(current_user.time_zone.to_s), &block)

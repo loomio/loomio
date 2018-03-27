@@ -1,9 +1,8 @@
 class GuestGroup < Group
 
-  delegate :update_undecided_user_count, to: :invitation_target, allow_nil: true
-
-  def invitation_target
-    Poll.find_by(guest_group_id: id)
+  # pass this through to poll
+  def update_undecided_user_count
+    Poll.find_by(guest_group_id: id)&.update_undecided_user_count
   end
 
   def group_privacy=(term)

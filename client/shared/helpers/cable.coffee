@@ -48,7 +48,7 @@ subscribeToUser = ->
       Records.import(data)
 
 subscribeToInvitation = ->
-  return unless AppConfig.invitationToken()
+  return unless invitationToken()
   ensureConnection().subscriptions.create { channel: "InvitationChannel" },
     received: (data) ->
       switch data.action
@@ -64,8 +64,11 @@ subscribeToApplication = ->
       if data.version?
         FlashService.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', hardReload
 
+invitationToken = ->
+  AppConfig.pendingIdentity.token if AppConfig.pendingIdentity?
+
 ensureConnection = ->
-  AppConfig.cable = AppConfig.cable or if AppConfig.invitationToken()
-    ActionCable.createConsumer("/cable?token=#{AppConfig.invitationToken()}")
+  AppConfig.cable = AppConfig.cable or if invitationToken()
+    ActionCable.createConsumer("/cable?token=#{invitationToken()}")
   else
     ActionCable.createConsumer("/cable")

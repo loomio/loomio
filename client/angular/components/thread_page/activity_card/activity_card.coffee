@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'activityCard', ['$mdDialog', ($mdDialog) 
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   controller: ['$scope', ($scope) ->
-    $scope.debug = -> window.Loomio.debug
+    $scope.debug = -> AppConfig.debug
 
     $scope.setDefaults = ->
       $scope.per = AppConfig.pageSize.threadItems

@@ -2,6 +2,7 @@ AppConfig      = require 'shared/services/app_config.coffee'
 Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
@@ -15,6 +16,9 @@ module.exports =
   signIn: (data, userId, afterSignIn = ->) =>
     Records.import(data)
     Session.signIn(userId, LmoUrlService.params().invitation_token)
+    AppConfig.pendingIdentity = data.pending_identity
+    FlashService.success data.flash.notice
+    IntercomService.fetch()
     afterSignIn()
 
   signOut: ->

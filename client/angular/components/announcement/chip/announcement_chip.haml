@@ -1,0 +1,6 @@
+.announcement-chip.lmo-flex{layout: "row", data-id: "{{chip.id}}"}
+  .announcement-chip__avatar
+    %user_avatar.announcement-chip__avatar--user{user: "userForAvatar", size: "small", no-link: "true"}
+  .announcement-chip__content.lmo-flex{layout: "column"}
+    %strong {{chip.title}}
+    %span{ng-if: "chip.subtitle"} {{chip.subtitle}}

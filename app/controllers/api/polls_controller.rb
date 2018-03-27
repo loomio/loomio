@@ -59,10 +59,6 @@ class API::PollsController < API::RestfulController
     Invitation.find_by(token: params[:invitation_token])
   end
 
-  def publish_params
-    params.slice(:community_id, :message)
-  end
-
   def poll_search
     PollSearch.new(current_user)
   end

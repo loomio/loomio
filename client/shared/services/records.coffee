@@ -1,10 +1,17 @@
+Database    = require 'lokijs'
+Adapter     = require 'lokijs/build/loki-indexed-adapter.min.js'
+
 RecordStore = require 'shared/record_store/record_store.coffee'
 AppConfig   = require 'shared/services/app_config.coffee'
-loki        = require 'lokijs'
 
-db      = new loki('default.db')
-records = new RecordStore(db)
+records = new RecordStore new Database 'default.db',
+  adapter: new Adapter()
+  autoload: true
+  autosave: true
+  autosaveInterval: 4000
 
+records.addRecordsInterface require('shared/interfaces/boot_records_interface.coffee')
+records.addRecordsInterface require('shared/interfaces/announcement_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/comment_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/discussion_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/event_records_interface.coffee')
@@ -38,6 +45,7 @@ records.addRecordsInterface require('shared/interfaces/document_records_interfac
 records.addRecordsInterface require('shared/interfaces/login_token_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/message_channel_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/locale_records_interface.coffee')
+records.addRecordsInterface require('shared/interfaces/member_records_interface.coffee')
 AppConfig.records = records
 
 AppConfig.records = records

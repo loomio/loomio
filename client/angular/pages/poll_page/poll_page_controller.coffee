@@ -20,9 +20,6 @@ $controller = ($rootScope, $routeParams) ->
 
       subscribeTo(@poll)
 
-      if LmoUrlService.params().share
-        ModalService.open 'PollCommonShareModal', poll: => @poll
-
       if LmoUrlService.params().set_outcome
         ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)
 

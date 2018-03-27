@@ -34,6 +34,7 @@ module.exports =
     budo paths.angular.main,
       serve: "client/development/angular.bundle.js"
       stream: process.stdout
+      cors: true
       live: true
       port: 4002
       browserify: browserifyOpts()

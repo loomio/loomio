@@ -1,3 +1,5 @@
+Records = require 'shared/services/records.coffee'
+
 { iconFor }                = require 'shared/helpers/poll.coffee'
 { applyPollStartSequence } = require 'shared/helpers/apply.coffee'
 
@@ -9,5 +11,7 @@ angular.module('loomioApp').factory 'PollCommonStartModal', ->
     $scope.icon = ->
       iconFor($scope.poll)
 
-    applyPollStartSequence $scope
+    applyPollStartSequence $scope,
+      afterSaveComplete: (event) ->
+        $scope.announcement = Records.announcements.buildFromModel(event)
   ]

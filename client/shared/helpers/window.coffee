@@ -18,12 +18,17 @@ module.exports =
     _.extend window._, require 'shared/helpers/lodash_ext.coffee'
 
   initServiceWorker: ->
-    if document.location.protocol.match(/https/) && navigator.serviceWorker?
-      navigator.serviceWorker.register(document.location.origin + '/service-worker.js', scope: './')
+    version = document.querySelector('meta[name=version]').content
+    if (version == 'development' || document.location.protocol.match(/https/)) && navigator.serviceWorker?
+      navigator.serviceWorker.register("#{document.location.origin}/service-worker.js?#{version}", scope: "./")
+
+  triggerResize: (delay) ->
+    setTimeout ->
+      window.dispatchEvent(new window.Event('resize'))
+    , delay if window.Event?
 
   print:             -> window.print()
   is2x:              -> window.devicePixelRatio >= 2
-  triggerResize:     -> setTimeout -> window.dispatchEvent(new window.Event('resize')) if window.Event
   viewportSize:      -> viewportSize()
   hardReload: (path) -> hardReload(path)
 

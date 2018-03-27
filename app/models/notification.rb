@@ -8,8 +8,8 @@ class Notification < ApplicationRecord
   validates_presence_of :url, unless: :persisted?
   validates_uniqueness_of :user_id, scope: :event_id
 
-  delegate :kind, to: :event, allow_nil: true
   delegate :eventable, to: :event, allow_nil: true
+  delegate :kind, to: :event, allow_nil: true
   delegate :locale, to: :user
   delegate :message_channel, to: :user
 

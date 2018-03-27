@@ -1,7 +1,7 @@
 class Full::UserSerializer < UserSerializer
-  attributes :email, :email_when_proposal_closing_soon, :email_missed_yesterday,
+  attributes :email, :email_when_proposal_closing_soon, :email_missed_yesterday, :email_announcements,
              :email_when_mentioned, :email_on_participation, :selected_locale, :locale,
-             :default_membership_volume, :experiences, :is_coordinator, :is_admin
+             :default_membership_volume, :experiences, :is_coordinator, :is_admin, :intercom_hash
 
   has_many :formal_memberships, serializer: MembershipSerializer, root: :memberships
   has_many :guest_memberships,  serializer: Simple::MembershipSerializer, root: :memberships
@@ -9,7 +9,7 @@ class Full::UserSerializer < UserSerializer
   has_many :identities,         serializer: IdentitySerializer, root: :identities
 
   def guest_memberships
-    from_scope :memberships
+    from_scope :guest_memberships
   end
 
   def formal_memberships
@@ -28,12 +28,20 @@ class Full::UserSerializer < UserSerializer
     object.adminable_group_ids.any?
   end
 
+  def intercom_hash
+    OpenSSL::HMAC.hexdigest('sha256', ENV['INTERCOM_APP_SECRET'], object.id.to_s)
+  end
+
   def include_gravatar_md5?
     true
   end
 
   def include_has_password?
     true
+  end
+
+  def include_intercom_hash?
+    ENV['INTERCOM_APP_SECRET']
   end
 
   private

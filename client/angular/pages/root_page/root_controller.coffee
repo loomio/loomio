@@ -1,5 +1,4 @@
 AppConfig       = require 'shared/services/app_config.coffee'
-Session         = require 'shared/services/session.coffee'
 Records         = require 'shared/services/records.coffee'
 EventBus        = require 'shared/services/event_bus.coffee'
 AbilityService  = require 'shared/services/ability_service.coffee'
@@ -15,7 +14,12 @@ IntercomService = require 'shared/services/intercom_service.coffee'
 { setupAngular }                                 = require 'angular/setup.coffee'
 
 $controller = ($scope, $injector) ->
+  $scope.theme  = AppConfig.theme
+  $scope.assets = AppConfig.assets
   setupAngular($scope, $injector)
+
+  Records.boot.remote.get('user').then (response) ->
+    signIn(response, response.current_user_id, $scope.loggedIn)
 
   $scope.warnDeprecation  = deprecatedBrowser()
   $scope.currentComponent = 'nothing yet'
@@ -27,6 +31,7 @@ $controller = ($scope, $injector) ->
     $scope.pageError = null
     $scope.refreshing = true
     $injector.get('$timeout') -> $scope.refreshing = false
+    IntercomService.fetch()
     IntercomService.boot()
     if LmoUrlService.params().set_password
       delete LmoUrlService.params().set_password

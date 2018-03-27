@@ -11,16 +11,8 @@ class InvitationService
     Events::InvitationCreated.publish!(invitation, actor)
   end
 
-  def self.create_invite_to_join_group(args)
-    args[:to_be_admin] = false
-    args[:intent] = 'join_group'
-    Invitation.create!(args)
-  end
-
-  def self.invite_to_group(recipient_emails: nil,
-                           message: nil,
-                           group: nil,
-                           inviter: nil)
+  def self.bulk_create(recipient_emails: nil, message: nil, group: nil, intent: :join_group, inviter: nil, send_emails: true)
+    return [] unless recipient_emails.present?
 
     emails = (recipient_emails - group.members.pluck(:email)).take(100)
     raise Invitation::AllInvitesAreMembers.new if emails.empty?
@@ -35,12 +27,13 @@ class InvitationService
     raise Invitation::TooManyCancelled.new if recent_cancelled > group.pending_invitation_limit
 
     emails.map do |recipient_email|
-      invitation = create_invite_to_join_group(recipient_email: recipient_email,
-                                               group: group,
-                                               message: message,
-                                               inviter: inviter)
-      Events::InvitationCreated.publish!(invitation, inviter)
-      invitation
+      Invitation.create!(
+        recipient_email: recipient_email,
+        group:           group,
+        message:         message,
+        inviter:         inviter,
+        intent:          intent,
+      ).tap { |invitation| Events::InvitationCreated.publish!(invitation) if send_emails }
     end
   end
 

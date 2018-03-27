@@ -30,7 +30,7 @@ describe InvitationsController do
 
       it 'says sorry invitatino already used' do
         get :show, params: { id: invitation.token }
-        expect(response).to redirect_to(group_url(invitation.group))
+        expect(response).to redirect_to(group_url(invitation.group, invitation_token: invitation.token))
       end
     end
 
@@ -41,7 +41,7 @@ describe InvitationsController do
         group.add_member! another_user
         sign_in another_user
         get :show, params: { id: invitation.token }
-        expect(response).to redirect_to group_url(group)
+        expect(response).to redirect_to group_url(group, invitation_token: invitation.token)
       end
     end
 
@@ -55,7 +55,7 @@ describe InvitationsController do
       end
 
       it "redirects to the group" do
-        response.should redirect_to(group_url(invitation.group))
+        response.should redirect_to(group_url(invitation.group, invitation_token: invitation.token))
       end
 
       it 'does not accept the invitation' do
@@ -76,7 +76,7 @@ describe InvitationsController do
           invitation.reload
           expect(invitation.accepted?).to be true
           expect(Membership.find_by(group: group, user: user)).to be_present
-          response.should redirect_to group_url(group)
+          response.should redirect_to group_url(group, invitation_token: invitation.token)
         end
 
       end
@@ -88,7 +88,7 @@ describe InvitationsController do
 
         it 'accepts the invitation, redirects to group, and clears token from session' do
           get :show, params: { id: invitation.token }
-          response.should redirect_to group_url(group)
+          response.should redirect_to group_url(group, invitation_token: invitation.token)
           invitation.reload
           expect(invitation.accepted?).to be true
           expect(Membership.find_by(group: group, user: user)).to be_present

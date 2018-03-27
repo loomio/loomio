@@ -1,20 +1,17 @@
-InitialPayload = Struct.new(:user) do
+class InitialPayload
   include LocalesHelper
   include Routing
   include AngularHelper
 
   def payload
     @payload ||= {
-      bootData:            BootData.new(user).data,
       version:             Loomio::Version.current,
-      assetRoot:           angular_asset_folder,
       environment:         Rails.env,
-      loadVideos:          ENV['LOOMIO_LOAD_VIDEOS'],
-      currentUserLocale:   user.locale,
       permittedParams:     PermittedParamsSerializer.new({}),
       locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
       momentLocales:       AppConfig.moment_locales,
       recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
+      intercomAppId:       ENV['INTERCOM_APP_ID'],
       baseUrl:             root_url,
       contactEmail:        ENV['SUPPORT_EMAIL'],
       plugins:             Plugins::Repository.to_config,
@@ -61,15 +58,7 @@ InitialPayload = Struct.new(:user) do
       timeZones:         AppConfig.timezones,
       identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|
         ({ name: provider, href: send("#{provider}_oauth_path") } if ENV["#{provider.upcase}_APP_KEY"])
-      end.compact,
-      intercom: {
-        appId: Rails.application.secrets.intercom_app_id,
-        userHash: (OpenSSL::HMAC.hexdigest(
-          'sha256',
-          Rails.application.secrets.intercom_app_secret,
-          user.id.to_s
-        ) if Rails.application.secrets.intercom_app_secret)
-      }.compact
+      end.compact
     }
   end
 end
