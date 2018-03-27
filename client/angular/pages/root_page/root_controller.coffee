@@ -42,7 +42,6 @@ $controller = ($scope, $injector) ->
     $scope.links = options.links or {}
     setCurrentComponent(options)
 
-  signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
   initLiveUpdate()
 
   return
