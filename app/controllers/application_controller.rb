@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context
 
   helper_method :current_user
+  helper_method :current_version
   helper_method :client_asset_path
   helper_method :bundle_asset_path
   helper_method :supported_locales
