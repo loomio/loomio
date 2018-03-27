@@ -1,10 +1,15 @@
 .auth-complete
   %auth_avatar{user: "user"}
   %h2.lmo-h2{translate: "auth_form.check_your_email"}
-  %p.lmo-hint-text{ng-if: "user.sentLoginLink", translate: "auth_form.login_link_sent", translate-value-email: "{{user.email}}"}
+  %p.lmo-hint-text{ng-if: "user.sentLoginLink"}
+    %span{translate: "auth_form.login_link_sent", translate-value-email: "{{user.email}}"}>
+    %br
+    %span{translate: "auth_form.instructions", ng-if: "attempts < 3"}>
+    .lmo-validation-error{translate: "auth_form.too_many_attempts", ng-if: "attempts >= 3"}
   %p.lmo-hint-text{ng-if: "user.sentPasswordLink", translate: "auth_form.password_link_sent", translate-value-email: "{{user.email}}"}
   .auth-complete__code-input{ng-if: "attempts < 3"}
-    .auth-complete__code
+    %md-input-container.auth-complete__code.md-no-errors
       %input{type: "integer", maxlength: "6", ng-model: "session.code"}
+    %validation_errors{subject: "session", field: "password"}
     .lmo-md-action
       %md-button.md-raised.md-primary{ng-click: "submit()", translate: "auth_form.sign_in"}

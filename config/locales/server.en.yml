@@ -19,6 +19,7 @@ en:
   user:
     error:
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
+      bad_login: "Unable to log you in. Please try again."
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
   attachment:

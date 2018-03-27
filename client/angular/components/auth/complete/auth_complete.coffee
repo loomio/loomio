@@ -1,8 +1,9 @@
 Records = require 'shared/services/records.coffee'
+I18n    = require 'shared/services/i18n.coffee'
 
-{ hardReload } = require 'shared/helpers/window.coffee'
-{ submitForm } = require 'shared/helpers/form.coffee'
-{ registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
+{ hardReload }    = require 'shared/helpers/window.coffee'
+{ submitForm }    = require 'shared/helpers/form.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'authComplete', ->
   scope: {user: '='}
@@ -12,7 +13,10 @@ angular.module('loomioApp').directive 'authComplete', ->
     $scope.attempts = 0
 
     $scope.submit = submitForm $scope, $scope.session,
-      prepareFn:       -> $scope.session.code = $scope.code.join('')
       successCallback: -> hardReload()
-      failureCallback: -> $scope.attempts += 1
+      failureCallback: ->
+        $scope.session.errors = {code: I18n.t('auth_form.invalid_code')}
+        $scope.attempts += 1
+
+    submitOnEnter($scope, anyEnter: true)
   ]
