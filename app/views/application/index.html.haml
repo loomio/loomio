@@ -1,27 +1,29 @@
 !!!
 %html{'ng-app' => 'loomioApp', 'ng-strict-di' => 'true', 'ng-controller' => 'RootController as app'}
   %head
-    %title= AppConfig.theme[:site_name]
+    %title
     %meta{charset: 'utf-8'}
     %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
-    %meta{content: AppConfig.theme[:text_on_primary_color], name: "theme-color"}
+    %meta{content: '{{theme.text_on_primary_color}}', 'ng-if' => 'theme', name: "theme-color"}
+    %meta{content: current_version, name: "version"}
     %base{href: '/'}
 
-    %link{rel: 'canonical', 'ng-if' => 'links.canonical', 'ng-href' => '{{links.canonical}}'}
-    %link{rel: 'alternate', type: 'application/rss+xml', 'ng-if' => 'links.rss', 'ng-href' => '{{links.rss}}'}
-    %link{rel: 'prev', 'ng-if' => 'links.prev', 'ng-href' => '{{links.prev}}'}
-    %link{rel: 'next', 'ng-if' => 'links.next', 'ng-href' => '{{links.next}}'}
-    %link{rel: 'manifest', href: '/manifest.json'}
-    %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
-    %link{rel: "apple-touch-icon", href: AppConfig.theme[:icon_src]}
-    %link{href: client_asset_path(:"angular.min.css"), rel: 'stylesheet'}
+    %link{rel: 'alternate',        'ng-if' => 'links.rss',       'ng-href' => '{{links.rss}}', type: 'application/rss+xml'}
+    %link{rel: 'canonical',        'ng-if' => 'links.canonical', 'ng-href' => '{{links.canonical}}'}
+    %link{rel: 'prev',             'ng-if' => 'links.prev',      'ng-href' => '{{links.prev}}'}
+    %link{rel: 'next',             'ng-if' => 'links.next',      'ng-href' => '{{links.next}}'}
+
+    %link{rel: 'shortcut icon',    'ng-if' => 'theme',           'ng-href' => '{{theme.icon_src}}'}
+    %link{rel: 'apple-touch-icon', 'ng-if' => 'theme',           'ng-href' => '{{theme.icon_src}}'}
+
+    %link{rel: "stylesheet", href: client_asset_path(:"angular.min.css")}
+    %link{rel: 'manifest',   href: '/manifest.json'}
 
     = action_cable_meta_tag
 
     = render 'angular/metadata'
-    = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
-    = render 'angular/intercom' if current_user.is_logged_in?
+    = render 'application/google_analytics'
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %browser_warning{'ng-if' => 'warnDeprecation'}
@@ -36,8 +38,6 @@
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
           %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
 
-    :javascript
-      window.Loomio = #{@payload.to_json.html_safe}
     %script{src: bundle_asset_path(:"angular.bundle.min.js")}
 
     = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]
