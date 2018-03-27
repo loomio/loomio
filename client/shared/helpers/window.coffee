@@ -18,8 +18,9 @@ module.exports =
     _.extend window._, require 'shared/helpers/lodash_ext.coffee'
 
   initServiceWorker: ->
-    if document.location.protocol.match(/https/) && navigator.serviceWorker?
-      navigator.serviceWorker.register(document.location.origin + '/service-worker.js', scope: './')
+    version = document.querySelector('meta[name=version]').content
+    if (version == 'development' || document.location.protocol.match(/https/)) && navigator.serviceWorker?
+      navigator.serviceWorker.register("#{document.location.origin}/service-worker.js?#{version}", scope: "./")
 
   print:             -> window.print()
   is2x:              -> window.devicePixelRatio >= 2
