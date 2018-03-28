@@ -1,11 +1,14 @@
 %form.poll-meeting-vote-form{ng-submit: "submit()"}
   %poll_common_participant_form{stance: "stance"}
   %h3.lmo-card-subheading{translate: "poll_meeting_vote_form.your_response"}
-  .lmo-flex--row.lmo-flex__center{ ng-if:"stance.poll().canRespondMaybe"}
-    %md-checkbox.md-block.poll-meeting-vote-form__checkbox--legend{md-indeterminate:"true", ng-disabled:"true"}
-    %span.lmo-hint-text{translate: "poll_meeting_vote_form.maybe_help_text"}
-  .lmo-flex.lmo-flex__flex-end
-    %time_zone_select
+  .lmo-flex--row.lmo-flex__space-between
+    .lmo-flex
+      %time_zone_select
+    .lmo-flex--row.lmo-flex__center.poll-meeting-vote-form__helptext{ ng-if:"stance.poll().canRespondMaybe"}
+      %span.lmo-helptext.lmo-margin-right--small{translate: "poll_meeting_vote_form.maybe_help_text"}
+      %span (
+      %i.mdi.mdi-minus-box-outline.lmo-hint-text.mdi-18px.poll-meeting-vote-form__checkbox--legend
+      %span )
   %md-list.poll-common-vote-form__options
     %md-list-item.poll-common-vote-form__option{ng-repeat: "option in stance.poll().pollOptions() | orderBy:'name' track by option.id"}
       %p.poll-poll-vote-form__option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': option.color}"}
