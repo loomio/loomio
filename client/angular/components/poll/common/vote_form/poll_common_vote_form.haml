@@ -1,4 +1,4 @@
-.poll-common-vote-form
+.poll-common-vote-form.lmo-drop-animation
   %poll_common_participant_form{stance: "stance"}
 
   %h3.lmo-card-subheading{translate: "poll_common.your_response", ng-if: "stance.isNew()"}
@@ -9,7 +9,7 @@
       %md-tooltip.poll-common-vote-form__tooltip{md-delay: "750"}
         %span{translate: "poll_{{stance.poll().pollType}}_options.{{option.name}}_meaning"}
 
-  %poll_common_stance_reason{stance: "stance", ng-if: "selectedOptionId"}
+  %poll_common_stance_reason.animated{stance: "stance", ng-show: "selectedOptionId", ng-if: "stance"}
   .lmo-md-actions
     %div{ng-if: "!stance.isNew()"}
     %show_results_button{ng-if: "stance.isNew()"}

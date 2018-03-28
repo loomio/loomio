@@ -6,6 +6,7 @@
   }
   @media (max-width: $tiny-max-px) {
     margin: 0;
-    img { width: 70px; }
+    min-width: 64px !important;
+    img { width: 64px; }
   }
 }
