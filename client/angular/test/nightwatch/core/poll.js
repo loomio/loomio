@@ -189,17 +189,17 @@ module.exports = {
     page.click('.poll-common-undecided-panel__show-invitations')
     page.click('.poll-common-undecided-user__resend')
     page.expectText('.flash-root__message', 'Invitation resent')
-  },
-
-  'can_verify_stance': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_verify_vote_by_unverified_user')
-    page.click('.base-mailer__button')
-    page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
-    page.expectNoElement('.verify-email-notice')
   }
+  //
+  // 'can_verify_stance': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('polls/test_verify_vote_by_unverified_user')
+  //   page.click('.base-mailer__button')
+  //   page.click('.auth-signin-form__submit')
+  //   page.expectText('.flash-root__message', 'Signed in successfully')
+  //   page.expectNoElement('.verify-email-notice')
+  // }
 }
 
 startPollTest = (test, poll_type, optionsFn) => {
