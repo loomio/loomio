@@ -1,0 +1,11 @@
+.poll-common-vote-form__button {
+  border: 1px solid $card-background-color;
+  img {
+    width: 80px;
+    padding: 8px;
+  }
+  @media (max-width: $tiny-max-px) {
+    margin: 0;
+    img { width: 70px; }
+  }
+}
