@@ -1,0 +1,146 @@
+%h1 Your personal data with Loomio
+
+%h3 Peronally identifying data
+%p Data which can be used to identify you can be found in user and visit records. The user record contains the name and email adddress you gave us. Visit records contain the IP address, browser version, and time you accesses our system. You may have also entered information that can identify you in other records such as comments.
+
+%h3 Data associated with you.
+%p The rest of the information is data that is associated to your user account. This includes content which you've entered, and metadata about that content EG: When it was created.
+
+%h2 Records associated with you on #{ENV['CANONICAL_HOST']}
+
+%h3
+  %a{href: '/personal_data/ahoy_events'} Ahoy events
+Each click or form submission on the site is recorded. We use this information to tell which features are being used, and which are not. We also look at this history to see what happened before an error occured.
+
+%h3
+  %a{href: '/personal_data/visits'} Visits
+Events are grouped together by visits. Which represents the session of Loomio usage for each time you use the application.
+
+%h3
+  %a{href: '/personal_data/ahoy_messages'} Ahoy messages
+When the system sends you an email, we record that the email was sent, to who and when. We record if you view the email, and if you click a link within the email. We do this to understand which emails people value.
+
+%h3
+  %a{href: '/personal_data/comments'} Comments
+When you comment in a thread, who said it, what they said, the thread you wrote in, and other meta information.
+
+%h3
+  %a{href: '/personal_data/discussion_readers'} Discussion Readers
+Track what parts of a discussion you have read, so we can highligh the unread parts for you, and display how many people have seen a thread.
+
+%h3
+  %a{href: '/personal_data/discussions'} Discussions
+Are a central concept within Loomio. Discussion threads group content by topic, and hold conversation and decisions together.
+
+
+%h3
+  %a{href: '/personal_data/documents'} Documents
+Also known as attachments. These records connect an uploaded or linked resource with the place that it is attached to within a group or thread.
+
+%h3
+  %a{href: '/personal_data/dra'} Documents
+We save information entered into forms before you submit it, so that if you close the window we can recover unfinished work for you.
+
+= count_and_link_to :drafts
+
+%h3 Events
+These records form a structured (chronological and contextual) view of activity within the site. For example a thread has comments, what are they, when did they happen, and how are they related to each other?
+
+= count_and_link_to :events
+
+%h3 Group identities
+When you connect Slack to you group, your user account is part of the authorisation process. This record is created as a result.
+
+= count_and_link_to :group_identities
+
+%h3 Groups
+Name and description of groups in Loomio. If you create a group or are a member
+of a group you associated to it.
+
+= count_and_link_to :groups
+
+%h3 Group visits
+We keep basic metrics on how many people visit a group.
+
+= count_and_link_to :group_visits
+
+%h3 Invitations
+If you are invited (and accept) or invite someone to join a group, thread or poll, an invitation record is assoicated to your user.
+
+= count_and_link_to :invitations
+
+%h3 Login tokens
+We send login tokens so that you can login via email.
+
+= count_and_link_to :login_tokens
+
+%h3 Membership requests
+If you request membership to a group these records enable that process.
+
+= count_and_link_to :membership_requests
+
+%h3 Memberships
+Belonging to a group is represented in a membership record.
+
+= count_and_link_to :memberships
+
+%h3 Notifications
+If an event or action that occured within Loomio needs your attention these records are created to track notifying you and when you receive the notification.
+
+= count_and_link_to :notifications
+
+%h3 oauth_access_grants
+not sure about these yet
+
+%h3 oauth_access_tokens
+
+%h3 oauth_applications
+
+%h3 omniauth_identities
+An identity is a way to associate you to your user account when you login via a third party authentication service such as Facebook or Google.
+
+= count_and_link_to :identities
+
+%h3 Organisation visits
+We record how many visits an organisation (group and it's subgroups) has had.
+
+= count_and_link_to :orgnisation_visits
+
+%h3 Outcomes
+Users enter outcomes when polls & proposals complete.
+
+= count_and_link_to :outcomes
+
+%h3 Poll did not votes
+If you did not vote on a poll, and it then closes, we record that.
+= count_and_link_to :poll_did_not_votes
+
+%h3 Poll unsubscriptions
+If you request not to get emails about a poll.
+= count_and_link_to :poll_unsubscriptions
+
+%h3 Polls
+Questions asked to a group of people, given some options as choices for the response.
+= count_and_link_to :polls
+
+%h3 Reactions
+When you 😃 or ❤️ something another user has written, these enable that.
+= count_and_link_to :reactions
+
+%h3 Stances
+When you vote in a poll it is recorded as a stance.
+= count_and_link_to :stances
+
+%h3 Deactivation responses
+If you deactivate your account, we ask why and record that.
+= count_and_link_to :deactivation_responses
+
+%h3 User record
+Identifys you as an individual Loomio user. Holds your name, email, language you speak, general location (calculated from your IP address), and application settings.
+
+= count_and_link_to :users
+
+%h3 Versions
+To provide revision history features on some records, we store a history of the values of a a record.
+
+= count_and_link_to :versions
