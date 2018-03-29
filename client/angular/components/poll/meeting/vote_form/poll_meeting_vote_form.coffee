@@ -2,6 +2,7 @@ EventBus = require 'shared/services/event_bus.coffee'
 
 { submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 { submitStance }  = require 'shared/helpers/form.coffee'
+{ buttonMdColors }      = require 'shared/helpers/style.coffee'
 
 angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
   scope: {stance: '='}
@@ -16,14 +17,14 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
       # create the map referenced from the view which requires has an integer for each
       $scope.stanceValuesMap = _.fromPairs(_.map( choices, (choice)-> ([choice.pollOptionId, choice.score||0])))
 
-    $scope.click = (optionId)->
+      $scope.canRespondMaybe = $scope.stance.poll().customFields.can_respond_maybe
+      $scope.stanceValues = if $scope.canRespondMaybe then [0,1,2] else [0, 2]
 
-      canRespondMaybe = $scope.stance.poll().customFields.can_respond_maybe
-      $scope.stanceValuesMap[optionId] = {
-        0: 2,
-        1: 0,
-        2: if canRespondMaybe then 1 else 0
-      }[$scope.stanceValuesMap[optionId] || 0]
+    $scope.selectedColor =  (optionId , score) ->
+      return buttonMdColors($scope.stanceValuesMap[optionId]==score)
+
+    $scope.click = (optionId, score)->
+      $scope.stanceValuesMap[optionId] = score
 
     $scope.submit = submitStance $scope, $scope.stance,
       prepareFn: ->
