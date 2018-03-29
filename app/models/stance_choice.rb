@@ -14,6 +14,10 @@ class StanceChoice < ApplicationRecord
                   .order(:created_at)
   }
 
+  scope :latest, -> {
+    joins(:stance).where("stances.latest":true)
+  }
+
   def rank
     self.poll.minimum_stance_choices - self.score + 1
   end

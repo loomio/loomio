@@ -56,6 +56,9 @@ module.exports =
           when 'proposal', 'count'
             model.pollOptionNames = _.pluck fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
           # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
+          when 'meeting'
+            model.customFields.can_respond_maybe = model.canRespondMaybe
+            model.addOption()
           else
             model.addOption()
       failureCallback: ->

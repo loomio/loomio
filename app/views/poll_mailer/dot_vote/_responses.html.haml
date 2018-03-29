@@ -5,7 +5,7 @@
       %tr
         %td
           %table
-            %td= render 'avatar', user: stance.participant_for_client(user: @info.recipient)
+            %td= render 'base_mailer/avatar', user: stance.participant_for_client(user: @info.recipient)
             %td.poll-mailer-common-responses__reason
               %strong
                 #{stance.participant_for_client(user: @info.recipient).name}:
