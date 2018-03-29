@@ -1,5 +1,4 @@
-$box-width:72px;
-$radio-width:20px;
+$box-width:60px;
 
 .poll-meeting-vote-form__checkbox--legend {
   margin-top:4px;
@@ -12,6 +11,9 @@ $radio-width:20px;
 .poll-meeting-vote-form--box {
   min-width: $box-width;
   width: $box-width;
+  line-height: normal;
   text-align: center;
   margin: 0px 8px;
+  &.md-button { height: $box-width; }
+  img { width: 32px; }
 }

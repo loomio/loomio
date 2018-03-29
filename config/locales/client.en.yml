@@ -1259,7 +1259,7 @@ en:
       title: Anonymous participants
       helptext_on: Participant info will not be shown with each response.
       helptext_off: Participants will be shown with their responses.
-    voter_can_add_options:
+    voters_can_add_options:
       title: Voters may add options
       helptext_on: Participants may add their own options when voting.
       helptext_off: Participants will select from the options you provide.

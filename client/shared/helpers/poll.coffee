@@ -13,7 +13,6 @@ module.exports =
   settingsFor: (poll) ->
     _.compact [
       ('multipleChoice'       if poll.pollType == 'poll'),
-      'anyoneCanParticipate',
       'notifyOnParticipate',
       ('canRespondMaybe'      if poll.pollType == 'meeting'),
       ('anonymous'            if fieldFromTemplate(poll.pollType, 'can_vote_anonymously')),
