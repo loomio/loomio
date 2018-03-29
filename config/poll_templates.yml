@@ -75,6 +75,9 @@ meeting:
   must_have_options:       true
   dates_as_options:        true
   author_receives_outcome: true
+  has_variable_score:      true
+  required_custom_fields:
+    - can_respond_maybe
   sort_options:
     - newest_first
     - oldest_first

@@ -15,7 +15,7 @@ class Poll < ApplicationRecord
   include HasEvents
   include HasCreatedEvent
 
-  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
+  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
                        can_add_options can_remove_options author_receives_outcome
@@ -171,7 +171,8 @@ class Poll < ApplicationRecord
     update_attribute(:matrix_counts,
       poll_options.order(:name).limit(5).map do |option|
         stances.latest.order(:created_at).limit(5).map do |stance|
-          stance.poll_options.include?(option)
+          # the score of the stance choice which has this poll option in this stance
+          stance.stance_choices.find_by(poll_option:option)&.score.to_i
         end
       end
     ) if chart_type == 'matrix'
@@ -187,6 +188,16 @@ class Poll < ApplicationRecord
 
   def is_single_vote?
     AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
+  end
+
+  def meeting_score_tallies
+    ordered_poll_options.map do |option|
+      [option.id, {
+        maybe:    option.stance_choices.latest.where(score: 1).count,
+        yes:      option.stance_choices.latest.where(score: 2).count
+      }]
+    end
+
   end
 
   def ordered_poll_options
@@ -281,7 +292,7 @@ class Poll < ApplicationRecord
 
   def require_custom_fields
     Array(required_custom_fields).each do |field|
-      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].blank?
+      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].nil?
     end
   end
 end

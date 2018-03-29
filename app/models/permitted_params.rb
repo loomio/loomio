@@ -28,11 +28,11 @@ class PermittedParams < Struct.new(:params)
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at, :anonymous,
      :multiple_choice, :key, :anyone_can_participate, :notify_on_participate, :voter_can_add_options,
-     :custom_fields, {custom_fields: [:dots_per_person, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
+     :custom_fields, {custom_fields: [:can_respond_maybe,:dots_per_person, :time_zone, :meeting_duration, :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
      :document_ids, {document_ids: []},
      :poll_option_names, {poll_option_names: []}]
   end
-
+  
   def stance_attributes
     [:poll_id, :reason,
      :visitor_attributes, {visitor_attributes: [:name, :email, :invitation_token]},

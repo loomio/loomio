@@ -211,7 +211,7 @@ describe API::PollsController do
       sign_in user
       poll_params[:poll_type] = 'meeting'
       poll_params[:poll_option_names] = [1.day.from_now.iso8601]
-      poll_params[:custom_fields] = { meeting_duration: 90 }
+      poll_params[:custom_fields] = { meeting_duration: 90, can_respond_maybe: false }
       expect { post :create, params: { poll: poll_params } }.to change { Poll.count }.by(1)
       expect(Poll.last.meeting_duration.to_i).to eq 90
     end

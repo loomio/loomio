@@ -88,7 +88,9 @@ module Dev::FakeDataHelper
 
     case options[:poll_type].to_s
     when 'dot_vote'      then options[:custom_fields][:dots_per_person] = 10
-    when 'meeting'       then options[:custom_fields][:time_zone] = 'Asia/Seoul'
+    when 'meeting'
+      options[:custom_fields][:time_zone] = 'Asia/Seoul'
+      options[:custom_fields][:can_respond_maybe] = false
     when 'ranked_choice' then options[:custom_fields][:minimum_stance_choices] = 2
     end
 
