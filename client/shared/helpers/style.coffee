@@ -1,10 +1,7 @@
-
 module.exports =
-  buttonMdColors: (selected) ->
+  buttonStyle: (selected) ->
+    obj = {color: 'default-grey-900'}
     if selected
-      {
-        'border-color':'default-accent-800',
-        'background-color':'default-accent-100'
-      }
-    else
-      {}
+      obj['border-color']     = 'default-accent-300'
+      obj['background-color'] = 'default-accent-100'
+    obj

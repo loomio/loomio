@@ -2,7 +2,7 @@ EventBus = require 'shared/services/event_bus.coffee'
 
 { submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 { submitStance }  = require 'shared/helpers/form.coffee'
-{ buttonMdColors }      = require 'shared/helpers/style.coffee'
+{ buttonStyle }   = require 'shared/helpers/style.coffee'
 
 angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
   scope: {stance: '='}
@@ -20,8 +20,8 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
       $scope.canRespondMaybe = $scope.stance.poll().customFields.can_respond_maybe
       $scope.stanceValues = if $scope.canRespondMaybe then [0,1,2] else [0, 2]
 
-    $scope.selectedColor =  (optionId , score) ->
-      return buttonMdColors($scope.stanceValuesMap[optionId]==score)
+    $scope.selectedColor = (option, score) ->
+      buttonStyle(score == $scope.stanceValuesMap[option.id])
 
     $scope.click = (optionId, score)->
       $scope.stanceValuesMap[optionId] = score
