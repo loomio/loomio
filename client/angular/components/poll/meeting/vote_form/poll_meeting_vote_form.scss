@@ -1,0 +1,17 @@
+$box-width:72px;
+$radio-width:20px;
+
+.poll-meeting-vote-form__checkbox--legend {
+  margin-top:4px;
+}
+
+.poll-meeting-vote-form__helptext {
+  color: $grey-on-white;
+}
+
+.poll-meeting-vote-form--box {
+  min-width: $box-width;
+  width: $box-width;
+  text-align: center;
+  margin: 0px 8px;
+}

@@ -1242,16 +1242,31 @@ en:
     location: Location
     location_placeholder: Where will this meeting take place?
 
-  poll_common_notify_on_participate:
-    notify_on_participate: Notify me when people participate
-    helptext_on: You will be notified whenever someone participates
-    helptext_off: You will receive results when this activity closes
-
-  poll_common_anonymous:
-    anonymous: Anonymous Participants
-    helptext_on: Participant info will not be shown with each response
-    helptext_off: Participants will be shown with their responses
-
+  poll_common_settings:
+    multiple_choice:
+      title: Multiple choice
+      helptext_on: Participants will be able to select multiple options.
+      helptext_off: Participants must select only one option.
+    anyone_can_participate:
+      title: Anyone can participate
+      helptext_on: Anyone with the link to the poll can participate.
+      helptext_off: Only people who are invited, or part of this group can participate.
+    notify_on_participate:
+      title: Notify me when people participate
+      helptext_on: You will be notified whenever someone participates.
+      helptext_off: You will receive results when this activity closes.
+    anonymous:
+      title: Anonymous participants
+      helptext_on: Participant info will not be shown with each response.
+      helptext_off: Participants will be shown with their responses.
+    voter_can_add_options:
+      title: Voters may add options
+      helptext_on: Participants may add their own options when voting.
+      helptext_off: Participants will select from the options you provide.
+    can_respond_maybe:
+      title: Voters may respond maybe
+      helptext_on:  Participants may indicate times as 'maybe'
+      helptext_off: Participant will indicate yes or no for each time
   poll_common_close_form:
     title: Close a poll early
     helptext: Are you sure you're ready to close early?
@@ -1509,12 +1524,20 @@ en:
   poll_meeting_chart_panel:
     total: Total
 
+  poll_meeting_chart_legend:
+    can_attend: "Can Attend"
+    maybe_attend: "If Need Be"
+
   poll_poll_vote_form:
     stance_created: Vote created
     stance_updated: Vote updated
 
   poll_meeting_vote_form:
+    respond_yes: "Can attend"
+    respond_no: "Unable"
+    respond_maybe: If Need Be
     your_response: When can you attend?
+    maybe_help_text: click twice for 'If need be'
     stance_created: Availability saved
     stance_updated: Availability updated
     reason_placeholder: Explain when you're free (or busy), in case the author wants to add options.

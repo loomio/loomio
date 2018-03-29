@@ -1,0 +1,16 @@
+
+.poll-meeting-stance-icon {
+  height:20px;
+  width: 20px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poll-meeting-stance-icon--yes {
+  background-color: #70C9F8;
+}
+
+.poll-meeting-stance-icon--maybe {
+  background-color: lighten(#70C9F8, 20%);
+}

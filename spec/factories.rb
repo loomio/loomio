@@ -245,6 +245,7 @@ FactoryBot.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names ['01-01-2015']
+    custom_fields can_respond_maybe: false
     association :guest_group, factory: :guest_group
   end
 
