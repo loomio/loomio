@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'pollCommonDetailsPanel', ->
     $scope.actions = [
       name: 'translate_poll'
       icon: 'mdi-translate'
-      canPerform: -> AbilityService.canTranslate($scope.poll) && !$scope.translation
+      canPerform: -> AbilityService.canTranslate($scope.poll)
       perform:    -> $scope.poll.translate(Session.user().locale)
     ,
       name: 'add_resource'

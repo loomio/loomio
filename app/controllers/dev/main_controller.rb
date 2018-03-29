@@ -157,6 +157,13 @@ class Dev::MainController < Dev::BaseController
     redirect_to explore_path
   end
 
+  def setup_spanish_discussion
+    patrick.update(selected_locale: :es)
+    jennifer.update(selected_locale: :en)
+    sign_in patrick
+    redirect_to discussion_path(create_discussion)
+  end
+
   def setup_logged_out_group_member
     patrick
     create_group
