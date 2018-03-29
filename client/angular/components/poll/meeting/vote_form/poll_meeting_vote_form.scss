@@ -1,7 +1,30 @@
+$box-width:72px;
+$radio-width:20px;
+
 .poll-meeting-vote-form__checkbox--legend {
   margin-top:4px;
 }
 
 .poll-meeting-vote-form__helptext {
   color: $grey-on-white;
+}
+
+.poll-meeting-vote-form--box {
+  width: $box-width;
+  text-align: center;
+}
+
+.poll-meeting-vote-form__options {
+  display: grid;
+  grid-template-columns: 80px 80px 80px 1fr
+}
+
+.poll-meeting-vote-form__radio {
+  margin-bottom:0px;
+  margin: 0px ($box-width - $radio-width)/2;
+  width:$radio-width;
+}
+
+.poll-meeting-vote-form__option {
+
 }

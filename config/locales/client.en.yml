@@ -1588,6 +1588,9 @@ en:
     stance_updated: Vote updated
 
   poll_meeting_vote_form:
+    respond_yes: "Can attend"
+    respond_no: "Unable"
+    respond_maybe: If Need Be
     your_response: When can you attend?
     maybe_help_text: click twice for 'If need be'
     stance_created: Availability saved

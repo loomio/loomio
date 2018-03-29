@@ -1,19 +1,22 @@
 %form.poll-meeting-vote-form{ng-submit: "submit()"}
   %poll_common_participant_form{stance: "stance"}
-  %h3.lmo-card-subheading{translate: "poll_meeting_vote_form.your_response"}
-  .lmo-flex--row.lmo-flex__space-between
-    .lmo-flex
-      %time_zone_select
-    .lmo-flex--row.lmo-flex__center.poll-meeting-vote-form__helptext{ ng-if:"stance.poll().canRespondMaybe"}
-      %span.lmo-helptext.lmo-margin-right--small{translate: "poll_meeting_vote_form.maybe_help_text"}
-      %span (
-      %i.mdi.mdi-minus-box-outline.lmo-hint-text.mdi-18px.poll-meeting-vote-form__checkbox--legend
-      %span )
+  %h3.lmo-card-subheading.lmo-flex__grow{translate: "poll_meeting_vote_form.your_response"}
   %md-list.poll-common-vote-form__options
-    %md-list-item.poll-common-vote-form__option{ng-repeat: "option in stance.poll().pollOptions() | orderBy:'name' track by option.id"}
-      %p.poll-poll-vote-form__option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': option.color}"}
-        %poll_meeting_time{name: "option.name", zone: "zone"}
-      %md-checkbox.md-block.poll-meeting-vote-form__checkbox{ng-click:"click(option.id)", ng-checked:"stanceValuesMap[option.id]==2", md-indeterminate:"stanceValuesMap[option.id] == 1"}
+    %md-list-item.lmo-flex--row.lmo-flex__horizontal-center.lmo-flex__center
+      %span.poll-meeting-vote-form--box{translate: "poll_meeting_vote_form.respond_yes"}
+      %span.poll-meeting-vote-form--box{translate: "poll_meeting_vote_form.respond_no"}
+      %span.poll-meeting-vote-form--box{translate: "poll_meeting_vote_form.respond_maybe"}
+    %md-list-item.lmo-flex--row.lmo-flex__horizontal-center.lmo-flex__center
+      %i.mdi.mdi-check.poll-meeting-vote-form--box
+      %i.mdi.mdi-close.poll-meeting-vote-form--box
+      %i.mdi.mdi-minus.poll-meeting-vote-form--box
+
+    %md-list-item.poll-common-vote-form__option.lmo-flex--row{ng-repeat: "option in stance.poll().pollOptions() | orderBy:'name' track by option.id"}
+      %md-radio-group.lmo-flex--row.lmo-flex__center{ng-model: "stanceValuesMap[option.id]"}
+        %md-radio-button.poll-meeting-vote-form__radio.poll-meeting-vote-form--box{ng-value:2}
+        %md-radio-button.poll-meeting-vote-form__radio.poll-meeting-vote-form--box{ng-value:0}
+        %md-radio-button.poll-meeting-vote-form__radio.poll-meeting-vote-form--box{ng-value:1}
+      %poll_meeting_time{name: "option.name", zone: "zone"}
   %validation_errors{subject: "stance", field: "stanceChoices"}
 
   %poll_common_add_option_button{ng-if: "stance.isNew() && stance.poll().voterCanAddOptions", poll: "stance.poll()"}
