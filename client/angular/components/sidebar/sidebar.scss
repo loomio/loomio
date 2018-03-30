@@ -30,12 +30,15 @@
 .sidebar__list-item-button--subgroup {
   width: 100%;
   margin: 0;
+  padding: 0 15px 0 21px;
   text-transform: none;
-  display: block;
+  display: flex;
   border-radius: 4px;
   text-align: left;
-  padding-left: 53px;
   @include md-body-1;
+  white-space: normal;
+  min-height:30px;
+  font-size: 13px;
 }
 
 .sidebar__list-item-icon {
