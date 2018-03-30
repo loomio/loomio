@@ -1,6 +1,6 @@
 .notifications
   %md-menu{id: "notifications", md-position-mode: "target target", md-offset: "0 48"}
-    %md-button.notifications__button.lmo-flex{ng-click: "toggle($mdMenu)", tabindex: 4}
+    %md-button.notifications__button.lmo-flex{ng-click: "toggle($mdMenu)"}
       .sr-only{translate: "navbar.notifications"}
       %i.mdi.mdi-bell{ng-if: "hasUnread()"}
       %i.mdi.mdi-bell-outline{ng-if: "!hasUnread()"}

@@ -320,6 +320,7 @@ en:
     logo_title: 'Home page'
 
   user_dropdown:
+    button_label: 'User menu'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
     help: 'Help'
@@ -903,7 +904,7 @@ en:
       proposals: Proposals
       proposals_aria_label: Currently showing threads with active proposals
       proposals_description: View only threads with active proposals
-      muted: Muted
+      muted: Muted Threads
       muted_aria_label: Current showing muted threads
       muted_description: View only threads which have been muted
     aria_thread:
