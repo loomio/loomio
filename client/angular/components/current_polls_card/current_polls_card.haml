@@ -1,6 +1,9 @@
 .current-polls-card.lmo-card
   .lmo-flex.lmo-flex__space-between
     %h2.lmo-card-heading.lmo-truncate-text{translate: "current_polls_card.title"}
+    .buh
+      %md-button.md-primary.md-raised{ng-click: "startPoll()"}
+        %span{translate: "polls_page.start_new_poll"}
   %loading{ng-if: "fetchRecordsExecuting"}
   .current-polls-card__polls{ng-if: "!fetchRecordsExecuting"}
     .current-polls-card__no-polls.lmo-hint-text{ng-if: "!polls().length", translate: "current_polls_card.no_polls"}
