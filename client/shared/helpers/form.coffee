@@ -149,7 +149,7 @@ failure = (scope, model, options) ->
 cleanup = (scope, model, options = {}) ->
   ->
     options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
-    EventBus.emit scope, 'doneProcessing'
+    EventBus.emit scope, 'doneProcessing' unless options.skipDoneProcessing
     scope.isDisabled = false
     scope.files = null        if scope.files
     scope.percentComplete = 0 if scope.percentComplete

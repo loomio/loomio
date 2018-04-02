@@ -7,7 +7,7 @@ class API::SessionsController < Devise::SessionsController
       flash[:notice] = t(:'devise.sessions.signed_in')
       render json: BootData.new(user).data
     else
-      render json: { errors: { password: [t(:"devise.failure.invalid")] } }, status: 401
+      render json: { errors: { password: [t(:"user.error.bad_login")] } }, status: 401
     end
     session.delete(:pending_token)
   end
@@ -26,14 +26,21 @@ class API::SessionsController < Devise::SessionsController
       pending_token.user
     elsif pending_invitation
       User.verified.find_by(email: pending_invitation.email)
+    elsif resource_params[:code]
+      login_token_user
     else
       warden.authenticate(scope: resource_name)
     end
   end
 
+  def login_token_user
+    token = LoginToken.find_by(code: resource_params.require(:code))
+    token.user if token&.user&.email == resource_params.require(:email)
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) do |u|
-      u.permit(:email, :password, :remember_me)
+      u.permit(:code, :email, :password, :remember_me)
     end
   end
 
