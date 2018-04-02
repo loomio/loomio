@@ -1,6 +1,7 @@
 .poll-common-vote-form__button {
   border: 1px solid $card-background-color;
-  min-width: 22%;
+  min-width: auto;
+  max-width: calc(25% - 8px) !important;
   overflow: visible;
   white-space: normal;
   img {
