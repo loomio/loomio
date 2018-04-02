@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/gdpelican/ahoy.git
+  remote: https://github.com/gdpelican/ahoy.git
   revision: de4482fd32bbc114a294e121709847d0ac4a1ba5
   branch: user-presence
   specs:
@@ -16,14 +16,14 @@ GIT
       uuidtools
 
 GIT
-  remote: git://github.com/icalendar/icalendar.git
+  remote: https://github.com/icalendar/icalendar.git
   revision: 97ed9d301448350de15da4ba3b2323bd685d358c
   ref: 97ed9d3
   specs:
     icalendar (2.4.1)
 
 GIT
-  remote: git://github.com/loomio/custom_counter_cache.git
+  remote: https://github.com/loomio/custom_counter_cache.git
   revision: 7a4ed2c70c6a00cbee468d81295bdb3d4a86f2a7
   branch: rails5
   specs:
@@ -31,14 +31,14 @@ GIT
       rails (>= 4.0)
 
 GIT
-  remote: git://github.com/loomio/griddler-mailin.git
+  remote: https://github.com/loomio/griddler-mailin.git
   revision: 5a1d1ea7612308b8d3890b1c6d7a51c5b485498c
   specs:
     griddler-mailin (0.0.1)
       griddler
 
 GIT
-  remote: git://github.com/loomio/griddler.git
+  remote: https://github.com/loomio/griddler.git
   revision: 52cfe124f0edf588f0e9f84fbc762e464384f67c
   specs:
     griddler (1.3.1)
@@ -46,7 +46,7 @@ GIT
       rails (>= 3.2.0)
 
 GIT
-  remote: git://github.com/loomio/twitter-text.git
+  remote: https://github.com/loomio/twitter-text.git
   revision: 0931cb3782bf32023e7ff05282a46023718f42fe
   specs:
     twitter-text (1.14.7)
@@ -239,7 +239,7 @@ GEM
       activerecord (>= 4.0.0)
     gemrat (0.4.6)
       colored (= 1.2)
-    geocoder (1.4.5)
+    geocoder (1.4.7)
     get_process_mem (0.2.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
