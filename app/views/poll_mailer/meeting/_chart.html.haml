@@ -8,14 +8,17 @@
     - @info.poll.stances.latest.each do |stance|
       %tr
         %td.poll-mailer-meeting__participant-name= stance.participant.name
-        -# TODO: this can be done more efficiently
         - @info.poll_options.each do |option|
-          - if stance.stance_choices.find_by(poll_option:option)&.score.to_i == 0
-            %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--inactive
-          - elsif stance.stance_choices.find_by(poll_option:option)&.score.to_i == 1
-            %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--maybe -
-          - else
-            %td.poll-mailer-meeting__check-cell.poll-mailer-meeting__cell--active ✓
+          %td.poll-mailer-meeting__check-cell
+            -# TODO: this can be done more efficiently
+            - case stance.stance_choices.find_by(poll_option:option)&.score.to_i
+            - when 0
+              = image_tag "poll_mailer/vote-icon-disagree.png", alt: "disagree icon"
+            - when 1
+              = image_tag "poll_mailer/vote-icon-abstain.png", alt: "abstain icon"
+            - when 2
+              = image_tag "poll_mailer/vote-icon-agree.png", alt: "agree icon"
+
     %tr
       %td= t(:"poll_meeting_chart_legend.can_attend")
       - @info.poll.meeting_score_tallies.each do |option, tally|

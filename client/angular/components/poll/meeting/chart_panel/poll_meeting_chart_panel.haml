@@ -5,7 +5,7 @@
         %td
           %time_zone_select
         %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
-          %poll_meeting_time{name: "option.name", zone: "zone"}
+          %poll_meeting_time.lmo-flex--column{name: "option.name", zone: "zone"}
     %tbody
       %tr.poll-meeting-chart-panel__bold
         %td
