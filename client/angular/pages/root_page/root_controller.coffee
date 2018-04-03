@@ -15,7 +15,12 @@ IntercomService = require 'shared/services/intercom_service.coffee'
 { setupAngular }                                 = require 'angular/setup.coffee'
 
 $controller = ($scope, $injector) ->
+  $scope.theme  = AppConfig.theme
+  $scope.assets = AppConfig.assets
   setupAngular($scope, $injector)
+
+  Records.boot.remote.get('user').then (response) ->
+    signIn(response, response.current_user_id, $scope.loggedIn)
 
   $scope.warnDeprecation  = deprecatedBrowser()
   $scope.currentComponent = 'nothing yet'
@@ -42,7 +47,6 @@ $controller = ($scope, $injector) ->
     $scope.links = options.links or {}
     setCurrentComponent(options)
 
-  signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
   initLiveUpdate()
 
   return

@@ -28,11 +28,6 @@ angular.module('loomioApp').directive 'flash', ['$interval', ($interval) ->
       else
         'assertive'
 
-    FlashService.success AppConfig.flash.success if AppConfig.flash.success?
-    FlashService.info    AppConfig.flash.notice  if AppConfig.flash.notice?
-    FlashService.warning AppConfig.flash.warning if AppConfig.flash.warning?
-    FlashService.error   AppConfig.flash.error   if AppConfig.flash.error?
-
     return
   ]
 ]
