@@ -18,7 +18,7 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
       $scope.stanceValuesMap = _.fromPairs(_.map( choices, (choice)-> ([choice.pollOptionId, choice.score||0])))
 
       $scope.canRespondMaybe = $scope.stance.poll().customFields.can_respond_maybe
-      $scope.stanceValues = if $scope.canRespondMaybe then [0,1,2] else [0, 2]
+      $scope.stanceValues = if $scope.canRespondMaybe then [2,1,0] else [2, 0]
 
     $scope.selectedColor = (option, score) ->
       buttonStyle(score == $scope.stanceValuesMap[option.id])
