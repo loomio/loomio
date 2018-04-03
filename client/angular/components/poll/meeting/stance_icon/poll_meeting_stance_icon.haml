@@ -1,2 +1,3 @@
-.poll-meeting-stance-icon.lmo-margin-right{ng-class:"{'poll-meeting-stance-icon--yes': score==2, 'poll-meeting-stance-icon--maybe': score==1}"}
-  %i.mdi{ng-class:"{'mdi-minus': score==1,'mdi-check': score==2}"}
+.poll-meeting-stance-icon.lmo-margin-right{ng-switch: "score", ng-class:"{'poll-meeting-stance-icon--yes': score==2, 'poll-meeting-stance-icon--maybe': score==1}"}
+  %img.poll-common-form__icon{ng-src: "/img/maybe.svg", ng-switch-when: "1"}
+  %img.poll-common-form__icon{ng-src: "/img/yes.svg", ng-switch-when: "2"}

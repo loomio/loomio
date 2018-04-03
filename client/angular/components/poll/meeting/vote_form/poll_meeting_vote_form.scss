@@ -9,6 +9,7 @@ $box-width:60px;
 }
 
 .poll-meeting-vote-form--box {
+  border: 2px solid $card-background-color;
   min-width: $box-width;
   width: $box-width;
   line-height: normal;

@@ -1,11 +1,7 @@
 .poll-common-action-panel
   %section{ng-if: "!poll.closedAt"}
     .md-block{ng-if: "userHasVoted()"}
-      .poll-common-action-panel__change-your-vote
-        %h3.lmo-card-subheading{translate: "poll_common.your_response"}
-        %poll_common_directive{stance_choice: "choice", name: "stance_choice", ng-if: "choice.id && choice.score > 0", ng-repeat: "choice in stance.stanceChoices() | orderBy: 'rank'"}
-        .md-actions.lmo-md-actions
-          %md-button.md-accent{ng-click: "openStanceForm()", translate: "poll_common.change_your_stance", aria-label: "{{ 'poll_common.change_your_stance' | translate }}"}
+      %poll_common_directive{stance: "stance", name: "change_your_vote"}
     .md-block{ng-show: "!userHasVoted()"}
       %poll_common_directive{ng-if: "userCanParticipate()", stance: "stance", name: "vote_form"}
       .poll-common-unable-to-vote{ng-if: "!userCanParticipate()"}
