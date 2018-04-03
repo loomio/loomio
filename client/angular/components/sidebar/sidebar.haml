@@ -30,7 +30,7 @@
           %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}"}
           %span {{group.name}}
         %md_button.sidebar__list-item-button--subgroup{href: "", lmo-href: "{{groupUrl(group)}}", ng-if: "!group.isParent()", ng-class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
-          %md_avatar_icon.sidebar__list-item-icon.mdi.mdi-subdirectory-arrow-right
+          %md_avatar_icon.sidebar__list-item-icon.mdi.mdi-chevron-right
           %span {{group.name}}
         .sidebar__list-item-padding
       %md_list_item{ng-if: "canViewPublicGroups()"}
