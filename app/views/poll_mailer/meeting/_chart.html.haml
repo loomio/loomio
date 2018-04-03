@@ -3,7 +3,10 @@
     %tr
       %td
       - @info.poll_options.each do |option|
-        %td.poll-mailer-meeting__cell= option.display_name(zone: @info.time_zone)
+        %td.poll-mailer-meeting__cell
+          %div= @info.display_time option.name, @info.time_zone
+          %div= @info.display_day  option.name, @info.time_zone
+          %div= @info.display_date option.name, @info.time_zone
   %tbody
     - @info.poll.stances.latest.each do |stance|
       %tr
