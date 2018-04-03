@@ -390,7 +390,6 @@ ca:
     daily_summary_label: Correu electrònic de resum diari
     on_participation_label: Subscriure a la participació
     mentioned_label: Mencions
-    mentioned_description: "Quan algú vulgui cridar la vostra atenció, us @mencionarà. Recomanem deixar activada aquesta opció, per a rebre un correu electrònic quan això passi."
     specific_groups: Configuració per grups específics
     default_settings:
       loud_description: "Quan us uniu a un grup nou, rebre un correu electrònic <strong>cada cop que hi hagi activitat</strong>."

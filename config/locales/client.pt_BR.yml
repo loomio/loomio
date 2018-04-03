@@ -207,19 +207,19 @@ pt_BR:
     aria_label: Fechar discussão
     close_thread: Fechar discussão
     body_header: |
-      <p>Fechar discussões antigas ou irrelevantes para removê-las da visualização e indicar que a discussão foi fechada.</p>
+        <p>Fechar discussões antigas ou irrelevantes para removê-las da visualização e indicar que a discussão foi fechada.</p>
   mute_explanation_modal:
     aria_label: Silenciar tópico
     mute_thread: Calar tópico
     body_html: |
-      <p>Silenciar significa que você <strong>não será notificado sobre propostas</strong>, ou qualquer outra atividade neste tópico, a menos que alguém  <strong>@mencione você</strong>.</p>
-      <p>Tópicos silenciados estão ocultados das páginas <strong>Recentes</strong> e <strong>Não-lidos</strong> também. Para encontrar os seus tópicos silenciados, selecione a opção <strong>Silenciados</strong> na barra lateral:</p>
+        <p>Silenciar significa que você <strong>não será notificado sobre propostas</strong>, ou qualquer outra atividade neste tópico, a menos que alguém  <strong>@mencione você</strong>.</p>
+        <p>Tópicos silenciados estão ocultados das páginas <strong>Recentes</strong> e <strong>Não-lidos</strong> também. Para encontrar os seus tópicos silenciados, selecione a opção <strong>Silenciados</strong> na barra lateral:</p>
     image_alt: Opção de tópicos silenciados na barra lateral
   dismiss_explanation_modal:
     aria_label: Dispensar tópico
     dismiss_thread: Dispensar tópico
     body_html: |
-      <p>Ao dispensar um tópico, o mesmo é removido dos itens não-lidos. Caso ocorra qualquer nova atividade no tópico, o mesmo será novamente marcado como não-lido.</p>
+        <p>Ao dispensar um tópico, o mesmo é removido dos itens não-lidos. Caso ocorra qualquer nova atividade no tópico, o mesmo será novamente marcado como não-lido.</p>
   inbox:
     clear: 'Limpar'
     latest: 'Último'
@@ -665,7 +665,6 @@ pt_BR:
     on_participation_label: Inscrever-se na participação
     on_participation_description: "Quando você participar de uma discussão, todas as atividades serão enviadas por e-mail para você imediatamente."
     mentioned_label: Menções
-    mentioned_description: "Quando alguém quer chamar sua atenção, vai @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer."
     update_settings: Salvar mudanças
     specific_groups: Configurações para grupos específicos
     default_settings:
@@ -694,9 +693,9 @@ pt_BR:
     explain_mute:
       title: Você ainda não silenciou nenhum tópico.
       explanation_html: |
-        Silenciar é uma forma de ocultar os tópicos que não te interessam.
-        Silenciar significa que você não verá o tópico em <strong>Recentes</strong> ou <strong>Não-lidos</strong>, e você não será notificado sobre as atividades deste tópico, como propostas.
-        Você somente será alertado se alguém  <strong>@mencionar</strong> o seu nome.
+          Silenciar é uma forma de ocultar os tópicos que não te interessam.
+          Silenciar significa que você não verá o tópico em <strong>Recentes</strong> ou <strong>Não-lidos</strong>, e você não será notificado sobre as atividades deste tópico, como propostas.
+          Você somente será alertado se alguém  <strong>@mencionar</strong> o seu nome.
       instructions: 'Para silenciar um tópico, passe o mouse sobre ele e clique no ícone silenciar.'
       see_muted_html: 'Para ver seus tópicos silenciados, clique <strong>"Silenciado"</strong>. Você pode ativar o som passando o mouse sobre e clicando no mesmo ícone.'
     filtering:
@@ -905,6 +904,8 @@ pt_BR:
   poll_common:
     your_response: Sua resposta
     change_your_response: Modifique sua resposta
+    reason: Motivo
+    reason_placeholder: Algum comentário a mais?
     message: Mensagem
     results: Resultados
     vote: Votar
@@ -934,6 +935,8 @@ pt_BR:
     proposal_closed: Proposta encerrada
   poll_common_closing_at_field:
     closing: Encerrando
+  poll_card:
+    started_by: Iniciado por {{name}}
   poll_common_votes_panel:
     change_results_order: Mudar ordem dos resultados
   poll_common_set_outcome_panel:

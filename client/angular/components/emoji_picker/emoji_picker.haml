@@ -1,7 +1,7 @@
 %md-menu.emoji-picker{ng-class: "{'emoji-picker--reaction': reaction}"}
   %button.md-button--nude.emoji-picker__toggle.lmo-flex{type: "button", tabindex: "-1", ng-click: "toggleMenu($mdMenu, $event)"}
-    %i.mdi.mdi-face
-    %i.mdi.mdi-plus.lmo-helper-icon{ng-if: "reaction"}
+    %i.mdi.mdi-emoticon
+    -# %i.mdi.mdi-plus.lmo-helper-icon{ng-if: "reaction"}
   %md-menu-content.emoji-picker__menu
     %md-input-container.md-block.md-no-errors.emoji-picker__search{ng-if: "!reaction"}
       %label

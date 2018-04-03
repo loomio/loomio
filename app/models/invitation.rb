@@ -81,6 +81,10 @@ class Invitation < ApplicationRecord
     token
   end
 
+  def message_channel
+    "invitation-#{token}"
+  end
+
   def mailer
     case intent.to_sym
     when :join_group               then GroupMailer

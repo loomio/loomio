@@ -33,12 +33,5 @@ gulp.task 'compile',     (done) -> sequence('angular:external', 'bundle:prod', -
 
 gulp.task 'watch', require('./tasks/watch')
 
-gulp.task 'nightwatch:core', e2e.nightwatch.core
-# nightwatch:plugins?
-gulp.task 'nightwatch:now', (done) -> sequence('nightwatch:core', -> done())
-gulp.task 'nightwatch',     (done) -> sequence('angular:bundle:dev', 'nightwatch:now', -> done())
-
-gulp.task 'protractor:core',    e2e.protractor.core
-gulp.task 'protractor:plugins', e2e.protractor.plugins
-gulp.task 'protractor:now', (done) -> sequence('protractor:core', 'protractor:plugins', -> done())
-gulp.task 'protractor',     (done) -> sequence('angular:bundle:dev', 'protractor:now', -> done())
+gulp.task 'nightwatch:core',        e2e.nightwatch.core
+gulp.task 'nightwatch:plugins',     e2e.nightwatch.plugins

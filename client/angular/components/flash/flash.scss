@@ -56,12 +56,8 @@
   }
 }
 
-.flash-root__message {
-  padding-right: 10px;
-}
-
 .flash-root__action {
-  padding-left: 10px;
+  padding-left: 12px;
   border-left: 2px solid white;
   font-weight: bold;
   text-transform: uppercase;
@@ -71,10 +67,6 @@
 .flash-root__action a {
   color: white;
   cursor: pointer;
-}
-
-.flash-root__message .page-loading {
-  padding: 0;
 }
 
 .flash-root__container.ng-hide-add    { animation:0.7s fadeOut ease-in; }

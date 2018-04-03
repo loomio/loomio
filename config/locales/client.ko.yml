@@ -454,7 +454,6 @@ ko:
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
     mentioned_label: 말하기
-    mentioned_description: "누군가 당신과 이야기하고 싶을 경우 @언급할 겁니다. 사람들이 언급할 때마다 이메일을 받게 되기 때문에 사용하는게 좋습니다."
     specific_groups: 특별한 그룹에 적용
     default_settings:
       loud_description: "새로운 그룹에 참여하면, 당신은 <strong>행동이 있을 때마다</strong>이메일을 받을 수 있습니다."

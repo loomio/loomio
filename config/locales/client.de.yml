@@ -176,7 +176,7 @@ de:
     aria_label: Diskussion ausblenden
     dismiss_thread: Diskussion ausblenden
     body_html: |
-      <p>Wird eine Diskussion ausgeblendet, wird sie aus der Übersicht der ungelesenen Diskussionen entfernt. Erst bei neuen Aktivitäten wird die Diskussion wieder als ungelesen angezeigt.</p>
+        <p>Wird eine Diskussion ausgeblendet, wird sie aus der Übersicht der ungelesenen Diskussionen entfernt. Erst bei neuen Aktivitäten wird die Diskussion wieder als ungelesen angezeigt.</p>
   inbox:
     clear: 'Leeren'
     latest: 'Letzte'
@@ -262,7 +262,6 @@ de:
     new_vote: "<strong>{{name}}</strong> {{position}} zum Vorschlag <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> hat einen Kommentar verfasst in <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> hat auf deinen Kommmentar in <strong>{{title}}</strong> geantwortet"
-    reaction_created: "<strong>{{name}}</strong> hat mit <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> auf deinen Kommentar in <strong>{{title}}</strong> reagiert"
     user_mentioned: "<strong>{{name}}</strong> hat dich in <strong>{{title}}</strong> erwähnt"
     user_reminded: "<strong>{{name}}</strong> wartet darauf, dass du an <strong>{{title}}</strong> teilnimmst"
     membership_requested: "<strong>{{name}}</strong> hat die Mitliedschaft in <strong>{{title}}</strong> beantragt"
@@ -617,7 +616,6 @@ de:
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
     on_participation_description: "Wenn Du Dich an einer Diskussion beteiligst, wirst Du zukünftig automatisch über alle Aktivitäten per E-Mail informiert."
     mentioned_label: Erwähnungen
-    mentioned_description: "Wenn jemand deine Aufmerksamkeit haben möchte, wird man dich entsprechend @erwähnen. Wir empfehlen, diese Einstellung aktiviert zu lassen, damit du per E-Mail informiert wirst, wenn dich jemand erwähnt."
     update_settings: Änderungen speichern
     specific_groups: Einstellungen für einzelne Gruppen
     default_settings:
@@ -936,11 +934,11 @@ de:
     update: Aktualisieren
   poll_proposal_form:
     tool_tip_expanded: |
-      <p>Ein Vorschlag ist ein Werkzeug, um die Zustimmung für ein Statement oder eine Handlungsoption einzuholen.</p>
-      <p>Teilnehmer können zustimmen, ablehnen, sich enthalten oder ein Veto einlegen - und ihre Abstimmungsposition auch entsprechend begründen.</p>
-      <p>Ein Kuchendiagramm zeigt die verschiedenen Abstimmungspositionen in der Gruppe übersichtlich an, während durch die Abstimmungsbegründungen auch einzelne Meinungen nicht unter den Tisch fallen und gehört werden. </p>
-      <p>Lass dich nicht entmutigen, wenn es zunächst nicht zu einer Einigung kommt, Vorschläge sind dafür vorgesehen, Diskussionspunkte in den Fokus zu rücken, die einer Klärung bedürfen.</p>
-      <p>Mit einer ausreichend großen Abstimmungsbeteiligung ist ein Vorschlag somit ein mächtiges Werkzeug, um der Abstimmung im nächsten Schritt Handlungen und Tagen folgen zu lassen.</p>
+        <p>Ein Vorschlag ist ein Werkzeug, um die Zustimmung für ein Statement oder eine Handlungsoption einzuholen.</p>
+        <p>Teilnehmer können zustimmen, ablehnen, sich enthalten oder ein Veto einlegen - und ihre Abstimmungsposition auch entsprechend begründen.</p>
+        <p>Ein Kuchendiagramm zeigt die verschiedenen Abstimmungspositionen in der Gruppe übersichtlich an, während durch die Abstimmungsbegründungen auch einzelne Meinungen nicht unter den Tisch fallen und gehört werden. </p>
+        <p>Lass dich nicht entmutigen, wenn es zunächst nicht zu einer Einigung kommt, Vorschläge sind dafür vorgesehen, Diskussionspunkte in den Fokus zu rücken, die einer Klärung bedürfen.</p>
+        <p>Mit einer ausreichend großen Abstimmungsbeteiligung ist ein Vorschlag somit ein mächtiges Werkzeug, um der Abstimmung im nächsten Schritt Handlungen und Tagen folgen zu lassen.</p>
     tool_tip_collapsed: Gemeinschaftlich abstimmen
     title_placeholder: z. B. Lasst uns zum Mond fliegen!
   poll_poll_form:

@@ -18,6 +18,20 @@ class PollService
     Events::PollClosedByUser.publish!(poll, actor)
   end
 
+  def self.reopen(poll:, params:, actor:)
+    actor.ability.authorize! :reopen, poll
+
+    poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil)
+    return false unless poll.valid?
+
+    poll.save!
+    poll.poll_did_not_votes.delete_all
+    poll.update_undecided_user_count
+
+    EventBus.broadcast('poll_reopen', poll, actor)
+    Events::PollReopened.publish!(poll, actor)
+  end
+
   def self.publish_closing_soon
     hour_start = 1.day.from_now.at_beginning_of_hour
     hour_finish = hour_start + 1.hour

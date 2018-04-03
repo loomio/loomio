@@ -4,5 +4,5 @@ angular.module('loomioApp').directive 'translation', ->
   templateUrl: 'generated/components/translation/translation.html'
   replace: true
   controller: ['$scope', ($scope) ->
-    $scope.translated = $scope.translation[$scope.field]
+    $scope.translated = $scope.model.translation[$scope.field]
   ]

@@ -52,5 +52,9 @@ module Ability::Poll
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
     end
 
+    can :reopen, ::Poll do |poll|
+      poll.closed? && can?(:update, poll)
+    end
+
   end
 end

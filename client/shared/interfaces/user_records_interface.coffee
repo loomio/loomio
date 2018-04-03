@@ -19,7 +19,7 @@ module.exports = class UserRecordsInterface extends BaseRecordsInterface
   saveExperience: (experience) =>
     @remote.post 'save_experience', experience: experience
 
-  emailStatus: (email) ->
+  emailStatus: (email, token) ->
     @fetch
       path: 'email_status'
-      params: {email: email}
+      params: _.pick {email: email, token: token}, _.identity

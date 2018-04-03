@@ -145,14 +145,14 @@ da:
     aria_label: Slå notifikationer fra
     mute_thread: Slå notifikationer fra
     body_html: |
-      <p>Slå notifikationer fra betyder at du <strong>ikke vil modtage notifikationer om forslag</strong>, eller om nogen anden aktivitet i denne debat, med mindre at nogen <strong>@mentions dig</strong>.</p>
-      <p>Debatter hvor notifikationer er slået fra er også skjult fra <strong>Seneste</strong> og <strong>Ulæst</strong> siderne. For at finde dine better hvor notifikationer er slået fra, vælg <strong>Uden notifikationer</strong> menuen i siden:</p>
+        <p>Slå notifikationer fra betyder at du <strong>ikke vil modtage notifikationer om forslag</strong>, eller om nogen anden aktivitet i denne debat, med mindre at nogen <strong>@mentions dig</strong>.</p>
+        <p>Debatter hvor notifikationer er slået fra er også skjult fra <strong>Seneste</strong> og <strong>Ulæst</strong> siderne. For at finde dine better hvor notifikationer er slået fra, vælg <strong>Uden notifikationer</strong> menuen i siden:</p>
     image_alt: Uden notifikationer i menuen i siden
   dismiss_explanation_modal:
     aria_label: Afvis debat
     dismiss_thread: Afvis debat
     body_html: |
-      <p>Ved at afvise en debat så fjerner du den også fra din ulæste liste. Hvis en ny aktivitet sker i debatten, så vil den blive vist i din ulæste liste igen.</p>
+        <p>Ved at afvise en debat så fjerner du den også fra din ulæste liste. Hvis en ny aktivitet sker i debatten, så vil den blive vist i din ulæste liste igen.</p>
   inbox:
     clear: 'Ryd'
     latest: 'Seneste'
@@ -567,7 +567,6 @@ da:
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
     mentioned_label: Mentions
-    mentioned_description: "Når nogen øsnker at få din opmærksomhed, så vil de @mention dig. Vi anbefaler at du lader dette være slået til, så at du vil modtage en email når dette sker."
     update_settings: Gem ændringer
     specific_groups: Indstillinger for specifikke grupper
     default_settings:
@@ -596,9 +595,9 @@ da:
     explain_mute:
       title: Det har ikke slået notifikationer fra på nogen debatter endnu.
       explanation_html: |
-        At slå notifikationer fra på en debat er en måde at skjule debatter på
-        At slå notifikationer fra på en debat betyder at du ikke vil se debatten under <strong>Seneste</strong> eller <strong>Ulæste</strong>, og du vil ikke modtage notifikationer om aktivitet i deb debat, f.eks. så som forslag.
-        Du vil kun modtage en notifikation hvis nogen <strong>@mentions</strong> dit navn.
+          At slå notifikationer fra på en debat er en måde at skjule debatter på
+          At slå notifikationer fra på en debat betyder at du ikke vil se debatten under <strong>Seneste</strong> eller <strong>Ulæste</strong>, og du vil ikke modtage notifikationer om aktivitet i deb debat, f.eks. så som forslag.
+          Du vil kun modtage en notifikation hvis nogen <strong>@mentions</strong> dit navn.
       instructions: 'For at slå notifikationer fra for en debat, hold musen henover debatten og klik på "lydløs" ikonet.'
       see_muted_html: 'For at se dine debatter hvor notifikationer er slået fra, klik <strong>"Uden notifikationer"</strong>. Du kan slå notifikationer til ved at holde musen henover debatten og klik på det samme ikon.'
     filtering:

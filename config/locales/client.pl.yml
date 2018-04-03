@@ -312,7 +312,6 @@ pl:
   email_settings_page:
     header: Ustawienia poczty
     daily_summary_label: Dzienna wiadomość z podsumowaniem
-    mentioned_description: "Kiedy ktoś chce zwrócić Twoją uwagę, użyje mechanizmu @wzmianki. Rekomendujemy pozostawić to włączone, abyś otrzymał/a maila kiedy to nastąpi."
     messages:
       updated: Ustawienia poczty zmienione
   dashboard_page:

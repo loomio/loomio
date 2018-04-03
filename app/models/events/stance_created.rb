@@ -21,6 +21,13 @@ class Events::StanceCreated < Event
     User.active.verified.find_by(email: eventable.participant.email) || eventable.participant
   end
 
+  def notification_translation_values
+    {
+      name: eventable.participant_for_client.name,
+      title: eventable.poll.title
+    }
+  end
+
   def notification_url
     @notification_url ||= polymorphic_url(eventable.poll)
   end

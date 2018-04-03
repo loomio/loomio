@@ -196,6 +196,7 @@ module.exports = new class AbilityService
   canTranslate: (model) ->
     AppConfig.inlineTranslation.isAvailable? and
     _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
+    !model.translation and
     Session.user().locale != model.author().locale
 
   canSubscribeToPoll: (poll) ->
@@ -224,3 +225,6 @@ module.exports = new class AbilityService
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)
+
+  canReopenPoll: (poll) ->
+    poll.isClosed() and @canAdministerPoll(poll)

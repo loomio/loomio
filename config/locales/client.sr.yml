@@ -381,7 +381,6 @@ sr:
     on_participation_label: Pretplati se na učešće
     on_participation_description: "Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom."
     mentioned_label: Pominjanja
-    mentioned_description: "Kada neko želi da Vam skrene pažnju, @pomenuće Vas. Preporučujemo da ostavite ovo uključeno, tako da dobijete jednu ePoruku kada se ovo dogodi."
     specific_groups: Opcije određenih grupa
     default_settings:
       loud_description: "Kada se pridružite novoj grupi, bićete obavešteni ePorukom <strong>kada god bude aktivnosti u njoj</strong>."
