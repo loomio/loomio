@@ -47,7 +47,7 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
     ,
       name: 'translate_thread'
       icon: 'mdi-translate'
-      canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
+      canPerform: -> AbilityService.canTranslate($scope.discussion)
       perform:    -> $scope.discussion.translate(Session.user().locale)
     ,
       name: 'add_comment'

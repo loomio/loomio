@@ -1,0 +1,16 @@
+.poll-common-vote-form__button {
+  border: 1px solid $card-background-color;
+  min-width: auto;
+  max-width: calc(25% - 8px) !important;
+  overflow: visible;
+  white-space: normal;
+  img {
+    width: 80px;
+    padding: 8px;
+  }
+  @media (max-width: $tiny-max-px) {
+    margin: 0;
+    min-width: 64px !important;
+    img { width: 64px; }
+  }
+}

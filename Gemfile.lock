@@ -126,9 +126,9 @@ GEM
     awesome_print (1.8.0)
     bcrypt (3.1.11)
     benchmark-ips (2.7.2)
-    bing_translator (5.1.0)
+    bing_translator (5.2.0)
       json (~> 1.8.0)
-      nokogiri (~> 1.8.1)
+      nokogiri (>= 1.6.0, < 1.9.0)
       savon (~> 2.10.0)
     bootsnap (1.1.8)
       msgpack (~> 1.0)
@@ -273,7 +273,7 @@ GEM
     http_accept_language (2.1.1)
     httparty (0.15.7)
       multi_xml (>= 0.5.2)
-    httpi (2.4.2)
+    httpi (2.4.3)
       rack
       socksify
     i18n (0.9.5)
@@ -522,6 +522,8 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    timber (2.6.1)
+      msgpack (~> 1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.6)
@@ -561,7 +563,7 @@ DEPENDENCIES
   ahoy_matey!
   autoprefixer-rails
   awesome_print
-  bing_translator (~> 5.1.0)
+  bing_translator (~> 5.2.0)
   bootsnap
   browser (~> 2.3.0)
   bullet
@@ -631,6 +633,7 @@ DEPENDENCIES
   spring-commands-rspec
   sprockets-rails
   stackprof
+  timber (~> 2.6)
   twitter-text!
   uglifier
   webmock

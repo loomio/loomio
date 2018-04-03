@@ -11,7 +11,6 @@ module.exports = {
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
@@ -56,7 +55,6 @@ module.exports = {
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
@@ -83,7 +81,6 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.click('.auth-signin-form__login-link')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
@@ -100,7 +97,7 @@ module.exports = {
     page.expectText('.flash-root__message', 'Signed in successfully')
   },
 
-  'can login from the dashboard': (test) => {
+  'can_login_from_the_dashboard': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_as_visitor')
@@ -108,7 +105,6 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.click('.auth-signin-form__submit')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
@@ -152,7 +148,6 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.click('.auth-signin-form__submit')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
