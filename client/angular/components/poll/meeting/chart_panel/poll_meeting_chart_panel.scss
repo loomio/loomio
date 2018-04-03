@@ -8,20 +8,21 @@
   height: 40px;
 }
 
-.poll-meeting-chart-panel--inactive {
-  background: #D8D8D8;
+.poll-meeting-chart-panel .lmo-h3 {
+  margin-bottom: 0;
 }
 
-.poll-meeting-chart-panel--active {
-  background: #70C9F8;
-}
-
-.poll-meeting-chart-panel--maybe {
-  background: lighten(#70C9F8, 20%);
+.poll-meeting-chart-panel__cell--no-padding {
+  padding: 0;
 }
 
 .poll-meeting-chart-panel__participant-name {
   padding-right: 16px;
+}
+
+.poll-meeting-chart-panel__total-icon {
+  margin-left: 4px;
+  margin-right: 12px;
 }
 
 .poll-meeting-chart-panel__bold {

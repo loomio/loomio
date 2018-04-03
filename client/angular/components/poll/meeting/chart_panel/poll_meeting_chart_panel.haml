@@ -7,20 +7,29 @@
         %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
           %poll_meeting_time{name: "option.name", zone: "zone"}
     %tbody
-      %tr{ng-repeat: "stance in poll.latestStances() track by stance.id"}
-        %td.poll-meeting-chart-panel__participant-name {{ stance.participant().name }}
-        %td.poll-meeting-chart-panel__cell{ng-class: "{'poll-meeting-chart-panel--active': stance.scoreFor(option)==2, 'poll-meeting-chart-panel--inactive': stance.scoreFor(option)==0,  'poll-meeting-chart-panel--maybe': stance.scoreFor(option)==1}", ng-repeat: "option in poll.pollOptions() | orderBy: 'name' track by option.id"}
-          %i.mdi.mdi-check{ng-if: "stance.scoreFor(option)==2"}
-          %i.mdi.mdi-minus{ng-if: "stance.scoreFor(option)==1"}
       %tr.poll-meeting-chart-panel__bold
-        %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel--active.lmo-flex--row.lmo-flex__center.lmo-flex__space-around
+        %td
+          %h3.lmo-h3{translate: "poll_common.responses"}
+      %tr{ng-repeat: "stance in poll.latestStances() track by stance.id"}
+        %td.lmo-flex.lmo-flex__center.poll-meeting-chart-panel__participant-name.poll-meeting-chart-panel__bold
+          %user_avatar.lmo-margin-right--small{size: "small", user: "stance.participant()"}
+          .lmo-truncate {{ stance.participant().name }}
+        %td.poll-meeting-chart-panel__cell{ng-switch: "stance.scoreFor(option)", ng-class: "{'poll-meeting-chart-panel--yes': stance.scoreFor(option)==2, 'poll-meeting-chart-panel--no': stance.scoreFor(option)==0,  'poll-meeting-chart-panel--maybe': stance.scoreFor(option)==1}", ng-repeat: "option in poll.pollOptions() | orderBy: 'name' track by option.id"}
+          %img.poll-common-form__icon{ng-switch-when: "0", ng-src: "/img/no.svg"}
+          %img.poll-common-form__icon{ng-switch-when: "1", ng-src: "/img/maybe.svg"}
+          %img.poll-common-form__icon{ng-switch-when: "2", ng-src: "/img/yes.svg"}
+      %tr.poll-meeting-chart-panel__bold
+        %td
+          %h3.lmo-h3{translate: "poll_common.totals"}
+      %tr.poll-meeting-chart-panel__bold
+        %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel__cell--no-padding.poll-meeting-chart-panel--active.lmo-flex--row.lmo-flex__center
+          %img.poll-common-form__icon.poll-meeting-chart-panel__total-icon{ng-src: "/img/yes.svg"}
           %span{translate:"poll_meeting_chart_legend.can_attend"}
-          %i.mdi.mdi-check
         %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel--active{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
           {{ totalFor(option)[2]}}
      %tr.poll-meeting-chart-panel__bold{ng-if:"hasMaybeVotes()"  }
-       %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel--maybe.lmo-flex--row.lmo-flex__center.lmo-flex__space-around
+       %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel__cell--no-padding.lmo-flex--row.lmo-flex__center
+         %img.poll-common-form__icon.poll-meeting-chart-panel__total-icon{ng-src: "/img/maybe.svg"}
          %span{translate:"poll_meeting_chart_legend.maybe_attend"}
-         %i.mdi.mdi-minus
        %td.poll-meeting-chart-panel__cell.poll-meeting-chart-panel--maybe{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
          {{ totalFor(option)[1]}}

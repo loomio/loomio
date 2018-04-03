@@ -1246,6 +1246,8 @@ en:
     reason_placeholder: Any additional comments?
     message: Message
     results: Results
+    responses: Responses
+    totals: Totals
     vote: Vote
     votes: Votes
     update_outcome: Update outcome
