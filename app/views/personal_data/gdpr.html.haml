@@ -1,23 +1,23 @@
-
+%h1 Loomio and the GDPR
 %p
-  This page describes Loomio's handling of your personal data, with a particular attention paid to the requirements of the
+  This page describes Loomio's handling of your personal data in the context of the
   %a{href: "https://www.eugdpr.org/"} EU GDPR.
 
-%section.under-development
-  %h2 under development and seeking input from experts and users
-  Please contact rob@loomio.org if you wish to have input on our efforts in this area.
 
+%section.under-development
   %h2 Key references used when putting this together
   %ul
     %li
-      %a{href: "http://www.dataprotectionpeople.com/what-is-personal-data/"}
-        http://www.dataprotectionpeople.com/what-is-personal-data/
+      %a{href: "http://www.dataprotectionpeople.com/what-is-personal-data/"} http://www.dataprotectionpeople.com/what-is-personal-data/
     %li
       %a{href: "https://www.eugdpr.org/"} https://www.eugdpr.org/
     %li
       %a{href: "https://sendgrid.com/blog/the-gdpr-is-coming-how-to-prepare/"} https://sendgrid.com/blog/the-gdpr-is-coming-how-to-prepare/
     %li
       %a{href: "https://techblog.bozho.net/gdpr-practical-guide-developers/"} https://techblog.bozho.net/gdpr-practical-guide-developers/
+
+    %li
+      %a{href: "https://www.whitecase.com/publications/article/chapter-5-key-definitions-unlocking-eu-general-data-protection-regulation"} Useful definitions of terms
 
 %section.intro-gdpr
   %h2 Key principles of GDPR.
@@ -27,22 +27,11 @@
     %li Personal data held needs to be kept up to date and accurate. It should be held no longer than necessary to fulfill its purpose.
     %li EU citizens have the right to access their own personal data. They can also request a copy of their data, and that their data be updated, deleted, restricted, or moved to another organization without hinderance.
     %li All personal data needs to be kept safe and secure, and companies undertaking certain types of activities are required to appoint a data protection officer.
-
-  %h2 User rights under the GDPR
-  %p The rights of the user/client (referred to as “data subject” in the regulation) that are relevant for developers are:
-  %ul
-    %li the right to erasure (the right to be forgotten/deleted from the system),
     %li right to restriction of processing (you still keep the data, but mark it as “restricted” and don’t touch it without further consent by the user),
     %li the right to data portability (the ability to export one’s data in a machine-readable format),
     %li the right to rectification (the ability to get personal data fixed),
     %li the right to be informed (getting human-readable information, rather than long terms and conditions),
     %li the right of access (the user should be able to see all the data you have about them).
-
-  %h2 What is Personal Data?
-  %p Basically, it’s every piece of data that can be used to uniquely identify a person or data that is about an already identified person. It’s data that the user has explicitly provided, but also data that you have collected about them from either 3rd parties or based on their activities on the site (what they’ve been looking at, what they’ve purchased, etc.)
-  %p Personal data is any form of data which can be used to identify an individual, natural person.
-  %p In data protection and privacy law, including the GDPR, it is defined beyond the popular usage in which the term personal data can de facto apply to several types of data which make it able to single out or identify a natural person. In the scope of the GDPR, for instance, it includes data which can lead to the direct or indirect identification of a natural person.
-  %p ‘personal data’ means any information relating to an identified or identifiable natural person (‘data subject’); an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity of that natural person;
 
 %section.intro-loomio
   %h2 About Loomio
@@ -51,9 +40,7 @@
     Loomio is software for people to have discussions and to make decisions together.
     The application is
     %a{href: "https://github.com/loomio/loomio"} free software
-
     %a{href: "https://github.com/loomio/loomio/blob/master/LICENSE.txt"} licenced under the AGPL
-
     developed by the
     %a{href: "/about"} Loomio Cooperative.
 
@@ -63,32 +50,114 @@
 
   %h3 Loomio private managed hosts
   %p
-    Loomio offers a private managed host service to customers. With this
-    service Loomio will setup and manage a Loomio install on the customer's
-    choice of domain name and hosting provider.
+    Loomio offers a private managed host service to customers. With this service Loomio will setup and manage a Loomio install on the customer's choice of domain name and hosting provider.
 
   %p Each instance of Loomio is separate. Signing up to one instance does not sign you up to another, following this rule, you will need to consent per Loomio instance that you wish to use and you will need to withdraw consent per instance that you no longer wish to have process your personal data.
 
+%section.our-partners
+  for each partner we need to identify what we send them, and why.
+
+  %h2 Partners we send data to.
+  > Among other things, data controllers are required to only use data processors that provide sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing will meet the requirements of the GDPR.
+  from https://cloud.google.com/security/gdpr/
+
+  We assert that all data processors used by Loomio to host Loomio.org and our private hosts have sufficient GDPR policies.
+
+  %h2 Intercom
+  %p we use as a CRM and customer support & onboarding tool
+  GDPR statement: https://docs.intercom.com/pricing-privacy-and-terms/data-protection/how-were-preparing-for-gdpr
+  Security page: https://www.intercom.com/security
+
+  %h2 New Relic
+  receives some potentially personal data as a side effect of collecting performance data. they install a javascript and track users by id. (user ids and urls are all I've identified right now)
+  GDPR statement:
+  https://newrelic.com/content/dam/new-relic/resources/white-papers/New%20Relic%20GDPR_FAQ_2017%20_September.pdfs
+  Security page: https://newrelic.com/security
+
+  %h2 Google Cloud
+  Internally we use Google Apps and Google Cloud services. The major impact of this is if you email us we'll keep your email in this service.
+
+  %h2 Slack
+  Privacy Sheild certified
+  https://slack.com/privacy-shield-notice
+  If a group coordinator opts into our Slack app, we send the content of your proposals and threads to Slack.
+
+  %h2 Chargify
+  Chargify receives information about the person buying the subscription on behalf of the group.
+  Privacy Sheild certified
+  https://help.chargify.com/my-account/gdpr.html
+  Our payment solution.
+  receives information about the person buying the subscription on behalf of the group
+
+  %h2 Google Analytics
+  We have stopped using google analytics and no longer send data to them.
+  We have trashed our google analytics account and they have remove the historically collected data.
+
+  %h2 Google Fonts
+  Part of privacy sheild. We could host this ourselves but it does not make sense. Would slow down the site.
+
+  %h2 Heroku
+
+  %h2 Redis labs
+  https://redislabs.com/blog/clock-ticking-ready-gdpr/
+
+  %h2 Cloudflare
+  https://www.cloudflare.com/gdpr/introduction/
+
+  %h2 Intercom
+  which we use as a CRM and customer support & onboarding tool.
+
+  %h2 AWS
+
+  %h2 Digital Ocean
+
+- Google Apps/Gmail
+
+- Bing translator. someone can send your data to bing.
+
+- Group members can receive each others email addresses if the feature is enabled.
+- Google fonts - certified by privacy sheild.
+https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i
+
+- maybe you need to consent to sharing data with your group and 3rd parties when you join a group?
+
+
 %section
+%h2 GDPR related questions about your personal data
+
+%h3 Why was the data gathered in the first place? What is its purpose?
+%p Data collected here was entered by you or members of your groups, into our system so that you could communicate using the Loomio application.
+
+%h3 Upon what legal basis are you justifying holding that data? Consent or legal requirements?
+
+%p Our terms and conditions currently indicate that use of the service grants us the legal right to hold your data. We're going to upgrade this consent process to make it super explicit.
+
+%h3 Who has access to that data?
+Heroku and amazon
+Internally, just 2 perople have access to your data stored within Heroku.
+
+%h3 How are you protecting that data from breaches?
+The security of the storage and processing of your data is trusted with the data processor.
+
+The software has not had a formal security audit that we know of, but it is open source and many talented software engineers have reviewed the code.
+
+%h3 What else is that data being used for?
+
+%h2 Records associated with you on #{ENV['CANONICAL_HOST']}
+
   %h2 Your personal data and rights
 
   %p What we collect, and why..
 
-  %p By operating Loomio.org and our managed private hosts we collect personal data so that we can securely enable users to access the service and to enable groups of people to communicate to each other.
+  %p By operating Loomio.org and our managed private hosts we collect personal data so that we can enable groups of people to have discussions and make decisions together, securely.
 
   %p Under the EU GDPR we are requred to ask for your consent to process your personal data. You may withdraw your consent (per loomio instance) at anytime via the
   %a{href: "/profile"}> user profile page
   within a given instance of Loomio.
 
-  Our personal data page neds to explain.
-  Why was the data gathered in the first place? What is its purpose?
-  Upon what legal basis are you justifying holding that data? Consent or legal requirements?
-  Who has access to that data?
-  How are you protecting that data from breaches?
-  What else is that data being used for?
-
 %section
   %h2 Breach reporting
+  We will report any breach of data within 72 hours.
 
 %section
   %h2 Data Protection Officer
@@ -98,12 +167,12 @@
 Link to personal_data/index to see what personal data we have for you and why.
 
 %section
-%h2 your personal data in partner databases
-intercom, chargify
-
 %h2 your personal data on partner services.
 -# chargify personal data. what else?
 -# intercom
+we delete all personal data from intercom upon request.
+-# gmail
+-# new relic.
 -# facebook, google, slack - we access this but don't give them any
 
 %section

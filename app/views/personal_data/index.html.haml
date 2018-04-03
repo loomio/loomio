@@ -6,8 +6,6 @@
 %h3 Data associated with you.
 %p The rest of the information is data that is associated to your user account. This includes content which you've entered, and metadata about that content EG: When it was created.
 
-%h2 Records associated with you on #{ENV['CANONICAL_HOST']}
-
 %h3
   %a{href: '/personal_data/ahoy_events'} Ahoy events
 Each click or form submission on the site is recorded. We use this information to tell which features are being used, and which are not. We also look at this history to see what happened before an error occured.
@@ -38,38 +36,32 @@ Are a central concept within Loomio. Discussion threads group content by topic, 
 Also known as attachments. These records connect an uploaded or linked resource with the place that it is attached to within a group or thread.
 
 %h3
-  %a{href: '/personal_data/dra'} Documents
+  %a{href: '/personal_data/drafts'} Documents
 We save information entered into forms before you submit it, so that if you close the window we can recover unfinished work for you.
 
-= count_and_link_to :drafts
+%h3
+  %a{href: '/personal_data/events'} Events
+These records form a structured (chronological and contextual) view of activity within the site. For example a thread has comments, what are they, when did they happen, and how are they related to each other? This data is about you (it contains your user id), but it is never personal information.
 
-%h3 Events
-These records form a structured (chronological and contextual) view of activity within the site. For example a thread has comments, what are they, when did they happen, and how are they related to each other?
-
-= count_and_link_to :events
-
-%h3 Group identities
+%h3
+  %a{href: '/personal_data/events'} Group identities
 When you connect Slack to you group, your user account is part of the authorisation process. This record is created as a result.
 
-= count_and_link_to :group_identities
-
-%h3 Groups
+%h3
+  %a{href: '/personal_data/groups'} Groups
 Name and description of groups in Loomio. If you create a group or are a member
 of a group you associated to it.
 
-= count_and_link_to :groups
-
-%h3 Group visits
+%h3
+  %a{href: '/personal_data/group_visits'} Group visits
 We keep basic metrics on how many people visit a group.
 
-= count_and_link_to :group_visits
-
-%h3 Invitations
+%h3
+  %a{href: '/personal_data/invitations'} Invitations
 If you are invited (and accept) or invite someone to join a group, thread or poll, an invitation record is assoicated to your user.
 
-= count_and_link_to :invitations
-
-%h3 Login tokens
+%h3
+  %a{href: '/personal_data/login_tokens'} Login tokens
 We send login tokens so that you can login via email.
 
 = count_and_link_to :login_tokens
