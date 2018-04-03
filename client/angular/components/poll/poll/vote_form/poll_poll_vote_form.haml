@@ -1,4 +1,4 @@
-%form.poll-poll-vote-form{ng-submit: "submit()"}
+.poll-poll-vote-form.lmo-drop-animation
   %poll_common_participant_form{stance: "stance"}
 
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
@@ -9,9 +9,9 @@
   %validation_errors{subject: "stance", field: "stanceChoices"}
   %poll_common_add_option_button{ng-if: "stance.isNew() && stance.poll().voterCanAddOptions", poll: "stance.poll()"}
 
-  %poll_common_stance_reason{stance: "stance"}
+  %poll_common_stance_reason.animated{stance: "stance", ng-show: "stance.poll().multipleChoice || selectedOptionIds.length", ng-if: "stance"}
 
   .poll-common-form-actions.lmo-flex.lmo-flex__space-between
     %show_results_button{ng-if: "stance.isNew()"}
     %div{ng-if: "!stance.isNew()"}
-    %md-button.md-primary.md-raised.poll-common-vote-form__submit{type: "submit", translate: "poll_common.vote", aria-label: "{{ 'poll_poll_vote_form.vote' | translate }}"}
+    %md-button.md-primary.md-raised.poll-common-vote-form__submit{ng-click: "submit()", translate: "poll_common.vote", aria-label: "{{ 'poll_poll_vote_form.vote' | translate }}"}

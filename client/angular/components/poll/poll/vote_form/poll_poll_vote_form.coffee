@@ -18,6 +18,7 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
           $scope.selectedOptionIds.push option.id
       else
         $scope.selectedOptionIds = [option.id]
+        setTimeout -> EventBus.broadcast $scope, 'focusTextarea'
 
     $scope.mdColors = (option) ->
       buttonStyle $scope.isSelected(option)
