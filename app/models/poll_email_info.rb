@@ -1,5 +1,6 @@
 class PollEmailInfo
   include Routing
+  include FormattedDateHelper
   attr_reader :recipient, :poll, :actor, :action_name, :eventable, :event
 
   def send_reason
