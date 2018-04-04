@@ -4,6 +4,7 @@ class Group < ApplicationRecord
   include SelfReferencing
   include MessageChannel
   include GroupPrivacy
+  include HasEvents
 
   belongs_to :creator, class_name: 'User'
   belongs_to :parent, class_name: 'Group'
@@ -38,6 +39,10 @@ class Group < ApplicationRecord
 
   def groups
     Array(self)
+  end
+
+  def guest_group
+    self
   end
 
   def headcount

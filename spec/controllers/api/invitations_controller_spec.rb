@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::InvitationsController do
+describe API::AnnouncementsController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:deactivated) { create :user, deactivated_at: 2.days.ago }
@@ -23,13 +23,24 @@ describe API::InvitationsController do
     context 'success' do
       it 'creates invitations' do
         ActionMailer::Base.deliveries = []
-        post :bulk_create, params: { invitation_form: invitation_params, group_id: group.id }
+        post :create, params: {
+          announcement: {
+            kind: :membership_created,
+            recipients: { emails: ['rob@example.com'] }
+          },
+          group_id: group.id
+        }
         json = JSON.parse(response.body)
-        invitation = json['invitations'].last
+
+        last_user = User.last
+        expect(last_user.email).to eq 'rob@example.com'
+        expect(last_user.email_verified).to eq false
+        expect(group.members).to include last_user
+
         last_email = ActionMailer::Base.deliveries.last
-        expect(ActionMailer::Base.deliveries.size).to eq 2
-        expect(invitation['recipient_email']).to eq 'hannah@example.com'
-        expect(last_email.to).to include 'hannah@example.com'
+        expect(last_email.to).to include 'rob@example.com'
+        expect(ActionMailer::Base.deliveries.size).to eq 1
+        expect(json['users_count']).to eq 1
       end
     end
 

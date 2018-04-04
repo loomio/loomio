@@ -1,7 +1,6 @@
 module Ability
   class Base
     include CanCan::Ability
-    prepend Ability::Announcement
     prepend Ability::Comment
     prepend Ability::ContactRequest
     prepend Ability::DiscussionReader

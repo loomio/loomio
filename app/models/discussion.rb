@@ -4,7 +4,7 @@ class Discussion < ApplicationRecord
   include Translatable
   include Reactable
   include HasTimeframe
-  include HasAnnouncements
+  include HasEvents
   include HasMentions
   include HasGuestGroup
   include HasDrafts

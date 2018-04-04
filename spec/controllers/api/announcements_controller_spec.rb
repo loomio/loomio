@@ -29,6 +29,18 @@ describe API::AnnouncementsController do
     sign_in user
   end
 
+  describe 'bulk_create' do
+    it 'creates announcement_created records'
+    it 'creates users by email'
+    it 'adds existing users to the models guest group'
+    it 'adds created users to the models guest group'
+
+    it 'sends a notification to an existing user'
+    it 'sends a notification to a created user'
+    it 'does send an email to a user with email_when_announced true'
+    it 'does not send an email to a user with email_when_announced false'
+  end
+
   describe 'create' do
     describe 'poll' do
       let(:poll) { create :poll, group: group, author: user }

@@ -1,4 +1,4 @@
-class InvitationsController < ApplicationController
+class MembershipsController < ApplicationController
   include PrettyUrlHelper
 
   def show
@@ -8,6 +8,8 @@ class InvitationsController < ApplicationController
     else
       session[:pending_invitation_id] = params[:id]
     end
+    sign_in membership.user
+    redirect_to membership.events.where(kind: :announcement_created).first.eventable
 
     if back_to_param.match(/^http[s]?:\/\/#{ENV['CANONICAL_HOST']}/)
       redirect_to back_to_param
@@ -18,8 +20,8 @@ class InvitationsController < ApplicationController
 
   private
 
-  def invitation
-    @invitation ||= Invitation.find_by_token!(params[:id])
+  def membership
+    @membership ||= Membership.find_by_token!(params[:id])
   end
 
   def back_to_param

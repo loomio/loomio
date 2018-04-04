@@ -4,7 +4,7 @@ class NotificationSerializer < ActiveModel::Serializer
 
   def kind
     case object.kind
-    when 'announcement_created' then object.eventable.kind
+    when 'announcement_created' then object.event.custom_fields['kind']
     else                             object.kind
     end
   end

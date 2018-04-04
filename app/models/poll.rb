@@ -1,9 +1,8 @@
 class Poll < ApplicationRecord
-  include CustomCounterCache::Model
   extend  HasCustomFields
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
-  include HasAnnouncements
+  include HasEvents
   include HasMentions
   include HasDrafts
   include HasGuestGroup
@@ -12,7 +11,6 @@ class Poll < ApplicationRecord
   include UsesOrganisationScope
   include HasMailer
   include Reactable
-  include HasEvents
   include HasCreatedEvent
 
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices

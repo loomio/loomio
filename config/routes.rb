@@ -213,7 +213,7 @@ Loomio::Application.routes.draw do
     post :webhook
   end
 
-  resources :invitations,     only: :show
+  resources :memberships,     only: :show
   resources :login_tokens,    only: :show
 
   resources :received_emails, only: :create

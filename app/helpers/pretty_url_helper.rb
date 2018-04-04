@@ -24,8 +24,7 @@ module PrettyUrlHelper
     when Comment                       then comment_url(model.discussion, model, opts)
     when Invitation                    then invitation_url(model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
-    when Announcement                  then polymorphic_url(model.eventable, opts)
-    when Membership                    then polymorphic_url(model.invitation || model.group, opts)
+    when Membership                    then polymorphic_url(model.group, opts.merge(token: model.token))
     else super
     end
   end
@@ -40,7 +39,6 @@ module PrettyUrlHelper
     when PaperTrail::Version   then model.item.title
     when Comment, Discussion   then model.discussion.title
     when Poll, Outcome, Stance then model.poll.title
-    when Announcement          then polymorphic_title(model.eventable)
     when Reaction              then model.reactable.discussion.title # TODO: deal with polymorphic reactions here
     when Group                 then model.full_name
     when Invitation            then polymorphic_title(model.target_model)

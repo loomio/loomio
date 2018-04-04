@@ -1,6 +1,6 @@
 class Outcome < ApplicationRecord
   extend  HasCustomFields
-  include HasAnnouncements
+  include HasEvents
   include HasMentions
   include Reactable
   include Translatable

@@ -44,6 +44,7 @@ module Ability::Group
 
     can [:add_members,
          :invite_people,
+         :announce,
          :manage_membership_requests,
          :view_shareable_invitation], ::Group do |group|
       user.email_verified? &&
