@@ -28,8 +28,7 @@ class GroupInviter
   private
 
   def invitation_limit_exceeded?
-    verified = @group.members.group(:email_verified).count
-    verified[false] >= (verified[true] + ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i)
+    @group.members.unverified.count > @group.pending_invitation_limit
   end
 
   def generate_users!
