@@ -1,29 +1,16 @@
 class GroupMailer < BaseMailer
   layout 'invite_people_mailer'
 
-  # recipient is an invitation
-  def membership_created(membership, event)
-    @recipient = membership.user
-    send_single_mail to:     membership.user.email,
-                     locale: membership.user.locale,
-                     from:   from_user_via_loomio(membership.inviter),
-                     reply_to: membership.inviter.name_and_email,
-                     subject_key: "email.to_join_group.subject",
-                     subject_params: {member: membership.inviter.name,
-                                      group_name: membership.group.full_name,
-                                      site_name: AppConfig.theme[:site_name]}
-  end
-
-  def invitation_resend(recipient, event)
-    @recipient = recipient
+  def membership_created(recipient, event)
+    @membership = event.membership
+    @token      = recipient.login_tokens.create(redirect: polymorphic_url(event.eventable))
     send_single_mail to:     recipient.email,
                      locale: recipient.locale,
-                     from:   from_user_via_loomio(recipient.inviter),
-                     reply_to: recipient.inviter.name_and_email,
-                     subject_key: "email.resend_to_join_group.subject",
-                     template_name: :invitation_created,
-                     subject_params: {member: recipient.inviter.name,
-                                      group_name: recipient.group.full_name,
+                     from:   from_user_via_loomio(@membership.inviter),
+                     reply_to: @membership.inviter.name_and_email,
+                     subject_key: "email.to_join_group.subject",
+                     subject_params: {member: @membership.inviter.name,
+                                      group_name: @membership.group.full_name,
                                       site_name: AppConfig.theme[:site_name]}
   end
 

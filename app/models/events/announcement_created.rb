@@ -14,6 +14,10 @@ class Events::AnnouncementCreated < Event
     end
   end
 
+  def membership
+    @membership ||= Membership.find(custom_fields['membership_id'])
+  end
+
   private
 
   def email_users!
@@ -23,9 +27,5 @@ class Events::AnnouncementCreated < Event
 
   def notification_recipients
     User.where(id: membership.user_id)
-  end
-
-  def membership
-    @membership ||= Membership.find(custom_fields['membership_id'])
   end
 end

@@ -24,7 +24,6 @@ module PrettyUrlHelper
     when Comment                       then comment_url(model.discussion, model, opts)
     when Invitation                    then invitation_url(model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
-    when Membership                    then polymorphic_url(model.group, opts.merge(token: model.token))
     else super
     end
   end
