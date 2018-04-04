@@ -2,11 +2,11 @@ class Events::AnnouncementCreated < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
 
-  def self.bulk_publish!(model, actor, memberships, params = {})
+  def self.bulk_publish!(model, actor, memberships, kind)
     Array(memberships).map do |membership|
       build(model,
         user: actor,
-        custom_fields: params.slice(:kind).merge(membership_id: membership.id)
+        custom_fields: { membership_id: membership.id, kind: kind }
       )
     end.tap do |events|
       import events
@@ -22,7 +22,7 @@ class Events::AnnouncementCreated < Event
 
   def email_users!
     return unless membership.user.email_announcements
-    eventable.send(:mailer).delay.send(custom_fields['kind'], membership, self)
+    eventable.send(:mailer).delay.send(custom_fields['kind'], membership.user, self)
   end
 
   def notification_recipients

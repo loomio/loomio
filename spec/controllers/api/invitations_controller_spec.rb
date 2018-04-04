@@ -8,7 +8,6 @@ describe API::AnnouncementsController do
   let(:another_group_member) { create :user }
   let(:group) { create :formal_group }
   let(:pending_invitation) { create :invitation, group: group }
-  let(:invitation_params)  { { emails: 'rob@example.com, hannah@example.com' } }
 
   before do
     group.admins << user
@@ -16,20 +15,22 @@ describe API::AnnouncementsController do
     another_group.members << another_user
     another_group.members << another_group_member
     pending_invitation
-    sign_in user
   end
 
   describe 'create' do
+    let(:invitation_params) {{
+      announcement: {
+        kind: :membership_created,
+        recipients: { emails: ['rob@example.com'] }
+      },
+      group_id: group.id
+    }}
+
     context 'success' do
       it 'creates invitations' do
+        sign_in user
         ActionMailer::Base.deliveries = []
-        post :create, params: {
-          announcement: {
-            kind: :membership_created,
-            recipients: { emails: ['rob@example.com'] }
-          },
-          group_id: group.id
-        }
+        post :create, params: invitation_params
         json = JSON.parse(response.body)
 
         last_user = User.last
@@ -46,21 +47,26 @@ describe API::AnnouncementsController do
 
     context 'failure' do
       it 'responds with unauthorized for non logged in users' do
-        @controller.stub(:current_user).and_return(LoggedOutUser.new)
-        post :bulk_create, params: { invitation_form: invitation_params, group_id: group.id }
+        post :create, params: invitation_params
         expect(response.status).to eq 403
       end
 
       it 'responds with bad request if no emails are provided' do
-        post :bulk_create, params: {invitation_form: {}, group_id: group.id}
+        sign_in user
+        invitation_params[:announcement][:recipients][:emails] = []
+        post :create, params: invitation_params
         expect(response.status).to eq 400
       end
 
       it 'responds with validation error if max pending invites have been reached' do
+        sign_in user
         ENV['MAX_PENDING_INVITATIONS'] = "5"
-        5.times { group.invitations.create!(intent: :join_group, recipient_email: Faker::Internet.email) }
-        post :bulk_create, params: { invitation_form: invitation_params, group_id: group.id }
-        expect(response.status).to eq 422
+        10.times do
+          m = FactoryBot.create(:membership, group: group)
+          m.user.update(email_verified: false)
+        end
+        post :create, params: invitation_params
+        expect(response.status).to eq 400
         ENV['MAX_PENDING_INVITATIONS'] = nil
       end
     end
