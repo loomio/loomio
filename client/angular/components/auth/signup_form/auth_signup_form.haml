@@ -12,7 +12,7 @@
     %input.lmo-primary-form-input{type: "text", md-autofocus: "true", placeholder: "{{auth_form.name_placeholder | translate}}", ng-model: "vars.name", ng-required: "true"}
     %validation_errors{subject: "user", field: "name"}
 
-  %div{vc-recaptcha: "true", key: "recaptchaKey", ng-if: "recaptchaKey", ng-model: "user.recaptcha", ng-if: "!user.hasToken"}
+  %div{vc-recaptcha: "true", key: "recaptchaKey", ng-if: "recaptchaKey && !user.hasToken", ng-model: "user.recaptcha"}
 
   .lmo-md-action
     %md-button.md-primary.md-raised.auth-signup-form__submit{ng-click: "submit()"}

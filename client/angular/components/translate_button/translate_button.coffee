@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'translateButton', ->
   replace: true
   controller: ['$scope', ($scope) ->
     $scope.canTranslate = ->
-      AbilityService.canTranslate($scope.model) and !$scope.translateExecuting and !$scope.translated
+      AbilityService.canTranslate($scope.model) and !$scope.translateExecuting
 
     $scope.translate = ->
       Records.translations.fetchTranslation($scope.model, Session.user().locale).then (data) ->
