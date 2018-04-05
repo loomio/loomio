@@ -7,21 +7,10 @@ angular.module('loomioApp').directive 'announcementForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
-    $scope.$emit 'processing'
-    Records.announcements.fetchNotifiedDefault($scope.announcement.eventForNotifiedDefault()).then (notified) ->
-      $scope.announcement.notified = notified if _.any(notified)
-    .finally ->
-      $scope.$emit 'doneProcessing'
-
-    Records.members.collection.chain().remove()
-
     $scope.acceptChip = ($chip) ->
       if $chip.type != 'Null' then $chip else null
 
-    $scope.inviteToDiscussion = ->
-      ModalService.open 'AnnouncementModal', announcement: ->
-        Records.announcements.buildFromModel($scope.relevantDiscussion())
-
     $scope.search = (query) ->
-      Records.announcements.fetchNotified(query)
+      Records.announcements.search(query)
+
   ]

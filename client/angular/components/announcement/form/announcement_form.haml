@@ -1,16 +1,13 @@
 .announcement-form
   %p.announcement-form__help.lmo-hint-text{translate: "announcement.form.{{announcement.modelName()}}_helptext"}>
 
-  %md-chips.announcement-form__chips{ng-model: "announcement.notified", md-require-match: "true", md-transform-chip: "acceptChip($chip)"}
-    %md-autocomplete{md-items: "$chip in search(query)", md-no-cache: "true", md-autoselect: "true", md-autofocus: "true", md-search-text: "query", placeholder: "{{'announcement.form.placeholder' | translate}}", md-min-length: "2", md-delay: "300"}
-      %md-item-template
-        %announcement_chip{chip: "$chip"}
-    %md-chip-template
-      %announcement_chip{chip: "$chip", ng-if: "$chip.type != 'Group'"}
-      %md-menu.lmo-pointer{ng-if: "$chip.type == 'Group'"}
-        %announcement_chip{md-menu-origin: "true", ng-click: "$mdMenu.open($event)", chip: "$chip"}
-        %md-menu-content.announcement-form__menu-content
-          %announcement_group_form{notified: "$chip"}
+  %md-autocomplete{md-search-text: "query", md-items: "recipient in search(query)", md-min-length: "3", md-delay: "300"}
+    %md-item-template
+      %announcement_chip{chip: "recipient"}
+
+  %md-list
+    %md-list-item{ng-repeat: "recipient in recipients | orderBy:'name' track by recipient.name"}
+      %announcement_chip(chip: "recipient")
   .lmo-md-action
     %p.md-caption{ng-if: "announcement.totalInvited() > 0", translate: "announcement.form.invited_and_notified", translate-value-notified: "{{announcement.totalNotified()}}", translate-value-invited: "{{announcement.totalInvited()}}"}
     %p.md-caption{ng-if: "announcement.totalInvited() == 0", translate: "announcement.form.notified", translate-value-notified: "{{announcement.totalNotified()}}"}

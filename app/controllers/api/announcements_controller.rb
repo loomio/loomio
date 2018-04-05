@@ -4,19 +4,9 @@ class API::AnnouncementsController < API::RestfulController
     render json: { users_count: @events.length }
   end
 
-  def notified
-    self.collection = Queries::Notified::Search.new(params.require(:q), current_user).results
-    respond_with_collection serializer: NotifiedSerializer, root: false
-  end
-
-  def notified_default
-    self.collection = Queries::Notified::Default.new(params.require(:kind), notified_model, current_user).results
-    respond_with_collection serializer: NotifiedSerializer, root: false
-  end
-
-  def members
-    self.collection = Queries::Notified::Members.new(notified_model, params[:expand_group]).results
-    respond_with_collection serializer: MemberSerializer, root: :members
+  def search
+    self.collection = Queries::AnnouncementRecipients.new(params.require(:q), current_user).results
+    respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
   end
 
   private

@@ -21,6 +21,10 @@ module.exports =
     AppConfig.loggingOut = true
     Records.sessions.remote.destroy('').then -> hardReload('/')
 
+  getProviderIdentity: ->
+    validProviders = _.pluck(AppConfig.identityProviders, 'name')
+    AppConfig.pendingIdentity if _.contains(validProviders, AppConfig.pendingIdentity.identity_type)
+
   contactUs: ->
     if IntercomService.available()
       IntercomService.open()
