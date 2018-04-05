@@ -15,7 +15,7 @@
           %user_avatar.lmo-margin-right--small{size: "small", user: "stance.participant()"}
           .lmo-truncate {{ stance.participant().name }}
         %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() | orderBy: 'name' track by option.id", ng-class: "{'poll-meeting-chart-panel--yes': stance.scoreFor(option)==2, 'poll-meeting-chart-panel--no': stance.scoreFor(option)==0,  'poll-meeting-chart-panel--maybe': stance.scoreFor(option)==1}"}
-          %poll_meeting_stance_icon{ score: "stance.scoreFor(option)", show-no:"true"}
+          %poll_meeting_stance_icon{ score: "stance.scoreFor(option)"}
       %tr.poll-meeting-chart-panel__bold
         %td
           %h3.lmo-h3{translate: "poll_common.totals"}

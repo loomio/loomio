@@ -30,9 +30,8 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
       prepareFn: ->
         EventBus.emit $scope, 'processing'
 
-        attrs = _.map(_.pairs($scope.stanceValuesMap), ([id, score]) ->
-            poll_option_id: id
-            score:score
+        attrs = _.compact _.map(_.pairs($scope.stanceValuesMap), ([id, score]) ->
+            {poll_option_id: id, score:score} if score > 0 
         )
 
         $scope.stance.stanceChoicesAttributes = attrs if _.any(attrs)
