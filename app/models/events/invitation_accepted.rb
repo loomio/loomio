@@ -1,4 +1,4 @@
-class Events::MembershipAccepted < Event
+class Events::InvitationAccepted < Event
   include Events::Notify::InApp
   include Events::LiveUpdate
 

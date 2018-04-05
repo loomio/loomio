@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321043233) do
+ActiveRecord::Schema.define(version: 20180404223107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -228,6 +228,7 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
+    t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true
     t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: { last_activity_at: :desc }
     t.index ["private"], name: "index_discussions_on_private"
@@ -458,11 +459,13 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.integer "volume", default: 2, null: false
     t.jsonb "experiences", default: {}, null: false
     t.integer "invitation_id"
+    t.string "token"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id", "is_suspended", "archived_at"], name: "active_memberships"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
+    t.index ["token"], name: "index_memberships_on_token", unique: true
     t.index ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume"
     t.index ["user_id"], name: "index_memberships_on_user_id"
     t.index ["volume"], name: "index_memberships_on_volume"
