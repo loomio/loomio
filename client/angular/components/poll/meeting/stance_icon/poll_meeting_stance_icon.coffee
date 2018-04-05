@@ -1,3 +1,4 @@
 angular.module('loomioApp').directive 'pollMeetingStanceIcon', ->
-  scope: {score: '='}
+  replace:true
+  scope: {score: '=', showNo: '='}
   templateUrl: 'generated/components/poll/meeting/stance_icon/poll_meeting_stance_icon.html'
