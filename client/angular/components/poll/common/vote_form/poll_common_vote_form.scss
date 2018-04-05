@@ -1,5 +1,4 @@
 .poll-common-vote-form__button {
-  border: 2px solid $card-background-color;
   min-width: auto;
   max-width: calc(25% - 8px) !important;
   overflow: visible;
@@ -13,4 +12,5 @@
     min-width: 64px !important;
     img { width: 64px; }
   }
+  &--block { max-width: 100% !important; }
 }
