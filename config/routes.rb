@@ -177,7 +177,7 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
-    resources :announcements, only: [:index, :create] do
+    resources :announcements, only: [:create] do
       get :notified, on: :collection
       get :notified_default, on: :collection
       get :members, on: :collection

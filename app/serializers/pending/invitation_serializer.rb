@@ -1,4 +1,4 @@
-class Pending::InvitationSerializer < Pending::BaseSerializer
+class Pending::MembershipSerializer < Pending::BaseSerializer
   attribute :token
 
   def avatar_kind
@@ -6,7 +6,7 @@ class Pending::InvitationSerializer < Pending::BaseSerializer
   end
 
   def identity_type
-    :invitation
+    :membership
   end
 
   def has_token
@@ -22,22 +22,22 @@ class Pending::InvitationSerializer < Pending::BaseSerializer
   end
 
   def avatar_initials
-    name.upcase.split(' ').map(&:first).join
+    object.user.get_avatar_initials
   end
 
   def name
-    object.recipient_name
+    object.user.name
   end
 
   def email
-    object.recipient_email
+    object.user.email
   end
 
   private
 
-
   def has_name?
-    name.present?
+    object.user.name.present?
   end
+  
   alias :include_avatar_initials? :has_name?
 end

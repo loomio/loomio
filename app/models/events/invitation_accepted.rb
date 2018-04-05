@@ -1,4 +1,4 @@
-class Events::InvitationAccepted < Event
+class Events::MembershipAccepted < Event
   include Events::Notify::InApp
   include Events::LiveUpdate
 
@@ -7,9 +7,7 @@ class Events::InvitationAccepted < Event
   end
 
   def notify_clients!
-    if eventable.invitation&.email == eventable.user.email
-      ActionCable.server.broadcast eventable.invitation.message_channel, action: :accepted
-    end
+    ActionCable.server.broadcast eventable.message_channel, action: :accepted
   end
 
   private

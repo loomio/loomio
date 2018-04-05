@@ -1,9 +1,4 @@
 class API::AnnouncementsController < API::RestfulController
-  def index
-    instantiate_collection
-    respond_with_collection scope: index_scope
-  end
-
   def create
     @events = service.create(model: notified_model, params: resource_params, actor: current_user)
     render json: { users_count: @events.length }
@@ -25,13 +20,6 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   private
-
-  def index_scope
-    {
-      users:       User.where(id: resources_to_serialize.map(&:user_ids).flatten),
-      invitations: Invitation.where(id: resources_to_serialize.map(&:invitation_ids).flatten)
-    }
-  end
 
   def accessible_records
     notified_model.announcements

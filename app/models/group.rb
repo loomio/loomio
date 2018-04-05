@@ -61,12 +61,9 @@ class Group < ApplicationRecord
     parent || self
   end
 
-  def add_member!(user, invitation: nil, inviter: nil)
+  def add_member!(user, inviter: nil)
     save! unless persisted?
-    self.memberships.find_or_create_by!(user: user) do |m|
-      m.invitation = invitation
-      m.inviter = inviter || invitation&.inviter
-    end
+    self.memberships.find_or_create_by!(user: user) { |m| m.inviter = inviter }
   rescue ActiveRecord::RecordNotUnique
     retry
   end

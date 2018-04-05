@@ -9,9 +9,9 @@ module PendingActionsHelper
       session.delete(:pending_token)
     end
 
-    if pending_invitation
-      InvitationService.redeem(pending_invitation, user)
-      session.delete(:pending_invitation_id)
+    if pending_membership
+      MembershipService.redeem(pending_membership, user)
+      session.delete(:pending_membership_id)
     end
 
     if pending_identity
@@ -28,8 +28,8 @@ module PendingActionsHelper
     @pending_token_user ||= LoginToken.where.not(user_id: current_user.email_verified? && current_user.id).find_by(token: session[:pending_token]) if session[:pending_token]
   end
 
-  def pending_invitation
-    @pending_invitation ||= Invitation.find_by(token: session[:pending_invitation_id]) if session[:pending_invitation_id]
+  def pending_membership
+    @pending_membership ||= Membership.find_by(token: session[:pending_membership_id]) if session[:pending_membership_id]
   end
 
   def pending_identity
@@ -43,7 +43,7 @@ module PendingActionsHelper
   def serialized_pending_identity
     Pending::TokenSerializer.new(pending_token, root: false).as_json ||
     Pending::IdentitySerializer.new(pending_identity, root: false).as_json ||
-    Pending::InvitationSerializer.new(pending_invitation, root: false).as_json ||
+    Pending::MembershipSerializer.new(pending_membership, root: false).as_json ||
     Pending::UserSerializer.new(pending_user, root: false).as_json || {}
   end
 end

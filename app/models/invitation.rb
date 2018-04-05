@@ -3,17 +3,7 @@ class Invitation < ApplicationRecord
   include Null::User
   include AvatarInitials
 
-  class InvitationCancelled < StandardError; end
-  class TooManyPending < StandardError; end
-  class TooManyCancelled < StandardError; end
   class AllInvitesAreMembers < StandardError; end
-  class InvitationAlreadyUsed < StandardError
-    attr_accessor :invitation
-    def initialize(invitation)
-      @invitation = invitation
-      super
-    end
-  end
 
   include UsesOrganisationScope
 
@@ -60,14 +50,6 @@ class Invitation < ApplicationRecord
       ) e ON e.eventable_id = "invitations"."id"
     SQL
   }
-
-  def target_model
-    @target_model ||= case intent.to_sym
-    when :join_group               then group
-    when :join_discussion          then Discussion.find_by(guest_group_id: group_id)
-    when :join_poll, :join_outcome then Poll.find_by(guest_group_id: group_id)
-    end
-  end
 
   def poll
     target_model if [:join_poll, :join_outcome].include? intent.to_sym

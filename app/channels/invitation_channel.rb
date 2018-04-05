@@ -1,6 +1,6 @@
-class InvitationChannel < ApplicationCable::Channel
+class MembershipChannel < ApplicationCable::Channel
   def subscribed
-    invitation = Invitation.find_by(token: current_user.token)
-    stream_from invitation.message_channel if invitation
+    membership = Membership.find_by(token: current_user.token)
+    stream_from membership.message_channel if membership
   end
 end

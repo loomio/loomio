@@ -16,12 +16,11 @@ class StanceService
 
     actor = actor.create_user if !actor.is_logged_in?
 
-
     stance.assign_attributes(participant: actor)
     return false unless stance.valid?
 
-    if invitation = stance.poll.invitations.useable.find_by(token: actor.token)
-      InvitationService.redeem(invitation, actor)
+    if membership = stance.poll.guest_group.memberships.pending.find_by(token: actor.token)
+      MembershipService.redeem(membership, actor)
     end
 
     stance.poll.stances.where(participant: actor).update_all(latest: false)

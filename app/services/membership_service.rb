@@ -1,5 +1,14 @@
 class MembershipService
 
+  def self.redeem(membership, user)
+    return true if membership.group.members.include?(user)
+    raise Membership::InvitationAlreadyUsed.new if membership.accepted?
+
+    membership.update(user: user, accepted_at: DateTime.now)
+
+    Events::InvitationAccepted.publish!(membership)
+  end
+
   def self.set_volume(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
     if params[:apply_to_all]

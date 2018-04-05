@@ -40,7 +40,7 @@ class PollMailer < BaseMailer
     send_single_mail(
       locale:        recipient.locale,
       to:            recipient.email,
-      subject_key:   "poll_mailer.#{@info.poll_type}.subject.#{email_subject_key}",
+      subject_key:   "poll_mailer.#{@info.poll_type}.subject.#{@info.action_name}",
       subject_params: { title: @info.poll.title, actor: @info.actor.name },
       layout:        layouts[action_name].to_s
     )
@@ -48,12 +48,5 @@ class PollMailer < BaseMailer
 
   def layouts
     HashWithIndifferentAccess.new { :base_mailer }.merge(stance_created_author: :invite_people_mailer)
-  end
-
-  def email_subject_key
-    case @info.eventable
-    when Invitation then @info.eventable.intent
-    else                 @info.action_name
-    end
   end
 end

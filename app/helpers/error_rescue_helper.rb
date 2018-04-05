@@ -8,12 +8,7 @@ module ErrorRescueHelper
       respond_with_error message: :"errors.not_found", status: 404
     end
 
-    base.rescue_from(Invitation::InvitationCancelled) do
-      session.delete(:pending_invitation_id)
-      respond_with_error message: :"invitation.invitation_cancelled"
-    end
-
-    base.rescue_from(Invitation::InvitationAlreadyUsed) do |exception|
+    base.rescue_from(Membership::InvitationAlreadyUsed) do |exception|
       session.delete(:pending_invitation_id)
       if current_user.email == exception.invitation.recipient_email
         redirect_to formal_group_url invitation.group

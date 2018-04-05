@@ -10,7 +10,6 @@ module Ability
     prepend Ability::GroupIdentity
     prepend Ability::Group
     prepend Ability::Identity
-    prepend Ability::Invitation
     prepend Ability::MembershipRequest
     prepend Ability::Membership
     prepend Ability::OauthApplication

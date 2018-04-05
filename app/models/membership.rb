@@ -1,9 +1,15 @@
 class Membership < ApplicationRecord
+  class InvitationAlreadyUsed < StandardError; end
+
   include CustomCounterCache::Model
   include HasVolume
   include HasTimeframe
   include HasExperiences
   include UsesOrganisationScope
+
+  extend FriendlyId
+  friendly_id :token
+  has_secure_token :token
 
   validates_presence_of :group, :user, :volume
   validates_uniqueness_of :user_id, scope: :group_id
@@ -28,6 +34,7 @@ class Membership < ApplicationRecord
 
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
+  scope :pending, -> { joins(:user).where("users.email_verified": false) }
 
   scope :undecided_for, ->(poll) {
      joins("INNER JOIN users ON users.id = memberships.user_id")
@@ -54,6 +61,16 @@ class Membership < ApplicationRecord
   before_create :set_volume
 
   after_destroy :leave_subgroups_of_hidden_parents
+
+  def message_channel
+    "membership-#{token}"
+  end
+
+  def target_model
+    Discussion.find_by(guest_group_id: group_id) ||
+    Poll.find_by(guest_group_id: group_id) ||
+    group
+  end
 
   def make_admin!
     update_attribute(:admin, true)
