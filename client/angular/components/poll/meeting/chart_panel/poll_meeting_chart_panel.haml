@@ -7,9 +7,7 @@
         %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() | orderBy:'name' track by option.id"}
           %poll_meeting_time.lmo-flex--column{name: "option.name", zone: "zone"}
     %tbody
-      %tr.poll-meeting-chart-panel__bold
-        %td
-          %h3.lmo-h3{translate: "poll_common.responses"}
+      %tr
       %tr{ng-repeat: "stance in poll.latestStances() track by stance.id"}
         %td.lmo-flex.lmo-flex__center.poll-meeting-chart-panel__participant-name.poll-meeting-chart-panel__bold
           %user_avatar.lmo-margin-right--small{size: "small", user: "stance.participant()"}
