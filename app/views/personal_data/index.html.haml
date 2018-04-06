@@ -1,5 +1,13 @@
 %h1 Your personal data with Loomio
 
+%p This page gives you access to the personal data we have collected about you and explains why we collected it and how we use it.
+
+%p By operating Loomio.org and our managed private hosts we collect personal data so that we can enable groups of people to have discussions and make decisions together, securely.
+
+%p Under the EU GDPR we are requred to ask for your consent to process your personal data. You may withdraw your consent (per loomio instance) at anytime via the
+%a{href: "/profile"}> user profile page
+within a given instance of Loomio.
+
 %h3 Peronally identifying data
 %p Data which can be used to identify you can be found in user and visit records. The user record contains the name and email adddress you gave us. Visit records contain the IP address, browser version, and time you accesses our system. You may have also entered information that can identify you in other records such as comments.
 
@@ -8,78 +16,88 @@
 
 %h3
   %a{href: '/personal_data/ahoy_events'} Ahoy events
-Each click or form submission on the site is recorded. We use this information to tell which features are being used, and which are not. We also look at this history to see what happened before an error occured.
+%p
+  Each click or form submission on the site is recorded. We use this information to tell which features are being used, and which are not. We also look at this history to see what happened before an error occured.
 
 %h3
   %a{href: '/personal_data/visits'} Visits
-Events are grouped together by visits. Which represents the session of Loomio usage for each time you use the application.
+%p
+  Events are grouped together by visits. Which represents the session of Loomio usage for each time you use the application.
 
 %h3
   %a{href: '/personal_data/ahoy_messages'} Ahoy messages
-When the system sends you an email, we record that the email was sent, to who and when. We record if you view the email, and if you click a link within the email. We do this to understand which emails people value.
+%p
+  When the system sends you an email, we record that the email was sent, to who and when. We record if you view the email, and if you click a link within the email. We do this to understand which emails people value.
 
 %h3
   %a{href: '/personal_data/comments'} Comments
-When you comment in a thread, who said it, what they said, the thread you wrote in, and other meta information.
+%p
+  When you comment in a thread, who said it, what they said, the thread you wrote in, and other meta information.
 
 %h3
   %a{href: '/personal_data/discussion_readers'} Discussion Readers
-Track what parts of a discussion you have read, so we can highligh the unread parts for you, and display how many people have seen a thread.
+%p
+  Track what parts of a discussion you have read, so we can highligh the unread parts for you, and display how many people have seen a thread.
 
 %h3
   %a{href: '/personal_data/discussions'} Discussions
-Are a central concept within Loomio. Discussion threads group content by topic, and hold conversation and decisions together.
-
+%p
+  Are a central concept within Loomio. Discussion threads group content by topic, and hold conversation and decisions together.
 
 %h3
   %a{href: '/personal_data/documents'} Documents
-Also known as attachments. These records connect an uploaded or linked resource with the place that it is attached to within a group or thread.
+%p
+  Also known as attachments. These records connect an uploaded or linked resource with the place that it is attached to within a group or thread.
 
 %h3
-  %a{href: '/personal_data/drafts'} Documents
-We save information entered into forms before you submit it, so that if you close the window we can recover unfinished work for you.
+  %a{href: '/personal_data/drafts'} Drafts
+%p
+  We save information entered into forms before you submit it, so that if you close the window we can recover unfinished work for you.
 
 %h3
   %a{href: '/personal_data/events'} Events
-These records form a structured (chronological and contextual) view of activity within the site. For example a thread has comments, what are they, when did they happen, and how are they related to each other? This data is about you (it contains your user id), but it is never personal information.
+%p
+  These records form a structured (chronological and contextual) view of activity within the site. For example a thread has comments, what are they, when did they happen, and how are they related to each other? This data is about you (it contains your user id), but it is never personal information.
 
 %h3
   %a{href: '/personal_data/events'} Group identities
-When you connect Slack to you group, your user account is part of the authorisation process. This record is created as a result.
+%p
+  When you connect Slack to you group, your user account is part of the authorisation process. This record is created as a result.
 
 %h3
   %a{href: '/personal_data/groups'} Groups
-Name and description of groups in Loomio. If you create a group or are a member
-of a group you associated to it.
+%p
+  Name and description of groups in Loomio. If you create a group or are a member of a group you associated to it.
 
 %h3
   %a{href: '/personal_data/group_visits'} Group visits
-We keep basic metrics on how many people visit a group.
+%p
+  We keep basic metrics on how many people visit a group.
 
 %h3
   %a{href: '/personal_data/invitations'} Invitations
-If you are invited (and accept) or invite someone to join a group, thread or poll, an invitation record is assoicated to your user.
+%p
+  If you are invited (and accept) or invite someone to join a group, thread or poll, an invitation record is assoicated to your user.
 
 %h3
   %a{href: '/personal_data/login_tokens'} Login tokens
-We send login tokens so that you can login via email.
+%p
+  We send login tokens so that you can login via email.
 
-= count_and_link_to :login_tokens
+%h3
+  %a{href: '/personal_data/membership_requests'} Membership requests
+%p
+  If you request membership to a group these records enable that process.
 
-%h3 Membership requests
-If you request membership to a group these records enable that process.
+%h3
+  %a{href: "/personal_data/memberships"} Memberships
+%p
+  Belonging to a group is represented in a membership record.
 
-= count_and_link_to :membership_requests
-
-%h3 Memberships
-Belonging to a group is represented in a membership record.
-
-= count_and_link_to :memberships
-
-%h3 Notifications
-If an event or action that occured within Loomio needs your attention these records are created to track notifying you and when you receive the notification.
-
-= count_and_link_to :notifications
+%h3
+  %a{href: "/personal_data/notifications"} Notifications
+%p
+  If an event or action that occured within Loomio needs your attention these records are created to track notifying you and when you receive the notification.
 
 %h3 oauth_access_grants
 not sure about these yet
@@ -88,51 +106,57 @@ not sure about these yet
 
 %h3 oauth_applications
 
-%h3 omniauth_identities
-An identity is a way to associate you to your user account when you login via a third party authentication service such as Facebook or Google.
+%h3
+  %a{href: "/personal_data/identities"} Identities
+%p
+  An identity is a way to associate you to your user account when you login via a third party authentication service such as Facebook or Google.
 
-= count_and_link_to :identities
+%h3
+  %a{href: "/personal_data/organisation_visits"} Organisation visits
+%p
+  We record how many visits an organisation (group and it's subgroups) has had.
 
-%h3 Organisation visits
-We record how many visits an organisation (group and it's subgroups) has had.
+%h3
+  %a{href: "/personal_data/outcomes"} Outcomes
+%p
+  Users enter outcomes when polls & proposals complete.
 
-= count_and_link_to :orgnisation_visits
+%h3
+  %a{href: "/personal_data/poll_did_not_votes"} Poll did not votes
+%p
+  If you did not vote on a poll, and it then closes, we record that.
 
-%h3 Outcomes
-Users enter outcomes when polls & proposals complete.
+%h3
+  %a{href: "/personal_data/poll_unsubscriptions"} Poll unsubscriptions
+%p
+  If you request not to get emails about a poll.
 
-= count_and_link_to :outcomes
+%h3
+  %a{href: "/personal_data/polls"} Polls
+%p
+  Questions asked to a group of people, given some options as choices for the response.
 
-%h3 Poll did not votes
-If you did not vote on a poll, and it then closes, we record that.
-= count_and_link_to :poll_did_not_votes
+%h3
+  %a{href: "/personal_data/reactions"} Reactions
+%p
+  When you 😃 or ❤️ something another user has written, these enable that.
 
-%h3 Poll unsubscriptions
-If you request not to get emails about a poll.
-= count_and_link_to :poll_unsubscriptions
+%h3
+  %a{href: "/personal_data/stances/"} Stances
+%p
+  When you vote in a poll it is recorded as a stance.
 
-%h3 Polls
-Questions asked to a group of people, given some options as choices for the response.
-= count_and_link_to :polls
+%h3
+  %a{href: "/personal_data/deactivation_responses"} Deactivation responses
+%p
+  If you deactivate your account, we ask why and record that.
 
-%h3 Reactions
-When you 😃 or ❤️ something another user has written, these enable that.
-= count_and_link_to :reactions
+%h3
+  %a{href: "/personal_data/users"} Users
+%p
+  Identifys you as an individual Loomio user. Holds your name, email, language you speak, general location (calculated from your IP address), and application settings.
 
-%h3 Stances
-When you vote in a poll it is recorded as a stance.
-= count_and_link_to :stances
-
-%h3 Deactivation responses
-If you deactivate your account, we ask why and record that.
-= count_and_link_to :deactivation_responses
-
-%h3 User record
-Identifys you as an individual Loomio user. Holds your name, email, language you speak, general location (calculated from your IP address), and application settings.
-
-= count_and_link_to :users
-
-%h3 Versions
-To provide revision history features on some records, we store a history of the values of a a record.
-
-= count_and_link_to :versions
+%h3
+  %a{href: "/personal_data/versions"} Versions
+%p
+  To provide revision history features on some records, we store a history of the values of a a record.

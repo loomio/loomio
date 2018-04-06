@@ -3,6 +3,142 @@
   This page describes Loomio's handling of your personal data in the context of the
   %a{href: "https://www.eugdpr.org/"} EU GDPR.
 
+%p
+  %a{href: "/personal_data"}
+    View your personal data on #{ENV['CANONICAL_HOST']}
+
+%section.intro-gdpr
+  %h2 Principles of the GDPR.
+  %p Loomio strives to uphold the priciples of the GDPR.
+  %ul
+    %li Personal data collected needs to be processed in a fair, legal, and transparent way. It should not be used in any way that a person would not reasonably expect.
+    %li Personal data should only be collected to fulfill a specific purpose and not further used in a manner that is incompatible with those purposes. Organizations must specify why they need the personal data when they collect it.
+    %li Personal data held needs to be kept up to date and accurate. It should be held no longer than necessary to fulfill its purpose.
+    %li Users have the right to access their own personal data. They can also request a copy of their data, and that their data be updated, deleted, restricted, or moved to another organization without hinderance.
+    %li All personal data needs to be kept safe and secure.
+
+%section.intro-loomio
+  %h2 About Loomio the application
+  %p
+    Loomio is software for people to have discussions and to make decisions together. Personal data is collected and stored for this purpose.
+    The application is
+    %a{href: "https://github.com/loomio/loomio"} free software
+    %a{href: "https://github.com/loomio/loomio/blob/master/LICENSE.txt"} licenced under the AGPL
+    developed by the
+    %a{href: "/about"} Loomio Cooperative.
+
+  %h3 www.loomio.org (An instance of Loomio)
+
+  %p
+    www.loomio.org is an instance of Loomio operated by the Loomio Cooperative, running upon the Heroku platform.
+
+  %h3 private managed Loomio hosts
+  %p
+    Loomio offers a private managed host service to customers. With this service Loomio will setup and manage a Loomio install on the customer's choice of domain name and hosting provider.
+
+  %p Each instance of Loomio is separate. Signing up to one instance does not sign you up to another, following this rule, you will need to consent per Loomio instance that you wish to use and you will need to withdraw consent per instance that you no longer wish to have process your personal data.
+
+%section.our-partners
+  %h2 Partners we send data to, and why.
+  %p
+    > Among other things, data controllers are required to only use data processors that provide sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing will meet the requirements of the GDPR.
+    from https://cloud.google.com/security/gdpr/
+
+    We assert that all data processors used by Loomio to host Loomio.org and our private hosts have sufficient GDPR policies.
+
+  %h2 Intercom
+  %p
+    We use as a CRM and customer support & onboarding tool
+    %a{href: "https://docs.intercom.com/pricing-privacy-and-terms/data-protection/how-were-preparing-for-gdpr"} GDPR statement
+    %a{href: "https://www.intercom.com/security"} Security page
+
+  %h2 New Relic
+  %p
+    Receives some potentially personal data as a side effect of collecting performance data.
+    %a{href: "https://newrelic.com/content/dam/new-relic/resources/white-papers/New%20Relic%20GDPR_FAQ_2017%20_September.pdfs"} GDPR statement
+    %a{href: "https://newrelic.com/security"} Security page
+
+  %h2 Slack
+  %p
+    If a group coordinator opts into our Slack app, we send the content of your proposals and threads to Slack.
+    %a{href: "https://slack.com/privacy-shield-notice"} Privacy Sheild certified
+    %a{href: "https://slack.com/gdpr"} GDPR statement
+    %a{href: "https://slack.com/security"} Security page
+
+  %h2 Chargify
+  %p
+    We use charify to process billing and subscription management.
+    Receives information about the person buying the subscription on behalf of the group.
+    %a{href: "https://help.chargify.com/my-account/gdpr.html"} Privacy Sheild certified
+    %a{href: "https://help.chargify.com/my-account/gdpr.html"} GDPR statement
+    %a{href: "https://www.chargify.com/security/"} Security page
+
+  %h2 Google Analytics
+  %p
+    We have used Google Analytics in the past, but we have since stopped using this service and deleted the data they held for us.
+
+  %h2 Google Fonts
+  %p
+    Is safe to use under the GDPR
+    %a{href: "https://developers.google.com/fonts/faq"} Google fonts FAQ (with privacy section)
+    %a{href: "https://cloud.google.com/security/gdpr/"} Google GDPR statement
+    %a{href: "https://policies.google.com/privacy"} Google Privacy Policy
+    %a{href: "https://cloud.google.com/security/compliance/privacy-shield/"} Privacy Shield certification
+
+  %h2 Heroku
+  %p
+    Our main data processor. Provide servers and resources to run www.loomio.org upon. Owned by Salesforce.
+    Salesforce has certified certain of its services under the EU-U.S. Privacy Shield Framework and the Swiss-U.S. Privacy Shield Framework
+    %a{href: "https://devcenter.heroku.com/articles/security-privacy-compliance"} Heroku Security Privacy and Compliance page
+    %a{href: "https://www.salesforce.com/blog/2017/07/salesforce-gdpr-july-2017.html"} Salesforce GDPR commitment page
+    %a{href: "https://www.salesforce.com/company/privacy/"} Salesforce privacy page
+
+  %h2 Redis labs
+  %p
+    Redis labs provides a small component of our www.loomio.org service. They don't seem to be privacy guard certified.
+    %a{href: "https://redislabs.com/blog/clock-ticking-ready-gdpr/"} GDPR blog page
+
+  %h2 Cloudflare
+  %p
+    GDPR compliant. Cloudflare provide DNS services, DDOS protection and general security and caching layer infront of www.loomio.org. This helps protect the system from malicious attacks and provides performance improvements.
+    %a{href: "https://www.cloudflare.com/gdpr/introduction/"} Cloudflare GDPR page
+    %a{href: "https://www.cloudflare.com/security-policy/"} Cloudlfare security and privacy statement
+
+  %h2 AWS
+  %p
+    "All AWS Services GDPR ready" - Amazon.
+    %a{href: "https://aws.amazon.com/compliance/gdpr-center/"} AWS GDPR center
+
+  %h2 Digital Ocean
+  %p
+    "We support the GDPR and will ensure all DigitalOcean services comply with its ordinances by May 2018."
+    %a{href: "https://www.digitalocean.com/security/gdpr/"}
+
+  %h2 Timber
+  %p
+    Recently added to the app by James, I'm saying this because it highlights how we need to change our processes when introducing new services which process data for us.
+    No GDPR page that I could find with my inital gooogle search.
+    We need to decide if we continue to use this, and what their GDPR status is.
+
+%section
+  Key GDPR questions
+  %h3 Upon what legal basis are you justifying holding this data? Consent or legal requirements?
+  %p Our terms and conditions currently indicate that use of the service grants us the legal right to hold your data. We're going to upgrade this consent process to make it super explicit.
+
+  %h3 Who has access to that data?
+  Within Loomio.org, just the people responsible for keeping the services running have access to your data.
+
+  %h3 How are you protecting that data from breaches?
+  The security of the storage and processing of your data is trusted with the data processor.
+
+  %h3 What else is that data being used for?
+
+  %h2 Breach reporting
+  We will report any breach of data within 72 hours. To where, and how?
+
+%section
+  %h2 Data Protection Officer
+  companies that have "regular and systematic monitoring" of individuals at a large scale or process a lot of sensitive personal data have to employ a data protection officer (DPO).
 
 %section.under-development
   %h2 Key references used when putting this together
@@ -18,161 +154,3 @@
 
     %li
       %a{href: "https://www.whitecase.com/publications/article/chapter-5-key-definitions-unlocking-eu-general-data-protection-regulation"} Useful definitions of terms
-
-%section.intro-gdpr
-  %h2 Key principles of GDPR.
-  %ul
-    %li Personal data collected needs to be processed in a fair, legal, and transparent way. It should not be used in any way that a person would not reasonably expect.
-    %li Personal data should only be collected to fulfill a specific purpose and not further used in a manner that is incompatible with those purposes. Organizations must specify why they need the personal data when they collect it.
-    %li Personal data held needs to be kept up to date and accurate. It should be held no longer than necessary to fulfill its purpose.
-    %li EU citizens have the right to access their own personal data. They can also request a copy of their data, and that their data be updated, deleted, restricted, or moved to another organization without hinderance.
-    %li All personal data needs to be kept safe and secure, and companies undertaking certain types of activities are required to appoint a data protection officer.
-    %li right to restriction of processing (you still keep the data, but mark it as “restricted” and don’t touch it without further consent by the user),
-    %li the right to data portability (the ability to export one’s data in a machine-readable format),
-    %li the right to rectification (the ability to get personal data fixed),
-    %li the right to be informed (getting human-readable information, rather than long terms and conditions),
-    %li the right of access (the user should be able to see all the data you have about them).
-
-%section.intro-loomio
-  %h2 About Loomio
-  %h3 Loomio the software
-  %p
-    Loomio is software for people to have discussions and to make decisions together.
-    The application is
-    %a{href: "https://github.com/loomio/loomio"} free software
-    %a{href: "https://github.com/loomio/loomio/blob/master/LICENSE.txt"} licenced under the AGPL
-    developed by the
-    %a{href: "/about"} Loomio Cooperative.
-
-  %h3 Loomio.org (An instance of Loomio)
-  %p
-    Loomio.org is an instance of Loomio, running upon Heroku, a Salesforce company. Heroku's platform runs on top of Amazon Web Services. Heroku & Amazon are the data processors for Loomio.org
-
-  %h3 Loomio private managed hosts
-  %p
-    Loomio offers a private managed host service to customers. With this service Loomio will setup and manage a Loomio install on the customer's choice of domain name and hosting provider.
-
-  %p Each instance of Loomio is separate. Signing up to one instance does not sign you up to another, following this rule, you will need to consent per Loomio instance that you wish to use and you will need to withdraw consent per instance that you no longer wish to have process your personal data.
-
-%section.our-partners
-  for each partner we need to identify what we send them, and why.
-
-  %h2 Partners we send data to.
-  > Among other things, data controllers are required to only use data processors that provide sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing will meet the requirements of the GDPR.
-  from https://cloud.google.com/security/gdpr/
-
-  We assert that all data processors used by Loomio to host Loomio.org and our private hosts have sufficient GDPR policies.
-
-  %h2 Intercom
-  %p we use as a CRM and customer support & onboarding tool
-  GDPR statement: https://docs.intercom.com/pricing-privacy-and-terms/data-protection/how-were-preparing-for-gdpr
-  Security page: https://www.intercom.com/security
-
-  %h2 New Relic
-  receives some potentially personal data as a side effect of collecting performance data. they install a javascript and track users by id. (user ids and urls are all I've identified right now)
-  GDPR statement:
-  https://newrelic.com/content/dam/new-relic/resources/white-papers/New%20Relic%20GDPR_FAQ_2017%20_September.pdfs
-  Security page: https://newrelic.com/security
-
-  %h2 Google Cloud
-  Internally we use Google Apps and Google Cloud services. The major impact of this is if you email us we'll keep your email in this service.
-
-  %h2 Slack
-  Privacy Sheild certified
-  https://slack.com/privacy-shield-notice
-  If a group coordinator opts into our Slack app, we send the content of your proposals and threads to Slack.
-
-  %h2 Chargify
-  Chargify receives information about the person buying the subscription on behalf of the group.
-  Privacy Sheild certified
-  https://help.chargify.com/my-account/gdpr.html
-  Our payment solution.
-  receives information about the person buying the subscription on behalf of the group
-
-  %h2 Google Analytics
-  We have stopped using google analytics and no longer send data to them.
-  We have trashed our google analytics account and they have remove the historically collected data.
-
-  %h2 Google Fonts
-  Part of privacy sheild. We could host this ourselves but it does not make sense. Would slow down the site.
-
-  %h2 Heroku
-
-  %h2 Redis labs
-  https://redislabs.com/blog/clock-ticking-ready-gdpr/
-
-  %h2 Cloudflare
-  https://www.cloudflare.com/gdpr/introduction/
-
-  %h2 Intercom
-  which we use as a CRM and customer support & onboarding tool.
-
-  %h2 AWS
-
-  %h2 Digital Ocean
-
-- Google Apps/Gmail
-
-- Bing translator. someone can send your data to bing.
-
-- Group members can receive each others email addresses if the feature is enabled.
-- Google fonts - certified by privacy sheild.
-https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i
-
-- maybe you need to consent to sharing data with your group and 3rd parties when you join a group?
-
-
-%section
-%h2 GDPR related questions about your personal data
-
-%h3 Why was the data gathered in the first place? What is its purpose?
-%p Data collected here was entered by you or members of your groups, into our system so that you could communicate using the Loomio application.
-
-%h3 Upon what legal basis are you justifying holding that data? Consent or legal requirements?
-
-%p Our terms and conditions currently indicate that use of the service grants us the legal right to hold your data. We're going to upgrade this consent process to make it super explicit.
-
-%h3 Who has access to that data?
-Heroku and amazon
-Internally, just 2 perople have access to your data stored within Heroku.
-
-%h3 How are you protecting that data from breaches?
-The security of the storage and processing of your data is trusted with the data processor.
-
-The software has not had a formal security audit that we know of, but it is open source and many talented software engineers have reviewed the code.
-
-%h3 What else is that data being used for?
-
-%h2 Records associated with you on #{ENV['CANONICAL_HOST']}
-
-  %h2 Your personal data and rights
-
-  %p What we collect, and why..
-
-  %p By operating Loomio.org and our managed private hosts we collect personal data so that we can enable groups of people to have discussions and make decisions together, securely.
-
-  %p Under the EU GDPR we are requred to ask for your consent to process your personal data. You may withdraw your consent (per loomio instance) at anytime via the
-  %a{href: "/profile"}> user profile page
-  within a given instance of Loomio.
-
-%section
-  %h2 Breach reporting
-  We will report any breach of data within 72 hours.
-
-%section
-  %h2 Data Protection Officer
-  companies that have "regular and systematic monitoring" of individuals at a large scale or process a lot of sensitive personal data have to employ a data protection officer (DPO).
-
-%h1 Personal data on Loomio
-Link to personal_data/index to see what personal data we have for you and why.
-
-%section
-%h2 your personal data on partner services.
--# chargify personal data. what else?
--# intercom
-we delete all personal data from intercom upon request.
--# gmail
--# new relic.
--# facebook, google, slack - we access this but don't give them any
-
-%section
