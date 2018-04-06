@@ -1,7 +1,7 @@
 Queries::AnnouncementRecipients = Struct.new(:query, :user) do
   def results
     if query.scan(AppConfig::EMAIL_REGEX).presence
-      Array(User.new(email: query))
+      Array(User.new(email: query).tap(&:set_avatar_initials))
     else
       User.distinct.active.joins(:memberships).where.not(id: user).where(
         "memberships.archived_at": nil,
