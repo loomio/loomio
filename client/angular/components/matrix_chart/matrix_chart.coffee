@@ -21,9 +21,9 @@ angular.module('loomioApp').directive 'matrixChart', ->
 
     drawShape = (row, col, width, value) ->
 
-      color = ['#ebebeb','#d1eefd','#70C9F8'][value]
+      color = ['#ebebeb','#f3b300','#00e572'][value]
 
-      shapes.push(draw.rect(width-1, width-1)
+      shapes.push(draw.circle(width-1)
                       .fill(color)
                       .x(width * row)
                       .y(width * col))
