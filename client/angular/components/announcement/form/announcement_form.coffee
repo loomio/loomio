@@ -17,6 +17,8 @@ angular.module('loomioApp').directive 'announcementForm', ->
     $scope.addRecipient = (recipient) ->
       return if !recipient || !recipient.name || _.contains($scope.recipients, recipient)
       $scope.announcement.recipients.push recipient
+      $scope.selected = undefined
+      $scope.query = ''
 
     EventBus.listen $scope, 'removeRecipient', (_event, recipient) ->
       _.pull $scope.announcement.recipients, recipient

@@ -424,6 +424,7 @@ en:
       outcome:
         title: Share outcome
       notified: '{{notified}} people will be notified'
+      notified_singular: '1 person will be notified'
       group_title: '{{name}} ({{count}} people)'
       show_members: Show members
       hide_members: Hide members

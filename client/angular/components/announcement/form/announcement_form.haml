@@ -1,15 +1,13 @@
 .announcement-form
   %p.announcement-form__help.lmo-hint-text{translate: "announcement.form.{{announcement.modelName()}}_helptext"}>
 
-  %md-autocomplete{md-search-text: "query", md-selected-item-change: "addRecipient(recipient)", md-item-text: "recipient.blank", placeholder: "enter names or email addresses...", md-items: "recipient in search(query)", md-min-length: "3", md-delay: "300"}
+  %md-autocomplete{md-search-text: "query", md-autoselect: "true", md-autofocus: "true", md-selected-item-change: "addRecipient(recipient)", md-item-text: "recipient.email", placeholder: "enter names or email addresses...", md-items: "recipient in search(query)", md-min-length: "3", md-delay: "300"}
     %md-item-template
       %announcement_chip{user: "recipient"}
 
   %md-list
     %md-list-item.announcement-form__list-item{ng-repeat: "recipient in announcement.recipients | orderBy:'name' track by recipient.name"}
       %announcement_chip{user: "recipient", show-close: "true"}
-  .lmo-md-action
-    %p.md-caption{translate: "announcement.form.notified", translate-value-notified: "{{announcement.recipients.length}}"}
 
   %announcement_shareable_link{model: "announcement.model()"}
   %announcement_member_list{ng-if: "announcement.expanded", model: "announcement.model()"}
