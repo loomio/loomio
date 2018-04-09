@@ -8,30 +8,14 @@ module.exports = class AnnouncementModel extends BaseModel
   @serializableAttributes: AppConfig.permittedParams.announcement
 
   defaultValues: ->
-    notified: []
+    recipients: []
 
   relationships: ->
     @belongsTo 'user'
     @belongsTo 'event'
 
-  totalNotified: ->
-    _.sum @notified, (n) ->
-      switch n.type
-        when 'Group'      then n.notified_ids.length
-        when 'User'       then 1
-        when 'Invitation' then 1
-
   totalInvited: ->
     0
-
-  eventForNotifiedDefault: ->
-    @event() or @recordStore.events.build
-      kind: "#{@modelType.toLowerCase()}_announced"
-      eventableId:   @modelId
-      eventableType: @modelType
-
-  recipients: ->
-    @model().announcementRecipients()
 
   model: ->
     if @event()

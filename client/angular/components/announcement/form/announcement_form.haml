@@ -6,12 +6,10 @@
       %announcement_chip{user: "recipient"}
 
   %md-list
-    %md-list-item{ng-repeat: "recipient in recipients | orderBy:'name' track by recipient.name"}
-      {{ recipient.name }}
-      %announcement_chip(user: "recipient")
+    %md-list-item.announcement-form__list-item{ng-repeat: "recipient in announcement.recipients | orderBy:'name' track by recipient.name"}
+      %announcement_chip{user: "recipient", show-close: "true"}
   .lmo-md-action
-    %p.md-caption{ng-if: "announcement.totalInvited() > 0", translate: "announcement.form.invited_and_notified", translate-value-notified: "{{announcement.totalNotified()}}", translate-value-invited: "{{announcement.totalInvited()}}"}
-    %p.md-caption{ng-if: "announcement.totalInvited() == 0", translate: "announcement.form.notified", translate-value-notified: "{{announcement.totalNotified()}}"}
+    %p.md-caption{translate: "announcement.form.notified", translate-value-notified: "{{announcement.recipients.length}}"}
 
   %announcement_shareable_link{model: "announcement.model()"}
   %announcement_member_list{ng-if: "announcement.expanded", model: "announcement.model()"}
