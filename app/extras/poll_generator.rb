@@ -104,7 +104,7 @@ PollGenerator = Struct.new(:poll_type) do
       ],
 
       custom_fields: {
-        can_respond_maybe: false
+        can_respond_maybe: true
       }
     }
   end
