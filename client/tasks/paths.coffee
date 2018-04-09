@@ -50,13 +50,11 @@ module.exports =
     coffee:       'shared/**/*.coffee'
     emojis:         include(vendor, 'emoji')
     moment_locales: include(vendor, 'moment_locales')
-    fonts:          include(vendor, 'fonts')
 
   execjs:
     main:           'execjs/main.coffee'
 
   dist:
-    fonts:          '../public/client/fonts'
     assets:         '../public/client/development'
     emojis:         '../public/img/emojis'
     moment_locales: '../public/client/development/moment_locales'

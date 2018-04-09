@@ -79,7 +79,6 @@ namespace :deploy do
       "find plugins/fetched -name '*.*' | xargs git add -f",
       "find public/img/emojis -name '*.png' | xargs git add -f",
       "git add -f plugins",
-      "git add public/client/#{loomio_version} public/client/fonts -f",
       "git commit -m 'Add compiled assets / plugin code'",
       "git checkout master")
   end

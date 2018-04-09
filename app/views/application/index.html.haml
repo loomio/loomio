@@ -15,7 +15,6 @@
     %link{rel: 'manifest', href: '/manifest.json'}
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
     %link{rel: "apple-touch-icon", href: AppConfig.theme[:icon_src]}
-    = render 'application/fonts'
     %link{href: client_asset_path(:"angular.min.css"), rel: 'stylesheet'}
 
     = action_cable_meta_tag
