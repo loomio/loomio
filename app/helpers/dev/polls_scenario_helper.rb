@@ -262,16 +262,7 @@ module Dev::PollsScenarioHelper
   end
 
   def alternative_poll_option_selection (poll_option_ids, i)
-    case i % 4
-    when 0
-      poll_option_ids.last(3)
-    when 1
-      poll_option_ids.select(&:even?)
-    when 2
-      poll_option_ids.select(&:odd?)
-    when 3
-      poll_option_ids[0...-3]
-    end.map {|id| {poll_option_id: id}}
+    poll_option_ids.each_with_index.map {|id, j| {poll_option_id: id, score: (i+j)%3}}
   end
 
   def poll_meeting_populated_scenario(poll_type:)
