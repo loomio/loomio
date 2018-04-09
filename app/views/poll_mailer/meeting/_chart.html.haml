@@ -8,6 +8,16 @@
           %div= @info.display_day  option.name, @info.time_zone
           %div= @info.display_date option.name, @info.time_zone
   %tbody
+    %tr
+      %td= t(:"poll_meeting_vote_form.can_attend")
+      - @info.poll.meeting_score_tallies.each do |option, tally|
+        %td.poll-mailer-meeting__cell
+          %span= "#{tally[:yes].to_i}"
+    %tr
+      %td= t(:"poll_meeting_vote_form.if_need_be")
+      - @info.poll.meeting_score_tallies.each do |option, tally|
+        %td.poll-mailer-meeting__cell
+          %span= "#{tally[:maybe].to_i}"
     - @info.poll.stances.latest.each do |stance|
       %tr
         %td.poll-mailer-meeting__participant-name= stance.participant.name
@@ -16,19 +26,8 @@
             -# TODO: this can be done more efficiently
             - case stance.stance_choices.find_by(poll_option:option)&.score.to_i
             - when 0
-              = image_tag "poll_mailer/vote-icon-disagree.png", alt: "disagree icon", class: "poll-mailer-meeting__option-icon"
+              -# = image_tag "poll_mailer/vote-icon-disagree.png", alt: "disagree icon", class: "poll-mailer-meeting__option-icon"
             - when 1
               = image_tag "poll_mailer/vote-icon-abstain.png", alt: "abstain icon", class: "poll-mailer-meeting__option-icon"
             - when 2
               = image_tag "poll_mailer/vote-icon-agree.png", alt: "agree icon", class: "poll-mailer-meeting__option-icon"
-
-    %tr
-      %td= t(:"poll_meeting_chart_legend.can_attend")
-      - @info.poll.meeting_score_tallies.each do |option, tally|
-        %td.poll-mailer-meeting__cell
-          %span= "#{tally[:yes].to_i}"
-    %tr
-      %td= t(:"poll_meeting_chart_legend.maybe_attend")
-      - @info.poll.meeting_score_tallies.each do |option, tally|
-        %td.poll-mailer-meeting__cell
-          %span= "#{tally[:maybe].to_i}"

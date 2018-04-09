@@ -1266,9 +1266,9 @@ en:
       helptext_on: Participants may add their own options when voting.
       helptext_off: Participants will select from the options you provide.
     can_respond_maybe:
-      title: Voters may respond maybe
-      helptext_on:  Participants may indicate times as 'maybe'
-      helptext_off: Participant will indicate yes or no for each time
+      title: Voters can respond "if need be"
+      helptext_on:  Voters can indicate times as "If need be"
+      helptext_off: Voters will indicate yes or no for each time
   poll_common_close_form:
     title: Close a poll early
     helptext: Are you sure you're ready to close early?
@@ -1526,20 +1526,15 @@ en:
   poll_meeting_chart_panel:
     total: Total
 
-  poll_meeting_chart_legend:
-    can_attend: "Can Attend"
-    maybe_attend: "If Need Be"
-
   poll_poll_vote_form:
     stance_created: Vote created
     stance_updated: Vote updated
 
   poll_meeting_vote_form:
-    respond_yes: "Can attend"
-    respond_no: "Unable"
-    respond_maybe: If Need Be
+    can_attend: "Can attend"
+    unable: "Unable"
+    if_need_be: If need be
     your_response: When can you attend?
-    maybe_help_text: click twice for 'If need be'
     stance_created: Availability saved
     stance_updated: Availability updated
     reason_placeholder: Explain when you're free (or busy), in case the author wants to add options.
