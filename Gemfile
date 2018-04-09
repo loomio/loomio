@@ -37,6 +37,7 @@ gem 'sass-rails'
 gem 'uuidtools'
 gem 'ahoy_matey', '~> 2'
 gem 'ahoy_email', '~> 0.3.1'
+gem 'maxminddb'
 gem 'oj'
 gem 'snorlax'
 gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
