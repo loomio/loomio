@@ -1,4 +1,6 @@
 class PersonalDataController < ActionController::Base
+  layout "basic"
+  
   def index
     # list and explain the tables we have for someone
   end

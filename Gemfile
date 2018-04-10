@@ -54,7 +54,6 @@ gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'skylight'
-gem 'timber', '~> 2.6'
 
 group :development, :test do
   gem 'byebug'

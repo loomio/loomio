@@ -1,0 +1,29 @@
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #f7f7ed;
+  color: rgba(0,0,0,0.9);
+  margin: 1em auto;
+  max-width: 800px;
+}
+
+header {
+  text-align: center;
+  img {
+    max-height: 100px;
+    max-width: 100%;
+    margin: 1em auto;
+  }
+}
+
+footer {
+}
+
+main {
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 20px;
+  box-shadow: 1px 1px 4px #999;
+}
