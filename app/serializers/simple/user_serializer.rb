@@ -2,13 +2,13 @@ class Simple::UserSerializer < ActiveModel::Serializer
   include LastNotified
 
   embed :ids, include: true
-  attributes :id, :key, :name, :username, :avatar_kind, :avatar_initials, :gravatar_md5, :avatar_url
+  attributes :id, :key, :name, :username, :avatar_kind, :avatar_initials, :email_hash, :avatar_url
 
-  def gravatar_md5
+  def email_hash
     Digest::MD5.hexdigest(object.email.to_s.downcase)
   end
 
-  def include_gravatar_md5?
+  def include_email_hash?
     object.avatar_kind == 'gravatar'
   end
 

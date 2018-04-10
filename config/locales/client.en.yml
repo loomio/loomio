@@ -410,6 +410,12 @@ en:
     notified_count: '{{count}} people will be emailed'
 
   announcement:
+    audiences:
+      formal_group: Members of group
+      discussion_group: Members of thread
+      voters: People who have voted
+      non_voters: People who have not voted
+
     form:
       group_helptext: Who would you like to add to the group?
       discussion_helptext: Who would you like to invite to the thread?

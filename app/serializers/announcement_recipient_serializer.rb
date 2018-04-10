@@ -1,11 +1,11 @@
 class AnnouncementRecipientSerializer < ActiveModel::Serializer
-  attributes :id, :email, :name, :username, :avatar_kind, :avatar_initials, :avatar_url, :gravatar_md5, :blank
+  attributes :id, :email, :name, :username, :avatar_kind, :avatar_initials, :avatar_url, :email_hash, :blank
 
   def blank
     "" # because md-autocomplete needs something blank to put in md-item-text :(
   end
 
-  def gravatar_md5
+  def email_hash
     Digest::MD5.hexdigest(object.email.to_s.downcase)
   end
 
@@ -15,10 +15,6 @@ class AnnouncementRecipientSerializer < ActiveModel::Serializer
 
   def include_avatar_initials?
     object.avatar_kind == 'initials'
-  end
-
-  def include_gravatar_md5?
-    object.avatar_kind == 'gravatar'
   end
 
   def include_avatar_url?

@@ -9,6 +9,6 @@ module.exports = class MemberModel extends BaseModel
     # munge member values so that they respond well to the %user_avatar directive
     @avatarKind = @logoType
     switch @avatarKind
-      when 'gravatar' then @gravatarMd5    = @logoUrl
+      when 'gravatar' then @emailHash    = @logoUrl
       when 'initials' then @avatarInitials = @logoUrl
       when 'uploaded' then @avatarUrl      = { small: @logoUrl }

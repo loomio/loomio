@@ -1,5 +1,7 @@
 module.exports = new class HasGuestGroup
   apply: (model) ->
+    model.eventable = -> model
+    
     model.guestGroup = ->
       @recordStore.groups.find(@guestGroupId)
 

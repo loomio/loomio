@@ -48,6 +48,7 @@ module.exports = class GroupModel extends BaseModel
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
     @belongsTo 'parent', from: 'groups'
 
+
   hasRelatedDocuments: ->
     @hasDocuments() or @allDocuments().length > 0
 

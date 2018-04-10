@@ -16,6 +16,7 @@ module.exports = class DiscussionModel extends BaseModel
   @draftParent: 'group'
   @draftPayloadAttributes: ['title', 'description']
   @serializableAttributes: AppConfig.permittedParams.discussion
+  @audiences: ['formal_group', 'discussion_group']
 
   afterConstruction: ->
     @private = @privateDefaultValue() if @isNew()

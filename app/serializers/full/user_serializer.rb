@@ -28,7 +28,7 @@ class Full::UserSerializer < UserSerializer
     object.adminable_group_ids.any?
   end
 
-  def include_gravatar_md5?
+  def include_email_hash?
     true
   end
 

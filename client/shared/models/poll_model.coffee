@@ -14,6 +14,7 @@ module.exports = class PollModel extends BaseModel
   @serializableAttributes: AppConfig.permittedParams.poll
   @draftParent: 'draftParent'
   @draftPayloadAttributes: ['title', 'details']
+  @audiences: ['formal_group', 'discussion_group', 'voters', 'non_voters']
 
   afterConstruction: ->
     HasDocuments.apply @, showTitle: true

@@ -1,7 +1,7 @@
 class AnnouncementService
   class UnknownAudienceKindError < Exception; end
 
-  def self.audience_for(model, kind)
+  def self.audience_for(model, kind, actor)
     case kind
     when 'formal_group'
       Queries::UsersByVolumeQuery.normal_or_loud(model.group)
@@ -13,7 +13,7 @@ class AnnouncementService
       model.poll.undecided
     else
       raise UnknownAudienceKindError.new
-    end
+    end.where.not(id: actor.id)
   end
 
   def self.create(model:, params:, actor:)

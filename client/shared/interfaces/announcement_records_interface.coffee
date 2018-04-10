@@ -12,6 +12,12 @@ module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
 
   buildFromModel: (model) ->
     @build
-      modelType: model.eventableType || _.capitalize(model.constructor.singular)
-      modelId:   model.eventableId || model.id
+      model:     model.eventable()
       kind:      model.kind || "#{model.constructor.singular}_announced"
+
+  fetchAudience: (model, kind) ->
+    @remote.fetch
+      path: 'audience'
+      params:
+        "#{model.constructor.singular}_id": model.id
+        kind: kind

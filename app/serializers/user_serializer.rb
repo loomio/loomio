@@ -2,7 +2,7 @@ class UserSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :name, :username, :short_bio, :avatar_initials, :avatar_kind,
-             :avatar_url, :gravatar_md5, :time_zone, :search_fragment, :label,
+             :avatar_url, :email_hash, :time_zone, :search_fragment, :label,
              :locale, :location, :created_at, :email_verified, :has_password,
              :last_seen_at
 
@@ -14,11 +14,11 @@ class UserSerializer < ActiveModel::Serializer
     username
   end
 
-  def gravatar_md5
+  def email_hash
     Digest::MD5.hexdigest(object.email.to_s.downcase)
   end
 
-  def include_gravatar_md5?
+  def include_email_hash?
     object.avatar_kind == 'gravatar'
   end
 

@@ -9,7 +9,7 @@ module.exports = class AnnouncementModel extends BaseModel
     recipients: []
 
   serialize: ->
-    "#{@modelType.toLowerCase()}_id": @modelId
+    "#{@modelName()}_id": @model.id
     announcement:
       kind: @kind
       recipients:
@@ -17,4 +17,4 @@ module.exports = class AnnouncementModel extends BaseModel
         emails:   _.compact _.map @recipients, (r) -> r.email unless r.id
 
   modelName: ->
-    @modelType.toLowerCase()
+    @model.constructor.singular

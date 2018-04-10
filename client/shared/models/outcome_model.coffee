@@ -12,6 +12,9 @@ module.exports = class OutcomeModel extends BaseModel
   @serializableAttributes: AppConfig.permittedParams.outcome
   @draftParent: 'poll'
   @draftPayloadAttributes: ['statement']
+  @audiences: ['formal_group', 'discussion_group', 'voters']
+
+  eventable: -> @
 
   defaultValues: ->
     statement: ''

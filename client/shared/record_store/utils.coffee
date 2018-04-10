@@ -1,5 +1,6 @@
 module.exports =
   new class Utils
+    parseJSONList: (data) -> _.map(data, @parseJSON)
     parseJSON: (json) ->
       attributes = transformKeys(json, _.camelCase)
       _.each _.keys(attributes), (name) =>

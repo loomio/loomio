@@ -17,7 +17,7 @@
       %li.change-picture-form__option
         %md-button.lmo-flex{ng-click: "submit('gravatar')"}
           .user-avatar.lmo-box--small.lmo-margin-right
-            %img.user-avatar__img.lmo-box--small{gravatar-src-once: "user.gravatarMd5", alt: "{{::user.name}}"}
+            %img.user-avatar__img.lmo-box--small{gravatar-src-once: "user.emailHash", alt: "{{::user.name}}"}
           %span{translate: "change_picture_form.use_gravatar"}
       %li.change-picture-form__option
         %md-button.lmo-flex.change-picture-form__upload-button{ng-click: "selectFile()"}
