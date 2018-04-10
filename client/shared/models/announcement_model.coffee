@@ -4,24 +4,17 @@ AppConfig = require 'shared/services/app_config.coffee'
 module.exports = class AnnouncementModel extends BaseModel
   @singular: 'announcement'
   @plural: 'announcements'
-  @indices: ['id', 'userId']
-  @serializableAttributes: AppConfig.permittedParams.announcement
 
   defaultValues: ->
     recipients: []
 
-  relationships: ->
-    @belongsTo 'user'
-    @belongsTo 'event'
-
-  totalInvited: ->
-    0
-
-  model: ->
-    if @event()
-      @event().model()
-    else
-      @recordStore["#{@modelType.toLowerCase()}s"].find(@modelId)
+  serialize: ->
+    "#{@modelType.toLowerCase()}_id": @modelId
+    announcement:
+      kind: @kind
+      recipients:
+        user_ids: _.compact _.map @recipients, (r) -> r.id    if     r.id
+        emails:   _.compact _.map @recipients, (r) -> r.email unless r.id
 
   modelName: ->
-    @model().constructor.singular
+    @modelType.toLowerCase()

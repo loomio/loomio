@@ -27,14 +27,10 @@ EventBus.configure do |config|
                 'comment_create',
                 'poll_create') { |model, actor| model.perform_draft_purge!(actor) }
 
-  # Add creator to group on group creation
-  config.listen('group_create') do |group, actor|
-    if actor.is_logged_in?
-      group.add_admin! actor
-    elsif actor.email.present?
-      InvitationService.invite_creator_to_group(group: group, creator: actor)
-    end
-  end
+  # Make creator a guest group admin on creation
+  config.listen('group_create',
+                'discussion_create',
+                'poll_create') { |model, actor| model.guest_group.add_admin!(actor) }
 
   # Index search vectors after model creation
   config.listen('discussion_create',
@@ -46,9 +42,6 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # add poll creator as admin of guest group
-  config.listen('poll_create') { |poll, actor| poll.guest_group.add_admin!(actor) }
-
   # mark invitations with the new user's email as used
   config.listen('user_added_to_group_event', 'user_joined_group_event') do |event|
     event.eventable.group.invitations.pending
@@ -56,13 +49,9 @@ EventBus.configure do |config|
          .update_all(accepted_at: event.created_at || Time.now)
   end
 
-  # add creator to group if one doesn't exist
-  config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
-
   # send memos to client side after comment change
   config.listen('comment_destroy')  { |comment|  Memos::CommentDestroyed.publish!(comment) }
   config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
-
 
   config.listen('event_remove_from_thread') do |event|
     MessageChannelService.publish_model(event, serializer: Events::BaseSerializer)
@@ -114,7 +103,4 @@ EventBus.configure do |config|
 
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
-
-  # add guests to guest group of eventable
-  config.listen('announcement_create') { |announcement| announcement.announce_and_invite! }
 end

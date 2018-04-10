@@ -7,6 +7,7 @@ class AnnouncementService
       emails:   params.dig(:recipients, :emails),
       user_ids: params.dig(:recipients, :user_ids)
     ).invite!
+    EventBus.broadcast('announcement_create', model, actor, params)
     Events::AnnouncementCreated.bulk_publish! model, actor, inviter.invited_memberships, params[:kind]
   end
 end

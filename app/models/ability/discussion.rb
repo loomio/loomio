@@ -30,7 +30,7 @@ module Ability::Discussion
       user_is_admin_of?(discussion.group_id)
     end
 
-    can :update, ::Discussion do |discussion|
+    can [:update, :announce], ::Discussion do |discussion|
       user.email_verified? &&
       if discussion.group.members_can_edit_discussions?
         user_is_member_of?(discussion.group_id)

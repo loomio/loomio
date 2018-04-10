@@ -8,6 +8,3 @@
   %md-list
     %md-list-item.announcement-form__list-item{ng-repeat: "recipient in announcement.recipients | orderBy:'name' track by recipient.name"}
       %announcement_chip{user: "recipient", show-close: "true"}
-
-  %announcement_shareable_link{model: "announcement.model()"}
-  %announcement_member_list{ng-if: "announcement.expanded", model: "announcement.model()"}

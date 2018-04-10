@@ -11,6 +11,7 @@ module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
         q: query
 
   buildFromModel: (model) ->
-    switch model.constructor.singular
-      when 'event' then @build(eventId: model.id)
-      else              @build(modelId: model.id, modelType: _.capitalize(model.constructor.singular))
+    @build
+      modelType: model.eventableType || _.capitalize(model.constructor.singular)
+      modelId:   model.eventableId || model.id
+      kind:      model.kind || "#{model.constructor.singular}_announced"
