@@ -8,7 +8,7 @@ class PollOption < ApplicationRecord
   has_many :stances, through: :stance_choices
 
   def total_score
-    @total_score ||= stance_choices.sum(:score)
+    @total_score ||= stance_choices.latest.sum(:score)
   end
 
   def color
