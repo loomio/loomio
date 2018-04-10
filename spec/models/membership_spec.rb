@@ -16,6 +16,12 @@ describe Membership do
     end
   end
 
+  describe 'token' do
+    it 'generates a token on initialize' do
+      expect(membership.token).to be_present
+    end
+  end
+
   it "can have an inviter" do
     membership = user.memberships.new(:group_id => group.id)
     membership.inviter = user2

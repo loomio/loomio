@@ -4,11 +4,12 @@ class User < ApplicationRecord
   include MessageChannel
   include HasExperiences
   include HasAvatar
-  # include UsesWithoutScope
   include SelfReferencing
   include NoForbiddenEmails
   include HasMailer
   include CustomCounterCache::Model
+
+  extend HasTokens
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
@@ -111,9 +112,9 @@ class User < ApplicationRecord
           dependent: :destroy
 
   before_validation :generate_username
-  before_save :set_avatar_initials,
-              :ensure_unsubscribe_token,
-              :ensure_email_api_key
+  before_save :set_avatar_initials
+  initialized_with_token :unsubscribe_token, -> { Devise.friendly_token }
+  initialized_with_token :email_api_key,     -> { SecureRandom.hex(16) }
 
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
@@ -297,23 +298,8 @@ class User < ApplicationRecord
 
   private
 
-  def ensure_email_api_key
-    self.email_api_key ||= SecureRandom.hex(16)
-  end
-
   def ensure_recaptcha
     return if Clients::Recaptcha.instance.validate(self.recaptcha)
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
-  end
-
-  def ensure_unsubscribe_token
-    if unsubscribe_token.blank?
-      found = false
-      while not found
-        token = Devise.friendly_token
-        found = true unless self.class.where(:unsubscribe_token => token).exists?
-      end
-      self.unsubscribe_token = token
-    end
   end
 end

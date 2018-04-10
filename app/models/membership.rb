@@ -8,8 +8,9 @@ class Membership < ApplicationRecord
   include UsesOrganisationScope
 
   extend FriendlyId
+  extend HasTokens
   friendly_id :token
-  has_secure_token :token
+  initialized_with_token :token
 
   validates_presence_of :group, :user, :volume
   validates_uniqueness_of :user_id, scope: :group_id
@@ -48,7 +49,6 @@ class Membership < ApplicationRecord
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
-  delegate :token, to: :invitation, allow_nil: true
   delegate :target_model, to: :invitation, allow_nil: true
   delegate :mailer, to: :user
 
