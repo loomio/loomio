@@ -29,6 +29,45 @@ describe API::AnnouncementsController do
     sign_in user
   end
 
+  describe 'audience' do
+    let(:group)      { create :formal_group }
+    let(:discussion) { create :discussion, group: group }
+
+    it 'formal_group' do
+      get :audience, params: {discussion_id: discussion.id, kind: "formal_group"}
+      json = JSON.parse response.body
+      expect(json.map {|u| u['id']}.sort).to eq group.member_ids.sort
+    end
+
+    it 'discussion_group' do
+      guest = create :user
+      discussion.guest_group.add_member! guest
+      get :audience, params: {discussion_id: discussion.id, kind: "discussion_group"}
+      json = JSON.parse response.body
+      expect(json.map {|u| u['id']}.sort).to eq Array(guest.id)
+    end
+
+    it 'voters' do
+      poll = create :poll, author: user
+      stance = create :stance, poll: poll
+      get :audience, params: {poll_id: poll.id, kind: "voters"}
+      json = JSON.parse response.body
+      expect(json.map {|u| u['id']}.sort).to eq Array(stance.participant.id)
+    end
+
+    it 'non_voters' do
+      poll = create :poll, author: user
+      guest = create :user
+      stance = create :stance, poll: poll
+      poll.guest_group.add_member! guest
+
+      get :audience, params: {poll_id: poll.id, kind: "non_voters"}
+      json = JSON.parse response.body
+      expect(json.map {|u| u['id']}.sort).to include guest.id
+      expect(json.map {|u| u['id']}.sort).to_not include stance.participant.id
+    end
+  end
+
   describe 'bulk_create' do
     it 'creates announcement_created records'
     it 'creates users by email'

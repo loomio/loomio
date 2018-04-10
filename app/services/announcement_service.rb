@@ -1,4 +1,21 @@
 class AnnouncementService
+  class UnknownAudienceKindError < Exception; end
+
+  def self.audience_for(model, kind)
+    case kind
+    when 'formal_group'
+      Queries::UsersByVolumeQuery.normal_or_loud(model.group)
+    when 'discussion_group'
+      Queries::UsersByVolumeQuery.normal_or_loud(model.discussion&.guest_group)
+    when 'voters'
+      model.poll.participants
+    when 'non_voters'
+      model.poll.undecided
+    else
+      raise UnknownAudienceKindError.new
+    end
+  end
+
   def self.create(model:, params:, actor:)
     actor.ability.authorize! :announce, model
     inviter = GroupInviter.new(

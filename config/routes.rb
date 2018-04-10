@@ -178,7 +178,10 @@ Loomio::Application.routes.draw do
     end
 
     resources :announcements, only: [:create] do
-      get :search, on: :collection
+      collection do
+        get :audience
+        get :search
+      end
     end
 
     resources :contact_messages, only: :create
