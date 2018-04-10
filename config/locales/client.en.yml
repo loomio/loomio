@@ -411,12 +411,15 @@ en:
 
   announcement:
     form:
+      group_helptext: Who would you like to add to the group?
       discussion_helptext: Who would you like to invite to the thread?
       poll_helptext: Who would you like to invite to this decision?
       outcome_helptext: Who would you like to notify of this outcome?
       get_shareable_link: Get shareable link
       shareable_link_helptext: Anyone with this link will be able to participate
-      placeholder: Enter groups, names, or email addresses
+      placeholder: Enter names or email addresses...
+      group:
+        title: Invite to group
       discussion:
         title: Share thread
       poll:
