@@ -31,10 +31,4 @@ Loomio::Application.configure do
 
   config.serve_static_files = true
   config.action_mailer.raise_delivery_errors = true
-
-  # Install the Timber.io logger, send logs over STDOUT. Actual log delivery
-  # to the Timber service is handled external of this application.
-  logger = Timber::Logger.new(STDOUT)
-  logger.level = config.log_level
-  config.logger = ActiveSupport::TaggedLogging.new(logger)
 end
