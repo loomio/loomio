@@ -11,10 +11,10 @@ angular.module('loomioApp').factory 'GroupModal', ->
     applySequence $scope,
       steps: ->
         if $scope.group.isNew() or $scope.group.parentId
-          ['create', 'invite']
+          ['create', 'announce']
         else
           ['create']
-      createComplete: (_, g) ->
-        $scope.invitationForm = Records.invitationForms.build(groupId: g.id)
-        LmoUrlService.goTo LmoUrlService.group(g)
+      createComplete: (_, group) ->
+        $scope.announcement = Records.announcements.buildFromModel(group)
+        LmoUrlService.goTo LmoUrlService.group(group)
   ]
