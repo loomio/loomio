@@ -3,8 +3,15 @@
 }
 
 .membership-card__search {
-  width: 100%;
   margin: 0;
+  width: 0;
+  visibility: hidden;
+  transition: width 0.25s ease-in-out;
+  &--open {
+    visibility: visible;
+    width: 100%;
+  }
+
   .md-button--tiny {
     position: absolute;
     right: 0;

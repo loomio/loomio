@@ -11,12 +11,15 @@ angular.module('loomioApp').directive 'membershipCard', ->
   controller: ['$scope', ($scope) ->
     $scope.loader = new RecordLoader
       collection: 'memberships'
+      per: 1
       params:
         group_id: $scope.group.id
+    $scope.loader.fetchRecords() if AbilityService.canViewMemberships($scope.group)
 
     $scope.toggleSearch = ->
       $scope.fragment = ''
-      $scope.searchExpanded = !$scope.searchExpanded
+      $scope.searchOpen = !$scope.searchOpen
+      setTimeout -> document.querySelector('.membership-card__search input').focus()
 
     $scope.showLoadMore = ->
       !$scope.fragment
@@ -38,8 +41,5 @@ angular.module('loomioApp').directive 'membershipCard', ->
     $scope.fetchMemberships = ->
       return unless $scope.fragment
       Records.memberships.fetchByNameFragment($scope.fragment, $scope.group.key)
-
-    if AbilityService.canViewMemberships($scope.group)
-      Records.memberships.fetchByGroup $scope.group.key, per: 10
 
   ]

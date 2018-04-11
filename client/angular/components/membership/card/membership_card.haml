@@ -1,11 +1,11 @@
 %section.membership-card.lmo-card.lmo-no-print{aria-labelledby: "membership-card-title"}
   .lmo-flex--row
-    %h2#membership-card-title.membership-card__title.lmo-card-heading{translate: "group_page.members", translate-value-count: "{{group.membershipsCount}}", ng-if: "!searchExpanded"}
-    %md-button.md-button--tiny{ng-click: "toggleSearch()", ng-if: "!searchExpanded"}
+    %h2#membership-card-title.membership-card__title.lmo-truncate.lmo-card-heading{translate: "group_page.members", translate-value-count: "{{group.membershipsCount}}", ng-if: "!searchOpen"}
+    %md-button.md-button--tiny{ng-click: "toggleSearch()", ng-if: "!searchOpen"}
       %i.mdi.mdi-magnify
-    %md-input-container.membership-card__search.md-block.md-no-errors{ng-show: "searchExpanded", md-no-float: "true"}
+    %md-input-container.membership-card__search.md-block.md-no-errors{ng-class: "{'membership-card__search--open': searchOpen}", md-no-float: "true"}
       %input.membership-page__search-filter{ng-model: "fragment", ng-model-options: "{debounce: 300}", ng-change: "fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
-      %md-button.md-button--tiny{ng-click: "toggleSearch()"}
+      %md-button.md-button--tiny{ng-if: "searchOpen", ng-click: "toggleSearch()"}
         %i.mdi.mdi-close
 
   .membership-card__membership.lmo-flex.lmo-flex__center{ng-repeat: "membership in memberships() | orderBy: '-admin' track by membership.id", data-username: "{{membership.user().username}}"}
@@ -15,8 +15,6 @@
       %outlet{name: "after-membership-user", model: "membership"}
       .membership-card__last-seen.md-caption{translate: "user_page.online_field", translate-value-value: "{{::membership.user().lastSeenAt | timeFromNowInWords}}", ng-if: "::membership.user().lastSeenAt"}
     %membership_dropdown{membership: "membership"}
-  -# .md-caption
-  -#   25 of 100
   .lmo-md-actions
     %div{ng-if: "!showLoadMore()"}
     %md-button.md-accent{ng-if: "showLoadMore()", ng-click: "loader.loadMore()", translate: "common.action.load_more"}
