@@ -3,7 +3,7 @@ class API::PollsController < API::RestfulController
 
   def show
     self.resource = load_and_authorize(:poll)
-    respond_with_resource(scope: default_scope.merge(invitation: invitation_from_token))
+    respond_with_resource
   end
 
   def index

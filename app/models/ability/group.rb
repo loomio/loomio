@@ -76,8 +76,7 @@ module Ability::Group
     can :join, ::Group do |group|
       user.email_verified? &&
       can?(:show, group) &&
-      (group.membership_granted_upon_request? ||
-       group.invitations.useable.find_by(recipient_email: user.email))
+      group.membership_granted_upon_request?
     end
 
     can :start_poll, ::Group do |group|
