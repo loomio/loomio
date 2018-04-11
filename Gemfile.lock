@@ -520,8 +520,6 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    timber (2.6.1)
-      msgpack (~> 1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.8)
@@ -632,7 +630,6 @@ DEPENDENCIES
   spring-commands-rspec
   sprockets-rails
   stackprof
-  timber (~> 2.6)
   twitter-text!
   uglifier
   uuidtools
