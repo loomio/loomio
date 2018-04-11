@@ -3,8 +3,6 @@ path: node_modules
 css_includes:
   - angular-material/modules/scss/
   - mdi/scss
-fonts:
-  - mdi/fonts/*
 emoji:
   - emojione/assets/png/*.png
 moment_locales:
