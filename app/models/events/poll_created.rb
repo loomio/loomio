@@ -7,7 +7,6 @@ class Events::PollCreated < Event
     super poll,
           user: actor,
           parent: poll.parent_event,
-          announcement: true,
           discussion: poll.discussion
   end
 end

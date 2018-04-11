@@ -64,7 +64,6 @@ class Event < ApplicationRecord
     }.merge(args.slice(
       :user,
       :discussion,
-      :announcement,
       :custom_fields,
       :created_at
     )))

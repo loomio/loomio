@@ -340,7 +340,6 @@ describe Event do
     let(:poll) { create :poll, discussion: discussion }
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
     let(:outcome) { create :outcome, poll: poll_meeting }
-    let(:announcement) { create :announcement, event: poll.created_event }
     let(:invitation) { create :invitation, group: poll.guest_group }
 
     it 'creates an announcement' do
@@ -349,7 +348,13 @@ describe Event do
       expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(2) # the two notified_ids
     end
 
-    it 'does not email people with email_announcements off' do
+    it 'does not email people with thread quiet' do
+      announcement.announcees.create(announceable: user_thread_loud)
+      user_thread_loud.update(email_announcements: false)
+      expect { Events::AnnouncementCreated.publish!(announcement) }.to_not change { emails_sent }
+    end
+
+    it 'does not email people with group quiet' do
       announcement.announcees.create(announceable: user_thread_loud)
       user_thread_loud.update(email_announcements: false)
       expect { Events::AnnouncementCreated.publish!(announcement) }.to_not change { emails_sent }

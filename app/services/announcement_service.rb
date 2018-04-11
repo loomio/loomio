@@ -25,6 +25,6 @@ class AnnouncementService
       user_ids: params.dig(:recipients, :user_ids)
     ).invite!
     EventBus.broadcast('announcement_create', model, actor, params)
-    Events::AnnouncementCreated.bulk_publish! model, actor, inviter.invited_memberships, params[:kind]
+    Events::AnnouncementCreated.publish! model, actor, inviter.invited_memberships, params[:kind]
   end
 end
