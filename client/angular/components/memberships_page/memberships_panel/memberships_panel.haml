@@ -1,5 +1,5 @@
 .memberships-panel
-  .memberships-panel__membership.lmo-flex.lmo-flex__center{ng-repeat: "membership in memberships() | orderBy: '-admin' track by membership.id", data-username: "{{membership.user().username}}"}
+  .memberships-panel__membership.lmo-flex.lmo-flex__center{ng-repeat: "membership in group.memberships() | orderBy: '-admin' track by membership.id", data-username: "{{membership.user().username}}"}
     %user_avatar{user: "membership.user()", size: "medium", coordinator: "membership.admin"}
     .memberships-panel__user.lmo-flex.lmo-flex__grow{layout: "column"}
       %a{lmo-href-for: "membership.user()"} {{::membership.user().name}} (@{{::membership.user().username}})

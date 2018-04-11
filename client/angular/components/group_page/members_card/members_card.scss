@@ -1,13 +1,12 @@
 members_card {
   order: 60;
 }
-.members-card{
+.members-card {
   @include card;
 }
 
-.members-card__list {
-  display: flex;
-  flex-wrap: wrap;
+.members-card__member {
+  padding: 4px 0 !important;
 }
 
 .members-card__avatar-link {
@@ -16,11 +15,6 @@ members_card {
     color: $primary-text-color;
     text-decoration: none;
   }
-}
-
-.members-card__avatar{
-  // float: left;
-  margin: 0 2px 2px 0;
 }
 
 .members-card__manage-members {

@@ -1,0 +1,23 @@
+.membership-card__membership {
+  padding: 8px 0;
+}
+
+.membership-card__search {
+  width: 100%;
+  margin: 0;
+  .md-button--tiny {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.membership-card__last-seen {
+  color: $grey-on-white;
+}
+
+.membership-card__title {
+  line-height: 36px;
+}

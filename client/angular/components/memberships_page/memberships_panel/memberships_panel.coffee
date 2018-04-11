@@ -6,7 +6,7 @@ ModalService   = require 'shared/services/modal_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
 angular.module('loomioApp').directive 'membershipsPanel', ->
-  scope: {memberships: '=', group: '='}
+  scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/components/memberships_page/memberships_panel/memberships_panel.html'
   replace: true
