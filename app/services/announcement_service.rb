@@ -4,9 +4,9 @@ class AnnouncementService
   def self.audience_for(model, kind, actor)
     case kind
     when 'formal_group'
-      Queries::UsersByVolumeQuery.normal_or_loud(model.group)
+      model.group
     when 'discussion_group'
-      Queries::UsersByVolumeQuery.normal_or_loud(model.discussion&.guest_group)
+      model.discussion&.guest_group
     when 'voters'
       model.poll.participants
     when 'non_voters'

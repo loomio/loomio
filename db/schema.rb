@@ -769,7 +769,6 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.boolean "email_verified", default: false, null: false
     t.string "location", default: "", null: false
     t.datetime "last_seen_at", default: "2017-10-18 21:05:12", null: false
-    t.boolean "email_announcements", default: true, null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"
     t.index ["email"], name: "index_users_on_email"

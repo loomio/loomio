@@ -13,7 +13,7 @@ class Events::PollClosingSoon < Event
   private
 
   def email_recipients
-    notification_recipients.where(email_announcements: true)
+    notification_recipients.where(id: Queries::UsersByVolumeQuery.normal_or_loud(poll).pluck(:id))
   end
 
   def notification_recipients

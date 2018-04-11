@@ -280,11 +280,6 @@ FactoryBot.define do
     poll_option
   end
 
-  factory :announcement do
-    association :author, factory: :user
-    association :event, factory: :discussion_event
-  end
-
   factory :notification do
     user
     event

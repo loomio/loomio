@@ -21,7 +21,7 @@ class Events::AnnouncementCreated < Event
   private
 
   def email_users!
-    return unless membership.user.email_announcements
+    return unless Queries::UsersByVolumeQuery.normal_or_loud(eventable).include?(membership.user)
     eventable.send(:mailer).delay.send(custom_fields['kind'], membership.user, self)
   end
 
