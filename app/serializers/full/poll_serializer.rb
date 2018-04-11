@@ -4,7 +4,6 @@ class Full::PollSerializer < ::PollSerializer
   has_one :guest_group, serializer: Simple::GroupSerializer, root: :groups
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_many :documents, serializer: DocumentSerializer, root: :documents
-  has_one :invitation
 
   def complete
     true
@@ -16,9 +15,5 @@ class Full::PollSerializer < ::PollSerializer
 
   def removed_poll_option_ids
     object.poll_option_attributes.select { |attr| attr[:_destroy] }.map { |attr| attr[:id] }
-  end
-
-  def invitation
-    scope[:invitation]
   end
 end

@@ -3,7 +3,7 @@ class API::PollsController < API::RestfulController
 
   def show
     self.resource = load_and_authorize(:poll)
-    respond_with_resource(scope: default_scope.merge(invitation: invitation_from_token))
+    respond_with_resource
   end
 
   def index
@@ -49,15 +49,7 @@ class API::PollsController < API::RestfulController
     respond_with_resource
   end
 
-  def invite_guests
-    service.invite_guests(poll: load_resource, emails: params.require(:emails).split(','), actor: current_user)
-    respond_with_resource
-  end
-
   private
-  def invitation_from_token
-    Invitation.find_by(token: params[:invitation_token])
-  end
 
   def poll_search
     PollSearch.new(current_user)

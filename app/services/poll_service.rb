@@ -101,16 +101,6 @@ class PollService
     EventBus.broadcast('poll_toggle_subscription', poll, actor)
   end
 
-  def self.invite_guests(poll:, emails:, actor:)
-    actor.ability.authorize! :create_visitors, poll
-
-    VisitorsBatchCreateJob.perform_later(emails, poll.id, actor.id)
-    poll.pending_emails = []
-    poll.save(validate: false)
-
-    EventBus.broadcast('poll_create_visitors', poll, emails, actor)
-  end
-
   def self.cleanup_examples
     Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all
   end

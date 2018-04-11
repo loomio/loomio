@@ -20,20 +20,14 @@ module Ability::Poll
     end
 
     can :vote_in, ::Poll do |poll|
-      # cant have a token of a verified user, and be logged in as another user
-      poll.active? && (
-        poll.members.include?(user) ||
-        poll.anyone_can_participate ||
-        poll.invitations.useable.find_by(token: user.token)
-      )
+      poll.active? && (poll.members.include?(user) || poll.anyone_can_participate)
     end
 
     can [:show, :toggle_subscription, :subscribe_to], ::Poll do |poll|
       poll.anyone_can_participate ||
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
-      poll.members.include?(user) ||
-      poll.invitations.useable.pluck(:token).include?(user.token)
+      poll.members.include?(user)
     end
 
     can :create, ::Poll do |poll|

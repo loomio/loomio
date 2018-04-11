@@ -10,8 +10,9 @@
           %img{ng-src: "{{logo()}}"}
 
       .navbar__right
-        %navbar_search{ng-show: "isLoggedIn()"}
-        %notifications{ng-show: "isLoggedIn()"}
-        %user_dropdown{ng-show: "isLoggedIn()"}
+        .lmo-flex--row{ng-if: "isLoggedIn()"}
+          %navbar_search
+          %notifications
+          %user_dropdown
         %md-button.md-primary.md-raised.navbar__sign-in{ng-if: "!isLoggedIn()", ng-click: "signIn()"}>
           %span{translate: "navbar.sign_in"}

@@ -168,15 +168,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       end
     end
 
-    panel("Pending invitations") do
-      table_for group.invitations.pending.each do |invitation|
-        column :recipient_email
-        column :link do |i|
-          invitation_url(i)
-        end
-      end
-    end
-
     if group.archived_at.nil?
       panel('Archive') do
         link_to 'Archive this group', archive_admin_group_path(group), method: :post, data: {confirm: "Are you sure you wanna archive #{group.name}, pal?"}

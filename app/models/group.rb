@@ -33,8 +33,6 @@ class Group < ApplicationRecord
   define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
   define_counter_cache(:memberships_count)         { |group| group.memberships.count }
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
-  define_counter_cache(:invitations_count)         { |group| group.invitations.count }
-  define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
   define_counter_cache(:announcement_recipients_count) { |group| group.memberships.volume_at_least(:normal).count }
 
   def groups

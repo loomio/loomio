@@ -6,8 +6,9 @@ PollGenerator = Struct.new(:poll_type) do
     poll.create_guest_group
     poll.save!
     send(:"#{poll_type}_stances_for", poll)
+    poll.update(anyone_can_participate: true)
     poll.update_stance_data
-    poll.invite_guest!(email: User.demo_bot.email)
+    poll.guest_group.add_member! User.demo_bot
     poll
   end
 

@@ -5,6 +5,7 @@ module HasGuestGroup
     has_many :guests, through: :guest_group, source: :members
     has_many :guest_invitations, through: :guest_group, source: :invitations
     after_save :update_anyone_can_participate, if: :update_anyone_can_participate_value
+    delegate :shareable_invitation, to: :guest_group
     attr_accessor :update_anyone_can_participate_value
   end
 
@@ -14,16 +15,6 @@ module HasGuestGroup
 
   def guest_group
     super || create_guest_group.tap { self.save(validate: false) }
-  end
-
-  def invite_guest!(name: nil, email:, inviter: self.author)
-    self.guest_group.invitations.find_or_create_by(
-      recipient_email: email,
-      intent: invitation_intent
-    ).update(
-      recipient_name: name,
-      inviter: inviter
-    ).tap { self.guest_group.update_pending_invitations_count }
   end
 
   def group_members

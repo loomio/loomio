@@ -1,4 +1,5 @@
 AppConfig       = require 'shared/services/app_config.coffee'
+Session         = require 'shared/services/session.coffee'
 AbilityService  = require 'shared/services/ability_service.coffee'
 ModalService    = require 'shared/services/modal_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
@@ -23,7 +24,7 @@ module.exports =
     updateCover()
 
 shouldForceSignIn = (options = {}) ->
-  return false if AbilityService.isLoggedIn()
+  return false if AbilityService.isEmailVerified()
   return true  if AppConfig.pendingIdentity.identity_type?
   switch options.page
     when 'emailSettingsPage' then !Session.user().restricted?
