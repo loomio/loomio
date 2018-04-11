@@ -130,11 +130,6 @@ module.exports = class PollModel extends BaseModel
   addOptions: =>
     @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
 
-  inviteGuests: ->
-    @processing = true
-    @remote.postMember(@key, 'invite_guests', emails: @customFields.pending_emails.join(',')).finally =>
-      @processing = false
-
   toggleSubscription: =>
     @remote.postMember(@key, 'toggle_subscription')
 
