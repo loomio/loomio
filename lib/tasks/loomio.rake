@@ -14,7 +14,7 @@ namespace :loomio do
         f << "<!-- Don't make changes here; they will be overwritten. -->\n"
         f << ApplicationController.new.render_to_string(
           template: "errors/#{code}",
-          layout: "errors"
+          layout: "basic"
         )
       end
     end

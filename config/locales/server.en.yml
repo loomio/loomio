@@ -557,6 +557,10 @@ en:
 
   comment_by: Comment by %{comment_author}
 
+  personal_data:
+    title: Personal data of %{user_name} in on %{host_name}
+
+
   poll_generator:
     proposal:
       title: "Extend offer letters to Shelley and Jack"

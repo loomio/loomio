@@ -34,8 +34,10 @@ gem 'http_accept_language'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'uglifier'
 gem 'sass-rails'
-gem 'ahoy_matey', github: 'gdpelican/ahoy', branch: 'user-presence'
+gem 'uuidtools'
+gem 'ahoy_matey', '~> 2'
 gem 'ahoy_email', '~> 0.3.1'
+gem 'maxminddb'
 gem 'oj'
 gem 'snorlax'
 gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
@@ -52,7 +54,6 @@ gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'skylight'
-gem 'timber', '~> 2.6'
 
 group :development, :test do
   gem 'byebug'
