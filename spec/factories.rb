@@ -246,6 +246,16 @@ FactoryBot.define do
     association :guest_group, factory: :guest_group
   end
 
+  factory :poll_dot_vote, class: Poll do
+    poll_type "dot_vote"
+    title "This is a dot vote"
+    details "with a description"
+    association :author, factory: :user
+    poll_option_names %w(apple banana orange)
+    custom_fields dots_per_person: 8
+    association :guest_group, factory: :guest_group
+  end
+
   factory :poll_meeting, class: Poll do
     poll_type "meeting"
     title "This is a meeting"

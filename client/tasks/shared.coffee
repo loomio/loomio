@@ -4,9 +4,6 @@ replace = require 'gulp-replace'
 paths   = require './paths.coffee'
 
 module.exports =
-  fonts: ->
-    gulp.src(paths.shared.fonts).pipe(gulp.dest(paths.dist.fonts))
-
   emoji: ->
     gulp.src(paths.shared.emojis).pipe(gulp.dest(paths.dist.emojis))
 

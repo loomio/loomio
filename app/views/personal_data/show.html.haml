@@ -1,0 +1,10 @@
+-# where we display data for a user given a table name
+%table
+  %thead
+    - @records.column_names.each do |column|
+      %td=column
+  %tbody
+    - @records.each do |record|
+      %tr
+        - @records.column_names.each do |column|
+          %td= record.send(column)
