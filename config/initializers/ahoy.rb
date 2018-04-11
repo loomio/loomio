@@ -1,7 +1,7 @@
 Ahoy.cookie_domain = :all
 Ahoy.visit_duration = 30.minutes
 Ahoy.geocode = :async
-Ahoy.track_visits_immediately = true if Rails.env.test?
+# Ahoy.track_visits_immediately = true if Rails.env.test?
 Ahoy.api = true
 Ahoy.server_side_visits = :when_needed
 
