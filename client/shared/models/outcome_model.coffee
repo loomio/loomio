@@ -14,8 +14,6 @@ module.exports = class OutcomeModel extends BaseModel
   @draftPayloadAttributes: ['statement']
   @audiences: ['formal_group', 'discussion_group', 'voters']
 
-  eventable: -> @
-
   defaultValues: ->
     statement: ''
     customFields: {}
