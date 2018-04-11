@@ -59,6 +59,26 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.index ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type"
   end
 
+  create_table "announcees", force: :cascade do |t|
+    t.bigint "announcement_id"
+    t.string "announceable_type"
+    t.bigint "announceable_id"
+    t.jsonb "user_ids", default: [], null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announceable_type", "announceable_id"], name: "index_announcees_on_announceable_type_and_announceable_id"
+    t.index ["announcement_id"], name: "index_announcees_on_announcement_id"
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.jsonb "invitation_ids", default: [], null: false
+    t.jsonb "user_ids", default: [], null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "author_id", default: 0
+    t.integer "event_id"
+  end
+
   create_table "attachments", force: :cascade do |t|
     t.integer "user_id"
     t.string "filename", limit: 255
