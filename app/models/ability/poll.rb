@@ -6,10 +6,6 @@ module Ability::Poll
       can? :view_pending_invitations, poll.guest_group
     end
 
-    can :view_shareable_invitation, ::Poll do |poll|
-      can? :view_shareable_invitation, poll.guest_group
-    end
-
     can :make_draft, ::Poll do |poll|
       user.is_logged_in? && can?(:show, poll)
     end

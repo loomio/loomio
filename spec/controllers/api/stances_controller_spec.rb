@@ -159,7 +159,7 @@ describe API::StancesController do
   describe 'create' do
     let(:group)      { create :guest_group }
     let(:another_user) { create :user, email: 'another_user@example.com', email_verified: false }
-    let(:invitation) { create :invitation, recipient_email: 'user@example.com', group: group, intent: :join_poll }
+    let(:membership) { create :membership, user: build(:user, email: 'user@example.com'), group: group }
     let(:user)       { create :user, email: 'user@example.com', email_verified: false }
     let(:poll)       { create :poll, guest_group: group }
     let(:poll_option) { create :poll_option, poll: poll }
@@ -238,10 +238,8 @@ describe API::StancesController do
     end
 
     describe 'mass invitation' do
-      let(:invitation) { create :shareable_invitation, group: poll.guest_group, inviter: poll.author, intent: :join_poll }
-
       before do
-        invitation
+        poll.update(anyone_can_participate: true)
         user
       end
 
@@ -249,7 +247,7 @@ describe API::StancesController do
         # add to group and create stance
         user.update(email_verified: true)
         sign_in user
-        expect { post :create, params: { stance: stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
+        expect { post :create, params: { stance: stance_params} }.to change { Stance.count }.by(1)
         expect(Stance.last.participant).to eq user
         expect(poll.members).to include user
       end
@@ -258,7 +256,7 @@ describe API::StancesController do
         it 'user enters verified users email' do
           user.update(email_verified: true)
           # create stance and unverified user, send claim_or_destroy (only single vote claim)
-          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params} }.to change { Stance.count }.by(1)
           stance = Stance.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
@@ -271,7 +269,7 @@ describe API::StancesController do
         it 'user enters unverified users email' do
           # create stance and unverified user -> send verify/login email
           user.update(email_verified: false)
-          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params} }.to change { Stance.count }.by(1)
           stance = Stance.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
@@ -283,7 +281,7 @@ describe API::StancesController do
 
         it 'user enters unrecognised email' do
           # create stance and unverified user -> send verify/login email
-          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params} }.to change { Stance.count }.by(1)
           stance = Stance.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]

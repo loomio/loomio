@@ -1,6 +1,10 @@
 module PrettyUrlHelper
   include Routing
 
+  def join_url(model, opts = {})
+    super opts.merge(model: model.class.downcase, token: model.guest_group.token)
+  end
+
   def discussion_url(discussion, options = {})
     super(discussion, options.merge(slug: discussion.title.parameterize))
   end

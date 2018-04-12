@@ -94,14 +94,6 @@ class FormalGroup < Group
     # NOOP: only guest groups have an invitation target
   end
 
-  def shareable_invitation
-    invitations.find_or_create_by(
-      single_use: false,
-      intent:     :join_group,
-      group:      self
-    )
-  end
-
   def logo_or_parent_logo
     if is_parent?
       logo

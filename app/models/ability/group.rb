@@ -45,8 +45,7 @@ module Ability::Group
     can [:add_members,
          :invite_people,
          :announce,
-         :manage_membership_requests,
-         :view_shareable_invitation], ::Group do |group|
+         :manage_membership_requests], ::Group do |group|
       user.email_verified? &&
       ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
       user_is_admin_of?(group.id))

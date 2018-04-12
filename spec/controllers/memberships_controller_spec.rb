@@ -10,6 +10,26 @@ describe MembershipsController do
     group.add_admin!(user)
   end
 
+  describe "join" do
+    let(:group) { create :formal_group }
+    context "logged out user" do
+      it "store pending_group_token in session" do
+        get :join, params: {model: 'group', token: group.token}
+        expect(session[:pending_group_token]).to eq group.token
+      end
+
+      it "redirect to back_to url or group" do
+        get :join, params: {model: 'group', token: group.token}
+        expect(response).to redirect_to(group_url(group))
+      end
+    end
+
+    context "logged in user" do
+      it "creates a membership"
+      it "redirects to membership show"
+    end
+  end
+
   describe "GET 'show'" do
     let(:membership) { create(:membership, token: 'abc', group: group, user: user) }
 

@@ -5,25 +5,43 @@ class MembershipsController < ApplicationController
     redirect_to membership.group
   end
 
-  def show
+  def join
+    membership = Membership.new(user: current_user, group: group_to_join)
     if current_user.is_logged_in?
-      MembershipService.redeem(membership, current_user)
+      service.create(membership: membership, actor: current_user)
+    else
+      session[:pending_group_token] = params.require(:token)
+    end
+
+    redirect_to target_url(membership)
+  end
+
+  def show
+    @membership = Membership.find_by_token!(params[:id])
+    if current_user.is_logged_in?
+      MembershipService.redeem(@membership, current_user)
       session.delete(:pending_invitation_id)
     else
       session[:pending_invitation_id] = params[:id]
     end
-
-    if back_to_param.match(/^http[s]?:\/\/#{ENV['CANONICAL_HOST']}/)
-      redirect_to back_to_param
-    else
-      redirect_to polymorphic_url(membership.target_model, membership_token: membership.token)
-    end
+    target_url
   end
 
   private
+  def target_url
+    if back_to_param.match(/^http[s]?:\/\/#{ENV['CANONICAL_HOST']}/)
+      back_to_param
+    else
+      polymorphic_url(@membership.target_model, membership_token: @membership.token)
+    end
+  end
 
-  def membership
-    @membership ||= Membership.find_by_token!(params[:id])
+  def group_to_join
+    resource_class.find_by!(token: params.require(:token)).guest_group
+  end
+
+  def resource_class
+    params.require(:model).classify.constantize
   end
 
   def back_to_param

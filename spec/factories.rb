@@ -151,12 +151,6 @@ FactoryBot.define do
     association :group, factory: :formal_group
   end
 
-  factory :shareable_invitation, class: Invitation do
-    single_use false
-    intent 'join_group'
-    association :inviter, factory: :user
-  end
-
   factory :membership_request do
     introduction { Faker::Lorem.sentence(4) }
     email { Faker::Internet.email }

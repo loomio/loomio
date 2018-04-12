@@ -86,8 +86,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       row :discussions_count
       row :memberships_count
       row :admin_memberships_count
-      row :invitations_count
-      row :pending_invitations_count
+      row :unverified_memberships_count
       row :public_discussions_count
       row :payment_plan
 

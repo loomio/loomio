@@ -5,7 +5,6 @@ module HasGuestGroup
     has_many :guests, through: :guest_group, source: :members
     has_many :guest_invitations, through: :guest_group, source: :invitations
     after_save :update_anyone_can_participate, if: :update_anyone_can_participate_value
-    delegate :shareable_invitation, to: :guest_group
     attr_accessor :update_anyone_can_participate_value
   end
 

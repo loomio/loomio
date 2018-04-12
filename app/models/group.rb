@@ -17,8 +17,6 @@ class Group < ApplicationRecord
   has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
   has_many :members, through: :memberships, source: :user
 
-  has_many :invitations, dependent: :destroy
-
   has_many :discussions, foreign_key: :group_id, dependent: :destroy
   has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
   has_many :polls, foreign_key: :group_id, dependent: :destroy

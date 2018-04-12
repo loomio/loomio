@@ -264,6 +264,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
+  get 'join/:model/:token'                    => 'memberships#join',            as: :join
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
