@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321043233) do
+ActiveRecord::Schema.define(version: 20180404223107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,27 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.index ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type"
   end
 
-  create_table "attachments", id: :serial, force: :cascade do |t|
+  create_table "announcees", force: :cascade do |t|
+    t.bigint "announcement_id"
+    t.string "announceable_type"
+    t.bigint "announceable_id"
+    t.jsonb "user_ids", default: [], null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announceable_type", "announceable_id"], name: "index_announcees_on_announceable_type_and_announceable_id"
+    t.index ["announcement_id"], name: "index_announcees_on_announcement_id"
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.jsonb "invitation_ids", default: [], null: false
+    t.jsonb "user_ids", default: [], null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "author_id", default: 0
+    t.integer "event_id"
+  end
+
+  create_table "attachments", force: :cascade do |t|
     t.integer "user_id"
     t.string "filename", limit: 255
     t.text "location"
@@ -100,7 +120,6 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.boolean "uses_markdown", default: false, null: false
     t.integer "comment_votes_count", default: 0, null: false
     t.integer "attachments_count", default: 0, null: false
-    t.text "liker_ids_and_names"
     t.datetime "edited_at"
     t.integer "versions_count", default: 0
     t.index ["created_at"], name: "index_comments_on_created_at"
@@ -108,16 +127,6 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "contact_messages", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.integer "user_id"
-    t.string "email", limit: 255
-    t.text "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "destination", limit: 255, default: "contact@loomio.org"
   end
 
   create_table "default_group_covers", id: :serial, force: :cascade do |t|
@@ -202,16 +211,19 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.boolean "pinned", default: false, null: false
     t.integer "importance", default: 0, null: false
     t.integer "seen_by_count", default: 0, null: false
+    t.integer "guest_group_id"
+    t.integer "announcements_count", default: 0, null: false
     t.string "ranges_string"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
+    t.index ["guest_group_id"], name: "index_discussions_on_guest_group_id"
     t.index ["key"], name: "index_discussions_on_key", unique: true
     t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: { last_activity_at: :desc }
     t.index ["private"], name: "index_discussions_on_private"
   end
 
-  create_table "documents", id: :serial, force: :cascade do |t|
+  create_table "documents", force: :cascade do |t|
     t.integer "model_id"
     t.string "model_type"
     t.string "title"
@@ -259,14 +271,6 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "position"], name: "index_events_on_parent_id_and_position", where: "(parent_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)"
-  end
-
-  create_table "group_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true
-    t.index ["descendant_id"], name: "group_desc_idx"
   end
 
   create_table "group_identities", id: :serial, force: :cascade do |t|
@@ -436,11 +440,13 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.integer "volume", default: 2, null: false
     t.jsonb "experiences", default: {}, null: false
     t.integer "invitation_id"
+    t.string "token"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id", "is_suspended", "archived_at"], name: "active_memberships"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
+    t.index ["token"], name: "index_memberships_on_token", unique: true
     t.index ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume"
     t.index ["user_id"], name: "index_memberships_on_user_id"
     t.index ["volume"], name: "index_memberships_on_volume"
@@ -544,7 +550,7 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.boolean "latest", default: true, null: false
     t.integer "poll_option_id"
     t.jsonb "custom_fields", default: {}, null: false
-    t.index ["poll_id"], name: "index_outcomes_on_poll_id"
+    t.integer "announcements_count", default: 0, null: false
   end
 
   create_table "poll_did_not_votes", id: :serial, force: :cascade do |t|
@@ -562,13 +568,6 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.index ["poll_id", "priority"], name: "index_poll_options_on_poll_id_and_priority"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
     t.index ["priority"], name: "index_poll_options_on_priority"
-  end
-
-  create_table "poll_references", id: :serial, force: :cascade do |t|
-    t.integer "reference_id", null: false
-    t.string "reference_type", null: false
-    t.integer "poll_id", null: false
-    t.index ["poll_id"], name: "index_poll_references_on_poll_id"
   end
 
   create_table "poll_unsubscriptions", id: :serial, force: :cascade do |t|
@@ -605,13 +604,14 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.boolean "voter_can_add_options", default: false, null: false
     t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
+    t.integer "announcements_count", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
     t.index ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true
   end
 
-  create_table "reactions", id: :serial, force: :cascade do |t|
+  create_table "reactions", force: :cascade do |t|
     t.integer "reactable_id"
     t.integer "user_id"
     t.datetime "created_at"
@@ -742,7 +742,8 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.string "short_bio", default: "", null: false
     t.boolean "email_verified", default: false, null: false
     t.string "location", default: "", null: false
-    t.datetime "last_seen_at", default: "2018-01-14 21:22:52", null: false
+    t.datetime "last_seen_at", default: "2017-10-18 21:05:12", null: false
+    t.boolean "email_announcements", default: true, null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"
     t.index ["email"], name: "index_users_on_email"
@@ -752,7 +753,7 @@ ActiveRecord::Schema.define(version: 20180321043233) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  create_table "versions", id: :serial, force: :cascade do |t|
+  create_table "versions", force: :cascade do |t|
     t.string "item_type", limit: 255, null: false
     t.integer "item_id", null: false
     t.string "event", limit: 255, null: false
