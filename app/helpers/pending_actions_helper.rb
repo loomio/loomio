@@ -10,8 +10,8 @@ module PendingActionsHelper
     end
 
     if pending_membership
-      MembershipService.redeem(pending_membership, user)
-      session.delete(:pending_membership_id)
+      MembershipService.redeem(membership: pending_membership, actor: user)
+      session.delete(:pending_membership_token)
     end
 
     if pending_identity
@@ -29,7 +29,7 @@ module PendingActionsHelper
   end
 
   def pending_membership
-    @pending_membership ||= Membership.find_by(token: session[:pending_membership_id]) if session[:pending_membership_id]
+    @pending_membership ||= Membership.find_by(token: session[:pending_membership_token]) if session[:pending_membership_token]
   end
 
   def pending_identity

@@ -24,8 +24,8 @@ class API::SessionsController < Devise::SessionsController
   def attempt_login
     if pending_token&.useable?
       pending_token.user
-    elsif pending_invitation
-      User.verified.find_by(email: pending_invitation.email)
+    elsif pending_membership
+      pending_membership.user.verified_or_self
     elsif resource_params[:code]
       login_token_user
     else

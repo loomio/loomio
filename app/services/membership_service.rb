@@ -1,10 +1,10 @@
 class MembershipService
 
-  def self.redeem(membership, user)
-    return true if membership.group.members.include?(user)
-    raise Membership::InvitationAlreadyUsed.new if membership.accepted?
+  def self.redeem(membership:, actor:)
+    return true if membership.group.members.include?(actor)
+    raise Membership::InvitationAlreadyUsed.new if membership.accepted_at
 
-    membership.update(user: user, accepted_at: DateTime.now)
+    membership.update(user: actor, accepted_at: DateTime.now)
 
     Events::InvitationAccepted.publish!(membership)
   end

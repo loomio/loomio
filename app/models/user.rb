@@ -181,6 +181,10 @@ class User < ApplicationRecord
     identities.find_by(identity_type: type)
   end
 
+  def verified_or_self
+    self.class.verified.find_by(email: email) || self
+  end
+
   def first_name
     name.split(' ').first
   end

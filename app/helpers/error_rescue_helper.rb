@@ -9,7 +9,7 @@ module ErrorRescueHelper
     end
 
     base.rescue_from(Membership::InvitationAlreadyUsed) do |exception|
-      session.delete(:pending_invitation_id)
+      session.delete(:pending_membership_token)
       if current_user.email == exception.invitation.recipient_email
         redirect_to formal_group_url invitation.group
       else

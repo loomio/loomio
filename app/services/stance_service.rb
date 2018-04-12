@@ -20,7 +20,7 @@ class StanceService
     return false unless stance.valid?
 
     if membership = stance.poll.guest_group.memberships.pending.find_by(token: actor.token)
-      MembershipService.redeem(membership, actor)
+      MembershipService.redeem(membership: membership, actor: actor)
     end
 
     stance.poll.stances.where(participant: actor).update_all(latest: false)
