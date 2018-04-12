@@ -126,6 +126,7 @@ en:
       remind: Remind
       resend: Resend
       send: Send
+      invite: Invite
       resent: Invitation resent
       export: Export
     formatting_help:
@@ -325,6 +326,11 @@ en:
     help: 'Help'
     contact_site_name: 'Contact {{site_name}}'
     sign_out: 'Sign out'
+
+  membership_dropdown:
+    make_coordinator: 'Make coordinator'
+    demote_coordinator: 'Demote coordinator'
+    remove_membership: 'Remove from group'
 
   start_menu:
     label: 'User actions'
@@ -556,7 +562,7 @@ en:
     open_discussions: 'Open threads'
     closed_discussions: 'Closed threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
-    members: 'Members'
+    members: '{{count}} Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
     see_all_members: 'See all {{count}} members'

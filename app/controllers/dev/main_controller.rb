@@ -136,26 +136,20 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_invitation_to_visitor
-    invitation = Invitation.create!(
-      intent: :join_group,
-      inviter: patrick,
-      group: create_group,
-      recipient_email: "max@example.com",
-      recipient_name: "Max Von Sydow"
+    membership = FactoryBot.create(:membership,
+      user: FactoryBot.create(:user, email_verified: false),
+      group: create_group
     )
-    redirect_to invitation_url(invitation.token)
+    redirect_to membership_url(membership)
   end
 
   def setup_invitation_to_user
-    invitation = Invitation.create!(
-      intent: :join_group,
-      inviter: patrick,
-      group: create_group,
-      recipient_email: jennifer.email,
-      recipient_name: jennifer.name
+    membership = FactoryBot.create(:membership,
+      user: FactoryBot.create(:user, email_verified: false),
+      group: create_group
     )
-    jennifer.memberships.find_by(group: create_group).destroy
-    redirect_to invitation_url(invitation.token)
+    verified_user = FactoryBot.create(:user, name: "Verified Vicky", email: membership.user.email, email_verified: true)
+    redirect_to membership_url(membership)
   end
 
   def setup_invitation_to_user_with_password

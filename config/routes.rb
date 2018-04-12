@@ -82,13 +82,6 @@ Loomio::Application.routes.draw do
       post :ignore, on: :member
     end
 
-    resources :invitations, only: [:index, :create, :destroy] do
-      post :bulk_create, on: :collection
-      post :resend, on: :member
-      get :pending, on: :collection
-      get :shareable, on: :collection
-    end
-
     resources :profile, only: [:show] do
       get  :me, on: :collection
       get  :email_status, on: :collection
@@ -218,9 +211,6 @@ Loomio::Application.routes.draw do
     post :webhook
   end
 
-  resources :memberships,     only: :show
-  resources :login_tokens,    only: :show
-
   resources :received_emails, only: :create
   post :email_processor, to: 'received_emails#reply'
 
@@ -264,7 +254,6 @@ Loomio::Application.routes.draw do
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
-  get 'join/:model/:token'                    => 'memberships#join',            as: :join
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
@@ -273,12 +262,17 @@ Loomio::Application.routes.draw do
   get 'u/undefined'                        => redirect('404.html')
   get 'u/:username/'                       => 'users#show',                  as: :user
 
+  get '/login_tokens/:token'               => 'login_tokens#show',           as: :login_token
+  get '/invitations/:token'                => 'memberships#show',            as: :membership
+  get '/join/:model/:token'                => 'memberships#join',            as: :join
+
   get '/donate'                            => redirect('410.html')
   get '/users/invitation/accept'           => redirect('410.html')
   get '/notifications/dropdown_items'      => redirect('410.html')
   get '/u/:key(/:stub)'                    => redirect('410.html')
   get '/g/:key/membership_requests/new'    => redirect('410.html')
   get '/comments/:id'                      => redirect('410.html')
+
 
   # for IE / other browsers which insist on requesting things which don't exist
   get '/favicon.ico'                       => 'application#ok'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404223107) do
+ActiveRecord::Schema.define(version: 20180412011742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -357,6 +357,7 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.string "type", default: "FormalGroup", null: false
     t.integer "open_discussions_count", default: 0, null: false
     t.integer "closed_discussions_count", default: 0, null: false
+    t.string "token"
     t.index ["archived_at"], name: "index_groups_on_archived_at"
     t.index ["category_id"], name: "index_groups_on_category_id"
     t.index ["cohort_id"], name: "index_groups_on_cohort_id"
@@ -370,6 +371,7 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.index ["parent_id"], name: "index_groups_on_parent_id"
     t.index ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions"
     t.index ["recent_activity_count"], name: "index_groups_on_recent_activity_count"
+    t.index ["token"], name: "index_groups_on_token", unique: true
   end
 
   create_table "invitations", id: :serial, force: :cascade do |t|
@@ -441,6 +443,7 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.jsonb "experiences", default: {}, null: false
     t.integer "invitation_id"
     t.string "token"
+    t.datetime "accepted_at"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id", "is_suspended", "archived_at"], name: "active_memberships"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
@@ -743,6 +746,7 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.boolean "email_verified", default: false, null: false
     t.string "location", default: "", null: false
     t.datetime "last_seen_at", default: "2017-10-18 21:05:12", null: false
+    t.boolean "email_announcements", default: true, null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"
     t.index ["email"], name: "index_users_on_email"

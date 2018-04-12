@@ -10,10 +10,14 @@ module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
       params:
         q: query
 
-  buildFromModel: (model) ->
+  buildFromModel: (target) ->
+    model = if target.constructor.singular == 'event'
+      target.model()
+    else
+      target
     @build
-      model:     model.eventable()
-      kind:      model.kind || "#{model.constructor.singular}_announced"
+      model:     model
+      kind:      target.kind || "#{model.constructor.singular}_announced"
 
   fetchAudience: (model, kind) ->
     @remote.fetch

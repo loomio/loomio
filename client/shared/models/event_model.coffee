@@ -47,8 +47,6 @@ module.exports = class EventModel extends BaseModel
   model: ->
     @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
 
-  eventable: -> @model()
-
   isUnread: ->
     !@discussion().hasRead(@sequenceId)
 

@@ -27,7 +27,7 @@ describe API::RegistrationsController do
     end
 
     it 'logs in immediately if pending invitation is present' do
-      session[:pending_invitation_id] = pending_invitation.token
+      session[:pending_membership_token] = pending_invitation.token
       expect { post :create, params: { user: registration_params.except(:recaptcha) } }.to change { User.count }.by(1)
       u = User.last
       expect(u.name).to eq registration_params[:name]
@@ -50,10 +50,10 @@ describe API::RegistrationsController do
     let(:invitation) { create :invitation, accepted_at: 1.day.ago }
     let(:identity) { create :slack_identity, name: "Bill Bobbington", email: "bill@bobbington.ninja" }
     it 'removes a pending invitation if its already been used' do
-      session[:pending_invitation_id] = invitation.token
+      session[:pending_membership_token] = invitation.token
       session[:pending_identity_id]   = identity.id
       expect { get :oauth }.to change { User.count }.by(1)
-      expect(session[:pending_invitation_id]).to be_nil
+      expect(session[:pending_membership_token]).to be_nil
     end
   end
 end

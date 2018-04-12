@@ -6,27 +6,11 @@ describe MembershipsController do
   let(:another_group) { FactoryBot.create(:formal_group) }
   let(:another_user) { FactoryBot.create(:user) }
 
-  before do
-    group.add_admin!(user)
-  end
-
   describe "join" do
-    let(:group) { create :formal_group }
-    context "logged out user" do
-      it "store pending_group_token in session" do
-        get :join, params: {model: 'group', token: group.token}
-        expect(session[:pending_group_token]).to eq group.token
-      end
-
-      it "redirect to back_to url or group" do
-        get :join, params: {model: 'group', token: group.token}
-        expect(response).to redirect_to(group_url(group))
-      end
-    end
-
-    context "logged in user" do
-      it "creates a membership"
-      it "redirects to membership show"
+    it "store pending_group_token in session" do
+      get :join, params: {model: 'group', token: group.token}
+      expect(session[:pending_group_token]).to eq group.token
+      expect(response).to redirect_to(group_url(group))
     end
   end
 
@@ -35,7 +19,7 @@ describe MembershipsController do
 
     context 'membership not found' do
       it 'renders error page with not found message' do
-        get :show, params: { id: 'asdjhadjkhaskjdsahda' }
+        get :show, params: { token: 'asdjhadjkhaskjdsahda' }
         expect(response.status).to eq 404
         expect(response).to render_template "errors/404"
       end
@@ -48,8 +32,8 @@ describe MembershipsController do
       end
 
       it 'says sorry invitatino already used' do
-        get :show, params: { id: membership.token }
-        expect(response).to redirect_to(group_url(membership.group, invitation_token: membership.token))
+        get :show, params: { token: membership.token }
+        expect(response).to redirect_to(group_url(membership.group))
       end
     end
 
@@ -59,61 +43,35 @@ describe MembershipsController do
       it 'redirects to the group if a member' do
         group.add_member! another_user
         sign_in another_user
-        get :show, params: { id: membership.token }
-        expect(response).to redirect_to group_url(group, invitation_token: membership.token)
+        get :show, params: { token: membership.token }
+        expect(response).to redirect_to group_url(group)
       end
     end
 
     context "user not signed in" do
       before do
-        get :show, params: { id: membership.token }
+        get :show, params: { token: membership.token }
       end
 
       it "sets session attribute of the membership token" do
-        expect(session[:pending_invitation_id]).to eq membership.token
+        expect(session[:pending_membership_token]).to eq membership.token
       end
 
       it "redirects to the group" do
-        response.should redirect_to(group_url(membership.group, invitation_token: membership.token))
+        response.should redirect_to(group_url(membership.group))
       end
 
       it 'does not accept the membership' do
-        InvitationService.should_not_receive(:redeem)
+        MembershipService.should_not_receive(:redeem)
       end
 
     end
 
-    context "user is signed in" do
-      before do
-        sign_in @user = FactoryBot.create(:user)
-      end
-
-      context 'get with membership token in query' do
-
-        it "accepts membership and redirects to group " do
-          get :show, params: { id: membership.token }
-          membership.reload
-          expect(membership.accepted?).to be true
-          expect(Membership.find_by(group: group, user: user)).to be_present
-          response.should redirect_to group_url(group, invitation_token: membership.token)
-        end
-
-      end
-
-      context 'and has invitation_token in session' do
-        before do
-          session[:pending_invitation_id] = membership.token
-        end
-
-        it 'accepts the membership, redirects to group, and clears token from session' do
-          get :show, params: { id: membership.token }
-          response.should redirect_to group_url(group, invitation_token: membership.token)
-          membership.reload
-          expect(membership.accepted?).to be true
-          expect(Membership.find_by(group: group, user: user)).to be_present
-          session[:pending_invitation_id].should be_nil
-        end
-      end
+    it "accepts membership and redirects to group " do
+      get :show, params: { token: membership.token }
+      membership.reload
+      expect(membership.accepted_at).to_not be_present
+      response.should redirect_to group_url(group)
     end
   end
 end

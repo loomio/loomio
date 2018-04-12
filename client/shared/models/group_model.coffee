@@ -99,9 +99,6 @@ module.exports = class GroupModel extends BaseModel
   organisationIds: ->
     _.pluck(@subgroups(), 'id').concat(@id)
 
-  memberships: ->
-    @recordStore.memberships.find(groupId: @id)
-
   membershipFor: (user) ->
     _.find @memberships(), (membership) -> membership.userId == user.id
 
