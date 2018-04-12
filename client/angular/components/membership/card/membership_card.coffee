@@ -9,23 +9,23 @@ angular.module('loomioApp').directive 'membershipCard', ->
   templateUrl: 'generated/components/membership/card/membership_card.html'
   replace: true
   controller: ['$scope', ($scope) ->
-    $scope.loader = new RecordLoader
-      collection: 'memberships'
-      per: 1
-      params:
-        group_id: $scope.group.id
-    $scope.loader.fetchRecords() if AbilityService.canViewMemberships($scope.group)
-
     $scope.toggleSearch = ->
       $scope.fragment = ''
       $scope.searchOpen = !$scope.searchOpen
       setTimeout -> document.querySelector('.membership-card__search input').focus()
 
     $scope.showLoadMore = ->
-      !$scope.fragment
+      $scope.canViewMemberships() &&
+      !$scope.loader.exhausted    &&
+      !$scope.fragment            &&
+      !$scope.loader.loading
 
     $scope.canAddMembers = ->
       AbilityService.canAddMembers($scope.group)
+
+    $scope.canViewMemberships = ->
+      AbilityService.canViewMemberships($scope.group)
+      true
 
     $scope.memberships = ->
       if $scope.fragment
@@ -42,4 +42,10 @@ angular.module('loomioApp').directive 'membershipCard', ->
       return unless $scope.fragment
       Records.memberships.fetchByNameFragment($scope.fragment, $scope.group.key)
 
+    $scope.loader = new RecordLoader
+      collection: 'memberships'
+      params:
+        per: 25
+        group_id: $scope.group.id
+    $scope.loader.fetchRecords() if $scope.canViewMemberships()
   ]
