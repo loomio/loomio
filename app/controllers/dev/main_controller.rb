@@ -145,10 +145,9 @@ class Dev::MainController < Dev::BaseController
 
   def setup_invitation_to_user
     membership = FactoryBot.create(:membership,
-      user: FactoryBot.create(:user, email_verified: false),
+      user: FactoryBot.create(:user, email: jennifer.email, email_verified: false),
       group: create_group
     )
-    verified_user = FactoryBot.create(:user, name: "Verified Vicky", email: membership.user.email, email_verified: true)
     redirect_to membership_url(membership)
   end
 
@@ -437,6 +436,12 @@ class Dev::MainController < Dev::BaseController
 
   def view_closed_group_with_shareable_link
     redirect_to join_url(create_group)
+  end
+
+  def view_secret_group_as_user_with_sharable_link
+    sign_in jennifer
+    @group = FormalGroup.create!(name: 'Join me with sharable link', membership_granted_upon: 'invitation', group_privacy: 'secret')
+    redirect_to join_url(@group)
   end
 
   def view_open_group_as_non_member
