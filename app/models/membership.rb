@@ -27,6 +27,7 @@ class Membership < ApplicationRecord
   scope :published, lambda { where(archived_at: nil) }
   scope :sorted_by_group_name, -> { joins(:group).order('groups.full_name') }
   scope :chronologically, -> { order('created_at asc') }
+  scope :pending, -> { where(accepted_at: nil) }
 
   scope :guest,  -> { joins(:group).where("groups.type": "GuestGroup") }
   scope :formal, -> { joins(:group).where("groups.type": "FormalGroup") }
@@ -53,8 +54,8 @@ class Membership < ApplicationRecord
   delegate :mailer, to: :user
 
   update_counter_cache :group, :memberships_count
+  update_counter_cache :group, :pending_memberships_count
   update_counter_cache :group, :admin_memberships_count
-  update_counter_cache :group, :announcement_recipients_count
   update_counter_cache :group, :undecided_user_count
   update_counter_cache :user,  :memberships_count
 

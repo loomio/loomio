@@ -105,8 +105,6 @@ class User < ApplicationRecord
   has_many :drafts, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
 
-  has_many :announcees, dependent: :destroy, as: :announceable
-
   has_one :deactivation_response,
           class_name: 'UserDeactivationResponse',
           dependent: :destroy
@@ -144,23 +142,23 @@ class User < ApplicationRecord
   # Join 2: Group those instances, taking the most recent instance's created_at as the last_notified_at timestamp
   #
   # then, we join that timestamp to the current user query, available in the last_notified_at column
-  scope :with_last_notified_at, ->(model) {
-    select('users.*, last_notified_at').joins(<<~SQL)
-      -- join #2
-      LEFT JOIN (
-        SELECT users.id as user_id, max(notified.created_at) as last_notified_at
-        FROM users
-        -- join #1
-        LEFT JOIN (
-          SELECT user_ids, created_at
-          FROM   announcees
-          WHERE  announcees.announcement_id IN (#{model.announcement_ids.join(',').presence || '-1'})
-        ) notified ON notified.user_ids ? users.id::varchar
-        GROUP BY users.id
-      ) announcements ON announcements.user_id = users.id
-    SQL
-  }
-
+  # scope :with_last_notified_at, ->(model) {
+  #   select('users.*, last_notified_at').joins(<<~SQL)
+  #     -- join #2
+  #     LEFT JOIN (
+  #       SELECT users.id as user_id, max(notified.created_at) as last_notified_at
+  #       FROM users
+  #       -- join #1
+  #       LEFT JOIN (
+  #         SELECT user_ids, created_at
+  #         FROM   announcees
+  #         WHERE  announcees.announcement_id IN (#{model.announcement_ids.join(',').presence || '-1'})
+  #       ) notified ON notified.user_ids ? users.id::varchar
+  #       GROUP BY users.id
+  #     ) announcements ON announcements.user_id = users.id
+  #   SQL
+  # }
+  #
   def self.email_status_for(email)
     (verified_first.find_by(email: email) || LoggedOutUser.new).email_status
   end

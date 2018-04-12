@@ -67,7 +67,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   def slack_link_for(obj, opts = {})
     if opts[:grant_membership] && obj.group.presence
       back_to = scope.fetch(:back_to, slack_link_for(obj, opts.except(:grant_membership)))
-      join_url(group, link_options.merge(back_to: back_to))
+      join_url(obj.group, link_options.merge(back_to: back_to))
     else
       polymorphic_url(obj, link_options.merge(opts))
     end

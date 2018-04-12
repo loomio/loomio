@@ -9,9 +9,8 @@ class Simple::GroupSerializer < ActiveModel::Serializer
              :created_at,
              :creator_id,
              :is_visible_to_public,
-             :announcement_recipients_count,
              :memberships_count,
              :invitations_count,
-             :pending_invitations_count,
+             :pending_memberships_count,
              :membership_granted_upon
 end

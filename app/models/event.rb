@@ -5,7 +5,6 @@ class Event < ApplicationRecord
   BLACKLISTED_KINDS = ["motion_closed", "motion_outcome_updated", "motion_outcome_created", "new_vote", "new_motion", "motion_closed_by_user", "motion_edited"].freeze
 
   has_many :notifications, dependent: :destroy
-  has_many :announcements, dependent: :destroy
   belongs_to :eventable, polymorphic: true
   belongs_to :discussion, required: false
   belongs_to :user, required: false

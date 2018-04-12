@@ -13,10 +13,8 @@ class Invitation < ApplicationRecord
   belongs_to :group
   belongs_to :canceller, class_name: 'User'
 
-  has_many :announcees, dependent: :destroy, as: :announceable
-
   update_counter_cache :group, :invitations_count
-  update_counter_cache :group, :pending_invitations_count
+  update_counter_cache :group, :pending_memberships_count
 
   validates_presence_of :group, :intent
   validates_inclusion_of :intent, in: ['join_group', 'join_discussion', 'join_poll', 'join_outcome']

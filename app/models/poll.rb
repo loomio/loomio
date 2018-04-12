@@ -76,7 +76,7 @@ class Poll < ApplicationRecord
   end
 
   def undecided_count
-    undecided_user_count + guest_group.pending_invitations_count
+    undecided_user_count + guest_group.pending_memberships_count
   end
 
   def time_zone

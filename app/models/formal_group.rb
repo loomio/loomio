@@ -41,8 +41,6 @@ class FormalGroup < Group
   has_many :public_poll_documents,       through: :public_polls,       source: :documents
   has_many :public_comment_documents,    through: :public_comments,    source: :documents
 
-  has_many :announcees, dependent: :destroy, as: :announceable
-
   belongs_to :cohort
   belongs_to :default_group_cover
 

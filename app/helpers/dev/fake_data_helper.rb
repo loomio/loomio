@@ -30,10 +30,10 @@ module Dev::FakeDataHelper
                     author: fake_user}.merge(args))
   end
 
-  def fake_invitation(args = {})
-    Invitation.new({
+  def fake_membership(args = {})
+    Membership.new({
       group: fake_group,
-      recipient_email: Faker::Internet.email
+      user: fake_user,
     }.merge(args))
   end
 
@@ -97,7 +97,7 @@ module Dev::FakeDataHelper
 
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
-    choices = 1..poll.minimum_stance_choices      
+    choices = 1..poll.minimum_stance_choices
 
     Stance.new({
       poll: poll,

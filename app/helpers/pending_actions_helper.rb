@@ -35,7 +35,8 @@ module PendingActionsHelper
 
   def consume_pending_group(user)
     if pending_group
-      pending_group.memberships.create(user: user, accepted_at: DateTime.now)
+      membership = pending_group.memberships.build(user: user)
+      MembershipService.redeem(membership: membership, actor: user)
       session.delete(:pending_group_token)
     end
   end
