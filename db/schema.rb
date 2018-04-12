@@ -120,7 +120,6 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.boolean "uses_markdown", default: false, null: false
     t.integer "comment_votes_count", default: 0, null: false
     t.integer "attachments_count", default: 0, null: false
-    t.text "liker_ids_and_names"
     t.datetime "edited_at"
     t.integer "versions_count", default: 0
     t.index ["created_at"], name: "index_comments_on_created_at"
@@ -128,16 +127,6 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "contact_messages", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.integer "user_id"
-    t.string "email", limit: 255
-    t.text "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "destination", limit: 255, default: "contact@loomio.org"
   end
 
   create_table "default_group_covers", id: :serial, force: :cascade do |t|
@@ -282,14 +271,6 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
     t.index ["parent_id", "position"], name: "index_events_on_parent_id_and_position", where: "(parent_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_events_on_parent_id", where: "(parent_id IS NOT NULL)"
-  end
-
-  create_table "group_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true
-    t.index ["descendant_id"], name: "group_desc_idx"
   end
 
   create_table "group_identities", id: :serial, force: :cascade do |t|
@@ -587,13 +568,6 @@ ActiveRecord::Schema.define(version: 20180404223107) do
     t.index ["poll_id", "priority"], name: "index_poll_options_on_poll_id_and_priority"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
     t.index ["priority"], name: "index_poll_options_on_priority"
-  end
-
-  create_table "poll_references", id: :serial, force: :cascade do |t|
-    t.integer "reference_id", null: false
-    t.string "reference_type", null: false
-    t.integer "poll_id", null: false
-    t.index ["poll_id"], name: "index_poll_references_on_poll_id"
   end
 
   create_table "poll_unsubscriptions", id: :serial, force: :cascade do |t|
