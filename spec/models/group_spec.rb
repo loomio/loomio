@@ -53,10 +53,8 @@ describe Group do
       end
 
       it 'increments when a new invitation is created' do
-        InvitationService.bulk_create(recipient_emails: [@user.email],
-                                      group: @group,
-                                      inviter: @group.creator)
-        expect(@group.invitations_count).to eq 1
+        @group.memberships.create(user: create(:user, email_verified: false), inviter: @group.creator)
+        expect(@group.reload.pending_memberships_count).to eq 1
       end
     end
 

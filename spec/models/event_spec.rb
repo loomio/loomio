@@ -140,11 +140,10 @@ describe Event do
         notified_ids: [user_thread_loud.id, user_thread_normal.id]
       }.with_indifferent_access}
 
-      it 'should notify participants when voters_review_responses is true' do
+      it 'should notify previously notified users when voters_review_responses is true' do
         poll = create(:poll_proposal, discussion: discussion)
         create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        a = create(:announcement, event: poll.created_event)
-        a.announcees.create(user_ids: group_notified[:notified_ids], announceable: discussion.group)
+        Events::AnnouncementCreated.publish!(poll, poll.author, poll.group.memberships.where(user: [user_thread_loud, user_thread_normal]), "poll_created")
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -170,11 +169,12 @@ describe Event do
         emailed_users.should_not include poll.author
       end
 
-      it 'should notify announcees who have not participated when voters_review_responses is false' do
+      it 'should notify previously notified users who have not participated when voters_review_responses is false' do
+        # a loud user participates, so they dont get a closing soon announcement
         create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+
         # quiet user who has been announced to before
-        a = create(:announcement, event: poll.created_event)
-        a.announcees.create(user_ids: group_notified[:notified_ids], announceable: discussion.group)
+        Events::AnnouncementCreated.publish!(poll, poll.author, poll.group.memberships.where(user: [user_thread_loud, user_thread_normal]), "poll_created")
 
         expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
@@ -282,9 +282,8 @@ describe Event do
 
   describe 'invitation_accepted' do
     let(:poll) { create :poll }
-    let(:invitation) { create :invitation, intent: :join_poll, group: poll.guest_group }
-    let(:guest_membership) { create :membership, group: poll.guest_group, invitation: invitation }
-    let(:formal_membership) { create :membership, group: create(:formal_group) }
+    let(:guest_membership) { create :pending_membership, group: poll.guest_group }
+    let(:formal_membership) { create :pending_membership, group: create(:formal_group) }
 
     it 'links to a group for a guest group invitation' do
       event = Events::InvitationAccepted.publish!(guest_membership)
@@ -342,38 +341,29 @@ describe Event do
     let(:outcome) { create :outcome, poll: poll_meeting }
     let(:invitation) { create :invitation, group: poll.guest_group }
 
-    it 'creates an announcement' do
-      announcement.announcees.create(announceable: user_thread_loud, user_ids: [user_thread_loud.id])
-      announcement.announcees.create(announceable: user_thread_normal, user_ids: [user_thread_normal.id])
-      expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(2) # the two notified_ids
+    def publish_announcement_for(model, users, kind = "poll_created")
+      Events::AnnouncementCreated.publish!(model, model.author, poll.group.memberships.where(user: Array(users)), kind)
     end
 
     it 'does not email people with thread quiet' do
-      announcement.announcees.create(announceable: user_thread_loud)
-      user_thread_loud.update(email_announcements: false)
-      expect { Events::AnnouncementCreated.publish!(announcement) }.to_not change { emails_sent }
+      expect { publish_announcement_for(poll, user_thread_quiet) }.to_not change { emails_sent }
     end
 
     it 'does not email people with group quiet' do
-      announcement.announcees.create(announceable: user_thread_loud)
-      user_thread_loud.update(email_announcements: false)
-      expect { Events::AnnouncementCreated.publish!(announcement) }.to_not change { emails_sent }
+      expect { publish_announcement_for(poll, user_membership_quiet) }.to_not change { emails_sent }
     end
 
     it 'sends invitations' do
-      announcement.update(invitation_ids: [invitation.id])
-      expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(1)
+      expect { publish_announcement_for(poll, user_thread_normal) }.to change { emails_sent }.by(1)
     end
 
     it 'notifies the author if the eventable is an appropriate outcome' do
-      announcement.update(event: outcome.created_event)
-      expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }.by(1) # the two notified_ids, plus the author
+      expect { publish_announcement_for(outcome, user_thread_normal, "outcome_created") }.to change { emails_sent }.by(1)
     end
 
     it 'can send an ical attachment with an outcome' do
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
-      announcement.update(event: outcome.created_event)
-      expect { Events::AnnouncementCreated.publish!(announcement) }.to change { emails_sent }
+      expect { publish_announcement_for(outcome, user_thread_normal, "outcome_created") }.to change { emails_sent }
       mail = ActionMailer::Base.deliveries.last
       expect(mail.attachments).to have(1).attachment
       expect(mail.attachments.first).to be_a Mail::Part

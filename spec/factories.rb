@@ -9,6 +9,11 @@ FactoryBot.define do
     m.group { |g| g.association(:formal_group)}
   end
 
+  factory :pending_membership, class: Membership do |m|
+    m.user { |u| u.association(:unverified_user)}
+    m.group { |g| g.association(:formal_group)}
+  end
+
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
@@ -19,6 +24,11 @@ FactoryBot.define do
     after(:build) do |user|
       user.generate_username
     end
+  end
+
+  factory :unverified_user, class: User do
+    sequence(:email) { Faker::Internet.email }
+    email_verified false
   end
 
   factory :login_token do

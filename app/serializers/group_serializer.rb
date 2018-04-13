@@ -33,7 +33,6 @@ class GroupSerializer < ActiveModel::Serializer
              :public_discussions_count,
              :group_privacy,
              :memberships_count,
-             :invitations_count,
              :pending_memberships_count,
              :membership_granted_upon,
              :discussion_privacy_options,

@@ -208,13 +208,8 @@ module Dev::NintiesMoviesHelper
   end
 
   def pending_invitation
-    unless @pending_invitation
-      @pending_invitation = InvitationService.bulk_create(recipient_emails: ['judd@example.com'],
-                                                          message: 'Come and join the group!',
-                                                          group: create_group,
-                                                          inviter: patrick).last
-    end
-    @pending_invitation
+    @pending_membership ||= Membership.create(user: User.new(email: 'judd@example.com'),
+                                              group: create_group, inviter: patrick)
   end
 
   def create_empty_draft

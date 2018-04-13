@@ -5,8 +5,7 @@ class Events::AnnouncementCreated < Event
   def self.publish!(model, actor, memberships, kind)
     super model,
           user: actor,
-          custom_fields: { membership_ids: memberships.pluck(:id),
-                            kind: kind }
+          custom_fields: { membership_ids: memberships.pluck(:id), kind: kind }
   end
 
   def memberships
@@ -14,6 +13,10 @@ class Events::AnnouncementCreated < Event
   end
 
   private
+
+  def email_method
+    custom_fields['kind']
+  end
 
   def email_recipients
     notification_recipients.

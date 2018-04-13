@@ -5,8 +5,8 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def create
-    @events = service.create(model: notified_model, params: resource_params, actor: current_user)
-    render json: { users_count: @events.length }
+    @event = service.create(model: notified_model, params: resource_params, actor: current_user)
+    render json: { users_count: @event.notifications.length }
   end
 
   def search

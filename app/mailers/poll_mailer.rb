@@ -29,11 +29,11 @@ class PollMailer < BaseMailer
       action_name: action_name
     )
 
-    if invite = event.calendar_invite
+    if event.eventable.respond_to?(:calendar_invite) && event.eventable.calendar_invite
       attachments['meeting.ics'] = {
         content_type:              'text/calendar',
         content_transfer_encoding: 'base64',
-        content:                   Base64.encode64(invite)
+        content:                   Base64.encode64(event.eventable.calendar_invite)
       }
     end
 

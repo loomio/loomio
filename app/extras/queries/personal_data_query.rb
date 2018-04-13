@@ -47,12 +47,6 @@ class Queries::PersonalDataQuery
     GroupVisit.where(user_id: user.id)
   end
 
-  def self.invitations(user)
-    Invitation.where(recipient_email: user.email).
-               or(Invitation.where(inviter_id: user.id)).
-               or(Invitation.where(canceller_id: user.id))
-  end
-
   def self.login_tokens(user)
     LoginToken.where(user_id: user.id)
   end

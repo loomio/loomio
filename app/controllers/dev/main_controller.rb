@@ -106,9 +106,9 @@ class Dev::MainController < Dev::BaseController
   end
 
   def accept_last_invitation
-    invitation = Invitation.last
-    InvitationService.redeem(invitation, max)
-    redirect_to(group_url(invitation.group))
+    membership = Membership.pending.last
+    MembershipService.redeem(membership: invitation, actor: max)
+    redirect_to(group_url(membership.group))
   end
 
   def setup_login_token

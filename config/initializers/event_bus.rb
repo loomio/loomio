@@ -42,13 +42,6 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # mark invitations with the new user's email as used
-  config.listen('user_added_to_group_event', 'user_joined_group_event') do |event|
-    event.eventable.group.invitations.pending
-         .where(recipient_email: event.eventable.user.email)
-         .update_all(accepted_at: event.created_at || Time.now)
-  end
-
   # send memos to client side after comment change
   config.listen('comment_destroy')  { |comment|  Memos::CommentDestroyed.publish!(comment) }
   config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
