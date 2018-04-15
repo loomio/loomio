@@ -4,5 +4,6 @@ angular.module('loomioApp').directive 'threadPreviewCollection', ->
   templateUrl: 'generated/components/thread_preview_collection/thread_preview_collection.html'
   replace: true
   controller: ['$scope', ($scope) ->
-    $scope.order = $scope.order || '-lastActivityAt'
+    $scope.vars =
+      order: $scope.order || '-lastActivityAt'
   ]
