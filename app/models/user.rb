@@ -136,17 +136,17 @@ class User < ApplicationRecord
     .where('memberships.group_id': group.id)
   }
 
-  scope :reader_join, ->(model) {
+  scope :joins_readers, ->(model) {
     joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id.to_i})")
   }
 
-  scope :join_formal_membership, ->(model) {
+  scope :joins_formal_memberships, ->(model) {
      joins("LEFT OUTER JOIN memberships fm ON (fm.user_id = users.id AND fm.group_id = #{model.group_id.to_i})")
     .where.not('fm.id': nil)
     .where('fm.archived_at': nil)
   }
 
-  scope :join_on_guest_memberships, ->(model) {
+  scope :joins_guest_memberships, ->(model) {
      joins("LEFT OUTER JOIN memberships gm ON (gm.user_id = users.id AND gm.group_id = #{model.guest_group_id.to_i})")
     .where.not('gm.id': nil)
     .where('gm.archived_at': nil)

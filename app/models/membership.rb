@@ -12,7 +12,7 @@ class Membership < ApplicationRecord
   friendly_id :token
   initialized_with_token :token
 
-  validates_presence_of :group, :user, :volume
+  validates_presence_of :group, :user
   validates_uniqueness_of :user_id, scope: :group_id
 
   belongs_to :group
@@ -98,6 +98,6 @@ class Membership < ApplicationRecord
   end
 
   def set_volume
-    self.volume = user.default_membership_volume
+    self.volume = user.default_membership_volume if group.is_formal_group?
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412044535) do
+ActiveRecord::Schema.define(version: 20180413041937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -418,7 +418,7 @@ ActiveRecord::Schema.define(version: 20180412044535) do
     t.integer "inbox_position", default: 0
     t.boolean "admin", default: false, null: false
     t.boolean "is_suspended", default: false, null: false
-    t.integer "volume", default: 2, null: false
+    t.integer "volume"
     t.jsonb "experiences", default: {}, null: false
     t.integer "invitation_id"
     t.string "token"
