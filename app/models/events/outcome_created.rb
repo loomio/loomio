@@ -16,6 +16,14 @@ class Events::OutcomeCreated < Event
 
   private
 
+  def email_recipients
+    if poll.group.presence
+      super
+    else
+      poll.participants
+    end
+  end
+
   def notify_author?
     announcement && poll.author_receives_outcome
   end
