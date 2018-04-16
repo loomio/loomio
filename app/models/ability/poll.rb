@@ -19,7 +19,7 @@ module Ability::Poll
       (user.can?(:vote_in, poll) && poll.voter_can_add_options)
     end
 
-    can [:vote_in], ::Poll do |poll|
+    can :vote_in, ::Poll do |poll|
       # cant have a token of a verified user, and be logged in as another user
       poll.active? && (
         poll.members.include?(user) ||
