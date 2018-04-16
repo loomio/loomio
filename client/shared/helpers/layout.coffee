@@ -24,7 +24,10 @@ module.exports =
     updateCover()
 
 shouldForceSignIn = (options = {}) ->
-  return false if AbilityService.isEmailVerified()
+  # TODO review before we merge into master
+  # return false if options.page == "pollPage" and Session.user() !AbilityService.isEmailVerified()
+  # return false if AbilityService.isEmailVerified()
+  return false if Session.user()
   return true  if AppConfig.pendingIdentity.identity_type?
   switch options.page
     when 'emailSettingsPage' then !Session.user().restricted?

@@ -55,15 +55,14 @@ module Dev::PollsScenarioHelper
   end
 
   def poll_created_as_visitor_scenario(poll_type:)
-    # TODO: fix me
     actor = saved fake_user
     poll = fake_poll(poll_type: poll_type, discussion: nil)
     event = PollService.create(poll: poll, actor: actor)
-    invitation = poll.guest_group.invitations.create(recipient_email: "hello@test.com", intent: :join_poll)
+    membership = poll.guest_group.memberships.create(user: FactoryBot.build(:unverified_user, email: "hello@test.com"))
 
     {poll: poll,
      actor: actor,
-     params: {invitation_token: invitation.token}}
+     params: {membership_token: membership.token}}
   end
 
   def poll_edited_scenario(poll_type:)

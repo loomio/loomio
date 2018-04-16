@@ -23,7 +23,8 @@ module Ability::Poll
       poll.anyone_can_participate ||
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
-      poll.members.include?(user)
+      poll.members.include?(user) ||
+      poll.guest_group.memberships.pluck(:token).include?(user.membership_token)
     end
 
     can :create, ::Poll do |poll|

@@ -60,11 +60,6 @@ describe Membership do
       @membership = create :membership, user: user, group: group, volume: :normal
     end
 
-    it 'validates the presence of a volume' do
-      @membership.volume = nil
-      expect(@membership.valid?).to eq false
-    end
-
     it 'responds to volume' do
       expect(@membership.volume.to_sym).to eq :normal
     end

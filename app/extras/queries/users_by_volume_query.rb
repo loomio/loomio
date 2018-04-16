@@ -11,24 +11,21 @@ class Queries::UsersByVolumeQuery
 
   private
 
-  # override with logic for a particular model
   def self.users_by_volume(model, operator, volume)
     return User.none if model.nil?
-
-    rel = User.active.distinct.joins_formal_memberships(model)
-
-    if model.respond_to?(:discussion_id)
-      rel = rel.joins_readers(model).
-      joins_guest_memberships(model).
-      where("
-          dr.volume #{operator} :volume OR
+    rel = User.active.distinct
+    if model.is_a?(Group)
+      rel.joins(:memberships)
+         .where("memberships.group_id": model.id)
+         .where("memberships.volume #{operator} ?", volume)
+    else
+      rel.joins_readers(model)
+         .joins_guest_memberships(model)
+         .joins_formal_memberships(model)
+         .where("((gm.id IS NOT NULL OR fm.id IS NOT NULL) AND dr.volume #{operator} :volume) OR
           (dr.volume IS NULL AND gm.volume #{operator} :volume) OR
           (dr.volume IS NULL AND gm.volume IS NULL AND fm.volume #{operator} :volume)
           ", volume: volume)
-      byebug
-      rel
-    else
-      rel.where("fm.volume #{operator} :volume", volume: volume)
     end
   end
 end

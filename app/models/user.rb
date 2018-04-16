@@ -21,6 +21,7 @@ class User < ApplicationRecord
   attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
+  attr_accessor :membership_token
   attr_writer :has_password
 
   validates :email, presence: true, email: true, length: {maximum: 200}
@@ -142,13 +143,11 @@ class User < ApplicationRecord
 
   scope :joins_formal_memberships, ->(model) {
      joins("LEFT OUTER JOIN memberships fm ON (fm.user_id = users.id AND fm.group_id = #{model.group_id.to_i})")
-    .where.not('fm.id': nil)
     .where('fm.archived_at': nil)
   }
 
   scope :joins_guest_memberships, ->(model) {
      joins("LEFT OUTER JOIN memberships gm ON (gm.user_id = users.id AND gm.group_id = #{model.guest_group_id.to_i})")
-    .where.not('gm.id': nil)
     .where('gm.archived_at': nil)
   }
 

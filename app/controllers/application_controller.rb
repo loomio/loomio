@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   around_action :use_preferred_locale       # LocalesHelper
   before_action :set_invitation_token       # CurrentUserHelper
   before_action :set_last_seen_at           # CurrentUserHelper
-  before_action :accept_pending_memberships # PendingActionsHelper
+  before_action :handle_pending_memberships # PendingActionsHelper
   before_action :set_raven_context
 
 

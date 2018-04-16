@@ -1,10 +1,12 @@
 module PendingActionsHelper
   private
 
-  def accept_pending_memberships
+  def handle_pending_memberships
     if current_user.is_logged_in?
       consume_pending_group(current_user)
       consume_pending_membership(current_user)
+    else
+      current_user.membership_token = pending_membership&.token
     end
   end
 

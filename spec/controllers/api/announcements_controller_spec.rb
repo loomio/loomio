@@ -16,7 +16,7 @@ describe API::AnnouncementsController do
     it 'formal_group' do
       get :audience, params: {discussion_id: discussion.id, kind: "formal_group"}
       json = JSON.parse response.body
-      expect(json.map {|u| u['id']}.sort).to eq group.member_ids.sort
+      expect(json.map {|u| u['id']}.sort).to eq group.member_ids.reject{|id| id == user.id}.sort
     end
 
     it 'discussion_group' do

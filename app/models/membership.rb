@@ -36,7 +36,6 @@ class Membership < ApplicationRecord
 
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
-  scope :pending, -> { joins(:user).where("users.email_verified": false) }
 
   scope :undecided_for, ->(poll) {
      joins("INNER JOIN users ON users.id = memberships.user_id")

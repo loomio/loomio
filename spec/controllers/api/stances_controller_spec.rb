@@ -159,8 +159,8 @@ describe API::StancesController do
   describe 'create' do
     let(:group)      { create :guest_group }
     let(:another_user) { create :user, email: 'another_user@example.com', email_verified: false }
-    let(:membership) { create :membership, user: build(:user, email: 'user@example.com'), group: group }
-    let(:user)       { create :user, email: 'user@example.com', email_verified: false }
+    let(:membership) { create :membership, user: build(:user, name: "verified", email: 'user@example.com'), group: group }
+    let(:user)       { create :user, name: "unverified", email: 'user@example.com', email_verified: false }
     let(:poll)       { create :poll, guest_group: group }
     let(:poll_option) { create :poll_option, poll: poll }
     let(:visitor_stance_params) {{

@@ -12,8 +12,15 @@ module Dev::FakeDataHelper
       password: Faker::Internet.password,
       detected_locale: 'en',
       is_admin: true,
-      email_verified: true,
-      experiences: {enable_communities: true}
+      email_verified: true
+    }.merge(args))
+  end
+
+
+  def fake_unverified_user(args = {})
+    User.new({
+      email: Faker::Internet.email,
+      email_verified: false,
     }.merge(args))
   end
 
