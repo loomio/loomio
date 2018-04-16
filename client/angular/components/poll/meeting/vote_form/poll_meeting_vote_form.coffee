@@ -15,7 +15,9 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
       choices = $scope.stance.stanceChoices()
 
       # create the map referenced from the view which requires has an integer for each
-      $scope.stanceValuesMap = _.fromPairs(_.map( choices, (choice)-> ([choice.pollOptionId, choice.score||0])))
+      $scope.stanceValuesMap = _.fromPairs _.map $scope.stance.poll().pollOptions(), (option) ->
+        stanceChoice = $scope.stance.stanceChoices().find((sc) -> sc.pollOptionId == option.id) or {}
+        [option.id, stanceChoice.score or 0]
 
       $scope.canRespondMaybe = $scope.stance.poll().customFields.can_respond_maybe
       $scope.stanceValues = if $scope.canRespondMaybe then [2,1,0] else [2, 0]
