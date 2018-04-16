@@ -12,8 +12,7 @@ module FormattedDateHelper
   end
 
   def has_time? (value)
-    date_time(value)
-    true
+    !!date_time(value)
   rescue ArgumentError
     false
   end
