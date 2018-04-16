@@ -76,6 +76,7 @@ meeting:
   dates_as_options:        true
   author_receives_outcome: true
   has_variable_score:      true
+  has_score_icons:         true
   required_custom_fields:
     - can_respond_maybe
   sort_options:
