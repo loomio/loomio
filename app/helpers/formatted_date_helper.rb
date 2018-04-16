@@ -11,12 +11,21 @@ module FormattedDateHelper
     apply_format parse_date_string(value, zone), '%-d %b'
   end
 
+  def has_time? (value)
+    date_time(value)
+    true
+  rescue ArgumentError
+    false
+  end
+
   private
 
   def parse_date_string(value, zone)
-    date_time(value).in_time_zone(zone)
-  rescue ArgumentError
-    value.to_date
+    if has_time? value
+      date_time(value).in_time_zone(zone)
+    else
+      value.to_date
+    end
   end
 
   def apply_format(date, format)
@@ -24,9 +33,11 @@ module FormattedDateHelper
   end
 
   def formatted_datetime(value, zone)
-    date_time(value).in_time_zone(zone).strftime(date_time_format(value)).strip
-  rescue ArgumentError
-    value.to_date.strftime(date_format(value)).strip
+    if has_time? value
+      date_time(value).in_time_zone(zone).strftime(date_time_format(value)).strip
+    else
+      value.to_date.strftime(date_format(value)).strip
+    end
   end
 
   def date_time(value)
