@@ -4,7 +4,7 @@
       %td
       - @info.poll_options.each do |option|
         %td.poll-mailer-meeting__cell
-          %div= @info.display_time option.name, @info.time_zone if @info.has_time?(option.name)
+          %div= @info.display_time option.name, @info.time_zone if option.has_time?
           %div= @info.display_day  option.name, @info.time_zone
           %div= @info.display_date option.name, @info.time_zone
   %tbody
