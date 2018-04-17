@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe MembershipRequest do
   let(:group) { create(:formal_group) }
-  let(:membership_request) { group.membership_requests.new(name: 'Bob Dogood', email: 'this@that.org.nz', introduction: 'we talked yesterday, can you approve this please?') }
+  let(:membership_request) { build(:membership_request, group: group, requestor: build(:user)) }
   let(:long_introduction) { "h#{'i' * 400}!"}
   let(:responder) { stub_model User }
   let(:requestor) { create(:user) }
