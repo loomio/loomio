@@ -1,5 +1,5 @@
 .poll-common-vote-form__button {
-  border: 2px solid $grey-on-white;
+  border: 2px solid $background-color;
   @include roundedCorners;
   min-width: auto;
   max-width: calc(25% - 8px) !important;
