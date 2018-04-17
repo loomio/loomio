@@ -11,7 +11,7 @@ describe MembershipService do
 
   describe 'redeem' do
     before do
-      MembershipService.redeem(invitation, user)
+      MembershipService.redeem(membership: membership, actor: user)
     end
 
     it 'sets accepted_at' do
