@@ -6,7 +6,6 @@ class Dev::PollsController < Dev::BaseController
   def test_invitation_to_vote_in_poll
     sign_out
     email = "#{Random.new(Time.now.to_i).rand(99999999)}@example.com"
-    verified_user = saved fake_user(email_verified: true, email: email, name: 'Verified User')
     poll = saved fake_poll
     PollService.create(poll: poll, actor: poll.author)
     membership = poll.guest_group.memberships.create group: poll.guest_group, user: fake_unverified_user

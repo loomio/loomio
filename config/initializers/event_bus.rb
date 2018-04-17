@@ -70,6 +70,7 @@ EventBus.configure do |config|
 
   # update stance data for polls
   config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
+  config.listen('stance_create')  { |stance| stance.poll.guest_group.add_member!(stance.participant) }
 
   # publish reply event after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }

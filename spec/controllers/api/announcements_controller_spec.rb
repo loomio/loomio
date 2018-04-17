@@ -106,14 +106,14 @@ describe API::AnnouncementsController do
         sign_in create(:user)
         recipients = {user_ids: [notified_user.id], emails: []}
         post :create, params: {poll_id: poll.id,
-                               announcement: {kind: "new_poll", recipients: recipients}}
+                               announcement: {kind: "poll_created", recipients: recipients}}
         expect(response.status).to eq 403
       end
 
       it 'notify exising user' do
         recipients = {user_ids: [notified_user.id], emails: []}
         post :create, params: {poll_id: poll.id,
-                               announcement: {kind: "new_poll", recipients: recipients}}
+                               announcement: {kind: "poll_created", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
         expect(json['users_count']).to eq 1
@@ -124,7 +124,7 @@ describe API::AnnouncementsController do
       it 'notify new user by email' do
         recipients = {user_ids: [], emails: ['jim@example.com']}
         post :create, params: {poll_id: poll.id,
-                               announcement: {kind: "new_poll", recipients: recipients}}
+                               announcement: {kind: "poll_created", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
         expect(json['users_count']).to eq 1
@@ -138,7 +138,7 @@ describe API::AnnouncementsController do
       it 'notify existing user by email' do
         recipients = {user_ids: [], emails: [notified_user.email]}
         post :create, params: {poll_id: poll.id,
-                               announcement: {kind: "new_poll", recipients: recipients}}
+                               announcement: {kind: "poll_created", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
         expect(json['users_count']).to eq 1

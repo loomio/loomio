@@ -5,7 +5,6 @@ class PollsController < ApplicationController
   include EmailHelper
 
   helper :email
-  before_action :sign_in_pending_membership, only: :show
 
   def export
     @exporter = PollExporter.new(load_and_authorize(:poll, :export))
@@ -31,10 +30,11 @@ class PollsController < ApplicationController
 
   private
 
-  def sign_in_pending_membership
+  def handle_pending_memberships
     if !current_user.is_logged_in? && pending_membership
       sign_in pending_membership.user, verified_sign_in_method: false
     end
+    super
   end
 
   def is_subscribed?

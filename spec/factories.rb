@@ -165,7 +165,8 @@ FactoryBot.define do
     introduction { Faker::Lorem.sentence(4) }
     email { Faker::Internet.email }
     name { Faker::Name.name }
-    association :group, factory: :formal_group
+    association :group,     factory: :formal_group
+    association :requestor, factory: :user
   end
 
   factory :attachment do

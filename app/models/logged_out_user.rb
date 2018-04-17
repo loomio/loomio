@@ -15,6 +15,10 @@ class LoggedOutUser
     set_avatar_initials if (@name || @email)
   end
 
+  def create_user
+    User.create!(name: name, email: email, token: token)
+  end
+
   def nil_methods
     super + [:id, :created_at, :avatar_url, :presence, :restricted, :persisted?]
   end

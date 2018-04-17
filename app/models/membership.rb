@@ -1,5 +1,10 @@
 class Membership < ApplicationRecord
-  class InvitationAlreadyUsed < StandardError; end
+  class InvitationAlreadyUsed < StandardError
+    attr_accessor :membership
+    def initialize(obj)
+      self.membership = obj
+    end
+  end
 
   include CustomCounterCache::Model
   include HasVolume

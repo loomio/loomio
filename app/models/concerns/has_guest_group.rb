@@ -28,10 +28,6 @@ module HasGuestGroup
     User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
   end
 
-  def invitations
-    Invitation.where(group_id: [group_id, guest_group_id].compact)
-  end
-
   def invitation_intent
     :"join_#{self.class.to_s.downcase}"
   end

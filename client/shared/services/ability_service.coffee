@@ -5,6 +5,9 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 module.exports = new class AbilityService
 
+  isNotEmailVerified: ->
+    @isLoggedIn() and !Session.user().emailVerified
+
   isLoggedIn: ->
     @isUser() and !Session.user().restricted?
 

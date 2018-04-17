@@ -19,10 +19,6 @@ class StanceService
     stance.assign_attributes(participant: actor)
     return false unless stance.valid?
 
-    if membership = stance.poll.guest_group.memberships.pending.find_by(token: actor.token)
-      MembershipService.redeem(membership: membership, actor: actor)
-    end
-
     stance.poll.stances.where(participant: actor).update_all(latest: false)
     stance.save!
     stance.participant.save!

@@ -12,18 +12,7 @@ class MembershipRequestService
   def self.approve(membership_request:, actor: )
     actor.ability.authorize! :approve, membership_request
     membership_request.approve!(actor)
-    if membership = membership_request.convert_to_membership!
-      Events::MembershipRequestApproved.publish!(membership, actor)
-    else
-      invitation = Invitation.create!(
-        recipient_name:  membership_request.name,
-        recipient_email: membership_request.email,
-        group:           membership_request.group,
-        inviter:         actor,
-        intent:          :join_group
-      )
-      InvitePeopleMailer.delay(priority: 1).after_membership_request_approval(invitation, actor.email,'')
-    end
+    Events::MembershipRequestApproved.publish!(membership_request.convert_to_membership!, actor)
   end
 
   def self.ignore(membership_request: , actor: )
