@@ -4,9 +4,9 @@
       %td
       - @info.poll_options.each do |option|
         %td.poll-mailer-meeting__cell
-          %div= @info.display_time option.name, @info.time_zone if option.has_time?
-          %div= @info.display_day  option.name, @info.time_zone
-          %div= @info.display_date option.name, @info.time_zone
+          %div= option.display_time option.name, @info.time_zone if option.has_time?
+          %div= option.display_day  option.name, @info.time_zone
+          %div= option.display_date option.name, @info.time_zone
   %tbody
     %tr
       %td= t(:"poll_meeting_vote_form.can_attend")
