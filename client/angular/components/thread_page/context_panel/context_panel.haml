@@ -1,11 +1,10 @@
 %section.context-panel.lmo-card-padding.lmo-action-dock-wrapper{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
-  %text_diff{before: "before", after: "after"}
   .context-panel__top
     .context-panel__status{ng-if: "status()", ng-attr-title: "{{statusTitle()}}", ng-switch: "status()"}
       %i.mdi.mdi-pin{ng-switch-when: "pinned"}
 
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
-      %h1.lmo-h1.context-panel__heading{ng-if: "!discussion.translation"}
+      %h1.lmo-h1.context-panel__heading{ng-if: "!discussion.translaion"}
         {{discussion.title}}
       %h1.lmo-h1{ng-if: "discussion.translation"}
         %translation{model: "discussion", field: "title"}

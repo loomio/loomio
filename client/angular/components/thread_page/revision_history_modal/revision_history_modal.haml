@@ -1,17 +1,22 @@
 .revision-history-modal
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
-      %h1.lmo-h1.modal-title.lmo-flex__grow{translate: "{{header}}"}
+      %h1.lmo-h1.modal-title{translate:"revision_history_modal.comment_header"}
       %material_modal_header_cancel_button{aria-hidden: "true"}
   .md-dialog-content.revision-history-modal__body{ng-if: "!loadExecuting"}
     %loading{ng-if: "loadExecuting"}
-    %h2.lmo-h2{ng-if: "commentRevision()"} {{model.authorName()}}
-    .lmo-wrap{ng-repeat: "version in model.versions() | orderBy: '-createdAt' track by version.id", id: "version-{{version.id}}"}
-      .revision-history-modal__revision
-        %h2.lmo-h2{ng-if: "discussionRevision()", translate: "{{threadTitle(version)}}"}
-        .revision-history-modal__thread-details
-          %span{ng-if: "commentRevision()", translate: "revision_history_modal.posted"}
-          %span{ng-if: "discussionRevision()", translate: "{{threadDetails(version)}}", translate-value-name: "{{version.authorOrEditorName()}}"}
-          %span> {{versionCreatedAt(version.createdAt)}}
-          %span{ng-if: "version.isCurrent(version)"}> (current)
-        .revision-history-modal__revision-body.lmo-markdown-wrapper{marked: "revisionBody(version)"}
+    .lmo-flex.lmo-flex--row.lmo-flex__space-between
+      %h2.lmo-h2 {{model.authorName()}}
+      .revision-history-modal__nav.lmo-flex.lmo-flex--row
+        %md-button.md-button--tiny{ng-click:"setOldestRevision()"}
+          %i.mdi.mdi-arrow-collapse-left
+        %md-button.md-button--tiny{ng-click:"setPreviousRevision()"}
+          %i.mdi.mdi-arrow-left
+        %span {{currentIndex+1}}
+        %span \/
+        %span {{model.versionsCount}}
+        %md-button.md-button--tiny{ng-click:"setNextRevision()"}
+          %i.mdi.mdi-arrow-right
+        %md-button.md-button--tiny{ng-click:"setLatestRevision()"}
+          %i.mdi.mdi-arrow-collapse-right
+    %text_diff{before: "version.changes.body[0]", after: "version.changes.body[1]"}

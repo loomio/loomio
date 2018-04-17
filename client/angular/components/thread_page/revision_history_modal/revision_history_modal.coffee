@@ -3,12 +3,11 @@ angular.module('loomioApp').factory 'RevisionHistoryModal', ->
   controller:['$scope', 'model', ($scope,  model) ->
     $scope.model = model
     $scope.type = model.constructor.singular
+    $scope.versionNumber = 0
+    $scope.numberOfVersions = ->
+      $scope.getVersionIndex().length
 
-    $scope.mockVersionIndex = [
-      {id: "v1", createdAt: "two years ago"}
-      {id: "v2"}
-      {id: "v3"}
-    ]
+    $scope.mockVersionIndex = ["v1","v2","v3"]
 
     $scope.mockVersions = {
       "v1" :{
@@ -44,7 +43,6 @@ angular.module('loomioApp').factory 'RevisionHistoryModal', ->
       $scope.mockVersionIndex
 
     $scope.getVersion = (id) ->
-
       $scope.mockVersions[id]
 
     $scope.isOldest = ->
@@ -53,33 +51,30 @@ angular.module('loomioApp').factory 'RevisionHistoryModal', ->
     $scope.isNewest = ->
       $scope.currentIndex == $scope.getVersionIndex().length - 1
 
-    $scope.refreshItems = ->
-      #create the revision history modal depending on the kind of thing we are viewing the history of
-      # goal is to create an array of items which are the blocks of text with the changes from the last version
-      # optionally there is a heading to say which part of the item is being changed
-
     $scope.setNextRevision = ->
-      index = $scope.getVersionIndex()
-      $scope.currentIndex += 1;
-      $scope.version = $scope.getVersion(index[$scope.currentIndex].id)
+      if !$scope.isNewest()
+        index = $scope.getVersionIndex()
+        $scope.currentIndex += 1;
+        $scope.version = $scope.getVersion(index[$scope.currentIndex])
 
     $scope.setPreviousRevision = ->
-      index = $scope.getVersionIndex()
-      $scope.currentIndex -= 1;
-      $scope.version = $scope.getVersion(index[$scope.currentIndex].id)
+      if ! $scope.isOldest()
+        index = $scope.getVersionIndex()
+        $scope.currentIndex -= 1;
+        $scope.version = $scope.getVersion(index[$scope.currentIndex])
 
     $scope.setOldestRevision = ->
       index = $scope.getVersionIndex()
       $scope.currentIndex = 0;
-      $scope.version = $scope.getVersion(index[$scope.currentIndex].id)
+      $scope.version = $scope.getVersion(index[$scope.currentIndex])
 
     $scope.setLatestRevision = ->
       index = $scope.getVersionIndex()
       $scope.currentIndex = index.length-1;
-      $scope.version = $scope.getVersion(index[$scope.currentIndex].id)
+      $scope.version = $scope.getVersion(index[$scope.currentIndex])
 
     $scope.initScope = do ->
       $scope.title =  _.capitalize $scope.type + " Revision History"
       $scope.currentIndex = 0;
-      $scope.setLatestRevision()
+      $scope.setLatestRevision();
   ]
