@@ -23,4 +23,11 @@ class AnnouncementService
     EventBus.broadcast('announcement_create', model, actor, params)
     Events::AnnouncementCreated.publish! model, actor, inviter.invited_memberships, params[:kind]
   end
+
+  def self.resend_pending_memberships
+    Events::AnnouncementCreated.where(kind: "announcement_created").
+          within(25.hours.ago.beginning_of_hour, 24.hours.ago.beginning_of_hour).each do |event|
+      Events::AnnouncementResend.publish!(event)
+    end
+  end
 end

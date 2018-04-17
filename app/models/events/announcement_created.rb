@@ -24,6 +24,6 @@ class Events::AnnouncementCreated < Event
   end
 
   def notification_recipients
-    User.where(id: Membership.where(id: custom_fields['membership_ids']).pluck(:user_id) )
+    User.where(id: memberships.pluck(:user_id))
   end
 end

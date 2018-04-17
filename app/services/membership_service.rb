@@ -1,5 +1,4 @@
 class MembershipService
-
   def self.redeem(membership:, actor:)
     raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 

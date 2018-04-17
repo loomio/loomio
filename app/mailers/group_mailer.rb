@@ -2,7 +2,7 @@ class GroupMailer < BaseMailer
   layout 'invite_people_mailer'
 
   def membership_created(recipient, event)
-    @membership = event.membership
+    @membership = event.eventable.memberships.find_by(user: recipient)
     @token      = recipient.login_tokens.create(redirect: polymorphic_url(event.eventable))
     send_single_mail to:     recipient.email,
                      locale: recipient.locale,

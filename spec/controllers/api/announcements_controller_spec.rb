@@ -148,10 +148,101 @@ describe API::AnnouncementsController do
     end
 
     describe 'outcome' do
+      let(:poll)    { create :poll, author: user, closed_at: 1.day.ago }
+      let(:outcome) { create :outcome, author: user, poll: poll }
+
+      it 'does not permit non author to announce' do
+        sign_in create(:user)
+        recipients = {user_ids: [notified_user.id], emails: []}
+        post :create, params: {outcome_id: outcome.id,
+                               announcement: {kind: "outcome_created", recipients: recipients}}
+        expect(response.status).to eq 403
+      end
+
+      it 'notify exising user' do
+        recipients = {user_ids: [notified_user.id], emails: []}
+        post :create, params: {outcome_id: outcome.id,
+                               announcement: {kind: "outcome_created", recipients: recipients}}
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        expect(json['users_count']).to eq 1
+        expect(notified_user.notifications.count).to eq 1
+        expect(outcome.guest_group.members).to include notified_user
+      end
+
+      it 'notify new user by email' do
+        recipients = {user_ids: [], emails: ['jim@example.com']}
+        post :create, params: {outcome_id: outcome.id,
+                               announcement: {kind: "outcome_created", recipients: recipients}}
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        expect(json['users_count']).to eq 1
+        email_user = User.find_by(email: "jim@example.com")
+        expect(email_user.notifications.count).to eq 1
+        expect(email_user.email_verified).to be false
+        expect(email_user.memberships.pending.count).to eq 1
+        expect(outcome.guest_group.members).to include email_user
+      end
+
+      it 'notify existing user by email' do
+        recipients = {user_ids: [], emails: [notified_user.email]}
+        post :create, params: {outcome_id: outcome.id,
+                               announcement: {kind: "outcome_created", recipients: recipients}}
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        expect(json['users_count']).to eq 1
+        expect(User.where(email: notified_user.email).count).to eq 2
+        expect(notified_user.groups).to_not include outcome.guest_group
+      end
     end
 
-    # describe 'group' do
-    # end
+    describe 'group' do
+      let(:group) { create :formal_group, creator: user}
+
+      it 'does not permit non author to announce' do
+        sign_in create(:user)
+        recipients = {user_ids: [notified_user.id], emails: []}
+        post :create, params: {group_id: group.id,
+                               announcement: {kind: "membership_created", recipients: recipients}}
+        expect(response.status).to eq 403
+      end
+
+      it 'notify exising user' do
+        recipients = {user_ids: [notified_user.id], emails: []}
+        post :create, params: {group_id: group.id,
+                               announcement: {kind: "membership_created", recipients: recipients}}
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        expect(json['users_count']).to eq 1
+        expect(notified_user.notifications.count).to eq 1
+        expect(group.members).to include notified_user
+      end
+
+      it 'notify new user by email' do
+        recipients = {user_ids: [], emails: ['jim@example.com']}
+        post :create, params: {group_id: group.id,
+                               announcement: {kind: "membership_created", recipients: recipients}}
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        expect(json['users_count']).to eq 1
+        email_user = User.find_by(email: "jim@example.com")
+        expect(email_user.notifications.count).to eq 1
+        expect(email_user.email_verified).to be false
+        expect(email_user.memberships.pending.count).to eq 1
+        expect(group.members).to include email_user
+      end
+
+      it 'notify existing user by email' do
+        recipients = {user_ids: [], emails: [notified_user.email]}
+        post :create, params: {group_id: group.id,
+                               announcement: {kind: "membership_created", recipients: recipients}}
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        expect(json['users_count']).to eq 1
+        expect(User.where(email: notified_user.email).count).to eq 2
+        expect(notified_user.groups).to_not include group.guest_group
+      end
+    end
   end
 
   # describe 'create' do
