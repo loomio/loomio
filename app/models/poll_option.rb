@@ -15,8 +15,8 @@ class PollOption < ApplicationRecord
     AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
   end
 
-  def has_time?
-    super(self.name)
+  def has_time?(value = nil)
+    super(value || self.name)
   end
 
   def display_name(zone: nil)
