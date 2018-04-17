@@ -10,14 +10,14 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def search
-    self.collection = Queries::AnnouncementRecipients.new(params.require(:q), current_user).results
+    self.collection = Queries::AnnouncementRecipients.new(params.require(:q), current_user, notified_group).results
     respond_with_collection serializer: AnnouncementRecipientSerializer, root: false
   end
 
   private
 
-  def accessible_records
-    notified_model.announcements
+  def notified_group
+    @notified_group ||= load_and_authorize(:group, :invite_people, optional: true) || NullFormalGroup.new
   end
 
   def notified_model

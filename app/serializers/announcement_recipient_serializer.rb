@@ -1,9 +1,5 @@
 class AnnouncementRecipientSerializer < ActiveModel::Serializer
-  attributes :id, :email, :name, :username, :avatar_kind, :avatar_initials, :avatar_url, :email_hash, :blank
-
-  def blank
-    "" # because md-autocomplete needs something blank to put in md-item-text :(
-  end
+  attributes :id, :email, :name, :username, :avatar_kind, :avatar_initials, :avatar_url, :email_hash
 
   def email_hash
     Digest::MD5.hexdigest(object.email.to_s.downcase)
