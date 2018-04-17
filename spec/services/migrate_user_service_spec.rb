@@ -35,6 +35,7 @@ describe MigrateUserService do
   before do
     group.add_admin! patrick
     group.add_admin! jennifer
+    membership.update(accepted_at: 2.days.ago)
 
     DiscussionService.create(discussion: discussion, actor: patrick)
     DiscussionService.update(discussion: discussion, params: {title: "new version"}, actor: patrick)
