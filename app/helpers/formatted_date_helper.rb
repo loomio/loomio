@@ -11,7 +11,7 @@ module FormattedDateHelper
     apply_format parse_date_string(value, zone), '%-d %b'
   end
 
-  def has_time? (value)
+  def has_time?(value)
     !!date_time(value)
   rescue ArgumentError
     false

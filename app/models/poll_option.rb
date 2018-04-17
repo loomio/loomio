@@ -15,6 +15,10 @@ class PollOption < ApplicationRecord
     AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
   end
 
+  def has_time?
+    super(self.name)
+  end
+
   def display_name(zone: nil)
     if poll.dates_as_options
       formatted_datetime(name, zone || poll.time_zone)
