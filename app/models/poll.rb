@@ -20,7 +20,7 @@ class Poll < ApplicationRecord
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
                        dates_as_options required_custom_fields
-                       require_stance_choices require_all_choices
+                       require_stance_choices require_all_choices prevent_anonymous
                        poll_options_attributes experimental has_score_icons).freeze
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_templates.dig(self.poll_type, field) }
