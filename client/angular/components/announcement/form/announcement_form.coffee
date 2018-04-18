@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'announcementForm', ->
     $scope.announcement.recipients = []
 
     $scope.search = (query) ->
-      Records.announcements.search(query).then (users) ->
+      Records.announcements.search(query, $scope.announcement.model).then (users) ->
         utils.parseJSONList(users)
 
     $scope.addRecipient = (recipient) ->

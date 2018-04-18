@@ -4,11 +4,12 @@ AnnouncementModel    = require 'shared/models/announcement_model.coffee'
 module.exports = class AnnouncementRecordsInterface extends BaseRecordsInterface
   model: AnnouncementModel
 
-  search: (query) ->
+  search: (query, model) ->
+    params = {q: query}
+    params.group_id = model.id if model.constructor.type == 'FormalGroup'
     @remote.fetch
       path: 'search'
-      params:
-        q: query
+      params: params
 
   buildFromModel: (target) ->
     model = if target.constructor.singular == 'event'
