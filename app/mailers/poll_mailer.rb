@@ -40,7 +40,7 @@ class PollMailer < BaseMailer
     send_single_mail(
       locale:        recipient.locale,
       to:            recipient.email,
-      subject_key:   "poll_mailer.#{@info.poll_type}.subject.#{@info.action_name}",
+      subject_key:   event.email_subject_key || "poll_mailer.#{@info.poll_type}.subject.#{@info.action_name}",
       subject_params: { title: @info.poll.title, actor: @info.actor.name },
       layout:        layouts[action_name].to_s
     )

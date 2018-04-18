@@ -14,7 +14,12 @@ class Events::AnnouncementResend < Event
     custom_fields['kind']
   end
 
+  def email_subject_key
+    "#{eventable.mailer.to_s.underscore}.resend"
+  end
+
   def email_recipients
+    # return User.none if eventable.is_a?(Poll) && !eventable.active? # do we want this?
     User.where(id: Membership.where(id: custom_fields['membership_ids']).pluck(:user_id))
   end
 end
