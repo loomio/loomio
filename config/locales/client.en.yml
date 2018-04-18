@@ -1432,6 +1432,7 @@ en:
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option
     dots_per_person: Dots per person
+    dots_per_person_helptext: How many points to allocate to each participant
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
 
