@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'groupAvatar', ->
   scope: {group: '=', size: '@?'}
   restrict: 'E'
-  templateUrl: 'generated/components/group_avatar/group_avatar.html'
+  templateUrl: 'generated/components/group/avatar/group_avatar.html'
   replace: true
   controller: ['$scope', ($scope) ->
     sizes = ['small', 'medium', 'large']
