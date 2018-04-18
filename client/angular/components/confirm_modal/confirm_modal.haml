@@ -3,7 +3,7 @@
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %h1.lmo-h1{translate: "{{confirm.text.title}}"}
-      %material_modal_header_cancel_button{ng-if: "!forceSubmit"}
+      %material_modal_header_cancel_button{ng-if: "!confirm.forceSubmit"}
   %md-dialog-content
     %p{translate: "{{confirm.text.helptext}}", ng-if: "confirm.text.helptext"}
     %p{ng-include: "fragment", ng-if: "fragment"}
