@@ -2,6 +2,7 @@ EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 ThreadService  = require 'shared/services/thread_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 angular.module('loomioApp').directive 'contextPanelDropdown', ['$rootScope', ($rootScope) ->
   scope: {discussion: '='}
@@ -63,6 +64,13 @@ angular.module('loomioApp').directive 'contextPanelDropdown', ['$rootScope', ($r
       AbilityService.canDeleteThread($scope.discussion)
 
     $scope.deleteThread = ->
-      ModalService.open 'DeleteThreadForm', discussion: => $scope.discussion
+      ModalService.open 'ConfirmModal', confirm: ->
+        submit:     $scope.discussion.destroy
+        text:
+          title:    'delete_thread_form.title'
+          helptext: 'delete_thread_form.body'
+          submit:   'delete_thread_form.confirm'
+          flash:    'delete_thread_form.messages.success'
+        redirect:   LmoUrlService.group $scope.discussion.group()
   ]
 ]

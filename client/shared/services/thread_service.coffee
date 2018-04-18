@@ -1,7 +1,7 @@
-Session      = require 'shared/services/session.coffee'
-Records      = require 'shared/services/records.coffee'
-FlashService = require 'shared/services/flash_service.coffee'
-ModalService = require 'shared/services/modal_service.coffee'
+Session       = require 'shared/services/session.coffee'
+Records       = require 'shared/services/records.coffee'
+FlashService  = require 'shared/services/flash_service.coffee'
+ModalService  = require 'shared/services/modal_service.coffee'
 
 module.exports = new class ThreadService
   mute: (thread, override = false) ->
@@ -40,7 +40,13 @@ module.exports = new class ThreadService
   dismiss: (thread) ->
     if !Session.user().hasExperienced("dismissThread")
       Records.users.saveExperience("dismissThread")
-      ModalService.open 'DismissExplanationModal', thread: -> thread
+      ModalService.open 'ConfirmModal', confirm: =>
+        submit: => @dismiss(thread)
+        text:
+          title:    'dismiss_explanation_modal.dismiss_thread'
+          helptext: 'dismiss_explanation_modal.body_html'
+          submit:   'dismiss_explanation_modal.dismiss_thread'
+          flash:    'dashboard_page.thread_dismissed'
     else
       thread.dismiss().then =>
         FlashService.success "dashboard_page.thread_dismissed", {}, 'undo', => @recall(thread)

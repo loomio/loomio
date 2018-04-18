@@ -21,9 +21,6 @@ module.exports = new class Session
 
     user
 
-  invitation: ->
-    Records.invitations.find(token: LmoUrlService.params().invitation_token)[0] or Records.invitations.build()
-
   signOut: ->
     AppConfig.loggingOut = true
     Records.sessions.remote.destroy('').then -> hardReload('/')

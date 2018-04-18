@@ -24,7 +24,7 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
       AbilityService.canArchiveGroup($scope.group)
 
     $scope.canLeaveGroup = =>
-      AbilityService.canLeaveGroup($scope.group)
+      AbilityService.canRemoveMembership($scope.group.membershipFor(Session.user()))
 
     $scope.canChangeVolume = ->
       AbilityService.canChangeGroupVolume($scope.group)
@@ -39,10 +39,23 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
       ModalService.open 'GroupModal', group: -> Records.groups.build(parentId: $scope.group.id)
 
     $scope.leaveGroup = ->
-      ModalService.open 'LeaveGroupForm', group: -> $scope.group
+      ModalService.open 'ConfirmModal', confirm: ->
+        submit: $scope.membership.destroy
+        text:
+          title:    'leave_group_form.title'
+          helptext: 'leave_group_form.question'
+          confirm:  'leave_group_form.submit'
+          flash:    'group_page.messages.leave_group_success'
+        redirect: 'dashboard'
 
     $scope.archiveGroup = ->
-      ModalService.open 'ArchiveGroupForm', group: -> $scope.group
+      ModalService.open 'ConfirmModal', confirm: ->
+        submit:     $scope.group.archive
+        text:
+          title:    'archive_group_form.title'
+          helptext: 'archive_group_form.question'
+          flash:    'group_page.messages.archive_group_success'
+        redirect:   'dashboard'
 
     return
   ]

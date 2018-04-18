@@ -48,8 +48,7 @@ module.exports = new class AbilityService
   canParticipateInGroup: (group) ->
     return false unless group
     Session.user().isAdminOf(group) or
-    (Session.user().isMemberOf(group) and group.membersCanRaiseMotions) or
-    Session.invitation().group() == group
+    (Session.user().isMemberOf(group) and group.membersCanRaiseMotions)
 
   canReactToPoll: (poll) ->
     @isEmailVerified() and @canParticipateInPoll(poll)
@@ -153,6 +152,7 @@ module.exports = new class AbilityService
     @canAdministerGroup(comment.group())
 
   canRemoveMembership: (membership) ->
+    membership and
     membership.group().memberIds().length > 1 and
     (!membership.admin or membership.group().adminIds().length > 1) and
     (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
