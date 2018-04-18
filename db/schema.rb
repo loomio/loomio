@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413041937) do
+ActiveRecord::Schema.define(version: 20180418001835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,26 @@ ActiveRecord::Schema.define(version: 20180413041937) do
     t.index ["to"], name: "index_ahoy_messages_on_to"
     t.index ["token"], name: "index_ahoy_messages_on_token"
     t.index ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type"
+  end
+
+  create_table "announcees", force: :cascade do |t|
+    t.bigint "announcement_id"
+    t.string "announceable_type"
+    t.bigint "announceable_id"
+    t.jsonb "user_ids", default: [], null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announceable_type", "announceable_id"], name: "index_announcees_on_announceable_type_and_announceable_id"
+    t.index ["announcement_id"], name: "index_announcees_on_announcement_id"
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.jsonb "invitation_ids", default: [], null: false
+    t.jsonb "user_ids", default: [], null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "author_id", default: 0
+    t.integer "event_id"
   end
 
   create_table "attachments", force: :cascade do |t|
@@ -724,7 +744,7 @@ ActiveRecord::Schema.define(version: 20180413041937) do
     t.string "short_bio", default: "", null: false
     t.boolean "email_verified", default: false, null: false
     t.string "location", default: "", null: false
-    t.datetime "last_seen_at", default: "2017-10-18 21:05:12", null: false
+    t.datetime "last_seen_at"
     t.boolean "email_announcements", default: true, null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"

@@ -66,7 +66,10 @@ class Group < ApplicationRecord
 
   def add_member!(user, inviter: nil)
     save! unless persisted?
-    self.memberships.find_or_create_by!(user: user) { |m| m.inviter = inviter }
+    self.memberships.find_or_create_by!(user: user) do |m|
+      m.inviter     = inviter
+      m.accepted_at = DateTime.now
+    end
   rescue ActiveRecord::RecordNotUnique
     retry
   end

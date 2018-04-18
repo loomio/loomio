@@ -9,7 +9,7 @@
         %i.mdi.mdi-close
 
   .membership-card__membership.lmo-flex.lmo-flex__center{ng-if: "canViewMemberships()", ng-repeat: "membership in memberships() | orderBy: '-admin' | limitTo: loader.numLoaded track by membership.id", data-username: "{{membership.user().username}}"}
-    %user_avatar.lmo-margin-right{user: "membership.user()", size: "medium", coordinator: "membership.admin"}
+    %user_avatar.lmo-margin-right{user: "membership.user()", size: "medium", coordinator: "membership.admin", no-link: "!membership.acceptedAt"}
     .membership-card__user.lmo-flex.lmo-flex__grow{layout: "column"}
       %span {{::membership.user().name}}
       %outlet{name: "after-membership-user", model: "membership"}
