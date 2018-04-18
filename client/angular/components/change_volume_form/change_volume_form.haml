@@ -4,7 +4,7 @@
     %md-toolbar
       .md-toolbar-tools.lmo-flex__space-between
         %h1.lmo-h1.change-volume-form__title{translate: "{{translateKey()}}.title", translate-value-title: "{{model.title || model.groupName()}}"}
-        %material_modal_header_cancel_button
+        %dismiss_modal_button
     .md-dialog-content
       %md-radio-group.md-body-1{ng-model: "buh.volume"}
         %md-radio-button.md-checkbox--with-summary{ng-repeat: "level in volumeLevels", ng-value: "level", id: "volume-{{level}}"}

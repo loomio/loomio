@@ -7,7 +7,7 @@
         %span{ng-if: "outcome.isNew()", ng-switch-when: "save", translate: "poll_common_outcome_form.new_title"}
         %span{ng-if: "!outcome.isNew()", ng-switch-when: "save", translate: "poll_common_outcome_form.update_title"}
         %span{ng-switch-when: "announce", translate: "announcement.form.outcome.title"}
-      %material_modal_header_cancel_button
+      %dismiss_modal_button
 
   %md-dialog-content.lmo-slide-animation{ng-switch: "currentStep"}
     %poll_common_outcome_form.animated{outcome: "outcome", ng-switch-when: "save"}

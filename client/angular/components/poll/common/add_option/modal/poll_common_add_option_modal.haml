@@ -6,7 +6,7 @@
       %h1.lmo-h1{ng-switch: "currentStep"}
         %span{translate: "poll_common_add_option.modal.title", ng-switch-when: "save"}
         %span{translate: "announcement.form.poll.title", ng-switch-when: "announce"}
-      %material_modal_header_cancel_button
+      %dismiss_modal_button
   %md-dialog-content.lmo-slide-animation{ng-switch: "currentStep"}
     %poll_common_add_option_form.animated{ng-switch-when: "save", poll: "poll"}
     %announcement_form.animated{ng-switch-when: "announce", announcement: "announcement"}

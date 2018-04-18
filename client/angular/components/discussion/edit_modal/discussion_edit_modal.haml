@@ -6,7 +6,7 @@
       %h1.lmo-h1{ng-switch: "currentStep"}
         %span{translate: "discussion_form.edit_discussion_title", ng-switch-when: "save"}
         %span{translate: "announcement.form.discussion.title", ng-switch-when: "announce"}
-      %material_modal_header_cancel_button
+      %dismiss_modal_button
   %md-dialog-content.lmo-slide-animation
     %div{ng-switch: "currentStep"}
       %discussion_form.animated{discussion: "discussion", ng-switch-when: "save"}

@@ -6,7 +6,7 @@
         %span{ng-switch-when: "close", translate: "poll_common_close_form.close_{{poll.pollType}}"}
         %span{ng-switch-when: "outcome", translate: "poll_common_outcome_form.new_title"}
         %span{ng-switch-when: "announce", translate: "announcement.form.outcome.title"}
-      %material_modal_header_cancel_button
+      %dismiss_modal_button
 
   %md-dialog-content.lmo-slide-animation{ng-switch: "currentStep"}
     %poll_common_close_form.animated{poll: "poll", ng-switch-when: "close"}

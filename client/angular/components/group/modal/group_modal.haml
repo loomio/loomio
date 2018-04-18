@@ -10,7 +10,7 @@
           %h1.lmo-h1{ng-if: "!group.isNew()", translate: "group_form.edit_group_heading"}
         .group-form__invitation-title{ng-switch-when: "announce"}
           %h1.lmo-h1{translate: "invitation_form.invite_people"}
-      %material_modal_header_cancel_button
+      %dismiss_modal_button
   %md-dialog-content.md-body-1.lmo-slide-animation{ng-switch: "currentStep"}
     %group_form.animated{ng-switch-when: "create", group: "group", modal: "true"}
     %announcement_form.animated{ng-switch-when: "announce", announcement: "announcement"}
