@@ -28,6 +28,10 @@ class Full::UserSerializer < UserSerializer
     object.adminable_group_ids.any?
   end
 
+  def include_email?
+    true
+  end
+  
   def include_email_hash?
     true
   end

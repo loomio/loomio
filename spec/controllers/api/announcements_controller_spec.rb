@@ -129,7 +129,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "new_discussion", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         expect(notified_user.notifications.count).to eq 1
         expect(discussion.guest_group.members).to include notified_user
       end
@@ -140,7 +139,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "new_discussion", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         email_user = User.find_by(email: "jim@example.com")
         expect(email_user.notifications.count).to eq 1
         expect(email_user.email_verified).to be false
@@ -154,7 +152,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "new_discussion", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         expect(User.where(email: notified_user.email).count).to eq 2
         expect(notified_user.groups).to_not include discussion.guest_group
       end
@@ -177,7 +174,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "poll_created", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         expect(notified_user.notifications.count).to eq 1
         expect(poll.guest_group.members).to include notified_user
       end
@@ -188,7 +184,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "poll_created", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         email_user = User.find_by(email: "jim@example.com")
         expect(email_user.notifications.count).to eq 1
         expect(email_user.email_verified).to be false
@@ -202,7 +197,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "poll_created", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         expect(User.where(email: notified_user.email).count).to eq 2
         expect(notified_user.groups).to_not include poll.guest_group
       end
@@ -226,7 +220,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "outcome_created", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         expect(notified_user.notifications.count).to eq 1
         expect(outcome.guest_group.members).to include notified_user
       end
@@ -237,7 +230,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "outcome_created", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         email_user = User.find_by(email: "jim@example.com")
         expect(email_user.notifications.count).to eq 1
         expect(email_user.email_verified).to be false
@@ -251,7 +243,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "outcome_created", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         expect(User.where(email: notified_user.email).count).to eq 2
         expect(notified_user.groups).to_not include outcome.guest_group
       end
@@ -274,7 +265,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "group_announced", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         expect(notified_user.notifications.count).to eq 1
         expect(group.members).to include notified_user
       end
@@ -285,7 +275,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "group_announced", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         email_user = User.find_by(email: "jim@example.com")
         expect(email_user.notifications.count).to eq 1
         expect(email_user.email_verified).to be false
@@ -299,7 +288,6 @@ describe API::AnnouncementsController do
                                announcement: {kind: "group_announced", recipients: recipients}}
         json = JSON.parse response.body
         expect(response.status).to eq 200
-        expect(json['users_count']).to eq 1
         expect(User.where(email: notified_user.email).count).to eq 2
         expect(notified_user.groups).to_not include group.guest_group
       end

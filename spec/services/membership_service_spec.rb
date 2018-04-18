@@ -55,37 +55,4 @@ describe MembershipService do
       expect(Invitation.last.send_count).to eq 2
     end
   end
-
-
-
-  describe 'join_group' do
-    it 'adds the user as creator if the group has no creator' do
-      group.update(creator: nil)
-      MembershipService.join_group(group: group, actor: user)
-      expect(group.reload.creator).to eq user
-    end
-
-    it 'does not eliminate the former creator' do
-      group.update(creator: create(:user))
-      MembershipService.join_group(group: group, actor: user)
-      expect(group.reload.creator).to_not eq user
-    end
-
-    it 'marks pending invitations as used' do
-      invitation
-      expect(membership.is_pending?).to eq true
-      MembershipService.join_group(group: group, actor: user)
-      expect(membership.reload.is_pending?).to eq false
-    end
-  end
-
-  describe 'add_users_to_group' do
-    it 'marks pending invitations as used' do
-      invitation
-      expect(membership.is_pending?).to eq true
-      MembershipService.add_users_to_group(users: [user], group: group, inviter: admin)
-      expect(membership.reload.is_pending?).to eq false
-    end
-  end
-
 end
