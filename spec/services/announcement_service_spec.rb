@@ -14,7 +14,7 @@ describe AnnouncementService do
       )
     }
 
-    before { event.update created_at: (24.hours.ago - 30.minutes) }
+    before { event.update created_at: (24.hours.ago.beginning_of_hour - 30.minutes) }
 
     it 'resends invitations after a specified period' do
       expect { AnnouncementService.resend_pending_memberships }.to change { ActionMailer::Base.deliveries.count }.by(1)
