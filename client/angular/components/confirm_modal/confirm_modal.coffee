@@ -7,13 +7,15 @@ angular.module('loomioApp').factory 'ConfirmModal', ->
     $scope.confirm  = confirm
     $scope.fragment = "generated/components/fragments/#{confirm.text.fragment}.html" if confirm.text.fragment
 
-    $scope.submit = ->
+    $scope.submit = (args...) ->
       $scope.isDisabled = true
-      $scope.confirm.submit().then (data) ->
+      $scope.confirm.submit(args...).then ->
         $scope.$close()
-        LmoUrlService.goTo $scope.confirm.redirect if $scope.confirm.redirect?
-        $scope.confirm.successCallback(data)       if typeof $scope.confirm.successCallback is 'function'
-        FlashService.success $scope.confirm.text.flash
+        LmoUrlService.goTo $scope.confirm.redirect     if $scope.confirm.redirect?
+        $scope.confirm.successCallback(args...)        if typeof $scope.confirm.successCallback is 'function'
+        FlashService.success $scope.confirm.text.flash if $scope.confirm.text.flash
       .finally ->
         $scope.isDisabled = false
+
+    _.merge $scope, confirm.scope
   ]

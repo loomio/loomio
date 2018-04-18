@@ -10,4 +10,4 @@
   %md-dialog-actions.lmo-md-actions
     %div{ng-if: "confirm.forceSubmit"}
     %md-button{ng-if: "!confirm.forceSubmit", ng-click: "$close()", type: "button", translate: "common.action.cancel"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "{{confirm.text.submit || 'common.action.ok'}}"}
+    %md-button.md-primary.md-raised{ng-click: "submit() || $close()", translate: "{{confirm.text.submit || 'common.action.ok'}}"}
