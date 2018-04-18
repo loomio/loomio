@@ -4,7 +4,8 @@ LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 angular.module('loomioApp').factory 'ConfirmModal', ->
   templateUrl: 'generated/components/confirm_modal/confirm_modal.html'
   controller: ['$scope', 'confirm', ($scope, confirm) ->
-    $scope.confirm = confirm
+    $scope.confirm  = confirm
+    $scope.fragment = "generated/components/fragments/#{confirm.text.fragment}.html" if confirm.text.fragment
 
     $scope.submit = ->
       $scope.isDisabled = true

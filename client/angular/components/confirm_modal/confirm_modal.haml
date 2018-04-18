@@ -5,7 +5,8 @@
       %h1.lmo-h1{translate: "{{confirm.text.title}}"}
       %material_modal_header_cancel_button{ng-if: "!forceSubmit"}
   %md-dialog-content
-    %p{translate: "{{confirm.text.helptext}}"}
+    %p{translate: "{{confirm.text.helptext}}", ng-if: "confirm.text.helptext"}
+    %p{ng-include: "fragment", ng-if: "fragment"}
   %md-dialog-actions.lmo-md-actions
     %div{ng-if: "confirm.forceSubmit"}
     %md-button{ng-if: "!confirm.forceSubmit", ng-click: "$close()", type: "button", translate: "common.action.cancel"}

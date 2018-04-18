@@ -8,7 +8,12 @@ module.exports = new class ThreadService
     if !Session.user().hasExperienced("mutingThread") and !override
       Records.users.saveExperience("mutingThread")
       Records.users.updateProfile(Session.user()).then ->
-        ModalService.open 'MuteExplanationModal', thread: -> thread
+        ModalService.open 'ConfirmModal', confirm: ->
+          submit: -> thread.saveVolume('mute', true)
+          text:
+            title: 'mute_explanation_modal.mute_thread'
+            flash: 'discussion.volume.mute_message'
+            fragment: 'mute_thread'
     else
       previousVolume = thread.volume()
       thread.saveVolume('mute').then =>
@@ -26,12 +31,15 @@ module.exports = new class ThreadService
     if !Session.user().hasExperienced("closingThread")
       Records.users.saveExperience("closingThread")
       Records.users.updateProfile(Session.user()).then ->
-        ModalService.open 'CloseExplanationModal', thread: -> thread
+        ModalService.open 'ConfirmModal', confirm: ->
+          submit: thread.close
+          text:
+            title:    'close_explanation_modal.close_thread'
+            fragment: 'close_thread'
+            flash:    'discussion.closed.closed'
     else
       thread.close().then =>
-        FlashService.success "discussion.closed.closed",
-          name: thread.title
-        , 'undo', => @reopen(thread)
+        FlashService.success "discussion.closed.closed", {}, 'undo', => @reopen(thread)
 
   reopen: (thread) ->
     thread.reopen().then =>
@@ -58,7 +66,12 @@ module.exports = new class ThreadService
   pin: (thread) ->
     if !Session.user().hasExperienced("pinningThread")
       Records.users.saveExperience("pinningThread").then ->
-        ModalService.open 'PinThreadModal', thread: -> thread
+        ModalService.open 'ConfirmModal', confirm: ->
+          submit:  thread.savePin
+          text:
+            title:    'pin_thread_modal.title'
+            flash:    'discussion.pin.pinned'
+            fragment: 'pin_thread'
     else
       thread.savePin().then =>
         FlashService.success "discussion.pin.pinned", 'undo', => @unpin(thread)
