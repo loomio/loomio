@@ -73,6 +73,22 @@ describe API::AnnouncementsController do
   describe 'audience' do
     let(:group)      { create :formal_group }
     let(:discussion) { create :discussion, group: group }
+    let(:subgroup)   { create :formal_group, parent: group }
+    let(:both_user)  { create :user }
+    let(:parent_user){ create :user }
+
+    it 'parent_group' do
+      group.add_member! both_user
+      subgroup.add_member! both_user
+      group.add_member! parent_user
+
+      get :audience, params: {group_id: subgroup.id, kind: "parent_group"}
+      json = JSON.parse response.body
+      user_ids = json.map {|u| u['id']}
+      expect(user_ids).to     include parent_user.id
+      expect(user_ids).to_not include both_user.id
+      expect(user_ids).to_not include user.id
+    end
 
     it 'formal_group' do
       get :audience, params: {discussion_id: discussion.id, kind: "formal_group"}

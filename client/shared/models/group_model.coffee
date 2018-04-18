@@ -30,12 +30,17 @@ module.exports = class GroupModel extends BaseModel
     membersCanStartDiscussions: true
     membersCanCreateSubgroups: false
     motionsCanBeEdited: false
+    audiences: []
 
   afterConstruction: ->
     if @privacyIsClosed()
       @allowPublicThreads = @discussionPrivacyOptions == 'public_or_private'
     HasDrafts.apply @
     HasDocuments.apply @, showTitle: true
+    @audiences.push 'parent_group' if @parent()
+
+  audienceValues: ->
+    name: (@parent() or {}).name
 
   relationships: ->
     @hasMany 'discussions'

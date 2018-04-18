@@ -5,7 +5,6 @@ HasDrafts        = require 'shared/mixins/has_drafts.coffee'
 HasDocuments     = require 'shared/mixins/has_documents.coffee'
 HasMentions      = require 'shared/mixins/has_mentions.coffee'
 HasTranslations  = require 'shared/mixins/has_translations.coffee'
-HasAnnouncements = require 'shared/mixins/has_announcements.coffee'
 HasGuestGroup    = require 'shared/mixins/has_guest_group.coffee'
 
 module.exports = class DiscussionModel extends BaseModel
@@ -16,7 +15,6 @@ module.exports = class DiscussionModel extends BaseModel
   @draftParent: 'group'
   @draftPayloadAttributes: ['title', 'description']
   @serializableAttributes: AppConfig.permittedParams.discussion
-  @audiences: ['formal_group', 'discussion_group']
 
   afterConstruction: ->
     @private = @privateDefaultValue() if @isNew()
@@ -24,7 +22,6 @@ module.exports = class DiscussionModel extends BaseModel
     HasDrafts.apply @
     HasMentions.apply @, 'description'
     HasTranslations.apply @
-    HasAnnouncements.apply @
     HasGuestGroup.apply @
 
   defaultValues: =>
@@ -33,6 +30,7 @@ module.exports = class DiscussionModel extends BaseModel
     lastItemAt: null
     title: ''
     description: ''
+    audiences: ['formal_group', 'discussion_group']
 
   privateDefaultValue: =>
     if @group()

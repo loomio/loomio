@@ -39,10 +39,16 @@ class GroupInviter
 
   def generate_memberships!
     @generated_membership_ids ||= begin
-      memberships = invited_members.where.not(id: @group.member_ids).map do |user|
-        Membership.new(inviter: @inviter, user: user, group: @group, volume: Membership.volumes[:normal])
-      end
+      memberships = invited_members.where.not(id: @group.member_ids).map { |user| membership_for(user) }
       Membership.import(memberships).ids
     end
+  end
+
+  def membership_for(user)
+    Membership.new(inviter: @inviter,
+                   user: user,
+                   group: @group,
+                   volume: Membership.volumes[:normal],
+                   accepted_at: (Time.now if user.email_verified))
   end
 end
