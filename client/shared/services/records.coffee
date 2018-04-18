@@ -16,8 +16,6 @@ records.addRecordsInterface require('shared/interfaces/notification_records_inte
 records.addRecordsInterface require('shared/interfaces/user_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/search_result_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/contact_records_interface.coffee')
-records.addRecordsInterface require('shared/interfaces/invitation_records_interface.coffee')
-records.addRecordsInterface require('shared/interfaces/invitation_form_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/version_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/draft_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/translation_records_interface.coffee')
@@ -40,7 +38,5 @@ records.addRecordsInterface require('shared/interfaces/login_token_records_inter
 records.addRecordsInterface require('shared/interfaces/message_channel_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/locale_records_interface.coffee')
 records.addRecordsInterface require('shared/interfaces/member_records_interface.coffee')
-AppConfig.records = records
-
 AppConfig.records = records
 module.exports = records

@@ -7,8 +7,10 @@ angular.module('loomioApp').directive 'announcementFormActions', ->
   controller: ['$scope', ($scope) ->
     $scope.nuggets = [1,2,3,4].map (index) -> "announcement.form.helptext_#{index}"
     $scope.submit = submitForm $scope, $scope.announcement,
-      successCallback: -> $scope.$emit '$close'
+      successCallback: (data) ->
+        $scope.announcement.membershipsCount = data.memberships.length
+        $scope.$emit '$close'
       flashSuccess: 'announcement.flash.success'
       flashOptions:
-        count: -> $scope.announcement.recipients.length
+        count: -> $scope.announcement.membershipsCount
   ]

@@ -12,6 +12,8 @@ class GroupInviter
   def invite!
     generate_users!
     generate_memberships!
+    @group.update_pending_memberships_count
+    @group.update_memberships_count
     raise NoInvitationsAvailableError  if invited_members.count == 0
     raise InvitationLimitExceededError if invitation_limit_exceeded?
     self

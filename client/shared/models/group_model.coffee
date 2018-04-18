@@ -48,6 +48,11 @@ module.exports = class GroupModel extends BaseModel
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
     @belongsTo 'parent', from: 'groups'
 
+  activeMemberships: ->
+    _.filter @memberships(), (m) -> m.acceptedAt
+
+  pendingMemberships: ->
+    _.filter @memberships(), (m) -> !m.acceptedAt
 
   hasRelatedDocuments: ->
     @hasDocuments() or @allDocuments().length > 0

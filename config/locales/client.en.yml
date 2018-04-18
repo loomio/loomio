@@ -327,10 +327,15 @@ en:
     contact_site_name: 'Contact {{site_name}}'
     sign_out: 'Sign out'
 
+  membership_card:
+    count_members: "{{count}} Members"
+    count_invitations: "{{count}} Invitations"
+
   membership_dropdown:
     make_coordinator: 'Make coordinator'
     demote_coordinator: 'Demote coordinator'
     remove_membership: 'Remove from group'
+    cancel_invitation: Cancel invitation
 
   start_menu:
     label: 'User actions'
@@ -800,6 +805,18 @@ en:
       remove_admin_success: '{{name}} is no longer a coordinator'
     remove_admin_from_self:
       question: 'Are you sure you no longer want to be a coordinator?'
+
+  membership_remove_modal:
+    invitation:
+      title: Cancel invitation
+      message: Are you sure you want to cancel this invitation?
+      flash: Invitation cancelled
+      submit: Cancel invitation
+    membership:
+      title: Remove member
+      message: Are you sure you want to remove this person from the group?
+      flash: Member removed
+      submit: Remove member
 
   memberships_panel:
     add_coordinator: Make coordinator

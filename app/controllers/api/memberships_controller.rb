@@ -11,8 +11,18 @@ class API::MembershipsController < API::RestfulController
   end
 
   def index
-    instantiate_collection { |collection| collection.active.where(group: model.groups).order('users.name') }
-    respond_with_collection
+    instantiate_collection do |collection|
+      if params[:pending]
+        collection.pending
+      else
+        collection.active
+      end.where(group: model.groups).order('admin desc, created_at desc')
+    end
+    respond_with_collection(scope: index_scope)
+  end
+
+  def destroy_response
+    render json: Array(resource.group), each_serializer: Simple::GroupSerializer, root: :groups
   end
 
   def for_user
@@ -39,6 +49,7 @@ class API::MembershipsController < API::RestfulController
 
   def autocomplete
     @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
+                                                     pending: params[:pending],
                                                      group: load_and_authorize(:group, :members_autocomplete),
                                                      current_user: current_user,
                                                      limit: 10)
@@ -73,6 +84,10 @@ class API::MembershipsController < API::RestfulController
 
   private
 
+  def index_scope
+    { email_user_ids: collection.pluck(:user_id) } if params[:pending]
+  end
+
   def model
     load_and_authorize(:group, optional: true) ||
     load_and_authorize(:discussion, optional: true) ||
@@ -80,7 +95,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def accessible_records
-    visible = resource_class.joins(:group).includes(:user, :inviter, {group: [:parent]})
+    visible = resource_class.joins(:group).joins(:user).includes(:inviter, {group: [:parent]})
     if current_user.group_ids.any?
       visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR groups.is_visible_to_public = 't'")
     else

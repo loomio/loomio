@@ -9,7 +9,7 @@ describe API::CommentsController do
   let(:another_comment) { create :comment, discussion: discussion, author: another_user }
 
   before do
-    group.members << user
+    group.add_member! user
   end
 
   describe "signed in" do

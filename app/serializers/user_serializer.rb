@@ -4,7 +4,7 @@ class UserSerializer < ActiveModel::Serializer
   attributes :id, :name, :username, :short_bio, :avatar_initials, :avatar_kind,
              :avatar_url, :email_hash, :time_zone, :search_fragment, :label,
              :locale, :location, :created_at, :email_verified, :has_password,
-             :last_seen_at
+             :last_seen_at, :email
 
   def name
     object.name || object.username
@@ -41,6 +41,10 @@ class UserSerializer < ActiveModel::Serializer
 
   def search_fragment
     scope[:q]
+  end
+
+  def include_email?
+    scope[:email_user_ids].to_a.include? object.id
   end
 
   def scope

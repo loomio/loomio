@@ -29,6 +29,13 @@ GIT
       rails (>= 3.2.0)
 
 GIT
+  remote: git://github.com/loomio/snorlax.git
+  revision: e04cbcf54ecaea962b91db5cc8574aa8060302cc
+  specs:
+    snorlax (0.1.7)
+      rails (> 4.1)
+
+GIT
   remote: git://github.com/loomio/twitter-text.git
   revision: 0931cb3782bf32023e7ff05282a46023718f42fe
   specs:
@@ -495,8 +502,6 @@ GEM
     simplecov-html (0.10.2)
     skylight (1.6.0)
       activesupport (>= 3.0.0)
-    snorlax (0.1.6)
-      rails (> 4.1)
     socksify (1.7.1)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -620,7 +625,7 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   skylight
-  snorlax
+  snorlax!
   spring
   spring-commands-rspec
   sprockets-rails

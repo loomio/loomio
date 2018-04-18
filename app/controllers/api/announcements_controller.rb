@@ -5,8 +5,8 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   def create
-    @event = service.create(model: notified_model, params: resource_params, actor: current_user)
-    render json: { users_count: @event.notifications.length }
+    self.collection = service.create(model: notified_model, params: resource_params, actor: current_user).memberships
+    respond_with_collection serializer: MembershipSerializer, root: :memberships, scope: create_scope
   end
 
   def search
@@ -15,6 +15,9 @@ class API::AnnouncementsController < API::RestfulController
   end
 
   private
+  def create_scope
+    { email_user_ids: collection.pending.pluck(:user_id) }
+  end
 
   def notified_group
     @notified_group ||= load_and_authorize(:group, :invite_people, optional: true) || NullFormalGroup.new

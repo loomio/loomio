@@ -18,9 +18,19 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
       AbilityService.canRemoveMembership($scope.membership)
 
     $scope.removeMembership = ->
-      ModalService.open 'RemoveMembershipForm', membership: -> $scope.membership
+      namespace = if $scope.membership.acceptedAt then 'membership' else 'invitation'
+      ModalService.open 'ConfirmModal',
+        forceSubmit: -> false
+        text: ->
+          title:   "membership_remove_modal.#{namespace}.title"
+          helptext: "membership_remove_modal.#{namespace}.message"
+          flash:   "membership_remove_modal.#{namespace}.flash"
+          submit:  "membership_remove_modal.#{namespace}.submit"
+        submit: ->
+          $scope.membership.destroy
 
     $scope.canToggleAdmin = ->
+      $scope.membership.acceptedAt and
       AbilityService.canAdministerGroup($scope.membership.group()) and
       (!$scope.membership.admin or $scope.canRemoveMembership($scope.membership))
 

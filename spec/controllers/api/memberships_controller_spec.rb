@@ -7,6 +7,7 @@ describe API::MembershipsController do
   let(:user_named_bang) { create :user, name: "Bang Whamfist" }
   let(:alien_named_biff) { create :user, name: "Biff Beef", email: 'beef@biff.com' }
   let(:alien_named_bang) { create :user, name: 'Bang Beefthrong' }
+  let(:pending_named_barb) { create :user, name: 'Barb Backspace' }
 
   let(:group) { create :formal_group }
   let(:another_group) { create :formal_group }
@@ -17,12 +18,13 @@ describe API::MembershipsController do
   }}
 
   before do
-    group.admins << user
-    group.members  << user_named_biff
-    group.members  << user_named_bang
-    another_group.members << user
-    another_group.members << alien_named_bang
-    another_group.members << alien_named_biff
+    group.add_admin! user
+    group.add_member! user_named_biff
+    group.add_member! user_named_bang
+    another_group.add_member! user
+    another_group.add_member! alien_named_bang
+    another_group.add_member! alien_named_biff
+    group.memberships.create!(user: pending_named_barb, accepted_at: nil)
     sign_in user
   end
 
@@ -126,6 +128,18 @@ describe API::MembershipsController do
         groups = json['groups'].map { |g| g['id'] }
         expect(users).to include user_named_biff.id
         expect(users).to_not include alien_named_biff.id
+        expect(users).to_not include pending_named_barb.id
+        expect(groups).to include group.id
+      end
+
+      it 'returns pending users' do
+        get :index, params: { group_id: group.id, pending: "true" }, format: :json
+        json = JSON.parse(response.body)
+
+        users = json['users'].map { |c| c['id'] }
+        user_emails = json['users'].map { |c| c['email'] }
+        groups = json['groups'].map { |g| g['id'] }
+        expect(user_emails).to include pending_named_barb.email
         expect(groups).to include group.id
       end
 
@@ -159,9 +173,9 @@ describe API::MembershipsController do
 
     it 'returns visible groups for the given user' do
       public_group
-      private_group.members << another_user
-      group.members << another_user
-      guest_group.members << another_user
+      private_group.add_member! another_user
+      group.add_member! another_user
+      guest_group.add_member! another_user
 
       get :for_user, params: { user_id: another_user.id }
       json = JSON.parse(response.body)
@@ -255,9 +269,9 @@ describe API::MembershipsController do
 
       it 'does not return duplicate users' do
         third_group = create(:formal_group)
-        third_group.members << user
-        third_group.members << user_named_biff
-        another_group.members << user_named_biff
+        third_group.add_member! user
+        third_group.add_member! user_named_biff
+        another_group.add_member! user_named_biff
 
         get :invitables, params: { group_id: group.id, q: 'biff' }, format: :json
         json = JSON.parse(response.body)

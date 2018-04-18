@@ -272,7 +272,7 @@ describe 'DiscussionService' do
     end
 
     it 'does not move a discussion to a group the user is not a member of' do
-      group.members << user
+      group.add_member! user
       expect { DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user) }.to raise_error CanCan::AccessDenied
       expect(discussion.reload.group).to_not eq another_group.id
     end
