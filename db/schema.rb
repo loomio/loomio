@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416223444) do
+ActiveRecord::Schema.define(version: 20180419215351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -564,6 +564,7 @@ ActiveRecord::Schema.define(version: 20180416223444) do
     t.string "name", null: false
     t.integer "poll_id"
     t.integer "priority", default: 0, null: false
+    t.jsonb "score_counts", default: {}, null: false
     t.index ["poll_id", "name"], name: "index_poll_options_on_poll_id_and_name"
     t.index ["poll_id", "priority"], name: "index_poll_options_on_poll_id_and_priority"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
