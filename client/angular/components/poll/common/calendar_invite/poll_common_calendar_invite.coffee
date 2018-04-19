@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pollCommonCalendarInvite', ->
 
     $scope.options = _.map $scope.outcome.poll().pollOptions(), (option) ->
       id:        option.id
-      value:     TimeService.displayDate(option.name)
+      value:     TimeService.displayDateAndTime(option.name)
       attendees: option.stances().length
 
     bestOption = _.first _.sortBy $scope.options, (option) ->

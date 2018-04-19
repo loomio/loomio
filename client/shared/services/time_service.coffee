@@ -20,6 +20,10 @@ module.exports = new class TimeService
     return if @fullDayDate(m)
     @inTimeZone(m, zone).format('h:mma')
 
+  displayDateAndTime: (m, zone) =>
+    m = moment(m) if typeof m is 'string'
+    _.compact([@displayDate(m, zone), @displayTime(m, zone)]).join(' ')
+
   fullDayDate: (m) ->
     m = moment(m) if typeof m is 'string'
     m._f == 'YYYY-MM-DD'
