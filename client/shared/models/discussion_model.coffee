@@ -30,7 +30,10 @@ module.exports = class DiscussionModel extends BaseModel
     lastItemAt: null
     title: ''
     description: ''
-    audiences: ['formal_group', 'discussion_group']
+    audiences: ['formal_group']
+
+  audienceValues: ->
+    name: @group().name
 
   privateDefaultValue: =>
     if @group()

@@ -27,5 +27,5 @@ angular.module('loomioApp').directive 'announcementForm', ->
 
     $scope.loadAudience = (kind) ->
       Records.announcements.fetchAudience($scope.announcement.model, kind).then (data) ->
-        _.each utils.parseJSONList(data), $scope.addRecipient
+        _.each _.sortBy(utils.parseJSONList(data), (e) -> e.name || e.email ), $scope.addRecipient
   ]

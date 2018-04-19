@@ -1,9 +1,4 @@
-  .lmo-md-actions
-    %div{ng-switch: "announcement.recipients.length"}
-      %p.lmo-hint-text{ng-switch-when: "0"}
-      %p.lmo-hint-text{ng-switch-when: "1", translate: "announcement.form.notified_singular"}
-      %p.lmo-hint-text{ng-switch-default: "true", translate: "announcement.form.notified", translate-value-notified: "{{announcement.recipients.length}}"}
-
-    %div{ng-if: "announcement.recipients.length == 0"}
-    %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "!announcement.recipients.length", ng-click: "$emit('$close')", translate: "common.action.done"}
-    %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "announcement.recipients.length", ng-click: "submit()", translate: "common.action.send"}
+.lmo-md-actions
+  %div
+  %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "!announcement.recipients.length", ng-click: "$emit('$close')", translate: "common.action.done"}
+  %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "announcement.recipients.length", ng-click: "submit()", translate: "common.action.send"}

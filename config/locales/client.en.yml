@@ -424,7 +424,7 @@ en:
   announcement:
     audiences:
       parent_group: Members of {{name}}
-      formal_group: Members of group
+      formal_group: Members of {{name}}
       discussion_group: Members of thread
       voters: People who have voted
       non_voters: People who have not voted
@@ -445,8 +445,8 @@ en:
         title: Share decision
       outcome:
         title: Share outcome
-      notified: '{{notified}} people will be notified'
-      notified_singular: '1 person will be notified'
+      notified: '{{notified}} people will be notified:'
+      notified_singular: '1 person will be notified:'
       group_title: '{{name}} ({{count}} people)'
       show_members: Show members
       hide_members: Hide members

@@ -8,6 +8,17 @@ $chip-height: 40px;
   padding: 0 !important;
 }
 
+.announcement-form__audience {
+  height: 42px;
+  min-height: 42px;
+  margin-bottom: 8px;
+  color: $primary-text-color;
+}
+.announcement-form__audience i {
+  margin-right: 8px;
+  opacity: 0.8;
+}
+
 .announcement-form__label {
   font-size: 11px;
   color: rgba(0, 0, 0, 0.38) !important;
