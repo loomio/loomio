@@ -22,6 +22,14 @@ class UserSerializer < ActiveModel::Serializer
     object.avatar_kind == 'gravatar'
   end
 
+  def avatar_kind
+    if !object.email_verified && !object.name
+      'mdi-email-outline'
+    else
+      object.avatar_kind
+    end
+  end
+
   def avatar_url
     {
       small:    object.avatar_url(:small),

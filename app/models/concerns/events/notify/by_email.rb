@@ -12,15 +12,14 @@ module Events::Notify::ByEmail
   end
   handle_asynchronously :email_users!
 
-  private
-
-  def email_method
-    kind
-  end
-
   # override to specify a custom subject for emails sent by this event
   def email_subject_key
     nil
+  end
+
+  private
+  def email_method
+    kind
   end
 
   # which users should receive an email about this event?

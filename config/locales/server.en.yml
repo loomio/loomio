@@ -167,6 +167,8 @@ en:
       view_group: You can approve or decline the request here
       button_text: View request
 
+  announcement_count_emails: "%{count} emails"
+
   email_actions:
     unfollowed_discussion: You have turned off emails for the thread.
 

@@ -46,6 +46,9 @@ module.exports = class PollModel extends BaseModel
     customFields: {}
     audiences: ['formal_group', 'discussion_group', 'voters', 'non_voters']
 
+  audienceValues: ->
+    name: @group().name
+
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'

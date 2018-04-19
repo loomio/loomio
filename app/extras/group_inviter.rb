@@ -34,7 +34,7 @@ class GroupInviter
   end
 
   def generate_users!
-    @generated_user_ids ||= User.import(@emails.map { |email| User.new(email: email) }).ids
+    @generated_user_ids ||= User.import(@emails.uniq.map { |email| User.new(email: email) }).ids
   end
 
   def generate_memberships!

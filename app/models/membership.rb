@@ -54,7 +54,7 @@ class Membership < ApplicationRecord
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
-  delegate :target_model, to: :invitation, allow_nil: true
+  delegate :target_model, to: :group
   delegate :mailer, to: :user
 
   update_counter_cache :group, :memberships_count
@@ -69,12 +69,6 @@ class Membership < ApplicationRecord
 
   def message_channel
     "membership-#{token}"
-  end
-
-  def target_model
-    Discussion.find_by(guest_group_id: group_id) ||
-    Poll.find_by(guest_group_id: group_id) ||
-    group
   end
 
   def make_admin!

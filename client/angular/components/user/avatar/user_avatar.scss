@@ -25,6 +25,9 @@
 }
 
 .user-avatar__initials {
+  &.mdi {
+    opacity: 0.8;
+  }
   overflow: hidden;
   border-radius: 50%;
   border: 1px solid $border-color;

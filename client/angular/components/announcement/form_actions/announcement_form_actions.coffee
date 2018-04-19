@@ -11,6 +11,6 @@ angular.module('loomioApp').directive 'announcementFormActions', ->
         $scope.announcement.membershipsCount = data.memberships.length
         $scope.$emit '$close'
       flashSuccess: 'announcement.flash.success'
-      flashOptions:
-        count: -> $scope.announcement.membershipsCount
+      flashOptions: ->
+        count: $scope.announcement.membershipsCount
   ]

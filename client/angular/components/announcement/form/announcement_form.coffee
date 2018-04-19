@@ -15,9 +15,16 @@ angular.module('loomioApp').directive 'announcementForm', ->
       Records.announcements.search(query, $scope.announcement.model).then (users) ->
         utils.parseJSONList(users)
 
+    buildRecipientFromEmail = (email) ->
+      email: email
+      emailHash: email
+      avatarKind: 'mdi-email-outline'
+
     $scope.addRecipient = (recipient) ->
-      return if !recipient || !recipient.emailHash || _.contains(_.pluck($scope.announcement.recipients, "emailHash"), recipient.emailHash)
-      $scope.announcement.recipients.push recipient
+      return unless recipient
+      _.each recipient.emails, (email) -> $scope.addRecipient buildRecipientFromEmail(email)
+      if !recipient.emails && !_.contains(_.pluck($scope.announcement.recipients, "emailHash"), recipient.emailHash)
+        $scope.announcement.recipients.unshift recipient
       $scope.selected = undefined
       $scope.query = ''
 
@@ -26,5 +33,5 @@ angular.module('loomioApp').directive 'announcementForm', ->
 
     $scope.loadAudience = (kind) ->
       Records.announcements.fetchAudience($scope.announcement.model, kind).then (data) ->
-        _.each _.sortBy(utils.parseJSONList(data), (e) -> e.name || e.email ), $scope.addRecipient
+        _.each _.sortBy(utils.parseJSONList(data), (e) -> e.name || e.email ).reverse(), $scope.addRecipient
   ]

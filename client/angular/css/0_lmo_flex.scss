@@ -21,10 +21,12 @@
 }
 
 .lmo-flex__center {
+  display: flex;
   align-items: center;
 }
 
 .lmo-flex__horizontal-center {
+  display: flex;
   justify-content: center !important;
 }
 

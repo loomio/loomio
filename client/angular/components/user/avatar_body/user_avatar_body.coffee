@@ -6,8 +6,11 @@ angular.module('loomioApp').directive 'userAvatarBody', ->
   templateUrl: 'generated/components/user/avatar_body/user_avatar_body.html'
   replace: false
   controller: ['$scope', ($scope) ->
+
     unless _.contains(['small', 'medium', 'large', 'featured'], $scope.size)
       $scope.size = 'medium'
+
+    $scope.mdiSize = if $scope.size == 'small' then 'mdi-18px' else 'mdi-24px'
 
     $scope.mdColors = ->
       if $scope.coordinator

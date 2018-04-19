@@ -6,8 +6,15 @@ Queries::AnnouncementRecipients = Struct.new(:query, :user, :group) do
   private
 
   def email_result
-    if query.scan(AppConfig::EMAIL_REGEX).presence && !group.members.pluck(:email).include?(query)
-      Array(User.new(email: query).tap(&:set_avatar_initials))
+    emails = query.scan(AppConfig::EMAIL_REGEX)
+    case emails.length
+    when 0
+    when 1
+      if !group.members.pluck(:email).include?(query)
+        [User.new(email: emails.first, avatar_kind: 'mdi-email-outline')]
+      end
+    else
+      [AnnouncementRecipientEmails.new(emails, user.locale)]
     end
   end
 
