@@ -1,10 +1,42 @@
 module FormattedDateHelper
+  def display_time(value, zone)
+    apply_format parse_date_string(value, zone), '%l:%M %P'
+  end
+
+  def display_day(value, zone)
+    apply_format parse_date_string(value, zone), '%a'
+  end
+
+  def display_date(value, zone)
+    apply_format parse_date_string(value, zone), '%-d %b'
+  end
+
+  def has_time?(value)
+    !!date_time(value)
+  rescue ArgumentError
+    false
+  end
+
   private
 
+  def parse_date_string(value, zone)
+    if has_time? value
+      date_time(value).in_time_zone(zone)
+    else
+      value.to_date
+    end
+  end
+
+  def apply_format(date, format)
+    date.strftime(format).strip
+  end
+
   def formatted_datetime(value, zone)
-    date_time(value).in_time_zone(zone).strftime(date_time_format(value)).strip
-  rescue ArgumentError
-    value.to_date.strftime(date_format(value)).strip
+    if has_time? value
+      date_time(value).in_time_zone(zone).strftime(date_time_format(value)).strip
+    else
+      value.to_date.strftime(date_format(value)).strip
+    end
   end
 
   def date_time(value)

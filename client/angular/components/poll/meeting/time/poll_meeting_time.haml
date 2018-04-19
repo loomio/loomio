@@ -1,0 +1,4 @@
+.poll-meeting-time
+  %span{ng-if: "!fullDayDate(name)"}> {{ displayTime(name, zone) }}
+  %span> {{ displayDay(name, zone) }}
+  %span> {{ displayDate(name, zone) }}

@@ -20,7 +20,7 @@ class DiscussionMailer < BaseMailer
     send_single_mail  to: @info.recipient.email,
                       from: from_user_via_loomio(@info.actor),
                       reply_to: reply_to_address_with_group_name(discussion: @info.discussion, user: @info.recipient),
-                      subject_key: "discussion_mailer.#{action_name}.subject",
+                      subject_key: event.email_subject_key || "discussion_mailer.#{action_name}.subject",
                       subject_params: { actor: @info.actor.name,
                                         group: @info.discussion.group.full_name,
                                         discussion: @info.discussion.title },

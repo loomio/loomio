@@ -15,6 +15,10 @@ class Event < ApplicationRecord
   # we don't use this but I think it's cool so lets see if we use it anytime soon else delete
   # scope :excluding_sequence_ids, -> (ranges) { where RangeSet.to_ranges(ranges).map {|r| "(sequence_id NOT BETWEEN #{r.first} AND #{r.last})"}.join(' AND ') }
 
+  scope :announcements_in_period, ->(since, till) {
+    where(kind: :announcement_created).within(since.beginning_of_hour, till.beginning_of_hour)
+  }
+
   after_create :call_thread_item_created
   after_destroy :call_thread_item_destroyed
 

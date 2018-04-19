@@ -73,7 +73,8 @@ module Dev::FakeDataHelper
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: option_count.times.map{ Faker::Artist.name },
-      meeting: option_count.times.map { |i| (seed+i).days.from_now.to_date },
+      meeting: option_count.times.map { |i| (seed+i).days.from_now.to_date},
+      # meeting: option_count.times.map { |i| (seed+i).hours.from_now.utc.iso8601},
       ranked_choice: option_count.times.map { Faker::Food.ingredient }
     }.with_indifferent_access
   end
@@ -95,7 +96,9 @@ module Dev::FakeDataHelper
 
     case options[:poll_type].to_s
     when 'dot_vote'      then options[:custom_fields][:dots_per_person] = 10
-    when 'meeting'       then options[:custom_fields][:time_zone] = 'Asia/Seoul'
+    when 'meeting'
+      options[:custom_fields][:time_zone] = 'Asia/Seoul'
+      options[:custom_fields][:can_respond_maybe] = true
     when 'ranked_choice' then options[:custom_fields][:minimum_stance_choices] = 2
     end
 

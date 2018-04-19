@@ -18,6 +18,11 @@ module Events::Notify::ByEmail
     kind
   end
 
+  # override to specify a custom subject for emails sent by this event
+  def email_subject_key
+    nil
+  end
+
   # which users should receive an email about this event?
   # (NB: This must return an ActiveRecord::Relation)
   def email_recipients

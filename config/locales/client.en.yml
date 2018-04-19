@@ -1246,6 +1246,8 @@ en:
     reason_placeholder: Any additional comments?
     message: Message
     results: Results
+    responses: Responses
+    totals: Totals
     vote: Vote
     votes: Votes
     update_outcome: Update outcome
@@ -1334,11 +1336,14 @@ en:
       title: Anonymous participants
       helptext_on: Participant info will not be shown with each response.
       helptext_off: Participants will be shown with their responses.
-    voter_can_add_options:
+    voters_can_add_options:
       title: Voters may add options
       helptext_on: Participants may add their own options when voting.
       helptext_off: Participants will select from the options you provide.
-
+    can_respond_maybe:
+      title: Voters can respond "if need be"
+      helptext_on:  Voters can indicate times as "If need be"
+      helptext_off: Voters will indicate yes or no for each time
   poll_common_close_form:
     title: Close a poll early
     helptext: Are you sure you're ready to close early?
@@ -1600,6 +1605,9 @@ en:
     stance_updated: Vote updated
 
   poll_meeting_vote_form:
+    can_attend: "Can attend"
+    unable: "Unable"
+    if_need_be: If need be
     your_response: When can you attend?
     stance_created: Availability saved
     stance_updated: Availability updated
@@ -1628,6 +1636,7 @@ en:
     discussion_reopened:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> reopened the thread"
     new_comment:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created:               "<strong><a href='u/{{username}}'>{{author}}</a></strong> shared an outcome for <strong>{{title}}</strong>"
+    poll_reopened:                 "<strong><a href='u/{{username}}'>{{author}}</a></strong> reopened the {{polltype}}: <strong>{{title}}</strong>"
     poll_closed_by_user:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the {{polltype}}: <strong>{{title}}</strong>"
     poll_created:                  "<strong><a href='u/{{username}}'>{{author}}</a></strong> started a {{polltype}}: <strong>{{title}}</strong>"
     poll_edited:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the {{polltype}}: <strong>{{title}}</strong>"

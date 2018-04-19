@@ -2,7 +2,11 @@ TimeService = require 'shared/services/time_service.coffee'
 
 angular.module('loomioApp').directive 'pollMeetingTime', ->
   scope: {name: '=', zone: '='}
-  template: "<span>{{displayDate(name, zone)}}</span>"
+  replace: true
+  templateUrl: "generated/components/poll/meeting/time/poll_meeting_time.html"
   controller: ['$scope', ($scope) ->
+    $scope.displayDay  = TimeService.displayDay
     $scope.displayDate = TimeService.displayDate
+    $scope.displayTime = TimeService.displayTime
+    $scope.fullDayDate = TimeService.fullDayDate
   ]

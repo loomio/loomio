@@ -171,6 +171,8 @@ en:
     unfollowed_discussion: You have turned off emails for the thread.
 
   discussion_mailer:
+    resend: 'REMINDER: %{actor} is waiting for you to join %{discussion}'
+
     new_discussion:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> started a thread: %{discussion}"
@@ -341,7 +343,12 @@ en:
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
 
+  group_mailer:
+    resend: 'REMINDER: %{actor} is waiting for you to join %{title}'
+
   poll_mailer:
+    resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
+
     common:
       or: or
       why_send_this: You are receiving this email because %{reason}
