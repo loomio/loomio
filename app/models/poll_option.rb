@@ -15,6 +15,16 @@ class PollOption < ApplicationRecord
     AppConfig.colors.dig(poll.poll_type, self.priority % AppConfig.colors.length)
   end
 
+  def update_option_score_counts
+    update(score_counts: stance_choices
+      .latest
+      .select('score, count(*) as count')
+      .group(:score)
+      .map { |c| [c.score.to_i, c.count] }
+      .to_h
+    )
+  end
+
   def has_time?(value = nil)
     super(value || self.name)
   end
