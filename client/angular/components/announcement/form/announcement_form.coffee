@@ -4,12 +4,17 @@ I18n         = require 'shared/services/i18n.coffee'
 EventBus     = require 'shared/services/event_bus.coffee'
 utils        = require 'shared/record_store/utils.coffee'
 
+{ audiencesFor, audienceValuesFor } = require 'shared/helpers/announcement.coffee'
+
 angular.module('loomioApp').directive 'announcementForm', ->
   scope: {announcement: '='}
   restrict: 'E'
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
     $scope.announcement.recipients = []
+
+    $scope.audiences      = -> audiencesFor($scope.announcement.model)
+    $scope.audienceValues = -> audienceValuesFor($scope.announcement.model)
 
     $scope.search = (query) ->
       Records.announcements.search(query, $scope.announcement.model).then (users) ->
@@ -33,5 +38,5 @@ angular.module('loomioApp').directive 'announcementForm', ->
 
     $scope.loadAudience = (kind) ->
       Records.announcements.fetchAudience($scope.announcement.model, kind).then (data) ->
-        _.each _.sortBy(utils.parseJSONList(data), (e) -> e.name || e.email ).reverse(), $scope.addRecipient
+        _.each _.sortBy(utils.parseJSONList(data), (e) -> e.name || e.email ), $scope.addRecipient
   ]

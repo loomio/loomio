@@ -15,7 +15,6 @@ module.exports = class OutcomeModel extends BaseModel
   defaultValues: ->
     statement: ''
     customFields: {}
-    audiences: ['formal_group', 'discussion_group', 'voters', 'non_voters']
 
   afterConstruction: ->
     HasDrafts.apply @

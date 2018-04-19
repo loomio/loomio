@@ -1,4 +1,5 @@
 .poll-common-vote-form__button {
+  border: 2px solid $background-color;
   min-width: auto;
   max-width: calc(25% - 8px) !important;
   overflow: visible;
