@@ -9,7 +9,6 @@ angular.module('loomioApp').directive 'announcementForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
-
     $scope.announcement.recipients = []
 
     $scope.search = (query) ->
