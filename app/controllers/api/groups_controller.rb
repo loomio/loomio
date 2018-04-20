@@ -2,6 +2,11 @@ class API::GroupsController < API::RestfulController
   include UsesFullSerializer
   after_action :track_visit, only: :show
 
+  def token
+    self.resource = load_and_authorize(:formal_group, :invite_people)
+    respond_with_resource scope: {include_token: true}
+  end
+
   def show
     self.resource = load_and_authorize(:formal_group)
     respond_with_resource

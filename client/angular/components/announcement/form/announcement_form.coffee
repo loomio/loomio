@@ -1,8 +1,9 @@
-Records      = require 'shared/services/records.coffee'
-ModalService = require 'shared/services/modal_service.coffee'
-I18n         = require 'shared/services/i18n.coffee'
-EventBus     = require 'shared/services/event_bus.coffee'
-utils        = require 'shared/record_store/utils.coffee'
+Records       = require 'shared/services/records.coffee'
+ModalService  = require 'shared/services/modal_service.coffee'
+I18n          = require 'shared/services/i18n.coffee'
+EventBus      = require 'shared/services/event_bus.coffee'
+utils         = require 'shared/record_store/utils.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 { audiencesFor, audienceValuesFor } = require 'shared/helpers/announcement.coffee'
 
@@ -11,6 +12,10 @@ angular.module('loomioApp').directive 'announcementForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
+    $scope.announcement.model.fetchToken() if $scope.announcement.model.isA('group')
+
+    $scope.shareableLink = -> LmoUrlService.shareableLink($scope.announcement.model)
+
     $scope.announcement.recipients = []
 
     $scope.audiences      = -> audiencesFor($scope.announcement.model)

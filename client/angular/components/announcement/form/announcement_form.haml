@@ -1,19 +1,27 @@
 .announcement-form
-  %p.announcement-form__help.md-subhead{translate: "announcement.form.{{announcement.modelName()}}_helptext"}>
-  %md-list
-    %md-list-item.announcement-form__audience.md-whiteframe-1dp{ng-repeat: "audience in audiences()", ng-click: "loadAudience(audience)"}
-      %i.mdi.mdi-24px.mdi-account-multiple
-      %span.md-body-1{translate: "announcement.audiences.{{audience}}", translate-values: "audienceValues()"}
+  .announcement-form__share-link
+    %h2.md-subhead{translate: "announcement.form.share_a_link"}
+    .announcement-shareable-link__content.lmo-flex__center.lmo-flex--row
+      %md-input-container.lmo-flex__grow.md-no-errors
+        %input{value: "{{shareableLink()}}", disabled: "true"}
+      %md-button.md-accent{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink()", on-copied: "copied()"}
+        %span{translate: "common.copy"}
+  %md-divider
+  .announcement-form__invite
+    %p.announcement-form__help.md-subhead{translate: "announcement.form.send_invitations"}>
+    %md-list
+      %md-list-item.announcement-form__audience.md-whiteframe-1dp{ng-repeat: "audience in audiences()", ng-click: "loadAudience(audience)"}
+        %i.mdi.mdi-24px.mdi-account-multiple
+        %span.md-body-1{translate: "announcement.audiences.{{audience}}", translate-values: "audienceValues()"}
 
-    %md-autocomplete{md-search-text: "query", md-autoselect: "true", md-autofocus: "true", md-selected-item-change: "addRecipient(recipient)", md-item-text: "recipient.email", placeholder: "{{'announcement.form.placeholder' | translate}}", md-items: "recipient in search(query)", md-min-length: "3", md-delay: "150"}
-      %md-item-template
-        %announcement_chip{user: "recipient"}
+      %md-autocomplete{md-search-text: "query", md-autoselect: "true", md-autofocus: "true", md-selected-item-change: "addRecipient(recipient)", md-item-text: "recipient.email", placeholder: "{{'announcement.form.placeholder' | translate}}", md-items: "recipient in search(query)", md-min-length: "3", md-delay: "150"}
+        %md-item-template
+          %announcement_chip{user: "recipient"}
 
-  %md-list
-    %md-divider{ng-if: "announcement.recipients.length"}
-    %div.md-subhead.announcement-form__num-notified{ng-switch: "announcement.recipients.length"}
-      %p{ng-switch-when: "0"}
-      %p.lmo-text-right{ng-switch-when: "1", translate: "announcement.form.notified_singular"}
-      %p.lmo-text-right{ng-switch-default: "true", translate: "announcement.form.notified", translate-value-notified: "{{announcement.recipients.length}}"}
-    %md-list-item.announcement-form__list-item{ng-repeat: "recipient in announcement.recipients track by recipient.emailHash"}
-      %announcement_chip{user: "recipient", show-close: "true"}
+    %md-list
+      %div.md-subhead.announcement-form__num-notified{ng-switch: "announcement.recipients.length"}
+        %p{ng-switch-when: "0"}
+        %p.lmo-text-right{ng-switch-when: "1", translate: "announcement.form.notified_singular"}
+        %p.lmo-text-right{ng-switch-default: "true", translate: "announcement.form.notified", translate-value-notified: "{{announcement.recipients.length}}"}
+      %md-list-item.announcement-form__list-item{ng-repeat: "recipient in announcement.recipients track by recipient.emailHash"}
+        %announcement_chip{user: "recipient", show-close: "true"}

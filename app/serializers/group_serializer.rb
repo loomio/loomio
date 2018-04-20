@@ -27,6 +27,7 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_edit_comments,
              :members_can_raise_motions,
              :members_can_vote,
+             :token,
              :polls_count,
              :closed_polls_count,
              :discussions_count,
@@ -54,6 +55,10 @@ class GroupSerializer < ActiveModel::Serializer
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
   has_one :parent, serializer: GroupSerializer, root: :groups
+
+  def include_token?
+    Hash(scope)[:include_token]
+  end
 
   def cover_photo
     @cover_photo ||= object.cover_photo

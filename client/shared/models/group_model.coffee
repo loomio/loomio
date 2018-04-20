@@ -62,8 +62,8 @@ module.exports = class GroupModel extends BaseModel
 
   group: -> @
 
-  shareableInvitation: ->
-    @recordStore.invitations.find(singleUse:false, groupId: @id)[0]
+  fetchToken: ->
+    @remote.getMember(@id, 'token').then (token) -> @token = token
 
   closedPolls: ->
     _.filter @polls(), (poll) ->

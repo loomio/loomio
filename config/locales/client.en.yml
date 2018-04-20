@@ -430,6 +430,8 @@ en:
       non_voters: People who have not voted
 
     form:
+      share_a_link: Share a link
+      send_invitations: Send invitations
       group_helptext: Who would you like to add to the group?
       discussion_helptext: Who would you like to invite to the thread?
       poll_helptext: Who would you like to invite to this decision?
