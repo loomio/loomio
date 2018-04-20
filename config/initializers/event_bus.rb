@@ -68,6 +68,8 @@ EventBus.configure do |config|
   # update discussion or comment versions_count when title or description edited
   config.listen('discussion_update', 'comment_update') { |model| model.update_versions_count }
 
+  config.listen('membership_destroy') { |membership| Queries::OrganisationMemberships.for(membership).destroy_all }
+
   # update stance data for polls
   config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
   config.listen('stance_create')  { |stance| stance.poll.guest_group.add_member!(stance.participant) }

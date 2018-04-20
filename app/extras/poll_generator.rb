@@ -170,13 +170,13 @@ PollGenerator = Struct.new(:poll_type) do
   end
 
   def generate_stance_for(poll, index: 0, reason:, choice: nil, stance_choices_attributes: [])
-    Stance.create!(
-      poll:        poll,
-      participant: generate_participant_for(poll, index),
-      stance_choices_attributes: stance_choices_attributes,
-      reason:      reason,
-      choice:      choice
-    )
+    StanceService.create actor: generate_participant_for(poll, index),
+                         stance: Stance.new(
+                            poll:        poll,
+                            stance_choices_attributes: stance_choices_attributes,
+                            reason:      reason,
+                            choice:      choice
+                         )
   end
 
   def generate_participant_for(poll, index)

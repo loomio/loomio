@@ -46,6 +46,7 @@ class MembershipService
   def self.destroy(membership:, actor:)
     actor.ability.authorize! :destroy, membership
     membership.destroy
+    EventBus.broadcast('membership_destroy', membership, actor)
   end
 
   def self.save_experience(membership:, actor:, params:)

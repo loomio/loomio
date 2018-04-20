@@ -21,8 +21,7 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
       _.any Session.user().groups(), (group) -> AbilityService.canStartThread(group)
 
     availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
-        AbilityService.canAddMembers(group)
+      _.filter Session.user().groups(), (group) -> group.type == 'FormalGroup'
 
     $scope.currentGroup = ->
       return _.first(availableGroups()) if availableGroups().length == 1

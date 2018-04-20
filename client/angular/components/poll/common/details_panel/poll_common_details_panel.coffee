@@ -17,14 +17,6 @@ angular.module('loomioApp').directive 'pollCommonDetailsPanel', ->
       canPerform: -> AbilityService.canTranslate($scope.poll)
       perform:    -> $scope.poll.translate(Session.user().locale)
     ,
-      name: 'announce_poll'
-      icon: 'mdi-account'
-      hasPlus: true
-      active:     -> $scope.poll.isActive() && $scope.poll.announcementsCount == 0
-      canPerform: -> AbilityService.canAdministerPoll($scope.poll) && !$scope.poll.outcome()
-      perform:    -> ModalService.open 'AnnouncementModal', announcement: ->
-        Records.announcements.buildFromModel($scope.poll)
-    ,
       name: 'add_resource'
       icon: 'mdi-attachment'
       canPerform: -> AbilityService.canAdministerPoll($scope.poll)

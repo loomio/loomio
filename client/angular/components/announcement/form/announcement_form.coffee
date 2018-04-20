@@ -1,10 +1,11 @@
-Records       = require 'shared/services/records.coffee'
-ModalService  = require 'shared/services/modal_service.coffee'
-I18n          = require 'shared/services/i18n.coffee'
-EventBus      = require 'shared/services/event_bus.coffee'
-utils         = require 'shared/record_store/utils.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
-
+Records        = require 'shared/services/records.coffee'
+ModalService   = require 'shared/services/modal_service.coffee'
+I18n           = require 'shared/services/i18n.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
+utils          = require 'shared/record_store/utils.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+AbilityService = require 'shared/services/ability_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 { audiencesFor, audienceValuesFor } = require 'shared/helpers/announcement.coffee'
 
 angular.module('loomioApp').directive 'announcementForm', ->
@@ -13,6 +14,10 @@ angular.module('loomioApp').directive 'announcementForm', ->
   templateUrl: 'generated/components/announcement/form/announcement_form.html'
   controller: ['$scope', ($scope) ->
     $scope.announcement.model.fetchToken() if $scope.announcement.model.isA('group')
+
+    $scope.canUpdateAnyoneCanParticipate = ->
+      $scope.announcement.model.isA('poll') &&
+      AbilityService.canAdminister($scope.announcement.model)
 
     $scope.shareableLink = -> LmoUrlService.shareableLink($scope.announcement.model)
 
@@ -29,6 +34,9 @@ angular.module('loomioApp').directive 'announcementForm', ->
       email: email
       emailHash: email
       avatarKind: 'mdi-email-outline'
+
+    $scope.copied = ->
+      FlashService.success('common.copied')
 
     $scope.addRecipient = (recipient) ->
       return unless recipient

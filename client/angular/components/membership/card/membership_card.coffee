@@ -9,6 +9,7 @@ angular.module('loomioApp').directive 'membershipCard', ->
   templateUrl: 'generated/components/membership/card/membership_card.html'
   replace: false
   controller: ['$scope', ($scope) ->
+    $scope.vars = {}
     $scope.show = ->
       return false if $scope.recordCount() == 0
       if $scope.pending
@@ -30,22 +31,22 @@ angular.module('loomioApp').directive 'membershipCard', ->
         $scope.group.membershipsCount - $scope.group.pendingMembershipsCount
 
     $scope.toggleSearch = ->
-      $scope.fragment = ''
+      $scope.vars.fragment = ''
       $scope.searchOpen = !$scope.searchOpen
       setTimeout -> document.querySelector('.membership-card__search input').focus()
 
     $scope.showLoadMore = ->
       !$scope.loader.exhausted    &&
-      !$scope.fragment            &&
+      !$scope.vars.fragment       &&
       !$scope.loader.loading
 
     $scope.canAddMembers = ->
       AbilityService.canAddMembers($scope.group)
 
     $scope.memberships = ->
-      if $scope.fragment
+      if $scope.vars.fragment
         _.filter $scope.records(), (membership) =>
-          _.contains membership.userName().toLowerCase(), $scope.fragment.toLowerCase()
+          _.contains membership.userName().toLowerCase(), $scope.vars.fragment.toLowerCase()
       else
         $scope.records()
 
@@ -57,11 +58,11 @@ angular.module('loomioApp').directive 'membershipCard', ->
 
     $scope.invite = ->
       ModalService.open 'AnnouncementModal', announcement: ->
-        Records.announcements.buildFromModel($scope.group)
+        Records.announcements.buildFromModel($scope.group.targetModel())
 
     $scope.fetchMemberships = ->
-      return unless $scope.fragment
-      Records.memberships.fetchByNameFragment($scope.fragment, $scope.group.key)
+      return unless $scope.vars.fragment
+      Records.memberships.fetchByNameFragment($scope.vars.fragment, $scope.group.key)
 
     $scope.loader = new RecordLoader
       collection: 'memberships'

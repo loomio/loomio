@@ -65,8 +65,6 @@ class Membership < ApplicationRecord
 
   before_create :set_volume
 
-  after_destroy :leave_subgroups_of_hidden_parents
-
   def message_channel
     "membership-#{token}"
   end
@@ -87,13 +85,6 @@ class Membership < ApplicationRecord
   end
 
   private
-
-  def leave_subgroups_of_hidden_parents
-    return unless group&.is_formal_group? && group&.is_hidden_from_public?
-    group.subgroups.each do |subgroup|
-      subgroup.memberships.where(user_id: user.id).destroy_all
-    end
-  end
 
   def set_volume
     self.volume = user.default_membership_volume if group.is_formal_group?

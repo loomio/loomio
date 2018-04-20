@@ -5,7 +5,7 @@
       %i.mdi.mdi-magnify
 
     %md-input-container.membership-card__search.md-block.md-no-errors{ng-class: "{'membership-card__search--open': searchOpen}", md-no-float: "true"}
-      %input.membership-page__search-filter{ng-model: "fragment", ng-model-options: "{debounce: 300}", ng-change: "fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
+      %input.membership-page__search-filter{ng-model: "vars.fragment", ng-model-options: "{debounce: 300}", ng-change: "fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
       %md-button.md-button--tiny{ng-if: "searchOpen", ng-click: "toggleSearch()"}
         %i.mdi.mdi-close
 

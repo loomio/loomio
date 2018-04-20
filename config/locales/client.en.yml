@@ -431,6 +431,7 @@ en:
 
     form:
       share_a_link: Share a link
+      anyone_can_participate: Anyone with link can participate
       send_invitations: Send invitations
       group_helptext: Who would you like to add to the group?
       discussion_helptext: Who would you like to invite to the thread?

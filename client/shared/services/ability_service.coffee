@@ -117,9 +117,12 @@ module.exports = new class AbilityService
     @canAdministerGroup(group) or
     (Session.user().isMemberOf(group) and group.membersCanStartDiscussions)
 
-  canAddMembers: (group) ->
+  canAddMembersToGroup: (group) ->
     @canAdministerGroup(group) or
     (Session.user().isMemberOf(group) and group.membersCanAddMembers)
+
+  canAddMembers: (group) ->
+    @canAddMembersToGroup(group) || @canAddMembersToGroup(group.targetModel().group())
 
   canAddDocuments: (group) ->
     @canAdministerGroup(group)
@@ -181,7 +184,9 @@ module.exports = new class AbilityService
     Session.user().isMemberOf(group)
 
   canViewMemberships: (group) ->
-    Session.user().isMemberOf(group)
+    Session.user().isMemberOf(group)                       ||
+    Session.user().isMemberOf(group.targetModel().group()) ||
+    group.targetModel().anyoneCanParticipate
 
   canViewPreviousPolls: (group) ->
     @canViewGroup(group)
