@@ -126,6 +126,8 @@ en:
       remind: Remind
       resend: Resend
       send: Send
+      joined: Joined
+      last_seen: Last seen
       invite: Invite
       resent: Invitation resent
       export: Export
