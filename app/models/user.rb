@@ -62,9 +62,8 @@ class User < ApplicationRecord
            class_name: 'Membership'
 
   has_many :invited_memberships,
-           -> { where('archived_at IS NOT NULL') },
            class_name: 'Membership',
-           source: :inviter
+           foreign_key: :inviter_id
 
   has_many :formal_groups,
            -> { where(type: "FormalGroup") },
@@ -200,7 +199,9 @@ class User < ApplicationRecord
   end
 
   def pending_invitation_limit
-    self.invited_memberships.email_verified.count + ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i
+    ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i +
+    self.invited_memberships.not_pending.count     -
+    self.invited_memberships.pending.count
   end
 
   def verified_or_self

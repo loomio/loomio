@@ -10,13 +10,17 @@ class GroupInviter
   end
 
   def invite!
-    raise NoInvitationsAvailableError if @emails.length > @inviter.pending_invitation_limit
+    raise NoInvitationsAvailableError if rate_limit_exceeded?
     generate_users!
     generate_memberships!
     @group.update_pending_memberships_count
     @group.update_memberships_count
     raise NoInvitationsAvailableError  if invited_members.count == 0
     self
+  end
+
+  def rate_limit_exceeded?
+    @emails.length > @inviter.pending_invitation_limit
   end
 
   def invited_members
