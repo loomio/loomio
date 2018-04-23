@@ -10,12 +10,12 @@ class GroupInviter
   end
 
   def invite!
+    raise NoInvitationsAvailableError if @emails.length > @inviter.pending_invitation_limit
     generate_users!
     generate_memberships!
     @group.update_pending_memberships_count
     @group.update_memberships_count
     raise NoInvitationsAvailableError  if invited_members.count == 0
-    raise InvitationLimitExceededError if invitation_limit_exceeded?
     self
   end
 
@@ -28,10 +28,6 @@ class GroupInviter
   end
 
   private
-
-  def invitation_limit_exceeded?
-    @group.members.unverified.count > @group.pending_invitation_limit
-  end
 
   def generate_users!
     @generated_user_ids ||= User.import(@emails.uniq.map { |email| User.new(email: email) }).ids

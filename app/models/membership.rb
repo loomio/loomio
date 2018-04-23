@@ -39,6 +39,8 @@ class Membership < ApplicationRecord
 
   scope :search_for, ->(query) { joins(:user).where("users.name ilike :query or users.username ilike :query or users.email ilike :query", query: "%#{query}%") }
 
+  scope :email_verified, -> { joins(:user).where("users.email_verified": true) }
+
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
 

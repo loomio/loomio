@@ -54,10 +54,6 @@ class Group < ApplicationRecord
     memberships_count + pending_memberships_count
   end
 
-  def pending_invitation_limit
-    self.memberships_count + ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i
-  end
-
   def mailer
     GroupMailer
   end

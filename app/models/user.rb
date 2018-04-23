@@ -61,6 +61,11 @@ class User < ApplicationRecord
            -> { where('archived_at IS NOT NULL') },
            class_name: 'Membership'
 
+  has_many :invited_memberships,
+           -> { where('archived_at IS NOT NULL') },
+           class_name: 'Membership',
+           source: :inviter
+
   has_many :formal_groups,
            -> { where(type: "FormalGroup") },
            through: :memberships,
@@ -192,6 +197,10 @@ class User < ApplicationRecord
 
   def identity_for(type)
     identities.find_by(identity_type: type)
+  end
+
+  def pending_invitation_limit
+    self.invited_memberships.email_verified.count + ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i
   end
 
   def verified_or_self
