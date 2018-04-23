@@ -19,8 +19,8 @@ class Poll < ApplicationRecord
                        can_add_options can_remove_options author_receives_outcome
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
-                       dates_as_options required_custom_fields
-                       require_stance_choices require_all_choices
+                       dates_as_options required_custom_fields has_option_score_counts
+                       require_stance_choices require_all_choices prevent_anonymous
                        poll_options_attributes experimental has_score_icons).freeze
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_templates.dig(self.poll_type, field) }
@@ -177,6 +177,7 @@ class Poll < ApplicationRecord
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
 
     update_attribute(:stance_counts, ordered_poll_options.pluck(:name).map { |name| stance_data[name] })
+    poll_options.map(&:update_option_score_counts) if poll.has_option_score_counts
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
     update_attribute(:matrix_counts,
