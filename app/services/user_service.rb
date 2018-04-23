@@ -22,7 +22,7 @@ class UserService
   end
 
   def self.delete_many_spam(name_fragment)
-    User.where("name like ?", "%#{name_fragment}%").limit(2000).each { |user| delete_spam(user) }
+    User.where('name like ?', "%#{name_fragment}%").order('id asc').limit(2000).each { |user| delete_spam(user) }
   end
 
   def self.delete_spam(user)
