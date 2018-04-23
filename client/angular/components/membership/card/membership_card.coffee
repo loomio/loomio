@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'membershipCard', ->
     $scope.show = ->
       return false if $scope.recordCount() == 0
       if $scope.pending
-        AbilityService.canAdministerGroup($scope.group)
+        AbilityService.canViewPendingMemberships($scope.group)
       else
         AbilityService.canViewMemberships($scope.group)
 

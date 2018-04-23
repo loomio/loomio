@@ -188,6 +188,9 @@ module.exports = new class AbilityService
     Session.user().isMemberOf(group.targetModel().group()) ||
     group.targetModel().anyoneCanParticipate
 
+  canViewPendingMemberships: (group) ->
+    @canAdministerGroup(group) || @canAdministerGroup(group.targetModel().group())
+
   canViewPreviousPolls: (group) ->
     @canViewGroup(group)
 
