@@ -1,13 +1,15 @@
 %section.membership-card.lmo-card.lmo-no-print{aria-labelledby: "membership-card-title", ng-if: "show()"}
-  .lmo-flex--row
-    %h2#membership-card-title.membership-card__title.lmo-truncate.lmo-card-heading{translate: "{{cardTitle}}", translate-value-count: "{{recordCount()}}", ng-if: "!searchOpen"}
-    %md-button.md-button--tiny{ng-click: "toggleSearch()", ng-if: "!searchOpen"}
-      %i.mdi.mdi-magnify
+  .lmo-md-actions
+    .lmo-flex--row
+      %h2#membership-card-title.membership-card__title.lmo-truncate.lmo-card-heading{translate: "{{cardTitle}}", translate-value-count: "{{recordCount()}}", ng-if: "!searchOpen"}
+      %md-button.md-button--tiny{ng-click: "toggleSearch()", ng-if: "!searchOpen"}
+        %i.mdi.mdi-magnify
 
-    %md-input-container.membership-card__search.md-block.md-no-errors{ng-class: "{'membership-card__search--open': searchOpen}", md-no-float: "true"}
-      %input.membership-page__search-filter{ng-model: "vars.fragment", ng-model-options: "{debounce: 300}", ng-change: "fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
-      %md-button.md-button--tiny{ng-if: "searchOpen", ng-click: "toggleSearch()"}
-        %i.mdi.mdi-close
+      %md-input-container.membership-card__search.md-block.md-no-errors{ng-class: "{'membership-card__search--open': searchOpen}", md-no-float: "true"}
+        %input.membership-page__search-filter{ng-model: "vars.fragment", ng-model-options: "{debounce: 300}", ng-change: "fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
+        %md-button.md-button--tiny{ng-if: "searchOpen", ng-click: "toggleSearch()"}
+          %i.mdi.mdi-close
+    %md-button.md-raised.md-primary.membership-card__invite{ng-click: "invite()", translate: "common.action.invite", ng-if: "canAddMembers() && !pending"}
 
   .membership-card__membership.lmo-flex.lmo-flex__center{ng-repeat: "membership in memberships() | orderBy: ['-admin', '-createdAt'] | limitTo: loader.numRequested track by membership.id", data-username: "{{membership.user().username}}"}
     %user_avatar.lmo-margin-right{user: "membership.user()", size: "medium", coordinator: "membership.admin", no-link: "!membership.acceptedAt"}
@@ -20,4 +22,4 @@
     %div{ng-if: "!showLoadMore() && !loader.loading"}
     %loading{ng-if: "loader.loading"}
     %md-button.md-accent{ng-if: "showLoadMore()", ng-click: "loader.loadMore()", translate: "common.action.load_more"}
-    %md-button.md-raised.md-primary{ng-click: "invite()", translate: "common.action.invite", ng-if: "canAddMembers() && !pending"}
+    %div
