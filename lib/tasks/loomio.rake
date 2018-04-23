@@ -21,15 +21,16 @@ namespace :loomio do
   end
 
   task hourly_tasks: :environment do
+    if ENV['DELETE_MANY_SPAM'].to_s.length > 6
+      UserService.delay.delete_many_spam(ENV['DELETE_MANY_SPAM'])
+    end
+
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
     SendMissedYesterdayEmailJob.perform_later
     ResendIgnoredInvitationsJob.perform_later
     LocateUsersAndGroupsJob.perform_later
-    if (Time.now.hour == 0)
-      # daily tasks
-      UsageReportService.send
-    end
+    UsageReportService.send if (Time.now.hour == 0)
   end
 
   task migrate_attachments: :environment do
