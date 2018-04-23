@@ -21,7 +21,7 @@ module.exports = {
       subscribeToUser()
       _.each Session.user().groups(), subscribeToGroup
     else
-      subscribeToInvitation()
+      subscribeToMembership()
 }
 
 subscribeTo = (model) ->
@@ -52,9 +52,9 @@ subscribeToUser = ->
             helptext: "signed_out_modal.message"
       Records.import(data)
 
-subscribeToInvitation = ->
-  return unless AppConfig.invitationToken()
-  ensureConnection().subscriptions.create { channel: "InvitationChannel" },
+subscribeToMembership = ->
+  return unless AppConfig.pendingIdentity.type == 'membership'
+  ensureConnection().subscriptions.create { channel: "MembershipChannel", token: AppConfig.pendingIdentity.token },
     received: (data) ->
       switch data.action
         when 'accepted' then AuthService.signIn().then -> hardReload()
