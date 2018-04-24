@@ -60,6 +60,10 @@ module Ability::Group
       (group.members_can_create_subgroups? || user_is_admin_of?(group.id))
     end
 
+    can :move, ::Group do |group|
+      user.is_admin
+    end
+
     # create group checks against the group to be created
     can :create, ::Group do |group|
       # anyone can create a top level group of their own
