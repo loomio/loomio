@@ -5,6 +5,7 @@ class FormalGroup < Group
 
   validates_presence_of :name
   validates :name, length: { maximum: 250 }
+  validates :name, :description, format: { without: Regexp.new(ENV['SPAM_REGEX']), message: "no spam" } if ENV['SPAM_REGEX']
 
   validate :limit_inheritance
 
