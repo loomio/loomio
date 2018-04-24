@@ -8,6 +8,9 @@ class User < ApplicationRecord
   include SelfReferencing
   include NoForbiddenEmails
 
+  extend  NoSpam
+  no_spam_for :name
+  
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
     helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',

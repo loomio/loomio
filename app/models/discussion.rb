@@ -12,6 +12,9 @@ class Discussion < ApplicationRecord
   include SelfReferencing
   include UsesOrganisationScope
   include HasCreatedEvent
+  extend  NoSpam
+  
+  no_spam_for :title, :description
 
   scope :archived, -> { where('archived_at is not null') }
 
