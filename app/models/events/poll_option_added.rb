@@ -11,10 +11,6 @@ class Events::PollOptionAdded < Event
 
   private
 
-  def email_subject_key
-    nil
-  end
-
   # TODO: make poll options added an announcement as well
   def notification_recipients
     poll.participants

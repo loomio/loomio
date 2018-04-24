@@ -1,5 +1,5 @@
 class Full::UserSerializer < UserSerializer
-  attributes :email, :email_when_proposal_closing_soon, :email_missed_yesterday, :email_announcements,
+  attributes :email, :email_when_proposal_closing_soon, :email_missed_yesterday,
              :email_when_mentioned, :email_on_participation, :selected_locale, :locale,
              :default_membership_volume, :experiences, :is_coordinator, :is_admin
 
@@ -31,7 +31,7 @@ class Full::UserSerializer < UserSerializer
   def include_email?
     true
   end
-  
+
   def include_email_hash?
     true
   end

@@ -10,27 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418001835) do
+ActiveRecord::Schema.define(version: 20180424011230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
-
-  create_table "active_admin_comments", id: :serial, force: :cascade do |t|
-    t.string "resource_id", limit: 255, null: false
-    t.string "resource_type", limit: 255, null: false
-    t.integer "author_id"
-    t.string "author_type", limit: 255
-    t.text "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string "namespace", limit: 255
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_admin_notes_on_resource_type_and_resource_id"
-  end
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid "visit_id"
@@ -192,7 +178,6 @@ ActiveRecord::Schema.define(version: 20180418001835) do
     t.integer "importance", default: 0, null: false
     t.integer "seen_by_count", default: 0, null: false
     t.integer "guest_group_id"
-    t.integer "announcements_count", default: 0, null: false
     t.string "ranges_string"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
@@ -532,7 +517,6 @@ ActiveRecord::Schema.define(version: 20180418001835) do
     t.boolean "latest", default: true, null: false
     t.integer "poll_option_id"
     t.jsonb "custom_fields", default: {}, null: false
-    t.integer "announcements_count", default: 0, null: false
   end
 
   create_table "poll_did_not_votes", id: :serial, force: :cascade do |t|
@@ -586,7 +570,6 @@ ActiveRecord::Schema.define(version: 20180418001835) do
     t.boolean "voter_can_add_options", default: false, null: false
     t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
-    t.integer "announcements_count", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
@@ -725,7 +708,6 @@ ActiveRecord::Schema.define(version: 20180418001835) do
     t.boolean "email_verified", default: false, null: false
     t.string "location", default: "", null: false
     t.datetime "last_seen_at"
-    t.boolean "email_announcements", default: true, null: false
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"
     t.index ["email"], name: "index_users_on_email"

@@ -8,6 +8,11 @@ module Events::Notify::Author
     eventable.send(:mailer).send(:"#{kind}_author", author, self).deliver_now if notify_author?
   end
 
+  # override to specify a custom subject for emails sent by this event
+  def email_subject_key
+    nil
+  end
+
   private
   def author
     eventable.author

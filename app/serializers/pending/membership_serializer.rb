@@ -38,6 +38,6 @@ class Pending::MembershipSerializer < Pending::BaseSerializer
   def has_name?
     object.user.name.present?
   end
-  
+
   alias :include_avatar_initials? :has_name?
 end
