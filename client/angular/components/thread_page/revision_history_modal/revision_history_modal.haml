@@ -6,17 +6,26 @@
   .md-dialog-content.revision-history-modal__body{ng-if: "!loadExecuting"}
     %loading{ng-if: "loadExecuting"}
     .lmo-flex.lmo-flex--row.lmo-flex__space-between
-      %h2.lmo-h2 {{model.authorName()}}
+      .revision_history_modal__user-display.lmo-flex--row
+        %user_avatar.lmo-margin-right{user:"version.author()" , size:"small"}
+        %h2.lmo-h2 {{version.author().name}}
       .revision-history-modal__nav.lmo-flex.lmo-flex--row
-        %md-button.md-button--tiny{ng-click:"setOldestRevision()"}
+        %md-button.md-button--tiny{ng-if:"!isOldest()", ng-click:"setOldestRevision()"}
           %i.mdi.mdi-arrow-collapse-left
-        %md-button.md-button--tiny{ng-click:"setPreviousRevision()"}
+        %md-button.md-button--tiny{ng-if:"!isOldest()", ng-click:"setPreviousRevision()"}
           %i.mdi.mdi-arrow-left
-        %span {{currentIndex+1}}
-        %span \/
-        %span {{model.versionsCount}}
-        %md-button.md-button--tiny{ng-click:"setNextRevision()"}
+        %span{ng-if:"!isOldest() && !isNewest()", replace:"true"}
+          %span {{currentIndex+1}}
+          %span \/
+          %span {{model.versionsCount}}
+        %span{ng-if:"isOldest()", translate:"revision_history_modal.original_text "}
+        %span{ng-if:"isNewest()", translate:"revision_history_modal.current_revision"}
+        %md-button.md-button--tiny{ng-if:"!isNewest()", ng-click:"setNextRevision()"}
           %i.mdi.mdi-arrow-right
-        %md-button.md-button--tiny{ng-click:"setLatestRevision()"}
+        %md-button.md-button--tiny{ng-if:"!isNewest()", ng-click:"setLatestRevision()"}
           %i.mdi.mdi-arrow-collapse-right
-    %text_diff{before: "version.changes.body[0]", after: "version.changes.body[1]"}
+    .revision_history_modal__content-block{ng-repeat:"(name, section) in version.changes"}
+      %h3.lmo-h3 {{name}}
+      %text_diff{ng-if: "!isOldest()", before: "section[0]", after: "section[1]"}
+      .lmo-text-area{ng-if:"isOldest()"}
+        {{version.changes.body[1]}}

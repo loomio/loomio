@@ -6,6 +6,16 @@ angular.module('loomioApp').directive 'textDiff', ->
   templateUrl: 'generated/components/text_diff/text_diff.html'
   controller: ['$scope', ($scope) ->
     $scope.diff = ->
-      diff = new DiffMatchPatch()
-      diff.diff_prettyHtml diff.diff_main($scope.before, $scope.after)
+      differ = new DiffMatchPatch()
+      diff = differ.diff_main($scope.before||"", $scope.after||"")
+      differ.diff_cleanupSemantic(diff)
+      $scope.prettyHtml(diff)
+
+    $scope.prettyHtml = (diff) ->
+      diff.reduce((whole, [sign, chars] ) ->
+        whole + switch sign
+          when -1 then   "<del>#{chars}</del>"
+          when  0 then   "<span>#{chars}</span>"
+          when  1 then   "<ins>#{chars}</ins>"
+      , "")
   ]

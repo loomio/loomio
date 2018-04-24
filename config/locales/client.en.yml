@@ -464,6 +464,8 @@ en:
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     posted: Posted
+    original_text: Original Text
+    current_revision: Latest Revision
 
   reactions_input:
     add_your_reaction: Add your reaction

@@ -179,7 +179,9 @@ Loomio::Application.routes.draw do
     resources :contact_messages, only: :create
     resources :contact_requests, only: :create
 
-    resources :versions, only: :index
+    resources :versions, only: [] do
+      get :show, on: :collection
+    end
 
     resources :oauth_applications, only: [:show, :create, :update, :destroy] do
       post :revoke_access, on: :member
