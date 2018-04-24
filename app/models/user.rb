@@ -4,9 +4,12 @@ class User < ApplicationRecord
   include MessageChannel
   include HasExperiences
   include HasAvatar
-  # include UsesWithoutScope
   include SelfReferencing
   include NoForbiddenEmails
+  include HasMailer
+  include CustomCounterCache::Model
+
+  extend HasTokens
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
@@ -18,6 +21,7 @@ class User < ApplicationRecord
   attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
+  attr_accessor :membership_token
   attr_writer :has_password
 
   validates :email, presence: true, email: true, length: {maximum: 200}
@@ -34,7 +38,8 @@ class User < ApplicationRecord
     content_type: { content_type: /\Aimage/ }
 
   validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
-  validates_uniqueness_of :username
+  validates_uniqueness_of :username, if: :name
+  before_validation :generate_username, if: :name
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 500
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
@@ -56,6 +61,10 @@ class User < ApplicationRecord
   has_many :archived_memberships,
            -> { where('archived_at IS NOT NULL') },
            class_name: 'Membership'
+
+  has_many :invited_memberships,
+           class_name: 'Membership',
+           foreign_key: :inviter_id
 
   has_many :formal_groups,
            -> { where(type: "FormalGroup") },
@@ -106,16 +115,15 @@ class User < ApplicationRecord
           class_name: 'UserDeactivationResponse',
           dependent: :destroy
 
-  before_validation :generate_username
-  before_save :set_avatar_initials,
-              :ensure_unsubscribe_token,
-              :ensure_email_api_key
+  before_save :set_avatar_initials
+  initialized_with_token :unsubscribe_token, -> { Devise.friendly_token }
+  initialized_with_token :email_api_key,     -> { SecureRandom.hex(16) }
 
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where("deactivated_at IS NOT NULL") }
-  scope :email_missed_yesterday, -> { active.where(email_missed_yesterday: true) }
+  scope :email_missed_yesterday, -> { active.verified.where(email_missed_yesterday: true) }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
@@ -123,8 +131,8 @@ class User < ApplicationRecord
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
   scope :verified_first, -> { order(email_verified: :desc) }
+  scope :search_for, ->(query) { where("name ilike :q OR username ilike :q", q: "%#{query}%") }
 
-  # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
   scope :email_proposal_closing_soon_for, -> (group) {
@@ -133,6 +141,43 @@ class User < ApplicationRecord
     .where('memberships.group_id': group.id)
   }
 
+  scope :joins_readers, ->(model) {
+    joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id.to_i})")
+  }
+
+  scope :joins_formal_memberships, ->(model) {
+     joins("LEFT OUTER JOIN memberships fm ON (fm.user_id = users.id AND fm.group_id = #{model.group_id.to_i})")
+    .where('fm.archived_at': nil)
+  }
+
+  scope :joins_guest_memberships, ->(model) {
+     joins("LEFT OUTER JOIN memberships gm ON (gm.user_id = users.id AND gm.group_id = #{model.guest_group_id.to_i})")
+    .where('gm.archived_at': nil)
+  }
+
+  # This is a double-nested join select raw sql statement, eek!
+  # But, it's not soo complicated. Here's what's going on:
+  # Join 1: Grab all instances of a user receiving an announcement from the given model, based on the model's announcement ids
+  # Join 2: Group those instances, taking the most recent instance's created_at as the last_notified_at timestamp
+  #
+  # then, we join that timestamp to the current user query, available in the last_notified_at column
+  # scope :with_last_notified_at, ->(model) {
+  #   select('users.*, last_notified_at').joins(<<~SQL)
+  #     -- join #2
+  #     LEFT JOIN (
+  #       SELECT users.id as user_id, max(notified.created_at) as last_notified_at
+  #       FROM users
+  #       -- join #1
+  #       LEFT JOIN (
+  #         SELECT user_ids, created_at
+  #         FROM   announcees
+  #         WHERE  announcees.announcement_id IN (#{model.announcement_ids.join(',').presence || '-1'})
+  #       ) notified ON notified.user_ids ? users.id::varchar
+  #       GROUP BY users.id
+  #     ) announcements ON announcements.user_id = users.id
+  #   SQL
+  # }
+  #
   def self.email_status_for(email)
     (verified_first.find_by(email: email) || LoggedOutUser.new).email_status
   end
@@ -151,6 +196,16 @@ class User < ApplicationRecord
 
   def identity_for(type)
     identities.find_by(identity_type: type)
+  end
+
+  def pending_invitation_limit
+    ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i +
+    self.invited_memberships.not_pending.count     -
+    self.invited_memberships.pending.count
+  end
+
+  def verified_or_self
+    self.class.verified.find_by(email: email) || self
   end
 
   def first_name
@@ -174,7 +229,13 @@ class User < ApplicationRecord
   end
 
   def email_status
-    if deactivated_at.present? then :inactive else :active end
+    if deactivated_at.present?
+      :inactive
+    elsif email_verified
+      :verified
+    else
+      :unverified
+    end
   end
 
   def name_and_email
@@ -270,23 +331,8 @@ class User < ApplicationRecord
 
   private
 
-  def ensure_email_api_key
-    self.email_api_key ||= SecureRandom.hex(16)
-  end
-
   def ensure_recaptcha
     return if Clients::Recaptcha.instance.validate(self.recaptcha)
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
-  end
-
-  def ensure_unsubscribe_token
-    if unsubscribe_token.blank?
-      found = false
-      while not found
-        token = Devise.friendly_token
-        found = true unless self.class.where(:unsubscribe_token => token).exists?
-      end
-      self.unsubscribe_token = token
-    end
   end
 end
