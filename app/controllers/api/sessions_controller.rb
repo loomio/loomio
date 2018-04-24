@@ -5,6 +5,7 @@ class API::SessionsController < Devise::SessionsController
     if user = attempt_login
       sign_in(user)
       flash[:notice] = t(:'devise.sessions.signed_in')
+      user.update(name: resource_params[:name]) if resource_params[:name]
       render json: BootData.new(user).data
     else
       render json: { errors: { password: [t(:"user.error.bad_login")] } }, status: 401
@@ -40,7 +41,7 @@ class API::SessionsController < Devise::SessionsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) do |u|
-      u.permit(:code, :email, :password, :remember_me)
+      u.permit(:code, :name, :email, :password, :remember_me)
     end
   end
 

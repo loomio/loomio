@@ -137,7 +137,7 @@ class Dev::MainController < Dev::BaseController
 
   def setup_invitation_to_visitor
     membership = FactoryBot.create(:membership,
-      user: FactoryBot.create(:user, email_verified: false),
+      user: FactoryBot.create(:user, name: nil, email_verified: false),
       group: create_group
     )
     redirect_to membership_url(membership)

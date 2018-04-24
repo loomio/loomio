@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'authAvatar', ->
   templateUrl: 'generated/components/auth/avatar/auth_avatar.html'
   controller: ['$scope', ($scope) ->
     $scope.user = $scope.user or {avatarKind: 'initials'}
-    if !$scope.user.id and $scope.user.avatarKind == 'initials'
+    if _.contains(['initials', 'mdi-email-outline'], $scope.user.avatarKind)
       $scope.avatarUser =
         constructor: {singular: 'user'}
         avatarKind:  'uploaded'
