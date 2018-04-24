@@ -10,9 +10,11 @@ angular.module('loomioApp').directive 'authSigninForm', ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ['$scope', ($scope) ->
+    $scope.vars = {}
 
     $scope.signIn = ->
       EventBus.emit $scope, 'processing'
+      $scope.user.name = $scope.vars.name if $scope.vars.name?
       AuthService.signIn($scope.user).then ->
         hardReload()
       , ->

@@ -17,7 +17,7 @@ module.exports = new class AuthService
     user
 
   signIn: (user = {}) ->
-    Records.sessions.build(email: user.email, password: user.password).save()
+    Records.sessions.build(name: user.name, email: user.email, password: user.password).save()
 
   signUp: (user) ->
     Records.registrations.build(email: user.email, name: user.name, recaptcha: user.recaptcha).save().then ->
