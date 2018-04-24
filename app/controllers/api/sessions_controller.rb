@@ -34,7 +34,7 @@ class API::SessionsController < Devise::SessionsController
   end
 
   def login_token_user
-    token = LoginToken.find_by(code: resource_params.require(:code))
+    token = LoginToken.unused.find_by(code: resource_params.require(:code))
     token.user if token&.user&.email == resource_params.require(:email)
   end
 
