@@ -214,11 +214,9 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   end
 
   member_action :move, method: :post do
-    GroupService.move(
-      group: Group.friendly.find(params[:id]),
-      parent: Group.friendly.find(params[:parent_id]),
-      actor:  current_user
-    )
+    group  = Group.friendly.find(params[:id])
+    parent = Group.friendly.find(params[:parent_id])
+    GroupService.move(group: group, parent: parent, actor: current_user)
     redirect_to admin_group_path(group)
   end
 
