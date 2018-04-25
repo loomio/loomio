@@ -47,7 +47,7 @@ class FormalGroup < Group
   belongs_to :default_group_cover
 
   has_many :subgroups,
-           -> { where(archived_at: nil).order(:name) },
+           -> { where(archived_at: nil) },
            class_name: 'Group',
            foreign_key: 'parent_id'
   has_many :all_subgroups, class_name: 'Group', foreign_key: :parent_id
