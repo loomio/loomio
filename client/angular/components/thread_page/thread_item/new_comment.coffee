@@ -47,7 +47,13 @@ angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', 
       name: 'delete_comment'
       icon: 'mdi-delete'
       canPerform: -> AbilityService.canDeleteComment($scope.eventable)
-      perform:    -> ModalService.open 'DeleteCommentForm', comment: -> $scope.eventable
+      perform:    -> ModalService.open 'ConfirmModal', confirm: ->
+        submit: $scope.eventable.destroy
+        text:
+          title:    'delete_comment_dialog.title'
+          helptext: 'delete_comment_dialog.question'
+          confirm:  'delete_comment_dialog.confirm'
+          flash:    'comment_form.messages.destroyed'
     ]
 
     listenForReactions($scope, $scope.eventable)

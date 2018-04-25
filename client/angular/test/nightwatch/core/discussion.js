@@ -316,7 +316,7 @@ module.exports = {
     page.fillIn('.comment-form textarea', 'original comment right hur')
     page.click('.comment-form__submit-button')
     page.click('.action-dock__button--delete_comment')
-    page.click('.delete-comment-form__delete-button')
+    page.click('.confirm-modal__submit')
     page.expectNoText('.activity-card', 'original comment right thur')
   },
 
