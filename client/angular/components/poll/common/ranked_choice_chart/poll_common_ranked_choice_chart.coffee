@@ -12,8 +12,7 @@ angular.module('loomioApp').directive 'pollCommonRankedChoiceChart', ->
       $scope.poll.customFields.minimum_stance_choices - score + 1
 
     $scope.votesFor = (option, score) ->
-      _.sum option.stanceChoices(), (choice) ->
-        1 if choice.stance().latest and choice.score == score
+      option.scoreCounts[score] || 0
 
     $scope.scores = ->
       [$scope.poll.customFields.minimum_stance_choices..1]

@@ -94,6 +94,7 @@ ranked_choice:
   require_stance_choices:  true
   has_variable_score:      true
   can_vote_anonymously:    true
+  has_option_score_counts: true
   required_custom_fields:
     - minimum_stance_choices
   sort_options:

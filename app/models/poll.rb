@@ -13,13 +13,16 @@ class Poll < ApplicationRecord
   include Reactable
   include HasCreatedEvent
 
-  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe
+  extend  NoSpam
+  no_spam_for :title, :details
+
+  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe, :deanonymize_after_close
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
                        can_add_options can_remove_options author_receives_outcome
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
-                       dates_as_options required_custom_fields
+                       dates_as_options required_custom_fields has_option_score_counts
                        require_stance_choices require_all_choices prevent_anonymous
                        poll_options_attributes experimental has_score_icons).freeze
   TEMPLATE_FIELDS.each do |field|
@@ -164,6 +167,7 @@ class Poll < ApplicationRecord
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
 
     update_attribute(:stance_counts, ordered_poll_options.pluck(:name).map { |name| stance_data[name] })
+    poll_options.map(&:update_option_score_counts) if poll.has_option_score_counts
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
     update_attribute(:matrix_counts,

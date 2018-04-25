@@ -7,6 +7,8 @@ class LoginToken < ApplicationRecord
 
   EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 1440)
 
+  scope :unused, -> { where(used: false) }
+
   def useable?
     !used && expires_at > DateTime.now && user.present?
   end

@@ -149,6 +149,21 @@ describe PollService do
       expect(poll_created.reload.closed_at).to be_present
     end
 
+    it 'reveals voters if option is set' do
+      poll_created.anonymous = true
+      poll_created.custom_fields[:deanonymize_after_close] = true
+      PollService.create(poll: poll_created, actor: user)
+      PollService.close(poll: poll_created, actor: user)
+      expect(poll_created.reload.anonymous).to eq false
+    end
+
+    it 'does not reveal voters if option is unset' do
+      poll_created.anonymous = true
+      PollService.create(poll: poll_created, actor: user)
+      PollService.close(poll: poll_created, actor: user)
+      expect(poll_created.reload.anonymous).to eq true
+    end
+
     it 'disallows the creation of new stances' do
       PollService.create(poll: poll_created, actor: user)
       stance_created = build(:stance, poll: poll_created)

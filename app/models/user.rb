@@ -11,6 +11,9 @@ class User < ApplicationRecord
 
   extend HasTokens
 
+  extend  NoSpam
+  no_spam_for :name
+  
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
     helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
@@ -123,7 +126,7 @@ class User < ApplicationRecord
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where("deactivated_at IS NOT NULL") }
-  scope :email_missed_yesterday, -> { active.where(email_missed_yesterday: true) }
+  scope :email_missed_yesterday, -> { active.verified.where(email_missed_yesterday: true) }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }

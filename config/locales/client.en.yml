@@ -1291,6 +1291,8 @@ en:
     count: "See all: ({{count}}) decisions"
 
   poll_common_action_panel:
+    anonymous: Votes will be anonymous
+    anonymous_until_close: Votes will be anonymous until this poll closes
     unable_to_vote: You do not have permission to vote in this decision.
 
   current_polls_card:
@@ -1327,28 +1329,25 @@ en:
   poll_common_settings:
     multiple_choice:
       title: Multiple choice
-      helptext_on: Participants will be able to select multiple options.
-      helptext_off: Participants must select only one option.
+      helptext_on: When selected, participants will be able to select multiple options.
     anyone_can_participate:
       title: Anyone can participate
-      helptext_on: Anyone with the link to the poll can participate.
-      helptext_off: Only people who are invited, or part of this group can participate.
+      helptext_on: When selected, anyone with the link to the poll can participate.
     notify_on_participate:
       title: Notify me when people participate
-      helptext_on: You will be notified whenever someone participates.
-      helptext_off: You will receive results when this activity closes.
+      helptext_on: When selected, you will be notified whenever someone participates.
     anonymous:
-      title: Anonymous participants
-      helptext_on: Participant info will not be shown with each response.
-      helptext_off: Participants will be shown with their responses.
+      title: Anonymous voters
+      helptext_on: When selected, participant info will not be shown with each response.
+    deanonymize_after_close:
+      title: Reveal voters after close
+      helptext_on: When selected, anonymous voters will be revealed after the poll closes
     voters_can_add_options:
       title: Voters may add options
-      helptext_on: Participants may add their own options when voting.
-      helptext_off: Participants will select from the options you provide.
+      helptext_on: When selected, participants may add their own options when voting.
     can_respond_maybe:
       title: Voters can respond "if need be"
       helptext_on:  Voters can indicate times as "If need be"
-      helptext_off: Voters will indicate yes or no for each time
   poll_common_close_form:
     title: Close a poll early
     helptext: Are you sure you're ready to close early?

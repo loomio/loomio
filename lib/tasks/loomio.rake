@@ -21,6 +21,8 @@ namespace :loomio do
   end
 
   task hourly_tasks: :environment do
+    UserService.delay.delete_many_spam(ENV['DELETE_MANY_SPAM'])
+
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
     SendMissedYesterdayEmailJob.perform_later

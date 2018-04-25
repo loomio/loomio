@@ -2,6 +2,9 @@ class FormalGroup < Group
   include HasTimeframe
   include HasDrafts
 
+  extend  NoSpam
+  no_spam_for :name, :description
+
   validates_presence_of :name
   validates :name, length: { maximum: 250 }
 

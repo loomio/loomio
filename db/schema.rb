@@ -530,6 +530,7 @@ ActiveRecord::Schema.define(version: 20180424011230) do
     t.string "name", null: false
     t.integer "poll_id"
     t.integer "priority", default: 0, null: false
+    t.jsonb "score_counts", default: {}, null: false
     t.index ["poll_id", "name"], name: "index_poll_options_on_poll_id_and_name"
     t.index ["poll_id", "priority"], name: "index_poll_options_on_poll_id_and_priority"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
