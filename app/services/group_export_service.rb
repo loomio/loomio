@@ -7,7 +7,6 @@ class GroupExportService
      discussions
      discussion_authors
      discussion_readers
-     discussion_reader_users
 
      comments
      comment_authors
