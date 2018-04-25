@@ -15,7 +15,6 @@ class GroupExportService
 
      memberships
      members
-     member_inviters
      membership_requests
 
      polls
