@@ -23,8 +23,8 @@ describe API::SessionsController do
 
       it 'updates a name' do
         token.update(user: user)
-        post :create, params: { name: "Rodolfo!" }
-        expect(user.update.name).to eq "Rodolfo!"
+        post :create, params: { user: { name: "Rodolfo!" } }
+        expect(user.reload.name).to eq "Rodolfo!"
       end
 
       it 'does not sign in a user with a used token' do

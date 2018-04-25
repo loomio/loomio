@@ -21,10 +21,6 @@ class Events::InvitationAccepted < Event
   end
 
   def notification_url
-    if eventable.group.is_a?(FormalGroup)
-      group_memberships_username_url(eventable.group, eventable.user.username)
-    else
-      polymorphic_url(eventable.target_model)
-    end
+    polymorphic_url(eventable.target_model)
   end
 end
