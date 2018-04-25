@@ -7,24 +7,50 @@ class Group < ApplicationRecord
 
   belongs_to :creator, class_name: 'User'
   belongs_to :parent, class_name: 'Group'
-  has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
-  has_many :memberships, -> { where is_suspended: false, archived_at: nil }
-  has_many :admin_memberships, -> { where admin: true, archived_at: nil }, class_name: 'Membership'
-  has_many :admins, through: :admin_memberships, source: :user
 
-  has_many :membership_requests, dependent: :destroy
-  has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
-  has_many :members, through: :memberships, source: :user
+  has_many :discussions,             foreign_key: :group_id, dependent: :destroy
+  has_many :discussion_authors,      through: :discussions, source: :author
+  has_many :discussion_readers,      through: :discussions
+  has_many :discussion_reader_users, through: :discussion_readers, source: :user
+  has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
+
+  has_many :comments, through: :discussions
+  has_many :comment_authors,   through: :comments, source: :user
 
   has_many :invitations, dependent: :destroy
 
-  has_many :discussions, foreign_key: :group_id, dependent: :destroy
-  has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
-  has_many :polls, foreign_key: :group_id, dependent: :destroy
-  has_many :public_polls, through: :public_discussions, dependent: :destroy, source: :polls
+  has_many :memberships, -> { where is_suspended: false, archived_at: nil }
+  has_many :members, through: :memberships, source: :user
+  has_many :member_inviters, through: :memberships, source: :inviter
+  has_many :membership_events, through: :memberships, source: :events
+
+  has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
+  has_many :admin_memberships, -> { where admin: true, archived_at: nil }, class_name: 'Membership'
+  has_many :admins, through: :admin_memberships, source: :user
+  has_many :membership_requests, dependent: :destroy
+  has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
+
+  has_many :polls,                foreign_key: :group_id, dependent: :destroy
+  has_many :public_polls,         through: :public_discussions, dependent: :destroy, source: :polls
+  has_many :poll_guest_groups,    through: :polls,       source: :guest_group
+  has_many :poll_authors,         through: :polls,       source: :author
+  has_many :poll_events,          through: :polls,       source: :events
+  has_many :poll_options,         through: :polls
+  has_many :poll_did_not_votes,   through: :polls
+  has_many :poll_did_not_voters,  through: :poll_did_not_votes, source: :user
+  has_many :poll_unsubscriptions, through: :polls
+
+  has_many :outcomes,          through: :polls
+  has_many :outcome_authors,   through: :polls,    source: :author
+
+  has_many :stances,          through: :polls
+  has_many :stance_authors,   through: :stances, source: :participant
+  has_many :stance_choices,   through: :stances
+
 
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }
+
 
   delegate :locale, to: :creator, allow_nil: true
 

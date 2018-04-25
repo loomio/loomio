@@ -1,17 +1,49 @@
 class GroupExportService
   # directional, follow from a group down through dependent records
   SCHEMA = {
-    groups:             %w[subgroups membership_requests documents memberships invitations discussions discussion_readers polls creator],
-    memberships:        %w[events user inviter],
-    discussions:        %w[author polls comments documents reactions events items],
-    comments:           %w[author documents events reactions],
-    polls:              %w[author guest_group outcomes stances poll_unsubscriptions poll_options poll_did_not_votes documents events reactions],
-    stances:            %w[poll participant events stance_choices reactions],
+    groups: %w[
+     creator
+
+     discussions
+     discussion_authors
+     discussion_readers
+     discussion_reader_users
+
+     comments
+     comment_authors
+
+     invitations
+
+     memberships
+     members
+     member_inviters
+     membership_requests
+
+     polls
+     poll_authors
+     poll_guest_groups
+     poll_options
+     poll_did_not_votes
+     poll_did_not_voters
+     poll_unsubscriptions
+
+     outcomes
+     outcome_authors
+
+     stances
+     stance_authors
+     stance_choices
+
+     subgroups
+     ],
+    comments:           %w[reactions documents events],
+    polls:              %w[reactions documents events],
+    discussions:        %w[reactions documents events items],
+    stances:            %w[reactions events],
+    outcomes:           %w[reactions events],
+    memberships:        %w[events],
     reactions:          %w[user],
-    outcomes:           %w[author events reactions],
-    events:             %w[notifications],
-    discussion_readers: %w[user],
-    poll_did_not_votes: %w[user]
+    events:             %w[notifications]
   }.with_indifferent_access.freeze
 
   METHODS = { groups: [:type] }.with_indifferent_access.freeze
