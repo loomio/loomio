@@ -2,6 +2,7 @@
   %poll_common_participant_form{stance: "stance"}
 
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
+  %poll_common_anonymous_helptext{ng-if: "stance.poll().anonymous"}
   .lmo-flex--column
     %md-button.lmo-align-left.poll-common-vote-form__button.poll-common-vote-form__button--block{md-colors: "mdColors(option)", ng-click: "select(option)", ng-repeat: "option in stance.poll().pollOptions() | orderBy: 'priority' track by option.id"}
       .poll-common-stance-icon__chip.lmo-margin-right{ng-style: "{'border-color': '{{option.color}}'}"}

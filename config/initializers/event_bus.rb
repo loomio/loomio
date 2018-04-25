@@ -115,6 +115,9 @@ EventBus.configure do |config|
                 'poll_destroy',
                 'poll_expire') { |model| model.discussion&.update_importance }
 
+  # de-anonymize polls after close
+  config.listen('poll_close') { |poll| poll.update(anonymous: false) if poll.deanonymize_after_close }
+
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 

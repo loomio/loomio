@@ -6,6 +6,8 @@ angular.module('loomioApp').directive 'pollCommonSettings', ->
   controller: ['$scope', ($scope) ->
     $scope.settings = settingsFor $scope.poll
 
+    $scope.$watch 'poll.anonymous', -> $scope.settings = settingsFor $scope.poll
+
     $scope.snakify = (setting) ->
       _.snakeCase setting
   ]
