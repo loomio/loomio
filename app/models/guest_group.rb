@@ -6,6 +6,14 @@ class GuestGroup < Group
     Poll.find_by(guest_group_id: id)
   end
 
+  def subgroups
+    Group.none
+  end
+
+  def documents
+    Document.none
+  end
+
   def group_privacy=(term)
     raise 'guest groups cant be open' if term == 'open'
     super
