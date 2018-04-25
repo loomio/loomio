@@ -1206,6 +1206,8 @@ en:
     count: "See all: ({{count}}) decisions"
 
   poll_common_action_panel:
+    anonymous: Votes will be anonymous
+    anonymous_until_close: Votes will be anonymous until this poll closes
     unable_to_vote: You do not have permission to vote in this decision.
 
   current_polls_card:
