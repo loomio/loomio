@@ -60,7 +60,8 @@ class GroupExportService
   def self.import(filename)
     JSON.parse(File.read filename).each do |table_name, records|
       klass = table_name.classify.constantize
-      klass.import(records.values.map { |record| klass.new record }, validate: false, raise_error: false, on_duplicate_key_update: [])
+      existing_ids = klass.where(id: records.keys.map(&:to_i)).pluck(:id)
+      klass.import(records.values.map{ |record| klass.new(record) unless existing_ids.include?(record['id']) }.compact, validate: false)
     end
   end
 
