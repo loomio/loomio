@@ -66,7 +66,7 @@ module.exports = {
     page.fillIn('.discussion-form textarea', 'improved description')
     page.click('.discussion-form__private')
     page.click('.discussion-form__submit')
-    page.click('.material-modal-header-cancel-button')
+    page.click('.dismiss-modal-button')
     page.pause()
     page.expectText('.context-panel__heading', 'better title')
     page.expectText('.context-panel__description', 'improved description')
@@ -106,7 +106,7 @@ module.exports = {
     page.loadPath('setup_multiple_discussions')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--mute')
-    page.click('.mute-explanation-modal__mute-thread')
+    page.click('.confirm-modal__submit')
     page.expectText('.flash-root__message', 'Thread muted')
     page.pause()
 
@@ -143,7 +143,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--delete button')
-    page.click('.delete-thread-form__submit')
+    page.click('.confirm-modal__submit')
 
     page.expectText('.flash-root__message', 'Thread deleted')
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
@@ -157,8 +157,8 @@ module.exports = {
     page.click('.context-panel-dropdown__button')
     page.click('.context-panel-dropdown__option--pin button')
 
-    page.expectText('.pin-thread-modal', 'Pinned threads always appear')
-    page.click('.pin-thread-modal__submit')
+    page.expectText('.confirm-modal', 'Pinned threads always appear')
+    page.click('.confirm-modal__submit')
 
     page.expectText('.flash-root__message', 'Thread pinned')
     page.expectElement('.context-panel__status .mdi-pin')

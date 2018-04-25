@@ -12,7 +12,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields textarea', 'Some details')
     page.click('.poll-common-form__submit')
     page.expectElement('.announcement-form__submit')
-    page.click('.material-modal-header-cancel-button')
+    page.click('.dismiss-modal-button')
     page.expectNoElement('.poll-common-modal')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -38,7 +38,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields textarea', 'Some details')
     page.click('.poll-common-form__submit')
     page.expectElement('.announcement-form__submit')
-    page.click('.material-modal-header-cancel-button')
+    page.click('.dismiss-modal-button')
     page.expectNoElement('.poll-common-modal')
     page.pause()
 
