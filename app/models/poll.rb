@@ -13,6 +13,9 @@ class Poll < ApplicationRecord
   include HasEvents
   include HasCreatedEvent
 
+  extend  NoSpam
+  no_spam_for :title, :description
+
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe, :deanonymize_after_close
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name
