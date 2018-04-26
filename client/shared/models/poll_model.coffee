@@ -57,6 +57,9 @@ module.exports = class PollModel extends BaseModel
     @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
     @hasMany   'pollDidNotVotes'
 
+  discussionGuestGroup: ->
+    @discussion().guestGroup() if @discussion()
+
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 

@@ -23,7 +23,7 @@ class DiscussionEmailInfo
 
   def links
     {
-      eventable: polymorphic_url(eventable, utm_hash),
+      target:    polymorphic_url(membership || eventable, utm_hash),
       unfollow:  email_actions_unfollow_discussion_url(utm_hash(discussion_id: discussion.id).merge(unsubscribe_token: unsubscribe_token)),
       prefs:     email_preferences_url(utm_hash.merge(unsubscribe_token: unsubscribe_token))
     }
@@ -44,6 +44,10 @@ class DiscussionEmailInfo
   end
 
   private
+
+  def membership
+    @membership ||= discussion.guest_group.memberships.find_by(user: recipient)
+  end
 
   def utm_hash(args = {})
     {

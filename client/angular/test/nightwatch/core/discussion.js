@@ -333,7 +333,7 @@ module.exports = {
     page.expectText('.thread-item__body', 'Hello world!')
     page.expectText('.group-theme__name--compact', 'Girdy Dancing Shoes')
     page.ensureSidebar()
-    page.expectNoText('.sidebar__list-item-button--group', 'Girdy Dancing Shoes')
+    page.expectNoElement('.sidebar__list-item-button--group')
   },
 
   'invites_an_email_to_a_discussion': (test) => {
@@ -341,10 +341,13 @@ module.exports = {
 
     page.loadPath('setup_discussion_mailer_invitation_created_email')
     page.click('.thread-mailer__subject a')
+    page.expectValue('.auth-email-form__email input', 'jen@example.com')
+    page.click('.auth-email-form__submit')
+    page.fillIn('.auth-signin-form__name', 'Jennifer')
+    page.click('.auth-signin-form__submit')
     page.expectText('.context-panel__heading', 'go to the moon')
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
-    page.expectValue('.auth-email-form__email input', 'jen@example.com')
   },
 
   'sends_missed_yesterday': (test) => {

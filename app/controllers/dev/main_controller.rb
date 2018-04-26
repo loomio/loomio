@@ -632,11 +632,10 @@ class Dev::MainController < Dev::BaseController
   def setup_membership_requests
     sign_in patrick
     create_group
-    create_another_group
     3.times do
-      membership_request_from_logged_out
+      request = MembershipRequest.new(group: create_group, introduction: "I'd like to make decisions with y'all")
+      MembershipRequestService.create(membership_request: request, actor: saved(fake_user))
     end
-    membership_request_from_user
     redirect_to group_url(create_group)
   end
 

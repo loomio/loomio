@@ -58,6 +58,7 @@ module Dev::PollsScenarioHelper
     actor = saved fake_user
     poll = fake_poll(poll_type: poll_type, discussion: nil)
     event = PollService.create(poll: poll, actor: actor)
+    poll.update(anyone_can_participate: true)
     membership = poll.guest_group.memberships.create(user: FactoryBot.build(:unverified_user, email: "hello@test.com"))
 
     {poll: poll,
