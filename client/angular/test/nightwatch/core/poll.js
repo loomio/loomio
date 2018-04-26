@@ -119,8 +119,9 @@ module.exports = {
 
     page.loadPath('polls/test_proposal_poll_created_as_visitor')
     page.click('.poll-common-vote-form__button:first-child')
-    page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
     page.fillIn('.poll-common-participant-form__name', 'Big Baloo')
+    page.fillIn('.poll-common-participant-form__email', 'big@baloo.com')
+    page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
     page.click('.poll-common-vote-form__submit')
 
     page.expectText('.flash-root__message', 'Vote created')
@@ -145,7 +146,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_proposal_poll_share')
-    page.click('.action-dock__button--announce_poll')
+    page.click('.membership-card__invite')
     page.selectFromAutocomplete('.md-chip-input-container input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-form__submit')
@@ -156,10 +157,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_proposal_poll_with_guest')
-    page.expectText('.poll-common-undecided-panel__button', 'SHOW 5 UNDECIDED')
+    page.expectText('.poll-common-undecided-panel__button', 'SHOW 4 UNDECIDED')
     page.click('.poll-common-undecided-panel__button')
-    page.expectText('.poll-common-undecided-panel', 'Undecided (5)')
-    page.expectText('.poll-common-undecided-panel', '1 additional person has been invited to participate via email')
+    page.expectText('.poll-common-undecided-panel', 'Undecided (4)')
   },
 
   'can remind undecided users': (test) => {
@@ -170,26 +170,5 @@ module.exports = {
     page.click('.poll-common-undecided-panel__button')
     page.click('.poll-common-undecided-user__remind')
     page.expectText('.flash-root__message', 'Reminder notification sent')
-  },
-
-  'can resend unaccepted invitations': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_proposal_poll_with_guest_as_author')
-    page.click('.show-results-button')
-    page.click('.poll-common-undecided-panel__button')
-    page.click('.poll-common-undecided-panel__show-invitations')
-    page.click('.poll-common-undecided-user__resend')
-    page.expectText('.flash-root__message', 'Invitation resent')
   }
-  //
-  // 'can_verify_stance': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('polls/test_verify_vote_by_unverified_user')
-  //   page.click('.base-mailer__button')
-  //   page.click('.auth-signin-form__submit')
-  //   page.expectText('.flash-root__message', 'Signed in successfully')
-  //   page.expectNoElement('.verify-email-notice')
-  // }
 }

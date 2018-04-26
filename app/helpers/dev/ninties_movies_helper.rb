@@ -196,25 +196,6 @@ module Dev::NintiesMoviesHelper
     @another_subgroup
   end
 
-  def membership_request_from_logged_out
-    membership_request = MembershipRequest.new(group: create_group,
-                                               name: Faker::Name.name,
-                                               email: Faker::Internet.email,
-                                               introduction: Faker::Hacker.say_something_smart)
-    MembershipRequestService.create(membership_request: membership_request)
-    membership_request
-  end
-
-  def membership_request_from_user
-    unless @membership_request_from_user
-      @membership_request_from_user = MembershipRequest.new(group: create_group,
-                                                            requestor: max,
-                                                            introduction: "I'd like to make decisions with y'all")
-      MembershipRequestService.create(membership_request: @membership_request_from_user)
-    end
-    @membership_request_from_user
-  end
-
   def pending_invitation
     @pending_membership ||= Membership.create(user: User.new(email: 'judd@example.com'),
                                               group: create_group, inviter: patrick)

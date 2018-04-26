@@ -61,8 +61,6 @@ module.exports = {
     page.click('.membership-requests-page__approve')
     page.pause(300)
     page.click('.membership-requests-page__approve')
-    page.pause(300)
-    page.click('.membership-requests-page__approve')
     page.pause(2000)
     page.expectText('.membership-requests-page__pending-requests', 'There are currently no pending membership requests for this group.')
   }
