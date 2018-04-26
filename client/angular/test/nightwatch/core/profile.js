@@ -20,8 +20,8 @@ module.exports = {
   'displays a user and their non-secret groups': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_discussion', '.thread-page')
-    page.goTo('u/jennifergrey', '.user-page__content')
+    page.loadPath('setup_discussion')
+    page.goTo('u/jennifergrey')
     page.expectText('.user-page__content', 'Jennifer Grey')
     page.expectText('.user-page__content', '@jennifergrey')
     page.expectText('.user-page__groups', 'Dirty Dancing Shoes')
@@ -44,6 +44,7 @@ module.exports = {
   'allows you to contact other users': (test) => {
     page = pageHelper(test)
 
+    page.loadPath('setup_discussion')
     page.goTo('u/jennifergrey')
     page.click('.user-page__contact-user')
     page.fillIn('.contact-request-form__message', 'Here is a request to connect!')
