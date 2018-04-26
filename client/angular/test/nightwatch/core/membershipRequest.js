@@ -21,7 +21,7 @@ module.exports = {
     page.click('.membership-requests-page__approve')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--group')
-    page.expectText('.members-card', 'MVS')
+    page.expectText('.membership-card', 'MVS')
   },
 
   'displays the correct flash message': (test) => {

@@ -11,6 +11,7 @@ module.exports = {
     page.fillIn('.profile-page__name-input', 'Ferris Bueller')
     page.fillIn('.profile-page__username-input', 'ferrisbueller')
     page.click('.profile-page__update-button')
+    page.pause()
     page.click('.user-dropdown__dropdown-button')
     page.expectText('.user-dropdown__user-details', 'Ferris Bueller')
     page.expectText('.user-dropdown__user-details', 'ferrisbueller')
@@ -103,6 +104,7 @@ module.exports = {
     page.click('.profile-page__deactivate')
     page.expectText('.confirm-modal', 'When you deactivate your account:')
     page.click('.confirm-modal__submit')
+    page.pause()
     page.expectText('.confirm-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:')
   },
 
@@ -114,6 +116,7 @@ module.exports = {
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__deactivate')
     page.click('.confirm-modal__submit')
+    page.pause(2000)
     page.click('.confirm-modal__submit')
     page.expectText('.auth-modal', 'Sign into Loomio')
   }
