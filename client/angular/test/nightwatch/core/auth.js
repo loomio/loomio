@@ -201,8 +201,8 @@ module.exports = {
 
     page.loadPath('setup_invitation_to_visitor')
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signup-form', 'Nice to meet you')
-    page.click('.auth-signup-form__submit')
+    page.expectText('.auth-signin-form', 'Nice to meet you')
+    page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully', 8000)
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes', 16000)
   },
