@@ -61,6 +61,14 @@ module Dev::NintiesMoviesHelper
                            email_verified: true)
   end
 
+  def rudd
+    @rudd ||= User.find_by(email: 'rudd@example.com') ||
+              User.create!(name: 'Paul Rudd',
+                           email: 'rudd@example.com',
+                           password: 'gh0stmovie',
+                           email_verified: true)
+  end
+
   def create_group
     unless @group
       @group = FormalGroup.create!(name: 'Dirty Dancing Shoes',
@@ -291,75 +299,79 @@ module Dev::NintiesMoviesHelper
 
 
   def create_all_notifications
-    #'reaction_created'
-    comment = Comment.new(discussion: create_discussion, body: 'I\'m rather likeable')
-    reaction = Reaction.new(reactable: comment, reaction: ":heart:")
-    new_comment_event = CommentService.create(comment: comment, actor: patrick)
-    reaction_created_event = ReactionService.update(reaction: reaction, params: {reaction: ':slight_smile:'}, actor: jennifer)
-    create_another_group.add_member! jennifer
-
-    #'comment_replied_to'
-    reply_comment = Comment.new(discussion: create_discussion,
-                                body: 'I agree with you', parent: comment)
-    CommentService.create(comment: reply_comment, actor: jennifer)
-
-    #'user_mentioned'
-    comment = Comment.new(discussion: create_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
-    CommentService.create(comment: comment, actor: jennifer)
-
-    [max, emilio, judd].each {|u| comment.group.add_member! u}
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':slight_smile:'}, actor: jennifer)
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':heart:'}, actor: patrick)
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':laughing:'}, actor: max)
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':cry:'}, actor: emilio)
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':wave:'}, actor: judd)
-
-    #'membership_requested',
-    membership_request = MembershipRequest.new(name: 'The Ghost', email: 'boooooo@invisible.co', group: create_group)
-    event = MembershipRequestService.create(membership_request: membership_request, actor: LoggedOutUser.new)
-
-    #'membership_request_approved',
-    another_group = FormalGroup.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
-    GroupService.create(group: another_group, actor: jennifer)
-    membership_request = MembershipRequest.new(requestor: patrick, group: another_group)
-    event = MembershipRequestService.create(membership_request: membership_request, actor: patrick)
-    approval_event = MembershipRequestService.approve(membership_request: membership_request, actor: jennifer)
-
-    #'user_added_to_group',
-    #notify patrick that he has been added to jens group
-    another_group = FormalGroup.new(name: 'Planets of the 80\'s')
-    GroupService.create(group: another_group, actor: jennifer)
-    jennifer.reload
-    MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer)
-
-    #'new_coordinator',
-    #notify patrick that jennifer has made him a coordinator
-    membership = Membership.find_by(user_id: patrick.id, group_id: another_group.id)
-    new_coordinator_event = MembershipService.make_admin(membership: membership, actor: jennifer)
-
-    #'invitation_accepted',
-    #notify patrick that his invitation to emilio has been accepted
-    invitation = InvitationService.bulk_create(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
-    InvitationService.redeem(invitation.first, emilio)
+    # #'reaction_created'
+    # comment = Comment.new(discussion: create_discussion, body: 'I\'m rather likeable')
+    # reaction = Reaction.new(reactable: comment, reaction: ":heart:")
+    # new_comment_event = CommentService.create(comment: comment, actor: patrick)
+    # reaction_created_event = ReactionService.update(reaction: reaction, params: {reaction: ':slight_smile:'}, actor: jennifer)
+    # create_another_group.add_member! jennifer
+    #
+    # #'comment_replied_to'
+    # reply_comment = Comment.new(discussion: create_discussion,
+    #                             body: 'I agree with you', parent: comment)
+    # CommentService.create(comment: reply_comment, actor: jennifer)
+    #
+    # #'user_mentioned'
+    # comment = Comment.new(discussion: create_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
+    # CommentService.create(comment: comment, actor: jennifer)
+    #
+    # [max, emilio, judd].each {|u| comment.group.add_member! u}
+    # ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':slight_smile:'}, actor: jennifer)
+    # ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':heart:'}, actor: patrick)
+    # ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':laughing:'}, actor: max)
+    # ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':cry:'}, actor: emilio)
+    # ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':wave:'}, actor: judd)
+    #
+    # #'membership_requested',
+    # membership_request = MembershipRequest.new(group: create_group)
+    # event = MembershipRequestService.create(membership_request: membership_request, actor: rudd)
+    #
+    # #'membership_request_approved',
+    # another_group = FormalGroup.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
+    # GroupService.create(group: another_group, actor: jennifer)
+    # membership_request = MembershipRequest.new(requestor: patrick, group: another_group)
+    # event = MembershipRequestService.create(membership_request: membership_request, actor: patrick)
+    # approval_event = MembershipRequestService.approve(membership_request: membership_request, actor: jennifer)
+    #
+    # #'user_added_to_group',
+    # #notify patrick that he has been added to jens group
+    # another_group = FormalGroup.new(name: 'Planets of the 80\'s')
+    # GroupService.create(group: another_group, actor: jennifer)
+    # jennifer.reload
+    # MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer)
+    #
+    # #'new_coordinator',
+    # #notify patrick that jennifer has made him a coordinator
+    # membership = Membership.find_by(user_id: patrick.id, group_id: another_group.id)
+    # new_coordinator_event = MembershipService.make_admin(membership: membership, actor: jennifer)
+    #
+    # #'invitation_accepted',
+    # #notify patrick that his invitation to emilio has been accepted
+    # membership = Membership.create(user: emilio, group: another_group, inviter: patrick)
+    # MembershipService.redeem(membership: membership, actor: emilio)
 
     #'poll_created'
-    notified = [{type: 'FormalGroup', id: create_discussion.group_id, notified_ids: [patrick.id]}.with_indifferent_access]
-
+    byebug
     poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
-    poll_created_event = PollService.create(poll: poll, actor: jennifer)
-    poll_announcement = FactoryBot.build(:announcement, event: poll_created_event, notified: notified)
-    AnnouncementService.create(announcement: poll_announcement, actor: jennifer)
+    AnnouncementService.create(
+      model: poll,
+      params: { kind: :poll_created, recipients: { user_ids: patrick.id }},
+      actor: jennifer
+    )
 
     #'poll_closing_soon'
     PollService.publish_closing_soon
 
     #'outcome_created'
     poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
+
     PollService.create(poll: poll, actor: jennifer)
     outcome = FactoryBot.build(:outcome, poll: poll)
-    outcome_created_event = OutcomeService.create(outcome: outcome, actor: jennifer)
-    outcome_announcement = FactoryBot.build(:announcement, event: outcome_created_event, notified: notified)
-    AnnouncementService.create(announcement: outcome_announcement, actor: jennifer)
+    AnnouncementService.create(
+      model: outcome,
+      params: { kind: :outcome_created, recipients: { user_ids: patrick.id } },
+      actor: jennifer
+    )
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
@@ -369,8 +381,8 @@ module Dev::NintiesMoviesHelper
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
     #'poll_option_added'
-    option_added_event = PollService.add_options(poll: poll, params: {poll_option_names: "wark"}, actor: jennifer)
-    added_announcement = FactoryBot.build(:announcement, event: option_added_event, notified: notified)
-    AnnouncementService.create(announcement: added_announcement, actor: jennifer)
+    # option_added_event = PollService.add_options(poll: poll, params: {poll_option_names: "wark"}, actor: jennifer)
+    # added_announcement = FactoryBot.build(:announcement, event: option_added_event, notified: notified)
+    # AnnouncementService.create(announcement: added_announcement, actor: jennifer)
   end
 end
