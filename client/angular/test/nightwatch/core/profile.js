@@ -103,7 +103,7 @@ module.exports = {
     page.click('.profile-page__deactivate')
     page.expectText('.confirm-modal', 'When you deactivate your account:')
     page.click('.confirm-modal__submit')
-    page.expectText('.only-coordinator-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:')
+    page.expectText('.confirm-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:')
   },
 
   'successfully deactivates the account': (test) => {

@@ -75,8 +75,8 @@ class PollEmailInfo
 
   def links
     {
-      unsubscribe: unsubscribe_url,
-      target:      target_url
+      target:      polymorphic_url(membership || poll, utm_hash),
+      unsubscribe: unsubscribe_url
     }
   end
 
@@ -91,11 +91,11 @@ class PollEmailInfo
 
   private
 
-  def unsubscribe_url
-    poll_unsubscribe_url poll, utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
+  def membership
+    @membership ||= poll.guest_group.memberships.find_by(user: recipient)
   end
 
-  def target_url
-    poll_url poll, utm_hash
+  def unsubscribe_url
+    poll_unsubscribe_url poll, utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
   end
 end
