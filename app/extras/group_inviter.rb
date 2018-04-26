@@ -1,5 +1,4 @@
 class GroupInviter
-  class NoInvitationsAvailableError < Exception; end
   class InvitationLimitExceededError < Exception; end
 
   def initialize(group:, inviter: User.helper_bot, user_ids: [], emails: [])
@@ -10,12 +9,11 @@ class GroupInviter
   end
 
   def invite!
-    raise NoInvitationsAvailableError if rate_limit_exceeded?
+    raise InvitationLimitExceededError if rate_limit_exceeded?
     generate_users!
     generate_memberships!
     @group.update_pending_memberships_count
     @group.update_memberships_count
-    raise NoInvitationsAvailableError  if invited_members.count == 0
     self
   end
 

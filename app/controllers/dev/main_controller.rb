@@ -83,8 +83,7 @@ class Dev::MainController < Dev::BaseController
     @group.add_admin! patrick
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
     event = DiscussionService.create(discussion: discussion, actor: patrick)
-    announcement = FactoryBot.build(:announcement, notified: [{id: jennifer.id, type: 'User', notified_ids: [jennifer.id]}.with_indifferent_access], event: event)
-    AnnouncementService.create(announcement: announcement, actor: patrick)
+    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {user_ids: [jennifer.id]}, kind: "new_discussion"})
     last_email
   end
 
@@ -95,8 +94,7 @@ class Dev::MainController < Dev::BaseController
     event = DiscussionService.create(discussion: discussion, actor: patrick)
     comment = FactoryBot.build(:comment, discussion: discussion)
     CommentService.create(comment: comment, actor: patrick)
-    announcement = FactoryBot.build(:announcement, notified: [{id: 'jen@example.com', type: 'Invitation'}.with_indifferent_access], event: event)
-    AnnouncementService.create(announcement: announcement, actor: patrick)
+    AnnouncementService.create(model: discussion, actor: patrick, params: {recipients: {emails: 'jen@example.com'}, kind: "new_discussion"})
     last_email
   end
 
