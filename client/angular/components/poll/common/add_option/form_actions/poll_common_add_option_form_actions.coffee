@@ -13,7 +13,6 @@ angular.module('loomioApp').directive 'pollCommonAddOptionFormActions', ->
         $scope.poll.addOption()
         EventBus.emit $scope, 'processing'
       successCallback: ->
-        EventBus.emit $scope, 'nextStep'
         EventBus.broadcast $rootScope, 'pollOptionsAdded', $scope.poll
       flashSuccess: "poll_common_add_option.form.options_added"
   ]

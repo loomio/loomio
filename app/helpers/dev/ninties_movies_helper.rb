@@ -379,9 +379,7 @@ module Dev::NintiesMoviesHelper
     jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
-    #'poll_option_added'
-    # option_added_event = PollService.add_options(poll: poll, params: {poll_option_names: "wark"}, actor: jennifer)
-    # added_announcement = FactoryBot.build(:announcement, event: option_added_event, notified: notified)
-    # AnnouncementService.create(announcement: added_announcement, actor: jennifer)
+    # create poll_option_added event (notifying author)
+    option_added_event = PollService.add_options(poll: poll, params: {poll_option_names: "wark"}, actor: jennifer)
   end
 end

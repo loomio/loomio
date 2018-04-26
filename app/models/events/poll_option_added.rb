@@ -1,5 +1,6 @@
 class Events::PollOptionAdded < Event
   include Events::Notify::Author
+  include Events::Notify::InApp
 
   def self.publish!(poll, actor, poll_option_names = [])
     return unless Array(poll_option_names).any?
@@ -10,10 +11,8 @@ class Events::PollOptionAdded < Event
   end
 
   private
-
-  # TODO: make poll options added an announcement as well
+  
   def notification_recipients
-    poll.participants
+    User.where(id: eventable.author_id)
   end
-  alias :email_recipients :notification_recipients
 end

@@ -5,11 +5,8 @@
       %i.mdi.mdi-lightbulb-on-outline
       %h1.lmo-h1{ng-switch: "currentStep"}
         %span{translate: "poll_common_add_option.modal.title", ng-switch-when: "save"}
-        %span{translate: "announcement.form.poll.title", ng-switch-when: "announce"}
       %dismiss_modal_button
-  %md-dialog-content.lmo-slide-animation{ng-switch: "currentStep"}
-    %poll_common_add_option_form.animated{ng-switch-when: "save", poll: "poll"}
-    %announcement_form.animated{ng-switch-when: "announce", announcement: "announcement"}
-  %md-dialog-actions.lmo-slide-animation{ng-switch: "currentStep"}
-    %poll_common_add_option_form_actions.animated{ng-switch-when: "save", poll: "poll"}
-    %announcement_form_actions.animated{ng-switch-when: "announce", announcement: "announcement"}
+  %md-dialog-content
+    %poll_common_add_option_form.animated{poll: "poll"}
+  %md-dialog-actions
+    %poll_common_add_option_form_actions.animated{poll: "poll"}

@@ -12,7 +12,7 @@
 
   .auth-signin-form__token.align-center{ng-if: "user.hasToken"}
     %validation_errors{subject: "user", field: "token"}
-    %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "submit()", ng-disabled: "!vars.name", ng-if: "!user.errors.token"}
+    %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "submit()", ng-disabled: "!vars.name && !user.name", ng-if: "!user.errors.token"}
       %span{ng-if: "user.name", translate: "auth_form.sign_in_as", translate-value-name: "{{user.name}}"}
       %span{ng-if: "!user.name", translate: "auth_form.sign_in"}
     %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "sendLoginLink()", ng-if: "user.errors.token"}
