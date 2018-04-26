@@ -5,7 +5,7 @@
     %h2.lmo-h2.align-center{ng-if: "!user.name", translate: "auth_form.welcome"}
     %p.lmo-hint-text{ng-if: "!user.name", translate: "auth_form.sign_up_helptext_with_token"}
 
-  %md-input-container.md-block.auth-signup-form__name{ng-if: "!user.name"}
+  %md-input-container.md-block.auth-signin-form__name{ng-if: "!user.name"}
     %label{translate: "auth_form.name"}
     %input.lmo-primary-form-input{type: "text", md-autofocus: "true", placeholder: "{{auth_form.name_placeholder | translate}}", ng-model: "vars.name", ng-required: "true"}
     %validation_errors{subject: "user", field: "name"}

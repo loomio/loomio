@@ -327,7 +327,7 @@ module.exports = {
     page.loadPath('setup_group_with_multiple_coordinators')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__leave-group')
-    page.click('.leave-group-form__submit')
+    page.click('.confirm-modal__submit')
     page.expectText('.flash-root__message', 'You have left this group')
     page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
   },

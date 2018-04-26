@@ -42,7 +42,5 @@ module.exports = {
     page.expectText('.confirm-modal h1', 'Mute thread')
     page.click('.confirm-modal__submit')
     page.expectText('.flash-root__message', 'Thread muted')
-    page.click('.flash-root__action a')
-    page.expectText('.flash-root__message', 'Thread unmuted')
   }
 }

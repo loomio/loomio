@@ -40,7 +40,7 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
 
     $scope.leaveGroup = ->
       ModalService.open 'ConfirmModal', confirm: ->
-        submit: $scope.membership.destroy
+        submit:  Session.user().membershipFor($scope.group).destroy
         text:
           title:    'leave_group_form.title'
           helptext: 'leave_group_form.question'
