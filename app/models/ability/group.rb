@@ -14,6 +14,15 @@ module Ability::Group
       end
     end
 
+    can [:vote_in], ::Group do |group|
+      if group.is_formal_group?
+        user_is_admin_of(group.id) ||
+        (user_is_member_of(group.id) && group.members_can_vote)
+      else
+        user_is_member_of(group.id)
+      end
+    end
+
     can [:see_private_content, :subscribe_to], ::Group do |group|
       if group.archived_at
         false
