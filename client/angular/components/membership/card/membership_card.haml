@@ -2,11 +2,11 @@
   .lmo-md-actions
     .lmo-flex--row
       %h2#membership-card-title.membership-card__title.lmo-truncate.lmo-card-heading{translate: "{{cardTitle}}", translate-value-count: "{{recordCount()}}", ng-if: "!searchOpen"}
-      %md-button.md-button--tiny{ng-click: "toggleSearch()", ng-if: "!searchOpen"}
+      %md-button.md-button--tiny.membership-card__search-button{ng-click: "toggleSearch()", ng-if: "!searchOpen"}
         %i.mdi.mdi-magnify
 
       %md-input-container.membership-card__search.md-block.md-no-errors{ng-class: "{'membership-card__search--open': searchOpen}", md-no-float: "true"}
-        %input.membership-page__search-filter{ng-model: "vars.fragment", ng-model-options: "{debounce: 300}", ng-change: "fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
+        %input.membership-card__filter{ng-model: "vars.fragment", ng-model-options: "{debounce: 300}", ng-change: "fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
         %md-button.md-button--tiny{ng-if: "searchOpen", ng-click: "toggleSearch()"}
           %i.mdi.mdi-close
     %md-button.md-raised.md-primary.membership-card__invite{ng-click: "invite()", translate: "common.action.invite", ng-if: "canAddMembers() && !pending"}

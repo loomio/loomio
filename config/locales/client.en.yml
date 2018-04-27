@@ -816,12 +816,12 @@ en:
   membership_remove_modal:
     invitation:
       title: Cancel invitation
-      message: Are you sure you want to cancel this invitation?
+      message: Are you sure you want to cancel the invitation to {{name}}?
       flash: Invitation cancelled
       submit: Cancel invitation
     membership:
       title: Remove member
-      message: Are you sure you want to remove this person from the group?
+      message: Are you sure you want to remove {{name}} from the group?
       flash: Member removed
       submit: Remove member
 

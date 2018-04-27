@@ -20,9 +20,12 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
     $scope.removeMembership = ->
       namespace = if $scope.membership.acceptedAt then 'membership' else 'invitation'
       ModalService.open 'ConfirmModal', confirm: ->
+        scope:
+          namespace: namespace
+          user: $scope.membership.user()
         text:
           title:    "membership_remove_modal.#{namespace}.title"
-          helptext: "membership_remove_modal.#{namespace}.message"
+          fragment: "membership_remove_modal"
           flash:    "membership_remove_modal.#{namespace}.flash"
           submit:   "membership_remove_modal.#{namespace}.submit"
         submit:     $scope.membership.destroy

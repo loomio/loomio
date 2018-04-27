@@ -6,67 +6,58 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.members-card__manage-members')
-    page.fillIn('.membership-page__search-filter', 'Jennifer')
+    page.click('.membership-card__search-button')
+    page.fillIn('.membership-card__filter', 'Jennifer')
     page.pause()
-    page.click('.memberships-panel__remove')
-    page.click('.memberships-page__remove-membership-confirm')
-    page.expectNoElement('.memberships-page__membership')
-    page.fillIn('.membership-page__search-filter', '')
-    page.expectText('.flash-root__message', 'Removed Jennifer Grey')
-    page.expectNoText('.memberships-panel', 'Jennifer Grey')
+    page.click('.membership-dropdown__button')
+    page.click('.membership-dropdown__remove')
+    page.expectText('.confirm-modal p', 'Jennifer')
+    page.click('.confirm-modal__submit')
+    page.expectText('.flash-root__message', 'Member removed')
+    page.expectNoText('.membership-card', 'Jennifer Grey')
   },
 
   'successfully assigns coordinator privileges': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.members-card__manage-members')
-    page.fillIn('.membership-page__search-filter', 'Jennifer')
+    page.click('.membership-card__search-button')
+    page.fillIn('.membership-card__filter', 'Jennifer')
     page.pause()
-    page.click('.memberships-panel__toggle-coordinator')
-    page.fillIn('.membership-page__search-filter', '')
-    page.pause()
+    page.click('.membership-dropdown__button')
+    page.click('.membership-dropdown__toggle-admin')
     page.expectText('.flash-root__message', 'Jennifer Grey is now a coordinator')
-    page.expectCount('.user-avatar--coordinator', 2)
+    page.expectElement('.user-avatar--coordinator')
   },
 
   'allows non-coordinators to add members if the group settings allow': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_as_member')
-    page.click('.members-card__manage-members')
-    page.expectElement('.memberships-panel__membership')
-    page.expectElement('.memberships-page__invite')
+    page.expectElement('.membership-card__invite')
   },
 
   'can remove coordinator privileges when there is more than one coordinator': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_group')
-    page.click('.members-card__manage-members')
-    page.fillIn('.membership-page__search-filter', 'Jennifer')
+    page.loadPath('setup_group_with_multiple_coordinators')
+
+    page.click('.membership-card__search-button')
+    page.fillIn('.membership-card__filter', 'Emilio')
     page.pause()
-    page.click('.memberships-panel__toggle-coordinator')
-    page.fillIn('.membership-page__search-filter', '')
-    page.pause()
-    page.expectCount('.user-avatar--coordinator', 2)
-    page.fillIn('.membership-page__search-filter', 'Patrick')
-    page.pause()
-    page.click('.memberships-panel__toggle-coordinator')
-    page.expectText('.flash-root__message', 'Patrick Swayze is no longer a coordinator')
-    page.fillIn('.membership-page__search-filter', '')
-    page.pause()
-    page.expectCount('.user-avatar--coordinator', 1)
+    page.click('.membership-dropdown__button')
+    page.click('.membership-dropdown__toggle-admin')
+    page.expectText('.flash-root__message', 'Emilio Estevez is no longer a coordinator')
+    page.expectNoElement('.user-avatar--coordinator')
   },
 
   'cannot remove privileges for last coordinator': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
-    page.click('.members-card__manage-members')
-    page.expectCount('.user-avatar--coordinator', 1)
-    page.fillIn('.membership-page__search-filter', 'Patrick')
-    page.expectElement('.memberships-panel__toggle-coordinator[disabled]')
+    page.click('.membership-card__search-button')
+    page.fillIn('.membership-card__filter', 'Patrick')
+    page.pause()
+    page.expectNoElement('.membership-dropdown__button')
   }
 }
