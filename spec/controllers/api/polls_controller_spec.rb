@@ -215,6 +215,56 @@ describe API::PollsController do
       expect { post :create, params: { poll: poll_params } }.to change { Poll.count }.by(1)
       expect(Poll.last.meeting_duration.to_i).to eq 90
     end
+
+    describe 'group.members_can_raise_motions false' do
+      before do
+        discussion.group.update(members_can_raise_motions: false)
+        sign_in user
+      end
+
+      it 'admin of formal group can raise motions' do
+        discussion.group.add_admin! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'admin of discussion guest group can raise motions' do
+        discussion.guest_group.add_admin! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of formal group cannot raise motions' do
+        discussion.group.add_member! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 403
+      end
+
+      it 'member of discussion guest group cannot raise motions' do
+        discussion.guest_group.add_member! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 403
+      end
+    end
+
+    describe 'group.members_can_raise motions true' do
+      before do
+        discussion.group.update(members_can_raise_motions: true)
+        sign_in user
+      end
+
+      it 'member of formal group can raise motions' do
+        discussion.group.add_member! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of discussion guest group can raise motions' do
+        discussion.guest_group.add_member! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 200
+      end
+    end
   end
 
   describe 'update' do

@@ -38,6 +38,7 @@ module Null::User
       notifications: :notification,
       login_tokens: :login_token,
       memberships: :membership,
+      admin_memberships: :membership,
       participated_polls: :poll,
       group_polls: :poll,
       polls: :poll,

@@ -39,21 +39,16 @@ module.exports = new class AbilityService
 
   canParticipateInPoll: (poll) ->
     return false unless poll
+    return false unless poll.isActive()
     poll.anyoneCanParticipate or
-    @canAdministerPoll(poll) or
-    @canParticipateInGroup(poll.group()) or
-    poll.group().membersCanVote && @canParticipateInGroup(
-      poll.guestGroup(),
-      poll.discussionGuestGroup()
-    )
+    @adminOf(poll) or
+    (poll.group().membersCanVote && @memberOf(poll))
 
-  canParticipateInGroup: (groups...) ->
-    _.any _.compact(groups), (group) ->
-      if group.type == 'FormalGroup'
-        Session.user().isAdminOf(group) or
-        (Session.user().isMemberOf(group) and group.membersCanVote)
-      else
-        Session.user().isMemberOf(group)
+  memberOf: (model) ->
+    _.any _.compact(model.groups()), (group) -> Session.user().isMemberOf(group)
+
+  adminOf: (model) ->
+    _.any _.compact(model.groups()), (group) -> Session.user().isAdminOf(group)
 
   canReactToPoll: (poll) ->
     @isEmailVerified() and @canParticipateInPoll(poll)

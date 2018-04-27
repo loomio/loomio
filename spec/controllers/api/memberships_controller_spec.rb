@@ -148,6 +148,7 @@ describe API::MembershipsController do
         let(:private_group) { create(:formal_group, is_visible_to_public: false) }
 
         it 'returns users filtered by group for a public group' do
+          group.update(group_privacy: 'open')
           get :index, params: { group_id: group.id }, format: :json
           json = JSON.parse(response.body)
           expect(json.keys).to include *(%w[users memberships groups])

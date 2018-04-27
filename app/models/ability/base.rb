@@ -34,6 +34,14 @@ module Ability
       @user.adminable_group_ids.include?(group_id)
     end
 
+    def user_is_member_of_any?(groups)
+      @user.memberships.find_by(group: groups)
+    end
+
+    def user_is_admin_of_any?(groups)
+      @user.admin_memberships.find_by(group: groups)
+    end
+
     def user_is_author_of?(object)
       @user.is_logged_in? && @user.id == object.author_id
     end

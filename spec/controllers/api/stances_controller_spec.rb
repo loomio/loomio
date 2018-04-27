@@ -225,6 +225,79 @@ describe API::StancesController do
       expect(json['users']).to be_present
     end
 
+    describe 'poll.group.members_can_vote false' do
+      let(:user) { create(:user) }
+
+      before do
+        group = create(:formal_group, members_can_vote: false)
+        poll.update(group: group, discussion: create(:discussion, group: group))
+        sign_in user
+      end
+
+      it 'admin of formal group can vote' do
+        poll.group.add_admin! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'admin of discussion guest group can vote' do
+        poll.discussion.guest_group.add_admin! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'admin of poll guest group can vote' do
+        poll.guest_group.add_admin! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of formal group cannot vote' do
+        poll.group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 403
+      end
+
+      it 'member of discussion guest group cannot vote' do
+        poll.discussion.guest_group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 403
+      end
+
+      it 'member of poll guest group can vote' do
+        poll.guest_group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 403
+      end
+    end
+
+    describe 'poll.group.members_can_vote true' do
+      let(:user) { create(:user) }
+      before do
+        group = create(:formal_group, members_can_vote: true)
+        poll.update(group: group, discussion: create(:discussion, group: group))
+        sign_in user
+      end
+
+      it 'member of formal group cannot vote' do
+        poll.group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of discussion guest group cannot vote' do
+        poll.discussion.guest_group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of poll guest group can vote' do
+        poll.guest_group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+    end
+
     describe 'poll.anyone_can_participate = true' do
       before do
         poll.update(anyone_can_participate: true)

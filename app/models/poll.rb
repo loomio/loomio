@@ -75,7 +75,7 @@ class Poll < ApplicationRecord
   delegate :locale, to: :author
 
   def groups
-    [group, guest_group].compact
+    [group, discussion&.guest_group, guest_group].compact
   end
 
   def undecided_count

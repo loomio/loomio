@@ -13,7 +13,7 @@ module HasGuestGroup
   end
 
   def guest_group
-    super || create_guest_group.tap { self.save(validate: false) }
+    super || create_guest_group.tap { self.save(validate: false) } if persisted?
   end
 
   def group_members

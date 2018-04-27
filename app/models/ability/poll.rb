@@ -16,7 +16,11 @@ module Ability::Poll
     end
 
     can :vote_in, ::Poll do |poll|
-      poll.active? && (poll.members.include?(user) || poll.anyone_can_participate)
+      poll.active? && (
+        poll.anyone_can_participate ||
+        (poll.group.members_can_vote && user_is_member_of_any?(poll.groups)) ||
+        user_is_admin_of_any?(poll.groups)
+      )
     end
 
     can [:show, :toggle_subscription, :subscribe_to], ::Poll do |poll|
@@ -28,10 +32,11 @@ module Ability::Poll
     end
 
     can :create, ::Poll do |poll|
-      user.email_verified? && (
-        !poll.group.presence ||
-        can?(:start_poll, poll.discussion) ||
-        can?(:start_poll, poll.group)
+      user.email_verified? &&
+       (
+        (poll.group.members_can_raise_motions && user_is_member_of_any?(poll.groups)) ||
+        user_is_admin_of_any?(poll.groups) ||
+        !poll.groups.any?(&:presence)
       )
     end
 
