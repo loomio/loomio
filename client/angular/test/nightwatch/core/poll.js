@@ -142,12 +142,12 @@ module.exports = {
     page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Big Baloo')
   },
 
-  'can invite users via email': (test) => {
+  'can_invite_users_via_email': (test) => {
     page = pageHelper(test)
 
     page.loadPath('polls/test_proposal_poll_share')
     page.click('.membership-card__invite')
-    page.selectFromAutocomplete('.md-chip-input-container input', 'test@example.com')
+    page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '1 notifications sent')
