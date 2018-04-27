@@ -11,7 +11,7 @@ module ErrorRescueHelper
     base.rescue_from(Membership::InvitationAlreadyUsed) do |exception|
       session.delete(:pending_membership_token)
       if current_user.email == exception.membership.user.email
-        redirect_to formal_group_url exception.membership.group
+        redirect_to polymorphic_url exception.membership.target_model
       else
         respond_with_error message: :"invitation.invitation_already_used"
       end

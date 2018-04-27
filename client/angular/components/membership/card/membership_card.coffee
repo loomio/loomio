@@ -50,6 +50,10 @@ angular.module('loomioApp').directive 'membershipCard', ->
       else
         $scope.records()
 
+    $scope.initialFetch = ->
+      $scope.loader.fetchRecords(per: 4).finally(-> $scope.fetched = true) unless $scope.fetched
+      true
+
     $scope.records = ->
       if $scope.pending
         $scope.group.pendingMemberships()
@@ -71,5 +75,4 @@ angular.module('loomioApp').directive 'membershipCard', ->
         pending: $scope.pending
         group_id: $scope.group.id
 
-    $scope.loader.fetchRecords(per: 4) if $scope.show()
   ]

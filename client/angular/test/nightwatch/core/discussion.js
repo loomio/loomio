@@ -329,7 +329,7 @@ module.exports = {
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.fillIn('.comment-form textarea', 'Hello world!')
     page.click('.comment-form__submit-button')
-    page.expectText('.thread-item__title', 'Jennifer Grey')
+    page.expectText('.thread-item__title', 'Jennifer Grey', 10000)
     page.expectText('.thread-item__body', 'Hello world!')
     page.expectText('.group-theme__name--compact', 'Girdy Dancing Shoes')
     page.ensureSidebar()
@@ -345,7 +345,7 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__name', 'Jennifer')
     page.click('.auth-signin-form__submit')
-    page.expectText('.context-panel__heading', 'go to the moon')
+    page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
   },

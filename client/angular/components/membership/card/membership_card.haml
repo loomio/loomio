@@ -1,4 +1,4 @@
-%section.membership-card.lmo-card.lmo-no-print{aria-labelledby: "membership-card-title", ng-if: "show()"}
+%section.membership-card.lmo-card.lmo-no-print{aria-labelledby: "membership-card-title", ng-if: "show() && initialFetch()"}
   .lmo-md-actions
     .lmo-flex--row
       %h2#membership-card-title.membership-card__title.lmo-truncate.lmo-card-heading{translate: "{{cardTitle}}", translate-value-count: "{{recordCount()}}", ng-if: "!searchOpen"}

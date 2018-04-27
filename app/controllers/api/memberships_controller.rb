@@ -93,7 +93,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def model
-    load_and_authorize(:group, optional: true) ||
+    load_and_authorize(:group, :see_private_content, optional: true) ||
     load_and_authorize(:discussion, optional: true) ||
     load_and_authorize(:poll, optional: true)
   end

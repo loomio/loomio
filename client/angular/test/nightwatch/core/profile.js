@@ -109,7 +109,7 @@ module.exports = {
     page.expectText('.confirm-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:')
   },
 
-  'successfully deactivates the account': (test) => {
+  'successfully_deactivates_the_account': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_multiple_coordinators')
@@ -119,6 +119,6 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.pause(2000)
     page.click('.confirm-modal__submit')
-    page.expectText('.auth-modal', 'Sign into Loomio')
+    page.expectText('.auth-modal', 'Sign into Loomio', 10000)
   }
 }
