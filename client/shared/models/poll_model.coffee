@@ -27,7 +27,7 @@ module.exports = class PollModel extends BaseModel
   poll: -> @
 
   groups: ->
-    _.compact @group(), @discussionGuestGroup(), @guestGroup()
+    _.compact [@group(), @discussionGuestGroup(), @guestGroup()]
 
   # the polls which haven't closed have the highest importance
   # (and so have the lowest value here)
