@@ -12,6 +12,10 @@ angular.module('loomioApp').directive 'membershipCard', ->
     $scope.vars = {}
     $scope.show = ->
       return false if $scope.recordCount() == 0
+      $scope.initialFetch() if $scope.canView()
+      $scope.canView()
+
+    $scope.canView = ->
       if $scope.pending
         AbilityService.canViewPendingMemberships($scope.group)
       else
@@ -51,8 +55,8 @@ angular.module('loomioApp').directive 'membershipCard', ->
         $scope.records()
 
     $scope.initialFetch = ->
-      $scope.loader.fetchRecords(per: 4).finally(-> $scope.fetched = true) unless $scope.fetched
-      true
+      $scope.loader.fetchRecords(per: 4) unless $scope.fetched
+      $scope.fetched = true
 
     $scope.records = ->
       if $scope.pending
