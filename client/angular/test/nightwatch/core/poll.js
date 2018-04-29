@@ -28,7 +28,7 @@ module.exports = {
     })
   },
 
-  'can start a standalone poll': (test) => {
+  'can_start_a_standalone_poll': (test) => {
     page = pageHelper(test)
 
     page.loadPath('polls/start_poll')

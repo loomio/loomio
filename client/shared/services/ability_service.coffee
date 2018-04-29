@@ -42,7 +42,7 @@ module.exports = new class AbilityService
     return false unless poll.isActive()
     poll.anyoneCanParticipate or
     @adminOf(poll) or
-    ((!poll.group() || poll.group().membersCanVote) and @memberOf(poll))
+    (@memberOf(poll) and (!poll.group() or poll.group().membersCanVote))
 
   memberOf: (model) ->
     _.any _.compact(model.groups()), (group) -> Session.user().isMemberOf(group)

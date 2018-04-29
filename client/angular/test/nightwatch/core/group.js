@@ -415,7 +415,7 @@ module.exports = {
     page.expectText('.group-theme__name', 'Ghostbusters')
   },
 
-  'handles advanced group settings': (test) => {
+  'handles_advanced_group_settings': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_restrictive_settings')
