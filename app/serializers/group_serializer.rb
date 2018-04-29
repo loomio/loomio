@@ -1,4 +1,4 @@
-class GroupSerializer < ActiveModel::Serializer
+class GroupSerializer < Simple::GroupSerializer
   embed :ids, include: true
 
   def self.attributes_for_formal(*attrs)
@@ -53,7 +53,6 @@ class GroupSerializer < ActiveModel::Serializer
                         :is_visible_to_parent_members,
                         :parent_members_can_see_discussions
 
-  has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
   has_one :parent, serializer: GroupSerializer, root: :groups
 
   def include_token?
@@ -90,14 +89,6 @@ class GroupSerializer < ActiveModel::Serializer
   end
 
   private
-
-  def current_user_membership
-    @current_user_membership ||= object.membership_for(scope[:current_user])
-  end
-
-  def include_current_user_membership?
-    scope && scope[:current_user]
-  end
 
   def has_discussions
     object.discussions_count > 0

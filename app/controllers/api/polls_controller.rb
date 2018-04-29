@@ -60,7 +60,7 @@ class API::PollsController < API::RestfulController
   end
 
   def default_scope
-    super.merge(my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
+    super.merge(current_user: current_user, my_stances_cache: Caches::Stance.new(user: current_user, parents: resources_to_serialize))
   end
 
   def accessible_records
