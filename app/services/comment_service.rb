@@ -4,7 +4,6 @@ class CommentService
     actor.ability.authorize! :create, comment
     comment.author = actor
     return false unless comment.valid?
-
     comment.save!
     EventBus.broadcast('comment_create', comment, actor)
     Events::NewComment.publish!(comment)

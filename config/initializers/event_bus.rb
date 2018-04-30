@@ -76,6 +76,7 @@ EventBus.configure do |config|
 
   # publish reply event after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }
+  config.listen('comment_create') { |comment| comment.discussion.guest_group.add_member! comment.author }
 
   # publish mention events after model create / update
   config.listen('comment_create',

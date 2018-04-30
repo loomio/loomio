@@ -419,20 +419,6 @@ class Dev::MainController < Dev::BaseController
     redirect_to discussion_url(discussion)
   end
 
-  def setup_discussion_as_invited_email
-    group      = FactoryBot.create :formal_group, group_privacy: 'secret'
-    discussion = FactoryBot.build :discussion, group: group
-    DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
-    discussion.create_guest_group
-    invitation = discussion.reload.guest_group.invitations.create(
-      recipient_email: "ming@merciless.biz",
-      inviter: discussion.group.creator,
-      intent: :join_discussion
-    )
-
-    redirect_to invitation_url(invitation)
-  end
-
   def view_closed_group_with_shareable_link
     redirect_to join_url(create_group)
   end

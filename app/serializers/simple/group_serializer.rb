@@ -14,8 +14,9 @@ class Simple::GroupSerializer < ActiveModel::Serializer
              :membership_granted_upon
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
-  
+
   private
+
   def current_user_membership
     @current_user_membership ||= object.membership_for(scope[:current_user])
   end
@@ -23,5 +24,4 @@ class Simple::GroupSerializer < ActiveModel::Serializer
   def include_current_user_membership?
     scope && scope[:current_user]
   end
-
 end

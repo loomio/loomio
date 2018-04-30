@@ -27,6 +27,7 @@ module Ability::Group
       if group.archived_at
         false
       else
+        (group.is_guest_group? && user.ability.can?(:show, group.target_model)) or
         user_is_member_of?(group.id) or
         group.group_privacy == 'open' or
         (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
