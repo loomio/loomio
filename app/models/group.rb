@@ -22,6 +22,7 @@ class Group < ApplicationRecord
   has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
   has_many :polls, foreign_key: :group_id, dependent: :destroy
   has_many :public_polls, through: :public_discussions, dependent: :destroy, source: :polls
+  include MigrateGroupRelations
 
   scope :archived, -> { where('archived_at IS NOT NULL') }
   scope :published, -> { where(archived_at: nil) }

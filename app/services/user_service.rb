@@ -28,6 +28,8 @@ class UserService
 
   def self.delete_spam(user)
     # destroyed (cascade delete)
+    raise "no deletey admin plezse" if user.is_admin?
+    
     Group.where(creator_id: user.id).destroy_all
     Poll.where(author_id: user.id).destroy_all
     Discussion.where(author_id: user.id).destroy_all

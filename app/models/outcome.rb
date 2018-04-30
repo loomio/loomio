@@ -5,6 +5,7 @@ class Outcome < ApplicationRecord
   include Reactable
   include Translatable
   include HasCreatedEvent
+  include HasEvents
 
   set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location
 
