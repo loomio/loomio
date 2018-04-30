@@ -8,8 +8,8 @@ exceptionHandler = require 'shared/helpers/exception_handler.coffee'
 { hardReload } = require 'shared/helpers/window.coffee'
 
 module.exports = new class Session
-  signIn: (userId, invitationToken) ->
-    setDefaultParams(invitation_token: invitationToken)
+  signIn: (userId) ->
+    setDefaultParams()
     return unless AppConfig.currentUserId = userId
     user = @user()
     exceptionHandler.setUserContext(_.pick(user, "email", "name", "id"))

@@ -21,12 +21,16 @@ class DiscussionEmailInfo
     @discussion ||= eventable.discussion
   end
 
-  def links
-    {
-      target:    polymorphic_url(membership || eventable, utm_hash),
-      unfollow:  email_actions_unfollow_discussion_url(utm_hash(discussion_id: discussion.id).merge(unsubscribe_token: unsubscribe_token)),
-      prefs:     email_preferences_url(utm_hash.merge(unsubscribe_token: unsubscribe_token))
-    }
+  def target_url(args = {})
+    polymorphic_url(membership || eventable, utm_hash(args))
+  end
+
+  def unfollow_url(args = {})
+    email_actions_unfollow_discussion_url(utm_hash(discussion_id: discussion.id).merge(unsubscribe_token: unsubscribe_token))
+  end
+
+  def preferences_url
+    email_preferences_url(utm_hash.merge(unsubscribe_token: unsubscribe_token))
   end
 
   def pixel_src
@@ -53,8 +57,7 @@ class DiscussionEmailInfo
     {
       utm_medium: 'email',
       utm_campaign: 'discussion_mailer',
-      utm_source: action_name,
-      invitation_token: recipient.token,
+      utm_source: action_name
     }.merge(args)
   end
 

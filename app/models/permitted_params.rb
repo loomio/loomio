@@ -35,7 +35,7 @@ class PermittedParams < Struct.new(:params)
 
   def stance_attributes
     [:poll_id, :reason,
-     :visitor_attributes, {visitor_attributes: [:name, :email, :invitation_token]},
+     :visitor_attributes, {visitor_attributes: [:name, :email]},
      :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]}]
   end
 

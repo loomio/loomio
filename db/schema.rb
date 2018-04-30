@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20180424011230) do
     t.index ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type"
   end
 
-  create_table "attachments", force: :cascade do |t|
+  create_table "attachments", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.string "filename", limit: 255
     t.text "location"
@@ -177,8 +177,8 @@ ActiveRecord::Schema.define(version: 20180424011230) do
     t.boolean "pinned", default: false, null: false
     t.integer "importance", default: 0, null: false
     t.integer "seen_by_count", default: 0, null: false
-    t.integer "guest_group_id"
     t.string "ranges_string"
+    t.integer "guest_group_id"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
@@ -188,7 +188,7 @@ ActiveRecord::Schema.define(version: 20180424011230) do
     t.index ["private"], name: "index_discussions_on_private"
   end
 
-  create_table "documents", force: :cascade do |t|
+  create_table "documents", id: :serial, force: :cascade do |t|
     t.integer "model_id"
     t.string "model_type"
     t.string "title"
@@ -517,6 +517,7 @@ ActiveRecord::Schema.define(version: 20180424011230) do
     t.boolean "latest", default: true, null: false
     t.integer "poll_option_id"
     t.jsonb "custom_fields", default: {}, null: false
+    t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
   create_table "poll_did_not_votes", id: :serial, force: :cascade do |t|
@@ -577,7 +578,7 @@ ActiveRecord::Schema.define(version: 20180424011230) do
     t.index ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true
   end
 
-  create_table "reactions", force: :cascade do |t|
+  create_table "reactions", id: :serial, force: :cascade do |t|
     t.integer "reactable_id"
     t.integer "user_id"
     t.datetime "created_at"
@@ -718,7 +719,7 @@ ActiveRecord::Schema.define(version: 20180424011230) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  create_table "versions", force: :cascade do |t|
+  create_table "versions", id: :serial, force: :cascade do |t|
     t.string "item_type", limit: 255, null: false
     t.integer "item_id", null: false
     t.string "event", limit: 255, null: false

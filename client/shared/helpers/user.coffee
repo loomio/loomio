@@ -14,7 +14,7 @@ I18n           = require 'shared/services/i18n.coffee'
 module.exports =
   signIn: (data, userId, afterSignIn = ->) =>
     Records.import(data)
-    Session.signIn(userId, LmoUrlService.params().invitation_token)
+    Session.signIn(userId)
     afterSignIn()
 
   signOut: ->

@@ -70,7 +70,4 @@ subscribeToApplication = ->
         FlashService.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', hardReload
 
 ensureConnection = ->
-  AppConfig.cable = AppConfig.cable or if AppConfig.invitationToken()
-    ActionCable.createConsumer("/cable?token=#{AppConfig.invitationToken()}")
-  else
-    ActionCable.createConsumer("/cable")
+  AppConfig.cable = AppConfig.cable or ActionCable.createConsumer("/cable")

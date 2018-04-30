@@ -16,16 +16,11 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ->
 
     params =
       poll_id:          $scope.poll.key
-      invitation_token: LmoUrlService.params().invitation_token
 
     $scope.loaders =
       memberships: new RecordLoader
         collection: if $scope.poll.isActive() then 'memberships' else 'poll_did_not_votes'
         path:       if $scope.poll.isActive() then 'undecided' else ''
-        params: params
-      invitations: new RecordLoader
-        collection: 'invitations'
-        path: 'pending'
         params: params
 
     $scope.canEditPoll = ->
@@ -33,21 +28,11 @@ angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ->
 
     $scope.showUndecided = ->
       $scope.showingUndecided = true
-      if $scope.moreMembershipsToLoad()
-        $scope.loaders.memberships.fetchRecords()
-      else
-        $scope.loaders.invitations.fetchRecords()
+      $scope.loaders.memberships.fetchRecords()
 
     $scope.moreMembershipsToLoad = ->
       $scope.loaders.memberships.numLoaded < $scope.poll.undecidedUserCount
 
-    $scope.moreInvitationsToLoad = ->
-      $scope.canEditPoll() and
-      $scope.loaders.invitations.numLoaded < $scope.poll.guestGroup().pendingInvitationsCount
-
     $scope.loadMemberships = ->
       $scope.loaders.memberships.loadMore()
-
-    $scope.loadInvitations = ->
-      $scope.loaders.invitations.loadMore()
   ]

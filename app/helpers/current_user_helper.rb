@@ -30,8 +30,4 @@ module CurrentUserHelper
   def set_last_seen_at
     current_user.update_attribute :last_seen_at, Time.now
   end
-
-  def set_invitation_token
-    current_user.token = params[:invitation_token] if params[:invitation_token]
-  end
 end
