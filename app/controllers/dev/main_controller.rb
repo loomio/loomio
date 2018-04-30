@@ -238,7 +238,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_group_with_restrictive_settings
-    sign_in jennifer
+    sign_in max
     create_stance
     create_discussion
     create_group.update(
@@ -250,6 +250,7 @@ class Dev::MainController < Dev::BaseController
       members_can_start_discussions: false,
       members_can_create_subgroups:  false
     )
+    create_group.add_member! max
     redirect_to group_url create_group
   end
 
