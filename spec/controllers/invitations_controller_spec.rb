@@ -24,13 +24,19 @@ describe InvitationsController do
 
     context 'invitation used' do
       before do
-        sign_in user
-        invitation.update_attribute(:accepted_at, Time.now)
+        invitation.update({accepted_at: Time.now})
       end
 
-      it 'says sorry invitatino already used' do
+      it 'redirects to group if signed in ' do
+        sign_in user
         get :show, params: { id: invitation.token }
         expect(response).to redirect_to(group_url(invitation.group))
+      end
+
+      it 'says invitation already used if signed in as another user' do
+        sign_in create(:user)
+        get :show, params: { id: invitation.token }
+        expect(response.status).to eq 400
       end
     end
 
