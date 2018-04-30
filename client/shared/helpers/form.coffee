@@ -41,6 +41,7 @@ module.exports =
       flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
       prepareFn: =>
         EventBus.emit scope, 'processing'
+        model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
         switch model.pollType
           # for polls with default poll options (proposal, check)
           when 'proposal', 'count'

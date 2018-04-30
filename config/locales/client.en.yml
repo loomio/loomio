@@ -1262,7 +1262,7 @@ en:
     deanonymize_after_close:
       title: Reveal voters after close
       helptext_on: When selected, anonymous voters will be revealed after the poll closes
-    voters_can_add_options:
+    voter_can_add_options:
       title: Voters may add options
       helptext_on: When selected, participants may add their own options when voting.
     can_respond_maybe:
