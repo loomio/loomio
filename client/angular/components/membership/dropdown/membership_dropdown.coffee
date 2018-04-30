@@ -39,5 +39,5 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
       method = if $scope.membership.admin then 'removeAdmin' else 'makeAdmin'
       return if $scope.membership.admin and $scope.membership.user() == Session.user() and !confirm(I18n.t('memberships_page.remove_admin_from_self.question'))
       Records.memberships[method]($scope.membership).then ->
-        FlashService.success "memberships_page.messages.#{_.snakeCase method}_success", name: $scope.membership.userName()
+        FlashService.success "memberships_page.messages.#{_.snakeCase method}_success", name: ($scope.membership.userName() || $scope.membership.userEmail())
   ]

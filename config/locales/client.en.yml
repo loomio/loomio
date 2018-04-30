@@ -148,6 +148,8 @@ en:
     _10: 10th
 
   devise:
+    sessions:
+      signed_up: Signed up successfully!
     failure:
       inactive: 'There is a deactivated account associated with this email address. If you want to reactivate your account, contact us.'
 
