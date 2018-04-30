@@ -3,7 +3,6 @@ Session        = require 'shared/services/session.coffee'
 Records        = require 'shared/services/records.coffee'
 EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { myLastStanceFor } = require 'shared/helpers/poll.coffee'
@@ -33,7 +32,4 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ->
 
     $scope.userCanParticipate = ->
       AbilityService.canParticipateInPoll($scope.poll)
-
-    $scope.openStanceForm = ->
-      ModalService.open 'PollCommonEditVoteModal', stance: -> $scope.init()
   ]

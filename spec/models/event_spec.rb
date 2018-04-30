@@ -418,6 +418,16 @@ describe Event do
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
     end
 
+    it 'makes an announcement for a standalone' do
+      poll    = create(:poll, group: nil)
+      outcome = create(:outcome, poll: poll)
+      stance  = create :stance, poll: poll
+
+      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
+      email_users = Events::OutcomeCreated.last.send(:email_recipients)
+      email_users.should      include stance.participant
+    end
+
     it 'makes an announcement' do
       outcome.make_announcement = true
       expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }

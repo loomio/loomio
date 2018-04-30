@@ -1167,6 +1167,8 @@ en:
     reason_placeholder: Any additional comments?
     message: Message
     results: Results
+    responses: Responses
+    totals: Totals
     vote: Vote
     votes: Votes
     update_outcome: Update outcome
@@ -1204,6 +1206,8 @@ en:
     count: "See all: ({{count}}) decisions"
 
   poll_common_action_panel:
+    anonymous: Votes will be anonymous
+    anonymous_until_close: Votes will be anonymous until this poll closes
     unable_to_vote: You do not have permission to vote in this decision.
 
   current_polls_card:
@@ -1242,16 +1246,28 @@ en:
     location: Location
     location_placeholder: Where will this meeting take place?
 
-  poll_common_notify_on_participate:
-    notify_on_participate: Notify me when people participate
-    helptext_on: You will be notified whenever someone participates
-    helptext_off: You will receive results when this activity closes
-
-  poll_common_anonymous:
-    anonymous: Anonymous Participants
-    helptext_on: Participant info will not be shown with each response
-    helptext_off: Participants will be shown with their responses
-
+  poll_common_settings:
+    multiple_choice:
+      title: Multiple choice
+      helptext_on: When selected, participants will be able to select multiple options.
+    anyone_can_participate:
+      title: Anyone can participate
+      helptext_on: When selected, anyone with the link to the poll can participate.
+    notify_on_participate:
+      title: Notify me when people participate
+      helptext_on: When selected, you will be notified whenever someone participates.
+    anonymous:
+      title: Anonymous voters
+      helptext_on: When selected, participant info will not be shown with each response.
+    deanonymize_after_close:
+      title: Reveal voters after close
+      helptext_on: When selected, anonymous voters will be revealed after the poll closes
+    voter_can_add_options:
+      title: Voters may add options
+      helptext_on: When selected, participants may add their own options when voting.
+    can_respond_maybe:
+      title: Voters can respond "if need be"
+      helptext_on:  Voters can indicate times as "If need be"
   poll_common_close_form:
     title: Close a poll early
     helptext: Are you sure you're ready to close early?
@@ -1415,6 +1431,7 @@ en:
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option
     dots_per_person: Dots per person
+    dots_per_person_helptext: How many points to allocate to each participant
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
 
@@ -1489,6 +1506,8 @@ en:
     block_meaning: The urgent attention of the group is required to address a deep concern
 
   poll_count_options:
+    'yes': 'Yes'
+    'no': 'No'
     yes_meaning: I volunteer, give my consent, or have completed the given task
     no_meaning: I am unable to contribute or to participate in this decision
 
@@ -1512,6 +1531,9 @@ en:
     stance_updated: Vote updated
 
   poll_meeting_vote_form:
+    can_attend: "Can attend"
+    unable: "Unable"
+    if_need_be: If need be
     your_response: When can you attend?
     stance_created: Availability saved
     stance_updated: Availability updated
@@ -1540,6 +1562,7 @@ en:
     discussion_reopened:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> reopened the thread"
     new_comment:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created:               "<strong><a href='u/{{username}}'>{{author}}</a></strong> shared an outcome for <strong>{{title}}</strong>"
+    poll_reopened:                 "<strong><a href='u/{{username}}'>{{author}}</a></strong> reopened the {{polltype}}: <strong>{{title}}</strong>"
     poll_closed_by_user:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the {{polltype}}: <strong>{{title}}</strong>"
     poll_created:                  "<strong><a href='u/{{username}}'>{{author}}</a></strong> started a {{polltype}}: <strong>{{title}}</strong>"
     poll_edited:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong> edited the {{polltype}}: <strong>{{title}}</strong>"
@@ -1661,7 +1684,10 @@ en:
     link_accounts: Link accounts
 
     check_your_email: Check your email!
-    login_link_sent: "Ok, We've sent an email to {{email}} with a link to instantly log in. See you soon!"
+    login_link_sent: "Ok, We've sent an email to {{email}}."
+    instructions: "Click the link to sign in, or enter the code below:"
+    too_many_attempts: "Too many attempts; try clicking the link in the email to log in."
+    invalid_code: "Sorry, that code didn't match. Check the email and try again."
     password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
     signed_in: Signed in successfully
     email_verified: Email verified successfully

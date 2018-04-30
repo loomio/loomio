@@ -1,5 +1,5 @@
 !!!
-%html{'ng-app' => 'loomioApp', 'ng-strict-di' => 'true', 'ng-controller' => 'RootController as app'}
+%html{'lang' => current_user.locale, 'ng-app' => 'loomioApp', 'ng-strict-di' => 'true', 'ng-controller' => 'RootController as app'}
   %head
     %title= AppConfig.theme[:site_name]
     %meta{charset: 'utf-8'}

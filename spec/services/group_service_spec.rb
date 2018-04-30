@@ -49,4 +49,22 @@ describe 'GroupService' do
       end
     end
   end
+
+  describe' move' do
+    let(:group) { create :formal_group, subscription_id: 100 }
+    let(:parent) { create :formal_group }
+    let(:admin) { create :user, is_admin: true }
+    let(:user) { create :user }
+
+    it 'moves a group to a parent as an admin' do
+      GroupService.move(group: group, parent: parent, actor: admin)
+      expect(group.reload.parent).to eq parent
+      expect(group.subscription_id).to be_nil
+      expect(parent.reload.subgroups).to include group
+    end
+
+    it 'does not allow nonadmins to move groups' do
+      expect { GroupService.move(group: group, parent: parent, actor: user) }.to raise_error { CanCan::AccessDenied }
+    end
+  end
 end

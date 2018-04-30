@@ -11,6 +11,28 @@ describe PollOption do
       end
     end
 
+    describe 'total score' do
+      let(:user) { create :user }
+      let(:poll) { create :poll_dot_vote }
+      let(:poll_option) { poll.poll_options.first }
+      let!(:old_stance) { create :stance,
+        participant: user,
+        latest: false,
+        poll: poll,
+        stance_choices_attributes: [{poll_option_id: poll_option.id, score: 1}]
+      }
+      let!(:new_stance) { create :stance,
+        participant: user,
+        latest: true,
+        poll: poll,
+        stance_choices_attributes: [{poll_option_id: poll_option.id, score: 2}]
+      }
+
+      it 'does not count old stances in total score' do
+        expect(poll_option.total_score).to eq 2
+      end
+    end
+
     describe 'dates_as_options poll' do
       let(:poll_option) { build :poll_option, poll: build(:poll_meeting) }
 

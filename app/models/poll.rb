@@ -13,15 +13,18 @@ class Poll < ApplicationRecord
   include HasEvents
   include HasCreatedEvent
 
-  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices
+  extend  NoSpam
+  no_spam_for :title, :details
+
+  set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe, :deanonymize_after_close
 
   TEMPLATE_FIELDS = %w(material_icon translate_option_name
                        can_add_options can_remove_options author_receives_outcome
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
-                       dates_as_options required_custom_fields
-                       require_stance_choices require_all_choices
-                       poll_options_attributes experimental).freeze
+                       dates_as_options required_custom_fields has_option_score_counts
+                       require_stance_choices require_all_choices prevent_anonymous
+                       poll_options_attributes experimental has_score_icons).freeze
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { AppConfig.poll_templates.dig(self.poll_type, field) }
   end
@@ -177,12 +180,14 @@ class Poll < ApplicationRecord
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
 
     update_attribute(:stance_counts, ordered_poll_options.pluck(:name).map { |name| stance_data[name] })
+    poll_options.map(&:update_option_score_counts) if poll.has_option_score_counts
 
     # TODO: convert this to a SQL query (CROSS JOIN?)
     update_attribute(:matrix_counts,
       poll_options.order(:name).limit(5).map do |option|
         stances.latest.order(:created_at).limit(5).map do |stance|
-          stance.poll_options.include?(option)
+          # the score of the stance choice which has this poll option in this stance
+          stance.stance_choices.find_by(poll_option:option)&.score.to_i
         end
       end
     ) if chart_type == 'matrix'
@@ -198,6 +203,16 @@ class Poll < ApplicationRecord
 
   def is_single_vote?
     AppConfig.poll_templates.dig(self.poll_type, 'single_choice') && !self.multiple_choice
+  end
+
+  def meeting_score_tallies
+    ordered_poll_options.map do |option|
+      [option.id, {
+        maybe:    option.stance_choices.latest.where(score: 1).count,
+        yes:      option.stance_choices.latest.where(score: 2).count
+      }]
+    end
+
   end
 
   def ordered_poll_options
@@ -292,7 +307,7 @@ class Poll < ApplicationRecord
 
   def require_custom_fields
     Array(required_custom_fields).each do |field|
-      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].blank?
+      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].nil?
     end
   end
 end

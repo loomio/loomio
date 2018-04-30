@@ -35,7 +35,7 @@ class Identities::SlackController < Identities::BaseController
       FormalGroup.by_slack_channel(@channel).each { |g| g.add_member! user_to_join }
       sign_in user_to_join
     end
-    render template: 'slack/authorized', layout: 'errors'
+    render template: 'slack/authorized', layout: 'basic'
   end
 
   private

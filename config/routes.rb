@@ -17,6 +17,10 @@ Loomio::Application.routes.draw do
 
   root to: 'root#index'
 
+  get '/gdpr', to: 'personal_data#gdpr'
+  get '/personal_data', to: 'personal_data#index'
+  get '/personal_data/:table', to: 'personal_data#show'
+
   namespace :dev do
     namespace :discussions do
       get '/' => :index

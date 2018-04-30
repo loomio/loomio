@@ -7,3 +7,9 @@ module.exports =
       pair = pairs[index]
       result[pair[0]] = pair[1]
     result
+
+  mod: (num, mod) ->
+    if num >= 0
+      num % mod
+    else
+      mod - (-num % mod)

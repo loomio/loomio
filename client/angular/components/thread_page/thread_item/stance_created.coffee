@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'stanceCreated', ->
     $scope.actions = [
       name: 'translate_stance'
       icon: 'mdi-translate'
-      canPerform: -> $scope.eventable.reason && AbilityService.canTranslate($scope.eventable)  && !$scope.translation
+      canPerform: -> $scope.eventable.reason && AbilityService.canTranslate($scope.eventable)
       perform:    -> $scope.eventable.translate(Session.user().locale)
     ,
       name: 'edit_stance'

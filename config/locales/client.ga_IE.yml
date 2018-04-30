@@ -381,7 +381,6 @@ ga_IE:
     header: Socruithe ríomhphoist
     all_groups: Socruithe i gcomhair gach baicle
     daily_summary_label: Ríomhphost le hachoimre laethúil
-    mentioned_description: "Nuair is mian le duine éigin d'aird a tharraing orthu, @déanfaidh siad tagairt duit. Molaimid duit é sin a fhágáil ar siúl, ionas go bhfaighfear ríomhphost nuair a tharlaíonn seo."
     edit: Eagar
     messages:
       updated: Nuashonraigh na socruithe ríomhphoist

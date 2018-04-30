@@ -731,7 +731,6 @@ nl_NL:
     on_participation_label: Abonneer op deelname
     on_participation_description: "Als je deelneemt aan een discussie, wordt alle verdere activiteit direct naar je gemaild."
     mentioned_label: Vermeldingen
-    mentioned_description: "Als iemand jouw aandacht wil krijgen, @vermelden ze je. We raden je aan om dit aan te laten staan, zodat je een e-mail ontvangt zodra dit gebeurt."
     update_settings: Bewaar veranderingen
     specific_groups: Instellingen voor specifieke groepen
     default_settings:

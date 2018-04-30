@@ -52,12 +52,18 @@ module.exports = class StanceModel extends BaseModel
     _.each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->
       stanceChoice.remove()
 
-    _.each _.flatten([optionIds]), (optionId) =>
+    _.each _.compact(_.flatten([optionIds])), (optionId) =>
       @recordStore.stanceChoices.create(pollOptionId: parseInt(optionId), stanceId: @id)
     @
 
   votedFor: (option) ->
     _.contains _.pluck(@pollOptions(), 'id'), option.id
+
+  scoreFor: (option) ->
+    choiceForOption = _.find @stanceChoices(), (choice)->
+      choice.pollOptionId == option.id
+
+    if choiceForOption then choiceForOption.score else 0
 
   verify: () =>
     @remote.postMember(@id, 'verify').then => @unverified = false

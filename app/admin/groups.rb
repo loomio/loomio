@@ -214,11 +214,9 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   end
 
   member_action :move, method: :post do
-    group = Group.friendly.find(params[:id])
-    if parent = Group.find_by(key: params[:parent_id]) || Group.find_by(id: params[:parent_id].to_i)
-      group.subscription&.destroy if Plugins.const_defined?("LoomioOrgPlugin")
-      group.update(parent: parent)
-    end
+    group  = Group.friendly.find(params[:id])
+    parent = Group.friendly.find(params[:parent_id])
+    GroupService.move(group: group, parent: parent, actor: current_user)
     redirect_to admin_group_path(group)
   end
 

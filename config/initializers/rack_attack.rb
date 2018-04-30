@@ -13,8 +13,7 @@ class Rack::Attack
   # when attacks happen we see a few groups per minute, usually with the same name
   # each trying to invite max_invitations with bulk create.
 
-  {10 => 1.hour,
-   20 => 1.day}.each_pair do |limit, period|
+  {5 => 1.hour, 10 => 1.day}.each_pair do |limit, period|
     Rack::Attack.throttle("groups#create", :limit => limit, :period => period) do |req|
       req.ip if heavy.any? {|route| req.path.starts_with?(route)} && req.post?
     end

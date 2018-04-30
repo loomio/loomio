@@ -1,7 +1,10 @@
 class LoginToken < ApplicationRecord
   belongs_to :user, required: true
   has_secure_token :token
+  before_create :ensure_code
   EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 1440)
+
+  scope :unused, -> { where(used: false) }
 
   def useable?
     !used && expires_at > DateTime.now && user.present?
@@ -13,5 +16,11 @@ class LoginToken < ApplicationRecord
 
   def user
     User.verified.find_by(email: super.email) || super
+  end
+
+  private
+
+  def ensure_code
+    self.code = Random.new.rand(999999)
   end
 end

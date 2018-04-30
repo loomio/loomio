@@ -19,6 +19,7 @@ en:
   user:
     error:
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
+      bad_login: "Unable to log you in. Please try again."
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
   attachment:
@@ -92,6 +93,7 @@ en:
       subject: Sign in to %{site_name}
       intro: Hi %{name}, here is a link to sign in to your %{site_name} account.
       login: Sign in as %{name}
+      or_enter_code: Or, enter the code below
       resend: This link will expire in 24 hours and can only be used once.
 
     contact_request:
@@ -554,6 +556,10 @@ en:
         voted: '<strong>%{participant}</strong>:'
 
   comment_by: Comment by %{comment_author}
+
+  personal_data:
+    title: Personal data of %{user_name} in on %{host_name}
+
 
   poll_generator:
     proposal:

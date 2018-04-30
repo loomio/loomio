@@ -30,7 +30,7 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
-    page.click('.poll-common-vote-form__radio-button--agree')
+    page.click('.poll-common-vote-form__button:first-child')
     page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
     page.click('.poll-common-vote-form__submit')
 
@@ -55,7 +55,7 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
-    page.click('.poll-common-vote-form__radio-button--agree')
+    page.click('.poll-common-vote-form__button:first-child')
     page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
     page.click('.poll-common-vote-form__submit')
     page.pause(2000)
@@ -127,7 +127,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_proposal_poll_created_as_visitor')
-    page.click('.poll-common-vote-form__radio-button--agree')
+    page.click('.poll-common-vote-form__button:first-child')
     page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
     page.fillIn('.poll-common-participant-form__name', 'Big Baloo')
     page.click('.poll-common-vote-form__submit')
@@ -140,7 +140,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_proposal_poll_created_as_logged_out')
-    page.click('.poll-common-vote-form__radio-button--agree')
+    page.click('.poll-common-vote-form__button:first-child')
     page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
     page.fillIn('.poll-common-participant-form__name', 'Big Baloo')
     page.fillIn('.poll-common-participant-form__email', 'big@baloo.ninja')
@@ -190,6 +190,16 @@ module.exports = {
     page.click('.poll-common-undecided-user__resend')
     page.expectText('.flash-root__message', 'Invitation resent')
   }
+  //
+  // 'can_verify_stance': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('polls/test_verify_vote_by_unverified_user')
+  //   page.click('.base-mailer__button')
+  //   page.click('.auth-signin-form__submit')
+  //   page.expectText('.flash-root__message', 'Signed in successfully')
+  //   page.expectNoElement('.verify-email-notice')
+  // }
 }
 
 startPollTest = (test, poll_type, optionsFn) => {

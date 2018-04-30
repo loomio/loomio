@@ -616,7 +616,6 @@ de:
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
     on_participation_description: "Wenn Du Dich an einer Diskussion beteiligst, wirst Du zukünftig automatisch über alle Aktivitäten per E-Mail informiert."
     mentioned_label: Erwähnungen
-    mentioned_description: "Wenn jemand deine Aufmerksamkeit haben möchte, wird man dich entsprechend @erwähnen. Wir empfehlen, diese Einstellung aktiviert zu lassen, damit du per E-Mail informiert wirst, wenn dich jemand erwähnt."
     update_settings: Änderungen speichern
     specific_groups: Einstellungen für einzelne Gruppen
     default_settings:

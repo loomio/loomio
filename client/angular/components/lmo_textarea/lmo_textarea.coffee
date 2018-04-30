@@ -45,5 +45,8 @@ angular.module('loomioApp').directive 'lmoTextarea', ['$compile', ($compile) ->
 
     EventBus.listen $scope, 'documentRemoved', (_, doc) ->
       $scope.model.removedDocumentIds.push doc.id
+
+    EventBus.listen $scope, 'focusTextarea', ->
+      $element.find('textarea').focus()
   ]
 ]

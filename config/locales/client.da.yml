@@ -567,7 +567,6 @@ da:
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
     mentioned_label: Mentions
-    mentioned_description: "Når nogen øsnker at få din opmærksomhed, så vil de @mention dig. Vi anbefaler at du lader dette være slået til, så at du vil modtage en email når dette sker."
     update_settings: Gem ændringer
     specific_groups: Indstillinger for specifikke grupper
     default_settings:
