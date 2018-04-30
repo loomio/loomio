@@ -49,6 +49,11 @@ module.exports = class NestedEventWindow extends BaseEventWindow
   loadedEvents: ->
     @eventsQuery().simplesort('position').data()
 
+  positionIsMissing: (pos) =>
+    pos >= @min &&
+    ((pos <= @max) || (@max == false)) &&
+    !_.contains(_.pluck(@windowedEvents(), 'position'), pos)
+
   # windowed Events
   windowedEvents: ->
     query =
