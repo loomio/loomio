@@ -40,7 +40,7 @@ class MigrateGroupService
   def self.export_to_file(record)
     File.write(
       "#{record.class.table_name}_#{record.id}_#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}.json",
-      export(record)
+      export(record).to_json
     )
   end
 
