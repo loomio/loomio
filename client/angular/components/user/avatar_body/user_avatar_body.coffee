@@ -1,7 +1,7 @@
 { is2x } = require 'shared/helpers/window.coffee'
 
 angular.module('loomioApp').directive 'userAvatarBody', ->
-  scope: {user: '=', coordinator: '=?', size: '@?'}
+  scope: {user: '=', coordinator: '=?', size: '@?', colors: '='}
   restrict: 'E'
   templateUrl: 'generated/components/user/avatar_body/user_avatar_body.html'
   replace: false
@@ -16,7 +16,7 @@ angular.module('loomioApp').directive 'userAvatarBody', ->
       if $scope.coordinator
         {'border-color': 'primary-500'}
       else
-        {}
+        $scope.colors or {}
 
     $scope.gravatarSize = ->
       size = switch $scope.size

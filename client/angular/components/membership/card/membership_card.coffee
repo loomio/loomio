@@ -2,6 +2,8 @@ Records        = require 'shared/services/records.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 RecordLoader   = require 'shared/services/record_loader.coffee'
+I18n           = require 'shared/services/i18n.coffee'
+Records        = require 'shared/services/records.coffee'
 
 angular.module('loomioApp').directive 'membershipCard', ->
   scope: {group: '=', pending: "=?"}
@@ -15,6 +17,8 @@ angular.module('loomioApp').directive 'membershipCard', ->
       $scope.initialFetch() if $scope.canView()
       $scope.canView()
 
+    $scope.plusUser = Records.users.build(avatarKind: 'mdi-plus')
+
     $scope.canView = ->
       if $scope.pending
         AbilityService.canViewPendingMemberships($scope.group)
@@ -22,10 +26,11 @@ angular.module('loomioApp').directive 'membershipCard', ->
         AbilityService.canViewMemberships($scope.group)
 
     if $scope.pending
-      $scope.cardTitle = 'membership_card.count_invitations'
+      $scope.cardTitle = 'membership_card.invitations'
       $scope.order = '-createdAt'
     else
-      $scope.cardTitle =  'membership_card.count_members'
+      $scope.cardTitle = "membership_card.#{$scope.group.targetModel().constructor.singular}_members"
+      $scope.pollType = I18n.t("poll_types.#{$scope.group.targetModel().pollType}")
       $scope.order = '-admin'
 
     $scope.recordCount = ->

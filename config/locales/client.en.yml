@@ -333,8 +333,13 @@ en:
     sign_out: 'Sign out'
 
   membership_card:
-    count_members: "{{count}} Members"
-    count_invitations: "{{count}} Invitations"
+    group_members: "Group members"
+    discussion_members: "Thread members"
+    poll_members: "{{pollType}} members"
+    invite_to_group: "Invite to group"
+    invite_to_discussion: "Invite to thread"
+    invite_to_poll: "Invite to vote"
+    invitations: "Invitations"
 
   membership_dropdown:
     make_coordinator: 'Make coordinator'
