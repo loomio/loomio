@@ -22,6 +22,7 @@ module.exports = {
     page.expectText('.flash-root__message', 'Thread started')
     page.expectElement('.announcement-form')
     page.click('.announcement-form__audience')
+    page.pause(2000)
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
@@ -35,6 +36,7 @@ module.exports = {
     page.click('.discussion-form__submit')
     page.expectElement('.announcement-form')
     page.click('.announcement-form__audience')
+    page.pause(2000)
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
@@ -61,9 +63,10 @@ module.exports = {
     page.click('.poll-common-form__submit')
     page.expectText('.flash-root__message', 'Proposal started')
     page.expectElement('.announcement-form')
-    page.expectText('.announcement-chip__content', 'Dirty Dancing Shoes')
+    page.selectFromAutocomplete('.announcement-form__invite input', 'jenn')
+    page.expectText('.announcement-chip__content', 'Jennifer Grey')
     page.click('.announcement-form__submit')
-    page.expectText('.flash-root__message', '2 notifications sent', 6000)
+    page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
   'poll_edited': (test) => {
@@ -74,7 +77,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title', 'Yo reliability, whatsup? Its me, ya boi, testing')
     page.click('.poll-common-form__submit')
     page.expectElement('.announcement-form')
-    page.expectElement('.announcement-chip__content')
+    page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
