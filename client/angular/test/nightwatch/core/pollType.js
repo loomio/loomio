@@ -29,6 +29,7 @@ startPollTest = (test, poll_type, optionsFn) => {
   page.fillIn(".poll-common-form-fields textarea", `Some details for ${poll_type}`)
   if (optionsFn) { optionsFn(page) }
   page.click(".poll-common-form__submit")
+  page.click(".announcement-form__submit")
   page.expectText('.poll-common-card__title', `A new ${poll_type}`)
   page.expectText('.poll-common-details-panel__details', `Some details for ${poll_type}`)
 }

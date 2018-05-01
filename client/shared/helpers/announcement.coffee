@@ -5,7 +5,7 @@ module.exports =
       ('formal_group'     if model.isA('discussion', 'poll', 'outcome') && model.group()),
       ('discussion_group' if model.isA('poll', 'outcome')               && model.discussion()),
       ('voters'           if model.isA('poll', 'outcome')               && model.poll().stancesCount > 0),
-      ('non_voters'       if model.isA('poll')                          && model.undecidedCount > 1)
+      ('non_voters'       if model.isA('poll')                          && model.stancesCount > 0 && model.undecidedCount > 1)
     ]
 
   audienceValuesFor: (model) ->

@@ -26,13 +26,13 @@ class Membership < ApplicationRecord
   belongs_to :invitation
   has_many :events, as: :eventable, dependent: :destroy
 
-  scope :active,        -> { not_archived.not_pending.not_suspended }
+  scope :active,        -> { not_archived.accepted.not_suspended }
   scope :suspended,     -> { where(is_suspended: true) }
   scope :not_suspended, -> { where(is_suspended: false) }
   scope :archived,      -> { where('archived_at IS NOT NULL') }
   scope :not_archived,  -> { where(archived_at: nil) }
   scope :pending,       -> { where(accepted_at: nil) }
-  scope :not_pending,   -> { where('accepted_at IS NOT NULL') }
+  scope :accepted,      -> { where('accepted_at IS NOT NULL') }
 
   scope :guest,  -> { joins(:group).where("groups.type": "GuestGroup") }
   scope :formal, -> { joins(:group).where("groups.type": "FormalGroup") }
