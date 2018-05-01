@@ -1,7 +1,7 @@
-.revision-history-modal
+.revision-history-modal.lmo-modal__narrow
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
-      %h1.lmo-h1.modal-title{translate:"revision_history_modal.comment_header"}
+      %h1.lmo-h1.modal-title{translate:"revision_history_modal.{{model.constructor.singular}}_header"}
       %material_modal_header_cancel_button{aria-hidden: "true"}
   .md-dialog-content.revision-history-modal__body{ng-if: "!loadExecuting"}
     %loading{ng-if: "loadExecuting"}
@@ -15,7 +15,7 @@
         %md-button.md-button--tiny{ng-if:"!isOldest()", ng-click:"setPreviousRevision()"}
           %i.mdi.mdi-arrow-left
         %span{ng-if:"!isOldest() && !isNewest()", replace:"true"}
-          %span {{currentIndex+1}}
+          %span {{currentIndex + 1}}
           %span \/
           %span {{model.versionsCount}}
         %span{ng-if:"isOldest()", translate:"revision_history_modal.original_text "}
@@ -24,8 +24,5 @@
           %i.mdi.mdi-arrow-right
         %md-button.md-button--tiny{ng-if:"!isNewest()", ng-click:"setLatestRevision()"}
           %i.mdi.mdi-arrow-collapse-right
-    .revision_history_modal__content-block{ng-repeat:"(name, section) in version.changes"}
-      %h3.lmo-h3 {{name}}
-      %text_diff{ng-if: "!isOldest()", before: "section[0]", after: "section[1]"}
-      .lmo-text-area{ng-if:"isOldest()"}
-        {{version.changes.body[1]}}
+    %revision_history_content{ng-if:"version", model: "model", version:"version"}
+    %loading{ng-if:"!version"}

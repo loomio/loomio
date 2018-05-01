@@ -459,13 +459,17 @@ en:
 
   revision_history_modal:
     aria_label: Revision history
-    thread_header: Thread context revision history
-    comment_header: Comment edit revision history
+    discussion_header: Discussion revision history
+    comment_header: Comment revision history
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     posted: Posted
-    original_text: Original Text
-    current_revision: Latest Revision
+    original_text: Original
+    current_revision: Latest
+    discussion_title: Title
+    discussion_description: Description
+    private_changed: "Changed privacy to {{private}}"
+    group_id_changed: "Moved to {{name}}"
 
   reactions_input:
     add_your_reaction: Add your reaction

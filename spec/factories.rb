@@ -95,6 +95,12 @@ FactoryBot.define do
     kind :new_comment
   end
 
+  factory :version, class: PaperTrail::Version do
+      association :item, factory: :discussion
+      event :updated
+      object_changes({})
+  end
+
   factory :discussion do
     association :author, :factory => :user
     association :group, :factory => :formal_group

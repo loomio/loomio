@@ -1,7 +1,22 @@
 class API::VersionsController < API::RestfulController
   def show
     versions = model.versions
-    self.resource = versions[params[:index].to_i|| versions.count-1]
+    index = params[:index].to_i
+
+    versions[index].object_changes = versions.first(index+1).reduce({}) do |changes, version|
+      # for each field, nil values become the latest value we changed to
+      keys = model.class.always_versioned_fields;
+
+      always_changes = keys.map do |k|
+        existing = changes.dig(k, 1)
+        [k, version.object_changes[k.to_s] || [existing, existing]]
+      end.to_h
+
+      version.object_changes.merge always_changes
+    end
+    
+    self.resource = versions[index]
+
     respond_with_resource
   end
 

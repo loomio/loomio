@@ -1,0 +1,10 @@
+  .revision_history_content{ng-switch:"model.constructor.singular"}
+    %div{ng-switch-when:"comment"}
+      %text_diff{before: "version.changes.body[0]", after: "version.changes.body[1]"}
+    %div{ng-switch-when:"discussion"}
+      %h3.lmo-h3{translate:"revision_history_modal.discussion_title"}
+      %text_diff{before: "version.changes.title[0]", after: "version.changes.title[1]"}
+      %h3.lmo-h3{translate:"revision_history_modal.discussion_description"}
+      %text_diff{before: "version.changes.description[0]", after: "version.changes.description[1]"}
+      %p{ng-if:"version.changes.private", translate:"revision_history_modal.private_changed", translate-values:"noticeValues('private')"}
+      %p{ng-if:"version.changes.group_id", translate:"revision_history_modal.group_id_changed", translate-values:"noticeValues('group_id')"}

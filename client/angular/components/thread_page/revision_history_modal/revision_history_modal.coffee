@@ -5,17 +5,19 @@ angular.module('loomioApp').factory 'RevisionHistoryModal', ->
   controller:['$scope', 'model', ($scope,  model) ->
     $scope.model = model
     $scope.type = model.constructor.singular
-    $scope.currentIndex = model.versionsCount - 1
+    $scope.currentIndex = latestIndex = model.versionsCount - 1
 
     $scope.getVersion = () ->
       Records.versions.fetchVersion($scope.model, $scope.currentIndex).then (data) ->
         $scope.version = Records.versions.find(data.versions[0].id)
+        if $scope.version.changes.group_id
+          Records.groups.findOrFetchById($scope.version.changes.group_id[1])
 
     $scope.isOldest = ->
       $scope.currentIndex == 0;
 
     $scope.isNewest = ->
-      $scope.currentIndex == model.versionsCount - 1
+      $scope.currentIndex == latestIndex
 
     $scope.setNextRevision = ->
       if !$scope.isNewest()
@@ -32,11 +34,9 @@ angular.module('loomioApp').factory 'RevisionHistoryModal', ->
       $scope.getVersion()
 
     $scope.setLatestRevision = ->
-      $scope.currentIndex = model.versionsCount - 1
+      $scope.currentIndex = latestIndex
       $scope.getVersion()
 
     $scope.initScope = do ->
-      $scope.title =  _.capitalize $scope.type + " Revision History"
-      $scope.currentIndex = 0;
       $scope.setLatestRevision();
-  ]
+    ]
