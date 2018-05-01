@@ -571,12 +571,6 @@ class Dev::MainController < Dev::BaseController
     redirect_to discussion_url(create_discussion)
   end
 
-  def setup_announced_discussion
-    sign_in patrick
-    FactoryBot.create :announcement, event: create_discussion.created_event
-    redirect_to discussion_url(create_discussion)
-  end
-
   def setup_open_and_closed_discussions
     create_discussion
     create_closed_discussion

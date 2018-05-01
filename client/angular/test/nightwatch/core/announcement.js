@@ -2,6 +2,16 @@ require('coffeescript/register')
 pageHelper = require('../helpers/page_helper.coffee')
 
 module.exports = {
+  'invite_to_group': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_group')
+    page.click('.membership-card__invite')
+    page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
+    page.expectText('.announcement-chip__content', 'test@example.com')
+    page.click('.announcement-form__submit')
+    page.expectText('.flash-root__message', '1 notifications sent', 6000)
+  },
+
   'new_discussion': (test) => {
     page = pageHelper(test)
 
@@ -11,7 +21,7 @@ module.exports = {
     page.click('.discussion-form__submit')
     page.expectText('.flash-root__message', 'Thread started')
     page.expectElement('.announcement-form')
-    page.expectText('.announcement-chip__content', 'Dirty Dancing Shoes')
+    page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
@@ -19,33 +29,25 @@ module.exports = {
   'discussion_edited': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_announced_discussion')
+    page.loadPath('setup_discussion')
     page.click('.action-dock__button--edit_thread')
     page.fillIn('.discussion-form__title-input', 'Yo reliability, whatsup? Its me, ya boi, testing')
     page.click('.discussion-form__submit')
     page.expectElement('.announcement-form')
-    page.expectText('.announcement-chip__content', 'Dirty Dancing Shoes')
+    page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
-  },
-
-  'discussion_edited_without_event': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_announced_discussion')
-    page.click('.action-dock__button--edit_thread')
-    page.click('.discussion-form__submit')
-    page.expectNoElement('.announcement-form')
   },
 
   'announcement_created': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_announced_discussion')
-    page.click('.action-dock__button--announce_thread')
+    page.loadPath('setup_discussion')
+    page.click('.membership-card__invite')
     page.expectElement('.announcement-form')
-    page.selectFromAutocomplete('.md-chip-input-container input', 'jenn')
+    page.selectFromAutocomplete('.announcement-form__invite input', 'jenn')
     page.expectText('.announcement-chip__content', 'Jennifer Grey')
+    page.pause(2000)
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
@@ -86,7 +88,7 @@ module.exports = {
     page.click('.poll-common-outcome-form__submit')
     page.expectText('.flash-root__message', 'Outcome created')
     page.expectElement('.announcement-form')
-    page.selectFromAutocomplete('.md-chip-input-container input', 'test@example.com')
+    page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-form__submit')
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
