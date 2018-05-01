@@ -30,7 +30,6 @@ angular.module('loomioApp').directive 'membershipCard', ->
       $scope.order = '-createdAt'
     else
       $scope.cardTitle = "membership_card.#{$scope.group.targetModel().constructor.singular}_members"
-      $scope.pollType = I18n.t("poll_types.#{$scope.group.targetModel().pollType}")
       $scope.order = '-admin'
 
     $scope.recordCount = ->

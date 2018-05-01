@@ -15,8 +15,7 @@ angular.module('loomioApp').directive 'pollCommonOutcomePanel', ->
       canPerform: -> AbilityService.canReactToPoll($scope.poll)
     ,
       name: 'announce_outcome'
-      icon: 'mdi-account'
-      hasPlus: true
+      icon: 'mdi-account-plus'
       active:     -> $scope.poll.outcome().announcementsCount == 0
       canPerform: -> AbilityService.canAdministerPoll($scope.poll)
       perform:    -> ModalService.open 'AnnouncementModal', announcement: ->

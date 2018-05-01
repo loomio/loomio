@@ -5,6 +5,7 @@ HasDrafts        = require 'shared/mixins/has_drafts.coffee'
 HasDocuments     = require 'shared/mixins/has_documents.coffee'
 HasTranslations  = require 'shared/mixins/has_translations.coffee'
 HasGuestGroup    = require 'shared/mixins/has_guest_group.coffee'
+I18n             = require 'shared/services/i18n.coffee'
 
 module.exports = class PollModel extends BaseModel
   @singular: 'poll'
@@ -20,6 +21,9 @@ module.exports = class PollModel extends BaseModel
     HasMentions.apply @, 'details'
     HasTranslations.apply @
     HasGuestGroup.apply @
+
+  translatedPollType: ->
+    I18n.t("poll_types.#{@pollType}")
 
   draftParent: ->
     @discussion() or @author()

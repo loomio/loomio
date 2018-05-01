@@ -486,7 +486,7 @@ en:
     announce_thread_active: (No one has been invited yet)
     translate_thread: Translate context
     edit_poll: Edit poll
-    announce_poll: Invite people to participate in the decision
+    announce_poll: Invite people to vote
     announce_poll_active: (No one has been invited yet)
     translate_poll: Translate poll
     edit_stance: Change your vote
@@ -1259,6 +1259,7 @@ en:
     message: Message
     results: Results
     responses: Responses
+    close_poll_type: Close {{pollType}}
     totals: Totals
     vote: Vote
     votes: Votes
