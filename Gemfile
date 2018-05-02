@@ -54,6 +54,7 @@ gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'skylight'
+gem 'google-cloud-translate'
 
 group :development, :test do
   gem 'byebug'
