@@ -16,12 +16,12 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
-    page.expectText('.membership-card', '3 Members')
+    page.expectCount('.membership-card__membership', 3)
     page.click('.membership-requests-card__link')
     page.click('.membership-requests-page__approve')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--group')
-    page.expectText('.membership-card', '4 Members')
+    page.expectCount('.membership-card__membership', 4)
   },
 
   'displays the correct flash message': (test) => {
