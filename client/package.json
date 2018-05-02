@@ -36,7 +36,7 @@
     "angular-elastic": "latest",
     "angular-gravatar": "~0.4.2",
     "angular-inview": "2.1.0",
-    "angular-material": "1.1.7",
+    "angular-material": "1.1.9",
     "angular-messages": "^1.5.5",
     "angular-mocks": "^1.5.5",
     "angular-recaptcha": "4.1.0",

@@ -1,4 +1,5 @@
-{ submitForm } = require 'shared/helpers/form.coffee'
+{ submitForm }    = require 'shared/helpers/form.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
 
 angular.module('loomioApp').directive 'announcementFormActions', ->
   scope: {announcement: '='}
@@ -13,4 +14,5 @@ angular.module('loomioApp').directive 'announcementFormActions', ->
       flashSuccess: 'announcement.flash.success'
       flashOptions: ->
         count: $scope.announcement.membershipsCount
+    submitOnEnter($scope, anyInput: true)
   ]
