@@ -13,7 +13,8 @@ $controller = ($rootScope, $routeParams) ->
       @poll = poll
 
       EventBus.broadcast $rootScope, 'currentComponent',
-        group: @poll.group()
+        group: poll.group()
+        poll:  poll
         title: poll.title
         page: 'pollPage'
         skipScroll: true

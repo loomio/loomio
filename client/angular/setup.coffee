@@ -60,7 +60,9 @@ setupAngularPaste = ($rootScope) ->
 
 setupAngularHotkeys = ($rootScope) ->
   registerHotkeys $rootScope,
-    pressedI: -> ModalService.open 'AnnouncementModal',    announcement: -> Records.announcements.buildFromModel(AppConfig.currentGroup) if AppConfig.currentGroup
+    pressedI: ->
+      return unless currentModel = AppConfig.currentPoll || AppConfig.currentDiscussion || AppConfig.currentGroup
+      ModalService.open 'AnnouncementModal', announcement: -> Records.announcements.buildFromModel(currentModel)
     pressedG: -> ModalService.open 'GroupModal',           group:        -> Records.groups.build()
     pressedT: -> ModalService.open 'DiscussionStartModal', discussion:   -> Records.discussions.build(groupId: (AppConfig.currentGroup or {}).id)
     pressedP: -> ModalService.open 'PollCommonStartModal', poll:         -> Records.polls.build()

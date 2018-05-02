@@ -16,7 +16,10 @@ module.exports =
     title = _.trunc options.title or I18n.t(options.titleKey), 300
     document.querySelector('title').text = _.compact([title, AppConfig.theme.site_name]).join(' | ')
 
-    AppConfig.currentGroup = options.group
+    AppConfig.currentGroup      = options.group
+    AppConfig.currentDiscussion = options.discussion
+    AppConfig.currentPoll       = options.poll
+
     IntercomService.updateWithGroup(AppConfig.currentGroup)
     ModalService.forceSignIn() if shouldForceSignIn(options)
 
