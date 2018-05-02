@@ -7,11 +7,7 @@
     text-decoration: none !important;
   }
 }
-.user-avatar--coordinator {
-  .user-avatar__img {
-    border: 2px solid $border-color;
-  }
-}
+
 .user-avatar{
   box-sizing: border-box;
   text-align: center;
@@ -22,6 +18,7 @@
   width: 100%;
   overflow: hidden;
   border-radius: 50%;
+  border: 1px solid $border-color;
 }
 
 .user-avatar__initials {
@@ -30,9 +27,9 @@
   }
   overflow: hidden;
   border-radius: 50%;
-  border: 1px solid $border-color;
   color: $primary-text-color;
   text-decoration: none !important;
+  border: 1px solid $border-color;
 }
 
 .user-avatar__initials--small{

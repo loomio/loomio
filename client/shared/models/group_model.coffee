@@ -51,6 +51,9 @@ module.exports = class GroupModel extends BaseModel
   activeMemberships: ->
     _.filter @memberships(), (m) -> m.acceptedAt
 
+  activeMembershipsCount: ->
+    @membershipsCount - @pendingMembershipsCount
+
   pendingMemberships: ->
     _.filter @memberships(), (m) -> !m.acceptedAt
 
