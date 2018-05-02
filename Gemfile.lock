@@ -122,7 +122,7 @@ GEM
       json (~> 1.8.0)
       nokogiri (>= 1.6.0, < 1.9.0)
       savon (~> 2.10.0)
-    bootsnap (1.2.1)
+    bootsnap (1.3.0)
       msgpack (~> 1.0)
     browser (2.3.0)
     builder (3.2.3)
@@ -130,7 +130,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11.0)
     byebug (10.0.2)
-    cancancan (2.1.3)
+    cancancan (2.1.4)
     capybara (2.18.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -189,10 +189,10 @@ GEM
     doorkeeper (4.2.6)
       railties (>= 4.2)
     doorkeeper-i18n (4.0.0)
-    dotenv (2.2.1)
-    dotenv-rails (2.2.1)
-      dotenv (= 2.2.1)
-      railties (>= 3.2, < 5.2)
+    dotenv (2.2.2)
+    dotenv-rails (2.2.2)
+      dotenv (= 2.2.2)
+      railties (>= 3.2, < 6.0)
     errbase (0.1.0)
     erubi (1.7.1)
     erubis (2.7.0)
@@ -247,9 +247,9 @@ GEM
       haml (>= 4.0.6, < 6.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
-    has_scope (0.7.1)
-      actionpack (>= 4.1, < 5.2)
-      activesupport (>= 4.1, < 5.2)
+    has_scope (0.7.2)
+      actionpack (>= 4.1)
+      activesupport (>= 4.1)
     has_secure_token (1.0.0)
       activerecord (>= 3.0)
     hashdiff (0.3.7)
@@ -349,13 +349,13 @@ GEM
       actionmailer (>= 3, < 6)
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (3.0.2)
-    puma (3.11.3)
+    puma (3.11.4)
     rack (2.0.4)
     rack-attack (5.2.0)
       rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
-    rack_session_access (0.1.1)
+    rack_session_access (0.2.0)
       builder (>= 2.0.0)
       rack (>= 1.0.0)
     rails (5.1.6)
@@ -493,7 +493,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    skylight (1.6.0)
+    skylight (1.6.1)
       activesupport (>= 3.0.0)
     snorlax (0.1.6)
       rails (> 4.1)
@@ -517,7 +517,7 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.8)
+    uglifier (4.1.9)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -601,7 +601,7 @@ DEPENDENCIES
   puma
   rack-attack
   rack_session_access
-  rails (~> 5.1.5)
+  rails (~> 5.1.6)
   rails-controller-testing
   rails_12factor
   rails_serve_static_assets
@@ -631,7 +631,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.5.0p0
+   ruby 2.5.1p57
 
 BUNDLED WITH
    1.16.1
