@@ -140,34 +140,51 @@ describe Poll do
   end
 
   describe 'undecided' do
-    let(:poll) { create :poll, group: create(:formal_group) }
-    let(:user) { create :user }
+    let!(:group) { create :formal_group }
+    let!(:poll) { create :poll, group: group, discussion: discussion }
+    let!(:discussion) { create :discussion, group: group }
+    let!(:user) { create :user }
+
+    before do
+      poll.update_undecided_count
+    end
 
     it 'includes members of the guest group' do
       expect {
         poll.guest_group.add_member! user
-      }.to change { poll.undecided.count }.by(1)
+      }.to change { poll.reload.undecided_count }.by(1)
     end
 
     it 'includes members of the formal group' do
       expect {
         poll.group.add_member! user
-      }.to change { poll.undecided.count }.by(1)
+      }.to change { poll.reload.undecided_count }.by(1)
+    end
+
+    it 'includes members of the discussion group' do
+      expect {
+        poll.discussion.guest_group.add_member! user
+      }.to change { poll.reload.undecided_count }.by(1)
     end
 
     it 'decrements when removing from the guest group' do
       membership = poll.guest_group.add_member! user
-      expect { membership.destroy }.to change { poll.undecided.count }.by(-1)
+      expect { membership.destroy }.to change { poll.reload.undecided_count }.by(-1)
+    end
+
+    it 'decrements when removing from the discussion group' do
+      membership = poll.discussion.guest_group.add_member! user
+      expect { membership.destroy }.to change { poll.reload.undecided_count }.by(-1)
     end
 
     it 'decrements when removing from the formal group' do
       membership = poll.group.add_member! user
-      expect { membership.destroy }.to change { poll.undecided.count }.by(-1)
+      expect { membership.destroy }.to change { poll.reload.undecided_count }.by(-1)
     end
 
     it 'decrements when a vote is created' do
       poll.group.add_member! user
-      expect { create(:stance, poll: poll, participant: user) }.to change { poll.undecided.count }.by(-1)
+      expect { create(:stance, poll: poll, participant: user) }.to change { poll.reload.undecided_count }.by(-1)
     end
   end
 

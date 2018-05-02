@@ -375,7 +375,7 @@ describe API::PollsController do
       expect(poll.reload.active?).to eq true
       expect(poll.closing_at).to be_within(1.second).of(poll_params[:closing_at])
       expect(poll.poll_did_not_votes).to be_empty
-      expect(poll.undecided_user_count).to eq 3
+      expect(poll.undecided_count).to eq 3
     end
 
     it 'cannot reopen an active poll' do

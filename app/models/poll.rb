@@ -40,9 +40,6 @@ class Poll < ApplicationRecord
   belongs_to :discussion
   belongs_to :group, class_name: "FormalGroup"
 
-  update_counter_cache :group, :polls_count
-  update_counter_cache :group, :closed_polls_count
-  update_counter_cache :discussion, :closed_polls_count
 
   after_update :remove_poll_options
 
@@ -60,31 +57,6 @@ class Poll < ApplicationRecord
   has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
   has_many :documents, as: :model, dependent: :destroy
-
-  has_paper_trail only: [:title, :details, :closing_at, :group_id]
-
-  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_user_count) do |poll|
-    if poll.active?
-      poll.undecided.count
-    else
-      poll.poll_did_not_votes.count
-    end
-  end
-
-  delegate :locale, to: :author
-
-  def groups
-    [group, discussion&.guest_group, guest_group].compact
-  end
-
-  def undecided_count
-    undecided_user_count + guest_group.pending_memberships_count
-  end
-
-  def time_zone
-    custom_fields.fetch('time_zone', author.time_zone)
-  end
 
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
@@ -124,6 +96,33 @@ class Poll < ApplicationRecord
   alias_method :user, :author
   alias_method :draft_parent, :discussion
 
+  has_paper_trail only: [:title, :details, :closing_at, :group_id]
+
+  update_counter_cache :group, :polls_count
+  update_counter_cache :group, :closed_polls_count
+  update_counter_cache :discussion, :closed_polls_count
+  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
+  define_counter_cache(:undecided_count) { |poll| poll.undecided.count }
+
+  delegate :locale, to: :author
+  delegate :guest_group, to: :discussion, prefix: true, allow_nil: true
+
+  def groups
+    [group, discussion&.guest_group, guest_group].compact
+  end
+
+  def undecided
+    if active?
+      reload.accepted_members.where.not(id: participants)
+    else
+      poll_did_not_voters
+    end
+  end
+
+  def time_zone
+    custom_fields.fetch('time_zone', author.time_zone)
+  end
+
   def parent_event
     if discussion
       discussion.created_event
@@ -149,10 +148,6 @@ class Poll < ApplicationRecord
 
   def group_members
     super.joins(:groups).where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
-  end
-
-  def undecided
-    reload.members.where.not(id: participants)
   end
 
   def update_stance_data
@@ -199,7 +194,6 @@ class Poll < ApplicationRecord
         yes:      option.stance_choices.latest.where(score: 2).count
       }]
     end
-
   end
 
   def ordered_poll_options

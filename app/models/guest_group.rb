@@ -1,9 +1,5 @@
 class GuestGroup < Group
-
-  # pass this through to poll
-  def update_undecided_user_count
-    Poll.find_by(guest_group_id: id)&.update_undecided_user_count
-  end
+  delegate :update_undecided_count, to: :target_model, allow_nil: true
 
   def group_privacy=(term)
     raise 'guest groups cant be open' if term == 'open'

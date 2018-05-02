@@ -3,7 +3,6 @@ module HasGuestGroup
   included do
     belongs_to :guest_group, class_name: "GuestGroup"
     has_many :guests, through: :guest_group, source: :members
-    has_many :guest_invitations, through: :guest_group, source: :invitations
     after_save :update_anyone_can_participate, if: :update_anyone_can_participate_value
     attr_accessor :update_anyone_can_participate_value
   end
@@ -25,11 +24,11 @@ module HasGuestGroup
   end
 
   def members
-    User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
+    User.distinct.joins(:memberships).where("memberships.group_id": groups.map(&:id))
   end
 
-  def invitation_intent
-    :"join_#{self.class.to_s.downcase}"
+  def accepted_members
+    members.where('memberships.accepted_at IS NOT NULL')
   end
 
   def anyone_can_participate
@@ -48,5 +47,4 @@ module HasGuestGroup
   def update_anyone_can_participate(value = update_anyone_can_participate_value)
     guest_group.update(membership_granted_upon: value)
   end
-
 end

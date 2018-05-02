@@ -15,7 +15,7 @@ class Discussion < ApplicationRecord
   include HasMailer
   include HasCreatedEvent
   extend  NoSpam
-  
+
   no_spam_for :title, :description
 
   scope :archived, -> { where('archived_at is not null') }
@@ -94,8 +94,8 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
-  def groups
-    Array(group)
+  def update_undecided_count
+    polls.active.each(&:update_undecided_count)
   end
 
   def created_event_kind

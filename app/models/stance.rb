@@ -22,7 +22,7 @@ class Stance < ApplicationRecord
   alias :author :participant
 
   update_counter_cache :poll, :stances_count
-  update_counter_cache :poll, :undecided_user_count
+  update_counter_cache :poll, :undecided_count
 
   scope :latest, -> { where(latest: true) }
   scope :newest_first,   -> { order(created_at: :desc) }

@@ -78,7 +78,8 @@ class API::MembershipsController < API::RestfulController
   end
 
   def undecided
-    instantiate_collection { |collection| collection.undecided_for(load_and_authorize(:poll)) }
+    poll = load_and_authorize(:poll)
+    instantiate_collection { |collection| collection.where(group: poll.groups, user: poll.undecided) }
     respond_with_collection
   end
 

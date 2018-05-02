@@ -91,8 +91,8 @@ class FormalGroup < Group
 
   alias_method :draft_parent, :parent
 
-  def update_undecided_user_count
-    # NOOP: only guest groups have an invitation target
+  def update_undecided_count
+    polls.active.each(&:update_undecided_count)
   end
 
   def logo_or_parent_logo

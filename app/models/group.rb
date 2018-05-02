@@ -39,9 +39,9 @@ class Group < ApplicationRecord
   define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
 
   def target_model
-    Discussion.find_by(guest_group_id: group_id) ||
-    Poll.find_by(guest_group_id: group_id) ||
-    group
+    Discussion.find_by(guest_group_id: id) ||
+    Poll.find_by(guest_group_id: id) ||
+    (group if is_formal_group?)
   end
 
   def groups

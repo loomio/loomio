@@ -30,10 +30,6 @@ class Outcome < ApplicationRecord
     poll.created_event
   end
 
-  def invitation_intent
-    :join_outcome
-  end
-
   def attendee_emails
      self.stances.joins(:participant).joins(:stance_choices)
     .where("stance_choices.poll_option_id": self.poll_option_id)

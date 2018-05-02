@@ -70,13 +70,6 @@ module.exports = class PollModel extends BaseModel
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
-  announcementSize: (action) ->
-    return @group().announcementRecipientsCount if @group() and @isNew()
-    switch action or @notifyAction()
-      when 'publish' then @stancesCount + @undecidedUserCount
-      when 'edit'    then @stancesCount
-      else                0
-
   memberIds: ->
     _.uniq if @isActive()
       @formalMemberIds().concat @guestIds()
@@ -95,7 +88,10 @@ module.exports = class PollModel extends BaseModel
 
   # who hasn't voted?
   undecided: ->
-    _.difference(@members(), @participants())
+    if @isActive()
+      _.difference(@members(), @participants())
+    else
+      _.invoke @pollDidNotVotes(), 'user'
 
   membersCount: ->
     # NB: this won't work for people who vote, then leave the group.

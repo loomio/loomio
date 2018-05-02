@@ -70,7 +70,7 @@ describe API::CommentsController do
           discussion.guest_group.add_member! user
 
           post :create, params: { comment: comment_params }
-          expect(response).to be_success
+          expect(response.status).to eq 200
           expect(Comment.where(body: comment_params[:body],
                                user_id: user.id)).to exist
         end

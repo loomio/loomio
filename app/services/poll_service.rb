@@ -26,7 +26,7 @@ class PollService
 
     poll.save!
     poll.poll_did_not_votes.delete_all
-    poll.update_undecided_user_count
+    poll.update_undecided_count
 
     EventBus.broadcast('poll_reopen', poll, actor)
     Events::PollReopened.publish!(poll, actor)
@@ -50,11 +50,10 @@ class PollService
   end
 
   def self.do_closing_work(poll:)
-    poll.update(closed_at: Time.now) unless poll.closed_at.present?
     poll.poll_did_not_votes.delete_all
-    non_voters = poll.members - poll.participants
-    poll.poll_did_not_votes.import non_voters.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
-    poll.update_undecided_user_count
+    poll.poll_did_not_votes.import poll.undecided.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
+    poll.update(closed_at: Time.now) unless poll.closed_at.present?
+    poll.update_undecided_count
   end
 
   def self.update(poll:, params:, actor:)
