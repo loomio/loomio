@@ -127,7 +127,10 @@ textarea .lmo-textarea {
     padding: 10px;
     background: $modal-background-color;
   }
-  blockquote{ font-size: inherit; }
+  blockquote{
+    font-style: italic;
+    font-size: inherit;
+  }
   table {
     table-layout: fixed;
     width: 100%;
