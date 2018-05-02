@@ -29,7 +29,6 @@ gem 'browser', '~> 2.3.0'
 gem 'fog-aws'
 gem "sentry-raven"
 gem 'sequenced', '~> 2.0.0'
-gem 'bing_translator', '~> 5.2.0'
 gem 'http_accept_language'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'uglifier'
