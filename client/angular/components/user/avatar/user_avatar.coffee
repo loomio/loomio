@@ -4,7 +4,10 @@ angular.module('loomioApp').directive 'userAvatar', ->
   templateUrl: 'generated/components/user/avatar/user_avatar.html'
   replace: true
   controller: ['$scope', ($scope) ->
-    unless _.contains(['small', 'medium', 'large', 'featured'], $scope.size)
-      $scope.size = 'medium'
+    $scope.mdColors = ->
+      $scope.colors = $scope.colors or {}
+      $scope.colors['border-color'] = 'primary-500' if $scope.coordinator
+      $scope.colors
+
     return
   ]

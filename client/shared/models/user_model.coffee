@@ -110,5 +110,9 @@ module.exports = class UserModel extends BaseModel
   hasProfilePhoto: ->
     @avatarKind != 'initials'
 
+  uploadedAvatarUrl: (size = 'medium') ->
+    return @avatarUrl if typeof @avatarUrl is 'string'
+    @avatarUrl[size]
+
   belongsToPayingGroup: ->
     _.any @groups(), (group) -> group.subscriptionKind == 'paid'
