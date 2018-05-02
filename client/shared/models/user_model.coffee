@@ -35,6 +35,9 @@ module.exports = class UserModel extends BaseModel
     groups = _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
     _.sortBy groups, 'fullName'
 
+  formalGroups: ->
+    _.filter @groups(), (group) -> group.type == "FormalGroup"
+
   adminGroups: ->
     _.invoke @adminMemberships(), 'group'
 

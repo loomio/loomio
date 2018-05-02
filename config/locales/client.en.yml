@@ -864,6 +864,7 @@ en:
     location_field: 'Location: {{value}}'
     locale_field: 'Language: {{value}}'
     online_field: 'Online: {{value}}'
+    invited: 'Invited {{value}}'
 
   contact_request_form:
     modal_title: "Email {{name}}"

@@ -20,6 +20,7 @@
       %span {{membership.user().name || membership.user().email }}
       %outlet{name: "after-membership-user", model: "membership"}
       .membership-card__last-seen.md-caption{translate: "user_page.online_field", translate-value-value: "{{::membership.user().lastSeenAt | timeFromNowInWords}}", ng-if: "::membership.user().lastSeenAt"}
+      .membership-card__last-seen.md-caption{translate: "user_page.invited", translate-value-value: "{{::membership.user().createdAt | timeFromNowInWords}}", ng-if: "!membership.user().acceptedAt"}
     %membership_dropdown{membership: "membership"}
 
   .lmo-md-actions{ng-if: "showLoadMore()"}
