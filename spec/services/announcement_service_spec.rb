@@ -73,7 +73,7 @@ describe AnnouncementService do
         expect { AnnouncementService.create(model: group, actor: user, params: {
           kind: :group_announced,
           recipients: { emails: ['test@test.com'] }
-        }) }.to_not change { poll.reload.undecided_count }
+        }) }.to change { poll.reload.undecided_count }.by(1)
       end
 
       it 'does not change the undecided count of a closed poll' do
