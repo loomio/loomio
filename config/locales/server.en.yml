@@ -17,6 +17,7 @@ en:
       spoofed_media_type: The contents of that file don't match its filename
 
   user:
+    placeholder_name: "Invited user (%{hostname})"
     error:
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
       bad_login: "Unable to log you in. Please try again."
