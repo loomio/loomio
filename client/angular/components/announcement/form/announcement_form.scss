@@ -1,14 +1,9 @@
-$chip-height: 40px;
-
-.announcement-form {
-  .md-chip-input-container, md-chip { float: none; }
-}
-
 .announcement-form__checkbox {
   margin: 16px 0;
 }
 
-.announcement-form__list-item {
+.announcement-form__list-item,
+.announcement-form__invited {
   padding: 0 !important;
 }
 
@@ -16,14 +11,11 @@ $chip-height: 40px;
   margin-bottom: 8px;
 }
 
-.announcement-form__invited {
-  padding: 0;
+.announcement-form__invite {
+  margin-bottom: 16px;
 }
 
-.announcement-form__shareable-link {
-  margin: 8px 0;
-}
-
+.announcement-form__shareable-link,
 .announcement-form__help {
   margin: 8px 0;
 }
@@ -33,13 +25,5 @@ $chip-height: 40px;
   min-height: 42px;
   margin-bottom: 8px;
   color: $primary-text-color;
-}
-.announcement-form__audience i {
-  margin-right: 8px;
-  opacity: 0.8;
-}
-
-.announcement-form__label {
-  font-size: 11px;
-  color: rgba(0, 0, 0, 0.38) !important;
+  i { opacity: 0.8; }
 }
