@@ -376,7 +376,7 @@ en:
       subject:
         poll_created: '%{actor} started a proposal: %{title}'
         poll_edited: '%{actor} edited the proposal: %{title}'
-        poll_announced: '%{actor} invites you to vote on: %{title}'
+        poll_announced: '%{actor} invited you to vote: %{title}'
         poll_closing_soon: 'Proposal closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your proposal closes in 24 hours: %{title}'
         poll_expired: "Proposal closed: %{title}"
@@ -390,7 +390,7 @@ en:
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
         poll_edited: '<strong>%{actor}</strong> edited the proposal'
-        poll_announced: '<strong>%{actor}</strong> shared the proposal'
+        poll_announced: '<strong>%{actor}</strong> invited you to vote'
         poll_closing_soon: '<strong>%{actor}</strong>''s proposal is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your proposal is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> proposal has closed: %{title}"
@@ -407,7 +407,7 @@ en:
       subject:
         poll_created: '%{actor} started a poll: %{title}'
         poll_edited: '%{actor} edited the poll: %{title}'
-        poll_announced: '%{actor} shared the poll: %{title}'
+        poll_announced: '%{actor} invited you to vote: %{title}'
         poll_closing_soon: 'Poll closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
         poll_expired: "Poll results: %{title}"
@@ -423,7 +423,7 @@ en:
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
         poll_edited: '<strong>%{actor}</strong> edited the poll'
-        poll_announced: '<strong>%{actor}</strong> shared the poll'
+        poll_announced: '<strong>%{actor}</strong> invited you to vote'
         poll_closing_soon: '<strong>%{actor}</strong>''s poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> poll closed: %{title}"
@@ -442,7 +442,7 @@ en:
       subject:
         poll_created: '%{actor} is checking: %{title}'
         poll_edited: '%{actor} edited the check: %{title}'
-        poll_announced: '%{actor} shared the check: %{title}'
+        poll_announced: '%{actor} invited you to participate: %{title}'
         poll_closing_soon: '24 hours left to check: %{title}'
         poll_closing_soon_author: 'Your check closes in 24 hours: %{title}'
         poll_expired: "Check closed: %{title}"
@@ -456,7 +456,7 @@ en:
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
         poll_edited: '<strong>%{actor}</strong> edited the check'
-        poll_announced: '<strong>%{actor}</strong> shared the check'
+        poll_announced: '<strong>%{actor}</strong> invited you to participate'
         poll_closing_soon: '<strong>%{actor}</strong>''s check is closing in 24 hours.'
         poll_closing_soon_author: 'Your check is closing in 24 hours - now is a great time to remind people about it or extend the closing time if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> check closed: %{title}"
@@ -473,7 +473,7 @@ en:
       subject:
         poll_created: '%{actor} started a dot vote: %{title}'
         poll_edited: '%{actor} edited the dot vote: %{title}'
-        poll_announced: '%{actor} shared the dot vote: %{title}'
+        poll_announced: '%{actor} invited you to vote: %{title}'
         poll_closing_soon: 'Dot vote closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your dot vote closes in 24 hours: %{title}'
         poll_expired: "Dot vote results: %{title}"
@@ -489,7 +489,7 @@ en:
       header:
         poll_created: '<strong>%{actor}</strong> started a dot vote'
         poll_edited: '<strong>%{actor}</strong> edited the dot vote'
-        poll_announced: '<strong>%{actor}</strong> edited the dot vote'
+        poll_announced: '<strong>%{actor}</strong> invited you to vote'
         poll_closing_soon: '<strong>%{actor}</strong>''s dot vote is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your dot vote is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
         poll_expired: "Results for <strong>%{actor}'s</strong> dot vote: %{title}"
@@ -508,7 +508,7 @@ en:
       subject:
         poll_created: '%{actor} started a time poll: %{title}'
         poll_edited: '%{actor} edited the time poll: %{title}'
-        poll_announced: '%{actor} shared the time poll: %{title}'
+        poll_announced: '%{actor} invited you to vote: %{title}'
         poll_closing_soon: 'Time poll closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your time poll closes in 24 hours: %{title}'
         poll_expired: "Time poll results: %{title}"
@@ -525,7 +525,7 @@ en:
       header:
         poll_created: '<strong>%{actor}</strong> started a time poll'
         poll_edited: '<strong>%{actor}</strong> edited the time poll'
-        poll_announced: '<strong>%{actor}</strong> shared the time poll'
+        poll_announced: '<strong>%{actor}</strong> invited you to vote'
         poll_closing_soon: '<strong>%{actor}</strong>''s time poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your time poll is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> time poll has closed"
@@ -545,6 +545,7 @@ en:
       subject:
         poll_created: '%{actor} started a ranked choice: %{title}'
         poll_edited: '%{actor} edited the ranked choice: %{title}'
+        poll_announced: '%{actor} invited you to vote: %{title}'
         poll_closing_soon: 'Ranked choice closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your ranked choice closes in 24 hours: %{title}'
         poll_expired: "Ranked choice results: %{title}"
@@ -560,7 +561,7 @@ en:
       header:
         poll_created: '<strong>%{actor}</strong> started a ranked choice'
         poll_edited: '<strong>%{actor}</strong> edited the ranked choice'
-        poll_announced: '<strong>%{actor}</strong> shared the ranked choice'
+        poll_announced: '<strong>%{actor}</strong> invited you to vote'
         poll_closing_soon: '<strong>%{actor}</strong>''s ranked choice is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your ranked choice is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
         poll_expired: "<strong>%{actor}'s</strong> ranked choice has closed"
@@ -572,7 +573,6 @@ en:
         outcome_announced: '<strong>%{actor}</strong> shared a ranked choice outcome.'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
-
       body:
         voted: '<strong>%{participant}</strong>:'
 
