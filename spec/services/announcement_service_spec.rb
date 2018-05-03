@@ -69,7 +69,7 @@ describe AnnouncementService do
         }) }.to change { poll.reload.undecided_count }.by(1)
       end
 
-      it 'does not include unaccepted memberships in undecided count' do
+      it 'updates poll undecided count when making an invitation' do
         expect { AnnouncementService.create(model: group, actor: user, params: {
           kind: :group_announced,
           recipients: { emails: ['test@test.com'] }
