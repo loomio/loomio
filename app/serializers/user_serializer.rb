@@ -58,7 +58,7 @@ class UserSerializer < ActiveModel::Serializer
   private
 
   def placeholder_name
-    I18n.t("user.placeholder_name", hostname: object.email.split('@').last, locale: object.locale)
+    I18n.t("user.placeholder_name", hostname: object.email.to_s.split('@').last, locale: object.locale)
   end
 
   def scope
