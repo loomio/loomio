@@ -108,5 +108,4 @@ class Group < ApplicationRecord
       self.update_attribute(:cohort_id, cohort_id) if cohort_id
     end
   end
-
 end

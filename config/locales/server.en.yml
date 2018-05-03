@@ -346,11 +346,13 @@ en:
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
 
   group_mailer:
-    resend: 'REMINDER: %{actor} is waiting for you to join %{title}'
+    resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
+
+  discussion_mailer:
+    resend: 'REMINDER: %{actor} is waiting for you to join %{discussion}'
 
   poll_mailer:
     resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-
     common:
       or: or
       why_send_this: You are receiving this email because %{reason}
@@ -374,17 +376,13 @@ en:
       subject:
         poll_created: '%{actor} started a proposal: %{title}'
         poll_edited: '%{actor} edited the proposal: %{title}'
-        poll_announced: '%{actor} shared a proposal: %{title}'
+        poll_announced: '%{actor} invites you to vote on: %{title}'
         poll_closing_soon: 'Proposal closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your proposal closes in 24 hours: %{title}'
         poll_expired: "Proposal closed: %{title}"
         poll_expired_author: 'Your proposal has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
         outcome_announced: '%{actor} shared a proposal outcome: %{title}'
-        join_poll: '%{actor} wants your opinion: %{title}'
-        join_outcome: '%{actor} shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
@@ -399,10 +397,6 @@ en:
         poll_expired_author: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
         outcome_announced: '<strong>%{actor}</strong> shared a proposal outcome.'
-        join_poll: '<strong>%{actor}</strong> wants to hear your opinion: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
@@ -422,10 +416,6 @@ en:
         poll_option_added_author: '%{actor} added options to: %{title}'
         outcome_created: '%{actor} shared a poll outcome: %{title}'
         outcome_announced: '%{actor} shared a poll outcome: %{title}'
-        join_poll: '%{actor} wants you to vote: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
@@ -442,10 +432,6 @@ en:
         poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
         outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
         outcome_announced: '<strong>%{actor}</strong> shared a poll outcome.'
-        join_poll: '<strong>%{actor}</strong> invited you to join a poll: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
@@ -463,10 +449,6 @@ en:
         poll_expired_author: 'Your check has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         outcome_announced: '%{actor} shared an outcome: %{title}'
-        join_poll: '%{actor} is checking: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: %{actor} is waiting for you to respond: %{title}'
         stance_created: "%{actor} participated in: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
@@ -481,10 +463,6 @@ en:
         poll_expired_author: 'Here are the results of your check. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared an outcome.'
         outcome_announced: '<strong>%{actor}</strong> shared an outcome.'
-        join_poll: '<strong>%{actor}</strong> is checking: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to respond: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
@@ -504,10 +482,6 @@ en:
         poll_option_added_author: '%{actor} added options to: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         outcome_announced: '%{actor} shared an outcome: %{title}'
-        join_poll: '%{actor} invited you to join a dot vote: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: %{actor} is waiting for you to vote on: %{title}'
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
@@ -524,10 +498,6 @@ en:
         poll_option_added_author: '<strong>%{actor}</strong> added options to: %{title}'
         outcome_created: '<strong>%{actor}</strong> shared a dot vote outcome.'
         outcome_announced: '<strong>%{actor}</strong> shared a dot vote outcome.'
-        join_poll: '<strong>%{actor}</strong> invited you to join a dot vote: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for you to vote on: %{title}'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
@@ -548,10 +518,6 @@ en:
         outcome_created: '%{actor} shared an outcome: %{title}'
         outcome_created_author: 'You shared an outcome: %{title}'
         outcome_announced: '%{actor} shared an outcome: %{title}'
-        join_poll: '%{actor} wants to arrange a time: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: %{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
@@ -569,10 +535,6 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a time poll outcome.'
         outcome_created_author: 'You shared a time poll outcome.'
         outcome_announced: '<strong>%{actor}</strong> shared a time poll outcome.'
-        join_poll: '<strong>%{actor}</strong> wants to arrange a time: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 
@@ -591,10 +553,6 @@ en:
         poll_option_added_author: '%{actor} added options to: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         outcome_created_author: 'You shared an outcome: %{title}'
-        join_poll: '%{actor} wants to arrange a time: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: %{actor} is waiting for your response: %{title}'
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
@@ -612,10 +570,6 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a ranked choice outcome.'
         outcome_created_author: 'You shared a ranked choice outcome.'
         outcome_announced: '<strong>%{actor}</strong> shared a ranked choice outcome.'
-        join_poll: '<strong>%{actor}</strong> wants to arrange a time: %{title}'
-        join_outcome: '<strong>%{actor}</strong> shared an outcome for %{title}'
-        invitation_resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
-        user_reminded: 'REMINDER: <strong>%{actor}</strong> is waiting for your response: %{title}'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
 

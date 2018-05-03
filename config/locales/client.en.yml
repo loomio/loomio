@@ -439,29 +439,29 @@ en:
       non_voters: People who have not voted
 
     form:
-      share_a_link: Share a link
-      anyone_can_participate: Anyone with link can participate
-      send_invitations: Send invitations
-      group_helptext: Who would you like to add to the group?
-      discussion_helptext: Who would you like to invite to the thread?
-      poll_helptext: Who would you like to invite to this decision?
-      outcome_helptext: Who would you like to notify of this outcome?
-      get_shareable_link: Get shareable link
-      shareable_link_helptext: Anyone with this link will be able to participate
-      placeholder: Enter names or email addresses...
-      group:
+      group_announced:
         title: Invite to group
-      discussion:
+        helptext: Who would you like to invite to the group?
+      discussion_announced:
         title: Invite to thread
-      poll:
+        helptext: Who would you like to invite to the thread?
+      discussion_edited:
+        title: Notify of edits
+        helptext: Who would you like to notify about your changes?
+      poll_announced:
         title: Invite to vote
-      outcome:
+        helptext: Who would you like to invite to vote?
+      poll_edited:
+        title: Notify of edits
+        helptext: Who would you like to notify about your changes?
+      outcome_announced:
         title: Share outcome
+        helptext: Who would you like to share the outcome with?
+      anyone_can_participate: Anyone with link can participate
+      placeholder: Enter names or email addresses...
       notified: '{{notified}} people will be notified:'
       notified_singular: '1 person will be notified:'
       group_title: '{{name}} ({{count}} people)'
-      show_members: Show members
-      hide_members: Hide members
     members_list:
       title: Shared with
       last_notified: Notified
@@ -473,7 +473,6 @@ en:
       members_count: '{{count}} people will be notified'
     flash:
       success: '{{count}} notifications sent'
-
 
   action_dock:
     react: Add reaction

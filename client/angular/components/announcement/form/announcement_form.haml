@@ -12,7 +12,7 @@
         %md-button.md-accent.md-button--tiny.announcement-form__copy{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink()", on-copied: "copied()"}
           %span{translate: "common.copy"}
   .announcement-form__invite
-    %p.announcement-form__help.md-subhead{translate: "announcement.form.send_invitations"}>
+    %p.announcement-form__help.md-subhead{translate: "announcement.form.{{announcement.kind}}.helptext"}>
     %md-list
       %md-list-item.announcement-form__audience.md-whiteframe-1dp{ng-repeat: "audience in audiences()", ng-click: "loadAudience(audience)"}
         %i.mdi.mdi-24px.mdi-account-multiple

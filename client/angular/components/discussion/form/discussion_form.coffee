@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'discussionForm', ->
       $scope.discussion.makeAnnouncement = true
 
     $scope.availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
+      _.filter Session.user().formalGroups(), (group) ->
         AbilityService.canStartThread(group)
 
     # NB; this overrides the restoreDraft() function applied in draft_service
