@@ -186,11 +186,7 @@ en:
 
     discussion_announced:
       subject: "[%{group}] %{discussion}"
-      subject_html: "<strong>%{actor}</strong> shared a thread: %{discussion}"
-
-    invitation_created:
-      subject: "[%{group}] %{discussion}"
-      subject_html: "<strong>%{actor}</strong> invited you to join the thread: %{discussion}"
+      subject_html: "<strong>%{actor}</strong> invited you to join: %{discussion}"
 
     new_comment:
       subject: "[%{group}] %{discussion}"
@@ -348,9 +344,6 @@ en:
 
   group_mailer:
     resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
-
-  discussion_mailer:
-    resend: 'REMINDER: %{actor} is waiting for you to join %{discussion}'
 
   poll_mailer:
     resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
