@@ -1,6 +1,5 @@
 loomio_org_plugin:
   repo:         https://github.com/loomio/loomio_org_plugin.git
-  branch:       announcement-member-emails
 
 loomio_tags:
   repo:         https://github.com/loomio/loomio_tags.git
@@ -13,4 +12,3 @@ loomio_content_preview:
 
 loomio_onboarding:
   repo:         https://github.com/loomio/loomio_onboarding.git
-  branch:       announcements
