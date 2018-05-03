@@ -44,8 +44,8 @@ angular.module('loomioApp').directive 'membershipCard', ->
       setTimeout -> document.querySelector('.membership-card__search input').focus()
 
     $scope.showLoadMore = ->
-      $scope.loader.numLoaded < $scope.recordCount() &&
-      !$scope.vars.fragment       &&
+      $scope.records().length < $scope.recordCount() &&
+      !$scope.vars.fragment                          &&
       !$scope.loader.loading
 
     $scope.canAddMembers = ->
