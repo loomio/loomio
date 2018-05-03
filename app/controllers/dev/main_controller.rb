@@ -17,7 +17,10 @@ class Dev::MainController < Dev::BaseController
     :setup_discussion_mailer_user_mentioned_email,
     :setup_discussion_mailer_invitation_created_email,
     :setup_accounts_merged_email,
-    :setup_thread_missed_yesterday
+    :setup_thread_missed_yesterday,
+    :setup_group_invitation_ignored,
+    :setup_discussion_invitation_ignored,
+    :setup_poll_invitation_ignored
   ]
 
   def index
@@ -44,6 +47,30 @@ class Dev::MainController < Dev::BaseController
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @comment = Comment.new(author: jennifer, body: "hello _patrick_.", discussion: @discussion)
     CommentService.create(comment: @comment, actor: jennifer)
+    last_email
+  end
+
+  def setup_group_invitation_ignored
+    group  = FactoryBot.create :formal_group
+    event = AnnouncementService.create(model: group, actor: group.creator, params: { kind: 'group_announced', recipients: {emails: ['hello@example.com']}})
+    ActionMailer::Base.deliveries.clear
+    AnnouncementService.resend_pending_memberships(since: 1.hour.ago, till: 1.hour.from_now)
+    last_email
+  end
+
+  def setup_discussion_invitation_ignored
+    model = FactoryBot.create :discussion
+    event = AnnouncementService.create(model: model, actor: model.author, params: { kind: 'discussion_announced', recipients: {emails: ['hello@example.com']}})
+    ActionMailer::Base.deliveries.clear
+    AnnouncementService.resend_pending_memberships(since: 1.hour.ago, till: 1.hour.from_now)
+    last_email
+  end
+
+  def setup_poll_invitation_ignored
+    model = FactoryBot.create :poll
+    event = AnnouncementService.create(model: model, actor: model.author, params: { kind: 'poll_announced', recipients: {emails: ['hello@example.com']}})
+    ActionMailer::Base.deliveries.clear
+    AnnouncementService.resend_pending_memberships(since: 1.hour.ago, till: 1.hour.from_now)
     last_email
   end
 
