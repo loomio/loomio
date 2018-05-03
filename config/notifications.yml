@@ -1,20 +1,19 @@
 kinds:
   - reaction_created
-  - motion_closing_soon
   - comment_replied_to
   - user_mentioned
   - membership_requested
   - membership_request_approved
   - user_added_to_group
-  - motion_closed
-  - motion_closing_soon
-  - motion_outcome_created
   - invitation_accepted
   - new_coordinator
   - poll_created
   - poll_closing_soon
   - poll_edited
   - poll_expired
+  - poll_announced
   - outcome_created
+  - outcome_announced
   - stance_created
   - poll_option_added
+  - discussion_announced

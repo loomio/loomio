@@ -38,7 +38,7 @@ gem 'ahoy_matey', '~> 2'
 gem 'ahoy_email', '~> 0.3.1'
 gem 'maxminddb'
 gem 'oj'
-gem 'snorlax'
+gem 'snorlax', github: 'loomio/snorlax'
 gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
 gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'

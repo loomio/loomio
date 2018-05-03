@@ -9,7 +9,7 @@ class Full::UserSerializer < UserSerializer
   has_many :identities,         serializer: IdentitySerializer, root: :identities
 
   def guest_memberships
-    from_scope :memberships
+    from_scope :guest_memberships
   end
 
   def formal_memberships
@@ -28,7 +28,11 @@ class Full::UserSerializer < UserSerializer
     object.adminable_group_ids.any?
   end
 
-  def include_gravatar_md5?
+  def include_email?
+    true
+  end
+
+  def include_email_hash?
     true
   end
 

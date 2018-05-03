@@ -1,16 +1,16 @@
 class Poll < ApplicationRecord
-  include CustomCounterCache::Model
   extend  HasCustomFields
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
+  include HasEvents
   include HasMentions
   include HasDrafts
   include HasGuestGroup
-  include MakesAnnouncements
   include MessageChannel
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
   include Reactable
-  include HasEvents
   include HasCreatedEvent
 
   extend  NoSpam
@@ -18,7 +18,7 @@ class Poll < ApplicationRecord
 
   set_custom_fields :meeting_duration, :time_zone, :dots_per_person, :pending_emails, :minimum_stance_choices, :can_respond_maybe, :deanonymize_after_close
 
-  TEMPLATE_FIELDS = %w(material_icon translate_option_name
+  TEMPLATE_FIELDS = %w(material_icon translate_option_name can_vote_anonymously
                        can_add_options can_remove_options author_receives_outcome
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
@@ -40,9 +40,6 @@ class Poll < ApplicationRecord
   belongs_to :discussion
   belongs_to :group, class_name: "FormalGroup"
 
-  update_counter_cache :group, :polls_count
-  update_counter_cache :group, :closed_polls_count
-  update_counter_cache :discussion, :closed_polls_count
 
   after_update :remove_poll_options
 
@@ -53,8 +50,6 @@ class Poll < ApplicationRecord
   has_many :poll_unsubscriptions, dependent: :destroy
   has_many :unsubscribers, through: :poll_unsubscriptions, source: :user
 
-  has_many :guest_invitations, through: :guest_group, source: :invitations
-
   has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
@@ -62,31 +57,6 @@ class Poll < ApplicationRecord
   has_many :poll_did_not_voters, through: :poll_did_not_votes, source: :user
 
   has_many :documents, as: :model, dependent: :destroy
-
-  has_paper_trail only: [:title, :details, :closing_at, :group_id]
-
-  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
-  define_counter_cache(:undecided_user_count) do |poll|
-    if poll.active?
-      poll.undecided.count
-    else
-      poll.poll_did_not_votes.count
-    end
-  end
-
-  delegate :locale, to: :author
-
-  def groups
-    [group, guest_group].compact
-  end
-
-  def undecided_count
-    undecided_user_count + guest_group.pending_invitations_count
-  end
-
-  def time_zone
-    custom_fields.fetch('time_zone', author.time_zone)
-  end
 
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
@@ -126,6 +96,33 @@ class Poll < ApplicationRecord
   alias_method :user, :author
   alias_method :draft_parent, :discussion
 
+  has_paper_trail only: [:title, :details, :closing_at, :group_id]
+
+  update_counter_cache :group, :polls_count
+  update_counter_cache :group, :closed_polls_count
+  update_counter_cache :discussion, :closed_polls_count
+  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
+  define_counter_cache(:undecided_count) { |poll| poll.undecided.count }
+
+  delegate :locale, to: :author
+  delegate :guest_group, to: :discussion, prefix: true, allow_nil: true
+
+  def groups
+    [group, discussion&.guest_group, guest_group].compact
+  end
+
+  def undecided
+    if active?
+      members.where.not(id: participants)
+    else
+      poll_did_not_voters
+    end
+  end
+
+  def time_zone
+    custom_fields.fetch('time_zone', author.time_zone)
+  end
+
   def parent_event
     if discussion
       discussion.created_event
@@ -150,22 +147,7 @@ class Poll < ApplicationRecord
   end
 
   def group_members
-    User.joins(:memberships)
-        .joins(:groups)
-        .where("memberships.group_id": group_id)
-        .where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
-  end
-
-  def members
-    User.distinct.from("(#{[group_members, guests].map(&:to_sql).join(" UNION ")}) as users")
-  end
-
-  def undecided
-    reload.members.where.not(id: participants)
-  end
-
-  def invitations
-    Invitation.where(group_id: [group_id, guest_group_id].compact)
+    super.joins(:groups).where("groups.members_can_vote IS TRUE OR memberships.admin IS TRUE")
   end
 
   def update_stance_data
@@ -212,7 +194,6 @@ class Poll < ApplicationRecord
         yes:      option.stance_choices.latest.where(score: 2).count
       }]
     end
-
   end
 
   def ordered_poll_options

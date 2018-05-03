@@ -34,7 +34,6 @@ class UserService
 
     # deleted (fast delete)
     Event.where(user_id: user.id).delete_all
-    Invitation.where(inviter_id: user.id).delete_all
     Notification.where(actor_id: user.id).delete_all
 
     user.destroy

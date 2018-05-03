@@ -4,8 +4,10 @@ Records        = require 'shared/services/records.coffee'
 EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 
 { submitForm }   = require 'shared/helpers/form.coffee'
+{ hardReload }   = require 'shared/helpers/window.coffee'
 
 $controller = ($scope, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'profile_page.profile', page: 'profilePage'}
@@ -35,7 +37,30 @@ $controller = ($scope, $rootScope) ->
     ModalService.open 'ChangePasswordForm'
 
   @deactivateUser = ->
-    ModalService.open 'DeactivationModal'
+    ModalService.open 'ConfirmModal', confirm: ->
+      text:
+        title: 'deactivate_user_form.title'
+        submit: 'deactivation_modal.submit'
+        fragment: 'deactivate_user'
+      submit: -> ModalService.open 'ConfirmModal', confirm: confirm
+
+  confirm = ->
+    if AbilityService.canDeactivateUser()
+      scope: {user: Session.user()}
+      submit: -> Records.users.deactivate(Session.user())
+      text:
+        title:    'deactivate_user_form.title'
+        submit:   'deactivate_user_form.submit'
+        fragment: 'deactivate_user_confirmation'
+      successCallback: hardReload
+    else
+      scope: {user: Session.user()}
+      submit: -> Promise.resolve(true)
+      successCallback: (group) ->
+        LmoUrlService.goTo LmoUrlService.group(group) if group
+      text:
+        title:    'deactivate_user_form.title'
+        fragment: 'only_coordinator'
 
   return
 

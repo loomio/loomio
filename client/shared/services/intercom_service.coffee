@@ -23,8 +23,8 @@ mapGroup = (group) ->
   created_at: group.createdAt.format()
   discussions_count: group.discussionsCount
   memberships_count: group.membershipsCount
+  pending_memberships_count: group.pendingMembershipsCount
   has_custom_cover: group.hasCustomCover
-  invitations_count: group.invitationsCount
 
 module.exports = new class IntercomService
   available: ->

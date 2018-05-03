@@ -1,6 +1,0 @@
-.pending-invitations-card__invitation {
-  margin: 12px 0;
-  @media(max-width: $tiny-max-px) {
-    &:not(:last-child) { border-bottom: 1px solid $border-color; }
-  }
-}

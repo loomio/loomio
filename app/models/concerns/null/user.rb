@@ -29,11 +29,16 @@ module Null::User
     [:experiences]
   end
 
+  def zero_methods
+    [:pending_invitation_limit]
+  end
+
   def none_methods
     {
       notifications: :notification,
       login_tokens: :login_token,
       memberships: :membership,
+      admin_memberships: :membership,
       participated_polls: :poll,
       group_polls: :poll,
       polls: :poll,

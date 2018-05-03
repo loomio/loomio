@@ -9,7 +9,7 @@ describe API::CommentsController do
   let(:another_comment) { create :comment, discussion: discussion, author: another_user }
 
   before do
-    group.members << user
+    group.add_member! user
   end
 
   describe "signed in" do
@@ -61,6 +61,16 @@ describe API::CommentsController do
         it "creates a comment" do
           post :create, params: { comment: comment_params }
           expect(response).to be_success
+          expect(Comment.where(body: comment_params[:body],
+                               user_id: user.id)).to exist
+        end
+
+        it 'allows guest group members to comment' do
+          discussion.group.memberships.find_by(user: user).destroy
+          discussion.guest_group.add_member! user
+
+          post :create, params: { comment: comment_params }
+          expect(response.status).to eq 200
           expect(Comment.where(body: comment_params[:body],
                                user_id: user.id)).to exist
         end

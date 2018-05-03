@@ -157,11 +157,11 @@ describe API::StancesController do
   end
 
   describe 'create' do
-    let(:group)      { create :guest_group }
+
     let(:another_user) { create :user, email: 'another_user@example.com', email_verified: false }
-    let(:invitation) { create :invitation, recipient_email: 'user@example.com', group: group }
-    let(:user)       { create :user, email: 'user@example.com', email_verified: false }
-    let(:poll)       { create :poll, guest_group: group }
+    let(:membership) { create :membership, user: build(:user, name: "unverified", email: 'user@example.com', email_verified: false), group: poll.guest_group }
+    let(:user)       { create :user, name: "unverified", email: 'user@example.com', email_verified: false }
+    let(:poll)       { create :poll }
     let(:poll_option) { create :poll_option, poll: poll }
     let(:visitor_stance_params) {{
       poll_id: poll.id,
@@ -169,79 +169,138 @@ describe API::StancesController do
       visitor_attributes: { name: "Johnny Doe, not logged in", email: "user@example.com" }
     }}
 
-    describe 'with personal invitation token' do
-      before do
-        invitation
-      end
+    # test logged out cannot create a stance
+    # non member cannot create a stance
+    # unverified user gets verification email on stance create
+    # if polls is anonymous you still get your own stance back
 
-      it 'logged in as verified user' do
-        # create stance and add user to group
-        user.update(email_verified: true)
-        sign_in user
-        expect { post :create, params: { stance: stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
-        expect(invitation.reload.accepted?).to be true
-        expect(user.reload.groups).to include group
-      end
+    it 'returns 403 for logged out users' do
+      post :create, params: { stance: stance_params }
+      expect(response.status).to eq 403
+    end
 
-      it 'includes the participant of the stance for anonymous polls' do
-        poll.update(anonymous: true)
-        sign_in user
-        poll.guest_group.add_member! user
-        post :create, params: { stance: stance_params }
-        json = JSON.parse(response.body)
-        expect(json['stances'][0]['participant_id']).to eq user.id
-        expect(json['users']).to be_present
-      end
-
-      describe 'logged out' do
-        it 'enter verified email address -> please confirm vote' do
-          user.update(email_verified: true)
-          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { ActionMailer::Base.deliveries.size }.by 1
-
-          participant = Stance.last.participant
-          expect(participant.email).to eq 'user@example.com'
-          expect(participant.name).to eq visitor_stance_params[:visitor_attributes][:name]
-          expect(participant.email_verified).to be false
-          expect(invitation.reload.accepted?).to be true
-          expect(last_email.to).to eq ['user@example.com']
-          expect(last_email_html_body).to include "confirm your vote"
-          expect(LoginToken.last.user).to eq user
-          #login token should be for verified user
-        end
-
-        it 'enter unverified email address -> please confirm address' do
-          user.update(email_verified: false)
-          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
-          stance = poll.stances.last
-          expect(invitation.reload.accepted?).to be true
-          expect(stance.participant.email_verified).to eq false
-          expect(stance.participant.email).to eq 'user@example.com'
-          expect(stance.participant).to_not eq user
-          expect(poll.guest_group.members).to include(stance.participant)
-          expect(last_email.to).to eq ['user@example.com']
-          expect(last_email_html_body).to include "verify"
-          expect(LoginToken.last.user).to eq stance.participant
-        end
-
-        it 'enter unrecognised email address -> confirm address' do
-          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
-          expect(invitation.reload.accepted?).to be true
-          stance = poll.stances.last
-          expect(stance.participant.email_verified).to eq false
-          expect(stance.participant.email).to eq 'user@example.com'
-          expect(poll.guest_group.members).to include(stance.participant)
-          expect(last_email.to).to eq ['user@example.com']
-          expect(last_email_html_body).to include "Please verify your email address"
-          expect(LoginToken.last.user).to eq stance.participant
-        end
+    describe "non member votes" do
+      it "denies access" do
+        sign_in create :user
+        post :create, params: {stance: stance_params}
+        expect(response.status).to eq 403
       end
     end
 
-    describe 'mass invitation' do
-      let(:invitation) { create :shareable_invitation, group: poll.guest_group, inviter: poll.author }
+    describe "unverified member votes" do
+      it "creates stance and updates name and email" do
+        poll.guest_group.add_member! user
+        sign_in user
+        expect { post :create, params: {stance: visitor_stance_params } }.to change {ActionMailer::Base.deliveries.count}.by 1
+        expect(user.stances.count).to eq 1
+        expect(response.status).to eq 200
+        expect(user.reload.name).to eq visitor_stance_params[:visitor_attributes][:name]
+        expect(user.reload.email).to eq visitor_stance_params[:visitor_attributes][:email]
+        expect(user.reload.email_verified).to eq false
+        expect(last_email_html_body).to include "Please verify your email address"
+      end
+    end
+
+    describe "verified user votes" do
+      it "creates stance and updates name and email" do
+        user.update(email_verified: true)
+        poll.guest_group.add_member! user
+        sign_in user
+        expect { post :create, params: {stance: stance_params } }.to_not change {ActionMailer::Base.deliveries.count}
+        expect(user.stances.count).to eq 1
+        expect(response.status).to eq 200
+        expect(user.reload.email_verified).to eq true
+      end
+    end
+
+    it 'includes the participant of the stance for anonymous polls' do
+      poll.update(anonymous: true)
+      user.update(email_verified: true)
+      sign_in user
+      poll.guest_group.add_member! user
+      post :create, params: { stance: stance_params }
+      json = JSON.parse(response.body)
+      expect(response.status).to eq 200
+      expect(json['stances'][0]['participant_id']).to eq user.id
+      expect(json['users']).to be_present
+    end
+
+    describe 'poll.group.members_can_vote false' do
+      let(:user) { create(:user) }
 
       before do
-        invitation
+        group = create(:formal_group, members_can_vote: false)
+        poll.update(group: group, discussion: create(:discussion, group: group))
+        sign_in user
+      end
+
+      it 'admin of formal group can vote' do
+        poll.group.add_admin! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'admin of discussion guest group can vote' do
+        poll.discussion.guest_group.add_admin! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'admin of poll guest group can vote' do
+        poll.guest_group.add_admin! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of formal group cannot vote' do
+        poll.group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 403
+      end
+
+      it 'member of discussion guest group cannot vote' do
+        poll.discussion.guest_group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 403
+      end
+
+      it 'member of poll guest group can vote' do
+        poll.guest_group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 403
+      end
+    end
+
+    describe 'poll.group.members_can_vote true' do
+      let(:user) { create(:user) }
+      before do
+        group = create(:formal_group, members_can_vote: true)
+        poll.update(group: group, discussion: create(:discussion, group: group))
+        sign_in user
+      end
+
+      it 'member of formal group cannot vote' do
+        poll.group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of discussion guest group cannot vote' do
+        poll.discussion.guest_group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of poll guest group can vote' do
+        poll.guest_group.add_member! user
+        post :create, params: { stance: stance_params }
+        expect(response.status).to eq 200
+      end
+    end
+
+    describe 'poll.anyone_can_participate = true' do
+      before do
+        poll.update(anyone_can_participate: true)
         user
       end
 
@@ -249,7 +308,7 @@ describe API::StancesController do
         # add to group and create stance
         user.update(email_verified: true)
         sign_in user
-        expect { post :create, params: { stance: stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
+        expect { post :create, params: { stance: stance_params} }.to change { Stance.count }.by(1)
         expect(Stance.last.participant).to eq user
         expect(poll.members).to include user
       end
@@ -258,7 +317,7 @@ describe API::StancesController do
         it 'user enters verified users email' do
           user.update(email_verified: true)
           # create stance and unverified user, send claim_or_destroy (only single vote claim)
-          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params} }.to change { Stance.count }.by(1)
           stance = Stance.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
@@ -271,7 +330,7 @@ describe API::StancesController do
         it 'user enters unverified users email' do
           # create stance and unverified user -> send verify/login email
           user.update(email_verified: false)
-          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params} }.to change { Stance.count }.by(1)
           stance = Stance.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
@@ -283,7 +342,7 @@ describe API::StancesController do
 
         it 'user enters unrecognised email' do
           # create stance and unverified user -> send verify/login email
-          expect { post :create, params: { stance: visitor_stance_params, invitation_token: invitation.token } }.to change { Stance.count }.by(1)
+          expect { post :create, params: { stance: visitor_stance_params} }.to change { Stance.count }.by(1)
           stance = Stance.last
           expect(stance.participant.email_verified).to eq false
           expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]

@@ -7,14 +7,14 @@ describe LoginTokensController do
     let(:token) { create :login_token }
 
     it 'sets a session variable' do
-      get :show, params: { id: token.token }
+      get :show, params: { token: token.token }
       expect(session[:pending_token]).to eq token.token
       expect(response).to redirect_to dashboard_path
     end
 
     it 'redirects to the redirect' do
       token.update(redirect: '/inbox')
-      get :show, params: { id: token.token }
+      get :show, params: { token: token.token }
       expect(response).to redirect_to inbox_path
     end
   end

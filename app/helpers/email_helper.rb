@@ -35,6 +35,7 @@ module EmailHelper
   end
 
   def reply_to_address_with_group_name(discussion: , user: )
+    return unless user.is_logged_in?
     "\"#{discussion.group.full_name}\" <#{reply_to_address(discussion: discussion, user: user)}>"
   end
 

@@ -1,7 +1,7 @@
 class API::StancesController < API::RestfulController
   alias :update :create
   before_action :set_guest_params, only: :create
-  after_action :sign_in_unverified_user, only: :create
+  after_action  :sign_in_unverified_user, only: :create
 
   def unverified
     self.collection = page_collection unverified_stances
@@ -30,7 +30,7 @@ class API::StancesController < API::RestfulController
   end
 
   def set_guest_params
-    return if current_user.is_logged_in?
+    return if current_user.email_verified
     current_user.name  = guest_params['name']
     current_user.email = guest_params['email']
   end

@@ -22,10 +22,9 @@ class Stance < ApplicationRecord
   alias :author :participant
 
   update_counter_cache :poll, :stances_count
-  update_counter_cache :poll, :undecided_user_count
+  update_counter_cache :poll, :undecided_count
 
   scope :latest, -> { where(latest: true) }
-
   scope :newest_first,   -> { order(created_at: :desc) }
   scope :oldest_first,   -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
@@ -43,6 +42,7 @@ class Stance < ApplicationRecord
 
   delegate :locale, to: :author
   delegate :group, to: :poll, allow_nil: true
+  delegate :mailer, to: :poll, allow_nil: true
   delegate :groups, to: :poll
   alias :author :participant
 

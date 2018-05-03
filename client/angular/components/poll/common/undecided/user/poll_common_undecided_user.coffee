@@ -10,11 +10,6 @@ angular.module('loomioApp').directive 'pollCommonUndecidedUser', ->
     $scope.canAdministerPoll = ->
       AbilityService.canAdministerPoll($scope.poll)
 
-    $scope.resend = ->
-      $scope.user.resend().then ->
-        FlashService.success 'common.action.resent'
-    applyLoadingFunction($scope, 'resend')
-
     $scope.remind = ->
       $scope.user.remind($scope.poll).then ->
         FlashService.success 'poll_common_undecided_user.reminder_sent'

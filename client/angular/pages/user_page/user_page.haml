@@ -19,7 +19,7 @@
           .user-page__groups
             %h3.lmo-h3.user-page__groups-title{translate: "common.groups"}
             %md-list
-              %md-list-item.user-page__group.lmo-flex.lmo-flex__center{ng-repeat: "group in userPage.user.groups() | orderBy: 'fullName' track by group.id"}
+              %md-list-item.user-page__group.lmo-flex.lmo-flex__center{ng-repeat: "group in userPage.user.formalGroups() | orderBy: 'fullName' track by group.id"}
                 %img.md-avatar.lmo-box--small.lmo-margin-right{ng-src: "{{group.logoUrl()}}"}
                 %a{lmo-href-for: "group"} {{group.fullName}}
             %loading{ng-if: "userPage.loadGroupsForExecuting"}
