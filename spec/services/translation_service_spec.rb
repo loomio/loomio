@@ -3,10 +3,8 @@ require 'rails_helper'
 describe TranslationService do
   let(:fr_discussion) { create :discussion, author: fr_user }
   let(:fr_FR_discussion) { create :discussion, author: fr_user }
-  let(:wark_discussion) { create :discussion, author: wark_user }
   let(:fr_user) { create :user, selected_locale: :fr }
   let(:fr_FR_user) { create :user, selected_locale: :fr_FR }
-  let(:wark_user) { create :user, selected_locale: :wark }
   before { TranslationService.stub(:translator).and_return(StubTranslator.new) }
 
   it 'translates a valid language code' do
@@ -19,10 +17,6 @@ describe TranslationService do
 
   it 'translates from via fallback' do
     expect { TranslationService.create(model: fr_FR_discussion, to: :en) }.to change { fr_FR_discussion.translations.count }.by(1)
-  end
-
-  it 'does not translate an invalid from language code' do
-    expect { TranslationService.create(model: wark_discussion, to: :en) }.to_not change { wark_discussion.translations.count }
   end
 
   it 'does not translate an invalid to language code' do

@@ -1,11 +1,12 @@
+Records = require 'shared/services/records.coffee'
+
 angular.module('loomioApp').directive 'authAvatar', ->
   scope: {user: '=?'}
   templateUrl: 'generated/components/auth/avatar/auth_avatar.html'
   controller: ['$scope', ($scope) ->
     $scope.user = $scope.user or {avatarKind: 'initials'}
     if _.contains(['initials', 'mdi-email-outline'], $scope.user.avatarKind)
-      $scope.avatarUser =
-        constructor: {singular: 'user'}
+      $scope.avatarUser = Records.users.build
         avatarKind:  'uploaded'
         avatarUrl:
           small:  '/img/mascot.png'
