@@ -27,7 +27,6 @@ module.exports = {
     page.click('.membership-dropdown__button')
     page.click('.membership-dropdown__toggle-admin')
     page.expectText('.flash-root__message', 'Jennifer Grey is now a coordinator')
-    page.expectElement('.user-avatar--coordinator')
   },
 
   'allows non-coordinators to add members if the group settings allow': (test) => {
