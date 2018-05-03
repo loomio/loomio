@@ -113,7 +113,7 @@ class Poll < ApplicationRecord
 
   def undecided
     if active?
-      reload.accepted_members.where.not(id: participants)
+      members.where.not(id: participants)
     else
       poll_did_not_voters
     end

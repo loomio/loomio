@@ -157,9 +157,9 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_proposal_poll_with_guest')
-    page.expectText('.poll-common-undecided-panel__button', 'SHOW 4 UNDECIDED')
+    page.expectText('.poll-common-undecided-panel__button', 'SHOW 5 UNDECIDED')
     page.click('.poll-common-undecided-panel__button')
-    page.expectText('.poll-common-undecided-panel', 'Undecided (4)')
+    page.expectText('.poll-common-undecided-panel', 'Undecided (5)')
   },
 
   'can remind undecided users': (test) => {

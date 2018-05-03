@@ -7,7 +7,7 @@ class UserSerializer < ActiveModel::Serializer
              :last_seen_at, :email
 
   def name
-    object.name || object.username
+    object.name || placeholder_name
   end
 
   def label
@@ -53,6 +53,12 @@ class UserSerializer < ActiveModel::Serializer
 
   def include_email?
     scope[:email_user_ids].to_a.include? object.id
+  end
+
+  private
+
+  def placeholder_name
+    I18n.t("user.placeholder_name", hostname: object.email.split('@').last, locale: object.locale)
   end
 
   def scope

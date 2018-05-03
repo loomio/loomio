@@ -3,17 +3,17 @@ module.exports = new class HasGuestGroup
     model.guestGroup = ->
       @recordStore.groups.find(@guestGroupId)
 
-    model.memberIds = ->
-      model.formalMemberIds().concat model.guestIds()
+    model.groupIds = model.groupIds or ->
+      _.compact [model.groupId, model.guestGroupId]
 
-    model.formalMemberIds = ->
-      if model.group() then model.group().memberIds() else []
+    model.groups = model.groups or ->
+      @recordStore.groups.find(id: {$in: model.groupIds()})
 
-    model.guestIds = ->
-      if model.guestGroup() then model.guestGroup().memberIds() else []
+    model.memberIds = model.memberIds or ->
+      _.pluck @recordStore.memberships.find(groupId: {$in: model.groupIds()}), 'userId'
 
     model.members = model.members or ->
-      model.recordStore.users.find(model.memberIds())
+      @recordStore.users.find(id: {$in: model.memberIds()})
 
     model.memberships = model.memberships or ->
       model.guestGroup().memberships().concat((model.group() or @recordStore.groups.build()).memberships())

@@ -76,7 +76,7 @@ class User < ApplicationRecord
            source: :group
 
   has_many :adminable_groups,
-           -> { where(archived_at: nil, type: "FormalGroup") },
+           -> { where(archived_at: nil) },
            through: :admin_memberships,
            class_name: 'Group',
            source: :group

@@ -12,6 +12,7 @@ class GroupInviter
     raise InvitationLimitExceededError if rate_limit_exceeded?
     generate_users!
     generate_memberships!
+    @group.target_model.update_undecided_count
     @group.update_pending_memberships_count
     @group.update_memberships_count
     self
