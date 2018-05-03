@@ -64,23 +64,20 @@ module.exports = class PollModel extends BaseModel
     @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
     @hasMany   'pollDidNotVotes'
 
+  discussionGuestGroupId: ->
+    @discussion().guestGroupId if @discussion()
+
   discussionGuestGroup: ->
     @discussion().guestGroup() if @discussion()
+
+  groupIds: ->
+    _.compact [@groupId, @guestGroupId, @discussionGuestGroupId()]
 
   reactions: ->
     @recordStore.reactions.find(reactableId: @id, reactableType: "Poll")
 
-  memberIds: ->
-    _.uniq if @isActive()
-      @formalMemberIds().concat @guestIds()
-    else
-      @participantIds().concat @undecidedIds()
-
   participantIds: ->
     _.pluck(@latestStances(), 'participantId')
-
-  undecidedIds: ->
-    _.pluck(@pollDidNotVotes(), 'userId')
 
   # who's voted?
   participants: ->
