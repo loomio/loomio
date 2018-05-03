@@ -34,7 +34,9 @@ angular.module('loomioApp').directive 'userAvatarBody', ->
       if is2x() then 2*size else size
 
     $scope.uploadedAvatarUrl = ->
-      $scope.user.uploadedAvatarUrl($scope.imageSize) if $scope.user.avatarKind == 'uploaded'
+      return unless $scope.user.avatarKind == 'uploaded'
+      return $scope.user.avatarUrl if typeof $scope.user.avatarUrl is 'string'
+      $scope.user.avatarUrl[$scope.imageSize]
 
     return
   ]
