@@ -1,16 +1,4 @@
 .announcement-form
-  .announcement-form__share-link{ng-if: "!announcement.model.isA('discussion')"}
-    %p.announcement-form__help.md-subhead{ng-if: "announcement.model.isA('group')", translate: "invitation_form.shareable_link"}>
-    .announcement-shareable-link__content.lmo-flex--column
-      .lmo-flex--row.lmo-flex__center{ng-if: "canUpdateAnyoneCanParticipate() || announcement.model.anyoneCanParticipate"}
-        %md-checkbox.announcement-form__checkbox{ng-model: "announcement.model.anyoneCanParticipate", ng-change: "announcement.model.save()", ng-if: "canUpdateAnyoneCanParticipate()"}
-          %label{translate: "announcement.form.anyone_can_participate"}
-
-      .lmo-flex--row.lmo-flex__center{ng-if: "announcement.model.anyoneCanParticipate || announcement.model.isA('group')"}
-        %md-input-container.lmo-flex__grow.md-no-errors.announcement-form__shareable-link
-          %input{value: "{{shareableLink()}}", disabled: "true"}
-        %md-button.md-accent.md-button--tiny.announcement-form__copy{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink()", on-copied: "copied()"}
-          %span{translate: "common.copy"}
   .announcement-form__invite
     %p.announcement-form__help.md-subhead{translate: "announcement.form.{{announcement.kind}}.helptext"}>
     %md-list
@@ -29,3 +17,16 @@
         %p.lmo-text-right{ng-switch-default: "true", translate: "announcement.form.notified", translate-value-notified: "{{announcement.recipients.length}}"}
       %md-list-item.announcement-form__list-item{ng-repeat: "recipient in announcement.recipients track by recipient.emailHash"}
         %announcement_chip{user: "recipient", show-close: "true"}
+    %md-divider
+  .announcement-form__share-link{ng-if: "!announcement.model.isA('discussion')"}
+    %p.announcement-form__help.md-subhead{ng-if: "announcement.model.isA('group')", translate: "invitation_form.shareable_link"}>
+    .announcement-shareable-link__content.lmo-flex--column
+      .lmo-flex--row.lmo-flex__center{ng-if: "canUpdateAnyoneCanParticipate() || announcement.model.anyoneCanParticipate"}
+        %md-checkbox.announcement-form__checkbox{ng-model: "announcement.model.anyoneCanParticipate", ng-change: "announcement.model.save()", ng-if: "canUpdateAnyoneCanParticipate()"}
+          %label{translate: "announcement.form.anyone_can_participate"}
+
+      .lmo-flex--row.lmo-flex__center{ng-if: "announcement.model.anyoneCanParticipate || announcement.model.isA('group')"}
+        %md-input-container.lmo-flex__grow.md-no-errors.announcement-form__shareable-link
+          %input{value: "{{shareableLink()}}", disabled: "true"}
+        %md-button.md-accent.md-button--tiny.announcement-form__copy{title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink()", on-copied: "copied()"}
+          %span{translate: "common.copy"}
