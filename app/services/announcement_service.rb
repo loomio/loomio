@@ -10,7 +10,7 @@ class AnnouncementService
     when 'non_voters'       then model.poll.undecided
     else
       raise UnknownAudienceKindError.new
-    end.where.not(id: actor.id)
+    end.active.where.not(id: actor.id)
   end
 
   def self.create(model:, params:, actor:)
