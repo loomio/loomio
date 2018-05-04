@@ -12,7 +12,7 @@ module.exports = {
     page.expectText('.membership-requests-page__previous-requests', 'Approved by Patrick Swayze')
   },
 
-  'adds existing users to group upon approval': (test) => {
+  'adds_existing_users_to_group_upon_approval': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
