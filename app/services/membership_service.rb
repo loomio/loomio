@@ -1,6 +1,6 @@
 class MembershipService
   def self.redeem(membership:, actor:)
-    return if membership.accepted_at
+    raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
 
     membership.update(user: actor, accepted_at: DateTime.now)
 
