@@ -19,8 +19,8 @@ module.exports = {
     page.loadPath('setup_dashboard_with_one_thread')
     page.expectElement('.thread-previews-container')
     page.mouseOver('.thread-preview', () => { page.click('.thread-preview__dismiss') })
-    page.expectText('.dismiss-explanation-modal h1', 'Dismiss thread')
-    page.click('.dismiss-explanation-model__submit')
+    page.expectText('.confirm-modal h1', 'Dismiss thread')
+    page.click('.confirm-modal__submit')
     page.expectText('.flash-root__message', 'Thread dismissed')
   },
 
@@ -39,10 +39,8 @@ module.exports = {
     page.loadPath('setup_dashboard_with_one_thread')
     page.expectElement('.dashboard-page__collections')
     page.mouseOver('.thread-preview', () => { page.click('.thread-preview__mute') })
-    page.expectText('.mute-explanation-modal__title', 'Mute thread')
-    page.click('.mute-explanation-modal__mute-thread')
+    page.expectText('.confirm-modal h1', 'Mute thread')
+    page.click('.confirm-modal__submit')
     page.expectText('.flash-root__message', 'Thread muted')
-    page.click('.flash-root__action a')
-    page.expectText('.flash-root__message', 'Thread unmuted')
   }
 }

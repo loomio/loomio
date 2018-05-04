@@ -30,7 +30,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
       author_link: slack_link_for(author),
       author_icon: author.avatar_url(:small),
       title:       slack_title,
-      title_link:  slack_link_for(model, invitation: true),
+      title_link:  slack_link_for(model, grant_membership: true),
       text:        slack_text,
       callback_id: model.id,
       actions:     actions
@@ -65,16 +65,12 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def slack_link_for(obj, opts = {})
-    if opts[:invitation] && obj.group.presence
-      back_to = scope.fetch(:back_to, slack_link_for(obj, opts.except(:invitation)))
-      invitation_url(invitation_token, link_options.merge(back_to: back_to))
+    if opts[:grant_membership] && obj.group.presence
+      back_to = scope.fetch(:back_to, slack_link_for(obj, opts.except(:grant_membership)))
+      join_url(obj.group, link_options.merge(back_to: back_to))
     else
       polymorphic_url(obj, link_options.merge(opts))
     end
-  end
-
-  def invitation_token
-    @invitation_token ||= model.group&.shareable_invitation&.token
   end
 
   def model

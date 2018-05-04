@@ -10,12 +10,12 @@ describe "User abilities" do
   let(:ability) { Ability::Base.new(user) }
   subject { ability }
 
-  let(:own_invitation) { InvitationService.create_invite_to_join_group(recipient_email: "h@h.com",
-                                                                       group: group,
-                                                                       inviter: user) }
-  let(:other_members_invitation) { InvitationService.create_invite_to_join_group(recipient_email: "h@h.com",
-                                                                                 group: group,
-                                                                                 inviter: other_user) }
+  let(:own_pending_membership) {
+    create :membership, user: create(:user, email: "h@h.com", email_verified: false), group: group, inviter: user
+  }
+  let(:other_members_pending_membership) {
+    create :membership, user: create(:user, email: "h@h.com", email_verified: false), group: group, inviter: other_user
+  }
   it { should be_able_to(:create, group) }
 
   context "in relation to a group" do
@@ -197,7 +197,7 @@ describe "User abilities" do
     let(:another_user_comment) { create :comment, discussion: discussion }
 
     before do
-      own_invitation
+      own_pending_membership
       @membership = group.add_member!(user)
       @other_membership = group.add_member!(other_user)
     end
@@ -261,8 +261,8 @@ describe "User abilities" do
     it { should_not be_able_to(:destroy, @other_membership) }
     it { should     be_able_to(:destroy, @membership) }
 
-    it { should     be_able_to(:cancel, own_invitation) }
-    it { should_not be_able_to(:cancel, other_members_invitation) }
+    it { should     be_able_to(:destroy, own_pending_membership) }
+    it { should_not be_able_to(:destroy, other_members_pending_membership) }
 
     it { should be_able_to(:show, user_comment) }
 
@@ -312,8 +312,8 @@ describe "User abilities" do
     it { should     be_able_to(:remove_admin, @other_membership) }
     it { should     be_able_to(:destroy, @other_membership) }
     it { should     be_able_to(:destroy, another_user_comment) }
-    it { should     be_able_to(:cancel, own_invitation) }
-    it { should     be_able_to(:cancel, other_members_invitation) }
+    it { should     be_able_to(:destroy, own_pending_membership) }
+    it { should     be_able_to(:destroy, other_members_pending_membership) }
 
     it "should not be able to delete the only admin of a group" do
       group.admin_memberships.where("memberships.id != ?", @membership.id).destroy_all

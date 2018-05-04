@@ -43,6 +43,15 @@ module.exports = (test) ->
     test.clearValue(selector)
     test.setValue(selector, value)
 
+  execute: (script) ->
+    test.execute(script)
+
+  selectFromAutocomplete: (selector, value) ->
+    @fillIn(selector, value)
+    @click(selector)
+    @pause()
+    @execute("document.querySelector('.md-autocomplete-suggestions li').click()")
+
   selectOption: (selector, option) ->
     # TODO
     # @click selector

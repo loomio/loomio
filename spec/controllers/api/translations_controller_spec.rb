@@ -10,7 +10,6 @@ describe API::TranslationsController do
   let(:comment_translation) { create(:translation, translatable: comment, language: :fr, fields: { body: "body" }) }
 
   before do
-    TranslationService.stub(:supported_languages).and_return(['fr'])
     sign_in user
   end
 

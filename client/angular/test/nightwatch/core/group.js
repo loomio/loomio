@@ -327,21 +327,16 @@ module.exports = {
     page.loadPath('setup_group_with_multiple_coordinators')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__leave-group')
-    page.click('.leave-group-form__submit')
+    page.click('.confirm-modal__submit')
     page.expectText('.flash-root__message', 'You have left this group')
     page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
   },
 
   'prevents last coordinator from leaving the group': (test) => {
     page = pageHelper(test)
-
-    // click(leave group from the group actions downdown)
-    // see that we can't leave until we add a coordinator
-    // click(add coordinator and check we're taken to the memberships page)
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
-    page.click('.group-page-actions__leave-group')
-    page.expectText('.leave-group-form', 'You cannot leave this group')
+    page.expectNoElement('.group-page-actions__leave-group')
   },
 
   'allows a coordinator to archive a group': (test) => {
@@ -350,7 +345,7 @@ module.exports = {
     page.loadPath('setup_group')
     page.click('.group-page-actions__button')
     page.click('.group-page-actions__archive-group')
-    page.click('.archive-group-form__submit')
+    page.click('.confirm-modal__submit')
     page.expectText('.flash-root__message', 'This group has been deactivated')
     page.expectText('.dashboard-page__no-groups', "Start or join a group to see threads")
   },
@@ -420,14 +415,14 @@ module.exports = {
     page.expectText('.group-theme__name', 'Ghostbusters')
   },
 
-  'handles advanced group settings': (test) => {
+  'handles_advanced_group_settings': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_restrictive_settings')
     page.expectNoElement('.current-polls-card__start-poll')
     page.expectNoElement('.subgroups-card__start')
     page.expectNoElement('.discussions-card__new-thread-button')
-    page.expectNoElement('.members-card__invite-members')
+    page.expectNoElement('.membership-card__invite')
     page.click('.poll-common-preview')
     page.expectNoElement('.poll-common-vote-form__submit')
   }

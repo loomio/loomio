@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
   include ForceSslHelper
   include SentryRavenHelper
 
-  around_action :process_time_zone
-  around_action :use_preferred_locale   # LocalesHelper
-  before_action :set_invitation_token   # CurrentUserHelper
-  before_action :set_last_seen_at       # CurrentUserHelper
+  around_action :process_time_zone          # LocalesHelper
+  around_action :use_preferred_locale       # LocalesHelper
+  before_action :set_last_seen_at           # CurrentUserHelper
+  before_action :handle_pending_memberships # PendingActionsHelper
   before_action :set_raven_context
 
   helper_method :current_user
@@ -29,16 +29,12 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  
+
   def initial_payload
     @payload ||= InitialPayload.new(current_user).payload.merge(
       flash:           flash.to_h,
       pendingIdentity: serialized_pending_identity
     )
-  end
-
-  def process_time_zone(&block)
-    Time.use_zone(TimeZoneToCity.convert(current_user.time_zone.to_s), &block)
   end
 
   def hosted_by_loomio?

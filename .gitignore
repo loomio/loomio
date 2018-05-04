@@ -34,6 +34,7 @@ dump.rdb
 
 client/node_modules
 client/angular/dependencies
+client/angular/test/screenshots
 client/angular/templates.coffee
 client/tasks/config/plugins.yml
 client/tests_output

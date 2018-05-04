@@ -6,12 +6,10 @@
       %md-button{ng-click: "toggleSubscription()"}
         %span{translate: "common.action.unsubscribe", ng-if: "poll.subscribed"}
         %span{translate: "common.action.subscribe", ng-if: "!poll.subscribed"}
-    %md-menu-item.poll-actions-dropdown__share{ng-if: "canSharePoll()"}
-      %md-button{ng-click: "sharePoll()", translate: "common.action.share"}
     %md-menu-item.poll-actions-dropdown__edit{ng-if: "canEditPoll()"}
       %md-button{ng-click: "editPoll()", translate: "common.action.edit"}
     %md-menu-item.poll-actions-dropdown__close{ng-if: "canClosePoll()"}
-      %md-button{ng-click: "closePoll()", translate: "common.action.close"}
+      %md-button{ng-click: "closePoll()", translate: "poll_common.close_poll_type", translate-value-poll-type: "{{poll.translatedPollType()}}"}
     %md-menu-item.poll-actions-dropdown__reopen{ng-if: "canReopenPoll()"}
       %md-button{ng-click: "reopenPoll()", translate: "common.action.reopen"}
     %md-menu-item.poll-actions-dropdown__export{ng-if: "canExportPoll()"}

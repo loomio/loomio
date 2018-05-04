@@ -2,7 +2,7 @@
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %h1.lmo-h1{translate: "install_slack.modal_title"}
-      %material_modal_header_cancel_button{ng-if: "!preventClose"}
+      %dismiss_modal_button{ng-if: "!preventClose"}
   %md-dialog-content
     %install_slack_form{ng-if: "hasIdentity", group: "group"}
     .install-slack-form__redirect{ng-click: "redirect()", ng-if: "!hasIdentity"}

@@ -29,7 +29,6 @@ gem 'browser', '~> 2.3.0'
 gem 'fog-aws'
 gem "sentry-raven"
 gem 'sequenced', '~> 2.0.0'
-gem 'bing_translator', '~> 5.2.0'
 gem 'http_accept_language'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'uglifier'
@@ -39,7 +38,7 @@ gem 'ahoy_matey', '~> 2'
 gem 'ahoy_email', '~> 0.3.1'
 gem 'maxminddb'
 gem 'oj'
-gem 'snorlax'
+gem 'snorlax', github: 'loomio/snorlax'
 gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
 gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
@@ -54,6 +53,7 @@ gem 'js_regex'
 gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'skylight'
+gem 'google-cloud-translate'
 
 group :development, :test do
   gem 'byebug'

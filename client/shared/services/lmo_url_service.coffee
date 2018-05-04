@@ -5,11 +5,17 @@ module.exports = class LmoUrlService
   ImplementationService.requireMethod @, 'goTo',   'setGoToMethod'
   ImplementationService.requireMethod @, 'params', 'setParamsMethod'
 
-  @route: ({model, action, params}) ->
+  @shareableLink: (model) ->
+    if model.isA('group')
+      @buildModelRoute('', model.token, '', {}, namespace: 'join/group', absolute: true)
+    else
+      @route(model: model, options: {absolute: true})
+
+  @route: ({model, action, params, options}) ->
     if model? and action?
       @[model.constructor.singular](model, {}, {noStub: true}) + @routePath(action)
     else if model?
-      @[model.constructor.singular](model)
+      @[model.constructor.singular](model, params, options)
     else
       @routePath(action)
 
@@ -51,9 +57,6 @@ module.exports = class LmoUrlService
 
   @event: (e, params = {}, options = {}) ->
     @discussion(e.discussion(), params, options) + "/#{e.sequenceId}"
-
-  @invitation: ->
-    # NOOP for now
 
   @oauthApplication: (a, params = {}, options = {}) ->
     @buildModelRoute('apps/registered', a.id, a.name, params, options)

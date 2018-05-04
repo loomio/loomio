@@ -12,11 +12,12 @@ module.exports =
 
   settingsFor: (poll) ->
     _.compact [
-      ('multipleChoice'       if poll.pollType == 'poll'),
+      ('multipleChoice'        if poll.pollType == 'poll'),
       'notifyOnParticipate',
-      ('canRespondMaybe'      if poll.pollType == 'meeting' && poll.isNew()),
-      ('anonymous'            if !fieldFromTemplate(poll.pollType, 'prevent_anonymous')),
-      ('votersCanAddOptions'  if fieldFromTemplate(poll.pollType, 'can_add_options'))
+      ('canRespondMaybe'       if poll.pollType == 'meeting' && poll.isNew()),
+      ('anonymous'             if !fieldFromTemplate(poll.pollType, 'prevent_anonymous')),
+      ('deanonymizeAfterClose' if poll.anonymous),
+      ('voterCanAddOptions'   if fieldFromTemplate(poll.pollType, 'can_add_options'))
     ]
 
   myLastStanceFor: (poll) ->

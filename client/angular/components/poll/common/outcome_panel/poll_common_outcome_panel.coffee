@@ -1,3 +1,4 @@
+Records        = require 'shared/services/records.coffee'
 Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
@@ -12,6 +13,13 @@ angular.module('loomioApp').directive 'pollCommonOutcomePanel', ->
     $scope.actions = [
       name: 'react'
       canPerform: -> AbilityService.canReactToPoll($scope.poll)
+    ,
+      name: 'announce_outcome'
+      icon: 'mdi-account-plus'
+      active:     -> $scope.poll.outcome().announcementsCount == 0
+      canPerform: -> AbilityService.canAdministerPoll($scope.poll)
+      perform:    -> ModalService.open 'AnnouncementModal', announcement: ->
+        Records.announcements.buildFromModel($scope.poll.outcome())
     ,
       name: 'edit_outcome'
       icon: 'mdi-pencil'

@@ -4,13 +4,15 @@ class Discussion < ApplicationRecord
   include Translatable
   include Reactable
   include HasTimeframe
+  include HasEvents
   include HasMentions
+  include HasGuestGroup
   include HasDrafts
   include HasImportance
   include MessageChannel
-  include MakesAnnouncements
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
   include HasCreatedEvent
   extend  NoSpam
 
@@ -93,8 +95,8 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
-  def groups
-    Array(group)
+  def update_undecided_count
+    polls.active.each(&:update_undecided_count)
   end
 
   def created_event_kind

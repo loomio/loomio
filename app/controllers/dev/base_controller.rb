@@ -30,6 +30,10 @@ class Dev::BaseController < ApplicationController
     Group.delete_all
     Membership.delete_all
     Poll.delete_all
+    Event.delete_all
+    Discussion.delete_all
+    Stance.delete_all
+    PollOption.delete_all
     ActionMailer::Base.deliveries = []
   end
 

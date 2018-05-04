@@ -1,6 +1,6 @@
 class Queries::VisibleAutocompletes < Delegator
 
-  def initialize(query: , group: , limit: , current_user: )
+  def initialize(query: , group: , pending: nil,  limit: , current_user: )
     # want to match only first part of each word
     #
     # searching for 'rob'
@@ -8,7 +8,13 @@ class Queries::VisibleAutocompletes < Delegator
     # 'emrob guthrie' should be false
     # 'james robinson' should be true
     #
-    @relation = Membership.active.joins(:user).joins(:group)
+    @relation = if pending
+      Memberhship.pending
+    else
+      Membership.active
+    end
+
+    @relation =  @relation.joins(:user).joins(:group)
                           .where(group: group)
                           .where("users.id != ?", current_user.id)
                           .where("users.name ilike :qFirstWord OR

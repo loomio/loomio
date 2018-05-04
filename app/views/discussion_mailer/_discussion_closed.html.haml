@@ -1,0 +1,9 @@
+- user = item.user
+%table
+  %tr
+    %td.icon
+      = link_to user_url(user) do
+        %div{class: "medium-user-avatar #{user.avatar_kind}-user-avatar avatar-canvas"}
+          = render "avatar", user: user
+    %td.content
+      %i= t(:"discussion_mailer.discussion_closed", actor: user.name)

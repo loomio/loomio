@@ -50,20 +50,16 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: another_user) }.to raise_error { CanCan::AccessDenied }
     end
 
-    describe 'announcements' do
-      it 'announces the poll to a group' do
-        poll_created.make_announcement = true
-        expect { PollService.create(poll: poll_created, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(poll_created.group.members.count - 1)
-      end
+    it 'does not email people' do
+      expect { PollService.create(poll: poll_created, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
+    end
 
-      it 'does not announce unless make_announcement is set to true' do
-        expect { PollService.create(poll: poll_created, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
-      end
-
-      # it 'does not announce if a group is not specified' do
-      #   poll_created.make_announcement = true
-      #   expect { PollService.create(poll: poll_created, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
-      # end
+    it 'notifies new mentions' do
+      poll.group.add_member! another_user
+      poll.details = "A mention for @#{another_user.username}!"
+      expect { PollService.create(poll: poll, actor: user) }.to change {
+        Events::UserMentioned.where(kind: :user_mentioned).count
+      }.by(1)
     end
 
   end
@@ -87,32 +83,11 @@ describe PollService do
       expect(poll_created.reload.title).to eq old_title
     end
 
-    describe 'announcements' do
-      it 'creates a new poll_created event when changing groups' do
-        expect {
-          PollService.update(poll: poll_created, params: { group_id: another_group.id }, actor: user)
-        }.to change { Event.where(kind: :poll_created).count }.by(1)
-        expect(Event.where(kind: :poll_created).last.announcement).to eq true
-      end
-
-      it 'does not create a poll_created event when not changing groups' do
-        expect {
-          PollService.update(poll: poll_created, params: { details: "A new description" }, actor: user)
-        }.to_not change { Event.where(kind: :poll_created).count }
-      end
-
-      it 'does not create a poll_created event for trivial updates' do
-        expect {
-          PollService.update(poll: poll_created, params: { anyone_can_participate: true }, actor: user)
-        }.to_not change { Event.where(kind: :poll_created).count }
-      end
-
-      it 'makes an announcement to participants if make_announcement is true' do
-        stance
-        expect {
-          PollService.update(poll: poll_created, params: { details: "A new description", make_announcement: true }, actor: user)
-        }.to change { ActionMailer::Base.deliveries.count }.by(1)
-      end
+    it 'doesnt email people' do
+      stance
+      expect {
+        PollService.update(poll: poll_created, params: { details: "A new description" }, actor: user)
+      }.to_not change { ActionMailer::Base.deliveries.count }
     end
 
     it 'creates a new poll edited event for poll option changes' do
@@ -172,6 +147,21 @@ describe PollService do
       PollService.create(poll: poll_created, actor: user)
       PollService.close(poll: poll_created, actor: user)
       expect(poll_created.reload.closed_at).to be_present
+    end
+
+    it 'reveals voters if option is set' do
+      poll_created.anonymous = true
+      poll_created.custom_fields[:deanonymize_after_close] = true
+      PollService.create(poll: poll_created, actor: user)
+      PollService.close(poll: poll_created, actor: user)
+      expect(poll_created.reload.anonymous).to eq false
+    end
+
+    it 'does not reveal voters if option is unset' do
+      poll_created.anonymous = true
+      PollService.create(poll: poll_created, actor: user)
+      PollService.close(poll: poll_created, actor: user)
+      expect(poll_created.reload.anonymous).to eq true
     end
 
     it 'disallows the creation of new stances' do

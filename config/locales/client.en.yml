@@ -126,6 +126,9 @@ en:
       remind: Remind
       resend: Resend
       send: Send
+      joined: Joined
+      last_seen: Last seen
+      invite: Invite
       resent: Invitation resent
       export: Export
     formatting_help:
@@ -145,6 +148,8 @@ en:
     _10: 10th
 
   devise:
+    sessions:
+      signed_up: Signed up successfully!
     failure:
       inactive: 'There is a deactivated account associated with this email address. If you want to reactivate your account, contact us.'
 
@@ -232,8 +237,9 @@ en:
     aria_label: Mute thread
     mute_thread: Mute thread
     body_html: |
-      <p>Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone <strong>@mentions you</strong>.</p>
-      <p>Muted threads are hidden from <strong>Recent</strong> and <strong>Unread</strong> pages too. To find your Muted threads, select the <strong>Muted</strong> option in the sidebar:</p>
+      Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone <strong>@mentions you</strong>.
+    body_html_2: |
+      Muted threads are hidden from <strong>Recent</strong> and <strong>Unread</strong> pages too. To find your Muted threads, select the <strong>Muted</strong> option in the sidebar
     image_alt: Muted threads option in sidebar
 
   dismiss_explanation_modal:
@@ -326,6 +332,21 @@ en:
     contact_site_name: 'Contact {{site_name}}'
     sign_out: 'Sign out'
 
+  membership_card:
+    group_members: "Group members"
+    discussion_members: "Thread members"
+    poll_members: "{{pollType}} members"
+    invite_to_group: "Invite to group"
+    invite_to_discussion: "Invite to thread"
+    invite_to_poll: "Invite to vote"
+    invitations: "Invitations"
+
+  membership_dropdown:
+    make_coordinator: 'Make coordinator'
+    demote_coordinator: 'Demote coordinator'
+    remove_membership: 'Remove from group'
+    cancel_invitation: Cancel invitation
+
   start_menu:
     label: 'User actions'
     title: 'Action'
@@ -345,6 +366,7 @@ en:
     header: "Notifications"
     no_notifications: "You don't have any notifications"
     new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> shared a discussion <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{title}}</strong>"
     motion_closed: "Proposal closed: <strong>{{title}}</strong>"
     publish_outcome: "Publish an outcome"
@@ -367,10 +389,12 @@ en:
     new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> started a {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> edited a {{poll_type}}: <strong>{{title}}</strong>"
+    poll_announced: "<strong>{{name}}</strong> shared a {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> added options to a {{poll_type}}: <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> added options to: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> participated in: <strong>{{title}}</strong>"
 
   position_buttons_panel:
@@ -406,15 +430,63 @@ en:
     make_announcement: Announcement
     notified_count: '{{count}} people will be emailed'
 
+  announcement:
+    audiences:
+      parent_group: Members of {{name}}
+      formal_group: Members of {{name}}
+      discussion_group: Members of thread
+      voters: People who have voted
+      non_voters: People who have not voted
+
+    form:
+      group_announced:
+        title: Invite to group
+        helptext: Who would you like to invite to the group?
+      discussion_announced:
+        title: Invite to thread
+        helptext: Who would you like to invite to the thread?
+      discussion_edited:
+        title: Notify of edits
+        helptext: Who would you like to notify about your changes?
+      poll_announced:
+        title: Invite to vote
+        helptext: Who would you like to invite to vote?
+      poll_edited:
+        title: Notify of edits
+        helptext: Who would you like to notify about your changes?
+      outcome_announced:
+        title: Share outcome
+        helptext: Who would you like to share the outcome with?
+      anyone_can_participate: Anyone with link can participate
+      placeholder: Enter names or email addresses...
+      notified: '{{notified}} people will be notified:'
+      notified_singular: '1 person will be notified:'
+      group_title: '{{name}} ({{count}} people)'
+    members_list:
+      title: Shared with
+      last_notified: Notified
+      not_notified: Not notified yet
+      no_members: "This hasn't been shared with anyone yet!"
+    group_form:
+      search_placeholder: Search for people...
+      modal_title: Select group members
+      members_count: '{{count}} people will be notified'
+    flash:
+      success: '{{count}} notifications sent'
+
   action_dock:
     react: Add reaction
     add_resource: Add an attachment
     edit_group: Edit group context
     add_comment: Comment
-    copy_url_comment: Copy URL
+    copy_url: Copy URL
     edit_thread: Edit context
+    announce_thread: Invite people to join the thread
+    announce_thread_active: (No one has been invited yet)
     translate_thread: Translate context
     edit_poll: Edit poll
+    announce_poll: Invite people to vote
+    announce_poll_active: (No one has been invited yet)
     translate_poll: Translate poll
     edit_stance: Change your vote
     translate_stance: Translate vote
@@ -423,11 +495,15 @@ en:
     reply_to_comment: Reply
     translate_comment: Translate comment
     edit_outcome: Edit outcome
+    announce_outcome: Notify people about this outcome
+    announce_outcome_active: (No one has been notified of this outcome yet)
     translate_outcome: Translate outcome
     show_history: Show edit history
     pin_thread: Pin thread
     unpin_thread: Un-pin thread
     comment_copied: Comment URL copied to clipboard
+    poll_copied: Decision URL copied to clipboard
+    discussion_copied: Thread URL copied to clipboard
 
   cover_photo_form:
     aria_label: 'Change cover photo form'
@@ -504,7 +580,7 @@ en:
     open_discussions: 'Open threads'
     closed_discussions: 'Closed threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
-    members: 'Members'
+    members: '{{count}} Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
     see_all_members: 'See all {{count}} members'
@@ -743,6 +819,18 @@ en:
     remove_admin_from_self:
       question: 'Are you sure you no longer want to be a coordinator?'
 
+  membership_remove_modal:
+    invitation:
+      title: Cancel invitation
+      message: Are you sure you want to cancel the invitation to {{name}}?
+      flash: Invitation cancelled
+      submit: Cancel invitation
+    membership:
+      title: Remove member
+      message: Are you sure you want to remove {{name}} from the group?
+      flash: Member removed
+      submit: Remove member
+
   memberships_panel:
     add_coordinator: Make coordinator
     remove_coordinator: Demote coordinator
@@ -775,6 +863,7 @@ en:
     location_field: 'Location: {{value}}'
     locale_field: 'Language: {{value}}'
     online_field: 'Online: {{value}}'
+    invited: 'Invited {{value}}'
 
   contact_request_form:
     modal_title: "Email {{name}}"
@@ -854,6 +943,8 @@ en:
     daily_summary_description: "Each morning, you will get an email with any activity that you missed the day before. This makes it easy to stay up to date with activity."
     on_participation_label: Subscribe on participation
     on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
+    announcement_label: Announcements
+    announcement_description: "You will receive an email about all content that has been announced by people in your groups"
     mentioned_label: Mentions
     mentioned_description: "When someone wants to get your attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
     update_settings: Save changes
@@ -1168,6 +1259,7 @@ en:
     message: Message
     results: Results
     responses: Responses
+    close_poll_type: Close {{pollType}}
     totals: Totals
     vote: Vote
     votes: Votes
@@ -1184,6 +1276,7 @@ en:
     share_count: Share check
     start_poll: Start a decision
     publish_poll: Share poll
+    view_all: View all
 
   poll_common_attachment_form:
     label: Attachments
@@ -1206,6 +1299,8 @@ en:
     count: "See all: ({{count}}) decisions"
 
   poll_common_action_panel:
+    anonymous: Votes will be anonymous
+    anonymous_until_close: Votes will be anonymous until this poll closes
     unable_to_vote: You do not have permission to vote in this decision.
 
   current_polls_card:
@@ -1219,11 +1314,6 @@ en:
   poll_common_select_group:
     loomio_group: Group
     loomio_group_placeholder: (no group selected)
-
-  poll_common_voter_add_options:
-    add_options: Voters may add options
-    helptext_on: Participants may add their own options when voting
-    helptext_off: Participants will select from the options you provide
 
   poll_common_notify_group:
     notify_group: Announcement
@@ -1247,28 +1337,25 @@ en:
   poll_common_settings:
     multiple_choice:
       title: Multiple choice
-      helptext_on: Participants will be able to select multiple options.
-      helptext_off: Participants must select only one option.
+      helptext_on: When selected, participants will be able to select multiple options.
     anyone_can_participate:
       title: Anyone can participate
-      helptext_on: Anyone with the link to the poll can participate.
-      helptext_off: Only people who are invited, or part of this group can participate.
+      helptext_on: When selected, anyone with the link to the poll can participate.
     notify_on_participate:
       title: Notify me when people participate
-      helptext_on: You will be notified whenever someone participates.
-      helptext_off: You will receive results when this activity closes.
+      helptext_on: When selected, you will be notified whenever someone participates.
     anonymous:
-      title: Anonymous participants
-      helptext_on: Participant info will not be shown with each response.
-      helptext_off: Participants will be shown with their responses.
-    voters_can_add_options:
+      title: Anonymous voters
+      helptext_on: When selected, participant info will not be shown with each response.
+    deanonymize_after_close:
+      title: Reveal voters after close
+      helptext_on: When selected, anonymous voters will be revealed after the poll closes
+    voter_can_add_options:
       title: Voters may add options
-      helptext_on: Participants may add their own options when voting.
-      helptext_off: Participants will select from the options you provide.
+      helptext_on: When selected, participants may add their own options when voting.
     can_respond_maybe:
       title: Voters can respond "if need be"
       helptext_on:  Voters can indicate times as "If need be"
-      helptext_off: Voters will indicate yes or no for each time
   poll_common_close_form:
     title: Close a poll early
     helptext: Are you sure you're ready to close early?
@@ -1398,8 +1485,6 @@ en:
     details_placeholder: Provide any clarifying details people might need to answer the question.
     add_option_placeholder: Add option
     remove_option: Remove option
-    multiple_choice: Multiple choice
-    multiple_choice_explained: Allow voters to select as many options as they like.
     poll_created: Poll created
     poll_updated: Poll updated
 
@@ -1432,7 +1517,7 @@ en:
     details_placeholder: Provide any clarifying details people might need to participate
     add_option_placeholder: Add option
     dots_per_person: Dots per person
-    dots_per_person_helptext: How many points to allocate to each participant
+    dots_per_person_helptext: The number of dots each participant will distribute
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
 
@@ -1574,39 +1659,6 @@ en:
   poll_admin_page:
     title: Admin - {{title}}
 
-  poll_common_share_form:
-    no_group_selected: No group selected
-    share_a_link: Share link
-    share_a_link_helptext: Create a shareable link to distribute. Anyone who has access to the link will be able to participate.
-    anyone_can_participate: Anyone with link can participate
-    anyone_can_participate_true: Shareable link created
-    anyone_can_participate_false: Shareable link revoked
-    get_link: Copy link
-    invite_visitor: Email guests
-    invite_visitor_helptext: Invite individuals to this decision by email address. Guests will be able to participate in this decision only.
-    send_email: Send email
-    shareable_link_created: Anyone can now participate in this decision
-    shareable_link_revoked: This decision is now invite-only
-    shareable_link: Shareable link
-    guests_invited: Sent to {{count}} people
-    guest_revoked: Revoked access for {{email}}
-    existing_guests: Existing guests
-    new_guests: New emails to invite
-    enter_email: "E.g. guest@example.com"
-    reminded: Reminder sent!
-    send_emails: Send invitations ({{count}})
-    share_group: Group
-    share_group_helptext: Select a group to share this decision with. Members of the group will be able to participate.
-    cannot_move_poll_helptext: This poll is part of the discussion <strong>{{discussion}}</strong> in <strong>{{group}}</strong>, and so cannot be moved.
-    move_group_helptext: Be careful! Moving a decision out of a group may cause some people to lose access to it. Existing votes will still be recorded.
-    set_group: Set group
-    group_set: Group updated
-    view_poll: View poll
-    email_invited: 'Invitation email sent to {{email}}'
-    email_exists: '{{email}} has already been invited'
-    email_empty: 'Please enter an email'
-    email_invalid: "That doesn't appear to be a valid email"
-
   poll_common_publish_facebook_preview:
     shared_a: shared a
     link: link
@@ -1665,13 +1717,13 @@ en:
       Click the button below and we'll send you a link to sign in instantly.
       If you'd like to use a password to log in in the future, you can set one from your profile page.
     login_link_helptext_with_password: "Enter your password, or sign in via email."
-    sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to log in."
-    sign_up_helptext_with_token: "Just enter the name you'd like to be known by, and click Sign In to get started."
+    sign_up_helptext: "Please enter the name you'd like to be known by, and we'll send you a link to log in."
+    sign_up_helptext_with_token: "Please enter the name you'd like to be known by, then click Sign In."
     oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
     name_required: Please enter a name
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
 
-    welcome: Nice to meet you, {{email}}!
+    welcome: Nice to meet you!
     welcome_back: Welcome back, {{name}}!
     login_link: Sign in via email
     set_password: Set password

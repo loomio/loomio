@@ -27,14 +27,10 @@ EventBus.configure do |config|
                 'comment_create',
                 'poll_create') { |model, actor| model.perform_draft_purge!(actor) }
 
-  # Add creator to group on group creation
-  config.listen('group_create') do |group, actor|
-    if actor.is_logged_in?
-      group.add_admin! actor
-    elsif actor.email.present?
-      InvitationService.invite_creator_to_group(group: group, creator: actor)
-    end
-  end
+  # Make creator a guest group admin on creation
+  config.listen('group_create',
+                'discussion_create',
+                'poll_create') { |model, actor| model.guest_group.add_admin!(actor) }
 
   # Index search vectors after model creation
   config.listen('discussion_create',
@@ -46,29 +42,9 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # add poll creator as admin of guest group
-  config.listen('poll_create') { |poll, actor| poll.guest_group.add_admin!(actor) }
-
-  # publish to new group if group has changed
-  config.listen('poll_changed_group') do |poll, actor|
-    poll.make_announcement = true
-    Events::PollCreated.publish!(poll, actor)
-  end
-
-  # mark invitations with the new user's email as used
-  config.listen('user_added_to_group_event', 'user_joined_group_event') do |event|
-    event.eventable.group.invitations.pending
-         .where(recipient_email: event.eventable.user.email)
-         .update_all(accepted_at: event.created_at || Time.now)
-  end
-
-  # add creator to group if one doesn't exist
-  config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
-
   # send memos to client side after comment change
   config.listen('comment_destroy')  { |comment|  Memos::CommentDestroyed.publish!(comment) }
   config.listen('reaction_destroy') { |reaction| Memos::ReactionDestroyed.publish!(reaction: reaction) }
-
 
   config.listen('event_remove_from_thread') do |event|
     MessageChannelService.publish_model(event, serializer: Events::BaseSerializer)
@@ -92,11 +68,15 @@ EventBus.configure do |config|
   # update discussion or comment versions_count when title or description edited
   config.listen('discussion_update', 'comment_update') { |model| model.update_versions_count }
 
+  config.listen('membership_destroy') { |membership| Queries::OrganisationMemberships.for(membership).destroy_all }
+
   # update stance data for polls
   config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
+  config.listen('stance_create')  { |stance| stance.poll.guest_group.add_member!(stance.participant) }
 
   # publish reply event after comment creation
-  config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
+  config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }
+  config.listen('comment_create') { |comment| comment.discussion.guest_group.add_member! comment.author }
 
   # publish mention events after model create / update
   config.listen('comment_create',
@@ -114,6 +94,9 @@ EventBus.configure do |config|
                 'poll_close',
                 'poll_destroy',
                 'poll_expire') { |model| model.discussion&.update_importance }
+
+  # de-anonymize polls after close
+  config.listen('poll_close') { |poll| poll.update(anonymous: false) if poll.deanonymize_after_close }
 
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }

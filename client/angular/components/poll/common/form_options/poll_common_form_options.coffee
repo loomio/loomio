@@ -1,5 +1,6 @@
 Session        = require 'shared/services/session.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
+EventBus       = require 'shared/services/event_bus.coffee'
 
 { registerKeyEvent }  = require 'shared/helpers/keyboard.coffee'
 { fieldFromTemplate } = require 'shared/helpers/poll.coffee'

@@ -2,9 +2,7 @@ class Events::NewCoordinator < Event
   include Events::Notify::InApp
 
   def self.publish!(membership, actor)
-    create(kind: "new_coordinator",
-           user: actor,
-           eventable: membership).tap { |e| EventBus.broadcast('new_coordinator_event', e) }
+    super membership, user: actor, created_at: Time.now
   end
 
   private

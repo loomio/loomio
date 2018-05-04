@@ -4,9 +4,7 @@ module.exports = do ->
   configData = if window? and window.Loomio?
                  window.Loomio
                else
-                 {bootData: {}, permittedParams: {}}
-  configData.invitationToken = ->
-    (configData.pendingIdentity || {}).token
+                 {bootData: {}, permittedParams: {}, pendingIdentity: {}}
 
   configData.pluginConfig = (name) ->
     _.find configData.plugins.installed, (p) -> p.name == name

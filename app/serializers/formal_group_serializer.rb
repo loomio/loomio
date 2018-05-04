@@ -1,3 +1,0 @@
-class FormalGroupSerializer < GroupSerializer
-
-end

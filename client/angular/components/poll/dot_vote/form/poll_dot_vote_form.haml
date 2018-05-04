@@ -6,8 +6,9 @@
   .md-input-compensate
     %md-input-container.lmo-flex.lmo-flex__center{layout: "row"}
       .poll-common-checkbox-option__text.md-list-item-text.lmo-flex__grow
-        %h3{translate: "poll_dot_vote_form.dots_per_person"}
-        %p.md-caption{translate: "poll_dot_vote_form.dots_per_person_helptext"}
+        .lmo-flex--row
+          %h3{translate: "poll_dot_vote_form.dots_per_person"}
+          %help_bubble{helptext: "poll_dot_vote_form.dots_per_person_helptext"}
         %validation_errors{subject: "poll", field: "dotsPerPerson"}
-      %input.lmo-number-input{type: "number", min: "0", ng-model: "poll.customFields.dots_per_person"}
+      %input.lmo-number-input{type: "number", min: "1", ng-model: "poll.customFields.dots_per_person"}
     %poll_common_settings{poll: "poll"}

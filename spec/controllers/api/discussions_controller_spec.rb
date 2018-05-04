@@ -130,6 +130,18 @@ describe API::DiscussionsController do
       end
     end
 
+    describe 'guest threads' do
+      it 'displays guest threads' do
+        sign_in user
+        another_discussion.guest_group.add_member! user
+        DiscussionReader.for(user: user, discussion: another_discussion).set_volume! :normal
+        get :dashboard
+        json = JSON.parse(response.body)
+        discussion_ids = json['discussions'].map { |d| d['id'] }
+        expect(discussion_ids).to include another_discussion.id
+      end
+    end
+
     describe 'filtering' do
       let(:subgroup_discussion) { create :discussion, group: subgroup }
       let(:muted_discussion) { create :discussion, group: group }
@@ -196,6 +208,16 @@ describe API::DiscussionsController do
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users groups discussions])
         expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id ])
+      end
+
+      it 'displays discussion to guest group members' do
+        discussion.group.memberships.find_by(user: user).destroy
+        discussion.guest_group.add_member!(user)
+        get :show, params: { id: discussion.key }
+        json = JSON.parse(response.body)
+
+        expect(response.status).to eq 200
+        expect(json['discussions'][0]['id']).to eq discussion.id
       end
 
       it 'returns the reader fields' do
@@ -269,7 +291,7 @@ describe API::DiscussionsController do
     context 'success' do
       it 'moves a discussion' do
         destination_group = create :formal_group
-        destination_group.members << user
+        destination_group.add_member! user
         source_group = discussion.group
         patch :move, params: { id: discussion.id, group_id: destination_group.id }, format: :json
 
@@ -447,15 +469,14 @@ describe API::DiscussionsController do
         expect(Discussion.last).to be_present
       end
 
-      describe 'make_announcement' do
-        it 'does not email users for non-announcements' do
-          expect { post :create, params: { discussion: discussion_params }, format: :json }.to_not change { ActionMailer::Base.deliveries.count }
-        end
+      it 'doesnt email everyone' do
+        expect { post :create, params: { discussion: discussion_params }, format: :json }.to_not change { ActionMailer::Base.deliveries.count }
+      end
 
-        it 'makes an announcement' do
-          discussion_params[:make_announcement] = true
-          expect { post :create, params: { discussion: discussion_params }, format: :json }.to change { ActionMailer::Base.deliveries.count }.by(1)
-        end
+      it 'emails mentioned users' do
+        group.add_member! another_user
+        discussion_params[:description] = "Hello @#{another_user.username}!"
+        expect { post :create, params: { discussion: discussion_params }, format: :json }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
       it 'responds with json' do

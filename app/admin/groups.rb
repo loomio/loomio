@@ -86,8 +86,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       row :discussions_count
       row :memberships_count
       row :admin_memberships_count
-      row :invitations_count
-      row :pending_invitations_count
+      row :unverified_memberships_count
       row :public_discussions_count
       row :payment_plan
 
@@ -165,15 +164,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
           link_to g.name, admin_group_path(g)
         end
         column :id
-      end
-    end
-
-    panel("Pending invitations") do
-      table_for group.invitations.pending.each do |invitation|
-        column :recipient_email
-        column :link do |i|
-          invitation_url(i)
-        end
       end
     end
 

@@ -6,12 +6,13 @@ class Dev::PollsController < Dev::BaseController
   def test_invitation_to_vote_in_poll
     sign_out
     email = "#{Random.new(Time.now.to_i).rand(99999999)}@example.com"
-    verified_user = saved fake_user(email_verified: true, email: email, name: 'Verified User')
     poll = saved fake_poll
     PollService.create(poll: poll, actor: poll.author)
-    invitation = poll.guest_group.invitations.build recipient_email: email, group: poll.guest_group, intent: :join_poll
-    InvitationService.create(invitation: invitation, actor: poll.author)
-    last_email
+    membership = poll.guest_group.memberships.create group: poll.guest_group, user: fake_unverified_user
+    AnnouncementService.create(model: poll,
+                               params: {kind: 'poll_created', recipients: {emails: [email]}},
+                               actor: poll.author)
+    redirect_to poll.guest_group.memberships.last
   end
 
   def test_verify_stances
@@ -54,6 +55,8 @@ class Dev::PollsController < Dev::BaseController
     sign_in group.admins.first
     discussion = saved fake_discussion(group: group)
     poll = saved fake_poll(discussion: discussion)
+    stance = saved fake_stance(poll: poll)
+    StanceService.create(stance: stance, actor: group.members.last)
     redirect_to poll_url(poll)
   end
 
