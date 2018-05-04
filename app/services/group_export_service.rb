@@ -1,47 +1,55 @@
 class GroupExportService
   # directional, follow from a group down through dependent records
+  # SCHEMA = {
+  #   groups: %w[
+  #    creator
+  #
+  #    discussions
+  #    discussion_authors
+  #    discussion_readers
+  #
+  #    comments
+  #    comment_authors
+  #
+  #    invitations
+  #
+  #    memberships
+  #    members
+  #    membership_requests
+  #
+  #    polls
+  #    poll_authors
+  #    poll_guest_groups
+  #    poll_options
+  #    poll_did_not_votes
+  #    poll_did_not_voters
+  #    poll_unsubscriptions
+  #
+  #    outcomes
+  #    outcome_authors
+  #
+  #    stances
+  #    stance_authors
+  #    stance_choices
+  #
+  #    subgroups
+  #    ],
+  #   comments:           %w[reactions documents events],
+  #   polls:              %w[reactions documents events],
+  #   discussions:        %w[reactions documents events items],
+  #   stances:            %w[reactions events],
+  #   outcomes:           %w[reactions events],
+  #   memberships:        %w[events],
+  #   reactions:          %w[user],
+  #   events:             %w[notifications]
+  # }.with_indifferent_access.freeze
+
   SCHEMA = {
     groups: %w[
-     creator
-
-     discussions
-     discussion_authors
-     discussion_readers
-
-     comments
-     comment_authors
-
-     invitations
-
-     memberships
-     members
-     membership_requests
-
-     polls
-     poll_authors
-     poll_guest_groups
-     poll_options
-     poll_did_not_votes
-     poll_did_not_voters
-     poll_unsubscriptions
-
-     outcomes
-     outcome_authors
-
-     stances
-     stance_authors
-     stance_choices
-
-     subgroups
-     ],
-    comments:           %w[reactions documents events],
-    polls:              %w[reactions documents events],
-    discussions:        %w[reactions documents events items],
-    stances:            %w[reactions events],
-    outcomes:           %w[reactions events],
-    memberships:        %w[events],
-    reactions:          %w[user],
-    events:             %w[notifications]
+      memberships
+      subgroups
+    ],
+    memberships:        %w[events]
   }.with_indifferent_access.freeze
 
   METHODS = { groups: [:type] }.with_indifferent_access.freeze
@@ -69,6 +77,7 @@ class GroupExportService
       table_name = record.class.table_name
       return if store[table_name].has_key? record.id
 
+      record.accepted_at = record.created_at if table_name == "memberships" && record.accepted_at = nil
       store[table_name][record.id] = record.as_json(methods: METHODS[table_name])
 
       Array(SCHEMA[table_name]).each do |relation|

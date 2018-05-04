@@ -5,6 +5,7 @@ module MigrateGroupRelations
     # comments
     has_many :comments, through: :discussions
 
+
     # polls
     has_many :discussion_polls, through: :discussions
     has_many :poll_options, through: :polls
@@ -37,7 +38,8 @@ module MigrateGroupRelations
     has_many :poll_guest_groups,           through: :polls,              source: :guest_group
 
     # users
-    has_many :discussion_authors, through: :discussions,        source: :author
+    has_many :discussion_authors,      through: :discussions, source: :author
+    has_many :discussion_reader_users, through: :discussion_readers, source: :user
     has_many :comment_authors,    through: :comments,           source: :user
     has_many :poll_authors,       through: :polls,              source: :author
     has_many :outcome_authors,    through: :outcomes,           source: :author
