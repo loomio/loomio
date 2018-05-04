@@ -175,6 +175,8 @@ hu:
   user_dropdown:
     help: 'Sugó'
     sign_out: 'Kijelentkezés'
+  membership_dropdown:
+    make_coordinator: 'Koordonátori jogok megadása'
   start_menu:
     start_group: 'Csoport indítása'
     start_subgroup: 'Alcsoport indítása'
@@ -206,7 +208,6 @@ hu:
   group_page:
     group_logo: 'Csoport logó'
     new_photo: 'Új fotó'
-    members: 'Tagok'
     visibility_label: 'Láthatóság'
     options_label: 'Lehetőségek'
     options:
@@ -309,5 +310,8 @@ hu:
   poll_common_form:
     closed: Zárva
     start: Indítás
+  poll_count_options:
+    'yes': 'Igen'
+    'no': 'Nem'
   poll_common_subscribe_form:
     subscribe: Feliratkozás

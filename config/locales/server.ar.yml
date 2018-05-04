@@ -20,6 +20,9 @@ ar:
     membership_request:
       subject: "%{who} قام بطلب الانضمام إلى %{which_group}"
       view_group: يمكنك الموافقة أو إلغاء الطلب هنا
+  discussion_mailer:
+    reply_or_view_online_html: قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."
   footer:
     about: حول
     blog: مدونة

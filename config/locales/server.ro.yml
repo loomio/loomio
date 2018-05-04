@@ -82,10 +82,14 @@ ro:
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
       button_text: Vizualizeaza cerere
-  thread_mailer:
+  discussion_mailer:
     new_discussion:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> a inceput o conversatie: %{discussion}"
+    discussion_edited:
+      subject: "[%{group}] %{discussion}"
+    discussion_announced:
+      subject: "[%{group}] %{discussion}"
     new_comment:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> a comentat in: %{discussion}"
@@ -93,6 +97,8 @@ ro:
       subject: '%{actor} ti-a raspuns in: %{discussion}'
     user_mentioned:
       subject: '%{actor} te-a mentionat in: %{discussion}'
+    reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."
     change_email_preferences_html: "Modifica-ti <a href='%{email_preferences_url}'> preferintele de email</a>."
   footer:
     about: Despre

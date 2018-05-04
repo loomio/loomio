@@ -30,6 +30,8 @@ gl:
     search:
       placeholder: 'Buscar'
       discussions: 'Debates'
+  membership_dropdown:
+    make_coordinator: 'Facer coordinador/a'
   notifications:
     header: "Notificacións"
   discussion_form:
@@ -97,3 +99,6 @@ gl:
     vote: 'Podes cambiar a proposta en calquera momento'
   poll_common_form:
     closed: Pechado
+  poll_count_options:
+    'yes': 'Si'
+    'no': 'Non'

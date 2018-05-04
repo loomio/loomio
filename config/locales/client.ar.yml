@@ -94,6 +94,8 @@ ar:
       discussions: 'المواضيع'
       proposals: 'المقترحات'
       comments: 'التعليقات'
+  membership_dropdown:
+    cancel_invitation: إلغاء الدعوة
   start_menu:
     start_group: 'إبدأ مجموعة'
     start_subgroup: 'إبدأ مجموعة فرعية'
@@ -154,7 +156,6 @@ ar:
     group_logo: 'شعار المجموعة'
     new_photo: 'صورة جديدة'
     discussions_placeholder: 'الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.'
-    members: 'أعضاء'
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
     subgroups: 'مجموعة فرعية'
@@ -290,6 +291,14 @@ ar:
       remove_admin_success: '{{name}} لم يعد منسقاً'
     remove_admin_from_self:
       question: 'هل أنت متأكد أنك لا ترغب أن تكون منسقاً بعد الآن؟'
+  membership_remove_modal:
+    invitation:
+      title: إلغاء الدعوة
+      flash: تم إلغاء الدعوة
+      submit: إلغاء الدعوة
+    membership:
+      title: إزالة عضو
+      submit: إزالة عضو
   pending_invitations_card:
     heading: دعوات في الانتظار
     email: بريد الكتروني
@@ -502,3 +511,5 @@ ar:
       success: "لن يستطيع '{{name}}' استخدام حسابك بعد الآن."
   poll_common_form:
     closed: مغلقة
+  poll_count_options:
+    'no': 'لا'
