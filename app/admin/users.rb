@@ -135,7 +135,6 @@ ActiveAdmin.register User do
         div "#{user.deactivation_response.body}"
       end
     end
-    active_admin_comments
   end
 
   member_action :merge, method: :post do
