@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'membershipCard', ->
   controller: ['$scope', ($scope) ->
     $scope.vars = {}
     $scope.show = ->
-      return false if $scope.recordCount() == 0
+      return false if ($scope.recordCount() == 0 && $scope.pending)
       $scope.initialFetch() if $scope.canView()
       $scope.canView()
 
