@@ -1,7 +1,6 @@
 AppConfig     = require 'shared/services/app_config.coffee'
 Session       = require 'shared/services/session.coffee'
 LmoUrlService = require 'shared/services/lmo_url_service.coffee'
-ModalService  = require 'shared/services/modal_service.coffee'
 
 lastGroup = {}
 
@@ -30,6 +29,24 @@ module.exports = new class IntercomService
   available: ->
     window and window.Intercom and window.Intercom.booted?
 
+  fetch: ->
+    return if !window or !Session.user() or window.Intercom
+    if typeof ic is 'function'
+      ic('reattach_activator')
+      ic('update', intercomSettings)
+    else
+      fetchIntercom = ->
+        script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.async = true
+        script.src = "https://widget.intercom.io/widget/#{AppConfig.intercomAppId}"
+        prev = _.first document.getElementsByTagName('script')
+        prev.parentNode.insertBefore(prev, script)
+      if window.attachEvent
+        window.attachEvent 'onload', fetchIntercom
+      else
+        window.addEventListener 'load', fetchIntercom, false
+
   boot: ->
     return unless window.Intercom
     user = Session.user()
@@ -37,9 +54,9 @@ module.exports = new class IntercomService
 
     window.Intercom 'boot',
      admin_link: LmoUrlService.user(user, {}, { noStub: true, absolute: true, namespace: 'admin/users', key: 'id' })
-     app_id: AppConfig.intercom.appId
+     app_id: AppConfig.intercomAppId
      user_id: user.id
-     user_hash: AppConfig.intercom.userHash
+     user_hash: user.intercomHash
      email: user.email
      name: user.name
      username: user.username

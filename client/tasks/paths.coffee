@@ -54,7 +54,12 @@ module.exports =
   execjs:
     main:           'execjs/main.coffee'
 
+  worker:
+    main:           'worker/main.coffee'
+    coffee:         'worker/*.coffee'
+
   dist:
+    root:           '../public/'
     assets:         '../public/client/development'
     emojis:         '../public/img/emojis'
     moment_locales: '../public/client/development/moment_locales'
