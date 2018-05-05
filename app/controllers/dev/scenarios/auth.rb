@@ -9,7 +9,11 @@ module Dev::Scenarios::Auth
 
   def setup_invitation_to_user_with_password
     jennifer.update(password: "gh0stmovie")
-    setup_invitation_to_user
+    membership = FactoryBot.create(:membership,
+      user: FactoryBot.create(:user, email: jennifer.email, email_verified: false),
+      group: create_group
+    )
+    redirect_to membership_url(membership)
   end
 
   def setup_deactivated_user
