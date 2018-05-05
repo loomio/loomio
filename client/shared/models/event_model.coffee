@@ -59,13 +59,19 @@ module.exports = class EventModel extends BaseModel
   removeFromThread: =>
     @remote.patchMember(@id, 'remove_from_thread').then => @remove()
 
+  canFork: ->
+    @isSurface() &&
+    @discussion().isForking() &&
+    @kind == 'new_comment'
+
+  isForking: ->
+    _.contains @discussion().forkedEventIds, @id
+
   toggleFromFork: ->
-    if _.contains @discussion().forkedEventIds, @id
+    if @isForking()
       _.pull @discussion().forkedEventIds, @id
-      @forking = false
     else
       @discussion().forkedEventIds.push @id
-      @forking = true
 
   next: ->
     @recordStore.events.find(parentId: @parentId, position: @position + 1)[0]
