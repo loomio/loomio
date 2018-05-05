@@ -1,6 +1,6 @@
 module.exports = (test) ->
   loadPath: (path) ->
-    test.url "http://localhost:3000/dev/#{path}"
+    test.url "http://localhost:3000/dev/nightwatch/#{path}"
 
   goTo: (path) ->
     test.url "http://localhost:3000/#{path}"
