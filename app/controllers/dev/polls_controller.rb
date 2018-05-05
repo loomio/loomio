@@ -1,7 +1,6 @@
 class Dev::PollsController < Dev::BaseController
   include Dev::PollsHelper
   include Dev::PollsScenarioHelper
-  skip_before_action :cleanup_database
 
   def test_invitation_to_vote_in_poll
     sign_out
@@ -98,7 +97,6 @@ class Dev::PollsController < Dev::BaseController
           redirect_to poll_url(scenario[:poll], Hash(scenario[:params]))
         end
       end
-      skip_around_action :dont_send_emails, only: action_name if email
     end
   end
 
