@@ -27,6 +27,11 @@ angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', 
       canPerform: -> AbilityService.canEditComment($scope.eventable)
       perform:    -> ModalService.open 'EditCommentForm', comment: -> $scope.eventable
     ,
+      name: 'fork_comment'
+      icon: 'mdi-call-split'
+      canPerform: -> AbilityService.canForkComment($scope.eventable)
+      perform:    -> $scope.event.toggleFromFork()
+    ,
       name: 'translate_comment'
       icon: 'mdi-translate'
       canPerform: -> $scope.eventable.body && AbilityService.canTranslate($scope.eventable) && !$scope.translation

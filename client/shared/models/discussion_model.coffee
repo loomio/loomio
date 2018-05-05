@@ -30,6 +30,7 @@ module.exports = class DiscussionModel extends BaseModel
     lastItemAt: null
     title: ''
     description: ''
+    forkedEventIds: []
 
   audienceValues: ->
     name: @group().name
@@ -195,6 +196,15 @@ module.exports = class DiscussionModel extends BaseModel
 
   edited: ->
     @versionsCount > 1
+
+  isForking: ->
+    @forkedEventIds.length > 0
+
+  forkedEvents: ->
+    _.sortBy(@recordStore.events.find(@forkedEventIds), 'sequenceId')
+
+  forkTarget: ->
+    @forkedEvents()[0].model() if @isForking()
 
   attributeForVersion: (attr, version) ->
     return '' unless version

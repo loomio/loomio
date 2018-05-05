@@ -1,6 +1,7 @@
 .loading-wrapper.lmo-two-column-layout
   %loading{ng-if: "!threadPage.discussion"}
   %main.thread-page.lmo-row{ng-if: "threadPage.discussion"}
+    %discussion_fork_actions{discussion: "threadPage.discussion"}
     %group_theme{group: "threadPage.discussion.group()", compact: "true"}
     .thread-page__main-content
       %outlet.before-column-right.lmo-column-right{name: "before-thread-page-column-right", ng-if: "threadPage.eventsLoaded", model: "threadPage.discussion"}

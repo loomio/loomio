@@ -31,6 +31,9 @@ module.exports = new class AbilityService
   canRespondToComment: (comment) ->
     _.contains comment.discussion().members(), Session.user()
 
+  canForkComment: (comment) ->
+    true
+
   canStartPoll: (model) ->
     return unless model
     switch model.constructor.singular

@@ -127,6 +127,7 @@ Loomio::Application.routes.draw do
       patch :pin, on: :member
       patch :close, on: :member
       patch :reopen, on: :member
+      patch :fork, on: :member
       patch :unpin, on: :member
       patch :pin_reader, on: :member
       patch :unpin_reader, on: :member

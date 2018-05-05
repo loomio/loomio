@@ -1,5 +1,5 @@
 .discussion-form
-  .lmo-hint-text{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew()"}
+  .lmo-hint-text{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew() && !discussion.isForking()"}
 
   %md-input-container.md-block{ng-show: "showGroupSelect"}
     %label{for: "discussion-group-field", translate: "discussion_form.group_label"}
@@ -26,7 +26,12 @@
             %discussion_privacy_icon{discussion: "discussion", private: "true"}
 
       %md-list-item.discussion-form__privacy-notice{ng-if: "!showPrivacyForm()"}
-        %label.discussion-form__privacy-notice.lmo-flex{layout: "row"}
+        %label.discussion-form__privacy-notice.lmo-flex--row
           %i.mdi.mdi-24px.mdi-lock-outline.lmo-margin-right{ng-if: "discussion.private"}
           %i.mdi.mdi-24px.mdi-earth.lmo-margin-right{ng-if: "!discussion.private"}
           %discussion_privacy_icon{discussion: "discussion"}
+
+      %md-list-item.discussion-form__fork-notice{ng-if: "discussion.isForking()"}
+        %label.discussion-form__privacy-notice.lmo-flex--row
+          %i.mdi.mdi-24px.mdi-call-split.lmo-margin-right
+          %span{translate: "discussion_form.fork_notice", translate-value-count: "{{discussion.forkedEvents().length}}", translate-value-title: "{{discussion.forkTarget().discussion().title}}"}

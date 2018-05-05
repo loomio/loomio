@@ -12,9 +12,6 @@ LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
 $controller = ($scope, $routeParams, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }
 
-  EventBus.listen 'beginFork', -> $scope.forkMode = true
-  EventBus.listen 'cancelFork', -> $scope.forkMode = false
-
   requestedCommentId = ->
     parseInt($routeParams.comment or LmoUrlService.params().comment)
 

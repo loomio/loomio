@@ -15,6 +15,7 @@ module.exports =
 
   submitDiscussion: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
+      submitFn: if model.isForking() then model.fork else model.save
       flashSuccess: "discussion_form.messages.#{actionName(model)}"
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
@@ -177,6 +178,7 @@ nextOrSkip = (data, scope, model) ->
     EventBus.emit scope, 'skipStep'
 
 actionName = (model) ->
+  return 'forked' if model.isA('discussion') and model.isForking()
   if model.isNew() then 'created' else 'updated'
 
 eventKind = (model) ->
