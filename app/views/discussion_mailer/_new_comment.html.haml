@@ -9,4 +9,4 @@
     %td.content
       %b= comment.author.name
       %p= render_rich_text comment.body
-      = render "thread_mailer/attachments", resource: comment if comment.documents.any?
+      = render "discussion_mailer/attachments", resource: comment if comment.documents.any?
