@@ -85,6 +85,7 @@ cs:
       remind: Připomenout
       resend: Přeposlat
       send: Odeslat
+      invite: Pozvat
       resent: Pozvánka přeposlána
     formatting_help:
       label: 'Formátování'
@@ -221,6 +222,9 @@ cs:
     email_settings: 'Nastavení e-mailu'
     help: 'Nápověda'
     sign_out: 'Odhlásit se'
+  membership_dropdown:
+    make_coordinator: 'Vytvořit koordinátora'
+    cancel_invitation: Stornovat pozvánku
   start_menu:
     label: 'Akce uživatele'
     title: 'Akce'
@@ -268,10 +272,15 @@ cs:
     privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
     make_announcement: Oznámení
     notified_count: '{{count}} lidí bude obesláno e-mailem'
+  announcement:
+    form:
+      outcome_announced:
+        title: Sdílet výsledek
+      anyone_can_participate: Kdokoli s odkazem se může účastnit
   action_dock:
     react: Přidat reakci
     add_comment: Komentář
-    copy_url_comment: Kopírovat URL
+    copy_url: Kopírovat URL
     edit_thread: Upravit kontext
     translate_thread: Přeložit kontext
   cover_photo_form:
@@ -310,7 +319,6 @@ cs:
     new_photo: 'nová fotografie'
     new_group_logo: 'Nahrát nové logo skupiny'
     discussions_placeholder: 'Vlákno je místem, kde každý může diskutovat o tématu a tvořit společně rozhodnutí.'
-    members: 'Členové'
     members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
     subgroups: 'Podskupiny'
     invite_people: 'Pozvat'
@@ -404,6 +412,14 @@ cs:
       remove_member_success: 'Odebrán {{name}}'
       make_admin_success: '{{name}} je nyní koordinátorem'
       remove_admin_success: '{{name}} již není koordinátor'
+  membership_remove_modal:
+    invitation:
+      title: Stornovat pozvánku
+      flash: Pozvánka stornována
+      submit: Stornovat pozvánku
+    membership:
+      title: Odebrat člena
+      submit: Odebrat člena
   memberships_panel:
     add_coordinator: Vytvořit koordinátora
   remove_membership_form:
@@ -459,6 +475,7 @@ cs:
     header: Nastavení emailu
     all_groups: Nastavení pro všechny skupiny
     daily_summary_label: Denní souhrnný e-mail
+    announcement_label: Oznámení
     mentioned_label: Zmínky
     specific_groups: Nastavení pro konkrétní skupiny
     default_settings:
@@ -595,6 +612,7 @@ cs:
     change_your_response: Změňte odpověď
     reason_placeholder: Jakékoliv další připomínky?
     results: Výsledky
+    responses: Odpovědi
     votes: Hlasování
     details: Podrobnosti
     share_poll: Sdílet hlasování
@@ -636,25 +654,13 @@ cs:
   poll_proposal_options:
     agree: Souhlasit
     abstain: Zdržet se
+  poll_count_options:
+    'yes': 'Ano'
+    'no': 'Ne'
   poll_meeting_chart_panel:
     total: Celkem
   poll_admin_page:
     title: Admin - {{title}}
-  poll_common_share_form:
-    no_group_selected: Nebyla vybrána žádná skupina
-    share_a_link: Sdílet odkaz
-    share_a_link_helptext: Vytvořte sdílený odkaz, který můžete distribuovat. Kdokoliv, kdo má přístup k odkazu, se bude moci účastnit.
-    anyone_can_participate: Kdokoli s odkazem se může účastnit
-    anyone_can_participate_true: Vytvořen odkaz ke sdílení
-    anyone_can_participate_false: Odkaz ke sdílení byl zrušen
-    get_link: Kopírovat odkaz
-    send_email: Odeslat e-mail
-    enter_email: "Např. jmeno.prijmeni@jmenodomeny.cz"
-    reminded: Připomenutí odesláno!
-    send_emails: Odesláno pozvánek ({{count}})
-    set_group: Nastavte skupinu
-    group_set: Skupina aktualizována
-    view_poll: Zobrazit hlasování
   poll_common_publish_facebook_preview:
     just_now: Právě teď
   poll_common_participant_form:

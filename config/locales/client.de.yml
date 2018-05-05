@@ -110,6 +110,7 @@ de:
       remind: Erinnern
       resend: Neu senden
       send: Senden
+      invite: Einladen
       resent: Einladung erneut versendet
     formatting_help:
       label: 'Markdown-Formatierung'
@@ -243,6 +244,10 @@ de:
     help: 'Hilfe'
     contact_site_name: '{{site_name}} kontaktieren'
     sign_out: 'Abmelden'
+  membership_dropdown:
+    make_coordinator: 'Zum Koordinator machen'
+    demote_coordinator: 'Koordinatorrechte entfernen'
+    cancel_invitation: Einladung abbrechen
   start_menu:
     label: 'Benutzer-Aktionen'
     start_group: 'Gruppe erstellen'
@@ -277,8 +282,8 @@ de:
     poll_edited: "<strong>{{name}}</strong> hat einen {{poll_type}} bearbeitet: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} wird bald beendet: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} ist beendet: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> hat eine Option zu {{poll_type}} hinzugefügt: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> hat ein Ergebnis geteilt: <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> hat ein Ergebnis geteilt: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> hat teilgenommen: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Vertritt deine Meinung
@@ -308,10 +313,17 @@ de:
     privacy_organisation: 'Diese Diskussion wird nur für Mitglieder von {{parent}} und {{group}} sichtbar sein.'
     make_announcement: Benachrichtigung
     notified_count: '{{count}} Mitglieder werden per E-Mail benachrichtigt'
+  announcement:
+    form:
+      outcome_announced:
+        title: Ergebnis bekanntgeben
+      anyone_can_participate: Alle, die Zugriff auf den Link haben, können abstimmen
+    group_form:
+      members_count: '{{count}} Personen werden benachrichtigt'
   action_dock:
     edit_group: Gruppenbeschreibung bearbeiten
     add_comment: Kommentieren
-    copy_url_comment: URL kopieren
+    copy_url: URL kopieren
     edit_poll: Umfrage bearbeiten
     edit_stance: Abstimmungsentscheidung ändern
     edit_comment: Kommentar bearbeiten
@@ -374,7 +386,6 @@ de:
     new_group_logo: 'Neues Gruppenlogo hochladen'
     open_discussions: 'Aktuelle Diskussionen'
     discussions_placeholder: 'An einer Diskussion können sich alle Mitglieder beteiligen und gemeinsam Abstimmungen durchführen.'
-    members: 'Mitglieder'
     members_placeholder: 'Du bist bislang alleine hier: Lade mehr Leute ein!'
     member_options: Mitgliedseinstellungen
     see_all_members: 'Alle {{count}} Mitglieder anzeigen'
@@ -543,6 +554,14 @@ de:
       remove_admin_success: '{{name}} ist nun kein Koordinator mehr'
     remove_admin_from_self:
       question: 'Bist du sicher, dass du nicht mehr Koordinator sein möchtest?'
+  membership_remove_modal:
+    invitation:
+      title: Einladung abbrechen
+      flash: Einladung gelöscht
+      submit: Einladung abbrechen
+    membership:
+      title: Mitglied entfernen
+      submit: Mitglied entfernen
   memberships_panel:
     add_coordinator: Zum Koordinator machen
     remove_coordinator: Koordinatorrechte entfernen
@@ -615,6 +634,7 @@ de:
     daily_summary_description: "Du erhältst jeden Morgen eine E-Mail mit allen Aktivitäten des Vortages. So bleibst du stets auf dem Laufenden über alle Aktivitäten."
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
     on_participation_description: "Wenn Du Dich an einer Diskussion beteiligst, wirst Du zukünftig automatisch über alle Aktivitäten per E-Mail informiert."
+    announcement_label: Nur Ankündigungen
     mentioned_label: Erwähnungen
     update_settings: Änderungen speichern
     specific_groups: Einstellungen für einzelne Gruppen
@@ -847,6 +867,7 @@ de:
     reason: Begründung
     reason_placeholder: Ergänzender Kommentar?
     results: Abstimmungsergebnis
+    responses: Antworten
     vote: Abstimmen
     votes: Abstimmungsbeiträge
     update_outcome: Abstimmungsergebnis aktualisieren
@@ -877,19 +898,19 @@ de:
     by_who: "von {{name}}"
   poll_common_select_group:
     loomio_group: Gruppe
-  poll_common_voter_add_options:
-    add_options: Teilnehmervorschläge erlauben
-    helptext_on: Die Teilnehmer können eigene Handlungsoptionen einbringen
   poll_common_notify_group:
     notify_group: Benachrichtigung
     members_helptext: Ihre Gruppe wird nicht benachrichtigt.
     members_count: "{{count}} Personen werden benachrichtigt"
   poll_common_calendar_invite:
     location: Ort
-  poll_common_notify_on_participate:
-    notify_on_participate: Mich benachrichtigen, wenn jemand abstimmt
-    helptext_on: Du wirst jedes Mal benachrichtigt, wenn jemand an der Abstimmung teilnimmt.
-    helptext_off: Wenn diese Abstimmung schließt, wirst du über das Ergebnis benachrichtigt.
+  poll_common_settings:
+    multiple_choice:
+      title: Mehrfachauswahl
+    notify_on_participate:
+      title: Mich benachrichtigen, wenn jemand abstimmt
+    voter_can_add_options:
+      title: Teilnehmervorschläge erlauben
   poll_common_close_form:
     title: Umfrage früher beenden
     helptext: Bist du sicher, dass du die Abstimmung vorzeitig beenden möchtest?
@@ -946,8 +967,6 @@ de:
     edit_header: Umfrage bearbeiten
     title_placeholder: z. B. In welchem Land wollen wir unseren Urlaub verbringen?
     details_placeholder: Zusätzliche Details, die die Teilnehmer benötigen, um die Abstimmungsfrage beantworten zu können.
-    multiple_choice: Mehrfachauswahl
-    multiple_choice_explained: Die Abstimmenden können so viele Handlungsoptionen auswählen, wie sie möchten.
   poll_count_form:
     tool_tip_collapsed: Teilnahmebestätigung einholen oder Freiwillige finden
     edit_header: Bestätigungsanfrage bearbeiten
@@ -975,6 +994,8 @@ de:
     disagree: Dagegen
     block: Veto
   poll_count_options:
+    'yes': 'Ja'
+    'no': 'Nein'
     yes_meaning: Ich melde mich freiwillig, gebe meine Zustimmung oder habe die geforderte Aufgabe erfüllt
     no_meaning: Ich kann leider keinen Beitrag zu dieser Diskussion leisten bzw. nicht daran teilnehmen
   poll_common_percent_voted:
@@ -992,19 +1013,6 @@ de:
     discussion_context_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat die Diskussionsbeschreibung geändert."
     poll_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat eine Abstimmung vom Typ {{polltype}} gestartet: <strong>{{title}}</strong>"
     stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> hat abgestimmt: <strong>{{title}}</strong>"
-  poll_common_share_form:
-    share_a_link: Link zur Abstimmung teilen
-    share_a_link_helptext: Erstelle einen Link, der dann geteilt werden kann. Alle, die Zugriff auf diesen Link haben, können sich dann an der Abstimmung beteiligen.
-    anyone_can_participate: Alle, die Zugriff auf den Link haben, können abstimmen
-    get_link: Link kopieren
-    invite_visitor: E-Mail an Gäste
-    invite_visitor_helptext: Lade einzelne Personen per E-Mall zu dieser Abstimmung ein. Gäste können ausschließlich an dieser Abstimmung teilnehmen.
-    send_email: E-Mail senden
-    enter_email: "z. B. gast@beispiel.de"
-    share_group: Gruppe
-    share_group_helptext: Wähle eine Gruppe aus, in der diese Abstimmung geteilt werden soll. Mitglieder dieser Gruppe können sich dann an der Abstimmung beteiligen.
-    cannot_move_poll_helptext: Diese Abstimmung ist Bestandteil der Diskussion <strong>{{discussion}}</strong> in <strong>{{group}}</strong>und kann deshalb nicht in andere Gruppen geteilt werden.
-    set_group: Gruppe auswählen
   poll_common_subscribe_form:
     subscribe: Beitreten
   polls_page:

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include CurrentUserHelper
   include ForceSslHelper
   include SentryRavenHelper
+  include PrettyUrlHelper
 
   around_action :process_time_zone          # LocalesHelper
   around_action :use_preferred_locale       # LocalesHelper

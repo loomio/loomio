@@ -21,6 +21,9 @@ el:
     membership_request:
       subject: "%{who} έχει αιτηθεί να συμμετάσχει στην ομάδα %{which_group}"
       view_group: Μπορείς να εγκρίνεις ή να απορρίψεις την αίτηση εδώ
+  discussion_mailer:
+    reply_or_view_online_html: Απαντήστε άμεσα σε αυτό το ηλεκτρονικό μήνυμα ή <a href='%{url}'>δείτε το στο %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'> Απενεργοποίηση ηλεκτρονικών μηνυμάτων </a> για αυτή τη συζήτηση."
   footer:
     about: Σχετικά
     blog: Ιστολόγιο

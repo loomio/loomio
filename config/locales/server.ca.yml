@@ -12,8 +12,8 @@ ca:
   email:
     reset_password:
       greeting: |
-        Hola %{name}
-        Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
+          Hola %{name}
+          Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
       link_text: Reinicieu la contrasenya
     custom: "%{text}"
     group_email:
@@ -53,14 +53,14 @@ ca:
   markdown:
     paragraphs:
       title: |
-        ## Paràgrafs
+          ## Paràgrafs
     emphasis:
       title: |
-        ## Èmfasis
+          ## Èmfasis
     lists:
       title: |
-        ## Llistes
+          ## Llistes
     links:
       title: |
-        ## Enllaços i imatges
+          ## Enllaços i imatges
   comment_by: Comentari per %{comment_author}

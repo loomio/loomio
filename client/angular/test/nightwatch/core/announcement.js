@@ -72,7 +72,7 @@ module.exports = {
   'poll_edited': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_poll_in_discussion')
+    page.loadPath('test_poll_in_discussion', { controller: 'polls' })
     page.click('.action-dock__button--edit_poll')
     page.fillIn('.poll-common-form-fields__title', 'Yo reliability, whatsup? Its me, ya boi, testing')
     page.click('.poll-common-form__submit')
@@ -85,7 +85,7 @@ module.exports = {
   'outcome_created': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_closed')
+    page.loadPath('test_proposal_poll_closed', { controller: 'polls' })
     page.click('.poll-common-set-outcome-panel__submit')
     page.fillIn('.poll-common-outcome-form__statement textarea', 'Immannounce all yall')
     page.click('.poll-common-outcome-form__submit')

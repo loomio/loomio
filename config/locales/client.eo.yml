@@ -97,6 +97,7 @@ eo:
       translate: 'Traduki'
       uploading: 'Alŝutiĝas'
       retry: Reprovi
+      invite: Inviti
   ordinal:
     _1: 1a
     _2: 2a
@@ -150,6 +151,8 @@ eo:
     help: 'Helpo'
     contact_site_name: 'Kontakti {{site_name}}'
     sign_out: 'Elsaluti'
+  membership_dropdown:
+    make_coordinator: 'Kunordigantigi'
   start_menu:
     title: 'Ago'
     start_thread: 'Komenci fadenon'
@@ -307,6 +310,7 @@ eo:
     reason: Kialo
     message: Mesaĝo
     results: Rezultoj
+    responses: Respondoj
     vote: Voĉdono
     votes: Voĉdonoj
     change_your_stance: Ŝanĝi vian voĉdonon
@@ -332,18 +336,15 @@ eo:
     agree_verb: "Konsentita"
     disagree: Malkonsenti
     disagree_verb: "malkonsentita"
+  poll_count_options:
+    'yes': 'Jes'
+    'no': 'Ne'
   poll_count_vote_form:
     reason_label: Mesaĝo
   poll_meeting_chart_panel:
     total: Entute
   poll_dot_vote_vote_form:
     too_many_dots: Vi uzis tro da punktoj.
-  poll_common_share_form:
-    get_link: Kopii ligilon
-    send_email: Sendi retmesaĝoj
-    new_guests: Novaj retmesaĝoj por inviti
-    share_group: Grupo
-    view_poll: Vidi enketon
   poll_common_publish_facebook_preview:
     link: ligilo
     just_now: Ĝuste nun

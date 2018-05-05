@@ -47,6 +47,8 @@ sl:
     search:
       placeholder: 'Išči'
       discussions: 'Razprave'
+  membership_dropdown:
+    make_coordinator: 'Napravi v koordinatorja/ko'
   notifications:
     header: "Obvestila"
   position_buttons_panel:
@@ -139,3 +141,6 @@ sl:
     vote: 'Svojo odločitev lahko spremeniš kadarkoli'
   poll_common_form:
     closed: Zaprto
+  poll_count_options:
+    'yes': 'Da'
+    'no': 'Ne'

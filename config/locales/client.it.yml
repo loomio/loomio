@@ -120,6 +120,7 @@ it:
       remind: Ricorda
       resend: Reinvia
       send: Invia
+      invite: Invita
       resent: Invito reinviato
     formatting_help:
       label: 'Formattazione'
@@ -206,9 +207,6 @@ it:
   mute_explanation_modal:
     aria_label: Silenzia discussione
     mute_thread: Silenzia discussione
-    body_html: |
-        <p>Silenziare significa che <strong>non riceverai notifiche riguardanti le proposte</strong>, o altre attività in questa discussione a meno che qualcuno non ti  <strong>@menzioni</strong>.</p>
-        <p>Inoltre, le discussioni silenziate non vengono visualizzate all'interno delle pagine <strong>Recenti</strong> e <strong>Non Lette</strong>. Per trovare le tue discussioni silenziate seleziona l'opzione <strong>Silenziate</strong>nella barra laterale:</p>
     image_alt: Opzione discussioni silenziate nella colonna laterale
   dismiss_explanation_modal:
     aria_label: Ignora discussione
@@ -292,6 +290,10 @@ it:
     help: 'Aiuto'
     contact_site_name: 'Contatto {{site_name}}'
     sign_out: 'Esci'
+  membership_dropdown:
+    make_coordinator: 'Inserisci come coordinatore'
+    demote_coordinator: 'Disinserisci come coordinatore'
+    cancel_invitation: Revoca invito
   start_menu:
     label: 'Azioni utente'
     title: 'Azioni'
@@ -327,8 +329,8 @@ it:
     poll_edited: "<strong>{{name}}</strong> ha modificato {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} si chiude tra poco: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} si è chiuso: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> ha aggiunto delle opzioni al {{poll_type}}: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> ha condiviso un risultato: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong>ha partecipato a:<strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Dite la vostra
@@ -359,12 +361,18 @@ it:
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     make_announcement: Annuncio
     notified_count: '{{count}} persone riceveranno un''email'
+  announcement:
+    form:
+      outcome_announced:
+        title: Condividi risultati
+    group_form:
+      members_count: '{{count}} persone saranno notificate'
   action_dock:
     react: Aggiungi reazione
     add_resource: Aggiungi allegato
     edit_group: Modifica il contesto del gruppo
     add_comment: Commenta
-    copy_url_comment: Copia URL
+    copy_url: Copia URL
     edit_thread: Modifica il contesto
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio
@@ -435,7 +443,6 @@ it:
     new_cover_photo: 'Carica nuova immagine di copertina'
     new_group_logo: 'Carica logo nuovo gruppo'
     discussions_placeholder: 'La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni.'
-    members: 'Membri'
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
     subgroups: 'Sottogruppi'
@@ -630,6 +637,14 @@ it:
       remove_admin_success: '{{name}} non è più un coordinatore/trice'
     remove_admin_from_self:
       question: 'Sei sicuro di non voler più essere coordinatore di questo gruppo?'
+  membership_remove_modal:
+    invitation:
+      title: Revoca invito
+      flash: Invito cancellato
+      submit: Revoca invito
+    membership:
+      title: Rimuovi membro
+      submit: Rimuovi membro
   memberships_panel:
     add_coordinator: Inserisci come coordinatore
     remove_coordinator: Disinserisci come coordinatore
@@ -724,6 +739,7 @@ it:
     all_groups: Configurazione per tutti i gruppi
     daily_summary_label: 'Sommario giornaliero '
     on_participation_description: "Quando partecipi ad una discussione, tutte le successive attività ti verranno notificate via email immediatamente."
+    announcement_label: Annunci
     mentioned_label: Menzioni
     update_settings: Salva modifiche
     default_settings:
@@ -901,6 +917,7 @@ it:
     reason: Motivo
     message: Messaggio
     results: Risultati
+    responses: Risposte
     vote: Voto
     votes: Voti
     update_outcome: Aggiorna risultato
@@ -938,9 +955,9 @@ it:
     event_summary: Sommario
     event_description: Descrizione dell'incontro
     location: Luogo
-  poll_common_notify_on_participate:
-    notify_on_participate: Inviami notifica quando le persone partecipano
-    helptext_off: Riceverai i risultati quando l'attività verrà chiusa
+  poll_common_settings:
+    notify_on_participate:
+      title: Inviami notifica quando le persone partecipano
   poll_common_close_form:
     close_proposal: Chiudi la proposta
   poll_common_closing_at_field:
@@ -1036,6 +1053,9 @@ it:
     disagree: Contrario
     block: Blocco
     block_verb: "bloccato"
+  poll_count_options:
+    'yes': 'Sì'
+    'no': 'No'
   poll_count_vote_form:
     reason_label: Messaggio
     stance_created: Voto creato
@@ -1053,12 +1073,6 @@ it:
     too_many_dots: Hai usato troppi punti
     stance_created: Voto creato
     stance_updated: Voto aggiornato
-  poll_common_share_form:
-    share_group: Gruppo
-    email_invited: 'Invito email spedito a {{email}}'
-    email_exists: 'L'' {{email}} è già stata spedita'
-    email_empty: 'Inserisci un email per favore'
-    email_invalid: "L'email inserita non sembra essere valida"
   poll_common_participant_form:
     participant_name_placeholder: Come ti chiami?
   poll_common_subscribe_form:
@@ -1074,12 +1088,9 @@ it:
     sign_in_as: Autenticati come {{name}}
     choose_an_account: "Autenticati attraverso un account social o inserisci la tua email per continuare."
     login_link_helptext_with_password: "Inserisci la tua password, o autenticati via email."
-    sign_up_helptext: "Inserisci il nome con cui vuoi apparire, e ti manderemo per email un link per iscriverti."
-    welcome: Benvenuto, {{email}}!
     login_link: Iscriviti via email
     set_password: Imposta password
     check_your_email: Guarda nella tua casella di posta!
-    login_link_sent: "Abbiamo inviato una email a {{email}}  con un link che ti permetterà di autenticarti immediatamente. A presto! "
     name: Nome
   install_slack:
     card:

@@ -31,6 +31,8 @@ sk:
     search:
       placeholder: 'Vyhľadávať'
       discussions: 'Diskusie'
+  membership_dropdown:
+    make_coordinator: 'Urobiť koordinátorom'
   notifications:
     header: "Upozornenie"
   position_buttons_panel:
@@ -104,3 +106,6 @@ sk:
     vote: 'Môžete kdykoľvek svoj postoj zmeniť'
   poll_common_form:
     closed: Uzatvorené
+  poll_count_options:
+    'yes': 'Áno'
+    'no': 'Nie'

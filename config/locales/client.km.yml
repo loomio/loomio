@@ -21,6 +21,8 @@ km:
     search:
       placeholder: 'ស្វែងរក'
       discussions: 'ការពិភាក្សារ'
+  membership_dropdown:
+    make_coordinator: 'ធ្វើឲ្យអ្នកសម្របសម្រួល'
   notifications:
     header: "ការជូនដំណឹង"
   position_buttons_panel:
@@ -72,3 +74,6 @@ km:
     vote: 'អ្នកអាចផ្លាស់ប្ដូរទីតាំងរបស់អ្នកនៅពេលណាមួួយ'
   poll_common_form:
     closed: បានបិទ
+  poll_count_options:
+    'yes': 'បាទ/ចាស!'
+    'no': 'ទេ'

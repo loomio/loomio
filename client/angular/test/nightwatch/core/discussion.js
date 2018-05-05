@@ -277,6 +277,7 @@ module.exports = {
 
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form textarea', '@jennifer')
+    page.pause()
     page.expectText('.mentio-menu', 'Jennifer Grey')
     page.click('.mentio-menu md-menu-item')
     page.click('.comment-form__submit-button')

@@ -73,6 +73,7 @@ tr:
       share: Paylaş
       done: Tamamlandı
       start: Başla
+      invite: Davet et
     formatting_help:
       label: 'Biçimlendirme'
   devise:
@@ -150,6 +151,9 @@ tr:
       comments: 'Yorumlar'
     sign_in: 'Oturum aç'
     logo_title: 'Ana sayfa'
+  membership_dropdown:
+    make_coordinator: 'Koordinatör yap'
+    cancel_invitation: Davetiyeyi iptal et
   start_menu:
     label: 'Kullanıcı eylemleri'
     title: 'Aksiyon'
@@ -226,7 +230,6 @@ tr:
     new_cover_photo: 'Yeni kapak fotoğrafı yükle'
     new_group_logo: 'Yeni grup logosu yükle'
     discussions_placeholder: 'Konu, herkesin bir başlık hakkında müzakere ederek birlikte kararlar aldığı yerdir.'
-    members: 'Üyeler'
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
     subgroups: 'Alt gruplar'
@@ -367,6 +370,14 @@ tr:
       remove_admin_success: '{{name}} artık bir koordinatör değil'
     remove_admin_from_self:
       question: 'Artık bir koordinatör olmak istemediğinizden emin misiniz?'
+  membership_remove_modal:
+    invitation:
+      title: Davetiyeyi iptal et
+      flash: Davetiye iptal edildi
+      submit: Davetiyeyi iptal et
+    membership:
+      title: Üyeyi kaldır
+      submit: Üyeyi kaldır
   pending_invitations_card:
     heading: Bekleyen davetler
     email: E-posta
@@ -398,6 +409,7 @@ tr:
   email_settings_page:
     header: E-posta ayarları
     daily_summary_label: Günlük özet e-postası
+    announcement_label: Duyurular
     messages:
       updated: E-posta ayarları güncellendi
   dashboard_page:
@@ -557,5 +569,8 @@ tr:
   poll_common_form:
     closed: Kapalı
     start: Başla
+  poll_count_options:
+    'yes': 'Evet'
+    'no': 'Hayır'
   polls_page:
     heading: Kararlar
