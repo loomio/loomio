@@ -69,9 +69,9 @@ class Event < ApplicationRecord
       :user,
       :discussion,
       :parent,
+      :sequence_id,
       :custom_fields,
-      :created_at,
-      :sequence_id
+      :created_at
     )))
   end
 

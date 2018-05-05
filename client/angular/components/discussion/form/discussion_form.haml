@@ -27,7 +27,7 @@
             %discussion_privacy_icon{discussion: "discussion", private: "true"}
 
       %md-list-item.discussion-form__privacy-notice{ng-if: "!showPrivacyForm()"}
-        %label.discussion-form__privacy-notice.lmo-flex--row
+        %label.discussion-form__privacy-notice.lmo-flex{layout: "row"}
           %i.mdi.mdi-24px.mdi-lock-outline.lmo-margin-right{ng-if: "discussion.private"}
           %i.mdi.mdi-24px.mdi-earth.lmo-margin-right{ng-if: "!discussion.private"}
           %discussion_privacy_icon{discussion: "discussion"}

@@ -1,8 +1,8 @@
 .thread-item{md-colors: "mdColors()", ng-class: "{'thread-item--indent': indent(), 'thread-item--unread': isUnread()}", in-view: "$inview&&event.markAsRead()", in-view-options: "{throttle: 200}"}
   .lmo-flex.lmo-relative.lmo-action-dock-wrapper{layout: "row", id: "sequence-{{event.sequenceId}}"}
     .lmo-disabled-form{ng-show: "isDisabled"}
-    .thread-item__avatar.lmo-margin-right{ng-if: "event.actor()", ng-switch: "event.discussion().forkedEventIds.length"}
-      %user_avatar{ng-if: "!event.canFork()", user: "event.actor()", size: "small"}
+    .thread-item__avatar.lmo-margin-right
+      %user_avatar{ng-if: "!event.canFork() && event.actor()", user: "event.actor()", size: "small"}
       %md-checkbox{ng-if: "event.canFork()", ng-click: "event.toggleFromFork()", ng-checked: "event.isForking()"}
     .thread-item__body.lmo-flex.lmo-flex__horizontal-center{layout: "column"}
       .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between

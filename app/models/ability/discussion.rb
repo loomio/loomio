@@ -43,7 +43,7 @@ module Ability::Discussion
       user_is_admin_of?(discussion.group_id)
     end
 
-    can [:destroy, :move, :fork], ::Discussion do |discussion|
+    can [:destroy, :move], ::Discussion do |discussion|
       user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
     end
 
