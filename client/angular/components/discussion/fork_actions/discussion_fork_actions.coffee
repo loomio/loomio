@@ -11,5 +11,4 @@ angular.module('loomioApp').directive 'discussionForkActions', ->
           groupId:        $scope.discussion.groupId
           private:        $scope.discussion.private
           forkedEventIds: $scope.discussion.forkedEventIds
-          description:    $scope.discussion.forkTarget().body
   ]

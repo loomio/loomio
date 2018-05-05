@@ -71,12 +71,12 @@ class DiscussionService
 
   def self.fork(discussion:, actor:)
     actor.ability.authorize! :fork, discussion
+    source = discussion.forked_items.first.discussion
 
-    return false unless discussion = create(discussion: discussion, actor: actor)&.eventable
-    target_event  = discussion.forked_items.first.dup
+    return false unless event = create(discussion: discussion, actor: actor)
 
-    EventBus.broadcast('discussion_fork', discussion, actor)
-    Events::DiscussionForked.publish!(discussion, target_event)
+    EventBus.broadcast('discussion_fork', event.eventable, actor)
+    Events::DiscussionForked.publish!(event.eventable, source)
   end
 
   def self.update_reader(discussion:, params:, actor:)

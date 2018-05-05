@@ -52,6 +52,7 @@ module.exports = class DiscussionModel extends BaseModel
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
     @belongsTo 'createdEvent', from: 'events'
+    @belongsTo 'forkedEvent', from: 'events'
 
   discussion: ->
     @

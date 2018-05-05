@@ -184,7 +184,9 @@ actionName = (model) ->
   if model.isNew() then 'created' else 'updated'
 
 eventKind = (model) ->
-  return 'new_discussion' if model.isNew() and model.constructor.singular == 'discussion'
+  if model.isA('discussion') and model.isNew()
+    return if model.isForking() then 'discussion_forked' else 'new_discussion'
+
   if model.isNew()
     "#{model.constructor.singular}_created"
   else

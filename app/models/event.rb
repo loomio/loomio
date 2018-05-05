@@ -68,6 +68,7 @@ class Event < ApplicationRecord
     }.merge(args.slice(
       :user,
       :discussion,
+      :parent,
       :custom_fields,
       :created_at,
       :sequence_id
@@ -84,6 +85,7 @@ class Event < ApplicationRecord
     outcome_created
     new_comment
     discussion_moved
+    discussion_forked
     discussion_edited].include?(self.kind) ||
     (self.kind == 'poll_created' && self.discussion_id.present?)
   end

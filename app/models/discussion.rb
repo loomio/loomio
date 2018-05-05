@@ -1,6 +1,7 @@
 class Discussion < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
+  include Forkable
   include Translatable
   include Reactable
   include HasTimeframe
@@ -93,12 +94,6 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :open_discussions_count
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
-
-  attr_accessor :forked_event_ids
-
-  def forked_items
-    Event.where(id: self.forked_event_ids).order(:sequence_id)
-  end
 
   def update_undecided_count
     polls.active.each(&:update_undecided_count)
