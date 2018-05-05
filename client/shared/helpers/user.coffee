@@ -5,6 +5,7 @@ AbilityService = require 'shared/services/ability_service.coffee'
 LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
 IntercomService = require 'shared/services/intercom_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
 { hardReload } = require 'shared/helpers/window.coffee'
