@@ -110,5 +110,6 @@ EventBus.configure do |config|
       discussion_id: discussion.id,
       parent_id:     discussion.created_event.id
     )
+    Event.reorder_with_parent_id(discussion.created_event.id)
   end
 end
