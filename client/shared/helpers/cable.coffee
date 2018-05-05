@@ -53,7 +53,7 @@ subscribeToUser = ->
       Records.import(data)
 
 subscribeToMembership = ->
-  return unless AppConfig.pendingIdentity.type == 'membership'
+  return unless (AppConfig.pendingIdentity or {}).type == 'membership'
   ensureConnection().subscriptions.create { channel: "MembershipChannel", token: AppConfig.pendingIdentity.token },
     received: (data) ->
       switch data.action

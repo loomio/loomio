@@ -1,4 +1,5 @@
 AppConfig       = require 'shared/services/app_config.coffee'
+Records         = require 'shared/services/records.coffee'
 EventBus        = require 'shared/services/event_bus.coffee'
 AbilityService  = require 'shared/services/ability_service.coffee'
 LmoUrlService   = require 'shared/services/lmo_url_service.coffee'
