@@ -69,17 +69,14 @@ class DiscussionService
     EventBus.broadcast('discussion_pin', discussion, actor)
   end
 
-  def self.fork(discussion:, params:, actor:)
+  def self.fork(discussion:, actor:)
     actor.ability.authorize! :fork, discussion
 
-    target = create(
-      discussion: group.discussions.build(params.except(:item_ids)),
-      actor: actor
-    )
-    Event.where(id: params[:item_ids]).update_all(discussion: target)
+    return false unless discussion = create(discussion: discussion, actor: actor)&.eventable
+    target_event  = discussion.forked_items.first.dup
 
-    EventBus.broadcast('discussion_fork', discussion, params, target.reload)
-    Events::DiscussionForked.publish!(discussion, actor, target)
+    EventBus.broadcast('discussion_fork', discussion, actor)
+    Events::DiscussionForked.publish!(discussion, target_event)
   end
 
   def self.update_reader(discussion:, params:, actor:)

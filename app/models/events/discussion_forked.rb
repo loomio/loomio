@@ -1,12 +1,14 @@
 class Events::DiscussionForked < Event
-  def self.publish!(discussion, actor, target_discussion)
+  def self.publish!(discussion, target_event)
     super discussion,
-      discussion: discussion,
-      user: actor,
-      created_at: target_discussion.created_at
+      discussion:  target_event.discussion,
+      parent:      target_event.parent,
+      sequence_id: target_event.sequence_id,
+      user:        discussion.author,
+      created_at:  discussion.created_at,
       custom_fields: {
-        target_id: target_discussion.id,
-        item_ids:  target_discussion.item_ids
+        target_id: discussion.id,
+        item_ids:  discussion.forked_event_ids
       }
   end
 end

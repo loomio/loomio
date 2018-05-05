@@ -674,4 +674,47 @@ describe API::DiscussionsController do
       expect(response.status).to eq 403
     end
   end
+
+  describe 'fork' do
+    let(:user) { create :user }
+    let(:another_user) { create :user }
+    let(:group) { create :formal_group }
+    let!(:discussion) { create :discussion, group: group }
+    let(:target_event) { create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 2 }
+    let(:another_event) { create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 3 }
+    let(:fork_params) {{
+      title: "A forked title",
+      group_id: group.id,
+      description: "A forked description",
+      private: true,
+      forked_event_ids: [target_event.id, another_event.id]
+    }}
+
+    before { group.add_admin! user }
+
+    it 'forks a thread' do
+      sign_in user
+      expect { post :fork, params: { discussion: fork_params } }.to change { Discussion.count }.by(1)
+      expect(response.status).to eq 200
+
+      new_discussion = Discussion.last
+      expect(new_discussion.items).to include target_event
+      expect(new_discussion.items).to include another_event
+      expect(new_discussion.title).to eq fork_params[:title]
+
+      items = discussion.reload.items
+      expect(items).to_not include target_event
+      expect(items).to_not include another_event
+
+      forked_event = items.find_by(kind: :discussion_forked)
+      expect(forked_event).to be_present
+      expect(forked_event.sequence_id).to eq 2
+    end
+
+    it 'does not allow non admins to fork a thread' do
+      sign_in another_user
+      post :fork, params: { discussion: fork_params }
+      expect(response.status).to eq 403
+    end
+  end
 end

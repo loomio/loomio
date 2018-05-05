@@ -94,6 +94,12 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
+  attr_accessor :forked_event_ids
+
+  def forked_items
+    Event.where(id: self.forked_event_ids).order(:sequence_id)
+  end
+
   def update_undecided_count
     polls.active.each(&:update_undecided_count)
   end
@@ -107,14 +113,6 @@ class Discussion < ApplicationRecord
      RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
     discussion.last_activity_at = discussion.items.order(:sequence_id).last&.created_at || created_at
     save!(validate: false)
-  end
-
-  def thread_item_created!
-    update_sequence_info!
-  end
-
-  def thread_item_destroyed!
-    update_sequence_info!
   end
 
   def public?

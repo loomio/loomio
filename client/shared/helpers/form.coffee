@@ -20,7 +20,9 @@ module.exports =
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
       successCallback: (data) ->
+        model.forkTarget().discussion().forkedEventIds = []
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
+        _.invoke Records.events.find(model.forkedEventIds), 'remove'
         nextOrSkip(data, scope, model)
     , options))
 

@@ -194,6 +194,9 @@ module.exports = class DiscussionModel extends BaseModel
   reopen: =>
     @remote.patchMember @keyOrId(), 'reopen'
 
+  fork: =>
+    @remote.post 'fork', @serialize()
+
   edited: ->
     @versionsCount > 1
 
@@ -204,7 +207,7 @@ module.exports = class DiscussionModel extends BaseModel
     _.sortBy(@recordStore.events.find(@forkedEventIds), 'sequenceId')
 
   forkTarget: ->
-    @forkedEvents()[0].model() if @isForking()
+    @forkedEvents()[0].model() if _.any @forkedEvents()
 
   attributeForVersion: (attr, version) ->
     return '' unless version

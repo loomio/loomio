@@ -72,7 +72,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def fork
-    @event = service.fork(discussion: load_resource, params: params, actor: current_target, target: load_and_authorize(:group, :start_discussions))
+    @event = service.fork(discussion: instantiate_resource, actor: current_user)
     respond_with_resource
   end
 

@@ -103,4 +103,12 @@ EventBus.configure do |config|
 
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
+
+  # move events to new discussion on fork
+  config.listen('discussion_fork') do |discussion|
+    discussion.forked_items.update_all(
+      discussion_id: discussion.id,
+      parent_id:     discussion.created_event.id
+    )
+  end
 end
