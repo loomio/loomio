@@ -48,9 +48,6 @@ angular.module('loomioApp').directive 'membershipCard', ->
       !$scope.vars.fragment                          &&
       !$scope.loader.loading
 
-    $scope.canAddMembers = ->
-      AbilityService.canAddMembers($scope.group)
-
     $scope.memberships = ->
       if $scope.vars.fragment
         _.filter $scope.records(), (membership) =>
@@ -67,10 +64,6 @@ angular.module('loomioApp').directive 'membershipCard', ->
         $scope.group.pendingMemberships()
       else
         $scope.group.activeMemberships()
-
-    $scope.invite = ->
-      ModalService.open 'AnnouncementModal', announcement: ->
-        Records.announcements.buildFromModel($scope.group.targetModel())
 
     $scope.fetchMemberships = ->
       return unless $scope.vars.fragment
