@@ -81,6 +81,7 @@ da:
       delete: Slet
       unsubscribe: Afmeld
       subscribe: Abonnér
+      invite: Inviter
     formatting_help:
       label: 'Formatering'
   devise:
@@ -144,9 +145,6 @@ da:
   mute_explanation_modal:
     aria_label: Slå notifikationer fra
     mute_thread: Slå notifikationer fra
-    body_html: |
-        <p>Slå notifikationer fra betyder at du <strong>ikke vil modtage notifikationer om forslag</strong>, eller om nogen anden aktivitet i denne debat, med mindre at nogen <strong>@mentions dig</strong>.</p>
-        <p>Debatter hvor notifikationer er slået fra er også skjult fra <strong>Seneste</strong> og <strong>Ulæst</strong> siderne. For at finde dine better hvor notifikationer er slået fra, vælg <strong>Uden notifikationer</strong> menuen i siden:</p>
     image_alt: Uden notifikationer i menuen i siden
   dismiss_explanation_modal:
     aria_label: Afvis debat
@@ -216,6 +214,9 @@ da:
     sign_in: 'Log ind'
     toggle_sidebar: 'Vis/skjul menu'
     logo_title: 'Hjem'
+  membership_dropdown:
+    make_coordinator: 'Gør koordinator'
+    cancel_invitation: Fortryd invitation
   start_menu:
     label: 'Bruger handlinger'
     title: 'Handlinger'
@@ -251,6 +252,7 @@ da:
     poll_closing_soon: "{{poll_type}} lukker snart: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} lukkede: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> delte er resultat: <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> delte er resultat: <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> deltog i: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Giv din mening til kende
@@ -281,6 +283,13 @@ da:
     privacy_organisation: 'Debatten kan ses af medlemmer af gruppen {{parent}} og af medlemmer af gruppen {{group}}.'
     make_announcement: Meddelelse
     notified_count: '{{count}} personer vil modtage en email'
+  announcement:
+    form:
+      outcome_announced:
+        title: Del resultat
+      anyone_can_participate: Alle kan deltage
+    group_form:
+      members_count: '{{count}} mennesker vil blive notificeret'
   cover_photo_form:
     aria_label: 'Skift forsidefoto'
     heading: 'Nyt forsidefoto'
@@ -328,7 +337,6 @@ da:
     new_cover_photo: 'Upload nyt forsidebillede'
     new_group_logo: 'Upload nyt gruppelogo'
     discussions_placeholder: 'En debat er et sted hvor alle kan give deres mening til kende omkring et specifikt emne og tage beslutninger sammen.'
-    members: 'Medlemmer'
     members_placeholder: 'Du er det eneste medlem her, inviter nogle mennesker til at være med!'
     member_options: Medlemsinstaillinger
     subgroups: 'Undergrupper'
@@ -503,6 +511,14 @@ da:
       remove_admin_success: '{{name}} er ikke længere koordinator'
     remove_admin_from_self:
       question: 'Er du sikker på at du ikke længere ønsker at være koordinator?'
+  membership_remove_modal:
+    invitation:
+      title: Fortryd invitation
+      flash: Invitation fortrudt
+      submit: Fortryd invitation
+    membership:
+      title: Slet medlem
+      submit: Slet medlem
   remove_membership_form:
     aria_label: 'Slet medlem'
     title: 'Slet medlem'
@@ -566,6 +582,7 @@ da:
     daily_summary_label: Send resumé email hver dag
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
+    announcement_label: Normal
     mentioned_label: Mentions
     update_settings: Gem ændringer
     specific_groups: Indstillinger for specifikke grupper
@@ -807,6 +824,7 @@ da:
     reason: Begrundelse
     message: Besked
     results: Resultat
+    responses: Svar
     vote: Stemme
     votes: Stemmer
     update_outcome: Rediger resultat
@@ -835,10 +853,11 @@ da:
     members_helptext: Din gruppe vil ikke bliver notificeret
     members_count: "{{count}} mennesker vil blive notificeret"
     participants_count: "{{count}} mennesker der har stemt vil blive notificeret"
-  poll_common_notify_on_participate:
-    notify_on_participate: Send en notifikation til mig når folk deltager
-    helptext_on: Du vil modtage en notifikation når folk deltager
-    helptext_off: Du vil modtage resultatet når meningsmålingen er overstået
+  poll_common_settings:
+    multiple_choice:
+      title: Tillad flere valg
+    notify_on_participate:
+      title: Send en notifikation til mig når folk deltager
   poll_common_close_form:
     title: Afslut en meningsmåling før tid
     helptext: Er du sikker på at du ønsker at afslutte før tid?
@@ -907,8 +926,6 @@ da:
     details_placeholder: Beskriv alle de detaljer der skal til for at deltagerene kan træffe sin beslutning.
     add_option_placeholder: Tilføj valgmulighed
     remove_option: Slet valgmulighed
-    multiple_choice: Tillad flere valg
-    multiple_choice_explained: Tillad deltagerne at stemme på så mange valg som de har lyst til.
     poll_created: Meningsmåling oprettet
     poll_updated: Meningsmpling redigeret
   poll_count_form:
@@ -960,6 +977,9 @@ da:
     block: Blokkerer
     block_verb: "nedlagde veto"
     block_meaning: Der er noget helt galt med dette forslag og gruppen bør gå i dybden med dette snartest.
+  poll_count_options:
+    'yes': 'Ja'
+    'no': 'Nej'
   poll_count_vote_form:
     reason_label: Besked
     reason_placeholder: Skrive en besked
@@ -984,29 +1004,6 @@ da:
     stance_updated: Stemme redigeret
   poll_admin_page:
     title: Admin - {{title}}
-  poll_common_share_form:
-    no_group_selected: Ingen gruppe valgt
-    share_a_link: Delbart link
-    anyone_can_participate: Alle kan deltage
-    anyone_can_participate_true: Delbart link oprettet
-    anyone_can_participate_false: Delbart link slettet
-    shareable_link_created: Alle kan nu deltage i denne måling
-    shareable_link_revoked: Denne kræver invitation for at deltage
-    shareable_link: Delbart link
-    guests_invited: Inviterede {{count}} gæster
-    guest_revoked: Adgang fjernet for {{email}}
-    existing_guests: Eksisterende gæster
-    new_guests: Send email til nye gæster
-    enter_email: "f.eks. guest@example.com"
-    reminded: Påmindelse sendt
-    send_emails: Send invitation ({{count}})
-    set_group: Loomio gruppe opdateret
-    group_set: Gruppe gemt
-    view_poll: Så måling
-    email_invited: 'Invitationsemail sendt til {{email}}'
-    email_exists: '{{email}} er allerede blevet inviteret'
-    email_empty: 'Indtast venligst en email'
-    email_invalid: "Emailadressens ser ikke ud til at være en gyldig email"
   poll_common_publish_facebook_preview:
     shared_a: delte en
     link: link

@@ -22,7 +22,7 @@ module.exports = {
 startPollTest = (test, poll_type, optionsFn) => {
   page = pageHelper(test)
 
-  page.loadPath('polls/test_discussion')
+  page.loadPath('test_discussion', { controller: 'polls' })
   page.click(`.decision-tools-card__poll-type--${poll_type}`)
   page.click(".poll-common-tool-tip__collapse")
   page.fillIn(".poll-common-form-fields__title", `A new ${poll_type}`)

@@ -24,6 +24,8 @@ mk:
     search:
       placeholder: 'Пребарувај'
       discussions: 'Дискусии'
+  membership_dropdown:
+    make_coordinator: 'Направи координатор'
   notifications:
     header: "Известувања"
   position_buttons_panel:
@@ -87,3 +89,6 @@ mk:
     message_label: 'Твојата порака'
   poll_common_form:
     closed: Затворено
+  poll_count_options:
+    'yes': 'Да'
+    'no': 'Не'

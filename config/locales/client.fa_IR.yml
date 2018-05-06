@@ -173,8 +173,6 @@ fa_IR:
     update: به روز رسانی
   poll_meeting_chart_panel:
     total: مقدار کلی
-  poll_common_share_form:
-    share_group: گروه
   poll_common_subscribe_form:
     subscribe: دنبال کردن
   polls_page:

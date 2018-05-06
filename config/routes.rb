@@ -32,10 +32,9 @@ Loomio::Application.routes.draw do
       get ':action'
     end
 
-    scope controller: 'main' do
+    namespace :nightwatch do
       get '/' => :index
       get ':action'
-      get 'last_email'
     end
   end
 

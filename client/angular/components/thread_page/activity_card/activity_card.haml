@@ -20,13 +20,13 @@
     firstLoaded: {{eventWindow.firstLoaded()}}
     lastLoaded:  {{eventWindow.lastLoaded()}}
     loadedCount: {{eventWindow.numLoaded()}}
-    -# -
-    -# read: {{discussion.readItemsCount()}}
-    -# unread: {{discussion.unreadItemsCount()}}
-    -# firstUnread {{discussion.firstUnreadSequenceId()}}
-    -# initialSequenceId: {{initialSequenceId(initialPosition())}}
-    -# requestedSequenceId:  {{discussion.requestedSequenceId}}
-    -# position: {{initialPosition()}}
+    -
+    read: {{discussion.readItemsCount()}}
+    unread: {{discussion.unreadItemsCount()}}
+    firstUnread {{discussion.firstUnreadSequenceId()}}
+    initialSequenceId: {{initialSequenceId(initialPosition())}}
+    requestedSequenceId:  {{discussion.requestedSequenceId}}
+    position: {{initialPosition()}}
 
   %loading_content.lmo-card-left-right-padding{ng-if: "loader.loading", block-count: 2}
   .activity-card__content{ng-if: "!loader.loading"}

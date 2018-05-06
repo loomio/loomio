@@ -37,8 +37,8 @@ cs:
       one_at_a_time: Existuje další aktivní návrh.
   subscriptions:
     gift_plan_selected_for_group_html: |
-      <h1>Úspěch.</h1>
-      <p>Vybrali jste bezplatný plán pro vaši skupinu <a href="/g/%{group_key}">%{group}</a></p>
+        <h1>Úspěch.</h1>
+        <p>Vybrali jste bezplatný plán pro vaši skupinu <a href="/g/%{group_key}">%{group}</a></p>
   email:
     login:
       login: Přihlášen jako %{name}
@@ -100,13 +100,13 @@ cs:
   markdown:
     intro:
       title: |
-        # Co je markdown?
+          # Co je markdown?
     lists:
       title: |
-        ## Seznamy
+          ## Seznamy
     links:
       title: |
-        ## Odkazy a obrázky
+          ## Odkazy a obrázky
   poll_mailer:
     common:
       or: nebo

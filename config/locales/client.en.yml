@@ -464,6 +464,7 @@ en:
         helptext: Who would you like to share the outcome with?
       anyone_can_participate: Anyone with link can participate
       placeholder: Enter names or email addresses...
+      notified_empty: 'Nobody selected yet.'
       notified: '{{notified}} people will be notified:'
       notified_singular: '1 person will be notified:'
       group_title: '{{name}} ({{count}} people)'
