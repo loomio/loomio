@@ -366,6 +366,7 @@ module.exports = {
     page.loadPath('setup_forkable_discussion')
     page.click('.action-dock__button--fork_comment')
     page.expectElement('md-checkbox.md-checked')
+    page.pause()
     page.click('.discussion-fork-actions__submit')
     page.expectElement('.discussion-form')
     page.fillIn('.discussion-form__title-input', 'Forked thread')
