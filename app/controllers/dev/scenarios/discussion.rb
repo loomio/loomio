@@ -44,6 +44,18 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_url(discussion)
   end
 
+  def setup_forkable_discussion
+    create_discussion
+    sign_in patrick
+    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally on topic!"), actor: jennifer)
+    event = CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally **off** topic!"), actor: jennifer)
+    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is a reply to the off-topic thing!", parent: event.eventable), actor: emilio)
+    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is also off-topic"), actor: emilio)
+    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally back on topic!"), actor: patrick)
+
+    redirect_to discussion_url(create_discussion)
+  end
+
   def setup_thread_missed_yesterday
     jennifer.update(email_missed_yesterday: true)
     CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion), actor: patrick)

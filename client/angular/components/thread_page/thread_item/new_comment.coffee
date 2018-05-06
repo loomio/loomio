@@ -31,7 +31,7 @@ angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', 
       icon: 'mdi-call-split'
       canPerform: -> AbilityService.canForkComment($scope.eventable)
       perform:    ->
-        EventBus.broadcast $rootScope, 'toggleSidebar'
+        EventBus.broadcast $rootScope, 'toggleSidebar', false
         $scope.event.toggleFromFork()
     ,
       name: 'translate_comment'
