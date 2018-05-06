@@ -1,10 +1,15 @@
 .text-diff {
   ins {
-    background: lighten($agree-color, 20%);
-    border-radius: 3px;
+    background: lighten($agree-color, 50%);
+    @include roundedCorners;
+    margin: 2px;
+    padding: 0 4px;
+    text-decoration: none;
   }
   del {
     background: lighten($disagree-color, 20%);
-    border-radius: 3px;
+    @include roundedCorners;
+    margin: 2px;
+    padding: 0 4px;
   }
 }
