@@ -1,4 +1,4 @@
 .lmo-md-actions
-  %div
-  %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "!announcement.recipients.length", ng-click: "$emit('$close')", translate: "common.action.done"}
-  %md-button.md-primary.md-raised.announcement-form__submit{ng-if: "announcement.recipients.length", ng-click: "submit()", translate: "common.action.send"}
+  %div{ng-if: "announcement.recipients.length"}
+  %md-button.md-accent.announcement-form__cancel{ng-if: "!announcement.recipients.length", ng-click: "$emit('$close')", translate: "announcement.form.dont_notify"}
+  %md-button.md-primary.md-raised.announcement-form__submit{ng-disabled: "!announcement.recipients.length", ng-click: "submit()", translate: "common.action.send"}
