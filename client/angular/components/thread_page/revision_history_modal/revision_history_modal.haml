@@ -2,7 +2,7 @@
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %h1.lmo-h1.modal-title{translate:"revision_history_modal.{{model.constructor.singular}}_header"}
-      %material_modal_header_cancel_button{aria-hidden: "true"}
+      %dismiss_modal_button{aria-hidden: "true"}
   .md-dialog-content.revision-history-modal__body{ng-if: "!loadExecuting"}
     %loading{ng-if: "loadExecuting"}
     .lmo-flex.lmo-flex--row.lmo-flex__space-between

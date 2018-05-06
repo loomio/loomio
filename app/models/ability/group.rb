@@ -14,10 +14,20 @@ module Ability::Group
       end
     end
 
+    can [:vote_in], ::Group do |group|
+      if group.is_formal_group?
+        user_is_admin_of(group.id) ||
+        (user_is_member_of(group.id) && group.members_can_vote)
+      else
+        user_is_member_of(group.id)
+      end
+    end
+
     can [:see_private_content, :subscribe_to], ::Group do |group|
       if group.archived_at
         false
       else
+        (group.is_guest_group? && user.ability.can?(:show, group.target_model)) or
         user_is_member_of?(group.id) or
         group.group_privacy == 'open' or
         (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
@@ -44,8 +54,8 @@ module Ability::Group
 
     can [:add_members,
          :invite_people,
-         :manage_membership_requests,
-         :view_shareable_invitation], ::Group do |group|
+         :announce,
+         :manage_membership_requests], ::Group do |group|
       user.email_verified? &&
       ((group.members_can_add_members? && user_is_member_of?(group.id)) ||
       user_is_admin_of?(group.id))
@@ -58,6 +68,10 @@ module Ability::Group
       group.is_parent? &&
       user_is_member_of?(group.id) &&
       (group.members_can_create_subgroups? || user_is_admin_of?(group.id))
+    end
+
+    can :move, ::Group do |group|
+      user.is_admin
     end
 
     # create group checks against the group to be created
@@ -75,8 +89,12 @@ module Ability::Group
     can :join, ::Group do |group|
       user.email_verified? &&
       can?(:show, group) &&
-      (group.membership_granted_upon_request? ||
-       group.invitations.useable.find_by(recipient_email: user.email))
+      group.membership_granted_upon_request?
+    end
+
+    can :start_poll, ::Group do |group|
+      user_is_admin_of?(group&.id) ||
+      (user_is_member_of?(group&.id) && group.members_can_raise_motions)
     end
   end
 end

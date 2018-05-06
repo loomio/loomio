@@ -74,6 +74,8 @@ lt:
       loading: 'Įkeliami rezultatai...'
       discussions: 'Gijos'
       proposals: 'Pasiūlymai'
+  membership_dropdown:
+    cancel_invitation: Atsisakyti pakvietimo
   start_menu:
     start_thread: 'Kurti giją'
     invite_people: 'Pakviesti žmones'
@@ -137,6 +139,14 @@ lt:
       remove_admin_success: '{{name}} daugiau nebėra koordinatorius'
     remove_admin_from_self:
       question: 'Ar tikrai daugiau nebenorite būti koordinatoriumi?'
+  membership_remove_modal:
+    invitation:
+      title: Atsisakyti pakvietimo
+      flash: Pakvietimo atsisakyta
+      submit: Atsisakyti pakvietimo
+    membership:
+      title: Šalinti narį
+      submit: Šalinti narį
   pending_invitations_card:
     email: El. paštas
   cancel_invitation_form:
@@ -209,3 +219,5 @@ lt:
   contact_message_form:
     email_label: 'Jūsų el. pašto adresas'
     email_placeholder: 'Įveskite savo el. pašto adresą...'
+  poll_count_options:
+    'no': 'Ne'

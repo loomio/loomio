@@ -120,6 +120,7 @@ pt_BR:
       remind: Lembrar
       resend: 'Reenviar '
       send: Enviar
+      invite: Convidar
       resent: Convide reenviado
     formatting_help:
       label: 'Formatação'
@@ -207,19 +208,16 @@ pt_BR:
     aria_label: Fechar discussão
     close_thread: Fechar discussão
     body_header: |
-      <p>Fechar discussões antigas ou irrelevantes para removê-las da visualização e indicar que a discussão foi fechada.</p>
+        <p>Fechar discussões antigas ou irrelevantes para removê-las da visualização e indicar que a discussão foi fechada.</p>
   mute_explanation_modal:
     aria_label: Silenciar tópico
     mute_thread: Calar tópico
-    body_html: |
-      <p>Silenciar significa que você <strong>não será notificado sobre propostas</strong>, ou qualquer outra atividade neste tópico, a menos que alguém  <strong>@mencione você</strong>.</p>
-      <p>Tópicos silenciados estão ocultados das páginas <strong>Recentes</strong> e <strong>Não-lidos</strong> também. Para encontrar os seus tópicos silenciados, selecione a opção <strong>Silenciados</strong> na barra lateral:</p>
     image_alt: Opção de tópicos silenciados na barra lateral
   dismiss_explanation_modal:
     aria_label: Dispensar tópico
     dismiss_thread: Dispensar tópico
     body_html: |
-      <p>Ao dispensar um tópico, o mesmo é removido dos itens não-lidos. Caso ocorra qualquer nova atividade no tópico, o mesmo será novamente marcado como não-lido.</p>
+        <p>Ao dispensar um tópico, o mesmo é removido dos itens não-lidos. Caso ocorra qualquer nova atividade no tópico, o mesmo será novamente marcado como não-lido.</p>
   inbox:
     clear: 'Limpar'
     latest: 'Último'
@@ -293,6 +291,9 @@ pt_BR:
     help: 'Ajuda'
     contact_site_name: 'Contato {{site_name}}'
     sign_out: 'Sair'
+  membership_dropdown:
+    make_coordinator: 'Tornar coordenador(a)'
+    cancel_invitation: Cancelar convite
   start_menu:
     label: 'Ações do usuário'
     title: 'Ação'
@@ -332,12 +333,19 @@ pt_BR:
     privacy_private: 'A discussão será visível apenas para os membros de {{group}}.'
     privacy_organisation: 'A discussão será visível para os membros de {{parent}} e membros de {{group}}.'
     make_announcement: Anúncio
+  announcement:
+    form:
+      outcome_announced:
+        title: Compartilhar resultado
+      anyone_can_participate: Qualquer pessoa com o link pode participar
+    group_form:
+      members_count: '{{count}} pessoas serão notificadas'
   action_dock:
     react: Adicionar uma reação
     add_resource: Adicionar como anexo
     edit_group: Editar contexto do grupo
     add_comment: 'Comentario '
-    copy_url_comment: Copiar URL
+    copy_url: Copiar URL
     edit_thread: Editar contexto
     translate_thread: Traduzir contexto
     edit_stance: Mudar seu voto
@@ -402,7 +410,6 @@ pt_BR:
     new_cover_photo: 'Carregar nova foto da capa'
     new_group_logo: 'Carregar nova logo do grupo'
     discussions_placeholder: 'Um tópico é o lugar onde todos podem discutir um tema e tomar decisões juntos.'
-    members: 'Membros ({{count}})'
     members_placeholder: 'Você é a única pessoa aqui: convide outras para se juntar a você!'
     member_options: Opçoes de membros
     subgroups: 'Subgrupos'
@@ -583,6 +590,14 @@ pt_BR:
       remove_admin_success: '{{name}} não é mais um coordenador'
     remove_admin_from_self:
       question: 'Você tem certeza que não deseja mais ser coordenador?'
+  membership_remove_modal:
+    invitation:
+      title: Cancelar convite
+      flash: Convite cancelado
+      submit: Cancelar convite
+    membership:
+      title: Remover membro
+      submit: Remover membro
   remove_membership_form:
     aria_label: 'Remover membro'
     title: 'Remover membro'
@@ -664,8 +679,8 @@ pt_BR:
     daily_summary_description: "Toda manhã você receberá um email com qualquer atividade que você não viu no dia anterior. Isso facilita com que você fique atualizado(a) com as atividades que estão rolando."
     on_participation_label: Inscrever-se na participação
     on_participation_description: "Quando você participar de uma discussão, todas as atividades serão enviadas por e-mail para você imediatamente."
+    announcement_label: Anúncios
     mentioned_label: Menções
-    mentioned_description: "Quando alguém quer chamar sua atenção, vai @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer."
     update_settings: Salvar mudanças
     specific_groups: Configurações para grupos específicos
     default_settings:
@@ -694,9 +709,9 @@ pt_BR:
     explain_mute:
       title: Você ainda não silenciou nenhum tópico.
       explanation_html: |
-        Silenciar é uma forma de ocultar os tópicos que não te interessam.
-        Silenciar significa que você não verá o tópico em <strong>Recentes</strong> ou <strong>Não-lidos</strong>, e você não será notificado sobre as atividades deste tópico, como propostas.
-        Você somente será alertado se alguém  <strong>@mencionar</strong> o seu nome.
+          Silenciar é uma forma de ocultar os tópicos que não te interessam.
+          Silenciar significa que você não verá o tópico em <strong>Recentes</strong> ou <strong>Não-lidos</strong>, e você não será notificado sobre as atividades deste tópico, como propostas.
+          Você somente será alertado se alguém  <strong>@mencionar</strong> o seu nome.
       instructions: 'Para silenciar um tópico, passe o mouse sobre ele e clique no ícone silenciar.'
       see_muted_html: 'Para ver seus tópicos silenciados, clique <strong>"Silenciado"</strong>. Você pode ativar o som passando o mouse sobre e clicando no mesmo ícone.'
     filtering:
@@ -905,8 +920,11 @@ pt_BR:
   poll_common:
     your_response: Sua resposta
     change_your_response: Modifique sua resposta
+    reason: Motivo
+    reason_placeholder: Algum comentário a mais?
     message: Mensagem
     results: Resultados
+    responses: Respostas
     vote: Votar
     votes: Votos
     update_outcome: Atualizar resultado
@@ -929,11 +947,16 @@ pt_BR:
     members_count: "{{count}} pessoas serão notificadas"
   poll_common_calendar_invite:
     event_summary: Resumo
+  poll_common_settings:
+    multiple_choice:
+      title: Múltipla escolha
   poll_common_close_form:
     close_proposal: Encerrar proposta
     proposal_closed: Proposta encerrada
   poll_common_closing_at_field:
     closing: Encerrando
+  poll_card:
+    started_by: Iniciado por {{name}}
   poll_common_votes_panel:
     change_results_order: Mudar ordem dos resultados
   poll_common_set_outcome_panel:
@@ -965,7 +988,6 @@ pt_BR:
     title_placeholder: 'Exemplo: Onde você quer passar o feriado?'
     add_option_placeholder: Adicionar opção
     remove_option: Remover opção
-    multiple_choice: Múltipla escolha
   poll_dot_vote_form:
     add_option_placeholder: Adicionar opção
   poll_proposal_vote_form:
@@ -985,6 +1007,9 @@ pt_BR:
     disagree_meaning: Eu não apoio a proposta. Ela não deveria ir adiante.
     block: Bloqueio
     block_verb: "bloqueada"
+  poll_count_options:
+    'yes': 'Sim'
+    'no': 'Não'
   poll_count_vote_form:
     reason_label: Mensagem
     reason_placeholder: Deixe uma mensagem caso queira
@@ -999,16 +1024,6 @@ pt_BR:
     stance_updated: Voto atualizado
   poll_admin_page:
     title: Administrador - {{title}}
-  poll_common_share_form:
-    no_group_selected: Nenhum grupo selecionado
-    share_a_link: Compartilhar link
-    anyone_can_participate: Qualquer pessoa com o link pode participar
-    anyone_can_participate_true: Link compartilhável criado
-    get_link: Copiar link
-    send_email: Enviar e-mail
-    shareable_link: Link compartilhável
-    reminded: Lembrete enviado!
-    share_group: Grupo
   poll_common_publish_facebook_preview:
     link: link
   poll_common_participant_form:

@@ -4,14 +4,19 @@ class Discussion < ApplicationRecord
   include Translatable
   include Reactable
   include HasTimeframe
+  include HasEvents
   include HasMentions
+  include HasGuestGroup
   include HasDrafts
   include HasImportance
   include MessageChannel
-  include MakesAnnouncements
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
   include HasCreatedEvent
+  extend  NoSpam
+
+  no_spam_for :title, :description
 
   scope :archived, -> { where('archived_at is not null') }
 
@@ -51,9 +56,9 @@ class Discussion < ApplicationRecord
   has_many :poll_documents,    through: :polls,    source: :documents
   has_many :comment_documents, through: :comments, source: :documents
 
-  has_many :items, -> { includes(:user).thread_events.order('events.id ASC') }, class_name: 'Event'
+  has_many :items, -> { includes(:user).thread_events.order('events.id ASC') }, class_name: 'Event', dependent: :destroy
 
-  has_many :discussion_readers
+  has_many :discussion_readers, dependent: :destroy
 
   scope :search_for, ->(fragment) do
      joins("INNER JOIN users ON users.id = discussions.author_id")
@@ -93,8 +98,8 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
-  def groups
-    Array(group)
+  def update_undecided_count
+    polls.active.each(&:update_undecided_count)
   end
 
   def created_event_kind

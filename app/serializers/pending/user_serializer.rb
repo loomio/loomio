@@ -1,6 +1,10 @@
 class Pending::UserSerializer < Pending::BaseSerializer
   private
 
+  def has_token
+    Hash(scope)[:has_token]
+  end
+
   def user
     object
   end

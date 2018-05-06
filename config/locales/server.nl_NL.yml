@@ -45,16 +45,16 @@ nl_NL:
       one_at_a_time: Er is een ander 'Voorstel' actief.
   subscriptions:
     gift_plan_selected_for_group_html: |+
-      <h1>Succes.</h1>
-      <p>Je hebt voor je groep het Gratis pakket geselecteerd <a href="/g/%{group_key}">%{group}</a></p>
+        <h1>Succes.</h1>
+        <p>Je hebt voor je groep het Gratis pakket geselecteerd <a href="/g/%{group_key}">%{group}</a></p>
 
   user_mailer:
     accounts_merged:
       subject: "Je gebruikersaccounts van %{site_name} werden samengevoegd."
       body_html: |
-        Hallo %{name},
-        Je twee Loomio accounts zijn samengevoegd tot één account.
-        Gelieve vanaf nu <strong>%{email}</strong> te gebruiken om op Loomio in te loggen.
+          Hallo %{name},
+          Je twee Loomio accounts zijn samengevoegd tot één account.
+          Gelieve vanaf nu <strong>%{email}</strong> te gebruiken om op Loomio in te loggen.
   email:
     login:
       subject: Log in op %{site_name}
@@ -67,13 +67,13 @@ nl_NL:
       footer: "Je mag onmiddelijk reageren op %{name} door te antwoorden op deze mail."
     reset_password:
       greeting: |
-        Hoi %{name}
-        Hier is een link die je kunt gebruiken om je wachtwoord voor je Loomio account te herstellen:
+          Hoi %{name}
+          Hier is een link die je kunt gebruiken om je wachtwoord voor je Loomio account te herstellen:
       link_text: Reset je wachtwoord
       signoff: |
-        Je hebt dit ontvangen omdat je e-mailadres ingevoerd is in het "Wachtwoord vergeten" formulier op %{hostname}.
-        Je wachtwoord wordt echter niet veranderd totdat je de link hierboven volgt en het formulier invult.
-        Als je problemen blijft hebben met inloggen, reageer dan op deze e-mail om contact op te nemen met iemand van de helpdesk.
+          Je hebt dit ontvangen omdat je e-mailadres ingevoerd is in het "Wachtwoord vergeten" formulier op %{hostname}.
+          Je wachtwoord wordt echter niet veranderd totdat je de link hierboven volgt en het formulier invult.
+          Als je problemen blijft hebben met inloggen, reageer dan op deze e-mail om contact op te nemen met iemand van de helpdesk.
     start_decision:
       subject: Start een beslissing op Loomio
       intro: Hallo, <strong>%{name}</strong>!
@@ -128,10 +128,14 @@ nl_NL:
       button_text: Verzoek bekijken
   email_actions:
     unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.
-  thread_mailer:
+  discussion_mailer:
     new_discussion:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> heeft een bord gestart: %{discussion}"
+    discussion_edited:
+      subject: "[%{group}] %{discussion}"
+    discussion_announced:
+      subject: "[%{group}] %{discussion}"
     new_comment:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> gaf commentaar in: %{discussion}"
@@ -169,88 +173,89 @@ nl_NL:
   introduction_thread:
     title: Welkom! Stel jezelf alsjeblieft voor
     description: |
-      Neem even de tijd om de groep te laten weten wie je bent. Plaats een opmerking hieronder.
-      Wat is je rol of of bedoeling bij deelname aan deze groep? Wat moeten mensen over jou weten om te begrijpen wat je bedoeling is?
+        Neem even de tijd om de groep te laten weten wie je bent. Plaats een opmerking hieronder.
+        Wat is je rol of of bedoeling bij deelname aan deze groep? Wat moeten mensen over jou weten om te begrijpen wat je bedoeling is?
   how_it_works_thread:
     title: Hoe gebruik je Loomio
     description: |
-      Welkom bij Loomio, een online plek om samen beslissingen te nemen.
+        Welkom bij Loomio, een online plek om samen beslissingen te nemen.
 
-      Dit is een voorbeeld gesprek **discussie**. Je kunt opmerkingen hieronder toevoegen. Een discussie is een gesprek over een bepaald onderwerp. Deze discussie gaat over hoe Loomio werkt, dus plaats hier je vragen.
+        Dit is een voorbeeld gesprek **discussie**. Je kunt opmerkingen hieronder toevoegen. Een discussie is een gesprek over een bepaald onderwerp. Deze discussie gaat over hoe Loomio werkt, dus plaats hier je vragen.
 
-      Je bent op dit moment de discussie **context** aan het lezen, een plek voor achtergrond informatie. Je kunt deze updaten terwijl het gesprek verder gaat.
+        Je bent op dit moment de discussie **context** aan het lezen, een plek voor achtergrond informatie. Je kunt deze updaten terwijl het gesprek verder gaat.
 
-      Om te beginnen met Loomio:
-      1. Upload een [profiel foto](/profiel)
-      2. Stel jezelf voor in de [Welkom discussie](%{thread_url})
-      3. Post in bestaande discussie, of start een nieuwe
+        Om te beginnen met Loomio:
+        1. Upload een [profiel foto](/profiel)
+        2. Stel jezelf voor in de [Welkom discussie](%{thread_url})
+        3. Post in bestaande discussie, of start een nieuwe
 
-      Tips om berichten te plaatsen op Loomio:
-      *Om een bepaald persoon te berichten, type @ gevolg door diens naam.
-      *Klik op het paperclip icoon om bijlagen toe te voegen.
+        Tips om berichten te plaatsen op Loomio:
+        *Om een bepaald persoon te berichten, type @ gevolg door diens naam.
+        *Klik op het paperclip icoon om bijlagen toe te voegen.
 
-      Als je vragen hebt, check het [Loomio hulp handboek](http://help.loomio.org).
+        Als je vragen hebt, check het [Loomio hulp handboek](http://help.loomio.org).
   first_proposal:
     name: Demonstratievoorstel
     description: |
-      Dit is een **voorstel**, waar je samen een beslissing kunt nemen. Je kunt een voorstel beginnen als er een gesprek op gang is gekomen.
+        Dit is een **voorstel**, waar je samen een beslissing kunt nemen. Je kunt een voorstel beginnen als er een gesprek op gang is gekomen.
 
-      Iedereen wordt gevraagd om een**standpunt in te nemen** voor de **deadline**. je kunt de deadline verzetten als dat nodig is, of een voorstel vervroegd afsluiten.
+        Iedereen wordt gevraagd om een**standpunt in te nemen** voor de **deadline**. je kunt de deadline verzetten als dat nodig is, of een voorstel vervroegd afsluiten.
 
-      Je kunt **van standpunt wijzigen** terwijl het voorstel open staat. Je kunt je immers bedenken terwijl je naar andere aan het luisteren bent.
+        Je kunt **van standpunt wijzigen** terwijl het voorstel open staat. Je kunt je immers bedenken terwijl je naar andere aan het luisteren bent.
 
-      Soms werkt een groep met een **reeks van voorstellen** om samen oplossingen te bedenken. Je kunt opeenvolgende voorstellen voorleggen in deze discussie.
+        Soms werkt een groep met een **reeks van voorstellen** om samen oplossingen te bedenken. Je kunt opeenvolgende voorstellen voorleggen in deze discussie.
 
-      **Probeer mee te doen! Klik op een van de vier knoppen**.
+        **Probeer mee te doen! Klik op een van de vier knoppen**.
   markdown:
     intro:
       title: |
-        # Wat is markdown?
+          # Wat is markdown?
       body: |
-        Markdown is een manier om platte tekst te schrijven (links),
-        zodat het geconverteerd kan worden naar tekst met opmaak (rechts).
+          Markdown is een manier om platte tekst te schrijven (links),
+          zodat het geconverteerd kan worden naar tekst met opmaak (rechts).
 
-        Deze pagina is geschreven in markdown om te laten zien hoe het werkt.
+          Deze pagina is geschreven in markdown om te laten zien hoe het werkt.
     paragraphs:
       title: |
-        ## Paragrafen
+          ## Paragrafen
       body: |
-        Je moet
-        een
-        blanco regel
-        tussen regels zetten.
+          Je moet
+          een
+          blanco regel
+          tussen regels zetten.
 
-        Of het wordt een grote paragraaf!
+          Of het wordt een grote paragraaf!
     emphasis:
       title: |
-        ## Nadruk
+          ## Nadruk
       body: |
-        Je kunt een woord schuingedrukt maken met_underscore_ of *ster*.
+          Je kunt een woord schuingedrukt maken met_underscore_ of *ster*.
 
-        Maak een woord _vet_ door de **nadruk** te verdubbelen.
+          Maak een woord _vet_ door de **nadruk** te verdubbelen.
     lists:
       title: |
-        ## Lijsten
+          ## Lijsten
       body: |
-        Zo maak je een lijst:
+          Zo maak je een lijst:
 
-        * laat een regel leeg voor je lijst
-        * gebruik sterren (*)
-        * voer een spatie in na de ster
+          * laat een regel leeg voor je lijst
+          * gebruik sterren (*)
+          * voer een spatie in na de ster
     links:
       title: |
-        ## Links en afbeeldingen
+          ## Links en afbeeldingen
       body: |
-        Herhaal hardop:
+          Herhaal hardop:
 
-        Rechte haakjes voor naam en dan ronde haakjes voor URL. Er zitten geen spaties tussen de haakjes.
+          Rechte haakjes voor naam en dan ronde haakjes voor URL. Er zitten geen spaties tussen de haakjes.
 
-        [Loomio Homepage](https://www.loomio.org/)
+          [Loomio Homepage](https://www.loomio.org/)
 
-        Afbeeldingen zijn hetzelfde, maar voorafgegaan door een uitroepteken.
+          Afbeeldingen zijn hetzelfde, maar voorafgegaan door een uitroepteken.
 
-        ![loomio logo](https://i.imgur.com/Fvtworb.png)
+          ![loomio logo](https://i.imgur.com/Fvtworb.png)
   poll_mailer:
+    resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
     common:
       or: of
       why_send_this: Je ontvangt deze e-mail omdat %{reason}
@@ -271,9 +276,7 @@ nl_NL:
         poll_expired: "Voorstel gesloten: %{title}"
         poll_expired_author: 'Je voorstel werd gesloten. Deel een uitkomst van: %{title}'
         outcome_created: '%{actor} deelde de uitkomst van een voorstel: %{title}'
-        invitation_created: '%{actor} wil je mening: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: %{actor}wacht op je stem op: %{title}'
+        outcome_announced: '%{actor} deelde de uitkomst van een voorstel: %{title}'
         stance_created: "%{actor} stemde op: %{title}"
         stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
       header:
@@ -282,9 +285,7 @@ nl_NL:
         poll_closing_soon_author: 'Je voorstel sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.'
         poll_expired: "<strong>%{actor}'s</strong> voorstel werd gesloten: %{title}"
         outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een voorstel gedeeld.'
-        invitation_created: '<strong>%{actor}</strong>wil je mening horen: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: <strong>%{actor}</strong>wacht op je stem op: %{title}'
+        outcome_announced: '<strong>%{actor}</strong> heeft een uitkomst van een voorstel gedeeld.'
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
@@ -298,9 +299,7 @@ nl_NL:
         poll_option_added: '%{actor} voegde opties toe aan: %{title}'
         poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
         outcome_created: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
-        invitation_created: '%{actor} wil dat je stemt: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: %{actor}wacht op je stem op: %{title}'
+        outcome_announced: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
         stance_created: "%{actor} stemde op: %{title}"
         stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
       header:
@@ -310,8 +309,7 @@ nl_NL:
         poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
         outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: <strong>%{actor}</strong>wacht op je stem op: %{title}'
+        outcome_announced: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
@@ -319,12 +317,12 @@ nl_NL:
         poll_expired: "Check gesloten: %{title}"
         poll_expired_author: 'Je Check werd gesloten. Deel een uitkomst van: %{title}'
         outcome_created: '%{actor} heeft een uitkomst gedeeld: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
+        outcome_announced: '%{actor} deelde een uitkomst: %{title}'
         stance_created: "%{actor} heeft deelgenomen aan: %{title}"
         stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
       header:
         outcome_created: '<strong>%{actor}</strong> heeft een uitkomst gedeeld.'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
+        outcome_announced: '<strong>%{actor}</strong> heeft een uitkomst gedeeld.'
         stance_created: "<strong>%{actor}</strong> heeft deelgenomen aan: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -337,8 +335,7 @@ nl_NL:
         poll_option_added: '%{actor} voegde opties toe aan: %{title}'
         poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
         outcome_created: '%{actor} deelde een uitkomst: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: %{actor}wacht op je stem op: %{title}'
+        outcome_announced: '%{actor} deelde een uitkomst: %{title}'
         stance_created: "%{actor} stemde op: %{title}"
         stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
       header:
@@ -348,8 +345,7 @@ nl_NL:
         poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
         outcome_created: '<strong>%{actor}</strong> deelde de uitkomst van een stippen stemming.'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: <strong>%{actor}</strong>wacht op je stem op: %{title}'
+        outcome_announced: '<strong>%{actor}</strong> deelde de uitkomst van een stippen stemming.'
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
@@ -358,18 +354,13 @@ nl_NL:
         poll_option_added: '%{actor} voegde opties toe aan: %{title}'
         poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
         outcome_created: '%{actor} heeft een uitkomst gedeeld: %{title}'
-        invitation_created: '%{actor} wil een moment afspreken: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: %{actor} wacht op je antwoord: %{title}'
+        outcome_announced: '%{actor} deelde een uitkomst: %{title}'
         stance_created: '%{actor} heeft deelgenomen aan: %{title}'
         stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
       header:
         poll_expired: "<strong>%{actor}'s</strong> moment bevragen werd gesloten"
         poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        invitation_created: '<strong>%{actor}</strong>wil een moment afspreken: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: <strong>%{actor}</strong> wacht op je antwoord: %{title}'
         stance_created: "<strong>%{actor}</strong> heeft deelgenomen aan: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -378,18 +369,12 @@ nl_NL:
         poll_expired_author: 'Je keuzes rangschikken werd gesloten. Deel de uitkomst van: %{title}'
         poll_option_added: '%{actor} voegde opties toe aan: %{title}'
         poll_option_added_author: '%{actor} voegde opties toe aan: %{title}'
-        invitation_created: '%{actor} wil een moment afspreken: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: %{actor} wacht op je antwoord: %{title}'
         stance_created: '%{actor} heeft deelgenomen aan: %{title}'
         stance_created_author: "Gelieve je stem te bevestigen op: %{title}"
       header:
         poll_expired: "<strong>%{actor}'s</strong>keuze rangschikken werd gesloten"
         poll_option_added: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
         poll_option_added_author: '<strong>%{actor}</strong> voegde opties toe aan: %{title}'
-        invitation_created: '<strong>%{actor}</strong>wil een moment afspreken: %{title}'
-        invitation_resend: 'HERINNERING: %{actor} wacht op je stem op %{title}'
-        user_reminded: 'HERINNERING: <strong>%{actor}</strong> wacht op je antwoord: %{title}'
         stance_created: "<strong>%{actor}</strong> heeft deelgenomen aan: %{title}"
   comment_by: Reactie door %{comment_author}
   poll_unsubscribe:

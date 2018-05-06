@@ -1,15 +1,23 @@
 .auth-signin-form
   %auth_avatar{user: "user"}
   %md-input-container.md-block.auth-signin-form__magic-link
-    %h2.lmo-h2.align-center{translate: "auth_form.welcome_back", translate-value-name: "{{user.firstName() || user.email}}"}
+    %h2.lmo-h2.align-center{ng-if: "user.name", translate: "auth_form.welcome_back", translate-value-name: "{{user.firstName()}}"}
+    %h2.lmo-h2.align-center{ng-if: "!user.name", translate: "auth_form.welcome"}
+    %p.lmo-hint-text{ng-if: "!user.name", translate: "auth_form.sign_up_helptext_with_token"}
+
+  %md-input-container.md-block.auth-signin-form__name{ng-if: "!user.name"}
+    %label{translate: "auth_form.name"}
+    %input.lmo-primary-form-input{type: "text", md-autofocus: "true", placeholder: "{{auth_form.name_placeholder | translate}}", ng-model: "vars.name", ng-required: "true"}
+    %validation_errors{subject: "user", field: "name"}
 
   .auth-signin-form__token.align-center{ng-if: "user.hasToken"}
     %validation_errors{subject: "user", field: "token"}
-    %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "submit()", ng-if: "!user.errors.token"}
-      %span{translate: "auth_form.sign_in_as", translate-value-name: "{{user.name || user.email}}"}
+    %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "submit()", ng-disabled: "!vars.name && !user.name", ng-if: "!user.errors.token"}
+      %span{ng-if: "user.name", translate: "auth_form.sign_in_as", translate-value-name: "{{user.name}}"}
+      %span{ng-if: "!user.name", translate: "auth_form.sign_in"}
     %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "sendLoginLink()", ng-if: "user.errors.token"}
       %span{translate: "auth_form.login_link"}
-    %p.md-caption
+    %p.md-caption{ng-if: "user.name"}
       %span{translate: "auth_form.set_password_helptext"}>
       %a.lmo-pointer{ng-click: "signInAndSetPassword()", translate: "auth_form.set_password_link"}
 

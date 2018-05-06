@@ -12,8 +12,15 @@ module Dev::FakeDataHelper
       password: Faker::Internet.password,
       detected_locale: 'en',
       is_admin: true,
-      email_verified: true,
-      experiences: {enable_communities: true}
+      email_verified: true
+    }.merge(args))
+  end
+
+
+  def fake_unverified_user(args = {})
+    User.new({
+      email: Faker::Internet.email,
+      email_verified: false,
     }.merge(args))
   end
 
@@ -30,10 +37,10 @@ module Dev::FakeDataHelper
                     author: fake_user}.merge(args))
   end
 
-  def fake_invitation(args = {})
-    Invitation.new({
+  def fake_membership(args = {})
+    Membership.new({
       group: fake_group,
-      recipient_email: Faker::Internet.email
+      user: fake_user,
     }.merge(args))
   end
 
@@ -66,7 +73,8 @@ module Dev::FakeDataHelper
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: option_count.times.map{ Faker::Artist.name },
-      meeting: option_count.times.map { |i| (seed+i).days.from_now.to_date },
+      meeting: option_count.times.map { |i| (seed+i).days.from_now.to_date},
+      # meeting: option_count.times.map { |i| (seed+i).hours.from_now.utc.iso8601},
       ranked_choice: option_count.times.map { Faker::Food.ingredient }
     }.with_indifferent_access
   end
@@ -88,7 +96,9 @@ module Dev::FakeDataHelper
 
     case options[:poll_type].to_s
     when 'dot_vote'      then options[:custom_fields][:dots_per_person] = 10
-    when 'meeting'       then options[:custom_fields][:time_zone] = 'Asia/Seoul'
+    when 'meeting'
+      options[:custom_fields][:time_zone] = 'Asia/Seoul'
+      options[:custom_fields][:can_respond_maybe] = true
     when 'ranked_choice' then options[:custom_fields][:minimum_stance_choices] = 2
     end
 
@@ -97,7 +107,7 @@ module Dev::FakeDataHelper
 
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
-    choices = 1..poll.minimum_stance_choices      
+    choices = 1..poll.minimum_stance_choices
 
     Stance.new({
       poll: poll,

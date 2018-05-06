@@ -1,3 +1,0 @@
-class GuestGroupSerializer < GroupSerializer
-  
-end

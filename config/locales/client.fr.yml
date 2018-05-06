@@ -30,6 +30,8 @@ fr:
     metal: Métal
     ok_hand: Ok
     wave: Salut
+    thumbsup: Pouce levé
+    thumbsdown: ' Pouce baissé'
   poll_types:
     proposal: Proposition
     count: Vérification
@@ -88,6 +90,7 @@ fr:
     action:
       next: 'Suivant'
       close: 'Fermer'
+      reopen: 'Relancer'
       save: 'Enregistrer'
       save_changes: 'Sauvegarder les modifications'
       update_settings: 'Modifier vos paramètres'
@@ -120,6 +123,7 @@ fr:
       remind: Rappel
       resend: Renvoyer
       send: Envoyer
+      invite: Inviter
       resent: Invitation renvoyée
       export: Exporter
     formatting_help:
@@ -208,22 +212,19 @@ fr:
     aria_label: Clore la discussion
     close_thread: Clore la discussion
     body_header: |
-      <p>Clore des discussions anciennes ou hors-sujet pour les retirer des listes et indiquer que la discussion est close.</p>
+        <p>Clore des discussions anciennes ou hors-sujet pour les retirer des listes et indiquer que la discussion est close.</p>
     body_footer: |
-      N'importe qui peut toujours ajouter un commentaire ou démarrer un sondage sur une discussion close, mais elle n'apparaitra pas dans la liste des discussions et sur les tableaux de bord des membres.<p>
+        N'importe qui peut toujours ajouter un commentaire ou démarrer un sondage sur une discussion close, mais elle n'apparaitra pas dans la liste des discussions et sur les tableaux de bord des membres.<p>
     image_alt: Clore toutes les discussions
   mute_explanation_modal:
     aria_label: Ignorer la discussion
     mute_thread: Ignorer la discussion
-    body_html: |
-      <p>Ignorer la discussion signifie que vous <strong>ne recevrez aucune notification concernant les décisions</strong>, ni sur aucune activité de ce fil de discussion, sauf si quelqu’un vous <strong>@mentionne.</strong></p>
-      <p>Les fils de discussion ignorés sont également invisibles dans les pages <strong>Récents</strong> et <strong>Non lus</strong>. Pour retrouver vos discussions ignorées, sélectionnez l’option <strong>Discussions ignorées</strong> de la barre latérale :</p>
     image_alt: Option discussions ignorées dans la barre latérale
   dismiss_explanation_modal:
     aria_label: Marquer la discussion comme lue
     dismiss_thread: Marquer la discussion comme lue
     body_html: |
-      <p>Marquer comme lue une discussion la retire de vos discussions non-lues. S’il y a une nouvelle activité dans la discussion, elle sera affichée de nouveau comme non-lue.</p>
+        <p>Marquer comme lue une discussion la retire de vos discussions non-lues. S’il y a une nouvelle activité dans la discussion, elle sera affichée de nouveau comme non-lue.</p>
   inbox:
     clear: 'Vider'
     latest: 'Dernier'
@@ -299,6 +300,10 @@ fr:
     help: 'Aide'
     contact_site_name: 'Contacter {{site_name}}'
     sign_out: 'Se déconnecter'
+  membership_dropdown:
+    make_coordinator: 'Nommer coordinateur'
+    demote_coordinator: 'Retirer des coordinateurs'
+    cancel_invitation: Annuler l’invitation
   start_menu:
     label: 'Actions utilisateur'
     title: 'Action'
@@ -307,6 +312,11 @@ fr:
     start_thread: 'Démarrer une discussion'
     start_poll: 'Démarrer un sondage'
     invite_people: 'Inviter des personnes'
+  notification_models:
+    discussion: 'discussion :'
+    comment: 'commentaire dans'
+    poll: 'décision :'
+    outcome: 'résultat :'
   notifications:
     header: "Notifications"
     no_notifications: "Aucune nouvelle notification"
@@ -319,7 +329,7 @@ fr:
     new_vote: "<strong>{{name}}</strong> {{position}} sur la proposition <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> a commenté sur <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> a répondu à votre commentaire sur <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> a réagi <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> à votre commentaire dans <strong>{{title}}</strong>"
+    reaction_created: "<strong>{{name}}</strong> a réagi <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> à votre {{model}}<strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> vous a mentionné dans <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> attend que vous participiez à <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> a demandé à être membre de <strong>{{title}}</strong>"
@@ -335,8 +345,8 @@ fr:
     poll_edited: "<strong>{{name}}</strong> a édité un {{poll_type}}: <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} ferme bientôt : <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} fermé : <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> a ajouté des options au sondage {{poll_type}}: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> a participé à : <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Prenez la parole
@@ -367,12 +377,19 @@ fr:
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
     make_announcement: Notification
     notified_count: '{{count}} personnes seront notifiées'
+  announcement:
+    form:
+      outcome_announced:
+        title: Partager le résultat
+      anyone_can_participate: N’importe qui ayant un lien peut participer.
+    group_form:
+      members_count: '{{count}} personnes seront notifiées'
   action_dock:
     react: Ajouter votre réaction
     add_resource: Ajouter un document
     edit_group: Modifier la description du groupe
     add_comment: Ajouter un commentaire
-    copy_url_comment: Copier l’URL
+    copy_url: Copier l’URL
     edit_thread: Modifier le contexte
     translate_thread: Afficher une traduction automatique du contexte
     edit_poll: Modifier le sondage
@@ -456,7 +473,6 @@ fr:
     open_discussions: 'Discussions en cours'
     closed_discussions: 'Discussions closes'
     discussions_placeholder: 'Une discussion est l’endroit où tout le monde peut discuter d’un sujet et prendre des décisions collectives.'
-    members: 'Membres'
     members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
     member_options: Options des membres
     see_all_members: 'Voir les {{count}} membres'
@@ -672,6 +688,14 @@ fr:
       remove_admin_success: '{{name}} n’est plus un coordinateur'
     remove_admin_from_self:
       question: 'Êtes-vous certain de ne plus pouvoir être coordinateur ?'
+  membership_remove_modal:
+    invitation:
+      title: Annuler l’invitation
+      flash: Invitation annulée
+      submit: Annuler l’invitation
+    membership:
+      title: Supprimer le membre
+      submit: Supprimer le membre
   memberships_panel:
     add_coordinator: Nommer coordinateur
     remove_coordinator: Retirer des coordinateurs
@@ -771,8 +795,9 @@ fr:
     daily_summary_description: "Tous les matins, vous recevrez un courriel avec toutes les activités que vous avez raté la veille. Cela vous permet de rester au courant de l’activité de vos groupes."
     on_participation_label: Notification sur les discussions auxquelles je participe
     on_participation_description: "Lorsque vous participez à une discussion, toute activité ultérieure vous sera immédiatement envoyée par courriel."
+    announcement_label: Nouvelles discussions et décisions
     mentioned_label: Mentions
-    mentioned_description: "Lorsque quelqu’un veut attirer votre attention, il va vous @mentionner. Nous vous recommandons de laisser ce paramètre activé, afin que vous receviez un courriel dans ce cas."
+    mentioned_description: "Lorsque quelqu’un veut attirer votre attention, il vous @mentionnera. Nous vous recommandons de laisser ce paramètre activé, afin que vous receviez un courriel dans ce cas."
     update_settings: Sauvegarder les modifications
     specific_groups: Paramètres pour certains groupes
     default_settings:
@@ -804,9 +829,9 @@ fr:
     explain_mute:
       title: Vous n’avez pas encore ignoré de discussion.
       explanation_html: |
-        Désactiver une discussion est un moyen de la cacher si elle ne vous intéresse pas.
-        La désactiver signifie que vous ne la verrez pas dans  <strong>Récent</strong> ou <strong>Non-lu</strong>, et vous ne serez pas tenu au courant de l’activité dans cette discussion, comme les décisions.
-        Vous serez seulement alertés si quelqu’un <strong>@mentionne</strong> votre nom.
+          Désactiver une discussion est un moyen de la cacher si elle ne vous intéresse pas.
+          La désactiver signifie que vous ne la verrez pas dans  <strong>Récent</strong> ou <strong>Non-lu</strong>, et vous ne serez pas tenu au courant de l’activité dans cette discussion, comme les décisions.
+          Vous serez seulement alertés si quelqu’un <strong>@mentionne</strong> votre nom.
       instructions: 'Pour ignorer la discussion, passez la souris dessus et cliquez sur l’icône Ignorer.'
       see_muted_html: 'Pour voir vos discussions ignorées, cliquez sur <strong>« Ignoré »</strong>. Vous pouvez la suivre de nouveau en cliquant sur la même icône.'
     filtering:
@@ -1051,6 +1076,8 @@ fr:
     reason_placeholder: Un commentaire supplémentaire ?
     message: Message
     results: Résultats
+    responses: Réponses
+    totals: Totaux
     vote: Vote
     votes: Votes
     update_outcome: Mettre à jour le résultat
@@ -1066,6 +1093,7 @@ fr:
     share_count: Partager la vérification
     start_poll: Prendre une décision
     publish_poll: Partager le sondage
+    view_all: Tout voir
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -1093,10 +1121,6 @@ fr:
   poll_common_select_group:
     loomio_group: Groupe
     loomio_group_placeholder: (aucun groupe sélectionné)
-  poll_common_voter_add_options:
-    add_options: Permettre aux participants d’ajouter des options
-    helptext_on: Les participants peuvent ajouter leurs propres options en votant
-    helptext_off: Les participants devront choisir parmi les options proposées
   poll_common_notify_group:
     notify_group: Notification
     members_helptext: Votre groupe ne sera pas notifié
@@ -1114,14 +1138,18 @@ fr:
     event_description_placeholder: Quel agenda pour cette réunion
     location: Lieu
     location_placeholder: Où se déroulera cette réunion ?
-  poll_common_notify_on_participate:
-    notify_on_participate: M’avertir lorsque des gens participent
-    helptext_on: Vous serez averti⋅e lorsque quelqu’un participe
-    helptext_off: Vous recevrez les résultats lorsque cette activité se fermera
-  poll_common_anonymous:
-    anonymous: Participants anonymes
-    helptext_on: Le nom du participant ne sera pas affiché sur sa réponse
-    helptext_off: Le nom du participant sera affiché sur sa réponse
+  poll_common_settings:
+    multiple_choice:
+      title: Choix multiple
+    anyone_can_participate:
+      title: Tout le monde peut participer
+    notify_on_participate:
+      title: M’avertir lorsque des gens participent
+    voter_can_add_options:
+      title: Permettre aux participants d’ajouter des options
+    can_respond_maybe:
+      title: Les participants peuvent répondre « si besoin »
+      helptext_on: Les participants peuvent indiquer « si besoin » sur des horaires
   poll_common_close_form:
     title: Fermer un sondage en avance
     helptext: Êtes-vous sûr d’être prêt à fermer aussi tôt ?
@@ -1137,6 +1165,15 @@ fr:
     dot_vote_closed: Vote à points fermé
     meeting_closed: Sondage horaire de réunion fermé
     ranked_choice_closed: Classement par préférence fermé
+  poll_common_reopen_form:
+    title: Rouvrir une décision fermée
+    helptext: La décision s'est elle fermée trop tôt? Rouvrez-la pour obtenir plus d'avis du groupe.
+    proposal_reopened: Proposition rouverte
+    poll_reopened: Sondage rouvert
+    count_reopened: Vérification rouverte
+    dot_vote_reopened: Vote à points rouvert
+    meeting_reopened: Sondage horaire rouvert
+    ranked_choice_reopened: Classement par préférence rouvert
   poll_common_closing_at_field:
     closing: Fermeture
     closing_hour: Heure de fin
@@ -1199,14 +1236,14 @@ fr:
     start: Démarrer
     update: Mettre à jour
     loomio_school_link: |
-      <p>Apprenez-en plus sur l’<a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">École Loomio</a>.</p>
+        <p>Apprenez-en plus sur l’<a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">École Loomio</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
-      <p>Une proposition est un outil de recherche d’accord collectif à propos d’une déclaration ou d’un plan d’action.</p>
-      <p>Les participants peuvent être d’accord, s’abstenir, être en désaccord ou bloquer - et expliquer leur position.</p>
-      <p>Un diagramme circulaire donne un aperçu des avis dans le groupe, tandis que les explications permettent aux voix individuelles d’être entendues. </p>
-      <p>Ne soyez pas découragé⋅e si vous ne voyez pas d’accord au début, les propositions sont faites pour faire émerger les problèmes qui ont besoin d’être résolus.</p>
-      <p>Avec une bonne participation, une proposition est un mandat puissant pour passer à l’action.
+        <p>Une proposition est un outil de recherche d’accord collectif à propos d’une déclaration ou d’un plan d’action.</p>
+        <p>Les participants peuvent être d’accord, s’abstenir, être en désaccord ou bloquer - et expliquer leur position.</p>
+        <p>Un diagramme circulaire donne un aperçu des avis dans le groupe, tandis que les explications permettent aux voix individuelles d’être entendues. </p>
+        <p>Ne soyez pas découragé⋅e si vous ne voyez pas d’accord au début, les propositions sont faites pour faire émerger les problèmes qui ont besoin d’être résolus.</p>
+        <p>Avec une bonne participation, une proposition est un mandat puissant pour passer à l’action.
     tool_tip_collapsed: Cherchez l’accord collectif
     start_header: Faire une proposition
     edit_header: Éditer la proposition
@@ -1217,9 +1254,9 @@ fr:
     proposal_updated: Proposition mise à jour
   poll_poll_form:
     tool_tip_expanded: |
-      <p>Utilisez un sondage pour mesurer la popularité d’une idée ou offrir un choix.</p>
-      <p>Fournissez quelques options parmi lesquelles choisir. Décidez si les participants peuvent choisir une ou plusieurs options dans leur réponse.</p>
-      <p>Chacun vote, et peut aussi ajouter une déclaration s’il le souhaite. Les résultats sont représentés dans un histogramme.</p>
+        <p>Utilisez un sondage pour mesurer la popularité d’une idée ou offrir un choix.</p>
+        <p>Fournissez quelques options parmi lesquelles choisir. Décidez si les participants peuvent choisir une ou plusieurs options dans leur réponse.</p>
+        <p>Chacun vote, et peut aussi ajouter une déclaration s’il le souhaite. Les résultats sont représentés dans un histogramme.</p>
     tool_tip_collapsed: Mesurez une opinion ou proposez un choix
     start_header: Démarrer le sondage
     edit_header: Éditer le sondage
@@ -1228,17 +1265,15 @@ fr:
     details_placeholder: Partagez toutes les informations utiles pour répondre à la question
     add_option_placeholder: Ajouter une option
     remove_option: Retirer une option
-    multiple_choice: Choix multiple
-    multiple_choice_explained: Permettre aux votants de sélectionner autant d’options qu’ils veulent.
     poll_created: Sondage créé
     poll_updated: Sondage mis à jour
   poll_count_form:
     tool_tip_expanded: |
-      <p>Une <em>vérification</em> est un outil qui peut être utilisé dans différents cas, mais qui propose seulement 2 réponses: une coche (✔) ou une croix (✘). Les participants choisiront la coche (✔) pour dire oui et la croix (✘) pour dire non ou « je ne suis pas sûr » </p>
-      <p>Utilisez-le pour obtenir une participation sur votre proposition, par exemple en la formulant comme : « Je viendrai à cet événement » ou « Je rejoins le groupe de travail »</p>
-      <p>Ou utilisez-le pour suivre la progression d’une tâche : « J’ai vérifié mes coordonnées » ou « J’ai lu le document et ai fait mes retours »</p>
-      <p>Une vérification a pour <em>objectif</em> le nombre de participants souhaité. L’objectif indique au groupe si un point nécessite leur attention ou s’il est déjà bien suivi.</p>
-      <p>Un jour avant la fin de la vérification, une notification sera envoyée à ceux qui n’ont pas répondu, pour obtenir la plus grande participation sans que vous n’ayez à relancer les membres.</p>
+        <p>Une <em>vérification</em> est un outil qui peut être utilisé dans différents cas, mais qui propose seulement 2 réponses: une coche (✔) ou une croix (✘). Les participants choisiront la coche (✔) pour dire oui et la croix (✘) pour dire non ou « je ne suis pas sûr » </p>
+        <p>Utilisez-le pour obtenir une participation sur votre proposition, par exemple en la formulant comme : « Je viendrai à cet événement » ou « Je rejoins le groupe de travail »</p>
+        <p>Ou utilisez-le pour suivre la progression d’une tâche : « J’ai vérifié mes coordonnées » ou « J’ai lu le document et ai fait mes retours »</p>
+        <p>Une vérification a pour <em>objectif</em> le nombre de participants souhaité. L’objectif indique au groupe si un point nécessite leur attention ou s’il est déjà bien suivi.</p>
+        <p>Un jour avant la fin de la vérification, une notification sera envoyée à ceux qui n’ont pas répondu, pour obtenir la plus grande participation sans que vous n’ayez à relancer les membres.</p>
     tool_tip_collapsed: Suivez la participation et trouvez des volontaires
     start_header: Démarrer la vérification
     edit_header: Modifier la vérification
@@ -1249,9 +1284,9 @@ fr:
     count_updated: Vérification mise à jour
   poll_dot_vote_form:
     tool_tip_expanded: |
-      <p>Le vote à points est une manière de prioriser une liste d’options.</p>
-      <p>Les participants disposent d’un nombre limité de « points » qu’ils peuvent allouer comme ils le veulent aux différentes options pour refléter leurs préférences.</p>
-      <p>Le total des résultats est affiché, tout comme les votes individuels, pour vous permettre de connaître différents points de vue.</p>
+        <p>Le vote à points est une manière de prioriser une liste d’options.</p>
+        <p>Les participants disposent d’un nombre limité de « points » qu’ils peuvent allouer comme ils le veulent aux différentes options pour refléter leurs préférences.</p>
+        <p>Le total des résultats est affiché, tout comme les votes individuels, pour vous permettre de connaître différents points de vue.</p>
     tool_tip_collapsed: Priorisez des options
     start_header: Démarrer un vote à points
     edit_header: Éditer le vote à points
@@ -1264,12 +1299,12 @@ fr:
     dot_vote_updated: Vote à points mis à jour
   poll_meeting_form:
     tool_tip_expanded: |
-      <p>Utilisez un sondage réunion pour trouver un créneau horaire pour une réunion.</p>
-      <p>Choisissez une liste de dates ou horaires possibles pour la réunion.</p>
-      <p>Les participants cochent les créneaux sur lesquels ils peuvent participer, ou ajoutent une explication sur leur blocage pour que vous puissiez mettre à jour les options si nécessaire.</p>
-      <p>Si vous ajoutez de nouvelles options pendant un sondage réunion, ceux qui ont déjà voté sont sollicités pour mettre à jour leur réponse.</p>
-      <p>Vous pouvez voir qui est disponible à quel moment et décider quand aura lieu la rencontre.</p>
-      <p>Les horaires sont automatiquement convertis dans le fuseau horaire des participants.</p>
+        <p>Utilisez un sondage réunion pour trouver un créneau horaire pour une réunion.</p>
+        <p>Choisissez une liste de dates ou horaires possibles pour la réunion.</p>
+        <p>Les participants cochent les créneaux sur lesquels ils peuvent participer, ou ajoutent une explication sur leur blocage pour que vous puissiez mettre à jour les options si nécessaire.</p>
+        <p>Si vous ajoutez de nouvelles options pendant un sondage réunion, ceux qui ont déjà voté sont sollicités pour mettre à jour leur réponse.</p>
+        <p>Vous pouvez voir qui est disponible à quel moment et décider quand aura lieu la rencontre.</p>
+        <p>Les horaires sont automatiquement convertis dans le fuseau horaire des participants.</p>
     tool_tip_collapsed: Trouvez un moment pour vous réunir
     start_header: Commencer un sondage réunion
     edit_header: Éditer le sondage réunion
@@ -1284,9 +1319,9 @@ fr:
     add_option_placeholder: Entrer un nouvel horaire
   poll_ranked_choice_form:
     tool_tip_expanded: |
-      <p>Un classement par préférence est une méthode de vote qui permet à chaque participant d’exprimer leurs priorités.</p>
-      <p>C’est une solution quand deux choix populaires sont suffisamment proches pour qu’on risque de diviser les voix qui pourraient s’y rallier, pour éviter que les deux soient ainsi écartés dans un vote majoritaire. Elle peut être utilisée pour mettre en place la méthode Condorcet ou un vote alternatif (<i>Instant-runoff voting</i>).
-      </p>
+        <p>Un classement par préférence est une méthode de vote qui permet à chaque participant d’exprimer leurs priorités.</p>
+        <p>C’est une solution quand deux choix populaires sont suffisamment proches pour qu’on risque de diviser les voix qui pourraient s’y rallier, pour éviter que les deux soient ainsi écartés dans un vote majoritaire. Elle peut être utilisée pour mettre en place la méthode Condorcet ou un vote alternatif (<i>Instant-runoff voting</i>).
+        </p>
     tool_tip_collapsed: Classez les options dans l’ordre
     start_header: Démarrer un classement par préférence
     edit_header: Modifier le classement par préférence
@@ -1327,6 +1362,8 @@ fr:
     block_verb: "est contre"
     block_meaning: L’attention du groupe est nécessaire pour étudier de profonds différends
   poll_count_options:
+    'yes': 'Oui'
+    'no': 'Non'
     yes_meaning: Je me propose, suis d’accord, ou ai terminé la tâche en question
     no_meaning: Je ne peux pas contribuer ou participer à cette décision
   poll_count_vote_form:
@@ -1344,6 +1381,9 @@ fr:
     stance_created: Vote créé
     stance_updated: Vote mis à jour
   poll_meeting_vote_form:
+    can_attend: "Disponible"
+    unable: "Indisponible"
+    if_need_be: Disponible si besoin
     your_response: Quand êtes-vous disponible ?
     stance_created: Disponibilité enregistrée
     stance_updated: Disponibilité mise à jour
@@ -1369,6 +1409,7 @@ fr:
     discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a relancé la discussion"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a partagé un résultat pour <strong>{{title}}</strong>"
+    poll_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a rouvert le {{polltype}}: <strong>{{title}}</strong>"
     poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a fermé le {{polltype}}: <strong>{{title}}</strong>"
     poll_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a démarré un {{polltype}}: <strong>{{title}}</strong>"
     poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a modifié le {{polltype}}: <strong>{{title}}</strong>"
@@ -1377,38 +1418,6 @@ fr:
     event_removed: "retiré de la discussion"
   poll_admin_page:
     title: Administration - {{title}}
-  poll_common_share_form:
-    no_group_selected: Aucun groupe sélectionné
-    share_a_link: Partager un lien
-    share_a_link_helptext: Créez un lien partageable à diffuser. N’importe qui ayant accès à ce lien pourra participer.
-    anyone_can_participate: N’importe qui ayant un lien peut participer.
-    anyone_can_participate_true: Lien partageable créé
-    anyone_can_participate_false: Lien partageable révoqué
-    get_link: Copier le lien
-    invite_visitor: Inviter des personnes
-    invite_visitor_helptext: Inviter des individus à cette décision par adresse électronique. Les invités ne pourront participer qu’à cette décision.
-    send_email: Envoyez un courriel
-    shareable_link_created: Tout le monde peut maintenant participer à cette décision
-    shareable_link_revoked: Cette décision est maintenant sur invitation seulement
-    shareable_link: Lien partageable
-    guests_invited: Envoyé à {{count}} personnes
-    guest_revoked: Accès révoqué pour {{email}}
-    existing_guests: Invités
-    new_guests: Nouvelles adresses e-mail à inviter
-    enter_email: "Par exemple, invite@exemple.com"
-    reminded: Rappel envoyé !
-    send_emails: Envoyer les invitations ({{count}})
-    share_group: Groupe
-    share_group_helptext: Choisissez un groupe avec qui partager cette décision. Les membres du groupe pourront participer.
-    cannot_move_poll_helptext: Ce sondage appartient à la discussion <strong>{{discussion}}</strong> dans <strong>{{group}}</strong> et ne peut donc pas être déplacé.
-    move_group_helptext: Attention ! Déplacer une décision hors du groupe peut empêcher certaines personnes d’y accéder. Les avis existants resteront enregistrés.
-    set_group: Modifier un groupe
-    group_set: Groupe mis à jour
-    view_poll: Voir le sondage
-    email_invited: 'Invitation envoyée à {{email}}'
-    email_exists: '{{email}} a déjà été invité'
-    email_empty: 'Merci de renseigner une adresse e-mail'
-    email_invalid: "Cette adresse e-mail n’a pas l’air valide"
   poll_common_publish_facebook_preview:
     shared_a: a partagé un
     link: lien
@@ -1456,14 +1465,12 @@ fr:
     email_placeholder: vous@exemple.com
     login_with_token: Vous êtes prêt ! Cliquez sur le lien ci-dessous pour vous connecter.
     login_link_helptext: |
-      Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
-      Si vous préférez utiliser un mot de passe pour vous connecter à l’avenir, vous pouvez le définir sur votre page de profil.
+        Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
+        Si vous préférez utiliser un mot de passe pour vous connecter à l’avenir, vous pouvez le définir sur votre page de profil.
     login_link_helptext_with_password: "Entrez votre mot de passe, ou connectez-vous par courriel."
-    sign_up_helptext: "Saisissez le nom sous lequel vous voulez intervenir, et nous vous enverrons un lien de connexion."
     oauth_confirm_helptext: "Confirmez les informations ci-dessous et nous vous enverrons un lien de connexion."
     name_required: Entrez un nom
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé ! Merci de nous contacter pour réactiver votre compte utilisateur.
-    welcome: Enchanté, {{email}} !
     welcome_back: Content de vous revoir, {{name}} !
     login_link: Recevoir un courriel de connexion
     set_password: Définir un mot de passe
@@ -1475,7 +1482,10 @@ fr:
     already_a_user: Vous avez déjà un compte {{site_name}} ? Entrez votre adresse e-mail pour connecter à ce compte au vôtre
     link_accounts: Comptes associés
     check_your_email: Vérifier votre e-mail !
-    login_link_sent: "Ok, nous avons envoyé un courriel à {{email}} avec un lien de connexion immédiate. À bientôt !"
+    login_link_sent: "Ok, nous avons envoyé l'invitation à {{email}}."
+    instructions: "Cliquez sur le lien pour vous connecter, ou entrez le code ci-dessous:"
+    too_many_attempts: "Trop de tentatives, essayez de cliquer sur le lien dans le courriel pour vous connecter."
+    invalid_code: "Désolé, le code ne correspond pas. Vérifiez le courriel et essayez de nouveau."
     password_link_sent: "Nous avons envoyé un courriel à {{email}} avec les instructions pour définir votre mot de passe."
     signed_in: Connexion réussie
     email_verified: La vérification par courriel a réussi
@@ -1495,7 +1505,7 @@ fr:
       remove_identity: Retirer cette intégration
       confirm_remove_title: Retirer l’intégration à Slack
       confirm_remove_helptext: |
-        Votre chaîne Slack ne recevra plus de notifications à propos de ce groupe. Vous pouvez toujours revenir en arrière et réactiver l’intégration.
+          Votre chaîne Slack ne recevra plus de notifications à propos de ce groupe. Vous pouvez toujours revenir en arrière et réactiver l’intégration.
       identity_removed: Intégration retirée
     progress:
       install: Installer
@@ -1518,7 +1528,7 @@ fr:
     invite:
       heading: 'Étape2 : Paramétrez une chaîne Slack'
       helptext: |
-        Terminé ! Maintenant, sélectionnez une chaîne où vous aimeriez envoyer les mises à jour.
+          Terminé ! Maintenant, sélectionnez une chaîne où vous aimeriez envoyer les mises à jour.
       select_a_channel: Sélectionnez une chaîne
       publish_group: Envoyez un message de bienvenue
       publish_group_helptext_on: Nous enverrons les messages sur cette chaîne pour expliquer comment utiliser LoomioBot.
@@ -1536,6 +1546,6 @@ fr:
   slack_added_modal:
     title: Réussite!
     helptext: |
-      Vous avez ajouté Slack à votre groupe <strong>{{name}}</strong>.
-      Maintenant, dès que quelqu’un démarre un sondage dans ce groupe, il ou elle pourra choisir de notifier la chaîne de votre équipe Slack.
+        Vous avez ajouté Slack à votre groupe <strong>{{name}}</strong>.
+        Maintenant, dès que quelqu’un démarre un sondage dans ce groupe, il ou elle pourra choisir de notifier la chaîne de votre équipe Slack.
     start_poll_now: Prendre une décision maintenant

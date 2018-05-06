@@ -79,6 +79,7 @@ ga_IE:
       delete: Scrios
       unsubscribe: Díliostáil
       subscribe: Liostáil
+      invite: Tabhair cuireadh
     formatting_help:
       label: 'Formáidiú'
   error_page:
@@ -171,6 +172,8 @@ ga_IE:
       comments: 'Tráchtanna'
     sign_in: 'Sínigh isteach'
     logo_title: 'An clár cinn'
+  membership_dropdown:
+    cancel_invitation: 'Cealaigh an cuireadh '
   start_menu:
     title: 'Gníomh'
     start_group: 'Tosaigh Baicle'
@@ -235,7 +238,6 @@ ga_IE:
     new_photo: 'grianghraf nua'
     new_cover_photo: 'Uasluchtaigh grianghraf cumhdaigh nua'
     discussions_placeholder: 'Is áit í snáithe inar féidir le gach duine ábhar a phlé agus cinntí a dhéanamh le chéile.'
-    members: 'Comhaltaí'
     members_placeholder: 'Is tusa an t-aon duine anseo: tabhair cuirí do dhaoine bheith leat!'
     member_options: Roghanna na gcomhaltaí
     subgroups: 'Fobhaiclí'
@@ -332,6 +334,14 @@ ga_IE:
       remove_member_success: 'Baineadh {{name}}'
       make_admin_success: 'Is comhordaitheoir anois {{name}}'
       remove_admin_success: 'Ní comhordaitheoir a thuilleadh é {{name}}'
+  membership_remove_modal:
+    invitation:
+      title: 'Cealaigh an cuireadh '
+      flash: Cuireadh curtha ar ceal
+      submit: 'Cealaigh an cuireadh '
+    membership:
+      title: Bain comhalta
+      submit: Bain comhalta
   remove_membership_form:
     aria_label: 'Bain comhalta'
     title: 'Bain comhalta'
@@ -381,7 +391,7 @@ ga_IE:
     header: Socruithe ríomhphoist
     all_groups: Socruithe i gcomhair gach baicle
     daily_summary_label: Ríomhphost le hachoimre laethúil
-    mentioned_description: "Nuair is mian le duine éigin d'aird a tharraing orthu, @déanfaidh siad tagairt duit. Molaimid duit é sin a fhágáil ar siúl, ionas go bhfaighfear ríomhphost nuair a tharlaíonn seo."
+    announcement_label: Fógraí
     edit: Eagar
     messages:
       updated: Nuashonraigh na socruithe ríomhphoist
@@ -521,6 +531,8 @@ ga_IE:
   poll_common_form:
     closed: Dúnta
     start: Tosaigh
+  poll_count_options:
+    'no': 'Ná cealaigh é'
   poll_common_subscribe_form:
     subscribe: Liostáil
   polls_page:

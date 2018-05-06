@@ -120,6 +120,7 @@ nl_NL:
       remind: Herinneren
       resend: Opnieuw versturen
       send: Versturen
+      invite: Uitnodigen
       resent: Uitnodiging opniew verstuurd
     formatting_help:
       label: 'Aan het formatteren'
@@ -206,16 +207,13 @@ nl_NL:
   mute_explanation_modal:
     aria_label: Bord dempen
     mute_thread: Bord dempen
-    body_html: |
-      <p>Dempen betekent dat je <strong>geen meldingen ontvangt over voorstellen</strong> , of elke andere activiteit op dit bord, tenzij iemand<strong>je @vermeld</strong>.</p>.
-      <p>Gedempte borden zijn ook niet zichtbaar op <strong>Recente</strong> en <strong>Ongelezen </strong>pagina's. Om je gedempte borden te vinden selecteer je de <strong>Gedempte </strong> optie in de zijbalk:</p>
     image_alt: '''Gedempte borden'' optie is terug te vinden in de zijbalk'
   dismiss_explanation_modal:
     aria_label: Bord afwijzen
     dismiss_thread: Negeer discussie
     body_html: |
-      <p>Het afwijzen van een bord verwijdert deze uit je ongelezen items. Wanneer er nieuwe
-      activiteit is op het bord verschijnt deze opnieuw als ongelezen.</p>
+        <p>Het afwijzen van een bord verwijdert deze uit je ongelezen items. Wanneer er nieuwe
+        activiteit is op het bord verschijnt deze opnieuw als ongelezen.</p>
   inbox:
     clear: 'Leegmaken'
     latest: 'Laatste'
@@ -291,6 +289,10 @@ nl_NL:
     help: 'Hulp'
     contact_site_name: 'Contacteer {{site_name}}'
     sign_out: 'Uitloggen'
+  membership_dropdown:
+    make_coordinator: 'Duid een coördinator aan'
+    demote_coordinator: 'Degradeer een coördinator'
+    cancel_invitation: Annuleer uitnodiging
   start_menu:
     label: 'Gebruikersacties'
     title: 'Actie'
@@ -311,7 +313,6 @@ nl_NL:
     new_vote: "<strong>{{name}}</strong> {{position}} ten aanzien van het voorstel <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> heeft gereageerd op <strong>{{title}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> heeft geantwoord op je opmerking in <strong>{{title}}</strong>"
-    reaction_created: "<strong>{{name}}</strong> reageerde <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> op je commentaar in <strong>{{title}}</strong>"
     user_mentioned: "<strong>{{name}}</strong> heeft je vermeld in <strong>{{title}}</strong>"
     user_reminded: "<strong>{{name}}</strong> wacht op jouw participatie in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> heeft gevraagd lid te mogen worden van <strong>{{title}}</strong>"
@@ -327,8 +328,8 @@ nl_NL:
     poll_edited: "<strong>{{name}}</strong> heeft een {{poll_type}} aangepast <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} sluit binnenkort <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} gesloten: <strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> heeft opties toegevoegd aan een {{poll_type}}: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> heeft een uitkomst gedeeld <strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> heeft een uitkomst gedeeld <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> heeft geparticipeerd aan: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Laat je horen
@@ -359,12 +360,19 @@ nl_NL:
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
     make_announcement: Aankondiging
     notified_count: '{{count}} mensen zullen ge-e-mailed worden'
+  announcement:
+    form:
+      outcome_announced:
+        title: Deel uitkomst
+      anyone_can_participate: Iedereen met een link kan deelnemen
+    group_form:
+      members_count: '{{count}} mensen zullen op de hoogte gebracht worden'
   action_dock:
     react: Reactie toevoegen
     add_resource: Bijlage toevoegen
     edit_group: Groepsbeschrijving bijwerken
     add_comment: Becommentarieer
-    copy_url_comment: Kopieer URL
+    copy_url: Kopieer URL
     edit_thread: Beschrijving bijwerken
     translate_thread: Beschrijving vertalen
     edit_poll: '''Peiling'' bewerken'
@@ -438,7 +446,6 @@ nl_NL:
     new_cover_photo: 'Nieuwe groepsfoto uploaden'
     new_group_logo: 'Upload een nieuw groepslogo'
     discussions_placeholder: 'Op een bord kan iedereen over een onderwerp discussiëren en gezamenlijk beslissingen nemen.'
-    members: 'Leden'
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
     member_options: Opties voor leden
     subgroups: 'Subgroepen'
@@ -633,6 +640,14 @@ nl_NL:
       remove_admin_success: '{{name}} is geen coördinator meer'
     remove_admin_from_self:
       question: 'Weet je zeker dat je geen coördinator meer wil zijn?'
+  membership_remove_modal:
+    invitation:
+      title: Annuleer uitnodiging
+      flash: Uitnodiging geannuleerd
+      submit: Annuleer uitnodiging
+    membership:
+      title: Verwijder lid
+      submit: Verwijder lid
   memberships_panel:
     add_coordinator: Duid een coördinator aan
     remove_coordinator: Degradeer een coördinator
@@ -731,8 +746,8 @@ nl_NL:
     daily_summary_description: "Iedere morgen krijg je een e-mail met de gemiste activiteiten van de dag ervoor. Zo is het gemakkelijk om op de hoogte te blijven van alle activiteiten."
     on_participation_label: Abonneer op deelname
     on_participation_description: "Als je deelneemt aan een discussie, wordt alle verdere activiteit direct naar je gemaild."
+    announcement_label: Aankondigingen
     mentioned_label: Vermeldingen
-    mentioned_description: "Als iemand jouw aandacht wil krijgen, @vermelden ze je. We raden je aan om dit aan te laten staan, zodat je een e-mail ontvangt zodra dit gebeurt."
     update_settings: Bewaar veranderingen
     specific_groups: Instellingen voor specifieke groepen
     default_settings:
@@ -762,9 +777,9 @@ nl_NL:
     explain_mute:
       title: Je hebt nog geen borden gedempt.
       explanation_html: |
-        Dempen is een manier om discussies te verbergen of stil te maken waar je geen interesse in hebt.
-        Dempen betekent dat je het de discussie niet ziet in <strong>Recent</strong> of <strong>Ongelezen</strong> en dat je geen melding krijgt over activiteit in die discussies, zoals voorstellen.
-        Je wordt alleen geïnformeerd als iemand je naam <strong>@vermeldt</strong>.
+          Dempen is een manier om discussies te verbergen of stil te maken waar je geen interesse in hebt.
+          Dempen betekent dat je het de discussie niet ziet in <strong>Recent</strong> of <strong>Ongelezen</strong> en dat je geen melding krijgt over activiteit in die discussies, zoals voorstellen.
+          Je wordt alleen geïnformeerd als iemand je naam <strong>@vermeldt</strong>.
       instructions: 'Om een bord te dempen zoek je deze op en klik je op het icoon dempen.'
       see_muted_html: 'Om je gedempte discussies te zien, klik je op <strong>"Gedempt"</strong>. Je kunt dempen opheffen door op het bijbehorende pictogram te klikken.'
     filtering:
@@ -999,6 +1014,7 @@ nl_NL:
     reason_placeholder: Nog bijkomend commentaar?
     message: Bericht
     results: Resultaten
+    responses: Antwoorden
     vote: Stem
     votes: Stemmen
     update_outcome: Uitkomst actualiseren
@@ -1041,10 +1057,6 @@ nl_NL:
   poll_common_select_group:
     loomio_group: Groep
     loomio_group_placeholder: (geen groep geselecteerd)
-  poll_common_voter_add_options:
-    add_options: Kiezers mogen opties toevoegen
-    helptext_on: Deelnemers mogen hun eigen opties toevoegen wanneer ze stemmen
-    helptext_off: Deelnemers kunnen kiezen uit jouw aangeboden opties
   poll_common_notify_group:
     notify_group: Aankondiging
     members_helptext: Je groep zal op de hoogte gebracht worden
@@ -1062,14 +1074,15 @@ nl_NL:
     event_description_placeholder: Wat staat er op de agenda bij deze vergadering?
     location: Locatie
     location_placeholder: Waar zal deze vergadering plaats vinden?
-  poll_common_notify_on_participate:
-    notify_on_participate: Meld me wanneer er mensen deelnemen
-    helptext_on: Je zal verwittigd worden telkens wanneer er iemand deelneemt
-    helptext_off: Je zal de resultaten ontvangen wanneer deze activiteit sluit
-  poll_common_anonymous:
-    anonymous: Anonieme deelnemers
-    helptext_on: De gegevens van de deelnemer zal niet bij ieder antwoord getoond worden
-    helptext_off: Deelnemers zullen getoond worden met hun antwoorden
+  poll_common_settings:
+    multiple_choice:
+      title: Meerkeuze
+    anyone_can_participate:
+      title: Iedereen kan meedoen
+    notify_on_participate:
+      title: Meld me wanneer er mensen deelnemen
+    voter_can_add_options:
+      title: Kiezers mogen opties toevoegen
   poll_common_close_form:
     title: Sluit een peiling voortijdig
     helptext: Ben je er zeker van dat je vroeger wilt sluiten?
@@ -1147,14 +1160,14 @@ nl_NL:
     start: Starten
     update: Updaten
     loomio_school_link: |
-      <p>Verruim je kennis op de <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
+        <p>Verruim je kennis op de <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio School</a>.</p>
   poll_proposal_form:
     tool_tip_expanded: |
-      <p>Een 'Voorstel' is een instrument om een gemeenschappelijk akkoord te bekomen over een stelling of verloop.</p>
-      <p>Deelneemers kunnen het eens zijn, zich onthouden, oneens zijn of blokkeren - en een verklaring geven waarom ze dit standpunt kiezen.</p>
-      <p>Een taartgrafiek geeft het overzicht van de standpunten in de groep, terwijl de opmerkingen de individuele stemmen een platform geeft. </p>
-      <p>Laat je niet ontmoedigen als er in het begin geen akkoord zichtbaar is, voorstellen zijn ontworpen om problemen aan de oppervlakte te brengen.</p>
-      <p>Als er goed deelgenomen word is een 'Voorstel' een krachtig instrument om actie te ondernemen.</p>
+        <p>Een 'Voorstel' is een instrument om een gemeenschappelijk akkoord te bekomen over een stelling of verloop.</p>
+        <p>Deelneemers kunnen het eens zijn, zich onthouden, oneens zijn of blokkeren - en een verklaring geven waarom ze dit standpunt kiezen.</p>
+        <p>Een taartgrafiek geeft het overzicht van de standpunten in de groep, terwijl de opmerkingen de individuele stemmen een platform geeft. </p>
+        <p>Laat je niet ontmoedigen als er in het begin geen akkoord zichtbaar is, voorstellen zijn ontworpen om problemen aan de oppervlakte te brengen.</p>
+        <p>Als er goed deelgenomen word is een 'Voorstel' een krachtig instrument om actie te ondernemen.</p>
     tool_tip_collapsed: Beoog een gemeenschappelijk akkoord
     start_header: '''Voorstel'' starten'
     edit_header: Voorstel bewerken
@@ -1165,9 +1178,9 @@ nl_NL:
     proposal_updated: Voorstel geactualiseerd
   poll_poll_form:
     tool_tip_expanded: |
-      <p>Gebruik een 'Peiling' om populariteit te meten of een een keuze aan te bieden.</p>
-      <p>Voorzie enkele opties om uit te kiezen. Beslis of de deelnemers een of meerdere opties mogen antwoorden. Decide if participants choose single or multiple options as their response.</p>
-      <p>Iedereen stemt mee en kan indien gewenst een opmerking meegeven. Resultaten worden voorgesteld in een balkgrafiek.</p>
+        <p>Gebruik een 'Peiling' om populariteit te meten of een een keuze aan te bieden.</p>
+        <p>Voorzie enkele opties om uit te kiezen. Beslis of de deelnemers een of meerdere opties mogen antwoorden. Decide if participants choose single or multiple options as their response.</p>
+        <p>Iedereen stemt mee en kan indien gewenst een opmerking meegeven. Resultaten worden voorgesteld in een balkgrafiek.</p>
     tool_tip_collapsed: Meet de populariteit van de verschillende opties
     start_header: '''Peiling'' starten'
     edit_header: Peiling bewerken
@@ -1176,17 +1189,15 @@ nl_NL:
     details_placeholder: Geef verhelderende details die mensen mogelijk nodig hebben om de vraag te beantwoorden.
     add_option_placeholder: Voeg optie toe
     remove_option: Verwijder optie
-    multiple_choice: Meerkeuze
-    multiple_choice_explained: Sta kiezers toe om zoveel opties als ze willen te selecteren .
     poll_created: Peiling aangemaakt
     poll_updated: Peiling geactualiseerd
   poll_count_form:
     tool_tip_expanded: |
-      <p>Een<em>'Check' </em> is een instrument met veel toepassingsmogelijkheden maar met slechts 2 antwoorden: een vink (✔) of een kruis (✘). Deelnemers zullen de vik (✔) gebruiken om ja te zeggen en het kruis (✘) gebruiken als ze nee bedoelen of niet zeker zijn.</p>
-      <p>Gebruik dit om mensen te betrekken met een voorstel, zoals een A.A.U.B.: "Ik zal naar de bijeenkomst komen" of "Ik zal lid worden van de werkgroep".</p>
-      <p>Of gebruik het om een stand van zaken te weten te komen: "Ik heb mijn contactgegevens nagezien", of "Ik heb het document gelezen en mijn feedback gegeven".</p>
-      <p>Een 'Check' heeft een<em>doel</em>, zijnde het aantal deelnemers dat je zou willen hebben. Dit doel geeft aan de groep weer of er iets meer aandacht vraagt of genoeg mensen bereikt heeft .</p>
-      <p>De dag voordat de 'Check' sluit zal het de deelnemers die nog moeten antwoorden herinneren dit te doen - en deze digitale harde noot kraken.</p>
+        <p>Een<em>'Check' </em> is een instrument met veel toepassingsmogelijkheden maar met slechts 2 antwoorden: een vink (✔) of een kruis (✘). Deelnemers zullen de vik (✔) gebruiken om ja te zeggen en het kruis (✘) gebruiken als ze nee bedoelen of niet zeker zijn.</p>
+        <p>Gebruik dit om mensen te betrekken met een voorstel, zoals een A.A.U.B.: "Ik zal naar de bijeenkomst komen" of "Ik zal lid worden van de werkgroep".</p>
+        <p>Of gebruik het om een stand van zaken te weten te komen: "Ik heb mijn contactgegevens nagezien", of "Ik heb het document gelezen en mijn feedback gegeven".</p>
+        <p>Een 'Check' heeft een<em>doel</em>, zijnde het aantal deelnemers dat je zou willen hebben. Dit doel geeft aan de groep weer of er iets meer aandacht vraagt of genoeg mensen bereikt heeft .</p>
+        <p>De dag voordat de 'Check' sluit zal het de deelnemers die nog moeten antwoorden herinneren dit te doen - en deze digitale harde noot kraken.</p>
     tool_tip_collapsed: Traceer medewerking en vind vrijwilligers
     start_header: '''Check'' starten'
     edit_header: '''Check'' bewerken'
@@ -1197,9 +1208,9 @@ nl_NL:
     count_updated: '''Check'' geactualiseerd'
   poll_dot_vote_form:
     tool_tip_expanded: |
-      <p>'Dotmocracy' is een manier om een lijst met opties prioriteiten toe te kennen.</p>
-      <p>Deelnemers krijgen een beperkt aantal dots, zijnde stippen, die ze zelf kunnen verdelen over de voorgestelde opties.</p>
-      <p>De totalen van de resultaten worden getoond, alsook de individuele stemmen, zo kan je verschillende invalshoeken evalueren.</p>
+        <p>'Dotmocracy' is een manier om een lijst met opties prioriteiten toe te kennen.</p>
+        <p>Deelnemers krijgen een beperkt aantal dots, zijnde stippen, die ze zelf kunnen verdelen over de voorgestelde opties.</p>
+        <p>De totalen van de resultaten worden getoond, alsook de individuele stemmen, zo kan je verschillende invalshoeken evalueren.</p>
     tool_tip_collapsed: Opties prioriteiten toekennen
     start_header: '''Dotmocracy'' starten'
     edit_header: '''Dotmocracy'' bewerken'
@@ -1212,12 +1223,12 @@ nl_NL:
     dot_vote_updated: '''Dotmocracy'' geactualiseerd'
   poll_meeting_form:
     tool_tip_expanded: |
-      <p>Gebruik 'Moment bevragen' om uit te zoeken wanneer mensen beschikbaar zijn om af te spreken. </p>
-      <p>Typ een lijst met datums of tijden wanneer je je vergadering kan organieseren.</p>
-      <p>Deelnemers vinken deze aan waarbij ze aanwezig kunnen zijn, of ze kunnen het uitlegveld invullen om hun omstandigheden te omschrijven, zodat jij de opties kunt bijsturen indien nodig.</p>
-      <p>Wanneer je nieuwe tijden tijdens een 'Moment afspreken' toevoegt worden de mensen die al gekozen hadden gevraagd hun keuze te actualiseren.</p>
-      <p>Zo krijg je een overzicht van wie het wanneer past en kan je kiezen wanneer je de vergadering wilt houden.</p>
-      <p>Tijden worden automatisch aangepast aan de tijdzone van de deelnemers.</p>
+        <p>Gebruik 'Moment bevragen' om uit te zoeken wanneer mensen beschikbaar zijn om af te spreken. </p>
+        <p>Typ een lijst met datums of tijden wanneer je je vergadering kan organieseren.</p>
+        <p>Deelnemers vinken deze aan waarbij ze aanwezig kunnen zijn, of ze kunnen het uitlegveld invullen om hun omstandigheden te omschrijven, zodat jij de opties kunt bijsturen indien nodig.</p>
+        <p>Wanneer je nieuwe tijden tijdens een 'Moment afspreken' toevoegt worden de mensen die al gekozen hadden gevraagd hun keuze te actualiseren.</p>
+        <p>Zo krijg je een overzicht van wie het wanneer past en kan je kiezen wanneer je de vergadering wilt houden.</p>
+        <p>Tijden worden automatisch aangepast aan de tijdzone van de deelnemers.</p>
     tool_tip_collapsed: Zoek een moment om af te spreken
     start_header: '''Moment bevragen'' starten'
     edit_header: '''Moment bevragen'' bewerken'
@@ -1231,10 +1242,10 @@ nl_NL:
     add_option_placeholder: Geef een nieuwe tijd op
   poll_ranked_choice_form:
     tool_tip_expanded: |
-      <p>'Keuzes rangschikken' is een kiesmethode die toelaat om iedere kiezer zijn voorkeuren te laten rangschikken.</p>
-      <p>Het is aan te raden wanneer 'het stelen van stemmen' kan optreden (bijv, twee populaire opties die
-      bijna hetzelfde zijn en bijgevolg de stemmen tussen elkaar verdeeld zien worden), en het kan gebruikt worden om een Condorcet te implementeren of een Instant Runoff stijl van verkiezing.
-      </p>
+        <p>'Keuzes rangschikken' is een kiesmethode die toelaat om iedere kiezer zijn voorkeuren te laten rangschikken.</p>
+        <p>Het is aan te raden wanneer 'het stelen van stemmen' kan optreden (bijv, twee populaire opties die
+        bijna hetzelfde zijn en bijgevolg de stemmen tussen elkaar verdeeld zien worden), en het kan gebruikt worden om een Condorcet te implementeren of een Instant Runoff stijl van verkiezing.
+        </p>
     tool_tip_collapsed: Opties rangschikken
     start_header: '''Keuzes rangschikken'' starten'
     edit_header: '''Keuzes rangschikken'' bewerken'
@@ -1275,6 +1286,8 @@ nl_NL:
     block_verb: "geblokkeerd"
     block_meaning: De dringende aandacht van de groep is nodig om een ernstige zorg te delen
   poll_count_options:
+    'yes': 'Ja'
+    'no': 'Nee'
     yes_meaning: Ik geef me vrijwillig op, geef mijn toestemming, of heb de opgedragen taak afgerond
     no_meaning: Ik ben niet in staat om deel te nemen aan de beslissing
   poll_count_vote_form:
@@ -1320,38 +1333,6 @@ nl_NL:
     stance_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> stemde op: <strong>{{title}}</strong>"
   poll_admin_page:
     title: Administrator - {{title}}
-  poll_common_share_form:
-    no_group_selected: Geen groep geselecteerd
-    share_a_link: Link delen
-    share_a_link_helptext: Maak een link om te verspreiden. Iedereen die toegang heeft tot de link zal kunnen deelnemen.
-    anyone_can_participate: Iedereen met een link kan deelnemen
-    anyone_can_participate_true: Deelbare koppeling gemaakt
-    anyone_can_participate_false: Deelbare koppeling ingetrokken
-    get_link: Link kopieren
-    invite_visitor: Gasten e-mailen
-    invite_visitor_helptext: Personen uitnodigen voor deze beslissing per e-mail. Gasten zullen enkel in deze discussie kunnen meewerken.
-    send_email: Verstuur e-mail
-    shareable_link_created: Iederen kan nu deelnemen aan deze beslissing
-    shareable_link_revoked: Deze beslissing is nu enkel op uitnodiging
-    shareable_link: Deelbare koppeling
-    guests_invited: Verstuurd naar {{count}} mensen
-    guest_revoked: Toegang ingetrokken voor {{email}}
-    existing_guests: Bestaande gasten
-    new_guests: Nieuwe e-mails om uit te nodigen
-    enter_email: "M.a.w. guest@example.com"
-    reminded: Herinnering verstuurd!
-    send_emails: Stuur ({{count}}) uitnodigingen
-    share_group: Groep
-    share_group_helptext: Selecteer een groep om deze beslissing aan mede te delen. Leden van de groep zullen kunnen meewerken.
-    cannot_move_poll_helptext: Deze peiling maakt onderdeel uit van de discussie <strong>{{discussion}}</strong> in <strong>{{group}}</strong>, en kan dus niet verzet worden.
-    move_group_helptext: Wees voorzichtig! Het verplaatsten van een beslissing uit een groep kan ertoe leiden dat sommige mensen er geen toegang meer toe krijgen. Bestaande peilingen zullen steeds geregistreerd zijn.
-    set_group: Groep instellen
-    group_set: Groep geactualiseerd
-    view_poll: Bekijk peiling
-    email_invited: 'Uitnodiging per e-mail verstuurd naar {{email}}'
-    email_exists: '{{email}} is al uitgenodigd'
-    email_empty: 'Voer alstublieft een e-mail in'
-    email_invalid: "Dit lijkt geen geldige e-mail te zijn"
   poll_common_publish_facebook_preview:
     shared_a: deelde een
     link: link
@@ -1399,13 +1380,11 @@ nl_NL:
     email_placeholder: you@example.com
     login_with_token: Je bent klaar! Klik onderstaande link aan om in te loggen.
     login_link_helptext: |
-      Klik op de knop onderaan en we sturen je een link om onmiddelijk in te loggen. Als je in de toekomst graag een wachtwoord gebruik om in te loggen, je kan er een instellen op je profielpagina.
+        Klik op de knop onderaan en we sturen je een link om onmiddelijk in te loggen. Als je in de toekomst graag een wachtwoord gebruik om in te loggen, je kan er een instellen op je profielpagina.
     login_link_helptext_with_password: "Typ je wachtwoord in of log in via e-mail."
-    sign_up_helptext: "Laat ons weten hoe je wilt dat we je noemen, dan sturen we een link om in te loggen."
     oauth_confirm_helptext: "Bevestig gewoon je gegevens hieronder en dan sturen we een link om in te loggen."
     name_required: Geef aub een naam in
     account_inactive: O-oh, het ziet ernaar uit dat het account van {{email}} gedeactiveerd is! Gelieve contact met ons op te nemen voor de heractivatie van je account.
-    welcome: Het is leuk je te ontmoeten, {{email}}!
     welcome_back: Welkom terug, {{name}}!
     login_link: Log in via e-mail
     set_password: Wachtwoord instellen
@@ -1415,7 +1394,6 @@ nl_NL:
     already_a_user: Heb je al een account bij {{site_name}} ? Typ je e-mailadres om dit account te link naar de jouwe
     link_accounts: Accounts linken
     check_your_email: Check je e-mails!
-    login_link_sent: "Ok, we hebben je een e-mail gestuurd naar {{email}} met een link om onmiddelijk in te loggen. Tot binnenkort!"
     password_link_sent: "We hebben je een e-mail gestuurd naar {{email}} met instructies om je wachtwoord in te stellen."
     signed_in: Succesvol ingelogd
     email_verified: E-mail succesvol bevestigd
@@ -1435,7 +1413,7 @@ nl_NL:
       remove_identity: Verwijder deze verbinding
       confirm_remove_title: Verwijder de slack verbinding
       confirm_remove_helptext: |
-        Je slack kanaal zal niet langer updates ontvangen over deze groep. Je kan altijd nog terug en het opnieuw toevoegen.
+          Je slack kanaal zal niet langer updates ontvangen over deze groep. Je kan altijd nog terug en het opnieuw toevoegen.
       identity_removed: Verbinding beëindigd
     progress:
       install: Installeren
@@ -1458,7 +1436,7 @@ nl_NL:
     invite:
       heading: 'Stap 2: Stel een Slack kanaal op'
       helptext: |
-        Succes! Nu, kies een kanaal dat je graag zou gebruiken om updates op te posten.
+          Succes! Nu, kies een kanaal dat je graag zou gebruiken om updates op te posten.
       select_a_channel: Kies een kanaal
       publish_group: Post een welkomstbericht
       publish_group_helptext_on: We zullen het bericht op dit kanaal posten om mensen te instrueren hoe ze LoomioBot kunnen gebruiken.
@@ -1473,6 +1451,6 @@ nl_NL:
   slack_added_modal:
     title: Succes!
     helptext: |
-      Je bent erin geslaagd Slack toe te voegen aan je groep <strong>{{name}}</strong>.
-      Als nu eender wie een peiling start in deze group, zullen ze de optie hebben om updates over die peiling te posten op een kanaal van je slack team.
+        Je bent erin geslaagd Slack toe te voegen aan je groep <strong>{{name}}</strong>.
+        Als nu eender wie een peiling start in deze group, zullen ze de optie hebben om updates over die peiling te posten op een kanaal van je slack team.
     start_poll_now: Maak nu een beslissing

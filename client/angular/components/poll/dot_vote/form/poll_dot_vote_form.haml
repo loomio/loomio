@@ -4,13 +4,11 @@
   %poll_common_closing_at_field.md-input-compensate.md-block{poll: "poll"}
 
   .md-input-compensate
-    %md-input-container
-      %label{translate: "poll_dot_vote_form.dots_per_person"}
-      %input{type: "number", min: "0", ng-model: "poll.customFields.dots_per_person"}
-      %validation_errors{subject: "poll", field: "dotsPerPerson"}
-
-  .md-input-compensate
-    %poll_common_notify_group{model: "poll", notify-action: "{{poll.notifyAction()}}"}
-    %poll_common_voter_add_options{poll: "poll"}
-    %poll_common_notify_on_participate{poll: "poll"}
-    %poll_common_anonymous{poll: "poll"}
+    %md-input-container.lmo-flex.lmo-flex__center{layout: "row"}
+      .poll-common-checkbox-option__text.md-list-item-text.lmo-flex__grow
+        .lmo-flex--row
+          %h3{translate: "poll_dot_vote_form.dots_per_person"}
+          %help_bubble{helptext: "poll_dot_vote_form.dots_per_person_helptext"}
+        %validation_errors{subject: "poll", field: "dotsPerPerson"}
+      %input.lmo-number-input{type: "number", min: "1", ng-model: "poll.customFields.dots_per_person"}
+    %poll_common_settings{poll: "poll"}

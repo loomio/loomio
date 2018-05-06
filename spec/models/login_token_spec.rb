@@ -4,7 +4,11 @@ describe LoginToken do
   let(:token) { create :login_token }
 
   it 'has a token' do
-    expect(create(:login_token).token).to be_present
+    expect(build(:login_token).token).to be_present
+  end
+
+  it 'has a code' do
+    expect(build(:login_token).code).to be_present
   end
 
   it 'is useable by default' do

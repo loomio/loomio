@@ -1,43 +1,31 @@
 class Queries::UsersByVolumeQuery
-  def self.normal_or_loud(*models)
-    base_query(models.compact, mode: :greater_than, volume: DiscussionReader.volumes[:normal])
+  def self.normal_or_loud(model)
+    users_by_volume(model, '>=', DiscussionReader.volumes[:normal])
   end
 
   %w(mute quiet normal loud).map(&:to_sym).each do |volume|
-    define_singleton_method volume, ->(*models) {
-      base_query(models.compact, mode: :equal_to, volume: DiscussionReader.volumes[volume])
+    define_singleton_method volume, ->(model) {
+      users_by_volume(model, '=', DiscussionReader.volumes[volume])
     }
   end
 
   private
 
-  def self.base_query(models, mode:, volume:)
-    return User.none unless models.present?
-    User.active.distinct.from("(#{models.map do
-      |m| model_query(m, mode: mode, volume: volume).to_sql
-    end.compact.join(" UNION ")}) as users")
-  end
-
-  def self.model_query(model, mode:, volume:)
-    return User.none unless model
-    User.joins(membership_join(model))
-        .joins(reader_join(model))
-        .where.not('m.id': nil)
-        .where('m.archived_at': nil)
-        .where(volume_where(mode: mode), volume: volume)
-  end
-
-  def self.volume_where(mode: :equal_to)
-    operator = mode == :equal_to ? '=' : '>='
-    "dr.volume #{operator} :volume OR (dr.volume IS NULL AND m.volume #{operator} :volume)"
-  end
-
-  def self.reader_join(model)
-    clause = model.respond_to?(:discussion) ? "= #{model.discussion.id.to_i}" : " IS NULL"
-    "LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id #{clause})"
-  end
-
-  def self.membership_join(model)
-    "LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{model.group.id.to_i})"
+  def self.users_by_volume(model, operator, volume)
+    return User.none if model.nil?
+    rel = User.active.distinct
+    if model.is_a?(Group)
+      rel.joins(:memberships)
+         .where("memberships.group_id": model.id)
+         .where("memberships.volume #{operator} ?", volume)
+    else
+      rel.joins_readers(model)
+         .joins_guest_memberships(model)
+         .joins_formal_memberships(model)
+         .where("((gm.id IS NOT NULL OR fm.id IS NOT NULL) AND dr.volume #{operator} :volume) OR
+          (dr.volume IS NULL AND gm.volume #{operator} :volume) OR
+          (dr.volume IS NULL AND gm.volume IS NULL AND fm.volume #{operator} :volume)
+          ", volume: volume)
+    end
   end
 end

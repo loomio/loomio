@@ -1,0 +1,7 @@
+<!DOCTYPE HTML>
+%html
+  %head
+    = stylesheet_link_tag 'email'
+  %body
+    = raw DiscussionMailer::REPLY_DELIMITER
+    = yield

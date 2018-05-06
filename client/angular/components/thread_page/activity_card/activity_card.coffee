@@ -71,7 +71,7 @@ angular.module('loomioApp').directive 'activityCard', ['$mdDialog', ($mdDialog) 
           from: $scope.initialSequenceId(position)
           per: $scope.per
 
-      $scope.loader.loadMore().then ->
+      $scope.loader.loadMore($scope.initialSequenceId(position)).then ->
         if $scope.renderMode == "chronological"
           $scope.eventWindow = new ChronologicalEventWindow
             discussion: $scope.discussion

@@ -1,8 +1,12 @@
-AppConfig = require 'shared/services/app_config.coffee'
-Records   = require 'shared/services/records.coffee'
-Session   = require 'shared/services/session.coffee'
+AppConfig     = require 'shared/services/app_config.coffee'
+Records       = require 'shared/services/records.coffee'
+Session       = require 'shared/services/session.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 module.exports = new class AbilityService
+
+  isNotEmailVerified: ->
+    @isLoggedIn() and !Session.user().emailVerified
 
   isLoggedIn: ->
     @isUser() and !Session.user().restricted?
@@ -22,22 +26,29 @@ module.exports = new class AbilityService
     _.intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
-    Session.user().isMemberOf(thread.group())
+    _.contains thread.members(), Session.user()
 
   canRespondToComment: (comment) ->
-    Session.user().isMemberOf(comment.group())
+    _.contains comment.discussion().members(), Session.user()
 
-  canStartPoll: (group) ->
-    group and
-    (@canAdministerGroup(group) or Session.user().isMemberOf(group) and group.membersCanRaiseMotions)
+  canStartPoll: (model) ->
+    return unless model
+    switch model.constructor.singular
+      when 'discussion' then @canStartPoll(model.group()) || @canStartPoll(model.guestGroup())
+      when 'group'      then (@canAdministerGroup(model) or Session.user().isMemberOf(model) and model.membersCanRaiseMotions)
 
   canParticipateInPoll: (poll) ->
     return false unless poll
+    return false unless poll.isActive()
     poll.anyoneCanParticipate or
-    @canAdministerPoll(poll) or
-    !poll.group() or
-    Session.user().isMemberOf(poll.guestGroup()) or
-    (Session.user().isMemberOf(poll.group()) and poll.group().membersCanVote)
+    @adminOf(poll) or
+    (@memberOf(poll) and (!poll.group() or poll.group().membersCanVote))
+
+  memberOf: (model) ->
+    _.any _.compact(model.groups()), (group) -> Session.user().isMemberOf(group)
+
+  adminOf: (model) ->
+    _.any _.compact(model.groups()), (group) -> Session.user().isAdminOf(group)
 
   canReactToPoll: (poll) ->
     @isEmailVerified() and @canParticipateInPoll(poll)
@@ -73,9 +84,6 @@ module.exports = new class AbilityService
     @canAdministerGroup(thread.group()) or
     Session.user().isAuthorOf(thread)
 
-  canChangeThreadVolume: (thread) ->
-    Session.user().isMemberOf(thread.group())
-
   canChangeGroupVolume: (group) ->
     Session.user().isMemberOf(group)
 
@@ -93,7 +101,7 @@ module.exports = new class AbilityService
     @canAdministerGroup(discussion.group())
 
   canChangeVolume: (discussion) ->
-    Session.user().isMemberOf(discussion.group())
+    _.contains discussion.members(), Session.user()
 
   canManageGroupSubscription: (group) ->
     group.isParent() and
@@ -109,9 +117,12 @@ module.exports = new class AbilityService
     @canAdministerGroup(group) or
     (Session.user().isMemberOf(group) and group.membersCanStartDiscussions)
 
-  canAddMembers: (group) ->
+  canAddMembersToGroup: (group) ->
     @canAdministerGroup(group) or
     (Session.user().isMemberOf(group) and group.membersCanAddMembers)
+
+  canAddMembers: (group) ->
+    @canAddMembersToGroup(group) || @canAddMembersToGroup(group.targetModel().group())
 
   canAddDocuments: (group) ->
     @canAdministerGroup(group)
@@ -144,6 +155,7 @@ module.exports = new class AbilityService
     @canAdministerGroup(comment.group())
 
   canRemoveMembership: (membership) ->
+    membership and
     membership.group().memberIds().length > 1 and
     (!membership.admin or membership.group().adminIds().length > 1) and
     (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
@@ -172,7 +184,12 @@ module.exports = new class AbilityService
     Session.user().isMemberOf(group)
 
   canViewMemberships: (group) ->
-    Session.user().isMemberOf(group)
+    Session.user().isMemberOf(group)                       ||
+    Session.user().isMemberOf(group.targetModel().group()) ||
+    group.targetModel().anyoneCanParticipate
+
+  canViewPendingMemberships: (group) ->
+    @canAdministerGroup(group) || @canAdministerGroup(group.targetModel().group())
 
   canViewPreviousPolls: (group) ->
     @canViewGroup(group)
@@ -190,6 +207,7 @@ module.exports = new class AbilityService
   canTranslate: (model) ->
     AppConfig.inlineTranslation.isAvailable? and
     _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
+    !model.translation and
     Session.user().locale != model.author().locale
 
   canSubscribeToPoll: (poll) ->
@@ -197,9 +215,6 @@ module.exports = new class AbilityService
       @canViewGroup(poll.group())
     else
       @canAdministerPoll() || _.contains(@poll().voters(), Session.user())
-
-  canSharePoll: (poll) ->
-    @canEditPoll(poll)
 
   canRemovePollOptions: (poll) ->
     poll.isNew() || (poll.isActive() && poll.stancesCount == 0)
@@ -211,33 +226,16 @@ module.exports = new class AbilityService
     @canAdministerPoll(poll)
 
   canExportPoll: (poll) ->
-    @canAdministerPoll(poll)    
+    @canAdministerPoll(poll)
 
   canSetPollOutcome: (poll) ->
     poll.isClosed() and @canAdministerPoll(poll)
 
   canAdministerPoll: (poll) ->
-    if poll.group()
-      (@canAdministerGroup(poll.group()) or (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
-    else
-      Session.user().isAuthorOf(poll)
+    _.contains(poll.adminMembers(), Session.user()) || Session.user().isAuthorOf(poll)
 
   canClosePoll: (poll) ->
     @canEditPoll(poll)
 
-  requireLoginFor: (page) ->
-    return false if @isLoggedIn()
-    switch page
-      when 'emailSettingsPage' then !Session.user().restricted?
-      when 'groupsPage',         \
-           'dashboardPage',      \
-           'inboxPage',          \
-           'profilePage',        \
-           'authorizedAppsPage', \
-           'registeredAppsPage', \
-           'registeredAppPage',  \
-           'pollsPage',          \
-           'startPollPage',      \
-           'upgradePage',        \
-           'startGroupPage' then true
-      else false
+  canReopenPoll: (poll) ->
+    poll.isClosed() and @canAdministerPoll(poll)

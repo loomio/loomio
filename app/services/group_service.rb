@@ -37,4 +37,10 @@ module GroupService
     group.archive!
     EventBus.broadcast('group_archive', group, actor)
   end
+
+  def self.move(group:, parent:, actor:)
+    actor.ability.authorize! :move, group
+    group.update(parent: parent, subscription_id: nil)
+    EventBus.broadcast('group_move', group, parent, actor)
+  end
 end

@@ -3,7 +3,6 @@
   .poll-common-votes-panel__stance-content
     .poll-common-votes-panel__stance-name-and-option
       %strong> {{ participantName() }}
-      %translate_button.lmo-card-minor-action{ng-if: "stance.reason", model: "stance", showdot: "true"}>
     .poll-common-votes-panel__stance-reason{ng-if: "stance.reason"}
       %span.lmo-markdown-wrapper{ng-if: "!stance.translation", marked: "stance.reason"}
       %translation{ng-if: "stance.translation", model: "stance", field: "reason"}

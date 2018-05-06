@@ -1,6 +1,0 @@
-.md-block.poll-common-notify-group.poll-common-checkbox-option{ng-if: "validPollType()"}
-  .poll-common-checkbox-option__text.md-list-item-text
-    %h3{translate: "poll_common_voter_add_options.add_options"}
-    %p.md-caption{ng-if: "poll.voterCanAddOptions", translate: "poll_common_voter_add_options.helptext_on"}
-    %p.md-caption{ng-if: "!poll.voterCanAddOptions", translate: "poll_common_voter_add_options.helptext_off"}
-  %md-checkbox{ng-model: "poll.voterCanAddOptions"}

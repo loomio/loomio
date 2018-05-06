@@ -1,5 +1,0 @@
-.translate-button
-  %span{ng-if: "showdot && (canTranslate() || translateExecuting || translated)", aria-hidden: "true"}>·
-  %button.thread-item__translate{ng-if: "canTranslate()", ng-click: "translate()", translate: "common.action.translate"}>
-  %loading.translate-button__loading{ng-show: "translateExecuting"}
-  %span.thread-item__translation{ng-if: "model.translation", translate: "common.action.translated"}>

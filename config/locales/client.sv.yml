@@ -81,6 +81,8 @@ sv:
       placeholder: 'Sök'
       discussions: 'Diskussioner'
     logo_title: 'Hemsida'
+  membership_dropdown:
+    make_coordinator: 'Gör till koordinator'
   notifications:
     header: "Notifieringar"
   position_buttons_panel:
@@ -163,3 +165,6 @@ sv:
     vote: 'Du kan ändra din ståndpunkt när som helst'
   poll_common_form:
     closed: Stängd
+  poll_count_options:
+    'yes': 'Ja'
+    'no': 'Nej'

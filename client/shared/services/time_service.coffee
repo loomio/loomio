@@ -7,12 +7,26 @@ module.exports = new class TimeService
     else
       _.invert(AppConfig.timeZones)[zone]
 
+  displayDay: (m, zone) =>
+    m = moment(m) if typeof m is 'string'
+    @inTimeZone(m, zone).format('ddd')
+
   displayDate: (m, zone) =>
     m = moment(m) if typeof m is 'string'
-    if m._f == 'YYYY-MM-DD'
-      m.format("D MMMM#{@sameYear(m)}")
-    else
-      @inTimeZone(m, zone).format("D MMMM#{@sameYear(m)} - h:mma")
+    @inTimeZone(m, zone).format("D MMMM#{@sameYear(m)}")
+
+  displayTime: (m, zone) =>
+    m = moment(m) if typeof m is 'string'
+    return if @fullDayDate(m)
+    @inTimeZone(m, zone).format('h:mma')
+
+  displayDateAndTime: (m, zone) =>
+    m = moment(m) if typeof m is 'string'
+    _.compact([@displayDate(m, zone), @displayTime(m, zone)]).join(' ')
+
+  fullDayDate: (m) ->
+    m = moment(m) if typeof m is 'string'
+    m._f == 'YYYY-MM-DD'
 
   isoDate: (m, zone) =>
     @inTimeZone(m, zone).toISOString()

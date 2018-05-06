@@ -21,8 +21,7 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
       _.any Session.user().groups(), (group) -> AbilityService.canStartThread(group)
 
     availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
-        AbilityService.canAddMembers(group)
+      _.filter Session.user().groups(), (group) -> group.type == 'FormalGroup'
 
     $scope.currentGroup = ->
       return _.first(availableGroups()) if availableGroups().length == 1
@@ -54,7 +53,8 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
         $mdSidenav('left').close()
 
     $scope.groups = ->
-      Session.user().groups().concat(Session.user().orphanParents())
+      _.filter Session.user().groups().concat(Session.user().orphanParents()), (group) ->
+        group.type == "FormalGroup"
 
     $scope.currentUser = ->
       Session.user()
@@ -66,6 +66,6 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
       ModalService.open 'GroupModal', group: -> Records.groups.build()
 
     $scope.startThread = ->
-      ModalService.open 'DiscussionModal', discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)
+      ModalService.open 'DiscussionStartModal', discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)
   ]
 ]

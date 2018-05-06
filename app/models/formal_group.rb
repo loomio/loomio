@@ -1,7 +1,9 @@
 class FormalGroup < Group
   include HasTimeframe
-  include MakesAnnouncements
   include HasDrafts
+
+  extend  NoSpam
+  no_spam_for :name, :description
 
   validates_presence_of :name
   validates :name, length: { maximum: 250 }
@@ -24,6 +26,8 @@ class FormalGroup < Group
      joins(:group_identities)
     .where("(group_identities.custom_fields->'slack_channel_id')::jsonb ? :channel_id", channel_id: channel_id)
   }
+
+  scope :search_for, ->(query) { where("name ilike :q", q: "%#{query}%") }
 
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :comments, through: :discussions
@@ -87,20 +91,8 @@ class FormalGroup < Group
 
   alias_method :draft_parent, :parent
 
-  def pending_invitation_limit
-    self.memberships_count + ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i
-  end
-
-  def update_undecided_user_count
-    # NOOP: only guest groups have an invitation target
-  end
-
-  def shareable_invitation
-    invitations.find_or_create_by(
-      single_use: false,
-      intent:     :join_group,
-      group:      self
-    )
+  def update_undecided_count
+    polls.active.each(&:update_undecided_count)
   end
 
   def logo_or_parent_logo

@@ -5,6 +5,7 @@ ActiveAdmin.setup do |config|
   config.logout_link_path = :destroy_user_session_path
   config.root_to = 'groups#index'
   config.batch_actions = true
+  config.comments = false
 end
 
 def authenticate_admin_user!

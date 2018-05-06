@@ -4,5 +4,5 @@ class Simple::MembershipSerializer < ActiveModel::Serializer
   has_one :group, serializer: Simple::GroupSerializer, root: :groups
   has_one :user, serializer: UserSerializer, root: :users
 
-  attributes :id, :volume, :admin, :experiences, :created_at
+  attributes :id, :volume, :admin, :experiences, :created_at, :accepted_at
 end

@@ -30,6 +30,8 @@ he:
     search:
       placeholder: 'חיפוש'
       discussions: 'דיונים'
+  membership_dropdown:
+    make_coordinator: 'הפיכה למתאם'
   notifications:
     header: "התרעות"
   discussion_form:
@@ -90,3 +92,6 @@ he:
     discussion: 'טיפים להתחלת דיון מרתק'
   poll_common_form:
     closed: סגור
+  poll_count_options:
+    'yes': 'כן'
+    'no': 'לא'

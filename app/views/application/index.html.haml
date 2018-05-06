@@ -1,5 +1,5 @@
 !!!
-%html{'ng-app' => 'loomioApp', 'ng-strict-di' => 'true', 'ng-controller' => 'RootController as app'}
+%html{'lang' => current_user.locale, 'ng-app' => 'loomioApp', 'ng-strict-di' => 'true', 'ng-controller' => 'RootController as app'}
   %head
     %title= AppConfig.theme[:site_name]
     %meta{charset: 'utf-8'}
@@ -32,7 +32,7 @@
       %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
       %md_content.lmo-main-content{flex: ""}
         .lmo-main-background
-          %verify_email_notice{'ng-if' => 'isLoggedIn() && !isEmailVerified()'}
+          %verify_email_notice
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
           %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
 

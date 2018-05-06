@@ -19,6 +19,8 @@ vi:
     search:
       placeholder: 'Tìm kiếm'
       discussions: 'Các phần thảo luận'
+  membership_dropdown:
+    make_coordinator: 'Tạo điều hành viên'
   notifications:
     header: "Thông báo"
   position_buttons_panel:
@@ -68,3 +70,6 @@ vi:
     vote: 'Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào'
   poll_common_form:
     closed: Đã đóng lại
+  poll_count_options:
+    'yes': 'Đồng Ý'
+    'no': 'Không đồng ý'

@@ -4,12 +4,14 @@ EventBus       = require 'shared/services/event_bus.coffee'
 AbilityService = require 'shared/services/ability_service.coffee'
 ModalService   = require 'shared/services/modal_service.coffee'
 ThreadService  = require 'shared/services/thread_service.coffee'
+LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+FlashService   = require 'shared/services/flash_service.coffee'
 I18n           = require 'shared/services/i18n.coffee'
 
 { listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
 { scrollTo }                                  = require 'shared/helpers/layout.coffee'
 
-angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope) ->
+angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard', ($rootScope, clipboard) ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
@@ -31,24 +33,26 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
       name: 'react'
       canPerform: -> AbilityService.canAddComment($scope.discussion)
     ,
-      name: 'edit_thread'
-      icon: 'mdi-pencil'
-      canPerform: -> AbilityService.canEditThread($scope.discussion)
-      perform:    -> ModalService.open 'DiscussionModal', discussion: -> $scope.discussion
-    ,
-      name: 'add_resource'
-      icon: 'mdi-attachment'
-      canPerform: -> AbilityService.canAdministerDiscussion($scope.discussion)
-      perform:    -> ModalService.open 'DocumentModal', doc: ->
-        Records.documents.build
-          modelId:   $scope.discussion.id
-          modelType: 'Discussion'
-    ,
+    #   name: 'add_resource'
+    #   icon: 'mdi-attachment'
+    #   canPerform: -> AbilityService.canAdministerDiscussion($scope.discussion)
+    #   perform:    -> ModalService.open 'DocumentModal', doc: ->
+    #     Records.documents.build
+    #       modelId:   $scope.discussion.id
+    #       modelType: 'Discussion'
+    # ,
       name: 'translate_thread'
       icon: 'mdi-translate'
-      canPerform: -> AbilityService.canTranslate($scope.discussion) && !$scope.translation
+      canPerform: -> AbilityService.canTranslate($scope.discussion)
       perform:    -> $scope.discussion.translate(Session.user().locale)
     ,
+    #   name: 'copy_url'
+    #   icon: 'mdi-link'
+    #   canPerform: -> clipboard.supported
+    #   perform:    ->
+    #     clipboard.copyText(LmoUrlService.discussion($scope.discussion, {}, absolute: true))
+    #     FlashService.success("action_dock.discussion_copied")
+    # ,
       name: 'add_comment'
       icon: 'mdi-reply'
       canPerform: -> AbilityService.canAddComment($scope.discussion)
@@ -68,6 +72,11 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', ($rootScope
       icon: 'mdi-clock'
       canPerform: -> $scope.discussion.edited()
       perform:    -> ModalService.open 'RevisionHistoryModal', model: -> $scope.discussion
+    ,
+      name: 'edit_thread'
+      icon: 'mdi-pencil'
+      canPerform: -> AbilityService.canEditThread($scope.discussion)
+      perform:    -> ModalService.open 'DiscussionEditModal', discussion: -> $scope.discussion
     ]
 
     listenForTranslations($scope)

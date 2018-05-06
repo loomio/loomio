@@ -56,7 +56,7 @@ describe API::DraftsController do
   context 'signed in' do
     before do
       sign_in user
-      group.members << user
+      group.add_member! user
     end
 
     describe 'create' do

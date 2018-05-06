@@ -6,8 +6,9 @@ PollGenerator = Struct.new(:poll_type) do
     poll.create_guest_group
     poll.save!
     send(:"#{poll_type}_stances_for", poll)
+    poll.update(anyone_can_participate: true)
     poll.update_stance_data
-    poll.invite_guest!(email: User.demo_bot.email)
+    poll.guest_group.add_member! User.demo_bot
     poll
   end
 
@@ -101,31 +102,35 @@ PollGenerator = Struct.new(:poll_type) do
         2.days.from_now.beginning_of_hour.iso8601,
         3.days.from_now.beginning_of_hour.iso8601,
         7.days.from_now.beginning_of_hour.iso8601
-      ]
+      ],
+
+      custom_fields: {
+        can_respond_maybe: true
+      }
     }
   end
 
   def meeting_stances_for(poll)
     generate_stance_for(poll, index: 0, reason: "", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] },
-      { poll_option_id: poll.poll_option_ids[2] }
+      { poll_option_id: poll.poll_option_ids[0], score: 1},
+      { poll_option_id: poll.poll_option_ids[2], score: 2}
     ])
     generate_stance_for(poll, index: 1, reason: "Sorry, this week is crazy for me!", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] }
+      { poll_option_id: poll.poll_option_ids[0], score: 1}
     ])
     generate_stance_for(poll, index: 2, reason: "I'm free whenever", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] },
-      { poll_option_id: poll.poll_option_ids[1] },
-      { poll_option_id: poll.poll_option_ids[2] }
+      { poll_option_id: poll.poll_option_ids[0], score: 1},
+      { poll_option_id: poll.poll_option_ids[1], score: 2},
+      { poll_option_id: poll.poll_option_ids[2], score: 2}
     ])
     generate_stance_for(poll, index: 3, reason: "", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] },
-      { poll_option_id: poll.poll_option_ids[1] },
-      { poll_option_id: poll.poll_option_ids[2] }
+      { poll_option_id: poll.poll_option_ids[0], score: 2},
+      { poll_option_id: poll.poll_option_ids[1], score: 2},
+      { poll_option_id: poll.poll_option_ids[2], score: 2}
     ])
     generate_stance_for(poll, index: 4, reason: "", stance_choices_attributes: [
-      { poll_option_id: poll.poll_option_ids[0] },
-      { poll_option_id: poll.poll_option_ids[1] }
+      { poll_option_id: poll.poll_option_ids[0], score: 2},
+      { poll_option_id: poll.poll_option_ids[1], score: 2}
     ])
   end
 
@@ -165,13 +170,13 @@ PollGenerator = Struct.new(:poll_type) do
   end
 
   def generate_stance_for(poll, index: 0, reason:, choice: nil, stance_choices_attributes: [])
-    Stance.create!(
-      poll:        poll,
-      participant: generate_participant_for(poll, index),
-      stance_choices_attributes: stance_choices_attributes,
-      reason:      reason,
-      choice:      choice
-    )
+    StanceService.create actor: generate_participant_for(poll, index),
+                         stance: Stance.new(
+                            poll:        poll,
+                            stance_choices_attributes: stance_choices_attributes,
+                            reason:      reason,
+                            choice:      choice
+                         )
   end
 
   def generate_participant_for(poll, index)

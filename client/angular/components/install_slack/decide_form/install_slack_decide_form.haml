@@ -5,6 +5,7 @@
     %poll_common_choose_type.animated{ng-switch-when: "choose", poll: "poll"}
     %poll_common_directive.animated{ng-switch-when: "save", poll: "poll", name: "form"}
     %poll_common_form_actions.animated{ng-switch-when: "save", poll: "poll"}
-    %poll_common_share_form.animated{ng-switch-when: "share", poll: "poll"}
-  .lmo-flex.install-slack-form__actions
-    %md-button{ng-if: "!poll.pollType", ng-click: "$emit('$close')", translate: "install_slack.common.do_it_later"}
+    %announcement_form.animated{ng-switch-when: "announce", announcement: "announcement"}
+  .lmo-flex.install-slack-form__actions{ng-switch: "currentStep"}
+    %md-button{ng-if: "currentStep == 'choose'", ng-click: "$emit('$close')", translate: "install_slack.common.do_it_later"}
+    %announcement_form_actions{ng-switch-when: "announce", announcement: "announcement"}

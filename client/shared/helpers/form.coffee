@@ -13,13 +13,23 @@ module.exports =
   submitForm: (scope, model, options = {}) ->
     submit(scope, model, options)
 
+  submitDiscussion: (scope, model, options = {}) ->
+    submit(scope, model, _.merge(
+      flashSuccess: "discussion_form.messages.#{actionName(model)}"
+      failureCallback: ->
+        scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
+      successCallback: (data) ->
+        _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
+        nextOrSkip(data, scope, model)
+    , options))
+
   submitOutcome: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
       flashSuccess: "poll_common_outcome_form.outcome_#{actionName(model)}"
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
-        EventBus.emit scope, 'nextStep'
+        nextOrSkip(data, scope, model)
     , options))
 
   submitStance: (scope, model, options = {}) ->
@@ -41,20 +51,23 @@ module.exports =
       flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName(model)}"
       prepareFn: =>
         EventBus.emit scope, 'processing'
+        model.customFields.deanonymize_after_close = model.deanonymizeAfterClose if model.anonymous
         switch model.pollType
           # for polls with default poll options (proposal, check)
           when 'proposal', 'count'
             model.pollOptionNames = _.pluck fieldFromTemplate(model.pollType, 'poll_options_attributes'), 'name'
           # for polls with user-specified poll options (poll, dot_vote, ranked_choice, meeting
+          when 'meeting'
+            model.customFields.can_respond_maybe = model.canRespondMaybe
+            model.addOption()
           else
             model.addOption()
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.poll-common-modal'
       successCallback: (data) ->
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
-        poll = Records.polls.find(data.polls[0].key)
-        poll.removeOrphanOptions()
-        EventBus.emit scope, 'nextStep', poll
+        model.removeOrphanOptions()
+        nextOrSkip(data, scope, model)
       cleanupFn: ->
         EventBus.emit scope, 'doneProcessing'
     , options))
@@ -146,7 +159,7 @@ failure = (scope, model, options) ->
 cleanup = (scope, model, options = {}) ->
   ->
     options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
-    EventBus.emit scope, 'doneProcessing'
+    EventBus.emit scope, 'doneProcessing' unless options.skipDoneProcessing
     scope.isDisabled = false
     scope.files = null        if scope.files
     scope.percentComplete = 0 if scope.percentComplete
@@ -156,8 +169,22 @@ calculateFlashOptions = (options) ->
     options[key] = options[key]() if typeof options[key] is 'function'
   options
 
+nextOrSkip = (data, scope, model) ->
+  eventData = _.find(data.events, (event) -> event.kind == eventKind(model)) || {}
+  if event = Records.events.find(eventData.id)
+    EventBus.emit scope, 'nextStep', event
+  else
+    EventBus.emit scope, 'skipStep'
+
 actionName = (model) ->
   if model.isNew() then 'created' else 'updated'
+
+eventKind = (model) ->
+  return 'new_discussion' if model.isNew() and model.constructor.singular == 'discussion'
+  if model.isNew()
+    "#{model.constructor.singular}_created"
+  else
+    "#{model.constructor.singular}_edited"
 
 errorTypes =
   400: 'badRequest'

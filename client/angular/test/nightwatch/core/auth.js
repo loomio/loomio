@@ -11,7 +11,6 @@ module.exports = {
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
@@ -56,7 +55,6 @@ module.exports = {
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
@@ -83,7 +81,6 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.click('.auth-signin-form__login-link')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
@@ -100,7 +97,7 @@ module.exports = {
     page.expectText('.flash-root__message', 'Signed in successfully')
   },
 
-  'can login from the dashboard': (test) => {
+  'can_login_from_the_dashboard': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_as_visitor')
@@ -108,7 +105,6 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.click('.auth-signin-form__submit')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
@@ -152,7 +148,6 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.click('.auth-signin-form__submit')
     page.expectText('.auth-complete', 'Check your email')
-    page.expectText('.auth-complete', 'instantly log in')
     page.loadPath('use_last_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
@@ -189,30 +184,40 @@ module.exports = {
     page.expectElement('.sidebar__content')
   },
 
-  'can accept an invitation': (test) => {
+  'can_accept_an_invitation': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_invitation_to_user_with_password')
     page.click('.auth-email-form__submit')
-    page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
+    page.expectText('.auth-signin-form', 'Welcome back, Jennifer!')
     page.click('.auth-signin-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully')
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
     page.expectNoElement('.join-group-button')
   },
 
-  'can log someone in from an invitation': (test) => {
+  'can_log_someone_in_from_an_invitation': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_invitation_to_visitor')
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signup-form', 'Nice to meet you, Max Von Sydow')
-    page.click('.auth-signup-form__submit')
-    page.expectElement('.auth-complete')
-    page.loadPath('use_last_login_token')
+    page.expectText('.auth-signin-form', 'Nice to meet you')
+    page.fillIn('.auth-signin-form__name input', 'Billy Jeans')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
-    page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
+    page.expectText('.flash-root__message', 'Signed in successfully', 8000)
+    page.expectText('.group-theme__name', 'Dirty Dancing Shoes', 16000)
+  },
+
+  'requires_verification_if_email_is_changed': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_invitation_to_visitor')
+    page.fillIn('.auth-email-form__email input', 'max_von_sydow@merciless.com')
+    page.click('.auth-email-form__submit')
+    page.expectText('.auth-signup-form', 'Nice to meet you')
+    page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
+    page.click('.auth-signup-form__submit')
+    page.expectText('.auth-complete', 'Check your email')
   },
 
   'prompts the user to contact us to reactivate': (test) => {

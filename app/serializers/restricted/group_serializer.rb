@@ -1,6 +1,6 @@
 class Restricted::GroupSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :name, :logo_url_medium
+  attributes :id, :type, :name, :logo_url_medium
 
   def logo_url_medium
     object.logo.url(:medium)

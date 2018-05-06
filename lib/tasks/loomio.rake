@@ -14,22 +14,21 @@ namespace :loomio do
         f << "<!-- Don't make changes here; they will be overwritten. -->\n"
         f << ApplicationController.new.render_to_string(
           template: "errors/#{code}",
-          layout: "errors"
+          layout: "basic"
         )
       end
     end
   end
 
   task hourly_tasks: :environment do
+    UserService.delay.delete_many_spam(ENV['DELETE_MANY_SPAM'])
+
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
     SendMissedYesterdayEmailJob.perform_later
-    ResendIgnoredInvitationsJob.perform_later
+    AnnouncementService.delay.resend_pending_memberships
     LocateUsersAndGroupsJob.perform_later
-    if (Time.now.hour == 0)
-      # daily tasks
-      UsageReportService.send
-    end
+    UsageReportService.send if (Time.now.hour == 0)
   end
 
   task migrate_attachments: :environment do
@@ -39,11 +38,6 @@ namespace :loomio do
       "Comment",
       "Outcome"
     ]))
-  end
-
-  task resend_ignored_invitations: :environment do
-    InvitationService.resend_ignored(send_count: 1, since: 1.day.ago)
-    InvitationService.resend_ignored(send_count: 2, since: 3.days.ago)
   end
 
   task generate_error: :environment do

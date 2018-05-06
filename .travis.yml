@@ -32,6 +32,9 @@ env:
     - DISPLAY=:99.0
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
+    - PUMA_WORKERS=2
+    - MIN_THREADS=3
+    - MAX_THREADS=3
     - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
   matrix:
     - TASK=e2e

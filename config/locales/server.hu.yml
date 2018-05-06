@@ -26,6 +26,9 @@ hu:
     membership_request:
       subject: "%{who} kérte hogy csatlakozhasson a %{which_group} csoporthoz"
       view_group: Jóváhagyhatod vagy elvetheted a kérelmet itt.
+  discussion_mailer:
+    reply_or_view_online_html: 'Közvetlen válasz erre az emailre vagy  <a href=''%{url}''>nézd meg ezen: %{hostname}</a>.'
+    turn_off_notifications_html: "<a href='%{url}'>Emailek kikapcsolása</a> erre a vitára."
   footer:
     about: Rólunk
     blog: Blog

@@ -1,0 +1,5 @@
+.poll-common-change-your-vote
+  %h3.lmo-card-subheading{translate: "poll_common.your_response"}
+  %poll_common_directive{stance_choice: "choice", name: "stance_choice", ng-if: "choice.id && choice.score > 0", ng-repeat: "choice in stance.stanceChoices() | orderBy: 'rank'"}
+  .md-actions.lmo-md-actions
+    %md-button.md-accent{ng-click: "openStanceForm()", translate: "poll_common.change_your_stance", aria-label: "{{ 'poll_common.change_your_stance' | translate }}"}

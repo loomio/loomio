@@ -14,8 +14,7 @@ To learn about working within the Loomio Co-op, read the [Loomio Coop Handbook](
 
 [![View performance data on Skylight](https://badges.skylight.io/status/BGzqZwewZHUe.svg)](https://oss.skylight.io/app/applications/BGzqZwewZHUe)
 
-[![Build Status](https://travis-ci.org/loomio/loomio.svg?branch=master)](https://travis-ci.org/loomio/loomio)
-Note: We have a really temperamental e2e suite. We use it regularly but the overall status breaks too much and that is sad. We're working on it. 
+[![Build Status](https://travis-ci.org/loomio/loomio.svg?branch=master)](https://travis-ci.org/loomio/loomio) 
 
 ### Contact
 

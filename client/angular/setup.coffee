@@ -1,5 +1,3 @@
-ActionCable = require 'actioncable'
-
 Routes         = require 'angular/routes.coffee'
 AppConfig      = require 'shared/services/app_config.coffee'
 Records        = require 'shared/services/records.coffee'
@@ -20,7 +18,6 @@ module.exports =
   setupAngular: ($rootScope, $injector) ->
     setupAngularScroll()
     setupAngularEventBus()
-    setupAngularLiveUpdate()
     setupAngularPaste($rootScope)
     setupAngularHotkeys($rootScope)
     setupAngularFlash($rootScope)
@@ -51,9 +48,6 @@ setupAngularEventBus = ->
   EventBus.setWatchMethod (scope, fields, fn, watchObj = false) ->
     scope.$watch fields, fn, watchObj
 
-setupAngularLiveUpdate = ->
-  AppConfig.cable = ActionCable.createConsumer()
-
 setupAngularPaste = ($rootScope) ->
   window.addEventListener 'paste', (event) ->
     data = event.clipboardData
@@ -66,10 +60,12 @@ setupAngularPaste = ($rootScope) ->
 
 setupAngularHotkeys = ($rootScope) ->
   registerHotkeys $rootScope,
-    pressedI: -> ModalService.open 'InvitationModal',      group:      -> AppConfig.currentGroup or Records.groups.build()
-    pressedG: -> ModalService.open 'GroupModal',           group:      -> Records.groups.build()
-    pressedT: -> ModalService.open 'DiscussionModal',      discussion: -> Records.discussions.build(groupId: (AppConfig.currentGroup or {}).id)
-    pressedP: -> ModalService.open 'PollCommonStartModal', poll:       -> Records.polls.build()
+    pressedI: ->
+      return unless currentModel = AppConfig.currentPoll || AppConfig.currentDiscussion || AppConfig.currentGroup
+      ModalService.open 'AnnouncementModal', announcement: -> Records.announcements.buildFromModel(currentModel)
+    pressedG: -> ModalService.open 'GroupModal',           group:        -> Records.groups.build()
+    pressedT: -> ModalService.open 'DiscussionStartModal', discussion:   -> Records.discussions.build(groupId: (AppConfig.currentGroup or {}).id)
+    pressedP: -> ModalService.open 'PollCommonStartModal', poll:         -> Records.polls.build()
 
 setupAngularFlash = ($rootScope) ->
   FlashService.setBroadcastMethod (flashOptions) ->

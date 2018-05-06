@@ -1,0 +1,5 @@
+.user-avatar{aria-hidden: "true", title: "{{user.name}}", class: "lmo-box--{{size}}"}
+  %a.user-avatar__profile-link{lmo-href-for: "user", ng-if: "!noLink"}
+    %user_avatar_body{user: "user", coordinator: "coordinator", size: "size", colors: "colors"}
+  .user-avatar__profile-link{ng-if: "noLink"}
+    %user_avatar_body{user: "user", coordinator: "coordinator", size: "size", colors: "colors"}

@@ -8,6 +8,6 @@ class LoginTokensController < ApplicationController
   private
 
   def login_token
-    @login_token ||= LoginToken.find_by!(token: params[:id])
+    @login_token ||= LoginToken.find_by!(token: params[:token])
   end
 end

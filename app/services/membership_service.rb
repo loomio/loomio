@@ -1,4 +1,11 @@
 class MembershipService
+  def self.redeem(membership:, actor:)
+    raise Membership::InvitationAlreadyUsed.new(membership) if membership.accepted_at
+
+    membership.update(user: actor, accepted_at: DateTime.now)
+
+    Events::InvitationAccepted.publish!(membership)
+  end
 
   def self.set_volume(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
@@ -32,13 +39,14 @@ class MembershipService
   def self.add_users_to_group(users:, group:, inviter:)
     inviter.ability.authorize!(:add_members, group)
     group.add_members!(users, inviter: inviter).tap do |memberships|
-      Events::UserAddedToGroup.bulk_publish!(memberships, inviter)
+      Events::UserAddedToGroup.bulk_publish!(memberships, user: inviter)
     end
   end
 
   def self.destroy(membership:, actor:)
     actor.ability.authorize! :destroy, membership
     membership.destroy
+    EventBus.broadcast('membership_destroy', membership, actor)
   end
 
   def self.save_experience(membership:, actor:, params:)

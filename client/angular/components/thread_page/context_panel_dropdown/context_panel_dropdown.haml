@@ -17,7 +17,7 @@
         %md-button{ng-click: "closeThread()", translate: "thread_context.close_thread"}
       %md-menu-item.context-panel-dropdown__option--reopen{ng-show: "discussion.closedAt && canCloseThread()"}
         %md-button{ng-click: "reopenThread()", translate: "thread_context.reopen_thread"}
-      %md-menu-item.context-panel-dropdown__option--mute{ng-show: "!discussion.isMuted()"}
+      %md-menu-item.context-panel-dropdown__option--mute{ng-if: "canMuteThread()", ng-show: "!discussion.isMuted()"}
         %md-button{ng-click: "muteThread()", translate: "volume_levels.mute"}
       %md-menu-item.context-panel-dropdown__option--unmute{ng-show: "discussion.isMuted()"}
         %md-button{ng-click: "unmuteThread()", translate: "volume_levels.unmute"}

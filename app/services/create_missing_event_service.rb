@@ -88,7 +88,7 @@ module CreateMissingEventService
                                   user_id: outcome.author_id,
                                   eventable_id: outcome.id,
                                   eventable_type: "Outcome",
-                                  discussion_id: discussion.id,
+                                  discussion_id: discussion&.id,
                                   depth: 2,
                                   parent_id: outcome.poll.created_event.id,
                                   sequence_id: sequence_id_for(discussion, outcome.created_at),

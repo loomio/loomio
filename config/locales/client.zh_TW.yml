@@ -30,6 +30,8 @@ zh_TW:
     metal: 金屬
     ok_hand: 好
     wave: 揮手
+    thumbsup: 贊成
+    thumbsdown: 反對
   poll_types:
     proposal: 提案
     count: 勾選
@@ -88,6 +90,7 @@ zh_TW:
     action:
       next: '下一個'
       close: '關閉'
+      reopen: '重新開啟'
       save: '儲存'
       save_changes: '儲存變更'
       update_settings: '更新設定'
@@ -120,6 +123,7 @@ zh_TW:
       remind: 提醒
       resend: 重新傳送
       send: 傳送
+      invite: 邀請
       resent: 重新傳送邀請
       export: 匯出
     formatting_help:
@@ -208,23 +212,20 @@ zh_TW:
     aria_label: 關閉討論串
     close_thread: 關閉討論串
     body_header: |
-      <p>關閉舊的或無關的討論串以將它們從檢視中移除，並指示它們已經被關閉。</p>
+        <p>關閉舊的或無關的討論串以將它們從檢視中移除，並指示它們已經被關閉。</p>
     body_footer: |
-      <p>所有人還是可以在已關閉的討論串中評論或開啟投票，但其將不會出現在群組的討論串清單或儀表板上。</p>
+        <p>所有人還是可以在已關閉的討論串中評論或開啟投票，但其將不會出現在群組的討論串清單或儀表板上。</p>
     image_alt: 關閉討論串所有
   mute_explanation_modal:
     aria_label: 討論串設為靜音
     mute_thread: 討論串設為靜音
-    body_html: |
-      <p>靜音代表您<strong>將不會被提醒關於提案的事情</strong>，或是任何其他在此討論串的動態，除非某人 <strong>@提及 您</strong>。</p>
-      <p>已靜音也會從<strong>最近的</strong>討論串與<strong>未讀</strong>頁面中隱藏。要尋找您已靜音的討論串，請從側邊欄選取<strong>已靜音</strong>選項：</p>
     image_alt: 在側邊欄中的已靜音討論串選項
   dismiss_explanation_modal:
     aria_label: 暫時忽略討論串
     dismiss_thread: 暫時忽略討論串
     body_html: |
-      <p>暫時忽略討論串會將其從您的未讀項目中移除。若有任何新的
-      動態在該討論串發生，它將會再次顯示在您的未讀項目中。</p>
+        <p>暫時忽略討論串會將其從您的未讀項目中移除。若有任何新的
+        動態在該討論串發生，它將會再次顯示在您的未讀項目中。</p>
   inbox:
     clear: '清除'
     latest: '最新'
@@ -300,6 +301,10 @@ zh_TW:
     help: '教學文件'
     contact_site_name: '聯絡 {{site_name}}'
     sign_out: '登出'
+  membership_dropdown:
+    make_coordinator: '成為協作者'
+    demote_coordinator: '移除協作者'
+    cancel_invitation: 取消邀請函
   start_menu:
     label: '使用者動作'
     title: '動作'
@@ -308,6 +313,11 @@ zh_TW:
     start_thread: '啟動討論串'
     start_poll: '啟動投票'
     invite_people: '邀請夥伴'
+  notification_models:
+    discussion: '討論串：'
+    comment: '評論於'
+    poll: '決策：'
+    outcome: '結果：'
   notifications:
     header: "通知"
     no_notifications: "您沒有任何通知"
@@ -320,7 +330,7 @@ zh_TW:
     new_vote: "<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>"
     new_comment: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上評論"
     comment_replied_to: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論"
-    reaction_created: "<strong>{{name}}</strong> 反應了 <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/> 到您在 <strong>{{title}}</strong> 上的評論"
+    reaction_created: "<strong>{{name}}</strong> 對您的 {{model}}<strong>{{title}}</strong> 做出了回應 <img class='emojione' src='{{reaction_src}}' alt='{{reaction}}'/>"
     user_mentioned: "<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您"
     user_reminded: "<strong>{{name}}</strong> 正在等候您參與 <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格"
@@ -336,8 +346,8 @@ zh_TW:
     poll_edited: "<strong>{{name}}</strong> 編輯了一個 {{poll_type}}：<strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} 即將關閉：<strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} 已關閉：<strong>{{title}}</strong>"
-    poll_option_added: "<strong>{{name}}</strong> 新增了選項到 {{poll_type}}：<strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
+    outcome_announced: "<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> 已參與：<strong>{{title}}</strong>"
   position_buttons_panel:
     heading: 擁有發言權
@@ -368,12 +378,19 @@ zh_TW:
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     make_announcement: 公告
     notified_count: '{{count}} 個夥伴將會收到電子郵件'
+  announcement:
+    form:
+      outcome_announced:
+        title: 分享成果
+      anyone_can_participate: 任何有連結的人都可以參與
+    group_form:
+      members_count: '{{count}} 個人將會被通知'
   action_dock:
     react: 新增反應
     add_resource: 新增附件
     edit_group: 編輯群組內容
     add_comment: 意見
-    copy_url_comment: 複製 URL
+    copy_url: 複製 URL
     edit_thread: 編輯內容
     translate_thread: 翻譯內容
     edit_poll: 編輯投票
@@ -457,7 +474,6 @@ zh_TW:
     open_discussions: '開啟討論串'
     closed_discussions: '已關閉的討論串'
     discussions_placeholder: '討論串是供每個人討論主題並共同作出決策的地方。'
-    members: '成員 ({{count}})'
     members_placeholder: '不能只有你 ── 邀請一些夥伴來加入吧！'
     member_options: 成員選項
     see_all_members: '檢視全部 {{count}} 個成員'
@@ -673,6 +689,14 @@ zh_TW:
       remove_admin_success: '{{name}} 已不再是協調者'
     remove_admin_from_self:
       question: '您確定您真的不想要再當協調者？'
+  membership_remove_modal:
+    invitation:
+      title: 取消邀請函
+      flash: 邀請函已取消
+      submit: 取消邀請函
+    membership:
+      title: 移除成員
+      submit: 移除成員
   memberships_panel:
     add_coordinator: 成為協作者
     remove_coordinator: 移除協作者
@@ -772,6 +796,7 @@ zh_TW:
     daily_summary_description: "每天早上，您都會收到一封關於您前一天錯過了哪些動態的電子郵件。這讓您可以更容易地保持最新狀態。"
     on_participation_label: 參與時訂閱
     on_participation_description: "當您參與討論串時，之後所有的動態都會即時寄給您。"
+    announcement_label: 公告
     mentioned_label: 提及
     mentioned_description: "當某人想要取得您的注意，他們將會以 @ 來提及您。我們建議您保持這個設定，這樣您就可以在有人提及您時收到一封電子郵件。"
     update_settings: 儲存變更
@@ -805,9 +830,9 @@ zh_TW:
     explain_mute:
       title: 您尚未靜音任何討論串。
       explanation_html: |
-        靜音是一種讓您不感興趣的討論串隱藏或消失的方法。
-        靜音代表您將不會在<strong>最近的</strong>或是<strong>未讀</strong>中看到它，且您將不會被提醒關於該討論串的動態，像是提案等。
-        您將只會在有人 <strong>@提及</strong> 您的名稱時被通知。
+          靜音是一種讓您不感興趣的討論串隱藏或消失的方法。
+          靜音代表您將不會在<strong>最近的</strong>或是<strong>未讀</strong>中看到它，且您將不會被提醒關於該討論串的動態，像是提案等。
+          您將只會在有人 <strong>@提及</strong> 您的名稱時被通知。
       instructions: '要靜音討論串，滑鼠移到其上並點選靜音圖示。'
       see_muted_html: '要檢視您已靜音的討論串，點選<strong>「已靜音」</strong>。您也可以將滑鼠移到其上並點選相同的圖示以解除靜音。'
     filtering:
@@ -1052,6 +1077,8 @@ zh_TW:
     reason_placeholder: 任何額外的意見？
     message: 訊息
     results: 結果
+    responses: 回應
+    totals: 全部
     vote: 投票
     votes: 投票
     update_outcome: 更新結果
@@ -1067,6 +1094,7 @@ zh_TW:
     share_count: 分享勾選
     start_poll: 啟動決策
     publish_poll: 分享投票
+    view_all: 檢視全部
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -1084,6 +1112,8 @@ zh_TW:
     no_polls: 找不到之前的決策。
     count: "檢視全部：({{count}}) 個決策"
   poll_common_action_panel:
+    anonymous: 投票將會是匿名的
+    anonymous_until_close: 在此投票結束前都會是匿名的
     unable_to_vote: 您沒有在此決策中投票的權限。
   current_polls_card:
     title: 目前的決策
@@ -1094,10 +1124,6 @@ zh_TW:
   poll_common_select_group:
     loomio_group: 群組
     loomio_group_placeholder: （未選取群組）
-  poll_common_voter_add_options:
-    add_options: 投票者可以新增選項
-    helptext_on: 參與者可以在投票時新增他們自己的選項
-    helptext_off: 參與者將會從您提供的選項中選取
   poll_common_notify_group:
     notify_group: 公告
     members_helptext: 您的群組將不會被通知
@@ -1115,14 +1141,28 @@ zh_TW:
     event_description_placeholder: 這次會面的議程是什麼？
     location: 位置
     location_placeholder: 這個會面會在哪裡舉辦？
-  poll_common_notify_on_participate:
-    notify_on_participate: 當夥伴參與時通知我
-    helptext_on: 您將會在其他人參與時被通知
-    helptext_off: 您將會在此動態關閉時收到結果
-  poll_common_anonymous:
-    anonymous: 匿名參與者
-    helptext_on: 參與者資訊將不會在每個回應中顯示
-    helptext_off: 參與者將會與他們的回應一起顯示
+  poll_common_settings:
+    multiple_choice:
+      title: 多選
+      helptext_on: 在選取時，參與者可以選取多個選項。
+    anyone_can_participate:
+      title: 任何人皆可參與
+      helptext_on: 當選取時，任何有投票連結的人都可以參與。
+    notify_on_participate:
+      title: 當夥伴參與時通知我
+      helptext_on: 當選取時，您將會在有其他人參與時被通知。
+    anonymous:
+      title: 匿名投票者
+      helptext_on: 當選取時，參與者資訊將不會在每個回應上顯示。
+    deanonymize_after_close:
+      title: 關閉後顯示投票者
+      helptext_on: 當選取時，匿名的投票者將會在投票關閉後顯示
+    voter_can_add_options:
+      title: 投票者可以新增選項
+      helptext_on: 當選取時，參與者可以在投票時加新增他們自己的選項。
+    can_respond_maybe:
+      title: 投票者可以回應「如果需要的話」
+      helptext_on: 投票者可以將次數表示為「如果需要的話」
   poll_common_close_form:
     title: 提前關閉投票
     helptext: 您確定您要提早關閉嗎？
@@ -1138,6 +1178,15 @@ zh_TW:
     dot_vote_closed: 點投票已關閉
     meeting_closed: 時間投票已關閉
     ranked_choice_closed: 排序選擇投票已關閉
+  poll_common_reopen_form:
+    title: 重新開啟已關閉的決策
+    helptext: 決策在您準備好之前就定案了嗎？重新開啟以從群組處收集更多立場。
+    proposal_reopened: 已重新開啟提案
+    poll_reopened: 已重新開始投票
+    count_reopened: 已重新開啟勾選
+    dot_vote_reopened: 已重新開啟點投票
+    meeting_reopened: 已重新開啟時間投票
+    ranked_choice_reopened: 已重新開啟排名選擇投票
   poll_common_closing_at_field:
     closing: 關閉
     closing_hour: 關閉時間
@@ -1200,14 +1249,14 @@ zh_TW:
     start: 啟動
     update: 更新
     loomio_school_link: |
-      <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>查詢更多資訊。</p>
+        <p>在 <a href="https://www.loomio.school/beginner/decision_tools.html" target="_blank">Loomio 學院</a>查詢更多資訊。</p>
   poll_proposal_form:
     tool_tip_expanded: |
-      <p>提案是用來尋求關於一段陳述或是行動方針共識的工具。</p>
-      <p>參與者可以同意、放棄、反對或阻擋，來針對一段陳述表達他們的立場。</p>
-      <p>一份圓餅圖會顯示在群組中對於該議題的立場，讓每個人的聲音都能被聽到。</p>
-      <p>若您一開始沒看到同意的人，別氣餒，提案就是設計用來突顯需要解決的問題。</p>
-      <p>在有良好參與者的狀況下，一個提案就是採與行動的有利動作。</p>
+        <p>提案是用來尋求關於一段陳述或是行動方針共識的工具。</p>
+        <p>參與者可以同意、放棄、反對或阻擋，來針對一段陳述表達他們的立場。</p>
+        <p>一份圓餅圖會顯示在群組中對於該議題的立場，讓每個人的聲音都能被聽到。</p>
+        <p>若您一開始沒看到同意的人，別氣餒，提案就是設計用來突顯需要解決的問題。</p>
+        <p>在有良好參與者的狀況下，一個提案就是採與行動的有利動作。</p>
     tool_tip_collapsed: 尋求共識
     start_header: 啟動提案
     edit_header: 編輯提案
@@ -1218,9 +1267,9 @@ zh_TW:
     proposal_updated: 提案已更新
   poll_poll_form:
     tool_tip_expanded: |
-      <p>使用投票來衡量人氣或是提供選項。</p>
-      <p>提供一些選項來供群組成員選取。決定參與者可以選取一個或多個選項來當做他們的回應。</p>
-      <p>每個人投票，且如果他們想要的話也可以同時輸入一段陳述。結果會以長條圖呈現。</p>
+        <p>使用投票來衡量人氣或是提供選項。</p>
+        <p>提供一些選項來供群組成員選取。決定參與者可以選取一個或多個選項來當做他們的回應。</p>
+        <p>每個人投票，且如果他們想要的話也可以同時輸入一段陳述。結果會以長條圖呈現。</p>
     tool_tip_collapsed: 測量人氣或是提供選項
     start_header: 啟動投票
     edit_header: 編輯投票
@@ -1229,17 +1278,15 @@ zh_TW:
     details_placeholder: 提供人們回答此問題可能需要的資訊。
     add_option_placeholder: 新增選項
     remove_option: 移除選項
-    multiple_choice: 多選
-    multiple_choice_explained: 允許投票者選擇多個他們喜歡的選項。
     poll_created: 投票已建立
     poll_updated: 投票已更新
   poll_count_form:
     tool_tip_expanded: |
-      <p><em>勾選</em>則是一個有許多可能的使用方法的工具，但其只有兩種回應方式：打勾 (✔) 或打叉 (✘)。參與者可以使用打勾 (✔) 來表示同意，或是使用打叉 (✘) 來說不或表示不確定。</p>
-      <p>使用其來吸引人們參與，例如：「我會來參加活動」或是「我將加入工作小組」等。</p>
-      <p>或是使用其來追蹤工作的完成度：「我已經檢查過我的連絡人詳細資訊，一切都沒錯」，或是「我已經讀過文件且留下了我的意見了」。</p>
-      <p>勾選是有<em>目標</em>的，其應該是您想要有多少參與者的數量。如果某些事情需要更多的關注或是需要更多參與者訂閱，那麼目標就是向團隊表明這些事情。</p>
-      <p>在勾選關閉的前一天，它將會提醒那些還沒參與的人（也許是數位游牧者？）。</p>
+        <p><em>勾選</em>則是一個有許多可能的使用方法的工具，但其只有兩種回應方式：打勾 (✔) 或打叉 (✘)。參與者可以使用打勾 (✔) 來表示同意，或是使用打叉 (✘) 來說不或表示不確定。</p>
+        <p>使用其來吸引人們參與，例如：「我會來參加活動」或是「我將加入工作小組」等。</p>
+        <p>或是使用其來追蹤工作的完成度：「我已經檢查過我的連絡人詳細資訊，一切都沒錯」，或是「我已經讀過文件且留下了我的意見了」。</p>
+        <p>勾選是有<em>目標</em>的，其應該是您想要有多少參與者的數量。如果某些事情需要更多的關注或是需要更多參與者訂閱，那麼目標就是向團隊表明這些事情。</p>
+        <p>在勾選關閉的前一天，它將會提醒那些還沒參與的人（也許是數位游牧者？）。</p>
     tool_tip_collapsed: 追蹤參與者與找到志願者
     start_header: 啟動勾選
     edit_header: 編輯勾選
@@ -1250,9 +1297,9 @@ zh_TW:
     count_updated: 勾選已更新
   poll_dot_vote_form:
     tool_tip_expanded: |
-      <p>點投票是列出選項清單順序的方法。</p>
-      <p>參與者會被給予有限的「點」，其可以被分配在他們喜歡的的選項來表示自己的偏好。</p>
-      <p>這個過程會產生一個累計的長條圖以及個別分配，讓您可以考慮各種觀點。</p>
+        <p>點投票是列出選項清單順序的方法。</p>
+        <p>參與者會被給予有限的「點」，其可以被分配在他們喜歡的的選項來表示自己的偏好。</p>
+        <p>這個過程會產生一個累計的長條圖以及個別分配，讓您可以考慮各種觀點。</p>
     tool_tip_collapsed: 選項排序
     start_header: 啟動點投票
     edit_header: 編輯點投票
@@ -1265,12 +1312,12 @@ zh_TW:
     dot_vote_updated: 點投票已更新
   poll_meeting_form:
     tool_tip_expanded: |
-      <p>使用時間投票來看看夥伴們何時可以會面。</p>
-      <p>輸入您想要舉辦會面的日期或是時間清單。</p>
-      <p>參與者勾選他們可以參與的時間，或是他們可以使用陳述欄來解釋他們的狀況，所以如果需要的話，您可以更新選項。</p>
-      <p>若您在時間投票中新增了新的時間，已經投票的夥伴將會被提醒要更新他們的回應。</p>
-      <p>您可以看到哪些人什麼時候有空，並決定何時要會面。</p>
-      <p>時間將會被自動轉換為參與者的時區。</p>
+        <p>使用時間投票來看看夥伴們何時可以會面。</p>
+        <p>輸入您想要舉辦會面的日期或是時間清單。</p>
+        <p>參與者勾選他們可以參與的時間，或是他們可以使用陳述欄來解釋他們的狀況，所以如果需要的話，您可以更新選項。</p>
+        <p>若您在時間投票中新增了新的時間，已經投票的夥伴將會被提醒要更新他們的回應。</p>
+        <p>您可以看到哪些人什麼時候有空，並決定何時要會面。</p>
+        <p>時間將會被自動轉換為參與者的時區。</p>
     tool_tip_collapsed: 找到會面的時間
     start_header: 啟動時間投票
     edit_header: 編輯時間投票
@@ -1285,10 +1332,10 @@ zh_TW:
     add_option_placeholder: 輸入新時間
   poll_ranked_choice_form:
     tool_tip_expanded: |
-      <p>排序選擇是一個讓每個投票者可以以他們偏好的順序回應的投票方式。</p>
-      <p>這可以用在有「投票竊取」的問題時（亦即有兩個受歡迎的選項類似
-      ，而投票會在兩個選項間共享），並可用 Condorcet 或即時投票的風格來實作。
-      </p>
+        <p>排序選擇是一個讓每個投票者可以以他們偏好的順序回應的投票方式。</p>
+        <p>這可以用在有「投票竊取」的問題時（亦即有兩個受歡迎的選項類似
+        ，而投票會在兩個選項間共享），並可用 Condorcet 或即時投票的風格來實作。
+        </p>
     tool_tip_collapsed: 排序選項
     start_header: 開始排序選擇
     edit_header: 編輯排序選擇
@@ -1329,6 +1376,8 @@ zh_TW:
     block_verb: "阻擋"
     block_meaning: 需要群組的關注來解決更深層的問題
   poll_count_options:
+    'yes': '是'
+    'no': '否'
     yes_meaning: 我自願，給予我的同意，或是完成了任務
     no_meaning: 我不能貢獻或參與這個決策
   poll_count_vote_form:
@@ -1346,6 +1395,9 @@ zh_TW:
     stance_created: 已建立投票
     stance_updated: 已更新投票
   poll_meeting_vote_form:
+    can_attend: "可以參與"
+    unable: "不行"
+    if_need_be: 如果需要的話
     your_response: 您何時能參加？
     stance_created: 可用度已儲存
     stance_updated: 可用度已更新
@@ -1371,6 +1423,7 @@ zh_TW:
     discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 重新開啟了討論串"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 分享了 <strong>{{title}}</strong> 的結果"
+    poll_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 重新開啟了 {{polltype}}：<strong>{{title}}</strong>"
     poll_closed_by_user: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 關閉了 {{polltype}}：<strong>{{title}}</strong>"
     poll_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 啟動了 {{polltype}}：<strong>{{title}}</strong>"
     poll_edited: "<strong><a href='u/{{username}}'>{{author}}</a></strong> 編輯了 {{polltype}}：<strong>{{title}}</strong>"
@@ -1379,38 +1432,6 @@ zh_TW:
     event_removed: "從討論串中移除"
   poll_admin_page:
     title: 管理 - {{title}}
-  poll_common_share_form:
-    no_group_selected: 未選擇群組
-    share_a_link: 分享連結
-    share_a_link_helptext: 建立一個供散佈用的可分享連結。任何存取連結的人都可以參與。
-    anyone_can_participate: 任何有連結的人都可以參與
-    anyone_can_participate_true: 可分享的連結已建立
-    anyone_can_participate_false: 可分享的連結已撤銷
-    get_link: 複製連結
-    invite_visitor: 電子郵件訪客
-    invite_visitor_helptext: 透過電子郵件邀請個人來參與這次的決策。來賓將僅能參與此次的決策。
-    send_email: 傳送電子郵件
-    shareable_link_created: 任何人都可以參與此次的決策
-    shareable_link_revoked: 此次的決策現在僅限邀請
-    shareable_link: 可分享的連結
-    guests_invited: 寄送給 {{count}} 個夥伴
-    guest_revoked: 已撤銷 {{email}} 的存取權
-    existing_guests: 已有的來賓
-    new_guests: 新邀請電子郵件
-    enter_email: "例如：guest@example.com"
-    reminded: 提醒已傳送！
-    send_emails: 傳送邀請函 ({{count}})
-    share_group: 群組
-    share_group_helptext: 選擇一個群組來分享此決策。群組的成員都可以參與。
-    cannot_move_poll_helptext: 這個投票是 <strong>{{group}}</strong> 中的 <strong>{{discussion}}</strong> 討論的一部份，所以無法被移動。
-    move_group_helptext: 小心！移動決策到群組外可能會讓一些人無法存取它。已有的投票仍將會被記錄。
-    set_group: 設定群組
-    group_set: 群組已更新
-    view_poll: 檢視投票
-    email_invited: '邀請函已寄送給 {{email}}'
-    email_exists: '{{email}} 已被邀請'
-    email_empty: '請輸入電子郵件'
-    email_invalid: "這似乎不是有效的電子郵件"
   poll_common_publish_facebook_preview:
     shared_a: 分享一個
     link: 連結
@@ -1458,14 +1479,12 @@ zh_TW:
     email_placeholder: you@example.com
     login_with_token: 您已經設定好了！點選下方的連結來登入。
     login_link_helptext: |
-      點選下面的按鈕，然後我們就會傳送立刻登入的連結給您。
-      若您未來想要使用密碼登入，您可以從您的簡歷頁面設定一個。
+        點選下面的按鈕，然後我們就會傳送立刻登入的連結給您。
+        若您未來想要使用密碼登入，您可以從您的簡歷頁面設定一個。
     login_link_helptext_with_password: "輸入您的密碼，或是透過電子郵件登入。"
-    sign_up_helptext: "只要輸入您使用的名稱，我們就會寄送一個連結供您登入。"
     oauth_confirm_helptext: "只要在下面確認您的詳細資料，我們就會傳送連結給您來登入。"
     name_required: 請輸入名稱
     account_inactive: 喔~喔~，看來 {{email}} 的帳號已經停用了！請聯絡我們來重新啟用您的帳號，
-    welcome: 您好，{{email}}！
     welcome_back: 歡迎回來，{{name}}！
     login_link: 透過電子郵件登入
     set_password: 設定密碼
@@ -1477,7 +1496,10 @@ zh_TW:
     already_a_user: 已經有 {{site_name}} 的帳號了？輸入您的電子郵件地址來連結此帳號到您的
     link_accounts: 連結帳號
     check_your_email: 檢查您的電子郵件
-    login_link_sent: "好的，我們已經傳送一封包含可以立刻登入的連結的電子郵件到 {{email}}。待會見！"
+    login_link_sent: "好的，我們已經寄了一封電子郵件到 {{email}}。"
+    instructions: "點按連結以登入，或是在下面輸入代碼："
+    too_many_attempts: "嘗試太多次了；試試看點按在電子郵件中的連結來登入。"
+    invalid_code: "抱歉，代碼不正確。請檢查電子郵件並再試一次。"
     password_link_sent: "我們已經寄送一封包含了如何設定您的密碼的電子郵件到 {{email}} 了。"
     signed_in: 登入成功
     email_verified: 電子郵件驗證成功
@@ -1497,8 +1519,8 @@ zh_TW:
       remove_identity: 移除這個整合
       confirm_remove_title: 移除 Slack 整合
       confirm_remove_helptext: |
-        您的 Slack 頻道不再收到關於此群組的更新。
-        您還是可以回來並再次把它加回來。
+          您的 Slack 頻道不再收到關於此群組的更新。
+          您還是可以回來並再次把它加回來。
       identity_removed: 已移除整合
     progress:
       install: 安裝
@@ -1521,7 +1543,7 @@ zh_TW:
     invite:
       heading: '第二步：設定 Slack 頻道'
       helptext: |
-        成功！現在，選擇一個您想要讓我們貼出更新資訊的頻道。
+          成功！現在，選擇一個您想要讓我們貼出更新資訊的頻道。
       select_a_channel: 選取頻道
       publish_group: 貼出歡迎訊息
       publish_group_helptext_on: 我們將會貼出一則訊息到這個頻道裡以讓夥伴們知道如何使用 LoomioBot。
@@ -1533,10 +1555,13 @@ zh_TW:
       helptext: "現在您都設定好了，是時候開始做決策了。從下面的選項中選取一個："
     common:
       do_it_later: 我將會稍候處理
+  browser_warning:
+    message: "重要！您正在使用已不被 {{site}} 支援的舊版瀏覽器 ({{name}} {{version}})。"
+    link: 請切換到其他瀏覽器
   slack_added_modal:
     title: 成功！
     helptext: |
-      您已經成功新增 Slack 到您的群組 <strong>{{name}}</strong>。
-      現在，無論任何人在此群組中啟動投票，他們都將會有
-      選項來貼出投票的更新到您 Slack 團隊中的頻道。
+        您已經成功新增 Slack 到您的群組 <strong>{{name}}</strong>。
+        現在，無論任何人在此群組中啟動投票，他們都將會有
+        選項來貼出投票的更新到您 Slack 團隊中的頻道。
     start_poll_now: 現在做決策

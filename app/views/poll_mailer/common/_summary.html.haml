@@ -2,7 +2,7 @@
   - if @info.poll.discussion && @info.action_name != :export
     = render "poll_mailer/common/discussion_info", discussion: @info.poll.discussion
 
-  %h1= link_to @info.poll.title, @info.links[:target], class: 'poll-mailer__poll-title'
+  %h1= link_to @info.poll.title, @info.target_url, class: 'poll-mailer__poll-title'
   -if @info.action_name == :export
     %p
     = t(:"poll.export.also_available")
@@ -26,4 +26,4 @@
       = t(:"poll_common_form.closed")
       = formatted_time_in_zone(@info.poll.closed_at, @info.time_zone)
 
-  = render "thread_mailer/attachments", resource: @info.poll
+  = render "discussion_mailer/attachments", resource: @info.poll

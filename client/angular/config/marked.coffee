@@ -32,5 +32,7 @@ angular.module('loomioApp').config ['markedProvider', (markedProvider) ->
     src = src.replace(/<script[^>]+\>/ig, "")
     return _parse(src, opt, callback)
 
-  markedProvider.setRenderer customRenderer(gfm: true, sanitize: true, breaks: true)
+  options = {gfm: true, sanitize: true, breaks: true, smartypants: false, tables: true}
+  markedProvider.setRenderer customRenderer()
+  markedProvider.setOptions options
 ]

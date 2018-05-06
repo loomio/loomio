@@ -11,6 +11,7 @@ module.exports = {
     page.fillIn('.profile-page__name-input', 'Ferris Bueller')
     page.fillIn('.profile-page__username-input', 'ferrisbueller')
     page.click('.profile-page__update-button')
+    page.pause()
     page.click('.user-dropdown__dropdown-button')
     page.expectText('.user-dropdown__user-details', 'Ferris Bueller')
     page.expectText('.user-dropdown__user-details', 'ferrisbueller')
@@ -19,8 +20,8 @@ module.exports = {
   'displays a user and their non-secret groups': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_discussion', '.thread-page')
-    page.goTo('u/jennifergrey', '.user-page__content')
+    page.loadPath('setup_discussion')
+    page.goTo('u/jennifergrey')
     page.expectText('.user-page__content', 'Jennifer Grey')
     page.expectText('.user-page__content', '@jennifergrey')
     page.expectText('.user-page__groups', 'Dirty Dancing Shoes')
@@ -43,6 +44,7 @@ module.exports = {
   'allows you to contact other users': (test) => {
     page = pageHelper(test)
 
+    page.loadPath('setup_discussion')
     page.goTo('u/jennifergrey')
     page.click('.user-page__contact-user')
     page.fillIn('.contact-request-form__message', 'Here is a request to connect!')
@@ -65,7 +67,7 @@ module.exports = {
     page.fillIn('.change-password-form__password', 'Smush')
     page.fillIn('.change-password-form__password-confirmation', 'Smush')
     page.click('.change-password-form__submit')
-    page.expectText('.change-password-form__password-container .lmo-validation-error__message', "is too short")
+    page.expectText('.change-password-form__password-container .lmo-validation-error__message', "is too short", 8000)
   },
 
   'does not accept mismatched passwords': (test) => {
@@ -78,7 +80,7 @@ module.exports = {
     page.fillIn('.change-password-form__password', 'SmushDemBerries')
     page.fillIn('.change-password-form__password-confirmation', 'SmishDemBorries')
     page.click('.change-password-form__submit')
-    page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match")
+    page.expectText('.change-password-form__password-confirmation-container .lmo-validation-error__message', "doesn't match", 8000)
   },
 
   'can set a password': (test) => {
@@ -94,27 +96,29 @@ module.exports = {
     page.expectText('.flash-root__message', 'Your password has been updated')
   },
 
-  'successfully deactivates the account': (test) => {
+  'prevents you from deactivating the account': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
     page.click('.user-dropdown__dropdown-button')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__deactivate')
-    page.expectText('.deactivation-modal', 'When you deactivate your account:')
-    page.click('.deactivation-modal__confirm')
-    page.expectText('.only-coordinator-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:')
+    page.expectText('.confirm-modal', 'When you deactivate your account:')
+    page.click('.confirm-modal__submit')
+    page.pause()
+    page.expectText('.confirm-modal', 'A group must have at least one coordinator. You are the only coordinator of the following groups:')
   },
 
-  'prevents you from deactivating the account': (test) => {
+  'successfully_deactivates_the_account': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_with_multiple_coordinators')
     page.click('.user-dropdown__dropdown-button')
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.profile-page__deactivate')
-    page.click('.deactivation-modal__confirm')
-    page.click('.deactivate-user-form__submit')
-    page.expectText('.auth-modal', 'Sign into Loomio')
+    page.click('.confirm-modal__submit')
+    page.pause(2000)
+    page.click('.confirm-modal__submit')
+    page.expectText('.auth-modal', 'Sign into Loomio', 10000)
   }
 }

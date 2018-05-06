@@ -159,6 +159,9 @@ ko:
     sign_in: '로그인'
     toggle_sidebar: '토글 사이드바'
     logo_title: '홈페이지'
+  membership_dropdown:
+    make_coordinator: '코디네이터로 만들기'
+    cancel_invitation: 초대 취소
   start_menu:
     label: '사용자 액션'
     title: '액션'
@@ -240,7 +243,6 @@ ko:
     new_cover_photo: '새로운 커버 사진 올리기'
     new_group_logo: '새로운 그룹 로고 올리기'
     discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
-    members: '멤버'
     members_placeholder: '이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.'
     member_options: 멤버 옵션
     subgroups: '소그룹'
@@ -395,6 +397,14 @@ ko:
       remove_admin_success: '{{name}}은 더 이상 코디네이터가 아닙니다.'
     remove_admin_from_self:
       question: '코디네이터를 그만 두시겠습니까?'
+  membership_remove_modal:
+    invitation:
+      title: 초대 취소
+      flash: 초대를 취소했습니다.
+      submit: 초대 취소
+    membership:
+      title: 멤버 삭제
+      submit: 멤버 삭제
   remove_membership_form:
     aria_label: '멤버 삭제'
     title: '멤버 삭제'
@@ -454,7 +464,6 @@ ko:
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
     mentioned_label: 말하기
-    mentioned_description: "누군가 당신과 이야기하고 싶을 경우 @언급할 겁니다. 사람들이 언급할 때마다 이메일을 받게 되기 때문에 사용하는게 좋습니다."
     specific_groups: 특별한 그룹에 적용
     default_settings:
       loud_description: "새로운 그룹에 참여하면, 당신은 <strong>행동이 있을 때마다</strong>이메일을 받을 수 있습니다."
@@ -612,3 +621,6 @@ ko:
     search: "이모티콘을 찾으세요."
   poll_common_form:
     closed: 종료
+  poll_count_options:
+    'yes': '네'
+    'no': '아니요'

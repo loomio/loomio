@@ -8,8 +8,16 @@ textarea .lmo-textarea {
   min-height: 100px;
 }
 
+.lmo-margin-left {
+  margin-left: 12px;
+}
+
 .lmo-margin-right {
   margin-right: 12px;
+}
+
+.lmo-margin-right--small {
+  margin-right: 8px;
 }
 
 .lmo-validation-error {
@@ -119,7 +127,10 @@ textarea .lmo-textarea {
     padding: 10px;
     background: $modal-background-color;
   }
-  blockquote{ font-size: inherit; }
+  blockquote{
+    font-style: italic;
+    font-size: inherit;
+  }
   table {
     table-layout: fixed;
     width: 100%;
@@ -154,6 +165,10 @@ textarea .lmo-textarea {
 
 .timeago{
   white-space: nowrap;
+}
+
+.lmo-align-left {
+  text-align: left;
 }
 
 .align-center {

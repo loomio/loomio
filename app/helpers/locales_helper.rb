@@ -1,4 +1,8 @@
 module LocalesHelper
+  def process_time_zone(&block)
+    Time.use_zone(TimeZoneToCity.convert(current_user.time_zone.to_s), &block)
+  end
+  
   def use_preferred_locale
     I18n.locale = preferred_locale
     yield if block_given?

@@ -32,7 +32,8 @@
             .membership-requests-page__previous-request-email
               {{request.email}}
             .membership-requests-page__previous-request-response
-              %span{translate: "membership_requests_page.previous_request_response", translate-value-response: "{{request.formattedResponse()}}", translate-value-responder: "{{request.responder().name}}"}
+              %span{translate: "membership_requests_page.previous_request_response", translate-value-response: "{{request.formattedResponse()}}", translate-value-responder: "{{request.responder().name}}"}>
+              %span> · 
               %timeago{timestamp: "request.respondedAt"}
             .membership-requests-page__previous-request-introduction
               {{request.introduction}}

@@ -211,9 +211,59 @@ describe API::PollsController do
       sign_in user
       poll_params[:poll_type] = 'meeting'
       poll_params[:poll_option_names] = [1.day.from_now.iso8601]
-      poll_params[:custom_fields] = { meeting_duration: 90 }
+      poll_params[:custom_fields] = { meeting_duration: 90, can_respond_maybe: false }
       expect { post :create, params: { poll: poll_params } }.to change { Poll.count }.by(1)
       expect(Poll.last.meeting_duration.to_i).to eq 90
+    end
+
+    describe 'group.members_can_raise_motions false' do
+      before do
+        discussion.group.update(members_can_raise_motions: false)
+        sign_in user
+      end
+
+      it 'admin of formal group can raise motions' do
+        discussion.group.add_admin! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'admin of discussion guest group can raise motions' do
+        discussion.guest_group.add_admin! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of formal group cannot raise motions' do
+        discussion.group.add_member! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 403
+      end
+
+      it 'member of discussion guest group cannot raise motions' do
+        discussion.guest_group.add_member! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 403
+      end
+    end
+
+    describe 'group.members_can_raise motions true' do
+      before do
+        discussion.group.update(members_can_raise_motions: true)
+        sign_in user
+      end
+
+      it 'member of formal group can raise motions' do
+        discussion.group.add_member! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'member of discussion guest group can raise motions' do
+        discussion.guest_group.add_member! user
+        post :create, params: { poll: poll_params }
+        expect(response.status).to eq 200
+      end
     end
   end
 
@@ -307,6 +357,43 @@ describe API::PollsController do
       post :close, params: { id: poll.key }
       expect(response.status).to eq 403
       expect(poll.reload.active?).to eq true
+    end
+  end
+
+  describe 'reopen' do
+    let(:poll_params) {{
+      closing_at: 1.day.from_now
+    }}
+    let!(:did_not_vote) { PollDidNotVote.create(poll: poll, user: another_user) }
+    before { poll.update(closed_at: 1.day.ago) }
+
+    it 'can reopen a poll' do
+      sign_in user
+      post :reopen, params: { id: poll.key, poll: poll_params }
+      expect(response.status).to eq 200
+
+      expect(poll.reload.active?).to eq true
+      expect(poll.closing_at).to be_within(1.second).of(poll_params[:closing_at])
+      expect(poll.poll_did_not_votes).to be_empty
+      expect(poll.undecided_count).to eq 3
+    end
+
+    it 'cannot reopen an active poll' do
+      poll.update(closed_at: nil)
+      sign_in user
+      post :reopen, params: { id: poll.key, poll: poll_params }
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow non-admins to reopen a poll' do
+      sign_in another_user
+      post :reopen, params: { id: poll.key, poll: poll_params }
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow visitors to reopen polls' do
+      post :reopen, params: { id: poll.key, poll: poll_params }
+      expect(response.status).to eq 403
     end
   end
 

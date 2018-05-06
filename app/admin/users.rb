@@ -90,7 +90,7 @@ ActiveAdmin.register User do
           button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
         else
           div "This user can't be deactivated because they are the only coordinator of the following groups:"
-          table_for user.adminable_groups.published.select{|g| g.admins.count == 1}.each do |group|
+          table_for user.adminable_groups.where(type: "FormalGroup").published.select{|g| g.admins.count == 1}.each do |group|
             column :id
             column :name do |group|
               link_to group.name, admin_group_path(group)
@@ -135,7 +135,6 @@ ActiveAdmin.register User do
         div "#{user.deactivation_response.body}"
       end
     end
-    active_admin_comments
   end
 
   member_action :merge, method: :post do

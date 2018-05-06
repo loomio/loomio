@@ -3,16 +3,16 @@ module ApplicationCable
     identified_by :current_user
 
     def connect
-      self.current_user = find_verified_user
+      self.current_user = user || membership || reject_unauthorized_connection
     end
 
     private
-    def find_verified_user
-      if verified_user = env['warden'].user
-        verified_user
-      else
-        reject_unauthorized_connection
-      end
+    def user
+      env['warden'].user
+    end
+
+    def membership
+      LoggedOutUser.new(token: request.params[:token]) if request.params[:token]
     end
   end
 end

@@ -21,7 +21,7 @@ class Slack::PollSerializer < Slack::BaseSerializer
       {
         color:      option.color,
         title:      option.display_name,
-        title_link: slack_link_for(poll, poll_option_id: option.id, invitation: true)
+        title_link: slack_link_for(poll, poll_option_id: option.id, grant_membership: true)
       }
     end
   end

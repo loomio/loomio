@@ -1,7 +1,13 @@
 class LoginToken < ApplicationRecord
   belongs_to :user, required: true
-  has_secure_token :token
+  extend HasTokens
+
+  initialized_with_token :token
+  initialized_with_token :code, -> { Random.new.rand(999999) }
+
   EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 1440)
+
+  scope :unused, -> { where(used: false) }
 
   def useable?
     !used && expires_at > DateTime.now && user.present?
