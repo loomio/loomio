@@ -1,6 +1,6 @@
 module.exports = (test) ->
-  loadPath: (path) ->
-    test.url "http://localhost:3000/dev/#{path}"
+  loadPath: (path, opts = {}) ->
+    test.url "http://localhost:3000/dev/#{opts.controller || 'nightwatch'}/#{path}"
 
   goTo: (path) ->
     test.url "http://localhost:3000/#{path}"
