@@ -1,4 +1,4 @@
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
 angular.module('loomioApp').directive 'lmoHrefFor', ->
   restrict: 'A'

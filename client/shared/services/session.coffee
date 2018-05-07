@@ -1,11 +1,11 @@
-AppConfig     = require 'shared/services/app_config.coffee'
-Records       = require 'shared/services/records.coffee'
-I18n          = require 'shared/services/i18n.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+AppConfig     = require 'shared/services/app_config'
+Records       = require 'shared/services/records'
+I18n          = require 'shared/services/i18n'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
-exceptionHandler = require 'shared/helpers/exception_handler.coffee'
+exceptionHandler = require 'shared/helpers/exception_handler'
 
-{ hardReload } = require 'shared/helpers/window.coffee'
+{ hardReload } = require 'shared/helpers/window'
 
 module.exports = new class Session
   signIn: (userId) ->

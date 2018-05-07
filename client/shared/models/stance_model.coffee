@@ -1,7 +1,7 @@
-BaseModel       = require 'shared/record_store/base_model.coffee'
-AppConfig       = require 'shared/services/app_config.coffee'
-HasDrafts       = require 'shared/mixins/has_drafts.coffee'
-HasTranslations = require 'shared/mixins/has_translations.coffee'
+BaseModel       = require 'shared/record_store/base_model'
+AppConfig       = require 'shared/services/app_config'
+HasDrafts       = require 'shared/mixins/has_drafts'
+HasTranslations = require 'shared/mixins/has_translations'
 
 module.exports = class StanceModel extends BaseModel
   @singular: 'stance'

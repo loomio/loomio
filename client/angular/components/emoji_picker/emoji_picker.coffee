@@ -1,10 +1,10 @@
 emojione = require 'emojione'
 
-AppConfig = require 'shared/services/app_config.coffee'
-EventBus  = require 'shared/services/event_bus.coffee'
-I18n      = require 'shared/services/i18n.coffee'
+AppConfig = require 'shared/services/app_config'
+EventBus  = require 'shared/services/event_bus'
+I18n      = require 'shared/services/i18n'
 
-{ emojiTitle } = require 'shared/helpers/helptext.coffee'
+{ emojiTitle } = require 'shared/helpers/helptext'
 
 angular.module('loomioApp').directive 'emojiPicker', ['$timeout', ($timeout)->
   scope: {reaction: '='}

@@ -1,4 +1,4 @@
-utils  = require './utils.coffee'
+utils  = require './utils'
 
 module.exports =
   class BaseModel

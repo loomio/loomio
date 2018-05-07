@@ -1,5 +1,5 @@
-{ uploadForm }  = require 'shared/helpers/form.coffee'
-{ updateCover } = require 'shared/helpers/layout.coffee'
+{ uploadForm }  = require 'shared/helpers/form'
+{ updateCover } = require 'shared/helpers/layout'
 
 angular.module('loomioApp').factory 'CoverPhotoForm', ->
   templateUrl: 'generated/components/group_page/cover_photo_form/cover_photo_form.html'

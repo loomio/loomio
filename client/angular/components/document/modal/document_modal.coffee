@@ -1,6 +1,6 @@
-EventBus = require 'shared/services/event_bus.coffee'
+EventBus = require 'shared/services/event_bus'
 
-{ listenForLoading } = require 'shared/helpers/listen.coffee'
+{ listenForLoading } = require 'shared/helpers/listen'
 
 angular.module('loomioApp').factory 'DocumentModal', ['$timeout', ($timeout) ->
   templateUrl: 'generated/components/document/modal/document_modal.html'

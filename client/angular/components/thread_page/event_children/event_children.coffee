@@ -1,6 +1,6 @@
-AppConfig         = require 'shared/services/app_config.coffee'
-EventBus          = require 'shared/services/event_bus.coffee'
-NestedEventWindow = require 'shared/services/nested_event_window.coffee'
+AppConfig         = require 'shared/services/app_config'
+EventBus          = require 'shared/services/event_bus'
+NestedEventWindow = require 'shared/services/nested_event_window'
 
 angular.module('loomioApp').directive 'eventChildren', ->
   scope: {parentEvent: '=', parentEventWindow: '='}

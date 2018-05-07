@@ -1,7 +1,7 @@
-AppConfig      = require 'shared/services/app_config.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+AppConfig      = require 'shared/services/app_config'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'navbar', ['$rootScope', ($rootScope) ->
   scope: {}

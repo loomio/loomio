@@ -1,8 +1,8 @@
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
-ThreadService  = require 'shared/services/thread_service.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
+ThreadService  = require 'shared/services/thread_service'
+LmoUrlService  = require 'shared/services/lmo_url_service'
 
 angular.module('loomioApp').directive 'contextPanelDropdown', ['$rootScope', ($rootScope) ->
   scope: {discussion: '='}
