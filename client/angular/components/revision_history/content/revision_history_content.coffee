@@ -1,4 +1,7 @@
 Records = require 'shared/services/records.coffee'
+{
+  exactDateWithTime
+} = require 'shared/helpers/filters.coffee'
 
 angular.module('loomioApp').directive 'revisionHistoryContent', ->
   scope:{model:'=', version:'='}
@@ -16,5 +19,5 @@ angular.module('loomioApp').directive 'revisionHistoryContent', ->
       switch field_name
         when "group_id" then { name:Records.groups.find($scope.version.changes.group_id[1]).name}
         when "private" then { private: if $scope.version.changes.private[1] then "private" else "public"}
-        when "closing_at" then {closing_at: $scope.version.changes.closing_at[1]}
+        when "closing_at" then {time: exactDateWithTime($scope.version.changes.closing_at[1])}
   ]

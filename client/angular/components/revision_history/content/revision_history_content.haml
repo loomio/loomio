@@ -10,5 +10,4 @@
       %text_diff.poll-common-card__title.revision-history-content--header{before: "version.changes.title[0]", after: "version.changes.title[1]"}
       %text_diff{before: "version.changes.details[0]", after: "version.changes.details[1]"}
       %p{ng-if:"version.changes.closing_at"}
-        %span{translate:"revision_history_modal.closing_at_changed"}>
-        %timeago{timestamp: "version.changes.closing_at[1]"}
+        %span{translate:"revision_history_modal.closing_at_changed", translate-values:"noticeValues('closing_at')"}>

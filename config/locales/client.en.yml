@@ -547,13 +547,9 @@ en:
     posted: Posted
     original_text: Original
     current_revision: Latest
-    discussion_title: Title
-    poll_title: Title
-    poll_details: Details
-    discussion_description: Description
-    closing_at_changed: "Changed closing time to "
-    private_changed: "Changed privacy to {{private}}"
-    group_id_changed: "Moved to {{name}}"
+    closing_at_changed: "closing time set to {{time}}"
+    private_changed: "privacy set to {{private}}"
+    group_id_changed: "moved to {{name}}"
 
   reactions_input:
     add_your_reaction: Add your reaction

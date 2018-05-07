@@ -36,6 +36,9 @@ Loomio::Application.routes.draw do
       get '/' => :index
       get ':action'
     end
+
+    get '/', to: 'nightwatch#index'
+    get '/:action', to: 'nightwatch#:action'
   end
 
   ActiveAdmin.routes(self)
