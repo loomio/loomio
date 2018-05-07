@@ -49,6 +49,7 @@ module GroupService
     actor.ability.authorize! :merge, target
 
     Group.transaction do
+      source.subgroups.update_all(parent_id: target.id)
       source.discussions.update_all(group_id: target.id)
       source.polls.update_all(group_id: target.id)
       source.membership_requests.update_all(group_id: target.id)
