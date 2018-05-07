@@ -8,6 +8,14 @@ class Dev::BaseController < ApplicationController
     render 'dev/main/index', layout: false
   end
 
+  def last_email(to: nil)
+    @email = if to.present?
+      ActionMailer::Base.deliveries.select { |email| Array(email.to).include?(to.email) }
+    else
+      ActionMailer::Base.deliveries
+    end.last
+    render template: 'dev/main/last_email', layout: false
+  end
   private
 
   def ensure_not_production
@@ -18,12 +26,4 @@ class Dev::BaseController < ApplicationController
     BaseMailer.skip { yield }
   end
 
-  def last_email(to: nil)
-    @email = if to.present?
-      ActionMailer::Base.deliveries.select { |email| Array(email.to).include?(to.email) }
-    else
-      ActionMailer::Base.deliveries
-    end.last
-    render template: 'dev/main/last_email', layout: false
-  end
 end
