@@ -75,6 +75,7 @@ describe 'GroupService' do
     let!(:shared_user) { create :user }
     let!(:source_user) { create :user }
     let!(:target_user) { create :user }
+    let!(:source_subgroup) { create :formal_group, parent: source }
     let!(:source_discussion) { create :discussion, group: source }
     let!(:source_comment) { create :comment, discussion: source_discussion }
     let!(:source_poll) { create :poll, group: source }
@@ -92,6 +93,7 @@ describe 'GroupService' do
     it 'can merge two groups' do
       GroupService.merge(source: source, target: target, actor: user)
       target.reload
+      expect(target.subgroups).to           include source_subgroup
       expect(target.members).to             include source_user
       expect(target.members).to             include target_user
       expect(target.members).to             include shared_user
