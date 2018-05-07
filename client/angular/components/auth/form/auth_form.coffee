@@ -1,5 +1,5 @@
-{ listenForLoading }    = require 'shared/helpers/listen.coffee'
-{ getProviderIdentity } = require 'shared/helpers/user.coffee'
+{ listenForLoading }    = require 'shared/helpers/listen'
+{ getProviderIdentity } = require 'shared/helpers/user'
 
 angular.module('loomioApp').directive 'authForm', ->
   scope: {preventClose: '=', user: '='}

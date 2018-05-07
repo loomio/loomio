@@ -15,7 +15,7 @@ module.exports =
   exportGlobals: ->
     window.moment = require 'moment'
     window._      = require 'lodash'
-    _.extend window._, require 'shared/helpers/lodash_ext.coffee'
+    _.extend window._, require 'shared/helpers/lodash_ext'
 
   initServiceWorker: ->
     if document.location.protocol.match(/https/) && navigator.serviceWorker?

@@ -1,7 +1,7 @@
-AppConfig   = require 'shared/services/app_config.coffee'
-Records     = require 'shared/services/records.coffee'
-EventBus    = require 'shared/services/event_bus.coffee'
-AuthService = require 'shared/services/auth_service.coffee'
+AppConfig   = require 'shared/services/app_config'
+Records     = require 'shared/services/records'
+EventBus    = require 'shared/services/event_bus'
+AuthService = require 'shared/services/auth_service'
 
 angular.module('loomioApp').factory 'AuthModal', ->
   templateUrl: 'generated/components/auth/modal/auth_modal.html'

@@ -1,7 +1,7 @@
-Records        = require 'shared/services/records.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-RecordLoader   = require 'shared/services/record_loader.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+Records        = require 'shared/services/records'
+AbilityService = require 'shared/services/ability_service'
+RecordLoader   = require 'shared/services/record_loader'
+LmoUrlService  = require 'shared/services/lmo_url_service'
 
 angular.module('loomioApp').directive 'pollCommonUndecidedPanel', ->
   scope: {poll: '='}

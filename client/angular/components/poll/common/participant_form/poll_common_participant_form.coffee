@@ -1,5 +1,5 @@
-AbilityService = require 'shared/services/ability_service.coffee'
-Session        = require 'shared/services/session.coffee'
+AbilityService = require 'shared/services/ability_service'
+Session        = require 'shared/services/session'
 
 angular.module('loomioApp').directive 'pollCommonParticipantForm', ->
   scope: {stance: '='}

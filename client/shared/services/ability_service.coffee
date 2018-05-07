@@ -1,7 +1,7 @@
-AppConfig     = require 'shared/services/app_config.coffee'
-Records       = require 'shared/services/records.coffee'
-Session       = require 'shared/services/session.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+AppConfig     = require 'shared/services/app_config'
+Records       = require 'shared/services/records'
+Session       = require 'shared/services/session'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
 module.exports = new class AbilityService
 

@@ -1,14 +1,14 @@
 ActionCable = require 'actioncable'
 
-AppConfig      = require 'shared/services/app_config.coffee'
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
-AuthService    = require 'shared/services/auth_service.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
+AppConfig      = require 'shared/services/app_config'
+Session        = require 'shared/services/session'
+Records        = require 'shared/services/records'
+ModalService   = require 'shared/services/modal_service'
+FlashService   = require 'shared/services/flash_service'
+AuthService    = require 'shared/services/auth_service'
+AbilityService = require 'shared/services/ability_service'
 
-{ hardReload } = require 'shared/helpers/window.coffee'
+{ hardReload } = require 'shared/helpers/window'
 
 module.exports = {
   subscribeTo: (model) ->

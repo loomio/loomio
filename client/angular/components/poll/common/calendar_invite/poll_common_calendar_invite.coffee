@@ -1,5 +1,5 @@
-Records     = require 'shared/services/records.coffee'
-TimeService = require 'shared/services/time_service.coffee'
+Records     = require 'shared/services/records'
+TimeService = require 'shared/services/time_service'
 
 angular.module('loomioApp').directive 'pollCommonCalendarInvite', ->
   scope: {outcome: '='}

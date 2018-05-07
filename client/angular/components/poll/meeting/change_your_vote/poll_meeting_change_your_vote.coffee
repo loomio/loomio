@@ -1,4 +1,4 @@
-ModalService   = require 'shared/services/modal_service.coffee'
+ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'pollMeetingChangeYourVote', ->
   scope: {stance: '='}

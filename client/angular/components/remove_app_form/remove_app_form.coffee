@@ -1,5 +1,5 @@
-EventBus     = require 'shared/services/event_bus.coffee'
-FlashService = require 'shared/services/flash_service.coffee'
+EventBus     = require 'shared/services/event_bus'
+FlashService = require 'shared/services/flash_service'
 
 angular.module('loomioApp').factory 'RemoveAppForm', ['$rootScope', ($rootScope) ->
   templateUrl: 'generated/components/remove_app_form/remove_app_form.html'

@@ -1,8 +1,8 @@
-AppConfig      = require 'shared/services/app_config.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-I18n           = require 'shared/services/i18n.coffee'
+AppConfig      = require 'shared/services/app_config'
+AbilityService = require 'shared/services/ability_service'
+I18n           = require 'shared/services/i18n'
 
-{ groupPrivacy, groupPrivacyStatement } = require 'shared/helpers/helptext.coffee'
+{ groupPrivacy, groupPrivacyStatement } = require 'shared/helpers/helptext'
 
 angular.module('loomioApp').directive 'groupForm', ->
   scope: {group: '=', modal: '=?'}

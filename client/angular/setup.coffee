@@ -1,16 +1,16 @@
-Routes         = require 'angular/routes.coffee'
-AppConfig      = require 'shared/services/app_config.coffee'
-Records        = require 'shared/services/records.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
-ScrollService  = require 'shared/services/scroll_service.coffee'
-I18n           = require 'shared/services/i18n.coffee'
+Routes         = require 'angular/routes'
+AppConfig      = require 'shared/services/app_config'
+Records        = require 'shared/services/records'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
+FlashService   = require 'shared/services/flash_service'
+LmoUrlService  = require 'shared/services/lmo_url_service'
+ScrollService  = require 'shared/services/scroll_service'
+I18n           = require 'shared/services/i18n'
 
-{ listenForLoading } = require 'shared/helpers/listen.coffee'
-{ registerHotkeys }  = require 'shared/helpers/keyboard.coffee'
+{ listenForLoading } = require 'shared/helpers/listen'
+{ registerHotkeys }  = require 'shared/helpers/keyboard'
 
 # a series of helpers to apply angular-specific implementations to the vanilla Loomio app,
 # such as how to open modals or display a flash message

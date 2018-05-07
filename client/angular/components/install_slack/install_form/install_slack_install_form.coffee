@@ -1,10 +1,10 @@
-Session       = require 'shared/services/session.coffee'
-Records       = require 'shared/services/records.coffee'
-EventBus      = require 'shared/services/event_bus.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+Session       = require 'shared/services/session'
+Records       = require 'shared/services/records'
+EventBus      = require 'shared/services/event_bus'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
-{ submitForm }    = require 'shared/helpers/form.coffee'
-{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitForm }    = require 'shared/helpers/form'
+{ submitOnEnter } = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'installSlackInstallForm', ->
   templateUrl: 'generated/components/install_slack/install_form/install_slack_install_form.html'

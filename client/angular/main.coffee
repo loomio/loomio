@@ -1,10 +1,10 @@
-{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
+{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window'
 
 hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
 initServiceWorker()
 
-require './dependencies/vendor.coffee'
+require './dependencies/vendor'
 angular.module('loomioApp', [
   'ngNewRouter',
   'pascalprecht.translate',
@@ -23,7 +23,7 @@ angular.module('loomioApp', [
   'angular-sortable-view'
 ])
 
-require './dependencies/config.coffee'
-require './dependencies/templates.coffee'
-require './dependencies/pages.coffee'
-require './dependencies/components.coffee'
+require './dependencies/config'
+require './dependencies/templates'
+require './dependencies/pages'
+require './dependencies/components'

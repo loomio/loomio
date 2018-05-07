@@ -1,5 +1,5 @@
-BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
-PollModel            = require 'shared/models/poll_model.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface'
+PollModel            = require 'shared/models/poll_model'
 
 module.exports = class PollRecordsInterface extends BaseRecordsInterface
   model: PollModel

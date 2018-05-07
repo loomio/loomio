@@ -1,7 +1,7 @@
-Records = require 'shared/services/records.coffee'
+Records = require 'shared/services/records'
 
-{ submitForm }    = require 'shared/helpers/form.coffee'
-{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitForm }    = require 'shared/helpers/form'
+{ submitOnEnter } = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').factory 'EditCommentForm', ->
   templateUrl: 'generated/components/thread_page/comment_form/edit_comment_form.html'
