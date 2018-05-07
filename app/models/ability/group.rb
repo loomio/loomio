@@ -96,5 +96,9 @@ module Ability::Group
       user_is_admin_of?(group&.id) ||
       (user_is_member_of?(group&.id) && group.members_can_raise_motions)
     end
+
+    can :merge, ::Group do |group|
+      user.is_admin?
+    end
   end
 end

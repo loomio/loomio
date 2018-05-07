@@ -43,4 +43,20 @@ module GroupService
     group.update(parent: parent, subscription_id: nil)
     EventBus.broadcast('group_move', group, parent, actor)
   end
+
+  def self.merge(source:, target:, actor:)
+    actor.ability.authorize! :merge, source
+    actor.ability.authorize! :merge, target
+
+    Group.transaction do
+      source.discussions.update_all(group_id: target.id)
+      source.polls.update_all(group_id: target.id)
+      source.membership_requests.update_all(group_id: target.id)
+      source.group_identities.update_all(group_id: target.id)
+      source.memberships.where.not(user_id: target.member_ids).update_all(group_id: target.id)
+      GroupVisit.where(group_id: source.id).update_all(group_id: target.id)
+      OrganisationVisit.where(organisation_id: source.id).update_all(organisation_id: target.id)
+      source.destroy
+    end
+  end
 end
