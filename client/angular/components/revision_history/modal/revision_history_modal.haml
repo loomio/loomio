@@ -8,9 +8,10 @@
     %md-divider.revision-history-modal__divider
     %loading{ng-if:"!version"}
     .revision-history-modal__version{ng-if: "version"}
-      .revision-history-modal__user.lmo-flex--row.lmo-flex__center.lmo-grey-on-white.mdi-body-1{ng-if: "!loading"}
+      .revision-history-modal__user.lmo-flex--row.lmo-flex__center.lmo-grey-on-white.md-body-1{ng-if: "!loading"}
         %user_avatar.lmo-margin-right--small{user:"version.author()" , size:"small"}>
-        %strong.lmo-truncate> {{ version.author().name }}
-        %span>·
-        %timeago.lmo-margin-right--small{timestamp: "version.createdAt"}
+        %span
+          %strong.lmo-truncate> {{ version.author().name }}
+          %span>·
+          %timeago.lmo-margin-right--small{timestamp: "version.createdAt"}
       %revision_history_content{ng-if:"!loading", model: "model", version:"version"}

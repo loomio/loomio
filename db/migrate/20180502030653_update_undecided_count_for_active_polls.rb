@@ -7,7 +7,7 @@ class UpdateUndecidedCountForActivePolls < ActiveRecord::Migration[5.1]
   end
 
   def change
-    Group.reset_column_information
-    Delayed::Job.enqueue UpdateUndecidedCountJob.new
+    # Group.reset_column_information
+    # Delayed::Job.enqueue UpdateUndecidedCountJob.new
   end
 end

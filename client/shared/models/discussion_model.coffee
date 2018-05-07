@@ -195,10 +195,3 @@ module.exports = class DiscussionModel extends BaseModel
 
   edited: ->
     @versionsCount > 1
-
-  attributeForVersion: (attr, version) ->
-    return '' unless version
-    if version.changes[attr]
-      version.changes[attr][1]
-    else
-      @attributeForVersion(attr, @recordStore.versions.find(version.previousId))

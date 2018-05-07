@@ -39,7 +39,7 @@ class Discussion < ApplicationRecord
   is_mentionable on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail only: [:title, :description, :private, :group_id]
-  
+
   def self.always_versioned_fields
     [:title, :description]
   end
@@ -88,7 +88,7 @@ class Discussion < ApplicationRecord
   after_create :set_last_activity_at_to_created_at
 
   define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
-  define_counter_cache(:versions_count)       { |discussion| discussion.versions.where(event: :update).count }
+  define_counter_cache(:versions_count)       { |discussion| discussion.versions.count }
   define_counter_cache(:items_count)          { |discussion| discussion.items.count }
   define_counter_cache(:seen_by_count)        { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
 
