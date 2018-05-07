@@ -1,7 +1,7 @@
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
-{ listenForLoading } = require 'shared/helpers/listen.coffee'
-{ applySequence }    = require 'shared/helpers/apply.coffee'
+{ listenForLoading } = require 'shared/helpers/listen'
+{ applySequence }    = require 'shared/helpers/apply'
 
 angular.module('loomioApp').directive 'installSlackForm', ->
   scope: {group: '='}

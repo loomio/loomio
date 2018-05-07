@@ -1,4 +1,4 @@
-EventBus = require 'shared/services/event_bus.coffee'
+EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'pollMeetingChartPanel', ->
   scope: {poll: '='}

@@ -1,5 +1,5 @@
-BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
-StanceModel          = require 'shared/models/stance_model.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface'
+StanceModel          = require 'shared/models/stance_model'
 
 module.exports = class StanceRecordsInterface extends BaseRecordsInterface
   model: StanceModel

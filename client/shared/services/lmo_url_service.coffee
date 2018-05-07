@@ -1,5 +1,5 @@
-AppConfig             = require 'shared/services/app_config.coffee'
-ImplementationService = require 'shared/services/implementation_service.coffee'
+AppConfig             = require 'shared/services/app_config'
+ImplementationService = require 'shared/services/implementation_service'
 
 module.exports = class LmoUrlService
   ImplementationService.requireMethod @, 'goTo',   'setGoToMethod'

@@ -1,6 +1,6 @@
-Records       = require 'shared/services/records.coffee'
-EventBus      = require 'shared/services/event_bus.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+Records       = require 'shared/services/records'
+EventBus      = require 'shared/services/event_bus'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
 angular.module('loomioApp').directive 'navbarSearch', ['$timeout', ($timeout) ->
   scope: {}

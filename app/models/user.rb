@@ -26,8 +26,10 @@ class User < ApplicationRecord
   attr_accessor :token
   attr_accessor :membership_token
   attr_writer :has_password
+  attr_accessor :creating_stance
 
   validates :email, presence: true, email: true, length: {maximum: 200}
+  validates :name, presence: true, if: :creating_stance
 
   has_attached_file :uploaded_avatar,
     styles: {

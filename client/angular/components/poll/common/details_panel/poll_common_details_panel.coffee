@@ -1,11 +1,11 @@
-Records        = require 'shared/services/records.coffee'
-Session        = require 'shared/services/session.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
+Records        = require 'shared/services/records'
+Session        = require 'shared/services/session'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
+LmoUrlService  = require 'shared/services/lmo_url_service'
+FlashService   = require 'shared/services/flash_service'
 
-{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
+{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
 
 angular.module('loomioApp').directive 'pollCommonDetailsPanel', ->
   scope: {poll: '='}

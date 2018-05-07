@@ -1,9 +1,9 @@
-Records       = require 'shared/services/records.coffee'
-EventBus      = require 'shared/services/event_bus.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+Records       = require 'shared/services/records'
+EventBus      = require 'shared/services/event_bus'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
-{ submitDiscussion } = require 'shared/helpers/form.coffee'
-{ submitOnEnter }    = require 'shared/helpers/keyboard.coffee'
+{ submitDiscussion } = require 'shared/helpers/form'
+{ submitOnEnter }    = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'discussionFormActions', ->
   scope: {discussion: '='}

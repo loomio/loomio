@@ -1,6 +1,6 @@
-Records         = require 'shared/services/records.coffee'
-RecordLoader    = require 'shared/services/record_loader.coffee'
-BaseEventWindow = require 'shared/services/base_event_window.coffee'
+Records         = require 'shared/services/records'
+RecordLoader    = require 'shared/services/record_loader'
+BaseEventWindow = require 'shared/services/base_event_window'
 
 module.exports = class ChronologicalEventWindow extends BaseEventWindow
   constructor: ({discussion, initialSequenceId, per}) ->

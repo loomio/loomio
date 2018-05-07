@@ -1,8 +1,8 @@
-AppConfig      = require 'shared/services/app_config.coffee'
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+AppConfig      = require 'shared/services/app_config'
+Session        = require 'shared/services/session'
+Records        = require 'shared/services/records'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'groupActionsDropdown', ->
   scope: {group: '='}

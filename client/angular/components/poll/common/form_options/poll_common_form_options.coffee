@@ -1,9 +1,9 @@
-Session        = require 'shared/services/session.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
+Session        = require 'shared/services/session'
+AbilityService = require 'shared/services/ability_service'
+EventBus       = require 'shared/services/event_bus'
 
-{ registerKeyEvent }  = require 'shared/helpers/keyboard.coffee'
-{ fieldFromTemplate } = require 'shared/helpers/poll.coffee'
+{ registerKeyEvent }  = require 'shared/helpers/keyboard'
+{ fieldFromTemplate } = require 'shared/helpers/poll'
 
 angular.module('loomioApp').directive 'pollCommonFormOptions', ->
   scope: {poll: '='}

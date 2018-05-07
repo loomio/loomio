@@ -1,4 +1,4 @@
-I18n = require 'shared/services/i18n.coffee'
+I18n = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'pollCommonFormFields', ->
   scope: {poll: '='}

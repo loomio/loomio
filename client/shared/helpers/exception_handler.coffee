@@ -1,4 +1,4 @@
-AppConfig = require 'shared/services/app_config.coffee'
+AppConfig = require 'shared/services/app_config'
 Raven = require('raven-js');
 
 if AppConfig.sentry_dsn

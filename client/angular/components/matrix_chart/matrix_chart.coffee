@@ -1,7 +1,7 @@
 
 svg = require 'svg.js'
 
-AppConfig = require 'shared/services/app_config.coffee'
+AppConfig = require 'shared/services/app_config'
 
 angular.module('loomioApp').directive 'matrixChart', ->
   template: '<div class="matrix-chart"></div>'

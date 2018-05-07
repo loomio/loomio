@@ -1,6 +1,6 @@
-Records      = require 'shared/services/records.coffee'
-EventBus     = require 'shared/services/event_bus.coffee'
-ModalService = require 'shared/services/modal_service.coffee'
+Records      = require 'shared/services/records'
+EventBus     = require 'shared/services/event_bus'
+ModalService = require 'shared/services/modal_service'
 
 $controller = ($scope, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', {title: 'Apps', page: 'authorizedAppsPage'}
