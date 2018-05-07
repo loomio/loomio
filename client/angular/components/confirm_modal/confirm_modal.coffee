@@ -1,17 +1,21 @@
-FlashService = require 'shared/services/flash_service.coffee'
+FlashService  = require 'shared/services/flash_service.coffee'
+LmoUrlService = require 'shared/services/lmo_url_service.coffee'
 
 angular.module('loomioApp').factory 'ConfirmModal', ->
   templateUrl: 'generated/components/confirm_modal/confirm_modal.html'
-  controller: ['$scope', 'submit', 'text', 'forceSubmit', ($scope, submit, text, forceSubmit) ->
-    $scope.submit      = submit
-    $scope.forceSubmit = forceSubmit
-    $scope.text        = _.merge(submit: "common.action.ok", text)
+  controller: ['$scope', 'confirm', ($scope, confirm) ->
+    $scope.confirm  = confirm
+    $scope.fragment = "generated/components/fragments/#{confirm.text.fragment}.html" if confirm.text.fragment
 
-    $scope.submit = ->
+    $scope.submit = (args...) ->
       $scope.isDisabled = true
-      submit().then(->
+      $scope.confirm.submit(args...).then ->
         $scope.$close()
-        FlashService.success $scope.text.flash
-      ).finally ->
+        LmoUrlService.goTo $scope.confirm.redirect     if $scope.confirm.redirect?
+        $scope.confirm.successCallback(args...)        if typeof $scope.confirm.successCallback is 'function'
+        FlashService.success $scope.confirm.text.flash if $scope.confirm.text.flash
+      .finally ->
         $scope.isDisabled = false
+
+    _.merge $scope, confirm.scope
   ]

@@ -19,10 +19,9 @@ angular.module('loomioApp').directive 'installSlackCard', ->
       AbilityService.canAdministerGroup($scope.group)
 
     $scope.remove = ->
-      ModalService.open 'ConfirmModal',
-        forceSubmit: -> false
-        submit:      -> $scope.groupIdentity().destroy
-        text:        ->
+      ModalService.open 'ConfirmModal', confirm: ->
+        submit:     $scope.groupIdentity().destroy
+        text:
           title:    'install_slack.card.confirm_remove_title'
           helptext: 'install_slack.card.confirm_remove_helptext'
           flash:    'install_slack.card.identity_removed'

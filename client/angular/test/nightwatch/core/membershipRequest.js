@@ -12,16 +12,17 @@ module.exports = {
     page.expectText('.membership-requests-page__previous-requests', 'Approved by Patrick Swayze')
   },
 
-  'adds existing users to group upon approval': (test) => {
+  'adds_existing_users_to_group_upon_approval': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
+    page.pause(2000)
+    page.expectCount('.membership-card__membership', 4)
     page.click('.membership-requests-card__link')
-    page.click('.membership-requests-page__approve')
     page.click('.membership-requests-page__approve')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--group')
-    page.expectText('.members-card', 'MVS')
+    page.expectCount('.membership-card__membership', 5)
   },
 
   'displays the correct flash message': (test) => {
@@ -56,8 +57,6 @@ module.exports = {
 
     page.loadPath('setup_membership_requests')
     page.click('.membership-requests-card__link')
-    page.click('.membership-requests-page__approve')
-    page.pause(300)
     page.click('.membership-requests-page__approve')
     page.pause(300)
     page.click('.membership-requests-page__approve')

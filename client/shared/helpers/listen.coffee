@@ -9,7 +9,7 @@ module.exports =
     $scope.unmentionableIds = [model.authorId, Session.user().id]
     $scope.fetchByNameFragment = (fragment) ->
       Records.memberships.fetchByNameFragment(fragment, model.group().key).then (response) ->
-        userIds = _.without(_.pluck(response.users, 'id'), $scope.unmentionableIds...)
+        userIds = _.without(_.pluck(response.memberships, 'user_id'), $scope.unmentionableIds...)
         $scope.mentionables = Records.users.find(userIds)
 
   listenForTranslations: ($scope) ->

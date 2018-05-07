@@ -48,6 +48,15 @@ module.exports = class GroupModel extends BaseModel
     @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
     @belongsTo 'parent', from: 'groups'
 
+  activeMemberships: ->
+    _.filter @memberships(), (m) -> m.acceptedAt
+
+  activeMembershipsCount: ->
+    @membershipsCount - @pendingMembershipsCount
+
+  pendingMemberships: ->
+    _.filter @memberships(), (m) -> !m.acceptedAt
+
   hasRelatedDocuments: ->
     @hasDocuments() or @allDocuments().length > 0
 
@@ -56,8 +65,8 @@ module.exports = class GroupModel extends BaseModel
 
   group: -> @
 
-  shareableInvitation: ->
-    @recordStore.invitations.find(singleUse:false, groupId: @id)[0]
+  fetchToken: ->
+    @remote.getMember(@id, 'token').then (token) -> @token = token
 
   closedPolls: ->
     _.filter @polls(), (poll) ->
@@ -97,9 +106,6 @@ module.exports = class GroupModel extends BaseModel
 
   organisationIds: ->
     _.pluck(@subgroups(), 'id').concat(@id)
-
-  memberships: ->
-    @recordStore.memberships.find(groupId: @id)
 
   membershipFor: (user) ->
     _.find @memberships(), (membership) -> membership.userId == user.id
@@ -178,3 +184,8 @@ module.exports = class GroupModel extends BaseModel
   groupIdentityFor: (type) ->
     _.find @groupIdentities(), (gi) ->
       gi.userIdentity().identityType == type
+
+  targetModel: ->
+    @recordStore.discussions.find(guestGroupId: @id)[0] or
+    @recordStore.polls.find(guestGroupId: @id)[0] or
+    @

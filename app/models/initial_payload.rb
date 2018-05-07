@@ -29,8 +29,8 @@ InitialPayload = Struct.new(:user) do
         app:               AppConfig.app_features
       },
       inlineTranslation: {
-        isAvailable:       TranslationService.supported_languages.any?,
-        supportedLangs:    TranslationService.supported_languages
+        isAvailable:       TranslationService.translator.presence,
+        supportedLangs:    AppConfig.translate_languages,
       },
       pageSize: {
         default:         ENV.fetch('DEFAULT_PAGE_SIZE', 30),

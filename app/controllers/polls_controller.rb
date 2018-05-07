@@ -1,4 +1,5 @@
 class PollsController < ApplicationController
+
   include UsesMetadata
   include LoadAndAuthorize
   include EmailHelper
@@ -17,7 +18,7 @@ class PollsController < ApplicationController
 
   def example
     if poll = PollGenerator.new(params[:type]).generate!
-      redirect_to poll_path(poll, invitation_token: poll.guest_invitations.first.token)
+      redirect_to poll
     else
       redirect_to root_path, notice: "Sorry, we don't know about that poll type"
     end
@@ -28,6 +29,13 @@ class PollsController < ApplicationController
   end
 
   private
+
+  def handle_pending_memberships
+    if !current_user.is_logged_in? && pending_membership
+      sign_in pending_membership.user, verified_sign_in_method: false
+    end
+    super
+  end
 
   def is_subscribed?
     resource.poll_unsubscriptions.find_by(user: current_user).blank?

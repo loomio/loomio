@@ -20,6 +20,9 @@ sr_RS:
     membership_request:
       subject: "%{who} је затражио/ла да се придружи %{which_group}"
       view_group: Овде можете одобрити или одбити захтев
+  discussion_mailer:
+    reply_or_view_online_html: Одговори на ову поруку директно или <a href='%{url}'>погледај је на %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>Искључи обавештења</a> о овој дискусији."
   footer:
     about: О нама
     blog: Блог

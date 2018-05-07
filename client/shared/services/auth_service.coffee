@@ -11,13 +11,13 @@ module.exports = new class AuthService
       @applyEmailStatus(user, _.first(data.users))
 
   applyEmailStatus: (user, data = {}) ->
-    keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'gravatar_md5', 'avatar_url', 'has_password', 'email_status']
+    keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash', 'avatar_url', 'has_password', 'email_status']
     user.update _.pick(_.mapKeys(_.pick(data, keys), (v,k) -> _.camelCase(k)), _.identity)
     user.update(hasToken: data.has_token)
     user
 
   signIn: (user = {}) ->
-    Records.sessions.build(email: user.email, password: user.password).save()
+    Records.sessions.build(name: user.name, email: user.email, password: user.password).save()
 
   signUp: (user) ->
     Records.registrations.build(email: user.email, name: user.name, recaptcha: user.recaptcha).save().then ->

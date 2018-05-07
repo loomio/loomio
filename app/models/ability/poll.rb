@@ -6,10 +6,6 @@ module Ability::Poll
       can? :view_pending_invitations, poll.guest_group
     end
 
-    can :view_shareable_invitation, ::Poll do |poll|
-      can? :view_shareable_invitation, poll.guest_group
-    end
-
     can :make_draft, ::Poll do |poll|
       user.is_logged_in? && can?(:show, poll)
     end
@@ -20,11 +16,10 @@ module Ability::Poll
     end
 
     can :vote_in, ::Poll do |poll|
-      # cant have a token of a verified user, and be logged in as another user
       poll.active? && (
-        poll.members.include?(user) ||
         poll.anyone_can_participate ||
-        poll.invitations.useable.find_by(token: user.token)
+        (poll.group.members_can_vote && user_is_member_of_any?(poll.groups)) ||
+        user_is_admin_of_any?(poll.groups)
       )
     end
 
@@ -33,15 +28,19 @@ module Ability::Poll
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
       poll.members.include?(user) ||
-      poll.invitations.useable.pluck(:token).include?(user.token)
+      poll.guest_group.memberships.pluck(:token).include?(user.membership_token)
     end
 
     can :create, ::Poll do |poll|
       user.email_verified? &&
-      (!poll.group.presence || poll.group.members.include?(user))
+       (
+        (poll.group.members_can_raise_motions && user_is_member_of_any?(poll.groups)) ||
+        user_is_admin_of_any?(poll.groups) ||
+        !poll.groups.any?(&:presence)
+      )
     end
 
-    can [:update, :share, :remind, :destroy, :export], ::Poll do |poll|
+    can [:update, :share, :remind, :destroy, :export, :announce], ::Poll do |poll|
       user_is_author_of?(poll) || user_is_admin_of?(poll.group_id)
     end
 

@@ -39,6 +39,9 @@ tr:
     membership_request:
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
+  discussion_mailer:
+    reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
+    turn_off_notifications_html: "Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>."
   footer:
     about: Hakkında
     blog: Blog

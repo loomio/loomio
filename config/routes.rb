@@ -32,10 +32,9 @@ Loomio::Application.routes.draw do
       get ':action'
     end
 
-    scope controller: 'main' do
+    namespace :nightwatch do
       get '/' => :index
       get ':action'
-      get 'last_email'
     end
   end
 
@@ -45,11 +44,14 @@ Loomio::Application.routes.draw do
     resources :usage_reports, only: [:create]
 
     resources :groups, only: [:index, :show, :create, :update] do
-      get :subgroups, on: :member
+      member do
+        get :token
+        get :subgroups
+        patch :archive
+        put :archive
+        post 'upload_photo/:kind', action: :upload_photo
+      end
       get :count_explore_results, on: :collection
-      patch :archive, on: :member
-      put :archive, on: :member
-      post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
     resources :group_identities, only: [:create, :destroy]
@@ -80,13 +82,6 @@ Loomio::Application.routes.draw do
       end
       post :approve, on: :member
       post :ignore, on: :member
-    end
-
-    resources :invitations, only: [:index, :create, :destroy] do
-      post :bulk_create, on: :collection
-      post :resend, on: :member
-      get :pending, on: :collection
-      get :shareable, on: :collection
     end
 
     resources :profile, only: [:show] do
@@ -181,6 +176,13 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
+    resources :announcements, only: [:create] do
+      collection do
+        get :audience
+        get :search
+      end
+    end
+
     resources :contact_messages, only: :create
     resources :contact_requests, only: :create
 
@@ -210,9 +212,6 @@ Loomio::Application.routes.draw do
   namespace(:subscriptions) do
     post :webhook
   end
-
-  resources :invitations,     only: :show
-  resources :login_tokens,    only: :show
 
   resources :received_emails, only: :create
   post :email_processor, to: 'received_emails#reply'
@@ -250,6 +249,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#index', as: :group_memberships_username
   get 'g/new'                              => 'application#index', as: :new_group
+  get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'p/example(/:type)'                  => 'polls#example',               as: :example_poll
 
@@ -264,12 +264,17 @@ Loomio::Application.routes.draw do
   get 'u/undefined'                        => redirect('404.html')
   get 'u/:username/'                       => 'users#show',                  as: :user
 
+  get '/login_tokens/:token'               => 'login_tokens#show',           as: :login_token
+  get '/invitations/:token'                => 'memberships#show',            as: :membership
+  get '/join/:model/:token'                => 'memberships#join',            as: :join
+
   get '/donate'                            => redirect('410.html')
   get '/users/invitation/accept'           => redirect('410.html')
   get '/notifications/dropdown_items'      => redirect('410.html')
   get '/u/:key(/:stub)'                    => redirect('410.html')
   get '/g/:key/membership_requests/new'    => redirect('410.html')
   get '/comments/:id'                      => redirect('410.html')
+
 
   # for IE / other browsers which insist on requesting things which don't exist
   get '/favicon.ico'                       => 'application#ok'

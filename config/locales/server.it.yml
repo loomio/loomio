@@ -45,15 +45,15 @@ it:
       one_at_a_time: C'è un altra proposta attiva.
   subscriptions:
     gift_plan_selected_for_group_html: |
-      <h1>Azione eseguita con successo.</h1>
-      <p> Hai selezionato il piano Free per il tuo gruppo <a href="/g/%{group_key}">%{group}</a></p>
+        <h1>Azione eseguita con successo.</h1>
+        <p> Hai selezionato il piano Free per il tuo gruppo <a href="/g/%{group_key}">%{group}</a></p>
   user_mailer:
     accounts_merged:
       subject: "Gli accounts del tuo sito %{site_name} sono stati fusi."
       body_html: |
-        Ciao, %{name}
-        I tuoi due accounts su Loomio sono stati fusi in un solo account.
-        Per accedere a Loomio da ora, usa l'indirizzo email <strong>%{email}</strong> quando ti autentichi.
+          Ciao, %{name}
+          I tuoi due accounts su Loomio sono stati fusi in un solo account.
+          Per accedere a Loomio da ora, usa l'indirizzo email <strong>%{email}</strong> quando ti autentichi.
   email:
     login:
       subject: Autenticati al sito %{site_name}
@@ -103,10 +103,14 @@ it:
     membership_request:
       subject: "%{who} ha richiesto di entrare in %{which_group}"
       view_group: Puoi approvare o rifiutare la richiesta qui
-  thread_mailer:
+  discussion_mailer:
     new_discussion:
       subject: "[%{group}]%{discussion}"
       subject_html: "<strong>%{actor}</strong> ha iniziato una discussione: %{discussion}"
+    discussion_edited:
+      subject: "[%{group}]%{discussion}"
+    discussion_announced:
+      subject: "[%{group}]%{discussion}"
     new_comment:
       subject: "[%{group}]%{discussion}"
       subject_html: "<strong>%{actor}</strong> ha commentato in: %{discussion}"
@@ -139,31 +143,31 @@ it:
   introduction_thread:
     title: Benvenuto/a! Presentati
     description: |
-      Questo è un messaggio automatico di Loomio.
+        Questo è un messaggio automatico di Loomio.
 
-      Prenditi un momento per far conoscere al gruppo qualcosa di te. Pubblica un commento qui sotto.
-      Qual'è il tuo approccio per partecipare a questo gruppo? Illustra agli altri partecipanti chi sei e qual'è la tua storia.
+        Prenditi un momento per far conoscere al gruppo qualcosa di te. Pubblica un commento qui sotto.
+        Qual'è il tuo approccio per partecipare a questo gruppo? Illustra agli altri partecipanti chi sei e qual'è la tua storia.
   how_it_works_thread:
     title: Come usare Loomio
     description: |
-      Questo è un messaggio automatico di Loomio
+        Questo è un messaggio automatico di Loomio
 
-      Benvenuti/e su Loomio, un posto online per prendere decisioni insieme.
+        Benvenuti/e su Loomio, un posto online per prendere decisioni insieme.
 
-      Questo è un esempio di **discussione**.  Puoi aggiungere commenti qui sotto. Una discussione è una conversazione su un dato argomento. Questa specifica discussione è su come funziona Loomio, quindi puoi rispondere inserendo domande qui sotto.
+        Questo è un esempio di **discussione**.  Puoi aggiungere commenti qui sotto. Una discussione è una conversazione su un dato argomento. Questa specifica discussione è su come funziona Loomio, quindi puoi rispondere inserendo domande qui sotto.
 
-      Stai leggendo il **contesto** della discussione, una parte in cui viene esplicitato il tema della discussione.  Puoi aggiornare il contesto successivamente, con il progredire della discussione.
+        Stai leggendo il **contesto** della discussione, una parte in cui viene esplicitato il tema della discussione.  Puoi aggiornare il contesto successivamente, con il progredire della discussione.
 
-      Per iniziare ad usare Loomio:
-      1. Carica una [profile picture](/profile)
-      2. Presentati nel  [Welcome thread](%{thread_url})
-      3. Scrivi in discussioni esistenti, o creane una nuova
+        Per iniziare ad usare Loomio:
+        1. Carica una [profile picture](/profile)
+        2. Presentati nel  [Welcome thread](%{thread_url})
+        3. Scrivi in discussioni esistenti, o creane una nuova
 
-      Suggerimenti per scrivere su Loomio:
-      * Per notificare una specifica persona, digita il simbolo @ seguito dal suo nome.
-      * Cliccca sull'icona della graffetta per aggiungere allegati.
+        Suggerimenti per scrivere su Loomio:
+        * Per notificare una specifica persona, digita il simbolo @ seguito dal suo nome.
+        * Cliccca sull'icona della graffetta per aggiungere allegati.
 
-      Se hai domande, guarda il [Loomio help manual](http://help.loomio.org).
+        Se hai domande, guarda il [Loomio help manual](http://help.loomio.org).
   first_proposal:
     name: Proposta dimostrativa
   poll_mailer:

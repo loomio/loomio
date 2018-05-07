@@ -224,6 +224,8 @@ ro:
     help: 'Ajutor'
     contact_site_name: 'Contacteaza {{site_name}}'
     sign_out: 'Iesire din cont'
+  membership_dropdown:
+    make_coordinator: 'Promoveaza coordonator'
   start_menu:
     label: 'Actiuni utilizator'
     title: 'Actiune'
@@ -367,6 +369,7 @@ ro:
     locale_label: 'Limba'
   email_settings_page:
     header: Setari email
+    announcement_label: Anunturi
   dashboard_page:
     aria_label: 'Tablou de bord'
     no_groups:
@@ -468,6 +471,9 @@ ro:
     start: Incepe
   poll_poll_form:
     edit_header: Editare sondaj
+  poll_count_options:
+    'yes': 'Da'
+    'no': 'Nu'
   poll_meeting_chart_panel:
     total: Total
   poll_common_subscribe_form:

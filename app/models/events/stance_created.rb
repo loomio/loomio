@@ -1,15 +1,15 @@
 class Events::StanceCreated < Event
   include Events::LiveUpdate
-  include Events::PollEvent
+  include Events::Notify::ByEmail
+  include Events::Notify::InApp
+  include Events::Notify::Mentions
   include Events::Notify::Author
 
   def self.publish!(stance)
-    create(kind: "stance_created",
-           user: stance.participant,
-           eventable: stance,
-           discussion: stance.poll.discussion,
-           parent: stance.parent_event,
-           created_at: stance.created_at).tap { |e| EventBus.broadcast('stance_created_event', e) }
+    super stance,
+          user: stance.participant,
+          parent: stance.parent_event,
+          discussion: stance.poll.discussion
   end
 
   def notify_author?
@@ -18,7 +18,7 @@ class Events::StanceCreated < Event
 
   private
   def author
-    User.verified.find_by(email: eventable.author.email) || eventable.author
+    User.active.verified.find_by(email: eventable.participant.email) || eventable.participant
   end
 
   def notification_translation_values

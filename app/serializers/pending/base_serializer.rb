@@ -1,7 +1,7 @@
 class Pending::BaseSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :name, :email, :email_status, :has_password, :identity_type
-  attributes :avatar_kind, :avatar_initials, :gravatar_md5, :avatar_url, :has_token
+  attributes :avatar_kind, :avatar_initials, :email_hash, :avatar_url, :has_token
 
   def identity_type
     # included for oauth pending identities
@@ -19,7 +19,7 @@ class Pending::BaseSerializer < ActiveModel::Serializer
     user.avatar_initials
   end
 
-  def gravatar_md5
+  def email_hash
     Digest::MD5.hexdigest(email.to_s.downcase)
   end
 
@@ -41,7 +41,7 @@ class Pending::BaseSerializer < ActiveModel::Serializer
     avatar_kind == 'initials'
   end
 
-  def include_gravatar_md5?
+  def include_email_hash?
     avatar_kind == 'gravatar'
   end
 

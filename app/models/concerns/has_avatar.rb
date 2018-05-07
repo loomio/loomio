@@ -2,7 +2,6 @@ module HasAvatar
   include AvatarInitials
   extend ActiveSupport::Concern
 
-  AVATAR_KINDS = %w[initials uploaded gravatar]
   AVATAR_SIZES = {
     small:  30,
     medium: 50,
@@ -12,7 +11,6 @@ module HasAvatar
   included do
     include Gravtastic
     gravtastic rating: :pg, default: :none
-    validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
     before_create :set_default_avatar_kind
   end
 
@@ -22,6 +20,12 @@ module HasAvatar
     else
       :initials
     end
+  end
+
+  def avatar_kind
+    return 'mdi-duck' if deactivated_at?
+    return 'mdi-email-outline' if !name
+    super
   end
 
   def uploaded_avatar(size)

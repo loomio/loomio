@@ -11,7 +11,7 @@
     .lmo-flex__grow
     .discussions-card__filter.discussions-card__filter--open.lmo-link.lmo-pointer{ng-if: "!searchOpen && filter == 'show_closed'", ng-click: "init('show_opened')", translate: "group_page.show_opened", translate-value-count: "{{group.openDiscussionsCount}}"}
     .discussions-card__filter.discussions-card__filter--closed.lmo-link.lmo-pointer{ng-if: "!searchOpen && filter == 'show_opened' && group.closedDiscussionsCount > 0", ng-click: "init('show_closed')", translate: "group_page.show_closed", translate-value-count: "{{group.closedDiscussionsCount}}"}
-    %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "openDiscussionModal()", title: "{{ 'navbar.start_thread' | translate }}"}
+    %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "startDiscussion()", title: "{{ 'navbar.start_thread' | translate }}"}
       %span{translate: "navbar.start_thread"}
 
   %loading{ng-show: "loading()"}

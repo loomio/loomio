@@ -22,6 +22,8 @@ ml:
     search:
       placeholder: 'തിരയുക'
       discussions: 'ചര്‍ച്ചകള്‍'
+  membership_dropdown:
+    make_coordinator: 'എകോപകൻ ആക്കുക'
   notifications:
     header: "അറിയിപ്പുകള്‍"
   position_buttons_panel:
@@ -74,3 +76,6 @@ ml:
     vote: 'എപ്പോള്‍ വേണമെങ്കിലും താങ്കളുടെ സ്ഥാനം മാറ്റാം'
   poll_common_form:
     closed: അടച്ചു
+  poll_count_options:
+    'yes': 'അതെ'
+    'no': 'അല്ല'

@@ -81,6 +81,7 @@ el:
       delete: Διαγραφή
       unsubscribe: Κατάργηση εγγραφής
       subscribe: Εγγραφή
+      invite: Πρόσκληση
     formatting_help:
       label: 'Μορφοποίηση'
   devise:
@@ -197,6 +198,8 @@ el:
     sign_in: 'Είσοδος'
     toggle_sidebar: 'Εναλλαγή πλευρικής στήλης'
     logo_title: 'Κεντρική σελίδα'
+  membership_dropdown:
+    make_coordinator: 'Κάντε τον/την συντονιστή/τρια'
   start_menu:
     label: 'Ενέργειες χρήστη'
     title: 'Ενέργεια'
@@ -279,7 +282,6 @@ el:
     new_cover_photo: 'Ανεβάστε νέα φωτογραφία εξωφύλλου'
     new_group_logo: 'Ανεβάστε νέο λογότυπο ομάδας'
     discussions_placeholder: 'Ένα νήμα είναι όπου όλοι μπορούν να συζητήσουν ένα θέμα και να πάρουν αποφάσεις μαζί.'
-    members: 'Μέλη'
     members_placeholder: 'Είστε ο μοναδικός εδώ: προσκαλέστε κάποια άτομα να συμμετάσχουν μαζί σας!'
     member_options: Επιλογές μέλους
     subgroups: 'Υποομάδες'
@@ -383,6 +385,7 @@ el:
     locale_label: 'Γλώσσα'
   email_settings_page:
     header: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
+    announcement_label: Ανακοινώσεις
   dashboard_page:
     aria_label: 'Πίνακας Εργαλείων'
     no_groups:
@@ -441,8 +444,9 @@ el:
   poll_common_form:
     closed: Έκλεισε
     start: Εκίνηση
-  poll_common_share_form:
-    group_set: Η ομάδα ενημερώθηκε
+  poll_count_options:
+    'yes': 'Ναι'
+    'no': 'Όχι'
   poll_common_subscribe_form:
     subscribe: Εγγραφή
   polls_page:

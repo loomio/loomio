@@ -1,10 +1,11 @@
-BaseModel       = require 'shared/record_store/base_model.coffee'
-AppConfig       = require 'shared/services/app_config.coffee'
-RangeSet        = require 'shared/services/range_set.coffee'
-HasDrafts       = require 'shared/mixins/has_drafts.coffee'
-HasDocuments    = require 'shared/mixins/has_documents.coffee'
-HasMentions     = require 'shared/mixins/has_mentions.coffee'
-HasTranslations = require 'shared/mixins/has_translations.coffee'
+BaseModel        = require 'shared/record_store/base_model.coffee'
+AppConfig        = require 'shared/services/app_config.coffee'
+RangeSet         = require 'shared/services/range_set.coffee'
+HasDrafts        = require 'shared/mixins/has_drafts.coffee'
+HasDocuments     = require 'shared/mixins/has_documents.coffee'
+HasMentions      = require 'shared/mixins/has_mentions.coffee'
+HasTranslations  = require 'shared/mixins/has_translations.coffee'
+HasGuestGroup    = require 'shared/mixins/has_guest_group.coffee'
 
 module.exports = class DiscussionModel extends BaseModel
   @singular: 'discussion'
@@ -21,6 +22,7 @@ module.exports = class DiscussionModel extends BaseModel
     HasDrafts.apply @
     HasMentions.apply @, 'description'
     HasTranslations.apply @
+    HasGuestGroup.apply @
 
   defaultValues: =>
     private: null
@@ -28,6 +30,9 @@ module.exports = class DiscussionModel extends BaseModel
     lastItemAt: null
     title: ''
     description: ''
+
+  audienceValues: ->
+    name: @group().name
 
   privateDefaultValue: =>
     if @group()

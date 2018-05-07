@@ -13,15 +13,10 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ->
   controller: ['$scope', ($scope) ->
 
     $scope.init = ->
-      token      = LmoUrlService.params().invitation_token
-      invitation = _.first(Records.invitations.find(token: token)) unless $scope.poll.example
       $scope.stance = myLastStanceFor($scope.poll) or
                       Records.stances.build(
                         pollId:    $scope.poll.id,
-                        userId:    AppConfig.currentUserId,
-                        token:     token
-                        visitorAttributes:
-                          email: (invitation or {}).recipientEmail
+                        userId:    AppConfig.currentUserId
                       ).choose(LmoUrlService.params().poll_option_id)
 
     EventBus.listen $scope, 'refreshStance', $scope.init

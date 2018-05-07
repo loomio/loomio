@@ -1,8 +1,0 @@
-.md-block.poll-common-notify-group.poll-common-checkbox-option{ng-if: "model.announcementSize(notifyAction) > 1"}
-  .poll-common-checkbox-option__text.md-list-item-text
-    %h3{translate: "poll_common_notify_group.notify_group"}
-    %p.md-caption{ng-if: "model.makeAnnouncement"}
-      %span{ng-if: "notifyAction == 'publish'", translate: "poll_common_notify_group.members_count", translate-value-count: "{{model.announcementSize('publish')}}"}
-      %span{ng-if: "notifyAction == 'edit'", translate: "poll_common_notify_group.participants_count", translate-value-count: "{{model.announcementSize('edit')}}"}
-    %p.md-caption{ng-if: "!model.makeAnnouncement", translate: "poll_common_notify_group.members_helptext"}
-  %md-checkbox{ng-model: "model.makeAnnouncement"}

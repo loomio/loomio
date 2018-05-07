@@ -71,3 +71,6 @@ te:
     name_label: పేరు
   poll_common_form:
     closed: మూసివేయబడింది
+  poll_count_options:
+    'yes': 'అవును'
+    'no': 'కాదు'

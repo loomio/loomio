@@ -2,31 +2,19 @@ require('coffeescript/register')
 pageHelper = require('../helpers/page_helper.coffee')
 
 module.exports = {
-  'starts a proposal': (test) => { startPollTest(test, 'proposal') },
-  'starts a count': (test) => { startPollTest(test, 'count') },
-  'starts a poll': (test) => { startPollTest(test, 'poll', (page) => {
-    page.fillIn(".poll-poll-form__add-option-input", "bananas")
-  }) },
-  'starts a dot vote': (test) => { startPollTest(test, 'dot_vote', (page) => {
-    page.fillIn(".poll-poll-form__add-option-input", "bananas")
-  }) },
-  'starts a time poll': (test) => { startPollTest(test, 'meeting', (page) => {
-    page.fillIn(".poll-meeting-time-field__datepicker input", "2030-03-23")
-    page.pause()
-  }) },
-  'starts a ranked choice': (test) => { startPollTest(test, 'ranked_choice', (page) => {
-    page.fillIn(".poll-poll-form__add-option-input", "bananas")
-  }) },
-
   'can start a poll in a group': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_discussion')
+    page.loadPath('test_discussion', { controller: 'polls' })
     page.click('.decision-tools-card__poll-type--proposal')
     page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title', 'A new proposal')
     page.fillIn('.poll-common-form-fields textarea', 'Some details')
     page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectNoElement('.poll-common-modal')
+
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
@@ -40,28 +28,31 @@ module.exports = {
     })
   },
 
-  'can start a standalone poll': (test) => {
+  'can_start_a_standalone_poll': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/start_poll')
+    page.loadPath('start_poll', { controller: 'polls' })
     page.click('.poll-common-choose-type__poll-type--proposal')
     page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title', 'A new proposal')
     page.fillIn('.poll-common-form-fields textarea', 'Some details')
     page.click('.poll-common-form__submit')
+    page.expectElement('.announcement-form__submit')
+    page.click('.dismiss-modal-button')
+    page.expectNoElement('.poll-common-modal')
+    page.pause()
 
-    page.click('.modal-cancel')
-    page.pause(2000)
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details', 'Some details')
 
     page.click('.poll-common-vote-form__button:first-child')
     page.fillIn('.poll-common-vote-form__reason textarea', 'A reason')
     page.click('.poll-common-vote-form__submit')
-    page.pause(2000)
 
-    page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
-    page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    page.scrollTo('.poll-common-votes-panel__stance-name-and-option', () => {
+      page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Agree')
+      page.expectText('.poll-common-votes-panel__stance-reason', 'A reason')
+    })
 
     page.scrollTo('.poll-actions-dropdown__button', () => {
       page.click('.poll-actions-dropdown__button')
@@ -78,7 +69,7 @@ module.exports = {
   'can set an outcome': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_closed')
+    page.loadPath('test_proposal_poll_closed', { controller: 'polls' })
     page.click('.poll-common-set-outcome-panel__submit')
 
     page.fillIn('.poll-common-outcome-form__statement textarea', 'This is an outcome')
@@ -90,7 +81,7 @@ module.exports = {
   'can reopen a poll': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_closed')
+    page.loadPath('test_proposal_poll_closed', { controller: 'polls' })
     page.scrollTo('.poll-actions-dropdown__button', () => {
       page.click('.poll-actions-dropdown__button')
       page.click('.poll-actions-dropdown__reopen')
@@ -101,7 +92,7 @@ module.exports = {
   'can start an anonymous poll': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_anonymous')
+    page.loadPath('test_proposal_poll_anonymous', { controller: 'polls' })
     page.click('.show-results-button')
     page.expectText('.poll-common-votes-panel__stance-content', 'Anonymous')
     page.expectNoElement('.poll-common-undecided-panel__button')
@@ -110,7 +101,7 @@ module.exports = {
   'can send a calendar invite': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_meeting_poll_closed')
+    page.loadPath('test_meeting_poll_closed', { controller: 'polls' })
     page.click('.poll-common-set-outcome-panel__submit')
 
     page.fillIn('.poll-common-outcome-form__statement textarea', 'Here is a statement')
@@ -126,10 +117,11 @@ module.exports = {
   'can vote as a visitor': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_created_as_visitor')
+    page.loadPath('test_proposal_poll_created_as_visitor', { controller: 'polls' })
     page.click('.poll-common-vote-form__button:first-child')
-    page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
     page.fillIn('.poll-common-participant-form__name', 'Big Baloo')
+    page.fillIn('.poll-common-participant-form__email', 'big@baloo.com')
+    page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
     page.click('.poll-common-vote-form__submit')
 
     page.expectText('.flash-root__message', 'Vote created')
@@ -139,7 +131,7 @@ module.exports = {
   'can vote as a logged out user': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_created_as_logged_out')
+    page.loadPath('test_proposal_poll_created_as_logged_out', { controller: 'polls' })
     page.click('.poll-common-vote-form__button:first-child')
     page.fillIn('.poll-common-vote-form__reason textarea', 'This is a reason')
     page.fillIn('.poll-common-participant-form__name', 'Big Baloo')
@@ -150,68 +142,33 @@ module.exports = {
     page.expectText('.poll-common-votes-panel__stance-name-and-option', 'Big Baloo')
   },
 
-  'can invite users via email': (test) => {
+  'can_invite_users_via_email': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_share')
-    page.fillIn('.poll-common-share-form__add-option-input', 'loo@m.io')
-    page.click('.poll-common-share-form__option-button')
-
-    page.expectText('.flash-root__message', 'Invitation email sent to loo@m.io')
+    page.loadPath('test_proposal_poll_share', { controller: 'polls' })
+    page.click('.membership-card__invite')
+    page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
+    page.expectText('.announcement-chip__content', 'test@example.com')
+    page.click('.announcement-form__submit')
+    page.expectText('.flash-root__message', '1 notifications sent')
   },
 
   'can show undecided users': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_with_guest')
+    page.loadPath('test_proposal_poll_with_guest', { controller: 'polls' })
     page.expectText('.poll-common-undecided-panel__button', 'SHOW 5 UNDECIDED')
     page.click('.poll-common-undecided-panel__button')
     page.expectText('.poll-common-undecided-panel', 'Undecided (5)')
-    page.expectText('.poll-common-undecided-panel', '1 additional person has been invited to participate via email')
   },
 
   'can remind undecided users': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_proposal_poll_with_guest_as_author')
+    page.loadPath('test_proposal_poll_with_guest_as_author', { controller: 'polls' })
     page.click('.show-results-button')
     page.click('.poll-common-undecided-panel__button')
     page.click('.poll-common-undecided-user__remind')
     page.expectText('.flash-root__message', 'Reminder notification sent')
-  },
-
-  'can resend unaccepted invitations': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_proposal_poll_with_guest_as_author')
-    page.click('.show-results-button')
-    page.click('.poll-common-undecided-panel__button')
-    page.click('.poll-common-undecided-panel__show-invitations')
-    page.click('.poll-common-undecided-user__resend')
-    page.expectText('.flash-root__message', 'Invitation resent')
   }
-  //
-  // 'can_verify_stance': (test) => {
-  //   page = pageHelper(test)
-  //
-  //   page.loadPath('polls/test_verify_vote_by_unverified_user')
-  //   page.click('.base-mailer__button')
-  //   page.click('.auth-signin-form__submit')
-  //   page.expectText('.flash-root__message', 'Signed in successfully')
-  //   page.expectNoElement('.verify-email-notice')
-  // }
-}
-
-startPollTest = (test, poll_type, optionsFn) => {
-  page = pageHelper(test)
-
-  page.loadPath('polls/test_discussion')
-  page.click(`.decision-tools-card__poll-type--${poll_type}`)
-  page.click(".poll-common-tool-tip__collapse")
-  page.fillIn(".poll-common-form-fields__title", `A new ${poll_type}`)
-  page.fillIn(".poll-common-form-fields textarea", `Some details for ${poll_type}`)
-  if (optionsFn) { optionsFn(page) }
-  page.click(".poll-common-form__submit")
-  page.expectText('.poll-common-card__title', `A new ${poll_type}`)
-  page.expectText('.poll-common-details-panel__details', `Some details for ${poll_type}`)
 }

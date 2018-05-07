@@ -6,7 +6,7 @@ module Ability::Outcome
       can? :show, outcome.poll
     end
 
-    can [:create, :update], ::Outcome do |outcome|
+    can [:create, :update, :announce], ::Outcome do |outcome|
       !outcome.poll.active? &&
       user.ability.can?(:update, outcome.poll)
     end

@@ -3,7 +3,7 @@
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %h1.lmo-h1{translate: "move_thread_form.title"}
-      %material_modal_header_cancel_button
+      %dismiss_modal_button
   .md-dialog-content
     %label{for: "group-dropdown", translate: "move_thread_form.body"}
     %md-select.move-thread-form__group-dropdown#group-dropdown{ng-model: "discussion.groupId", ng-required: true, ng-change: "updateTarget()"}

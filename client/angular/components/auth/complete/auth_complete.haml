@@ -9,7 +9,7 @@
   %p.lmo-hint-text{ng-if: "user.sentPasswordLink", translate: "auth_form.password_link_sent", translate-value-email: "{{user.email}}"}
   .auth-complete__code-input{ng-if: "user.sentLoginLink && attempts < 3"}
     %md-input-container.auth-complete__code.md-no-errors
-      %input{type: "integer", maxlength: "6", ng-model: "session.code"}
+      %input.lmo-primary-form-input{type: "integer", maxlength: "6", ng-model: "session.code"}
     %validation_errors{subject: "session", field: "password"}
     .lmo-md-action
       %md-button.md-raised.md-primary{ng-click: "submit()", translate: "auth_form.sign_in"}

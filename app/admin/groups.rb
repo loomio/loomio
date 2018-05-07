@@ -86,8 +86,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       row :discussions_count
       row :memberships_count
       row :admin_memberships_count
-      row :invitations_count
-      row :pending_invitations_count
+      row :unverified_memberships_count
       row :public_discussions_count
       row :payment_plan
 
@@ -168,15 +167,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       end
     end
 
-    panel("Pending invitations") do
-      table_for group.invitations.pending.each do |invitation|
-        column :recipient_email
-        column :link do |i|
-          invitation_url(i)
-        end
-      end
-    end
-
     if group.archived_at.nil?
       panel('Archive') do
         link_to 'Archive this group', archive_admin_group_path(group), method: :post, data: {confirm: "Are you sure you wanna archive #{group.name}, pal?"}
@@ -194,8 +184,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
         f.input type: :submit, value: "Move group"
       end
     end
-
-    active_admin_comments
   end
 
   form do |f|

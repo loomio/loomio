@@ -1,6 +1,10 @@
 class GroupIdentity < ApplicationRecord
   extend HasCustomFields
-  include MakesAnnouncements
+
+  attr_writer :make_announcement
+  def make_announcement
+    !!@make_announcement
+  end
 
   belongs_to :group, class_name: 'FormalGroup', required: true
   belongs_to :identity, class_name: 'Identities::Base', required: true

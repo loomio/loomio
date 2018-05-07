@@ -13,15 +13,13 @@ $controller = ($rootScope, $routeParams) ->
       @poll = poll
 
       EventBus.broadcast $rootScope, 'currentComponent',
-        group: @poll.group()
+        group: poll.group()
+        poll:  poll
         title: poll.title
         page: 'pollPage'
         skipScroll: true
 
       subscribeTo(@poll)
-
-      if LmoUrlService.params().share
-        ModalService.open 'PollCommonShareModal', poll: => @poll
 
       if LmoUrlService.params().set_outcome
         ModalService.open 'PollCommonOutcomeModal', outcome: => Records.outcomes.build(pollId: @poll.id)

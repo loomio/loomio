@@ -20,6 +20,7 @@
               %strong{for: "mentioned-email", translate: "email_settings_page.mentioned_label"}
               .email-settings-page__input-description{translate: "email_settings_page.mentioned_description"}
 
+
           %md-button.md-primary.md-raised.email-settings-page__update-button{type: "submit", ng-disabled: "isDisabled", translate: "email_settings_page.update_settings"}
 
       .email-settings-page__specific-group-settings
@@ -27,10 +28,10 @@
         %md-list.email-settings-page__groups
           %md-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between
             .lmo-box--medium.lmo-margin-right.lmo-flex.lmo-flex__center.lmo-flex__horizontal-center
-              %i.mdi.mdi-24px.mdi-account-multiple-plus
+              %i.mdi.mdi-account-multiple-plus.mdi-24px
             .email-settings-page__default-description{translate: "{{emailSettingsPage.defaultSettingsDescription()}}"}
             %md-button.md-accent.email-settings-page__change-default-link{ng-click: "emailSettingsPage.changeDefaultMembershipVolume()", translate: "common.action.edit"}
-          %md-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between{ng-repeat: "group in emailSettingsPage.user.groups() track by group.id"}
+          %md-list-item.email-settings-page__group.lmo-flex.lmo-flex__space-between{ng-repeat: "group in emailSettingsPage.user.formalGroups() track by group.id"}
             %group_avatar.lmo-margin-right{group: "group", size: "medium"}
             .email-settings-page__group-details.lmo-flex__grow
               %strong.email-settings-page__group-name

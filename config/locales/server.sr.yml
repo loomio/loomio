@@ -12,13 +12,13 @@ sr:
   email:
     reset_password:
       greeting: |
-        Zdravo %{name}
-        Evo veze koju možete upotrebiti da resetujete lozinku svog Lumio naloga:
+          Zdravo %{name}
+          Evo veze koju možete upotrebiti da resetujete lozinku svog Lumio naloga:
       link_text: Promeni svoju lozinku
       signoff: |
-        Dobili ste ovo jer je Vaša eAdresa upisana u "Zaboravljena lozinka" formular na %{hostname}.
-        Svejedno, Vaša lozika neće biti promenjena dok ne odete na adresu iznad i unesete novu i prosledite je.
-        Ako i dalje imate problem sa pristupom, odgovorite na ovu ePoruku da kontaktirate osobu koja će Vam pružiti podršku.
+          Dobili ste ovo jer je Vaša eAdresa upisana u "Zaboravljena lozinka" formular na %{hostname}.
+          Svejedno, Vaša lozika neće biti promenjena dok ne odete na adresu iznad i unesete novu i prosledite je.
+          Ako i dalje imate problem sa pristupom, odgovorite na ovu ePoruku da kontaktirate osobu koja će Vam pružiti podršku.
     custom: "%{text}"
     group_email:
       intro: "%{who} je napravio/la objavu za grupu %{group}:"
@@ -50,6 +50,9 @@ sr:
     membership_request:
       subject: "%{who} je zatražio da se pridruži %{which_group}"
       view_group: Ovde možete odobriti ili odbiti zahtev
+  discussion_mailer:
+    reply_or_view_online_html: Odgovori na ovu poruku direktno ili <a href='%{url}'>pogledaj je na %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>Isključi ePoruke</a> za ovu diskusiju."
   footer:
     about: O nama
     blog: Blog
@@ -67,49 +70,49 @@ sr:
   markdown:
     intro:
       title: |
-        # Šta je markdown?
+          # Šta je markdown?
       body: |
-        Markdown je način pisanja običnog teksta (levo),
-        kako bi se mogao pretvoriti u bogatiji tekst (desno).
+          Markdown je način pisanja običnog teksta (levo),
+          kako bi se mogao pretvoriti u bogatiji tekst (desno).
 
-        Ova stranica je napisana markdown načinom kao primer.
+          Ova stranica je napisana markdown načinom kao primer.
     paragraphs:
       title: |
-        ## Paragrafi
+          ## Paragrafi
       body: |
-        Moraš
-        ostaviti
-        praznu liniju
-        između linija.
+          Moraš
+          ostaviti
+          praznu liniju
+          između linija.
 
-        Ili će se sve prikazati kao jedan veliki paragraf!
+          Ili će se sve prikazati kao jedan veliki paragraf!
     emphasis:
       title: |
-        ## Isticanje
+          ## Isticanje
       body: |
-        Možeš korisititi iskošenu reč sa _donjim_crtama_ ili *zvezdicama*.
+          Možeš korisititi iskošenu reč sa _donjim_crtama_ ili *zvezdicama*.
 
-        __Podebljaj__ reč tako što ćeš duplirati **istaknutost**.
+          __Podebljaj__ reč tako što ćeš duplirati **istaknutost**.
     lists:
       title: |
-        ## Liste
+          ## Liste
       body: |
-        Ovako možeš napraviti listu:
+          Ovako možeš napraviti listu:
 
-        * ostavi praznu liniju pre početka liste
-        * koristi zvezdice (*)
-        * stavi razmak posle zvezdice
+          * ostavi praznu liniju pre početka liste
+          * koristi zvezdice (*)
+          * stavi razmak posle zvezdice
     links:
       title: |
-        ## Veze i Slike
+          ## Veze i Slike
       body: |
-        Ponavljaj naglas:
+          Ponavljaj naglas:
 
-        Uglaste zagrade za ime, a zatim normalne za URL. Nema razmaka između zagrada.
+          Uglaste zagrade za ime, a zatim normalne za URL. Nema razmaka između zagrada.
 
-        [Lumio Početna](https://www.loomio.org/)
+          [Lumio Početna](https://www.loomio.org/)
 
-        Za slike važi isto pravilo, samo se koristi uzvičnik kao prefiks.
+          Za slike važi isto pravilo, samo se koristi uzvičnik kao prefiks.
 
-        ![lumio logo](https://i.imgur.com/Fvtworb.png)
+          ![lumio logo](https://i.imgur.com/Fvtworb.png)
   comment_by: Komentar od %{comment_author}

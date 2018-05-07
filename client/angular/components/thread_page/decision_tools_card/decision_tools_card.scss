@@ -4,6 +4,7 @@
 }
 
 .decision-tools-card__poll-type {
+  color: $primary-text-color;
   list-style-type: none;
   height: 56px;
   .md-button.md-ink-ripple {
@@ -14,6 +15,11 @@
     margin-left: 10px;
     min-height: 56px;
   }
+}
+
+.decision-tools-card__poll-type-subtitle {
+  color: $grey-on-white;
+  font-weight: normal;
 }
 
 .decision-tools-card__poll-type-link {
