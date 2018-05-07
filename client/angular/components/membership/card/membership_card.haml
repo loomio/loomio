@@ -9,7 +9,7 @@
       %md-button.md-button--tiny{ng-if: "searchOpen", ng-click: "toggleSearch()"}
         %i.mdi.mdi-close
 
-  %plus_button.membership-card__membership.membership-card__invite{click: "invite", message: "membership_card.invite_to_{{group.targetModel().constructor.singular}}"}
+  %plus_button.membership-card__membership.membership-card__invite{ng-if: "canAddMembers()", click: "invite", message: "membership_card.invite_to_{{group.targetModel().constructor.singular}}"}
   %loading{ng-if: "loader.loading"}
   .membership-card__membership.lmo-flex.lmo-flex__center{ng-repeat: "membership in memberships() | orderBy: ['-admin', '-createdAt'] | limitTo: loader.numRequested track by membership.id", data-username: "{{membership.user().username}}"}
     %user_avatar.lmo-margin-right{user: "membership.user()", size: "medium", coordinator: "membership.admin", no-link: "!membership.acceptedAt"}
