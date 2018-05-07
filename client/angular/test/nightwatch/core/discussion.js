@@ -296,7 +296,7 @@ module.exports = {
     page.expectText('.new-comment', 'edited comment right thur')
   },
 
-  'lets you view comment revision history': (test) => {
+  'lets_you_view_comment_revision_history': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_comment_with_versions')
@@ -309,7 +309,7 @@ module.exports = {
     page.expectText('.revision-history-content--header ins', 'What star sign are you?')
   },
 
-  'lets you view discussion revision history': (test) => {
+  'lets_you_view_discussion_revision_history': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_with_versions')
