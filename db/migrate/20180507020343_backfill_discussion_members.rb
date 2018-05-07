@@ -1,4 +1,4 @@
-require './legacy/backfill_discussion_members_job'
+require_relative './legacy/backfill_discussion_members_job'
 
 class BackfillDiscussionMembers < ActiveRecord::Migration[5.1]
   def change
