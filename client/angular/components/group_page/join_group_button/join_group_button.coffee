@@ -1,9 +1,9 @@
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+Session        = require 'shared/services/session'
+Records        = require 'shared/services/records'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+FlashService   = require 'shared/services/flash_service'
+ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'joinGroupButton', ['$rootScope', ($rootScope) ->
   scope: {group: '=', block: '=?'}

@@ -1,7 +1,7 @@
-Records  = require 'shared/services/records.coffee'
-EventBus = require 'shared/services/event_bus.coffee'
+Records  = require 'shared/services/records'
+EventBus = require 'shared/services/event_bus'
 
-{ uploadForm } = require 'shared/helpers/form.coffee'
+{ uploadForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').directive 'documentUploadForm', ->
   scope: {model: '='}

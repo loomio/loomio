@@ -1,6 +1,6 @@
-Records = require 'shared/services/records.coffee'
+Records = require 'shared/services/records'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply'
 
 angular.module('loomioApp').factory 'RevisionHistoryModal', ->
   templateUrl: 'generated/components/thread_page/revision_history_modal/revision_history_modal.html'

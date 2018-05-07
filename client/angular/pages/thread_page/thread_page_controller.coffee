@@ -1,13 +1,13 @@
-LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
-Session           = require 'shared/services/session.coffee'
-Records           = require 'shared/services/records.coffee'
-EventBus          = require 'shared/services/event_bus.coffee'
-AbilityService    = require 'shared/services/ability_service.coffee'
-PaginationService = require 'shared/services/pagination_service.coffee'
-LmoUrlService     = require 'shared/services/lmo_url_service.coffee'
+LmoUrlService     = require 'shared/services/lmo_url_service'
+Session           = require 'shared/services/session'
+Records           = require 'shared/services/records'
+EventBus          = require 'shared/services/event_bus'
+AbilityService    = require 'shared/services/ability_service'
+PaginationService = require 'shared/services/pagination_service'
+LmoUrlService     = require 'shared/services/lmo_url_service'
 
-{ scrollTo }         = require 'shared/helpers/layout.coffee'
-{ registerKeyEvent } = require 'shared/helpers/keyboard.coffee'
+{ scrollTo }         = require 'shared/helpers/layout'
+{ registerKeyEvent } = require 'shared/helpers/keyboard'
 
 $controller = ($scope, $routeParams, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'threadPage', skipScroll: true }

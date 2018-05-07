@@ -1,5 +1,5 @@
-BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
-UserModel            = require 'shared/models/user_model.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface'
+UserModel            = require 'shared/models/user_model'
 
 module.exports = class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel

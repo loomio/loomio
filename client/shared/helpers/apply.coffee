@@ -1,5 +1,5 @@
-EventBus      = require 'shared/services/event_bus.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+EventBus      = require 'shared/services/event_bus'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
 # a series of helpers which attaches functionality to a scope, such as performing
 # a sequence of steps, or loading for a particular function

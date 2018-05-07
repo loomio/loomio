@@ -1,4 +1,4 @@
-{ is2x } = require 'shared/helpers/window.coffee'
+{ is2x } = require 'shared/helpers/window'
 
 angular.module('loomioApp').directive 'userAvatarBody', ->
   scope: {user: '=', size: '=', colors: '=', coordinator: '='}

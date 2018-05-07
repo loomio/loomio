@@ -1,7 +1,7 @@
-Records       = require 'shared/services/records.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+Records       = require 'shared/services/records'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
-{ applySequence } = require 'shared/helpers/apply.coffee'
+{ applySequence } = require 'shared/helpers/apply'
 
 angular.module('loomioApp').factory 'GroupModal', ->
   templateUrl: 'generated/components/group/modal/group_modal.html'

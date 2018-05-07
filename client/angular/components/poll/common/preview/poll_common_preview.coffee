@@ -1,4 +1,4 @@
-Session = require 'shared/services/session.coffee'
+Session = require 'shared/services/session'
 
 angular.module('loomioApp').directive 'pollCommonPreview', ->
   scope: {poll: '=', displayGroupName: '=?'}

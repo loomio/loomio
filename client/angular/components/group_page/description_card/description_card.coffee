@@ -1,8 +1,8 @@
-Records        = require 'shared/services/records.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+Records        = require 'shared/services/records'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
 
-{ submitForm } = require 'shared/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').directive 'descriptionCard', ->
   scope: {group: '='}

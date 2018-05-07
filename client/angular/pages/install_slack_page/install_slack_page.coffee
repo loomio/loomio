@@ -1,6 +1,6 @@
-Session      = require 'shared/services/session.coffee'
-EventBus     = require 'shared/services/event_bus.coffee'
-ModalService = require 'shared/services/modal_service.coffee'
+Session      = require 'shared/services/session'
+EventBus     = require 'shared/services/event_bus'
+ModalService = require 'shared/services/modal_service'
 
 $controller = ($rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'installSlackPage' }

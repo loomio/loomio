@@ -1,11 +1,11 @@
-Records       = require 'shared/services/records.coffee'
-EventBus      = require 'shared/services/event_bus.coffee'
-ModalService  = require 'shared/services/modal_service.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+Records       = require 'shared/services/records'
+EventBus      = require 'shared/services/event_bus'
+ModalService  = require 'shared/services/modal_service'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
-{ listenForLoading }       = require 'shared/helpers/listen.coffee'
-{ iconFor }                = require 'shared/helpers/poll.coffee'
-{ applyPollStartSequence } = require 'shared/helpers/apply.coffee'
+{ listenForLoading }       = require 'shared/helpers/listen'
+{ iconFor }                = require 'shared/helpers/poll'
+{ applyPollStartSequence } = require 'shared/helpers/apply'
 
 $controller = ($scope, $rootScope, $routeParams) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'startPollPage', skipScroll: true }

@@ -1,11 +1,11 @@
-Session       = require 'shared/services/session.coffee'
-Records       = require 'shared/services/records.coffee'
-EventBus      = require 'shared/services/event_bus.coffee'
-ModalService  = require 'shared/services/modal_service.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+Session       = require 'shared/services/session'
+Records       = require 'shared/services/records'
+EventBus      = require 'shared/services/event_bus'
+ModalService  = require 'shared/services/modal_service'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
-{ subscribeTo }     = require 'shared/helpers/cable.coffee'
-{ myLastStanceFor } = require 'shared/helpers/poll.coffee'
+{ subscribeTo }     = require 'shared/helpers/cable'
+{ myLastStanceFor } = require 'shared/helpers/poll'
 
 $controller = ($rootScope, $routeParams) ->
   @init = (poll) =>

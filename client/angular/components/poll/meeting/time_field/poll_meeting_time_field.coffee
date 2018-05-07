@@ -1,4 +1,4 @@
-TimeService = require 'shared/services/time_service.coffee'
+TimeService = require 'shared/services/time_service'
 
 angular.module('loomioApp').directive 'pollMeetingTimeField', ->
   scope: {poll: '='}

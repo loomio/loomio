@@ -1,8 +1,8 @@
-AppConfig = require 'shared/services/app_config.coffee'
-Records   = require 'shared/services/records.coffee'
-EventBus  = require 'shared/services/event_bus.coffee'
+AppConfig = require 'shared/services/app_config'
+Records   = require 'shared/services/records'
+EventBus  = require 'shared/services/event_bus'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply'
 
 $controller = ($rootScope, $timeout) ->
   EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
