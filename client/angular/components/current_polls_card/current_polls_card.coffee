@@ -17,7 +17,11 @@ angular.module('loomioApp').directive 'currentPollsCard', ->
       _.take $scope.model.activePolls(), ($scope.limit or 50)
 
     $scope.startPoll = ->
-      ModalService.open 'PollCommonStartModal', poll: -> Records.polls.build(groupId: $scope.model.id)
+      ModalService.open 'PollCommonStartModal', poll: ->
+        if $scope.model.isA('discussion')
+          Records.polls.build(discussionId: $scope.model.id, groupId: $scope.model.groupId)
+        else if $scope.model.isA('group')
+          Records.polls.build(groupId: $scope.model.id)
 
     $scope.canStartPoll = ->
       AbilityService.canStartPoll($scope.model.group())
