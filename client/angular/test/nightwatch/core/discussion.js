@@ -368,6 +368,7 @@ module.exports = {
     page.expectElement('md-checkbox.md-checked')
     page.pause()
     page.click('.discussion-fork-actions__submit')
+    page.pause()
     page.expectElement('.discussion-form')
     page.fillIn('.discussion-form__title-input', 'Forked thread')
     page.click('.discussion-form__submit')
