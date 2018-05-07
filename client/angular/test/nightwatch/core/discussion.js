@@ -299,16 +299,27 @@ module.exports = {
   'lets you view comment revision history': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', 'Comment!')
-    page.click('.comment-form__submit-button')
-    page.click('.action-dock__button--edit_comment', 8000)
-    page.fillIn('.edit-comment-form textarea', 'Revised comment!')
-    page.click( '.edit-comment-form .comment-form__submit-button')
-    page.pause()
+    page.loadPath('setup_comment_with_versions')
     page.click('.action-dock__button--show_history')
-    page.expectText('.revision-history-modal__body', 'Revised comment!')
-    page.expectText('.revision-history-modal__body', 'Comment!')
+    page.expectText('.revision-history-nav', 'Latest')
+    page.expectText('.revision-history-content--header del', 'star')
+    page.expectText('.revision-history-content--header ins', 'moon')
+    page.click('.revision-history-nav--previous')
+    page.expectText('.revision-history-nav', 'Original')
+    page.expectText('.revision-history-content--header ins', 'What star sign are you?')
+  },
+
+  'lets you view discussion revision history': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_with_versions')
+    page.click('.action-dock__button--show_history')
+    page.expectText('.revision-history-nav', 'Latest')
+    page.expectText('.revision-history-content--header del', 'star')
+    page.expectText('.revision-history-content--header ins', 'moon')
+    page.click('.revision-history-nav--previous')
+    page.expectText('.revision-history-nav', 'Original')
+    page.expectText('.revision-history-content--header ins', 'What star sign are you?')
   },
 
   'deletes a comment': (test) => {

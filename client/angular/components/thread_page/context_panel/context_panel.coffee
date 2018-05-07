@@ -69,7 +69,7 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard'
       perform:    -> ThreadService.unpin($scope.discussion)
     ,
       name: 'show_history',
-      icon: 'mdi-clock'
+      icon: 'mdi-history'
       canPerform: -> $scope.discussion.edited()
       perform:    -> ModalService.open 'RevisionHistoryModal', model: -> $scope.discussion
     ,
