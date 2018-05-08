@@ -1,0 +1,10 @@
+%p.user-mailer__context= t(:"email.login.intro", name: (@user.name || @user.email), site_name: AppConfig.theme[:site_name])
+%p.user-mailer__message-container
+  = link_to t(:"email.login.login", name: (@user.name || @user.email), site_name: AppConfig.theme[:site_name]),
+    login_token_url(@token.token, @utm_hash),
+    data: { "skip-click": true },
+    class: "base-mailer__button base-mailer__button--primary"
+%p.user-mailer__code-helptext= t(:"email.login.or_enter_code")
+%p.user-mailer__code= @token.code
+%p.user-mailer__resend
+  %span= t(:"email.login.resend")

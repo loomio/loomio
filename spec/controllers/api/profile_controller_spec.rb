@@ -151,6 +151,13 @@ describe API::ProfileController do
     end
   end
 
+  describe 'reactivation' do
+  
+    it 'can reactivate your own user'
+
+    it 'can only be reactivated by the user'
+
+
   describe 'save_experience' do
     before { sign_in user }
 

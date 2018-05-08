@@ -67,6 +67,16 @@ class UserMailer < BaseMailer
                      locale: @user.locale
   end
 
+  def user_reactivated(recipient, event)
+    @user = recipient
+    @token = recipient.login_tokens.create
+    byebug
+    send_single_mail to: @user.email,
+                     subject_key: "email.reactivated.subject",
+                     subject_params: {site_name: AppConfig.theme[:site_name]},
+                     locale: @user.locale
+  end
+
   def start_decision(received_email:)
     @email = received_email
     send_single_mail to: @email.sender_email,
@@ -85,4 +95,5 @@ class UserMailer < BaseMailer
                                        site_name: AppConfig.theme[:site_name]},
                      locale: [@contact_request.recipient.locale, @contact_request.sender.locale]
   end
+
 end
