@@ -12,13 +12,14 @@ class BackfillDiscussionMembersJob
       .includes(:items)
       .within(since, till, :last_activity_at)
       .where.not(author_id: User.helper_bot.id)
-      .find_each(batch_size: 250) do |d|
-      to_import = d.items
-                   .where.not(user_id: d.guest_group.member_ids)
-                   .map do |item|
-        Membership.new(group_id: d.guest_group_id, user_id: item.user_id, accepted_at: item.created_at)
-      end
-      Membership.import(to_import) if to_import.any?
-    end
+      .find_each(batch_size: 250) { |d| Membership.import(memberships_for_discussion(d)) }
+  end
+
+  def memberships_for_discussion(discussion)
+    Event.where(discussion_id: discussion.id)
+         .where.not(user_id: discussion.guest_group.member_ids)
+         .select("user_id, #{discussion.guest_group_id} as group_id, min(created_at) as accepted_at")
+         .group(:user_id, :discussion_id)
+         .map { |item| Membership.new(item.as_json) }
   end
 end
