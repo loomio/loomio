@@ -15,3 +15,10 @@ module.exports = class VersionRecordsInterface extends BaseRecordsInterface
       params:
         model: 'comment'
         comment_id: commentId
+
+  fetchVersion: (model, index,  options = {}) ->
+    model_type = model.constructor.singular
+    @fetch
+      params:
+        "#{model_type}_id":model.id
+        index: index

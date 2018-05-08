@@ -540,11 +540,17 @@ en:
 
   revision_history_modal:
     aria_label: Revision history
-    thread_header: Thread context revision history
-    comment_header: Comment edit revision history
+    discussion_header: Discussion revision history
+    comment_header: Comment revision history
+    poll_header: Poll revision history
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     posted: Posted
+    original_text: Original
+    current_revision: Latest
+    closing_at_changed: "closing time set to {{time}}"
+    private_changed: "privacy set to {{private}}"
+    group_id_changed: "moved to {{name}}"
 
   reactions_input:
     add_your_reaction: Add your reaction

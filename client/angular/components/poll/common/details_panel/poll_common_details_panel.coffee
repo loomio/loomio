@@ -42,7 +42,13 @@ angular.module('loomioApp').directive 'pollCommonDetailsPanel', ->
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditPoll($scope.poll)
       perform:    -> ModalService.open 'PollCommonEditModal', poll: -> $scope.poll
-    ]
+    ,
+      name: 'show_history'
+      icon: 'mdi-history'
+      canPerform: -> $scope.poll.edited()
+      perform:    -> ModalService.open 'RevisionHistoryModal', model: -> $scope.poll
+
+  ]
 
     listenForTranslations($scope)
     listenForReactions($scope, $scope.poll)

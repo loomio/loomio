@@ -4,7 +4,7 @@
       %i.mdi.mdi-pin{ng-switch-when: "pinned"}
 
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
-      %h1.lmo-h1.context-panel__heading{ng-if: "!discussion.translation"}
+      %h1.lmo-h1.context-panel__heading{ng-if: "!discussion.translaion"}
         {{discussion.title}}
       %h1.lmo-h1{ng-if: "discussion.translation"}
         %translation{model: "discussion", field: "title"}
