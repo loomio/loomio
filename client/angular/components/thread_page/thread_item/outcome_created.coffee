@@ -1,8 +1,8 @@
-Session        = require 'shared/services/session.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+Session        = require 'shared/services/session'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
 
-{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
+{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
 
 angular.module('loomioApp').directive 'outcomeCreated', ->
   scope: {eventable: '='}

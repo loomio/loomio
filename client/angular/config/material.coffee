@@ -1,4 +1,4 @@
-AppConfig = require 'shared/services/app_config.coffee'
+AppConfig = require 'shared/services/app_config'
 
 angular.module('loomioApp').config ['$mdThemingProvider', '$mdAriaProvider', ($mdThemingProvider, $mdAriaProvider) ->
   if AppConfig.theme.custom_primary_palette

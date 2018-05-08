@@ -1,4 +1,4 @@
-AppConfig = require 'shared/services/app_config.coffee'
+AppConfig = require 'shared/services/app_config'
 
 angular.module('loomioApp').config ['$compileProvider', ($compileProvider) ->
   # disable angular debug stuff in production

@@ -1,7 +1,7 @@
-Session = require 'shared/services/session.coffee'
-Records = require 'shared/services/records.coffee'
+Session = require 'shared/services/session'
+Records = require 'shared/services/records'
 
-{ submitForm } = require 'shared/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'ChangePasswordForm', ->
   templateUrl: 'generated/components/change_password_form/change_password_form.html'

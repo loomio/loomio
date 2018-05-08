@@ -1,4 +1,4 @@
-RangeSet = require 'shared/services/range_set.coffee'
+RangeSet = require 'shared/services/range_set'
 
 module.exports = class BaseEventWindow
   constructor: ({discussion, per}) ->

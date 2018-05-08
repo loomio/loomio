@@ -1,7 +1,7 @@
-RecordLoader = require 'shared/services/record_loader.coffee'
-EventBus     = require 'shared/services/event_bus.coffee'
+RecordLoader = require 'shared/services/record_loader'
+EventBus     = require 'shared/services/event_bus'
 
-{ fieldFromTemplate } = require 'shared/helpers/poll.coffee'
+{ fieldFromTemplate } = require 'shared/helpers/poll'
 
 angular.module('loomioApp').directive 'pollCommonVotesPanel', ->
   scope: {poll: '='}

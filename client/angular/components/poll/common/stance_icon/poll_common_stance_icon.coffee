@@ -1,4 +1,4 @@
-{ fieldFromTemplate } = require 'shared/helpers/poll.coffee'
+{ fieldFromTemplate } = require 'shared/helpers/poll'
 
 angular.module('loomioApp').directive 'pollCommonStanceIcon', ->
   scope: {stanceChoice: '='}

@@ -1,4 +1,4 @@
-BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface'
 
 module.exports = class MessageChannelRecordsInterface extends BaseRecordsInterface
   model:

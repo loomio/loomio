@@ -1,9 +1,9 @@
-Records       = require 'shared/services/records.coffee'
-ModalService  = require 'shared/services/modal_service.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+Records       = require 'shared/services/records'
+ModalService  = require 'shared/services/modal_service'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
-{ applyDiscussionStartSequence } = require 'shared/helpers/apply.coffee'
-{ listenForLoading }             = require 'shared/helpers/listen.coffee'
+{ applyDiscussionStartSequence } = require 'shared/helpers/apply'
+{ listenForLoading }             = require 'shared/helpers/listen'
 
 $controller = ($scope, $rootScope) ->
   $rootScope.$broadcast('currentComponent', { page: 'startDiscussionPage', skipScroll: true })

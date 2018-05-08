@@ -1,8 +1,8 @@
-Records       = require 'shared/services/records.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+Records       = require 'shared/services/records'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
-{ submitForm, uploadForm } = require 'shared/helpers/form.coffee'
-{ submitOnEnter }      = require 'shared/helpers/keyboard.coffee'
+{ submitForm, uploadForm } = require 'shared/helpers/form'
+{ submitOnEnter }      = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').factory 'RegisteredAppForm', ->
   templateUrl: 'generated/components/registered_app_form/registered_app_form.html'

@@ -1,7 +1,7 @@
-FlashService   = require 'shared/services/flash_service.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
+FlashService   = require 'shared/services/flash_service'
+AbilityService = require 'shared/services/ability_service'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply'
 
 angular.module('loomioApp').directive 'pollCommonUndecidedUser', ->
   scope: {user: '=', poll: '='}

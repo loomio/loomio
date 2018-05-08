@@ -1,4 +1,4 @@
-BaseModel = require 'shared/record_store/base_model.coffee'
+BaseModel = require 'shared/record_store/base_model'
 
 module.exports = class MemberModel extends BaseModel
   @singular: 'member'

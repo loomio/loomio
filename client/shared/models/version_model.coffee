@@ -1,4 +1,4 @@
-BaseModel = require 'shared/record_store/base_model.coffee'
+BaseModel = require 'shared/record_store/base_model'
 
 module.exports = class VersionModel extends BaseModel
   @singular: 'version'
@@ -22,10 +22,11 @@ module.exports = class VersionModel extends BaseModel
     @recordStore["#{@itemType.toLowerCase()}s"].find(@itemId)
 
   isCurrent: ->
-    @id == _.last(@model().versions())['id']
+    @index == @model().versionsCount - 1
 
   isOriginal: ->
-    @id == _.first(@model().versions())['id']
+    @index == 0
+
 
   authorOrEditorName: ->
     if @isOriginal()

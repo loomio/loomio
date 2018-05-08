@@ -103,6 +103,7 @@ module Loomio
         user_name: ENV['SMTP_USERNAME'],
         password: ENV['SMTP_PASSWORD'],
         domain: ENV['SMTP_DOMAIN'],
+        ssl: ENV['SMTP_USE_SSL'],
         openssl_verify_mode: 'none'
       }.compact
     else

@@ -1,6 +1,6 @@
 // require('coffeescript/register')
 // _          = require('lodash')
-// pageHelper = require('../helpers/page_helper.coffee')
+// pageHelper = require('../helpers/page_helper')
 //
 // module.exports = {
 //   'creates unverified stance then assigns it to verified user': (test) => {

@@ -1,6 +1,6 @@
-Records        = require 'shared/services/records.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
+Records        = require 'shared/services/records'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
 
 angular.module('loomioApp').directive 'documentList', ->
   scope: {model: '=', showEdit: '=?', hidePreview: '=?', hideDate: '=?', skipFetch: '=?'}

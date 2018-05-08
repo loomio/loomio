@@ -1,7 +1,7 @@
-Session        = require 'shared/services/session.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+Session        = require 'shared/services/session'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'groupTheme', ['$rootScope', ($rootScope) ->
   scope: {group: '=', homePage: '=', compact: '=', discussion: '=?'}

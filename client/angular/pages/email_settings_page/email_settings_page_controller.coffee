@@ -1,11 +1,11 @@
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
+Session        = require 'shared/services/session'
+Records        = require 'shared/services/records'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
+LmoUrlService  = require 'shared/services/lmo_url_service'
 
-{ submitForm }   = require 'shared/helpers/form.coffee'
+{ submitForm }   = require 'shared/helpers/form'
 
 $controller = ($rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}

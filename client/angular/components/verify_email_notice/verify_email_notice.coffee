@@ -1,6 +1,6 @@
-AbilityService = require 'shared/services/ability_service.coffee'
-AppConfig      = require 'shared/services/app_config.coffee'
-Records        = require 'shared/services/records.coffee'
+AbilityService = require 'shared/services/ability_service'
+AppConfig      = require 'shared/services/app_config'
+Records        = require 'shared/services/records'
 
 angular.module('loomioApp').directive 'verifyEmailNotice', ->
   scope: false

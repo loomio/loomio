@@ -1,4 +1,4 @@
-AppConfig = require 'shared/services/app_config.coffee'
+AppConfig = require 'shared/services/app_config'
 
 angular.module('loomioApp').config ['$animateProvider', ($animateProvider) ->
   # this should make stuff faster but you need to add "animated" class to animated things.
