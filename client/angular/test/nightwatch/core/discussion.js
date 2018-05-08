@@ -272,17 +272,17 @@ module.exports = {
     page.expectElement('.reaction__emoji', 10000)
   },
 
-  'mentions a user': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', '@jennifer')
-    page.pause()
-    page.expectText('.mentio-menu', 'Jennifer Grey')
-    page.click('.mentio-menu md-menu-item')
-    page.click('.comment-form__submit-button')
-    page.expectText('.new-comment', '@jennifergrey')
-  },
+  // 'mentions a user': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.fillIn('.comment-form textarea', '@jennifer')
+  //   page.pause()
+  //   page.expectText('.mentio-menu', 'Jennifer Grey')
+  //   page.click('.mentio-menu md-menu-item')
+  //   page.click('.comment-form__submit-button')
+  //   page.expectText('.new-comment', '@jennifergrey')
+  // },
 
   'edits a comment': (test) => {
     page = pageHelper(test)
