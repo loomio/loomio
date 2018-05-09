@@ -9,6 +9,8 @@ class MembershipsController < ApplicationController
   def show
     session[:pending_membership_token] = membership.token
     redirect_to back_to_url || polymorphic_url(membership.target_model)
+  rescue ActiveRecord::RecordNotFound
+    redirect_to join_url(Group.find_by!(token: params[:token]))
   end
 
   private
