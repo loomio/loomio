@@ -10,5 +10,5 @@
           %span{translate: "membership_dropdown.demote_coordinator", ng-if: "membership.admin"}
       %md-menu-item.membership-dropdown__remove{ng-if: "canRemoveMembership()"}
         %a.md-button{ng-click: "removeMembership()"}
-          %span{translate: "membership_dropdown.remove_membership", ng-if: "membership.acceptedAt"}
+          %span{translate: "membership_dropdown.remove_from.{{membership.group().targetModel().constructor.singular}}", ng-if: "membership.acceptedAt", translate-values: "{pollType: membership.group().targetModel().translatedPollType()}"}
           %span{translate: "membership_dropdown.cancel_invitation", ng-if: "!membership.acceptedAt"}
