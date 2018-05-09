@@ -344,7 +344,10 @@ en:
   membership_dropdown:
     make_coordinator: 'Make coordinator'
     demote_coordinator: 'Demote coordinator'
-    remove_membership: 'Remove from group'
+    remove_from:
+      discussion: "Remove from thread"
+      group: "Remove from group"
+      poll: 'Remove from {{pollType}}'
     cancel_invitation: Cancel invitation
 
   start_menu:
@@ -835,8 +838,6 @@ en:
     membership:
       title: Remove member
       message: Are you sure you want to remove {{name}}?
-      impact_for_thread: This will remove their access to this thread.
-      impact_for_poll: This will remove their access to this {{poll_type}}.
       impact_for_group: This will remove their access to all threads and decisions in the group.
       impact_for_subgroups: This will also remove their access to all subgroups of this group.
       flash: Member removed
