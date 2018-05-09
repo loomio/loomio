@@ -1,9 +1,9 @@
 moment = require 'moment-timezone'
 
-AppConfig     = require 'shared/services/app_config.coffee'
-RestfulClient = require 'shared/record_store/restful_client.coffee'
+AppConfig     = require 'shared/services/app_config'
+RestfulClient = require 'shared/record_store/restful_client'
 
-{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window.coffee'
+{ exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window'
 
 hardReload('/417.html') if unsupportedBrowser()
 exportGlobals()
@@ -14,7 +14,7 @@ new RestfulClient('boot').get('site').then (response) ->
     response.json().then (config) ->
       _.merge AppConfig, config, timeZone: moment.tz.guess()
 
-      require './dependencies/vendor.coffee'
+      require './dependencies/vendor'
       angular.module('loomioApp', [
         'ngNewRouter',
         'pascalprecht.translate',
@@ -33,10 +33,10 @@ new RestfulClient('boot').get('site').then (response) ->
         'angular-sortable-view'
         ])
 
-      require './dependencies/config.coffee'
-      require './dependencies/templates.coffee'
-      require './dependencies/pages.coffee'
-      require './dependencies/components.coffee'
+      require './dependencies/config'
+      require './dependencies/templates'
+      require './dependencies/pages'
+      require './dependencies/components'
       window.Loomio = AppConfig
   else
     console.log 'Unable to boot Loomio!', response

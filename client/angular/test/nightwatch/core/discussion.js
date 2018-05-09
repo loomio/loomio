@@ -1,5 +1,5 @@
 require('coffeescript/register')
-pageHelper = require('../helpers/page_helper.coffee')
+pageHelper = require('../helpers/page_helper')
 
 module.exports = {
   'preselects current group': (test) => {
@@ -272,17 +272,17 @@ module.exports = {
     page.expectElement('.reaction__emoji', 10000)
   },
 
-  'mentions a user': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', '@jennifer')
-    page.pause()
-    page.expectText('.mentio-menu', 'Jennifer Grey')
-    page.click('.mentio-menu md-menu-item')
-    page.click('.comment-form__submit-button')
-    page.expectText('.new-comment', '@jennifergrey')
-  },
+  // 'mentions a user': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.fillIn('.comment-form textarea', '@jennifer')
+  //   page.pause()
+  //   page.expectText('.mentio-menu', 'Jennifer Grey')
+  //   page.click('.mentio-menu md-menu-item')
+  //   page.click('.comment-form__submit-button')
+  //   page.expectText('.new-comment', '@jennifergrey')
+  // },
 
   'edits a comment': (test) => {
     page = pageHelper(test)
@@ -296,19 +296,30 @@ module.exports = {
     page.expectText('.new-comment', 'edited comment right thur')
   },
 
-  'lets you view comment revision history': (test) => {
+  'lets_you_view_comment_revision_history': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', 'Comment!')
-    page.click('.comment-form__submit-button')
-    page.click('.action-dock__button--edit_comment', 8000)
-    page.fillIn('.edit-comment-form textarea', 'Revised comment!')
-    page.click( '.edit-comment-form .comment-form__submit-button')
-    page.pause()
+    page.loadPath('setup_comment_with_versions')
     page.click('.action-dock__button--show_history')
-    page.expectText('.revision-history-modal__body', 'Revised comment!')
-    page.expectText('.revision-history-modal__body', 'Comment!')
+    page.expectText('.revision-history-nav', 'Latest')
+    page.expectText('.revision-history-content del', 'star')
+    page.expectText('.revision-history-content ins', 'moon')
+    page.click('.revision-history-nav--previous')
+    page.expectText('.revision-history-nav', 'Original')
+    page.expectText('.revision-history-content ins', 'What star sign are you?')
+  },
+
+  'lets_you_view_discussion_revision_history': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_with_versions')
+    page.click('.action-dock__button--show_history')
+    page.expectText('.revision-history-nav', 'Latest')
+    page.expectText('.revision-history-content--header del', 'star')
+    page.expectText('.revision-history-content--header ins', 'moon')
+    page.click('.revision-history-nav--previous')
+    page.expectText('.revision-history-nav', 'Original')
+    page.expectText('.revision-history-content--header ins', 'What star sign are you?')
   },
 
   'deletes a comment': (test) => {

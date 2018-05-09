@@ -1,5 +1,5 @@
-BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
-DocumentModel        = require 'shared/models/document_model.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface'
+DocumentModel        = require 'shared/models/document_model'
 
 module.exports = class DocumentRecordsInterface extends BaseRecordsInterface
   model: DocumentModel

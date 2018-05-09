@@ -1,9 +1,9 @@
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-AppConfig      = require 'shared/services/app_config.coffee'
+Session        = require 'shared/services/session'
+Records        = require 'shared/services/records'
+AbilityService = require 'shared/services/ability_service'
+AppConfig      = require 'shared/services/app_config'
 
-{ submitForm } = require 'shared/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').directive 'contactForm', ->
   templateUrl: 'generated/components/contact/form/contact_form.html'

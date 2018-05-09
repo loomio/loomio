@@ -1,8 +1,8 @@
-Session  = require 'shared/services/session.coffee'
-Records  = require 'shared/services/records.coffee'
-EventBus = require 'shared/services/event_bus.coffee'
+Session  = require 'shared/services/session'
+Records  = require 'shared/services/records'
+EventBus = require 'shared/services/event_bus'
 
-{ submitForm, uploadForm } = require 'shared/helpers/form.coffee'
+{ submitForm, uploadForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'ChangePictureForm', ['$rootScope', '$timeout', ($rootScope, $timeout) ->
   templateUrl: 'generated/components/change_picture_form/change_picture_form.html'

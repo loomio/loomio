@@ -1,4 +1,4 @@
-pageHelper = require './page_helper.coffee'
+pageHelper = require './page_helper'
 
 module.exports = (test) ->
   signInViaPassword: (email, password) ->

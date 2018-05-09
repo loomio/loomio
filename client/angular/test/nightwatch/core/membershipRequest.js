@@ -1,5 +1,5 @@
 require('coffeescript/register')
-pageHelper = require('../helpers/page_helper.coffee')
+pageHelper = require('../helpers/page_helper')
 
 module.exports = {
   'successfully approves a membership request': (test) => {
@@ -22,6 +22,7 @@ module.exports = {
     page.click('.membership-requests-page__approve')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--group')
+    page.pause()
     page.expectCount('.membership-card__membership', 5)
   },
 

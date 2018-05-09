@@ -1,8 +1,8 @@
-Records  = require 'shared/services/records.coffee'
-EventBus = require 'shared/services/event_bus.coffee'
+Records  = require 'shared/services/records'
+EventBus = require 'shared/services/event_bus'
 
-{ applySequence } = require 'shared/helpers/apply.coffee'
-{ triggerResize } = require 'shared/helpers/window.coffee'
+{ applySequence } = require 'shared/helpers/apply'
+{ triggerResize } = require 'shared/helpers/window'
 
 angular.module('loomioApp').directive 'documentForm', ['$timeout', ($timeout) ->
   templateUrl: 'generated/components/document/form/document_form.html'

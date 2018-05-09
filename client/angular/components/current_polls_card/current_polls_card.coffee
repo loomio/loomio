@@ -1,8 +1,8 @@
-Records        = require 'shared/services/records.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+Records        = require 'shared/services/records'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply'
 
 angular.module('loomioApp').directive 'currentPollsCard', ->
   scope: {model: '='}
@@ -17,7 +17,11 @@ angular.module('loomioApp').directive 'currentPollsCard', ->
       _.take $scope.model.activePolls(), ($scope.limit or 50)
 
     $scope.startPoll = ->
-      ModalService.open 'PollCommonStartModal', poll: -> Records.polls.build(groupId: $scope.model.id)
+      ModalService.open 'PollCommonStartModal', poll: ->
+        if $scope.model.isA('discussion')
+          Records.polls.build(discussionId: $scope.model.id, groupId: $scope.model.groupId)
+        else if $scope.model.isA('group')
+          Records.polls.build(groupId: $scope.model.id)
 
     $scope.canStartPoll = ->
       AbilityService.canStartPoll($scope.model.group())

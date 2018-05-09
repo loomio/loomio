@@ -1,8 +1,8 @@
-Records  = require 'shared/services/records.coffee'
-EventBus = require 'shared/services/event_bus.coffee'
+Records  = require 'shared/services/records'
+EventBus = require 'shared/services/event_bus'
 
-{ listenForLoading } = require 'shared/helpers/listen.coffee'
-{ applySequence }    = require 'shared/helpers/apply.coffee'
+{ listenForLoading } = require 'shared/helpers/listen'
+{ applySequence }    = require 'shared/helpers/apply'
 
 angular.module('loomioApp').factory 'PollCommonAddOptionModal', ->
   templateUrl: 'generated/components/poll/common/add_option/modal/poll_common_add_option_modal.html'

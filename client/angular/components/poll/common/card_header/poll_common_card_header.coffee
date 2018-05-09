@@ -1,6 +1,6 @@
-AbilityService = require 'shared/services/ability_service.coffee'
+AbilityService = require 'shared/services/ability_service'
 
-{ iconFor } = require 'shared/helpers/poll.coffee'
+{ iconFor } = require 'shared/helpers/poll'
 
 angular.module('loomioApp').directive 'pollCommonCardHeader', ->
   scope: {poll: '='}

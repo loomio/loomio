@@ -1,5 +1,5 @@
-Records  = require 'shared/services/records.coffee'
-EventBus = require 'shared/services/event_bus.coffee'
+Records  = require 'shared/services/records'
+EventBus = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'announcementChip', ->
   scope: {user: '=', showClose: '=?'}

@@ -1,10 +1,10 @@
-Records        = require 'shared/services/records.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+Records        = require 'shared/services/records'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+FlashService   = require 'shared/services/flash_service'
+ModalService   = require 'shared/services/modal_service'
 
-{ scrollTo } = require 'shared/helpers/layout.coffee'
+{ scrollTo } = require 'shared/helpers/layout'
 
 $controller = ($routeParams, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { titleKey: 'memberships_page.members', page: 'membershipsPage'}

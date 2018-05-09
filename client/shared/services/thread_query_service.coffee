@@ -1,5 +1,5 @@
-Records = require 'shared/services/records.coffee'
-Session = require 'shared/services/session.coffee'
+Records = require 'shared/services/records'
+Session = require 'shared/services/session'
 
 module.exports = new class ThreadQueryService
 

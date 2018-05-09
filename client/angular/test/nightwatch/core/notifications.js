@@ -1,5 +1,5 @@
 require('coffeescript/register')
-pageHelper = require('../helpers/page_helper.coffee')
+pageHelper = require('../helpers/page_helper')
 notificationTexts = [
   'accepted your invitation to join',
   'added you to the group',

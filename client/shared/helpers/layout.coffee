@@ -1,12 +1,12 @@
-AppConfig       = require 'shared/services/app_config.coffee'
-Session         = require 'shared/services/session.coffee'
-AbilityService  = require 'shared/services/ability_service.coffee'
-ModalService    = require 'shared/services/modal_service.coffee'
-IntercomService = require 'shared/services/intercom_service.coffee'
-ScrollService   = require 'shared/services/scroll_service.coffee'
-I18n            = require 'shared/services/i18n.coffee'
+AppConfig       = require 'shared/services/app_config'
+Session         = require 'shared/services/session'
+AbilityService  = require 'shared/services/ability_service'
+ModalService    = require 'shared/services/modal_service'
+IntercomService = require 'shared/services/intercom_service'
+ScrollService   = require 'shared/services/scroll_service'
+I18n            = require 'shared/services/i18n'
 
-{ viewportSize } = require 'shared/helpers/window.coffee'
+{ viewportSize } = require 'shared/helpers/window'
 
 module.exports =
   scrollTo: (target, options) -> scrollTo(target, options)

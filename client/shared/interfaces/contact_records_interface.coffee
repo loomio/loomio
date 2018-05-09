@@ -1,5 +1,5 @@
-BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
-ContactModel    = require 'shared/models/contact_model.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface'
+ContactModel    = require 'shared/models/contact_model'
 
 module.exports = class ContactRecordsInterface extends BaseRecordsInterface
   model: ContactModel

@@ -1,6 +1,6 @@
 svg = require 'svg.js'
 
-AppConfig = require 'shared/services/app_config.coffee'
+AppConfig = require 'shared/services/app_config'
 
 angular.module('loomioApp').directive 'barChart', ->
   template: '<div class="bar-chart"></div>'

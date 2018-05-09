@@ -1,5 +1,5 @@
-FlashService  = require 'shared/services/flash_service.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+FlashService  = require 'shared/services/flash_service'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
 angular.module('loomioApp').factory 'ConfirmModal', ->
   templateUrl: 'generated/components/confirm_modal/confirm_modal.html'

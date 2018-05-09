@@ -29,6 +29,7 @@
   color: $grey-on-white;
   overflow: visible;
   transition: opacity ease-in-out 0.25s;
+  &[disabled] { opacity: 0.2 !important; }
   &:hover { color: $primary-text-color; }
   i { font-size: 20px; }
   i.lmo-helper-icon {

@@ -1,7 +1,7 @@
-Records       = require 'shared/services/records.coffee'
-EventBus      = require 'shared/services/event_bus.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
-ModalService  = require 'shared/services/modal_service.coffee'
+Records       = require 'shared/services/records'
+EventBus      = require 'shared/services/event_bus'
+LmoUrlService = require 'shared/services/lmo_url_service'
+ModalService  = require 'shared/services/modal_service'
 
 $controller = ($scope, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'startGroupPage', skipScroll: true }

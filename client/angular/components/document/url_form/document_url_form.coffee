@@ -1,9 +1,9 @@
-AppConfig = require 'shared/services/app_config.coffee'
-Records   = require 'shared/services/records.coffee'
-EventBus  = require 'shared/services/event_bus.coffee'
-I18n      = require 'shared/services/i18n.coffee'
+AppConfig = require 'shared/services/app_config'
+Records   = require 'shared/services/records'
+EventBus  = require 'shared/services/event_bus'
+I18n      = require 'shared/services/i18n'
 
-{ submitOnEnter }  = require 'shared/helpers/keyboard.coffee'
+{ submitOnEnter }  = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'documentUrlForm', ->
   scope: {document: '='}

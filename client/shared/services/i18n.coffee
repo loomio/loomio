@@ -1,4 +1,4 @@
-ImplementationService = require 'shared/services/implementation_service.coffee'
+ImplementationService = require 'shared/services/implementation_service'
 
 module.exports = class I18n
   ImplementationService.requireMethod @, 't', 'setTranslateMethod'

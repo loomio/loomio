@@ -1,4 +1,4 @@
-Session = require 'shared/services/session.coffee'
+Session = require 'shared/services/session'
 
 module.exports = new class UserHelpService
   helpLocale: ->
