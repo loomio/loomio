@@ -44,6 +44,11 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
+    resources :boot, only: [] do
+      get :site, on: :collection
+      get :user, on: :collection
+    end
+
     resources :usage_reports, only: [:create]
 
     resources :groups, only: [:index, :show, :create, :update] do
@@ -306,5 +311,5 @@ Loomio::Application.routes.draw do
     post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
   end
 
-  get ":id", to: 'groups#show', as: :group_handle
+  get ":id", to: 'groups#show', as: :group_handle, format: :html
 end

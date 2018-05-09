@@ -1,4 +1,5 @@
 AppConfig       = require 'shared/services/app_config'
+Records         = require 'shared/services/records'
 EventBus        = require 'shared/services/event_bus'
 AbilityService  = require 'shared/services/ability_service'
 LmoUrlService   = require 'shared/services/lmo_url_service'
@@ -13,7 +14,12 @@ IntercomService = require 'shared/services/intercom_service'
 { setupAngular }                                 = require 'angular/setup'
 
 $controller = ($scope, $injector) ->
+  $scope.theme  = AppConfig.theme
+  $scope.assets = AppConfig.assets
   setupAngular($scope, $injector)
+
+  Records.boot.remote.get('user').then (response) ->
+    signIn(response, response.current_user_id, $scope.loggedIn)
 
   $scope.warnDeprecation  = deprecatedBrowser()
   $scope.currentComponent = 'nothing yet'
@@ -40,7 +46,6 @@ $controller = ($scope, $injector) ->
     $scope.links = options.links or {}
     setCurrentComponent(options)
 
-  signIn(AppConfig.bootData, AppConfig.bootData.current_user_id, $scope.loggedIn)
   initLiveUpdate()
 
   return
