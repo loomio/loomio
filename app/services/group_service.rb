@@ -10,9 +10,9 @@ module GroupService
       group.default_group_cover = DefaultGroupCover.sample
       group.creator             = actor if actor.is_logged_in?
       ExampleContent.new(group).add_to_group! if AppConfig.app_features[:help_link]
-    else
-      group.save!
     end
+
+    group.save!
 
     EventBus.broadcast('group_create', group, actor)
   end
