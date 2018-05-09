@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  class RecaptchaMissingError < Exception; end
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include MessageChannel
@@ -13,7 +14,7 @@ class User < ApplicationRecord
 
   extend  NoSpam
   no_spam_for :name
-  
+
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
     helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
