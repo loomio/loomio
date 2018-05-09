@@ -42,6 +42,11 @@ GIT
     twitter-text (1.14.7)
       unf (~> 0.1.0)
 
+PATH
+  remote: ../discourse-diff
+  specs:
+    discourse-diff (0.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -570,6 +575,7 @@ DEPENDENCIES
   derailed
   devise (~> 4.4.1)
   devise-i18n
+  discourse-diff!
   discriminator (~> 0.1.1)
   doorkeeper (~> 4.2.0)
   doorkeeper-i18n

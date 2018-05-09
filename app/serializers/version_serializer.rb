@@ -13,7 +13,9 @@ class VersionSerializer < ActiveModel::Serializer
   has_one :poll
 
   def changes
-    object.object_changes
+    object.object_changes.map do |key, changes|
+      [key, Discourse::Diff.new(changes[0].to_s, changes[1].to_s).inline_html]
+    end.to_h
   end
 
   def whodunnit
