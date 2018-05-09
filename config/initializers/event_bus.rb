@@ -25,7 +25,7 @@ EventBus.configure do |config|
   config.listen('group_create',
                 'discussion_create',
                 'comment_create',
-                'poll_create') { |model, actor| model.perform_draft_purge!(actor) }
+                'poll_create') { |model, actor| model.perform_draft_purge!(actor) if model.persisted? }
 
   # Add creator to group on group creation
   config.listen('group_create') do |group, actor|
