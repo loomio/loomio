@@ -67,6 +67,11 @@ describe MembershipsController do
 
     end
 
+    it 'redirects to a group url if that token is given' do
+      get :show, params: { token: group.token }
+      expect(response).to redirect_to join_url(group)
+    end
+
     it "accepts membership and redirects to group " do
       get :show, params: { token: membership.token }
       membership.reload
