@@ -344,7 +344,10 @@ en:
   membership_dropdown:
     make_coordinator: 'Make coordinator'
     demote_coordinator: 'Demote coordinator'
-    remove_membership: 'Remove from group'
+    remove_from:
+      discussion: "Remove from thread"
+      group: "Remove from group"
+      poll: 'Remove from {{pollType}}'
     cancel_invitation: Cancel invitation
 
   start_menu:
@@ -834,19 +837,15 @@ en:
       submit: Cancel invitation
     membership:
       title: Remove member
-      message: Are you sure you want to remove {{name}} from the group?
+      message: Are you sure you want to remove {{name}}?
+      impact_for_group: This will remove their access to all threads and decisions in the group.
+      impact_for_subgroups: This will also remove their access to all subgroups of this group.
       flash: Member removed
       submit: Remove member
 
   memberships_panel:
     add_coordinator: Make coordinator
     remove_coordinator: Demote coordinator
-
-  remove_membership_form:
-    aria_label: 'Remove member'
-    title: 'Remove member'
-    question: 'Are you sure you want to remove {{name}} from {{group}}?'
-    submit: 'Remove'
 
   pending_invitations_card:
     heading: Pending invitations
