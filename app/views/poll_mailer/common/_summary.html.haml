@@ -20,8 +20,7 @@
 
   %p
     - if @info.poll.active?
-      = t(:"poll_common_form.closing")
-      = formatted_time_in_zone(@info.poll.closing_at, @info.time_zone)
+      = t(:"poll_mailer.common.you_have_until", when: formatted_time_in_zone(@info.poll.closing_at, @info.time_zone))
     - else
       = t(:"poll_common_form.closed")
       = formatted_time_in_zone(@info.poll.closed_at, @info.time_zone)
