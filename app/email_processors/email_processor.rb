@@ -17,7 +17,7 @@ class EmailProcessor
     comment = Comment.new(discussion_id: email_params.discussion_id,
                           body: email_params.body)
 
-    return unless comment.discussion && user&.can? :create, comment
+    return unless (comment.discussion && user&.can?(:create, comment))
     CommentService.create(comment: comment, actor: user || LoggedOutUser.new)
   end
 
