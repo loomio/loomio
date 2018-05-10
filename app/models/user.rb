@@ -52,7 +52,7 @@ class User < ApplicationRecord
 
   validates_length_of :password, minimum: 8, allow_nil: true
   validates :password, nontrivial_password: true, allow_nil: true
-  validate  :ensure_recaptcha, if: ENV['RECAPTCHA_APP_KEY']
+  validate  :ensure_recaptcha
 
   has_many :admin_memberships,
            -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
@@ -331,6 +331,7 @@ class User < ApplicationRecord
   private
 
   def ensure_recaptcha
+    return if !ENV['RECAPTCHA_APP_KEY']
     return if Clients::Recaptcha.instance.validate(self.recaptcha).success
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
