@@ -1,9 +1,5 @@
 module ErrorRescueHelper
   def self.included(base)
-    base.rescue_from(User::RecaptchaMissingError) do |exception|
-      respond_with_error message: :"user.error.recaptcha", status: 400
-    end
-
     base.rescue_from(ActionView::MissingTemplate)  do |exception|
       raise exception unless %w[txt text gif png].include?(params[:format])
     end

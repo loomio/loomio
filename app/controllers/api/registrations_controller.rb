@@ -38,7 +38,6 @@ class API::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_permitted_parameters
-    raise User::RecaptchaMissingError.new if ENV['RECAPTCHA_APP_KEY'] && (!params[:recaptcha] || !pending_membership_is_present?)
     devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:name, :email, :recaptcha)
     end
