@@ -66,10 +66,11 @@ class Event < ApplicationRecord
       created_at: eventable.created_at
     }.merge(args.slice(
       :user,
+      :parent,
       :discussion,
       :custom_fields,
       :created_at
-    )))
+    ))).tap { |e| byebug }
   end
 
   def should_have_parent?
