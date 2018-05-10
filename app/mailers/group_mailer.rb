@@ -1,7 +1,7 @@
 class GroupMailer < BaseMailer
   layout 'invite_people_mailer'
 
-  def (recipient, event)
+  def group_announced(recipient, event)
     return unless @membership = event.eventable.memberships.find_by(user: recipient)
     send_single_mail to:     recipient.email,
                      locale: recipient.locale,
