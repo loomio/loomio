@@ -223,9 +223,12 @@ describe Event do
       outcome.update(poll: poll_meeting, calendar_invite: "SOME_EVENT_INFO")
     end
 
-    it 'notifies mentioned users' do
-      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }.by(1)
+    it 'notifies mentioned users and the author' do
+      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }.by(2) # mentioned user and the author
       expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_mentioned.id
+      recipients = ActionMailer::Base.deliveries.map(&:to).flatten
+      expect(recipients).to include user_mentioned.email
+      expect(recipients).to include outcome.author.email
     end
   end
 
