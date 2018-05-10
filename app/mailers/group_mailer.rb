@@ -1,8 +1,8 @@
 class GroupMailer < BaseMailer
   layout 'invite_people_mailer'
 
-  def group_announced(recipient, event)
-    @membership = event.eventable.memberships.find_by(user: recipient)
+  def (recipient, event)
+    return unless @membership = event.eventable.memberships.find_by(user: recipient)
     send_single_mail to:     recipient.email,
                      locale: recipient.locale,
                      from:   from_user_via_loomio(@membership.inviter),
