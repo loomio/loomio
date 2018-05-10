@@ -64,13 +64,7 @@ class Event < ApplicationRecord
       kind:       name.demodulize.underscore,
       eventable:  eventable,
       created_at: eventable.created_at
-    }.merge(args.slice(
-      :user,
-      :parent,
-      :discussion,
-      :custom_fields,
-      :created_at
-    ))).tap { |e| byebug }
+    }.merge(args))
   end
 
   def should_have_parent?
