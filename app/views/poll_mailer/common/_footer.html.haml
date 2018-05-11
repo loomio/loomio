@@ -7,3 +7,4 @@
       %span= t(:"poll_mailer.common.or")
       = link_to t(:"poll_mailer.common.unsubscribe"), @info.unsubscribe_url
   = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
+  %p= t(:'email.value_proposition', site_name: AppConfig.theme[:site_name])
