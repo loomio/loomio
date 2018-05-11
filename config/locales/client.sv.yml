@@ -98,6 +98,8 @@ sv:
     heading: Be att få gå med
     name_label: Namn
     email_label: Email
+  revision_history_modal:
+    current_revision: Senaste
   group_page:
     options_label: 'Alternativ'
     options:
@@ -117,8 +119,6 @@ sv:
     name_label: 'Namn'
     coordinator_label: 'Koordinator'
     remove_member_label: 'Ta bort'
-  remove_membership_form:
-    submit: 'Ta bort'
   profile_page:
     profile: 'Profil'
     picture_label: 'Bild'

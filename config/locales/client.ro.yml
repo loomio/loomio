@@ -298,6 +298,7 @@ ro:
     started_by: 'Inceput de <strong>{{name}}</strong>'
     edited_by: 'Editat de <strong>{{name}}</strong>'
     posted: Adaugat
+    current_revision: Cel mai nou
   reactions_input:
     add_your_reaction: Adauga reactie
   reactions_display:
@@ -358,8 +359,6 @@ ro:
     name_label: 'Nume'
     coordinator_label: 'Coordonator'
     remove_member_label: 'Elimina'
-  remove_membership_form:
-    submit: 'Sterge'
   profile_page:
     profile: 'Profil'
     picture_label: 'Fotografie'

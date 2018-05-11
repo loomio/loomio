@@ -436,11 +436,10 @@ zh_TW:
       membership_requested: '您已經申請 {{group}} 的成員資格'
   revision_history_modal:
     aria_label: 修訂歷史
-    thread_header: 討論串內容修訂歷史
-    comment_header: 評論編輯修訂歷史
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited_by: '由 <strong>{{name}}</strong> 所編輯'
     posted: 已貼出
+    current_revision: 最新
   reactions_input:
     add_your_reaction: 新增您的反應
   reactions_display:
@@ -700,11 +699,6 @@ zh_TW:
   memberships_panel:
     add_coordinator: 成為協作者
     remove_coordinator: 移除協作者
-  remove_membership_form:
-    aria_label: '移除成員'
-    title: '移除成員'
-    question: '您確定您想要移除 {{group}} 的成員 {{name}} 嗎？'
-    submit: '移除'
   pending_invitations_card:
     heading: 擱置中的邀請函
     email: 電子郵件

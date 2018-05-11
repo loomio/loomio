@@ -205,6 +205,8 @@ hu:
     heading: Kérj belépőt a csoportba
     name_label: Név
     email_label: E-mail
+  revision_history_modal:
+    current_revision: Legutóbbi
   group_page:
     group_logo: 'Csoport logó'
     new_photo: 'Új fotó'

@@ -140,11 +140,10 @@ ar:
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
   revision_history_modal:
-    thread_header: تاريخ إعادة صياغة الموضوع
-    comment_header: تاريخ إعادة صياغة التعليقات
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong>'
     edited_by: 'تم تعديله من قبل <strong>{{name}}</strong>'
     posted: تم النشر
+    current_revision: الأحدث
   group_page:
     messages:
       privacy:

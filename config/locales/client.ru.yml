@@ -315,6 +315,7 @@ ru:
   revision_history_modal:
     aria_label: История изменений
     posted: Размещено
+    current_revision: Последний
   reactions_display:
     you: "Вы"
     you_and_name: "Вы и {{name}}"
@@ -372,8 +373,6 @@ ru:
     name_label: 'Имя'
     coordinator_label: 'Координатор'
     remove_member_label: 'Удалить'
-  remove_membership_form:
-    submit: 'Удалить'
   pending_invitations_card:
     copy_url: Скопировать ссылку
   profile_page:
