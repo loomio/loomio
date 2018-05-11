@@ -13,9 +13,7 @@ class VersionSerializer < ActiveModel::Serializer
   has_one :poll
 
   def changes
-    object.object_changes.map do |key, changes|
-      [key, Discourse::Diff.new(changes[0].to_s, changes[1].to_s).inline_html]
-    end.to_h
+    object.object_changes.map { |key, changes| [key, changes_for(key, changes)] }.to_h
   end
 
   def whodunnit
@@ -48,5 +46,13 @@ class VersionSerializer < ActiveModel::Serializer
 
   def include_comment?
     object.item_type == 'Comment'
+  end
+
+  private
+
+  def changes_for(key, changes)
+    return changes unless ['description', 'details', 'body'].include?(key)
+    # render inline html for markdown fields
+    Discourse::Diff.new(changes[0].to_s, changes[1].to_s).side_by_side_markdown
   end
 end
