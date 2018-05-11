@@ -254,6 +254,8 @@ pl:
     email_label: E-mail
     messages:
       membership_requested: 'Wysłałeś/aś prośbę o dołączenie do grupy  {{group}}'
+  revision_history_modal:
+    current_revision: Ostatnie
   reactions_display:
     you: "Ty"
   group_page:
@@ -316,8 +318,6 @@ pl:
     membership:
       title: Usunięcie członka
       submit: Usunięcie członka
-  remove_membership_form:
-    submit: 'Usuń'
   profile_page:
     messages:
       updated: 'Profil zmieniony'

@@ -358,11 +358,10 @@ de:
     messages:
       membership_requested: 'Du hast die Mitgliedschaft für {{group}} angefragt'
   revision_history_modal:
-    thread_header: Änderungsverlauf der Diskussionsbeschreibung
-    comment_header: Komentarbearbeitungsverlauf
     started_by: 'Erstellt von <strong>{{name}}</strong>'
     edited_by: 'Bearbeitet von <strong>{{name}}</strong>'
     posted: Veröffentlicht
+    current_revision: Letzte
   reactions_input:
     add_your_reaction: Reaktion hinzufügen
   reactions_display:
@@ -565,10 +564,6 @@ de:
   memberships_panel:
     add_coordinator: Zum Koordinator machen
     remove_coordinator: Koordinatorrechte entfernen
-  remove_membership_form:
-    aria_label: 'Mitglied entfernen'
-    title: 'Mitglied entfernen'
-    submit: 'Entfernen'
   pending_invitations_card:
     heading: Ausstehende Einladungen
     email: E-Mail

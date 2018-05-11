@@ -8,7 +8,6 @@ it:
         invalid: non è un valore valido
   errors:
     messages:
-      email: Non è un indirizzo email valido
       spoofed_media_type: I contenuti di questo file non corrispondono al suo nome file
   attachment:
     error:

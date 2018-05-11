@@ -307,6 +307,7 @@ cs:
   revision_history_modal:
     aria_label: Historie revizí
     edited_by: 'Upravil/a <strong>{{name}}</strong>'
+    current_revision: Nejnovější
   reactions_display:
     you: "Vy"
     you_and_name: "Vy a {{name}}"
@@ -422,11 +423,6 @@ cs:
       submit: Odebrat člena
   memberships_panel:
     add_coordinator: Vytvořit koordinátora
-  remove_membership_form:
-    aria_label: 'Odebrat člena'
-    title: 'Odebrat člena'
-    question: 'Opravdu chcete odstranit {{name}} ze skupiny {{group}}?'
-    submit: 'Odebrat'
   pending_invitations_card:
     heading: Nevyřízené pozvánky
     email: Email

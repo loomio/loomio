@@ -427,11 +427,10 @@ es:
       membership_requested: 'Ya has solicitado unirte a {{group}}'
   revision_history_modal:
     aria_label: Historial de revisión
-    thread_header: Historial de revisión del contexto del hilo
-    comment_header: Historial de revisión del comentario
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
     posted: Enviado
+    current_revision: Últimos
   reactions_input:
     add_your_reaction: 'Añadir reacción '
   reactions_display:
@@ -691,11 +690,6 @@ es:
   memberships_panel:
     add_coordinator: 'Hacer coordinador '
     remove_coordinator: Remover coordinador
-  remove_membership_form:
-    aria_label: 'Eliminar miembro'
-    title: 'Eliminar miembro '
-    question: '¿Estás seguro de que quieres eliminar a {{name}} del grupo {{group}}?'
-    submit: 'Eliminar'
   pending_invitations_card:
     heading: Invitaciones pendientes
     email: 'correo electrónico '
