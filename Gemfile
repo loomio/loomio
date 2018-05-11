@@ -54,6 +54,7 @@ gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'skylight'
 gem 'google-cloud-translate'
+gem 'discourse-diff'
 
 group :development, :test do
   gem 'byebug'

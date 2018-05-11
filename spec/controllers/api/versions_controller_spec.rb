@@ -52,14 +52,15 @@ describe API::VersionsController do
       get :show, params: { comment_id: comment.id, index:0 }
       json = JSON.parse(response.body)
       version_changes = json['versions'][0]['changes']
-      expect(version_changes['body']).to eq ["", 'Ready Player Zero']
+      expect(version_changes['body']).to match 'Ready Player Zero'
     end
 
     it 'should show first revision on one for comment' do
       get :show, params: { comment_id: comment.id, index:1 }
       json = JSON.parse(response.body)
       version_changes = json['versions'][0]['changes']
-      expect(version_changes['body']).to eq ['Ready Player Zero', 'Ready Player One']
+      expect(version_changes['body']).to match 'Ready Player <del>Zero</del>'
+      expect(version_changes['body']).to match 'Ready Player <ins>One</ins>'
     end
   end
 end
