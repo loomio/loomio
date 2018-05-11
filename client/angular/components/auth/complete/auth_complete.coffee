@@ -1,10 +1,10 @@
-Records  = require 'shared/services/records.coffee'
-EventBus = require 'shared/services/event_bus.coffee'
-I18n     = require 'shared/services/i18n.coffee'
+Records  = require 'shared/services/records'
+EventBus = require 'shared/services/event_bus'
+I18n     = require 'shared/services/i18n'
 
-{ hardReload }    = require 'shared/helpers/window.coffee'
-{ submitForm }    = require 'shared/helpers/form.coffee'
-{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ hardReload }    = require 'shared/helpers/window'
+{ submitForm }    = require 'shared/helpers/form'
+{ submitOnEnter } = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'authComplete', ->
   scope: {user: '='}

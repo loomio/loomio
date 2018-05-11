@@ -1,15 +1,15 @@
-Records        = require 'shared/services/records.coffee'
-Session        = require 'shared/services/session.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
-ThreadService  = require 'shared/services/thread_service.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
-I18n           = require 'shared/services/i18n.coffee'
+Records        = require 'shared/services/records'
+Session        = require 'shared/services/session'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
+ThreadService  = require 'shared/services/thread_service'
+LmoUrlService  = require 'shared/services/lmo_url_service'
+FlashService   = require 'shared/services/flash_service'
+I18n           = require 'shared/services/i18n'
 
-{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
-{ scrollTo }                                  = require 'shared/helpers/layout.coffee'
+{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
+{ scrollTo }                                  = require 'shared/helpers/layout'
 
 angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard', ($rootScope, clipboard) ->
   scope: {discussion: '='}
@@ -17,7 +17,6 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard'
   replace: true
   templateUrl: 'generated/components/thread_page/context_panel/context_panel.html'
   controller: ['$scope', ($scope) ->
-
     $scope.status = ->
       return 'pinned' if $scope.discussion.pinned
 
@@ -68,6 +67,11 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard'
       icon: 'mdi-pin-off'
       canPerform: -> AbilityService.canUnpinThread($scope.discussion)
       perform:    -> ThreadService.unpin($scope.discussion)
+    ,
+      name: 'show_history',
+      icon: 'mdi-history'
+      canPerform: -> $scope.discussion.edited()
+      perform:    -> ModalService.open 'RevisionHistoryModal', model: -> $scope.discussion
     ,
       name: 'edit_thread'
       icon: 'mdi-pencil'

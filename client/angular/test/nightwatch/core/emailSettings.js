@@ -1,5 +1,5 @@
 require('coffeescript/register')
-pageHelper = require('../helpers/page_helper.coffee')
+pageHelper = require('../helpers/page_helper')
 
 module.exports = {
   'lets you update email settings while logged in': (test) => {

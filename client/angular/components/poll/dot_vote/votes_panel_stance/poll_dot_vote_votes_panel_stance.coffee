@@ -1,5 +1,5 @@
-RecordLoader = require 'shared/services/record_loader.coffee'
-I18n         = require 'shared/services/i18n.coffee'
+RecordLoader = require 'shared/services/record_loader'
+I18n         = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ->
   scope: {stance: '='}

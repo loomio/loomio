@@ -1,6 +1,6 @@
-I18n = require 'shared/services/i18n.coffee'
+I18n = require 'shared/services/i18n'
 
-{ listenForTranslations } = require 'shared/helpers/listen.coffee'
+{ listenForTranslations } = require 'shared/helpers/listen'
 
 angular.module('loomioApp').directive 'pollMeetingVotesPanelStance', ->
   scope: {stance: '='}

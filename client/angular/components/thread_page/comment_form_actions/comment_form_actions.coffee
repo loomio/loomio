@@ -1,4 +1,4 @@
-{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'commentFormActions', ->
   scope: {comment: '=', submit: '='}

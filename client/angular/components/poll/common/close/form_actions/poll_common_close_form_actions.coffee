@@ -1,6 +1,6 @@
-EventBus = require 'shared/services/event_bus.coffee'
+EventBus = require 'shared/services/event_bus'
 
-{ submitForm } = require 'shared/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').directive 'pollCommonCloseFormActions', ->
   scope: {poll: '='}

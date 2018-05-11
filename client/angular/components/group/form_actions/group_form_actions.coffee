@@ -1,11 +1,11 @@
-Records  = require 'shared/services/records.coffee'
-EventBus = require 'shared/services/event_bus.coffee'
-I18n     = require 'shared/services/i18n.coffee'
+Records  = require 'shared/services/records'
+EventBus = require 'shared/services/event_bus'
+I18n     = require 'shared/services/i18n'
 
-{ scrollTo }            = require 'shared/helpers/layout.coffee'
-{ submitForm }          = require 'shared/helpers/form.coffee'
-{ groupPrivacyConfirm } = require 'shared/helpers/helptext.coffee'
-{ submitOnEnter }       = require 'shared/helpers/keyboard.coffee'
+{ scrollTo }            = require 'shared/helpers/layout'
+{ submitForm }          = require 'shared/helpers/form'
+{ groupPrivacyConfirm } = require 'shared/helpers/helptext'
+{ submitOnEnter }       = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'groupFormActions', ->
   scope: {group: '='}

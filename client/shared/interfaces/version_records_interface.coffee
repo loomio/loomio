@@ -1,5 +1,5 @@
-BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
-VersionModel         = require 'shared/models/version_model.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface'
+VersionModel         = require 'shared/models/version_model'
 
 module.exports = class VersionRecordsInterface extends BaseRecordsInterface
   model: VersionModel
@@ -15,3 +15,10 @@ module.exports = class VersionRecordsInterface extends BaseRecordsInterface
       params:
         model: 'comment'
         comment_id: commentId
+
+  fetchVersion: (model, index,  options = {}) ->
+    model_type = model.constructor.singular
+    @fetch
+      params:
+        "#{model_type}_id":model.id
+        index: index

@@ -1,6 +1,6 @@
-I18n = require 'shared/services/i18n.coffee'
+I18n = require 'shared/services/i18n'
 
-{ discussionPrivacy } = require 'shared/helpers/helptext.coffee'
+{ discussionPrivacy } = require 'shared/helpers/helptext'
 
 angular.module('loomioApp').directive 'discussionPrivacyIcon', ->
   scope: {discussion: '=', private: '=?'}

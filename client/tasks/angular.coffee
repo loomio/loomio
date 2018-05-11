@@ -88,6 +88,7 @@ requireForBundle = ->
     ).join("\n")
 
 browserifyOpts = ->
-  entries: paths.angular.main,
+  entries: paths.angular.main
   paths: ['./', './node_modules']
+  extensions: ['.coffee', '.js']
   transform: [coffeeify]

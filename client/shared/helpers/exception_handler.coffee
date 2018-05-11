@@ -1,4 +1,4 @@
-AppConfig = require 'shared/services/app_config.coffee'
+AppConfig = require 'shared/services/app_config'
 Raven = require('raven-js');
 
 if AppConfig.sentry_dsn
@@ -21,6 +21,7 @@ if AppConfig.sentry_dsn
       'Script error.'
       'miscellaneous_bindings'
       'canonicalUrl'
+      'TypeError: s.outlets[Object.keys(...)[0]]'
     ]
     ignoreUrls: [
       /graph\.facebook\.com/i

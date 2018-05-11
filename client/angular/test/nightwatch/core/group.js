@@ -1,6 +1,6 @@
 require('coffeescript/register')
-pageHelper     = require('../helpers/page_helper.coffee')
-workflowHelper = require('../helpers/workflow_helper.coffee')
+pageHelper     = require('../helpers/page_helper')
+workflowHelper = require('../helpers/workflow_helper')
 
 module.exports = {
   'displays parent group in sidebar if member of a subgroup': (test) => {

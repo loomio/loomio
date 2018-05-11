@@ -1,5 +1,5 @@
-Records      = require 'shared/services/records.coffee'
-ModalService = require 'shared/services/modal_service.coffee'
+Records      = require 'shared/services/records'
+ModalService = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'documentCard', ->
   scope: {group: '='}

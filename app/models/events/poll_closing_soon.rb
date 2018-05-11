@@ -7,7 +7,8 @@ class Events::PollClosingSoon < Event
   def self.publish!(poll)
     super poll,
           user: poll.author,
-          parent: poll.created_event
+          parent: poll.created_event,
+          created_at: Time.now
   end
 
   private

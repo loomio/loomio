@@ -98,11 +98,16 @@ class Poll < ApplicationRecord
 
   has_paper_trail only: [:title, :details, :closing_at, :group_id]
 
+  def self.always_versioned_fields
+    [:title, :details]
+  end
+
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :discussion, :closed_polls_count
   define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
   define_counter_cache(:undecided_count) { |poll| poll.undecided.count }
+  define_counter_cache(:versions_count) { |poll| poll.versions.count}
 
   delegate :locale, to: :author
   delegate :guest_group, to: :discussion, prefix: true, allow_nil: true

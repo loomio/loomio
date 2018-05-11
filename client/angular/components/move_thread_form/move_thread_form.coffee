@@ -1,8 +1,8 @@
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-I18n           = require 'shared/services/i18n.coffee'
+Session        = require 'shared/services/session'
+Records        = require 'shared/services/records'
+I18n           = require 'shared/services/i18n'
 
-{ submitForm } = require 'shared/helpers/form.coffee'
+{ submitForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'MoveThreadForm', ->
   templateUrl: 'generated/components/move_thread_form/move_thread_form.html'
@@ -10,7 +10,7 @@ angular.module('loomioApp').factory 'MoveThreadForm', ->
     $scope.discussion = discussion.clone()
 
     $scope.availableGroups = ->
-      _.filter Session.user().groups(), (group) ->
+      _.filter Session.user().formalGroups(), (group) ->
         group.id != discussion.groupId
 
     $scope.submit = submitForm $scope, $scope.discussion,

@@ -1,5 +1,5 @@
-AppConfig             = require 'shared/services/app_config.coffee'
-ImplementationService = require 'shared/services/implementation_service.coffee'
+AppConfig             = require 'shared/services/app_config'
+ImplementationService = require 'shared/services/implementation_service'
 
 createFlashLevel = (service, level, duration) ->
   (translateKey, translateValues, actionKey, actionFn) ->

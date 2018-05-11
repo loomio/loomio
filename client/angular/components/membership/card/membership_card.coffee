@@ -1,9 +1,9 @@
-Records        = require 'shared/services/records.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
-RecordLoader   = require 'shared/services/record_loader.coffee'
-I18n           = require 'shared/services/i18n.coffee'
-Records        = require 'shared/services/records.coffee'
+Records        = require 'shared/services/records'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
+RecordLoader   = require 'shared/services/record_loader'
+I18n           = require 'shared/services/i18n'
+Records        = require 'shared/services/records'
 
 angular.module('loomioApp').directive 'membershipCard', ->
   scope: {group: '=', pending: "=?"}
@@ -49,7 +49,7 @@ angular.module('loomioApp').directive 'membershipCard', ->
       !$scope.loader.loading
 
     $scope.canAddMembers = ->
-      AbilityService.canAddMembers($scope.group)
+      AbilityService.canAddMembers($scope.group) && !$scope.pending
 
     $scope.memberships = ->
       if $scope.vars.fragment

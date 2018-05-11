@@ -1,4 +1,4 @@
-AbilityService = require 'shared/services/ability_service.coffee'
+AbilityService = require 'shared/services/ability_service'
 
 angular.module('loomioApp').directive 'decisionToolsCard', ->
   scope: {discussion: '='}

@@ -1,6 +1,6 @@
-Records            = require 'shared/services/records.coffee'
-Session            = require 'shared/services/session.coffee'
-ThreadQueryService = require 'shared/services/thread_query_service.coffee'
+Records            = require 'shared/services/records'
+Session            = require 'shared/services/session'
+ThreadQueryService = require 'shared/services/thread_query_service'
 
 module.exports = new class InboxService
 

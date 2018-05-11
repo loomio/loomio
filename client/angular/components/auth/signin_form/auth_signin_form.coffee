@@ -1,10 +1,10 @@
-AuthService   = require 'shared/services/auth_service.coffee'
-EventBus      = require 'shared/services/event_bus.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
-I18n          = require 'shared/services/i18n.coffee'
+AuthService   = require 'shared/services/auth_service'
+EventBus      = require 'shared/services/event_bus'
+LmoUrlService = require 'shared/services/lmo_url_service'
+I18n          = require 'shared/services/i18n'
 
-{ hardReload }    = require 'shared/helpers/window.coffee'
-{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ hardReload }    = require 'shared/helpers/window'
+{ submitOnEnter } = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'authSigninForm', ->
   scope: {user: '='}

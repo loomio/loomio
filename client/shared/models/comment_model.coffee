@@ -1,9 +1,9 @@
-BaseModel       = require 'shared/record_store/base_model.coffee'
-AppConfig       = require 'shared/services/app_config.coffee'
-HasDrafts       = require 'shared/mixins/has_drafts.coffee'
-HasDocuments    = require 'shared/mixins/has_documents.coffee'
-HasMentions     = require 'shared/mixins/has_mentions.coffee'
-HasTranslations = require 'shared/mixins/has_translations.coffee'
+BaseModel       = require 'shared/record_store/base_model'
+AppConfig       = require 'shared/services/app_config'
+HasDrafts       = require 'shared/mixins/has_drafts'
+HasDocuments    = require 'shared/mixins/has_documents'
+HasMentions     = require 'shared/mixins/has_mentions'
+HasTranslations = require 'shared/mixins/has_translations'
 
 module.exports = class CommentModel extends BaseModel
   @singular: 'comment'
@@ -74,10 +74,3 @@ module.exports = class CommentModel extends BaseModel
 
   edited: ->
     @versionsCount > 1
-
-  attributeForVersion: (attr, version) ->
-    return '' unless version
-    if version.changes[attr]
-      version.changes[attr][1]
-    else
-      @attributeForVersion(attr, @recordStore.versions.find(version.previousId))

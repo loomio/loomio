@@ -1,6 +1,6 @@
-AppConfig      = require 'shared/services/app_config.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+AppConfig      = require 'shared/services/app_config'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'installSlackCard', ->
   scope: {group: '='}

@@ -16,7 +16,7 @@ class LoggedOutUser
   end
 
   def create_user
-    User.create!(name: name, email: email, token: token)
+    User.create(name: name, email: email, token: token)
   end
 
   def nil_methods

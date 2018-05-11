@@ -1,11 +1,11 @@
-Session        = require 'shared/services/session.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+Session        = require 'shared/services/session'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+LmoUrlService  = require 'shared/services/lmo_url_service'
+FlashService   = require 'shared/services/flash_service'
+ModalService   = require 'shared/services/modal_service'
 
-{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen.coffee'
+{ listenForTranslations, listenForReactions } = require 'shared/helpers/listen'
 
 angular.module('loomioApp').directive 'newComment', ['$rootScope', 'clipboard', ($rootScope, clipboard) ->
   scope: {event: '=', eventable: '='}

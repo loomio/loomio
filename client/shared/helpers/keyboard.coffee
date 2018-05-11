@@ -1,6 +1,6 @@
-AppConfig      = require 'shared/services/app_config.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
+AppConfig      = require 'shared/services/app_config'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
 
 # a series of method related to the user entering input through the keyboard,
 # such as hotkeys or submit on enter

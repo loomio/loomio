@@ -1,5 +1,5 @@
-AppConfig = require 'shared/services/app_config.coffee'
-EventBus  = require 'shared/services/event_bus.coffee'
+AppConfig = require 'shared/services/app_config'
+EventBus  = require 'shared/services/event_bus'
 
 angular.module('loomioApp').directive 'authProviderForm', ['$window', ($window) ->
   scope: {user: '='}

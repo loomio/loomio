@@ -1,11 +1,11 @@
-BaseModel        = require 'shared/record_store/base_model.coffee'
-AppConfig        = require 'shared/services/app_config.coffee'
-HasMentions      = require 'shared/mixins/has_mentions.coffee'
-HasDrafts        = require 'shared/mixins/has_drafts.coffee'
-HasDocuments     = require 'shared/mixins/has_documents.coffee'
-HasTranslations  = require 'shared/mixins/has_translations.coffee'
-HasGuestGroup    = require 'shared/mixins/has_guest_group.coffee'
-I18n             = require 'shared/services/i18n.coffee'
+BaseModel        = require 'shared/record_store/base_model'
+AppConfig        = require 'shared/services/app_config'
+HasMentions      = require 'shared/mixins/has_mentions'
+HasDrafts        = require 'shared/mixins/has_drafts'
+HasDocuments     = require 'shared/mixins/has_documents'
+HasTranslations  = require 'shared/mixins/has_translations'
+HasGuestGroup    = require 'shared/mixins/has_guest_group'
+I18n             = require 'shared/services/i18n'
 
 module.exports = class PollModel extends BaseModel
   @singular: 'poll'
@@ -63,6 +63,7 @@ module.exports = class PollModel extends BaseModel
     @hasMany   'pollOptions'
     @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
     @hasMany   'pollDidNotVotes'
+    @hasMany   'versions', sortBy: 'createdAt'
 
   discussionGuestGroupId: ->
     @discussion().guestGroupId if @discussion()
@@ -167,3 +168,6 @@ module.exports = class PollModel extends BaseModel
   removeOrphanOptions: ->
     _.each @pollOptions(), (option) =>
       option.remove() unless _.includes(@pollOptionNames, option.name)
+
+  edited: ->
+    @versionsCount > 1

@@ -88,4 +88,21 @@ module Dev::Scenarios::Discussion
     patrick.update(experiences: { closingThread: true })
     redirect_to group_url(create_group)
   end
+
+  def setup_comment_with_versions
+    comment = Comment.new(discussion: create_discussion, body: "What star sign are you?")
+    CommentService.create(comment: comment, actor: jennifer)
+    comment.update(body: "What moon sign are you?")
+    comment.update_versions_count
+    sign_in patrick
+    redirect_to discussion_url(create_discussion)
+  end
+
+  def setup_discussion_with_versions
+    create_discussion
+    create_discussion.update(title: "What moon sign are you?")
+    create_discussion.update_versions_count
+    sign_in patrick
+    redirect_to discussion_url(create_discussion)
+  end
 end
