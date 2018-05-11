@@ -306,7 +306,7 @@ module.exports = {
     page.expectText('.revision-history-content--markdown ins', 'moon')
     page.click('.revision-history-nav--previous')
     page.expectText('.revision-history-nav', 'Original')
-    page.expectText('.revision-history-content ins', 'What star sign are you?')
+    page.expectText('.revision-history-content--markdown', 'What star sign are you?')
   },
 
   'lets_you_view_discussion_revision_history': (test) => {
