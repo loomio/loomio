@@ -54,7 +54,7 @@ gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'skylight'
 gem 'google-cloud-translate'
-gem 'discourse-diff', path: '../discourse-diff'
+gem 'discourse-diff'
 
 group :development, :test do
   gem 'byebug'
