@@ -2,8 +2,8 @@
   .lmo-flex.lmo-relative.lmo-action-dock-wrapper{layout: "row", id: "sequence-{{event.sequenceId}}"}
     .lmo-disabled-form{ng-show: "isDisabled"}
     .thread-item__avatar.lmo-margin-right
-      %user_avatar{ng-if: "!event.discussion().isForking() && event.actor()", user: "event.actor()", size: "small"}
-      %md-checkbox{ng-if: "event.discussion().isForking()", ng-disabled: "!event.canFork()", ng-click: "event.toggleFromFork()", ng-checked: "event.isForking()"}
+      %user_avatar{ng-if: "!event.isForkable() && event.actor()", user: "event.actor()", size: "small"}
+      %md-checkbox{ng-if: "event.isForkable()", ng-disabled: "!event.canFork()", ng-click: "event.toggleFromFork()", ng-checked: "event.isForking()"}
     .thread-item__body.lmo-flex.lmo-flex__horizontal-center{layout: "column"}
       .thread-item__headline.lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__grow.lmo-flex__space-between
         %h3.thread-item__title{id: "event-{{event.id}}"}

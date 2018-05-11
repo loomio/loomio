@@ -62,6 +62,9 @@ module.exports = class EventModel extends BaseModel
   canFork: ->
     @kind == 'new_comment' && @isSurface()
 
+  isForkable: ->
+    @discussion().isForking() && @kind == 'new_comment'
+
   isForking: ->
     _.contains @discussion().forkedEventIds, @id
 
