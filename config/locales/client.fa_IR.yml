@@ -141,8 +141,6 @@ fa_IR:
   memberships_page:
     members: 'اعضا'
     remove_member_label: 'حذف کردن'
-  remove_membership_form:
-    submit: 'حذف کردن'
   email_settings_page:
     header: تنظیمات رایانامه
     update_settings: ذخیره کردن تغییرات

@@ -227,9 +227,8 @@ ko:
       membership_requested: '{{group}}에 가입을 요청하였습니다'
   revision_history_modal:
     aria_label: 검토 이력
-    thread_header: '쓰레드 주제 이력 '
-    comment_header: 코멘트 편집 이력 보기
     posted: 저장됨
+    current_revision: 최신
   group_page:
     messages:
       privacy:
@@ -405,10 +404,6 @@ ko:
     membership:
       title: 멤버 삭제
       submit: 멤버 삭제
-  remove_membership_form:
-    aria_label: '멤버 삭제'
-    title: '멤버 삭제'
-    submit: '삭제'
   pending_invitations_card:
     heading: 대기 중인 초대
     email: 이메일

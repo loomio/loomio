@@ -212,11 +212,10 @@ tr:
       membership_requested: '{{group}} grubuna üyelik talebi gönderdin.'
   revision_history_modal:
     aria_label: Revizyon geçmişi
-    thread_header: Konu içeriği revizyon geçmişi
-    comment_header: Revizyon geçmişi yorum düzenleme
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
     edited_by: '<strong>{{name}}</strong> tarafından düzenlendi'
     posted: Gönderildi
+    current_revision: En yeniler
   group_page:
     messages:
       privacy:

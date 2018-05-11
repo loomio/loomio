@@ -8,7 +8,6 @@ pt_BR:
         invalid: não é um valor válido
   errors:
     messages:
-      email: 'Não é um endereço de email válido '
       spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
   poll:
     export:

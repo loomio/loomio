@@ -417,11 +417,10 @@ nl_NL:
       membership_requested: 'Je hebt het lidmaatschap aangevraagd voor {{group}}'
   revision_history_modal:
     aria_label: Mutatiegeschiedenis
-    thread_header: Revisiegeschiedenis bordbeschrijving
-    comment_header: Revisiegeschiedenis commentaarbewerking
     started_by: 'Gestart door <strong>{{name}}</strong>'
     edited_by: 'Bijgewerkt door <strong>{{name}}</strong>'
     posted: Geplaatst
+    current_revision: Laatste
   reactions_input:
     add_your_reaction: Voeg je reactie toe
   reactions_display:
@@ -651,11 +650,6 @@ nl_NL:
   memberships_panel:
     add_coordinator: Duid een coördinator aan
     remove_coordinator: Degradeer een coördinator
-  remove_membership_form:
-    aria_label: 'Verwijder lid'
-    title: 'Verwijder lid'
-    question: 'Ben je er zeker van dat je {{name}} wilt verwijderen uit {{group}}?'
-    submit: 'Verwijderen'
   pending_invitations_card:
     heading: Uitnodigingen in behandeling
     email: Email
