@@ -49,7 +49,6 @@ class GroupInviter
     Membership.new(inviter: @inviter,
                    user: user,
                    group: @group,
-                   volume: Membership.volumes[:normal],
                    accepted_at: (Time.now if user.email_verified))
   end
 end
