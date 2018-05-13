@@ -8,7 +8,11 @@ class Pending::TokenSerializer < Pending::BaseSerializer
   end
 
   def name
-    user.name
+    if object.is_reactivation
+      user[:name]
+    else
+      user.name
+    end
   end
 
   def email
@@ -22,6 +26,7 @@ class Pending::TokenSerializer < Pending::BaseSerializer
   end
 
   def email_status
+    return 'active' if object.is_reactivation
     User.email_status_for(email)
   end
 end

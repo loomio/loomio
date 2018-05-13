@@ -90,19 +90,19 @@ en:
         To access loomio from now on, please use <strong>%{email}</strong> when you sign in.
 
   email:
+    common:
+      or_enter_code: Or, enter the code below
+      resend: This link will expire in 24 hours and can only be used once.
+
     login:
       subject: Sign in to %{site_name}
       intro: Hi %{name}, here is a link to sign in to your %{site_name} account.
       login: Sign in as %{name}
-      or_enter_code: Or, enter the code below
-      resend: This link will expire in 24 hours and can only be used once.
 
     reactivate:
-      subject: Sign in to %{site_name}
-      intro: Hi %{name}, here is a link to sign in to your %{site_name} account.
-      login: Sign in as %{name}
-      or_enter_code: Or, enter the code below
-      resend: This link will expire in 24 hours and can only be used once.
+      subject: Reactivate your %{site_name} account
+      intro: Hi %{name}, here is a link to reactivate your %{site_name} account.
+      login: Reactivate %{name}
 
     contact_request:
        subject: "%{name} would like to connect with you on %{site_name}!"

@@ -64,8 +64,7 @@ class API::ProfileController < API::RestfulController
   def target_user_by_email
     {
       user: resource_class.inactive.verified_first.find_by(email: params[:user][:email]),
-      actor: current_user,
-      params: {}
+      actor: current_user
     }
   end
 
