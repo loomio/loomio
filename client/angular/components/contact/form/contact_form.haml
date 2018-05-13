@@ -1,0 +1,25 @@
+.contact-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
+
+  %p.lmo-hint-text.contact-form__helptext{translate: "contact_message_form.helptext"}
+
+  %md-input-container.md-block{ng-if: "!isLoggedIn()"}
+    %label{translate: "contact_message_form.name_label"}
+    %input{type: "text", placeholder: "{{'contact_message_form.name_placeholder' | translate}}", ng-model: "message.name"}
+    %validation_errors{subject: "message", field: "name"}
+
+  %md-input-container.md-block{ng-if: "!isLoggedIn()"}
+    %label{translate: "contact_message_form.email_label"}
+    %input{type: "text", placeholder: "{{'contact_message_form.email_placeholder' | translate}}", ng-model: "message.email"}
+    %validation_errors{subject: "message", field: "email"}
+
+  %md-input-container.md-block
+    %label{translate: "contact_message_form.message_label"}
+    %textarea{ng-model: "message.message", placeholder: "{{'contact_message_form.message_placeholder' | translate}}"}
+    %validation_errors{subject: "message", field: "message"}
+
+  %p.lmo-hint-text{translate: "contact_message_form.contact_us_email", translate-value-email: "{{contactEmail}}"}
+
+  .lmo-md-actions
+    %div
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "contact_message_form.send_message"}

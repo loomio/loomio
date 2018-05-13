@@ -4,9 +4,10 @@
 #
 # It is not a standalone image.
 #
-FROM ruby:2.3.5
-ENV REFRESHED_AT 2017-08-29
+FROM ruby:2.5.0
+ENV REFRESHED_AT 2018-02-13
 
+RUN gem update --system
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
 
 # for postgres
@@ -35,17 +36,10 @@ RUN npm rebuild node-sass
 WORKDIR /loomio
 RUN bundle install
 
-# use development env to build assets with fake sqlite database (heroku blocks you from using sqlite in production)
-ENV RAILS_ENV development
-
-# fake config for building assets (yawn)
-ENV DATABASE_URL sqlite3:assets_throwaway.db
-ENV DEVISE_SECRET boopboop
-ENV SECRET_COOKIE_TOKEN beepbeep
-
 # build client app
-RUN bundle exec rake deploy:build[plugins.docker]
+RUN bundle exec rake plugins:fetch[docker]
 
 EXPOSE 3000
+
 # source the config file and run puma when the container starts
 CMD /loomio/docker_start.sh

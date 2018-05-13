@@ -1,22 +1,54 @@
 cs:
+  explore:
+    header: Prozkoumejte veřejné skupiny
+  activerecord:
+    errors:
+      messages:
+        blank: nemůže být prázdné
+        invalid: není platná hodnota
+  errors:
+    messages:
+      spoofed_media_type: Obsah tohoto souboru neodpovídá jeho názvu
+  attachment:
+    error:
+      too_large: Soubor, který jste se pokusili přiložit, je větší než 100MB. Prosím, vyberte menší soubor.
+  poll:
+    export:
+      title: Název
+      author: Autor
+      details: Podrobnosti
+      group_name: Název skupiny
+      total: Celkem
+  stance:
+    error:
+      too_short: Proveďte prosím výběr
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
+      for_today: "%l:%M %P"
   validate:
     motion:
       must_close_in_future: Návrh musí být uzavřen v budoucnu.
       one_at_a_time: Existuje další aktivní návrh.
   subscriptions:
     gift_plan_selected_for_group_html: |
-      <h1>Úspěch.</h1>
-      <p>Vybrali jste bezplatný plán pro vaši skupinu <a href="/g/%{group_key}">%{group}</a></p>
+        <h1>Úspěch.</h1>
+        <p>Vybrali jste bezplatný plán pro vaši skupinu <a href="/g/%{group_key}">%{group}</a></p>
   email:
+    login:
+      login: Přihlášen jako %{name}
+      resend: Platnost tohoto odkazu vyprší za 24 hodin a může být použit pouze jednou.
     reset_password:
       link_text: Obnovit heslo
     start_decision:
       subject: Spuštění rozhodování na Loomio
       intro: Ahoj, <strong>%{name}</strong>!
       action: Co bys rád dělal?
+      count: Spustit kontrolu
     group_email:
       intro: "%{who} oznámil(a) skupině %{group}:"
     by_who: od %{person}
@@ -35,6 +67,7 @@ cs:
       mark_as_read: Označit jako přečtené
       thanks_for_reading: Děkujeme za přečtení a přejeme hezký den!
       marked_as_read_success: Všechno z e-mailu bylo označeno jako přečtené
+      click_here: Klikněte sem
     group_membership_approved:
       join_group: "Přidat se ke skupině"
     membership_request:
@@ -51,6 +84,9 @@ cs:
     public_groups: Veřejné skupiny
     terms: Podmínky
   password_reset:
+    change_my_password: Změna hesla
+    confirm_new_password: Potvrdit heslo
+    new_password: Nové heslo
     reset_email_timeframe: K přijetí e-mailu může dojít až za 5 minut. Pokud se nezobrazí, nezapomeňte zkontrolovat složku spamu.
     length_restriction: Hesla musí být alespoň 8 znaků dlouhé.
     forbidden_passwords: Běžná hesla, jako je "heslo, password, ...", jsou zakázána, aby váš účet byl bezpečný.
@@ -63,13 +99,13 @@ cs:
   markdown:
     intro:
       title: |
-        # Co je markdown?
+          # Co je markdown?
     lists:
       title: |
-        ## Seznamy
+          ## Seznamy
     links:
       title: |
-        ## Odkazy a obrázky
+          ## Odkazy a obrázky
   poll_mailer:
     common:
       or: nebo
@@ -78,10 +114,14 @@ cs:
       results: Výsledky
       responses: Odpovědi
       create_outcome: Sdílet výsledek
+      your_response: "Hlasovali jste:"
+      please_respond: Prosím odpovězte
       more_undecided: "%{count} více..."
+      vote_now: Hlasovat nyní
     proposal:
       subject:
         poll_created: '%{actor} vytvořil návrh: %{title}'
+        poll_closing_soon: 'Návrhy uzavřené během 24 hodin: %{title}'
         poll_expired: "Uzavření návrhu: %{title}"
   poll_generator:
     meeting:

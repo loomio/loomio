@@ -1,4 +1,12 @@
 da:
+  poll:
+    export:
+      title: Titel
+      author: Forfatter
+      details: Beskrivelse
+      group_name: Gruppenavn
+      reason: Begrundelse
+      total: Total
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
@@ -8,19 +16,19 @@ da:
       one_at_a_time: Der er en andet aktivt forslag.
   subscriptions:
     gift_plan_selected_for_group_html: |
-      <h1>Succes.</h1>
-      <p>Du har valgt den gratis abonnements ordning for din gruppe <a href="/g/%{group_key}">%{group}</a></p>
+        <h1>Succes.</h1>
+        <p>Du har valgt den gratis abonnements ordning for din gruppe <a href="/g/%{group_key}">%{group}</a></p>
   email:
     reset_password:
       greeting: |+
-        Hej %{name}
-        Her er et link som du kan bruge til at nulstill din adgangskode for din Loomio konto:
+          Hej %{name}
+          Her er et link som du kan bruge til at nulstill din adgangskode for din Loomio konto:
 
       link_text: Nulstil din adgangskode
       signoff: |
-        Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
-        Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
-        Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
+          Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
+          Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
+          Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
     custom: "%{text}"
     group_email:
       intro: "%{who} oprettede en bekendtgørelse til %{group}:"
@@ -43,6 +51,7 @@ da:
       mark_as_read: Marker som læst
       thanks_for_reading: Tak fordi du læste, hav en god dag!
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
+      click_here: Klik her
     group_membership_approved:
       intro: "Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt."
       intro_html: "Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt."
@@ -53,6 +62,9 @@ da:
       subject: "%{who} har anmodet om medlemskab af %{which_group}"
       view_group: Du kan godkende eller afvise anmodningen her
       button_text: Vis anmodning
+  discussion_mailer:
+    reply_or_view_online_html: Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>Slå email notifikationer fra</a> for denne diskussion."
   footer:
     about: Om
     blog: Blog
@@ -63,9 +75,6 @@ da:
     public_groups: Offentlige grupper
     terms: Betingelser
     independent_install_html: '%{hostname} kører en selvstændig kopi af Loomio: <a href="http://github.com/loomio/loomio">se mere her</a>.'
-  invitation_form:
-    error:
-      all_email_addresses_belong_to_members: "Der blev ikke afsendt invitationer til emailadresserne der blev angivet da de tilhører personer som allerede er medlemmer af gruppen."
   password_reset:
     reset_email_timeframe: Vent venligst i op til 5 minutter på at emailen kommer. Hvis den ikke kommer, så kontroller din spam folder.
     length_restriction: Adgangskode skal være mindst 8 tegn.
@@ -73,97 +82,97 @@ da:
   introduction_thread:
     title: Velkommen, introducér dig selv
     description: |
-      Brug et øjeblik på at beskrive dig selv, så at gruppen ved hvem du er. Opret en kommentar herunder
+        Brug et øjeblik på at beskrive dig selv, så at gruppen ved hvem du er. Opret en kommentar herunder
 
-      Hvad er din rolle eller tilgang til at deltaget i denne gruppe? Hvad er vigtigt for andre deltagere at vide om dig for at bedre forstå dit perspektiv?
+        Hvad er din rolle eller tilgang til at deltaget i denne gruppe? Hvad er vigtigt for andre deltagere at vide om dig for at bedre forstå dit perspektiv?
   how_it_works_thread:
     title: Sådan bruger du Loomio
     description: |
-      Velkommen til Loomio, et online sted hvor man kan træffe beslutninger sammen.
+        Velkommen til Loomio, et online sted hvor man kan træffe beslutninger sammen.
 
-      Dette er et eksempel på en diskussion. Du kan tilføje kommentarer herunder. En diskussion har et specifikt emne. Denne diskussion omhandler hvordan man bruger Loomio, så opret kommentarer om dette her.
+        Dette er et eksempel på en diskussion. Du kan tilføje kommentarer herunder. En diskussion har et specifikt emne. Denne diskussion omhandler hvordan man bruger Loomio, så opret kommentarer om dette her.
 
-      Du er pt. igang med at læse konteksten for diskussionen, typisk indeholder dette baggrundsinformation for diskussionen. Dette kan opdateres mens man bliver klogere igennem diskussionen.
+        Du er pt. igang med at læse konteksten for diskussionen, typisk indeholder dette baggrundsinformation for diskussionen. Dette kan opdateres mens man bliver klogere igennem diskussionen.
 
-      Kom igang med Loomio
-      1. Upload et [profilbillede](/profile)
-      2. Introducér dig selv i [Velkommen diskussionen](%{thread_url})
-      3. Kommenter på eksisterende diskussioner, eller start en nye diskussion.
+        Kom igang med Loomio
+        1. Upload et [profilbillede](/profile)
+        2. Introducér dig selv i [Velkommen diskussionen](%{thread_url})
+        3. Kommenter på eksisterende diskussioner, eller start en nye diskussion.
 
-      Tips når man kommunikerer i Loomio
-      * For at notificere en bestemt person , task @ og så deres navn.
-      * Klik på papirklips ikonet for at uploade vedhæftninger.
+        Tips når man kommunikerer i Loomio
+        * For at notificere en bestemt person , task @ og så deres navn.
+        * Klik på papirklips ikonet for at uploade vedhæftninger.
 
-      Hvis du har spørgsmål, så kig i [vejledningen](http://help.loomio.org).
+        Hvis du har spørgsmål, så kig i [vejledningen](http://help.loomio.org).
   first_proposal:
     name: Demonstrations forslag
     description: |
-      Dette er et **forslag**, som understøtter at tage en beslutning sammen. Du kan oprette et forslag så snart en diskusion er igang.
+        Dette er et **forslag**, som understøtter at tage en beslutning sammen. Du kan oprette et forslag så snart en diskusion er igang.
 
-      Alle bliver spurgt om at  **give deres mening til kende** inden  **deadline**. Du kan udskyde eller forlænge en deadline, eller vælge at lukke et forslag før tid, hvis man gennem diskusionen finder ud af at forslaget ramte ved siden af.
+        Alle bliver spurgt om at  **give deres mening til kende** inden  **deadline**. Du kan udskyde eller forlænge en deadline, eller vælge at lukke et forslag før tid, hvis man gennem diskusionen finder ud af at forslaget ramte ved siden af.
 
-      Du kan **skifte mening** så længe forslaget er åbent. Det kan være at diskusionen bringer nye informationer på bordet som gør at du skifter mening.
+        Du kan **skifte mening** så længe forslaget er åbent. Det kan være at diskusionen bringer nye informationer på bordet som gør at du skifter mening.
 
-      Nogen gange gennemarbejder grupper en **serie af forslag** for at gradvis komme tættere og tættere på den "rigtige" løsning for alle. Du kan oprette efterfølgende forslag i denne  diskusion.
+        Nogen gange gennemarbejder grupper en **serie af forslag** for at gradvis komme tættere og tættere på den "rigtige" løsning for alle. Du kan oprette efterfølgende forslag i denne  diskusion.
 
-      **Deltag! Tryk en af de 4 knapper**.
+        **Deltag! Tryk en af de 4 knapper**.
   markdown:
     intro:
       title: |
-        # Hvad er markdown?
+          # Hvad er markdown?
       body: |
-        Markdown er en måde at formattere rå tekst (venstre),
-        så det kan vises som formateret tekst (højre).
+          Markdown er en måde at formattere rå tekst (venstre),
+          så det kan vises som formateret tekst (højre).
 
-        Denne side er skrevet i markdown for at vise hvordan det virker.
+          Denne side er skrevet i markdown for at vise hvordan det virker.
     headers:
       body: |
-        ## Overskrift
+          ## Overskrift
 
-        Skriv en eller flere "havelåger" og afslut med et mellemrum for at lave teksten til en overskrift.
+          Skriv en eller flere "havelåger" og afslut med et mellemrum for at lave teksten til en overskrift.
 
-        # Dette er en h1
-        ## Dette er en h2
-        #### Dette er en h4
+          # Dette er en h1
+          ## Dette er en h2
+          #### Dette er en h4
     paragraphs:
       title: |
-        ## Paragraffer
+          ## Paragraffer
       body: |
-        Du skal
-        oprette en
-        blank linje
-        mellem linjer.
+          Du skal
+          oprette en
+          blank linje
+          mellem linjer.
 
-        Ellers bliver det til en stor paragraf!
+          Ellers bliver det til en stor paragraf!
     emphasis:
       title: |
-        ## Fed skrift
+          ## Fed skrift
       body: |
-        Du kan lave skrå skrift ved at omringe den relevante tekst med  _underscore_ eller *star*.
+          Du kan lave skrå skrift ved at omringe den relevante tekst med  _underscore_ eller *star*.
 
-        __Fed skrift__ opnås ved at omringe den tekst med 2 stjerner foran og bagved **emphasis**.
+          __Fed skrift__ opnås ved at omringe den tekst med 2 stjerner foran og bagved **emphasis**.
     lists:
       title: |
-        ## Lister
+          ## Lister
       body: |
-        Man kan lave en liste ved at:
+          Man kan lave en liste ved at:
 
-        * hav en blank linie før din liste
-        * start linien med en stjerne (*)
-        * efterfulgt af et mellemrum og så din tekst
+          * hav en blank linie før din liste
+          * start linien med en stjerne (*)
+          * efterfulgt af et mellemrum og så din tekst
     links:
       title: |
-        ## Link og billeder
+          ## Link og billeder
       body: |
-        Gentga højt:
+          Gentga højt:
 
-        Skarpe paranteser for navnet og almindelige paranteser for URLen. Der er ikke noget mellemrum mellem skarpe og normale paranteser.
+          Skarpe paranteser for navnet og almindelige paranteser for URLen. Der er ikke noget mellemrum mellem skarpe og normale paranteser.
 
-        [Loomio Hjemmeside](https://www.loomio.org/)
+          [Loomio Hjemmeside](https://www.loomio.org/)
 
-        Links til billeder er det sammen bare med et udråbstegns foranstillet.
+          Links til billeder er det sammen bare med et udråbstegns foranstillet.
 
-        ![loomio logo](https://i.imgur.com/Fvtworb.png)
+          ![loomio logo](https://i.imgur.com/Fvtworb.png)
   poll_mailer:
     common:
       or: eller
@@ -184,6 +193,7 @@ da:
         poll_expired: "Forslag lukket: %{title}"
         poll_expired_author: 'Dit forslag er lukket. Del restulatet for: %{title}'
         outcome_created: '%{actor} delte et forslags results: %{title}'
+        outcome_announced: '%{actor} delte et forslags results: %{title}'
         stance_created: "%{actor} stemte på: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> oprettede et forslag'
@@ -193,6 +203,7 @@ da:
         poll_expired: "<strong>%{actor}'s</strong> forslag er lukket: %{title}"
         poll_expired_author: 'Dir forslag er <strong>lukket</strong>. Overvej hvad der er blevet sagt <strong>del et resultat</strong> med gruppen, so folk ved hvad der sker som det næste skridt.'
         outcome_created: '<strong>%{actor}</strong> delte resultatet af et forslag.'
+        outcome_announced: '<strong>%{actor}</strong> delte resultatet af et forslag.'
         stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -205,6 +216,7 @@ da:
         poll_expired: "Afstemning resultat: %{title}"
         poll_expired_author: 'Din afstemning er lukket. Del resultatet af afstemningen for: %{title}'
         outcome_created: '%{actor} delte resultatet af afstemningen: %{title}'
+        outcome_announced: '%{actor} delte resultatet af afstemningen: %{title}'
         stance_created: "%{actor} stemte på: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> oprettede en afstemning'
@@ -214,6 +226,7 @@ da:
         poll_expired: "<strong>%{actor}'s</strong> afstemning er lukket: %{title}"
         poll_expired_author: 'Din afstemning er <strong>lukket</strong>. Overvej hvad der er blevet sagt <strong>del et resultat</strong> med gruppen, så folk ved hvad der sker som det næste skridt.'
         outcome_created: '<strong>%{actor}</strong> delte resultatet af en afstemning.'
+        outcome_announced: '<strong>%{actor}</strong> delte resultatet af en afstemning.'
         stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -221,9 +234,11 @@ da:
       subject:
         poll_created: '%{actor} kontrollerer: %{title}'
         outcome_created: '%{actor} delte resultatet for: %{title}'
+        outcome_announced: '%{actor} delte resultatet for: %{title}'
         stance_created: "%{actor} deltog i: %{title}"
       header:
         outcome_created: '<strong>%{actor}</strong> delte et resultat.'
+        outcome_announced: '<strong>%{actor}</strong> delte et resultat.'
         stance_created: "%{actor} deltog i: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -236,6 +251,7 @@ da:
         poll_expired: "Prik afstemning resultat: %{title}"
         poll_expired_author: 'Din prik afstemning er lukket. Del resultatet af afstemningen for: %{title}'
         outcome_created: '%{actor} delte resultatet for: %{title}'
+        outcome_announced: '%{actor} delte resultatet for: %{title}'
         stance_created: "%{actor} stemte på: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> oprettede en prikafstemning'
@@ -245,6 +261,7 @@ da:
         poll_expired: "Resultat for <strong>%{actor}s</strong> prikafstemning: %{title}"
         poll_expired_author: 'Din prikafstemning er <strong>lukket</strong>. Overvej hvad der er blevet sagt <strong>del et resultat</strong> med gruppen, så folk ved hvad der sker som det næste skridt.'
         outcome_created: '<strong>%{actor}</strong> delte resultatet af en prikafstemning.'
+        outcome_announced: '<strong>%{actor}</strong> delte resultatet af en prikafstemning.'
         stance_created: "<strong>%{actor}</strong> stemte på: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -253,8 +270,10 @@ da:
         poll_created: '%{actor} startede en prikafstemning: %{title}'
         poll_edited: '%{actor} redigerede prikafstemningen: %{title}'
         outcome_created: '%{actor} delte resultatet for: %{title}'
+        outcome_announced: '%{actor} delte resultatet for: %{title}'
         stance_created: '%{actor} deltog i: %{title}'
       header:
         stance_created: "%{actor} deltog i: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
+  comment_by: Kommentar fra %{comment_author}

@@ -1,5 +1,5 @@
 namespace :loomio do
-  task :generate_test_error do
+  task generate_test_error: :environment do
     raise "this is a generated test error"
   end
 
@@ -14,27 +14,30 @@ namespace :loomio do
         f << "<!-- Don't make changes here; they will be overwritten. -->\n"
         f << ApplicationController.new.render_to_string(
           template: "errors/#{code}",
-          layout: "error"
+          layout: "basic"
         )
       end
     end
   end
 
   task hourly_tasks: :environment do
+    UserService.delay.delete_many_spam(ENV['DELETE_MANY_SPAM'])
+
     PollService.delay.expire_lapsed_polls
     PollService.delay.publish_closing_soon
     SendMissedYesterdayEmailJob.perform_later
-    ResendIgnoredInvitationsJob.perform_later
+    AnnouncementService.delay.resend_pending_memberships
     LocateUsersAndGroupsJob.perform_later
-    if (Time.now.hour == 0)
-      # daily tasks
-      UsageReportService.send
-    end
+    UsageReportService.send if (Time.now.hour == 0)
   end
 
-  task resend_ignored_invitations: :environment do
-    InvitationService.resend_ignored(send_count: 1, since: 1.day.ago)
-    InvitationService.resend_ignored(send_count: 2, since: 3.days.ago)
+  task migrate_attachments: :environment do
+    MigrateAttachmentService.migrate!(attachments: Attachment.where(attachable_type: [
+      "Discussion",
+      "Poll",
+      "Comment",
+      "Outcome"
+    ]))
   end
 
   task generate_error: :environment do
@@ -46,6 +49,6 @@ namespace :loomio do
   end
 
   task notify_clients_of_update: :environment do
-    MessageChannelService.publish({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
+    MessageChannelService.publish_data({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
   end
 end

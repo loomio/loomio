@@ -40,6 +40,8 @@ ja:
     search:
       placeholder: '検索'
       discussions: 'ディスカッション'
+  membership_dropdown:
+    make_coordinator: 'コーディネーターにする'
   notifications:
     header: "通知"
   position_buttons_panel:
@@ -55,17 +57,15 @@ ja:
     name_label: 氏名
     email_label: Eメール
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "このグループに参加するためには、メンバーに招待される必要があります"
-        membership_is_invitation_by_admin_only: "このグループに参加するためには、コーディネーターに招待される必要があります"
-    discussions: 'ディスカッション'
     options_label: 'オプション'
     options:
       label: 'オプション'
   group_form:
     privacy: 'プライバシー'
     submit_update: '設定更新'
+  document:
+    form:
+      title_label: 氏名
   membership_requests_page:
     approve: 承認
     ignore: 拒否
@@ -91,6 +91,8 @@ ja:
       or: または
   thread_group:
     aria_label: 'グループ名'
+  thread_context:
+    close_thread: '締め切り'
   delete_comment_dialog:
     title: 'コメントを削除します'
     question: '本当にコメントを削除しますか？'
@@ -108,3 +110,8 @@ ja:
     invitation: '素晴らしい招待を書くアドバイス'
     proposal: 'はっきりした提案を書くアドバイス'
     vote: 'いつでも意見を変更することができます'
+  poll_common_form:
+    closed: 議論終了
+  poll_count_options:
+    'yes': 'はい'
+    'no': 'いいえ'

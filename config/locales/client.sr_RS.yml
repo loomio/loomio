@@ -78,6 +78,8 @@ sr_RS:
       placeholder: 'Тражи'
       discussions: 'Низови'
       proposals: 'Предлози'
+  membership_dropdown:
+    make_coordinator: 'Учини координатором'
   start_menu:
     invite_people: 'Позови Људе'
   notifications:
@@ -99,11 +101,6 @@ sr_RS:
     started_by: 'Креирао/ла <strong>{{name}}</strong>'
     posted: Објављено
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Да бисте се прикључили овој групи морате бити позвани од стране неког члана."
-        membership_is_invitation_by_admin_only: "Да бисте се придружили овој групи морате бити позвани од стране координатора."
-    discussions: 'Низови'
     options_label: 'Опције'
     options:
       label: 'Опције'
@@ -118,6 +115,9 @@ sr_RS:
     description: 'Опис'
     advanced_settings: "Напредне опције"
     submit_update: 'Ажурирај опције'
+  document:
+    form:
+      title_label: Име
   membership_requests_page:
     approve: Одобри
     ignore: Игнориши
@@ -155,13 +155,14 @@ sr_RS:
     no_groups:
       or: или
   discussion:
-    proposals: 'Предлози'
-    previous_proposals: 'Претходни Предлози'
     started_by: 'Креирао/ла <strong>{{name}}</strong>'
+  activity_card:
+    unread: Непрочитано
   thread_group:
     aria_label: 'Назив групе'
   thread_context:
     email_settings: 'Опције еПорука'
+    close_thread: 'Затвори'
   delete_comment_dialog:
     title: 'Обриши коментар'
     question: 'Да ли сте сигурни да желите обрисати овај коментар?'
@@ -180,3 +181,8 @@ sr_RS:
     invitation: 'Савети за писање сјајног позива'
     proposal: 'Савети за писање јасног предлога'
     vote: 'Можете променити свој став било када'
+  poll_common_form:
+    closed: Истекло
+  poll_count_options:
+    'yes': 'Да'
+    'no': 'Не'

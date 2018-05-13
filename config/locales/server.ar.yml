@@ -1,4 +1,9 @@
 ar:
+  poll:
+    export:
+      title: العنوان
+      details: التفاصيل
+      group_name: اسم المجموعة
   email:
     custom: "%{text}"
     group_email:
@@ -15,6 +20,9 @@ ar:
     membership_request:
       subject: "%{who} قام بطلب الانضمام إلى %{which_group}"
       view_group: يمكنك الموافقة أو إلغاء الطلب هنا
+  discussion_mailer:
+    reply_or_view_online_html: قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."
   footer:
     about: حول
     blog: مدونة
@@ -25,9 +33,6 @@ ar:
     public_groups: المجموعات العامة
     terms: شروط الخدمة
     independent_install_html: '%{hostname} يقوم بتشغيل نسخة مستقلة من لوميو:  <a href="http://github.com/loomio/loomio">قم بمعرفة المزيد</a>.'
-  invitation_form:
-    error:
-      all_email_addresses_belong_to_members: "لم نقم بإرسال دعوات لعناوين البريد الالكتروني التي زودتها لأنها تعود لأشخاص هم مسبقاً أعضاء في المجموعة."
   password_reset:
     reset_email_timeframe: 'قد يستغرق الأمر حتى 5 دقائق لكي يتم استقبال الرسالة الالكترونية. إن لم تستقبل الرسالة الالكترونية، تأكد من صندوق البريد المؤذي. '
     length_restriction: على كلمة المرور أن تتألف من 8 محارف.

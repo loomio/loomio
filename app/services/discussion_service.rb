@@ -1,17 +1,4 @@
 class DiscussionService
-  def self.recount_everything!
-    # I'm not sure anyone will need this .. but it's cool sql
-    # WHOA I TOTALLY NEEDED IT!
-    ActiveRecord::Base.connection.execute(
-      "UPDATE discussion_readers SET
-       read_items_count = (SELECT count(id) FROM events WHERE discussion_id = discussion_readers.discussion_id AND events.created_at <= discussion_readers.last_read_at AND events.kind IN ('#{Discussion::THREAD_ITEM_KINDS.join('\', \'')}') ),
-       read_salient_items_count = (SELECT count(id) FROM events WHERE discussion_id = discussion_readers.discussion_id AND events.created_at <= discussion_readers.last_read_at AND events.kind IN ('#{Discussion::SALIENT_ITEM_KINDS.join('\', \'')}') )")
-    ActiveRecord::Base.connection.execute(
-      "UPDATE discussions SET
-       items_count = (SELECT count(id) FROM events WHERE discussions.id = events.discussion_id AND events.kind IN ('#{Discussion::THREAD_ITEM_KINDS.join('\', \'')}') ),
-       salient_items_count = (SELECT count(id) FROM events WHERE discussions.id = events.discussion_id AND events.kind IN ('#{Discussion::SALIENT_ITEM_KINDS.join('\', \'')}') )")
-  end
-
   def self.create(discussion:, actor:)
     actor.ability.authorize! :create, discussion
     discussion.author = actor
@@ -34,7 +21,8 @@ class DiscussionService
 
     discussion.assign_attributes(params.slice(:private, :title, :description, :pinned))
     version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
-    discussion.attachment_ids = params[:attachment_ids]
+    discussion.assign_attributes(params.slice(:document_ids))
+    discussion.document_ids = [] if params.slice(:document_ids).empty?
 
     return false unless discussion.valid?
     discussion.save!
@@ -44,6 +32,22 @@ class DiscussionService
     Events::DiscussionEdited.publish!(discussion, actor)
   end
 
+  def self.close(discussion:, actor:)
+    actor.ability.authorize! :update, discussion
+    discussion.update(closed_at: Time.now)
+
+    EventBus.broadcast('discussion_close', discussion, actor)
+    Events::DiscussionClosed.publish!(discussion, actor)
+  end
+
+  def self.reopen(discussion:, actor:)
+    actor.ability.authorize! :update, discussion
+    discussion.update(closed_at: nil)
+
+    EventBus.broadcast('discussion_reopen', discussion, actor)
+    Events::DiscussionReopened.publish!(discussion, actor)
+  end
+
   def self.move(discussion:, params:, actor:)
     source = discussion.group
     destination = ModelLocator.new(:group, params).locate
@@ -51,6 +55,7 @@ class DiscussionService
     actor.ability.authorize! :move, discussion
 
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
+    discussion.polls.each { |poll| poll.update(group: destination) }
 
     EventBus.broadcast('discussion_move', discussion, params, actor)
     Events::DiscussionMoved.publish!(discussion, actor, source)
@@ -74,13 +79,30 @@ class DiscussionService
 
   def self.mark_as_seen(discussion:, actor:)
     actor.ability.authorize! :mark_as_seen, discussion
-    DiscussionReader.for_model(discussion, actor).update_attribute(:last_read_at, discussion.created_at)
-    EventBus.broadcast('discussion_mark_as_seen', discussion.reload, actor)
+    reader = DiscussionReader.for_model(discussion, actor)
+    reader.viewed!
+    EventBus.broadcast('discussion_mark_as_seen', reader, actor)
+  end
+
+  def self.mark_as_read(discussion:, params:, actor:)
+    actor.ability.authorize! :mark_as_read, discussion
+    reader = DiscussionReader.for_model(discussion, actor)
+    reader.viewed!(params[:ranges])
+    EventBus.broadcast('discussion_mark_as_read', reader, actor)
   end
 
   def self.dismiss(discussion:, params:, actor:)
     actor.ability.authorize! :dismiss, discussion
-    DiscussionReader.for(user: actor, discussion: discussion).dismiss!
+    reader = DiscussionReader.for(user: actor, discussion: discussion)
+    reader.dismiss!
+    EventBus.broadcast('discussion_dismiss', reader, actor)
+  end
+
+  def self.recall(discussion:, params:, actor:)
+    actor.ability.authorize! :dismiss, discussion
+    reader = DiscussionReader.for(user: actor, discussion: discussion)
+    reader.recall!
+    EventBus.broadcast('discussion_recall', reader, actor)
   end
 
   def self.moved_discussion_privacy_for(discussion, destination)

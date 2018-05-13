@@ -5,20 +5,28 @@ class ApplicationController < ActionController::Base
   include ErrorRescueHelper
   include CurrentUserHelper
   include ForceSslHelper
+  include SentryRavenHelper
+  include PrettyUrlHelper
 
-  around_filter :process_time_zone
-  around_filter :use_preferred_locale   # LocalesHelper
-  before_filter :set_invitation_token   # CurrentUserHelper
-  before_filter :set_last_seen_at       # CurrentUserHelper
+  around_action :process_time_zone          # LocalesHelper
+  around_action :use_preferred_locale       # LocalesHelper
+  before_action :set_last_seen_at           # CurrentUserHelper
+  before_action :handle_pending_memberships # PendingActionsHelper
+  before_action :set_raven_context
 
   helper_method :current_user
   helper_method :client_asset_path
+  helper_method :bundle_asset_path
   helper_method :supported_locales
 
   # this boots the angular app
   def index
     initial_payload
     render 'application/index', layout: false
+  end
+
+  def ok
+    head :ok
   end
 
   protected
@@ -28,10 +36,6 @@ class ApplicationController < ActionController::Base
       flash:           flash.to_h,
       pendingIdentity: serialized_pending_identity
     )
-  end
-
-  def process_time_zone(&block)
-    Time.use_zone(TimeZoneToCity.convert(current_user.time_zone.to_s), &block)
   end
 
   def hosted_by_loomio?

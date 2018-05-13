@@ -9,4 +9,8 @@ class StanceSerializer < ActiveModel::Serializer
   def participant
     object.participant_for_client(user: scope[:current_user]).presence
   end
+
+  def include_participant?
+    participant.present?
+  end
 end

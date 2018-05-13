@@ -1,0 +1,12 @@
+%md-dialog.poll-common-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %i.mdi.mdi-lightbulb-on-outline
+      %h1.lmo-h1{ng-switch: "currentStep"}
+        %span{translate: "poll_common_add_option.modal.title", ng-switch-when: "save"}
+      %dismiss_modal_button
+  %md-dialog-content
+    %poll_common_add_option_form.animated{poll: "poll"}
+  %md-dialog-actions
+    %poll_common_add_option_form_actions.animated{poll: "poll"}

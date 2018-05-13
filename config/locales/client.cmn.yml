@@ -1,13 +1,49 @@
 cmn:
+  reactions:
+    slight_smile: 喜欢
+    heart: 喜爱
+    laughing: 大笑
+    clap: 鼓掌
+    hugging: 抱抱
+    sunglasses: 酷
+    wink: 眨眼
+    nerd: 聪明
+    relieved: 轻松
+    worried: 担忧
+    confused: 懵
+    confounded: 讨厌
+    neutral_face: 中立
+    slight_frown: 皱眉
+    disappointed: 失望
+    angry: 愤怒
+    weary: 疲惫
+    astonished: 震惊
+    rolling_eyes: 转眼珠
+    cry: 哭
+    scream: 尖叫
+    sleeping: 无聊
+    thinking: 思考
+    raised_hands: 举手
+    pray: 祈祷
+    fingers_crossed: 求好运
+    v: 和平
+    ok_hand: 好
+    wave: 挥手
+  poll_types:
+    proposal: 议案
   common:
     group: '组'
     groups: '组群'
+    models:
+      proposal: '议案'
     action:
       save: '保存'
       edit: '编辑'
       like: '喜欢'
       unlike: '不喜欢'
       cancel: '取消'
+  signed_out_modal:
+    ok: "好"
   comment_form:
     delete_comment: '删掉评论'
     confirm_delete_message: '你确定你想要删掉这条评论吗？'
@@ -22,10 +58,12 @@ cmn:
     name_label: 名字
     email_label: 邮件
   group_page:
-    discussions: '讨论'
     options_label: '选项'
     options:
       label: '选项'
+  document:
+    form:
+      title_label: 名字
   membership_requests_page:
     approve: 批准
   memberships_page:
@@ -36,6 +74,8 @@ cmn:
     name_label: '名字'
     email_label: '邮件'
     locale_label: '语言'
+  thread_context:
+    close_thread: '关闭'
   delete_comment_dialog:
     title: '删掉评论'
     question: '你确定你想要删掉这条评论吗？'
@@ -45,3 +85,10 @@ cmn:
       delete_comment: '删掉评论'
   hint:
     vote: '任何时候你都可以更改位置'
+  decision_tools_card:
+    proposal_title: 议案
+  poll_common_form:
+    closed: 关闭了
+  poll_count_options:
+    'yes': '是的'
+    'no': '不是'

@@ -33,52 +33,15 @@ describe Group do
     end
 
     it 'returns the parents logo if one does not exist' do
-      parent = create :formal_group, logo: fixture_for('images', 'strongbad.png')
+      parent = create :formal_group, logo: fixture_for('images/strongbad.png')
       group = create :formal_group, parent: parent
       expect(group.logo_or_parent_logo).to eq parent.logo
     end
 
     it 'returns the group logo if one exists' do
       parent = create :formal_group
-      group = create :formal_group, parent: parent, logo: fixture_for('images', 'strongbad.png')
+      group = create :formal_group, parent: parent, logo: fixture_for('images/strongbad.png')
       expect(group.logo_or_parent_logo).to eq group.logo
-    end
-  end
-
-  context "counter caches" do
-    describe 'invitations_count' do
-      before do
-        @group = create(:formal_group, creator: create(:user))
-        @user  = create(:user)
-      end
-
-      it 'increments when a new invitation is created' do
-        InvitationService.invite_to_group(recipient_emails: [@user.email],
-                                          group: @group,
-                                          inviter: @group.creator)
-        expect(@group.invitations_count).to eq 1
-      end
-    end
-
-    describe "#discussions_count" do
-      before do
-        @group = create(:formal_group)
-        @user = create(:user)
-      end
-
-      it "returns a count of discussions" do
-        expect {
-          @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
-        }.to change { @group.reload.discussions_count }.by(1)
-      end
-
-      it "updates correctly after deleting a discussion" do
-        @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
-        expect(@group.reload.discussions_count).to eq 1
-        expect {
-          @group.discussions.first.destroy
-        }.to change { @group.reload.discussions_count }.by(-1)
-      end
     end
   end
 
@@ -139,7 +102,7 @@ describe Group do
                         is_visible_to_public: false,
                         is_visible_to_parent_members: false,
                         parent: create(:formal_group),
-                        parent_members_can_see_discussions: true) }.to raise_error
+                        parent_members_can_see_discussions: true) }.to raise_error ActiveRecord::RecordInvalid
       end
 
       it "does not error for a visible to parent subgroup" do
@@ -148,30 +111,6 @@ describe Group do
                         is_visible_to_parent_members: true,
                         parent: create(:formal_group),
                         parent_members_can_see_discussions: true) }.to_not raise_error
-      end
-    end
-  end
-
-  describe "parent_members_can_see_group_is_valid?" do
-    context "parent_members_can_see_group = true" do
-      it "for a parent group" do
-        expect { create(:formal_group,
-                        parent_members_can_see_group: true) }.to raise_error
-      end
-
-      it "for a hidden subgroup" do
-        expect { create(:formal_group,
-                        is_visible_to_public: false,
-                        is_visible_to_parent_members: true,
-                        parent: create(:formal_group)) }.to_not raise_error
-      end
-
-      it "for a visible subgroup" do
-        expect { create(:formal_group,
-                        is_visible_to_public: true,
-                        parent: create(:formal_group,
-                                       is_visible_to_public: true),
-                        parent_members_can_see_group: true) }.to raise_error
       end
     end
   end

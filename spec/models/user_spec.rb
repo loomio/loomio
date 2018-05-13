@@ -12,11 +12,6 @@ describe User do
   let(:admin) { create :user }
   let(:new_user) { build(:user, password: "a_good_password", password_confirmation: "a_good_password") }
 
-  it "cannot have invalid avatar_kinds" do
-    user.avatar_kind = 'bad'
-    user.should have(1).errors_on(:avatar_kind)
-  end
-
   it "should accept a good password with a confirmation" do
     expect(new_user.valid?).to eq true
   end
@@ -157,18 +152,18 @@ describe User do
 
     it "can store user experiences" do
       user.experienced!(:happiness)
-      expect(user.experiences[:happiness]).to eq true
+      expect(user.experiences['happiness']).to eq true
     end
 
     it "does not store other experiences" do
       user.experienced!(:frustration)
-      expect(user.experiences[:happiness]).to eq nil
+      expect(user.experiences['happiness']).to eq nil
     end
 
     it "can forget experiences" do
       user.update(experiences: { happiness: true })
       user.experienced!(:happiness, false)
-      expect(user.experiences[:happiness]).to eq false
+      expect(user.experiences['happiness']).to eq false
     end
   end
 

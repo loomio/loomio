@@ -159,6 +159,9 @@ ko:
     sign_in: '로그인'
     toggle_sidebar: '토글 사이드바'
     logo_title: '홈페이지'
+  membership_dropdown:
+    make_coordinator: '코디네이터로 만들기'
+    cancel_invitation: 초대 취소
   start_menu:
     label: '사용자 액션'
     title: '액션'
@@ -224,20 +227,9 @@ ko:
       membership_requested: '{{group}}에 가입을 요청하였습니다'
   revision_history_modal:
     aria_label: 검토 이력
-    thread_header: '쓰레드 주제 이력 '
-    comment_header: 코멘트 편집 이력 보기
     posted: 저장됨
+    current_revision: 최신
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "이 그룹엔 쓰레드가 아직 없습니다"
-        no_discussions_matching_filters_html: "이 필터에 맞는 주제가 없습니다. <a href='%{link}'>필터 초기화</a>."
-        no_public_discussions: "이 그룹에는 공개된 게시글이 없습니다."
-        discussions_are_private: "이 그룹에 모든 게시글은 비공개입니다."
-        join_group: "그룹에 가입하면, 비공개 쓰레드를 볼 수 있습니다."
-        request_membership: "비공개 쓰레드를 보려면 그룹에 가입 신청을 하세요."
-        membership_is_invitation_only: "멤버의 초대를 받아야 가입할 수 있는 그룹입니다."
-        membership_is_invitation_by_admin_only: "코디네이터의 초대를 받아야 가입할 수 있는 그룹입니다."
     messages:
       privacy:
         members: '이 그룹은 회원들에게만 보입니다.'
@@ -249,9 +241,7 @@ ko:
     new_photo: '새로운 사진'
     new_cover_photo: '새로운 커버 사진 올리기'
     new_group_logo: '새로운 그룹 로고 올리기'
-    discussions: '토론'
     discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
-    members: '멤버'
     members_placeholder: '이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.'
     member_options: 멤버 옵션
     subgroups: '소그룹'
@@ -310,7 +300,6 @@ ko:
     description: '설명'
     description_placeholder: '그룹의 멤버들이 왜 여기에 모여 있는지 인식할 수 있도록 이 그룹의 목적을 설명해주세요.'
     privacy_statement:
-      public_on_web: '이름과 설명이 웹에 공개됩니다.'
       private_to_group: '이름과 설명은 멤버만 볼 수 있습니다.'
       private_to_parent_members: '{{parent}}의 멤버가 이름과 설명을 볼 수 있습니다. '
     privacy: '개인정보'
@@ -346,6 +335,11 @@ ko:
     heading: '멤버십 요청'
     manage_requests: 요청 관리
     manage_requests_with_count: 요청 관리 ({{count}})
+  documents_page:
+    confirm_remove_title: 첨부파일 삭제
+  document:
+    form:
+      title_label: 이름
   membership_requests_page:
     heading: 멤버십 요청
     approve: 승인
@@ -402,10 +396,14 @@ ko:
       remove_admin_success: '{{name}}은 더 이상 코디네이터가 아닙니다.'
     remove_admin_from_self:
       question: '코디네이터를 그만 두시겠습니까?'
-  remove_membership_form:
-    aria_label: '멤버 삭제'
-    title: '멤버 삭제'
-    submit: '삭제'
+  membership_remove_modal:
+    invitation:
+      title: 초대 취소
+      flash: 초대를 취소했습니다.
+      submit: 초대 취소
+    membership:
+      title: 멤버 삭제
+      submit: 멤버 삭제
   pending_invitations_card:
     heading: 대기 중인 초대
     email: 이메일
@@ -461,7 +459,6 @@ ko:
     daily_summary_label: 일별 요약 이메일
     on_participation_description: "모둠에 참여하면, 더욱 많은 행동들이 즉시 당신에게 이메일로 전송됩니다. "
     mentioned_label: 말하기
-    mentioned_description: "누군가 당신과 이야기하고 싶을 경우 @언급할 겁니다. 사람들이 언급할 때마다 이메일을 받게 되기 때문에 사용하는게 좋습니다."
     specific_groups: 특별한 그룹에 적용
     default_settings:
       loud_description: "새로운 그룹에 참여하면, 당신은 <strong>행동이 있을 때마다</strong>이메일을 받을 수 있습니다."
@@ -486,7 +483,6 @@ ko:
     load_more: 주제 더보기
     mark_as_read: 읽음으로 표시
     dismiss: 기각합니다
-    thread_dismissed: 주제가 기각됐습니다.
     explain_mute:
       title: 대기중인 주제가 아직 없습니다.
     filtering:
@@ -522,15 +518,17 @@ ko:
       start: 시작
       or: 혹은
       join_group: '주제를 보기 위해 그룹에 <a href="/explore">참여합니다</a> '
-  groups_page:
-    page_header: 내가 속한 그룹
   discussion:
     activity: '최근 활동'
     activity_placeholder: '아직 활동내역 없음'
-    proposals: '제안'
-    previous_proposals: '이전 제안'
     load_previous: '이전 활동내역 보기'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
+  activity_card:
+    unread: 읽지않음
+    latest: 최신
+    attachment_display:
+      aria_label: '첨부파일:'
+      image_alt: '첨부이미지'
   thread_group:
     aria_label: '그룹명'
   thread_context:
@@ -538,6 +536,7 @@ ko:
     thread_options: '쓰레드 옵션'
     email_settings: '이메일 설정'
     edit: '편집'
+    close_thread: '닫기'
     move_thread: '이동'
     print_thread: '인쇄'
     delete_thread: '삭제'
@@ -553,11 +552,6 @@ ko:
     confirm_change_to_private_thread: '{{groupName}}은 공개 그룹입니다. 이 주제도 공개됩니다. 계속 하시겠습니까?'
     messages:
       success: 쓰레드가 {{name}} 으로 이동되었습니다.
-  activity_card:
-    new_activity: 새로운 활동
-    attachment_display:
-      aria_label: '첨부파일:'
-      image_alt: '첨부이미지'
   delete_comment_dialog:
     title: '댓글삭제'
     question: '댓글을 지우시겠습니까?'
@@ -620,3 +614,8 @@ ko:
       reload: '다시 불러오기'
   emoji_picker:
     search: "이모티콘을 찾으세요."
+  poll_common_form:
+    closed: 종료
+  poll_count_options:
+    'yes': '네'
+    'no': '아니요'

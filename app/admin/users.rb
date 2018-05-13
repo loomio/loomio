@@ -39,6 +39,34 @@ ActiveAdmin.register User do
     f.actions
   end
 
+  collection_action :export_emails_deactivated do
+    emails = User.inactive.pluck :email
+    render plain: emails.join("\n")
+  end
+
+  collection_action :export_emails_fr do
+    emails = User.active.where("detected_locale ilike 'fr%'").pluck(:email)
+    render plain: emails.join("\n")
+  end
+
+  collection_action :export_emails_es do
+    query = %w[es ca an].map do |prefix|
+      "detected_locale ilike '#{prefix}%'"
+    end.join ' or '
+
+    emails = User.active.where(query).pluck(:email)
+    render plain: emails.join("\n")
+  end
+
+  collection_action :export_emails_other do
+    query = %w[fr es ca an].map do |prefix|
+      "detected_locale ilike '#{prefix}%'"
+    end.join ' or '
+
+    emails = User.active.where.not(query).pluck(:email)
+    render plain: emails.join("\n")
+  end
+
   member_action :delete_spam, method: :post do
     user = User.friendly.find(params[:id])
     UserService.delete_spam(user)
@@ -51,7 +79,6 @@ ActiveAdmin.register User do
     user.email = params[:user][:email]
     user.username = params[:user][:username]
     user.is_admin = params[:user][:is_admin]
-    user.angular_ui_enabled = params[:user][:angular_ui_enabled]
     user.save
     redirect_to admin_users_path, :notice => "User updated"
   end
@@ -59,11 +86,11 @@ ActiveAdmin.register User do
   show do |user|
     if user.deactivated_at.nil?
       panel("Deactivate") do
-        if can? :deactivate, user
+        if user.ability.can? :deactivate, user
           button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
         else
           div "This user can't be deactivated because they are the only coordinator of the following groups:"
-          table_for user.adminable_groups.published.select{|g| g.admins.count == 1}.each do |group|
+          table_for user.adminable_groups.where(type: "FormalGroup").published.select{|g| g.admins.count == 1}.each do |group|
             column :id
             column :name do |group|
               link_to group.name, admin_group_path(group)
@@ -108,7 +135,6 @@ ActiveAdmin.register User do
         div "#{user.deactivation_response.body}"
       end
     end
-    active_admin_comments
   end
 
   member_action :merge, method: :post do
@@ -134,6 +160,6 @@ ActiveAdmin.register User do
     user = User.friendly.find(params[:id])
     raw = user.send(:set_reset_password_token)
 
-    render text: edit_user_password_path(reset_password_token: raw)
+    render plain: edit_user_password_path(reset_password_token: raw)
   end
 end

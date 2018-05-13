@@ -73,6 +73,7 @@ tr:
       share: Paylaş
       done: Tamamlandı
       start: Başla
+      invite: Davet et
     formatting_help:
       label: 'Biçimlendirme'
   devise:
@@ -150,6 +151,9 @@ tr:
       comments: 'Yorumlar'
     sign_in: 'Oturum aç'
     logo_title: 'Ana sayfa'
+  membership_dropdown:
+    make_coordinator: 'Koordinatör yap'
+    cancel_invitation: Davetiyeyi iptal et
   start_menu:
     label: 'Kullanıcı eylemleri'
     title: 'Aksiyon'
@@ -208,22 +212,11 @@ tr:
       membership_requested: '{{group}} grubuna üyelik talebi gönderdin.'
   revision_history_modal:
     aria_label: Revizyon geçmişi
-    thread_header: Konu içeriği revizyon geçmişi
-    comment_header: Revizyon geçmişi yorum düzenleme
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
     edited_by: '<strong>{{name}}</strong> tarafından düzenlendi'
     posted: Gönderildi
+    current_revision: En yeniler
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Bu grup henüz hiçbir konuya sahip değil."
-        no_discussions_matching_filters_html: "Bu filtrelerle eşleşen konu yok. <a href='%{link}'>Filtrelemeyi temizle</a>."
-        no_public_discussions: "Bu grupta kamuya açık tartışma bulunmamaktadır."
-        discussions_are_private: "Bu gruptaki tüm konular gizlidir."
-        join_group: "Özel konuları görebilmek için gruba katılmanız gerekmektedir."
-        request_membership: "Özel konuları görebilmek için, gruba katılım talebinde bulunun"
-        membership_is_invitation_only: "Bu gruba katılmak için bir üye tarafından davet edilmelisin."
-        membership_is_invitation_by_admin_only: "Bu gruba katılmak için koordinatör tarafından davet edilmelisin."
     messages:
       privacy:
         members: 'Bu grup şu an sadece grup üyeleri tarafından görülebilir'
@@ -235,9 +228,7 @@ tr:
     new_photo: 'yeni fotoğraf'
     new_cover_photo: 'Yeni kapak fotoğrafı yükle'
     new_group_logo: 'Yeni grup logosu yükle'
-    discussions: 'Müzakereler'
     discussions_placeholder: 'Konu, herkesin bir başlık hakkında müzakere ederek birlikte kararlar aldığı yerdir.'
-    members: 'Üyeler'
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
     subgroups: 'Alt gruplar'
@@ -284,7 +275,6 @@ tr:
     description: 'Tanım'
     description_placeholder: 'Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.'
     privacy_statement:
-      public_on_web: 'Ad ve açıklama web üzerinde herkese açık olacaktır.'
       private_to_group: 'Ad ve açıklama sadece grup üyelerine görünür olacaktır.'
       private_to_parent_members: 'Ad ve açıklama sadece {{parent}} grubunun üyelerine görünür olacaktır.'
     privacy: 'Gizlilik'
@@ -321,6 +311,11 @@ tr:
     heading: 'Üyelik talepleri'
     manage_requests: Talepleri yönet
     manage_requests_with_count: Talepleri yönet ({{count}})
+  documents_page:
+    confirm_remove_title: Eki kaldır
+  document:
+    form:
+      title_label: İsim
   membership_requests_page:
     heading: Üyelik talepleri
     approve: Onayla
@@ -374,6 +369,14 @@ tr:
       remove_admin_success: '{{name}} artık bir koordinatör değil'
     remove_admin_from_self:
       question: 'Artık bir koordinatör olmak istemediğinizden emin misiniz?'
+  membership_remove_modal:
+    invitation:
+      title: Davetiyeyi iptal et
+      flash: Davetiye iptal edildi
+      submit: Davetiyeyi iptal et
+    membership:
+      title: Üyeyi kaldır
+      submit: Üyeyi kaldır
   pending_invitations_card:
     heading: Bekleyen davetler
     email: E-posta
@@ -405,7 +408,7 @@ tr:
   email_settings_page:
     header: E-posta ayarları
     daily_summary_label: Günlük özet e-postası
-    mentioned_description: "Birisi dikkatinizi çekmek istediğinde, sizden @bahsedeceklerdir. Size bunu açık bırakmanızı öneririz, böylece her bahsedildiğizde bir e-posta alırsınız."
+    announcement_label: Duyurular
     messages:
       updated: E-posta ayarları güncellendi
   dashboard_page:
@@ -452,22 +455,24 @@ tr:
     no_groups:
       start: Başla
       or: veya
-  groups_page:
-    page_header: Grupların
   discussion:
     activity: 'Etkinlik'
     activity_placeholder: 'Henüz etkinlik yok!'
-    proposals: 'Öneriler'
-    previous_proposals: 'Önceki Öneriler'
     load_previous: 'Daha önceki aktiviteyi yükle'
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
-    edited: 'Düzenlendi'
+  activity_card:
+    unread: Okunmamış
+    latest: En yeniler
+    attachment_display:
+      aria_label: 'Dosya eklendi:'
+      image_alt: 'Resim eklendi'
   thread_group:
     aria_label: 'Grup adı'
   thread_context:
     aria_label: 'Konu içeriği'
     thread_options: 'Konu seçenekleri'
     email_settings: 'E-posta ayarları'
+    close_thread: 'Kapat'
     mute_thread: 'Sesi kıs'
     move_thread: 'Taşı'
     print_thread: 'Yazdır'
@@ -484,11 +489,6 @@ tr:
     confirm_change_to_private_thread: '{{groupName}} açık bir gruptur. Eğer devam ederseniz, konu herkese açılacaktır.'
     messages:
       success: 'Konu {{name}} grubuna taşındı '
-  activity_card:
-    new_activity: Yeni aktivite
-    attachment_display:
-      aria_label: 'Dosya eklendi:'
-      image_alt: 'Resim eklendi'
   delete_comment_dialog:
     title: 'Yorumu sil'
     question: 'Bu yorumu silmek istediğinden emin misin?'
@@ -566,6 +566,10 @@ tr:
   poll_common_close_form:
     close_proposal: Öneriyi kapat
   poll_common_form:
+    closed: Kapalı
     start: Başla
+  poll_count_options:
+    'yes': 'Evet'
+    'no': 'Hayır'
   polls_page:
     heading: Kararlar

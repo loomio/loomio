@@ -1,4 +1,15 @@
 hu:
+  explore:
+    header: Keresés a nyilvános csoportok között
+  activerecord:
+    errors:
+      messages:
+        invalid: ez nem egy érvényes érték
+  poll:
+    export:
+      title: Cím
+      author: Szerző
+      details: Részletek
   email:
     group_email:
       intro: "%{who} bejelentést tett a(z)  %{group} csoportban:"
@@ -11,9 +22,13 @@ hu:
       mark_as_read: Olvasottként jelöl
       thanks_for_reading: Köszönjük az elolvasást, kellemes napot!
       marked_as_read_success: Minden olvasottként van jelölve
+      click_here: Kattints ide
     membership_request:
       subject: "%{who} kérte hogy csatlakozhasson a %{which_group} csoporthoz"
       view_group: Jóváhagyhatod vagy elvetheted a kérelmet itt.
+  discussion_mailer:
+    reply_or_view_online_html: 'Közvetlen válasz erre az emailre vagy  <a href=''%{url}''>nézd meg ezen: %{hostname}</a>.'
+    turn_off_notifications_html: "<a href='%{url}'>Emailek kikapcsolása</a> erre a vitára."
   footer:
     about: Rólunk
     blog: Blog
@@ -24,3 +39,9 @@ hu:
     public_groups: Nyilvános csoportok
     terms: Feltételek
     independent_install_html: '%{hostname} a Loomio egy független másolatát futtatja:<a href="http://github.com/loomio/loomio">bővebben</a>.'
+  how_it_works_thread:
+    title: Hogyan használd a Loomio-t
+  poll_mailer:
+    common:
+      unsubscribe: Leiratkozás
+  comment_by: '%{comment_author} bejegyzése'

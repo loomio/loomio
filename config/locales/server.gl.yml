@@ -1,7 +1,14 @@
 gl:
+  poll:
+    export:
+      title: Título
+      author: Autor/a
+      details: Detalles
   email:
     by_who: por %{person}
     reply_to_this_discussion: Respostar a este debate
+    missed_yesterday:
+      click_here: Pincha aquí
   footer:
     about: Acerca de
     blog: Blogue

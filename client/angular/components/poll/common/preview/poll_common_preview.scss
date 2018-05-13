@@ -1,0 +1,12 @@
+a.poll-common-preview {
+  display: flex;
+  @include listTransition;
+  width: 100%;
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+.poll-common-preview__body {
+  margin-left: 12px;
+  overflow: auto;
+}

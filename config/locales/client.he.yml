@@ -30,6 +30,8 @@ he:
     search:
       placeholder: 'חיפוש'
       discussions: 'דיונים'
+  membership_dropdown:
+    make_coordinator: 'הפיכה למתאם'
   notifications:
     header: "התרעות"
   discussion_form:
@@ -44,10 +46,12 @@ he:
     name_label: שם
     email_label: דואל
   group_page:
-    discussions: 'דיונים'
     options_label: 'אפשרויות'
     options:
       label: 'אפשרויות'
+  document:
+    form:
+      title_label: שם
   membership_requests_page:
     approve: אישור
     ignore: התעלמ/י
@@ -67,8 +71,12 @@ he:
     mark_as_read: סמן כנקרא
     threads_from:
       today: 'היום'
+  activity_card:
+    unread: לא-נקרא
   thread_group:
     aria_label: 'שם הקבוצה'
+  thread_context:
+    close_thread: 'סגירה'
   delete_comment_dialog:
     title: 'מחקו תגובה'
     question: 'למחוק את התגובה? בטוחים?'
@@ -82,3 +90,8 @@ he:
     message_label: 'ההודעה שלך'
   hint:
     discussion: 'טיפים להתחלת דיון מרתק'
+  poll_common_form:
+    closed: סגור
+  poll_count_options:
+    'yes': 'כן'
+    'no': 'לא'

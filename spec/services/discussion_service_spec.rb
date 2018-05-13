@@ -7,6 +7,7 @@ describe 'DiscussionService' do
   let(:group) { create(:formal_group) }
   let(:another_group) { create(:formal_group, is_visible_to_public: false) }
   let(:discussion) { create(:discussion, author: user, group: group) }
+  let(:poll) { create(:poll, discussion: discussion, group: group) }
   let(:comment) { double(:comment,
                          save!: true,
                          valid?: true,
@@ -15,18 +16,12 @@ describe 'DiscussionService' do
                          discussion: discussion,
                          destroy: true,
                          author: user) }
-  let(:attachment) { create(:attachment) }
-  let(:discussion_params) { {title: "new title", description: "new description", private: true, uses_markdown: true} }
+  let(:document) { create(:document) }
+  let(:discussion_params) { {title: "new title", description: "new description", private: true} }
 
   describe 'create' do
     it 'authorizes the user can create the discussion' do
       user.ability.should_receive(:authorize!).with(:create, discussion)
-      DiscussionService.create(discussion: discussion,
-                               actor: user)
-    end
-
-    it 'saves the discussion' do
-      discussion.should_receive(:save!).and_return(true)
       DiscussionService.create(discussion: discussion,
                                actor: user)
     end
@@ -37,16 +32,8 @@ describe 'DiscussionService' do
       expect(draft.reload.payload['discussion']).to be_blank
     end
 
-    describe 'make_announcement' do
-      it 'notifies users when make_announcement is true' do
-        discussion.make_announcement = true
-        expect { DiscussionService.create(discussion: discussion, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(1)
-      end
-
-      it 'does not notify userse when make_announcement is false' do
-        discussion.make_announcement = false
-        expect { DiscussionService.create(discussion: discussion, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
-      end
+    it 'does not email people' do
+      expect { DiscussionService.create(discussion: discussion, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
 
     context 'the discussion is valid' do
@@ -61,8 +48,9 @@ describe 'DiscussionService' do
       it 'notifies new mentions' do
         discussion.group.add_member! another_user
         discussion.description = "A mention for @#{another_user.username}!"
-        expect(Events::UserMentioned).to receive(:publish!).with(discussion, user, another_user)
-        DiscussionService.create(discussion: discussion, actor: user)
+        expect { DiscussionService.create(discussion: discussion, actor: user) }.to change {
+          Events::UserMentioned.where(kind: :user_mentioned).count
+        }.by(1)
       end
 
       it 'does not notify users outside the group' do
@@ -176,34 +164,34 @@ describe 'DiscussionService' do
         expect(version.object_changes['description'][1]).to eq discussion_params[:description]
       end
 
-      it 'creates a version with updated attachment_ids' do
+      it 'creates a version with updated document_ids' do
         expect { DiscussionService.update discussion: discussion,
-                   params: { attachment_ids: [attachment.id] },
+                   params: { document_ids: [document.id] },
                    actor: user }.to change { discussion.versions.count }.by(1)
         version = PaperTrail::Version.last
-        expect(version.object_changes['attachment_ids'][0]).to eq []
-        expect(version.object_changes['attachment_ids'][1]).to eq [attachment.id]
+        expect(version.object_changes['document_ids'][0]).to eq []
+        expect(version.object_changes['document_ids'][1]).to eq [document.id]
       end
 
-      it 'updates the existing version with attachment_ids' do
-        discussion_params[:attachment_ids] = [attachment.id]
+      it 'updates the existing version with document_ids' do
+        discussion_params[:document_ids] = [document.id]
         expect { DiscussionService.update discussion: discussion,
                    params: discussion_params,
                    actor: user }.to change { discussion.versions.count }.by(1)
         version = PaperTrail::Version.last
         expect(version.object_changes['title'][1]).to eq discussion_params[:title]
-        expect(version.object_changes['attachment_ids'][0]).to eq []
-        expect(version.object_changes['attachment_ids'][1]).to eq [attachment.id]
+        expect(version.object_changes['document_ids'][0]).to eq []
+        expect(version.object_changes['document_ids'][1]).to eq [document.id]
       end
 
-      it 'removes attachments in the version' do
-        discussion.update(attachment_ids: [attachment.id])
+      it 'removes documents in the version' do
+        discussion.update(document_ids: [document.id])
         expect { DiscussionService.update discussion: discussion,
-                   params: { attachment_ids: [] },
+                   params: { document_ids: [] },
                    actor: user }.to change { discussion.versions.count }.by(1)
         version = PaperTrail::Version.last
-        expect(version.object_changes['attachment_ids'][0]).to eq [attachment.id]
-        expect(version.object_changes['attachment_ids'][1]).to eq []
+        expect(version.object_changes['document_ids'][0]).to eq [document.id]
+        expect(version.object_changes['document_ids'][1]).to eq []
       end
     end
 
@@ -284,9 +272,17 @@ describe 'DiscussionService' do
     end
 
     it 'does not move a discussion to a group the user is not a member of' do
-      group.members << user
+      group.add_member! user
       expect { DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user) }.to raise_error CanCan::AccessDenied
       expect(discussion.reload.group).to_not eq another_group.id
+    end
+
+    it 'updates the group for any polls in the discussion' do
+      group.add_member! user
+      another_group.add_member! user
+      poll
+      DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
+      expect(discussion.polls.first.group).to eq another_group
     end
   end
 

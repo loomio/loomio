@@ -1,9 +1,11 @@
-class Attachment < ActiveRecord::Base
+class Attachment < ApplicationRecord
   belongs_to :user
   belongs_to :attachable, polymorphic: true
 
   has_attached_file :file, styles: lambda { |file| file.instance.is_an_image? ? { thumb: '100x100#', thread: '600x>' } : {} }
   do_not_validate_attachment_file_type :file
+
+  scope :unmigrated, -> { where(migrated_to_document: false) }
 
   validates :user_id, presence: true
 

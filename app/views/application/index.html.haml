@@ -1,5 +1,5 @@
 !!!
-%html{'ng-app' => 'loomioApp', 'ng-controller' => 'RootController as app', 'lang' => I18n.locale}
+%html{'lang' => current_user.locale, 'ng-app' => 'loomioApp', 'ng-strict-di' => 'true', 'ng-controller' => 'RootController as app'}
   %head
     %title= AppConfig.theme[:site_name]
     %meta{charset: 'utf-8'}
@@ -14,14 +14,17 @@
     %link{rel: 'next', 'ng-if' => 'links.next', 'ng-href' => '{{links.next}}'}
     %link{rel: 'manifest', href: '/manifest.json'}
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
+    %link{rel: "apple-touch-icon", href: AppConfig.theme[:icon_src]}
+    %link{href: client_asset_path(:"angular.min.css"), rel: 'stylesheet'}
 
-    %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet'}
+    = action_cable_meta_tag
 
     = render 'angular/metadata'
     = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
     = render 'angular/intercom' if current_user.is_logged_in?
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
+    %browser_warning{'ng-if' => 'warnDeprecation'}
     %flash
     %navbar{'ng-if' => 'translationsLoaded'}
 
@@ -29,15 +32,12 @@
       %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
       %md_content.lmo-main-content{flex: ""}
         .lmo-main-background
-          %verify_email_notice{'ng-if' => 'isLoggedIn() && !isEmailVerified()'}
+          %verify_email_notice
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
           %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
 
-    %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
       window.Loomio = #{@payload.to_json.html_safe}
-      window.Loomio.emojis.source = (emojione.shortnames || "").split("|")
-      window.Loomio.emojis.render = emojione.shortnameToImage
-    %script{src: client_asset_path(:"app.js")}
+    %script{src: bundle_asset_path(:"angular.bundle.min.js")}
 
-    = javascript_include_tag 'angular_ahoy'
+    = javascript_include_tag 'angular_ahoy' if AppConfig.app_features[:ahoy_tracking]

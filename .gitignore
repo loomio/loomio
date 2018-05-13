@@ -15,7 +15,6 @@ Session.vim
 *.sql
 *.dump
 *.log
-screenshots/
 .idea
 .env
 bin/
@@ -31,5 +30,14 @@ public/img/emojis
 /fetched_plugins/
 /plugins
 
-angular/node_modules
-angular/tasks/config/plugins.yml
+dump.rdb
+
+client/node_modules
+client/angular/dependencies
+client/angular/test/screenshots
+client/angular/templates.coffee
+client/tasks/config/plugins.yml
+client/tests_output
+client/angular/test/screenshots
+client/angular/test/nightwatch/plugins
+client/angular/test/log

@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.3.5
+  - 2.5.0
 
 dist: trusty
 sudo: required
@@ -12,11 +12,11 @@ cache:
   yarn: true
   directories:
     - vendor/bundle
-    - angular/node_modules
+    - client/node_modules
 
 addons:
-  firefox: "55.0"
-  postgresql: "9.5"
+  firefox: "57.0"
+  postgresql: "9.6"
   apt:
     sources:
       - heroku
@@ -32,13 +32,17 @@ env:
     - DISPLAY=:99.0
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
+    - PUMA_WORKERS=2
+    - MIN_THREADS=3
+    - MAX_THREADS=3
+    - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
   matrix:
-    - TASK=protractor
+    - TASK=e2e
     - TASK=rspec
     - TASK=plugins
 
 before_install:
-  - sh -e /etc/init.d/xvfb start
+  - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
   - nvm install 8.4.0
   - nvm use 8.4.0
   - npm install -g yarn gulp
@@ -46,23 +50,19 @@ before_install:
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - gem install s3_uploader
-  - cd angular; yarn; cd ..
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update --versions.standalone 3.6.0 --versions.gecko v0.19.0
-  - mkdir $TRAVIS_BUILD_DIR/bin
-  - ln -s $TRAVIS_BUILD_DIR/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.19.0 $TRAVIS_BUILD_DIR/bin/geckodriver
-  - ln -s fetched_plugins plugins
+  - cd client; yarn; cd ..
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
   - bundle exec rake travis:prepare
-  - bundle exec rails server > /dev/null &
+  - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:
-  - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
-  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi
+  - if [ "$TASK" = "rspec" ];   then bundle exec rake travis:rspec; fi
+  - if [ "$TASK" = "e2e" ];     then bundle exec rake travis:e2e; fi
   - if [ "$TASK" = "plugins" ]; then bundle exec rake travis:plugins; fi
 
 after_script:
-  - bundle exec rake travis:upload_s3
+  - bundle exec rake travis:cleanup

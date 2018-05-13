@@ -1,10 +1,16 @@
 mk:
+  poll:
+    export:
+      title: Наслов
+      author: Автор
+      details: Детали
   email:
     group_email:
       intro: "%{who} направи најава во %{group}:"
     reply_to_this_discussion: Врати на дискусијата
     missed_yesterday:
       mark_as_read: Означи го како прочитано
+      click_here: Кликни овде
     membership_request:
       subject: "%{who} побара да се приклучи во %{which_group}"
       view_group: Можете да го одобрите или одбиете барањето овде

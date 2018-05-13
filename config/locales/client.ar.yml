@@ -94,6 +94,8 @@ ar:
       discussions: 'المواضيع'
       proposals: 'المقترحات'
       comments: 'التعليقات'
+  membership_dropdown:
+    cancel_invitation: إلغاء الدعوة
   start_menu:
     start_group: 'إبدأ مجموعة'
     start_subgroup: 'إبدأ مجموعة فرعية'
@@ -138,22 +140,11 @@ ar:
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
   revision_history_modal:
-    thread_header: تاريخ إعادة صياغة الموضوع
-    comment_header: تاريخ إعادة صياغة التعليقات
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong>'
     edited_by: 'تم تعديله من قبل <strong>{{name}}</strong>'
     posted: تم النشر
+    current_revision: الأحدث
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "هذه المجموعة لا تحتوي أي مواضيع بعد"
-        no_discussions_matching_filters_html: "ليس هناك أي مواضيع توافق هذه الخيارات. <a href='%{link}'>Clear filters</a>."
-        no_public_discussions: "ليس هناك أي مواضيع عامة في هذه المجموعة."
-        discussions_are_private: "كل المواضيع في هذه المجموعة خاصة."
-        join_group: "لرؤية المواضيع الخاصة، عليك الانضمام للمجموعة."
-        request_membership: "لرؤية المواضيع الخاصة قم بطلب الانضمام للمجموعة."
-        membership_is_invitation_only: "للانضمام لهذه المجموعة يجب أن تكون مدعوّاً من قبل أحد الأعضاء."
-        membership_is_invitation_by_admin_only: "للانضمام لهذه المجموعة يجب أن تكون مدعوّاً من قبل منسق المجموعة."
     messages:
       privacy:
         members: 'هذه المجموعة ظاهرة الآن للأعضاء فقط.'
@@ -163,9 +154,7 @@ ar:
       archive_group_success: 'تم إلغاء المجموعة.'
     group_logo: 'شعار المجموعة'
     new_photo: 'صورة جديدة'
-    discussions: 'المواضيع'
     discussions_placeholder: 'الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.'
-    members: 'أعضاء'
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
     subgroups: 'مجموعة فرعية'
@@ -208,7 +197,6 @@ ar:
     description: 'وصف '
     description_placeholder: 'قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.'
     privacy_statement:
-      public_on_web: 'سيكون ظهور اسم ووصف المجموعةعامّاً على الشبكة.'
       private_to_group: 'سيكون اسم ووصف المجموعة ظاهرين لأعضاء المجموعة فقط.'
       private_to_parent_members: 'اسم ووصف المجموعة سيكونون ظاهرين لأعضاء {{parent}}'
     privacy: 'الخصوصية'
@@ -245,6 +233,11 @@ ar:
     heading: 'طلبات العضوية'
     manage_requests: إدارة الطلبات
     manage_requests_with_count: إدارة الطلبات ({{count}})
+  documents_page:
+    confirm_remove_title: حذف المرفق
+  document:
+    form:
+      title_label: 'الاسم '
   membership_requests_page:
     heading: طلبات العضوية
     approve: موافقة
@@ -297,6 +290,14 @@ ar:
       remove_admin_success: '{{name}} لم يعد منسقاً'
     remove_admin_from_self:
       question: 'هل أنت متأكد أنك لا ترغب أن تكون منسقاً بعد الآن؟'
+  membership_remove_modal:
+    invitation:
+      title: إلغاء الدعوة
+      flash: تم إلغاء الدعوة
+      submit: إلغاء الدعوة
+    membership:
+      title: إزالة عضو
+      submit: إزالة عضو
   pending_invitations_card:
     heading: دعوات في الانتظار
     email: بريد الكتروني
@@ -328,7 +329,6 @@ ar:
   email_settings_page:
     header: إعدادات البريد الإلكتروني
     daily_summary_label: الرسالة الكترونية للملخص اليومي
-    mentioned_description: "عندما يريد أحد ما تنبيه، سيقومون @بذكرك. نحن ننصح أن تبقي هذا الخيار فعالاً، لكي تستقبل بريداً إلكترونياً في حال حدوث هذا."
     messages:
       updated: تم تحديث إعدادات البريد الإلكتروني
   dashboard_page:
@@ -369,21 +369,23 @@ ar:
     no_threads: مبروك! لقد قمت بقراءة كل المواضيع في بريدك.
     unread_threads: المواضيع الغير مقروءة
     view_more: إظهار المزيد
-  groups_page:
-    page_header: مجموعاتك
   discussion:
     activity: 'نشاط'
     activity_placeholder: 'لا يوجد نشاط بعد!'
-    proposals: 'المقترحات '
-    previous_proposals: 'المقترحات السابقة'
     load_previous: 'تحميل النشاطات السابقة'
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong> '
-    edited: 'معدّل'
+  activity_card:
+    unread: غير مقروءة
+    latest: الأحدث
+    attachment_display:
+      aria_label: 'الملف المرفق: '
+      image_alt: 'صورة مرفقة'
   thread_group:
     aria_label: 'اسم المجموعة'
   thread_context:
     aria_label: 'سياق الموضوع'
     thread_options: 'خيارات الموضوع'
+    close_thread: 'مغلق'
     move_thread: 'نقل'
     print_thread: 'طباعة'
     delete_thread: 'حذف'
@@ -399,11 +401,6 @@ ar:
     confirm_change_to_private_thread: '{{groupName}} هي مجموعة مفتوحة. إن اخترت الاستمرار، سيتم تحويل هذا الموضوع إلى عام.'
     messages:
       success: تم نقل الموضوع إلى {{name}}
-  activity_card:
-    new_activity: نشاط جديد
-    attachment_display:
-      aria_label: 'الملف المرفق: '
-      image_alt: 'صورة مرفقة'
   delete_comment_dialog:
     title: 'احذف التعليق'
     question: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
@@ -511,3 +508,7 @@ ar:
     submit: سحب إمكانية الدخول
     messages:
       success: "لن يستطيع '{{name}}' استخدام حسابك بعد الآن."
+  poll_common_form:
+    closed: مغلقة
+  poll_count_options:
+    'no': 'لا'

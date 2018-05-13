@@ -5,7 +5,7 @@ module JSRuntime
   def eval(command, input)
     cleanup perform build(command, input)
   rescue => e
-    Airbrake.notify e
+    Raven.capture_exception(e)
     input
   end
 
@@ -40,7 +40,7 @@ module JSRuntime
   end
 
   def execjs_asset
-    File.read [:public, client_asset_path(:"execjs.min.js")].join('/').squeeze('/')
+    File.read [:public, client_asset_path(:"execjs.bundle.min.js")].join('/').squeeze('/')
   end
 
 end

@@ -1,4 +1,5 @@
-class DiscussionReader < ActiveRecord::Base
+class DiscussionReader < ApplicationRecord
+  include CustomCounterCache::Model
   include HasVolume
 
   belongs_to :user
@@ -6,6 +7,7 @@ class DiscussionReader < ActiveRecord::Base
 
   delegate :update_importance, to: :discussion
   delegate :importance, to: :discussion
+  delegate :message_channel, to: :user
 
   update_counter_cache :discussion, :seen_by_count
 
@@ -25,23 +27,37 @@ class DiscussionReader < ActiveRecord::Base
     self.for(user: actor || model.author, discussion: model.discussion)
   end
 
-  def update_reader(read_at: nil, volume: nil, participate: false, dismiss: false)
-    viewed!(read_at, persist: false)    if read_at
+  def update_reader(ranges: nil, volume: nil, participate: false, dismiss: false)
+    viewed!(ranges, persist: false)     if ranges
     set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
     dismiss!(persist: false)            if dismiss
-    save(validate: false)               if changed?
+    save!                               if changed?
+    self
   end
 
-  def viewed!(read_at, persist: true)
-    return if self.last_read_at && self.last_read_at > read_at
-    assign_attributes(read_attributes(read_at))
-    EventBus.broadcast('discussion_reader_viewed!', self)
+  def viewed!(ranges = [], persist: true)
+    mark_as_read(ranges) unless has_read?(ranges)
+    assign_attributes(last_read_at: Time.now)
     save if persist
+  end
+
+  def has_read?(ranges = [])
+    RangeSet.includes?(read_ranges, ranges)
+  end
+
+  def mark_as_read(ranges)
+    ranges = RangeSet.to_ranges(ranges)
+    return if ranges.empty?
+    self.read_ranges = read_ranges.concat(ranges)
   end
 
   def dismiss!(persist: true)
     self.dismissed_at = Time.zone.now
-    EventBus.broadcast('discussion_reader_dismissed!', self)
+    save if persist
+  end
+
+  def recall!(persist: true)
+    self.dismissed_at = nil
     save if persist
   end
 
@@ -54,25 +70,38 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def discussion_reader_volume
-    # Crazy James says: necessary in order to get a string back from the volume enum, rather than an integer
-    self.class.volumes.invert[self[:volume]]
+    self[:volume]
   end
 
-  private
+  def read_ranges
+    RangeSet.parse(self.read_ranges_string)
+  end
 
-  def read_attributes(read_at)
-    @read_attributes ||= begin
-      read_items         = discussion.items.where('events.created_at <= ?', read_at)
-      read_salient_items = discussion.salient_items.where('events.created_at <= ?', read_at)
-      {
-        last_read_at:             read_at,
-        last_read_sequence_id:    read_items.maximum(:sequence_id).to_i,
-        read_items_count:         read_items.count,
-        read_salient_items_count: read_salient_items.count
-      }
+  def read_ranges=(ranges)
+    ranges = RangeSet.reduce(ranges)
+    self.read_ranges_string = RangeSet.serialize(ranges)
+  end
+
+  # maybe yagni, because the client should do this locally
+  def unread_ranges
+    RangeSet.subtract_ranges(discussion.ranges, read_ranges)
+  end
+
+  def read_ranges_string
+    self[:read_ranges_string] ||= begin
+      if last_read_sequence_id == 0
+        ""
+      else
+        "#{[discussion.first_sequence_id, 1].max}-#{last_read_sequence_id}"
+      end
     end
   end
 
+  def read_items_count
+    RangeSet.length(read_ranges)
+  end
+
+  private
   def membership
     @membership ||= discussion.group.membership_for(user)
   end

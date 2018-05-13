@@ -79,6 +79,7 @@ ga_IE:
       delete: Scrios
       unsubscribe: Díliostáil
       subscribe: Liostáil
+      invite: Tabhair cuireadh
     formatting_help:
       label: 'Formáidiú'
   error_page:
@@ -171,6 +172,8 @@ ga_IE:
       comments: 'Tráchtanna'
     sign_in: 'Sínigh isteach'
     logo_title: 'An clár cinn'
+  membership_dropdown:
+    cancel_invitation: 'Cealaigh an cuireadh '
   start_menu:
     title: 'Gníomh'
     start_group: 'Tosaigh Baicle'
@@ -223,17 +226,8 @@ ga_IE:
       membership_requested: 'D''iarr tú cead bheith i do chomhalta de {{group}}'
   revision_history_modal:
     posted: Foilsithe
+    current_revision: Is déanaí
   group_page:
-    thread_list:
-      empty:
-        no_discussions_in_group: "Níl aon snáithe ag an mbaicle seo fós."
-        no_discussions_matching_filters_html: "Níl aon snáithe atá i gcomhoiriúint leis na scagairí seo. <a href='%{link}'>Glan na scagairí</a>."
-        no_public_discussions: "Níl aon snáithe phoiblí sa bhaicle seo."
-        discussions_are_private: "Tá gach snáithe sa bhaicle seo príobháideach."
-        join_group: "Chun snáitheanna príobháideacha a fheiceáil, beidh ort clárú leis an mbaicle."
-        request_membership: "Chun snáitheanna príobháideacha a fheiceáil, iarr cead clárú leis an mbaicle"
-        membership_is_invitation_only: "Le gur féidir leat clárú leis an mbaicle seo, ní mór do chomhalta cuireadh a thabhairt duit."
-        membership_is_invitation_by_admin_only: "Le gur féidir leat clárú leis an mbaicle seo, ní mór do chomhordaitheoir cuireadh a thabhairt duit."
     messages:
       privacy:
         members: 'Is iad na comhaltaí amháin ar féidir leo an bhaicle seo a fheiceáil'
@@ -244,9 +238,7 @@ ga_IE:
     group_logo: 'Lógó na baicle'
     new_photo: 'grianghraf nua'
     new_cover_photo: 'Uasluchtaigh grianghraf cumhdaigh nua'
-    discussions: 'Pléití'
     discussions_placeholder: 'Is áit í snáithe inar féidir le gach duine ábhar a phlé agus cinntí a dhéanamh le chéile.'
-    members: 'Comhaltaí'
     members_placeholder: 'Is tusa an t-aon duine anseo: tabhair cuirí do dhaoine bheith leat!'
     member_options: Roghanna na gcomhaltaí
     subgroups: 'Fobhaiclí'
@@ -298,6 +290,11 @@ ga_IE:
   membership_requests_card:
     heading: 'Iarratais le bheith mar chomhalta'
     manage_requests: Riar na hiarratais
+  documents_page:
+    confirm_remove_title: Bain ceangaltán
+  document:
+    form:
+      title_label: Ainm
   membership_requests_page:
     heading: Iarratais le bheith mar chomhalta
     approve: Ceadaigh
@@ -338,10 +335,14 @@ ga_IE:
       remove_member_success: 'Baineadh {{name}}'
       make_admin_success: 'Is comhordaitheoir anois {{name}}'
       remove_admin_success: 'Ní comhordaitheoir a thuilleadh é {{name}}'
-  remove_membership_form:
-    aria_label: 'Bain comhalta'
-    title: 'Bain comhalta'
-    submit: 'Bain'
+  membership_remove_modal:
+    invitation:
+      title: 'Cealaigh an cuireadh '
+      flash: Cuireadh curtha ar ceal
+      submit: 'Cealaigh an cuireadh '
+    membership:
+      title: Bain comhalta
+      submit: Bain comhalta
   pending_invitations_card:
     heading: Cuirí ar feitheamh
     email: Ríomhphost
@@ -387,7 +388,7 @@ ga_IE:
     header: Socruithe ríomhphoist
     all_groups: Socruithe i gcomhair gach baicle
     daily_summary_label: Ríomhphost le hachoimre laethúil
-    mentioned_description: "Nuair is mian le duine éigin d'aird a tharraing orthu, @déanfaidh siad tagairt duit. Molaimid duit é sin a fhágáil ar siúl, ionas go bhfaighfear ríomhphost nuair a tharlaíonn seo."
+    announcement_label: Fógraí
     edit: Eagar
     messages:
       updated: Nuashonraigh na socruithe ríomhphoist
@@ -438,18 +439,17 @@ ga_IE:
     no_groups:
       start: 'Tosaigh '
       or: nó
-  groups_page:
-    page_header: Do bhaiclí
   discussion:
     activity: 'Gníomhaíocht'
     activity_placeholder: 'Níl aon ghníomhaíocht ann go fóill!'
-    proposals: 'Tograí'
-    previous_proposals: 'Tograí Roimhe Seo'
     load_previous: 'Luchtaigh gníomhaíocht níos luaithe ná seo'
     started_by: 'Tosaithe ag <strong>{{name}}</strong> '
-    edited: 'Curtha in eagar'
-    volume:
-      mute_message: 'Balbhaíodh an snáithe.'
+  activity_card:
+    unread: Neamhléite
+    latest: Is déanaí
+    attachment_display:
+      aria_label: 'Tá comhad ceangailte:'
+      image_alt: 'An íomhá cheangailte'
   thread_group:
     aria_label: 'Ainm na baicle'
   thread_context:
@@ -457,6 +457,7 @@ ga_IE:
     thread_options: 'Roghanna na snáithe'
     email_settings: 'Socruithe ríomhphoist'
     edit: 'Eagar'
+    close_thread: 'Dún'
     move_thread: 'Bog é'
     print_thread: 'Clóbhuail'
     delete_thread: 'Scrios'
@@ -468,11 +469,6 @@ ga_IE:
   move_thread_form:
     title: Bog an snáithe
     confirm: Bog an snáithe
-  activity_card:
-    new_activity: Gníomhaíocht Nua
-    attachment_display:
-      aria_label: 'Tá comhad ceangailte:'
-      image_alt: 'An íomhá cheangailte'
   delete_comment_dialog:
     title: 'Scrios an trácht'
     question: 'An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?'
@@ -530,7 +526,10 @@ ga_IE:
   poll_common_close_form:
     close_proposal: Dún an togra
   poll_common_form:
+    closed: Dúnta
     start: Tosaigh
+  poll_count_options:
+    'no': 'Ná cealaigh é'
   poll_common_subscribe_form:
     subscribe: Liostáil
   polls_page:

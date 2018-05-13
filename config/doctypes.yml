@@ -1,0 +1,74 @@
+- name: youtube_video
+  regex: youtube.com\/watch\/
+  icon: video
+  color: "#BB0000"
+
+- name: image
+  regex: '[.\/](gif|jpg|jpeg|png|tiff|svg)(\?\d+)*$'
+  icon: image
+  color: "#ABCABC"
+
+- name: pdf
+  regex: '[.\/]pdf(\?\d+)*$'
+  icon: file-pdf-box
+  color: "#BB4444"
+
+- name: excel
+  regex: '[.\/](xls|xlsx)(\?\d+)*$'
+  icon: file-excel-box
+  color: "#44AA66"
+
+- name: document
+  regex: '[.\/](doc|docx)(\?\d+)*$'
+  icon: file-word-box
+  color: "#4466AA"
+
+- name: csv
+  regex: '[.\/]csv(\?\d+)*$'
+  icon: file-document
+  color: "#44AA66"
+
+- name: video
+  regex: '[.\/](mp4|mov|m4a)'
+  icon: file-video
+  color: "#BB0000"
+
+- name: text
+  regex: '[.\/](txt)'
+  icon: file-document
+  color: "#4466AA"
+
+- name: google_doc
+  regex: docs\.google\.com\/documents
+  icon: file-document-box
+  color: "#4466AA"
+
+- name: google_sheet
+  regex: docs\.google\.com\/spreadsheets
+  icon: file-document-box
+  color: "#44AA66"
+
+- name: google_drive
+  regex: docs\.google\.com\/
+  icon: google-drive
+  color: "#4466AA"
+
+- name: pull_request
+  regex: github.com\/.*\/pulls\/
+  icon: source-pull
+  color: "#444444"
+
+- name: trello_board
+  regex: trello.com\/b\/
+  icon: collage
+  color: "#026AA7"
+
+- name: trello_card
+  regex: trello.com\/c\/
+  icon: cards
+  color: "#026AA7"
+
+- name: other
+  regex: .*
+  icon: file
+  color: "#CCCCCC"

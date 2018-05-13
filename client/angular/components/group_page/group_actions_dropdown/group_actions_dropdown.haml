@@ -1,0 +1,20 @@
+.group-page-actions.lmo-no-print
+  %md-menu.lmo-dropdown-menu{md-position-mode: "target-right target"}
+    %md-button.group-page-actions__button{ng-click: "$mdMenu.open()"}
+      %span{translate: "group_page.options.label"}>
+      %i.mdi.mdi-chevron-down
+    %md-menu-content.group-actions-dropdown__menu-content
+      %md-menu-item.group-page-actions__edit-group-link{ng-if: "canEditGroup()"}
+        %md-button{ng-click: "editGroup()"}
+          %span{translate: "group_page.options.edit_group"}
+      %md-menu-item.group-page-actions__change-volume-link{ng-if: "canChangeVolume()"}
+        %md-button{ng-click: "openChangeVolumeForm()"}
+          %span{translate: "group_page.options.email_settings"}
+      %outlet{name: "after-group-actions-manage-memberships", model: "group"}
+      %outlet{name: "after-group-actions-manage-memberships-2", model: "group"}
+      %md-menu-item.group-page-actions__leave-group{ng-if: "canLeaveGroup()"}
+        %md-button{ng-click: "leaveGroup()"}
+          %span{translate: "group_page.options.leave_group"}
+      %md-menu-item.group-page-actions__archive-group{ng-if: "canArchiveGroup()"}
+        %md-button{ng-click: "archiveGroup()"}
+          %span{translate: "group_page.options.deactivate_group"}

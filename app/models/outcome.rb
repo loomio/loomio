@@ -1,31 +1,34 @@
-class Outcome < ActiveRecord::Base
+class Outcome < ApplicationRecord
   extend  HasCustomFields
-  include MakesAnnouncements
+  include HasEvents
   include HasMentions
   include Reactable
   include Translatable
+  include HasCreatedEvent
+
   set_custom_fields :calendar_invite, :event_summary, :event_description, :event_location
 
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false
   belongs_to :author, class_name: 'User', required: true
   has_many :stances, through: :poll
-  has_many :events, as: :eventable
-  has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :documents, as: :model, dependent: :destroy
 
-  delegate :title, to: :poll
-  delegate :dates_as_options, to: :poll
-  delegate :group, to: :poll
-  delegate :group_id, to: :poll
-  delegate :discussion, to: :poll
-  delegate :discussion_id, to: :poll
-  delegate :locale, to: :poll
+  %w(
+    title poll_type dates_as_options group group_id groups discussion discussion_id
+    locale mailer guest_group guest_group_id guest_members guest_invitations anyone_can_participate
+    members
+  ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement
   is_translatable on: :statement
 
   validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
   validate :has_valid_poll_option
+
+  def parent_event
+    poll.created_event
+  end
 
   def attendee_emails
      self.stances.joins(:participant).joins(:stance_choices)

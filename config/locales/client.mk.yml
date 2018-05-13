@@ -24,6 +24,8 @@ mk:
     search:
       placeholder: 'Пребарувај'
       discussions: 'Дискусии'
+  membership_dropdown:
+    make_coordinator: 'Направи координатор'
   notifications:
     header: "Известувања"
   position_buttons_panel:
@@ -40,14 +42,12 @@ mk:
     name_label: Име
     email_label: Email
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "За да и се приклучите на групата треба да бидете поканети од страна на неко член."
-        membership_is_invitation_by_admin_only: "За да и се приклучите на групата треба да бидете поканети од координатор."
-    discussions: 'Дискусии'
     options_label: 'Опции'
     options:
       label: 'Опции'
+  document:
+    form:
+      title_label: Име
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај
@@ -73,6 +73,8 @@ mk:
       or: или
   thread_group:
     aria_label: 'Име на групата'
+  thread_context:
+    close_thread: 'Затвори'
   delete_comment_dialog:
     title: 'Избриши го коментарот'
     question: 'Дали си сигурен/а дека сакаш да го избришиш коментарот?'
@@ -85,3 +87,8 @@ mk:
     name_label: 'Твоето име'
     email_label: 'Твојата електронска пошта'
     message_label: 'Твојата порака'
+  poll_common_form:
+    closed: Затворено
+  poll_count_options:
+    'yes': 'Да'
+    'no': 'Не'

@@ -18,6 +18,8 @@ bg_BG:
   navbar:
     search:
       discussions: 'Дискусии'
+  membership_dropdown:
+    make_coordinator: 'Направи координатор'
   notifications:
     header: "Известия"
   position_buttons_panel:
@@ -30,10 +32,12 @@ bg_BG:
     name_label: Име
     email_label: E-mail
   group_page:
-    discussions: 'Дискусии'
     options_label: 'Опции'
     options:
       label: 'Опции'
+  document:
+    form:
+      title_label: Име
   membership_requests_page:
     approve: Одобряване
     ignore: Игнориране
@@ -47,6 +51,8 @@ bg_BG:
     name_label: 'Име'
     email_label: 'E-mail'
     locale_label: 'Език'
+  thread_context:
+    close_thread: 'Затваряне'
   delete_comment_dialog:
     title: 'Изтрий коментар'
     question: 'Сигурни ли сте, че искате да изтриете този коментар?'
@@ -60,3 +66,5 @@ bg_BG:
     invitation: 'Насоки за писане на страхотни покани'
     proposal: 'Насоки за писане на чисти предложения'
     vote: 'Можете да промените позицията си по всяко време'
+  poll_common_form:
+    closed: Затворен

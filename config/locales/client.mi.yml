@@ -123,14 +123,18 @@ mi:
   membership_request_form:
     name_label: Ingoa
     email_label: Īmēra
+  revision_history_modal:
+    current_revision: Hou ake
   group_page:
-    discussions: 'Ngā miro'
     options_label: 'Ngā Kōwhiringa'
     options:
       label: 'Ngā Kōwhiringa'
   group_form:
     privacy: 'Matatapu'
     submit_update: 'Whakahoungia nga ritenga'
+  document:
+    form:
+      title_label: Ingoa
   invitation_form:
     invite_people: 'Pōwhiri atu'
     done: 'Kua mutu'
@@ -157,19 +161,22 @@ mi:
     no_groups:
       start: Tīmatatia
   discussion:
-    proposals: 'Ngā whakatakoto'
     volume:
-      mute_message: 'Kua whakahāngūtia te miro'
       unmute_message: 'Kua whakahoitia'
+  activity_card:
+    unread: Kāhore anō kia kitea
+    latest: Hou ake
   thread_group:
     aria_label: 'Ingoa rōpū'
   thread_context:
+    close_thread: 'Katia'
     mute_thread: 'Whakahāngū'
   decision_tools_card:
     proposal_title: He whakatakoto
     count_title: Whakatika
     poll_title: Pōti
   poll_common_form:
+    closed: Kua kati
     start: Tīmatatia
   polls_page:
     heading: Ngā whakatau

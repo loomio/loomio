@@ -28,8 +28,11 @@ hu:
     more_help: 'További segítség'
     models:
       proposal: 'Javaslat'
+    copy: 'Másolás'
+    copy_text: 'Szöveg másolása'
     copied: 'Vágólapra másolva'
     action:
+      next: 'Következő'
       close: 'Bezár'
       save: 'Mentés'
       save_changes: 'Változások mentése'
@@ -51,10 +54,36 @@ hu:
       translated: '"Bing-Translator"-ral fordítva'
       upload: 'Feltöltés'
       uploading: 'Feltöltés'
+      load_more: 'Több'
+      share: Megosztás
+      ok: Rendben
+      retry: Újra
+      done: Kész
+      start: Indítás
+      delete: Törlés
+      unsubscribe: Leiratkozás
+      subscribe: Feliratkozás
+      resend: Újraküldés
+      send: Küldés
+    formatting_help:
+      label: 'Formázás'
+  ordinal:
+    _1: '1.'
+    _2: '2.'
+    _3: '3.'
+    _4: '4.'
+    _5: '5.'
+    _6: '6.'
+    _7: '7.'
+    _8: '8.'
+    _9: '9.'
+    _10: '10.'
   error_page:
     forbidden: 'Ehhez nincs jogosultságod.'
     page_not_found: 'Ezt nem találjuk. Lehet, hogy törölték vagy áthelyezték.'
     internal_server_error: 'Sajnáljuk, de valami hiba történt. Kérlek próbáld újra.'
+  verify_stances:
+    verify: Ellenőrzés
   volume_levels:
     loud: 'Hangos'
     normal: 'Normál'
@@ -125,11 +154,15 @@ hu:
     private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'
     public_privacy_notice: 'A hozzászólás mindenki számára nyilvános lesz.'
     sign_in: "Lépj be, hogy hozzászolhass a témakörhöz."
+  sidebar:
+    aria_labels:
+      groups_list: 'Csoportok'
   navbar:
     recent_title: 'Irány az eszközökhöz'
     unread_title: 'Olvasatlan tevékenységek megtekintése'
     notifications: 'Értesítések'
     search:
+      results_aria_label: 'Keresési eredmények'
       no_results: 'Nem található eredmény erre a témakörre'
       close: 'Kereső panel bezárása'
       placeholder: 'Keresés'
@@ -139,6 +172,11 @@ hu:
       comments: 'Hozzászólások'
     sign_in: 'Bejelentkezés'
     toggle_sidebar: 'Oldal panel ki/be kapcsolása'
+  user_dropdown:
+    help: 'Sugó'
+    sign_out: 'Kijelentkezés'
+  membership_dropdown:
+    make_coordinator: 'Koordonátori jogok megadása'
   start_menu:
     start_group: 'Csoport indítása'
     start_subgroup: 'Alcsoport indítása'
@@ -148,12 +186,17 @@ hu:
     header: "Értesítések"
     no_notifications: "Nincsenek új értesítések."
     publish_outcome: "Eredmény közlése"
+    motion_closing_soon: "Javaslat hamarosan zárul: <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Szólj bele
+  extend_proposal_form:
+    aria_label: A határidő módosítása
+    title: 'A határidő módosítása'
   discussion_form:
     new_discussion_title: 'Új téma indítása'
     group_label: 'Csoport'
     title_label: 'Cím'
+    title_placeholder: 'Mit szeretnél megtárgyalni?'
     context_label: 'Leírás'
     privacy_label: 'Adatvédelem'
   join_group_button:
@@ -162,24 +205,41 @@ hu:
     heading: Kérj belépőt a csoportba
     name_label: Név
     email_label: E-mail
+  revision_history_modal:
+    current_revision: Legutóbbi
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "A belépéshez meghívóra van szükséged egy csoporttagtól."
-        membership_is_invitation_by_admin_only: "A belépéshez egy koordinátor meghívójára van szükséged."
     group_logo: 'Csoport logó'
-    discussions: 'Szálak'
+    new_photo: 'Új fotó'
+    visibility_label: 'Láthatóság'
     options_label: 'Lehetőségek'
     options:
       label: 'Lehetőségek'
+      edit_group: 'A csoport beállításainak szerkesztése'
+      leave_group: 'Kilépés a csoportból'
+      deactivate_group: 'Csoport deaktiválása'
     volume:
       loud: Emailezzen ha aktivitás van.
       quiet: Nem kérek emailt erről a csoportról. Az aktivitások megjelennek a műszerfalon.
       mute: Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg.
+  description_card:
+    title: 'A csoport leírása'
+  leave_group_form:
+    aria_label: 'Kilépés a csoportból'
+    title: 'Kilépés a csoportból'
+  archive_group_form:
+    aria_label: 'Csoport deaktiválása'
+    title: 'Csoport deaktiválása'
   group_form:
+    start_group_heading: 'Indíts egy csoportot'
+    start_subgroup_heading: 'Indíts egy alcsoportot'
     privacy: 'Adatvédelem'
     members_can_start_discussions: 'A tagok felvethetnek új támékat.'
     submit_update: 'Beállítások frissítése'
+  documents_page:
+    confirm_remove_title: Csatolmány eltávolítása
+  document:
+    form:
+      title_label: Név
   membership_requests_page:
     approve: Érvényesítés
     ignore: Figyelmen kívül hagyás
@@ -187,6 +247,9 @@ hu:
     heading: Előző javaslatok
   invitation_form:
     invite_people: 'Hívj meg másokat'
+    copy_link: 'Másolás'
+    send: 'Küldés'
+    done: 'Kész'
   memberships_page:
     members: 'Tagok'
     name_label: 'Név'
@@ -202,6 +265,7 @@ hu:
   dashboard_page:
     aria_label: 'Műszerfal'
     no_groups:
+      start: Indítás
       or: vagy
     mark_as_read: Olvasottként jelöl
     filtering:
@@ -212,13 +276,18 @@ hu:
       yesterday: 'Tegnap'
   inbox_page:
     no_groups:
+      start: Indítás
       or: vagy
   discussion:
-    proposals: 'Javaslatok'
-    previous_proposals: 'Előző javaslatok'
     started_by: '<strong>{{name}}</strong> indította'
+  activity_card:
+    unread: Olvasatlan
+    latest: Legutóbbi
   thread_group:
     aria_label: 'Csoport neve'
+  thread_context:
+    close_thread: 'Bezár'
+    delete_thread: 'Törlés'
   delete_comment_dialog:
     title: 'Hozzászólás törlése'
     question: 'Biztosan törölni akarod ezt a hozzászólást?'
@@ -240,3 +309,11 @@ hu:
   registered_app_form:
     messages:
       logo_changed: Logó frissítve.
+  poll_common_form:
+    closed: Zárva
+    start: Indítás
+  poll_count_options:
+    'yes': 'Igen'
+    'no': 'Nem'
+  poll_common_subscribe_form:
+    subscribe: Feliratkozás

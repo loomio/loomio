@@ -30,28 +30,30 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
 }
 
 .mailer__header-logo-image {
-  margin: 15px 0 10px 0;
-  height: 64px;
+  margin: 25px 0 20px 0;
+  max-height: 64px;
+  max-width: 400px;
+  width: auto;
+  height: auto;
 }
 
 .mailer__header-logo {
-  border-bottom: 1px solid $primary-color;
   margin: 0 10px;
 }
 
 .base-mailer__avatar-initials {
   margin: 10px auto;
   border: 1px solid #dcdcdc;
-  border-radius: 4px;
+  border-radius: 50%;
   font-size: 18px;
-  line-height: 50px;
+  line-height: 40px;
   text-align: center;
   width: 40px;
   height: 40px;
 }
 
 .base-mailer__avatar-image {
-  border-radius: 4px;
+  border-radius: 50%;
   margin: 0 10px 10px 0;
   width: 40px;
   height: 40px;
@@ -242,6 +244,11 @@ body { max-width: 600px; font-family: "Helvetica Neue", Helvetica, Arial, sans-s
   width: 20px;
   margin-right: 8px;
   vertical-align: bottom;
+}
+
+.user-mailer__code {
+  font-size: 36px;
+  letter-spacing: 15px;
 }
 
 .align-left {

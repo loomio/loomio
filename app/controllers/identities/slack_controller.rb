@@ -1,5 +1,5 @@
 class Identities::SlackController < Identities::BaseController
-  before_filter :respond_with_ok, only: [:participate, :initiate]
+  before_action :respond_with_ok, only: [:participate, :initiate]
 
   rescue_from(ActionController::ParameterMissing) { head :bad_request }
 
@@ -14,7 +14,7 @@ class Identities::SlackController < Identities::BaseController
 
   def initiate
     if params['token'] == ENV['SLACK_VERIFICATION_TOKEN']
-      render text: ::Slack::Initiator.new(params).initiate
+      render plain: ::Slack::Initiator.new(params).initiate
     else
       head :bad_request
     end
@@ -23,15 +23,19 @@ class Identities::SlackController < Identities::BaseController
   def participate
     payload = JSON.parse(params.require(:payload))
     if payload['token'] == ENV['SLACK_VERIFICATION_TOKEN']
-      render text: ::Slack::Participator.new(JSON.parse(params.require(:payload))).participate
+      render json: ::Slack::Participator.new(JSON.parse(params.require(:payload))).participate
     else
       head :bad_request
     end
   end
 
   def authorized
-    @team = params[:team]
-    render template: 'slack/authorized', layout: 'application'
+    @team, @channel = params[:slack].to_s.split("-")
+    if user_to_join
+      FormalGroup.by_slack_channel(@channel).each { |g| g.add_member! user_to_join }
+      sign_in user_to_join
+    end
+    render template: 'slack/authorized', layout: 'basic'
   end
 
   private
@@ -43,6 +47,14 @@ class Identities::SlackController < Identities::BaseController
   def complete_identity(identity)
     super
     identity.fetch_team_info
+  end
+
+  def user_to_join
+    @user_to_join ||= current_user.presence || identity_to_join&.user || identity_to_join&.create_user!
+  end
+
+  def identity_to_join
+    @identity_to_join ||= Identities::Slack.find_by(id: session.delete(:pending_identity_id))
   end
 
   def identity_params

@@ -1,52 +1,48 @@
-class Discussion < ActiveRecord::Base
-  SALIENT_ITEM_KINDS = %w[new_comment
-                          stance_created
-                          outcome_created
-                          poll_created
-                        ]
-
-  THREAD_ITEM_KINDS = %w[new_comment
-                         discussion_edited
-                         discussion_moved
-                         poll_created
-                         poll_edited
-                         stance_created
-                         outcome_created
-                         poll_expired
-                         poll_closed_by_user
-                       ]
-
+class Discussion < ApplicationRecord
+  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include Translatable
   include Reactable
   include HasTimeframe
+  include HasEvents
   include HasMentions
+  include HasGuestGroup
+  include HasDrafts
   include HasImportance
   include MessageChannel
-  include MakesAnnouncements
   include SelfReferencing
   include UsesOrganisationScope
+  include HasMailer
+  include HasCreatedEvent
+  extend  NoSpam
+
+  no_spam_for :title, :description
 
   scope :archived, -> { where('archived_at is not null') }
-  scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
 
-  scope :visible_to_public, -> { published.where(private: false) }
+  scope :visible_to_public, -> { where(private: false) }
   scope :not_visible_to_public, -> { where(private: true) }
   scope :chronologically, -> { order('created_at asc') }
+
+  scope :is_open, -> { where(closed_at: nil) }
+  scope :is_closed, -> { where.not(closed_at: nil) }
 
   validates_presence_of :title, :group, :author
   validate :private_is_not_nil
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
-  validates_inclusion_of :uses_markdown, in: [true,false]
   validate :privacy_is_permitted_by_group
 
   is_mentionable on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail only: [:title, :description, :private, :group_id]
+
+  def self.always_versioned_fields
+    [:title, :description]
+  end
 
   belongs_to :group, class_name: 'FormalGroup'
   belongs_to :author, class_name: 'User'
@@ -56,18 +52,22 @@ class Discussion < ActiveRecord::Base
   has_one :search_vector
   has_many :comments, dependent: :destroy
   has_many :commenters, -> { uniq }, through: :comments, source: :user
-  has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :documents, as: :model, dependent: :destroy
+  has_many :poll_documents,    through: :polls,    source: :documents
+  has_many :comment_documents, through: :comments, source: :documents
 
-  has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
+  has_many :items, -> { includes(:user).thread_events.order('events.id ASC') }, class_name: 'Event', dependent: :destroy
 
-  has_many :items, -> { includes(:user).where(kind: THREAD_ITEM_KINDS).order('created_at ASC') }, class_name: 'Event'
-  has_many :salient_items, -> { includes(:user).where(kind: SALIENT_ITEM_KINDS).order('created_at ASC') }, class_name: 'Event'
+  has_many :discussion_readers, dependent: :destroy
 
-  has_many :discussion_readers
+  scope :search_for, ->(fragment) do
+     joins("INNER JOIN users ON users.id = discussions.author_id")
+    .where("discussions.title ilike :fragment OR users.name ilike :fragment", fragment: "%#{fragment}%")
+  end
 
-  scope :search_for, ->(query, user, opts = {}) do
-    query = sanitize(query)
-     select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query}::text as query")
+  scope :weighted_search_for, ->(query, user, opts = {}) do
+    query = connection.quote(query)
+    select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query}::text as query")
     .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
     .from(SearchVector.search_for(query, user, opts))
     .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")
@@ -83,24 +83,33 @@ class Discussion < ActiveRecord::Base
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
 
+  alias_method :draft_parent, :group
+
   after_create :set_last_activity_at_to_created_at
 
-  define_counter_cache(:closed_polls_count)       { |discussion| discussion.polls.closed.count }
-  define_counter_cache(:versions_count)           { |discussion| discussion.versions.where(event: :update).count }
-  define_counter_cache(:items_count)              { |discussion| discussion.items.count }
-  define_counter_cache(:salient_items_count)      { |discussion| discussion.salient_items.count }
-  define_counter_cache(:seen_by_count)            { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
+  define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
+  define_counter_cache(:versions_count)       { |discussion| discussion.versions.count }
+  define_counter_cache(:items_count)          { |discussion| discussion.items.count }
+  define_counter_cache(:seen_by_count)        { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
+  update_counter_cache :group, :open_discussions_count
+  update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
+  def update_undecided_count
+    polls.active.each(&:update_undecided_count)
+  end
+
+  def created_event_kind
+    :new_discussion
+  end
+
   def update_sequence_info!
-    first_item = discussion.salient_items.order({sequence_id: :asc}).first
-    last_item =  discussion.salient_items.order({sequence_id: :asc}).last
-    discussion.first_sequence_id = first_item&.sequence_id || 0
-    discussion.last_sequence_id  = last_item&.sequence_id || 0
-    discussion.last_activity_at = last_item&.created_at || created_at
+    discussion.ranges_string =
+     RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
+    discussion.last_activity_at = discussion.items.order(:sequence_id).last&.created_at || created_at
     save!(validate: false)
   end
 
@@ -108,15 +117,9 @@ class Discussion < ActiveRecord::Base
     update_sequence_info!
   end
 
-  def thread_item_destroyed!(item)
+  def thread_item_destroyed!
     update_sequence_info!
-    discussion_readers.
-      where('last_read_at <= ?', item.created_at).
-      map { |dr| dr.viewed!(dr.last_read_at) }
-
-    true
   end
-
 
   def public?
     !private
@@ -136,7 +139,26 @@ class Discussion < ActiveRecord::Base
     self.description
   end
 
+  def ranges
+    RangeSet.parse(self.ranges_string)
+  end
+
+  def first_sequence_id
+    Array(ranges.first).first.to_i
+  end
+
+  def last_sequence_id
+    Array(ranges.last).last.to_i
+  end
+
+  # this is insted of a big slow migration
+  def ranges_string
+    update_sequence_info! if self[:ranges_string].nil?
+    self[:ranges_string]
+  end
+
   private
+
   def set_last_activity_at_to_created_at
     update_attribute(:last_activity_at, created_at)
   end

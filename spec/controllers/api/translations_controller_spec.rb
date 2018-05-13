@@ -10,13 +10,12 @@ describe API::TranslationsController do
   let(:comment_translation) { create(:translation, translatable: comment, language: :fr, fields: { body: "body" }) }
 
   before do
-    TranslationService.stub(:supported_languages).and_return(['fr'])
     sign_in user
   end
 
   describe 'show' do
     it 'returns a translation based on lang parameter' do
-      get :show, lang: :es
+      get :show, params: { lang: :es }
       json = JSON.parse(response.body)
       expect(json.dig('common', 'action', 'save')).to eq 'Guardar'
     end
@@ -33,7 +32,7 @@ describe API::TranslationsController do
 
       it 'responds with an inline translation for a discussion' do
         discussion_translation
-        get :inline, model: 'discussion', id: discussion.id, to: :fr
+        get :inline, params: { model: 'discussion', id: discussion.id, to: :fr }
         json = JSON.parse(response.body)
         translatable_ids = json['translations'].map { |t| t['translatable_id'] }
         translatable_types = json['translations'].map { |t| t['translatable_type'] }
@@ -43,7 +42,7 @@ describe API::TranslationsController do
 
       it 'responds with an inline translation for a comment' do
         comment_translation
-        get :inline, model: 'comment', id: comment.id, to: :fr
+        get :inline, params: { model: 'comment', id: comment.id, to: :fr }
         json = JSON.parse(response.body)
         translatable_ids = json['translations'].map { |t| t['translatable_id'] }
         translatable_types = json['translations'].map { |t| t['translatable_type'] }
@@ -52,7 +51,7 @@ describe API::TranslationsController do
       end
 
       it 'does not translate an unknown language' do
-        get :inline, model: 'comment', id: comment.id, to: :wark
+        get :inline, params: { model: 'comment', id: comment.id, to: :wark }
         expect(response.status).to eq 422
         json = JSON.parse(response.body)
         expect(json['errors'].keys).to include 'language'

@@ -81,6 +81,8 @@ sv:
       placeholder: 'Sök'
       discussions: 'Diskussioner'
     logo_title: 'Hemsida'
+  membership_dropdown:
+    make_coordinator: 'Gör till koordinator'
   notifications:
     header: "Notifieringar"
   position_buttons_panel:
@@ -96,12 +98,9 @@ sv:
     heading: Be att få gå med
     name_label: Namn
     email_label: Email
+  revision_history_modal:
+    current_revision: Senaste
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "För att gå med i denna grupp måste du bli inbjuden av en medlem."
-        membership_is_invitation_by_admin_only: "För att gå med i denna grupp måste du bli inbjuden av en koordinator."
-    discussions: 'Diskussioner'
     options_label: 'Alternativ'
     options:
       label: 'Alternativ'
@@ -109,6 +108,9 @@ sv:
     privacy: 'Integritet'
     submit_start_group: 'Startgrupp'
     submit_update: 'Uppdatera inställningar'
+  document:
+    form:
+      title_label: Namn
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera
@@ -117,8 +119,6 @@ sv:
     name_label: 'Namn'
     coordinator_label: 'Koordinator'
     remove_member_label: 'Ta bort'
-  remove_membership_form:
-    submit: 'Ta bort'
   profile_page:
     profile: 'Profil'
     picture_label: 'Bild'
@@ -137,9 +137,13 @@ sv:
   inbox_page:
     no_groups:
       or: eller
+  activity_card:
+    unread: Olästa
+    latest: Senaste
   thread_group:
     aria_label: 'Gruppnamn'
   thread_context:
+    close_thread: 'Stäng'
     mute_thread: 'Tysta ned'
   delete_comment_dialog:
     title: 'Ta bort kommentaren'
@@ -159,3 +163,8 @@ sv:
     invitation: 'Tips för att skriva en bra inbjudan'
     proposal: 'Tips för att skriva ett tydligt förslag'
     vote: 'Du kan ändra din ståndpunkt när som helst'
+  poll_common_form:
+    closed: Stängd
+  poll_count_options:
+    'yes': 'Ja'
+    'no': 'Nej'

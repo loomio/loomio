@@ -1,0 +1,15 @@
+.logo-photo-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %div
+      %h1.lmo-h1.modal-title{translate: "logo_photo_form.heading"}
+      %dismiss_modal_button
+  .md-dialog-content.md-body-1
+    %md-button.lmo-flex{ng-click: "selectFile()"}
+      .user-avatar.lmo-box--small.lmo-margin-right
+        .user-avatar__initials--small
+          %i.mdi.mdi-camera.mdi-24px
+      %span{translate: "logo_photo_form.upload_link"}
+    %input.hidden.logo-photo-form__file-input{file-select: "upload"}
+    %p.lmo-hint-text{translate: "logo_photo_form.image_size_helptext"}

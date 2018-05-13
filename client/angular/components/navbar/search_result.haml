@@ -1,0 +1,9 @@
+.search-result.lmo-flex.lmo-flex__space-between
+  .search-result-item
+    .search-result-title {{ result.title }}
+    .search-result-group-name {{ result.resultGroupName }}
+    -# .search-result-blurb{ng-if: "result.blurb"}
+    -#   %span.search-result__leader{ng-if: "showBlurbLeader()"} …
+    -#   %span.search-result__blurb{ng-bind-html: "result.blurb"}
+    -#   %span.search-result__trailer{ng-if: "showBlurbTrailer()"} …
+  %timeago{timestamp: "result.lastActivityAt"}>

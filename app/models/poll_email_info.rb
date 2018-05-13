@@ -15,8 +15,8 @@ class PollEmailInfo
   def initialize(recipient:, event:, action_name:)
     @recipient   = recipient
     @event       = event
-    @poll        = event.poll
     @eventable   = event.eventable
+    @poll        = event.eventable.poll
     @action_name = action_name
   end
 
@@ -65,29 +65,26 @@ class PollEmailInfo
     "poll_mailer/#{prefix}_off.png"
   end
 
-  def links
-    {
-      unsubscribe: unsubscribe_url,
-      target:      target_url
-    }
+  def target_url(args = {})
+    polymorphic_url(membership || poll, utm_hash(args))
+  end
+
+  def unsubscribe_url
+    poll_unsubscribe_url poll, utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
   end
 
   def utm_hash(args = {})
     {
       utm_medium: 'email',
       utm_campaign: 'poll_mailer',
-      utm_source: action_name,
-      invitation_token: @recipient.token
+      utm_source: action_name
     }.merge(args)
   end
 
   private
 
-  def unsubscribe_url
-    poll_unsubscribe_url poll, utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
+  def membership
+    @membership ||= poll.guest_group.memberships.find_by(user: recipient)
   end
 
-  def target_url
-    poll_url poll, utm_hash
-  end
 end

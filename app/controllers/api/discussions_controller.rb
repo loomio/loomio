@@ -1,13 +1,17 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show]
   after_action :track_visit, only: :show
   include UsesDiscussionReaders
   include UsesPolls
   include UsesFullSerializer
 
+  def show
+    load_and_authorize(:discussion)
+    respond_with_resource
+  end
+
   def index
     load_and_authorize(:group, optional: true)
-    instantiate_collection { |collection| collection.sorted_by_importance }
+    instantiate_collection { |collection| collection_for_index collection }
     respond_with_collection
   end
 
@@ -26,6 +30,12 @@ class API::DiscussionsController < API::RestfulController
     )
   end
 
+  def search
+    load_and_authorize(:group)
+    instantiate_collection { |collection| collection.search_for(params.require(:q)) }
+    respond_with_collection
+  end
+
   def move
     @event = service.move discussion: load_resource, params: params, actor: current_user
     respond_with_resource
@@ -36,8 +46,28 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def mark_as_read
+    service.mark_as_read(discussion: load_resource, params: params, actor: current_user)
+    respond_with_resource
+  end
+
   def dismiss
     service.dismiss discussion: load_resource, params: params, actor: current_user
+    respond_with_resource
+  end
+
+  def recall
+    service.recall discussion: load_resource, params: params, actor: current_user
+    respond_with_resource
+  end
+
+  def close
+    @event = service.close discussion: load_resource, actor: current_user
+    respond_with_resource
+  end
+
+  def reopen
+    @event = service.reopen discussion: load_resource, actor: current_user
     respond_with_resource
   end
 
@@ -57,7 +87,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::VisibleDiscussions.new(user: current_user, group_ids: @group && @group.id_and_subgroup_ids)
+    Queries::VisibleDiscussions.new(user: current_user, group_ids: @group&.id_and_subgroup_ids)
   end
 
   def update_reader(params = {})
@@ -65,10 +95,17 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def collection_for_index(collection, filter: params[:filter])
+    case filter
+    when 'show_closed' then collection.is_closed
+    else                    collection.is_open
+    end.sorted_by_importance
+  end
+
   def collection_for_dashboard(collection, filter: params[:filter])
     case filter
-    when 'show_muted'         then collection.muted.sorted_by_latest_activity
-    else                           collection.not_muted.sorted_by_importance
+    when 'show_muted'  then collection.is_open.muted.sorted_by_latest_activity
+    else                    collection.is_open.not_muted.sorted_by_importance
     end
   end
 

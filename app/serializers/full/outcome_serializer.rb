@@ -1,3 +1,3 @@
 class Full::OutcomeSerializer < OutcomeSerializer
-  has_many :attachments, serializer: AttachmentSerializer, root: :attachments
+  has_many :documents, serializer: DocumentSerializer, root: :documents
 end

@@ -1,0 +1,9 @@
+= stylesheet_link_tag "poll_mailer"
+= stylesheet_link_tag "email"
+
+= render "poll_mailer/common/summary"
+= render "poll_mailer/common/stance_table", rows: @exporter.stance_list
+= render "poll_mailer/#{@info.poll_type}/chart"
+= render "poll_mailer/#{@info.poll_type}/responses"
+= render "poll_mailer/common/undecided"
+= render "poll_mailer/common/footer"

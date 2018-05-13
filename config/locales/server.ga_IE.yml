@@ -1,10 +1,17 @@
 ga_IE:
+  poll:
+    export:
+      title: Teideal
+      author: Údar
+      details: Sonraí
+      group_name: Ainm na baicle
   email:
     by_who: ag %{person}
     reply_to_this_discussion: Freagraigh an plé seo
     missed_yesterday:
       mark_as_read: Rianaigh mar léite
       thanks_for_reading: Go raibh maith agat as ucht é a léamh. Bíodh lá den scoth agat!
+      click_here: Brúigh anseo
     membership_request:
       subject: "D'iarr %{who} cead dul isteach i %{which_group}"
       view_group: Tig leat an t-iarratas a cheadú nó diúltú dó anseo
@@ -21,3 +28,4 @@ ga_IE:
   poll_mailer:
     common:
       unsubscribe: Díliostáil
+  comment_by: Trácht ó %{comment_author}

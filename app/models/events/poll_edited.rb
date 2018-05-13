@@ -1,29 +1,15 @@
 class Events::PollEdited < Event
-  include Events::PollEvent
+  include Events::Notify::InApp
+  include Events::Notify::ByEmail
+  include Events::Notify::Mentions
 
-  def self.publish!(version, actor, announcement = false)
-    create(kind: "poll_edited",
-           user: actor,
-           eventable: version,
-           announcement: announcement,
-           discussion: version.item.discussion,
-           created_at: version.created_at).tap { |e| EventBus.broadcast('poll_edited_event', e) }
+  def self.publish!(poll, actor)
+    version = poll.versions.last
+    super poll,
+          user: actor,
+          parent: poll.created_event,
+          discussion: poll.discussion,
+          custom_fields: {version_id: version.id, changed_keys: version.object_changes.keys},
+          created_at: version.created_at
   end
-
-  def poll
-    eventable.item
-  end
-
-  private
-
-  # notify those who have already participated in the poll of the change
-  def announcement_notification_recipients
-    poll.participants
-  end
-  alias :announcement_email_recipients :announcement_notification_recipients
-
-  def specified_notification_recipients
-    Queries::UsersToMentionQuery.for(poll)
-  end
-  alias :specified_email_recipients :specified_notification_recipients
 end

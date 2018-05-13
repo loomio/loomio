@@ -1,6 +1,9 @@
-class Stance < ActiveRecord::Base
+class Stance < ApplicationRecord
+  include CustomCounterCache::Model
   include HasMentions
   include Reactable
+  include HasEvents
+  include HasCreatedEvent
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
   include Translatable
@@ -19,10 +22,9 @@ class Stance < ActiveRecord::Base
   alias :author :participant
 
   update_counter_cache :poll, :stances_count
-  update_counter_cache :poll, :undecided_user_count
+  update_counter_cache :poll, :undecided_count
 
   scope :latest, -> { where(latest: true) }
-
   scope :newest_first,   -> { order(created_at: :desc) }
   scope :oldest_first,   -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
@@ -38,11 +40,15 @@ class Stance < ActiveRecord::Base
   validate :participant_is_complete
   validates :reason, length: { maximum: 250 }
 
-  has_many :events, as: :eventable, dependent: :destroy
-
   delegate :locale, to: :author
   delegate :group, to: :poll, allow_nil: true
+  delegate :mailer, to: :poll, allow_nil: true
+  delegate :groups, to: :poll
   alias :author :participant
+
+  def parent_event
+    poll.created_event
+  end
 
   def choice=(choice)
     if choice.kind_of?(Hash)
@@ -83,14 +89,7 @@ class Stance < ActiveRecord::Base
   end
 
   def participant_is_complete
-    return if participant.email_verified
-    if participant&.name.blank?
-      errors.add(:participant_name, I18n.t(:"activerecord.errors.messages.blank"))
-      participant.errors.add(:name, I18n.t(:"activerecord.errors.messages.blank"))
-    end
-    if participant&.email.blank?
-      errors.add(:participant_email, I18n.t(:"activerecord.errors.messages.blank"))
-      participant.errors.add(:email, I18n.t(:"activerecord.errors.messages.blank"))
-    end
+    participant.creating_stance = true
+    participant.tap(&:valid?).errors.map { |key, err| errors.add(:"participant_#{key}", err)}
   end
 end

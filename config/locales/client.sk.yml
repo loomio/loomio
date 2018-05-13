@@ -31,6 +31,8 @@ sk:
     search:
       placeholder: 'Vyhľadávať'
       discussions: 'Diskusie'
+  membership_dropdown:
+    make_coordinator: 'Urobiť koordinátorom'
   notifications:
     header: "Upozornenie"
   position_buttons_panel:
@@ -47,14 +49,12 @@ sk:
     name_label: Meno
     email_label: E-mail
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Na získanie členstva v tejto skupine vás musí pozvať jej člen."
-        membership_is_invitation_by_admin_only: "Na získanie členstva v tejto skupine vás musí pozvať jej koordinátor."
-    discussions: 'Diskusie'
     options_label: 'Nastavenia'
     options:
       label: 'Nastavenia'
+  document:
+    form:
+      title_label: Meno
   membership_requests_page:
     approve: Schváliť
     ignore: Ignorovať
@@ -80,8 +80,12 @@ sk:
   inbox_page:
     no_groups:
       or: alebo
+  activity_card:
+    unread: Neprečítané
   thread_group:
     aria_label: 'Názov skupiny'
+  thread_context:
+    close_thread: 'Uzatvoriť'
   delete_comment_dialog:
     title: 'Odstrániť komentár'
     question: 'Naozaj chcete odstrániť tento komentár?'
@@ -100,3 +104,8 @@ sk:
     invitation: 'Rady na napísanie neodolateľnej pozvánky'
     proposal: 'Rady na napísanie jasného návrhu'
     vote: 'Môžete kdykoľvek svoj postoj zmeniť'
+  poll_common_form:
+    closed: Uzatvorené
+  poll_count_options:
+    'yes': 'Áno'
+    'no': 'Nie'

@@ -28,15 +28,14 @@ class MigrateUserService
     ahoy_events: :user_id,
     ahoy_messages: :user_id,
     attachments: :user_id,
+    documents: :author_id,
     comments: :user_id,
     reactions: :user_id,
-    contacts: :user_id,
     discussion_readers: :user_id,
     discussions: :author_id,
     events: :user_id,
     group_visits: :user_id,
     groups: :creator_id,
-    invitations: [:inviter_id, :canceller_id],
     login_tokens: :user_id,
     membership_requests: [:requestor_id, :responder_id],
     memberships: [:user_id, :inviter_id],
@@ -90,9 +89,7 @@ class MigrateUserService
     destination.reload.groups.each do |group|
       group.update_memberships_count
       group.update_admin_memberships_count
-      group.update_invitations_count
-      group.update_pending_invitations_count
-      group.update_announcement_recipients_count
+      group.update_pending_memberships_count
     end
 
     [
@@ -100,7 +97,7 @@ class MigrateUserService
       destination.group_polls,
       destination.participated_polls
     ].flatten.uniq.each do |poll|
-      poll.update_undecided_user_count
+      poll.update_undecided_count
       poll.update_stances_count
       poll.update_stance_data
     end

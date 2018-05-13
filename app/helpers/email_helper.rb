@@ -1,34 +1,37 @@
 module EmailHelper
   include PrettyUrlHelper
 
-  def render_rich_text(text, md_boolean=true)
-    return "" if text.blank?
+  MARKDOWN_OPTIONS = [
+    no_intra_emphasis:    true,
+    tables:               true,
+    fenced_code_blocks:   true,
+    autolink:             true,
+    strikethrough:        true,
+    space_after_headers:  true,
+    superscript:          true,
+    underline:            true
+  ].freeze
 
-    if md_boolean
-      options = [
-        :no_intra_emphasis   => true,
-        :tables              => true,
-        :fenced_code_blocks  => true,
-        :autolink            => true,
-        :strikethrough       => true,
-        :space_after_headers => true,
-        :superscript         => true,
-        :underline           => true
-      ]
+  def stance_icon_for(poll, stance_choice)
+    case stance_choice&.score.to_i
+      when 0 then "disagree"
+      when 1 then "abstain"
+      when 2 then "agree"
+    end if poll.has_score_icons
+  end
 
-      renderer = Redcarpet::Render::HTML.new(
-        :filter_html         => true,
-        :hard_wrap           => true,
-        :link_attributes     => {target: '_blank'}
-        )
-      markdown = Redcarpet::Markdown.new(renderer, *options)
-      output = markdown.render(text)
-    else
-      output = Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"')
-    end
+  def render_rich_text(text)
+    return "" unless text
+    Redcarpet::Render::SmartyPants.render(emojify markdownify text).html_safe
+  end
 
-    output = Emojifier.emojify!(output)
-    Redcarpet::Render::SmartyPants.render(output).html_safe
+  def emojify(text)
+    Emojifier.emojify!(text)
+  end
+
+  def markdownify(text)
+    renderer = Redcarpet::Render::HTML.new(filter_html: true, hard_wrap: true, link_attributes: {target: :_blank})
+    Redcarpet::Markdown.new(renderer, *MARKDOWN_OPTIONS).render(text)
   end
 
   def reply_to_address(discussion: , user: )
@@ -40,6 +43,7 @@ module EmailHelper
   end
 
   def reply_to_address_with_group_name(discussion: , user: )
+    return unless user.is_logged_in?
     "\"#{discussion.group.full_name}\" <#{reply_to_address(discussion: discussion, user: user)}>"
   end
 
@@ -57,17 +61,6 @@ module EmailHelper
   def formatted_time_in_zone(time, zone)
     return unless time && zone
     time.in_time_zone(TimeZoneToCity.convert zone).strftime('%l:%M%P - %A %-d %b %Y')
-  end
-
-  def time_formatted_relative_to_age(time)
-    current_time = Time.zone.now
-    if time.to_date == Time.zone.now.to_date
-      l(time, format: :for_today)
-    elsif time.year != current_time.year
-      l(time.to_date, format: :for_another_year)
-    else
-      l(time.to_date, format: :for_this_year)
-    end
   end
 
   def google_pie_chart_url(poll)

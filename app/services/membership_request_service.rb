@@ -1,7 +1,6 @@
 class MembershipRequestService
-  def self.create(membership_request:, actor: nil)
-    actor ||= LoggedOutUser.new
-    membership_request.requestor = actor if actor.is_logged_in?
+  def self.create(membership_request:, actor:)
+    membership_request.requestor = actor
     return false unless membership_request.valid?
     actor.ability.authorize!(:create, membership_request)
 
@@ -12,16 +11,7 @@ class MembershipRequestService
   def self.approve(membership_request:, actor: )
     actor.ability.authorize! :approve, membership_request
     membership_request.approve!(actor)
-    if membership = membership_request.convert_to_membership!
-      Events::MembershipRequestApproved.publish!(membership, actor)
-    else
-      invitation = InvitationService.create_invite_to_join_group(
-                        recipient_name:  membership_request.name,
-                        recipient_email: membership_request.email,
-                        inviter: actor,
-                        group: membership_request.group)
-      InvitePeopleMailer.delay(priority: 1).after_membership_request_approval(invitation, actor.email,'')
-    end
+    Events::MembershipRequestApproved.publish!(membership_request.convert_to_membership!, actor)
   end
 
   def self.ignore(membership_request: , actor: )

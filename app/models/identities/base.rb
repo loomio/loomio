@@ -1,4 +1,4 @@
-class Identities::Base < ActiveRecord::Base
+class Identities::Base < ApplicationRecord
   extend HasCustomFields
   self.table_name = :omniauth_identities
   validates :identity_type, presence: true
@@ -22,9 +22,9 @@ class Identities::Base < ActiveRecord::Base
 
   def assign_logo!
     return unless user && logo
-    user.uploaded_avatar = URI.parse(logo)
+    user.uploaded_avatar = open URI.parse(logo)
     user.update(avatar_kind: :uploaded)
-  rescue OpenURI::HTTPError
+  rescue OpenURI::HTTPError, TypeError
     # Can't load logo uri as attachment; do nothing
   end
 end

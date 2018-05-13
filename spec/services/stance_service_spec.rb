@@ -17,8 +17,10 @@ describe StanceService do
   let(:stance_created) { build :stance, poll: poll, stance_choices: [agree_choice], participant: nil }
   let(:agree_choice) { build(:stance_choice, poll_option: agree) }
   let(:disagree_choice) { build(:stance_choice, poll_option: disagree) }
+  let(:poll_created_event) { PollService.create(poll: poll, actor: user) }
 
   before do
+    discussion.created_event
     group.add_member! user
     group.add_member! another_group_member
   end
@@ -42,8 +44,14 @@ describe StanceService do
       expect(stance_created.reload.latest).to eq true
     end
 
+    it 'sets event parent to the poll created event' do
+      poll_created_event
+      event = StanceService.create(stance: stance_created, actor: user)
+      expect(event.parent.id).to eq poll_created_event.id
+    end
+
     it 'does not create a stance for a logged out user' do
-      expect { StanceService.create(stance: public_stance, actor: LoggedOutUser.new) }.to raise_error { CanCan::AccessDenied }
+      expect { StanceService.create(stance: public_stance, actor: LoggedOutUser.new) }.to_not change { Stance.count }
     end
 
     it 'does not allow visitors to create unauthorized stances' do

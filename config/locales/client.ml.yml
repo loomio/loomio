@@ -22,6 +22,8 @@ ml:
     search:
       placeholder: 'തിരയുക'
       discussions: 'ചര്‍ച്ചകള്‍'
+  membership_dropdown:
+    make_coordinator: 'എകോപകൻ ആക്കുക'
   notifications:
     header: "അറിയിപ്പുകള്‍"
   position_buttons_panel:
@@ -36,10 +38,12 @@ ml:
     name_label: പേരു്
     email_label: ഈമെയില്‍
   group_page:
-    discussions: 'ചര്‍ച്ചകള്‍'
     options_label: 'ഐച്ഛികങ്ങള്‍'
     options:
       label: 'ഐച്ഛികങ്ങള്‍'
+  document:
+    form:
+      title_label: പേരു്
   membership_requests_page:
     approve: സ്ഥിരീകരിക്കുക
     ignore: നിരസ്സിക്കുക
@@ -55,6 +59,8 @@ ml:
     locale_label: 'ഭാഷ'
   thread_group:
     aria_label: 'കൂട്ടത്തിന്റെ പേരു്'
+  thread_context:
+    close_thread: 'അടക്കുക'
   delete_comment_dialog:
     title: 'അഭിപ്രായം നീക്കം ചെയ്യുക'
     question: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
@@ -68,3 +74,8 @@ ml:
     invitation: 'ഒരു മികച്ച ക്ഷണം എഴുതാനുള്ള നുറുങ്ങുവിദ്യകള്‍'
     proposal: 'വ്യക്തമായൊരു ശുപാര്‍ശ എഴുതാനുള്ള നുറുങ്ങുകള്‍'
     vote: 'എപ്പോള്‍ വേണമെങ്കിലും താങ്കളുടെ സ്ഥാനം മാറ്റാം'
+  poll_common_form:
+    closed: അടച്ചു
+  poll_count_options:
+    'yes': 'അതെ'
+    'no': 'അല്ല'

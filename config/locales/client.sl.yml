@@ -47,6 +47,8 @@ sl:
     search:
       placeholder: 'Išči'
       discussions: 'Razprave'
+  membership_dropdown:
+    make_coordinator: 'Napravi v koordinatorja/ko'
   notifications:
     header: "Obvestila"
   position_buttons_panel:
@@ -67,11 +69,6 @@ sl:
     messages:
       membership_requested: 'Zaprosil/a si za članstvo v {{group}}'
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Za pridružitev tej skupini moraš biti povabljen/a s strani člana."
-        membership_is_invitation_by_admin_only: "Za pridružitev tej skupini moraš biti povabljen/a s strani koordinatorja."
-    discussions: 'Razprave'
     options_label: 'Možnosti'
     options:
       label: 'Možnosti'
@@ -79,6 +76,9 @@ sl:
       loud: Pošlji email ob vsaki aktivnosti.
       quiet: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
       mute: Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a.
+  document:
+    form:
+      title_label: Ime
   membership_requests_page:
     approve: Potrdi
     ignore: Prezri
@@ -114,8 +114,12 @@ sl:
       or: ali
   discussion:
     started_by: 'Začel/a <strong>{{name}}</strong>'
+  activity_card:
+    unread: Neprebrano
   thread_group:
     aria_label: 'Ime skupine'
+  thread_context:
+    close_thread: 'Zapri'
   delete_comment_dialog:
     title: 'Izbriši komentar'
     question: 'Si prepričan/a, da želiš izbrisati ta komentar?'
@@ -135,3 +139,8 @@ sl:
     invitation: 'Nasveti za pisanje prepričljivih vabil'
     proposal: 'Nasveti za pisanje jasnih predlogov'
     vote: 'Svojo odločitev lahko spremeniš kadarkoli'
+  poll_common_form:
+    closed: Zaprto
+  poll_count_options:
+    'yes': 'Da'
+    'no': 'Ne'

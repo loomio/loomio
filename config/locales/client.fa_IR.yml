@@ -130,8 +130,6 @@ fa_IR:
     reply_to_comment: پاسخ دادن
   reactions_display:
     you: "شما"
-  group_page:
-    discussions: 'موضوعات'
   group_form:
     privacy: 'حریم شخصی'
     submit_update: 'به روز رسانی تنطیمات'
@@ -143,8 +141,6 @@ fa_IR:
   memberships_page:
     members: 'اعضا'
     remove_member_label: 'حذف کردن'
-  remove_membership_form:
-    submit: 'حذف کردن'
   email_settings_page:
     header: تنظیمات رایانامه
     update_settings: ذخیره کردن تغییرات
@@ -160,23 +156,21 @@ fa_IR:
   inbox_page:
     no_groups:
       start: شروع
-  discussion:
-    proposals: 'پیشنهاد‌ها'
   thread_context:
     edit: 'ویرایش'
     edit_thread: 'ویرایش'
+    close_thread: 'بستن'
     delete_thread: 'پاک کردن'
   decision_tools_card:
     poll_title: نظرسنجی
   poll_common_select_group:
     loomio_group: گروه
   poll_common_form:
+    closed: بسته
     start: شروع
     update: به روز رسانی
   poll_meeting_chart_panel:
     total: مقدار کلی
-  poll_common_share_form:
-    share_group: گروه
   poll_common_subscribe_form:
     subscribe: دنبال کردن
   polls_page:

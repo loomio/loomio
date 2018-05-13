@@ -1,0 +1,8 @@
+.poll-common-outcome-form
+  .lmo-disabled-form{ng-if: "isDisabled"}
+
+  %md-input-container.md-block
+    %label{translate: "poll_common.statement"}
+    %lmo_textarea.poll-common-outcome-form__statement.lmo-primary-form-input{model: "outcome", field: "statement", placeholder: "'poll_common_outcome_form.statement_placeholder' | translate"}
+
+  %poll_common_calendar_invite{outcome: "outcome", ng-if: "datesAsOptions()"}

@@ -1,0 +1,17 @@
+.user-dropdown__user-details {
+  margin-bottom: 8px;
+}
+
+.user-dropdown__name {
+  margin-right: 16px;
+}
+
+.user-dropdown__user-name {
+  font-weight: 500;
+}
+
+@media(max-width: $tiny-max-px) {
+  .md-button.user-dropdown__list-item-button {
+    text-align: left;
+  }
+}

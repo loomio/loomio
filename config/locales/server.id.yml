@@ -1,9 +1,16 @@
 id:
+  poll:
+    export:
+      title: Judul
+      author: Penulis
+      details: Keterangan
   email:
     group_email:
       intro: "%{who} membuat pengumuman di dalam %{group}:"
     unsubscribe: 'Tidak ingin berlanggan atau ganti alamat surel:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> untuk ubah langganan atau ganti alamat surel."
+    missed_yesterday:
+      click_here: Klik di sini
     membership_request:
       subject: "%{who} mengirimkan permintaan untuk bergabung ke dalam %{which_group}"
       view_group: Anda dapat menerima atau menolak permintaan di sini

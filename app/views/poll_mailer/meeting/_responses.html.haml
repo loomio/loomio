@@ -3,7 +3,7 @@
   %table
     - @info.poll.stances.latest.with_reason.each do |stance|
       %tr
-        %td= render partial: 'avatar', locals: { user: stance.participant }
+        %td= render partial: 'base_mailer/avatar', locals: { user: stance.participant }
         %td.poll-mailer-common-responses__reason
           #{stance.participant.name}:
           = render_rich_text stance.reason

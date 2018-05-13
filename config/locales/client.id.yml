@@ -22,6 +22,8 @@ id:
     search:
       placeholder: 'Cari'
       discussions: 'Diskusi'
+  membership_dropdown:
+    make_coordinator: 'Buat jadi koordinator'
   notifications:
     header: "Notifikasi"
   position_buttons_panel:
@@ -36,10 +38,12 @@ id:
     name_label: Nama
     email_label: Surel
   group_page:
-    discussions: 'Diskusi'
     options_label: 'Pilihan'
     options:
       label: 'Pilihan'
+  document:
+    form:
+      title_label: Nama
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan
@@ -55,6 +59,8 @@ id:
     locale_label: 'Bahasa'
   thread_group:
     aria_label: 'Nama kelompok'
+  thread_context:
+    close_thread: 'Tutup'
   delete_comment_dialog:
     title: 'Hapus komentar'
     question: 'Apakah Anda ingin menghapus komentar ini?'
@@ -68,3 +74,8 @@ id:
     invitation: 'Tips menulis undangan yang baik'
     proposal: 'Tips untuk menulis usulan yang baik'
     vote: 'Anda dapat mengubah pendapat Anda kapanpun'
+  poll_common_form:
+    closed: Ditutup
+  poll_count_options:
+    'yes': 'Ya'
+    'no': 'Tidak'

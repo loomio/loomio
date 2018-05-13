@@ -1,2 +1,2 @@
-class BlacklistedPassword < ActiveRecord::Base
+class BlacklistedPassword < ApplicationRecord
 end

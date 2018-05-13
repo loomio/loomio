@@ -19,6 +19,8 @@ vi:
     search:
       placeholder: 'Tìm kiếm'
       discussions: 'Các phần thảo luận'
+  membership_dropdown:
+    make_coordinator: 'Tạo điều hành viên'
   notifications:
     header: "Thông báo"
   position_buttons_panel:
@@ -32,10 +34,12 @@ vi:
     name_label: Tên
     email_label: Email
   group_page:
-    discussions: 'Các phần thảo luận'
     options_label: 'Tùy chọn'
     options:
       label: 'Tùy chọn'
+  document:
+    form:
+      title_label: Tên
   membership_requests_page:
     approve: Chấp thuậ
     ignore: Bỏ qua
@@ -49,6 +53,8 @@ vi:
     name_label: 'Tên'
     email_label: 'Email'
     locale_label: 'Ngôn ngữ'
+  thread_context:
+    close_thread: 'Đóng lại'
   delete_comment_dialog:
     title: 'Xóa bình luận'
     question: 'Bạn có chắc muốn xóa bình luận này?'
@@ -62,3 +68,8 @@ vi:
     invitation: 'Gợi ý về cách viết các lời mời để kết nối thêm thành viên'
     proposal: 'Gợi ý về việc viết lời đề nghị theo hướng rõ ràng nhất'
     vote: 'Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào'
+  poll_common_form:
+    closed: Đã đóng lại
+  poll_count_options:
+    'yes': 'Đồng Ý'
+    'no': 'Không đồng ý'

@@ -1,0 +1,14 @@
+.auth-complete {
+  text-align: center;
+}
+
+.auth-complete__code input {
+  font-size: 40px;
+  height: 48px;
+  letter-spacing: 15px;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid $grey-on-white;
+  @media (max-width: $tiny-max-px) { font-size: 32px; }
+}

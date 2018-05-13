@@ -1,19 +1,15 @@
-require Rails.root.join(*%w(lib plugins base))
-require Rails.root.join(*%w(lib plugins fetcher))
+Dir[Rails.root.join('lib/plugins/*.rb')].each { |file| require file }
 
 namespace :plugins do
 
   task :fetch, [:plugin_set] do |t, args|
-    plugin_set = args[:plugin_set] || 'plugins'
-    return unless yaml = YAML.load_file(Rails.root.join(*['config', plugin_set + '.yml']))
+    plugin_set = args[:plugin_set] || 'loomio_org'
+    return unless yaml = YAML.load_file(Rails.root.join(*['config', "plugins.#{plugin_set}.yml"]))
     yaml.each_pair { |name, config| Plugins::Fetcher.new(name, config).execute! }
-    Dir.chdir Rails.root do
-      `rm plugins; ln -s fetched_plugins plugins`
-    end
   end
 
-  task :install => :environment do
-    require Rails.root.join(*%w(lib plugins base))
-    Plugins::Repository.install_plugins!
+  task :install, [:plugin_set] => :environment do |t, args|
+    plugin_set = args[:plugin_set] || '*'
+    Plugins::Repository.install_plugins!(plugin_set)
   end
 end

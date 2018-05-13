@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   layout false
 
   def export
-    @exporter = GroupExporter.new(load_and_authorize(:group, :export))
+    @exporter = GroupExporter.new(load_and_authorize(:formal_group, :export))
 
     respond_to do |format|
       format.html

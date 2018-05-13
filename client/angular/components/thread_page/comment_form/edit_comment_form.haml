@@ -1,0 +1,10 @@
+%md-dialog.edit-comment-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1.modal-title{translate: "comment_form.edit_comment"}
+      %dismiss_modal_button
+  %md-dialog-content
+    %lmo_textarea{model: "comment", field: "body", placeholder: "'comment_form.say_something' | translate"}
+  %md-dialog-actions
+    %comment_form_actions{comment: "comment", submit: "submit"}

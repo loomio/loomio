@@ -20,7 +20,7 @@ describe ReactionService do
 
     it 'does not notify if the user is no longer in the group' do
       comment
-      group.memberships.find_by(user: user).destroy
+      group.memberships.find_by(user: reaction.author).destroy
       expect { ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: another_user) }.to_not change { user.notifications.count }
     end
   end

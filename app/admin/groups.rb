@@ -10,13 +10,13 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     end
   end
 
-  actions :index, :show, :edit, :update
+  actions :index, :show, :new, :edit, :update, :create
 
   filter :name
   filter :description
   filter :memberships_count
   filter :created_at
-  filter :subdomain
+  filter :handle
   filter :analytics_enabled
 
   scope :parents_only
@@ -86,8 +86,7 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       row :discussions_count
       row :memberships_count
       row :admin_memberships_count
-      row :invitations_count
-      row :pending_invitations_count
+      row :unverified_memberships_count
       row :public_discussions_count
       row :payment_plan
 
@@ -117,10 +116,10 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       row :members_can_vote
       row :members_can_start_discussions
       row :members_can_create_subgroups
-      row :subdomain
+      row :handle
       row :is_referral
       row :cohort_id
-      row :subscription_id
+      row :subscription
       row :enable_experiments
       row :analytics_enabled
       row :experiences
@@ -168,15 +167,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
       end
     end
 
-    panel("Pending invitations") do
-      table_for group.invitations.pending.each do |invitation|
-        column :recipient_email
-        column :link do |i|
-          invitation_url(i)
-        end
-      end
-    end
-
     if group.archived_at.nil?
       panel('Archive') do
         link_to 'Archive this group', archive_admin_group_path(group), method: :post, data: {confirm: "Are you sure you wanna archive #{group.name}, pal?"}
@@ -194,16 +184,17 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
         f.input type: :submit, value: "Move group"
       end
     end
-
-    active_admin_comments
   end
 
   form do |f|
     f.inputs "Details" do
-      f.input :id, :input_html => { :disabled => true }
-      f.input :name, :input_html => { :disabled => true }
+      if f.object.persisted?
+        f.input :id, :input_html => { :disabled => true }
+      end
+      f.input :name, :input_html => { :disabled => f.object.persisted? }
       f.input :description
-      f.input :subdomain, as: :string
+      f.input :parent_id, label: "Parent Id"
+      f.input :handle, as: :string
       f.input :analytics_enabled
       f.input :enable_experiments
     end
@@ -211,11 +202,9 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
   end
 
   member_action :move, method: :post do
-    group = Group.friendly.find(params[:id])
-    if parent = Group.find_by(key: params[:parent_id]) || Group.find_by(id: params[:parent_id].to_i)
-      group.subscription&.destroy if Plugins.const_defined?("LoomioBuyerExperience")
-      group.update(parent: parent)
-    end
+    group  = Group.friendly.find(params[:id])
+    parent = Group.friendly.find(params[:parent_id])
+    GroupService.move(group: group, parent: parent, actor: current_user)
     redirect_to admin_group_path(group)
   end
 
@@ -230,20 +219,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     group = Group.friendly.find(params[:id])
     group.unarchive!
     flash[:notice] = "Unarchived #{group.name}"
-    redirect_to [:admin, :groups]
-  end
-
-  member_action :toggle_export, :method => :post do
-    group = Group.friendly.find(params[:id])
-    export_enabled = group.features.fetch 'dataExport', false
-    if export_enabled
-      group.features['dataExport'] = false
-      flash[:notice] = "data export disabled for #{group.name}"
-    else
-      group.features['dataExport'] = true
-      flash[:notice] = "data export enabled for #{group.name}"
-    end
-    group.save
     redirect_to [:admin, :groups]
   end
 end

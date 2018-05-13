@@ -1,0 +1,20 @@
+.loading-wrapper.lmo-two-column-layout
+  %loading{ng-if: "!groupPage.group"}
+  %main.group-page.lmo-row{ng-if: "groupPage.group"}
+    %outlet{name: "before-group-page", model: "groupPage.group"}
+    %group_theme{group: "groupPage.group", home-page: "true"}
+    .lmo-row
+      .lmo-group-column-left
+        %description_card{group: "groupPage.group"}
+        %discussions_card{group: "groupPage.group", page_window: "groupPage.pageWindow"}
+      .lmo-group-column-right
+        %outlet{name: "before-group-page-column-right", model: "groupPage.group"}
+        %current_polls_card{model: "groupPage.group"}
+        %membership_requests_card{group: "groupPage.group"}
+        %membership_card{group: "groupPage.group"}
+        %membership_card{group: "groupPage.group", pending: "true"}
+        %subgroups_card{group: "groupPage.group"}
+        %document_card{group: "groupPage.group"}
+        %poll_common_index_card{model: "groupPage.group", limit: "5", view-more-link: "true"}
+        %outlet{name: "after-slack-card", model: "groupPage.group"}
+        %install_slack_card{group: "groupPage.group"}

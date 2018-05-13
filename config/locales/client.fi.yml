@@ -85,6 +85,10 @@ fi:
     threads_from:
       today: 'Tänään'
       yesterday: 'Eilen'
+  activity_card:
+    unread: Lukematon
+  thread_context:
+    close_thread: 'Sulje'
   delete_comment_dialog:
     title: 'Poista kommentti'
     confirm: 'Poista kommentti'
@@ -92,3 +96,5 @@ fi:
     context_menu:
       edit_comment: 'Muokkaa kommenttia'
       delete_comment: 'Poista kommentti'
+  poll_common_form:
+    closed: Suljettu

@@ -61,6 +61,14 @@ module Dev::NintiesMoviesHelper
                            email_verified: true)
   end
 
+  def rudd
+    @rudd ||= User.find_by(email: 'rudd@example.com') ||
+              User.create!(name: 'Paul Rudd',
+                           email: 'rudd@example.com',
+                           password: 'gh0stmovie',
+                           email_verified: true)
+  end
+
   def create_group
     unless @group
       @group = FormalGroup.create!(name: 'Dirty Dancing Shoes',
@@ -132,6 +140,18 @@ module Dev::NintiesMoviesHelper
     @discussion
   end
 
+  def create_closed_discussion
+    unless @closed_discussion
+      @closed_discussion = Discussion.create(title: 'This thread is old and closed',
+                                             private: false,
+                                             closed_at: Time.now,
+                                             group: create_group,
+                                             author: jennifer)
+      DiscussionService.create(discussion: @closed_discussion, actor: @closed_discussion.author)
+    end
+    @closed_discussion
+  end
+
   def create_public_discussion
     unless @another_discussion
       @another_discussion = Discussion.create!(title: "The name's Johnny Utah!",
@@ -176,33 +196,9 @@ module Dev::NintiesMoviesHelper
     @another_subgroup
   end
 
-  def membership_request_from_logged_out
-    membership_request = MembershipRequest.new(group: create_group,
-                                               name: Faker::Name.name,
-                                               email: Faker::Internet.email,
-                                               introduction: Faker::Hacker.say_something_smart)
-    MembershipRequestService.create(membership_request: membership_request)
-    membership_request
-  end
-
-  def membership_request_from_user
-    unless @membership_request_from_user
-      @membership_request_from_user = MembershipRequest.new(group: create_group,
-                                                            requestor: max,
-                                                            introduction: "I'd like to make decisions with y'all")
-      MembershipRequestService.create(membership_request: @membership_request_from_user)
-    end
-    @membership_request_from_user
-  end
-
   def pending_invitation
-    unless @pending_invitation
-      @pending_invitation = InvitationService.invite_to_group(recipient_emails: ['judd@example.com'],
-                                                              message: 'Come and join the group!',
-                                                              group: create_group,
-                                                              inviter: patrick).last
-    end
-    @pending_invitation
+    @pending_membership ||= Membership.create(user: User.new(email: 'judd@example.com'),
+                                              group: create_group, inviter: patrick)
   end
 
   def create_empty_draft
@@ -267,7 +263,7 @@ module Dev::NintiesMoviesHelper
 
     # poll_edited
     create_poll.update(title: "Another poll title")
-    Events::PollEdited.publish!(create_poll.versions.last, patrick)
+    Events::PollEdited.publish!(create_poll, patrick)
 
     # stance_created
     Events::StanceCreated.publish!(create_stance)
@@ -300,7 +296,6 @@ module Dev::NintiesMoviesHelper
     comment = Comment.new(discussion: create_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
     CommentService.create(comment: comment, actor: jennifer)
 
-    # lots of reactions to the comment.
     [max, emilio, judd].each {|u| comment.group.add_member! u}
     ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':slight_smile:'}, actor: jennifer)
     ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':heart:'}, actor: patrick)
@@ -309,8 +304,8 @@ module Dev::NintiesMoviesHelper
     ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':wave:'}, actor: judd)
 
     #'membership_requested',
-    membership_request = MembershipRequest.new(name: 'The Ghost', email: 'boooooo@invisible.co', group: create_group)
-    event = MembershipRequestService.create(membership_request: membership_request, actor: LoggedOutUser.new)
+    membership_request = MembershipRequest.new(group: create_group)
+    event = MembershipRequestService.create(membership_request: membership_request, actor: rudd)
 
     #'membership_request_approved',
     another_group = FormalGroup.new(name: 'Stars of the 90\'s', group_privacy: 'closed')
@@ -323,6 +318,7 @@ module Dev::NintiesMoviesHelper
     #notify patrick that he has been added to jens group
     another_group = FormalGroup.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
+    jennifer.reload
     MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer)
 
     #'new_coordinator',
@@ -332,33 +328,39 @@ module Dev::NintiesMoviesHelper
 
     #'invitation_accepted',
     #notify patrick that his invitation to emilio has been accepted
-    invitation = InvitationService.invite_to_group(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
-    InvitationService.redeem(invitation.first, emilio)
+    membership = Membership.create(user: emilio, group: another_group, inviter: patrick)
+    MembershipService.redeem(membership: membership, actor: emilio)
 
-    #'poll_created'
-    poll = FactoryGirl.build(:poll, discussion: create_discussion, make_announcement: true, closing_at: 24.hours.from_now)
-    PollService.create(poll: poll, actor: jennifer)
+    'poll_created'
+    poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
+    AnnouncementService.create(
+      model: poll,
+      params: { kind: :poll_created, recipients: { user_ids: patrick.id }},
+      actor: jennifer
+    )
 
     #'poll_closing_soon'
     PollService.publish_closing_soon
 
     #'outcome_created'
-    poll = FactoryGirl.create(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
-    outcome = FactoryGirl.build(:outcome, poll: poll, make_announcement: true)
-    OutcomeService.create(outcome: outcome, actor: jennifer)
+    poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago)
+
+    PollService.create(poll: poll, actor: jennifer)
+    outcome = FactoryBot.build(:outcome, poll: poll)
+    AnnouncementService.create(
+      model: outcome,
+      params: { kind: :outcome_created, recipients: { user_ids: patrick.id } },
+      actor: jennifer
+    )
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
-    poll = FactoryGirl.build(:poll, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
+    poll = FactoryBot.build(:poll, discussion: create_discussion, notify_on_participate: true, voter_can_add_options: true)
     PollService.create(poll: poll, actor: patrick)
-    jennifer_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
+    jennifer_stance = FactoryBot.build(:stance, poll: poll, choice: "agree")
     StanceService.create(stance: jennifer_stance, actor: jennifer)
 
-    #'poll_option_added'
-    poll.tap(&:save).reload
-    poll.make_announcement = true
-    patrick_stance = FactoryGirl.build(:stance, poll: poll, choice: "agree")
-    StanceService.create(stance: patrick_stance, actor: patrick)
-    PollService.add_options(poll: poll, actor: jennifer, params: {poll_option_names: ['new_option']})
+    # create poll_option_added event (notifying author)
+    option_added_event = PollService.add_options(poll: poll, params: {poll_option_names: "wark"}, actor: jennifer)
   end
 end

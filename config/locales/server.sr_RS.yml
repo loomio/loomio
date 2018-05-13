@@ -1,4 +1,9 @@
 sr_RS:
+  poll:
+    export:
+      title: Наслов
+      author: Аутор
+      details: Детаљи
   email:
     group_email:
       intro: "%{who} је направио/ла објаву за групу %{group}:"
@@ -11,9 +16,13 @@ sr_RS:
       mark_as_read: Означи као прочитано
       thanks_for_reading: Хвала на читању, пријатан дан!
       marked_as_read_success: Све еПоруке су означене као прочитане
+      click_here: Шкљоцни овде
     membership_request:
       subject: "%{who} је затражио/ла да се придружи %{which_group}"
       view_group: Овде можете одобрити или одбити захтев
+  discussion_mailer:
+    reply_or_view_online_html: Одговори на ову поруку директно или <a href='%{url}'>погледај је на %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>Искључи обавештења</a> о овој дискусији."
   footer:
     about: О нама
     blog: Блог
@@ -28,3 +37,4 @@ sr_RS:
     reset_email_timeframe: Молимо допустите до 5 минута да еПорука пристигне. Ако се не појави, будите сигурни да сте проверили фасциклу са нежељеним порукама.
     length_restriction: Лозинка мора бити најмање 8 знакова дуга.
     forbidden_passwords: Уобичајене лозинке као што је ”лозинка” су забрањене да би твој налог био безбедан.
+  comment_by: Коментар од %{comment_author}

@@ -3,11 +3,7 @@
   - if discussion.created_at >= @time_start
     %p
       %em by #{discussion.author.name}
-    .description
-      - if discussion.uses_markdown? and discussion.description.present?
-        = render_rich_text discussion.description
-      - else
-        = render_email_plaintext discussion.description
+    .description= render_rich_text discussion.description
 
   - discussion.polls.active_or_closed_after(@time_start).each do |poll|
     = render "poll_mailer/common/missed_yesterday", poll: poll
@@ -15,7 +11,7 @@
   .activity-feed
     - reader = @reader_cache.get_for(discussion)
     - discussion.items.where('created_at > ?', reader.last_read_at || @time_start).order('created_at').each do |item|
-      - next unless ['new_comment', 'new_vote', 'stance_created'].include? item.kind
-      = render "thread_mailer/#{item.kind}", item: item
+      - next unless ['new_comment', 'new_vote', 'stance_created', 'discussion_closed'].include? item.kind
+      = render "discussion_mailer/#{item.kind}", item: item
 
   %p= link_to t(:"email.reply_to_this_discussion"), discussion_url(discussion, @utm_hash)

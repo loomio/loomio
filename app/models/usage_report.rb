@@ -1,2 +1,2 @@
-class UsageReport < ActiveRecord::Base
+class UsageReport < ApplicationRecord
 end

@@ -11,15 +11,24 @@ class API::MembershipsController < API::RestfulController
   end
 
   def index
-    load_and_authorize :group
-    instantiate_collection { |collection| collection.active.where(group_id: @group.id).order('users.name') }
-    respond_with_collection
+    instantiate_collection do |collection|
+      if params[:pending]
+        collection.pending
+      else
+        collection.active
+      end.where(group: model.groups).order('admin desc, created_at desc')
+    end
+    respond_with_collection(scope: index_scope)
+  end
+
+  def destroy_response
+    render json: Array(resource.group), each_serializer: Simple::GroupSerializer, root: :groups
   end
 
   def for_user
     load_and_authorize :user
     instantiate_collection { |collection| collection.active.formal.where(user_id: @user.id).order('groups.full_name') }
-    respond_with_collection
+    respond_with_collection serializer: Simple::MembershipSerializer
   end
 
   def join_group
@@ -39,11 +48,9 @@ class API::MembershipsController < API::RestfulController
   end
 
   def autocomplete
-    load_and_authorize :group
-    authorize! :members_autocomplete, @group
-
     @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
-                                                     group: @group,
+                                                     pending: params[:pending],
+                                                     group: load_and_authorize(:group, :members_autocomplete),
                                                      current_user: current_user,
                                                      limit: 10)
     respond_with_collection
@@ -71,14 +78,29 @@ class API::MembershipsController < API::RestfulController
   end
 
   def undecided
-    instantiate_collection { |collection| collection.undecided_for(load_and_authorize(:poll)) }
+    poll = load_and_authorize(:poll)
+    instantiate_collection { |collection| collection.where(group: poll.groups, user: poll.undecided) }
     respond_with_collection
   end
 
   private
 
+  def index_scope
+    { email_user_ids: collection.pluck(:user_id) } if include_emails?
+  end
+
+  def include_emails?
+    params[:pending]
+  end
+
+  def model
+    load_and_authorize(:group, :see_private_content, optional: true) ||
+    load_and_authorize(:discussion, optional: true) ||
+    load_and_authorize(:poll, optional: true)
+  end
+
   def accessible_records
-    visible = resource_class.joins(:group).includes(:user, :inviter, {group: [:parent]})
+    visible = resource_class.joins(:group).joins(:user).includes(:inviter, {group: [:parent]})
     if current_user.group_ids.any?
       visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR groups.is_visible_to_public = 't'")
     else

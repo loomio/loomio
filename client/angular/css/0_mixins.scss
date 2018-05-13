@@ -1,0 +1,128 @@
+// NB: mixins are deprecated; please don't use them! We want to get rid of them in our app!
+@mixin md-headline {
+  font-size: $headline-font-size-base;
+  font-weight: 400;
+  line-height: rem(3.2);
+}
+
+@mixin md-caption {
+  font-size: $caption-font-size-base;
+  letter-spacing: 0.020em;
+}
+
+
+@mixin fontTiny {
+  font-size: $caption-font-size-base;
+  // font-size: 12px;
+  // line-height: 14px;
+}
+
+@mixin fontSmall {
+  @include md-body-1;
+  // font-size: 13px;
+  // line-height: 19px;
+}
+
+@mixin fontMedium {
+  @include md-body-1();
+  // font-size: 15px;
+  // line-height: 23px;
+}
+
+@mixin fontMedLarge {
+  @include md-subhead();
+  // font-size: 18px;
+  // line-height: 25px;
+}
+
+@mixin fontLarge {
+  @include md-title();
+  // font-size: 20px;
+  // line-height: 28px;
+}
+
+
+@mixin fontGrande {
+  @include md-headline();
+  // font-size: 24px;
+  // line-height: 32px;
+}
+
+
+@mixin truncateText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin lmoH1{
+  @include fontGrande;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
+@mixin lmoBtnLink {
+  background: none;
+  border: none;
+  padding: 0;
+  &:hover{ text-decoration: underline; }
+}
+
+@mixin lmoRow {
+  @media (min-width: $tiny-max-px){
+    /* outer padding on all but tiny screens */
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@mixin card{
+  @include cardNoPadding;
+  @include cardPadding;
+}
+
+@mixin cardNoPadding {
+  @include md-body-1;
+  @include roundedCorners;
+  box-shadow: $whiteframe-shadow-1dp;
+  background: $card-background-color;
+  margin-bottom: 12px;
+  max-width: 100%;
+}
+
+@mixin cardHeadingPadding {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+@mixin cardPadding {
+  padding: $cardPaddingSize;
+}
+
+@mixin listTransition {
+  transition: 0.25s background-color ease-in-out;
+  color: $primary-text-color;
+  &:hover {
+    background: $background-color;
+    text-decoration: none;
+  }
+}
+
+@mixin cardButton {
+  position: relative;
+  top: -7px;
+  right: -9px;
+  float: right;
+}
+
+@mixin cardMinorAction {
+  color: $grey-on-white;
+  margin: 20px 0 0 0;
+  display: block;
+  text-decoration: underline;
+  clear: both;
+}
+
+@mixin roundedCorners {
+  border-radius: 2px;
+}

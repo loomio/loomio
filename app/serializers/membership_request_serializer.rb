@@ -1,6 +1,4 @@
 class MembershipRequestSerializer < ActiveModel::Serializer
-  # include Concerns::BelongsToGroup
-
   embed :ids, include: true
   attributes :id, :name, :email, :introduction, :responded_at, :response, :created_at, :updated_at
 

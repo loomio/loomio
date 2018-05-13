@@ -1,12 +1,19 @@
 ca:
+  poll:
+    export:
+      title: Títol
+      author: Autor
+      details: Detalls
+      group_name: Nom del grup
+      total: Total
   validate:
     motion:
       one_at_a_time: Hi ha una altra proposta activa.
   email:
     reset_password:
       greeting: |
-        Hola %{name}
-        Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
+          Hola %{name}
+          Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
       link_text: Reinicieu la contrasenya
     custom: "%{text}"
     group_email:
@@ -28,6 +35,7 @@ ca:
     missed_yesterday:
       headlines: Capçaleres
       mark_as_read: Marca com a llegit
+      click_here: Fes click aquí
     membership_request:
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: Pots aprovar o denegar la sol·licitud aquí
@@ -45,13 +53,14 @@ ca:
   markdown:
     paragraphs:
       title: |
-        ## Paràgrafs
+          ## Paràgrafs
     emphasis:
       title: |
-        ## Èmfasis
+          ## Èmfasis
     lists:
       title: |
-        ## Llistes
+          ## Llistes
     links:
       title: |
-        ## Enllaços i imatges
+          ## Enllaços i imatges
+  comment_by: Comentari per %{comment_author}

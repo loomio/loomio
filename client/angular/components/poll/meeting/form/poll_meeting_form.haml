@@ -1,0 +1,12 @@
+.poll-meeting-form
+  %poll_common_form_fields{poll: "poll"}
+
+  %md-input-container.md-block
+    %label{translate: "poll_meeting_form.meeting_duration"}
+    %md-select{ng-model: "poll.customFields.meeting_duration"}
+      %md-option{ng-repeat: "duration in durations", ng-value: "duration.minutes"}
+        {{duration.label}}
+
+  %poll_common_form_options{poll: "poll"}
+  %poll_common_closing_at_field.md-block{poll: "poll"}
+  %poll_common_settings{poll: "poll"}

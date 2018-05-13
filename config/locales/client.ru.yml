@@ -1,4 +1,25 @@
 ru:
+  reactions:
+    slight_smile: Нравиться
+    heart: Люблю
+    laughing: Смех
+    clap: Хлопать в ладоши
+    hugging: Обнимать
+    sunglasses: Круто
+    wink: Подмигивать
+    nerd: Умный
+    relieved: Освобожденный
+    worried: Взволнован
+    cry: Плакать
+    scream: Кричать
+    sleeping: Скучающий
+    thinking: Думать
+    raised_hands: Поднятые руки
+    pray: Молиться
+    fingers_crossed: Скрестить пальцы
+    v: Мир
+    metal: Метал
+    ok_hand: Хорошо
   poll_types:
     proposal: Предложение
     poll: Опрос
@@ -6,6 +27,7 @@ ru:
   timezones:
     local: местное время ({{значение}})
   common:
+    you: Ты
     all_day: Весь день
     ok_got_it: Ок, понятно
     learn_more: Узнайте больше
@@ -46,6 +68,7 @@ ru:
     copy: 'Копировать'
     copy_text: 'Копировать текст'
     copied: 'Скопировать в буфер'
+    total: Всего
     action:
       next: 'Следующее'
       close: 'Закрыть'
@@ -80,9 +103,22 @@ ru:
       subscribe: Подписаться
       remind: Напомнить
       resend: Переслать
+      send: Послать
       resent: Переслать приглашение
+      export: Экспортировать
     formatting_help:
       label: 'Форматирование'
+  ordinal:
+    _1: 1ый
+    _2: 2ый
+    _3: 3ый
+    _4: 4ый
+    _5: 5ый
+    _6: 6ый
+    _7: 7ый
+    _8: 8ый
+    _9: 9ый
+    _10: 10ый
   devise:
     failure:
       inactive: 'Аккаунт, связанный с указанным адресом электронной почты, деактивирован. Если вы хотите раективировать аккаунт, свяжитесь с нами.'
@@ -121,19 +157,28 @@ ru:
       loud_description: "По каждой активности в обсуждении Вы будете уведомлены письмом на указанный почтовый адрес"
       normal_description: "Вы получите электронное письмо всякий раз, когда предложение открыто, вот-вот закроется, или когда будут опубликованы результаты."
       quiet_description: "Вы не будете получать письма об этой ветке."
+      apply_to_all: "Применить эти настройки ко всем темам в этой группе."
       messages:
+        loud: "Вы будете оповещенны по эмаилу о всей активности в этой теме."
         quiet: "Вы не будете получать письма об этой ветке."
     membership:
       title: "Настройки Email {{title}}"
+      loud_description: "Вы будете оповещенны по эмаилу о всей активности в этой группе."
       apply_to_all: "Применить эти настройки для всех моих групп"
     user:
       title: Настройки почты для новых групп
       loud_description: "Вы будете уведомлены письмом на указанный почтовый адрес по каждой активности в тех группах, к которым Вы присоединитесь"
       normal_description: "Вы будете уведомлены письмом на указанный почтовый ящик по каждому новому объявлению в группах, к которым Вы присоединились."
       apply_to_all: "Применить эти настройки для всех моих групп"
+  close_explanation_modal:
+    aria_label: Закрыть тему
+    close_thread: Закрыть тему
   mute_explanation_modal:
     aria_label: Выключить уведомления
     mute_thread: Выключить уведомления
+  dismiss_explanation_modal:
+    aria_label: Отклонить тему
+    dismiss_thread: Отклонить тему
   inbox:
     clear: 'Очистить'
     latest: 'Последний'
@@ -142,50 +187,114 @@ ru:
   sign_up_form:
     password_label: 'Пароль:'
     password_confirmation_label: 'Введите пароль повторно:'
+  signed_out_modal:
+    aria_label: 'Сессия закончена'
+    title: "Ваша сессия закончилась"
+    ok: "Хорошо"
+  comment_reply_form:
+    aria_label: 'Ответить'
   comment_form:
     aria_label: 'Добавить комментарий '
     attachments:
+      add_attachment: 'Приложить файл'
       remove_attachment: 'Удалить вложение'
     messages:
       created: 'Комментарий добавлен'
+      replied: '{{name}} оповещен об ответе'
       updated: 'Комментарий обновлен'
       destroyed: 'Комментарий удалён'
+    say_something: Скажи что-то...
     edit_comment: 'Редактировать коментарий'
     delete_comment: 'Удалить комментарий'
+    cancel_reply: 'Отменить ответ'
     confirm_delete_message: 'Вы уверены что хотите удалить комментарий?'
+    confirm_delete: 'Удалить комментарий'
+    in_reply_to: "Ответить: {{name}}"
+    write_a_comment: "Напишите комментарий..."
     submit_button:
       label: 'Опубликовать'
     public_privacy_notice: 'Ваш комментарий будет виден всем пользователям сети'
+    sign_in: "Войдите чтобы присоеденится к разговору"
   sidebar:
+    recent_threads: 'Последние темы'
+    start_group: 'Новая группа'
     explore: 'Публичная группа'
+    start_thread: Новая тема
+    start_decision: Новое решение
     aria_labels:
+      heading: 'Боковая панель'
       groups_list: 'Группы'
+      user_list: 'Активность пользователя'
   navbar:
+    start_thread: 'Новая тема'
     notifications: 'Панель уведомлений'
     search:
+      results_aria_label: 'Результаты поиска'
+      no_results: 'Темы не найдены'
       close: 'Закрыть панель поиска'
       placeholder: 'Поиск'
+      loading: 'Загружаются результаты'
       discussions: 'Обсуждения'
       proposals: 'Голосования'
       comments: 'Комментарии'
+    sign_in: 'Войти'
+    toggle_sidebar: 'Скрыть боковую панель'
     logo_title: 'Домашняя страница'
+  user_dropdown:
+    edit_profile: 'Редактировать профиль'
+    email_settings: 'Настройки эмайла'
+    help: 'Помощь'
+    sign_out: 'Выйти'
+  membership_dropdown:
+    make_coordinator: 'Сделать координатором'
   start_menu:
+    label: 'Активность пользователя'
+    title: 'Действие'
+    start_group: 'Начать группу'
     start_subgroup: 'Создать группу'
     start_thread: 'Начать тему'
+    start_poll: 'Начать опрос'
     invite_people: 'Пригласить людей'
   notifications:
     header: "Уведомления"
     no_notifications: "У Вас нет уведомлений"
   position_buttons_panel:
     heading: Выразить свое мнение
+  extend_proposal_form:
+    aria_label: Изменить время закрытия
+    title: 'Изменить время закрытия'
+    submit: 'Обновить время закрытия'
   discussion_record:
     updated: 'Сохранить изменения для {{title}}'
   discussion_form:
+    aria_label: 'Форма темы'
+    messages:
+      created: 'Тема начата'
+      updated: 'Тема обновленна'
+    new_discussion_title: 'Начать новую тему'
+    edit_discussion_title: 'Редактировать тему'
     group_label: 'Группа'
     group_placeholder: 'Выбрать группу'
     title_label: 'Название'
     context_label: 'Описание'
     privacy_label: 'Конфиденциальность'
+  action_dock:
+    react: Добавить реакцию
+    add_resource: Добавить вложение
+    add_comment: Комментарий
+    copy_url: Скопировать ссылку
+    edit_thread: Редактировать контекст
+    translate_thread: Перевести контекст
+    edit_poll: Редактировать опрос
+    translate_poll: Перевести опрос
+    edit_stance: Изменить ваш голос
+    translate_stance: Перевести голос
+    edit_comment: Редактировать коментарий
+    delete_comment: Удалить комментарий
+    reply_to_comment: Ответить
+    translate_comment: Перевести комментарий
+    edit_outcome: Редактировать результат
+    translate_outcome: Перевести результат
   cover_photo_form:
     heading: 'Новое фото обложки'
     upload_link: 'Загрузить новое фото обложки'
@@ -202,13 +311,17 @@ ru:
     heading: Подать заявку на вступление
     name_label: Имя
     email_label: Email
+    submit_button: Подать заявку на вступление
   revision_history_modal:
     aria_label: История изменений
     posted: Размещено
+    current_revision: Последний
+  reactions_display:
+    you: "Вы"
+    you_and_name: "Вы и {{name}}"
   group_page:
     new_cover_photo: 'Загрузить новое фото обложки'
     new_group_logo: 'Загрузить новый логотип группы'
-    discussions: 'Обсуждения'
     subgroups: 'Подгруппы'
     visibility_label: 'Видимость'
     options_label: 'Опции'
@@ -233,6 +346,13 @@ ru:
     edit_subgroup_heading: 'Редактировать настройки подгруппы'
     privacy: 'Конфиденциальность'
     submit_update: 'Обновить настройки'
+  documents_page:
+    confirm_remove_title: Удалить вложение
+  document:
+    modal:
+      title: Добавить приложение
+    form:
+      title_label: Имя
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
@@ -253,8 +373,8 @@ ru:
     name_label: 'Имя'
     coordinator_label: 'Координатор'
     remove_member_label: 'Удалить'
-  remove_membership_form:
-    submit: 'Удалить'
+  pending_invitations_card:
+    copy_url: Скопировать ссылку
   profile_page:
     profile: 'Профиль'
     name_label: 'Имя'
@@ -262,6 +382,7 @@ ru:
     locale_label: 'Язык'
   email_settings_page:
     header: Настройки email
+    announcement_label: Объявления
     edit: Редактировать
   dashboard_page:
     aria_label: 'Кабинет'
@@ -270,7 +391,6 @@ ru:
       or: или
     mark_as_read: Отметить прочитанным
     dismiss: Отклонить
-    thread_dismissed: Обсуждение отклонено.
     filtering:
       proposals: Голосования
       muted: Заглушен
@@ -286,20 +406,21 @@ ru:
     no_groups:
       start: Начать
       or: или
-  discussion:
-    proposals: 'Голосования'
-    previous_proposals: 'Предыдущие голосования'
+  activity_card:
+    unread: Непрочитанные
+    latest: Последний
+    attachment_display:
+      image_alt: 'Прикрепленное изображение'
   thread_group:
     aria_label: 'Название группы'
   thread_context:
     thread_options: 'Настройки обсуждения'
     email_settings: 'Настройки Email'
+    close_thread: 'Закрыть'
     mute_thread: 'Заглушен'
     print_thread: 'Печать'
     delete_thread: 'Удалить'
-  activity_card:
-    attachment_display:
-      image_alt: 'Прикрепленное изображение'
+    add_comment: 'Комментарий'
   delete_comment_dialog:
     title: 'Удалить комментарий'
     question: 'Вы уверены что хотите удалить комментарий?'
@@ -344,11 +465,24 @@ ru:
     proposal_title: Предложение
     poll_title: Опрос
     meeting_title: Голосование за время встречи
+  poll_common:
+    change_your_stance: Изменить ваш голос
+  current_polls_card:
+    start_poll: Новое решение
   poll_common_form:
+    closed: Закрыто
     start: Начать
+  poll_poll_form:
+    edit_header: Редактировать опрос
+  poll_count_options:
+    'yes': 'Да'
+    'no': 'Нет'
+  poll_meeting_chart_panel:
+    total: Всего
   poll_common_subscribe_form:
     subscribe: Подписаться
   polls_page:
     heading: Решения
+    start_new_poll: Новое решение
   auth_form:
     email_placeholder: You@example.com

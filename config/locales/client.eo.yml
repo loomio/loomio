@@ -27,7 +27,20 @@ eo:
     pray: Preĝe
     fingers_crossed: Bonŝancon!
     v: Pacon!
+    ok_hand: Bone!
+  poll_types:
+    proposal: Propozicio
+    count: Kontroli
+    poll: Enketo
   common:
+    you: Vi
+    expand: Klarigu!
+    all_day: Tut-tage
+    ok_got_it: Bone, komprenite!
+    learn_more: lerni pli
+    not_found: Ne trovebla
+    time_zone: Horzono
+    local_time: Loka tempo
     confirm_discard_changes: Ĉu tamen ne fari la ŝanĝojn?
     time:
       am: atm
@@ -38,9 +51,18 @@ eo:
     notification_volume: 'Sciiga laŭteco'
     group: 'Grupo'
     groups: 'Grupoj'
+    threads: 'Fadenoj'
+    decisions: 'Decidoj'
+    settings: 'Agordoj'
+    help: 'Helpo'
+    anonymous: Anonima
     privacy:
+      privacy: 'Privateco'
       public: 'Publika'
+      open: 'Malfermita'
+      closed: 'Fermita'
       private: 'Privata'
+      secret: 'Sekreto'
     selected: 'Elektita'
     date_range:
       today: 'Hodiaŭ'
@@ -51,7 +73,14 @@ eo:
     more_help: 'Plia helpo'
     models:
       proposal: 'Propono'
+    copy: 'Kopii'
+    copy_text: 'Kopii tekston'
+    copied: 'Kopiite al la tondaĵ-poŝo'
+    points_abbrev: Ĉiu voĉo valoras {{score}} poentojn
+    total: Entute
     action:
+      next: 'Sekva'
+      close: 'Fermigi'
       save: 'Konservi'
       save_changes: 'Konservi ŝanĝojn'
       reply: 'Respondi'
@@ -65,19 +94,70 @@ eo:
       new_thread: "Nova fadeno"
       add_subgroup: 'Aldoni subgrupon'
       loading: 'Ŝargiĝas'
+      translate: 'Traduki'
       uploading: 'Alŝutiĝas'
+      retry: Reprovi
+      invite: Inviti
+  ordinal:
+    _1: 1a
+    _2: 2a
+    _3: 3a
+    _4: 4a
+    _5: 5a
+    _6: 6a
+    _7: 7a
+    _8: 8a
+    _9: 9a
+    _10: 10a
   error_page:
     forbidden: 'Vi ne havas permeson fari ĉi tion'
+  volume_levels:
+    loud: 'Brua'
+    normal: 'Normala'
+    quiet: 'Malbrua'
+    mute: 'Silentigi'
+    unmute: 'Malsilentigi'
+  change_volume_form:
+    mute_label: "Silentigi"
+  close_explanation_modal:
+    aria_label: Fermigi fadenon
+    close_thread: Fermigi fadenon
+  mute_explanation_modal:
+    aria_label: Silentigi fadenon
+    mute_thread: Silentigi fadenon
   inbox:
     unread: 'Nelegitaj'
+  signed_out_modal:
+    ok: "Bone!"
   comment_form:
     edit_comment: 'Redakti komenton'
     delete_comment: 'Forigi komenton'
     confirm_delete_message: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
+  sidebar:
+    start_thread: Nova fadeno
+    aria_labels:
+      groups_list: 'Grupoj'
   navbar:
+    start_thread: 'Nova fadeno'
     search:
       placeholder: 'Serĉi'
       discussions: 'Diskutoj'
+      proposals: 'Propozicioj'
+      comments: 'Komentoj'
+    sign_in: 'Ensaluti'
+    logo_title: 'Ĉefpaĝo'
+  user_dropdown:
+    edit_profile: 'Redakti profilon'
+    help: 'Helpo'
+    contact_site_name: 'Kontakti {{site_name}}'
+    sign_out: 'Elsaluti'
+  membership_dropdown:
+    make_coordinator: 'Kunordigantigi'
+  start_menu:
+    title: 'Ago'
+    start_thread: 'Komenci fadenon'
+    start_poll: 'Komenci enketon'
+    invite_people: 'Inviti homojn'
   notifications:
     header: "Sciigoj"
   position_buttons_panel:
@@ -87,35 +167,64 @@ eo:
     title_label: 'Titolo'
     context_label: 'Kunteksto'
     privacy_label: 'Privateco'
+  action_dock:
+    add_comment: Komenti
+    edit_poll: Redakti enketon
+    translate_poll: Traduki enketon
+    edit_stance: Ŝanĝi vian voĉdonon
   join_group_button:
     join_group: Aliĝi al la grupo
   membership_request_form:
     heading: Peti aliĝon al la grupo
     name_label: Nomo
     email_label: Retpoŝto
+  reactions_display:
+    you: "Vi"
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Por aliĝi al ĉi tiu grupo vi devas esti invitita de membro."
-        membership_is_invitation_by_admin_only: "Por aliĝi al ĉi tiu grupo vi devas esti invitita de kunordiganto."
-    discussions: 'Diskutoj'
+    subgroups: 'Subgrupoj'
+    invite_people: 'Inviti'
     options_label: 'Opcioj'
     options:
       label: 'Opcioj'
+  group_form:
+    privacy: 'Privateco'
+  document:
+    form:
+      title_label: Nomo
   membership_requests_page:
     approve: Aprobi
     ignore: Ignori
+  invitation_form:
+    invite_people: 'Inviti homojn'
+    group: 'Grupo'
+    copy_link: 'Kopii'
   memberships_page:
     members: 'Membroj'
     name_label: 'Nomo'
     coordinator_label: 'Kunordiganto'
     remove_member_label: 'Forviŝi'
+  pending_invitations_card:
+    email: Retadreso
+  cancel_invitation_form:
+    cancel: 'Ne'
   profile_page:
+    change_picture_link: 'Ŝanĝi bildon'
     profile: 'Profilo'
+    edit_profile: 'Redakti profilon'
     picture_label: 'Bildo'
     name_label: 'Nomo'
+    username_label: 'Uzantnomo'
     email_label: 'Retpoŝto'
+    short_bio_label: 'Enkonduko'
     locale_label: 'Lingvo'
+    update_profile: 'Ĝisdatigi profilon'
+  change_picture_form:
+    title: 'Ŝanĝi bildon'
+  change_password_form:
+    change_password_title: Ŝanĝi vian pasvorton
+    change_password: Ŝanĝi pasvorton
+  email_settings_page:
+    edit: Redakti
   dashboard_page:
     aria_label: 'Supervidpanelo'
     no_groups:
@@ -123,19 +232,39 @@ eo:
     no_threads:
       show_all: Vi ne havas lastatempajn fadenojn.
     view_recent: Ĉu vidi ĉiujn lastatempajn fadenojn?
+    load_more: Ŝarĝi pli da fadenoj
     mark_as_read: Marki kiel legita
     filtering:
       all: Lastatempaj fadenoj
       all_aria_label: Nun montras lastatempajn fadenojn
       all_description: Montri lastatempajn fadenojn
+      proposals: Propozicioj
+      muted: Silentigita
     threads_from:
       today: 'Hodiaŭ'
       yesterday: 'Hieraŭ'
+      thisweek: 'Ĉi-semajne'
+      thismonth: 'Ĉi-monate'
   inbox_page:
+    view_more: Vidi pli
     no_groups:
       or: aŭ
+  activity_card:
+    unread: Nelegitaj
   thread_group:
     aria_label: 'Grupnomo'
+  thread_context:
+    edit: 'Redakti'
+    edit_thread: 'Redakti'
+    close_thread: 'Fermi'
+    mute_thread: 'Silentigi'
+    move_thread: 'Movi'
+    print_thread: 'Presi'
+    add_comment: 'Komenti'
+  move_thread_form:
+    aria_label: Movi fadenon
+    title: Movi fadenon
+    confirm: Movi fadenon
   delete_comment_dialog:
     title: 'Forigi komenton'
     question: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
@@ -144,13 +273,105 @@ eo:
     context_menu:
       edit_comment: 'Redakti komenton'
       delete_comment: 'Forigi komenton'
+    edited: 'Redaktita'
+  new_vote_item:
+    agree: 'konsentita'
+    disagree: 'malkonsentita'
+  discussion_edited_item:
+    public_to_private: 'nepublika'
+    private_to_public: 'publika'
   contact_message_form:
+    contact_us: 'Kontakti nin'
     name_label: 'Via nomo'
     email_label: 'Via retpoŝtadreso'
     message_label: 'Via mesaĝo'
+    message_placeholder: 'Via mesaĝo…'
+    send_message: 'Sendi mesaĝon'
   hint:
     context: 'Konsiloj por uzo de la kunteksto-panelo'
     discussion: 'Konsiloj por komenci engaĝigan diskuton'
     invitation: 'Konsiloj por verki bonegan inviton'
     proposal: 'Konsiloj por verki klaran proponon'
     vote: 'Vi povas ŝanĝi vian sintenon iam ajn'
+  global:
+    messages:
+      reload: 'Reŝarĝi'
+  registered_apps_page:
+    name: Nomo
+  registered_app_form:
+    name_label: Nomo
+  decision_tools_card:
+    proposal_title: Propozicio
+    count_title: Kontroli
+    poll_title: Enketo
+  poll_common:
+    your_response: Via respondo
+    change_your_response: Ŝanĝi vian respondon
+    reason: Kialo
+    message: Mesaĝo
+    results: Rezultoj
+    responses: Respondoj
+    vote: Voĉdono
+    votes: Voĉdonoj
+    change_your_stance: Ŝanĝi vian voĉdonon
+    load_more: Ŝargi pli
+    details: Detaloj
+    participant_name: Via nomo
+    participant_email: Retadreso
+  poll_common_select_group:
+    loomio_group: Grupo
+  poll_common_calendar_invite:
+    event_duration: Daŭro
+    event_summary: Resumo
+  poll_common_form:
+    title: Titolo
+    details: Detaloj
+    closed: Fermita
+  poll_poll_form:
+    edit_header: Redakti enketon
+  poll_proposal_vote_form:
+    vote: Voĉdono
+  poll_proposal_options:
+    agree: Konsenti
+    agree_verb: "Konsentita"
+    disagree: Malkonsenti
+    disagree_verb: "malkonsentita"
+  poll_count_options:
+    'yes': 'Jes'
+    'no': 'Ne'
+  poll_count_vote_form:
+    reason_label: Mesaĝo
+  poll_meeting_chart_panel:
+    total: Entute
+  poll_dot_vote_vote_form:
+    too_many_dots: Vi uzis tro da punktoj.
+  poll_common_publish_facebook_preview:
+    link: ligilo
+    just_now: Ĝuste nun
+  poll_common_publish_slack_preview:
+    timestamp: Hodiaŭ je {{timestamp}}
+  poll_common_participant_form:
+    participant_name_placeholder: Kio estas via nomo?
+  polls_page:
+    heading: Decidoj
+  auth_form:
+    sign_in: Registriĝi
+    sign_in_as: Registriĝi kiel {{name}}
+    more_providers: Pli
+    hello: "Saluton, {{name}}!"
+    create_account: Krei konton
+    link_accounts: Ligi kontojn
+    name: Nomo
+    email: Retadreso
+    password: Pasvorto
+  install_slack:
+    login_to_slack: Ensaluti al Slack
+    progress:
+      invite: Inviti
+      decide: Decidi
+    install:
+      group_name_placeholder: Nomi vian novan grupon…
+    common:
+      do_it_later: Mi faros ĉi tio poste
+  slack_added_modal:
+    title: Sukceso!

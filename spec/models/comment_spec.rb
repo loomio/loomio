@@ -9,9 +9,6 @@ describe Comment do
     discussion.group.add_member!(user)
   end
 
-  it { should have_many(:events).dependent(:destroy) }
-  it { should respond_to(:uses_markdown) }
-
   describe "#is_most_recent?" do
     subject { comment.is_most_recent? }
     context "comment is the last one added to discussion" do
@@ -36,12 +33,12 @@ describe Comment do
     end
   end
 
-  describe "validate attachments_owned_by_author" do
-    it "raises error if author does not own attachments" do
-      attachment = create(:attachment)
-      comment.attachments << attachment
+  describe "validate documents_owned_by_author" do
+    it "raises error if author does not own documents" do
+      document = create(:document)
+      comment.documents << document
       comment.save
-      comment.should have(1).errors_on(:attachments)
+      comment.should have(1).errors_on(:documents)
     end
   end
 

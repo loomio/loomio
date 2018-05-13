@@ -9,13 +9,15 @@ module Plugins
 
   class Base
     attr_accessor :name, :installed
-    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :extensions, :enabled
+    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :extensions, :enabled, :config
+    alias :read_attribute_for_serialization :send
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
     end
 
     def initialize(name)
+      @root = Dir.pwd
       @name = name
       @translations = {}
       @assets, @static_assets, @actions, @events, @outlets, @routes, @extensions = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
@@ -32,7 +34,7 @@ module Plugins
 
     def use_class(path = nil, &block)
       raise NoCodeSpecifiedError.new unless block_given? || path
-      proc = block_given? ? block.to_proc : Proc.new { require [Rails.root, :plugins, @name, path].join('/') }
+      proc = block_given? ? block.to_proc : Proc.new { require path_prefix path }
       @actions.add proc
     end
 
@@ -59,19 +61,19 @@ module Plugins
     end
 
     def use_static_asset(path, filename, standalone: false)
-      @static_assets.add StaticAsset.new([@name, path].join('/'), filename, standalone)
+      @static_assets.add StaticAsset.new(path_prefix(path), filename, standalone)
     end
 
     def use_static_asset_directory(path, standalone: false)
-      Dir.entries([@name.to_s, path].join('/'))
+      Dir.entries(path_prefix(path))
          .reject { |p| ['.', '..'].include?(p) }
          .each { |filename| use_static_asset(path, filename, standalone: standalone) }
     end
 
     def use_translations(path, filename = :client)
       raise NoCodeSpecifiedError.new unless path
-      Rails.application.config.i18n.load_path += Dir[Rails.root.join('plugins', @name.to_s, "#{path}/#{filename}.*.yml")]
-      Dir.chdir(@name.to_s) { Dir.glob("#{path}/#{filename}.*.yml").each { |path| use_translation(path) } }
+      Rails.application.config.i18n.load_path += Dir[path_prefix "#{path}/#{filename}.*.yml"]
+      Dir.chdir(path_prefix) { Dir.glob("#{path}/#{filename}.*.yml").each { |path| use_translation(path) } }
     end
 
     def use_events(&block)
@@ -91,7 +93,7 @@ module Plugins
 
     def use_test_route(path, &block)
       raise NoCodeSpecifiedError.new unless block_given?
-      extend_class(Dev::MainController) { define_method(path, &block) }
+      extend_class(Dev::NightwatchController) { define_method(path, &block) }
     end
 
     def use_route(verb, route, action)
@@ -106,7 +108,13 @@ module Plugins
       return unless Rails.env.test?
       raise NoCodeSpecifiedError.new unless block_given?
       @actions.add Proc.new {
-        FactoryGirl.define { factory(name, &block) } unless FactoryGirl.factories.registered?(name)
+        FactoryBot.define { factory(name, &block) } unless FactoryBot.factories.registered?(name)
+      }.to_proc
+    end
+
+    def use_view_path(path)
+      @actions.add Proc.new {
+        ApplicationController.append_view_path(path_prefix(path, rails_root: false))
       }.to_proc
     end
 
@@ -133,13 +141,25 @@ module Plugins
 
     def use_asset(path)
       raise InvalidAssetType.new unless VALID_ASSET_TYPES.include? path.split('.').last.to_sym
-      @assets.add [@name, path].join('/')
+      @assets.add path_prefix(path, rails_root: false)
+    end
+
+    def use_e2e(path)
+      @actions.add Proc.new {
+        system("cp #{path_prefix(path)} #{Rails.root}/client/angular/test/nightwatch/plugins/#{path.split('/').last}")
+      }.to_proc
     end
 
     private
 
+    def path_prefix(path = nil, rails_root: true)
+      path = [@root, path].compact.join('/')
+      path = path.sub("#{Rails.root}/", '') unless rails_root
+      path
+    end
+
     def config_file_path
-      [@name, 'config.yml'].join('/')
+      path_prefix 'config.yml'
     end
 
     def use_translation(path)
@@ -147,7 +167,7 @@ module Plugins
     end
 
     def use_directory(glob)
-      Dir.chdir(@name.to_s) { Dir.glob("#{glob}/*").each { |path| yield path } }
+      Dir.chdir(path_prefix) { Dir.glob("#{glob}/*.*").each { |path| yield path } }
     end
 
   end

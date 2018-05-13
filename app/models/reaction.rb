@@ -1,4 +1,4 @@
-class Reaction < ActiveRecord::Base
+class Reaction < ApplicationRecord
   belongs_to :reactable, polymorphic: true
   belongs_to :user
 
@@ -7,6 +7,7 @@ class Reaction < ActiveRecord::Base
   validates_presence_of :user, :reactable
 
   delegate :group, to: :reactable, allow_nil: true
+  delegate :groups, to: :reactable
 
   alias :author :user
 

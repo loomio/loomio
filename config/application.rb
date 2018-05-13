@@ -73,8 +73,6 @@ module Loomio
     config.quiet_assets = true
     config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
-    config.active_record.raise_in_transactional_callbacks = true
-
     if ENV['FOG_PROVIDER']
       def self.fog_credentials
         env = Rails.application.secrets
@@ -105,6 +103,7 @@ module Loomio
         user_name: ENV['SMTP_USERNAME'],
         password: ENV['SMTP_PASSWORD'],
         domain: ENV['SMTP_DOMAIN'],
+        ssl: ENV['SMTP_USE_SSL'],
         openssl_verify_mode: 'none'
       }.compact
     else
@@ -121,5 +120,8 @@ module Loomio
     config.action_dispatch.tld_length = (ENV['TLD_LENGTH'] || 1).to_i
 
     config.action_controller.include_all_helpers = false
+
+    # expecting something like wss://hostname/cable, defaults to wss://canonical_host/cable
+    config.action_cable.url = ENV['ACTION_CABLE_URL'] if ENV['ACTION_CABLE_URL']
   end
 end

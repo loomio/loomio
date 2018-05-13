@@ -1,15 +1,14 @@
 class FormalGroup < Group
   include HasTimeframe
-  include MakesAnnouncements
+  include HasDrafts
+
+  extend  NoSpam
+  no_spam_for :name, :description
 
   validates_presence_of :name
   validates :name, length: { maximum: 250 }
 
   validate :limit_inheritance
-
-  before_save :update_full_name_if_name_changed
-
-  default_scope { includes(:default_group_cover) }
 
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
@@ -28,12 +27,22 @@ class FormalGroup < Group
     .where("(group_identities.custom_fields->'slack_channel_id')::jsonb ? :channel_id", channel_id: channel_id)
   }
 
+  scope :search_for, ->(query) { where("name ilike :q", q: "%#{query}%") }
+
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :comments, through: :discussions
-  has_many :motions, through: :discussions
-  has_many :votes, through: :motions
+  has_many :public_comments, through: :public_discussions, source: :comments
+
   has_many :group_identities, dependent: :destroy, foreign_key: :group_id
   has_many :identities, through: :group_identities
+
+  has_many :documents, as: :model, dependent: :destroy
+  has_many :discussion_documents,        through: :discussions,        source: :documents
+  has_many :poll_documents,              through: :polls,              source: :documents
+  has_many :comment_documents,           through: :comments,           source: :documents
+  has_many :public_discussion_documents, through: :public_discussions, source: :documents
+  has_many :public_poll_documents,       through: :public_polls,       source: :documents
+  has_many :public_comment_documents,    through: :public_comments,    source: :documents
 
   belongs_to :cohort
   belongs_to :default_group_cover
@@ -45,7 +54,10 @@ class FormalGroup < Group
   has_many :all_subgroups, class_name: 'Group', foreign_key: :parent_id
 
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
-  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.count }
+  define_counter_cache(:open_discussions_count)    { |group| group.discussions.is_open.count }
+  define_counter_cache(:closed_discussions_count)  { |group| group.discussions.is_closed.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.count }
   define_counter_cache(:subgroups_count)           { |group| group.subgroups.published.count }
 
   delegate :include?, to: :users, prefix: true
@@ -63,7 +75,7 @@ class FormalGroup < Group
   has_attached_file    :logo,
                        url: "/system/groups/:attachment/:id_partition/:style/:filename",
                        styles: { card: "67x67#", medium: "100x100#" },
-                       default_url: AppConfig.theme[:default_group_logo_src]
+                       default_url: AppConfig.theme[:icon_src]
 
   validates_attachment :cover_photo,
     size: { in: 0..100.megabytes },
@@ -77,16 +89,10 @@ class FormalGroup < Group
 
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
 
-  def update_undecided_user_count
-    # NOOP: only guest groups have an invitation target
-  end
+  alias_method :draft_parent, :parent
 
-  def shareable_invitation
-    invitations.find_or_create_by(
-      single_use: false,
-      intent:     :join_group,
-      group:      self
-    )
+  def update_undecided_count
+    polls.active.each(&:update_undecided_count)
   end
 
   def logo_or_parent_logo
@@ -137,31 +143,21 @@ class FormalGroup < Group
     admins.first.email
   end
 
-  def membership_for(user)
-    memberships.find_by(user_id: user.id)
-  end
-
-  def update_full_name_if_name_changed
-    if changes.include?('name')
-      update_full_name
-      subgroups.each do |subgroup|
-        subgroup.full_name = name + " - " + subgroup.name
-        subgroup.save(validate: false)
-      end
+  def full_name
+    if is_subgroup?
+      [parent.name, name].join(' - ')
+    else
+      name
     end
-  end
-
-  def update_full_name
-    self.full_name = calculate_full_name
   end
 
   def id_and_subgroup_ids
     Array(id) | subgroup_ids
   end
 
-  def subdomain
+  def handle
     if is_subgroup?
-      parent.subdomain
+      parent.handle
     else
       super
     end
@@ -176,10 +172,6 @@ class FormalGroup < Group
   end
 
   private
-
-  def calculate_full_name
-    [parent&.name, name].compact.join(" - ")
-  end
 
   def limit_inheritance
     if parent_id.present?

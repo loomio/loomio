@@ -1,8 +1,7 @@
 module HasMentions
   extend ActiveSupport::Concern
   include Twitter::Extractor
-
-  included { has_many :notifications, through: :events }
+  include HasEvents
 
   module ClassMethods
     def is_mentionable(on: [])

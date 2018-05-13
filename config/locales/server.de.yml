@@ -1,4 +1,16 @@
 de:
+  activerecord:
+    errors:
+      messages:
+        blank: Darf nicht leer sein.
+  poll:
+    export:
+      title: Titel
+      author: Autor
+      details: Details
+      group_name: Gruppen-Name
+      reason: Begründung
+      total: Gesamt
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
@@ -8,20 +20,22 @@ de:
       one_at_a_time: Es gibt einen weiteren aktiven Vorschlag.
   subscriptions:
     gift_plan_selected_for_group_html: |
-      <h1>Erfolgreich.</h1>
-      <p>Du hast die kostenlose Mitgliedschaft für deine Gruppe <a href="/g/%{group_key}">%{group}</a> ausgewählt</p>
+        <h1>Erfolgreich.</h1>
+        <p>Du hast die kostenlose Mitgliedschaft für deine Gruppe <a href="/g/%{group_key}">%{group}</a> ausgewählt</p>
   email:
     contact_request:
       footer: "Sie können %{name} direkt antworten, indem Sie auf diese E-Mail antworten."
     reset_password:
       greeting: |
-        Hallo %{name}
-        hier ist ein Link mit dem Du Dein Passwort für Dein Loomio-Konto zurücksetzen kannst:
+          Hallo %{name}
+          hier ist ein Link mit dem Du Dein Passwort für Dein Loomio-Konto zurücksetzen kannst:
       link_text: Dein Passwort zurücksetzen
       signoff: |
-        Du hast diese Mail erhalten, weil Deine eMail-Adresse in das "Passwort vergessen"-Formular auf %{hostname} eingegeben wurd.
-        Dein Passwort wird nicht verändert, solange Du nicht diesem Link folgst und das entsprechende Formular vervollständigst.
-        Solltest Du weiterhin Probleme beim Einloggen haben, dann antworte auf diese eMail um mit jemandem vom Support Kontakt aufzunehmen - in Englisch.
+          Du hast diese Mail erhalten, weil Deine eMail-Adresse in das "Passwort vergessen"-Formular auf %{hostname} eingegeben wurd.
+          Dein Passwort wird nicht verändert, solange Du nicht diesem Link folgst und das entsprechende Formular vervollständigst.
+          Solltest Du weiterhin Probleme beim Einloggen haben, dann antworte auf diese eMail um mit jemandem vom Support Kontakt aufzunehmen - in Englisch.
+    start_decision:
+      count: Bestätigung starten
     custom: "%{text}"
     group_email:
       intro: "%{who} hat eine Ankündigung zu %{group}:"
@@ -36,7 +50,7 @@ de:
     user_added_to_group:
       content: "%{who} hat dich zu %{which_group} hinzugefügt."
       content_html: "<strong>%{who}</strong> hat dich zu <strong>%{which_group}</strong> hinzugefügt."
-      link_help: "Klicke auf den untenstehenden Link, um zur Gruppe zu kommen:"
+      link_help: "Klicke auf den untenstehenden Link, um die Gruppe zu betreten:"
     unsubscribe: 'Benachrichtigungen deaktivieren oder E-Mail-Einstellungen ändern:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> , um Benachrichtigungen zu deaktivieren oder um deine E-Mail-Einstellungen zu ändern."
     missed_yesterday:
@@ -47,10 +61,11 @@ de:
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
       heres_what_happened: "Das ist gestern auf %{site_name} passiert."
       marked_as_read_success: Alles aus der eMail wurde als gelesen markiert
+      click_here: Klicke hier
     group_membership_approved:
       intro: "Deine Aufnahme-Anfrage für die Gruppe %{group_name} wurde angenommen."
       intro_html: "Deine Aufnahme-Anfrage für Gruppe <strong>%{group_name}</strong> wurde angenommen."
-      link_help: "Klicke auf den untenstehenden Link, um der Gruppe %{group_name} beizutreten, und loszulegen:"
+      link_help: "Klicke auf den untenstehenden Link, um der Gruppe %{group_name} beizutreten und loszulegen:"
       join_group: "Der Gruppe beitreten"
     membership_request:
       intro_html: hat um Aufnahme in eine deiner Gruppen gebeten.
@@ -59,8 +74,8 @@ de:
       button_text: Anfrage ansehen
   email_actions:
     unfollowed_discussion: Sie haben die E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
-  thread_mailer:
-    reply_or_view_online_html: Antworten Sie entweder direkt auf diese E-Mail oder <a href='%{url}'>beantworten Sie die E-Mail auf %{hostname}</a>.
+  discussion_mailer:
+    reply_or_view_online_html: Entweder direkt auf diese E-Mail antworten oder <a href='%{url}'>auf %{hostname} antworten</a>.
     turn_off_notifications_html: "<a href='%{url}'>E-Mail-Benachrichtigungen</a> für diese Diskussion deaktivieren."
     change_email_preferences_html: "<a href='%{email_preferences_url}'>E-Mail-Einstellungen</a> ändern."
   footer:
@@ -73,9 +88,6 @@ de:
     public_groups: Öffentliche Gruppen
     terms: Bedingungen
     independent_install_html: '%{hostname} benutzt eine unabhängige Kopie von Loomio: <a href="http://github.com/loomio/loomio"> Erfahre mehr</a>.'
-  invitation_form:
-    error:
-      all_email_addresses_belong_to_members: "Wir haben keine Einladungen an die angegebenen E-Mail-Adressen versandt, da sie Personen gehören, die bereits an der Gruppe teilnehmen."
   password_reset:
     change_your_password: Passwort ändern
     reset_email_timeframe: Es wird bis zu 5 Minuten dauern, bis die eMail Dich erreicht. Bitte prüfe gegebenenfalls auch Deinen Spam-Ordner.
@@ -84,97 +96,97 @@ de:
   introduction_thread:
     title: Willkommen! Bitte stelle dich kurz vor
     description: |
-      Nimm dir einen Augenblick Zeit, um dich der Gruppe vorzustellen. Poste unten einen Kommentar.
+        Nimm dir einen Augenblick Zeit, um dich der Gruppe vorzustellen. Poste unten einen Kommentar.
 
-      Was ist deine Rolle oder der Anlass für deine Teilnahme in dieser Gruppe? Was sollten die Menschen wissen, um zu verstehen, woher du kommst?
+        Was ist deine Rolle oder der Anlass für deine Teilnahme in dieser Gruppe? Was sollten die Menschen wissen, um zu verstehen, woher du kommst?
   how_it_works_thread:
     title: Wie man Loomio benutzt
     description: |
-      Willkommen bei Loomio, einem Online-Ort für gemeinsame Entscheidungsfindung.
+        Willkommen bei Loomio, einem Online-Ort für gemeinsame Entscheidungsfindung.
 
-      Das ist ein Beispiels**thema**. Du kannst unten Kommentare einfügen. Ein Thema beschäftigt sich, wie der Name schon sagt, mit einem bestimmten Thema. In diesem Thema geht es darum, wie Loomio funktioniert, darum stelle hier deine Fragen dazu.
+        Das ist ein Beispiels**thema**. Du kannst unten Kommentare einfügen. Ein Thema beschäftigt sich, wie der Name schon sagt, mit einem bestimmten Thema. In diesem Thema geht es darum, wie Loomio funktioniert, darum stelle hier deine Fragen dazu.
 
-      Du liest gerade das Thema **Kontext**, in dem es um Hintergrundinformationen geht. Du kannst es im Verlauf der Diskussion anpassen.
+        Du liest gerade das Thema **Kontext**, in dem es um Hintergrundinformationen geht. Du kannst es im Verlauf der Diskussion anpassen.
 
-      Um mit Loomio zu beginnen:
-      1. lade ein [Profilbild](/profile) hoch
-      2. Stelle dich im [Willkommensthema](%{thread_url}) vor
-      3. Kommentiere ein bestehendes Thema oder eröffne ein neues.
+        Um mit Loomio zu beginnen:
+        1. lade ein [Profilbild](/profile) hoch
+        2. Stelle dich im [Willkommensthema](%{thread_url}) vor
+        3. Kommentiere ein bestehendes Thema oder eröffne ein neues.
 
-      Tips fürs Posten auf Loomio:
+        Tips fürs Posten auf Loomio:
 
-      * um eine Person zu benachrichtigen, tippe ein @ vor ihrem Namen.
-      * Klicke auf die Büroklammer, um Anhänge hinzuzufügen.
+        * um eine Person zu benachrichtigen, tippe ein @ vor ihrem Namen.
+        * Klicke auf die Büroklammer, um Anhänge hinzuzufügen.
 
-      Wenn du Fragen hast, sieh in der [Loomio-Hilfe](http://help.loomio.org) nach.
+        Wenn du Fragen hast, sieh in der [Loomio-Hilfe](http://help.loomio.org) nach.
   first_proposal:
     name: Demo-Vorschlag
     description: |
-      Dies ist ein **Vorschlag**, bei dem ihr eine gemeinsame Entscheidung treffen könnt. Du kannst einen Vorschlag einbringen, sobald eine Diskussion eröffnet ist.
+        Dies ist ein **Vorschlag**, bei dem ihr eine gemeinsame Entscheidung treffen könnt. Du kannst einen Vorschlag einbringen, sobald eine Diskussion eröffnet ist.
 
-      Alle sind aufgefordert, bis zur **Vorschlagsfrist** **ihre Position darzulegen**. Falls erforderlich, kannst du die Frist anpassen, oder einen Vorschlag vorzeitig abschließen.
+        Alle sind aufgefordert, bis zur **Vorschlagsfrist** **ihre Position darzulegen**. Falls erforderlich, kannst du die Frist anpassen, oder einen Vorschlag vorzeitig abschließen.
 
-      Du kannst **deine Position ändern** solange der Vorschlag offen ist. Vielleicht änderst du aufgrund der Argumente Anderer deine Position.
+        Du kannst **deine Position ändern** solange der Vorschlag offen ist. Vielleicht änderst du aufgrund der Argumente Anderer deine Position.
 
-      Manchmal arbeitet sich eine Gruppe durch eine **Reihe von Vorschlägen**, um zu einer gemeinsamen Lösung zu kommen. Zu einem Thema kannst du eine Reihe von Vorschlägen einreichen.
+        Manchmal arbeitet sich eine Gruppe durch eine **Reihe von Vorschlägen**, um zu einer gemeinsamen Lösung zu kommen. Zu einem Thema kannst du eine Reihe von Vorschlägen einreichen.
 
-      **Versuche teilzunehmen! Klicke einen der vier Knöpfe**.
+        **Versuche teilzunehmen! Klicke einen der vier Knöpfe**.
   markdown:
     intro:
       title: |+
-        # Was ist Markdown?
+          # Was ist Markdown?
 
       body: |
-        Mit Markdown kann man Text schreiben (links),
-        der dann in Rich Text konvertiert wird (rechts).
+          Mit Markdown kann man Text schreiben (links),
+          der dann in Rich Text konvertiert wird (rechts).
 
-        Diese Seite wurde mit Markdown geschrieben, damit man sieht, wie das funktioniert.
+          Diese Seite wurde mit Markdown geschrieben, damit man sieht, wie das funktioniert.
     headers:
       body: |
-        ## Überschriften
+          ## Überschriften
 
-        Beginne die Zeile mit einem Hash-Zeichen #, um eine Überschrift zu erhalten.
+          Beginne die Zeile mit einem Hash-Zeichen #, um eine Überschrift zu erhalten.
 
-        # Ein Hash entspricht h1
-        ## Ein Doppelhash entspricht h2
-        #### Und das ist h4
+          # Ein Hash entspricht h1
+          ## Ein Doppelhash entspricht h2
+          #### Und das ist h4
     paragraphs:
       title: |
-        ## Absätze
+          ## Absätze
       body: |
-        Ohne eine
-        Leerzeile dazwischen
-        werden Zeilenumbrüche
-        ignoriert!
+          Ohne eine
+          Leerzeile dazwischen
+          werden Zeilenumbrüche
+          ignoriert!
 
-        Daher für Absätze eine Leerzeile einfügen!
+          Daher für Absätze eine Leerzeile einfügen!
     emphasis:
       title: |
-        ## Betonung
+          ## Betonung
       body: |
-        Du kannst ein Wort durch _Unterstrich_ or *Sternchen* betonen bzw. kursiv setzen.
+          Du kannst ein Wort durch _Unterstrich_ or *Sternchen* betonen bzw. kursiv setzen.
 
-        __Fett__ wird ein Wort durch **verdoppelte** Betonung.
+          __Fett__ wird ein Wort durch **verdoppelte** Betonung.
     lists:
       title: |
-        ## Listen
+          ## Listen
       body: |
-        So kannst Du Aufzählungen erstellen
+          So kannst Du Aufzählungen erstellen
 
-        * beginne mit einer Leerzeile vor der Aufzählung
-        * beginne die Aufzählungspunkte mit (*)
-        * füge ein Leerzeichen hinter das Sternchen ein, dann den Text
+          * beginne mit einer Leerzeile vor der Aufzählung
+          * beginne die Aufzählungspunkte mit (*)
+          * füge ein Leerzeichen hinter das Sternchen ein, dann den Text
     links:
       title: |
-        ## Links und Bilder
+          ## Links und Bilder
       body: |
-        Eckige Klammern für den angezeigten Text und runde Klammern für die URL. Kein Leerzeichen dazwischen!
+          Eckige Klammern für den angezeigten Text und runde Klammern für die URL. Kein Leerzeichen dazwischen!
 
-        [Loomio Homepage](https://www.loomio.org/)
+          [Loomio Homepage](https://www.loomio.org/)
 
-        Bilder gehen genau so, nur mit einem Ausrufezeichen davor.
+          Bilder gehen genau so, nur mit einem Ausrufezeichen davor.
 
-        ![Loomio-Logo](https://i.imgur.com/Fvtworb.png)
+          ![Loomio-Logo](https://i.imgur.com/Fvtworb.png)
   poll_mailer:
     common:
       or: oder
@@ -188,6 +200,7 @@ de:
       please_respond: Bitte beteiligen Sie sich an der Abstimmung
       time_zone: (Zeitangaben in %{zone})
       verify_stance_for_unverified_user: "Danke für deine Abstimmungsbeteiligung bei %{title}. Bitte verifiziere deine E-Mail-Adresse, damit wir dir die Ergebnisse der Abstimmung zusenden können."
+      verify_stance_for_verified_user: "Es sieht so aus, als ob du hier abgestimmt hättest: %{title}. Wenn du diese Abstimmung tatsächlich vorgenommen hast, klicke bitte den unten angegebenen Link zur Bestätigung."
     proposal:
       subject:
         poll_created: '%{actor} hat einen Vorschlag erstellt: %{title}'
@@ -195,12 +208,16 @@ de:
         poll_closing_soon_author: 'Dein Vorschlag endet in 24 Stunden: %{title}'
         poll_expired: "Vorschlag wurde beendet: %{title}"
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
+        outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
+        stance_created: "%{actor} hat abgestimmt: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> hat einen Vorschlag erstellt'
         poll_closing_soon: 'Der Vorschlag von <strong>%{actor}</strong> endet in 24 Stunden. Jetzt ist ein guter Zeitpunkt, um an der Abstimmung teilzunehmen, deine Meinung noch einmal zu überdenken oder auch, um andere noch zum Mitmachen zu bewegen.'
         poll_closing_soon_author: 'Dein Vorschlag endet in 24 Stunden - jetzt ist ein guter Zeitpunkt, um andere an den Vorschlag zu erinnern oder um gegebenenfalls die Frist zu verlängern.'
         poll_expired: "Der Vorschlag von <strong>%{actor}</strong> wurde beendet: %{title}"
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
+        outcome_announced: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
+        stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
@@ -208,31 +225,41 @@ de:
         poll_created: '%{actor} hat eine Abstimmung eröffnet: %{title}'
         poll_closing_soon: 'In 24 Stunden endet die Abstimmungsfrist für: %{title}'
         poll_closing_soon_author: 'Deine Abstimmung zu %{title} endet in 24 Stunden'
+        poll_expired_author: 'Ihre Umfrage wurde beendet. Teilen Sie das Abstimmungsergebnis mit: %{title}'
+        poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
+        outcome_announced: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
+        stance_created: "%{actor} hat abgestimmt: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> hat eine Abstimmung eröffnet'
         poll_closing_soon: '<strong>%{actor}</strong>''s Abstimmung läuft in 24 Std. ab. Jetzt ist ein guter Zeitpunkt, zu wählen, deine Meinung zu ändern oder andere zum Mitmachen zu aufzufordern.'
         poll_closing_soon_author: 'Deine Abstimmung läuft in 24 Stunden ab - jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
+        poll_expired_author: 'Ihre Umfrage ist <strong>beendet</strong>. Bitte nehmen Sie sich ein wenig Zeit, um die Abstimmungsbeiträge zu analysieren. Anschließend sollten Sie <strong>der Gruppe das Ergebnis bekanntgeben</strong>, damit alle Mitglieder über die nächsten Schritte informiert sind.'
+        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
+        outcome_announced: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
+        stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
         poll_created: '%{actor} möchte eine Bestätigung: %{title}'
-        poll_closing_soon_author: 'Dein Check läuft in 24 Stunden ab: %{title}'
+        poll_edited: '%{actor} hat die Bestätigung bearbeitet: %{title}'
+        poll_closing_soon_author: 'Deine Bestätigung endet in 24 Stunden: %{title}'
         poll_expired: "Bestätigung abgeschlossen: %{title}"
         poll_expired_author: 'Einholen der Bestätigung abgeschlossen. Geben Sie das Ergebnis bekannt für: %{title}'
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
-        invitation_created: '%{actor} möchte eine Bestätigung: %{title}'
-        user_reminded: 'ERINNERUNG: %{actor} wartet auf Ihre Abstimmungsbeteiligung: %{title}'
+        outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> möchte eine Bestätigung'
         poll_closing_soon: '<strong>%{actor}</strong>''s Check läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Dein Check läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
-        poll_expired: "Die von <strong>%{actor}'s</strong> angeforderte Bestätigung ist abgeschlossen: %{title}"
+        poll_expired: "Die von <strong>%{actor}</strong> angeforderte Bestätigung ist abgeschlossen: %{title}"
+        poll_expired_author: 'Hier ist das Abstimmungsergebnis für die angeforderte Bestätigung. Sofern erforderlich, kannst du das <strong>Ergebnis bekanntgeben</strong>, damit die Gruppenmitglieder wissen, was als nächstes passiert.'
         outcome_created: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
-        invitation_created: '<strong>%{actor}</strong> möchte eine Bestätigung: %{title}'
-        user_reminded: 'ERINNERUNG: <strong>%{actor}</strong> wartet auf Ihre Abstimmungsbeteiligung: %{title}'
+        outcome_announced: '<strong>%{actor}</strong> hat ein Abstimmungsergebnis bekanntgegeben.'
       body:
         voted: '<strong>%{participant}</strong>:'
     dot_vote:
@@ -240,23 +267,46 @@ de:
         poll_created: '%{actor} hat eine neue Priorisierung erstellt: %{title}'
         poll_closing_soon: 'Die Priorisierung %{title} läuft in 24 Stunden ab'
         poll_closing_soon_author: 'Deine Priorisierung %{title} läuft in 24 Stunden ab'
+        poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat das Abstimmungsergebnis für %{title} bekanntgegeben'
+        outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
+        stance_created: "%{actor} hat abgestimmt: %{title}"
       header:
         poll_created: '<strong>%{actor}</strong> startete eine Priorisierung'
         poll_closing_soon: '<strong>%{actor}</strong>''s Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, abzustimmen, deine Stimmverteilung zu ändern oder andere zum Mitmachen einzuladen.'
         poll_closing_soon_author: 'Deine Priorisierung läuft in 24 Stunden ab -  jetzt ist ein guter Zeitpunkt, andere ans Mitmachen zu erinnern oder wenn nötig die Frist zu verlängern.'
+        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '<strong>%{actor}</strong> hat ein Priorisierungergebnis bekanntgegeben.'
+        outcome_announced: '<strong>%{actor}</strong> hat ein Priorisierungergebnis bekanntgegeben.'
+        stance_created: "<strong>%{actor}</strong> hat abgestimmt: %{title}"
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
+        poll_option_added: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
         outcome_created_author: 'Sie haben ein Abstimmungsergebnis bekanntgegeben: %{title}'
+        outcome_announced: '%{actor} hat ein Abstimmungsergebnis bekanntgegeben: %{title}'
+      header:
+        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     ranked_choice:
       subject:
+        poll_option_added: '%{actor} hat Abstimmungsoptionen hinzugefügt: %{title}'
+        poll_option_added_author: '%{actor} hat die Abstimmungsoptionen erweitert: %{title}'
         outcome_created: '%{actor} hat das Ergebnis für %{title} bekanntgegeben'
         outcome_created_author: 'Sie haben ein Abstimmungsergebnis bekanntgegeben: %{title}'
+      header:
+        poll_option_added: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+        poll_option_added_author: '<strong>%{actor}</strong> hat die Abstimmungsoptionen erweitert: %{title}'
+  comment_by: Kommentar von %{comment_author}
+  poll_generator:
+    poll:
+      title: "Liegen ggf. Lebensmittelunverträglichkeiten vor, die wir bei unserer Geschäftsfeier am Donnerstag berücksichtigen müssen?"
   poll_unsubscribe:
     title: Die Benachrichtigungen für %{title} wurden deaktiviert

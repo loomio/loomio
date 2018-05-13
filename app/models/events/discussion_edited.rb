@@ -1,9 +1,10 @@
 class Events::DiscussionEdited < Event
+  include Events::LiveUpdate
   def self.publish!(discussion, editor)
-    create(kind: "discussion_edited",
-           eventable: discussion.versions.last,
-           user: editor,
-           discussion: discussion,
-           created_at: discussion.versions.last.created_at).tap { |e| EventBus.broadcast('discussion_edited_event', e) }
+    version = discussion.versions.last
+    super discussion,
+          user: editor,
+          custom_fields: {version_id: version.id, changed_keys: version.object_changes.keys},
+          created_at: version.created_at
   end
 end

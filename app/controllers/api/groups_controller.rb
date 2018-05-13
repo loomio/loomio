@@ -2,6 +2,11 @@ class API::GroupsController < API::RestfulController
   include UsesFullSerializer
   after_action :track_visit, only: :show
 
+  def token
+    self.resource = load_and_authorize(:formal_group, :invite_people)
+    respond_with_resource scope: {include_token: true}
+  end
+
   def show
     self.resource = load_and_authorize(:formal_group)
     respond_with_resource
@@ -16,19 +21,13 @@ class API::GroupsController < API::RestfulController
     render json: { count: Queries::ExploreGroups.new.search_for(params[:q]).count }
   end
 
-  def create
-    instantiate_resource
-    create_action
-    respond_with_resource(scope: {current_user: current_user})
-  end
-
   def archive
     service.archive(group: load_resource, actor: current_user)
     respond_with_resource
   end
 
   def subgroups
-    self.collection = load_and_authorize(:group).subgroups.select { |g| can? :show, g }
+    self.collection = load_and_authorize(:group).subgroups.select { |g| current_user.can? :show, g }
     respond_with_collection
   end
 
@@ -54,15 +53,6 @@ class API::GroupsController < API::RestfulController
 
   def resource_class
     FormalGroup
-  end
-
-  def publish_params
-    {
-      make_announcement: !!params[:make_announcement],
-      identifier:        params.require(:identifier),
-      channel:           params[:channel],
-      identity_type:     :slack
-    }
   end
 
   # serialize out the parent with the group

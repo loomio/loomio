@@ -4,15 +4,16 @@ class VersionSerializer < ActiveModel::Serializer
              :changes,
              :whodunnit,
              :previous_id,
-             :created_at
+             :created_at,
+             :item_id,
+             :item_type
 
   has_one :discussion
   has_one :comment
-  has_one :proposal
   has_one :poll
 
   def changes
-    object.object_changes
+    object.object_changes.map { |key, changes| [key, changes_for(key, changes)] }.to_h
   end
 
   def whodunnit
@@ -31,10 +32,6 @@ class VersionSerializer < ActiveModel::Serializer
     object.item
   end
 
-  def proposal
-    object.item
-  end
-
   def previous_id
     object.previous.try :id
   end
@@ -49,5 +46,13 @@ class VersionSerializer < ActiveModel::Serializer
 
   def include_comment?
     object.item_type == 'Comment'
+  end
+
+  private
+
+  def changes_for(key, changes)
+    return changes unless ['description', 'details', 'body'].include?(key)
+    # render inline html for markdown fields
+    Discourse::Diff.new(changes[0].to_s, changes[1].to_s).side_by_side_markdown
   end
 end

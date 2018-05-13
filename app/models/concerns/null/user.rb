@@ -6,7 +6,7 @@ module Null::User
   end
 
   def ability
-    @ability ||= Ability.new(self)
+    @ability ||= Ability::Base.new(self)
   end
 
   def nil_methods
@@ -29,8 +29,8 @@ module Null::User
     [:experiences]
   end
 
-  def true_methods
-    [:angular_ui_enabled, :angular_ui_enabled?]
+  def zero_methods
+    [:pending_invitation_limit]
   end
 
   def none_methods
@@ -38,6 +38,7 @@ module Null::User
       notifications: :notification,
       login_tokens: :login_token,
       memberships: :membership,
+      admin_memberships: :membership,
       participated_polls: :poll,
       group_polls: :poll,
       polls: :poll,

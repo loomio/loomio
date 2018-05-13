@@ -1,7 +1,0 @@
-.flash-root{aria-live: "{{ariaLive()}}", role: "alert"}
-  .flash-root__container.animated{ng-if: "display()", ng-animate: "'enter'", class: "alert-{{flash.level}}"}
-    .flash-root__message.lmo-flex.lmo-flex__center
-      %loading.flash-root__loading.lmo-margin-right{ng-if: "loading()"}
-      {{ flash.message | translate:flash.options }}
-    .flash-root__action{ng-if: "flash.actionFn"}
-      %a{ng-click: "flash.actionFn()", translate: "{{flash.action}}"}

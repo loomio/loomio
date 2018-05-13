@@ -1,4 +1,10 @@
 el:
+  poll:
+    export:
+      title: Τίτλος
+      author: Συγγραφέας
+      details: Λεπτομέρειες
+      group_name: Όνομα ομάδας
   email:
     group_email:
       intro: "Ο/Η %{who} έκανε μια ανακοίνωση στην ομάδα %{group}:"
@@ -11,9 +17,13 @@ el:
       mark_as_read: Σημείωσε ως διαβασμένα
       thanks_for_reading: Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
+      click_here: Πατήστε εδώ
     membership_request:
       subject: "%{who} έχει αιτηθεί να συμμετάσχει στην ομάδα %{which_group}"
       view_group: Μπορείς να εγκρίνεις ή να απορρίψεις την αίτηση εδώ
+  discussion_mailer:
+    reply_or_view_online_html: Απαντήστε άμεσα σε αυτό το ηλεκτρονικό μήνυμα ή <a href='%{url}'>δείτε το στο %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'> Απενεργοποίηση ηλεκτρονικών μηνυμάτων </a> για αυτή τη συζήτηση."
   footer:
     about: Σχετικά
     blog: Ιστολόγιο
@@ -30,3 +40,4 @@ el:
   poll_mailer:
     common:
       unsubscribe: Κατάργηση εγγραφής
+  comment_by: Σχόλιο από %{comment_author}

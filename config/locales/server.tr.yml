@@ -1,4 +1,10 @@
 tr:
+  poll:
+    export:
+      title: Başlık
+      author: Yazar
+      details: Detaylar
+      group_name: Grup adı
   time:
     formats:
       closing_soon_subject: "%d %b %H:%M"
@@ -29,9 +35,13 @@ tr:
       mark_as_read: Okundu olarak işaretle
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
+      click_here: Buraya tıkla
     membership_request:
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
+  discussion_mailer:
+    reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
+    turn_off_notifications_html: "Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>."
   footer:
     about: Hakkında
     blog: Blog
@@ -42,10 +52,8 @@ tr:
     public_groups: Genel gruplar
     terms: Şartlar
     independent_install_html: '%{hostname} Loomio''nun bağımsız bir kopyasını çalışıtırıyor: <a href="http://github.com/loomio/loomio">daha fazla bilgi</a>.'
-  invitation_form:
-    error:
-      all_email_addresses_belong_to_members: "Sağladığınız e-posta adresleri zaten grupta bulunan kişilere ait olduğundan dolayı bunlara davetiye göndermedik."
   password_reset:
     reset_email_timeframe: E-postanın ulaşması 5 dakikaya kadar sürebilir. Eğer e-posta ulaşmazsa, spam klasörünüzü kontrol ettiğinizden emin olun.
     length_restriction: Şifreler en az 8 karakter uzunluğunda olmalıdır.
     forbidden_passwords: ' "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
+  comment_by: '%{comment_author} tarafından yapılan yorum'

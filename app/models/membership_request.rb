@@ -1,10 +1,9 @@
-class MembershipRequest < ActiveRecord::Base
-  validates :name,  presence: true, :if => 'requestor.blank?'
-  validates :email, presence: true, email: true, :if => 'requestor.blank?' #this uses the gem 'valid_email'
+class MembershipRequest < ApplicationRecord
+  include HasEvents
 
   validate :validate_not_in_group_already
   validate :validate_unique_membership_request
-  validates_presence_of :responder, :if => 'response.present?'
+  validates_presence_of :responder, if: :response
 
   validates :group, presence: true
 
@@ -14,7 +13,6 @@ class MembershipRequest < ActiveRecord::Base
   belongs_to :requestor, class_name: 'User'
   belongs_to :user, foreign_key: 'requestor_id' # duplicate relationship for eager loading
   belongs_to :responder, class_name: 'User'
-  has_many :events, as: :eventable, dependent: :destroy
   has_many :admins, through: :group
 
   validates :introduction, length: { maximum: Rails.application.secrets.max_message_length }
@@ -27,22 +25,10 @@ class MembershipRequest < ActiveRecord::Base
   delegate :membership_requests,  to: :group, prefix: true
   delegate :members_can_add_members, to: :group, prefix: true
   delegate :name,                 to: :group, prefix: true
+  delegate :mailer,               to: :group
 
-  def name
-    if requestor.present?
-      requestor.name
-    else
-      self[:name]
-    end
-  end
-
-  def email
-    if requestor.present?
-      requestor.email
-    else
-      self[:email]
-    end
-  end
+  delegate :email,                to: :requestor
+  delegate :name,                 to: :requestor
 
   def approve!(responder)
     set_response_details('approved', responder)
@@ -52,12 +38,8 @@ class MembershipRequest < ActiveRecord::Base
     set_response_details('ignored', responder)
   end
 
-  def from_a_visitor?
-    requestor.blank?
-  end
-
   def convert_to_membership!
-    group.add_member!(requestor) unless from_a_visitor?
+    group.add_member!(requestor)
   end
 
   private
@@ -79,35 +61,19 @@ class MembershipRequest < ActiveRecord::Base
   end
 
   def already_in_group?
-    if from_a_visitor?
-      group_members.find_by(email: email)
-    else
-      group_members.include?(requestor)
-    end
+    group_members.include?(requestor)
   end
 
   def pending_request_already_exists?
-    if from_a_visitor?
-      group_membership_requests.where(response: nil, email: email).exists?
-    else
-      group_membership_requests.where(requestor_id: requestor.id, response: nil).exists?
-    end
+    group_membership_requests.where(requestor_id: requestor.id, response: nil).exists?
   end
 
   def add_already_requested_membership_error
-    if from_a_visitor?
-      errors.add(:email, I18n.t(:'error.you_have_already_requested_membership'))
-    else
-      errors.add(:requestor, I18n.t(:'error.you_have_already_requested_membership'))
-    end
+    errors.add(:requestor, I18n.t(:'error.you_have_already_requested_membership'))
   end
 
   def add_already_in_group_error
-    if from_a_visitor?
-      errors.add(:email, I18n.t(:'error.user_with_email_address_already_in_group'))
-    else
-      errors.add(:requestor, I18n.t(:'error.you_are_already_a_member_of_this_group'))
-    end
+    errors.add(:requestor, I18n.t(:'error.you_are_already_a_member_of_this_group'))
   end
 
   def set_response_details(response, responder)

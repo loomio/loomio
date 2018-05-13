@@ -49,6 +49,8 @@ be_BY:
       placeholder: 'Пошук'
       discussions: 'Абмеркаванні'
       proposals: 'Прапановы'
+  membership_dropdown:
+    make_coordinator: 'Зрабіць каардынатарам'
   notifications:
     header: "Апавяшчэнні"
   position_buttons_panel:
@@ -65,11 +67,6 @@ be_BY:
     name_label: Імя
     email_label: Email
   group_page:
-    thread_list:
-      empty:
-        membership_is_invitation_only: "Каб далучыцца да групы, неабходна атрымаць запрашэнне ад яе ўдзельніка. "
-        membership_is_invitation_by_admin_only: "Каб далучыцца да групы, неабходна атрымаць запрашэнне ад яе ўдзельніка. "
-    discussions: 'Абмеркаванні'
     options_label: 'Опцыі'
     options:
       label: 'Опцыі'
@@ -79,6 +76,9 @@ be_BY:
       mute: Прыбраць гэту групу з галоўнай старонкі і нагадваць толькі калі @mentioned.
   group_form:
     description_placeholder: 'Апішыце мэты вашай групы, каб чальцы групы ведалі, навошта яны тут.'
+  document:
+    form:
+      title_label: Імя
   membership_requests_page:
     approve: Пацвердзіць
     ignore: Ігнараваць
@@ -89,6 +89,10 @@ be_BY:
     name_label: 'Імя'
     coordinator_label: 'Каардынатар'
     remove_member_label: 'Выдаліць'
+  membership_remove_modal:
+    membership:
+      title: Выдаліць удзельніка
+      submit: Выдаліць удзельніка
   pending_invitations_card:
     heading: Актуальныя запрашэнні
   cancel_invitation_form:
@@ -114,10 +118,12 @@ be_BY:
   inbox_page:
     no_groups:
       or: альбо
-  discussion:
-    proposals: 'Прапановы'
+  activity_card:
+    unread: Непрачытаныя
   thread_group:
     aria_label: 'Назва групы'
+  thread_context:
+    close_thread: 'Зачыніць'
   delete_comment_dialog:
     title: 'Выдаліць каментар'
     question: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'
@@ -136,3 +142,8 @@ be_BY:
     invitation: 'Парады, як пісаць файныя запрашэнні'
     proposal: 'Парады, як пісаць зразумелыя прапановы'
     vote: 'Вы здольны змяніць свой голас у любы час'
+  poll_common_form:
+    closed: Закрыта
+  poll_count_options:
+    'yes': 'Так'
+    'no': 'Не'

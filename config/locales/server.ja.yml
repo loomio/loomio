@@ -1,9 +1,16 @@
 ja:
+  poll:
+    export:
+      title: タイトル
+      author: 作成者
+      details: 詳細
   email:
     group_email:
       intro: "%{who} が %{group} にアナウンスメントをしました："
     unsubscribe: '購読をやめる、またはEメール設定を変更する：'
     unsubscribe_html: "購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>"
+    missed_yesterday:
+      click_here: ここをクリック
     membership_request:
       subject: " %{who}  が %{which_group} に参加するようにお願いしています"
       view_group: ここでリクエストを承認または拒否できます

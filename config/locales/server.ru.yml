@@ -1,7 +1,14 @@
 ru:
+  poll:
+    export:
+      title: Название
+      author: Автор
+      details: Детали
+      total: Всего
   email:
     missed_yesterday:
       mark_as_read: Отметить прочитанным
+      click_here: Кликните здесь
   footer:
     about: О нас
     blog: Блог
@@ -15,3 +22,4 @@ ru:
   poll_mailer:
     common:
       unsubscribe: Отписаться
+  comment_by: Комментарий %{comment_author}

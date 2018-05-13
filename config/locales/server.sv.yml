@@ -1,4 +1,9 @@
 sv:
+  poll:
+    export:
+      title: Titel
+      author: Författare
+      details: Detaljer
   validate:
     motion:
       must_close_in_future: Förslaget måste stängas i framtiden.
@@ -16,6 +21,7 @@ sv:
       mark_as_read: Markera som läst
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst
+      click_here: Klicka här
     membership_request:
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: Du kan godkänna eller avslå begäran här
@@ -28,3 +34,4 @@ sv:
     pricing: Prissättning
     public_groups: Öppna grupper
     terms: Villkor
+  comment_by: Kommentaren av %{comment_author}
