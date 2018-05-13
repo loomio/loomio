@@ -371,19 +371,19 @@ module.exports = {
     page.expectText('.activity-feed', 'Patrick Swayze closed the discussion')
   },
 
-  'can_fork_a_thread': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_forkable_discussion')
-    page.click('.action-dock__button--fork_comment')
-    page.expectElement('md-checkbox.md-checked')
-    page.click('.discussion-fork-actions__submit')
-    page.fillIn('.discussion-form__title-input', 'Forked thread')
-    page.click('.discussion-form__submit')
-    page.expectText('.flash-root__message', 'Thread fork created')
-    page.click('.dismiss-modal-button')
-    page.expectText('.context-panel__heading', 'Forked thread')
-    page.expectText('.context-panel__details', 'Forked from What star sign are you?')
-    page.expectText('.thread-item__directive', 'This is totally on topic!', 8000)
-  }
+  // 'can_fork_a_thread': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_forkable_discussion')
+  //   page.click('.action-dock__button--fork_comment')
+  //   page.expectElement('md-checkbox.md-checked')
+  //   page.click('.discussion-fork-actions__submit')
+  //   page.fillIn('.discussion-form__title-input', 'Forked thread')
+  //   page.click('.discussion-form__submit')
+  //   page.expectText('.flash-root__message', 'Thread fork created')
+  //   page.click('.dismiss-modal-button')
+  //   page.expectText('.context-panel__heading', 'Forked thread')
+  //   page.expectText('.context-panel__details', 'Forked from What star sign are you?')
+  //   page.expectText('.thread-item__directive', 'This is totally on topic!', 8000)
+  // }
 }
