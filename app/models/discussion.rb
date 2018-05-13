@@ -157,6 +157,10 @@ class Discussion < ApplicationRecord
     self[:ranges_string]
   end
 
+  def is_new_version?
+    (['title', 'description', 'private'] & self.changes.keys).any?
+  end
+
   private
 
   def set_last_activity_at_to_created_at
