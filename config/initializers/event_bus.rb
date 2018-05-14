@@ -106,10 +106,8 @@ EventBus.configure do |config|
 
   # move events to new discussion on fork
   config.listen('discussion_fork') do |discussion|
-    discussion.forked_items.update_all(
-      discussion_id: discussion.id,
-      parent_id:     discussion.created_event.id
-    )
+    discussion.forked_items.update_all(discussion_id: discussion.id)
+    discussion.forked_items.where(depth: 1).update_all(parent_id: discussion.created_event.id)
     Event.reorder_with_parent_id(discussion.created_event.id)
   end
 end
