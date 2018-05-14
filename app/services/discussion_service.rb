@@ -23,13 +23,14 @@ class DiscussionService
     version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
     discussion.assign_attributes(params.slice(:document_ids))
     discussion.document_ids = [] if params.slice(:document_ids).empty?
+    is_new_version = discussion.is_new_version?
 
     return false unless discussion.valid?
     discussion.save!
 
     version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)
-    Events::DiscussionEdited.publish!(discussion, actor)
+    Events::DiscussionEdited.publish!(discussion, actor) if is_new_version
   end
 
   def self.close(discussion:, actor:)
