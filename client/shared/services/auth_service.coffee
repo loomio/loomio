@@ -11,7 +11,7 @@ module.exports = new class AuthService
       @applyEmailStatus(user, _.first(data.users))
 
   applyEmailStatus: (user, data = {}) ->
-    keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash', 'avatar_url', 'has_password', 'email_status']
+    keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash', 'avatar_url', 'has_password', 'email_status', 'legal_accepted']
     user.update _.pick(_.mapKeys(_.pick(data, keys), (v,k) -> _.camelCase(k)), _.identity)
     user.update(hasToken: data.has_token)
     user
@@ -20,7 +20,9 @@ module.exports = new class AuthService
     Records.sessions.build(name: user.name, email: user.email, password: user.password).save()
 
   signUp: (user) ->
-    Records.registrations.build(email: user.email, name: user.name, recaptcha: user.recaptcha).save().then ->
+    Records.registrations.build(
+      _.pick(user, ['email', 'name', 'recaptcha', 'legalAccepted'])
+    ).save().then ->
       if user.hasToken
         hardReload()
       else

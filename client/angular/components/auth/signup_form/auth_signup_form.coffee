@@ -10,16 +10,20 @@ angular.module('loomioApp').directive 'authSignupForm', ->
   templateUrl: 'generated/components/auth/signup_form/auth_signup_form.html'
   controller: ['$scope', ($scope) ->
     $scope.recaptchaKey = AppConfig.recaptchaKey
+    $scope.termsUrl     = "https://www.loomio.org/terms_of_service"
+    $scope.privacyUrl   = "https://www.loomio.org/privacy"
     $scope.name         = $scope.user.name
-    $scope.vars         = {name: $scope.name}
+    $scope.vars         = {name: $scope.name, site_name: AppConfig.theme.site_name}
     $scope.allow        = ->
       AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
 
     $scope.submit = ->
+      return unless $scope.vars.legalAccepted
       if $scope.vars.name
         $scope.user.errors = {}
         EventBus.emit $scope, 'processing'
-        $scope.user.name  = $scope.vars.name
+        $scope.user.name           = $scope.vars.name
+        $scope.user.legalAccepted  = $scope.vars.legalAccepted
         AuthService.signUp($scope.user).finally -> EventBus.emit $scope, 'doneProcessing'
       else
         $scope.user.errors =

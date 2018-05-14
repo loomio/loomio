@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   extend  NoSpam
   no_spam_for :name
-  
+
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
     helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
@@ -183,6 +183,15 @@ class User < ApplicationRecord
   #   SQL
   # }
   #
+
+  def legal_accepted
+    !!legal_accepted_at
+  end
+
+  def legal_accepted=(value)
+    self.legal_accepted_at = Time.now
+  end
+
   def self.email_status_for(email)
     (verified_first.find_by(email: email) || LoggedOutUser.new).email_status
   end

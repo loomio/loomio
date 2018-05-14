@@ -1707,6 +1707,8 @@ en:
   auth_form:
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in: Sign in
+    continue: Continue
+    create_account: Create account
     sign_in_as: Sign in as {{name}}
     continue_with_provider: Continue with {{provider}}
     or_enter_your_email: Or, enter your email address to continue
@@ -1724,13 +1726,12 @@ en:
       Click the button below and we'll send you a link to sign in instantly.
       If you'd like to use a password to log in in the future, you can set one from your profile page.
     login_link_helptext_with_password: "Enter your password, or sign in via email."
-    sign_up_helptext: "Please enter the name you'd like to be known by, and we'll send you a link to log in."
-    sign_up_helptext_with_token: "Please enter the name you'd like to be known by, then click Sign In."
-    oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
+    sign_up_helptext: "To create a user account, please complete this form"
+    i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
     name_required: Please enter a name
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
 
-    welcome: Nice to meet you!
+    welcome: Welcome to {{siteName}}!
     welcome_back: Welcome back, {{name}}!
     login_link: Sign in via email
     set_password: Set password
@@ -1744,7 +1745,7 @@ en:
     link_accounts: Link accounts
 
     check_your_email: Check your email!
-    login_link_sent: "Ok, We've sent an email to {{email}}."
+    login_link_sent: "We've sent an email to {{email}}."
     instructions: "Click the link to sign in, or enter the code below:"
     too_many_attempts: "Too many attempts; try clicking the link in the email to log in."
     invalid_code: "Sorry, that code didn't match. Check the email and try again."
