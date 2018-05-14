@@ -120,5 +120,15 @@ module.exports = {
     page.pause(2000)
     page.click('.confirm-modal__submit')
     page.expectText('.auth-modal', 'Sign into Loomio', 10000)
+  },
+
+  'can_reactivate_the_account': (test) =>  {
+    page = pageHelper(test)
+
+    page.loadPath('setup_user_reactivation_email')
+    page.click('.base-mailer__button')
+    page.pause(2000)
+    page.click('.auth-signin-form__submit')
+    page.expectText('.flash-root__message', 'Signed in successfully')
   }
 }

@@ -48,6 +48,7 @@ class UserService
 
   def self.reactivate(user:, actor:)
     actor.ability.authorize! :reactivate, user
+    EventBus.broadcast('user_reactivate', user, actor)
     Events::UserReactivated.publish!(user)
   end
 

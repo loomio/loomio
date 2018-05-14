@@ -37,7 +37,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def reactivate
-    service.reactivate(target_user_by_email)
+    service.reactivate(user:deactivated_user, actor: current_user)
     respond_with_resource
   end
 
@@ -61,11 +61,8 @@ class API::ProfileController < API::RestfulController
     resource_class.active.verified_first.find_by(email: params[:email]) || LoggedOutUser.new(email: params[:email])
   end
 
-  def target_user_by_email
-    {
-      user: resource_class.inactive.verified_first.find_by(email: params[:user][:email]),
-      actor: current_user
-    }
+  def deactivated_user
+    resource_class.inactive.verified_first.find_by(email: params[:user][:email])
   end
 
   def current_user_params
