@@ -173,7 +173,8 @@ describe Identities::SlackController do
       text: "proposal let's get started",
       channel_id: group_identity.slack_channel_id,
       team_id: identity.slack_team_id,
-      team_domain: "example"
+      team_domain: "example",
+      token: ENV['SLACK_VERIFICATION_TOKEN']
     } }
     let(:group) { create :formal_group }
     let(:identity) { create :slack_identity, custom_fields: { slack_team_id: "T123" } }

@@ -21,7 +21,7 @@ class ::Slack::Initiator
   private
 
   def is_valid_command?
-    (AppConfig.poll_templates.keys + [:thread, :discussion]).include?(@type)
+    (AppConfig.poll_templates.keys.map(&:to_sym) + [:thread, :discussion]).include?(@type)
   end
 
   def initiate_url
