@@ -716,19 +716,28 @@ describe API::DiscussionsController do
       event2 = create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 5
       event3 = create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 6
       reader = create :discussion_reader, discussion: discussion, user: user, read_ranges_string: '4-6'
+      another_reader = create :discussion_reader, discussion: discussion, user: another_user, read_ranges_string: '1-3'
       fork_params[:forked_event_ids] = [event2.id]
 
       sign_in user
+
+      #the fork post creates a discussion and reports success, the fork is performed by the signed in user
       expect { post :fork, params: { discussion: fork_params } }.to change { Discussion.count }.by(1)
       expect(response.status).to eq 200
 
+      #the created discussion has two discussion readers (those created on the original discussion)
       d = Discussion.last
-      expect(d.discussion_readers.count).to eq 1
+      expect(d.discussion_readers.count).to eq 2
 
-      dr = DiscussionReader.last
-      expect(dr.user).to eq user
-      expect(dr.discussion).to eq d
+      #the discussion reader is that of the user and its discussion is that which was made it has read ranges representing the entirety for the user
+      dr = DiscussionReader.find_by(user: user, discussion: d)
+      expect(dr).to be_present
       expect(dr.read_ranges_string).to eq '5-5'
+
+      dr2 = DiscussionReader.find_by(user: another_user, discussion: d)
+      expect(dr2).to be_present
+      expect(dr2.read_ranges_string).to eq '1-3'
+
     end
 
     it 'does not allow non admins to fork a thread' do
