@@ -711,6 +711,26 @@ describe API::DiscussionsController do
       expect(forked_event.sequence_id).to eq 2
     end
 
+    it 'transfers read state from old discussion readers' do
+      event1 = create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 4
+      event2 = create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 5
+      event3 = create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 6
+      reader = create :discussion_reader, discussion: discussion, user: user, read_ranges_string: '4-6'
+      fork_params[:forked_event_ids] = [event2.id]
+
+      sign_in user
+      expect { post :fork, params: { discussion: fork_params } }.to change { Discussion.count }.by(1)
+      expect(response.status).to eq 200
+
+      d = Discussion.last
+      expect(d.discussion_readers.count).to eq 1
+
+      dr = DiscussionReader.last
+      expect(dr.user).to eq user
+      expect(dr.discussion).to eq d
+      expect(dr.read_ranges_string).to eq '5'
+    end
+
     it 'does not allow non admins to fork a thread' do
       sign_in another_user
       post :fork, params: { discussion: fork_params }
