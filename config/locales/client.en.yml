@@ -1755,6 +1755,8 @@ en:
     email: Email
     password: Password
 
+    reactivate: Send Reactivation Email
+
   install_slack:
     modal_title: Install Slack
     modal_helptext: First up, you'll need to sign in to slack. We'll redirect you there automatically in a second, or you can click the button below to continue.
