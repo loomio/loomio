@@ -58,7 +58,7 @@ module.exports = new class IntercomService
   updateWithGroup: (group) ->
     return unless group? and @available()
     return if _.isEqual(lastGroup, mapGroup(group))
-    return if group.isSubgroup()
+    return if group.isSubgroup() or group.type != 'FormalGroup'
     user = Session.user()
     return if !user.isMemberOf(group)
     lastGroup = mapGroup(group)

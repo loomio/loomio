@@ -8,7 +8,6 @@ ro:
         invalid: nu este o valoare valida
   errors:
     messages:
-      email: Nu este o adresa de email valida
       spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
   poll:
     error:

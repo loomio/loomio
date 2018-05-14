@@ -123,6 +123,8 @@ fr:
       remind: Rappel
       resend: Renvoyer
       send: Envoyer
+      joined: A rejoint
+      last_seen: En ligne
       invite: Inviter
       resent: Invitation renvoyée
       export: Exporter
@@ -141,6 +143,8 @@ fr:
     _9: 9e
     _10: 10e
   devise:
+    sessions:
+      signed_up: Connecté avec succès !
     failure:
       inactive: 'Il existe un compte désactivé associé à cette adresse e-mail. Si vous voulez réactiver votre compte, contactez- nous.'
   error_page:
@@ -219,6 +223,10 @@ fr:
   mute_explanation_modal:
     aria_label: Ignorer la discussion
     mute_thread: Ignorer la discussion
+    body_html: |
+        Ignorer la discussion signifie que vous <strong>ne recevrez aucune notification concernant les décisions</strong>, ni sur aucune activité de ce fil de discussion, sauf si quelqu’un vous <strong>@mentionne.</strong>
+    body_html_2: |
+        Les fils de discussion ignorés sont également invisibles dans les pages <strong>Récents</strong> et <strong>Non lus</strong>. Pour retrouver vos discussions ignorées, sélectionnez l’option <strong>Discussions ignorées</strong> de la barre latérale :
     image_alt: Option discussions ignorées dans la barre latérale
   dismiss_explanation_modal:
     aria_label: Marquer la discussion comme lue
@@ -300,9 +308,21 @@ fr:
     help: 'Aide'
     contact_site_name: 'Contacter {{site_name}}'
     sign_out: 'Se déconnecter'
+  membership_card:
+    group_members: "Membres du groupe"
+    discussion_members: "Membres de la discussion"
+    poll_members: "Membres du {{pollType}}"
+    invite_to_group: "Inviter au groupe"
+    invite_to_discussion: "Inviter à la discussion"
+    invite_to_poll: "Inviter au vote"
+    invitations: "Invitations"
   membership_dropdown:
     make_coordinator: 'Nommer coordinateur'
     demote_coordinator: 'Retirer des coordinateurs'
+    remove_from:
+      discussion: "Retirer de la discussion"
+      group: "Retirer du groupe"
+      poll: 'Retirer de {{pollType}}'
     cancel_invitation: Annuler l’invitation
   start_menu:
     label: 'Actions utilisateur'
@@ -321,6 +341,7 @@ fr:
     header: "Notifications"
     no_notifications: "Aucune nouvelle notification"
     new_discussion: "<strong>{{name}}</strong> a créé une discussion <strong>{{title}}</strong>"
+    discussion_announced: "<strong>{{name}}</strong> a partagé une discussion <strong>{{title}}</strong>"
     new_motion: "<strong>{{name}}</strong> a créé une proposition: <strong>{{title}}</strong>"
     motion_closed: "Proposition terminée: <strong>{{title}}</strong>"
     publish_outcome: "Publier un résultat"
@@ -343,8 +364,10 @@ fr:
     new_coordinator: "<strong>{{name}}</strong> vous a nommé coordinateur de <strong>{{title}}</strong>"
     poll_created: "<strong>{{name}}</strong> a démarré un {{poll_type}}: <strong>{{title}}</strong>"
     poll_edited: "<strong>{{name}}</strong> a édité un {{poll_type}}: <strong>{{title}}</strong>"
+    poll_announced: "<strong>{{name}}</strong> a partagé un {{poll_type}} : <strong>{{title}}</strong>"
     poll_closing_soon: "{{poll_type}} ferme bientôt : <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} fermé : <strong>{{title}}</strong>"
+    poll_option_added: "<strong>{{name}}</strong> a ajouté des options à : <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     outcome_announced: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
     stance_created: "<strong>{{name}}</strong> a participé à : <strong>{{title}}</strong>"
@@ -378,12 +401,48 @@ fr:
     make_announcement: Notification
     notified_count: '{{count}} personnes seront notifiées'
   announcement:
+    audiences:
+      parent_group: Membres de {{name}}
+      formal_group: Membres de {{name}}
+      discussion_group: Membres de la discussion
+      voters: Personnes qui ont voté
+      non_voters: Personnes qui n'ont pas voté
     form:
+      group_announced:
+        title: Inviter au groupe
+        helptext: Qui voulez-vous inviter au groupe ?
+      discussion_announced:
+        title: Inviter à la discussion
+        helptext: Qui voulez-vous inviter à la discussion ?
+      discussion_edited:
+        title: Notifier des modifications
+        helptext: Qui voulez-vous notifier de vos modifications ?
+      poll_announced:
+        title: Inviter au vote
+        helptext: Qui voulez-vous inviter à voter ?
+      poll_edited:
+        title: Notifier des modifications
+        helptext: Qui voulez-vous notifier de vos modifications ?
       outcome_announced:
         title: Partager le résultat
+        helptext: Avec qui voulez-vous partager les résultats ?
       anyone_can_participate: N’importe qui ayant un lien peut participer.
+      placeholder: Entrer les noms ou les adresses courriel…
+      notified_empty: 'Personne n''est encore sélectionné.'
+      notified: '{{notified}} personnes seront notifiées :'
+      notified_singular: '1 personne sera notifiée :'
+      group_title: '{{name}} ({{count}} personnes)'
+    members_list:
+      title: Partagé avec
+      last_notified: Notifié⋅e(s)
+      not_notified: Pas encore notifié⋅e(s)
+      no_members: "Ceci n'a pas encore été partagé !"
     group_form:
+      search_placeholder: Chercher des personnes...
+      modal_title: Sélectionner des membres du groupe
       members_count: '{{count}} personnes seront notifiées'
+    flash:
+      success: '{{count}} notifications envoyées'
   action_dock:
     react: Ajouter votre réaction
     add_resource: Ajouter un document
@@ -391,8 +450,12 @@ fr:
     add_comment: Ajouter un commentaire
     copy_url: Copier l’URL
     edit_thread: Modifier le contexte
+    announce_thread: Inviter des personnes dans votre discussion
+    announce_thread_active: (Personne n'a encore été invité)
     translate_thread: Afficher une traduction automatique du contexte
     edit_poll: Modifier le sondage
+    announce_poll: Inviter des personnes au vote
+    announce_poll_active: (Personne n'a encore été invité)
     translate_poll: Afficher une traduction automatique du sondage
     edit_stance: Changer votre vote
     translate_stance: Afficher une traduction automatique du vote
@@ -401,11 +464,15 @@ fr:
     reply_to_comment: Répondre
     translate_comment: Afficher une traduction automatique du commentaire
     edit_outcome: Modifier le résultat
+    announce_outcome: Notifier des personnes de ce résultat
+    announce_outcome_active: (Personne n'a encore été notifié de ce résultat)
     translate_outcome: Afficher une traduction automatique du résultat
     show_history: Montrer l’historique des modifications
     pin_thread: Mettre en avant la discussion
     unpin_thread: Ne plus mettre en avant la discussion
     comment_copied: URL du commentaire copiée
+    poll_copied: URL de la décision copiée
+    discussion_copied: URL de la discussion copiée
   cover_photo_form:
     aria_label: 'Changer la forme de la photo de couverture'
     heading: 'Nouvelle photo de couverture'
@@ -435,11 +502,17 @@ fr:
       membership_requested: 'Vous avez demandé l’accès à {{group}}'
   revision_history_modal:
     aria_label: Historique de révision
-    thread_header: Historique de révision du contexte de la discussion
-    comment_header: Historique de révision du commentaire
+    discussion_header: Historique des modifications de la discussion
+    comment_header: Historique des modifications du commentaire
+    poll_header: Historique des modifications du sondage
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited_by: 'Édité par <strong>{{name}}</strong>'
     posted: Posté
+    original_text: Texte initial
+    current_revision: Dernier
+    closing_at_changed: "Fermeture prévue à {{time}}"
+    private_changed: "Visibilité passée à {{private}}"
+    group_id_changed: "Déplacé vers {{name}}"
   reactions_input:
     add_your_reaction: Ajouter votre réaction
   reactions_display:
@@ -473,6 +546,7 @@ fr:
     open_discussions: 'Discussions en cours'
     closed_discussions: 'Discussions closes'
     discussions_placeholder: 'Une discussion est l’endroit où tout le monde peut discuter d’un sujet et prendre des décisions collectives.'
+    members: '{{count}} membres'
     members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
     member_options: Options des membres
     see_all_members: 'Voir les {{count}} membres'
@@ -691,19 +765,19 @@ fr:
   membership_remove_modal:
     invitation:
       title: Annuler l’invitation
+      message: Êtes-vous certain de vouloir annuler cette invitation à {{name}} ?
       flash: Invitation annulée
       submit: Annuler l’invitation
     membership:
       title: Supprimer le membre
+      message: Êtes-vous certain⋅e de vouloir retirer {{name}} ?
+      impact_for_group: Cela leur retirera l'accès à toutes les discussions et décisions dans le groupe.
+      impact_for_subgroups: Cela leur retirera aussi l'accès à tous les sous-groupes de ce groupe.
+      flash: Membre supprimé
       submit: Supprimer le membre
   memberships_panel:
     add_coordinator: Nommer coordinateur
     remove_coordinator: Retirer des coordinateurs
-  remove_membership_form:
-    aria_label: 'Supprimer le membre'
-    title: 'Supprimer le membre'
-    question: 'Êtes-vous certain de vouloir retirer {{name}} de {{group}} ?'
-    submit: 'Supprimer'
   pending_invitations_card:
     heading: Invitations en attente
     email: Adresse e-mail
@@ -724,6 +798,7 @@ fr:
     location_field: 'Lieu: {{value}}'
     locale_field: 'Langue: {{value}}'
     online_field: 'En ligne: {{value}}'
+    invited: '{{value}} invité'
   contact_request_form:
     modal_title: "Envoyer un courriel à {{name}}"
     message_placeholder: Présentez-vous et dites-nous pourquoi vous voulez entrer en relation.
@@ -796,6 +871,7 @@ fr:
     on_participation_label: Notification sur les discussions auxquelles je participe
     on_participation_description: "Lorsque vous participez à une discussion, toute activité ultérieure vous sera immédiatement envoyée par courriel."
     announcement_label: Nouvelles discussions et décisions
+    announcement_description: "Vous recevrez un courriel à chaque nouvelle discussion ou proposition annoncée par un membre dans l'un de vos groupes."
     mentioned_label: Mentions
     mentioned_description: "Lorsque quelqu’un veut attirer votre attention, il vous @mentionnera. Nous vous recommandons de laisser ce paramètre activé, afin que vous receviez un courriel dans ce cas."
     update_settings: Sauvegarder les modifications
@@ -1077,6 +1153,7 @@ fr:
     message: Message
     results: Résultats
     responses: Réponses
+    close_poll_type: Fermer {{pollType}}
     totals: Totaux
     vote: Vote
     votes: Votes
@@ -1111,6 +1188,8 @@ fr:
     no_polls: Aucune décision précédente trouvée
     count: "Voir tout : ({{count}}) décisions"
   poll_common_action_panel:
+    anonymous: Les votes seront anonymes
+    anonymous_until_close: Les votes seront anonymes jusqu'à la clôture du sondage
     unable_to_vote: Vous n’êtes pas autorisé à voter dans cette décision.
   current_polls_card:
     title: Décisions en cours
@@ -1141,12 +1220,22 @@ fr:
   poll_common_settings:
     multiple_choice:
       title: Choix multiple
+      helptext_on: Si coché, les participants pourront choisir plusieurs options.
     anyone_can_participate:
       title: Tout le monde peut participer
+      helptext_on: Si coché, n'importe qui disposant du lien de ce sondage pourra participer.
     notify_on_participate:
       title: M’avertir lorsque des gens participent
+      helptext_on: Si coché, vous serez averti⋅e lorsque quelqu’un participe.
+    anonymous:
+      title: Participants anonymes
+      helptext_on: Si coché, le nom du participant ne sera pas affiché sur sa réponse.
+    deanonymize_after_close:
+      title: Montrer les votes après la fermeture du sondage
+      helptext_on: Si coché, les votes ne seront plus anonymes après la fermeture du sondage
     voter_can_add_options:
       title: Permettre aux participants d’ajouter des options
+      helptext_on: Si coché, les participants peuvent ajouter leurs propres options en votant.
     can_respond_maybe:
       title: Les participants peuvent répondre « si besoin »
       helptext_on: Les participants peuvent indiquer « si besoin » sur des horaires
@@ -1295,6 +1384,7 @@ fr:
     details_placeholder: Partagez toutes les informations utiles pour participer
     add_option_placeholder: Ajouter une option
     dots_per_person: Points par personne
+    dots_per_person_helptext: Le nombre de points dont disposent chaque participant⋅e
     dot_vote_created: Vote à points créé
     dot_vote_updated: Vote à points mis à jour
   poll_meeting_form:
@@ -1468,9 +1558,12 @@ fr:
         Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
         Si vous préférez utiliser un mot de passe pour vous connecter à l’avenir, vous pouvez le définir sur votre page de profil.
     login_link_helptext_with_password: "Entrez votre mot de passe, ou connectez-vous par courriel."
+    sign_up_helptext: "Saisissez le nom sous lequel vous voulez intervenir, et nous vous enverrons un lien de connexion."
+    sign_up_helptext_with_token: "Saisissez le nom sous lequel vous voulez intervenir, et cliquez sur Se connecter pour démarrer."
     oauth_confirm_helptext: "Confirmez les informations ci-dessous et nous vous enverrons un lien de connexion."
     name_required: Entrez un nom
     account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé ! Merci de nous contacter pour réactiver votre compte utilisateur.
+    welcome: Enchanté !
     welcome_back: Content de vous revoir, {{name}} !
     login_link: Recevoir un courriel de connexion
     set_password: Définir un mot de passe

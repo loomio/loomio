@@ -1,0 +1,26 @@
+.revision-history-content {
+  margin-top: 16px;
+}
+
+.revision-history-modal__version {
+  max-height: 440px;
+  overflow: auto;
+}
+
+.revision-history-content--header {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.revision-history-content--markdown {
+  table.markdown { width: 100% }
+  tr:not(:last-child) td { padding-bottom: 16px; }
+  td {
+    width: 50%;
+    &:first-child {
+      border-right: 1px solid $border-color;
+      padding-right: 8px;
+    }
+    &:last-child { padding-left: 8px; }
+  }
+}

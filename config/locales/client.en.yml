@@ -344,7 +344,10 @@ en:
   membership_dropdown:
     make_coordinator: 'Make coordinator'
     demote_coordinator: 'Demote coordinator'
-    remove_membership: 'Remove from group'
+    remove_from:
+      discussion: "Remove from thread"
+      group: "Remove from group"
+      poll: 'Remove from {{pollType}}'
     cancel_invitation: Cancel invitation
 
   start_menu:
@@ -539,11 +542,17 @@ en:
 
   revision_history_modal:
     aria_label: Revision history
-    thread_header: Thread context revision history
-    comment_header: Comment edit revision history
+    discussion_header: Discussion revision history
+    comment_header: Comment revision history
+    poll_header: Poll revision history
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     posted: Posted
+    original_text: Original
+    current_revision: Latest
+    closing_at_changed: "closing time set to {{time}}"
+    private_changed: "privacy set to {{private}}"
+    group_id_changed: "moved to {{name}}"
 
   reactions_input:
     add_your_reaction: Add your reaction
@@ -828,19 +837,15 @@ en:
       submit: Cancel invitation
     membership:
       title: Remove member
-      message: Are you sure you want to remove {{name}} from the group?
+      message: Are you sure you want to remove {{name}}?
+      impact_for_group: This will remove their access to all threads and decisions in the group.
+      impact_for_subgroups: This will also remove their access to all subgroups of this group.
       flash: Member removed
       submit: Remove member
 
   memberships_panel:
     add_coordinator: Make coordinator
     remove_coordinator: Demote coordinator
-
-  remove_membership_form:
-    aria_label: 'Remove member'
-    title: 'Remove member'
-    question: 'Are you sure you want to remove {{name}} from {{group}}?'
-    submit: 'Remove'
 
   pending_invitations_card:
     heading: Pending invitations

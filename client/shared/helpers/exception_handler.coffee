@@ -21,6 +21,7 @@ if AppConfig.sentry_dsn
       'Script error.'
       'miscellaneous_bindings'
       'canonicalUrl'
+      'TypeError: s.outlets[Object.keys(...)[0]]'
     ]
     ignoreUrls: [
       /graph\.facebook\.com/i

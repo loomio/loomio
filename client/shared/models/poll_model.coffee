@@ -63,6 +63,7 @@ module.exports = class PollModel extends BaseModel
     @hasMany   'pollOptions'
     @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
     @hasMany   'pollDidNotVotes'
+    @hasMany   'versions', sortBy: 'createdAt'
 
   discussionGuestGroupId: ->
     @discussion().guestGroupId if @discussion()
@@ -167,3 +168,6 @@ module.exports = class PollModel extends BaseModel
   removeOrphanOptions: ->
     _.each @pollOptions(), (option) =>
       option.remove() unless _.includes(@pollOptionNames, option.name)
+
+  edited: ->
+    @versionsCount > 1
