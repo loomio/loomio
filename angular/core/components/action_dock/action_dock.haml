@@ -1,8 +1,0 @@
-.action-dock.lmo-flex{layout: "row"}
-  .action-dock__action{ng-repeat: "action in actions", ng-if: "action.canPerform()"}
-    %reactions_input{class: "action-dock__button--react", model: "model", ng-if: "action.name == 'react'"}
-    %md-button.md-button--tiny{class: "action-dock__button--{{action.name}}", ng-if: "action.name != 'react'", ng-click: "action.perform()"}
-      .sr-only{translate: "action_dock.{{ action.name }}"}
-      %i.mdi{class: "{{ action.icon }}"}
-      %md-tooltip{md-delay: "500"}
-        %span{translate: "action_dock.{{ action.name }}"}
