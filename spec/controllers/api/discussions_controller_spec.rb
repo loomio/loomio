@@ -728,7 +728,7 @@ describe API::DiscussionsController do
       dr = DiscussionReader.last
       expect(dr.user).to eq user
       expect(dr.discussion).to eq d
-      expect(dr.read_ranges_string).to eq '5'
+      expect(dr.read_ranges_string).to eq '5-5'
     end
 
     it 'does not allow non admins to fork a thread' do

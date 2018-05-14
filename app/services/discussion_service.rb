@@ -74,8 +74,8 @@ class DiscussionService
     source = discussion.forked_items.first.discussion
 
     return false unless event = create(discussion: discussion, actor: actor)
-
-    EventBus.broadcast('discussion_fork', event.eventable, actor)
+    
+    EventBus.broadcast('discussion_fork', source, event.eventable, actor)
     Events::DiscussionForked.publish!(event.eventable, source)
   end
 
