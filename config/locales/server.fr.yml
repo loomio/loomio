@@ -10,9 +10,10 @@ fr:
     return_home: Retourner à l'accueil
     not_found: 404 fichier non trouvé.
     messages:
-      email: Ceci n'est pas une adresse e-mail correcte
+      email: Adresse e-mail non valide
       spoofed_media_type: Les contenus de ce fichier ne correspondent pas à son nom
   user:
+    placeholder_name: "Utilisateur invité (%{hostname})"
     error:
       recaptcha: "Nous n'avons pas pu confirmer que vous n'êtes pas un robot. Merci de réessayer!"
       bad_login: "Nous n'avons pas pu vous connecter. Merci de réessayer!"
@@ -149,16 +150,20 @@ fr:
       subject: "%{who} a demandé à rejoindre %{which_group}"
       view_group: Vous pouvez accepter ou rejeter cette demande
       button_text: Voir la demande
+  announcement_count_emails: "%{count} courriels"
   email_actions:
     unfollowed_discussion: Vous avez désactivé les notifications pour cette discussion.
   discussion_mailer:
+    resend: 'RAPPEL : %{actor} attend que vous rejoignez %{discussion}'
     new_discussion:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> a démarré une discussion: %{discussion}"
     discussion_edited:
       subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> a modifié la discussion: %{discussion}"
     discussion_announced:
       subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> vous a invité à rejoindre : %{discussion}"
     new_comment:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> a ajouté un commentaire sur: %{discussion}"
@@ -292,6 +297,8 @@ fr:
           C'est la même chose pour les images, mais précédé d'un point d'exclamation.
 
           ![logo loomio](https://i.imgur.com/Fvtworb.png)
+  group_mailer:
+    resend: 'RAPPEL : %{member} attend que vous rejoignez %{group_name}'
   poll_mailer:
     resend: 'RAPPEL : %{actor} attend votre vote sur %{title}'
     common:
@@ -324,6 +331,7 @@ fr:
         outcome_announced: '%{actor} a partagé le résultat de la discussion :%{title}'
         stance_created: "%{actor} a voté sur : %{title}"
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> a démarré une proposition'
         poll_edited: '<strong>%{actor}</strong> a édité la proposition'
@@ -334,6 +342,7 @@ fr:
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de décision.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de décision.'
         stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
@@ -350,6 +359,7 @@ fr:
         outcome_announced: '%{actor} a partagé un résultat de sondage : %{title}'
         stance_created: "%{actor} a voté sur : %{title}"
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
       header:
         poll_created: ' <strong>%{actor}</strong> a démarré un sondage'
         poll_edited: '<strong>%{actor}</strong> a modifié un sondage'
@@ -362,12 +372,14 @@ fr:
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de sondage.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de sondage.'
         stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
         poll_created: '%{actor} participe à une vérification : %{title}'
         poll_edited: '%{actor} a modifié la vérification : %{title}'
+        poll_announced: '%{actor} vous a invité à participer : %{title}'
         poll_closing_soon: 'Plus que 24 heures pour participer à la vérification : %{title}'
         poll_closing_soon_author: 'Votre vérification se termine dans 24 heures : %{title}'
         poll_expired: "Vérification terminée : %{title}"
@@ -376,9 +388,11 @@ fr:
         outcome_announced: '%{actor} a partagé un résultat: %{title}'
         stance_created: "%{actor} a participé à: %{title}"
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> participe à la vérification'
         poll_edited: '<strong>%{actor}</strong> a modifié la vérification'
+        poll_announced: '<strong>%{actor}</strong> vous a invité à participer'
         poll_closing_soon: 'La vérification de <strong>%{actor}</strong> se termine dans 24 heures.'
         poll_closing_soon_author: 'Votre vérification se termine dans 24 heures, c''est le moment d''encourager les autres à participer ou de repousser la clôture si besoin.'
         poll_expired: "La vérification de <strong>%{actor}</strong> est terminé : %{title}"
@@ -386,6 +400,7 @@ fr:
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat.'
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     dot_vote:
@@ -402,6 +417,7 @@ fr:
         outcome_announced: '%{actor} a partagé un résultat: %{title}'
         stance_created: "%{actor} a voté sur : %{title}"
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> a démarré un vote à points'
         poll_edited: '<strong>%{actor}</strong> a modifié un vote à points'
@@ -414,6 +430,7 @@ fr:
         outcome_created: '<strong>%{actor}</strong> a partagé un résultat de vote à points.'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de vote à points.'
         stance_created: "<strong>%{actor}</strong> a voté sur : %{title}"
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
@@ -431,6 +448,7 @@ fr:
         outcome_announced: '%{actor} a partagé un résultat: %{title}'
         stance_created: '%{actor} a participé à: %{title}'
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
       header:
         poll_created: ' <strong>%{actor}</strong> a démarré un sondage horaire'
         poll_edited: '<strong>%{actor}</strong> a modifié le sondage horaire'
@@ -444,6 +462,7 @@ fr:
         outcome_created_author: 'Vous avez partagé un résultat de sondage horaire : %{title}'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de sondage horaire.'
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     ranked_choice:
@@ -460,6 +479,7 @@ fr:
         outcome_created_author: 'Vous avez partagé un résultat: %{title}'
         stance_created: '%{actor} a participé à: %{title}'
         stance_created_author: "Merci de vérifier votre vote sur :%{title}"
+        user_mentioned: '%{actor} vous a mentionné dans : %{title}'
       header:
         poll_created: '<strong>%{actor}</strong> a démarré un classement par préférence'
         poll_edited: '<strong>%{actor}</strong> a modifié un classement par préférence'
@@ -473,6 +493,7 @@ fr:
         outcome_created_author: 'Vous avez partagé un résultat de classement par préférence : %{title}'
         outcome_announced: '<strong>%{actor}</strong> a partagé un résultat de classement par préférence.'
         stance_created: "<strong>%{actor}</strong> a participé à: %{title}"
+        user_mentioned: '<strong>%{actor}</strong> vous a mentionné dans : %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: Commentaire par %{comment_author}
@@ -497,6 +518,11 @@ fr:
     meeting:
       title: "Quand devons-nous tenir notre prochaine réunion d'équipe?"
       details: C'est l'heure de notre réunion d'équipe bi-hebdomadaire, idéalement nous nous réunirons avant la fin de la semaine prochaine. Quel créneau arrange tout le monde?
+  notified:
+    no_matches_found: "Pas de résultats pour « %{query} »"
+    group_users: "(%{count} personnes)"
+    group_title: "%{name} (%{count} personnes)"
+    public_title: Public (pour tout le monde disposant du lien)
   poll_unsubscribe:
     title: Vous êtes désinscrit⋅e de %{title}
     helptext: Vous ne recevrez plus de courriel concernant cette décision

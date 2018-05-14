@@ -3,11 +3,19 @@ require 'rails_helper'
 describe PollOption do
   describe 'display_name' do
 
+    describe 'proposal' do
+      let(:poll_option) { build :poll_option, poll: build(:poll_proposal) }
+      it 'returns the humanized option name' do
+        poll_option.name = 'agree'
+        expect(poll_option.display_name).to eq 'Agree'        
+      end
+    end
+
     describe 'normal poll' do
       let(:poll_option) { build :poll_option, poll: build(:poll) }
-      it 'returns the humanized option name' do
+      it 'returns the option name' do
         poll_option.name = "letsdoit!"
-        expect(poll_option.display_name).to eq "Letsdoit!"
+        expect(poll_option.display_name).to eq "letsdoit!"
       end
     end
 

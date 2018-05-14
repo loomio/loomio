@@ -12,6 +12,14 @@ module EmailHelper
     underline:            true
   ].freeze
 
+  def stance_icon_for(poll, stance_choice)
+    case stance_choice&.score.to_i
+      when 0 then "disagree"
+      when 1 then "abstain"
+      when 2 then "agree"
+    end if poll.has_score_icons
+  end
+
   def render_rich_text(text)
     return "" unless text
     Redcarpet::Render::SmartyPants.render(emojify markdownify text).html_safe

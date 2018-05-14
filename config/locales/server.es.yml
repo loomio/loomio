@@ -9,7 +9,6 @@ es:
   errors:
     not_found: 404 archivo no encontrado
     messages:
-      email: No es una dirección de email válida
       spoofed_media_type: El contenido de ese archivo no se asemeja al nombre del mismo
   user:
     error:

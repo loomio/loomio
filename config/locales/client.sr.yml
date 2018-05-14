@@ -195,11 +195,10 @@ sr:
     messages:
       membership_requested: 'Zahtevali ste članstvo u {{group}}'
   revision_history_modal:
-    thread_header: Revizija istorije konteksta niti
-    comment_header: Revizija istorije menjanja komentara
     started_by: 'Pokrenuto od <strong>{{name}}</strong>'
     edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
     posted: Postavljeno
+    current_revision: Poslednje
   group_page:
     messages:
       privacy:

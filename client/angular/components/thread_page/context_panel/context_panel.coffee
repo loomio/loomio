@@ -17,7 +17,6 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard'
   replace: true
   templateUrl: 'generated/components/thread_page/context_panel/context_panel.html'
   controller: ['$scope', ($scope) ->
-
     $scope.status = ->
       return 'pinned' if $scope.discussion.pinned
 
@@ -68,6 +67,11 @@ angular.module('loomioApp').directive 'contextPanel', ['$rootScope', 'clipboard'
       icon: 'mdi-pin-off'
       canPerform: -> AbilityService.canUnpinThread($scope.discussion)
       perform:    -> ThreadService.unpin($scope.discussion)
+    ,
+      name: 'show_history',
+      icon: 'mdi-history'
+      canPerform: -> $scope.discussion.edited()
+      perform:    -> ModalService.open 'RevisionHistoryModal', model: -> $scope.discussion
     ,
       name: 'edit_thread'
       icon: 'mdi-pencil'

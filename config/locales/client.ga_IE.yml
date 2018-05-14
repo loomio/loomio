@@ -226,6 +226,7 @@ ga_IE:
       membership_requested: 'D''iarr tú cead bheith i do chomhalta de {{group}}'
   revision_history_modal:
     posted: Foilsithe
+    current_revision: Is déanaí
   group_page:
     messages:
       privacy:
@@ -342,10 +343,6 @@ ga_IE:
     membership:
       title: Bain comhalta
       submit: Bain comhalta
-  remove_membership_form:
-    aria_label: 'Bain comhalta'
-    title: 'Bain comhalta'
-    submit: 'Bain'
   pending_invitations_card:
     heading: Cuirí ar feitheamh
     email: Ríomhphost

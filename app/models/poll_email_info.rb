@@ -20,14 +20,6 @@ class PollEmailInfo
     @action_name = action_name
   end
 
-  def stance_icon_for(stance_choice)
-    case stance_choice&.score.to_i
-      when 0 then "disagree"
-      when 1 then "abstain"
-      when 2 then "agree"
-    end if @poll.has_score_icons
-  end
-
   def actor
     @actor ||= if @eventable.is_a?(Stance)
       @eventable.participant_for_client
