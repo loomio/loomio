@@ -95,6 +95,7 @@ Loomio::Application.routes.draw do
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection
       post :deactivate, on: :collection
+      post :reactivate, on: :collection
       post :save_experience, on: :collection
     end
 

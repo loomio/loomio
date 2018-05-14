@@ -32,6 +32,7 @@ class Dev::NightwatchController < Dev::BaseController
     :setup_thread_missed_yesterday,
     :setup_group_invitation_ignored,
     :setup_discussion_invitation_ignored,
-    :setup_poll_invitation_ignored
+    :setup_poll_invitation_ignored,
+    :setup_user_reactivation_email
   ]
 end
