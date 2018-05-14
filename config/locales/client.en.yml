@@ -1708,8 +1708,9 @@ en:
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in: Sign in
     sign_in_as: Sign in as {{name}}
+    continue_with_provider: Continue with {{provider}}
+    or_enter_your_email: Or, enter your email address to continue
     invitation_required: You need an invitation to create an account.
-    choose_an_account: "Sign in via a third party, or enter your email address to continue."
     invitation_required: Account not found. New accounts are by invitation only.
     more_providers: More
     email_not_present: An email address is required
