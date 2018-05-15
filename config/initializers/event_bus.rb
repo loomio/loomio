@@ -111,6 +111,7 @@ EventBus.configure do |config|
     Event.reorder_with_parent_id(target.created_event.id)
 
     target.update_sequence_info!
+    target.update_items_count
     #the author has by default the ranges of the target discussion
     target.discussion_readers.where(user:target.author).update_all(read_ranges_string: target.ranges_string)
 
