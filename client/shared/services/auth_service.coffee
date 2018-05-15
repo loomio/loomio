@@ -22,11 +22,12 @@ module.exports = new class AuthService
   signUp: (user) ->
     Records.registrations.build(
       _.pick(user, ['email', 'name', 'recaptcha', 'legalAccepted'])
-    ).save().then ->
+    ).save().then (data) ->
       if user.hasToken
         hardReload()
       else
         user.sentLoginLink = true
+      data
 
   confirmOauth: ->
     Records.registrations.remote.post('oauth')

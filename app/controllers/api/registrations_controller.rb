@@ -7,24 +7,14 @@ class API::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     if resource.save
       save_detected_locale(resource)
-      if pending_membership_is_present?
+      if pending_membership_is_present? or pending_identity_is_present?
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
+        render json: { success: :ok, signed_in: true }
       else
         LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
+        render json: { success: :ok }
       end
-      render json: { success: :ok }
-    else
-      render json: { errors: resource.errors }, status: 422
-    end
-  end
-
-  def oauth
-    resource = user_from_pending_identity.tap(&:save)
-    if resource.persisted?
-      sign_in resource
-      flash[:notice] = t(:'devise.sessions.signed_up')
-      render json: { success: :ok }
     else
       render json: { errors: resource.errors }, status: 422
     end
@@ -44,6 +34,11 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def user_from_pending_identity
     User.new(name: pending_identity&.name, email: pending_identity&.email)
+  end
+
+  def pending_identity_is_present?
+    pending_identity.present? &&
+    pending_identity.email == params[:user][:email]
   end
 
   def pending_membership_is_present?

@@ -1724,7 +1724,7 @@ en:
     login_with_token: You're all set! Click the link below to log in.
     login_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.
-      If you'd like to use a password to log in in the future, you can set one from your profile page.
+      If you'd like to use a password in the future, you can set one from your profile page.
     login_link_helptext_with_password: "Enter your password, or sign in via email."
     sign_up_helptext: "Please complete this form to create a user account"
     i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
@@ -1739,9 +1739,9 @@ en:
     set_password_link: Set a password
 
     hello: "Hello, {{name}}!"
-    new_to_loomio: New to {{site_name}}? Create a new account
+    new_to_loomio: First time on {{site_name}}? Create an account
     create_account: Create account
-    already_a_user: Already have a {{site_name}} account? Enter your email address to link this account to yours
+    already_a_user: Used {{site_name}} before? Enter your existing account's email address to link it up
     link_accounts: Link accounts
 
     check_your_email: Check your email!

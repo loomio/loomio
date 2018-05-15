@@ -14,7 +14,7 @@
       %a.lmo-pointer{ng-click: "signInAndSetPassword()", translate: "auth_form.set_password_link"}
 
   .auth-signin-form__no-token{ng-if: "!user.hasToken"}
-    %p.lmo-hint-text
+    %p
       %span{translate: "auth_form.login_link_helptext", ng-if: "!user.hasPassword"}>
       %span{translate: "auth_form.login_link_helptext_with_password", ng-if: "user.hasPassword"}>
 

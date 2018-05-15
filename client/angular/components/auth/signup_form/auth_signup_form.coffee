@@ -3,6 +3,7 @@ EventBus    = require 'shared/services/event_bus'
 AuthService = require 'shared/services/auth_service'
 I18n        = require 'shared/services/i18n'
 
+{ hardReload }    = require 'shared/helpers/window'
 { submitOnEnter } = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'authSignupForm', ->
@@ -26,7 +27,10 @@ angular.module('loomioApp').directive 'authSignupForm', ->
         EventBus.emit $scope, 'processing'
         $scope.user.name           = $scope.vars.name
         $scope.user.legalAccepted  = $scope.vars.legalAccepted
-        AuthService.signUp($scope.user).finally -> EventBus.emit $scope, 'doneProcessing'
+        AuthService.signUp($scope.user).then (data) ->
+          hardReload() if data.signed_in
+        .finally ->
+          EventBus.emit $scope, 'doneProcessing'
       else
         $scope.user.errors =
           name: [I18n.t('auth_form.name_required')]
