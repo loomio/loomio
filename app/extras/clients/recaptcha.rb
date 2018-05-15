@@ -1,6 +1,7 @@
 class Clients::Recaptcha < Clients::Base
   def validate(recaptcha)
-    post "siteverify", params: { response: recaptcha }
+    return true unless self.key
+    post("siteverify", params: { response: recaptcha }).success
   end
 
   private

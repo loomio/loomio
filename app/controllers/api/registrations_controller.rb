@@ -1,5 +1,7 @@
 class API::RegistrationsController < Devise::RegistrationsController
   include LocalesHelper
+  include ErrorRescueHelper
+
   before_action :configure_permitted_parameters
   before_action :permission_check, only: :create
 
@@ -37,7 +39,6 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.require(:recaptcha) if !pending_membership_is_present? && ENV['RECAPTCHA_APP_KEY']
       u.permit(:name, :email, :recaptcha)
     end
   end

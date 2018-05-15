@@ -11,7 +11,8 @@
     %label{translate: "auth_form.name"}
     %input.lmo-primary-form-input{type: "text", md-autofocus: "true", placeholder: "{{auth_form.name_placeholder | translate}}", ng-model: "vars.name", ng-required: "true"}
     %validation_errors{subject: "user", field: "name"}
-
+    %validation_errors{subject: "user", field: "recaptcha"}
+    
   %div{vc-recaptcha: "true", key: "recaptchaKey", ng-if: "recaptchaKey && !user.hasToken", ng-model: "user.recaptcha"}
 
   .lmo-md-action

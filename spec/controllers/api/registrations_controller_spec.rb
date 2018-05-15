@@ -34,11 +34,6 @@ describe API::RegistrationsController do
       expect(u.email).to eq registration_params[:email]
     end
 
-    it 'does not create a new user if recaptcha is not present' do
-      registration_params[:recaptcha] = ''
-      expect { post :create, params: { user: registration_params } }.to raise_error { ActionController::ParameterMissing }
-    end
-
     it 'does not create a new user if the recaptcha is invalid' do
       Clients::Recaptcha.any_instance.stub(:validate) { false }
       expect { post :create, params: { user: registration_params } }.to_not change { User.count }

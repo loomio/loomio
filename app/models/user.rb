@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   extend  NoSpam
   no_spam_for :name
-  
+
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
     helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
@@ -52,7 +52,7 @@ class User < ApplicationRecord
 
   validates_length_of :password, minimum: 8, allow_nil: true
   validates :password, nontrivial_password: true, allow_nil: true
-  validate  :ensure_recaptcha, if: :recaptcha
+  validate  :ensure_recaptcha
 
   has_many :admin_memberships,
            -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
