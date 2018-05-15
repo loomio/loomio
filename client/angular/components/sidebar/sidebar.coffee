@@ -48,9 +48,10 @@ angular.module('loomioApp').directive 'sidebar', ['$mdMedia', '$mdSidenav', ($md
     $scope.unreadThreadCount = ->
       InboxService.unreadCount()
 
+    $scope.canLockSidebar = -> $mdMedia("gt-sm")
+
     $scope.sidebarItemSelected = ->
-      if !$mdMedia("gt-md")
-        $mdSidenav('left').close()
+      $mdSidenav('left').close() if !$scope.canLockSidebar()
 
     $scope.groups = ->
       _.filter Session.user().groups().concat(Session.user().orphanParents()), (group) ->
