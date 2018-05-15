@@ -738,10 +738,6 @@ describe API::DiscussionsController do
       dr2 = DiscussionReader.find_by(user: another_user, discussion: d)
       expect(dr2).to be_present
       expect(dr2.read_ranges_string).to eq '2-2,5-5'
-
-      after_event = create :event, discussion: d, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 6
-
-
     end
 
 

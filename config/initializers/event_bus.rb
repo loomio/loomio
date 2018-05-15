@@ -114,6 +114,7 @@ EventBus.configure do |config|
     #the author has by default the ranges of the target discussion
     target.discussion_readers.where(user:target.author).update_all(read_ranges_string: target.ranges_string)
 
+    #other participants have readers created for them based on the intersection of thier prior range and the new discussions ranges
     readers = source.discussion_readers.where.not(user:target.author).map do |reader|
       target.discussion_readers.build(user: reader.user, read_ranges: RangeSet.intersect_ranges(target.ranges, reader.read_ranges))
     end

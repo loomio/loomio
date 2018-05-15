@@ -40,23 +40,11 @@ class RangeSet
   def self.intersect_ranges(ranges1, ranges2)
     set1 = ranges_to_list(ranges1)
     set2 = ranges_to_list(ranges2)
-    intersected = []
-
-    set1.each do |id|
-      intersected << id if set2.include? id
-    end
-
-    ranges_from_list(intersected)
+    ranges_from_list(set1.select { |id| set2.include? id })
   end
 
   def self.ranges_to_list(ranges)
-    ids = []
-
-    ranges.each do |range|
-      ids << (range[0]..range[1]).to_a
-    end
-
-    ids.flatten
+    ranges.map {|range| (range[0]..range[1]).to_a}.flatten
   end
 
   def self.subtract_range(whole, part)
