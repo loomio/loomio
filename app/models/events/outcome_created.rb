@@ -22,6 +22,6 @@ class Events::OutcomeCreated < Event
   end
 
   def notify_author?
-    announcement && poll.author_receives_outcome
+    poll.author_receives_outcome
   end
 end

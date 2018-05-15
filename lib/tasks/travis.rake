@@ -20,7 +20,7 @@ namespace :travis do
     system("wget http://localhost:3000/")
     # ok now start running the tests
     puts "Starting to run nightwatch..."
-    system("cd client && gulp nightwatch:core --retries 2")
+    system("cd client && gulp nightwatch:core --retries 3")
     raise "e2e failed!" unless $?.exitstatus == 0
   end
 

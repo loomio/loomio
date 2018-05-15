@@ -319,11 +319,10 @@ da:
       membership_requested: 'Du har anmodet om at blive medlem af {{group}}'
   revision_history_modal:
     aria_label: Versionshistorik
-    thread_header: Debat beskrivelse versionshistorik
-    comment_header: Kommenter redigering af versionshistorik
     started_by: 'Oprette af <strong>{{name}}</strong>'
     edited_by: 'Redigeret af <strong>{{name}}</strong>'
     posted: Gemt
+    current_revision: Seneste
   group_page:
     messages:
       privacy:
@@ -519,11 +518,6 @@ da:
     membership:
       title: Slet medlem
       submit: Slet medlem
-  remove_membership_form:
-    aria_label: 'Slet medlem'
-    title: 'Slet medlem'
-    question: 'Er du sikker på at du ønsker at slette {{name}} fra {{group}}?'
-    submit: 'Slet'
   pending_invitations_card:
     heading: Afventende invitationer
     email: Email

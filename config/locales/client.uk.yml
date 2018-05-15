@@ -418,11 +418,10 @@ uk:
       membership_requested: 'У вас є запити на приєднання до {{group}}'
   revision_history_modal:
     aria_label: Історія змін
-    thread_header: Історія правок
-    comment_header: Історія правок
     started_by: '<strong>{{name}}</strong> розпочав(ла) обговорення'
     edited_by: '<strong>{{name}}</strong> відредагував(ла)'
     posted: Опубліковані
+    current_revision: Останній
   reactions_input:
     add_your_reaction: Додати вашу реакцію
   reactions_display:
@@ -652,11 +651,6 @@ uk:
   memberships_panel:
     add_coordinator: Зробити координатором
     remove_coordinator: Усунути координатора
-  remove_membership_form:
-    aria_label: 'Видалити учасника(цю)'
-    title: 'Видалити учасника(цю)'
-    question: 'Ви дійсно хочете видалити {{name}} з {{group}}?'
-    submit: 'Вилучити'
   pending_invitations_card:
     heading: Запрошення в очікуванні
     email: Електронна пошта

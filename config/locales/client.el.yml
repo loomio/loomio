@@ -269,11 +269,10 @@ el:
       membership_requested: 'Έχετε αιτηθεί εγγραφή μέλους στην ομάδα {{group}}'
   revision_history_modal:
     aria_label: Αναθεώρηση ιστορικού
-    thread_header: Το θέμα περιέχει αναθεώρηση ιστορικού
-    comment_header: Ιστορικό αναθεωρήσεων της επεξεργασίας του σχολίου
     started_by: 'Ξεκίνησε από <strong>{{name}}</strong>'
     edited_by: 'Επεξεργάστηκε από <strong>{{name}}</strong>'
     posted: Δημοσιεύθηκε
+    current_revision: Τελευταία
   group_page:
     messages:
       archive_group_success: 'Αυτή η ομάδα έχει απενεργοποιηθεί'
@@ -374,8 +373,6 @@ el:
     name_label: 'Όνομα'
     coordinator_label: 'Συντονιστής'
     remove_member_label: 'Αφαιρέστε'
-  remove_membership_form:
-    submit: 'Αφαίρεση'
   profile_page:
     profile: 'Προφίλ'
     picture_label: 'Εικόνα'

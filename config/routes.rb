@@ -1,5 +1,26 @@
 Loomio::Application.routes.draw do
+  if !Rails.env.production?
+    namespace :dev do
+      namespace :discussions do
+        get '/' => :index
+        get ':action'
+      end
 
+      namespace :polls do
+        get '/' => :index
+        get ':action'
+      end
+
+      namespace :nightwatch do
+        get '/' => :index
+        get ':action'
+      end
+
+      get '/', to: 'nightwatch#index'
+      get '/:action', to: 'nightwatch#:action'
+    end
+  end
+  
   mount ActionCable.server => '/cable'
 
   use_doorkeeper do
@@ -17,29 +38,9 @@ Loomio::Application.routes.draw do
 
   root to: 'root#index'
 
-  get '/gdpr', to: 'personal_data#gdpr'
   get '/personal_data', to: 'personal_data#index'
   get '/personal_data/:table', to: 'personal_data#show'
 
-  namespace :dev do
-    namespace :discussions do
-      get '/' => :index
-      get ':action'
-    end
-
-    namespace :polls do
-      get '/' => :index
-      get ':action'
-    end
-
-    namespace :nightwatch do
-      get '/' => :index
-      get ':action'
-    end
-
-    get '/', to: 'nightwatch#index'
-    get '/:action', to: 'nightwatch#:action'
-  end
 
   ActiveAdmin.routes(self)
 
@@ -100,6 +101,7 @@ Loomio::Application.routes.draw do
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection
       post :deactivate, on: :collection
+      post :reactivate, on: :collection
       post :save_experience, on: :collection
     end
 

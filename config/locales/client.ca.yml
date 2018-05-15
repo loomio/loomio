@@ -216,6 +216,7 @@ ca:
     started_by: 'Destacat per <strong>{{name}}</strong>'
     edited_by: 'Editat per <strong>{{name}}</strong>'
     posted: Publicat
+    current_revision: Últim
   reactions_display:
     you: "Tu"
   group_page:

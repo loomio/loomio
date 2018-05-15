@@ -8,7 +8,6 @@ cs:
         invalid: není platná hodnota
   errors:
     messages:
-      email: Není platnou e-mailovou adresou
       spoofed_media_type: Obsah tohoto souboru neodpovídá jeho názvu
   attachment:
     error:

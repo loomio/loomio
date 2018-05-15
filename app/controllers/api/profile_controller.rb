@@ -36,6 +36,11 @@ class API::ProfileController < API::RestfulController
     respond_with_resource
   end
 
+  def reactivate
+    service.reactivate(user:deactivated_user, actor: current_user)
+    respond_with_resource
+  end
+
   def save_experience
     raise ActionController::ParameterMissing.new(:experience) unless params[:experience]
     service.save_experience user: current_user, actor: current_user, params: { experience: params[:experience] }
@@ -54,6 +59,10 @@ class API::ProfileController < API::RestfulController
 
   def user_by_email
     resource_class.active.verified_first.find_by(email: params[:email]) || LoggedOutUser.new(email: params[:email])
+  end
+
+  def deactivated_user
+    resource_class.inactive.verified_first.find_by(email: params[:user][:email])
   end
 
   def current_user_params

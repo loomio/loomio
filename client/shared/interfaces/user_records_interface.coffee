@@ -16,6 +16,9 @@ module.exports = class UserRecordsInterface extends BaseRecordsInterface
   deactivate: (user) =>
     @remote.post 'deactivate', user.serialize()
 
+  reactivate: (user) =>
+    @remote.post 'reactivate', user.serialize()
+
   saveExperience: (experience) =>
     @remote.post 'save_experience', experience: experience
 

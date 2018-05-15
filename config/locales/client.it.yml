@@ -417,11 +417,10 @@ it:
       membership_requested: 'Hai richiesto di partecipare al gruppo {{group}}'
   revision_history_modal:
     aria_label: Registro delle revisioni
-    thread_header: Cronologia delle revisioni al contesto della discussione
-    comment_header: Cronologia delle revisioni ai commenti
     started_by: 'Iniziato da <strong>{{name}}</strong>'
     edited_by: 'Modificato da <strong>{{name}}</strong>'
     posted: Pubblicato
+    current_revision: Più recente
   reactions_input:
     add_your_reaction: Aggiungi la tua reazione
   reactions_display:
@@ -648,11 +647,6 @@ it:
   memberships_panel:
     add_coordinator: Inserisci come coordinatore
     remove_coordinator: Disinserisci come coordinatore
-  remove_membership_form:
-    aria_label: 'Rimuovi membro'
-    title: 'Rimuovi membro'
-    question: 'Sei sicuro/a di voler rimuovere {{name}} dal {{group}}?'
-    submit: 'Rimuovi'
   pending_invitations_card:
     heading: Inviti in sospeso
     email: Email

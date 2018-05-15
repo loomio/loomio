@@ -8,7 +8,6 @@ nl_NL:
         invalid: is geen geldige waarde
   errors:
     messages:
-      email: Geen geldig e-mailadres
       spoofed_media_type: De inhoud van dat bestand komt niet overeen met de bestandsnaam
   attachment:
     error:

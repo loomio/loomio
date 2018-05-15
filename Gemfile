@@ -18,7 +18,7 @@ gem 'coffee-rails'
 gem 'activeadmin', '~> 1.2.1'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
-gem 'redcarpet', '~> 3.3.4'
+gem 'redcarpet', '~> 3.4.0'
 gem 'paper_trail', '~> 8.1.2'
 gem 'delayed_job', '~> 4.1.3'
 gem 'delayed_job_active_record', '~> 4.1.2'
@@ -54,6 +54,7 @@ gem 'bootsnap', require: false
 gem 'redis-rails'
 gem 'skylight'
 gem 'google-cloud-translate'
+gem 'discourse-diff'
 
 group :development, :test do
   gem 'byebug'

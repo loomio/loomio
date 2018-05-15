@@ -46,6 +46,12 @@ class UserService
     EventBus.broadcast('user_deactivate', user, actor, params)
   end
 
+  def self.reactivate(user:, actor:)
+    actor.ability.authorize! :reactivate, user
+    EventBus.broadcast('user_reactivate', user, actor)
+    Events::UserReactivated.publish!(user)
+  end
+
   def self.set_volume(user:, actor:, params:)
     actor.ability.authorize! :update, user
     user.update!(default_membership_volume: params[:volume])

@@ -220,14 +220,14 @@ module.exports = {
     page.expectText('.auth-complete', 'Check your email')
   },
 
-  'prompts the user to contact us to reactivate': (test) => {
+  'can_reactivate_the_account': (test) =>  {
     page = pageHelper(test)
 
-    page.loadPath('setup_deactivated_user')
-    page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
-    page.click('.auth-email-form__submit')
-    page.expectText('.auth-inactive-form', 'has been deactivated!')
-    page.click('.auth-inactive-form__submit')
-    page.expectElement('.contact-form')
+    page.loadPath('setup_user_reactivation_email')
+    page.click('.base-mailer__button')
+    page.pause(2000)
+    page.click('.auth-signin-form__submit')
+    page.expectText('.flash-root__message', 'Signed in successfully')
   }
+
 }

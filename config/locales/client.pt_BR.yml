@@ -384,11 +384,10 @@ pt_BR:
       membership_requested: 'Você solicitou adesão ao(à) {{group}}'
   revision_history_modal:
     aria_label: Histórico de revisões
-    thread_header: Histórico de revisões do contexto do tópico
-    comment_header: Histórico de revisões de edições de comentários
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
     posted: Postado
+    current_revision: Último
   reactions_input:
     add_your_reaction: Adicione sua reação
   reactions_display:
@@ -598,11 +597,6 @@ pt_BR:
     membership:
       title: Remover membro
       submit: Remover membro
-  remove_membership_form:
-    aria_label: 'Remover membro'
-    title: 'Remover membro'
-    question: 'Você tem certeza que quer remover {{name}} de {{group}}?'
-    submit: 'Remover'
   pending_invitations_card:
     heading: Convites pendentes
     email: E-mail
