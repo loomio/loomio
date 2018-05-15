@@ -209,10 +209,3 @@ module.exports = class DiscussionModel extends BaseModel
 
   forkTarget: ->
     @forkedEvents()[0].model() if _.any @forkedEvents()
-
-  attributeForVersion: (attr, version) ->
-    return '' unless version
-    if version.changes[attr]
-      version.changes[attr][1]
-    else
-      @attributeForVersion(attr, @recordStore.versions.find(version.previousId))

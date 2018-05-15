@@ -105,21 +105,5 @@ EventBus.configure do |config|
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 
   # move events to new discussion on fork
-  config.listen('discussion_fork') do |source, target|
-    target.forked_items.update_all(discussion_id: target.id)
-    target.forked_items.where(depth: 1).update_all(parent_id: target.created_event.id)
-    Event.reorder_with_parent_id(target.created_event.id)
-
-    target.update_sequence_info!
-    target.update_items_count
-    #the author has by default the ranges of the target discussion
-    target.discussion_readers.where(user:target.author).update_all(read_ranges_string: target.ranges_string)
-
-    #other participants have readers created for them based on the intersection of thier prior range and the new discussions ranges
-    readers = source.discussion_readers.where.not(user:target.author).map do |reader|
-      target.discussion_readers.build(user: reader.user, read_ranges: RangeSet.intersect_ranges(target.ranges, reader.read_ranges))
-    end
-
-    DiscussionReader.import(readers)
-  end
+  config.listen('discussion_fork') { |source, target| DiscussionForker.new(source, target).fork! }
 end
