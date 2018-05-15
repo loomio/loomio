@@ -111,11 +111,11 @@ EventBus.configure do |config|
     Event.reorder_with_parent_id(target.created_event.id)
 
     target.update_sequence_info!
-
+    #the author has by default the ranges of the target discussion
     target.discussion_readers.where(user:target.author).update_all(read_ranges_string: target.ranges_string)
 
     readers = source.discussion_readers.where.not(user:target.author).map do |reader|
-      target.discussion_readers.build(user: reader.user, read_ranges_string:reader.read_ranges_string)
+      target.discussion_readers.build(user: reader.user, read_ranges: RangeSet.intersect_ranges(target.ranges, reader.read_ranges))
     end
 
     DiscussionReader.import(readers)
