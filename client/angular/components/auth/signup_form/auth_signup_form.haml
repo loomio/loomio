@@ -11,11 +11,11 @@
     %input.lmo-primary-form-input{type: "text", md-autofocus: "true", placeholder: "{{auth_form.name_placeholder | translate}}", ng-model: "vars.name", ng-required: "true"}
     %validation_errors{subject: "user", field: "name"}
 
-  .auth-signup-form__consent
+  .auth-signup-form__consent{ng-if: "termsUrl"}
     %md-checkbox{ng-model: "vars.legalAccepted"}
     %span{translate: "auth_form.i_accept", translate-values: "{termsUrl: termsUrl, privacyUrl: privacyUrl}"}
 
   %div{vc-recaptcha: "true", key: "recaptchaKey", ng-if: "recaptchaKey && !user.hasToken", ng-model: "user.recaptcha"}
 
   .lmo-md-action
-    %md-button.md-primary.md-raised.auth-signup-form__submit{ng-disabled: "!vars.name || !vars.legalAccepted", translate: "auth_form.create_account", ng-click: "submit()"}
+    %md-button.md-primary.md-raised.auth-signup-form__submit{ng-disabled: "!vars.name || (termsUrl &&!vars.legalAccepted)", translate: "auth_form.create_account", ng-click: "submit()"}

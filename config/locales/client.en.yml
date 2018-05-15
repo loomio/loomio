@@ -1726,7 +1726,7 @@ en:
       Click the button below and we'll send you a link to sign in instantly.
       If you'd like to use a password to log in in the future, you can set one from your profile page.
     login_link_helptext_with_password: "Enter your password, or sign in via email."
-    sign_up_helptext: "To create a user account, please complete this form"
+    sign_up_helptext: "Please complete this form to create a user account"
     i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
     name_required: Please enter a name
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
