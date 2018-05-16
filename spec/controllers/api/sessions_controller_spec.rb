@@ -27,6 +27,11 @@ describe API::SessionsController do
         expect(user.reload.name).to eq "Rodolfo!"
       end
 
+      it 'updates legal_accepted_at if legal accepted' do
+        post :create, params: { user: { legal_accepted: true } }
+        expect(user.reload.legal_accepted_at).to be_present
+      end
+
       it 'does not sign in a user with a used token' do
         token.update(user: user, used: true)
         post :create

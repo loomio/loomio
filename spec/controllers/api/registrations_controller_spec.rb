@@ -21,6 +21,7 @@ describe API::RegistrationsController do
       u = User.last
       expect(u.name).to eq registration_params[:name]
       expect(u.email).to eq registration_params[:email]
+      expect(u.legal_accepted_at).to be_present
     end
 
     it 'sends a login email' do

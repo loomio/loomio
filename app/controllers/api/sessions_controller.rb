@@ -7,6 +7,7 @@ class API::SessionsController < Devise::SessionsController
       user.reactivate! if pending_token&.is_reactivation
       sign_in(user)
       flash[:notice] = t(:'devise.sessions.signed_in')
+      user.set_legal_accepted_at if resource_params[:legal_accepted]
       user.update(name: resource_params[:name]) if resource_params[:name]
       render json: BootData.new(user).data
     else
