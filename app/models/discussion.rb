@@ -1,6 +1,7 @@
 class Discussion < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
+  include Forkable
   include Translatable
   include Reactable
   include HasTimeframe
@@ -111,14 +112,6 @@ class Discussion < ApplicationRecord
      RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
     discussion.last_activity_at = discussion.items.order(:sequence_id).last&.created_at || created_at
     save!(validate: false)
-  end
-
-  def thread_item_created!
-    update_sequence_info!
-  end
-
-  def thread_item_destroyed!
-    update_sequence_info!
   end
 
   def public?

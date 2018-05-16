@@ -19,8 +19,8 @@ class Event < ApplicationRecord
     where(kind: :announcement_created).within(since.beginning_of_hour, till.beginning_of_hour)
   }
 
-  after_create :call_thread_item_created
-  after_destroy :call_thread_item_destroyed
+  after_create  :update_sequence_info!
+  after_destroy :update_sequence_info!
 
   update_counter_cache :discussion, :items_count
 
@@ -30,6 +30,7 @@ class Event < ApplicationRecord
   delegate :group, to: :eventable, allow_nil: true
   delegate :poll, to: :eventable, allow_nil: true
   delegate :groups, to: :eventable, allow_nil: true
+  delegate :update_sequence_info!, to: :discussion, allow_nil: true
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
 
@@ -77,6 +78,7 @@ class Event < ApplicationRecord
     outcome_created
     new_comment
     discussion_moved
+    discussion_forked
     discussion_edited].include?(self.kind) ||
     (self.kind == 'poll_created' && self.discussion_id.present?)
   end
@@ -84,15 +86,5 @@ class Event < ApplicationRecord
   def ensure_parent_present!
     return if self.parent || !should_have_parent?
     self.update(parent: eventable.parent_event)
-  end
-
-  private
-
-  def call_thread_item_created
-    discussion.thread_item_created! if discussion.present?
-  end
-
-  def call_thread_item_destroyed
-    discussion.thread_item_destroyed! if discussion.present?
   end
 end

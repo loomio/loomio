@@ -47,6 +47,7 @@ angular.module('loomioApp').directive 'threadItem', ['$compile', ($compile) ->
       I18n.t eventHeadline($scope.event, $scope.eventWindow.useNesting),
         author:   $scope.event.actorName() || I18n.t('common.anonymous')
         username: $scope.event.actorUsername()
+        key:      $scope.event.model().key
         title:    eventTitle($scope.event)
         polltype: I18n.t(eventPollType($scope.event)).toLowerCase()
 
