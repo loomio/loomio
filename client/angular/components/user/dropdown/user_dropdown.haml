@@ -1,5 +1,5 @@
 %md-menu.lmo-dropdown-menu{md-position-mode: "target-right target"}
-  %md-button.user-dropdown__dropdown-button{ng-click: "$mdMenu.open()"}
+  %md-button.user-dropdown__dropdown-button{ng-click: "$mdMenu.open()", aria-label: "{{ 'user_dropdown.button_label' | translate }}"}
     %user_avatar{user: "user", no-link: "true", size: "small"}
   %md-menu-content
     %md-menu-item.user-dropdown__user-details

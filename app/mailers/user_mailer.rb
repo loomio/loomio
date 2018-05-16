@@ -1,5 +1,5 @@
 class UserMailer < BaseMailer
-  layout 'invite_people_mailer', only: [:membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged]
+  layout 'invite_people_mailer', only: [:membership_request_approved, :contact_request, :user_added_to_group, :login, :start_decision, :accounts_merged, :user_reactivated]
 
   def accounts_merged(user)
     @user = user
@@ -67,6 +67,15 @@ class UserMailer < BaseMailer
                      locale: @user.locale
   end
 
+  def user_reactivated(recipient, event)
+    @user = recipient
+    @token = recipient.login_tokens.create(is_reactivation: true)
+    send_single_mail to: @user.email,
+                     subject_key: "email.reactivate.subject",
+                     subject_params: {site_name: AppConfig.theme[:site_name]},
+                     locale: @user.locale
+  end
+
   def start_decision(received_email:)
     @email = received_email
     send_single_mail to: @email.sender_email,
@@ -85,4 +94,5 @@ class UserMailer < BaseMailer
                                        site_name: AppConfig.theme[:site_name]},
                      locale: [@contact_request.recipient.locale, @contact_request.sender.locale]
   end
+
 end

@@ -32,6 +32,10 @@ module.exports = new class AuthService
   confirmOauth: ->
     Records.registrations.remote.post('oauth')
 
+  reactivate: (user) ->
+    Records.users.reactivate(user).then ->
+      user.sentLoginLink = true
+
   sendLoginLink: (user) ->
     Records.loginTokens.fetchToken(user.email).then ->
       user.sentLoginLink = true

@@ -10,6 +10,10 @@ module Ability::User
       u.adminable_groups.where(type: "FormalGroup").all? { |g| g.admins.count > 1 }
     end
 
+    can :reactivate, ::User do |u|
+      u.deactivated_at?
+    end
+
     can [:update,
          :see_notifications_for,
          :make_draft,

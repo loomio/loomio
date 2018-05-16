@@ -373,6 +373,7 @@ ActiveRecord::Schema.define(version: 20180514143954) do
     t.datetime "updated_at"
     t.string "redirect"
     t.integer "code", null: false
+    t.boolean "is_reactivation", default: false, null: false
   end
 
   create_table "membership_requests", id: :serial, force: :cascade do |t|

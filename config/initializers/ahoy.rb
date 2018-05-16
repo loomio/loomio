@@ -4,6 +4,7 @@ Ahoy.geocode = :async
 # Ahoy.track_visits_immediately = true if Rails.env.test?
 Ahoy.api = true
 Ahoy.server_side_visits = :when_needed
+AhoyEmail.track click: false
 
 class Ahoy::Store < Ahoy::DatabaseStore
 
