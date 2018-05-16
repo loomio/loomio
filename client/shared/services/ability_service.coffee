@@ -32,7 +32,7 @@ module.exports = new class AbilityService
     _.contains comment.discussion().members(), Session.user()
 
   canForkComment: (comment) ->
-    @canAdministerDiscussion(comment.discussion()) &&
+    @canMoveThread(comment.discussion()) &&
     !comment.isReply()
 
   canStartPoll: (model) ->
