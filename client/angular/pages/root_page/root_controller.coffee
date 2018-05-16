@@ -17,9 +17,7 @@ $controller = ($scope, $injector) ->
   $scope.theme  = AppConfig.theme
   $scope.assets = AppConfig.assets
   setupAngular($scope, $injector)
-
-  Records.boot.remote.get('user').then (response) ->
-    signIn(response, response.current_user_id, $scope.loggedIn)
+  signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, $scope.loggedIn)
 
   $scope.warnDeprecation  = deprecatedBrowser()
   $scope.currentComponent = 'nothing yet'

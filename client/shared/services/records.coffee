@@ -5,7 +5,6 @@ loki        = require 'lokijs'
 db      = new loki('default.db')
 records = new RecordStore(db)
 
-records.addRecordsInterface require('shared/interfaces/boot_records_interface')
 records.addRecordsInterface require('shared/interfaces/announcement_records_interface')
 records.addRecordsInterface require('shared/interfaces/comment_records_interface')
 records.addRecordsInterface require('shared/interfaces/discussion_records_interface')
