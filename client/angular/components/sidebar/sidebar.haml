@@ -29,7 +29,7 @@
         %md_button.sidebar__list-item-button.sidebar__list-item-button--group{ng-href: "{{groupUrl(group)}}", lmo-href: "{{groupUrl(group)}}", aria-label: "{{group.name}}", ng-if: "group.isParent()", ng-class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
           %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}", alt: ""}
           %span {{group.name}}
-        %md_button.sidebar__list-item-button--subgroup{ng-href: "{{groupUrl(group)}}", lmo-href: "{{groupUrl(group)}}", ng-if: "!group.isParent()", ng-class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
+        %md_button.sidebar__list-item-button--subgroup.lmo-flex{ng-href: "{{groupUrl(group)}}", lmo-href: "{{groupUrl(group)}}", ng-if: "!group.isParent()", ng-class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
           {{group.name}}
         .sidebar__list-item-padding
       %md_list_item{ng-if: "canViewPublicGroups()"}
