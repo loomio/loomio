@@ -15,13 +15,7 @@ angular.module('loomioApp').directive 'authSigninForm', ->
     $scope.signIn = ->
       EventBus.emit $scope, 'processing'
       $scope.user.name = $scope.vars.name if $scope.vars.name?
-      AuthService.signIn($scope.user).then ->
-        hardReload()
-      , ->
-        $scope.user.errors = if $scope.user.hasToken
-          { token:    [I18n.t('auth_form.invalid_token')] }
-        else
-          { password: [I18n.t('auth_form.invalid_password')] }
+      AuthService.signIn($scope.user).finally ->
         EventBus.emit $scope, 'doneProcessing'
 
     $scope.signInAndSetPassword = ->

@@ -28,6 +28,9 @@ class User < ApplicationRecord
   attr_writer :has_password
   attr_accessor :creating_stance
 
+  attr_accessor :legal_accepted
+  before_save :set_legal_accepted_at, if: :legal_accepted
+
   validates :email, presence: true, email: true, length: {maximum: 200}
   validates :name, presence: true, if: :creating_stance
 
@@ -124,6 +127,7 @@ class User < ApplicationRecord
   initialized_with_token :unsubscribe_token, -> { Devise.friendly_token }
   initialized_with_token :email_api_key,     -> { SecureRandom.hex(16) }
 
+
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
@@ -184,11 +188,7 @@ class User < ApplicationRecord
   # }
   #
 
-  def legal_accepted
-    !!legal_accepted_at
-  end
-
-  def legal_accepted=(value)
+  def set_legal_accepted_at
     self.legal_accepted_at = Time.now
   end
 

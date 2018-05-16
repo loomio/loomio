@@ -14,6 +14,7 @@
   .auth-signup-form__consent{ng-if: "termsUrl"}
     %md-checkbox{ng-model: "vars.legalAccepted"}
     %span{translate: "auth_form.i_accept", translate-values: "{termsUrl: termsUrl, privacyUrl: privacyUrl}"}
+    %validation_errors{subject: "user", field: "legalAccepted"}
 
   %div{vc-recaptcha: "true", key: "recaptchaKey", ng-if: "recaptchaKey && !user.hasToken", ng-model: "user.recaptcha"}
 

@@ -12,13 +12,13 @@ module Null::User
   def nil_methods
     [:key, :username, :short_bio, :city, :region, :country, :selected_locale, :deactivated_at, :time_zone,
      :default_membership_volume, :unsubscribe_token, :slack_identity, :location,
-     :encrypted_password, :associate_with_identity, :update_attribute, :last_seen_at]
+     :encrypted_password, :associate_with_identity, :update_attribute, :last_seen_at, :legal_accepted_at]
   end
 
   def false_methods
     [:is_logged_in?, :is_member_of?, :is_admin_of?, :is_admin?, :is_admin, :uses_markdown?,
      :email_when_proposal_closing_soon, :email_missed_yesterday, :has_password,
-     :email_when_mentioned, :email_on_participation, :email_verified, :email_verified?, :legal_accepted]
+     :email_when_mentioned, :email_on_participation, :email_verified, :email_verified?]
   end
 
   def empty_methods

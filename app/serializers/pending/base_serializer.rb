@@ -1,8 +1,7 @@
 class Pending::BaseSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :name, :email, :email_status, :has_password, :identity_type,
-             :avatar_kind, :avatar_initials, :email_hash, :avatar_url, :has_token,
-             :legal_accepted
+             :avatar_kind, :avatar_initials, :email_hash, :avatar_url, :has_token, :legal_accepted_at
 
   def identity_type
     # included for oauth pending identities
@@ -34,10 +33,6 @@ class Pending::BaseSerializer < ActiveModel::Serializer
 
   def has_password
     user.has_password
-  end
-
-  def legal_accepted
-    user.legal_accepted
   end
 
   private

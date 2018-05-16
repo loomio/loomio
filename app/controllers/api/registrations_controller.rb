@@ -32,10 +32,6 @@ class API::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def user_from_pending_identity
-    User.new(name: pending_identity&.name, email: pending_identity&.email)
-  end
-
   def pending_identity_is_present?
     pending_identity.present? &&
     pending_identity.email == params[:user][:email]

@@ -1730,6 +1730,7 @@ en:
     sign_up_helptext: "Please complete this form to create a user account"
     i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
     name_required: Please enter a name
+    terms_required: You must agree to the Terms of Service
     account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
 
     welcome: Welcome to {{siteName}}!
@@ -1742,7 +1743,7 @@ en:
     hello: "Hello, {{name}}!"
     new_to_loomio: First time on {{site_name}}? Create an account
     create_account: Create account
-    already_a_user: Used {{site_name}} before? Enter your existing account's email address to link it up
+    already_a_user: Used {{site_name}} before? Enter the email address you used last time to link it up.
     link_accounts: Link accounts
 
     check_your_email: Check your email!
