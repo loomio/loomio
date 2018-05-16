@@ -1,4 +1,4 @@
-%md-sidenav.md-sidenav-left.lmo-no-print{role: "navigation", md-component-id: "left", md-is-open: "showSidebar", md-is-locked-open: "$mdMedia('gt-md') && showSidebar", md-whiteframe: "4", aria-label: "{{ 'sidebar.aria_labels.heading' | translate }}", aria-hidden: "{{!showSidebar}}"}
+%md-sidenav.md-sidenav-left.lmo-no-print{role: "navigation", md-component-id: "left", md-is-open: "showSidebar", md-is-locked-open: "canLockSidebar() && showSidebar", md-whiteframe: "4", aria-label: "{{ 'sidebar.aria_labels.heading' | translate }}", aria-hidden: "{{!showSidebar}}"}
   %md_content.sidebar__content.lmo-no-print{flex: "", layout: "column", ng-click: "sidebarItemSelected()", role: "navigation"}
     .sidebar__divider
     %md_list.sidebar__list.sidebar__threads{layout: "column", aria-label: "{{ 'sidebar.aria_labels.threads_list' | translate }}"}

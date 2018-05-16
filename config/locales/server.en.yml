@@ -640,11 +640,10 @@ en:
 
       My functions include:
 
-      - highlighting when decisions are happening
-      - letting people vote on decisions from Slack
-      - showing where people agree and disagree
+      - Initiating threads and decisions on Loomio directly from Slack
+      - Announcing when new threads and decisions are happening on Loomio
+      - Allowing people vote on decisions from Slack
       - communicating the outcome of decisions
-      - keeping a record of decisions in your Loomio group.
 
       To find out more, type _/loomio help_
 
@@ -657,7 +656,6 @@ en:
     click_to_vote: "Select an option below to vote:"
     time_zone_message: (all times are in the %{zone} time zone)
     authorized_message: Success! You're all set up to vote on slack now.
-    community_poll_published: "@%{username} started a new %{type}:"
     initiate: |
       Okay, let's do this! <%{url}|Click here to start your %{type}>.
       (note: we'll post into this channel once it's created, so that everyone can participate)
@@ -669,7 +667,11 @@ en:
       'poll':         Measure popularity of options
       'dot_vote': Prioritise a list of options
       'meeting': Find a time to meet
+      Or, start a conversation with '/loomio thread <title>'.
 
       For example:
       /loomio count Who's coming to the party on Sunday?
       In order to start a new count.
+      or
+      /loomio thread Let's talk about the company direction
+      To start a new thread
