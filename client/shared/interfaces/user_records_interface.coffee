@@ -1,8 +1,17 @@
 BaseRecordsInterface = require 'shared/record_store/base_records_interface'
 UserModel            = require 'shared/models/user_model'
+RestfulClient        = require 'shared/record_store/restful_client'
 
 module.exports = class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
+  apiEndPoint: 'profile'
+
+  onInterfaceAdded: =>
+    @usersRemote = new RestfulClient('users')
+    @setRemoteCallbacks(@recordStore.defaultRemoteCallbacks(), @usersRemote)
+
+  fetchMentionable: (q) =>
+    @usersRemote.fetch(path: '/', params: {q: q})
 
   updateProfile: (user) =>
     @remote.post 'update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })

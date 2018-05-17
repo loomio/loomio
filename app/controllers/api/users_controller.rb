@@ -7,7 +7,7 @@ class API::UsersController < API::RestfulController
                         first:       "#{params[:q]}%",
                         subsequent:  "% #{params[:q]}%")
     end
-    respond_with_collection
+    respond_with_collection serializer: Simple::UserSerializer
   end
 
   private
