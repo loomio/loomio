@@ -15,11 +15,15 @@ module.exports =
 
   submitDiscussion: (scope, model, options = {}) ->
     submit(scope, model, _.merge(
+      submitFn: if model.isForking() then model.fork else model.save
       flashSuccess: "discussion_form.messages.#{actionName(model)}"
       failureCallback: ->
         scrollTo '.lmo-validation-error__message', container: '.discussion-modal'
       successCallback: (data) ->
         _.invoke Records.documents.find(model.removedDocumentIds), 'remove'
+        if model.isForking()
+          model.forkTarget().discussion().forkedEventIds = []
+          _.invoke Records.events.find(model.forkedEventIds), 'remove'
         nextOrSkip(data, scope, model)
     , options))
 
@@ -177,10 +181,13 @@ nextOrSkip = (data, scope, model) ->
     EventBus.emit scope, 'skipStep'
 
 actionName = (model) ->
+  return 'forked' if model.isA('discussion') and model.isForking()
   if model.isNew() then 'created' else 'updated'
 
 eventKind = (model) ->
-  return 'new_discussion' if model.isNew() and model.constructor.singular == 'discussion'
+  if model.isA('discussion') and model.isNew()
+    return if model.isForking() then 'discussion_forked' else 'new_discussion'
+
   if model.isNew()
     "#{model.constructor.singular}_created"
   else

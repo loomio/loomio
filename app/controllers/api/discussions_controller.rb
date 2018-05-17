@@ -71,6 +71,11 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
+  def fork
+    @event = service.fork(discussion: instantiate_resource, actor: current_user)
+    respond_with_resource
+  end
+
   def pin
     service.pin discussion: load_resource, actor: current_user
     respond_with_resource

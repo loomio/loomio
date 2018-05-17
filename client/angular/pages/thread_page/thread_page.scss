@@ -17,6 +17,10 @@
   @include smallIcon;
 }
 
+.thread-page__forking .action-dock {
+  visibility: hidden;
+}
+
 .attachments {
   margin: 0 10px;
 }
