@@ -33,7 +33,7 @@ $controller = ($scope, $injector) ->
   EventBus.listen $scope, 'toggleSidebar',   (event, show) ->
     return if show == false
     $scope.renderSidebar = true
-    EventBus.deafen $scope 'toggleSidebar'
+    EventBus.deafen $scope, 'toggleSidebar'
 
   EventBus.listen $scope, 'loggedIn',         -> $scope.loggedIn()
   EventBus.listen $scope, 'pageError', (_, error) ->
