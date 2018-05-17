@@ -6,7 +6,11 @@ module Events::Notify::Mentions
 
   # send event notifications
   def notify_mentions!
-    mention_recipients.each { |mentionee| Events::UserMentioned.publish!(eventable, user, mentionee) }
+    AnnouncementService.create(
+      model: eventable,
+      actor: user,
+      params: {kind: "user_mentioned", recipients: {user_ids: mention_recipients.map(&:id)}}
+    )
   end
   handle_asynchronously :notify_mentions!
 

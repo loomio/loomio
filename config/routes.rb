@@ -20,7 +20,7 @@ Loomio::Application.routes.draw do
       get '/:action', to: 'nightwatch#:action'
     end
   end
-  
+
   mount ActionCable.server => '/cable'
 
   use_doorkeeper do
@@ -59,6 +59,8 @@ Loomio::Application.routes.draw do
     end
 
     resources :group_identities, only: [:create, :destroy]
+
+    resources :users, only: [:index]
 
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
