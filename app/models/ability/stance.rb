@@ -6,7 +6,7 @@ module Ability::Stance
       user.can?(:show, stance.poll)
     end
 
-    can [:make_draft, :create], ::Stance do |stance|
+    can [:make_draft, :create, :announce], ::Stance do |stance|
       user.can? :vote_in, stance.poll
     end
 
