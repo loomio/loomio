@@ -9,8 +9,10 @@ module HasMentions
     end
   end
 
-  def mentioned_group_members
-    group.members.where(username: mentioned_usernames)
+  def mentioned_users
+    User.active.verified.joins(:memberships).
+      where('memberships.group_id': author.group_ids).
+      where(username: mentioned_usernames)
   end
 
   def mentioned_usernames

@@ -2,7 +2,7 @@ module Ability::Comment
   def initialize(user)
     super(user)
 
-    can [:create], ::Comment do |comment|
+    can [:create, :announce], ::Comment do |comment|
       comment.discussion.members.include?(user)
     end
 
