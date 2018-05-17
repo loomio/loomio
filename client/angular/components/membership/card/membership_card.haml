@@ -23,4 +23,4 @@
   .lmo-md-actions{ng-if: "showLoadMore()"}
     %md-button.md-accent{ng-if: "showLoadMore()", ng-click: "loader.loadMore()", translate: "common.action.load_more"}
     %span
-      {{records().length}} / {{recordCount()}}
+      {{recordsDisplayed()}} / {{recordCount()}}
