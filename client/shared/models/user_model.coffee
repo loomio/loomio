@@ -4,7 +4,6 @@ AppConfig = require 'shared/services/app_config'
 module.exports = class UserModel extends BaseModel
   @singular: 'user'
   @plural: 'users'
-  @apiEndPoint: 'profile'
   @serializableAttributes: AppConfig.permittedParams.user
 
   relationships: ->
