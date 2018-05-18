@@ -344,6 +344,8 @@ en:
     invitations: "Invitations"
 
   membership_dropdown:
+    resend: "Resend invitation"
+    invitation_resent: "Invitation resent"
     make_coordinator: 'Make coordinator'
     demote_coordinator: 'Demote coordinator'
     remove_from:

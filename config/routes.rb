@@ -20,7 +20,7 @@ Loomio::Application.routes.draw do
       get '/:action', to: 'nightwatch#:action'
     end
   end
-  
+
   mount ActionCable.server => '/cable'
 
   use_doorkeeper do
@@ -74,6 +74,7 @@ Loomio::Application.routes.draw do
         post :make_admin
         post :remove_admin
         post :save_experience
+        post :resend
         patch :set_volume
       end
     end
