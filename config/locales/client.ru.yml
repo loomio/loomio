@@ -393,7 +393,6 @@ ru:
     dismiss: Отклонить
     filtering:
       proposals: Голосования
-      muted: Заглушен
     aria_thread:
       current_proposal: 'Текущее голосование: {{name}}.'
       you_voted: 'Ваш голос: {{position}}.'

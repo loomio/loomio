@@ -376,8 +376,6 @@ zh_TW:
     privacy_public: '任何人都可以看到此討論串。只有成員才能參與。'
     privacy_private: '此討論串只會被「{{group}}」群組的成員看到。'
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
-    make_announcement: 公告
-    notified_count: '{{count}} 個夥伴將會收到電子郵件'
   announcement:
     form:
       outcome_announced:
@@ -839,7 +837,6 @@ zh_TW:
       proposals: 提議
       proposals_aria_label: 目前正在顯示有活躍提案的討論串
       proposals_description: 僅檢視有活躍提案的討論串
-      muted: 已靜音
       muted_aria_label: 目前正在顯示已靜音的討論串
       muted_description: 僅檢視已被靜音的討論串
     aria_thread:

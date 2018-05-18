@@ -190,7 +190,6 @@ tr:
     privacy_public: 'Herhangi bir kişi konuyu görebilir. Sadece üyeler katılım gösterebilir.'
     privacy_private: 'Konu sadece {{group}} grubunun üyelerine görünür olacaktır.'
     privacy_organisation: 'Konu {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
-    make_announcement: Duyuru
   cover_photo_form:
     heading: 'Yeni kapak fotoğrafı'
     upload_link: 'Yeni kapak fotoğrafı yükle'
@@ -433,7 +432,6 @@ tr:
       proposals: Öneriler
       proposals_aria_label: Şu anda aktif önerileri olan konular görüntüleniyor
       proposals_description: Sadece aktif önerileri olan konuları görüntüle
-      muted: Sesi kısıldı
       muted_aria_label: Şu anda sesi kısılmış konular görüntüleniyor
       muted_description: Sadece sesi kısılmış konuları görüntüleyin
     aria_thread:
