@@ -86,7 +86,7 @@ class API::MembershipsController < API::RestfulController
   private
 
   def index_scope
-    { email_user_ids: collection.pluck(:user_id) } if include_emails?
+    { email_user_ids: collection.select { |m| m.inviter_id == current_user.id }.map(&:id) } if include_emails?
   end
 
   def include_emails?
