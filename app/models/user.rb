@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   extend  NoSpam
   no_spam_for :name
-  
+
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
     helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
@@ -136,7 +136,8 @@ class User < ApplicationRecord
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
   scope :verified_first, -> { order(email_verified: :desc) }
-  scope :search_for, ->(query) { where("name ilike :q OR username ilike :q", q: "%#{query}%") }
+  scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first", first: "#{q}%", other:  "% #{q}%") }
+  scope :mentionable_by, -> (user) { active.verified.distinct.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
 
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 

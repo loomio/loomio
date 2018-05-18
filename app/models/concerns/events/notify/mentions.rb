@@ -9,8 +9,8 @@ module Events::Notify::Mentions
     AnnouncementService.create(
       model: eventable,
       actor: user,
-      params: {kind: "user_mentioned", recipients: {user_ids: mention_recipients.map(&:id)}}
-    )
+      params: {kind: "user_mentioned", recipients: {user_ids: mention_recipients.pluck(:id)}}
+    ) if mention_recipients.any?
   end
   handle_asynchronously :notify_mentions!
 
@@ -28,6 +28,5 @@ module Events::Notify::Mentions
     mentionable.mentioned_users
                .where.not(id: mentionable.group.members.mentioned_in(mentionable)) # avoid re-mentioning users when editing
                .where.not(id: mentionable.users_to_not_mention)
-               .where.not(id: user)
   end
 end

@@ -6,12 +6,10 @@ module.exports = class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
   apiEndPoint: 'profile'
 
-  onInterfaceAdded: =>
-    @usersRemote = new RestfulClient('users')
-    @setRemoteCallbacks(@recordStore.defaultRemoteCallbacks(), @usersRemote)
-
   fetchMentionable: (q) =>
-    @usersRemote.fetch(path: '/', params: {q: q})
+    @fetch
+      path: 'mentionable_users'
+      params: {q: q}
 
   updateProfile: (user) =>
     @remote.post 'update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })
