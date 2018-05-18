@@ -2,10 +2,10 @@ moment = require 'moment'
 
 EventBus = require 'shared/services/event_bus'
 
-{ calendarMonth } = require 'shared/helpers/calendar'
+{ calendarMonth, calendarStyle } = require 'shared/helpers/calendar'
 
 angular.module('loomioApp').directive 'lmoCalendar', ->
-  scope: {}
+  scope: {selected: '=', enablePast: '=?'}
   templateUrl: 'generated/components/lmo_calendar/lmo_calendar.html'
   controller: ['$scope', ($scope) ->
     $scope.today     = moment()
@@ -16,6 +16,12 @@ angular.module('loomioApp').directive 'lmoCalendar', ->
       $scope.current.add(diff, 'month')
       $scope.weeks = calendarMonth $scope.current
     $scope.changeMonth()
+
+    $scope.isSelected = (date) ->
+      _.contains $scope.selected, date
+
+    $scope.styleFor = (date) ->
+      calendarStyle(date, $scope.today, $scope.current, $scope.selected)
 
     $scope.selectDate = (date) ->
       EventBus.emit $scope, 'dateSelected', date

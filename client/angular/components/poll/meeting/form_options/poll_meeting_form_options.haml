@@ -1,0 +1,5 @@
+.poll-meeting-form-options
+  %lmo_calendar{selected: "poll.meetingDates"}
+  %md-list
+    %md-list-item{ng-repeat: "date in poll.meetingDates"}
+      {{ date.format('YYYY-MM-DD') }}

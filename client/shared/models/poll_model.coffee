@@ -50,6 +50,7 @@ module.exports = class PollModel extends BaseModel
     closingAt: moment().add(3, 'days').startOf('hour')
     pollOptionNames: []
     pollOptionIds: []
+    meetingDates: []
     customFields: {}
 
   audienceValues: ->

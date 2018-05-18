@@ -16,3 +16,9 @@ module.exports =
       weeks[weekIndex].push(current)
       current = current.clone().add(1, 'day')
     weeks
+
+  calendarStyle: (day, today, current, selected) ->
+    if _.contains(selected, day)
+      { 'background-color': 'accent-300'}
+    else
+      {}
