@@ -40,7 +40,7 @@ class SearchVector < ApplicationRecord
     query = connection.quote(query)
 
     joins(discussion: :group)
-   .select(:discussion_id, :search_vector, 'groups.full_name as result_group_name')
+   .select(:discussion_id, :search_vector, 'groups.name as result_group_name')
    .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) * #{recency_multiplier} as rank")
    .where("search_vector @@ plainto_tsquery(#{query})")
    .order('rank DESC')
