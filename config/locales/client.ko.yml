@@ -495,7 +495,6 @@ ko:
       proposals: 제안
       proposals_aria_label: 활성화된 제안이 있는 주제만 보기
       proposals_description: 활성화된 제안이 있는 주제만 보기
-      muted: 알림 비활성화
       muted_aria_label: 알림 비활성화된 주제 보기
       muted_description: 알림 비활성화된 주제만 보기
     aria_thread:

@@ -332,7 +332,6 @@ pt_BR:
     privacy_public: 'Qualquer um pode ver o tópico. Apenas membros podem participar.'
     privacy_private: 'A discussão será visível apenas para os membros de {{group}}.'
     privacy_organisation: 'A discussão será visível para os membros de {{parent}} e membros de {{group}}.'
-    make_announcement: Anúncio
   announcement:
     form:
       outcome_announced:
@@ -718,7 +717,6 @@ pt_BR:
       proposals: Propostas
       proposals_aria_label: No momento, mostrando tópicos com propostas ativas
       proposals_description: Ver apenas tópicos com propostas ativas
-      muted: Mudo
       muted_aria_label: No momento, mostrando tópicos mudos
       muted_description: Ver apenas tópicos que estão mudos
     aria_thread:
