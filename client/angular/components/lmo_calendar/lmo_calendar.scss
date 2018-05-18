@@ -1,0 +1,18 @@
+.lmo-calendar {
+  margin: auto;
+  text-align: center;
+
+  td {
+    padding: 12px;
+    border-radius: 100%;
+  }
+
+  &--today     { background: $loomio-orange; }
+  &--off-month { color: lighten($grey-on-grey, 20%); }
+}
+
+.lmo-calendar__change-month {
+  min-width: 24px;
+  margin: 0;
+  padding: 0;
+}

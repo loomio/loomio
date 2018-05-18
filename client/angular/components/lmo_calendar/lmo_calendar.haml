@@ -1,0 +1,17 @@
+%table.lmo-calendar
+  %thead
+    %tr
+      %td
+        %md-button.md-button--tiny.lmo-calendar__change-month{ng-click: "changeMonth(-1)"}
+          %i.mdi.mdi-chevron-left.mdi-24px
+      %td{colspan: "5"}
+        %span {{current.format('MMMM YYYY')}}
+      %td
+        %md-button.md-button--tiny.lmo-calendar__change-month{ng-click: "changeMonth(1)"}
+          %i.mdi.mdi-chevron-right.mdi-24px
+    %tr
+      %th{ng-repeat: "day in dayNames"} {{day}}
+  %tbody
+    %tr{ng-repeat: "week in weeks track by $index"}
+      %td{ng-repeat: "day in week track by $index", ng-click: "selectDate(day)", ng-class: "{'lmo-calendar--today': day.isSame(today), 'lmo-calendar--off-month': day.month() != current.month()}"}
+        .lmo-pointer {{day.date()}}

@@ -19,4 +19,7 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
 
     EventBus.listen $scope, 'timeZoneSelected', (e, zone) ->
       $scope.poll.customFields.time_zone = zone
+
+    EventBus.listen $scope, 'dateSelected', (e, date) ->
+      console.log('date clicked:', date)
   ]
