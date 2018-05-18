@@ -350,7 +350,6 @@ ar:
       proposals: المقترحات
       proposals_aria_label: يتم إظهار المواضيع ذات المقترحات النشطة
       proposals_description: إظهار المواضيع ذات المقترحات النشطة فقط
-      muted: صامت
       muted_aria_label: يتم إظهار المواضيع الصامتة
       muted_description: إظهار المواضيع الصامتة فقط
     aria_thread:

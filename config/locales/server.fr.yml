@@ -79,12 +79,13 @@ fr:
           Vos deux comptes utilisateurs Loomio ont été fusionnés en un compte.
           Pour accéder à Loomio, vous devrez maintenant utiliser <strong>%{email}</strong> comme identifiant.
   email:
+    common:
+      or_enter_code: Ou saisissez votre code ci-dessous
+      resend: Ce lien expirera dans 24 heures et ne peut être utilisé qu'une seule fois.
     login:
       subject: Identifiez-vous sur %{site_name}
       intro: Bonjour %{name},  voici votre lien de connexion à votre compte sur %{site_name}.
       login: Se connecter comme %{name}
-      or_enter_code: Ou saisissez votre code ci-dessous
-      resend: Ce lien expirera dans 24 heures et ne peut être utilisé qu'une seule fois.
     contact_request:
       subject: "%{name} voudrait se mettre en relation avec vous sur %{site_name}!"
       intro: "%{name} (%{email}) vous a envoyé une demande de mise en relation."
@@ -540,22 +541,6 @@ fr:
         Essayez plutôt de taper '/loomio' dans l'une des chaînes suivantes:
         %{integrations}
     stance_not_valid: "Désolé, nous n'avons pas compris votre position pour *%{poll}*. <%{url}|Cliquez ici> pour participer à la décision directement."
-    group_identity_created: |
-        Salut, Je suis le Robot Loomio! *%{author}* m'a ajouté.
-        Je peux aider votre équipe à prendre des décisions ensemble.
-
-        Je peux:
-
-        - vous notifier lorsqu'une décision doit être prise
-        - vous permettre de voter directement depuis Slack
-        - montrer les points d'accord et de désaccord
-        - diffuser le résultat de vos prises de décisions
-        - garder la trace de vos décisions dans votre groupe Loomio.
-
-        Pour en savoir plus, tapez _/loomio help_
-
-        Vous devrez faire partie du groupe Loomio *%{group}* pour participer.
-        Si vous ne l'avez pas encore rejoint, <%{url}|cliquez ici> pour le faire.
     request_authorization_message: "Une dernière étape : <%{url}|cliquez ici> pour autoriser votre compte Slack à utiliser Loomio. (vous n'aurez à donner cette autorisation qu'une seule fois)"
     poll_closed: "*%{title}* est déjà terminé! <%{url}|cliquez ici> pour voir les résultats."
     go_to_slack: Allez sur Slack
@@ -563,19 +548,6 @@ fr:
     click_to_vote: "Choisissez une option ci-dessous pour voter :"
     time_zone_message: (tous les horaires valent pour le fuseau horaire %{zone})
     authorized_message: Bravo! Vous êtes maintenant prêts à voter sur Slack.
-    community_poll_published: "@%{username} a commencé un nouveau %{type}:"
     initiate: |
         Ok, allons-y! <%{url}|Cliques ici pour commencer votre %{type}>.
         (NB: ceci sera posté sur cette chaîne, pour que tout le monde puisse participer)
-    slash_command_help: |
-        Choisissez un type de décision et une question, nous verrons le reste ensuite.
-        Vous pouvez choisir parmi:
-        'proposal': Cherchez l’accord collectif
-        'count':      Suivez la participation et trouvez des volontaires
-        'poll':         Mesurez une opinion ou proposez un choix
-        'dot_vote': Priorisez des options
-        'meeting': Trouvez un moment pour vous réunir
-
-        Par exemple:
-        /loomio count Qui vient à la soirée de dimanche?
-        pour démarrer un nouveau décompte.

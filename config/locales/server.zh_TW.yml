@@ -10,8 +10,10 @@ zh_TW:
     return_home: 回到首頁
     not_found: 404 檔案找不到。
     messages:
+      email: 您輸入的不是有效的電子郵件地址
       spoofed_media_type: 檔案內容不符合其檔案名稱
   user:
+    placeholder_name: "已邀請的使用者 (%{hostname})"
     error:
       recaptcha: "我們無法確認您是不是機器人。請再試一次！"
       bad_login: "無法登入。請再試一次。"
@@ -76,12 +78,17 @@ zh_TW:
           您的兩個 Loomio 帳號已經合併為一個。
           從現在開始，要存取 Loomio，請使用 <strong>%{email}</strong> 登入。
   email:
+    common:
+      or_enter_code: 或是在下方輸入代碼
+      resend: 這個連結將會在24小時後過期且僅可使用一次。
     login:
       subject: 登入到 %{site_name}
       intro: 嗨 %{name}，這是用來登入您的 %{site_name} 帳號的連結。
       login: 以 %{name} 的身份登入
-      or_enter_code: 或是在下方輸入代碼
-      resend: 這個連結將會在24小時後過期且僅可使用一次。
+    reactivate:
+      subject: 重新啟用您的 %{site_name} 帳號
+      intro: 嗨 %{name}，這是用來重新啟用您的 %{site_name} 帳號的連結。
+      login: 重新啟用 %{name}
     contact_request:
       subject: "%{name} 想要與您在 %{site_name} 上連線！"
       intro: "%{name} (%{email}) 已經傳送給您一個連線的請求。"
@@ -147,16 +154,20 @@ zh_TW:
       subject: "%{who} 申請加入 %{which_group}"
       view_group: 您可點此批准或拒絕申請
       button_text: 檢視申請
+  announcement_count_emails: "%{count} 個電子郵件"
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。
   discussion_mailer:
+    resend: '提醒：%{actor} 正在等待您加入 %{discussion}'
     new_discussion:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> 啟動了討論串：%{discussion}"
     discussion_edited:
       subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> 編輯了討論串：%{discussion}"
     discussion_announced:
       subject: "[%{group}] %{discussion}"
+      subject_html: "<strong>%{actor}</strong> 邀請您加入：%{discussion}"
     new_comment:
       subject: "[%{group}] %{discussion}"
       subject_html: "<strong>%{actor}</strong> 評論在：%{discussion}"
@@ -290,6 +301,8 @@ zh_TW:
           圖片也一樣，但要加驚嘆號前綴。
 
           ![loomio logo](https://i.imgur.com/Fvtworb.png)
+  group_mailer:
+    resend: '提醒：%{member} 正等候您加入 %{group_name}'
   poll_mailer:
     resend: '提醒：%{actor} 正在等待您的投票 %{title}'
     common:
@@ -310,10 +323,12 @@ zh_TW:
       vote_now: 現在投票
       verify_stance_for_unverified_user: "感謝您投票給 %{title}。請驗證您的電子郵件地址，這樣我們才能在準備好的時候寄結果給您。"
       verify_stance_for_verified_user: "您似乎投了 %{title}。如果這個是您的話，請點選下面的連結來確認您的投票。"
+      you_have_until: 您到 %{when} 前都可以參與。
     proposal:
       subject:
         poll_created: '%{actor} 啟動了一個提案：%{title}'
         poll_edited: '%{actor} 編輯了提案：%{title}'
+        poll_announced: '%{actor} 邀請您在提案中投票：%{title}'
         poll_closing_soon: '24小時內定案的提議：%{title}'
         poll_closing_soon_author: '您的提案將於24小時內定案：%{title}'
         poll_expired: "定案的提議：%{title}"
@@ -322,9 +337,11 @@ zh_TW:
         outcome_announced: '%{actor} 分享了一個提案成果：%{title}'
         stance_created: "%{actor} 已經投票：%{title}"
         stance_created_author: "請驗證您的投票：%{title}"
+        user_mentioned: '%{actor} 提到您在：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個提案'
         poll_edited: '<strong>%{actor}</strong> 編輯了提案'
+        poll_announced: '<strong>%{actor}</strong> 邀請您在提案中投票'
         poll_closing_soon: '<strong>%{actor}</strong> 的提案將於24小時內定案。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
         poll_closing_soon_author: '您的提案將於24小時內定案，現在正是您提醒其他人關於這個提案或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的提案已定案：%{title}"
@@ -332,12 +349,14 @@ zh_TW:
         outcome_created: '<strong>%{actor}</strong> 已分享了提案的成果。'
         outcome_announced: '<strong>%{actor}</strong> 已分享了提案的成果。'
         stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
+        user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     poll:
       subject:
         poll_created: '%{actor} 啟動了一個投票：%{title}'
         poll_edited: '%{actor} 編輯了投票：%{title}'
+        poll_announced: '%{actor} 邀請您投票：%{title}'
         poll_closing_soon: '24小時內關閉的投票：%{title}'
         poll_closing_soon_author: '您的投票將於24小時內關閉：%{title}'
         poll_expired: "投票結果：%{title}"
@@ -348,9 +367,11 @@ zh_TW:
         outcome_announced: '%{actor} 分享了一個投票成果：%{title}'
         stance_created: "%{actor} 投了票：%{title}"
         stance_created_author: "請驗證您的投票：%{title}"
+        user_mentioned: '%{actor} 提到您在：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了投票'
+        poll_announced: '<strong>%{actor}</strong> 邀請您投票'
         poll_closing_soon: '<strong>%{actor}</strong> 的投票將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
         poll_closing_soon_author: '您的投票將於24小時內關閉，現在正是您提醒其他人關於這個投票或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的投票已關閉：%{title}"
@@ -360,12 +381,14 @@ zh_TW:
         outcome_created: '<strong>%{actor}</strong> 已分享了投票的成果。'
         outcome_announced: '<strong>%{actor}</strong> 已分享了投票的成果。'
         stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
+        user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     count:
       subject:
         poll_created: '%{actor} 正在勾選：%{title}'
         poll_edited: '%{actor} 編輯了一個勾選：%{title}'
+        poll_announced: '%{actor} 邀請您參與：%{title}'
         poll_closing_soon: '剩餘24小時的勾選：%{title}'
         poll_closing_soon_author: '您的勾選將於24小時內關閉：%{title}'
         poll_expired: "勾選已關閉：%{title}"
@@ -374,9 +397,11 @@ zh_TW:
         outcome_announced: '%{actor} 分享了一個成果：%{title}'
         stance_created: "%{actor} 已經參與：%{title}"
         stance_created_author: "請驗證您的投票：%{title}"
+        user_mentioned: '%{actor} 提到您在：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 正在勾選'
         poll_edited: '<strong>%{actor}</strong> 編輯了勾選'
+        poll_announced: '<strong>%{actor}</strong> 邀請您參與'
         poll_closing_soon: '<strong>%{actor}</strong> 的勾選將於24小時內關閉。'
         poll_closing_soon_author: '您的勾選將於24小時內關閉，現在正是您提醒其他人關於這個勾選或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的勾選已關閉：%{title}"
@@ -384,12 +409,14 @@ zh_TW:
         outcome_created: '<strong>%{actor}</strong> 已分享了成果。'
         outcome_announced: '<strong>%{actor}</strong> 已分享了成果。'
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
+        user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     dot_vote:
       subject:
         poll_created: '%{actor} 啟動了一個點投票：%{title}'
         poll_edited: '%{actor} 編輯了一個點投票：%{title}'
+        poll_announced: '%{actor} 邀請您參與點投票：%{title}'
         poll_closing_soon: '24小時內關閉的點投票：%{title}'
         poll_closing_soon_author: '您的點投票將於24小時內關閉：%{title}'
         poll_expired: "點投票結果：%{title}"
@@ -400,9 +427,11 @@ zh_TW:
         outcome_announced: '%{actor} 分享了一個成果：%{title}'
         stance_created: "%{actor} 投了票：%{title}"
         stance_created_author: "請驗證您的投票：%{title}"
+        user_mentioned: '%{actor} 提到您在：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 啟動了一個點投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了點投票'
+        poll_announced: '<strong>%{actor}</strong> 邀請您參與點投票'
         poll_closing_soon: '<strong>%{actor}</strong> 的點投票將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
         poll_closing_soon_author: '您的點投票將於24小時內關閉，現在正是您提醒其他人關於這個點投票或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的點投票結果：%{title}"
@@ -412,12 +441,14 @@ zh_TW:
         outcome_created: '<strong>%{actor}</strong> 已分享了點投票的成果。'
         outcome_announced: '<strong>%{actor}</strong> 已分享了點投票的成果。'
         stance_created: "<strong>%{actor}</strong> 已經投票：%{title}"
+        user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
         poll_created: '%{actor} 啟動了一個時間投票：%{title}'
         poll_edited: '%{actor} 編輯了時間投票：%{title}'
+        poll_announced: '%{actor} 邀請您參與時間投票：%{title}'
         poll_closing_soon: '24小時內關閉的時間投票：%{title}'
         poll_closing_soon_author: '您的時間投票將於24小時內關閉：%{title}'
         poll_expired: "時間投票結果：%{title}"
@@ -429,9 +460,11 @@ zh_TW:
         outcome_announced: '%{actor} 分享了一個成果：%{title}'
         stance_created: '%{actor} 已經參與：%{title}'
         stance_created_author: "請驗證您的投票：%{title}"
+        user_mentioned: '%{actor} 提到您在：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個時間投票'
         poll_edited: '<strong>%{actor}</strong> 編輯了時間投票'
+        poll_announced: '<strong>%{actor}</strong> 邀請您參與時間投票'
         poll_closing_soon: '<strong>%{actor}</strong> 的時間投票將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
         poll_closing_soon_author: '您的時間投票將於24小時內關閉，現在正是您提醒其他人關於這時間投票或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的時間投票已關閉"
@@ -442,12 +475,14 @@ zh_TW:
         outcome_created_author: '您分享了一個時間投票結果。'
         outcome_announced: '<strong>%{actor}</strong> 已分享了時間投票的成果。'
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
+        user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
     ranked_choice:
       subject:
         poll_created: '%{actor}啟動了排序選擇：%{title}'
         poll_edited: '%{actor} 編輯了排序選擇：%{title}'
+        poll_announced: '%{actor} 邀請您在投票中排序選項：%{title}'
         poll_closing_soon: '24小時內關閉的排序選擇：%{title}'
         poll_closing_soon_author: '您將在24小時內關閉的排序選擇：%{title}'
         poll_expired: "排序選擇結果：%{title}"
@@ -458,9 +493,11 @@ zh_TW:
         outcome_created_author: '您分享了一個結果：%{title}'
         stance_created: '%{actor} 已經參與：%{title}'
         stance_created_author: "請驗證您的投票：%{title}"
+        user_mentioned: '%{actor} 提到您在：%{title}'
       header:
         poll_created: '<strong>%{actor}</strong> 已啟動了一個排序選擇'
         poll_edited: '<strong>%{actor}</strong> 編輯了排序選擇'
+        poll_announced: '<strong>%{actor}</strong> 邀請您在投票中排序選項'
         poll_closing_soon: '<strong>%{actor}</strong> 的排序選擇將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
         poll_closing_soon_author: '您的排序選擇將於24小時內關閉，現在正是您提醒其他人關於這個排序選擇或是展延期限的絕佳時機。'
         poll_expired: "<strong>%{actor}</strong> 的排序選擇已關閉"
@@ -471,6 +508,7 @@ zh_TW:
         outcome_created_author: '您分享了一個排序選擇結果。'
         outcome_announced: '<strong>%{actor}</strong> 已分享了一個排序選擇的成果。'
         stance_created: "<strong>%{actor}</strong> 已經參與：%{title}"
+        user_mentioned: '<strong>%{actor}</strong> 提到您在：%{title}'
       body:
         voted: '<strong>%{participant}</strong>:'
   comment_by: '%{comment_author} 的意見'
@@ -495,6 +533,11 @@ zh_TW:
     meeting:
       title: "我們下次的工作會議什麼時候舉辦？"
       details: 時間又到了我們開雙月的工作會議的時候了；理想狀態下，我們應該要在下週末前會面。大家什麼時候有空呢？
+  notified:
+    no_matches_found: "沒有符合「%{query}」的搜尋結果"
+    group_users: "（%{count} 個夥伴）"
+    group_title: "%{name}（%{count} 個夥伴）"
+    public_title: 公開（任何有連結的人）
   poll_unsubscribe:
     title: 您已經從 %{title} 取消訂閱
     helptext: 您將不會再收到關於此決策的電子郵件。
@@ -513,16 +556,15 @@ zh_TW:
         %{integrations}
     stance_not_valid: "抱歉，我們無法為 *%{poll}* 建立立場。<%{url}|點選這裡>來直接在投票上投出您的一票。"
     group_identity_created: |
-        大家好，我是 Loomio 機器人。*%{author}* 把我加進來了。
+        大家好，我是 Loomio 機器人！*%{author}* 把我加進來了。
         我可以協助您的團隊共同做出決策。
 
         我的功能包含了：
 
-        - 當做出決策時突顯
-        - 讓夥伴們從 Slack 上在決冊中投票
-        - 顯示夥伴們同意或反對
+        - 直接在 Slack 初始化在 Loomio 上的討論串
+        - 在 Loomio 上有新討論串與決策時宣佈
+        - 讓夥伴可以從 Slack 處投票
         - 溝通決策的結果
-        - 在您的 Loomio 群組中保留決策紀錄。
 
         要知道更多東西，請輸入 _/loomio help_
 
@@ -535,7 +577,6 @@ zh_TW:
     click_to_vote: "選取下面的其中一個選項來投票："
     time_zone_message: （所有時間都在 %{zone} 時區）
     authorized_message: 成功！您已在 Slack 上投票完成了。
-    community_poll_published: "@%{username} 啟動了新的 %{type}："
     initiate: |
         好的，讓我們開始吧！<%{url}|點選這裡以啟動您的 %{type}>。
         （注意，我們將會在它建立時在此頻道中貼出，讓每個人都可以參與）
@@ -547,7 +588,11 @@ zh_TW:
         'poll'：        測量選項的人氣
         'dot_vote'： 排序一份選項清單
         'meeting'： 尋找會面時間
+        或是使用 '/loomio thread' 來開始對話。
 
         舉例來說：
         /loomio count 誰可以來星期天的派對呢？
-        為了開始新計畫。
+        以開始新的計數。
+        或是
+        /loomio thread 我們來談談公司的方向
+        以開始新的討論串

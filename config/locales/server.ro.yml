@@ -37,9 +37,10 @@ ro:
       must_close_in_future: Propunerea trebuie sa se inchida in viitor.
       one_at_a_time: Exista o alta propunere activa.
   email:
+    common:
+      resend: Acest link expira in 24 de ore si poate fi folosit o singura data.
     login:
       login: Intra in contul %{name}
-      resend: Acest link expira in 24 de ore si poate fi folosit o singura data.
     contact_request:
       footer: "Poti sa raspunzi direct %{name} prin raspuns la acest email"
     reset_password:

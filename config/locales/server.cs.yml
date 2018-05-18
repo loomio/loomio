@@ -39,9 +39,10 @@ cs:
         <h1>Úspěch.</h1>
         <p>Vybrali jste bezplatný plán pro vaši skupinu <a href="/g/%{group_key}">%{group}</a></p>
   email:
+    common:
+      resend: Platnost tohoto odkazu vyprší za 24 hodin a může být použit pouze jednou.
     login:
       login: Přihlášen jako %{name}
-      resend: Platnost tohoto odkazu vyprší za 24 hodin a může být použit pouze jednou.
     reset_password:
       link_text: Obnovit heslo
     start_decision:
