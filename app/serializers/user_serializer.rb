@@ -7,7 +7,9 @@ class UserSerializer < ActiveModel::Serializer
              :last_seen_at, :email
 
   def name
-    object.name || placeholder_name
+    object.name ||
+    (include_email? && email) ||
+    placeholder_name
   end
 
   def label
