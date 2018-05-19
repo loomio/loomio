@@ -133,12 +133,14 @@ describe API::MembershipsController do
       end
 
       it 'returns pending users' do
-        get :index, params: { group_id: group.id, pending: "true" }, format: :json
+        get :index, params: { group_id: group.id, pending: true }, format: :json
         json = JSON.parse(response.body)
 
-        users = json['users'].map { |c| c['id'] }
+        user_ids = json['users'].map { |c| c['id'] }
         user_emails = json['users'].map { |c| c['email'] }
         groups = json['groups'].map { |g| g['id'] }
+        expect(user_ids).to include pending_named_barb.id
+        # this is not passing, im not sure it's related
         expect(user_emails).to include pending_named_barb.email
         expect(groups).to include group.id
       end
