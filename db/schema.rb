@@ -179,7 +179,6 @@ ActiveRecord::Schema.define(version: 20180514143954) do
     t.integer "seen_by_count", default: 0, null: false
     t.string "ranges_string"
     t.integer "guest_group_id"
-    t.integer "announcements_count", default: 0, null: false
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["group_id"], name: "index_discussions_on_group_id"
@@ -520,7 +519,6 @@ ActiveRecord::Schema.define(version: 20180514143954) do
     t.boolean "latest", default: true, null: false
     t.integer "poll_option_id"
     t.jsonb "custom_fields", default: {}, null: false
-    t.integer "announcements_count", default: 0, null: false
     t.index ["poll_id"], name: "index_outcomes_on_poll_id"
   end
 
@@ -576,7 +574,6 @@ ActiveRecord::Schema.define(version: 20180514143954) do
     t.boolean "voter_can_add_options", default: false, null: false
     t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
-    t.integer "announcements_count", default: 0, null: false
     t.integer "versions_count", default: 0
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
@@ -716,7 +713,6 @@ ActiveRecord::Schema.define(version: 20180514143954) do
     t.boolean "email_verified", default: false, null: false
     t.string "location", default: "", null: false
     t.datetime "last_seen_at"
-    t.boolean "email_announcements", default: true, null: false
     t.datetime "legal_accepted_at"
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"
