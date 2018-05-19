@@ -31,7 +31,7 @@ class Discussion < ApplicationRecord
   scope :is_open, -> { where(closed_at: nil) }
   scope :is_closed, -> { where.not(closed_at: nil) }
 
-  validates_presence_of :title, :group, :author
+  validates_presence_of :title, :author
   validate :private_is_not_nil
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }

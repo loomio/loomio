@@ -5,5 +5,5 @@
     .thread-item__body.lmo-flex--column.lmo-flex__horizontal-center
       %comment_form{event-window: "eventWindow"}
   .add-comment-panel__join-actions{ng-if: "!canAddComment()"}
-    %join_group_button{group: "discussion.group()", ng-if: "isLoggedIn()", block: "true"}
+    %join_group_button{group: "discussion.guestGroup()", ng-if: "isLoggedIn()"}
     %md-button.md-primary.md-raised.add-comment-panel__sign-in-btn{translate: "comment_form.sign_in", ng-click: "signIn()", ng-if: "!isLoggedIn()"}

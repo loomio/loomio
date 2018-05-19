@@ -103,6 +103,6 @@ class DiscussionReader < ApplicationRecord
 
   private
   def membership
-    @membership ||= discussion.group.membership_for(user)
+    @membership ||= discussion.group.membership_for(user) if discussion.group
   end
 end

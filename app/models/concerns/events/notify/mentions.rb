@@ -26,7 +26,7 @@ module Events::Notify::Mentions
 
   def mention_recipients
     mentionable.mentioned_users
-               .where.not(id: mentionable.group.members.mentioned_in(mentionable)) # avoid re-mentioning users when editing
+               .where.not(id: mentionable.members.mentioned_in(mentionable)) # avoid re-mentioning users when editing
                .where.not(id: mentionable.users_to_not_mention)
   end
 end

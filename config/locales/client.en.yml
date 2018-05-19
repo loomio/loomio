@@ -428,6 +428,7 @@ en:
     fork_discussion_title: 'Fork a thread'
     edit_discussion_title: 'Edit thread'
     group_label: 'Group'
+    no_group: '(No group)'
     group_placeholder: 'Select a group'
     title_label: 'Title'
     title_placeholder: 'What is the topic you want to discuss?'
@@ -436,6 +437,7 @@ en:
     privacy_label: 'Privacy'
     privacy_public: 'Anyone can see the thread. Only members can participate.'
     privacy_private: 'The thread will only be visible to members of {{group}}.'
+    privacy_groupless_private: 'The thread will only be visible to invited members.'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
 

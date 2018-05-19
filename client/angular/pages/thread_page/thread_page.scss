@@ -1,56 +1,9 @@
-.thread-notification-level {
-  display: inline-block;
-}
-
-.thread-group{
-  margin: 14px 22px;
-  padding-top: 10px;
-}
-
-.thread-group__name a{
-  font-weight: bold;
-  color: $grey-on-grey;
-  line-height: 30px;
-}
-
-.thread-group__icon img{
-  @include smallIcon;
+.thread-page {
+  margin-top: $cardPaddingSize;
 }
 
 .thread-page__forking .action-dock {
   visibility: hidden;
-}
-
-.attachments {
-  margin: 0 10px;
-}
-
-.attachment-new {
-  width: 34px;
-  height: 34px;
-  border: 1px solid $border-color;
-  @include roundedCorners;
-}
-
-.attachment-new input {
-  width: 34px;
-  opacity: 0;
-  padding: 5px;
-  cursor: pointer;
-  display: block;
-  overflow: hidden;
-}
-
-.cover-file-upload {
-  pointer-events: none;
-  position: relative;
-  bottom: 38px;
-  padding: 0px;
-  left: 4px;
-}
-
-.progress.active {
-  float: left;
 }
 
 @media (min-width: $small-max-px) {

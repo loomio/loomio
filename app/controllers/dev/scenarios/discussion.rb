@@ -5,6 +5,14 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_url(create_discussion)
   end
 
+  def setup_groupless_discussion
+    create_discussion.update(group: nil)
+    sign_in patrick
+    comment = FactoryBot.build(:comment, discussion: create_discussion, body: "welcome to the thread!")
+    CommentService.create comment: comment, actor: jennifer
+    redirect_to discussion_url(create_discussion)
+  end
+
   def setup_discussion_mailer_new_discussion_email
     sign_in jennifer
     @group = FactoryBot.create(:formal_group, name: "Girdy Dancing Shoes", creator: patrick)

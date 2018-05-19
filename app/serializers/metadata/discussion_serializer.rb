@@ -9,6 +9,6 @@ class Metadata::DiscussionSerializer < ActiveModel::Serializer
   end
 
   def image_url
-    object.group.logo.url
+    object.group.logo.url if object.group
   end
 end

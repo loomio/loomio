@@ -84,10 +84,19 @@ module.exports =
   discussionPrivacy: (discussion, is_private = null) ->
     if is_private == false
       'discussion_form.privacy_public'
-    else if discussion.group().parentMembersCanSeeDiscussions
+    else if discussion.group() && discussion.group().parentMembersCanSeeDiscussions
       'discussion_form.privacy_organisation'
-    else
+    else if discussion.group()
       'discussion_form.privacy_private'
+    else
+      'discussion_form.privacy_groupless_private'
+
+  discussionPrivacyFields: (discussion) ->
+    if discussion.group()
+      group:  discussion.group().name
+      parent: discussion.group().parentName()
+    else
+      {}
 
 newCommentKey = (event, useNesting) ->
   if event.isNested() && !useNesting

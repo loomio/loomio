@@ -145,11 +145,11 @@ FactoryBot.define do
     body 'body of the comment'
 
     after(:build) do |comment|
-      comment.discussion.group.parent.add_member!(comment.user) if comment.discussion.group.parent
-      comment.discussion.group.add_member!(comment.user)
+      comment.groups.first.parent&.add_member!(comment.user)
+      comment.groups.first.add_member!(comment.user)
     end
     after(:create) do |comment|
-      comment.discussion.group.save
+      comment.groups.first.save
     end
   end
 

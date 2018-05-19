@@ -2,7 +2,7 @@
   %loading{ng-if: "!threadPage.discussion"}
   %main.thread-page.lmo-row{ng-if: "threadPage.discussion"}
     %discussion_fork_actions{discussion: "threadPage.discussion", ng-show: "threadPage.discussion.isForking()"}
-    %group_theme{group: "threadPage.discussion.group()", compact: "true"}
+    %group_theme{ng-if: "threadPage.discussion.group()", group: "threadPage.discussion.group()", compact: "true"}
     .thread-page__main-content{ng-class: "{'thread-page__forking': threadPage.discussion.isForking()}"}
       %outlet.before-column-right.lmo-column-right{name: "before-thread-page-column-right", model: "threadPage.discussion"}
       %poll_common_card.lmo-card--no-padding.lmo-column-right{poll: "poll", ng-repeat: "poll in threadPage.discussion.activePolls() track by poll.id"}

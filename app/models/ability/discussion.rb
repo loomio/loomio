@@ -6,7 +6,7 @@ module Ability::Discussion
          :print,
          :dismiss,
          :subscribe_to], ::Discussion do |discussion|
-      !discussion.group.archived_at && (
+      !discussion.group&.archived_at && (
         discussion.public? ||
         discussion.members.include?(user) ||
         discussion.anyone_can_participate ||
@@ -23,11 +23,11 @@ module Ability::Discussion
     end
 
     can :create, ::Discussion do |discussion|
-      (user.email_verified? &&
-       discussion.group.present? &&
-       discussion.group.members_can_start_discussions? &&
-       user_is_member_of?(discussion.group_id)) ||
-      user_is_admin_of?(discussion.group_id)
+      user.email_verified? && (
+        !discussion.group ||
+        user_is_admin_of?(discussion.group_id) ||
+        (discussion.group.members_can_start_discussions && user_is_member_of?(discussion.group_id))
+      )
     end
 
     can [:update, :announce], ::Discussion do |discussion|

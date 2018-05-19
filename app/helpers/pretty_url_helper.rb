@@ -23,7 +23,7 @@ module PrettyUrlHelper
     when GuestGroup                    then polymorphic_url(model.target_model, opts)
     when FormalGroup, GroupIdentity    then group_url(model.group, opts)
     when PaperTrail::Version           then polymorphic_url(model.item, opts)
-    when MembershipRequest             then group_url(model.group, opts.merge(use_key: true))
+    when MembershipRequest             then polymorphic_url(model.group, opts.merge(use_key: true))
     when Outcome                       then poll_url(model.poll, opts)
     when Stance                        then poll_url(model.poll, opts.merge(change_vote: true))
     when Comment                       then comment_url(model.discussion, model, opts)
