@@ -174,7 +174,7 @@ module.exports = {
     page.expectElement('.sidebar__content')
   },
 
-  'can login from a secret group page': (test) => {
+  'can_login_from_a_secret_group_page': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_visitor')
@@ -205,9 +205,10 @@ module.exports = {
 
     page.loadPath('setup_invitation_to_visitor')
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signin-form', 'Nice to meet you')
-    page.fillIn('.auth-signin-form__name input', 'Billy Jeans')
-    page.click('.auth-signin-form__submit')
+    page.expectText('.auth-signup-form', 'Welcome to')
+    page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
+    page.click('.auth-signup-form__legal-accepted')
+    page.click('.auth-signup-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully', 8000)
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes', 16000)
   },
@@ -218,8 +219,9 @@ module.exports = {
     page.loadPath('setup_invitation_to_visitor')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@merciless.com')
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signup-form', 'Nice to meet you')
+    page.expectText('.auth-signup-form', 'Welcome to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
+    page.click('.auth-signup-form__legal-accepted')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
   },
