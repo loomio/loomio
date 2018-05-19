@@ -12,7 +12,7 @@
     %validation_errors{subject: "user", field: "name"}
 
   .auth-signup-form__consent{ng-if: "termsUrl"}
-    %md-checkbox{ng-model: "vars.legalAccepted"}
+    %md-checkbox.auth-signup-form__legal-accepted{ng-model: "vars.legalAccepted"}
     %span{translate: "auth_form.i_accept", translate-values: "{termsUrl: termsUrl, privacyUrl: privacyUrl}"}
     %validation_errors{subject: "user", field: "legalAccepted"}
 

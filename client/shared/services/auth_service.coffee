@@ -1,5 +1,6 @@
 AppConfig = require 'shared/services/app_config'
 Records   = require 'shared/services/records'
+I18n      = require 'shared/services/i18n'
 
 { hardReload } = require 'shared/helpers/window'
 
@@ -11,7 +12,7 @@ module.exports = new class AuthService
       @applyEmailStatus(user, _.first(data.users))
 
   applyEmailStatus: (user, data = {}) ->
-    keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash', 'avatar_url', 'has_password', 'email_status', 'legal_accepted_at']
+    keys = ['name', 'email', 'avatar_kind', 'avatar_initials', 'email_hash', 'avatar_url', 'has_password', 'email_status', 'email_verified', 'legal_accepted_at']
     user.update _.pick(_.mapKeys(_.pick(data, keys), (v,k) -> _.camelCase(k)), _.identity)
     user.update(hasToken: data.has_token)
     user

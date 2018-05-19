@@ -1,7 +1,6 @@
 AuthService   = require 'shared/services/auth_service'
 EventBus      = require 'shared/services/event_bus'
 LmoUrlService = require 'shared/services/lmo_url_service'
-I18n          = require 'shared/services/i18n'
 
 { hardReload }    = require 'shared/helpers/window'
 { submitOnEnter } = require 'shared/helpers/keyboard'

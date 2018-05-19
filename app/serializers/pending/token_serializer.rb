@@ -1,4 +1,6 @@
 class Pending::TokenSerializer < Pending::BaseSerializer
+  attributes :legal_accepted_at
+  
   def has_token
     true
   end
@@ -17,6 +19,10 @@ class Pending::TokenSerializer < Pending::BaseSerializer
 
   def email
     user.email
+  end
+
+  def legal_accepted_at
+    user.legal_accepted_at
   end
 
   private
