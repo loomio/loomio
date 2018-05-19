@@ -6,11 +6,8 @@ class API::ProfileController < API::RestfulController
   end
 
   def mentionable_users
-    @users = resource_class.mentionable_by(current_user).search_for(params[:q])
-    # It seems to be a lot more work to do this:
-    # respond_with_collection serializer: Simple::UserSerializer
-    # than just do this:
-    render json: @users, each_serializer: Simple::UserSerializer, root: :users
+    instantiate_collection { |collection| collection.search_for(params[:q]) }
+    respond_with_collection serializer: Simple::UserSerializer, root: :users
   end
 
   def me
@@ -60,6 +57,10 @@ class API::ProfileController < API::RestfulController
   end
 
   private
+
+  def accessible_records
+    resource_class.mentionable_by(current_user)
+  end
 
   def resource
     @user || current_user.presence || user_by_email

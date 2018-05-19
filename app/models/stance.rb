@@ -48,6 +48,7 @@ class Stance < ApplicationRecord
   delegate :guest_group,    to: :poll
   delegate :guest_group_id, to: :poll
   delegate :discussion_id,  to: :poll
+  delegate :members,        to: :poll
 
   alias :author :participant
 

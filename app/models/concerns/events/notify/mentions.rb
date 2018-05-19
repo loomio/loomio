@@ -6,11 +6,11 @@ module Events::Notify::Mentions
 
   # send event notifications
   def notify_mentions!
-    AnnouncementService.create(
-      model: eventable,
-      actor: user,
-      params: {kind: "user_mentioned", recipients: {user_ids: mention_recipients.pluck(:id)}}
-    ) if mention_recipients.any?
+    return unless mention_recipients.any?
+    inviter = GroupInviter.new(group: eventable.guest_group,
+                               inviter: user,
+                               user_ids: mention_recipients.pluck(:id)).invite!
+    Events::UserMentioned.publish! eventable, user, mention.mention_recipients
   end
   handle_asynchronously :notify_mentions!
 
@@ -26,7 +26,7 @@ module Events::Notify::Mentions
 
   def mention_recipients
     mentionable.mentioned_users
-               .where.not(id: mentionable.group.members.mentioned_in(mentionable)) # avoid re-mentioning users when editing
+               .where.not(id: mentionable.members.mentioned_in(mentionable)) # avoid re-mentioning users when editing
                .where.not(id: mentionable.users_to_not_mention)
   end
 end

@@ -91,7 +91,7 @@ describe API::CommentsController do
           it 'mentions appropriate users' do
             group.add_member! another_user
             comment_params[:body] = "Hello, @#{another_user.username}!"
-            expect { post :create, params: { comment: comment_params }, format: :json }.to change { Event.where(kind: :announcement_created).count }.by(1)
+            expect { post :create, params: { comment: comment_params }, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
           end
 
           it 'invites non-members to the discussion' do
