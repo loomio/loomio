@@ -56,6 +56,11 @@ class API::MembershipsController < API::RestfulController
     respond_with_collection
   end
 
+  def resend
+    service.resend membership: load_resource, actor: current_user
+    respond_with_resource
+  end
+
   def make_admin
     service.make_admin(membership: load_resource, actor: current_user)
     respond_with_resource
