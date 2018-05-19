@@ -44,8 +44,8 @@ angular.module('loomioApp').directive 'membershipCard', ->
       setTimeout -> document.querySelector('.membership-card__search input').focus()
 
     $scope.showLoadMore = ->
-      $scope.records().length < $scope.recordCount() &&
-      !$scope.vars.fragment                          &&
+      $scope.loader.numRequested < $scope.recordCount() &&
+      !$scope.vars.fragment                             &&
       !$scope.loader.loading
 
     $scope.canAddMembers = ->
@@ -57,6 +57,9 @@ angular.module('loomioApp').directive 'membershipCard', ->
           _.contains membership.userName().toLowerCase(), $scope.vars.fragment.toLowerCase()
       else
         $scope.records()
+
+    $scope.recordsDisplayed = ->
+      _.min [$scope.loader.numRequested, $scope.recordCount()]
 
     $scope.initialFetch = ->
       $scope.loader.fetchRecords(per: 4) unless $scope.fetched

@@ -281,8 +281,6 @@ da:
     privacy_public: 'Alle kan se debatten. Kun medlemmer kan deltage.'
     privacy_private: 'Debatten kan kun ses af medlemmer af gruppen {{group}}.'
     privacy_organisation: 'Debatten kan ses af medlemmer af gruppen {{parent}} og af medlemmer af gruppen {{group}}.'
-    make_announcement: Meddelelse
-    notified_count: '{{count}} personer vil modtage en email'
   announcement:
     form:
       outcome_announced:
@@ -621,7 +619,6 @@ da:
       proposals: Forslag
       proposals_aria_label: Viser pt. debatter med aktive forslag
       proposals_description: Vis kun debatter med aktive forslag
-      muted: Uden notifikationer
       muted_aria_label: Viser pt. debatter uden notifikationer
       muted_description: Vis kun debatter uden notifikationer
     aria_thread:

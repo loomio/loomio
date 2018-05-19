@@ -17,7 +17,7 @@ $controller = ($scope, $injector) ->
 
   $scope.warnDeprecation  = deprecatedBrowser()
   $scope.currentComponent = 'nothing yet'
-  $scope.renderSidebar    = viewportSize() == 'extralarge'
+  $scope.renderSidebar    = _.contains(['large', 'extralarge'], viewportSize())
   $scope.isLoggedIn       = -> AbilityService.isLoggedIn()
   $scope.isEmailVerified  = -> AbilityService.isEmailVerified()
   $scope.keyDown          = (event) -> broadcastKeyEvent($scope, event)
@@ -30,7 +30,11 @@ $controller = ($scope, $injector) ->
       delete LmoUrlService.params().set_password
       ModalService.open 'ChangePasswordForm'
 
-  EventBus.listen $scope, 'toggleSidebar',    -> $scope.renderSidebar = true
+  EventBus.listen $scope, 'toggleSidebar',   (event, show) ->
+    return if show == false
+    $scope.renderSidebar = true
+    EventBus.deafen $scope, 'toggleSidebar'
+
   EventBus.listen $scope, 'loggedIn',         -> $scope.loggedIn()
   EventBus.listen $scope, 'pageError', (_, error) ->
     $scope.pageError = error

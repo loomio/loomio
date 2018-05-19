@@ -359,8 +359,6 @@ it:
     privacy_public: 'Tutti possono vedere la discussione. Solo i membri possono partecipare.'
     privacy_private: 'La discussione sarà visibile solamente ai membri di {{group}}.'
     privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
-    make_announcement: Annuncio
-    notified_count: '{{count}} persone riceveranno un''email'
   announcement:
     form:
       outcome_announced:
@@ -776,7 +774,6 @@ it:
       proposals: Proposte
       proposals_aria_label: Sto mostrando solo le discussioni con proposte attive
       proposals_description: Visualizza solo le discussioni che contengono proposte attive
-      muted: Silenziato
       muted_aria_label: Discussioni attualmente silenziate
       muted_description: Visualizza solo le discussioni che sono state silenziate.
     aria_thread:

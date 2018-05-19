@@ -88,7 +88,10 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_attributes
-    [:title, :description, :group_id, :private, :document_ids, {document_ids: []}]
+    [:title, :description, :group_id, :private,
+     :forked_event_ids, {forked_event_ids: []},
+     :document_ids, {document_ids: []}
+    ]
   end
 
   def comment_attributes
