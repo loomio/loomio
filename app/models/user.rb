@@ -132,7 +132,6 @@ class User < ApplicationRecord
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
-  scope :mentioned_in, ->(model) { where(id: model.notifications.user_mentions.pluck(:user_id)) }
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
   scope :verified_first, -> { order(email_verified: :desc) }

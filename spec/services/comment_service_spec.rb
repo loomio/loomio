@@ -130,12 +130,6 @@ describe 'CommentService' do
       expect(comment.reload.body).to eq comment_params[:body]
     end
 
-    it 'notifies new mentions' do
-      comment_params[:body] = "A mention for @#{another_user.username}!"
-      expect(Events::UserMentioned).to receive(:publish!).with(comment, user, another_user)
-      CommentService.update(comment: comment, params: comment_params, actor: user)
-    end
-
     it 'does not renotify old mentions' do
       comment_params[:body] = "A mention for @#{another_user.username}!"
       expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to change { another_user.notifications.count }.by(1)
