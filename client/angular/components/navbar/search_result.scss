@@ -3,27 +3,11 @@ a.search-result, a.search-result:hover{
   color: $primary-text-color;
 }
 
-.search-result-item {
-  padding-bottom: 10px;
-}
-
 .search-result-group-name {
   @include fontSmall;
   color: $grey-on-grey;
-  padding-bottom: 5px;
 }
 
 .search-result-title {
   @include fontMedium;
-  padding-bottom: 5px;
-}
-
-.search-result-child-title {
-  @include fontSmall;
-  padding-bottom: 5px;
-}
-
-.search-result-blurb {
-  @include fontSmall;
-  color: $grey-on-grey;
 }

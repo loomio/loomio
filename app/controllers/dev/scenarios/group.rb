@@ -11,6 +11,16 @@ module Dev::Scenarios::Group
     redirect_to "http://ghostbusters.lvh.me:3000/"
   end
 
+  def setup_group_with_pending_invitations
+    sign_in patrick
+    create_group
+    other_invite = FactoryBot.create(:user, name: nil, email: "hidden@test.com")
+    my_invite    = FactoryBot.create(:user, name: nil, email: "shown@test.com")
+    FactoryBot.create :membership, group: create_group, accepted_at: nil, inviter: jennifer, user: other_invite
+    FactoryBot.create :membership, group: create_group, accepted_at: nil, inviter: patrick, user: my_invite
+    redirect_to group_url(create_group)
+  end
+
   def setup_group_with_empty_draft
     sign_in patrick
     @group = FormalGroup.create!(name: 'Secret Dirty Dancing Shoes',
