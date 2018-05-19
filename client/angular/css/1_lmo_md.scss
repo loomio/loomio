@@ -43,7 +43,7 @@
 
 md-dialog {
   overflow: hidden;
-  min-width: $small-max-px;
+  min-width: $tiny-max-px;
   max-width: 800px;
   max-height: 90%;
   @media (max-width: $tiny-max-px) {
