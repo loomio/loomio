@@ -423,7 +423,6 @@ sr:
       proposals: Predlozi
       proposals_aria_label: Trenutno prikazuje niti sa aktivnim predlozima
       proposals_description: Vidi samo niti sa aktivnim predlozima
-      muted: Utišano
       muted_aria_label: Trenutno prikazuje utišane niti
       muted_description: Vidi samo niti koje su utišane
     aria_thread:

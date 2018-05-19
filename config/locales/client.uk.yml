@@ -359,8 +359,6 @@ uk:
     privacy_public: 'Будь-хто може бачити тему. Тільки учасники можуть брати участь в обговоренні.'
     privacy_private: 'Тему можуть бачити тільки учасники групи {{group}}.'
     privacy_organisation: 'Тему можуть бачити тільки учасники груп {{parent}} та {{group}}.'
-    make_announcement: Оголошення
-    notified_count: '{{count}} людей отримають листа'
   announcement:
     form:
       outcome_announced:
@@ -787,7 +785,6 @@ uk:
       proposals: Пропозиції
       proposals_aria_label: Показані теми з активними пропозиціями
       proposals_description: Переглянути тільки теми з активними пропозиціями
-      muted: Вимкнуто
       muted_aria_label: Показані вимкнуті теми
       muted_description: Переглянути тільки теми що вимкнуті
     aria_thread:

@@ -303,6 +303,7 @@ fr:
     toggle_sidebar: 'Activer/désactiver la barre latérale'
     logo_title: 'Accueil'
   user_dropdown:
+    button_label: 'Menu de l''utilisateur'
     edit_profile: 'Modifier mon profil'
     email_settings: 'Paramètres e-mail'
     help: 'Aide'
@@ -398,8 +399,6 @@ fr:
     privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
-    make_announcement: Notification
-    notified_count: '{{count}} personnes seront notifiées'
   announcement:
     audiences:
       parent_group: Membres de {{name}}
@@ -1585,6 +1584,7 @@ fr:
     name: Nom
     email: Adresse e-mail
     password: Mot de passe
+    reactivate: Envoyez un courriel de réactivation
   install_slack:
     modal_title: Installer Slack
     modal_helptext: Pour commencer, connectez-vous à Slack. Nous vous redirigerons là dans un instant, ou vous pouvez cliquer ci-dessous pour continuer.

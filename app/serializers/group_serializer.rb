@@ -74,7 +74,7 @@ class GroupSerializer < Simple::GroupSerializer
   def cover_urls
     {
       small:      cover_photo.url(:desktop),
-      medium:     cover_photo.url(:desktop),
+      medium:     cover_photo.url(:largedesktop),
       large:      cover_photo.url(:largedesktop),
       extralarge: cover_photo.url(:largedesktop)
     }

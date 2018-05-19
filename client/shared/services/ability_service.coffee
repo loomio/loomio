@@ -31,6 +31,10 @@ module.exports = new class AbilityService
   canRespondToComment: (comment) ->
     _.contains comment.discussion().members(), Session.user()
 
+  canForkComment: (comment) ->
+    @canMoveThread(comment.discussion()) &&
+    !comment.isReply()
+
   canStartPoll: (model) ->
     return unless model
     switch model.constructor.singular

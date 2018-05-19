@@ -55,11 +55,12 @@ nl_NL:
           Je twee Loomio accounts zijn samengevoegd tot één account.
           Gelieve vanaf nu <strong>%{email}</strong> te gebruiken om op Loomio in te loggen.
   email:
+    common:
+      resend: Deze link vervalt binnen 24 uur en kan slechts éénmalig gebruikt worden.
     login:
       subject: Log in op %{site_name}
       intro: Hallo %{name}, hier is een link om in te loggen op je%{site_name} account.
       login: Log in als %{name}
-      resend: Deze link vervalt binnen 24 uur en kan slechts éénmalig gebruikt worden.
     contact_request:
       subject: "%{name} zou graag in contact staan met jou op %{site_name}!"
       intro: "%{name} (%{email}) heeft een verzoek gestuurd om met jou in contact te komen staan."

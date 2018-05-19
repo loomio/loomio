@@ -60,11 +60,12 @@ es:
           Tus dos cuentas de Loomio han sido integradas en una sola.
           Para acceder a Loomio desde ahora por favor usa <strong>%{email}</strong> cuando ingreses.
   email:
+    common:
+      resend: 'Este enlace perderá validez en 24hrs y solo puede ser usado una vez. '
     login:
       subject: Ingresa a %{site_name}
       intro: Hola %{name}, aquí esta el enlace para ingresar en tu cuenta en %{site_name}
       login: Ingresa como %{name}
-      resend: 'Este enlace perderá validez en 24hrs y solo puede ser usado una vez. '
     contact_request:
       subject: "%{name}quiere conectarse contigo en %{site_name}"
       intro: "%{name} (%{email}) Te ha enviado una solicitud de conexión."
@@ -493,21 +494,6 @@ es:
         ¿Has intentado correr '/loomio' en uno de los siguientes canales?
         %{integrations}
     stance_not_valid: "Perdón pero no pudimos crear el voto en *%{poll}*. <%{url} |Haz clic aquí> para votar directamente. "
-    group_identity_created: |
-        Hola, soy Loomio Bot. *%{author}* me ha añadido.
-        Puedo ayudar a tu equipo a tomar decisiones juntos.
-
-        Mis funcionalidades incluyen:
-
-        - resaltar cuando hay decisiones activas
-        - permitirle a las personas votar en decisiones desde Slack
-        - mostrar donde es que las personas están de acuerdo o no
-        - comunicar el resultado de las decisiones
-        - mantener un archivo de decisiones en tu grupo de Loomio.
-
-        Para saber más escribe _/loomio help_
-        Para participar, deberás ser parte del grupo *%{group}* en Loomio.
-        Si aún no eres parte, <%{url}|Haz clic aquí> para unirte.
     request_authorization_message: "Solo un paso más: <%{url}haz clic aquí> para autorizar que tu cuenta de Slack use Loomio. (solo deberás hacerlo una vez)"
     poll_closed: "*%{title}* ha cerrado! <%{url} haz clic aquí>  para ver el resultado"
     go_to_slack: Ir a Slack
@@ -515,19 +501,6 @@ es:
     click_to_vote: "Selecciona una opción debajo para votar:"
     time_zone_message: (todos los horarios están en la zona horaria %{zone})
     authorized_message: Genial! Ya estás listo para votar desde Slack.
-    community_poll_published: "@%{username} inició una nueva %{type}:"
     initiate: |
         Ok, hagámoslo! <%{url} haz clic aquí para iniciar tu %{type}>.
         (nota: publicaremos en este canal una vez que sea creada, para que todos puedan participar)
-    slash_command_help: |
-        Ingresa un estilo de decisión (escrito en Ingles como se muestra debajo) y una pregunta, y comenzaremos desde ahí.
-        Puedes elegir estos estilos de decisión:
-        'proposal': Busca el acuerdo colectivo
-        'count':      Comprueba la participación y busca voluntarios
-        'poll':          Mide la popularidad de opciones
-        'dot_vote': Prioriza una lista de opciones
-        'meeting':  Encuentra un horario para la reunion
-
-        Por ejemplo escribe:
-        /loomio count ¿Quién viene a la fiesta el Domingo?
-        Para iniciar una nueva comprobación.
