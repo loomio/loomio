@@ -1,3 +1,7 @@
+.discussion-modal {
+  max-width: $small-max-px;
+}
+
 .discussion-form__options {
   clear: both;
 }
@@ -13,6 +17,7 @@
 }
 
 @media (max-width: $small-max-px){
+  .discussion-modal { max-width: auto; }
   .discussion-form__formatting-help { display: none; }
   .thread-helptext { display: none; }
 }
