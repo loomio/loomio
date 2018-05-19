@@ -47,6 +47,10 @@ module Ability::Discussion
       user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
     end
 
+    can :fork, ::Discussion do |discussion|
+      discussion.forked_event_ids.any? && can?(:move, discussion)
+    end
+
     can [:set_volume,
          :show_description_history,
          :preview_version,

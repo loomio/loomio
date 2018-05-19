@@ -18,6 +18,12 @@ class MembershipService
     end
   end
 
+  def self.resend(membership:, actor:)
+    actor.ability.authorize! :resend, membership
+    EventBus.broadcast 'membership_resend', membership, actor
+    Events::MembershipResent.publish!(membership, actor)
+  end
+
   def self.make_admin(membership:, actor:)
     actor.ability.authorize! :make_admin, membership
     membership.update admin: true

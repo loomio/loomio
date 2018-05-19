@@ -270,7 +270,6 @@ hu:
     mark_as_read: Olvasottként jelöl
     filtering:
       proposals: Javaslatok
-      muted: Némított
     threads_from:
       today: 'Ma'
       yesterday: 'Tegnap'

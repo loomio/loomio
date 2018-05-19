@@ -39,6 +39,10 @@ module.exports = class MembershipModel extends BaseModel
         _.each @group().discussions(), (discussion) ->
           discussion.update(discussionReaderVolume: null)
 
+  resend: ->
+    @remote.postMember(@keyOrId(), 'resend').then =>
+      @resent = true
+
   isMuted: ->
     @volume == 'mute'
 

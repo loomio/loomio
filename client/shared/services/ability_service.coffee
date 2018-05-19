@@ -31,6 +31,10 @@ module.exports = new class AbilityService
   canRespondToComment: (comment) ->
     _.contains comment.discussion().members(), Session.user()
 
+  canForkComment: (comment) ->
+    @canMoveThread(comment.discussion()) &&
+    !comment.isReply()
+
   canStartPoll: (model) ->
     return unless model
     switch model.constructor.singular
@@ -159,6 +163,11 @@ module.exports = new class AbilityService
     membership.group().memberIds().length > 1 and
     (!membership.admin or membership.group().adminIds().length > 1) and
     (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
+
+  canResendMembership: (membership) ->
+    membership and
+    !membership.acceptedAt and
+    membership.inviter() == Session.user()
 
   canDeactivateUser: ->
    _.all Session.user().memberships(), (membership) ->

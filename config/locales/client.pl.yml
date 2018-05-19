@@ -360,7 +360,6 @@ pl:
       proposals: Rekomendacje
       proposals_aria_label: Pokazywane są wątki z aktywnymi rekomendacjami
       proposals_description: Zobacz tylko wątki  aktywnymi rekomendacjami
-      muted: Wyciszone
       muted_aria_label: Pokazywane są wyciszone wątki
       muted_description: Przegląd tylko wątków wyciszonych
     aria_thread:

@@ -209,7 +209,6 @@ ga_IE:
     context_label: 'Comhthéacs'
     context_placeholder: 'Cuir dóthain eolas cúlra ar fáil don bhaicle le go mbeidh an plé torthúil. Is féidir seo a nuashonrú fad is atá an plé ar bun'
     privacy_label: 'Príobháideachas'
-    make_announcement: Fógra
   cover_photo_form:
     heading: 'Grianghraf cumhdaigh nua'
     upload_link: 'Uasluchtaigh grianghraf cumhdaigh nua'
@@ -415,7 +414,6 @@ ga_IE:
       proposals: Tograí
       proposals_aria_label: Ag taispeáint faoi láthair na snáitheanna a bhfuil tograí gníomhaíocht acu
       proposals_description: Féach ar snáitheanna le tograí gníomhacha amháin
-      muted: Balbhaithe
       muted_aria_label: Ag taispeáint faoi láthair na snáitheanna balbhaithe
       muted_description: Taispeáin na snáitheanna balbhaithe amháin
     aria_thread:

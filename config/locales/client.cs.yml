@@ -270,8 +270,6 @@ cs:
     privacy_public: 'Každý může vidět vlákno. Pouze členové se mohou účastnit.'
     privacy_private: 'Vlákno bude vidět pouze pro členy {{group}}.'
     privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
-    make_announcement: Oznámení
-    notified_count: '{{count}} lidí bude obesláno e-mailem'
   announcement:
     form:
       outcome_announced:
@@ -498,7 +496,6 @@ cs:
       proposals: Návrhy
       proposals_aria_label: Momentálně se zobrazují vlákna s aktivními návrhy
       proposals_description: Zobrazit jen vlákna s aktivními návrhy
-      muted: Ztlumená
       muted_aria_label: Momentálně se zobrazují ztlumená vlákna
       muted_description: Zobrazit jen ztlumená vlákna
     aria_thread:

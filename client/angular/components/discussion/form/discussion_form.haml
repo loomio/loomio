@@ -1,5 +1,6 @@
 .discussion-form
-  .lmo-hint-text{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew()"}
+  .lmo-hint-text{translate: "group_page.discussions_placeholder", ng-show: "discussion.isNew() && !discussion.isForking()"}
+  .lmo-hint-text{translate: "discussion_form.fork_notice", ng-if: "discussion.isForking()", translate-value-count: "{{discussion.forkedEvents().length}}", translate-value-title: "{{discussion.forkTarget().discussion().title}}"}
 
   %md-input-container.md-block{ng-show: "showGroupSelect"}
     %label{for: "discussion-group-field", translate: "discussion_form.group_label"}
@@ -15,7 +16,7 @@
         %input.discussion-form__title-input.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-model-options: "{ allowInvalid: true }", ng-required: "true", maxlength: "255"}
       %validation_errors{subject: "discussion", field: "title"}
 
-    %lmo_textarea{model: "discussion", field: "description", placeholder: "'discussion_form.context_placeholder' | translate", label: "'discussion_form.context_label' | translate"}
+    %lmo_textarea{model: "discussion", field: "description", placeholder: "'discussion_form.context_placeholder' | translate", label: "'discussion_form.context_label' | translate", ng-if: "!discussion.isForking()"}
 
     %md-list.discussion-form__options
       %md-list-item.discussion-form__privacy-form{ng-if: "showPrivacyForm()"}

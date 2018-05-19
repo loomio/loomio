@@ -367,8 +367,6 @@ es:
     privacy_public: 'Cualquier persona puede ver los hilos. Solo miembros pueden participar. '
     privacy_private: 'Los hilos solo serán visibles para miembros de {{group}}.'
     privacy_organisation: 'Los hilos serán visibles para miembros de {{parent}} y miembros de {{group}}.'
-    make_announcement: Anuncio
-    notified_count: '{{count}} personas recibirán un correo electrónico'
   announcement:
     form:
       outcome_announced:
@@ -829,7 +827,6 @@ es:
       proposals: Propuestas
       proposals_aria_label: Mostrando hilos con propuestas activas
       proposals_description: Ver únicamente hilos con propuestas activas
-      muted: Silenciado
       muted_aria_label: Mostrando hilos silenciados
       muted_description: Ver únicamente hilos que han sido silenciados
     aria_thread:
