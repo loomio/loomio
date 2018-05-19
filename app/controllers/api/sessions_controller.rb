@@ -5,10 +5,11 @@ class API::SessionsController < Devise::SessionsController
   def create
     if user = attempt_login
       user.reactivate! if pending_token&.is_reactivation
+      user.legal_accepted = resource_params[:legal_accepted]
+      user.name = resource_params[:name] if resource_params[:name]
+      user.save!
       sign_in(user)
       flash[:notice] = t(:'devise.sessions.signed_in')
-      user.set_legal_accepted_at if resource_params[:legal_accepted]
-      user.update(name: resource_params[:name]) if resource_params[:name]
       render json: BootData.new(user).data
     else
       render json: { errors: { password: [t(:"user.error.bad_login")] } }, status: 401
@@ -47,5 +48,4 @@ class API::SessionsController < Devise::SessionsController
       u.permit(:code, :name, :email, :password, :remember_me)
     end
   end
-
 end

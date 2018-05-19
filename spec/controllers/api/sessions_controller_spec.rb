@@ -28,6 +28,7 @@ describe API::SessionsController do
       end
 
       it 'updates legal_accepted_at if legal accepted' do
+        token.update(user: user)
         post :create, params: { user: { legal_accepted: true } }
         expect(user.reload.legal_accepted_at).to be_present
       end
