@@ -66,6 +66,7 @@ setupAngularHotkeys = ($rootScope) ->
     pressedG: -> ModalService.open 'GroupModal',           group:        -> Records.groups.build()
     pressedT: -> ModalService.open 'DiscussionStartModal', discussion:   -> Records.discussions.build(groupId: (AppConfig.currentGroup or {}).id)
     pressedP: -> ModalService.open 'PollCommonStartModal', poll:         -> Records.polls.build()
+    pressedS: -> EventBus.broadcast $rootScope, 'toggleSidebar'
 
 setupAngularFlash = ($rootScope) ->
   FlashService.setBroadcastMethod (flashOptions) ->

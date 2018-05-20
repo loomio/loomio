@@ -14,6 +14,14 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
       $scope.canRemoveMembership() or
       $scope.canToggleAdmin()
 
+    $scope.canResendMembership = ->
+      AbilityService.canResendMembership($scope.membership)
+
+    $scope.resendMembership = ->
+      FlashService.loading()
+      $scope.membership.resend().then ->
+        FlashService.success "membership_dropdown.invitation_resent"
+
     $scope.canRemoveMembership = ->
       AbilityService.canRemoveMembership($scope.membership)
 
