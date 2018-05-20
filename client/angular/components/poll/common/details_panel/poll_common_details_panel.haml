@@ -1,7 +1,7 @@
   .poll-common-details-panel.lmo-action-dock-wrapper
     %h3.lmo-card-subheading{translate: "poll_common.details", ng-if: "poll.outcome()"}
     .poll-common-details-panel__started-by
-      %span{translate: "poll_card.started_by", translate-value-name: "{{poll.author().name}}"}
+      %span{translate: "poll_card.started_by", translate-value-name: "{{poll.authorName()}}"}
       %span{aria-hidden: "true"}>·
       %poll_common_closing_at{poll: "poll"}
       %span{ng-if: "poll.anonymous"}>·

@@ -1,5 +1,6 @@
 RecordLoader = require 'shared/services/record_loader'
-I18n         = require 'shared/services/i18n'
+
+{ participantName } = require 'shared/helpers/poll'
 
 angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ->
   scope: {stance: '='}
@@ -8,11 +9,7 @@ angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', ->
     $scope.barTextFor = (choice) ->
       "#{choice.score} - #{choice.pollOption().name}".replace(/\s/g, '\u00a0')
 
-    $scope.participantName = ->
-      if $scope.stance.participant()
-        $scope.stance.participant().name
-      else
-        I18n.t('common.anonymous')
+    $scope.participantName = -> participantName($scope.stance)
 
     percentageFor = (choice) ->
       # max = _.max(_.map($scope.stance.stanceChoices(), (choice) -> choice.score))

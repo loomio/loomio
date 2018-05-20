@@ -344,6 +344,7 @@ en:
     invitations: "Invitations"
 
   membership_dropdown:
+    set_title: "Set title"
     resend: "Resend invitation"
     invitation_resent: "Invitation resent"
     make_coordinator: 'Make coordinator'
@@ -855,6 +856,16 @@ en:
   memberships_panel:
     add_coordinator: Make coordinator
     remove_coordinator: Demote coordinator
+
+  membership_form:
+    title: Set title for membership
+    title_helptext:
+      group:      This title will be visible for all threads, decisions, comments, and stances in <strong>{{title}}</strong>
+      discussion: This title will be visible for all decisions, comments, and stances in <strong>{{title}}</strong>
+      poll:       This title will be visible with this user's stance in <strong>{{title}}</strong>
+    title_label: title
+    title_placeholder: E.g. 'Coordinator', or 'Facilitator'
+    updated: Membership title updated
 
   pending_invitations_card:
     heading: Pending invitations

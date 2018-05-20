@@ -5,6 +5,6 @@
       %span> {{poll.title}}
     .md-caption.lmo-grey-on-white.lmo-truncate-text
       %span{ng-if: "showGroupName()"} {{ poll.group().fullName }}
-      %span{ng-if: "!showGroupName()", translate: "poll_common_collapsed.by_who", translate-value-name: "{{poll.author().name}}"}>
+      %span{ng-if: "!showGroupName()", translate: "poll_common_collapsed.by_who", translate-value-name: "{{poll.authorName()}}"}>
       %span>·
       %poll_common_closing_at{poll: "poll"}
