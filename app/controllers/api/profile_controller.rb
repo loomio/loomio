@@ -6,10 +6,8 @@ class API::ProfileController < API::RestfulController
   end
 
   def mentionable_users
-    @users = instantiate_collection { |collection| collection.search_for(params[:q]) }
-    render json: @users, each_serializer: Simple::UserSerializer, root: :users
-    # this dont work yet.
-    # respond_with_collection serializer: Simple::UserSerializer, root: :users
+    instantiate_collection { |collection| collection.search_for(params[:q]) }
+    respond_with_collection serializer: Simple::UserSerializer, root: :users
   end
 
   def me
