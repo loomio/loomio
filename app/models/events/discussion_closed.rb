@@ -2,7 +2,7 @@ class Events::DiscussionClosed < Event
   include Events::LiveUpdate
 
   def self.publish!(discussion, actor)
-    super discussion
+    super discussion,
           user: actor,
           parent: discussion.created_event,
           discussion: discussion,
