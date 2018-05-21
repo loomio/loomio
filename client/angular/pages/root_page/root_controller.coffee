@@ -5,6 +5,7 @@ AbilityService  = require 'shared/services/ability_service'
 LmoUrlService   = require 'shared/services/lmo_url_service'
 ModalService    = require 'shared/services/modal_service'
 IntercomService = require 'shared/services/intercom_service'
+FlashService    = require 'shared/services/flash_service'
 
 { signIn }                                       = require 'shared/helpers/user'
 { viewportSize, trackEvents, deprecatedBrowser } = require 'shared/helpers/window'
@@ -17,7 +18,6 @@ $controller = ($scope, $injector) ->
   $scope.theme  = AppConfig.theme
   $scope.assets = AppConfig.assets
   setupAngular($scope, $injector)
-  signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, $scope.loggedIn)
 
   $scope.warnDeprecation  = deprecatedBrowser()
   $scope.currentComponent = 'nothing yet'
@@ -28,7 +28,10 @@ $controller = ($scope, $injector) ->
   $scope.loggedIn = ->
     $scope.pageError = null
     $scope.refreshing = true
-    $injector.get('$timeout') -> $scope.refreshing = false
+    $injector.get('$timeout') ->
+      $scope.refreshing = false
+      FlashService.success AppConfig.userPayload.flash.notice
+      delete AppConfig.userPayload.flash.notice
     IntercomService.boot()
     if LmoUrlService.params().set_password
       delete LmoUrlService.params().set_password
@@ -49,6 +52,7 @@ $controller = ($scope, $injector) ->
     setCurrentComponent(options)
 
   initLiveUpdate()
+  signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, $scope.loggedIn)
 
   return
 
