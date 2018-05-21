@@ -311,8 +311,6 @@ de:
     privacy_public: 'Jede.r kann die Diskussion sehen. Nur Mitglieder können teilnehmen.'
     privacy_private: 'Die Diskussion wird nur für Mitglieder von {{group}} sichtbar sein.'
     privacy_organisation: 'Diese Diskussion wird nur für Mitglieder von {{parent}} und {{group}} sichtbar sein.'
-    make_announcement: Benachrichtigung
-    notified_count: '{{count}} Mitglieder werden per E-Mail benachrichtigt'
   announcement:
     form:
       outcome_announced:
@@ -665,7 +663,6 @@ de:
       proposals: Vorschläge
       proposals_aria_label: Momentan werden Diskussionen mit laufenden Vorschlägen angezeigt
       proposals_description: Nur Diskussionen mit laufenden Vorschlägen anzeigen
-      muted: Stummgeschaltet
       muted_aria_label: Momentan werden nur stumm-geschaltete Diskussionen angezeigt
       muted_description: Nur Diskussionen anzeigen, die Du stumm geschaltet hast.
     aria_thread:

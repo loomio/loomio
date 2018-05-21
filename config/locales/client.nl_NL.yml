@@ -358,8 +358,6 @@ nl_NL:
     privacy_public: 'Iedereen kan de discussie zien. Alleen leden kunnen deelnemen.'
     privacy_private: 'De discussie zal enkel zichtbaar zijn voor leden van {{group}}'
     privacy_organisation: 'Het bord zal zichtbaar zijn voor leden van {{parent}} en leden van {{group}}'
-    make_announcement: Aankondiging
-    notified_count: '{{count}} mensen zullen ge-e-mailed worden'
   announcement:
     form:
       outcome_announced:
@@ -786,7 +784,6 @@ nl_NL:
       proposals: Voorstellen
       proposals_aria_label: Toont momentel discussies met actieve voorstellen
       proposals_description: Bekijk alleen discussies met actieve voorstellen
-      muted: Gedempt
       muted_aria_label: Toont de momenteel gedempte borden
       muted_description: Bekijk alleen discussies die gedempt zijn
     aria_thread:

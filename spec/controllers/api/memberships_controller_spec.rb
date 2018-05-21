@@ -37,6 +37,45 @@ describe API::MembershipsController do
     end
   end
 
+  describe 'resend' do
+    let(:group) { create :formal_group }
+    let(:discussion) { create :discussion }
+    let(:poll) { create :poll }
+    let(:user) { create :user }
+    let(:group_invite) { create :membership, accepted_at: nil, inviter: user, group: group }
+    let(:discussion_invite) { create :membership, accepted_at: nil, inviter: user, group: discussion.guest_group }
+    let(:poll_invite) { create :membership, accepted_at: nil, inviter: user, group: poll.guest_group }
+
+    before { sign_in user }
+
+    it 'can resend a group invite' do
+      expect { post :resend, params: { id: group_invite.id } }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect(response.status).to eq 200
+    end
+
+    it 'can resend a discussion invite' do
+      expect { post :resend, params: { id: discussion_invite.id } }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect(response.status).to eq 200
+    end
+
+    it 'can resend a poll invite' do
+      expect { post :resend, params: { id: poll_invite.id } }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect(response.status).to eq 200
+    end
+
+    it 'does not send if not the inviter' do
+      group_invite.update(inviter: create(:user))
+      expect { post :resend, params: { id: group_invite.id } }.to_not change { ActionMailer::Base.deliveries.count }
+      expect(response.status).to eq 403
+    end
+
+    it 'does not send if accepted' do
+      group_invite.update(accepted_at: 1.day.ago)
+      expect { post :resend, params: { id: group_invite.id } }.to_not change { ActionMailer::Base.deliveries.count }
+      expect(response.status).to eq 403
+    end
+  end
+
   describe 'set_volume' do
     before do
       @discussion = FactoryBot.create(:discussion, group: group)
@@ -136,10 +175,9 @@ describe API::MembershipsController do
         get :index, params: { group_id: group.id, pending: "true" }, format: :json
         json = JSON.parse(response.body)
 
-        users = json['users'].map { |c| c['id'] }
-        user_emails = json['users'].map { |c| c['email'] }
+        user_ids = json['users'].map { |c| c['id'] }
         groups = json['groups'].map { |g| g['id'] }
-        expect(user_emails).to include pending_named_barb.email
+        expect(user_ids).to include pending_named_barb.id
         expect(groups).to include group.id
       end
 

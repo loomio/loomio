@@ -153,7 +153,6 @@ mi:
       start: Tīmatatia
     filtering:
       proposals: Ngā whakatakoto
-      muted: Kua whakahāngūtia
     threads_from:
       today: 'Ākuanei'
       yesterday: 'Inanahi'

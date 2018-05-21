@@ -5,4 +5,5 @@
 .navbar-search__results {
   width: $tiny-max-px !important;
   max-width: 100% !important;
+  md-autocomplete-parent-scope { width: 100%; }
 }

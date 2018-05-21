@@ -437,7 +437,6 @@ ca:
       proposals: Propostes
       proposals_aria_label: Mostrant les discussions amb propostes actives
       proposals_description: Mostra només les discussions amb propostes actives
-      muted: Silenciat
       muted_aria_label: Mostrant les discussions silenciades
       muted_description: Mostra només les discussions que han estat silenciades
     aria_thread:
