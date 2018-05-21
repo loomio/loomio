@@ -1833,3 +1833,9 @@ en:
       Now, whenever anyone starts a poll in this group, they'll have the option to
       post updates about that poll into a channel in your slack team.
     start_poll_now: Make a decision now
+
+  timepicker:
+    add_times: Add New Times
+    clear_times: Clear Times
+    copy_to_all: Copy to all
+    remove_date: Remove Date

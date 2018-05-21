@@ -22,3 +22,23 @@ module.exports =
       { 'background-color': 'accent-300'}
     else
       {}
+
+  generateDayTimes: (increment) ->
+    timeperhour = Math.floor(60 / increment)
+    hours = _.range(1, 13)
+    minutes = _.range(timeperhour).map (i)-> i*increment
+    times = []
+
+    for ampm in ['am','pm']
+      for hour in hours
+        for minute in minutes
+          zero = if minute < 10 then '0' else ''
+          times.push("#{hour}:#{zero}#{minute}#{ampm}")
+
+    times
+
+  searchDayTimes: (search_exp, times) ->
+    times.filter( (item) ->
+      # the item contains the text of the search expression
+      item[0] == search_exp[0]
+    )
