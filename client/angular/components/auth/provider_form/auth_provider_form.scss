@@ -17,6 +17,12 @@
   color: white;
   text-transform: none;
 }
+
+.auth-email-form__submit {
+  @include md-subhead();
+  height: 40px;
+  text-transform: none;
+}
 .auth-provider-form__providers .md-button i { margin: 3px 16px 0 16px }
 .auth-provider-form__providers span { padding: 0 4px; }
 
