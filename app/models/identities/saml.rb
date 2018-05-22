@@ -15,7 +15,7 @@ class Identities::Saml < Identities::Base
       settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(ENV['SAML_APP_SECRET'])
       settings.assertion_consumer_service_url = saml_oauth_url
       settings.issuer                         = root_url
-      settings.name_identifier_format         = ENV['SLACK_APP_EMAIL_FIELD']
+      settings.name_identifier_format         = ENV['SAML_APP_EMAIL_FIELD']
       settings
     end
   end
