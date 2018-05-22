@@ -6,10 +6,17 @@ class Identities::Saml < Identities::Base
   def initialize(response: "")
     super.tap do
       self.response          = OneLogin::RubySaml::Response.new(response, skip_recipient_check: true)
-      self.response.settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(ENV['SAML_APP_SECRET'])
-      self.response.settings.assertion_consumer_service_url = saml_oauth_url
-      self.response.settings.issuer                         = root_url
-      self.response.settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
+      self.response.settings = settings
+    end
+  end
+
+  def settings
+    @settings ||= begin
+      settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(ENV['SAML_APP_SECRET'])
+      settings.assertion_consumer_service_url = saml_oauth_url
+      settings.issuer                         = root_url
+      settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
+      settings
     end
   end
 
