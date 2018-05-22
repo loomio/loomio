@@ -1720,6 +1720,7 @@ en:
     create_account: Create account
     sign_in_as: Sign in as {{name}}
     continue_with_provider: Continue with {{provider}}
+    continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
     invitation_required: You need an invitation to create an account.
     invitation_required: Account not found. New accounts are by invitation only.
