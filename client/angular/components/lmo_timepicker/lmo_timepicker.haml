@@ -1,15 +1,7 @@
 .lmo-timepicker
-  .lmo-flex--row.lmo-flex__space-between.lmo-flex__center
-    .lmo-timepicker__date {{date}}
-    %md-menu
-      %md-button{ng-click:"$mdMenu.open($event)"}
-        %i.mdi.mdi-24px.mdi-dots-horizontal.md-button--tiny
-      %md-menu-content
-        %md-button{ng-click:"copy_to_all()", translate:"timepicker.copy_to_all"}
-        %md-button{ng-click:"remove_date()", translate:"timepicker.remove_date"}
-        %md-button{ng-click:"clear_times()", translate:"timepicker.clear_times"}
-
-  %md-chips{ ng-model: "selectedTimes", readonly: "false", md-autocomplete-snap: "", md-require-match:"true"}
+  .lmo-timepicker__date
+    {{displayDayDate(dates)}}
+  %md-chips{ ng-model: "$parent.dateToTimes[dateKey(dates)]", readonly: "false", md-autocomplete-snap: "", md-require-match:"true"}
     %md-autocomplete{md-autoselect:"true", md-selected-item:"selectedItem", md-search-text:"searchText", md-items:"item in queryTimes(times, searchText)", md-item-text:"displayTime(item)", placeholder: "{{'timepicker.add_times' | translate}}"}
       %md-item-template {{displayTime(item)}}
     %md-chip-template

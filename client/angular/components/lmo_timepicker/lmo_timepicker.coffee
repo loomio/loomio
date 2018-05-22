@@ -1,16 +1,16 @@
 EventBus = require('shared/services/event_bus')
 {generateDayTimes, selectDayTimes} = require('shared/helpers/calendar')
+TimeService = require 'shared/services/time_service'
 
 angular.module('loomioApp').directive 'lmoTimepicker', ->
-  scope: {date:'='}
+  scope: {date:'=?'}
   restrict: 'E'
   templateUrl: 'generated/components/lmo_timepicker/lmo_timepicker.html'
-  controller: ['$scope', '$element', ($scope, $element) ->
+  controller: ['$scope', ($scope) ->
 
     $scope.selectedTimes = []
     $scope.selectedItem = null
-
-    $scope.displayTime = (time) ->
+      $scope.displayTime = (time) ->
       minute = if time.minute.length == 1 then '0'+time.minute else time.minute
       "#{time.hour}:#{minute}#{time.ampm}"
 

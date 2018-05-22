@@ -1,5 +1,16 @@
 .poll-meeting-form-options
   %lmo_calendar{selected: "poll.meetingDates"}
-  %md-list
-    %md-list-item{ng-repeat: "date in poll.meetingDates"}
-      %lmo-timepicker{date: "displayDayDate(date)"}
+
+  .lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__space-between
+    %span{translate: "poll_meeting_form_options.timed_event"}
+    %md-switch{ng-model: "allDay"}
+    %span{translate: "poll_meeting_form_options.all_day"}
+  %div{ng-if:"!allDay", ng-replace:"true"}
+    .lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__space-between
+      %md-switch{ng-change:"toggleSelect", ng-model: "selectForAll", translate: "poll_meeting_form_options.specify_each_time"}
+
+    %md-list{ng-if: "selectForAll && poll.meetingDates.length > 0"}
+      %lmo-timepicker
+    %md-list{ng-if: "!selectForAll && poll.meetingDates.length > 0"}
+      %md-list-item{ng-repeat: "date in poll.meetingDates"}
+        %lmo-timepicker{date: date}
