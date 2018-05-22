@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'lmoTimepicker', ->
 
     $scope.selectedTimes = []
     $scope.selectedItem = null
-      $scope.displayTime = (time) ->
+    $scope.displayTime = (time) ->
       minute = if time.minute.length == 1 then '0'+time.minute else time.minute
       "#{time.hour}:#{minute}#{time.ampm}"
 
