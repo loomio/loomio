@@ -1,5 +1,5 @@
 EventBus = require('shared/services/event_bus')
-{generateDayTimes, searchDayTimes} = require('shared/helpers/calendar')
+{generateDayTimes, selectDayTimes} = require('shared/helpers/calendar')
 
 angular.module('loomioApp').directive 'lmoTimepicker', ->
   scope: {date:'='}
@@ -8,27 +8,12 @@ angular.module('loomioApp').directive 'lmoTimepicker', ->
   controller: ['$scope', '$element', ($scope, $element) ->
 
     $scope.selectedTimes = []
-
-    $scope.searchText = null
-
     $scope.selectedItem = null
 
     $scope.displayTime = (time) ->
-      time
+      minute = if time.minute.length == 1 then '0'+time.minute else time.minute
+      "#{time.hour}:#{minute}#{time.ampm}"
 
     $scope.times = generateDayTimes(30)
-
-    $scope.queryTimes =  ->
-      searchDayTimes($scope.searchText, $scope.times).map((time) ->
-        {display:time}
-      )
-
-    $scope.searchTextChange =  (text) ->
-      $scope.searchText = text
-      console.log("text change: ", text)
-
-    $scope.selectedItemChange = (item) ->
-      console.log("time selected: ", item)
-      $scope.selectedTimes.push(item.display)
-
+    $scope.queryTimes = selectDayTimes
   ]

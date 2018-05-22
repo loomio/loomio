@@ -10,7 +10,7 @@
         %md-button{ng-click:"clear_times()", translate:"timepicker.clear_times"}
 
   %md-chips{ ng-model: "selectedTimes", readonly: "false", md-autocomplete-snap: "", md-require-match:"true"}
-    %md-autocomplete{md-selected-item:"selectedItem", md-search-text-change: "searchTextChange(searchText)", md-search-text:"searchText", md-items:"item in queryTimes()", md-item-text:"item.display", placeholder: "{{'timepicker.add_times' | translate}}"}
-      %md-item-template {{item.display}}
+    %md-autocomplete{md-autoselect:"true", md-selected-item:"selectedItem", md-search-text:"searchText", md-items:"item in queryTimes(times, searchText)", md-item-text:"displayTime(item)", placeholder: "{{'timepicker.add_times' | translate}}"}
+      %md-item-template {{displayTime(item)}}
     %md-chip-template
-      %span {{$chip.display}}
+      %span {{displayTime($chip)}}

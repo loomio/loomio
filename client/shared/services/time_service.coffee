@@ -7,6 +7,10 @@ module.exports = new class TimeService
     else
       _.invert(AppConfig.timeZones)[zone]
 
+  displayDayDate: (m, zone) =>
+    m = moment(m) if typeof m is 'string'
+    @inTimeZone(m, zone).format("ddd D MMMM#{@sameYear(m)}")
+
   displayDay: (m, zone) =>
     m = moment(m) if typeof m is 'string'
     @inTimeZone(m, zone).format('ddd')
