@@ -36,8 +36,6 @@ env:
     - MIN_THREADS=3
     - MAX_THREADS=3
     - CC_TEST_REPORTER_ID=9fbffa5d3f717f4adb3cd49ab4742701ae7c604f3c3afea23fd04aed5cb88ce0
-    - TERMSU_URL=https://www.loomio.org/terms_of_use
-    - PRIVACY_URL=https://www.loomio.org/privacy
   matrix:
     - TASK=e2e
     - TASK=rspec

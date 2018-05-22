@@ -6,19 +6,6 @@ I18n        = require 'shared/services/i18n'
 { hardReload }    = require 'shared/helpers/window'
 { submitOnEnter } = require 'shared/helpers/keyboard'
 
-validSignup = (vars, user) ->
-  user.errors = {}
-
-  if !vars.name
-    user.errors.name = [I18n.t('auth_form.name_required')]
-
-  if AppConfig.theme.terms_url && !vars.legalAccepted
-    user.errors.legalAccepted = [I18n.t('auth_form.terms_required')]
-
-  if _.keys(user.errors)
-    user.name           = vars.name
-    user.legalAccepted  = vars.legalAccepted
-
 angular.module('loomioApp').directive 'authSignupForm', ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signup_form/auth_signup_form.html'
@@ -40,9 +27,9 @@ angular.module('loomioApp').directive 'authSignupForm', ->
         $scope.submitForm()
 
     $scope.submitForm = ->
-      if validSignup($scope.vars, $scope.user)
+      if AuthService.validSignup($scope.vars, $scope.user)
         EventBus.emit $scope, 'processing'
-        AuthService.signUpOrIn($scope.user).finally ->
+        AuthService.signUpOrIn($scope.user, hardReload).finally ->
           EventBus.emit $scope, 'doneProcessing'
 
     submitOnEnter($scope, anyEnter: true)

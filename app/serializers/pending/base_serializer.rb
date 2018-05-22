@@ -1,10 +1,20 @@
 class Pending::BaseSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :name, :email, :email_status, :email_verified, :has_password, :identity_type,
-             :avatar_kind, :avatar_initials, :email_hash, :avatar_url, :has_token
+             :avatar_kind, :avatar_initials, :email_hash, :avatar_url, :has_token, :auth_form
 
   def identity_type
     # included for oauth pending identities
+  end
+
+  def auth_form
+    if user.deactivated_at
+      'inactive'
+    elsif (user.email_verified || has_token) && user.name
+      'signIn'
+    else
+      'signUp'
+    end
   end
 
   def has_token
@@ -34,7 +44,7 @@ class Pending::BaseSerializer < ActiveModel::Serializer
   def email_verified
     user.email_verified
   end
-  
+
   def has_password
     user.has_password
   end

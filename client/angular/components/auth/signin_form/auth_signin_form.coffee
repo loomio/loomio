@@ -14,7 +14,7 @@ angular.module('loomioApp').directive 'authSigninForm', ->
     $scope.signIn = ->
       EventBus.emit $scope, 'processing'
       $scope.user.name = $scope.vars.name if $scope.vars.name?
-      AuthService.signIn($scope.user).finally ->
+      AuthService.signIn($scope.user, hardReload).finally ->
         EventBus.emit $scope, 'doneProcessing'
 
     $scope.signInAndSetPassword = ->
