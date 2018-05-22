@@ -45,8 +45,8 @@ module.exports =
       current = current.clone().add(1, 'day')
     weeks
 
-  calendarStyle: (day, today, current, selected) ->
-    if _.contains(selected, day)
+  calendarStyle: (day, selected) ->
+    if _.any(selected,(moment)-> moment.isSame(day, 'day'))
       { 'background-color': 'accent-300'}
     else
       {}

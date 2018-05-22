@@ -2,7 +2,7 @@
   %thead
     %tr
       %td{colspan: "2"}
-        %md-button.md-button--tiny.lmo-calendar__button{ng-click: "changeMonth(-1)"}
+        %md-button.md-button--tiny.lmo-calendar__button{ng-disabled:"today.isSame(current, 'month')", ng-click: "changeMonth(-1)"}
           %i.mdi.mdi-chevron-left.mdi-24px
       %td{colspan: "3"}
         %span {{current.format('MMMM YYYY')}}
