@@ -31,7 +31,15 @@ angular.module('loomioApp').directive 'authSignupForm', ->
     $scope.allow        = ->
       AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
 
+    $scope.useRecaptcha = -> $scope.recaptchaKey && !$scope.user.hasToken
+
     $scope.submit = ->
+      if $scope.useRecaptcha()
+        grecaptcha.execute()
+      else
+        $scope.submitForm()
+
+    $scope.submitForm = ->
       if validSignup($scope.vars, $scope.user)
         EventBus.emit $scope, 'processing'
         AuthService.signUpOrIn($scope.user).finally ->

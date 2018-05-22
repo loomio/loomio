@@ -16,7 +16,6 @@
     %span{translate: "auth_form.i_accept", translate-values: "{termsUrl: termsUrl, privacyUrl: privacyUrl}"}
     %validation_errors{subject: "user", field: "legalAccepted"}
 
-  %div{vc-recaptcha: "true", key: "recaptchaKey", ng-if: "recaptchaKey && !user.hasToken", ng-model: "user.recaptcha"}
+  %md-button.md-primary.md-raised.auth-signup-form__submit{ng-disabled: "!vars.name || (termsUrl &&!vars.legalAccepted)", translate: "auth_form.create_account", ng-click: "submit()"}
 
-  .lmo-md-action
-    %md-button.md-primary.md-raised.auth-signup-form__submit{ng-disabled: "!vars.name || (termsUrl &&!vars.legalAccepted)", translate: "auth_form.create_account", ng-click: "submit()"}
+  %div{vc-recaptcha: "true", size: "invisible", key: "recaptchaKey", ng-if: "useRecaptcha()", ng-model: "user.recaptcha", on-success: "formSubmit()"}
