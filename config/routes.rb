@@ -20,7 +20,7 @@ Loomio::Application.routes.draw do
       get '/:action', to: 'nightwatch#:action'
     end
   end
-  
+
   mount ActionCable.server => '/cable'
 
   use_doorkeeper do
@@ -74,6 +74,7 @@ Loomio::Application.routes.draw do
         post :make_admin
         post :remove_admin
         post :save_experience
+        post :resend
         patch :set_volume
       end
     end
@@ -307,6 +308,10 @@ Loomio::Application.routes.draw do
     get  :authorized,                     to: 'identities/slack#authorized',  as: :slack_authorized
     post :participate,                    to: 'identities/slack#participate', as: :slack_participate
     post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
+  end
+
+  scope :saml do
+    post :oauth,                          to: 'identities/saml#create'
   end
 
   get ":id", to: 'groups#show', as: :group_handle

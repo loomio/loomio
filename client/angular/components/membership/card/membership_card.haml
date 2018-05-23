@@ -1,4 +1,4 @@
-%section.membership-card.lmo-card.lmo-no-print{aria-labelledby: "membership-card-title", ng-if: "show()"}
+%section.membership-card.lmo-card.lmo-no-print{aria-labelledby: "membership-card-title", ng-if: "show()", ng-class: "{'membership-card--pending': pending}"}
   .lmo-md-actions
     %h2#membership-card-title.membership-card__title.lmo-truncate.lmo-card-heading.lmo-flex__grow{translate: "{{cardTitle}}", translate-values: "{pollType: '{{group.targetModel().translatedPollType()}}'}", ng-if: "!searchOpen"}
     %md-button.md-button--tiny.membership-card__search-button{ng-click: "toggleSearch()", ng-if: "!searchOpen"}
