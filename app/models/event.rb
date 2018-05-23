@@ -52,6 +52,8 @@ class Event < ApplicationRecord
 
   def self.publish!(eventable, **args)
     build(eventable, **args).tap(&:save!).tap(&:trigger!)
+  rescue ActiveRecord::RecordNotUnique
+    retry
   end
 
   def self.bulk_publish!(eventables, **args)
