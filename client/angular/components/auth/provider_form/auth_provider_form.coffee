@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'authProviderForm', ['$window', ($window) 
   templateUrl: 'generated/components/auth/provider_form/auth_provider_form.html'
   controller: ['$scope', ($scope) ->
     $scope.providers = AppConfig.identityProviders
-    $scope.capitalize = (provider) -> _.capitalize(provider)
+    $scope.capitalize = _.capitalize
 
     $scope.select = (provider) ->
       EventBus.emit $scope, 'processing'

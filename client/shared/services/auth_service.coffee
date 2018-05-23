@@ -24,12 +24,9 @@ module.exports = new class AuthService
       @signIn(user, onSuccess)
 
   signIn: (user = {}, onSuccess) ->
-    Records.sessions.build
-      name: user.name
-      email: user.email
-      password: user.password
-      legalAccepted: user.legalAccepted
-    .save().then ->
+    Records.sessions.build(
+      _.pick(user, ['email', 'name', 'password', 'recaptcha', 'legalAccepted'])
+    ).save().then ->
       onSuccess()
     , () ->
       user.errors = if user.hasToken

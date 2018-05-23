@@ -26,7 +26,8 @@ angular.module('loomioApp').directive 'authSignupForm', ->
       else
         $scope.submitForm()
 
-    $scope.submitForm = ->
+    $scope.submitForm = (recaptcha) ->
+      $scope.user.recaptcha = recaptcha
       if AuthService.validSignup($scope.vars, $scope.user)
         EventBus.emit $scope, 'processing'
         AuthService.signUpOrIn($scope.user, hardReload).finally ->

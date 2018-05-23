@@ -18,4 +18,4 @@
 
   %md-button.md-primary.md-raised.auth-signup-form__submit{ng-disabled: "!vars.name || (termsUrl &&!vars.legalAccepted)", translate: "auth_form.create_account", ng-click: "submit()"}
 
-  %div{vc-recaptcha: "true", size: "invisible", key: "recaptchaKey", ng-if: "useRecaptcha()", ng-model: "user.recaptcha", on-success: "formSubmit()"}
+  %div{vc-recaptcha: "true", size: "invisible", key: "recaptchaKey", ng-if: "useRecaptcha()", on-success: "submitForm(response)"}
