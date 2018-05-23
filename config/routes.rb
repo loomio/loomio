@@ -310,5 +310,9 @@ Loomio::Application.routes.draw do
     post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
   end
 
+  scope :saml do
+    post :oauth,                          to: 'identities/saml#create'
+  end
+
   get ":id", to: 'groups#show', as: :group_handle
 end
