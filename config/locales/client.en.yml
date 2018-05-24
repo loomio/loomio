@@ -936,7 +936,6 @@ en:
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
     no_emails: 'You will no longer receive notification emails'
-    contact_for_reactivation: 'You will need to contact us to reactivate your account'
     submit: 'Yes, I want to deactivate'
 
   deactivate_user_form:
@@ -1718,9 +1717,13 @@ en:
   auth_form:
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in: Sign in
+    continue: Continue
+    create_account: Create account
     sign_in_as: Sign in as {{name}}
+    continue_with_provider: Continue with {{provider}}
+    continue_with_email: Continue with email
+    or_enter_your_email: Or, enter your email address
     invitation_required: You need an invitation to create an account.
-    choose_an_account: "Sign in via a third party, or enter your email address to continue."
     invitation_required: Account not found. New accounts are by invitation only.
     more_providers: More
     email_not_present: An email address is required
@@ -1732,15 +1735,16 @@ en:
     login_with_token: You're all set! Click the link below to log in.
     login_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.
-      If you'd like to use a password to log in in the future, you can set one from your profile page.
+      If you'd like to use a password in the future, you can set one from your profile page.
     login_link_helptext_with_password: "Enter your password, or sign in via email."
-    sign_up_helptext: "Please enter the name you'd like to be known by, and we'll send you a link to log in."
-    sign_up_helptext_with_token: "Please enter the name you'd like to be known by, then click Sign In."
-    oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
+    sign_up_helptext: "Please complete this form to create a user account"
+    i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
     name_required: Please enter a name
-    account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
+    terms_required: You must agree to the Terms of Service
+    account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated!
+    privacy_notice: "Personal data is collected when you use {{siteName}}. <br/> Read our <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a> to learn more."
 
-    welcome: Nice to meet you!
+    welcome: Welcome to {{siteName}}!
     welcome_back: Welcome back, {{name}}!
     login_link: Sign in via email
     set_password: Set password
@@ -1748,13 +1752,13 @@ en:
     set_password_link: Set a password
 
     hello: "Hello, {{name}}!"
-    new_to_loomio: New to {{site_name}}? Create a new account
+    new_to_loomio: First time on {{site_name}}? Create an account
     create_account: Create account
-    already_a_user: Already have a {{site_name}} account? Enter your email address to link this account to yours
+    already_a_user: Used {{site_name}} before? Enter the email address you used last time to link it up.
     link_accounts: Link accounts
 
     check_your_email: Check your email!
-    login_link_sent: "Ok, We've sent an email to {{email}}."
+    login_link_sent: "We've sent an email to {{email}}."
     instructions: "Click the link to sign in, or enter the code below:"
     too_many_attempts: "Too many attempts; try clicking the link in the email to log in."
     invalid_code: "Sorry, that code didn't match. Check the email and try again."
@@ -1766,7 +1770,7 @@ en:
     email: Email
     password: Password
 
-    reactivate: Send Reactivation Email
+    reactivate: Reactivate account
 
   install_slack:
     modal_title: Install Slack

@@ -8,3 +8,8 @@
     %label{translate: "poll_common.participant_email"}
     %input.lmo-primary-form-input.poll-common-participant-form__email{type: "email", required: "required", placeholder: "{{poll_common_participant_form.participant_email_placeholder}}", ng-model: "stance.visitorAttributes.email"}
     %validation_errors{subject: "stance", field: "participantEmail"}
+
+  .auth-signup-form__consent{ng-if: "termsUrl"}
+    %md-checkbox.poll-common-participant-form__legal-accepted{ng-model: "stance.visitorAttributes.legal_accepted"}
+    %span{translate: "auth_form.i_accept", translate-values: "{termsUrl: termsUrl, privacyUrl: privacyUrl}"}
+    %validation_errors{subject: "stance", field: "participantLegalAccepted"}

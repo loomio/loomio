@@ -1,4 +1,6 @@
 class Pending::UserSerializer < Pending::BaseSerializer
+  attributes :legal_accepted_at
+  
   private
 
   def has_token
