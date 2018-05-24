@@ -1,19 +1,19 @@
-.poll-meeting-form-options.lmo-drop-animation
+.poll-meeting-form-options
   %lmo_calendar{selected: "poll.meetingDates"}
 
-  %md-list{ng-if: "!addTimes"}
-    %md-list-item{ng-repeat: "date in poll.meetingDates"}
-      {{displayDayDate(date)}}
-  %md-button.md-button--tiny.animated{ng-show: "!addTimes && poll.meetingDates.length > 0", ng-click: "showAddTimes()"}
-    Add times
-  %div.animated{ng-show: "addTimes"}
-    %md-button.md-button--tiny{ng-click: "sameForAllDays = true"}
-      Same times for each day
-    %md-button.md-button--tiny{ng-click: "differentDays = true"}
-      Different times per day
-
-    %md-list{ng-if: "sameForAllDays"}
-      %lmo-timepicker
-    %md-list{ng-if: "differentDays"}
+  .lmo-slide-animation{ng-if: "poll.meetingDates.length > 0", ng-switch: "currentStep"}
+    %md-list{ng-switch-when: "dateOnly"}
       %md-list-item{ng-repeat: "date in poll.meetingDates"}
         %lmo-timepicker{date: "date"}
+      .lmo-md-actions
+        %md-button.md-button--tiny.poll-meeting-form-options__times-button{ng-if: "!settingTimeMode", translate: "poll_meeting_form_options.add_times", ng-click: "setTimeMode()"}
+        %md-button.md-button--tiny.poll-meeting-form-options__button{ng-if: "settingTimeMode", ng-click: "dateAndTime(true)", translate: "poll_meeting_form_options.same_times"}
+        %md-button.md-button--tiny.poll-meeting-form-options__button{ng-if: "settingTimeMode", ng-click: "dateAndTime(false)", translate: "poll_meeting_form_options.different_times"}
+    .lmo-md-actions.animated{ng-switch-when: "timeSelect"}
+    %div{ng-switch-when: "collapsedTimes"}
+      WARK
+      %md-button.md-button--tiny.poll-meeting-form-options__times-button{translate: "poll_meeting_form_options.remove_times", ng-click: "dateOnly()"}
+    %md-list.animated{ng-switch-when: "expandedTimes"}
+      %md-list-item{ng-repeat: "date in poll.meetingDates"}
+        %lmo-timepicker{date: "date", add-times: "true"}
+      %md-button.md-button--tiny.poll-meeting-form-options__times-button{translate: "poll_meeting_form_options.remove_times", ng-click: "dateOnly()"}

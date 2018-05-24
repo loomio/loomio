@@ -1,4 +1,16 @@
 .poll-meeting-form-options__menu {
-  z-index: 80; 
+  z-index: 80;
+}
 
+.poll-meeting-form-options__button {
+  white-space: normal;
+  line-height: normal;
+  height: auto;
+  padding: 16px 8px;
+  margin: 16px 8px;
+}
+
+.poll-meeting-form-options__times-button {
+  width: 100%;
+  margin: 16px 8px;
 }

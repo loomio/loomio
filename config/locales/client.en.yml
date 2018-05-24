@@ -1557,10 +1557,10 @@ en:
     add_option_placeholder: Enter a new time
 
   poll_meeting_form_options:
-    all_day: All Day
-    specify_all_times: All Times
-    specify_each_time: Each Time
-    timed_event: Not All Day
+    add_times: Add times
+    remove_times: Remove times
+    same_times: Same times for all days
+    different_times: Different times for different days
 
   poll_ranked_choice_form:
     tool_tip_expanded: |
