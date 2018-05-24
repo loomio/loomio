@@ -193,7 +193,7 @@ class User < ApplicationRecord
   end
 
   def self.email_status_for(email)
-    (verified_first.find_by(email: email) || LoggedOutUser.new).email_status
+    verified_first.find_by(email: email)&.email_status || :unused
   end
 
   define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
