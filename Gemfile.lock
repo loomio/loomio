@@ -234,7 +234,7 @@ GEM
       activerecord (>= 4.0.0)
     gemrat (0.4.6)
       colored (= 1.2)
-    geocoder (1.4.8)
+    geocoder (1.4.7)
     get_process_mem (0.2.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -585,6 +585,7 @@ DEPENDENCIES
   fog-aws
   friendly_id (~> 5.1.0)
   gemrat
+  geocoder (= 1.4.7)
   google-cloud-translate
   gravtastic
   griddler!
