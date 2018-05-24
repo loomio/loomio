@@ -188,7 +188,7 @@ module.exports = {
     page.expectElement('.sidebar__content')
   },
 
-  'can_accept_an_invitation': (test) => {
+  'can_invite_existing_user': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_invitation_to_user_with_password')
@@ -200,7 +200,7 @@ module.exports = {
     page.expectNoElement('.join-group-button')
   },
 
-  'can_log_someone_in_from_an_invitation': (test) => {
+  'can_invite_new_user': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_invitation_to_visitor')
