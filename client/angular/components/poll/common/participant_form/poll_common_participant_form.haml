@@ -10,6 +10,6 @@
     %validation_errors{subject: "stance", field: "participantEmail"}
 
   .auth-signup-form__consent{ng-if: "termsUrl"}
-    %md-checkbox.auth-signup-form__legal-accepted{ng-model: "stance.visitorAttributes.legal_accepted"}
+    %md-checkbox.poll-common-participant-form__legal-accepted{ng-model: "stance.visitorAttributes.legal_accepted"}
     %span{translate: "auth_form.i_accept", translate-values: "{termsUrl: termsUrl, privacyUrl: privacyUrl}"}
     %validation_errors{subject: "stance", field: "participantLegalAccepted"}
