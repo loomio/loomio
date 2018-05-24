@@ -34,7 +34,7 @@ class User < ApplicationRecord
   validates :email, presence: true, email: true, length: {maximum: 200}
 
   validates :name, presence: true,           if: :require_valid_signup
-  validates :legal_accepted, presence: true, if: :require_valid_signup
+  validates :legal_accepted_at, presence: true, if: :require_valid_signup
   validate  :validate_recaptcha,             if: :require_valid_signup
 
   has_attached_file :uploaded_avatar,
@@ -189,7 +189,7 @@ class User < ApplicationRecord
   #   SQL
   # }
   #
-  
+
   def require_valid_signup!
     @require_valid_signup = true
   end
@@ -348,6 +348,7 @@ class User < ApplicationRecord
 
   def validate_recaptcha
     return unless ENV['RECAPTCHA_APP_KEY']
+    return if self.persisted?
     return if Clients::Recaptcha.instance.validate(self.recaptcha)
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end

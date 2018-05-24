@@ -17,6 +17,7 @@ FactoryBot.define do
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
+    legal_accepted_at 10.days.ago
     password 'complex_password'
     time_zone "Pacific/Tarawa"
     email_verified true
