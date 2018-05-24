@@ -89,7 +89,7 @@ class Stance < ApplicationRecord
   end
 
   def participant_is_complete
-    participant.require_valid_signup!
+    participant.require_valid_signup! unless participant.is_logged_in?
     participant.tap(&:valid?).errors.map { |key, err| errors.add(:"participant_#{key}", err)}
   end
 end
