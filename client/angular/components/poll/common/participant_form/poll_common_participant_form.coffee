@@ -6,7 +6,6 @@ angular.module('loomioApp').directive 'pollCommonParticipantForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/common/participant_form/poll_common_participant_form.html'
   controller: ['$scope', ($scope) ->
-    $scope.recaptchaKey = AppConfig.recaptchaKey
     $scope.termsUrl     = AppConfig.theme.terms_url
     $scope.privacyUrl   = AppConfig.theme.privacy_url
 
