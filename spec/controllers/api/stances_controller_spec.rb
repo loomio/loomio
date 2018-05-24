@@ -19,7 +19,7 @@ describe API::StancesController do
   let(:visitor_stance_params) {{
     poll_id: public_poll.id,
     stance_choices_attributes: [{poll_option_id: public_poll_option.id}],
-    visitor_attributes: { name: "Johnny Doe", email: "john@doe.ninja" }
+    visitor_attributes: { name: "Johnny Doe", email: "john@doe.ninja", legal_accepted: true }
   }}
 
   describe 'index' do
@@ -166,7 +166,7 @@ describe API::StancesController do
     let(:visitor_stance_params) {{
       poll_id: poll.id,
       stance_choices_attributes: [{poll_option_id: poll_option.id}],
-      visitor_attributes: { name: "Johnny Doe, not logged in", email: "user@example.com" }
+      visitor_attributes: { name: "Johnny Doe, not logged in", email: "user@example.com", legal_accepted: true}
     }}
 
     # test logged out cannot create a stance

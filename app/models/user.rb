@@ -25,17 +25,18 @@ class User < ApplicationRecord
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
-  attr_writer   :has_password
-  attr_reader :require_valid_signup
-
   attr_accessor :legal_accepted
+
+  attr_writer   :has_password
+  attr_reader   :require_valid_signup
+
   before_save :set_legal_accepted_at, if: :legal_accepted
 
   validates :email, presence: true, email: true, length: {maximum: 200}
 
-  validates :name, presence: true,           if: :require_valid_signup
-  validates :legal_accepted_at, presence: true, if: :require_valid_signup
-  validate  :validate_recaptcha,             if: :require_valid_signup
+  validates :name,               presence: true, if: :require_valid_signup
+  validates :legal_accepted,     presence: true, if: :require_valid_signup
+  validate  :validate_recaptcha,                 if: :require_valid_signup
 
   has_attached_file :uploaded_avatar,
     styles: {
