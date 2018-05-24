@@ -44,7 +44,7 @@ class ::Slack::Participator
 
   def perform_stance_creation!
     @poll.group.add_member!(@actor)
-    @stance = StanceService.create(actor: @actor, stance: Stance.new(poll: @poll, choice: @choice))
+    @stance = StanceService.create(actor: @actor, stance: Stance.new(poll: @poll, choice: @choice, participant: @actor))
   rescue CanCan::AccessDenied
     nil
   end

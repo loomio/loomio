@@ -131,6 +131,7 @@ en:
       invite: Invite
       resent: Invitation resent
       export: Export
+      fork: Fork
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
@@ -326,6 +327,7 @@ en:
     logo_title: 'Home page'
 
   user_dropdown:
+    button_label: 'User menu'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
     help: 'Help'
@@ -342,9 +344,14 @@ en:
     invitations: "Invitations"
 
   membership_dropdown:
+    resend: "Resend invitation"
+    invitation_resent: "Invitation resent"
     make_coordinator: 'Make coordinator'
     demote_coordinator: 'Demote coordinator'
-    remove_membership: 'Remove from group'
+    remove_from:
+      discussion: "Remove from thread"
+      group: "Remove from group"
+      poll: 'Remove from {{pollType}}'
     cancel_invitation: Cancel invitation
 
   start_menu:
@@ -410,12 +417,17 @@ en:
     created: 'The thread {{title}} was successfully created in {{groupName}}'
     updated: 'Saved changes to {{title}}'
 
+  discussion_fork_actions:
+    helptext: "Select items you'd like to move to a new thread"
+
   discussion_form:
     aria_label: 'Thread form'
     messages:
       created: 'Thread started'
       updated: 'Thread updated'
+      forked:  'Thread fork created'
     new_discussion_title: 'Start new thread'
+    fork_discussion_title: 'Fork a thread'
     edit_discussion_title: 'Edit thread'
     group_label: 'Group'
     group_placeholder: 'Select a group'
@@ -427,8 +439,7 @@ en:
     privacy_public: 'Anyone can see the thread. Only members can participate.'
     privacy_private: 'The thread will only be visible to members of {{group}}.'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
-    make_announcement: Announcement
-    notified_count: '{{count}} people will be emailed'
+    fork_notice: 'A new thread will be created with {{count}} items from {{title}}'
 
   announcement:
     audiences:
@@ -459,6 +470,7 @@ en:
         helptext: Who would you like to share the outcome with?
       anyone_can_participate: Anyone with link can participate
       placeholder: Enter names or email addresses...
+      notified_empty: 'Nobody selected yet.'
       notified: '{{notified}} people will be notified:'
       notified_singular: '1 person will be notified:'
       group_title: '{{name}} ({{count}} people)'
@@ -493,6 +505,7 @@ en:
     edit_comment: Edit comment
     delete_comment: Delete comment
     reply_to_comment: Reply
+    fork_comment: Fork thread
     translate_comment: Translate comment
     edit_outcome: Edit outcome
     announce_outcome: Notify people about this outcome
@@ -538,11 +551,17 @@ en:
 
   revision_history_modal:
     aria_label: Revision history
-    thread_header: Thread context revision history
-    comment_header: Comment edit revision history
+    discussion_header: Discussion revision history
+    comment_header: Comment revision history
+    poll_header: Poll revision history
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     posted: Posted
+    original_text: Original
+    current_revision: Latest
+    closing_at_changed: "closing time set to {{time}}"
+    private_changed: "privacy set to {{private}}"
+    group_id_changed: "moved to {{name}}"
 
   reactions_input:
     add_your_reaction: Add your reaction
@@ -827,19 +846,15 @@ en:
       submit: Cancel invitation
     membership:
       title: Remove member
-      message: Are you sure you want to remove {{name}} from the group?
+      message: Are you sure you want to remove {{name}}?
+      impact_for_group: This will remove their access to all threads and decisions in the group.
+      impact_for_subgroups: This will also remove their access to all subgroups of this group.
       flash: Member removed
       submit: Remove member
 
   memberships_panel:
     add_coordinator: Make coordinator
     remove_coordinator: Demote coordinator
-
-  remove_membership_form:
-    aria_label: 'Remove member'
-    title: 'Remove member'
-    question: 'Are you sure you want to remove {{name}} from {{group}}?'
-    submit: 'Remove'
 
   pending_invitations_card:
     heading: Pending invitations
@@ -921,7 +936,6 @@ en:
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
     no_emails: 'You will no longer receive notification emails'
-    contact_for_reactivation: 'You will need to contact us to reactivate your account'
     submit: 'Yes, I want to deactivate'
 
   deactivate_user_form:
@@ -994,7 +1008,7 @@ en:
       proposals: Proposals
       proposals_aria_label: Currently showing threads with active proposals
       proposals_description: View only threads with active proposals
-      muted: Muted
+      muted: Muted Threads
       muted_aria_label: Current showing muted threads
       muted_description: View only threads which have been muted
     aria_thread:
@@ -1070,6 +1084,7 @@ en:
     delete_thread: 'Delete'
     add_comment: 'Comment'
     seen_by_count: 'Seen by {{count}}'
+    forked_from: "Forked from"
 
   pin_thread_modal:
     title: Pin thread
@@ -1646,6 +1661,7 @@ en:
     discussion_moved:              "<strong><a href='u/{{username}}'>{{author}}</a></strong> moved the thread from <strong>{{title}}</strong>"
     discussion_closed:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> closed the thread"
     discussion_reopened:           "<strong><a href='u/{{username}}'>{{author}}</a></strong> reopened the thread"
+    discussion_forked:             "<strong><a href='u/{{username}}'>{{author}}</a></strong> created a fork of this thread: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
     new_comment:                   "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created:               "<strong><a href='u/{{username}}'>{{author}}</a></strong> shared an outcome for <strong>{{title}}</strong>"
     poll_reopened:                 "<strong><a href='u/{{username}}'>{{author}}</a></strong> reopened the {{polltype}}: <strong>{{title}}</strong>"
@@ -1701,9 +1717,13 @@ en:
   auth_form:
     sign_in_to_loomio: Sign into {{site_name}}
     sign_in: Sign in
+    continue: Continue
+    create_account: Create account
     sign_in_as: Sign in as {{name}}
+    continue_with_provider: Continue with {{provider}}
+    continue_with_email: Continue with email
+    or_enter_your_email: Or, enter your email address
     invitation_required: You need an invitation to create an account.
-    choose_an_account: "Sign in via a third party, or enter your email address to continue."
     invitation_required: Account not found. New accounts are by invitation only.
     more_providers: More
     email_not_present: An email address is required
@@ -1715,15 +1735,16 @@ en:
     login_with_token: You're all set! Click the link below to log in.
     login_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.
-      If you'd like to use a password to log in in the future, you can set one from your profile page.
+      If you'd like to use a password in the future, you can set one from your profile page.
     login_link_helptext_with_password: "Enter your password, or sign in via email."
-    sign_up_helptext: "Please enter the name you'd like to be known by, and we'll send you a link to log in."
-    sign_up_helptext_with_token: "Please enter the name you'd like to be known by, then click Sign In."
-    oauth_confirm_helptext: "Just confirm your details below, and we'll send you a link to log in."
+    sign_up_helptext: "Please complete this form to create a user account"
+    i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
     name_required: Please enter a name
-    account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
+    terms_required: You must agree to the Terms of Service
+    account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated!
+    privacy_notice: "Personal data is collected when you use {{siteName}}. <br/> Read our <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a> to learn more."
 
-    welcome: Nice to meet you!
+    welcome: Welcome to {{siteName}}!
     welcome_back: Welcome back, {{name}}!
     login_link: Sign in via email
     set_password: Set password
@@ -1731,13 +1752,13 @@ en:
     set_password_link: Set a password
 
     hello: "Hello, {{name}}!"
-    new_to_loomio: New to {{site_name}}? Create a new account
+    new_to_loomio: First time on {{site_name}}? Create an account
     create_account: Create account
-    already_a_user: Already have a {{site_name}} account? Enter your email address to link this account to yours
+    already_a_user: Used {{site_name}} before? Enter the email address you used last time to link it up.
     link_accounts: Link accounts
 
     check_your_email: Check your email!
-    login_link_sent: "Ok, We've sent an email to {{email}}."
+    login_link_sent: "We've sent an email to {{email}}."
     instructions: "Click the link to sign in, or enter the code below:"
     too_many_attempts: "Too many attempts; try clicking the link in the email to log in."
     invalid_code: "Sorry, that code didn't match. Check the email and try again."
@@ -1748,6 +1769,8 @@ en:
     name: Name
     email: Email
     password: Password
+
+    reactivate: Reactivate account
 
   install_slack:
     modal_title: Install Slack

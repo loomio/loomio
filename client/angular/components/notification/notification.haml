@@ -1,7 +1,7 @@
 %li{ng-class: "{'lmo-active': !notification.viewed}"}
   %a.notification{class: "navbar-notifications__{{notification.kind}}", href: "{{notification.url}}", ng-click: "broadcastThreadEvent(notification)"}
     .notification__avatar
-      %user_avatar{ng-if: "actor()", user: "actor()", size: "small"}
+      %user_avatar{ng-if: "actor()", user: "actor()", size: "small", aria-hidden: "true", }
       .thread-item__proposal-icon{ng-if: "!actor()"}
     .notification__content
       %span{ng-bind-html: "contentFor(notification)"}>

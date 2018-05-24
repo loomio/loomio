@@ -15,7 +15,7 @@ module.exports =
   exportGlobals: ->
     window.moment = require 'moment'
     window._      = require 'lodash'
-    _.extend window._, require 'shared/helpers/lodash_ext.coffee'
+    _.extend window._, require 'shared/helpers/lodash_ext'
 
   initServiceWorker: ->
     if document.location.protocol.match(/https/) && navigator.serviceWorker?
@@ -38,9 +38,9 @@ hardReload = (path) ->
     window.location.reload()
 
 viewportSize = ->
-  if window.innerWidth < 480
+  if window.innerWidth < 600
     'small'
-  else if window.innerWidth < 992
+  else if window.innerWidth < 960
     'medium'
   else if window.innerWidth < 1280
     'large'

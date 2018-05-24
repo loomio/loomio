@@ -1,7 +1,7 @@
 class LoggedOutUser
   include Null::User
   include AvatarInitials
-  attr_accessor :name, :email, :token, :membership_token, :avatar_initials, :locale
+  attr_accessor :name, :email, :token, :membership_token, :avatar_initials, :locale, :legal_accepted, :recaptcha
 
   alias :read_attribute_for_serialization :send
 
@@ -16,7 +16,12 @@ class LoggedOutUser
   end
 
   def create_user
-    User.create!(name: name, email: email, token: token)
+    User.create(name: name,
+                email: email,
+                token: token,
+                legal_accepted: legal_accepted,
+                require_valid_signup: true,
+                recaptcha: recaptcha)
   end
 
   def nil_methods
@@ -32,7 +37,7 @@ class LoggedOutUser
   end
 
   def email_status
-    :unused
+    User.email_status_for(self.email)
   end
 
   def avatar_kind

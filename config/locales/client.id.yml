@@ -22,6 +22,8 @@ id:
     search:
       placeholder: 'Cari'
       discussions: 'Diskusi'
+  membership_dropdown:
+    make_coordinator: 'Buat jadi koordinator'
   notifications:
     header: "Notifikasi"
   position_buttons_panel:
@@ -74,3 +76,6 @@ id:
     vote: 'Anda dapat mengubah pendapat Anda kapanpun'
   poll_common_form:
     closed: Ditutup
+  poll_count_options:
+    'yes': 'Ya'
+    'no': 'Tidak'

@@ -1,11 +1,14 @@
 namespace :travis do
-  task :prepare do
-    puts "Creating test assets for v#{Loomio::Version.current}..."
+  task :build_client do
+    puts "Creating client assets for v#{Loomio::Version.current}..."
     system("cd client && npm rebuild node-sass && gulp compile")
+    raise "Asset creation failed!" unless $?.exitstatus == 0
+  end
+
+  task :cc_reporter do
     system("curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter")
     system("chmod +x ./cc-test-reporter")
     system("./cc-test-reporter before-build")
-    raise "Asset creation failed!" unless $?.exitstatus == 0
   end
 
   task :rspec do
@@ -20,7 +23,7 @@ namespace :travis do
     system("wget http://localhost:3000/")
     # ok now start running the tests
     puts "Starting to run nightwatch..."
-    system("cd client && gulp nightwatch:core --retries 2")
+    system("cd client && gulp nightwatch:core --retries 3")
     raise "e2e failed!" unless $?.exitstatus == 0
   end
 

@@ -1,4 +1,4 @@
-{ uploadForm } = require 'shared/helpers/form.coffee'
+{ uploadForm } = require 'shared/helpers/form'
 
 angular.module('loomioApp').factory 'LogoPhotoForm', ->
   scope: {group: '='}

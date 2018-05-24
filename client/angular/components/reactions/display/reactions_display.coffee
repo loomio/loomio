@@ -1,8 +1,8 @@
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
+Session        = require 'shared/services/session'
+Records        = require 'shared/services/records'
+AbilityService = require 'shared/services/ability_service'
 
-{ emojiTitle } = require 'shared/helpers/helptext.coffee'
+{ emojiTitle } = require 'shared/helpers/helptext'
 
 angular.module('loomioApp').directive 'reactionsDisplay', ->
   scope: {model: '=', load: '@'}

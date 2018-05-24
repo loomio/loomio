@@ -1,12 +1,12 @@
-Records            = require 'shared/services/records.coffee'
-AbilityService     = require 'shared/services/ability_service.coffee'
-EventBus           = require 'shared/services/event_bus.coffee'
-RecordLoader       = require 'shared/services/record_loader.coffee'
-ThreadQueryService = require 'shared/services/thread_query_service.coffee'
-ModalService       = require 'shared/services/modal_service.coffee'
-LmoUrlService      = require 'shared/services/lmo_url_service.coffee'
+Records            = require 'shared/services/records'
+AbilityService     = require 'shared/services/ability_service'
+EventBus           = require 'shared/services/event_bus'
+RecordLoader       = require 'shared/services/record_loader'
+ThreadQueryService = require 'shared/services/thread_query_service'
+ModalService       = require 'shared/services/modal_service'
+LmoUrlService      = require 'shared/services/lmo_url_service'
 
-{ applyLoadingFunction } = require 'shared/helpers/apply.coffee'
+{ applyLoadingFunction } = require 'shared/helpers/apply'
 
 angular.module('loomioApp').directive 'discussionsCard', ['$timeout', ($timeout) ->
   scope: {group: '='}

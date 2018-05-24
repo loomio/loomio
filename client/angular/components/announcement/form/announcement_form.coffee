@@ -1,12 +1,12 @@
-Records        = require 'shared/services/records.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
-I18n           = require 'shared/services/i18n.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-utils          = require 'shared/record_store/utils.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
-{ audiencesFor, audienceValuesFor } = require 'shared/helpers/announcement.coffee'
+Records        = require 'shared/services/records'
+ModalService   = require 'shared/services/modal_service'
+I18n           = require 'shared/services/i18n'
+EventBus       = require 'shared/services/event_bus'
+utils          = require 'shared/record_store/utils'
+LmoUrlService  = require 'shared/services/lmo_url_service'
+AbilityService = require 'shared/services/ability_service'
+FlashService   = require 'shared/services/flash_service'
+{ audiencesFor, audienceValuesFor } = require 'shared/helpers/announcement'
 
 angular.module('loomioApp').directive 'announcementForm', ->
   scope: {announcement: '='}

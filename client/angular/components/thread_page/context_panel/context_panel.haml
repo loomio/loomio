@@ -4,7 +4,7 @@
       %i.mdi.mdi-pin{ng-switch-when: "pinned"}
 
     .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
-      %h1.lmo-h1.context-panel__heading{ng-if: "!discussion.translation"}
+      %h1.lmo-h1.context-panel__heading{ng-if: "!discussion.translaion"}
         {{discussion.title}}
       %h1.lmo-h1{ng-if: "discussion.translation"}
         %translation{model: "discussion", field: "title"}
@@ -27,6 +27,11 @@
       %span{ng-show: "discussion.seenByCount > 0"}>
         %span{aria-hidden: "true"}>·
         %span.context-panel__seen_by_count{ translate: "thread_context.seen_by_count", translate-value-count: "{{discussion.seenByCount}}"}
+      %span{ng-if: "discussion.forkedEvent().discussion()"}
+        %span{aria-hidden: "true"}>·
+        %span{translate: "thread_context.forked_from"}>
+        %a{lmo-href-for: "discussion.forkedEvent()"}>
+          {{discussion.forkedEvent().discussion().title}}
     .lmo-badge.lmo-pointer{translate: "common.privacy.closed", ng-if: "discussion.closedAt", md-colors: "{color: 'warn-600', 'border-color': 'warn-600'}"}
       %md-tooltip {{ discussion.closedAt | exactDateWithTime }}
     %outlet.lmo-flex{name: "after-thread-title", model: "discussion"}

@@ -164,6 +164,9 @@ ca:
       proposals: 'Propostes'
       comments: 'Comentaris'
     sign_in: 'Inicia la sessió'
+  membership_dropdown:
+    make_coordinator: 'Fes coordinador/a'
+    cancel_invitation: Cancel·la la invitació
   start_menu:
     start_group: 'Crea un grup'
     start_subgroup: 'Crea un subgrup'
@@ -213,6 +216,7 @@ ca:
     started_by: 'Destacat per <strong>{{name}}</strong>'
     edited_by: 'Editat per <strong>{{name}}</strong>'
     posted: Publicat
+    current_revision: Últim
   reactions_display:
     you: "Tu"
   group_page:
@@ -226,7 +230,6 @@ ca:
     group_logo: 'Logo del grup'
     new_photo: 'Nova fotografia'
     discussions_placeholder: 'Una discussió és el lloc on tothom pot discutir un tema i prendre decisions junts.'
-    members: 'Membres'
     member_options: Opcions de membres
     subgroups: 'Subgrups'
     visibility_label: 'Visibilitat'
@@ -356,6 +359,14 @@ ca:
       remove_admin_success: '{{name}} ha deixat de ser coordinador'
     remove_admin_from_self:
       question: 'Esteu segur de deixar de ser coordinador?'
+  membership_remove_modal:
+    invitation:
+      title: Cancel·la la invitació
+      flash: Invitació cancel·lada
+      submit: Cancel·la la invitació
+    membership:
+      title: Elimina un membre
+      submit: Elimina un membre
   pending_invitations_card:
     heading: Invitacions pendents
     email: Correu electrònic
@@ -426,7 +437,6 @@ ca:
       proposals: Propostes
       proposals_aria_label: Mostrant les discussions amb propostes actives
       proposals_description: Mostra només les discussions amb propostes actives
-      muted: Silenciat
       muted_aria_label: Mostrant les discussions silenciades
       muted_description: Mostra només les discussions que han estat silenciades
     aria_thread:
@@ -597,6 +607,9 @@ ca:
     start_poll: Comença una decissió
   poll_common_form:
     closed: Tancat
+  poll_count_options:
+    'yes': 'Sí'
+    'no': 'No'
   poll_meeting_chart_panel:
     total: Total
   auth_form:

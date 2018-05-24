@@ -62,13 +62,13 @@ eo:
   markdown:
     intro:
       title: |
-        # Kio estas markdown?
+          # Kio estas markdown?
     lists:
       title: |
-        ## Listoj
+          ## Listoj
     links:
       title: |
-        ## Ligiloj kaj bildoj
+          ## Ligiloj kaj bildoj
   poll_mailer:
     common:
       or: aŭ

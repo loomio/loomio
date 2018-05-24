@@ -1,6 +1,6 @@
 class Queries::OrganisationMemberships
   def self.for(membership)
-    Membership.where(group_id: relevant_group_ids_for(membership.group))
+    Membership.where(user_id: membership.user_id, group_id: relevant_group_ids_for(membership.group))
   end
 
   def self.relevant_group_ids_for(group)

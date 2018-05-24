@@ -1,12 +1,12 @@
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-LmoUrlService  = require 'shared/services/lmo_url_service.coffee'
-I18n           = require 'shared/services/i18n.coffee'
+Session        = require 'shared/services/session'
+Records        = require 'shared/services/records'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+LmoUrlService  = require 'shared/services/lmo_url_service'
+I18n           = require 'shared/services/i18n'
 
-{ submitForm } = require 'shared/helpers/form.coffee'
-{ eventHeadline, eventTitle, eventPollType } = require 'shared/helpers/helptext.coffee'
+{ submitForm } = require 'shared/helpers/form'
+{ eventHeadline, eventTitle, eventPollType } = require 'shared/helpers/helptext'
 
 angular.module('loomioApp').directive 'threadItem', ['$compile', ($compile) ->
   scope: {event: '=', eventWindow: '='}
@@ -47,6 +47,7 @@ angular.module('loomioApp').directive 'threadItem', ['$compile', ($compile) ->
       I18n.t eventHeadline($scope.event, $scope.eventWindow.useNesting),
         author:   $scope.event.actorName() || I18n.t('common.anonymous')
         username: $scope.event.actorUsername()
+        key:      $scope.event.model().key
         title:    eventTitle($scope.event)
         polltype: I18n.t(eventPollType($scope.event)).toLowerCase()
 

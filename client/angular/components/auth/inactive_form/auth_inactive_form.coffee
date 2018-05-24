@@ -1,9 +1,9 @@
-{ contactUs } = require 'shared/helpers/user.coffee'
+AuthService = require 'shared/services/auth_service'
 
 angular.module('loomioApp').directive 'authInactiveForm', ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/inactive_form/auth_inactive_form.html'
   controller: ['$scope', ($scope) ->
-    $scope.contactUs = ->
-      contactUs()
+    $scope.reactivateUser =  ->
+      AuthService.reactivate($scope.user)
   ]

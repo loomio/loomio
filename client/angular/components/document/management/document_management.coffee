@@ -1,5 +1,5 @@
-AbilityService = require 'shared/services/ability_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
+AbilityService = require 'shared/services/ability_service'
+ModalService   = require 'shared/services/modal_service'
 
 angular.module('loomioApp').directive 'documentManagement', ->
   scope: {group: '=', fragment: '=', filter: '@', header: '@'}

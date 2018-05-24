@@ -1,6 +1,6 @@
 require('coffeescript/register')
-pageHelper     = require('../helpers/page_helper.coffee')
-workflowHelper = require('../helpers/workflow_helper.coffee')
+pageHelper     = require('../helpers/page_helper')
+workflowHelper = require('../helpers/workflow_helper')
 
 module.exports = {
   'displays parent group in sidebar if member of a subgroup': (test) => {
@@ -425,5 +425,15 @@ module.exports = {
     page.expectNoElement('.membership-card__invite')
     page.click('.poll-common-preview')
     page.expectNoElement('.poll-common-vote-form__submit')
+  },
+
+  'displays_emails_only_for_your_pending_invites': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_with_pending_invitations')
+    page.expectElement('.membership-card--pending')
+    page.pause(3000)
+    page.expectText('.membership-card--pending', 'shown@test.com')
+    page.expectNoText('.membership-card--pending', 'hidden@test.com')
   }
 }

@@ -1,5 +1,5 @@
-RestfulClient = require './restful_client.coffee'
-utils         = require './utils.coffee'
+RestfulClient = require './restful_client'
+utils         = require './utils'
 
 module.exports =
   class BaseRecordsInterface

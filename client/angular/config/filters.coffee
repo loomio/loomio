@@ -2,7 +2,7 @@
   timeFromNowInWords,
   exactDateWithTime,
   truncate
-} = require 'shared/helpers/filters.coffee'
+} = require 'shared/helpers/filters'
 
 angular.module('loomioApp').filter 'timeFromNowInWords', -> timeFromNowInWords
 angular.module('loomioApp').filter 'exactDateWithTime',  -> exactDateWithTime

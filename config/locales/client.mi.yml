@@ -123,6 +123,8 @@ mi:
   membership_request_form:
     name_label: Ingoa
     email_label: Īmēra
+  revision_history_modal:
+    current_revision: Hou ake
   group_page:
     options_label: 'Ngā Kōwhiringa'
     options:
@@ -151,7 +153,6 @@ mi:
       start: Tīmatatia
     filtering:
       proposals: Ngā whakatakoto
-      muted: Kua whakahāngūtia
     threads_from:
       today: 'Ākuanei'
       yesterday: 'Inanahi'

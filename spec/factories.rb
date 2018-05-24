@@ -17,6 +17,7 @@ FactoryBot.define do
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
+    legal_accepted true
     password 'complex_password'
     time_zone "Pacific/Tarawa"
     email_verified true
@@ -103,6 +104,12 @@ FactoryBot.define do
     user
     sequence_id 1
     kind :new_comment
+  end
+
+  factory :version, class: PaperTrail::Version do
+    association :item, factory: :discussion
+    event :updated
+    object_changes({})
   end
 
   factory :discussion_event, class: Event do

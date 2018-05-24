@@ -1,6 +1,6 @@
 module.exports = (test) ->
-  loadPath: (path) ->
-    test.url "http://localhost:3000/dev/#{path}"
+  loadPath: (path, opts = {}) ->
+    test.url "http://localhost:3000/dev/#{opts.controller || 'nightwatch'}/#{path}"
 
   goTo: (path) ->
     test.url "http://localhost:3000/#{path}"
@@ -73,5 +73,5 @@ module.exports = (test) ->
     test.acceptAlert()
     @pause()
 
-  waitFor: (selector, wait = 4000) ->
+  waitFor: (selector, wait = 6000) ->
     test.waitForElementVisible(selector, wait) if selector?

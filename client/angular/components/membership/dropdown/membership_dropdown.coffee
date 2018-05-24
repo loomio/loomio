@@ -1,9 +1,9 @@
-Session        = require 'shared/services/session.coffee'
-Records        = require 'shared/services/records.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
-ModalService   = require 'shared/services/modal_service.coffee'
-I18n           = require 'shared/services/i18n.coffee'
+Session        = require 'shared/services/session'
+Records        = require 'shared/services/records'
+AbilityService = require 'shared/services/ability_service'
+FlashService   = require 'shared/services/flash_service'
+ModalService   = require 'shared/services/modal_service'
+I18n           = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'membershipDropdown', ->
   scope: {membership: '='}
@@ -14,6 +14,14 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
       $scope.canRemoveMembership() or
       $scope.canToggleAdmin()
 
+    $scope.canResendMembership = ->
+      AbilityService.canResendMembership($scope.membership)
+
+    $scope.resendMembership = ->
+      FlashService.loading()
+      $scope.membership.resend().then ->
+        FlashService.success "membership_dropdown.invitation_resent"
+
     $scope.canRemoveMembership = ->
       AbilityService.canRemoveMembership($scope.membership)
 
@@ -23,6 +31,7 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
         scope:
           namespace: namespace
           user: $scope.membership.user()
+          group: $scope.membership.group()
         text:
           title:    "membership_remove_modal.#{namespace}.title"
           fragment: "membership_remove_modal"

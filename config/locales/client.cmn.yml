@@ -89,3 +89,6 @@ cmn:
     proposal_title: 议案
   poll_common_form:
     closed: 关闭了
+  poll_count_options:
+    'yes': '是的'
+    'no': '不是'

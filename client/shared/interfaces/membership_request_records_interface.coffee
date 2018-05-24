@@ -1,5 +1,5 @@
-BaseRecordsInterface   = require 'shared/record_store/base_records_interface.coffee'
-MembershipRequestModel = require 'shared/models/membership_request_model.coffee'
+BaseRecordsInterface   = require 'shared/record_store/base_records_interface'
+MembershipRequestModel = require 'shared/models/membership_request_model'
 
 module.exports = class MembershipRequestRecordsInterface extends BaseRecordsInterface
   model: MembershipRequestModel

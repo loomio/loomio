@@ -18,6 +18,8 @@ bg_BG:
   navbar:
     search:
       discussions: 'Дискусии'
+  membership_dropdown:
+    make_coordinator: 'Направи координатор'
   notifications:
     header: "Известия"
   position_buttons_panel:

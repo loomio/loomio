@@ -1,9 +1,9 @@
-Session  = require 'shared/services/session.coffee'
-Records  = require 'shared/services/records.coffee'
-EventBus = require 'shared/services/event_bus.coffee'
+Session  = require 'shared/services/session'
+Records  = require 'shared/services/records'
+EventBus = require 'shared/services/event_bus'
 
-{ submitForm }    = require 'shared/helpers/form.coffee'
-{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitForm }    = require 'shared/helpers/form'
+{ submitOnEnter } = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'installSlackInviteForm', ->
   scope: {group: '='}

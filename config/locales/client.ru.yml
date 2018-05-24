@@ -245,6 +245,8 @@ ru:
     email_settings: 'Настройки эмайла'
     help: 'Помощь'
     sign_out: 'Выйти'
+  membership_dropdown:
+    make_coordinator: 'Сделать координатором'
   start_menu:
     label: 'Активность пользователя'
     title: 'Действие'
@@ -280,7 +282,7 @@ ru:
     react: Добавить реакцию
     add_resource: Добавить вложение
     add_comment: Комментарий
-    copy_url_comment: Скопировать ссылку
+    copy_url: Скопировать ссылку
     edit_thread: Редактировать контекст
     translate_thread: Перевести контекст
     edit_poll: Редактировать опрос
@@ -313,6 +315,7 @@ ru:
   revision_history_modal:
     aria_label: История изменений
     posted: Размещено
+    current_revision: Последний
   reactions_display:
     you: "Вы"
     you_and_name: "Вы и {{name}}"
@@ -370,8 +373,6 @@ ru:
     name_label: 'Имя'
     coordinator_label: 'Координатор'
     remove_member_label: 'Удалить'
-  remove_membership_form:
-    submit: 'Удалить'
   pending_invitations_card:
     copy_url: Скопировать ссылку
   profile_page:
@@ -381,6 +382,7 @@ ru:
     locale_label: 'Язык'
   email_settings_page:
     header: Настройки email
+    announcement_label: Объявления
     edit: Редактировать
   dashboard_page:
     aria_label: 'Кабинет'
@@ -391,7 +393,6 @@ ru:
     dismiss: Отклонить
     filtering:
       proposals: Голосования
-      muted: Заглушен
     aria_thread:
       current_proposal: 'Текущее голосование: {{name}}.'
       you_voted: 'Ваш голос: {{position}}.'
@@ -472,6 +473,9 @@ ru:
     start: Начать
   poll_poll_form:
     edit_header: Редактировать опрос
+  poll_count_options:
+    'yes': 'Да'
+    'no': 'Нет'
   poll_meeting_chart_panel:
     total: Всего
   poll_common_subscribe_form:

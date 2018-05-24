@@ -78,6 +78,8 @@ sr_RS:
       placeholder: 'Тражи'
       discussions: 'Низови'
       proposals: 'Предлози'
+  membership_dropdown:
+    make_coordinator: 'Учини координатором'
   start_menu:
     invite_people: 'Позови Људе'
   notifications:
@@ -181,3 +183,6 @@ sr_RS:
     vote: 'Можете променити свој став било када'
   poll_common_form:
     closed: Истекло
+  poll_count_options:
+    'yes': 'Да'
+    'no': 'Не'

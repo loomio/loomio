@@ -1,4 +1,4 @@
-Records = require 'shared/services/records.coffee'
+Records = require 'shared/services/records'
 
 angular.module('loomioApp').directive 'searchResult', ->
   scope: {result: '='}

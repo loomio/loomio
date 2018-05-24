@@ -141,8 +141,6 @@ fa_IR:
   memberships_page:
     members: 'اعضا'
     remove_member_label: 'حذف کردن'
-  remove_membership_form:
-    submit: 'حذف کردن'
   email_settings_page:
     header: تنظیمات رایانامه
     update_settings: ذخیره کردن تغییرات
@@ -173,8 +171,6 @@ fa_IR:
     update: به روز رسانی
   poll_meeting_chart_panel:
     total: مقدار کلی
-  poll_common_share_form:
-    share_group: گروه
   poll_common_subscribe_form:
     subscribe: دنبال کردن
   polls_page:

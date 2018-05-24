@@ -29,7 +29,7 @@
       %group_setting_checkbox.group-form__allow-public-threads{group: "group", setting: "allowPublicThreads", ng-if: "group.privacyIsClosed() && !group.isSubgroupOfSecretParent()"}
       %group_setting_checkbox.group-form__parent-members-can-see-discussions{group: "group", setting: "parentMembersCanSeeDiscussions", translate-values: "{parent: group.parent().name}", ng-if: "group.isSubgroup() && group.privacyIsClosed()"}
       %group_setting_checkbox.group-form__members-can-add-members{group: "group", setting: "membersCanAddMembers"}
-      %group_setting_checkbox.group-form__members-can-create-subgroups{group: "group", setting: "membersCanCreateSubgroups"}
+      %group_setting_checkbox.group-form__members-can-create-subgroups{group: "group", setting: "membersCanCreateSubgroups", ng-if: "group.isParent()"}
       %group_setting_checkbox.group-form__members-can-start-discussions{group: "group", setting: "membersCanStartDiscussions"}
       %group_setting_checkbox.group-form__members-can-edit-discussions{group: "group", setting: "membersCanEditDiscussions"}
       %group_setting_checkbox.group-form__members-can-edit-comments{group: "group", setting: "membersCanEditComments"}

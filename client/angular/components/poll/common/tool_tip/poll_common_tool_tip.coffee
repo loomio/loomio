@@ -1,6 +1,6 @@
-AppConfig = require 'shared/services/app_config.coffee'
-Session   = require 'shared/services/session.coffee'
-Records   = require 'shared/services/records.coffee'
+AppConfig = require 'shared/services/app_config'
+Session   = require 'shared/services/session'
+Records   = require 'shared/services/records'
 
 angular.module('loomioApp').directive 'pollCommonToolTip', ->
   scope: {poll: '='}

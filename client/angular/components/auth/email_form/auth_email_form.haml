@@ -1,9 +1,8 @@
 .auth-email-form
+  %p.md-subhead.auth-email-form__or-enter-email{translate: "auth_form.or_enter_your_email"}
   %md-input-container.md-block.auth-email-form__email
     %label{translate: "auth_form.email"}
     %input.lmo-primary-form-input#email{name: "email", type: "email", md-autofocus: "true", placeholder: "{{ 'auth_form.email_placeholder' | translate}}", ng-model: "email"}
     %validation_errors{subject: "user", field: "email"}
 
-  .lmo-md-actions
-    %div
-    %md-button.md-primary.md-raised.auth-email-form__submit{ng-click: "submit()", ng-disabled: "!email", translate: "auth_form.sign_in", aria-label: "{{ 'auth_form.sign_in' | translate }}"}
+  %md-button.md-primary.md-raised.auth-email-form__submit{ng-click: "submit()", ng-disabled: "!email", translate: "auth_form.continue_with_email", aria-label: "{{ 'auth_form.continue_with_email' | translate }}"}

@@ -224,6 +224,8 @@ ro:
     help: 'Ajutor'
     contact_site_name: 'Contacteaza {{site_name}}'
     sign_out: 'Iesire din cont'
+  membership_dropdown:
+    make_coordinator: 'Promoveaza coordonator'
   start_menu:
     label: 'Actiuni utilizator'
     title: 'Actiune'
@@ -255,8 +257,6 @@ ro:
     privacy_public: 'Oricine poate vedea o discutie. Doar membrii pot participa.'
     privacy_private: 'Discutia va fi vizibila doar membrilor grupului {{group}}.'
     privacy_organisation: 'Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.'
-    make_announcement: Anunt
-    notified_count: '{{count}} membri vor fi notificati'
   action_dock:
     react: Adauga reactie
     add_resource: Adauga atasament
@@ -296,6 +296,7 @@ ro:
     started_by: 'Inceput de <strong>{{name}}</strong>'
     edited_by: 'Editat de <strong>{{name}}</strong>'
     posted: Adaugat
+    current_revision: Cel mai nou
   reactions_input:
     add_your_reaction: Adauga reactie
   reactions_display:
@@ -356,8 +357,6 @@ ro:
     name_label: 'Nume'
     coordinator_label: 'Coordonator'
     remove_member_label: 'Elimina'
-  remove_membership_form:
-    submit: 'Sterge'
   profile_page:
     profile: 'Profil'
     picture_label: 'Fotografie'
@@ -367,6 +366,7 @@ ro:
     locale_label: 'Limba'
   email_settings_page:
     header: Setari email
+    announcement_label: Anunturi
   dashboard_page:
     aria_label: 'Tablou de bord'
     no_groups:
@@ -388,7 +388,6 @@ ro:
       proposals: Propuneri
       proposals_aria_label: Discutii in curs care au propuneri active
       proposals_description: Vezi doar discutii care au propuneri active
-      muted: Dezactivat
       muted_aria_label: Discutii dezactivate in curs
       muted_description: Vezi doar discutii care au fost dezactivate
     threads_from:
@@ -468,6 +467,9 @@ ro:
     start: Incepe
   poll_poll_form:
     edit_header: Editare sondaj
+  poll_count_options:
+    'yes': 'Da'
+    'no': 'Nu'
   poll_meeting_chart_panel:
     total: Total
   poll_common_subscribe_form:

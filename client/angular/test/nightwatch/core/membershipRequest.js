@@ -1,5 +1,5 @@
 require('coffeescript/register')
-pageHelper = require('../helpers/page_helper.coffee')
+pageHelper = require('../helpers/page_helper')
 
 module.exports = {
   'successfully approves a membership request': (test) => {
@@ -12,7 +12,7 @@ module.exports = {
     page.expectText('.membership-requests-page__previous-requests', 'Approved by Patrick Swayze')
   },
 
-  'adds existing users to group upon approval': (test) => {
+  'adds_existing_users_to_group_upon_approval': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_membership_requests')
@@ -22,6 +22,7 @@ module.exports = {
     page.click('.membership-requests-page__approve')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--group')
+    page.pause()
     page.expectCount('.membership-card__membership', 5)
   },
 

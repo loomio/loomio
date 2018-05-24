@@ -1,9 +1,9 @@
-AppConfig   = require 'shared/services/app_config.coffee'
-AuthService = require 'shared/services/auth_service.coffee'
-EventBus    = require 'shared/services/event_bus.coffee'
-I18n        = require 'shared/services/i18n.coffee'
+AppConfig   = require 'shared/services/app_config'
+AuthService = require 'shared/services/auth_service'
+EventBus    = require 'shared/services/event_bus'
+I18n        = require 'shared/services/i18n'
 
-{ submitOnEnter } = require 'shared/helpers/keyboard.coffee'
+{ submitOnEnter } = require 'shared/helpers/keyboard'
 
 angular.module('loomioApp').directive 'authEmailForm', ->
   scope: {user: '='}

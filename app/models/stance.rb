@@ -89,14 +89,6 @@ class Stance < ApplicationRecord
   end
 
   def participant_is_complete
-    return if participant.email_verified
-    if participant&.name.blank?
-      errors.add(:participant_name, I18n.t(:"activerecord.errors.messages.blank"))
-      participant.errors.add(:name, I18n.t(:"activerecord.errors.messages.blank"))
-    end
-    if participant&.email.blank?
-      errors.add(:participant_email, I18n.t(:"activerecord.errors.messages.blank"))
-      participant.errors.add(:email, I18n.t(:"activerecord.errors.messages.blank"))
-    end
+    participant.tap(&:valid?).errors.map { |key, err| errors.add(:"participant_#{key}", err)}
   end
 end

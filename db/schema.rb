@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503220910) do
+ActiveRecord::Schema.define(version: 20180519045039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -372,6 +372,7 @@ ActiveRecord::Schema.define(version: 20180503220910) do
     t.datetime "updated_at"
     t.string "redirect"
     t.integer "code", null: false
+    t.boolean "is_reactivation", default: false, null: false
   end
 
   create_table "membership_requests", id: :serial, force: :cascade do |t|
@@ -573,6 +574,7 @@ ActiveRecord::Schema.define(version: 20180503220910) do
     t.boolean "voter_can_add_options", default: false, null: false
     t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
+    t.integer "versions_count", default: 0
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
@@ -711,6 +713,7 @@ ActiveRecord::Schema.define(version: 20180503220910) do
     t.boolean "email_verified", default: false, null: false
     t.string "location", default: "", null: false
     t.datetime "last_seen_at"
+    t.datetime "legal_accepted_at"
     t.index ["deactivated_at"], name: "index_users_on_deactivated_at"
     t.index ["email"], name: "email_verified_and_unique", unique: true, where: "(email_verified IS TRUE)"
     t.index ["email"], name: "index_users_on_email"

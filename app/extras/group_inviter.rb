@@ -33,7 +33,9 @@ class GroupInviter
   private
 
   def generate_users!
-    @generated_user_ids ||= User.import(@emails.uniq.map { |email| User.new(email: email) }).ids
+    @generated_user_ids ||= User.import(@emails.uniq.map do |email|
+      User.new(email: email, time_zone: @inviter.time_zone, detected_locale: @inviter.locale)
+    end).ids
   end
 
   def generate_memberships!
@@ -47,7 +49,7 @@ class GroupInviter
     Membership.new(inviter: @inviter,
                    user: user,
                    group: @group,
-                   volume: Membership.volumes[:normal],
+                   volume: (2 if @group.is_formal_group?),
                    accepted_at: (Time.now if user.email_verified))
   end
 end

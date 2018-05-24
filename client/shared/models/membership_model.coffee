@@ -1,5 +1,5 @@
-BaseModel = require 'shared/record_store/base_model.coffee'
-AppConfig = require 'shared/services/app_config.coffee'
+BaseModel = require 'shared/record_store/base_model'
+AppConfig = require 'shared/services/app_config'
 
 module.exports = class MembershipModel extends BaseModel
   @singular: 'membership'
@@ -38,6 +38,10 @@ module.exports = class MembershipModel extends BaseModel
       else
         _.each @group().discussions(), (discussion) ->
           discussion.update(discussionReaderVolume: null)
+
+  resend: ->
+    @remote.postMember(@keyOrId(), 'resend').then =>
+      @resent = true
 
   isMuted: ->
     @volume == 'mute'

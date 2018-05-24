@@ -31,6 +31,8 @@ an:
     search:
       placeholder: 'Buscar'
       discussions: 'Discusions'
+  membership_dropdown:
+    make_coordinator: 'Fer coordinador'
   notifications:
     header: "Notificacions"
   position_buttons_panel:
@@ -104,3 +106,6 @@ an:
     vote: 'Puetz cambiar a tuya posición en qualsiquier inte'
   poll_common_form:
     closed: Zarrau
+  poll_count_options:
+    'yes': 'Sí'
+    'no': 'No'

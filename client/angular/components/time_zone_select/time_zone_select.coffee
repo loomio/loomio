@@ -1,7 +1,7 @@
-AppConfig   = require 'shared/services/app_config.coffee'
-EventBus    = require 'shared/services/event_bus.coffee'
-TimeService = require 'shared/services/time_service.coffee'
-I18n        = require 'shared/services/i18n.coffee'
+AppConfig   = require 'shared/services/app_config'
+EventBus    = require 'shared/services/event_bus'
+TimeService = require 'shared/services/time_service'
+I18n        = require 'shared/services/i18n'
 
 angular.module('loomioApp').directive 'timeZoneSelect', ->
   scope: {zone: '='}

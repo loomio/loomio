@@ -1,11 +1,11 @@
-AppConfig          = require 'shared/services/app_config.coffee'
-Records            = require 'shared/services/records.coffee'
-Session            = require 'shared/services/session.coffee'
-EventBus           = require 'shared/services/event_bus.coffee'
-AbilityService     = require 'shared/services/ability_service.coffee'
-RecordLoader       = require 'shared/services/record_loader.coffee'
-ThreadQueryService = require 'shared/services/thread_query_service.coffee'
-ModalService       = require 'shared/services/modal_service.coffee'
+AppConfig          = require 'shared/services/app_config'
+Records            = require 'shared/services/records'
+Session            = require 'shared/services/session'
+EventBus           = require 'shared/services/event_bus'
+AbilityService     = require 'shared/services/ability_service'
+RecordLoader       = require 'shared/services/record_loader'
+ThreadQueryService = require 'shared/services/thread_query_service'
+ModalService       = require 'shared/services/modal_service'
 
 $controller = ($rootScope, $routeParams, $mdMedia) ->
 

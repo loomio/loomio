@@ -1,14 +1,15 @@
 require('coffeescript/register')
-pageHelper = require('../helpers/page_helper.coffee')
+pageHelper = require('../helpers/page_helper')
 
 module.exports = {
-  'can sign up a user': (test) => {
+  'can_sign_up_a_user': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_as_visitor')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
+    page.click('.auth-signup-form__legal-accepted')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
@@ -17,7 +18,7 @@ module.exports = {
     page.expectText('.dashboard-page__heading', 'Recent Threads')
   },
 
-  'can sign up a new user through the discussion page': (test) => {
+  'can_sign_up_a_new_user_through_the_discussion_page': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_open_discussion_as_visitor')
@@ -25,6 +26,7 @@ module.exports = {
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
+    page.click('.auth-signup-form__legal-accepted')
     page.click('.auth-signup-form__submit')
     page.expectElement('.auth-complete')
 
@@ -38,21 +40,22 @@ module.exports = {
     page.expectElement('.comment-form__submit-button')
   },
 
-  'can login via token': (test) => {
+  'can_login_via_token': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_login_token')
     page.click('.auth-signin-form__submit')
-    page.expectText('.flash-root__message', 'Signed in successfully')
+    page.expectText('.flash-root__message', 'Signed in successfully', 20000)
   },
 
-  'can use a shareable link': (test) => {
+  'can_use_a_shareable_link': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_with_shareable_link')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
+    page.click('.auth-signup-form__legal-accepted')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
     page.loadPath('use_last_login_token')
@@ -61,7 +64,7 @@ module.exports = {
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
   },
 
-  'does not log in when password is incorrect': (test) => {
+  'does_not_log_in_when_password_is_incorrect': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_explore_as_visitor')
@@ -70,10 +73,11 @@ module.exports = {
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'w0rstmovie')
     page.click('.auth-signin-form__submit')
-    page.expectText('.auth-form', 'that password doesn\'t match')
+    page.pause(1000)
+    page.expectText('.auth-form', "that password doesn't match")
   },
 
-  'can send login link to user with a password': (test) => {
+  'can_send_login_link_to_user_with_a_password': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_as_visitor')
@@ -87,7 +91,7 @@ module.exports = {
     page.expectText('.dashboard-page__heading', 'Recent Threads')
   },
 
-  'does not log in an invalid token': (test) => {
+  'does_not_log_in_an_invalid_token': (test) => {
     page.loadPath('setup_used_login_token')
     page.click('.auth-signin-form__submit')
     page.expectText('.lmo-validation-error__message', 'Click below to send another one')
@@ -111,7 +115,7 @@ module.exports = {
     page.expectText('.dashboard-page__heading', 'Recent Threads')
   },
 
-  'can login from a discussion page': (test) => {
+  'can_login_from_a_discussion_page': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_open_discussion_as_visitor')
@@ -127,7 +131,7 @@ module.exports = {
     page.expectText('.flash-root__message', 'Comment added')
   },
 
-  'can login from the explore page': (test) => {
+  'can_login_from_the_explore_page': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_explore_as_visitor')
@@ -139,7 +143,7 @@ module.exports = {
     page.expectText('.flash-root__message', 'Signed in successfully')
   },
 
-  'can login from the explore page via link': (test) => {
+  'can_login_from_the_explore_page_via_link': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_explore_as_visitor')
@@ -154,7 +158,7 @@ module.exports = {
     page.expectText('.explore-page', 'Explore groups')
   },
 
-  'can login from a closed group page': (test) => {
+  'can_login_from_a_closed_group_page': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_closed_group_as_visitor')
@@ -170,7 +174,7 @@ module.exports = {
     page.expectElement('.sidebar__content')
   },
 
-  'can login from a secret group page': (test) => {
+  'can_login_from_a_secret_group_page': (test) => {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_visitor')
@@ -184,7 +188,7 @@ module.exports = {
     page.expectElement('.sidebar__content')
   },
 
-  'can_accept_an_invitation': (test) => {
+  'can_invite_existing_user': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_invitation_to_user_with_password')
@@ -196,14 +200,15 @@ module.exports = {
     page.expectNoElement('.join-group-button')
   },
 
-  'can_log_someone_in_from_an_invitation': (test) => {
+  'can_invite_new_user': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_invitation_to_visitor')
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signin-form', 'Nice to meet you')
-    page.fillIn('.auth-signin-form__name input', 'Billy Jeans')
-    page.click('.auth-signin-form__submit')
+    page.expectText('.auth-signup-form', 'Welcome to')
+    page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
+    page.click('.auth-signup-form__legal-accepted')
+    page.click('.auth-signup-form__submit')
     page.expectText('.flash-root__message', 'Signed in successfully', 8000)
     page.expectText('.group-theme__name', 'Dirty Dancing Shoes', 16000)
   },
@@ -214,20 +219,30 @@ module.exports = {
     page.loadPath('setup_invitation_to_visitor')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@merciless.com')
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-signup-form', 'Nice to meet you')
+    page.expectText('.auth-signup-form', 'Welcome to')
     page.fillIn('.auth-signup-form__name input', 'Billy Jeans')
+    page.click('.auth-signup-form__legal-accepted')
     page.click('.auth-signup-form__submit')
     page.expectText('.auth-complete', 'Check your email')
   },
 
-  'prompts the user to contact us to reactivate': (test) => {
+  'prompts_reactivation_if_required': (test) => {
     page = pageHelper(test)
-
     page.loadPath('setup_deactivated_user')
     page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
     page.click('.auth-email-form__submit')
-    page.expectText('.auth-inactive-form', 'has been deactivated!')
-    page.click('.auth-inactive-form__submit')
-    page.expectElement('.contact-form')
+    page.expectText('.auth-inactive-form', 'has been deactivated')
+    page.expectElement('.auth-inactive-form__reactivate')
+  },
+
+  'can_reactivate_the_account': (test) =>  {
+    page = pageHelper(test)
+
+    page.loadPath('setup_user_reactivation_email')
+    page.click('.base-mailer__button')
+    page.pause(2000)
+    page.click('.auth-signin-form__submit')
+    page.expectText('.flash-root__message', 'Signed in successfully')
   }
+
 }

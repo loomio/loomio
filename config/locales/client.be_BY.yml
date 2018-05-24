@@ -49,6 +49,8 @@ be_BY:
       placeholder: 'Пошук'
       discussions: 'Абмеркаванні'
       proposals: 'Прапановы'
+  membership_dropdown:
+    make_coordinator: 'Зрабіць каардынатарам'
   notifications:
     header: "Апавяшчэнні"
   position_buttons_panel:
@@ -87,6 +89,10 @@ be_BY:
     name_label: 'Імя'
     coordinator_label: 'Каардынатар'
     remove_member_label: 'Выдаліць'
+  membership_remove_modal:
+    membership:
+      title: Выдаліць удзельніка
+      submit: Выдаліць удзельніка
   pending_invitations_card:
     heading: Актуальныя запрашэнні
   cancel_invitation_form:
@@ -138,3 +144,6 @@ be_BY:
     vote: 'Вы здольны змяніць свой голас у любы час'
   poll_common_form:
     closed: Закрыта
+  poll_count_options:
+    'yes': 'Так'
+    'no': 'Не'

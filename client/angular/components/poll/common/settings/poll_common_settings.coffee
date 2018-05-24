@@ -1,4 +1,4 @@
-{ settingsFor } = require 'shared/helpers/poll.coffee'
+{ settingsFor } = require 'shared/helpers/poll'
 
 angular.module('loomioApp').directive 'pollCommonSettings', ->
   scope: {poll: '='}

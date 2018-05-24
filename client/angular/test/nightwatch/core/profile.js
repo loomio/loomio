@@ -1,5 +1,5 @@
 require('coffeescript/register')
-pageHelper = require('../helpers/page_helper.coffee')
+pageHelper = require('../helpers/page_helper')
 
 module.exports = {
   'successfully updates a profile': (test) => {
@@ -119,6 +119,7 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.pause(2000)
     page.click('.confirm-modal__submit')
-    page.expectText('.auth-modal', 'Sign into Loomio', 10000)
+    page.expectText('.auth-modal', 'Sign into Loomio')
   }
+
 }

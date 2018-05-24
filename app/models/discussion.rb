@@ -1,6 +1,7 @@
 class Discussion < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
+  include Forkable
   include Translatable
   include Reactable
   include HasTimeframe
@@ -39,6 +40,10 @@ class Discussion < ApplicationRecord
   is_mentionable on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail only: [:title, :description, :private, :group_id]
+
+  def self.always_versioned_fields
+    [:title, :description]
+  end
 
   belongs_to :group, class_name: 'FormalGroup'
   belongs_to :author, class_name: 'User'
@@ -85,7 +90,7 @@ class Discussion < ApplicationRecord
   after_create :set_last_activity_at_to_created_at
 
   define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
-  define_counter_cache(:versions_count)       { |discussion| discussion.versions.where(event: :update).count }
+  define_counter_cache(:versions_count)       { |discussion| discussion.versions.count }
   define_counter_cache(:items_count)          { |discussion| discussion.items.count }
   define_counter_cache(:seen_by_count)        { |discussion| discussion.discussion_readers.where("last_read_at is not null").count }
 
@@ -108,14 +113,6 @@ class Discussion < ApplicationRecord
      RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list discussion.items.order(:sequence_id).pluck(:sequence_id)
     discussion.last_activity_at = discussion.items.order(:sequence_id).last&.created_at || created_at
     save!(validate: false)
-  end
-
-  def thread_item_created!
-    update_sequence_info!
-  end
-
-  def thread_item_destroyed!
-    update_sequence_info!
   end
 
   def public?
@@ -152,6 +149,10 @@ class Discussion < ApplicationRecord
   def ranges_string
     update_sequence_info! if self[:ranges_string].nil?
     self[:ranges_string]
+  end
+
+  def is_new_version?
+    (['title', 'description', 'private'] & self.changes.keys).any?
   end
 
   private

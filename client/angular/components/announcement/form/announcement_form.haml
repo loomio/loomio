@@ -12,7 +12,7 @@
 
     %md-list.announcement-form__invited
       %div.md-subhead.announcement-form__num-notified{ng-switch: "announcement.recipients.length"}
-        %div{ng-switch-when: "0"}
+        %p.lmo-text-right{ng-switch-when: "0", translate: "announcement.form.notified_empty"}
         %p.lmo-text-right{ng-switch-when: "1", translate: "announcement.form.notified_singular"}
         %p.lmo-text-right{ng-switch-default: "true", translate: "announcement.form.notified", translate-value-notified: "{{announcement.recipients.length}}"}
       %md-list-item.announcement-form__list-item{ng-repeat: "recipient in announcement.recipients track by recipient.emailHash"}

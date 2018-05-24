@@ -94,6 +94,8 @@ ar:
       discussions: 'المواضيع'
       proposals: 'المقترحات'
       comments: 'التعليقات'
+  membership_dropdown:
+    cancel_invitation: إلغاء الدعوة
   start_menu:
     start_group: 'إبدأ مجموعة'
     start_subgroup: 'إبدأ مجموعة فرعية'
@@ -138,11 +140,10 @@ ar:
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
   revision_history_modal:
-    thread_header: تاريخ إعادة صياغة الموضوع
-    comment_header: تاريخ إعادة صياغة التعليقات
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong>'
     edited_by: 'تم تعديله من قبل <strong>{{name}}</strong>'
     posted: تم النشر
+    current_revision: الأحدث
   group_page:
     messages:
       privacy:
@@ -154,7 +155,6 @@ ar:
     group_logo: 'شعار المجموعة'
     new_photo: 'صورة جديدة'
     discussions_placeholder: 'الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.'
-    members: 'أعضاء'
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
     subgroups: 'مجموعة فرعية'
@@ -290,6 +290,14 @@ ar:
       remove_admin_success: '{{name}} لم يعد منسقاً'
     remove_admin_from_self:
       question: 'هل أنت متأكد أنك لا ترغب أن تكون منسقاً بعد الآن؟'
+  membership_remove_modal:
+    invitation:
+      title: إلغاء الدعوة
+      flash: تم إلغاء الدعوة
+      submit: إلغاء الدعوة
+    membership:
+      title: إزالة عضو
+      submit: إزالة عضو
   pending_invitations_card:
     heading: دعوات في الانتظار
     email: بريد الكتروني
@@ -342,7 +350,6 @@ ar:
       proposals: المقترحات
       proposals_aria_label: يتم إظهار المواضيع ذات المقترحات النشطة
       proposals_description: إظهار المواضيع ذات المقترحات النشطة فقط
-      muted: صامت
       muted_aria_label: يتم إظهار المواضيع الصامتة
       muted_description: إظهار المواضيع الصامتة فقط
     aria_thread:
@@ -502,3 +509,5 @@ ar:
       success: "لن يستطيع '{{name}}' استخدام حسابك بعد الآن."
   poll_common_form:
     closed: مغلقة
+  poll_count_options:
+    'no': 'لا'

@@ -1,8 +1,8 @@
-AppConfig      = require 'shared/services/app_config.coffee'
-Records        = require 'shared/services/records.coffee'
-EventBus       = require 'shared/services/event_bus.coffee'
-AbilityService = require 'shared/services/ability_service.coffee'
-FlashService   = require 'shared/services/flash_service.coffee'
+AppConfig      = require 'shared/services/app_config'
+Records        = require 'shared/services/records'
+EventBus       = require 'shared/services/event_bus'
+AbilityService = require 'shared/services/ability_service'
+FlashService   = require 'shared/services/flash_service'
 
 $controller = ($routeParams, $rootScope) ->
   EventBus.broadcast $rootScope, 'currentComponent', { page: 'membershipRequestsPage'}

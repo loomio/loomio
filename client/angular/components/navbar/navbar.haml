@@ -2,11 +2,11 @@
   %md_toolbar
     .md-toolbar-tools
       .navbar__left
-        %md_icon_button.navbar__sidenav-toggle{aria-hidden: "true", ng-show: "isLoggedIn()", ng-click: "toggleSidebar()", aria-label: "{{ 'navbar.toggle_sidebar' | translate }}"}
+        %md_icon_button.navbar__sidenav-toggle{ng-show: "isLoggedIn()", ng-click: "toggleSidebar()", aria-label: "{{ 'navbar.toggle_sidebar' | translate }}"}
           %i.mdi.mdi-menu
 
       .navbar__middle.lmo-flex.lmo-flex__horizontal-center
-        %a.lmo-pointer{lmo-href: "/dashboard"}
+        %a.lmo-pointer{lmo-href: "/dashboard", ng-href: "/dashboard"}
           %img{ng-src: "{{logo()}}"}
 
       .navbar__right

@@ -8,7 +8,6 @@ pt_BR:
         invalid: não é um valor válido
   errors:
     messages:
-      email: 'Não é um endereço de email válido '
       spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
   poll:
     export:
@@ -17,6 +16,7 @@ pt_BR:
       engagement: Engajamento
       details: Detalhes
       group_name: Nome do Grupo
+      reason: Motivo
       total: Total
   stance:
     error:
@@ -29,18 +29,18 @@ pt_BR:
       one_at_a_time: Há outra proposta ativa.
   subscriptions:
     gift_plan_selected_for_group_html: |
-      <h1>Confirmado.</h1>
-      <p>Você selecionou o plano Gratuito para o seu grupo <a href="/g/%{group_key}">%{group}</a></p>
+        <h1>Confirmado.</h1>
+        <p>Você selecionou o plano Gratuito para o seu grupo <a href="/g/%{group_key}">%{group}</a></p>
   email:
     reset_password:
       greeting: |
-        Oi %{name}
-        Aqui está um link que você pode usar para redefinir a senha da sua conta Loomio:
+          Oi %{name}
+          Aqui está um link que você pode usar para redefinir a senha da sua conta Loomio:
       link_text: Redefina sua senha
       signoff: |
-        Você recebeu este e-mail porque o seu foi requerido no formulário "Esqueci minha senha" em %{hostname}.
-        No entanto, sua senha não será alterada até que você siga o link acima e preencha o formulário.
-        Se você continuar a ter problemas de login, responda a este e-mail para entrar em contato com uma pessoa do suporte técnico.
+          Você recebeu este e-mail porque o seu foi requerido no formulário "Esqueci minha senha" em %{hostname}.
+          No entanto, sua senha não será alterada até que você siga o link acima e preencha o formulário.
+          Se você continuar a ter problemas de login, responda a este e-mail para entrar em contato com uma pessoa do suporte técnico.
     start_decision:
       subject: Comece a decisão no Loomio
       action: O que você gostaria de fazer?
@@ -82,6 +82,9 @@ pt_BR:
       button_text: Ver solicitação
   email_actions:
     unfollowed_discussion: Você desativou emails para esse tópico.
+  discussion_mailer:
+    reply_or_view_online_html: Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>.
+    turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."
   footer:
     about: Sobre
     blog: Blog
@@ -103,87 +106,87 @@ pt_BR:
   introduction_thread:
     title: Bem-vindo! Por favor, apresente-se
     description: |
-      Dedique um momento para compartilhar com o grupo um pouco sobre você. Poste um comentário abaixo.
+        Dedique um momento para compartilhar com o grupo um pouco sobre você. Poste um comentário abaixo.
 
-      Qual é o seu papel ou caminho até chegar a participar deste grupo? O que as pessoas precisam saber de você para entender de onde você veio?
+        Qual é o seu papel ou caminho até chegar a participar deste grupo? O que as pessoas precisam saber de você para entender de onde você veio?
   how_it_works_thread:
     title: Como utilizar o Loomio
     description: |
-      Seja bem-vindo ao Loomio, uma plataforma online para tomar decisões conjuntas.
+        Seja bem-vindo ao Loomio, uma plataforma online para tomar decisões conjuntas.
 
-      Este é um exemplo de **tópico** de discussão. Você pode adicionar um comentário abaixo. Um tópico é uma conversa sobre um determinado assunto. Este tópico é sobre como o Loomio funciona; então, poste suas dúvidas sobre esse assunto aqui.
+        Este é um exemplo de **tópico** de discussão. Você pode adicionar um comentário abaixo. Um tópico é uma conversa sobre um determinado assunto. Este tópico é sobre como o Loomio funciona; então, poste suas dúvidas sobre esse assunto aqui.
 
-      Neste momento, você está lendo o tópico **contexto**, um local para informações básicas. Você poderá atualizá-lo na medida em que a discussão progredir.
+        Neste momento, você está lendo o tópico **contexto**, um local para informações básicas. Você poderá atualizá-lo na medida em que a discussão progredir.
 
-      Para começar a utilizar o Loomio:
-      1. Carregue uma [foto de perfil](/profile)
-      2. Apresente-se no [tópido de boas-vindas](%{thread_url})
-      3. Poste em tópicos existentes, ou inicie um novo
+        Para começar a utilizar o Loomio:
+        1. Carregue uma [foto de perfil](/profile)
+        2. Apresente-se no [tópido de boas-vindas](%{thread_url})
+        3. Poste em tópicos existentes, ou inicie um novo
 
-      Dicas para postar no Loomio:
-      * Para notificar uma pessoa específica, digite @ seguido do nome dela.
-      * Clique no ícone com um clips para adicionar anexos.
+        Dicas para postar no Loomio:
+        * Para notificar uma pessoa específica, digite @ seguido do nome dela.
+        * Clique no ícone com um clips para adicionar anexos.
 
-      Em caso de dúvidas, confira o [manual de ajuda do Loomio](http://help.loomio.org).
+        Em caso de dúvidas, confira o [manual de ajuda do Loomio](http://help.loomio.org).
   first_proposal:
     name: Proposta de demonstração
     description: |
-      Esta é uma **proposta**, na qual você pode tomar uma decisão conjunta. Você pode iniciar uma proposta assim que a discussão estiver em andamento.
+        Esta é uma **proposta**, na qual você pode tomar uma decisão conjunta. Você pode iniciar uma proposta assim que a discussão estiver em andamento.
 
-      Todos são solicitados a **definir uma posição** até o **prazo final**. Você pode estender o prazo final se necessário, ou concluir a proposta antes do prazo.
+        Todos são solicitados a **definir uma posição** até o **prazo final**. Você pode estender o prazo final se necessário, ou concluir a proposta antes do prazo.
 
-      Você pode **mudar sua posição** enquanto a proposta estiver aberta. Você pode reconsiderar a sua visão na medida em que ouve visões dos demais.
+        Você pode **mudar sua posição** enquanto a proposta estiver aberta. Você pode reconsiderar a sua visão na medida em que ouve visões dos demais.
 
-      Às vezes, grupos funcionam por meio de uma **série de propostas** para construir soluções conjuntas. Você pode criar propostas em série neste tópico.
+        Às vezes, grupos funcionam por meio de uma **série de propostas** para construir soluções conjuntas. Você pode criar propostas em série neste tópico.
 
-      **Tente participar! Clique em um dos quatro botões**.
+        **Tente participar! Clique em um dos quatro botões**.
   markdown:
     intro:
       title: |
-        # O que é remarcação?
+          # O que é remarcação?
       body: |
-        Markdown é uma maneira de escrever texto simples (esquerda)
-        de modo que possa ser convertido para texto rico (direita).
-        Esta página está escrita com remarcação para mostrar como funciona.
+          Markdown é uma maneira de escrever texto simples (esquerda)
+          de modo que possa ser convertido para texto rico (direita).
+          Esta página está escrita com remarcação para mostrar como funciona.
     paragraphs:
       title: |
-        ## Parágrafos
+          ## Parágrafos
       body: |
-        Você precisa
-        colocar uma
-        linha em branco
-        entre as linhas.
+          Você precisa
+          colocar uma
+          linha em branco
+          entre as linhas.
 
-        Ou vai acabar com um grande parágrafo!
+          Ou vai acabar com um grande parágrafo!
     emphasis:
       title: |
-        ## Itálico
+          ## Itálico
       body: |
-        Você pode colocar em itálico uma palavra com _underscore_ ou *asterístico*.
+          Você pode colocar em itálico uma palavra com _underscore_ ou *asterístico*.
 
-        __Negrito__ duplicando o **asterístico**.
+          __Negrito__ duplicando o **asterístico**.
     lists:
       title: |
-        ## Listas
+          ## Listas
       body: |
-        Veja como fazer uma lista:
+          Veja como fazer uma lista:
 
-        * deixe uma linha em branco antes da sua lista
-        * use asterístico (*)
-        * deixe um espaço depois do asterisco
+          * deixe uma linha em branco antes da sua lista
+          * use asterístico (*)
+          * deixe um espaço depois do asterisco
     links:
       title: |
-        ## Links e Imagens
+          ## Links e Imagens
       body: |
-        Repita em voz alta:
+          Repita em voz alta:
 
-        Entre colchetes para nome e entre parênteses para URL. Não deve haver espaços dentro dos parênteses.
+          Entre colchetes para nome e entre parênteses para URL. Não deve haver espaços dentro dos parênteses.
 
-        [Página inicial do Loomio](https://www.loomio.org/)
+          [Página inicial do Loomio](https://www.loomio.org/)
 
-        O mesmo para imagens, mas antecedidas por um ponto de exclamação.
+          O mesmo para imagens, mas antecedidas por um ponto de exclamação.
 
-        ![Logo do Loomio](https://i.imgur.com/Fvtworb.png)
+          ![Logo do Loomio](https://i.imgur.com/Fvtworb.png)
   poll_mailer:
     common:
       or: ou

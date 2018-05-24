@@ -6,13 +6,18 @@ pl:
     clap: Brawo!
     hugging: Przytulam
     sunglasses: Fajne
+    wink: Mrugnięcie okiem
     nerd: Sprytne
     relieved: Co za ulga
     worried: Martwię się
     confused: Miesane uczucie
+    confounded: Zakłopotanie
     neutral_face: Obojętnie
+    slight_frown: Skrzywienie
     disappointed: Rozczarowujące
     angry: Złość
+    weary: Zmęczenie
+    astonished: Zdziwienie
     rolling_eyes: Przewracam oczami
     cry: Płaczę
     scream: Krzyczę
@@ -22,9 +27,14 @@ pl:
     pray: Modlę się
     fingers_crossed: Trzymam kciuki!
     v: Pokój
+    metal: Usztywnienie
     ok_hand: Ok
+    wave: Machanie
+    thumbsup: Poparcie
+    thumbsdown: Dezaprobata
   poll_types:
     proposal: Propozycja
+    count: Zaznaczenie
     poll: Ankieta
     dot_vote: Głosowanie kropkowe
     meeting: Ankieta datowa
@@ -53,6 +63,7 @@ pl:
     decisions: 'Decyzje'
     settings: 'Ustawienia'
     help: 'Pomoc'
+    anonymous: Anonimowo
     privacy:
       privacy: 'Prywatność'
       public: 'Publiczna'
@@ -73,10 +84,12 @@ pl:
     copy: 'Kopiuj'
     copy_text: 'Kopiuj tekst'
     copied: 'Skopiowano do schowka'
+    points_abbrev: Każdy głos warty jest {{score}} punktów
     total: W sumie
     action:
       next: 'Dalej'
       close: 'Zamknij'
+      reopen: 'Otworzyć ponownie'
       save: 'Zapis'
       save_changes: 'Zapisanie zmian'
       update_settings: 'Zaktualizuj ustawienia'
@@ -110,6 +123,7 @@ pl:
       resend: Wyślij ponownie
       send: Wyślij
       resent: Zaproszenie wysłane ponownie
+      export: Eksport
     formatting_help:
       label: 'Formatowanie'
   ordinal:
@@ -134,12 +148,15 @@ pl:
     please_verify: Dziękujemy za udział! Sprawdź swoją skrzynkę e-mail w poszukiwaniu linku do weryfikacji Twojego głosowania.
   verify_stances:
     title: Weryfikuj głosy
+    description: Sprawdź proszę poniższe głosy i sprawdź czy należą do ciebie.
     verify: Weryfikuj
     remove: Usuń
     verify_success: Głos zweryfikowany
     remove_success: Głos usunięty
     all_done: Dobra robota, wszystkie głosy zweryfikowane.
   previous_polls_page:
+    heading: Aktywność w {{name}}
+    polls_count: Pokazuje {{loaded}} z {{total}} decyzji
     search_activities: Szukaj decyzji
   volume_levels:
     loud: 'Głośno'
@@ -148,6 +165,7 @@ pl:
     mute: 'Wyciszono'
     unmute: 'Wyłącz wyciszenie'
   change_volume_form:
+    aria_label: "Formularz zmiany stawień poczty"
     loud_label: "Wszystkie aktywności"
     normal_label: "Ogłoszenia"
     quiet_label: "Brak wiadomości"
@@ -159,6 +177,7 @@ pl:
       quiet_description: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
       apply_to_all: "Zapisz te ustawienia do wszystkich wątków w tej grupie"
       messages:
+        loud: "Pocztą otrzymasz powiadomienie o aktywności w tym wątku."
         quiet: "Nie będziemy wysyłać do Ciebie e-maili na temat tego wątku."
     membership:
       title: "Ustawienia poczty dla {{title}}"
@@ -194,6 +213,8 @@ pl:
       discussions: 'Wątki'
       proposals: 'Rekomendacje'
       comments: 'Komentarze'
+  membership_dropdown:
+    make_coordinator: 'Definicja koordynatora'
   start_menu:
     start_group: 'Uruchomienie Grupy'
     start_subgroup: 'Uruchomienie Podgrupy'
@@ -233,6 +254,8 @@ pl:
     email_label: E-mail
     messages:
       membership_requested: 'Wysłałeś/aś prośbę o dołączenie do grupy  {{group}}'
+  revision_history_modal:
+    current_revision: Ostatnie
   reactions_display:
     you: "Ty"
   group_page:
@@ -291,8 +314,10 @@ pl:
       remove_member_success: 'Usunięto {{name}}'
       make_admin_success: '{{name}} został/a koordynatorem'
       remove_admin_success: '{{name}} przestał/a być koordynatorem'
-  remove_membership_form:
-    submit: 'Usuń'
+  membership_remove_modal:
+    membership:
+      title: Usunięcie członka
+      submit: Usunięcie członka
   profile_page:
     messages:
       updated: 'Profil zmieniony'
@@ -312,6 +337,7 @@ pl:
   email_settings_page:
     header: Ustawienia poczty
     daily_summary_label: Dzienna wiadomość z podsumowaniem
+    announcement_label: Ogłoszenia
     messages:
       updated: Ustawienia poczty zmienione
   dashboard_page:
@@ -334,7 +360,6 @@ pl:
       proposals: Rekomendacje
       proposals_aria_label: Pokazywane są wątki z aktywnymi rekomendacjami
       proposals_description: Zobacz tylko wątki  aktywnymi rekomendacjami
-      muted: Wyciszone
       muted_aria_label: Pokazywane są wyciszone wątki
       muted_description: Przegląd tylko wątków wyciszonych
     aria_thread:
@@ -370,6 +395,7 @@ pl:
     aria_label: 'Kontekst wątku.'
     thread_options: 'Opcje wątku'
     close_thread: 'Zamknij'
+    reopen_thread: 'Otworzyć ponownie'
     mute_thread: 'Wycisz'
     delete_thread: 'Usuń'
   delete_comment_dialog:
@@ -398,12 +424,16 @@ pl:
     vote: 'W każdej chwili możesz zmienić swoje stanowisko'
   decision_tools_card:
     proposal_title: Propozycja
+    count_title: Zaznaczenie
     poll_title: Ankieta
     meeting_title: Ankieta datowa
   poll_common_form:
     closed: Zamknięta
     start: Rozpocznij
     update: Zaktualizuj
+  poll_count_options:
+    'yes': 'Tak'
+    'no': 'Nie'
   poll_meeting_chart_panel:
     total: W sumie
   poll_common_subscribe_form:

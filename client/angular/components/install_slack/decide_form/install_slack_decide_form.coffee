@@ -1,7 +1,7 @@
-AppConfig = require 'shared/services/session.coffee'
-Records   = require 'shared/services/records.coffee'
+AppConfig = require 'shared/services/session'
+Records   = require 'shared/services/records'
 
-{ applyPollStartSequence } = require 'shared/helpers/apply.coffee'
+{ applyPollStartSequence } = require 'shared/helpers/apply'
 
 angular.module('loomioApp').directive 'installSlackDecideForm', ->
   scope: {group: '='}

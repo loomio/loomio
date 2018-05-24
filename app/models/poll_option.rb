@@ -32,8 +32,10 @@ class PollOption < ApplicationRecord
   def display_name(zone: nil)
     if poll.dates_as_options
       formatted_datetime(name, zone || poll.time_zone)
-    else
+    elsif poll.poll_options_attributes.any?
       name.humanize
+    else
+      name
     end
   end
 end

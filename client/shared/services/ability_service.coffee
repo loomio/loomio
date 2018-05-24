@@ -1,7 +1,7 @@
-AppConfig     = require 'shared/services/app_config.coffee'
-Records       = require 'shared/services/records.coffee'
-Session       = require 'shared/services/session.coffee'
-LmoUrlService = require 'shared/services/lmo_url_service.coffee'
+AppConfig     = require 'shared/services/app_config'
+Records       = require 'shared/services/records'
+Session       = require 'shared/services/session'
+LmoUrlService = require 'shared/services/lmo_url_service'
 
 module.exports = new class AbilityService
 
@@ -30,6 +30,10 @@ module.exports = new class AbilityService
 
   canRespondToComment: (comment) ->
     _.contains comment.discussion().members(), Session.user()
+
+  canForkComment: (comment) ->
+    @canMoveThread(comment.discussion()) &&
+    !comment.isReply()
 
   canStartPoll: (model) ->
     return unless model
@@ -159,6 +163,11 @@ module.exports = new class AbilityService
     membership.group().memberIds().length > 1 and
     (!membership.admin or membership.group().adminIds().length > 1) and
     (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
+
+  canResendMembership: (membership) ->
+    membership and
+    !membership.acceptedAt and
+    membership.inviter() == Session.user()
 
   canDeactivateUser: ->
    _.all Session.user().memberships(), (membership) ->

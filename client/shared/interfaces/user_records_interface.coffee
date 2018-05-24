@@ -1,5 +1,5 @@
-BaseRecordsInterface = require 'shared/record_store/base_records_interface.coffee'
-UserModel            = require 'shared/models/user_model.coffee'
+BaseRecordsInterface = require 'shared/record_store/base_records_interface'
+UserModel            = require 'shared/models/user_model'
 
 module.exports = class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
@@ -15,6 +15,9 @@ module.exports = class UserRecordsInterface extends BaseRecordsInterface
 
   deactivate: (user) =>
     @remote.post 'deactivate', user.serialize()
+
+  reactivate: (user) =>
+    @remote.post 'reactivate', user.serialize()
 
   saveExperience: (experience) =>
     @remote.post 'save_experience', experience: experience

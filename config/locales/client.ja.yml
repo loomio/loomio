@@ -40,6 +40,8 @@ ja:
     search:
       placeholder: '検索'
       discussions: 'ディスカッション'
+  membership_dropdown:
+    make_coordinator: 'コーディネーターにする'
   notifications:
     header: "通知"
   position_buttons_panel:
@@ -110,3 +112,6 @@ ja:
     vote: 'いつでも意見を変更することができます'
   poll_common_form:
     closed: 議論終了
+  poll_count_options:
+    'yes': 'はい'
+    'no': 'いいえ'

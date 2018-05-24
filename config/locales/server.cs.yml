@@ -8,7 +8,6 @@ cs:
         invalid: není platná hodnota
   errors:
     messages:
-      email: Není platnou e-mailovou adresou
       spoofed_media_type: Obsah tohoto souboru neodpovídá jeho názvu
   attachment:
     error:
@@ -37,12 +36,13 @@ cs:
       one_at_a_time: Existuje další aktivní návrh.
   subscriptions:
     gift_plan_selected_for_group_html: |
-      <h1>Úspěch.</h1>
-      <p>Vybrali jste bezplatný plán pro vaši skupinu <a href="/g/%{group_key}">%{group}</a></p>
+        <h1>Úspěch.</h1>
+        <p>Vybrali jste bezplatný plán pro vaši skupinu <a href="/g/%{group_key}">%{group}</a></p>
   email:
+    common:
+      resend: Platnost tohoto odkazu vyprší za 24 hodin a může být použit pouze jednou.
     login:
       login: Přihlášen jako %{name}
-      resend: Platnost tohoto odkazu vyprší za 24 hodin a může být použit pouze jednou.
     reset_password:
       link_text: Obnovit heslo
     start_decision:
@@ -100,13 +100,13 @@ cs:
   markdown:
     intro:
       title: |
-        # Co je markdown?
+          # Co je markdown?
     lists:
       title: |
-        ## Seznamy
+          ## Seznamy
     links:
       title: |
-        ## Odkazy a obrázky
+          ## Odkazy a obrázky
   poll_mailer:
     common:
       or: nebo

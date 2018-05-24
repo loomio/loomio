@@ -175,6 +175,8 @@ hu:
   user_dropdown:
     help: 'Sugó'
     sign_out: 'Kijelentkezés'
+  membership_dropdown:
+    make_coordinator: 'Koordonátori jogok megadása'
   start_menu:
     start_group: 'Csoport indítása'
     start_subgroup: 'Alcsoport indítása'
@@ -203,10 +205,11 @@ hu:
     heading: Kérj belépőt a csoportba
     name_label: Név
     email_label: E-mail
+  revision_history_modal:
+    current_revision: Legutóbbi
   group_page:
     group_logo: 'Csoport logó'
     new_photo: 'Új fotó'
-    members: 'Tagok'
     visibility_label: 'Láthatóság'
     options_label: 'Lehetőségek'
     options:
@@ -267,7 +270,6 @@ hu:
     mark_as_read: Olvasottként jelöl
     filtering:
       proposals: Javaslatok
-      muted: Némított
     threads_from:
       today: 'Ma'
       yesterday: 'Tegnap'
@@ -309,5 +311,8 @@ hu:
   poll_common_form:
     closed: Zárva
     start: Indítás
+  poll_count_options:
+    'yes': 'Igen'
+    'no': 'Nem'
   poll_common_subscribe_form:
     subscribe: Feliratkozás

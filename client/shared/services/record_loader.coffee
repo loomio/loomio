@@ -1,4 +1,4 @@
-Records = require 'shared/services/records.coffee'
+Records = require 'shared/services/records'
 
 module.exports = class RecordLoader
   constructor: (opts = {}) ->

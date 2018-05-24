@@ -184,8 +184,6 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
         f.input type: :submit, value: "Move group"
       end
     end
-
-    active_admin_comments
   end
 
   form do |f|

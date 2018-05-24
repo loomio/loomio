@@ -4,7 +4,11 @@ class Pending::IdentitySerializer < Pending::BaseSerializer
   end
 
   def avatar_kind
-    'uploaded'
+    if object.logo.present?
+      'uploaded'
+    else
+      'initials'
+    end
   end
 
   def avatar_url

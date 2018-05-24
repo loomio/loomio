@@ -1,5 +1,6 @@
 require('coffeescript/register')
-pageHelper = require('../helpers/page_helper.coffee')
+pageHelper = require('../helpers/page_helper')
+workflowHelper = require('../helpers/workflow_helper')
 
 module.exports = {
   'preselects current group': (test) => {
@@ -272,16 +273,17 @@ module.exports = {
     page.expectElement('.reaction__emoji', 10000)
   },
 
-  'mentions a user': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', '@jennifer')
-    page.expectText('.mentio-menu', 'Jennifer Grey')
-    page.click('.mentio-menu md-menu-item')
-    page.click('.comment-form__submit-button')
-    page.expectText('.new-comment', '@jennifergrey')
-  },
+  // 'mentions a user': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_discussion')
+  //   page.fillIn('.comment-form textarea', '@jennifer')
+  //   page.pause()
+  //   page.expectText('.mentio-menu', 'Jennifer Grey')
+  //   page.click('.mentio-menu md-menu-item')
+  //   page.click('.comment-form__submit-button')
+  //   page.expectText('.new-comment', '@jennifergrey')
+  // },
 
   'edits a comment': (test) => {
     page = pageHelper(test)
@@ -295,19 +297,30 @@ module.exports = {
     page.expectText('.new-comment', 'edited comment right thur')
   },
 
-  'lets you view comment revision history': (test) => {
+  'lets_you_view_comment_revision_history': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('setup_discussion')
-    page.fillIn('.comment-form textarea', 'Comment!')
-    page.click('.comment-form__submit-button')
-    page.click('.action-dock__button--edit_comment', 8000)
-    page.fillIn('.edit-comment-form textarea', 'Revised comment!')
-    page.click( '.edit-comment-form .comment-form__submit-button')
-    page.pause()
+    page.loadPath('setup_comment_with_versions')
     page.click('.action-dock__button--show_history')
-    page.expectText('.revision-history-modal__body', 'Revised comment!')
-    page.expectText('.revision-history-modal__body', 'Comment!')
+    page.expectText('.revision-history-nav', 'Latest')
+    page.expectText('.revision-history-content--markdown del', 'star')
+    page.expectText('.revision-history-content--markdown ins', 'moon')
+    page.click('.revision-history-nav--previous')
+    page.expectText('.revision-history-nav', 'Original')
+    page.expectText('.revision-history-content--markdown', 'What star sign are you?')
+  },
+
+  'lets_you_view_discussion_revision_history': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_discussion_with_versions')
+    page.click('.action-dock__button--show_history')
+    page.expectText('.revision-history-nav', 'Latest')
+    page.expectText('.revision-history-content--header del', 'star')
+    page.expectText('.revision-history-content--header ins', 'moon')
+    page.click('.revision-history-nav--previous')
+    page.expectText('.revision-history-nav', 'Original')
+    page.expectText('.revision-history-content--header ins', 'What star sign are you?')
   },
 
   'deletes a comment': (test) => {
@@ -339,13 +352,12 @@ module.exports = {
 
   'invites_an_email_to_a_discussion': (test) => {
     page = pageHelper(test)
+    workflow = workflowHelper(test)
 
     page.loadPath('setup_discussion_mailer_invitation_created_email')
     page.click('.thread-mailer__subject a')
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
-    page.click('.auth-email-form__submit')
-    page.fillIn('.auth-signin-form__name', 'Jennifer')
-    page.click('.auth-signin-form__submit')
+    workflow.signUpViaInvitation("Jennifer")
     page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
@@ -357,5 +369,21 @@ module.exports = {
     page.loadPath('setup_thread_missed_yesterday')
     page.expectText('.activity-feed', 'body of the comment')
     page.expectText('.activity-feed', 'Patrick Swayze closed the discussion')
-  }
+  },
+
+  // 'can_fork_a_thread': (test) => {
+  //   page = pageHelper(test)
+  //
+  //   page.loadPath('setup_forkable_discussion')
+  //   page.click('.action-dock__button--fork_comment')
+  //   page.expectElement('md-checkbox.md-checked')
+  //   page.click('.discussion-fork-actions__submit')
+  //   page.fillIn('.discussion-form__title-input', 'Forked thread')
+  //   page.click('.discussion-form__submit')
+  //   page.expectText('.flash-root__message', 'Thread fork created')
+  //   page.click('.dismiss-modal-button')
+  //   page.expectText('.context-panel__heading', 'Forked thread')
+  //   page.expectText('.context-panel__details', 'Forked from What star sign are you?')
+  //   page.expectText('.thread-item__directive', 'This is totally on topic!', 8000)
+  // }
 }

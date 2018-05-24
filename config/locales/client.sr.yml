@@ -146,6 +146,9 @@ sr:
       comments: 'Komentari'
     sign_in: 'Prijavi se'
     toggle_sidebar: 'Uklj/Isklj traku'
+  membership_dropdown:
+    make_coordinator: 'Učini koordinatorom'
+    cancel_invitation: Otkaži poziv
   start_menu:
     start_group: 'Kreiraj Grupu'
     start_subgroup: 'Kreiraj Podgrupu'
@@ -192,11 +195,10 @@ sr:
     messages:
       membership_requested: 'Zahtevali ste članstvo u {{group}}'
   revision_history_modal:
-    thread_header: Revizija istorije konteksta niti
-    comment_header: Revizija istorije menjanja komentara
     started_by: 'Pokrenuto od <strong>{{name}}</strong>'
     edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
     posted: Postavljeno
+    current_revision: Poslednje
   group_page:
     messages:
       privacy:
@@ -208,7 +210,6 @@ sr:
     group_logo: 'Logo grupe'
     new_photo: 'nova fotografija'
     discussions_placeholder: 'Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.'
-    members: 'Članovi'
     members_placeholder: 'Samo si ti ovde: pozovi neke ljude da ti se pridruže!'
     member_options: Opcije člana
     subgroups: 'Podgrupe'
@@ -346,6 +347,14 @@ sr:
       remove_admin_success: '{{name}} nije više koordinator'
     remove_admin_from_self:
       question: 'Da li ste sigurni da ne želite više biti koordinator?'
+  membership_remove_modal:
+    invitation:
+      title: Otkaži poziv
+      flash: Poziv otkazan
+      submit: Otkaži poziv
+    membership:
+      title: Ukloni člana
+      submit: Ukloni člana
   pending_invitations_card:
     heading: Pozivnice na čekanju
     email: ePoruka
@@ -414,7 +423,6 @@ sr:
       proposals: Predlozi
       proposals_aria_label: Trenutno prikazuje niti sa aktivnim predlozima
       proposals_description: Vidi samo niti sa aktivnim predlozima
-      muted: Utišano
       muted_aria_label: Trenutno prikazuje utišane niti
       muted_description: Vidi samo niti koje su utišane
     aria_thread:
@@ -590,3 +598,6 @@ sr:
       success: "'{{name}}' ne može više koristiti Vaš nalog."
   poll_common_form:
     closed: Zatvoreno
+  poll_count_options:
+    'yes': 'Da'
+    'no': 'Ne'

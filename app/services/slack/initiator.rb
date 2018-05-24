@@ -5,19 +5,32 @@ class ::Slack::Initiator
     @channel_id  = params[:channel_id]
     @team_id     = params[:team_id]
     @team_domain = params[:team_domain]
-    @poll_type   = /^\S*/.match(params[:text]).to_s.strip # use first word as poll type
-    @poll_title  = /\s.*$/.match(params[:text]).to_s.strip # use remaining words as poll title
+    # use first word as poll type or 'thread'
+    @type        = /^\S*/.match(params[:text]).to_s.strip.to_sym
+    # use remaining words as poll / discussion title
+    @title       = /\s.*$/.match(params[:text]).to_s.strip
   end
 
   def initiate
-    return command_help      unless AppConfig.poll_templates.keys.include?(@poll_type)
+    return command_help      unless is_valid_command?
     return team_unauthorized unless target_groups.any?
     return channel_unknown   unless target_group.present?
-
-    generate_poll_url
+    initiate_url
   end
 
   private
+
+  def is_valid_command?
+    (poll_types + [:thread, :discussion]).include?(@type)
+  end
+
+  def initiate_url
+    I18n.t(:"slack.initiate", type: @type, url: url_target(
+      type:     @type,
+      title:    @title,
+      group_id: target_group.id
+    ))
+  end
 
   def command_help
     I18n.t(:"slack.slash_command_help")
@@ -36,12 +49,16 @@ class ::Slack::Initiator
     ))
   end
 
-  def generate_poll_url
-    I18n.t(:"slack.initiate", type: @poll_type, url: new_poll_url(
-      type:     @poll_type,
-      title:    @poll_title,
-      group_id: target_group.id
-    ))
+  def url_target(params = {})
+    if poll_types.include?(@type)
+      new_poll_url(params)
+    else
+      new_discussion_url(params)
+    end
+  end
+
+  def poll_types
+    AppConfig.poll_templates.keys.map(&:to_sym)
   end
 
   def target_group

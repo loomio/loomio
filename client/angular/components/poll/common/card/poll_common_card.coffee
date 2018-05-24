@@ -1,9 +1,9 @@
-Session  = require 'shared/services/session.coffee'
-Records  = require 'shared/services/records.coffee'
-EventBus = require 'shared/services/event_bus.coffee'
+Session  = require 'shared/services/session'
+Records  = require 'shared/services/records'
+EventBus = require 'shared/services/event_bus'
 
-{ listenForLoading } = require 'shared/helpers/listen.coffee'
-{ myLastStanceFor }  = require 'shared/helpers/poll.coffee'
+{ listenForLoading } = require 'shared/helpers/listen'
+{ myLastStanceFor }  = require 'shared/helpers/poll'
 
 angular.module('loomioApp').directive 'pollCommonCard', ->
   scope: {poll: '='}
