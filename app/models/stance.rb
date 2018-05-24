@@ -89,7 +89,6 @@ class Stance < ApplicationRecord
   end
 
   def participant_is_complete
-    participant.creating_stance = true
     participant.tap(&:valid?).errors.map { |key, err| errors.add(:"participant_#{key}", err)}
   end
 end

@@ -5,6 +5,7 @@ Ahoy.geocode = :async
 Ahoy.api = true
 Ahoy.server_side_visits = :when_needed
 AhoyEmail.track click: false
+Ahoy.mask_ips = true
 
 class Ahoy::Store < Ahoy::DatabaseStore
 

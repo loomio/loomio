@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   extend  NoSpam
   no_spam_for :name
-  
+
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
     helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
@@ -25,11 +25,19 @@ class User < ApplicationRecord
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
-  attr_writer :has_password
-  attr_accessor :creating_stance
+  attr_accessor :legal_accepted
+
+  attr_writer   :has_password
+  attr_accessor :require_valid_signup
+  attr_accessor :require_recaptcha
+
+  before_save :set_legal_accepted_at, if: :legal_accepted
 
   validates :email, presence: true, email: true, length: {maximum: 200}
-  validates :name, presence: true, if: :creating_stance
+
+  validates :name,               presence: true, if: :require_valid_signup
+  validates :legal_accepted,     presence: true, if: :require_legal_accepted
+  validate  :validate_recaptcha,                 if: :require_recaptcha
 
   has_attached_file :uploaded_avatar,
     styles: {
@@ -52,7 +60,6 @@ class User < ApplicationRecord
 
   validates_length_of :password, minimum: 8, allow_nil: true
   validates :password, nontrivial_password: true, allow_nil: true
-  validate  :ensure_recaptcha, if: :recaptcha
 
   has_many :admin_memberships,
            -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
@@ -124,6 +131,7 @@ class User < ApplicationRecord
   initialized_with_token :unsubscribe_token, -> { Devise.friendly_token }
   initialized_with_token :email_api_key,     -> { SecureRandom.hex(16) }
 
+
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
@@ -183,8 +191,17 @@ class User < ApplicationRecord
   #   SQL
   # }
   #
+
+  def set_legal_accepted_at
+    self.legal_accepted_at = Time.now
+  end
+
+  def require_legal_accepted
+    self.require_valid_signup && ENV['TERMS_URL']
+  end
+
   def self.email_status_for(email)
-    (verified_first.find_by(email: email) || LoggedOutUser.new).email_status
+    verified_first.find_by(email: email)&.email_status || :unused
   end
 
   define_counter_cache(:memberships_count) {|user| user.memberships.formal.count }
@@ -324,13 +341,16 @@ class User < ApplicationRecord
   end
 
   protected
+
   def password_required?
     !password.nil? || !password_confirmation.nil?
   end
 
   private
 
-  def ensure_recaptcha
+  def validate_recaptcha
+    return unless ENV['RECAPTCHA_APP_KEY']
+    return if self.persisted?
     return if Clients::Recaptcha.instance.validate(self.recaptcha)
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
