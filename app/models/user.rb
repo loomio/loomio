@@ -25,14 +25,17 @@ class User < ApplicationRecord
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
-  attr_writer :has_password
-  attr_accessor :creating_stance
+  attr_writer   :has_password
+  attr_reader :require_valid_signup
 
   attr_accessor :legal_accepted
   before_save :set_legal_accepted_at, if: :legal_accepted
 
   validates :email, presence: true, email: true, length: {maximum: 200}
-  validates :name, presence: true, if: :creating_stance
+
+  validates :name, presence: true,           if: :require_valid_signup
+  validates :legal_accepted, presence: true, if: :require_valid_signup
+  validate  :validate_recaptcha,             if: :require_valid_signup
 
   has_attached_file :uploaded_avatar,
     styles: {
@@ -55,7 +58,6 @@ class User < ApplicationRecord
 
   validates_length_of :password, minimum: 8, allow_nil: true
   validates :password, nontrivial_password: true, allow_nil: true
-  validate  :ensure_recaptcha, if: :recaptcha
 
   has_many :admin_memberships,
            -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
@@ -187,6 +189,10 @@ class User < ApplicationRecord
   #   SQL
   # }
   #
+  
+  def require_valid_signup!
+    @require_valid_signup = true
+  end
 
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
@@ -333,13 +339,15 @@ class User < ApplicationRecord
   end
 
   protected
+
   def password_required?
     !password.nil? || !password_confirmation.nil?
   end
 
   private
 
-  def ensure_recaptcha
+  def validate_recaptcha
+    return unless ENV['RECAPTCHA_APP_KEY']
     return if Clients::Recaptcha.instance.validate(self.recaptcha)
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end

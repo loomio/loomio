@@ -4,7 +4,6 @@ describe API::RegistrationsController do
   let(:registration_params) {{
     name: "Jon Snow",
     email: "jon@snow.com",
-    recaptcha: "notarobot",
     legal_accepted: true
   }}
 
@@ -15,13 +14,18 @@ describe API::RegistrationsController do
     let(:pending_identity)   { create :facebook_identity, email: registration_params[:email] }
 
     it 'creates a new user' do
-      Clients::Recaptcha.any_instance.stub(:validate) { true }
       expect { post :create, params: { user: registration_params } }.to change { User.count }.by(1)
       expect(response.status).to eq 200
       u = User.last
       expect(u.name).to eq registration_params[:name]
       expect(u.email).to eq registration_params[:email]
       expect(u.legal_accepted_at).to be_present
+    end
+
+    it 'requires acceptance of legal' do
+      registration_params.delete(:legal_accepted)
+      post :create, params: { user: registration_params }
+      expect(response.status).to eq 422
     end
 
     it 'sends a login email' do
@@ -45,15 +49,23 @@ describe API::RegistrationsController do
       expect(u.email).to eq registration_params[:email]
     end
 
-    it 'does not create a new user if recaptcha is not present' do
-      registration_params[:recaptcha] = ''
-      expect { post :create, params: { user: registration_params } }.to raise_error { ActionController::ParameterMissing }
-    end
+    describe 'RECAPTCHA env present' do
+      before { ENV['RECAPTCHA_APP_KEY'] = 'huzzah' }
+      after  { ENV.delete('RECAPTCHA_APP_KEY') }
 
-    it 'does not create a new user if the recaptcha is invalid' do
-      Clients::Recaptcha.any_instance.stub(:validate) { false }
-      expect { post :create, params: { user: registration_params } }.to_not change { User.count }
-      expect(response.status).to eq 422
+      it 'validates the recaptcha value' do
+        Clients::Recaptcha.any_instance.stub(:validate) { true }
+        post :create, params: { user: registration_params }
+        expect(response.status).to eq 200
+      end
+
+      it 'invalidtes user on recaptcha failure' do
+        Clients::Recaptcha.any_instance.stub(:validate) { false }
+        post :create, params: { user: registration_params }
+        expect(response.status).to eq 422
+        json = JSON.parse(response.body)
+        expect(json['errors']['recaptcha'][0]).to include "verify that you're not a robot"
+      end
     end
   end
 end

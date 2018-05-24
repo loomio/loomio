@@ -17,15 +17,9 @@ module.exports = new class AuthService
     user.update(hasToken: data.has_token)
     user
 
-  signUpOrIn: (user, onSuccess) ->
-    if user.emailStatus == 'unused'
-      @signUp(user, onSuccess)
-    else
-      @signIn(user, onSuccess)
-
   signIn: (user = {}, onSuccess) ->
     Records.sessions.build(
-      _.pick(user, ['email', 'name', 'password', 'recaptcha', 'legalAccepted'])
+      _.pick(user, ['email', 'name', 'password'])
     ).save().then ->
       onSuccess()
     , () ->

@@ -5,9 +5,10 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
+    resource.require_valid_signup!
     if resource.save
       save_detected_locale(resource)
-      if pending_membership_is_present? or pending_identity_is_present?
+      if email_is_verified?
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
         render json: { success: :ok, signed_in: true }
@@ -27,18 +28,12 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.require(:recaptcha) if !pending_membership_is_present? && ENV['RECAPTCHA_APP_KEY']
       u.permit(:name, :email, :recaptcha, :legal_accepted)
     end
   end
 
-  def pending_identity_is_present?
-    pending_identity.present? &&
-    pending_identity.email == params[:user][:email]
-  end
-
-  def pending_membership_is_present?
-    pending_membership.present? &&
-    pending_membership.user.email == params[:user][:email]
+  def email_is_verified?
+    (pending_identity.present? && pending_identity.email == params[:user][:email]) or
+    (pending_membership.present? && pending_membership.user.email == params[:user][:email])
   end
 end
