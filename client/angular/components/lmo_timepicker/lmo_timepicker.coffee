@@ -3,7 +3,6 @@ EventBus = require('shared/services/event_bus')
 TimeService = require 'shared/services/time_service'
 
 angular.module('loomioApp').directive 'lmoTimepicker', ->
-  scope: {date:'=?'}
   restrict: 'E'
   templateUrl: 'generated/components/lmo_timepicker/lmo_timepicker.html'
   controller: ['$scope', ($scope) ->

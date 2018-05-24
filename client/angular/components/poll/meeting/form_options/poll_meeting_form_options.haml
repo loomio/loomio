@@ -1,16 +1,19 @@
-.poll-meeting-form-options
+.poll-meeting-form-options.lmo-drop-animation
   %lmo_calendar{selected: "poll.meetingDates"}
 
-  .lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__space-between
-    %span{translate: "poll_meeting_form_options.timed_event"}
-    %md-switch{ng-model: "allDay"}
-    %span{translate: "poll_meeting_form_options.all_day"}
-  %div{ng-if:"!allDay", ng-replace:"true"}
-    .lmo-flex.lmo-flex--row.lmo-flex__center.lmo-flex__space-between
-      %md-switch{ng-change:"toggleSelect", ng-model: "selectForAll", translate: "poll_meeting_form_options.specify_each_time"}
+  %md-list{ng-if: "!addTimes"}
+    %md-list-item{ng-repeat: "date in poll.meetingDates"}
+      {{displayDayDate(date)}}
+  %md-button.md-button--tiny.animated{ng-show: "!addTimes && poll.meetingDates.length > 0", ng-click: "showAddTimes()"}
+    Add times
+  %div.animated{ng-show: "addTimes"}
+    %md-button.md-button--tiny{ng-click: "sameForAllDays = true"}
+      Same times for each day
+    %md-button.md-button--tiny{ng-click: "differentDays = true"}
+      Different times per day
 
-    %md-list{ng-if: "selectForAll && poll.meetingDates.length > 0"}
+    %md-list{ng-if: "sameForAllDays"}
       %lmo-timepicker
-    %md-list{ng-if: "!selectForAll && poll.meetingDates.length > 0"}
+    %md-list{ng-if: "differentDays"}
       %md-list-item{ng-repeat: "date in poll.meetingDates"}
         %lmo-timepicker{date: "date"}
