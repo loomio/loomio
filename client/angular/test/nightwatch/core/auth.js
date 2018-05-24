@@ -232,7 +232,7 @@ module.exports = {
     page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
     page.click('.auth-email-form__submit')
     page.expectText('.auth-inactive-form', 'has been deactivated')
-    page.expectText('.auth-inactive-form__submit', 'Reactivate account')
+    page.expectElement('.auth-inactive-form__reactivate')
   },
 
   'can_reactivate_the_account': (test) =>  {

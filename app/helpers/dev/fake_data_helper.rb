@@ -12,7 +12,8 @@ module Dev::FakeDataHelper
       password: Faker::Internet.password,
       detected_locale: 'en',
       is_admin: true,
-      email_verified: true
+      email_verified: true,
+      legal_accepted: true
     }.merge(args))
   end
 

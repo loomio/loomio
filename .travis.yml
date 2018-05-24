@@ -57,7 +57,8 @@ before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup
   - if [ "$TASK" = "plugins" ]; then bundle exec rake plugins:fetch plugins:install; fi
-  - bundle exec rake travis:prepare
+  - if [ "$TASK" = "e2e" ];     then bundle exec rake travis:build_client; fi
+  - bundle exec rake travis:cc_reporter
   - bundle exec rails server -b 0.0.0.0 > /dev/null &
 
 script:

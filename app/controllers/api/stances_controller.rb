@@ -31,8 +31,10 @@ class API::StancesController < API::RestfulController
 
   def set_guest_params
     return if current_user.email_verified
-    current_user.name  = guest_params['name']
-    current_user.email = guest_params['email']
+    current_user.name           = guest_params['name']
+    current_user.email          = guest_params['email']
+    current_user.legal_accepted = guest_params['legal_accepted']
+    current_user.recaptcha      = guest_params['recaptcha']
   end
 
   def guest_params
