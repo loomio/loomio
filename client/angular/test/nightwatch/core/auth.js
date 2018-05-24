@@ -226,6 +226,15 @@ module.exports = {
     page.expectText('.auth-complete', 'Check your email')
   },
 
+  'prompts_reactivation_if_required': (test) => {
+    page = pageHelper(test)
+    page.loadPath('setup_deactivated_user')
+    page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
+    page.click('.auth-email-form__submit')
+    page.expectText('.auth-inactive-form', 'has been deactivated')
+    page.expectText('.auth-inactive-form__submit', 'Reactivate account')
+  },
+
   'can_reactivate_the_account': (test) =>  {
     page = pageHelper(test)
 

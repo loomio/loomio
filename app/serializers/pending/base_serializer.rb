@@ -8,12 +8,12 @@ class Pending::BaseSerializer < ActiveModel::Serializer
   end
 
   def auth_form
-    if user.deactivated_at
-      'inactive'
+    if user.email_status == :inactive && !has_token
+      :inactive
     elsif (user.email_verified || has_token) && user.name
-      'signIn'
+      :signIn
     else
-      'signUp'
+      :signUp
     end
   end
 

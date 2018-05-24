@@ -936,7 +936,6 @@ en:
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
     no_emails: 'You will no longer receive notification emails'
-    contact_for_reactivation: 'You will need to contact us to reactivate your account'
     submit: 'Yes, I want to deactivate'
 
   deactivate_user_form:
@@ -1742,7 +1741,7 @@ en:
     i_accept: "I accept the <a href='{{termsUrl}}' target='_blank'>Terms of service</a> and <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>"
     name_required: Please enter a name
     terms_required: You must agree to the Terms of Service
-    account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated! Please contact us to reactivate your account.
+    account_inactive: Uh-oh, it looks like the account for {{email}} has been deactivated!
     privacy_notice: "Personal data is collected when you use {{siteName}}. <br/> Read our <a href='{{privacyUrl}}' target='_blank'>Privacy policy</a> to learn more."
 
     welcome: Welcome to {{siteName}}!
@@ -1771,7 +1770,7 @@ en:
     email: Email
     password: Password
 
-    reactivate: Send Reactivation Email
+    reactivate: Reactivate account
 
   install_slack:
     modal_title: Install Slack

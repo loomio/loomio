@@ -32,7 +32,7 @@ class LoggedOutUser
   end
 
   def email_status
-    :unused
+    User.email_status_for(self.email)
   end
 
   def avatar_kind
