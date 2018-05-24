@@ -20,6 +20,7 @@ class LoggedOutUser
                 email: email,
                 token: token,
                 legal_accepted: legal_accepted,
+                require_valid_signup: true,
                 recaptcha: recaptcha)
   end
 

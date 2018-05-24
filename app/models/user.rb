@@ -28,15 +28,16 @@ class User < ApplicationRecord
   attr_accessor :legal_accepted
 
   attr_writer   :has_password
-  attr_reader   :require_valid_signup
+  attr_accessor :require_valid_signup
+  attr_accessor :require_recaptcha
 
   before_save :set_legal_accepted_at, if: :legal_accepted
 
   validates :email, presence: true, email: true, length: {maximum: 200}
 
   validates :name,               presence: true, if: :require_valid_signup
-  validates :legal_accepted,     presence: true, if: :require_valid_signup
-  validate  :validate_recaptcha,                 if: :require_valid_signup
+  validates :legal_accepted,     presence: true, if: :require_legal_accepted
+  validate  :validate_recaptcha,                 if: :require_recaptcha
 
   has_attached_file :uploaded_avatar,
     styles: {
@@ -191,12 +192,12 @@ class User < ApplicationRecord
   # }
   #
 
-  def require_valid_signup!
-    @require_valid_signup = true
-  end
-
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
+  end
+
+  def require_legal_accepted
+    self.require_valid_signup && ENV['TERMS_URL']
   end
 
   def self.email_status_for(email)
