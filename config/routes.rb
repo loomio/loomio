@@ -94,7 +94,6 @@ Loomio::Application.routes.draw do
         get  :mentionable_users
         get  :me
         get  :email_status
-        post :remind
         post :update_profile
         post :set_volume
         post :upload_avatar
@@ -102,6 +101,7 @@ Loomio::Application.routes.draw do
         post :reactivate
         post :save_experience
       end
+      post :remind, on: :member
     end
 
     resources :login_tokens, only: [:create]
