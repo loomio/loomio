@@ -21,8 +21,8 @@ angular.module('loomioApp').directive 'lmoTimepicker', ->
 
     $scope.setAllDates = $scope.date == undefined
 
-    $scope.chips = []
-    $scope.$parent.dateToTimes[$scope.displayDayDate()] = []
+    display = $scope.displayDayDate()
+    $scope.chips = $scope.$parent.dateToTimes[display] = $scope.$parent.dateToTimes[display] || []
     $scope.times = generateDayTimes(30)
     $scope.queryTimes = selectDayTimes
   ]

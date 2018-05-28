@@ -1,5 +1,6 @@
 AppConfig   = require 'shared/services/app_config'
 EventBus    = require 'shared/services/event_bus'
+TimeService = require 'shared/services/time_service'
 
 { applySequence } = require 'shared/helpers/apply'
 
@@ -9,19 +10,28 @@ angular.module('loomioApp').directive 'pollMeetingFormOptions', ->
   controller: ['$scope', ($scope) ->
     applySequence $scope, steps: ['dateOnly', 'collapsedTimes', 'expandedTimes']
 
-    $scope.dateAndTime = (collapsed) ->
-      $scope.currentStep = if collapsed
-        'collapsedTimes'
+    $scope.collapsedMode =  ->
+      $scope.dateToTimes = {}
+      $scope.currentStep = 'collapsedTimes'
+      $scope.poll.submitDateTimes($scope.dateToTimes)
+
+    $scope.expandedMode = ->
+      if $scope.dateToTimes['all']
+        $scope.dateToTimes = _.fromPairs _.map($scope.poll.meetingDates, (date) ->
+          [TimeService.displayDayDate(date) , $scope.dateToTimes['all'].slice()])
       else
-        'expandedTimes'
+        $scope.dateToTimes = {}
+
+      $scope.currentStep = 'expandedTimes'
+      $scope.poll.submitDateTimes($scope.dateToTimes)
 
     $scope.setTimeMode = ->
       $scope.settingTimeMode = true
 
     $scope.dateOnly = ->
+      $scope.dateToTimes = {}
       $scope.settingTimeMode = false
       $scope.currentStep = 'dateOnly'
-      $scope.dateToTimes = {}
       $scope.poll.submitAllDayDates()
 
     EventBus.listen $scope, 'dateSelected', (e, date) ->

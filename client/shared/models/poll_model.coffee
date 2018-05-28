@@ -161,7 +161,6 @@ module.exports = class PollModel extends BaseModel
       times = dateToTimes['all'] || dateToTimes[TimeService.displayDayDate(date)]
       _.map times, (time) ->
         applyTimeToDate(date, time)
-    
 
   setMinimumStanceChoices: =>
     return unless @isNew() and @hasRequiredField('minimum_stance_choices')
