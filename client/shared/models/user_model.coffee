@@ -120,7 +120,7 @@ module.exports = class UserModel extends BaseModel
   titleFor: (model) ->
     return unless model
     if model.isA('group')
-      @membershipFor(model).title
+      (@membershipFor(model) or {}).title
     else if model.isA('discussion')
       @titleFor(model.guestGroup()) or @titleFor(model.group())
     else if model.isA('poll')
