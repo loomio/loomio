@@ -22,7 +22,7 @@ class API::DocumentsController < API::RestfulController
       private_group_documents
     else
       public_group_documents
-    end
+    end.order(created_at: :desc)
   end
 
   def private_group_documents
