@@ -184,6 +184,14 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
         f.input type: :submit, value: "Move group"
       end
     end
+
+    panel 'Set handle / subdomain' do
+      form action: handle_admin_group_path(group), method: :post do |f|
+        f.label "Handle"
+        f.input name: :handle, value: group.handle
+        f.input type: :submit, value: "Set handle"
+      end
+    end
   end
 
   form do |f|
@@ -205,6 +213,13 @@ ActiveAdmin.register FormalGroup, as: 'Group' do
     group  = Group.friendly.find(params[:id])
     parent = Group.friendly.find(params[:parent_id])
     GroupService.move(group: group, parent: parent, actor: current_user)
+    redirect_to admin_group_path(group)
+  end
+
+  member_action :handle, method: :post do
+    params.permit(:id, :handle)
+    group = Group.friendly.find(params[:id])
+    group.update(handle: params[:handle])
     redirect_to admin_group_path(group)
   end
 
