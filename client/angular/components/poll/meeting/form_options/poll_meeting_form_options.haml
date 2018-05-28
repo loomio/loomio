@@ -3,17 +3,20 @@
 
   .lmo-slide-animation{ng-if: "poll.meetingDates.length > 0", ng-switch: "currentStep"}
     %md-list{ng-switch-when: "dateOnly"}
-      %md-list-item{ng-repeat: "date in poll.meetingDates"}
+      %md-list-item{ng-repeat: "date in poll.meetingDates | orderBy:'_d'"}
         %lmo-timepicker{date: "date"}
       .lmo-md-actions
         %md-button.md-button--tiny.poll-meeting-form-options__times-button{ng-if: "!settingTimeMode", translate: "poll_meeting_form_options.add_times", ng-click: "setTimeMode()"}
         %md-button.md-button--tiny.poll-meeting-form-options__button{ng-if: "settingTimeMode", ng-click: "dateAndTime(true)", translate: "poll_meeting_form_options.same_times"}
         %md-button.md-button--tiny.poll-meeting-form-options__button{ng-if: "settingTimeMode", ng-click: "dateAndTime(false)", translate: "poll_meeting_form_options.different_times"}
-    .lmo-md-actions.animated{ng-switch-when: "timeSelect"}
     %div{ng-switch-when: "collapsedTimes"}
-      WARK
+      %md-list-item{ng-repeat: "date in poll.meetingDates | orderBy:'_d'"}
+        %lmo-timepicker{date: "date"}
+      %lmo-timepicker{add-times: "true"}
       %md-button.md-button--tiny.poll-meeting-form-options__times-button{translate: "poll_meeting_form_options.remove_times", ng-click: "dateOnly()"}
     %md-list.animated{ng-switch-when: "expandedTimes"}
-      %md-list-item{ng-repeat: "date in poll.meetingDates"}
+      %md-list-item{ng-repeat: "date in poll.meetingDates | orderBy:'_d'"}
         %lmo-timepicker{date: "date", add-times: "true"}
       %md-button.md-button--tiny.poll-meeting-form-options__times-button{translate: "poll_meeting_form_options.remove_times", ng-click: "dateOnly()"}
+
+  %validation_errors{subject: "poll", field: "pollOptions"}

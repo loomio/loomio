@@ -21,10 +21,18 @@ angular.module('loomioApp').directive 'pollMeetingFormOptions', ->
     $scope.dateOnly = ->
       $scope.settingTimeMode = false
       $scope.currentStep = 'dateOnly'
+      $scope.dateToTimes = {}
+      $scope.poll.submitAllDayDates()
 
     EventBus.listen $scope, 'dateSelected', (e, date) ->
       if _.contains $scope.poll.meetingDates, date
         _.pull $scope.poll.meetingDates, date
       else
         $scope.poll.meetingDates.push(date)
+
+    $scope.setTimesForDate = (date, times) ->
+      $scope.dateToTimes[date] = times
+      $scope.poll.submitDateTimes($scope.dateToTimes)
+
+    $scope.dateOnly()
   ]

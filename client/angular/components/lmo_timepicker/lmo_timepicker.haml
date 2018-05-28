@@ -1,7 +1,7 @@
 .lmo-timepicker
-  .lmo-timepicker__date
-    {{displayDayDate(dates)}}
-  %md-chips{ ng-model: "$parent.dateToTimes[dateKey(dates)]", readonly: "false", md-autocomplete-snap: "", md-require-match:"true"}
+  .lmo-timepicker__date{ng-if:"setAllDates == false"}
+    {{displayDayDate(date)}}
+  %md-chips{ng-if:"addTimes", ng-model: "chips", md-on-add: "updateChips($chip)", md-on-remove:"updateChips($chip)", readonly: "false", md-autocomplete-snap: "", md-require-match:"true"}
     %md-autocomplete{md-autoselect:"true", md-selected-item:"selectedItem", md-search-text:"searchText", md-items:"item in queryTimes(times, searchText)", md-item-text:"displayTime(item)", placeholder: "{{'timepicker.add_times' | translate}}"}
       %md-item-template {{displayTime(item)}}
     %md-chip-template

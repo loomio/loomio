@@ -6,6 +6,7 @@ HasDocuments     = require 'shared/mixins/has_documents'
 HasTranslations  = require 'shared/mixins/has_translations'
 HasGuestGroup    = require 'shared/mixins/has_guest_group'
 I18n             = require 'shared/services/i18n'
+TimeService      = require 'shared/services/time_service'
 
 module.exports = class PollModel extends BaseModel
   @singular: 'poll'
@@ -145,16 +146,22 @@ module.exports = class PollModel extends BaseModel
       'edit'
 
   addOption: =>
-    @handleDateOption()
     return unless @newOptionName and !_.contains(@pollOptionNames, @newOptionName)
     @pollOptionNames.push @newOptionName
     @setErrors({})
     @setMinimumStanceChoices()
     @newOptionName = ''
 
-  handleDateOption: =>
-    @newOptionName = moment(@optionDate).format('YYYY-MM-DD')                                     if @optionDate
-    @newOptionName = moment("#{@newOptionName} #{@optionTime}", 'YYYY-MM-DD h:mma').toISOString() if @optionTime
+  submitAllDayDates: () =>
+    @pollOptionNames = _.map @meetingDates, (date) ->
+      date.format('YYYY-MM-DD')
+
+  submitDateTimes: (dateToTimes) =>
+    @pollOptionNames = _.flatten _.map @meetingDates, (date) ->
+      times = dateToTimes['all'] || dateToTimes[TimeService.displayDayDate(date)]
+      _.map times, (time) ->
+        applyTimeToDate(date, time)
+    
 
   setMinimumStanceChoices: =>
     return unless @isNew() and @hasRequiredField('minimum_stance_choices')
@@ -172,3 +179,9 @@ module.exports = class PollModel extends BaseModel
 
   edited: ->
     @versionsCount > 1
+
+applyTimeToDate = (date, time) =>
+  hour = if time.ampm == 'pm' then parseInt(time.hour)+12 else parseInt(time.hour)
+  date = date.clone()
+  date.set({'hour': hour, 'minute':parseInt(time.minute)})
+  date
