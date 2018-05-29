@@ -25,7 +25,7 @@ angular.module('loomioApp').directive 'commentForm', ->
 
     $scope.commentPlaceholder = ->
       if $scope.comment.parentId
-        I18n.t('comment_form.in_reply_to', name: $scope.comment.parent().author().name)
+        I18n.t('comment_form.in_reply_to', name: $scope.comment.parent().authorName())
       else
         I18n.t('comment_form.aria_label')
 

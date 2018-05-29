@@ -410,6 +410,7 @@ ActiveRecord::Schema.define(version: 20180519045039) do
     t.integer "invitation_id"
     t.string "token"
     t.datetime "accepted_at"
+    t.string "title"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id", "is_suspended", "archived_at"], name: "active_memberships"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true

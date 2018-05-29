@@ -344,6 +344,7 @@ en:
     invitations: "Invitations"
 
   membership_dropdown:
+    set_title: "Set title"
     resend: "Resend invitation"
     invitation_resent: "Invitation resent"
     make_coordinator: 'Make coordinator'
@@ -855,6 +856,19 @@ en:
   memberships_panel:
     add_coordinator: Make coordinator
     remove_coordinator: Demote coordinator
+
+  membership_form:
+    modal_title:
+      group:      Set group title
+      discussion: Set thread title
+      poll:       Set {{pollType}} title
+    title_helptext:
+      group:      This title will appear beside {{name}}'s name within this group. Use it to let people know their role.
+      discussion: This title will appear beside {{name}}'s name within this thread. Use it to let people know their role.
+      poll:       This title will appear beside {{name}}'s name within this {{pollType}}. Use it to let people know their role.
+    title_label: title
+    title_placeholder: E.g. 'Coordinator', or 'Facilitator'
+    updated: Membership title updated
 
   pending_invitations_card:
     heading: Pending invitations

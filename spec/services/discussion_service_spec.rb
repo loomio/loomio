@@ -96,16 +96,16 @@ describe 'DiscussionService' do
     it 'notifies new mentions' do
       discussion.group.add_member! another_user
       discussion_params[:description] = "A mention for @#{another_user.username}!"
-      expect(Events::UserMentioned).to receive(:publish!).with(discussion, user, another_user)
-      DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
+      expect { DiscussionService.update(discussion: discussion, params: discussion_params, actor: user) }.to change { another_user.notifications.count }.by(1)
+      expect(another_user.notifications.last.kind).to eq 'user_mentioned'
     end
 
-    it 'notifies new mentions with editor' do
+    it 'notifies new mentions with edit' do
       discussion.group.add_member! another_user
       discussion.group.add_admin! admin
       discussion_params[:description] = "A mention for @#{another_user.username}!"
-      expect(Events::UserMentioned).to receive(:publish!).with(discussion, admin, another_user)
-      DiscussionService.update(discussion: discussion, params: discussion_params, actor: admin)
+      expect { DiscussionService.update(discussion: discussion, params: discussion_params, actor: user) }.to change { another_user.notifications.count }.by(1)
+      expect(another_user.notifications.last.kind).to eq 'user_mentioned'
     end
 
     it 'does not renotify old mentions' do
@@ -116,7 +116,7 @@ describe 'DiscussionService' do
       expect { DiscussionService.update(discussion: discussion, params: discussion_params, actor: user) }.to_not change  { another_user.notifications.count }
     end
 
-    it 'does not notify users outside of the group' do
+    it 'notifies users outside of the group' do
       discussion_params[:description] = "A mention for @#{another_user.username}!"
       expect(Events::UserMentioned).to_not receive(:publish!).with(discussion, user, another_user)
       DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)

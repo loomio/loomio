@@ -25,6 +25,9 @@ module.exports = class OutcomeModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'poll'
 
+  authorName: ->
+    @author().nameWithTitle(@poll()) if @author()
+
   group: ->
     @poll().group() if @poll()
 

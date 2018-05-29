@@ -14,7 +14,7 @@
   .membership-card__membership.lmo-flex.lmo-flex__center{ng-repeat: "membership in memberships() | orderBy: ['-admin', '-createdAt'] | limitTo: loader.numRequested track by membership.id", data-username: "{{membership.user().username}}"}
     %user_avatar.lmo-margin-right{user: "membership.user()", size: "medium", coordinator: "membership.admin", no-link: "!membership.acceptedAt"}
     .membership-card__user.lmo-flex.lmo-flex__grow.lmo-truncate{layout: "column"}
-      %span {{membership.user().name || membership.user().email }}
+      %span> {{membership.userName() || membership.user().email }}
       %outlet{name: "after-membership-user", model: "membership"}
       .membership-card__last-seen.md-caption{translate: "user_page.online_field", translate-value-value: "{{::membership.user().lastSeenAt | timeFromNowInWords}}", ng-if: "::membership.user().lastSeenAt"}
       .membership-card__last-seen.md-caption{translate: "user_page.invited", translate-value-value: "{{::membership.user().createdAt | timeFromNowInWords}}", ng-if: "!membership.acceptedAt"}

@@ -1,5 +1,6 @@
 AppConfig     = require 'shared/services/app_config'
 Records       = require 'shared/services/records'
+I18n          = require 'shared/services/i18n'
 
 # A series of helpers for interacting with polls, such as template values for a
 # particular poll or getting the last stance from a given user
@@ -26,6 +27,13 @@ module.exports =
       pollId: poll.id
       participantId: AppConfig.currentUserId
     ), 'createdAt')
+
+  participantName: (stance) ->
+    if stance.participant()
+      stance.participant().nameWithTitle(stance.poll())
+    else
+      I18n.t('common.anonymous')
+
 
 fieldFromTemplate = (pollType, field) ->
   (AppConfig.pollTemplates[pollType] or {})[field]

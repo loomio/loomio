@@ -14,7 +14,7 @@ module.exports = class MembershipModel extends BaseModel
     @belongsTo 'inviter', from: 'users'
 
   userName: ->
-    @user().name
+    @user().nameWithTitle(@group()) if @user()
 
   userUsername: ->
     @user().username
@@ -24,6 +24,11 @@ module.exports = class MembershipModel extends BaseModel
 
   groupName: ->
     @group().name
+
+  target: ->
+    (@group() if @group().type == "FormalGroup")             or
+    @recordStore.discussions.find(guestGroupId: @groupId)[0] or
+    @recordStore.polls.find(guestGroupId: @groupId)[0]
 
   saveVolume: (volume, applyToAll = false) ->
     @remote.patchMember(@keyOrId(), 'set_volume',

@@ -40,10 +40,16 @@ class Stance < ApplicationRecord
   validate :participant_is_complete
   validates :reason, length: { maximum: 250 }
 
-  delegate :locale, to: :author
-  delegate :group, to: :poll, allow_nil: true
-  delegate :mailer, to: :poll, allow_nil: true
-  delegate :groups, to: :poll
+  delegate :locale,         to: :author
+  delegate :group,          to: :poll, allow_nil: true
+  delegate :mailer,         to: :poll, allow_nil: true
+  delegate :groups,         to: :poll
+  delegate :group_id,       to: :poll
+  delegate :guest_group,    to: :poll
+  delegate :guest_group_id, to: :poll
+  delegate :discussion_id,  to: :poll
+  delegate :members,        to: :poll
+
   alias :author :participant
 
   def parent_event

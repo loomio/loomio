@@ -65,6 +65,9 @@ module.exports = class PollModel extends BaseModel
     @hasMany   'pollDidNotVotes'
     @hasMany   'versions', sortBy: 'createdAt'
 
+  authorName: ->
+    @author().nameWithTitle(@)
+
   discussionGuestGroupId: ->
     @discussion().guestGroupId if @discussion()
 

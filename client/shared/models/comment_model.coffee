@@ -61,7 +61,7 @@ module.exports = class CommentModel extends BaseModel
     @recordStore.users.find(_.pluck(@reactions(), 'userId'))
 
   authorName: ->
-    @author().name
+    @author().nameWithTitle(@discussion()) if @author()
 
   authorUsername: ->
     @author().username

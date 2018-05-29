@@ -140,11 +140,11 @@ class User < ApplicationRecord
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
-  scope :mentioned_in, ->(model) { where(id: model.notifications.user_mentions.pluck(:user_id)) }
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
   scope :verified_first, -> { order(email_verified: :desc) }
-  scope :search_for, ->(query) { where("name ilike :q OR username ilike :q", q: "%#{query}%") }
+  scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first", first: "#{q}%", other:  "% #{q}%") }
+  scope :mentionable_by, -> (user) { active.verified.distinct.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
 
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 

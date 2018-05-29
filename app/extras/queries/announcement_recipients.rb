@@ -19,11 +19,6 @@ Queries::AnnouncementRecipients = Struct.new(:query, :user, :group) do
   end
 
   def user_results
-    User.distinct.active
-        .joins(:memberships)
-        .where.not(id: [user.id, group.member_ids].flatten)
-        .where("memberships.group_id": user.group_ids)
-        .where("memberships.archived_at": nil)
-        .search_for(query)
+    User.mentionable_by(user).where.not(id: group.member_ids).search_for(query)
   end
 end

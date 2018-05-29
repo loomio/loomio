@@ -39,7 +39,7 @@ module.exports = class EventModel extends BaseModel
     @deleted = true
 
   actorName: ->
-    @actor().name if @actor()
+    @actor().nameWithTitle(@discussion()) if @actor()
 
   actorUsername: ->
     @actor().username if @actor()

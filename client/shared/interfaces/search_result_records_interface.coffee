@@ -3,6 +3,7 @@ SearchResultModel    = require 'shared/models/search_result_model'
 
 module.exports = class SearchResultRecordsInterface extends BaseRecordsInterface
   model: SearchResultModel
+  apiEndPoint: 'search'
 
   fetchByFragment: (fragment) ->
     @fetch
