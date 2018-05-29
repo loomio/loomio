@@ -1,5 +1,4 @@
 AppConfig       = require 'shared/services/app_config'
-Records         = require 'shared/services/records'
 EventBus        = require 'shared/services/event_bus'
 AbilityService  = require 'shared/services/ability_service'
 LmoUrlService   = require 'shared/services/lmo_url_service'
@@ -51,8 +50,8 @@ $controller = ($scope, $injector) ->
     $scope.links = options.links or {}
     setCurrentComponent(options)
 
-  initLiveUpdate()
   signIn(AppConfig.userPayload, AppConfig.userPayload.current_user_id, $scope.loggedIn)
+  initLiveUpdate()
 
   return
 
