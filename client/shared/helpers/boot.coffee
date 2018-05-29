@@ -2,9 +2,10 @@ RestfulClient = require 'shared/record_store/restful_client'
 
 module.exports =
   bootDat: (callback) ->
+    token  = new URLSearchParams(location.search).get('unsubscribe_token')
     client = new RestfulClient('boot')
     client.get('site').then (siteResponse) ->
-      client.get('user').then (userResponse) ->
+      client.get('user', unsubscribe_token: token).then (userResponse) ->
         if _.all _.pluck([siteResponse, userResponse], 'ok')
           siteResponse.json().then (site) ->
             userResponse.json().then (user) ->
