@@ -1,6 +1,5 @@
 BaseRecordsInterface = require 'shared/record_store/base_records_interface'
 UserModel            = require 'shared/models/user_model'
-RestfulClient        = require 'shared/record_store/restful_client'
 
 module.exports = class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel

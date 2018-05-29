@@ -4,7 +4,6 @@ utils         = require './utils'
 module.exports =
   class BaseRecordsInterface
     model: 'undefinedModel'
-    collectionName: null
 
     # override this if your apiEndPoint is not the model.plural
     apiEndPoint: null
@@ -22,8 +21,8 @@ module.exports =
 
     onInterfaceAdded: ->
 
-    setRemoteCallbacks: (callbacks, remote = @remote) ->
-      _.merge remote, _.pick(callbacks, ['onPrepare', 'onSuccess', 'onUploadSuccess', 'onFailure', 'onCleanup'])
+    setRemoteCallbacks: (callbacks) ->
+      _.merge @remote, _.pick(callbacks, ['onPrepare', 'onSuccess', 'onUploadSuccess', 'onFailure', 'onCleanup'])
 
     all: ->
       @collection.data

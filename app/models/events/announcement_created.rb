@@ -12,10 +12,6 @@ class Events::AnnouncementCreated < Event
     @memberships ||= Membership.where(id: custom_fields['membership_ids'])
   end
 
-  def members
-    User.where(id: memberships.pluck(:user_id))
-  end
-
   private
 
   def email_method
@@ -28,6 +24,6 @@ class Events::AnnouncementCreated < Event
   end
 
   def notification_recipients
-    members
+    User.where(id: memberships.pluck(:user_id))
   end
 end

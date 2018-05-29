@@ -6,11 +6,9 @@ EventBus = require 'shared/services/event_bus'
 # emoji being added or a translation being completed
 module.exports =
   listenForMentions: ($scope, model) ->
-    $scope.unmentionableIds = [model.authorId, Session.user().id]
     $scope.fetchByNameFragment = (q) ->
       Records.users.fetchMentionable(q).then (response) ->
-        userIds = _.without(_.pluck(response.users, 'id'), $scope.unmentionableIds...)
-        $scope.mentionables = Records.users.find(userIds)
+        $scope.mentionables = Records.users.find(_.pluck(response.users, 'id'))
 
   listenForTranslations: ($scope) ->
     EventBus.listen $scope, 'translationComplete', (e, translatedFields) =>
