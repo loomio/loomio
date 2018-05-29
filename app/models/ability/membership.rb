@@ -3,7 +3,9 @@ module Ability::Membership
     super(user)
 
     can [:update], ::Membership do |membership|
-      membership.user_id == user.id
+      membership.user_id == user.id ||
+      user_is_admin_of?(membership.group_id) ||
+      user_is_admin_of?(membership.target_model.group_id)
     end
 
     can [:make_admin], ::Membership do |membership|
