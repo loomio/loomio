@@ -1,5 +1,5 @@
 .membership-form
-  %p.lmo-hint-text.membership-form__helptext{translate: "membership_form.title_helptext.{{membership.target().constructor.singular}}", translate-value-title: "{{membership.target().name || membership.target().title}}"}
+  %p.lmo-hint-text.membership-form__helptext{translate: "membership_form.title_helptext.{{membership.target().constructor.singular}}", translate-value-poll-type: "{{membership.target().pollType}}", translate-value-name: "{{membership.user().name}}"}
   %md-input-container.md-block.md-no-errors
     %label{for: "membership-title", translate: "membership_form.title_label"}
     .lmo-relative

@@ -858,11 +858,14 @@ en:
     remove_coordinator: Demote coordinator
 
   membership_form:
-    title: Set title for membership
+    modal_title:
+      group:      Set group title
+      discussion: Set thread title
+      poll:       Set {{pollType}} title
     title_helptext:
-      group:      This title will be visible for all threads, decisions, comments, and stances in <strong>{{title}}</strong>
-      discussion: This title will be visible for all decisions, comments, and stances in <strong>{{title}}</strong>
-      poll:       This title will be visible with this user's stance in <strong>{{title}}</strong>
+      group:      This title will appear beside {{name}}'s name within this group. Use it to let people know their role.
+      discussion: This title will appear beside {{name}}'s name within this thread. Use it to let people know their role.
+      poll:       This title will appear beside {{name}}'s name within this {{pollType}}. Use it to let people know their role.
     title_label: title
     title_placeholder: E.g. 'Coordinator', or 'Facilitator'
     updated: Membership title updated
