@@ -11,7 +11,6 @@ angular.module('loomioApp').directive 'pollMeetingFormOptions', ->
     applySequence $scope, steps: ['dateOnly', 'collapsedTimes', 'expandedTimes']
 
     $scope.collapsedMode =  ->
-      $scope.dateToTimes = {}
       $scope.currentStep = 'collapsedTimes'
       $scope.poll.submitDateTimes($scope.dateToTimes)
 
@@ -19,8 +18,6 @@ angular.module('loomioApp').directive 'pollMeetingFormOptions', ->
       if $scope.dateToTimes['all']
         $scope.dateToTimes = _.fromPairs _.map($scope.poll.meetingDates, (date) ->
           [TimeService.displayDayDate(date) , $scope.dateToTimes['all'].slice()])
-      else
-        $scope.dateToTimes = {}
 
       $scope.currentStep = 'expandedTimes'
       $scope.poll.submitDateTimes($scope.dateToTimes)
@@ -40,9 +37,21 @@ angular.module('loomioApp').directive 'pollMeetingFormOptions', ->
       else
         $scope.poll.meetingDates.push(date)
 
+      if($scope.currentStep == 'dateOnly')
+        $scope.poll.submitAllDayDates()
+
     $scope.setTimesForDate = (date, times) ->
       $scope.dateToTimes[date] = times
       $scope.poll.submitDateTimes($scope.dateToTimes)
 
-    $scope.dateOnly()
+    $scope.poll.repopulateMeetingDates()
+
+    if ($scope.poll.isNew() || $scope.poll.hasDatesOnly())
+      #recover the dates
+      $scope.dateOnly()
+    else
+      #recover the date times
+      $scope.dateToTimes = $scope.poll.recoverDateTimes()
+      $scope.expandedMode()
+
   ]

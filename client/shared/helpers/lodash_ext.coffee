@@ -13,3 +13,15 @@ module.exports =
       num % mod
     else
       mod - (-num % mod)
+
+
+  uniqBy: (array, iteratee) ->
+    uniques = new Set()
+    finalities = []
+
+    _.map(array, iteratee).forEach (item, i) ->
+      if !uniques.has item
+        uniques.add item
+        finalities.push array[i]
+
+    finalities
