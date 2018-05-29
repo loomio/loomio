@@ -42,19 +42,34 @@ describe Comment do
     end
   end
 
-  describe "#mentioned_group_members" do
+  describe "#mentioned_users" do
     before do
       @group = create :formal_group
       @member = create :user
       @group.add_member! @member
+
+      # there's another group current_user belongs to, they want to mention someone from that group
+      @another_group = create :formal_group
+      @another_member = create :user
+      @another_group.add_member! @another_member
+      @another_group.add_member! user
+
       @discussion = create :discussion, group: @group
     end
 
-    context "user mentions another group member" do
+    context "user mentions a group member" do
       let(:comment) { create :comment, discussion: @discussion, body: "@#{@member.username}" }
 
       it "returns the mentioned user" do
-        comment.mentioned_group_members.should include(@member)
+        comment.mentioned_users.should include(@member)
+      end
+    end
+
+    context "user mentions a member of another group they belong to" do
+      let(:comment) { create :comment, author: user, discussion: @discussion, body: "@#{@another_member.username}" }
+
+      it "returns the mentioned user" do
+        comment.mentioned_users.should include(@another_member)
       end
     end
 
@@ -64,7 +79,7 @@ describe Comment do
 
       it "should not return a mentioned non-member" do
         non_member = create :user
-        comment.mentioned_group_members.should_not include(non_member)
+        comment.mentioned_users.should_not include(non_member)
       end
     end
   end

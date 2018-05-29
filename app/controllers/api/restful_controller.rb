@@ -67,7 +67,7 @@ class API::RestfulController < ActionController::Base
   end
 
   def resources_to_serialize
-    Array(resource || collection)
+    Array(collection || resource)
   end
 
   def default_scope

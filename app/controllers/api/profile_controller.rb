@@ -5,6 +5,11 @@ class API::ProfileController < API::RestfulController
     respond_with_resource serializer: UserSerializer
   end
 
+  def mentionable_users
+    instantiate_collection { |collection| collection.search_for(params[:q]) }
+    respond_with_collection serializer: Simple::UserSerializer, root: :users
+  end
+
   def me
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     self.resource = current_user
@@ -52,6 +57,10 @@ class API::ProfileController < API::RestfulController
   end
 
   private
+
+  def accessible_records
+    resource_class.mentionable_by(current_user)
+  end
 
   def resource
     @user || current_user.presence || user_by_email

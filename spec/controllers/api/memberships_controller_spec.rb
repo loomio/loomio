@@ -172,7 +172,7 @@ describe API::MembershipsController do
       end
 
       it 'returns pending users' do
-        get :index, params: { group_id: group.id, pending: "true" }, format: :json
+        get :index, params: { group_id: group.id, pending: true }, format: :json
         json = JSON.parse(response.body)
 
         user_ids = json['users'].map { |c| c['id'] }

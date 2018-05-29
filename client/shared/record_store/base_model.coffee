@@ -20,8 +20,6 @@ module.exports =
     # what is the key to use when serializing the record?
     @serializationRoot: null
 
-    # override this if your apiEndPoint is not the model.plural
-    @apiEndPoint: null
     @memoize: []
 
     constructor: (recordsInterface, attributes = {}) ->

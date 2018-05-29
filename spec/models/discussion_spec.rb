@@ -221,21 +221,5 @@ describe Discussion do
         expect(discussion.mentioned_usernames).to_not include discussion.author.username
       end
     end
-
-    describe 'mentioned_group_members' do
-      it 'includes members in the current group' do
-        discussion.group.add_member! user
-        expect(discussion.mentioned_group_members).to include user
-      end
-
-      it 'does not include members not in the group' do
-        expect(discussion.mentioned_group_members).to_not include user
-      end
-
-      it 'does not include the discussion author' do
-        discussion.description = "Hello @#{discussion.author.username}!"
-        expect(discussion.mentioned_group_members).to_not include discussion.author
-      end
-    end
   end
 end
