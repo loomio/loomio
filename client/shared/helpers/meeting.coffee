@@ -3,27 +3,23 @@ TimeService = require('shared/services/time_service')
 module.exports =
   class MeetingPollOptionState
 
-    #whether to display
-    @mode
-
-    # "YYYY-MM-DD" to {hour: , minute, ampm: ""}
-    @model
-
-    #for the listing of times
-    @dates
-
-    constructor: () =>
+    constructor: (option_names) ->
+      @mode = "dateOnly"
       @resetModel()
-      @mode = "datesOnly"
+      @parsePollOptions(option_names)
 
     resetIndicies: =>
-      @dates = _.map _.keys(@model), dateToDayDate
+      @dates = _.keys(@model)
+      @daydates = _.map @dates, dateToDayDate
+      @datemoments = _.map @dates, moment
+      @datecount = @dates.length
 
     resetModel: =>
       @model = {}
+      @resetIndicies()
 
-    datesOnlyMode: =>
-      @mode = "datesOnly"
+    dateOnlyMode: =>
+      @mode = "dateOnly"
 
     collapsedMode: =>
       @mode = "collapsed"
@@ -49,20 +45,22 @@ module.exports =
       @resetIndicies()
 
     parsePollOptions: (pollOptions) =>
-      _.map(pollOptions, (name) ->
+      _.map(pollOptions, (name) =>
         m = moment(name)
         date = momentToDate(m)
         time = momentToTime(m)
         @model[date] = @model[date] || []
         @model[date].push(time)
+      )
 
     getPollOptionNames: () =>
-      case @mode
-      when "datesOnly" @dates
-      when "expanded", "collapsed"
-        _.flatten _.map(_.toPairs(@model), ([date, times])->
-          _.map times, (time) ->
-            composeDateTime(date, time)
+      switch @mode
+        when "dateOnly" then @dates
+        when "expanded", "collapsed"
+          _.flatten _.map(_.toPairs(@model), ([date, times])->
+            _.map times, (time) ->
+              composeDateTime(date, time)
+          )
 
 momentToTime = (m) ->
   hour = m.hour()

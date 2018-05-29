@@ -7,6 +7,7 @@ HasTranslations  = require 'shared/mixins/has_translations'
 HasGuestGroup    = require 'shared/mixins/has_guest_group'
 I18n             = require 'shared/services/i18n'
 TimeService      = require 'shared/services/time_service'
+{MeetingPollOptionState} = require 'shared/helpers/meeting'
 
 module.exports = class PollModel extends BaseModel
   @singular: 'poll'
@@ -22,6 +23,9 @@ module.exports = class PollModel extends BaseModel
     HasMentions.apply @, 'details'
     HasTranslations.apply @
     HasGuestGroup.apply @
+
+    if @pollType == 'meeting'
+      @meetingOptions = new MeetingPollOptionState(@pollOptionNames)
 
   translatedPollType: ->
     I18n.t("poll_types.#{@pollType}")
@@ -152,39 +156,6 @@ module.exports = class PollModel extends BaseModel
     @setMinimumStanceChoices()
     @newOptionName = ''
 
-  submitAllDayDates: () =>
-    @pollOptionNames = _.map @meetingDates, (date) ->
-      date.format('YYYY-MM-DD')
-
-  submitDateTimes: (dateToTimes) =>
-    @pollOptionNames = _.flatten _.map @meetingDates, (date) ->
-      times = dateToTimes['all'] || dateToTimes[TimeService.displayDayDate(date)]
-      _.map times, (time) ->
-        applyTimeToDate(date, time).toISOString()
-
-  repopulateMeetingDates: () =>
-    parsed = _.map @pollOptionNames, parsePollOptionString
-
-    @meetingDates = _.uniqBy(parsed, (m) ->
-      TimeService.displayDayDate(m)
-    )
-
-  recoverDateTimes: () =>
-    parsed = _.map @pollOptionNames, parsePollOptionString
-
-    dateTimes = _.fromPairs _.map(@meetingDates, (date) ->
-      daydate = TimeService.displayDayDate(date)
-
-      similarDatedTimes = _.map _.filter(parsed, (m) ->
-        TimeService.displayDayDate(m) == daydate
-        ), getTimeFromMoment
-      [daydate, similarDatedTimes]
-    )
-    dateTimes
-
-  hasDatesOnly: =>
-    _.some(@pollOptionNames, isDateString)
-
   setMinimumStanceChoices: =>
     return unless @isNew() and @hasRequiredField('minimum_stance_choices')
     @customFields.minimum_stance_choices = _.max [@pollOptionNames.length, 1]
@@ -201,21 +172,3 @@ module.exports = class PollModel extends BaseModel
 
   edited: ->
     @versionsCount > 1
-
-getTimeFromMoment = (m) =>
-  hour = m.hour()
-  adjhour = if hour > 12 then hour - 12 else hour
-  ampm = if hour > 12 then 'pm' else 'am'
-  {hour: ""+adjhour, minute:""+m.minute(), ampm}
-
-isDateString = (datestr) =>
-  datestr.match(/^\d{4}-\d{2}-\d{2}$/)
-
-applyTimeToDate = (date, time) =>
-  hour = if time.ampm == 'pm' then parseInt(time.hour)+12 else parseInt(time.hour)
-  date = date.clone()
-  date.set({'hour': hour, 'minute':parseInt(time.minute)})
-  date
-
-parsePollOptionString = (dateString) =>
-  m = moment(dateString)

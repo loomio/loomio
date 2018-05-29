@@ -3,7 +3,7 @@ EventBus = require('shared/services/event_bus')
 TimeService = require 'shared/services/time_service'
 
 angular.module('loomioApp').directive 'lmoTimepicker', ->
-  scope: {date: '=?', addTimes: '=?'}
+  scope: {poll: '=', date: '=?', addTimes: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/lmo_timepicker/lmo_timepicker.html'
   controller: ['$scope', ($scope) ->
@@ -11,18 +11,19 @@ angular.module('loomioApp').directive 'lmoTimepicker', ->
     $scope.displayDayDate = () ->
       TimeService.displayDayDate($scope.date) unless $scope.setAllDates
 
-    $scope.updateChips = (chip) ->
-      $scope.$parent.setTimesForDate((if !$scope.setAllDates then $scope.displayDayDate($scope.date) else 'all'), $scope.chips)
-      chip
+    $scope.updateChips = (chips) ->
+      if $scope.setAllDates
+        $scope.poll.meetingOptions.addTimesToAll(chips)
+      else
+        $scope.poll.meetingOptions.addTimesToDate(chips, $scope.date)
 
     $scope.displayTime = (time) ->
       minute = if time.minute.length == 1 then '0'+time.minute else time.minute
       "#{time.hour}:#{minute}#{time.ampm}"
 
     $scope.setAllDates = $scope.date == undefined
-
     display = $scope.displayDayDate()
-    $scope.chips = $scope.$parent.dateToTimes[display] = $scope.$parent.dateToTimes[display] || []
+    $scope.chips = $scope.poll.meetingOptions.model[$scope.date]
     $scope.times = generateDayTimes(30)
     $scope.queryTimes = selectDayTimes
   ]
