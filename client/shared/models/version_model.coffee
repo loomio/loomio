@@ -18,6 +18,9 @@ module.exports = class VersionModel extends BaseModel
   attributeEdited: (name) ->
      _.include(_.keys(@changes), name)
 
+  authorName: ->
+    @author().nameWithTitle(@model()) if @author()
+
   model: ->
     @recordStore["#{@itemType.toLowerCase()}s"].find(@itemId)
 
@@ -27,9 +30,8 @@ module.exports = class VersionModel extends BaseModel
   isOriginal: ->
     @index == 0
 
-
   authorOrEditorName: ->
     if @isOriginal()
       @model().authorName()
     else
-      @author().name
+      @authorName()

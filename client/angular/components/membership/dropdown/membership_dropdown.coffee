@@ -11,8 +11,16 @@ angular.module('loomioApp').directive 'membershipDropdown', ->
   templateUrl: 'generated/components/membership/dropdown/membership_dropdown.html'
   controller: ['$scope', ($scope) ->
     $scope.canPerformAction = ->
+      $scope.canSetTitle()         or
       $scope.canRemoveMembership() or
+      $scope.canResendMembership() or
       $scope.canToggleAdmin()
+
+    $scope.canSetTitle = ->
+      AbilityService.canSetMembershipTitle($scope.membership)
+
+    $scope.setTitle = ->
+      ModalService.open 'MembershipModal', membership: -> $scope.membership
 
     $scope.canResendMembership = ->
       AbilityService.canResendMembership($scope.membership)

@@ -164,6 +164,10 @@ module.exports = new class AbilityService
     (!membership.admin or membership.group().adminIds().length > 1) and
     (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
 
+  canSetMembershipTitle: (membership) ->
+    Session.user() == membership.user() or
+    @canAdministerGroup(membership.group())
+
   canResendMembership: (membership) ->
     membership and
     !membership.acceptedAt and
