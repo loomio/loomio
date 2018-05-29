@@ -60,5 +60,21 @@ module.exports = {
     page.click('.membership-dropdown__button')
     page.pause()
     page.expectNoText('.membership-dropdown', 'Demote coordinator')
+  },
+
+  'can_set_membership_title': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group')
+    page.click('.membership-card__search-button')
+    page.fillIn('.membership-card__filter', 'Patrick')
+    page.pause()
+    page.click('.membership-dropdown__button')
+    page.pause()
+    page.click('.membership-dropdown__set-title')
+    page.fillIn('.membership-form__title-input', 'Suzerain')
+    page.click('.membership-form__submit')
+    page.expectText('.flash-root__message', 'Membership title updated')
+    page.expectText('.membership-card', 'Patrick Swayze · Suzerain')
   }
 }
