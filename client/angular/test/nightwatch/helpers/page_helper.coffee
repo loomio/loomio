@@ -26,6 +26,7 @@ module.exports = (test) ->
     test.getLocationInView(selector, callback)
 
   ensureSidebar: ->
+    @waitFor('.navbar__left')
     test.elements 'css selector', '.md-sidenav-left', (result) =>
       if result.value.length == 0
         test.click('.navbar__sidenav-toggle')
