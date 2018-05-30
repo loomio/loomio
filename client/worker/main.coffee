@@ -11,3 +11,6 @@ self.addEventListener 'fetch', (event) ->
   event.respondWith(
     caches.open('loomioApp').then (cache) -> performFetch(cache, event.request)
   )
+
+self.addEventListener 'beforeinstallprompt', (event) ->
+  event.prompt()
