@@ -5,7 +5,7 @@ module.exports =
       "/manifest.json",
       "/favicon.ico",
       "/api/v1/translations?lang=en",
-      "/client/fonts/materialdesignicons-webfont.woff2?v=2.1.19",
+      "/fonts/mdi-2.2.43/materialdesignicons-webfont.woff2",
       "/theme/default_group_logo.png",
       ("/client/#{version}/angular.css"                            if version == 'development'),
       # ("http://localhost:4002/client/#{version}/angular.bundle.js" if version == 'development'),
