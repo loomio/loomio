@@ -3,7 +3,6 @@ module.exports =
     [
       "/dashboard",
       "/manifest.json",
-      "/favicon.ico",
       "/api/v1/translations?lang=en",
       "/fonts/mdi-2.2.43/materialdesignicons-webfont.woff2",
       "/theme/default_group_logo.png",
