@@ -1,11 +1,7 @@
-module MigrateGroupRelations
+module GroupExportRelations
   extend ActiveSupport::Concern
 
   included do
-    # comments
-    has_many :comments, through: :discussions
-
-
     # polls
     has_many :discussion_polls, through: :discussions
     has_many :poll_options, through: :polls
@@ -34,32 +30,33 @@ module MigrateGroupRelations
     has_many :discussion_readers, through: :discussions
 
     # guest groups
-    # has_many :discussion_guest_groups,     through: :discussions,        source: :guest_group
+    has_many :discussion_guest_groups,     through: :discussions,        source: :guest_group
     has_many :poll_guest_groups,           through: :polls,              source: :guest_group
 
     # users
     has_many :discussion_authors,      through: :discussions, source: :author
-    has_many :discussion_reader_users, through: :discussion_readers, source: :user
-    has_many :comment_authors,    through: :comments,           source: :user
-    has_many :poll_authors,       through: :polls,              source: :author
-    has_many :outcome_authors,    through: :outcomes,           source: :author
-    has_many :stance_authors,     through: :stances,            source: :participant
-    has_many :reader_users,       through: :discussion_readers, source: :user
-    has_many :non_voters,         through: :poll_did_not_votes, source: :user
+    # has_many :discussion_reader_users, through: :discussion_readers, source: :user
+    has_many :comment_authors,         through: :comments,           source: :user
+    has_many :poll_authors,            through: :polls,              source: :author
+    has_many :outcome_authors,         through: :outcomes,           source: :author
+    has_many :stance_authors,          through: :stances,            source: :participant
+    has_many :reader_users,            through: :discussion_readers, source: :user
+    has_many :non_voters,              through: :poll_did_not_votes, source: :user
 
     # events
-    has_many :membership_events, through: :memberships, source: :events
-    has_many :discussion_events, through: :discussions, source: :events
-    has_many :comment_events,    through: :comments,    source: :events
-    has_many :poll_events,       through: :polls,       source: :events
-    has_many :outcome_events,    through: :outcomes,    source: :events
-    has_many :stance_events,     through: :stances,     source: :events
+    has_many :membership_events,       through: :memberships, source: :events
+    has_many :discussion_events,       through: :discussions, source: :events
+    has_many :comment_events,          through: :comments,    source: :events
+    has_many :poll_events,             through: :polls,       source: :events
+    has_many :outcome_events,          through: :outcomes,    source: :events
+    has_many :stance_events,           through: :stances,     source: :events
   end
 
   def all_groups
     Queries::UnionQuery.for(:groups, [
+      Group.where(id: self.id),
       self.subgroups,
-      # self.discussion_guest_groups,
+      self.discussion_guest_groups,
       self.poll_guest_groups
     ])
   end

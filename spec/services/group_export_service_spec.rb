@@ -1,0 +1,64 @@
+require 'rails_helper'
+
+describe GroupExportService do
+  let!(:group)            { create :formal_group }
+  let!(:subgroup)         { create :formal_group, parent: group }
+  let!(:another_group)    { create :formal_group }
+  let!(:user)             { create :user }
+  let!(:another_user)     { create :user }
+  let!(:discussion)       { create :discussion, group: group }
+  let!(:sub_discussion)   { create :discussion, group: subgroup }
+  let!(:poll)             { create :poll, group: group }
+  let!(:sub_poll)         { create :poll, group: subgroup }
+  let!(:discussion_poll)  { create :poll, discussion: discussion }
+  let!(:comment)          { create :comment, discussion: discussion }
+  let!(:sub_comment)      { create :comment, discussion: sub_discussion }
+  let!(:group_doc)        { create :document, model: group }
+  let!(:discussion_doc)   { create :document, model: discussion }
+  let!(:poll_doc)         { create :document, model: poll }
+  let!(:comment_doc)      { create :document, model: comment }
+  let!(:reader)           { create :discussion_reader, discussion: discussion, user: another_user }
+  let!(:event)            { discussion.created_event }
+  let!(:notification)     { event.notifications.create!(user: another_user, url: 'test.com') }
+  let!(:discussion_reaction) { create :reaction, reactable: discussion }
+  let!(:poll_reaction)       { create :reaction, reactable: poll }
+  let!(:comment_reaction)    { create :reaction, reactable: comment }
+
+  before do
+    group.add_admin! user
+    group.add_member! another_user
+  end
+
+  describe 'export and import' do
+    it 'can export a group' do
+      filename = GroupExportService.export(group)
+      puts "exported: #{filename}"
+      [Group, Membership, User, Discussion, Comment, Poll, PollOption, Stance, StanceChoice,
+       Reaction, Event, Notification, Document, DiscussionReader].each {|model| model.delete_all }
+      puts "importing: #{filename}"
+      GroupExportService.import(filename)
+      expect { another_group.reload }.to raise_error { ActiveRecord::RecordNotFound }
+      expect(subgroup.reload).to be_present
+      expect(user.reload).to be_present
+      expect(another_user.reload).to be_present
+      expect(discussion.reload).to be_present
+      expect(sub_discussion.reload).to be_present
+      expect(poll.reload).to be_present
+      expect(sub_poll.reload).to be_present
+      expect(discussion_poll.reload).to be_present
+      expect(comment.reload).to be_present
+      expect(sub_comment.reload).to be_present
+      expect(group_doc.reload).to be_present
+      expect(discussion_doc.reload).to be_present
+      expect(poll_doc.reload).to be_present
+      expect(comment_doc.reload).to be_present
+      expect(discussion_reaction.reload).to be_present
+      expect(poll_reaction.reload).to be_present
+      expect(comment_reaction.reload).to be_present
+      expect(reader.reload).to be_present
+      expect(event.reload).to be_present
+      expect(notification.reload).to be_present
+      expect(group.reload).to be_present
+    end
+  end
+end
