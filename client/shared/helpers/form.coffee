@@ -160,8 +160,8 @@ success = (scope, model, options) ->
 failure = (scope, model, options) ->
   (response) ->
     FlashService.dismiss()
-    options.failureCallback(response)                       if typeof options.failureCallback is 'function'
-    response.json().then (r) -> model.setErrors(r.errors)   if _.contains([401,422], response.status)
+    options.failureCallback(response) if typeof options.failureCallback is 'function'
+    setErrors(scope, model, response) if _.contains([401, 422], response.status)
     EventBus.emit scope, errorTypes[response.status] or 'unknownError',
       model: model
       response: response
@@ -189,6 +189,11 @@ nextOrSkip = (data, scope, model) ->
 actionName = (model) ->
   return 'forked' if model.isA('discussion') and model.isForking()
   if model.isNew() then 'created' else 'updated'
+
+setErrors = (scope, model, response) ->
+  response.json().then (r) ->
+    model.setErrors(r.errors)
+    scope.$apply()
 
 eventKind = (model) ->
   if model.isA('discussion') and model.isNew()
