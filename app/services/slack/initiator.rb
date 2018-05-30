@@ -21,7 +21,7 @@ class ::Slack::Initiator
   private
 
   def is_valid_command?
-    (AppConfig.poll_templates.keys.map(&:to_sym) + [:thread, :discussion]).include?(@type)
+    (poll_types + [:thread, :discussion]).include?(@type)
   end
 
   def initiate_url
@@ -50,11 +50,15 @@ class ::Slack::Initiator
   end
 
   def url_target(params = {})
-    if AppConfig.poll_templates.keys.include?(@type)
+    if poll_types.include?(@type)
       new_poll_url(params)
     else
       new_discussion_url(params)
     end
+  end
+
+  def poll_types
+    AppConfig.poll_templates.keys.map(&:to_sym)
   end
 
   def target_group

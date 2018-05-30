@@ -497,19 +497,6 @@ describe API::DiscussionsController do
           group_id
         ])
       end
-
-      describe 'mentioning' do
-        it 'mentions appropriate users' do
-          group.add_member! another_user
-          discussion_params[:description] = "Hello, @#{another_user.username}!"
-          expect { post :create, params: { discussion: discussion_params }, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
-        end
-
-        it 'does not mention users not in the group' do
-          discussion_params[:description] = "Hello, @#{another_user.username}!"
-          expect { post :create, params: { discussion: discussion_params }, format: :json }.to_not change { Event.where(kind: :user_mentioned).count }
-        end
-      end
     end
 
     context 'failures' do
@@ -739,9 +726,6 @@ describe API::DiscussionsController do
       expect(dr2).to be_present
       expect(dr2.read_ranges_string).to eq '2-2,5-5'
     end
-
-
-
 
     it 'does not allow non admins to fork a thread' do
       sign_in another_user

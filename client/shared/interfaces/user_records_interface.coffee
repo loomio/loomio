@@ -3,6 +3,12 @@ UserModel            = require 'shared/models/user_model'
 
 module.exports = class UserRecordsInterface extends BaseRecordsInterface
   model: UserModel
+  apiEndPoint: 'profile'
+
+  fetchMentionable: (q) =>
+    @fetch
+      path: 'mentionable_users'
+      params: {q: q}
 
   updateProfile: (user) =>
     @remote.post 'update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })

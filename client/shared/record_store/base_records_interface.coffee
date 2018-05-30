@@ -5,16 +5,19 @@ module.exports =
   class BaseRecordsInterface
     model: 'undefinedModel'
 
+    # override this if your apiEndPoint is not the model.plural
+    apiEndPoint: null
+
     constructor: (recordStore) ->
       @baseConstructor recordStore
 
     baseConstructor: (recordStore) ->
       @recordStore = recordStore
-      @collection = @recordStore.db.addCollection(@model.plural, {indices: @model.indices})
+      @collection = @recordStore.db.addCollection(@collectionName or @model.plural, {indices: @model.indices})
       _.each @model.uniqueIndices, (name) =>
         @collection.ensureUniqueIndex(name)
 
-      @remote = new RestfulClient(@model.apiEndPoint or @model.plural)
+      @remote = new RestfulClient(@apiEndPoint or @model.plural)
 
     onInterfaceAdded: ->
 

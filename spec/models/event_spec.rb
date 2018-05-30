@@ -17,12 +17,13 @@ describe Event do
   let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
   let(:user_unsubscribed) { create :user }
 
-  let(:discussion) { create :discussion, description: user_mentioned_text }
+  let(:author) { create :user }
+  let(:discussion) { create :discussion, description: user_mentioned_text, author: author }
   let(:mentioned_user) {create :user, username: 'sam', email_when_mentioned: true }
   let(:parent_comment) { create :comment, discussion: discussion}
   let(:comment) { create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
-  let(:poll) { create :poll, discussion: discussion, details: user_mentioned_text }
-  let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text }
+  let(:poll) { create :poll, discussion: discussion, details: user_mentioned_text, author: author }
+  let(:outcome) { create :outcome, poll: poll, statement: user_mentioned_text, author: author }
 
   let(:guest_user) { create :user }
 
@@ -31,6 +32,7 @@ describe Event do
   end
 
   before do
+    discussion.group.add_member! author
     ActionMailer::Base.deliveries = []
     parent_comment
     DiscussionService.create(discussion: discussion, actor: discussion.author)
@@ -112,14 +114,14 @@ describe Event do
   describe 'new_discussion' do
     it 'notifies mentioned users' do
       expect { Events::NewDiscussion.publish!(discussion) }.to change { emails_sent }.by(1) # (the mentioned user)
-      expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_mentioned.id
+      expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
     end
   end
 
   describe 'poll_created' do
     it 'notifies mentioned users' do
       expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }.by(1) # (the mentioned user)
-      expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_mentioned.id
+      expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
     end
   end
 
@@ -128,7 +130,7 @@ describe Event do
       Events::PollCreated.publish!(poll, poll.author)
       poll.update(details: "#{poll.details} and @#{user_thread_loud.username}")
       expect { Events::PollEdited.publish!(poll, poll.author) }.to change { Events::UserMentioned.where(kind: :user_mentioned).count }.by(1) # (the newly mentioned user)
-      expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_thread_loud.id
+      expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_thread_loud.id
     end
   end
 
@@ -225,7 +227,7 @@ describe Event do
 
     it 'notifies mentioned users and the author' do
       expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }.by(2) # mentioned user and the author
-      expect(Events::UserMentioned.last.custom_fields['mentioned_user_id']).to eq user_mentioned.id
+      expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
       recipients = ActionMailer::Base.deliveries.map(&:to).flatten
       expect(recipients).to include user_mentioned.email
       expect(recipients).to include outcome.author.email

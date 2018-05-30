@@ -5,6 +5,6 @@
       %strong> {{formattedPollType(poll.pollType)}}:
       %span> {{poll.title}}
     .md-caption.lmo-grey-on-white
-      %span{translate: "poll_common_collapsed.by_who", translate-value-name: "{{poll.author().name}}"}>
+      %span{translate: "poll_common_collapsed.by_who", translate-value-name: "{{poll.authorName()}}"}>
       %span>·
       %poll_common_closing_at{poll: "poll"}

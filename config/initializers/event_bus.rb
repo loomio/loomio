@@ -78,16 +78,6 @@ EventBus.configure do |config|
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) if comment.parent }
   config.listen('comment_create') { |comment| comment.discussion.guest_group.add_member! comment.author }
 
-  # publish mention events after model create / update
-  config.listen('comment_create',
-                'comment_update',
-                'motion_create',
-                'motion_update',
-                'discussion_create',
-                'discussion_update') do |model, actor|
-    Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
-  end
-
   # update discussion importance
   config.listen('discussion_pin',
                 'poll_create',

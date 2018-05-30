@@ -121,7 +121,7 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.pause(2000)
     page.click('.confirm-modal__submit')
-    page.expectText('.auth-modal', 'Sign into Loomio', 10000)
+    page.expectText('.auth-modal', 'Sign into Loomio')
   }
 
 }

@@ -1,7 +1,8 @@
 class Full::UserSerializer < UserSerializer
   attributes :email, :email_when_proposal_closing_soon, :email_missed_yesterday,
-             :email_when_mentioned, :email_on_participation, :selected_locale, :locale,
-             :default_membership_volume, :experiences, :is_coordinator, :is_admin
+             :email_when_mentioned, :email_on_participation, :selected_locale,
+             :locale, :default_membership_volume, :experiences, :is_coordinator,
+             :is_admin
 
   has_many :formal_memberships, serializer: MembershipSerializer, root: :memberships
   has_many :guest_memberships,  serializer: Simple::MembershipSerializer, root: :memberships

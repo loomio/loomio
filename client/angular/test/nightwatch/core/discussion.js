@@ -1,5 +1,6 @@
 require('coffeescript/register')
 pageHelper = require('../helpers/page_helper')
+workflowHelper = require('../helpers/workflow_helper')
 
 module.exports = {
   'preselects current group': (test) => {
@@ -352,13 +353,12 @@ module.exports = {
 
   'invites_an_email_to_a_discussion': (test) => {
     page = pageHelper(test)
+    workflow = workflowHelper(test)
 
     page.loadPath('setup_discussion_mailer_invitation_created_email')
     page.click('.thread-mailer__subject a')
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
-    page.click('.auth-email-form__submit')
-    page.fillIn('.auth-signin-form__name', 'Jennifer')
-    page.click('.auth-signin-form__submit')
+    workflow.signUpViaInvitation("Jennifer")
     page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')

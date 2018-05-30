@@ -95,15 +95,18 @@ Loomio::Application.routes.draw do
     end
 
     resources :profile, only: [:show] do
-      get  :me, on: :collection
-      get  :email_status, on: :collection
+      collection do
+        get  :mentionable_users
+        get  :me
+        get  :email_status
+        post :update_profile
+        post :set_volume
+        post :upload_avatar
+        post :deactivate
+        post :reactivate
+        post :save_experience
+      end
       post :remind, on: :member
-      post :update_profile, on: :collection
-      post :set_volume, on: :collection
-      post :upload_avatar, on: :collection
-      post :deactivate, on: :collection
-      post :reactivate, on: :collection
-      post :save_experience, on: :collection
     end
 
     resources :login_tokens, only: [:create]

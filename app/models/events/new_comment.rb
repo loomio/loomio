@@ -15,7 +15,7 @@ class Events::NewComment < Event
   def email_recipients
     Queries::UsersByVolumeQuery.loud(eventable.discussion)
                                .where.not(id: eventable.author)
-                               .where.not(id: eventable.mentioned_group_members)
+                               .where.not(id: eventable.mentioned_users)
                                .where.not(id: eventable.parent_author)
   end
 end

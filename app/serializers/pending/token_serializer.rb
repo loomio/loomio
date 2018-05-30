@@ -1,4 +1,6 @@
 class Pending::TokenSerializer < Pending::BaseSerializer
+  attributes :legal_accepted_at
+
   def has_token
     true
   end
@@ -19,6 +21,10 @@ class Pending::TokenSerializer < Pending::BaseSerializer
     user.email
   end
 
+  def legal_accepted_at
+    user.legal_accepted_at
+  end
+
   private
 
   def user
@@ -26,7 +32,7 @@ class Pending::TokenSerializer < Pending::BaseSerializer
   end
 
   def email_status
-    return 'active' if object.is_reactivation
+    return :active if object.is_reactivation
     User.email_status_for(email)
   end
 end

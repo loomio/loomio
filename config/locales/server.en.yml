@@ -557,6 +557,7 @@ en:
         poll_option_added_author: '%{actor} added options to: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         outcome_created_author: 'You shared an outcome: %{title}'
+        outcome_announced: '%{actor} shared a ranked choice outcome.'
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'

@@ -76,6 +76,12 @@ module.exports =
         EventBus.emit scope, 'doneProcessing'
     , options))
 
+  submitMembership: (scope, model, options = {}) ->
+    submit(scope, model, _.merge(
+      flashSuccess: "membership_form.#{actionName(model)}"
+      successCallback: -> EventBus.emit scope, '$close'
+    , options))
+
   upload: (scope, model, options = {}) ->
     upload(scope, model, options)
 

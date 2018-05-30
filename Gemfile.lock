@@ -29,13 +29,6 @@ GIT
       rails (>= 3.2.0)
 
 GIT
-  remote: git://github.com/loomio/snorlax.git
-  revision: e04cbcf54ecaea962b91db5cc8574aa8060302cc
-  specs:
-    snorlax (0.1.7)
-      rails (> 4.1)
-
-GIT
   remote: git://github.com/loomio/twitter-text.git
   revision: 0931cb3782bf32023e7ff05282a46023718f42fe
   specs:
@@ -105,9 +98,10 @@ GEM
       nokogiri
       rails
       safely_block
-    ahoy_matey (2.0.2)
+    ahoy_matey (2.1.0)
       addressable
       browser (~> 2.0)
+      device_detector
       geocoder (>= 1.4.5)
       railties (>= 4.2)
       referer-parser (>= 0.3)
@@ -174,6 +168,7 @@ GEM
       rack (>= 1)
       rake (> 10, < 13)
       thor (~> 0.19)
+    device_detector (1.0.1)
     devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -280,7 +275,7 @@ GEM
     http_accept_language (2.1.1)
     httparty (0.15.7)
       multi_xml (>= 0.5.2)
-    i18n (1.0.0)
+    i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     inherited_resources (1.8.0)
       actionpack (>= 4.2, <= 5.2)
@@ -366,7 +361,7 @@ GEM
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (3.0.2)
     puma (3.11.3)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-attack (5.2.0)
       rack
     rack-test (1.0.0)
@@ -509,6 +504,8 @@ GEM
     simplecov-html (0.10.2)
     skylight (1.6.0)
       activesupport (>= 3.0.0)
+    snorlax (0.1.8)
+      rails (> 4.1)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
@@ -583,6 +580,7 @@ DEPENDENCIES
   fog-aws
   friendly_id (~> 5.1.0)
   gemrat
+  geocoder (= 1.4.7)
   google-cloud-translate
   gravtastic
   griddler!
@@ -627,7 +625,7 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   skylight
-  snorlax!
+  snorlax (= 0.1.8)
   spring
   spring-commands-rspec
   sprockets-rails
