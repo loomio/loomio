@@ -10,6 +10,7 @@ en:
         invalid: is not a valid value
 
   errors:
+    noscript: Loomio requires javascript to work! Please enable javascript in your browser to continue
     return_home: Return home
     not_found: 404 file not found.
     messages:

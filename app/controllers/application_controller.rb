@@ -15,31 +15,17 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context
 
   helper_method :current_user
+  helper_method :current_version
   helper_method :client_asset_path
   helper_method :bundle_asset_path
   helper_method :supported_locales
 
   # this boots the angular app
   def index
-    initial_payload
     render 'application/index', layout: false
   end
 
   def ok
     head :ok
   end
-
-  protected
-
-  def initial_payload
-    @payload ||= InitialPayload.new(current_user).payload.merge(
-      flash:           flash.to_h,
-      pendingIdentity: serialized_pending_identity
-    )
-  end
-
-  def hosted_by_loomio?
-    false # overridden with loomio_org_plugin
-  end
-  helper_method :hosted_by_loomio?
 end
