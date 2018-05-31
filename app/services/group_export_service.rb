@@ -28,7 +28,10 @@ class GroupExportService
       group.all_groups.each do |group|
         puts_record(group, file, ids)
         RELATIONS.each do |relation|
-          group.send(relation).find_each(batch_size: 20000) { |record| puts_record(record, file, ids) }
+          group.send(relation).find_each(batch_size: 20000) do |record|
+            puts relation
+            puts_record(record, file, ids)
+          end
         end
       end
     end

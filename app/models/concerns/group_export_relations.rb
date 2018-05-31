@@ -27,7 +27,7 @@ module GroupExportRelations
     has_many :outcome_reactions,           -> { joins(:user) }, through: :outcomes,    source: :reactions
 
     # readers
-    has_many :discussion_readers, through: :discussions
+    has_many :discussion_readers,  -> { includes([:discussion, :user]) }, through: :discussions
 
     # guest groups
     has_many :discussion_guest_groups,     through: :discussions,        source: :guest_group
