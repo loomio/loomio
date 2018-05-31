@@ -95,8 +95,8 @@ describe API::MembershipsController do
       put :set_volume, params: { id: @membership.id, volume: 'loud' }
       @reader.reload
       @second_reader.reload
-      expect(@reader.volume).to eq 'loud'
-      expect(@second_reader.volume).to eq 'loud'
+      expect(@reader.computed_volume).to eq 'loud'
+      expect(@second_reader.computed_volume).to eq 'loud'
     end
     context 'when apply to all is true' do
       it 'updates the volume for all memberships' do

@@ -16,6 +16,7 @@ class Group < ApplicationRecord
   has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, dependent: :destroy, class_name: 'Discussion'
   has_many :comments, through: :discussions
 
+  has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
   has_many :memberships, -> { where is_suspended: false, archived_at: nil }
   has_many :members, through: :memberships, source: :user
 
