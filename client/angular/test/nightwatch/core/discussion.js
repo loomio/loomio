@@ -198,6 +198,7 @@ module.exports = {
 
     page.fillIn('.comment-form textarea', 'I am new!')
     page.click('.comment-form__submit-button')
+    page.pause(2000)
     page.expectText('.flash-root__message', 'Comment added')
   },
 

@@ -13,6 +13,10 @@ $controller = ($rootScope) ->
   @init = =>
     return unless AbilityService.isLoggedIn() or Session.user().restricted?
     @user = Session.user().clone()
+    @submit = submitForm @, @user,
+      submitFn: Records.users.updateProfile
+      flashSuccess: 'email_settings_page.messages.updated'
+      successCallback: -> LmoUrlService.goTo '/dashboard' if AbilityService.isLoggedIn()
   @init()
 
   @groupVolume = (group) ->
@@ -26,11 +30,6 @@ $controller = ($rootScope) ->
 
   @editSpecificGroupVolume = (group) ->
     ModalService.open 'ChangeVolumeForm', model: => group.membershipFor(Session.user())
-
-  @submit = submitForm @, @user,
-    submitFn: Records.users.updateProfile
-    flashSuccess: 'email_settings_page.messages.updated'
-    successCallback: -> LmoUrlService.goTo '/dashboard' if AbilityService.isLoggedIn()
 
   return
 

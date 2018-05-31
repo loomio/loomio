@@ -9,6 +9,7 @@ module.exports = {
     page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-form__submit')
+    page.pause(3000)
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
@@ -22,8 +23,8 @@ module.exports = {
     page.expectText('.flash-root__message', 'Thread started')
     page.expectElement('.announcement-form')
     page.click('.announcement-form__audience')
-    page.pause(2000)
     page.click('.announcement-form__submit')
+    page.pause(3000)
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
@@ -36,8 +37,8 @@ module.exports = {
     page.click('.discussion-form__submit')
     page.expectElement('.announcement-form')
     page.click('.announcement-form__audience')
-    page.pause(2000)
     page.click('.announcement-form__submit')
+    page.pause(3000)
     page.expectText('.flash-root__message', '2 notifications sent', 6000)
   },
 
@@ -49,8 +50,8 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.selectFromAutocomplete('.announcement-form__invite input', 'jenn')
     page.expectText('.announcement-chip__content', 'Jennifer Grey')
-    page.pause(2000)
     page.click('.announcement-form__submit')
+    page.pause(3000)
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
@@ -66,6 +67,7 @@ module.exports = {
     page.selectFromAutocomplete('.announcement-form__invite input', 'jenn')
     page.expectText('.announcement-chip__content', 'Jennifer Grey')
     page.click('.announcement-form__submit')
+    page.pause(3000)
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
@@ -79,6 +81,7 @@ module.exports = {
     page.expectElement('.announcement-form')
     page.click('.announcement-form__audience')
     page.click('.announcement-form__submit')
+    page.pause(3000)
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   },
 
@@ -94,6 +97,7 @@ module.exports = {
     page.selectFromAutocomplete('.announcement-form__invite input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-form__submit')
+    page.pause(3000)
     page.expectText('.flash-root__message', '1 notifications sent', 6000)
   }
 }

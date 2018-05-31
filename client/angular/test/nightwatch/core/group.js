@@ -258,6 +258,7 @@ module.exports = {
     page.click('.group-page-actions__edit-group-link')
     page.fillIn('#group-name', '')
     page.click('.group-form__submit-button')
+    page.pause()
     page.expectText('.lmo-validation-error', "can't be blank")
   },
 
