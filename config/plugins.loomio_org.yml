@@ -1,6 +1,5 @@
 loomio_org_plugin:
   repo:         https://github.com/loomio/loomio_org_plugin.git
-  branch:       gdpr
 
 loomio_tags:
   repo:         https://github.com/loomio/loomio_tags.git

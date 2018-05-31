@@ -1,6 +1,7 @@
 moment = require 'moment-timezone'
 
 AppConfig = require 'shared/services/app_config'
+{ pluginConfigFor } = require 'shared/helpers/plugin'
 
 { exportGlobals, hardReload, unsupportedBrowser, initServiceWorker } = require 'shared/helpers/window'
 { bootDat } = require 'shared/helpers/boot'
@@ -13,6 +14,7 @@ bootDat (appConfig) ->
   _.merge AppConfig, _.merge appConfig,
     timeZone: moment.tz.guess()
     pendingIdentity: appConfig.userPayload.pendingIdentity
+    pluginConfigFor: pluginConfigFor
   window.Loomio = AppConfig
 
   require './dependencies/vendor'
