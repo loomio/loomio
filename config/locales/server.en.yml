@@ -353,7 +353,6 @@ en:
     resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
 
   poll_mailer:
-    resend: 'REMINDER: %{actor} is waiting for you to vote on %{title}'
     common:
       or: or
       why_send_this: You are receiving this email because %{reason}
@@ -388,6 +387,7 @@ en:
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
+        user_reminded: '%{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
@@ -401,6 +401,7 @@ en:
         outcome_announced: '<strong>%{actor}</strong> shared a proposal outcome.'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -421,6 +422,7 @@ en:
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
+        user_reminded: '%{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -436,6 +438,7 @@ en:
         outcome_announced: '<strong>%{actor}</strong> shared a poll outcome.'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -454,6 +457,7 @@ en:
         stance_created: "%{actor} participated in: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
+        user_reminded: '%{actor} is reminding you to participate in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> is checking'
@@ -467,6 +471,7 @@ en:
         outcome_announced: '<strong>%{actor}</strong> shared an outcome.'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is reminding you to participate in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -487,6 +492,7 @@ en:
         stance_created: "%{actor} voted on: %{title}"
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
+        user_reminded: '%{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a dot vote'
@@ -502,6 +508,7 @@ en:
         outcome_announced: '<strong>%{actor}</strong> shared a dot vote outcome.'
         stance_created: "<strong>%{actor}</strong> voted on: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -523,6 +530,7 @@ en:
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
+        user_reminded: '%{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a time poll'
@@ -539,6 +547,7 @@ en:
         outcome_announced: '<strong>%{actor}</strong> shared a time poll outcome.'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -560,6 +569,7 @@ en:
         stance_created: '%{actor} participated in: %{title}'
         stance_created_author: "Please verify your vote on: %{title}"
         user_mentioned: '%{actor} mentioned you in: %{title}'
+        user_reminded: '%{actor} is reminding you to vote in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a ranked choice'
@@ -576,6 +586,8 @@ en:
         outcome_announced: '<strong>%{actor}</strong> shared a ranked choice outcome.'
         stance_created: "<strong>%{actor}</strong> participated in: %{title}"
         user_mentioned: '<strong>%{actor}</strong> mentioned you in: %{title}'
+        user_reminded: '<strong>%{actor}</strong> is reminding you to vote in: %{title}'
+
       body:
         voted: '<strong>%{participant}</strong>:'
 
