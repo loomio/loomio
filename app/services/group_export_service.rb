@@ -46,9 +46,16 @@ class GroupExportService
   end
 
   def self.import(filename)
-    File.open(filename, 'r').each do |line|
-      data = JSON.parse(line)
-      data['table'].classify.constantize.new(data['record']).save(validate: false)
+    tables = File.open(filename, 'r').map { |line| JSON.parse(line)['table'] }.uniq
+    tables.each do |table|
+      klass = table.classify.constantize
+      existing_ids = klass.pluck(:id)
+      new_records = File.open(filename, 'r').map do |line|
+        data = JSON.parse(line)
+        next unless (data['table'] == table && !existing_ids.include?(data['record']['id']))
+        klass.new(data['record'])
+      end.compact!
+      klass.import(new_records, validate: false)
     end
   end
 end
