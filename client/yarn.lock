@@ -6439,6 +6439,10 @@ url-parse-lax@^1.0.0:
   dependencies:
     prepend-http "^1.0.1"
 
+url-search-params-polyfill@latest:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/url-search-params-polyfill/-/url-search-params-polyfill-4.0.0.tgz#9f51d499c500d84b43d940677f3f7ac756410167"
+
 url-trim@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/url-trim/-/url-trim-1.0.0.tgz#40057e2f164b88e5daca7269da47e6d1dd837adc"

@@ -1,3 +1,4 @@
+require 'url-search-params-polyfill';
 RestfulClient = require 'shared/record_store/restful_client'
 
 module.exports =
