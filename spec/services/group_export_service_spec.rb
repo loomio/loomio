@@ -27,6 +27,7 @@ describe GroupExportService do
   before do
     group.add_admin! user
     group.add_member! another_user
+    @email_api_key = user.email_api_key
   end
 
   describe 'export and import' do
@@ -59,6 +60,7 @@ describe GroupExportService do
       expect(event.reload).to be_present
       expect(notification.reload).to be_present
       expect(group.reload).to be_present
+      expect(@email_api_key).to_not eq(user.email_api_key)
     end
   end
 end

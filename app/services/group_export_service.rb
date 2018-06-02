@@ -19,7 +19,12 @@ class GroupExportService
     comments
   ]
 
-  METHODS = { groups: [:type] }.with_indifferent_access.freeze
+  JSON_PARAMS = { groups: {methods: [:type]},
+                  users:  {except: [:encrypted_password,
+                                    :reset_password_token,
+                                    :email_api_key,
+                                    :reset_password_token,
+                                    :unsubscribe_token] }}.with_indifferent_access.freeze
 
   def self.export(group)
     ids = Hash.new { |hash, key| hash[key] = [] }
@@ -28,8 +33,8 @@ class GroupExportService
       group.all_groups.each do |group|
         puts_record(group, file, ids)
         RELATIONS.each do |relation|
+          puts "Exporting: #{relation}"
           group.send(relation).find_each(batch_size: 20000) do |record|
-            puts relation
             puts_record(record, file, ids)
           end
         end
@@ -42,7 +47,7 @@ class GroupExportService
     table = record.class.table_name
     return if ids[table].include?(record.id)
     ids[table] << record.id
-    file.puts({table: table, record: record.as_json(methods: METHODS[table])}.to_json)
+    file.puts({table: table, record: record.as_json(JSON_PARAMS[table])}.to_json)
   end
 
   def self.import(filename)
