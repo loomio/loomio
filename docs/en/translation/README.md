@@ -1,8 +1,4 @@
-This page is a guide for people who would like to contribute translations to Loomio.
-
-**Links** 
-- [Loomio Community - Translation](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation)
-- [Loomio on Transifex](https://www.transifex.com/projects/p/loomio-1/)
+You're here becuase you want to learn how to translate Loomio. Yay!
 
 ## We use Transifex
 
@@ -10,37 +6,32 @@ We use Transifex to manage our translation process (an excellent service that's 
 
 ### Sign up to Transifex
 
-[Loomio Transifex page](https://www.transifex.com/projects/p/loomio-1/) is the starting point for translating Loomio.
-Just click "Help Translate Loomio" and ask to join a translation.
-
-## How to translate 
-
-Make sure you have either joined a language (and have a Transifex account).
+Visit the [Loomio Transifex page](https://www.transifex.com/projects/p/loomio-1/). Click the blue button: "Help Translate Loomio" then ask to join a translation.
 
 ### The basics
-For a more comprehensive guide: [View the wonderful transifex documentation](https://docs.transifex.com/getting-started/translators)
 
 1. Visit the [Loomio Transifex page](https://www.transifex.com/projects/p/loomio-1/), and select your language
 
 2. Select the resource you want to translate
-- Client is the web app front end that your browser runs
-- Server is the backend, which is mostly notification emails
-- Marketing is the Loomio marketing front page which explains Loomio's value and purpose to the world.
+- Client is the front end code that your browser runs.
+- Server is the backend server code, which is mostly notification emails.
+- Marketing is the loomio.org front page which explains Loomio to the world.
 
 3. Click 'Translate'
 
-4. (a) click on a phrases, 
-(b) read the english text, 
-(c) enter your translation, 
-(d) save
+4. 
+- click on a phrases
+- read the english text 
+- enter your translation 
+- save and repeat
 
 ## How to correctly translate code:
 
-Because we insert names and groups and other things into translations, there are many places where code exists inside the translation string. For these bits of code to work correctly after translation, they need to be copied over without modification. 
+When you combine a translation string with some personal data you get something the user will understand. To make this work there are little bits of code within translation strings. It' takes a little practice to learn how to work with them.
 
-### Preserve HTML tags:
+### HTML tags:
 
-`<h2>`, `<p>`, and `<a>` are html tags which describe if text is a heading, paragraph, link, and so on. There are often matching `</h2>`, `</p>`, and `</a>` which also need to be copied across.
+`<h2>`, `<p>`, and `<a>` are html tags which describe if text is a heading, paragraph, link, and so on. There are often matching `</h2>`, `</p>`, and `</a>` codes.
 
 Example of translating with html tags in place:
 
@@ -54,7 +45,7 @@ Spanish
 Esta encuesta ha cerrado. <strong>Comparte el resultado</strong> con el grupo.
 ```
 
-### Preserve Interpolation
+### Interpolation
 
 There are two kinds of interpolation used in our strings:
 
@@ -108,3 +99,7 @@ Feel free to bring these questions up in the [Loomio Community - Translation](ht
 ## Improving processes, giving feedback
 
 If you would like to suggest an improvement, or have some feedback on the translation process, please feel free to start a discussion in the [Loomio Community - Translation](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation), or email Nati at nati@loomio.org  
+
+**Links** 
+- [Loomio Community - Translation](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation)
+- [Loomio on Transifex](https://www.transifex.com/projects/p/loomio-1/)
