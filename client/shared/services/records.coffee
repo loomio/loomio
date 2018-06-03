@@ -1,10 +1,12 @@
 RecordStore = require 'shared/record_store/record_store'
 AppConfig   = require 'shared/services/app_config'
-loki        = require 'lokijs'
 
-db      = new loki('default.db')
-records = new RecordStore(db)
+Loki        = require 'lokijs'
+LokiAdapter = require 'lokijs/src/loki-indexed-adapter'
 
+{ autoloadDatabase } = require 'shared/record_store/autoload'
+
+records = new RecordStore(new Loki('loomio.db', adapter: new LokiAdapter()))
 records.addRecordsInterface require('shared/interfaces/announcement_records_interface')
 records.addRecordsInterface require('shared/interfaces/comment_records_interface')
 records.addRecordsInterface require('shared/interfaces/discussion_records_interface')
@@ -38,5 +40,8 @@ records.addRecordsInterface require('shared/interfaces/login_token_records_inter
 records.addRecordsInterface require('shared/interfaces/message_channel_records_interface')
 records.addRecordsInterface require('shared/interfaces/locale_records_interface')
 records.addRecordsInterface require('shared/interfaces/member_records_interface')
+
+autoloadDatabase(records)
+
 AppConfig.records = records
 module.exports = records

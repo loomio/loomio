@@ -12,7 +12,7 @@ ModalService   = require 'shared/services/modal_service'
 # or changing the app's locale
 module.exports =
   signIn: (data, userId, afterSignIn) =>
-    Records.import(data)
+    Records.import(data, skipSave: true)
     Session.signIn(userId)
     AppConfig.pendingIdentity = data.pending_identity
     IntercomService.fetch()

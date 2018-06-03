@@ -12,7 +12,7 @@ module.exports =
       recordsInterface.onInterfaceAdded()
       @collectionNames.push name
 
-    import: (data) ->
+    import: (data, options = {}) ->
       return if _.isEmpty(data)
       @bumpVersion()
       _.each @collectionNames, (name) =>
@@ -22,6 +22,7 @@ module.exports =
           _.each data[snakeName], (recordData) =>
             @[camelName].importJSON(recordData)
       @afterImport(data)
+      @db.saveDatabase() unless options.skipSave
       data
 
     afterImport: (data) ->
