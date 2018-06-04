@@ -153,13 +153,12 @@ en:
       link_help: "Click the link below to go to the group:"
     unsubscribe: 'Unsubscribe or change your email preferences:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
-    missed_yesterday:
-      subject: Yesterday on %{site_name}
+    catch_up:
+      daily_subject: Yesterday on %{site_name}
+      weekly_subject: Last week on %{site_name}
       do_not_reply: Please do not reply to this email.
-      headlines: Headlines
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
-      heres_what_happened: "Here’s what happened on %{site_name} yesterday."
       marked_as_read_success: Everything from the email has been marked as read
       click_here: Click here
 

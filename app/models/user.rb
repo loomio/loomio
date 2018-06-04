@@ -136,7 +136,7 @@ class User < ApplicationRecord
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where("deactivated_at IS NOT NULL") }
-  scope :email_missed_yesterday, -> { active.verified.where(email_missed_yesterday: true) }
+  scope :email_catch_up, -> { active.verified.where(email_catch_up: true) }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }

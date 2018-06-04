@@ -70,9 +70,9 @@ describe UserMailer do
     end
   end
 
-  describe 'missed_yesterday' do
-    let(:user) { create :user, email_missed_yesterday: true }
-    subject { UserMailer.missed_yesterday(user).deliver_now }
+  describe 'catch_up' do
+    let(:user) { create :user, email_catch_up: true }
+    subject { UserMailer.catch_up(user).deliver_now }
     let(:discussion) { build :discussion, group: group }
     let(:poll) { build :poll, discussion: discussion }
     let(:comment) { build :comment, discussion: discussion }
@@ -95,7 +95,7 @@ describe UserMailer do
     end
 
     it 'does not send a missed yesterday email if I have unsubscribed' do
-      user.update(email_missed_yesterday: false)
+      user.update(email_catch_up: false)
       some_content
       expect { subject }.to_not change { ActionMailer::Base.deliveries.count }
     end

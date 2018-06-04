@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180519045039) do
+ActiveRecord::Schema.define(version: 20180604135914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -698,7 +698,7 @@ ActiveRecord::Schema.define(version: 20180519045039) do
     t.string "time_zone", limit: 255
     t.string "key", limit: 255
     t.string "detected_locale", limit: 255
-    t.boolean "email_missed_yesterday", default: true, null: false
+    t.boolean "email_catch_up", default: true, null: false
     t.string "email_api_key", limit: 255
     t.boolean "email_when_mentioned", default: true, null: false
     t.boolean "email_on_participation", default: true, null: false

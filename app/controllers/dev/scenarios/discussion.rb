@@ -56,11 +56,11 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_url(create_discussion)
   end
 
-  def setup_thread_missed_yesterday
-    jennifer.update(email_missed_yesterday: true)
+  def setup_thread_catch_up
+    jennifer.update(email_catch_up: true)
     CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion), actor: patrick)
     DiscussionService.close(discussion: create_discussion, actor: patrick)
-    UserMailer.missed_yesterday(jennifer, 1.hour.ago).deliver_now
+    UserMailer.catch_up(jennifer, 1.hour.ago).deliver_now
     last_email
   end
 

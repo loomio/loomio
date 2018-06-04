@@ -6,7 +6,7 @@
     .description= render_rich_text discussion.description
 
   - discussion.polls.active_or_closed_after(@time_start).each do |poll|
-    = render "poll_mailer/common/missed_yesterday", poll: poll
+    = render "poll_mailer/common/catch_up", poll: poll
 
   .activity-feed
     - reader = @reader_cache.get_for(discussion)

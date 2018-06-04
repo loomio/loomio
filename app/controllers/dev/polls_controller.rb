@@ -108,7 +108,7 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_expired,                email: true
   observe_scenario :poll_expired_author,         email: true
   observe_scenario :poll_outcome_created,        email: true
-  observe_scenario :poll_missed_yesterday,       email: true
+  observe_scenario :poll_catch_up,       email: true
   observe_scenario :poll_stance_created,         email: true
   observe_scenario :poll_options_added,          email: true, except: [:count, :proposal]
   observe_scenario :poll_options_added_author,   email: true, except: [:count, :proposal]
