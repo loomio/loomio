@@ -10,8 +10,9 @@ class User < ApplicationRecord
   include CustomCounterCache::Model
 
   extend HasTokens
+  extend HasDefaults
 
-  extend  NoSpam
+  extend NoSpam
   no_spam_for :name
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
@@ -127,9 +128,10 @@ class User < ApplicationRecord
           class_name: 'UserDeactivationResponse',
           dependent: :destroy
 
-  before_save :set_avatar_initials
-  initialized_with_token :unsubscribe_token, -> { Devise.friendly_token }
-  initialized_with_token :email_api_key,     -> { SecureRandom.hex(16) }
+  before_save :set_avatar_initials, :set_defaults
+  initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
+  initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }
+  initialized_with_default :email_on_participation, -> { !ENV['EMAIL_ON_PARTICIPATION_DEFAULT_FALSE'] }
 
 
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
