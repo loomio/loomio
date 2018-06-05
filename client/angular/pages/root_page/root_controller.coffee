@@ -3,7 +3,6 @@ EventBus        = require 'shared/services/event_bus'
 AbilityService  = require 'shared/services/ability_service'
 LmoUrlService   = require 'shared/services/lmo_url_service'
 ModalService    = require 'shared/services/modal_service'
-IntercomService = require 'shared/services/intercom_service'
 FlashService    = require 'shared/services/flash_service'
 
 { signIn }                                       = require 'shared/helpers/user'
@@ -31,7 +30,6 @@ $controller = ($scope, $injector) ->
       $scope.refreshing = false
       FlashService.success AppConfig.userPayload.flash.notice
       delete AppConfig.userPayload.flash.notice
-    IntercomService.boot()
     if LmoUrlService.params().set_password
       delete LmoUrlService.params().set_password
       ModalService.open 'ChangePasswordForm'
