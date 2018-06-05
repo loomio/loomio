@@ -6,6 +6,7 @@ EventBus = require 'shared/services/event_bus'
 # emoji being added or a translation being completed
 module.exports =
   listenForMentions: ($scope, model) ->
+    $scope.mentionables = []
     $scope.fetchByNameFragment = (q) ->
       Records.users.fetchMentionable(q).then (response) ->
         $scope.mentionables = Records.users.find(_.pluck(response.users, 'id'))
