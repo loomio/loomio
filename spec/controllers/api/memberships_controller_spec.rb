@@ -290,14 +290,6 @@ describe API::MembershipsController do
         expect(users).to_not include alien_named_biff.id
       end
 
-      it 'includes the given search fragment' do
-        get :invitables, params: { group_id: group.id, q: 'beef' }, format: :json
-        json = JSON.parse(response.body)
-        search_fragments = json['users'].map { |c| c['search_fragment'] }
-        expect(search_fragments.compact.uniq.length).to eq 1
-        expect(search_fragments).to include 'beef'
-      end
-
       it 'can search by email address' do
         get :invitables, params: { group_id: group.id, q: 'beef@biff' }, format: :json
         json = JSON.parse(response.body)

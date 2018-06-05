@@ -2,18 +2,13 @@ class UserSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :name, :username, :short_bio, :avatar_initials, :avatar_kind,
-             :avatar_url, :email_hash, :time_zone, :search_fragment, :label,
-             :locale, :location, :created_at, :email_verified, :has_password,
-             :last_seen_at, :email
+             :avatar_url, :email_hash, :time_zone, :locale, :location, :created_at,
+             :email_verified, :has_password, :last_seen_at, :email
 
   def name
     object.name ||
     (include_email? && email) ||
     placeholder_name
-  end
-
-  def label
-    username
   end
 
   def email_hash
@@ -47,10 +42,6 @@ class UserSerializer < ActiveModel::Serializer
 
   def include_has_password?
     scope[:include_password_status]
-  end
-
-  def search_fragment
-    scope[:q]
   end
 
   def include_email?
