@@ -128,6 +128,7 @@ fr:
       invite: Inviter
       resent: Invitation renvoyée
       export: Exporter
+      fork: Scinder
     formatting_help:
       label: 'Mise en forme'
       title: 'Apprenez à utiliser Markdown pour mettre en forme votre texte'
@@ -318,6 +319,9 @@ fr:
     invite_to_poll: "Inviter au vote"
     invitations: "Invitations"
   membership_dropdown:
+    set_title: "Définir un rôle"
+    resend: "Renvoyer l'invitation"
+    invitation_resent: "Invitation renvoyée"
     make_coordinator: 'Nommer coordinateur'
     demote_coordinator: 'Retirer des coordinateurs'
     remove_from:
@@ -382,12 +386,16 @@ fr:
   discussion_record:
     created: 'La discussion {{title}} a bien été créée dans {{groupName}}'
     updated: 'Modifications de {{title}} enregistrées'
+  discussion_fork_actions:
+    helptext: "Sélectionner les items que vous voulez déplacer vers une nouvelle discussion"
   discussion_form:
     aria_label: 'Forme de la discussion'
     messages:
       created: 'Discussion démarrée'
       updated: 'Discussion mise à jour'
+      forked: 'Discussion scindée'
     new_discussion_title: 'Créer une nouvelle discussion'
+    fork_discussion_title: 'Scinder une discussion'
     edit_discussion_title: 'Modifier la discussion'
     group_label: 'Groupe'
     group_placeholder: 'Sélectionner un groupe'
@@ -399,6 +407,7 @@ fr:
     privacy_public: 'N’importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer.'
     privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
     privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
+    fork_notice: 'Une nouvelle discussion sera créée avec {{count}} items de {{title}}'
   announcement:
     audiences:
       parent_group: Membres de {{name}}
@@ -461,6 +470,7 @@ fr:
     edit_comment: Modifier le commentaire
     delete_comment: Supprimer le commentaire
     reply_to_comment: Répondre
+    fork_comment: Scinder la discussion
     translate_comment: Afficher une traduction automatique du commentaire
     edit_outcome: Modifier le résultat
     announce_outcome: Notifier des personnes de ce résultat
@@ -777,6 +787,18 @@ fr:
   memberships_panel:
     add_coordinator: Nommer coordinateur
     remove_coordinator: Retirer des coordinateurs
+  membership_form:
+    modal_title:
+      group: Définir un rôle dans ce groupe
+      discussion: Définir un rôle dans cette discussion
+      poll: Définir un rôle dans ce {{pollType}}
+    title_helptext:
+      group: Ce rôle apparaîtra après le nom de {{name}} dans ce groupe. Utilisez-le pour informer les personnes de leur rôle.
+      discussion: Ce rôle apparaîtra après le nom de {{name}} dans cette discussion. Utilisez-le pour informer les personnes de leur rôle.
+      poll: Ce rôle apparaîtra après le nom de {{name}} dans ce {{pollType}}. Utilisez-le pour informer les personnes de leur rôle.
+    title_label: rôle
+    title_placeholder: Par exemple, « Coordinateur » ou « Facilitateur »
+    updated: Rôle mis à jour
   pending_invitations_card:
     heading: Invitations en attente
     email: Adresse e-mail
@@ -850,7 +872,6 @@ fr:
     no_longer_group_member: 'Vous ne serez plus enregistré comme membre d’aucun groupe'
     name_removed: 'Les commentaires, les décisions et les discussions que vous avez fait resteront mais votre nom en sera retiré'
     no_emails: 'Vous ne recevrez plus de courriels de notification'
-    contact_for_reactivation: 'Vous aurez besoin de nous recontacter pour réactiver votre compte'
     submit: 'Oui, je veux désactiver'
   deactivate_user_form:
     aria_label: 'Désactivation du compte'
@@ -991,6 +1012,7 @@ fr:
     delete_thread: 'Supprimer'
     add_comment: 'Commentaire'
     seen_by_count: 'Vu par {{count}} personnes'
+    forked_from: "Scindé depuis"
   pin_thread_modal:
     title: Épingler la discussion
     helptext: "Les discussions mises en avant apparaîtront toujours en tête des discussions de leur groupe. Elles permettent d’informer les membres des annonces importantes ou de partager un code de conduite ou des règles de communauté."
@@ -1496,6 +1518,7 @@ fr:
     discussion_moved: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a déplacé la discussion de <strong>{{title}}</strong>"
     discussion_closed: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a clos la discussion"
     discussion_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a relancé la discussion"
+    discussion_forked: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a scindé cette discussion : <strong><a href='d/{{key}}'>{{title}}</a></strong>"
     new_comment: "<strong><a href='u/{{username}}'>{{author}}</a></strong>"
     outcome_created: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a partagé un résultat pour <strong>{{title}}</strong>"
     poll_reopened: "<strong><a href='u/{{username}}'>{{author}}</a></strong> a rouvert le {{polltype}}: <strong>{{title}}</strong>"
@@ -1542,8 +1565,11 @@ fr:
   auth_form:
     sign_in_to_loomio: Identifiez-vous sur {{site_name}}
     sign_in: Se connecter
+    continue: Continuer
     sign_in_as: Se connecter comme  {{name}}
-    choose_an_account: "Connectez-vous via un site tiers, ou entrez une adresse e-mail pour continuer."
+    continue_with_provider: Continuer avec {{provider}}
+    continue_with_email: Continuer avec l'adresse e-mail
+    or_enter_your_email: Ou saisir votre adresse e-mail
     invitation_required: Compte utilisateur introuvable. Une invitation est nécessaire pour créer un nouveau compte utilisateur.
     more_providers: Plus
     email_not_present: Une adresse e-mail est nécessaire
@@ -1557,12 +1583,13 @@ fr:
         Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
         Si vous préférez utiliser un mot de passe pour vous connecter à l’avenir, vous pouvez le définir sur votre page de profil.
     login_link_helptext_with_password: "Entrez votre mot de passe, ou connectez-vous par courriel."
-    sign_up_helptext: "Saisissez le nom sous lequel vous voulez intervenir, et nous vous enverrons un lien de connexion."
-    sign_up_helptext_with_token: "Saisissez le nom sous lequel vous voulez intervenir, et cliquez sur Se connecter pour démarrer."
-    oauth_confirm_helptext: "Confirmez les informations ci-dessous et nous vous enverrons un lien de connexion."
+    sign_up_helptext: "Merci de remplir ce formulaire pour créer un compte"
+    i_accept: "J'accepte les <a href='{{termsUrl}}' target='_blank'>Conditions d'utilisation</a> et la <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a>"
     name_required: Entrez un nom
-    account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé ! Merci de nous contacter pour réactiver votre compte utilisateur.
-    welcome: Enchanté !
+    terms_required: Vous devez accepter les Conditions d'utilisation
+    account_inactive: Oups, on dirait que le compte utilisateur lié à {{email}} a été désactivé !
+    privacy_notice: "Des données personnelles sont recueillies quand vous utilisez {{siteName}}. <br/> Lisez notre <a href='{{privacyUrl}}' target='_blank'>Politique de vie privée</a> pour en savoir plus."
+    welcome: Bienvenue sur {{siteName}} !
     welcome_back: Content de vous revoir, {{name}} !
     login_link: Recevoir un courriel de connexion
     set_password: Définir un mot de passe
@@ -1571,10 +1598,10 @@ fr:
     hello: "Bonjour, {{name}} !"
     new_to_loomio: Nouveau sur {{site_name}} ? Créez un compte !
     create_account: Créez un compte
-    already_a_user: Vous avez déjà un compte {{site_name}} ? Entrez votre adresse e-mail pour connecter à ce compte au vôtre
+    already_a_user: Vous avez déjà un compte {{site_name}} ? Entrez votre adresse e-mail pour connecter à ce compte au vôtre.
     link_accounts: Comptes associés
     check_your_email: Vérifier votre e-mail !
-    login_link_sent: "Ok, nous avons envoyé l'invitation à {{email}}."
+    login_link_sent: "Ok, nous avons envoyé un message à {{email}}."
     instructions: "Cliquez sur le lien pour vous connecter, ou entrez le code ci-dessous:"
     too_many_attempts: "Trop de tentatives, essayez de cliquer sur le lien dans le courriel pour vous connecter."
     invalid_code: "Désolé, le code ne correspond pas. Vérifiez le courriel et essayez de nouveau."
@@ -1584,7 +1611,7 @@ fr:
     name: Nom
     email: Adresse e-mail
     password: Mot de passe
-    reactivate: Envoyez un courriel de réactivation
+    reactivate: Réactiver le compte
   install_slack:
     modal_title: Installer Slack
     modal_helptext: Pour commencer, connectez-vous à Slack. Nous vous redirigerons là dans un instant, ou vous pouvez cliquer ci-dessous pour continuer.
