@@ -31,42 +31,31 @@ module.exports = new class IntercomService
 
   fetch: ->
     return if !window or !Session.user() or window.Intercom
-    if typeof ic is 'function'
-      ic('reattach_activator')
-      ic('update', intercomSettings)
-    else
-      fetchIntercom = ->
-        script = document.createElement('script')
-        script.type = 'text/javascript'
-        script.async = true
-        script.src = "https://widget.intercom.io/widget/#{AppConfig.intercomAppId}"
-        prev = _.first document.getElementsByTagName('script')
-        prev.parentNode.insertBefore(prev, script)
-      if window.attachEvent
-        window.attachEvent 'onload', fetchIntercom
-      else
-        window.addEventListener 'load', fetchIntercom, false
+    script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.async = true
+    script.src = "https://widget.intercom.io/widget/#{AppConfig.intercomAppId}"
+    script.onload = ->
+      return unless window.Intercom
+      user = Session.user()
+      lastGroup = mapGroup(user.parentGroups()[0])
 
-  boot: ->
-    return unless window.Intercom
-    user = Session.user()
-    lastGroup = mapGroup(user.parentGroups()[0])
-
-    window.Intercom 'boot',
-     admin_link: LmoUrlService.user(user, {}, { noStub: true, absolute: true, namespace: 'admin/users', key: 'id' })
-     app_id: AppConfig.intercomAppId
-     user_id: user.id
-     user_hash: user.intercomHash
-     email: user.email
-     name: user.name
-     username: user.username
-     user_id: user.id
-     created_at: user.createdAt
-     is_coordinator: user.isCoordinator
-     locale: user.locale
-     company: lastGroup
-     has_profile_photo: user.hasProfilePhoto()
-     belongs_to_paying_group: user.belongsToPayingGroup()
+      window.Intercom 'boot',
+       admin_link: LmoUrlService.user(user, {}, { noStub: true, absolute: true, namespace: 'admin/users', key: 'id' })
+       app_id: AppConfig.intercomAppId
+       user_id: user.id
+       user_hash: user.intercomHash
+       email: user.email
+       name: user.name
+       username: user.username
+       user_id: user.id
+       created_at: user.createdAt
+       is_coordinator: user.isCoordinator
+       locale: user.locale
+       company: lastGroup
+       has_profile_photo: user.hasProfilePhoto()
+       belongs_to_paying_group: user.belongsToPayingGroup()
+    document.body.appendChild(script)
 
   shutdown: ->
     return unless @available()
