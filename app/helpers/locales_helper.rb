@@ -46,7 +46,7 @@ module LocalesHelper
 
   def normalize(locale)
     return unless locale
-    lang, dialect = locale.sub('-', '_').split('_')
+    lang, dialect = locale.to_s.sub('-', '_').split('_')
     [lang&.downcase, dialect&.upcase].compact.join('_')
   end
 
