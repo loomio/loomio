@@ -2,7 +2,7 @@ module LocalesHelper
   def process_time_zone(&block)
     Time.use_zone(TimeZoneToCity.convert(current_user.time_zone.to_s), &block)
   end
-  
+
   def use_preferred_locale
     I18n.locale = preferred_locale
     yield if block_given?
@@ -45,7 +45,9 @@ module LocalesHelper
   private
 
   def normalize(locale)
-    locale.to_s.sub('-','_') if locale
+    return unless locale
+    lang, dialect = locale.to_s.sub('-', '_').split('_')
+    [lang&.downcase, dialect&.upcase].compact.join('_')
   end
 
 
