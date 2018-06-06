@@ -14,10 +14,6 @@ module.exports = class LocaleRecordsInterface extends BaseRecordsInterface
       onSuccess: (response) ->
         if response.ok
           response.text().then (data) ->
-            # some, not all (why?), moment.js locale files have return
-            # statements on the end of them, but they are not wrapped in
-            # functions which raises an error.
-            # So we stip the return statement with this regex.
-            eval data.replace(/return.+\n\n$/, "\n")
+            eval data
         else
           throw response

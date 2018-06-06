@@ -11,6 +11,6 @@ module.exports =
     pipe gulp.src(paths.shared.moment_locales), [
       replace(/;\(function \(global, factory\) {(.|\n)*function \(moment\) {\s*/, ""),
       replace(/}\)\)\);(.|\n)*$/, ""),
-      replace(/return\s[a-z]*;\n*$/, ""),
+      replace(/return.+\n\n$/, "\n"),
       gulp.dest(paths.dist.moment_locales)
     ]
